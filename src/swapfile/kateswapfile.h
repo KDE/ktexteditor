@@ -27,7 +27,7 @@
 #include <QFile>
 #include <QTimer>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katetextbuffer.h"
 #include "katebuffer.h"
 #include "katedocument.h"

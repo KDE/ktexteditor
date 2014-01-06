@@ -21,7 +21,7 @@
 #ifndef _KTEXTEDITOR_VARIABLE_INTERFACE_H_
 #define _KTEXTEDITOR_VARIABLE_INTERFACE_H_
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 
 #include <QObject>

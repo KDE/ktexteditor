@@ -21,7 +21,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_CONFIGPAGEINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_CONFIGPAGEINTERFACE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <QStringList>
 #include <QVariant>
 

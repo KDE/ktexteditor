@@ -22,7 +22,7 @@
 #ifndef __KATE_GLOBAL_H__
 #define __KATE_GLOBAL_H__
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katescript.h"
 
 #include <ktexteditor/editor.h>

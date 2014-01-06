@@ -20,7 +20,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_MODEINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_MODEINTERFACE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 
 // TODO KDE5: The ModeInterface is not implemented by any class KatePart

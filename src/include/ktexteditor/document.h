@@ -21,7 +21,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_DOCUMENT_H
 #define KDELIBS_KTEXTEDITOR_DOCUMENT_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 // the very important KTextEditor::Cursor class
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>

@@ -21,7 +21,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_CONFIGPAGE_H
 #define KDELIBS_KTEXTEDITOR_CONFIGPAGE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <QWidget>
 

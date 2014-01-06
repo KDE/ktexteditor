@@ -35,7 +35,7 @@
 #include <QTextLayout>
 
 #include <ktexteditor/cursor.h>
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katetextline.h"
 
 class KateDocument;

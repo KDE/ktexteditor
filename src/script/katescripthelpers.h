@@ -22,7 +22,7 @@
 #define KATE_SCRIPTHELPERS_H
 
 #include <QScriptValue>
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class QScriptEngine;
 class QScriptContext;

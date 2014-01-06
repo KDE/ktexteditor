@@ -30,7 +30,7 @@
 #include <ktexteditor/document.h>
 
 #include "katedocument.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katetextblock.h"
 #include "katetextcursor.h"
 #include "katetextrange.h"

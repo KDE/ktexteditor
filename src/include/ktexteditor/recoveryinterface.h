@@ -20,7 +20,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_RECOVERYINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_RECOVERYINTERFACE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

@@ -25,7 +25,7 @@
 #include <QFrame>
 #include <QObject>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/codecompletioninterface.h>

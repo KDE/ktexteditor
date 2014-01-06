@@ -25,7 +25,7 @@
 
 #include <QKeyEvent>
 #include "katevimodebase.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class KateViMotion;
 class KateView;

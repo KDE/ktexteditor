@@ -30,7 +30,7 @@
 
 #include "katevimodebase.h"
 #include "kateviinputmodemanager.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class QString;
 class QChar;

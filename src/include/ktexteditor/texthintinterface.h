@@ -22,7 +22,7 @@
 
 #include <QString>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <ktexteditor/cursor.h>
 

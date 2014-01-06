@@ -1,37 +1,38 @@
-if(BUILD_kate)
-  add_subdirectory(kate)
-endif()
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
+
+include(ECMMarkAsTest)
 
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
 include_directories(
-  ${CMAKE_SOURCE_DIR}/ktexteditor
-  ${CMAKE_SOURCE_DIR}/ktexteditor/buffer
-  ${CMAKE_SOURCE_DIR}/ktexteditor/completion
-  ${CMAKE_SOURCE_DIR}/ktexteditor/dialogs
-  ${CMAKE_SOURCE_DIR}/ktexteditor/document
-  ${CMAKE_SOURCE_DIR}/ktexteditor/script
-  ${CMAKE_SOURCE_DIR}/ktexteditor/mode
-  ${CMAKE_SOURCE_DIR}/ktexteditor/render
-  ${CMAKE_SOURCE_DIR}/ktexteditor/search
-  ${CMAKE_SOURCE_DIR}/ktexteditor/syntax
-  ${CMAKE_SOURCE_DIR}/ktexteditor/undo
-  ${CMAKE_SOURCE_DIR}/ktexteditor/utils
-  ${CMAKE_SOURCE_DIR}/ktexteditor/vimode
-  ${CMAKE_SOURCE_DIR}/ktexteditor/view
-  ${CMAKE_BINARY_DIR}/ktexteditor
+  ${CMAKE_BINARY_DIR}
+  ${CMAKE_BINARY_DIR}/src/include/KTextEditor
+  ${CMAKE_SOURCE_DIR}/src
+  ${CMAKE_SOURCE_DIR}/src/include
+  ${CMAKE_SOURCE_DIR}/src/buffer
+  ${CMAKE_SOURCE_DIR}/src/completion
+  ${CMAKE_SOURCE_DIR}/src/dialogs
+  ${CMAKE_SOURCE_DIR}/src/document
+  ${CMAKE_SOURCE_DIR}/src/script
+  ${CMAKE_SOURCE_DIR}/src/mode
+  ${CMAKE_SOURCE_DIR}/src/render
+  ${CMAKE_SOURCE_DIR}/src/search
+  ${CMAKE_SOURCE_DIR}/src/syntax
+  ${CMAKE_SOURCE_DIR}/src/undo
+  ${CMAKE_SOURCE_DIR}/src/utils
+  ${CMAKE_SOURCE_DIR}/src/vimode
+  ${CMAKE_SOURCE_DIR}/src/view
 )
 
 add_definitions(-DTEST_DATA_DIR="${CMAKE_SOURCE_DIR}/autotests/input/")
-add_definitions(-DJS_DATA_DIR="${CMAKE_SOURCE_DIR}/ktexteditor/script/data/")
+add_definitions(-DJS_DATA_DIR="${CMAKE_SOURCE_DIR}/src/script/data/")
 
-set (KATE_TEST_LINK_LIBS ktexteditor
+set (KATE_TEST_LINK_LIBS KTextEditor
   KF5::I18n
   KF5::KIOFileWidgets
   KF5::IconThemes
-  KF5::WindowSystem
   KF5::GuiAddons
   Qt5::Script)
 

@@ -24,7 +24,7 @@
 #include <QStringList>
 #include <QScriptable>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <QScriptValue>
 

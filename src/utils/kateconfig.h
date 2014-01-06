@@ -20,7 +20,7 @@
 #ifndef __KATE_CONFIG_H__
 #define __KATE_CONFIG_H__
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <ktexteditor/markinterface.h>
 #include <KEncodingProber>

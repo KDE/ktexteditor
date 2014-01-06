@@ -24,7 +24,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_MOVINGRANGE_H
 #define KDELIBS_KTEXTEDITOR_MOVINGRANGE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/range.h>
 #include <ktexteditor/movingcursor.h>

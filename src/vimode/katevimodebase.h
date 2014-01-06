@@ -28,7 +28,7 @@
 #include "kateview.h"
 #include "katevirange.h"
 #include "kateviewinternal.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katedocument.h"
 #include "katelayoutcache.h"
 

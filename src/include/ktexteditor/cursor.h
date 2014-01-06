@@ -24,7 +24,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_CURSOR_H
 #define KDELIBS_KTEXTEDITOR_CURSOR_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <QDebug>
 
 namespace KTextEditor

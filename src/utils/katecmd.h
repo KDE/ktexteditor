@@ -21,7 +21,7 @@
 #ifndef _KATE_CMD_H
 #define _KATE_CMD_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <ktexteditor/commandinterface.h>
 

@@ -22,7 +22,7 @@
 #ifndef KTEXTEDITOR_MAINWINDOW_H
 #define KTEXTEDITOR_MAINWINDOW_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <QObject>
 

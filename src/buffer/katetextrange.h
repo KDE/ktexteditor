@@ -28,7 +28,7 @@
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/movingrangefeedback.h>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "katetextcursor.h"
 
 namespace Kate {

@@ -20,7 +20,7 @@
 #ifndef KATE_WILDCARD_MATCHER_H
 #define KATE_WILDCARD_MATCHER_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class QString;
 

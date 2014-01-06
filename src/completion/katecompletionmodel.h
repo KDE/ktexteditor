@@ -28,7 +28,7 @@
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include "expandingtree/expandingwidgetmodel.h"
 
 class KateCompletionWidget;

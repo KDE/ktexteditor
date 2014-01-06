@@ -24,7 +24,7 @@
 #include <QMap>
 #include <QImage>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 
 namespace KTextEditor

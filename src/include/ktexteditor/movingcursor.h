@@ -24,7 +24,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_MOVINGCURSOR_H
 #define KDELIBS_KTEXTEDITOR_MOVINGCURSOR_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/document.h>
 

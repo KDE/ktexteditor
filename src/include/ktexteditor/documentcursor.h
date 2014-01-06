@@ -22,7 +22,7 @@
 #ifndef KTEXTEDITOR_DOCUMENT_CURSOR_H
 #define KTEXTEDITOR_DOCUMENT_CURSOR_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/document.h>
 

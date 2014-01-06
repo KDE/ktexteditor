@@ -21,7 +21,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_SEARCHINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_SEARCHINTERFACE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/range.h>
 
 class QString;

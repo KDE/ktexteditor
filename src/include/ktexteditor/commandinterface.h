@@ -22,7 +22,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_COMMANDINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_COMMANDINTERFACE_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/range.h>
 #include <QObject>
 

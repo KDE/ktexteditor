@@ -21,7 +21,7 @@
 #ifndef KATE_VI_RANGE_INCLUDED
 #define KATE_VI_RANGE_INCLUDED
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <QDebug>
 
 namespace ViMotion {

@@ -22,7 +22,7 @@
 #ifndef KTEXTEDITOR_APPLICATION_H
 #define KTEXTEDITOR_APPLICATION_H
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <QObject>
 

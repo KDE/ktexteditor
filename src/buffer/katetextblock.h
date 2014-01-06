@@ -24,7 +24,7 @@
 #include <QVector>
 #include <QSet>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include "katetextline.h"
 

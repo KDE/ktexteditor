@@ -21,7 +21,7 @@
 
 #include "katevinormalmode.h"
 #include "katevikeyparser.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #ifndef KATE_VI_COMMAND_H
 #define KATE_VI_COMMAND_H

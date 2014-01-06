@@ -38,7 +38,7 @@
 #include <QRegExp>
 #include <ktexteditor/cursor.h>
 #include "katevikeyparser.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class KateViMotion;
 class KateViInputModeManager;

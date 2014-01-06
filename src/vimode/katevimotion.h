@@ -24,7 +24,7 @@
 #include "katevicommand.h"
 #include "katevinormalmode.h"
 #include "katevirange.h"
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class KateViNormalMode;
 

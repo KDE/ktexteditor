@@ -23,7 +23,7 @@
 #include <QObject>
 #include <QScriptable>
 
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>

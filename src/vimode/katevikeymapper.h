@@ -22,7 +22,7 @@
 #define KATE_VI_KEYMAPPER_H_INCLUDED
 
 #include <QObject>
-#include <ktexteditor/ktexteditor_export.h>
+#include <ktexteditor_export.h>
 
 class KateViInputModeManager;
 class KateDocument;

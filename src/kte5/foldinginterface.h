@@ -21,7 +21,7 @@
 #ifndef KTEXTEDITOR_FOLDINGINTERFACE_H
 #define KTEXTEDITOR_FOLDINGINTERFACE_H
 
-// #include <ktexteditor/ktexteditor_export.h>
+// #include <ktexteditor_export.h>
 
 #include <QFlags>
 
