@@ -415,17 +415,19 @@ void KateTextBufferTest::nestedFoldingTest()
 
 void KateTextBufferTest::saveFileInUnwritableFolder()
 {
-  const QString folder_name = QString::fromLatin1("katetest_%1").arg(QCoreApplication::applicationPid());
-  const QString file_path = QDir::tempPath() + QLatin1Char('/') + folder_name + QLatin1String("/foo");
-  Q_ASSERT(QDir::temp().mkdir(folder_name));
-
+  // create temp dir and get file name inside
+  QTemporaryDir dir;
+  QVERIFY(dir.isValid());
+  const QString folder_name = dir.path();
+  const QString file_path = folder_name + QLatin1String("/foo");
+  
   QFile f(file_path);
-  Q_ASSERT(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+  QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
   f.write("1234567890");
-  Q_ASSERT(f.flush());
+  QVERIFY(f.flush());
   f.close();
 
-  QFile::setPermissions(QDir::tempPath() + QLatin1Char('/') + folder_name, QFile::ExeOwner);
+  QFile::setPermissions(folder_name, QFile::ExeOwner);
 
   Kate::TextBuffer buffer(0, 1);
   buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
@@ -443,7 +445,7 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
   QCOMPARE(f.readAll(), QByteArray("ABC"));
   f.close();
 
-  QFile::setPermissions(QDir::tempPath() + QLatin1Char('/') + folder_name, QFile::WriteOwner | QFile::ExeOwner);
-  Q_ASSERT(f.remove());
-  Q_ASSERT(QDir::temp().rmdir(folder_name));
+  QFile::setPermissions(folder_name, QFile::WriteOwner | QFile::ExeOwner);
+  QVERIFY(f.remove());
+  QVERIFY(dir.remove());
 }
