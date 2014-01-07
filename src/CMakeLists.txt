@@ -225,7 +225,7 @@ dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
    
 add_library (KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
-generate_export_header (KF5TextEditor)
+generate_export_header (KF5TextEditor BASE_NAME KTextEditor)
 add_library (KF5::TextEditor ALIAS KF5TextEditor)
 
 target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
