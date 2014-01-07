@@ -235,6 +235,7 @@ target_link_libraries (KF5TextEditor
 set_target_properties(KF5TextEditor
    PROPERTIES VERSION ${KTEXTEDITOR_VERSION_STRING}
    SOVERSION ${KTEXTEDITOR_SOVERSION}
+   EXPORT_NAME "TextEditor"
 )
 
 install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
