@@ -14,6 +14,7 @@ include(CheckFunctionExists)
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
+include(GenerateExportHeader)
 
 set(KF5_VERSION "5.0.0")
 
