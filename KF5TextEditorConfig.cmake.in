@@ -1,9 +1,23 @@
 @PACKAGE_INIT@
 
-# Required components to use this framework
-# For example:
-# find_dependency(Qt5Widgets "@REQUIRED_QT_VERSION@")
-# find_dependency(KF5CoreAddons "@KF5_VERSION@")
+# Qt Deps
+find_dependency(Qt5Core "@REQUIRED_QT_VERSION@")
+find_dependency(Qt5Widgets "@REQUIRED_QT_VERSION@")
+find_dependency(Qt5Script "@REQUIRED_QT_VERSION@")
+
+# KF5 Deps
+find_package(KF5Archive "@KF5_VERSION@")
+find_package(KF5Config "@KF5_VERSION@")
+find_package(KF5GuiAddons "@KF5_VERSION@")
+find_package(KF5I18n "@KF5_VERSION@")
+find_package(KF5JobWidgets "@KF5_VERSION@")
+find_package(KF5KCMUtils "@KF5_VERSION@")
+find_package(KF5KIO "@KF5_VERSION@")
+find_package(KF5Parts "@KF5_VERSION@")
+find_package(KF5PrintUtils "@KF5_VERSION@")
+find_package(KF5Sonnet "@KF5_VERSION@")
+find_package(KF5XmlGui "@KF5_VERSION@")
+find_package(KF5Notifications "@KF5_VERSION@")
 
 include("${CMAKE_CURRENT_LIST_DIR}/KF5TextEditorTargets.cmake")
 
