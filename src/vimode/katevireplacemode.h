@@ -33,21 +33,24 @@ class QKeyEvent;
 
 class KateViReplaceMode : public KateViModeBase
 {
-  public:
-    KateViReplaceMode( KateViInputModeManager *viInputModeManager, KateView * view, KateViewInternal * viewInternal );
+public:
+    KateViReplaceMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
     ~KateViReplaceMode();
 
-    bool handleKeypress( const QKeyEvent *e );
+    bool handleKeypress(const QKeyEvent *e);
 
-    bool commandInsertFromLine( int offset );
+    bool commandInsertFromLine(int offset);
 
     bool commandMoveOneWordLeft();
     bool commandMoveOneWordRight();
 
-    void overwrittenChar( const QChar &s ) { m_overwritten += s; }
+    void overwrittenChar(const QChar &s)
+    {
+        m_overwritten += s;
+    }
     void backspace();
 
-  private:
+private:
     QString m_overwritten;
 };
 

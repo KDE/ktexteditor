@@ -24,18 +24,18 @@
 
 class DocumentCursorTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  DocumentCursorTest();
-  ~DocumentCursorTest();
+    DocumentCursorTest();
+    ~DocumentCursorTest();
 
 private Q_SLOTS:
-  void initTestCase();
-  void cleanupTestCase();
+    void initTestCase();
+    void cleanupTestCase();
 
-  void testConvenienceApi();
-  void testOperators();
+    void testConvenienceApi();
+    void testOperators();
 };
 
 #endif

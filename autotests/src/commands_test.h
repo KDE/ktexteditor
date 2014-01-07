@@ -24,12 +24,12 @@
 
 class CommandsTest : public ScriptTestBase
 {
-  Q_OBJECT
+    Q_OBJECT
 private Q_SLOTS:
-  void initTestCase();
+    void initTestCase();
 
-  void utils_data();
-  void utils();
+    void utils_data();
+    void utils();
 };
 
 #endif // COMMANDS_TEST_H

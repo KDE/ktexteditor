@@ -32,32 +32,31 @@ class VariableEditor;
 class VariableItem
 {
 public:
-  VariableItem(const QString& variable);
-  virtual ~VariableItem();
+    VariableItem(const QString &variable);
+    virtual ~VariableItem();
 
-  QString variable() const;
-  QString helpText() const;
-  void setHelpText(const QString& text);
+    QString variable() const;
+    QString helpText() const;
+    void setHelpText(const QString &text);
 
-  bool isActive() const;
-  void setActive(bool active);
+    bool isActive() const;
+    void setActive(bool active);
 
-  virtual void setValueByString(const QString& value) = 0;
-  virtual QString valueAsString() const = 0;
+    virtual void setValueByString(const QString &value) = 0;
+    virtual QString valueAsString() const = 0;
 
-  virtual VariableEditor* createEditor(QWidget* parent) = 0;
+    virtual VariableEditor *createEditor(QWidget *parent) = 0;
 
 private:
-  // not implemented: copy constructor and operator=
-  VariableItem(const VariableItem& copy);
-  VariableItem& operator=(const VariableItem& other);
+    // not implemented: copy constructor and operator=
+    VariableItem(const VariableItem &copy);
+    VariableItem &operator=(const VariableItem &other);
 
-  QString m_variable;
-  QString m_helpText;
-  bool m_active;
+    QString m_variable;
+    QString m_helpText;
+    bool m_active;
 };
 //END class VariableItem
-
 
 //
 // DERIVE A CLASS FOR EACH TYPE
@@ -67,131 +66,122 @@ private:
 class VariableIntItem : public VariableItem
 {
 public:
-  VariableIntItem(const QString& variable, int value);
+    VariableIntItem(const QString &variable, int value);
 
-  int value() const;
-  void setValue(int newValue);
-  void setRange(int minValue, int maxValue);
-  int minValue() const;
-  int maxValue() const;
+    int value() const;
+    void setValue(int newValue);
+    void setRange(int minValue, int maxValue);
+    int minValue() const;
+    int maxValue() const;
 
 public:
-  virtual void setValueByString(const QString& value);
-  virtual QString valueAsString() const;
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value);
+    virtual QString valueAsString() const;
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  int m_value;
-  int m_minValue;
-  int m_maxValue;
+    int m_value;
+    int m_minValue;
+    int m_maxValue;
 
 };
 //END class VariableIntItem
-
 
 //BEGIN class VariableStringListItem
 class VariableStringListItem : public VariableItem
 {
 public:
-  VariableStringListItem(const QString& variable, const QStringList& slist, const QString& value);
+    VariableStringListItem(const QString &variable, const QStringList &slist, const QString &value);
 
-  QStringList stringList() const;
+    QStringList stringList() const;
 
-  QString value() const;
-  void setValue(const QString& newValue);
+    QString value() const;
+    void setValue(const QString &newValue);
 
 public:
-  virtual void setValueByString(const QString& value);
-  virtual QString valueAsString() const;
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value);
+    virtual QString valueAsString() const;
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  QStringList m_list;
-  QString m_value;
+    QStringList m_list;
+    QString m_value;
 };
 //END class VariableStringListItem
-
-
 
 //BEGIN class VariableBoolItem
 class VariableBoolItem : public VariableItem
 {
 public:
-  VariableBoolItem(const QString& variable, bool value);
+    VariableBoolItem(const QString &variable, bool value);
 
-  bool value() const;
-  void setValue(bool enabled);
+    bool value() const;
+    void setValue(bool enabled);
 
 public:
-  virtual void setValueByString(const QString& value);
-  virtual QString valueAsString() const;
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value);
+    virtual QString valueAsString() const;
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  bool m_value;
+    bool m_value;
 };
 //END class VariableBoolItem
-
-
 
 //BEGIN class VariableColorItem
 class VariableColorItem : public VariableItem
 {
 public:
-  VariableColorItem(const QString& variable, const QColor& value);
+    VariableColorItem(const QString &variable, const QColor &value);
 
-  QColor value() const;
-  void setValue(const QColor& color);
+    QColor value() const;
+    void setValue(const QColor &color);
 
 public:
-  virtual void setValueByString(const QString& value);
-  virtual QString valueAsString() const;
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value);
+    virtual QString valueAsString() const;
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  QColor m_value;
+    QColor m_value;
 };
 //END class VariableColorItem
-
-
 
 //BEGIN class VariableFontItem
 class VariableFontItem : public VariableItem
 {
 public:
-  VariableFontItem(const QString& variable, const QFont& value);
+    VariableFontItem(const QString &variable, const QFont &value);
 
-  QFont value() const;
-  void setValue(const QFont& value);
+    QFont value() const;
+    void setValue(const QFont &value);
 
 public:
-  virtual void setValueByString(const QString& value);
-  virtual QString valueAsString() const;
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value);
+    virtual QString valueAsString() const;
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  QFont m_value;
+    QFont m_value;
 };
 //END class VariableFontItem
-
-
 
 //BEGIN class VariableStringItem
 class VariableStringItem : public VariableItem
 {
 public:
-  VariableStringItem(const QString &variable, const QString &value);
+    VariableStringItem(const QString &variable, const QString &value);
 
-  QString value() const;
-  void setValue(const QString& value);
+    QString value() const;
+    void setValue(const QString &value);
 
 public:
-  virtual void setValueByString(const QString& value); // Same as setValue() in this case, implemented for uniformity
-  virtual QString valueAsString() const;               // Same as value() in this case, implemented for uniformity
-  virtual VariableEditor* createEditor(QWidget* parent);
+    virtual void setValueByString(const QString &value); // Same as setValue() in this case, implemented for uniformity
+    virtual QString valueAsString() const;               // Same as value() in this case, implemented for uniformity
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  QString m_value;
+    QString m_value;
 };
 
 //END class VariableStringItem
@@ -200,18 +190,18 @@ private:
 class VariableSpellCheckItem : public VariableItem
 {
 public:
-  VariableSpellCheckItem(const QString &variable, const QString &value);
+    VariableSpellCheckItem(const QString &variable, const QString &value);
 
-  QString value() const;
-  void setValue(const QString& value);
+    QString value() const;
+    void setValue(const QString &value);
 
 public:
-  virtual void setValueByString(const QString &value);  // Same as setValue() in this case, implemented for uniformity
-  virtual QString valueAsString() const;                // Same as value() in this case, implemented for uniformity
-  virtual VariableEditor* createEditor(QWidget *parent);
+    virtual void setValueByString(const QString &value);  // Same as setValue() in this case, implemented for uniformity
+    virtual QString valueAsString() const;                // Same as value() in this case, implemented for uniformity
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  QString m_value;
+    QString m_value;
 };
 //END class VariableSpellCheckItem
 
@@ -219,21 +209,20 @@ private:
 class VariableRemoveSpacesItem : public VariableItem
 {
 public:
-  VariableRemoveSpacesItem(const QString &variable, int value);
+    VariableRemoveSpacesItem(const QString &variable, int value);
 
-  int value() const;
-  void setValue(int value);
+    int value() const;
+    void setValue(int value);
 
 public:
-  virtual void setValueByString(const QString &value);  // Same as setValue() in this case, implemented for uniformity
-  virtual QString valueAsString() const;                // Same as value() in this case, implemented for uniformity
-  virtual VariableEditor* createEditor(QWidget *parent);
+    virtual void setValueByString(const QString &value);  // Same as setValue() in this case, implemented for uniformity
+    virtual QString valueAsString() const;                // Same as value() in this case, implemented for uniformity
+    virtual VariableEditor *createEditor(QWidget *parent);
 
 private:
-  int m_value;
+    int m_value;
 };
 //END class VariableRemoveSpacesItem
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

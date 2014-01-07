@@ -39,7 +39,7 @@ class Cursor;
  */
 class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInterface, but for consistency with the other classes it is not (for the 3.x release series)
 {
-  public:
+public:
     TemplateInterface();
     virtual ~TemplateInterface();
 
@@ -53,9 +53,9 @@ class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInt
      * \return true if all macros was successfully expanded
      * \see insertTemplateText for a list of supported macros
      */
-    static bool expandMacros( QMap<QString, QString> &initialValues, QWidget *parentWindow );
+    static bool expandMacros(QMap<QString, QString> &initialValues, QWidget *parentWindow);
 
-  public:
+public:
 
     /**
      * Inserts an interactive ediable template text at line "line", column "col".
@@ -73,7 +73,7 @@ class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInt
      * For all others the initial value is the name of the placeholder.
      *
      * Placeholder names may only consist of a-zA-Z0-9_
-     * 
+     *
      * @since 4.5
      * if a placeholder is a mirror, the place holder name may contain additional information
      * ${something/regexp/replacement/} takes the value of the placeholder something and replaces the match with the replacement before inserting the mirrored value
@@ -83,25 +83,25 @@ class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInt
      *                          The syntax of the regexp and the replacement are the ones from kateparts regexp search/replace
      * Possible flags: g and i. Those flags can be combined too
      * If a literal / should appear in the regexp, it has to be escaped \/,
-     * literal \ has to be escaped too 
-     * 
+     * literal \ has to be escaped too
+     *
      * If you have mirrored ranges and want another occurrence than the first one as the master
      * you can add @ directly after the placeholder name.
-     * 
+     *
      * The interface2 version invokes the function specified by functionName within the script specified
      * by the scriptToken, if a placeholder is specified with backticks like
      * ${placeholder`functionName`}
-     * The function has a global environment containing "view", "document" and "debug", at 
+     * The function has a global environment containing "view", "document" and "debug", at
      * least in the katepart implementation. The function invocation is not allowed to be mixed with other replacements
-     * 
+     *
      * If a / or ` replacement is done on a master the initial value is modified and therefor
      * also all mirrored placeholders are affected too, later on the replacement is not done anymore on master ranges
-     * 
+     *
      *
      * The parameters for invoked javascript functions will be the following:
      * value of the master (or initial value), //to be done: placeholder name, small wrapper around the template handler (to do more sophisticated things, like adding additional placehlder points, aattaching custom properties for state keeping, ....) you tell
      *
-     * 
+     *
      * Specification of initial values
      * You can specify initial values which are different from the placeholder name
      * this is done via, this makes only sense for $ placeholders, not for %
@@ -110,8 +110,8 @@ class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInt
      * after the first  colon, everything is interpreted as default value, } in
      * the default value have to be escaped (backslashes before } have to be escaped themselves) and regexp searches are ignored. The : has to be
      * directly after the placeholder name or after an optional @ symbol.
-     * 
-     * 
+     *
+     *
      * Common placeholders and values are
      *
      * - index: "i"
@@ -139,7 +139,7 @@ class KTEXTEDITOR_EXPORT TemplateInterface //should be named AbstractTemplateInt
      * should be layouted by the indenter.
      * @deprecated
      */
-    bool insertTemplateText ( const Cursor &insertPosition, const QString &templateString, const QMap<QString,QString> &initialValues);
+    bool insertTemplateText(const Cursor &insertPosition, const QString &templateString, const QMap<QString, QString> &initialValues);
 
 protected:
     /**
@@ -150,21 +150,21 @@ protected:
      * \return true if any text was inserted.
      * @deprecated
      */
-    virtual bool insertTemplateTextImplementation ( const Cursor &insertPosition, const QString &templateString, const QMap<QString,QString> &initialValues)=0;
+    virtual bool insertTemplateTextImplementation(const Cursor &insertPosition, const QString &templateString, const QMap<QString, QString> &initialValues) = 0;
 
     /**
      * DO NOT USE !!!! THIS IS USED INTERNALLY by the interface only !!!!!!
      * Behaviour might change !!!!!!!
      */
-    bool KTE_INTERNAL_setupIntialValues(const QString &templateString, QMap<QString,QString> *initialValues);
-    
-  private:
-    class TemplateInterfacePrivate* const d;
+    bool KTE_INTERNAL_setupIntialValues(const QString &templateString, QMap<QString, QString> *initialValues);
+
+private:
+    class TemplateInterfacePrivate *const d;
 };
 
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::TemplateInterface,
-"org.kde.KTextEditor.TemplateInterface")
+                    "org.kde.KTextEditor.TemplateInterface")
 
 #endif

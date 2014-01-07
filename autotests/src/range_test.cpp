@@ -31,16 +31,17 @@
 
 QTEST_MAIN(RangeTest)
 
-namespace QTest {
-  template<>
-  char *toString(const KTextEditor::Range &range)
-  {
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Range &range)
+{
     QByteArray ba = "Range[";
     ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + ", ";
     ba += QByteArray::number(range.end().line())   + ", " + QByteArray::number(range.end().column());
     ba += "]";
     return qstrdup(ba.data());
-  }
+}
 }
 
 #define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toAscii().data()))
@@ -54,98 +55,98 @@ RangeTest::~RangeTest()
 {
 }
 
-void RangeTest::rangeCheck ( KTextEditor::Range & valid )
+void RangeTest::rangeCheck(KTextEditor::Range &valid)
 {
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
 
-  KTextEditor::Cursor before(0,1), start(0,2), end(1,4), after(1,10);
+    KTextEditor::Cursor before(0, 1), start(0, 2), end(1, 4), after(1, 10);
 
-  KTextEditor::Range result(start, end);
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    KTextEditor::Range result(start, end);
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
 
-  valid.setRange(start, end);
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
-  QCOMPARE(valid, result);
+    valid.setRange(start, end);
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    QCOMPARE(valid, result);
 
-  valid.setRange(end, start);
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
-  QCOMPARE(valid, result);
+    valid.setRange(end, start);
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    QCOMPARE(valid, result);
 
-  valid.setStart (after);
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
-  QCOMPARE(valid, KTextEditor::Range(after, after));
+    valid.setStart(after);
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    QCOMPARE(valid, KTextEditor::Range(after, after));
 
-  valid = result;
-  QCOMPARE(valid, result);
+    valid = result;
+    QCOMPARE(valid, result);
 
-  valid.setEnd (before);
-  QVERIFY(valid.isValid() && valid.start() <= valid.end());
-  QCOMPARE(valid, KTextEditor::Range(before, before));
+    valid.setEnd(before);
+    QVERIFY(valid.isValid() && valid.start() <= valid.end());
+    QCOMPARE(valid, KTextEditor::Range(before, before));
 }
 
 void RangeTest::testTextEditorRange()
 {
-  // test simple range
-  KTextEditor::Range range;
-  rangeCheck (range);
+    // test simple range
+    KTextEditor::Range range;
+    rangeCheck(range);
 }
 
 void RangeTest::testTextRange()
 {
-  // test text range
-  KateDocument doc (false, false, false);
-  KTextEditor::MovingRange *complexRange = doc.newMovingRange (KTextEditor::Range());
-  KTextEditor::Range range = *complexRange;
-  rangeCheck (range);
-  delete complexRange;
+    // test text range
+    KateDocument doc(false, false, false);
+    KTextEditor::MovingRange *complexRange = doc.newMovingRange(KTextEditor::Range());
+    KTextEditor::Range range = *complexRange;
+    rangeCheck(range);
+    delete complexRange;
 }
 
 void RangeTest::testInsertText()
 {
-  KateDocument doc (false, false, false);
+    KateDocument doc(false, false, false);
 
-  // Multi-line insert
-  KTextEditor::MovingCursor* cursor1 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::StayOnInsert);
-  KTextEditor::MovingCursor* cursor2 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::MoveOnInsert);
+    // Multi-line insert
+    KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::StayOnInsert);
+    KTextEditor::MovingCursor *cursor2 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::MoveOnInsert);
 
-  doc.insertText(KTextEditor::Cursor(), QLatin1String("Test Text\nMore Test Text"));
-  QCOMPARE(doc.documentEnd(), KTextEditor::Cursor(1,14));
+    doc.insertText(KTextEditor::Cursor(), QLatin1String("Test Text\nMore Test Text"));
+    QCOMPARE(doc.documentEnd(), KTextEditor::Cursor(1, 14));
 
-  QString text = doc.text(KTextEditor::Range(1,0,1,14));
-  QCOMPARE(text, QLatin1String("More Test Text"));
+    QString text = doc.text(KTextEditor::Range(1, 0, 1, 14));
+    QCOMPARE(text, QLatin1String("More Test Text"));
 
-  // Check cursors and ranges have moved properly
-  QCOMPARE(cursor1->toCursor(), KTextEditor::Cursor(0,0));
-  QCOMPARE(cursor2->toCursor(), KTextEditor::Cursor(1,14));
+    // Check cursors and ranges have moved properly
+    QCOMPARE(cursor1->toCursor(), KTextEditor::Cursor(0, 0));
+    QCOMPARE(cursor2->toCursor(), KTextEditor::Cursor(1, 14));
 
-  KTextEditor::Cursor cursor3 = doc.endOfLine(1);
+    KTextEditor::Cursor cursor3 = doc.endOfLine(1);
 
-  // Set up a few more lines
-  doc.insertText(*cursor2, QLatin1String("\nEven More Test Text"));
-  QCOMPARE(doc.documentEnd(), KTextEditor::Cursor(2,19));
-  QCOMPARE(cursor3, doc.endOfLine(1));
+    // Set up a few more lines
+    doc.insertText(*cursor2, QLatin1String("\nEven More Test Text"));
+    QCOMPARE(doc.documentEnd(), KTextEditor::Cursor(2, 19));
+    QCOMPARE(cursor3, doc.endOfLine(1));
 }
 
 void RangeTest::testCornerCaseInsertion()
 {
-  KateDocument doc (false, false, false);
+    KateDocument doc(false, false, false);
 
-  // lock first revision
-  doc.lockRevision (0);
+    // lock first revision
+    doc.lockRevision(0);
 
-  KTextEditor::MovingRange* rangeEdit = doc.newMovingRange(KTextEditor::Range(0,0,0,0));
-  QCOMPARE(rangeEdit->toRange(), KTextEditor::Range(0,0,0,0));
+    KTextEditor::MovingRange *rangeEdit = doc.newMovingRange(KTextEditor::Range(0, 0, 0, 0));
+    QCOMPARE(rangeEdit->toRange(), KTextEditor::Range(0, 0, 0, 0));
 
-  doc.insertText(KTextEditor::Cursor(0,0), QLatin1String("\n"));
-  QCOMPARE(rangeEdit->toRange(), KTextEditor::Range(1,0,1,0));
+    doc.insertText(KTextEditor::Cursor(0, 0), QLatin1String("\n"));
+    QCOMPARE(rangeEdit->toRange(), KTextEditor::Range(1, 0, 1, 0));
 
-  // test translate
-  KTextEditor::Range translateTest (0,0,0,0);
-  doc.transformRange (translateTest, KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty, 0);
-  QCOMPARE(translateTest, KTextEditor::Range(1,0,1,0));
-  
-  // test translate reverse
-  KTextEditor::Range reverseTranslateTest (1,0,1,0);
-  doc.transformRange (reverseTranslateTest, KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty, -1, 0);
-  QCOMPARE(reverseTranslateTest, KTextEditor::Range(0,0,0,0));
+    // test translate
+    KTextEditor::Range translateTest(0, 0, 0, 0);
+    doc.transformRange(translateTest, KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty, 0);
+    QCOMPARE(translateTest, KTextEditor::Range(1, 0, 1, 0));
+
+    // test translate reverse
+    KTextEditor::Range reverseTranslateTest(1, 0, 1, 0);
+    doc.transformRange(reverseTranslateTest, KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty, -1, 0);
+    QCOMPARE(reverseTranslateTest, KTextEditor::Range(0, 0, 0, 0));
 }

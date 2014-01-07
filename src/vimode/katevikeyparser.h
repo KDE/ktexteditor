@@ -37,31 +37,37 @@ class QKeyEvent;
 class KTEXTEDITOR_EXPORT KateViKeyParser
 {
 private:
-  KateViKeyParser();
+    KateViKeyParser();
 
 public:
-  static KateViKeyParser* self();
-  ~KateViKeyParser() { m_instance = NULL; }
+    static KateViKeyParser *self();
+    ~KateViKeyParser()
+    {
+        m_instance = NULL;
+    }
 
-  const QString encodeKeySequence( const QString &keys ) const;
-  const QString decodeKeySequence( const QString &keys ) const;
-  QString qt2vi( int key ) const;
-  int vi2qt( const QString &keypress ) const;
-  const QChar KeyEventToQChar(const QKeyEvent &keyEvent);
+    const QString encodeKeySequence(const QString &keys) const;
+    const QString decodeKeySequence(const QString &keys) const;
+    QString qt2vi(int key) const;
+    int vi2qt(const QString &keypress) const;
+    const QChar KeyEventToQChar(const QKeyEvent &keyEvent);
 
-  void setAltGrStatus( bool active ) { m_altGrPressed = active; }
+    void setAltGrStatus(bool active)
+    {
+        m_altGrPressed = active;
+    }
 
 private:
-  void initKeyTables();
+    void initKeyTables();
 
-  QHash<int, QString> *m_qt2katevi;
-  QHash<QString, int> *m_katevi2qt;
-  QHash<QString, int> *m_nameToKeyCode;
-  QHash<int, QString> *m_keyCodeToName;
+    QHash<int, QString> *m_qt2katevi;
+    QHash<QString, int> *m_katevi2qt;
+    QHash<QString, int> *m_nameToKeyCode;
+    QHash<int, QString> *m_keyCodeToName;
 
-  bool m_altGrPressed;
+    bool m_altGrPressed;
 
-  static KateViKeyParser *m_instance;
+    static KateViKeyParser *m_instance;
 };
 
 #endif

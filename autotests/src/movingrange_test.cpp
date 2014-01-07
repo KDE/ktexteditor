@@ -32,76 +32,105 @@ using namespace KTextEditor;
 
 QTEST_MAIN(MovingRangeTest)
 
-namespace QTest {
-    template<>
-    char *toString(const KTextEditor::Cursor &cursor)
-    {
-        QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-        + ", " + QByteArray::number(cursor.column()) + "]";
-        return qstrdup(ba.data());
-    }
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
+{
+    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
+                    + ", " + QByteArray::number(cursor.column()) + "]";
+    return qstrdup(ba.data());
 }
-
+}
 
 class RangeFeedback : public MovingRangeFeedback
 {
-  public:
-    RangeFeedback() : MovingRangeFeedback() { reset(); }
-
-    virtual void rangeEmpty (MovingRange* /*range*/) {
-      m_rangeEmptyCalled = true;
+public:
+    RangeFeedback() : MovingRangeFeedback()
+    {
+        reset();
     }
 
-    virtual void rangeInvalid (MovingRange* /*range*/) {
-      m_rangeInvalidCalled = true;
+    virtual void rangeEmpty(MovingRange * /*range*/)
+    {
+        m_rangeEmptyCalled = true;
     }
 
-    virtual void mouseEnteredRange (MovingRange* /*range*/, View* /*view*/) {
-      m_mouseEnteredRangeCalled = true;
+    virtual void rangeInvalid(MovingRange * /*range*/)
+    {
+        m_rangeInvalidCalled = true;
     }
 
-    virtual void mouseExitedRange (MovingRange* /*range*/, View* /*view*/) {
-      m_mouseExitedRangeCalled = true;
+    virtual void mouseEnteredRange(MovingRange * /*range*/, View * /*view*/)
+    {
+        m_mouseEnteredRangeCalled = true;
     }
 
-    virtual void caretEnteredRange (MovingRange* /*range*/, View* /*view*/) {
-      m_caretEnteredRangeCalled = true;
+    virtual void mouseExitedRange(MovingRange * /*range*/, View * /*view*/)
+    {
+        m_mouseExitedRangeCalled = true;
     }
 
-    virtual void caretExitedRange (MovingRange* /*range*/, View* /*view*/) {
-      m_caretExitedRangeCalled = true;
-    }
-    
-  //
-  // Test functions to reset feedback watcher
-  //
-  public:
-    void reset() {
-      m_rangeEmptyCalled = false;
-      m_rangeInvalidCalled = false;
-      m_mouseEnteredRangeCalled = false;
-      m_mouseExitedRangeCalled = false;
-      m_caretEnteredRangeCalled = false;
-      m_caretExitedRangeCalled = false;
-    }
-    
-    void verifyReset() {
-      QVERIFY(!m_rangeEmptyCalled);
-      QVERIFY(!m_rangeInvalidCalled);
-      QVERIFY(!m_mouseEnteredRangeCalled);
-      QVERIFY(!m_mouseExitedRangeCalled);
-      QVERIFY(!m_caretEnteredRangeCalled);
-      QVERIFY(!m_caretExitedRangeCalled);
+    virtual void caretEnteredRange(MovingRange * /*range*/, View * /*view*/)
+    {
+        m_caretEnteredRangeCalled = true;
     }
 
-    bool rangeEmptyCalled() const { return m_rangeEmptyCalled; }
-    bool rangeInvalidCalled() const { return m_rangeInvalidCalled; }
-    bool mouseEnteredRangeCalled() const { return m_mouseEnteredRangeCalled; }
-    bool mouseExitedRangeCalled() const { return m_mouseExitedRangeCalled; }
-    bool caretEnteredRangeCalled() const { return m_caretEnteredRangeCalled; }
-    bool caretExitedRangeCalled() const { return m_caretExitedRangeCalled; }
+    virtual void caretExitedRange(MovingRange * /*range*/, View * /*view*/)
+    {
+        m_caretExitedRangeCalled = true;
+    }
 
-  private:
+    //
+    // Test functions to reset feedback watcher
+    //
+public:
+    void reset()
+    {
+        m_rangeEmptyCalled = false;
+        m_rangeInvalidCalled = false;
+        m_mouseEnteredRangeCalled = false;
+        m_mouseExitedRangeCalled = false;
+        m_caretEnteredRangeCalled = false;
+        m_caretExitedRangeCalled = false;
+    }
+
+    void verifyReset()
+    {
+        QVERIFY(!m_rangeEmptyCalled);
+        QVERIFY(!m_rangeInvalidCalled);
+        QVERIFY(!m_mouseEnteredRangeCalled);
+        QVERIFY(!m_mouseExitedRangeCalled);
+        QVERIFY(!m_caretEnteredRangeCalled);
+        QVERIFY(!m_caretExitedRangeCalled);
+    }
+
+    bool rangeEmptyCalled() const
+    {
+        return m_rangeEmptyCalled;
+    }
+    bool rangeInvalidCalled() const
+    {
+        return m_rangeInvalidCalled;
+    }
+    bool mouseEnteredRangeCalled() const
+    {
+        return m_mouseEnteredRangeCalled;
+    }
+    bool mouseExitedRangeCalled() const
+    {
+        return m_mouseExitedRangeCalled;
+    }
+    bool caretEnteredRangeCalled() const
+    {
+        return m_caretEnteredRangeCalled;
+    }
+    bool caretExitedRangeCalled() const
+    {
+        return m_caretExitedRangeCalled;
+    }
+
+private:
     bool m_rangeEmptyCalled;
     bool m_rangeInvalidCalled;
     bool m_mouseEnteredRangeCalled;
@@ -110,9 +139,8 @@ class RangeFeedback : public MovingRangeFeedback
     bool m_caretExitedRangeCalled;
 };
 
-
 MovingRangeTest::MovingRangeTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -124,137 +152,137 @@ MovingRangeTest::~MovingRangeTest()
 // - RangeFeedback::rangeEmpty
 void MovingRangeTest::testFeedbackEmptyRange()
 {
-  KateDocument doc (false, false, false);
-  // the range created below will span the 'x' characters
-  QString text("..xxxx\n"
-               "xxxx..");
-  doc.setText(text);
+    KateDocument doc(false, false, false);
+    // the range created below will span the 'x' characters
+    QString text("..xxxx\n"
+                 "xxxx..");
+    doc.setText(text);
 
-  // create range feedback
-  RangeFeedback rf;
+    // create range feedback
+    RangeFeedback rf;
 
-  // allow empty
-  MovingRange* range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                          KTextEditor::MovingRange::DoNotExpand,
-                                          KTextEditor::MovingRange::AllowEmpty);
-  range->setFeedback(&rf);
-  rf.verifyReset();
+    // allow empty
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                            KTextEditor::MovingRange::DoNotExpand,
+                                            KTextEditor::MovingRange::AllowEmpty);
+    range->setFeedback(&rf);
+    rf.verifyReset();
 
-  // remove exact range
-  doc.removeText(range->toRange());
-  QVERIFY(rf.rangeEmptyCalled());
-  QVERIFY(!rf.rangeInvalidCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // remove exact range
+    doc.removeText(range->toRange());
+    QVERIFY(rf.rangeEmptyCalled());
+    QVERIFY(!rf.rangeInvalidCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 
-  // clear document: should call rangeInvalid
-  rf.reset();
-  rf.verifyReset();
-  doc.clear();
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // clear document: should call rangeInvalid
+    rf.reset();
+    rf.verifyReset();
+    doc.clear();
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 
-  // setText: should behave just like clear document: call rangeInvalid again
-  doc.setText(text);
-  range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
-  rf.reset();
-  rf.verifyReset();
-  doc.setText("--yyyy\nyyyy--");
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // setText: should behave just like clear document: call rangeInvalid again
+    doc.setText(text);
+    range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
+    rf.reset();
+    rf.verifyReset();
+    doc.setText("--yyyy\nyyyy--");
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 
-  // now remove entire document range. In this case, emptyRange should be called
-  // instead of rangeInvalid
-  doc.setText(text);
-  range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
-  rf.reset();
-  rf.verifyReset();
-  doc.removeText(doc.documentRange());
-  QVERIFY(rf.rangeEmptyCalled());
-  QVERIFY(!rf.rangeInvalidCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // now remove entire document range. In this case, emptyRange should be called
+    // instead of rangeInvalid
+    doc.setText(text);
+    range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
+    rf.reset();
+    rf.verifyReset();
+    doc.removeText(doc.documentRange());
+    QVERIFY(rf.rangeEmptyCalled());
+    QVERIFY(!rf.rangeInvalidCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 }
 
 // tests:
 // - RangeFeedback::rangeInvalid
 void MovingRangeTest::testFeedbackInvalidRange()
 {
-  KateDocument doc (false, false, false);
-  // the range created below will span the 'x' characters
-  QString text("..xxxx\n"
-               "xxxx..");
-  doc.setText(text);
+    KateDocument doc(false, false, false);
+    // the range created below will span the 'x' characters
+    QString text("..xxxx\n"
+                 "xxxx..");
+    doc.setText(text);
 
-  // create range feedback
-  RangeFeedback rf;
+    // create range feedback
+    RangeFeedback rf;
 
-  // allow empty
-  MovingRange* range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                          KTextEditor::MovingRange::DoNotExpand,
-                                          KTextEditor::MovingRange::InvalidateIfEmpty);
-  range->setFeedback(&rf);
-  rf.verifyReset();
-  
-  // remove exact range
-  doc.removeText(range->toRange());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // allow empty
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                            KTextEditor::MovingRange::DoNotExpand,
+                                            KTextEditor::MovingRange::InvalidateIfEmpty);
+    range->setFeedback(&rf);
+    rf.verifyReset();
 
-  // clear document: should call rangeInvalid again
-  doc.setText(text);
-  range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
-  rf.reset();
-  rf.verifyReset();
-  doc.clear();
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // remove exact range
+    doc.removeText(range->toRange());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 
-  // setText: should behave just like clear document: call rangeInvalid again
-  doc.setText(text);
-  range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
-  rf.reset();
-  rf.verifyReset();
-  doc.setText("--yyyy\nyyyy--");
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // clear document: should call rangeInvalid again
+    doc.setText(text);
+    range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
+    rf.reset();
+    rf.verifyReset();
+    doc.clear();
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 
-  // now remove entire document range. Call rangeInvalid again
-  doc.setText(text);
-  range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
-  rf.reset();
-  rf.verifyReset();
-  doc.removeText(doc.documentRange());
-  QVERIFY(rf.rangeInvalidCalled());
-  QVERIFY(!rf.rangeEmptyCalled());
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
-  QVERIFY(!rf.caretEnteredRangeCalled());
-  QVERIFY(!rf.caretExitedRangeCalled());
+    // setText: should behave just like clear document: call rangeInvalid again
+    doc.setText(text);
+    range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
+    rf.reset();
+    rf.verifyReset();
+    doc.setText("--yyyy\nyyyy--");
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
+
+    // now remove entire document range. Call rangeInvalid again
+    doc.setText(text);
+    range->setRange(Range(Cursor(0, 2), Cursor(1, 4)));
+    rf.reset();
+    rf.verifyReset();
+    doc.removeText(doc.documentRange());
+    QVERIFY(rf.rangeInvalidCalled());
+    QVERIFY(!rf.rangeEmptyCalled());
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
+    QVERIFY(!rf.caretEnteredRangeCalled());
+    QVERIFY(!rf.caretExitedRangeCalled());
 }
 
 // tests:
@@ -262,116 +290,115 @@ void MovingRangeTest::testFeedbackInvalidRange()
 // - RangeFeedback::caretExitedRange
 void MovingRangeTest::testFeedbackCaret()
 {
-  KateDocument doc (false, false, false);
-  // the range created below will span the 'x' characters
-  QString text("..xxxx\n"
-               "xxxx..");
-  doc.setText(text);
-  
-  KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateDocument doc(false, false, false);
+    // the range created below will span the 'x' characters
+    QString text("..xxxx\n"
+                 "xxxx..");
+    doc.setText(text);
 
-  // create range feedback
-  RangeFeedback rf;
+    KateView *view = static_cast<KateView *>(doc.createView(0));
 
-  // first test: with ExpandLeft | ExpandRight
-  {
-    view->setCursorPosition(Cursor(1, 6));
+    // create range feedback
+    RangeFeedback rf;
 
-    MovingRange* range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::ExpandLeft |
-                                            KTextEditor::MovingRange::ExpandRight,
-                                            KTextEditor::MovingRange::InvalidateIfEmpty);
-    rf.reset();
-    range->setFeedback(&rf);
-    rf.verifyReset();
+    // first test: with ExpandLeft | ExpandRight
+    {
+        view->setCursorPosition(Cursor(1, 6));
 
-    // left
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 5));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
-    
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 4));
-    QVERIFY(rf.caretEnteredRangeCalled()); // ExpandRight: include cursor already now
-    QVERIFY(!rf.caretExitedRangeCalled());
+        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                                KTextEditor::MovingRange::ExpandLeft |
+                                                KTextEditor::MovingRange::ExpandRight,
+                                                KTextEditor::MovingRange::InvalidateIfEmpty);
+        rf.reset();
+        range->setFeedback(&rf);
+        rf.verifyReset();
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 3));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
+        // left
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 5));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
 
-    rf.reset();
-    view->up();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 4));
+        QVERIFY(rf.caretEnteredRangeCalled()); // ExpandRight: include cursor already now
+        QVERIFY(!rf.caretExitedRangeCalled());
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 2));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 3));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 1)); // ExpandLeft: now we left it, not before
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(rf.caretExitedRangeCalled());
-    
-    delete range;
-  }
-  
-  
-  // second test: with DoNotExpand
-  {
-    view->setCursorPosition(Cursor(1, 6));
+        rf.reset();
+        view->up();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
 
-    MovingRange* range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::DoNotExpand,
-                                            KTextEditor::MovingRange::InvalidateIfEmpty);
-    rf.reset();
-    range->setFeedback(&rf);
-    rf.verifyReset();
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 2));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
 
-    // left
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 5));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
-    
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 4));
-    QVERIFY(!rf.caretEnteredRangeCalled()); // DoNotExpand: does not include cursor
-    QVERIFY(!rf.caretExitedRangeCalled());
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 1)); // ExpandLeft: now we left it, not before
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(rf.caretExitedRangeCalled());
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(1, 3));
-    QVERIFY(rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
+        delete range;
+    }
 
-    rf.reset();
-    view->up();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 3));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
+    // second test: with DoNotExpand
+    {
+        view->setCursorPosition(Cursor(1, 6));
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 2));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(rf.caretExitedRangeCalled()); // DoNotExpand: that's why we leave already now
+        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                                KTextEditor::MovingRange::DoNotExpand,
+                                                KTextEditor::MovingRange::InvalidateIfEmpty);
+        rf.reset();
+        range->setFeedback(&rf);
+        rf.verifyReset();
 
-    rf.reset();
-    view->cursorLeft();
-    QCOMPARE(view->cursorPosition(), Cursor(0, 1));
-    QVERIFY(!rf.caretEnteredRangeCalled());
-    QVERIFY(!rf.caretExitedRangeCalled());
-    
-    delete range;
-  }
+        // left
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 5));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
+
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 4));
+        QVERIFY(!rf.caretEnteredRangeCalled()); // DoNotExpand: does not include cursor
+        QVERIFY(!rf.caretExitedRangeCalled());
+
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(1, 3));
+        QVERIFY(rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
+
+        rf.reset();
+        view->up();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 3));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
+
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 2));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(rf.caretExitedRangeCalled()); // DoNotExpand: that's why we leave already now
+
+        rf.reset();
+        view->cursorLeft();
+        QCOMPARE(view->cursorPosition(), Cursor(0, 1));
+        QVERIFY(!rf.caretEnteredRangeCalled());
+        QVERIFY(!rf.caretExitedRangeCalled());
+
+        delete range;
+    }
 }
 
 // tests:
@@ -379,47 +406,47 @@ void MovingRangeTest::testFeedbackCaret()
 // - RangeFeedback::mouseExitedRange
 void MovingRangeTest::testFeedbackMouse()
 {
-  KateDocument doc (false, false, false);
-  // the range created below will span the 'x' characters
-  QString text("..xxxx\n"
-               "xxxx..");
-  doc.setText(text);
+    KateDocument doc(false, false, false);
+    // the range created below will span the 'x' characters
+    QString text("..xxxx\n"
+                 "xxxx..");
+    doc.setText(text);
 
-  KateView* view = static_cast<KateView*>(doc.createView(0));
-  view->setCursorPosition(Cursor(1, 6));
-  view->show();
-  view->resize(200, 100);
+    KateView *view = static_cast<KateView *>(doc.createView(0));
+    view->setCursorPosition(Cursor(1, 6));
+    view->show();
+    view->resize(200, 100);
 
-  // create range feedback
-  RangeFeedback rf;
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
+    // create range feedback
+    RangeFeedback rf;
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
 
-  // allow empty
-  MovingRange* range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                          KTextEditor::MovingRange::ExpandLeft |
-                                          KTextEditor::MovingRange::ExpandRight,
-                                          KTextEditor::MovingRange::InvalidateIfEmpty);
-  range->setFeedback(&rf);
-  rf.verifyReset();
+    // allow empty
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
+                                            KTextEditor::MovingRange::ExpandLeft |
+                                            KTextEditor::MovingRange::ExpandRight,
+                                            KTextEditor::MovingRange::InvalidateIfEmpty);
+    range->setFeedback(&rf);
+    rf.verifyReset();
 
-  // left (nothing)
-  QTest::mouseMove(view, view->cursorToCoordinate(Cursor(0, 0)) + QPoint(0, 5));
-  QTest::qWait(200); // process mouse events. do not move mouse manually
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
+    // left (nothing)
+    QTest::mouseMove(view, view->cursorToCoordinate(Cursor(0, 0)) + QPoint(0, 5));
+    QTest::qWait(200); // process mouse events. do not move mouse manually
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
 
-  // middle (enter)
-  rf.reset();
-  QTest::mouseMove(view, view->cursorToCoordinate(Cursor(0, 3)) + QPoint(0, 5));
-  QTest::qWait(200); // process mouse events. do not move mouse manually
-  QVERIFY(rf.mouseEnteredRangeCalled());
-  QVERIFY(!rf.mouseExitedRangeCalled());
+    // middle (enter)
+    rf.reset();
+    QTest::mouseMove(view, view->cursorToCoordinate(Cursor(0, 3)) + QPoint(0, 5));
+    QTest::qWait(200); // process mouse events. do not move mouse manually
+    QVERIFY(rf.mouseEnteredRangeCalled());
+    QVERIFY(!rf.mouseExitedRangeCalled());
 
-  // right (exit)
-  rf.reset();
-  QTest::mouseMove(view, view->cursorToCoordinate(Cursor(1, 6)) + QPoint(10, 5));
-  QTest::qWait(200); // process mouse events. do not move mouse manually
-  QVERIFY(!rf.mouseEnteredRangeCalled());
-  QVERIFY(rf.mouseExitedRangeCalled());
+    // right (exit)
+    rf.reset();
+    QTest::mouseMove(view, view->cursorToCoordinate(Cursor(1, 6)) + QPoint(10, 5));
+    QTest::qWait(200); // process mouse events. do not move mouse manually
+    QVERIFY(!rf.mouseEnteredRangeCalled());
+    QVERIFY(rf.mouseExitedRangeCalled());
 }

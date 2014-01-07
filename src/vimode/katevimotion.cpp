@@ -20,14 +20,14 @@
 
 #include "katevimotion.h"
 
-KateViMotion::KateViMotion( KateViNormalMode *parent, const QString &pattern,
-        KateViRange (KateViNormalMode::*commandMethod)(), unsigned int flags )
-  : KateViCommand( parent, pattern, 0, flags )
+KateViMotion::KateViMotion(KateViNormalMode *parent, const QString &pattern,
+                           KateViRange(KateViNormalMode::*commandMethod)(), unsigned int flags)
+    : KateViCommand(parent, pattern, 0, flags)
 {
-  m_ptr2commandMethod = commandMethod;
+    m_ptr2commandMethod = commandMethod;
 }
 
 KateViRange KateViMotion::execute() const
 {
-  return (m_parent->*m_ptr2commandMethod)();
+    return (m_parent->*m_ptr2commandMethod)();
 }

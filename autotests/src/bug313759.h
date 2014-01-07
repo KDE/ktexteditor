@@ -24,17 +24,17 @@
 
 class BugTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  BugTest();
-  ~BugTest();
+    BugTest();
+    ~BugTest();
 
 private Q_SLOTS:
-  void initTestCase();
-  void cleanupTestCase();
+    void initTestCase();
+    void cleanupTestCase();
 
-  void tryCrash();
+    void tryCrash();
 };
 
 #endif

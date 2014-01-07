@@ -31,14 +31,12 @@ KateMatch::KateMatch(KateDocument *document, KTextEditor::Search::SearchOptions 
     m_resultRanges.append(KTextEditor::Range::invalid());
 }
 
-
 KTextEditor::Range KateMatch::searchText(const KTextEditor::Range &range, const QString &pattern)
 {
     m_resultRanges = m_document->searchText(range, pattern, m_options);
 
     return m_resultRanges[0];
 }
-
 
 KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode, int replacementCounter)
 {
@@ -47,7 +45,7 @@ KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode
                                  m_options.testFlag(KTextEditor::Search::EscapeSequences);
 
     const QString finalReplacement = usePlaceholders ? buildReplacement(replacement, blockMode, replacementCounter)
-                                                     : replacement;
+                                     : replacement;
 
     // Track replacement operation
     KTextEditor::MovingRange *const afterReplace = m_document->newMovingRange(range(), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
@@ -61,29 +59,27 @@ KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode
     return result;
 }
 
-
 KTextEditor::Range KateMatch::range() const
 {
-    if (m_resultRanges.size() > 0)
+    if (m_resultRanges.size() > 0) {
         return m_resultRanges[0];
+    }
 
     return KTextEditor::Range::invalid();
 }
-
 
 bool KateMatch::isEmpty() const
 {
     return range().isEmpty();
 }
 
-
 bool KateMatch::isValid() const
 {
     return range().isValid();
 }
 
-
-QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, int replacementCounter) const {
+QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, int replacementCounter) const
+{
     QStringList capturedTexts;
     foreach (const KTextEditor::Range &captureRange, m_resultRanges) {
         // Copy capture content
@@ -93,5 +89,3 @@ QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, 
     return KateRegExpSearch::buildReplacement(replacement, capturedTexts, replacementCounter);
 }
 
-
-// kate: space-indent on; indent-width 4; replace-tabs on;

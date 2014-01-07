@@ -46,10 +46,11 @@ class KateViewInternal;
 
 class KateLineInfo;
 
-namespace KTextEditor {
-  class Command;
-  class AnnotationModel;
-  class MovingRange;
+namespace KTextEditor
+{
+class Command;
+class AnnotationModel;
+class MovingRange;
 }
 
 class QTimer;
@@ -64,45 +65,74 @@ class QVBoxLayout;
  */
 class KateScrollBar : public QScrollBar
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateScrollBar(Qt::Orientation orientation, class KateViewInternal *parent);
     QSize sizeHint() const;
 
-    inline bool showMarks() { return m_showMarks; }
-    inline void setShowMarks(bool b) { m_showMarks = b; update(); }
+    inline bool showMarks()
+    {
+        return m_showMarks;
+    }
+    inline void setShowMarks(bool b)
+    {
+        m_showMarks = b;
+        update();
+    }
 
-    inline bool showMiniMap() { return m_showMiniMap; }
+    inline bool showMiniMap()
+    {
+        return m_showMiniMap;
+    }
     void setShowMiniMap(bool b);
 
-    inline bool miniMapAll() { return m_miniMapAll; }
-    inline void setMiniMapAll(bool b) { m_miniMapAll = b; updateGeometry(); update(); }
+    inline bool miniMapAll()
+    {
+        return m_miniMapAll;
+    }
+    inline void setMiniMapAll(bool b)
+    {
+        m_miniMapAll = b;
+        updateGeometry();
+        update();
+    }
 
-    inline bool miniMapWidth() { return m_miniMapWidth; }
-    inline void setMiniMapWidth(int width) { m_miniMapWidth = width; updateGeometry(); update(); }
+    inline bool miniMapWidth()
+    {
+        return m_miniMapWidth;
+    }
+    inline void setMiniMapWidth(int width)
+    {
+        m_miniMapWidth = width;
+        updateGeometry();
+        update();
+    }
 
-    inline void queuePixmapUpdate() { m_updateTimer.start(); }
+    inline void queuePixmapUpdate()
+    {
+        m_updateTimer.start();
+    }
 
 Q_SIGNALS:
     void sliderMMBMoved(int value);
 
-  protected:
-    virtual void mousePressEvent(QMouseEvent* e);
-    virtual void mouseReleaseEvent(QMouseEvent* e);
-    virtual void mouseMoveEvent (QMouseEvent* e);
+protected:
+    virtual void mousePressEvent(QMouseEvent *e);
+    virtual void mouseReleaseEvent(QMouseEvent *e);
+    virtual void mouseMoveEvent(QMouseEvent *e);
     virtual void paintEvent(QPaintEvent *e);
     virtual void resizeEvent(QResizeEvent *);
-    virtual void sliderChange ( SliderChange change );
+    virtual void sliderChange(SliderChange change);
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void sliderMaybeMoved(int value);
     void marksChanged();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void updatePixmap();
 
-  private:
+private:
     void redrawMarks();
     void recomputeMarksPositions();
 
@@ -147,10 +177,10 @@ Q_SIGNALS:
 
 class KateIconBorder : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateIconBorder( KateViewInternal* internalView, QWidget *parent );
+public:
+    KateIconBorder(KateViewInternal *internalView, QWidget *parent);
     virtual ~KateIconBorder();
     // VERY IMPORTANT ;)
     virtual QSize sizeHint() const;
@@ -158,57 +188,84 @@ class KateIconBorder : public QWidget
     void updateFont();
     int lineNumberWidth() const;
 
-    void setIconBorderOn(       bool enable );
-    void setLineNumbersOn(      bool enable );
-    void setAnnotationBorderOn( bool enable );
-    void setDynWrapIndicators(int state );
-    int dynWrapIndicators()  const { return m_dynWrapIndicators; }
-    bool dynWrapIndicatorsOn() const { return m_dynWrapIndicatorsOn; }
-    void setFoldingMarkersOn( bool enable );
-    void toggleIconBorder()     { setIconBorderOn(     !iconBorderOn() );     }
-    void toggleLineNumbers()    { setLineNumbersOn(    !lineNumbersOn() );    }
-    void toggleFoldingMarkers() { setFoldingMarkersOn( !foldingMarkersOn() ); }
-    inline bool iconBorderOn()       const { return m_iconBorderOn;       }
-    inline bool lineNumbersOn()      const { return m_lineNumbersOn;      }
-    inline bool foldingMarkersOn()   const { return m_foldingMarkersOn;   }
-    inline bool annotationBorderOn() const { return m_annotationBorderOn; }
+    void setIconBorderOn(bool enable);
+    void setLineNumbersOn(bool enable);
+    void setAnnotationBorderOn(bool enable);
+    void setDynWrapIndicators(int state);
+    int dynWrapIndicators()  const
+    {
+        return m_dynWrapIndicators;
+    }
+    bool dynWrapIndicatorsOn() const
+    {
+        return m_dynWrapIndicatorsOn;
+    }
+    void setFoldingMarkersOn(bool enable);
+    void toggleIconBorder()
+    {
+        setIconBorderOn(!iconBorderOn());
+    }
+    void toggleLineNumbers()
+    {
+        setLineNumbersOn(!lineNumbersOn());
+    }
+    void toggleFoldingMarkers()
+    {
+        setFoldingMarkersOn(!foldingMarkersOn());
+    }
+    inline bool iconBorderOn()       const
+    {
+        return m_iconBorderOn;
+    }
+    inline bool lineNumbersOn()      const
+    {
+        return m_lineNumbersOn;
+    }
+    inline bool foldingMarkersOn()   const
+    {
+        return m_foldingMarkersOn;
+    }
+    inline bool annotationBorderOn() const
+    {
+        return m_annotationBorderOn;
+    }
 
     enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
-    BorderArea positionToArea( const QPoint& ) const;
+    BorderArea positionToArea(const QPoint &) const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void updateAnnotationBorderWidth();
-    void updateAnnotationLine( int line );
-    void annotationModelChanged( KTextEditor::AnnotationModel* oldmodel, KTextEditor::AnnotationModel* newmodel );
+    void updateAnnotationLine(int line);
+    void annotationModelChanged(KTextEditor::AnnotationModel *oldmodel, KTextEditor::AnnotationModel *newmodel);
 
-  private:
-    void paintEvent( QPaintEvent* );
-    void paintBorder (int x, int y, int width, int height);
+private:
+    void paintEvent(QPaintEvent *);
+    void paintBorder(int x, int y, int width, int height);
 
-    void mousePressEvent( QMouseEvent* );
-    void mouseMoveEvent( QMouseEvent* );
-    void mouseReleaseEvent( QMouseEvent* );
-    void mouseDoubleClickEvent( QMouseEvent* );
+    void mousePressEvent(QMouseEvent *);
+    void mouseMoveEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *);
+    void mouseDoubleClickEvent(QMouseEvent *);
     void leaveEvent(QEvent *event);
     void wheelEvent(QWheelEvent *e);
 
-    void showMarkMenu( uint line, const QPoint& pos );
+    void showMarkMenu(uint line, const QPoint &pos);
 
-    void showAnnotationTooltip( int line, const QPoint& pos );
+    void showAnnotationTooltip(int line, const QPoint &pos);
     void hideAnnotationTooltip();
     void removeAnnotationHovering();
-    void showAnnotationMenu( int line, const QPoint& pos);
-    int annotationLineWidth( int line );
+    void showAnnotationMenu(int line, const QPoint &pos);
+    int annotationLineWidth(int line);
 
     KateView *m_view;
     KateDocument *m_doc;
     KateViewInternal *m_viewInternal;
 
-    bool m_iconBorderOn:1;
-    bool m_lineNumbersOn:1;
-    bool m_foldingMarkersOn:1;
-    bool m_dynWrapIndicatorsOn:1;
-    bool m_annotationBorderOn:1;
+    bool m_iconBorderOn: 1;
+    bool m_lineNumbersOn: 1;
+    bool m_foldingMarkersOn: 1;
+    bool m_dynWrapIndicatorsOn: 1;
+    bool m_annotationBorderOn: 1;
     int m_dynWrapIndicators;
 
     int m_lastClickedLine;
@@ -222,7 +279,6 @@ class KateIconBorder : public QWidget
     mutable QPixmap m_arrow;
     mutable QColor m_oldBackgroundColor;
 
-
     KTextEditor::MovingRange *m_foldingRange;
     int m_nextHighlightBlock;
     int m_currentBlockLine;
@@ -230,10 +286,10 @@ class KateIconBorder : public QWidget
     void showDelayedBlock(int line);
     void hideBlock();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void showBlock();
 
-  private:
+private:
     QString m_hoveredAnnotationText;
 
     void initializeFoldingColors();
@@ -241,13 +297,13 @@ class KateIconBorder : public QWidget
 
 class KateViewEncodingAction: public KSelectAction
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  Q_PROPERTY(QString codecName READ currentCodecName WRITE setCurrentCodec)
-  Q_PROPERTY(int codecMib READ currentCodecMib)
+    Q_PROPERTY(QString codecName READ currentCodecName WRITE setCurrentCodec)
+    Q_PROPERTY(int codecMib READ currentCodecMib)
 
-  public:
-    KateViewEncodingAction(KateDocument *_doc, KateView *_view, const QString& text, QObject *parent);
+public:
+    KateViewEncodingAction(KateDocument *_doc, KateView *_view, const QString &text, QObject *parent);
 
     ~KateViewEncodingAction();
 
@@ -263,38 +319,38 @@ class KateViewEncodingAction: public KSelectAction
     int currentCodecMib() const;
     bool setCurrentCodec(int mib);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
     * Specific (proper) codec was selected
     */
     void triggered(QTextCodec *codec);
 
-  private:
-    KateDocument* doc;
+private:
+    KateDocument *doc;
     KateView *view;
-    
+
     class Private
     {
-      public:
+    public:
         Private(KateViewEncodingAction *parent)
-        : q(parent),
-        currentSubAction(0)
+            : q(parent),
+              currentSubAction(0)
         {
         }
 
         void init();
 
-        void _k_subActionTriggered(QAction*);
+        void _k_subActionTriggered(QAction *);
 
         KateViewEncodingAction *q;
         QAction *currentSubAction;
     };
 
-    Private* const d;
-    Q_PRIVATE_SLOT( d, void _k_subActionTriggered(QAction*) )
+    Private *const d;
+    Q_PRIVATE_SLOT(d, void _k_subActionTriggered(QAction *))
 
-  private Q_SLOTS:
-    void setEncoding (const QString &e);
+private Q_SLOTS:
+    void setEncoding(const QString &e);
     void slotAboutToShow();
 };
 
@@ -302,51 +358,59 @@ class KateViewBar;
 
 class KateViewBarWidget : public QWidget
 {
-  Q_OBJECT
-  friend class KateViewBar;
+    Q_OBJECT
+    friend class KateViewBar;
 
-  public:
-    explicit KateViewBarWidget (bool addCloseButton, QWidget* parent = 0);
+public:
+    explicit KateViewBarWidget(bool addCloseButton, QWidget *parent = 0);
 
     virtual void closed() {}
 
     /// returns the currently associated KateViewBar and 0, if it is not associated
-    KateViewBar* viewBar() { return m_viewBar; }
+    KateViewBar *viewBar()
+    {
+        return m_viewBar;
+    }
 
-  protected:
+protected:
     /**
      * @return widget that should be used to add controls to bar widget
      */
-    QWidget *centralWidget() { return m_centralWidget; }
+    QWidget *centralWidget()
+    {
+        return m_centralWidget;
+    }
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void hideMe();
 
-  // for friend class KateViewBar
-  private:
-    void setAssociatedViewBar(KateViewBar* bar) { m_viewBar = bar;}
+    // for friend class KateViewBar
+private:
+    void setAssociatedViewBar(KateViewBar *bar)
+    {
+        m_viewBar = bar;
+    }
 
-  private:
+private:
     QWidget *m_centralWidget;
-    KateViewBar* m_viewBar; // 0-pointer, if not added to a view bar
+    KateViewBar *m_viewBar; // 0-pointer, if not added to a view bar
 };
 
 class KateViewBar : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateViewBar (bool external,
-                 QWidget *parent,
-                 KateView *view);
-
+public:
+    KateViewBar(bool external,
+                QWidget *parent,
+                KateView *view);
 
     /**
      * Adds a widget to this viewbar.
      * Widget is initially invisible, you should call showBarWidget, to show it.
      * Several widgets can be added to the bar, but only one can be visible
      */
-    void addBarWidget (KateViewBarWidget *newBarWidget);
+    void addBarWidget(KateViewBarWidget *newBarWidget);
 
     /**
      * Removes a widget from this viewbar.
@@ -354,18 +418,18 @@ class KateViewBar : public QWidget
      * because we use a QStackedWidget to maintain the same height for all
      * widgets in the viewbar.
      */
-    void removeBarWidget (KateViewBarWidget *barWidget);
+    void removeBarWidget(KateViewBarWidget *barWidget);
 
     /**
      * @return if viewbar has widget @p barWidget
      */
-    bool hasBarWidget(KateViewBarWidget* barWidget) const;
+    bool hasBarWidget(KateViewBarWidget *barWidget) const;
 
     /**
      * Shows barWidget that was previously added with addBarWidget.
      * @see hideCurrentBarWidget
      */
-    void showBarWidget (KateViewBarWidget *barWidget);
+    void showBarWidget(KateViewBarWidget *barWidget);
 
     /**
      * Adds widget that will be always shown in the viewbar.
@@ -378,7 +442,7 @@ class KateViewBar : public QWidget
      * If permanent widget already exists, new one replaces old one
      * Old widget is not deleted, caller can do it if it wishes
      */
-    void addPermanentBarWidget (KateViewBarWidget *barWidget);
+    void addPermanentBarWidget(KateViewBarWidget *barWidget);
 
     /**
      * Removes permanent bar widget from viewbar.
@@ -386,24 +450,24 @@ class KateViewBar : public QWidget
      *
      * barWidget is not deleted, caller must do it if it wishes
      */
-    void removePermanentBarWidget (KateViewBarWidget *barWidget);
+    void removePermanentBarWidget(KateViewBarWidget *barWidget);
 
     /**
      * @return if viewbar has permanent widget @p barWidget
      */
-    bool hasPermanentWidget (KateViewBarWidget *barWidget) const;
+    bool hasPermanentWidget(KateViewBarWidget *barWidget) const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Hides currently shown bar widget
      */
     void hideCurrentBarWidget();
 
-  protected:
-    virtual void keyPressEvent(QKeyEvent* event);
-    virtual void hideEvent(QHideEvent* event);
+protected:
+    virtual void keyPressEvent(QKeyEvent *event);
+    virtual void hideEvent(QHideEvent *event);
 
-  private:
+private:
     /**
      * Shows or hides whole viewbar
      */
@@ -411,7 +475,7 @@ class KateViewBar : public QWidget
 
     bool m_external;
 
-  private:
+private:
     KateView *m_view;
     QStackedWidget *m_stack;
     KateViewBarWidget *m_permanentBarWidget;
@@ -420,46 +484,46 @@ class KateViewBar : public QWidget
 
 class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     explicit KateCommandLineBar(KateView *view, QWidget *parent = 0);
     ~KateCommandLineBar();
 
     void setText(const QString &text, bool selected = true);
     void execute(const QString &text);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void showHelpPage();
 
-  private:
+private:
     class KateCmdLineEdit *m_lineEdit;
 };
 
 class KateCmdLineEdit : public KLineEdit
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateCmdLineEdit (KateCommandLineBar *bar, KateView *view);
+public:
+    KateCmdLineEdit(KateCommandLineBar *bar, KateView *view);
     virtual bool event(QEvent *e);
 
-    void hideEvent (QHideEvent *e);
+    void hideEvent(QHideEvent *e);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void hideRequested();
 
-  public Q_SLOTS:
-    void slotReturnPressed ( const QString& cmd );
+public Q_SLOTS:
+    void slotReturnPressed(const QString &cmd);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void hideLineEdit();
 
-  protected:
-    void focusInEvent ( QFocusEvent *ev );
-    void keyPressEvent( QKeyEvent *ev );
+protected:
+    void focusInEvent(QFocusEvent *ev);
+    void keyPressEvent(QKeyEvent *ev);
 
-  private:
+private:
     /**
      * Parse an expression denoting a position in the document.
      * Return the position as an integer.
@@ -470,9 +534,9 @@ class KateCmdLineEdit : public KLineEdit
      * @param string the expression to parse
      * @return the position, an integer
      */
-    int calculatePosition( QString string );
-    void fromHistory( bool up );
-    QString helptext( const QPoint & ) const;
+    int calculatePosition(QString string);
+    void fromHistory(bool up);
+    QString helptext(const QPoint &) const;
 
     KateView *m_view;
     KateCommandLineBar *m_bar;
@@ -488,19 +552,18 @@ class KateCmdLineEdit : public KLineEdit
 
 class KatePasteMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KatePasteMenu (const QString& text, KateView *view);
+public:
+    KatePasteMenu(const QString &text, KateView *view);
 
-  private:
+private:
     KateView *m_view;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotAboutToShow();
-    void paste ();
+    void paste();
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

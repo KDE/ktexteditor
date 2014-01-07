@@ -31,29 +31,48 @@
 class KateViRange;
 class KateViInputModeManager;
 
-class KateViVisualMode : public KateViNormalMode {
+class KateViVisualMode : public KateViNormalMode
+{
 
     Q_OBJECT
 
-  public:
-    KateViVisualMode( KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal );
+public:
+    KateViVisualMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
     ~KateViVisualMode();
 
     void init();
 
-    bool isVisualLine() const { return m_mode == VisualLineMode; }
-    bool isVisualBlock() const { return m_mode == VisualBlockMode; }
+    bool isVisualLine() const
+    {
+        return m_mode == VisualLineMode;
+    }
+    bool isVisualBlock() const
+    {
+        return m_mode == VisualBlockMode;
+    }
     void switchStartEnd();
     void reset();
-    void setVisualModeType( ViMode mode );
+    void setVisualModeType(ViMode mode);
     void saveRangeMarks();
-    void setStart( const Cursor& c ) { m_start = c; }
-    Cursor getStart() { return m_start; }
+    void setStart(const Cursor &c)
+    {
+        m_start = c;
+    }
+    Cursor getStart()
+    {
+        return m_start;
+    }
 
-    void goToPos( const Cursor& c);
+    void goToPos(const Cursor &c);
 
-    ViMode getLastVisualMode() const { return m_lastVisualMode; }
-    Cursor getStart() const { return m_start; }
+    ViMode getLastVisualMode() const
+    {
+        return m_lastVisualMode;
+    }
+    Cursor getStart() const
+    {
+        return m_start;
+    }
 
     // Selects all lines in range;
     void SelectLines(Range range);
@@ -72,7 +91,7 @@ public Q_SLOTS:
      */
     void updateSelection();
 
-  private:
+private:
     void initializeCommands();
 
     /**
@@ -81,7 +100,7 @@ public Q_SLOTS:
      * (i.e. move the cursor) while a text object may modify both the start and
      * the end.
      */
-    void goToPos( const KateViRange &r );
+    void goToPos(const KateViRange &r);
     ViMode m_mode;
     Cursor m_start;
     ViMode m_lastVisualMode; // used when reselecting a visual selection

@@ -33,62 +33,65 @@ class QActionGroup;
 
 class KateSchema
 {
-  public:
+public:
     QString rawName;
     int shippedDefaultSchema;
-    
+
     /**
      * construct translated name for shipped schemas
      */
-    QString translatedName () const {
-      return shippedDefaultSchema ? i18nc("Color Schema", rawName.toUtf8().data()) : rawName;
+    QString translatedName() const
+    {
+        return shippedDefaultSchema ? i18nc("Color Schema", rawName.toUtf8().data()) : rawName;
     }
 };
 
 class KateSchemaManager
 {
-  public:
-    KateSchemaManager ();
-    
+public:
+    KateSchemaManager();
+
     /**
      * Config
      */
-    KConfig &config ()
+    KConfig &config()
     {
-      return m_config;
+        return m_config;
     }
 
     /**
      * return kconfiggroup for the given schema
      */
-    KConfigGroup schema (const QString &name);
-    
+    KConfigGroup schema(const QString &name);
+
     /**
      * return schema data for on schema
      */
-    KateSchema schemaData (const QString &name);
+    KateSchema schemaData(const QString &name);
 
     /**
      * Constructs list of schemas atm known in config object
      */
-    QList<KateSchema> list ();
+    QList<KateSchema> list();
 
-  private:
+private:
     KConfig m_config;
 };
 
-
 class KateViewSchemaAction : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateViewSchemaAction(const QString& text, QObject *parent)
-       : KActionMenu(text, parent) { init(); }
+public:
+    KateViewSchemaAction(const QString &text, QObject *parent)
+        : KActionMenu(text, parent)
+    {
+        init();
+    }
 
-    void updateMenu (KateView *view);
+    void updateMenu(KateView *view);
 
-  private:
+private:
     void init();
 
     QPointer<KateView> m_view;
@@ -96,13 +99,12 @@ class KateViewSchemaAction : public KActionMenu
     QActionGroup *m_group;
     int last;
 
-  public  Q_SLOTS:
+public  Q_SLOTS:
     void slotAboutToShow();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void setSchema();
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -28,82 +28,86 @@
 
 using namespace KTextEditor;
 
-MovingCursor::MovingCursor ()
+MovingCursor::MovingCursor()
 {
 }
 
-MovingCursor::~MovingCursor ()
+MovingCursor::~MovingCursor()
 {
 }
 
 void MovingCursor::setPosition(int line, int column)
 {
-  // just use setPosition
-  setPosition(Cursor(line, column));
+    // just use setPosition
+    setPosition(Cursor(line, column));
 }
 
-void MovingCursor::setLine (int line)
+void MovingCursor::setLine(int line)
 {
-  // just use setPosition
-  setPosition (line, column());
+    // just use setPosition
+    setPosition(line, column());
 }
 
-void MovingCursor::setColumn (int column)
+void MovingCursor::setColumn(int column)
 {
-  // just use setPosition
-  setPosition (line(), column);
+    // just use setPosition
+    setPosition(line(), column);
 }
 
-bool MovingCursor::atStartOfLine() const {
-  return isValidTextPosition() && column() == 0;
+bool MovingCursor::atStartOfLine() const
+{
+    return isValidTextPosition() && column() == 0;
 }
 
-bool MovingCursor::atEndOfLine() const {
-  return isValidTextPosition() && column() == document()->lineLength(line());
+bool MovingCursor::atEndOfLine() const
+{
+    return isValidTextPosition() && column() == document()->lineLength(line());
 }
 
-bool MovingCursor::atEndOfDocument() const {
-  return *this == document()->documentEnd();
+bool MovingCursor::atEndOfDocument() const
+{
+    return *this == document()->documentEnd();
 }
 
-bool MovingCursor::atStartOfDocument() const {
-  return line() == 0 && column() == 0;
+bool MovingCursor::atStartOfDocument() const
+{
+    return line() == 0 && column() == 0;
 }
 
 bool MovingCursor::gotoNextLine()
 {
-  // only touch valid cursors
-  const bool ok = isValid() && (line() + 1 < document()->lines());
+    // only touch valid cursors
+    const bool ok = isValid() && (line() + 1 < document()->lines());
 
-  if (ok) {
-    setPosition(Cursor(line() + 1, 0));
-  }
+    if (ok) {
+        setPosition(Cursor(line() + 1, 0));
+    }
 
-  return ok;
+    return ok;
 }
 
 bool MovingCursor::gotoPreviousLine()
 {
-  // only touch valid cursors
-  bool ok = (line() > 0) && (column() >= 0);
+    // only touch valid cursors
+    bool ok = (line() > 0) && (column() >= 0);
 
-  if (ok) {
-    setPosition(Cursor(line() - 1, 0));
-  }
+    if (ok) {
+        setPosition(Cursor(line() - 1, 0));
+    }
 
-  return ok;
+    return ok;
 }
 
 bool MovingCursor::move(int chars, WrapBehavior wrapBehavior)
 {
-  DocumentCursor dc(document(), toCursor());
+    DocumentCursor dc(document(), toCursor());
 
-  const bool success = dc.move(chars, static_cast<DocumentCursor::WrapBehavior>(wrapBehavior));
+    const bool success = dc.move(chars, static_cast<DocumentCursor::WrapBehavior>(wrapBehavior));
 
-  if (success && dc.toCursor() != toCursor())
-    setPosition (dc.toCursor());
+    if (success && dc.toCursor() != toCursor()) {
+        setPosition(dc.toCursor());
+    }
 
-  return success;
+    return success;
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

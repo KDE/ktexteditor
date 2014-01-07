@@ -27,20 +27,21 @@ class KateRenderer;
 class KateDocument;
 class KateCompletionWidget;
 
-class KateCompletionDelegate : public ExpandingDelegate {
-  public:
-    explicit KateCompletionDelegate(ExpandingWidgetModel* model, KateCompletionWidget* parent);
-    
-    KateRenderer* renderer() const;
-    KateCompletionWidget* widget() const;
-    KateDocument* document() const;
-  protected:
-    virtual void adjustStyle( const QModelIndex& index, QStyleOptionViewItem & option ) const;
+class KateCompletionDelegate : public ExpandingDelegate
+{
+public:
+    explicit KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent);
+
+    KateRenderer *renderer() const;
+    KateCompletionWidget *widget() const;
+    KateDocument *document() const;
+protected:
+    virtual void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const;
     mutable int m_cachedRow;
     mutable QList<int> m_cachedColumnStarts;
     virtual void heightChanged() const;
-    QList<QTextLayout::FormatRange> createHighlighting(const QModelIndex& index, QStyleOptionViewItem& option) const;
-    
+    QList<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const;
+
 };
 
 #endif

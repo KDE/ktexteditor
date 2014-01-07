@@ -30,45 +30,45 @@
 
 class KateRenderRange
 {
-  public:
+public:
     virtual ~KateRenderRange() {}
     virtual KTextEditor::Cursor nextBoundary() const = 0;
-    virtual bool advanceTo(const KTextEditor::Cursor& pos) = 0;
+    virtual bool advanceTo(const KTextEditor::Cursor &pos) = 0;
     virtual KTextEditor::Attribute::Ptr currentAttribute() const = 0;
     virtual bool isReady() const;
 };
 
-typedef QPair<KTextEditor::Range*,KTextEditor::Attribute::Ptr> pairRA;
+typedef QPair<KTextEditor::Range *, KTextEditor::Attribute::Ptr> pairRA;
 
 class NormalRenderRange : public KateRenderRange
 {
-  public:
+public:
     NormalRenderRange();
     virtual ~NormalRenderRange();
 
-    void addRange(KTextEditor::Range* range, KTextEditor::Attribute::Ptr attribute);
+    void addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute);
 
     virtual KTextEditor::Cursor nextBoundary() const;
-    virtual bool advanceTo(const KTextEditor::Cursor& pos);
+    virtual bool advanceTo(const KTextEditor::Cursor &pos);
     virtual KTextEditor::Attribute::Ptr currentAttribute() const;
 
-  private:
+private:
     QList<pairRA> m_ranges;
     KTextEditor::Cursor m_nextBoundary;
     KTextEditor::Attribute::Ptr m_currentAttribute;
     int m_currentRange;
 };
 
-class RenderRangeList : public QList<KateRenderRange*>
+class RenderRangeList : public QList<KateRenderRange *>
 {
-  public:
+public:
     ~RenderRangeList();
     KTextEditor::Cursor nextBoundary() const;
-    void advanceTo(const KTextEditor::Cursor& pos);
+    void advanceTo(const KTextEditor::Cursor &pos);
     bool hasAttribute() const;
     KTextEditor::Attribute::Ptr generateAttribute() const;
 
-  private:
+private:
     KTextEditor::Cursor m_currentPos;
 };
 

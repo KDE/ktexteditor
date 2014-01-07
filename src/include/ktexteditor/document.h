@@ -120,9 +120,9 @@ class MainWindow;
  */
 class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      *
@@ -130,18 +130,18 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param parent parent object
      * \see Editor::createDocument()
      */
-    Document ( QObject *parent = 0);
+    Document(QObject *parent = 0);
 
     /**
      * Virtual destructor.
      */
-    virtual ~Document ();
+    virtual ~Document();
 
-  /*
-   * Methods to create and manage the views of this document and access the
-   * global editor object.
-   */
-  public:
+    /*
+     * Methods to create and manage the views of this document and access the
+     * global editor object.
+     */
+public:
     /**
      * Get the global editor object. The editor part implementation must
      * ensure that this object exists as long as any factory or document
@@ -149,7 +149,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return global KTextEditor::Editor object
      * \see KTextEditor::Editor
      */
-    virtual Editor *editor () = 0;
+    virtual Editor *editor() = 0;
 
     /**
      * Create a new view attached to @p parent.
@@ -157,35 +157,35 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * @param mainWindow the main window responsible for this view, if any
      * @return the new view
      */
-    virtual View *createView ( QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr ) = 0;
+    virtual View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) = 0;
 
     /**
      * Return the view which currently has user focus, if any.
      */
-    virtual View* activeView() const = 0;
+    virtual View *activeView() const = 0;
 
     /**
      * Returns the views pre-casted to KTextEditor::View%s
      */
-    virtual const QList<View*> &views() const = 0;
+    virtual const QList<View *> &views() const = 0;
 
-  Q_SIGNALS:
-   /**
-    * This signal is emitted whenever the \p document creates a new \p view.
-    * It should be called for every view to help applications / plugins to
-    * attach to the \p view.
-    * \attention This signal should be emitted after the view constructor is
-    *            completed, e.g. in the createView() method.
-    * \param document the document for which a new view is created
-    * \param view the new view
-    * \see createView()
-    */
-    void viewCreated (KTextEditor::Document *document, KTextEditor::View *view);
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the \p document creates a new \p view.
+     * It should be called for every view to help applications / plugins to
+     * attach to the \p view.
+     * \attention This signal should be emitted after the view constructor is
+     *            completed, e.g. in the createView() method.
+     * \param document the document for which a new view is created
+     * \param view the new view
+     * \see createView()
+     */
+    void viewCreated(KTextEditor::Document *document, KTextEditor::View *view);
 
-  /*
-   * General information about this document and its content.
-   */
-  public:
+    /*
+     * General information about this document and its content.
+     */
+public:
     /**
      * Get this document's name.
      * The editor part should provide some meaningful name, like some unique
@@ -193,7 +193,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * documents with url.
      * \return readable document name
      */
-    virtual const QString &documentName () const = 0;
+    virtual const QString &documentName() const = 0;
 
     /**
      * Get this document's mimetype.
@@ -201,24 +201,24 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      */
     virtual QString mimeType() = 0;
 
-  /*
-   * SIGNALS
-   * following signals should be emitted by the editor document.
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * following signals should be emitted by the editor document.
+     */
+Q_SIGNALS:
     /**
      * This signal is emitted whenever the \p document name changes.
      * \param document document which changed its name
      * \see documentName()
      */
-    void documentNameChanged ( KTextEditor::Document *document );
+    void documentNameChanged(KTextEditor::Document *document);
 
     /**
      * This signal is emitted whenever the \p document URL changes.
      * \param document document which changed its URL
      * \see KParts::ReadOnlyPart::url()
      */
-    void documentUrlChanged ( KTextEditor::Document *document );
+    void documentUrlChanged(KTextEditor::Document *document);
 
     /**
      * This signal is emitted whenever the \p document's buffer changed from
@@ -228,7 +228,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \see KParts::ReadWritePart::isModified().
      * \see KParts::ReadWritePart::setModified()
      */
-    void modifiedChanged ( KTextEditor::Document *document );
+    void modifiedChanged(KTextEditor::Document *document);
 
     /**
      * This signal is emitted whenever the readWrite state of a document
@@ -236,13 +236,13 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param document the document whose read/write property changed
      * \see KParts::ReadWritePart::setReadWrite()
      */
-    void readWriteChanged ( KTextEditor::Document *document );
+    void readWriteChanged(KTextEditor::Document *document);
 
-  /*
-   * VERY IMPORTANT: Methods to set and query the current encoding of the
-   * document
-   */
-  public:
+    /*
+     * VERY IMPORTANT: Methods to set and query the current encoding of the
+     * document
+     */
+public:
     /**
      * Set the encoding for this document. This encoding will be used
      * while loading and saving files, it will \e not affect the already
@@ -256,7 +256,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, or \e false, if the encoding could not be set.
      * \see encoding()
      */
-    virtual bool setEncoding (const QString &encoding) = 0;
+    virtual bool setEncoding(const QString &encoding) = 0;
 
     /**
      * Get the current chosen encoding. The return value is an empty string,
@@ -265,13 +265,13 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return current encoding of the document
      * \see setEncoding()
      */
-    virtual const QString &encoding () const = 0;
+    virtual const QString &encoding() const = 0;
 
-  /*
-   * General file related actions.
-   * All this actions cause user interaction in some cases.
-   */
-  public:
+    /*
+     * General file related actions.
+     * All this actions cause user interaction in some cases.
+     */
+public:
     /**
      * Reload the current file.
      * The user will be prompted by the part on changes and more and can
@@ -279,7 +279,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true if the reload has been done, otherwise \e false. If
      *         the document has no url set, it will just return \e false.
      */
-    virtual bool documentReload () = 0;
+    virtual bool documentReload() = 0;
 
     /**
      * Save the current file.
@@ -287,7 +287,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, i.e. the save has been done, otherwise
      *         \e false
      */
-    virtual bool documentSave () = 0;
+    virtual bool documentSave() = 0;
 
     /**
      * Save the current file to another location.
@@ -295,19 +295,19 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, i.e. the save has been done, otherwise
      *         \e false
      */
-    virtual bool documentSaveAs () = 0;
+    virtual bool documentSaveAs() = 0;
 
- Q_SIGNALS:
+Q_SIGNALS:
     /**
     * This signal should be emitted after a document has been saved to disk or for remote files uploaded.
     * saveAs should be set to true, if the operation is a save as operation
     */
-    void documentSavedOrUploaded(KTextEditor::Document* document,bool saveAs);
+    void documentSavedOrUploaded(KTextEditor::Document *document, bool saveAs);
 
- /*
-  * Methodes to create/end editing sequences.
-  */
- public:
+    /*
+     * Methodes to create/end editing sequences.
+     */
+public:
     /**
      * Begin an editing sequence.
      * Edit commands during this sequence will be bunched together so that
@@ -330,7 +330,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *         it should return \e false
      * \see endEditing()
      */
-    virtual bool startEditing () = 0;
+    virtual bool startEditing() = 0;
 
     /**
      * End an editing sequence.
@@ -338,18 +338,18 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *         it should return \e false.
      * \see startEditing() for more details
      */
-    virtual bool endEditing () = 0;
+    virtual bool endEditing() = 0;
 
-  /*
-   * General access to the document's text content.
-   */
-  public:
+    /*
+     * General access to the document's text content.
+     */
+public:
     /**
      * Get the document content.
      * \return the complete document content
      * \see setText()
      */
-    virtual QString text () const = 0;
+    virtual QString text() const = 0;
 
     /**
      * Get the document content within the given \p range.
@@ -359,7 +359,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return the requested text part, or QString() for invalid ranges.
      * \see setText()
      */
-    virtual QString text ( const Range& range, bool block = false ) const = 0;
+    virtual QString text(const Range &range, bool block = false) const = 0;
 
     /**
      * Get the character at text position \p cursor.
@@ -367,7 +367,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return the requested character, or QChar() for invalid cursors.
      * \see setText()
      */
-    virtual QChar characterAt( const Cursor& position ) const = 0;
+    virtual QChar characterAt(const Cursor &position) const = 0;
 
     /*
      * Get the word at the text position \p cursor.
@@ -384,7 +384,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *
      * \see wordRangeAt(), characterAt()
      */
-    virtual QString wordAt(const KTextEditor::Cursor& cursor) const = 0;
+    virtual QString wordAt(const KTextEditor::Cursor &cursor) const = 0;
 
     /*
      * Get the text range for the word located under the text position \p cursor.
@@ -402,7 +402,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *
      * \see wordAt(), characterAt(), KTextEditor::Range::isValid()
      */
-    virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor& cursor) const = 0;
+    virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const = 0;
 
     // TODO: KDE5 add this function (Sven Brauch, Dominik Haumann, Milian Wolff)
     //       and use this in Kate Part's text selection to disallow seleting
@@ -433,7 +433,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *         no end of line termination is included.
      * \see setText()
      */
-    virtual QStringList textLines ( const Range& range, bool block = false ) const = 0;
+    virtual QStringList textLines(const Range &range, bool block = false) const = 0;
 
     /**
      * Get a single text line.
@@ -441,14 +441,14 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return the requested line, or "" for invalid line numbers
      * \see text(), lineLength()
      */
-    virtual QString line ( int line ) const = 0;
+    virtual QString line(int line) const = 0;
 
     /**
      * Get the count of lines of the document.
      * \return the current number of lines in the document
      * \see length()
      */
-    virtual int lines () const = 0;
+    virtual int lines() const = 0;
 
     /**
      * End position of the document.
@@ -461,7 +461,10 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * A Range which encompasses the whole document.
      * \return A range from the start to the end of the document
      */
-    inline Range documentRange() const { return Range(Cursor::start(), documentEnd()); }
+    inline Range documentRange() const
+    {
+        return Range(Cursor::start(), documentEnd());
+    }
 
     /**
      * Get the count of characters in the document. A TAB character counts as
@@ -483,14 +486,17 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *         invalid
      * \see line()
      */
-    virtual int lineLength ( int line ) const = 0;
+    virtual int lineLength(int line) const = 0;
 
     /**
      * Get the end cursor position of line \p line.
      * \param line line
      * \see lineLength(), line()
      */
-    inline Cursor endOfLine(int line) const { return Cursor(line, lineLength(line)); }
+    inline Cursor endOfLine(int line) const
+    {
+        return Cursor(line, lineLength(line));
+    }
 
     /**
      * Set the given text as new document content.
@@ -498,7 +504,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see text()
      */
-    virtual bool setText ( const QString &text ) = 0;
+    virtual bool setText(const QString &text) = 0;
 
     /**
      * Set the given text as new document content.
@@ -506,14 +512,14 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see text()
      */
-    virtual bool setText ( const QStringList &text ) = 0;
+    virtual bool setText(const QStringList &text) = 0;
 
     /**
      * Remove the whole content of the document.
      * \return \e true on success, otherwise \e false
      * \see removeText(), removeLine()
      */
-    virtual bool clear () = 0;
+    virtual bool clear() = 0;
 
     /**
      * Insert \p text at \p position.
@@ -523,7 +529,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText()
      */
-    virtual bool insertText ( const Cursor &position, const QString &text, bool block = false ) = 0;
+    virtual bool insertText(const Cursor &position, const QString &text, bool block = false) = 0;
 
     /**
      * Insert \p text at \p position.
@@ -533,7 +539,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText()
      */
-    virtual bool insertText ( const Cursor &position, const QStringList &text, bool block = false ) = 0;
+    virtual bool insertText(const Cursor &position, const QStringList &text, bool block = false) = 0;
 
     /**
      * Replace text from \p range with specified \p text.
@@ -543,7 +549,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText(), insertText()
      */
-    virtual bool replaceText ( const Range &range, const QString &text, bool block = false );
+    virtual bool replaceText(const Range &range, const QString &text, bool block = false);
 
     /**
      * Replace text from \p range with specified \p text.
@@ -553,7 +559,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see setText(), removeText(), insertText()
      */
-    virtual bool replaceText ( const Range &range, const QStringList &text, bool block = false );
+    virtual bool replaceText(const Range &range, const QStringList &text, bool block = false);
 
     /**
      * Remove the text specified in \p range.
@@ -562,7 +568,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see setText(), insertText()
      */
-    virtual bool removeText ( const Range &range, bool block = false ) = 0;
+    virtual bool removeText(const Range &range, bool block = false) = 0;
 
     /**
      * Checks whether the \p cursor specifies a valid position in a document.
@@ -585,7 +591,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see insertText()
      */
-    virtual bool insertLine ( int line, const QString &text ) = 0;
+    virtual bool insertLine(int line, const QString &text) = 0;
 
     /**
      * Insert line(s) at the given line number. The newline character '\\n'
@@ -599,7 +605,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see insertText()
      */
-    virtual bool insertLines ( int line, const QStringList &text ) = 0;
+    virtual bool insertLines(int line, const QStringList &text) = 0;
 
     /**
      * Remove \p line from the document.
@@ -607,14 +613,14 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \return \e true on success, otherwise \e false
      * \see removeText(), clear()
      */
-    virtual bool removeLine ( int line ) = 0;
+    virtual bool removeLine(int line) = 0;
 
-  /*
-   * SIGNALS
-   * Following signals should be emitted by the document if the text content
-   * is changed.
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * Following signals should be emitted by the document if the text content
+     * is changed.
+     */
+Q_SIGNALS:
     /**
      * The \p document emits this signal whenever its text changes.
      * \param document document which emitted this signal
@@ -630,7 +636,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param range range that the newly inserted text occupies
      * \see insertText(), insertLine()
      */
-    void textInserted(KTextEditor::Document *document, const KTextEditor::Range& range);
+    void textInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
 
     /**
      * The \p document emits this signal whenever \p range was removed, i.e.
@@ -639,7 +645,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param range range that the removed text previously occupied
      * \see removeText(), removeLine(), clear()
      */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range& range);
+    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range);
 
     /**
      * The \p document emits this signal whenever \p range was removed, i.e.
@@ -649,8 +655,8 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param oldText the text that has been removed
      * \see removeText(), removeLine(), clear()
      */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range& range, const QString& oldText);
-    
+    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
+
     /**
      * The \p document emits this signal whenever the text in range
      * \p oldRange was removed and replaced with the text now in \e newRange,
@@ -661,7 +667,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param newRange range that the changed text now occupies
      * \see insertText(), insertLine(), removeText(), removeLine(), clear()
      */
-    void textChanged(KTextEditor::Document *document, const KTextEditor::Range& oldRange, const KTextEditor::Range& newRange);
+    void textChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const KTextEditor::Range &newRange);
 
     /**
      * The \p document emits this signal whenever the text in range
@@ -674,8 +680,8 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * \param newRange range that the changed text now occupies
      * \see insertText(), insertLine(), removeText(), removeLine(), clear()
      */
-    void textChanged(KTextEditor::Document *document, const KTextEditor::Range& oldRange, const QString& oldText, const KTextEditor::Range& newRange);
-    
+    void textChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const QString &oldText, const KTextEditor::Range &newRange);
+
     /**
      * Warn anyone listening that the current document is about to close.
      * At this point all of the information is still accessible, such as the text,
@@ -704,7 +710,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      * for example the editing history.
      *
      * \param document the document that was reloaded.
-     * 
+     *
      * @since 4.6
      */
     void reloaded(KTextEditor::Document *document);
@@ -728,10 +734,10 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      */
     void exclusiveEditEnd(KTextEditor::Document *document);
 
-  /*
-   * Access to the mode/highlighting subsystem
-   */
-  public:
+    /*
+     * Access to the mode/highlighting subsystem
+     */
+public:
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
@@ -784,7 +790,7 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *
      * \param index the index of the highlight in the list returned by modes()
      */
-    virtual QString highlightingModeSection( int index ) const = 0;
+    virtual QString highlightingModeSection(int index) const = 0;
 
     /**
      * Returns the name of the section for a mode given its index in the highlight
@@ -794,14 +800,14 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      *
      * \param index the index of the highlight in the list returned by modes()
      */
-    virtual QString modeSection( int index ) const = 0;
+    virtual QString modeSection(int index) const = 0;
 
-  /*
-   * SIGNALS
-   * Following signals should be emitted by the document if the mode
-   * of the document changes
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * Following signals should be emitted by the document if the mode
+     * of the document changes
+     */
+Q_SIGNALS:
     /**
      * Warn anyone listening that the current document's mode has
      * changed.
@@ -820,10 +826,10 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
      */
     void highlightingModeChanged(KTextEditor::Document *document);
 
-  private:
-    class DocumentPrivate* const d;
+private:
+    class DocumentPrivate *const d;
 
-  public:
+public:
     /**
      * by default dialogs should be displayed.
      * In any case (dialog shown or suppressed)
@@ -840,16 +846,14 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
     bool openingError() const;
     QString openingErrorMessage() const;
 
-  protected:
+protected:
     void setOpeningError(bool errors);
-    void setOpeningErrorMessage(const QString& message);
+    void setOpeningErrorMessage(const QString &message);
 };
 
 }
 
-Q_DECLARE_METATYPE(KTextEditor::Document*)
+Q_DECLARE_METATYPE(KTextEditor::Document *)
 
 #endif
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

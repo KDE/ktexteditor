@@ -29,45 +29,46 @@ Q_DECLARE_METATYPE(KTextEditor::Cursor)
 
 QTEST_MAIN(ScriptDocumentTest)
 
-namespace QTest {
-  template<>
-  char *toString(const KTextEditor::Cursor &cursor)
-  {
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
+{
     QByteArray ba = "Cursor[";
     ba += QByteArray::number(cursor.line()) + ", " + QByteArray::number(cursor.column());
     ba += "]";
     return qstrdup(ba.data());
-  }
+}
 }
 
 QtMessageHandler ScriptDocumentTest::s_msgHandler = 0;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-  switch (type) {
-  case QtDebugMsg:
-    /* do nothing */
-    break;
-  default:
-    ScriptDocumentTest::s_msgHandler(type, context, msg);
-  }
+    switch (type) {
+    case QtDebugMsg:
+        /* do nothing */
+        break;
+    default:
+        ScriptDocumentTest::s_msgHandler(type, context, msg);
+    }
 }
 
 void ScriptDocumentTest::initTestCase()
 {
-  s_msgHandler = qInstallMessageHandler(myMessageOutput);
+    s_msgHandler = qInstallMessageHandler(myMessageOutput);
 }
 
 void ScriptDocumentTest::cleanupTestCase()
 {
-  qInstallMessageHandler(0);
+    qInstallMessageHandler(0);
 }
 
 ScriptDocumentTest::ScriptDocumentTest()
-  : QObject()
-  , m_doc(0)
-  , m_view(0)
-  , m_scriptDoc(0)
+    : QObject()
+    , m_doc(0)
+    , m_view(0)
+    , m_scriptDoc(0)
 {
 }
 
@@ -77,63 +78,63 @@ ScriptDocumentTest::~ScriptDocumentTest()
 
 void ScriptDocumentTest::init()
 {
-  m_doc = new KateDocument(false, false, false, 0, this);
-  m_view = m_doc->createView(0);
-  m_scriptDoc = new KateScriptDocument(this);
-  m_scriptDoc->setDocument(m_doc);
+    m_doc = new KateDocument(false, false, false, 0, this);
+    m_view = m_doc->createView(0);
+    m_scriptDoc = new KateScriptDocument(this);
+    m_scriptDoc->setDocument(m_doc);
 }
 
 void ScriptDocumentTest::cleanup()
 {
-  delete m_scriptDoc;
-  delete m_view;
-  delete m_doc;
+    delete m_scriptDoc;
+    delete m_view;
+    delete m_doc;
 }
 
 #if 0
 void ScriptDocumentTest::testRfind_data()
 {
-  QTest::addColumn<KTextEditor::Range>("searchRange");
-  QTest::addColumn<KTextEditor::Range>("expectedResult");
+    QTest::addColumn<KTextEditor::Range>("searchRange");
+    QTest::addColumn<KTextEditor::Range>("expectedResult");
 
-  QTest::newRow("") << KTextEditor::Range(0, 0, 1, 10) << KTextEditor::Range(1,  6, 1, 10);
-  QTest::newRow("") << KTextEditor::Range(0, 0, 1,  5) << KTextEditor::Range(1,  0, 1,  4);
-  QTest::newRow("") << KTextEditor::Range(0, 0, 1,  0) << KTextEditor::Range(0, 10, 0, 14);
+    QTest::newRow("") << KTextEditor::Range(0, 0, 1, 10) << KTextEditor::Range(1,  6, 1, 10);
+    QTest::newRow("") << KTextEditor::Range(0, 0, 1,  5) << KTextEditor::Range(1,  0, 1,  4);
+    QTest::newRow("") << KTextEditor::Range(0, 0, 1,  0) << KTextEditor::Range(0, 10, 0, 14);
 }
 
 void ScriptDocumentTest::testRfind()
 {
-  QFETCH(KTextEditor::Range, searchRange);
-  QFETCH(KTextEditor::Range, expectedResult);
+    QFETCH(KTextEditor::Range, searchRange);
+    QFETCH(KTextEditor::Range, expectedResult);
 
-  m_doc->setText("aaaa aaaa aaaa\n"
-                 "aaaa  aaaa");
+    m_doc->setText("aaaa aaaa aaaa\n"
+                   "aaaa  aaaa");
 
-  QCOMPARE(m_search->search(searchRange, "aaaa", true), expectedResult);
+    QCOMPARE(m_search->search(searchRange, "aaaa", true), expectedResult);
 }
 #endif
 
 void ScriptDocumentTest::testRfind_data()
 {
-  QTest::addColumn<KTextEditor::Cursor>("searchStart");
-  QTest::addColumn<KTextEditor::Cursor>("result");
+    QTest::addColumn<KTextEditor::Cursor>("searchStart");
+    QTest::addColumn<KTextEditor::Cursor>("result");
 
-  QTest::newRow("a a a a a a a a a a a a|") << KTextEditor::Cursor(0, 23) << KTextEditor::Cursor(0, 18);
-  QTest::newRow("a a a a a a a a a a a |a") << KTextEditor::Cursor(0, 22) << KTextEditor::Cursor(0, 16);
-  QTest::newRow("a a a a| a a a a a a a a") << KTextEditor::Cursor(0,  7) << KTextEditor::Cursor(0,  2);
-  QTest::newRow("a a a |a a a a a a a a a") << KTextEditor::Cursor(0,  6) << KTextEditor::Cursor(0,  0);
-  QTest::newRow("a a a| a a a a a a a a a") << KTextEditor::Cursor(0,  5) << KTextEditor::Cursor(0,  0);
-  QTest::newRow("a a |a a a a a a a a a a") << KTextEditor::Cursor(0,  4) << KTextEditor::Cursor::invalid();
+    QTest::newRow("a a a a a a a a a a a a|") << KTextEditor::Cursor(0, 23) << KTextEditor::Cursor(0, 18);
+    QTest::newRow("a a a a a a a a a a a |a") << KTextEditor::Cursor(0, 22) << KTextEditor::Cursor(0, 16);
+    QTest::newRow("a a a a| a a a a a a a a") << KTextEditor::Cursor(0,  7) << KTextEditor::Cursor(0,  2);
+    QTest::newRow("a a a |a a a a a a a a a") << KTextEditor::Cursor(0,  6) << KTextEditor::Cursor(0,  0);
+    QTest::newRow("a a a| a a a a a a a a a") << KTextEditor::Cursor(0,  5) << KTextEditor::Cursor(0,  0);
+    QTest::newRow("a a |a a a a a a a a a a") << KTextEditor::Cursor(0,  4) << KTextEditor::Cursor::invalid();
 }
 
 void ScriptDocumentTest::testRfind()
 {
-  QFETCH(KTextEditor::Cursor, searchStart);
-  QFETCH(KTextEditor::Cursor, result);
+    QFETCH(KTextEditor::Cursor, searchStart);
+    QFETCH(KTextEditor::Cursor, result);
 
-  m_scriptDoc->setText("a a a a a a a a a a a a");
+    m_scriptDoc->setText("a a a a a a a a a a a a");
 
-  QCOMPARE(m_scriptDoc->rfind(searchStart.line(), searchStart.column(), "a a a"), result);
+    QCOMPARE(m_scriptDoc->rfind(searchStart.line(), searchStart.column(), "a a a"), result);
 }
 
 #include "moc_scriptdocument_test.cpp"

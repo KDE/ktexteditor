@@ -63,15 +63,15 @@ enum Direction {
 
 class KTEXTEDITOR_EXPORT KateViModeBase : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateViModeBase()
-      : QObject(),
-        m_count(0),
-        m_oneTimeCountOverride(-1),
-        m_iscounted(false),
-        m_stickyColumn(-1)
+        : QObject(),
+          m_count(0),
+          m_oneTimeCountOverride(-1),
+          m_iscounted(false),
+          m_stickyColumn(-1)
     {
     }
     virtual ~KateViModeBase() {}
@@ -80,68 +80,83 @@ class KTEXTEDITOR_EXPORT KateViModeBase : public QObject
      * @return normal mode command accumulated so far
      */
     QString getVerbatimKeys() const;
-    virtual bool handleKeypress( const QKeyEvent *e ) = 0;
+    virtual bool handleKeypress(const QKeyEvent *e) = 0;
 
-    void setCount(unsigned int count) { m_count = count; }
-    void setRegister(QChar reg) {m_register =  reg;}
+    void setCount(unsigned int count)
+    {
+        m_count = count;
+    }
+    void setRegister(QChar reg)
+    {
+        m_register =  reg;
+    }
 
-    void error( const QString &errorMsg );
-    void message( const QString &msg );
+    void error(const QString &errorMsg);
+    void message(const QString &msg);
 
-    Range findPattern( const QString& pattern, bool backwards, bool caseSensitive, const Cursor& startFrom, int count = -1 /* i.e use getCount() */ ) const;
+    Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count = -1 /* i.e use getCount() */) const;
 
     void findNext();
     void findPrev();
 
     KateViRange motionFindNext();
     KateViRange motionFindPrev();
-  protected:
+protected:
     // helper methods
     void yankToClipBoard(QChar chosen_register, QString text);
-    bool deleteRange( KateViRange &r, OperationMode mode = LineWise, bool addToRegister = true );
-    const QString getRange( KateViRange &r, OperationMode mode = LineWise ) const;
-    const QString getLine( int lineNumber = -1 ) const;
+    bool deleteRange(KateViRange &r, OperationMode mode = LineWise, bool addToRegister = true);
+    const QString getRange(KateViRange &r, OperationMode mode = LineWise) const;
+    const QString getLine(int lineNumber = -1) const;
     const QChar getCharUnderCursor() const;
     const QString getWordUnderCursor() const;
     const Range getWordRangeUnderCursor() const;
-    KateViRange findPatternForMotion( const QString& pattern, bool backwards, bool caseSensitive, const Cursor& startFrom, int count = 1 ) const;
-    Cursor findNextWordStart( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findNextWORDStart( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findPrevWordStart( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findPrevWORDStart( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findPrevWordEnd( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findPrevWORDEnd( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findWordEnd( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
-    Cursor findWORDEnd( int fromLine, int fromColumn, bool onlyCurrentLine = false ) const;
+    KateViRange findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count = 1) const;
+    Cursor findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findPrevWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findPrevWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findPrevWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
-    KateViRange findSurroundingBrackets( const QChar &c1, const QChar &c2, bool inner,
-                                        const QChar &nested1 , const QChar &nested2  ) const;
-    KateViRange findSurrounding( const QRegExp &c1, const QRegExp &c2, bool inner = false ) const;
-    KateViRange findSurroundingQuotes( const QChar &c, bool inner = false ) const;
+    KateViRange findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
+                                        const QChar &nested1, const QChar &nested2) const;
+    KateViRange findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
+    KateViRange findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
-    int findLineStartingWitchChar( const QChar &c, unsigned int count, bool forward = true ) const;
-    void updateCursor( const Cursor &c ) const;
-    const QChar getCharAtVirtualColumn( QString &line, int virtualColumn, int tabWidht ) const;
+    int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
+    void updateCursor(const Cursor &c) const;
+    const QChar getCharAtVirtualColumn(QString &line, int virtualColumn, int tabWidht) const;
 
-    void addToNumberUnderCursor( int count );
+    void addToNumberUnderCursor(int count);
 
-    virtual void goToPos( const KateViRange &r );
+    virtual void goToPos(const KateViRange &r);
     KateViRange goLineUp();
     KateViRange goLineDown();
-    KateViRange goLineUpDown( int lines);
+    KateViRange goLineUpDown(int lines);
     KateViRange goVisualLineUpDown(int lines);
 
-    unsigned int linesDisplayed() { return m_viewInternal->linesDisplayed(); }
-    void scrollViewLines( int l ) { m_viewInternal->scrollViewLines( l ); }
-
-    unsigned int getCount() const {
-      if (m_oneTimeCountOverride != -1)
-      {
-        return m_oneTimeCountOverride;
-      }
-      return ( m_count > 0 ) ? m_count : 1;
+    unsigned int linesDisplayed()
+    {
+        return m_viewInternal->linesDisplayed();
     }
-    bool isCounted() { return m_iscounted; }
+    void scrollViewLines(int l)
+    {
+        m_viewInternal->scrollViewLines(l);
+    }
+
+    unsigned int getCount() const
+    {
+        if (m_oneTimeCountOverride != -1) {
+            return m_oneTimeCountOverride;
+        }
+        return (m_count > 0) ? m_count : 1;
+    }
+    bool isCounted()
+    {
+        return m_iscounted;
+    }
 
     bool startNormalMode();
     bool startInsertMode();
@@ -150,10 +165,10 @@ class KTEXTEDITOR_EXPORT KateViModeBase : public QObject
     bool startVisualBlockMode();
     bool startReplaceMode();
 
-    QChar getChosenRegister( const QChar &defaultReg ) const;
-    QString getRegisterContent( const QChar &reg );
-    OperationMode getRegisterFlag( const QChar &reg ) const;
-    void fillRegister( const QChar &reg, const QString &text, OperationMode flag = CharWise);
+    QChar getChosenRegister(const QChar &defaultReg) const;
+    QString getRegisterContent(const QChar &reg);
+    OperationMode getRegisterFlag(const QChar &reg) const;
+    void fillRegister(const QChar &reg, const QString &text, OperationMode flag = CharWise);
 
     void switchView(Direction direction = Next);
 
@@ -175,12 +190,14 @@ class KTEXTEDITOR_EXPORT KateViModeBase : public QObject
     bool m_lastMotionWasVisualLineUpOrDown;
     bool m_currentMotionWasVisualLineUpOrDown;
 
-    inline KateDocument* doc() const { return m_view->doc(); };
-
+    inline KateDocument *doc() const
+    {
+        return m_view->doc();
+    };
 
     KateView *m_view;
     KateViewInternal *m_viewInternal;
-    KateViInputModeManager* m_viInputModeManager;
+    KateViInputModeManager *m_viInputModeManager;
 
     // info message of vi mode
     QPointer<KTextEditor::Message> m_infoMessage;

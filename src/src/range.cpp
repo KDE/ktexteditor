@@ -30,222 +30,236 @@ Range::Range()
 {
 }
 
-Range::Range(const Cursor& start, const Cursor& end)
+Range::Range(const Cursor &start, const Cursor &end)
 {
-  if (start <= end) {
-    m_start = start;
-    m_end = end;
-  } else {
-    m_start = end;
-    m_end = start;
-  }
+    if (start <= end) {
+        m_start = start;
+        m_end = end;
+    } else {
+        m_start = end;
+        m_end = start;
+    }
 }
 
-Range::Range(const Cursor& start, int width)
-  : m_start(start)
-  , m_end(start.line(), start.column() + width)
+Range::Range(const Cursor &start, int width)
+    : m_start(start)
+    , m_end(start.line(), start.column() + width)
 {
 }
 
-Range::Range(const Cursor& start, int endLine, int endColumn)
-  : m_start(start)
-  , m_end(endLine, endColumn)
+Range::Range(const Cursor &start, int endLine, int endColumn)
+    : m_start(start)
+    , m_end(endLine, endColumn)
 {
-  if (m_end < m_start) {
-    Cursor temp = m_end;
-    m_end = m_start;
-    m_start = temp;
-  }
+    if (m_end < m_start) {
+        Cursor temp = m_end;
+        m_end = m_start;
+        m_start = temp;
+    }
 }
 
 Range::Range(int startLine, int startColumn, int endLine, int endColumn)
-  : m_start(startLine, startColumn)
-  , m_end(endLine, endColumn)
+    : m_start(startLine, startColumn)
+    , m_end(endLine, endColumn)
 {
-  if (m_end < m_start) {
-    Cursor temp = m_end;
-    m_end = m_start;
-    m_start = temp;
-  }
+    if (m_end < m_start) {
+        Cursor temp = m_end;
+        m_end = m_start;
+        m_start = temp;
+    }
 }
 
-bool Range::isValid( ) const
+bool Range::isValid() const
 {
-  return start().isValid() && end().isValid();
+    return start().isValid() && end().isValid();
 }
 
 Range Range::invalid()
 {
-  return Range (Cursor(-1, -1), Cursor(-1, -1));
+    return Range(Cursor(-1, -1), Cursor(-1, -1));
 }
 
-void Range::setRange(const Range& range)
+void Range::setRange(const Range &range)
 {
-  m_start = range.start();
-  m_end = range.end();
+    m_start = range.start();
+    m_end = range.end();
 }
 
-void Range::setRange( const Cursor & start, const Cursor & end )
+void Range::setRange(const Cursor &start, const Cursor &end)
 {
-  if (start > end)
-    setRange(Range(end, start));
-  else
-    setRange(Range(start, end));
+    if (start > end) {
+        setRange(Range(end, start));
+    } else {
+        setRange(Range(start, end));
+    }
 }
 
 bool Range::containsLine(int line) const
 {
-  return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
+    return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
 }
 
 bool Range::overlapsLine(int line) const
 {
-  return line >= start().line() && line <= end().line();
+    return line >= start().line() && line <= end().line();
 }
 
-bool Range::overlapsColumn( int col ) const
+bool Range::overlapsColumn(int col) const
 {
-  return start().column() <= col && end().column() > col;
+    return start().column() <= col && end().column() > col;
 }
 
-bool Range::contains( const Cursor& cursor ) const
+bool Range::contains(const Cursor &cursor) const
 {
-  return cursor >= start() && cursor < end();
+    return cursor >= start() && cursor < end();
 }
 
-bool Range::contains( const Range& range ) const
+bool Range::contains(const Range &range) const
 {
-  return range.start() >= start() && range.end() <= end();
+    return range.start() >= start() && range.end() <= end();
 }
 
-bool Range::containsColumn( int column ) const
+bool Range::containsColumn(int column) const
 {
-  return column >= start().column() && column < end().column();
+    return column >= start().column() && column < end().column();
 }
 
-bool Range::overlaps( const Range& range ) const
+bool Range::overlaps(const Range &range) const
 {
-  if (range.start() <= start())
-    return range.end() > start();
+    if (range.start() <= start()) {
+        return range.end() > start();
+    }
 
-  else if (range.end() >= end())
-    return range.start() < end();
+    else if (range.end() >= end()) {
+        return range.start() < end();
+    }
 
-  else
-    return contains(range);
+    else {
+        return contains(range);
+    }
 }
 
-bool Range::boundaryAtCursor(const Cursor& cursor) const
+bool Range::boundaryAtCursor(const Cursor &cursor) const
 {
-  return cursor == start() || cursor == end();
+    return cursor == start() || cursor == end();
 }
 
 bool Range::boundaryOnLine(int line) const
 {
-  return start().line() == line || end().line() == line;
+    return start().line() == line || end().line() == line;
 }
 
-bool Range::confineToRange(const Range& range)
+bool Range::confineToRange(const Range &range)
 {
-  if (start() < range.start())
-    if (end() > range.end())
-      setRange(range);
-    else
-      setStart (range.start());
-  else if (end() > range.end())
-    setEnd (range.end());
-  else
-    return false;
+    if (start() < range.start())
+        if (end() > range.end()) {
+            setRange(range);
+        } else {
+            setStart(range.start());
+        }
+    else if (end() > range.end()) {
+        setEnd(range.end());
+    } else {
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
-bool Range::expandToRange(const Range& range)
+bool Range::expandToRange(const Range &range)
 {
-  if (start() > range.start())
-    if (end() < range.end())
-      setRange(range);
-    else
-      setStart (range.start());
-  else if (end() < range.end())
-    setEnd (range.end());
-  else
-    return false;
+    if (start() > range.start())
+        if (end() < range.end()) {
+            setRange(range);
+        } else {
+            setStart(range.start());
+        }
+    else if (end() < range.end()) {
+        setEnd(range.end());
+    } else {
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
-void Range::setBothLines( int line )
+void Range::setBothLines(int line)
 {
-  setRange(Range(line, start().column(), line, end().column()));
+    setRange(Range(line, start().column(), line, end().column()));
 }
 
-bool KTextEditor::Range::onSingleLine( ) const
+bool KTextEditor::Range::onSingleLine() const
 {
-  return start().line() == end().line();
+    return start().line() == end().line();
 }
 
-int KTextEditor::Range::columnWidth( ) const
+int KTextEditor::Range::columnWidth() const
 {
-  return end().column() - start().column();
+    return end().column() - start().column();
 }
 
-int KTextEditor::Range::numberOfLines( ) const
+int KTextEditor::Range::numberOfLines() const
 {
-  return end().line() - start().line();
+    return end().line() - start().line();
 }
 
-bool KTextEditor::Range::isEmpty( ) const
+bool KTextEditor::Range::isEmpty() const
 {
-  return start() == end();
+    return start() == end();
 }
 
-int Range::positionRelativeToCursor( const Cursor & cursor ) const
+int Range::positionRelativeToCursor(const Cursor &cursor) const
 {
-  if (end() <= cursor)
-    return -1;
+    if (end() <= cursor) {
+        return -1;
+    }
 
-  if (start() > cursor)
-    return +1;
+    if (start() > cursor) {
+        return +1;
+    }
 
-  return 0;
+    return 0;
 }
 
-int Range::positionRelativeToLine( int line ) const
+int Range::positionRelativeToLine(int line) const
 {
-  if (end().line() < line)
-    return -1;
+    if (end().line() < line) {
+        return -1;
+    }
 
-  if (start().line() > line)
-    return +1;
+    if (start().line() > line) {
+        return +1;
+    }
 
-  return 0;
+    return 0;
 }
 
-void KTextEditor::Range::setBothColumns( int column )
+void KTextEditor::Range::setBothColumns(int column)
 {
-  setRange(Range(start().line(), column, end().line(), column));
+    setRange(Range(start().line(), column, end().line(), column));
 }
 
-Range KTextEditor::Range::intersect( const Range & range ) const
+Range KTextEditor::Range::intersect(const Range &range) const
 {
-  if (!isValid() || !range.isValid() || *this > range || *this < range)
-    return invalid();
+    if (!isValid() || !range.isValid() || *this > range || *this < range) {
+        return invalid();
+    }
 
-  return Range(qMax(start(), range.start()), qMin(end(), range.end()));
+    return Range(qMax(start(), range.start()), qMin(end(), range.end()));
 }
 
-Range KTextEditor::Range::encompass( const Range & range ) const
+Range KTextEditor::Range::encompass(const Range &range) const
 {
-  if (!isValid())
-    if (range.isValid())
-      return range;
-    else
-      return invalid();
-  else if (!range.isValid())
-    return *this;
-  else
-    return Range(qMin(start(), range.start()), qMax(end(), range.end()));
+    if (!isValid())
+        if (range.isValid()) {
+            return range;
+        } else {
+            return invalid();
+        }
+    else if (!range.isValid()) {
+        return *this;
+    } else {
+        return Range(qMin(start(), range.start()), qMax(end(), range.end()));
+    }
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

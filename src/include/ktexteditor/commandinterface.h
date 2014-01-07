@@ -75,13 +75,13 @@ class View;
  */
 class KTEXTEDITOR_EXPORT Command
 {
-  public:
+public:
     /**
      * Virtual destructor.
      */
-    virtual ~Command () {}
+    virtual ~Command() {}
 
-  public:
+public:
     /**
      * Return a list of strings a command may begin with.
      * A string is the start part of a pure text which can be handled by this
@@ -89,7 +89,7 @@ class KTEXTEDITOR_EXPORT Command
      * simply \e s, and for char:1212 simply \e char.
      * \return list of supported commands
      */
-    virtual const QStringList &cmds () = 0;
+    virtual const QStringList &cmds() = 0;
 
     /**
      * Execute the command for the given \p view and \p cmd string.
@@ -101,7 +101,7 @@ class KTEXTEDITOR_EXPORT Command
      *
      * \return \e true on success, otherwise \e false
      */
-    virtual bool exec (KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
 
     /**
      * Shows help for the given \p view and \p cmd string.
@@ -110,7 +110,7 @@ class KTEXTEDITOR_EXPORT Command
      * the Editor in a Qt::RichText enabled widget, e.g. a QToolTip.
      * \return \e true if your command has a help text, otherwise \e false
      */
-    virtual bool help (KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
+    virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
 };
 
 /**
@@ -137,7 +137,7 @@ class KTEXTEDITOR_EXPORT Command
  */
 class KTEXTEDITOR_EXPORT CommandExtension
 {
-  public:
+public:
     /**
      * Virtual destructor.
      */
@@ -154,7 +154,7 @@ class KTEXTEDITOR_EXPORT CommandExtension
      * completions are displayed, existing flags are left out.
      * \param list flag list
      */ //### this is yet to be tried
-    virtual void flagCompletions( QStringList&list ) = 0;
+    virtual void flagCompletions(QStringList &list) = 0;
 
     /**
      * Return a KCompletion object that will substitute the command line
@@ -168,8 +168,8 @@ class KTEXTEDITOR_EXPORT CommandExtension
      * \return the completion object or NULL, if you do not support a
      *         completion object
      */
-    virtual KCompletion *completionObject( KTextEditor::View *view,
-                                           const QString & cmdname ) = 0;
+    virtual KCompletion *completionObject(KTextEditor::View *view,
+                                          const QString &cmdname) = 0;
 
     /**
      * Check, whether the command wants to process text interactively for the
@@ -185,7 +185,7 @@ class KTEXTEDITOR_EXPORT CommandExtension
      *         otherwise \e false
      * \see processText()
      */
-    virtual bool wantsToProcessText( const QString &cmdname ) = 0;
+    virtual bool wantsToProcessText(const QString &cmdname) = 0;
 
     /**
      * This is called by the command line each time the argument text for the
@@ -194,7 +194,7 @@ class KTEXTEDITOR_EXPORT CommandExtension
      * \param text the current command text typed by the user
      * \see wantsToProcessText()
      */ // ### yet to be tested. The obvious candidate is isearch.
-    virtual void processText( KTextEditor::View *view, const QString &text ) = 0;
+    virtual void processText(KTextEditor::View *view, const QString &text) = 0;
 };
 
 /**
@@ -232,13 +232,13 @@ class KTEXTEDITOR_EXPORT CommandExtension
  */
 class KTEXTEDITOR_EXPORT CommandInterface
 {
-  public:
+public:
     /**
      * Virtual destructor.
      */
-    virtual ~CommandInterface () {}
+    virtual ~CommandInterface() {}
 
-  public:
+public:
     /**
      * Register a the new command \p cmd. The command will be registered for
      * all documents, i.e. every command is global.
@@ -247,7 +247,7 @@ class KTEXTEDITOR_EXPORT CommandInterface
      * \return \e true on success, otherwise \e false
      * \see unregisterCommand()
      */
-    virtual bool registerCommand (Command *cmd) = 0;
+    virtual bool registerCommand(Command *cmd) = 0;
 
     /**
      * Unregister the command \p cmd. The command will be unregistered for
@@ -257,7 +257,7 @@ class KTEXTEDITOR_EXPORT CommandInterface
      * \return \e true on success, otherwise \e false
      * \see registerCommand()
      */
-    virtual bool unregisterCommand (Command *cmd) = 0;
+    virtual bool unregisterCommand(Command *cmd) = 0;
 
     /**
      * Query for the command \p cmd.
@@ -266,14 +266,14 @@ class KTEXTEDITOR_EXPORT CommandInterface
      * \param cmd name of command to query for
      * \return the found command or NULL if no such command exists
      */
-    virtual Command *queryCommand (const QString &cmd) const = 0;
+    virtual Command *queryCommand(const QString &cmd) const = 0;
 
     /**
      * Get a list of all registered commands.
      * \return list of all commands
      * \see queryCommand(), commandList()
      */
-    virtual QList<Command*> commands() const = 0;
+    virtual QList<Command *> commands() const = 0;
 
     /**
      * Get a list of available command line strings.
@@ -305,7 +305,7 @@ class KTEXTEDITOR_EXPORT CommandInterface
  */
 class KTEXTEDITOR_EXPORT RangeCommand
 {
-  public:
+public:
     /**
      * Virtual destructor.
      */
@@ -317,8 +317,8 @@ class KTEXTEDITOR_EXPORT RangeCommand
      *
      * \return \e true on success, otherwise \e false
      */
-    virtual bool exec (KTextEditor::View *view, const QString &cmd, QString &msg,
-        const KTextEditor::Range &range) = 0;
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg,
+                      const KTextEditor::Range &range) = 0;
 
     /**
      * Find out if a given command can act on a range. This is used for checking
@@ -328,7 +328,7 @@ class KTEXTEDITOR_EXPORT RangeCommand
      * \return \e true if command supports acting on a range of lines, false if
      * not
      */
-    virtual bool supportsRange (const QString &cmd) = 0;
+    virtual bool supportsRange(const QString &cmd) = 0;
 };
 
 }
@@ -337,4 +337,3 @@ Q_DECLARE_INTERFACE(KTextEditor::CommandInterface, "org.kde.KTextEditor.CommandI
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

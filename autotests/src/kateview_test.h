@@ -24,23 +24,23 @@
 
 class KateViewTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  KateViewTest();
-  ~KateViewTest();
+    KateViewTest();
+    ~KateViewTest();
 
 private Q_SLOTS:
-  void testReloadMultipleViews();
+    void testReloadMultipleViews();
 
-  void testLowerCaseBlockSelection();
+    void testLowerCaseBlockSelection();
 
-  void testFolding_data();
-  void testFolding();
+    void testFolding_data();
+    void testFolding();
 
-  void testBug287291();
+    void testBug287291();
 
-  void testSelection();
+    void testSelection();
 };
 
 #endif // KATE_VIEW_TEST_H

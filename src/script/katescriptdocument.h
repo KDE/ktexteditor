@@ -45,11 +45,11 @@ class KateDocument;
  */
 class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScriptable
 {
-  Q_OBJECT
-  // Note: we have no Q_PROPERTIES due to consistency: everything is a function.
+    Q_OBJECT
+    // Note: we have no Q_PROPERTIES due to consistency: everything is a function.
 
-  public:
-    KateScriptDocument(QObject *parent=0);
+public:
+    KateScriptDocument(QObject *parent = 0);
     void setDocument(KateDocument *document);
     KateDocument *document();
 
@@ -60,38 +60,38 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
     Q_INVOKABLE QString encoding();
     Q_INVOKABLE QString highlightingMode();
     Q_INVOKABLE QStringList embeddedHighlightingModes();
-    Q_INVOKABLE QString highlightingModeAt(const KTextEditor::Cursor& pos);
+    Q_INVOKABLE QString highlightingModeAt(const KTextEditor::Cursor &pos);
     Q_INVOKABLE bool isModified();
     Q_INVOKABLE QString text();
     Q_INVOKABLE QString text(int fromLine, int fromColumn, int toLine, int toColumn);
-    Q_INVOKABLE QString text(const KTextEditor::Cursor& from, const KTextEditor::Cursor& to);
-    Q_INVOKABLE QString text(const KTextEditor::Range& range);
+    Q_INVOKABLE QString text(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to);
+    Q_INVOKABLE QString text(const KTextEditor::Range &range);
     Q_INVOKABLE QString line(int line);
     Q_INVOKABLE QString wordAt(int line, int column);
-    Q_INVOKABLE QString wordAt(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE QString wordAt(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE KTextEditor::Range wordRangeAt(int line, int column);
-    Q_INVOKABLE KTextEditor::Range wordRangeAt(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE QString charAt(int line, int column);
-    Q_INVOKABLE QString charAt(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE QString charAt(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE QString firstChar(int line);
     Q_INVOKABLE QString lastChar(int line);
     Q_INVOKABLE bool isSpace(int line, int column);
-    Q_INVOKABLE bool isSpace(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isSpace(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool matchesAt(int line, int column, const QString &s);
-    Q_INVOKABLE bool matchesAt(const KTextEditor::Cursor& cursor, const QString &s);
+    Q_INVOKABLE bool matchesAt(const KTextEditor::Cursor &cursor, const QString &s);
     Q_INVOKABLE bool setText(const QString &s);
     Q_INVOKABLE bool clear();
     Q_INVOKABLE bool truncate(int line, int column);
-    Q_INVOKABLE bool truncate(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool truncate(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool insertText(int line, int column, const QString &s);
-    Q_INVOKABLE bool insertText(const KTextEditor::Cursor& cursor, const QString &s);
+    Q_INVOKABLE bool insertText(const KTextEditor::Cursor &cursor, const QString &s);
     Q_INVOKABLE bool removeText(int fromLine, int fromColumn, int toLine, int toColumn);
-    Q_INVOKABLE bool removeText(const KTextEditor::Cursor& from, const KTextEditor::Cursor& to);
-    Q_INVOKABLE bool removeText(const KTextEditor::Range& range);
+    Q_INVOKABLE bool removeText(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to);
+    Q_INVOKABLE bool removeText(const KTextEditor::Range &range);
     Q_INVOKABLE bool insertLine(int line, const QString &s);
     Q_INVOKABLE bool removeLine(int line);
     Q_INVOKABLE bool wrapLine(int line, int column);
-    Q_INVOKABLE bool wrapLine(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool wrapLine(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE void joinLines(int startLine, int endLine);
     Q_INVOKABLE int lines();
     Q_INVOKABLE int length();
@@ -101,9 +101,9 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
     Q_INVOKABLE int firstColumn(int line);
     Q_INVOKABLE int lastColumn(int line);
     Q_INVOKABLE int prevNonSpaceColumn(int line, int column);
-    Q_INVOKABLE int prevNonSpaceColumn(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE int prevNonSpaceColumn(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE int nextNonSpaceColumn(int line, int column);
-    Q_INVOKABLE int nextNonSpaceColumn(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE int nextNonSpaceColumn(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE int prevNonEmptyLine(int line);
     Q_INVOKABLE int nextNonEmptyLine(int line);
     Q_INVOKABLE bool isInWord(const QString &character, int attribute);
@@ -120,25 +120,25 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
      * Get the syntax highlighting attribute at a given position in the document.
      */
     Q_INVOKABLE int attribute(int line, int column);
-    Q_INVOKABLE int attribute(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE int attribute(const KTextEditor::Cursor &cursor);
 
     /**
      * Return true if the highlight attribute equals @p attr.
      */
     Q_INVOKABLE bool isAttribute(int line, int column, int attr);
-    Q_INVOKABLE bool isAttribute(const KTextEditor::Cursor& cursor, int attr);
+    Q_INVOKABLE bool isAttribute(const KTextEditor::Cursor &cursor, int attr);
 
     /**
      * Get the name of the syntax highlighting attribute at the given position.
      */
     Q_INVOKABLE QString attributeName(int line, int column);
-    Q_INVOKABLE QString attributeName(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE QString attributeName(const KTextEditor::Cursor &cursor);
 
     /**
      * Return true is the name of the syntax attribute equals @p name.
      */
     Q_INVOKABLE bool isAttributeName(int line, int column, const QString &name);
-    Q_INVOKABLE bool isAttributeName(const KTextEditor::Cursor& cursor, const QString &name);
+    Q_INVOKABLE bool isAttributeName(const KTextEditor::Cursor &cursor, const QString &name);
 
     Q_INVOKABLE QString variable(const QString &s);
     Q_INVOKABLE QString setVariable(const QString &s, const QString &v);
@@ -147,46 +147,43 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
     Q_INVOKABLE int firstVirtualColumn(int line);
     Q_INVOKABLE int lastVirtualColumn(int line);
     Q_INVOKABLE int toVirtualColumn(int line, int column);
-    Q_INVOKABLE int toVirtualColumn(const KTextEditor::Cursor& cursor);
-    Q_INVOKABLE KTextEditor::Cursor toVirtualCursor(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE int toVirtualColumn(const KTextEditor::Cursor &cursor);
+    Q_INVOKABLE KTextEditor::Cursor toVirtualCursor(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE int fromVirtualColumn(int line, int virtualColumn);
-    Q_INVOKABLE int fromVirtualColumn(const KTextEditor::Cursor& virtualCursor);
-    Q_INVOKABLE KTextEditor::Cursor fromVirtualCursor(const KTextEditor::Cursor& virtualCursor);
+    Q_INVOKABLE int fromVirtualColumn(const KTextEditor::Cursor &virtualCursor);
+    Q_INVOKABLE KTextEditor::Cursor fromVirtualCursor(const KTextEditor::Cursor &virtualCursor);
 
     Q_INVOKABLE KTextEditor::Cursor anchor(int line, int column, QChar character);
-    Q_INVOKABLE KTextEditor::Cursor anchor(const KTextEditor::Cursor& cursor, QChar character);
-    Q_INVOKABLE KTextEditor::Cursor rfind(int line, int column, const QString& text, int attribute = -1);
-    Q_INVOKABLE KTextEditor::Cursor rfind(const KTextEditor::Cursor& cursor, const QString& text, int attribute = -1);
+    Q_INVOKABLE KTextEditor::Cursor anchor(const KTextEditor::Cursor &cursor, QChar character);
+    Q_INVOKABLE KTextEditor::Cursor rfind(int line, int column, const QString &text, int attribute = -1);
+    Q_INVOKABLE KTextEditor::Cursor rfind(const KTextEditor::Cursor &cursor, const QString &text, int attribute = -1);
 
     Q_INVOKABLE int defStyleNum(int line, int column);
-    Q_INVOKABLE int defStyleNum(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE int defStyleNum(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isCode(int line, int column);
-    Q_INVOKABLE bool isCode(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isCode(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isComment(int line, int column);
-    Q_INVOKABLE bool isComment(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isComment(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isString(int line, int column);
-    Q_INVOKABLE bool isString(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isString(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isRegionMarker(int line, int column);
-    Q_INVOKABLE bool isRegionMarker(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isRegionMarker(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isChar(int line, int column);
-    Q_INVOKABLE bool isChar(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isChar(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE bool isOthers(int line, int column);
-    Q_INVOKABLE bool isOthers(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE bool isOthers(const KTextEditor::Cursor &cursor);
 
-
-    Q_INVOKABLE bool startsWith (int line, const QString &pattern, bool skipWhiteSpaces);
-    Q_INVOKABLE bool endsWith (int line, const QString &pattern, bool skipWhiteSpaces);
+    Q_INVOKABLE bool startsWith(int line, const QString &pattern, bool skipWhiteSpaces);
+    Q_INVOKABLE bool endsWith(int line, const QString &pattern, bool skipWhiteSpaces);
 
     Q_INVOKABLE void indent(KTextEditor::Range range, int change);
-    Q_INVOKABLE void align(const KTextEditor::Range& range);
+    Q_INVOKABLE void align(const KTextEditor::Range &range);
 
-  private:
+private:
     bool _isCode(int defaultStyle);
 
     KateDocument *m_document;
 };
 
-
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

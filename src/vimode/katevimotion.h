@@ -37,13 +37,13 @@ class KateViNormalMode;
 
 class KTEXTEDITOR_EXPORT KateViMotion : public KateViCommand
 {
-  public:
-    KateViMotion( KateViNormalMode *parent, const QString &pattern,
-        KateViRange (KateViNormalMode::*commandMethod)(), unsigned int flags = 0 );
+public:
+    KateViMotion(KateViNormalMode *parent, const QString &pattern,
+                 KateViRange(KateViNormalMode::*commandMethod)(), unsigned int flags = 0);
     KateViRange execute() const;
 
-  protected:
-    KateViRange (KateViNormalMode::*m_ptr2commandMethod)();
+protected:
+    KateViRange(KateViNormalMode::*m_ptr2commandMethod)();
 };
 
 #endif

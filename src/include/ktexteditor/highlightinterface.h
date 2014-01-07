@@ -71,25 +71,25 @@ class Document;
  */
 class KTEXTEDITOR_EXPORT HighlightInterface
 {
-  public:
+public:
     ///TODO: Documentation
     enum DefaultStyle {
-      dsNormal,
-      dsKeyword,
-      dsDataType,
-      dsDecVal,
-      dsBaseN,
-      dsFloat,
-      dsChar,
-      dsString,
-      dsComment,
-      dsOthers,
-      dsAlert,
-      dsFunction,
-      dsRegionMarker,
-      dsError
+        dsNormal,
+        dsKeyword,
+        dsDataType,
+        dsDecVal,
+        dsBaseN,
+        dsFloat,
+        dsChar,
+        dsString,
+        dsComment,
+        dsOthers,
+        dsAlert,
+        dsFunction,
+        dsRegionMarker,
+        dsError
     };
-    
+
     /**
      * Constructor.
      */
@@ -112,16 +112,16 @@ class KTEXTEDITOR_EXPORT HighlightInterface
     ///
     /// TODO: KDE5 mark as movable
     struct AttributeBlock {
-      AttributeBlock(const int _start, const int _length, const Attribute::Ptr & _attribute)
-        : start(_start), length(_length), attribute(_attribute)
-      {
-      }
-      /// The column this attribute starts at.
-      int start;
-      /// The number of columns this attribute spans.
-      int length;
-      /// The attribute for the current range.
-      Attribute::Ptr attribute;
+        AttributeBlock(const int _start, const int _length, const Attribute::Ptr &_attribute)
+            : start(_start), length(_length), attribute(_attribute)
+        {
+        }
+        /// The column this attribute starts at.
+        int start;
+        /// The number of columns this attribute spans.
+        int length;
+        /// The attribute for the current range.
+        Attribute::Ptr attribute;
     };
 
     /**
@@ -136,7 +136,7 @@ class KTEXTEDITOR_EXPORT HighlightInterface
      *
      * Each document can be highlighted using an arbitrary number of highlighting
      * contexts. This method will return the names for each of the used modes.
-     * 
+     *
      * Example: The "PHP (HTML)" mode includes the highlighting for PHP, HTML, CSS and JavaScript.
      *
      * \return Returns a list of embedded highlighting modes for the current Document.
@@ -165,4 +165,3 @@ Q_DECLARE_INTERFACE(KTextEditor::HighlightInterface, "org.kde.KTextEditor.Highli
 
 #endif // KDELIBS_KTEXTEDITOR_HIGHLIGHTINTERFACE_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

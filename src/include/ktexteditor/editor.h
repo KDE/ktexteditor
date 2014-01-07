@@ -99,101 +99,101 @@ class Document;
  */
 class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  protected:
+protected:
     /**
      * Constructor.
      *
      * Create the Editor object with \p parent.
      * \param parent parent object
      */
-    Editor ( QObject *parent );
+    Editor(QObject *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~Editor ();
+    virtual ~Editor();
 
-  public:
+public:
     /**
      * Accessor to get the Editor instance.
      *
      * That Editor instance can be qobject-cast to specific extensions.
      * If the result of the cast is not NULL, that extension is supported.
-     * 
+     *
      * This object will stay alive until QCoreApplication terminates.
      * You shall not delete it yourself.
      * There is only ONE instance of this per process.
      *
      * \return Editor controller, after initial construction, will live until QCoreApplication is terminating.
      */
-    static Editor *instance ();
-    
-  public:
+    static Editor *instance();
+
+public:
     /**
      * Set the global application object.
      * This will allow the editor component to access
      * the hosting application.
      * @param application application object
      */
-    virtual void setApplication (KTextEditor::Application *application) = 0;
-    
+    virtual void setApplication(KTextEditor::Application *application) = 0;
+
     /**
      * Current hosting application, if any set.
      * @return current application object or nullptr
      */
-    virtual KTextEditor::Application *application () const = 0;
+    virtual KTextEditor::Application *application() const = 0;
 
-  /*
-   * Methods to create and manage the documents.
-   */
-  public:
+    /*
+     * Methods to create and manage the documents.
+     */
+public:
     /**
      * Create a new document object with \p parent.
      * \param parent parent object
      * \return new KTextEditor::Document object
      * \see documents()
      */
-    virtual Document *createDocument ( QObject *parent ) = 0;
+    virtual Document *createDocument(QObject *parent) = 0;
 
     /**
      * Get a list of all documents of this editor.
      * \return list of all existing documents
      * \see createDocument()
      */
-    virtual const QList<Document*> &documents () = 0;
+    virtual const QList<Document *> &documents() = 0;
 
-  /*
-   * General Information about this editor.
-   */
-  public:
+    /*
+     * General Information about this editor.
+     */
+public:
     /**
      * Get the about data of this Editor part.
      * \return about data
      */
-    virtual const KAboutData &aboutData () const = 0;
+    virtual const KAboutData &aboutData() const = 0;
 
     /**
      * Get the current default encoding for this Editor part.
      * \return default encoding
      * \since 4.5
      */
-    const QString &defaultEncoding () const;
+    const QString &defaultEncoding() const;
 
-  protected:
+protected:
     /**
      * Set the current default encoding for this Editor part.
      * Editor part implementation should call this internally on creation and config changes.
      * \param defaultEncoding new default encoding
      * \since 4.5
      */
-    void setDefaultEncoding (const QString &defaultEncoding);
+    void setDefaultEncoding(const QString &defaultEncoding);
 
-  /*
-   * Configuration management.
-   */
-  public:
+    /*
+     * Configuration management.
+     */
+public:
     /**
      * Read editor configuration from KConfig \p config.
      *
@@ -203,7 +203,7 @@ class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
      * \param config config object
      * \see writeConfig()
      */
-    virtual void readConfig (KConfig *config = 0) = 0;
+    virtual void readConfig(KConfig *config = 0) = 0;
 
     /**
      * Write editor configuration to KConfig \p config.
@@ -214,7 +214,7 @@ class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
      * \param config config object
      * \see readConfig()
      */
-    virtual void writeConfig (KConfig *config = 0) = 0;
+    virtual void writeConfig(KConfig *config = 0) = 0;
 
     /**
      * Show the editor's config dialog, changes will be applied to the
@@ -226,9 +226,9 @@ class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
      *       configPage() inherited by ConfigPageInterface.
      * \param parent parent widget
      */
-    virtual void configDialog (QWidget *parent) = 0;
+    virtual void configDialog(QWidget *parent) = 0;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * The \p editor emits this signal whenever a \p document was successfully
      * created.
@@ -236,15 +236,14 @@ class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
      * \param document the newly created document instance
      * \see createDocument()
      */
-    void documentCreated (KTextEditor::Editor *editor,
-                          KTextEditor::Document *document);
+    void documentCreated(KTextEditor::Editor *editor,
+                         KTextEditor::Document *document);
 
-  private:
-    class EditorPrivate* const d;
+private:
+    class EditorPrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

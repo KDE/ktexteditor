@@ -48,115 +48,114 @@
 
 void KateModeMenu::init()
 {
-  m_doc = 0;
+    m_doc = 0;
 
-  connect( menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)) );
+    connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
 
-  connect(menu(),SIGNAL(aboutToShow()),this,SLOT(slotAboutToShow()));
+    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
 
-  m_actionGroup = new QActionGroup(menu());
+    m_actionGroup = new QActionGroup(menu());
 }
 
-KateModeMenu::~KateModeMenu( )
+KateModeMenu::~KateModeMenu()
 {
-  qDeleteAll(subMenus);
+    qDeleteAll(subMenus);
 }
 
-void KateModeMenu::updateMenu (KTextEditor::Document *doc)
+void KateModeMenu::updateMenu(KTextEditor::Document *doc)
 {
-  m_doc = static_cast<KateDocument *>(doc);
+    m_doc = static_cast<KateDocument *>(doc);
 }
 
 void KateModeMenu::slotAboutToShow()
 {
-  KateDocument *doc=m_doc;
-  int count = KateGlobal::self()->modeManager()->list().count();
+    KateDocument *doc = m_doc;
+    int count = KateGlobal::self()->modeManager()->list().count();
 
-  for (int z=0; z<count; z++)
-  {
-    QString nameRaw = KateGlobal::self()->modeManager()->list().at(z)->name;
-    QString hlName = KateGlobal::self()->modeManager()->list().at(z)->nameTranslated();
-    QString hlSection = KateGlobal::self()->modeManager()->list().at(z)->sectionTranslated();
+    for (int z = 0; z < count; z++) {
+        QString nameRaw = KateGlobal::self()->modeManager()->list().at(z)->name;
+        QString hlName = KateGlobal::self()->modeManager()->list().at(z)->nameTranslated();
+        QString hlSection = KateGlobal::self()->modeManager()->list().at(z)->sectionTranslated();
 
-    if ( !hlSection.isEmpty() && !names.contains(hlName) )
-    {
-      if (!subMenusName.contains(hlSection))
-      {
-        subMenusName << hlSection;
-        QMenu *qmenu = new QMenu (hlSection);
-        connect( qmenu, SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)) );
-        subMenus.append(qmenu);
-        menu()->addMenu (qmenu);
-      }
+        if (!hlSection.isEmpty() && !names.contains(hlName)) {
+            if (!subMenusName.contains(hlSection)) {
+                subMenusName << hlSection;
+                QMenu *qmenu = new QMenu(hlSection);
+                connect(qmenu, SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
+                subMenus.append(qmenu);
+                menu()->addMenu(qmenu);
+            }
 
-      int m = subMenusName.indexOf (hlSection);
-      names << hlName;
-      QAction *action = subMenus.at(m)->addAction ( hlName );
-      m_actionGroup->addAction(action);
-      action->setCheckable( true );
-      action->setData( nameRaw );
-    }
-    else if (!names.contains(hlName))
-    {
-      names << hlName;
+            int m = subMenusName.indexOf(hlSection);
+            names << hlName;
+            QAction *action = subMenus.at(m)->addAction(hlName);
+            m_actionGroup->addAction(action);
+            action->setCheckable(true);
+            action->setData(nameRaw);
+        } else if (!names.contains(hlName)) {
+            names << hlName;
 
-      disconnect( menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)) );
-      connect( menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)) );
+            disconnect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
+            connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
 
-      QAction *action = menu()->addAction ( hlName );
-      m_actionGroup->addAction(action);
-      action->setCheckable( true );
-      action->setData( nameRaw );
-    }
-  }
-
-  if (!doc) return;
-
-  for (int i=0;i<subMenus.count();i++)
-  {
-    QList<QAction*> actions = subMenus.at( i )->actions();
-    for ( int j = 0; j < actions.count(); ++j )
-      actions[ j ]->setChecked( false );
-  }
-
-  QList<QAction*> actions = menu()->actions();
-  for ( int i = 0; i < actions.count(); ++i )
-    actions[ i ]->setChecked( false );
-
-  if (doc->fileType().isEmpty() || doc->fileType() == QLatin1String("Normal")) {
-    for ( int i = 0; i < actions.count(); ++i ) {
-      if ( actions[ i ]->data().toString() == QLatin1String("Normal") )
-        actions[ i ]->setChecked( true );
-    }
-  } else {
-    if (!doc->fileType().isEmpty())
-    {
-      const KateFileType& t = KateGlobal::self()->modeManager()->fileType(doc->fileType());
-      int i = subMenusName.indexOf (t.section);
-      if (i >= 0 && subMenus.at(i)) {
-        QList<QAction*> actions = subMenus.at( i )->actions();
-        for ( int j = 0; j < actions.count(); ++j ) {
-          if ( actions[ j ]->data().toString() == doc->fileType() )
-            actions[ j ]->setChecked( true );
+            QAction *action = menu()->addAction(hlName);
+            m_actionGroup->addAction(action);
+            action->setCheckable(true);
+            action->setData(nameRaw);
         }
-      } else {
-        QList<QAction*> actions = menu()->actions();
-        for ( int j = 0; j < actions.count(); ++j ) {
-          if ( actions[ j ]->data().toString().isEmpty() )
-            actions[ j ]->setChecked( true );
-        }
-      }
     }
-  }
+
+    if (!doc) {
+        return;
+    }
+
+    for (int i = 0; i < subMenus.count(); i++) {
+        QList<QAction *> actions = subMenus.at(i)->actions();
+        for (int j = 0; j < actions.count(); ++j) {
+            actions[ j ]->setChecked(false);
+        }
+    }
+
+    QList<QAction *> actions = menu()->actions();
+    for (int i = 0; i < actions.count(); ++i) {
+        actions[ i ]->setChecked(false);
+    }
+
+    if (doc->fileType().isEmpty() || doc->fileType() == QLatin1String("Normal")) {
+        for (int i = 0; i < actions.count(); ++i) {
+            if (actions[ i ]->data().toString() == QLatin1String("Normal")) {
+                actions[ i ]->setChecked(true);
+            }
+        }
+    } else {
+        if (!doc->fileType().isEmpty()) {
+            const KateFileType &t = KateGlobal::self()->modeManager()->fileType(doc->fileType());
+            int i = subMenusName.indexOf(t.section);
+            if (i >= 0 && subMenus.at(i)) {
+                QList<QAction *> actions = subMenus.at(i)->actions();
+                for (int j = 0; j < actions.count(); ++j) {
+                    if (actions[ j ]->data().toString() == doc->fileType()) {
+                        actions[ j ]->setChecked(true);
+                    }
+                }
+            } else {
+                QList<QAction *> actions = menu()->actions();
+                for (int j = 0; j < actions.count(); ++j) {
+                    if (actions[ j ]->data().toString().isEmpty()) {
+                        actions[ j ]->setChecked(true);
+                    }
+                }
+            }
+        }
+    }
 }
 
-void KateModeMenu::setType (QAction *action)
+void KateModeMenu::setType(QAction *action)
 {
-  KateDocument *doc=m_doc;
+    KateDocument *doc = m_doc;
 
-  if (doc) {
-    doc->updateFileType(action->data().toString(), true);
-  }
+    if (doc) {
+        doc->updateFileType(action->data().toString(), true);
+    }
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

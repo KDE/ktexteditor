@@ -24,7 +24,8 @@
 #include <QObject>
 #include <ktexteditor/range.h>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 class CodeCompletionModel;
 
@@ -78,7 +79,7 @@ class CodeCompletionModel;
  * to enabled automatic completions.
  *
  * \subsection compiface_manual Manual
- * 
+ *
  * If you need more control over when code completions get shown or not,
  * or which fragment of the text should be considered as the basis for
  * generated completions, proceed as follows:
@@ -92,7 +93,7 @@ class CodeCompletionModel;
  */
 class KTEXTEDITOR_EXPORT CodeCompletionInterface
 {
-  public:
+public:
     virtual ~CodeCompletionInterface();
 
     /**
@@ -103,7 +104,7 @@ class KTEXTEDITOR_EXPORT CodeCompletionInterface
     /**
      * Invoke code completion over a given range, with a specific \a model.
      */
-    virtual void startCompletion(const Range& word, CodeCompletionModel* model) = 0;
+    virtual void startCompletion(const Range &word, CodeCompletionModel *model) = 0;
 
     /**
      * Abort the currently displayed code completion without executing any currently
@@ -124,14 +125,14 @@ class KTEXTEDITOR_EXPORT CodeCompletionInterface
      * \param model new completion model
      * \see unregisterCompletionModel()
      */
-    virtual void registerCompletionModel(CodeCompletionModel* model) = 0;
+    virtual void registerCompletionModel(CodeCompletionModel *model) = 0;
 
     /**
      * Unregister a code completion \p model.
      * \param model the model that should be unregistered
      * \see registerCompletionModel()
      */
-    virtual void unregisterCompletionModel(CodeCompletionModel* model) = 0;
+    virtual void unregisterCompletionModel(CodeCompletionModel *model) = 0;
 
     /**
      * Determine the status of automatic code completion invocation.
@@ -143,7 +144,7 @@ class KTEXTEDITOR_EXPORT CodeCompletionInterface
      */
     virtual void setAutomaticInvocationEnabled(bool enabled = true) = 0;
 
-  //Q_SIGNALS:
+    //Q_SIGNALS:
     //void completionExecuted(KTextEditor::View* view, const KTextEditor::Cursor& position, KTextEditor::CodeCompletionModel* model, int row);
     //void completionAborted(KTextEditor::View* view);
 };

@@ -50,7 +50,7 @@ class Document;
  */
 class Mark
 {
-  public:
+public:
     /** The line that contains the mark. */
     int line;
 
@@ -117,18 +117,18 @@ class Mark
  */
 class KTEXTEDITOR_EXPORT MarkInterface
 {
-  public:
-    MarkInterface ();
+public:
+    MarkInterface();
 
     /**
      * Virtual destructor.
      */
-    virtual ~MarkInterface ();
+    virtual ~MarkInterface();
 
-  //
-  // slots !!!
-  //
-  public:
+    //
+    // slots !!!
+    //
+public:
     /**
      * Get all marks set on the \p line.
      * \param line requested line
@@ -136,7 +136,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      *         by logical OR
      * \see addMark(), removeMark()
      */
-    virtual uint mark (int line) = 0;
+    virtual uint mark(int line) = 0;
 
     /**
      * Set the \p line's mark types to \p markType.
@@ -151,14 +151,14 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param markType mark type
      * \see clearMark(), addMark(), mark()
      */
-    virtual void setMark (int line, uint markType) = 0;
+    virtual void setMark(int line, uint markType) = 0;
 
     /**
      * Clear all marks set in the \p line.
      * \param line line to clear marks
      * \see clearMarks(), removeMark(), addMark()
      */
-    virtual void clearMark (int line) = 0;
+    virtual void clearMark(int line) = 0;
 
     /**
      * Add marks of type \p markType to \p line. Existing marks on this line
@@ -168,7 +168,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param markType mark type
      * \see removeMark(), setMark()
      */
-    virtual void addMark (int line, uint markType) = 0;
+    virtual void addMark(int line, uint markType) = 0;
 
     /**
      * Remove the mark mask of type \p markType from \p line.
@@ -176,21 +176,21 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param markType mark type to be removed
      * \see clearMark()
      */
-    virtual void removeMark (int line, uint markType) = 0;
+    virtual void removeMark(int line, uint markType) = 0;
 
     /**
      * Get a hash holding all marks in the document.
      * The hash key for a mark is its line.
      * \return a hash holding all marks in the document
      */
-    virtual const QHash<int, KTextEditor::Mark*> &marks () = 0;
+    virtual const QHash<int, KTextEditor::Mark *> &marks() = 0;
 
     /**
      * Clear all marks in the entire document.
      * \see clearMark(), removeMark()
      */
     /// TODO: dominik: add argument unit mask = 0
-    virtual void clearMarks () = 0;
+    virtual void clearMarks() = 0;
 
     /**
      * Get the number of predefined mark types we have so far.
@@ -198,7 +198,10 @@ class KTEXTEDITOR_EXPORT MarkInterface
      *              supports the new size!
      * \return number of reserved marker types
      */
-    static int reservedMarkersCount() { return 7; }
+    static int reservedMarkersCount()
+    {
+        return 7;
+    }
 
     /**
      * Predefined mark types.
@@ -206,80 +209,79 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * To add a new standard mark type, edit this interface and document
      * the type.
      */
-    enum MarkTypes
-    {
-      /** Bookmark */
-      markType01= 0x1,
-      /** Breakpoint active */
-      markType02= 0x2,
-      /** Breakpoint reached */
-      markType03= 0x4,
-      /** Breakpoint disabled */
-      markType04= 0x8,
-      /** Execution mark */
-      markType05= 0x10,
-      /** Warning */
-      markType06= 0x20,
-      /** Error */
-      markType07= 0x40,
+    enum MarkTypes {
+        /** Bookmark */
+        markType01 = 0x1,
+        /** Breakpoint active */
+        markType02 = 0x2,
+        /** Breakpoint reached */
+        markType03 = 0x4,
+        /** Breakpoint disabled */
+        markType04 = 0x8,
+        /** Execution mark */
+        markType05 = 0x10,
+        /** Warning */
+        markType06 = 0x20,
+        /** Error */
+        markType07 = 0x40,
 
-      markType08= 0x80,
-      markType09= 0x100,
-      markType10= 0x200,
-      markType11= 0x400,
-      markType12= 0x800,
-      markType13= 0x1000,
-      markType14= 0x2000,
-      markType15= 0x4000,
-      markType16= 0x8000,
-      markType17= 0x10000,
-      markType18= 0x20000,
-      markType19= 0x40000,
-      markType20= 0x80000,
-      markType21= 0x100000,
-      markType22= 0x200000,
-      markType23= 0x400000,
-      markType24= 0x800000,
-      markType25= 0x1000000,
-      markType26= 0x2000000,
-      markType27= 0x4000000,
-      markType28= 0x8000000,
-      markType29= 0x10000000,
-      markType30= 0x20000000,
-      markType31= 0x40000000,
-      markType32= 0x80000000,
-      /* reserved marks */
-      Bookmark = markType01,
-      BreakpointActive = markType02,
-      BreakpointReached = markType03,
-      BreakpointDisabled = markType04,
-      Execution = markType05,
-      Warning = markType06,
-      Error = markType07
+        markType08 = 0x80,
+        markType09 = 0x100,
+        markType10 = 0x200,
+        markType11 = 0x400,
+        markType12 = 0x800,
+        markType13 = 0x1000,
+        markType14 = 0x2000,
+        markType15 = 0x4000,
+        markType16 = 0x8000,
+        markType17 = 0x10000,
+        markType18 = 0x20000,
+        markType19 = 0x40000,
+        markType20 = 0x80000,
+        markType21 = 0x100000,
+        markType22 = 0x200000,
+        markType23 = 0x400000,
+        markType24 = 0x800000,
+        markType25 = 0x1000000,
+        markType26 = 0x2000000,
+        markType27 = 0x4000000,
+        markType28 = 0x8000000,
+        markType29 = 0x10000000,
+        markType30 = 0x20000000,
+        markType31 = 0x40000000,
+        markType32 = 0x80000000,
+        /* reserved marks */
+        Bookmark = markType01,
+        BreakpointActive = markType02,
+        BreakpointReached = markType03,
+        BreakpointDisabled = markType04,
+        Execution = markType05,
+        Warning = markType06,
+        Error = markType07
     };
 
-  //
-  // signals !!!
-  //
-  public:
+    //
+    // signals !!!
+    //
+public:
     /**
      * The \p document emits this signal whenever a mark mask changed.
      * \param document document which emitted this signal
      * \see markChanged()
      */
-    virtual void marksChanged (KTextEditor::Document* document) = 0;
+    virtual void marksChanged(KTextEditor::Document *document) = 0;
 
     /*
      * Methods to modify mark properties.
      */
-  public:
+public:
     /**
      * Set the \p mark's pixmap to \p pixmap.
      * \param mark mark to which the pixmap will be attached
      * \param pixmap new pixmap
      * \see setMarkDescription()
      */
-    virtual void setMarkPixmap( MarkTypes mark, const QPixmap &pixmap ) = 0;
+    virtual void setMarkPixmap(MarkTypes mark, const QPixmap &pixmap) = 0;
 
     /**
      * Get the \p mark's pixmap.
@@ -287,7 +289,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      *        (check with QPixmap::isNull()).
      * \see setMarkDescription()
      */
-    virtual QPixmap markPixmap( MarkTypes mark ) const = 0;
+    virtual QPixmap markPixmap(MarkTypes mark) const = 0;
 
     /**
      * Set the \p mark's description to \p text.
@@ -295,7 +297,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param text new descriptive text
      * \see markDescription(), setMarkPixmap()
      */
-    virtual void setMarkDescription( MarkTypes mark, const QString &text ) = 0;
+    virtual void setMarkDescription(MarkTypes mark, const QString &text) = 0;
 
     /**
      * Get the \p mark's description to text.
@@ -304,7 +306,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      *         exist
      * \see setMarkDescription(), setMarkPixmap()
      */
-    virtual QString markDescription( MarkTypes mark ) const = 0;
+    virtual QString markDescription(MarkTypes mark) const = 0;
 
     /**
      * Set the mark mask the user is allowed to toggle to \p markMask.
@@ -325,7 +327,7 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param markMask bitmap pattern
      * \see editableMarks(), setMarkPixmap(), setMarkDescription()
      */
-    virtual void setEditableMarks( uint markMask ) = 0;
+    virtual void setEditableMarks(uint markMask) = 0;
 
     /**
      * Get, which marks can be toggled by the user.
@@ -341,14 +343,14 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \see markChanged()
      */
     enum MarkChangeAction {
-      MarkAdded=0,    /**< action: a mark was added.  */
-      MarkRemoved=1   /**< action: a mark was removed. */
-	};
+        MarkAdded = 0,  /**< action: a mark was added.  */
+        MarkRemoved = 1 /**< action: a mark was removed. */
+    };
 
-  //
-  // signals !!!
-  //
-  public:
+    //
+    // signals !!!
+    //
+public:
     /**
      * The \p document emits this signal whenever the \p mark changes.
      * \param document the document which emitted the signal
@@ -356,11 +358,11 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param action action, either removed or added
      * \see marksChanged()
      */
-    virtual void markChanged ( KTextEditor::Document* document, KTextEditor::Mark mark,
-                               KTextEditor::MarkInterface::MarkChangeAction action) = 0;
+    virtual void markChanged(KTextEditor::Document *document, KTextEditor::Mark mark,
+                             KTextEditor::MarkInterface::MarkChangeAction action) = 0;
 
-    Q_SIGNALS:
-      
+Q_SIGNALS:
+
     /**
      * The \p document emits this signal whenever the \p mark is hovered using the mouse,
      * and the receiver may show a tooltip.
@@ -369,9 +371,9 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param position mouse position during the hovering
      * \param handled set this to 'true' if this event was handled externally
      */
-    void markToolTipRequested ( KTextEditor::Document* document, KTextEditor::Mark mark,
-                               QPoint position, bool& handled );
-    
+    void markToolTipRequested(KTextEditor::Document *document, KTextEditor::Mark mark,
+                              QPoint position, bool &handled);
+
     /**
      * The \p document emits this signal whenever the \p mark is right-clicked to show a context menu.
      * The receiver may show an own context menu instead of the kate internal one.
@@ -380,10 +382,9 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param pos position where the menu should be started
      * \param handled set this to 'true' if this event was handled externally, and kate should not create an own context menu.
      */
-    void markContextMenuRequested( KTextEditor::Document* document, KTextEditor::Mark mark,
-                               QPoint pos, bool& handled );
+    void markContextMenuRequested(KTextEditor::Document *document, KTextEditor::Mark mark,
+                                  QPoint pos, bool &handled);
 
-    
     /**
      * The \p document emits this signal whenever the \p mark is left-clicked.
      * \param document the document which emitted the signal
@@ -391,10 +392,10 @@ class KTEXTEDITOR_EXPORT MarkInterface
      * \param pos position where the menu should be started
      * \param handled set this to 'true' if this event was handled externally, and kate should not do own handling of the left click.
      */
-    void markClicked( KTextEditor::Document* document, KTextEditor::Mark mark, bool& handled );
+    void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
 
-  private:
-    class MarkInterfacePrivate* const d;
+private:
+    class MarkInterfacePrivate *const d;
 };
 
 }
@@ -403,4 +404,3 @@ Q_DECLARE_INTERFACE(KTextEditor::MarkInterface, "org.kde.KTextEditor.MarkInterfa
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -25,37 +25,36 @@
 
 using namespace KTextEditor;
 
-MovingRangeFeedback::MovingRangeFeedback ()
-  : d (0)
+MovingRangeFeedback::MovingRangeFeedback()
+    : d(0)
 {
 }
 
-MovingRangeFeedback::~MovingRangeFeedback ()
+MovingRangeFeedback::~MovingRangeFeedback()
 {
 }
 
-void MovingRangeFeedback::rangeEmpty (MovingRange*)
+void MovingRangeFeedback::rangeEmpty(MovingRange *)
 {
 }
 
-void MovingRangeFeedback::rangeInvalid (MovingRange*)
+void MovingRangeFeedback::rangeInvalid(MovingRange *)
 {
 }
 
-void MovingRangeFeedback::mouseEnteredRange (MovingRange*, View*)
+void MovingRangeFeedback::mouseEnteredRange(MovingRange *, View *)
 {
 }
 
-void MovingRangeFeedback::mouseExitedRange (MovingRange*, View*)
+void MovingRangeFeedback::mouseExitedRange(MovingRange *, View *)
 {
 }
 
-void MovingRangeFeedback::caretEnteredRange (MovingRange*, View*)
+void MovingRangeFeedback::caretEnteredRange(MovingRange *, View *)
 {
 }
 
-void MovingRangeFeedback::caretExitedRange (MovingRange*, View*)
+void MovingRangeFeedback::caretExitedRange(MovingRange *, View *)
 {
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

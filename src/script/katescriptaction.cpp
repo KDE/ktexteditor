@@ -30,21 +30,21 @@
 #include <KActionCollection>
 
 //BEGIN KateScriptAction
-KateScriptAction::KateScriptAction(const ScriptActionInfo& info, KateView* view)
-  : QAction(info.text(), view)
-  , m_view(view)
-  , m_command(info.command())
-  , m_interactive(info.interactive())
+KateScriptAction::KateScriptAction(const ScriptActionInfo &info, KateView *view)
+    : QAction(info.text(), view)
+    , m_view(view)
+    , m_command(info.command())
+    , m_interactive(info.interactive())
 {
-  if (!info.icon().isEmpty()) {
-    setIcon(QIcon::fromTheme(info.icon()));
-  }
-  
-  if (!info.shortcut().isEmpty()) {
-    setShortcut(info.shortcut());
-  }
-  
-  connect(this, SIGNAL(triggered(bool)), this, SLOT(exec()));
+    if (!info.icon().isEmpty()) {
+        setIcon(QIcon::fromTheme(info.icon()));
+    }
+
+    if (!info.shortcut().isEmpty()) {
+        setShortcut(info.shortcut());
+    }
+
+    connect(this, SIGNAL(triggered(bool)), this, SLOT(exec()));
 }
 
 KateScriptAction::~KateScriptAction()
@@ -53,96 +53,97 @@ KateScriptAction::~KateScriptAction()
 
 void KateScriptAction::exec()
 {
-  KateCommandLineBar* cmdLine = m_view->cmdLineBar();
+    KateCommandLineBar *cmdLine = m_view->cmdLineBar();
 
-  if (m_interactive) {
-    m_view->bottomViewBar()->showBarWidget(cmdLine);
-    cmdLine->setText(m_command + QLatin1Char(' '), false);
-  } else {
-    cmdLine->execute(m_command);
-  }
+    if (m_interactive) {
+        m_view->bottomViewBar()->showBarWidget(cmdLine);
+        cmdLine->setText(m_command + QLatin1Char(' '), false);
+    } else {
+        cmdLine->execute(m_command);
+    }
 }
 //END KateScriptAction
 
-
 //BEGIN KateScriptActionMenu
-KateScriptActionMenu::KateScriptActionMenu(KateView *view, const QString& text)
-  : KActionMenu (QIcon::fromTheme(QLatin1String("code-context")), text, view)
-  , m_view(view)
+KateScriptActionMenu::KateScriptActionMenu(KateView *view, const QString &text)
+    : KActionMenu(QIcon::fromTheme(QLatin1String("code-context")), text, view)
+    , m_view(view)
 {
-  repopulate();
+    repopulate();
 
-  // on script-reload signal, repopulate script menu
-  connect(KateGlobal::self()->scriptManager(), SIGNAL(reloaded()),
-          this, SLOT(repopulate()));
+    // on script-reload signal, repopulate script menu
+    connect(KateGlobal::self()->scriptManager(), SIGNAL(reloaded()),
+            this, SLOT(repopulate()));
 }
 
 KateScriptActionMenu::~KateScriptActionMenu()
 {
-  cleanup();
+    cleanup();
 }
 
 void KateScriptActionMenu::cleanup()
 {
-  // delete menus and actions for real
-  qDeleteAll(m_menus);
-  m_menus.clear();
+    // delete menus and actions for real
+    qDeleteAll(m_menus);
+    m_menus.clear();
 
-  qDeleteAll(m_actions);
-  m_actions.clear();
+    qDeleteAll(m_actions);
+    m_actions.clear();
 }
 
 void KateScriptActionMenu::repopulate()
 {
-  // if the view is already hooked into the GUI, first remove it
-  // now and add it later, so that the changes we do here take effect
-  KXMLGUIFactory *viewFactory = m_view->factory();
-  if (viewFactory)
-    viewFactory->removeClient(m_view);
-
-  // remove existing menu actions
-  cleanup();
-
-  // now add all command line script commands
-  QVector<KateCommandLineScript*> scripts =
-    KateGlobal::self()->scriptManager()->commandLineScripts();
-
-  QHash<QString, QMenu*> menus;
-
-  foreach (KateCommandLineScript* script, scripts) {
-
-    const QStringList &cmds = script->cmds();
-    foreach (const QString& cmd, cmds) {
-
-      ScriptActionInfo info = script->actionInfo(cmd);
-      if (!info.isValid())
-        continue;
-
-      QMenu* m = menu();
-
-      // show in a category submenu?
-      if (!info.category().isEmpty()) {
-        m = menus[info.category()];
-        if (!m) {
-          m = menu()->addMenu(info.category());
-          menus.insert(info.category(), m);
-          m_menus.append(m);
-        }
-      }
-      
-      // create action + add to menu
-      QAction* a = new KateScriptAction(info, m_view);
-      m->addAction(a);
-      m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
-      m_actions.append(a);
+    // if the view is already hooked into the GUI, first remove it
+    // now and add it later, so that the changes we do here take effect
+    KXMLGUIFactory *viewFactory = m_view->factory();
+    if (viewFactory) {
+        viewFactory->removeClient(m_view);
     }
-  }
 
-  // finally add the view to the xml factory again, if it initially was there
-  if (viewFactory)
-    viewFactory->addClient(m_view);
+    // remove existing menu actions
+    cleanup();
+
+    // now add all command line script commands
+    QVector<KateCommandLineScript *> scripts =
+        KateGlobal::self()->scriptManager()->commandLineScripts();
+
+    QHash<QString, QMenu *> menus;
+
+    foreach (KateCommandLineScript *script, scripts) {
+
+        const QStringList &cmds = script->cmds();
+        foreach (const QString &cmd, cmds) {
+
+            ScriptActionInfo info = script->actionInfo(cmd);
+            if (!info.isValid()) {
+                continue;
+            }
+
+            QMenu *m = menu();
+
+            // show in a category submenu?
+            if (!info.category().isEmpty()) {
+                m = menus[info.category()];
+                if (!m) {
+                    m = menu()->addMenu(info.category());
+                    menus.insert(info.category(), m);
+                    m_menus.append(m);
+                }
+            }
+
+            // create action + add to menu
+            QAction *a = new KateScriptAction(info, m_view);
+            m->addAction(a);
+            m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
+            m_actions.append(a);
+        }
+    }
+
+    // finally add the view to the xml factory again, if it initially was there
+    if (viewFactory) {
+        viewFactory->addClient(m_view);
+    }
 }
 
 //END KateScriptActionMenu
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

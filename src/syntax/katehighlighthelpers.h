@@ -28,24 +28,30 @@
 
 class KateHlItem
 {
-  public:
-    KateHlItem(int attribute, KateHlContextModification context,signed char regionId, signed char regionId2);
+public:
+    KateHlItem(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
     virtual ~KateHlItem();
 
-  public:
+public:
     // caller must keep in mind: LEN > 0 is a must !!!!!!!!!!!!!!!!!!!!!1
     // Now, the function returns the offset detected, or 0 if no match is found.
     // bool linestart isn't needed, this is equivalent to offset == 0.
-    virtual int checkHgl(const QString& text, int offset, int len) = 0;
+    virtual int checkHgl(const QString &text, int offset, int len) = 0;
 
-    virtual bool lineContinue(){return false;}
+    virtual bool lineContinue()
+    {
+        return false;
+    }
 
-    virtual void capturedTexts (QStringList &) { }
-    virtual KateHlItem *clone(const QStringList *) {return this;}
+    virtual void capturedTexts(QStringList &) { }
+    virtual KateHlItem *clone(const QStringList *)
+    {
+        return this;
+    }
 
-    static void dynamicSubstitute(QString& str, const QStringList *args);
+    static void dynamicSubstitute(QString &str, const QStringList *args);
 
-    QVector<KateHlItem*> subItems;
+    QVector<KateHlItem *> subItems;
     int attr;
     KateHlContextModification ctx;
     signed char region;
@@ -72,15 +78,15 @@ class KateHlItem
 
 class KateHlContext
 {
-  public:
+public:
     KateHlContext(const QString &_hlId, int attribute, KateHlContextModification _lineEndContext,
-                  bool _fallthrough, KateHlContextModification _fallthroughContext, bool _dynamic,bool _noIndentationBasedFolding,
+                  bool _fallthrough, KateHlContextModification _fallthroughContext, bool _dynamic, bool _noIndentationBasedFolding,
                   bool _emptyLineContex, KateHlContextModification _emptyLineContextModification
                  );
     virtual ~KateHlContext();
     KateHlContext *clone(const QStringList *args);
 
-    QVector<KateHlItem*> items;
+    QVector<KateHlItem *> items;
     QString hlId; ///< A unique highlight identifier. Used to look up correct properties.
     int attr;
     KateHlContextModification lineEndContext;
@@ -95,25 +101,25 @@ class KateHlContext
     bool dynamic;
     bool dynamicChild;
     bool noIndentationBasedFolding;
-    
+
     bool emptyLineContext;
     KateHlContextModification emptyLineContextModification;
 };
 
 class KateHlIncludeRule
 {
-  public:
-    explicit KateHlIncludeRule(int ctx_=0, uint pos_=0, const QString &incCtxN_= QString(), bool incAttrib=false)
-      : ctx(ctx_)
-      , pos( pos_)
-      , incCtxN( incCtxN_ )
-      , includeAttrib( incAttrib )
+public:
+    explicit KateHlIncludeRule(int ctx_ = 0, uint pos_ = 0, const QString &incCtxN_ = QString(), bool incAttrib = false)
+        : ctx(ctx_)
+        , pos(pos_)
+        , incCtxN(incCtxN_)
+        , includeAttrib(incAttrib)
     {
-      incCtx=-1;
+        incCtx = -1;
     }
     //KateHlIncludeRule(int ctx_, uint  pos_, bool incAttrib) {ctx=ctx_;pos=pos_;incCtx=-1;incCtxN="";includeAttrib=incAttrib}
 
-  public:
+public:
     int ctx;
     uint pos;
     KateHlContextModification incCtx;
@@ -123,39 +129,39 @@ class KateHlIncludeRule
 
 class KateHlCharDetect : public KateHlItem
 {
-  public:
-    KateHlCharDetect(int attribute, KateHlContextModification context,signed char regionId,signed char regionId2, QChar);
+public:
+    KateHlCharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, QChar);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
     virtual KateHlItem *clone(const QStringList *args);
 
-  private:
+private:
     QChar sChar;
 };
 
 class KateHl2CharDetect : public KateHlItem
 {
-  public:
-    KateHl2CharDetect(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2,  QChar ch1, QChar ch2);
-    KateHl2CharDetect(int attribute, KateHlContextModification context,signed char regionId,signed char regionId2,  const QChar *ch);
+public:
+    KateHl2CharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2,  QChar ch1, QChar ch2);
+    KateHl2CharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2,  const QChar *ch);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
     virtual KateHlItem *clone(const QStringList *args);
 
-  private:
+private:
     QChar sChar1;
     QChar sChar2;
 };
 
 class KateHlStringDetect : public KateHlItem
 {
-  public:
-    KateHlStringDetect(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2, const QString &, bool inSensitive=false);
+public:
+    KateHlStringDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &, bool inSensitive = false);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
     virtual KateHlItem *clone(const QStringList *args);
 
-  protected:
+protected:
     const QString str;
     const int strLen;
     const bool _inSensitive;
@@ -163,35 +169,35 @@ class KateHlStringDetect : public KateHlItem
 
 class KateHlWordDetect : public KateHlStringDetect
 {
-  public:
+public:
     KateHlWordDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &, bool inSensitive = false);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
     virtual KateHlItem *clone(const QStringList *args);
 };
 
 class KateHlRangeDetect : public KateHlItem
 {
-  public:
-    KateHlRangeDetect(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2, QChar ch1, QChar ch2);
+public:
+    KateHlRangeDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, QChar ch1, QChar ch2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 
-  private:
+private:
     QChar sChar1;
     QChar sChar2;
 };
 
 class KateHlKeyword : public KateHlItem
 {
-  public:
-    KateHlKeyword(int attribute, KateHlContextModification context,signed char regionId,signed char regionId2, bool insensitive, const QString& delims);
-    virtual ~KateHlKeyword ();
+public:
+    KateHlKeyword(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, bool insensitive, const QString &delims);
+    virtual ~KateHlKeyword();
 
     void addList(const QStringList &);
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 
-  private:
+private:
     QVector< QSet<QString>* > dict;
     bool _insensitive;
     QSet<QChar> deliminators;
@@ -201,95 +207,101 @@ class KateHlKeyword : public KateHlItem
 
 class KateHlInt : public KateHlItem
 {
-  public:
-    KateHlInt(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlInt(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlFloat : public KateHlItem
 {
-  public:
-    KateHlFloat(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
-    virtual ~KateHlFloat () {}
+public:
+    KateHlFloat(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
+    virtual ~KateHlFloat() {}
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlCFloat : public KateHlFloat
 {
-  public:
-    KateHlCFloat(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlCFloat(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
-    int checkIntHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
+    int checkIntHgl(const QString &text, int offset, int len);
 };
 
 class KateHlCOct : public KateHlItem
 {
-  public:
-    KateHlCOct(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlCOct(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlCHex : public KateHlItem
 {
-  public:
-    KateHlCHex(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlCHex(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlLineContinue : public KateHlItem
 {
-  public:
-    KateHlLineContinue(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlLineContinue(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual bool endEnable(QChar c) {return c == QLatin1Char('\0');}
-    virtual int checkHgl(const QString& text, int offset, int len);
-    virtual bool lineContinue(){return true;}
+    virtual bool endEnable(QChar c)
+    {
+        return c == QLatin1Char('\0');
+    }
+    virtual int checkHgl(const QString &text, int offset, int len);
+    virtual bool lineContinue()
+    {
+        return true;
+    }
 };
 
 class KateHlCStringChar : public KateHlItem
 {
-  public:
-    KateHlCStringChar(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2);
+public:
+    KateHlCStringChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlCChar : public KateHlItem
 {
-  public:
-    KateHlCChar(int attribute, KateHlContextModification context,signed char regionId,signed char regionId2);
+public:
+    KateHlCChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 };
 
 class KateHlAnyChar : public KateHlItem
 {
-  public:
-    KateHlAnyChar(int attribute, KateHlContextModification context, signed char regionId,signed char regionId2, const QString& charList);
+public:
+    KateHlAnyChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &charList);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
+    virtual int checkHgl(const QString &text, int offset, int len);
 
-  private:
+private:
     const QString _charList;
 };
 
 class KateHlRegExpr : public KateHlItem
 {
-  public:
-    KateHlRegExpr(int attribute, KateHlContextModification context,signed char regionId,signed char regionId2 ,const QString &expr, bool insensitive, bool minimal);
+public:
+    KateHlRegExpr(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &expr, bool insensitive, bool minimal);
 
-    virtual int checkHgl(const QString& text, int offset, int len);
-    
-    virtual void capturedTexts (QStringList &);
-    
+    virtual int checkHgl(const QString &text, int offset, int len);
+
+    virtual void capturedTexts(QStringList &);
+
     virtual KateHlItem *clone(const QStringList *args);
 
-  private:
+private:
     bool handlesLinestart;
     QString _regexp;
     bool _insensitive;
@@ -300,52 +312,57 @@ class KateHlRegExpr : public KateHlItem
     int _lastOffset;
     /// length of the last match
     int _lastOffsetLength;
-    
+
     QRegExp Expr;
 };
 
 class KateHlDetectSpaces : public KateHlItem
 {
-  public:
-    KateHlDetectSpaces (int attribute, KateHlContextModification context,signed char regionId,signed char regionId2)
-      : KateHlItem(attribute,context,regionId,regionId2) {}
+public:
+    KateHlDetectSpaces(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2)
+        : KateHlItem(attribute, context, regionId, regionId2) {}
 
-    virtual int checkHgl(const QString& text, int offset, int len)
+    virtual int checkHgl(const QString &text, int offset, int len)
     {
-      int len2 = offset + len;
-      while ((offset < len2) && text[offset].isSpace()) offset++;
-      return offset;
+        int len2 = offset + len;
+        while ((offset < len2) && text[offset].isSpace()) {
+            offset++;
+        }
+        return offset;
     }
 };
 
 class KateHlDetectIdentifier : public KateHlItem
 {
-  public:
-    KateHlDetectIdentifier (int attribute, KateHlContextModification context,signed char regionId,signed char regionId2)
-      : KateHlItem(attribute,context,regionId,regionId2) { alwaysStartEnable = false; }
-
-    virtual int checkHgl(const QString& text, int offset, int len)
+public:
+    KateHlDetectIdentifier(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2)
+        : KateHlItem(attribute, context, regionId, regionId2)
     {
-      // first char should be a letter or underscore
-      if ( text[offset].isLetter() || text[offset] == QLatin1Char('_') )
-      {
-        // memorize length
-        int len2 = offset+len;
+        alwaysStartEnable = false;
+    }
 
-        // one char seen
-        offset++;
+    virtual int checkHgl(const QString &text, int offset, int len)
+    {
+        // first char should be a letter or underscore
+        if (text[offset].isLetter() || text[offset] == QLatin1Char('_')) {
+            // memorize length
+            int len2 = offset + len;
 
-        // now loop for all other thingies
-        while (
-               (offset < len2)
-               && (text[offset].isLetterOrNumber() || (text[offset] == QLatin1Char('_')))
-              )
-          offset++;
+            // one char seen
+            offset++;
 
-        return offset;
-      }
+            // now loop for all other thingies
+            while (
+                (offset < len2)
+                && (text[offset].isLetterOrNumber() || (text[offset] == QLatin1Char('_')))
+            ) {
+                offset++;
+            }
 
-      return 0;
+            return offset;
+        }
+
+        return 0;
     }
 };
 
@@ -353,4 +370,3 @@ class KateHlDetectIdentifier : public KateHlItem
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

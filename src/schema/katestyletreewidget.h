@@ -34,38 +34,47 @@
  */
 class KateStyleTreeWidget : public QTreeWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class KateStyleListItem;
+    friend class KateStyleListItem;
 
-  public:
+public:
     explicit KateStyleTreeWidget(QWidget *parent = 0, bool showUseDefaults = false);
 
     void emitChanged();
 
-    void setBgCol( const QColor &c ) { bgcol = c; }
-    void setSelCol( const QColor &c ) { selcol = c; }
-    void setNormalCol( const QColor &c ) { normalcol = c; }
+    void setBgCol(const QColor &c)
+    {
+        bgcol = c;
+    }
+    void setSelCol(const QColor &c)
+    {
+        selcol = c;
+    }
+    void setNormalCol(const QColor &c)
+    {
+        normalcol = c;
+    }
 
-    void addItem( QTreeWidgetItem *parent, const QString& styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr() );
-    void addItem( const QString& styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr() );
+    void addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr());
+    void addItem(const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr());
 
     void resizeColumns();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void changed();
 
-  protected:
-    virtual void contextMenuEvent(QContextMenuEvent* event);
-    virtual void showEvent(QShowEvent* event);
-    virtual bool edit(const QModelIndex& index, EditTrigger trigger, QEvent* event);
+protected:
+    virtual void contextMenuEvent(QContextMenuEvent *event);
+    virtual void showEvent(QShowEvent *event);
+    virtual bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event);
 
-  private Q_SLOTS:
-    void changeProperty( );
-    void unsetColor( );
+private Q_SLOTS:
+    void changeProperty();
+    void unsetColor();
     void updateGroupHeadings();
 
-  private:
+private:
     QColor bgcol, selcol, normalcol;
     QFont docfont;
 };

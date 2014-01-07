@@ -29,27 +29,27 @@ class QMainWindow;
 
 class ScriptTestBase : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 protected:
-  void initTestCase();
-  void cleanupTestCase();
-  typedef QPair<const char*, const char*> Failure;
-  typedef QList<Failure> ExpectedFailures;
-  void getTestData(const QString& script);
-  void runTest(const ExpectedFailures& failures);
+    void initTestCase();
+    void cleanupTestCase();
+    typedef QPair<const char *, const char *> Failure;
+    typedef QList<Failure> ExpectedFailures;
+    void getTestData(const QString &script);
+    void runTest(const ExpectedFailures &failures);
 
-  TestScriptEnv* m_env;
-  KateDocument* m_document;
-  QMainWindow* m_toplevel;
-  bool m_outputWasCustomised;
-  QStringList m_commands;
-  KateView* m_view;
-  QString m_section;  // dir name in testdata/
-  QString m_script_dir;  // dir name in part/script/data/
+    TestScriptEnv *m_env;
+    KateDocument *m_document;
+    QMainWindow *m_toplevel;
+    bool m_outputWasCustomised;
+    QStringList m_commands;
+    KateView *m_view;
+    QString m_section;  // dir name in testdata/
+    QString m_script_dir;  // dir name in part/script/data/
 
 public:
-  static QtMessageHandler m_msgHandler;
+    static QtMessageHandler m_msgHandler;
 };
 
 #endif // SCRIPT_TEST_H

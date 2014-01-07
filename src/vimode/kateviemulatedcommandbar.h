@@ -39,125 +39,124 @@ class QStringListModel;
  */
 class KTEXTEDITOR_EXPORT KateViEmulatedCommandBar : public KateViewBarWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  enum Mode { NoMode, SearchForward, SearchBackward, Command };
-  explicit KateViEmulatedCommandBar(KateView *view, QWidget* parent = 0);
-  virtual ~KateViEmulatedCommandBar();
-  void init(Mode mode, const QString& initialText = QString());
-  bool isActive();
-  void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
-  virtual void closed();
-  bool handleKeyPress(const QKeyEvent* keyEvent);
-  bool isSendingSyntheticSearchCompletedKeypress();
+    enum Mode { NoMode, SearchForward, SearchBackward, Command };
+    explicit KateViEmulatedCommandBar(KateView *view, QWidget *parent = 0);
+    virtual ~KateViEmulatedCommandBar();
+    void init(Mode mode, const QString &initialText = QString());
+    bool isActive();
+    void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
+    virtual void closed();
+    bool handleKeyPress(const QKeyEvent *keyEvent);
+    bool isSendingSyntheticSearchCompletedKeypress();
 
-  void startInteractiveSearchAndReplace(QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    void startInteractiveSearchAndReplace(QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
 
 private:
-  bool m_isActive;
-  Mode m_mode;
-  KateView *m_view;
-  QLineEdit *m_edit;
-  QLabel *m_barTypeIndicator;
-  void showBarTypeIndicator(Mode mode);
-  KTextEditor::Cursor m_startingCursorPos;
-  bool m_wasAborted;
-  bool m_suspendEditEventFiltering;
-  bool m_waitingForRegister;
-  QLabel *m_waitingForRegisterIndicator;
-  bool m_insertedTextShouldBeEscapedForSearchingAsLiteral;
+    bool m_isActive;
+    Mode m_mode;
+    KateView *m_view;
+    QLineEdit *m_edit;
+    QLabel *m_barTypeIndicator;
+    void showBarTypeIndicator(Mode mode);
+    KTextEditor::Cursor m_startingCursorPos;
+    bool m_wasAborted;
+    bool m_suspendEditEventFiltering;
+    bool m_waitingForRegister;
+    QLabel *m_waitingForRegisterIndicator;
+    bool m_insertedTextShouldBeEscapedForSearchingAsLiteral;
 
-  QTimer *m_commandResponseMessageDisplayHide;
-  QLabel* m_commandResponseMessageDisplay;
-  long m_commandResponseMessageTimeOutMS;
-  QString executeCommand(const QString& commandToExecute);
-  void switchToCommandResponseDisplay(const QString& commandResponseMessage);
+    QTimer *m_commandResponseMessageDisplayHide;
+    QLabel *m_commandResponseMessageDisplay;
+    long m_commandResponseMessageTimeOutMS;
+    QString executeCommand(const QString &commandToExecute);
+    void switchToCommandResponseDisplay(const QString &commandResponseMessage);
 
-  QLabel *m_interactiveSedReplaceLabel;
-  bool m_interactiveSedReplaceActive;
-  void updateInteractiveSedReplaceLabelText();
-  QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
-  void finishInteractiveSedReplace();
+    QLabel *m_interactiveSedReplaceLabel;
+    bool m_interactiveSedReplaceActive;
+    void updateInteractiveSedReplaceLabelText();
+    QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+    void finishInteractiveSedReplace();
 
-  void moveCursorTo(const KTextEditor::Cursor& cursorPos);
+    void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
-  QCompleter *m_completer;
-  QStringListModel *m_completionModel;
-  bool m_isNextTextChangeDueToCompletionChange;
-  enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
-  CompletionType m_currentCompletionType;
-  void updateCompletionPrefix();
-  void currentCompletionChanged();
-  bool m_completionActive;
-  QString m_textToRevertToIfCompletionAborted;
-  int m_cursorPosToRevertToIfCompletionAborted;
+    QCompleter *m_completer;
+    QStringListModel *m_completionModel;
+    bool m_isNextTextChangeDueToCompletionChange;
+    enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
+    CompletionType m_currentCompletionType;
+    void updateCompletionPrefix();
+    void currentCompletionChanged();
+    bool m_completionActive;
+    QString m_textToRevertToIfCompletionAborted;
+    int m_cursorPosToRevertToIfCompletionAborted;
 
-  KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
-  KTextEditor::MovingRange* m_highlightedMatch;
-  void updateMatchHighlight(const KTextEditor::Range& matchRange);
-  enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
-  void setBarBackground(BarBackgroundStatus status);
+    KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
+    KTextEditor::MovingRange *m_highlightedMatch;
+    void updateMatchHighlight(const KTextEditor::Range &matchRange);
+    enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
+    void setBarBackground(BarBackgroundStatus status);
 
-  QString m_currentSearchPattern;
-  bool m_currentSearchIsCaseSensitive;
-  bool m_currentSearchIsBackwards;
-  bool m_currentSearchPlacesCursorAtEndOfMatch;
+    QString m_currentSearchPattern;
+    bool m_currentSearchIsCaseSensitive;
+    bool m_currentSearchIsBackwards;
+    bool m_currentSearchPlacesCursorAtEndOfMatch;
 
-  bool m_isSendingSyntheticSearchCompletedKeypress;
+    bool m_isSendingSyntheticSearchCompletedKeypress;
 
-  virtual bool eventFilter(QObject* object, QEvent* event);
-  void deleteSpacesToLeftOfCursor();
-  void deleteWordCharsToLeftOfCursor();
-  bool deleteNonWordCharsToLeftOfCursor();
-  QString wordBeforeCursor();
-  QString commandBeforeCursor();
-  void replaceWordBeforeCursorWith(const QString& newWord);
-  void replaceCommandBeforeCursorWith(const QString& newCommand);
+    virtual bool eventFilter(QObject *object, QEvent *event);
+    void deleteSpacesToLeftOfCursor();
+    void deleteWordCharsToLeftOfCursor();
+    bool deleteNonWordCharsToLeftOfCursor();
+    QString wordBeforeCursor();
+    QString commandBeforeCursor();
+    void replaceWordBeforeCursorWith(const QString &newWord);
+    void replaceCommandBeforeCursorWith(const QString &newCommand);
 
-  void activateSearchHistoryCompletion();
-  void activateWordFromDocumentCompletion();
-  void activateCommandCompletion();
-  void activateCommandHistoryCompletion();
-  void activateSedFindHistoryCompletion();
-  void activateSedReplaceHistoryCompletion();
-  void deactivateCompletion();
-  void abortCompletionAndResetToPreCompletion();
-  void setCompletionIndex(int index);
+    void activateSearchHistoryCompletion();
+    void activateWordFromDocumentCompletion();
+    void activateCommandCompletion();
+    void activateCommandHistoryCompletion();
+    void activateSedFindHistoryCompletion();
+    void activateSedReplaceHistoryCompletion();
+    void deactivateCompletion();
+    void abortCompletionAndResetToPreCompletion();
+    void setCompletionIndex(int index);
 
-  /**
-   * Stuff to do with expressions of the form:
-   *
-   *   s/find/replace/<sedflags>
-   */
-  struct ParsedSedExpression
-  {
-    bool parsedSuccessfully;
-    int findBeginPos;
-    int findEndPos;
-    int replaceBeginPos;
-    int replaceEndPos;
-    QChar delimiter;
-  };
-  ParsedSedExpression parseAsSedExpression();
-  QString withSedFindTermReplacedWith(const QString& newFindTerm);
-  QString withSedReplaceTermReplacedWith(const QString& newReplaceTerm);
-  QString sedFindTerm();
-  QString sedReplaceTerm();
-  QString withSedDelimiterEscaped(const QString& text);
+    /**
+     * Stuff to do with expressions of the form:
+     *
+     *   s/find/replace/<sedflags>
+     */
+    struct ParsedSedExpression {
+        bool parsedSuccessfully;
+        int findBeginPos;
+        int findEndPos;
+        int replaceBeginPos;
+        int replaceEndPos;
+        QChar delimiter;
+    };
+    ParsedSedExpression parseAsSedExpression();
+    QString withSedFindTermReplacedWith(const QString &newFindTerm);
+    QString withSedReplaceTermReplacedWith(const QString &newReplaceTerm);
+    QString sedFindTerm();
+    QString sedReplaceTerm();
+    QString withSedDelimiterEscaped(const QString &text);
 
-  bool isCursorInFindTermOfSed();
-  bool isCursorInReplaceTermOfSed();
+    bool isCursorInFindTermOfSed();
+    bool isCursorInReplaceTermOfSed();
 
-  /**
-   * The "range expression" is the (optional) expression before the command that describes
-   * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
-   */
-  QString withoutRangeExpression();
-  QString rangeExpression();
+    /**
+     * The "range expression" is the (optional) expression before the command that describes
+     * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
+     */
+    QString withoutRangeExpression();
+    QString rangeExpression();
 private Q_SLOTS:
-  void editTextChanged(const QString& newText);
-  void updateMatchHighlightAttrib();
-  void startHideCommandResponseTimer();
+    void editTextChanged(const QString &newText);
+    void updateMatchHighlightAttrib();
+    void startHideCommandResponseTimer();
 };
 
 #endif

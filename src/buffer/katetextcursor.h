@@ -29,7 +29,8 @@
 #include <ktexteditor_export.h>
 #include "katetextblock.h"
 
-namespace Kate {
+namespace Kate
+{
 
 class TextBuffer;
 class TextBlock;
@@ -40,14 +41,15 @@ class TextRange;
  * It will automagically move if the text inside the buffer it belongs to is modified.
  * By intention no subclass of KTextEditor::Cursor, must be converted manually.
  */
-class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
-  // range wants direct access to some internals
-  friend class TextRange;
+class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor
+{
+    // range wants direct access to some internals
+    friend class TextRange;
 
-  // this is a friend, because this is needed to efficiently transfer cursors from on to an other block
-  friend class TextBlock;
+    // this is a friend, because this is needed to efficiently transfer cursors from on to an other block
+    friend class TextBlock;
 
-  private:
+private:
     /**
      * Construct a text cursor with given range as parent, private, used by TextRange constructor only.
      * @param buffer text buffer this cursor belongs to
@@ -55,53 +57,59 @@ class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor (TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
 
-  public:
+public:
     /**
      * Construct a text cursor.
      * @param buffer text buffer this cursor belongs to
      * @param position wanted cursor position, if not valid for given buffer, will lead to invalid cursor
      * @param insertBehavior behavior of this cursor on insert of text at its position
      */
-    TextCursor (TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
+    TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior);
 
     /**
      * Destruct the text cursor
      */
-    ~TextCursor ();
+    ~TextCursor();
 
     /**
      * Set insert behavior.
      * @param insertBehavior new insert behavior
      */
-    void setInsertBehavior (InsertBehavior insertBehavior) { m_moveOnInsert = insertBehavior == MoveOnInsert; }
+    void setInsertBehavior(InsertBehavior insertBehavior)
+    {
+        m_moveOnInsert = insertBehavior == MoveOnInsert;
+    }
 
     /**
      * Get current insert behavior.
      * @return current insert behavior
      */
-    InsertBehavior insertBehavior () const { return m_moveOnInsert ? MoveOnInsert : StayOnInsert; }
+    InsertBehavior insertBehavior() const
+    {
+        return m_moveOnInsert ? MoveOnInsert : StayOnInsert;
+    }
 
     /**
      * Gets the document to which this cursor is bound.
      * \return a pointer to the document
      */
-    KTextEditor::Document *document () const;
+    KTextEditor::Document *document() const;
 
     /**
      * Fast way to set the current cursor position to \e position.
      *
      * \param position new cursor position
      */
-    void setPosition (const TextCursor& position);
+    void setPosition(const TextCursor &position);
 
     /**
      * Set the current cursor position to \e position.
      *
      * \param position new cursor position
      */
-    void setPosition (const KTextEditor::Cursor& position);
+    void setPosition(const KTextEditor::Cursor &position);
 
     /**
      * \overload
@@ -111,7 +119,10 @@ class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
      * \param line new cursor line
      * \param column new cursor column
      */
-    void setPosition (int line, int column) { KTextEditor::MovingCursor::setPosition (line, column); }
+    void setPosition(int line, int column)
+    {
+        KTextEditor::MovingCursor::setPosition(line, column);
+    }
 
     /**
      * Retrieve the line on which this cursor is situated.
@@ -121,60 +132,78 @@ class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
 
     /**
      * Non-virtual version of line(), which is faster.
-	 * Inlined for fast access (especially in KateTextBuffer::rangesForLine
+     * Inlined for fast access (especially in KateTextBuffer::rangesForLine
      * \return line number, where 0 is the first line.
      */
     int lineInternal() const
     {
-      // invalid cursor have no block
-      if (!m_block)
-        return -1;
+        // invalid cursor have no block
+        if (!m_block) {
+            return -1;
+        }
 
-      // else, calculate real line
-      return m_block->startLine () + m_line;
+        // else, calculate real line
+        return m_block->startLine() + m_line;
     }
 
     /**
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    int column() const { return m_column; }
+    int column() const
+    {
+        return m_column;
+    }
 
-	/**
-	 * Non-virtual version of column(), which is faster.
+    /**
+     * Non-virtual version of column(), which is faster.
      * \return column number, where 0 is the first column.
-	 * */
-    int columnInternal() const { return m_column; }
+     * */
+    int columnInternal() const
+    {
+        return m_column;
+    }
 
     /**
      * Get range this cursor belongs to, if any
      * @return range this pointer is part of, else 0
      */
-    KTextEditor::MovingRange *range () const;
+    KTextEditor::MovingRange *range() const;
 
     /**
      * Get range this cursor belongs to, if any
      * @return range this pointer is part of, else 0
      */
-    Kate::TextRange *kateRange () const { return m_range; }
+    Kate::TextRange *kateRange() const
+    {
+        return m_range;
+    }
 
     /**
      * Get block this cursor belongs to, if any
      * @return block this pointer is part of, else 0
      */
-    TextBlock *block () const { return m_block; }
+    TextBlock *block() const
+    {
+        return m_block;
+    }
 
     /**
      * Get offset into block this cursor belongs to, if any
      * @return offset into block this pointer is part of, else -1
      */
-    int lineInBlock () const { if (m_block) return m_line; return -1; }
+    int lineInBlock() const
+    {
+        if (m_block) {
+            return m_line;
+        } return -1;
+    }
 
-  private:
+private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    TextCursor (const TextCursor &);
+    TextCursor(const TextCursor &);
 
     /**
      * no assignment operator, no copying around.
@@ -189,9 +218,9 @@ class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
      * @param position new cursor position
      * @param init is this the initial setup of the position in the constructor?
      */
-    void setPosition (const KTextEditor::Cursor& position, bool init);
+    void setPosition(const KTextEditor::Cursor &position, bool init);
 
-  private:
+private:
     /**
      * parent text buffer
      * is a reference, and no pointer, as this must always exist and can't change
@@ -203,7 +232,7 @@ class KTEXTEDITOR_EXPORT TextCursor : public KTextEditor::MovingCursor {
      * may be null, then no range owns this cursor
      * can not change after initial assignment
      */
-    TextRange * const m_range;
+    TextRange *const m_range;
 
     /**
      * parent text block, valid cursors always belong to a block, else they are invalid.

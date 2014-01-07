@@ -27,8 +27,8 @@ class KateDocument;
 
 namespace KatePrinter
 {
-  bool print(KateDocument *doc);
-  bool printPreview(KateDocument *doc);
+bool print(KateDocument *doc);
+bool printPreview(KateDocument *doc);
 };
 
 #endif

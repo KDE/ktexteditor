@@ -25,38 +25,38 @@
 #include "katedocument.h"
 #include "kateview.h"
 
-KateTemplateScript::KateTemplateScript(const QString& script)
-  : KateScript(script,InputSCRIPT) {}
+KateTemplateScript::KateTemplateScript(const QString &script)
+    : KateScript(script, InputSCRIPT) {}
 
-KateTemplateScript::~KateTemplateScript(){}
+KateTemplateScript::~KateTemplateScript() {}
 
-QString KateTemplateScript::invoke(KateView* view, const QString& functionName, const QString &srcText) {
+QString KateTemplateScript::invoke(KateView *view, const QString &functionName, const QString &srcText)
+{
 
-  if(!setView(view))
-    return QString();
+    if (!setView(view)) {
+        return QString();
+    }
 
-  clearExceptions();
-  QScriptValue myFunction = function(functionName);
-  if(!myFunction.isValid()) {
-    return QString();
-  }
+    clearExceptions();
+    QScriptValue myFunction = function(functionName);
+    if (!myFunction.isValid()) {
+        return QString();
+    }
 
-  QScriptValueList arguments;
-  arguments << QScriptValue(m_engine, srcText);
+    QScriptValueList arguments;
+    arguments << QScriptValue(m_engine, srcText);
 
-  QScriptValue result = myFunction.call(QScriptValue(), arguments);
-  
-  if(m_engine->hasUncaughtException()) {
-    displayBacktrace(result, QLatin1String("Error while calling helper function"));
-    return QString();
-  }
- 
-  
-  if (result.isNull()) {
-    return QString();
-  }
+    QScriptValue result = myFunction.call(QScriptValue(), arguments);
 
-  return result.toString();
+    if (m_engine->hasUncaughtException()) {
+        displayBacktrace(result, QLatin1String("Error while calling helper function"));
+        return QString();
+    }
+
+    if (result.isNull()) {
+        return QString();
+    }
+
+    return result.toString();
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

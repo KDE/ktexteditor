@@ -28,8 +28,9 @@
 
 #include <ktexteditor_export.h>
 
-namespace KTextEditor {
-  class Document;
+namespace KTextEditor
+{
+class Document;
 }
 
 /**
@@ -39,14 +40,14 @@ namespace KTextEditor {
  */
 class KTEXTEDITOR_EXPORT KateRegExpSearch
 {
-  public:
-    explicit KateRegExpSearch (KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity);
-    ~KateRegExpSearch ();
+public:
+    explicit KateRegExpSearch(KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity);
+    ~KateRegExpSearch();
 
-  //
-  // KTextEditor::SearchInterface stuff
-  //
-  public:
+    //
+    // KTextEditor::SearchInterface stuff
+    //
+public:
     /**
      * Search for the regular expression \p regexp inside the range
      * \p inputRange. If \p backwards is \e true, the search direction will
@@ -60,8 +61,8 @@ class KTEXTEDITOR_EXPORT KateRegExpSearch
      *        has length 1 and holds the invalid range (see Range::isValid()).
      * \see KTextEditor::Range, QRegExp
      */
-    QVector<KTextEditor::Range> search (const QString &pattern,
-        const KTextEditor::Range & inputRange, bool backwards = false);
+    QVector<KTextEditor::Range> search(const QString &pattern,
+                                       const KTextEditor::Range &inputRange, bool backwards = false);
 
     /**
      * Returns a modified version of text where escape sequences are resolved, e.g. "\\n" to "\n".
@@ -84,7 +85,7 @@ class KTEXTEDITOR_EXPORT KateRegExpSearch
      */
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter);
 
-  private:
+private:
     /**
      * Implementation of escapePlainText() and public buildReplacement().
      *
@@ -96,13 +97,11 @@ class KTEXTEDITOR_EXPORT KateRegExpSearch
      */
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter, bool replacementGoodies);
 
-  private:
+private:
     KTextEditor::Document *const m_document;
     Qt::CaseSensitivity m_caseSensitivity;
     class ReplacementStream;
 };
 
 #endif
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

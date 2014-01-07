@@ -1,5 +1,5 @@
 /* This file is part of the KDE project
- * 
+ *
  *  Copyright (C) 2010 Christoph Cullmann <cullmann@kde.org>
  *  Copyright (C) 2012-2013 Dominik Haumann <dhaumann@kde.org>
  *
@@ -28,7 +28,8 @@
 
 #include <QDebug>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 /**
  * \short A Cursor which is bound to a specific Document.
@@ -66,55 +67,55 @@ namespace KTextEditor {
  */
 class KTEXTEDITOR_EXPORT DocumentCursor
 {
-  //
-  // sub types
-  //
-  public:
+    //
+    // sub types
+    //
+public:
     /**
      * Wrap behavior for end of line treatement used in move().
      */
     enum WrapBehavior {
-      Wrap = 0x0,  ///< wrap at end of line
-      NoWrap = 0x1 ///< do not wrap at end of line
+        Wrap = 0x0,  ///< wrap at end of line
+        NoWrap = 0x1 ///< do not wrap at end of line
     };
 
-  //
-  // Constructor
-  //
-  public:
+    //
+    // Constructor
+    //
+public:
     /**
      * Constructor that creates a DocumentCursor at the \e invalid position
      * (-1, -1).
      * \see isValid()
      */
-    DocumentCursor(KTextEditor::Document* document);
+    DocumentCursor(KTextEditor::Document *document);
 
     /**
      * Constructor that creates a DocumentCursor located at \p position.
      */
-    DocumentCursor(KTextEditor::Document* document, const KTextEditor::Cursor& position);
+    DocumentCursor(KTextEditor::Document *document, const KTextEditor::Cursor &position);
 
     /**
      * Constructor that creates a DocumentCursor located at \p line and \p column.
      */
-    DocumentCursor(KTextEditor::Document* document, int line, int column);
+    DocumentCursor(KTextEditor::Document *document, int line, int column);
 
     /**
      * Copy constructor. Make sure the Document of the DocumentCursor is
      * valid.
      */
-    DocumentCursor (const DocumentCursor &other);
+    DocumentCursor(const DocumentCursor &other);
 
-  //
-  // stuff that needs to be implemented by editor part cusors
-  //
-  public:
+    //
+    // stuff that needs to be implemented by editor part cusors
+    //
+public:
 
     /**
      * Gets the document to which this cursor is bound.
      * \return a pointer to the document
      */
-    Document *document () const;
+    Document *document() const;
 
     /**
      * Set the current cursor position to \e position.
@@ -123,7 +124,7 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      *
      * \param position new cursor position
      */
-    void setPosition (const KTextEditor::Cursor& position);
+    void setPosition(const KTextEditor::Cursor &position);
 
     /**
      * Retrieve the line on which this cursor is situated.
@@ -140,29 +141,30 @@ class KTEXTEDITOR_EXPORT DocumentCursor
     /**
      * Destruct the moving cursor.
      */
-    ~DocumentCursor ();
+    ~DocumentCursor();
 
-  //
-  // forbidden stuff
-  //
-  private:
+    //
+    // forbidden stuff
+    //
+private:
     /**
      * no default constructor, as we need a document.
      */
-    DocumentCursor ();
+    DocumentCursor();
 
-  //
-  // convenience API
-  //
-  public:
+    //
+    // convenience API
+    //
+public:
 
     /**
      * Returns whether the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
      * \return \e true , if the cursor position is valid, otherwise \e false
      */
-    inline bool isValid() const {
-      return line() >= 0 && column() >= 0;
+    inline bool isValid() const
+    {
+        return line() >= 0 && column() >= 0;
     }
 
     /**
@@ -171,8 +173,9 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \return \e true , if the cursor is a valid text position, otherwise \e false
      */
     // TODO KDE5: use KTE::Document::isValidTextPosition()
-    inline bool isValidTextPosition() const {
-      return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
+    inline bool isValidTextPosition() const
+    {
+        return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
     }
 
     /**
@@ -201,7 +204,7 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \param line new cursor line
      * \param column new cursor column
      */
-    void setPosition (int line, int column);
+    void setPosition(int line, int column);
 
     /**
      * Set the cursor line to \e line.
@@ -279,17 +282,17 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * Convert this clever cursor into a dumb one.
      * @return normal cursor
      */
-    const Cursor& toCursor () const;
+    const Cursor &toCursor() const;
 
     /**
      * Convert this clever cursor into a dumb one. Equal to toCursor, allowing to use implicit conversion.
      * @return normal cursor
      */
-    operator const Cursor& () const;
+    operator const Cursor &() const;
 
-  //
-  // operators for: DocumentCursor <-> DocumentCursor
-  //
+    //
+    // operators for: DocumentCursor <-> DocumentCursor
+    //
     /**
      * Assignment operator. Same as the copy constructor. Make sure that
      * the assigned Document is a valid document pointer.
@@ -306,8 +309,10 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e equal.
      */
-    inline friend bool operator==(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return c1.document() == c2.document() && c1.line() == c2.line() && c1.column() == c2.column(); }
+    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return c1.document() == c2.document() && c1.line() == c2.line() && c1.column() == c2.column();
+    }
 
     /**
      * Inequality operator.
@@ -315,8 +320,10 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e not equal.
      */
-    inline friend bool operator!=(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return !(c1 == c2); }
+    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return !(c1 == c2);
+    }
 
     /**
      * Greater than operator.
@@ -325,8 +332,10 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column()); }
+    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
+    }
 
     /**
      * Greater than or equal to operator.
@@ -335,8 +344,10 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column()); }
+    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
+    }
 
     /**
      * Less than operator.
@@ -345,8 +356,10 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return !(c1 >= c2); }
+    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return !(c1 >= c2);
+    }
 
     /**
      * Less than or equal to operator.
@@ -355,21 +368,9 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const DocumentCursor& c1, const DocumentCursor& c2)
-      { return !(c1 > c2); }
-
-    /**
-     * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
-     * @param s debug stream
-     * @param cursor cursor to print
-     * @return debug stream
-     */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor *cursor) {
-      if (cursor)
-        s.nospace() << "(" << cursor->document() << ": " << cursor->line() << ", " << cursor->column() << ")";
-      else
-        s.nospace() << "(null document cursor)";
-      return s.space();
+    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
+        return !(c1 > c2);
     }
 
     /**
@@ -378,12 +379,29 @@ class KTEXTEDITOR_EXPORT DocumentCursor
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor &cursor) {
-      return s << &cursor;
+    inline friend QDebug operator<< (QDebug s, const DocumentCursor *cursor)
+    {
+        if (cursor) {
+            s.nospace() << "(" << cursor->document() << ": " << cursor->line() << ", " << cursor->column() << ")";
+        } else {
+            s.nospace() << "(null document cursor)";
+        }
+        return s.space();
     }
 
-  private:
-    KTextEditor::Document* m_document;
+    /**
+     * qDebug() stream operator. Writes this cursor to the debug output in a nicely formatted way.
+     * @param s debug stream
+     * @param cursor cursor to print
+     * @return debug stream
+     */
+    inline friend QDebug operator<< (QDebug s, const DocumentCursor &cursor)
+    {
+        return s << &cursor;
+    }
+
+private:
+    KTextEditor::Document *m_document;
     KTextEditor::Cursor m_cursor;
 };
 
@@ -391,4 +409,3 @@ class KTEXTEDITOR_EXPORT DocumentCursor
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

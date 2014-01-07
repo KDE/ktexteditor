@@ -41,16 +41,22 @@ class KateDocumentObject;
  */
 class TestScriptEnv : public QObject
 {
-  public:
+public:
     explicit TestScriptEnv(KateDocument *part, bool &cflag);
     virtual ~TestScriptEnv();
 
-    QScriptEngine *engine() const { return m_engine; }
+    QScriptEngine *engine() const
+    {
+        return m_engine;
+    }
 
     /** returns the output object */
-    OutputObject *output() const { return m_output; }
+    OutputObject *output() const
+    {
+        return m_output;
+    }
 
-  private:
+private:
     QScriptEngine *m_engine;
     KateViewObject *m_viewObj;
     KateDocumentObject *m_docObj;
@@ -65,7 +71,7 @@ class KateViewObject : public KateScriptView
 {
     Q_OBJECT
 
-  public:
+public:
 
     explicit KateViewObject(KateView *view);
     virtual ~KateViewObject();
@@ -110,7 +116,7 @@ class KateViewObject : public KateScriptView
     Q_INVOKABLE void toMatchingBracket(int cnt = 1);
     Q_INVOKABLE void shiftToMatchingBracket(int cnt = 1);
 
-    Q_INVOKABLE bool type(const QString& str);
+    Q_INVOKABLE bool type(const QString &str);
 
     // Aliases
     Q_INVOKABLE void enter(int cnt = 1);            // KeyReturn
@@ -131,7 +137,7 @@ class KateViewObject : public KateScriptView
     Q_INVOKABLE void wordNext(int cnt = 1);         // WordRight
     Q_INVOKABLE void shiftWordNext(int cnt = 1);    // ShiftWordRight
 
-  private:
+private:
     Q_DISABLE_COPY(KateViewObject)
 };
 
@@ -142,11 +148,11 @@ class KateDocumentObject : public KateScriptDocument
 {
     Q_OBJECT
 
-  public:
-    explicit KateDocumentObject(KateDocument* doc);
+public:
+    explicit KateDocumentObject(KateDocument *doc);
     virtual ~KateDocumentObject();
 
-  private:
+private:
     Q_DISABLE_COPY(KateDocumentObject)
 };
 
@@ -160,7 +166,7 @@ class OutputObject : public QObject, protected QScriptable
 {
     Q_OBJECT
 
-  public:
+public:
     OutputObject(KateView *v, bool &cflag);
     virtual ~OutputObject();
 
@@ -185,7 +191,7 @@ class OutputObject : public QObject, protected QScriptable
     Q_INVOKABLE void posln();
     Q_INVOKABLE void posLn();
 
-  private:
+private:
     KateView *view;
     bool &cflag;
 };

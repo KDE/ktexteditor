@@ -31,13 +31,13 @@ class QTimer;
 
 class KateCompletionTree : public ExpandingTree
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateCompletionTree(KateCompletionWidget* parent);
+public:
+    explicit KateCompletionTree(KateCompletionWidget *parent);
 
-    KateCompletionWidget* widget() const;
-    KateCompletionModel* kateModel() const;
+    KateCompletionWidget *widget() const;
+    KateCompletionModel *kateModel() const;
 
     void resizeColumns(bool firstShow = false, bool forceResize = false);
 
@@ -48,24 +48,24 @@ class KateCompletionTree : public ExpandingTree
     bool pageUp();
     void top();
     void bottom();
-    
+
     void scheduleUpdate();
 
     void setScrollingEnabled(bool);
-    
+
     /// Returns the approximated viewport position of the text in the given column, skipping an eventual icon
-    int columnTextViewportPosition ( int column ) const;
-    
-  private Q_SLOTS:
+    int columnTextViewportPosition(int column) const;
+
+private Q_SLOTS:
     void resizeColumnsSlot();
 
-  protected:
-    virtual void currentChanged ( const QModelIndex & current, const QModelIndex & previous ); ///Not available as a signal in this way
+protected:
+    virtual void currentChanged(const QModelIndex &current, const QModelIndex &previous);      ///Not available as a signal in this way
     virtual void scrollContentsBy(int dx, int dy);
     virtual QStyleOptionViewItem viewOptions() const;
-  private:
+private:
     bool m_scrollingEnabled;
-    QTimer* m_resizeTimer;
+    QTimer *m_resizeTimer;
 };
 
 #endif

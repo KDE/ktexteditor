@@ -39,10 +39,10 @@
 
 class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompletionModel2, public KTextEditor::CodeCompletionModelControllerInterface
 {
-  Q_OBJECT
-  Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
-  public:
-    KateWordCompletionModel( QObject *parent );
+    Q_OBJECT
+    Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
+public:
+    KateWordCompletionModel(QObject *parent);
     ~KateWordCompletionModel();
 
     /**
@@ -55,43 +55,43 @@ class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompl
      * @param view The view to generate completions for
      * @param range The range of text to generate completions for
      * */
-    void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range, InvocationType invocationType);
+    void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType);
 
-    bool shouldStartCompletion(KTextEditor::View* view, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor &position);
-    bool shouldAbortCompletion(KTextEditor::View* view, const KTextEditor::Range &range, const QString &currentCompletion);
+    bool shouldStartCompletion(KTextEditor::View *view, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor &position);
+    bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion);
 
-    void saveMatches( KTextEditor::View* view,
-                            const KTextEditor::Range& range);
+    void saveMatches(KTextEditor::View *view,
+                     const KTextEditor::Range &range);
 
-    int rowCount ( const QModelIndex & parent ) const;
+    int rowCount(const QModelIndex &parent) const;
 
-    QVariant data(const QModelIndex& index, int role) const;
-    virtual QModelIndex index(int row, int column, const QModelIndex& parent=QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex& index) const;
-    virtual MatchReaction matchingItem(const QModelIndex& matched);
+    QVariant data(const QModelIndex &index, int role) const;
+    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    virtual QModelIndex parent(const QModelIndex &index) const;
+    virtual MatchReaction matchingItem(const QModelIndex &matched);
 
-    virtual KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor &position);
+    virtual KTextEditor::Range completionRange(KTextEditor::View *view, const KTextEditor::Cursor &position);
 
     virtual bool shouldHideItemsWithEqualNames() const;
 
-    QStringList allMatches( KTextEditor::View *view, const KTextEditor::Range &range ) const;
+    QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const;
 
-    virtual void executeCompletionItem2(KTextEditor::Document* document, const KTextEditor::Range& word, const QModelIndex& index) const;
+    virtual void executeCompletionItem2(KTextEditor::Document *document, const KTextEditor::Range &word, const QModelIndex &index) const;
 
-  private:
+private:
     QStringList m_matches;
     bool m_automatic;
 };
 
 class KateWordCompletionView : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateWordCompletionView(KTextEditor::View *view, KActionCollection* ac );
+public:
+    KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac);
     ~KateWordCompletionView();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void completeBackwards();
     void completeForwards();
     void slotCursorMoved();
@@ -100,13 +100,13 @@ class KateWordCompletionView : public QObject
 
     void popupCompletionList();
 
-  private:
-    void complete( bool fw=true );
+private:
+    void complete(bool fw = true);
 
     QString word() const;
     KTextEditor::Range range() const;
 
-    QString findLongestUnique( const QStringList &matches, int lead ) const;
+    QString findLongestUnique(const QStringList &matches, int lead) const;
 
     KTextEditor::View *m_view;
     KateWordCompletionModel *m_dWCompletionModel;
@@ -115,4 +115,3 @@ class KateWordCompletionView : public QObject
 
 #endif // _DocWordCompletionPlugin_h_
 
-// kate: space-indent on; indent-width 2; replace-tabs on; mixed-indent off;

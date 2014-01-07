@@ -53,7 +53,7 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT Range
 {
-  public:
+public:
     /**
      * Default constructor. Creates a valid range from position (0, 0) to
      * position (0, 0).
@@ -67,7 +67,7 @@ class KTEXTEDITOR_EXPORT Range
      * \param start start position
      * \param end end position
      */
-    Range(const Cursor& start, const Cursor& end);
+    Range(const Cursor &start, const Cursor &end);
 
     /**
      * Constructor which creates a single-line range from \p start,
@@ -76,7 +76,7 @@ class KTEXTEDITOR_EXPORT Range
      * \param start start position
      * \param width width of this range in columns along the same line
      */
-    Range(const Cursor& start, int width);
+    Range(const Cursor &start, int width);
 
     /**
      * Constructor which creates a range from \p start, to \p endLine, \p endColumn.
@@ -85,7 +85,7 @@ class KTEXTEDITOR_EXPORT Range
      * \param endLine end line
      * \param endColumn end column
      */
-    Range(const Cursor& start, int endLine, int endColumn);
+    Range(const Cursor &start, int endLine, int endColumn);
 
     /**
      * Constructor which creates a range from \e startLine, \e startColumn to \e endLine, \e endColumn.
@@ -119,9 +119,9 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \returns const reference to the start position of this range.
      */
-    const Cursor &start () const
+    const Cursor &start() const
     {
-      return m_start;
+        return m_start;
     }
 
     /**
@@ -129,9 +129,9 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \returns const reference to the end position of this range.
      */
-    const Cursor &end () const
+    const Cursor &end() const
     {
-      return m_end;
+        return m_end;
     }
 
     /**
@@ -153,7 +153,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \param range range to assign to this range
      */
-    void setRange(const Range& range);
+    void setRange(const Range &range);
 
     /**
      * \overload
@@ -165,7 +165,7 @@ class KTEXTEDITOR_EXPORT Range
      * \param start start cursor
      * \param end end cursor
      */
-    void setRange(const Cursor& start, const Cursor& end);
+    void setRange(const Cursor &start, const Cursor &end);
 
     /**
      * Set the start cursor to \e start.
@@ -174,12 +174,13 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \param start new start cursor
      */
-    void setStart (const Cursor& start)
+    void setStart(const Cursor &start)
     {
-      if (start > end())
-        setRange (start, start);
-      else
-        setRange (start, end());
+        if (start > end()) {
+            setRange(start, start);
+        } else {
+            setRange(start, end());
+        }
     }
 
     /**
@@ -189,12 +190,13 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \param end new end cursor
      */
-    void setEnd (const Cursor& end)
+    void setEnd(const Cursor &end)
     {
-      if (end < start())
-        setRange (end, end);
-      else
-        setRange (start(), end);
+        if (end < start()) {
+            setRange(end, end);
+        } else {
+            setRange(start(), end);
+        }
     }
 
     /**
@@ -204,7 +206,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if expansion occurred, \e false otherwise
      */
-    bool expandToRange(const Range& range);
+    bool expandToRange(const Range &range);
 
     /**
      * Confine this range if necessary to fit within \p range.
@@ -213,7 +215,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if confinement occurred, \e false otherwise
      */
-    bool confineToRange(const Range& range);
+    bool confineToRange(const Range &range);
 
     /**
      * Check whether this range is wholly contained within one line, ie. if
@@ -265,7 +267,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true, if this range contains \e range, otherwise \e false
      */
-    bool contains(const Range& range) const;
+    bool contains(const Range &range) const;
 
     /**
      * Check to see if \p cursor is contained within this range, ie >= start() and \< end().
@@ -274,7 +276,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    bool contains(const Cursor& cursor) const;
+    bool contains(const Cursor &cursor) const;
 
     /**
      * Returns true if this range wholly encompasses \p line.
@@ -301,7 +303,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true, if this range overlaps with \e range, otherwise \e false
      */
-    bool overlaps(const Range& range) const;
+    bool overlaps(const Range &range) const;
 
     /**
      * Check whether the range overlaps at least part of \e line.
@@ -337,7 +339,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \see positionRelativeToLine()
      */
-    int positionRelativeToCursor(const Cursor& cursor) const;
+    int positionRelativeToCursor(const Cursor &cursor) const;
 
     /**
      * Determine where \p line is positioned in relationship to this range.
@@ -362,7 +364,7 @@ class KTEXTEDITOR_EXPORT Range
      * \return \e true if the cursor is equal to \p start() or \p end(),
      *         otherwise \e false.
      */
-    bool boundaryAtCursor(const Cursor& cursor) const;
+    bool boundaryAtCursor(const Cursor &cursor) const;
 
     /**
      * Check whether \p line is on the same line as either of the start() or
@@ -396,7 +398,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return the intersection of this range and the supplied \a range.
      */
-    Range intersect(const Range& range) const;
+    Range intersect(const Range &range) const;
 
     /**
      * Returns the smallest range which encompasses this range and the
@@ -406,7 +408,7 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return the smallest range which contains this range and the supplied \a range.
      */
-    Range encompass(const Range& range) const;
+    Range encompass(const Range &range) const;
 
     /**
      * Addition operator. Takes two ranges and returns their summation.
@@ -416,8 +418,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return a the summation of the two input ranges
      */
-    inline friend Range operator+(const Range& r1, const Range& r2)
-      { return Range(r1.start() + r2.start(), r1.end() + r2.end()); }
+    inline friend Range operator+(const Range &r1, const Range &r2)
+    {
+        return Range(r1.start() + r2.start(), r1.end() + r2.end());
+    }
 
     /**
      * Addition assignment operator. Adds \p r2 to this range.
@@ -427,8 +431,11 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Range& operator+=(Range& r1, const Range& r2)
-      { r1.setRange(r1.start() + r2.start(), r1.end() + r2.end()); return r1; }
+    inline friend Range &operator+=(Range &r1, const Range &r2)
+    {
+        r1.setRange(r1.start() + r2.start(), r1.end() + r2.end());
+        return r1;
+    }
 
     /**
      * Subtraction operator. Takes two ranges and returns the subtraction
@@ -439,8 +446,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return a range representing the subtraction of \p r2 from \p r1
      */
-    inline friend Range operator-(const Range& r1, const Range& r2)
-      { return Range(r1.start() - r2.start(), r1.end() - r2.end()); }
+    inline friend Range operator-(const Range &r1, const Range &r2)
+    {
+        return Range(r1.start() - r2.start(), r1.end() - r2.end());
+    }
 
     /**
      * Subtraction assignment operator. Subtracts \p r2 from \p r1.
@@ -450,8 +459,11 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return a reference to the range which has just been subtracted from
      */
-    inline friend Range& operator-=(Range& r1, const Range& r2)
-      { r1.setRange(r1.start() - r2.start(), r1.end() - r2.end()); return r1; }
+    inline friend Range &operator-=(Range &r1, const Range &r2)
+    {
+        r1.setRange(r1.start() - r2.start(), r1.end() - r2.end());
+        return r1;
+    }
 
     /**
      * Intersects \a r1 and \a r2.
@@ -461,8 +473,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return the intersected range, invalid() if there is no overlap
      */
-    inline friend Range operator&(const Range& r1, const Range& r2)
-      { return r1.intersect(r2); }
+    inline friend Range operator&(const Range &r1, const Range &r2)
+    {
+        return r1.intersect(r2);
+    }
 
     /**
      * Intersects \a r1 with \a r2 and assigns the result to \a r1.
@@ -472,8 +486,11 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return a reference to this range, after the intersection has taken place
      */
-    inline friend Range& operator&=(Range& r1, const Range& r2)
-      { r1.setRange(r1.intersect(r2)); return r1; }
+    inline friend Range &operator&=(Range &r1, const Range &r2)
+    {
+        r1.setRange(r1.intersect(r2));
+        return r1;
+    }
 
     /**
      * Equality operator.
@@ -483,8 +500,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if \e r1 and \e r2 equal, otherwise \e false
      */
-    inline friend bool operator==(const Range& r1, const Range& r2)
-      { return r1.start() == r2.start() && r1.end() == r2.end(); }
+    inline friend bool operator==(const Range &r1, const Range &r2)
+    {
+        return r1.start() == r2.start() && r1.end() == r2.end();
+    }
 
     /**
      * Inequality operator.
@@ -494,8 +513,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if \e r1 and \e r2 do \e not equal, otherwise \e false
      */
-    inline friend bool operator!=(const Range& r1, const Range& r2)
-      { return r1.start() != r2.start() || r1.end() != r2.end(); }
+    inline friend bool operator!=(const Range &r1, const Range &r2)
+    {
+        return r1.start() != r2.start() || r1.end() != r2.end();
+    }
 
     /**
      * Greater than operator.  Looks only at the position of the two ranges,
@@ -506,8 +527,10 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if \e r1 starts after where \e r2 ends, otherwise \e false
      */
-    inline friend bool operator>(const Range& r1, const Range& r2)
-      { return r1.start() > r2.end(); }
+    inline friend bool operator>(const Range &r1, const Range &r2)
+    {
+        return r1.start() > r2.end();
+    }
 
     /**
      * Less than operator.  Looks only at the position of the two ranges,
@@ -518,21 +541,25 @@ class KTEXTEDITOR_EXPORT Range
      *
      * \return \e true if \e r1 ends before \e r2 begins, otherwise \e false
      */
-    inline friend bool operator<(const Range& r1, const Range& r2)
-      { return r1.end() < r2.start(); }
+    inline friend bool operator<(const Range &r1, const Range &r2)
+    {
+        return r1.end() < r2.start();
+    }
 
     /**
      * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Range& range) {
-      if (&range)
-        s << "[" << range.start() << " -> " << range.end() << "]";
-      else
-        s << "(null range)";
-      return s;
+    inline friend QDebug operator<< (QDebug s, const Range &range)
+    {
+        if (&range) {
+            s << "[" << range.start() << " -> " << range.end() << "]";
+        } else {
+            s << "(null range)";
+        }
+        return s;
     }
 
-  private:
+private:
     /**
      * This range's start cursor pointer.
      *
@@ -552,4 +579,3 @@ class KTEXTEDITOR_EXPORT Range
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

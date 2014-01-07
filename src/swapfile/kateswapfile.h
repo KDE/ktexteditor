@@ -36,7 +36,8 @@
 
 class KateView;
 
-namespace Kate {
+namespace Kate
+{
 
 /**
  * Class for tracking editing actions.
@@ -45,65 +46,65 @@ namespace Kate {
  */
 class KTEXTEDITOR_EXPORT SwapFile : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit SwapFile(KateDocument* document);
+public:
+    explicit SwapFile(KateDocument *document);
     ~SwapFile();
     bool shouldRecover() const;
 
-    void fileClosed ();
+    void fileClosed();
     QString fileName();
 
-    KateDocument* document();
+    KateDocument *document();
 
-  private:
+private:
     void setTrackingEnabled(bool trackingEnabled);
     void removeSwapFile();
     bool updateFileName();
-    bool isValidSwapFile(QDataStream& stream, bool checkDigest) const;
+    bool isValidSwapFile(QDataStream &stream, bool checkDigest) const;
 
-  private:
+private:
     KateDocument *m_document;
     bool m_trackingEnabled;
 
-  protected Q_SLOTS:
-    void fileSaved(const QString& filename);
+protected Q_SLOTS:
+    void fileSaved(const QString &filename);
     void fileLoaded(const QString &filename);
     void modifiedChanged();
 
-    void startEditing ();
-    void finishEditing ();
+    void startEditing();
+    void finishEditing();
 
-    void wrapLine (const KTextEditor::Cursor &position);
-    void unwrapLine (int line);
-    void insertText (const KTextEditor::Cursor &position, const QString &text);
-    void removeText (const KTextEditor::Range &range);
+    void wrapLine(const KTextEditor::Cursor &position);
+    void unwrapLine(int line);
+    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void removeText(const KTextEditor::Range &range);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void discard();
     void recover();
-    bool recover(QDataStream&, bool checkDigest = true);
+    bool recover(QDataStream &, bool checkDigest = true);
     void configChanged();
 
-  private:
+private:
     QDataStream m_stream;
     QFile m_swapfile;
     bool m_recovered;
     bool m_needSync;
     static QTimer *s_timer;
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void writeFileToDisk();
 
-  private:
-    QTimer* syncTimer();
+private:
+    QTimer *syncTimer();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void showSwapFileMessage();
     void showDiff();
 
-  private:
+private:
     QPointer<KTextEditor::Message> m_swapMessage;
 };
 
@@ -111,4 +112,3 @@ class KTEXTEDITOR_EXPORT SwapFile : public QObject
 
 #endif // KATE_SWAPFILE_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

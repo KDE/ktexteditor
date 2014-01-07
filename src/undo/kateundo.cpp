@@ -29,389 +29,400 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-KateUndo::KateUndo (KateDocument *document)
-: m_document (document)
-, m_lineModFlags(0x00)
+KateUndo::KateUndo(KateDocument *document)
+    : m_document(document)
+    , m_lineModFlags(0x00)
 {
 }
 
-KateUndo::~KateUndo ()
+KateUndo::~KateUndo()
 {
 }
 
-KateEditInsertTextUndo::KateEditInsertTextUndo (KateDocument *document, int line, int col, const QString &text)
-  : KateUndo (document)
-  , m_line (line)
-  , m_col (col)
-  , m_text (text)
+KateEditInsertTextUndo::KateEditInsertTextUndo(KateDocument *document, int line, int col, const QString &text)
+    : KateUndo(document)
+    , m_line(line)
+    , m_col(col)
+    , m_text(text)
 {
 }
 
-KateEditRemoveTextUndo::KateEditRemoveTextUndo (KateDocument *document, int line, int col, const QString &text)
-  : KateUndo (document)
-  , m_line (line)
-  , m_col (col)
-  , m_text (text)
+KateEditRemoveTextUndo::KateEditRemoveTextUndo(KateDocument *document, int line, int col, const QString &text)
+    : KateUndo(document)
+    , m_line(line)
+    , m_col(col)
+    , m_text(text)
 {
 }
 
-KateEditWrapLineUndo::KateEditWrapLineUndo (KateDocument *document, int line, int col, int len, bool newLine)
-  : KateUndo (document)
-  , m_line (line)
-  , m_col (col)
-  , m_len (len)
-  , m_newLine (newLine)
+KateEditWrapLineUndo::KateEditWrapLineUndo(KateDocument *document, int line, int col, int len, bool newLine)
+    : KateUndo(document)
+    , m_line(line)
+    , m_col(col)
+    , m_len(len)
+    , m_newLine(newLine)
 {
 }
 
-KateEditUnWrapLineUndo::KateEditUnWrapLineUndo (KateDocument *document, int line, int col, int len, bool removeLine)
-  : KateUndo (document)
-  , m_line (line)
-  , m_col (col)
-  , m_len (len)
-  , m_removeLine (removeLine)
+KateEditUnWrapLineUndo::KateEditUnWrapLineUndo(KateDocument *document, int line, int col, int len, bool removeLine)
+    : KateUndo(document)
+    , m_line(line)
+    , m_col(col)
+    , m_len(len)
+    , m_removeLine(removeLine)
 {
 }
 
-KateEditInsertLineUndo::KateEditInsertLineUndo (KateDocument *document, int line, const QString &text)
-  : KateUndo (document)
-  , m_line (line)
-  , m_text (text)
+KateEditInsertLineUndo::KateEditInsertLineUndo(KateDocument *document, int line, const QString &text)
+    : KateUndo(document)
+    , m_line(line)
+    , m_text(text)
 {
 }
 
-KateEditRemoveLineUndo::KateEditRemoveLineUndo (KateDocument *document, int line, const QString &text)
-  : KateUndo (document)
-  , m_line (line)
-  , m_text (text)
+KateEditRemoveLineUndo::KateEditRemoveLineUndo(KateDocument *document, int line, const QString &text)
+    : KateUndo(document)
+    , m_line(line)
+    , m_text(text)
 {
 }
-
 
 bool KateUndo::isEmpty() const
 {
-  return false;
+    return false;
 }
 
 bool KateEditInsertTextUndo::isEmpty() const
 {
-  return len() == 0;
+    return len() == 0;
 }
 
 bool KateEditRemoveTextUndo::isEmpty() const
 {
-  return len() == 0;
+    return len() == 0;
 }
 
-bool KateUndo::mergeWith (const KateUndo* /*undo*/)
+bool KateUndo::mergeWith(const KateUndo * /*undo*/)
 {
-  return false;
+    return false;
 }
 
-bool KateEditInsertTextUndo::mergeWith (const KateUndo* undo)
+bool KateEditInsertTextUndo::mergeWith(const KateUndo *undo)
 {
-  const KateEditInsertTextUndo *u = dynamic_cast<const KateEditInsertTextUndo *> (undo);
-  if (u != 0
-      && m_line == u->m_line
-      && (m_col + len()) == u->m_col)
-  {
-    m_text += u->m_text;
-    return true;
-  }
+    const KateEditInsertTextUndo *u = dynamic_cast<const KateEditInsertTextUndo *>(undo);
+    if (u != 0
+            && m_line == u->m_line
+            && (m_col + len()) == u->m_col) {
+        m_text += u->m_text;
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
-bool KateEditRemoveTextUndo::mergeWith (const KateUndo* undo)
+bool KateEditRemoveTextUndo::mergeWith(const KateUndo *undo)
 {
-  const KateEditRemoveTextUndo *u = dynamic_cast<const KateEditRemoveTextUndo *> (undo);
+    const KateEditRemoveTextUndo *u = dynamic_cast<const KateEditRemoveTextUndo *>(undo);
 
-  if (u != 0
-      && m_line == u->m_line
-      && m_col == (u->m_col + u->len()))
-  {
-    m_text.prepend(u->m_text);
-    m_col = u->m_col;
-    return true;
-  }
+    if (u != 0
+            && m_line == u->m_line
+            && m_col == (u->m_col + u->len())) {
+        m_text.prepend(u->m_text);
+        m_col = u->m_col;
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
-void KateEditInsertTextUndo::undo ()
+void KateEditInsertTextUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editRemoveText (m_line, m_col, len());
+    doc->editRemoveText(m_line, m_col, len());
 }
 
-void KateEditRemoveTextUndo::undo ()
+void KateEditRemoveTextUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editInsertText (m_line, m_col, m_text);
+    doc->editInsertText(m_line, m_col, m_text);
 }
 
-void KateEditWrapLineUndo::undo ()
+void KateEditWrapLineUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editUnWrapLine (m_line, m_newLine, m_len);
+    doc->editUnWrapLine(m_line, m_newLine, m_len);
 }
 
-void KateEditUnWrapLineUndo::undo ()
+void KateEditUnWrapLineUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editWrapLine (m_line, m_col, m_removeLine);
+    doc->editWrapLine(m_line, m_col, m_removeLine);
 }
 
-void KateEditInsertLineUndo::undo ()
+void KateEditInsertLineUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editRemoveLine (m_line);
+    doc->editRemoveLine(m_line);
 }
 
-void KateEditRemoveLineUndo::undo ()
+void KateEditRemoveLineUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editInsertLine (m_line, m_text);
+    doc->editInsertLine(m_line, m_text);
 }
 
-void KateEditMarkLineAutoWrappedUndo::undo ()
+void KateEditMarkLineAutoWrappedUndo::undo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editMarkLineAutoWrapped (m_line, m_autowrapped);
+    doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
-void KateEditRemoveTextUndo::redo ()
+void KateEditRemoveTextUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editRemoveText (m_line, m_col, len());
+    doc->editRemoveText(m_line, m_col, len());
 }
 
-void KateEditInsertTextUndo::redo ()
+void KateEditInsertTextUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editInsertText (m_line, m_col, m_text);
+    doc->editInsertText(m_line, m_col, m_text);
 }
 
-void KateEditUnWrapLineUndo::redo ()
+void KateEditUnWrapLineUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editUnWrapLine (m_line, m_removeLine, m_len);
+    doc->editUnWrapLine(m_line, m_removeLine, m_len);
 }
 
-void KateEditWrapLineUndo::redo ()
+void KateEditWrapLineUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editWrapLine (m_line, m_col, m_newLine);
+    doc->editWrapLine(m_line, m_col, m_newLine);
 }
 
-void KateEditRemoveLineUndo::redo ()
+void KateEditRemoveLineUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editRemoveLine (m_line);
+    doc->editRemoveLine(m_line);
 }
 
-void KateEditInsertLineUndo::redo ()
+void KateEditInsertLineUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editInsertLine (m_line, m_text);
+    doc->editInsertLine(m_line, m_text);
 }
 
-void KateEditMarkLineAutoWrappedUndo::redo ()
+void KateEditMarkLineAutoWrappedUndo::redo()
 {
-  KateDocument *doc = document();
+    KateDocument *doc = document();
 
-  doc->editMarkLineAutoWrapped (m_line, m_autowrapped);
+    doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
-KateUndoGroup::KateUndoGroup (KateUndoManager *manager, const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range &selectionRange)
-  : m_manager (manager)
-  , m_safePoint(false)
-  , m_undoSelection(selectionRange)
-  , m_redoSelection(-1, -1, -1, -1)
-  , m_undoCursor(cursorPosition)
-  , m_redoCursor(-1, -1)
+KateUndoGroup::KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range &selectionRange)
+    : m_manager(manager)
+    , m_safePoint(false)
+    , m_undoSelection(selectionRange)
+    , m_redoSelection(-1, -1, -1, -1)
+    , m_undoCursor(cursorPosition)
+    , m_redoCursor(-1, -1)
 {
 }
 
-KateUndoGroup::~KateUndoGroup ()
+KateUndoGroup::~KateUndoGroup()
 {
-  qDeleteAll (m_items);
+    qDeleteAll(m_items);
 }
 
-void KateUndoGroup::undo (KTextEditor::View *view)
+void KateUndoGroup::undo(KTextEditor::View *view)
 {
-  if (m_items.isEmpty())
-    return;
+    if (m_items.isEmpty()) {
+        return;
+    }
 
-  m_manager->startUndo ();
+    m_manager->startUndo();
 
-  for (int i=m_items.size()-1; i >= 0; --i)
-    m_items[i]->undo();
+    for (int i = m_items.size() - 1; i >= 0; --i) {
+        m_items[i]->undo();
+    }
 
-  if (view != 0) {
-    if (m_undoSelection.isValid())
-      view->setSelection(m_undoSelection);
-    else
-      view->removeSelection();
+    if (view != 0) {
+        if (m_undoSelection.isValid()) {
+            view->setSelection(m_undoSelection);
+        } else {
+            view->removeSelection();
+        }
 
-    if (m_undoCursor.isValid())
-      view->setCursorPosition(m_undoCursor);
-  }
+        if (m_undoCursor.isValid()) {
+            view->setCursorPosition(m_undoCursor);
+        }
+    }
 
-  m_manager->endUndo ();
+    m_manager->endUndo();
 }
 
-void KateUndoGroup::redo (KTextEditor::View *view)
+void KateUndoGroup::redo(KTextEditor::View *view)
 {
-  if (m_items.isEmpty())
-    return;
+    if (m_items.isEmpty()) {
+        return;
+    }
 
-  m_manager->startUndo ();
+    m_manager->startUndo();
 
-  for (int i=0; i < m_items.size(); ++i)
-    m_items[i]->redo();
+    for (int i = 0; i < m_items.size(); ++i) {
+        m_items[i]->redo();
+    }
 
-  if (view != 0) {
-    if (m_redoSelection.isValid())
-      view->setSelection(m_redoSelection);
-    else
-      view->removeSelection();
+    if (view != 0) {
+        if (m_redoSelection.isValid()) {
+            view->setSelection(m_redoSelection);
+        } else {
+            view->removeSelection();
+        }
 
-    if (m_redoCursor.isValid())
-      view->setCursorPosition(m_redoCursor);
-  }
+        if (m_redoCursor.isValid()) {
+            view->setCursorPosition(m_redoCursor);
+        }
+    }
 
-  m_manager->endUndo ();
+    m_manager->endUndo();
 }
 
 void KateUndoGroup::editEnd(const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range selectionRange)
 {
-  m_redoCursor = cursorPosition;
-  m_redoSelection = selectionRange;
+    m_redoCursor = cursorPosition;
+    m_redoSelection = selectionRange;
 }
 
-void KateUndoGroup::addItem(KateUndo* u)
+void KateUndoGroup::addItem(KateUndo *u)
 {
-  if (u->isEmpty())
-    delete u;
-  else if (!m_items.isEmpty() && m_items.last()->mergeWith(u))
-    delete u;
-  else
-    m_items.append(u);
+    if (u->isEmpty()) {
+        delete u;
+    } else if (!m_items.isEmpty() && m_items.last()->mergeWith(u)) {
+        delete u;
+    } else {
+        m_items.append(u);
+    }
 }
 
-bool KateUndoGroup::merge (KateUndoGroup* newGroup,bool complex)
+bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
 {
-  if (m_safePoint)
-    return false;
-
-  if (newGroup->isOnlyType(singleType()) || complex) {
-    // Take all of its items first -> last
-    KateUndo* u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst ();
-    while (u) {
-      addItem(u);
-      u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst ();
+    if (m_safePoint) {
+        return false;
     }
 
-    if (newGroup->m_safePoint)
-      safePoint();
+    if (newGroup->isOnlyType(singleType()) || complex) {
+        // Take all of its items first -> last
+        KateUndo *u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst();
+        while (u) {
+            addItem(u);
+            u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst();
+        }
 
-    m_redoCursor = newGroup->m_redoCursor;
-    m_redoSelection = newGroup->m_redoSelection;
+        if (newGroup->m_safePoint) {
+            safePoint();
+        }
 
-    return true;
-  }
+        m_redoCursor = newGroup->m_redoCursor;
+        m_redoSelection = newGroup->m_redoSelection;
 
-  return false;
+        return true;
+    }
+
+    return false;
 }
 
-void KateUndoGroup::safePoint (bool safePoint)
+void KateUndoGroup::safePoint(bool safePoint)
 {
-  m_safePoint=safePoint;
+    m_safePoint = safePoint;
 }
 
 void KateUndoGroup::flagSavedAsModified()
 {
-  foreach (KateUndo *item, m_items) {
-    if (item->isFlagSet(KateUndo::UndoLine1Saved)) {
-      item->unsetFlag(KateUndo::UndoLine1Saved);
-      item->setFlag(KateUndo::UndoLine1Modified);
-    }
+    foreach (KateUndo *item, m_items) {
+        if (item->isFlagSet(KateUndo::UndoLine1Saved)) {
+            item->unsetFlag(KateUndo::UndoLine1Saved);
+            item->setFlag(KateUndo::UndoLine1Modified);
+        }
 
-    if (item->isFlagSet(KateUndo::UndoLine2Saved)) {
-      item->unsetFlag(KateUndo::UndoLine2Saved);
-      item->setFlag(KateUndo::UndoLine2Modified);
-    }
+        if (item->isFlagSet(KateUndo::UndoLine2Saved)) {
+            item->unsetFlag(KateUndo::UndoLine2Saved);
+            item->setFlag(KateUndo::UndoLine2Modified);
+        }
 
-    if (item->isFlagSet(KateUndo::RedoLine1Saved)) {
-      item->unsetFlag(KateUndo::RedoLine1Saved);
-      item->setFlag(KateUndo::RedoLine1Modified);
-    }
+        if (item->isFlagSet(KateUndo::RedoLine1Saved)) {
+            item->unsetFlag(KateUndo::RedoLine1Saved);
+            item->setFlag(KateUndo::RedoLine1Modified);
+        }
 
-    if (item->isFlagSet(KateUndo::RedoLine2Saved)) {
-      item->unsetFlag(KateUndo::RedoLine2Saved);
-      item->setFlag(KateUndo::RedoLine2Modified);
+        if (item->isFlagSet(KateUndo::RedoLine2Saved)) {
+            item->unsetFlag(KateUndo::RedoLine2Saved);
+            item->setFlag(KateUndo::RedoLine2Modified);
+        }
     }
-  }
 }
 
-void KateUndoGroup::markUndoAsSaved(QBitArray & lines)
+void KateUndoGroup::markUndoAsSaved(QBitArray &lines)
 {
-  for (int i = m_items.size() - 1; i >= 0; --i) {
-    KateUndo* item = m_items[i];
-    item->updateUndoSavedOnDiskFlag(lines);
-  }
+    for (int i = m_items.size() - 1; i >= 0; --i) {
+        KateUndo *item = m_items[i];
+        item->updateUndoSavedOnDiskFlag(lines);
+    }
 }
 
-void KateUndoGroup::markRedoAsSaved(QBitArray & lines)
+void KateUndoGroup::markRedoAsSaved(QBitArray &lines)
 {
-  for (int i = m_items.size() - 1; i >= 0; --i) {
-    KateUndo* item = m_items[i];
-    item->updateRedoSavedOnDiskFlag(lines);
-  }
+    for (int i = m_items.size() - 1; i >= 0; --i) {
+        KateUndo *item = m_items[i];
+        item->updateRedoSavedOnDiskFlag(lines);
+    }
 }
 
 KTextEditor::Document *KateUndoGroup::document()
 {
-  return m_manager->document();
+    return m_manager->document();
 }
 
 KateUndo::UndoType KateUndoGroup::singleType() const
 {
-  KateUndo::UndoType ret = KateUndo::editInvalid;
+    KateUndo::UndoType ret = KateUndo::editInvalid;
 
-  Q_FOREACH(const KateUndo *item, m_items) {
-    if (ret == KateUndo::editInvalid)
-      ret = item->type();
-    else if (ret != item->type())
-      return KateUndo::editInvalid;
-  }
+    Q_FOREACH (const KateUndo *item, m_items) {
+        if (ret == KateUndo::editInvalid) {
+            ret = item->type();
+        } else if (ret != item->type()) {
+            return KateUndo::editInvalid;
+        }
+    }
 
-  return ret;
+    return ret;
 }
 
 bool KateUndoGroup::isOnlyType(KateUndo::UndoType type) const
 {
-  if (type == KateUndo::editInvalid) return false;
+    if (type == KateUndo::editInvalid) {
+        return false;
+    }
 
-  Q_FOREACH(const KateUndo *item, m_items)
-    if (item->type() != type)
-      return false;
+    Q_FOREACH (const KateUndo *item, m_items)
+        if (item->type() != type) {
+            return false;
+        }
 
-  return true;
+    return true;
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

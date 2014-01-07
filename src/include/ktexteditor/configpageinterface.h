@@ -27,23 +27,23 @@
 
 namespace KTextEditor
 {
-  
+
 class ConfigPage;
-  
+
 /**
  * \brief Config page interface extension for e.g. Editor and ApplicationPlugin's.
  */
 class KTEXTEDITOR_EXPORT ConfigPageInterface
 {
-  public:
-    ConfigPageInterface ();
+public:
+    ConfigPageInterface();
 
     /**
      * Virtual destructor.
      */
-    virtual ~ConfigPageInterface ();
+    virtual ~ConfigPageInterface();
 
-  public:
+public:
 
     /**
      * Get the number of available config pages.
@@ -51,7 +51,7 @@ class KTEXTEDITOR_EXPORT ConfigPageInterface
      * \return number of config pages
      * \see configPage()
      */
-    virtual int configPages () const = 0;
+    virtual int configPages() const = 0;
 
     /**
      * Get the config page with the \p number, config pages from 0 to
@@ -61,7 +61,7 @@ class KTEXTEDITOR_EXPORT ConfigPageInterface
      * \return created config page or NULL, if the number is out of bounds
      * \see configPages()
      */
-    virtual ConfigPage *configPage (int number, QWidget *parent) = 0;
+    virtual ConfigPage *configPage(int number, QWidget *parent) = 0;
 
     /**
      * Get a readable name for the config page \p number. The name should be
@@ -70,7 +70,7 @@ class KTEXTEDITOR_EXPORT ConfigPageInterface
      * \return name of given page index
          * \see configPageFullName(), configPagePixmap()
      */
-    virtual QString configPageName (int number) const = 0;
+    virtual QString configPageName(int number) const = 0;
 
     /**
      * Get a readable full name for the config page \e number. The name
@@ -83,7 +83,7 @@ class KTEXTEDITOR_EXPORT ConfigPageInterface
      * \return full name of given page index
          * \see configPageName(), configPagePixmap()
      */
-    virtual QString configPageFullName (int number) const = 0;
+    virtual QString configPageFullName(int number) const = 0;
 
     /**
      * Get a pixmap with \p size for the config page \p number.
@@ -91,10 +91,10 @@ class KTEXTEDITOR_EXPORT ConfigPageInterface
      * \return pixmap for the given page index
      * \see configPageName(), configPageFullName()
      */
-    virtual QIcon configPageIcon (int number) const = 0;
+    virtual QIcon configPageIcon(int number) const = 0;
 
-  private:
-    class ConfigPageInterfacePrivate* const d;
+private:
+    class ConfigPageInterfacePrivate *const d;
 };
 
 }
@@ -103,4 +103,3 @@ Q_DECLARE_INTERFACE(KTextEditor::ConfigPageInterface, "org.kde.KTextEditor.Confi
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

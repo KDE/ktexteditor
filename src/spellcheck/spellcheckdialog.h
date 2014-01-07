@@ -34,32 +34,34 @@ class KateView;
 class QAction;
 class KActionCollection;
 
-namespace Sonnet {
-    class Dialog;
-    class BackgroundChecker;
-    class Speller;
+namespace Sonnet
+{
+class Dialog;
+class BackgroundChecker;
+class Speller;
 }
 
 #include "ktexteditor/range.h"
 
-namespace KTextEditor {
-    class MovingRange;
+namespace KTextEditor
+{
+class MovingRange;
 }
 
 class KateSpellCheckDialog : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateSpellCheckDialog( KateView* );
+public:
+    explicit KateSpellCheckDialog(KateView *);
     ~KateSpellCheckDialog();
 
-    void createActions( KActionCollection* );
+    void createActions(KActionCollection *);
 
-    void updateActions ();
+    void updateActions();
 
-  // spellcheck from cursor, selection
-  private Q_SLOTS:
+    // spellcheck from cursor, selection
+private Q_SLOTS:
     void spellcheckFromCursor();
 
     // defined here in anticipation of per view selections ;)
@@ -67,18 +69,18 @@ class KateSpellCheckDialog : public QObject
 
     void spellcheck();
 
-      /**
-      * Spellcheck a defined portion of the text.
-      *
-      * @param from Where to start the check
-      * @param to Where to end. If this is (0,0), it will be set to the end of the document.
-      */
-    void spellcheck( const KTextEditor::Cursor &from, const KTextEditor::Cursor &to=KTextEditor::Cursor() );
+    /**
+    * Spellcheck a defined portion of the text.
+    *
+    * @param from Where to start the check
+    * @param to Where to end. If this is (0,0), it will be set to the end of the document.
+    */
+    void spellcheck(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to = KTextEditor::Cursor());
 
-    void misspelling( const QString&, int );
-    void corrected  ( const QString&, int, const QString&);
+    void misspelling(const QString &, int);
+    void corrected(const QString &, int, const QString &);
 
-    void performSpellCheck(const KTextEditor::Range& range);
+    void performSpellCheck(const KTextEditor::Range &range);
     void installNextSpellCheckRange();
 
     void cancelClicked();
@@ -87,8 +89,8 @@ class KateSpellCheckDialog : public QObject
 
     void languageChanged(const QString &language);
 
-  private:
-    KTextEditor::Cursor locatePosition( int pos );
+private:
+    KTextEditor::Cursor locatePosition(int pos);
 
     KateView *m_view;
     QAction *m_spellcheckSelection;
@@ -119,4 +121,3 @@ class KateSpellCheckDialog : public QObject
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

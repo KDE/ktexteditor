@@ -45,53 +45,52 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT ConfigPage : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      *
      * Create a new config page with \p parent.
      * \param parent parent widget
      */
-    ConfigPage ( QWidget *parent );
+    ConfigPage(QWidget *parent);
     /**
      * Virtual destructor.
      */
-    virtual ~ConfigPage ();
+    virtual ~ConfigPage();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * This slot is called whenever the button \e Apply or \e OK was clicked.
      * Apply the changed settings made in the config page now.
      */
-    virtual void apply () = 0;
+    virtual void apply() = 0;
 
     /**
      * This slot is called whenever the button \e Reset was clicked.
      * Reset the config page settings to the initial state.
      */
-    virtual void reset () = 0;
+    virtual void reset() = 0;
 
     /**
      * Sets default options
      * This slot is called whenever the button \e Defaults was clicked.
      * Set the config page settings to the default values.
      */
-    virtual void defaults () = 0;
+    virtual void defaults() = 0;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Emit this signal whenever a config option changed.
      */
     void changed();
 
-  private:
-    class ConfigPagePrivate* const d;
+private:
+    class ConfigPagePrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

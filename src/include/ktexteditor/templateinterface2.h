@@ -35,7 +35,7 @@ class Cursor;
 
 class KTEXTEDITOR_EXPORT TemplateScript
 {
-  public:
+public:
     virtual ~TemplateScript();
 };
 
@@ -47,21 +47,20 @@ class KTEXTEDITOR_EXPORT TemplateScript
  */
 class KTEXTEDITOR_EXPORT TemplateInterface2: public TemplateInterface
 {
-  public:
+public:
     TemplateInterface2();
     virtual ~TemplateInterface2();
 
-  public:
+public:
 
     /**
      * See the function  description in TemplateInterface, this should be folded into the base Interface in KDE 5
      * @param templateScript pointer to TemplateScript created by TemplateScriptRegistrar::registerTemplateScript
      */
-    bool insertTemplateText ( const Cursor &insertPosition,
-                              const QString &templateString,
-                              const QMap<QString,QString> &initialValues,
-                              TemplateScript* templateScript);
-
+    bool insertTemplateText(const Cursor &insertPosition,
+                            const QString &templateString,
+                            const QMap<QString, QString> &initialValues,
+                            TemplateScript *templateScript);
 
 protected:
     /**
@@ -71,23 +70,23 @@ protected:
      * insertTemplateText above.
      * \return true if any text was inserted.
      */
-    virtual bool insertTemplateTextImplementation ( const Cursor &insertPosition,
-                                                    const QString &templateString,
-                                                    const QMap<QString,QString> &initialValues,
-                                                    TemplateScript* templateScript) = 0;
+    virtual bool insertTemplateTextImplementation(const Cursor &insertPosition,
+            const QString &templateString,
+            const QMap<QString, QString> &initialValues,
+            TemplateScript *templateScript) = 0;
 
+    virtual bool insertTemplateTextImplementation(const Cursor &insertPosition,
+            const QString &templateString,
+            const QMap<QString, QString> &initialValues) = 0;
 
-    virtual bool insertTemplateTextImplementation ( const Cursor &insertPosition,
-                                                    const QString &templateString,
-                                                    const QMap<QString,QString> &initialValues) = 0;
-
-  private:
-    class TemplateInterfacePrivate2* const d;
+private:
+    class TemplateInterfacePrivate2 *const d;
 };
 
 /// This is an extension for KTextEditor::Editor
 /// @since 4.5
-class KTEXTEDITOR_EXPORT TemplateScriptRegistrar {
+class KTEXTEDITOR_EXPORT TemplateScriptRegistrar
+{
 
 public:
     TemplateScriptRegistrar();
@@ -104,23 +103,21 @@ public:
      * perhaps there will be a specifiction for a common functionset later on, but not
      * yet.
      */
-    virtual TemplateScript* registerTemplateScript(QObject *owner, const QString& script) = 0;
+    virtual TemplateScript *registerTemplateScript(QObject *owner, const QString &script) = 0;
 
     /**
      * This frees the template script which is identified by the token
      */
-    virtual void unregisterTemplateScript(TemplateScript* templateScript) = 0;
+    virtual void unregisterTemplateScript(TemplateScript *templateScript) = 0;
 
 };
 
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::TemplateInterface2,
-"org.kde.KTextEditor.TemplateInterface2")
+                    "org.kde.KTextEditor.TemplateInterface2")
 
 Q_DECLARE_INTERFACE(KTextEditor::TemplateScriptRegistrar,
-"org.kde.KTextEditor.TemplateScriptRegistrar")
-
-
+                    "org.kde.KTextEditor.TemplateScriptRegistrar")
 
 #endif

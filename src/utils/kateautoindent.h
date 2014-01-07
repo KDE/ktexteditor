@@ -39,36 +39,36 @@ class KateHighlighting;
  */
 class KateAutoIndent : public QObject
 {
-  Q_OBJECT
-  /*
-   * Static methods to list indention modes
-   */
-  public:
+    Q_OBJECT
+    /*
+     * Static methods to list indention modes
+     */
+public:
     /**
      * List all possible modes by name, i.e. "C Style", "XML Style", ...
      * @return list of modes
      */
-    static QStringList listModes ();
+    static QStringList listModes();
 
     /**
      * List all possible names, i.e. "cstyle", "xml", ...
      * @return list of indenter identifiers
      */
-    static QStringList listIdentifiers ();
-    
+    static QStringList listIdentifiers();
+
     /**
      * Return the mode name given the mode
      * @param mode mode index
      * @return name for this mode index
      */
-    static QString modeName (int mode);
+    static QString modeName(int mode);
 
     /**
      * Return the mode description
      * @param mode mode index
      * @return mode index
      */
-    static QString modeDescription (int mode);
+    static QString modeDescription(int mode);
 
     /**
      * Return the syntax highlighting style required to use this mode
@@ -82,33 +82,33 @@ class KateAutoIndent : public QObject
      * @param name mode name
      * @return mode index
      */
-    static uint modeNumber (const QString &name);
+    static uint modeNumber(const QString &name);
 
     /**
      * count of modes
      * @return number of existing modes
      */
-    static int modeCount ();
+    static int modeCount();
 
-  /*
-   * Construction + Destruction
-   */
-  public:
+    /*
+     * Construction + Destruction
+     */
+public:
     /**
      * Constructor, creates dummy indenter "None"
      * \param doc parent document
      */
-    explicit KateAutoIndent (KateDocument *doc);
+    explicit KateAutoIndent(KateDocument *doc);
 
     /**
      * Destructor
      */
-    ~KateAutoIndent ();
+    ~KateAutoIndent();
 
-  /*
-   * Internal helper for the subclasses and itself
-   */
-  private:
+    /*
+     * Internal helper for the subclasses and itself
+     */
+private:
     /**
      * Produces a string with the proper indentation characters for its length.
      *
@@ -116,7 +116,7 @@ class KateAutoIndent : public QObject
      * @param align Length of alignment, ignored if less of equal to length
      * @return A QString representing @p length characters (factoring in tabs and spaces)
      */
-    QString tabString (int length, int align) const;
+    QString tabString(int length, int align) const;
 
     /**
      * Set the indent level of the line.
@@ -140,7 +140,7 @@ class KateAutoIndent : public QObject
      * Reuse the indent of the previous line
      * \param line line to change indent for
      */
-    void keepIndent ( int line );
+    void keepIndent(int line);
 
     /**
      * Call the indentation script, this is a helper to be used in userTypedChar and indent
@@ -148,21 +148,21 @@ class KateAutoIndent : public QObject
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char, indent will just give the script '\n'
      */
-    void scriptIndent (KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void scriptIndent(KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
 
     /**
      * Return true if the required style for the script is provided by the highlighter.
      */
     static bool isStyleProvided(const KateIndentScript *script, const KateHighlighting *highlight);
 
-  public:
+public:
     /**
      * Switch indenter
      * Nop if already set to given mode
      * Otherwise switch to given indenter or to "None" if no suitable found...
      * @param name indention mode wanted
      */
-    void setMode (const QString &name);
+    void setMode(const QString &name);
 
     /**
      * Check if the current highlighting mode provides the style required by the
@@ -174,13 +174,16 @@ class KateAutoIndent : public QObject
     /**
      * mode name
      */
-    const QString &modeName () const { return m_mode; }
+    const QString &modeName() const
+    {
+        return m_mode;
+    }
 
     /**
      * Update indenter's configuration (indention width, etc.)
      * Is called in the updateConfig() of the document and after creation of the indenter...
      */
-    void updateConfig ();
+    void updateConfig();
 
     /**
      * Function to provide the common indent/unindent/clean indent functionality to the document
@@ -191,7 +194,7 @@ class KateAutoIndent : public QObject
      * and removal of extra spaces, if option set
      * \return \e true on success, otherwise \e false
      */
-    bool changeIndent (const KTextEditor::Range &range, int change);
+    bool changeIndent(const KTextEditor::Range &range, int change);
 
     /**
      * The document requests the indenter to indent the given range of existing text.
@@ -201,7 +204,7 @@ class KateAutoIndent : public QObject
      * \param view the view the user work at
      * \param range the range of text to indent...
      */
-    void indent (KateView *view, const KTextEditor::Range &range);
+    void indent(KateView *view, const KTextEditor::Range &range);
 
     /**
      * The user typed some char, the indenter can react on this
@@ -210,15 +213,15 @@ class KateAutoIndent : public QObject
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char
      */
-    void userTypedChar (KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void userTypedChar(KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void reloadScript();
 
-  /*
-   * needed data
-   */
-  private:
+    /*
+     * needed data
+     */
+private:
     KateDocument *doc; //!< the document the indenter works on
     int  tabWidth;     //!< The number of characters simulated for a tab
     int  indentWidth;  //!< The number of characters used when tabs are replaced by spaces
@@ -234,22 +237,21 @@ class KateAutoIndent : public QObject
  */
 class KateViewIndentationAction : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateViewIndentationAction(KateDocument *_doc, const QString& text, QObject *parent);
+public:
+    KateViewIndentationAction(KateDocument *_doc, const QString &text, QObject *parent);
 
-  private:
-    KateDocument* doc;
+private:
+    KateDocument *doc;
     QActionGroup *actionGroup;
 
-  public  Q_SLOTS:
+public  Q_SLOTS:
     void slotAboutToShow();
 
-  private Q_SLOTS:
-    void setMode (QAction*);
+private Q_SLOTS:
+    void setMode(QAction *);
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

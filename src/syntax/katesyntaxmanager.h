@@ -45,61 +45,75 @@
 class KateSyntaxDocument;
 class KateHighlighting;
 
-
 class KateHlManager : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateHlManager();
     ~KateHlManager();
 
     static KateHlManager *self();
-    
-    KateSyntaxDocument *syntaxDocument () { return syntax; }
 
-    inline KConfig *getKConfig() { return &m_config; }
+    KateSyntaxDocument *syntaxDocument()
+    {
+        return syntax;
+    }
+
+    inline KConfig *getKConfig()
+    {
+        return &m_config;
+    }
 
     KateHighlighting *getHl(int n);
     int nameFind(const QString &name);
 
-    QString identifierForName(const QString&);
+    QString identifierForName(const QString &);
     /**
      * Returns the mode name for a given identifier, as e.g.
      * returned by KateHighlighting::hlKeyForAttrib().
      */
-    QString nameForIdentifier(const QString&);
+    QString nameForIdentifier(const QString &);
 
     // methodes to get the default style count + names
     static uint defaultStyles();
     static QString defaultStyleName(int n, bool translateNames = false);
 
-    void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg=0);
-    void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg=0);
+    void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
+    void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
 
     int highlights();
     QString hlName(int n);
-    QString hlNameTranslated (int n);
+    QString hlNameTranslated(int n);
     QString hlSection(int n);
     bool hlHidden(int n);
 
-    void incDynamicCtxs() { ++dynamicCtxsCount; }
-    int countDynamicCtxs() { return dynamicCtxsCount; }
-    void setForceNoDCReset(bool b) { forceNoDCReset = b; }
+    void incDynamicCtxs()
+    {
+        ++dynamicCtxsCount;
+    }
+    int countDynamicCtxs()
+    {
+        return dynamicCtxsCount;
+    }
+    void setForceNoDCReset(bool b)
+    {
+        forceNoDCReset = b;
+    }
 
     // be carefull: all documents hl should be invalidated after having successfully called this method!
     bool resetDynamicCtxs();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void changed();
 
-  private:
+private:
     friend class KateHighlighting;
 
     // This list owns objects it holds, thus they should be deleted when the object is removed
-    QList<KateHighlighting*> hlList;
+    QList<KateHighlighting *> hlList;
     // This hash does not own the objects it holds, thus they should not be deleted
-    QHash<QString, KateHighlighting*> hlDict;
+    QHash<QString, KateHighlighting *> hlDict;
 
     KConfig m_config;
     QStringList commonSuffixes;
@@ -113,4 +127,3 @@ class KateHlManager : public QObject
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -42,52 +42,49 @@ using namespace KTextEditor;
 int countItems(KateCompletionModel *model)
 {
     int ret = 0;
-    for (int i=0; i < model->rowCount(QModelIndex()); ++i) {
+    for (int i = 0; i < model->rowCount(QModelIndex()); ++i) {
         ret += model->rowCount(model->index(i, 0));
     }
     return ret;
 }
 
-static void verifyCompletionStarted(KateView* view)
+static void verifyCompletionStarted(KateView *view)
 {
-  const QDateTime startTime = QDateTime::currentDateTime();
-  while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000)
-  {
-    QApplication::processEvents();
-    if (view->completionWidget()->isCompletionActive())
-    {
-      break;
+    const QDateTime startTime = QDateTime::currentDateTime();
+    while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
+        QApplication::processEvents();
+        if (view->completionWidget()->isCompletionActive()) {
+            break;
+        }
     }
-  }
-  QVERIFY(view->completionWidget()->isCompletionActive());
+    QVERIFY(view->completionWidget()->isCompletionActive());
 }
 
-static void verifyCompletionAborted(KateView* view)
+static void verifyCompletionAborted(KateView *view)
 {
-  const QDateTime startTime = QDateTime::currentDateTime();
-  while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000)
-  {
-    QApplication::processEvents();
-    if (!view->completionWidget()->isCompletionActive())
-    {
-      break;
+    const QDateTime startTime = QDateTime::currentDateTime();
+    while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
+        QApplication::processEvents();
+        if (!view->completionWidget()->isCompletionActive()) {
+            break;
+        }
     }
-  }
-  QVERIFY(!view->completionWidget()->isCompletionActive());
+    QVERIFY(!view->completionWidget()->isCompletionActive());
 }
 
-static void invokeCompletionBox(KateView* view)
+static void invokeCompletionBox(KateView *view)
 {
-  view->userInvokedCompletion();
-  verifyCompletionStarted(view);
+    view->userInvokedCompletion();
+    verifyCompletionStarted(view);
 }
 
 void CompletionTest::init()
 {
-    if ( !KSycoca::isAvailable() )
-        QSKIP( "ksycoca not available", SkipAll );
+    if (!KSycoca::isAvailable()) {
+        QSKIP("ksycoca not available", SkipAll);
+    }
 
-    Editor* editor = KTextEditor::Editor::instance();
+    Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 
     m_doc = editor->createDocument(this);
@@ -96,7 +93,7 @@ void CompletionTest::init()
 
     KTextEditor::View *v = m_doc->createView(0);
     QApplication::setActiveWindow(v);
-    m_view = static_cast<KateView*>(v);
+    m_view = static_cast<KateView *>(v);
     Q_ASSERT(m_view);
 
     //view needs to be shown as completion won't work if the cursor is off screen
@@ -127,7 +124,7 @@ void CompletionTest::testFilterWithRange()
 {
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel = new CodeCompletionTestModel(m_view, "a");
+    CodeCompletionTestModel *testModel = new CodeCompletionTestModel(m_view, "a");
     m_view->setCursorPosition(Cursor(0, 2));
     invokeCompletionBox(m_view);
 
@@ -139,7 +136,6 @@ void CompletionTest::testFilterWithRange()
     QTest::qWait(1000); // process events
     QCOMPARE(countItems(model), 1);
 }
-
 
 void CompletionTest::testAbortCursorMovedOutOfRange()
 {
@@ -177,7 +173,7 @@ void CompletionTest::testCustomRange1()
     m_doc->setText("$aa bb cc\ndd");
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel = new CustomRangeModel(m_view, "$a");
+    CodeCompletionTestModel *testModel = new CustomRangeModel(m_view, "$a");
     m_view->setCursorPosition(Cursor(0, 3));
     invokeCompletionBox(m_view);
 
@@ -196,7 +192,7 @@ void CompletionTest::testCustomRange2()
     m_doc->setText("$ bb cc\ndd");
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel = new CustomRangeModel(m_view, "$a");
+    CodeCompletionTestModel *testModel = new CustomRangeModel(m_view, "$a");
     m_view->setCursorPosition(Cursor(0, 1));
     invokeCompletionBox(m_view);
 
@@ -214,8 +210,8 @@ void CompletionTest::testCustomRangeMultipleModels()
     m_doc->setText("$a bb cc\ndd");
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel1 = new CustomRangeModel(m_view, "$a");
-    CodeCompletionTestModel* testModel2 = new CodeCompletionTestModel(m_view, "a");
+    CodeCompletionTestModel *testModel1 = new CustomRangeModel(m_view, "$a");
+    CodeCompletionTestModel *testModel2 = new CodeCompletionTestModel(m_view, "a");
     m_view->setCursorPosition(Cursor(0, 1));
     invokeCompletionBox(m_view);
 
@@ -225,12 +221,11 @@ void CompletionTest::testCustomRangeMultipleModels()
     QCOMPARE(model->currentCompletion(testModel2), QString(""));
     QCOMPARE(countItems(model), 80);
 
-
     m_view->insertText("aa");
     QTest::qWait(1000); // process events
     QCOMPARE(model->currentCompletion(testModel1), QString("$aa"));
     QCOMPARE(model->currentCompletion(testModel2), QString("aa"));
-    QCOMPARE(countItems(model), 14*2);
+    QCOMPARE(countItems(model), 14 * 2);
 }
 
 void CompletionTest::testAbortController()
@@ -256,8 +251,8 @@ void CompletionTest::testAbortControllerMultipleModels()
 {
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel1 = new CodeCompletionTestModel(m_view, "aa");
-    CodeCompletionTestModel* testModel2 = new CustomAbortModel(m_view, "a-");
+    CodeCompletionTestModel *testModel1 = new CodeCompletionTestModel(m_view, "aa");
+    CodeCompletionTestModel *testModel2 = new CustomAbortModel(m_view, "a-");
     m_view->setCursorPosition(Cursor(0, 0));
     invokeCompletionBox(m_view);
 
@@ -306,7 +301,7 @@ void CompletionTest::testUpdateCompletionRange()
     m_doc->setText("ab    bb cc\ndd");
     KateCompletionModel *model = m_view->completionWidget()->model();
 
-    CodeCompletionTestModel* testModel = new UpdateCompletionRangeModel(m_view, "ab ab");
+    CodeCompletionTestModel *testModel = new UpdateCompletionRangeModel(m_view, "ab ab");
     m_view->setCursorPosition(Cursor(0, 3));
     invokeCompletionBox(m_view);
 
@@ -338,8 +333,8 @@ void CompletionTest::testCustomStartCompl()
 void CompletionTest::testKateCompletionModel()
 {
     KateCompletionModel *model = m_view->completionWidget()->model();
-    CodeCompletionTestModel* testModel1 = new CodeCompletionTestModel(m_view, "aa");
-    CodeCompletionTestModel* testModel2 = new CodeCompletionTestModel(m_view, "bb");
+    CodeCompletionTestModel *testModel1 = new CodeCompletionTestModel(m_view, "aa");
+    CodeCompletionTestModel *testModel2 = new CodeCompletionTestModel(m_view, "bb");
 
     model->setCompletionModel(testModel1);
     QCOMPARE(countItems(model), 40);
@@ -373,66 +368,69 @@ void CompletionTest::testJumpToListBottomAfterCursorUpWhileAtTop()
 
 void CompletionTest::testAbbreviationEngine()
 {
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fb"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "foob"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fbar"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fba"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "foba"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarBazBang", "fbbb"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("foo_bar_cat", "fbc"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("foo_bar_cat", "fb"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fba"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fbara"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fobaar"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fb"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fb"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "foob"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fbar"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "fba"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBar", "foba"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarBazBang", "fbbb"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("foo_bar_cat", "fbc"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("foo_bar_cat", "fb"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fba"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fbara"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fobaar"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("FooBarArr", "fb"));
 
-  QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qid"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qualid"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qualidentifier"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qi"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kcmodel"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kc"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kcomplmodel"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kacomplmodel"));
-  QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kacom"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qid"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qualid"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qualidentifier"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "qi"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kcmodel"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kc"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kcomplmodel"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kacomplmodel"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kacom"));
 
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "identifier"));
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("FooBarArr", "fobaara"));
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("FooBarArr", "fbac"));
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kamodel"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("QualifiedIdentifier", "identifier"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("FooBarArr", "fobaara"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("FooBarArr", "fbac"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("KateCompletionModel", "kamodel"));
 
-  QVERIFY(KateCompletionModel::matchesAbbreviation("AbcdefBcdefCdefDefEfFzZ", "AbcdefBcdefCdefDefEfFzZ"));
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("AbcdefBcdefCdefDefEfFzZ", "ABCDEFX"));
-  QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "XZYBFA"));
+    QVERIFY(KateCompletionModel::matchesAbbreviation("AbcdefBcdefCdefDefEfFzZ", "AbcdefBcdefCdefDefEfFzZ"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("AbcdefBcdefCdefDefEfFzZ", "ABCDEFX"));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "XZYBFA"));
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()
 {
-  QBENCHMARK {
-    for ( int i = 0; i < 10000; i++ ) {
-      QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "XZYBFA"));
+    QBENCHMARK {
+        for (int i = 0; i < 10000; i++)
+        {
+            QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "XZYBFA"));
+        }
     }
-  }
 }
 
 void CompletionTest::benchAbbreviationEngineNormalCase()
 {
-  QBENCHMARK {
-    for ( int i = 0; i < 10000; i++ ) {
-      QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "ABCDEFX"));
+    QBENCHMARK {
+        for (int i = 0; i < 10000; i++)
+        {
+            QVERIFY(! KateCompletionModel::matchesAbbreviation("AaaaaaBbbbbCcccDddEeFzZ", "ABCDEFX"));
+        }
     }
-  }
 }
 
 void CompletionTest::benchAbbreviationEngineWorstCase()
 {
-  QBENCHMARK {
-    for ( int i = 0; i < 10000; i++ ) {
-      // This case is quite horrible, because it requires a branch at every letter.
-      // The current code will at some point drop out and just return false.
-      KateCompletionModel::matchesAbbreviation("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox", "XbbbbbbbbbbbbbbbbbbbbFx");
+    QBENCHMARK {
+        for (int i = 0; i < 10000; i++)
+        {
+            // This case is quite horrible, because it requires a branch at every letter.
+            // The current code will at some point drop out and just return false.
+            KateCompletionModel::matchesAbbreviation("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox", "XbbbbbbbbbbbbbbbbbbbbFx");
+        }
     }
-  }
 }
 
 void CompletionTest::testAbbrevAndContainsMatching()
@@ -473,22 +471,23 @@ void CompletionTest::testAbbrevAndContainsMatching()
 
 void CompletionTest::benchCompletionModel()
 {
-  const QString text("abcdefg abcdef");
-  m_doc->setText(text);
-  CodeCompletionTestModel* testModel1 = new CodeCompletionTestModel(m_view, "abcdefg");
-  testModel1->setRowCount(500);
-  CodeCompletionTestModel* testModel2 = new CodeCompletionTestModel(m_view, "abcdef");
-  testModel2->setRowCount(500);
-  CodeCompletionTestModel* testModel3 = new CodeCompletionTestModel(m_view, "abcde");
-  testModel3->setRowCount(500);
-  CodeCompletionTestModel* testModel4 = new CodeCompletionTestModel(m_view, "abcd");
-  testModel4->setRowCount(5000);
-  QBENCHMARK_ONCE {
-    for(int i = 0; i < text.size(); ++i) {
-      m_view->setCursorPosition(Cursor(0, i));
-      invokeCompletionBox(m_view);
+    const QString text("abcdefg abcdef");
+    m_doc->setText(text);
+    CodeCompletionTestModel *testModel1 = new CodeCompletionTestModel(m_view, "abcdefg");
+    testModel1->setRowCount(500);
+    CodeCompletionTestModel *testModel2 = new CodeCompletionTestModel(m_view, "abcdef");
+    testModel2->setRowCount(500);
+    CodeCompletionTestModel *testModel3 = new CodeCompletionTestModel(m_view, "abcde");
+    testModel3->setRowCount(500);
+    CodeCompletionTestModel *testModel4 = new CodeCompletionTestModel(m_view, "abcd");
+    testModel4->setRowCount(5000);
+    QBENCHMARK_ONCE {
+        for (int i = 0; i < text.size(); ++i)
+        {
+            m_view->setCursorPosition(Cursor(0, i));
+            invokeCompletionBox(m_view);
+        }
     }
-  }
 }
 
 #include "completion_test.moc"

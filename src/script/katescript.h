@@ -30,58 +30,83 @@ class KateView;
 class KateScriptDocument;
 class KateScriptView;
 
-namespace Kate {
-  enum ScriptType {
+namespace Kate
+{
+enum ScriptType {
     /** The script is an indenter */
     IndentationScript,
     /** The script contains command line commands */
     CommandLineScript,
     /** Don't know what kind of script this is */
     UnknownScript
-  };
+};
 }
 
 //BEGIN KateScriptHeader
 
 class KateScriptHeader
 {
-  public:
+public:
     KateScriptHeader() : m_revision(0), m_scriptType(Kate::UnknownScript)
     {}
     virtual ~KateScriptHeader()
     {}
 
-    inline void setLicense(const QString& license)
-    { m_license = license; }
-    inline const QString& license() const
-    { return m_license; }
+    inline void setLicense(const QString &license)
+    {
+        m_license = license;
+    }
+    inline const QString &license() const
+    {
+        return m_license;
+    }
 
-    inline void setAuthor(const QString& author)
-    { m_author = author; }
-    inline const QString& author() const
-    { return m_author; }
+    inline void setAuthor(const QString &author)
+    {
+        m_author = author;
+    }
+    inline const QString &author() const
+    {
+        return m_author;
+    }
 
     inline void setRevision(int revision)
-    { m_revision = revision; }
+    {
+        m_revision = revision;
+    }
     inline int revision() const
-    { return m_revision; }
+    {
+        return m_revision;
+    }
 
-    inline void setKateVersion(const QString& kateVersion)
-    { m_kateVersion = kateVersion; }
-    inline const QString& kateVersion() const
-    { return m_kateVersion; }
+    inline void setKateVersion(const QString &kateVersion)
+    {
+        m_kateVersion = kateVersion;
+    }
+    inline const QString &kateVersion() const
+    {
+        return m_kateVersion;
+    }
 
-    inline void setCatalog(const QString& catalog)
-    { m_i18nCatalog = catalog; }
-    inline const QString& catalog() const
-    { return m_i18nCatalog; }
+    inline void setCatalog(const QString &catalog)
+    {
+        m_i18nCatalog = catalog;
+    }
+    inline const QString &catalog() const
+    {
+        return m_i18nCatalog;
+    }
 
     inline void setScriptType(Kate::ScriptType scriptType)
-    { m_scriptType = scriptType; }
+    {
+        m_scriptType = scriptType;
+    }
     inline Kate::ScriptType scriptType() const
-    { return m_scriptType; }
+    {
+        return m_scriptType;
+    }
 
-  private:
+private:
     QString m_license;        ///< the script's license, e.g. LGPL
     QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
     int m_revision;           ///< script revision, a simple number, e.g. 1, 2, 3, ...
@@ -96,12 +121,13 @@ class KateScriptHeader
 /**
  * KateScript objects represent a script that can be executed and inspected.
  */
-class KateScript {
-  public:
+class KateScript
+{
+public:
 
     enum InputType {
-      InputURL,
-      InputSCRIPT
+        InputURL,
+        InputSCRIPT
     };
 
     /**
@@ -113,7 +139,10 @@ class KateScript {
     virtual ~KateScript();
 
     /** The script's URL */
-    const QString &url() { return m_url; }
+    const QString &url()
+    {
+        return m_url;
+    }
 
     /**
      * Load the script. If loading is successful, returns true. Otherwise, returns
@@ -128,7 +157,7 @@ class KateScript {
      * set view for this script for the execution
      * will trigger load!
      */
-    bool setView (KateView *view);
+    bool setView(KateView *view);
 
     /**
      * Get a QScriptValue for a global item in the script given its name, or an
@@ -143,7 +172,10 @@ class KateScript {
     QScriptValue function(const QString &name);
 
     /** Return a context-specific error message */
-    const QString &errorMessage() { return m_errorMessage; }
+    const QString &errorMessage()
+    {
+        return m_errorMessage;
+    }
 
     /** Returns the backtrace when a script has errored out */
     QString backtrace(const QScriptValue &error, const QString &header = QString());
@@ -155,32 +187,32 @@ class KateScript {
     void clearExceptions();
 
     /** set the general header after construction of the script */
-    void setGeneralHeader(const KateScriptHeader& generalHeader);
+    void setGeneralHeader(const KateScriptHeader &generalHeader);
     /** Return the general header */
-    KateScriptHeader& generalHeader();
+    KateScriptHeader &generalHeader();
 
-  protected:
+protected:
     /** Checks for exception and gives feedback on the console. */
-    bool hasException(const QScriptValue& object, const QString& file);
+    bool hasException(const QScriptValue &object, const QString &file);
 
-  private:
+private:
     /** Whether or not there has been a call to load */
     bool m_loaded;
-    
+
     /** Whether or not the script loaded successfully into memory */
     bool m_loadSuccessful;
-    
+
     /** The script's URL */
     QString m_url;
-    
+
     /** An error message set when an error occurs */
     QString m_errorMessage;
 
-  protected:
+protected:
     /** The Qt interpreter for this script */
     QScriptEngine *m_engine;
 
-  private:
+private:
     /** general header data */
     KateScriptHeader m_generalHeader;
 
@@ -188,7 +220,7 @@ class KateScript {
     KateScriptDocument *m_document;
     KateScriptView *m_view;
 
-  private:
+private:
     /** if input is script or url**/
     enum InputType m_inputType;
     QString m_script;
@@ -198,4 +230,3 @@ class KateScript {
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

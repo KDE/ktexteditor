@@ -32,49 +32,53 @@ class QAction;
 
 class KateBookmarks : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     enum Sorting { Position, Creation };
-    explicit KateBookmarks( KateView* parent, Sorting sort=Position );
+    explicit KateBookmarks(KateView *parent, Sorting sort = Position);
     virtual ~KateBookmarks();
 
-    void createActions( KActionCollection* );
+    void createActions(KActionCollection *);
 
-    KateBookmarks::Sorting sorting() { return m_sorting; }
-    void setSorting( Sorting s ) { m_sorting = s; }
+    KateBookmarks::Sorting sorting()
+    {
+        return m_sorting;
+    }
+    void setSorting(Sorting s)
+    {
+        m_sorting = s;
+    }
 
-  protected:
-    void insertBookmarks( QMenu& menu);
+protected:
+    void insertBookmarks(QMenu &menu);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void toggleBookmark();
     void clearBookmarks();
-  
+
     void gotoLine();
-    void gotoLine (int line);
+    void gotoLine(int line);
 
     void bookmarkMenuAboutToShow();
 
     void goNext();
     void goPrevious();
 
-    void marksChanged ();
+    void marksChanged();
 
-  private:
-    KateView*                    m_view;
-    KToggleAction*               m_bookmarkToggle;
-    QAction*                     m_bookmarkClear;
-    QAction*                     m_goNext;
-    QAction*                     m_goPrevious;
+private:
+    KateView                    *m_view;
+    KToggleAction               *m_bookmarkToggle;
+    QAction                     *m_bookmarkClear;
+    QAction                     *m_goNext;
+    QAction                     *m_goPrevious;
 
     Sorting                      m_sorting;
-    QMenu*                       m_bookmarksMenu;
+    QMenu                       *m_bookmarksMenu;
 
     uint _tries;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;
-// vim: noet ts=2

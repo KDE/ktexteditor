@@ -42,8 +42,9 @@ class KateCompletionTree;
 class KateArgumentHintTree;
 class KateArgumentHintModel;
 
-namespace KTextEditor {
-  class EmbeddedWidgetInterface;
+namespace KTextEditor
+{
+class EmbeddedWidgetInterface;
 }
 
 /**
@@ -54,59 +55,62 @@ namespace KTextEditor {
  */
 class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateCompletionWidget(KateView* parent);
+public:
+    explicit KateCompletionWidget(KateView *parent);
     ~KateCompletionWidget();
 
-    KateView* view() const;
-    KateCompletionTree* treeView() const;
+    KateView *view() const;
+    KateCompletionTree *treeView() const;
 
     bool isCompletionActive() const;
-    void startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType, const QList<KTextEditor::CodeCompletionModel*>& models = QList<KTextEditor::CodeCompletionModel*>());
-    void startCompletion(const KTextEditor::Range& word, KTextEditor::CodeCompletionModel* model, KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
-    void startCompletion(const KTextEditor::Range& word, const QList<KTextEditor::CodeCompletionModel*>& models = QList<KTextEditor::CodeCompletionModel*>(), KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
+    void startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>());
+    void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model, KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
+    void startCompletion(const KTextEditor::Range &word, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(), KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
     void userInvokedCompletion();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     //Executed when return is pressed while completion is active.
     void execute();
     void cursorDown();
     void cursorUp();
 
-  public:
+public:
     void tab(bool shift);
 
     ///Returns whether the current item was expanded/unexpanded
     bool toggleExpanded(bool forceExpand = false, bool forceUnExpand = false);
 
-    const KateCompletionModel* model() const;
-    KateCompletionModel* model();
+    const KateCompletionModel *model() const;
+    KateCompletionModel *model();
 
-    void registerCompletionModel(KTextEditor::CodeCompletionModel* model);
-    void unregisterCompletionModel(KTextEditor::CodeCompletionModel* model);
+    void registerCompletionModel(KTextEditor::CodeCompletionModel *model);
+    void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model);
 
     int automaticInvocationDelay() const;
     void setAutomaticInvocationDelay(int delay);
 
-    struct CompletionRange{
-      CompletionRange() : range(0) {
-      }
-      CompletionRange(KTextEditor::MovingRange* r) : range(r) {
-      }
+    struct CompletionRange {
+        CompletionRange() : range(0)
+        {
+        }
+        CompletionRange(KTextEditor::MovingRange *r) : range(r)
+        {
+        }
 
-      bool operator==(const CompletionRange& rhs) const {
-        return range->toRange() == rhs.range->toRange();
-      }
+        bool operator==(const CompletionRange &rhs) const
+        {
+            return range->toRange() == rhs.range->toRange();
+        }
 
-      KTextEditor::MovingRange* range;
-      //Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
-      KTextEditor::Cursor leftBoundary;
+        KTextEditor::MovingRange *range;
+        //Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
+        KTextEditor::Cursor leftBoundary;
     };
 
-    KTextEditor::MovingRange* completionRange(KTextEditor::CodeCompletionModel* model = 0) const;
-    QMap<KTextEditor::CodeCompletionModel*, CompletionRange> completionRanges( ) const;
+    KTextEditor::MovingRange *completionRange(KTextEditor::CodeCompletionModel *model = 0) const;
+    QMap<KTextEditor::CodeCompletionModel *, CompletionRange> completionRanges() const;
 
     // Navigation
     void pageDown();
@@ -114,38 +118,38 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
     void top();
     void bottom();
 
-    QWidget* currentEmbeddedWidget();
+    QWidget *currentEmbeddedWidget();
 
     bool canExpandCurrentItem() const;
 
     bool canCollapseCurrentItem() const;
 
-    void setCurrentItemExpanded( bool );
+    void setCurrentItemExpanded(bool);
 
     //Returns true if a screen border has been hit
     bool updatePosition(bool force = false);
 
-    virtual bool eventFilter( QObject * watched, QEvent * event );
+    virtual bool eventFilter(QObject *watched, QEvent *event);
 
-    KateArgumentHintTree* argumentHintTree() const;
+    KateArgumentHintTree *argumentHintTree() const;
 
-    KateArgumentHintModel* argumentHintModel() const;
+    KateArgumentHintModel *argumentHintModel() const;
 
     ///Called by KateViewInternal, because we need the specific information from the event.
 
     void updateHeight();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void waitForModelReset();
 
     void abortCompletion();
     void showConfig();
-/*    void viewFocusIn();
-    void viewFocusOut();*/
+    /*    void viewFocusIn();
+        void viewFocusOut();*/
     void updatePositionSlot();
     void automaticInvocation();
 
-/*    void updateFocus();*/
+    /*    void updateFocus();*/
     void argumentHintsChanged(bool hasContent);
 
     bool navigateUp();
@@ -158,26 +162,26 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
     bool hadNavigation() const;
     void resetHadNavigation();
 
-  protected:
-    virtual void showEvent ( QShowEvent * event );
-    virtual void resizeEvent ( QResizeEvent * event );
+protected:
+    virtual void showEvent(QShowEvent *event);
+    virtual void resizeEvent(QResizeEvent *event);
 //    virtual void focusInEvent ( QFocusEvent * event );
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void completionModelReset();
-    void modelDestroyed(QObject* model);
+    void modelDestroyed(QObject *model);
     void modelContentChanged();
     void cursorPositionChanged();
     void modelReset();
-    void rowsInserted(const QModelIndex& parent, int row, int rowEnd);
+    void rowsInserted(const QModelIndex &parent, int row, int rowEnd);
     void viewFocusOut();
-    
-    void wrapLine (const KTextEditor::Cursor &position);
-    void unwrapLine (int line);
-    void insertText (const KTextEditor::Cursor &position, const QString &text);
-    void removeText (const KTextEditor::Range &range);
-    
-  private:
+
+    void wrapLine(const KTextEditor::Cursor &position);
+    void unwrapLine(int line);
+    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void removeText(const KTextEditor::Range &range);
+
+private:
     void updateAndShow();
     void updateArgumentHintGeometry();
     QModelIndex selectedIndex() const;
@@ -186,37 +190,37 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
     //Switch cursor between argument-hint list / completion-list
     void switchList();
     KTextEditor::Range determineRange() const;
-    void completionRangeChanged(KTextEditor::CodeCompletionModel*, const KTextEditor::Range& word);
+    void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
 
     void deleteCompletionRanges();
 
-    QList<KTextEditor::CodeCompletionModel*> m_sourceModels;
-    KateCompletionModel* m_presentationModel;
+    QList<KTextEditor::CodeCompletionModel *> m_sourceModels;
+    KateCompletionModel *m_presentationModel;
 
-    QMap<KTextEditor::CodeCompletionModel*, CompletionRange> m_completionRanges;
-    QSet<KTextEditor::CodeCompletionModel*> m_waitingForReset;
+    QMap<KTextEditor::CodeCompletionModel *, CompletionRange> m_completionRanges;
+    QSet<KTextEditor::CodeCompletionModel *> m_waitingForReset;
 
     KTextEditor::Cursor m_lastCursorPosition;
 
-    KateCompletionTree* m_entryList;
-    KateArgumentHintModel* m_argumentHintModel;
-    KateArgumentHintTree* m_argumentHintTree;
+    KateCompletionTree *m_entryList;
+    KateArgumentHintModel *m_argumentHintModel;
+    KateArgumentHintTree *m_argumentHintTree;
 
-    QTimer* m_automaticInvocationTimer;
+    QTimer *m_automaticInvocationTimer;
     //QTimer* m_updateFocusTimer;
-    QWidget* m_statusBar;
-    QToolButton* m_sortButton;
-    QLabel* m_sortText;
-    QToolButton* m_filterButton;
-    QLabel* m_filterText;
-    QPushButton* m_configButton;
+    QWidget *m_statusBar;
+    QToolButton *m_sortButton;
+    QLabel *m_sortText;
+    QToolButton *m_filterButton;
+    QLabel *m_filterText;
+    QPushButton *m_configButton;
 
     KTextEditor::Cursor m_automaticInvocationAt;
     QString m_automaticInvocationLine;
     int m_automaticInvocationDelay;
     bool m_filterInstalled;
 
-    class KateCompletionConfig* m_configWidget;
+    class KateCompletionConfig *m_configWidget;
     bool m_lastInsertionByUser;
     bool m_inCompletionList; //Are we in the completion-list? If not, we're in the argument-hint list
     bool m_isSuspended;
@@ -228,7 +232,7 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
     bool m_haveExactMatch;
 
     bool m_noAutoHide;
-    
+
     /**
      * is a completion edit ongoing?
      */

@@ -25,7 +25,10 @@
 
 #include "kateconfig.h"
 
-namespace Ui { class CompletionConfigWidget; }
+namespace Ui
+{
+class CompletionConfigWidget;
+}
 
 class QTreeWidgetItem;
 class KateCompletionModel;
@@ -35,29 +38,29 @@ class KateCompletionModel;
  */
 class KateCompletionConfig : public QDialog, public KateConfig
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateCompletionConfig(KateCompletionModel* model, QWidget* parent = 0L);
+public:
+    explicit KateCompletionConfig(KateCompletionModel *model, QWidget *parent = 0L);
     virtual ~KateCompletionConfig();
 
     /**
      * Read config from object
      */
-    void readConfig (const KConfigGroup &config);
+    void readConfig(const KConfigGroup &config);
 
     /**
      * Write config to object
      */
-    void writeConfig (KConfigGroup &config);
+    void writeConfig(KConfigGroup &config);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void apply();
 
-  protected:
+protected:
     virtual void updateConfig();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void moveColumnUp();
     void moveColumnDown();
     void moveGroupingUp();
@@ -65,16 +68,16 @@ class KateCompletionConfig : public QDialog, public KateConfig
     void moveGroupingOrderUp();
     void moveGroupingOrderDown();
 
-  private:
+private:
     void applyInternal();
 
-    Ui::CompletionConfigWidget* ui;
-    KateCompletionModel* m_model;
+    Ui::CompletionConfigWidget *ui;
+    KateCompletionModel *m_model;
 
-    QTreeWidgetItem* m_groupingScopeType;
-    QTreeWidgetItem* m_groupingScope;
-    QTreeWidgetItem* m_groupingAccessType;
-    QTreeWidgetItem* m_groupingItemType;
+    QTreeWidgetItem *m_groupingScopeType;
+    QTreeWidgetItem *m_groupingScope;
+    QTreeWidgetItem *m_groupingAccessType;
+    QTreeWidgetItem *m_groupingItemType;
 };
 
 #endif

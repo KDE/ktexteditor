@@ -25,29 +25,28 @@
 
 class KateHelpButton : public QToolButton
 {
-  Q_OBJECT
-  
-public:
-  enum IconState {
-    IconColored = 0,
-    IconGrayscaled,
-    IconHidden
-  };
-
-  void setSection(const QString& section);
+    Q_OBJECT
 
 public:
-  KateHelpButton(QWidget* parent = 0);
-  virtual ~KateHelpButton();
+    enum IconState {
+        IconColored = 0,
+        IconGrayscaled,
+        IconHidden
+    };
+
+    void setSection(const QString &section);
+
+public:
+    KateHelpButton(QWidget *parent = 0);
+    virtual ~KateHelpButton();
 
 public Q_SLOTS:
-  void setIconState(IconState state);
-  void invokeHelp();
-  
+    void setIconState(IconState state);
+    void invokeHelp();
+
 private:
-  QString m_section;
+    QString m_section;
 };
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

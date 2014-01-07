@@ -22,8 +22,9 @@
 
 #include <QtCore/QObject>
 
-namespace KTextEditor {
-  class View;
+namespace KTextEditor
+{
+class View;
 }
 
 class KateDocument;
@@ -31,13 +32,13 @@ class KateScriptDocument;
 
 class ScriptDocumentTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     ScriptDocumentTest();
     virtual ~ScriptDocumentTest();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
 
@@ -47,12 +48,12 @@ class ScriptDocumentTest : public QObject
     void testRfind_data();
     void testRfind();
 
-  private:
+private:
     KateDocument *m_doc;
     KTextEditor::View *m_view;
     KateScriptDocument *m_scriptDoc;
 
-  public:
+public:
     static QtMessageHandler s_msgHandler;
 };
 

@@ -32,41 +32,41 @@
 
 class KateDocument;
 
-class KateSpellCheckManager : public QObject {
-  Q_OBJECT
+class KateSpellCheckManager : public QObject
+{
+    Q_OBJECT
 
-  typedef QPair<KTextEditor::Range, QString> RangeDictionaryPair;
+    typedef QPair<KTextEditor::Range, QString> RangeDictionaryPair;
 
-  public:
-    KateSpellCheckManager(QObject* parent = NULL);
+public:
+    KateSpellCheckManager(QObject *parent = NULL);
     virtual ~KateSpellCheckManager();
 
-    QStringList suggestions(const QString& word, const QString& dictionary);
+    QStringList suggestions(const QString &word, const QString &dictionary);
 
-    void ignoreWord(const QString& word, const QString& dictionary);
-    void addToDictionary(const QString& word, const QString& dictionary);
+    void ignoreWord(const QString &word, const QString &dictionary);
+    void addToDictionary(const QString &word, const QString &dictionary);
 
     /**
      * 'r2' is a subrange of 'r1', which is extracted from 'r1' and the remaining ranges are returned
      **/
-    static QList<KTextEditor::Range> rangeDifference(const KTextEditor::Range& r1, const KTextEditor::Range& r2);
+    static QList<KTextEditor::Range> rangeDifference(const KTextEditor::Range &r1, const KTextEditor::Range &r2);
 
-  public:
-      QList<QPair<KTextEditor::Range, QString> > spellCheckLanguageRanges(KateDocument *doc, const KTextEditor::Range& range);
+public:
+    QList<QPair<KTextEditor::Range, QString> > spellCheckLanguageRanges(KateDocument *doc, const KTextEditor::Range &range);
 
-      QList<QPair<KTextEditor::Range, QString> > spellCheckWrtHighlightingRanges(KateDocument *doc, const KTextEditor::Range& range,
-                                                                                                    const QString& dictionary = QString(),
-                                                                                                    bool singleLine = false,
-                                                                                                    bool returnSingleRange = false);
-      QList<QPair<KTextEditor::Range, QString> > spellCheckRanges(KateDocument *doc, const KTextEditor::Range& range,
-                                                                                     bool singleLine = false);
+    QList<QPair<KTextEditor::Range, QString> > spellCheckWrtHighlightingRanges(KateDocument *doc, const KTextEditor::Range &range,
+            const QString &dictionary = QString(),
+            bool singleLine = false,
+            bool returnSingleRange = false);
+    QList<QPair<KTextEditor::Range, QString> > spellCheckRanges(KateDocument *doc, const KTextEditor::Range &range,
+            bool singleLine = false);
 
-      void replaceCharactersEncodedIfNecessary(const QString& newWord, KateDocument *doc, const KTextEditor::Range& replacementRange);
+    void replaceCharactersEncodedIfNecessary(const QString &newWord, KateDocument *doc, const KTextEditor::Range &replacementRange);
 
-  private:
-      void trimRange(KateDocument *doc, KTextEditor::Range &r);
+private:
+    void trimRange(KateDocument *doc, KTextEditor::Range &r);
 };
 
 #endif
- 
-// kate: space-indent on; indent-width 2; replace-tabs on;
+

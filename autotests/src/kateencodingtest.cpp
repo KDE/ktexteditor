@@ -24,34 +24,36 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QStringList>
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-  // construct core app
-  QCoreApplication app (argc, argv);
+    // construct core app
+    QCoreApplication app(argc, argv);
 
-  // get arguments
-  QString encoding = app.arguments().at(1);
-  QString inFile = app.arguments().at(2);
-  QString outFile = app.arguments().at(3);
+    // get arguments
+    QString encoding = app.arguments().at(1);
+    QString inFile = app.arguments().at(2);
+    QString outFile = app.arguments().at(3);
 
-  Kate::TextBuffer buffer (0);
+    Kate::TextBuffer buffer(0);
 
-  // set codec
-  buffer.setFallbackTextCodec (QTextCodec::codecForName ("ISO 8859-15"));
-  buffer.setTextCodec (QTextCodec::codecForName (encoding.toLatin1()));
+    // set codec
+    buffer.setFallbackTextCodec(QTextCodec::codecForName("ISO 8859-15"));
+    buffer.setTextCodec(QTextCodec::codecForName(encoding.toLatin1()));
 
-  // switch to Mac EOL, this will test eol detection, as files are normal unix or dos
-  buffer.setEndOfLineMode (Kate::TextBuffer::eolMac);
+    // switch to Mac EOL, this will test eol detection, as files are normal unix or dos
+    buffer.setEndOfLineMode(Kate::TextBuffer::eolMac);
 
-  // load file
-  bool encodingErrors = false;
-  bool tooLongLines = false;
-  if (!buffer.load (inFile, encodingErrors, tooLongLines, false) || encodingErrors)
-    return 1;
+    // load file
+    bool encodingErrors = false;
+    bool tooLongLines = false;
+    if (!buffer.load(inFile, encodingErrors, tooLongLines, false) || encodingErrors) {
+        return 1;
+    }
 
-  // save file
-  if (!buffer.save (outFile))
-    return 1;
+    // save file
+    if (!buffer.save(outFile)) {
+        return 1;
+    }
 
-  return 0;
+    return 0;
 }

@@ -28,7 +28,8 @@
 
 #include <ktexteditor_export.h>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 class View;
 class Document;
@@ -90,22 +91,22 @@ class Document;
  */
 class KTEXTEDITOR_EXPORT Message : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  //
-  // public data types
-  //
-  public:
+    //
+    // public data types
+    //
+public:
     /**
      * Message types used as visual indicator.
      * The message types match exactly the behavior of KMessageWidget::MessageType.
      * For simple notifications either use Positive or Information.
      */
     enum MessageType {
-      Positive = 0, ///< positive information message
-      Information,  ///< information message type
-      Warning,      ///< warning message type
-      Error         ///< error message type
+        Positive = 0, ///< positive information message
+        Information,  ///< information message type
+        Warning,      ///< warning message type
+        Error         ///< error message type
     };
 
     /**
@@ -113,10 +114,10 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * KTextEditor::View.
      */
     enum MessagePosition {
-      AboveView = 0, ///< show message above view
-      BelowView,     ///< show message below view
-      TopInView,     ///< show message as view overlay in the top right corner
-      BottomInView   ///< show message as view overlay om the bottom right corner
+        AboveView = 0, ///< show message above view
+        BelowView,     ///< show message below view
+        TopInView,     ///< show message as view overlay in the top right corner
+        BottomInView   ///< show message as view overlay om the bottom right corner
     };
 
     /**
@@ -124,17 +125,17 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * @see setAutoHide(), autoHide()
      */
     enum AutoHideMode {
-      Immediate = 0,       ///< auto-hide is triggered as soon as the message is shown
-      AfterUserInteraction ///< auto-hide is triggered only after the user interacted with the view
+        Immediate = 0,       ///< auto-hide is triggered as soon as the message is shown
+        AfterUserInteraction ///< auto-hide is triggered only after the user interacted with the view
     };
 
-  public:
+public:
     /**
      * Constructor for new messages.
      * @param type the message type, e.g. MessageType::Information
      * @param richtext text to be displayed
      */
-    Message(const QString& richtext, MessageType type = Message::Information);
+    Message(const QString &richtext, MessageType type = Message::Information);
 
     /**
      * Destructor.
@@ -177,13 +178,13 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * @warning The added actions are deleted automatically.
      *          So do \em not delete the added actions yourself.
      */
-    void addAction(QAction* action, bool closeOnTrigger = true);
+    void addAction(QAction *action, bool closeOnTrigger = true);
 
     /**
      * Accessor to all actions, mainly used in the internal implementation
      * to add the actions into the gui.
      */
-    QList<QAction*> actions() const;
+    QList<QAction *> actions() const;
 
     /**
      * Set the auto hide timer to @p autoHideTimer milliseconds.
@@ -260,13 +261,13 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * If @p view is given, i.e. non-zero, the message is shown only in this view.
      * @param view the associated view the message should be displayed in
      */
-    void setView(KTextEditor::View* view);
+    void setView(KTextEditor::View *view);
 
     /**
      * This function returns the view you set by setView(). If setView() was
      * not called, the return value is 0.
      */
-    KTextEditor::View* view() const;
+    KTextEditor::View *view() const;
 
     /**
      * Set the document pointer to @p document.
@@ -275,13 +276,13 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * call this yourself.
      * @see MessageInterface, document()
      */
-    void setDocument(KTextEditor::Document* document);
+    void setDocument(KTextEditor::Document *document);
 
     /**
      * Returns the document pointer this message was posted in.
      * This pointer is 0 as long as the message was not posted.
      */
-    KTextEditor::Document* document() const;
+    KTextEditor::Document *document() const;
 
     /**
      * Sets the @p position either to AboveView or BelowView.
@@ -295,7 +296,7 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      */
     MessagePosition position() const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Sets the notification contents to @p text.
      * If the message was already sent through MessageInterface::postMessage(),
@@ -306,16 +307,16 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * @param richtext new notification text (rich text supported)
      * @see textChanged()
      */
-    void setText(const QString& richtext);
+    void setText(const QString &richtext);
 
     /**
      * Optionally set an icon for this notification.
      * The icon is shown next to the message text.
      * @param icon the icon to be displayed
      */
-    void setIcon(const QIcon& icon);
+    void setIcon(const QIcon &icon);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted before the message is deleted. Afterwards, this
      * pointer is invalid.
@@ -324,7 +325,7 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      *
      * @param message closed/processed message
      */
-    void closed(KTextEditor::Message* message);
+    void closed(KTextEditor::Message *message);
 
     /**
      * This signal is emitted whenever setText() is called.
@@ -337,7 +338,7 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * @param text new notification text (rich text supported)
      * @see setText()
      */
-    void textChanged(const QString& text);
+    void textChanged(const QString &text);
 
     /**
      * This signal is emitted whenever setIcon() is called.
@@ -350,10 +351,10 @@ class KTEXTEDITOR_EXPORT Message : public QObject
      * @param icon new notification icon
      * @see setIcon()
      */
-    void iconChanged(const QIcon& icon);
+    void iconChanged(const QIcon &icon);
 
 private:
-    class MessagePrivate * const d;
+    class MessagePrivate *const d;
 };
 
 /**
@@ -398,7 +399,7 @@ private:
  */
 class KTEXTEDITOR_EXPORT MessageInterface
 {
-  public:
+public:
     /**
      * Default constructor, for internal use.
      */
@@ -422,10 +423,10 @@ class KTEXTEDITOR_EXPORT MessageInterface
      * @param message the message to show
      * @return @e true, if @p message was posted. @e false, if message == 0.
      */
-    virtual bool postMessage(Message* message) = 0;
+    virtual bool postMessage(Message *message) = 0;
 
-  private:
-    class MessageInterfacePrivate * const d;
+private:
+    class MessageInterfacePrivate *const d;
 };
 
 }
@@ -434,4 +435,3 @@ Q_DECLARE_INTERFACE(KTextEditor::MessageInterface, "org.kde.KTextEditor.MessageI
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

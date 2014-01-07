@@ -31,29 +31,29 @@ using namespace KTextEditor;
 
 QTEST_MAIN(RevisionTest)
 
-namespace QTest {
-    template<>
-    char *toString(const KTextEditor::Cursor &cursor)
-    {
-        QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                           + ", " + QByteArray::number(cursor.column()) + "]";
-        return qstrdup(ba.data());
-    }
-
-    template<>
-    char *toString(const KTextEditor::Range &range)
-    {
-        QByteArray ba = "Range[" + QByteArray::number(range.start().line())
-                          + ", " + QByteArray::number(range.start().column()) + " - "
-                                 + QByteArray::number(range.end().line())
-                          + ", " + QByteArray::number(range.end().column()) + "]";
-        return qstrdup(ba.data());
-    }
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
+{
+    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
+                    + ", " + QByteArray::number(cursor.column()) + "]";
+    return qstrdup(ba.data());
 }
 
+template<>
+char *toString(const KTextEditor::Range &range)
+{
+    QByteArray ba = "Range[" + QByteArray::number(range.start().line())
+                    + ", " + QByteArray::number(range.start().column()) + " - "
+                    + QByteArray::number(range.end().line())
+                    + ", " + QByteArray::number(range.end().column()) + "]";
+    return qstrdup(ba.data());
+}
+}
 
 RevisionTest::RevisionTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -68,7 +68,7 @@ RevisionTest::~RevisionTest()
 // - transformCursor()
 void RevisionTest::testTransformCursor()
 {
-    KateDocument doc (false, false, false);
+    KateDocument doc(false, false, false);
 
     // initial saved revision of unsaved document is -1
     QVERIFY(doc.lastSavedRevision() == -1);
@@ -101,7 +101,6 @@ void RevisionTest::testTransformCursor()
     QCOMPARE(stayOnInsert, Cursor(0, 2));
     QCOMPARE(moveOnInsert, Cursor(2, 4));
 
-
     // free revision and lock current again
     doc.unlockRevision(rev);
     rev = doc.revision();
@@ -120,12 +119,11 @@ void RevisionTest::testTransformCursor()
     QCOMPARE(moveOnInsert, Cursor(0, 2));
 }
 
-
 // tests:
 // - transformRange()
 void RevisionTest::testTransformRange()
 {
-    KateDocument doc (false, false, false);
+    KateDocument doc(false, false, false);
 
     QCOMPARE(doc.revision(), (qint64) 0);
 
@@ -135,7 +133,6 @@ void RevisionTest::testTransformRange()
     // now lock current revision
     qint64 rev = doc.revision();
     doc.lockRevision(rev);
-
 
     Range r1(Cursor(0, 0), Cursor(1, 2));
     Range r2(Cursor(0, 1), Cursor(1, 1));
@@ -150,7 +147,6 @@ void RevisionTest::testTransformRange()
                        MovingRange::AllowEmpty, rev, -1);
     doc.transformRange(invalidOnEmpty, MovingRange::ExpandLeft | MovingRange::ExpandRight,
                        MovingRange::InvalidateIfEmpty, rev, -1);
-
 
     QCOMPARE(r1, Range(Cursor(0, 0), Cursor(0, 0)));
     QCOMPARE(r2, Range(Cursor(0, 0), Cursor(0, 0)));

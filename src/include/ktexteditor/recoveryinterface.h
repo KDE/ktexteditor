@@ -43,7 +43,7 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT RecoveryInterface
 {
-  public:
+public:
     /**
      * Constructor.
      */
@@ -54,7 +54,7 @@ class KTEXTEDITOR_EXPORT RecoveryInterface
      */
     virtual ~RecoveryInterface();
 
-  public:
+public:
 
     /**
      * Returns whether a recovery is available for the current document.
@@ -90,8 +90,8 @@ class KTEXTEDITOR_EXPORT RecoveryInterface
     // void setDataRecoveryEnabled(bool enable);
     // bool dataRecoveryEnabled() const;
 
-  private:
-    class RecoveryInterfacePrivate* const d;
+private:
+    class RecoveryInterfacePrivate *const d;
 };
 
 }
@@ -100,4 +100,3 @@ Q_DECLARE_INTERFACE(KTextEditor::RecoveryInterface, "org.kde.KTextEditor.Recover
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

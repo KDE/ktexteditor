@@ -32,32 +32,34 @@ class KateDocument;
 
 class KateModeMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateModeMenu(const QString& text, QObject *parent)
-       : KActionMenu(text, parent) { init(); }
+public:
+    KateModeMenu(const QString &text, QObject *parent)
+        : KActionMenu(text, parent)
+    {
+        init();
+    }
 
     ~KateModeMenu();
 
-    void updateMenu (KTextEditor::Document *doc);
+    void updateMenu(KTextEditor::Document *doc);
 
-  private:
+private:
     void init();
 
     QPointer<KateDocument> m_doc;
     QStringList subMenusName;
     QStringList names;
-    QList<QMenu*> subMenus;
+    QList<QMenu *> subMenus;
     QActionGroup *m_actionGroup;
 
-  public  Q_SLOTS:
+public  Q_SLOTS:
     void slotAboutToShow();
 
-  private Q_SLOTS:
-    void setType (QAction*);
+private Q_SLOTS:
+    void setType(QAction *);
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

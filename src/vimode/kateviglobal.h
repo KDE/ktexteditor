@@ -36,9 +36,9 @@ class QString;
 class QChar;
 class KConfigGroup;
 
-
-namespace KateVi {
-  const unsigned int EOL = 99999;
+namespace KateVi
+{
+const unsigned int EOL = 99999;
 }
 
 typedef QPair<QString, OperationMode> KateViRegister;
@@ -49,39 +49,42 @@ public:
     KateViGlobal();
     ~KateViGlobal();
 
-    void writeConfig( KConfigGroup &config ) const;
-    void readConfig( const KConfigGroup &config );
-    QString getRegisterContent( const QChar &reg ) const;
-    OperationMode getRegisterFlag( const QChar &reg ) const;
-    void addToNumberedRegister( const QString &text, OperationMode flag = CharWise );
-    void fillRegister( const QChar &reg, const QString &text, OperationMode flag = CharWise);
-    const QMap<QChar, KateViRegister>* getRegisters() const { return &m_registers; }
+    void writeConfig(KConfigGroup &config) const;
+    void readConfig(const KConfigGroup &config);
+    QString getRegisterContent(const QChar &reg) const;
+    OperationMode getRegisterFlag(const QChar &reg) const;
+    void addToNumberedRegister(const QString &text, OperationMode flag = CharWise);
+    void fillRegister(const QChar &reg, const QString &text, OperationMode flag = CharWise);
+    const QMap<QChar, KateViRegister> *getRegisters() const
+    {
+        return &m_registers;
+    }
 
     enum MappingRecursion { Recursive, NonRecursive };
     enum MappingMode { NormalModeMapping, VisualModeMapping, InsertModeMapping, CommandModeMapping };
-    void clearMappings( MappingMode mode );
-    void addMapping( MappingMode mode, const QString& from, const QString& to, MappingRecursion recursion );
-    void removeMapping(MappingMode mode, const QString& from);
-    const QString getMapping( MappingMode mode, const QString &from, bool decode = false ) const;
-    const QStringList getMappings( MappingMode mode, bool decode = false ) const;
-    bool isMappingRecursive(MappingMode mode, const QString& from) const;
+    void clearMappings(MappingMode mode);
+    void addMapping(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion);
+    void removeMapping(MappingMode mode, const QString &from);
+    const QString getMapping(MappingMode mode, const QString &from, bool decode = false) const;
+    const QStringList getMappings(MappingMode mode, bool decode = false) const;
+    bool isMappingRecursive(MappingMode mode, const QString &from) const;
     /**
      * Returns CommandModeMapping if the emulated command bar is active, else the mapping mode
      * corresponding to the current Vi mode.
      */
-    static MappingMode mappingModeForCurrentViMode(KateView* view);
+    static MappingMode mappingModeForCurrentViMode(KateView *view);
 
     QStringList searchHistory();
     void clearSearchHistory();
-    void appendSearchHistoryItem(const QString& searchHistoryItem);
+    void appendSearchHistoryItem(const QString &searchHistoryItem);
 
     QStringList commandHistory();
     void clearCommandHistory();
-    void appendCommandHistoryItem(const QString& commandHistoryItem);
+    void appendCommandHistoryItem(const QString &commandHistoryItem);
 
     QStringList replaceHistory();
     void clearReplaceHistory();
-    void appendReplaceHistoryItem(const QString& replaceHistoryItem);
+    void appendReplaceHistoryItem(const QString &replaceHistoryItem);
 
     void clearAllMacros();
     void clearMacro(QChar macroRegister);
@@ -98,68 +101,65 @@ private:
     QMap<QChar, KateViRegister> m_registers;
     QChar m_defaultRegister;
     QString m_registerTemp;
-    KateViRegister getRegister( const QChar &reg ) const;
+    KateViRegister getRegister(const QChar &reg) const;
 
     // Mappings.
-    struct Mapping
-    {
-      Mapping(const QString& mappedKeyPresses, bool isRecursive)
-        : mappedKeyPresses(mappedKeyPresses), isRecursive(isRecursive)
-      {
-      }
-      Mapping(const Mapping& other)
-        : mappedKeyPresses(other.mappedKeyPresses), isRecursive(other.isRecursive)
-      {
-      }
-      Mapping()
-        : mappedKeyPresses(), isRecursive(false)
-      {
-      }
-      Mapping& operator=(const Mapping& other)
-      {
-        mappedKeyPresses = other.mappedKeyPresses;
-        isRecursive = other.isRecursive;
-        return *this;
-      }
-      QString mappedKeyPresses;
-      bool isRecursive;
+    struct Mapping {
+        Mapping(const QString &mappedKeyPresses, bool isRecursive)
+            : mappedKeyPresses(mappedKeyPresses), isRecursive(isRecursive)
+        {
+        }
+        Mapping(const Mapping &other)
+            : mappedKeyPresses(other.mappedKeyPresses), isRecursive(other.isRecursive)
+        {
+        }
+        Mapping()
+            : mappedKeyPresses(), isRecursive(false)
+        {
+        }
+        Mapping &operator=(const Mapping &other)
+        {
+            mappedKeyPresses = other.mappedKeyPresses;
+            isRecursive = other.isRecursive;
+            return *this;
+        }
+        QString mappedKeyPresses;
+        bool isRecursive;
     };
 
     QHash <MappingMode, QHash<QString, Mapping> > m_mappingsForMode;
 
-    void writeMappingsToConfig(KConfigGroup& config, const QString& mappingModeName, MappingMode mappingMode) const;
-    void readMappingsFromConfig(const KConfigGroup& config, const QString& mappingModeName, MappingMode mappingMode);
-    int readMacroCompletions(QChar macroRegister, const QStringList& encodedMacroCompletions, int macroCompletionIndex);
-    QString encodeMacroCompletionForConfig(const KateViInputModeManager::Completion& completionForMacro) const;
-    KateViInputModeManager::Completion decodeMacroCompletionFromConfig(const QString& encodedMacroCompletion);
+    void writeMappingsToConfig(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const;
+    void readMappingsFromConfig(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode);
+    int readMacroCompletions(QChar macroRegister, const QStringList &encodedMacroCompletions, int macroCompletionIndex);
+    QString encodeMacroCompletionForConfig(const KateViInputModeManager::Completion &completionForMacro) const;
+    KateViInputModeManager::Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
     class History
     {
     public:
-      void appendItem(const QString& historyItem)
-      {
-        if (historyItem.isEmpty())
+        void appendItem(const QString &historyItem)
         {
-          return;
+            if (historyItem.isEmpty()) {
+                return;
+            }
+            const int HISTORY_SIZE_LIMIT = 100;
+            m_items.removeAll(historyItem);
+            if (m_items.size() == HISTORY_SIZE_LIMIT) {
+                m_items.removeFirst();
+            }
+            m_items.append(historyItem);
         }
-        const int HISTORY_SIZE_LIMIT = 100;
-        m_items.removeAll(historyItem);
-        if (m_items.size() == HISTORY_SIZE_LIMIT)
+        QStringList items() const
         {
-          m_items.removeFirst();
+            return m_items;
         }
-        m_items.append(historyItem);
-      }
-      QStringList items() const
-      {
-        return m_items;
-      }
-      void clear()
-      {
-        m_items.clear();
-      }
+        void clear()
+        {
+            m_items.clear();
+        }
     private:
-      QStringList m_items;
+        QStringList m_items;
     };
 
     History m_searchHistory;

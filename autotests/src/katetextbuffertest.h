@@ -26,13 +26,13 @@
 
 class KateTextBufferTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateTextBufferTest();
     virtual ~KateTextBufferTest();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void basicBufferTest();
     void wrapLineTest();
     void insertRemoveTextTest();

@@ -28,7 +28,6 @@ QTEST_MAIN(TemplateHandlerTest)
 
 using namespace KTextEditor;
 
-
 void TemplateHandlerTest::testUndo()
 {
     const QString snippet = "for (${type} ${index} = ; ${index} < ; ++${index})\n"

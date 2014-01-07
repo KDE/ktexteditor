@@ -34,17 +34,17 @@ class KateView;
  */
 class KateScriptAction : public QAction
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateScriptAction(const ScriptActionInfo& info, KateView* view);
+public:
+    KateScriptAction(const ScriptActionInfo &info, KateView *view);
     virtual ~KateScriptAction();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void exec();
 
-  private:
-    KateView* m_view;
+private:
+    KateView *m_view;
     QString m_command;
     bool m_interactive;
 };
@@ -56,23 +56,22 @@ class KateScriptAction : public QAction
  */
 class KateScriptActionMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateScriptActionMenu(KateView* view, const QString& text);
+public:
+    KateScriptActionMenu(KateView *view, const QString &text);
     ~KateScriptActionMenu();
-    
+
     void cleanup();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void repopulate();
 
-  private:
-    KateView* m_view;
-    QList<QMenu*> m_menus;
-    QList<QAction*> m_actions;
+private:
+    KateView *m_view;
+    QList<QMenu *> m_menus;
+    QList<QAction *> m_actions;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

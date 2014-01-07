@@ -22,20 +22,21 @@
 
 #include <QObject>
 
-namespace KTextEditor {
-  class Document;
+namespace KTextEditor
+{
+class Document;
 }
 class KateView;
 
 class CompletionTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     CompletionTest() {}
     virtual ~CompletionTest() {}
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void init();
     void cleanup();
     void testFilterEmptyRange();
@@ -60,8 +61,8 @@ class CompletionTest : public QObject
     void benchAbbreviationEngineGoodCase();
     void benchCompletionModel();
 
-  private:
-    KTextEditor::Document* m_doc;
+private:
+    KTextEditor::Document *m_doc;
     KateView *m_view;
 };
 

@@ -24,9 +24,9 @@
 
 class KateColorItem
 {
-  public:
+public:
     KateColorItem()
-      : useDefault(true)
+        : useDefault(true)
     {
     }
 
@@ -41,32 +41,31 @@ class KateColorItem
 
 class KateColorTreeWidget : public QTreeWidget
 {
-  Q_OBJECT
-  friend class KateColorTreeItem;
-  friend class KateColorTreeDelegate;
+    Q_OBJECT
+    friend class KateColorTreeItem;
+    friend class KateColorTreeDelegate;
 
-  public:
+public:
     explicit KateColorTreeWidget(QWidget *parent = 0);
 
-  public:
-    void addColorItem(const KateColorItem& colorItem);
-    void addColorItems(const QVector<KateColorItem>& colorItems);
+public:
+    void addColorItem(const KateColorItem &colorItem);
+    void addColorItems(const QVector<KateColorItem> &colorItems);
 
     QVector<KateColorItem> colorItems() const;
 
-    QColor findColor(const QString& key) const;
+    QColor findColor(const QString &key) const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void selectDefaults();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void changed();
 
-  protected:
-    virtual bool edit(const QModelIndex& index, EditTrigger trigger, QEvent* event);
-    void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
+protected:
+    virtual bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event);
+    void drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const;
 };
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

@@ -39,16 +39,16 @@ class QGraphicsOpacityEffect;
  */
 class KateFadeEffect : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      * By default, the widget is fully opaque (opacity = 1.0).
      */
-    KateFadeEffect(QWidget* widget = 0);
+    KateFadeEffect(QWidget *widget = 0);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Call to fade out and hide the widget.
      */
@@ -58,14 +58,14 @@ class KateFadeEffect : public QObject
      */
     void fadeIn();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when the hiding animation is finished.
      * At this point, the associated widget is hidden.
      */
     void widgetHidden();
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * Helper to update opacity value
      */
@@ -75,12 +75,11 @@ class KateFadeEffect : public QObject
      */
     void animationFinished();
 
-  private:
+private:
     QPointer<QWidget> m_widget;         ///< the fading widget
-    QTimeLine* m_timeLine;              ///< update time line
+    QTimeLine *m_timeLine;              ///< update time line
     QPointer<QGraphicsOpacityEffect> m_effect; ///< graphics opacity effect
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

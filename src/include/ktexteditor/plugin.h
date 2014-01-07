@@ -18,7 +18,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef KDELIBS_KTEXTEDITOR_PLUGIN_H
 #define KDELIBS_KTEXTEDITOR_PLUGIN_H
 
@@ -106,27 +105,27 @@ class View;
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      *
      * Create a new plugin.
      * \param parent parent object
      */
-    Plugin ( QObject *parent );
+    Plugin(QObject *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~Plugin ();
+    virtual ~Plugin();
 
-  /*
-   * Following methodes allow the plugin to react on view and document
-   * creation.
-   */
-  public:
+    /*
+     * Following methodes allow the plugin to react on view and document
+     * creation.
+     */
+public:
     /**
      * Add a new \p document to the plugin.
      * This method is called whenever the plugin should handle another
@@ -138,7 +137,10 @@ class KTEXTEDITOR_EXPORT Plugin : public QObject
      * \param document new document to handle
      * \see removeDocument(), addView()
      */
-    virtual void addDocument (Document *document) { Q_UNUSED(document); }
+    virtual void addDocument(Document *document)
+    {
+        Q_UNUSED(document);
+    }
 
     /**
      * Remove the \p document from the plugin.
@@ -151,7 +153,10 @@ class KTEXTEDITOR_EXPORT Plugin : public QObject
      * \param document document to hang the gui out from
      * \see addDocument(), removeView()
      */
-    virtual void removeDocument (Document *document) { Q_UNUSED(document); }
+    virtual void removeDocument(Document *document)
+    {
+        Q_UNUSED(document);
+    }
 
     /**
      * This method is called whenever the plugin should add its GUI to
@@ -172,7 +177,10 @@ class KTEXTEDITOR_EXPORT Plugin : public QObject
      * \param view view to hang the gui in
      * \see removeView(), addDocument()
      */
-    virtual void addView (View *view) { Q_UNUSED(view); }
+    virtual void addView(View *view)
+    {
+        Q_UNUSED(view);
+    }
 
     /**
      * This method is called whenever the plugin should remove its GUI from
@@ -184,14 +192,16 @@ class KTEXTEDITOR_EXPORT Plugin : public QObject
      * \param view view to hang the gui out from
      * \see addView(), removeDocument()
      */
-    virtual void removeView (View *view) { Q_UNUSED(view); }
+    virtual void removeView(View *view)
+    {
+        Q_UNUSED(view);
+    }
 
-  private:
-    class PluginPrivate* const d;
+private:
+    class PluginPrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

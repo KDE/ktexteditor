@@ -24,21 +24,25 @@
 #include <ktexteditor_export.h>
 #include <QDebug>
 
-namespace ViMotion {
-    enum MotionType {
-        ExclusiveMotion, InclusiveMotion
-    };
+namespace ViMotion
+{
+enum MotionType {
+    ExclusiveMotion, InclusiveMotion
+};
 }
 
 class KTEXTEDITOR_EXPORT  KateViRange
 {
-  public:
-    KateViRange( int slin, int scol, int elin, int ecol, ViMotion::MotionType mt );
-    KateViRange( int elin, int ecol, ViMotion::MotionType inc );
+public:
+    KateViRange(int slin, int scol, int elin, int ecol, ViMotion::MotionType mt);
+    KateViRange(int elin, int ecol, ViMotion::MotionType inc);
     KateViRange();
 
     void normalize();
-    bool isInclusive() const { return motionType == ViMotion::InclusiveMotion; };
+    bool isInclusive() const
+    {
+        return motionType == ViMotion::InclusiveMotion;
+    };
 
     int startLine, startColumn;
     int endLine, endColumn;
@@ -48,12 +52,18 @@ class KTEXTEDITOR_EXPORT  KateViRange
     /**
      * qDebug stream operator.  Writes this katevirange to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const KateViRange& range) {
-      s << "[" << " (" << range.startLine << ", " << range.startColumn << ")" << " -> " << " (" << range.endLine << ", " << range.endColumn << ")" << "]" << " (" << (range.isInclusive() ? "Inclusive" : "Exclusive") << ") (jump: " << (range.jump ? "true" : "false") << ")";
-      return s;
+    inline friend QDebug operator<< (QDebug s, const KateViRange &range)
+    {
+        s << "[" << " (" << range.startLine << ", " << range.startColumn << ")" << " -> " << " (" << range.endLine << ", " << range.endColumn << ")" << "]" << " (" << (range.isInclusive() ? "Inclusive" : "Exclusive") << ") (jump: " << (range.jump ? "true" : "false") << ")";
+        return s;
     }
 
-    static KateViRange invalid() { KateViRange r; r.valid = false; return r; };
+    static KateViRange invalid()
+    {
+        KateViRange r;
+        r.valid = false;
+        return r;
+    };
 };
 
 #endif

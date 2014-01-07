@@ -24,15 +24,15 @@
 
 class RevisionTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  RevisionTest();
-  ~RevisionTest();
+    RevisionTest();
+    ~RevisionTest();
 
 private Q_SLOTS:
-  void testTransformCursor();
-  void testTransformRange();
+    void testTransformCursor();
+    void testTransformRange();
 };
 
 #endif // KATE_REVISION_TEST_H

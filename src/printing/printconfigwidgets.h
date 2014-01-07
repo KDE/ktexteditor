@@ -44,20 +44,20 @@ namespace KatePrinter
  */
 class KatePrintTextSettings : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit KatePrintTextSettings( QWidget *parent=0 );
-  ~KatePrintTextSettings();
+    explicit KatePrintTextSettings(QWidget *parent = 0);
+    ~KatePrintTextSettings();
 
-  bool printLineNumbers();
-  bool printGuide();
+    bool printLineNumbers();
+    bool printGuide();
 
 private:
-  void readSettings();
-  void writeSettings();
+    void readSettings();
+    void writeSettings();
 
-  QCheckBox *cbLineNumbers;
-  QCheckBox *cbGuide;
+    QCheckBox *cbLineNumbers;
+    QCheckBox *cbGuide;
 };
 //END Text Settings
 
@@ -72,42 +72,42 @@ private:
 
 class KatePrintHeaderFooter : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit KatePrintHeaderFooter( QWidget *parent=0 );
-  ~KatePrintHeaderFooter();
+    explicit KatePrintHeaderFooter(QWidget *parent = 0);
+    ~KatePrintHeaderFooter();
 
-  QFont font();
+    QFont font();
 
-  bool useHeader();
-  QStringList headerFormat();
-  QColor headerForeground();
-  QColor headerBackground();
-  bool useHeaderBackground();
+    bool useHeader();
+    QStringList headerFormat();
+    QColor headerForeground();
+    QColor headerBackground();
+    bool useHeaderBackground();
 
-  bool useFooter();
-  QStringList footerFormat();
-  QColor footerForeground();
-  QColor footerBackground();
-  bool useFooterBackground();
+    bool useFooter();
+    QStringList footerFormat();
+    QColor footerForeground();
+    QColor footerBackground();
+    bool useFooterBackground();
 
 public Q_SLOTS:
-  void setHFFont();
-  void showContextMenu(const QPoint& pos);
+    void setHFFont();
+    void showContextMenu(const QPoint &pos);
 
 private:
-  void readSettings();
-  void writeSettings();
+    void readSettings();
+    void writeSettings();
 
-  QCheckBox *cbEnableHeader, *cbEnableFooter;
-  QLabel *lFontPreview;
-  QGroupBox *gbHeader, *gbFooter;
-  KLineEdit *leHeaderLeft, *leHeaderCenter, *leHeaderRight;
-  KColorButton *kcbtnHeaderFg, *kcbtnHeaderBg;
-  QCheckBox *cbHeaderEnableBgColor;
-  KLineEdit *leFooterLeft, *leFooterCenter, *leFooterRight;
-  KColorButton *kcbtnFooterFg, *kcbtnFooterBg;
-  QCheckBox *cbFooterEnableBgColor;
+    QCheckBox *cbEnableHeader, *cbEnableFooter;
+    QLabel *lFontPreview;
+    QGroupBox *gbHeader, *gbFooter;
+    KLineEdit *leHeaderLeft, *leHeaderCenter, *leHeaderRight;
+    KColorButton *kcbtnHeaderFg, *kcbtnHeaderBg;
+    QCheckBox *cbHeaderEnableBgColor;
+    KLineEdit *leFooterLeft, *leFooterCenter, *leFooterRight;
+    KColorButton *kcbtnFooterFg, *kcbtnFooterBg;
+    QCheckBox *cbFooterEnableBgColor;
 };
 
 //END Header/Footer
@@ -124,29 +124,29 @@ private:
  */
 class KatePrintLayout : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit KatePrintLayout( QWidget *parent=0 );
-  ~KatePrintLayout();
+    explicit KatePrintLayout(QWidget *parent = 0);
+    ~KatePrintLayout();
 
-  QString colorScheme();
-  bool useBackground();
-  bool useBox();
-  int boxWidth();
-  int boxMargin();
-  QColor boxColor();
+    QString colorScheme();
+    bool useBackground();
+    bool useBox();
+    int boxWidth();
+    int boxMargin();
+    QColor boxColor();
 
 private:
-  void readSettings();
-  void writeSettings();
+    void readSettings();
+    void writeSettings();
 
-  KComboBox *cmbSchema;
-  QCheckBox *cbEnableBox;
-  QCheckBox *cbDrawBackground;
-  QGroupBox *gbBoxProps;
-  QSpinBox *sbBoxWidth;
-  QSpinBox *sbBoxMargin;
-  KColorButton* kcbtnBoxColor;
+    KComboBox *cmbSchema;
+    QCheckBox *cbEnableBox;
+    QCheckBox *cbDrawBackground;
+    QGroupBox *gbBoxProps;
+    QSpinBox *sbBoxWidth;
+    QSpinBox *sbBoxMargin;
+    KColorButton *kcbtnBoxColor;
 };
 //END Layout
 

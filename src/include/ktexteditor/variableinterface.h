@@ -23,12 +23,12 @@
 
 #include <ktexteditor_export.h>
 
-
 #include <QObject>
 
 class QString;
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 class Document;
 
@@ -76,7 +76,7 @@ class Document;
  */
 class KTEXTEDITOR_EXPORT VariableInterface
 {
-  public:
+public:
     VariableInterface();
 
     /**
@@ -89,12 +89,12 @@ class KTEXTEDITOR_EXPORT VariableInterface
      * \return the value or an empty string if the variable is not set or has
      *         no value.
      */
-    virtual QString variable( const QString &name ) const = 0;
+    virtual QString variable(const QString &name) const = 0;
 
-  //
-  // signals!!
-  //
-  public:
+    //
+    // signals!!
+    //
+public:
     /**
      * The \p document emits this signal whenever the \p value of the
      * \p variable changed, this includes when a variable was initially set.
@@ -103,12 +103,11 @@ class KTEXTEDITOR_EXPORT VariableInterface
      * \param value new value for \e variable
      * \see variable()
      */
-    virtual void variableChanged( Document* document, const QString &variable, const QString &value ) = 0;
+    virtual void variableChanged(Document *document, const QString &variable, const QString &value) = 0;
 
-  private:
-    class VariableInterfacePrivate* const d;
+private:
+    class VariableInterfacePrivate *const d;
 };
-
 
 } // namespace KTextEditor
 
@@ -116,4 +115,3 @@ Q_DECLARE_INTERFACE(KTextEditor::VariableInterface, "org.kde.KTextEditor.Variabl
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

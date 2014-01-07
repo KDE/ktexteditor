@@ -64,39 +64,39 @@ Q_DECLARE_METATYPE(KSharedConfig::Ptr)
  */
 class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEditor::CommandInterface, public KTextEditor::TemplateScriptRegistrar
 {
-  Q_OBJECT
-  Q_INTERFACES(KTextEditor::CommandInterface)
-  Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
+    Q_OBJECT
+    Q_INTERFACES(KTextEditor::CommandInterface)
+    Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
 
-  public:
+public:
     /**
      * property to tell the editor to use a given session config for session related
      * configuration instead of KSharedConfig::openConfig().
      * MUST be set directly after first creation of the editor as otherwise
      * some parts might not pick this up.
      */
-    Q_PROPERTY (KSharedConfig::Ptr sessionConfig READ sessionConfig WRITE setSessionConfig)
+    Q_PROPERTY(KSharedConfig::Ptr sessionConfig READ sessionConfig WRITE setSessionConfig)
 
     /**
      * Get session config, defaults to KSharedConfig::openConfig()
      * @return session config
      */
-    KSharedConfig::Ptr sessionConfig ()
+    KSharedConfig::Ptr sessionConfig()
     {
-      return m_sessionConfig;
+        return m_sessionConfig;
     }
 
     /**
      * Set session config
      * @param sessionConfig new session config
      */
-    void setSessionConfig (KSharedConfig::Ptr sessionConfig)
+    void setSessionConfig(KSharedConfig::Ptr sessionConfig)
     {
-      m_sessionConfig = sessionConfig;
+        m_sessionConfig = sessionConfig;
     }
 
-  // unit testing
-  public:
+    // unit testing
+public:
     /**
      * Calling this function internally sets a flag such that unitTestMode()
      * returns \p true.
@@ -108,87 +108,90 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      */
     static bool unitTestMode();
 
-  // for setDefaultEncoding
-  friend class KateDocumentConfig;
+    // for setDefaultEncoding
+    friend class KateDocumentConfig;
 
-  private:
+private:
     /**
      * Default constructor, private, as singleton
      * @param staticInstance pointer to fill with content of this
      */
-    KateGlobal (QPointer<KateGlobal> &staticInstance);
+    KateGlobal(QPointer<KateGlobal> &staticInstance);
 
-  public:
+public:
     /**
      * Destructor
      */
-    ~KateGlobal ();
+    ~KateGlobal();
 
     /**
      * Create a new document object
      * @param parent parent object
      * @return created KTextEditor::Document
      */
-    KTextEditor::Document *createDocument ( QObject *parent );
+    KTextEditor::Document *createDocument(QObject *parent);
 
     /**
      * Returns a list of all documents of this editor.
      * @return list of all existing documents
      */
-    const QList<KTextEditor::Document*> &documents ();
-    
+    const QList<KTextEditor::Document *> &documents();
+
     /**
      * Set the global application object.
      * This will allow the editor component to access
      * the hosting application.
      * @param application application object
      */
-    void setApplication (KTextEditor::Application *application)
+    void setApplication(KTextEditor::Application *application)
     {
-      m_application = application;
+        m_application = application;
     }
-    
+
     /**
      * Current hosting application, if any set.
      * @return current application object or nullptr
      */
-    KTextEditor::Application *application () const
+    KTextEditor::Application *application() const
     {
-      return m_application;
+        return m_application;
     }
 
-  /**
-   * General Information about this editor
-   */
-  public:
+    /**
+     * General Information about this editor
+     */
+public:
     /**
      * return the about data
      * @return about data of this editor part
      */
-    const KAboutData &aboutData() const { return m_aboutData; }
+    const KAboutData &aboutData() const
+    {
+        return m_aboutData;
+    }
 
-   /**
-   * Configuration management
-   */
-  public:
+    /**
+    * Configuration management
+    */
+public:
     /**
      * Read editor configuration from given config object
      * @param config config object
      */
-    void readConfig (KConfig *config = 0);
+    void readConfig(KConfig *config = 0);
 
     /**
      * Write editor configuration to given config object
      * @param config config object
      */
-    void writeConfig (KConfig *config = 0);
+    void writeConfig(KConfig *config = 0);
 
     /**
      * Shows a config dialog for the part, changes will be applied
      * to the editor, but not saved anywhere automagically, call
      * writeConfig to save them
     */
-    void configDialog (QWidget *parent);
+    void configDialog(QWidget *parent);
 
     /**
      * Number of available config pages
@@ -196,146 +199,191 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      * and the embedding app should use the configDialog () instead
      * @return number of config pages
      */
-    int configPages () const;
+    int configPages() const;
 
     /**
      * returns config page with the given number,
      * config pages from 0 to configPages()-1 are available
      * if configPages() > 0
      */
-    KTextEditor::ConfigPage *configPage (int number, QWidget *parent);
+    KTextEditor::ConfigPage *configPage(int number, QWidget *parent);
 
-    QString configPageName (int number) const;
+    QString configPageName(int number) const;
 
-    QString configPageFullName (int number) const;
+    QString configPageFullName(int number) const;
 
-    QIcon configPageIcon (int number) const;
+    QIcon configPageIcon(int number) const;
 
-  /**
-   * Kate Part Internal stuff ;)
-   */
-  public:
+    /**
+     * Kate Part Internal stuff ;)
+     */
+public:
     /**
      * singleton accessor
      * @return instance of the factory
      */
-    static KateGlobal *self ();
+    static KateGlobal *self();
 
     /**
      * register document at the factory
      * this allows us to loop over all docs for example on config changes
      * @param doc document to register
      */
-    void registerDocument ( KateDocument *doc );
+    void registerDocument(KateDocument *doc);
 
     /**
      * unregister document at the factory
      * @param doc document to register
      */
-    void deregisterDocument ( KateDocument *doc );
+    void deregisterDocument(KateDocument *doc);
 
     /**
      * register view at the factory
      * this allows us to loop over all views for example on config changes
      * @param view view to register
      */
-    void registerView ( KateView *view );
+    void registerView(KateView *view);
 
     /**
      * unregister view at the factory
      * @param view view to unregister
      */
-    void deregisterView ( KateView *view );
+    void deregisterView(KateView *view);
 
     /**
      * return a list of all registered docs
      * @return all known documents
      */
-    QList<KateDocument*> &kateDocuments () { return m_documents; }
+    QList<KateDocument *> &kateDocuments()
+    {
+        return m_documents;
+    }
 
     /**
      * return a list of all registered views
      * @return all known views
      */
-    QList<KateView*> &views () { return m_views; }
+    QList<KateView *> &views()
+    {
+        return m_views;
+    }
 
     /**
      * global plugin manager
      * @return kate part plugin manager
      */
-    KatePartPluginManager *pluginManager () { return m_pluginManager; }
+    KatePartPluginManager *pluginManager()
+    {
+        return m_pluginManager;
+    }
 
     /**
      * global dirwatch
      * @return dirwatch instance
      */
-    KDirWatch *dirWatch () { return m_dirWatch; }
+    KDirWatch *dirWatch()
+    {
+        return m_dirWatch;
+    }
 
     /**
      * global mode manager
      * used to manage the modes centrally
      * @return mode manager
      */
-    KateModeManager *modeManager () { return m_modeManager; }
+    KateModeManager *modeManager()
+    {
+        return m_modeManager;
+    }
 
     /**
      * manager for the katepart schemas
      * @return schema manager
      */
-    KateSchemaManager *schemaManager () { return m_schemaManager; }
+    KateSchemaManager *schemaManager()
+    {
+        return m_schemaManager;
+    }
 
     /**
      * fallback document config
      * @return default config for all documents
      */
-    KateDocumentConfig *documentConfig () { return m_documentConfig; }
+    KateDocumentConfig *documentConfig()
+    {
+        return m_documentConfig;
+    }
 
     /**
      * fallback view config
      * @return default config for all views
      */
-    KateViewConfig *viewConfig () { return m_viewConfig; }
+    KateViewConfig *viewConfig()
+    {
+        return m_viewConfig;
+    }
 
     /**
      * fallback renderer config
      * @return default config for all renderers
      */
-    KateRendererConfig *rendererConfig () { return m_rendererConfig; }
+    KateRendererConfig *rendererConfig()
+    {
+        return m_rendererConfig;
+    }
 
     /**
      * Global script collection
      */
-    KateScriptManager *scriptManager () { return m_scriptManager; }
+    KateScriptManager *scriptManager()
+    {
+        return m_scriptManager;
+    }
 
     /**
      * hl manager
      * @return hl manager
      */
-    KateHlManager *hlManager () { return m_hlManager; }
+    KateHlManager *hlManager()
+    {
+        return m_hlManager;
+    }
 
     /**
      * command manager
      * @return command manager
      */
-    KateCmd *cmdManager () { return m_cmdManager; }
+    KateCmd *cmdManager()
+    {
+        return m_cmdManager;
+    }
 
     /**
      * vi input mode global
      * @return vi input mode global
      */
-    KateViGlobal *viInputModeGlobal () { return m_viInputModeGlobal; }
+    KateViGlobal *viInputModeGlobal()
+    {
+        return m_viInputModeGlobal;
+    }
 
     /**
      * spell check manager
      * @return spell check manager
      */
-    KateSpellCheckManager *spellCheckManager () { return m_spellCheckManager; }
+    KateSpellCheckManager *spellCheckManager()
+    {
+        return m_spellCheckManager;
+    }
 
     /**
      * global instance of the simple word completion mode
      * @return global instance of the simple word completion mode
      */
-    KateWordCompletionModel *wordCompletionModel () { return m_wordCompletionModel; }
+    KateWordCompletionModel *wordCompletionModel()
+    {
+        return m_wordCompletionModel;
+    }
 
     /**
      * register given command
@@ -343,7 +391,7 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      * @param cmd command to register
      * @return success
      */
-    bool registerCommand (KTextEditor::Command *cmd);
+    bool registerCommand(KTextEditor::Command *cmd);
 
     /**
      * unregister given command
@@ -351,20 +399,20 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      * @param cmd command to unregister
      * @return success
      */
-    bool unregisterCommand (KTextEditor::Command *cmd);
+    bool unregisterCommand(KTextEditor::Command *cmd);
 
     /**
      * query for command
      * @param cmd name of command to query for
      * @return found command or 0
      */
-    KTextEditor::Command *queryCommand (const QString &cmd) const;
+    KTextEditor::Command *queryCommand(const QString &cmd) const;
 
     /**
      * Get a list of all registered commands.
      * \return list of all commands
      */
-    QList<KTextEditor::Command*> commands() const;
+    QList<KTextEditor::Command *> commands() const;
 
     /**
      * Get a list of available commandline strings.
@@ -375,37 +423,37 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
     /**
      *  TemplateScriptRegistrar interface
      */
-    KTextEditor::TemplateScript* registerTemplateScript (QObject* owner, const QString& script);
-    void unregisterTemplateScript(KTextEditor::TemplateScript* templateScript);
+    KTextEditor::TemplateScript *registerTemplateScript(QObject *owner, const QString &script);
+    void unregisterTemplateScript(KTextEditor::TemplateScript *templateScript);
 
     /**
      * Copy text to clipboard an remember it in the history
      * @param text text to copy to clipboard, does nothing if empty!
      */
-    void copyToClipboard (const QString &text);
-    
+    void copyToClipboard(const QString &text);
+
     /**
      * Clipboard history, filled with text we ever copied
      * to clipboard via copyToClipboard.
      */
-    const QStringList &clipboardHistory () const
+    const QStringList &clipboardHistory() const
     {
         return m_clipboardHistory;
     }
-    
-  Q_SIGNALS:
+
+Q_SIGNALS:
     /**
      * Emitted if the history of clipboard changes via copyToClipboard
      */
-    void clipboardHistoryChanged ();
+    void clipboardHistoryChanged();
 
-  protected:
+protected:
     bool eventFilter(QObject *, QEvent *);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void updateColorPalette();
 
-  private:
+private:
     /**
      * about data (authors and more)
      */
@@ -414,12 +462,12 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
     /**
      * registered docs
      */
-    QList<KateDocument*> m_documents;
+    QList<KateDocument *> m_documents;
 
     /**
      * registered views
      */
-    QList<KateView*> m_views;
+    QList<KateView *> m_views;
 
     /**
      * global dirwatch object
@@ -491,7 +539,7 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      */
     KateSpellCheckManager *m_spellCheckManager;
 
-    QList<KTextEditor::Document*> m_docs;
+    QList<KTextEditor::Document *> m_docs;
 
     /**
      * global instance of the simple word completion mode
@@ -502,12 +550,12 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
      * session config
      */
     KSharedConfig::Ptr m_sessionConfig;
-    
+
     /**
      * clipboard history
      */
     QStringList m_clipboardHistory;
-    
+
     /**
      * access to application
      */
@@ -516,4 +564,3 @@ class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEd
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

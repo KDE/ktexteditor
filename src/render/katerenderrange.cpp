@@ -26,184 +26,190 @@
 
 void mergeAttributes(KTextEditor::Attribute::Ptr base, KTextEditor::Attribute::Ptr add)
 {
-  if(!add)
-    return;
+    if (!add) {
+        return;
+    }
 
-  bool hadBg = base->hasProperty(KTextEditor::Attribute::BackgroundBrush);
-  bool hasBg = add->hasProperty(KTextEditor::Attribute::BackgroundBrush);
+    bool hadBg = base->hasProperty(KTextEditor::Attribute::BackgroundBrush);
+    bool hasBg = add->hasProperty(KTextEditor::Attribute::BackgroundBrush);
 
-  bool hadFg = base->hasProperty(KTextEditor::Attribute::ForegroundBrush);
-  bool hasFg = add->hasProperty(KTextEditor::Attribute::ForegroundBrush);
+    bool hadFg = base->hasProperty(KTextEditor::Attribute::ForegroundBrush);
+    bool hasFg = add->hasProperty(KTextEditor::Attribute::ForegroundBrush);
 
-  if(((!hadBg || !hasBg) && (!hadFg || !hasFg))) {
-    //Nothing to blend
+    if (((!hadBg || !hasBg) && (!hadFg || !hasFg))) {
+        //Nothing to blend
+        *base += *add;
+        return;
+    }
+
+    //We eventually have to blend
+
+    QBrush baseBgBrush, baseFgBrush;
+
+    if (hadBg) {
+        baseBgBrush = base->background();
+    }
+
+    if (hadFg) {
+        baseFgBrush = base->foreground();
+    }
+
     *base += *add;
-    return;
-  }
 
-  //We eventually have to blend
-
-  QBrush baseBgBrush, baseFgBrush;
-
-  if(hadBg)
-    baseBgBrush = base->background();
-
-  if(hadFg)
-    baseFgBrush = base->foreground();
-
-  *base += *add;
-
-  if(hadBg && hasBg)
-  {
-    QBrush bg = add->background();
-    if(!bg.isOpaque()) {
-      QColor mixWithColor = bg.color();
-      mixWithColor.setAlpha(255);
-      bg.setColor(KColorUtils::mix(baseBgBrush.color(), mixWithColor, bg.color().alphaF()));
-      base->setBackground(bg);
+    if (hadBg && hasBg) {
+        QBrush bg = add->background();
+        if (!bg.isOpaque()) {
+            QColor mixWithColor = bg.color();
+            mixWithColor.setAlpha(255);
+            bg.setColor(KColorUtils::mix(baseBgBrush.color(), mixWithColor, bg.color().alphaF()));
+            base->setBackground(bg);
+        }
     }
-  }
-  if(hadFg && hasFg)
-  {
-    QBrush fg = add->foreground();
-    if(!fg.isOpaque()) {
-      QColor mixWithColor = fg.color();
-      mixWithColor.setAlpha(255);
-      fg.setColor(KColorUtils::mix(baseFgBrush.color(), mixWithColor, fg.color().alphaF()));
-      base->setForeground(fg);
+    if (hadFg && hasFg) {
+        QBrush fg = add->foreground();
+        if (!fg.isOpaque()) {
+            QColor mixWithColor = fg.color();
+            mixWithColor.setAlpha(255);
+            fg.setColor(KColorUtils::mix(baseFgBrush.color(), mixWithColor, fg.color().alphaF()));
+            base->setForeground(fg);
+        }
     }
-  }
 }
 
-bool KateRenderRange::isReady() const {
+bool KateRenderRange::isReady() const
+{
     return false;
 }
 
 NormalRenderRange::NormalRenderRange()
-  : m_currentRange(0)
+    : m_currentRange(0)
 {
 }
 
 NormalRenderRange::~NormalRenderRange()
 {
-  QListIterator<pairRA> it = m_ranges;
-  while (it.hasNext())
-    delete it.next().first;
+    QListIterator<pairRA> it = m_ranges;
+    while (it.hasNext()) {
+        delete it.next().first;
+    }
 }
 
-void NormalRenderRange::addRange(KTextEditor::Range* range, KTextEditor::Attribute::Ptr attribute)
+void NormalRenderRange::addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute)
 {
-  m_ranges.append(pairRA(range, attribute));
+    m_ranges.append(pairRA(range, attribute));
 }
 
 KTextEditor::Cursor NormalRenderRange::nextBoundary() const
 {
-  return m_nextBoundary;
+    return m_nextBoundary;
 }
 
-bool NormalRenderRange::advanceTo(const KTextEditor::Cursor& pos)
+bool NormalRenderRange::advanceTo(const KTextEditor::Cursor &pos)
 {
-  int index = m_currentRange;
-  while (index < m_ranges.count()) {
-    const pairRA& p = m_ranges.at(index);
-    KTextEditor::Range* r = p.first;
-    if (r->end() <= pos) {
-      ++index;
-    } else {
-      bool ret = index != m_currentRange;
-      m_currentRange = index;
+    int index = m_currentRange;
+    while (index < m_ranges.count()) {
+        const pairRA &p = m_ranges.at(index);
+        KTextEditor::Range *r = p.first;
+        if (r->end() <= pos) {
+            ++index;
+        } else {
+            bool ret = index != m_currentRange;
+            m_currentRange = index;
 
-      if (r->start() > pos) {
-        m_nextBoundary = r->start();
-      } else {
-        m_nextBoundary = r->end();
-      }
-      if (r->contains(pos)) {
-        m_currentAttribute = p.second;
-      } else {
-        m_currentAttribute.reset();
-      }
+            if (r->start() > pos) {
+                m_nextBoundary = r->start();
+            } else {
+                m_nextBoundary = r->end();
+            }
+            if (r->contains(pos)) {
+                m_currentAttribute = p.second;
+            } else {
+                m_currentAttribute.reset();
+            }
 
-      return ret;
+            return ret;
+        }
     }
-  }
 
-  m_nextBoundary = KTextEditor::Cursor(INT_MAX, INT_MAX);
-  m_currentAttribute.reset();
-  return false;
+    m_nextBoundary = KTextEditor::Cursor(INT_MAX, INT_MAX);
+    m_currentAttribute.reset();
+    return false;
 }
 
 KTextEditor::Attribute::Ptr NormalRenderRange::currentAttribute() const
 {
-  return m_currentAttribute;
+    return m_currentAttribute;
 }
 
 KTextEditor::Cursor RenderRangeList::nextBoundary() const
 {
-  KTextEditor::Cursor ret = m_currentPos;
-  bool first = true;
-  foreach (KateRenderRange* r, *this) {
-    if (first) {
-      ret = r->nextBoundary();
-      first = false;
+    KTextEditor::Cursor ret = m_currentPos;
+    bool first = true;
+    foreach (KateRenderRange *r, *this) {
+        if (first) {
+            ret = r->nextBoundary();
+            first = false;
 
-    } else {
-      KTextEditor::Cursor nb = r->nextBoundary();
-      if (ret > nb)
-        ret = nb;
+        } else {
+            KTextEditor::Cursor nb = r->nextBoundary();
+            if (ret > nb) {
+                ret = nb;
+            }
+        }
     }
-  }
-  return ret;
+    return ret;
 }
 
 RenderRangeList::~RenderRangeList()
 {
 }
 
-void RenderRangeList::advanceTo(const KTextEditor::Cursor& pos)
+void RenderRangeList::advanceTo(const KTextEditor::Cursor &pos)
 {
-  foreach (KateRenderRange* r, *this)
-    r->advanceTo(pos);
+    foreach (KateRenderRange *r, *this) {
+        r->advanceTo(pos);
+    }
 
-  //Delete lists that are ready, else the list may get too large due to temporaries
-  for(int a = size()-1; a >= 0; --a) {
-      KateRenderRange* r = at(a);
-      if(r->isReady()) {
-          delete r;
-          removeAt(a);
-      }
-  }
+    //Delete lists that are ready, else the list may get too large due to temporaries
+    for (int a = size() - 1; a >= 0; --a) {
+        KateRenderRange *r = at(a);
+        if (r->isReady()) {
+            delete r;
+            removeAt(a);
+        }
+    }
 }
 
 bool RenderRangeList::hasAttribute() const
 {
-  foreach (KateRenderRange* r, *this)
-    if (r->currentAttribute())
-      return true;
+    foreach (KateRenderRange *r, *this)
+        if (r->currentAttribute()) {
+            return true;
+        }
 
-  return false;
+    return false;
 }
 
 KTextEditor::Attribute::Ptr RenderRangeList::generateAttribute() const
 {
-  KTextEditor::Attribute::Ptr a;
-  bool ownsAttribute = false;
+    KTextEditor::Attribute::Ptr a;
+    bool ownsAttribute = false;
 
-  foreach (KateRenderRange* r, *this) {
-    if (KTextEditor::Attribute::Ptr a2 = r->currentAttribute()) {
-      if(!a) {
-	a = a2;
-      }else {
-	if(!ownsAttribute) {
-	  //Make an own copy of the attribute..
-	  ownsAttribute = true;
-	  a = new KTextEditor::Attribute(*a);
-	}
-        mergeAttributes(a, a2);
-      }
+    foreach (KateRenderRange *r, *this) {
+        if (KTextEditor::Attribute::Ptr a2 = r->currentAttribute()) {
+            if (!a) {
+                a = a2;
+            } else {
+                if (!ownsAttribute) {
+                    //Make an own copy of the attribute..
+                    ownsAttribute = true;
+                    a = new KTextEditor::Attribute(*a);
+                }
+                mergeAttributes(a, a2);
+            }
+        }
     }
-  }
 
-  return a;
+    return a;
 }
 

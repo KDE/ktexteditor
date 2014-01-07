@@ -59,7 +59,7 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
 {
-  public:
+public:
     typedef QExplicitlySharedDataPointer<Attribute> Ptr;
 
     /**
@@ -70,7 +70,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
     /**
      * Copy constructor.
      */
-    Attribute(const Attribute& a);
+    Attribute(const Attribute &a);
 
     /**
      * Virtual destructor.
@@ -91,20 +91,20 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      * Custom property types, which may or may not be supported by implementations.
      */
     enum CustomProperties {
-      /// Draws an outline around the text
-      Outline = QTextFormat::UserProperty,
-      /// Changes the brush used to paint the text when it is selected
-      SelectedForeground,
-      /// Changes the brush used to paint the background when it is selected
-      SelectedBackground,
-      /// Determines whether background color is drawn over whitespace. Defaults to true.
-      BackgroundFillWhitespace,
-      /// Defined to allow storage of dynamic effect information
-      AttributeDynamicEffect = 0x10A00,
-      /// Defined for internal usage of KTextEditor implementations
-      AttributeInternalProperty = 0x10E00,
-      /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
-      AttributeUserProperty = 0x110000
+        /// Draws an outline around the text
+        Outline = QTextFormat::UserProperty,
+        /// Changes the brush used to paint the text when it is selected
+        SelectedForeground,
+        /// Changes the brush used to paint the background when it is selected
+        SelectedBackground,
+        /// Determines whether background color is drawn over whitespace. Defaults to true.
+        BackgroundFillWhitespace,
+        /// Defined to allow storage of dynamic effect information
+        AttributeDynamicEffect = 0x10A00,
+        /// Defined for internal usage of KTextEditor implementations
+        AttributeInternalProperty = 0x10E00,
+        /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
+        AttributeUserProperty = 0x110000
     };
 
     /**
@@ -146,7 +146,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param brush brush to be used to draw an outline.
      */
-    void setOutline(const QBrush& brush);
+    void setOutline(const QBrush &brush);
 
     /**
      * Get the brush used to draw text when it is selected, if any.
@@ -162,7 +162,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param foreground brush to be used to draw selected text.
      */
-    void setSelectedForeground(const QBrush& foreground);
+    void setSelectedForeground(const QBrush &foreground);
 
     /**
      * Get the brush used to draw the background of selected text, if any.
@@ -178,7 +178,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param brush brush to be used to draw the background of selected text
      */
-    void setSelectedBackground(const QBrush& brush);
+    void setSelectedBackground(const QBrush &brush);
 
     /**
      * Determine whether background color is drawn over whitespace. Defaults to true if not set.
@@ -217,7 +217,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * The following functions allow for QAction%s to be associated with attributes,
      * and thus with ranges which use this attribute.
-     * 
+     *
      * \note This feature is currently not implemented (ETA KDE 4.1).
      * \{
      */
@@ -229,7 +229,7 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param action QAction to associate with this Attribute
      */
-    void associateAction(QAction* action);
+    void associateAction(QAction *action);
 
     /**
      * Remove the association with an action from this attribute; it will no
@@ -237,12 +237,12 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param action QAction to dissociate from this Attribute
      */
-    void dissociateAction(QAction* action);
+    void dissociateAction(QAction *action);
 
     /**
      * Returns a list of currently associated QAction%s.
      */
-    const QList<QAction*>& associatedActions() const;
+    const QList<QAction *> &associatedActions() const;
 
     /**
      * Clears all associations between QAction%s and this attribute.
@@ -258,10 +258,10 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      * the mouse or cursor enter the range.
      */
     enum ActivationType {
-      /// Activate attribute on mouse in
-      ActivateMouseIn = 0,
-      /// Activate attribute on caret in
-      ActivateCaretIn
+        /// Activate attribute on mouse in
+        ActivateMouseIn = 0,
+        /// Activate attribute on caret in
+        ActivateCaretIn
     };
 
     /**
@@ -269,11 +269,11 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      * \todo Pulse and CycleGradient are unclear.
      */
     enum Effect {
-      EffectNone          = 0x0 /**< No effect. Just display. */,
-      EffectFadeIn        = 0x1 /**< Fade in and stay there. */,
-      EffectFadeOut       = 0x2 /**< Fade out to vanish. */,
-      EffectPulse         = 0x4 /**< Pulse (throb); change weight. */,
-      EffectCycleGradient = 0x8 /**< Cycle colors. */
+        EffectNone          = 0x0 /**< No effect. Just display. */,
+        EffectFadeIn        = 0x1 /**< Fade in and stay there. */,
+        EffectFadeOut       = 0x2 /**< Fade out to vanish. */,
+        EffectPulse         = 0x4 /**< Pulse (throb); change weight. */,
+        EffectCycleGradient = 0x8 /**< Cycle colors. */
     };
     Q_DECLARE_FLAGS(Effects, Effect)
     /**
@@ -315,17 +315,17 @@ class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
      *
      * \param a attribute to merge into this attribute.
      */
-    Attribute& operator+=(const Attribute& a);
+    Attribute &operator+=(const Attribute &a);
 
     /**
      * Replacement assignment operator.  Use this to overwrite this Attribute with another Attribute.
      *
      * \param a attribute to assign to this attribute.
      */
-    Attribute& operator=(const Attribute& a);
+    Attribute &operator=(const Attribute &a);
 
-  private:
-    class AttributePrivate* const d;
+private:
+    class AttributePrivate *const d;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Attribute::Effects)
@@ -334,4 +334,3 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(Attribute::Effects)
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

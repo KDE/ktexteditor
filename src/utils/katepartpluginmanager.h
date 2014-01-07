@@ -30,22 +30,26 @@
 #include <QList>
 #include <QObject>
 
-namespace KTextEditor {
-  class Plugin;
-  class Document;
-  class View;
+namespace KTextEditor
+{
+class Plugin;
+class Document;
+class View;
 }
 
 class KPluginInfo;
 
 class KatePartPluginInfo
 {
-  public:
+public:
     KatePartPluginInfo(const KService::Ptr &service);
     KTextEditor::Plugin *plugin;
 
     void setLoad(bool load);
-    bool isLoaded() const { return m_load; };
+    bool isLoaded() const
+    {
+        return m_load;
+    };
 
     QString saveName() const;
     KPluginInfo getKPluginInfo() const;
@@ -53,7 +57,7 @@ class KatePartPluginInfo
     QStringList dependencies() const;
     bool isEnabledByDefault() const;
 
-  private:
+private:
     KPluginInfo m_pluginInfo;
     KService::Ptr m_service;
     bool m_load;
@@ -65,14 +69,14 @@ class KatePartPluginManager : public QObject
 {
     Q_OBJECT
 
-  public:
+public:
     KatePartPluginManager();
     ~KatePartPluginManager();
 
     static KatePartPluginManager *self();
 
-    void loadConfig ();
-    void writeConfig ();
+    void loadConfig();
+    void writeConfig();
 
     void addDocument(KTextEditor::Document *doc);
     void removeDocument(KTextEditor::Document *doc);
@@ -80,22 +84,22 @@ class KatePartPluginManager : public QObject
     void addView(KTextEditor::View *view);
     void removeView(KTextEditor::View *view);
 
-    void loadAllPlugins ();
-    void unloadAllPlugins ();
+    void loadAllPlugins();
+    void unloadAllPlugins();
 
-    void loadPlugin (KatePartPluginInfo &item);
-    void unloadPlugin (KatePartPluginInfo &item);
+    void loadPlugin(KatePartPluginInfo &item);
+    void unloadPlugin(KatePartPluginInfo &item);
 
-    void enablePlugin (KatePartPluginInfo &item);
-    void disablePlugin (KatePartPluginInfo &item);
+    void enablePlugin(KatePartPluginInfo &item);
+    void disablePlugin(KatePartPluginInfo &item);
 
-    inline KatePartPluginList & pluginList ()
+    inline KatePartPluginList &pluginList()
     {
-      return m_pluginList;
+        return m_pluginList;
     }
 
-  private:
-    void setupPluginList ();
+private:
+    void setupPluginList();
 
     KConfig *m_config;
     KatePartPluginList m_pluginList;
@@ -103,4 +107,3 @@ class KatePartPluginManager : public QObject
 
 #endif // KATEPARTPLUGINMANAGER_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

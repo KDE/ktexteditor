@@ -41,45 +41,44 @@ class KConfig;
 
 class QTextCodec;
 
-
 /**
  * Base Class for the Kate Config Classes
  */
 class KateConfig
 {
-  public:
+public:
     /**
      * Default Constructor
      */
-    KateConfig ();
+    KateConfig();
 
     /**
      * Virtual Destructor
      */
-    virtual ~KateConfig ();
+    virtual ~KateConfig();
 
-  public:
-     /**
-      * start some config changes
-      * this method is needed to init some kind of transaction
-      * for config changes, update will only be done once, at
-      * configEnd() call
-      */
-     void configStart ();
+public:
+    /**
+     * start some config changes
+     * this method is needed to init some kind of transaction
+     * for config changes, update will only be done once, at
+     * configEnd() call
+     */
+    void configStart();
 
-     /**
-      * end a config change transaction, update the concerned
-      * documents/views/renderers
-      */
-     void configEnd ();
+    /**
+     * end a config change transaction, update the concerned
+     * documents/views/renderers
+     */
+    void configEnd();
 
-  protected:
+protected:
     /**
      * do the real update
      */
-    virtual void updateConfig () = 0;
+    virtual void updateConfig() = 0;
 
-  private:
+private:
     /**
      * recursion depth
      */
@@ -93,142 +92,150 @@ class KateConfig
 
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig
 {
-  private:
+private:
     friend class KateGlobal;
 
     /**
      * only used in KateGlobal for the static global fallback !!!
      */
-    KateGlobalConfig ();
+    KateGlobalConfig();
 
     /**
      * Destructor
      */
-    ~KateGlobalConfig ();
+    ~KateGlobalConfig();
 
-  public:
-    static KateGlobalConfig *global () { return s_global; }
+public:
+    static KateGlobalConfig *global()
+    {
+        return s_global;
+    }
 
-  public:
+public:
     /**
      * Read config from object
      */
-    void readConfig (const KConfigGroup &config);
+    void readConfig(const KConfigGroup &config);
 
     /**
      * Write config to object
      */
-    void writeConfig (KConfigGroup &config);
+    void writeConfig(KConfigGroup &config);
 
-  protected:
-    void updateConfig ();
+protected:
+    void updateConfig();
 
-  public:
-    KEncodingProber::ProberType proberType () const
+public:
+    KEncodingProber::ProberType proberType() const
     {
-      return m_proberType;
+        return m_proberType;
     }
 
-    void setProberType (KEncodingProber::ProberType proberType);
+    void setProberType(KEncodingProber::ProberType proberType);
 
-    QTextCodec *fallbackCodec () const;
-    const QString &fallbackEncoding () const;
-    bool setFallbackEncoding (const QString &encoding);
+    QTextCodec *fallbackCodec() const;
+    const QString &fallbackEncoding() const;
+    bool setFallbackEncoding(const QString &encoding);
 
-  private:
+private:
     KEncodingProber::ProberType m_proberType;
     QString m_fallbackEncoding;
 
-  private:
+private:
     static KateGlobalConfig *s_global;
 };
 
 class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
 {
-  private:
+private:
     friend class KateGlobal;
 
-    KateDocumentConfig ();
+    KateDocumentConfig();
 
-  public:
-    KateDocumentConfig (const KConfigGroup &cg);
+public:
+    KateDocumentConfig(const KConfigGroup &cg);
 
     /**
      * Construct a DocumentConfig
      */
-    KateDocumentConfig (KateDocument *doc);
+    KateDocumentConfig(KateDocument *doc);
 
     /**
      * Cu DocumentConfig
      */
-    ~KateDocumentConfig ();
+    ~KateDocumentConfig();
 
-    inline static KateDocumentConfig *global () { return s_global; }
+    inline static KateDocumentConfig *global()
+    {
+        return s_global;
+    }
 
-    inline bool isGlobal () const { return (this == global()); }
+    inline bool isGlobal() const
+    {
+        return (this == global());
+    }
 
-  public:
+public:
     /**
      * Read config from object
      */
-    void readConfig (const KConfigGroup &config);
+    void readConfig(const KConfigGroup &config);
 
     /**
      * Write config to object
      */
-    void writeConfig (KConfigGroup &config);
+    void writeConfig(KConfigGroup &config);
 
-  protected:
-    void updateConfig ();
+protected:
+    void updateConfig();
 
-  public:
-    int tabWidth () const;
-    void setTabWidth (int tabWidth);
+public:
+    int tabWidth() const;
+    void setTabWidth(int tabWidth);
 
-    int indentationWidth () const;
-    void setIndentationWidth (int indentationWidth);
+    int indentationWidth() const;
+    void setIndentationWidth(int indentationWidth);
 
-    const QString &indentationMode () const;
-    void setIndentationMode (const QString &identationMode);
+    const QString &indentationMode() const;
+    void setIndentationMode(const QString &identationMode);
 
-    enum TabHandling
-    {
-      tabInsertsTab = 0,
-      tabIndents = 1,
-      tabSmart = 2      //!< indents in leading space, otherwise inserts tab
+    enum TabHandling {
+        tabInsertsTab = 0,
+        tabIndents = 1,
+        tabSmart = 2      //!< indents in leading space, otherwise inserts tab
     };
 
-    uint tabHandling () const;
-    void setTabHandling (uint tabHandling);
+    uint tabHandling() const;
+    void setTabHandling(uint tabHandling);
 
-    bool wordWrap () const;
-    void setWordWrap (bool on);
+    bool wordWrap() const;
+    void setWordWrap(bool on);
 
-    int wordWrapAt () const;
-    void setWordWrapAt (int col);
+    int wordWrapAt() const;
+    void setWordWrapAt(int col);
 
-    bool pageUpDownMovesCursor () const;
-    void setPageUpDownMovesCursor (bool on);
+    bool pageUpDownMovesCursor() const;
+    void setPageUpDownMovesCursor(bool on);
 
-    void setKeepExtraSpaces (bool on);
-    bool keepExtraSpaces () const;
+    void setKeepExtraSpaces(bool on);
+    bool keepExtraSpaces() const;
 
-    void setIndentPastedText (bool on);
-    bool indentPastedText () const;
+    void setIndentPastedText(bool on);
+    bool indentPastedText() const;
 
-    void setBackspaceIndents (bool on);
-    bool backspaceIndents () const;
+    void setBackspaceIndents(bool on);
+    bool backspaceIndents() const;
 
-    void setSmartHome (bool on);
-    bool smartHome () const;
+    void setSmartHome(bool on);
+    bool smartHome() const;
 
-    void setShowTabs (bool on);
+    void setShowTabs(bool on);
     bool showTabs() const;
 
-    void setShowSpaces (bool on);
+    void setShowSpaces(bool on);
     bool showSpaces() const;
 
-    void setReplaceTabsDyn (bool on);
+    void setReplaceTabsDyn(bool on);
     bool replaceTabsDyn() const;
 
     /**
@@ -237,64 +244,61 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
      * triState = 1: remove trailing spaces of modified lines (line modification system)
      * triState = 2: remove trailing spaces in entire document
      */
-    void setRemoveSpaces (int triState);
-    int removeSpaces () const;
+    void setRemoveSpaces(int triState);
+    int removeSpaces() const;
 
-    void setNewLineAtEof (bool on);
-    bool newLineAtEof () const;
+    void setNewLineAtEof(bool on);
+    bool newLineAtEof() const;
 
-    void setOvr (bool on);
-    bool ovr () const;
+    void setOvr(bool on);
+    bool ovr() const;
 
-    void setTabIndents (bool on);
-    bool tabIndentsEnabled () const;
+    void setTabIndents(bool on);
+    bool tabIndentsEnabled() const;
 
-    QTextCodec *codec () const;
-    const QString &encoding () const;
-    bool setEncoding (const QString &encoding);
-    bool isSetEncoding () const;
+    QTextCodec *codec() const;
+    const QString &encoding() const;
+    bool setEncoding(const QString &encoding);
+    bool isSetEncoding() const;
 
-    enum Eol
-    {
-      eolUnix = 0,
-      eolDos = 1,
-      eolMac = 2
+    enum Eol {
+        eolUnix = 0,
+        eolDos = 1,
+        eolMac = 2
     };
 
-    int eol () const;
-    QString eolString ();
+    int eol() const;
+    QString eolString();
 
-    void setEol (int mode);
+    void setEol(int mode);
 
-    bool bom () const;
+    bool bom() const;
     void setBom(bool bom);
 
-    bool allowEolDetection () const;
-    void setAllowEolDetection (bool on);
+    bool allowEolDetection() const;
+    void setAllowEolDetection(bool on);
 
-    enum BackupFlags
-    {
-      LocalFiles=1,
-      RemoteFiles=2
+    enum BackupFlags {
+        LocalFiles = 1,
+        RemoteFiles = 2
     };
 
-    uint backupFlags () const;
-    void setBackupFlags (uint flags);
+    uint backupFlags() const;
+    void setBackupFlags(uint flags);
 
-    const QString &backupPrefix () const;
-    void setBackupPrefix (const QString &prefix);
+    const QString &backupPrefix() const;
+    void setBackupPrefix(const QString &prefix);
 
-    const QString &backupSuffix () const;
-    void setBackupSuffix (const QString &suffix);
+    const QString &backupSuffix() const;
+    void setBackupSuffix(const QString &suffix);
 
     const QString &swapDirectory() const;
     void setSwapDirectory(const QString &directory);
 
-    enum SwapFileMode
-    {
-      DisableSwapFile = 0,
-      EnableSwapFile,
-      SwapFilePresetDirectory
+    enum SwapFileMode {
+        DisableSwapFile = 0,
+        EnableSwapFile,
+        SwapFilePresetDirectory
     };
 
     uint swapFileModeRaw() const;
@@ -309,9 +313,9 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
      * and if, how depth?
      * @return search depth (< 0 no search)
      */
-    int searchDirConfigDepth () const;
+    int searchDirConfigDepth() const;
 
-    void setSearchDirConfigDepth (int depth);
+    void setSearchDirConfigDepth(int depth);
 
     bool onTheFlySpellCheck() const;
     void setOnTheFlySpellCheck(bool on);
@@ -319,8 +323,7 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
     int lineLengthLimit() const;
     void setLineLengthLimit(int limit);
 
-
-  private:
+private:
     QString m_indentationMode;
     int m_indentationWidth;
     int m_tabWidth;
@@ -375,7 +378,7 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
 
     bool m_encodingSet : 1;
     bool m_eolSet : 1;
-    bool m_bomSet :1;
+    bool m_bomSet : 1;
     bool m_allowEolDetectionSet : 1;
     bool m_backupFlagsSet : 1;
     bool m_searchDirConfigDepthSet : 1;
@@ -387,159 +390,164 @@ class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
     bool m_onTheFlySpellCheckSet : 1;
     bool m_lineLengthLimitSet : 1;
 
-  private:
+private:
     static KateDocumentConfig *s_global;
     KateDocument *m_doc;
 };
 
 class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig
 {
-  private:
+private:
     friend class KateGlobal;
 
     /**
      * only used in KateGlobal for the static global fallback !!!
      */
-    KateViewConfig ();
+    KateViewConfig();
 
-  public:
+public:
     /**
      * Construct a DocumentConfig
      */
-    explicit KateViewConfig (KateView *view);
+    explicit KateViewConfig(KateView *view);
 
     /**
      * Cu DocumentConfig
      */
-    ~KateViewConfig ();
+    ~KateViewConfig();
 
-    inline static KateViewConfig *global () { return s_global; }
+    inline static KateViewConfig *global()
+    {
+        return s_global;
+    }
 
-    inline bool isGlobal () const { return (this == global()); }
+    inline bool isGlobal() const
+    {
+        return (this == global());
+    }
 
-  public:
+public:
     /**
      * Read config from object
      */
-    void readConfig (const KConfigGroup &config);
+    void readConfig(const KConfigGroup &config);
 
     /**
      * Write config to object
      */
-    void writeConfig (KConfigGroup &config);
+    void writeConfig(KConfigGroup &config);
 
-  protected:
-    void updateConfig ();
+protected:
+    void updateConfig();
 
-  public:
-    bool dynWordWrap () const;
-    void setDynWordWrap (bool wrap);
+public:
+    bool dynWordWrap() const;
+    void setDynWordWrap(bool wrap);
 
-    int dynWordWrapIndicators () const;
-    void setDynWordWrapIndicators (int mode);
+    int dynWordWrapIndicators() const;
+    void setDynWordWrapIndicators(int mode);
 
-    int dynWordWrapAlignIndent () const;
-    void setDynWordWrapAlignIndent (int indent);
+    int dynWordWrapAlignIndent() const;
+    void setDynWordWrapAlignIndent(int indent);
 
-    bool lineNumbers () const;
-    void setLineNumbers (bool on);
+    bool lineNumbers() const;
+    void setLineNumbers(bool on);
 
-    bool scrollBarMarks () const;
-    void setScrollBarMarks (bool on);
+    bool scrollBarMarks() const;
+    void setScrollBarMarks(bool on);
 
-    bool scrollBarMiniMap () const;
-    void setScrollBarMiniMap (bool on);
+    bool scrollBarMiniMap() const;
+    void setScrollBarMiniMap(bool on);
 
-    bool scrollBarMiniMapAll () const;
-    void setScrollBarMiniMapAll (bool on);
+    bool scrollBarMiniMapAll() const;
+    void setScrollBarMiniMapAll(bool on);
 
-    int scrollBarMiniMapWidth () const;
-    void setScrollBarMiniMapWidth (int width);
+    int scrollBarMiniMapWidth() const;
+    void setScrollBarMiniMapWidth(int width);
 
     /* Whether to show scrollbars */
     enum ScrollbarMode {
-      AlwaysOn = 0,
-      ShowWhenNeeded,
-      AlwaysOff
+        AlwaysOn = 0,
+        ShowWhenNeeded,
+        AlwaysOff
     };
 
-    int showScrollbars () const;
-    void setShowScrollbars (int mode);
+    int showScrollbars() const;
+    void setShowScrollbars(int mode);
 
-    bool iconBar () const;
-    void setIconBar (bool on);
+    bool iconBar() const;
+    void setIconBar(bool on);
 
-    bool foldingBar () const;
-    void setFoldingBar (bool on);
+    bool foldingBar() const;
+    void setFoldingBar(bool on);
 
     bool lineModification() const;
     void setLineModification(bool on);
 
-    int bookmarkSort () const;
-    void setBookmarkSort (int mode);
+    int bookmarkSort() const;
+    void setBookmarkSort(int mode);
 
     int autoCenterLines() const;
-    void setAutoCenterLines (int lines);
+    void setAutoCenterLines(int lines);
 
     enum SearchFlags {
-      IncMatchCase = 1 << 0,
-      IncHighlightAll = 1 << 1,
-      IncFromCursor = 1 << 2,
-      PowerMatchCase = 1 << 3,
-      PowerHighlightAll = 1 << 4,
-      PowerFromCursor = 1 << 5,
-      // PowerSelectionOnly = 1 << 6, Better not save to file // Sebastian
-      PowerModePlainText = 1 << 7,
-      PowerModeWholeWords = 1 << 8,
-      PowerModeEscapeSequences = 1 << 9,
-      PowerModeRegularExpression = 1 << 10,
-      PowerUsePlaceholders = 1 << 11
+        IncMatchCase = 1 << 0,
+        IncHighlightAll = 1 << 1,
+        IncFromCursor = 1 << 2,
+        PowerMatchCase = 1 << 3,
+        PowerHighlightAll = 1 << 4,
+        PowerFromCursor = 1 << 5,
+        // PowerSelectionOnly = 1 << 6, Better not save to file // Sebastian
+        PowerModePlainText = 1 << 7,
+        PowerModeWholeWords = 1 << 8,
+        PowerModeEscapeSequences = 1 << 9,
+        PowerModeRegularExpression = 1 << 10,
+        PowerUsePlaceholders = 1 << 11
     };
 
-    long searchFlags () const;
-    void setSearchFlags (long flags);
+    long searchFlags() const;
+    void setSearchFlags(long flags);
 
     int maxHistorySize() const;
 
     QStringListModel *patternHistoryModel();
     QStringListModel *replacementHistoryModel();
 
-    uint defaultMarkType () const;
-    void setDefaultMarkType (uint type);
+    uint defaultMarkType() const;
+    void setDefaultMarkType(uint type);
 
-    bool allowMarkMenu () const;
-    void setAllowMarkMenu (bool allow);
+    bool allowMarkMenu() const;
+    void setAllowMarkMenu(bool allow);
 
-    bool persistentSelection () const;
-    void setPersistentSelection (bool on);
+    bool persistentSelection() const;
+    void setPersistentSelection(bool on);
 
-    bool viInputMode () const;
-    void setViInputMode (bool on);
+    bool viInputMode() const;
+    void setViInputMode(bool on);
 
-    bool viInputModeStealKeys () const;
-    void setViInputModeStealKeys (bool on);
+    bool viInputModeStealKeys() const;
+    void setViInputModeStealKeys(bool on);
 
     // Do we still need the enum and related functions below?
-    enum TextToSearch
-    {
-      Nowhere = 0,
-      SelectionOnly = 1,
-      SelectionWord = 2,
-      WordOnly = 3,
-      WordSelection = 4
+    enum TextToSearch {
+        Nowhere = 0,
+        SelectionOnly = 1,
+        SelectionWord = 2,
+        WordOnly = 3,
+        WordSelection = 4
     };
 
-    bool automaticCompletionInvocation () const;
-    void setAutomaticCompletionInvocation (bool on);
+    bool automaticCompletionInvocation() const;
+    void setAutomaticCompletionInvocation(bool on);
 
-    bool wordCompletion () const;
-    void setWordCompletion (bool on);
+    bool wordCompletion() const;
+    void setWordCompletion(bool on);
 
-    int wordCompletionMinimalWordLength () const;
-    void setWordCompletionMinimalWordLength (int length);
+    int wordCompletionMinimalWordLength() const;
+    void setWordCompletionMinimalWordLength(int length);
 
-    bool wordCompletionRemoveTail () const;
-    void setWordCompletionRemoveTail (bool on);
+    bool wordCompletionRemoveTail() const;
+    void setWordCompletionRemoveTail(bool on);
 
     bool smartCopyCut() const;
     void setSmartCopyCut(bool on);
@@ -547,7 +555,7 @@ class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig
     bool scrollPastEnd() const;
     void setScrollPastEnd(bool on);
 
-  private:
+private:
     bool m_dynWordWrap;
     int m_dynWordWrapIndicators;
     int m_dynWordWrapAlignIndent;
@@ -604,54 +612,59 @@ class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig
     bool m_allowMarkMenu : 1;
     bool m_wordCompletionRemoveTailSet : 1;
 
-  private:
+private:
     static KateViewConfig *s_global;
     KateView *m_view;
 };
 
 class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig
 {
-  private:
+private:
     friend class KateGlobal;
 
     /**
      * only used in KateGlobal for the static global fallback !!!
      */
-    KateRendererConfig ();
+    KateRendererConfig();
 
-
-  public:
+public:
     /**
      * Construct a DocumentConfig
      */
-    KateRendererConfig (KateRenderer *renderer);
+    KateRendererConfig(KateRenderer *renderer);
 
     /**
      * Cu DocumentConfig
      */
-    ~KateRendererConfig ();
+    ~KateRendererConfig();
 
-    inline static KateRendererConfig *global () { return s_global; }
+    inline static KateRendererConfig *global()
+    {
+        return s_global;
+    }
 
-    inline bool isGlobal () const { return (this == global()); }
+    inline bool isGlobal() const
+    {
+        return (this == global());
+    }
 
-  public:
+public:
     /**
      * Read config from object
      */
-    void readConfig (const KConfigGroup &config);
+    void readConfig(const KConfigGroup &config);
 
     /**
      * Write config to object
      */
-    void writeConfig (KConfigGroup &config);
+    void writeConfig(KConfigGroup &config);
 
-  protected:
-    void updateConfig ();
+protected:
+    void updateConfig();
 
-  public:
-    const QString &schema () const;
-    void setSchema (const QString &schema);
+public:
+    const QString &schema() const;
+    void setSchema(const QString &schema);
 
     /**
      * Reload the schema from the schema manager.
@@ -660,81 +673,81 @@ class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig
      */
     void reloadSchema();
 
-    const QFont& font() const;
-    const QFontMetricsF& fontMetrics() const;
+    const QFont &font() const;
+    const QFontMetricsF &fontMetrics() const;
     void setFont(const QFont &font);
 
-    bool wordWrapMarker () const;
-    void setWordWrapMarker (bool on);
+    bool wordWrapMarker() const;
+    void setWordWrapMarker(bool on);
 
-    const QColor& backgroundColor() const;
-    void setBackgroundColor (const QColor &col);
+    const QColor &backgroundColor() const;
+    void setBackgroundColor(const QColor &col);
 
-    const QColor& selectionColor() const;
-    void setSelectionColor (const QColor &col);
+    const QColor &selectionColor() const;
+    void setSelectionColor(const QColor &col);
 
-    const QColor& highlightedLineColor() const;
-    void setHighlightedLineColor (const QColor &col);
+    const QColor &highlightedLineColor() const;
+    void setHighlightedLineColor(const QColor &col);
 
-    const QColor& lineMarkerColor(KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01) const; // markType01 == Bookmark
-    void setLineMarkerColor (const QColor &col, KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01);
+    const QColor &lineMarkerColor(KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01) const; // markType01 == Bookmark
+    void setLineMarkerColor(const QColor &col, KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01);
 
-    const QColor& highlightedBracketColor() const;
-    void setHighlightedBracketColor (const QColor &col);
+    const QColor &highlightedBracketColor() const;
+    void setHighlightedBracketColor(const QColor &col);
 
-    const QColor& wordWrapMarkerColor() const;
-    void setWordWrapMarkerColor (const QColor &col);
+    const QColor &wordWrapMarkerColor() const;
+    void setWordWrapMarkerColor(const QColor &col);
 
-    const QColor& tabMarkerColor() const;
-    void setTabMarkerColor (const QColor &col);
+    const QColor &tabMarkerColor() const;
+    void setTabMarkerColor(const QColor &col);
 
-    const QColor& indentationLineColor() const;
-    void setIndentationLineColor (const QColor &col);
+    const QColor &indentationLineColor() const;
+    void setIndentationLineColor(const QColor &col);
 
-    const QColor& iconBarColor() const;
-    void setIconBarColor (const QColor &col);
+    const QColor &iconBarColor() const;
+    void setIconBarColor(const QColor &col);
 
-    const QColor& foldingColor() const;
-    void setFoldingColor (const QColor &col);
+    const QColor &foldingColor() const;
+    void setFoldingColor(const QColor &col);
 
     // the line number color is used for the line numbers on the left bar
-    const QColor& lineNumberColor() const;
-    void setLineNumberColor (const QColor &col);
+    const QColor &lineNumberColor() const;
+    void setLineNumberColor(const QColor &col);
 
     // the color of the separator between line numbers and icon bar
-    const QColor& separatorColor() const;
+    const QColor &separatorColor() const;
     void setSeparatorColor(const QColor &col);
 
-    const QColor& spellingMistakeLineColor() const;
-    void setSpellingMistakeLineColor (const QColor &col);
+    const QColor &spellingMistakeLineColor() const;
+    void setSpellingMistakeLineColor(const QColor &col);
 
-    bool showIndentationLines () const;
-    void setShowIndentationLines (bool on);
+    bool showIndentationLines() const;
+    void setShowIndentationLines(bool on);
 
-    bool showWholeBracketExpression () const;
-    void setShowWholeBracketExpression (bool on);
+    bool showWholeBracketExpression() const;
+    void setShowWholeBracketExpression(bool on);
 
-    bool animateBracketMatching () const;
-    void setAnimateBracketMatching (bool on);
+    bool animateBracketMatching() const;
+    void setAnimateBracketMatching(bool on);
 
     const QColor &templateBackgroundColor() const;
     const QColor &templateEditablePlaceholderColor() const;
     const QColor &templateFocusedEditablePlaceholderColor() const;
     const QColor &templateNotEditablePlaceholderColor() const;
 
-    const QColor& modifiedLineColor() const;
+    const QColor &modifiedLineColor() const;
     void setModifiedLineColor(const QColor &col);
 
-    const QColor& savedLineColor() const;
+    const QColor &savedLineColor() const;
     void setSavedLineColor(const QColor &col);
 
-    const QColor& searchHighlightColor() const;
+    const QColor &searchHighlightColor() const;
     void setSearchHighlightColor(const QColor &col);
 
-    const QColor& replaceHighlightColor() const;
+    const QColor &replaceHighlightColor() const;
     void setReplaceHighlightColor(const QColor &col);
 
-  private:
+private:
     /**
      * Read the schema properties from the config file.
      */
@@ -796,11 +809,10 @@ class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig
     bool m_replaceHighlightColorSet : 1;
     QBitArray m_lineMarkerColorSet;
 
-  private:
+private:
     static KateRendererConfig *s_global;
     KateRenderer *m_renderer;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

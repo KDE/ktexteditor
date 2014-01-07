@@ -27,41 +27,42 @@
 
 class KateCompletionWidget;
 
-class KateArgumentHintModel : public ExpandingWidgetModel {
-  Q_OBJECT
-  public:
-    KateArgumentHintModel( KateCompletionWidget* parent );
+class KateArgumentHintModel : public ExpandingWidgetModel
+{
+    Q_OBJECT
+public:
+    KateArgumentHintModel(KateCompletionWidget *parent);
 
-    virtual QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-    
-    virtual int rowCount ( const QModelIndex & parent ) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    virtual int columnCount ( const QModelIndex & /*parent*/ ) const;
+    virtual int rowCount(const QModelIndex &parent) const;
 
-    virtual QTreeView* treeView() const;
+    virtual int columnCount(const QModelIndex & /*parent*/) const;
 
-    virtual bool indexIsItem(const QModelIndex& index) const;
+    virtual QTreeView *treeView() const;
 
-    void emitDataChanged( const QModelIndex& start, const QModelIndex& end );
-    
+    virtual bool indexIsItem(const QModelIndex &index) const;
+
+    void emitDataChanged(const QModelIndex &start, const QModelIndex &end);
+
     //Returns the index in the source-model for an index within this model
-    QModelIndex mapToSource( const QModelIndex & proxyIndex ) const;
-    
+    QModelIndex mapToSource(const QModelIndex &proxyIndex) const;
+
     void buildRows();
     void clear();
-  protected:
-    virtual int contextMatchQuality(const QModelIndex& row) const;
-  public Q_SLOTS:
+protected:
+    virtual int contextMatchQuality(const QModelIndex &row) const;
+public Q_SLOTS:
     void parentModelReset();
-  Q_SIGNALS:
+Q_SIGNALS:
     void contentStateChanged(bool hasContent);
-  private:
-    KateCompletionModel::Group* group() const;
-    KateCompletionModel* model() const;
+private:
+    KateCompletionModel::Group *group() const;
+    KateCompletionModel *model() const;
 
     QList<int> m_rows; //Maps rows to either a positive row-number in the source group, or to a negative number which indicates a label
-    
-    KateCompletionWidget* m_parent;
+
+    KateCompletionWidget *m_parent;
 };
 
 #endif

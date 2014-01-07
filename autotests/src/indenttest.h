@@ -24,36 +24,36 @@
 
 class IndentTest : public ScriptTestBase
 {
-  Q_OBJECT
+    Q_OBJECT
 private Q_SLOTS:
-  void initTestCase();
+    void initTestCase();
 
-  void testPython_data();
-  void testPython();
+    void testPython_data();
+    void testPython();
 
-  void testCstyle_data();
-  void testCstyle();
+    void testCstyle_data();
+    void testCstyle();
 
-  void testCppstyle_data();
-  void testCppstyle();
+    void testCppstyle_data();
+    void testCppstyle();
 
-  void testRuby_data();
-  void testRuby();
+    void testRuby_data();
+    void testRuby();
 
-  void testHaskell_data();
-  void testHaskell();
+    void testHaskell_data();
+    void testHaskell();
 
-  void latex_data();
-  void latex();
+    void latex_data();
+    void latex();
 
-  void testPascal_data();
-  void testPascal();
+    void testPascal_data();
+    void testPascal();
 
-  void testXml_data();
-  void testXml();
+    void testXml_data();
+    void testXml();
 
-  void testNormal_data();
-  void testNormal();
+    void testNormal_data();
+    void testNormal();
 };
 
 #endif // INDENTTEST_H

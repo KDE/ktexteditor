@@ -27,30 +27,31 @@
 
 class KProcess;
 
-namespace Kate {
-  class SwapFile;
+namespace Kate
+{
+class SwapFile;
 }
 
 class SwapDiffCreator : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit SwapDiffCreator (Kate::SwapFile* swapFile);
-    ~SwapDiffCreator ();
+public:
+    explicit SwapDiffCreator(Kate::SwapFile *swapFile);
+    ~SwapDiffCreator();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void viewDiff();
 
-  private:
-    Kate::SwapFile * m_swapFile;
+private:
+    Kate::SwapFile *m_swapFile;
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void slotDataAvailable();
     void slotDiffFinished();
 
-  private:
-    KProcess* m_proc;
+private:
+    KProcess *m_proc;
     QTemporaryFile m_originalFile;
     QTemporaryFile m_recoveredFile;
     QTemporaryFile m_diffFile;
@@ -58,4 +59,3 @@ class SwapDiffCreator : public QObject
 
 #endif //KATE_SWAP_DIFF_CREATOR_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

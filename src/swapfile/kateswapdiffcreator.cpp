@@ -31,135 +31,134 @@
 #include <QDir>
 
 //BEGIN SwapDiffCreator
-SwapDiffCreator::SwapDiffCreator(Kate::SwapFile* swapFile)
-  : QObject (swapFile)
-  , m_swapFile (swapFile)
-  , m_proc(0)
+SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
+    : QObject(swapFile)
+    , m_swapFile(swapFile)
+    , m_proc(0)
 {
 }
 
-SwapDiffCreator::~SwapDiffCreator ()
+SwapDiffCreator::~SwapDiffCreator()
 {
 }
 
 void SwapDiffCreator::viewDiff()
 {
-  QString path = m_swapFile->fileName();
-  if (path.isNull())
-    return;
+    QString path = m_swapFile->fileName();
+    if (path.isNull()) {
+        return;
+    }
 
-  QFile swp(path);
-  if (!swp.open(QIODevice::ReadOnly)) {
-    qCWarning(LOG_PART) << "Can't open swap file";
-    return;
-  }
+    QFile swp(path);
+    if (!swp.open(QIODevice::ReadOnly)) {
+        qCWarning(LOG_PART) << "Can't open swap file";
+        return;
+    }
 
-  // create all needed tempfiles
-  m_originalFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.original"));
-  m_recoveredFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.recovered"));
-  m_diffFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.diff"));
+    // create all needed tempfiles
+    m_originalFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.original"));
+    m_recoveredFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.recovered"));
+    m_diffFile.setFileTemplate(QDir::tempPath() + QLatin1String("/katepart_XXXXXX.diff"));
 
-  if (!m_originalFile.open() || !m_recoveredFile.open() || !m_diffFile.open()) {
-    qCWarning(LOG_PART) << "Can't open temporary files needed for diffing";
-    return;
-  }
+    if (!m_originalFile.open() || !m_recoveredFile.open() || !m_diffFile.open()) {
+        qCWarning(LOG_PART) << "Can't open temporary files needed for diffing";
+        return;
+    }
 
-  // truncate files, just in case
-  m_originalFile.resize (0);
-  m_recoveredFile.resize (0);
-  m_diffFile.resize (0);
+    // truncate files, just in case
+    m_originalFile.resize(0);
+    m_recoveredFile.resize(0);
+    m_diffFile.resize(0);
 
-  // create a document with the recovered data
-  KateDocument recoverDoc;
-  recoverDoc.setText(m_swapFile->document()->text());
+    // create a document with the recovered data
+    KateDocument recoverDoc;
+    recoverDoc.setText(m_swapFile->document()->text());
 
-  // store original text in a file as utf-8 and close it
-  {
-    QTextStream stream (&m_originalFile);
-    stream.setCodec (QTextCodec::codecForName("UTF-8"));
-    stream << recoverDoc.text ();
-  }
-  m_originalFile.close ();
+    // store original text in a file as utf-8 and close it
+    {
+        QTextStream stream(&m_originalFile);
+        stream.setCodec(QTextCodec::codecForName("UTF-8"));
+        stream << recoverDoc.text();
+    }
+    m_originalFile.close();
 
-  // recover data
-  QDataStream stream(&swp);
-  recoverDoc.swapFile()->recover(stream, false);
+    // recover data
+    QDataStream stream(&swp);
+    recoverDoc.swapFile()->recover(stream, false);
 
-  // store recovered text in a file as utf-8 and close it
-  {
-    QTextStream stream (&m_recoveredFile);
-    stream.setCodec (QTextCodec::codecForName("UTF-8"));
-    stream << recoverDoc.text ();
-  }
-  m_recoveredFile.close ();
+    // store recovered text in a file as utf-8 and close it
+    {
+        QTextStream stream(&m_recoveredFile);
+        stream.setCodec(QTextCodec::codecForName("UTF-8"));
+        stream << recoverDoc.text();
+    }
+    m_recoveredFile.close();
 
-  // create a KProcess proc for diff
-  m_proc = new KProcess(this);
-  m_proc->setOutputChannelMode(KProcess::MergedChannels);
-  *m_proc << QLatin1String("diff") << QLatin1String("-u") <<  m_originalFile.fileName() << m_recoveredFile.fileName();
+    // create a KProcess proc for diff
+    m_proc = new KProcess(this);
+    m_proc->setOutputChannelMode(KProcess::MergedChannels);
+    *m_proc << QLatin1String("diff") << QLatin1String("-u") <<  m_originalFile.fileName() << m_recoveredFile.fileName();
 
-  connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
-  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotDiffFinished()));
+    connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
+    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotDiffFinished()));
 
 //   setCursor(Qt::WaitCursor);
 
-  m_proc->start();
+    m_proc->start();
 
-  QTextStream ts(m_proc);
-  int lineCount = recoverDoc.lines();
-  for (int line = 0; line < lineCount; ++line)
-    ts << recoverDoc.line(line) << '\n';
-  ts.flush();
-  m_proc->closeWriteChannel();
+    QTextStream ts(m_proc);
+    int lineCount = recoverDoc.lines();
+    for (int line = 0; line < lineCount; ++line) {
+        ts << recoverDoc.line(line) << '\n';
+    }
+    ts.flush();
+    m_proc->closeWriteChannel();
 }
 
 void SwapDiffCreator::slotDataAvailable()
 {
-  // collect diff output
-  m_diffFile.write (m_proc->readAll());
+    // collect diff output
+    m_diffFile.write(m_proc->readAll());
 }
 
 void SwapDiffCreator::slotDiffFinished()
 {
-  // collect last diff output, if any
-  m_diffFile.write (m_proc->readAll());
+    // collect last diff output, if any
+    m_diffFile.write(m_proc->readAll());
 
-  // get the exit status to check whether diff command run successfully
-  const QProcess::ExitStatus es = m_proc->exitStatus();
-  delete m_proc;
-  m_proc = 0;
+    // get the exit status to check whether diff command run successfully
+    const QProcess::ExitStatus es = m_proc->exitStatus();
+    delete m_proc;
+    m_proc = 0;
 
-  // check exit status
-  if (es != QProcess::NormalExit)
-  {
-    KMessageBox::sorry(0,
-                      i18n("The diff command failed. Please make sure that "
-                          "diff(1) is installed and in your PATH."),
-                      i18n("Error Creating Diff"));
+    // check exit status
+    if (es != QProcess::NormalExit) {
+        KMessageBox::sorry(0,
+                           i18n("The diff command failed. Please make sure that "
+                                "diff(1) is installed and in your PATH."),
+                           i18n("Error Creating Diff"));
+        deleteLater();
+        return;
+    }
+
+    // sanity check: is there any diff content?
+    if (m_diffFile.size() == 0) {
+        KMessageBox::information(0,
+                                 i18n("The files are identical."),
+                                 i18n("Diff Output"));
+        deleteLater();
+        return;
+    }
+
+    // close diffFile and avoid removal, KRun will do that later!
+    m_diffFile.close();
+    m_diffFile.setAutoRemove(false);
+
+    // KRun::runUrl should delete the file, once the client exits
+    KRun::runUrl(QUrl::fromLocalFile(m_diffFile.fileName()), QLatin1String("text/x-patch"), m_swapFile->document()->activeView(), true);
+
     deleteLater();
-    return;
-  }
-
-  // sanity check: is there any diff content?
-  if ( m_diffFile.size() == 0 )
-  {
-    KMessageBox::information(0,
-                            i18n("The files are identical."),
-                            i18n("Diff Output"));
-    deleteLater();
-    return;
-  }
-
-  // close diffFile and avoid removal, KRun will do that later!
-  m_diffFile.close ();
-  m_diffFile.setAutoRemove (false);
-
-  // KRun::runUrl should delete the file, once the client exits
-  KRun::runUrl (QUrl::fromLocalFile(m_diffFile.fileName()), QLatin1String("text/x-patch"), m_swapFile->document()->activeView(), true );
-
-  deleteLater();
 }
 
 //END SwapDiffCreator
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

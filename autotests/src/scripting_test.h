@@ -24,12 +24,12 @@
 
 class ScriptingTest : public ScriptTestBase
 {
-  Q_OBJECT
+    Q_OBJECT
 private Q_SLOTS:
-  void initTestCase();
+    void initTestCase();
 
-  void bugs_data();
-  void bugs();
+    void bugs_data();
+    void bugs();
 };
 
 #endif // SCRIPTINGTEST_H

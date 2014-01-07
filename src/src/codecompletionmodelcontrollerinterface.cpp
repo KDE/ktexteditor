@@ -24,7 +24,8 @@
 #include <ktexteditor/view.h>
 #include <ktexteditor/document.h>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 CodeCompletionModelControllerInterface::CodeCompletionModelControllerInterface()
 {
@@ -34,22 +35,23 @@ CodeCompletionModelControllerInterface::~CodeCompletionModelControllerInterface(
 {
 }
 
-bool CodeCompletionModelControllerInterface::shouldStartCompletion(View* view, const QString &insertedText, bool userInsertion, const Cursor &position)
+bool CodeCompletionModelControllerInterface::shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position)
 {
     Q_UNUSED(view);
     Q_UNUSED(position);
-    if(insertedText.isEmpty())
+    if (insertedText.isEmpty()) {
         return false;
+    }
 
     QChar lastChar = insertedText.at(insertedText.count() - 1);
     if ((userInsertion && (lastChar.isLetter() || lastChar.isNumber() || lastChar == QLatin1Char('_'))) ||
-        lastChar == QLatin1Char('.') || insertedText.endsWith(QLatin1String("->"))) {
+            lastChar == QLatin1Char('.') || insertedText.endsWith(QLatin1String("->"))) {
         return true;
     }
     return false;
 }
 
-Range CodeCompletionModelControllerInterface::completionRange(View* view, const Cursor &position)
+Range CodeCompletionModelControllerInterface::completionRange(View *view, const Cursor &position)
 {
     Cursor end = position;
 
@@ -60,58 +62,66 @@ Range CodeCompletionModelControllerInterface::completionRange(View* view, const 
 
     Cursor start = end;
 
-    if (findWordStart.lastIndexIn(text.left(end.column())) >= 0)
+    if (findWordStart.lastIndexIn(text.left(end.column())) >= 0) {
         start.setColumn(findWordStart.pos(1));
+    }
 
-    if (findWordEnd.indexIn(text.mid(end.column())) >= 0)
+    if (findWordEnd.indexIn(text.mid(end.column())) >= 0) {
         end.setColumn(end.column() + findWordEnd.cap(1).length());
+    }
 
     return Range(start, end);
 }
 
-Range CodeCompletionModelControllerInterface::updateCompletionRange(View* view, const Range& range)
+Range CodeCompletionModelControllerInterface::updateCompletionRange(View *view, const Range &range)
 {
-    QStringList text=view->document()->textLines(range,false);
-    if(!text.isEmpty() && text.count() == 1 && text.first().trimmed().isEmpty())
-      //When inserting a newline behind an empty completion-range,, move the range forward to its end
-      return Range(range.end(),range.end());
-    
+    QStringList text = view->document()->textLines(range, false);
+    if (!text.isEmpty() && text.count() == 1 && text.first().trimmed().isEmpty())
+        //When inserting a newline behind an empty completion-range,, move the range forward to its end
+    {
+        return Range(range.end(), range.end());
+    }
+
     return range;
 }
 
-QString CodeCompletionModelControllerInterface::filterString(View* view, const Range &range, const Cursor &position)
+QString CodeCompletionModelControllerInterface::filterString(View *view, const Range &range, const Cursor &position)
 {
     return view->document()->text(KTextEditor::Range(range.start(), position));
 }
 
-bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View* view, const Range &range, const QString &currentCompletion)
+bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion)
 {
-    if(view->cursorPosition() < range.start() || view->cursorPosition() > range.end())
-      return true; //Always abort when the completion-range has been left
+    if (view->cursorPosition() < range.start() || view->cursorPosition() > range.end()) {
+        return true;    //Always abort when the completion-range has been left
+    }
     //Do not abort completions when the text has been empty already before and a newline has been entered
 
     static const QRegExp allowedText(QLatin1String("^(\\w*)"));
     return !allowedText.exactMatch(currentCompletion);
 }
 
-void CodeCompletionModelControllerInterface::aborted(KTextEditor::View* view) {
+void CodeCompletionModelControllerInterface::aborted(KTextEditor::View *view)
+{
     Q_UNUSED(view);
 }
 
-bool CodeCompletionModelControllerInterface::shouldExecute(const QModelIndex& index, QChar inserted) {
-  Q_UNUSED(index);
-  Q_UNUSED(inserted);
-  return false;
+bool CodeCompletionModelControllerInterface::shouldExecute(const QModelIndex &index, QChar inserted)
+{
+    Q_UNUSED(index);
+    Q_UNUSED(inserted);
+    return false;
 }
 
-KTextEditor::CodeCompletionModelControllerInterface::MatchReaction CodeCompletionModelControllerInterface::matchingItem(const QModelIndex& selected) {
-  Q_UNUSED(selected)
-  return HideListIfAutomaticInvocation;
+KTextEditor::CodeCompletionModelControllerInterface::MatchReaction CodeCompletionModelControllerInterface::matchingItem(const QModelIndex &selected)
+{
+    Q_UNUSED(selected)
+    return HideListIfAutomaticInvocation;
 }
 
 bool CodeCompletionModelControllerInterface::shouldHideItemsWithEqualNames() const
 {
-  return false;
+    return false;
 }
 
 }

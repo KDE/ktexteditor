@@ -53,13 +53,13 @@ class Range;
  */
 class KTEXTEDITOR_EXPORT Cursor
 {
-  public:
+public:
     /**
      * The default constructor creates a cursor at position (0,0).
      */
     Cursor()
-      : m_line (0)
-      , m_column (0)
+        : m_line(0)
+        , m_column(0)
     {
     }
 
@@ -70,8 +70,8 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param column column for cursor
      */
     Cursor(int line, int column)
-      : m_line (line)
-      , m_column (column)
+        : m_line(line)
+        , m_column(column)
     {
     }
 
@@ -81,7 +81,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     bool isValid() const
     {
-      return m_line >= 0 && m_column >= 0;
+        return m_line >= 0 && m_column >= 0;
     }
 
     /**
@@ -91,7 +91,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     static Cursor invalid()
     {
-      return Cursor (-1, -1);
+        return Cursor(-1, -1);
     }
 
     /**
@@ -99,7 +99,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     static Cursor start()
     {
-      return Cursor ();
+        return Cursor();
     }
 
     /**
@@ -113,10 +113,10 @@ class KTEXTEDITOR_EXPORT Cursor
      *
      * \param position new cursor position
      */
-    void setPosition(const Cursor& position)
+    void setPosition(const Cursor &position)
     {
-      m_line = position.m_line;
-      m_column = position.m_column;
+        m_line = position.m_line;
+        m_column = position.m_column;
     }
 
     /**
@@ -129,8 +129,8 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     void setPosition(int line, int column)
     {
-      m_line = line;
-      m_column = column;
+        m_line = line;
+        m_column = column;
     }
 
     /**
@@ -139,7 +139,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     int line() const
     {
-      return m_line;
+        return m_line;
     }
 
     /**
@@ -148,7 +148,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     void setLine(int line)
     {
-      m_line = line;
+        m_line = line;
     }
 
     /**
@@ -157,7 +157,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     int column() const
     {
-      return m_column;
+        return m_column;
     }
 
     /**
@@ -166,7 +166,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     void setColumn(int column)
     {
-      m_column = column;
+        m_column = column;
     }
 
     /**
@@ -175,7 +175,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     bool atStartOfLine() const
     {
-      return m_column == 0;
+        return m_column == 0;
     }
 
     /**
@@ -184,7 +184,7 @@ class KTEXTEDITOR_EXPORT Cursor
      */
     bool atStartOfDocument() const
     {
-      return m_line == 0 && m_column == 0;
+        return m_line == 0 && m_column == 0;
     }
 
     /**
@@ -192,10 +192,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param line will be filled with current cursor line
      * \param column will be filled with current cursor column
      */
-    void position (int &line, int &column) const
+    void position(int &line, int &column) const
     {
-      line = m_line;
-      column = m_column;
+        line = m_line;
+        column = m_column;
     }
     //!\}
 
@@ -205,8 +205,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 the second position
      * \return a the summation of the two input cursors
      */
-    inline friend Cursor operator+(const Cursor& c1, const Cursor& c2)
-      { return Cursor(c1.line() + c2.line(), c1.column() + c2.column()); }
+    inline friend Cursor operator+(const Cursor &c1, const Cursor &c2)
+    {
+        return Cursor(c1.line() + c2.line(), c1.column() + c2.column());
+    }
 
     /**
      * Addition assignment operator. Adds \p c2 to this cursor.
@@ -214,8 +216,11 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 the position to add
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Cursor& operator+=(Cursor& c1, const Cursor& c2)
-      { c1.setPosition(c1.line() + c2.line(), c1.column() + c2.column()); return c1; }
+    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2)
+    {
+        c1.setPosition(c1.line() + c2.line(), c1.column() + c2.column());
+        return c1;
+    }
 
     /**
      * Subtraction operator. Takes two cursors and returns the subtraction
@@ -225,8 +230,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 the second position
      * \return a cursor representing the subtraction of \p c2 from \p c1
      */
-    inline friend Cursor operator-(const Cursor& c1, const Cursor& c2)
-      { return Cursor(c1.line() - c2.line(), c1.column() - c2.column()); }
+    inline friend Cursor operator-(const Cursor &c1, const Cursor &c2)
+    {
+        return Cursor(c1.line() - c2.line(), c1.column() - c2.column());
+    }
 
     /**
      * Subtraction assignment operator. Subtracts \p c2 from \p c1.
@@ -234,8 +241,11 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 the position to subtract
      * \return a reference to the cursor which has just been subtracted from
      */
-    inline friend Cursor& operator-=(Cursor& c1, const Cursor& c2)
-      { c1.setPosition(c1.line() - c2.line(), c1.column() - c2.column()); return c1; }
+    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2)
+    {
+        c1.setPosition(c1.line() - c2.line(), c1.column() - c2.column());
+        return c1;
+    }
 
     /**
      * Equality operator.
@@ -247,8 +257,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e equal.
      */
-    inline friend bool operator==(const Cursor& c1, const Cursor& c2)
-      { return c1.line() == c2.line() && c1.column() == c2.column(); }
+    inline friend bool operator==(const Cursor &c1, const Cursor &c2)
+    {
+        return c1.line() == c2.line() && c1.column() == c2.column();
+    }
 
     /**
      * Inequality operator.
@@ -256,8 +268,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e not equal.
      */
-    inline friend bool operator!=(const Cursor& c1, const Cursor& c2)
-      { return !(c1 == c2); }
+    inline friend bool operator!=(const Cursor &c1, const Cursor &c2)
+    {
+        return !(c1 == c2);
+    }
 
     /**
      * Greater than operator.
@@ -266,8 +280,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const Cursor& c1, const Cursor& c2)
-      { return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column > c2.m_column); }
+    inline friend bool operator>(const Cursor &c1, const Cursor &c2)
+    {
+        return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column > c2.m_column);
+    }
 
     /**
      * Greater than or equal to operator.
@@ -276,8 +292,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const Cursor& c1, const Cursor& c2)
-      { return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column >= c2.m_column); }
+    inline friend bool operator>=(const Cursor &c1, const Cursor &c2)
+    {
+        return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column >= c2.m_column);
+    }
 
     /**
      * Less than operator.
@@ -286,8 +304,10 @@ class KTEXTEDITOR_EXPORT Cursor
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const Cursor& c1, const Cursor& c2)
-      { return !(c1 >= c2); }
+    inline friend bool operator<(const Cursor &c1, const Cursor &c2)
+    {
+        return !(c1 >= c2);
+    }
 
     /**
      * Less than or equal to operator.
@@ -296,21 +316,25 @@ class KTEXTEDITOR_EXPORT Cursor
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const Cursor& c1, const Cursor& c2)
-      { return !(c1 > c2); }
+    inline friend bool operator<=(const Cursor &c1, const Cursor &c2)
+    {
+        return !(c1 > c2);
+    }
 
     /**
      * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Cursor& cursor) {
-      if (&cursor)
-        s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
-      else
-        s.nospace() << "(null cursor)";
-      return s.space();
+    inline friend QDebug operator<< (QDebug s, const Cursor &cursor)
+    {
+        if (&cursor) {
+            s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
+        } else {
+            s.nospace() << "(null cursor)";
+        }
+        return s.space();
     }
 
-   private:
+private:
     /**
      * \internal
      *
@@ -330,4 +354,3 @@ class KTEXTEDITOR_EXPORT Cursor
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

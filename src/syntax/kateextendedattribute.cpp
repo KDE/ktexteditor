@@ -25,64 +25,79 @@
 
 #include <ktexteditor/highlightinterface.h>
 
-KateExtendedAttribute::KateExtendedAttribute(const QString& name, int defaultStyleIndex)
+KateExtendedAttribute::KateExtendedAttribute(const QString &name, int defaultStyleIndex)
 {
-  setName(name);
-  setDefaultStyleIndex(defaultStyleIndex);
-  setPerformSpellchecking(true);
+    setName(name);
+    setDefaultStyleIndex(defaultStyleIndex);
+    setPerformSpellchecking(true);
 }
 
-int KateExtendedAttribute::indexForStyleName( const QString & name )
+int KateExtendedAttribute::indexForStyleName(const QString &name)
 {
-  if (name== QLatin1String("dsNormal")) return KTextEditor::HighlightInterface::dsNormal;
-  else if (name== QLatin1String("dsKeyword")) return KTextEditor::HighlightInterface::dsKeyword;
-  else if (name== QLatin1String("dsDataType")) return KTextEditor::HighlightInterface::dsDataType;
-  else if (name== QLatin1String("dsDecVal")) return KTextEditor::HighlightInterface::dsDecVal;
-  else if (name== QLatin1String("dsBaseN")) return KTextEditor::HighlightInterface::dsBaseN;
-  else if (name== QLatin1String("dsFloat")) return KTextEditor::HighlightInterface::dsFloat;
-  else if (name== QLatin1String("dsChar")) return KTextEditor::HighlightInterface::dsChar;
-  else if (name== QLatin1String("dsString")) return KTextEditor::HighlightInterface::dsString;
-  else if (name== QLatin1String("dsComment")) return KTextEditor::HighlightInterface::dsComment;
-  else if (name== QLatin1String("dsOthers"))  return KTextEditor::HighlightInterface::dsOthers;
-  else if (name== QLatin1String("dsAlert")) return KTextEditor::HighlightInterface::dsAlert;
-  else if (name== QLatin1String("dsFunction")) return KTextEditor::HighlightInterface::dsFunction;
-  else if (name== QLatin1String("dsRegionMarker")) return KTextEditor::HighlightInterface::dsRegionMarker;
-  else if (name== QLatin1String("dsError")) return KTextEditor::HighlightInterface::dsError;
+    if (name == QLatin1String("dsNormal")) {
+        return KTextEditor::HighlightInterface::dsNormal;
+    } else if (name == QLatin1String("dsKeyword")) {
+        return KTextEditor::HighlightInterface::dsKeyword;
+    } else if (name == QLatin1String("dsDataType")) {
+        return KTextEditor::HighlightInterface::dsDataType;
+    } else if (name == QLatin1String("dsDecVal")) {
+        return KTextEditor::HighlightInterface::dsDecVal;
+    } else if (name == QLatin1String("dsBaseN")) {
+        return KTextEditor::HighlightInterface::dsBaseN;
+    } else if (name == QLatin1String("dsFloat")) {
+        return KTextEditor::HighlightInterface::dsFloat;
+    } else if (name == QLatin1String("dsChar")) {
+        return KTextEditor::HighlightInterface::dsChar;
+    } else if (name == QLatin1String("dsString")) {
+        return KTextEditor::HighlightInterface::dsString;
+    } else if (name == QLatin1String("dsComment")) {
+        return KTextEditor::HighlightInterface::dsComment;
+    } else if (name == QLatin1String("dsOthers")) {
+        return KTextEditor::HighlightInterface::dsOthers;
+    } else if (name == QLatin1String("dsAlert")) {
+        return KTextEditor::HighlightInterface::dsAlert;
+    } else if (name == QLatin1String("dsFunction")) {
+        return KTextEditor::HighlightInterface::dsFunction;
+    } else if (name == QLatin1String("dsRegionMarker")) {
+        return KTextEditor::HighlightInterface::dsRegionMarker;
+    } else if (name == QLatin1String("dsError")) {
+        return KTextEditor::HighlightInterface::dsError;
+    }
 
-  return KTextEditor::HighlightInterface::dsNormal;
+    return KTextEditor::HighlightInterface::dsNormal;
 }
 
-QString KateExtendedAttribute::name( ) const
+QString KateExtendedAttribute::name() const
 {
-  return stringProperty(AttributeName);
+    return stringProperty(AttributeName);
 }
 
-void KateExtendedAttribute::setName( const QString & name )
+void KateExtendedAttribute::setName(const QString &name)
 {
-  setProperty(AttributeName, name);
+    setProperty(AttributeName, name);
 }
 
-bool KateExtendedAttribute::isDefaultStyle( ) const
+bool KateExtendedAttribute::isDefaultStyle() const
 {
-  return hasProperty(AttributeDefaultStyleIndex);
+    return hasProperty(AttributeDefaultStyleIndex);
 }
 
-int KateExtendedAttribute::defaultStyleIndex( ) const
+int KateExtendedAttribute::defaultStyleIndex() const
 {
-  return intProperty(AttributeDefaultStyleIndex);
+    return intProperty(AttributeDefaultStyleIndex);
 }
 
-void KateExtendedAttribute::setDefaultStyleIndex( int index )
+void KateExtendedAttribute::setDefaultStyleIndex(int index)
 {
-  setProperty(AttributeDefaultStyleIndex, QVariant(index));
+    setProperty(AttributeDefaultStyleIndex, QVariant(index));
 }
 
-bool KateExtendedAttribute::performSpellchecking( ) const
+bool KateExtendedAttribute::performSpellchecking() const
 {
-  return boolProperty(Spellchecking);
+    return boolProperty(Spellchecking);
 }
 
 void KateExtendedAttribute::setPerformSpellchecking(bool spellchecking)
 {
-  setProperty(Spellchecking, QVariant(spellchecking));
+    setProperty(Spellchecking, QVariant(spellchecking));
 }

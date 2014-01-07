@@ -42,97 +42,98 @@ using namespace KatePrinter;
 //BEGIN KatePrinterPrivate
 class KatePrinterPrivate : public QObject
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     KatePrinterPrivate(KateDocument *doc);
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void paint(QPrinter *printer);
 
-  private:
+private:
     KateDocument *m_doc;
     PrintPainter *m_painter;
 };
 
-KatePrinterPrivate::KatePrinterPrivate(KateDocument* doc)
-  : QObject()
-  , m_doc(doc)
-  , m_painter(new PrintPainter(doc))
+KatePrinterPrivate::KatePrinterPrivate(KateDocument *doc)
+    : QObject()
+    , m_doc(doc)
+    , m_painter(new PrintPainter(doc))
 {
 }
 
 KatePrinterPrivate::~KatePrinterPrivate()
 {
-  delete m_painter;
+    delete m_painter;
 }
 
 bool KatePrinterPrivate::print(QPrinter *printer)
 {
-  // docname is now always there, including the right Untitled name
-  printer->setDocName(m_doc->documentName());
+    // docname is now always there, including the right Untitled name
+    printer->setDocName(m_doc->documentName());
 
-  KatePrintTextSettings *kpts = new KatePrintTextSettings;
-  KatePrintHeaderFooter *kphf = new KatePrintHeaderFooter;
-  KatePrintLayout *kpl = new KatePrintLayout;
+    KatePrintTextSettings *kpts = new KatePrintTextSettings;
+    KatePrintHeaderFooter *kphf = new KatePrintHeaderFooter;
+    KatePrintLayout *kpl = new KatePrintLayout;
 
-  QList<QWidget*> tabs;
-  tabs << kpts;
-  tabs << kphf;
-  tabs << kpl;
+    QList<QWidget *> tabs;
+    tabs << kpts;
+    tabs << kphf;
+    tabs << kpl;
 
-  QWidget *parentWidget = m_doc->widget();
+    QWidget *parentWidget = m_doc->widget();
 
-  if (!parentWidget) {
-    parentWidget = QApplication::activeWindow();
-  }
+    if (!parentWidget) {
+        parentWidget = QApplication::activeWindow();
+    }
 
-  QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, KdePrint::SystemSelectsPages, tabs, parentWidget));
+    QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, KdePrint::SystemSelectsPages, tabs, parentWidget));
 
-  if (m_doc->activeView()->selection()) {
-    printer->setPrintRange(QPrinter::Selection);
-    printDialog->setOption(QAbstractPrintDialog::PrintSelection, true);
-  }
+    if (m_doc->activeView()->selection()) {
+        printer->setPrintRange(QPrinter::Selection);
+        printDialog->setOption(QAbstractPrintDialog::PrintSelection, true);
+    }
 
-  printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
+    printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
 
-  if (!printDialog->exec())
-    return false;
+    if (!printDialog->exec()) {
+        return false;
+    }
 
-  // configure the painter
-  m_painter->setPrintGuide(kpts->printGuide());
-  m_painter->setPrintLineNumbers(kpts->printLineNumbers());
+    // configure the painter
+    m_painter->setPrintGuide(kpts->printGuide());
+    m_painter->setPrintLineNumbers(kpts->printLineNumbers());
 
-  m_painter->setColorScheme(kpl->colorScheme());
-  m_painter->setUseBackground(kpl->useBackground());
-  m_painter->setUseBox(kpl->useBox());
-  m_painter->setBoxMargin(kpl->boxMargin());
-  m_painter->setBoxWidth(kpl->boxWidth());
-  m_painter->setBoxColor(kpl->boxColor());
+    m_painter->setColorScheme(kpl->colorScheme());
+    m_painter->setUseBackground(kpl->useBackground());
+    m_painter->setUseBox(kpl->useBox());
+    m_painter->setBoxMargin(kpl->boxMargin());
+    m_painter->setBoxWidth(kpl->boxWidth());
+    m_painter->setBoxColor(kpl->boxColor());
 
-  m_painter->setHeadersFont(kphf->font());
+    m_painter->setHeadersFont(kphf->font());
 
-  m_painter->setUseHeader(kphf->useHeader());
-  m_painter->setHeaderBackground(kphf->headerBackground());
-  m_painter->setHeaderForeground(kphf->headerForeground());
-  m_painter->setUseHeaderBackground(kphf->useHeaderBackground());
-  m_painter->setHeaderFormat(kphf->headerFormat());
+    m_painter->setUseHeader(kphf->useHeader());
+    m_painter->setHeaderBackground(kphf->headerBackground());
+    m_painter->setHeaderForeground(kphf->headerForeground());
+    m_painter->setUseHeaderBackground(kphf->useHeaderBackground());
+    m_painter->setHeaderFormat(kphf->headerFormat());
 
-  m_painter->setUseFooter(kphf->useFooter());
-  m_painter->setFooterBackground(kphf->footerBackground());
-  m_painter->setFooterForeground(kphf->footerForeground());
-  m_painter->setUseFooterBackground(kphf->useFooterBackground());
-  m_painter->setFooterFormat(kphf->footerFormat());
+    m_painter->setUseFooter(kphf->useFooter());
+    m_painter->setFooterBackground(kphf->footerBackground());
+    m_painter->setFooterForeground(kphf->footerForeground());
+    m_painter->setUseFooterBackground(kphf->useFooterBackground());
+    m_painter->setFooterFormat(kphf->footerFormat());
 
-  m_painter->paint(printer);
-  return true;
+    m_painter->paint(printer);
+    return true;
 }
 
 void KatePrinterPrivate::paint(QPrinter *printer)
 {
-  m_painter->paint(printer);
+    m_painter->paint(printer);
 }
 //END KatePrinterPrivate
 
@@ -140,22 +141,21 @@ void KatePrinterPrivate::paint(QPrinter *printer)
 
 bool KatePrinter::print(KateDocument *doc)
 {
-  QPrinter printer;
-  KatePrinterPrivate p(doc);
-  return p.print(&printer);
+    QPrinter printer;
+    KatePrinterPrivate p(doc);
+    return p.print(&printer);
 }
 
 bool KatePrinter::printPreview(KateDocument *doc)
 {
-  QPrinter printer;
-  KatePrinterPrivate p(doc);
-  QPrintPreviewDialog preview(&printer);
-  QObject::connect(&preview, SIGNAL(paintRequested(QPrinter *)), &p, SLOT(paint(QPrinter *)));
-  return preview.exec();
+    QPrinter printer;
+    KatePrinterPrivate p(doc);
+    QPrintPreviewDialog preview(&printer);
+    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
+    return preview.exec();
 }
 
 //END KatePrinter
 
 #include "kateprinter.moc"
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

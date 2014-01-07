@@ -23,36 +23,38 @@
 #include <ktexteditor/codecompletionmodel.h>
 #include <QStringList>
 
-namespace KTextEditor {
-  class View;
-  class CodeCompletionInterface;
+namespace KTextEditor
+{
+class View;
+class CodeCompletionInterface;
 }
 
 class CodeCompletionTestModel : public KTextEditor::CodeCompletionModel
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    CodeCompletionTestModel(KTextEditor::View* parent = 0L, const QString &startText = QString());
+public:
+    CodeCompletionTestModel(KTextEditor::View *parent = 0L, const QString &startText = QString());
 
-    KTextEditor::View* view() const;
-    KTextEditor::CodeCompletionInterface* cc() const;
+    KTextEditor::View *view() const;
+    KTextEditor::CodeCompletionInterface *cc() const;
 
-    virtual void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range, InvocationType invocationType);
-    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    virtual void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType);
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-  private:
+private:
     QString m_startText;
     bool m_autoStartText;
 };
 
-class AbbreviationCodeCompletionTestModel : public CodeCompletionTestModel {
-  Q_OBJECT
+class AbbreviationCodeCompletionTestModel : public CodeCompletionTestModel
+{
+    Q_OBJECT
 
-  public:
-    AbbreviationCodeCompletionTestModel(KTextEditor::View* parent = 0L, const QString& startText = QString());
+public:
+    AbbreviationCodeCompletionTestModel(KTextEditor::View *parent = 0L, const QString &startText = QString());
 
-    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
 private:
     QStringList m_items;

@@ -91,7 +91,7 @@ class MovingRangeFeedback;
  * \warning MovingRanges may be set to (-1, -1, -1, -1) at any time, if the
  * user reloads a document (F5)! Use a MovingRangeFeedback to get  notified
  * if you need to catch this case.
- * 
+ *
  * \section movingrange_feedback MovingRange Feedback
  *
  * With setFeedback() a feedback instance can be associated with the moving
@@ -133,18 +133,18 @@ class MovingRangeFeedback;
  */
 class KTEXTEDITOR_EXPORT MovingRange
 {
-  //
-  // sub types
-  //
-  public:
-     /// Determine how the range reacts to characters inserted immediately outside the range.
+    //
+    // sub types
+    //
+public:
+    /// Determine how the range reacts to characters inserted immediately outside the range.
     enum InsertBehavior {
-      /// Don't expand to encapsulate new characters in either direction. This is the default.
-      DoNotExpand = 0x0,
-      /// Expand to encapsulate new characters to the left of the range.
-      ExpandLeft = 0x1,
-      /// Expand to encapsulate new characters to the right of the range.
-      ExpandRight = 0x2
+        /// Don't expand to encapsulate new characters in either direction. This is the default.
+        DoNotExpand = 0x0,
+        /// Expand to encapsulate new characters to the left of the range.
+        ExpandLeft = 0x1,
+        /// Expand to encapsulate new characters to the right of the range.
+        ExpandRight = 0x2
     };
     Q_DECLARE_FLAGS(InsertBehaviors, InsertBehavior)
 
@@ -152,43 +152,43 @@ class KTEXTEDITOR_EXPORT MovingRange
      * Behavior of range if it becomes empty.
      */
     enum EmptyBehavior {
-      AllowEmpty        = 0x0, ///< allow range to be empty
-      InvalidateIfEmpty = 0x1  ///< invalidate range, if it becomes empty
+        AllowEmpty        = 0x0, ///< allow range to be empty
+        InvalidateIfEmpty = 0x1  ///< invalidate range, if it becomes empty
     };
 
-  //
-  // stuff that needs to be implemented by editor part cursors
-  //
-  public:
+    //
+    // stuff that needs to be implemented by editor part cursors
+    //
+public:
     /**
      * Set insert behaviors.
      * @param insertBehaviors new insert behaviors
      */
-    virtual void setInsertBehaviors (InsertBehaviors insertBehaviors) = 0;
+    virtual void setInsertBehaviors(InsertBehaviors insertBehaviors) = 0;
 
     /**
      * Get current insert behaviors.
      * @return current insert behaviors
      */
-    virtual InsertBehaviors insertBehaviors () const = 0;
+    virtual InsertBehaviors insertBehaviors() const = 0;
 
     /**
      * Set if this range will invalidate itself if it becomes empty.
      * @param emptyBehavior behavior on becoming empty
      */
-    virtual void setEmptyBehavior (EmptyBehavior emptyBehavior) = 0;
+    virtual void setEmptyBehavior(EmptyBehavior emptyBehavior) = 0;
 
     /**
      * Will this range invalidate itself if it becomes empty?
      * @return behavior on becoming empty
      */
-    virtual EmptyBehavior emptyBehavior () const = 0;
+    virtual EmptyBehavior emptyBehavior() const = 0;
 
     /**
      * Gets the document to which this range is bound.
      * \return a pointer to the document
      */
-    virtual Document *document () const = 0;
+    virtual Document *document() const = 0;
 
     /**
      * Set the range of this range.
@@ -196,26 +196,26 @@ class KTEXTEDITOR_EXPORT MovingRange
      * automatically invalid!
      * @param range new range for this clever range
      */
-    virtual void setRange (const KTextEditor::Range &range) = 0;
+    virtual void setRange(const KTextEditor::Range &range) = 0;
 
     /**
      * Retrieve start cursor of this range, read-only.
      * @return start cursor
      */
-    virtual const MovingCursor &start () const = 0;
+    virtual const MovingCursor &start() const = 0;
 
     /**
      * Retrieve end cursor of this range, read-only.
      * @return end cursor
      */
-    virtual const MovingCursor &end () const = 0;
+    virtual const MovingCursor &end() const = 0;
 
     /**
      * Gets the active view for this range. Might be already invalid, internally only used for pointer comparisons.
      *
      * \return a pointer to the active view
      */
-    virtual View *view () const = 0;
+    virtual View *view() const = 0;
 
     /**
      * Sets the currently active view for this range.
@@ -225,14 +225,14 @@ class KTEXTEDITOR_EXPORT MovingRange
      * \param attribute View to assign to this range. If null, simply
      *                  removes the previous view.
      */
-    virtual void setView (View *view) = 0;
+    virtual void setView(View *view) = 0;
 
     /**
      * Gets the active Attribute for this range.
      *
      * \return a pointer to the active attribute
      */
-    virtual Attribute::Ptr attribute () const = 0;
+    virtual Attribute::Ptr attribute() const = 0;
 
     /**
      * Sets the currently active attribute for this range.
@@ -241,27 +241,27 @@ class KTEXTEDITOR_EXPORT MovingRange
      * \param attribute Attribute to assign to this range. If null, simply
      *                  removes the previous Attribute.
      */
-    virtual void setAttribute (Attribute::Ptr attribute) = 0;
+    virtual void setAttribute(Attribute::Ptr attribute) = 0;
 
     /**
      * Is this range's attribute only visible in views, not for example prints?
      * Default is false.
      * @return range visible only for views
      */
-    virtual bool attributeOnlyForViews () const = 0;
+    virtual bool attributeOnlyForViews() const = 0;
 
     /**
      * Set if this range's attribute is only visible in views, not for example prints.
      * @param onlyForViews attribute only valid for views
      */
-    virtual void setAttributeOnlyForViews (bool onlyForViews) = 0;
+    virtual void setAttributeOnlyForViews(bool onlyForViews) = 0;
 
     /**
      * Gets the active MovingRangeFeedback for this range.
      *
      * \return a pointer to the active MovingRangeFeedback
      */
-    virtual MovingRangeFeedback *feedback () const = 0;
+    virtual MovingRangeFeedback *feedback() const = 0;
 
     /**
      * Sets the currently active MovingRangeFeedback for this range.
@@ -270,64 +270,64 @@ class KTEXTEDITOR_EXPORT MovingRange
      * \param attribute MovingRangeFeedback to assign to this range. If null, simply
      *                  removes the previous MovingRangeFeedback.
      */
-    virtual void setFeedback (MovingRangeFeedback *feedback) = 0;
-    
+    virtual void setFeedback(MovingRangeFeedback *feedback) = 0;
+
     /**
      * Gets the current Z-depth of this range.
      * Ranges with smaller Z-depth than others will win during rendering.
      * Default is 0.0.
-     * 
+     *
      * Defined depths for common kind of ranges use in editor components implenting this interface,
      * smaller depths are more more in the foreground and will win during rendering:
      * - Selection == -100000.0
      * - Search == -10000.0
      * - Bracket Highlighting == -1000.0
      * - Folding Hover == -100.0
-     * 
+     *
      * \return current Z-depth of this range
      */
-    virtual qreal zDepth () const = 0;
-    
+    virtual qreal zDepth() const = 0;
+
     /**
      * Set the current Z-depth of this range.
      * Ranges with smaller Z-depth than others will win during rendering.
      * This will trigger update of the relevant view parts, if the depth changed.
      * Set depth before the attribute, that will avoid not needed redraws.
      * Default is 0.0.
-     * 
+     *
      * \param zDepth new Z-depth of this range
      */
-    virtual void setZDepth (qreal zDepth) = 0;
+    virtual void setZDepth(qreal zDepth) = 0;
 
     /**
      * Destruct the moving range.
      */
-    virtual ~MovingRange ();
+    virtual ~MovingRange();
 
-  //
-  // forbidden stuff
-  //
-  protected:
+    //
+    // forbidden stuff
+    //
+protected:
     /**
      * For inherited class only.
      */
-    MovingRange ();
+    MovingRange();
 
-  private:
+private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    MovingRange (const MovingRange &);
+    MovingRange(const MovingRange &);
 
     /**
      * no assignment operator, no copying around clever ranges.
      */
     MovingRange &operator= (const MovingRange &);
 
-  //
-  // convenience API
-  //
-  public:
+    //
+    // convenience API
+    //
+public:
     /**
      * \overload
      * Set the range of this range
@@ -336,19 +336,25 @@ class KTEXTEDITOR_EXPORT MovingRange
      * @param start new start for this clever range
      * @param end new end for this clever range
      */
-    void setRange (const Cursor &start, const Cursor &end);
+    void setRange(const Cursor &start, const Cursor &end);
 
     /**
      * Convert this clever range into a dumb one.
      * @return normal range
      */
-    const Range toRange () const { return Range (start().toCursor(), end().toCursor()); }
+    const Range toRange() const
+    {
+        return Range(start().toCursor(), end().toCursor());
+    }
 
     /**
      * Convert this clever range into a dumb one. Equal to toRange, allowing to use implicit conversion.
      * @return normal range
      */
-    operator const Range () const { return Range (start().toCursor(), end().toCursor()); }
+    operator const Range() const
+    {
+        return Range(start().toCursor(), end().toCursor());
+    }
 
     /**
      * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
@@ -356,12 +362,14 @@ class KTEXTEDITOR_EXPORT MovingRange
      * @param cursor range to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingRange *range) {
-      if (range)
-        s << "[" << range->start() << " -> " << range->end() << "]";
-      else
-        s << "(null range)";
-      return s.space();
+    inline friend QDebug operator<< (QDebug s, const MovingRange *range)
+    {
+        if (range) {
+            s << "[" << range->start() << " -> " << range->end() << "]";
+        } else {
+            s << "(null range)";
+        }
+        return s.space();
     }
 
     /**
@@ -370,8 +378,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      * @param range range to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingRange &range) {
-      return s << &range;
+    inline friend QDebug operator<< (QDebug s, const MovingRange &range)
+    {
+        return s << &range;
     }
 
     /**
@@ -380,8 +389,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \returns \e true if the range contains no characters, otherwise \e false
      */
-    inline bool isEmpty() const {
-      return start() == end();
+    inline bool isEmpty() const
+    {
+        return start() == end();
     }
 
     //BEGIN comparison functions
@@ -398,8 +408,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true, if this range contains \e range, otherwise \e false
      */
-    inline bool contains(const Range& range) const {
-      return range.start() >= start() && range.end() <= end();
+    inline bool contains(const Range &range) const
+    {
+        return range.start() >= start() && range.end() <= end();
     }
 
     /**
@@ -409,8 +420,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    inline bool contains(const Cursor& cursor) const {
-      return cursor >= start() && cursor < end();
+    inline bool contains(const Cursor &cursor) const
+    {
+        return cursor >= start() && cursor < end();
     }
 
     /**
@@ -420,8 +432,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true if the line is wholly encompassed by this range, otherwise \e false.
      */
-    inline bool containsLine(int line) const {
-      return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
+    inline bool containsLine(int line) const
+    {
+        return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
     }
 
     /**
@@ -431,8 +444,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true if the range contains \e column, otherwise \e false
      */
-    inline bool containsColumn(int column) const {
-      return column >= start().column() && column < end().column();
+    inline bool containsColumn(int column) const
+    {
+        return column >= start().column() && column < end().column();
     }
 
     /**
@@ -442,7 +456,7 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true, if this range overlaps with \e range, otherwise \e false
      */
-    bool overlaps(const Range& range) const;
+    bool overlaps(const Range &range) const;
 
     /**
      * Check whether the range overlaps at least part of \e line.
@@ -451,8 +465,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      *
      * \return \e true, if the range overlaps at least part of \e line, otherwise \e false
      */
-    inline bool overlapsLine(int line) const {
-      return line >= start().line() && line <= end().line();
+    inline bool overlapsLine(int line) const
+    {
+        return line >= start().line() && line <= end().line();
     }
 
     /**
@@ -465,10 +480,11 @@ class KTEXTEDITOR_EXPORT MovingRange
      * \return \e true if the column is between the range's starting and ending
      *         columns, otherwise \e false.
      */
-    inline bool overlapsColumn(int column) const {
-      return start().column() <= column && end().column() > column;
+    inline bool overlapsColumn(int column) const
+    {
+        return start().column() <= column && end().column() > column;
     }
-    
+
     /**
      * Check whether the start() and end() cursors of this range
      * are on the same line.
@@ -476,8 +492,9 @@ class KTEXTEDITOR_EXPORT MovingRange
      * \return \e true if both the start and end positions are on the same
      *         line, otherwise \e false
      */
-    inline bool onSingleLine() const {
-      return start().line() == end().line();
+    inline bool onSingleLine() const
+    {
+        return start().line() == end().line();
     }
 
     //END comparison functions
@@ -489,4 +506,3 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(MovingRange::InsertBehaviors)
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

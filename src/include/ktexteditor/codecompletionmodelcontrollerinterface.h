@@ -26,7 +26,8 @@
 
 class QModelIndex;
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 class View;
 
@@ -40,7 +41,7 @@ class View;
  *
  * By implementing methods defined in this interface you can:
  * - control when automatic completion should start (shouldStartCompletion())
- * - define a custom completion range (that will be replaced when the completion 
+ * - define a custom completion range (that will be replaced when the completion
  *   is executed) (completionRange())
  * - dynamically modify the completion range during completion (updateCompletionRange())
  * - specify the string used for filtering the completion (filterString())
@@ -48,7 +49,7 @@ class View;
  *
  * When the interface is not implemented, or no methods are overridden the
  * default behaviour is used, which will be correct in many situations.
- * 
+ *
  *
  * \section markext_access Implemeting the Interface
  * To use this class implement it in your CodeCompletionModel.
@@ -88,7 +89,7 @@ public:
      * \param position Current cursor position
      * \return \e true, if the completion should be started, otherwise \e false
      */
-    virtual bool shouldStartCompletion(View* view, const QString &insertedText, bool userInsertion, const Cursor &position);
+    virtual bool shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position);
 
     /**
      * This function returns the completion range that will be used for the
@@ -104,7 +105,7 @@ public:
      * \param position Current cursor position
      * \return the completion range
      */
-    virtual Range completionRange(View* view, const Cursor &position);
+    virtual Range completionRange(View *view, const Cursor &position);
 
     /**
      * This function lets the CompletionModel dynamically modify the range.
@@ -116,7 +117,7 @@ public:
      * \param range Reference to the current range
      * \returns the modified range
      */
-    virtual Range updateCompletionRange(View* view, const Range& range);
+    virtual Range updateCompletionRange(View *view, const Range &range);
 
     /**
      * This function returns the filter-text used for the current completion.
@@ -130,7 +131,7 @@ public:
      * \param position Current cursor position
      * \return the string used for filtering the completion list
      */
-    virtual QString filterString(View* view, const Range& range, const Cursor &position);
+    virtual QString filterString(View *view, const Range &range, const Cursor &position);
 
     /**
      * This function decides if the completion should be aborted.
@@ -143,8 +144,8 @@ public:
      * \param currentCompletion The text typed so far
      * \return \e true, if the completion should be aborted, otherwise \e false
      */
-    virtual bool shouldAbortCompletion(View* view, const Range& range, const QString &currentCompletion);
-    
+    virtual bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion);
+
     /**
      * When an item within this model is currently selected in the completion-list, and the user inserted the given character,
      * should the completion-item be executed? This can be used to execute items from other inputs than the return-key.
@@ -152,26 +153,26 @@ public:
      * \param selected The currently selected index
      * \param inserted The character that was inserted by tue user
      */
-    virtual bool shouldExecute(const QModelIndex& selected, QChar inserted);
-    
+    virtual bool shouldExecute(const QModelIndex &selected, QChar inserted);
+
     /**
      * Notification that completion for this model has been aborted.
      * \param view The view in which the completion for this model was aborted
      */
-    virtual void aborted(View* view);
+    virtual void aborted(View *view);
 
     enum MatchReaction {
-      None=0,
-      HideListIfAutomaticInvocation=1, /** If this is returned, the completion-list is hidden if it was invoked automatically */
-      ForExtension=0xffff
+        None = 0,
+        HideListIfAutomaticInvocation = 1, /** If this is returned, the completion-list is hidden if it was invoked automatically */
+        ForExtension = 0xffff
     };
-    
+
     /**
      * Called whenever an item in the completion-list perfectly matches the current filter text.
      * \param The index that is matched
      * \return Whether the completion-list should be hidden on this event. The default-implementation always returns HideListIfAutomaticInvocation
      */
-    virtual MatchReaction matchingItem(const QModelIndex& matched);
+    virtual MatchReaction matchingItem(const QModelIndex &matched);
 
     /**
      * When multiple completion models are used at the same time, it may happen that multiple models add items with the same

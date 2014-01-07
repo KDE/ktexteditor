@@ -32,21 +32,21 @@
  */
 class KateFactory : public KPluginFactory
 {
-  Q_OBJECT
-  
-  Q_PLUGIN_METADATA(IID KPluginFactory_iid FILE "data/katepart.json")
-  
-  Q_INTERFACES(KPluginFactory)
-  
-  public:
+    Q_OBJECT
+
+    Q_PLUGIN_METADATA(IID KPluginFactory_iid FILE "data/katepart.json")
+
+    Q_INTERFACES(KPluginFactory)
+
+public:
     /**
      * This constructor creates a factory for a plugin with the given \p componentName.
      *
      * \param componentName the component name of the plugin
      * \param parent a parent object
      */
-    explicit KateFactory (const char *componentName = 0, QObject *parent = 0)
-      : KPluginFactory (componentName, parent)
+    explicit KateFactory(const char *componentName = 0, QObject *parent = 0)
+        : KPluginFactory(componentName, parent)
     {
     }
 
@@ -66,32 +66,32 @@ class KateFactory : public KPluginFactory
      */
     virtual QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &args, const QString &keyword)
     {
-      Q_UNUSED(args);
-      
-      /**
-       * if keyword == KTextEditor/Editor, we shall return our kate global instance!
-       */
-      if (keyword == QLatin1String ("KTextEditor/Editor"))
-        return KateGlobal::self ();
+        Q_UNUSED(args);
 
-      QByteArray classname( iface );
+        /**
+         * if keyword == KTextEditor/Editor, we shall return our kate global instance!
+         */
+        if (keyword == QLatin1String("KTextEditor/Editor")) {
+            return KateGlobal::self();
+        }
 
-      // default to the kparts::* behavior of having one single widget() if the user don't requested a pure document
-      bool bWantSingleView = ( classname != "KTextEditor::Document" );
+        QByteArray classname(iface);
 
-      // does user want browserview?
-      bool bWantBrowserView = ( classname == "Browser/View" );
+        // default to the kparts::* behavior of having one single widget() if the user don't requested a pure document
+        bool bWantSingleView = (classname != "KTextEditor::Document");
 
-      // should we be readonly?
-      bool bWantReadOnly = (bWantBrowserView || ( classname == "KParts::ReadOnlyPart" ));
+        // does user want browserview?
+        bool bWantBrowserView = (classname == "Browser/View");
 
-      KParts::ReadWritePart *part = new KateDocument (bWantSingleView, bWantBrowserView, bWantReadOnly, parentWidget, parent);
-      part->setReadWrite( !bWantReadOnly );
+        // should we be readonly?
+        bool bWantReadOnly = (bWantBrowserView || (classname == "KParts::ReadOnlyPart"));
 
-      return part;
+        KParts::ReadWritePart *part = new KateDocument(bWantSingleView, bWantBrowserView, bWantReadOnly, parentWidget, parent);
+        part->setReadWrite(!bWantReadOnly);
+
+        return part;
     }
 };
 
 #include "katefactory.moc"
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

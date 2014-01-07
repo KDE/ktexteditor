@@ -36,283 +36,289 @@
 
 #include <KLocalizedString>
 
-namespace Kate {
-namespace Script {
-  
-bool readFile(const QString& sourceUrl, QString& sourceCode)
+namespace Kate
 {
-  sourceCode = QString();
+namespace Script
+{
 
-  QFile file(sourceUrl);
-  if (!file.open(QIODevice::ReadOnly)) {
-    qCDebug(LOG_PART) << i18n("Unable to find '%1'", sourceUrl);
-    return false;
-  } else {
-    QTextStream stream(&file);
-    stream.setCodec("UTF-8");
-    sourceCode = stream.readAll();
-    file.close();
-  }
-  return true;
+bool readFile(const QString &sourceUrl, QString &sourceCode)
+{
+    sourceCode = QString();
+
+    QFile file(sourceUrl);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qCDebug(LOG_PART) << i18n("Unable to find '%1'", sourceUrl);
+        return false;
+    } else {
+        QTextStream stream(&file);
+        stream.setCodec("UTF-8");
+        sourceCode = stream.readAll();
+        file.close();
+    }
+    return true;
 }
 
 QScriptValue read(QScriptContext *context, QScriptEngine *)
 {
-  /**
-   * just search for all given files and read them all
-   */
-  QString fullContent;
-  for(int i = 0; i < context->argumentCount(); ++i) {
     /**
-     * get full name of file
-     * skip on errors
+     * just search for all given files and read them all
      */
-    const QString name = context->argument(i).toString();
-    const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                                    QLatin1String("katepart/script/files/") + name);
-    if (fullName.isEmpty())
-      continue;
+    QString fullContent;
+    for (int i = 0; i < context->argumentCount(); ++i) {
+        /**
+         * get full name of file
+         * skip on errors
+         */
+        const QString name = context->argument(i).toString();
+        const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                 QLatin1String("katepart/script/files/") + name);
+        if (fullName.isEmpty()) {
+            continue;
+        }
 
-    /**
-     * try to read complete file
-     * skip non-existing files
-     */
-    QString content;
-    if (!readFile (fullName, content))
-      continue;
+        /**
+         * try to read complete file
+         * skip non-existing files
+         */
+        QString content;
+        if (!readFile(fullName, content)) {
+            continue;
+        }
 
-    /**
-     * concat to full content
-     */
-    fullContent += content;
-  }
-  
-  /**
-   * return full content
-   */
-  return QScriptValue (fullContent);
-}
-  
-QScriptValue require(QScriptContext *context, QScriptEngine *engine)
-{
-  /**
-   * just search for all given scripts and eval them
-   */
-  for(int i = 0; i < context->argumentCount(); ++i) {
-    /**
-     * get full name of file
-     * skip on errors
-     */
-    const QString name = context->argument(i).toString();
-    const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                                    QLatin1String("katepart/script/libraries/") + name);
-    if (fullName.isEmpty())
-      continue;
-
-    /**
-     * check include guard
-     */
-    QScriptValue require_guard = engine->globalObject().property (QLatin1String("require_guard"));
-    if (require_guard.property (fullName).toBool ())
-      continue;
-    
-    /**
-     * try to read complete file
-     * skip non-existing files
-     */
-    QString code;
-    if (!readFile (fullName, code))
-      continue;
-
-    /**
-     * fixup QScriptContext
-     * else the nested evaluate will not work :/
-     * see http://www.qtcentre.org/threads/31027-QtScript-nesting-with-include-imports-or-spawned-script-engines
-     * http://www.qtcentre.org/threads/20432-Can-I-include-a-script-from-script
-     */
-    QScriptContext *context = engine->currentContext();
-    QScriptContext *parent = context->parentContext();
-    if (parent) {
-        context->setActivationObject(context->parentContext()->activationObject());
-        context->setThisObject(context->parentContext()->thisObject());
+        /**
+         * concat to full content
+         */
+        fullContent += content;
     }
 
     /**
-     * eval in current script engine
+     * return full content
      */
-    engine->evaluate (code, fullName);
-    
+    return QScriptValue(fullContent);
+}
+
+QScriptValue require(QScriptContext *context, QScriptEngine *engine)
+{
     /**
-     * set include guard
+     * just search for all given scripts and eval them
      */
-    require_guard.setProperty (fullName, QScriptValue (true));
-  }
-  
-  /**
-   * no return value
-   */
-  return engine->nullValue();
+    for (int i = 0; i < context->argumentCount(); ++i) {
+        /**
+         * get full name of file
+         * skip on errors
+         */
+        const QString name = context->argument(i).toString();
+        const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                 QLatin1String("katepart/script/libraries/") + name);
+        if (fullName.isEmpty()) {
+            continue;
+        }
+
+        /**
+         * check include guard
+         */
+        QScriptValue require_guard = engine->globalObject().property(QLatin1String("require_guard"));
+        if (require_guard.property(fullName).toBool()) {
+            continue;
+        }
+
+        /**
+         * try to read complete file
+         * skip non-existing files
+         */
+        QString code;
+        if (!readFile(fullName, code)) {
+            continue;
+        }
+
+        /**
+         * fixup QScriptContext
+         * else the nested evaluate will not work :/
+         * see http://www.qtcentre.org/threads/31027-QtScript-nesting-with-include-imports-or-spawned-script-engines
+         * http://www.qtcentre.org/threads/20432-Can-I-include-a-script-from-script
+         */
+        QScriptContext *context = engine->currentContext();
+        QScriptContext *parent = context->parentContext();
+        if (parent) {
+            context->setActivationObject(context->parentContext()->activationObject());
+            context->setThisObject(context->parentContext()->thisObject());
+        }
+
+        /**
+         * eval in current script engine
+         */
+        engine->evaluate(code, fullName);
+
+        /**
+         * set include guard
+         */
+        require_guard.setProperty(fullName, QScriptValue(true));
+    }
+
+    /**
+     * no return value
+     */
+    return engine->nullValue();
 }
 
 QScriptValue debug(QScriptContext *context, QScriptEngine *engine)
 {
-  QStringList message;
-  for(int i = 0; i < context->argumentCount(); ++i) {
-    message << context->argument(i).toString();
-  }
-  // debug in blue to distance from other debug output if necessary
-  std::cerr << "\033[31m" << qPrintable(message.join(QLatin1String(" "))) << "\033[0m\n";
-  return engine->nullValue();
+    QStringList message;
+    for (int i = 0; i < context->argumentCount(); ++i) {
+        message << context->argument(i).toString();
+    }
+    // debug in blue to distance from other debug output if necessary
+    std::cerr << "\033[31m" << qPrintable(message.join(QLatin1String(" "))) << "\033[0m\n";
+    return engine->nullValue();
 }
 
 //BEGIN code adapted from kdelibs/kross/modules/translation.cpp
 /// helper function to do the substitution from QtScript > QVariant > real values
-KLocalizedString substituteArguments( const KLocalizedString &kls, const QVariantList &arguments, int max = 99 )
+KLocalizedString substituteArguments(const KLocalizedString &kls, const QVariantList &arguments, int max = 99)
 {
-  KLocalizedString ls = kls;
-  int cnt = qMin( arguments.count(), max ); // QString supports max 99
-  for ( int i = 0; i < cnt; ++i ) {
-    QVariant arg = arguments[i];
-    switch ( arg.type() ) {
-      case QVariant::Int: ls = ls.subs(arg.toInt()); break;
-      case QVariant::UInt: ls = ls.subs(arg.toUInt()); break;
-      case QVariant::LongLong: ls = ls.subs(arg.toLongLong()); break;
-      case QVariant::ULongLong: ls = ls.subs(arg.toULongLong()); break;
-      case QVariant::Double: ls = ls.subs(arg.toDouble()); break;
-      default: ls = ls.subs(arg.toString()); break;
+    KLocalizedString ls = kls;
+    int cnt = qMin(arguments.count(), max);   // QString supports max 99
+    for (int i = 0; i < cnt; ++i) {
+        QVariant arg = arguments[i];
+        switch (arg.type()) {
+        case QVariant::Int: ls = ls.subs(arg.toInt()); break;
+        case QVariant::UInt: ls = ls.subs(arg.toUInt()); break;
+        case QVariant::LongLong: ls = ls.subs(arg.toLongLong()); break;
+        case QVariant::ULongLong: ls = ls.subs(arg.toULongLong()); break;
+        case QVariant::Double: ls = ls.subs(arg.toDouble()); break;
+        default: ls = ls.subs(arg.toString()); break;
+        }
     }
-  }
-  return ls;
+    return ls;
 }
 
 /// i18n("text", arguments [optional])
-QScriptValue i18n( QScriptContext *context, QScriptEngine *engine )
+QScriptValue i18n(QScriptContext *context, QScriptEngine *engine)
 {
-  Q_UNUSED(engine)
-  QString text;
-  QVariantList args;
-  const int argCount = context->argumentCount();
+    Q_UNUSED(engine)
+    QString text;
+    QVariantList args;
+    const int argCount = context->argumentCount();
 
-  if (argCount == 0) {
-    qCWarning(LOG_PART) << "wrong usage of i18n:" << context->backtrace().join(QLatin1String("\n\t"));
-  }
+    if (argCount == 0) {
+        qCWarning(LOG_PART) << "wrong usage of i18n:" << context->backtrace().join(QLatin1String("\n\t"));
+    }
 
-  if (argCount > 0) {
-    text = context->argument(0).toString();
-  }
+    if (argCount > 0) {
+        text = context->argument(0).toString();
+    }
 
-  for (int i = 1; i < argCount; ++i) {
-    args << context->argument(i).toVariant();
-  }
+    for (int i = 1; i < argCount; ++i) {
+        args << context->argument(i).toVariant();
+    }
 
-  KLocalizedString ls = ki18n(text.toUtf8().data());
-  return substituteArguments( ls, args ).toString();
+    KLocalizedString ls = ki18n(text.toUtf8().data());
+    return substituteArguments(ls, args).toString();
 }
 
 /// i18nc("context", "text", arguments [optional])
-QScriptValue i18nc( QScriptContext *context, QScriptEngine *engine )
+QScriptValue i18nc(QScriptContext *context, QScriptEngine *engine)
 {
-  Q_UNUSED(engine)
-  QString text;
-  QString textContext;
-  QVariantList args;
-  const int argCount = context->argumentCount();
+    Q_UNUSED(engine)
+    QString text;
+    QString textContext;
+    QVariantList args;
+    const int argCount = context->argumentCount();
 
-  if (argCount < 2) {
-    qCWarning(LOG_PART) << "wrong usage of i18nc:" << context->backtrace().join(QLatin1String("\n\t"));
-  }
+    if (argCount < 2) {
+        qCWarning(LOG_PART) << "wrong usage of i18nc:" << context->backtrace().join(QLatin1String("\n\t"));
+    }
 
-  if (argCount > 0) {
-    textContext = context->argument(0).toString();
-  }
+    if (argCount > 0) {
+        textContext = context->argument(0).toString();
+    }
 
-  if (argCount > 1) {
-    text = context->argument(1).toString();
-  }
+    if (argCount > 1) {
+        text = context->argument(1).toString();
+    }
 
-  for (int i = 2; i < argCount; ++i) {
-    args << context->argument(i).toVariant();
-  }
+    for (int i = 2; i < argCount; ++i) {
+        args << context->argument(i).toVariant();
+    }
 
-  KLocalizedString ls = ki18nc(textContext.toUtf8().data(), text.toUtf8().data());
-  return substituteArguments( ls, args ).toString();
+    KLocalizedString ls = ki18nc(textContext.toUtf8().data(), text.toUtf8().data());
+    return substituteArguments(ls, args).toString();
 }
 
 /// i18np("singular", "plural", number, arguments [optional])
-QScriptValue i18np( QScriptContext *context, QScriptEngine *engine )
+QScriptValue i18np(QScriptContext *context, QScriptEngine *engine)
 {
-  Q_UNUSED(engine)
-  QString trSingular;
-  QString trPlural;
-  int number = 0;
-  QVariantList args;
-  const int argCount = context->argumentCount();
+    Q_UNUSED(engine)
+    QString trSingular;
+    QString trPlural;
+    int number = 0;
+    QVariantList args;
+    const int argCount = context->argumentCount();
 
-  if (argCount < 3) {
-    qCWarning(LOG_PART) << "wrong usage of i18np:" << context->backtrace().join(QLatin1String("\n\t"));
-  }
+    if (argCount < 3) {
+        qCWarning(LOG_PART) << "wrong usage of i18np:" << context->backtrace().join(QLatin1String("\n\t"));
+    }
 
-  if (argCount > 0) {
-    trSingular = context->argument(0).toString();
-  }
+    if (argCount > 0) {
+        trSingular = context->argument(0).toString();
+    }
 
-  if (argCount > 1) {
-    trPlural = context->argument(1).toString();
-  }
+    if (argCount > 1) {
+        trPlural = context->argument(1).toString();
+    }
 
-  if (argCount > 2) {
-    number = context->argument(2).toInt32();
-  }
+    if (argCount > 2) {
+        number = context->argument(2).toInt32();
+    }
 
-  for (int i = 3; i < argCount; ++i) {
-    args << context->argument(i).toVariant();
-  }
+    for (int i = 3; i < argCount; ++i) {
+        args << context->argument(i).toVariant();
+    }
 
-  KLocalizedString ls = ki18np(trSingular.toUtf8().data(), trPlural.toUtf8().data()).subs(number);
-  return substituteArguments( ls, args, 98 ).toString();
+    KLocalizedString ls = ki18np(trSingular.toUtf8().data(), trPlural.toUtf8().data()).subs(number);
+    return substituteArguments(ls, args, 98).toString();
 }
 
 /// i18ncp("context", "singular", "plural", number, arguments [optional])
-QScriptValue i18ncp( QScriptContext *context, QScriptEngine *engine )
+QScriptValue i18ncp(QScriptContext *context, QScriptEngine *engine)
 {
-  Q_UNUSED(engine)
-  QString trContext;
-  QString trSingular;
-  QString trPlural;
-  int number = 0;
-  QVariantList args;
-  const int argCount = context->argumentCount();
+    Q_UNUSED(engine)
+    QString trContext;
+    QString trSingular;
+    QString trPlural;
+    int number = 0;
+    QVariantList args;
+    const int argCount = context->argumentCount();
 
-  if (argCount < 4) {
-    qCWarning(LOG_PART) << "wrong usage of i18ncp:" << context->backtrace().join(QLatin1String("\n\t"));
-  }
+    if (argCount < 4) {
+        qCWarning(LOG_PART) << "wrong usage of i18ncp:" << context->backtrace().join(QLatin1String("\n\t"));
+    }
 
-  if (argCount > 0) {
-    trContext = context->argument(0).toString();
-  }
+    if (argCount > 0) {
+        trContext = context->argument(0).toString();
+    }
 
-  if (argCount > 1) {
-    trSingular = context->argument(1).toString();
-  }
+    if (argCount > 1) {
+        trSingular = context->argument(1).toString();
+    }
 
-  if (argCount > 2) {
-    trPlural = context->argument(2).toString();
-  }
+    if (argCount > 2) {
+        trPlural = context->argument(2).toString();
+    }
 
-  if (argCount > 3) {
-    number = context->argument(3).toInt32();
-  }
+    if (argCount > 3) {
+        number = context->argument(3).toInt32();
+    }
 
-  for (int i = 4; i < argCount; ++i) {
-    args << context->argument(i).toVariant();
-  }
+    for (int i = 4; i < argCount; ++i) {
+        args << context->argument(i).toVariant();
+    }
 
-  KLocalizedString ls = ki18ncp(trContext.toUtf8().data(), trSingular.toUtf8().data(), trPlural.toUtf8().data()).subs( number );
-  return substituteArguments( ls, args, 98 ).toString();
+    KLocalizedString ls = ki18ncp(trContext.toUtf8().data(), trSingular.toUtf8().data(), trPlural.toUtf8().data()).subs(number);
+    return substituteArguments(ls, args, 98).toString();
 }
 //END code adapted from kdelibs/kross/modules/translation.cpp
 
 }
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

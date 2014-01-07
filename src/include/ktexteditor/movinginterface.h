@@ -46,31 +46,31 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT MovingInterface
 {
-  //
-  // Constructor/Destructor
-  //
-  public:
+    //
+    // Constructor/Destructor
+    //
+public:
     /**
      * Default constructor
      */
-    MovingInterface ();
+    MovingInterface();
 
     /**
      * Virtual destructor
      */
-    virtual ~MovingInterface ();
+    virtual ~MovingInterface();
 
-  //
-  // Normal API
-  //
-  public:
+    //
+    // Normal API
+    //
+public:
     /**
      * Create a new moving cursor for this document.
      * @param position position of the moving cursor to create
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    virtual MovingCursor *newMovingCursor (const Cursor &position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
+    virtual MovingCursor *newMovingCursor(const Cursor &position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
 
     /**
      * Create a new moving range for this document.
@@ -79,33 +79,33 @@ class KTEXTEDITOR_EXPORT MovingInterface
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    virtual MovingRange *newMovingRange (const Range &range, MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand
-      , MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
+    virtual MovingRange *newMovingRange(const Range &range, MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand
+                                        , MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
 
     /**
      * Current revision
      * @return current revision
      */
-    virtual qint64 revision () const = 0;
+    virtual qint64 revision() const = 0;
 
     /**
      * Last revision the buffer got successful saved
      * @return last revision buffer got saved, -1 if none
      */
-    virtual qint64 lastSavedRevision () const = 0;
+    virtual qint64 lastSavedRevision() const = 0;
 
     /**
      * Lock a revision, this will keep it around until released again.
      * But all revisions will always be cleared on buffer clear() (and therefor load())
      * @param revision revision to lock
      */
-    virtual void lockRevision (qint64 revision) = 0;
+    virtual void lockRevision(qint64 revision) = 0;
 
     /**
      * Release a revision.
      * @param revision revision to release
      */
-    virtual void unlockRevision (qint64 revision) = 0;
+    virtual void unlockRevision(qint64 revision) = 0;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -114,7 +114,7 @@ class KTEXTEDITOR_EXPORT MovingInterface
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor (KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+    virtual void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -124,8 +124,8 @@ class KTEXTEDITOR_EXPORT MovingInterface
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor (int& line, int& column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
-    
+    virtual void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+
     /**
      * Transform a range from one revision to an other.
      * @param range range to transform
@@ -134,30 +134,30 @@ class KTEXTEDITOR_EXPORT MovingInterface
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformRange (KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+    virtual void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
 
-  //
-  // Signals
-  //
-  public:
+    //
+    // Signals
+    //
+public:
     /**
      * This signal is emitted before the cursors/ranges/revisions of a document are destroyed as the document is deleted.
      * @param document the document which the interface belongs too which is in the process of being deleted
      */
-    void aboutToDeleteMovingInterfaceContent (KTextEditor::Document *document);
+    void aboutToDeleteMovingInterfaceContent(KTextEditor::Document *document);
 
     /**
      * This signal is emitted before the ranges of a document are invalidated and the revisions are deleted as the document is cleared (for example on load/reload).
      * While this signal is emitted, still the old document content is around before the clear.
      * @param document the document which the interface belongs too which will invalidate its data
      */
-    void aboutToInvalidateMovingInterfaceContent (KTextEditor::Document *document);
+    void aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *document);
 
-  private:
+private:
     /**
      * private d-pointer
      */
-    class MovingInterfacePrivate * const d;
+    class MovingInterfacePrivate *const d;
 };
 
 }
@@ -166,4 +166,3 @@ Q_DECLARE_INTERFACE(KTextEditor::MovingInterface, "org.kde.KTextEditor.MovingInt
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

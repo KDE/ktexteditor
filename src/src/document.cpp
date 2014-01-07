@@ -23,79 +23,87 @@
 
 using namespace KTextEditor;
 
-class KTextEditor::DocumentPrivate {
-  public:
+class KTextEditor::DocumentPrivate
+{
+public:
     DocumentPrivate()
-      : openingError(false), suppressOpeningErrorDialogs(false) { }
+        : openingError(false), suppressOpeningErrorDialogs(false) { }
     bool openingError;
     bool suppressOpeningErrorDialogs;
     QString openingErrorMessage;
 };
 
-Document::Document( QObject *parent)
- : KParts::ReadWritePart(parent)
- , d(new DocumentPrivate())
+Document::Document(QObject *parent)
+    : KParts::ReadWritePart(parent)
+    , d(new DocumentPrivate())
 {
 }
 
 Document::~Document()
 {
-  delete d;
+    delete d;
 }
 
-void Document::setSuppressOpeningErrorDialogs(bool suppress) {
-  d->suppressOpeningErrorDialogs=suppress;
-}
-
-bool Document::suppressOpeningErrorDialogs() const {
-  return d->suppressOpeningErrorDialogs;
-}
-
-bool Document::openingError() const {
-  return d->openingError;
-}
-
-QString Document::openingErrorMessage() const {
-  return d->openingErrorMessage;
-}
-
-void Document::setOpeningError(bool errors) {
-  d->openingError=errors;
-}
-
-void Document::setOpeningErrorMessage(const QString& message) {
-  d->openingErrorMessage=message;
-}
-
-bool Document::cursorInText(const Cursor& cursor)
+void Document::setSuppressOpeningErrorDialogs(bool suppress)
 {
-  if ( (cursor.line()<0) || (cursor.line()>=lines())) return false;
-  return (cursor.column()>=0) && (cursor.column()<=lineLength(cursor.line())); // = because new line isn't usually contained in line length
+    d->suppressOpeningErrorDialogs = suppress;
 }
 
-bool KTextEditor::Document::replaceText( const Range & range, const QString & text, bool block )
+bool Document::suppressOpeningErrorDialogs() const
 {
-  bool success = true;
-  startEditing();
-  success &= removeText(range, block);
-  success &= insertText(range.start(), text, block);
-  endEditing();
-  return success;
+    return d->suppressOpeningErrorDialogs;
 }
 
-bool Document::replaceText( const Range & range, const QStringList & text, bool block )
+bool Document::openingError() const
 {
-  bool success = true;
-  startEditing();
-  success &= removeText(range, block);
-  success &= insertText(range.start(), text, block);
-  endEditing();
-  return success;
+    return d->openingError;
 }
 
-bool Document::isEmpty( ) const
+QString Document::openingErrorMessage() const
 {
-  return documentEnd() == Cursor::start();
+    return d->openingErrorMessage;
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;
+void Document::setOpeningError(bool errors)
+{
+    d->openingError = errors;
+}
+
+void Document::setOpeningErrorMessage(const QString &message)
+{
+    d->openingErrorMessage = message;
+}
+
+bool Document::cursorInText(const Cursor &cursor)
+{
+    if ((cursor.line() < 0) || (cursor.line() >= lines())) {
+        return false;
+    }
+    return (cursor.column() >= 0) && (cursor.column() <= lineLength(cursor.line())); // = because new line isn't usually contained in line length
+}
+
+bool KTextEditor::Document::replaceText(const Range &range, const QString &text, bool block)
+{
+    bool success = true;
+    startEditing();
+    success &= removeText(range, block);
+    success &= insertText(range.start(), text, block);
+    endEditing();
+    return success;
+}
+
+bool Document::replaceText(const Range &range, const QStringList &text, bool block)
+{
+    bool success = true;
+    startEditing();
+    success &= removeText(range, block);
+    success &= insertText(range.start(), text, block);
+    endEditing();
+    return success;
+}
+
+bool Document::isEmpty() const
+{
+    return documentEnd() == Cursor::start();
+}
+

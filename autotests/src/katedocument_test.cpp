@@ -37,39 +37,41 @@
 // #define USE_VALGRIND
 
 #ifdef USE_VALGRIND
-  #include <valgrind/callgrind.h>
+#include <valgrind/callgrind.h>
 #endif
 
 using namespace KTextEditor;
 
 QTEST_MAIN(KateDocumentTest)
 
-namespace QTest {
-    template<>
-    char *toString(const KTextEditor::Cursor &cursor)
-    {
-        QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                           + ", " + QByteArray::number(cursor.column()) + "]";
-        return qstrdup(ba.data());
-    }
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
+{
+    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
+                    + ", " + QByteArray::number(cursor.column()) + "]";
+    return qstrdup(ba.data());
+}
 }
 
-class MovingRangeInvalidator : public QObject {
+class MovingRangeInvalidator : public QObject
+{
     Q_OBJECT
 public:
-  explicit MovingRangeInvalidator( QObject* parent = 0 )
-    : QObject(parent)
-  {
-  }
+    explicit MovingRangeInvalidator(QObject *parent = 0)
+        : QObject(parent)
+    {
+    }
 
-  void addRange(MovingRange* range)
-  {
-    m_ranges << range;
-  }
-  QList<MovingRange*> ranges() const
-  {
-    return m_ranges;
-  }
+    void addRange(MovingRange *range)
+    {
+        m_ranges << range;
+    }
+    QList<MovingRange *> ranges() const
+    {
+        return m_ranges;
+    }
 
 public Q_SLOTS:
     void aboutToInvalidateMovingInterfaceContent()
@@ -79,12 +81,11 @@ public Q_SLOTS:
     }
 
 private:
-    QList<MovingRange*> m_ranges;
+    QList<MovingRange *> m_ranges;
 };
 
-
 KateDocumentTest::KateDocumentTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -99,34 +100,34 @@ KateDocumentTest::~KateDocumentTest()
 // see also: http://bugs.kde.org/show_bug.cgi?id=168534
 void KateDocumentTest::testWordWrap()
 {
-    KateDocument doc (false, false, false);
+    KateDocument doc(false, false, false);
     doc.setWordWrap(true);
     doc.setWordWrapAt(80);
 
     const QString content = QLatin1String(".........1.........2.........3.........4.........5.........6 ........7 ........8");
-    
+
     // space after 7 is now kept
     // else we kill indentation...
     const QString firstWrap = QLatin1String(".........1.........2.........3.........4.........5.........6 ........7 \n....x....8");
-    
+
     // space after 6 is now kept
     // else we kill indentation...
     const QString secondWrap = QLatin1String(".........1.........2.........3.........4.........5.........6 \n....ooooooooooo....7 ....x....8");
-    
+
     doc.setText(content);
-    MovingCursor* c = doc.newMovingCursor(Cursor(0, 75), MovingCursor::MoveOnInsert);
+    MovingCursor *c = doc.newMovingCursor(Cursor(0, 75), MovingCursor::MoveOnInsert);
 
     QCOMPARE(doc.text(), content);
     QCOMPARE(c->toCursor(), Cursor(0, 75));
 
     // type a character at (0, 75)
-    doc.insertText (c->toCursor(), QLatin1String("x"));
+    doc.insertText(c->toCursor(), QLatin1String("x"));
     QCOMPARE(doc.text(), firstWrap);
     QCOMPARE(c->toCursor(), Cursor(1, 5));
 
     // set cursor to (0, 65) and type "ooooooooooo"
     c->setPosition(Cursor(0, 65));
-    doc.insertText (c->toCursor(), QLatin1String("ooooooooooo"));
+    doc.insertText(c->toCursor(), QLatin1String("ooooooooooo"));
     QCOMPARE(doc.text(), secondWrap);
     QCOMPARE(c->toCursor(), Cursor(1, 15));
 }
@@ -136,19 +137,19 @@ void KateDocumentTest::testReplaceQStringList()
     KateDocument doc(false, false, false);
     doc.setWordWrap(false);
     doc.setText(QLatin1String("asdf\n"
-                "foo\n"
-                "foo\n"
-                "bar\n"));
-    doc.replaceText( Range(1, 0, 3, 0), QStringList() << "new" << "text" << "", false );
+                              "foo\n"
+                              "foo\n"
+                              "bar\n"));
+    doc.replaceText(Range(1, 0, 3, 0), QStringList() << "new" << "text" << "", false);
     QCOMPARE(doc.text(), QLatin1String("asdf\n"
-                                 "new\n"
-                                 "text\n"
-                                 "bar\n"));
+                                       "new\n"
+                                       "text\n"
+                                       "bar\n"));
 }
 
 void KateDocumentTest::testMovingInterfaceSignals()
 {
-    KateDocument* doc = new KateDocument(false, false, false);
+    KateDocument *doc = new KateDocument(false, false, false);
     QSignalSpy aboutToDeleteSpy(doc, SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document*)));
     QSignalSpy aboutToInvalidateSpy(doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)));
 
@@ -194,10 +195,10 @@ void KateDocumentTest::testSetTextPerformance()
     QVector<Range> ranges;
     ranges.reserve(lines * columns / (rangeLength + rangeGap));
     const QString line = QString().fill('a', columns);
-    for(int l = 0; l < lines; ++l) {
+    for (int l = 0; l < lines; ++l) {
         text.append(line);
         text.append('\n');
-        for(int c = 0; c < columns; c += rangeLength + rangeGap) {
+        for (int c = 0; c < columns; c += rangeLength + rangeGap) {
             ranges << Range(l, c, l, c + rangeLength);
         }
     }
@@ -206,20 +207,21 @@ void KateDocumentTest::testSetTextPerformance()
     QBENCHMARK {
         // init
         doc.setText(text);
-        foreach(const Range& range, ranges) {
+        foreach (const Range &range, ranges)
+        {
             invalidator.addRange(doc.newMovingRange(range));
         }
         QCOMPARE(invalidator.ranges().size(), ranges.size());
 
-        #ifdef USE_VALGRIND
-            CALLGRIND_START_INSTRUMENTATION
-        #endif
+#ifdef USE_VALGRIND
+        CALLGRIND_START_INSTRUMENTATION
+#endif
 
         doc.setText(text);
 
-        #ifdef USE_VALGRIND
-            CALLGRIND_STOP_INSTRUMENTATION
-        #endif
+#ifdef USE_VALGRIND
+        CALLGRIND_STOP_INSTRUMENTATION
+#endif
 
         QCOMPARE(doc.text(), text);
         QVERIFY(invalidator.ranges().isEmpty());
@@ -235,7 +237,7 @@ void KateDocumentTest::testRemoveTextPerformance()
 
     QString text;
     const QString line = QString().fill('a', columns);
-    for(int l = 0; l < lines; ++l) {
+    for (int l = 0; l < lines; ++l) {
         text.append(line);
         text.append('\n');
     }
@@ -244,9 +246,9 @@ void KateDocumentTest::testRemoveTextPerformance()
 
     // replace
     QBENCHMARK_ONCE {
-        #ifdef USE_VALGRIND
-            CALLGRIND_START_INSTRUMENTATION
-        #endif
+#ifdef USE_VALGRIND
+        CALLGRIND_START_INSTRUMENTATION
+#endif
 
         doc.editStart();
 
@@ -254,9 +256,9 @@ void KateDocumentTest::testRemoveTextPerformance()
 
         doc.editEnd();
 
-        #ifdef USE_VALGRIND
-            CALLGRIND_STOP_INSTRUMENTATION
-        #endif
+#ifdef USE_VALGRIND
+        CALLGRIND_STOP_INSTRUMENTATION
+#endif
     }
 }
 
@@ -289,12 +291,12 @@ class SignalHandler : public QObject
 {
     Q_OBJECT
 public Q_SLOTS:
-    void slotMultipleLinesRemoved(KTextEditor::Document*, const KTextEditor::Range&, const QString& oldText)
+    void slotMultipleLinesRemoved(KTextEditor::Document *, const KTextEditor::Range &, const QString &oldText)
     {
         QCOMPARE(oldText, QString("line2\nline3\n"));
     }
 
-    void slotNewlineInserted(KTextEditor::Document*, const KTextEditor::Range& range)
+    void slotNewlineInserted(KTextEditor::Document *, const KTextEditor::Range &range)
     {
         QCOMPARE(range, Range(Cursor(1, 4), Cursor(2, 0)));
     }
@@ -302,12 +304,12 @@ public Q_SLOTS:
 
 void KateDocumentTest::testRemoveMultipleLines()
 {
-   KateDocument doc(false, false, false);
+    KateDocument doc(false, false, false);
 
     doc.setText("line1\n"
-        "line2\n"
-        "line3\n"
-        "line4\n");
+                "line2\n"
+                "line3\n"
+                "line4\n");
 
     SignalHandler handler;
     connect(&doc, SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range,QString)), &handler, SLOT(slotMultipleLinesRemoved(KTextEditor::Document*,KTextEditor::Range,QString)));
@@ -319,7 +321,7 @@ void KateDocumentTest::testInsertNewline()
     KateDocument doc(false, false, false);
 
     doc.setText("this is line\n"
-        "this is line2\n");
+                "this is line2\n");
 
     SignalHandler handler;
     connect(&doc, SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)), &handler, SLOT(slotNewlineInserted(KTextEditor::Document*,KTextEditor::Range)));
@@ -331,19 +333,19 @@ void KateDocumentTest::testInsertNewline()
 // sure, these two implementations result in the same checksum.
 void KateDocumentTest::testDigest()
 {
-  // md5sum of data/md5checksum.txt: ff6e0fddece03adeb8f902e8c540735a
-  // QCryptographicHash is used, therefore we need fromHex here
-  const QByteArray fileDigest = QByteArray::fromHex("ff6e0fddece03adeb8f902e8c540735a");
+    // md5sum of data/md5checksum.txt: ff6e0fddece03adeb8f902e8c540735a
+    // QCryptographicHash is used, therefore we need fromHex here
+    const QByteArray fileDigest = QByteArray::fromHex("ff6e0fddece03adeb8f902e8c540735a");
 
-  // make sure, Kate::TextBuffer and KateDocument::createDigest() equal
-  KateDocument doc(false, false, false);
-  doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"md5checksum.txt")));
-  const QByteArray bufferDigest(doc.digest());
-  QVERIFY(doc.createDigest());
-  const QByteArray docDigest(doc.digest());
+    // make sure, Kate::TextBuffer and KateDocument::createDigest() equal
+    KateDocument doc(false, false, false);
+    doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"md5checksum.txt")));
+    const QByteArray bufferDigest(doc.digest());
+    QVERIFY(doc.createDigest());
+    const QByteArray docDigest(doc.digest());
 
-  QCOMPARE(bufferDigest, fileDigest);
-  QCOMPARE(docDigest, fileDigest);
+    QCOMPARE(bufferDigest, fileDigest);
+    QCOMPARE(docDigest, fileDigest);
 }
 
 #include "katedocument_test.moc"

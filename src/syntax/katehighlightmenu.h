@@ -30,34 +30,35 @@ class KateDocument;
 
 class KateHighlightingMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateHighlightingMenu(const QString& text, QObject *parent)
-       : KActionMenu(text, parent) { init(); }
+public:
+    KateHighlightingMenu(const QString &text, QObject *parent)
+        : KActionMenu(text, parent)
+    {
+        init();
+    }
 
     ~KateHighlightingMenu();
 
-    void updateMenu (KateDocument *doc);
+    void updateMenu(KateDocument *doc);
 
-  private:
+private:
     void init();
 
     QPointer<KateDocument> m_doc;
     QStringList subMenusName;
     QStringList names;
-    QList<QMenu*> subMenus;
-    QList<QAction*> subActions;
+    QList<QMenu *> subMenus;
+    QList<QAction *> subActions;
     QActionGroup *m_actionGroup;
 
-  public  Q_SLOTS:
+public  Q_SLOTS:
     void slotAboutToShow();
 
-  private Q_SLOTS:
-    void setHl ();
+private Q_SLOTS:
+    void setHl();
 };
-
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -35,31 +35,53 @@ enum KateViCommandFlags {
     IS_CHANGE = 0x8,        // the command changes the buffer
     IS_NOT_LINEWISE = 0x10, // the motion is not line wise
     CAN_CHANGE_WHOLE_VISUAL_MODE_SELECTION = 0x20   // the motion is a text object that can set the
-                                                    // whole Visual Mode selection to the text object
+            // whole Visual Mode selection to the text object
 };
 
-class KTEXTEDITOR_EXPORT KateViCommand {
-  public:
-    KateViCommand( KateViNormalMode *parent, QString pattern,
-        bool ( KateViNormalMode::*pt2Func)(), unsigned int flags = 0 );
+class KTEXTEDITOR_EXPORT KateViCommand
+{
+public:
+    KateViCommand(KateViNormalMode *parent, QString pattern,
+                  bool (KateViNormalMode::*pt2Func)(), unsigned int flags = 0);
     ~KateViCommand();
 
-    bool matches( const QString &pattern ) const;
-    bool matchesExact( const QString &pattern ) const;
+    bool matches(const QString &pattern) const;
+    bool matchesExact(const QString &pattern) const;
     bool execute() const;
-    const QString pattern() const { return m_pattern; }
-    bool isRegexPattern() const { return m_flags & REGEX_PATTERN; }
-    bool needsMotion() const { return m_flags & NEEDS_MOTION; }
-    bool shouldReset() const { return !( m_flags & SHOULD_NOT_RESET ); }
-    bool isChange() const { return m_flags & IS_CHANGE; }
-    bool isLineWise() const { return !(m_flags & IS_NOT_LINEWISE); }
-    bool canChangeWholeVisualModeSelection() const { return m_flags & CAN_CHANGE_WHOLE_VISUAL_MODE_SELECTION; }
+    const QString pattern() const
+    {
+        return m_pattern;
+    }
+    bool isRegexPattern() const
+    {
+        return m_flags & REGEX_PATTERN;
+    }
+    bool needsMotion() const
+    {
+        return m_flags & NEEDS_MOTION;
+    }
+    bool shouldReset() const
+    {
+        return !(m_flags & SHOULD_NOT_RESET);
+    }
+    bool isChange() const
+    {
+        return m_flags & IS_CHANGE;
+    }
+    bool isLineWise() const
+    {
+        return !(m_flags & IS_NOT_LINEWISE);
+    }
+    bool canChangeWholeVisualModeSelection() const
+    {
+        return m_flags & CAN_CHANGE_WHOLE_VISUAL_MODE_SELECTION;
+    }
 
-  protected:
+protected:
     KateViNormalMode *m_parent;
     QString m_pattern;
     unsigned int m_flags;
-    bool ( KateViNormalMode::*m_ptr2commandMethod)();
+    bool (KateViNormalMode::*m_ptr2commandMethod)();
     KateViKeyParser *m_keyParser;
 };
 

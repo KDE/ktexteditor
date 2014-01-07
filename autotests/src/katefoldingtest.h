@@ -24,15 +24,15 @@
 
 class KateFoldingTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public Q_SLOTS:
-  void initTestCase();
-  void cleanupTestCase();
+    void initTestCase();
+    void cleanupTestCase();
 
 private Q_SLOTS:
-  void testCrash311866();
-  void testBug295632();
+    void testCrash311866();
+    void testBug295632();
 };
 
 #endif // KATE_FOLDING_TEST_H

@@ -21,52 +21,52 @@
 
 #include <QtGlobal>
 #include "katevirange.h"
-    KateViRange::KateViRange( int slin, int scol, int elin, int ecol, ViMotion::MotionType inc )
-  : startLine( slin ), startColumn( scol ), endLine( elin ), endColumn( ecol ), motionType( inc )
+KateViRange::KateViRange(int slin, int scol, int elin, int ecol, ViMotion::MotionType inc)
+    : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol), motionType(inc)
 {
-  valid = true;
-  jump = false;
+    valid = true;
+    jump = false;
 }
 
 // for motions which only return a position, in constrast to "text objects"
 // which returns a range
-    KateViRange::KateViRange( int elin, int ecol, ViMotion::MotionType inc )
-  : endLine( elin ), endColumn( ecol ), motionType( inc )
+KateViRange::KateViRange(int elin, int ecol, ViMotion::MotionType inc)
+    : endLine(elin), endColumn(ecol), motionType(inc)
 {
-  startLine = -1;
-  startColumn = -1;
-  valid = true;
-  jump = false;
+    startLine = -1;
+    startColumn = -1;
+    valid = true;
+    jump = false;
 }
 
 KateViRange::KateViRange()
 {
-  startLine = -1;
-  startColumn = -1;
-  endLine = -1;
-  endColumn = -1;
-  valid = true;
-  jump = false;
-  motionType = ViMotion::InclusiveMotion;
+    startLine = -1;
+    startColumn = -1;
+    endLine = -1;
+    endColumn = -1;
+    valid = true;
+    jump = false;
+    motionType = ViMotion::InclusiveMotion;
 }
 
 void KateViRange::normalize()
 {
-  int sl = startLine, el = endLine, sc = startColumn, ec = endColumn;
-  if (sl < el){
-      startLine = sl;
-      startColumn = sc;
-      endLine = el;
-      endColumn = ec;
-  } else {
-      startLine = el;
-      endLine = sl;
-      if (sl != el) {
-      startColumn = ec;
-      endColumn = sc;
-      } else {
-          startColumn = qMin(sc, ec);
-          endColumn = qMax(sc, ec);
-      }
-  }
+    int sl = startLine, el = endLine, sc = startColumn, ec = endColumn;
+    if (sl < el) {
+        startLine = sl;
+        startColumn = sc;
+        endLine = el;
+        endColumn = ec;
+    } else {
+        startLine = el;
+        endLine = sl;
+        if (sl != el) {
+            startColumn = ec;
+            endColumn = sc;
+        } else {
+            startColumn = qMin(sc, ec);
+            endColumn = qMax(sc, ec);
+        }
+    }
 }

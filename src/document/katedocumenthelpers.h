@@ -35,26 +35,26 @@ class KateDocument;
  */
 class KateBrowserExtension : public KParts::BrowserExtension
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor
      * @param doc parent document
      */
-    explicit KateBrowserExtension( KateDocument* doc );
+    explicit KateBrowserExtension(KateDocument *doc);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * print the current file
      */
     void print();
 
-  private:
+private:
     /**
      * parent document
      */
-    KateDocument* m_doc;
+    KateDocument *m_doc;
 };
 
 #endif

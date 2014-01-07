@@ -17,10 +17,8 @@
   Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef KATE_SCRIPT_CONSOLE_H
 #define KATE_SCRIPT_CONSOLE_H
-
 
 #include "kateviewhelpers.h"
 
@@ -30,7 +28,6 @@ class QLabel;
 class QVBoxLayout;
 class QHBoxLayout;
 
-
 /**
  * Manage JavaScript, allowing the user directly type commands as in
  * KateCommnadLineBar environment. It also allows the user to define
@@ -38,9 +35,9 @@ class QHBoxLayout;
  */
 class KateScriptConsoleEngine
 {
-  public:
+public:
     /** Constructor + Destructor */
-    KateScriptConsoleEngine(KateView * view);
+    KateScriptConsoleEngine(KateView *view);
     virtual ~KateScriptConsoleEngine();
 
     /**
@@ -48,16 +45,16 @@ class KateScriptConsoleEngine
      * @param text text containing a command or a set of functions.
      * @return a printable message about the execution.
      */
-    const QString & execute(const QString & text);
+    const QString &execute(const QString &text);
 
-  private:
+private:
     /** Url of utils.js file */
     QString m_utilsUrl;
 
     /** Just a Kate view :) */
-    KateView * m_view;
+    KateView *m_view;
 
-  private:
+private:
     /**
      * Get the name of the first defined function
      * @param text text containing a command or a set of functions.
@@ -65,38 +62,33 @@ class KateScriptConsoleEngine
      * @return the name of the first function defined or a void QString if
      * there's no functions.
      */
-    const QString getFirstFunctionName(const QString & text, QString & msg);
+    const QString getFirstFunctionName(const QString &text, QString &msg);
 };
-
 
 class KateScriptConsole : public KateViewBarWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateScriptConsole(KateView * view, QWidget * parent = NULL);
+public:
+    KateScriptConsole(KateView *view, QWidget *parent = NULL);
     virtual ~KateScriptConsole();
 
-  protected:
+protected:
     // overridden
     virtual void closed();
 
-  private:
-    QVBoxLayout * layout;
-    QHBoxLayout * hLayout;
-    QTextEdit * m_edit;
-    QPushButton * m_execute;
-    QLabel * m_result;
-    KateView * m_view;
-    KateScriptConsoleEngine * m_engine;
+private:
+    QVBoxLayout *layout;
+    QHBoxLayout *hLayout;
+    QTextEdit *m_edit;
+    QPushButton *m_execute;
+    QLabel *m_result;
+    KateView *m_view;
+    KateScriptConsoleEngine *m_engine;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void executePressed();
 };
 
-
 #endif /* KATE_SCRIPT_CONSOLE_H */
-
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

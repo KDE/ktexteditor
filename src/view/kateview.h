@@ -1,22 +1,22 @@
- /* This file is part of the KDE libraries
-   Copyright (C) 2002 John Firebaugh <jfirebaugh@kde.org>
-   Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
-   Copyright (C) 2001-2010 Joseph Wenninger <jowenn@kde.org>
-   Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
+/* This file is part of the KDE libraries
+  Copyright (C) 2002 John Firebaugh <jfirebaugh@kde.org>
+  Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
+  Copyright (C) 2001-2010 Joseph Wenninger <jowenn@kde.org>
+  Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
 
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License version 2 as published by the Free Software Foundation.
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Library General Public
+  License version 2 as published by the Free Software Foundation.
 
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public License
-   along with this library; see the file COPYING.LIB.  If not, write to
-   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU Library General Public License
+  along with this library; see the file COPYING.LIB.  If not, write to
+  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
 */
 
 #ifndef kate_view_h
@@ -44,8 +44,8 @@
 
 namespace KTextEditor
 {
-  class AnnotationModel;
-  class Message;
+class AnnotationModel;
+class Message;
 }
 
 class KateDocument;
@@ -75,12 +75,12 @@ class QVBoxLayout;
 // Kate KTextEditor::View class ;)
 //
 class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
-                 public KTextEditor::TextHintInterface,
-                 public KTextEditor::SessionConfigInterface,
-                 public KTextEditor::TemplateInterface2,
-                 public KTextEditor::CodeCompletionInterface,
-                 public KTextEditor::ConfigInterface,
-                 public KTextEditor::AnnotationViewInterface
+    public KTextEditor::TextHintInterface,
+    public KTextEditor::SessionConfigInterface,
+    public KTextEditor::TemplateInterface2,
+    public KTextEditor::CodeCompletionInterface,
+    public KTextEditor::ConfigInterface,
+    public KTextEditor::AnnotationViewInterface
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
@@ -95,56 +95,56 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     friend class KateIconBorder;
     friend class KateViModeBase;
 
-  public:
-    KateView( KateDocument* doc, QWidget* parent, KTextEditor::MainWindow *mainWindow = nullptr );
-    ~KateView ();
-    
+public:
+    KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    ~KateView();
+
     /**
      * Get the view's main window, if any
      * \return the view's main window
      */
-    KTextEditor::MainWindow *mainWindow () const
+    KTextEditor::MainWindow *mainWindow() const
     {
-      return m_mainWindow;
+        return m_mainWindow;
     }
 
-    KTextEditor::Document *document () const;
+    KTextEditor::Document *document() const;
 
-    QString viewMode () const;
+    QString viewMode() const;
 
-  //
-  // KTextEditor::ClipboardInterface
-  //
-  public Q_SLOTS:
+    //
+    // KTextEditor::ClipboardInterface
+    //
+public Q_SLOTS:
     void paste(const QString *textToPaste = 0);
     void cut();
     void copy() const;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     /**
      * internal use, apply word wrap
      */
-    void applyWordWrap ();
+    void applyWordWrap();
 
-  //
-  // KTextEditor::PopupMenuInterface
-  //
-  public:
-    void setContextMenu( QMenu* menu );
-    QMenu* contextMenu() const;
-    QMenu* defaultContextMenu(QMenu* menu = 0L) const;
+    //
+    // KTextEditor::PopupMenuInterface
+    //
+public:
+    void setContextMenu(QMenu *menu);
+    QMenu *contextMenu() const;
+    QMenu *defaultContextMenu(QMenu *menu = 0L) const;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void aboutToShowContextMenu();
     void aboutToHideContextMenu();
 
-  private:
+private:
     QPointer<QMenu> m_contextMenu;
 
-  //
-  // KTextEditor::ViewCursorInterface
-  //
-  public:
+    //
+    // KTextEditor::ViewCursorInterface
+    //
+public:
     /**
      * Set the caret's style.
      * The caret can be a box or a line; see the documentation
@@ -153,21 +153,21 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
      * @param repaint whether to update the caret instantly.
      *        This also resets the caret's timer.
      */
-    void setCaretStyle( KateRenderer::caretStyles style, bool repaint = false );
+    void setCaretStyle(KateRenderer::caretStyles style, bool repaint = false);
 
-    bool setCursorPosition (KTextEditor::Cursor position);
+    bool setCursorPosition(KTextEditor::Cursor position);
 
-    KTextEditor::Cursor cursorPosition () const;
+    KTextEditor::Cursor cursorPosition() const;
 
-    KTextEditor::Cursor cursorPositionVirtual () const;
+    KTextEditor::Cursor cursorPositionVirtual() const;
 
-    QPoint cursorToCoordinate(const KTextEditor::Cursor& cursor) const;
+    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const;
 
-    KTextEditor::Cursor coordinatesToCursor(const QPoint& coord) const;
+    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const;
 
     QPoint cursorPositionCoordinates() const;
 
-    bool setCursorPositionVisual( const KTextEditor::Cursor& position );
+    bool setCursorPositionVisual(const KTextEditor::Cursor &position);
 
     /**
      * Return the virtual cursor column, each tab is expanded into the
@@ -179,177 +179,185 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     virtual bool mouseTrackingEnabled() const;
     virtual bool setMouseTrackingEnabled(bool enable);
 
-  private:
-    void notifyMousePositionChanged(const KTextEditor::Cursor& newPosition);
+private:
+    void notifyMousePositionChanged(const KTextEditor::Cursor &newPosition);
 
-  // Internal
-  public:
-    bool setCursorPositionInternal( const KTextEditor::Cursor& position, uint tabwidth = 1, bool calledExternally = false );
+    // Internal
+public:
+    bool setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth = 1, bool calledExternally = false);
 
-  //
-  // KTextEditor::ConfigInterface
-  //
-  public:
-     QStringList configKeys() const;
-     QVariant configValue(const QString &key);
-     void setConfigValue(const QString &key, const QVariant &value);
+    //
+    // KTextEditor::ConfigInterface
+    //
+public:
+    QStringList configKeys() const;
+    QVariant configValue(const QString &key);
+    void setConfigValue(const QString &key, const QVariant &value);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void configChanged();
-    
-  public:
+
+public:
     /**
      * Try to fold starting at the given line.
      * This will both try to fold existing folding ranges of this line and to query the highlighting what to fold.
      * @param startLine start line to fold at
      */
-    void foldLine (int startLine);
+    void foldLine(int startLine);
 
-     /**
-     * Try to unfold all foldings starting at the given line.
-     * @param startLine start line to unfold at
-     */
-    void unfoldLine (int startLine);
+    /**
+    * Try to unfold all foldings starting at the given line.
+    * @param startLine start line to unfold at
+    */
+    void unfoldLine(int startLine);
 
-  //
-  // KTextEditor::CodeCompletionInterface2
-  //
-  public:
+    //
+    // KTextEditor::CodeCompletionInterface2
+    //
+public:
     virtual bool isCompletionActive() const;
-    virtual void startCompletion(const KTextEditor::Range& word, KTextEditor::CodeCompletionModel* model);
+    virtual void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model);
     virtual void abortCompletion();
     virtual void forceCompletion();
-    virtual void registerCompletionModel(KTextEditor::CodeCompletionModel* model);
-    virtual void unregisterCompletionModel(KTextEditor::CodeCompletionModel* model);
+    virtual void registerCompletionModel(KTextEditor::CodeCompletionModel *model);
+    virtual void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model);
     virtual bool isAutomaticInvocationEnabled() const;
     virtual void setAutomaticInvocationEnabled(bool enabled = true);
 
-  Q_SIGNALS:
-    void completionExecuted(KTextEditor::View* view, const KTextEditor::Cursor& position, KTextEditor::CodeCompletionModel* model, const QModelIndex&);
-    void completionAborted(KTextEditor::View* view);
+Q_SIGNALS:
+    void completionExecuted(KTextEditor::View *view, const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &);
+    void completionAborted(KTextEditor::View *view);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void userInvokedCompletion();
 
-  public:
-    KateCompletionWidget* completionWidget() const;
-    mutable KateCompletionWidget* m_completionWidget;
-    void sendCompletionExecuted(const KTextEditor::Cursor& position, KTextEditor::CodeCompletionModel* model, const QModelIndex& index);
+public:
+    KateCompletionWidget *completionWidget() const;
+    mutable KateCompletionWidget *m_completionWidget;
+    void sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index);
     void sendCompletionAborted();
 
-  //
-  // KTextEditor::TextHintInterface
-  //
-  public:
+    //
+    // KTextEditor::TextHintInterface
+    //
+public:
     void enableTextHints(int timeout = 200);
     void disableTextHints();
 
-  Q_SIGNALS:
-    void needTextHint(KTextEditor::View * view, const KTextEditor::Cursor& position, QString &text);
+Q_SIGNALS:
+    void needTextHint(KTextEditor::View *view, const KTextEditor::Cursor &position, QString &text);
 
-  public:
-    bool dynWordWrap() const      { return m_hasWrap; }
+public:
+    bool dynWordWrap() const
+    {
+        return m_hasWrap;
+    }
 
-  //
-  // KTextEditor::SelectionInterface stuff
-  //
-  public Q_SLOTS:
-    virtual bool setSelection ( const KTextEditor::Range &selection );
+    //
+    // KTextEditor::SelectionInterface stuff
+    //
+public Q_SLOTS:
+    virtual bool setSelection(const KTextEditor::Range &selection);
 
-    virtual bool removeSelection () { return clearSelection(); }
+    virtual bool removeSelection()
+    {
+        return clearSelection();
+    }
 
-    virtual bool removeSelectionText () { return removeSelectedText(); }
+    virtual bool removeSelectionText()
+    {
+        return removeSelectedText();
+    }
 
-    virtual bool setBlockSelection (bool on);
-    bool toggleBlockSelection ();
+    virtual bool setBlockSelection(bool on);
+    bool toggleBlockSelection();
 
-    bool clearSelection ();
-    bool clearSelection (bool redraw, bool finishedChangingSelection = true);
+    bool clearSelection();
+    bool clearSelection(bool redraw, bool finishedChangingSelection = true);
 
-    bool removeSelectedText ();
+    bool removeSelectedText();
 
     bool selectAll();
 
-  public:
+public:
     virtual bool selection() const;
     virtual QString selectionText() const;
     virtual bool blockSelection() const;
     virtual const KTextEditor::Range &selectionRange() const;
 
-    static void blockFix(KTextEditor::Range& range);
+    static void blockFix(KTextEditor::Range &range);
 
-  private:
+private:
     mutable KTextEditor::Range m_holdSelectionRangeForAPI;
 
-  //
-  // Arbitrary Syntax HL + Action extensions
-  //
-  public:
+    //
+    // Arbitrary Syntax HL + Action extensions
+    //
+public:
     // Action association extension
     void deactivateEditActions();
     void activateEditActions();
 
-  //
-  // internal helper stuff, for katerenderer and so on
-  //
-  public:
+    //
+    // internal helper stuff, for katerenderer and so on
+    //
+public:
     // should cursor be wrapped ? take config + blockselection state in account
-    bool wrapCursor () const;
+    bool wrapCursor() const;
 
     // some internal functions to get selection state of a line/col
-    bool cursorSelected(const KTextEditor::Cursor& cursor);
-    bool lineSelected (int line);
-    bool lineEndSelected (const KTextEditor::Cursor& lineEndPos);
-    bool lineHasSelected (int line);
-    bool lineIsSelection (int line);
+    bool cursorSelected(const KTextEditor::Cursor &cursor);
+    bool lineSelected(int line);
+    bool lineEndSelected(const KTextEditor::Cursor &lineEndPos);
+    bool lineHasSelected(int line);
+    bool lineIsSelection(int line);
 
     void ensureCursorColumnValid();
 
-    void tagSelection (const KTextEditor::Range &oldSelection);
+    void tagSelection(const KTextEditor::Range &oldSelection);
 
-    void selectWord(   const KTextEditor::Cursor& cursor );
-    void selectLine(   const KTextEditor::Cursor& cursor );
+    void selectWord(const KTextEditor::Cursor &cursor);
+    void selectLine(const KTextEditor::Cursor &cursor);
 
+    //BEGIN EDIT STUFF
+public:
+    void editStart();
+    void editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom);
 
-  //BEGIN EDIT STUFF
-  public:
-    void editStart ();
-    void editEnd (int editTagLineStart, int editTagLineEnd, bool tagFrom);
+    void editSetCursor(const KTextEditor::Cursor &cursor);
+    //END
 
-    void editSetCursor (const KTextEditor::Cursor &cursor);
-  //END
+    //BEGIN TAG & CLEAR
+public:
+    bool tagLine(const KTextEditor::Cursor &virtualCursor);
 
-  //BEGIN TAG & CLEAR
-  public:
-    bool tagLine (const KTextEditor::Cursor& virtualCursor);
+    bool tagRange(const KTextEditor::Range &range, bool realLines = false);
+    bool tagLines(int start, int end, bool realLines = false);
+    bool tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
+    bool tagLines(KTextEditor::Range range, bool realRange = false);
 
-    bool tagRange (const KTextEditor::Range& range, bool realLines = false);
-    bool tagLines (int start, int end, bool realLines = false );
-    bool tagLines (KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors = false);
-    bool tagLines (KTextEditor::Range range, bool realRange = false);
+    void tagAll();
 
-    void tagAll ();
+    void clear();
 
-    void clear ();
+    void repaintText(bool paintOnlyDirty = false);
 
-    void repaintText (bool paintOnlyDirty = false);
+    void updateView(bool changed = false);
+    //END
 
-    void updateView (bool changed = false);
-  //END
-
-  //
-  // KTextEditor::AnnotationView
-  //
-  public:
-    void setAnnotationModel( KTextEditor::AnnotationModel* model );
-    KTextEditor::AnnotationModel* annotationModel() const;
-    void setAnnotationBorderVisible( bool visible);
+    //
+    // KTextEditor::AnnotationView
+    //
+public:
+    void setAnnotationModel(KTextEditor::AnnotationModel *model);
+    KTextEditor::AnnotationModel *annotationModel() const;
+    void setAnnotationBorderVisible(bool visible);
     bool isAnnotationBorderVisible() const;
 
-  Q_SIGNALS:
-    void annotationContextMenuAboutToShow( KTextEditor::View* view, QMenu* menu, int line );
-    void annotationActivated( KTextEditor::View* view, int line );
-    void annotationBorderVisibilityChanged( View* view, bool visible );
+Q_SIGNALS:
+    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line);
+    void annotationActivated(KTextEditor::View *view, int line);
+    void annotationBorderVisibilityChanged(View *view, bool visible);
 
     void navigateLeft();
     void navigateRight();
@@ -358,30 +366,36 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     void navigateAccept();
     void navigateBack();
 
-  private:
-    KTextEditor::AnnotationModel* m_annotationModel;
+private:
+    KTextEditor::AnnotationModel *m_annotationModel;
 
-  //
-  // KTextEditor::View
-  //
-  public:
-    void emitNavigateLeft() {
-      emit navigateLeft();
+    //
+    // KTextEditor::View
+    //
+public:
+    void emitNavigateLeft()
+    {
+        emit navigateLeft();
     }
-    void emitNavigateRight() {
-      emit navigateRight();
+    void emitNavigateRight()
+    {
+        emit navigateRight();
     }
-    void emitNavigateUp() {
-      emit navigateUp();
+    void emitNavigateUp()
+    {
+        emit navigateUp();
     }
-    void emitNavigateDown() {
-      emit navigateDown();
+    void emitNavigateDown()
+    {
+        emit navigateDown();
     }
-    void emitNavigateAccept() {
-      emit navigateAccept();
+    void emitNavigateAccept()
+    {
+        emit navigateAccept();
     }
-    void emitNavigateBack() {
-      emit navigateBack();
+    void emitNavigateBack()
+    {
+        emit navigateBack();
     }
     /**
      Return values for "save" related commands.
@@ -416,7 +430,7 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
      */
     void setReplacementPattern(const QString &replacementPattern);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void indent();
     void unIndent();
     void cleanIndent();
@@ -488,14 +502,14 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
 
     void gotoLine();
 
-  // config file / session management functions
-  public:
-    void readSessionConfig(const KConfigGroup&);
-    void writeSessionConfig(KConfigGroup&);
+    // config file / session management functions
+public:
+    void readSessionConfig(const KConfigGroup &);
+    void writeSessionConfig(KConfigGroup &);
 
-  public Q_SLOTS:
-    void setEol( int eol );
-    void setAddBom( bool enabled);
+public Q_SLOTS:
+    void setEol(int eol);
+    void setAddBom(bool enabled);
     void find();
     void findSelectedForwards();
     void findSelectedBackwards();
@@ -503,32 +517,31 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     void findNext();
     void findPrevious();
 
-    void setFoldingMarkersOn( bool enable ); // Not in KTextEditor::View, but should be
-    void setIconBorder( bool enable );
-    void setLineNumbersOn( bool enable );
-    void setScrollBarMarks( bool enable );
-    void setScrollBarMiniMap( bool enable );
-    void setScrollBarMiniMapAll( bool enable );
-    void setScrollBarMiniMapWidth( int width );
+    void setFoldingMarkersOn(bool enable);   // Not in KTextEditor::View, but should be
+    void setIconBorder(bool enable);
+    void setLineNumbersOn(bool enable);
+    void setScrollBarMarks(bool enable);
+    void setScrollBarMiniMap(bool enable);
+    void setScrollBarMiniMapAll(bool enable);
+    void setScrollBarMiniMapWidth(int width);
     void toggleFoldingMarkers();
     void toggleIconBorder();
     void toggleLineNumbersOn();
     void toggleScrollBarMarks();
     void toggleScrollBarMiniMap();
     void toggleScrollBarMiniMapAll();
-    void toggleDynWordWrap ();
-    void toggleViInputMode ();
-
+    void toggleDynWordWrap();
+    void toggleViInputMode();
 
     void showViModeEmulatedCommandBar();
 
     void setDynWrapIndicators(int mode);
 
-  public:
+public:
     int getEol() const;
 
-  public:
-    KateRenderer *renderer ();
+public:
+    KateRenderer *renderer();
 
     bool iconBorder();
     bool lineNumbersOn();
@@ -538,91 +551,97 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     int dynWrapIndicators();
     bool foldingMarkersOn();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     /**
      * used to update actions after selection changed
      */
-    void slotSelectionChanged ();
+    void slotSelectionChanged();
 
-  public:
+public:
     /**
      * accessor to katedocument pointer
      * @return pointer to document
      */
-    KateDocument*  doc() { return m_doc; }
-    const KateDocument*  doc() const { return m_doc; }
+    KateDocument  *doc()
+    {
+        return m_doc;
+    }
+    const KateDocument  *doc() const
+    {
+        return m_doc;
+    }
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void slotUpdateUndo();
     void toggleInsert();
     void reloadFile();
     void toggleWWMarker();
     void toggleNPSpaces();
     void toggleWriteLock();
-    void switchToCmdLine ();
-    void switchToConsole ();
-    void slotReadWriteChanged ();
-    void slotClipboardHistoryChanged ();
+    void switchToCmdLine();
+    void switchToConsole();
+    void slotReadWriteChanged();
+    void slotClipboardHistoryChanged();
 
-  Q_SIGNALS:
-    void dropEventPass(QDropEvent*);
+Q_SIGNALS:
+    void dropEventPass(QDropEvent *);
 
-  public:
+public:
     /**
      * Folding handler for this view.
      * @return folding handler
      */
-    Kate::TextFolding &textFolding ()
+    Kate::TextFolding &textFolding()
     {
-      return m_textFolding;
+        return m_textFolding;
     }
 
-  public:
-    void slotTextInserted ( KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
+public:
+    void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
 
-  protected:
-    void contextMenuEvent( QContextMenuEvent* );
+protected:
+    void contextMenuEvent(QContextMenuEvent *);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotGotFocus();
     void slotLostFocus();
-    void slotDropEventPass( QDropEvent* ev );
-    void slotSaveCanceled( const QString& error );
-    void slotConfigDialog ();
+    void slotDropEventPass(QDropEvent *ev);
+    void slotSaveCanceled(const QString &error);
+    void slotConfigDialog();
 
-  public Q_SLOTS: // TODO: turn into good interface, see kte5/foldinginterface.h
+public Q_SLOTS: // TODO: turn into good interface, see kte5/foldinginterface.h
     void slotFoldToplevelNodes();
     void slotCollapseLocal();
     void slotCollapseLevel();
     void slotExpandLevel();
     void slotExpandLocal();
 
-  private:
+private:
     void setupConnections();
     void setupActions();
     void setupEditActions();
     void setupCodeFolding();
 
-    QList<QAction*>        m_editActions;
-    QAction*               m_editUndo;
-    QAction*               m_editRedo;
-    QAction*               m_pasteMenu;
-    KToggleAction*         m_toggleFoldingMarkers;
-    KToggleAction*         m_toggleIconBar;
-    KToggleAction*         m_toggleLineNumbers;
-    KToggleAction*         m_toggleScrollBarMarks;
-    KToggleAction*         m_toggleScrollBarMiniMap;
-    KToggleAction*         m_toggleScrollBarMiniMapAll;
-    KToggleAction*         m_toggleDynWrap;
-    KSelectAction*         m_setDynWrapIndicators;
-    KToggleAction*         m_toggleWWMarker;
-    KToggleAction*         m_toggleNPSpaces;
-    QAction*               m_switchCmdLine;
-    QAction*               m_switchConsole;
-    KToggleAction*         m_viInputModeAction;
+    QList<QAction *>        m_editActions;
+    QAction               *m_editUndo;
+    QAction               *m_editRedo;
+    QAction               *m_pasteMenu;
+    KToggleAction         *m_toggleFoldingMarkers;
+    KToggleAction         *m_toggleIconBar;
+    KToggleAction         *m_toggleLineNumbers;
+    KToggleAction         *m_toggleScrollBarMarks;
+    KToggleAction         *m_toggleScrollBarMiniMap;
+    KToggleAction         *m_toggleScrollBarMiniMapAll;
+    KToggleAction         *m_toggleDynWrap;
+    KSelectAction         *m_setDynWrapIndicators;
+    KToggleAction         *m_toggleWWMarker;
+    KToggleAction         *m_toggleNPSpaces;
+    QAction               *m_switchCmdLine;
+    QAction               *m_switchConsole;
+    KToggleAction         *m_viInputModeAction;
 
-    KSelectAction*         m_setEndOfLine;
-    KToggleAction*         m_addBom;
+    KSelectAction         *m_setEndOfLine;
+    KToggleAction         *m_addBom;
 
     QAction *m_cut;
     QAction *m_copy;
@@ -646,25 +665,28 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
 
     QVBoxLayout *m_vBox;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotHlChanged();
 
-  /**
-   * Configuration
-   */
-  public:
-    inline KateViewConfig *config () { return m_config; }
+    /**
+     * Configuration
+     */
+public:
+    inline KateViewConfig *config()
+    {
+        return m_config;
+    }
 
-    void updateConfig ();
+    void updateConfig();
 
     void updateDocumentConfig();
 
     void updateRendererConfig();
 
-  private Q_SLOTS:
-    void updateFoldingConfig ();
+private Q_SLOTS:
+    void updateFoldingConfig();
 
-  private:
+private:
     bool m_startingUp;
     bool m_updatingDocumentConfig;
 
@@ -674,35 +696,38 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     // do we select normal or blockwise ?
     bool blockSelect;
 
-  //
-  // TemplateInterface + TemplateInterface2
-  //
-  public:
-    virtual bool insertTemplateTextImplementation ( const KTextEditor::Cursor&, const QString &templateString, const QMap<QString,QString> &initialValues);
-    virtual bool insertTemplateTextImplementation ( const KTextEditor::Cursor&, const QString &templateString, const QMap<QString,QString> &initialValues, KTextEditor::TemplateScript* templateScript);
-  /**
-   * Accessors to the bars...
-   */
-  public:
+    //
+    // TemplateInterface + TemplateInterface2
+    //
+public:
+    virtual bool insertTemplateTextImplementation(const KTextEditor::Cursor &, const QString &templateString, const QMap<QString, QString> &initialValues);
+    virtual bool insertTemplateTextImplementation(const KTextEditor::Cursor &, const QString &templateString, const QMap<QString, QString> &initialValues, KTextEditor::TemplateScript *templateScript);
+    /**
+     * Accessors to the bars...
+     */
+public:
     KateViewBar *bottomViewBar() const;
-    KateCommandLineBar *cmdLineBar ();
-    KateScriptConsole *consoleBar ();
+    KateCommandLineBar *cmdLineBar();
+    KateScriptConsole *consoleBar();
     KateDictionaryBar *dictionaryBar();
     KateViEmulatedCommandBar *viModeEmulatedCommandBar();
 
-  private:
-    KateSearchBar *searchBar (bool initHintAsPower = false);
-    bool hasSearchBar () const { return m_searchBar != 0; }
-    KateGotoBar *gotoBar ();
+private:
+    KateSearchBar *searchBar(bool initHintAsPower = false);
+    bool hasSearchBar() const
+    {
+        return m_searchBar != 0;
+    }
+    KateGotoBar *gotoBar();
 
-  /**
-   * viewbar + its widgets
-   * they are created on demand...
-   */
-  private:
+    /**
+     * viewbar + its widgets
+     * they are created on demand...
+     */
+private:
     // created in constructor of the view
     KateViewBar *m_bottomViewBar;
-    
+
     // created on demand..., only access them through the above accessors....
     KateCommandLineBar *m_cmdLine;
     KateScriptConsole *m_console;
@@ -711,8 +736,8 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     KateGotoBar *m_gotoBar;
     KateDictionaryBar *m_dictionaryBar;
 
-  // vi Mode
-  public:
+    // vi Mode
+public:
     /**
      * @return boolean indicating whether vi mode is active or not
      */
@@ -726,13 +751,13 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     /**
      * @return a pointer to the KateViInputModeManager belonging to the view
      */
-    KateViInputModeManager* getViInputModeManager();
+    KateViInputModeManager *getViInputModeManager();
 
     /**
      * Replace ViInputModeManager by new one.
      * @return a pointer to the new KateViInputModeManager.
      */
-    KateViInputModeManager* resetViInputModeManager();
+    KateViInputModeManager *resetViInputModeManager();
 
     /**
      * @return boolean indicating whether vi mode will override actions or not
@@ -749,40 +774,40 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
      */
     void updateViModeBarCmd();
 
-  public:
+public:
     KTextEditor::Range visibleRange();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void displayRangeChanged(KateView *view);
 
-  protected:
-    KToggleAction*               m_toggleOnTheFlySpellCheck;
+protected:
+    KToggleAction               *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void toggleOnTheFlySpellCheck(bool b);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void changeDictionary();
     void reflectOnTheFlySpellCheckStatus(bool enabled);
 
-  public:
-    KateSpellingMenu* spellingMenu();
-  private:
+public:
+    KateSpellingMenu *spellingMenu();
+private:
     bool m_userContextMenuSet;
-    
-  private Q_SLOTS:
+
+private Q_SLOTS:
     /**
      * save folding state before document reload
      */
-    void saveFoldingState ();
-    
+    void saveFoldingState();
+
     /**
      * restore folding state after document reload
      */
-    void applyFoldingState ();
-    
-  private:
+    void applyFoldingState();
+
+private:
     /**
      * saved folding state
      */
@@ -795,94 +820,103 @@ public:
      * @param endLine end line of change
      * @param rangeWithAttribute attribute changed or is active, this will perhaps lead to repaints
      */
-    void notifyAboutRangeChange (int startLine, int endLine, bool rangeWithAttribute);
+    void notifyAboutRangeChange(int startLine, int endLine, bool rangeWithAttribute);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     /**
      * Delayed update for view after text ranges changed
      */
-    void slotDelayedUpdateOfView ();
+    void slotDelayedUpdateOfView();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Delayed update for view after text ranges changed
      */
-    void delayedUpdateOfView ();
+    void delayedUpdateOfView();
 
-  public:
-      /**
-       * set of ranges which had the mouse inside last time, used for rendering
-       * @return set of ranges which had the mouse inside last time checked
-       */
-      const QSet<Kate::TextRange *> *rangesMouseIn () const { return &m_rangesMouseIn; }
+public:
+    /**
+     * set of ranges which had the mouse inside last time, used for rendering
+     * @return set of ranges which had the mouse inside last time checked
+     */
+    const QSet<Kate::TextRange *> *rangesMouseIn() const
+    {
+        return &m_rangesMouseIn;
+    }
 
-      /**
-       * set of ranges which had the caret inside last time, used for rendering
-       * @return set of ranges which had the caret inside last time checked
-       */
-      const QSet<Kate::TextRange *> *rangesCaretIn () const { return &m_rangesCaretIn; }
+    /**
+     * set of ranges which had the caret inside last time, used for rendering
+     * @return set of ranges which had the caret inside last time checked
+     */
+    const QSet<Kate::TextRange *> *rangesCaretIn() const
+    {
+        return &m_rangesCaretIn;
+    }
 
-      /**
-       * check if ranges changed for mouse in and caret in
-       * @param activationType type of activation to check
-       */
-      void updateRangesIn (KTextEditor::Attribute::ActivationType activationType);
+    /**
+     * check if ranges changed for mouse in and caret in
+     * @param activationType type of activation to check
+     */
+    void updateRangesIn(KTextEditor::Attribute::ActivationType activationType);
 
-  //
-  // helpers for delayed view update after ranges changes
-  //
-  private:
-      /**
-       * update already inited?
-       */
-      bool m_delayedUpdateTriggered;
+    //
+    // helpers for delayed view update after ranges changes
+    //
+private:
+    /**
+     * update already inited?
+     */
+    bool m_delayedUpdateTriggered;
 
-      /**
-       * minimal line to update
-       */
-      int m_lineToUpdateMin;
+    /**
+     * minimal line to update
+     */
+    int m_lineToUpdateMin;
 
-      /**
-       * maximal line to update
-       */
-      int m_lineToUpdateMax;
+    /**
+     * maximal line to update
+     */
+    int m_lineToUpdateMax;
 
-      /**
-       * set of ranges which had the mouse inside last time
-       */
-      QSet<Kate::TextRange *> m_rangesMouseIn;
+    /**
+     * set of ranges which had the mouse inside last time
+     */
+    QSet<Kate::TextRange *> m_rangesMouseIn;
 
-      /**
-       * set of ranges which had the caret inside last time
-       */
-      QSet<Kate::TextRange *> m_rangesCaretIn;
+    /**
+     * set of ranges which had the caret inside last time
+     */
+    QSet<Kate::TextRange *> m_rangesCaretIn;
 
-  //
-  // forward impl for KTextEditor::MessageInterface
-  //
-  public:
+    //
+    // forward impl for KTextEditor::MessageInterface
+    //
+public:
     /**
      * Used by Document::postMessage().
      */
-    void postMessage(KTextEditor::Message* message, QList<QSharedPointer<QAction> > actions);
+    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction> > actions);
 
-  private:
+private:
     /** Message widget showing KTextEditor::Messages above the View. */
-    KateMessageWidget* m_topMessageWidget;
+    KateMessageWidget *m_topMessageWidget;
     /** Message widget showing KTextEditor::Messages below the View. */
-    KateMessageWidget* m_bottomMessageWidget;
+    KateMessageWidget *m_bottomMessageWidget;
     /** Message widget showing KTextEditor::Messages as view overlay in top right corner. */
-    KateMessageWidget* m_floatTopMessageWidget;
+    KateMessageWidget *m_floatTopMessageWidget;
     /** Message widget showing KTextEditor::Messages as view overlay in bottom left corner. */
-    KateMessageWidget* m_floatBottomMessageWidget;
+    KateMessageWidget *m_floatBottomMessageWidget;
     /** Layout for floating notifications */
-    QVBoxLayout* m_notificationLayout;
+    QVBoxLayout *m_notificationLayout;
 
-  // for unit test 'tests/messagetest.cpp'
-  public:
-    KateMessageWidget* messageWidget() { return m_floatTopMessageWidget; }
-    
-  private:
+    // for unit test 'tests/messagetest.cpp'
+public:
+    KateMessageWidget *messageWidget()
+    {
+        return m_floatTopMessageWidget;
+    }
+
+private:
     /**
      * The main window responsible for this view, if any
      */
@@ -897,4 +931,3 @@ Q_DECLARE_METATYPE(KTextEditor::Range)
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

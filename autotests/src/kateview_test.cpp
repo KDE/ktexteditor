@@ -33,19 +33,19 @@ using namespace KTextEditor;
 
 QTEST_MAIN(KateViewTest)
 
-namespace QTest {
-    template<>
-    char *toString(const KTextEditor::Cursor &cursor)
-    {
-        QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                           + ", " + QByteArray::number(cursor.column()) + "]";
-        return qstrdup(ba.data());
-    }
+namespace QTest
+{
+template<>
+char *toString(const KTextEditor::Cursor &cursor)
+{
+    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
+                    + ", " + QByteArray::number(cursor.column()) + "]";
+    return qstrdup(ba.data());
+}
 }
 
-
 KateViewTest::KateViewTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -59,7 +59,7 @@ void KateViewTest::testReloadMultipleViews()
     file.open();
     QTextStream stream(&file);
     const QString line = "const char* foo = \"asdf\"\n";
-    for ( int i = 0; i < 200; ++i ) {
+    for (int i = 0; i < 200; ++i) {
         stream << line;
     }
     stream << flush;
@@ -69,8 +69,8 @@ void KateViewTest::testReloadMultipleViews()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView* view1 = new KateView(&doc, 0);
-    KateView* view2 = new KateView(&doc, 0);
+    KateView *view1 = new KateView(&doc, 0);
+    KateView *view2 = new KateView(&doc, 0);
     view1->show();
     view2->show();
     QCOMPARE(doc.views().count(), 2);
@@ -84,7 +84,7 @@ void KateViewTest::testLowerCaseBlockSelection()
     KateDocument doc(false, false, false);
     doc.setText("nY\nnYY\n");
 
-    KateView* view1 = new KateView(&doc, 0);
+    KateView *view1 = new KateView(&doc, 0);
     view1->setBlockSelection(true);
     view1->setSelection(Range(0, 1, 1, 3));
     view1->lowercase();
@@ -122,10 +122,10 @@ void KateViewTest::testFolding()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView* view = new KateView(&doc, 0);
-    QAction* collapseAction = view->action("folding_toplevel");
+    KateView *view = new KateView(&doc, 0);
+    QAction *collapseAction = view->action("folding_toplevel");
     QVERIFY(collapseAction);
-    QAction* expandAction = view->action("folding_expandtoplevel");
+    QAction *expandAction = view->action("folding_expandtoplevel");
     QVERIFY(expandAction);
 
     QFETCH(bool, dynWordWrap);
@@ -136,8 +136,8 @@ void KateViewTest::testFolding()
     view->config()->setScrollPastEnd(scrollPastEnd);
     view->config()->setAutoCenterLines(autoCenterLines);
 
-    for(int i = 0; i < doc.lines(); ++i) {
-      doc.buffer().ensureHighlighted(i);
+    for (int i = 0; i < doc.lines(); ++i) {
+        doc.buffer().ensureHighlighted(i);
     }
     QCOMPARE(doc.visibleLines(), 4u);
 
@@ -166,45 +166,45 @@ void KateViewTest::testBug287291()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView* view = new KateView(&doc, 0);
-    QAction* collapseAction = view->action("folding_toplevel");
+    KateView *view = new KateView(&doc, 0);
+    QAction *collapseAction = view->action("folding_toplevel");
     QVERIFY(collapseAction);
-    QAction* expandAction = view->action("folding_expandtoplevel");
+    QAction *expandAction = view->action("folding_expandtoplevel");
     QVERIFY(expandAction);
 
-    for(int i = 0; i < doc.lines(); ++i) {
-      doc.buffer().ensureHighlighted(i);
-      // make sure this works without crash
-      KateLineInfo info;
-      doc.lineInfo(&info, i);
+    for (int i = 0; i < doc.lines(); ++i) {
+        doc.buffer().ensureHighlighted(i);
+        // make sure this works without crash
+        KateLineInfo info;
+        doc.lineInfo(&info, i);
     }
 
     QCOMPARE(doc.visibleLines(), 4u);
     collapseAction->trigger();
     QCOMPARE(doc.visibleLines(), 2u);
-    for(int i = 0; i < doc.lines(); ++i) {
-      // make sure this works without crash
-      KateLineInfo info;
-      doc.lineInfo(&info, i);
+    for (int i = 0; i < doc.lines(); ++i) {
+        // make sure this works without crash
+        KateLineInfo info;
+        doc.lineInfo(&info, i);
     }
     doc.clear();
     QCOMPARE(doc.visibleLines(), 1u);
     doc.undo();
     QCOMPARE(doc.visibleLines(), 5u);
-    for(int i = 0; i < doc.lines(); ++i) {
-      // make sure this works without crash
-      KateLineInfo info;
-      doc.lineInfo(&info, i);
+    for (int i = 0; i < doc.lines(); ++i) {
+        // make sure this works without crash
+        KateLineInfo info;
+        doc.lineInfo(&info, i);
     }
 
     // now add a newline after the last }
     QCOMPARE(doc.text(Range(2, 0, 2, 1)), QLatin1String("}"));
     view->setCursorPosition(Cursor(2, 1));
     doc.newLine(view);
-    for(int i = 0; i < doc.lines(); ++i) {
-      // make sure this works without crash
-      KateLineInfo info;
-      doc.lineInfo(&info, i);
+    for (int i = 0; i < doc.lines(); ++i) {
+        // make sure this works without crash
+        KateLineInfo info;
+        doc.lineInfo(&info, i);
     }
 #endif
 }
@@ -232,12 +232,12 @@ void KateViewTest::testSelection()
     KateDocument doc(false, false, false);
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
-    KateView* view = new KateView(&doc, 0);
+    KateView *view = new KateView(&doc, 0);
     view->resize(100, 100);
     view->show();
 
     // hackish but works: access to KateViewInternal
-    QObject* internalView = view->childAt(50, 50);
+    QObject *internalView = view->childAt(50, 50);
     QCOMPARE(internalView->metaObject()->className(), "KateViewInternal");
 
     const QPoint afterA = view->cursorToCoordinate(Cursor(0, 1));
@@ -246,47 +246,47 @@ void KateViewTest::testSelection()
 
     // click after A
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     // drag to right
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0),
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0),
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     QVERIFY(!view->selection());
 
     // click after C
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterC,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterC,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::NoModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::NoModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(2, 1));
     // shift+click after B
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterB,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::ShiftModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::ShiftModifier));
 
     QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterB,
-                                                      Qt::LeftButton, Qt::LeftButton,
-                                                      Qt::ShiftModifier));
+                                Qt::LeftButton, Qt::LeftButton,
+                                Qt::ShiftModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(1, 1));
     QCOMPARE(view->selectionRange(), Range(1, 1, 2, 1));

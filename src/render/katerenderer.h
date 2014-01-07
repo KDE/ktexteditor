@@ -36,7 +36,10 @@ class KateDocument;
 class KateView;
 class KateRendererConfig;
 class KateRenderRange;
-namespace Kate { class TextFolding; }
+namespace Kate
+{
+class TextFolding;
+}
 
 /**
  * Handles all of the work of rendering the text
@@ -63,10 +66,10 @@ public:
      * ##               #########        #########        #########
      */
     enum caretStyles {
-      Line,
-      Block,
-      Underline,
-      Half
+        Line,
+        Block,
+        Underline,
+        Half
     };
 
     /**
@@ -75,7 +78,7 @@ public:
      * @param folding folding information
      * @param view view which is output (0 for example for rendering to print)
      */
-    explicit KateRenderer(KateDocument* doc, Kate::TextFolding &folding, KateView *view = 0);
+    explicit KateRenderer(KateDocument *doc, Kate::TextFolding &folding, KateView *view = 0);
 
     /**
      * Destructor
@@ -85,30 +88,42 @@ public:
     /**
      * Returns the document to which this renderer is bound
      */
-    KateDocument* doc() const { return m_doc; }
+    KateDocument *doc() const
+    {
+        return m_doc;
+    }
 
     /**
      * Returns the folding info to which this renderer is bound
      * @return folding info
      */
-    Kate::TextFolding &folding() const { return m_folding; }
+    Kate::TextFolding &folding() const
+    {
+        return m_folding;
+    }
 
     /**
      * Returns the view to which this renderer is bound
      */
-    KateView* view() const { return m_view; }
+    KateView *view() const
+    {
+        return m_view;
+    }
 
     /**
      * update the highlighting attributes
      * (for example after an hl change or after hl config changed)
      */
-    void updateAttributes ();
+    void updateAttributes();
 
     /**
      * Determine whether the caret (text cursor) will be drawn.
      * @return should it be drawn?
      */
-    inline bool drawCaret() const { return m_drawCaret; }
+    inline bool drawCaret() const
+    {
+        return m_drawCaret;
+    }
 
     /**
      * Set whether the caret (text cursor) will be drawn.
@@ -120,7 +135,10 @@ public:
      * The style of the caret (text cursor) to be painted.
      * @return caretStyle
      */
-    inline KateRenderer::caretStyles caretStyle() const { return m_caretStyle; }
+    inline KateRenderer::caretStyles caretStyle() const
+    {
+        return m_caretStyle;
+    }
 
     /**
      * Set the style of caret to be painted.
@@ -131,14 +149,17 @@ public:
     /**
      * Set a \a brush with which to override drawing of the caret.  Set to QColor() to clear.
      */
-    void setCaretOverrideColor(const QColor& color);
+    void setCaretOverrideColor(const QColor &color);
 
     /**
      * @returns whether tabs should be shown (ie. a small mark
      * drawn to identify a tab)
      * @return tabs should be shown
      */
-    inline bool showTabs() const { return m_showTabs; }
+    inline bool showTabs() const
+    {
+        return m_showTabs;
+    }
 
     /**
      * Set whether a mark should be painted to help identifying tabs.
@@ -149,7 +170,10 @@ public:
     /**
      * @returns whether trailing spaces should be shown.
      */
-    inline bool showTrailingSpaces() const { return m_showSpaces; }
+    inline bool showTrailingSpaces() const
+    {
+        return m_showSpaces;
+    }
 
     /**
      * Set whether a mark should be painted for trailing spaces.
@@ -159,7 +183,10 @@ public:
     /**
      * @returns whether non-printable spaces should be shown
      */
-    inline bool showNonPrintableSpaces() const { return m_showNonPrintableSpaces; }
+    inline bool showNonPrintableSpaces() const
+    {
+        return m_showNonPrintableSpaces;
+    }
 
     /**
      * Set whether box should be drawn around non-printable spaces
@@ -194,7 +221,10 @@ public:
      * Show the view's selection?
      * @return show sels?
      */
-    inline bool showSelections() const { return m_showSelections; }
+    inline bool showSelections() const
+    {
+        return m_showSelections;
+    }
 
     /**
      * Set whether the view's selections should be shown.
@@ -208,8 +238,8 @@ public:
      */
     void increaseFontSizes();
     void decreaseFontSizes();
-    const QFont& currentFont() const;
-    const QFontMetricsF& currentFontMetrics() const;
+    const QFont &currentFont() const;
+    const QFontMetricsF &currentFontMetrics() const;
 
     /**
      * @return whether the renderer is configured to paint in a
@@ -239,7 +269,7 @@ public:
      * (see https://bugs.kde.org/show_bug.cgi?id=178594). As this function is internal
      * the way it work will probably change between releases. Be warned!
      */
-    bool isLineRightToLeft( KateLineLayoutPtr lineLayout ) const;
+    bool isLineRightToLeft(KateLineLayoutPtr lineLayout) const;
 
     /**
      * The ultimate decoration creation function.
@@ -247,7 +277,7 @@ public:
      * \param range line to return decoration for
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine& textLine, int line, bool selectionsOnly = false, KateRenderRange* completionHighlight = 0L, bool completionSelected = false) const;
+    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, KateRenderRange *completionHighlight = 0L, bool completionSelected = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
@@ -255,16 +285,16 @@ public:
     /**
      * Returns the x position of cursor \p col on the line \p range.
      */
-    int cursorToX(const KateTextLayout& range, int col, bool returnPastLine = false) const;
+    int cursorToX(const KateTextLayout &range, int col, bool returnPastLine = false) const;
     /// \overload
-    int cursorToX(const KateTextLayout& range, const KTextEditor::Cursor& pos, bool returnPastLine = false) const;
+    int cursorToX(const KateTextLayout &range, const KTextEditor::Cursor &pos, bool returnPastLine = false) const;
 
     /**
      * Returns the real cursor which is occupied by the specified x value, or that closest to it.
      * If \p returnPastLine is true, the column will be extrapolated out with the assumption
      * that the extra characters are spaces.
      */
-    KTextEditor::Cursor xToCursor(const KateTextLayout& range, int x, bool returnPastLine = false) const;
+    KTextEditor::Cursor xToCursor(const KateTextLayout &range, int x, bool returnPastLine = false) const;
 
     // Font height
     uint fontHeight() const;
@@ -290,7 +320,7 @@ public:
      * @param xEnd            ending width in pixels.
      * @param cursor          position of the caret, if placed on the current line.
      */
-    void paintTextLine(QPainter& paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor* cursor = 0L);
+    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = 0L);
 
     /**
      * Paint the background of a line
@@ -306,7 +336,7 @@ public:
      * @param xStart          starting width in pixels.
      * @param xEnd            ending width in pixels.
      */
-    void paintTextLineBackground(QPainter& paint, KateLineLayoutPtr layout, int currentViewLine, int xStart, int xEnd);
+    void paintTextLineBackground(QPainter &paint, KateLineLayoutPtr layout, int currentViewLine, int xStart, int xEnd);
 
     /**
      * This takes an in index, and returns all the attributes for it.
@@ -318,7 +348,7 @@ public:
     KTextEditor::Attribute::Ptr attribute(uint pos) const;
     KTextEditor::Attribute::Ptr specificAttribute(int context) const;
 
-  private:
+private:
     /**
      * Paint a trailing space on position (x, y).
      */
@@ -341,11 +371,11 @@ public:
     /** Paint a SciTE-like indent marker. */
     void paintIndentMarker(QPainter &paint, uint x, uint y);
 
-    void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange& target, const KTextEditor::Attribute& attribute) const;
+    void assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const;
 
     // update font height
-    void updateFontHeight ();
-    
+    void updateFontHeight();
+
     KateDocument *const m_doc;
     Kate::TextFolding &m_folding;
     KateView *const m_view;
@@ -367,15 +397,18 @@ public:
 
     QList<KTextEditor::Attribute::Ptr> m_attributes;
 
-  /**
-   * Configuration
-   */
-  public:
-    inline KateRendererConfig *config () const { return m_config; }
+    /**
+     * Configuration
+     */
+public:
+    inline KateRendererConfig *config() const
+    {
+        return m_config;
+    }
 
-    void updateConfig ();
+    void updateConfig();
 
-  private:
+private:
     KateRendererConfig *const m_config;
 };
 

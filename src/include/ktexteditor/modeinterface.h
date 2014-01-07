@@ -22,7 +22,6 @@
 
 #include <ktexteditor_export.h>
 
-
 // TODO KDE5: The ModeInterface is not implemented by any class KatePart
 //            --> remove?
 
@@ -62,7 +61,7 @@ class Document;
  */
 class KTEXTEDITOR_EXPORT ModeInterface
 {
-  public:    
+public:
     /**
      * Constructor.
      */
@@ -104,4 +103,3 @@ Q_DECLARE_INTERFACE(KTextEditor::ModeInterface, "org.kde.KTextEditor.ModeInterfa
 
 #endif // KDELIBS_KTEXTEDITOR_MODEINTERFACE_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

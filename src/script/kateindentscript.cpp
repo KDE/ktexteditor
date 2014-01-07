@@ -26,69 +26,70 @@
 #include "kateview.h"
 
 KateIndentScript::KateIndentScript(const QString &url, const KateIndentScriptHeader &header)
-  : KateScript(url)
-  , m_triggerCharactersSet (false)
-  , m_indentHeader(header)
+    : KateScript(url)
+    , m_triggerCharactersSet(false)
+    , m_indentHeader(header)
 {
 }
 
-const KateIndentScriptHeader& KateIndentScript::indentHeader() const
+const KateIndentScriptHeader &KateIndentScript::indentHeader() const
 {
-  return m_indentHeader;
+    return m_indentHeader;
 }
 
 const QString &KateIndentScript::triggerCharacters()
 {
-  // already set, perfect, just return...
-  if (m_triggerCharactersSet)
+    // already set, perfect, just return...
+    if (m_triggerCharactersSet) {
+        return m_triggerCharacters;
+    }
+
+    m_triggerCharactersSet = true;
+
+    m_triggerCharacters = global(QLatin1String("triggerCharacters")).toString();
+
+    //qCDebug(LOG_PART) << "trigger chars: '" << m_triggerCharacters << "'";
+
     return m_triggerCharacters;
-
-  m_triggerCharactersSet = true;
-
-  m_triggerCharacters = global(QLatin1String("triggerCharacters")).toString();
-
-  //qCDebug(LOG_PART) << "trigger chars: '" << m_triggerCharacters << "'";
-
-  return m_triggerCharacters;
 }
 
-QPair<int, int> KateIndentScript::indent(KateView* view, const KTextEditor::Cursor& position,
-                                         QChar typedCharacter, int indentWidth)
+QPair<int, int> KateIndentScript::indent(KateView *view, const KTextEditor::Cursor &position,
+        QChar typedCharacter, int indentWidth)
 {
-  // if it hasn't loaded or we can't load, return
-  if(!setView(view))
-    return qMakePair(-2,-2);
+    // if it hasn't loaded or we can't load, return
+    if (!setView(view)) {
+        return qMakePair(-2, -2);
+    }
 
-  clearExceptions();
-  QScriptValue indentFunction = function(QLatin1String("indent"));
-  if(!indentFunction.isValid()) {
-    return qMakePair(-2,-2);
-  }
-  // add the arguments that we are going to pass to the function
-  QScriptValueList arguments;
-  arguments << QScriptValue(m_engine, position.line());
-  arguments << QScriptValue(m_engine, indentWidth);
-  arguments << QScriptValue(m_engine, typedCharacter.isNull() ? QString() : QString(typedCharacter));
-  // get the required indent
-  QScriptValue result = indentFunction.call(QScriptValue(), arguments);
-  // error during the calling?
-  if(m_engine->hasUncaughtException()) {
-    displayBacktrace(result, QLatin1String("Error calling indent()"));
-    return qMakePair(-2,-2);
-  }
-  int indentAmount = -2;
-  int alignAmount = -2;
-  if (result.isArray()) {
-    indentAmount = result.property(0).toInt32();
-    alignAmount = result.property(1).toInt32();
-  } else {
-    indentAmount = result.toInt32();
-  }
-  if(m_engine->hasUncaughtException()) {
-    displayBacktrace(QScriptValue(), QLatin1String("Bad return type (must be integer)"));
-    return qMakePair(-2,-2);
-  }
-  return qMakePair(indentAmount, alignAmount);
+    clearExceptions();
+    QScriptValue indentFunction = function(QLatin1String("indent"));
+    if (!indentFunction.isValid()) {
+        return qMakePair(-2, -2);
+    }
+    // add the arguments that we are going to pass to the function
+    QScriptValueList arguments;
+    arguments << QScriptValue(m_engine, position.line());
+    arguments << QScriptValue(m_engine, indentWidth);
+    arguments << QScriptValue(m_engine, typedCharacter.isNull() ? QString() : QString(typedCharacter));
+    // get the required indent
+    QScriptValue result = indentFunction.call(QScriptValue(), arguments);
+    // error during the calling?
+    if (m_engine->hasUncaughtException()) {
+        displayBacktrace(result, QLatin1String("Error calling indent()"));
+        return qMakePair(-2, -2);
+    }
+    int indentAmount = -2;
+    int alignAmount = -2;
+    if (result.isArray()) {
+        indentAmount = result.property(0).toInt32();
+        alignAmount = result.property(1).toInt32();
+    } else {
+        indentAmount = result.toInt32();
+    }
+    if (m_engine->hasUncaughtException()) {
+        displayBacktrace(QScriptValue(), QLatin1String("Bad return type (must be integer)"));
+        return qMakePair(-2, -2);
+    }
+    return qMakePair(indentAmount, alignAmount);
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

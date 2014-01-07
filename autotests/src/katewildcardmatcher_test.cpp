@@ -21,16 +21,14 @@
 #include <QtGlobal>
 #include <QtDebug>
 
-
-
-bool testCase(const char * candidate, const char * wildcard) {
+bool testCase(const char *candidate, const char *wildcard)
+{
     qDebug("\"%s\" / \"%s\"", candidate, wildcard);
-	return KateWildcardMatcher::exactMatch(QString(candidate), QString(wildcard));
+    return KateWildcardMatcher::exactMatch(QString(candidate), QString(wildcard));
 }
 
-
-
-int main() {
+int main()
+{
     Q_ASSERT(testCase("abc.txt", "*.txt"));
     Q_ASSERT(!testCase("abc.txt", "*.cpp"));
 
@@ -57,8 +55,7 @@ int main() {
 
     Q_ASSERT(testCase("aXXbXXbYYaYc", "a*b*c"));
 
-    
     qDebug() << endl << "DONE";
-	return 0;
+    return 0;
 }
 

@@ -35,11 +35,11 @@ using namespace KTextEditor;
 
 void WordCompletionTest::initTestCase()
 {
-  Editor* editor = KTextEditor::Editor::instance();
-  QVERIFY(editor);
+    Editor *editor = KTextEditor::Editor::instance();
+    QVERIFY(editor);
 
-  m_doc = editor->createDocument(this);
-  QVERIFY(m_doc);
+    m_doc = editor->createDocument(this);
+    QVERIFY(m_doc);
 }
 
 void WordCompletionTest::cleanupTestCase()
@@ -48,7 +48,7 @@ void WordCompletionTest::cleanupTestCase()
 
 void WordCompletionTest::init()
 {
-  m_doc->clear();
+    m_doc->clear();
 }
 
 void WordCompletionTest::cleanup()
@@ -57,59 +57,58 @@ void WordCompletionTest::cleanup()
 
 void WordCompletionTest::benchWordRetrievalMixed()
 {
-  const int distinctWordRatio = 100;
-  QStringList s;
-  s.reserve(count);
-  for ( int i = 0; i < count; i++ ) {
-    s.append(QLatin1String("HelloWorld") + QString::number(i / distinctWordRatio));
-  }
-  s.prepend("\n");
-  m_doc->setText(s);
+    const int distinctWordRatio = 100;
+    QStringList s;
+    s.reserve(count);
+    for (int i = 0; i < count; i++) {
+        s.append(QLatin1String("HelloWorld") + QString::number(i / distinctWordRatio));
+    }
+    s.prepend("\n");
+    m_doc->setText(s);
 
-  // creating the view only after inserting the text makes test execution much faster
-  QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
-  QBENCHMARK {
-    KateWordCompletionModel m(0);
-    QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count / distinctWordRatio);
-  }
+    // creating the view only after inserting the text makes test execution much faster
+    QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
+    QBENCHMARK {
+        KateWordCompletionModel m(0);
+        QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count / distinctWordRatio);
+    }
 }
 
 void WordCompletionTest::benchWordRetrievalSame()
 {
-  QStringList s;
-  s.reserve(count);
-  // add a number so the words have roughly the same length as in the other tests
-  const QString str = QLatin1String("HelloWorld") + QString::number(count);
-  for ( int i = 0; i < count; i++ ) {
-    s.append(str);
-  }
-  s.prepend("\n");
-  m_doc->setText(s);
+    QStringList s;
+    s.reserve(count);
+    // add a number so the words have roughly the same length as in the other tests
+    const QString str = QLatin1String("HelloWorld") + QString::number(count);
+    for (int i = 0; i < count; i++) {
+        s.append(str);
+    }
+    s.prepend("\n");
+    m_doc->setText(s);
 
-  QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
-  QBENCHMARK {
-    KateWordCompletionModel m(0);
-    QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), 1);
-  }
+    QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
+    QBENCHMARK {
+        KateWordCompletionModel m(0);
+        QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), 1);
+    }
 }
 
 void WordCompletionTest::benchWordRetrievalDistinct()
 {
-  QStringList s;
-  s.reserve(count);
-  for ( int i = 0; i < count; i++ ) {
-    s.append(QLatin1String("HelloWorld") + QString::number(i));
-  }
-  s.prepend("\n");
-  m_doc->setText(s);
+    QStringList s;
+    s.reserve(count);
+    for (int i = 0; i < count; i++) {
+        s.append(QLatin1String("HelloWorld") + QString::number(i));
+    }
+    s.prepend("\n");
+    m_doc->setText(s);
 
-  QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
-  QBENCHMARK {
-    KateWordCompletionModel m(0);
-    QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count);
-  }
+    QSharedPointer<KTextEditor::View> v(m_doc->createView(0));
+    QBENCHMARK {
+        KateWordCompletionModel m(0);
+        QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count);
+    }
 }
 
 #include "wordcompletiontest.moc"
 
-// kate: indent-width 2

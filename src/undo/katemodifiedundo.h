@@ -25,8 +25,8 @@
 
 class KateModifiedInsertText : public KateEditInsertTextUndo
 {
-  public:
-    KateModifiedInsertText (KateDocument *document, int line, int col, const QString &text);
+public:
+    KateModifiedInsertText(KateDocument *document, int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -38,14 +38,14 @@ class KateModifiedInsertText : public KateEditInsertTextUndo
      */
     void redo();
 
-    void updateUndoSavedOnDiskFlag(QBitArray & lines);
-    void updateRedoSavedOnDiskFlag(QBitArray & lines);
+    void updateUndoSavedOnDiskFlag(QBitArray &lines);
+    void updateRedoSavedOnDiskFlag(QBitArray &lines);
 };
 
 class KateModifiedRemoveText : public KateEditRemoveTextUndo
 {
-  public:
-    KateModifiedRemoveText (KateDocument *document, int line, int col, const QString &text);
+public:
+    KateModifiedRemoveText(KateDocument *document, int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -57,14 +57,14 @@ class KateModifiedRemoveText : public KateEditRemoveTextUndo
      */
     void redo();
 
-    void updateUndoSavedOnDiskFlag(QBitArray & lines);
-    void updateRedoSavedOnDiskFlag(QBitArray & lines);
+    void updateUndoSavedOnDiskFlag(QBitArray &lines);
+    void updateRedoSavedOnDiskFlag(QBitArray &lines);
 };
 
 class KateModifiedWrapLine : public KateEditWrapLineUndo
 {
-  public:
-    KateModifiedWrapLine (KateDocument *document, int line, int col, int len, bool newLine);
+public:
+    KateModifiedWrapLine(KateDocument *document, int line, int col, int len, bool newLine);
 
     /**
      * @copydoc KateUndo::undo()
@@ -76,14 +76,14 @@ class KateModifiedWrapLine : public KateEditWrapLineUndo
      */
     void redo();
 
-    void updateUndoSavedOnDiskFlag(QBitArray & lines);
-    void updateRedoSavedOnDiskFlag(QBitArray & lines);
+    void updateUndoSavedOnDiskFlag(QBitArray &lines);
+    void updateRedoSavedOnDiskFlag(QBitArray &lines);
 };
 
 class KateModifiedUnWrapLine : public KateEditUnWrapLineUndo
 {
-  public:
-    KateModifiedUnWrapLine (KateDocument *document, int line, int col, int len, bool removeLine);
+public:
+    KateModifiedUnWrapLine(KateDocument *document, int line, int col, int len, bool removeLine);
 
     /**
      * @copydoc KateUndo::undo()
@@ -95,14 +95,14 @@ class KateModifiedUnWrapLine : public KateEditUnWrapLineUndo
      */
     void redo();
 
-    void updateUndoSavedOnDiskFlag(QBitArray & lines);
-    void updateRedoSavedOnDiskFlag(QBitArray & lines);
+    void updateUndoSavedOnDiskFlag(QBitArray &lines);
+    void updateRedoSavedOnDiskFlag(QBitArray &lines);
 };
 
 class KateModifiedInsertLine : public KateEditInsertLineUndo
 {
-  public:
-    KateModifiedInsertLine (KateDocument *document, int line, const QString &text);
+public:
+    KateModifiedInsertLine(KateDocument *document, int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -113,14 +113,14 @@ class KateModifiedInsertLine : public KateEditInsertLineUndo
      * @copydoc KateUndo::redo()
      */
     void redo();
-    
-    void updateRedoSavedOnDiskFlag(QBitArray & lines);
+
+    void updateRedoSavedOnDiskFlag(QBitArray &lines);
 };
 
 class KateModifiedRemoveLine : public KateEditRemoveLineUndo
 {
-  public:
-    KateModifiedRemoveLine (KateDocument *document, int line, const QString &text);
+public:
+    KateModifiedRemoveLine(KateDocument *document, int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -132,9 +132,8 @@ class KateModifiedRemoveLine : public KateEditRemoveLineUndo
      */
     void redo();
 
-    void updateUndoSavedOnDiskFlag(QBitArray & lines);
+    void updateUndoSavedOnDiskFlag(QBitArray &lines);
 };
 
 #endif // KATE_MODIFIED_UNDO_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

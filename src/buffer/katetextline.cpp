@@ -20,180 +20,189 @@
 
 #include "katetextline.h"
 
-namespace Kate {
+namespace Kate
+{
 
-TextLineData::TextLineData ()
-  : m_flags (0)
+TextLineData::TextLineData()
+    : m_flags(0)
 {
 }
 
-TextLineData::TextLineData (const QString &text)
-  : m_text (text)
-  , m_flags (0)
+TextLineData::TextLineData(const QString &text)
+    : m_text(text)
+    , m_flags(0)
 {
 }
 
-TextLineData::~TextLineData ()
+TextLineData::~TextLineData()
 {
 }
 
 int TextLineData::firstChar() const
 {
-  return nextNonSpaceChar(0);
+    return nextNonSpaceChar(0);
 }
 
 int TextLineData::lastChar() const
 {
-  return previousNonSpaceChar(m_text.length() - 1);
+    return previousNonSpaceChar(m_text.length() - 1);
 }
 
-int TextLineData::nextNonSpaceChar (int pos) const
+int TextLineData::nextNonSpaceChar(int pos) const
 {
-  Q_ASSERT (pos >= 0);
+    Q_ASSERT(pos >= 0);
 
-  for(int i = pos; i < m_text.length(); i++)
-    if (!m_text[i].isSpace())
-      return i;
+    for (int i = pos; i < m_text.length(); i++)
+        if (!m_text[i].isSpace()) {
+            return i;
+        }
 
-  return -1;
+    return -1;
 }
 
-int TextLineData::previousNonSpaceChar (int pos) const
+int TextLineData::previousNonSpaceChar(int pos) const
 {
-  if (pos >= m_text.length())
-    pos = m_text.length() - 1;
+    if (pos >= m_text.length()) {
+        pos = m_text.length() - 1;
+    }
 
-  for(int i = pos; i >= 0; i--)
-    if (!m_text[i].isSpace())
-      return i;
+    for (int i = pos; i >= 0; i--)
+        if (!m_text[i].isSpace()) {
+            return i;
+        }
 
-  return -1;
+    return -1;
 }
 
 QString TextLineData::leadingWhitespace() const
 {
-  if (firstChar() < 0)
-    return string(0, length());
-
-  return string(0, firstChar());
-}
-
-int TextLineData::indentDepth (int tabWidth) const
-{
-  int d = 0;
-  const int len = m_text.length();
-  const QChar *unicode = m_text.unicode();
-
-  for(int i = 0; i < len; ++i)
-  {
-    if(unicode[i].isSpace())
-    {
-      if (unicode[i] == QLatin1Char('\t'))
-        d += tabWidth - (d % tabWidth);
-      else
-        d++;
+    if (firstChar() < 0) {
+        return string(0, length());
     }
-    else
-      return d;
-  }
 
-  return d;
+    return string(0, firstChar());
 }
 
-bool TextLineData::matchesAt(int column, const QString& match) const
+int TextLineData::indentDepth(int tabWidth) const
 {
-  if (column < 0)
-    return false;
+    int d = 0;
+    const int len = m_text.length();
+    const QChar *unicode = m_text.unicode();
 
-  const int len = m_text.length();
-  const int matchlen = match.length();
+    for (int i = 0; i < len; ++i) {
+        if (unicode[i].isSpace()) {
+            if (unicode[i] == QLatin1Char('\t')) {
+                d += tabWidth - (d % tabWidth);
+            } else {
+                d++;
+            }
+        } else {
+            return d;
+        }
+    }
 
-  if ((column + matchlen) > len)
-    return false;
-
-  const QChar *unicode = m_text.unicode();
-  const QChar *matchUnicode = match.unicode();
-
-  for (int i=0; i < matchlen; ++i)
-    if (unicode[i+column] != matchUnicode[i])
-      return false;
-
-  return true;
+    return d;
 }
 
-int TextLineData::toVirtualColumn (int column, int tabWidth) const
+bool TextLineData::matchesAt(int column, const QString &match) const
 {
-  if (column < 0)
-    return 0;
+    if (column < 0) {
+        return false;
+    }
 
-  int x = 0;
-  const int zmax = qMin(column, m_text.length());
-  const QChar *unicode = m_text.unicode();
+    const int len = m_text.length();
+    const int matchlen = match.length();
 
-  for ( int z = 0; z < zmax; ++z)
-  {
-    if (unicode[z] == QLatin1Char('\t'))
-      x += tabWidth - (x % tabWidth);
-    else
-      x++;
-  }
+    if ((column + matchlen) > len) {
+        return false;
+    }
 
-  return x + column - zmax;
+    const QChar *unicode = m_text.unicode();
+    const QChar *matchUnicode = match.unicode();
+
+    for (int i = 0; i < matchlen; ++i)
+        if (unicode[i + column] != matchUnicode[i]) {
+            return false;
+        }
+
+    return true;
 }
 
-int TextLineData::fromVirtualColumn (int column, int tabWidth) const
+int TextLineData::toVirtualColumn(int column, int tabWidth) const
 {
-  if (column < 0)
-    return 0;
+    if (column < 0) {
+        return 0;
+    }
 
-  const int zmax = qMin(m_text.length(), column);
-  const QChar *unicode = m_text.unicode();
+    int x = 0;
+    const int zmax = qMin(column, m_text.length());
+    const QChar *unicode = m_text.unicode();
 
-  int x = 0;
-  int z = 0;
-  for (; z < zmax; ++z)
-  {
-    int diff = 1;
-    if (unicode[z] == QLatin1Char('\t'))
-      diff = tabWidth - (x % tabWidth);
+    for (int z = 0; z < zmax; ++z) {
+        if (unicode[z] == QLatin1Char('\t')) {
+            x += tabWidth - (x % tabWidth);
+        } else {
+            x++;
+        }
+    }
 
-    if (x + diff > column)
-      break;
-    x += diff;
-  }
-
-  return z + qMax(column - x, 0);
+    return x + column - zmax;
 }
 
-int TextLineData::virtualLength (int tabWidth) const
+int TextLineData::fromVirtualColumn(int column, int tabWidth) const
 {
-  int x = 0;
-  const int len = m_text.length();
-  const QChar *unicode = m_text.unicode();
+    if (column < 0) {
+        return 0;
+    }
 
-  for ( int z = 0; z < len; ++z)
-  {
-    if (unicode[z] == QLatin1Char('\t'))
-      x += tabWidth - (x % tabWidth);
-    else
-      x++;
-  }
+    const int zmax = qMin(m_text.length(), column);
+    const QChar *unicode = m_text.unicode();
 
-  return x;
+    int x = 0;
+    int z = 0;
+    for (; z < zmax; ++z) {
+        int diff = 1;
+        if (unicode[z] == QLatin1Char('\t')) {
+            diff = tabWidth - (x % tabWidth);
+        }
+
+        if (x + diff > column) {
+            break;
+        }
+        x += diff;
+    }
+
+    return z + qMax(column - x, 0);
 }
 
-void TextLineData::addAttribute (const Attribute &attribute)
+int TextLineData::virtualLength(int tabWidth) const
 {
-  // try to append to previous range, if no folding info + same attribute value
-  if ((attribute.foldingValue == 0) && !m_attributesList.isEmpty() && (m_attributesList.back().foldingValue == 0)
-       && (m_attributesList.back().attributeValue == attribute.attributeValue)
-        && ((m_attributesList.back().offset + m_attributesList.back().length) == attribute.offset))
-  {
-    m_attributesList.back().length += attribute.length;
-    return;
-  }
+    int x = 0;
+    const int len = m_text.length();
+    const QChar *unicode = m_text.unicode();
 
-  m_attributesList.append (attribute);
+    for (int z = 0; z < len; ++z) {
+        if (unicode[z] == QLatin1Char('\t')) {
+            x += tabWidth - (x % tabWidth);
+        } else {
+            x++;
+        }
+    }
+
+    return x;
+}
+
+void TextLineData::addAttribute(const Attribute &attribute)
+{
+    // try to append to previous range, if no folding info + same attribute value
+    if ((attribute.foldingValue == 0) && !m_attributesList.isEmpty() && (m_attributesList.back().foldingValue == 0)
+            && (m_attributesList.back().attributeValue == attribute.attributeValue)
+            && ((m_attributesList.back().offset + m_attributesList.back().length) == attribute.offset)) {
+        m_attributesList.back().length += attribute.length;
+        return;
+    }
+
+    m_attributesList.append(attribute);
 }
 
 }

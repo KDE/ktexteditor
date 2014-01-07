@@ -31,7 +31,7 @@ QTEST_MAIN(BugTest)
 using namespace KTextEditor;
 
 BugTest::BugTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -49,41 +49,41 @@ void BugTest::cleanupTestCase()
 
 void BugTest::ctrlShiftLeft()
 {
-  KateDocument doc(false, false, false);
+    KateDocument doc(false, false, false);
 
-  // view must be visible...
-  KateView* view = static_cast<KateView*>(doc.createView(0));
-  view->show();
-  view->resize(400, 300);
+    // view must be visible...
+    KateView *view = static_cast<KateView *>(doc.createView(0));
+    view->show();
+    view->resize(400, 300);
 
-  // enable block mode, then set cursor after last character, then shift+left
-  doc.clear();
-  view->setBlockSelection(true);
-  view->setCursorPosition(Cursor(0, 2));
-  view->shiftCursorLeft();
+    // enable block mode, then set cursor after last character, then shift+left
+    doc.clear();
+    view->setBlockSelection(true);
+    view->setCursorPosition(Cursor(0, 2));
+    view->shiftCursorLeft();
 
-  QTest::qWait(500);
+    QTest::qWait(500);
 
-  // enable block mode, then set cursor after last character, then delete word left
-  doc.clear();
-  view->setBlockSelection(true);
-  view->setCursorPosition(Cursor(0, 2));
-  view->deleteWordLeft();
+    // enable block mode, then set cursor after last character, then delete word left
+    doc.clear();
+    view->setBlockSelection(true);
+    view->setCursorPosition(Cursor(0, 2));
+    view->deleteWordLeft();
 
-  QTest::qWait(500);
+    QTest::qWait(500);
 
-  // disable wrap-cursor, then set cursor after last character, then shift+left
-  doc.clear();
-  view->setBlockSelection(false);
-  view->setCursorPosition(Cursor(0, 2));
-  view->shiftCursorLeft();
+    // disable wrap-cursor, then set cursor after last character, then shift+left
+    doc.clear();
+    view->setBlockSelection(false);
+    view->setCursorPosition(Cursor(0, 2));
+    view->shiftCursorLeft();
 
-  QTest::qWait(500);
+    QTest::qWait(500);
 
-  // disable wrap-cursor, then set cursor after last character, then delete word left
-  doc.clear();
-  view->setCursorPosition(Cursor(0, 2));
-  view->deleteWordLeft();
+    // disable wrap-cursor, then set cursor after last character, then delete word left
+    doc.clear();
+    view->setCursorPosition(Cursor(0, 2));
+    view->deleteWordLeft();
 }
 
 #include "moc_bug286887.cpp"

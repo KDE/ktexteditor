@@ -32,159 +32,156 @@
 #include "katepartdebug.h"
 
 KateCommandLineScript::KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header)
-  : KateScript(url)
-  , m_commandHeader(header)
+    : KateScript(url)
+    , m_commandHeader(header)
 {
-  KateCmd::self()->registerCommand (this);
+    KateCmd::self()->registerCommand(this);
 }
 
 KateCommandLineScript::~KateCommandLineScript()
 {
-  KateCmd::self()->unregisterCommand (this);
+    KateCmd::self()->unregisterCommand(this);
 }
 
-const KateCommandLineScriptHeader& KateCommandLineScript::commandHeader()
+const KateCommandLineScriptHeader &KateCommandLineScript::commandHeader()
 {
-  return m_commandHeader;
+    return m_commandHeader;
 }
 
-
-bool KateCommandLineScript::callFunction(const QString& cmd, const QStringList args, QString &errorMessage)
+bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList args, QString &errorMessage)
 {
-  clearExceptions();
-  QScriptValue command = function(cmd);
-  if(!command.isValid()) {
-    errorMessage = i18n("Function '%1' not found in script: %2", cmd, url());
-    return false;
-  }
+    clearExceptions();
+    QScriptValue command = function(cmd);
+    if (!command.isValid()) {
+        errorMessage = i18n("Function '%1' not found in script: %2", cmd, url());
+        return false;
+    }
 
-  // add the arguments that we are going to pass to the function
-  QScriptValueList arguments;
-  foreach (const QString& arg, args) {
-    arguments << QScriptValue(m_engine, arg);
-  }
+    // add the arguments that we are going to pass to the function
+    QScriptValueList arguments;
+    foreach (const QString &arg, args) {
+        arguments << QScriptValue(m_engine, arg);
+    }
 
-  QScriptValue result = command.call(QScriptValue(), arguments);
-  // error during the calling?
-  if(m_engine->hasUncaughtException()) {
-    errorMessage = backtrace(result, i18n("Error calling %1", cmd));
-    return false;
-  }
+    QScriptValue result = command.call(QScriptValue(), arguments);
+    // error during the calling?
+    if (m_engine->hasUncaughtException()) {
+        errorMessage = backtrace(result, i18n("Error calling %1", cmd));
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
-ScriptActionInfo KateCommandLineScript::actionInfo(const QString& cmd)
+ScriptActionInfo KateCommandLineScript::actionInfo(const QString &cmd)
 {
-  clearExceptions();
-  QScriptValue actionFunc = function(QLatin1Literal("action"));
-  if(!actionFunc.isValid()) {
-    qCDebug(LOG_PART) << i18n("Function 'action' not found in script: %1", url());
-    return ScriptActionInfo();
-  }
+    clearExceptions();
+    QScriptValue actionFunc = function(QLatin1Literal("action"));
+    if (!actionFunc.isValid()) {
+        qCDebug(LOG_PART) << i18n("Function 'action' not found in script: %1", url());
+        return ScriptActionInfo();
+    }
 
-  // add the arguments that we are going to pass to the function
-  QScriptValueList arguments;
-  arguments << cmd;
+    // add the arguments that we are going to pass to the function
+    QScriptValueList arguments;
+    arguments << cmd;
 
-  QScriptValue result = actionFunc.call(QScriptValue(), arguments);
-  // error during the calling?
-  if(m_engine->hasUncaughtException()) {
-    displayBacktrace(result, i18n("Error calling action(%1)", cmd));
-    return ScriptActionInfo();
-  }
+    QScriptValue result = actionFunc.call(QScriptValue(), arguments);
+    // error during the calling?
+    if (m_engine->hasUncaughtException()) {
+        displayBacktrace(result, i18n("Error calling action(%1)", cmd));
+        return ScriptActionInfo();
+    }
 
-  ScriptActionInfo info;
-  info.setCommand(cmd);
-  info.setText(result.property(QLatin1String("text")).toString());
-  info.setIcon(result.property(QLatin1String("icon")).toString());
-  info.setCategory(result.property(QLatin1String("category")).toString());
-  info.setInteractive(result.property(QLatin1String("interactive")).toBool());
-  info.setShortcut(result.property(QLatin1String("shortcut")).toString());
+    ScriptActionInfo info;
+    info.setCommand(cmd);
+    info.setText(result.property(QLatin1String("text")).toString());
+    info.setIcon(result.property(QLatin1String("icon")).toString());
+    info.setCategory(result.property(QLatin1String("category")).toString());
+    info.setInteractive(result.property(QLatin1String("interactive")).toBool());
+    info.setShortcut(result.property(QLatin1String("shortcut")).toString());
 
-  return info;
+    return info;
 }
 
-const QStringList& KateCommandLineScript::cmds()
+const QStringList &KateCommandLineScript::cmds()
 {
-  return m_commandHeader.functions();
+    return m_commandHeader.functions();
 }
 
 bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg)
 {
-  KShell::Errors errorCode;
-  QStringList args(KShell::splitArgs(cmd, KShell::NoOptions, &errorCode));
+    KShell::Errors errorCode;
+    QStringList args(KShell::splitArgs(cmd, KShell::NoOptions, &errorCode));
 
-  if (errorCode != KShell::NoError) {
-    msg = i18n("Bad quoting in call: %1. Please escape single quotes with a backslash.", cmd);
+    if (errorCode != KShell::NoError) {
+        msg = i18n("Bad quoting in call: %1. Please escape single quotes with a backslash.", cmd);
+        return false;
+    }
+
+    QString _cmd(args.first());
+    args.removeFirst();
+
+    if (!view) {
+        msg = i18n("Could not access view");
+        return false;
+    }
+
+    if (setView(qobject_cast<KateView *>(view))) {
+        // setView fails if the script cannot be loaded
+        // balance edit stack in any case!
+        qobject_cast<KateView *>(view)->doc()->pushEditState();
+        bool success = callFunction(_cmd, args, msg);
+        qobject_cast<KateView *>(view)->doc()->popEditState();
+        return success;
+    }
+
     return false;
-  }
-
-  QString _cmd(args.first());
-  args.removeFirst();
-
-  if (!view) {
-    msg = i18n("Could not access view");
-    return false;
-  }
-
-  if (setView(qobject_cast<KateView*>(view))) {
-    // setView fails if the script cannot be loaded
-    // balance edit stack in any case!
-    qobject_cast<KateView*>(view)->doc()->pushEditState();
-    bool success = callFunction(_cmd, args, msg);
-    qobject_cast<KateView*>(view)->doc()->popEditState();
-    return success;
-  }
-
-  return false;
 }
-
 
 bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,
                                  const KTextEditor::Range &range)
 {
-  view->setSelection(range);
-  return exec( view, cmd, msg );
+    view->setSelection(range);
+    return exec(view, cmd, msg);
 }
 
 bool KateCommandLineScript::supportsRange(const QString &)
 {
-  return true;
+    return true;
 }
 
-bool KateCommandLineScript::help(KTextEditor::View* view, const QString& cmd, QString &msg)
+bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QString &msg)
 {
-  if (!setView(qobject_cast<KateView*>(view))) {
-    // setView fails, if the script cannot be loaded
-    return false;
-  }
+    if (!setView(qobject_cast<KateView *>(view))) {
+        // setView fails, if the script cannot be loaded
+        return false;
+    }
 
-  clearExceptions();
-  QScriptValue helpFunction = function(QLatin1String("help"));
-  if(!helpFunction.isValid()) {
-    return false;
-  }
+    clearExceptions();
+    QScriptValue helpFunction = function(QLatin1String("help"));
+    if (!helpFunction.isValid()) {
+        return false;
+    }
 
-  // add the arguments that we are going to pass to the function
-  QScriptValueList arguments;
-  arguments << QScriptValue(m_engine, cmd);
+    // add the arguments that we are going to pass to the function
+    QScriptValueList arguments;
+    arguments << QScriptValue(m_engine, cmd);
 
-  QScriptValue result = helpFunction.call(QScriptValue(), arguments);
+    QScriptValue result = helpFunction.call(QScriptValue(), arguments);
 
-  // error during the calling?
-  if(m_engine->hasUncaughtException()) {
-    msg = backtrace(result, i18n("Error calling 'help %1'", cmd));
-    return false;
-  }
+    // error during the calling?
+    if (m_engine->hasUncaughtException()) {
+        msg = backtrace(result, i18n("Error calling 'help %1'", cmd));
+        return false;
+    }
 
-  if (result.isUndefined() || !result.isString()) {
-    qCDebug(LOG_PART) << i18n("No help specified for command '%1' in script %2", cmd, url());
-    return false;
-  }
-  msg = result.toString();
+    if (result.isUndefined() || !result.isString()) {
+        qCDebug(LOG_PART) << i18n("No help specified for command '%1' in script %2", cmd, url());
+        return false;
+    }
+    msg = result.toString();
 
-  return !msg.isEmpty();
+    return !msg.isEmpty();
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

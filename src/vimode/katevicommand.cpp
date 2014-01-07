@@ -20,13 +20,13 @@
 
 #include "katevicommand.h"
 
-KateViCommand::KateViCommand( KateViNormalMode *parent, QString pattern,
-    bool( KateViNormalMode::*commandMethod)(), unsigned int flags )
+KateViCommand::KateViCommand(KateViNormalMode *parent, QString pattern,
+                             bool(KateViNormalMode::*commandMethod)(), unsigned int flags)
 {
-  m_parent = parent;
-  m_pattern = KateViKeyParser::self()->encodeKeySequence( pattern );
-  m_flags = flags;
-  m_ptr2commandMethod = commandMethod;
+    m_parent = parent;
+    m_pattern = KateViKeyParser::self()->encodeKeySequence(pattern);
+    m_flags = flags;
+    m_ptr2commandMethod = commandMethod;
 }
 
 KateViCommand::~KateViCommand()
@@ -35,26 +35,26 @@ KateViCommand::~KateViCommand()
 
 bool KateViCommand::execute() const
 {
-  return ( m_parent->*m_ptr2commandMethod)();
+    return (m_parent->*m_ptr2commandMethod)();
 }
 
-bool KateViCommand::matches( const QString &pattern ) const
+bool KateViCommand::matches(const QString &pattern) const
 {
-  if ( !( m_flags & REGEX_PATTERN ) )
-    return m_pattern.startsWith( pattern );
-  else {
-    QRegExp re( m_pattern );
-    re.exactMatch( pattern );
-    return ( re.matchedLength() == pattern.length() );
-  }
+    if (!(m_flags & REGEX_PATTERN)) {
+        return m_pattern.startsWith(pattern);
+    } else {
+        QRegExp re(m_pattern);
+        re.exactMatch(pattern);
+        return (re.matchedLength() == pattern.length());
+    }
 }
 
-bool KateViCommand::matchesExact( const QString &pattern ) const
+bool KateViCommand::matchesExact(const QString &pattern) const
 {
-  if ( !( m_flags & REGEX_PATTERN ) )
-    return ( m_pattern == pattern );
-  else {
-    QRegExp re( m_pattern );
-    return re.exactMatch( pattern );
-  }
+    if (!(m_flags & REGEX_PATTERN)) {
+        return (m_pattern == pattern);
+    } else {
+        QRegExp re(m_pattern);
+        return re.exactMatch(pattern);
+    }
 }

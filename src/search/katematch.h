@@ -26,7 +26,6 @@
 
 class KateDocument;
 
-
 class KateMatch
 {
 public:
@@ -51,4 +50,3 @@ private:
 
 #endif // KATE_MATCH_H
 
-// kate: space-indent on; indent-width 4; replace-tabs on;

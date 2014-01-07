@@ -23,11 +23,11 @@ using namespace KTextEditor;
 
 class KTextEditor::AttributePrivate
 {
-  public:
+public:
     AttributePrivate()
     {
-      dynamicAttributes.append(Attribute::Ptr());
-      dynamicAttributes.append(Attribute::Ptr());
+        dynamicAttributes.append(Attribute::Ptr());
+        dynamicAttributes.append(Attribute::Ptr());
     }
 
     QList<QAction *> associatedActions;
@@ -35,166 +35,173 @@ class KTextEditor::AttributePrivate
 };
 
 Attribute::Attribute()
-  : d(new AttributePrivate())
+    : d(new AttributePrivate())
 {
 }
 
-Attribute::Attribute( const Attribute & a )
-  : QTextCharFormat(a)
-  , QSharedData()
-  , d(new AttributePrivate())
+Attribute::Attribute(const Attribute &a)
+    : QTextCharFormat(a)
+    , QSharedData()
+    , d(new AttributePrivate())
 {
-  d->associatedActions = a.d->associatedActions;
-  d->dynamicAttributes = a.d->dynamicAttributes;
+    d->associatedActions = a.d->associatedActions;
+    d->dynamicAttributes = a.d->dynamicAttributes;
 }
 
 Attribute::~Attribute()
 {
-  delete d;
+    delete d;
 }
 
-Attribute& Attribute::operator+=(const Attribute& a)
+Attribute &Attribute::operator+=(const Attribute &a)
 {
-  merge(a);
+    merge(a);
 
-  d->associatedActions += a.associatedActions();
+    d->associatedActions += a.associatedActions();
 
-  for (int i = 0; i < a.d->dynamicAttributes.count(); ++i)
-    if (i < d->dynamicAttributes.count()) {
-      if (a.d->dynamicAttributes[i])
-        d->dynamicAttributes[i] = a.d->dynamicAttributes[i];
-    } else {
-      d->dynamicAttributes.append(a.d->dynamicAttributes[i]);
-    }
+    for (int i = 0; i < a.d->dynamicAttributes.count(); ++i)
+        if (i < d->dynamicAttributes.count()) {
+            if (a.d->dynamicAttributes[i]) {
+                d->dynamicAttributes[i] = a.d->dynamicAttributes[i];
+            }
+        } else {
+            d->dynamicAttributes.append(a.d->dynamicAttributes[i]);
+        }
 
-  return *this;
+    return *this;
 }
 
 Attribute::Ptr Attribute::dynamicAttribute(ActivationType type) const
 {
-  if (type < 0 || type >= d->dynamicAttributes.count())
-    return Ptr();
+    if (type < 0 || type >= d->dynamicAttributes.count()) {
+        return Ptr();
+    }
 
-  return d->dynamicAttributes[type];
+    return d->dynamicAttributes[type];
 }
 
-void Attribute::setDynamicAttribute( ActivationType type, Attribute::Ptr attribute )
+void Attribute::setDynamicAttribute(ActivationType type, Attribute::Ptr attribute)
 {
-  if (type < 0 || type > ActivateCaretIn)
-    return;
+    if (type < 0 || type > ActivateCaretIn) {
+        return;
+    }
 
-  d->dynamicAttributes[type] = attribute;
+    d->dynamicAttributes[type] = attribute;
 }
 
-QBrush Attribute::outline( ) const
+QBrush Attribute::outline() const
 {
-  if (hasProperty(Outline))
-    return property(Outline).value<QBrush>();
+    if (hasProperty(Outline)) {
+        return property(Outline).value<QBrush>();
+    }
 
-  return QBrush();
+    return QBrush();
 }
 
-void Attribute::setOutline( const QBrush & brush )
+void Attribute::setOutline(const QBrush &brush)
 {
-  setProperty(Outline, brush);
+    setProperty(Outline, brush);
 }
 
-QBrush Attribute::selectedForeground( ) const
+QBrush Attribute::selectedForeground() const
 {
-  if (hasProperty(SelectedForeground))
-    return property(SelectedForeground).value<QBrush>();
+    if (hasProperty(SelectedForeground)) {
+        return property(SelectedForeground).value<QBrush>();
+    }
 
-  return QBrush();
+    return QBrush();
 }
 
-void Attribute::setSelectedForeground( const QBrush & foreground )
+void Attribute::setSelectedForeground(const QBrush &foreground)
 {
-  setProperty(SelectedForeground, foreground);
+    setProperty(SelectedForeground, foreground);
 }
 
-bool Attribute::backgroundFillWhitespace( ) const
+bool Attribute::backgroundFillWhitespace() const
 {
-  if (hasProperty(BackgroundFillWhitespace))
-    return boolProperty(BackgroundFillWhitespace);
+    if (hasProperty(BackgroundFillWhitespace)) {
+        return boolProperty(BackgroundFillWhitespace);
+    }
 
-  return true;
+    return true;
 }
 
-void Attribute::setBackgroundFillWhitespace( bool fillWhitespace )
+void Attribute::setBackgroundFillWhitespace(bool fillWhitespace)
 {
-  setProperty(BackgroundFillWhitespace, fillWhitespace);
+    setProperty(BackgroundFillWhitespace, fillWhitespace);
 }
 
-QBrush Attribute::selectedBackground( ) const
+QBrush Attribute::selectedBackground() const
 {
-  if (hasProperty(SelectedBackground))
-    return property(SelectedBackground).value<QBrush>();
+    if (hasProperty(SelectedBackground)) {
+        return property(SelectedBackground).value<QBrush>();
+    }
 
-  return QBrush();
+    return QBrush();
 }
 
-void Attribute::setSelectedBackground( const QBrush & brush )
+void Attribute::setSelectedBackground(const QBrush &brush)
 {
-  setProperty(SelectedBackground, brush);
+    setProperty(SelectedBackground, brush);
 }
 
-void Attribute::clear( )
+void Attribute::clear()
 {
-  QTextCharFormat::operator=(QTextCharFormat());
+    QTextCharFormat::operator=(QTextCharFormat());
 
-  d->associatedActions.clear();
-  d->dynamicAttributes.clear();
-  d->dynamicAttributes.append(Ptr());
-  d->dynamicAttributes.append(Ptr());
+    d->associatedActions.clear();
+    d->dynamicAttributes.clear();
+    d->dynamicAttributes.append(Ptr());
+    d->dynamicAttributes.append(Ptr());
 }
 
-bool Attribute::fontBold( ) const
+bool Attribute::fontBold() const
 {
-  return fontWeight() == QFont::Bold;
+    return fontWeight() == QFont::Bold;
 }
 
-void Attribute::setFontBold( bool bold )
+void Attribute::setFontBold(bool bold)
 {
-  setFontWeight(bold ? QFont::Bold : 0);
+    setFontWeight(bold ? QFont::Bold : 0);
 }
 
-void Attribute::clearAssociatedActions( )
+void Attribute::clearAssociatedActions()
 {
-  d->associatedActions.clear();
+    d->associatedActions.clear();
 }
 
-bool Attribute::hasAnyProperty( ) const
+bool Attribute::hasAnyProperty() const
 {
-  return properties().count();
+    return properties().count();
 }
 
-const QList<QAction *> & Attribute::associatedActions( ) const
+const QList<QAction *> &Attribute::associatedActions() const
 {
-  return d->associatedActions;
+    return d->associatedActions;
 }
 
-Attribute::Effects KTextEditor::Attribute::effects( ) const
+Attribute::Effects KTextEditor::Attribute::effects() const
 {
-  if (hasProperty(AttributeDynamicEffect))
-    return Effects(intProperty(AttributeDynamicEffect));
+    if (hasProperty(AttributeDynamicEffect)) {
+        return Effects(intProperty(AttributeDynamicEffect));
+    }
 
-  return EffectNone;
+    return EffectNone;
 }
 
-void KTextEditor::Attribute::setEffects( Effects effects )
+void KTextEditor::Attribute::setEffects(Effects effects)
 {
-  setProperty(AttributeDynamicEffect, QVariant(effects));
+    setProperty(AttributeDynamicEffect, QVariant(effects));
 }
 
-Attribute & KTextEditor::Attribute::operator =( const Attribute & a )
+Attribute &KTextEditor::Attribute::operator =(const Attribute &a)
 {
-  QTextCharFormat::operator=(a);
-  Q_ASSERT(static_cast<QTextCharFormat>(*this) == a);
+    QTextCharFormat::operator=(a);
+    Q_ASSERT(static_cast<QTextCharFormat>(*this) == a);
 
-  d->associatedActions = a.d->associatedActions;
-  d->dynamicAttributes = a.d->dynamicAttributes;
+    d->associatedActions = a.d->associatedActions;
+    d->dynamicAttributes = a.d->dynamicAttributes;
 
-  return *this;
+    return *this;
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

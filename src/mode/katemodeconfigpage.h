@@ -28,36 +28,35 @@
 #include "katedialogs.h"
 #include "katemodemanager.h"
 
-
 namespace Ui
 {
-  class FileTypeConfigWidget;
+class FileTypeConfigWidget;
 }
 
 class ModeConfigPage : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit ModeConfigPage( QWidget *parent );
-    ~ModeConfigPage ();
+public:
+    explicit ModeConfigPage(QWidget *parent);
+    ~ModeConfigPage();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void apply();
     void reload();
     void reset();
     void defaults();
 
-  private Q_SLOTS:
-    void update ();
-    void deleteType ();
-    void newType ();
-    void typeChanged (int type);
+private Q_SLOTS:
+    void update();
+    void deleteType();
+    void newType();
+    void typeChanged(int type);
     void showMTDlg();
-    void save ();
-    void hlDownload ();
+    void save();
+    void hlDownload();
 
-  private:
+private:
     Ui::FileTypeConfigWidget *ui;
 
     QList<KateFileType *> m_types;
@@ -65,4 +64,3 @@ class ModeConfigPage : public KateConfigPage
 };
 
 #endif
-// kate: space-indent on; indent-width 2; replace-tabs on;

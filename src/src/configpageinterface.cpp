@@ -21,8 +21,8 @@
 
 using namespace KTextEditor;
 
-ConfigPageInterface::ConfigPageInterface ()
-  : d(0)
+ConfigPageInterface::ConfigPageInterface()
+    : d(0)
 {
 }
 

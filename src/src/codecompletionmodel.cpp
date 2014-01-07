@@ -26,100 +26,104 @@ using namespace KTextEditor;
 class KTextEditor::CodeCompletionModelPrivate
 {
 public:
-  CodeCompletionModelPrivate()
-    : rowCount(0),hasGroups(true)
-  {}
+    CodeCompletionModelPrivate()
+        : rowCount(0), hasGroups(true)
+    {}
 
-  int rowCount;
-  bool hasGroups;
+    int rowCount;
+    bool hasGroups;
 };
 
-CodeCompletionModel::CodeCompletionModel(QObject* parent)
-  : QAbstractItemModel(parent)
-  , d(new CodeCompletionModelPrivate)
+CodeCompletionModel::CodeCompletionModel(QObject *parent)
+    : QAbstractItemModel(parent)
+    , d(new CodeCompletionModelPrivate)
 {
 }
 
 CodeCompletionModel::~ CodeCompletionModel()
 {
-  delete d;
+    delete d;
 }
 
-int CodeCompletionModel::columnCount( const QModelIndex & ) const
+int CodeCompletionModel::columnCount(const QModelIndex &) const
 {
-  return ColumnCount;
+    return ColumnCount;
 }
 
-QModelIndex CodeCompletionModel::index( int row, int column, const QModelIndex & parent ) const
+QModelIndex CodeCompletionModel::index(int row, int column, const QModelIndex &parent) const
 {
-  if (row < 0 || row >= d->rowCount || column < 0 || column >= ColumnCount || parent.isValid())
+    if (row < 0 || row >= d->rowCount || column < 0 || column >= ColumnCount || parent.isValid()) {
+        return QModelIndex();
+    }
+
+    return createIndex(row, column, (void *)0);
+}
+
+QMap< int, QVariant > CodeCompletionModel::itemData(const QModelIndex &index) const
+{
+    QMap<int, QVariant> ret = QAbstractItemModel::itemData(index);
+
+    for (int i = CompletionRole; i <= LastItemDataRole; ++i) {
+        QVariant v = data(index, i);
+        if (v.isValid()) {
+            ret.insert(i, v);
+        }
+    }
+
+    return ret;
+}
+
+QModelIndex CodeCompletionModel::parent(const QModelIndex &) const
+{
     return QModelIndex();
-
-  return createIndex(row, column, (void *)0);
 }
 
-QMap< int, QVariant > CodeCompletionModel::itemData( const QModelIndex & index ) const
+void CodeCompletionModel::setRowCount(int rowCount)
 {
-  QMap<int, QVariant> ret = QAbstractItemModel::itemData(index);
-
-  for (int i = CompletionRole; i <= LastItemDataRole; ++i) {
-    QVariant v = data(index, i);
-    if (v.isValid())
-      ret.insert(i, v);
-  }
-
-  return ret;
+    d->rowCount = rowCount;
 }
 
-QModelIndex CodeCompletionModel::parent( const QModelIndex & ) const
+int CodeCompletionModel::rowCount(const QModelIndex &parent) const
 {
-  return QModelIndex();
+    if (parent.isValid()) {
+        return 0;
+    }
+
+    return d->rowCount;
 }
 
-void CodeCompletionModel::setRowCount( int rowCount )
+void CodeCompletionModel::completionInvoked(KTextEditor::View *view, const Range &range, InvocationType invocationType)
 {
-  d->rowCount = rowCount;
+    Q_UNUSED(view)
+    Q_UNUSED(range)
+    Q_UNUSED(invocationType)
 }
 
-int CodeCompletionModel::rowCount( const QModelIndex & parent ) const
+void CodeCompletionModel::executeCompletionItem(Document *document, const Range &word, int row) const
 {
-  if (parent.isValid())
-    return 0;
-
-  return d->rowCount;
+    document->replaceText(word, data(index(row, Name, QModelIndex())).toString());
 }
 
-void CodeCompletionModel::completionInvoked(KTextEditor::View* view, const Range& range, InvocationType invocationType)
+bool CodeCompletionModel::hasGroups() const
 {
-  Q_UNUSED(view)
-  Q_UNUSED(range)
-  Q_UNUSED(invocationType)
-}
-
-void CodeCompletionModel::executeCompletionItem(Document* document, const Range& word, int row) const
-{
-  document->replaceText(word, data(index(row, Name, QModelIndex())).toString());
-}
-
-bool CodeCompletionModel::hasGroups() const {
-  return d->hasGroups;
+    return d->hasGroups;
 }
 
 void CodeCompletionModel::setHasGroups(bool hasGroups)
 {
-  if (d->hasGroups!=hasGroups) {
-    d->hasGroups=hasGroups;
-    emit hasGroupsChanged(this,hasGroups);
-  }
+    if (d->hasGroups != hasGroups) {
+        d->hasGroups = hasGroups;
+        emit hasGroupsChanged(this, hasGroups);
+    }
 }
 
-CodeCompletionModel2::CodeCompletionModel2(QObject* parent) : CodeCompletionModel(parent)
+CodeCompletionModel2::CodeCompletionModel2(QObject *parent) : CodeCompletionModel(parent)
 {
 }
 
-void CodeCompletionModel2::executeCompletionItem2(Document* document, const Range& word, const QModelIndex& index) const
+void CodeCompletionModel2::executeCompletionItem2(Document *document, const Range &word, const QModelIndex &index) const
 {
-  document->replaceText(word, data(index.sibling(index.row(), Name)).toString());
+    document->replaceText(word, data(index.sibling(index.row(), Name)).toString());
 }
 
 #include "codecompletionmodel.moc"

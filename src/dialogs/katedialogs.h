@@ -50,8 +50,8 @@ class KatePartPluginInfo;
 
 namespace KIO
 {
-  class Job;
-  class TransferJob;
+class Job;
+class TransferJob;
 }
 
 class KComboBox;
@@ -69,177 +69,180 @@ class QTemporaryFile;
 
 namespace Ui
 {
-  class ModOnHdWidget;
-  class TextareaAppearanceConfigWidget;
-  class BordersAppearanceConfigWidget;
-  class NavigationConfigWidget;
-  class EditConfigWidget;
-  class IndentationConfigWidget;
-  class OpenSaveConfigWidget;
-  class OpenSaveConfigAdvWidget;
-  class CompletionConfigTab;
-  class ViInputModeConfigWidget;
-  class SpellCheckConfigWidget;
+class ModOnHdWidget;
+class TextareaAppearanceConfigWidget;
+class BordersAppearanceConfigWidget;
+class NavigationConfigWidget;
+class EditConfigWidget;
+class IndentationConfigWidget;
+class OpenSaveConfigWidget;
+class OpenSaveConfigAdvWidget;
+class CompletionConfigTab;
+class ViInputModeConfigWidget;
+class SpellCheckConfigWidget;
 }
 
 class KateConfigPage : public KTextEditor::ConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateConfigPage ( QWidget *parent=0, const char *name=0 );
-    virtual ~KateConfigPage ();
+public:
+    explicit KateConfigPage(QWidget *parent = 0, const char *name = 0);
+    virtual ~KateConfigPage();
 
-  public:
-    bool hasChanged () { return m_changed; }
+public:
+    bool hasChanged()
+    {
+        return m_changed;
+    }
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void slotChanged();
 
-  private Q_SLOTS:
-    void somethingHasChanged ();
+private Q_SLOTS:
+    void somethingHasChanged();
 
-  protected:
+protected:
     bool m_changed;
 };
 
 class KateGotoBar : public KateViewBarWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     explicit KateGotoBar(KTextEditor::View *view, QWidget *parent = 0);
 
     void updateData();
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void gotoLine();
 
-  protected:
-    virtual void keyPressEvent(QKeyEvent* event);
+protected:
+    virtual void keyPressEvent(QKeyEvent *event);
 
-  private:
+private:
     KTextEditor::View *const m_view;
     QSpinBox *gotoRange;
 };
 
 class KateDictionaryBar : public KateViewBarWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     explicit KateDictionaryBar(KateView *view, QWidget *parent = NULL);
     virtual ~KateDictionaryBar();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void updateData();
 
-  protected Q_SLOTS:
-    void dictionaryChanged(const QString& dictionary);
+protected Q_SLOTS:
+    void dictionaryChanged(const QString &dictionary);
 
-  private:
-    KateView* m_view;
+private:
+    KateView *m_view;
     Sonnet::DictionaryComboBox *m_dictionaryComboBox;
 };
 
 class KateIndentConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateIndentConfigTab(QWidget *parent);
     ~KateIndentConfigTab();
 
-  protected:
+protected:
     Ui::IndentationConfigWidget *ui;
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset () {}
-    void defaults () {}
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 
-  private Q_SLOTS:
-    void slotChanged ();
-    void showWhatsThis(const QString& text);
+private Q_SLOTS:
+    void slotChanged();
+    void showWhatsThis(const QString &text);
 };
 
 class KateCompletionConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateCompletionConfigTab(QWidget *parent);
     ~KateCompletionConfigTab();
 
-  protected:
+protected:
     Ui::CompletionConfigTab *ui;
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset () {}
-    void defaults () {}
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 
-  private Q_SLOTS:
-    void showWhatsThis(const QString& text);
+private Q_SLOTS:
+    void showWhatsThis(const QString &text);
 };
 
 class KateEditGeneralConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateEditGeneralConfigTab(QWidget *parent);
     ~KateEditGeneralConfigTab();
 
-  private:
+private:
     Ui::EditConfigWidget *ui;
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset () {}
-    void defaults () {}
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 };
 
 class KateNavigationConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  KateNavigationConfigTab(QWidget *parent);
-  ~KateNavigationConfigTab();
+    KateNavigationConfigTab(QWidget *parent);
+    ~KateNavigationConfigTab();
 
 private:
-  Ui::NavigationConfigWidget *ui;
+    Ui::NavigationConfigWidget *ui;
 
 public Q_SLOTS:
-  void apply ();
-  void reload ();
-  void reset () {}
-  void defaults () {}
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 };
 
 class KateViInputModeConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateViInputModeConfigTab(QWidget *parent);
     ~KateViInputModeConfigTab();
 
-  protected:
+protected:
     Ui::ViInputModeConfigWidget *ui;
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset () {}
-    void defaults () {}
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 
-  private Q_SLOTS:
-    void showWhatsThis(const QString& text);
+private Q_SLOTS:
+    void showWhatsThis(const QString &text);
     void addNewNormalModeMappingRow();
     void removeSelectedNormalMappingRow();
     void importNormalMappingRow();
@@ -247,84 +250,84 @@ class KateViInputModeConfigTab : public KateConfigPage
 
 class KateSpellCheckConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateSpellCheckConfigTab(QWidget *parent);
     ~KateSpellCheckConfigTab();
 
-  protected:
+protected:
     Ui::SpellCheckConfigWidget *ui;
     Sonnet::ConfigWidget *m_sonnetConfigWidget;
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset () {}
-    void defaults () {}
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset() {}
+    void defaults() {}
 
-  private Q_SLOTS:
-    void showWhatsThis(const QString& text);
+private Q_SLOTS:
+    void showWhatsThis(const QString &text);
 };
 
 class KateEditConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  KateEditConfigTab(QWidget *parent);
-  ~KateEditConfigTab();
+    KateEditConfigTab(QWidget *parent);
+    ~KateEditConfigTab();
 
 public Q_SLOTS:
-  void apply ();
-  void reload ();
-  void reset ();
-  void defaults ();
+    void apply();
+    void reload();
+    void reset();
+    void defaults();
 
 private:
-  KateEditGeneralConfigTab *editConfigTab;
-  KateNavigationConfigTab *navigationConfigTab;
-  KateIndentConfigTab *indentConfigTab;
-  KateCompletionConfigTab *completionConfigTab;
-  KateViInputModeConfigTab *viInputModeConfigTab;
-  KateSpellCheckConfigTab *spellCheckConfigTab;
+    KateEditGeneralConfigTab *editConfigTab;
+    KateNavigationConfigTab *navigationConfigTab;
+    KateIndentConfigTab *indentConfigTab;
+    KateCompletionConfigTab *completionConfigTab;
+    KateViInputModeConfigTab *viInputModeConfigTab;
+    KateSpellCheckConfigTab *spellCheckConfigTab;
 };
 
 class KateViewDefaultsConfig : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  KateViewDefaultsConfig( QWidget *parent );
-  ~KateViewDefaultsConfig();
+    KateViewDefaultsConfig(QWidget *parent);
+    ~KateViewDefaultsConfig();
 
 public Q_SLOTS:
-  void apply ();
-  void reload ();
-  void reset ();
-  void defaults ();
+    void apply();
+    void reload();
+    void reset();
+    void defaults();
 
 private:
-  Ui::TextareaAppearanceConfigWidget *const textareaUi;
-  Ui::BordersAppearanceConfigWidget *const bordersUi;
+    Ui::TextareaAppearanceConfigWidget *const textareaUi;
+    Ui::BordersAppearanceConfigWidget *const bordersUi;
 };
 
 class KateSaveConfigTab : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateSaveConfigTab( QWidget *parent );
+public:
+    KateSaveConfigTab(QWidget *parent);
     ~KateSaveConfigTab();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void apply();
     void reload();
     void reset();
     void defaults();
     void swapFileModeChanged(int);
 
-  protected:
+protected:
     //why?
     //KComboBox *m_encoding, *m_encodingDetection, *m_eol;
     QCheckBox *cbLocalFiles, *cbRemoteFiles;
@@ -332,48 +335,47 @@ class KateSaveConfigTab : public KateConfigPage
     class QSpinBox *blockCount;
     class QLabel *blockCountLabel;
 
-  private:
-    Ui::OpenSaveConfigWidget* ui;
-    Ui::OpenSaveConfigAdvWidget* uiadv;
+private:
+    Ui::OpenSaveConfigWidget *ui;
+    Ui::OpenSaveConfigAdvWidget *uiadv;
     ModeConfigPage *modeConfigPage;
 };
 
 class KatePartPluginConfigPage : public KateConfigPage
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KatePartPluginConfigPage (QWidget *parent);
-    ~KatePartPluginConfigPage ();
+public:
+    KatePartPluginConfigPage(QWidget *parent);
+    ~KatePartPluginConfigPage();
 
-  public Q_SLOTS:
-    void apply ();
-    void reload ();
-    void reset ();
-    void defaults ();
+public Q_SLOTS:
+    void apply();
+    void reload();
+    void reset();
+    void defaults();
 
-  private:
+private:
     KPluginSelector *selector;
     QList<KPluginInfo> plugins;
 };
 
-
 class KateHlDownloadDialog: public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     KateHlDownloadDialog(QWidget *parent, const char *name, bool modal);
     ~KateHlDownloadDialog();
 
-  private:
-    static unsigned parseVersion(const QString&);
+private:
+    static unsigned parseVersion(const QString &);
     class QTreeWidget  *list;
     class QString listData;
     KIO::TransferJob *transferJob;
     QPushButton *m_installButton;
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void listDataReceived(KIO::Job *, const QByteArray &data);
     void slotInstall();
 };
@@ -386,20 +388,20 @@ class KateHlDownloadDialog: public QDialog
  */
 class KateModOnHdPrompt : public QDialog
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     enum Status {
-      Reload = 1, // 0 is QDialog::Rejected
-      Save,
-      Overwrite,
-      Ignore
+        Reload = 1, // 0 is QDialog::Rejected
+        Save,
+        Overwrite,
+        Ignore
     };
-    KateModOnHdPrompt( KateDocument *doc,
-                       KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
-                       const QString &reason, QWidget *parent  );
+    KateModOnHdPrompt(KateDocument *doc,
+                      KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
+                      const QString &reason, QWidget *parent);
     ~KateModOnHdPrompt();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Show a diff between the document text and the disk file.
      * This will not close the dialog, since we still need a
@@ -407,15 +409,15 @@ class KateModOnHdPrompt : public QDialog
      */
     void slotDiff();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotOk();
     void slotApply();
     void slotOverwrite();
     void slotDataAvailable(); ///< read data from the process
     void slotPDone(); ///< Runs the diff file when done
 
-  private:
-    Ui::ModOnHdWidget* ui;
+private:
+    Ui::ModOnHdWidget *ui;
     KateDocument *m_doc;
     KTextEditor::ModificationInterface::ModifiedOnDiskReason m_modtype;
     KProcess *m_proc;
@@ -423,4 +425,3 @@ class KateModOnHdPrompt : public QDialog
 };
 
 #endif
-// kate: space-indent on; indent-width 2; replace-tabs on;

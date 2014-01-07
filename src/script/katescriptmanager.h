@@ -33,23 +33,25 @@
 
 class QString;
 
-
 /**
  * Manage the scripts on disks -- find them and query them.
  * Provides access to loaded scripts too.
  */
 class KateScriptManager : public QObject, public KTextEditor::Command
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  KateScriptManager();
-  static KateScriptManager* m_instance;
+    KateScriptManager();
+    static KateScriptManager *m_instance;
 
-  public:
+public:
     virtual ~KateScriptManager();
 
     /** Get all scripts available in the command line */
-    const QVector<KateCommandLineScript*> &commandLineScripts() { return m_commandLineScripts; }
+    const QVector<KateCommandLineScript *> &commandLineScripts()
+    {
+        return m_commandLineScripts;
+    }
 
     /**
      * Get an indentation script for the given language -- if there is more than
@@ -62,7 +64,7 @@ class KateScriptManager : public QObject, public KTextEditor::Command
     //
     // KTextEditor::Command
     //
-  public:
+public:
     /**
      * execute command
      * @param view view to use for execution
@@ -87,17 +89,18 @@ class KateScriptManager : public QObject, public KTextEditor::Command
      */
     const QStringList &cmds();
 
-    static KateScriptManager* self() {
-      if (m_instance == 0) {
-        m_instance = new KateScriptManager();
-      }
-      return m_instance;
+    static KateScriptManager *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new KateScriptManager();
+        }
+        return m_instance;
     }
 
-  //
-  // Helper methods
-  //
-  public:
+    //
+    // Helper methods
+    //
+public:
     /**
      * Find all of the scripts matching the wildcard \p directory. The resource file
      * with the name \p resourceFile is used for caching. If \p force is true, then the
@@ -111,57 +114,62 @@ class KateScriptManager : public QObject, public KTextEditor::Command
      * Extract the meta data from the script at \p url and put in \p pairs.
      * Returns true if metadata was found and extracted successfuly, false otherwise.
     */
-    static bool parseMetaInformation(const QString& url, QHash<QString, QString> &pairs);
+    static bool parseMetaInformation(const QString &url, QHash<QString, QString> &pairs);
 
-  public:
-    KateIndentScript *indentationScript (const QString &scriptname) { return m_indentationScriptMap.value(scriptname); }
+public:
+    KateIndentScript *indentationScript(const QString &scriptname)
+    {
+        return m_indentationScriptMap.value(scriptname);
+    }
 
-    int indentationScriptCount () { return m_indentationScripts.size(); }
-    KateIndentScript *indentationScriptByIndex (int index) { return m_indentationScripts[index]; }
+    int indentationScriptCount()
+    {
+        return m_indentationScripts.size();
+    }
+    KateIndentScript *indentationScriptByIndex(int index)
+    {
+        return m_indentationScripts[index];
+    }
 
-  public:
+public:
     /** explicitly reload all scripts */
     void reload();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /** this signal is emitted when all scripts are _deleted_ and reloaded again. */
     void reloaded();
 
-  private:
+private:
     /** List of all command line scripts */
-    QVector<KateCommandLineScript*> m_commandLineScripts;
+    QVector<KateCommandLineScript *> m_commandLineScripts;
 
     /** list of all indentation scripts */
-    QList<KateIndentScript*> m_indentationScripts;
+    QList<KateIndentScript *> m_indentationScripts;
 
     /** hash of all existing indenter scripts, hashes basename -> script */
-    QHash<QString, KateIndentScript*> m_indentationScriptMap;
+    QHash<QString, KateIndentScript *> m_indentationScriptMap;
 
     /** Map of language to indent scripts */
-    QHash<QString, QVector<KateIndentScript*> > m_languageToIndenters;
+    QHash<QString, QVector<KateIndentScript *> > m_languageToIndenters;
 
-
-  //
-  // Template handling
-  //
-  public:
+    //
+    // Template handling
+    //
+public:
     /** managing of scripts for the template handler. The scripts are given as string content, not as  files*/
-    KTextEditor::TemplateScript* registerTemplateScript (QObject* owner, const QString& script);
+    KTextEditor::TemplateScript *registerTemplateScript(QObject *owner, const QString &script);
     /** unregister a given script */
-    void unregisterTemplateScript(KTextEditor::TemplateScript* templateScript);
+    void unregisterTemplateScript(KTextEditor::TemplateScript *templateScript);
 
-    KateTemplateScript* templateScript(KTextEditor::TemplateScript* templateScript);
+    KateTemplateScript *templateScript(KTextEditor::TemplateScript *templateScript);
 
-  public Q_SLOTS:
-    void slotTemplateScriptOwnerDestroyed(QObject* owner);
+public Q_SLOTS:
+    void slotTemplateScriptOwnerDestroyed(QObject *owner);
 
-  private:
-    QMultiMap<QObject*, KTextEditor::TemplateScript*> m_ownerScript;
-    QList<KTextEditor::TemplateScript*> m_templateScripts;
+private:
+    QMultiMap<QObject *, KTextEditor::TemplateScript *> m_ownerScript;
+    QList<KTextEditor::TemplateScript *> m_templateScripts;
 };
-
-
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

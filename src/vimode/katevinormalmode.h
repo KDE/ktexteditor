@@ -48,13 +48,13 @@ class KateViInputModeManager;
  */
 class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateViNormalMode( KateViInputModeManager *viInputModeManager, KateView * view, KateViewInternal * viewInternal );
+public:
+    KateViNormalMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
     virtual ~KateViNormalMode();
 
-    bool handleKeypress( const QKeyEvent *e );
+    bool handleKeypress(const QKeyEvent *e);
 
     bool commandEnterInsertMode();
     bool commandEnterInsertModeAppend();
@@ -276,23 +276,23 @@ class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
     virtual void reset();
 
     void beginMonitoringDocumentChanges();
-  protected:
+protected:
     void resetParser();
     void initializeCommands();
     QRegExp generateMatchingItemRegex();
-    void executeCommand( const KateViCommand* cmd );
+    void executeCommand(const KateViCommand *cmd);
     OperationMode getOperationMode() const;
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
     enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
     bool paste(KateViNormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
-    Cursor cursorPosAtEndOfPaste(const Cursor& pasteLocation, const QString& pastedText);
+    Cursor cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText);
 
     void joinLines(unsigned int from, unsigned int to) const;
     void reformatLines(unsigned int from, unsigned int to) const;
 
     KateViRange textObjectComma(bool inner);
-    void shrinkRangeAroundCursor(KateViRange& toShrink, const KateViRange& rangeToShrinkTo);
+    void shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo);
 
     QString m_keys;
     unsigned int m_countTemp;
@@ -303,7 +303,10 @@ class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
     QVector<int> m_matchingCommands;
     QVector<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;
-    bool motionWillBeUsedWithCommand() { return !m_awaitingMotionOrTextObject.isEmpty(); };
+    bool motionWillBeUsedWithCommand()
+    {
+        return !m_awaitingMotionOrTextObject.isEmpty();
+    };
 
     int m_motionOperatorIndex;
 
@@ -337,8 +340,8 @@ class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
     KTextEditor::Attribute::Ptr m_highlightYankAttribute;
     QSet<KTextEditor::MovingRange *> m_highlightedYanks;
 
-    void highlightYank(const KateViRange& range, const OperationMode mode = CharWise);
-    void addHighlightYank(const Range& range);
+    void highlightYank(const KateViRange &range, const OperationMode mode = CharWise);
+    void addHighlightYank(const Range &range);
     QSet<KTextEditor::MovingRange *> &highlightedYankForDocument();
 
     Cursor m_currentChangeEndMarker;
@@ -349,8 +352,8 @@ class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
 
     bool waitingForRegisterOrCharToSearch();
 private Q_SLOTS:
-    void textInserted(KTextEditor::Document* document, KTextEditor::Range range);
-    void textRemoved(KTextEditor::Document*,KTextEditor::Range);
+    void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    void textRemoved(KTextEditor::Document *, KTextEditor::Range);
     void undoBeginning();
     void undoEnded();
 

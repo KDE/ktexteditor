@@ -24,16 +24,16 @@
 #include <QApplication>
 #include <QStyleOption>
 
-KateCategoryDrawer::KateCategoryDrawer() : KCategoryDrawer (0)
+KateCategoryDrawer::KateCategoryDrawer() : KCategoryDrawer(0)
 {
 }
 
 void KateCategoryDrawer::drawCategory(const QModelIndex &index,
-                                            int sortRole,
-                                            const QStyleOption &option,
-                                            QPainter *painter) const
+                                      int sortRole,
+                                      const QStyleOption &option,
+                                      QPainter *painter) const
 {
-    Q_UNUSED( sortRole )
+    Q_UNUSED(sortRole)
 
     painter->setRenderHint(QPainter::Antialiasing);
 
@@ -258,8 +258,8 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
 
 int KateCategoryDrawer::categoryHeight(const QModelIndex &index, const QStyleOption &option) const
 {
-    Q_UNUSED( index );
-    Q_UNUSED( option );
+    Q_UNUSED(index);
+    Q_UNUSED(option);
 
     QFont font(QApplication::font());
     font.setBold(true);

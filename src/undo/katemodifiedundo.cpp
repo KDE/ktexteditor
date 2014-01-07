@@ -26,436 +26,434 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-KateModifiedInsertText::KateModifiedInsertText (KateDocument *document, int line, int col, const QString &text)
-  : KateEditInsertTextUndo (document, line, col, text)
+KateModifiedInsertText::KateModifiedInsertText(KateDocument *document, int line, int col, const QString &text)
+    : KateEditInsertTextUndo(document, line, col, text)
 {
-  setFlag(RedoLine1Modified);
-  Kate::TextLine tl = document->plainKateTextLine(line);
-  Q_ASSERT(tl);
-  if (tl->markedAsModified()) {
-    setFlag(UndoLine1Modified);
-  } else {
-    setFlag(UndoLine1Saved);
-  }
-}
-
-KateModifiedRemoveText::KateModifiedRemoveText (KateDocument *document, int line, int col, const QString &text)
-  : KateEditRemoveTextUndo (document, line, col, text)
-{
-  setFlag(RedoLine1Modified);
-  Kate::TextLine tl = document->plainKateTextLine(line);
-  Q_ASSERT(tl);
-  if (tl->markedAsModified()) {
-    setFlag(UndoLine1Modified);
-  } else {
-    setFlag(UndoLine1Saved);
-  }
-}
-
-KateModifiedWrapLine::KateModifiedWrapLine (KateDocument *document, int line, int col, int len, bool newLine)
-  : KateEditWrapLineUndo (document, line, col, len, newLine)
-{
-  Kate::TextLine tl = document->plainKateTextLine(line);
-  Q_ASSERT(tl);
-  if (len > 0 || tl->markedAsModified()) {
     setFlag(RedoLine1Modified);
-  } else if (tl->markedAsSavedOnDisk()) {
-    setFlag(RedoLine1Saved);
-  }
-
-  if (col > 0 || len == 0 || tl->markedAsModified()) {
-    setFlag(RedoLine2Modified);
-  } else if (tl->markedAsSavedOnDisk()) {
-    setFlag(RedoLine2Saved);
-  }
-
-  if (tl->markedAsModified()) {
-    setFlag(UndoLine1Modified);
-  } else if ((len > 0  && col > 0) || tl->markedAsSavedOnDisk()) {
-    setFlag(UndoLine1Saved);
-  }
+    Kate::TextLine tl = document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (tl->markedAsModified()) {
+        setFlag(UndoLine1Modified);
+    } else {
+        setFlag(UndoLine1Saved);
+    }
 }
 
-KateModifiedUnWrapLine::KateModifiedUnWrapLine (KateDocument *document, int line, int col, int len, bool removeLine)
-  : KateEditUnWrapLineUndo (document, line, col, len, removeLine)
+KateModifiedRemoveText::KateModifiedRemoveText(KateDocument *document, int line, int col, const QString &text)
+    : KateEditRemoveTextUndo(document, line, col, text)
 {
-  Kate::TextLine tl = document->plainKateTextLine(line);
-  Kate::TextLine nextLine = document->plainKateTextLine(line + 1);
-  Q_ASSERT(tl);
-  Q_ASSERT(nextLine);
-
-  const int len1 = tl->length();
-  const int len2 = nextLine->length();
-  
-  if (len1 > 0 && len2 > 0) {
     setFlag(RedoLine1Modified);
-
+    Kate::TextLine tl = document->plainKateTextLine(line);
+    Q_ASSERT(tl);
     if (tl->markedAsModified()) {
-      setFlag(UndoLine1Modified);
+        setFlag(UndoLine1Modified);
     } else {
-      setFlag(UndoLine1Saved);
+        setFlag(UndoLine1Saved);
     }
+}
 
-    if (nextLine->markedAsModified()) {
-      setFlag(UndoLine2Modified);
-    } else {
-      setFlag(UndoLine2Saved);
-    }
-  } else if (len1 == 0) {
-    if (nextLine->markedAsModified()) {
-      setFlag(RedoLine1Modified);
-    } else if (nextLine->markedAsSavedOnDisk()) {
-      setFlag(RedoLine1Saved);
-    }
-
-    if (tl->markedAsModified()) {
-      setFlag(UndoLine1Modified);
-    } else {
-      setFlag(UndoLine1Saved);
-    }
-
-    if (nextLine->markedAsModified()) {
-      setFlag(UndoLine2Modified);
-    } else if (nextLine->markedAsSavedOnDisk()) {
-      setFlag(UndoLine2Saved);
-    }
-  } else { // len2 == 0
-    if (nextLine->markedAsModified()) {
-      setFlag(RedoLine1Modified);
-    } else if (nextLine->markedAsSavedOnDisk()) {
-      setFlag(RedoLine1Saved);
-    }
-
-    if (tl->markedAsModified()) {
-      setFlag(UndoLine1Modified);
+KateModifiedWrapLine::KateModifiedWrapLine(KateDocument *document, int line, int col, int len, bool newLine)
+    : KateEditWrapLineUndo(document, line, col, len, newLine)
+{
+    Kate::TextLine tl = document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (len > 0 || tl->markedAsModified()) {
+        setFlag(RedoLine1Modified);
     } else if (tl->markedAsSavedOnDisk()) {
-      setFlag(UndoLine1Saved);
+        setFlag(RedoLine1Saved);
     }
 
-    if (nextLine->markedAsModified()) {
-      setFlag(UndoLine2Modified);
+    if (col > 0 || len == 0 || tl->markedAsModified()) {
+        setFlag(RedoLine2Modified);
+    } else if (tl->markedAsSavedOnDisk()) {
+        setFlag(RedoLine2Saved);
+    }
+
+    if (tl->markedAsModified()) {
+        setFlag(UndoLine1Modified);
+    } else if ((len > 0  && col > 0) || tl->markedAsSavedOnDisk()) {
+        setFlag(UndoLine1Saved);
+    }
+}
+
+KateModifiedUnWrapLine::KateModifiedUnWrapLine(KateDocument *document, int line, int col, int len, bool removeLine)
+    : KateEditUnWrapLineUndo(document, line, col, len, removeLine)
+{
+    Kate::TextLine tl = document->plainKateTextLine(line);
+    Kate::TextLine nextLine = document->plainKateTextLine(line + 1);
+    Q_ASSERT(tl);
+    Q_ASSERT(nextLine);
+
+    const int len1 = tl->length();
+    const int len2 = nextLine->length();
+
+    if (len1 > 0 && len2 > 0) {
+        setFlag(RedoLine1Modified);
+
+        if (tl->markedAsModified()) {
+            setFlag(UndoLine1Modified);
+        } else {
+            setFlag(UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            setFlag(UndoLine2Modified);
+        } else {
+            setFlag(UndoLine2Saved);
+        }
+    } else if (len1 == 0) {
+        if (nextLine->markedAsModified()) {
+            setFlag(RedoLine1Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            setFlag(RedoLine1Saved);
+        }
+
+        if (tl->markedAsModified()) {
+            setFlag(UndoLine1Modified);
+        } else {
+            setFlag(UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            setFlag(UndoLine2Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            setFlag(UndoLine2Saved);
+        }
+    } else { // len2 == 0
+        if (nextLine->markedAsModified()) {
+            setFlag(RedoLine1Modified);
+        } else if (nextLine->markedAsSavedOnDisk()) {
+            setFlag(RedoLine1Saved);
+        }
+
+        if (tl->markedAsModified()) {
+            setFlag(UndoLine1Modified);
+        } else if (tl->markedAsSavedOnDisk()) {
+            setFlag(UndoLine1Saved);
+        }
+
+        if (nextLine->markedAsModified()) {
+            setFlag(UndoLine2Modified);
+        } else {
+            setFlag(UndoLine2Saved);
+        }
+    }
+}
+
+KateModifiedInsertLine::KateModifiedInsertLine(KateDocument *document, int line, const QString &text)
+    : KateEditInsertLineUndo(document, line, text)
+{
+    setFlag(RedoLine1Modified);
+}
+
+KateModifiedRemoveLine::KateModifiedRemoveLine(KateDocument *document, int line, const QString &text)
+    : KateEditRemoveLineUndo(document, line, text)
+{
+    Kate::TextLine tl = document->plainKateTextLine(line);
+    Q_ASSERT(tl);
+    if (tl->markedAsModified()) {
+        setFlag(UndoLine1Modified);
     } else {
-      setFlag(UndoLine2Saved);
+        setFlag(UndoLine1Saved);
     }
-  }
 }
 
-KateModifiedInsertLine::KateModifiedInsertLine (KateDocument *document, int line, const QString &text)
-  : KateEditInsertLineUndo (document, line, text)
+void KateModifiedInsertText::undo()
 {
-  setFlag(RedoLine1Modified);
+    KateEditInsertTextUndo::undo();
+
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
+
+    tl->markAsModified(isFlagSet(UndoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
 }
 
-KateModifiedRemoveLine::KateModifiedRemoveLine (KateDocument *document, int line, const QString &text)
-  : KateEditRemoveLineUndo (document, line, text)
+void KateModifiedRemoveText::undo()
 {
-  Kate::TextLine tl = document->plainKateTextLine(line);
-  Q_ASSERT(tl);
-  if (tl->markedAsModified()) {
-    setFlag(UndoLine1Modified);
-  } else {
-    setFlag(UndoLine1Saved);
-  }
+    KateEditRemoveTextUndo::undo();
+
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
+
+    tl->markAsModified(isFlagSet(UndoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
 }
 
-void KateModifiedInsertText::undo ()
+void KateModifiedWrapLine::undo()
 {
-  KateEditInsertTextUndo::undo();
+    KateEditWrapLineUndo::undo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(UndoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
+    tl->markAsModified(isFlagSet(UndoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
 }
 
-void KateModifiedRemoveText::undo ()
+void KateModifiedUnWrapLine::undo()
 {
-  KateEditRemoveTextUndo::undo();
+    KateEditUnWrapLineUndo::undo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(UndoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
+    tl->markAsModified(isFlagSet(UndoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
+
+    Kate::TextLine nextLine = doc->plainKateTextLine(line() + 1);
+    Q_ASSERT(nextLine);
+    nextLine->markAsModified(isFlagSet(UndoLine2Modified));
+    nextLine->markAsSavedOnDisk(isFlagSet(UndoLine2Saved));
 }
 
-void KateModifiedWrapLine::undo ()
+void KateModifiedInsertLine::undo()
 {
-  KateEditWrapLineUndo::undo();
+    KateEditInsertLineUndo::undo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
-
-  tl->markAsModified(isFlagSet(UndoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
+    // no line modification needed, since the line is removed
 }
 
-void KateModifiedUnWrapLine::undo ()
+void KateModifiedRemoveLine::undo()
 {
-  KateEditUnWrapLineUndo::undo();
+    KateEditRemoveLineUndo::undo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(UndoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
-
-  Kate::TextLine nextLine = doc->plainKateTextLine(line() + 1);
-  Q_ASSERT(nextLine);
-  nextLine->markAsModified(isFlagSet(UndoLine2Modified));
-  nextLine->markAsSavedOnDisk(isFlagSet(UndoLine2Saved));
+    tl->markAsModified(isFlagSet(UndoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
 }
 
-void KateModifiedInsertLine::undo ()
+void KateModifiedRemoveText::redo()
 {
-  KateEditInsertLineUndo::undo();
+    KateEditRemoveTextUndo::redo();
 
-  // no line modification needed, since the line is removed
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
+
+    tl->markAsModified(isFlagSet(RedoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
 }
 
-void KateModifiedRemoveLine::undo ()
+void KateModifiedInsertText::redo()
 {
-  KateEditRemoveLineUndo::undo();
+    KateEditInsertTextUndo::redo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(UndoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(UndoLine1Saved));
+    tl->markAsModified(isFlagSet(RedoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
 }
 
-
-void KateModifiedRemoveText::redo ()
+void KateModifiedUnWrapLine::redo()
 {
-  KateEditRemoveTextUndo::redo();
+    KateEditUnWrapLineUndo::redo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(RedoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
+    tl->markAsModified(isFlagSet(RedoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
 }
 
-void KateModifiedInsertText::redo ()
+void KateModifiedWrapLine::redo()
 {
-  KateEditInsertTextUndo::redo();
+    KateEditWrapLineUndo::redo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(RedoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
+    tl->markAsModified(isFlagSet(RedoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
+
+    Kate::TextLine nextLine = doc->plainKateTextLine(line() + 1);
+    Q_ASSERT(nextLine);
+
+    nextLine->markAsModified(isFlagSet(RedoLine2Modified));
+    nextLine->markAsSavedOnDisk(isFlagSet(RedoLine2Saved));
 }
 
-void KateModifiedUnWrapLine::redo ()
+void KateModifiedRemoveLine::redo()
 {
-  KateEditUnWrapLineUndo::redo();
+    KateEditRemoveLineUndo::redo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
-
-  tl->markAsModified(isFlagSet(RedoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
+    // no line modification needed, since the line is removed
 }
 
-void KateModifiedWrapLine::redo ()
+void KateModifiedInsertLine::redo()
 {
-  KateEditWrapLineUndo::redo ();
+    KateEditInsertLineUndo::redo();
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    KateDocument *doc = document();
+    Kate::TextLine tl = doc->plainKateTextLine(line());
+    Q_ASSERT(tl);
 
-  tl->markAsModified(isFlagSet(RedoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
-
-  Kate::TextLine nextLine = doc->plainKateTextLine(line() + 1);
-  Q_ASSERT(nextLine);
-
-  nextLine->markAsModified(isFlagSet(RedoLine2Modified));
-  nextLine->markAsSavedOnDisk(isFlagSet(RedoLine2Saved));
+    tl->markAsModified(isFlagSet(RedoLine1Modified));
+    tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
 }
 
-void KateModifiedRemoveLine::redo ()
+void KateModifiedInsertText::updateRedoSavedOnDiskFlag(QBitArray &lines)
 {
-  KateEditRemoveLineUndo::redo();
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  // no line modification needed, since the line is removed
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
+
+        unsetFlag(RedoLine1Modified);
+        setFlag(RedoLine1Saved);
+    }
 }
 
-void KateModifiedInsertLine::redo ()
+void KateModifiedInsertText::updateUndoSavedOnDiskFlag(QBitArray &lines)
 {
-  KateEditInsertLineUndo::redo();
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  KateDocument *doc = document();
-  Kate::TextLine tl = doc->plainKateTextLine(line());
-  Q_ASSERT(tl);
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
 
-  tl->markAsModified(isFlagSet(RedoLine1Modified));
-  tl->markAsSavedOnDisk(isFlagSet(RedoLine1Saved));
+        unsetFlag(UndoLine1Modified);
+        setFlag(UndoLine1Saved);
+    }
 }
 
-void KateModifiedInsertText::updateRedoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedRemoveText::updateRedoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(RedoLine1Modified);
-    setFlag(RedoLine1Saved);
-  }
+        unsetFlag(RedoLine1Modified);
+        setFlag(RedoLine1Saved);
+    }
 }
 
-void KateModifiedInsertText::updateUndoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedRemoveText::updateUndoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(UndoLine1Modified);
-    setFlag(UndoLine1Saved);
-  }
+        unsetFlag(UndoLine1Modified);
+        setFlag(UndoLine1Saved);
+    }
 }
 
-void KateModifiedRemoveText::updateRedoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedWrapLine::updateRedoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() + 1 >= lines.size()) {
+        lines.resize(line() + 2);
+    }
 
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
+    if (isFlagSet(RedoLine1Modified) && !lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(RedoLine1Modified);
-    setFlag(RedoLine1Saved);
-  }
+        unsetFlag(RedoLine1Modified);
+        setFlag(RedoLine1Saved);
+    }
+
+    if (isFlagSet(RedoLine2Modified) && !lines.testBit(line() + 1)) {
+        lines.setBit(line() + 1);
+
+        unsetFlag(RedoLine2Modified);
+        setFlag(RedoLine2Saved);
+    }
 }
 
-void KateModifiedRemoveText::updateUndoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedWrapLine::updateUndoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
+    if (isFlagSet(UndoLine1Modified) && !lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(UndoLine1Modified);
-    setFlag(UndoLine1Saved);
-  }
+        unsetFlag(UndoLine1Modified);
+        setFlag(UndoLine1Saved);
+    }
 }
 
-void KateModifiedWrapLine::updateRedoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedUnWrapLine::updateRedoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() + 1 >= lines.size()) {
-    lines.resize(line() + 2);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (isFlagSet(RedoLine1Modified) && !lines.testBit(line())) {
-    lines.setBit(line());
+    if (isFlagSet(RedoLine1Modified) && !lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(RedoLine1Modified);
-    setFlag(RedoLine1Saved);
-  }
-
-  if (isFlagSet(RedoLine2Modified) && !lines.testBit(line() + 1)) {
-    lines.setBit(line() + 1);
-
-    unsetFlag(RedoLine2Modified);
-    setFlag(RedoLine2Saved);
-  }
+        unsetFlag(RedoLine1Modified);
+        setFlag(RedoLine1Saved);
+    }
 }
 
-void KateModifiedWrapLine::updateUndoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedUnWrapLine::updateUndoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() + 1 >= lines.size()) {
+        lines.resize(line() + 2);
+    }
 
-  if (isFlagSet(UndoLine1Modified) && !lines.testBit(line())) {
-    lines.setBit(line());
+    if (isFlagSet(UndoLine1Modified) && !lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(UndoLine1Modified);
-    setFlag(UndoLine1Saved);
-  }
+        unsetFlag(UndoLine1Modified);
+        setFlag(UndoLine1Saved);
+    }
+
+    if (isFlagSet(UndoLine2Modified) && !lines.testBit(line() + 1)) {
+        lines.setBit(line() + 1);
+
+        unsetFlag(UndoLine2Modified);
+        setFlag(UndoLine2Saved);
+    }
 }
 
-void KateModifiedUnWrapLine::updateRedoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedInsertLine::updateRedoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (isFlagSet(RedoLine1Modified) && !lines.testBit(line())) {
-    lines.setBit(line());
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(RedoLine1Modified);
-    setFlag(RedoLine1Saved);
-  }
+        unsetFlag(RedoLine1Modified);
+        setFlag(RedoLine1Saved);
+    }
 }
 
-void KateModifiedUnWrapLine::updateUndoSavedOnDiskFlag(QBitArray & lines)
+void KateModifiedRemoveLine::updateUndoSavedOnDiskFlag(QBitArray &lines)
 {
-  if (line() + 1 >= lines.size()) {
-    lines.resize(line() + 2);
-  }
+    if (line() >= lines.size()) {
+        lines.resize(line() + 1);
+    }
 
-  if (isFlagSet(UndoLine1Modified) && !lines.testBit(line())) {
-    lines.setBit(line());
+    if (!lines.testBit(line())) {
+        lines.setBit(line());
 
-    unsetFlag(UndoLine1Modified);
-    setFlag(UndoLine1Saved);
-  }
-
-  if (isFlagSet(UndoLine2Modified) && !lines.testBit(line() + 1)) {
-    lines.setBit(line() + 1);
-
-    unsetFlag(UndoLine2Modified);
-    setFlag(UndoLine2Saved);
-  }
+        unsetFlag(UndoLine1Modified);
+        setFlag(UndoLine1Saved);
+    }
 }
 
-void KateModifiedInsertLine::updateRedoSavedOnDiskFlag(QBitArray & lines)
-{
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
-
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
-
-    unsetFlag(RedoLine1Modified);
-    setFlag(RedoLine1Saved);
-  }
-}
-
-void KateModifiedRemoveLine::updateUndoSavedOnDiskFlag(QBitArray & lines)
-{
-  if (line() >= lines.size()) {
-    lines.resize(line() + 1);
-  }
-
-  if (!lines.testBit(line())) {
-    lines.setBit(line());
-
-    unsetFlag(UndoLine1Modified);
-    setFlag(UndoLine1Saved);
-  }
-}
-
-// kate: space-indent on; indent-width 2; replace-tabs on;

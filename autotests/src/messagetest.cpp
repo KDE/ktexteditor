@@ -34,7 +34,7 @@ QTEST_MAIN(MessageTest)
 
 void MessageTest::initTestCase()
 {
-  KateGlobal::enableUnitTestMode();
+    KateGlobal::enableUnitTestMode();
 }
 
 void MessageTest::cleanupTestCase()
@@ -45,7 +45,7 @@ void MessageTest::testPostMessage()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
 
@@ -72,7 +72,7 @@ void MessageTest::testAutoHide()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QTest::qWait(500); // make sure the widget is really shown in correct size
@@ -104,7 +104,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QTest::qWait(500); // make sure the widget is really shown in correct size
@@ -146,7 +146,7 @@ void MessageTest::testMessageQueue()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QTest::qWait(500); // make sure the widget is really shown in correct size
@@ -203,7 +203,7 @@ void MessageTest::testPriority()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QTest::qWait(500); // make sure the widget is really shown in correct size
@@ -280,8 +280,8 @@ void MessageTest::testCreateView()
     QVERIFY(doc.postMessage(m1));
 
     // now create views
-    KateView* v1 = static_cast<KateView*>(doc.createView(0));
-    KateView* v2 = static_cast<KateView*>(doc.createView(0));
+    KateView *v1 = static_cast<KateView *>(doc.createView(0));
+    KateView *v2 = static_cast<KateView *>(doc.createView(0));
     v1->show();
     v2->show();
     v1->resize(400, 300);
@@ -306,7 +306,7 @@ void MessageTest::testHideView()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
 
@@ -351,7 +351,7 @@ void MessageTest::testHideViewAfterUserInteraction()
 {
     KateDocument doc(false, false, false);
 
-    KateView* view = static_cast<KateView*>(doc.createView(0));
+    KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QTest::qWait(100);
@@ -406,4 +406,3 @@ void MessageTest::testHideViewAfterUserInteraction()
     QVERIFY(!view->messageWidget()->isVisible());
 }
 
-// kate: indent-width 4; remove-trailing-spaces all;

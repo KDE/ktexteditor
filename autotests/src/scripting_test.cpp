@@ -61,18 +61,17 @@ QTEST_MAIN(ScriptingTest)
 
 void ScriptingTest::initTestCase()
 {
-  ScriptTestBase::initTestCase();
-  m_section = "scripting";
-  m_script_dir = "";
+    ScriptTestBase::initTestCase();
+    m_section = "scripting";
+    m_script_dir = "";
 }
-
 
 void ScriptingTest::bugs_data()
 {
-  getTestData( "bugs" );
+    getTestData("bugs");
 }
 
 void ScriptingTest::bugs()
 {
-    runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }

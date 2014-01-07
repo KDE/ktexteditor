@@ -33,39 +33,38 @@ class QLabel;
 class QCompleter;
 class QMainWindow;
 
-
 class WindowKeepActive : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WindowKeepActive(QMainWindow *mainWindow);
+    WindowKeepActive(QMainWindow *mainWindow);
 public Q_SLOTS:
-  bool eventFilter(QObject* object, QEvent* event);
+    bool eventFilter(QObject *object, QEvent *event);
 private:
-  QMainWindow *m_mainWindow;
+    QMainWindow *m_mainWindow;
 };
 
 class FailsIfSlotNotCalled : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  FailsIfSlotNotCalled();
-  ~FailsIfSlotNotCalled();
+    FailsIfSlotNotCalled();
+    ~FailsIfSlotNotCalled();
 public Q_SLOTS:
-  void slot();
+    void slot();
 private:
-  bool m_slotWasCalled;
+    bool m_slotWasCalled;
 };
 
 class FailsIfSlotCalled : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  FailsIfSlotCalled(const QString& failureMessage);
+    FailsIfSlotCalled(const QString &failureMessage);
 public Q_SLOTS:
-  void slot();
+    void slot();
 private:
-  const QString m_failureMessage;
+    const QString m_failureMessage;
 };
 
 /**
@@ -99,7 +98,7 @@ class FakeCodeCompletionTestModel : public KTextEditor::CodeCompletionModel
 {
     Q_OBJECT
 public:
-    FakeCodeCompletionTestModel(KTextEditor::View* parent);
+    FakeCodeCompletionTestModel(KTextEditor::View *parent);
     /**
      * List of completions, in sorted order.
      * A string ending with "()" is treated as a call to a function with no arguments.
@@ -108,7 +107,7 @@ public:
      * A string ending with "();" or "(...);" is the same as above, and the semi-colon is added.  Bracket merging
      * never happens with strings ending with ";".
      */
-    void setCompletions(const QStringList& completions);
+    void setCompletions(const QStringList &completions);
     void setRemoveTailOnComplete(bool removeTailOnCompletion);
     void setFailTestOnInvocation(bool failTestOnInvocation);
     bool wasInvoked();
@@ -116,159 +115,158 @@ public:
     /**
      * A more reliable form of setAutomaticInvocationEnabled().
      */
-    void forceInvocationIfDocTextIs(const QString& desiredDocText);
+    void forceInvocationIfDocTextIs(const QString &desiredDocText);
     void doNotForceInvocation();;
-    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-    virtual void executeCompletionItem(KTextEditor::Document* document, const KTextEditor::Range& word, int row) const;
-    KTextEditor::CodeCompletionInterface * cc( ) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    virtual void executeCompletionItem(KTextEditor::Document *document, const KTextEditor::Range &word, int row) const;
+    KTextEditor::CodeCompletionInterface *cc() const;
 private:
-  void failTest() const;
-  QStringList m_completions;
-  KateView *m_kateView;
-  KTextEditor::Document *m_kateDoc;
-  bool m_removeTailOnCompletion;
-  bool m_failTestOnInvocation;
-  mutable bool m_wasInvoked;
-  QString m_forceInvocationIfDocTextIs;
+    void failTest() const;
+    QStringList m_completions;
+    KateView *m_kateView;
+    KTextEditor::Document *m_kateDoc;
+    bool m_removeTailOnCompletion;
+    bool m_failTestOnInvocation;
+    mutable bool m_wasInvoked;
+    QString m_forceInvocationIfDocTextIs;
 private Q_SLOTS:
-  void textInserted(KTextEditor::Document* document, KTextEditor::Range range);
-  void textRemoved(KTextEditor::Document* document, KTextEditor::Range range);
-  void checkIfShouldForceInvocation();
+    void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    void textRemoved(KTextEditor::Document *document, KTextEditor::Range range);
+    void checkIfShouldForceInvocation();
 
 };
 
 class ViModeTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  ViModeTest();
-  ~ViModeTest();
+    ViModeTest();
+    ~ViModeTest();
 
-  static void waitForCompletionWidgetToActivate(KateView *kate_view);
+    static void waitForCompletionWidgetToActivate(KateView *kate_view);
 
 private Q_SLOTS:
-  void init();
+    void init();
 
-  void NormalModeMotionsTest();
-  void NormalModeCommandsTest();
-  void NormalModeControlTests();
-  void NormalModeNotYetImplementedFeaturesTest();
-  void FakeCodeCompletionTests();
+    void NormalModeMotionsTest();
+    void NormalModeCommandsTest();
+    void NormalModeControlTests();
+    void NormalModeNotYetImplementedFeaturesTest();
+    void FakeCodeCompletionTests();
 
-  void InsertModeTests();
-  void VisualModeTests();
-  void ReplaceModeTests();
-  void CommandModeTests();
-  void VimStyleCommandBarTests();
+    void InsertModeTests();
+    void VisualModeTests();
+    void ReplaceModeTests();
+    void CommandModeTests();
+    void VimStyleCommandBarTests();
 
-  void MappingTests();
-  void yankHighlightingTests();
-  void CompletionTests();
-  void visualLineUpDownTests();
+    void MappingTests();
+    void yankHighlightingTests();
+    void CompletionTests();
+    void visualLineUpDownTests();
 
-  void MacroTests();
+    void MacroTests();
 
-  void debuggingTests();
-  void keyParsingTests();
-  void AltGr();
+    void debuggingTests();
+    void keyParsingTests();
+    void AltGr();
 private:
-  enum Expectation { ShouldPass, ShouldFail };
-  void BeginTest(const QString& original_text);
-  void FinishTest_(int line, const QString& expected_text, Expectation expectation = ShouldPass, const QString& failureReason = QString());
-  /**
-   * Send the coded keypresses to the correct widget, attempting to follow Qt's event dispatching rules.
-   */
-  void TestPressKey(QString str);
-  void DoTest_(int line, QString original_text,
-                                  QString command,
-                                  QString expected_text,
-                                  Expectation expectation = ShouldPass,
-                                  const QString& failureReason = QString()
-             );
+    enum Expectation { ShouldPass, ShouldFail };
+    void BeginTest(const QString &original_text);
+    void FinishTest_(int line, const QString &expected_text, Expectation expectation = ShouldPass, const QString &failureReason = QString());
+    /**
+     * Send the coded keypresses to the correct widget, attempting to follow Qt's event dispatching rules.
+     */
+    void TestPressKey(QString str);
+    void DoTest_(int line, QString original_text,
+                 QString command,
+                 QString expected_text,
+                 Expectation expectation = ShouldPass,
+                 const QString &failureReason = QString()
+                );
 
-  KateDocument *kate_document;
-  KateView *kate_view;
-  QMainWindow *mainWindow;
-  QVBoxLayout *mainWindowLayout;
-  KateViInputModeManager *vi_input_mode_manager;
+    KateDocument *kate_document;
+    KateView *kate_view;
+    QMainWindow *mainWindow;
+    QVBoxLayout *mainWindowLayout;
+    KateViInputModeManager *vi_input_mode_manager;
 
-  bool m_firstBatchOfKeypressesForTest;
+    bool m_firstBatchOfKeypressesForTest;
 
-  QList<Kate::TextRange*> rangesOnFirstLine();
-  void ensureKateViewVisible();
-  void waitForCompletionWidgetToActivate();
+    QList<Kate::TextRange *> rangesOnFirstLine();
+    void ensureKateViewVisible();
+    void waitForCompletionWidgetToActivate();
 
-  QLineEdit *emulatedCommandBarTextEdit();
-  QLabel *emulatedCommandTypeIndicator();
-  KateViEmulatedCommandBar *emulatedCommandBar();
-  QLabel *commandResponseMessageDisplay();
-  void verifyShowsNumberOfReplacementsAcrossNumberOfLines(int numReplacements, int acrossNumLines);
-  void waitForEmulatedCommandBarToHide(long timeout);
-  void verifyCursorAt(const KTextEditor::Cursor& expectedCursorPos);
+    QLineEdit *emulatedCommandBarTextEdit();
+    QLabel *emulatedCommandTypeIndicator();
+    KateViEmulatedCommandBar *emulatedCommandBar();
+    QLabel *commandResponseMessageDisplay();
+    void verifyShowsNumberOfReplacementsAcrossNumberOfLines(int numReplacements, int acrossNumLines);
+    void waitForEmulatedCommandBarToHide(long timeout);
+    void verifyCursorAt(const KTextEditor::Cursor &expectedCursorPos);
 
-  void verifyTextEditBackgroundColour(const QColor& expectedBackgroundColour);
+    void verifyTextEditBackgroundColour(const QColor &expectedBackgroundColour);
 
-  QMap<QString, Qt::KeyboardModifier> m_codesToModifiers;
-  Qt::KeyboardModifier parseCodedModifier(const QString& string, int startPos, int* destEndOfCodedModifier);
+    QMap<QString, Qt::KeyboardModifier> m_codesToModifiers;
+    Qt::KeyboardModifier parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier);
 
-  QMap<QString, Qt::Key> m_codesToSpecialKeys;
-    Qt::Key parseCodedSpecialKey(const QString& string, int startPos, int* destEndOfCodedKey);
+    QMap<QString, Qt::Key> m_codesToSpecialKeys;
+    Qt::Key parseCodedSpecialKey(const QString &string, int startPos, int *destEndOfCodedKey);
 
-  void clearAllMappings();
+    void clearAllMappings();
 
-  void clearSearchHistory();
-  QStringList searchHistory();
+    void clearSearchHistory();
+    QStringList searchHistory();
 
-  void clearCommandHistory();
-  QStringList commandHistory();
+    void clearCommandHistory();
+    QStringList commandHistory();
 
-  void clearReplaceHistory();
-  QStringList replaceHistory();
+    void clearReplaceHistory();
+    QStringList replaceHistory();
 
-  void clearAllMacros();
+    void clearAllMacros();
 
-  QCompleter *emulatedCommandBarCompleter();
+    QCompleter *emulatedCommandBarCompleter();
 
-  void verifyCommandBarCompletionVisible();
-  void verifyCommandBarCompletionsMatches(const QStringList& expectedCompletionList);
-  void verifyCommandBarCompletionContains(const QStringList& expectedCompletionList);
+    void verifyCommandBarCompletionVisible();
+    void verifyCommandBarCompletionsMatches(const QStringList &expectedCompletionList);
+    void verifyCommandBarCompletionContains(const QStringList &expectedCompletionList);
 
-  void clearTrackedDocumentChanges();
+    void clearTrackedDocumentChanges();
 private Q_SLOTS:
-  void textInserted(KTextEditor::Document* document, KTextEditor::Range range);
-  void textRemoved(KTextEditor::Document* document, KTextEditor::Range range);
+    void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
+    void textRemoved(KTextEditor::Document *document, KTextEditor::Range range);
 private:
-  class DocChange
-  {
-  public:
-    enum ChangeType { TextRemoved, TextInserted };
-    DocChange(ChangeType changeType, KTextEditor::Range changeRange, QString newText = QString())
-        : m_changeType(changeType),
-          m_changeRange(changeRange),
-          m_newText(newText)
+    class DocChange
     {
-    }
-    ChangeType changeType() const
-    {
-      return m_changeType;
-    }
-    KTextEditor::Range changeRange() const
-    {
-      return m_changeRange;
-    }
-    QString newText() const
-    {
-      return m_newText;
-    }
-  private:
-    ChangeType m_changeType;
-    KTextEditor::Range m_changeRange;
-    QString m_newText;
-  };
-  QList<DocChange> m_docChanges;
+    public:
+        enum ChangeType { TextRemoved, TextInserted };
+        DocChange(ChangeType changeType, KTextEditor::Range changeRange, QString newText = QString())
+            : m_changeType(changeType),
+              m_changeRange(changeRange),
+              m_newText(newText)
+        {
+        }
+        ChangeType changeType() const
+        {
+            return m_changeType;
+        }
+        KTextEditor::Range changeRange() const
+        {
+            return m_changeRange;
+        }
+        QString newText() const
+        {
+            return m_newText;
+        }
+    private:
+        ChangeType m_changeType;
+        KTextEditor::Range m_changeRange;
+        QString m_newText;
+    };
+    QList<DocChange> m_docChanges;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

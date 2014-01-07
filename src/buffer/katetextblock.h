@@ -28,7 +28,8 @@
 #include <ktexteditor/cursor.h>
 #include "katetextline.h"
 
-namespace Kate {
+namespace Kate
+{
 
 class TextBuffer;
 class TextCursor;
@@ -39,68 +40,75 @@ class TextRange;
  * This is used to build up a Kate::TextBuffer.
  * This class should only be used by TextBuffer/Cursor/Range.
  */
-class KTEXTEDITOR_EXPORT TextBlock {
-  public:
+class KTEXTEDITOR_EXPORT TextBlock
+{
+public:
     /**
      * Construct an empty text block.
      * @param buffer parent text buffer
      * @param startLine start line of this block
      */
-    TextBlock (TextBuffer *buffer, int startLine);
+    TextBlock(TextBuffer *buffer, int startLine);
 
     /**
      * Destruct the text block
      */
-    ~TextBlock ();
+    ~TextBlock();
 
     /**
      * Start line of this block.
      * @return start line of this block
      */
-    int startLine () const { return m_startLine; }
+    int startLine() const
+    {
+        return m_startLine;
+    }
 
     /**
      * Set start line of this block.
      * @param startLine new start line of this block
      */
-    void setStartLine (int startLine);
+    void setStartLine(int startLine);
 
     /**
      * Retrieve a text line.
      * @param line wanted line number
      * @return text line
      */
-    TextLine line (int line) const;
+    TextLine line(int line) const;
 
     /**
      * Append a new line with given text.
      * @param textOfLine text of the line to append
      */
-    void appendLine (const QString &textOfLine);
-    
+    void appendLine(const QString &textOfLine);
+
     /**
      * Clear the lines.
      */
-    void clearLines ();
+    void clearLines();
 
     /**
      * Number of lines in this block.
      * @return number of lines
      */
-    int lines () const { return m_lines.size(); }
+    int lines() const
+    {
+        return m_lines.size();
+    }
 
     /**
      * Retrieve text of block.
      * @param text for this block, lines separated by '\n'
      */
-    void text (QString &text) const;
+    void text(QString &text) const;
 
     /**
      * Wrap line at given cursor position.
      * @param position line/column as cursor where to wrap
      * @param fixStartLinesStartIndex start index to fix start lines, normally this is this block
      */
-    void wrapLine (const KTextEditor::Cursor &position, int fixStartLinesStartIndex);
+    void wrapLine(const KTextEditor::Cursor &position, int fixStartLinesStartIndex);
 
     /**
      * Unwrap given line.
@@ -108,27 +116,27 @@ class KTEXTEDITOR_EXPORT TextBlock {
      * @param previousBlock previous block, if any, if we unwrap first line in block, we need to have this
      * @param fixStartLinesStartIndex start index to fix start lines, normally this is this block or the previous one
      */
-    void unwrapLine (int line, TextBlock *previousBlock, int fixStartLinesStartIndex);
+    void unwrapLine(int line, TextBlock *previousBlock, int fixStartLinesStartIndex);
 
     /**
      * Insert text at given cursor position.
      * @param position position where to insert text
      * @param text text to insert
      */
-    void insertText (const KTextEditor::Cursor &position, const QString &text);
+    void insertText(const KTextEditor::Cursor &position, const QString &text);
 
     /**
      * Remove text at given range.
      * @param range range of text to remove, must be on one line only.
      * @param removedText will be filled with removed text
      */
-    void removeText (const KTextEditor::Range &range, QString &removedText);
+    void removeText(const KTextEditor::Range &range, QString &removedText);
 
     /**
      * Debug output, print whole block content with line numbers and line length
      * @param blockIndex index of this block in buffer
      */
-    void debugPrint (int blockIndex) const;
+    void debugPrint(int blockIndex) const;
 
     /**
      * Split given block. A new block will be created and all lines starting from the given index will
@@ -136,35 +144,36 @@ class KTEXTEDITOR_EXPORT TextBlock {
      * @param fromLine line from which to split
      * @return new block containing the lines + cursors removed from this one
      */
-    TextBlock *splitBlock (int fromLine);
+    TextBlock *splitBlock(int fromLine);
 
     /**
      * Merge this block with given one, the given one must be a direct predecessor.
      * @param targetBlock block to merge with
      */
-    void mergeBlock (TextBlock *targetBlock);
+    void mergeBlock(TextBlock *targetBlock);
 
     /**
      * Delete the block content, delete all lines and delete all cursors not bound to ranges.
      * This is used in destructor of TextBuffer, for fast cleanup. Only stuff remaining afterwards are cursors which are
      * part of a range, TextBuffer will delete them itself...
      */
-    void deleteBlockContent ();
+    void deleteBlockContent();
 
     /**
      * Clear the block content, delete all lines, move all cursors not bound to range to given block at 0,0.
      * This is used by clear() of TextBuffer.
      * @param targetBlock empty target block for cursors
      */
-    void clearBlockContent (TextBlock *targetBlock);
+    void clearBlockContent(TextBlock *targetBlock);
 
     /**
      * Return all ranges in this block which might intersect the given line.
      * @param line line to check intersection
      * @return list of sets of possible candidate ranges
      */
-    QList<QSet<TextRange*> > rangesForLine (int line) const {
-      return QList<QSet<TextRange*> >() << m_uncachedRanges << cachedRangesForLine(line);
+    QList<QSet<TextRange *> > rangesForLine(int line) const
+    {
+        return QList<QSet<TextRange *> >() << m_uncachedRanges << cachedRangesForLine(line);
     }
 
     /**
@@ -172,39 +181,46 @@ class KTEXTEDITOR_EXPORT TextBlock {
      * @param range range to check for
      * @return contained in this blocks mapping?
      */
-    bool containsRange (TextRange* range) const {
-      return m_cachedLineForRanges.contains(range) || m_uncachedRanges.contains(range);
+    bool containsRange(TextRange *range) const
+    {
+        return m_cachedLineForRanges.contains(range) || m_uncachedRanges.contains(range);
     }
 
     /**
      * Flag all modified text lines as saved on disk.
      */
-    void markModifiedLinesAsSaved ();
-    
+    void markModifiedLinesAsSaved();
+
     /**
      * Insert cursor into this block.
      * @param cursor cursor to insert
      */
-    void insertCursor (Kate::TextCursor *cursor) { m_cursors.insert (cursor); }
-    
+    void insertCursor(Kate::TextCursor *cursor)
+    {
+        m_cursors.insert(cursor);
+    }
+
     /**
      * Remove cursor from this block.
      * @param cursor cursor to remove
      */
-    void removeCursor (Kate::TextCursor *cursor) { m_cursors.remove (cursor); }
+    void removeCursor(Kate::TextCursor *cursor)
+    {
+        m_cursors.remove(cursor);
+    }
 
     /**
      * Update a range from this block.
      * Will move the range to right set, either cached for one-line ranges or not.
      * @param range range to update
      */
-    void updateRange(TextRange* range);
+    void updateRange(TextRange *range);
 
     /**
      * Remove a range from this block.
      * @param range range to remove
      */
-    void removeRange (TextRange* range);
+    void removeRange(TextRange *range);
 
     /**
      * Return all ranges in this block which might intersect the given line and only span one line.
@@ -212,15 +228,17 @@ class KTEXTEDITOR_EXPORT TextBlock {
      * @param line line to check intersection
      * @return set of ranges
      */
-    QSet<TextRange*> cachedRangesForLine (int line) const {
-      line -= m_startLine;
-      if(line >= 0 && line < m_cachedRangesForLine.size())
-        return m_cachedRangesForLine[line];
-      else
-        return QSet<TextRange*>();
+    QSet<TextRange *> cachedRangesForLine(int line) const
+    {
+        line -= m_startLine;
+        if (line >= 0 && line < m_cachedRangesForLine.size()) {
+            return m_cachedRangesForLine[line];
+        } else {
+            return QSet<TextRange *>();
+        }
     }
 
-  private:
+private:
     /**
      * parent text buffer
      */

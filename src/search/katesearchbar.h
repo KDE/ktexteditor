@@ -33,18 +33,20 @@ class KateViewConfig;
 class QVBoxLayout;
 class QComboBox;
 
-namespace Ui {
-    class IncrementalSearchBar;
-    class PowerSearchBar;
+namespace Ui
+{
+class IncrementalSearchBar;
+class PowerSearchBar;
 }
 
-namespace KTextEditor {
-    class MovingRange;
-    class Message;
+namespace KTextEditor
+{
+class MovingRange;
+class Message;
 }
 
-
-class KTEXTEDITOR_EXPORT KateSearchBar : public KateViewBarWidget {
+class KTEXTEDITOR_EXPORT KateSearchBar : public KateViewBarWidget
+{
     Q_OBJECT
 
     friend class SearchBarTest;
@@ -69,12 +71,12 @@ public:
     };
 
     enum SearchDirection {
-      SearchForward,
-      SearchBackward
+        SearchForward,
+        SearchBackward
     };
 
 public:
-    explicit KateSearchBar(bool initAsPower, KateView* view, KateViewConfig *config);
+    explicit KateSearchBar(bool initAsPower, KateView *view, KateViewConfig *config);
     ~KateSearchBar();
 
     virtual void closed();
@@ -88,7 +90,7 @@ public:
     bool matchCase() const;
 
     // Only used by KateView
-    static void nextMatchForSelection(KateView * view, SearchDirection searchDirection);
+    static void nextMatchForSelection(KateView *view, SearchDirection searchDirection);
 
 public Q_SLOTS:
     /**
@@ -123,70 +125,70 @@ public Q_SLOTS:
     void updateHighlightColors();
 
     // read write status of document changed
-    void slotReadWriteChanged ();
+    void slotReadWriteChanged();
 
 protected:
     // Overridden
-    virtual void showEvent(QShowEvent * event);
+    virtual void showEvent(QShowEvent *event);
 
 private Q_SLOTS:
-    void onIncPatternChanged(const QString & pattern);
+    void onIncPatternChanged(const QString &pattern);
     void onMatchCaseToggled(bool matchCase);
 
     void onReturnPressed();
     void updateSelectionOnly();
     void updateIncInitCursor();
 
-    void onPowerPatternChanged(const QString & pattern);
+    void onPowerPatternChanged(const QString &pattern);
 
     void onPowerModeChanged(int index);
     void onPowerPatternContextMenuRequest();
-    void onPowerPatternContextMenuRequest(const QPoint&);
+    void onPowerPatternContextMenuRequest(const QPoint &);
     void onPowerReplacmentContextMenuRequest();
-    void onPowerReplacmentContextMenuRequest(const QPoint&);
+    void onPowerReplacmentContextMenuRequest(const QPoint &);
 
 private:
     // Helpers
-    bool find(SearchDirection searchDirection = SearchForward, const QString * replacement = 0);
-    int findAll(KTextEditor::Range inputRange, const QString * replacement);
+    bool find(SearchDirection searchDirection = SearchForward, const QString *replacement = 0);
+    int findAll(KTextEditor::Range inputRange, const QString *replacement);
 
     bool isPatternValid() const;
 
     KTextEditor::Search::SearchOptions searchOptions(SearchDirection searchDirection = SearchForward) const;
 
-    void highlightMatch(const KTextEditor::Range & range);
-    void highlightReplacement(const KTextEditor::Range & range);
+    void highlightMatch(const KTextEditor::Range &range);
+    void highlightReplacement(const KTextEditor::Range &range);
     void indicateMatch(MatchResult matchResult);
-    static void selectRange(KateView * view, const KTextEditor::Range & range);
-    void selectRange2(const KTextEditor::Range & range);
+    static void selectRange(KateView *view, const KTextEditor::Range &range);
+    void selectRange2(const KTextEditor::Range &range);
 
-    QVector<QString> getCapturePatterns(const QString & pattern) const;
-    void showExtendedContextMenu(bool forPattern, const QPoint& pos);
+    QVector<QString> getCapturePatterns(const QString &pattern) const;
+    void showExtendedContextMenu(bool forPattern, const QPoint &pos);
 
     void givePatternFeedback();
-    void addCurrentTextToHistory(QComboBox * combo);
+    void addCurrentTextToHistory(QComboBox *combo);
     void backupConfig(bool ofPower);
     void sendConfig();
-    void fixForSingleLine(KTextEditor::Range & range, SearchDirection searchDirection);
+    void fixForSingleLine(KTextEditor::Range &range, SearchDirection searchDirection);
 
-    void showInfoMessage(const QString& text);
+    void showInfoMessage(const QString &text);
 
 private:
     KateView *const m_view;
     KateViewConfig *const m_config;
-    QList<KTextEditor::MovingRange*> m_hlRanges;
+    QList<KTextEditor::MovingRange *> m_hlRanges;
     QPointer<KTextEditor::Message> m_infoMessage;
 
     // Shared by both dialogs
     QVBoxLayout *const m_layout;
-    QWidget * m_widget;
+    QWidget *m_widget;
 
     // Incremental search related
-    Ui::IncrementalSearchBar * m_incUi;
+    Ui::IncrementalSearchBar *m_incUi;
     KTextEditor::Cursor m_incInitCursor;
 
     // Power search related
-    Ui::PowerSearchBar * m_powerUi;
+    Ui::PowerSearchBar *m_powerUi;
 
     // attribute to highlight matches with
     KTextEditor::Attribute::Ptr highlightMatchAttribute;
@@ -202,8 +204,5 @@ private:
     unsigned int m_powerMode : 2;
 };
 
-
-
 #endif // KATE_SEARCH_BAR_H
 
-// kate: space-indent on; indent-width 4; replace-tabs on;

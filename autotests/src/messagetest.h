@@ -24,21 +24,21 @@
 
 class MessageTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public Q_SLOTS:
-  void initTestCase();
-  void cleanupTestCase();
+    void initTestCase();
+    void cleanupTestCase();
 
 private Q_SLOTS:
-  void testPostMessage();
-  void testAutoHide();
-  void testAutoHideAfterUserInteraction();
-  void testMessageQueue();
-  void testPriority();
-  void testCreateView();
-  void testHideView();
-  void testHideViewAfterUserInteraction();
+    void testPostMessage();
+    void testAutoHide();
+    void testAutoHideAfterUserInteraction();
+    void testMessageQueue();
+    void testPriority();
+    void testCreateView();
+    void testHideView();
+    void testHideViewAfterUserInteraction();
 };
 
 #endif // KTEXTEDITOR_MESSAGE_TEST_H

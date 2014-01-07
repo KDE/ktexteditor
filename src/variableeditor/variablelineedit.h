@@ -30,31 +30,30 @@ class VariableListView;
 
 class VariableLineEdit : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  VariableLineEdit(QWidget* parent = 0);
-  virtual ~VariableLineEdit();
+    VariableLineEdit(QWidget *parent = 0);
+    virtual ~VariableLineEdit();
 
-  void addKateItems(VariableListView* listview);
-  QString text();
+    void addKateItems(VariableListView *listview);
+    QString text();
 
 public Q_SLOTS:
-  void editVariables();
-  void setText(const QString &text);
-  void clear();
-  void updateVariableLine();
+    void editVariables();
+    void setText(const QString &text);
+    void clear();
+    void updateVariableLine();
 
 Q_SIGNALS:
-  void textChanged(const QString&);
+    void textChanged(const QString &);
 
 private:
-  QFrame* m_popup;
-  QLineEdit* m_lineedit;
-  QToolButton* m_button;
-  VariableListView* m_listview;
+    QFrame *m_popup;
+    QLineEdit *m_lineedit;
+    QToolButton *m_button;
+    VariableListView *m_listview;
 };
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

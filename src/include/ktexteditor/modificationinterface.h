@@ -69,26 +69,26 @@ class View;
  */
 class KTEXTEDITOR_EXPORT ModificationInterface
 {
-  public:
-    ModificationInterface ();
+public:
+    ModificationInterface();
 
     /**
      * Virtual destructor.
      */
-    virtual ~ModificationInterface ();
+    virtual ~ModificationInterface();
 
-  public:
+public:
     /**
      * Reasons why a document is modified on disk.
      */
     enum ModifiedOnDiskReason {
-      OnDiskUnmodified = 0, ///< Not modified
-      OnDiskModified = 1,   ///< The file was modified by another program
-      OnDiskCreated = 2,    ///< The file was created by another program
-      OnDiskDeleted = 3     ///< The file was deleted
+        OnDiskUnmodified = 0, ///< Not modified
+        OnDiskModified = 1,   ///< The file was modified by another program
+        OnDiskCreated = 2,    ///< The file was created by another program
+        OnDiskDeleted = 3     ///< The file was deleted
     };
 
-  public:
+public:
     /**
      * Set the document's modified-on-disk state to \p reason.
      * KTextEditor implementations should emit the signal modifiedOnDisk()
@@ -98,21 +98,21 @@ class KTEXTEDITOR_EXPORT ModificationInterface
      * \param reason the modified-on-disk reason.
      * \see ModifiedOnDiskReason, modifiedOnDisk()
      */
-    virtual void setModifiedOnDisk( ModifiedOnDiskReason reason ) = 0;
+    virtual void setModifiedOnDisk(ModifiedOnDiskReason reason) = 0;
 
-   /**
-    * Control, whether the editor should show a warning dialog whenever a file
-    * was modified on disk. If \p on is \e true the editor will show warning
-    * dialogs.
-    * \param on controls, whether the editor should show a warning dialog for
-    *        files modified on disk
-    */
-   virtual void setModifiedOnDiskWarning ( bool on ) = 0;
+    /**
+     * Control, whether the editor should show a warning dialog whenever a file
+     * was modified on disk. If \p on is \e true the editor will show warning
+     * dialogs.
+     * \param on controls, whether the editor should show a warning dialog for
+     *        files modified on disk
+     */
+    virtual void setModifiedOnDiskWarning(bool on) = 0;
 
-  /*
-   * These stuff is implemented as SLOTS in the real document
-   */
-  public:
+    /*
+     * These stuff is implemented as SLOTS in the real document
+     */
+public:
     /**
      * Ask the user what to do, if the file was modified on disk.
      * The argument \p view is used to avoid asking again, when the editor
@@ -120,12 +120,12 @@ class KTEXTEDITOR_EXPORT ModificationInterface
      * \param view the view that should be notified of the user's decision
      * \see setModifiedOnDisk(), modifiedOnDisk()
      */
-    virtual void slotModifiedOnDisk( View *view = 0 ) = 0;
+    virtual void slotModifiedOnDisk(View *view = 0) = 0;
 
-  /*
-   * These stuff is implemented as SIGNALS in the real document
-   */
-  public:
+    /*
+     * These stuff is implemented as SIGNALS in the real document
+     */
+public:
     /**
      * This signal is emitted whenever the \p document changed its
      * modified-on-disk state.
@@ -135,12 +135,12 @@ class KTEXTEDITOR_EXPORT ModificationInterface
      * \param reason the reason why the signal was emitted
      * \see setModifiedOnDisk()
      */
-    virtual void modifiedOnDisk (KTextEditor::Document *document,
-                                 bool isModified,
-                                 KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) = 0;
+    virtual void modifiedOnDisk(KTextEditor::Document *document,
+                                bool isModified,
+                                KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) = 0;
 
-  private:
-    class ModificationInterfacePrivate* const d;
+private:
+    class ModificationInterfacePrivate *const d;
 };
 
 }
@@ -148,6 +148,4 @@ class KTEXTEDITOR_EXPORT ModificationInterface
 Q_DECLARE_INTERFACE(KTextEditor::ModificationInterface, "org.kde.KTextEditor.ModificationInterface")
 
 #endif
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

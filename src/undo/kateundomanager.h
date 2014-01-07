@@ -30,10 +30,11 @@ class KateDocument;
 class KateUndo;
 class KateUndoGroup;
 
-namespace KTextEditor {
-  class Document;
-  class View;
-  class Cursor;
+namespace KTextEditor
+{
+class Document;
+class View;
+class Cursor;
 }
 
 /**
@@ -45,15 +46,15 @@ namespace KTextEditor {
  */
 class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Creates a clean undo history.
      *
      * @param doc the document the KateUndoManager will belong to
      */
-    KateUndoManager (KateDocument *doc);
+    KateUndoManager(KateDocument *doc);
 
     ~KateUndoManager();
 
@@ -64,14 +65,14 @@ class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
      *
      * @return the number of undo groups which can be undone
      */
-    uint undoCount () const;
+    uint undoCount() const;
 
     /**
      * Returns how many redo() actions can be performed.
      *
      * @return the number of undo groups which can be redone
      */
-    uint redoCount () const;
+    uint redoCount() const;
 
     /**
      * Prevent latest KateUndoGroup from being merged with the next one.
@@ -88,10 +89,13 @@ class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
      */
     void setAllowComplexMerge(bool allow);
 
-    bool isActive() const { return m_isActive; }
+    bool isActive() const
+    {
+        return m_isActive;
+    }
 
-    void setModified( bool modified );
-    void updateConfig ();
+    void setModified(bool modified);
+    void updateConfig();
     void updateLineModifications();
 
     /**
@@ -110,23 +114,23 @@ class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
      */
     KTextEditor::Cursor lastRedoCursor() const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Undo the latest undo group.
      *
      * Make sure isDefaultState() is true when calling this method.
      */
-    void undo ();
+    void undo();
 
     /**
      * Redo the latest undo group.
      *
      * Make sure isDefaultState() is true when calling this method.
      */
-    void redo ();
+    void redo();
 
-    void clearUndo ();
-    void clearRedo ();
+    void clearUndo();
+    void clearRedo();
 
     /**
      * Notify KateUndoManager about the beginning of an edit.
@@ -179,15 +183,15 @@ class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
      */
     void slotLineRemoved(int line, const QString &s);
 
-  Q_SIGNALS:
-    void undoChanged ();
-    void undoStart (KTextEditor::Document*);
-    void undoEnd (KTextEditor::Document*);
-    void redoStart (KTextEditor::Document*);
-    void redoEnd (KTextEditor::Document*);
+Q_SIGNALS:
+    void undoChanged();
+    void undoStart(KTextEditor::Document *);
+    void undoEnd(KTextEditor::Document *);
+    void redoStart(KTextEditor::Document *);
+    void redoEnd(KTextEditor::Document *);
     void isActiveChanged(bool enabled);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     /**
      * @short Add an undo item to the current undo group.
      *
@@ -200,26 +204,25 @@ class KTEXTEDITOR_EXPORT KateUndoManager : public QObject
     void updateModified();
 
     void undoCancel();
-    void viewCreated (KTextEditor::Document *, KTextEditor::View *newView);
+    void viewCreated(KTextEditor::Document *, KTextEditor::View *newView);
 
-  private:
+private:
     KTextEditor::View *activeView();
 
-  private:
+private:
     KateDocument *m_document;
     bool m_undoComplexMerge;
     bool m_isActive;
-    KateUndoGroup* m_editCurrentUndo;
-    QList<KateUndoGroup*> undoItems;
-    QList<KateUndoGroup*> redoItems;
+    KateUndoGroup *m_editCurrentUndo;
+    QList<KateUndoGroup *> undoItems;
+    QList<KateUndoGroup *> redoItems;
     // these two variables are for resetting the document to
     // non-modified if all changes have been undone...
-    KateUndoGroup* lastUndoGroupWhenSaved;
-    KateUndoGroup* lastRedoGroupWhenSaved;
+    KateUndoGroup *lastUndoGroupWhenSaved;
+    KateUndoGroup *lastRedoGroupWhenSaved;
     bool docWasSavedWhenUndoWasEmpty;
     bool docWasSavedWhenRedoWasEmpty;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

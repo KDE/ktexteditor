@@ -25,43 +25,63 @@
 
 class KateIndentScriptHeader
 {
-  public:
+public:
     KateIndentScriptHeader() : m_priority(0)
     {}
 
-    inline void setName(const QString& name)
-    { m_name = name; }
-    inline const QString& name() const
-    { return m_name; }
+    inline void setName(const QString &name)
+    {
+        m_name = name;
+    }
+    inline const QString &name() const
+    {
+        return m_name;
+    }
 
-    inline void setRequiredStyle(const QString& requiredStyle)
-    { m_requiredStyle = requiredStyle; }
-    inline const QString& requiredStyle() const
-    { return m_requiredStyle; }
+    inline void setRequiredStyle(const QString &requiredStyle)
+    {
+        m_requiredStyle = requiredStyle;
+    }
+    inline const QString &requiredStyle() const
+    {
+        return m_requiredStyle;
+    }
 
-    inline void setIndentLanguages(const QStringList& indentLanguages)
-    { m_indentLanguages = indentLanguages; }
-    inline const QStringList& indentLanguages() const
-    { return m_indentLanguages; }
+    inline void setIndentLanguages(const QStringList &indentLanguages)
+    {
+        m_indentLanguages = indentLanguages;
+    }
+    inline const QStringList &indentLanguages() const
+    {
+        return m_indentLanguages;
+    }
 
     inline void setPriority(int priority)
-    { m_priority = priority; }
+    {
+        m_priority = priority;
+    }
     inline int priority() const
-    { return m_priority; }
+    {
+        return m_priority;
+    }
 
-    inline void setBaseName(const QString& baseName)
-    { m_baseName = baseName; }
-    inline const QString& baseName() const
-    { return m_baseName; }
+    inline void setBaseName(const QString &baseName)
+    {
+        m_baseName = baseName;
+    }
+    inline const QString &baseName() const
+    {
+        return m_baseName;
+    }
 
-  private:
+private:
     QString m_name; ///< indenter name, e.g. Python
 
-   /**
-    * If this is an indenter, then this specifies the required syntax
-    * highlighting style that must be used for this indenter to work properly.
-    * If this property is empty, the indenter doesn't require a specific style.
-    */
+    /**
+     * If this is an indenter, then this specifies the required syntax
+     * highlighting style that must be used for this indenter to work properly.
+     * If this property is empty, the indenter doesn't require a specific style.
+     */
     QString m_requiredStyle;
     /**
     * If this script is an indenter, then the indentLanguages member specifies
@@ -82,34 +102,31 @@ class KateIndentScriptHeader
     QString m_baseName;
 };
 
-
 /**
  * A specialized class for scripts that are of type
  * KateScriptInformation::IndentationScript
  */
 class KateIndentScript : public KateScript
 {
-  public:
+public:
     KateIndentScript(const QString &url, const KateIndentScriptHeader &header);
 
     const QString &triggerCharacters();
 
-    const KateIndentScriptHeader& indentHeader() const;
+    const KateIndentScriptHeader &indentHeader() const;
 
     /**
      * Returns a pair where the first value is the indent amount, and the second
      * value is the alignment.
      */
-    QPair<int, int> indent(KateView* view, const KTextEditor::Cursor& position,
+    QPair<int, int> indent(KateView *view, const KTextEditor::Cursor &position,
                            QChar typedCharacter, int indentWidth);
 
-  private:
+private:
     QString m_triggerCharacters;
     bool m_triggerCharactersSet;
     KateIndentScriptHeader m_indentHeader;
 };
 
-
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

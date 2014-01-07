@@ -38,27 +38,28 @@
  * searched for the constructed automaton has to applied on each position in the
  * given string.
  **/
-class KatePrefixStore {
-  public:
+class KatePrefixStore
+{
+public:
     typedef QPair<bool, bool> BooleanPair;
 
     KatePrefixStore();
     virtual ~KatePrefixStore();
 
-    void addPrefix(const QString& prefix);
-    void removePrefix(const QString& prefix);
+    void addPrefix(const QString &prefix);
+    void removePrefix(const QString &prefix);
 
     /**
      * Returns the shortest prefix of the given string that is contained in
      * this prefix store starting at position 'start'.
      **/
-    QString findPrefix(const QString& s, int start = 0) const;
+    QString findPrefix(const QString &s, int start = 0) const;
 
     /**
      * Returns the shortest prefix of the given string that is contained in
      * this prefix store starting at position 'start'.
      **/
-    QString findPrefix(const Kate::TextLine& line, int start = 0) const;
+    QString findPrefix(const Kate::TextLine &line, int start = 0) const;
 
     int longestPrefixLength() const;
 
@@ -66,7 +67,7 @@ class KatePrefixStore {
 
     void dump();
 
-  protected:
+protected:
     int m_longestPrefixLength;
     QSet<QString> m_prefixSet;
 
@@ -85,4 +86,3 @@ class KatePrefixStore {
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

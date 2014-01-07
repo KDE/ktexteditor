@@ -24,17 +24,17 @@
 
 class MovingCursorTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  MovingCursorTest();
-  ~MovingCursorTest();
+    MovingCursorTest();
+    ~MovingCursorTest();
 
 private Q_SLOTS:
-  void testMovingCursor();
-  void testConvenienceApi();
-  void testOperators();
-  void testInvalidMovingCursor();
+    void testMovingCursor();
+    void testConvenienceApi();
+    void testOperators();
+    void testInvalidMovingCursor();
 };
 
 #endif // KATE_MOVINGCURSOR_TEST_H

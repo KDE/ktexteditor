@@ -35,26 +35,26 @@ typedef QList<KTextEditor::Attribute::Ptr> KateAttributeList;
  */
 class KateExtendedAttribute : public KTextEditor::Attribute
 {
-  public:
+public:
     typedef QExplicitlySharedDataPointer<KateExtendedAttribute> Ptr;
 
-    explicit KateExtendedAttribute(const QString& name, int defaultStyleIndex = -1);
+    explicit KateExtendedAttribute(const QString &name, int defaultStyleIndex = -1);
 
     enum InternalProperties {
-      AttributeName = AttributeInternalProperty,
-      AttributeDefaultStyleIndex,
-      Spellchecking
+        AttributeName = AttributeInternalProperty,
+        AttributeDefaultStyleIndex,
+        Spellchecking
     };
 
-    static int indexForStyleName(const QString& name);
+    static int indexForStyleName(const QString &name);
 
     QString name() const;
-    void setName(const QString& name);
+    void setName(const QString &name);
 
     bool isDefaultStyle() const;
     int defaultStyleIndex() const;
     void setDefaultStyleIndex(int index);
-    
+
     bool performSpellchecking() const;
     void setPerformSpellchecking(bool spellchecking);
 };

@@ -44,12 +44,12 @@ enum BlockInsert {
 
 class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
 {
-  Q_OBJECT
-  public:
-    KateViInsertMode( KateViInputModeManager *viInputModeManager, KateView * view, KateViewInternal * viewInternal );
+    Q_OBJECT
+public:
+    KateViInsertMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
     ~KateViInsertMode();
 
-    bool handleKeypress( const QKeyEvent *e );
+    bool handleKeypress(const QKeyEvent *e);
 
     bool commandInsertFromAbove();
     bool commandInsertFromBelow();
@@ -74,13 +74,19 @@ class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
     bool commandInsertContentOfRegister();
     bool commandSwitchToNormalModeForJustOneCommand();
 
-    void setBlockPrependMode( KateViRange blockRange );
-    void setBlockAppendMode( KateViRange blockRange, BlockInsert b );
+    void setBlockPrependMode(KateViRange blockRange);
+    void setBlockAppendMode(KateViRange blockRange, BlockInsert b);
 
-    void setCount(int count) { m_count = count;};
-    void setCountedRepeatsBeginOnNewLine(bool countedRepeatsBeginOnNewLine) { m_countedRepeatsBeginOnNewLine = countedRepeatsBeginOnNewLine;};
+    void setCount(int count)
+    {
+        m_count = count;
+    };
+    void setCountedRepeatsBeginOnNewLine(bool countedRepeatsBeginOnNewLine)
+    {
+        m_countedRepeatsBeginOnNewLine = countedRepeatsBeginOnNewLine;
+    };
 
-  protected:
+protected:
     BlockInsert m_blockInsert;
     unsigned int m_eolPos; // length of first line in eol mode before text is appended
     KateViRange m_blockRange;
@@ -95,13 +101,13 @@ class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
     QString m_textInsertedByCompletion;
     Cursor m_textInsertedByCompletionEndPos;
 
-    void leaveInsertMode( bool force = false);
+    void leaveInsertMode(bool force = false);
 
     void completionFinished();
     void replayCompletion();
-    int findNextMergeableBracketPos(const Cursor& startPos);
-  private Q_SLOTS:
-    void textInserted(KTextEditor::Document* document, KTextEditor::Range range);
+    int findNextMergeableBracketPos(const Cursor &startPos);
+private Q_SLOTS:
+    void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
 };
 
 #endif

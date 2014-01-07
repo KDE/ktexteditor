@@ -20,15 +20,11 @@
 #include "templateinterface.h"
 #include "templateinterface2.h"
 
-
 using namespace KTextEditor;
 
 TemplateScript::~TemplateScript()
 {
 }
-
-
-
 
 TemplateScriptRegistrar::TemplateScriptRegistrar()
 {
@@ -39,8 +35,8 @@ TemplateScriptRegistrar::~TemplateScriptRegistrar()
 }
 
 TemplateInterface2::TemplateInterface2()
-  : TemplateInterface()
-  , d(0)
+    : TemplateInterface()
+    , d(0)
 {
 }
 
@@ -48,16 +44,15 @@ TemplateInterface2::~TemplateInterface2()
 {
 }
 
-bool TemplateInterface2::insertTemplateText ( const Cursor& insertPosition,
-                                              const QString &templateString,
-                                              const QMap<QString, QString> &initialValues,
-                                              TemplateScript* templateScript)
+bool TemplateInterface2::insertTemplateText(const Cursor &insertPosition,
+        const QString &templateString,
+        const QMap<QString, QString> &initialValues,
+        TemplateScript *templateScript)
 {
-  QMap<QString,QString> enhancedInitValues(initialValues);
-  if (!KTE_INTERNAL_setupIntialValues(templateString,&enhancedInitValues)) {
-    return false;
-  }
-  return insertTemplateTextImplementation( insertPosition, templateString, enhancedInitValues, templateScript);
+    QMap<QString, QString> enhancedInitValues(initialValues);
+    if (!KTE_INTERNAL_setupIntialValues(templateString, &enhancedInitValues)) {
+        return false;
+    }
+    return insertTemplateTextImplementation(insertPosition, templateString, enhancedInitValues, templateScript);
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -33,7 +33,7 @@ class KateDocument;
 
 class KateFileType
 {
-  public:
+public:
     int number;
     QString name;
     QString section;
@@ -45,57 +45,60 @@ class KateFileType
     bool hlGenerated;
     QString version;
     QString indenter;
-    
-    QString nameTranslated () const
+
+    QString nameTranslated() const
     {
-      // use "Language" as for highlightings, to avoid double work!
-      return hlGenerated ? i18nc("Language", name.toUtf8().data()) : name;
+        // use "Language" as for highlightings, to avoid double work!
+        return hlGenerated ? i18nc("Language", name.toUtf8().data()) : name;
     }
-    
-    QString sectionTranslated () const
+
+    QString sectionTranslated() const
     {
-      // use "Language Section" as for highlightings, to avoid double work!
-      return hlGenerated ? i18nc("Language Section", section.toUtf8().data()) : section;
+        // use "Language Section" as for highlightings, to avoid double work!
+        return hlGenerated ? i18nc("Language Section", section.toUtf8().data()) : section;
     }
 
     KateFileType()
-      : number(-1), priority(0), hlGenerated(false)
+        : number(-1), priority(0), hlGenerated(false)
     {}
 };
 
 class KateModeManager
 {
-  public:
-    KateModeManager ();
-    ~KateModeManager ();
+public:
+    KateModeManager();
+    ~KateModeManager();
 
     /**
      * File Type Config changed, update all docs (which will take care of views/renderers)
      */
-    void update ();
+    void update();
 
-    void save (const QList<KateFileType *>& v);
+    void save(const QList<KateFileType *> &v);
 
     /**
      * get the right fileType for the given document
      * -1 if none found !
      */
-    QString fileType (KateDocument *doc, const QString &fileToReadFrom);
+    QString fileType(KateDocument *doc, const QString &fileToReadFrom);
 
     /**
      * Don't store the pointer somewhere longer times, won't be valid after the next update()
      */
-    const KateFileType& fileType (const QString &name) const;
+    const KateFileType &fileType(const QString &name) const;
 
     /**
      * Don't modify
      */
-    const QList<KateFileType *>& list() const { return m_types; }
+    const QList<KateFileType *> &list() const
+    {
+        return m_types;
+    }
 
-  private:
-    QString wildcardsFind (const QString &fileName);
+private:
+    QString wildcardsFind(const QString &fileName);
 
-  private:
+private:
     QList<KateFileType *> m_types;
     QHash<QString, KateFileType *> m_name2Type;
 
@@ -103,4 +106,3 @@ class KateModeManager
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

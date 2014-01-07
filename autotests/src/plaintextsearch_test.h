@@ -27,13 +27,13 @@ class KatePlainTextSearch;
 
 class PlainTextSearchTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     PlainTextSearchTest();
     virtual ~PlainTextSearchTest();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
 
@@ -49,11 +49,11 @@ class PlainTextSearchTest : public QObject
     void testMultilineSearch_data();
     void testMultilineSearch();
 
-  private:
+private:
     KateDocument *m_doc;
     KatePlainTextSearch *m_search;
 
-  public:
+public:
     static QtMessageHandler s_msgHandler;
 };
 

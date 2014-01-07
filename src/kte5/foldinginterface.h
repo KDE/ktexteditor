@@ -25,7 +25,8 @@
 
 #include <QFlags>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 
 class Range;
 
@@ -37,31 +38,31 @@ class Range;
  */
 class KTEXTEDITOR_EXPORT FoldingInterface
 {
-  public:
+public:
     /**
      * Create folding object for given buffer.
      * @param buffer text buffer we want to provide folding info for
      */
-    FoldingInterface ();
+    FoldingInterface();
 
     /**
      * Cleanup
      */
-    virtual ~FoldingInterface ();
+    virtual ~FoldingInterface();
 
     /**
      * Folding state of a range
      */
     enum FoldingRangeFlag {
-      /**
-       * Range is persistent, e.g. it should not auto-delete after unfolding!
-       */
-      Persistent = 0x1,
+        /**
+         * Range is persistent, e.g. it should not auto-delete after unfolding!
+         */
+        Persistent = 0x1,
 
-      /**
-       * Range is folded away
-       */
-      Folded = 0x2
+        /**
+         * Range is folded away
+         */
+        Folded = 0x2
     };
     Q_DECLARE_FLAGS(FoldingRangeFlags, FoldingRangeFlag);
 
@@ -79,14 +80,14 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @return on success, id of new range >= 0, else -1, we return no pointer as folding ranges might be auto-deleted internally!
      *         the ids are stable for one KTextEditor::FoldingInterface, e.g. you can rely in unit tests that you get 0,1,.... for successfully created ranges!
      */
-    qint64 newFoldingRange (const KTextEditor::Range &range, FoldingRangeFlags flags = FoldingRangeFlags());
+    qint64 newFoldingRange(const KTextEditor::Range &range, FoldingRangeFlags flags = FoldingRangeFlags());
 
     /**
      * Fold the given range.
      * @param id id of the range to fold
      * @return success
      */
-    virtual bool foldRange (qint64 id) = 0;
+    virtual bool foldRange(qint64 id) = 0;
 
     /**
      * Unfold the given range.
@@ -95,7 +96,7 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @param remove should the range be removed from the folding after unfolding? ranges that are not persistent auto-remove themself on unfolding
      * @return success
      */
-    virtual bool unfoldRange (qint64 id, bool remove = false) = 0;
+    virtual bool unfoldRange(qint64 id, bool remove = false) = 0;
 
     /**
      * Queries which folding ranges start at the given line and returns the id + flags for all
@@ -103,28 +104,28 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @param line line to query starting folding ranges
      * @return vector of id's + flags
      */
-    virtual QVector<QPair<qint64, FoldingRangeFlags> > foldingRangesStartingOnLine (int line) const = 0;
+    virtual QVector<QPair<qint64, FoldingRangeFlags> > foldingRangesStartingOnLine(int line) const = 0;
 
     /**
      * Check whether on this line starts a folding range
      * @param line line to query starting folding ranges
      * @return true, if a folding range starts, otherwise false
      */
-    virtual bool lineContainsStartFoldingRanges (int line) const = 0;
+    virtual bool lineContainsStartFoldingRanges(int line) const = 0;
 
     /**
      * Fold the first folding range starting on this line, if applicable.
      * @param line line to fold
      * @return id of folded range (>= 0) or -1, if no folding range starts at line
      */
-    virtual qint64 foldLine (int line) const = 0;
+    virtual qint64 foldLine(int line) const = 0;
 
     /**
      * Unfolds all folding range starting on this line, if applicable.
      * @param line line to unfold
      * @return id of folded range (>= 0) or -1, if no folding range starts at line
      */
-    virtual bool unfoldLine (int line) const = 0;
+    virtual bool unfoldLine(int line) const = 0;
 
     /**
      * \}
@@ -143,21 +144,21 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @param foldedRangeId if the line is not visible and that pointer is not 0, will be filled with id of range hiding the line or -1
      * @return is that line visible?
      */
-    virtual bool isLineVisible (int line, qint64 *foldedRangeId = 0) const = 0;
+    virtual bool isLineVisible(int line, qint64 *foldedRangeId = 0) const = 0;
 
     /**
      * Ensure that a given line will be visible.
      * Potentially unfold recursively all folds hiding this line, else just returns.
      * @param line line to make visible
      */
-    virtual void ensureLineIsVisible (int line) = 0;
+    virtual void ensureLineIsVisible(int line) = 0;
 
     /**
      * Query number of visible lines.
      * Very fast, if nothing is folded, else walks over all folded regions
      * O(n) for n == number of folded ranges
      */
-    virtual int visibleLines () const = 0;
+    virtual int visibleLines() const = 0;
 
     /**
      * Convert a text buffer line to a visible line number.
@@ -166,7 +167,7 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @param line line index in the text buffer
      * @return index in visible lines
      */
-    virtual int lineToVisibleLine (int line) const = 0;
+    virtual int lineToVisibleLine(int line) const = 0;
 
     /**
      * Convert a visible line number to a line number in the text buffer.
@@ -175,25 +176,25 @@ class KTEXTEDITOR_EXPORT FoldingInterface
      * @param visibleLine visible line index
      * @return index in text buffer lines
      */
-    virtual int visibleLineToLine (int visibleLine) const = 0;
+    virtual int visibleLineToLine(int visibleLine) const = 0;
 
     /**
      * \}
      */
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Clear the complete folding.
      * This is automatically triggered if the buffer is cleared.
      */
-    void clear ();
+    void clear();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * If the folding state of existing ranges changes or
      * ranges are added/removed, this signal is emitted.
      */
-    void foldingRangesChanged ();
+    void foldingRangesChanged();
 };
 
 }

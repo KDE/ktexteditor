@@ -149,9 +149,9 @@ class MainWindow;
 // This is needed because the Oxygen "focus border" paints over the line numbers otherwise.
 class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      *
@@ -159,23 +159,23 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param parent parent widget
      * \see Document::createView()
      */
-    View ( QWidget *parent );
+    View(QWidget *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~View ();
+    virtual ~View();
 
-  /*
-   * Accessor for the document
-   */
-  public:
+    /*
+     * Accessor for the document
+     */
+public:
     /**
      * Get the view's \e document, that means the view is a view of the
      * returned document.
      * \return the view's document
      */
-    virtual Document *document () const = 0;
+    virtual Document *document() const = 0;
 
     /**
      * Check whether this view is the document's active view.
@@ -186,10 +186,10 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      */
     bool isActiveView() const;
 
-  /*
-   * General information about this view
-   */
-  public:
+    /*
+     * General information about this view
+     */
+public:
     /**
      * Get the current view mode/state.
      * This can be used to visually indicate the view's current mode, for
@@ -201,16 +201,16 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return
      * \see viewModeChanged()
      */
-    virtual QString viewMode () const = 0;
+    virtual QString viewMode() const = 0;
 
     /**
      * Possible edit modes.
      * These correspond to various modes the text editor might be in.
      */
     enum EditMode {
-      EditInsert = 0,    /**< Insert mode. Characters will be added. */
-      EditOverwrite = 1, /**< Overwrite mode. Characters will be replaced. */
-      EditViMode = 2     /**< Vi mode. The view will behave like the editor vi(m) @since 4.11 */
+        EditInsert = 0,    /**< Insert mode. Characters will be added. */
+        EditOverwrite = 1, /**< Overwrite mode. Characters will be replaced. */
+        EditViMode = 2     /**< Vi mode. The view will behave like the editor vi(m) @since 4.11 */
     };
 
     /**
@@ -223,38 +223,38 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \see viewEditModeChanged()
      */
     virtual enum EditMode viewEditMode() const = 0;
-    
+
     /**
      * Get the view's main window, if any
      * \return the view's main window
      */
-    virtual KTextEditor::MainWindow *mainWindow () const = 0;
+    virtual KTextEditor::MainWindow *mainWindow() const = 0;
 
-  /*
-   * SIGNALS
-   * following signals should be emitted by the editor view
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * following signals should be emitted by the editor view
+     */
+Q_SIGNALS:
     /**
      * This signal is emitted whenever the \p view gets the focus.
      * \param view view which gets focus
      * \see focusOut()
      */
-    void focusIn ( KTextEditor::View *view );
+    void focusIn(KTextEditor::View *view);
 
     /**
      * This signal is emitted whenever the \p view loses the focus.
      * \param view view which lost focus
      * \see focusIn()
      */
-    void focusOut ( KTextEditor::View *view );
+    void focusOut(KTextEditor::View *view);
 
     /**
      * This signal is emitted whenever the view mode of \p view changes.
      * \param view the view which changed its mode
      * \see viewMode()
      */
-    void viewModeChanged ( KTextEditor::View *view );
+    void viewModeChanged(KTextEditor::View *view);
 
     /**
      * This signal is emitted whenever the \p view's edit \p mode changed from
@@ -263,8 +263,8 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param mode new edit mode
      * \see viewEditMode()
      */
-    void viewEditModeChanged ( KTextEditor::View *view,
-                               enum KTextEditor::View::EditMode mode );
+    void viewEditModeChanged(KTextEditor::View *view,
+                             enum KTextEditor::View::EditMode mode);
 
     /**
      * This signal is emitted whenever the \p view wants to display a
@@ -273,7 +273,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param view view which sends out information
      * \param message information message
      */
-    void informationMessage ( KTextEditor::View *view, const QString &message );
+    void informationMessage(KTextEditor::View *view, const QString &message);
 
     /**
      * This signal is emitted from \p view whenever the users inserts \p text
@@ -283,14 +283,14 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param text the text the user has typed into the editor
      * \see insertText()
      */
-    void textInserted ( KTextEditor::View *view,
-                        const KTextEditor::Cursor &position,
-                        const QString &text );
+    void textInserted(KTextEditor::View *view,
+                      const KTextEditor::Cursor &position,
+                      const QString &text);
 
-  /*
-   * Context menu handling
-   */
-  public:
+    /*
+     * Context menu handling
+     */
+public:
     /**
      * Set a context menu for this view to \p menu.
      *
@@ -304,7 +304,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param menu new context menu object for this view
      * \see contextMenu()
      */
-    virtual void setContextMenu ( QMenu *menu ) = 0;
+    virtual void setContextMenu(QMenu *menu) = 0;
 
     /**
      * Get the context menu for this view. The return value can be NULL
@@ -314,7 +314,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return context menu object
      * \see setContextMenu()
      */
-    virtual QMenu *contextMenu () const = 0;
+    virtual QMenu *contextMenu() const = 0;
 
     /**
      * Populate \a menu with default text editor actions.  If \a menu is
@@ -333,9 +333,9 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * while (client->parentClient()) {
      *   client = client->parentClient();
      * }
-     *    
+     *
      * if (client->factory()) {
-     *   QList<QWidget*> conts = client->factory()->containers("menu");       
+     *   QList<QWidget*> conts = client->factory()->containers("menu");
      *   foreach (QWidget *w, conts) {
      *     if (w->objectName() == "ktexteditor_popup") {
      *       // do something with the menu (ie adding an onshow handler)
@@ -349,19 +349,19 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param menu the menu to be populated, or null to create a new menu.
      * \return the menu, whether created or passed initially
      */
-    virtual QMenu* defaultContextMenu(QMenu* menu = 0L) const = 0;
+    virtual QMenu *defaultContextMenu(QMenu *menu = 0L) const = 0;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Signal which is emitted immediately prior to showing the current
      * context \a menu.
      */
-    void contextMenuAboutToShow(KTextEditor::View* view, QMenu* menu);
+    void contextMenuAboutToShow(KTextEditor::View *view, QMenu *menu);
 
-  /*
-   * Cursor handling
-   */
-  public:
+    /*
+     * Cursor handling
+     */
+public:
     /**
      * Set the view's new cursor to \p position. A \e TAB character
      * is handeled as only on character.
@@ -369,7 +369,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return \e true on success, otherwise \e false
      * \see cursorPosition()
      */
-    virtual bool setCursorPosition (Cursor position) = 0;
+    virtual bool setCursorPosition(Cursor position) = 0;
 
     /**
      * Get the view's current cursor position. A \e TAB character is
@@ -377,7 +377,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return current cursor position
      * \see setCursorPosition()
      */
-    virtual Cursor cursorPosition () const = 0;
+    virtual Cursor cursorPosition() const = 0;
 
     /**
      * Get the current \e virtual cursor position, \e virtual means the
@@ -389,7 +389,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return virtual cursor position
      * \see cursorPosition()
      */
-    virtual Cursor cursorPositionVirtual () const = 0;
+    virtual Cursor cursorPositionVirtual() const = 0;
 
     /**
      * Get the screen coordinates (x, y) of the supplied \a cursor relative
@@ -404,13 +404,13 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      *
      * \see cursorPositionCoordinates(), coordinatesToCursor()
      */
-    virtual QPoint cursorToCoordinate(const KTextEditor::Cursor& cursor) const = 0;
+    virtual QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const = 0;
 
     /**
      * Get the screen coordinates (x/y) of the cursor position in pixels.
      * \return cursor screen coordinates
      */
-    virtual QPoint cursorPositionCoordinates () const = 0;
+    virtual QPoint cursorPositionCoordinates() const = 0;
 
     /**
      * Get the text-cursor in the document from the screen coordinates,
@@ -423,14 +423,14 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return cursor in the View, that points onto the character under
      *         the given coordinate. May be KTextEditor::Cursor::invalid().
      */
-    virtual KTextEditor::Cursor coordinatesToCursor(const QPoint& coord) const = 0;
+    virtual KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const = 0;
 
-  /*
-   * SIGNALS
-   * following signals should be emitted by the editor view
-   * if the cursor position changes
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * following signals should be emitted by the editor view
+     * if the cursor position changes
+     */
+Q_SIGNALS:
     /**
      * This signal is emitted whenever the \p view's cursor position changed.
      * \param view view which emitted the signal
@@ -438,25 +438,25 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      *        cursor potition, not the virtual)
      * \see cursorPosition(), cursorPositionVirtual()
      */
-    void cursorPositionChanged (KTextEditor::View *view,
-                                const KTextEditor::Cursor& newPosition);
+    void cursorPositionChanged(KTextEditor::View *view,
+                               const KTextEditor::Cursor &newPosition);
 
     /**
      * This signal should be emitted whenever the \p view is scrolled vertically.
      * \param view view which emitted the signal
      * \param newPos the new scroll position
      */
-    void verticalScrollPositionChanged (KTextEditor::View *view, const KTextEditor::Cursor& newPos);
-  
+    void verticalScrollPositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPos);
+
     /**
      * This signal should be emitted whenever the \p view is scrolled horizontally.
      * \param view view which emitted the signal
      */
-    void horizontalScrollPositionChanged (KTextEditor::View *view);
-  /*
-   * Mouse position
-   */
-  public:
+    void horizontalScrollPositionChanged(KTextEditor::View *view);
+    /*
+     * Mouse position
+     */
+public:
     /**
      * Check, whether mouse tracking is enabled.
      *
@@ -484,7 +484,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      */
     virtual bool setMouseTrackingEnabled(bool enable) = 0;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted whenever the position of the mouse changes over
      * this \a view. If the mouse moves off the view, an invalid cursor position
@@ -496,14 +496,14 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      *        mouse moved out of the \p view.
      * \see mouseTrackingEnabled()
      */
-    void mousePositionChanged (KTextEditor::View *view,
-                               const KTextEditor::Cursor& newPosition);
+    void mousePositionChanged(KTextEditor::View *view,
+                              const KTextEditor::Cursor &newPosition);
 
-  /*
-   * Selection methodes.
-   * This deals with text selection and copy&paste
-   */
-  public:
+    /*
+     * Selection methodes.
+     * This deals with text selection and copy&paste
+     */
+public:
     /**
      * Set the view's selection to the range \p selection.
      * The old selection will be discarded.
@@ -512,7 +512,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      *         range is invalid)
      * \see selectionRange(), selection()
      */
-    virtual bool setSelection ( const Range &range ) = 0;
+    virtual bool setSelection(const Range &range) = 0;
 
     /**
      * Query the view whether it has selected text, i.e. whether a selection
@@ -534,7 +534,7 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return the selected text
      * \see setSelection()
      */
-    virtual QString selectionText () const = 0;
+    virtual QString selectionText() const = 0;
 
     /**
      * Remove the view's current selection, \e without deleting the selected
@@ -542,43 +542,43 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return \e true on success, otherwise \e false
      * \see removeSelectionText()
      */
-    virtual bool removeSelection () = 0;
+    virtual bool removeSelection() = 0;
 
     /**
      * Remove the view's current selection \e including the selected text.
      * \return \e true on success, otherwise \e false
      * \see removeSelection()
      */
-    virtual bool removeSelectionText () = 0;
+    virtual bool removeSelectionText() = 0;
 
-  /*
-   * Blockselection stuff
-   */
-  public:
-   /**
-    * Set block selection mode to state \p on.
-    * \param on if \e true, block selection mode is turned on, otherwise off
-    * \return \e true on success, otherwise \e false
-    * \see blockSelection()
-    */
-    virtual bool setBlockSelection (bool on) = 0;
+    /*
+     * Blockselection stuff
+     */
+public:
+    /**
+     * Set block selection mode to state \p on.
+     * \param on if \e true, block selection mode is turned on, otherwise off
+     * \return \e true on success, otherwise \e false
+     * \see blockSelection()
+     */
+    virtual bool setBlockSelection(bool on) = 0;
 
-   /**
-    * Get the status of the selection mode. \e true indicates that block
-    * selection mode is on. If this is \e true, selections applied via the
-    * SelectionInterface are handled as block selections and the Copy&Paste
-    * functions work on rectangular blocks of text rather than normal.
-    * \return \e true, if block selection mode is enabled, otherwise \e false
-    * \see setBlockSelection()
-    */
-    virtual bool blockSelection () const = 0;
+    /**
+     * Get the status of the selection mode. \e true indicates that block
+     * selection mode is on. If this is \e true, selections applied via the
+     * SelectionInterface are handled as block selections and the Copy&Paste
+     * functions work on rectangular blocks of text rather than normal.
+     * \return \e true, if block selection mode is enabled, otherwise \e false
+     * \see setBlockSelection()
+     */
+    virtual bool blockSelection() const = 0;
 
-  /*
-   * SIGNALS
-   * following signals should be emitted by the editor view for selection
-   * handling.
-   */
-  Q_SIGNALS:
+    /*
+     * SIGNALS
+     * following signals should be emitted by the editor view for selection
+     * handling.
+     */
+Q_SIGNALS:
     /**
      * This signal is emitted whenever the \p view's selection changes.
      * \note If the mode switches from block selection to normal selection
@@ -586,9 +586,9 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \param view view in which the selection changed
      * \see selection(), selectionRange(), selectionText()
      */
-    void selectionChanged (KTextEditor::View *view);
+    void selectionChanged(KTextEditor::View *view);
 
-  public:
+public:
     /**
      * This is a convenience function which inserts \p text at the view's
      * current cursor position. You do not necessarily need to reimplement
@@ -597,14 +597,13 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
      * \return \e true on success of insertion, otherwise \e false
      * \see textInserted()
      */
-    virtual bool insertText (const QString &text);
+    virtual bool insertText(const QString &text);
 
-  private:
-    class ViewPrivate* const d;
+private:
+    class ViewPrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

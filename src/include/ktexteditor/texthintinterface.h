@@ -77,7 +77,7 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT TextHintInterface
 {
-  public:
+public:
     TextHintInterface();
     virtual ~TextHintInterface();
 
@@ -86,7 +86,7 @@ class KTEXTEDITOR_EXPORT TextHintInterface
      * The timeout specifies the delay the user needs to hover over the text
      * befure the tool tip is shown. Therefore, \p timeout should not be
      * too large, a value of 200 milliseconds is recommended.
-     *     
+     *
      * After enabling the text hints, the signal needTextHint() is emitted
      * whenever the mouse position changed and a new character is underneath
      * the mouse cursor. Calling the signal is delayed for the time specified
@@ -102,10 +102,10 @@ class KTEXTEDITOR_EXPORT TextHintInterface
      */
     virtual void disableTextHints() = 0;
 
-  //
-  // signals
-  //
-  public:
+    //
+    // signals
+    //
+public:
     /**
      * This signal is emitted whenever the timeout for displaying a text hint
      * is triggered. The text cursor \p position specifies the mouse position
@@ -117,10 +117,10 @@ class KTEXTEDITOR_EXPORT TextHintInterface
      * \param position text cursor under the mouse position
      * \param text tool tip to be displayed, or empty string to hide
      */
-    virtual void needTextHint(KTextEditor::View * view, const KTextEditor::Cursor& position, QString &text) = 0;
+    virtual void needTextHint(KTextEditor::View *view, const KTextEditor::Cursor &position, QString &text) = 0;
 
-  private:
-    class TextHintInterfacePrivate* const d;
+private:
+    class TextHintInterfacePrivate *const d;
 };
 
 }
@@ -129,4 +129,3 @@ Q_DECLARE_INTERFACE(KTextEditor::TextHintInterface, "org.kde.KTextEditor.TextHin
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

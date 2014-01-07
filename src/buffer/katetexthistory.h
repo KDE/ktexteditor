@@ -29,42 +29,47 @@
 #include "katetextcursor.h"
 #include "katetextrange.h"
 
-namespace Kate {
+namespace Kate
+{
 
 class TextBuffer;
 
 /**
  * Class representing the editing history of a TextBuffer
  */
-class KTEXTEDITOR_EXPORT TextHistory {
-  friend class TextBuffer;
-  friend class TextBlock;
+class KTEXTEDITOR_EXPORT TextHistory
+{
+    friend class TextBuffer;
+    friend class TextBlock;
 
-  public:
+public:
     /**
      * Current revision, just relay the revision of the buffer
      * @return current revision
      */
-    qint64 revision () const;
+    qint64 revision() const;
 
     /**
      * Last revision the buffer got successful saved
      * @return last revision buffer got saved, -1 if none
      */
-    qint64 lastSavedRevision () const { return m_lastSavedRevision; }
+    qint64 lastSavedRevision() const
+    {
+        return m_lastSavedRevision;
+    }
 
     /**
      * Lock a revision, this will keep it around until released again.
      * But all revisions will always be cleared on buffer clear() (and therefor load())
      * @param revision revision to lock
      */
-    void lockRevision (qint64 revision);
+    void lockRevision(qint64 revision);
 
     /**
      * Release a revision.
      * @param revision revision to release
      */
-    void unlockRevision (qint64 revision);
+    void unlockRevision(qint64 revision);
 
     /**
      * Transform a cursor from one revision to an other.
@@ -74,7 +79,7 @@ class KTEXTEDITOR_EXPORT TextHistory {
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformCursor (int& line, int& column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1);
+    void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1);
 
     /**
      * Transform a range from one revision to an other.
@@ -84,46 +89,47 @@ class KTEXTEDITOR_EXPORT TextHistory {
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformRange (KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1);
+    void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1);
 
-  private:
+private:
     /**
      * Class representing one entry in the editing history.
      */
-    class Entry {
-      public:
+    class Entry
+    {
+    public:
         /**
          * transform cursor for this history entry
          * @param line line number of the cursor to transform
          * @param column column number of the cursor to transform
          * @param moveOnInsert behavior of this cursor on insert of text at its position
          */
-        void transformCursor (int &line, int &column, bool moveOnInsert) const;
-        
+        void transformCursor(int &line, int &column, bool moveOnInsert) const;
+
         /**
          * reverse transform cursor for this history entry
          * @param line line number of the cursor to transform
          * @param column column number of the cursor to transform
          * @param moveOnInsert behavior of this cursor on insert of text at its position
          */
-        void reverseTransformCursor (int &line, int &column, bool moveOnInsert) const;
+        void reverseTransformCursor(int &line, int &column, bool moveOnInsert) const;
 
         /**
          * Types of entries, matching editing primitives of buffer and placeholder
          */
         enum Type {
-          NoChange
-          , WrapLine
-          , UnwrapLine
-          , InsertText
-          , RemoveText
+            NoChange
+            , WrapLine
+            , UnwrapLine
+            , InsertText
+            , RemoveText
         };
 
         /**
          * Default Constructor, invalidates all fields
          */
-        Entry ()
-         : referenceCounter (0), type (NoChange), line (-1), column (-1), length (-1), oldLineLength (-1)
+        Entry()
+            : referenceCounter(0), type(NoChange), line(-1), column(-1), length(-1), oldLineLength(-1)
         {
         }
 
@@ -162,35 +168,35 @@ class KTEXTEDITOR_EXPORT TextHistory {
      * Construct an empty text history.
      * @param buffer buffer this text history belongs to
      */
-    TextHistory (TextBuffer &buffer);
+    TextHistory(TextBuffer &buffer);
 
     /**
      * Destruct the text history
      */
-    ~TextHistory ();
+    ~TextHistory();
 
     /**
      * Clear the edit history, this is done on clear() in buffer.
      */
-    void clear ();
+    void clear();
 
     /**
      * Set current revision as last saved revision
      */
-    void setLastSavedRevision ();
+    void setLastSavedRevision();
 
     /**
      * Notify about wrap line at given cursor position.
      * @param position line/column as cursor where to wrap
      */
-    void wrapLine (const KTextEditor::Cursor &position);
+    void wrapLine(const KTextEditor::Cursor &position);
 
     /**
      * Notify about unwrap given line.
      * @param line line to unwrap
      * @param oldLineLength text length of the line in front of this one before this unwrap
      */
-    void unwrapLine (int line, int oldLineLength);
+    void unwrapLine(int line, int oldLineLength);
 
     /**
      * Notify about insert text at given cursor position.
@@ -198,22 +204,22 @@ class KTEXTEDITOR_EXPORT TextHistory {
      * @param length text length to be inserted
      * @param oldLineLength text length of the line before this insert
      */
-    void insertText (const KTextEditor::Cursor &position, int length, int oldLineLength);
+    void insertText(const KTextEditor::Cursor &position, int length, int oldLineLength);
 
     /**
      * Notify about remove text at given range.
      * @param range range of text to remove, must be on one line only.
      * @param oldLineLength text length of the line before this remove
      */
-    void removeText (const KTextEditor::Range &range, int oldLineLength);
+    void removeText(const KTextEditor::Range &range, int oldLineLength);
 
     /**
      * Generic function to add a entry to the history. Is used by the above functions for the different editing primitives.
      * @param entry new entry to add
      */
-    void addEntry (const Entry &entry);
+    void addEntry(const Entry &entry);
 
-  private:
+private:
     /**
      * TextBuffer this history belongs to
      */

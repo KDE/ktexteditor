@@ -36,18 +36,17 @@ class Document;
  */
 namespace Search
 {
-  /**
-   * \brief Search flags for use with searchText.
-   *
-   * Modifies the behavior of searchText.
-   * By default it is searched for a case-sensitive plaintext pattern,
-   * without processing of escape sequences, with "whole words" off,
-   * in forward direction, within a non-block-mode text range.
-   *
-   * \author Sebastian Pipping \<webmaster@hartwork.org\>
-   */
-  enum SearchOptionsEnum
-  {
+/**
+ * \brief Search flags for use with searchText.
+ *
+ * Modifies the behavior of searchText.
+ * By default it is searched for a case-sensitive plaintext pattern,
+ * without processing of escape sequences, with "whole words" off,
+ * in forward direction, within a non-block-mode text range.
+ *
+ * \author Sebastian Pipping \<webmaster@hartwork.org\>
+ */
+enum SearchOptionsEnum {
     Default             = 0,      ///< Default settings
 
     // modes
@@ -64,10 +63,10 @@ namespace Search
 
     // options for regex
     DotMatchesNewline   = 1 << 15  ///< Regex mode: Makes "." match newlines
-  };
+};
 
-  Q_DECLARE_FLAGS(SearchOptions, SearchOptionsEnum)
-  Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
+Q_DECLARE_FLAGS(SearchOptions, SearchOptionsEnum)
+Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
 }
 
 /**
@@ -103,7 +102,7 @@ namespace Search
  */
 class KTEXTEDITOR_EXPORT SearchInterface
 {
-  public:
+public:
     /**
      * Constructor.
      */
@@ -114,7 +113,7 @@ class KTEXTEDITOR_EXPORT SearchInterface
      */
     virtual ~SearchInterface();
 
-  public:
+public:
     /**
      * \brief Searches the given input range for a text pattern.
      *
@@ -138,8 +137,8 @@ class KTEXTEDITOR_EXPORT SearchInterface
      * \author Sebastian Pipping \<webmaster@hartwork.org\>
      */
     virtual QVector<KTextEditor::Range> searchText(
-        const KTextEditor::Range & range,
-        const QString & pattern,
+        const KTextEditor::Range &range,
+        const QString &pattern,
         const Search::SearchOptions options = Search::Default) = 0;
 
     /**
@@ -152,8 +151,8 @@ class KTEXTEDITOR_EXPORT SearchInterface
      */
     virtual Search::SearchOptions supportedSearchOptions() const = 0;
 
-  private:
-    class SearchInterfacePrivate* const d;
+private:
+    class SearchInterfacePrivate *const d;
 };
 
 }
@@ -162,4 +161,3 @@ Q_DECLARE_INTERFACE(KTextEditor::SearchInterface, "org.kde.KTextEditor.SearchInt
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

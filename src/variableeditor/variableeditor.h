@@ -43,149 +43,145 @@ class QLabel;
 class QLineEdit;
 class QSpinBox;
 
-namespace Sonnet {
-  class DictionaryComboBox;
+namespace Sonnet
+{
+class DictionaryComboBox;
 }
 
 class VariableEditor : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  VariableEditor(VariableItem* item, QWidget* parent = 0);
-  virtual ~VariableEditor();
+    VariableEditor(VariableItem *item, QWidget *parent = 0);
+    virtual ~VariableEditor();
 
-  VariableItem* item() const;
+    VariableItem *item() const;
 
 Q_SIGNALS:
-  void valueChanged();
+    void valueChanged();
 
 protected Q_SLOTS:
-  void itemEnabled(bool enabled);
-  void activateItem();
+    void itemEnabled(bool enabled);
+    void activateItem();
 
 protected:
-  virtual void paintEvent(QPaintEvent* event);
-  virtual void enterEvent(QEvent* event);
-  virtual void leaveEvent(QEvent* event);
-
+    virtual void paintEvent(QPaintEvent *event);
+    virtual void enterEvent(QEvent *event);
+    virtual void leaveEvent(QEvent *event);
 
 private:
-  VariableItem* m_item;
+    VariableItem *m_item;
 
-  QCheckBox* m_checkBox;
-  QLabel* m_variable;
-  QLabel* m_helpText;
-  KateHelpButton* m_btnHelp;
+    QCheckBox *m_checkBox;
+    QLabel *m_variable;
+    QLabel *m_helpText;
+    KateHelpButton *m_btnHelp;
 };
 
 class VariableIntEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableIntEditor(VariableIntItem* item, QWidget* parent);
+    VariableIntEditor(VariableIntItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(int newValue);
+    void setItemValue(int newValue);
 
 private:
-  QSpinBox* m_spinBox;
+    QSpinBox *m_spinBox;
 };
 
 class VariableBoolEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableBoolEditor(VariableBoolItem* item, QWidget* parent);
+    VariableBoolEditor(VariableBoolItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(int enabled);
+    void setItemValue(int enabled);
 
 private:
-  QComboBox* m_comboBox;
+    QComboBox *m_comboBox;
 };
 
 class VariableStringListEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableStringListEditor(VariableStringListItem* item, QWidget* parent);
+    VariableStringListEditor(VariableStringListItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(const QString& newValue);
+    void setItemValue(const QString &newValue);
 
 private:
-  QComboBox* m_comboBox;
+    QComboBox *m_comboBox;
 };
 
 class VariableColorEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableColorEditor(VariableColorItem* item, QWidget* parent);
+    VariableColorEditor(VariableColorItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(const QColor& newValue);
+    void setItemValue(const QColor &newValue);
 
 private:
-  KColorCombo* m_comboBox;
+    KColorCombo *m_comboBox;
 };
 
 class VariableFontEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableFontEditor(VariableFontItem* item, QWidget* parent);
+    VariableFontEditor(VariableFontItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(const QFont& newValue);
+    void setItemValue(const QFont &newValue);
 
 private:
-  QFontComboBox* m_comboBox;
+    QFontComboBox *m_comboBox;
 };
-
 
 class VariableStringEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableStringEditor(VariableStringItem* item, QWidget* parent);
+    VariableStringEditor(VariableStringItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(const QString& newValue);
+    void setItemValue(const QString &newValue);
 
 private:
-  QLineEdit* m_lineEdit;
+    QLineEdit *m_lineEdit;
 };
-
 
 class VariableSpellCheckEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableSpellCheckEditor(VariableSpellCheckItem* item, QWidget* parent);
+    VariableSpellCheckEditor(VariableSpellCheckItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(const QString& newValue);
+    void setItemValue(const QString &newValue);
 
 private:
-  Sonnet::DictionaryComboBox *m_dictionaryCombo;
+    Sonnet::DictionaryComboBox *m_dictionaryCombo;
 };
-
 
 class VariableRemoveSpacesEditor : public VariableEditor
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  VariableRemoveSpacesEditor(VariableRemoveSpacesItem* item, QWidget* parent);
+    VariableRemoveSpacesEditor(VariableRemoveSpacesItem *item, QWidget *parent);
 
 protected Q_SLOTS:
-  void setItemValue(int enabled);
+    void setItemValue(int enabled);
 
 private:
-  QComboBox* m_comboBox;
+    QComboBox *m_comboBox;
 };
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

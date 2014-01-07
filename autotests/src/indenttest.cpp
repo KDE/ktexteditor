@@ -39,136 +39,127 @@ QTEST_MAIN(IndentTest)
 
 void IndentTest::initTestCase()
 {
-  ScriptTestBase::initTestCase();
-  m_section = "indent";
-  m_script_dir = "indentation";
+    ScriptTestBase::initTestCase();
+    m_section = "indent";
+    m_script_dir = "indentation";
 }
-
 
 void IndentTest::testCstyle_data()
 {
-  getTestData( "cstyle" );
+    getTestData("cstyle");
 }
 
 void IndentTest::testCstyle()
 {
-  runTest( ExpectedFailures() << FAILURE( "using1", "this is insane, those who write such code can cope with it :P" )
-                              << FAILURE( "using2", "this is insane, those who write such code can cope with it :P" )
-                              << FAILURE( "plist14", "in function signatures it might be wanted to use the indentation of the\n"
-                                                     "opening paren instead of just increasing the indentation level like in function calls" )
-                              << FAILURE( "switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface" )
-                              << FAILURE( "switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface" )
-                              << FAILURE( "visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface" )
-                              << FAILURE( "visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface" )
-                              << FAILURE( "plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards" )
-                              << FAILURE( "switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code" )
-  );
+    runTest(ExpectedFailures() << FAILURE("using1", "this is insane, those who write such code can cope with it :P")
+            << FAILURE("using2", "this is insane, those who write such code can cope with it :P")
+            << FAILURE("plist14", "in function signatures it might be wanted to use the indentation of the\n"
+                       "opening paren instead of just increasing the indentation level like in function calls")
+            << FAILURE("switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface")
+            << FAILURE("switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface")
+            << FAILURE("visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+            << FAILURE("visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+            << FAILURE("plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards")
+            << FAILURE("switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code")
+           );
 }
-
 
 void IndentTest::testCppstyle_data()
 {
-    getTestData( "cppstyle" );
+    getTestData("cppstyle");
 }
 
 void IndentTest::testCppstyle()
 {
     runTest(
         ExpectedFailures()
-          /// \todo Fix (smth) to make failed test cases really work!
-          << FAILURE( "parens1", "dunno why it failed in test! in manual mode everything works fine..." )
-      );
+        /// \todo Fix (smth) to make failed test cases really work!
+        << FAILURE("parens1", "dunno why it failed in test! in manual mode everything works fine...")
+    );
 }
-
 
 void IndentTest::testPython_data()
 {
-    getTestData( "python" );
+    getTestData("python");
 }
 
 void IndentTest::testPython()
 {
-    runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
-
 
 void IndentTest::testHaskell_data()
 {
-  getTestData( "haskell" );
+    getTestData("haskell");
 }
 
 void IndentTest::testHaskell()
 {
-  runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
-
 
 void IndentTest::latex_data()
 {
-  getTestData( "latex" );
+    getTestData("latex");
 }
 
 void IndentTest::latex()
 {
-  runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
-
 
 void IndentTest::testPascal_data()
 {
-  getTestData( "pascal" );
+    getTestData("pascal");
 }
 
 void IndentTest::testPascal()
 {
-  runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
-
 
 void IndentTest::testRuby_data()
 {
-  getTestData( "ruby" );
+    getTestData("ruby");
 }
 
 void IndentTest::testRuby()
 {
-  runTest( ExpectedFailures() << FAILURE( "block01", "Multiline blocks using {} is not supported" )
-                              << FAILURE( "block02", "Multiline blocks using {} is not supported" )
-                              << FAILURE( "singleline01", "Single line defs are not supported" )
-                              << FAILURE( "singleline02", "Single line defs are not supported" )
-                              << FAILURE( "wordlist01", "multiline word list is not supported" )
-                              << FAILURE( "wordlist02", "multiline word list is not supported" )
-                              << FAILURE( "wordlist11", "multiline word list is not supported" )
-                              << FAILURE( "wordlist12", "multiline word list is not supported" )
-                              << FAILURE( "wordlist21", "multiline word list is not supported" )
-                              << FAILURE( "wordlist22", "multiline word list is not supported" )
-                              << FAILURE( "if20", "multi line if assignment is not supported" )
-                              << FAILURE( "if21", "multi line if assignment is not supported" )
-                              << FAILURE( "if30", "single line if is not supported" )
-                              << FAILURE( "if31", "single line if is not supported" )
-  );
+    runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported")
+            << FAILURE("block02", "Multiline blocks using {} is not supported")
+            << FAILURE("singleline01", "Single line defs are not supported")
+            << FAILURE("singleline02", "Single line defs are not supported")
+            << FAILURE("wordlist01", "multiline word list is not supported")
+            << FAILURE("wordlist02", "multiline word list is not supported")
+            << FAILURE("wordlist11", "multiline word list is not supported")
+            << FAILURE("wordlist12", "multiline word list is not supported")
+            << FAILURE("wordlist21", "multiline word list is not supported")
+            << FAILURE("wordlist22", "multiline word list is not supported")
+            << FAILURE("if20", "multi line if assignment is not supported")
+            << FAILURE("if21", "multi line if assignment is not supported")
+            << FAILURE("if30", "single line if is not supported")
+            << FAILURE("if31", "single line if is not supported")
+           );
 }
-
 
 void IndentTest::testXml_data()
 {
-  getTestData( "xml" );
+    getTestData("xml");
 }
 
 void IndentTest::testXml()
 {
-  runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
-
 
 void IndentTest::testNormal_data()
 {
-  getTestData( "normal" );
+    getTestData("normal");
 }
 
 void IndentTest::testNormal()
 {
-  runTest( ExpectedFailures() << FAILURE( "emptyline1", "is that really what we expect?" )
-                              << FAILURE( "emptyline3", "is that really what we expext?" )
-  );
+    runTest(ExpectedFailures() << FAILURE("emptyline1", "is that really what we expect?")
+            << FAILURE("emptyline3", "is that really what we expext?")
+           );
 }

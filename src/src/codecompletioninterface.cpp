@@ -21,6 +21,6 @@
 
 using namespace KTextEditor;
 
-CodeCompletionInterface::~ CodeCompletionInterface( )
+CodeCompletionInterface::~ CodeCompletionInterface()
 {
 }

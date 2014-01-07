@@ -27,23 +27,24 @@
 class QScriptEngine;
 class QScriptContext;
 
-namespace Kate {
-  /** Top-level script functions */
-  namespace Script {
+namespace Kate
+{
+/** Top-level script functions */
+namespace Script
+{
 
-    /** read complete file contents, helper */
-    KTEXTEDITOR_EXPORT bool readFile(const QString& sourceUrl, QString& sourceCode);
-    
-    KTEXTEDITOR_EXPORT QScriptValue read(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue require(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue debug(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue i18n(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue i18nc(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue i18np(QScriptContext *context, QScriptEngine *engine);
-    KTEXTEDITOR_EXPORT QScriptValue i18ncp(QScriptContext *context, QScriptEngine *engine);
-  }
+/** read complete file contents, helper */
+KTEXTEDITOR_EXPORT bool readFile(const QString &sourceUrl, QString &sourceCode);
+
+KTEXTEDITOR_EXPORT QScriptValue read(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue require(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue debug(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue i18n(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue i18nc(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue i18np(QScriptContext *context, QScriptEngine *engine);
+KTEXTEDITOR_EXPORT QScriptValue i18ncp(QScriptContext *context, QScriptEngine *engine);
+}
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

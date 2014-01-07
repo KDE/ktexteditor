@@ -24,13 +24,13 @@
 
 class RegExpSearchTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     RegExpSearchTest();
     virtual ~RegExpSearchTest();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void testReplaceEscapeSequences_data();
     void testReplaceEscapeSequences();
 
@@ -55,4 +55,3 @@ class RegExpSearchTest : public QObject
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

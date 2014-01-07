@@ -25,30 +25,32 @@
 
 using namespace KTextEditor;
 
-MovingRange::MovingRange ()
+MovingRange::MovingRange()
 {
 }
 
-MovingRange::~MovingRange ()
+MovingRange::~MovingRange()
 {
 }
 
-void MovingRange::setRange (const Cursor &start, const Cursor &end)
+void MovingRange::setRange(const Cursor &start, const Cursor &end)
 {
-  // just use other function, KTextEditor::Range will handle some normalization
-  setRange (Range (start, end));
+    // just use other function, KTextEditor::Range will handle some normalization
+    setRange(Range(start, end));
 }
 
-bool MovingRange::overlaps( const Range& range ) const
+bool MovingRange::overlaps(const Range &range) const
 {
-  if (range.start() <= start())
-    return range.end() > start();
+    if (range.start() <= start()) {
+        return range.end() > start();
+    }
 
-  else if (range.end() >= end())
-    return range.start() < end();
+    else if (range.end() >= end()) {
+        return range.start() < end();
+    }
 
-  else
-    return contains(range);
+    else {
+        return contains(range);
+    }
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

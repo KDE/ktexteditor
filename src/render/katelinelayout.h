@@ -35,11 +35,11 @@ class KateRenderer;
 
 class KateLineLayout : public QSharedData
 {
-  public:
+public:
     KateLineLayout(KateRenderer &renderer);
     ~KateLineLayout();
 
-    KateDocument* doc() const;
+    KateDocument *doc() const;
     void debugOutput() const;
 
     void clear();
@@ -48,14 +48,14 @@ class KateLineLayout : public QSharedData
 
     bool isRightToLeft() const;
 
-    bool includesCursor(const KTextEditor::Cursor& realCursor) const;
+    bool includesCursor(const KTextEditor::Cursor &realCursor) const;
 
-    friend bool operator> (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator>= (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator< (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator<= (const KateLineLayout& r, const KTextEditor::Cursor& c);
+    friend bool operator> (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator>= (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator< (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator<= (const KateLineLayout &r, const KTextEditor::Cursor &c);
 
-    const Kate::TextLine& textLine(bool forceReload = false) const;
+    const Kate::TextLine &textLine(bool forceReload = false) const;
     int length() const;
 
     int line() const;
@@ -90,21 +90,21 @@ class KateLineLayout : public QSharedData
     int shiftX() const;
     void setShiftX(int shiftX);
 
-    QTextLayout* layout() const;
-    void setLayout(QTextLayout* layout);
+    QTextLayout *layout() const;
+    void setLayout(QTextLayout *layout);
     void invalidateLayout();
 
     bool isLayoutDirty() const;
     void setLayoutDirty(bool dirty = true);
 
-    bool usePlainTextLine () const;
-    void setUsePlainTextLine (bool plain = true);
+    bool usePlainTextLine() const;
+    void setUsePlainTextLine(bool plain = true);
 
 private:
     // Disable copy
-    KateLineLayout(const KateLineLayout& copy);
+    KateLineLayout(const KateLineLayout &copy);
 
-    QTextLayout* takeLayout() const;
+    QTextLayout *takeLayout() const;
 
     KateRenderer &m_renderer;
     mutable Kate::TextLine m_textLine;
@@ -112,7 +112,7 @@ private:
     int m_virtualLine;
     int m_shiftX;
 
-    QTextLayout* m_layout;
+    QTextLayout *m_layout;
     QList<bool> m_dirtyList;
 
     bool m_layoutDirty;

@@ -53,18 +53,17 @@ class KateSyntaxContextData;
 // min. x seconds between two dynamic contexts reset
 #define KATE_DYNAMIC_CONTEXTS_RESET_DELAY (30 * 1000)
 
-
 /**
  * describe a modification of the context stack
  */
 class KateHlContextModification
 {
-  public:
+public:
     enum modType {
-      doNothing = 0,
-      doPush = 1,
-      doPops = 2,
-      doPopsAndPush = 3
+        doNothing = 0,
+        doPush = 1,
+        doPops = 2,
+        doPopsAndPush = 3
     };
 
     /**
@@ -72,15 +71,20 @@ class KateHlContextModification
      * @param _newContext new context to push on stack
      * @param _pops number of contexts to remove from stack in advance
      */
-    KateHlContextModification (int _newContext = -1, int _pops = 0) : type (doNothing), newContext (_newContext), pops (_pops) //krazy:exclude=explicit
+    KateHlContextModification(int _newContext = -1, int _pops = 0) : type(doNothing), newContext(_newContext), pops(_pops)     //krazy:exclude=explicit
     {
-      if (newContext >= 0 && pops == 0) type = doPush;
-      else if (newContext < 0 && pops > 0) type = doPops;
-      else if (newContext >= 0 && pops > 0) type = doPopsAndPush;
-      else type = doNothing;
+        if (newContext >= 0 && pops == 0) {
+            type = doPush;
+        } else if (newContext < 0 && pops > 0) {
+            type = doPops;
+        } else if (newContext >= 0 && pops > 0) {
+            type = doPopsAndPush;
+        } else {
+            type = doNothing;
+        }
     }
 
-  public:
+public:
     /**
      * indicates what this modification does, for speed
      */
@@ -101,38 +105,46 @@ class KateHlContextModification
 
 class KateEmbeddedHlInfo
 {
-  public:
-    KateEmbeddedHlInfo() {loaded=false;context0=-1;}
-    KateEmbeddedHlInfo(bool l, int ctx0) {loaded=l;context0=ctx0;}
+public:
+    KateEmbeddedHlInfo()
+    {
+        loaded = false;
+        context0 = -1;
+    }
+    KateEmbeddedHlInfo(bool l, int ctx0)
+    {
+        loaded = l;
+        context0 = ctx0;
+    }
 
-  public:
+public:
     bool loaded;
     int context0;
 };
 
 // some typedefs
-typedef QList<KateHlIncludeRule*> KateHlIncludeRules;
-typedef QMap<QString,KateEmbeddedHlInfo> KateEmbeddedHlInfos;
-typedef QMap<KateHlContextModification*,QString> KateHlUnresolvedCtxRefs;
+typedef QList<KateHlIncludeRule *> KateHlIncludeRules;
+typedef QMap<QString, KateEmbeddedHlInfo> KateEmbeddedHlInfos;
+typedef QMap<KateHlContextModification *, QString> KateHlUnresolvedCtxRefs;
 
 class KateHighlighting
 {
-  public:
+public:
     KateHighlighting(const KateSyntaxModeListItem *def);
     ~KateHighlighting();
 
-  private:
+private:
     /**
      * this method frees mem ;)
      * used by the destructor and done(), therefor
      * not only delete elements but also reset the array
      * sizes, as we will reuse this object later and refill ;)
      */
-    void cleanup ();
+    void cleanup();
 
     void makeNoneContext();
 
-  public:
+public:
     /**
      * Parse the text and fill in the context array and folding list array
      *
@@ -142,24 +154,51 @@ class KateHighlighting
      * @param ctxChanged will be set to reflect if the context changed
      * @param tabWidth tab width for indentation based folding, if wanted, else 0
      */
-    void doHighlight ( const Kate::TextLineData *prevLine,
-                       Kate::TextLineData *textLine,
-                       const Kate::TextLineData *nextLine,
-                       bool &ctxChanged,
-                       int tabWidth = 0);
+    void doHighlight(const Kate::TextLineData *prevLine,
+                     Kate::TextLineData *textLine,
+                     const Kate::TextLineData *nextLine,
+                     bool &ctxChanged,
+                     int tabWidth = 0);
 
     void setKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &,
-      KConfig* cfg=0 /*if 0  standard kate config*/, bool writeDefaultsToo=false);
+                                      KConfig *cfg = 0 /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
-    const QString &name() const {return iName;}
-    const QString &nameTranslated() const {return iNameTranslated;}
-    const QString &section() const {return iSection;}
-    bool hidden() const {return iHidden;}
-    const QString &version() const {return iVersion;}
-    const QString &style() const { return iStyle; }
-    const QString &author () const { return iAuthor; }
-    const QString &license () const { return iLicense; }
-    const QString &getIdentifier() const {return identifier;}
+    const QString &name() const
+    {
+        return iName;
+    }
+    const QString &nameTranslated() const
+    {
+        return iNameTranslated;
+    }
+    const QString &section() const
+    {
+        return iSection;
+    }
+    bool hidden() const
+    {
+        return iHidden;
+    }
+    const QString &version() const
+    {
+        return iVersion;
+    }
+    const QString &style() const
+    {
+        return iStyle;
+    }
+    const QString &author() const
+    {
+        return iAuthor;
+    }
+    const QString &license() const
+    {
+        return iLicense;
+    }
+    const QString &getIdentifier() const
+    {
+        return identifier;
+    }
     void use();
     void release();
 
@@ -167,17 +206,17 @@ class KateHighlighting
      * @return true if the character @p c is not a deliminator character
      *     for the corresponding highlight.
      */
-    bool isInWord( QChar c, int attrib=0 ) const;
+    bool isInWord(QChar c, int attrib = 0) const;
 
     /**
      * @return true if the character @p c is a wordwrap deliminator as specified
      * in the general keyword section of the xml file.
      */
-    bool canBreakAt( QChar c, int attrib=0 ) const;
+    bool canBreakAt(QChar c, int attrib = 0) const;
     /**
      *
      */
-    QLinkedList<QRegExp> emptyLines(int attribute=0) const;
+    QLinkedList<QRegExp> emptyLines(int attribute = 0) const;
 
     bool isEmptyLine(const Kate::TextLineData *textline) const;
 
@@ -185,7 +224,7 @@ class KateHighlighting
     * @return true if @p beginAttr and @p endAttr are members of the same
     * highlight, and there are comment markers of either type in that.
     */
-    bool canComment( int startAttr, int endAttr ) const;
+    bool canComment(int startAttr, int endAttr) const;
 
     /**
     * @return 0 if highlighting which attr is a member of does not
@@ -197,98 +236,103 @@ class KateHighlighting
      * @return the mulitiline comment start marker for the highlight
      * corresponding to @p attrib.
      */
-    QString getCommentStart( int attrib=0 ) const;
+    QString getCommentStart(int attrib = 0) const;
 
     /**
      * @return the muiltiline comment end marker for the highlight corresponding
      * to @p attrib.
      */
-    QString getCommentEnd( int attrib=0 ) const;
+    QString getCommentEnd(int attrib = 0) const;
 
     /**
      * @return the single comment marker for the highlight corresponding
      * to @p attrib.
      */
-    QString getCommentSingleLineStart( int attrib=0 ) const;
+    QString getCommentSingleLineStart(int attrib = 0) const;
 
-
-    const QHash<QString, QChar>& characterEncodings( int attrib = 0 ) const;
+    const QHash<QString, QChar> &characterEncodings(int attrib = 0) const;
 
     /**
      * This enum is used for storing the information where a single line comment marker should be inserted
      */
-    enum CSLPos { CSLPosColumn0=0,CSLPosAfterWhitespace=1};
+    enum CSLPos { CSLPosColumn0 = 0, CSLPosAfterWhitespace = 1};
 
     /**
      * @return the single comment marker position for the highlight corresponding
      * to @p attrib.
      */
-    CSLPos getCommentSingleLinePosition( int attrib=0 ) const;
+    CSLPos getCommentSingleLinePosition(int attrib = 0) const;
 
     /**
     * @return the attribute for @p context.
     */
-    int attribute( int context ) const;
+    int attribute(int context) const;
 
-    bool attributeRequiresSpellchecking( int attr );
+    bool attributeRequiresSpellchecking(int attr);
 
     /**
      * map attribute to its highlighting file.
      * the returned string is used as key for m_additionalData.
      */
-    QString hlKeyForAttrib( int attrib ) const;
-    QString hlKeyForContext( int attrib ) const;
+    QString hlKeyForAttrib(int attrib) const;
+    QString hlKeyForContext(int attrib) const;
 
-    int defaultStyleForAttribute( int attrib ) const;
+    int defaultStyleForAttribute(int attrib) const;
 
-    void clearAttributeArrays ();
+    void clearAttributeArrays();
 
-    QList<KTextEditor::Attribute::Ptr> attributes (const QString &schema);
+    QList<KTextEditor::Attribute::Ptr> attributes(const QString &schema);
 
-    inline bool noHighlighting () const { return noHl; }
+    inline bool noHighlighting() const
+    {
+        return noHl;
+    }
 
     // be carefull: all documents hl should be invalidated after calling this method!
     void dropDynamicContexts();
 
-    QString indentation () { return m_indentation; }
+    QString indentation()
+    {
+        return m_indentation;
+    }
 
-    void getKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &, KConfig* cfg=0);
-    void getKateExtendedAttributeListCopy(const QString &schema, QList<KateExtendedAttribute::Ptr> &,KConfig* cfg=0);
+    void getKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &, KConfig *cfg = 0);
+    void getKateExtendedAttributeListCopy(const QString &schema, QList<KateExtendedAttribute::Ptr> &, KConfig *cfg = 0);
 
-    const QHash<QString, QChar>& getCharacterEncodings( int attrib ) const;
-    const KatePrefixStore& getCharacterEncodingsPrefixStore( int attrib ) const;
-    const QHash<QChar, QString>& getReverseCharacterEncodings( int attrib ) const;
-    int getEncodedCharactersInsertionPolicy( int attrib ) const;
+    const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
+    const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;
+    const QHash<QChar, QString> &getReverseCharacterEncodings(int attrib) const;
+    int getEncodedCharactersInsertionPolicy(int attrib) const;
 
     /**
      * Returns a list of names of embedded modes.
      */
     QStringList getEmbeddedHighlightingModes() const;
 
-    KateHlContext *contextNum (int n) const;
-    
-  private:
+    KateHlContext *contextNum(int n) const;
+
+private:
     /**
       * 'encoding' must not contain new line characters, i.e. '\n' or '\r'!
       **/
-    void addCharacterEncoding( const QString& key, const QString& encoding, const QChar& c );
+    void addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c);
 
-  private:
+private:
     void init();
     void done();
-    void makeContextList ();
+    void makeContextList();
     int makeDynamicContext(KateHlContext *model, const QStringList *args);
-    void handleKateHlIncludeRules ();
+    void handleKateHlIncludeRules();
     void handleKateHlIncludeRulesRecursive(int index, KateHlIncludeRules *list);
     int addToContextList(const QString &ident, int ctx0);
     void addToKateExtendedAttributeList();
-    void createKateExtendedAttribute (QList<KateExtendedAttribute::Ptr> &list);
+    void createKateExtendedAttribute(QList<KateExtendedAttribute::Ptr> &list);
     void readGlobalKeywordConfig();
     void readWordWrapConfig();
     void readCommentConfig();
     void readEmptyLineConfig();
-    void readIndentationConfig ();
-    void readFoldingConfig ();
+    void readIndentationConfig();
+    void readFoldingConfig();
     void readSpellCheckingConfig();
 
     /**
@@ -301,14 +345,14 @@ class KateHighlighting
     KateHlContext *generateContextStack(Kate::TextLineData::ContextStack &contextStack, KateHlContextModification modification, int &indexLastContextPreviousLine);
 
     KateHlItem *createKateHlItem(KateSyntaxContextData *data, QList<KateExtendedAttribute::Ptr> &iDl, QStringList *RegionList, QStringList *ContextList);
-    int lookupAttrName(const QString& name, QList<KateExtendedAttribute::Ptr> &iDl);
+    int lookupAttrName(const QString &name, QList<KateExtendedAttribute::Ptr> &iDl);
 
     void createContextNameList(QStringList *ContextNameList, int ctx0);
     KateHlContextModification getContextModificationFromString(QStringList *ContextNameList, QString tmpLineEndContext,/*NO CONST*/ QString &unres);
 
     QList<KateExtendedAttribute::Ptr> internalIDList;
 
-    QVector<KateHlContext*> m_contexts;
+    QVector<KateHlContext *> m_contexts;
 
     QMap< QPair<KateHlContext *, QString>, short> dynamicCtxs;
 
@@ -367,8 +411,9 @@ class KateHighlighting
      *
      * If you need to add a property to a highlight, add it here.
      */
-    class HighlightPropertyBag {
-      public:
+    class HighlightPropertyBag
+    {
+    public:
         QString singleLineCommentMarker;
         QString multiLineCommentStart;
         QString multiLineCommentEnd;
@@ -387,7 +432,7 @@ class KateHighlighting
      * Highlight properties for each included highlight definition.
      * The key is the identifier
      */
-    QHash<QString, HighlightPropertyBag*> m_additionalData;
+    QHash<QString, HighlightPropertyBag *> m_additionalData;
 
     /**
      * Fast lookup of hl properties, based on attribute index
@@ -396,11 +441,16 @@ class KateHighlighting
      */
     QMap<int, QString> m_hlIndex;
     QMap<int, QString> m_ctxIndex;
-  public:
-    inline bool foldingIndentationSensitive () { return m_foldingIndentationSensitive; }
-    inline bool allowsFolding(){return folding;}
+public:
+    inline bool foldingIndentationSensitive()
+    {
+        return m_foldingIndentationSensitive;
+    }
+    inline bool allowsFolding()
+    {
+        return folding;
+    }
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

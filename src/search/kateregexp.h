@@ -26,17 +26,38 @@
 
 class KateRegExp
 {
-  public:
+public:
     explicit KateRegExp(const QString &pattern, Qt::CaseSensitivity cs = Qt::CaseSensitive,
-        QRegExp::PatternSyntax syntax = QRegExp::RegExp2);
+                        QRegExp::PatternSyntax syntax = QRegExp::RegExp2);
 
-    bool isEmpty() const { return m_regExp.isEmpty(); }
-    bool isValid() const { return m_regExp.isValid(); }
-    QString pattern() const { return m_regExp.pattern(); }
-    int numCaptures() const { return m_regExp.captureCount(); }
-    int pos(int nth = 0) const { return m_regExp.pos(nth); }
-    QString cap(int nth = 0) const { return m_regExp.cap(nth); }
-    int matchedLength() const { return m_regExp.matchedLength(); }
+    bool isEmpty() const
+    {
+        return m_regExp.isEmpty();
+    }
+    bool isValid() const
+    {
+        return m_regExp.isValid();
+    }
+    QString pattern() const
+    {
+        return m_regExp.pattern();
+    }
+    int numCaptures() const
+    {
+        return m_regExp.captureCount();
+    }
+    int pos(int nth = 0) const
+    {
+        return m_regExp.pos(nth);
+    }
+    QString cap(int nth = 0) const
+    {
+        return m_regExp.cap(nth);
+    }
+    int matchedLength() const
+    {
+        return m_regExp.matchedLength();
+    }
 
     int indexIn(const QString &str, int offset, int end) const;
 
@@ -62,7 +83,7 @@ class KateRegExp
      * \param stillMultiLine  Multi-line after reparation flag
      * \return                Number of replacements done
      */
-    int repairPattern(bool & stillMultiLine);
+    int repairPattern(bool &stillMultiLine);
 
     /**
      * States, whether the pattern matches multiple lines,
@@ -72,10 +93,9 @@ class KateRegExp
      */
     bool isMultiLine() const;
 
-  private:
+private:
     QRegExp m_regExp;
 };
 
 #endif // KATEREGEXP_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

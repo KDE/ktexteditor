@@ -25,87 +25,83 @@
 #include "katescript.h"
 
 KateScriptView::KateScriptView(QObject *parent)
-  : QObject(parent), m_view(0)
+    : QObject(parent), m_view(0)
 {
 }
 
-void KateScriptView::setView (KateView *view)
+void KateScriptView::setView(KateView *view)
 {
-  m_view = view;
+    m_view = view;
 }
 
 KateView *KateScriptView::view()
 {
-  return m_view;
+    return m_view;
 }
 
-KTextEditor::Cursor KateScriptView::cursorPosition ()
+KTextEditor::Cursor KateScriptView::cursorPosition()
 {
-  return m_view->cursorPosition();
+    return m_view->cursorPosition();
 }
 
 void KateScriptView::setCursorPosition(int line, int column)
 {
-  KTextEditor::Cursor c(line, column);
-  m_view->setCursorPosition(c);
+    KTextEditor::Cursor c(line, column);
+    m_view->setCursorPosition(c);
 }
 
-void KateScriptView::setCursorPosition (const KTextEditor::Cursor& cursor)
+void KateScriptView::setCursorPosition(const KTextEditor::Cursor &cursor)
 {
-  m_view->setCursorPosition(cursor);
+    m_view->setCursorPosition(cursor);
 }
 
 KTextEditor::Cursor KateScriptView::virtualCursorPosition()
 {
-  return m_view->cursorPositionVirtual();
+    return m_view->cursorPositionVirtual();
 }
 
 void KateScriptView::setVirtualCursorPosition(int line, int column)
 {
-  setVirtualCursorPosition(KTextEditor::Cursor(line, column));
+    setVirtualCursorPosition(KTextEditor::Cursor(line, column));
 }
 
-void KateScriptView::setVirtualCursorPosition(const KTextEditor::Cursor& cursor)
+void KateScriptView::setVirtualCursorPosition(const KTextEditor::Cursor &cursor)
 {
-  m_view->setCursorPositionVisual(cursor);
+    m_view->setCursorPositionVisual(cursor);
 }
 
 QString KateScriptView::selectedText()
 {
-  return m_view->selectionText();
+    return m_view->selectionText();
 }
 
 bool KateScriptView::hasSelection()
 {
-  return m_view->selection();
+    return m_view->selection();
 }
 
 KTextEditor::Range KateScriptView::selection()
 {
-  return m_view->selectionRange();
+    return m_view->selectionRange();
 }
 
-void KateScriptView::setSelection(const KTextEditor::Range& range)
+void KateScriptView::setSelection(const KTextEditor::Range &range)
 {
-  m_view->setSelection(range);
+    m_view->setSelection(range);
 }
 
 void KateScriptView::removeSelectedText()
 {
-  m_view->removeSelectedText();
+    m_view->removeSelectedText();
 }
 
 void KateScriptView::selectAll()
 {
-  m_view->selectAll();
+    m_view->selectAll();
 }
 
 void KateScriptView::clearSelection()
 {
-  m_view->clearSelection();
+    m_view->clearSelection();
 }
-
-
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

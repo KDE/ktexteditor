@@ -42,39 +42,37 @@ class KateView;
  */
 class KTEXTEDITOR_EXPORT KateScriptView : public QObject, protected QScriptable
 {
-  /// Properties are accessible with a nicer syntax from JavaScript
-  Q_OBJECT
+    /// Properties are accessible with a nicer syntax from JavaScript
+    Q_OBJECT
 
-  public:
-    KateScriptView (QObject *parent=0);
-    void setView (KateView *view);
+public:
+    KateScriptView(QObject *parent = 0);
+    void setView(KateView *view);
     KateView *view();
 
-    Q_INVOKABLE KTextEditor::Cursor cursorPosition ();
+    Q_INVOKABLE KTextEditor::Cursor cursorPosition();
     /**
      * Set the cursor position in the view.
      * @since 4.4
      */
     Q_INVOKABLE void setCursorPosition(int line, int column);
-    Q_INVOKABLE void setCursorPosition(const KTextEditor::Cursor& cursor);
-
+    Q_INVOKABLE void setCursorPosition(const KTextEditor::Cursor &cursor);
 
     Q_INVOKABLE KTextEditor::Cursor virtualCursorPosition();
     Q_INVOKABLE void setVirtualCursorPosition(int line, int column);
-    Q_INVOKABLE void setVirtualCursorPosition(const KTextEditor::Cursor& cursor);
+    Q_INVOKABLE void setVirtualCursorPosition(const KTextEditor::Cursor &cursor);
 
     Q_INVOKABLE QString selectedText();
     Q_INVOKABLE bool hasSelection();
     Q_INVOKABLE KTextEditor::Range selection();
-    Q_INVOKABLE void setSelection(const KTextEditor::Range& range);
+    Q_INVOKABLE void setSelection(const KTextEditor::Range &range);
     Q_INVOKABLE void removeSelectedText();
     Q_INVOKABLE void selectAll();
     Q_INVOKABLE void clearSelection();
 
-  private:
+private:
     KateView *m_view;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -34,11 +34,12 @@
 class KateView;
 class KateOnTheFlyChecker;
 
-class KateSpellingMenu : public QObject {
-  Q_OBJECT
-  friend class KateOnTheFlyChecker;
+class KateSpellingMenu : public QObject
+{
+    Q_OBJECT
+    friend class KateOnTheFlyChecker;
 
-  public:
+public:
     KateSpellingMenu(KateView *view);
     virtual ~KateSpellingMenu();
 
@@ -53,11 +54,11 @@ class KateSpellingMenu : public QObject {
      **/
     void setUseMouseForMisspelledRange(bool b);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void setEnabled(bool b);
     void setVisible(bool b);
 
-  protected:
+protected:
     KateView *m_view;
     KActionMenu *m_spellingMenuAction;
     QAction *m_ignoreWordAction, *m_addToDictionaryAction;
@@ -77,9 +78,9 @@ class KateSpellingMenu : public QObject {
     void mouseEnteredMisspelledRange(KTextEditor::MovingRange *range);
     void mouseExitedMisspelledRange(KTextEditor::MovingRange *range);
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void populateSuggestionsMenu();
-    void replaceWordBySuggestion(const QString& suggestion);
+    void replaceWordBySuggestion(const QString &suggestion);
 
     void addCurrentWordToDictionary();
     void ignoreCurrentWord();
@@ -87,4 +88,3 @@ class KateSpellingMenu : public QObject {
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

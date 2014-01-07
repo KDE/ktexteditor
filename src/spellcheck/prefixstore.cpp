@@ -25,8 +25,8 @@
 #include "katetextline.h"
 
 KatePrefixStore::KatePrefixStore()
-: m_longestPrefixLength(0),
-  m_lastAssignedState(0)
+    : m_longestPrefixLength(0),
+      m_lastAssignedState(0)
 {
 }
 
@@ -34,157 +34,156 @@ KatePrefixStore::~KatePrefixStore()
 {
 }
 
-void KatePrefixStore::addPrefix(const QString& prefix)
+void KatePrefixStore::addPrefix(const QString &prefix)
 {
-  if(prefix.isEmpty()) {
-    return;
-  }
-  if(m_prefixSet.contains(prefix)) {
-    return;
-  }
-  unsigned long long state = 0;
-  for(int i = 0; i < prefix.length(); ++i) {
-    QChar c = prefix.at(i);
-
-    CharToOccurrenceStateHash& hash = m_transitionFunction[state];
-    CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
-    if(it == hash.end()) {
-      state = nextFreeState();
-      hash[c.unicode()] = QPair<unsigned int, unsigned long long>(1, state);
-      continue;
+    if (prefix.isEmpty()) {
+        return;
     }
+    if (m_prefixSet.contains(prefix)) {
+        return;
+    }
+    unsigned long long state = 0;
+    for (int i = 0; i < prefix.length(); ++i) {
+        QChar c = prefix.at(i);
 
-    ++(*it).first;
-    state = (*it).second;
-  }
-  // add the last state as accepting state
-  m_acceptingStates.insert(state);
+        CharToOccurrenceStateHash &hash = m_transitionFunction[state];
+        CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
+        if (it == hash.end()) {
+            state = nextFreeState();
+            hash[c.unicode()] = QPair<unsigned int, unsigned long long>(1, state);
+            continue;
+        }
 
-  m_prefixSet.insert(prefix);
+        ++(*it).first;
+        state = (*it).second;
+    }
+    // add the last state as accepting state
+    m_acceptingStates.insert(state);
 
-  if(prefix.length() > m_longestPrefixLength) {
-    m_longestPrefixLength = prefix.length();
-  }
+    m_prefixSet.insert(prefix);
+
+    if (prefix.length() > m_longestPrefixLength) {
+        m_longestPrefixLength = prefix.length();
+    }
 }
 
-void KatePrefixStore::removePrefix(const QString& prefix)
+void KatePrefixStore::removePrefix(const QString &prefix)
 {
-  if(prefix.isEmpty()) {
-    return;
-  }
-  if(!m_prefixSet.contains(prefix)) {
-    return;
-  }
-  m_prefixSet.remove(prefix);
+    if (prefix.isEmpty()) {
+        return;
+    }
+    if (!m_prefixSet.contains(prefix)) {
+        return;
+    }
+    m_prefixSet.remove(prefix);
 
-  unsigned long long state = 0;
-  for(int i = 0; i < prefix.length(); ++i) {
-    QChar c = prefix.at(i);
+    unsigned long long state = 0;
+    for (int i = 0; i < prefix.length(); ++i) {
+        QChar c = prefix.at(i);
 
-    CharToOccurrenceStateHash& hash = m_transitionFunction[state];
-    CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
-    if(it == hash.end()) {
-      continue;
+        CharToOccurrenceStateHash &hash = m_transitionFunction[state];
+        CharToOccurrenceStateHash::iterator it = hash.find(c.unicode());
+        if (it == hash.end()) {
+            continue;
+        }
+
+        state = (*it).second;
+        if (m_acceptingStates.contains(state) && i == prefix.length() - 1) {
+            m_acceptingStates.remove(state);
+        }
+
+        if ((*it).first <= 1) {
+            hash.erase(it);
+            m_stateFreeList.push_back(state);
+        } else {
+            --(*it).first;
+        }
     }
 
-    state = (*it).second;
-    if(m_acceptingStates.contains(state) && i == prefix.length() - 1) {
-      m_acceptingStates.remove(state);
+    if (prefix.length() == m_longestPrefixLength) {
+        m_longestPrefixLength = computeLongestPrefixLength();
     }
-
-    if((*it).first <= 1) {
-      hash.erase(it);
-      m_stateFreeList.push_back(state);
-    }
-    else {
-      --(*it).first;
-    }
-  }
-
-  if(prefix.length() == m_longestPrefixLength) {
-    m_longestPrefixLength = computeLongestPrefixLength();
-  }
 }
 
 void KatePrefixStore::dump()
 {
-  for(unsigned long long i = 0; i < m_lastAssignedState; ++i) {
-    CharToOccurrenceStateHash& hash = m_transitionFunction[i];
-    for(CharToOccurrenceStateHash::iterator it = hash.begin(); it != hash.end(); ++it) {
-      qCDebug(LOG_PART) << i << "x" << QChar(it.key()) << "->" << it.value().first << "x" << it.value().second;
+    for (unsigned long long i = 0; i < m_lastAssignedState; ++i) {
+        CharToOccurrenceStateHash &hash = m_transitionFunction[i];
+        for (CharToOccurrenceStateHash::iterator it = hash.begin(); it != hash.end(); ++it) {
+            qCDebug(LOG_PART) << i << "x" << QChar(it.key()) << "->" << it.value().first << "x" << it.value().second;
+        }
     }
-  }
-  qCDebug(LOG_PART) << "Accepting states" << m_acceptingStates;
+    qCDebug(LOG_PART) << "Accepting states" << m_acceptingStates;
 }
 
-QString KatePrefixStore::findPrefix(const QString& s, int start) const
+QString KatePrefixStore::findPrefix(const QString &s, int start) const
 {
-  unsigned long long state = 0;
-  for(int i = start; i < s.length(); ++i) {
-    QChar c = s.at(i);
-    const CharToOccurrenceStateHash& hash = m_transitionFunction[state];
-    CharToOccurrenceStateHash::const_iterator it = hash.find(c.unicode());
-    if(it == hash.end()) {
-      return QString();
-    }
+    unsigned long long state = 0;
+    for (int i = start; i < s.length(); ++i) {
+        QChar c = s.at(i);
+        const CharToOccurrenceStateHash &hash = m_transitionFunction[state];
+        CharToOccurrenceStateHash::const_iterator it = hash.find(c.unicode());
+        if (it == hash.end()) {
+            return QString();
+        }
 
-    state = (*it).second;
-    if(m_acceptingStates.contains(state)) {
-      return s.mid(start, i + 1 - start);
+        state = (*it).second;
+        if (m_acceptingStates.contains(state)) {
+            return s.mid(start, i + 1 - start);
+        }
     }
-  }
-  return QString();
+    return QString();
 }
 
-QString KatePrefixStore::findPrefix(const Kate::TextLine& line, int start) const
+QString KatePrefixStore::findPrefix(const Kate::TextLine &line, int start) const
 {
-  unsigned long long state = 0;
-  for(int i = start; i < line->length(); ++i) {
-    QChar c = line->at(i);
-    const CharToOccurrenceStateHash& hash = m_transitionFunction[state];
-    CharToOccurrenceStateHash::const_iterator it = hash.find(c.unicode());
-    if(it == hash.end()) {
-      return QString();
-    }
+    unsigned long long state = 0;
+    for (int i = start; i < line->length(); ++i) {
+        QChar c = line->at(i);
+        const CharToOccurrenceStateHash &hash = m_transitionFunction[state];
+        CharToOccurrenceStateHash::const_iterator it = hash.find(c.unicode());
+        if (it == hash.end()) {
+            return QString();
+        }
 
-    state = (*it).second;
-    if(m_acceptingStates.contains(state)) {
-      return line->string(start, i + 1 - start);
+        state = (*it).second;
+        if (m_acceptingStates.contains(state)) {
+            return line->string(start, i + 1 - start);
+        }
     }
-  }
-  return QString();
+    return QString();
 }
 
 int KatePrefixStore::longestPrefixLength() const
 {
-  return m_longestPrefixLength;
+    return m_longestPrefixLength;
 }
 
 void KatePrefixStore::clear()
 {
-  m_longestPrefixLength = 0;
-  m_prefixSet.clear();
-  m_transitionFunction.clear();
-  m_acceptingStates.clear();
-  m_stateFreeList.clear();
-  m_lastAssignedState = 0;
+    m_longestPrefixLength = 0;
+    m_prefixSet.clear();
+    m_transitionFunction.clear();
+    m_acceptingStates.clear();
+    m_stateFreeList.clear();
+    m_lastAssignedState = 0;
 }
 
 int KatePrefixStore::computeLongestPrefixLength()
 {
-  int toReturn = 0;
-  for(QSet<QString>::iterator i = m_prefixSet.begin();
-      i != m_prefixSet.end(); ++i) {
-      qCDebug(LOG_PART) << "length" << (*i).length();
-    toReturn = qMax(toReturn, (*i).length());
-  }
-  return toReturn;
+    int toReturn = 0;
+    for (QSet<QString>::iterator i = m_prefixSet.begin();
+            i != m_prefixSet.end(); ++i) {
+        qCDebug(LOG_PART) << "length" << (*i).length();
+        toReturn = qMax(toReturn, (*i).length());
+    }
+    return toReturn;
 }
 
 unsigned long long KatePrefixStore::nextFreeState()
 {
-  if(!m_stateFreeList.isEmpty()) {
-    return m_stateFreeList.takeFirst();
-  }
-  return ++m_lastAssignedState;
+    if (!m_stateFreeList.isEmpty()) {
+        return m_stateFreeList.takeFirst();
+    }
+    return ++m_lastAssignedState;
 }

@@ -31,7 +31,8 @@
 #include <ktexteditor_export.h>
 #include "katetextcursor.h"
 
-namespace Kate {
+namespace Kate
+{
 
 class TextBuffer;
 
@@ -43,11 +44,12 @@ class TextBuffer;
  * a TextRange will become automatically invalid as soon as start() == end()
  * position holds.
  */
-class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
-  // this is a friend, block changes might invalidate ranges...
-  friend class TextBlock;
+class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange
+{
+    // this is a friend, block changes might invalidate ranges...
+    friend class TextBlock;
 
-  public:
+public:
     /**
      * Construct a text range.
      * A TextRange is not allowed to be empty, as soon as start == end position, it will become
@@ -57,42 +59,45 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * @param insertBehavior Define whether the range should expand when text is inserted adjacent to the range.
      * @param emptyBehavior Define whether the range should invalidate itself on becoming empty.
      */
-    TextRange (TextBuffer &buffer, const KTextEditor::Range &range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
+    TextRange(TextBuffer &buffer, const KTextEditor::Range &range, InsertBehaviors insertBehavior, EmptyBehavior emptyBehavior = AllowEmpty);
 
     /**
      * Destruct the text block
      */
-    ~TextRange ();
+    ~TextRange();
 
     /**
      * Set insert behaviors.
      * @param insertBehaviors new insert behaviors
      */
-    void setInsertBehaviors (InsertBehaviors insertBehaviors);
+    void setInsertBehaviors(InsertBehaviors insertBehaviors);
 
     /**
      * Get current insert behaviors.
      * @return current insert behaviors
      */
-    InsertBehaviors insertBehaviors () const;
+    InsertBehaviors insertBehaviors() const;
 
     /**
      * Set if this range will invalidate itself if it becomes empty.
      * @param emptyBehavior behavior on becoming empty
      */
-    void setEmptyBehavior (EmptyBehavior emptyBehavior);
+    void setEmptyBehavior(EmptyBehavior emptyBehavior);
 
     /**
      * Will this range invalidate itself if it becomes empty?
      * @return behavior on becoming empty
      */
-    EmptyBehavior emptyBehavior () const { return m_invalidateIfEmpty ? InvalidateIfEmpty : AllowEmpty; }
+    EmptyBehavior emptyBehavior() const
+    {
+        return m_invalidateIfEmpty ? InvalidateIfEmpty : AllowEmpty;
+    }
 
     /**
      * Gets the document to which this range is bound.
      * \return a pointer to the document
      */
-    KTextEditor::Document *document () const;
+    KTextEditor::Document *document() const;
 
     /**
      * Set the range of this range.
@@ -100,7 +105,7 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * automatically invalid!
      * @param range new range for this clever range
      */
-    void setRange (const KTextEditor::Range &range);
+    void setRange(const KTextEditor::Range &range);
 
     /**
      * \overload
@@ -110,50 +115,74 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * @param start new start for this clever range
      * @param end new end for this clever range
      */
-    void setRange (const KTextEditor::Cursor &start, const KTextEditor::Cursor &end) { KTextEditor::MovingRange::setRange (start, end); }
+    void setRange(const KTextEditor::Cursor &start, const KTextEditor::Cursor &end)
+    {
+        KTextEditor::MovingRange::setRange(start, end);
+    }
 
     /**
      * Retrieve start cursor of this range, read-only.
      * @return start cursor
      */
-    const KTextEditor::MovingCursor &start () const { return m_start; }
+    const KTextEditor::MovingCursor &start() const
+    {
+        return m_start;
+    }
 
-	/**
-	 * Non-virtual version of start(), which is faster.
+    /**
+     * Non-virtual version of start(), which is faster.
      * @return start cursor
-	 */
-    const TextCursor &startInternal() const { return m_start; }
+     */
+    const TextCursor &startInternal() const
+    {
+        return m_start;
+    }
 
     /**
      * Retrieve end cursor of this range, read-only.
      * @return end cursor
      */
-    const KTextEditor::MovingCursor &end () const { return m_end; }
+    const KTextEditor::MovingCursor &end() const
+    {
+        return m_end;
+    }
 
     /**
      * Nonvirtual version of end(), which is faster.
      * @return end cursor
      */
-    const TextCursor &endInternal () const { return m_end; }
+    const TextCursor &endInternal() const
+    {
+        return m_end;
+    }
 
     /**
      * Convert this clever range into a dumb one.
      * @return normal range
      */
-    const KTextEditor::Range toRange () const { return KTextEditor::Range (start().toCursor(), end().toCursor()); }
+    const KTextEditor::Range toRange() const
+    {
+        return KTextEditor::Range(start().toCursor(), end().toCursor());
+    }
 
     /**
      * Convert this clever range into a dumb one. Equal to toRange, allowing to use implicit conversion.
      * @return normal range
      */
-    operator const KTextEditor::Range () const { return KTextEditor::Range (start().toCursor(), end().toCursor()); }
+    operator const KTextEditor::Range() const
+    {
+        return KTextEditor::Range(start().toCursor(), end().toCursor());
+    }
 
     /**
      * Gets the active view for this range. Might be already invalid, internally only used for pointer comparisons.
      *
      * \return a pointer to the active view
      */
-    KTextEditor::View *view () const { return m_view; }
+    KTextEditor::View *view() const
+    {
+        return m_view;
+    }
 
     /**
      * Sets the currently active view for this range.
@@ -163,20 +192,26 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * \param attribute View to assign to this range. If null, simply
      *                  removes the previous view.
      */
-    void setView (KTextEditor::View *view);
+    void setView(KTextEditor::View *view);
 
     /**
      * Gets the active Attribute for this range.
      *
      * \return a pointer to the active attribute
      */
-    KTextEditor::Attribute::Ptr attribute () const { return m_attribute; }
+    KTextEditor::Attribute::Ptr attribute() const
+    {
+        return m_attribute;
+    }
 
     /**
-	 * \return whether a nonzero attribute is set. This is faster than checking attribute(),
-	 *             because the reference-counting is omitted.
-	 */
-    bool hasAttribute() const { return m_attribute.constData(); }
+     * \return whether a nonzero attribute is set. This is faster than checking attribute(),
+     *             because the reference-counting is omitted.
+     */
+    bool hasAttribute() const
+    {
+        return m_attribute.constData();
+    }
 
     /**
      * Sets the currently active attribute for this range.
@@ -185,14 +220,17 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * \param attribute Attribute to assign to this range. If null, simply
      *                  removes the previous Attribute.
      */
-    void setAttribute (KTextEditor::Attribute::Ptr attribute);
+    void setAttribute(KTextEditor::Attribute::Ptr attribute);
 
     /**
      * Gets the active MovingRangeFeedback for this range.
      *
      * \return a pointer to the active MovingRangeFeedback
      */
-    KTextEditor::MovingRangeFeedback *feedback () const { return m_feedback; }
+    KTextEditor::MovingRangeFeedback *feedback() const
+    {
+        return m_feedback;
+    }
 
     /**
      * Sets the currently active MovingRangeFeedback for this range.
@@ -201,52 +239,58 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * \param attribute MovingRangeFeedback to assign to this range. If null, simply
      *                  removes the previous MovingRangeFeedback.
      */
-    void setFeedback (KTextEditor::MovingRangeFeedback *feedback);
+    void setFeedback(KTextEditor::MovingRangeFeedback *feedback);
 
     /**
      * Is this range's attribute only visible in views, not for example prints?
      * Default is false.
      * @return range visible only for views
      */
-    bool attributeOnlyForViews () const { return m_attributeOnlyForViews; }
+    bool attributeOnlyForViews() const
+    {
+        return m_attributeOnlyForViews;
+    }
 
     /**
      * Set if this range's attribute is only visible in views, not for example prints.
      * @param onlyForViews attribute only valid for views
      */
-    void setAttributeOnlyForViews (bool onlyForViews);
-    
+    void setAttributeOnlyForViews(bool onlyForViews);
+
     /**
      * Gets the current Z-depth of this range.
      * Ranges with smaller Z-depth than others will win during rendering.
      * Default is 0.0.
-     * 
+     *
      * \return current Z-depth of this range
      */
-    qreal zDepth () const { return m_zDepth; }
-    
+    qreal zDepth() const
+    {
+        return m_zDepth;
+    }
+
     /**
      * Set the current Z-depth of this range.
      * Ranges with smaller Z-depth than others will win during rendering.
      * This will trigger update of the relevant view parts, if the depth changed.
      * Set depth before the attribute, that will avoid not needed redraws.
      * Default is 0.0.
-     * 
+     *
      * \param zDepth new Z-depth of this range
      */
-    void setZDepth (qreal zDepth);
+    void setZDepth(qreal zDepth);
 
-  private:
+private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    TextRange (const TextRange &);
+    TextRange(const TextRange &);
 
     /**
      * no assignment operator, no copying around.
      */
     TextRange &operator= (const TextRange &);
-    
+
     /**
      * Check if range is valid, used by constructor and setRange.
      * If at least one cursor is invalid, both will set to invalid.
@@ -255,7 +299,7 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * @param oldEndLine old end line of this range
      * @param notifyAboutChange should feedback be emitted or not?
      */
-    void checkValidity (int oldStartLine = -1, int oldEndLine = -1, bool notifyAboutChange = true);
+    void checkValidity(int oldStartLine = -1, int oldEndLine = -1, bool notifyAboutChange = true);
 
     /**
      * Add/Remove range from the lookup m_ranges hash of each block
@@ -264,9 +308,9 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * @param startLine start line to start looking for the range to remove
      * @param endLine end line of this range
      */
-    void fixLookup (int oldStartLine, int oldEndLine, int startLine, int endLine);
+    void fixLookup(int oldStartLine, int oldEndLine, int startLine, int endLine);
 
-  private:
+private:
     /**
      * parent text buffer
      * is a reference, and no pointer, as this must always exist and can't change
@@ -297,7 +341,7 @@ class KTEXTEDITOR_EXPORT TextRange : public KTextEditor::MovingRange {
      * pointer to the active MovingRangeFeedback
      */
     KTextEditor::MovingRangeFeedback *m_feedback;
-    
+
     /**
      * Z-depth of this range for rendering
      */

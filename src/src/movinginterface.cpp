@@ -25,13 +25,12 @@
 
 using namespace KTextEditor;
 
-MovingInterface::MovingInterface ()
-  : d (0)
+MovingInterface::MovingInterface()
+    : d(0)
 {
 }
 
-MovingInterface::~MovingInterface ()
+MovingInterface::~MovingInterface()
 {
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

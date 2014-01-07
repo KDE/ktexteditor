@@ -29,7 +29,7 @@
 
 namespace KTextEditor
 {
-  class Message;
+class Message;
 }
 
 class KMessageWidget;
@@ -41,23 +41,23 @@ class KateAnimation;
  */
 class KTEXTEDITOR_EXPORT KateMessageWidget : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor. By default, the widget is hidden.
      */
-    KateMessageWidget(QWidget* parent, bool applyFadeEffect = false);
+    KateMessageWidget(QWidget *parent, bool applyFadeEffect = false);
 
     /**
      * Post a new incoming message. Show either directly, or queue
      */
-    void postMessage(KTextEditor::Message* message, QList<QSharedPointer<QAction> > actions);
+    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction> > actions);
 
     // for unit test
     QString text() const;
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * Show the next message in the queue.
      */
@@ -66,12 +66,12 @@ class KTEXTEDITOR_EXPORT KateMessageWidget : public QWidget
     /**
      * Helper that enables word wrap to avoid breaking the layout
      */
-    void setWordWrap(KTextEditor::Message* message);
+    void setWordWrap(KTextEditor::Message *message);
 
     /**
      * catch when a message is deleted, then show next one, if applicable.
      */
-    void messageDestroyed(KTextEditor::Message* message);
+    void messageDestroyed(KTextEditor::Message *message);
     /**
      * Start autoHide timer if requested
      */
@@ -79,21 +79,21 @@ class KTEXTEDITOR_EXPORT KateMessageWidget : public QWidget
     /**
      * User hovers on a link in the message widget.
      */
-    void linkHovered(const QString& link);
+    void linkHovered(const QString &link);
 
-  private:
+private:
     // sorted list of pending messages
-    QList<KTextEditor::Message*> m_messageQueue;
+    QList<KTextEditor::Message *> m_messageQueue;
     // pointer to current Message
     QPointer<KTextEditor::Message> m_currentMessage;
     // shared pointers to QActions as guard
-    QHash<KTextEditor::Message*, QList<QSharedPointer<QAction> > > m_messageHash;
+    QHash<KTextEditor::Message *, QList<QSharedPointer<QAction> > > m_messageHash;
     // the message widget, showing the actual contents
-    KMessageWidget* m_messageWidget;
+    KMessageWidget *m_messageWidget;
     // the show / hide effect controller
-    KateAnimation* m_animation;
+    KateAnimation *m_animation;
 
-  private: // some state variables
+private: // some state variables
     // autoHide only once user interaction took place
     QTimer *m_autoHideTimer;
     // flag: save message's autohide time
@@ -102,4 +102,3 @@ class KTEXTEDITOR_EXPORT KateMessageWidget : public QWidget
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

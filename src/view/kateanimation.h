@@ -40,22 +40,22 @@ class KateFadeEffect;
  */
 class KateAnimation : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The type of supported animation effects
      */
-    enum EffectType{
-      FadeEffect = 0, ///< fade in/out
-      GrowEffect      ///< grow / shrink
+    enum EffectType {
+        FadeEffect = 0, ///< fade in/out
+        GrowEffect      ///< grow / shrink
     };
 
-  public:
+public:
     /**
      * Constructor.
      */
-    KateAnimation(KMessageWidget* widget, EffectType effect);
+    KateAnimation(KMessageWidget *widget, EffectType effect);
 
     /**
      * Returns true, if the hide animation is running, otherwise false.
@@ -67,7 +67,7 @@ class KateAnimation : public QObject
      */
     bool showAnimationActive() const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     /**
      * Call to hide the widget.
      */
@@ -78,7 +78,7 @@ class KateAnimation : public QObject
      */
     void show();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when the hiding animation is finished.
      * At this point, the associated widget is hidden.
@@ -91,13 +91,12 @@ class KateAnimation : public QObject
      */
     void widgetShown();
 
-  private:
+private:
     QPointer<KMessageWidget> m_widget; ///< the widget to animate
-    KateFadeEffect * m_fadeEffect;     ///< the fade effect
-    QTimer * m_hideTimer;              ///< timer to track hide animation
-    QTimer * m_showTimer;              ///< timer to track show animation
+    KateFadeEffect *m_fadeEffect;      ///< the fade effect
+    QTimer *m_hideTimer;               ///< timer to track hide animation
+    QTimer *m_showTimer;               ///< timer to track show animation
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

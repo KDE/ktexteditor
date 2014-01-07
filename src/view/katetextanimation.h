@@ -40,33 +40,32 @@ class QPainter;
  */
 class KateTextAnimation : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  KateTextAnimation(const KTextEditor::Range & range, KTextEditor::Attribute::Ptr attribute, KateViewInternal * view);
-  virtual ~KateTextAnimation();
+    KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view);
+    virtual ~KateTextAnimation();
 
-  // draw the text to highlight, given the current animation progress
-  void draw(QPainter & painter);
+    // draw the text to highlight, given the current animation progress
+    void draw(QPainter &painter);
 
 public Q_SLOTS:
-  // request repaint from view of the respective region
-  void nextFrame(qreal value);
+    // request repaint from view of the respective region
+    void nextFrame(qreal value);
 
 private:
-  // calculate rect for the text to highlight, given the current animation progress
-  QRectF rectForText();
+    // calculate rect for the text to highlight, given the current animation progress
+    QRectF rectForText();
 
 private:
-  KTextEditor::Range m_range;
-  QString m_text;
-  KTextEditor::Attribute::Ptr m_attribute;
+    KTextEditor::Range m_range;
+    QString m_text;
+    KTextEditor::Attribute::Ptr m_attribute;
 
-  KateDocument * m_doc;
-  KateViewInternal * m_view;
-  QTimeLine * m_timeLine;
-  qreal m_value;
+    KateDocument *m_doc;
+    KateViewInternal *m_view;
+    QTimeLine *m_timeLine;
+    qreal m_value;
 };
 
 #endif // KATE_TEXT_ANIMATION_H
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

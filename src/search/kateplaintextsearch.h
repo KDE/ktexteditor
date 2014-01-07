@@ -28,8 +28,9 @@
 
 #include <ktexteditor_export.h>
 
-namespace KTextEditor {
-  class Document;
+namespace KTextEditor
+{
+class Document;
 }
 
 /**
@@ -39,11 +40,11 @@ namespace KTextEditor {
  */
 class KTEXTEDITOR_EXPORT KatePlainTextSearch
 {
-  public:
-    explicit KatePlainTextSearch (KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity, bool wholeWords);
-    ~KatePlainTextSearch ();
+public:
+    explicit KatePlainTextSearch(KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity, bool wholeWords);
+    ~KatePlainTextSearch();
 
-  public:
+public:
     /**
      * Search for the given \p text inside the range \p inputRange taking
      * into account whether to search \p casesensitive and \p backwards.
@@ -58,16 +59,14 @@ class KTEXTEDITOR_EXPORT KatePlainTextSearch
      *        (see Range::isValid()).
      * \see KTextEditor::Range
      */
-    KTextEditor::Range search (const QString & text,
-        const KTextEditor::Range & inputRange, bool backwards = false);
+    KTextEditor::Range search(const QString &text,
+                              const KTextEditor::Range &inputRange, bool backwards = false);
 
-  private:
+private:
     KTextEditor::Document *m_document;
     Qt::CaseSensitivity m_caseSensitivity;
     bool m_wholeWords;
 };
 
 #endif
-
-// kate: space-indent on; indent-width 2; replace-tabs on;
 

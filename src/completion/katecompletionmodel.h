@@ -47,27 +47,27 @@ class HierarchicalModelHandler;
  */
 class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    KateCompletionModel(KateCompletionWidget* parent = 0L);
+public:
+    KateCompletionModel(KateCompletionWidget *parent = 0L);
     ~KateCompletionModel();
 
-    QList<KTextEditor::CodeCompletionModel*> completionModels() const;
+    QList<KTextEditor::CodeCompletionModel *> completionModels() const;
     void clearCompletionModels();
-    void addCompletionModel(KTextEditor::CodeCompletionModel* model);
-    void setCompletionModel(KTextEditor::CodeCompletionModel* model);
-    void setCompletionModels(const QList<KTextEditor::CodeCompletionModel*>& models);
-    void removeCompletionModel(KTextEditor::CodeCompletionModel* model);
+    void addCompletionModel(KTextEditor::CodeCompletionModel *model);
+    void setCompletionModel(KTextEditor::CodeCompletionModel *model);
+    void setCompletionModels(const QList<KTextEditor::CodeCompletionModel *> &models);
+    void removeCompletionModel(KTextEditor::CodeCompletionModel *model);
 
-    KateView* view() const;
-    KateCompletionWidget* widget() const;
+    KateView *view() const;
+    KateCompletionWidget *widget() const;
 
-    QString currentCompletion(KTextEditor::CodeCompletionModel* model) const;
-    void setCurrentCompletion(KTextEditor::CodeCompletionModel* model, const QString& completion);
+    QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;
+    void setCurrentCompletion(KTextEditor::CodeCompletionModel *model, const QString &completion);
 
     Qt::CaseSensitivity matchCaseSensitivity() const;
-    void setMatchCaseSensitivity( Qt::CaseSensitivity cs );
+    void setMatchCaseSensitivity(Qt::CaseSensitivity cs);
 
     static QString columnName(int column);
     int translateColumn(int sourceColumn) const;
@@ -77,30 +77,30 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     ///Returns a common prefix for all current visible completion entries
     ///If there is no common prefix, extracts the next useful prefix for the selected index
     QString commonPrefix(QModelIndex selectedIndex) const;
-    
-    virtual void rowSelected(const QModelIndex& row);
 
-    virtual bool indexIsItem(const QModelIndex& index) const;
+    virtual void rowSelected(const QModelIndex &row);
 
-    virtual int columnCount ( const QModelIndex & parent = QModelIndex() ) const;
-    virtual QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-    virtual Qt::ItemFlags flags ( const QModelIndex & index ) const;
-    virtual bool hasChildren ( const QModelIndex & parent = QModelIndex() ) const;
-    virtual bool hasIndex ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
-    virtual QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
+    virtual bool indexIsItem(const QModelIndex &index) const;
+
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    virtual Qt::ItemFlags flags(const QModelIndex &index) const;
+    virtual bool hasChildren(const QModelIndex &parent = QModelIndex()) const;
+    virtual bool hasIndex(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
 
     // Disabled in case of bugs, reenable once fully debugged.
     //virtual QMap<int, QVariant> itemData ( const QModelIndex & index ) const;
-    virtual QModelIndex parent ( const QModelIndex & index ) const;
-    virtual int rowCount ( const QModelIndex & parent = QModelIndex() ) const;
+    virtual QModelIndex parent(const QModelIndex &index) const;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
     // Disabled in case of bugs, reenable once fully debugged.
     //virtual QModelIndex sibling ( int row, int column, const QModelIndex & index ) const;
-    virtual void sort ( int column, Qt::SortOrder order = Qt::AscendingOrder );
+    virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
     ///Maps from this display-model into the appropriate source code-completion model
     virtual QModelIndex mapToSource(const QModelIndex &proxyIndex) const;
-    
+
     ///Maps from an index in a source-model to the index of the item in this display-model
     virtual QModelIndex mapFromSource(const QModelIndex &sourceIndex) const;
 
@@ -137,14 +137,14 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     bool isGroupingEnabled() const;
 
     enum gm {
-      ScopeType     = 0x1,
-      Scope         = 0x2,
-      AccessType    = 0x4,
-      ItemType      = 0x8
+        ScopeType     = 0x1,
+        Scope         = 0x2,
+        AccessType    = 0x4,
+        ItemType      = 0x8
     };
 
     enum { //An own property that will be used to mark the best-matches group internally
-      BestMatchesProperty = 2*KTextEditor::CodeCompletionModel::LastProperty
+        BestMatchesProperty = 2 * KTextEditor::CodeCompletionModel::LastProperty
     };
 
     Q_DECLARE_FLAGS(GroupingMethods, gm)
@@ -166,55 +166,56 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     // Column merging
     bool isColumnMergingEnabled() const;
 
-    const QList< QList<int> >& columnMerges() const;
-    void setColumnMerges(const QList< QList<int> >& columnMerges);
+    const QList< QList<int> > &columnMerges() const;
+    void setColumnMerges(const QList< QList<int> > &columnMerges);
 
     void debugStats();
 
     ///Returns whether one of the filtered items exactly matches its completion string
     bool shouldMatchHideCompletionList() const;
-    
-    uint filteredItemCount() const;
-    
-  protected:
-    virtual int contextMatchQuality(const QModelIndex & index) const;
 
-  Q_SIGNALS:
-    void expandIndex(const QModelIndex& index);
+    uint filteredItemCount() const;
+
+protected:
+    virtual int contextMatchQuality(const QModelIndex &index) const;
+
+Q_SIGNALS:
+    void expandIndex(const QModelIndex &index);
     //Emitted whenever something has changed about the group of argument-hints
     void argumentHintsChanged();
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void setSortingEnabled(bool enable);
     void setFilteringEnabled(bool enable);
     void setGroupingEnabled(bool enable);
     void setColumnMergingEnabled(bool enable);
 
-  private Q_SLOTS:
-    void slotRowsInserted( const QModelIndex & parent, int start, int end );
-    void slotRowsRemoved( const QModelIndex & parent, int start, int end );
+private Q_SLOTS:
+    void slotRowsInserted(const QModelIndex &parent, int start, int end);
+    void slotRowsRemoved(const QModelIndex &parent, int start, int end);
     void slotModelReset();
-    
+
     //Updates the best-matches group
     void updateBestMatches();
     //Makes sure that the ungrouped group contains each item only once
     //Must only be called right after the group was created
     void makeGroupItemsUnique(bool onlyFiltered = false);
 
-  private:
-    
-    typedef QPair<KTextEditor::CodeCompletionModel*, QModelIndex> ModelRow;
-    virtual int contextMatchQuality(const ModelRow& sourceRow) const;
-    
-    QTreeView* treeView() const;
+private:
+
+    typedef QPair<KTextEditor::CodeCompletionModel *, QModelIndex> ModelRow;
+    virtual int contextMatchQuality(const ModelRow &sourceRow) const;
+
+    QTreeView *treeView() const;
 
     friend class KateArgumentHintModel;
-    ModelRow modelRowPair(const QModelIndex& index) const;
+    ModelRow modelRowPair(const QModelIndex &index) const;
 
     // Represents a source row; provides sorting method
-    class Item {
-      public:
-        Item(bool doInitialMatch, KateCompletionModel* model, const HierarchicalModelHandler& handler, ModelRow sourceRow);
+    class Item
+    {
+    public:
+        Item(bool doInitialMatch, KateCompletionModel *model, const HierarchicalModelHandler &handler, ModelRow sourceRow);
 
         bool isValid() const;
         // Returns true if the item is not filtered and matches the current completion string
@@ -227,37 +228,40 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
         bool filter();
 
         enum MatchType {
-          NoMatch = 0,
-          PerfectMatch,
-          StartsWithMatch,
-          AbbreviationMatch,
-          ContainsMatch
+            NoMatch = 0,
+            PerfectMatch,
+            StartsWithMatch,
+            AbbreviationMatch,
+            ContainsMatch
         };
         MatchType match();
 
-        const ModelRow& sourceRow() const;
+        const ModelRow &sourceRow() const;
 
         // Sorting operator
-        bool operator<(const Item& rhs) const;
+        bool operator<(const Item &rhs) const;
 
- 	bool haveExactMatch() const {
- 	  return m_haveExactMatch;
- 	}
-	
-	void clearExactMatch() {
-	  m_haveExactMatch = false;
-	}
-        
-        QString name() const {
-          return m_nameColumn;
+        bool haveExactMatch() const
+        {
+            return m_haveExactMatch;
         }
-	
-      private:
-        KateCompletionModel* model;
+
+        void clearExactMatch()
+        {
+            m_haveExactMatch = false;
+        }
+
+        QString name() const
+        {
+            return m_nameColumn;
+        }
+
+    private:
+        KateCompletionModel *model;
         ModelRow m_sourceRow;
 
         mutable QString m_nameColumn;
-        
+
         int inheritanceDepth;
 
         // True when currently matching completion string
@@ -269,75 +273,81 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
         QString completionSortingName() const;
     };
 
-  public:
+public:
     // Grouping and sorting of rows
-    class Group {
-      public:
-        explicit Group(KateCompletionModel* model);
+    class Group
+    {
+    public:
+        explicit Group(KateCompletionModel *model);
 
         void addItem(Item i, bool notifyModel = false);
         /// Removes the item specified by \a row.  Returns true if a change was made to rows.
-        bool removeItem(const ModelRow& row);
+        bool removeItem(const ModelRow &row);
         void resort();
         void refilter();
         void clear();
         //Returns whether this group should be ordered before other
-        bool orderBefore(Group* other) const;
+        bool orderBefore(Group *other) const;
         //Returns a number that can be used for ordering
         int orderNumber() const;
 
-	///Returns the row in the this group's filtered list of the given model-row in a source-model
-	///-1 if the item is not in the filtered list
-	///@todo Implement an efficient way of doing this map, that does _not_ iterate over all items!
-	int rowOf(ModelRow item) {
-	  for(int a = 0; a < filtered.size(); ++a)
-	    if(filtered[a].sourceRow() == item)
-	      return a;
-	  return -1;
-	}
-	
-        KateCompletionModel* model;
+        ///Returns the row in the this group's filtered list of the given model-row in a source-model
+        ///-1 if the item is not in the filtered list
+        ///@todo Implement an efficient way of doing this map, that does _not_ iterate over all items!
+        int rowOf(ModelRow item)
+        {
+            for (int a = 0; a < filtered.size(); ++a)
+                if (filtered[a].sourceRow() == item) {
+                    return a;
+                }
+            return -1;
+        }
+
+        KateCompletionModel *model;
         int attribute;
         QString title, scope;
         QList<Item> filtered;
         QList<Item> prefilter;
         bool isEmpty;
-	//-1 if none was set
-	int customSortingKey;
+        //-1 if none was set
+        int customSortingKey;
     };
-    
+
     bool hasGroups() const;
 
-  private:
+private:
     QString commonPrefixInternal(const QString &forcePrefix) const;
     /// @note performs model reset
     void createGroups();
     ///Creates all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     ///i must be an index in the source model
-    QSet<Group*> createItems(const HierarchicalModelHandler&, const QModelIndex& i, bool notifyModel = false);
+    QSet<Group *> createItems(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     ///Deletes all sub-items of index i, or the item corresponding to index i. Returns the affected groups.
     ///i must be an index in the source model
-    QSet<Group*> deleteItems(const QModelIndex& i);
-    Group* createItem(const HierarchicalModelHandler&, const QModelIndex& i, bool notifyModel = false);
+    QSet<Group *> deleteItems(const QModelIndex &i);
+    Group *createItem(const HierarchicalModelHandler &, const QModelIndex &i, bool notifyModel = false);
     /// @note Make sure you're in a {begin,end}ResetModel block when calling this!
     void clearGroups();
-    void hideOrShowGroup(Group* g, bool notifyModel = false);
+    void hideOrShowGroup(Group *g, bool notifyModel = false);
     /// When forceGrouping is enabled, all given attributes will be used for grouping, regardless of the completion settings.
-    Group* fetchGroup(int attribute, const QString& scope = QString(), bool forceGrouping = false);
+    Group *fetchGroup(int attribute, const QString &scope = QString(), bool forceGrouping = false);
     //If this returns nonzero on an index, the index is the header of the returned group
-    Group* groupForIndex(const QModelIndex& index) const;
-    inline Group* groupOfParent(const QModelIndex& child) const { return static_cast<Group*>(child.internalPointer()); }
-    QModelIndex indexForRow(Group* g, int row) const;
-    QModelIndex indexForGroup(Group* g) const;
+    Group *groupForIndex(const QModelIndex &index) const;
+    inline Group *groupOfParent(const QModelIndex &child) const
+    {
+        return static_cast<Group *>(child.internalPointer());
+    }
+    QModelIndex indexForRow(Group *g, int row) const;
+    QModelIndex indexForGroup(Group *g) const;
 
     enum changeTypes {
-      Broaden,
-      Narrow,
-      Change
+        Broaden,
+        Narrow,
+        Change
     };
 
     //Returns whether the model needs to be reset
-    void changeCompletions(Group* g, changeTypes changeType, bool notifyModel);
+    void changeCompletions(Group *g, changeTypes changeType, bool notifyModel);
 
     bool hasCompletionModel() const;
 
@@ -348,32 +358,32 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     void resort();
     void refilter();
 
-    static bool matchesAbbreviation(const QString& word, const QString& typed);
+    static bool matchesAbbreviation(const QString &word, const QString &typed);
 
     bool m_hasGroups;
 
     // ### Runtime state
     // General
-    QList<KTextEditor::CodeCompletionModel*> m_completionModels;
-    QMap<KTextEditor::CodeCompletionModel*, QString> m_currentMatch;
+    QList<KTextEditor::CodeCompletionModel *> m_completionModels;
+    QMap<KTextEditor::CodeCompletionModel *, QString> m_currentMatch;
     Qt::CaseSensitivity m_matchCaseSensitivity;
 
     // Column merging
     QList< QList<int> > m_columnMerges;
 
-    QTimer* m_updateBestMatchesTimer;
-    
-    Group* m_ungrouped;
-    Group* m_argumentHints; //The argument-hints will be passed on to another model, to be shown in another widget
-    Group* m_bestMatches; //A temporary group used for holding the best matches of all visible items
+    QTimer *m_updateBestMatchesTimer;
+
+    Group *m_ungrouped;
+    Group *m_argumentHints; //The argument-hints will be passed on to another model, to be shown in another widget
+    Group *m_bestMatches; //A temporary group used for holding the best matches of all visible items
 
     // Storing the sorted order
-    QList<Group*> m_rowTable;
-    QList<Group*> m_emptyGroups;
+    QList<Group *> m_rowTable;
+    QList<Group *> m_emptyGroups;
     // Quick access to each specific group (if it exists)
-    QMultiHash<int, Group*> m_groupHash;
+    QMultiHash<int, Group *> m_groupHash;
     // Maps custom group-names to their specific groups
-    QHash<QString, Group*> m_customGroupHash;
+    QHash<QString, Group *> m_customGroupHash;
 
     // ### Configurable state
     // Sorting

@@ -24,14 +24,14 @@
 #include <khelpclient.h>
 #include <KLocalizedString>
 
-KateHelpButton::KateHelpButton(QWidget* parent)
-  : QToolButton(parent)
+KateHelpButton::KateHelpButton(QWidget *parent)
+    : QToolButton(parent)
 {
-  setAutoRaise(true);
-  setIconState(IconColored);
-  setToolTip(i18n("Kate Handbook."));
-  
-  connect(this, SIGNAL(clicked()), SLOT(invokeHelp()));
+    setAutoRaise(true);
+    setIconState(IconColored);
+    setToolTip(i18n("Kate Handbook."));
+
+    connect(this, SIGNAL(clicked()), SLOT(invokeHelp()));
 }
 
 KateHelpButton::~KateHelpButton()
@@ -40,26 +40,24 @@ KateHelpButton::~KateHelpButton()
 
 void KateHelpButton::setIconState(IconState state)
 {
-  if (state == IconGrayscaled) {
-    setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DisabledState));
-  } else if (state == IconHidden) {
-    setIcon(QIcon());
-  } else {
-    setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DefaultState));
-  }
+    if (state == IconGrayscaled) {
+        setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DisabledState));
+    } else if (state == IconHidden) {
+        setIcon(QIcon());
+    } else {
+        setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DefaultState));
+    }
 
-  update();
+    update();
 }
 
 void KateHelpButton::invokeHelp()
 {
-  KHelpClient::invokeHelp(m_section, QLatin1String("kate"));
+    KHelpClient::invokeHelp(m_section, QLatin1String("kate"));
 }
 
-void KateHelpButton::setSection(const QString& section)
+void KateHelpButton::setSection(const QString &section)
 {
-  m_section = section;
+    m_section = section;
 }
 
-
-// kate: indent-width 2; replace-tabs on;

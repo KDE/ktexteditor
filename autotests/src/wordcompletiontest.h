@@ -39,7 +39,7 @@ private Q_SLOTS:
     void benchWordRetrievalMixed();
 
 private:
-  KTextEditor::Document* m_doc;
+    KTextEditor::Document *m_doc;
 };
 
 #endif // KATE_WORDCOMPLETIONTEST_H

@@ -25,19 +25,21 @@
 #include "katedocument.h"
 #include "kateview.h"
 
-namespace KTextEditor { class View; }
-
-KateBrowserExtension::KateBrowserExtension( KateDocument* doc )
-: KParts::BrowserExtension( doc ),
-  m_doc (doc)
+namespace KTextEditor
 {
-  setObjectName(QLatin1String("katepartbrowserextension"));
-  emit enableAction( "print", true );
+class View;
+}
+
+KateBrowserExtension::KateBrowserExtension(KateDocument *doc)
+    : KParts::BrowserExtension(doc),
+      m_doc(doc)
+{
+    setObjectName(QLatin1String("katepartbrowserextension"));
+    emit enableAction("print", true);
 }
 
 void KateBrowserExtension::print()
 {
-  m_doc->printDialog();
+    m_doc->printDialog();
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

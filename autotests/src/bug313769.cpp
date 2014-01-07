@@ -34,7 +34,7 @@ QTEST_MAIN(BugTest)
 using namespace KTextEditor;
 
 BugTest::BugTest()
-  : QObject()
+    : QObject()
 {
 }
 
@@ -52,47 +52,47 @@ void BugTest::cleanupTestCase()
 
 void BugTest::tryCrash()
 {
-  KateDocument doc(false, false, false);
-  const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug313769.cpp"));
-  doc.openUrl(url);
-  doc.discardDataRecovery();
-  doc.setHighlightingMode(QLatin1String("C++"));
-  doc.buffer().ensureHighlighted (doc.lines());
+    KateDocument doc(false, false, false);
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug313769.cpp"));
+    doc.openUrl(url);
+    doc.discardDataRecovery();
+    doc.setHighlightingMode(QLatin1String("C++"));
+    doc.buffer().ensureHighlighted(doc.lines());
 
-  // view must be visible...
-  KateView* view = static_cast<KateView*>(doc.createView(0));
-  view->show();
-  view->resize(900, 800);
-  view->config()->setDynWordWrap(true);
-  view->setSelection(Range(2, 0, 74, 0));
-  view->setCursorPosition(Cursor(74, 0));
+    // view must be visible...
+    KateView *view = static_cast<KateView *>(doc.createView(0));
+    view->show();
+    view->resize(900, 800);
+    view->config()->setDynWordWrap(true);
+    view->setSelection(Range(2, 0, 74, 0));
+    view->setCursorPosition(Cursor(74, 0));
 
-  doc.editBegin();
-  QString text = doc.line(1);
-  doc.insertLine(74, text);
-  doc.removeLine(1);
-  view->setCursorPosition(Cursor(1, 0));
-  doc.editEnd();
+    doc.editBegin();
+    QString text = doc.line(1);
+    doc.insertLine(74, text);
+    doc.removeLine(1);
+    view->setCursorPosition(Cursor(1, 0));
+    doc.editEnd();
 
-  QTest::qWait(200);
-  // fold toplevel nodes
-  for (int line = 0; line < doc.lines(); ++line) {
-    if (view->textFolding().isLineVisible(line)) {
-      view->foldLine(line);
+    QTest::qWait(200);
+    // fold toplevel nodes
+    for (int line = 0; line < doc.lines(); ++line) {
+        if (view->textFolding().isLineVisible(line)) {
+            view->foldLine(line);
+        }
     }
-  }
-  doc.buffer().ensureHighlighted (doc.lines());
+    doc.buffer().ensureHighlighted(doc.lines());
 
-  view->setCursorPosition(Cursor(0, 0));
+    view->setCursorPosition(Cursor(0, 0));
 
-  QTest::qWait(100);
-  doc.undo();
-  QTest::qWait(100);
-  doc.redo();
-  QTest::qWait(500);
-  qDebug() << "!!! Does undo crash?";
-  doc.undo();
+    QTest::qWait(100);
+    doc.undo();
+    QTest::qWait(100);
+    doc.redo();
+    QTest::qWait(500);
+    qDebug() << "!!! Does undo crash?";
+    doc.undo();
 
-  QTest::qWait(500);
-  qDebug() << "!!! No crash (qWait not long enough)? Nice!";
+    QTest::qWait(500);
+    qDebug() << "!!! No crash (qWait not long enough)? Nice!";
 }

@@ -28,40 +28,83 @@
 
 class KateCommandLineScriptHeader
 {
-  public:
+public:
     KateCommandLineScriptHeader()
     {}
 
-    inline void setFunctions(const QStringList& functions)
-    { m_functions = functions; }
-    inline const QStringList& functions() const
-    { return m_functions; }
+    inline void setFunctions(const QStringList &functions)
+    {
+        m_functions = functions;
+    }
+    inline const QStringList &functions() const
+    {
+        return m_functions;
+    }
 
-  private:
+private:
     QStringList m_functions; ///< the functions the script contains
 };
 
 class ScriptActionInfo
 {
-  public:
+public:
     ScriptActionInfo() {}
 
-    inline bool isValid() const { return !(m_command.isEmpty() || m_text.isEmpty()); }
+    inline bool isValid() const
+    {
+        return !(m_command.isEmpty() || m_text.isEmpty());
+    }
 
-    inline void setCommand(const QString& command) { m_command = command; }
-    inline QString command() const { return m_command; }
-    inline void setText(const QString& text) { m_text = text; }
-    inline QString text() const { return m_text; }
-    inline void setIcon(const QString& icon) { m_icon = icon; }
-    inline QString icon() const { return m_icon; }
-    inline void setCategory(const QString& category) { m_category = category; }
-    inline QString category() const { return m_category; }
-    inline void setInteractive(bool interactive) { m_interactive = interactive; }
-    inline bool interactive() const { return m_interactive; }
-    inline void setShortcut(const QString& shortcut) { m_shortcut = shortcut; }
-    inline QString shortcut() const { return m_shortcut; }
+    inline void setCommand(const QString &command)
+    {
+        m_command = command;
+    }
+    inline QString command() const
+    {
+        return m_command;
+    }
+    inline void setText(const QString &text)
+    {
+        m_text = text;
+    }
+    inline QString text() const
+    {
+        return m_text;
+    }
+    inline void setIcon(const QString &icon)
+    {
+        m_icon = icon;
+    }
+    inline QString icon() const
+    {
+        return m_icon;
+    }
+    inline void setCategory(const QString &category)
+    {
+        m_category = category;
+    }
+    inline QString category() const
+    {
+        return m_category;
+    }
+    inline void setInteractive(bool interactive)
+    {
+        m_interactive = interactive;
+    }
+    inline bool interactive() const
+    {
+        return m_interactive;
+    }
+    inline void setShortcut(const QString &shortcut)
+    {
+        m_shortcut = shortcut;
+    }
+    inline QString shortcut() const
+    {
+        return m_shortcut;
+    }
 
-  private:
+private:
     QString m_command;
     QString m_text;
     QString m_icon;
@@ -75,32 +118,31 @@ class ScriptActionInfo
  * KateScriptInformation::IndentationScript
  */
 class KateCommandLineScript : public KateScript, public KTextEditor::Command,
-                              public KTextEditor::RangeCommand
+    public KTextEditor::RangeCommand
 {
-  public:
+public:
     KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header);
     virtual ~KateCommandLineScript();
 
-    const KateCommandLineScriptHeader& commandHeader();
+    const KateCommandLineScriptHeader &commandHeader();
 
-    bool callFunction(const QString& cmd, const QStringList args, QString &errorMessage);
+    bool callFunction(const QString &cmd, const QStringList args, QString &errorMessage);
 
-    ScriptActionInfo actionInfo(const QString& cmd);
+    ScriptActionInfo actionInfo(const QString &cmd);
 
-  //
-  // KTextEditor::Command interface
-  //
-  public:
-    virtual const QStringList& cmds();
+    //
+    // KTextEditor::Command interface
+    //
+public:
+    virtual const QStringList &cmds();
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg);
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range);
     virtual bool supportsRange(const QString &cmd);
 
-  private:
+private:
     KateCommandLineScriptHeader m_commandHeader;
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -81,7 +81,7 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT SessionConfigInterface
 {
-  public:
+public:
     SessionConfigInterface();
 
     /**
@@ -89,10 +89,10 @@ class KTEXTEDITOR_EXPORT SessionConfigInterface
      */
     virtual ~SessionConfigInterface();
 
-  //
-  // SLOTS !!!
-  //
-  public:
+    //
+    // SLOTS !!!
+    //
+public:
     /**
      * Read session settings from the given \p config.
      *
@@ -107,7 +107,7 @@ class KTEXTEDITOR_EXPORT SessionConfigInterface
      * \param config read the session settings from this KConfigGroup
      * \see writeSessionConfig()
      */
-    virtual void readSessionConfig (const KConfigGroup& config) = 0;
+    virtual void readSessionConfig(const KConfigGroup &config) = 0;
 
     /**
      * Write session settings to the \p config.
@@ -116,12 +116,11 @@ class KTEXTEDITOR_EXPORT SessionConfigInterface
      * \param config write the session settings to this KConfigGroup
      * \see readSessionConfig()
      */
-    virtual void writeSessionConfig (KConfigGroup& config) = 0;
+    virtual void writeSessionConfig(KConfigGroup &config) = 0;
 
-  private:
-    class SessionConfigInterfacePrivate* const d;
+private:
+    class SessionConfigInterfacePrivate *const d;
 };
-
 
 /**
  * \brief Parameterized session config interface extension for the Document.
@@ -175,7 +174,7 @@ class KTEXTEDITOR_EXPORT SessionConfigInterface
  */
 class KTEXTEDITOR_EXPORT ParameterizedSessionConfigInterface
 {
-  public:
+public:
     ParameterizedSessionConfigInterface();
 
     /**
@@ -183,21 +182,21 @@ class KTEXTEDITOR_EXPORT ParameterizedSessionConfigInterface
      */
     virtual ~ParameterizedSessionConfigInterface();
 
-  public:
+public:
 
     /**
      * Flags for session restore.
      * These flags allow to skip some parts of the configuration from restoration.
      */
     enum SessionConfigParameter {
-      SkipNone          = 0,
-      SkipUrl           = 1 << 0,
-      SkipMode          = 1 << 1,
-      SkipHighlighting  = 1 << 2,
-      SkipEncoding      = 1 << 3,
+        SkipNone          = 0,
+        SkipUrl           = 1 << 0,
+        SkipMode          = 1 << 1,
+        SkipHighlighting  = 1 << 2,
+        SkipEncoding      = 1 << 3,
 
-      // TODO KDE5: remove for KDE5, since text folding moved to the View
-      SkipFolding       = 1 << 4
+        // TODO KDE5: remove for KDE5, since text folding moved to the View
+        SkipFolding       = 1 << 4
     };
 
     /**
@@ -216,8 +215,8 @@ class KTEXTEDITOR_EXPORT ParameterizedSessionConfigInterface
      * \param parameters settings that should not be read (i.e. a combination of flags from SessionConfigParameter)
      * \see writeParameterizedSessionConfig()
      */
-    virtual void readParameterizedSessionConfig (const KConfigGroup& config,
-                                                 unsigned long parameters) = 0;
+    virtual void readParameterizedSessionConfig(const KConfigGroup &config,
+            unsigned long parameters) = 0;
 
     /**
      * Write session settings to the \p config excluding the settings specified in
@@ -228,10 +227,9 @@ class KTEXTEDITOR_EXPORT ParameterizedSessionConfigInterface
      * \param parameters settings that should not be written (i.e. a combination of flags from SessionConfigParameter)
      * \see readParameterizedSessionConfig()
      */
-    virtual void writeParameterizedSessionConfig (KConfigGroup& config,
-                                                  unsigned long parameters) = 0;
+    virtual void writeParameterizedSessionConfig(KConfigGroup &config,
+            unsigned long parameters) = 0;
 };
-
 
 }
 
@@ -240,4 +238,3 @@ Q_DECLARE_INTERFACE(KTextEditor::ParameterizedSessionConfigInterface, "org.kde.K
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

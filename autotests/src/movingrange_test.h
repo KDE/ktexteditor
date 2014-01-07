@@ -24,17 +24,17 @@
 
 class MovingRangeTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  MovingRangeTest();
-  ~MovingRangeTest();
+    MovingRangeTest();
+    ~MovingRangeTest();
 
 private Q_SLOTS:
-  void testFeedbackEmptyRange();
-  void testFeedbackInvalidRange();
-  void testFeedbackCaret();
-  void testFeedbackMouse();
+    void testFeedbackEmptyRange();
+    void testFeedbackInvalidRange();
+    void testFeedbackCaret();
+    void testFeedbackMouse();
 };
 
 #endif // KATE_MOVINGRANGE_TEST_H

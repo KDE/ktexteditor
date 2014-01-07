@@ -32,11 +32,11 @@
  */
 class KateTextLayout
 {
-  friend class KateLineLayout;
-  friend class KateLayoutCache;
-  template <class T> friend class QVector;
+    friend class KateLineLayout;
+    friend class KateLayoutCache;
+    template <class T> friend class QVector;
 
-  public:
+public:
     bool isValid() const;
     static KateTextLayout invalid();
 
@@ -46,7 +46,7 @@ class KateTextLayout
         (KateLineLayout).  */
     int viewLine() const;
 
-    const QTextLine& lineLayout() const;
+    const QTextLine &lineLayout() const;
     KateLineLayoutPtr kateLineLayout() const;
 
     int startCol() const;
@@ -84,16 +84,16 @@ class KateTextLayout
 
     bool isRightToLeft() const;
 
-    bool includesCursor(const KTextEditor::Cursor& realCursor) const;
+    bool includesCursor(const KTextEditor::Cursor &realCursor) const;
 
-    friend bool operator> (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator>= (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator< (const KateLineLayout& r, const KTextEditor::Cursor& c);
-    friend bool operator<= (const KateLineLayout& r, const KTextEditor::Cursor& c);
+    friend bool operator> (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator>= (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator< (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator<= (const KateLineLayout &r, const KTextEditor::Cursor &c);
 
     void debugOutput() const;
 
-  private:
+private:
     explicit KateTextLayout(KateLineLayoutPtr line = KateLineLayoutPtr(), int viewLine = 0);
 
     KateLineLayoutPtr m_lineLayout;

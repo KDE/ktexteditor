@@ -24,16 +24,14 @@
 #include "kateview.h"
 #include <ktexteditor/templateinterface2.h>
 
-
 class KateTemplateScript : public KateScript, public KTextEditor::TemplateScript
 {
-  public:
-    KateTemplateScript(const QString& script);
+public:
+    KateTemplateScript(const QString &script);
     virtual ~KateTemplateScript();
 
-    QString invoke(KateView* view, const QString& functionName, const QString& srcText/*, ....*/);
+    QString invoke(KateView *view, const QString &functionName, const QString &srcText/*, ....*/);
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

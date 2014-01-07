@@ -24,26 +24,26 @@
 
 class KateDocumentTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  KateDocumentTest();
-  ~KateDocumentTest();
+    KateDocumentTest();
+    ~KateDocumentTest();
 
 private Q_SLOTS:
-  void testWordWrap();
-  void testReplaceQStringList();
-  void testMovingInterfaceSignals();
+    void testWordWrap();
+    void testReplaceQStringList();
+    void testMovingInterfaceSignals();
 
-  void testSetTextPerformance();
-  void testRemoveTextPerformance();
+    void testSetTextPerformance();
+    void testRemoveTextPerformance();
 
-  void testForgivingApiUsage();
+    void testForgivingApiUsage();
 
-  void testRemoveMultipleLines();
-  void testInsertNewline();
+    void testRemoveMultipleLines();
+    void testInsertNewline();
 
-  void testDigest();
+    void testDigest();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

@@ -18,7 +18,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef KDELIBS_KTEXTEDITOR_APPLICATION_PLUGIN_H
 #define KDELIBS_KTEXTEDITOR_APPLICATION_PLUGIN_H
 
@@ -28,7 +27,7 @@
 
 namespace KTextEditor
 {
-  
+
 class MainWindow;
 
 /**
@@ -102,21 +101,21 @@ class MainWindow;
  */
 class KTEXTEDITOR_EXPORT ApplicationPlugin : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor.
      *
      * Create a new application plugin.
      * \param parent parent object
      */
-    ApplicationPlugin ( QObject *parent );
+    ApplicationPlugin(QObject *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~ApplicationPlugin ();
+    virtual ~ApplicationPlugin();
 
     /**
      * Create a new View for this plugin for the given KTextEditor::MainWindow
@@ -127,14 +126,13 @@ class KTEXTEDITOR_EXPORT ApplicationPlugin : public QObject
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL
      */
-    virtual QObject *createView (KTextEditor::MainWindow *mainWindow) = 0;
+    virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
 
-  private:
-    class ApplicationPluginPrivate* const d;
+private:
+    class ApplicationPluginPrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

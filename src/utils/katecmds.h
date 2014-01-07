@@ -47,13 +47,16 @@ namespace KateCommands
  * hard to kateview
  */
 class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-  public KTextEditor::RangeCommand
+    public KTextEditor::RangeCommand
 {
-  CoreCommands() { }
-  static CoreCommands* m_instance;
+    CoreCommands() { }
+    static CoreCommands *m_instance;
 
-  public:
-    ~CoreCommands() { m_instance = 0; }
+public:
+    ~CoreCommands()
+    {
+        m_instance = 0;
+    }
 
     /**
      * execute command
@@ -62,7 +65,7 @@ class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExt
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec( class KTextEditor::View *view, const QString &cmd, QString &errorMsg );
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
 
     /**
      * execute command on given range
@@ -73,13 +76,13 @@ class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExt
      * @param rangeEnd last line in range
      * @return success
      */
-    bool exec( class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-        const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0) );
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
 
     bool supportsRange(const QString &range);
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help( class KTextEditor::View *, const QString &, QString & );
+    bool help(class KTextEditor::View *, const QString &, QString &);
 
     /**
      * supported commands as prefixes
@@ -90,17 +93,21 @@ class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExt
     /**
     * override completionObject from interfaces/document.h .
     */
-    KCompletion *completionObject( KTextEditor::View *, const QString & );
+    KCompletion *completionObject(KTextEditor::View *, const QString &);
 
-    virtual void flagCompletions( QStringList& ) {}
-    virtual bool wantsToProcessText( const QString & ) { return false; }
-    virtual void processText( KTextEditor::View *, const QString & ) {}
+    virtual void flagCompletions(QStringList &) {}
+    virtual bool wantsToProcessText(const QString &)
+    {
+        return false;
+    }
+    virtual void processText(KTextEditor::View *, const QString &) {}
 
-    static CoreCommands* self() {
-      if (m_instance == 0) {
-        m_instance = new CoreCommands();
-      }
-      return m_instance;
+    static CoreCommands *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new CoreCommands();
+        }
+        return m_instance;
     }
 };
 
@@ -108,13 +115,16 @@ class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExt
  * This KTextEditor::Command provides vi 'ex' commands
  */
 class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-  public KTextEditor::RangeCommand
+    public KTextEditor::RangeCommand
 {
-  ViCommands() { }
-  static ViCommands* m_instance;
+    ViCommands() { }
+    static ViCommands *m_instance;
 
-  public:
-    ~ViCommands() { m_instance = 0; }
+public:
+    ~ViCommands()
+    {
+        m_instance = 0;
+    }
 
     /**
      * execute command
@@ -123,7 +133,7 @@ class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExten
      * @param msg message returned from running the command
      * @return success
      */
-    bool exec( class KTextEditor::View *view, const QString &cmd, QString &msg );
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg);
 
     /**
      * execute command on given range
@@ -134,13 +144,16 @@ class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExten
      * @param rangeEnd last line in range
      * @return success
      */
-    bool exec( class KTextEditor::View *view, const QString &cmd, QString &msg,
-        const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
 
     bool supportsRange(const QString &range);
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help( class KTextEditor::View *, const QString &, QString & ) {return false;}
+    bool help(class KTextEditor::View *, const QString &, QString &)
+    {
+        return false;
+    }
 
     /**
      * supported commands as prefixes
@@ -151,22 +164,26 @@ class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExten
     /**
     * override completionObject from interfaces/document.h .
     */
-    KCompletion *completionObject( KTextEditor::View *, const QString & );
+    KCompletion *completionObject(KTextEditor::View *, const QString &);
 
-    virtual void flagCompletions( QStringList& ) {}
-    virtual bool wantsToProcessText( const QString & ) { return false; }
-    virtual void processText( KTextEditor::View *, const QString & ) {}
+    virtual void flagCompletions(QStringList &) {}
+    virtual bool wantsToProcessText(const QString &)
+    {
+        return false;
+    }
+    virtual void processText(KTextEditor::View *, const QString &) {}
 
-    static ViCommands* self() {
-      if (m_instance == 0) {
-        m_instance = new ViCommands();
-      }
-      return m_instance;
+    static ViCommands *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new ViCommands();
+        }
+        return m_instance;
     }
 private:
-  const QStringList& mappingCommands();
-  KateViGlobal::MappingMode modeForMapCommand(const QString& mapCommand);
-  bool isMapCommandRecursive(const QString& mapCommand);
+    const QStringList &mappingCommands();
+    KateViGlobal::MappingMode modeForMapCommand(const QString &mapCommand);
+    bool isMapCommandRecursive(const QString &mapCommand);
 };
 
 /**
@@ -174,11 +191,14 @@ private:
  */
 class AppCommands : public KTextEditor::Command
 {
-  AppCommands();
-  static AppCommands* m_instance;
+    AppCommands();
+    static AppCommands *m_instance;
 
-  public:
-    ~AppCommands() { m_instance = 0; }
+public:
+    ~AppCommands()
+    {
+        m_instance = 0;
+    }
 
     /**
      * execute command
@@ -187,10 +207,10 @@ class AppCommands : public KTextEditor::Command
      * @param msg message returned from running the command
      * @return success
      */
-    bool exec( class KTextEditor::View *view, const QString &cmd, QString &msg );
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg);
 
     /** Help for AppCommands */
-    bool help( class KTextEditor::View *, const QString &, QString & );
+    bool help(class KTextEditor::View *, const QString &, QString &);
 
     /**
      * supported commands as prefixes
@@ -198,14 +218,15 @@ class AppCommands : public KTextEditor::Command
      */
     const QStringList &cmds();
 
-    static AppCommands* self() {
-      if (m_instance == 0) {
-        m_instance = new AppCommands();
-      }
-      return m_instance;
+    static AppCommands *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new AppCommands();
+        }
+        return m_instance;
     }
 
-  private:
+private:
     QRegExp re_write;
     /*QRegExp re_quit;
     QRegExp re_exit;
@@ -219,11 +240,14 @@ class AppCommands : public KTextEditor::Command
  **/
 class SedReplace : public KTextEditor::Command, public KTextEditor::RangeCommand
 {
-  SedReplace() { }
-  static SedReplace* m_instance;
+    SedReplace() { }
+    static SedReplace *m_instance;
 
-  public:
-    ~SedReplace() { m_instance = 0; }
+public:
+    ~SedReplace()
+    {
+        m_instance = 0;
+    }
 
     /**
      * Execute command. Valid command strings are:
@@ -240,27 +264,40 @@ class SedReplace : public KTextEditor::Command, public KTextEditor::RangeCommand
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec (class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
 
-    bool exec (class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-        const KTextEditor::Range &r);
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
+              const KTextEditor::Range &r);
 
-    bool supportsRange(const QString &) { return true; }
+    bool supportsRange(const QString &)
+    {
+        return true;
+    }
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help (class KTextEditor::View *, const QString &, QString &) { return false; }
+    bool help(class KTextEditor::View *, const QString &, QString &)
+    {
+        return false;
+    }
 
     /**
      * supported commands as prefixes
      * @return prefix list
      */
-    const QStringList &cmds () { static QStringList l(QString::fromLatin1("s")); if (l.isEmpty()) l << QLatin1String("%s") << QLatin1String("$s"); return l; }
+    const QStringList &cmds()
+    {
+        static QStringList l(QString::fromLatin1("s"));
+        if (l.isEmpty()) {
+            l << QLatin1String("%s") << QLatin1String("$s");
+        } return l;
+    }
 
-    static SedReplace* self() {
-      if (m_instance == 0) {
-        m_instance = new SedReplace();
-      }
-      return m_instance;
+    static SedReplace *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new SedReplace();
+        }
+        return m_instance;
     }
 
     /**
@@ -270,40 +307,40 @@ class SedReplace : public KTextEditor::Command, public KTextEditor::RangeCommand
      * begin and end of the "find" term; and @c destReplaceBeginPos and @c destReplaceEndPos to the begin
      * and end positions of the "replace" term.
      */
-    static bool parse(const QString& sedReplaceString, QString& destDelim, int& destFindBeginPos, int& destFindEndPos, int& destReplaceBeginPos, int& destReplaceEndPos);
+    static bool parse(const QString &sedReplaceString, QString &destDelim, int &destFindBeginPos, int &destFindEndPos, int &destReplaceBeginPos, int &destReplaceEndPos);
 
     class InteractiveSedReplacer
     {
     public:
-      InteractiveSedReplacer(KateDocument* doc, const QString& findPattern, const QString& replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine);
-      /**
-       * Will return invalid Range if there are no further matches.
-       */
-      KTextEditor::Range currentMatch();
-      void skipCurrentMatch();
-      void replaceCurrentMatch();
-      void replaceAllRemaining();
-      QString currentMatchReplacementConfirmationMessage();
-      QString finalStatusReportMessage();
+        InteractiveSedReplacer(KateDocument *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine);
+        /**
+         * Will return invalid Range if there are no further matches.
+         */
+        KTextEditor::Range currentMatch();
+        void skipCurrentMatch();
+        void replaceCurrentMatch();
+        void replaceAllRemaining();
+        QString currentMatchReplacementConfirmationMessage();
+        QString finalStatusReportMessage();
     private:
-      const QString m_findPattern;
-      const QString m_replacePattern;
-      bool m_onlyOnePerLine;
-      int m_startLine;
-      int m_endLine;
-      KateDocument *m_doc;
-      KateRegExpSearch m_regExpSearch;
+        const QString m_findPattern;
+        const QString m_replacePattern;
+        bool m_onlyOnePerLine;
+        int m_startLine;
+        int m_endLine;
+        KateDocument *m_doc;
+        KateRegExpSearch m_regExpSearch;
 
-      int m_numReplacementsDone;
-      int m_numLinesTouched;
-      int m_lastChangedLineNum;
+        int m_numReplacementsDone;
+        int m_numLinesTouched;
+        int m_lastChangedLineNum;
 
-      KTextEditor::Cursor m_currentSearchPos;
-      const QVector<KTextEditor::Range> fullCurrentMatch();
-      QString replacementTextForCurrentMatch();
+        KTextEditor::Cursor m_currentSearchPos;
+        const QVector<KTextEditor::Range> fullCurrentMatch();
+        QString replacementTextForCurrentMatch();
     };
 
-  private:
+private:
 };
 
 /**
@@ -316,11 +353,14 @@ class SedReplace : public KTextEditor::Command, public KTextEditor::RangeCommand
  **/
 class Character : public KTextEditor::Command
 {
-  Character() { }
-  static Character* m_instance;
+    Character() { }
+    static Character *m_instance;
 
-  public:
-    ~Character() { m_instance = 0; }
+public:
+    ~Character()
+    {
+        m_instance = 0;
+    }
 
     /**
      * execute command
@@ -329,22 +369,27 @@ class Character : public KTextEditor::Command
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec (class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help (class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &);
 
     /**
      * supported commands as prefixes
      * @return prefix list
      */
-    const QStringList &cmds () { static QStringList test(QString::fromLatin1("char")); return test; }
+    const QStringList &cmds()
+    {
+        static QStringList test(QString::fromLatin1("char"));
+        return test;
+    }
 
-    static Character* self() {
-      if (m_instance == 0) {
-        m_instance = new Character();
-      }
-      return m_instance;
+    static Character *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new Character();
+        }
+        return m_instance;
     }
 };
 
@@ -353,11 +398,14 @@ class Character : public KTextEditor::Command
  */
 class Date : public KTextEditor::Command
 {
-  Date() { }
-  static Date* m_instance;
+    Date() { }
+    static Date *m_instance;
 
-  public:
-    ~Date() { m_instance = 0; }
+public:
+    ~Date()
+    {
+        m_instance = 0;
+    }
 
     /**
      * execute command
@@ -366,27 +414,30 @@ class Date : public KTextEditor::Command
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec (class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help (class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &);
 
     /**
      * supported commands as prefixes
      * @return prefix list
      */
-    const QStringList &cmds () { static QStringList test(QString::fromLatin1("date")); return test; }
+    const QStringList &cmds()
+    {
+        static QStringList test(QString::fromLatin1("date"));
+        return test;
+    }
 
-    static Date* self() {
-      if (m_instance == 0) {
-        m_instance = new Date();
-      }
-      return m_instance;
+    static Date *self()
+    {
+        if (m_instance == 0) {
+            m_instance = new Date();
+        }
+        return m_instance;
     }
 };
-
 
 } // namespace KateCommands
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

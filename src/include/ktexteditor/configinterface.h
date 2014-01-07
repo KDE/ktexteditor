@@ -99,15 +99,15 @@ namespace KTextEditor
  */
 class KTEXTEDITOR_EXPORT ConfigInterface
 {
-  public:
-    ConfigInterface ();
+public:
+    ConfigInterface();
 
     /**
      * Virtual destructor.
      */
-    virtual ~ConfigInterface ();
+    virtual ~ConfigInterface();
 
-  public:
+public:
     /**
      * Get a list of all available keys.
      */
@@ -121,8 +121,8 @@ class KTEXTEDITOR_EXPORT ConfigInterface
      */
     virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
 
-  private:
-    class ConfigInterfacePrivate* const d;
+private:
+    class ConfigInterfacePrivate *const d;
 };
 
 }
@@ -131,4 +131,3 @@ Q_DECLARE_INTERFACE(KTextEditor::ConfigInterface, "org.kde.KTextEditor.ConfigInt
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

@@ -27,20 +27,20 @@
 
 class RangeTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  RangeTest();
-  ~RangeTest();
+    RangeTest();
+    ~RangeTest();
 
 private Q_SLOTS:
-  void testTextEditorRange();
-  void testTextRange();
-  void testInsertText();
-  void testCornerCaseInsertion();
+    void testTextEditorRange();
+    void testTextRange();
+    void testInsertText();
+    void testCornerCaseInsertion();
 
 private:
-  void rangeCheck ( KTextEditor::Range & valid );
+    void rangeCheck(KTextEditor::Range &valid);
 };
 
 #endif

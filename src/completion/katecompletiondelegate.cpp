@@ -37,54 +37,59 @@
 //Currently disable because it doesn't work
 #define DISABLE_INTERNAL_HIGHLIGHTING
 
-KateCompletionDelegate::KateCompletionDelegate(ExpandingWidgetModel* model, KateCompletionWidget* parent) :
+KateCompletionDelegate::KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent) :
     ExpandingDelegate(model, parent), m_cachedRow(-1)
 {
 }
 
-void KateCompletionDelegate::adjustStyle( const QModelIndex& index, QStyleOptionViewItem & option ) const {
-    if(index.column() == 0) {
+void KateCompletionDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const
+{
+    if (index.column() == 0) {
         //We always want to use the match-color if available, also for highlighted items.
         ///@todo Only do this for the "current" item, for others the model is asked for the match color.
         uint color = model()->matchColor(index);
-        if(color != 0) {
+        if (color != 0) {
             QColor match(color);
 
-            for(int a = 0; a <=2; a++ )
-            option.palette.setColor( (QPalette::ColorGroup)a, QPalette::Highlight, match );
+            for (int a = 0; a <= 2; a++) {
+                option.palette.setColor((QPalette::ColorGroup)a, QPalette::Highlight, match);
+            }
         }
     }
 }
 
-
-KateRenderer * KateCompletionDelegate::renderer( ) const
+KateRenderer *KateCompletionDelegate::renderer() const
 {
-  return widget()->view()->renderer();
+    return widget()->view()->renderer();
 }
 
-KateCompletionWidget * KateCompletionDelegate::widget( ) const
+KateCompletionWidget *KateCompletionDelegate::widget() const
 {
-  return static_cast<KateCompletionWidget*>(const_cast<QObject*>(parent()));
+    return static_cast<KateCompletionWidget *>(const_cast<QObject *>(parent()));
 }
 
-KateDocument * KateCompletionDelegate::document( ) const
+KateDocument *KateCompletionDelegate::document() const
 {
-  return widget()->view()->doc();
+    return widget()->view()->doc();
 }
 
-void KateCompletionDelegate::heightChanged() const {
-  if(parent())
-    widget()->updateHeight();
+void KateCompletionDelegate::heightChanged() const
+{
+    if (parent()) {
+        widget()->updateHeight();
+    }
 }
 
-QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex& index, QStyleOptionViewItem& option) const {
+QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
+{
 
     QVariant highlight = model()->data(index, KTextEditor::CodeCompletionModel::HighlightingMethod);
 
     // TODO: config enable specifying no highlight as default
     int highlightMethod = KTextEditor::CodeCompletionModel::InternalHighlighting;
-    if (highlight.canConvert(QVariant::Int))
-      highlightMethod = highlight.toInt();
+    if (highlight.canConvert(QVariant::Int)) {
+        highlightMethod = highlight.toInt();
+    }
 
     if (highlightMethod & KTextEditor::CodeCompletionModel::CustomHighlighting) {
         m_currentColumnStart = 0;
@@ -95,9 +100,9 @@ QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const
     return QList<QTextLayout::FormatRange>();
 #endif
 
-    if( index.row() == m_cachedRow && highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting ) {
+    if (index.row() == m_cachedRow && highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting) {
 
-        if( index.column() < m_cachedColumnStarts.size() ) {
+        if (index.column() < m_cachedColumnStarts.size()) {
             m_currentColumnStart = m_cachedColumnStarts[index.column()];
         } else {
             qCWarning(LOG_PART) << "Column-count does not match";
@@ -119,43 +124,45 @@ QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const
     m_cachedColumnStarts.clear();
 
     for (int i = 0; i < KTextEditor::CodeCompletionModel::ColumnCount; ++i) {
-      m_cachedColumnStarts.append(len);
-      QString text = model()->data(model()->index(index.row(), i, index.parent()), Qt::DisplayRole).toString();
-      lineContent += text;
-      len += text.length();
+        m_cachedColumnStarts.append(len);
+        QString text = model()->data(model()->index(index.row(), i, index.parent()), Qt::DisplayRole).toString();
+        lineContent += text;
+        len += text.length();
     }
 
-    Kate::TextLine thisLine = Kate::TextLine (new Kate::TextLineData(lineContent));
+    Kate::TextLine thisLine = Kate::TextLine(new Kate::TextLineData(lineContent));
 
     //qCDebug(LOG_PART) << "About to highlight with mode " << highlightMethod << " text [" << thisLine->string() << "]";
 
     if (highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting) {
-      Kate::TextLine previousLine;
-      if (completionStart.line())
-        previousLine = document()->kateTextLine(completionStart.line() - 1);
-      else
-        previousLine = Kate::TextLine (new Kate::TextLineData());
-      
-      Kate::TextLine nextLine;
-      if ((completionStart.line() + 1) < document()->lines())
-        nextLine = document()->kateTextLine(completionStart.line() + 1);
-      else
-        nextLine = Kate::TextLine (new Kate::TextLineData());
+        Kate::TextLine previousLine;
+        if (completionStart.line()) {
+            previousLine = document()->kateTextLine(completionStart.line() - 1);
+        } else {
+            previousLine = Kate::TextLine(new Kate::TextLineData());
+        }
 
-      bool ctxChanged = false;
-      document()->highlight()->doHighlight(previousLine.data(), thisLine.data(), nextLine.data(), ctxChanged);
+        Kate::TextLine nextLine;
+        if ((completionStart.line() + 1) < document()->lines()) {
+            nextLine = document()->kateTextLine(completionStart.line() + 1);
+        } else {
+            nextLine = Kate::TextLine(new Kate::TextLineData());
+        }
+
+        bool ctxChanged = false;
+        document()->highlight()->doHighlight(previousLine.data(), thisLine.data(), nextLine.data(), ctxChanged);
     }
 
-  m_currentColumnStart = m_cachedColumnStarts[index.column()];
+    m_currentColumnStart = m_cachedColumnStarts[index.column()];
 
-  NormalRenderRange rr;
-  QList<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, &rr, option.state & QStyle::State_Selected);
+    NormalRenderRange rr;
+    QList<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, &rr, option.state & QStyle::State_Selected);
 
-  //Remove background-colors
-  for( QList<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it )
-    (*it).format.clearBackground();
+    //Remove background-colors
+    for (QList<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it) {
+        (*it).format.clearBackground();
+    }
 
-  return ret;
+    return ret;
 }
-
 

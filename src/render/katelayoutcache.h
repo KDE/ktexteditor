@@ -32,7 +32,7 @@ class KateRenderer;
 
 class KateLineLayoutMap
 {
-  public:
+public:
     KateLineLayoutMap();
     ~KateLineLayoutMap();
 
@@ -40,7 +40,7 @@ class KateLineLayoutMap
 
     inline bool contains(int i) const;
 
-    inline void insert(int realLine, const KateLineLayoutPtr& lineLayoutPtr);
+    inline void insert(int realLine, const KateLineLayoutPtr &lineLayoutPtr);
 
     inline void viewWidthIncreased();
     inline void viewWidthDecreased(int newWidth);
@@ -49,10 +49,10 @@ class KateLineLayoutMap
 
     inline void slotEditDone(int fromLine, int toLine, int shiftAmount);
 
-    KateLineLayoutPtr& operator[](int i);
+    KateLineLayoutPtr &operator[](int i);
 
     typedef QPair<int, KateLineLayoutPtr> LineLayoutPair;
-  private:
+private:
     typedef QVector<LineLayoutPair> LineLayoutMap;
     LineLayoutMap m_lineLayouts;
 };
@@ -74,10 +74,10 @@ class KateLineLayoutMap
 
 class KateLayoutCache : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit KateLayoutCache(KateRenderer* renderer, QObject* parent);
+public:
+    explicit KateLayoutCache(KateRenderer *renderer, QObject *parent);
 
     void clear();
 
@@ -105,10 +105,10 @@ class KateLayoutCache : public QObject
      */
     KateLineLayoutPtr line(int realLine, int virtualLine = -1);
     /// \overload
-    KateLineLayoutPtr line(const KTextEditor::Cursor& realCursor);
+    KateLineLayoutPtr line(const KTextEditor::Cursor &realCursor);
 
     /// Returns the layout describing the text line which is occupied by \p realCursor.
-    KateTextLayout textLayout(const KTextEditor::Cursor& realCursor);
+    KateTextLayout textLayout(const KTextEditor::Cursor &realCursor);
 
     /// Returns the layout of the specified realLine + viewLine.
     /// if viewLine is -1, return the last.
@@ -117,36 +117,36 @@ class KateLayoutCache : public QObject
 
     // BEGIN methods to do with the caching of lines visible within a view
     /// Returns the layout of the corresponding line in the view
-    KateTextLayout& viewLine(int viewLine);
+    KateTextLayout &viewLine(int viewLine);
 
     // find the view line of the cursor, relative to the display (0 = top line of view, 1 = second line, etc.)
     // if limitToVisible is true, only lines which are currently visible will be searched for, and -1 returned if the line is not visible.
-    int displayViewLine(const KTextEditor::Cursor& virtualCursor, bool limitToVisible = false);
+    int displayViewLine(const KTextEditor::Cursor &virtualCursor, bool limitToVisible = false);
 
     int viewCacheLineCount() const;
     KTextEditor::Cursor viewCacheStart() const;
     KTextEditor::Cursor viewCacheEnd() const;
-    void updateViewCache(const KTextEditor::Cursor& startPos, int newViewLineCount = -1, int viewLinesScrolled = 0);
+    void updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount = -1, int viewLinesScrolled = 0);
 
     void relayoutLines(int startRealLine, int endRealLine);
 
     // find the index of the last view line for a specific line
     int lastViewLine(int realLine);
     // find the view line of cursor c (0 = same line, 1 = down one, etc.)
-    int viewLine(const KTextEditor::Cursor& realCursor);
+    int viewLine(const KTextEditor::Cursor &realCursor);
     int viewLineCount(int realLine);
 
     void viewCacheDebugOutput() const;
     // END
 
 private Q_SLOTS:
-    void wrapLine (const KTextEditor::Cursor &position);
-    void unwrapLine (int line);
-    void insertText (const KTextEditor::Cursor &position, const QString &text);
-    void removeText (const KTextEditor::Range &range);
+    void wrapLine(const KTextEditor::Cursor &position);
+    void unwrapLine(int line);
+    void insertText(const KTextEditor::Cursor &position, const QString &text);
+    void removeText(const KTextEditor::Range &range);
 
 private:
-    KateRenderer* m_renderer;
+    KateRenderer *m_renderer;
 
     /**
      * The master cache of all line layouts.
@@ -167,4 +167,3 @@ private:
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

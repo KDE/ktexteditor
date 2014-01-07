@@ -52,8 +52,8 @@ class View;
  */
 class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
 {
-  Q_OBJECT
-  public:
+    Q_OBJECT
+public:
 
     virtual ~AnnotationModel() {}
 
@@ -73,9 +73,9 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
      *
      * \returns a QVariant that contains the data for the given role.
      */
-    virtual QVariant data( int line, Qt::ItemDataRole role ) const = 0;
+    virtual QVariant data(int line, Qt::ItemDataRole role) const = 0;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * The model should emit the signal reset() when the text of almost all
      * lines changes. In most cases it is enough to call lineChanged().
@@ -95,9 +95,8 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
      * \note Kate Part implementation details: lineChanged() repaints the whole
      *       annotation border automatically.
      */
-    void lineChanged( int line );
+    void lineChanged(int line);
 };
-
 
 /**
  * \brief A Document extension interface for handling Annotation%s
@@ -149,7 +148,7 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
  */
 class KTEXTEDITOR_EXPORT AnnotationInterface
 {
-  public:
+public:
     virtual ~AnnotationInterface() {}
 
     /**
@@ -158,17 +157,16 @@ class KTEXTEDITOR_EXPORT AnnotationInterface
      *
      * \param model the new AnnotationModel
      */
-    virtual void setAnnotationModel( AnnotationModel* model ) = 0;
+    virtual void setAnnotationModel(AnnotationModel *model) = 0;
 
     /**
      * returns the currently set \ref AnnotationModel or 0 if there's none
      * set
      * @returns the current \ref AnnotationModel
      */
-    virtual AnnotationModel* annotationModel() const = 0;
+    virtual AnnotationModel *annotationModel() const = 0;
 
 };
-
 
 /**
  * \brief Annotation interface for the View
@@ -209,7 +207,7 @@ class KTEXTEDITOR_EXPORT AnnotationInterface
  */
 class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
 {
-  public:
+public:
     virtual ~AnnotationViewInterface() {}
 
     /**
@@ -218,17 +216,17 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
      *
      * @param visible if \e true the annotation border is shown, otherwise hidden
      */
-    virtual void setAnnotationBorderVisible( bool visible ) = 0;
+    virtual void setAnnotationBorderVisible(bool visible) = 0;
 
     /**
      * Checks whether the View's annotation border is visible.
      */
     virtual bool isAnnotationBorderVisible() const = 0;
 
-  //
-  // SIGNALS!!!
-  //
-  public:
+    //
+    // SIGNALS!!!
+    //
+public:
     /**
      * This signal is emitted before a context menu is shown on the annotation
      * border for the given line and view.
@@ -240,7 +238,7 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
      * \param menu the context menu that will be shown
      * \param line the annotated line for which the context menu is shown
      */
-    virtual void annotationContextMenuAboutToShow( KTextEditor::View* view, QMenu* menu, int line ) = 0;
+    virtual void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) = 0;
 
     /**
      * This signal is emitted when an entry on the annotation border was activated,
@@ -250,7 +248,7 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
      * \param view the view to which the activated border belongs to
      * \param line the document line that the activated posistion belongs to
      */
-    virtual void annotationActivated( KTextEditor::View* view, int line ) = 0;
+    virtual void annotationActivated(KTextEditor::View *view, int line) = 0;
 
     /**
      * This signal is emitted when the annotation border is shown or hidden.
@@ -258,7 +256,7 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
      * \param view the view to which the border belongs to
      * \param visible the current visibility state
      */
-    virtual void annotationBorderVisibilityChanged( KTextEditor::View* view, bool visible ) = 0;
+    virtual void annotationBorderVisibilityChanged(KTextEditor::View *view, bool visible) = 0;
 
 };
 
@@ -269,4 +267,3 @@ Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterface, "org.kde.KTextEditor.A
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

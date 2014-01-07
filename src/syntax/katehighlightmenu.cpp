@@ -47,78 +47,77 @@
 
 KateHighlightingMenu::~KateHighlightingMenu()
 {
-  qDeleteAll (subMenus);
+    qDeleteAll(subMenus);
 }
 
 void KateHighlightingMenu::init()
 {
-  m_doc = 0;
+    m_doc = 0;
 
-  connect(menu(),SIGNAL(aboutToShow()),this,SLOT(slotAboutToShow()));
-  m_actionGroup = new QActionGroup(menu());
+    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+    m_actionGroup = new QActionGroup(menu());
 }
 
-void KateHighlightingMenu::updateMenu (KateDocument *doc)
+void KateHighlightingMenu::updateMenu(KateDocument *doc)
 {
-  m_doc = doc;
+    m_doc = doc;
 }
 
 void KateHighlightingMenu::slotAboutToShow()
 {
-  for (int z=0; z < KateHlManager::self()->highlights(); z++)
-  {
-    QString hlName = KateHlManager::self()->hlNameTranslated (z);
-    QString hlSection = KateHlManager::self()->hlSection (z);
+    for (int z = 0; z < KateHlManager::self()->highlights(); z++) {
+        QString hlName = KateHlManager::self()->hlNameTranslated(z);
+        QString hlSection = KateHlManager::self()->hlSection(z);
 
-    if (!KateHlManager::self()->hlHidden(z))
-    {
-      if ( !hlSection.isEmpty() && !names.contains(hlName) )
-      {
-        if (!subMenusName.contains(hlSection))
-        {
-          subMenusName << hlSection;
-          QMenu *qmenu = new QMenu (QLatin1Char('&') + hlSection);
-          subMenus.append(qmenu);
-          menu()->addMenu( qmenu );
+        if (!KateHlManager::self()->hlHidden(z)) {
+            if (!hlSection.isEmpty() && !names.contains(hlName)) {
+                if (!subMenusName.contains(hlSection)) {
+                    subMenusName << hlSection;
+                    QMenu *qmenu = new QMenu(QLatin1Char('&') + hlSection);
+                    subMenus.append(qmenu);
+                    menu()->addMenu(qmenu);
+                }
+
+                int m = subMenusName.indexOf(hlSection);
+                names << hlName;
+                QAction *a = subMenus.at(m)->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
+                m_actionGroup->addAction(a);
+                a->setData(KateHlManager::self()->hlName(z));
+                a->setCheckable(true);
+                subActions.append(a);
+            } else if (!names.contains(hlName)) {
+                names << hlName;
+                QAction *a = menu()->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
+                m_actionGroup->addAction(a);
+                a->setData(KateHlManager::self()->hlName(z));
+                a->setCheckable(true);
+                subActions.append(a);
+            }
         }
-
-        int m = subMenusName.indexOf (hlSection);
-        names << hlName;
-        QAction *a=subMenus.at(m)->addAction( QLatin1Char('&') + hlName, this, SLOT(setHl()));
-        m_actionGroup->addAction(a);
-        a->setData(KateHlManager::self()->hlName (z));
-        a->setCheckable(true);
-        subActions.append(a);
-      }
-      else if (!names.contains(hlName))
-      {
-        names << hlName;
-        QAction *a=menu()->addAction ( QLatin1Char('&') + hlName, this, SLOT(setHl()));
-        m_actionGroup->addAction(a);
-        a->setData(KateHlManager::self()->hlName (z));
-        a->setCheckable(true);
-        subActions.append(a);
-      }
     }
-  }
 
-  if (!m_doc) return;
-  QString mode=m_doc->highlightingMode();
-  for (int i=0;i<subActions.count();i++) {
-        subActions[i]->setChecked(subActions[i]->data().toString()==mode);
-  }
+    if (!m_doc) {
+        return;
+    }
+    QString mode = m_doc->highlightingMode();
+    for (int i = 0; i < subActions.count(); i++) {
+        subActions[i]->setChecked(subActions[i]->data().toString() == mode);
+    }
 }
 
-void KateHighlightingMenu::setHl ()
+void KateHighlightingMenu::setHl()
 {
-  if (!m_doc || !sender()) return;
-  QAction *action=qobject_cast<QAction*>(sender());
-  if (!action) return;
-  QString mode=action->data().toString();
-  m_doc->setHighlightingMode(mode);
+    if (!m_doc || !sender()) {
+        return;
+    }
+    QAction *action = qobject_cast<QAction *>(sender());
+    if (!action) {
+        return;
+    }
+    QString mode = action->data().toString();
+    m_doc->setHighlightingMode(mode);
 
-  // use change, honor this
-  m_doc->setDontChangeHlOnSave();
+    // use change, honor this
+    m_doc->setDontChangeHlOnSave();
 }
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

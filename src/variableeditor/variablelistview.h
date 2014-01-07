@@ -29,33 +29,32 @@ class VariableEditor;
 
 class VariableListView : public QScrollArea
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  VariableListView(const QString& variableLine, QWidget* parent = 0);
-  virtual ~VariableListView();
+    VariableListView(const QString &variableLine, QWidget *parent = 0);
+    virtual ~VariableListView();
 
-  void addItem(VariableItem* item);
+    void addItem(VariableItem *item);
 
-  /// always returns the up-to-date variables line
-  QString variableLine();
+    /// always returns the up-to-date variables line
+    QString variableLine();
 
 Q_SIGNALS:
-  void aboutToHide();
-  void changed(); // unused right now
+    void aboutToHide();
+    void changed(); // unused right now
 
 protected:
-  virtual void resizeEvent(QResizeEvent* event);
-  virtual void hideEvent(QHideEvent* event);
+    virtual void resizeEvent(QResizeEvent *event);
+    virtual void hideEvent(QHideEvent *event);
 
-  void parseVariables(const QString& line);
+    void parseVariables(const QString &line);
 
-  QVector<VariableItem *> m_items;
-  QVector<VariableEditor *> m_editors;
+    QVector<VariableItem *> m_items;
+    QVector<VariableEditor *> m_editors;
 
-  QMap<QString, QString> m_variables;
+    QMap<QString, QString> m_variables;
 };
 
 #endif
 
-// kate: indent-width 2; replace-tabs on;

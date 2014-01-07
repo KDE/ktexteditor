@@ -47,16 +47,16 @@ class MovingRange;
  */
 class KTEXTEDITOR_EXPORT MovingRangeFeedback
 {
-  public:
+public:
     /**
      * Default constructor
      */
-    MovingRangeFeedback ();
+    MovingRangeFeedback();
 
     /**
      * Virtual destructor
      */
-    virtual ~MovingRangeFeedback ();
+    virtual ~MovingRangeFeedback();
 
     /**
      * The range is now empty (ie. the start and end cursors are the same).
@@ -65,7 +65,7 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      *
      * \param range pointer to the range which generated the notification.
      */
-    virtual void rangeEmpty (MovingRange* range);
+    virtual void rangeEmpty(MovingRange *range);
 
     /**
      * The range is now invalid (ie. the start and end cursors are invalid).
@@ -73,7 +73,7 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      *
      * \param range pointer to the range which generated the notification.
      */
-    virtual void rangeInvalid (MovingRange* range);
+    virtual void rangeInvalid(MovingRange *range);
 
     /**
      * The mouse cursor on \a view entered \p range.
@@ -81,7 +81,7 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      * \param range pointer to the range which generated the notification.
      * \param view view over which the mouse moved to generate the notification
      */
-    virtual void mouseEnteredRange (MovingRange* range, View* view);
+    virtual void mouseEnteredRange(MovingRange *range, View *view);
 
     /**
      * The mouse cursor on \a view exited \p range.
@@ -89,7 +89,7 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      * \param range pointer to the range which generated the notification.
      * \param view view over which the mouse moved to generate the notification
      */
-    virtual void mouseExitedRange (MovingRange* range, View* view);
+    virtual void mouseExitedRange(MovingRange *range, View *view);
 
     /**
      * The caret on \a view entered \p range.
@@ -97,7 +97,7 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      * \param range pointer to the range which generated the notification.
      * \param view view over which the mouse moved to generate the notification
      */
-    virtual void caretEnteredRange (MovingRange* range, View* view);
+    virtual void caretEnteredRange(MovingRange *range, View *view);
 
     /**
      * The caret on \a view exited \p range.
@@ -105,17 +105,16 @@ class KTEXTEDITOR_EXPORT MovingRangeFeedback
      * \param range pointer to the range which generated the notification.
      * \param view view over which the mouse moved to generate the notification
      */
-    virtual void caretExitedRange (MovingRange* range, View* view);
+    virtual void caretExitedRange(MovingRange *range, View *view);
 
-  private:
+private:
     /**
      * private d-pointer
      */
-    class MovingRangeFeedbackPrivate * const d;
+    class MovingRangeFeedbackPrivate *const d;
 };
 
 }
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

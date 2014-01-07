@@ -24,55 +24,54 @@
 
 class SearchBarTest : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  SearchBarTest();
-  ~SearchBarTest();
+    SearchBarTest();
+    ~SearchBarTest();
 
 public Q_SLOTS:
-  void initTestCase();
-  void cleanupTestCase();
+    void initTestCase();
+    void cleanupTestCase();
 
 private Q_SLOTS:
-  void testFindNextIncremental();
+    void testFindNextIncremental();
 
-  void testSetMatchCaseIncremental();
+    void testSetMatchCaseIncremental();
 
-  void testSetMatchCasePower();
+    void testSetMatchCasePower();
 
-  void testSetSelectionOnlyPower();
+    void testSetSelectionOnlyPower();
 
-  void testSetSearchPattern_data();
-  void testSetSearchPattern();
+    void testSetSearchPattern_data();
+    void testSetSearchPattern();
 
-  void testSetSelectionOnly();
+    void testSetSelectionOnly();
 
-  void testFindAll_data();
-  void testFindAll();
+    void testFindAll_data();
+    void testFindAll();
 
-  void testReplaceAll();
+    void testReplaceAll();
 
-  void testFindSelectionForward_data();
-  void testFindSelectionForward();
+    void testFindSelectionForward_data();
+    void testFindSelectionForward();
 
-  void testRemoveWithSelectionForward_data();
-  void testRemoveWithSelectionForward();
+    void testRemoveWithSelectionForward_data();
+    void testRemoveWithSelectionForward();
 
-  void testRemoveInSelectionForward_data();
-  void testRemoveInSelectionForward();
+    void testRemoveInSelectionForward_data();
+    void testRemoveInSelectionForward();
 
-  void testReplaceWithDoubleSelecion_data();
-  void testReplaceWithDoubleSelecion();
+    void testReplaceWithDoubleSelecion_data();
+    void testReplaceWithDoubleSelecion();
 
-  void testReplaceDollar();
+    void testReplaceDollar();
 
-  void testSearchHistoryIncremental();
-  void testSearchHistoryPower();
+    void testSearchHistoryIncremental();
+    void testSearchHistoryPower();
 
-  void testReplaceInBlockMode();
+    void testReplaceInBlockMode();
 };
 
 #endif
 
-// kate: space-indent on; indent-width 2; replace-tabs on;

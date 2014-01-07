@@ -24,129 +24,139 @@
 #include "katetextcursor.h"
 #include "katetextbuffer.h"
 
-namespace Kate {
-
-TextCursor::TextCursor (TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
-  : m_buffer (buffer)
-  , m_range (0)
-  , m_block (0)
-  , m_line (-1)
-  , m_column (-1)
-  , m_moveOnInsert (insertBehavior == MoveOnInsert)
+namespace Kate
 {
-  // init position
-  setPosition (position, true);
+
+TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
+    : m_buffer(buffer)
+    , m_range(0)
+    , m_block(0)
+    , m_line(-1)
+    , m_column(-1)
+    , m_moveOnInsert(insertBehavior == MoveOnInsert)
+{
+    // init position
+    setPosition(position, true);
 }
 
-TextCursor::TextCursor (TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
-  : m_buffer (buffer)
-  , m_range (range)
-  , m_block (0)
-  , m_line (-1)
-  , m_column (-1)
-  , m_moveOnInsert (insertBehavior == MoveOnInsert)
+TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
+    : m_buffer(buffer)
+    , m_range(range)
+    , m_block(0)
+    , m_line(-1)
+    , m_column(-1)
+    , m_moveOnInsert(insertBehavior == MoveOnInsert)
 {
-  // init position
-  setPosition (position, true);
+    // init position
+    setPosition(position, true);
 }
 
-TextCursor::~TextCursor ()
+TextCursor::~TextCursor()
 {
-  // remove cursor from block or buffer
-  if (m_block)
-    m_block->removeCursor (this);
+    // remove cursor from block or buffer
+    if (m_block) {
+        m_block->removeCursor(this);
+    }
 
-  // only cursors without range are here!
-  else if (!m_range)
-    m_buffer.m_invalidCursors.remove (this);
+    // only cursors without range are here!
+    else if (!m_range) {
+        m_buffer.m_invalidCursors.remove(this);
+    }
 }
 
-void TextCursor::setPosition( const TextCursor& position )
+void TextCursor::setPosition(const TextCursor &position)
 {
-    if (m_block && m_block != position.m_block)
-        m_block->removeCursor (this);
+    if (m_block && m_block != position.m_block) {
+        m_block->removeCursor(this);
+    }
 
     m_line = position.m_line;
     m_column = position.m_column;
 
     m_block = position.m_block;
-    if (m_block)
-        m_block->insertCursor (this);
+    if (m_block) {
+        m_block->insertCursor(this);
+    }
 }
 
-void TextCursor::setPosition(const KTextEditor::Cursor& position, bool init)
+void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
 {
-  // any change or init? else do nothing
-  if (!init && position.line() == line() && position.column() == m_column)
-    return;
+    // any change or init? else do nothing
+    if (!init && position.line() == line() && position.column() == m_column) {
+        return;
+    }
 
-  // remove cursor from old block in any case
-  if (m_block)
-    m_block->removeCursor (this);
+    // remove cursor from old block in any case
+    if (m_block) {
+        m_block->removeCursor(this);
+    }
 
-  // first: validate the line and column, else invalid
-  if (position.column() < 0 || position.line () < 0 || position.line () >= m_buffer.lines ()) {
-    if (!m_range)
-      m_buffer.m_invalidCursors.insert (this);
-    m_block = 0;
-    m_line = m_column = -1;
-    return;
-  }
+    // first: validate the line and column, else invalid
+    if (position.column() < 0 || position.line() < 0 || position.line() >= m_buffer.lines()) {
+        if (!m_range) {
+            m_buffer.m_invalidCursors.insert(this);
+        }
+        m_block = 0;
+        m_line = m_column = -1;
+        return;
+    }
 
-  // else, find block
-  TextBlock *block = m_buffer.blockForIndex (m_buffer.blockForLine (position.line()));
-  Q_ASSERT(block);
+    // else, find block
+    TextBlock *block = m_buffer.blockForIndex(m_buffer.blockForLine(position.line()));
+    Q_ASSERT(block);
 
-  // get line
-  TextLine textLine = block->line (position.line());
+    // get line
+    TextLine textLine = block->line(position.line());
 
 #if 0 // this is no good idea, smart cursors don't do that, too, for non-wrapping cursors
-  // now, validate column, else stay invalid
-  if (position.column() > textLine->text().size()) {
-    if (!m_range)
-      m_buffer.m_invalidCursors.insert (this);
-    m_block = 0;
-    m_line = m_column = -1;
-    return;
-  }
+    // now, validate column, else stay invalid
+    if (position.column() > textLine->text().size()) {
+        if (!m_range) {
+            m_buffer.m_invalidCursors.insert(this);
+        }
+        m_block = 0;
+        m_line = m_column = -1;
+        return;
+    }
 #endif
 
-  // if cursor was invalid before, remove it from invalid cursor list
-  if (!m_range && !m_block && !init) {
-    Q_ASSERT(m_buffer.m_invalidCursors.contains (this));
-    m_buffer.m_invalidCursors.remove (this);
-  }
+    // if cursor was invalid before, remove it from invalid cursor list
+    if (!m_range && !m_block && !init) {
+        Q_ASSERT(m_buffer.m_invalidCursors.contains(this));
+        m_buffer.m_invalidCursors.remove(this);
+    }
 
-  // else: valid cursor
-  m_block = block;
-  m_line = position.line () - m_block->startLine ();
-  m_column = position.column ();
-  m_block->insertCursor (this);
+    // else: valid cursor
+    m_block = block;
+    m_line = position.line() - m_block->startLine();
+    m_column = position.column();
+    m_block->insertCursor(this);
 }
 
-void TextCursor::setPosition(const KTextEditor::Cursor& position)
+void TextCursor::setPosition(const KTextEditor::Cursor &position)
 {
     setPosition(position, false);
 }
 
 int TextCursor::line() const
 {
-  // invalid cursor have no block
-  if (!m_block)
-    return -1;
+    // invalid cursor have no block
+    if (!m_block) {
+        return -1;
+    }
 
-  // else, calculate real line
-  return m_block->startLine () + m_line;
+    // else, calculate real line
+    return m_block->startLine() + m_line;
 }
 
-KTextEditor::Document *Kate::TextCursor::document () const
+KTextEditor::Document *Kate::TextCursor::document() const
 {
-  return m_buffer.document();
+    return m_buffer.document();
 }
 
-KTextEditor::MovingRange *Kate::TextCursor::range () const
+KTextEditor::MovingRange *Kate::TextCursor::range() const
 {
-  return m_range;
+    return m_range;
 }
 
 }
