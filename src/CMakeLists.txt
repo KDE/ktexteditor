@@ -227,20 +227,10 @@ add_library (KF5::TextEditor ALIAS KF5TextEditor)
 
 target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
 
-target_link_libraries(KF5TextEditor LINK_PUBLIC KF5::Parts
-                                  LINK_PRIVATE KF5::I18n
-    Qt5::Script
-    KF5::Archive
-    KF5::GuiAddons
-    KF5::I18n
-    KF5::IconThemes
-    KF5::ItemViews
-    KF5::KCMUtils
-    KF5::KIOFileWidgets
-    KF5::Notifications
-    KF5::Parts
-    KF5::PrintUtils
-    KF5::SonnetCore)
+# API is more or less KParts++, other stuff is used only internally
+target_link_libraries (KF5TextEditor
+    LINK_PUBLIC KF5::Parts
+    LINK_PRIVATE Qt5::Script KF5::I18n KF5::Archive KF5::GuiAddons KF5::IconThemes KF5::ItemViews KF5::KCMUtils KF5::KIOFileWidgets KF5::PrintUtils KF5::SonnetCore KF5::Notifications)
     
 set_target_properties(KF5TextEditor
    PROPERTIES VERSION ${KTEXTEDITOR_VERSION_STRING}
