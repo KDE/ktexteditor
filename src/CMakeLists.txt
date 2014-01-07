@@ -201,9 +201,6 @@ swapfile/kateswapdiffcreator.cpp
 swapfile/kateswapfile.cpp
    )
 
-set( katepart_PART_UI
-)
-
 qt5_wrap_ui(ktexteditor_LIB_SRCS 
 dialogs/textareaappearanceconfigwidget.ui
 dialogs/bordersappearanceconfigwidget.ui
@@ -254,7 +251,6 @@ install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${INSTALL_TARGETS_DEFA
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_export.h
-  ${FooBar_HEADERS}
   DESTINATION ${INCLUDE_INSTALL_DIR}/KTextEditor
   COMPONENT Devel
 )
