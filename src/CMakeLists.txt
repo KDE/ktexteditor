@@ -224,13 +224,13 @@ dialogs/viinputmodeconfigwidget.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
    
-add_library (KTextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
-generate_export_header (KTextEditor)
-add_library (KF5::KTextEditor ALIAS KTextEditor)
+add_library (KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
+generate_export_header (KF5TextEditor)
+add_library (KF5::TextEditor ALIAS KF5TextEditor)
 
-target_include_directories(KTextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
+target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
 
-target_link_libraries(KTextEditor LINK_PUBLIC KF5::Parts
+target_link_libraries(KF5TextEditor LINK_PUBLIC KF5::Parts
                                   LINK_PRIVATE KF5::I18n
     Qt5::Script
     KF5::Archive
@@ -245,12 +245,12 @@ target_link_libraries(KTextEditor LINK_PUBLIC KF5::Parts
     KF5::PrintUtils
     KF5::SonnetCore)
     
-set_target_properties(KTextEditor
+set_target_properties(KF5TextEditor
    PROPERTIES VERSION ${KTEXTEDITOR_VERSION_STRING}
    SOVERSION ${KTEXTEDITOR_SOVERSION}
 )
 
-install(TARGETS KTextEditor EXPORT KTextEditorTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_export.h
@@ -272,7 +272,7 @@ add_subdirectory( script/data )
 add_library (katepart MODULE utils/katefactory.cpp)
 
 # link the part, use kate part core + kde stuff
-target_link_libraries (katepart KTextEditor Qt5::Script)
+target_link_libraries (katepart KF5TextEditor Qt5::Script)
 
 # install the part
 install (TARGETS katepart DESTINATION ${PLUGIN_INSTALL_DIR})

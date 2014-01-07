@@ -29,7 +29,7 @@ include_directories(
 add_definitions(-DTEST_DATA_DIR="${CMAKE_SOURCE_DIR}/autotests/input/")
 add_definitions(-DJS_DATA_DIR="${CMAKE_SOURCE_DIR}/src/script/data/")
 
-set (KATE_TEST_LINK_LIBS KTextEditor
+set (KATE_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
   KF5::KIOFileWidgets
   KF5::IconThemes

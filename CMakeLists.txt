@@ -21,7 +21,7 @@ ecm_setup_version(
   ${KF5_VERSION}
   VARIABLE_PREFIX KTEXTEDITOR
   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
-  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KTextEditorConfigVersion.cmake"
+  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfigVersion.cmake"
 )
 
 # Dependencies
@@ -60,25 +60,25 @@ add_subdirectory(autotests)
 #add_subdirectory(tests)
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KTextEditor")
+set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5TextEditor")
 
 configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/KTextEditorConfig.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/KTextEditorConfig.cmake"
+  "${CMAKE_CURRENT_SOURCE_DIR}/KF5TextEditorConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfig.cmake"
   INSTALL_DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
 )
 
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/KTextEditorConfig.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/KTextEditorConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfig.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfigVersion.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   COMPONENT Devel
 )
 
 install(EXPORT
-  KTextEditorTargets
+  KF5TextEditorTargets
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  FILE KTextEditorTargets.cmake
+  FILE KF5TextEditorTargets.cmake
   NAMESPACE KF5::
 )
 
