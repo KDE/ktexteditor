@@ -1,18 +1,56 @@
-# What are these files?
+# KTextEditor
 
-These template files can be used for two things:
+## Introduction
 
-- As a reference when splitting frameworks: if you get strange CMake errors
-  while building, check your framework structure matches with the templates.
+KTextEditor provides a powerful text editor component that you can embed in your
+application, either as a KPart or using the KF5::TextEditor library (if you need
+more control).
 
-- To create new frameworks: run `setup.sh <MyFramework> </destdir/myframework>`
-  to copy the template files to `/destdir/myframework` and perform the
-  appropriate renamings.
+The text editor component contains many useful features, from syntax
+highlighting and automatic indentation to advanced scripting support, making it
+suitable for everything from a simple embedded text-file editor to an advanced
+IDE.
 
-For this to be useful it has to be kept updated, I am going to do my best there,
-but if you spot anything strange or outdated in there, please notify the
-kde-frameworks-devel mailin list and/or fix it.
+## Usage
 
-Note that the templates themselves are "buildable": you can create a build 
-dir, point cmake to the "template" dir and "make install" a (useless) 
-`libKTextEditor.so`.
+### KPart
+
+As with other KParts, you should use KParts::MainWindow as your main window.
+You can directly request "katepart", as in
+
+    KService::Ptr service = KService::serviceByDesktopPath("katepart");
+    if (service) {
+        m_part = service->createInstance<KParts::ReadWritePart>(0);
+    }
+
+See the KParts documentation for more information on using KParts.
+
+### Library
+
+If you are using CMake, you need to have
+
+    find_package(KF5TextEditor NO_MODULE)
+
+(or similar) in your CMakeLists.txt file, and you need to link any target that
+uses KTextEditor against KF5::TextEditor.
+
+After that, you can use KTextEditor::Editor to create an editor instance, and
+use that to manage KTextEditor::Document instances.
+
+    #include <KTextEditor/Document>
+    #include <KTextEditor/Editor>
+    #include <KTextEditor/View>
+    
+    KTextEditor::Editor *editor = KTextEditor::Editor::instance();
+    // create a new document
+    KTextEditor::Document *doc = editor->createDocument(this);
+    // create a widget to display the document
+    KTextEditor::View *view = editor->createView(containerWidget);
+
+See the documentation for these classes for more information.
+
+## Links
+
+- Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
+- IRC channel: #kde-devel on Freenode
+- Git repository: <https://projects.kde.org/projects/frameworks/ktexteditor/repository>
