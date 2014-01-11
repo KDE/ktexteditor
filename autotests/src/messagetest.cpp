@@ -83,7 +83,7 @@ void MessageTest::testAutoHide()
     //
     QPointer<Message> message = new Message("Message text", Message::Information);
     message->setPosition(Message::TopInView);
-    message->setAutoHide(2000);
+    message->setAutoHide(1000);
     message->setAutoHideMode(Message::Immediate);
 
     doc.postMessage(message);
@@ -91,11 +91,11 @@ void MessageTest::testAutoHide()
     QTest::qWait(500);
     QVERIFY(view->messageWidget()->isVisible());
 
-    // should be deleted after 2.1 seconds
-    QTest::qWait(1600);
+    // should be deleted after 1.5 seconds
+    QTest::qWait(1000);
     QVERIFY(message.data() == 0);
 
-    // message widget should be hidden after 2.6 seconds
+    // message widget should be hidden after 2 seconds
     QTest::qWait(500);
     QVERIFY(!view->messageWidget()->isVisible());
 }
