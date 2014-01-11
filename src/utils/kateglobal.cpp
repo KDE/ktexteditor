@@ -20,9 +20,8 @@
  */
 
 #include "kateglobal.h"
-#include "kateglobal.moc"
 
-#include "config.h"
+#include <ktexteditor_version.h>
 
 #include "katedocument.h"
 #include "kateview.h"
@@ -71,7 +70,7 @@ bool KateGlobal::unitTestMode()
 
 KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
     : KTextEditor::Editor(0)
-    , m_aboutData(QLatin1String("katepart"), QString(), i18n("Kate Part"), QLatin1String(KATE_VERSION),
+    , m_aboutData(QLatin1String("katepart"), QString(), i18n("Kate Part"), QLatin1String(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutData::License_LGPL_V2,
                   i18n("(c) 2000-2013 The Kate Authors"), QString(), QLatin1String("http://www.kate-editor.org"))
     , m_sessionConfig(KSharedConfig::openConfig())

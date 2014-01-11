@@ -21,10 +21,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "config.h"
-
 #include "katepartpluginmanager.h"
-#include "katepartpluginmanager.moc"
 
 #include "kateglobal.h"
 #include "katepartdebug.h"
@@ -111,34 +108,14 @@ KatePartPluginManager *KatePartPluginManager::self()
     return KateGlobal::self()->pluginManager();
 }
 
-#define MAKE_VERSION( a,b,c ) (((a) << 16) | ((b) << 8) | (c))
-
-static const unsigned KPPMVersion = MAKE_VERSION(KateVersionMajor,
-                                    KateVersionMinor,
-                                    KateVersionMicro);
-
-static const unsigned MinPluginVersion = MAKE_VERSION(4, 0, 0);
-
 void KatePartPluginManager::setupPluginList()
 {
-    KService::List traderList = KServiceTypeTrader::self()->
-                                query(QLatin1String("KTextEditor/Plugin"));
-
+    KService::List traderList = KServiceTypeTrader::self()->query(QLatin1String("KTextEditor/Plugin"));
     foreach (const KService::Ptr &ptr, traderList) {
-        QVariant version = ptr->property(QLatin1String("X-KDE-Version"), QVariant::String);
-        QStringList numbers = qvariant_cast<QString>(version).split(QLatin1Char('.'));
-        unsigned int kdeVersion = MAKE_VERSION(numbers.value(0).toUInt(),
-                                               numbers.value(1).toUInt(),
-                                               numbers.value(2).toUInt());
-
-        if (MinPluginVersion <= kdeVersion && kdeVersion <= KPPMVersion) {
-            KatePartPluginInfo info(ptr);
-
-            info.setLoad(false);
-            info.plugin = 0L;
-
-            m_pluginList.push_back(info);
-        }
+        KatePartPluginInfo info(ptr);
+        info.setLoad(false);
+        info.plugin = 0L;
+        m_pluginList.push_back(info);
     }
 }
 

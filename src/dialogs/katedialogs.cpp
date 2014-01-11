@@ -27,9 +27,8 @@
 
 //BEGIN Includes
 #include "katedialogs.h"
-#include "katedialogs.moc"
 
-#include "config.h"
+#include <ktexteditor_version.h>
 
 #include "kateautoindent.h"
 #include "katebuffer.h"
@@ -1252,7 +1251,7 @@ KateHlDownloadDialog::KateHlDownloadDialog(QWidget *parent, const char *name, bo
     buttons->addButton(closeButton, QDialogButtonBox::RejectRole);
     connect(closeButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-    transferJob = KIO::get(QUrl(QString::fromLatin1("%1update-%2.%3.xml").arg(HLDOWNLOADPATH).arg(KateVersionMajor).arg(KateVersionMinor)), KIO::Reload);
+    transferJob = KIO::get(QUrl(QString::fromLatin1("%1update-%2.%3.xml").arg(HLDOWNLOADPATH).arg(KTEXTEDITOR_VERSION_MAJOR).arg(KTEXTEDITOR_VERSION_MINOR)), KIO::Reload);
     connect(transferJob, SIGNAL(data(KIO::Job*,QByteArray)),
             this, SLOT(listDataReceived(KIO::Job*,QByteArray)));
 //        void data( KIO::Job *, const QByteArray &data);

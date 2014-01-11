@@ -21,7 +21,7 @@
 
 #include "katescriptmanager.h"
 
-#include "config.h"
+#include <ktexteditor_version.h>
 
 #include <QDir>
 #include <QFile>
@@ -93,8 +93,8 @@ void KateScriptManager::collect(bool force)
     {
         KConfigGroup config(&cfgFile, QLatin1String("General"));
         // If KatePart version does not match, better force a true reload
-        if (QLatin1String(KATE_VERSION) != config.readEntry(QLatin1String("kate-version"))) {
-            config.writeEntry(QLatin1String("kate-version"), KATE_VERSION);
+        if (QLatin1String (KTEXTEDITOR_VERSION_STRING) != config.readEntry (QLatin1String("kate-version"))) {
+            config.writeEntry(QLatin1String("kate-version"), QString::fromLatin1 (KTEXTEDITOR_VERSION_STRING));
             force = true;
         }
     }
