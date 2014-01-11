@@ -31,8 +31,7 @@ set(REQUIRED_QT_VERSION "5.2.0")
 # Required Qt5 components to build this framework
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Script)
 
-# TODO: Add all required find_package() calls here
-
+# Required KF5 frameworks
 if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
   # KF5 frameworks
   #
@@ -58,7 +57,6 @@ endif()
 # Subdirectories
 add_subdirectory(src)
 add_subdirectory(autotests)
-#add_subdirectory(tests)
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5TextEditor")
@@ -90,12 +88,11 @@ install(FILES
 )
 
 # config.h
-if(NOT APPLE)
-  check_function_exists (fdatasync HAVE_FDATASYNC)
-  check_function_exists (ctermid HAVE_CTERMID)
-endif(NOT APPLE)
-
+check_function_exists (fdatasync HAVE_FDATASYNC)
 configure_file (config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+
+# let our config.h be found first in any case
+include_directories (BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
 if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
   feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
