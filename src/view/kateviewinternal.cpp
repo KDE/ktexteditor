@@ -211,10 +211,8 @@ KateViewInternal::KateViewInternal(KateView *view)
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)),
             this, SLOT(viewSelectionChanged()));
 
-#if 0 //FIXME KF5
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::installFactory(accessibleInterfaceFactory);
-#endif
 #endif
 
     // update is called in KateView, after construction and layout is over
@@ -228,11 +226,8 @@ KateViewInternal::~KateViewInternal()
         delete m_textAnimation;
     }
 
-#if 0 //FIXME KF5
-
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::removeFactory(accessibleInterfaceFactory);
-#endif
 #endif
 
     // kill preedit ranges
@@ -675,12 +670,9 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, boo
 
     m_madeVisible = !force;
 
-#if 0 //FIXME KF5
-
 #ifndef QT_NO_ACCESSIBILITY
-    QAccessible::updateAccessibility(this, KateCursorAccessible::ChildId, QAccessible::Focus);
-#endif
-
+    // FIXME -- is this needed?
+//    QAccessible::updateAccessibility(this, KateCursorAccessible::ChildId, QAccessible::Focus);
 #endif
 
 }
@@ -1889,11 +1881,10 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bo
         m_selectAnchor = KTextEditor::Cursor::invalid();
     }
 
-#if 0 //FIXME KF5
-
 #ifndef QT_NO_ACCESSIBILITY
-    QAccessible::updateAccessibility(this, 0, QAccessible::TextSelectionChanged);
-#endif
+//    FIXME KF5
+//    QAccessibleTextSelectionEvent ev(this, /* selection start, selection end*/);
+//    QAccessible::updateAccessibility(&ev);
 #endif
 }
 
@@ -3531,10 +3522,17 @@ void KateViewInternal::cursorMoved()
 {
     m_view->updateRangesIn(KTextEditor::Attribute::ActivateCaretIn);
 
-#if 0 //FIXME KF5
 #ifndef QT_NO_ACCESSIBILITY
-    QAccessible::updateAccessibility(this, 0, QAccessible::TextCaretMoved);
-#endif
+    if (QAccessible::isActive()) {
+        QAccessibleInterface *iface = QAccessible::queryAccessibleInterface(this);
+        if (iface) {
+            QAccessibleTextInterface *textInterface = iface->textInterface();
+            if (textInterface) {
+                QAccessibleTextCursorEvent ev(this, textInterface->cursorPosition());
+                QAccessible::updateAccessibility(&ev);
+            }
+        }
+    }
 #endif
 }
 
