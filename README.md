@@ -49,6 +49,10 @@ use that to manage KTextEditor::Document instances.
 
 See the documentation for these classes for more information.
 
+## Licensing
+
+Contributions to KTextEditor shall be licensed under LGPLv2+.
+
 ## Links
 
 - Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
