@@ -72,7 +72,7 @@ KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
     : KTextEditor::Editor(0)
     , m_aboutData(QLatin1String("katepart"), QString(), i18n("Kate Part"), QLatin1String(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutData::License_LGPL_V2,
-                  i18n("(c) 2000-2013 The Kate Authors"), QString(), QLatin1String("http://www.kate-editor.org"))
+                  i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
     , m_sessionConfig(KSharedConfig::openConfig())
     , m_application(nullptr)
 {
