@@ -24,23 +24,21 @@
 #ifndef KATE_VI_NORMAL_MODE_INCLUDED
 #define KATE_VI_NORMAL_MODE_INCLUDED
 
-#include "kateview.h"
-#include "kateviewinternal.h"
-#include "katevicommand.h"
-#include "katevimotion.h"
 #include "katevirange.h"
 #include "katevimodebase.h"
 
-#include <QKeyEvent>
 #include <QVector>
 #include <QStack>
 #include <QHash>
 #include <QRegExp>
+
 #include <ktexteditor/cursor.h>
-#include "katevikeyparser.h"
 #include <ktexteditor_export.h>
 
+class QKeyEvent;
+class KateViCommand;
 class KateViMotion;
+class KateViKeyParser;
 class KateViInputModeManager;
 
 /**
@@ -276,57 +274,65 @@ public:
     virtual void reset();
 
     void beginMonitoringDocumentChanges();
+
 protected:
     void resetParser();
     void initializeCommands();
-    QRegExp generateMatchingItemRegex();
+    QRegExp generateMatchingItemRegex() const;
     void executeCommand(const KateViCommand *cmd);
     OperationMode getOperationMode() const;
-    // The 'current position' is the current cursor position for non-linewise pastes, and the current
-    // line for linewise.
-    enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
-    bool paste(KateViNormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
-    Cursor cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText);
+
+    void highlightYank(const KateViRange &range, const OperationMode mode = CharWise);
+    void addHighlightYank(const Range &range);
+
+    bool motionWillBeUsedWithCommand() const
+    {
+        return !m_awaitingMotionOrTextObject.isEmpty();
+    };
 
     void joinLines(unsigned int from, unsigned int to) const;
     void reformatLines(unsigned int from, unsigned int to) const;
 
-    KateViRange textObjectComma(bool inner);
-    void shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo);
+    KateViRange textObjectComma(bool inner) const;
+    void shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo) const;
 
+protected:
+    // The 'current position' is the current cursor position for non-linewise pastes, and the current
+    // line for linewise.
+    enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
+    bool paste(KateViNormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
+    Cursor cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText) const;
+
+protected:
     QString m_keys;
+    QString m_lastTFcommand; // holds the last t/T/f/F command so that it can be repeated with ;/,
+
+    // registers
+    QChar m_defaultRegister;
+    QString m_registerTemp;
+
     unsigned int m_countTemp;
-    bool m_findWaitingForChar;
+    int m_motionOperatorIndex;
+    uint m_scroll_count_limit;
 
     QVector<KateViCommand *> m_commands;
     QVector<KateViMotion *> m_motions;
     QVector<int> m_matchingCommands;
     QVector<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;
-    bool motionWillBeUsedWithCommand()
-    {
-        return !m_awaitingMotionOrTextObject.isEmpty();
-    };
 
-    int m_motionOperatorIndex;
-
-    QString m_lastTFcommand; // holds the last t/T/f/F command so that it can be repeated with ;/,
+    bool m_findWaitingForChar;
     bool m_isRepeatedTFcommand;
-
     bool m_linewiseCommand;
     bool m_commandWithMotion;
     bool m_lastMotionWasLinewiseInnerBlock;
     bool m_motionCanChangeWholeVisualModeSelection;
-
     bool m_commandShouldKeepSelection;
-
     bool m_deleteCommand;
-
-    uint m_scroll_count_limit;
-
-    // registers
-    QChar m_defaultRegister;
-    QString m_registerTemp;
+    // Ctrl-c or ESC have been pressed, leading to a call to reset().
+    bool m_pendingResetIsDueToExit;
+    bool m_isUndo;
+    bool waitingForRegisterOrCharToSearch();
 
     // item matching ('%' motion)
     QHash<QString, QString> m_matchingItems;
@@ -334,23 +340,13 @@ protected:
 
     KateViKeyParser *m_keyParser;
 
-    // Ctrl-c or ESC have been pressed, leading to a call to reset().
-    bool m_pendingResetIsDueToExit;
-
     KTextEditor::Attribute::Ptr m_highlightYankAttribute;
     QSet<KTextEditor::MovingRange *> m_highlightedYanks;
-
-    void highlightYank(const KateViRange &range, const OperationMode mode = CharWise);
-    void addHighlightYank(const Range &range);
     QSet<KTextEditor::MovingRange *> &highlightedYankForDocument();
 
     Cursor m_currentChangeEndMarker;
-
-    bool m_isUndo;
-
     Cursor m_positionWhenIncrementalSearchBegan;
 
-    bool waitingForRegisterOrCharToSearch();
 private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void textRemoved(KTextEditor::Document *, KTextEditor::Range);

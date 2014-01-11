@@ -25,9 +25,10 @@
 
 #include <QKeyEvent>
 #include <QList>
+#include <QStack>
 #include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
-#include "katedocument.h"
+#include <ktexteditor/markinterface.h>
 
 class KConfigGroup;
 class KateView;

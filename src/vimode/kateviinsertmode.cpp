@@ -183,26 +183,16 @@ bool KateViInsertMode::commandUnindent()
 
 bool KateViInsertMode::commandToFirstCharacterInFile()
 {
-    Cursor c;
-
-    c.setLine(0);
-    c.setColumn(0);
-
+    Cursor c(0,0);
     updateCursor(c);
-
     return true;
 }
 
 bool KateViInsertMode::commandToLastCharacterInFile()
 {
-    Cursor c;
-
     int lines = doc()->lines() - 1;
-    c.setLine(lines);
-    c.setColumn(doc()->line(lines).length());
-
+    Cursor c(lines, doc()->line(lines).length());
     updateCursor(c);
-
     return true;
 }
 
@@ -676,7 +666,7 @@ void KateViInsertMode::replayCompletion()
     }
 }
 
-int KateViInsertMode::findNextMergeableBracketPos(const Cursor &startPos)
+int KateViInsertMode::findNextMergeableBracketPos(const Cursor &startPos) const
 {
     const QString lineAfterCursor = doc()->text(Range(startPos, Cursor(startPos.line(), doc()->lineLength(startPos.line()))));
     QRegExp whitespaceThenOpeningBracket(QLatin1String("^\\s*(\\()"));

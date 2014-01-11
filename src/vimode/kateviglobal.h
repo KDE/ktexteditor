@@ -29,7 +29,6 @@
 #include <QPair>
 
 #include "katevimodebase.h"
-#include "kateviinputmodemanager.h"
 #include <ktexteditor_export.h>
 
 class QString;

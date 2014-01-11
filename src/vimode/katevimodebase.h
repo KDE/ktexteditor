@@ -25,12 +25,10 @@
 #define KATE_VI_MODE_BASE_INCLUDED
 
 #include <ktexteditor/cursor.h>
+#include <ktexteditor_export.h>
+
 #include "kateview.h"
 #include "katevirange.h"
-#include "kateviewinternal.h"
-#include <ktexteditor_export.h>
-#include "katedocument.h"
-#include "katelayoutcache.h"
 
 #include <QList>
 
@@ -101,6 +99,7 @@ public:
 
     KateViRange motionFindNext();
     KateViRange motionFindPrev();
+
 protected:
     // helper methods
     void yankToClipBoard(QChar chosen_register, QString text);
@@ -127,7 +126,7 @@ protected:
 
     int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
     void updateCursor(const Cursor &c) const;
-    const QChar getCharAtVirtualColumn(QString &line, int virtualColumn, int tabWidht) const;
+    const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht) const;
 
     void addToNumberUnderCursor(int count);
 
@@ -137,14 +136,8 @@ protected:
     KateViRange goLineUpDown(int lines);
     KateViRange goVisualLineUpDown(int lines);
 
-    unsigned int linesDisplayed()
-    {
-        return m_viewInternal->linesDisplayed();
-    }
-    void scrollViewLines(int l)
-    {
-        m_viewInternal->scrollViewLines(l);
-    }
+    unsigned int linesDisplayed() const;
+    void scrollViewLines(int l);
 
     unsigned int getCount() const
     {
@@ -153,7 +146,8 @@ protected:
         }
         return (m_count > 0) ? m_count : 1;
     }
-    bool isCounted()
+
+    bool isCounted() const
     {
         return m_iscounted;
     }
@@ -172,11 +166,17 @@ protected:
 
     void switchView(Direction direction = Next);
 
-    QChar m_register;
-
     void addJump(KTextEditor::Cursor cursor);
-    KTextEditor::Cursor getNextJump(KTextEditor::Cursor);
-    KTextEditor::Cursor getPrevJump(KTextEditor::Cursor);
+    KTextEditor::Cursor getNextJump(KTextEditor::Cursor) const;
+    KTextEditor::Cursor getPrevJump(KTextEditor::Cursor) const;
+
+    inline KateDocument *doc() const
+    {
+        return m_view->doc();
+    };
+
+protected:
+    QChar m_register;
 
     KateViRange m_commandRange;
     unsigned int m_count;
@@ -189,11 +189,6 @@ protected:
     int m_stickyColumn;
     bool m_lastMotionWasVisualLineUpOrDown;
     bool m_currentMotionWasVisualLineUpOrDown;
-
-    inline KateDocument *doc() const
-    {
-        return m_view->doc();
-    };
 
     KateView *m_view;
     KateViewInternal *m_viewInternal;

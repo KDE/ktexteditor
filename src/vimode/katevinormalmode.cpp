@@ -22,22 +22,25 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+#include "katebuffer.h"
+#include "katecompletionwidget.h"
+#include "kateconfig.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
+#include "kateundomanager.h"
+#include "katevicommand.h"
+#include "kateviemulatedcommandbar.h"
+#include "kateviewhelpers.h"
+#include "kateviewinternal.h"
+#include "kateviglobal.h"
+#include "kateviinputmodemanager.h"
+#include "kateviinsertmode.h"
+#include "katevikeymapper.h"
+#include "katevikeyparser.h"
+#include "katevimotion.h"
 #include "katevinormalmode.h"
 #include "katevivisualmode.h"
-#include "kateviinsertmode.h"
-#include "kateviinputmodemanager.h"
-#include "kateviglobal.h"
-#include "katevikeymapper.h"
-#include "kateviemulatedcommandbar.h"
-#include "kateglobal.h"
-#include "kateconfig.h"
-#include "katebuffer.h"
-#include "kateviewhelpers.h"
-#include <kateundomanager.h>
 #include <ktexteditor/attribute.h>
-#include <katecompletionwidget.h>
-#include "kateconfig.h"
-#include "katepartdebug.h"
 
 #include <QApplication>
 #include <QList>
@@ -2856,9 +2859,7 @@ KateViRange KateViNormalMode::motionToAfterParagraph()
     // if we ended up on the last line, the cursor should be placed on the last column
     int column = (line == doc()->lines() - 1) ? qMax(getLine(line).length() - 1, 0) : 0;
 
-    KateViRange r(line, column, ViMotion::InclusiveMotion);
-
-    return r;
+    return KateViRange(line, column, ViMotion::InclusiveMotion);
 }
 
 KateViRange KateViNormalMode::motionToIncrementalSearchMatch()
@@ -3379,7 +3380,7 @@ void KateViNormalMode::initializeCommands()
     ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE);
 }
 
-QRegExp KateViNormalMode::generateMatchingItemRegex()
+QRegExp KateViNormalMode::generateMatchingItemRegex() const
 {
     QString pattern(QLatin1String("\\[|\\]|\\{|\\}|\\(|\\)|"));
     QList<QString> keys = m_matchingItems.keys();
@@ -3518,7 +3519,7 @@ bool KateViNormalMode::paste(PasteLocation pasteLocation, bool isgPaste, bool is
     return true;
 }
 
-Cursor KateViNormalMode::cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText)
+Cursor KateViNormalMode::cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText) const
 {
     Cursor cAfter = pasteLocation;
     const QStringList textLines = pastedText.split(QLatin1String("\n"));
@@ -3553,7 +3554,7 @@ void KateViNormalMode::reformatLines(unsigned int from, unsigned int to) const
 }
 
 // Tries to shrinks toShrink so that it fits tightly around rangeToShrinkTo.
-void KateViNormalMode::shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo)
+void KateViNormalMode::shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo) const
 {
     if (!toShrink.valid || !rangeToShrinkTo.valid) {
         return;
@@ -3604,7 +3605,7 @@ void KateViNormalMode::shrinkRangeAroundCursor(KateViRange &toShrink, const Kate
     }
 }
 
-KateViRange KateViNormalMode::textObjectComma(bool inner)
+KateViRange KateViNormalMode::textObjectComma(bool inner) const
 {
     // Basic algorithm: look left and right of the cursor for all combinations
     // of enclosing commas and the various types of brackets, and pick the pair

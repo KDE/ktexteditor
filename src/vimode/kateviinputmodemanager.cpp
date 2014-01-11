@@ -34,6 +34,7 @@
 #include "kateconfig.h"
 #include "kateglobal.h"
 #include "kateviglobal.h"
+#include "kateviewinternal.h"
 #include "katevinormalmode.h"
 #include "kateviinsertmode.h"
 #include "katevivisualmode.h"

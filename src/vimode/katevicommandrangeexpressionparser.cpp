@@ -22,7 +22,8 @@
  */
 #include "katevicommandrangeexpressionparser.h"
 
-#include <kateview.h>
+#include "kateview.h"
+#include "katedocument.h"
 
 #include <QStringList>
 

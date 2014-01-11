@@ -17,18 +17,21 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
+
 #include "kateviemulatedcommandbar.h"
-#include "katevikeyparser.h"
+
+#include "katecmd.h"
+#include "katecmds.h"
+#include "kateconfig.h"
+#include "katedocument.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
+#include "katevicommandrangeexpressionparser.h"
 #include "kateview.h"
 #include "kateviglobal.h"
+#include "katevikeyparser.h"
 #include "katevinormalmode.h"
 #include "katevivisualmode.h"
-#include "katevicommandrangeexpressionparser.h"
-#include "kateglobal.h"
-#include "kateconfig.h"
-#include "katecmd.h"
-#include <katecmds.h>
-#include "katepartdebug.h"
 
 #include <KColorScheme>
 

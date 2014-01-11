@@ -22,7 +22,6 @@
 #define KATE_VI_MOTION_INCLUDED
 
 #include "katevicommand.h"
-#include "katevinormalmode.h"
 #include "katevirange.h"
 #include <ktexteditor_export.h>
 

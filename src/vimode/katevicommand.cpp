@@ -19,6 +19,9 @@
  */
 
 #include "katevicommand.h"
+#include "katevikeyparser.h"
+
+#include <QRegExp>
 
 KateViCommand::KateViCommand(KateViNormalMode *parent, QString pattern,
                              bool(KateViNormalMode::*commandMethod)(), unsigned int flags)

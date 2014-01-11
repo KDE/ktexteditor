@@ -100,8 +100,6 @@ bool KateViReplaceMode::handleKeypress(const QKeyEvent *e)
         return true;
     }
 
-    KTextEditor::Cursor c(m_view->cursorPosition());
-
     if (e->modifiers() == Qt::NoModifier) {
         switch (e->key()) {
         case Qt::Key_Escape:

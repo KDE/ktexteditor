@@ -22,6 +22,7 @@
 #include "kateglobal.h"
 #include "kateviglobal.h"
 #include "katepartdebug.h"
+#include "katedocument.h"
 
 #include <QTimer>
 

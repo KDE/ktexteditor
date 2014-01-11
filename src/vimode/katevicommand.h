@@ -19,14 +19,14 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevinormalmode.h"
-#include "katevikeyparser.h"
-#include <ktexteditor_export.h>
-
 #ifndef KATE_VI_COMMAND_H
 #define KATE_VI_COMMAND_H
 
-class KTEXTEDITOR_EXPORT KateViNormalMode;
+#include <ktexteditor_export.h>
+#include <QString>
+
+class KateViKeyParser;
+class KateViNormalMode;
 
 enum KateViCommandFlags {
     REGEX_PATTERN = 0x1,    // the pattern is a regex

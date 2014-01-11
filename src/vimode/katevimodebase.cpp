@@ -29,6 +29,7 @@
 #include "katevinormalmode.h"
 #include "katevireplacemode.h"
 #include "kateviinputmodemanager.h"
+#include "katelayoutcache.h"
 
 #include <QString>
 #include <KLocalizedString>
@@ -963,12 +964,12 @@ void KateViModeBase::addJump(KTextEditor::Cursor cursor)
     m_viInputModeManager->addJump(cursor);
 }
 
-KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor)
+KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor) const
 {
     return m_viInputModeManager->getNextJump(cursor);
 }
 
-KTextEditor::Cursor KateViModeBase::getPrevJump(KTextEditor::Cursor cursor)
+KTextEditor::Cursor KateViModeBase::getPrevJump(KTextEditor::Cursor cursor) const
 {
     return m_viInputModeManager->getPrevJump(cursor);
 }
@@ -1265,7 +1266,7 @@ QString KateViModeBase::getVerbatimKeys() const
     return m_keysVerbatim;
 }
 
-const QChar KateViModeBase::getCharAtVirtualColumn(QString &line, int virtualColumn,
+const QChar KateViModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn,
         int tabWidth) const
 {
     int column = 0;
@@ -1541,4 +1542,14 @@ void KateViModeBase::findPrev()
     if (r.valid) {
         goToPos(r);
     }
+}
+
+unsigned int KateViModeBase::linesDisplayed() const
+{
+    return m_viewInternal->linesDisplayed();
+}
+
+void KateViModeBase::scrollViewLines(int l)
+{
+    m_viewInternal->scrollViewLines(l);
 }

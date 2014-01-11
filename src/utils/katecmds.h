@@ -24,7 +24,6 @@
 #define __KATE_CMDS_H__
 
 #include <ktexteditor/commandinterface.h>
-#include "kateviinputmodemanager.h"
 #include "kateviglobal.h"
 #include "kateregexpsearch.h"
 

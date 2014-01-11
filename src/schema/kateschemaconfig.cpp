@@ -24,6 +24,7 @@
 #include "kateschemaconfig.h"
 #include "kateschemaconfig.moc"
 
+#include "katedocument.h"
 #include "kateschema.h"
 #include "kateconfig.h"
 #include "kateglobal.h"

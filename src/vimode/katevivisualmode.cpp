@@ -23,7 +23,10 @@
 #include "kateglobal.h"
 #include "kateviglobal.h"
 #include "katevivisualmode.h"
+#include "katevicommand.h"
+#include "katevimotion.h"
 #include "katevirange.h"
+#include "katedocument.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;

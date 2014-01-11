@@ -23,7 +23,6 @@
 #ifndef KATE_VI_INSERT_MODE_INCLUDED
 #define KATE_VI_INSERT_MODE_INCLUDED
 
-#include <QKeyEvent>
 #include "katevimodebase.h"
 #include <ktexteditor_export.h>
 
@@ -41,6 +40,8 @@ enum BlockInsert {
     Append,
     AppendEOL
 };
+
+class QKeyEvent;
 
 class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
 {
@@ -87,6 +88,12 @@ public:
     };
 
 protected:
+    void leaveInsertMode(bool force = false);
+    void completionFinished();
+    void replayCompletion();
+    int findNextMergeableBracketPos(const Cursor &startPos) const;
+
+protected:
     BlockInsert m_blockInsert;
     unsigned int m_eolPos; // length of first line in eol mode before text is appended
     KateViRange m_blockRange;
@@ -101,11 +108,6 @@ protected:
     QString m_textInsertedByCompletion;
     Cursor m_textInsertedByCompletionEndPos;
 
-    void leaveInsertMode(bool force = false);
-
-    void completionFinished();
-    void replayCompletion();
-    int findNextMergeableBracketPos(const Cursor &startPos);
 private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
 };

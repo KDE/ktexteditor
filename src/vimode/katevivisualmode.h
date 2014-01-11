@@ -24,7 +24,6 @@
 #ifndef KATE_VI_VISUAL_MODE_INCLUDED
 #define KATE_VI_VISUAL_MODE_INCLUDED
 
-#include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 #include "katevinormalmode.h"
 
