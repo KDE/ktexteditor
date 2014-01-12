@@ -3332,78 +3332,71 @@ void KateView::exportHtmlToFile ()
 
 void KateView::clearHighlights()
 {
-  qDeleteAll(m_rangesForHighlights);
-  m_rangesForHighlights.clear();
-  m_currentTextForHighlights.clear();
+    qDeleteAll(m_rangesForHighlights);
+    m_rangesForHighlights.clear();
+    m_currentTextForHighlights.clear();
 }
 
 void KateView::selectionChangedForHighlights()
 {
-  QString text;
-  // if text of selection is still the same, abort
-  if (selection() && selectionRange().onSingleLine()) {
-    text = selectionText();
-    if (text == m_currentTextForHighlights) {
-      return;
+    QString text;
+    // if text of selection is still the same, abort
+    if (selection() && selectionRange().onSingleLine()) {
+        text = selectionText();
+        if (text == m_currentTextForHighlights)
+            return;
     }
-  }
 
-  // text changed: remove all highlights + create new ones
-  // (do not call clearHighlights(), since this also resets the m_currentTextForHighlights
-  qDeleteAll(m_rangesForHighlights);
-  m_rangesForHighlights.clear();
+    // text changed: remove all highlights + create new ones
+    // (do not call clearHighlights(), since this also resets the m_currentTextForHighlights
+    qDeleteAll(m_rangesForHighlights);
+    m_rangesForHighlights.clear();
   
-  // do not highlight strings with leading and trailing spaces
-  if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length()-1).isSpace())) {
-    return; 
-  }
+    // do not highlight strings with leading and trailing spaces
+    if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length()-1).isSpace()))
+        return; 
 
-  m_currentTextForHighlights = text;
-  if (!m_currentTextForHighlights.isEmpty()) {
-    createHighlights();
-  }
+    m_currentTextForHighlights = text;
+    if (!m_currentTextForHighlights.isEmpty())
+        createHighlights();
 }
 
 void KateView::createHighlights()
 {
-  m_currentTextForHighlights = selectionText();
+    KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
+    attr->setBackground(Qt::yellow);
 
-  KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
-// disable bold for now: If you use non-fixed font, making it bold leads to wobbly text
-//  attr->setFontBold(true);
-  attr->setBackground(Qt::yellow);
+    // set correct highlight color from Kate's color schema
+    QColor color = configValue(QLatin1String("search-highlight-color")).value<QColor>();
+    attr->setBackground(color);
 
-  // set correct highlight color from Kate's color schema
-  QColor color = configValue(QLatin1String("search-highlight-color")).value<QColor>();
-  attr->setBackground(color);
+    KTextEditor::Cursor start(0, 0);
+    KTextEditor::Range searchRange;
 
-  KTextEditor::Cursor start(0, 0);
-  KTextEditor::Range searchRange;
+    /**
+     * only add word boundary if we can find the text then
+     * fixes $lala hl
+     */
+    QString regex = QRegExp::escape (m_currentTextForHighlights);
+    if (QRegExp (QString::fromLatin1("\\b%1").arg(regex)).indexIn (QString::fromLatin1(" %1 ").arg(m_currentTextForHighlights)) != -1)
+        regex = QString::fromLatin1("\\b%1").arg(regex);
+    if (QRegExp (QString::fromLatin1("%1\\b").arg(regex)).indexIn (QString::fromLatin1(" %1 ").arg(m_currentTextForHighlights)) != -1)
+        regex = QString::fromLatin1("%1\\b").arg(regex);
 
-  /**
-   * only add word boundary if we can find the text then
-   * fixes $lala hl
-   */
-  QString regex = QRegExp::escape (m_currentTextForHighlights);
-  if (QRegExp (QString::fromLatin1("\\b%1").arg(regex)).indexIn (QString::fromLatin1(" %1 ").arg(m_currentTextForHighlights)) != -1)
-    regex = QString::fromLatin1("\\b%1").arg(regex);
-  if (QRegExp (QString::fromLatin1("%1\\b").arg(regex)).indexIn (QString::fromLatin1(" %1 ").arg(m_currentTextForHighlights)) != -1)
-    regex = QString::fromLatin1("%1\\b").arg(regex);
+    QVector<KTextEditor::Range> matches;
+    do {
+        searchRange.setRange(start, document()->documentEnd());
 
-  QVector<KTextEditor::Range> matches;
-  do {
-    searchRange.setRange(start, document()->documentEnd());
+        matches = m_doc->searchText(searchRange, regex, KTextEditor::Search::Regex);
 
-    matches = m_doc->searchText(searchRange, regex, KTextEditor::Search::Regex);
-
-    if (matches.first().isValid()) {
-      KTextEditor::MovingRange* mr = m_doc->newMovingRange(matches.first());
-      mr->setAttribute(attr);
-      mr->setView(this);
-      mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
-      mr->setAttributeOnlyForViews(true);
-      m_rangesForHighlights.append(mr);
-      start = matches.first().end();
-    }
-  } while (matches.first().isValid());
+        if (matches.first().isValid()) {
+            KTextEditor::MovingRange* mr = m_doc->newMovingRange(matches.first());
+            mr->setAttribute(attr);
+            mr->setView(this);
+            mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
+            mr->setAttributeOnlyForViews(true);
+            m_rangesForHighlights.append(mr);
+            start = matches.first().end();
+        }
+    } while (matches.first().isValid());
 }
