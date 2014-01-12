@@ -59,6 +59,8 @@ void KateExporter::exportToClipboard()
 
 void KateExporter::exportToFile()
 {
+    //FIXME KF5, crashy
+    
     QString fileName = QFileDialog::getSaveFileName(m_view, i18n("Export File as HTML"), m_view->document()->documentName());
     if (fileName.isEmpty()) {
         return;
