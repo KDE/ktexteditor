@@ -608,6 +608,8 @@ private Q_SLOTS:
     void slotDropEventPass(QDropEvent *ev);
     void slotSaveCanceled(const QString &error);
     void slotConfigDialog();
+    void exportHtmlToClipboard ();
+    void exportHtmlToFile ();
 
 public Q_SLOTS: // TODO: turn into good interface, see kte5/foldinginterface.h
     void slotFoldToplevelNodes();
@@ -645,6 +647,7 @@ private:
 
     QAction *m_cut;
     QAction *m_copy;
+    QAction *m_copyHtmlAction;
     QAction *m_paste;
     QAction *m_selectAll;
     QAction *m_deSelect;

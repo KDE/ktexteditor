@@ -199,6 +199,10 @@ schema/katecategorydrawer.cpp
 # swapfile
 swapfile/kateswapdiffcreator.cpp
 swapfile/kateswapfile.cpp
+
+# export as HTML
+export/exporter.cpp
+export/htmlexporter.cpp
    )
 
 qt5_wrap_ui(ktexteditor_LIB_SRCS 

@@ -56,6 +56,7 @@
 #include "script/katescriptmanager.h"
 #include "script/katescriptaction.h"
 #include "script/katescriptconsole.h"
+#include "export/exporter.h"
 #include "katemessagewidget.h"
 #include "katetemplatehandler.h"
 #include "katepartdebug.h"
@@ -663,6 +664,16 @@ void KateView::setupActions()
     a->setWhatsThis(i18n("Remove all the separate dictionary ranges that were set for spell checking."));
     connect(a, SIGNAL(triggered()), m_doc, SLOT(clearDictionaryRanges()));
     connect(m_doc, SIGNAL(dictionaryRangesPresent(bool)), a, SLOT(setVisible(bool)));
+
+    m_copyHtmlAction = ac->addAction(QLatin1String("edit_copy_html"), this, SLOT(exportHtmlToClipboard()));
+    m_copyHtmlAction->setIcon(QIcon::fromTheme(QLatin1String("edit-copy")));
+    m_copyHtmlAction->setText(i18n("Copy as &HTML"));
+    m_copyHtmlAction->setWhatsThis(i18n("Use this command to copy the currently selected text as HTML to the system clipboard."));
+
+    a = ac->addAction(QLatin1String("file_export_html"), this, SLOT(exportHtmlToFile()));
+    a->setText(i18n("E&xport as HTML..."));
+    a->setWhatsThis(i18n("This command allows you to export the current document"
+                        " with all highlighting information into a HTML document."));
 
     m_spellingMenu->createActions(ac);
 
@@ -1656,6 +1667,7 @@ void KateView::slotSelectionChanged()
 {
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
     m_deSelect->setEnabled(selection());
+    m_copyHtmlAction->setEnabled (selection());
 
     if (m_doc->readOnly()) {
         return;
@@ -3302,3 +3314,12 @@ void KateView::applyFoldingState()
     m_savedFoldingState.clear();
 }
 
+void KateView::exportHtmlToClipboard ()
+{
+    KateExporter (this).exportToClipboard ();
+}
+
+void KateView::exportHtmlToFile ()
+{
+    KateExporter (this).exportToFile ();
+}

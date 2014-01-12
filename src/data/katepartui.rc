@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="KatePartView" version="66">
+<kpartgui name="KatePartView" version="67">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -8,6 +8,8 @@
     <Action name="file_reload" group="revert_merge" />
     <Action name="file_print" group="print_merge" />
     <Action name="file_print_preview" group="print_merge" />
+    <Separator group="print_merge" />
+    <Action name="file_export_html" group="print_merge"/>
     <Separator group="print_merge" />
   </Menu>
 
@@ -19,6 +21,8 @@
     <Action name="edit_copy" group="edit_paste_merge" />
     <Action name="edit_paste" group="edit_paste_merge" />
     <Action name="edit_paste_menu" group="edit_paste_merge" />
+    <Separator group="edit_paste_merge" />
+    <Action name="edit_copy_html" group="edit_paste_merge" />
     <Separator group="edit_paste_merge" />
     <Action name="edit_select_all" group="edit_select_merge" />
     <Action name="edit_deselect" group="edit_select_merge" />
