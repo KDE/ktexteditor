@@ -1960,11 +1960,6 @@ uint KateDocument::editableMarks() const
 //END
 
 //BEGIN KTextEditor::PrintInterface stuff
-bool KateDocument::printDialog()
-{
-    return KatePrinter::print(this);
-}
-
 bool KateDocument::print()
 {
     return KatePrinter::print(this);

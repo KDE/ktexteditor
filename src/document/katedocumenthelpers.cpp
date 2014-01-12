@@ -40,6 +40,6 @@ KateBrowserExtension::KateBrowserExtension(KateDocument *doc)
 
 void KateBrowserExtension::print()
 {
-    m_doc->printDialog();
+    m_doc->print();
 }
 

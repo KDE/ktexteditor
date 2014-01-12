@@ -322,7 +322,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
         }
         return true;
     } else if (cmd == QLatin1String("print")) {
-        v->doc()->printDialog();
+        v->doc()->print();
         return true;
     }
 

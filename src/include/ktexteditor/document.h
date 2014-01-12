@@ -826,6 +826,22 @@ Q_SIGNALS:
      */
     void highlightingModeChanged(KTextEditor::Document *document);
 
+    /*
+     * Access to print routines
+     */
+public:
+    /**
+     * Print the document. This should result in showing the print dialog.
+     *
+     * @returns true if document was printed
+     */
+    virtual bool print() = 0;
+
+    /**
+     * Shows the print preview dialog/
+     */
+    virtual void printPreview() = 0;
+
 private:
     class DocumentPrivate *const d;
 

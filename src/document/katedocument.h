@@ -531,9 +531,8 @@ private:
     // KTextEditor::PrintInterface
     //
 public Q_SLOTS:
-    bool printDialog();
-    Q_SCRIPTABLE bool print();
-    void printPreview();
+    virtual bool print();
+    virtual void printPreview();
 
     //
     // KTextEditor::DocumentInfoInterface ( ### unfinished )
