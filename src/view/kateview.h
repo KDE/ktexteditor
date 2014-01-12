@@ -810,11 +810,20 @@ private Q_SLOTS:
      */
     void applyFoldingState();
 
+    void clearHighlights();
+
 private:
+    void selectionChangedForHighlights();
+    void createHighlights();
+    
     /**
      * saved folding state
      */
     QVariantList m_savedFoldingState;
+    
+    QString m_currentTextForHighlights;
+
+    QList<KTextEditor::MovingRange*> m_rangesForHighlights;
 
 public:
     /**
