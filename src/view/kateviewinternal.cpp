@@ -3518,16 +3518,8 @@ void KateViewInternal::cursorMoved()
     m_view->updateRangesIn(KTextEditor::Attribute::ActivateCaretIn);
 
 #ifndef QT_NO_ACCESSIBILITY
-    if (QAccessible::isActive()) {
-        QAccessibleInterface *iface = QAccessible::queryAccessibleInterface(this);
-        if (iface) {
-            QAccessibleTextInterface *textInterface = iface->textInterface();
-            if (textInterface) {
-                QAccessibleTextCursorEvent ev(this, textInterface->cursorPosition());
-                QAccessible::updateAccessibility(&ev);
-            }
-        }
-    }
+    QAccessibleTextCursorEvent ev(this, KateViewAccessible::positionFromCursor(this, m_cursor));
+    QAccessible::updateAccessibility(&ev);
 #endif
 }
 

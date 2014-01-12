@@ -129,7 +129,7 @@ public:
     virtual int cursorPosition() const
     {
         KTextEditor::Cursor c = view()->getCursor();
-        return positionFromCursor(c);
+        return positionFromCursor(view(), c);
     }
     virtual int offsetAtPoint(const QPoint & /*point*/) const
     {
@@ -154,8 +154,8 @@ public:
             return;
         }
         KTextEditor::Range range = view()->view()->selectionRange();
-        *startOffset = positionFromCursor(range.start());
-        *endOffset = positionFromCursor(range.end());
+        *startOffset = positionFromCursor(view(), range.start());
+        *endOffset = positionFromCursor(view(), range.end());
     }
 
     virtual int selectionCount() const
@@ -182,8 +182,20 @@ public:
         return view()->view()->document()->text().mid(startOffset, endOffset - startOffset);
     }
 
+    static int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor)
+    {
+        int pos = 0;
+        for (int line = 0; line < cursor.line(); ++line) {
+            // length of the line plus newline
+            pos += view->view()->document()->line(line).size() + 1;
+        }
+        pos += cursor.column();
+
+        return pos;
+    }
+
 private:
-    KateViewInternal *view() const
+    inline KateViewInternal *view() const
     {
         return static_cast<KateViewInternal *>(object());
     }
@@ -204,18 +216,6 @@ private:
         return KTextEditor::Cursor(line, position);
     }
 
-    int positionFromCursor(const KTextEditor::Cursor &cursor) const
-    {
-        int pos = 0;
-        for (int line = 0; line < cursor.line(); ++line) {
-            // length of the line plus newline
-            pos += view()->view()->document()->line(line).size() + 1;
-        }
-        pos += cursor.column();
-
-        return pos;
-    }
-
     QString textLine(int shiftLines, int offset, int *startOffset, int *endOffset) const
     {
         KTextEditor::Cursor pos = cursorFromInt(offset);
@@ -223,7 +223,7 @@ private:
         if (shiftLines) {
             pos.setLine(pos.line() + shiftLines);
         }
-        *startOffset = positionFromCursor(pos);
+        *startOffset = positionFromCursor(view(), pos);
         QString line = view()->view()->document()->line(pos.line()) + QLatin1Char('\n');
         *endOffset = *startOffset + line.length();
         return line;
