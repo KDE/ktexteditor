@@ -253,8 +253,8 @@ public:
 
     /**
      * Start an editing transaction, the wrapLine/unwrapLine/insertText and removeText functions
-     * are only to be allowed to be called inside a editing transaction.
-     * Editing transactions can stack. The number startEdit and endEdit calls must match.
+     * are only allowed to be called inside a editing transaction.
+     * Editing transactions can stack. The number of startEdit and endEdit calls must match.
      * @return returns true, if no transaction was already running
      * Virtual, can be overwritten.
      */
