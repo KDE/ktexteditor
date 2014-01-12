@@ -115,10 +115,10 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(false);
     cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
-    connect(parent->document(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
-    connect(parent->document(), SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textRemoved(KTextEditor::Document*,KTextEditor::Range)));
+    connect(parent->document(), &KTextEditor::Document::textInserted,
+            this, &FakeCodeCompletionTestModel::textInserted);
+    connect(parent->document(), &KTextEditor::Document::textRemoved,
+            this, &FakeCodeCompletionTestModel::textRemoved);
 }
 void FakeCodeCompletionTestModel::setCompletions(const QStringList &completions)
 {
@@ -303,10 +303,10 @@ void ViModeTest::init()
     vi_input_mode_manager = kate_view->getViInputModeManager();
     kate_document->config()->setShowSpaces(true); // Flush out some issues in the KateRenderer when rendering spaces.
 
-    connect(kate_document, SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
-    connect(kate_document, SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textRemoved(KTextEditor::Document*,KTextEditor::Range)));
+    connect(kate_document, &KTextEditor::Document::textInserted,
+            this, &ViModeTest::textInserted);
+    connect(kate_document, &KTextEditor::Document::textRemoved,
+            this, &ViModeTest::textRemoved);
 }
 
 Qt::KeyboardModifier ViModeTest::parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier)

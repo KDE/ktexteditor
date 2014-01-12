@@ -51,10 +51,10 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     m_viewRefreshTimer->setSingleShot(true);
     connect(m_viewRefreshTimer, SIGNAL(timeout()), this, SLOT(viewRefreshTimeout()));
 
-    connect(document, SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
-    connect(document, SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textRemoved(KTextEditor::Document*,KTextEditor::Range)));
+    connect(document, &KTextEditor::Document::textInserted,
+            this, &KateOnTheFlyChecker::textInserted);
+    connect(document, &KTextEditor::Document::textRemoved,
+            this, &KateOnTheFlyChecker::textRemoved);
     connect(document, SIGNAL(viewCreated(KTextEditor::Document*,KTextEditor::View*)),
             this, SLOT(addView(KTextEditor::Document*,KTextEditor::View*)));
     connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document*)),

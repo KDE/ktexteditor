@@ -97,11 +97,11 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
 
     ifDebug(qCDebug(LOG_PART) << initial_Values;)
 
-    connect(doc(), SIGNAL(aboutToReload(KTextEditor::Document*)),
-            this, SLOT(cleanupAndExit()));
+    connect(doc(), &KTextEditor::Document::aboutToReload,
+            this, &KateTemplateHandler::cleanupAndExit);
 
-    connect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(slotTemplateInserted(KTextEditor::Document*,KTextEditor::Range)));
+    connect(doc(), &KTextEditor::Document::textInserted,
+            this, &KateTemplateHandler::slotTemplateInserted);
 
     ///TODO: maybe use Kate::CutCopyPasteEdit or similar?
 
@@ -150,12 +150,12 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
                 setupEventHandler(view);
             }
 
-            connect(doc(), SIGNAL(viewCreated(KTextEditor::Document*,KTextEditor::View*)),
-                    this, SLOT(slotViewCreated(KTextEditor::Document*,KTextEditor::View*)));
-            connect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-                    this, SLOT(slotTextChanged(KTextEditor::Document*,KTextEditor::Range)));
-            connect(doc(), SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-                    this, SLOT(slotTextChanged(KTextEditor::Document*,KTextEditor::Range)));
+            connect(doc(), &KTextEditor::Document::viewCreated,
+                    this, &KateTemplateHandler::slotViewCreated);
+            connect(doc(), &KTextEditor::Document::textInserted,
+                    this, &KateTemplateHandler::slotTextChanged);
+            connect(doc(), &KTextEditor::Document::textRemoved,
+                    this, &KateTemplateHandler::slotTextChanged);
 
             setEditWithUndo(undoManager->isActive());
 
@@ -196,8 +196,8 @@ void KateTemplateHandler::cleanupAndExit()
                this, SLOT(slotViewCreated(KTextEditor::Document*,KTextEditor::View*)));
     disconnect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
                this, SLOT(slotTextChanged(KTextEditor::Document*,KTextEditor::Range)));
-    disconnect(doc(), SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-               this, SLOT(slotTextChanged(KTextEditor::Document*,KTextEditor::Range)));
+    disconnect(doc(), &KTextEditor::Document::textRemoved,
+               this, &KateTemplateHandler::slotTextChanged);
 
     if (!m_templateRanges.isEmpty()) {
         foreach (MovingRange *range, m_templateRanges) {

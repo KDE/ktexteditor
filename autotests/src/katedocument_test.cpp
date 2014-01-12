@@ -312,7 +312,7 @@ void KateDocumentTest::testRemoveMultipleLines()
                 "line4\n");
 
     SignalHandler handler;
-    connect(&doc, SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range,QString)), &handler, SLOT(slotMultipleLinesRemoved(KTextEditor::Document*,KTextEditor::Range,QString)));
+    connect(&doc, &KTextEditor::Document::textRemoved, &handler, &SignalHandler::slotMultipleLinesRemoved);
     doc.removeText(Range(1, 0, 3, 0));
 }
 

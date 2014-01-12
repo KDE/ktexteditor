@@ -484,10 +484,10 @@ void KateViNormalMode::reset()
 
 void KateViNormalMode::beginMonitoringDocumentChanges()
 {
-    connect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
-    connect(doc(), SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
-            this, SLOT(textRemoved(KTextEditor::Document*,KTextEditor::Range)));
+    connect(doc(), &KTextEditor::Document::textInserted,
+            this, &KateViNormalMode::textInserted);
+    connect(doc(), &KTextEditor::Document::textRemoved,
+            this, &KateViNormalMode::textRemoved);
 }
 
 void KateViNormalMode::executeCommand(const KateViCommand *cmd)

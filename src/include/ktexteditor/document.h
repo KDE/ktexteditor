@@ -650,31 +650,10 @@ Q_SIGNALS:
      * text was removed.
      * \param document document which emitted this signal
      * \param range range that the removed text previously occupied
-     * \see removeText(), removeLine(), clear()
-     */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range);
-
-    /**
-     * The \p document emits this signal whenever \p range was removed, i.e.
-     * text was removed.
-     * \param document document which emitted this signal
-     * \param range range that the removed text previously occupied
      * \param oldText the text that has been removed
      * \see removeText(), removeLine(), clear()
      */
     void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
-
-    /**
-     * The \p document emits this signal whenever the text in range
-     * \p oldRange was removed and replaced with the text now in \e newRange,
-     * e.g. the user selects text and pastes new text to replace the selection.
-     * \note \p oldRange.start() is guaranteed to equal \p newRange.start().
-     * \param document document which emitted this signal
-     * \param oldRange range that the text previously occupied
-     * \param newRange range that the changed text now occupies
-     * \see insertText(), insertLine(), removeText(), removeLine(), clear()
-     */
-    void textChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const KTextEditor::Range &newRange);
 
     /**
      * The \p document emits this signal whenever the text in range

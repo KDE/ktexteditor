@@ -1102,7 +1102,6 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
     // remove text from line
     m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, col), KTextEditor::Cursor(line, col + len)));
 
-    emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line, col + len));
     emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
 
     editEnd();
@@ -1273,7 +1272,6 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         emit marksChanged(this);
     }
 
-    emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line + 1, 0));
     emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QLatin1String("\n"));
 
     editEnd();
@@ -1437,7 +1435,6 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    emit KTextEditor::Document::textRemoved(this, rangeRemoved);
     emit KTextEditor::Document::textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
 
     editEnd();
@@ -2040,7 +2037,6 @@ bool KTextEditor::DocumentPrivate::openFile()
     }
 
     // do we have success ?
-    emit KTextEditor::Document::textRemoved(this, documentRange());
     emit KTextEditor::Document::textRemoved(this, documentRange(), m_buffer->text());
 
     // update file type, we do this here PRE-LOAD, therefore pass file name for reading from
@@ -2474,7 +2470,6 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
-    emit KTextEditor::Document::textRemoved(this, documentRange());
     emit KTextEditor::Document::textRemoved(this, documentRange(), m_buffer->text());
 
     {
