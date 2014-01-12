@@ -1,5 +1,7 @@
 # KTextEditor
 
+Full text editor component
+
 ## Introduction
 
 KTextEditor provides a powerful text editor component that you can embed in your
@@ -55,6 +57,7 @@ Contributions to KTextEditor shall be licensed under LGPLv2+.
 
 ## Links
 
+- Home page: <https://projects.kde.org/projects/frameworks/kparts>
 - Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
 - IRC channel: #kde-devel on Freenode
 - Git repository: <https://projects.kde.org/projects/frameworks/ktexteditor/repository>
