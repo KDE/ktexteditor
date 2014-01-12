@@ -214,6 +214,11 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 #ifndef QT_NO_ACCESSIBILITY
     QAccessible::installFactory(accessibleInterfaceFactory);
 #endif
+    connect(doc(), &KTextEditor::Document::textInserted, this, &KateViewInternal::documentTextInserted);
+    connect(doc(), &KTextEditor::Document::textRemoved, this, &KateViewInternal::documentTextRemoved);
+    connect(doc(),
+            static_cast<void (KTextEditor::Document::*)(KTextEditor::Document *, const KTextEditor::Range&, const QString&, const KTextEditor::Range&)>(&KTextEditor::Document::textChanged),
+            this,  &KateViewInternal::documentTextChanged);
 
     // update is called in KTextEditor::ViewPrivate, after construction and layout is over
     // but before any other kateviewinternal call
@@ -3737,3 +3742,29 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor &pos, KTextEditor::At
     m_textAnimation = new KateTextAnimation(range, attribute, this);
 }
 
+void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)
+{
+    if (QAccessible::isActive()) {
+        QAccessibleTextInsertEvent ev(this,
+            KateViewAccessible::positionFromCursor(this, range.start()), document->text(range));
+        QAccessible::updateAccessibility(&ev);
+    }
+}
+
+void  KateViewInternal::documentTextRemoved(KTextEditor::Document */*document*/, const KTextEditor::Range &range, const QString &oldText)
+{
+    if (QAccessible::isActive()) {
+        QAccessibleTextRemoveEvent ev(this,
+            KateViewAccessible::positionFromCursor(this, range.start()), oldText);
+        QAccessible::updateAccessibility(&ev);
+    }
+}
+
+void  KateViewInternal::documentTextChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const QString &oldText, const KTextEditor::Range &newRange)
+{
+    if (QAccessible::isActive()) {
+        QAccessibleTextUpdateEvent ev(this,
+            KateViewAccessible::positionFromCursor(this, oldRange.start()), oldText, document->text(newRange));
+        QAccessible::updateAccessibility(&ev);
+    }
+}
