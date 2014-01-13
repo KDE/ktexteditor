@@ -30,7 +30,8 @@ public Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
 
-private Q_SLOTS:
+//private Q_SLOTS:
+private:
     void testPostMessage();
     void testAutoHide();
     void testAutoHideAfterUserInteraction();
