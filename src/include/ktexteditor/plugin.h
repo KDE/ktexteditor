@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef KDELIBS_KTEXTEDITOR_APPLICATION_PLUGIN_H
-#define KDELIBS_KTEXTEDITOR_APPLICATION_PLUGIN_H
+#ifndef KDELIBS_KTEXTEDITOR_PLUGIN_H
+#define KDELIBS_KTEXTEDITOR_PLUGIN_H
 
 #include <QObject>
 
@@ -99,7 +99,7 @@ class MainWindow;
  *      KTextEditor::SessionConfigInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
-class KTEXTEDITOR_EXPORT ApplicationPlugin : public QObject
+class KTEXTEDITOR_EXPORT Plugin : public QObject
 {
     Q_OBJECT
 
@@ -110,12 +110,12 @@ public:
      * Create a new application plugin.
      * \param parent parent object
      */
-    ApplicationPlugin(QObject *parent);
+    Plugin (QObject *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~ApplicationPlugin();
+    virtual ~Plugin ();
 
     /**
      * Create a new View for this plugin for the given KTextEditor::MainWindow
@@ -126,13 +126,12 @@ public:
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL
      */
-    virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
+    virtual QObject *createView (KTextEditor::MainWindow *mainWindow) = 0;
 
 private:
-    class ApplicationPluginPrivate *const d;
+    class PluginPrivate *const d;
 };
 
 }
 
 #endif
-

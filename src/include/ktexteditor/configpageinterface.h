@@ -31,7 +31,7 @@ namespace KTextEditor
 class ConfigPage;
 
 /**
- * \brief Config page interface extension for e.g. Editor and ApplicationPlugin's.
+ * \brief Config page interface extension for e.g. Editor and Plugin's.
  */
 class KTEXTEDITOR_EXPORT ConfigPageInterface
 {

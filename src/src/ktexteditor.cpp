@@ -29,7 +29,7 @@
 
 #include "view.h"
 
-#include "applicationplugin.h"
+#include "plugin.h"
 
 #include "recoveryinterface.h"
 #include "commandinterface.h"
@@ -117,12 +117,12 @@ View::View(QWidget *parent)
 View::~View()
 {}
 
-ApplicationPlugin::ApplicationPlugin(QObject *parent)
+Plugin::Plugin(QObject *parent)
     : QObject(parent)
     , d(0)
 {}
 
-ApplicationPlugin::~ApplicationPlugin()
+Plugin::~Plugin()
 {}
 
 MarkInterface::MarkInterface()

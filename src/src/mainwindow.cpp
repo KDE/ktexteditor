@@ -20,6 +20,7 @@
  */
 
 #include <ktexteditor/mainwindow.h>
+#include <ktexteditor/plugin.h>
 
 #include <KXMLGUIFactory>
 
@@ -253,7 +254,7 @@ void MainWindow::hideViewBar(KTextEditor::View *view)
                               , Q_ARG(KTextEditor::View *, view));
 }
 
-QWidget *MainWindow::createToolView(KTextEditor::ApplicationPlugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text)
+QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text)
 {
     /**
      * null check
@@ -270,7 +271,7 @@ QWidget *MainWindow::createToolView(KTextEditor::ApplicationPlugin *plugin, cons
                               , "createToolView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(QWidget *, toolView)
-                              , Q_ARG(KTextEditor::ApplicationPlugin *, plugin)
+                              , Q_ARG(KTextEditor::Plugin *, plugin)
                               , Q_ARG(const QString &, identifier)
                               , Q_ARG(KTextEditor::MainWindow::ToolViewPosition, pos)
                               , Q_ARG(const QIcon &, icon)

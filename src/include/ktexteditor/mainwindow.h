@@ -36,7 +36,7 @@ class KXMLGUIFactory;
 namespace KTextEditor
 {
 
-class ApplicationPlugin;
+class Plugin;
 class Document;
 class View;
 
@@ -215,7 +215,7 @@ public:
      * \param text translated text (i18n()) to use in addition to icon
      * \return created toolview on success, otherwise NULL
      */
-    QWidget *createToolView(KTextEditor::ApplicationPlugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text);
+    QWidget *createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text);
 
     /**
      * Move the toolview \p widget to position \p pos.
@@ -260,7 +260,7 @@ public:
     //
 Q_SIGNALS:
     /**
-     * This signal is emitted when the view of some ApplicationPlugin is created for this main window.
+     * This signal is emitted when the view of some Plugin is created for this main window.
      *
      * @param name name of plugin
      * @param pluginView the new plugin view
@@ -268,7 +268,7 @@ Q_SIGNALS:
     void pluginViewCreated(const QString &name, QObject *pluginView);
 
     /**
-     * This signal is emitted when the view of some ApplicationPlugin got deleted.
+     * This signal is emitted when the view of some Plugin got deleted.
      *
      * @param name name of plugin
      * @param pluginView the deleted plugin view

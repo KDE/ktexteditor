@@ -5,7 +5,7 @@ ecm_generate_headers(AnnotationInterface CodeCompletionModelControllerInterface 
   Attribute CommandInterface DocumentCursor MessageInterface MovingRangeFeedback SessionConfigInterface
   CodeCompletionInterface ConfigInterface Editor ModeInterface  TemplateInterface
   CodeCompletionModel ConfigPage ConfigPageInterface ModificationInterface TemplateInterface2
-  Application MainWindow ApplicationPlugin
+  Application MainWindow Plugin
   MODULE_NAME "KTextEditor" PREFIX "KTextEditor" RELATIVE "ktexteditor" REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)
     
 # export headers to parent scope

@@ -41,7 +41,6 @@
 #include "katesyntaxdocument.h"
 #include "katemodeconfigpage.h"
 #include "kateview.h"
-#include "kpluginselector.h"
 #include "spellcheck/spellcheck.h"
 
 // auto generated ui files
@@ -73,7 +72,6 @@
 #include <KRun>
 #include <KSeparator>
 #include <KActionCollection>
-#include <KPluginInfo>
 
 #include <QFile>
 #include <QMap>
