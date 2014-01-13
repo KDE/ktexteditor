@@ -46,7 +46,6 @@
 class ModeConfigPage;
 class KateDocument;
 class KateView;
-class KatePartPluginInfo;
 
 namespace KIO
 {
@@ -339,25 +338,6 @@ private:
     Ui::OpenSaveConfigWidget *ui;
     Ui::OpenSaveConfigAdvWidget *uiadv;
     ModeConfigPage *modeConfigPage;
-};
-
-class KatePartPluginConfigPage : public KateConfigPage
-{
-    Q_OBJECT
-
-public:
-    KatePartPluginConfigPage(QWidget *parent);
-    ~KatePartPluginConfigPage();
-
-public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
-
-private:
-    KPluginSelector *selector;
-    QList<KPluginInfo> plugins;
 };
 
 class KateHlDownloadDialog: public QDialog

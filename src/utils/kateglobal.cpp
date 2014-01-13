@@ -34,7 +34,6 @@
 #include "katescriptmanager.h"
 #include "katecmd.h"
 #include "katebuffer.h"
-#include "katepartpluginmanager.h"
 #include "kateviglobal.h"
 #include "katewordcompletion.h"
 #include "spellcheck/spellcheck.h"
@@ -188,11 +187,6 @@ KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
     m_scriptManager = KateScriptManager::self();
 
     //
-    // plugin manager
-    //
-    m_pluginManager = new KatePartPluginManager();
-
-    //
     // init the cmds
     //
     m_cmds.push_back(KateCommands::CoreCommands::self());
@@ -219,8 +213,6 @@ KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
 
 KateGlobal::~KateGlobal()
 {
-    delete m_pluginManager;
-
     delete m_globalConfig;
     delete m_documentConfig;
     delete m_viewConfig;
@@ -353,7 +345,7 @@ void KateGlobal::configDialog(QWidget *parent)
 
 int KateGlobal::configPages() const
 {
-    return 5;
+    return 4;
 }
 
 KTextEditor::ConfigPage *KateGlobal::configPage(int number, QWidget *parent)
@@ -371,11 +363,8 @@ KTextEditor::ConfigPage *KateGlobal::configPage(int number, QWidget *parent)
     case 3:
         return new KateSaveConfigTab(parent);
 
-    case 4:
-        return new KatePartPluginConfigPage(parent);
-
     default:
-        return 0;
+        break;
     }
 
     return 0;
@@ -396,11 +385,8 @@ QString KateGlobal::configPageName(int number) const
     case 3:
         return i18n("Open/Save");
 
-    case 4:
-        return i18n("Extensions");
-
     default:
-        return QString();
+        break;
     }
 
     return QString();
@@ -421,11 +407,8 @@ QString KateGlobal::configPageFullName(int number) const
     case 3:
         return i18n("File Opening & Saving");
 
-    case 4:
-        return i18n("Extensions Manager");
-
     default:
-        return QString();
+        break;
     }
 
     return QString();
@@ -446,11 +429,8 @@ QIcon KateGlobal::configPageIcon(int number) const
     case 3:
         return QIcon::fromTheme(QLatin1String("document-save"));
 
-    case 4:
-        return QIcon::fromTheme(QLatin1String("preferences-plugin"));
-
     default:
-        return QIcon::fromTheme(QLatin1String("document-properties"));
+        break;
     }
 
     return QIcon::fromTheme(QLatin1String("document-properties"));

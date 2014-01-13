@@ -30,7 +30,6 @@
 #include "view.h"
 
 #include "applicationplugin.h"
-#include "plugin.h"
 
 #include "recoveryinterface.h"
 #include "commandinterface.h"
@@ -124,14 +123,6 @@ ApplicationPlugin::ApplicationPlugin(QObject *parent)
 {}
 
 ApplicationPlugin::~ApplicationPlugin()
-{}
-
-Plugin::Plugin(QObject *parent)
-    : QObject(parent)
-    , d(0)
-{}
-
-Plugin::~Plugin()
 {}
 
 MarkInterface::MarkInterface()

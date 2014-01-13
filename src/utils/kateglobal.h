@@ -48,7 +48,6 @@ class KateView;
 class KateScriptManager;
 class KDirWatch;
 class KateHlManager;
-class KatePartPluginManager;
 class KateSpellCheckManager;
 class KateViGlobal;
 class KateWordCompletionModel;
@@ -269,15 +268,6 @@ public:
     }
 
     /**
-     * global plugin manager
-     * @return kate part plugin manager
-     */
-    KatePartPluginManager *pluginManager()
-    {
-        return m_pluginManager;
-    }
-
-    /**
      * global dirwatch
      * @return dirwatch instance
      */
@@ -483,11 +473,6 @@ private:
      * schema manager
      */
     KateSchemaManager *m_schemaManager;
-
-    /**
-     * at start found plugins
-     */
-    KatePartPluginManager *m_pluginManager;
 
     /**
      * global config

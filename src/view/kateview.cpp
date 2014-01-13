@@ -46,7 +46,6 @@
 #include "katecompletionwidget.h"
 #include "katesearchbar.h"
 #include "kateviemulatedcommandbar.h"
-#include "katepartpluginmanager.h"
 #include "katewordcompletion.h"
 #include "katelayoutcache.h"
 #include "spellcheck/spellcheck.h"
@@ -245,9 +244,6 @@ KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *
     // auto word completion
     new KateWordCompletionView(this, actionCollection());
 
-    // enable the plugins of this view
-    KatePartPluginManager::self()->addView(this);
-
     // update the enabled state of the undo/redo actions...
     slotUpdateUndo();
 
@@ -292,8 +288,6 @@ KateView::~KateView()
      */
     m_mainWindow->deleteViewBar(this);
     m_bottomViewBar = 0;
-
-    KatePartPluginManager::self()->removeView(this);
 
     m_doc->removeView(this);
 

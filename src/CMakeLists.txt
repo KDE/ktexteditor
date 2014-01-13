@@ -187,7 +187,6 @@ utils/kateautoindent.cpp
 utils/katetemplatehandler.cpp
 utils/kateglobal.cpp
 utils/katecmd.cpp
-utils/katepartpluginmanager.cpp
 
 # schema
 schema/kateschema.cpp

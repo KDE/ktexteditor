@@ -41,7 +41,6 @@
 #include "katesyntaxdocument.h"
 #include "katemodeconfigpage.h"
 #include "kateview.h"
-#include "katepartpluginmanager.h"
 #include "kpluginselector.h"
 #include "spellcheck/spellcheck.h"
 
@@ -57,8 +56,6 @@
 #include "ui_opensaveconfigadvwidget.h"
 #include "ui_viinputmodeconfigwidget.h"
 #include "ui_spellcheckconfigwidget.h"
-
-#include <ktexteditor/plugin.h>
 
 #include <KIO/Job>
 #include <kjobwidgets.h>
@@ -1146,70 +1143,6 @@ void KateSaveConfigTab::defaults()
 }
 
 //END KateSaveConfigTab
-
-//BEGIN KatePartPluginConfigPage
-KatePartPluginConfigPage::KatePartPluginConfigPage(QWidget *parent)
-    : KateConfigPage(parent, "")
-{
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
-
-    plugins.clear();
-
-    foreach (const KatePartPluginInfo &info, KatePartPluginManager::self()->pluginList()) {
-        plugins.append(info.getKPluginInfo());
-    }
-
-    selector = new KPluginSelector(0);
-
-    connect(selector, SIGNAL(changed(bool)), this, SLOT(slotChanged()));
-    connect(selector, SIGNAL(configCommitted(QByteArray)), this, SLOT(slotChanged()));
-
-    selector->addPlugins(plugins, KPluginSelector::IgnoreConfigFile, i18n("Editor Plugins"), QLatin1String("Editor"));
-
-    layout->addWidget(selector);
-    setLayout(layout);
-}
-
-KatePartPluginConfigPage::~KatePartPluginConfigPage()
-{
-}
-
-void KatePartPluginConfigPage::apply()
-{
-    selector->updatePluginsState();
-
-    KatePartPluginList &katePluginList = KatePartPluginManager::self()->pluginList();
-    for (int i = 0; i < plugins.count(); i++) {
-        if (plugins[i].isPluginEnabled()) {
-            if (!katePluginList[i].isLoaded()) {
-                KatePartPluginManager::self()->loadPlugin(katePluginList[i]);
-                KatePartPluginManager::self()->enablePlugin(katePluginList[i]);
-            }
-        } else {
-            if (katePluginList[i].isLoaded()) {
-                KatePartPluginManager::self()->disablePlugin(katePluginList[i]);
-                KatePartPluginManager::self()->unloadPlugin(katePluginList[i]);
-            }
-        }
-    }
-}
-
-void KatePartPluginConfigPage::reload()
-{
-    selector->load();
-}
-
-void KatePartPluginConfigPage::reset()
-{
-    selector->load();
-}
-
-void KatePartPluginConfigPage::defaults()
-{
-    selector->defaults();
-}
-//END KatePartPluginConfigPage
 
 //BEGIN KateHlDownloadDialog
 KateHlDownloadDialog::KateHlDownloadDialog(QWidget *parent, const char *name, bool modal)

@@ -43,7 +43,6 @@
 #include "kateschema.h"
 #include "katebuffer.h"
 #include "kateundomanager.h"
-#include "katepartpluginmanager.h"
 #include "katevireplacemode.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/ontheflycheck.h"
@@ -54,7 +53,6 @@
 
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
-#include <KTextEditor/Plugin>
 
 #include <KIO/Job>
 #include <KIO/JobUiDelegate>
@@ -218,9 +216,6 @@ KateDocument::KateDocument(bool bSingleViewMode, bool bBrowserView,
     connect(this, SIGNAL(sigQueryClose(bool*,bool*)), this, SLOT(slotQueryClose_save(bool*,bool*)));
 
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
-
-    // register document in plugins
-    KatePartPluginManager::self()->addDocument(this);
 }
 
 //
@@ -255,9 +250,6 @@ KateDocument::~KateDocument()
     while (!m_views.isEmpty()) {
         delete m_views.takeFirst();
     }
-
-    // de-register from plugin
-    KatePartPluginManager::self()->removeDocument(this);
 
     // cu marks
     for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
