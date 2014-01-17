@@ -34,11 +34,9 @@ namespace KTextEditor { class ViewPrivate; }
 class QAction;
 class KActionCollection;
 
-namespace Sonnet
-{
-class Dialog;
-class BackgroundChecker;
-class Speller;
+namespace Sonnet {
+    class BackgroundChecker;
+    class Speller;
 }
 
 #include "ktexteditor/range.h"
@@ -47,6 +45,8 @@ namespace KTextEditor
 {
 class MovingRange;
 }
+
+class SpellCheckBar;
 
 class KateSpellCheckDialog : public QObject
 {
@@ -97,7 +97,8 @@ private:
 
     Sonnet::Speller *m_speller;
     Sonnet::BackgroundChecker *m_backgroundChecker;
-    Sonnet::Dialog *m_sonnetDialog;
+
+    SpellCheckBar *m_sonnetDialog;
 
     // define the part of the text that is to be checked
     KTextEditor::Range m_currentSpellCheckRange;

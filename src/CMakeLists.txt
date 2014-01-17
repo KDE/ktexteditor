@@ -156,6 +156,7 @@ spellcheck/spellcheck.h
 spellcheck/spellcheck.cpp
 spellcheck/spellcheckdialog.h
 spellcheck/spellcheckdialog.cpp
+spellcheck/spellcheckbar.cpp
 spellcheck/spellingmenu.h
 spellcheck/spellingmenu.cpp
 
@@ -220,6 +221,7 @@ dialogs/modonhdwidget.ui
 dialogs/completionconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
+spellcheck/spellcheckbar.ui
 dialogs/viinputmodeconfigwidget.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )

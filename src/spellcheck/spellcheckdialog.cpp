@@ -30,12 +30,12 @@
 #include "kateglobal.h"
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
+#include "spellcheck/spellcheckbar.h"
 
 #include <KActionCollection>
 #include <KLocalizedString>
 #include <KStandardAction>
 
-#include <sonnet/dialog.h>
 #include <sonnet/backgroundchecker.h>
 #include <sonnet/speller.h>
 
@@ -114,10 +114,12 @@ void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTe
     }
 
     if (!m_sonnetDialog) {
-        m_sonnetDialog = new Sonnet::Dialog(m_backgroundChecker, m_view);
+        m_sonnetDialog = new SpellCheckBar(m_backgroundChecker, m_view);
         m_sonnetDialog->showProgressDialog(200);
         m_sonnetDialog->showSpellCheckCompletionMessage();
         m_sonnetDialog->setSpellCheckContinuedAfterReplacement(false);
+
+        m_view->bottomViewBar()->addBarWidget(m_sonnetDialog);
 
         connect(m_sonnetDialog, SIGNAL(done(QString)), this, SLOT(installNextSpellCheckRange()));
 
@@ -211,7 +213,9 @@ void KateSpellCheckDialog::performSpellCheck(const KTextEditor::Range &range)
     installNextSpellCheckRange();
     // first check if there is really something to spell check
     if (m_currentSpellCheckRange.isValid()) {
+        m_view->bottomViewBar()->showBarWidget(m_sonnetDialog);
         m_sonnetDialog->show();
+        m_sonnetDialog->setFocus();
     }
 }
 
@@ -293,6 +297,7 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
 void KateSpellCheckDialog::cancelClicked()
 {
     m_spellCheckCancelledByUser = true;
+    spellCheckDone();
 }
 
 void KateSpellCheckDialog::spellCheckDone()
