@@ -308,11 +308,6 @@ const QList<KTextEditor::View *> &KateDocument::views() const
     return m_textEditViews;
 }
 
-KTextEditor::Editor *KateDocument::editor()
-{
-    return KateGlobal::self();
-}
-
 KTextEditor::Range KateDocument::rangeOnLine(KTextEditor::Range range, int line) const
 {
     int col1 = toVirtualColumn(range.start());

@@ -119,8 +119,6 @@ public:
 
     virtual bool openUrl(const QUrl &url);
 
-    virtual KTextEditor::Editor *editor();
-
     KTextEditor::Range rangeOnLine(KTextEditor::Range range, int line) const;
 
 private:

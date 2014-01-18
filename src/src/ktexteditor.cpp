@@ -79,11 +79,6 @@ void Editor::setDefaultEncoding(const QString &defaultEncoding)
     d->defaultEncoding = defaultEncoding;
 }
 
-bool View::isActiveView() const
-{
-    return this == document()->activeView();
-}
-
 bool View::insertText(const QString &text)
 {
     KTextEditor::Document *doc = document();

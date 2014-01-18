@@ -22,7 +22,7 @@
 #define KDELIBS_KTEXTEDITOR_DOCUMENT_H
 
 #include <ktexteditor_export.h>
-// the very important KTextEditor::Cursor class
+
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
@@ -36,7 +36,6 @@
 namespace KTextEditor
 {
 
-class Editor;
 class View;
 class MainWindow;
 
@@ -142,15 +141,6 @@ public:
      * global editor object.
      */
 public:
-    /**
-     * Get the global editor object. The editor part implementation must
-     * ensure that this object exists as long as any factory or document
-     * object exists.
-     * \return global KTextEditor::Editor object
-     * \see KTextEditor::Editor
-     */
-    virtual Editor *editor() = 0;
-
     /**
      * Create a new view attached to @p parent.
      * @param parent parent widget

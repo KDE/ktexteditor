@@ -177,15 +177,6 @@ public:
      */
     virtual Document *document() const = 0;
 
-    /**
-     * Check whether this view is the document's active view.
-     * This is equal to the code:
-     * \code
-     * document()->activeView() == view
-     * \endcode
-     */
-    bool isActiveView() const;
-
     /*
      * General information about this view
      */
