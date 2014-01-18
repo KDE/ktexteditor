@@ -43,8 +43,6 @@
 
 #include "annotationinterface.h"
 
-#include "modeinterface.h"
-
 #include "kateglobal.h"
 
 using namespace KTextEditor;
@@ -174,14 +172,6 @@ VariableInterface::VariableInterface()
 
 VariableInterface::~VariableInterface()
 {}
-
-ModeInterface::ModeInterface()
-{
-}
-
-ModeInterface::~ModeInterface()
-{
-}
 
 RecoveryInterface::RecoveryInterface()
     : d(0)

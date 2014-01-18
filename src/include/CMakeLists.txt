@@ -3,7 +3,7 @@ ecm_generate_headers(AnnotationInterface CodeCompletionModelControllerInterface 
   Cursor MarkInterface MovingInterface RecoveryInterface VariableInterface
   Document  MovingRange SearchInterface View
   Attribute CommandInterface DocumentCursor MessageInterface MovingRangeFeedback SessionConfigInterface
-  CodeCompletionInterface ConfigInterface Editor ModeInterface  TemplateInterface
+  CodeCompletionInterface ConfigInterface Editor TemplateInterface
   CodeCompletionModel ConfigPage ConfigPageInterface ModificationInterface TemplateInterface2
   Application MainWindow Plugin
   MODULE_NAME "KTextEditor" PREFIX "KTextEditor" RELATIVE "ktexteditor" REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)
