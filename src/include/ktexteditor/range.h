@@ -28,6 +28,7 @@
 #include <ktexteditor/cursor.h>
 
 #include <QDebug>
+#include <QtGlobal>
 
 namespace KTextEditor
 {
@@ -576,6 +577,8 @@ private:
 };
 
 }
+
+Q_DECLARE_TYPEINFO (KTextEditor::Range, Q_MOVABLE_TYPE);
 
 #endif
 

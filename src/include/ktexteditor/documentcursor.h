@@ -407,5 +407,7 @@ private:
 
 }
 
+Q_DECLARE_TYPEINFO (KTextEditor::DocumentCursor, Q_MOVABLE_TYPE);
+
 #endif
 

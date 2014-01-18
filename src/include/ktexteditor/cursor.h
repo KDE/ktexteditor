@@ -25,7 +25,9 @@
 #define KDELIBS_KTEXTEDITOR_CURSOR_H
 
 #include <ktexteditor_export.h>
+
 #include <QDebug>
+#include <QtGlobal>
 
 namespace KTextEditor
 {
@@ -351,6 +353,8 @@ private:
 };
 
 }
+
+Q_DECLARE_TYPEINFO (KTextEditor::Cursor, Q_MOVABLE_TYPE);
 
 #endif
 
