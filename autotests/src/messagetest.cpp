@@ -48,6 +48,7 @@ void MessageTest::testPostMessage()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     QPointer<Message> message = new Message("Message text", Message::Information);
     message->setPosition(Message::TopInView);
@@ -75,7 +76,7 @@ void MessageTest::testAutoHide()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
-    QTest::qWait(500); // make sure the widget is really shown in correct size
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -107,7 +108,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
-    QTest::qWait(500); // make sure the widget is really shown in correct size
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -124,7 +125,8 @@ void MessageTest::testAutoHideAfterUserInteraction()
     QVERIFY(view->messageWidget()->isVisible());
 
     // now trigger user interaction after 1 second
-    view->resize(400, 310);
+    view->insertText("Hello world");
+    view->setCursorPosition(Cursor(0, 5));
 
     // should still be there after deleted after another 1.9 seconds
     QTest::qWait(1900);
@@ -149,7 +151,7 @@ void MessageTest::testMessageQueue()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
-    QTest::qWait(500); // make sure the widget is really shown in correct size
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     //
     // add two messages, both with autoHide to 1 second, and check that the queue is processed correctly
@@ -206,7 +208,7 @@ void MessageTest::testPriority()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
-    QTest::qWait(500); // make sure the widget is really shown in correct size
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     //
     // add two messages
@@ -286,9 +288,10 @@ void MessageTest::testCreateView()
     v2->show();
     v1->resize(400, 300);
     v2->resize(400, 300);
+    QVERIFY(QTest::qWaitForWindowExposed(v1));
+    QVERIFY(QTest::qWaitForWindowExposed(v2));
 
     // make sure both views show the message
-    QTest::qWait(500);
     QVERIFY(v1->messageWidget()->isVisible());
     QVERIFY(v2->messageWidget()->isVisible());
     QCOMPARE(v1->messageWidget()->text(), QString("message"));
@@ -309,6 +312,7 @@ void MessageTest::testHideView()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     // create message that hides after 2s immediately
     QPointer<Message> message = new Message("Message text", Message::Information);
@@ -354,7 +358,7 @@ void MessageTest::testHideViewAfterUserInteraction()
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
-    QTest::qWait(100);
+    QVERIFY(QTest::qWaitForWindowExposed(view));
 
     // create message that hides after 2s immediately
     QPointer<Message> message = new Message("Message text", Message::Information);
@@ -388,7 +392,8 @@ void MessageTest::testHideViewAfterUserInteraction()
     //
     view->show();
     QTest::qWait(2000);
-    view->resize(400, 310);
+    view->insertText("Hello world");
+    view->setCursorPosition(Cursor(0, 5));
 
     // wait 1.5s and check that message is still displayed
     QTest::qWait(1500);
