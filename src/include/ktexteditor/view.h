@@ -518,7 +518,7 @@ public:
      * \return selection range, valid only if a selection currently exists.
      * \see setSelection()
      */
-    virtual const Range &selectionRange() const = 0;
+    virtual Range selectionRange() const = 0;
 
     /**
      * Get the view's selected text.

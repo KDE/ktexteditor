@@ -283,12 +283,9 @@ public:
     virtual bool selection() const;
     virtual QString selectionText() const;
     virtual bool blockSelection() const;
-    virtual const KTextEditor::Range &selectionRange() const;
+    virtual KTextEditor::Range selectionRange() const;
 
     static void blockFix(KTextEditor::Range &range);
-
-private:
-    mutable KTextEditor::Range m_holdSelectionRangeForAPI;
 
     //
     // Arbitrary Syntax HL + Action extensions

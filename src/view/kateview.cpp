@@ -2833,13 +2833,9 @@ void KateView::shiftToMatchingBracket()
     m_viewInternal->cursorToMatchingBracket(true);
 }
 
-const KTextEditor::Range &KateView::selectionRange() const
+KTextEditor::Range KateView::selectionRange() const
 {
-    // update the cache
-    m_holdSelectionRangeForAPI = m_selection;
-
-    // return cached value, has right type!
-    return m_holdSelectionRangeForAPI;
+    return m_selection;
 }
 
 KTextEditor::Document *KateView::document() const
