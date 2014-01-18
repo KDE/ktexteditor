@@ -60,7 +60,8 @@ static const int autoInvocationMaxFilesize = 1000000;
 
 //BEGIN KateWordCompletionModel
 KateWordCompletionModel::KateWordCompletionModel(QObject *parent)
-    : CodeCompletionModel2(parent), m_automatic(false)
+    : CodeCompletionModel (parent)
+    , m_automatic(false)
 {
     setHasGroups(false);
 }
@@ -237,16 +238,15 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     return result.values();
 }
 
-void KateWordCompletionModel::executeCompletionItem2(
-    KTextEditor::Document *document
+void KateWordCompletionModel::executeCompletionItem (KTextEditor::View *view
     , const KTextEditor::Range &word
     , const QModelIndex &index
 ) const
 {
-    KateView *v = qobject_cast<KateView *> (document->activeView());
+    KateView *v = qobject_cast<KateView *> (view);
     if (v->config()->wordCompletionRemoveTail()) {
         int tailStart = word.end().column();
-        const QString &line = document->line(word.end().line());
+        const QString &line = view->document()->line(word.end().line());
         int tailEnd = line.length();
         for (int i = word.end().column(); i < tailEnd; ++i) {
             // Letters, numbers and underscore are part of a word!
@@ -263,12 +263,12 @@ void KateWordCompletionModel::executeCompletionItem2(
 
         KTextEditor::Range tail(KTextEditor::Cursor(word.start().line(), tailStart), KTextEditor::Cursor(word.end().line(), tailEnd));
 
-        document->replaceText(word, m_matches.at(index.row()));
+        view->document()->replaceText(word, m_matches.at(index.row()));
         v->doc()->editEnd();
         v->doc()->editStart();
-        document->replaceText(tail, QString());
+        view->document()->replaceText(tail, QString());
     } else {
-        document->replaceText(word, m_matches.at(index.row()));
+        view->document()->replaceText(word, m_matches.at(index.row()));
     }
 }
 

@@ -170,13 +170,14 @@ QVariant FakeCodeCompletionTestModel::data(const QModelIndex &index, int role) c
     }
     return QVariant();
 }
-void FakeCodeCompletionTestModel::executeCompletionItem(Document *document, const Range &word, int row) const
+
+void FakeCodeCompletionTestModel::executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
 {
-    qDebug() << "word: " << word << "(" << document->text(word) << ")";
+    qDebug() << "word: " << word << "(" << view->document()->text(word) << ")";
     const Cursor origCursorPos = m_kateView->cursorPosition();
-    const QString textToInsert = m_completions[row];
-    const QString textAfterCursor = document->text(Range(word.end(), Cursor(word.end().line(), document->lineLength(word.end().line()))));
-    document->removeText(Range(word.start(), origCursorPos));
+    const QString textToInsert = m_completions[index.row()];
+    const QString textAfterCursor = view->document()->text(Range(word.end(), Cursor(word.end().line(), view->document()->lineLength(word.end().line()))));
+    view->document()->removeText(Range(word.start(), origCursorPos));
     const int lengthStillToRemove = word.end().column() - origCursorPos.column();
     QString actualTextInserted = textToInsert;
     // Merge brackets?
@@ -196,7 +197,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem(Document *document, cons
         }
         const bool mergeOpenBracketWithExisting = (openingBracketPos != -1) && !endedWithSemiColon;
         // Add the function name, for now: we don't yet know if we'll be adding the "()", too.
-        document->insertText(word.start(), justFunctionName);
+        view->document()->insertText(word.start(), justFunctionName);
         if (mergeOpenBracketWithExisting) {
             // Merge with opening bracket.
             actualTextInserted = justFunctionName;
@@ -204,7 +205,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem(Document *document, cons
         } else {
             // Don't merge.
             const QString afterFunctionName = endedWithSemiColon ? "();" : "()";
-            document->insertText(Cursor(word.start().line(), word.start().column() + justFunctionName.length()), afterFunctionName);
+            view->document()->insertText(Cursor(word.start().line(), word.start().column() + justFunctionName.length()), afterFunctionName);
             if (takesArgument) {
                 // Place the cursor immediately after the opening "(" we just added.
                 m_kateView->setCursorPosition(Cursor(word.start().line(), word.start().column() + justFunctionName.length() + 1));
@@ -212,13 +213,13 @@ void FakeCodeCompletionTestModel::executeCompletionItem(Document *document, cons
         }
     } else {
         // Plain text.
-        document->insertText(word.start(), textToInsert);
+        view->document()->insertText(word.start(), textToInsert);
     }
     if (m_removeTailOnCompletion) {
         const int tailLength = word.end().column() - origCursorPos.column();
         const Cursor tailStart = Cursor(word.start().line(), word.start().column() + actualTextInserted.length());
         const Cursor tailEnd = Cursor(tailStart.line(), tailStart.column() + tailLength);
-        document->removeText(Range(tailStart, tailEnd));
+        view->document()->removeText(Range(tailStart, tailEnd));
     }
 }
 

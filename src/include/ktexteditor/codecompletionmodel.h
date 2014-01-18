@@ -384,20 +384,19 @@ public:
      * @param invocationType How the code completion was triggered
      * */
     virtual void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType);
+  
     /**
-     * @deprecated This does not work if your model is hierarchical(@see GroupRole). Use CodeCompletionModel2::executeCompletionItem2 instead.
-     *
-     * This function is responsible for inserting a selected completion into the
-     * document. The default implementation replaces the text that the completions
-     * were based on with the Qt::DisplayRole of the Name column of the given match.
-     *
-     * @param document The document to insert the completion into
-     * @param word The Range that the completions are based on (what the user entered
-     * so far)
-     * @param row The row of the completion match to insert
-     * */
-    virtual void executeCompletionItem(Document *document, const Range &word, int row) const;
-
+      * This function is responsible for inserting a selected completion into the
+      * view. The default implementation replaces the text that the completions
+      * were based on with the Qt::DisplayRole of the Name column of the given match.
+      *
+      * @param view the view to insert the completion into
+      * @param word the Range that the completions are based on (what the user entered
+      * so far)
+      * @param index identifies the completion match to insert
+      * */
+    virtual void executeCompletionItem (KTextEditor::View *view, const Range &word, const QModelIndex &index) const;
+    
     // Reimplementations
     /**
      * Reimplemented from QAbstractItemModel::columnCount(). The default implementation
@@ -469,29 +468,6 @@ protected:
 
 private:
     class CodeCompletionModelPrivate *const d;
-};
-
-/**
- * You must inherit your completion-model from CodeCompletionModel2 if you want to
- * use a hierarchical structure and want to receive execution-feedback.
- * @see CodeCompletionModel::GroupRole
- * */
-class KTEXTEDITOR_EXPORT CodeCompletionModel2 : public CodeCompletionModel
-{
-    Q_OBJECT
-public:
-    CodeCompletionModel2(QObject *parent);
-    /**
-      * This function is responsible for inserting a selected completion into the
-      * document. The default implementation replaces the text that the completions
-      * were based on with the Qt::DisplayRole of the Name column of the given match.
-      *
-      * @param document the document to insert the completion into
-      * @param word the Range that the completions are based on (what the user entered
-      * so far)
-      * @param index identifies the completion match to insert
-      * */
-    virtual void executeCompletionItem2(Document *document, const Range &word, const QModelIndex &index) const;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(CodeCompletionModel::CompletionProperties)

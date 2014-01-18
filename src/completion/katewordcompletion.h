@@ -34,7 +34,7 @@
 #include "katepartdebug.h"
 #include <ktexteditor_export.h>
 
-class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompletionModel2, public KTextEditor::CodeCompletionModelControllerInterface
+class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompletionModel, public KTextEditor::CodeCompletionModelControllerInterface
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
@@ -73,7 +73,7 @@ public:
 
     QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const;
 
-    virtual void executeCompletionItem2(KTextEditor::Document *document, const KTextEditor::Range &word, const QModelIndex &index) const;
+    virtual void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const;
 
 private:
     QStringList m_matches;

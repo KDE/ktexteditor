@@ -20,6 +20,7 @@
 #include "codecompletionmodel.h"
 
 #include "document.h"
+#include "view.h"
 
 using namespace KTextEditor;
 
@@ -99,9 +100,9 @@ void CodeCompletionModel::completionInvoked(KTextEditor::View *view, const Range
     Q_UNUSED(invocationType)
 }
 
-void CodeCompletionModel::executeCompletionItem(Document *document, const Range &word, int row) const
+void CodeCompletionModel::executeCompletionItem (KTextEditor::View *view, const Range &word, const QModelIndex &index) const
 {
-    document->replaceText(word, data(index(row, Name, QModelIndex())).toString());
+    view->document()->replaceText(word, data(index.sibling(index.row(), Name)).toString());
 }
 
 bool CodeCompletionModel::hasGroups() const
@@ -115,15 +116,6 @@ void CodeCompletionModel::setHasGroups(bool hasGroups)
         d->hasGroups = hasGroups;
         emit hasGroupsChanged(this, hasGroups);
     }
-}
-
-CodeCompletionModel2::CodeCompletionModel2(QObject *parent) : CodeCompletionModel(parent)
-{
-}
-
-void CodeCompletionModel2::executeCompletionItem2(Document *document, const Range &word, const QModelIndex &index) const
-{
-    document->replaceText(word, data(index.sibling(index.row(), Name)).toString());
 }
 
 #include "codecompletionmodel.moc"

@@ -118,7 +118,7 @@ public:
     void forceInvocationIfDocTextIs(const QString &desiredDocText);
     void doNotForceInvocation();;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual void executeCompletionItem(KTextEditor::Document *document, const KTextEditor::Range &word, int row) const;
+    virtual void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const;
     KTextEditor::CodeCompletionInterface *cc() const;
 private:
     void failTest() const;
