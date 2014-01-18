@@ -3807,8 +3807,15 @@ QSet<KTextEditor::MovingRange *> &KateViNormalMode::highlightedYankForDocument()
 
 bool KateViNormalMode::waitingForRegisterOrCharToSearch()
 {
-    const QChar lastChar = m_keys.isEmpty() ?  QChar::Null : m_keys.at(m_keys.size() - 1);
-    return m_keys.size() > 0 && (lastChar == QLatin1Char('f') || lastChar == QLatin1Char('t') || lastChar == QLatin1Char('F') || lastChar == QLatin1Char('T') || lastChar == QLatin1Char('r'));
+    if (m_keys.size() != 1) {
+        return false;
+    }
+
+    QChar ch = m_keys[0];
+    return (ch == QLatin1Char('f') || ch == QLatin1Char('t')
+            || ch == QLatin1Char('F') || ch == QLatin1Char('T')
+            || ch == QLatin1Char('r')
+            || ch == QLatin1Char('q') || ch == QLatin1Char('@'));
 }
 
 void KateViNormalMode::textInserted(KTextEditor::Document *document, Range range)
