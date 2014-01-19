@@ -4031,7 +4031,7 @@ bool KTextEditor::DocumentPrivate::setEncoding(const QString &e)
     return m_config->setEncoding(e);
 }
 
-const QString &KTextEditor::DocumentPrivate::encoding() const
+QString KTextEditor::DocumentPrivate::encoding() const
 {
     return m_config->encoding();
 }

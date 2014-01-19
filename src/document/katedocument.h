@@ -835,7 +835,7 @@ public:
     bool findMatchingBracket(KTextEditor::Range &range, int maxLines = -1);
 
 public:
-    virtual const QString &documentName() const
+    virtual QString documentName() const
     {
         return m_docName;
     }
@@ -894,7 +894,7 @@ private:
 
 public:
     virtual bool setEncoding(const QString &e);
-    virtual const QString &encoding() const;
+    virtual QString encoding() const;
 
 public Q_SLOTS:
     void setWordWrap(bool on);

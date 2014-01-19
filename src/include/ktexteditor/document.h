@@ -189,7 +189,7 @@ public:
      * documents with url.
      * \return readable document name
      */
-    virtual const QString &documentName() const = 0;
+    virtual QString documentName() const = 0;
 
     /**
      * Get this document's mimetype.
@@ -261,7 +261,7 @@ public:
      * \return current encoding of the document
      * \see setEncoding()
      */
-    virtual const QString &encoding() const = 0;
+    virtual QString encoding() const = 0;
 
     /*
      * General file related actions.
