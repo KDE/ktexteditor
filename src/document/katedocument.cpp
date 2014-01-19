@@ -3887,7 +3887,6 @@ bool KTextEditor::DocumentPrivate::documentReload()
         const QString oldMode = mode();
         const bool byUser = m_fileTypeSetByUser;
         const QString hl_mode = highlightingMode();
-        KTextEditor::View *oldActiveView = activeView();
 
         m_storedVariables.clear();
 
@@ -3913,7 +3912,6 @@ bool KTextEditor::DocumentPrivate::documentReload()
                 (*it)->repaintText(false);
             }
         }
-        setActiveView(oldActiveView);
 
         for (int z = 0; z < tmp.size(); z++) {
             if (z < (int)lines()) {
