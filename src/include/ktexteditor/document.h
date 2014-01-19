@@ -27,7 +27,7 @@
 #include <ktexteditor/range.h>
 
 // our main baseclass of the KTextEditor::Document
-#include <KParts/Part>
+#include <KParts/ReadWritePart>
 
 // the list of views
 #include <QList>

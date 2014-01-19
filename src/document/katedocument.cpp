@@ -53,6 +53,7 @@
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
 
+#include <KParts/OpenUrlArguments>
 #include <KIO/Job>
 #include <KIO/JobUiDelegate>
 #include <KFileItem>
