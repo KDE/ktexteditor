@@ -24,7 +24,6 @@
 
 //BEGIN INCLUDES
 #include "katesyntaxmanager.h"
-#include "katesyntaxmanager.moc"
 
 #include "katetextline.h"
 #include "katedocument.h"

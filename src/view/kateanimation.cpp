@@ -19,7 +19,7 @@
  */
 
 #include "kateanimation.h"
-#include "kateanimation.moc"
+
 #include "katefadeeffect.h"
 #include "kateglobal.h"
 

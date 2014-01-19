@@ -154,7 +154,7 @@ private:
     //
 public:
     virtual KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
-    virtual const QList<KTextEditor::View *> &views() const;
+    virtual QList<KTextEditor::View *> views() const;
 
     virtual KTextEditor::View *activeView() const
     {

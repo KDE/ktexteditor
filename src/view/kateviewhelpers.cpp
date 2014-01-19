@@ -2534,6 +2534,3 @@ void KatePasteMenu::paste()
     // paste
     m_view->paste(&KTextEditor::EditorPrivate::self()->clipboardHistory()[i]);
 }
-
-#include "kateviewhelpers.moc"
-

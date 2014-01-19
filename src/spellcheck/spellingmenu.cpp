@@ -19,7 +19,6 @@
  */
 
 #include "spellingmenu.h"
-#include "spellingmenu.moc"
 
 #include "katedocument.h"
 #include "kateglobal.h"

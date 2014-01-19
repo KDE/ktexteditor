@@ -139,7 +139,7 @@ public:
      * Returns a list of all documents of this editor.
      * @return list of all existing documents
      */
-    const QList<KTextEditor::Document *> &documents();
+    QList<KTextEditor::Document *> documents();
 
     /**
      * Set the global application object.

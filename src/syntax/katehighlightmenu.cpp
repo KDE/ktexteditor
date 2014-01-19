@@ -19,7 +19,6 @@
 
 //BEGIN Includes
 #include "katehighlightmenu.h"
-#include "katehighlightmenu.moc"
 
 #include "katedocument.h"
 #include "kateconfig.h"

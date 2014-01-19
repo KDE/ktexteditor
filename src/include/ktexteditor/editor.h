@@ -165,7 +165,7 @@ public:
      * \return list of all existing documents
      * \see createDocument()
      */
-    virtual const QList<Document *> &documents() = 0;
+    virtual QList<Document *> documents() = 0;
 
     /*
      * General Information about this editor.

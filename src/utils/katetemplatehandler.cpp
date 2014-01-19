@@ -1126,6 +1126,3 @@ QString KateTemplateHandler::MirrorBehaviour::getMirrorString(const QString &sou
 }
 
 //END MIRROR BEHAVOUR
-
-#include "katetemplatehandler.moc"
-

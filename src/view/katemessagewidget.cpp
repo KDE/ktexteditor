@@ -19,7 +19,6 @@
  */
 
 #include "katemessagewidget.h"
-#include "katemessagewidget.moc"
 
 #include "katepartdebug.h"
 

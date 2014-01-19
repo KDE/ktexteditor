@@ -88,9 +88,8 @@ class DocumentPrivate;
  *
  * A View displays the document's content. As already mentioned, a document
  * can have any number of views, all synchronized. Get a list of all views
- * with views(). Only one of the views can be active (i.e. has focus), get
- * it by using activeView(). Create a new view with createView(). Every time
- * a new view is created the signal viewCreated() is emitted.
+ * with views(). Create a new view with createView(). Every time a new view
+ * is created the signal viewCreated() is emitted.
  *
  * \section doc_readwrite Read-Only Mode
  *
@@ -156,14 +155,9 @@ public:
     virtual View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) = 0;
 
     /**
-     * Return the view which currently has user focus, if any.
-     */
-    virtual View *activeView() const = 0;
-
-    /**
      * Returns the views pre-casted to KTextEditor::View%s
      */
-    virtual const QList<View *> &views() const = 0;
+    virtual QList<View *> views() const = 0;
 
 Q_SIGNALS:
     /**

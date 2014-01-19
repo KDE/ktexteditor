@@ -27,7 +27,6 @@
 */
 
 #include "kateviewinternal.h"
-#include "kateviewinternal.moc"
 
 #include "kateview.h"
 #include "kateviewhelpers.h"

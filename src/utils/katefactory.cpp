@@ -82,4 +82,3 @@ public:
 };
 
 #include "katefactory.moc"
-

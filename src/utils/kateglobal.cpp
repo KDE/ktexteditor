@@ -248,7 +248,7 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
     return doc;
 }
 
-const QList<KTextEditor::Document *> &KTextEditor::EditorPrivate::documents()
+QList<KTextEditor::Document *> KTextEditor::EditorPrivate::documents()
 {
     return m_docs;
 }

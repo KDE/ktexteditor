@@ -19,7 +19,6 @@
  */
 
 #include "katefadeeffect.h"
-#include "katefadeeffect.moc"
 
 #include <QWidget>
 #include <QTimeLine>

@@ -301,7 +301,7 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
     return newView;
 }
 
-const QList<KTextEditor::View *> &KTextEditor::DocumentPrivate::views() const
+QList<KTextEditor::View *> KTextEditor::DocumentPrivate::views() const
 {
     return m_textEditViews;
 }
