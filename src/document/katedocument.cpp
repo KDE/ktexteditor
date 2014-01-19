@@ -135,7 +135,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_documentState(DocumentIdle),
       m_readWriteStateBeforeLoading(false),
       m_isUntitled(true),
-      m_openingError (false)
+      m_openingError(false)
 {
     setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
@@ -4635,7 +4635,7 @@ bool KTextEditor::DocumentPrivate::checkOverwrite(QUrl u, QWidget *parent)
             i18n("A file named \"%1\" already exists. "
                  "Are you sure you want to overwrite it?",  info.fileName()),
             i18n("Overwrite File?"), KStandardGuiItem::overwrite(),
-            KStandardGuiItem::cancel(), QString(), KMessageBox::Notify); // FIXME KF 5  | ::KMessageBox::Dangerous
+            KStandardGuiItem::cancel(), QString(), KMessageBox::Options(KMessageBox::Notify | KMessageBox::Dangerous));
 }
 
 //BEGIN KTextEditor::ConfigInterface

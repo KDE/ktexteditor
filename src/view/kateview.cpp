@@ -86,8 +86,6 @@
 #include <QStyle>
 #include <QClipboard>
 
-#include <sys/stat.h> // S_IFREG
-
 //#define VIEW_RANGE_DEBUG
 
 //END includes
@@ -3255,7 +3253,7 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
     } else if (message->position() == KTextEditor::Message::TopInView) {
         if (!m_floatTopMessageWidget) {
             m_floatTopMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->insertWidget(0, m_floatTopMessageWidget, 0, Qt::AlignTop); // FIXME KF5  | Qt::AlignRight
+            m_notificationLayout->insertWidget(0, m_floatTopMessageWidget, 0, Qt::Alignment(Qt::AlignTop | Qt::AlignRight));
             connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
             connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
         }
@@ -3263,7 +3261,7 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
     } else if (message->position() == KTextEditor::Message::BottomInView) {
         if (!m_floatBottomMessageWidget) {
             m_floatBottomMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->addWidget(m_floatBottomMessageWidget, 0, Qt::AlignBottom); // FIXME KF5  | Qt::AlignRight
+            m_notificationLayout->addWidget(m_floatBottomMessageWidget, 0, Qt::Alignment(Qt::AlignBottom | Qt::AlignRight));
             connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
             connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
         }
