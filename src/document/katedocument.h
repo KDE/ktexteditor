@@ -110,7 +110,7 @@ class KTEXTEDITOR_EXPORT KateDocument : public KTextEditor::Document,
     friend class KateBuffer;
 
 public:
-    explicit KateDocument(bool bSingleViewMode = false, bool bBrowserView = false, bool bReadOnly = false,
+    explicit KateDocument(bool bSingleViewMode = false, bool bReadOnly = false,
                           QWidget *parentWidget = 0, QObject * = 0);
     ~KateDocument();
 
@@ -137,10 +137,6 @@ public:
     {
         return m_bReadOnly;
     }
-    bool browserView() const
-    {
-        return m_bBrowserView;
-    }
     bool singleViewMode() const
     {
         return m_bSingleViewMode;
@@ -149,7 +145,6 @@ public:
 private:
     // only to make part work, don't change it !
     const bool m_bSingleViewMode;
-    const bool m_bBrowserView;
     const bool m_bReadOnly;
 
     //
@@ -524,13 +519,6 @@ private:
     QHash<int, QPixmap>           m_markPixmaps;
     QHash<int, QString>           m_markDescriptions;
     uint                        m_editableMarks;
-
-    //
-    // KTextEditor::PrintInterface
-    //
-public Q_SLOTS:
-    virtual bool print();
-    virtual void printPreview();
 
     //
     // KTextEditor::DocumentInfoInterface ( ### unfinished )

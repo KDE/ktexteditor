@@ -68,7 +68,7 @@ RevisionTest::~RevisionTest()
 // - transformCursor()
 void RevisionTest::testTransformCursor()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     // initial saved revision of unsaved document is -1
     QVERIFY(doc.lastSavedRevision() == -1);
@@ -123,7 +123,7 @@ void RevisionTest::testTransformCursor()
 // - transformRange()
 void RevisionTest::testTransformRange()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     QCOMPARE(doc.revision(), (qint64) 0);
 

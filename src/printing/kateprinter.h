@@ -23,12 +23,12 @@
 #ifndef __KATE_PRINTER_H__
 #define __KATE_PRINTER_H__
 
-class KateDocument;
+class KateView;
 
 namespace KatePrinter
 {
-bool print(KateDocument *doc);
-bool printPreview(KateDocument *doc);
+bool print(KateView *doc);
+bool printPreview(KateView *doc);
 };
 
 #endif

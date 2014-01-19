@@ -26,6 +26,7 @@
 #include "katedocument.h"
 #include "katebuffer.h"
 #include "katerenderer.h"
+#include "kateview.h"
 #include "kateconfig.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
@@ -82,8 +83,9 @@ public:
     KTextEditor::Range selectionRange;
 };
 
-PrintPainter::PrintPainter(KateDocument *doc)
-    : m_doc(doc)
+PrintPainter::PrintPainter(KateView *view)
+    : m_view (view)
+    , m_doc(m_view->doc())
     , m_colorScheme()
     , m_printGuide(false)
     , m_printLineNumbers(false)
@@ -106,7 +108,7 @@ PrintPainter::PrintPainter(KateDocument *doc)
 {
     m_folding = new Kate::TextFolding(m_doc->buffer());
 
-    m_renderer = new KateRenderer(m_doc, *m_folding, m_doc->activeKateView());
+    m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
     m_renderer->config()->setSchema(m_colorScheme);
     m_renderer->setPrinterFriendly(true);
 

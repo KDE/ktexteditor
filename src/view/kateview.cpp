@@ -24,14 +24,12 @@
 
 //BEGIN includes
 #include "kateview.h"
-#include "kateview.moc"
 
 #include "kateviewinternal.h"
 #include "kateviewhelpers.h"
 #include "katerenderer.h"
 #include "katedocument.h"
 #include "kateundomanager.h"
-#include "katedocumenthelpers.h"
 #include "kateglobal.h"
 #include "kateviglobal.h"
 #include "katehighlight.h"
@@ -59,6 +57,7 @@
 #include "katemessagewidget.h"
 #include "katetemplatehandler.h"
 #include "katepartdebug.h"
+#include "printing/kateprinter.h"
 
 #include <ktexteditor/messageinterface.h>
 
@@ -313,11 +312,6 @@ void KateView::setupConnections()
 
     connect(m_doc, SIGNAL(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)),
             m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)));
-
-    if (m_doc->browserView()) {
-        connect(this, SIGNAL(dropEventPass(QDropEvent*)),
-                this, SLOT(slotDropEventPass(QDropEvent*)));
-    }
 }
 
 void KateView::setupActions()
@@ -901,7 +895,7 @@ void KateView::setupEditActions()
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftToMatchingBracket()));
     m_editActions << a;
 
-    // anders: shortcuts doing any changes should not be created in browserextension
+    // anders: shortcuts doing any changes should not be created in read-only mode
     if (!m_doc->readOnly()) {
         a = ac->addAction(QLatin1String("transpose_char"));
         a->setText(i18n("Transpose Characters"));
@@ -1251,28 +1245,6 @@ void KateView::slotUpdateUndo()
 
     m_editUndo->setEnabled(m_doc->isReadWrite() && m_doc->undoCount() > 0);
     m_editRedo->setEnabled(m_doc->isReadWrite() && m_doc->redoCount() > 0);
-}
-
-void KateView::slotDropEventPass(QDropEvent *ev)
-{
-    const QList<QUrl> lstDragURLs = ev->mimeData()->urls();
-    bool ok = !lstDragURLs.isEmpty();
-
-    KParts::BrowserExtension *ext = KParts::BrowserExtension::childObject(doc());
-    if (ok && ext) {
-        emit ext->openUrlRequest(lstDragURLs.first());
-    }
-}
-
-void KateView::contextMenuEvent(QContextMenuEvent *ev)
-{
-    if (!m_doc || !m_doc->browserExtension()) {
-        return;
-    }
-    KParts::OpenUrlArguments args;
-    args.setMimeType(QLatin1String("text/plain"));
-    emit m_doc->browserExtension()->popupMenu(ev->globalPos(), m_doc->url(), S_IFREG, args);
-    ev->accept();
 }
 
 bool KateView::setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth, bool calledExternally)
@@ -3390,3 +3362,16 @@ void KateView::createHighlights()
         }
     } while (matches.first().isValid());
 }
+
+//BEGIN KTextEditor::PrintInterface stuff
+bool KateView::print()
+{
+    return KatePrinter::print(this);
+}
+
+void KateView::printPreview()
+{
+    KatePrinter::printPreview(this);
+}
+
+//END

@@ -64,29 +64,17 @@ public:
      * \param keyword A string that uniquely identifies the plugin. If a KService is used this
      * keyword is read from the X-KDE-PluginKeyword entry in the .desktop file.
      */
-    virtual QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &args, const QString &keyword)
+    virtual QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &, const QString &)
     {
-        Q_UNUSED(args);
-
-        /**
-         * if keyword == KTextEditor/Editor, we shall return our kate global instance!
-         */
-        if (keyword == QLatin1String("KTextEditor/Editor")) {
-            return KateGlobal::self();
-        }
-
-        QByteArray classname(iface);
+        QByteArray classname (iface);
 
         // default to the kparts::* behavior of having one single widget() if the user don't requested a pure document
         bool bWantSingleView = (classname != "KTextEditor::Document");
 
-        // does user want browserview?
-        bool bWantBrowserView = (classname == "Browser/View");
-
         // should we be readonly?
-        bool bWantReadOnly = (bWantBrowserView || (classname == "KParts::ReadOnlyPart"));
+        bool bWantReadOnly = (classname == "KParts::ReadOnlyPart");
 
-        KParts::ReadWritePart *part = new KateDocument(bWantSingleView, bWantBrowserView, bWantReadOnly, parentWidget, parent);
+        KParts::ReadWritePart *part = new KateDocument (bWantSingleView, bWantReadOnly, parentWidget, parent);
         part->setReadWrite(!bWantReadOnly);
 
         return part;

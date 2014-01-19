@@ -43,7 +43,7 @@ void MessageTest::cleanupTestCase()
 
 void MessageTest::testPostMessage()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -71,7 +71,7 @@ void MessageTest::testPostMessage()
 
 void MessageTest::testAutoHide()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -103,7 +103,7 @@ void MessageTest::testAutoHide()
 
 void MessageTest::testAutoHideAfterUserInteraction()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -146,7 +146,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 
 void MessageTest::testMessageQueue()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -203,7 +203,7 @@ void MessageTest::testMessageQueue()
 
 void MessageTest::testPriority()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -264,7 +264,7 @@ void MessageTest::testPriority()
 
 void MessageTest::testCreateView()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     //
     // - first post a message
@@ -307,7 +307,7 @@ void MessageTest::testCreateView()
 
 void MessageTest::testHideView()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();
@@ -353,7 +353,7 @@ void MessageTest::testHideView()
 
 void MessageTest::testHideViewAfterUserInteraction()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     KateView *view = static_cast<KateView *>(doc.createView(0));
     view->show();

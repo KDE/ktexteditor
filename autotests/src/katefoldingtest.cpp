@@ -59,7 +59,7 @@ void KateFoldingTest::cleanupTestCase()
 // Buggy behavior: the cursor is hidden, and moving the hidden cursor crashes kate
 void KateFoldingTest::testCrash311866()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug311866.cpp"));
     doc.openUrl(url);
     doc.setHighlightingMode("C++");
@@ -89,7 +89,7 @@ void KateFoldingTest::testCrash311866()
 // See https://bugs.kde.org/show_bug.cgi?id=295632
 void KateFoldingTest::testBug295632()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     QString text = "oooossssssss\n"
                    "{\n"
                    "\n"

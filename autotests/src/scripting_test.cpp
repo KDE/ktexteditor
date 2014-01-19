@@ -25,7 +25,6 @@
 
 #include "kateview.h"
 #include "katedocument.h"
-#include "katedocumenthelpers.h"
 #include "kateconfig.h"
 #include "katecmd.h"
 #include "kateglobal.h"

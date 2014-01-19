@@ -38,7 +38,7 @@ void TemplateHandlerTest::testUndo()
     initialValues.insert("type", "int");
     initialValues.insert("index", "i");
 
-    KateDocument doc(false, false, false, 0, this);
+    KateDocument doc(false, false, 0, this);
     KateView view(&doc, 0);
 
     view.insertTemplateTextImplementation(Cursor(0, 0), snippet, initialValues, 0);

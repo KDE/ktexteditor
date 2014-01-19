@@ -596,13 +596,9 @@ public:
 public:
     void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
 
-protected:
-    void contextMenuEvent(QContextMenuEvent *);
-
 private Q_SLOTS:
     void slotGotFocus();
     void slotLostFocus();
-    void slotDropEventPass(QDropEvent *ev);
     void slotSaveCanceled(const QString &error);
     void slotConfigDialog();
     void exportHtmlToClipboard ();
@@ -930,6 +926,13 @@ private:
      * The main window responsible for this view, if any
      */
     QPointer<KTextEditor::MainWindow> m_mainWindow;
+
+    //
+    // KTextEditor::PrintInterface
+    //
+public Q_SLOTS:
+    virtual bool print();
+    virtual void printPreview();
 };
 
 /**

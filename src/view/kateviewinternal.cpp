@@ -2519,11 +2519,6 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 
     QPoint p = e->pos();
 
-    if (doc()->browserView()) {
-        m_view->contextMenuEvent(e);
-        return;
-    }
-
     if (e->reason() == QContextMenuEvent::Keyboard) {
         makeVisible(m_displayCursor, 0);
         p = cursorCoordinates(false);

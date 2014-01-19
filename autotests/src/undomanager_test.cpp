@@ -34,7 +34,7 @@ class UndoManagerTest::TestDocument : public KateDocument
 {
 public:
     TestDocument()
-        : KateDocument(false, false, false, 0, 0)
+        : KateDocument(false, false, 0, 0)
     {}
 };
 

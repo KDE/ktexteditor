@@ -100,7 +100,7 @@ KateDocumentTest::~KateDocumentTest()
 // see also: http://bugs.kde.org/show_bug.cgi?id=168534
 void KateDocumentTest::testWordWrap()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc(false, false);
     doc.setWordWrap(true);
     doc.setWordWrapAt(80);
 
@@ -134,7 +134,7 @@ void KateDocumentTest::testWordWrap()
 
 void KateDocumentTest::testReplaceQStringList()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc(false, false);
     doc.setWordWrap(false);
     doc.setText(QLatin1String("asdf\n"
                               "foo\n"
@@ -149,7 +149,7 @@ void KateDocumentTest::testReplaceQStringList()
 
 void KateDocumentTest::testMovingInterfaceSignals()
 {
-    KateDocument *doc = new KateDocument(false, false, false);
+    KateDocument *doc = new KateDocument;
     QSignalSpy aboutToDeleteSpy(doc, SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document*)));
     QSignalSpy aboutToInvalidateSpy(doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)));
 
@@ -186,7 +186,7 @@ void KateDocumentTest::testSetTextPerformance()
 
     Q_ASSERT(columns % (rangeLength + rangeGap) == 0);
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     MovingRangeInvalidator invalidator;
     connect(&doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)),
             &invalidator, SLOT(aboutToInvalidateMovingInterfaceContent()));
@@ -233,7 +233,7 @@ void KateDocumentTest::testRemoveTextPerformance()
     const int lines = 5000;
     const int columns = 80;
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     QString text;
     const QString line = QString().fill('a', columns);
@@ -264,7 +264,7 @@ void KateDocumentTest::testRemoveTextPerformance()
 
 void KateDocumentTest::testForgivingApiUsage()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     QVERIFY(doc.isEmpty());
     QVERIFY(doc.replaceText(Range(0, 0, 100, 100), "asdf"));
@@ -304,7 +304,7 @@ public Q_SLOTS:
 
 void KateDocumentTest::testRemoveMultipleLines()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     doc.setText("line1\n"
                 "line2\n"
@@ -318,7 +318,7 @@ void KateDocumentTest::testRemoveMultipleLines()
 
 void KateDocumentTest::testInsertNewline()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
 
     doc.setText("this is line\n"
                 "this is line2\n");
@@ -338,7 +338,7 @@ void KateDocumentTest::testDigest()
     const QByteArray fileDigest = QByteArray::fromHex("ff6e0fddece03adeb8f902e8c540735a");
 
     // make sure, Kate::TextBuffer and KateDocument::createDigest() equal
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"md5checksum.txt")));
     const QByteArray bufferDigest(doc.digest());
     QVERIFY(doc.createDigest());

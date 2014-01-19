@@ -78,7 +78,7 @@ ScriptDocumentTest::~ScriptDocumentTest()
 
 void ScriptDocumentTest::init()
 {
-    m_doc = new KateDocument(false, false, false, 0, this);
+    m_doc = new KateDocument;
     m_view = m_doc->createView(0);
     m_scriptDoc = new KateScriptDocument(this);
     m_scriptDoc->setDocument(m_doc);

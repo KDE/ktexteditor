@@ -65,7 +65,7 @@ void KateViewTest::testReloadMultipleViews()
     stream << flush;
     file.close();
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
@@ -81,7 +81,7 @@ void KateViewTest::testReloadMultipleViews()
 void KateViewTest::testLowerCaseBlockSelection()
 {
     // testcase for https://bugs.kde.org/show_bug.cgi?id=258480
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     doc.setText("nY\nnYY\n");
 
     KateView *view1 = new KateView(&doc, 0);
@@ -118,7 +118,7 @@ void KateViewTest::testFolding()
     stream << flush;
     file.close();
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
@@ -162,7 +162,7 @@ void KateViewTest::testBug287291()
     stream << flush;
     file.close();
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
@@ -229,7 +229,7 @@ void KateViewTest::testSelection()
     stream << flush;
     file.close();
 
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
     KateView *view = new KateView(&doc, 0);
@@ -294,7 +294,7 @@ void KateViewTest::testSelection()
 
 void KateViewTest::testKillline()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc;
     doc.insertLines(0, QStringList()
         << "foo"
         << "bar"

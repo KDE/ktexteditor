@@ -295,7 +295,7 @@ void ViModeTest::init()
     delete kate_view;
     delete kate_document;
 
-    kate_document = new KateDocument(false, false, false, 0, NULL);
+    kate_document = new KateDocument(false, false, 0, NULL);
     kate_view = new KateView(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
     kate_view->config()->setViInputMode(true);

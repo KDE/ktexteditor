@@ -52,7 +52,7 @@ void BugTest::cleanupTestCase()
 
 void BugTest::tryCrash()
 {
-    KateDocument doc(false, false, false);
+    KateDocument doc(false, false);
     const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug313769.cpp"));
     doc.openUrl(url);
     doc.discardDataRecovery();

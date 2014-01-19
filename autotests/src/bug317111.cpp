@@ -54,7 +54,7 @@ void BugTest::tryCrash()
 {
     // set up document and view
     KMainWindow *toplevel = new KMainWindow();
-    KateDocument *doc = new KateDocument(true, false, false, toplevel);
+    KateDocument *doc = new KateDocument(true, false, toplevel);
     KateView *view = static_cast<KateView *>(doc->createView(0));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);

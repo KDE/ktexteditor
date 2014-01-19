@@ -80,7 +80,6 @@ dialogs/katedialogs.cpp
 
 # document (THE document, buffer, lines/cursors/..., CORE STUFF)
 document/katedocument.cpp
-document/katedocumenthelpers.cpp
 document/katebuffer.cpp
 
 # undo

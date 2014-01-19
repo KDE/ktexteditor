@@ -24,6 +24,7 @@
 
 #include "kateconfig.h"
 #include "katedocument.h"
+#include "kateview.h"
 
 #include <KConfigGroup>
 #include <KSharedConfig>
@@ -44,7 +45,7 @@ class KatePrinterPrivate : public QObject
 {
     Q_OBJECT
 public:
-    KatePrinterPrivate(KateDocument *doc);
+    KatePrinterPrivate(KateView *view);
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
@@ -53,14 +54,16 @@ public Q_SLOTS:
     void paint(QPrinter *printer);
 
 private:
+    KateView     *m_view;
     KateDocument *m_doc;
     PrintPainter *m_painter;
 };
 
-KatePrinterPrivate::KatePrinterPrivate(KateDocument *doc)
+KatePrinterPrivate::KatePrinterPrivate(KateView *view)
     : QObject()
-    , m_doc(doc)
-    , m_painter(new PrintPainter(doc))
+    , m_view (view)
+    , m_doc(m_view->doc())
+    , m_painter(new PrintPainter(m_view))
 {
 }
 
@@ -139,17 +142,17 @@ void KatePrinterPrivate::paint(QPrinter *printer)
 
 //BEGIN KatePrinter
 
-bool KatePrinter::print(KateDocument *doc)
+bool KatePrinter::print(KateView *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(doc);
+    KatePrinterPrivate p(view);
     return p.print(&printer);
 }
 
-bool KatePrinter::printPreview(KateDocument *doc)
+bool KatePrinter::printPreview(KateView *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(doc);
+    KatePrinterPrivate p(view);
     QPrintPreviewDialog preview(&printer);
     QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
     return preview.exec();
