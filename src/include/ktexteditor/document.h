@@ -861,6 +861,9 @@ Q_SIGNALS:
     void highlightingModeChanged(KTextEditor::Document *document);
 
 private:
+    /**
+     * private d-pointer, pointing to the internal implementation
+     */
     DocumentPrivate *const d;
 };
 

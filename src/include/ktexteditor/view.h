@@ -613,6 +613,9 @@ public:
     virtual void printPreview() = 0;
 
 private:
+    /**
+     * private d-pointer, pointing to the internal implementation
+     */
     ViewPrivate *const d;
 };
 
