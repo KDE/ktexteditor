@@ -190,8 +190,9 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
 {
     QScopedPointer<KTextEditor::MovingCursor> cursor(document()->newMovingCursor(KTextEditor::Cursor(line, column)));
     const int start = cursor->line();
-    QList<KTextEditor::Attribute::Ptr> attributes =
-        m_document->highlight()->attributes(static_cast<KTextEditor::ViewPrivate *>(m_document->activeView())->renderer()->config()->schema());
+
+    // just use the global default schema, we anyway only want the style number!
+    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
 
     do {
         Kate::TextLine textLine = m_document->plainKateTextLine(cursor->line());
@@ -232,8 +233,9 @@ KTextEditor::Cursor KateScriptDocument::rfind(const KTextEditor::Cursor &cursor,
 
 KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar character)
 {
-    QList<KTextEditor::Attribute::Ptr> attributes =
-        m_document->highlight()->attributes(static_cast<KTextEditor::ViewPrivate *>(m_document->activeView())->renderer()->config()->schema());
+    // just use the global default schema, we anyway only want the style number!
+    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
+
     int count = 1;
     QChar lc;
     QChar rc;
@@ -690,7 +692,8 @@ bool KateScriptDocument::isAttribute(const KTextEditor::Cursor &cursor, int attr
 
 QString KateScriptDocument::attributeName(int line, int column)
 {
-    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(static_cast<KTextEditor::ViewPrivate *>(m_document->activeView())->renderer()->config()->schema());
+    // just use the global default schema, we anyway only want the style number!
+    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
     KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(line)->attribute(column)];
     return a->property(KateExtendedAttribute::AttributeName).toString();
 }
