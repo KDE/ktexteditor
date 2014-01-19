@@ -23,12 +23,39 @@
 #ifndef __KATE_PRINTER_H__
 #define __KATE_PRINTER_H__
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+class ViewPrivate;
+}
 
 namespace KatePrinter
 {
-bool print(KTextEditor::ViewPrivate *doc);
-bool printPreview(KTextEditor::ViewPrivate *doc);
+    /**
+     * Launches print dialog for specified @view
+     * @returns true if document was successfully printed
+     */
+    bool print(KTextEditor::ViewPrivate *view);
+
+    /**
+     * Launches print preview dialog for specified @view
+     * @returns true if document was printed
+     */
+    bool printPreview(KTextEditor::ViewPrivate *view);
+
+    /**
+     * Overloaded print function for document
+     * Usefull when there is no view for the document. Consequently this function
+     * cannot print only selected portion of document.
+     */
+    bool print(KTextEditor::DocumentPrivate *doc);
+
+    /**
+     * Overloaded print function for document
+     * Usefull when there is no view for the document. Consequently this function
+     * cannot print only selected portion of document.
+     */
+    bool printPreview(KTextEditor::DocumentPrivate *doc);
 };
 
 #endif

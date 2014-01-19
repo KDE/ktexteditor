@@ -45,7 +45,7 @@ class KatePrinterPrivate : public QObject
 {
     Q_OBJECT
 public:
-    KatePrinterPrivate(KTextEditor::ViewPrivate *view);
+    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = 0);
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
@@ -59,11 +59,11 @@ private:
     PrintPainter *m_painter;
 };
 
-KatePrinterPrivate::KatePrinterPrivate(KTextEditor::ViewPrivate *view)
+KatePrinterPrivate::KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
     : QObject()
-    , m_view (view)
-    , m_doc(m_view->doc())
-    , m_painter(new PrintPainter(m_view))
+    , m_view(view)
+    , m_doc(doc)
+    , m_painter(new PrintPainter(m_doc, m_view))
 {
 }
 
@@ -94,7 +94,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
 
     QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, KdePrint::SystemSelectsPages, tabs, parentWidget));
 
-    if (m_view->selection()) {
+    if (m_view && m_view->selection()) {
         printer->setPrintRange(QPrinter::Selection);
         printDialog->setOption(QAbstractPrintDialog::PrintSelection, true);
     }
@@ -145,14 +145,30 @@ void KatePrinterPrivate::paint(QPrinter *printer)
 bool KatePrinter::print(KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(view);
+    KatePrinterPrivate p(view->doc(), view);
     return p.print(&printer);
 }
 
 bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
-    KatePrinterPrivate p(view);
+    KatePrinterPrivate p(view->doc(), view);
+    QPrintPreviewDialog preview(&printer);
+    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
+    return preview.exec();
+}
+
+bool KatePrinter::print(KTextEditor::DocumentPrivate *doc)
+{
+    QPrinter printer;
+    KatePrinterPrivate p(doc);
+    return p.print(&printer);
+}
+
+bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
+{
+    QPrinter printer;
+    KatePrinterPrivate p(doc);
     QPrintPreviewDialog preview(&printer);
     QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
     return preview.exec();

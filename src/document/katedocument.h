@@ -520,6 +520,12 @@ private:
     QHash<int, QString>           m_markDescriptions;
     uint                        m_editableMarks;
 
+    // KTextEditor::PrintInterface
+    //
+public Q_SLOTS:
+    virtual bool print();
+    virtual void printPreview();
+
     //
     // KTextEditor::DocumentInfoInterface ( ### unfinished )
     //

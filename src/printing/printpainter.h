@@ -27,8 +27,12 @@
 #include <QColor>
 #include <QFont>
 
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+class ViewPrivate;
+}
+
 class KateRenderer;
 class QPrinter;
 class QPainter;
@@ -50,7 +54,7 @@ class PageLayout;
 class PrintPainter
 {
 public:
-    PrintPainter(KTextEditor::ViewPrivate *view);
+    PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
     ~PrintPainter();
 
     void paint(QPrinter *printer) const;

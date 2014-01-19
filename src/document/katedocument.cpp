@@ -48,6 +48,7 @@
 #include "katescriptmanager.h"
 #include "kateswapfile.h"
 #include "katepartdebug.h"
+#include "printing/kateprinter.h"
 
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
@@ -1938,6 +1939,18 @@ uint KTextEditor::DocumentPrivate::editableMarks() const
     return m_editableMarks;
 }
 //END
+
+//BEGIN KTextEditor::PrintInterface stuff
+bool KTextEditor::DocumentPrivate::print()
+{
+    return KatePrinter::print(this);
+}
+
+void KTextEditor::DocumentPrivate::printPreview()
+{
+    KatePrinter::printPreview(this);
+}
+//END KTextEditor::PrintInterface stuff
 
 //BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
 QString KTextEditor::DocumentPrivate::mimeType()

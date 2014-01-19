@@ -83,9 +83,9 @@ public:
     KTextEditor::Range selectionRange;
 };
 
-PrintPainter::PrintPainter(KTextEditor::ViewPrivate *view)
-    : m_view (view)
-    , m_doc(m_view->doc())
+PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
+    : m_view(view)
+    , m_doc(doc)
     , m_colorScheme()
     , m_printGuide(false)
     , m_printLineNumbers(false)
@@ -108,7 +108,7 @@ PrintPainter::PrintPainter(KTextEditor::ViewPrivate *view)
 {
     m_folding = new Kate::TextFolding(m_doc->buffer());
 
-    m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
+    m_renderer = new KateRenderer(m_doc, *m_folding);
     m_renderer->config()->setSchema(m_colorScheme);
     m_renderer->setPrinterFriendly(true);
 
@@ -237,7 +237,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
     pl.selectionOnly = (printer->printRange() == QPrinter::Selection);
     pl.lastline = m_doc->lastLine();
 
-    if (pl.selectionOnly) {
+    if (m_view && pl.selectionOnly) {
         // set a line range from the first selected line to the last
         pl.selectionRange = m_view->selectionRange();
         pl.firstline = pl.selectionRange.start().line();
@@ -649,7 +649,7 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
     // selectionOnly: clip non-selection parts and adjust painter position if needed
     int _xadjust = 0;
     if (pl.selectionOnly) {
-        if (m_view->blockSelection()) {
+        if (m_view && m_view->blockSelection()) {
             int _x = m_renderer->cursorToX(rangeptr->viewLine(0), pl.selectionRange.start());
             int _x1 = m_renderer->cursorToX(rangeptr->viewLine(rangeptr->viewLineCount() - 1), pl.selectionRange.end());
             _xadjust = _x;
