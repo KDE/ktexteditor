@@ -18,7 +18,6 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateglobal.h"
 #include "katedocument.h"
 
 #include <KPluginFactory>
@@ -34,7 +33,7 @@ class KateFactory : public KPluginFactory
 {
     Q_OBJECT
 
-    Q_PLUGIN_METADATA(IID KPluginFactory_iid FILE "data/katepart.json")
+    Q_PLUGIN_METADATA(IID KPluginFactory_iid FILE "katepart.json")
 
     Q_INTERFACES(KPluginFactory)
 
@@ -81,4 +80,4 @@ public:
     }
 };
 
-#include "katefactory.moc"
+#include "katepart.moc"

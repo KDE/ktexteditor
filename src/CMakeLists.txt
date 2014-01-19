@@ -254,11 +254,5 @@ add_subdirectory( syntax/data )
 # jscripts for the part
 add_subdirectory( script/data )
 
-# kate part itself just is core + the factory
-add_library (katepart MODULE utils/katefactory.cpp)
-
-# link the part, use kate part core + kde stuff
-target_link_libraries (katepart KF5TextEditor Qt5::Script)
-
-# install the part
-install (TARGETS katepart DESTINATION ${PLUGIN_INSTALL_DIR})
+# add part
+add_subdirectory (part)
