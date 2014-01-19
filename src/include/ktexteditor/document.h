@@ -743,6 +743,33 @@ public:
     virtual QString highlightingMode() const = 0;
 
     /**
+     * \brief Get all available highlighting modes for the current document.
+     *
+     * Each document can be highlighted using an arbitrary number of highlighting
+     * contexts. This method will return the names for each of the used modes.
+     *
+     * Example: The "PHP (HTML)" mode includes the highlighting for PHP, HTML, CSS and JavaScript.
+     *
+     * \return Returns a list of embedded highlighting modes for the current Document.
+     *
+     * \see KTextEditor::Document::highlightingMode()
+     */
+    virtual QStringList embeddedHighlightingModes() const = 0;
+
+    /**
+     * \brief Get the highlight mode used at a given position in the document.
+     *
+     * Retrieve the name of the applied highlight mode at a given \p position
+     * in the current document.
+     *
+     * Calling this might trigger re-highlighting up to the given line.
+     * Therefore this is not const.
+     *
+     * \see highlightingModes()
+     */
+    virtual QString highlightingModeAt(const Cursor &position) = 0;
+
+    /**
      * Return a list of the names of all possible modes
      * \return list of mode names
      * \see mode(), setMode()

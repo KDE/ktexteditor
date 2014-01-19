@@ -130,33 +130,6 @@ public:
      * \return list of AttributeBlocks for given \p line.
      */
     virtual QList<AttributeBlock> lineAttributes(const unsigned int line) = 0;
-
-    /**
-     * \brief Get all available highlighting modes for the current document.
-     *
-     * Each document can be highlighted using an arbitrary number of highlighting
-     * contexts. This method will return the names for each of the used modes.
-     *
-     * Example: The "PHP (HTML)" mode includes the highlighting for PHP, HTML, CSS and JavaScript.
-     *
-     * \return Returns a list of embedded highlighting modes for the current Document.
-     *
-     * \see KTextEditor::Document::highlightingMode()
-     */
-    virtual QStringList embeddedHighlightingModes() const = 0;
-
-    /**
-     * \brief Get the highlight mode used at a given position in the document.
-     *
-     * Retrieve the name of the applied highlight mode at a given \p position
-     * in the current document.
-     *
-     * \see highlightingModes()
-     *
-     * TODO: I intended to make this const but Kate's implementation needs to
-     * call kateTextline which is non-const. Solution?
-     */
-    virtual QString highlightingModeAt(const Cursor &position) = 0;
 };
 
 }
