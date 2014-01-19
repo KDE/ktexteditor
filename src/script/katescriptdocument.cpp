@@ -735,11 +735,3 @@ void KateScriptDocument::indent(KTextEditor::Range range, int change)
 {
     m_document->indent(range, change);
 }
-
-void KateScriptDocument::align(const KTextEditor::Range &range)
-{
-    if (m_document->activeKateView()) {
-        m_document->align(m_document->activeKateView(), range);
-    }
-}
-

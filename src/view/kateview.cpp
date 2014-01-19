@@ -428,10 +428,10 @@ void KateView::setupActions()
         m_editRedo = 0;
     }
 
-    a = ac->addAction(KStandardAction::Print, m_doc, SLOT(print()));
+    a = ac->addAction(KStandardAction::Print, this, SLOT(print()));
     a->setWhatsThis(i18n("Print the current document."));
 
-    a = ac->addAction(KStandardAction::PrintPreview, m_doc, SLOT(printPreview()));
+    a = ac->addAction(KStandardAction::PrintPreview, this, SLOT(printPreview()));
     a->setWhatsThis(i18n("Show print preview of current document"));
 
     a = ac->addAction(QLatin1String("file_reload"));

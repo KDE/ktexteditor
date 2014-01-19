@@ -105,3 +105,7 @@ void KateScriptView::clearSelection()
     m_view->clearSelection();
 }
 
+void KateScriptView::align(const KTextEditor::Range &range)
+{
+    m_view->doc()->align (m_view, range);
+}

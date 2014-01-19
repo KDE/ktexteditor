@@ -1451,7 +1451,7 @@ function indent(line, indentWidth, ch)
         }
     } else if (ch == '\n') {
         // cr entered - align the just completed line
-        document.align(new Range(line-1, 0, line-1, 1));
+        view.align(new Range(line-1, 0, line-1, 1));
     } else if( !reindentTrigger(line) ) {
         return processChar(line, ch);
     }

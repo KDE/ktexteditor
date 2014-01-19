@@ -70,6 +70,8 @@ public:
     Q_INVOKABLE void selectAll();
     Q_INVOKABLE void clearSelection();
 
+    Q_INVOKABLE void align(const KTextEditor::Range &range);
+    
 private:
     KateView *m_view;
 };
