@@ -26,7 +26,7 @@
 
 #include <KActionMenu>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 class KateHighlightingMenu : public KActionMenu
 {
@@ -41,12 +41,12 @@ public:
 
     ~KateHighlightingMenu();
 
-    void updateMenu(KateDocument *doc);
+    void updateMenu(KTextEditor::DocumentPrivate *doc);
 
 private:
     void init();
 
-    QPointer<KateDocument> m_doc;
+    QPointer<KTextEditor::DocumentPrivate> m_doc;
     QStringList subMenusName;
     QStringList names;
     QList<QMenu *> subMenus;

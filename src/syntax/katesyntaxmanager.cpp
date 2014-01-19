@@ -172,7 +172,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     KColorScheme schemeSelected(QPalette::Active, KColorScheme::Selection);
 
     ///NOTE: it's important to append in the order of the HighlightInterface::DefaultStyle
-    ///      enum, to make KateDocument::defaultStyle() work properly.
+    ///      enum, to make KTextEditor::DocumentPrivate::defaultStyle() work properly.
 
     {
         // dsNormal

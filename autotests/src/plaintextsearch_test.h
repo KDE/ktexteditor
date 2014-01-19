@@ -22,7 +22,7 @@
 
 #include <QtCore/QObject>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KatePlainTextSearch;
 
 class PlainTextSearchTest : public QObject
@@ -50,7 +50,7 @@ private Q_SLOTS:
     void testMultilineSearch();
 
 private:
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     KatePlainTextSearch *m_search;
 
 public:

@@ -38,7 +38,7 @@
 #include <ktexteditor_export.h>
 #include "katetextline.h"
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 
@@ -149,7 +149,7 @@ private:
     bool m_leftMouseDown;
 
     KTextEditor::ViewPrivate *m_view;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     class KateViewInternal *m_viewInternal;
 
     QHash<int, QColor> m_lines;
@@ -258,7 +258,7 @@ private:
     int annotationLineWidth(int line);
 
     KTextEditor::ViewPrivate *m_view;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     KateViewInternal *m_viewInternal;
 
     bool m_iconBorderOn: 1;
@@ -303,7 +303,7 @@ class KateViewEncodingAction: public KSelectAction
     Q_PROPERTY(int codecMib READ currentCodecMib)
 
 public:
-    KateViewEncodingAction(KateDocument *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent);
+    KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent);
 
     ~KateViewEncodingAction();
 
@@ -326,7 +326,7 @@ Q_SIGNALS:
     void triggered(QTextCodec *codec);
 
 private:
-    KateDocument *doc;
+    KTextEditor::DocumentPrivate *doc;
     KTextEditor::ViewPrivate *view;
 
     class Private

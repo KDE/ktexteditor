@@ -77,7 +77,7 @@ static void rangeFromScriptValue(const QScriptValue &obj, KTextEditor::Range &ra
 }
 //END
 
-TestScriptEnv::TestScriptEnv(KateDocument *part, bool &cflag)
+TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
     : m_engine(0), m_viewObj(0), m_docObj(0), m_output(0)
 {
     m_engine = new QScriptEngine(this);
@@ -227,7 +227,7 @@ ALIAS(shiftWordNext, shiftWordRight)
 
 //BEGIN KateDocumentObject
 
-KateDocumentObject::KateDocumentObject(KateDocument *doc)
+KateDocumentObject::KateDocumentObject(KTextEditor::DocumentPrivate *doc)
     : KateScriptDocument()
 {
     setDocument(doc);

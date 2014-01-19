@@ -26,7 +26,7 @@
 
 #include <QList>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateUndo;
 class KateUndoGroup;
 
@@ -54,7 +54,7 @@ public:
      *
      * @param doc the document the KateUndoManager will belong to
      */
-    KateUndoManager(KateDocument *doc);
+    KateUndoManager(KTextEditor::DocumentPrivate *doc);
 
     ~KateUndoManager();
 
@@ -210,7 +210,7 @@ private:
     KTextEditor::View *activeView();
 
 private:
-    KateDocument *m_document;
+    KTextEditor::DocumentPrivate *m_document;
     bool m_undoComplexMerge;
     bool m_isActive;
     KateUndoGroup *m_editCurrentUndo;

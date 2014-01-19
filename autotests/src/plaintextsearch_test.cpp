@@ -78,7 +78,7 @@ PlainTextSearchTest::~PlainTextSearchTest()
 
 void PlainTextSearchTest::init()
 {
-    m_doc = new KateDocument(false, false, 0, this);
+    m_doc = new KTextEditor::DocumentPrivate(false, false, 0, this);
     m_search = new KatePlainTextSearch(m_doc, Qt::CaseSensitive, false);
 }
 

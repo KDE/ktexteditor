@@ -38,7 +38,7 @@
 
 #define ON_THE_FLY_DEBUG qCDebug(LOG_PART)
 
-KateOnTheFlyChecker::KateOnTheFlyChecker(KateDocument *document)
+KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     : QObject(document),
       m_document(document),
       m_backgroundChecker(NULL),
@@ -59,8 +59,8 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KateDocument *document)
             this, SLOT(addView(KTextEditor::Document*,KTextEditor::View*)));
     connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document*)),
             this, SLOT(updateConfig()));
-    connect(&document->buffer(), SIGNAL(respellCheckBlock(KateDocument*,int,int)),
-            this, SLOT(handleRespellCheckBlock(KateDocument*,int,int)));
+    connect(&document->buffer(), SIGNAL(respellCheckBlock(KTextEditor::DocumentPrivate*,int,int)),
+            this, SLOT(handleRespellCheckBlock(KTextEditor::DocumentPrivate*,int,int)));
 
     // load the settings for the speller
     updateConfig();
@@ -112,7 +112,7 @@ void KateOnTheFlyChecker::clearMisspellingForWord(const QString &word)
 const KateOnTheFlyChecker::SpellCheckItem KateOnTheFlyChecker::invalidSpellCheckQueueItem =
     SpellCheckItem(NULL, QString());
 
-void KateOnTheFlyChecker::handleRespellCheckBlock(KateDocument *kateDocument, int start, int end)
+void KateOnTheFlyChecker::handleRespellCheckBlock(KTextEditor::DocumentPrivate *kateDocument, int start, int end)
 {
     Q_ASSERT(kateDocument == m_document);
     Q_UNUSED(kateDocument);
@@ -378,7 +378,7 @@ void KateOnTheFlyChecker::performSpellCheck()
     deleteMovingRanges(highlightsList);
 
     m_currentDecToEncOffsetList.clear();
-    KateDocument::OffsetList encToDecOffsetList;
+    KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
     QString text = m_document->decodeCharacters(*spellCheckRange,
                    m_currentDecToEncOffsetList,
                    encToDecOffsetList);
@@ -534,7 +534,7 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     const QRegExp boundaryQuoteRegExp(QLatin1String("\\b\\w+'\\w*$"));  // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
     const QRegExp extendedBoundaryRegExp(QLatin1String("(\\W|$)"));
     const QRegExp extendedBoundaryQuoteRegExp(QLatin1String("^\\w*'\\w+\\b")); // see above
-    KateDocument::OffsetList decToEncOffsetList, encToDecOffsetList;
+    KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList, encToDecOffsetList;
     const int startLine = begin.line();
     const int startColumn = begin.column();
     KTextEditor::Cursor boundaryStart, boundaryEnd;
@@ -773,7 +773,7 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *
     }
 }
 
-void KateOnTheFlyChecker::queueLineSpellCheck(KateDocument *kateDocument, int line)
+void KateOnTheFlyChecker::queueLineSpellCheck(KTextEditor::DocumentPrivate *kateDocument, int line)
 {
     const KTextEditor::Range range = KTextEditor::Range(line, 0, line, kateDocument->lineLength(line));
     // clear all the highlights that are currently present in the range that

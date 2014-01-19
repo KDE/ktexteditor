@@ -48,7 +48,7 @@ class AnnotationModel;
 class Message;
 }
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateBookmarks;
 class KateCommandLineBar;
 class KateViewConfig;
@@ -100,7 +100,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     friend class ::KateViModeBase;
 
 public:
-    ViewPrivate (KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
     ~ViewPrivate ();
 
     /**
@@ -563,11 +563,11 @@ public:
      * accessor to katedocument pointer
      * @return pointer to document
      */
-    KateDocument  *doc()
+    KTextEditor::DocumentPrivate  *doc()
     {
         return m_doc;
     }
-    const KateDocument  *doc() const
+    const KTextEditor::DocumentPrivate  *doc() const
     {
         return m_doc;
     }
@@ -655,7 +655,7 @@ private:
 
     bool m_hasWrap;
 
-    KateDocument     *const m_doc;
+    KTextEditor::DocumentPrivate     *const m_doc;
     Kate::TextFolding m_textFolding;
     KateViewConfig   *const m_config;
     KateRenderer     *const m_renderer;

@@ -55,7 +55,7 @@ public Q_SLOTS:
 
 private:
     KTextEditor::ViewPrivate     *m_view;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     PrintPainter *m_painter;
 };
 

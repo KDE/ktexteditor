@@ -27,7 +27,7 @@
 #include <QColor>
 #include <QFont>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class KateRenderer;
 class QPrinter;
@@ -130,7 +130,7 @@ private:
 
 private:
     KTextEditor::ViewPrivate     *m_view;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
 
     QString m_colorScheme;
     bool m_printGuide;

@@ -28,7 +28,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateViewInternal;
 class QTimeLine;
 class QPainter;
@@ -61,7 +61,7 @@ private:
     QString m_text;
     KTextEditor::Attribute::Ptr m_attribute;
 
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     KateViewInternal *m_view;
     QTimeLine *m_timeLine;
     qreal m_value;

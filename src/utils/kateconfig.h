@@ -34,7 +34,7 @@
 
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateRenderer;
 
 namespace KTextEditor {
@@ -162,7 +162,7 @@ public:
     /**
      * Construct a DocumentConfig
      */
-    KateDocumentConfig(KateDocument *doc);
+    KateDocumentConfig(KTextEditor::DocumentPrivate *doc);
 
     /**
      * Cu DocumentConfig
@@ -396,7 +396,7 @@ private:
 
 private:
     static KateDocumentConfig *s_global;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
 };
 
 class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig

@@ -94,7 +94,7 @@ void RangeTest::testTextEditorRange()
 void RangeTest::testTextRange()
 {
     // test text range
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::MovingRange *complexRange = doc.newMovingRange(KTextEditor::Range());
     KTextEditor::Range range = *complexRange;
     rangeCheck(range);
@@ -103,7 +103,7 @@ void RangeTest::testTextRange()
 
 void RangeTest::testInsertText()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     // Multi-line insert
     KTextEditor::MovingCursor *cursor1 = doc.newMovingCursor(KTextEditor::Cursor(), KTextEditor::MovingCursor::StayOnInsert);
@@ -129,7 +129,7 @@ void RangeTest::testInsertText()
 
 void RangeTest::testCornerCaseInsertion()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     // lock first revision
     doc.lockRevision(0);

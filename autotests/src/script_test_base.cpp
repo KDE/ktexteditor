@@ -58,7 +58,7 @@ void ScriptTestBase::initTestCase()
 {
     m_msgHandler =  qInstallMessageHandler(noDebugMessageOutput);
     m_toplevel = new QMainWindow();
-    m_document = new KateDocument(true, false, m_toplevel);
+    m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel);
     m_view = static_cast<KTextEditor::ViewPrivate *>(m_document->widget());
     m_env = new TestScriptEnv(m_document, m_outputWasCustomised);
 }

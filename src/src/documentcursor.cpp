@@ -177,7 +177,7 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
 
     Cursor c(m_cursor);
 
-    // cache lineLength to minimize calls of KateDocument::lineLength(), as
+    // cache lineLength to minimize calls of KTextEditor::DocumentPrivate::lineLength(), as
     // results in locating the correct block in the text buffer every time,
     // which is relatively slow
     int lineLength = document()->lineLength(c.line());

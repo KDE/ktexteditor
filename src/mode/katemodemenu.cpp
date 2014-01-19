@@ -64,12 +64,12 @@ KateModeMenu::~KateModeMenu()
 
 void KateModeMenu::updateMenu(KTextEditor::Document *doc)
 {
-    m_doc = static_cast<KateDocument *>(doc);
+    m_doc = static_cast<KTextEditor::DocumentPrivate *>(doc);
 }
 
 void KateModeMenu::slotAboutToShow()
 {
-    KateDocument *doc = m_doc;
+    KTextEditor::DocumentPrivate *doc = m_doc;
     int count = KTextEditor::EditorPrivate::self()->modeManager()->list().count();
 
     for (int z = 0; z < count; z++) {
@@ -152,7 +152,7 @@ void KateModeMenu::slotAboutToShow()
 
 void KateModeMenu::setType(QAction *action)
 {
-    KateDocument *doc = m_doc;
+    KTextEditor::DocumentPrivate *doc = m_doc;
 
     if (doc) {
         doc->updateFileType(action->data().toString(), true);

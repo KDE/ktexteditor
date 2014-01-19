@@ -37,12 +37,12 @@ KateScriptDocument::KateScriptDocument(QObject *parent)
 {
 }
 
-void KateScriptDocument::setDocument(KateDocument *document)
+void KateScriptDocument::setDocument(KTextEditor::DocumentPrivate *document)
 {
     m_document = document;
 }
 
-KateDocument *KateScriptDocument::document()
+KTextEditor::DocumentPrivate *KateScriptDocument::document()
 {
     return m_document;
 }

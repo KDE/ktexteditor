@@ -71,13 +71,14 @@ class KateDocumentConfig;
 class KateHighlighting;
 class KateUndoManager;
 class KateOnTheFlyChecker;
+class KateDocumentTest;
 
 class KateAutoIndent;
 
 //
 // Kate KTextEditor::Document class (and even KTextEditor::Editor ;)
 //
-class KTEXTEDITOR_EXPORT KateDocument : public KTextEditor::Document,
+class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
     public KTextEditor::SessionConfigInterface,
     public KTextEditor::ParameterizedSessionConfigInterface,
     public KTextEditor::SearchInterface,
@@ -106,13 +107,13 @@ class KTEXTEDITOR_EXPORT KateDocument : public KTextEditor::Document,
     Q_INTERFACES(KTextEditor::RecoveryInterface)
     Q_INTERFACES(KTextEditor::MessageInterface)
 
-    friend class KateDocumentTest;
-    friend class KateBuffer;
+    friend class ::KateDocumentTest;
+    friend class ::KateBuffer;
 
 public:
-    explicit KateDocument(bool bSingleViewMode = false, bool bReadOnly = false,
+    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false,
                           QWidget *parentWidget = 0, QObject * = 0);
-    ~KateDocument();
+    ~DocumentPrivate();
 
     using ReadWritePart::closeUrl;
     virtual bool closeUrl();
@@ -1150,7 +1151,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void dictionaryRangesPresent(bool yesNo);
-    void defaultDictionaryChanged(KateDocument *document);
+    void defaultDictionaryChanged(KTextEditor::DocumentPrivate *document);
 
 public:
     bool containsCharacterEncoding(const KTextEditor::Range &range);
@@ -1164,8 +1165,8 @@ public:
      * encoded to decoded.
      **/
     QString decodeCharacters(const KTextEditor::Range &range,
-                             KateDocument::OffsetList &decToEncOffsetList,
-                             KateDocument::OffsetList &encToDecOffsetList);
+                             KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
+                             KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
     void replaceCharactersByEncoding(const KTextEditor::Range &range);
 
     enum EncodedCharaterInsertionPolicy {EncodeAlways, EncodeWhenPresent, EncodeNever};

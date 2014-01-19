@@ -30,7 +30,7 @@
 #include <QList>
 #include <QRegExp>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 namespace KTextEditor { class ViewPrivate; }
 
@@ -65,7 +65,7 @@ class MovingRange;
  *     exists in the template,the cursor will be placed there. Else the cursor will
  *     be placed at the end of the template.
  *
- * \see KateDocument::insertTemplateTextImplementation(), KTextEditor::TemplateInterface
+ * \see KTextEditor::DocumentPrivate::insertTemplateTextImplementation(), KTextEditor::TemplateInterface
  *
  * \author Milian Wolff <mail@milianw.de>
  */
@@ -198,7 +198,7 @@ private:
      */
     void jumpToFinalCursorPosition();
 
-    KateDocument *doc();
+    KTextEditor::DocumentPrivate *doc();
 
 private Q_SLOTS:
     /**

@@ -440,11 +440,11 @@ private:
     void cursorMoved();
 
 private:
-    inline KateDocument *doc()
+    inline KTextEditor::DocumentPrivate *doc()
     {
         return m_view->doc();
     }
-    inline KateDocument *doc() const
+    inline KTextEditor::DocumentPrivate *doc() const
     {
         return m_view->doc();
     }

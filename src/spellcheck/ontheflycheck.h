@@ -53,7 +53,7 @@ class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeed
     typedef QList<ModificationItem> ModificationList;
 
 public:
-    KateOnTheFlyChecker(KateDocument *document);
+    KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
     ~KateOnTheFlyChecker();
 
     QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor &cursor) const;
@@ -71,7 +71,7 @@ public Q_SLOTS:
     void updateInstalledMovingRanges(KTextEditor::ViewPrivate *view);
 
 protected:
-    KateDocument *const m_document;
+    KTextEditor::DocumentPrivate *const m_document;
     Sonnet::Speller m_speller;
     QList<SpellCheckItem> m_spellCheckQueue;
     Sonnet::BackgroundChecker *m_backgroundChecker;
@@ -79,14 +79,14 @@ protected:
     static const SpellCheckItem invalidSpellCheckQueueItem;
     MisspelledList m_misspelledList;
     ModificationList m_modificationList;
-    KateDocument::OffsetList m_currentDecToEncOffsetList;
+    KTextEditor::DocumentPrivate::OffsetList m_currentDecToEncOffsetList;
     QMap<KTextEditor::View *, KTextEditor::Range> m_displayRangeMap;
 
     void freeDocument();
 
     MovingRangeList installedMovingRanges(const KTextEditor::Range &range);
 
-    void queueLineSpellCheck(KateDocument *document, int line);
+    void queueLineSpellCheck(KTextEditor::DocumentPrivate *document, int line);
     /**
      * 'range' must be on a single line
      **/
@@ -133,7 +133,7 @@ protected Q_SLOTS:
     void handleModifiedRanges();
     void handleInsertedText(const KTextEditor::Range &range);
     void handleRemovedText(const KTextEditor::Range &range);
-    void handleRespellCheckBlock(KateDocument *document, int start, int end);
+    void handleRespellCheckBlock(KTextEditor::DocumentPrivate *document, int start, int end);
     bool removeRangeFromModificationList(KTextEditor::MovingRange *range);
     void clearModificationList();
 };

@@ -58,7 +58,7 @@ namespace Kate
 
 QTimer *SwapFile::s_timer = 0;
 
-SwapFile::SwapFile(KateDocument *document)
+SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
     : QObject(document)
     , m_document(document)
     , m_trackingEnabled(false)
@@ -136,7 +136,7 @@ void SwapFile::fileClosed()
     updateFileName();
 }
 
-KateDocument *SwapFile::document()
+KTextEditor::DocumentPrivate *SwapFile::document()
 {
     return m_document;
 }

@@ -43,7 +43,7 @@ class KateGlobalConfig;
 class KateDocumentConfig;
 class KateViewConfig;
 class KateRendererConfig;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class KateScriptManager;
 class KDirWatch;
@@ -231,13 +231,13 @@ public:
      * this allows us to loop over all docs for example on config changes
      * @param doc document to register
      */
-    void registerDocument(KateDocument *doc);
+    void registerDocument(KTextEditor::DocumentPrivate *doc);
 
     /**
      * unregister document at the factory
      * @param doc document to register
      */
-    void deregisterDocument(KateDocument *doc);
+    void deregisterDocument(KTextEditor::DocumentPrivate *doc);
 
     /**
      * register view at the factory
@@ -256,7 +256,7 @@ public:
      * return a list of all registered docs
      * @return all known documents
      */
-    QList<KateDocument *> &kateDocuments()
+    QList<KTextEditor::DocumentPrivate *> &kateDocuments()
     {
         return m_documents;
     }
@@ -455,7 +455,7 @@ private:
     /**
      * registered docs
      */
-    QList<KateDocument *> m_documents;
+    QList<KTextEditor::DocumentPrivate *> m_documents;
 
     /**
      * registered views

@@ -831,7 +831,7 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
                 break;
             }
             KTextEditor::MovingCursor *workingStart =
-                static_cast<KateDocument *>(m_view->document())->newMovingCursor(highlightRanges.last().end());
+                static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingCursor(highlightRanges.last().end());
             if (originalMatchEmpty) {
                 // Can happen for regex patterns like "^".
                 // If we don't advance here we will loop forever...

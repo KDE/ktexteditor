@@ -28,7 +28,7 @@
 #include "katedialogs.h"
 #include "katemodemanager.h"
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 class KateModeMenu : public KActionMenu
 {
@@ -48,7 +48,7 @@ public:
 private:
     void init();
 
-    QPointer<KateDocument> m_doc;
+    QPointer<KTextEditor::DocumentPrivate> m_doc;
     QStringList subMenusName;
     QStringList names;
     QList<QMenu *> subMenus;

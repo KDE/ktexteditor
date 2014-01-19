@@ -71,7 +71,7 @@ void SearchBarTest::cleanupTestCase()
 
 void SearchBarTest::testFindNextIncremental()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     doc.setText("a a a b b");
 
     KTextEditor::ViewPrivate view(&doc, 0);
@@ -106,7 +106,7 @@ void SearchBarTest::testFindNextIncremental()
 
 void SearchBarTest::testSetMatchCaseIncremental()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -140,7 +140,7 @@ void SearchBarTest::testSetMatchCaseIncremental()
 
 void SearchBarTest::testSetMatchCasePower()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -181,7 +181,7 @@ void SearchBarTest::testSetMatchCasePower()
 
 void SearchBarTest::testSetSelectionOnlyPower()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -230,7 +230,7 @@ void SearchBarTest::testSetSearchPattern()
     QFETCH(bool, power);
     QFETCH(int, numMatches2);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -254,7 +254,7 @@ void SearchBarTest::testSetSearchPattern()
 
 void SearchBarTest::testSetSelectionOnly()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -290,7 +290,7 @@ void SearchBarTest::testFindAll()
     QFETCH(int, numMatches2);
     QFETCH(int, numMatches4);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -326,7 +326,7 @@ void SearchBarTest::testFindAll()
 
 void SearchBarTest::testReplaceAll()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -381,7 +381,7 @@ void SearchBarTest::testFindSelectionForward()
     QFETCH(Range, selectionRange);
     QFETCH(Range, match);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -418,7 +418,7 @@ void SearchBarTest::testRemoveWithSelectionForward()
     QFETCH(Range, selectionRange);
     QFETCH(Range, match);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -452,7 +452,7 @@ void SearchBarTest::testRemoveInSelectionForward()
     QFETCH(Range, selectionRange);
     QFETCH(Range, match);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -497,7 +497,7 @@ void SearchBarTest::testReplaceWithDoubleSelecion()
     QFETCH(QString, result);
     QFETCH(Range, match);
 
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -516,7 +516,7 @@ void SearchBarTest::testReplaceWithDoubleSelecion()
 
 void SearchBarTest::testReplaceDollar()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 
@@ -535,7 +535,7 @@ void SearchBarTest::testReplaceDollar()
 
 void SearchBarTest::testSearchHistoryIncremental()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig *const config = view.config();
     config->patternHistoryModel()->setStringList(QStringList());
@@ -555,7 +555,7 @@ void SearchBarTest::testSearchHistoryIncremental()
     QCOMPARE(bar.m_incUi->pattern->findText("bar"), 0);
     QCOMPARE(bar.m_incUi->pattern->findText("foo"), 1);
 
-    KateDocument doc2;
+    KTextEditor::DocumentPrivate doc2;
     KTextEditor::ViewPrivate view2(&doc2, 0);
     KateViewConfig *const config2 = view2.config();
     KateSearchBar bar2(false, &view2, config2);
@@ -572,7 +572,7 @@ void SearchBarTest::testSearchHistoryIncremental()
 
 void SearchBarTest::testSearchHistoryPower()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig *const config = view.config();
     config->patternHistoryModel()->setStringList(QStringList());
@@ -600,7 +600,7 @@ void SearchBarTest::testSearchHistoryPower()
     QCOMPARE(bar.m_powerUi->pattern->findText("foo"), 1);
     QCOMPARE(bar.m_powerUi->pattern->count(), 2);
 
-    KateDocument doc2;
+    KTextEditor::DocumentPrivate doc2;
     KTextEditor::ViewPrivate view2(&doc2, 0);
     KateViewConfig *const config2 = view2.config();
     KateSearchBar bar2(true, &view2, config2);
@@ -612,7 +612,7 @@ void SearchBarTest::testSearchHistoryPower()
 // Make sure Kate doesn't replace anything outside selection in block mode (see bug 253191)
 void SearchBarTest::testReplaceInBlockMode()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig config(&view);
 

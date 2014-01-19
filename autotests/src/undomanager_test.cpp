@@ -30,11 +30,11 @@ QTEST_MAIN(UndoManagerTest)
 
 using namespace KTextEditor;
 
-class UndoManagerTest::TestDocument : public KateDocument
+class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
 {
 public:
     TestDocument()
-        : KateDocument(false, false, 0, 0)
+        : KTextEditor::DocumentPrivate(false, false, 0, 0)
     {}
 };
 

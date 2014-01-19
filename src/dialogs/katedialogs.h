@@ -44,7 +44,7 @@
 #include <QTreeWidget>
 
 class ModeConfigPage;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 
 namespace KIO
@@ -376,7 +376,7 @@ public:
         Overwrite,
         Ignore
     };
-    KateModOnHdPrompt(KateDocument *doc,
+    KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
                       KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
                       const QString &reason, QWidget *parent);
     ~KateModOnHdPrompt();
@@ -398,7 +398,7 @@ private Q_SLOTS:
 
 private:
     Ui::ModOnHdWidget *ui;
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     KTextEditor::ModificationInterface::ModifiedOnDiskReason m_modtype;
     KProcess *m_proc;
     QTemporaryFile *m_diffFile;

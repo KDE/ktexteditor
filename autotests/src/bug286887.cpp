@@ -49,7 +49,7 @@ void BugTest::cleanupTestCase()
 
 void BugTest::ctrlShiftLeft()
 {
-    KateDocument doc(false, false);
+    KTextEditor::DocumentPrivate doc(false, false);
 
     // view must be visible...
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));

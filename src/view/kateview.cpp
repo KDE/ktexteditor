@@ -101,7 +101,7 @@ void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
     }
 }
 
-KTextEditor::ViewPrivate::ViewPrivate(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
+KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
     : KTextEditor::View (this, parent)
     , m_completionWidget(0)
     , m_annotationModel(0)
@@ -2544,7 +2544,7 @@ void KTextEditor::ViewPrivate::toggleComment()
 
 void KTextEditor::ViewPrivate::uppercase()
 {
-    m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Uppercase);
+    m_doc->transform(this, m_viewInternal->m_cursor, KTextEditor::DocumentPrivate::Uppercase);
 }
 
 void KTextEditor::ViewPrivate::killLine()
@@ -2562,14 +2562,14 @@ void KTextEditor::ViewPrivate::killLine()
 
 void KTextEditor::ViewPrivate::lowercase()
 {
-    m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Lowercase);
+    m_doc->transform(this, m_viewInternal->m_cursor, KTextEditor::DocumentPrivate::Lowercase);
 }
 
 void KTextEditor::ViewPrivate::capitalize()
 {
     m_doc->editStart();
-    m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Lowercase);
-    m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Capitalize);
+    m_doc->transform(this, m_viewInternal->m_cursor, KTextEditor::DocumentPrivate::Lowercase);
+    m_doc->transform(this, m_viewInternal->m_cursor, KTextEditor::DocumentPrivate::Capitalize);
     m_doc->editEnd();
 }
 

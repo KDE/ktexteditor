@@ -29,7 +29,7 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-KateUndo::KateUndo(KateDocument *document)
+KateUndo::KateUndo(KTextEditor::DocumentPrivate *document)
     : m_document(document)
     , m_lineModFlags(0x00)
 {
@@ -39,7 +39,7 @@ KateUndo::~KateUndo()
 {
 }
 
-KateEditInsertTextUndo::KateEditInsertTextUndo(KateDocument *document, int line, int col, const QString &text)
+KateEditInsertTextUndo::KateEditInsertTextUndo(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text)
     : KateUndo(document)
     , m_line(line)
     , m_col(col)
@@ -47,7 +47,7 @@ KateEditInsertTextUndo::KateEditInsertTextUndo(KateDocument *document, int line,
 {
 }
 
-KateEditRemoveTextUndo::KateEditRemoveTextUndo(KateDocument *document, int line, int col, const QString &text)
+KateEditRemoveTextUndo::KateEditRemoveTextUndo(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text)
     : KateUndo(document)
     , m_line(line)
     , m_col(col)
@@ -55,7 +55,7 @@ KateEditRemoveTextUndo::KateEditRemoveTextUndo(KateDocument *document, int line,
 {
 }
 
-KateEditWrapLineUndo::KateEditWrapLineUndo(KateDocument *document, int line, int col, int len, bool newLine)
+KateEditWrapLineUndo::KateEditWrapLineUndo(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool newLine)
     : KateUndo(document)
     , m_line(line)
     , m_col(col)
@@ -64,7 +64,7 @@ KateEditWrapLineUndo::KateEditWrapLineUndo(KateDocument *document, int line, int
 {
 }
 
-KateEditUnWrapLineUndo::KateEditUnWrapLineUndo(KateDocument *document, int line, int col, int len, bool removeLine)
+KateEditUnWrapLineUndo::KateEditUnWrapLineUndo(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool removeLine)
     : KateUndo(document)
     , m_line(line)
     , m_col(col)
@@ -73,14 +73,14 @@ KateEditUnWrapLineUndo::KateEditUnWrapLineUndo(KateDocument *document, int line,
 {
 }
 
-KateEditInsertLineUndo::KateEditInsertLineUndo(KateDocument *document, int line, const QString &text)
+KateEditInsertLineUndo::KateEditInsertLineUndo(KTextEditor::DocumentPrivate *document, int line, const QString &text)
     : KateUndo(document)
     , m_line(line)
     , m_text(text)
 {
 }
 
-KateEditRemoveLineUndo::KateEditRemoveLineUndo(KateDocument *document, int line, const QString &text)
+KateEditRemoveLineUndo::KateEditRemoveLineUndo(KTextEditor::DocumentPrivate *document, int line, const QString &text)
     : KateUndo(document)
     , m_line(line)
     , m_text(text)
@@ -137,98 +137,98 @@ bool KateEditRemoveTextUndo::mergeWith(const KateUndo *undo)
 
 void KateEditInsertTextUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editRemoveText(m_line, m_col, len());
 }
 
 void KateEditRemoveTextUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editInsertText(m_line, m_col, m_text);
 }
 
 void KateEditWrapLineUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editUnWrapLine(m_line, m_newLine, m_len);
 }
 
 void KateEditUnWrapLineUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editWrapLine(m_line, m_col, m_removeLine);
 }
 
 void KateEditInsertLineUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editRemoveLine(m_line);
 }
 
 void KateEditRemoveLineUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editInsertLine(m_line, m_text);
 }
 
 void KateEditMarkLineAutoWrappedUndo::undo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }
 
 void KateEditRemoveTextUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editRemoveText(m_line, m_col, len());
 }
 
 void KateEditInsertTextUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editInsertText(m_line, m_col, m_text);
 }
 
 void KateEditUnWrapLineUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editUnWrapLine(m_line, m_removeLine, m_len);
 }
 
 void KateEditWrapLineUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editWrapLine(m_line, m_col, m_newLine);
 }
 
 void KateEditRemoveLineUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editRemoveLine(m_line);
 }
 
 void KateEditInsertLineUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editInsertLine(m_line, m_text);
 }
 
 void KateEditMarkLineAutoWrappedUndo::redo()
 {
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
 
     doc->editMarkLineAutoWrapped(m_line, m_autowrapped);
 }

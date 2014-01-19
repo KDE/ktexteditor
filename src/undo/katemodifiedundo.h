@@ -26,7 +26,7 @@
 class KateModifiedInsertText : public KateEditInsertTextUndo
 {
 public:
-    KateModifiedInsertText(KateDocument *document, int line, int col, const QString &text);
+    KateModifiedInsertText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -45,7 +45,7 @@ public:
 class KateModifiedRemoveText : public KateEditRemoveTextUndo
 {
 public:
-    KateModifiedRemoveText(KateDocument *document, int line, int col, const QString &text);
+    KateModifiedRemoveText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -64,7 +64,7 @@ public:
 class KateModifiedWrapLine : public KateEditWrapLineUndo
 {
 public:
-    KateModifiedWrapLine(KateDocument *document, int line, int col, int len, bool newLine);
+    KateModifiedWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool newLine);
 
     /**
      * @copydoc KateUndo::undo()
@@ -83,7 +83,7 @@ public:
 class KateModifiedUnWrapLine : public KateEditUnWrapLineUndo
 {
 public:
-    KateModifiedUnWrapLine(KateDocument *document, int line, int col, int len, bool removeLine);
+    KateModifiedUnWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool removeLine);
 
     /**
      * @copydoc KateUndo::undo()
@@ -102,7 +102,7 @@ public:
 class KateModifiedInsertLine : public KateEditInsertLineUndo
 {
 public:
-    KateModifiedInsertLine(KateDocument *document, int line, const QString &text);
+    KateModifiedInsertLine(KTextEditor::DocumentPrivate *document, int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()
@@ -120,7 +120,7 @@ public:
 class KateModifiedRemoveLine : public KateEditRemoveLineUndo
 {
 public:
-    KateModifiedRemoveLine(KateDocument *document, int line, const QString &text);
+    KateModifiedRemoveLine(KTextEditor::DocumentPrivate *document, int line, const QString &text);
 
     /**
      * @copydoc KateUndo::undo()

@@ -118,7 +118,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // If a current active doc is available
     KTextEditor::ViewPrivate *activeView = 0;
-    KateDocument *activeDoc = 0;
+    KTextEditor::DocumentPrivate *activeDoc = 0;
 
     KateDocumentConfig *docConfig = KateDocumentConfig::global();
     KateViewConfig *viewConfig = KateViewConfig::global();

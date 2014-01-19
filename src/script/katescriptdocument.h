@@ -31,10 +31,10 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 /**
- * Thinish wrapping around KateDocument, exposing the methods we want exposed
+ * Thinish wrapping around KTextEditor::DocumentPrivate, exposing the methods we want exposed
  * and adding some helper methods.
  *
  * We inherit from QScriptable to have more thight access to the scripting
@@ -50,8 +50,8 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
 
 public:
     KateScriptDocument(QObject *parent = 0);
-    void setDocument(KateDocument *document);
-    KateDocument *document();
+    void setDocument(KTextEditor::DocumentPrivate *document);
+    KTextEditor::DocumentPrivate *document();
 
     //BEGIN
     Q_INVOKABLE QString fileName();
@@ -181,7 +181,7 @@ public:
 private:
     bool _isCode(int defaultStyle);
 
-    KateDocument *m_document;
+    KTextEditor::DocumentPrivate *m_document;
 };
 
 #endif

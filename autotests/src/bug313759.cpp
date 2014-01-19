@@ -54,7 +54,7 @@ void BugTest::tryCrash()
 {
     // set up document and view
     KMainWindow *toplevel = new KMainWindow();
-    KateDocument *doc = new KateDocument(true, false, toplevel);
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, toplevel);
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(0));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);

@@ -186,7 +186,7 @@ private:
                  const QString &failureReason = QString()
                 );
 
-    KateDocument *kate_document;
+    KTextEditor::DocumentPrivate *kate_document;
     KTextEditor::ViewPrivate *kate_view;
     QMainWindow *mainWindow;
     QVBoxLayout *mainWindowLayout;

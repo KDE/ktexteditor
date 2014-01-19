@@ -249,7 +249,7 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
     readConfig(cg);
 }
 
-KateDocumentConfig::KateDocumentConfig(KateDocument *doc)
+KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
     : m_tabHandling(tabSmart),
       m_configFlags(0),
       m_tabWidthSet(false),
@@ -2308,7 +2308,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_replaceHighlightColor = config.readEntry("Color Replace Highlight", QColor(Qt::green)); // tmp10);
     m_replaceHighlightColorSet = true;
 
-    // same std colors like in KateDocument::markColor
+    // same std colors like in KTextEditor::DocumentPrivate::markColor
     QColor mark[7];
     mark[0] = Qt::blue;
     mark[1] = Qt::red;

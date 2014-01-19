@@ -71,7 +71,7 @@ void SwapDiffCreator::viewDiff()
     m_diffFile.resize(0);
 
     // create a document with the recovered data
-    KateDocument recoverDoc;
+    KTextEditor::DocumentPrivate recoverDoc;
     recoverDoc.setText(m_swapFile->document()->text());
 
     // store original text in a file as utf-8 and close it

@@ -68,7 +68,7 @@ KateCompletionWidget *KateCompletionDelegate::widget() const
     return static_cast<KateCompletionWidget *>(const_cast<QObject *>(parent()));
 }
 
-KateDocument *KateCompletionDelegate::document() const
+KTextEditor::DocumentPrivate *KateCompletionDelegate::document() const
 {
     return widget()->view()->doc();
 }

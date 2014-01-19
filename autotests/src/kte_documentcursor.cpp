@@ -63,7 +63,7 @@ void DocumentCursorTest::cleanupTestCase()
 // - gotoPreviousLine
 void DocumentCursorTest::testConvenienceApi()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     doc.setText("\n"
                 "1\n"
                 "22\n"
@@ -123,7 +123,7 @@ void DocumentCursorTest::testConvenienceApi()
 
 void DocumentCursorTest::testOperators()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
     doc.setText("--oo--\n"
                 "--oo--\n"
                 "--oo--");

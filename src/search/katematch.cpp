@@ -24,7 +24,7 @@
 #include "katedocument.h"
 #include <ktexteditor/movingrange.h>
 
-KateMatch::KateMatch(KateDocument *document, KTextEditor::Search::SearchOptions options)
+KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::Search::SearchOptions options)
     : m_document(document)
     , m_options(options)
 {

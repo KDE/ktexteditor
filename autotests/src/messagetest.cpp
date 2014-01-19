@@ -43,7 +43,7 @@ void MessageTest::cleanupTestCase()
 
 void MessageTest::testPostMessage()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -71,7 +71,7 @@ void MessageTest::testPostMessage()
 
 void MessageTest::testAutoHide()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -103,7 +103,7 @@ void MessageTest::testAutoHide()
 
 void MessageTest::testAutoHideAfterUserInteraction()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -146,7 +146,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 
 void MessageTest::testMessageQueue()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -203,7 +203,7 @@ void MessageTest::testMessageQueue()
 
 void MessageTest::testPriority()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -264,7 +264,7 @@ void MessageTest::testPriority()
 
 void MessageTest::testCreateView()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     //
     // - first post a message
@@ -307,7 +307,7 @@ void MessageTest::testCreateView()
 
 void MessageTest::testHideView()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
@@ -353,7 +353,7 @@ void MessageTest::testHideView()
 
 void MessageTest::testHideViewAfterUserInteraction()
 {
-    KateDocument doc;
+    KTextEditor::DocumentPrivate doc;
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();

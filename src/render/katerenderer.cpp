@@ -46,7 +46,7 @@ static const QChar spaceChar(QLatin1Char(' '));
 static const QChar nbSpaceChar(0xa0); // non-breaking space
 static const QRegularExpression nonPrintableSpacesRegExp(QLatin1String("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
 
-KateRenderer::KateRenderer(KateDocument *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view)
+KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view)
     : m_doc(doc)
     , m_folding(folding)
     , m_view(view)

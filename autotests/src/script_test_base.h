@@ -23,7 +23,7 @@
 #include <QtCore/QPair>
 
 class TestScriptEnv;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class QMainWindow;
 
@@ -40,7 +40,7 @@ protected:
     void runTest(const ExpectedFailures &failures);
 
     TestScriptEnv *m_env;
-    KateDocument *m_document;
+    KTextEditor::DocumentPrivate *m_document;
     QMainWindow *m_toplevel;
     bool m_outputWasCustomised;
     QStringList m_commands;

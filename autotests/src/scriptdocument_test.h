@@ -27,7 +27,7 @@ namespace KTextEditor
 class View;
 }
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateScriptDocument;
 
 class ScriptDocumentTest : public QObject
@@ -49,7 +49,7 @@ private Q_SLOTS:
     void testRfind();
 
 private:
-    KateDocument *m_doc;
+    KTextEditor::DocumentPrivate *m_doc;
     KTextEditor::View *m_view;
     KateScriptDocument *m_scriptDoc;
 

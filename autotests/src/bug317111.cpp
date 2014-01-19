@@ -54,7 +54,7 @@ void BugTest::tryCrash()
 {
     // set up document and view
     KMainWindow *toplevel = new KMainWindow();
-    KateDocument *doc = new KateDocument(true, false, toplevel);
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, toplevel);
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(0));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);
@@ -75,7 +75,7 @@ void BugTest::tryCrash()
     view->setCursorPosition(Cursor(0, 0));
 
     // evaluate test-script
-    qDebug() << "attempting crash by calling KateDocument::defStyle(-1, 0)";
+    qDebug() << "attempting crash by calling KTextEditor::DocumentPrivate::defStyle(-1, 0)";
     QFile sourceFile(QLatin1String(TEST_DATA_DIR "bug317111.js"));
     QVERIFY(sourceFile.open(QFile::ReadOnly));
     QTextStream stream(&sourceFile);

@@ -968,11 +968,11 @@ protected:
     {
         return m_vi->m_view;
     }
-    KateDocument *doc()
+    KTextEditor::DocumentPrivate *doc()
     {
         return view()->doc();
     }
-    const KateDocument *doc() const
+    const KTextEditor::DocumentPrivate *doc() const
     {
         return view()->doc();
     }
@@ -3625,7 +3625,7 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
             doc()->removeText(KTextEditor::Range(start, removeEnd));
         }
         if (!e->commitString().isEmpty()) {
-            // if the input method event is text that should be inserted, call KateDocument::typeChars()
+            // if the input method event is text that should be inserted, call KTextEditor::DocumentPrivate::typeChars()
             // with the text. that method will handle the input and take care of overwrite mode, etc.
             doc()->typeChars(m_view, e->commitString());
         }

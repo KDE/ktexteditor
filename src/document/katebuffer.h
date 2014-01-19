@@ -28,7 +28,7 @@
 #include <QObject>
 
 class KateLineInfo;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateHighlighting;
 
 /**
@@ -46,7 +46,7 @@ public:
      * Create an empty buffer.
      * @param doc parent document
      */
-    explicit KateBuffer(KateDocument *doc);
+    explicit KateBuffer(KTextEditor::DocumentPrivate *doc);
 
     /**
      * Goodbye buffer
@@ -249,7 +249,7 @@ private:
     /**
      * document we belong to
      */
-    KateDocument *const m_doc;
+    KTextEditor::DocumentPrivate *const m_doc;
 
     /**
      * file loaded with encoding problems?

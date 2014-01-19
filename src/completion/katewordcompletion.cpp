@@ -324,7 +324,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     d->isCompleting = false;
     d->dcRange = KTextEditor::Range::invalid();
 
-    d->liRange = static_cast<KateDocument *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
+    d->liRange = static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
     KColorScheme colors(QPalette::Active);
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());

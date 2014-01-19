@@ -58,7 +58,7 @@ void KateHighlightingMenu::init()
     m_actionGroup = new QActionGroup(menu());
 }
 
-void KateHighlightingMenu::updateMenu(KateDocument *doc)
+void KateHighlightingMenu::updateMenu(KTextEditor::DocumentPrivate *doc)
 {
     m_doc = doc;
 }

@@ -29,7 +29,7 @@
 
 #include "katedialogs.h"
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 class KateFileType
 {
@@ -80,7 +80,7 @@ public:
      * get the right fileType for the given document
      * -1 if none found !
      */
-    QString fileType(KateDocument *doc, const QString &fileToReadFrom);
+    QString fileType(KTextEditor::DocumentPrivate *doc, const QString &fileToReadFrom);
 
     /**
      * Don't store the pointer somewhere longer times, won't be valid after the next update()

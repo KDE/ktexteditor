@@ -114,7 +114,7 @@ uint KateAutoIndent::modeNumber(const QString &name)
     return 0;
 }
 
-KateAutoIndent::KateAutoIndent(KateDocument *_doc)
+KateAutoIndent::KateAutoIndent(KTextEditor::DocumentPrivate *_doc)
     : QObject(_doc), doc(_doc), m_script(0)
 {
     // don't call updateConfig() here, document might is not ready for that....
@@ -457,7 +457,7 @@ void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEd
 //END KateAutoIndent
 
 //BEGIN KateViewIndentAction
-KateViewIndentationAction::KateViewIndentationAction(KateDocument *_doc, const QString &text, QObject *parent)
+KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivate *_doc, const QString &text, QObject *parent)
     : KActionMenu(text, parent), doc(_doc)
 {
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));

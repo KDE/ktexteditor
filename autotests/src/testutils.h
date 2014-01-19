@@ -42,7 +42,7 @@ class KateDocumentObject;
 class TestScriptEnv : public QObject
 {
 public:
-    explicit TestScriptEnv(KateDocument *part, bool &cflag);
+    explicit TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag);
     virtual ~TestScriptEnv();
 
     QScriptEngine *engine() const
@@ -149,7 +149,7 @@ class KateDocumentObject : public KateScriptDocument
     Q_OBJECT
 
 public:
-    explicit KateDocumentObject(KateDocument *doc);
+    explicit KateDocumentObject(KTextEditor::DocumentPrivate *doc);
     virtual ~KateDocumentObject();
 
 private:

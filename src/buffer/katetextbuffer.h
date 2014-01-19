@@ -71,7 +71,7 @@ public:
      * @param parent parent qobject
      * @param blockSize block size in lines the buffer should try to hold, default 64 lines
      */
-    TextBuffer(KateDocument *parent, int blockSize = 64);
+    TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize = 64);
 
     /**
      * Destruct the text buffer
@@ -475,7 +475,7 @@ public:
      * Gets the document to which this buffer is bound.
      * \return a pointer to the document
      */
-    KateDocument *document() const
+    KTextEditor::DocumentPrivate *document() const
     {
         return m_document;
     }
@@ -515,7 +515,7 @@ public:
 public:
     /**
     * md5 digest of the document on disk, set either through file loading
-    * in openFile() or in KateDocument::saveFile()
+    * in openFile() or in KTextEditor::DocumentPrivate::saveFile()
     * @return md5 digest for this document
     */
     const QByteArray &digest() const;
@@ -534,7 +534,7 @@ private:
     /**
      * parent document
      */
-    KateDocument *m_document;
+    KTextEditor::DocumentPrivate *m_document;
 
     /**
      * text history

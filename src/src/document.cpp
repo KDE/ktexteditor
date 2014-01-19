@@ -19,48 +19,37 @@
  */
 
 #include "document.h"
-#include "document.moc"
 
 using namespace KTextEditor;
 
-class KTextEditor::DocumentPrivate
-{
-public:
-    DocumentPrivate()
-        : openingError(false) { }
-    bool openingError;
-    QString openingErrorMessage;
-};
-
-Document::Document(QObject *parent)
+Document::Document(DocumentPrivate *impl, QObject *parent)
     : KParts::ReadWritePart(parent)
-    , d(new DocumentPrivate())
+    , d (impl)
 {
 }
 
 Document::~Document()
 {
-    delete d;
 }
 
 bool Document::openingError() const
 {
-    return d->openingError;
+    return false; // FIXME KF 5; d->openingError;
 }
 
 QString Document::openingErrorMessage() const
 {
-    return d->openingErrorMessage;
+    return QString (); //FIXME KF5 d->openingErrorMessage;
 }
 
 void Document::setOpeningError(bool errors)
 {
-    d->openingError = errors;
+    // FIXME KF 5; d->openingError = errors;
 }
 
 void Document::setOpeningErrorMessage(const QString &message)
 {
-    d->openingErrorMessage = message;
+    // FIXME KF 5; d->openingErrorMessage = message;
 }
 
 bool Document::cursorInText(const Cursor &cursor)

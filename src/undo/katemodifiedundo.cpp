@@ -26,7 +26,7 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
 
-KateModifiedInsertText::KateModifiedInsertText(KateDocument *document, int line, int col, const QString &text)
+KateModifiedInsertText::KateModifiedInsertText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text)
     : KateEditInsertTextUndo(document, line, col, text)
 {
     setFlag(RedoLine1Modified);
@@ -39,7 +39,7 @@ KateModifiedInsertText::KateModifiedInsertText(KateDocument *document, int line,
     }
 }
 
-KateModifiedRemoveText::KateModifiedRemoveText(KateDocument *document, int line, int col, const QString &text)
+KateModifiedRemoveText::KateModifiedRemoveText(KTextEditor::DocumentPrivate *document, int line, int col, const QString &text)
     : KateEditRemoveTextUndo(document, line, col, text)
 {
     setFlag(RedoLine1Modified);
@@ -52,7 +52,7 @@ KateModifiedRemoveText::KateModifiedRemoveText(KateDocument *document, int line,
     }
 }
 
-KateModifiedWrapLine::KateModifiedWrapLine(KateDocument *document, int line, int col, int len, bool newLine)
+KateModifiedWrapLine::KateModifiedWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool newLine)
     : KateEditWrapLineUndo(document, line, col, len, newLine)
 {
     Kate::TextLine tl = document->plainKateTextLine(line);
@@ -76,7 +76,7 @@ KateModifiedWrapLine::KateModifiedWrapLine(KateDocument *document, int line, int
     }
 }
 
-KateModifiedUnWrapLine::KateModifiedUnWrapLine(KateDocument *document, int line, int col, int len, bool removeLine)
+KateModifiedUnWrapLine::KateModifiedUnWrapLine(KTextEditor::DocumentPrivate *document, int line, int col, int len, bool removeLine)
     : KateEditUnWrapLineUndo(document, line, col, len, removeLine)
 {
     Kate::TextLine tl = document->plainKateTextLine(line);
@@ -140,13 +140,13 @@ KateModifiedUnWrapLine::KateModifiedUnWrapLine(KateDocument *document, int line,
     }
 }
 
-KateModifiedInsertLine::KateModifiedInsertLine(KateDocument *document, int line, const QString &text)
+KateModifiedInsertLine::KateModifiedInsertLine(KTextEditor::DocumentPrivate *document, int line, const QString &text)
     : KateEditInsertLineUndo(document, line, text)
 {
     setFlag(RedoLine1Modified);
 }
 
-KateModifiedRemoveLine::KateModifiedRemoveLine(KateDocument *document, int line, const QString &text)
+KateModifiedRemoveLine::KateModifiedRemoveLine(KTextEditor::DocumentPrivate *document, int line, const QString &text)
     : KateEditRemoveLineUndo(document, line, text)
 {
     Kate::TextLine tl = document->plainKateTextLine(line);
@@ -162,7 +162,7 @@ void KateModifiedInsertText::undo()
 {
     KateEditInsertTextUndo::undo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -174,7 +174,7 @@ void KateModifiedRemoveText::undo()
 {
     KateEditRemoveTextUndo::undo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -186,7 +186,7 @@ void KateModifiedWrapLine::undo()
 {
     KateEditWrapLineUndo::undo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -198,7 +198,7 @@ void KateModifiedUnWrapLine::undo()
 {
     KateEditUnWrapLineUndo::undo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -222,7 +222,7 @@ void KateModifiedRemoveLine::undo()
 {
     KateEditRemoveLineUndo::undo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -234,7 +234,7 @@ void KateModifiedRemoveText::redo()
 {
     KateEditRemoveTextUndo::redo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -246,7 +246,7 @@ void KateModifiedInsertText::redo()
 {
     KateEditInsertTextUndo::redo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -258,7 +258,7 @@ void KateModifiedUnWrapLine::redo()
 {
     KateEditUnWrapLineUndo::redo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -270,7 +270,7 @@ void KateModifiedWrapLine::redo()
 {
     KateEditWrapLineUndo::redo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 
@@ -295,7 +295,7 @@ void KateModifiedInsertLine::redo()
 {
     KateEditInsertLineUndo::redo();
 
-    KateDocument *doc = document();
+    KTextEditor::DocumentPrivate *doc = document();
     Kate::TextLine tl = doc->plainKateTextLine(line());
     Q_ASSERT(tl);
 

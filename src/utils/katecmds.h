@@ -29,7 +29,7 @@
 
 #include <QStringList>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KCompletion;
 
 /**
@@ -311,7 +311,7 @@ public:
     class InteractiveSedReplacer
     {
     public:
-        InteractiveSedReplacer(KateDocument *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine);
+        InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine);
         /**
          * Will return invalid Range if there are no further matches.
          */
@@ -327,7 +327,7 @@ public:
         bool m_onlyOnePerLine;
         int m_startLine;
         int m_endLine;
-        KateDocument *m_doc;
+        KTextEditor::DocumentPrivate *m_doc;
         KateRegExpSearch m_regExpSearch;
 
         int m_numReplacementsDone;

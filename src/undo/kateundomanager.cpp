@@ -27,7 +27,7 @@
 
 #include <QBitArray>
 
-KateUndoManager::KateUndoManager(KateDocument *doc)
+KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     : QObject(doc)
     , m_document(doc)
     , m_undoComplexMerge(false)

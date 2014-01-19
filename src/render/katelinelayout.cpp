@@ -115,7 +115,7 @@ void KateLineLayout::setShiftX(int shiftX)
     m_shiftX = shiftX;
 }
 
-KateDocument *KateLineLayout::doc() const
+KTextEditor::DocumentPrivate *KateLineLayout::doc() const
 {
     return m_renderer.doc();
 }

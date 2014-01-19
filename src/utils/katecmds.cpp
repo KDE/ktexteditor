@@ -341,7 +341,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
             return true;
         } else if (cmd == QLatin1String("set-highlight")) {
             if (v->doc()->setHighlightingMode(args.first())) {
-                static_cast<KateDocument *>(v->doc())->setDontChangeHlOnSave();
+                static_cast<KTextEditor::DocumentPrivate *>(v->doc())->setDontChangeHlOnSave();
                 return true;
             }
 
@@ -922,7 +922,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
     }
 
     KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
-    KateDocument *doc = kateView->doc();
+    KTextEditor::DocumentPrivate *doc = kateView->doc();
     if (!doc) {
         return false;
     }
@@ -985,7 +985,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     return true;
 }
 
-KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KateDocument *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine)
+KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine)
     : m_findPattern(findPattern),
       m_replacePattern(replacePattern),
       m_onlyOnePerLine(onlyOnePerLine),

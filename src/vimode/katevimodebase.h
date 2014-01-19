@@ -39,7 +39,7 @@ class QKeyEvent;
 class QString;
 class QRegExp;
 class QTimer;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateViVisualMode;
 class KateViNormalMode;
 class KateViInputModeManager;
@@ -170,7 +170,7 @@ protected:
     KTextEditor::Cursor getNextJump(KTextEditor::Cursor) const;
     KTextEditor::Cursor getPrevJump(KTextEditor::Cursor) const;
 
-    inline KateDocument *doc() const
+    inline KTextEditor::DocumentPrivate *doc() const
     {
         return m_view->doc();
     };

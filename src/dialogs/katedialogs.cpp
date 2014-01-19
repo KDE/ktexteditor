@@ -526,7 +526,7 @@ void KateSpellCheckConfigTab::apply()
     KateDocumentConfig::global()->configStart();
     m_sonnetConfigWidget->save();
     KateDocumentConfig::global()->configEnd();
-    foreach (KateDocument *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
+    foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
         doc->refreshOnTheFlyCheck();
     }
 }
@@ -1389,7 +1389,7 @@ KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *pa
     m_dictionaryComboBox = new Sonnet::DictionaryComboBox(centralWidget());
     connect(m_dictionaryComboBox, SIGNAL(dictionaryChanged(QString)),
             this, SLOT(dictionaryChanged(QString)));
-    connect(view->doc(), SIGNAL(defaultDictionaryChanged(KateDocument*)),
+    connect(view->doc(), SIGNAL(defaultDictionaryChanged(KTextEditor::DocumentPrivate*)),
             this, SLOT(updateData()));
     QLabel *label = new QLabel(i18n("Dictionary:"), centralWidget());
     label->setBuddy(m_dictionaryComboBox);
@@ -1406,7 +1406,7 @@ KateDictionaryBar::~KateDictionaryBar()
 
 void KateDictionaryBar::updateData()
 {
-    KateDocument *document = m_view->doc();
+    KTextEditor::DocumentPrivate *document = m_view->doc();
     QString dictionary = document->defaultDictionary();
     if (dictionary.isEmpty()) {
         dictionary = Sonnet::Speller().defaultLanguage();
@@ -1427,7 +1427,7 @@ void KateDictionaryBar::dictionaryChanged(const QString &dictionary)
 //END KateGotoBar
 
 //BEGIN KateModOnHdPrompt
-KateModOnHdPrompt::KateModOnHdPrompt(KateDocument *doc,
+KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
                                      KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
                                      const QString &reason,
                                      QWidget *parent)

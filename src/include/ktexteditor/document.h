@@ -38,6 +38,7 @@ namespace KTextEditor
 
 class View;
 class MainWindow;
+class DocumentPrivate;
 
 /**
  * \brief A KParts derived class representing a text document.
@@ -121,16 +122,21 @@ class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
 {
     Q_OBJECT
 
-public:
+protected:
     /**
      * Constructor.
      *
      * Create a new document with \p parent.
+     *
+     * Pass it the internal implementation to store a d-pointer.
+     *
+     * \param impl d-pointer to use
      * \param parent parent object
      * \see Editor::createDocument()
      */
-    Document(QObject *parent = 0);
+    Document (DocumentPrivate *impl, QObject *parent);
 
+public:
     /**
      * Virtual destructor.
      */
@@ -844,7 +850,7 @@ Q_SIGNALS:
     void highlightingModeChanged(KTextEditor::Document *document);
 
 private:
-    class DocumentPrivate *const d;
+    DocumentPrivate *const d;
 
 public:
     /**

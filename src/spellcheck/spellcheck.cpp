@@ -90,7 +90,7 @@ bool lessThanRangeDictionaryPair(const QPair<KTextEditor::Range, QString> &s1,
 }
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLanguageRanges(KateDocument *doc,
+QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc,
         const KTextEditor::Range &range)
 {
     QString defaultDict = doc->defaultDictionary();
@@ -127,7 +127,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLang
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtHighlightingRanges(KateDocument *document,
+QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document,
         const KTextEditor::Range &range,
         const QString &dictionary,
         bool singleLine,
@@ -222,7 +222,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtH
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRanges(KateDocument *doc,
+QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc,
         const KTextEditor::Range &range,
         bool singleLine)
 {
@@ -235,15 +235,15 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRang
     return toReturn;
 }
 
-void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KateDocument *doc,
+void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc,
         const KTextEditor::Range &replacementRange)
 {
     const QString replacedString = doc->text(replacementRange);
     int attr = doc->kateTextLine(replacementRange.start().line())->attribute(replacementRange.start().column());
     int p = doc->highlight()->getEncodedCharactersInsertionPolicy(attr);
 
-    if ((p == KateDocument::EncodeAlways)
-            || (p == KateDocument::EncodeWhenPresent && doc->containsCharacterEncoding(replacementRange))) {
+    if ((p == KTextEditor::DocumentPrivate::EncodeAlways)
+            || (p == KTextEditor::DocumentPrivate::EncodeWhenPresent && doc->containsCharacterEncoding(replacementRange))) {
         doc->replaceText(replacementRange, newWord);
         doc->replaceCharactersByEncoding(KTextEditor::Range(replacementRange.start(),
                                          replacementRange.start() + KTextEditor::Cursor(0, newWord.length())));
@@ -252,7 +252,7 @@ void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &n
     }
 }
 
-void KateSpellCheckManager::trimRange(KateDocument *doc, KTextEditor::Range &r)
+void KateSpellCheckManager::trimRange(KTextEditor::DocumentPrivate *doc, KTextEditor::Range &r)
 {
     if (r.isEmpty()) {
         return;

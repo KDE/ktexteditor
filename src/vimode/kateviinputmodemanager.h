@@ -32,7 +32,7 @@
 
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateViewInternal;
 class KateViModeBase;
 class KateViNormalMode;
@@ -308,7 +308,7 @@ public:
      *        when inserting text at it
      * @param showmark whether to highlight the mark's line
      */
-    void addMark(KateDocument *doc, const QChar &mark, const KTextEditor::Cursor &pos,
+    void addMark(KTextEditor::DocumentPrivate *doc, const QChar &mark, const KTextEditor::Cursor &pos,
                  const bool moveoninsert = true, const bool showmark = true);
     KTextEditor::Cursor getMarkPosition(const QChar &mark) const;
     void syncViMarksAndBookmarks();

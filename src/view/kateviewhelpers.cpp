@@ -2185,7 +2185,7 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     }
 }
 
-KateViewEncodingAction::KateViewEncodingAction(KateDocument *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent)
+KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent)
     : KSelectAction(text, parent), doc(_doc), view(_view), d(new Private(this))
 {
     d->init();

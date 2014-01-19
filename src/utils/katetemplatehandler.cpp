@@ -240,7 +240,7 @@ void KateTemplateHandler::jumpToFinalCursorPosition()
     }
 }
 
-KateDocument *KateTemplateHandler::doc()
+KTextEditor::DocumentPrivate *KateTemplateHandler::doc()
 {
     return m_view->doc();
 }

@@ -28,7 +28,7 @@
 #include <ktexteditor/cursor.h>
 #include <KActionMenu>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateIndentScript;
 class KateHighlighting;
 
@@ -98,7 +98,7 @@ public:
      * Constructor, creates dummy indenter "None"
      * \param doc parent document
      */
-    explicit KateAutoIndent(KateDocument *doc);
+    explicit KateAutoIndent(KTextEditor::DocumentPrivate *doc);
 
     /**
      * Destructor
@@ -222,7 +222,7 @@ public Q_SLOTS:
      * needed data
      */
 private:
-    KateDocument *doc; //!< the document the indenter works on
+    KTextEditor::DocumentPrivate *doc; //!< the document the indenter works on
     int  tabWidth;     //!< The number of characters simulated for a tab
     int  indentWidth;  //!< The number of characters used when tabs are replaced by spaces
     bool  useSpaces;    //!< Should we use spaces or tabs to indent
@@ -240,10 +240,10 @@ class KateViewIndentationAction : public KActionMenu
     Q_OBJECT
 
 public:
-    KateViewIndentationAction(KateDocument *_doc, const QString &text, QObject *parent);
+    KateViewIndentationAction(KTextEditor::DocumentPrivate *_doc, const QString &text, QObject *parent);
 
 private:
-    KateDocument *doc;
+    KTextEditor::DocumentPrivate *doc;
     QActionGroup *actionGroup;
 
 public  Q_SLOTS:

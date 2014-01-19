@@ -74,7 +74,7 @@ public:
         // should we be readonly?
         bool bWantReadOnly = (classname == "KParts::ReadOnlyPart");
 
-        KParts::ReadWritePart *part = new KateDocument (bWantSingleView, bWantReadOnly, parentWidget, parent);
+        KParts::ReadWritePart *part = new KTextEditor::DocumentPrivate (bWantSingleView, bWantReadOnly, parentWidget, parent);
         part->setReadWrite(!bWantReadOnly);
 
         return part;

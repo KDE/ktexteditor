@@ -120,7 +120,7 @@ DocumentCursor.prototype.move = function(nChars, wrapAtEol) {
 
   var c = new Cursor(this.line, this.column);
 
-  // cache lineLength to minimize calls of KateDocument::lineLength(), as
+  // cache lineLength to minimize calls of KTextEditor::DocumentPrivate::lineLength(), as
   // results in locating the correct block in the text buffer every time,
   // which is relatively slow
   var lineLength = this.document.lineLength(c.line);

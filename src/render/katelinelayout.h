@@ -29,7 +29,7 @@
 #include <ktexteditor/cursor.h>
 
 class QTextLayout;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateTextLayout;
 class KateRenderer;
 
@@ -39,7 +39,7 @@ public:
     KateLineLayout(KateRenderer &renderer);
     ~KateLineLayout();
 
-    KateDocument *doc() const;
+    KTextEditor::DocumentPrivate *doc() const;
     void debugOutput() const;
 
     void clear();

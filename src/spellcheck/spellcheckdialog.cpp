@@ -190,7 +190,7 @@ void KateSpellCheckDialog::corrected(const QString &word, int pos, const QString
 
     KTextEditor::Cursor replacementStartCursor = locatePosition(origPos);
     KTextEditor::Range replacementRange = KTextEditor::Range(replacementStartCursor, length);
-    KateDocument *doc = m_view->doc();
+    KTextEditor::DocumentPrivate *doc = m_view->doc();
     KTextEditor::EditorPrivate::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(newWord, doc, replacementRange);
 
     m_currentSpellCheckRange.setRange(KTextEditor::Range(replacementStartCursor, m_currentSpellCheckRange.end()));
@@ -265,7 +265,7 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
             m_spellLastPos = 0;
 
             m_currentDecToEncOffsetList.clear();
-            KateDocument::OffsetList encToDecOffsetList;
+            KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
             QString text = m_view->doc()->decodeCharacters(m_currentSpellCheckRange,
                            m_currentDecToEncOffsetList,
                            encToDecOffsetList);

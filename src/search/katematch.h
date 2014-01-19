@@ -24,12 +24,12 @@
 
 #include <ktexteditor/searchinterface.h>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 
 class KateMatch
 {
 public:
-    KateMatch(KateDocument *document, KTextEditor::Search::SearchOptions options);
+    KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::Search::SearchOptions options);
     KTextEditor::Range searchText(const KTextEditor::Range &range, const QString &pattern);
     KTextEditor::Range replace(const QString &replacement, bool blockMode, int replacementCounter = 1);
     bool isValid() const;
@@ -43,7 +43,7 @@ private:
     QString buildReplacement(const QString &replacement, bool blockMode, int replacementCounter) const;
 
 private:
-    KateDocument *const m_document;
+    KTextEditor::DocumentPrivate *const m_document;
     const KTextEditor::Search::SearchOptions m_options;
     QVector<KTextEditor::Range> m_resultRanges;
 };

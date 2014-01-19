@@ -241,7 +241,7 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
 {
-    KateDocument *doc = new KateDocument(false, false, 0, parent);
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(false, false, 0, parent);
 
     emit documentCreated(this, doc);
 
@@ -484,13 +484,13 @@ KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
     return staticInstance.data();
 }
 
-void KTextEditor::EditorPrivate::registerDocument(KateDocument *doc)
+void KTextEditor::EditorPrivate::registerDocument(KTextEditor::DocumentPrivate *doc)
 {
     m_documents.append(doc);
     m_docs.append(doc);
 }
 
-void KTextEditor::EditorPrivate::deregisterDocument(KateDocument *doc)
+void KTextEditor::EditorPrivate::deregisterDocument(KTextEditor::DocumentPrivate *doc)
 {
     m_docs.removeAll(doc);
     m_documents.removeAll(doc);

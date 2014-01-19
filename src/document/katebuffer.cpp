@@ -46,7 +46,7 @@ static const int KATE_MAX_DYNAMIC_CONTEXTS = 512;
 /**
  * Create an empty buffer. (with one block with one empty line)
  */
-KateBuffer::KateBuffer(KateDocument *doc)
+KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
     : Kate::TextBuffer(doc),
       m_doc(doc),
       m_brokenEncoding(false),
@@ -386,7 +386,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
                 // avoid recursive invalidation
                 KateHlManager::self()->setForceNoDCReset(true);
 
-                foreach (KateDocument *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
+                foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
                     doc->makeAttribs();
                 }
 

@@ -24,7 +24,7 @@
 #include "expandingtree/expandingdelegate.h"
 
 class KateRenderer;
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 class KateCompletionWidget;
 
 class KateCompletionDelegate : public ExpandingDelegate
@@ -34,7 +34,7 @@ public:
 
     KateRenderer *renderer() const;
     KateCompletionWidget *widget() const;
-    KateDocument *document() const;
+    KTextEditor::DocumentPrivate *document() const;
 protected:
     virtual void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const;
     mutable int m_cachedRow;

@@ -1474,11 +1474,11 @@ void KateHighlighting::readSpellCheckingConfig()
         int p;
 
         if (policyLowerCase == QLatin1String("encodewhenpresent")) {
-            p = KateDocument::EncodeWhenPresent;
+            p = KTextEditor::DocumentPrivate::EncodeWhenPresent;
         } else if (policyLowerCase == QLatin1String("encodealways")) {
-            p = KateDocument::EncodeAlways;
+            p = KTextEditor::DocumentPrivate::EncodeAlways;
         } else {
-            p = KateDocument::EncodeNever;
+            p = KTextEditor::DocumentPrivate::EncodeNever;
         }
 
         m_additionalData[buildIdentifier]->encodedCharactersInsertionPolicy = p;

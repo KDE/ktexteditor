@@ -49,14 +49,14 @@ class KTEXTEDITOR_EXPORT SwapFile : public QObject
     Q_OBJECT
 
 public:
-    explicit SwapFile(KateDocument *document);
+    explicit SwapFile(KTextEditor::DocumentPrivate *document);
     ~SwapFile();
     bool shouldRecover() const;
 
     void fileClosed();
     QString fileName();
 
-    KateDocument *document();
+    KTextEditor::DocumentPrivate *document();
 
 private:
     void setTrackingEnabled(bool trackingEnabled);
@@ -65,7 +65,7 @@ private:
     bool isValidSwapFile(QDataStream &stream, bool checkDigest) const;
 
 private:
-    KateDocument *m_document;
+    KTextEditor::DocumentPrivate *m_document;
     bool m_trackingEnabled;
 
 protected Q_SLOTS:

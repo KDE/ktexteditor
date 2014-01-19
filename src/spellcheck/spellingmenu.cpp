@@ -198,7 +198,7 @@ void KateSpellingMenu::populateSuggestionsMenu()
 
 void KateSpellingMenu::replaceWordBySuggestion(const QString &suggestion)
 {
-    KateDocument *doc = m_view->doc();
+    KTextEditor::DocumentPrivate *doc = m_view->doc();
     KTextEditor::EditorPrivate::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(suggestion, doc, *m_currentMisspelledRange);
 }
 

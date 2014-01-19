@@ -718,7 +718,7 @@ void KateViInputModeManager::PrintJumpList()
 
 }
 
-void KateViInputModeManager::addMark(KateDocument *doc, const QChar &mark, const Cursor &pos,
+void KateViInputModeManager::addMark(KTextEditor::DocumentPrivate *doc, const QChar &mark, const Cursor &pos,
                                      const bool moveoninsert, const bool showmark)
 {
     m_markSetInsideViInputModeManager = true;

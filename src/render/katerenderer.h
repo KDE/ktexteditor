@@ -32,7 +32,7 @@
 #include <QList>
 #include <QTextLine>
 
-class KateDocument;
+namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class KateRendererConfig;
 class KateRenderRange;
@@ -78,7 +78,7 @@ public:
      * @param folding folding information
      * @param view view which is output (0 for example for rendering to print)
      */
-    explicit KateRenderer(KateDocument *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = 0);
+    explicit KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = 0);
 
     /**
      * Destructor
@@ -88,7 +88,7 @@ public:
     /**
      * Returns the document to which this renderer is bound
      */
-    KateDocument *doc() const
+    KTextEditor::DocumentPrivate *doc() const
     {
         return m_doc;
     }
@@ -376,7 +376,7 @@ private:
     // update font height
     void updateFontHeight();
 
-    KateDocument *const m_doc;
+    KTextEditor::DocumentPrivate *const m_doc;
     Kate::TextFolding &m_folding;
     KTextEditor::ViewPrivate *const m_view;
 
