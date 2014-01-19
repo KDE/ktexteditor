@@ -434,7 +434,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         }
 
         // Add selection highlighting if we're creating the selection decorations
-        if ((selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected) || m_view->blockSelection()) {
+        if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected) || (m_view && m_view->blockSelection())) {
             NormalRenderRange *selectionHighlight = new NormalRenderRange();
 
             // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
@@ -462,7 +462,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
         KTextEditor::Cursor currentPosition, endPosition;
 
         // Calculate the range which we need to iterate in order to get the highlighting for just this line
-        if (selectionsOnly) {
+        if (m_view && selectionsOnly) {
             if (m_view->blockSelection()) {
                 KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
                 currentPosition = subRange.start();
@@ -561,7 +561,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     paintTextLineBackground(paint, range, currentViewLine, xStart, xEnd);
 
     if (range->layout()) {
-        bool drawSelection = m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
+        bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
         // Draw selection in block selecton mode. We need 2 kinds of selections that QTextLayout::draw can't render:
         //   - past-end-of-line selection and
         //   - 0-column-wide selection (used to indicate where text will be typed)
@@ -654,7 +654,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             if (!m_printerFriendly) {
                 bool draw = false;
                 QBrush drawBrush;
-                if (m_view->selection() && !m_view->blockSelection() && m_view->lineEndSelected(line.end(true))) {
+                if (m_view && m_view->selection() && !m_view->blockSelection() && m_view->lineEndSelected(line.end(true))) {
                     draw = true;
                     drawBrush = config()->selectionColor();
                 } else if (backgroundBrushSet && !m_view->blockSelection()) {
@@ -1015,7 +1015,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     int shiftX = 0;
 
     bool needShiftX = (maxwidth != -1)
-                      && (m_view->config()->dynWordWrapAlignIndent() > 0);
+                      && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
 
     forever {
     QTextLine line = l->createLine();
