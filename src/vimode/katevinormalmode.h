@@ -233,6 +233,9 @@ public:
     KateViRange motionToNextVisualLine();
     KateViRange motionToPrevVisualLine();
 
+    KateViRange motionToPreviousSentence();
+    KateViRange motionToNextSentence();
+
     KateViRange motionToBeforeParagraph();
     KateViRange motionToAfterParagraph();
 
