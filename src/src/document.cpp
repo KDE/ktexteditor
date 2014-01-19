@@ -27,9 +27,8 @@ class KTextEditor::DocumentPrivate
 {
 public:
     DocumentPrivate()
-        : openingError(false), suppressOpeningErrorDialogs(false) { }
+        : openingError(false) { }
     bool openingError;
-    bool suppressOpeningErrorDialogs;
     QString openingErrorMessage;
 };
 
@@ -42,16 +41,6 @@ Document::Document(QObject *parent)
 Document::~Document()
 {
     delete d;
-}
-
-void Document::setSuppressOpeningErrorDialogs(bool suppress)
-{
-    d->suppressOpeningErrorDialogs = suppress;
-}
-
-bool Document::suppressOpeningErrorDialogs() const
-{
-    return d->suppressOpeningErrorDialogs;
 }
 
 bool Document::openingError() const
