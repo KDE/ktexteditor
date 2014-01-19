@@ -298,6 +298,7 @@ protected:
 
     void joinLines(unsigned int from, unsigned int to) const;
     void reformatLines(unsigned int from, unsigned int to) const;
+    bool executeKateCommand(const QString &command);
 
     KateViRange textObjectComma(bool inner) const;
     void shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo) const;

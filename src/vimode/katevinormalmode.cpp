@@ -40,6 +40,7 @@
 #include "katevimotion.h"
 #include "katevinormalmode.h"
 #include "katevivisualmode.h"
+#include "katecmd.h"
 #include <ktexteditor/attribute.h>
 
 #include <QApplication>
@@ -1753,14 +1754,12 @@ bool KateViNormalMode::commandSwitchToNextView()
 
 bool KateViNormalMode::commandSplitHoriz()
 {
-    m_view->cmdLineBar()->execute(QLatin1String("split"));
-    return true;
+    return executeKateCommand(QLatin1String("split"));
 }
 
 bool KateViNormalMode::commandSplitVert()
 {
-    m_view->cmdLineBar()->execute(QLatin1String("vsplit"));
-    return true;
+    return executeKateCommand(QLatin1String("vsplit"));
 }
 
 bool KateViNormalMode::commandSwitchToNextTab()
@@ -1771,8 +1770,7 @@ bool KateViNormalMode::commandSwitchToNextTab()
         command = command + QLatin1Char(' ') + QString::number(getCount());
     }
 
-    m_view->cmdLineBar()->execute(command);
-    return true;
+    return executeKateCommand(command);
 }
 
 bool KateViNormalMode::commandSwitchToPrevTab()
@@ -1783,8 +1781,7 @@ bool KateViNormalMode::commandSwitchToPrevTab()
         command = command + QLatin1Char(' ') + QString::number(getCount());
     }
 
-    m_view->cmdLineBar()->execute(command);
-    return true;
+    return executeKateCommand(command);
 }
 
 bool KateViNormalMode::commandFormatLine()
@@ -1837,14 +1834,12 @@ bool KateViNormalMode::commandReplayMacro()
 
 bool KateViNormalMode::commandCloseNocheck()
 {
-    m_view->cmdLineBar()->execute(QLatin1String("q!"));
-    return true;
+    return executeKateCommand(QLatin1String("q!"));
 }
 
 bool KateViNormalMode::commandCloseWrite()
 {
-    m_view->cmdLineBar()->execute(QLatin1String("wq"));
-    return true;
+    return executeKateCommand(QLatin1String("wq"));
 }
 
 bool KateViNormalMode::commandCollapseLocal()
@@ -3949,3 +3944,14 @@ void KateViNormalMode::undoEnded()
     m_isUndo = false;
 }
 
+bool KateViNormalMode::executeKateCommand(const QString &command)
+{
+    KTextEditor::Command *p = KateCmd::self()->queryCommand(command);
+
+    if (!p) {
+        return false;
+    }
+
+    QString msg;
+    return p->exec(m_view, command, msg);
+}
