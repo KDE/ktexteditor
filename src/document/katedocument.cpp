@@ -4712,11 +4712,6 @@ void KateDocument::setConfigValue(const QString &key, const QVariant &value)
 
 //END KTextEditor::ConfigInterface
 
-KateView *KateDocument::activeKateView() const
-{
-    return static_cast<KateView *>(m_activeView);
-}
-
 KTextEditor::Cursor KateDocument::documentEnd() const
 {
     return KTextEditor::Cursor(lastLine(), lineLength(lastLine()));
@@ -5387,7 +5382,7 @@ void KateDocument::replaceCharactersByEncoding(const KTextEditor::Range &range)
 KTextEditor::Attribute::Ptr KateDocument::defaultStyle(const KTextEditor::HighlightInterface::DefaultStyle ds) const
 {
     ///TODO: move attributes to document, they are not view-dependant
-    KateView *view = activeKateView();
+    KateView *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access defaultStyle() without any View (will be fixed eventually)";
         return KTextEditor::Attribute::Ptr(0);
@@ -5408,7 +5403,7 @@ QList< KTextEditor::HighlightInterface::AttributeBlock > KateDocument::lineAttri
 
     QList< KTextEditor::HighlightInterface::AttributeBlock > attribs;
 
-    KateView *view = activeKateView();
+    KateView *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attribs;
@@ -5436,7 +5431,7 @@ KTextEditor::Attribute::Ptr KateDocument::attributeAt(const KTextEditor::Cursor 
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
-    KateView *view = activeKateView();
+    KateView *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;

@@ -158,8 +158,6 @@ public:
     {
         return m_activeView;
     }
-    // Invalid covariant returns my a$$... for some reason gcc won't let me return a KateView above!
-    KateView *activeKateView() const;
 
 private:
     QLinkedList<KateView *> m_views;
