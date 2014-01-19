@@ -28,10 +28,10 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 /**
- * Thinish wrapping around KateView, exposing the methods we want exposed
+ * Thinish wrapping around KTextEditor::ViewPrivate, exposing the methods we want exposed
  * and adding some helper methods.
  *
  * We inherit from QScriptable to have more thight access to the scripting
@@ -47,8 +47,8 @@ class KTEXTEDITOR_EXPORT KateScriptView : public QObject, protected QScriptable
 
 public:
     KateScriptView(QObject *parent = 0);
-    void setView(KateView *view);
-    KateView *view();
+    void setView(KTextEditor::ViewPrivate *view);
+    KTextEditor::ViewPrivate *view();
 
     Q_INVOKABLE KTextEditor::Cursor cursorPosition();
     /**
@@ -73,7 +73,7 @@ public:
     Q_INVOKABLE void align(const KTextEditor::Range &range);
     
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
 };
 
 #endif

@@ -26,7 +26,7 @@ namespace KTextEditor
 {
 class Document;
 }
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 class CompletionTest : public QObject
 {
@@ -63,7 +63,7 @@ private Q_SLOTS:
 
 private:
     KTextEditor::Document *m_doc;
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
 };
 
 #endif

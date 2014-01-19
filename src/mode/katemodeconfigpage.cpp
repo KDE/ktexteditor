@@ -153,7 +153,7 @@ void ModeConfigPage::update()
 
     // get current filetype from active view via the host application
     int currentIndex = 0;
-    KateView *kv = qobject_cast<KateView *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
+    KTextEditor::ViewPrivate *kv = qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString filetypeName = kv->doc()->fileType();
         for (int i = 0; i < m_types.size(); ++i) {

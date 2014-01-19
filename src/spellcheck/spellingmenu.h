@@ -31,7 +31,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/view.h>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateOnTheFlyChecker;
 
 class KateSpellingMenu : public QObject
@@ -40,7 +40,7 @@ class KateSpellingMenu : public QObject
     friend class KateOnTheFlyChecker;
 
 public:
-    KateSpellingMenu(KateView *view);
+    KateSpellingMenu(KTextEditor::ViewPrivate *view);
     virtual ~KateSpellingMenu();
 
     bool isEnabled() const;
@@ -59,7 +59,7 @@ public Q_SLOTS:
     void setVisible(bool b);
 
 protected:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KActionMenu *m_spellingMenuAction;
     QAction *m_ignoreWordAction, *m_addToDictionaryAction;
     QMenu *m_spellingMenu;

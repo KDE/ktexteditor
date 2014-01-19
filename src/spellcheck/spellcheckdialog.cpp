@@ -40,7 +40,7 @@
 #include <sonnet/backgroundchecker.h>
 #include <sonnet/speller.h>
 
-KateSpellCheckDialog::KateSpellCheckDialog(KateView *view)
+KateSpellCheckDialog::KateSpellCheckDialog(KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_view(view)
     , m_speller(NULL)

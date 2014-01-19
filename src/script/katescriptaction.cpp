@@ -30,7 +30,7 @@
 #include <KActionCollection>
 
 //BEGIN KateScriptAction
-KateScriptAction::KateScriptAction(const ScriptActionInfo &info, KateView *view)
+KateScriptAction::KateScriptAction(const ScriptActionInfo &info, KTextEditor::ViewPrivate *view)
     : QAction(info.text(), view)
     , m_view(view)
     , m_command(info.command())
@@ -65,7 +65,7 @@ void KateScriptAction::exec()
 //END KateScriptAction
 
 //BEGIN KateScriptActionMenu
-KateScriptActionMenu::KateScriptActionMenu(KateView *view, const QString &text)
+KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text)
     : KActionMenu(QIcon::fromTheme(QLatin1String("code-context")), text, view)
     , m_view(view)
 {

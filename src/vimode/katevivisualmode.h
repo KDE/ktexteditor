@@ -36,7 +36,7 @@ class KateViVisualMode : public KateViNormalMode
     Q_OBJECT
 
 public:
-    KateViVisualMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
+    KateViVisualMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~KateViVisualMode();
 
     void init();

@@ -221,7 +221,7 @@ bool KateScript::hasException(const QScriptValue &object, const QString &file)
     return false;
 }
 
-bool KateScript::setView(KateView *view)
+bool KateScript::setView(KTextEditor::ViewPrivate *view)
 {
     if (!load()) {
         return false;

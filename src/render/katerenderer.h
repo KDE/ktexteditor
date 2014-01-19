@@ -33,7 +33,7 @@
 #include <QTextLine>
 
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateRendererConfig;
 class KateRenderRange;
 namespace Kate
@@ -78,7 +78,7 @@ public:
      * @param folding folding information
      * @param view view which is output (0 for example for rendering to print)
      */
-    explicit KateRenderer(KateDocument *doc, Kate::TextFolding &folding, KateView *view = 0);
+    explicit KateRenderer(KateDocument *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = 0);
 
     /**
      * Destructor
@@ -105,7 +105,7 @@ public:
     /**
      * Returns the view to which this renderer is bound
      */
-    KateView *view() const
+    KTextEditor::ViewPrivate *view() const
     {
         return m_view;
     }
@@ -378,7 +378,7 @@ private:
 
     KateDocument *const m_doc;
     Kate::TextFolding &m_folding;
-    KateView *const m_view;
+    KTextEditor::ViewPrivate *const m_view;
 
     // cache of config values
     int m_tabWidth;

@@ -95,7 +95,7 @@ static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model, KTex
     CALLCI(return,, return, model, shouldStartCompletion(view, m_automaticInvocationLine, m_lastInsertionByUser, cursor));
 }
 
-KateCompletionWidget::KateCompletionWidget(KateView *parent)
+KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     : QFrame(parent, Qt::ToolTip)
     , m_presentationModel(new KateCompletionModel(this))
     , m_entryList(new KateCompletionTree(this))
@@ -281,9 +281,9 @@ void KateCompletionWidget::rowsInserted(const QModelIndex &parent, int rowFrom, 
         }
 }
 
-KateView *KateCompletionWidget::view() const
+KTextEditor::ViewPrivate *KateCompletionWidget::view() const
 {
-    return static_cast<KateView *>(const_cast<QObject *>(parent()));
+    return static_cast<KTextEditor::ViewPrivate *>(const_cast<QObject *>(parent()));
 }
 
 void KateCompletionWidget::argumentHintsChanged(bool hasContent)

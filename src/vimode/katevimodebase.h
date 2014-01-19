@@ -190,7 +190,7 @@ protected:
     bool m_lastMotionWasVisualLineUpOrDown;
     bool m_currentMotionWasVisualLineUpOrDown;
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateViewInternal *m_viewInternal;
     KateViInputModeManager *m_viInputModeManager;
 

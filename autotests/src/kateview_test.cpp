@@ -69,8 +69,8 @@ void KateViewTest::testReloadMultipleViews()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView *view1 = new KateView(&doc, 0);
-    KateView *view2 = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view2 = new KTextEditor::ViewPrivate(&doc, 0);
     view1->show();
     view2->show();
     QCOMPARE(doc.views().count(), 2);
@@ -84,7 +84,7 @@ void KateViewTest::testLowerCaseBlockSelection()
     KateDocument doc;
     doc.setText("nY\nnYY\n");
 
-    KateView *view1 = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, 0);
     view1->setBlockSelection(true);
     view1->setSelection(Range(0, 1, 1, 3));
     view1->lowercase();
@@ -122,7 +122,7 @@ void KateViewTest::testFolding()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView *view = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
     QAction *collapseAction = view->action("folding_toplevel");
     QVERIFY(collapseAction);
     QAction *expandAction = view->action("folding_expandtoplevel");
@@ -166,7 +166,7 @@ void KateViewTest::testBug287291()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KateView *view = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
     QAction *collapseAction = view->action("folding_toplevel");
     QVERIFY(collapseAction);
     QAction *expandAction = view->action("folding_expandtoplevel");
@@ -232,7 +232,7 @@ void KateViewTest::testSelection()
     KateDocument doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
-    KateView *view = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
     view->resize(100, 100);
     view->show();
 
@@ -301,7 +301,7 @@ void KateViewTest::testKillline()
         << "baz"
     );
 
-    KateView *view = new KateView(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
 
     view->setCursorPositionInternal(KTextEditor::Cursor(1, 2));
     view->killLine();

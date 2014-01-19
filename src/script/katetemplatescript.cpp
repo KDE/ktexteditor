@@ -30,7 +30,7 @@ KateTemplateScript::KateTemplateScript(const QString &script)
 
 KateTemplateScript::~KateTemplateScript() {}
 
-QString KateTemplateScript::invoke(KateView *view, const QString &functionName, const QString &srcText)
+QString KateTemplateScript::invoke(KTextEditor::ViewPrivate *view, const QString &functionName, const QString &srcText)
 {
 
     if (!setView(view)) {

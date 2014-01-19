@@ -48,7 +48,7 @@ int countItems(KateCompletionModel *model)
     return ret;
 }
 
-static void verifyCompletionStarted(KateView *view)
+static void verifyCompletionStarted(KTextEditor::ViewPrivate *view)
 {
     const QDateTime startTime = QDateTime::currentDateTime();
     while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
@@ -60,7 +60,7 @@ static void verifyCompletionStarted(KateView *view)
     QVERIFY(view->completionWidget()->isCompletionActive());
 }
 
-static void verifyCompletionAborted(KateView *view)
+static void verifyCompletionAborted(KTextEditor::ViewPrivate *view)
 {
     const QDateTime startTime = QDateTime::currentDateTime();
     while (startTime.msecsTo(QDateTime::currentDateTime()) < 1000) {
@@ -72,7 +72,7 @@ static void verifyCompletionAborted(KateView *view)
     QVERIFY(!view->completionWidget()->isCompletionActive());
 }
 
-static void invokeCompletionBox(KateView *view)
+static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
 {
     view->userInvokedCompletion();
     verifyCompletionStarted(view);
@@ -93,7 +93,7 @@ void CompletionTest::init()
 
     KTextEditor::View *v = m_doc->createView(0);
     QApplication::setActiveWindow(v);
-    m_view = static_cast<KateView *>(v);
+    m_view = static_cast<KTextEditor::ViewPrivate *>(v);
     Q_ASSERT(m_view);
 
     //view needs to be shown as completion won't work if the cursor is off screen

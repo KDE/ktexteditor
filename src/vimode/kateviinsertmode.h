@@ -27,7 +27,7 @@
 #include <ktexteditor_export.h>
 
 class KateViMotion;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 
 /**
@@ -47,7 +47,7 @@ class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
 {
     Q_OBJECT
 public:
-    KateViInsertMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
+    KateViInsertMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~KateViInsertMode();
 
     bool handleKeypress(const QKeyEvent *e);

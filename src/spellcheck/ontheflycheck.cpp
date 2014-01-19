@@ -147,7 +147,7 @@ void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, const KT
     }
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
     foreach (KTextEditor::View *i, m_document->views()) {
-        KateView *view = static_cast<KateView *>(i);
+        KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(i);
         KTextEditor::Range visibleIntersection = documentIntersection.intersect(view->visibleRange());
         if (visibleIntersection.isValid()) { // allow empty intersections
             // we don't handle this directly as the highlighting information might not be up-to-date yet
@@ -237,7 +237,7 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTe
 
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
     foreach (KTextEditor::View *i, m_document->views()) {
-        KateView *view = static_cast<KateView *>(i);
+        KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(i);
         KTextEditor::Range visibleIntersection = documentIntersection.intersect(view->visibleRange());
         if (visibleIntersection.isValid()) { // see above
             // we don't handle this directly as the highlighting information might not be up-to-date yet
@@ -315,7 +315,7 @@ void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
 
             const QList<KTextEditor::View *> &viewList = m_document->views();
             for (QList<KTextEditor::View *>::const_iterator i = viewList.begin(); i != viewList.end(); ++i) {
-                KateView *view = static_cast<KateView *>(*i);
+                KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(*i);
                 const KTextEditor::Range visibleRange = view->visibleRange();
                 KTextEditor::Range intersection = visibleRange.intersect(rangeBelow);
                 if (intersection.isValid()) {
@@ -480,13 +480,13 @@ void KateOnTheFlyChecker::rangeInvalid(KTextEditor::MovingRange *range)
 
 void KateOnTheFlyChecker::mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
 {
-    KateView *kateView = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
     kateView->spellingMenu()->mouseEnteredMisspelledRange(range);
 }
 
 void KateOnTheFlyChecker::mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
 {
-    KateView *kateView = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
     kateView->spellingMenu()->mouseExitedMisspelledRange(range);
 }
 
@@ -496,13 +496,13 @@ void KateOnTheFlyChecker::mouseExitedRange(KTextEditor::MovingRange *range, KTex
  **/
 void KateOnTheFlyChecker::caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
 {
-    KateView *kateView = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
     kateView->spellingMenu()->caretEnteredMisspelledRange(range);
 }
 
 void KateOnTheFlyChecker::caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view)
 {
-    KateView *kateView = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
     kateView->spellingMenu()->caretExitedMisspelledRange(range);
 }
 
@@ -513,7 +513,7 @@ void KateOnTheFlyChecker::deleteMovingRange(KTextEditor::MovingRange *range)
     removeRangeFromEverything(range);
     range->setFeedback(NULL);
     foreach (KTextEditor::View *view, m_document->views()) {
-        static_cast<KateView *>(view)->spellingMenu()->rangeDeleted(range);
+        static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
     delete(range);
 }
@@ -670,8 +670,8 @@ void KateOnTheFlyChecker::addView(KTextEditor::Document *document, KTextEditor::
     Q_UNUSED(document);
     ON_THE_FLY_DEBUG;
     connect(view, SIGNAL(destroyed(QObject*)), this, SLOT(viewDestroyed(QObject*)));
-    connect(view, SIGNAL(displayRangeChanged(KateView*)), this, SLOT(restartViewRefreshTimer(KateView*)));
-    updateInstalledMovingRanges(static_cast<KateView *>(view));
+    connect(view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(restartViewRefreshTimer(KTextEditor::ViewPrivate*)));
+    updateInstalledMovingRanges(static_cast<KTextEditor::ViewPrivate *>(view));
 }
 
 void KateOnTheFlyChecker::viewDestroyed(QObject *obj)
@@ -687,7 +687,7 @@ void KateOnTheFlyChecker::removeView(KTextEditor::View *view)
     m_displayRangeMap.remove(view);
 }
 
-void KateOnTheFlyChecker::updateInstalledMovingRanges(KateView *view)
+void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *view)
 {
     Q_ASSERT(m_document == view->document());
     ON_THE_FLY_DEBUG;
@@ -702,7 +702,7 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KateView *view)
         if (!movingRange->overlaps(newDisplayRange)) {
             bool stillVisible = false;
             foreach (KTextEditor::View *it2, m_document->views()) {
-                KateView *view2 = static_cast<KateView *>(it2);
+                KTextEditor::ViewPrivate *view2 = static_cast<KTextEditor::ViewPrivate *>(it2);
                 if (view != view2 && movingRange->overlaps(view2->visibleRange())) {
                     stillVisible = true;
                     break;
@@ -721,7 +721,7 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KateView *view)
             if (!oldDisplayRange.containsLine(line)) {
                 bool visible = false;
                 foreach (KTextEditor::View *it2, m_document->views()) {
-                    KateView *view2 = static_cast<KateView *>(it2);
+                    KTextEditor::ViewPrivate *view2 = static_cast<KTextEditor::ViewPrivate *>(it2);
                     if (view != view2 && view2->visibleRange().containsLine(line)) {
                         visible = true;
                         break;
@@ -742,11 +742,11 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(const KTextEditor::Range &
 {
     const QList<KTextEditor::View *> &viewList = m_document->views();
     for (QList<KTextEditor::View *>::const_iterator i = viewList.begin(); i != viewList.end(); ++i) {
-        queueSpellCheckVisibleRange(static_cast<KateView *>(*i), range);
+        queueSpellCheckVisibleRange(static_cast<KTextEditor::ViewPrivate *>(*i), range);
     }
 }
 
-void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KateView *view, const KTextEditor::Range &range)
+void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
 {
     Q_ASSERT(m_document == view->doc());
     KTextEditor::Range visibleRange = view->visibleRange();
@@ -845,7 +845,7 @@ void KateOnTheFlyChecker::viewRefreshTimeout()
     m_refreshView = NULL;
 }
 
-void KateOnTheFlyChecker::restartViewRefreshTimer(KateView *view)
+void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view)
 {
     if (m_refreshView && view != m_refreshView) { // a new view should be refreshed
         updateInstalledMovingRanges(m_refreshView); // so refresh the old one first
@@ -858,7 +858,7 @@ void KateOnTheFlyChecker::deleteMovingRangeQuickly(KTextEditor::MovingRange *ran
 {
     range->setFeedback(NULL);
     foreach (KTextEditor::View *view, m_document->views()) {
-        static_cast<KateView *>(view)->spellingMenu()->rangeDeleted(range);
+        static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
     delete(range);
 }

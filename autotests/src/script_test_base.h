@@ -24,7 +24,7 @@
 
 class TestScriptEnv;
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class QMainWindow;
 
 class ScriptTestBase : public QObject
@@ -44,7 +44,7 @@ protected:
     QMainWindow *m_toplevel;
     bool m_outputWasCustomised;
     QStringList m_commands;
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QString m_section;  // dir name in testdata/
     QString m_script_dir;  // dir name in part/script/data/
 

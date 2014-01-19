@@ -1388,8 +1388,8 @@ void KateViModeBase::addToNumberUnderCursor(int count)
 void KateViModeBase::switchView(Direction direction)
 {
 
-    QList<KateView *> visible_views;
-    foreach (KateView *view,  KTextEditor::EditorPrivate::self()->views()) {
+    QList<KTextEditor::ViewPrivate *> visible_views;
+    foreach (KTextEditor::ViewPrivate *view,  KTextEditor::EditorPrivate::self()->views()) {
         if (view->isVisible()) {
             visible_views.push_back(view);
         }
@@ -1403,7 +1403,7 @@ void KateViModeBase::switchView(Direction direction)
     int curr_cursor_y = m_view->mapToGlobal(m_view->cursorToCoordinate(m_view->cursorPosition())).y();
     int curr_cursor_x = m_view->mapToGlobal(m_view->cursorToCoordinate(m_view->cursorPosition())).x();
 
-    KateView *bestview = NULL;
+    KTextEditor::ViewPrivate *bestview = NULL;
     int  best_x1 = -1, best_x2 = -1, best_y1 = -1, best_y2 = -1, best_center_y = -1, best_center_x = -1;
 
     if (direction == Next && visible_views.count() != 1) {
@@ -1417,7 +1417,7 @@ void KateViModeBase::switchView(Direction direction)
             }
         }
     } else {
-        foreach (KateView *view, visible_views) {
+        foreach (KTextEditor::ViewPrivate *view, visible_views) {
             QPoint point = view->mapToGlobal(view->pos());
             int x1 = point.x();
             int x2 = point.x() + view->width();

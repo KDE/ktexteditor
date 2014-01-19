@@ -28,7 +28,7 @@
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/searchinterface.h>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateViewConfig;
 class QVBoxLayout;
 class QComboBox;
@@ -76,7 +76,7 @@ public:
     };
 
 public:
-    explicit KateSearchBar(bool initAsPower, KateView *view, KateViewConfig *config);
+    explicit KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config);
     ~KateSearchBar();
 
     virtual void closed();
@@ -89,8 +89,8 @@ public:
     bool selectionOnly() const;
     bool matchCase() const;
 
-    // Only used by KateView
-    static void nextMatchForSelection(KateView *view, SearchDirection searchDirection);
+    // Only used by KTextEditor::ViewPrivate
+    static void nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection);
 
 public Q_SLOTS:
     /**
@@ -117,7 +117,7 @@ public Q_SLOTS:
     void replaceNext();
     void replaceAll();
 
-    // Also used by KateView
+    // Also used by KTextEditor::ViewPrivate
     void enterPowerMode();
     void enterIncrementalMode();
 
@@ -159,7 +159,7 @@ private:
     void highlightMatch(const KTextEditor::Range &range);
     void highlightReplacement(const KTextEditor::Range &range);
     void indicateMatch(MatchResult matchResult);
-    static void selectRange(KateView *view, const KTextEditor::Range &range);
+    static void selectRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
     void selectRange2(const KTextEditor::Range &range);
 
     QVector<QString> getCapturePatterns(const QString &pattern) const;
@@ -174,7 +174,7 @@ private:
     void showInfoMessage(const QString &text);
 
 private:
-    KateView *const m_view;
+    KTextEditor::ViewPrivate *const m_view;
     KateViewConfig *const m_config;
     QList<KTextEditor::MovingRange *> m_hlRanges;
     QPointer<KTextEditor::Message> m_infoMessage;

@@ -29,7 +29,7 @@
 
 #include <QObject>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 class QAction;
 class KActionCollection;
@@ -53,7 +53,7 @@ class KateSpellCheckDialog : public QObject
     Q_OBJECT
 
 public:
-    explicit KateSpellCheckDialog(KateView *);
+    explicit KateSpellCheckDialog(KTextEditor::ViewPrivate *);
     ~KateSpellCheckDialog();
 
     void createActions(KActionCollection *);
@@ -92,7 +92,7 @@ private Q_SLOTS:
 private:
     KTextEditor::Cursor locatePosition(int pos);
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QAction *m_spellcheckSelection;
 
     Sonnet::Speller *m_speller;

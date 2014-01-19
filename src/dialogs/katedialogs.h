@@ -45,7 +45,7 @@
 
 class ModeConfigPage;
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 namespace KIO
 {
@@ -130,7 +130,7 @@ class KateDictionaryBar : public KateViewBarWidget
     Q_OBJECT
 
 public:
-    explicit KateDictionaryBar(KateView *view, QWidget *parent = NULL);
+    explicit KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent = NULL);
     virtual ~KateDictionaryBar();
 
 public Q_SLOTS:
@@ -140,7 +140,7 @@ protected Q_SLOTS:
     void dictionaryChanged(const QString &dictionary);
 
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     Sonnet::DictionaryComboBox *m_dictionaryComboBox;
 };
 

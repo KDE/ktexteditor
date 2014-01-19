@@ -26,7 +26,7 @@
 
 #include <QTimer>
 
-KateViKeyMapper::KateViKeyMapper(KateViInputModeManager *kateViInputModeManager, KateDocument *doc, KateView *view)
+KateViKeyMapper::KateViKeyMapper(KateViInputModeManager *kateViInputModeManager, KateDocument *doc, KTextEditor::ViewPrivate *view)
     : m_viInputModeManager(kateViInputModeManager),
       m_doc(doc),
       m_view(view)

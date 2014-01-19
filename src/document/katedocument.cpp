@@ -281,7 +281,7 @@ QWidget *KateDocument::widget()
 
 KTextEditor::View *KateDocument::createView(QWidget *parent, KTextEditor::MainWindow *mainWindow)
 {
-    KateView *newView = new KateView(this, parent, mainWindow);
+    KTextEditor::ViewPrivate *newView = new KTextEditor::ViewPrivate(this, parent, mainWindow);
     if (m_fileChangedDialogsActivated) {
         connect(newView, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(slotModifiedOnDisk()));
     }
@@ -533,7 +533,7 @@ bool KateDocument::clear()
         return false;
     }
 
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->clear();
         view->tagAll();
         view->update();
@@ -816,7 +816,7 @@ void KateDocument::editStart()
 
     m_undoManager->editStart();
 
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->editStart();
     }
 
@@ -852,7 +852,7 @@ void KateDocument::editEnd()
     m_undoManager->editEnd();
 
     // edit end for all views !!!!!!!!!
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->editEnd(m_buffer->editTagStart(), m_buffer->editTagEnd(), m_buffer->editTagFrom());
     }
 
@@ -2056,7 +2056,7 @@ bool KateDocument::openFile()
     bool success = m_buffer->openFile(localFilePath(), (m_reloading && m_userSetEncodingForNextReload));
 
     // disable view updates
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->setUpdatesEnabled(false);
     }
 
@@ -2071,7 +2071,7 @@ bool KateDocument::openFile()
     //
     // update views
     //
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         // This is needed here because inserting the text moves the view's start position (it is a MovingCursor)
         view->setCursorPosition(KTextEditor::Cursor());
         view->setUpdatesEnabled(true);
@@ -2494,7 +2494,7 @@ bool KateDocument::closeUrl()
     m_buffer->setHighlight(0);
 
     // update all our views
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->clearSelection(); // fix bug #118588
         view->clear();
     }
@@ -2532,7 +2532,7 @@ void KateDocument::setReadWrite(bool rw)
     if (isReadWrite() != rw) {
         KParts::ReadWritePart::setReadWrite(rw);
 
-        foreach (KateView *view, m_views) {
+        foreach (KTextEditor::ViewPrivate *view, m_views) {
             view->slotUpdateUndo();
             view->slotReadWriteChanged();
         }
@@ -2546,7 +2546,7 @@ void KateDocument::setModified(bool m)
     if (isModified() != m) {
         KParts::ReadWritePart::setModified(m);
 
-        foreach (KateView *view, m_views) {
+        foreach (KTextEditor::ViewPrivate *view, m_views) {
             view->slotUpdateUndo();
         }
 
@@ -2561,7 +2561,7 @@ void KateDocument::setModified(bool m)
 
 void KateDocument::makeAttribs(bool needInvalidate)
 {
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->renderer()->updateAttributes();
     }
 
@@ -2569,7 +2569,7 @@ void KateDocument::makeAttribs(bool needInvalidate)
         m_buffer->invalidateHighlighting();
     }
 
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->tagAll();
         view->updateView(true);
     }
@@ -2587,7 +2587,7 @@ void KateDocument::addView(KTextEditor::View *view)
         return;
     }
 
-    m_views.append(static_cast<KateView *>(view));
+    m_views.append(static_cast<KTextEditor::ViewPrivate *>(view));
     m_textEditViews.append(view);
 
     // apply the view & renderer vars from the file type
@@ -2611,7 +2611,7 @@ void KateDocument::removeView(KTextEditor::View *view)
         setActiveView(0L);
     }
 
-    m_views.removeAll(static_cast<KateView *>(view));
+    m_views.removeAll(static_cast<KTextEditor::ViewPrivate *>(view));
     m_textEditViews.removeAll(view);
 }
 
@@ -2621,10 +2621,10 @@ void KateDocument::setActiveView(KTextEditor::View *view)
         return;
     }
 
-    m_activeView = static_cast<KateView *>(view);
+    m_activeView = static_cast<KTextEditor::ViewPrivate *>(view);
 }
 
-bool KateDocument::ownedView(KateView *view)
+bool KateDocument::ownedView(KTextEditor::ViewPrivate *view)
 {
     // do we own the given view?
     return (m_views.contains(view));
@@ -2662,7 +2662,7 @@ int KateDocument::fromVirtualColumn(const KTextEditor::Cursor &cursor) const
     return fromVirtualColumn(cursor.line(), cursor.column());
 }
 
-bool KateDocument::typeChars(KateView *view, const QString &realChars)
+bool KateDocument::typeChars(KTextEditor::ViewPrivate *view, const QString &realChars)
 {
     Kate::TextLine textLine = m_buffer->plainLine(view->cursorPosition().line());
     if (!textLine) {
@@ -2732,7 +2732,7 @@ bool KateDocument::typeChars(KateView *view, const QString &realChars)
     return true;
 }
 
-void KateDocument::newLine(KateView *v)
+void KateDocument::newLine(KTextEditor::ViewPrivate *v)
 {
     editStart();
 
@@ -2804,7 +2804,7 @@ void KateDocument::transpose(const KTextEditor::Cursor &cursor)
     editEnd();
 }
 
-void KateDocument::backspace(KateView *view, const KTextEditor::Cursor &c)
+void KateDocument::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
         if (view->blockSelection() && view->selection() && toVirtualColumn(view->selectionRange().start()) == toVirtualColumn(view->selectionRange().end())) {
@@ -2877,7 +2877,7 @@ void KateDocument::backspace(KateView *view, const KTextEditor::Cursor &c)
     }
 }
 
-void KateDocument::del(KateView *view, const KTextEditor::Cursor &c)
+void KateDocument::del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
         if (view->blockSelection() && view->selection() && toVirtualColumn(view->selectionRange().start()) == toVirtualColumn(view->selectionRange().end())) {
@@ -2897,7 +2897,7 @@ void KateDocument::del(KateView *view, const KTextEditor::Cursor &c)
     }
 }
 
-void KateDocument::paste(KateView *view, const QString &text)
+void KateDocument::paste(KTextEditor::ViewPrivate *view, const QString &text)
 {
     static const QChar newLineChar(QLatin1Char('\n'));
     QString s = text;
@@ -2979,12 +2979,12 @@ void KateDocument::indent(KTextEditor::Range range, int change)
     editEnd();
 }
 
-void KateDocument::align(KateView *view, const KTextEditor::Range &range)
+void KateDocument::align(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
 {
     m_indenter->indent(view, range);
 }
 
-void KateDocument::insertTab(KateView *view, const KTextEditor::Cursor &)
+void KateDocument::insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &)
 {
     if (!isReadWrite()) {
         return;
@@ -3163,7 +3163,7 @@ bool KateDocument::removeStartStopCommentFromSingleLine(int line, int attrib)
   Add to the current selection a start comment mark at the beginning
   and a stop comment mark at the end.
 */
-void KateDocument::addStartStopCommentToSelection(KateView *view, int attrib)
+void KateDocument::addStartStopCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
@@ -3194,7 +3194,7 @@ void KateDocument::addStartStopCommentToSelection(KateView *view, int attrib)
 /*
   Add to the current selection a comment line mark at the beginning of each line.
 */
-void KateDocument::addStartLineCommentToSelection(KateView *view, int attrib)
+void KateDocument::addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
     const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
 
@@ -3268,7 +3268,7 @@ bool KateDocument::previousNonSpaceCharPos(int &line, int &col)
   Remove from the selection a start comment mark at
   the beginning and a stop comment mark at the end.
 */
-bool KateDocument::removeStartStopCommentFromSelection(KateView *view, int attrib)
+bool KateDocument::removeStartStopCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
@@ -3332,7 +3332,7 @@ bool KateDocument::removeStartStopCommentFromRegion(const KTextEditor::Cursor &s
   Remove from the beginning of each line of the
   selection a start comment line mark.
 */
-bool KateDocument::removeStartLineCommentFromSelection(KateView *view, int attrib)
+bool KateDocument::removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
     const QString shortCommentMark = highlight()->getCommentSingleLineStart(attrib);
     const QString longCommentMark = shortCommentMark + QLatin1Char(' ');
@@ -3366,7 +3366,7 @@ bool KateDocument::removeStartLineCommentFromSelection(KateView *view, int attri
   Comment or uncomment the selection or the current
   line if there is no selection.
 */
-void KateDocument::comment(KateView *v, uint line, uint column, int change)
+void KateDocument::comment(KTextEditor::ViewPrivate *v, uint line, uint column, int change)
 {
     // skip word wrap bug #105373
     const bool skipWordWrap = wordWrap();
@@ -3448,7 +3448,7 @@ void KateDocument::comment(KateView *v, uint line, uint column, int change)
     }
 }
 
-void KateDocument::transform(KateView *v, const KTextEditor::Cursor &c,
+void KateDocument::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor &c,
                              KateDocument::TextTransform t)
 {
     if (v->selection()) {
@@ -3594,14 +3594,14 @@ void KateDocument::joinLines(uint first, uint last)
 
 void KateDocument::tagLines(int start, int end)
 {
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->tagLines(start, end, true);
     }
 }
 
 void KateDocument::repaintViews(bool paintOnlyDirty)
 {
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->repaintText(paintOnlyDirty);
     }
 }
@@ -3891,7 +3891,7 @@ bool KateDocument::documentReload()
         // save cursor positions for all views
         QVector<KTextEditor::Cursor> cursorPositions;
         cursorPositions.reserve(m_views.size());
-        foreach (KateView *v, m_views) {
+        foreach (KTextEditor::ViewPrivate *v, m_views) {
             cursorPositions.append(v->cursorPosition());
         }
 
@@ -3902,7 +3902,7 @@ bool KateDocument::documentReload()
         m_userSetEncodingForNextReload = false;
 
         // restore cursor positions for all views
-        QLinkedList<KateView *>::iterator it = m_views.begin();
+        QLinkedList<KTextEditor::ViewPrivate *>::iterator it = m_views.begin();
         for (int i = 0; i < m_views.size(); ++i, ++it) {
             setActiveView(*it);
             (*it)->setCursorPositionInternal(cursorPositions.at(i), m_config->tabWidth(), false);
@@ -4046,7 +4046,7 @@ void KateDocument::updateConfig()
     m_buffer->setTabWidth(config()->tabWidth());
 
     // update all views, does tagAll and updateView...
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->updateDocumentConfig();
     }
 
@@ -4077,7 +4077,7 @@ void KateDocument::readVariables(bool onlyViewAndRenderer)
     }
 
     // views!
-    KateView *v;
+    KTextEditor::ViewPrivate *v;
     foreach (v, m_views) {
         v->config()->configStart();
         v->renderer()->config()->configStart();
@@ -4291,7 +4291,7 @@ void KateDocument::readVariableLine(QString t, bool onlyViewAndRenderer)
 
 void KateDocument::setViewVariable(QString var, QString val)
 {
-    KateView *v;
+    KTextEditor::ViewPrivate *v;
     bool state;
     int n;
     QColor c;
@@ -4568,7 +4568,7 @@ void KateDocument::updateFileType(const QString &newType, bool user)
             }
 
             // views!
-            KateView *v;
+            KTextEditor::ViewPrivate *v;
             foreach (v, m_views) {
                 v->config()->configStart();
                 v->renderer()->config()->configStart();
@@ -5195,7 +5195,7 @@ void KateDocument::onTheFlySpellCheckingEnabled(bool enable)
         m_onTheFlyChecker = 0;
     }
 
-    foreach (KateView *view, m_views) {
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
         view->reflectOnTheFlySpellCheckStatus(enable);
     }
 }
@@ -5382,7 +5382,7 @@ void KateDocument::replaceCharactersByEncoding(const KTextEditor::Range &range)
 KTextEditor::Attribute::Ptr KateDocument::defaultStyle(const KTextEditor::HighlightInterface::DefaultStyle ds) const
 {
     ///TODO: move attributes to document, they are not view-dependant
-    KateView *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access defaultStyle() without any View (will be fixed eventually)";
         return KTextEditor::Attribute::Ptr(0);
@@ -5403,7 +5403,7 @@ QList< KTextEditor::HighlightInterface::AttributeBlock > KateDocument::lineAttri
 
     QList< KTextEditor::HighlightInterface::AttributeBlock > attribs;
 
-    KateView *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attribs;
@@ -5431,7 +5431,7 @@ KTextEditor::Attribute::Ptr KateDocument::attributeAt(const KTextEditor::Cursor 
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
-    KateView *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;
@@ -5526,7 +5526,7 @@ int KateDocument::defStyleNum(int line, int column)
     }
 
     QList<KTextEditor::Attribute::Ptr> attributes = highlight()->attributes(
-                static_cast<KateView *>(activeView())
+                static_cast<KTextEditor::ViewPrivate *>(activeView())
                 ->renderer()
                 ->config()
                 ->schema()
@@ -5581,10 +5581,10 @@ bool KateDocument::postMessage(KTextEditor::Message *message)
     }
 
     // post message to requested view, or to all views
-    if (KateView *view = qobject_cast<KateView *>(message->view())) {
+    if (KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(message->view())) {
         view->postMessage(message, m_messageHash[message]);
     } else {
-        foreach (KateView *view, m_views) {
+        foreach (KTextEditor::ViewPrivate *view, m_views) {
             view->postMessage(message, m_messageHash[message]);
         }
     }

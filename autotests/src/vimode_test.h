@@ -123,7 +123,7 @@ public:
 private:
     void failTest() const;
     QStringList m_completions;
-    KateView *m_kateView;
+    KTextEditor::ViewPrivate *m_kateView;
     KTextEditor::Document *m_kateDoc;
     bool m_removeTailOnCompletion;
     bool m_failTestOnInvocation;
@@ -144,7 +144,7 @@ public:
     ViModeTest();
     ~ViModeTest();
 
-    static void waitForCompletionWidgetToActivate(KateView *kate_view);
+    static void waitForCompletionWidgetToActivate(KTextEditor::ViewPrivate *kate_view);
 
 private Q_SLOTS:
     void init();
@@ -187,7 +187,7 @@ private:
                 );
 
     KateDocument *kate_document;
-    KateView *kate_view;
+    KTextEditor::ViewPrivate *kate_view;
     QMainWindow *mainWindow;
     QVBoxLayout *mainWindowLayout;
     KateViInputModeManager *vi_input_mode_manager;

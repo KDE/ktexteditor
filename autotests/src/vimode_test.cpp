@@ -105,7 +105,7 @@ void FailsIfSlotCalled::slot()
 
 FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *parent)
     : KTextEditor::CodeCompletionModel(parent),
-      m_kateView(qobject_cast<KateView *>(parent)),
+      m_kateView(qobject_cast<KTextEditor::ViewPrivate *>(parent)),
       m_kateDoc(parent->document()),
       m_removeTailOnCompletion(false),
       m_failTestOnInvocation(false),
@@ -296,7 +296,7 @@ void ViModeTest::init()
     delete kate_document;
 
     kate_document = new KateDocument(false, false, 0, NULL);
-    kate_view = new KateView(kate_document, mainWindow);
+    kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
     kate_view->config()->setViInputMode(true);
     Q_ASSERT(kate_view->viInputMode());
@@ -684,7 +684,7 @@ void ViModeTest::VisualModeTests()
     // end up in Visual Mode: this mimics what happens if we click on a Find result in
     // KDevelop's "grepview" plugin.
     delete kate_view;
-    kate_view = new KateView(kate_document, mainWindow);
+    kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
     kate_document->setText("foo bar");
     kate_view->setSelection(Range(Cursor(0, 1), Cursor(0, 4)));
@@ -1808,7 +1808,7 @@ void ViModeTest::FakeCodeCompletionTests()
     // Test that FakeCodeCompletionTestModel behaves similar to the code-completion in e.g. KDevelop.
     const bool oldStealKeys = KateViewConfig::global()->viInputModeStealKeys();
     KateViewConfig::global()->setViInputModeStealKeys(true); // For Ctrl-P, Ctrl-N etc
-    ensureKateViewVisible(); // KateView needs to be visible for the completion widget.
+    ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
     fakeCodeCompletionModel->setCompletions(QStringList() << "completionA" << "completionB" << "completionC");
@@ -2227,7 +2227,7 @@ void ViModeTest::CommandModeTests()
 class VimStyleCommandBarTestsSetUpAndTearDown
 {
 public:
-    VimStyleCommandBarTestsSetUpAndTearDown(KateView *kateView, QMainWindow *mainWindow)
+    VimStyleCommandBarTestsSetUpAndTearDown(KTextEditor::ViewPrivate *kateView, QMainWindow *mainWindow)
         : m_kateView(kateView), m_mainWindow(mainWindow), m_windowKeepActive(mainWindow)
     {
         m_mainWindow->show();
@@ -2253,7 +2253,7 @@ public:
         }
     }
 private:
-    KateView *m_kateView;
+    KTextEditor::ViewPrivate *m_kateView;
     QMainWindow *m_mainWindow;
     WindowKeepActive m_windowKeepActive;
 };
@@ -6016,7 +6016,7 @@ void ViModeTest::CompletionTests()
     KateViewConfig::global()->setWordCompletionRemoveTail(false);
 
     KateViewConfig::global()->setViInputModeStealKeys(true); // For Ctrl-P, Ctrl-N etc
-    ensureKateViewVisible(); // KateView needs to be visible for the completion widget.
+    ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     VimCodeCompletionTestModel *testModel = new VimCodeCompletionTestModel(kate_view);
 
     BeginTest("");
@@ -7229,7 +7229,7 @@ void ViModeTest::waitForCompletionWidgetToActivate()
     waitForCompletionWidgetToActivate(kate_view);
 }
 
-void ViModeTest::waitForCompletionWidgetToActivate(KateView *kate_view)
+void ViModeTest::waitForCompletionWidgetToActivate(KTextEditor::ViewPrivate *kate_view)
 {
     const QDateTime start = QDateTime::currentDateTime();
     while (start.msecsTo(QDateTime::currentDateTime()) < 1000) {

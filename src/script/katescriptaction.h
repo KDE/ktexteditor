@@ -26,7 +26,7 @@
 
 #include <QAction>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 /**
  * KateScriptAction is an action that executes a commandline-script
@@ -37,14 +37,14 @@ class KateScriptAction : public QAction
     Q_OBJECT
 
 public:
-    KateScriptAction(const ScriptActionInfo &info, KateView *view);
+    KateScriptAction(const ScriptActionInfo &info, KTextEditor::ViewPrivate *view);
     virtual ~KateScriptAction();
 
 public Q_SLOTS:
     void exec();
 
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QString m_command;
     bool m_interactive;
 };
@@ -59,7 +59,7 @@ class KateScriptActionMenu : public KActionMenu
     Q_OBJECT
 
 public:
-    KateScriptActionMenu(KateView *view, const QString &text);
+    KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text);
     ~KateScriptActionMenu();
 
     void cleanup();
@@ -68,7 +68,7 @@ public Q_SLOTS:
     void repopulate();
 
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QList<QMenu *> m_menus;
     QList<QAction *> m_actions;
 };

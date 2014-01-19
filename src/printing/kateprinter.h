@@ -23,12 +23,12 @@
 #ifndef __KATE_PRINTER_H__
 #define __KATE_PRINTER_H__
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 namespace KatePrinter
 {
-bool print(KateView *doc);
-bool printPreview(KateView *doc);
+bool print(KTextEditor::ViewPrivate *doc);
+bool printPreview(KTextEditor::ViewPrivate *doc);
 };
 
 #endif

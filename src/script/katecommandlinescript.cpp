@@ -127,12 +127,12 @@ bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QS
         return false;
     }
 
-    if (setView(qobject_cast<KateView *>(view))) {
+    if (setView(qobject_cast<KTextEditor::ViewPrivate *>(view))) {
         // setView fails if the script cannot be loaded
         // balance edit stack in any case!
-        qobject_cast<KateView *>(view)->doc()->pushEditState();
+        qobject_cast<KTextEditor::ViewPrivate *>(view)->doc()->pushEditState();
         bool success = callFunction(_cmd, args, msg);
-        qobject_cast<KateView *>(view)->doc()->popEditState();
+        qobject_cast<KTextEditor::ViewPrivate *>(view)->doc()->popEditState();
         return success;
     }
 
@@ -153,7 +153,7 @@ bool KateCommandLineScript::supportsRange(const QString &)
 
 bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QString &msg)
 {
-    if (!setView(qobject_cast<KateView *>(view))) {
+    if (!setView(qobject_cast<KTextEditor::ViewPrivate *>(view))) {
         // setView fails, if the script cannot be loaded
         return false;
     }

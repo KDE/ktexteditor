@@ -91,9 +91,9 @@ ConfigPage::ConfigPage(QWidget *parent)
 ConfigPage::~ConfigPage()
 {}
 
-View::View(QWidget *parent)
-    : QWidget(parent), KXMLGUIClient()
-    , d(0)
+View::View (ViewPrivate *impl, QWidget *parent)
+    : QWidget (parent), KXMLGUIClient()
+    , d(impl)
 {}
 
 View::~View()

@@ -33,7 +33,7 @@
 #include <QStringListModel>
 
 class KConfigGroup;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateDocument;
 class KateRenderer;
 
@@ -413,7 +413,7 @@ public:
     /**
      * Construct a DocumentConfig
      */
-    explicit KateViewConfig(KateView *view);
+    explicit KateViewConfig(KTextEditor::ViewPrivate *view);
 
     /**
      * Cu DocumentConfig
@@ -618,7 +618,7 @@ private:
 
 private:
     static KateViewConfig *s_global;
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
 };
 
 class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig

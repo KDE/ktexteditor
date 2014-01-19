@@ -65,7 +65,7 @@ void KateFoldingTest::testCrash311866()
     doc.setHighlightingMode("C++");
     doc.buffer().ensureHighlighted(6);
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     view->setCursorPosition(Cursor(3, 0));
@@ -98,7 +98,7 @@ void KateFoldingTest::testBug295632()
     doc.setText(text);
 
     // view must be visible...
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
 

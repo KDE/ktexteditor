@@ -392,7 +392,7 @@ KateCompletionWidget *KateCompletionModel::widget() const
     return static_cast<KateCompletionWidget *>(QObject::parent());
 }
 
-KateView *KateCompletionModel::view() const
+KTextEditor::ViewPrivate *KateCompletionModel::view() const
 {
     return widget()->view();
 }

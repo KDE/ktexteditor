@@ -99,7 +99,7 @@ TestScriptEnv::TestScriptEnv(KateDocument *part, bool &cflag)
     m_engine->globalObject().setProperty(QLatin1String("i18ncp"), m_engine->newFunction(Kate::Script::i18ncp));
     m_engine->globalObject().setProperty(QLatin1String("i18np"), m_engine->newFunction(Kate::Script::i18np));
 
-    KateView *view = qobject_cast<KateView *>(part->widget());
+    KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(part->widget());
 
     m_viewObj = new KateViewObject(view);
     QScriptValue sv = m_engine->newQObject(m_viewObj);
@@ -138,7 +138,7 @@ TestScriptEnv::~TestScriptEnv()
 
 //BEGIN KateViewObject
 
-KateViewObject::KateViewObject(KateView *view)
+KateViewObject::KateViewObject(KTextEditor::ViewPrivate *view)
     : KateScriptView()
 {
     setView(view);
@@ -241,7 +241,7 @@ KateDocumentObject::~KateDocumentObject()
 
 //BEGIN OutputObject
 
-OutputObject::OutputObject(KateView *v, bool &cflag)
+OutputObject::OutputObject(KTextEditor::ViewPrivate *v, bool &cflag)
     : view(v), cflag(cflag)
 {
 }

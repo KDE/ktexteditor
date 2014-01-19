@@ -31,7 +31,7 @@
 #include <ktexteditor/markinterface.h>
 
 class KConfigGroup;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateDocument;
 class KateViewInternal;
 class KateViModeBase;
@@ -72,7 +72,7 @@ class KTEXTEDITOR_EXPORT KateViInputModeManager : public QObject
     Q_OBJECT
 
 public:
-    KateViInputModeManager(KateView *view, KateViewInternal *viewInternal);
+    KateViInputModeManager(KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~KateViInputModeManager();
 
     /**
@@ -337,7 +337,7 @@ private:
     ViMode m_currentViMode;
     ViMode m_previousViMode;
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateViewInternal *m_viewInternal;
     KateViKeyParser *m_keyParser;
 

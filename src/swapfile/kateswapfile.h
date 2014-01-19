@@ -34,7 +34,7 @@
 
 #include <ktexteditor/messageinterface.h>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 namespace Kate
 {

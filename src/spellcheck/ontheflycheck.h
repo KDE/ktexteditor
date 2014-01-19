@@ -68,7 +68,7 @@ public Q_SLOTS:
     void updateConfig();
     void refreshSpellCheck(const KTextEditor::Range &range = KTextEditor::Range::invalid());
 
-    void updateInstalledMovingRanges(KateView *view);
+    void updateInstalledMovingRanges(KTextEditor::ViewPrivate *view);
 
 protected:
     KateDocument *const m_document;
@@ -92,13 +92,13 @@ protected:
      **/
     void queueLineSpellCheck(const KTextEditor::Range &range, const QString &dictionary);
     void queueSpellCheckVisibleRange(const KTextEditor::Range &range);
-    void queueSpellCheckVisibleRange(KateView *view, const KTextEditor::Range &range);
+    void queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
 
     void addToSpellCheckQueue(const KTextEditor::Range &range, const QString &dictionary);
     void addToSpellCheckQueue(KTextEditor::MovingRange *range, const QString &dictionary);
 
     QTimer *m_viewRefreshTimer;
-    QPointer<KateView> m_refreshView;
+    QPointer<KTextEditor::ViewPrivate> m_refreshView;
 
     virtual void removeRangeFromEverything(KTextEditor::MovingRange *range);
     bool removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range);
@@ -127,7 +127,7 @@ protected Q_SLOTS:
     void addView(KTextEditor::Document *document, KTextEditor::View *view);
     void removeView(KTextEditor::View *view);
 
-    void restartViewRefreshTimer(KateView *view);
+    void restartViewRefreshTimer(KTextEditor::ViewPrivate *view);
     void viewRefreshTimeout();
 
     void handleModifiedRanges();

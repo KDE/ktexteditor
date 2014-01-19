@@ -134,7 +134,7 @@ public:
 
 } // anon namespace
 
-KateSearchBar::KateSearchBar(bool initAsPower, KateView *view, KateViewConfig *config)
+KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config)
     : KateViewBarWidget(true, view),
       m_view(view),
       m_config(config),
@@ -366,7 +366,7 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
     lineEdit->setPalette(background);
 }
 
-/*static*/ void KateSearchBar::selectRange(KateView *view, const KTextEditor::Range &range)
+/*static*/ void KateSearchBar::selectRange(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range)
 {
     view->setCursorPositionInternal(range.end());
     view->setSelection(range);
@@ -1181,7 +1181,7 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
     givePatternFeedback();
 }
 
-/*static*/ void KateSearchBar::nextMatchForSelection(KateView *view, SearchDirection searchDirection)
+/*static*/ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection)
 {
     const bool selected = view->selection();
     if (selected) {

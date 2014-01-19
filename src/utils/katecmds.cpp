@@ -231,7 +231,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
 {
 #define KCC_ERR(s) { errorMsg=s; return false; }
     // cast it hardcore, we know that it is really a kateview :)
-    KateView *v = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (! v) {
         KCC_ERR(i18n("Could not access view"));
@@ -539,7 +539,7 @@ bool KateCommands::ViCommands::exec(KTextEditor::View *view,
 {
     Q_UNUSED(range)
     // cast it hardcore, we know that it is really a kateview :)
-    KateView *v = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (!v) {
         msg = i18n("Could not access view");
@@ -684,7 +684,7 @@ KCompletion *KateCommands::ViCommands::completionObject(KTextEditor::View *view,
 {
     Q_UNUSED(view)
 
-    KateView *v = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (v && (cmd == QLatin1String("nn") || cmd == QLatin1String("nnoremap"))) {
         QStringList l = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMappings(KateViGlobal::NormalModeMapping);
@@ -921,7 +921,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
         return true;
     }
 
-    KateView *kateView = static_cast<KateView *>(view);
+    KTextEditor::ViewPrivate *kateView = static_cast<KTextEditor::ViewPrivate *>(view);
     KateDocument *doc = kateView->doc();
     if (!doc) {
         return false;

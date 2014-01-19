@@ -119,7 +119,7 @@ public:
      * Returns a pair where the first value is the indent amount, and the second
      * value is the alignment.
      */
-    QPair<int, int> indent(KateView *view, const KTextEditor::Cursor &position,
+    QPair<int, int> indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position,
                            QChar typedCharacter, int indentWidth);
 
 private:

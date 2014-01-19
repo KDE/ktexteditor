@@ -38,7 +38,7 @@ using KTextEditor::View;
 #define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( new \
         KateViMotion( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
 
-KateViVisualMode::KateViVisualMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal)
+KateViVisualMode::KateViVisualMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : KateViNormalMode(viInputModeManager, view, viewInternal)
 {
     m_start.setPosition(-1, -1);

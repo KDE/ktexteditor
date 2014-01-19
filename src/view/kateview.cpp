@@ -92,7 +92,7 @@
 
 //END includes
 
-void KateView::blockFix(KTextEditor::Range &range)
+void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
 {
     if (range.start().column() > range.end().column()) {
         int tmp = range.start().column();
@@ -101,8 +101,8 @@ void KateView::blockFix(KTextEditor::Range &range)
     }
 }
 
-KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
-    : KTextEditor::View(parent)
+KTextEditor::ViewPrivate::ViewPrivate(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
+    : KTextEditor::View (this, parent)
     , m_completionWidget(0)
     , m_annotationModel(0)
     , m_hasWrap(false)
@@ -257,8 +257,8 @@ KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *
     }
 
     // user interaction (scrollling) starts notification auto-hide timer
-    connect(this, SIGNAL(displayRangeChanged(KateView*)), m_topMessageWidget, SLOT(startAutoHideTimer()));
-    connect(this, SIGNAL(displayRangeChanged(KateView*)), m_bottomMessageWidget, SLOT(startAutoHideTimer()));
+    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_topMessageWidget, SLOT(startAutoHideTimer()));
+    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_bottomMessageWidget, SLOT(startAutoHideTimer()));
 
     // user interaction (cursor navigation) starts notification auto-hide timer
     connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_topMessageWidget, SLOT(startAutoHideTimer()));
@@ -272,7 +272,7 @@ KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(clearHighlights()));
 }
 
-KateView::~KateView()
+KTextEditor::ViewPrivate::~ViewPrivate()
 {
     // invalidate update signal
     m_delayedUpdateTriggered = false;
@@ -299,7 +299,7 @@ KateView::~KateView()
     KTextEditor::EditorPrivate::self()->deregisterView(this);
 }
 
-void KateView::setupConnections()
+void KTextEditor::ViewPrivate::setupConnections()
 {
     connect(m_doc, SIGNAL(undoChanged()),
             this, SLOT(slotUpdateUndo()));
@@ -314,7 +314,7 @@ void KateView::setupConnections()
             m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)));
 }
 
-void KateView::setupActions()
+void KTextEditor::ViewPrivate::setupActions()
 {
     KActionCollection *ac = actionCollection();
     QAction *a;
@@ -687,7 +687,7 @@ void KateView::setupActions()
     connect(this, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(slotSelectionChanged()));
 }
 
-void KateView::slotConfigDialog()
+void KTextEditor::ViewPrivate::slotConfigDialog()
 {
     KTextEditor::EditorPrivate::self()->configDialog(this);
 
@@ -696,7 +696,7 @@ void KateView::slotConfigDialog()
     KTextEditor::EditorPrivate::self()->writeConfig(KSharedConfig::openConfig().data());
 }
 
-void KateView::setupEditActions()
+void KTextEditor::ViewPrivate::setupEditActions()
 {
     //If you add an editing action to this
     //function make sure to include the line
@@ -974,7 +974,7 @@ void KateView::setupEditActions()
     }
 }
 
-void KateView::setupCodeFolding()
+void KTextEditor::ViewPrivate::setupCodeFolding()
 {
     //FIXME: FOLDING
     KActionCollection *ac = this->actionCollection();
@@ -1008,7 +1008,7 @@ void KateView::setupCodeFolding()
     connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandLocal()));
 }
 
-void KateView::slotFoldToplevelNodes()
+void KTextEditor::ViewPrivate::slotFoldToplevelNodes()
 {
     // FIXME: more performant implementation
     for (int line = 0; line < doc()->lines(); ++line) {
@@ -1018,17 +1018,17 @@ void KateView::slotFoldToplevelNodes()
     }
 }
 
-void KateView::slotCollapseLocal()
+void KTextEditor::ViewPrivate::slotCollapseLocal()
 {
     foldLine(cursorPosition().line());
 }
 
-void KateView::slotExpandLocal()
+void KTextEditor::ViewPrivate::slotExpandLocal()
 {
     unfoldLine(cursorPosition().line());
 }
 
-void KateView::slotCollapseLevel()
+void KTextEditor::ViewPrivate::slotCollapseLevel()
 {
     //FIXME: FOLDING
 #if 0
@@ -1046,7 +1046,7 @@ void KateView::slotCollapseLevel()
 #endif
 }
 
-void KateView::slotExpandLevel()
+void KTextEditor::ViewPrivate::slotExpandLevel()
 {
     //FIXME: FOLDING
 #if 0
@@ -1064,7 +1064,7 @@ void KateView::slotExpandLevel()
 #endif
 }
 
-void KateView::foldLine(int startLine)
+void KTextEditor::ViewPrivate::foldLine(int startLine)
 {
     // only for valid lines
     if (startLine < 0) {
@@ -1081,7 +1081,7 @@ void KateView::foldLine(int startLine)
     textFolding().newFoldingRange(doc()->buffer().computeFoldingRangeForStartLine(startLine), Kate::TextFolding::Folded);
 }
 
-void KateView::unfoldLine(int startLine)
+void KTextEditor::ViewPrivate::unfoldLine(int startLine)
 {
     // only for valid lines
     if (startLine < 0) {
@@ -1095,7 +1095,7 @@ void KateView::unfoldLine(int startLine)
     }
 }
 
-KTextEditor::View::EditMode KateView::viewEditMode() const
+KTextEditor::View::EditMode KTextEditor::ViewPrivate::viewEditMode() const
 {
     if (viInputMode()) {
         return EditViMode;
@@ -1104,7 +1104,7 @@ KTextEditor::View::EditMode KateView::viewEditMode() const
     return isOverwriteMode() ? EditOverwrite : EditInsert;
 }
 
-QString KateView::viewMode() const
+QString KTextEditor::ViewPrivate::viewMode() const
 {
     /**
      * normal two modes
@@ -1148,9 +1148,9 @@ QString KateView::viewMode() const
     return currentMode;
 }
 
-void KateView::slotGotFocus()
+void KTextEditor::ViewPrivate::slotGotFocus()
 {
-    //qCDebug(LOG_PART) << "KateView::slotGotFocus";
+    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotGotFocus";
 
     if (!viInputMode()) {
         activateEditActions();
@@ -1158,9 +1158,9 @@ void KateView::slotGotFocus()
     emit focusIn(this);
 }
 
-void KateView::slotLostFocus()
+void KTextEditor::ViewPrivate::slotLostFocus()
 {
-    //qCDebug(LOG_PART) << "KateView::slotLostFocus";
+    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotLostFocus";
 
     if (!viInputMode()) {
         deactivateEditActions();
@@ -1169,23 +1169,23 @@ void KateView::slotLostFocus()
     emit focusOut(this);
 }
 
-void KateView::setDynWrapIndicators(int mode)
+void KTextEditor::ViewPrivate::setDynWrapIndicators(int mode)
 {
     config()->setDynWordWrapIndicators(mode);
 }
 
-bool KateView::isOverwriteMode() const
+bool KTextEditor::ViewPrivate::isOverwriteMode() const
 {
     return m_doc->config()->ovr();
 }
 
-void KateView::reloadFile()
+void KTextEditor::ViewPrivate::reloadFile()
 {
     // bookmarks and cursor positions are temporarily saved by the document
     m_doc->documentReload();
 }
 
-void KateView::slotReadWriteChanged()
+void KTextEditor::ViewPrivate::slotReadWriteChanged()
 {
     if (m_toggleWriteLock) {
         m_toggleWriteLock->setChecked(! m_doc->isReadWrite());
@@ -1232,12 +1232,12 @@ void KateView::slotReadWriteChanged()
     emit viewEditModeChanged(this, viewEditMode());
 }
 
-void KateView::slotClipboardHistoryChanged()
+void KTextEditor::ViewPrivate::slotClipboardHistoryChanged()
 {
     m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
 }
 
-void KateView::slotUpdateUndo()
+void KTextEditor::ViewPrivate::slotUpdateUndo()
 {
     if (m_doc->readOnly()) {
         return;
@@ -1247,7 +1247,7 @@ void KateView::slotUpdateUndo()
     m_editRedo->setEnabled(m_doc->isReadWrite() && m_doc->redoCount() > 0);
 }
 
-bool KateView::setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth, bool calledExternally)
+bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Cursor &position, uint tabwidth, bool calledExternally)
 {
     Kate::TextLine l = m_doc->kateTextLine(position.line());
 
@@ -1277,7 +1277,7 @@ bool KateView::setCursorPositionInternal(const KTextEditor::Cursor &position, ui
     return true;
 }
 
-void KateView::toggleInsert()
+void KTextEditor::ViewPrivate::toggleInsert()
 {
     m_doc->config()->setOvr(!m_doc->config()->ovr());
     m_toggleInsert->setChecked(isOverwriteMode());
@@ -1286,26 +1286,26 @@ void KateView::toggleInsert()
     emit viewEditModeChanged(this, viewEditMode());
 }
 
-void KateView::slotSaveCanceled(const QString &error)
+void KTextEditor::ViewPrivate::slotSaveCanceled(const QString &error)
 {
     if (!error.isEmpty()) { // happens when canceling a job
         KMessageBox::error(this, error);
     }
 }
 
-void KateView::gotoLine()
+void KTextEditor::ViewPrivate::gotoLine()
 {
     gotoBar()->updateData();
     bottomViewBar()->showBarWidget(gotoBar());
 }
 
-void KateView::changeDictionary()
+void KTextEditor::ViewPrivate::changeDictionary()
 {
     dictionaryBar()->updateData();
     bottomViewBar()->showBarWidget(dictionaryBar());
 }
 
-void KateView::joinLines()
+void KTextEditor::ViewPrivate::joinLines()
 {
     int first = selectionRange().start().line();
     int last = selectionRange().end().line();
@@ -1317,7 +1317,7 @@ void KateView::joinLines()
     m_doc->joinLines(first, last);
 }
 
-void KateView::readSessionConfig(const KConfigGroup &config)
+void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config)
 {
     // cursor position
     setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
@@ -1330,7 +1330,7 @@ void KateView::readSessionConfig(const KConfigGroup &config)
     getViInputModeManager()->readSessionConfig(config);
 }
 
-void KateView::writeSessionConfig(KConfigGroup &config)
+void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config)
 {
     // cursor position
     config.writeEntry("CursorLine", m_viewInternal->m_cursor.line());
@@ -1345,12 +1345,12 @@ void KateView::writeSessionConfig(KConfigGroup &config)
     getViInputModeManager()->writeSessionConfig(config);
 }
 
-int KateView::getEol() const
+int KTextEditor::ViewPrivate::getEol() const
 {
     return m_doc->config()->eol();
 }
 
-void KateView::setEol(int eol)
+void KTextEditor::ViewPrivate::setEol(int eol)
 {
     if (!doc()->isReadWrite()) {
         return;
@@ -1366,7 +1366,7 @@ void KateView::setEol(int eol)
     }
 }
 
-void KateView::setAddBom(bool enabled)
+void KTextEditor::ViewPrivate::setAddBom(bool enabled)
 {
     if (!doc()->isReadWrite()) {
         return;
@@ -1380,143 +1380,143 @@ void KateView::setAddBom(bool enabled)
     m_doc->bomSetByUser();
 }
 
-void KateView::setIconBorder(bool enable)
+void KTextEditor::ViewPrivate::setIconBorder(bool enable)
 {
     config()->setIconBar(enable);
 }
 
-void KateView::toggleIconBorder()
+void KTextEditor::ViewPrivate::toggleIconBorder()
 {
     config()->setIconBar(!config()->iconBar());
 }
 
-void KateView::setLineNumbersOn(bool enable)
+void KTextEditor::ViewPrivate::setLineNumbersOn(bool enable)
 {
     config()->setLineNumbers(enable);
 }
 
-void KateView::toggleLineNumbersOn()
+void KTextEditor::ViewPrivate::toggleLineNumbersOn()
 {
     config()->setLineNumbers(!config()->lineNumbers());
 }
 
-void KateView::setScrollBarMarks(bool enable)
+void KTextEditor::ViewPrivate::setScrollBarMarks(bool enable)
 {
     config()->setScrollBarMarks(enable);
 }
 
-void KateView::toggleScrollBarMarks()
+void KTextEditor::ViewPrivate::toggleScrollBarMarks()
 {
     config()->setScrollBarMarks(!config()->scrollBarMarks());
 }
 
-void KateView::setScrollBarMiniMap(bool enable)
+void KTextEditor::ViewPrivate::setScrollBarMiniMap(bool enable)
 {
     config()->setScrollBarMiniMap(enable);
 }
 
-void KateView::toggleScrollBarMiniMap()
+void KTextEditor::ViewPrivate::toggleScrollBarMiniMap()
 {
     config()->setScrollBarMiniMap(!config()->scrollBarMiniMap());
 }
 
-void KateView::setScrollBarMiniMapAll(bool enable)
+void KTextEditor::ViewPrivate::setScrollBarMiniMapAll(bool enable)
 {
     config()->setScrollBarMiniMapAll(enable);
 }
 
-void KateView::toggleScrollBarMiniMapAll()
+void KTextEditor::ViewPrivate::toggleScrollBarMiniMapAll()
 {
     config()->setScrollBarMiniMapAll(!config()->scrollBarMiniMapAll());
 }
 
-void KateView::setScrollBarMiniMapWidth(int width)
+void KTextEditor::ViewPrivate::setScrollBarMiniMapWidth(int width)
 {
     config()->setScrollBarMiniMapWidth(width);
 }
 
-void KateView::toggleDynWordWrap()
+void KTextEditor::ViewPrivate::toggleDynWordWrap()
 {
     config()->setDynWordWrap(!config()->dynWordWrap());
 }
 
-void KateView::toggleWWMarker()
+void KTextEditor::ViewPrivate::toggleWWMarker()
 {
     m_renderer->config()->setWordWrapMarker(!m_renderer->config()->wordWrapMarker());
 }
 
-void KateView::toggleNPSpaces()
+void KTextEditor::ViewPrivate::toggleNPSpaces()
 {
     m_renderer->setShowNonPrintableSpaces(!m_renderer->showNonPrintableSpaces());
     m_viewInternal->update(); // force redraw
 }
 
-void KateView::setFoldingMarkersOn(bool enable)
+void KTextEditor::ViewPrivate::setFoldingMarkersOn(bool enable)
 {
     config()->setFoldingBar(enable);
 }
 
-void KateView::toggleFoldingMarkers()
+void KTextEditor::ViewPrivate::toggleFoldingMarkers()
 {
     config()->setFoldingBar(!config()->foldingBar());
 }
 
-bool KateView::iconBorder()
+bool KTextEditor::ViewPrivate::iconBorder()
 {
     return m_viewInternal->m_leftBorder->iconBorderOn();
 }
 
-bool KateView::lineNumbersOn()
+bool KTextEditor::ViewPrivate::lineNumbersOn()
 {
     return m_viewInternal->m_leftBorder->lineNumbersOn();
 }
 
-bool KateView::scrollBarMarks()
+bool KTextEditor::ViewPrivate::scrollBarMarks()
 {
     return m_viewInternal->m_lineScroll->showMarks();
 }
 
-bool KateView::scrollBarMiniMap()
+bool KTextEditor::ViewPrivate::scrollBarMiniMap()
 {
     return m_viewInternal->m_lineScroll->showMiniMap();
 }
 
-int KateView::dynWrapIndicators()
+int KTextEditor::ViewPrivate::dynWrapIndicators()
 {
     return m_viewInternal->m_leftBorder->dynWrapIndicators();
 }
 
-bool KateView::foldingMarkersOn()
+bool KTextEditor::ViewPrivate::foldingMarkersOn()
 {
     return m_viewInternal->m_leftBorder->foldingMarkersOn();
 }
 
-void KateView::toggleWriteLock()
+void KTextEditor::ViewPrivate::toggleWriteLock()
 {
     m_doc->setReadWrite(! m_doc->isReadWrite());
 }
 
-void KateView::enableTextHints(int timeout)
+void KTextEditor::ViewPrivate::enableTextHints(int timeout)
 {
     m_viewInternal->enableTextHints(timeout);
 }
 
-void KateView::disableTextHints()
+void KTextEditor::ViewPrivate::disableTextHints()
 {
     m_viewInternal->disableTextHints();
 }
 
-bool KateView::viInputMode() const
+bool KTextEditor::ViewPrivate::viInputMode() const
 {
     return m_viewInternal->m_viInputMode;
 }
 
-bool KateView::viInputModeStealKeys() const
+bool KTextEditor::ViewPrivate::viInputModeStealKeys() const
 {
     return m_viewInternal->m_viInputModeStealKeys;
 }
 
-void KateView::toggleViInputMode()
+void KTextEditor::ViewPrivate::toggleViInputMode()
 {
     config()->setViInputMode(!config()->viInputMode());
 
@@ -1531,42 +1531,42 @@ void KateView::toggleViInputMode()
     emit viewEditModeChanged(this, viewEditMode());
 }
 
-void KateView::showViModeEmulatedCommandBar()
+void KTextEditor::ViewPrivate::showViModeEmulatedCommandBar()
 {
     bottomViewBar()->addBarWidget(viModeEmulatedCommandBar());
     bottomViewBar()->showBarWidget(viModeEmulatedCommandBar());
 }
 
-void KateView::updateViModeBarMode()
+void KTextEditor::ViewPrivate::updateViModeBarMode()
 {
     // view mode changed => status bar in container apps might change!
     emit viewModeChanged(this);
     emit viewEditModeChanged(this, viewEditMode());
 }
 
-void KateView::updateViModeBarCmd()
+void KTextEditor::ViewPrivate::updateViModeBarCmd()
 {
     // view mode changed => status bar in container apps might change!
     emit viewModeChanged(this);
     emit viewEditModeChanged(this, viewEditMode());
 }
 
-ViMode KateView::getCurrentViMode() const
+ViMode KTextEditor::ViewPrivate::getCurrentViMode() const
 {
     return m_viewInternal->getCurrentViMode();
 }
 
-KateViInputModeManager *KateView::getViInputModeManager()
+KateViInputModeManager *KTextEditor::ViewPrivate::getViInputModeManager()
 {
     return m_viewInternal->getViInputModeManager();
 }
 
-KateViInputModeManager *KateView::resetViInputModeManager()
+KateViInputModeManager *KTextEditor::ViewPrivate::resetViInputModeManager()
 {
     return m_viewInternal->resetViInputModeManager();
 }
 
-void KateView::find()
+void KTextEditor::ViewPrivate::find()
 {
     if (viInputMode()) {
         showViModeEmulatedCommandBar();
@@ -1581,7 +1581,7 @@ void KateView::find()
     }
 }
 
-void KateView::findSelectedForwards()
+void KTextEditor::ViewPrivate::findSelectedForwards()
 {
     if (viInputMode()) {
         getViInputModeManager()->findNext();
@@ -1590,7 +1590,7 @@ void KateView::findSelectedForwards()
     }
 }
 
-void KateView::findSelectedBackwards()
+void KTextEditor::ViewPrivate::findSelectedBackwards()
 {
     if (viInputMode()) {
         getViInputModeManager()->findPrevious();
@@ -1599,7 +1599,7 @@ void KateView::findSelectedBackwards()
     }
 }
 
-void KateView::replace()
+void KTextEditor::ViewPrivate::replace()
 {
     if (viInputMode()) {
         showViModeEmulatedCommandBar();
@@ -1614,7 +1614,7 @@ void KateView::replace()
     }
 }
 
-void KateView::findNext()
+void KTextEditor::ViewPrivate::findNext()
 {
     if (viInputMode()) {
         getViInputModeManager()->findNext();
@@ -1623,7 +1623,7 @@ void KateView::findNext()
     }
 }
 
-void KateView::findPrevious()
+void KTextEditor::ViewPrivate::findPrevious()
 {
     if (viInputMode()) {
         getViInputModeManager()->findPrevious();
@@ -1632,7 +1632,7 @@ void KateView::findPrevious()
     }
 }
 
-void KateView::slotSelectionChanged()
+void KTextEditor::ViewPrivate::slotSelectionChanged()
 {
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
     m_deSelect->setEnabled(selection());
@@ -1650,7 +1650,7 @@ void KateView::slotSelectionChanged()
     selectionChangedForHighlights ();
 }
 
-void KateView::switchToCmdLine()
+void KTextEditor::ViewPrivate::switchToCmdLine()
 {
     if (viInputMode()) {
         showViModeEmulatedCommandBar();
@@ -1667,7 +1667,7 @@ void KateView::switchToCmdLine()
     }
 }
 
-void KateView::switchToConsole()
+void KTextEditor::ViewPrivate::switchToConsole()
 {
     if (!m_console) {
         m_console = new KateScriptConsole(this, bottomViewBar());
@@ -1677,12 +1677,12 @@ void KateView::switchToConsole()
     m_console->setFocus();
 }
 
-KateRenderer *KateView::renderer()
+KateRenderer *KTextEditor::ViewPrivate::renderer()
 {
     return m_renderer;
 }
 
-void KateView::updateConfig()
+void KTextEditor::ViewPrivate::updateConfig()
 {
     if (m_startingUp) {
         return;
@@ -1765,7 +1765,7 @@ void KateView::updateConfig()
     emit configChanged();
 }
 
-void KateView::updateDocumentConfig()
+void KTextEditor::ViewPrivate::updateDocumentConfig()
 {
     if (m_startingUp) {
         return;
@@ -1792,7 +1792,7 @@ void KateView::updateDocumentConfig()
     updateView(true);
 }
 
-void KateView::updateRendererConfig()
+void KTextEditor::ViewPrivate::updateRendererConfig()
 {
     if (m_startingUp) {
         return;
@@ -1823,7 +1823,7 @@ void KateView::updateRendererConfig()
     emit configChanged();
 }
 
-void KateView::updateFoldingConfig()
+void KTextEditor::ViewPrivate::updateFoldingConfig()
 {
     // folding bar
     m_viewInternal->m_leftBorder->setFoldingMarkersOn(config()->foldingBar());
@@ -1844,7 +1844,7 @@ void KateView::updateFoldingConfig()
 #endif
 }
 
-void KateView::ensureCursorColumnValid()
+void KTextEditor::ViewPrivate::ensureCursorColumnValid()
 {
     KTextEditor::Cursor c = m_viewInternal->getCursor();
 
@@ -1859,54 +1859,54 @@ void KateView::ensureCursorColumnValid()
 }
 
 //BEGIN EDIT STUFF
-void KateView::editStart()
+void KTextEditor::ViewPrivate::editStart()
 {
     m_viewInternal->editStart();
 }
 
-void KateView::editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom)
+void KTextEditor::ViewPrivate::editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom)
 {
     m_viewInternal->editEnd(editTagLineStart, editTagLineEnd, tagFrom);
 }
 
-void KateView::editSetCursor(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::editSetCursor(const KTextEditor::Cursor &cursor)
 {
     m_viewInternal->editSetCursor(cursor);
 }
 //END
 
 //BEGIN TAG & CLEAR
-bool KateView::tagLine(const KTextEditor::Cursor &virtualCursor)
+bool KTextEditor::ViewPrivate::tagLine(const KTextEditor::Cursor &virtualCursor)
 {
     return m_viewInternal->tagLine(virtualCursor);
 }
 
-bool KateView::tagRange(const KTextEditor::Range &range, bool realLines)
+bool KTextEditor::ViewPrivate::tagRange(const KTextEditor::Range &range, bool realLines)
 {
     return m_viewInternal->tagRange(range, realLines);
 }
 
-bool KateView::tagLines(int start, int end, bool realLines)
+bool KTextEditor::ViewPrivate::tagLines(int start, int end, bool realLines)
 {
     return m_viewInternal->tagLines(start, end, realLines);
 }
 
-bool KateView::tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors)
+bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Cursor start, KTextEditor::Cursor end, bool realCursors)
 {
     return m_viewInternal->tagLines(start, end, realCursors);
 }
 
-void KateView::tagAll()
+void KTextEditor::ViewPrivate::tagAll()
 {
     m_viewInternal->tagAll();
 }
 
-void KateView::clear()
+void KTextEditor::ViewPrivate::clear()
 {
     m_viewInternal->clear();
 }
 
-void KateView::repaintText(bool paintOnlyDirty)
+void KTextEditor::ViewPrivate::repaintText(bool paintOnlyDirty)
 {
     if (paintOnlyDirty) {
         m_viewInternal->updateDirty();
@@ -1915,9 +1915,9 @@ void KateView::repaintText(bool paintOnlyDirty)
     }
 }
 
-void KateView::updateView(bool changed)
+void KTextEditor::ViewPrivate::updateView(bool changed)
 {
-    //qCDebug(LOG_PART) << "KateView::updateView";
+    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::updateView";
 
     m_viewInternal->updateView(changed);
     m_viewInternal->m_leftBorder->update();
@@ -1925,7 +1925,7 @@ void KateView::updateView(bool changed)
 
 //END
 
-void KateView::slotHlChanged()
+void KTextEditor::ViewPrivate::slotHlChanged()
 {
     KateHighlighting *hl = m_doc->highlight();
     bool ok(!hl->getCommentStart(0).isEmpty() || !hl->getCommentSingleLineStart(0).isEmpty());
@@ -1946,19 +1946,19 @@ void KateView::slotHlChanged()
     updateFoldingConfig();
 }
 
-int KateView::virtualCursorColumn() const
+int KTextEditor::ViewPrivate::virtualCursorColumn() const
 {
     return m_doc->toVirtualColumn(m_viewInternal->getCursor());
 }
 
-void KateView::notifyMousePositionChanged(const KTextEditor::Cursor &newPosition)
+void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cursor &newPosition)
 {
     emit mousePositionChanged(this, newPosition);
 }
 
 //BEGIN KTextEditor::SelectionInterface stuff
 
-bool KateView::setSelection(const KTextEditor::Range &selection)
+bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
 {
     /**
      * anything to do?
@@ -1994,12 +1994,12 @@ bool KateView::setSelection(const KTextEditor::Range &selection)
     return true;
 }
 
-bool KateView::clearSelection()
+bool KTextEditor::ViewPrivate::clearSelection()
 {
     return clearSelection(true);
 }
 
-bool KateView::clearSelection(bool redraw, bool finishedChangingSelection)
+bool KTextEditor::ViewPrivate::clearSelection(bool redraw, bool finishedChangingSelection)
 {
     /**
      * no selection, nothing to do...
@@ -2039,7 +2039,7 @@ bool KateView::clearSelection(bool redraw, bool finishedChangingSelection)
     return true;
 }
 
-bool KateView::selection() const
+bool KTextEditor::ViewPrivate::selection() const
 {
     if (!wrapCursor()) {
         return m_selection != KTextEditor::Range::invalid();
@@ -2048,12 +2048,12 @@ bool KateView::selection() const
     }
 }
 
-QString KateView::selectionText() const
+QString KTextEditor::ViewPrivate::selectionText() const
 {
     return m_doc->text(m_selection, blockSelect);
 }
 
-bool KateView::removeSelectedText()
+bool KTextEditor::ViewPrivate::removeSelectedText()
 {
     if (!selection()) {
         return false;
@@ -2083,7 +2083,7 @@ bool KateView::removeSelectedText()
     return true;
 }
 
-bool KateView::selectAll()
+bool KTextEditor::ViewPrivate::selectAll()
 {
     setBlockSelection(false);
     top();
@@ -2091,7 +2091,7 @@ bool KateView::selectAll()
     return true;
 }
 
-bool KateView::cursorSelected(const KTextEditor::Cursor &cursor)
+bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor &cursor)
 {
     KTextEditor::Cursor ret = cursor;
     if ((!blockSelect) && (ret.column() < 0)) {
@@ -2106,29 +2106,29 @@ bool KateView::cursorSelected(const KTextEditor::Cursor &cursor)
     }
 }
 
-bool KateView::lineSelected(int line)
+bool KTextEditor::ViewPrivate::lineSelected(int line)
 {
     return !blockSelect && m_selection.toRange().containsLine(line);
 }
 
-bool KateView::lineEndSelected(const KTextEditor::Cursor &lineEndPos)
+bool KTextEditor::ViewPrivate::lineEndSelected(const KTextEditor::Cursor &lineEndPos)
 {
     return (!blockSelect)
            && (lineEndPos.line() > m_selection.start().line() || (lineEndPos.line() == m_selection.start().line() && (m_selection.start().column() < lineEndPos.column() || lineEndPos.column() == -1)))
            && (lineEndPos.line() < m_selection.end().line() || (lineEndPos.line() == m_selection.end().line() && (lineEndPos.column() <= m_selection.end().column() && lineEndPos.column() != -1)));
 }
 
-bool KateView::lineHasSelected(int line)
+bool KTextEditor::ViewPrivate::lineHasSelected(int line)
 {
     return selection() && m_selection.toRange().containsLine(line);
 }
 
-bool KateView::lineIsSelection(int line)
+bool KTextEditor::ViewPrivate::lineIsSelection(int line)
 {
     return (line == m_selection.start().line() && line == m_selection.end().line());
 }
 
-void KateView::tagSelection(const KTextEditor::Range &oldSelection)
+void KTextEditor::ViewPrivate::tagSelection(const KTextEditor::Range &oldSelection)
 {
     if (selection()) {
         if (oldSelection.start().line() == -1) {
@@ -2166,12 +2166,12 @@ void KateView::tagSelection(const KTextEditor::Range &oldSelection)
     }
 }
 
-void KateView::selectWord(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::selectWord(const KTextEditor::Cursor &cursor)
 {
     setSelection(m_doc->wordRangeAt(cursor));
 }
 
-void KateView::selectLine(const KTextEditor::Cursor &cursor)
+void KTextEditor::ViewPrivate::selectLine(const KTextEditor::Cursor &cursor)
 {
     int line = cursor.line();
     if (line + 1 >= m_doc->lines()) {
@@ -2181,7 +2181,7 @@ void KateView::selectLine(const KTextEditor::Cursor &cursor)
     }
 }
 
-void KateView::cut()
+void KTextEditor::ViewPrivate::cut()
 {
     if (!selection() && !m_config->smartCopyCut()) {
         return;
@@ -2194,7 +2194,7 @@ void KateView::cut()
     removeSelectedText();
 }
 
-void KateView::copy() const
+void KTextEditor::ViewPrivate::copy() const
 {
     QString text = selectionText();
 
@@ -2210,7 +2210,7 @@ void KateView::copy() const
     KTextEditor::EditorPrivate::self()->copyToClipboard(text);
 }
 
-void KateView::applyWordWrap()
+void KTextEditor::ViewPrivate::applyWordWrap()
 {
     if (selection()) {
         m_doc->wrapText(selectionRange().start().line(), selectionRange().end().line());
@@ -2223,12 +2223,12 @@ void KateView::applyWordWrap()
 
 //BEGIN KTextEditor::BlockSelectionInterface stuff
 
-bool KateView::blockSelection() const
+bool KTextEditor::ViewPrivate::blockSelection() const
 {
     return blockSelect;
 }
 
-bool KateView::setBlockSelection(bool on)
+bool KTextEditor::ViewPrivate::setBlockSelection(bool on)
 {
     if (on != blockSelect) {
         blockSelect = on;
@@ -2257,32 +2257,32 @@ bool KateView::setBlockSelection(bool on)
     return true;
 }
 
-bool KateView::toggleBlockSelection()
+bool KTextEditor::ViewPrivate::toggleBlockSelection()
 {
     m_toggleBlockSelection->setChecked(!blockSelect);
     return setBlockSelection(!blockSelect);
 }
 
-bool KateView::wrapCursor() const
+bool KTextEditor::ViewPrivate::wrapCursor() const
 {
     return !blockSelection();
 }
 
 //END
 
-void KateView::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text)
+void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text)
 {
     emit textInserted(view, position, text);
 }
 
-bool KateView::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
+bool KTextEditor::ViewPrivate::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
         const QString &templateString,
         const QMap<QString, QString> &initialValues)
 {
     return insertTemplateTextImplementation(c, templateString, initialValues, 0);
 }
 
-bool KateView::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
+bool KTextEditor::ViewPrivate::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
         const QString &templateString,
         const QMap<QString, QString> &initialValues,
         KTextEditor::TemplateScript *templateScript)
@@ -2313,97 +2313,97 @@ bool KateView::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
     return true;
 }
 
-bool KateView::tagLines(KTextEditor::Range range, bool realRange)
+bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Range range, bool realRange)
 {
     return tagLines(range.start(), range.end(), realRange);
 }
 
-void KateView::deactivateEditActions()
+void KTextEditor::ViewPrivate::deactivateEditActions()
 {
     foreach (QAction *action, m_editActions) {
         action->setEnabled(false);
     }
 }
 
-void KateView::activateEditActions()
+void KTextEditor::ViewPrivate::activateEditActions()
 {
     foreach (QAction *action, m_editActions) {
         action->setEnabled(true);
     }
 }
 
-bool KateView::mouseTrackingEnabled() const
+bool KTextEditor::ViewPrivate::mouseTrackingEnabled() const
 {
     // FIXME support
     return true;
 }
 
-bool KateView::setMouseTrackingEnabled(bool)
+bool KTextEditor::ViewPrivate::setMouseTrackingEnabled(bool)
 {
     // FIXME support
     return true;
 }
 
-bool KateView::isCompletionActive() const
+bool KTextEditor::ViewPrivate::isCompletionActive() const
 {
     return completionWidget()->isCompletionActive();
 }
 
-KateCompletionWidget *KateView::completionWidget() const
+KateCompletionWidget *KTextEditor::ViewPrivate::completionWidget() const
 {
     if (!m_completionWidget) {
-        m_completionWidget = new KateCompletionWidget(const_cast<KateView *>(this));
+        m_completionWidget = new KateCompletionWidget(const_cast<KTextEditor::ViewPrivate *>(this));
     }
 
     return m_completionWidget;
 }
 
-void KateView::startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model)
+void KTextEditor::ViewPrivate::startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model)
 {
     completionWidget()->startCompletion(word, model);
 }
 
-void KateView::abortCompletion()
+void KTextEditor::ViewPrivate::abortCompletion()
 {
     completionWidget()->abortCompletion();
 }
 
-void KateView::forceCompletion()
+void KTextEditor::ViewPrivate::forceCompletion()
 {
     completionWidget()->execute();
 }
 
-void KateView::registerCompletionModel(KTextEditor::CodeCompletionModel *model)
+void KTextEditor::ViewPrivate::registerCompletionModel(KTextEditor::CodeCompletionModel *model)
 {
     completionWidget()->registerCompletionModel(model);
 }
 
-void KateView::unregisterCompletionModel(KTextEditor::CodeCompletionModel *model)
+void KTextEditor::ViewPrivate::unregisterCompletionModel(KTextEditor::CodeCompletionModel *model)
 {
     completionWidget()->unregisterCompletionModel(model);
 }
 
-bool KateView::isAutomaticInvocationEnabled() const
+bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const
 {
     return m_config->automaticCompletionInvocation();
 }
 
-void KateView::setAutomaticInvocationEnabled(bool enabled)
+void KTextEditor::ViewPrivate::setAutomaticInvocationEnabled(bool enabled)
 {
     config()->setAutomaticCompletionInvocation(enabled);
 }
 
-void KateView::sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
+void KTextEditor::ViewPrivate::sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
 {
     emit completionExecuted(this, position, model, index);
 }
 
-void KateView::sendCompletionAborted()
+void KTextEditor::ViewPrivate::sendCompletionAborted()
 {
     emit completionAborted(this);
 }
 
-void KateView::paste(const QString *textToPaste)
+void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 {
     const bool completionEnabled = isAutomaticInvocationEnabled();
     if (completionEnabled) {
@@ -2417,52 +2417,52 @@ void KateView::paste(const QString *textToPaste)
     }
 }
 
-void KateView::setCaretStyle(KateRenderer::caretStyles style, bool repaint)
+void KTextEditor::ViewPrivate::setCaretStyle(KateRenderer::caretStyles style, bool repaint)
 {
     m_viewInternal->setCaretStyle(style, repaint);
 }
 
-bool KateView::setCursorPosition(KTextEditor::Cursor position)
+bool KTextEditor::ViewPrivate::setCursorPosition(KTextEditor::Cursor position)
 {
     return setCursorPositionInternal(position, 1, true);
 }
 
-KTextEditor::Cursor KateView::cursorPosition() const
+KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPosition() const
 {
     return m_viewInternal->getCursor();
 }
 
-KTextEditor::Cursor KateView::cursorPositionVirtual() const
+KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPositionVirtual() const
 {
     return KTextEditor::Cursor(m_viewInternal->getCursor().line(), virtualCursorColumn());
 }
 
-QPoint KateView::cursorToCoordinate(const KTextEditor::Cursor &cursor) const
+QPoint KTextEditor::ViewPrivate::cursorToCoordinate(const KTextEditor::Cursor &cursor) const
 {
     return m_viewInternal->cursorToCoordinate(cursor);
 }
 
-KTextEditor::Cursor KateView::coordinatesToCursor(const QPoint &coords) const
+KTextEditor::Cursor KTextEditor::ViewPrivate::coordinatesToCursor(const QPoint &coords) const
 {
     return m_viewInternal->coordinatesToCursor(coords);
 }
 
-QPoint KateView::cursorPositionCoordinates() const
+QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const
 {
     return m_viewInternal->cursorCoordinates();
 }
 
-bool KateView::setCursorPositionVisual(const KTextEditor::Cursor &position)
+bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor &position)
 {
     return setCursorPositionInternal(position, m_doc->config()->tabWidth(), true);
 }
 
-QString KateView::currentTextLine()
+QString KTextEditor::ViewPrivate::currentTextLine()
 {
     return m_doc->line(cursorPosition().line());
 }
 
-QString KateView::searchPattern() const
+QString KTextEditor::ViewPrivate::searchPattern() const
 {
     if (hasSearchBar()) {
         return m_searchBar->searchPattern();
@@ -2471,7 +2471,7 @@ QString KateView::searchPattern() const
     }
 }
 
-QString KateView::replacementPattern() const
+QString KTextEditor::ViewPrivate::replacementPattern() const
 {
     if (hasSearchBar()) {
         return m_searchBar->replacementPattern();
@@ -2480,38 +2480,38 @@ QString KateView::replacementPattern() const
     }
 }
 
-void KateView::setSearchPattern(const QString &searchPattern)
+void KTextEditor::ViewPrivate::setSearchPattern(const QString &searchPattern)
 {
     searchBar()->setSearchPattern(searchPattern);
 }
 
-void KateView::setReplacementPattern(const QString &replacementPattern)
+void KTextEditor::ViewPrivate::setReplacementPattern(const QString &replacementPattern)
 {
     searchBar()->setReplacementPattern(replacementPattern);
 }
 
-void KateView::indent()
+void KTextEditor::ViewPrivate::indent()
 {
     KTextEditor::Cursor c(cursorPosition().line(), 0);
     KTextEditor::Range r = selection() ? selectionRange() : KTextEditor::Range(c, c);
     m_doc->indent(r, 1);
 }
 
-void KateView::unIndent()
+void KTextEditor::ViewPrivate::unIndent()
 {
     KTextEditor::Cursor c(cursorPosition().line(), 0);
     KTextEditor::Range r = selection() ? selectionRange() : KTextEditor::Range(c, c);
     m_doc->indent(r, -1);
 }
 
-void KateView::cleanIndent()
+void KTextEditor::ViewPrivate::cleanIndent()
 {
     KTextEditor::Cursor c(cursorPosition().line(), 0);
     KTextEditor::Range r = selection() ? selectionRange() : KTextEditor::Range(c, c);
     m_doc->indent(r, 0);
 }
 
-void KateView::align()
+void KTextEditor::ViewPrivate::align()
 {
     // no selection: align current line; selection: use selection range
     const int line = cursorPosition().line();
@@ -2523,31 +2523,31 @@ void KateView::align()
     m_doc->align(this, alignRange);
 }
 
-void KateView::comment()
+void KTextEditor::ViewPrivate::comment()
 {
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandLeft | Kate::TextRange::ExpandRight);
     m_doc->comment(this, cursorPosition().line(), cursorPosition().column(), 1);
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandRight);
 }
 
-void KateView::uncomment()
+void KTextEditor::ViewPrivate::uncomment()
 {
     m_doc->comment(this, cursorPosition().line(), cursorPosition().column(), -1);
 }
 
-void KateView::toggleComment()
+void KTextEditor::ViewPrivate::toggleComment()
 {
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandLeft | Kate::TextRange::ExpandRight);
     m_doc->comment(this, cursorPosition().line(), cursorPosition().column(), 0);
     m_selection.setInsertBehaviors(Kate::TextRange::ExpandRight);
 }
 
-void KateView::uppercase()
+void KTextEditor::ViewPrivate::uppercase()
 {
     m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Uppercase);
 }
 
-void KateView::killLine()
+void KTextEditor::ViewPrivate::killLine()
 {
     if (m_selection.isEmpty()) {
         m_doc->removeLine(cursorPosition().line());
@@ -2560,12 +2560,12 @@ void KateView::killLine()
     }
 }
 
-void KateView::lowercase()
+void KTextEditor::ViewPrivate::lowercase()
 {
     m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Lowercase);
 }
 
-void KateView::capitalize()
+void KTextEditor::ViewPrivate::capitalize()
 {
     m_doc->editStart();
     m_doc->transform(this, m_viewInternal->m_cursor, KateDocument::Lowercase);
@@ -2573,47 +2573,47 @@ void KateView::capitalize()
     m_doc->editEnd();
 }
 
-void KateView::keyReturn()
+void KTextEditor::ViewPrivate::keyReturn()
 {
     m_viewInternal->doReturn();
 }
 
-void KateView::smartNewline()
+void KTextEditor::ViewPrivate::smartNewline()
 {
     m_viewInternal->doSmartNewline();
 }
 
-void KateView::backspace()
+void KTextEditor::ViewPrivate::backspace()
 {
     m_viewInternal->doBackspace();
 }
 
-void KateView::insertTab()
+void KTextEditor::ViewPrivate::insertTab()
 {
     m_viewInternal->doTabulator();
 }
 
-void KateView::deleteWordLeft()
+void KTextEditor::ViewPrivate::deleteWordLeft()
 {
     m_viewInternal->doDeletePrevWord();
 }
 
-void KateView::keyDelete()
+void KTextEditor::ViewPrivate::keyDelete()
 {
     m_viewInternal->doDelete();
 }
 
-void KateView::deleteWordRight()
+void KTextEditor::ViewPrivate::deleteWordRight()
 {
     m_viewInternal->doDeleteNextWord();
 }
 
-void KateView::transpose()
+void KTextEditor::ViewPrivate::transpose()
 {
     m_viewInternal->doTranspose();
 }
 
-void KateView::cursorLeft()
+void KTextEditor::ViewPrivate::cursorLeft()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorNextChar();
@@ -2622,7 +2622,7 @@ void KateView::cursorLeft()
     }
 }
 
-void KateView::shiftCursorLeft()
+void KTextEditor::ViewPrivate::shiftCursorLeft()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorNextChar(true);
@@ -2631,7 +2631,7 @@ void KateView::shiftCursorLeft()
     }
 }
 
-void KateView::cursorRight()
+void KTextEditor::ViewPrivate::cursorRight()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorPrevChar();
@@ -2640,7 +2640,7 @@ void KateView::cursorRight()
     }
 }
 
-void KateView::shiftCursorRight()
+void KTextEditor::ViewPrivate::shiftCursorRight()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorPrevChar(true);
@@ -2649,7 +2649,7 @@ void KateView::shiftCursorRight()
     }
 }
 
-void KateView::wordLeft()
+void KTextEditor::ViewPrivate::wordLeft()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->wordNext();
@@ -2658,7 +2658,7 @@ void KateView::wordLeft()
     }
 }
 
-void KateView::shiftWordLeft()
+void KTextEditor::ViewPrivate::shiftWordLeft()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->wordNext(true);
@@ -2667,7 +2667,7 @@ void KateView::shiftWordLeft()
     }
 }
 
-void KateView::wordRight()
+void KTextEditor::ViewPrivate::wordRight()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->wordPrev();
@@ -2676,7 +2676,7 @@ void KateView::wordRight()
     }
 }
 
-void KateView::shiftWordRight()
+void KTextEditor::ViewPrivate::shiftWordRight()
 {
     if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
         m_viewInternal->wordPrev(true);
@@ -2685,137 +2685,137 @@ void KateView::shiftWordRight()
     }
 }
 
-void KateView::home()
+void KTextEditor::ViewPrivate::home()
 {
     m_viewInternal->home();
 }
 
-void KateView::shiftHome()
+void KTextEditor::ViewPrivate::shiftHome()
 {
     m_viewInternal->home(true);
 }
 
-void KateView::end()
+void KTextEditor::ViewPrivate::end()
 {
     m_viewInternal->end();
 }
 
-void KateView::shiftEnd()
+void KTextEditor::ViewPrivate::shiftEnd()
 {
     m_viewInternal->end(true);
 }
 
-void KateView::up()
+void KTextEditor::ViewPrivate::up()
 {
     m_viewInternal->cursorUp();
 }
 
-void KateView::shiftUp()
+void KTextEditor::ViewPrivate::shiftUp()
 {
     m_viewInternal->cursorUp(true);
 }
 
-void KateView::down()
+void KTextEditor::ViewPrivate::down()
 {
     m_viewInternal->cursorDown();
 }
 
-void KateView::shiftDown()
+void KTextEditor::ViewPrivate::shiftDown()
 {
     m_viewInternal->cursorDown(true);
 }
 
-void KateView::scrollUp()
+void KTextEditor::ViewPrivate::scrollUp()
 {
     m_viewInternal->scrollUp();
 }
 
-void KateView::scrollDown()
+void KTextEditor::ViewPrivate::scrollDown()
 {
     m_viewInternal->scrollDown();
 }
 
-void KateView::topOfView()
+void KTextEditor::ViewPrivate::topOfView()
 {
     m_viewInternal->topOfView();
 }
 
-void KateView::shiftTopOfView()
+void KTextEditor::ViewPrivate::shiftTopOfView()
 {
     m_viewInternal->topOfView(true);
 }
 
-void KateView::bottomOfView()
+void KTextEditor::ViewPrivate::bottomOfView()
 {
     m_viewInternal->bottomOfView();
 }
 
-void KateView::shiftBottomOfView()
+void KTextEditor::ViewPrivate::shiftBottomOfView()
 {
     m_viewInternal->bottomOfView(true);
 }
 
-void KateView::pageUp()
+void KTextEditor::ViewPrivate::pageUp()
 {
     m_viewInternal->pageUp();
 }
 
-void KateView::shiftPageUp()
+void KTextEditor::ViewPrivate::shiftPageUp()
 {
     m_viewInternal->pageUp(true);
 }
 
-void KateView::pageDown()
+void KTextEditor::ViewPrivate::pageDown()
 {
     m_viewInternal->pageDown();
 }
 
-void KateView::shiftPageDown()
+void KTextEditor::ViewPrivate::shiftPageDown()
 {
     m_viewInternal->pageDown(true);
 }
 
-void KateView::top()
+void KTextEditor::ViewPrivate::top()
 {
     m_viewInternal->top_home();
 }
 
-void KateView::shiftTop()
+void KTextEditor::ViewPrivate::shiftTop()
 {
     m_viewInternal->top_home(true);
 }
 
-void KateView::bottom()
+void KTextEditor::ViewPrivate::bottom()
 {
     m_viewInternal->bottom_end();
 }
 
-void KateView::shiftBottom()
+void KTextEditor::ViewPrivate::shiftBottom()
 {
     m_viewInternal->bottom_end(true);
 }
 
-void KateView::toMatchingBracket()
+void KTextEditor::ViewPrivate::toMatchingBracket()
 {
     m_viewInternal->cursorToMatchingBracket();
 }
 
-void KateView::shiftToMatchingBracket()
+void KTextEditor::ViewPrivate::shiftToMatchingBracket()
 {
     m_viewInternal->cursorToMatchingBracket(true);
 }
 
-KTextEditor::Range KateView::selectionRange() const
+KTextEditor::Range KTextEditor::ViewPrivate::selectionRange() const
 {
     return m_selection;
 }
 
-KTextEditor::Document *KateView::document() const
+KTextEditor::Document *KTextEditor::ViewPrivate::document() const
 {
     return m_doc;
 }
 
-void KateView::setContextMenu(QMenu *menu)
+void KTextEditor::ViewPrivate::setContextMenu(QMenu *menu)
 {
     if (m_contextMenu) {
         disconnect(m_contextMenu, SIGNAL(aboutToShow()), this, SLOT(aboutToShowContextMenu()));
@@ -2830,12 +2830,12 @@ void KateView::setContextMenu(QMenu *menu)
     }
 }
 
-QMenu *KateView::contextMenu() const
+QMenu *KTextEditor::ViewPrivate::contextMenu() const
 {
     if (m_userContextMenuSet) {
         return m_contextMenu;
     } else {
-        KXMLGUIClient *client = const_cast<KateView *>(this);
+        KXMLGUIClient *client = const_cast<KTextEditor::ViewPrivate *>(this);
         while (client->parentClient()) {
             client = client->parentClient();
         }
@@ -2859,10 +2859,10 @@ QMenu *KateView::contextMenu() const
     return 0;
 }
 
-QMenu *KateView::defaultContextMenu(QMenu *menu) const
+QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
 {
     if (!menu) {
-        menu = new QMenu(const_cast<KateView *>(this));
+        menu = new QMenu(const_cast<KTextEditor::ViewPrivate *>(this));
     }
 
     menu->addAction(m_editUndo);
@@ -2885,7 +2885,7 @@ QMenu *KateView::defaultContextMenu(QMenu *menu) const
     return menu;
 }
 
-void KateView::aboutToShowContextMenu()
+void KTextEditor::ViewPrivate::aboutToShowContextMenu()
 {
     QMenu *menu = qobject_cast<QMenu *>(sender());
 
@@ -2894,13 +2894,13 @@ void KateView::aboutToShowContextMenu()
     }
 }
 
-void KateView::aboutToHideContextMenu()
+void KTextEditor::ViewPrivate::aboutToHideContextMenu()
 {
     m_spellingMenu->setUseMouseForMisspelledRange(false);
 }
 
 // BEGIN ConfigInterface stff
-QStringList KateView::configKeys() const
+QStringList KTextEditor::ViewPrivate::configKeys() const
 {
     return QStringList()  << QLatin1String("icon-bar")  << QLatin1String("line-numbers") << QLatin1String("dynamic-word-wrap")
            << QLatin1String("background-color")  << QLatin1String("selection-color")
@@ -2908,7 +2908,7 @@ QStringList KateView::configKeys() const
            << QLatin1String("folding-bar");
 }
 
-QVariant KateView::configValue(const QString &key)
+QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
 {
     if (key == QLatin1String("icon-bar")) {
         return config()->iconBar();
@@ -2936,7 +2936,7 @@ QVariant KateView::configValue(const QString &key)
     return QVariant();
 }
 
-void KateView::setConfigValue(const QString &key, const QVariant &value)
+void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant &value)
 {
     if (value.canConvert(QVariant::Color)) {
         if (key == QLatin1String("background-color")) {
@@ -2971,17 +2971,17 @@ void KateView::setConfigValue(const QString &key, const QVariant &value)
 
 // END ConfigInterface
 
-void KateView::userInvokedCompletion()
+void KTextEditor::ViewPrivate::userInvokedCompletion()
 {
     completionWidget()->userInvokedCompletion();
 }
 
-KateViewBar *KateView::bottomViewBar() const
+KateViewBar *KTextEditor::ViewPrivate::bottomViewBar() const
 {
     return m_bottomViewBar;
 }
 
-KateCommandLineBar *KateView::cmdLineBar()
+KateCommandLineBar *KTextEditor::ViewPrivate::cmdLineBar()
 {
     if (!m_cmdLine) {
         m_cmdLine = new KateCommandLineBar(this, bottomViewBar());
@@ -2991,7 +2991,7 @@ KateCommandLineBar *KateView::cmdLineBar()
     return m_cmdLine;
 }
 
-KateScriptConsole *KateView::consoleBar()
+KateScriptConsole *KTextEditor::ViewPrivate::consoleBar()
 {
     if (!m_console) {
         m_console = new KateScriptConsole(this, bottomViewBar());
@@ -3001,7 +3001,7 @@ KateScriptConsole *KateView::consoleBar()
     return m_console;
 }
 
-KateSearchBar *KateView::searchBar(bool initHintAsPower)
+KateSearchBar *KTextEditor::ViewPrivate::searchBar(bool initHintAsPower)
 {
     if (!m_searchBar) {
         m_searchBar = new KateSearchBar(initHintAsPower, this, KateViewConfig::global());
@@ -3009,7 +3009,7 @@ KateSearchBar *KateView::searchBar(bool initHintAsPower)
     return m_searchBar;
 }
 
-KateGotoBar *KateView::gotoBar()
+KateGotoBar *KTextEditor::ViewPrivate::gotoBar()
 {
     if (!m_gotoBar) {
         m_gotoBar = new KateGotoBar(this);
@@ -3019,7 +3019,7 @@ KateGotoBar *KateView::gotoBar()
     return m_gotoBar;
 }
 
-KateDictionaryBar *KateView::dictionaryBar()
+KateDictionaryBar *KTextEditor::ViewPrivate::dictionaryBar()
 {
     if (!m_dictionaryBar) {
         m_dictionaryBar = new KateDictionaryBar(this);
@@ -3029,7 +3029,7 @@ KateDictionaryBar *KateView::dictionaryBar()
     return m_dictionaryBar;
 }
 
-KateViEmulatedCommandBar *KateView::viModeEmulatedCommandBar()
+KateViEmulatedCommandBar *KTextEditor::ViewPrivate::viModeEmulatedCommandBar()
 {
     if (!m_viModeEmulatedCommandBar) {
         m_viModeEmulatedCommandBar = new KateViEmulatedCommandBar(this, this);
@@ -3039,29 +3039,29 @@ KateViEmulatedCommandBar *KateView::viModeEmulatedCommandBar()
     return m_viModeEmulatedCommandBar;
 }
 
-void KateView::setAnnotationModel(KTextEditor::AnnotationModel *model)
+void KTextEditor::ViewPrivate::setAnnotationModel(KTextEditor::AnnotationModel *model)
 {
     KTextEditor::AnnotationModel *oldmodel = m_annotationModel;
     m_annotationModel = model;
     m_viewInternal->m_leftBorder->annotationModelChanged(oldmodel, m_annotationModel);
 }
 
-KTextEditor::AnnotationModel *KateView::annotationModel() const
+KTextEditor::AnnotationModel *KTextEditor::ViewPrivate::annotationModel() const
 {
     return m_annotationModel;
 }
 
-void KateView::setAnnotationBorderVisible(bool visible)
+void KTextEditor::ViewPrivate::setAnnotationBorderVisible(bool visible)
 {
     m_viewInternal->m_leftBorder->setAnnotationBorderOn(visible);
 }
 
-bool KateView::isAnnotationBorderVisible() const
+bool KTextEditor::ViewPrivate::isAnnotationBorderVisible() const
 {
     return m_viewInternal->m_leftBorder->annotationBorderOn();
 }
 
-KTextEditor::Range KateView::visibleRange()
+KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()
 {
     //ensure that the view is up-to-date, otherwise 'endPos()' might fail!
     m_viewInternal->updateView();
@@ -3069,23 +3069,23 @@ KTextEditor::Range KateView::visibleRange()
                               m_viewInternal->toRealCursor(m_viewInternal->endPos()));
 }
 
-void KateView::toggleOnTheFlySpellCheck(bool b)
+void KTextEditor::ViewPrivate::toggleOnTheFlySpellCheck(bool b)
 {
     m_doc->onTheFlySpellCheckingEnabled(b);
 }
 
-void KateView::reflectOnTheFlySpellCheckStatus(bool enabled)
+void KTextEditor::ViewPrivate::reflectOnTheFlySpellCheckStatus(bool enabled)
 {
     m_spellingMenu->setVisible(enabled);
     m_toggleOnTheFlySpellCheck->setChecked(enabled);
 }
 
-KateSpellingMenu *KateView::spellingMenu()
+KateSpellingMenu *KTextEditor::ViewPrivate::spellingMenu()
 {
     return m_spellingMenu;
 }
 
-void KateView::notifyAboutRangeChange(int startLine, int endLine, bool rangeWithAttribute)
+void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine, bool rangeWithAttribute)
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args
@@ -3124,7 +3124,7 @@ void KateView::notifyAboutRangeChange(int startLine, int endLine, bool rangeWith
     }
 }
 
-void KateView::slotDelayedUpdateOfView()
+void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
 {
     if (!m_delayedUpdateTriggered) {
         return;
@@ -3151,7 +3151,7 @@ void KateView::slotDelayedUpdateOfView()
     m_lineToUpdateMax = -1;
 }
 
-void KateView::updateRangesIn(KTextEditor::Attribute::ActivationType activationType)
+void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::ActivationType activationType)
 {
     // new ranges with cursor in, default none
     QSet<Kate::TextRange *> newRangesIn;
@@ -3244,7 +3244,7 @@ void KateView::updateRangesIn(KTextEditor::Attribute::ActivationType activationT
     oldSet = newRangesIn;
 }
 
-void KateView::postMessage(KTextEditor::Message *message,
+void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
                            QList<QSharedPointer<QAction> > actions)
 {
     // just forward to KateMessageWidget :-)
@@ -3255,51 +3255,51 @@ void KateView::postMessage(KTextEditor::Message *message,
     } else if (message->position() == KTextEditor::Message::TopInView) {
         if (!m_floatTopMessageWidget) {
             m_floatTopMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->insertWidget(0, m_floatTopMessageWidget, 0, Qt::AlignTop | Qt::AlignRight);
-            connect(this, SIGNAL(displayRangeChanged(KateView*)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
+            m_notificationLayout->insertWidget(0, m_floatTopMessageWidget, 0, Qt::AlignTop); // FIXME KF5  | Qt::AlignRight
+            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
             connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
         }
         m_floatTopMessageWidget->postMessage(message, actions);
     } else if (message->position() == KTextEditor::Message::BottomInView) {
         if (!m_floatBottomMessageWidget) {
             m_floatBottomMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->addWidget(m_floatBottomMessageWidget, 0, Qt::AlignBottom | Qt::AlignRight);
-            connect(this, SIGNAL(displayRangeChanged(KateView*)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
+            m_notificationLayout->addWidget(m_floatBottomMessageWidget, 0, Qt::AlignBottom); // FIXME KF5  | Qt::AlignRight
+            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
             connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
         }
         m_floatBottomMessageWidget->postMessage(message, actions);
     }
 }
 
-void KateView::saveFoldingState()
+void KTextEditor::ViewPrivate::saveFoldingState()
 {
     m_savedFoldingState = m_textFolding.exportFoldingRanges();
 }
 
-void KateView::applyFoldingState()
+void KTextEditor::ViewPrivate::applyFoldingState()
 {
     m_textFolding.importFoldingRanges(m_savedFoldingState);
     m_savedFoldingState.clear();
 }
 
-void KateView::exportHtmlToClipboard ()
+void KTextEditor::ViewPrivate::exportHtmlToClipboard ()
 {
     KateExporter (this).exportToClipboard ();
 }
 
-void KateView::exportHtmlToFile ()
+void KTextEditor::ViewPrivate::exportHtmlToFile ()
 {
     KateExporter (this).exportToFile ();
 }
 
-void KateView::clearHighlights()
+void KTextEditor::ViewPrivate::clearHighlights()
 {
     qDeleteAll(m_rangesForHighlights);
     m_rangesForHighlights.clear();
     m_currentTextForHighlights.clear();
 }
 
-void KateView::selectionChangedForHighlights()
+void KTextEditor::ViewPrivate::selectionChangedForHighlights()
 {
     QString text;
     // if text of selection is still the same, abort
@@ -3323,7 +3323,7 @@ void KateView::selectionChangedForHighlights()
         createHighlights();
 }
 
-void KateView::createHighlights()
+void KTextEditor::ViewPrivate::createHighlights()
 {
     KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
     attr->setBackground(Qt::yellow);
@@ -3364,12 +3364,12 @@ void KateView::createHighlights()
 }
 
 //BEGIN KTextEditor::PrintInterface stuff
-bool KateView::print()
+bool KTextEditor::ViewPrivate::print()
 {
     return KatePrinter::print(this);
 }
 
-void KateView::printPreview()
+void KTextEditor::ViewPrivate::printPreview()
 {
     KatePrinter::printPreview(this);
 }

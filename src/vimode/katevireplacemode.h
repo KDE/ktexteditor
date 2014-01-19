@@ -23,7 +23,7 @@
 
 #include "katevimodebase.h"
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 class QKeyEvent;
 
@@ -34,7 +34,7 @@ class QKeyEvent;
 class KateViReplaceMode : public KateViModeBase
 {
 public:
-    KateViReplaceMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
+    KateViReplaceMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~KateViReplaceMode();
 
     bool handleKeypress(const QKeyEvent *e);

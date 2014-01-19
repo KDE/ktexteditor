@@ -28,7 +28,7 @@
 #include <QFont>
 
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateRenderer;
 class QPrinter;
 class QPainter;
@@ -50,7 +50,7 @@ class PageLayout;
 class PrintPainter
 {
 public:
-    PrintPainter(KateView *view);
+    PrintPainter(KTextEditor::ViewPrivate *view);
     ~PrintPainter();
 
     void paint(QPrinter *printer) const;
@@ -129,7 +129,7 @@ private:
     void configure(const QPrinter *printer, PageLayout &layout) const;
 
 private:
-    KateView     *m_view;
+    KTextEditor::ViewPrivate     *m_view;
     KateDocument *m_doc;
 
     QString m_colorScheme;

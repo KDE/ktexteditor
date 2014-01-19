@@ -66,7 +66,7 @@ class SwapFile;
 }
 
 class KateBuffer;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateDocumentConfig;
 class KateHighlighting;
 class KateUndoManager;
@@ -160,7 +160,7 @@ public:
     }
 
 private:
-    QLinkedList<KateView *> m_views;
+    QLinkedList<KTextEditor::ViewPrivate *> m_views;
     QList<KTextEditor::View *> m_textEditViews;
     KTextEditor::View *m_activeView;
 
@@ -692,7 +692,7 @@ public:
      * Type chars in a view.
      * Will filter out non-printable chars from the realChars array before inserting.
      */
-    bool typeChars(KateView *type, const QString &realChars);
+    bool typeChars(KTextEditor::ViewPrivate *type, const QString &realChars);
 
     /**
      * gets the last line number (lines() - 1)
@@ -719,29 +719,29 @@ public:
      * That's your job. Or, easier, just delete the view in the first place.
      * It will remove itself. TODO: this could be converted to a private slot
      * connected to the view's destroyed() signal. It is not currently called
-     * anywhere except from the KateView destructor.
+     * anywhere except from the KTextEditor::ViewPrivate destructor.
      */
     void removeView(KTextEditor::View *);
     void setActiveView(KTextEditor::View *);
 
-    bool ownedView(KateView *);
+    bool ownedView(KTextEditor::ViewPrivate *);
 
     int toVirtualColumn(int line, int column) const;
     int toVirtualColumn(const KTextEditor::Cursor &) const;
     int fromVirtualColumn(int line, int column) const;
     int fromVirtualColumn(const KTextEditor::Cursor &) const;
 
-    void newLine(KateView *view);  // Changes input
-    void backspace(KateView *view, const KTextEditor::Cursor &);
-    void del(KateView *view, const KTextEditor::Cursor &);
+    void newLine(KTextEditor::ViewPrivate *view);  // Changes input
+    void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
+    void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void transpose(const KTextEditor::Cursor &);
-    void paste(KateView *view, const QString &text);
+    void paste(KTextEditor::ViewPrivate *view, const QString &text);
 
 public:
     void indent(KTextEditor::Range range, int change);
-    void comment(KateView *view, uint line, uint column, int change);
-    void align(KateView *view, const KTextEditor::Range &range);
-    void insertTab(KateView *view, const KTextEditor::Cursor &);
+    void comment(KTextEditor::ViewPrivate *view, uint line, uint column, int change);
+    void align(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
+    void insertTab(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
 
     enum TextTransform { Uppercase, Lowercase, Capitalize };
 
@@ -752,7 +752,7 @@ public:
       lowercase the character right of the cursor is transformed, for capitalize
       the word under the cursor is transformed.
     */
-    void transform(KateView *view, const KTextEditor::Cursor &, TextTransform);
+    void transform(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &, TextTransform);
     /**
       Unwrap a range of lines.
     */
@@ -810,11 +810,11 @@ private:
      * Add a comment marker as defined by the language providing the attribute
      * @p attrib to each line in the selection.
      */
-    void addStartStopCommentToSelection(KateView *view, int attrib = 0);
+    void addStartStopCommentToSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
     /**
      * @see addStartStopCommentToSelection.
      */
-    void addStartLineCommentToSelection(KateView *view, int attrib = 0);
+    void addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
 
     /**
      * Removes comment markers relevant to the language providing
@@ -822,11 +822,11 @@ private:
      *
      * @return whether the operation succeeded.
      */
-    bool removeStartStopCommentFromSelection(KateView *view, int attrib = 0);
+    bool removeStartStopCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
     /**
      * @see removeStartStopCommentFromSelection.
      */
-    bool removeStartLineCommentFromSelection(KateView *view, int attrib = 0);
+    bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
 
 public:
     void newBracketMark(const KTextEditor::Cursor &start, KTextEditor::Range &bm, int maxLines = -1);

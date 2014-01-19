@@ -28,7 +28,7 @@
 #include <QStringList>
 #include <QPointer>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class QActionGroup;
 
 class KateSchema
@@ -89,12 +89,12 @@ public:
         init();
     }
 
-    void updateMenu(KateView *view);
+    void updateMenu(KTextEditor::ViewPrivate *view);
 
 private:
     void init();
 
-    QPointer<KateView> m_view;
+    QPointer<KTextEditor::ViewPrivate> m_view;
     QStringList names;
     QActionGroup *m_group;
     int last;

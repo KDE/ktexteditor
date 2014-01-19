@@ -785,7 +785,7 @@ public:
 //END KateCmdLineEditFlagCompletion
 
 //BEGIN KateCmdLineEdit
-KateCommandLineBar::KateCommandLineBar(KateView *view, QWidget *parent)
+KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
 {
     QHBoxLayout *topLayout = new QHBoxLayout();
@@ -828,7 +828,7 @@ void KateCommandLineBar::execute(const QString &text)
     m_lineEdit->slotReturnPressed(text);
 }
 
-KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KateView *view)
+KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPrivate *view)
     : KLineEdit()
     , m_view(view)
     , m_bar(bar)
@@ -2185,7 +2185,7 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     }
 }
 
-KateViewEncodingAction::KateViewEncodingAction(KateDocument *_doc, KateView *_view, const QString &text, QObject *parent)
+KateViewEncodingAction::KateViewEncodingAction(KateDocument *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent)
     : KSelectAction(text, parent), doc(_doc), view(_view), d(new Private(this))
 {
     d->init();
@@ -2335,7 +2335,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     setFocusProxy(m_centralWidget);
 }
 
-KateViewBar::KateViewBar(bool external, QWidget *parent, KateView *view)
+KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivate *view)
     : QWidget(parent), m_external(external), m_view(view), m_permanentBarWidget(0)
 
 {
@@ -2489,7 +2489,7 @@ void KateViewBar::hideEvent(QHideEvent *event)
 
 //END KateViewBar related classes
 
-KatePasteMenu::KatePasteMenu(const QString &text, KateView *view)
+KatePasteMenu::KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view)
     : KActionMenu(text, view)
     , m_view(view)
 {

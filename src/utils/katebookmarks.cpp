@@ -41,7 +41,7 @@ namespace KTextEditor
 class Document;
 }
 
-KateBookmarks::KateBookmarks(KateView *view, Sorting sort)
+KateBookmarks::KateBookmarks(KTextEditor::ViewPrivate *view, Sorting sort)
     : QObject(view)
     , m_view(view)
     , m_bookmarkClear(0)

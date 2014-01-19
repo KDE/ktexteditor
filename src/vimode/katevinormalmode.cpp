@@ -55,7 +55,7 @@ using KTextEditor::Range;
 #define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( \
         new KateViMotion( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
 
-KateViNormalMode::KateViNormalMode(KateViInputModeManager *viInputModeManager, KateView *view,
+KateViNormalMode::KateViNormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view,
                                    KateViewInternal *viewInternal) : KateViModeBase()
 {
     m_view = view;

@@ -32,7 +32,7 @@
 //END Includes
 
 //BEGIN KateScriptConsoleEngine
-KateScriptConsoleEngine::KateScriptConsoleEngine(KateView *view)
+KateScriptConsoleEngine::KateScriptConsoleEngine(KTextEditor::ViewPrivate *view)
     : m_view(view)
 {
     m_utilsUrl = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("katepart/script/commands/utils.js"));
@@ -98,7 +98,7 @@ const QString KateScriptConsoleEngine::getFirstFunctionName(const QString &text,
 //END KateScriptConsoleEngine
 
 //BEGIN KateScriptConsole
-KateScriptConsole::KateScriptConsole(KateView *view, QWidget *parent)
+KateScriptConsole::KateScriptConsole(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
     , m_view(view)
 {

@@ -26,7 +26,7 @@
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class QLabel;
 class QCompleter;
 class QStringListModel;
@@ -42,7 +42,7 @@ class KTEXTEDITOR_EXPORT KateViEmulatedCommandBar : public KateViewBarWidget
     Q_OBJECT
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
-    explicit KateViEmulatedCommandBar(KateView *view, QWidget *parent = 0);
+    explicit KateViEmulatedCommandBar(KTextEditor::ViewPrivate *view, QWidget *parent = 0);
     virtual ~KateViEmulatedCommandBar();
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
@@ -56,7 +56,7 @@ public:
 private:
     bool m_isActive;
     Mode m_mode;
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QLineEdit *m_edit;
     QLabel *m_barTypeIndicator;
     void showBarTypeIndicator(Mode mode);

@@ -1257,7 +1257,7 @@ KateViewConfig::KateViewConfig()
     readConfig(config);
 }
 
-KateViewConfig::KateViewConfig(KateView *view)
+KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     :
     m_searchFlags(PowerModePlainText),
     m_maxHistorySize(100),
@@ -2236,7 +2236,7 @@ void KateRendererConfig::reloadSchema()
 {
     if (isGlobal()) {
         setSchemaInternal(m_schema);
-        foreach (KateView *view, KTextEditor::EditorPrivate::self()->views()) {
+        foreach (KTextEditor::ViewPrivate *view, KTextEditor::EditorPrivate::self()->views()) {
             view->renderer()->config()->reloadSchema();
         }
     }

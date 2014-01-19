@@ -86,14 +86,14 @@ void KateViewSchemaAction::init()
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
 }
 
-void KateViewSchemaAction::updateMenu(KateView *view)
+void KateViewSchemaAction::updateMenu(KTextEditor::ViewPrivate *view)
 {
     m_view = view;
 }
 
 void KateViewSchemaAction::slotAboutToShow()
 {
-    KateView *view = m_view;
+    KTextEditor::ViewPrivate *view = m_view;
 
     QList<KateSchema> schemas = KTextEditor::EditorPrivate::self()->schemaManager()->list();
 
@@ -135,7 +135,7 @@ void KateViewSchemaAction::setSchema()
     }
     QString mode = action->data().toString();
 
-    KateView *view = m_view;
+    KTextEditor::ViewPrivate *view = m_view;
 
     if (view) {
         view->renderer()->config()->setSchema(mode);

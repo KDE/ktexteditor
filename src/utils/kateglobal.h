@@ -44,7 +44,7 @@ class KateDocumentConfig;
 class KateViewConfig;
 class KateRendererConfig;
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateScriptManager;
 class KDirWatch;
 class KateHlManager;
@@ -244,13 +244,13 @@ public:
      * this allows us to loop over all views for example on config changes
      * @param view view to register
      */
-    void registerView(KateView *view);
+    void registerView(KTextEditor::ViewPrivate *view);
 
     /**
      * unregister view at the factory
      * @param view view to unregister
      */
-    void deregisterView(KateView *view);
+    void deregisterView(KTextEditor::ViewPrivate *view);
 
     /**
      * return a list of all registered docs
@@ -265,7 +265,7 @@ public:
      * return a list of all registered views
      * @return all known views
      */
-    QList<KateView *> &views()
+    QList<KTextEditor::ViewPrivate *> &views()
     {
         return m_views;
     }
@@ -460,7 +460,7 @@ private:
     /**
      * registered views
      */
-    QList<KateView *> m_views;
+    QList<KTextEditor::ViewPrivate *> m_views;
 
     /**
      * global dirwatch object

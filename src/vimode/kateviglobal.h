@@ -71,7 +71,7 @@ public:
      * Returns CommandModeMapping if the emulated command bar is active, else the mapping mode
      * corresponding to the current Vi mode.
      */
-    static MappingMode mappingModeForCurrentViMode(KateView *view);
+    static MappingMode mappingModeForCurrentViMode(KTextEditor::ViewPrivate *view);
 
     QStringList searchHistory();
     void clearSearchHistory();

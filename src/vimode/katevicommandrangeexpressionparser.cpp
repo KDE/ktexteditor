@@ -66,12 +66,12 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
     m_cmdRange.setPattern(QLatin1String("^(") + m_position.pattern() + QLatin1String(")((?:,(") + m_position.pattern() + QLatin1String("))?)"));
 }
 
-Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, KateView *view, QString &destRangeExpression, QString &destTransformedCommand)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
 {
     return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, view);
 }
 
-Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KateView *view)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view)
 {
     Range parsedRange(0, -1, 0, -1);
     if (command.isEmpty()) {
@@ -114,7 +114,7 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
     return parsedRange;
 }
 
-int CommandRangeExpressionParser::calculatePosition(const QString &string, KateView *view)
+int CommandRangeExpressionParser::calculatePosition(const QString &string, KTextEditor::ViewPrivate *view)
 {
 
     int pos = 0;

@@ -25,7 +25,7 @@
 
 class QScriptEngine;
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 class KateScriptDocument;
 class KateScriptView;
@@ -157,7 +157,7 @@ public:
      * set view for this script for the execution
      * will trigger load!
      */
-    bool setView(KateView *view);
+    bool setView(KTextEditor::ViewPrivate *view);
 
     /**
      * Get a QScriptValue for a global item in the script given its name, or an

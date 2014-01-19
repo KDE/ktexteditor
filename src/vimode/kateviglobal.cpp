@@ -208,7 +208,7 @@ bool KateViGlobal::isMappingRecursive(MappingMode mode, const QString &from) con
     return m_mappingsForMode[mode][from].isRecursive;
 }
 
-KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KateView *view)
+KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KTextEditor::ViewPrivate *view)
 {
     if (view->viModeEmulatedCommandBar()->isActive()) {
         return CommandModeMapping;

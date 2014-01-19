@@ -37,6 +37,7 @@ namespace KTextEditor
 
 class Document;
 class MainWindow;
+class ViewPrivate;
 
 /**
  * \brief A text widget with KXMLGUIClient that represents a Document.
@@ -151,16 +152,21 @@ class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
 {
     Q_OBJECT
 
-public:
+protected:
     /**
      * Constructor.
      *
      * Create a view attached to the widget \p parent.
+     *
+     * Pass it the internal implementation to store a d-pointer.
+     *
+     * \param impl d-pointer to use
      * \param parent parent widget
      * \see Document::createView()
      */
-    View(QWidget *parent);
+    View (ViewPrivate *impl, QWidget *parent);
 
+public:
     /**
      * Virtual destructor.
      */
@@ -607,7 +613,7 @@ public:
     virtual void printPreview() = 0;
 
 private:
-    class ViewPrivate *const d;
+    ViewPrivate *const d;
 };
 
 }

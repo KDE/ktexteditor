@@ -30,7 +30,7 @@ public:
     KateTemplateScript(const QString &script);
     virtual ~KateTemplateScript();
 
-    QString invoke(KateView *view, const QString &functionName, const QString &srcText/*, ....*/);
+    QString invoke(KTextEditor::ViewPrivate *view, const QString &functionName, const QString &srcText/*, ....*/);
 };
 
 #endif

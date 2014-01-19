@@ -28,7 +28,7 @@
 
 #include <QtScript/QScriptable>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class RegressionTest;
 class KCmdLineArgs;
 class OutputObject;
@@ -73,7 +73,7 @@ class KateViewObject : public KateScriptView
 
 public:
 
-    explicit KateViewObject(KateView *view);
+    explicit KateViewObject(KTextEditor::ViewPrivate *view);
     virtual ~KateViewObject();
 
     // Edit functions
@@ -167,7 +167,7 @@ class OutputObject : public QObject, protected QScriptable
     Q_OBJECT
 
 public:
-    OutputObject(KateView *v, bool &cflag);
+    OutputObject(KTextEditor::ViewPrivate *v, bool &cflag);
     virtual ~OutputObject();
 
     void output(bool cp, bool ln);
@@ -192,7 +192,7 @@ public:
     Q_INVOKABLE void posLn();
 
 private:
-    KateView *view;
+    KTextEditor::ViewPrivate *view;
     bool &cflag;
 };
 

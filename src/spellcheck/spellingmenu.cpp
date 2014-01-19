@@ -29,7 +29,7 @@
 #include <KLocalizedString>
 #include "katepartdebug.h"
 
-KateSpellingMenu::KateSpellingMenu(KateView *view)
+KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
     : QObject(view),
       m_view(view),
       m_spellingMenuAction(NULL),

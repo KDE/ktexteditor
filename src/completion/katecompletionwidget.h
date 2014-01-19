@@ -36,7 +36,7 @@ class QPushButton;
 class QLabel;
 class QTimer;
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateCompletionModel;
 class KateCompletionTree;
 class KateArgumentHintTree;
@@ -58,10 +58,10 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
     Q_OBJECT
 
 public:
-    explicit KateCompletionWidget(KateView *parent);
+    explicit KateCompletionWidget(KTextEditor::ViewPrivate *parent);
     ~KateCompletionWidget();
 
-    KateView *view() const;
+    KTextEditor::ViewPrivate *view() const;
     KateCompletionTree *treeView() const;
 
     bool isCompletionActive() const;

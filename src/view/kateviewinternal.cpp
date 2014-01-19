@@ -60,7 +60,7 @@
 
 static const bool debugPainting = false;
 
-KateViewInternal::KateViewInternal(KateView *view)
+KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     : QWidget(view)
     , editSessionNumber(0)
     , editIsRunning(false)
@@ -215,7 +215,7 @@ KateViewInternal::KateViewInternal(KateView *view)
     QAccessible::installFactory(accessibleInterfaceFactory);
 #endif
 
-    // update is called in KateView, after construction and layout is over
+    // update is called in KTextEditor::ViewPrivate, after construction and layout is over
     // but before any other kateviewinternal call
 }
 
@@ -960,11 +960,11 @@ protected:
                column() >= 0 &&
                (!view()->wrapCursor() || column() <= doc()->lineLength(line()));
     }
-    KateView *view()
+    KTextEditor::ViewPrivate *view()
     {
         return m_vi->m_view;
     }
-    const KateView *view() const
+    const KTextEditor::ViewPrivate *view() const
     {
         return m_vi->m_view;
     }

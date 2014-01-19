@@ -624,7 +624,7 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
 
     // get current highlighting from the host application
     int hl = 0;
-    KateView *kv = qobject_cast<KateView *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
+    KTextEditor::ViewPrivate *kv = qobject_cast<KTextEditor::ViewPrivate *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString hlName = kv->doc()->highlight()->name();
         hl = KateHlManager::self()->nameFind(hlName);

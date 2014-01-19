@@ -64,6 +64,7 @@ class KateDictionaryBar;
 class KateSpellingMenu;
 class KateScriptConsole;
 class KateMessageWidget;
+class KateIconBorder;
 
 class KToggleAction;
 class KSelectAction;
@@ -71,10 +72,13 @@ class KSelectAction;
 class QAction;
 class QVBoxLayout;
 
+namespace KTextEditor
+{
+
 //
 // Kate KTextEditor::View class ;)
 //
-class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
+class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     public KTextEditor::TextHintInterface,
     public KTextEditor::SessionConfigInterface,
     public KTextEditor::TemplateInterface2,
@@ -91,13 +95,13 @@ class KTEXTEDITOR_EXPORT KateView : public KTextEditor::View,
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
 
-    friend class KateViewInternal;
-    friend class KateIconBorder;
-    friend class KateViModeBase;
+    friend class ::KateViewInternal;
+    friend class ::KateIconBorder;
+    friend class ::KateViModeBase;
 
 public:
-    KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
-    ~KateView();
+    ViewPrivate (KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    ~ViewPrivate ();
 
     /**
      * Get the view's main window, if any
@@ -774,7 +778,7 @@ public:
     KTextEditor::Range visibleRange();
 
 Q_SIGNALS:
-    void displayRangeChanged(KateView *view);
+    void displayRangeChanged(ViewPrivate *view);
 
 protected:
     KToggleAction               *m_toggleOnTheFlySpellCheck;
@@ -934,6 +938,8 @@ public Q_SLOTS:
     virtual bool print();
     virtual void printPreview();
 };
+
+}
 
 /**
  * metatype register

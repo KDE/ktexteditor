@@ -45,7 +45,7 @@ class KatePrinterPrivate : public QObject
 {
     Q_OBJECT
 public:
-    KatePrinterPrivate(KateView *view);
+    KatePrinterPrivate(KTextEditor::ViewPrivate *view);
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
@@ -54,12 +54,12 @@ public Q_SLOTS:
     void paint(QPrinter *printer);
 
 private:
-    KateView     *m_view;
+    KTextEditor::ViewPrivate     *m_view;
     KateDocument *m_doc;
     PrintPainter *m_painter;
 };
 
-KatePrinterPrivate::KatePrinterPrivate(KateView *view)
+KatePrinterPrivate::KatePrinterPrivate(KTextEditor::ViewPrivate *view)
     : QObject()
     , m_view (view)
     , m_doc(m_view->doc())
@@ -142,14 +142,14 @@ void KatePrinterPrivate::paint(QPrinter *printer)
 
 //BEGIN KatePrinter
 
-bool KatePrinter::print(KateView *view)
+bool KatePrinter::print(KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
     KatePrinterPrivate p(view);
     return p.print(&printer);
 }
 
-bool KatePrinter::printPreview(KateView *view)
+bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
     KatePrinterPrivate p(view);

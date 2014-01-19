@@ -60,7 +60,7 @@ void BugTest::tryCrash()
     doc.buffer().ensureHighlighted(doc.lines());
 
     // view must be visible...
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(900, 800);
     view->config()->setDynWordWrap(true);

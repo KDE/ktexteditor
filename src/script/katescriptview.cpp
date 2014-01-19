@@ -29,12 +29,12 @@ KateScriptView::KateScriptView(QObject *parent)
 {
 }
 
-void KateScriptView::setView(KateView *view)
+void KateScriptView::setView(KTextEditor::ViewPrivate *view)
 {
     m_view = view;
 }
 
-KateView *KateScriptView::view()
+KTextEditor::ViewPrivate *KateScriptView::view()
 {
     return m_view;
 }

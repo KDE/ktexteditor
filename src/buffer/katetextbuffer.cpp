@@ -878,7 +878,7 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, 
         }
 
         // notify view, it is really a kate view
-        static_cast<KateView *>(curView)->notifyAboutRangeChange(startLine, endLine, rangeWithAttribute);
+        static_cast<KTextEditor::ViewPrivate *>(curView)->notifyAboutRangeChange(startLine, endLine, rangeWithAttribute);
     }
 }
 

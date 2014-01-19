@@ -39,7 +39,7 @@
 #include "katetextline.h"
 
 class KateDocument;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 
 #define MAXFOLDINGCOLORS 16
@@ -148,7 +148,7 @@ private:
     bool m_middleMouseDown;
     bool m_leftMouseDown;
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateDocument *m_doc;
     class KateViewInternal *m_viewInternal;
 
@@ -257,7 +257,7 @@ private:
     void showAnnotationMenu(int line, const QPoint &pos);
     int annotationLineWidth(int line);
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateDocument *m_doc;
     KateViewInternal *m_viewInternal;
 
@@ -303,7 +303,7 @@ class KateViewEncodingAction: public KSelectAction
     Q_PROPERTY(int codecMib READ currentCodecMib)
 
 public:
-    KateViewEncodingAction(KateDocument *_doc, KateView *_view, const QString &text, QObject *parent);
+    KateViewEncodingAction(KateDocument *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent);
 
     ~KateViewEncodingAction();
 
@@ -327,7 +327,7 @@ Q_SIGNALS:
 
 private:
     KateDocument *doc;
-    KateView *view;
+    KTextEditor::ViewPrivate *view;
 
     class Private
     {
@@ -403,7 +403,7 @@ class KateViewBar : public QWidget
 public:
     KateViewBar(bool external,
                 QWidget *parent,
-                KateView *view);
+                KTextEditor::ViewPrivate *view);
 
     /**
      * Adds a widget to this viewbar.
@@ -476,7 +476,7 @@ private:
     bool m_external;
 
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     QStackedWidget *m_stack;
     KateViewBarWidget *m_permanentBarWidget;
     QVBoxLayout *m_layout;
@@ -487,7 +487,7 @@ class KTEXTEDITOR_EXPORT KateCommandLineBar : public KateViewBarWidget
     Q_OBJECT
 
 public:
-    explicit KateCommandLineBar(KateView *view, QWidget *parent = 0);
+    explicit KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent = 0);
     ~KateCommandLineBar();
 
     void setText(const QString &text, bool selected = true);
@@ -505,7 +505,7 @@ class KateCmdLineEdit : public KLineEdit
     Q_OBJECT
 
 public:
-    KateCmdLineEdit(KateCommandLineBar *bar, KateView *view);
+    KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPrivate *view);
     virtual bool event(QEvent *e);
 
     void hideEvent(QHideEvent *e);
@@ -538,7 +538,7 @@ private:
     void fromHistory(bool up);
     QString helptext(const QPoint &) const;
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateCommandLineBar *m_bar;
     bool m_msgMode;
     QString m_oldText;
@@ -555,10 +555,10 @@ class KatePasteMenu : public KActionMenu
     Q_OBJECT
 
 public:
-    KatePasteMenu(const QString &text, KateView *view);
+    KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view);
 
 private:
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
 
 private Q_SLOTS:
     void slotAboutToShow();

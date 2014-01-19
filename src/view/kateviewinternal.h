@@ -61,7 +61,7 @@ class KateViewInternal : public QWidget
 {
     Q_OBJECT
 
-    friend class KateView;
+    friend class KTextEditor::ViewPrivate;
     friend class KateIconBorder;
     friend class KateScrollBar;
     friend class CalculatingCursor;
@@ -77,9 +77,9 @@ public:
     };
 
 public:
-    KateViewInternal(KateView *view);
+    KateViewInternal(KTextEditor::ViewPrivate *view);
     ~KateViewInternal();
-    KateView *view() const
+    KTextEditor::ViewPrivate *view() const
     {
         return m_view;
     }
@@ -281,7 +281,7 @@ private:
 
     KateRenderer *renderer() const;
 
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     class KateIconBorder *m_leftBorder;
 
     int m_mouseX;

@@ -32,7 +32,7 @@
 
 class KateDocument;
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 class KateUndoManager;
 
@@ -81,7 +81,7 @@ public:
      * NOTE: The handler deletes itself when required, you do not need to
      *       keep track of it.
      */
-    KateTemplateHandler(KateView *view,
+    KateTemplateHandler(KTextEditor::ViewPrivate *view,
                         const KTextEditor::Cursor &position,
                         const QString &templateString,
                         const QMap<QString, QString> &initialValues,
@@ -234,11 +234,11 @@ private Q_SLOTS:
     void setEditWithUndo(const bool &enabled);
 
 public:
-    KateView *view();
+    KTextEditor::ViewPrivate *view();
 
 private:
     /// The document we operate on.
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     /// The undo manager associated with our document
     KateUndoManager *const m_undoManager;
     /// List of ranges with highlighting, marking the inserted variables in the template.

@@ -49,7 +49,7 @@ class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
     Q_OBJECT
 
 public:
-    KateViNormalMode(KateViInputModeManager *viInputModeManager, KateView *view, KateViewInternal *viewInternal);
+    KateViNormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     virtual ~KateViNormalMode();
 
     bool handleKeypress(const QKeyEvent *e);

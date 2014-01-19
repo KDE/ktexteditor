@@ -45,7 +45,7 @@ void MessageTest::testPostMessage()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -73,7 +73,7 @@ void MessageTest::testAutoHide()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -105,7 +105,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -148,7 +148,7 @@ void MessageTest::testMessageQueue()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -205,7 +205,7 @@ void MessageTest::testPriority()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -282,8 +282,8 @@ void MessageTest::testCreateView()
     QVERIFY(doc.postMessage(m1));
 
     // now create views
-    KateView *v1 = static_cast<KateView *>(doc.createView(0));
-    KateView *v2 = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *v1 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *v2 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     v1->show();
     v2->show();
     v1->resize(400, 300);
@@ -309,7 +309,7 @@ void MessageTest::testHideView()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -355,7 +355,7 @@ void MessageTest::testHideViewAfterUserInteraction()
 {
     KateDocument doc;
 
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));

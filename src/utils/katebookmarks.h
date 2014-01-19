@@ -23,7 +23,7 @@
 
 #include <QObject>
 
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 
 class KToggleAction;
 class KActionCollection;
@@ -36,7 +36,7 @@ class KateBookmarks : public QObject
 
 public:
     enum Sorting { Position, Creation };
-    explicit KateBookmarks(KateView *parent, Sorting sort = Position);
+    explicit KateBookmarks(KTextEditor::ViewPrivate *parent, Sorting sort = Position);
     virtual ~KateBookmarks();
 
     void createActions(KActionCollection *);
@@ -68,7 +68,7 @@ private Q_SLOTS:
     void marksChanged();
 
 private:
-    KateView                    *m_view;
+    KTextEditor::ViewPrivate                    *m_view;
     KToggleAction               *m_bookmarkToggle;
     QAction                     *m_bookmarkClear;
     QAction                     *m_goNext;

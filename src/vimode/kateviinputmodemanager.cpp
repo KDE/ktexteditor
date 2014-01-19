@@ -50,7 +50,7 @@ using KTextEditor::Mark;
 using KTextEditor::MarkInterface;
 using KTextEditor::MovingCursor;
 
-KateViInputModeManager::KateViInputModeManager(KateView *view, KateViewInternal *viewInternal)
+KateViInputModeManager::KateViInputModeManager(KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
 {
     m_viNormalMode = new KateViNormalMode(this, view, viewInternal);
     m_viInsertMode = new KateViInsertMode(this, view, viewInternal);

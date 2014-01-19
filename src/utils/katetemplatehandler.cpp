@@ -58,7 +58,7 @@ static bool customContains(const KTextEditor::Range &range, const Cursor &cursor
 
 /* ####################################### */
 
-KateTemplateHandler::KateTemplateHandler(KateView *view,
+KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         const Cursor &position,
         const QString &templateString,
         const QMap<QString, QString> &initialValues,
@@ -1022,7 +1022,7 @@ void KateTemplateHandler::syncMirroredRanges(MovingRange *range)
     m_isMirroring = false;
 }
 
-KateView *KateTemplateHandler::view()
+KTextEditor::ViewPrivate *KateTemplateHandler::view()
 {
     return m_view;
 }

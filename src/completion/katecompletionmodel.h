@@ -33,7 +33,7 @@
 
 class KateCompletionWidget;
 class KateArgumentHintModel;
-class KateView;
+namespace KTextEditor { class ViewPrivate; }
 class QWidget;
 class QTextEdit;
 class QTimer;
@@ -60,7 +60,7 @@ public:
     void setCompletionModels(const QList<KTextEditor::CodeCompletionModel *> &models);
     void removeCompletionModel(KTextEditor::CodeCompletionModel *model);
 
-    KateView *view() const;
+    KTextEditor::ViewPrivate *view() const;
     KateCompletionWidget *widget() const;
 
     QString currentCompletion(KTextEditor::CodeCompletionModel *model) const;

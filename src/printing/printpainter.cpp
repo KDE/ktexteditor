@@ -83,7 +83,7 @@ public:
     KTextEditor::Range selectionRange;
 };
 
-PrintPainter::PrintPainter(KateView *view)
+PrintPainter::PrintPainter(KTextEditor::ViewPrivate *view)
     : m_view (view)
     , m_doc(m_view->doc())
     , m_colorScheme()

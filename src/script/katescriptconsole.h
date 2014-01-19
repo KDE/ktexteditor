@@ -37,7 +37,7 @@ class KateScriptConsoleEngine
 {
 public:
     /** Constructor + Destructor */
-    KateScriptConsoleEngine(KateView *view);
+    KateScriptConsoleEngine(KTextEditor::ViewPrivate *view);
     virtual ~KateScriptConsoleEngine();
 
     /**
@@ -52,7 +52,7 @@ private:
     QString m_utilsUrl;
 
     /** Just a Kate view :) */
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
 
 private:
     /**
@@ -70,7 +70,7 @@ class KateScriptConsole : public KateViewBarWidget
     Q_OBJECT
 
 public:
-    KateScriptConsole(KateView *view, QWidget *parent = NULL);
+    KateScriptConsole(KTextEditor::ViewPrivate *view, QWidget *parent = NULL);
     virtual ~KateScriptConsole();
 
 protected:
@@ -83,7 +83,7 @@ private:
     QTextEdit *m_edit;
     QPushButton *m_execute;
     QLabel *m_result;
-    KateView *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KateScriptConsoleEngine *m_engine;
 
 public Q_SLOTS:

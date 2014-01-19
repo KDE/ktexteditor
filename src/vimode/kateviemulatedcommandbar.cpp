@@ -285,7 +285,7 @@ QString withSearchConfigRemoved(const QString &originalSearchText, const bool is
 }
 }
 
-KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateView *view, QWidget *parent)
+KateViEmulatedCommandBar::KateViEmulatedCommandBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(false, parent),
       m_isActive(false),
       m_mode(NoMode),

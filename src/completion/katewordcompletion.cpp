@@ -157,7 +157,7 @@ bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view, con
         return false;
     }
 
-    KateView *v = qobject_cast<KateView *> (view);
+    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
 
     if (view->document()->totalCharacters() > autoInvocationMaxFilesize) {
         // Disable automatic invocation for files larger than 1MB (see benchmarks)
@@ -190,7 +190,7 @@ bool KateWordCompletionModel::shouldAbortCompletion(KTextEditor::View *view, con
 {
 
     if (m_automatic) {
-        KateView *v = qobject_cast<KateView *> (view);
+        KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
         if (currentCompletion.length() < v->config()->wordCompletionMinimalWordLength()) {
             return true;
         }
@@ -213,7 +213,7 @@ void KateWordCompletionModel::completionInvoked(KTextEditor::View *view, const K
 QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const
 {
     QSet<QString> result;
-    const int minWordSize = qMax(2, qobject_cast<KateView *>(view)->config()->wordCompletionMinimalWordLength());
+    const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
     const int lines = view->document()->lines();
     for (int line = 0; line < lines; line++) {
         const QString &text = view->document()->line(line);
@@ -243,7 +243,7 @@ void KateWordCompletionModel::executeCompletionItem (KTextEditor::View *view
     , const QModelIndex &index
 ) const
 {
-    KateView *v = qobject_cast<KateView *> (view);
+    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
     if (v->config()->wordCompletionRemoveTail()) {
         int tailStart = word.end().column();
         const QString &line = view->document()->line(word.end().line());

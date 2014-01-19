@@ -25,7 +25,7 @@
 #include "kateconfig.h"
 
 KateViReplaceMode::KateViReplaceMode(KateViInputModeManager *viInputModeManager,
-                                     KateView *view, KateViewInternal *viewInternal) : KateViModeBase()
+                                     KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal) : KateViModeBase()
 {
     m_view = view;
     m_viewInternal = viewInternal;

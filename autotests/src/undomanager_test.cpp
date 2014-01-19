@@ -140,7 +140,7 @@ void UndoManagerTest::testSafePoint()
 void UndoManagerTest::testCursorPosition()
 {
     TestDocument doc;
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
 
     doc.setText(QLatin1String("aaaa bbbb cccc\n"
                               "dddd  ffff"));
@@ -165,7 +165,7 @@ void UndoManagerTest::testCursorPosition()
 void UndoManagerTest::testSelectionUndo()
 {
     TestDocument doc;
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
 
     doc.setText(QLatin1String("aaaa bbbb cccc\n"
                               "dddd eeee ffff"));
@@ -200,7 +200,7 @@ void UndoManagerTest::testUndoWordWrapBug301367()
     TestDocument doc;
     doc.setWordWrap(true);
     doc.setWordWrapAt(20);
-    KateView *view = static_cast<KateView *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
 
     QString text = QString::fromLatin1("1234 1234 1234 1234\n"
                                        "1234 1234 1234 1234");

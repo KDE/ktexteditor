@@ -148,7 +148,7 @@ private:
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char, indent will just give the script '\n'
      */
-    void scriptIndent(KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void scriptIndent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar);
 
     /**
      * Return true if the required style for the script is provided by the highlighter.
@@ -204,7 +204,7 @@ public:
      * \param view the view the user work at
      * \param range the range of text to indent...
      */
-    void indent(KateView *view, const KTextEditor::Range &range);
+    void indent(KTextEditor::ViewPrivate *view, const KTextEditor::Range &range);
 
     /**
      * The user typed some char, the indenter can react on this
@@ -213,7 +213,7 @@ public:
      * \param position current cursor position, after the inserted char...
      * \param typedChar the inserted char
      */
-    void userTypedChar(KateView *view, const KTextEditor::Cursor &position, QChar typedChar);
+    void userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar);
 
 public Q_SLOTS:
     void reloadScript();
@@ -233,7 +233,7 @@ private:
 
 /**
  * This action provides a list of available indenters and gets plugged
- * into the KateView's KActionCollection.
+ * into the KTextEditor::ViewPrivate's KActionCollection.
  */
 class KateViewIndentationAction : public KActionMenu
 {

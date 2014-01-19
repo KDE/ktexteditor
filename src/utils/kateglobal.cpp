@@ -496,12 +496,12 @@ void KTextEditor::EditorPrivate::deregisterDocument(KateDocument *doc)
     m_documents.removeAll(doc);
 }
 
-void KTextEditor::EditorPrivate::registerView(KateView *view)
+void KTextEditor::EditorPrivate::registerView(KTextEditor::ViewPrivate *view)
 {
     m_views.append(view);
 }
 
-void KTextEditor::EditorPrivate::deregisterView(KateView *view)
+void KTextEditor::EditorPrivate::deregisterView(KTextEditor::ViewPrivate *view)
 {
     m_views.removeAll(view);
 }

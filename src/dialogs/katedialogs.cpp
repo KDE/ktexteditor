@@ -1365,7 +1365,7 @@ void KateGotoBar::keyPressEvent(QKeyEvent *event)
 
 void KateGotoBar::gotoLine()
 {
-    KateView *kv = qobject_cast<KateView *>(m_view);
+    KTextEditor::ViewPrivate *kv = qobject_cast<KTextEditor::ViewPrivate *>(m_view);
     if (kv && kv->selection() && !kv->config()->persistentSelection()) {
         kv->clearSelection();
     }
@@ -1377,7 +1377,7 @@ void KateGotoBar::gotoLine()
 //END KateGotoBar
 
 //BEGIN KateDictionaryBar
-KateDictionaryBar::KateDictionaryBar(KateView *view, QWidget *parent)
+KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
     , m_view(view)
 {
