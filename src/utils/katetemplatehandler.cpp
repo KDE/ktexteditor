@@ -185,17 +185,17 @@ void KateTemplateHandler::slotTemplateInserted(Document *document, const Range &
 
     m_wholeTemplateRange = doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
 
-    disconnect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-               this, SLOT(slotTemplateInserted(KTextEditor::Document*,KTextEditor::Range)));
+    disconnect(doc(), &KTextEditor::Document::textInserted,
+               this, &KateTemplateHandler::slotTemplateInserted);
 }
 
 void KateTemplateHandler::cleanupAndExit()
 {
     ifDebug(qCDebug(LOG_PART) << "cleaning up and exiting";)
-    disconnect(doc(), SIGNAL(viewCreated(KTextEditor::Document*,KTextEditor::View*)),
-               this, SLOT(slotViewCreated(KTextEditor::Document*,KTextEditor::View*)));
-    disconnect(doc(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
-               this, SLOT(slotTextChanged(KTextEditor::Document*,KTextEditor::Range)));
+    disconnect(doc(), &KTextEditor::Document::viewCreated,
+               this, &KateTemplateHandler::slotViewCreated);
+    disconnect(doc(), &KTextEditor::Document::textInserted,
+               this, &KateTemplateHandler::slotTextChanged);
     disconnect(doc(), &KTextEditor::Document::textRemoved,
                this, &KateTemplateHandler::slotTextChanged);
 
