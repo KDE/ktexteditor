@@ -28,29 +28,6 @@ include_directories(
 
 # KTextEditor interface sources
 set(ktexteditor_LIB_SRCS
-src/ktexteditor.cpp
-src/document.cpp
-src/range.cpp
-src/documentcursor.cpp
-src/templateinterface.cpp
-src/templateinterface2.cpp
-src/attribute.cpp
-src/codecompletioninterface.cpp
-src/codecompletionmodel.cpp
-src/codecompletionmodelcontrollerinterface.cpp
-src/configinterface.cpp
-src/configpageinterface.cpp
-src/highlightinterface.cpp
-src/movinginterface.cpp
-src/movingcursor.cpp
-src/movingrange.cpp
-src/movingrangefeedback.cpp
-src/messageinterface.cpp
-
-# application interfaces
-src/application.cpp
-src/mainwindow.cpp
-   
 # text buffer & buffer helpers
 buffer/katetextbuffer.cpp
 buffer/katetextblock.cpp
@@ -186,6 +163,26 @@ utils/kateautoindent.cpp
 utils/katetemplatehandler.cpp
 utils/kateglobal.cpp
 utils/katecmd.cpp
+utils/ktexteditor.cpp
+utils/document.cpp
+utils/range.cpp
+utils/documentcursor.cpp
+utils/templateinterface.cpp
+utils/templateinterface2.cpp
+utils/attribute.cpp
+utils/codecompletioninterface.cpp
+utils/codecompletionmodel.cpp
+utils/codecompletionmodelcontrollerinterface.cpp
+utils/configinterface.cpp
+utils/configpageinterface.cpp
+utils/highlightinterface.cpp
+utils/movinginterface.cpp
+utils/movingcursor.cpp
+utils/movingrange.cpp
+utils/movingrangefeedback.cpp
+utils/messageinterface.cpp
+utils/application.cpp
+utils/mainwindow.cpp
 
 # schema
 schema/kateschema.cpp
