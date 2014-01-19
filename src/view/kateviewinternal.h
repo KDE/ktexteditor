@@ -417,7 +417,6 @@ private Q_SLOTS:
 
     void documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
     void documentTextRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
-    void documentTextChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const QString &oldText, const KTextEditor::Range &newRange);
 
     //TextHint
 public:

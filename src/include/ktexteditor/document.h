@@ -656,19 +656,6 @@ Q_SIGNALS:
     void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
 
     /**
-     * The \p document emits this signal whenever the text in range
-     * \p oldRange was removed and replaced with the text now in \e newRange,
-     * e.g. the user selects text and pastes new text to replace the selection.
-     * \note \p oldRange.start() is guaranteed to equal \p newRange.start().
-     * \param document document which emitted this signal
-     * \param oldRange range that the text previously occupied
-     * \param oldText old text that has been replaced
-     * \param newRange range that the changed text now occupies
-     * \see insertText(), insertLine(), removeText(), removeLine(), clear()
-     */
-    void textChanged(KTextEditor::Document *document, const KTextEditor::Range &oldRange, const QString &oldText, const KTextEditor::Range &newRange);
-
-    /**
      * Warn anyone listening that the current document is about to close.
      * At this point all of the information is still accessible, such as the text,
      * cursors and ranges.
