@@ -22,8 +22,6 @@
 
 #include <KPluginFactory>
 
-#include <QLoggingCategory>
-
 /**
  * wrapper factory to be sure nobody external deletes our kateglobal object
  * each instance will just increment the reference counter of our internal
