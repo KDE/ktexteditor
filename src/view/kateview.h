@@ -779,7 +779,7 @@ public:
     KTextEditor::Range visibleRange();
 
 Q_SIGNALS:
-    void displayRangeChanged(ViewPrivate *view);
+    void displayRangeChanged(KTextEditor::ViewPrivate *view);
 
 protected:
     KToggleAction               *m_toggleOnTheFlySpellCheck;
