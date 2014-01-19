@@ -169,8 +169,7 @@ public:
      * i.e. whether line() >= 0 and column() >= 0.
      * \return \e true , if the cursor position is valid, otherwise \e false
      */
-    inline bool isValid() const
-    {
+    inline bool isValid() const {
         return line() >= 0 && column() >= 0;
     }
 
@@ -180,8 +179,7 @@ public:
      * \return \e true , if the cursor is a valid text position , otherwise \e false
      */
     // TODO KDE5: use KTE::Document::isValidTextPosition()
-    inline bool isValidTextPosition() const
-    {
+    inline bool isValidTextPosition() const {
         return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
     }
 
@@ -272,8 +270,7 @@ public:
      * Even if this cursor belongs to a range, the created one not.
      * @return normal cursor
      */
-    const Cursor toCursor() const
-    {
+    const Cursor toCursor() const {
         return Cursor(line(), column());
     }
 
@@ -282,8 +279,7 @@ public:
      * Even if this cursor belongs to a range, the created one not.
      * @return normal cursor
      */
-    operator const Cursor() const
-    {
+    operator const Cursor() const {
         return Cursor(line(), column());
     }
 
@@ -300,8 +296,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e equal.
      */
-    inline friend bool operator==(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator==(const MovingCursor &c1, const MovingCursor &c2) {
         return c1.line() == c2.line() && c1.column() == c2.column();
     }
 
@@ -311,8 +306,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e not equal.
      */
-    inline friend bool operator!=(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator!=(const MovingCursor &c1, const MovingCursor &c2) {
         return !(c1 == c2);
     }
 
@@ -323,8 +317,7 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator>(const MovingCursor &c1, const MovingCursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
     }
 
@@ -335,8 +328,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator>=(const MovingCursor &c1, const MovingCursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
     }
 
@@ -347,8 +339,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator<(const MovingCursor &c1, const MovingCursor &c2) {
         return !(c1 >= c2);
     }
 
@@ -359,8 +350,7 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const MovingCursor &c1, const MovingCursor &c2)
-    {
+    inline friend bool operator<=(const MovingCursor &c1, const MovingCursor &c2) {
         return !(c1 > c2);
     }
 
@@ -370,8 +360,7 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingCursor *cursor)
-    {
+    inline friend QDebug operator<< (QDebug s, const MovingCursor *cursor) {
         if (cursor) {
             s.nospace() << "(" << cursor->line() << ", " << cursor->column() << ")";
         } else {
@@ -386,8 +375,7 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingCursor &cursor)
-    {
+    inline friend QDebug operator<< (QDebug s, const MovingCursor &cursor) {
         return s << &cursor;
     }
 };

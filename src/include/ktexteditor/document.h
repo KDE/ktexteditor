@@ -134,7 +134,7 @@ protected:
      * \param parent parent object
      * \see Editor::createDocument()
      */
-    Document (DocumentPrivate *impl, QObject *parent);
+    Document(DocumentPrivate *impl, QObject *parent);
 
 public:
     /**
@@ -470,8 +470,7 @@ public:
      * A Range which encompasses the whole document.
      * \return A range from the start to the end of the document
      */
-    inline Range documentRange() const
-    {
+    inline Range documentRange() const {
         return Range(Cursor::start(), documentEnd());
     }
 
@@ -502,8 +501,7 @@ public:
      * \param line line
      * \see lineLength(), line()
      */
-    inline Cursor endOfLine(int line) const
-    {
+    inline Cursor endOfLine(int line) const {
         return Cursor(line, lineLength(line));
     }
 

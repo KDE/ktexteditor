@@ -111,7 +111,7 @@ protected:
      *
      * @param impl d-pointer to use
      */
-    Editor (EditorPrivate *impl);
+    Editor(EditorPrivate *impl);
 
     /**
      * Virtual destructor.
@@ -181,7 +181,7 @@ public:
      * Get the current default encoding for this Editor part.
      * \return default encoding
      */
-    QString defaultEncoding () const;
+    QString defaultEncoding() const;
 
     /*
      * Configuration management.

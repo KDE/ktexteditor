@@ -384,7 +384,7 @@ public:
      * @param invocationType How the code completion was triggered
      * */
     virtual void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType);
-  
+
     /**
       * This function is responsible for inserting a selected completion into the
       * view. The default implementation replaces the text that the completions
@@ -395,8 +395,8 @@ public:
       * so far)
       * @param index identifies the completion match to insert
       * */
-    virtual void executeCompletionItem (KTextEditor::View *view, const Range &word, const QModelIndex &index) const;
-    
+    virtual void executeCompletionItem(KTextEditor::View *view, const Range &word, const QModelIndex &index) const;
+
     // Reimplementations
     /**
      * Reimplemented from QAbstractItemModel::columnCount(). The default implementation

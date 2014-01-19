@@ -198,8 +198,7 @@ public:
      *              supports the new size!
      * \return number of reserved marker types
      */
-    static int reservedMarkersCount()
-    {
+    static int reservedMarkersCount() {
         return 7;
     }
 

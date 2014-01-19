@@ -342,8 +342,7 @@ public:
      * Convert this clever range into a dumb one.
      * @return normal range
      */
-    const Range toRange() const
-    {
+    const Range toRange() const {
         return Range(start().toCursor(), end().toCursor());
     }
 
@@ -351,8 +350,7 @@ public:
      * Convert this clever range into a dumb one. Equal to toRange, allowing to use implicit conversion.
      * @return normal range
      */
-    operator const Range() const
-    {
+    operator const Range() const {
         return Range(start().toCursor(), end().toCursor());
     }
 
@@ -362,8 +360,7 @@ public:
      * @param cursor range to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingRange *range)
-    {
+    inline friend QDebug operator<< (QDebug s, const MovingRange *range) {
         if (range) {
             s << "[" << range->start() << " -> " << range->end() << "]";
         } else {
@@ -378,8 +375,7 @@ public:
      * @param range range to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const MovingRange &range)
-    {
+    inline friend QDebug operator<< (QDebug s, const MovingRange &range) {
         return s << &range;
     }
 
@@ -389,8 +385,7 @@ public:
      *
      * \returns \e true if the range contains no characters, otherwise \e false
      */
-    inline bool isEmpty() const
-    {
+    inline bool isEmpty() const {
         return start() == end();
     }
 
@@ -408,8 +403,7 @@ public:
      *
      * \return \e true, if this range contains \e range, otherwise \e false
      */
-    inline bool contains(const Range &range) const
-    {
+    inline bool contains(const Range &range) const {
         return range.start() >= start() && range.end() <= end();
     }
 
@@ -420,8 +414,7 @@ public:
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    inline bool contains(const Cursor &cursor) const
-    {
+    inline bool contains(const Cursor &cursor) const {
         return cursor >= start() && cursor < end();
     }
 
@@ -432,8 +425,7 @@ public:
      *
      * \return \e true if the line is wholly encompassed by this range, otherwise \e false.
      */
-    inline bool containsLine(int line) const
-    {
+    inline bool containsLine(int line) const {
         return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
     }
 
@@ -444,8 +436,7 @@ public:
      *
      * \return \e true if the range contains \e column, otherwise \e false
      */
-    inline bool containsColumn(int column) const
-    {
+    inline bool containsColumn(int column) const {
         return column >= start().column() && column < end().column();
     }
 
@@ -465,8 +456,7 @@ public:
      *
      * \return \e true, if the range overlaps at least part of \e line, otherwise \e false
      */
-    inline bool overlapsLine(int line) const
-    {
+    inline bool overlapsLine(int line) const {
         return line >= start().line() && line <= end().line();
     }
 
@@ -480,8 +470,7 @@ public:
      * \return \e true if the column is between the range's starting and ending
      *         columns, otherwise \e false.
      */
-    inline bool overlapsColumn(int column) const
-    {
+    inline bool overlapsColumn(int column) const {
         return start().column() <= column && end().column() > column;
     }
 
@@ -492,8 +481,7 @@ public:
      * \return \e true if both the start and end positions are on the same
      *         line, otherwise \e false
      */
-    inline bool onSingleLine() const
-    {
+    inline bool onSingleLine() const {
         return start().line() == end().line();
     }
 

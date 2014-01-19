@@ -61,8 +61,7 @@ public:
      */
     Cursor()
         : m_line(0)
-        , m_column(0)
-    {
+        , m_column(0) {
     }
 
     /**
@@ -73,16 +72,14 @@ public:
      */
     Cursor(int line, int column)
         : m_line(line)
-        , m_column(column)
-    {
+        , m_column(column) {
     }
 
     /**
      * Returns whether the current position of this cursor is a valid position
      * (line + column must both be >= 0).
      */
-    bool isValid() const
-    {
+    bool isValid() const {
         return m_line >= 0 && m_column >= 0;
     }
 
@@ -91,16 +88,14 @@ public:
      * The returned cursor position is set to (-1, -1).
      * \see isValid()
      */
-    static Cursor invalid()
-    {
+    static Cursor invalid() {
         return Cursor(-1, -1);
     }
 
     /**
      * Returns a cursor representing the start of any document - i.e., line 0, column 0.
      */
-    static Cursor start()
-    {
+    static Cursor start() {
         return Cursor();
     }
 
@@ -115,8 +110,7 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(const Cursor &position)
-    {
+    void setPosition(const Cursor &position) {
         m_line = position.m_line;
         m_column = position.m_column;
     }
@@ -129,8 +123,7 @@ public:
      * \param line new cursor line
      * \param column new cursor column
      */
-    void setPosition(int line, int column)
-    {
+    void setPosition(int line, int column) {
         m_line = line;
         m_column = column;
     }
@@ -139,8 +132,7 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    int line() const
-    {
+    int line() const {
         return m_line;
     }
 
@@ -148,8 +140,7 @@ public:
      * Set the cursor line to \e line.
      * \param line new cursor line
      */
-    void setLine(int line)
-    {
+    void setLine(int line) {
         m_line = line;
     }
 
@@ -157,8 +148,7 @@ public:
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    int column() const
-    {
+    int column() const {
         return m_column;
     }
 
@@ -166,8 +156,7 @@ public:
      * Set the cursor column to \e column.
      * \param column new cursor column
      */
-    void setColumn(int column)
-    {
+    void setColumn(int column) {
         m_column = column;
     }
 
@@ -175,8 +164,7 @@ public:
      * Determine if this cursor is located at the start of a line.
      * \return \e true if the cursor is situated at the start of the line, \e false if it isn't.
      */
-    bool atStartOfLine() const
-    {
+    bool atStartOfLine() const {
         return m_column == 0;
     }
 
@@ -184,8 +172,7 @@ public:
      * Determine if this cursor is located at the start of a document.
      * \return \e true if the cursor is situated at the start of the document, \e false if it isn't.
      */
-    bool atStartOfDocument() const
-    {
+    bool atStartOfDocument() const {
         return m_line == 0 && m_column == 0;
     }
 
@@ -194,8 +181,7 @@ public:
      * \param line will be filled with current cursor line
      * \param column will be filled with current cursor column
      */
-    void position(int &line, int &column) const
-    {
+    void position(int &line, int &column) const {
         line = m_line;
         column = m_column;
     }
@@ -207,8 +193,7 @@ public:
      * \param c2 the second position
      * \return a the summation of the two input cursors
      */
-    inline friend Cursor operator+(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend Cursor operator+(const Cursor &c1, const Cursor &c2) {
         return Cursor(c1.line() + c2.line(), c1.column() + c2.column());
     }
 
@@ -218,8 +203,7 @@ public:
      * \param c2 the position to add
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2)
-    {
+    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2) {
         c1.setPosition(c1.line() + c2.line(), c1.column() + c2.column());
         return c1;
     }
@@ -232,8 +216,7 @@ public:
      * \param c2 the second position
      * \return a cursor representing the subtraction of \p c2 from \p c1
      */
-    inline friend Cursor operator-(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend Cursor operator-(const Cursor &c1, const Cursor &c2) {
         return Cursor(c1.line() - c2.line(), c1.column() - c2.column());
     }
 
@@ -243,8 +226,7 @@ public:
      * \param c2 the position to subtract
      * \return a reference to the cursor which has just been subtracted from
      */
-    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2)
-    {
+    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2) {
         c1.setPosition(c1.line() - c2.line(), c1.column() - c2.column());
         return c1;
     }
@@ -259,8 +241,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e equal.
      */
-    inline friend bool operator==(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator==(const Cursor &c1, const Cursor &c2) {
         return c1.line() == c2.line() && c1.column() == c2.column();
     }
 
@@ -270,8 +251,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e not equal.
      */
-    inline friend bool operator!=(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator!=(const Cursor &c1, const Cursor &c2) {
         return !(c1 == c2);
     }
 
@@ -282,8 +262,7 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator>(const Cursor &c1, const Cursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column > c2.m_column);
     }
 
@@ -294,8 +273,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator>=(const Cursor &c1, const Cursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column >= c2.m_column);
     }
 
@@ -306,8 +284,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator<(const Cursor &c1, const Cursor &c2) {
         return !(c1 >= c2);
     }
 
@@ -318,16 +295,14 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const Cursor &c1, const Cursor &c2)
-    {
+    inline friend bool operator<=(const Cursor &c1, const Cursor &c2) {
         return !(c1 > c2);
     }
 
     /**
      * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Cursor &cursor)
-    {
+    inline friend QDebug operator<< (QDebug s, const Cursor &cursor) {
         if (&cursor) {
             s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
         } else {
@@ -354,7 +329,7 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO (KTextEditor::Cursor, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_MOVABLE_TYPE);
 
 #endif
 

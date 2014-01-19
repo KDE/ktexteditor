@@ -162,8 +162,7 @@ public:
      * i.e. whether line() >= 0 and column() >= 0.
      * \return \e true , if the cursor position is valid, otherwise \e false
      */
-    inline bool isValid() const
-    {
+    inline bool isValid() const {
         return line() >= 0 && column() >= 0;
     }
 
@@ -173,8 +172,7 @@ public:
      * \return \e true , if the cursor is a valid text position, otherwise \e false
      */
     // TODO KDE5: use KTE::Document::isValidTextPosition()
-    inline bool isValidTextPosition() const
-    {
+    inline bool isValidTextPosition() const {
         return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
     }
 
@@ -309,8 +307,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e equal.
      */
-    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2) {
         return c1.document() == c2.document() && c1.line() == c2.line() && c1.column() == c2.column();
     }
 
@@ -320,8 +317,7 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e not equal.
      */
-    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2) {
         return !(c1 == c2);
     }
 
@@ -332,8 +328,7 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
     }
 
@@ -344,8 +339,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2) {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
     }
 
@@ -356,8 +350,7 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2) {
         return !(c1 >= c2);
     }
 
@@ -368,8 +361,7 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2)
-    {
+    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2) {
         return !(c1 > c2);
     }
 
@@ -379,8 +371,7 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor *cursor)
-    {
+    inline friend QDebug operator<< (QDebug s, const DocumentCursor *cursor) {
         if (cursor) {
             s.nospace() << "(" << cursor->document() << ": " << cursor->line() << ", " << cursor->column() << ")";
         } else {
@@ -395,8 +386,7 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor &cursor)
-    {
+    inline friend QDebug operator<< (QDebug s, const DocumentCursor &cursor) {
         return s << &cursor;
     }
 
@@ -407,7 +397,7 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO (KTextEditor::DocumentCursor, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::DocumentCursor, Q_MOVABLE_TYPE);
 
 #endif
 

@@ -110,12 +110,12 @@ public:
      * Create a new application plugin.
      * \param parent parent object
      */
-    Plugin (QObject *parent);
+    Plugin(QObject *parent);
 
     /**
      * Virtual destructor.
      */
-    virtual ~Plugin ();
+    virtual ~Plugin();
 
     /**
      * Create a new View for this plugin for the given KTextEditor::MainWindow
@@ -126,7 +126,7 @@ public:
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL
      */
-    virtual QObject *createView (KTextEditor::MainWindow *mainWindow) = 0;
+    virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
 
 private:
     class PluginPrivate *const d;

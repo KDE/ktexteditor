@@ -164,7 +164,7 @@ protected:
      * \param parent parent widget
      * \see Document::createView()
      */
-    View (ViewPrivate *impl, QWidget *parent);
+    View(ViewPrivate *impl, QWidget *parent);
 
 public:
     /**

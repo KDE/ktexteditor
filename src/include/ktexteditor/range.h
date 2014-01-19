@@ -120,8 +120,7 @@ public:
      *
      * \returns const reference to the start position of this range.
      */
-    const Cursor &start() const
-    {
+    const Cursor &start() const {
         return m_start;
     }
 
@@ -130,8 +129,7 @@ public:
      *
      * \returns const reference to the end position of this range.
      */
-    const Cursor &end() const
-    {
+    const Cursor &end() const {
         return m_end;
     }
 
@@ -175,8 +173,7 @@ public:
      *
      * \param start new start cursor
      */
-    void setStart(const Cursor &start)
-    {
+    void setStart(const Cursor &start) {
         if (start > end()) {
             setRange(start, start);
         } else {
@@ -191,8 +188,7 @@ public:
      *
      * \param end new end cursor
      */
-    void setEnd(const Cursor &end)
-    {
+    void setEnd(const Cursor &end) {
         if (end < start()) {
             setRange(end, end);
         } else {
@@ -419,8 +415,7 @@ public:
      *
      * \return a the summation of the two input ranges
      */
-    inline friend Range operator+(const Range &r1, const Range &r2)
-    {
+    inline friend Range operator+(const Range &r1, const Range &r2) {
         return Range(r1.start() + r2.start(), r1.end() + r2.end());
     }
 
@@ -432,8 +427,7 @@ public:
      *
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Range &operator+=(Range &r1, const Range &r2)
-    {
+    inline friend Range &operator+=(Range &r1, const Range &r2) {
         r1.setRange(r1.start() + r2.start(), r1.end() + r2.end());
         return r1;
     }
@@ -447,8 +441,7 @@ public:
      *
      * \return a range representing the subtraction of \p r2 from \p r1
      */
-    inline friend Range operator-(const Range &r1, const Range &r2)
-    {
+    inline friend Range operator-(const Range &r1, const Range &r2) {
         return Range(r1.start() - r2.start(), r1.end() - r2.end());
     }
 
@@ -460,8 +453,7 @@ public:
      *
      * \return a reference to the range which has just been subtracted from
      */
-    inline friend Range &operator-=(Range &r1, const Range &r2)
-    {
+    inline friend Range &operator-=(Range &r1, const Range &r2) {
         r1.setRange(r1.start() - r2.start(), r1.end() - r2.end());
         return r1;
     }
@@ -474,8 +466,7 @@ public:
      *
      * \return the intersected range, invalid() if there is no overlap
      */
-    inline friend Range operator&(const Range &r1, const Range &r2)
-    {
+    inline friend Range operator&(const Range &r1, const Range &r2) {
         return r1.intersect(r2);
     }
 
@@ -487,8 +478,7 @@ public:
      *
      * \return a reference to this range, after the intersection has taken place
      */
-    inline friend Range &operator&=(Range &r1, const Range &r2)
-    {
+    inline friend Range &operator&=(Range &r1, const Range &r2) {
         r1.setRange(r1.intersect(r2));
         return r1;
     }
@@ -501,8 +491,7 @@ public:
      *
      * \return \e true if \e r1 and \e r2 equal, otherwise \e false
      */
-    inline friend bool operator==(const Range &r1, const Range &r2)
-    {
+    inline friend bool operator==(const Range &r1, const Range &r2) {
         return r1.start() == r2.start() && r1.end() == r2.end();
     }
 
@@ -514,8 +503,7 @@ public:
      *
      * \return \e true if \e r1 and \e r2 do \e not equal, otherwise \e false
      */
-    inline friend bool operator!=(const Range &r1, const Range &r2)
-    {
+    inline friend bool operator!=(const Range &r1, const Range &r2) {
         return r1.start() != r2.start() || r1.end() != r2.end();
     }
 
@@ -528,8 +516,7 @@ public:
      *
      * \return \e true if \e r1 starts after where \e r2 ends, otherwise \e false
      */
-    inline friend bool operator>(const Range &r1, const Range &r2)
-    {
+    inline friend bool operator>(const Range &r1, const Range &r2) {
         return r1.start() > r2.end();
     }
 
@@ -542,16 +529,14 @@ public:
      *
      * \return \e true if \e r1 ends before \e r2 begins, otherwise \e false
      */
-    inline friend bool operator<(const Range &r1, const Range &r2)
-    {
+    inline friend bool operator<(const Range &r1, const Range &r2) {
         return r1.end() < r2.start();
     }
 
     /**
      * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Range &range)
-    {
+    inline friend QDebug operator<< (QDebug s, const Range &range) {
         if (&range) {
             s << "[" << range.start() << " -> " << range.end() << "]";
         } else {
@@ -578,7 +563,7 @@ private:
 
 }
 
-Q_DECLARE_TYPEINFO (KTextEditor::Range, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_MOVABLE_TYPE);
 
 #endif
 
