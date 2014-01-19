@@ -239,7 +239,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
 
     if (pl.selectionOnly) {
         // set a line range from the first selected line to the last
-        pl.selectionRange = m_doc->activeView()->selectionRange();
+        pl.selectionRange = m_view->selectionRange();
         pl.firstline = pl.selectionRange.start().line();
         pl.lastline = pl.selectionRange.end().line();
     }
@@ -649,7 +649,7 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
     // selectionOnly: clip non-selection parts and adjust painter position if needed
     int _xadjust = 0;
     if (pl.selectionOnly) {
-        if (m_doc->activeView()->blockSelection()) {
+        if (m_view->blockSelection()) {
             int _x = m_renderer->cursorToX(rangeptr->viewLine(0), pl.selectionRange.start());
             int _x1 = m_renderer->cursorToX(rangeptr->viewLine(rangeptr->viewLineCount() - 1), pl.selectionRange.end());
             _xadjust = _x;
