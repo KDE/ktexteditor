@@ -251,6 +251,9 @@ public:
     KateViRange textObjectInnerSentence();
     KateViRange textObjectASentence();
 
+    KateViRange textObjectInnerParagraph();
+    KateViRange textObjectAParagraph();
+
     KateViRange textObjectAQuoteDouble();
     KateViRange textObjectInnerQuoteDouble();
 
@@ -304,6 +307,9 @@ protected:
     void shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo) const;
     Cursor findSentenceStart();
     Cursor findSentenceEnd();
+    Cursor findParagraphStart();
+    Cursor findParagraphEnd();
+
 
 protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
