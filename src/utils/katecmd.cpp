@@ -114,7 +114,7 @@ QStringList KateCmd::commandList() const
 
 KateCmd *KateCmd::self()
 {
-    return KateGlobal::self()->cmdManager();
+    return KTextEditor::EditorPrivate::self()->cmdManager();
 }
 
 void KateCmd::appendHistory(const QString &cmd)

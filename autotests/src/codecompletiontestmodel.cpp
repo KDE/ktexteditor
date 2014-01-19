@@ -33,7 +33,7 @@ CodeCompletionTestModel::CodeCompletionTestModel(KTextEditor::View *parent, cons
     Q_ASSERT(cc());
 
     cc()->setAutomaticInvocationEnabled(true);
-    cc()->unregisterCompletionModel(KateGlobal::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
+    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
     cc()->registerCompletionModel(this);
 }
 

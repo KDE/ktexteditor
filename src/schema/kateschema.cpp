@@ -95,7 +95,7 @@ void KateViewSchemaAction::slotAboutToShow()
 {
     KateView *view = m_view;
 
-    QList<KateSchema> schemas = KateGlobal::self()->schemaManager()->list();
+    QList<KateSchema> schemas = KTextEditor::EditorPrivate::self()->schemaManager()->list();
 
     if (!m_group) {
         m_group = new QActionGroup(menu());

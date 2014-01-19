@@ -74,7 +74,7 @@ void KateAnimation::show()
 
     // show according to effects config
     if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)
-            || KateGlobal::unitTestMode() // due to timing issues in the unit test
+            || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
        ) {
         // launch show effect
         // NOTE: use a singleShot timer to avoid resizing issues when showing the message widget the first time (bug #316666)
@@ -104,7 +104,7 @@ void KateAnimation::hide()
 
     // hide according to effects config
     if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)
-            || KateGlobal::unitTestMode() // due to timing issues in the unit test
+            || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
        ) {
         // hide depending on effect
         if (m_fadeEffect) {

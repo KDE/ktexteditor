@@ -386,7 +386,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
                 // avoid recursive invalidation
                 KateHlManager::self()->setForceNoDCReset(true);
 
-                foreach (KateDocument *doc, KateGlobal::self()->kateDocuments()) {
+                foreach (KateDocument *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
                     doc->makeAttribs();
                 }
 

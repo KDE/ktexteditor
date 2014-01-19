@@ -109,7 +109,7 @@ void ModeConfigPage::apply()
 
     save();
 
-    KateGlobal::self()->modeManager()->save(m_types);
+    KTextEditor::EditorPrivate::self()->modeManager()->save(m_types);
 }
 
 void ModeConfigPage::reload()
@@ -118,7 +118,7 @@ void ModeConfigPage::reload()
     m_types.clear();
 
     // deep copy...
-    foreach (KateFileType *type, KateGlobal::self()->modeManager()->list()) {
+    foreach (KateFileType *type, KTextEditor::EditorPrivate::self()->modeManager()->list()) {
         KateFileType *t = new KateFileType();
         *t = *type;
         m_types.append(t);
@@ -153,7 +153,7 @@ void ModeConfigPage::update()
 
     // get current filetype from active view via the host application
     int currentIndex = 0;
-    KateView *kv = qobject_cast<KateView *>(KateGlobal::self()->application()->activeMainWindow()->activeView());
+    KateView *kv = qobject_cast<KateView *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString filetypeName = kv->doc()->fileType();
         for (int i = 0; i < m_types.size(); ++i) {

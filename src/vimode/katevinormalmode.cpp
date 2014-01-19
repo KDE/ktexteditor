@@ -2701,7 +2701,7 @@ KateViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
 KateViRange KateViNormalMode::motionToNextOccurrence()
 {
     QString word = getWordUnderCursor();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
     word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
 
     m_viInputModeManager->setLastSearchPattern(word);
@@ -2716,7 +2716,7 @@ KateViRange KateViNormalMode::motionToNextOccurrence()
 KateViRange KateViNormalMode::motionToPrevOccurrence()
 {
     QString word = getWordUnderCursor();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
     word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
 
     m_viInputModeManager->setLastSearchPattern(word);

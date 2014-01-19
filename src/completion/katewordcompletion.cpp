@@ -318,7 +318,7 @@ struct KateWordCompletionViewPrivate {
 KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac)
     : QObject(view),
       m_view(view),
-      m_dWCompletionModel(KateGlobal::self()->wordCompletionModel()),
+      m_dWCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()),
       d(new KateWordCompletionViewPrivate)
 {
     d->isCompleting = false;

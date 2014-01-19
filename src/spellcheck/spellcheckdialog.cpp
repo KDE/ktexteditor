@@ -191,7 +191,7 @@ void KateSpellCheckDialog::corrected(const QString &word, int pos, const QString
     KTextEditor::Cursor replacementStartCursor = locatePosition(origPos);
     KTextEditor::Range replacementRange = KTextEditor::Range(replacementStartCursor, length);
     KateDocument *doc = m_view->doc();
-    KateGlobal::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(newWord, doc, replacementRange);
+    KTextEditor::EditorPrivate::self()->spellCheckManager()->replaceCharactersEncodedIfNecessary(newWord, doc, replacementRange);
 
     m_currentSpellCheckRange.setRange(KTextEditor::Range(replacementStartCursor, m_currentSpellCheckRange.end()));
     // we have to be careful here: due to static word wrapping the text might change in addition to simply
@@ -206,7 +206,7 @@ void KateSpellCheckDialog::performSpellCheck(const KTextEditor::Range &range)
     if (range.isEmpty()) {
         spellCheckDone();
     }
-    m_languagesInSpellCheckRange = KateGlobal::self()->spellCheckManager()->spellCheckLanguageRanges(m_view->doc(), range);
+    m_languagesInSpellCheckRange = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckLanguageRanges(m_view->doc(), range);
     m_currentLanguageRangeIterator = m_languagesInSpellCheckRange.begin();
     m_currentSpellCheckRange = KTextEditor::Range::invalid();
     installNextSpellCheckRange();
@@ -223,7 +223,7 @@ void KateSpellCheckDialog::installNextSpellCheckRange()
         spellCheckDone();
         return;
     }
-    KateSpellCheckManager *spellCheckManager = KateGlobal::self()->spellCheckManager();
+    KateSpellCheckManager *spellCheckManager = KTextEditor::EditorPrivate::self()->spellCheckManager();
     KTextEditor::Cursor nextRangeBegin = (m_currentSpellCheckRange.isValid() ? m_currentSpellCheckRange.end()
                                           : KTextEditor::Cursor::invalid());
     m_currentSpellCheckRange = KTextEditor::Range::invalid();

@@ -72,7 +72,7 @@ KateScriptActionMenu::KateScriptActionMenu(KateView *view, const QString &text)
     repopulate();
 
     // on script-reload signal, repopulate script menu
-    connect(KateGlobal::self()->scriptManager(), SIGNAL(reloaded()),
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()),
             this, SLOT(repopulate()));
 }
 
@@ -105,7 +105,7 @@ void KateScriptActionMenu::repopulate()
 
     // now add all command line script commands
     QVector<KateCommandLineScript *> scripts =
-        KateGlobal::self()->scriptManager()->commandLineScripts();
+        KTextEditor::EditorPrivate::self()->scriptManager()->commandLineScripts();
 
     QHash<QString, QMenu *> menus;
 

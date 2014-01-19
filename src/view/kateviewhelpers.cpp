@@ -2504,7 +2504,7 @@ void KatePasteMenu::slotAboutToShow()
      * insert complete paste history
      */
     int i = 0;
-    Q_FOREACH (const QString &text, KateGlobal::self()->clipboardHistory()) {
+    Q_FOREACH (const QString &text, KTextEditor::EditorPrivate::self()->clipboardHistory()) {
         /**
          * get text for the menu ;)
          */
@@ -2527,12 +2527,12 @@ void KatePasteMenu::paste()
 
     // get index
     int i = action->data().toInt();
-    if (i >= KateGlobal::self()->clipboardHistory().size()) {
+    if (i >= KTextEditor::EditorPrivate::self()->clipboardHistory().size()) {
         return;
     }
 
     // paste
-    m_view->paste(&KateGlobal::self()->clipboardHistory()[i]);
+    m_view->paste(&KTextEditor::EditorPrivate::self()->clipboardHistory()[i]);
 }
 
 #include "kateviewhelpers.moc"

@@ -437,8 +437,8 @@ void KateDocumentConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KateGlobal::self()->kateDocuments().size(); ++z) {
-            (KateGlobal::self()->kateDocuments())[z]->updateConfig();
+        for (int z = 0; z < KTextEditor::EditorPrivate::self()->kateDocuments().size(); ++z) {
+            (KTextEditor::EditorPrivate::self()->kateDocuments())[z]->updateConfig();
         }
     }
 }
@@ -1458,8 +1458,8 @@ void KateViewConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KateGlobal::self()->views().size(); ++z) {
-            (KateGlobal::self()->views())[z]->updateConfig();
+        for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
+            (KTextEditor::EditorPrivate::self()->views())[z]->updateConfig();
         }
     }
 }
@@ -2204,8 +2204,8 @@ void KateRendererConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KateGlobal::self()->views().size(); ++z) {
-            (KateGlobal::self()->views())[z]->renderer()->updateConfig();
+        for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
+            (KTextEditor::EditorPrivate::self()->views())[z]->renderer()->updateConfig();
         }
     }
 }
@@ -2236,7 +2236,7 @@ void KateRendererConfig::reloadSchema()
 {
     if (isGlobal()) {
         setSchemaInternal(m_schema);
-        foreach (KateView *view, KateGlobal::self()->views()) {
+        foreach (KateView *view, KTextEditor::EditorPrivate::self()->views()) {
             view->renderer()->config()->reloadSchema();
         }
     }
@@ -2251,7 +2251,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_schemaSet = true;
     m_schema = schema;
 
-    KConfigGroup config = KateGlobal::self()->schemaManager()->schema(schema);
+    KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(schema);
 
     // NOTE keep in sync with KateSchemaConfigColorTab::schemaChanged
     KColorScheme schemeView(QPalette::Active, KColorScheme::View);

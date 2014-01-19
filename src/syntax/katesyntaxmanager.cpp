@@ -94,7 +94,7 @@ KateHlManager::~KateHlManager()
 
 KateHlManager *KateHlManager::self()
 {
-    return KateGlobal::self()->hlManager();
+    return KTextEditor::EditorPrivate::self()->hlManager();
 }
 
 KateHighlighting *KateHlManager::getHl(int n)

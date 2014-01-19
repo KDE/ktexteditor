@@ -124,7 +124,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     KateViewConfig *viewConfig = KateViewConfig::global();
     KateRendererConfig *rendererConfig = KateRendererConfig::global();
 
-    if ((activeView = qobject_cast<KateView *>(KateGlobal::self()->application()->activeMainWindow()->activeView()))) {
+    if ((activeView = qobject_cast<KateView *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView()))) {
         activeDoc = activeView->doc();
         viewConfig = activeView->config();
         docConfig = activeDoc->config();
@@ -290,7 +290,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'scheme' to list
     QStringList schemas;
-    Q_FOREACH (const KateSchema &schema, KateGlobal::self()->schemaManager()->list()) {
+    Q_FOREACH (const KateSchema &schema, KTextEditor::EditorPrivate::self()->schemaManager()->list()) {
         schemas.append(schema.rawName);
     }
     item = new VariableStringListItem(QLatin1String("scheme"), schemas, rendererConfig->schema());

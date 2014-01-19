@@ -322,7 +322,7 @@ void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
     qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
     m_isRecordingMacro = true;
     m_recordingMacroRegister = macroRegister;
-    KateGlobal::self()->viInputModeGlobal()->clearMacro(macroRegister);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMacro(macroRegister);
     m_currentMacroKeyEventsLog.clear();
     m_currentMacroCompletionsLog.clear();
 }
@@ -331,7 +331,7 @@ void KateViInputModeManager::finishRecordingMacro()
 {
     Q_ASSERT(m_isRecordingMacro);
     m_isRecordingMacro = false;
-    KateGlobal::self()->viInputModeGlobal()->storeMacro(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->storeMacro(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
 }
 
 bool KateViInputModeManager::isRecordingMacro()
@@ -346,12 +346,12 @@ void KateViInputModeManager::replayMacro(QChar macroRegister)
     }
     m_lastPlayedMacroRegister = macroRegister;
     qCDebug(LOG_PART) << "Replaying macro: " << macroRegister;
-    const QString macroAsFeedableKeypresses = KateGlobal::self()->viInputModeGlobal()->getMacro(macroRegister);
+    const QString macroAsFeedableKeypresses = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMacro(macroRegister);
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     m_macrosBeingReplayedCount++;
     m_nextLoggedMacroCompletionIndex.push(0);
-    m_macroCompletionsToReplay.push(KateGlobal::self()->viInputModeGlobal()->getMacroCompletions(macroRegister));
+    m_macroCompletionsToReplay.push(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMacroCompletions(macroRegister));
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
     feedKeyPresses(macroAsFeedableKeypresses);
     m_keyMapperStack.pop();
@@ -468,7 +468,7 @@ void KateViInputModeManager::viEnterNormalMode()
 
         if (r.isValid()) {
             QString insertedText = m_view->doc()->text(r);
-            KateGlobal::self()->viInputModeGlobal()->fillRegister(QLatin1Char('^'), insertedText);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(QLatin1Char('^'), insertedText);
         }
 
         addMark(m_view->doc(), QLatin1Char('^'), Cursor(m_view->cursorPosition()), false, false);
@@ -561,7 +561,7 @@ const QString KateViInputModeManager::getVerbatimKeys() const
 void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 {
 
-    if (KateGlobal::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
+    if (KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
         QStringList names = config.readEntry("ViRegisterNames", QStringList());
         QStringList contents = config.readEntry("ViRegisterContents", QStringList());
         QList<int> flags = config.readEntry("ViRegisterFlags", QList<int>());
@@ -570,7 +570,7 @@ void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
         if (names.size() == contents.size() && contents.size() == flags.size()) {
             for (int i = 0; i < names.size(); i++) {
                 if (!names.at(i).isEmpty()) {
-                    KateGlobal::self()->viInputModeGlobal()->fillRegister(names.at(i).at(0), contents.at(i), (OperationMode)(flags.at(i)));
+                    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(names.at(i).at(0), contents.at(i), (OperationMode)(flags.at(i)));
                 }
             }
         }
@@ -597,8 +597,8 @@ void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 
 void KateViInputModeManager::writeSessionConfig(KConfigGroup &config)
 {
-    if (KateGlobal::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
-        const QMap<QChar, KateViRegister> *regs = KateGlobal::self()->viInputModeGlobal()->getRegisters();
+    if (KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
+        const QMap<QChar, KateViRegister> *regs = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters();
         QStringList names, contents;
         QList<int> flags;
         QMap<QChar, KateViRegister>::const_iterator i;

@@ -290,7 +290,7 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 
     // If we havent this schema, read in from config file
     if (! m_schemas.contains(newSchema)) {
-        KConfigGroup config = KateGlobal::self()->schemaManager()->schema(newSchema);
+        KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(newSchema);
         QVector<KateColorItem> items = readConfig(config);
 
         m_schemas[ newSchema ] = items;
@@ -352,7 +352,7 @@ void KateSchemaConfigColorTab::apply()
     schemaChanged(m_currentSchema);
     QMap<QString, QVector<KateColorItem> >::Iterator it;
     for (it =  m_schemas.begin(); it !=  m_schemas.end(); ++it) {
-        KConfigGroup config = KateGlobal::self()->schemaManager()->schema(it.key());
+        KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
         qCDebug(LOG_PART) << "writing 'Color' tab: scheme =" << it.key()
                           << "and config group =" << config.name();
 
@@ -379,7 +379,7 @@ void KateSchemaConfigColorTab::reload()
     m_schemas.clear();
 
     // load from config
-    KConfigGroup config = KateGlobal::self()->schemaManager()->schema(m_currentSchema);
+    KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(m_currentSchema);
     QVector<KateColorItem> items = readConfig(config);
 
     // first block signals otherwise setColor emits changed
@@ -427,7 +427,7 @@ void KateSchemaConfigFontTab::apply()
 {
     QMap<QString, QFont>::Iterator it;
     for (it = m_fonts.begin(); it != m_fonts.end(); ++it) {
-        KateGlobal::self()->schemaManager()->schema(it.key()).writeEntry("Font", it.value());
+        KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key()).writeEntry("Font", it.value());
     }
 
     // all fonts are written, so throw away all cached schemas
@@ -452,7 +452,7 @@ void KateSchemaConfigFontTab::schemaChanged(const QString &newSchema)
     if (m_fonts.contains(m_currentSchema)) {
         newFont = m_fonts[m_currentSchema];
     } else {
-        newFont = KateGlobal::self()->schemaManager()->schema(m_currentSchema).readEntry("Font", newFont);
+        newFont = KTextEditor::EditorPrivate::self()->schemaManager()->schema(m_currentSchema).readEntry("Font", newFont);
     }
 
     m_fontchooser->disconnect(this);
@@ -624,7 +624,7 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
 
     // get current highlighting from the host application
     int hl = 0;
-    KateView *kv = qobject_cast<KateView *>(KateGlobal::self()->application()->activeMainWindow()->activeView());
+    KateView *kv = qobject_cast<KateView *>(KTextEditor::EditorPrivate::self()->application()->activeMainWindow()->activeView());
     if (kv) {
         const QString hlName = kv->doc()->highlight()->name();
         hl = KateHlManager::self()->nameFind(hlName);
@@ -1051,7 +1051,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
         //
 
         // if schema exists, prepare option to replace
-        if (KateGlobal::self()->schemaManager()->schema(schemaName).exists()) {
+        if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
             howToImport.radioReplaceExisting->show();
             howToImport.radioReplaceExisting->setText(i18n("Replace existing schema %1", schemaName));
             howToImport.radioReplaceExisting->setChecked(true);
@@ -1079,7 +1079,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
             // new one, check again, whether the schema already exists
             else if (howToImport.radioAsNew->isChecked()) {
                 schemaName = howToImport.newName->text();
-                if (KateGlobal::self()->schemaManager()->schema(schemaName).exists()) {
+                if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
                     reask = true;
                 } else {
                     reask = false;
@@ -1194,8 +1194,8 @@ void KateSchemaConfigPage::apply()
     m_highlightTab->apply();
 
     // just sync the config and reload
-    KateGlobal::self()->schemaManager()->config().sync();
-    KateGlobal::self()->schemaManager()->config().reparseConfiguration();
+    KTextEditor::EditorPrivate::self()->schemaManager()->config().sync();
+    KTextEditor::EditorPrivate::self()->schemaManager()->config().reparseConfiguration();
 
     // clear all attributes
     for (int i = 0; i < KateHlManager::self()->highlights(); ++i) {
@@ -1218,7 +1218,7 @@ void KateSchemaConfigPage::apply()
 void KateSchemaConfigPage::reload()
 {
     // now reload the config from disc
-    KateGlobal::self()->schemaManager()->config().reparseConfiguration();
+    KTextEditor::EditorPrivate::self()->schemaManager()->config().reparseConfiguration();
 
     // reinitialize combo boxes
     refillCombos(KateRendererConfig::global()->schema(), KateRendererConfig::global()->schema());
@@ -1242,7 +1242,7 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
     // reinitialize combo boxes
     schemaCombo->clear();
     defaultSchemaCombo->clear();
-    QList<KateSchema> schemaList = KateGlobal::self()->schemaManager()->list();
+    QList<KateSchema> schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
     foreach (const KateSchema &s, schemaList) {
         schemaCombo->addItem(s.translatedName(), s.rawName);
         defaultSchemaCombo->addItem(s.translatedName(), s.rawName);
@@ -1284,14 +1284,14 @@ void KateSchemaConfigPage::deleteSchema()
     const int comboIndex = schemaCombo->currentIndex();
     const QString schemaNameToDelete = schemaCombo->itemData(comboIndex).toString();
 
-    if (KateGlobal::self()->schemaManager()->schemaData(schemaNameToDelete).shippedDefaultSchema) {
+    if (KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schemaNameToDelete).shippedDefaultSchema) {
         // Default and Printing schema cannot be deleted.
         qCDebug(LOG_PART) << "default and printing schema cannot be deleted";
         return;
     }
 
     // kill group
-    KateGlobal::self()->schemaManager()->config().deleteGroup(schemaNameToDelete);
+    KTextEditor::EditorPrivate::self()->schemaManager()->config().deleteGroup(schemaNameToDelete);
 
     // fallback to Default schema
     schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(QString::fromLatin1("Normal"))));
@@ -1317,7 +1317,7 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
     }
 
     // try if schema already around
-    if (KateGlobal::self()->schemaManager()->schema(schemaName).exists()) {
+    if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
         KMessageBox::information(this, i18n("<p>The schema %1 already exists.</p><p>Please choose a different schema name.</p>", schemaName), i18n("New Schema"));
         return false;
     }
@@ -1334,7 +1334,7 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
 
 void KateSchemaConfigPage::schemaChanged(const QString &schema)
 {
-    btndel->setEnabled(!KateGlobal::self()->schemaManager()->schemaData(schema).shippedDefaultSchema);
+    btndel->setEnabled(!KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).shippedDefaultSchema);
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);

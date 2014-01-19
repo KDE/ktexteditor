@@ -761,7 +761,7 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KateView *view, const KTex
     deleteMovingRanges(highlightsList);
 
     QList<QPair<KTextEditor::Range, QString> > spellCheckRanges
-        = KateGlobal::self()->spellCheckManager()->spellCheckRanges(m_document,
+        = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(m_document,
                 intersection,
                 true);
     //we queue them up in reverse
@@ -783,7 +783,7 @@ void KateOnTheFlyChecker::queueLineSpellCheck(KateDocument *kateDocument, int li
     deleteMovingRanges(highlightsList);
 
     QList<QPair<KTextEditor::Range, QString> > spellCheckRanges
-        = KateGlobal::self()->spellCheckManager()->spellCheckRanges(kateDocument,
+        = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(kateDocument,
                 range,
                 true);
     //we queue them up in reverse

@@ -48,9 +48,9 @@
 
 using namespace KTextEditor;
 
-Editor::Editor(QObject *parent)
-    : QObject(parent)
-    , d(nullptr)
+Editor::Editor(EditorPrivate *impl)
+    : QObject ()
+    , d (impl)
 {
 }
 
@@ -61,9 +61,9 @@ Editor::~Editor()
 Editor *KTextEditor::Editor::instance()
 {
     /**
-     * Just use internal KateGlobal::self()
+     * Just use internal KTextEditor::EditorPrivate::self()
      */
-    return KateGlobal::self();
+    return KTextEditor::EditorPrivate::self();
 }
 
 QString Editor::defaultEncoding () const
@@ -71,7 +71,7 @@ QString Editor::defaultEncoding () const
     /**
      * return default encoding in global config object
      */
-    return KateGlobal::self()->documentConfig()->encoding ();
+    return d->documentConfig()->encoding ();
 }
 
 bool View::insertText(const QString &text)

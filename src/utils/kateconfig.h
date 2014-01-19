@@ -37,6 +37,10 @@ class KateView;
 class KateDocument;
 class KateRenderer;
 
+namespace KTextEditor {
+    class EditorPrivate;
+}
+
 class KConfig;
 
 class QTextCodec;
@@ -93,10 +97,10 @@ private:
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig
 {
 private:
-    friend class KateGlobal;
+    friend class KTextEditor::EditorPrivate;
 
     /**
-     * only used in KateGlobal for the static global fallback !!!
+     * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
     KateGlobalConfig();
 
@@ -148,7 +152,7 @@ private:
 class KTEXTEDITOR_EXPORT KateDocumentConfig : public KateConfig
 {
 private:
-    friend class KateGlobal;
+    friend class KTextEditor::EditorPrivate;
 
     KateDocumentConfig();
 
@@ -398,10 +402,10 @@ private:
 class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig
 {
 private:
-    friend class KateGlobal;
+    friend class KTextEditor::EditorPrivate;
 
     /**
-     * only used in KateGlobal for the static global fallback !!!
+     * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
     KateViewConfig();
 
@@ -620,10 +624,10 @@ private:
 class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig
 {
 private:
-    friend class KateGlobal;
+    friend class KTextEditor::EditorPrivate;
 
     /**
-     * only used in KateGlobal for the static global fallback !!!
+     * only used in KTextEditor::EditorPrivate for the static global fallback !!!
      */
     KateRendererConfig();
 

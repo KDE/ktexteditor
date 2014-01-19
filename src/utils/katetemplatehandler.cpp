@@ -1105,7 +1105,7 @@ QString KateTemplateHandler::MirrorBehaviour::getMirrorString(const QString &sou
     }
 
     case Scripted: {
-        KateTemplateScript *script = KateGlobal::self()->scriptManager()->templateScript(m_templateScript);
+        KateTemplateScript *script = KTextEditor::EditorPrivate::self()->scriptManager()->templateScript(m_templateScript);
 
         if (script) {
             QString result = script->invoke(m_handler->view(), m_functionName, source);

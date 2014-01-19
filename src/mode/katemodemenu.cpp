@@ -70,12 +70,12 @@ void KateModeMenu::updateMenu(KTextEditor::Document *doc)
 void KateModeMenu::slotAboutToShow()
 {
     KateDocument *doc = m_doc;
-    int count = KateGlobal::self()->modeManager()->list().count();
+    int count = KTextEditor::EditorPrivate::self()->modeManager()->list().count();
 
     for (int z = 0; z < count; z++) {
-        QString nameRaw = KateGlobal::self()->modeManager()->list().at(z)->name;
-        QString hlName = KateGlobal::self()->modeManager()->list().at(z)->nameTranslated();
-        QString hlSection = KateGlobal::self()->modeManager()->list().at(z)->sectionTranslated();
+        QString nameRaw = KTextEditor::EditorPrivate::self()->modeManager()->list().at(z)->name;
+        QString hlName = KTextEditor::EditorPrivate::self()->modeManager()->list().at(z)->nameTranslated();
+        QString hlSection = KTextEditor::EditorPrivate::self()->modeManager()->list().at(z)->sectionTranslated();
 
         if (!hlSection.isEmpty() && !names.contains(hlName)) {
             if (!subMenusName.contains(hlSection)) {
@@ -129,7 +129,7 @@ void KateModeMenu::slotAboutToShow()
         }
     } else {
         if (!doc->fileType().isEmpty()) {
-            const KateFileType &t = KateGlobal::self()->modeManager()->fileType(doc->fileType());
+            const KateFileType &t = KTextEditor::EditorPrivate::self()->modeManager()->fileType(doc->fileType());
             int i = subMenusName.indexOf(t.section);
             if (i >= 0 && subMenus.at(i)) {
                 QList<QAction *> actions = subMenus.at(i)->actions();

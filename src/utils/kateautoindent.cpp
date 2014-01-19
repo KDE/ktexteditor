@@ -65,7 +65,7 @@ QStringList KateAutoIndent::listIdentifiers()
 int KateAutoIndent::modeCount()
 {
     // inbuild modes + scripts
-    return 2 + KateGlobal::self()->scriptManager()->indentationScriptCount();
+    return 2 + KTextEditor::EditorPrivate::self()->scriptManager()->indentationScriptCount();
 }
 
 QString KateAutoIndent::modeName(int mode)
@@ -78,7 +78,7 @@ QString KateAutoIndent::modeName(int mode)
         return MODE_NORMAL;
     }
 
-    return KateGlobal::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().baseName();
+    return KTextEditor::EditorPrivate::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().baseName();
 }
 
 QString KateAutoIndent::modeDescription(int mode)
@@ -91,7 +91,7 @@ QString KateAutoIndent::modeDescription(int mode)
         return i18nc("Autoindent mode", "Normal");
     }
 
-    const QString &name = KateGlobal::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().name();
+    const QString &name = KTextEditor::EditorPrivate::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().name();
     return i18nc("Autoindent mode", name.toUtf8().constData());
 }
 
@@ -101,7 +101,7 @@ QString KateAutoIndent::modeRequiredStyle(int mode)
         return QString();
     }
 
-    return KateGlobal::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().requiredStyle();
+    return KTextEditor::EditorPrivate::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().requiredStyle();
 }
 
 uint KateAutoIndent::modeNumber(const QString &name)
@@ -120,7 +120,7 @@ KateAutoIndent::KateAutoIndent(KateDocument *_doc)
     // don't call updateConfig() here, document might is not ready for that....
 
     // on script reload, the script pointer is invalid -> force reload
-    connect(KateGlobal::self()->scriptManager(), SIGNAL(reloaded()),
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()),
             this, SLOT(reloadScript()));
 }
 
@@ -330,7 +330,7 @@ void KateAutoIndent::setMode(const QString &name)
     }
 
     // handle script indenters, if any for this name...
-    KateIndentScript *script = KateGlobal::self()->scriptManager()->indentationScript(name);
+    KateIndentScript *script = KTextEditor::EditorPrivate::self()->scriptManager()->indentationScript(name);
     if (script) {
         if (isStyleProvided(script, doc->highlight())) {
             m_script = script;

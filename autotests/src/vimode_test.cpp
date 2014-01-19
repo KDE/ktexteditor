@@ -114,7 +114,7 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
     Q_ASSERT(m_kateView);
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(false);
-    cc()->unregisterCompletionModel(KateGlobal::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
+    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
     connect(parent->document(), SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)),
             this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
     connect(parent->document(), SIGNAL(textRemoved(KTextEditor::Document*,KTextEditor::Range)),
@@ -2267,20 +2267,20 @@ void ViModeTest::MappingTests()
         // Check storage and retrieval of mapping recursion.
         clearAllMappings();
 
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello", KateViGlobal::Recursive);
-        QVERIFY(KateGlobal::self()->viInputModeGlobal()->isMappingRecursive(KateViGlobal::NormalModeMapping, "'"));
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello", KateViGlobal::Recursive);
+        QVERIFY(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->isMappingRecursive(KateViGlobal::NormalModeMapping, "'"));
 
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "ihello", KateViGlobal::NonRecursive);
-        QVERIFY(!KateGlobal::self()->viInputModeGlobal()->isMappingRecursive(KateViGlobal::NormalModeMapping, "a"));
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "ihello", KateViGlobal::NonRecursive);
+        QVERIFY(!KTextEditor::EditorPrivate::self()->viInputModeGlobal()->isMappingRecursive(KateViGlobal::NormalModeMapping, "a"));
     }
 
     clearAllMappings();
 
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "<esc>ihello<esc>^aworld<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "<esc>ihello<esc>^aworld<esc>", KateViGlobal::Recursive);
     DoTest("", "'", "hworldello");
 
     // Ensure that the non-mapping logged keypresses are cleared before we execute a mapping
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "rO", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "rO", KateViGlobal::Recursive);
     DoTest("X", "'a", "O");
 
     {
@@ -2292,7 +2292,7 @@ void ViModeTest::MappingTests()
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'" + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", KateViGlobal::Recursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'" + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", KateViGlobal::Recursive);
         }
         TestPressKey("'123");
         QCOMPARE(kate_document->text(), QString("")); // Shouldn't add anything until after the timeout!
@@ -2303,9 +2303,9 @@ void ViModeTest::MappingTests()
     // Mappings are not "counted": any count entered applies to the first command/ motion in the mapped sequence,
     // and is not used to replay the entire mapped sequence <count> times in a row.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'downmapping", "j", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ifoo<esc>ibar<esc>", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmotionmapping", "lj", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'downmapping", "j", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ifoo<esc>ibar<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmotionmapping", "lj", KateViGlobal::Recursive);
     DoTest("AAAA\nXXXX\nXXXX\nXXXX\nXXXX\nBBBB\nCCCC\nDDDD", "jd3'downmapping", "AAAA\nBBBB\nCCCC\nDDDD");
     DoTest("", "5'testmapping", "foofoofoofoofobaro");
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "3'testmotionmappingrO", "XXXX\nXXXO\nXXXX\nXXXX");
@@ -2315,13 +2315,13 @@ void ViModeTest::MappingTests()
     // will mean "go to position 1 percent of the way through the document" rather than
     // go to matching item.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::Recursive);
     DoTest("0\n1\n2\n3\n4\n5\nfoo bar(xyz) baz", "jjjjjjwdgl", "0\n1\n2\n3\n4\n5\nfoo  baz");
 
     // Test that countable mappings work even when triggered by timeouts.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ljrO", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmappingdummy", "dummy", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ljrO", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmappingdummy", "dummy", KateViGlobal::Recursive);
     BeginTest("XXXX\nXXXX\nXXXX\nXXXX");
     kate_view->getViInputModeManager()->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
     TestPressKey("3'testmapping");
@@ -2331,21 +2331,21 @@ void ViModeTest::MappingTests()
     // Test that telescoping mappings don't interfere with built-in commands. Assumes that gp
     // is implemented and working.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gdummy", "idummy", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gdummy", "idummy", KateViGlobal::Recursive);
     DoTest("hello", "yiwgpx", "hhellollo");
 
     // Test that we can map a sequence of keys that extends a built-in command and use
     // that sequence without the built-in command firing.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
     DoTest("hello", "yiwgpa", "dummyhello");
 
     // Test that we can map a sequence of keys that extends a built-in command and still
     // have the original built-in command fire if we timeout after entering that command.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
     BeginTest("hello");
     kate_view->getViInputModeManager()->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
     TestPressKey("yiwgp");
@@ -2357,17 +2357,17 @@ void ViModeTest::MappingTests()
     // (the "g" in the first "dg" is a partial mapping of "gj"), when extended to something
     // that is definitely not a mapping ("gg"), results in the full command being executed ("dgg").
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gj", "aj", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gj", "aj", KateViGlobal::Recursive);
     DoTest("foo\nbar\nxyz", "jjdgg", "");
 
     // Make sure that a mapped sequence of commands is merged into a single undo-able edit.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>ofoo<esc>ofoo<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>ofoo<esc>ofoo<esc>", KateViGlobal::Recursive);
     DoTest("bar", "'au", "bar");
 
     // Make sure that a counted mapping is merged into a single undoable edit.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>", KateViGlobal::Recursive);
     DoTest("bar", "5'au", "bar");
 
     // Some test setup for non-recursive mapping g -> gj (cf: bug:314415)
@@ -2385,35 +2385,35 @@ void ViModeTest::MappingTests()
 
     // Test that non-recursive mappings are not expanded.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
     DoTest(multiVirtualLineText, "jrX", expectedAfterVirtualLineDownAndChange);
     KateViewConfig::global()->setDynWordWrap(false);
 
     // Test that recursive mappings are expanded.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
     DoTest("foo", "la", "fxo");
 
     // Test that the flag that stops mappings being expanded is reset after the mapping has been executed.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
     DoTest("foo", "jla", "fxo");
 
     // Even if we start with a recursive mapping, as soon as we hit one that is not recursive, we should stop
     // expanding.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "r.", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "i", "a", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "X", "r.", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "i", "a", KateViGlobal::Recursive);
     DoTest("foo", "li", "oo");
 
     // Regression test: Using a mapping may trigger a call to updateSelection(), which can change the mode
     // from VisualLineMode to plain VisualMode.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "gA", "%", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "gA", "%", KateViGlobal::NonRecursive);
     DoTest("xyz\nfoo\n{\nbar\n}", "jVjgAdgglP", "foo\n{\nbar\n}\nxyz");
     // Piggy back on the previous test with a regression test for issue where, if gA is mapped to %, vgly
     // will yank one more character than it should.
@@ -2421,7 +2421,7 @@ void ViModeTest::MappingTests()
     // Make sure that a successful mapping does not break the "if we select stuff externally in Normal mode,
     // we should switch to Visual Mode" thing.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gA", "%", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gA", "%", KateViGlobal::NonRecursive);
     BeginTest("foo bar xyz()");
     TestPressKey("gAr.");
     kate_view->setSelection(Range(0, 1, 0, 4)); // Actually selects "oo " (i.e. without the "b").
@@ -2430,24 +2430,24 @@ void ViModeTest::MappingTests()
 
     // Regression tests for BUG:260655
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "f", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "f", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
     DoTest("foo dar", "adr.", "foo .ar");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "F", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "F", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
     DoTest("foo dar", "$adr.", "foo .ar");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "t", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "t", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
     DoTest("foo dar", "adr.", "foo.dar");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "T", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "T", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
     DoTest("foo dar", "$adr.", "foo d.r");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "r", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "r", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
     DoTest("foo dar", "ad", "doo dar");
     // Feel free to map the keypress after that, though.
     DoTest("foo dar", "addber\\esc", "berdoo dar");
@@ -2459,7 +2459,7 @@ void ViModeTest::MappingTests()
     clearAllMappings();
     {
         // Ctrl.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><c-b>", "ictrl<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><c-b>", "ictrl<esc>", KateViGlobal::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -2473,7 +2473,7 @@ void ViModeTest::MappingTests()
     }
     {
         // Shift.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a>C", "ishift<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a>C", "ishift<esc>", KateViGlobal::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -2487,7 +2487,7 @@ void ViModeTest::MappingTests()
     }
     {
         // Alt.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><a-b>", "ialt<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><a-b>", "ialt<esc>", KateViGlobal::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -2501,7 +2501,7 @@ void ViModeTest::MappingTests()
     }
     {
         // Meta.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><m-b>", "imeta<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "<c-a><m-b>", "imeta<esc>", KateViGlobal::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -2516,50 +2516,50 @@ void ViModeTest::MappingTests()
     {
         // Can have mappings in Visual mode, distinct from Normal mode..
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "3l", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "3l", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
         DoTest("0123456", "lvad", "056");
 
         // The recursion in Visual Mode is distinct from that of  Normal mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::Recursive);
         DoTest("XXX\nXXX", "lvajd", "XXX");
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::NonRecursive);
         DoTest("XXX\nXXX", "lvajd", "XXX\nXXX");
 
         // A Visual mode mapping applies to all Visual modes (line, block, etc).
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "2j", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "2j", KateViGlobal::NonRecursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
         // Same for recursion.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "2j", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "b", "2j", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
 
         // Can clear Visual mode mappings.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
@@ -2567,24 +2567,24 @@ void ViModeTest::MappingTests()
     {
         // Can have mappings in Insert mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
         DoTest("foo", "ia\\esc", "xyzfoo");
 
         // Recursion for Insert mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
         DoTest("", "ia\\esc", "b");
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::Recursive);
         DoTest("", "ia\\esc", "c");
 
         clearAllMappings();
         // Clear mappings for Insert mode.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::InsertModeMapping);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::InsertModeMapping);
         DoTest("", "ia\\esc", "a");
     }
 
@@ -2592,32 +2592,32 @@ void ViModeTest::MappingTests()
         VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
         // Can have mappings in Emulated Command Bar.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
         DoTest(" a xyz", "/a\\enterrX", " a Xyz");
         // Use mappings from Normal mode as soon as we exit command bar via Enter.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "ixyz<c-c>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "a", "ixyz<c-c>", KateViGlobal::NonRecursive);
         DoTest(" a xyz", "/a\\entera", " a xyzxyz");
         // Multiple mappings.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "b", "123", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "b", "123", KateViGlobal::NonRecursive);
         DoTest("  xyz123", "/ab\\enterrX", "  Xyz123");
         // Recursive mappings.
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "b", "a", KateViGlobal::Recursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "b", "a", KateViGlobal::Recursive);
         DoTest("  xyz", "/b\\enterrX", "  Xyz");
         // Can clear all.
-        KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::CommandModeMapping);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::CommandModeMapping);
         DoTest("  ab xyz xyz123", "/ab\\enterrX", "  Xb xyz xyz123");
     }
 
     // Test that not *both* of the mapping and the mapped keys are logged for repetition via "."
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ixyz", "iabc", KateViGlobal::NonRecursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ixyz", "iabc", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::NonRecursive);
     DoTest("", "ixyz\\esc.", "ababcc");
     DoTest("foo()X\nbarxyz()Y", "cglbaz\\escggj.", "bazX\nbazY");
 
     // Regression test for a crash when executing a mapping that switches to Normal mode.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "d", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "h", "d", KateViGlobal::Recursive);
     DoTest("foo", "vlh", "o");
 
     {
@@ -2627,43 +2627,43 @@ void ViModeTest::MappingTests()
 
         // "nn" is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:nn foo l\\foorX", "xXx");
 
         // "no" is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:no foo l\\foorX", "xXx");
 
         // "noremap" is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:noremap foo l\\foorX", "xXx");
 
         // "nm" is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:nm foo l\\foorX", "abXxxx");
 
         // "nmap" is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:nmap foo l\\foorX", "abXxxx");
 
         // Unfortunately, "map" is a reserved word :/
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
         DoTest("xxx", "\\:map foo l\\foorX", "abXxxx", ShouldFail, "'map' is reserved for other stuff in Kate command line");
 
         // nunmap works in normal mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "w", "ciwabc<esc>", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "b", "ciwxyz<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "w", "ciwabc<esc>", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "b", "ciwxyz<esc>", KateViGlobal::NonRecursive);
         DoTest(" 123 456 789", "\\:nunmap b\\WWwbrX", " 123 Xbc 789");
 
         // vmap works in Visual mode and is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("abco", "\\:vmap foo l\\v\\rightfoogU", "co");
 
         // vmap does not work in Normal mode.
@@ -2672,49 +2672,49 @@ void ViModeTest::MappingTests()
 
         // vm works in Visual mode and is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("abco", "\\:vm foo l\\v\\rightfoogU", "co");
 
         // vn works in Visual mode and is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("abco", "\\:vn foo l\\v\\rightfoogU", "ABCo");
 
         // vnoremap works in Visual mode and is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("abco", "\\:vnoremap foo l\\v\\rightfoogU", "ABCo");
 
         // vunmap works in Visual Mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "w", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "gU", "2b", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "l", "w", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::VisualModeMapping, "gU", "2b", KateViGlobal::NonRecursive);
         DoTest("foo bar xyz", "\\:vunmap gU\\wvlgUd", "foo BAR Xyz");
 
         // imap works in Insert mode and is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("", "\\:imap foo l\\ifoo\\esc", "d");
 
         // im works in Insert mode and is recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("", "\\:im foo l\\ifoo\\esc", "d");
 
         // ino works in Insert mode and is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("", "\\:ino foo l\\ifoo\\esc", "l");
 
         // inoremap works in Insert mode and is not recursive.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
         DoTest("", "\\:inoremap foo l\\ifoo\\esc", "l");
 
         // iunmap works in Insert mode.
         clearAllMappings();
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
-        KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "m", "e", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "m", "e", KateViGlobal::NonRecursive);
         DoTest("", "\\:iunmap l\\ilm\\esc", "le");
 
         {
@@ -2724,28 +2724,28 @@ void ViModeTest::MappingTests()
             // the emulated command bar (:cmap blah blah\\enter), as this will be subject to mappings, which
             // can interfere with the tests!
             clearAllMappings();
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
             DoTest(" l d foo", "\\:cmap foo l\\/foo\\enterrX", " l X foo");
 
             // cm works in emulated command bar and is recursive.
             clearAllMappings();
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
             DoTest(" l d foo", "\\:cm foo l\\/foo\\enterrX", " l X foo");
 
             // cnoremap works in emulated command bar and is recursive.
             clearAllMappings();
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
             DoTest(" l d foo", "\\:cnoremap foo l\\/foo\\enterrX", " X d foo");
 
             // cno works in emulated command bar and is recursive.
             clearAllMappings();
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
             DoTest(" l d foo", "\\:cno foo l\\/foo\\enterrX", " X d foo");
 
             // cunmap works in emulated command bar.
             clearAllMappings();
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
-            KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "m", "e", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::CommandModeMapping, "m", "e", KateViGlobal::NonRecursive);
             DoTest(" de le", "\\:cunmap l\\/lm\\enterrX", " de Xe");
         }
 
@@ -2758,8 +2758,8 @@ void ViModeTest::MappingTests()
     // be part of a different mapping (but end up not being so).
     // (Here, the leading "i" in "irecursive<c-c>" could be part of the mapping "ihello<c-c>").
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
     DoTest("", "'", "recursive");
 
     // Capslock in insert mode is not handled by Vim nor by KateViewInternal, and ends up
@@ -3311,13 +3311,13 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Should work with mappings.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "/c<enter>rX", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "/c<enter>rX", KateViGlobal::Recursive);
     BeginTest("acbcd");
     TestPressKey("'testmapping");
     FinishTest("aXbcd");
     clearAllMappings();
     // Don't send keys that were part of a mapping to the emulated command bar.
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", "/a", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", "/a", KateViGlobal::Recursive);
     BeginTest("foo a aH");
     TestPressKey("H\\enterrX");
     FinishTest("foo X aH");
@@ -3798,8 +3798,8 @@ void ViModeTest::VimStyleCommandBarTests()
     // History auto-completion tests.
     clearSearchHistory();
     QVERIFY(searchHistory().isEmpty());
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
     QCOMPARE(searchHistory(), QStringList() << "foo" << "bar");
     clearSearchHistory();
     QVERIFY(searchHistory().isEmpty());
@@ -3820,8 +3820,8 @@ void ViModeTest::VimStyleCommandBarTests()
     QCOMPARE(searchHistory(), QStringList() << "nose");
 
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
     QVERIFY(emulatedCommandBarCompleter() != NULL);
     BeginTest("foo bar");
     TestPressKey("/\\ctrl-p");
@@ -3839,7 +3839,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Don't show completion with an empty search bar.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
     BeginTest("foo bar");
     TestPressKey("/");
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
@@ -3848,7 +3848,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Don't auto-complete, either.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
     BeginTest("foo bar");
     TestPressKey("/f");
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
@@ -3856,8 +3856,8 @@ void ViModeTest::VimStyleCommandBarTests()
     FinishTest("foo bar");
 
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
     QVERIFY(emulatedCommandBarCompleter() != NULL);
     BeginTest("foo bar");
     TestPressKey("/\\ctrl-p");
@@ -3866,9 +3866,9 @@ void ViModeTest::VimStyleCommandBarTests()
     FinishTest("foo bar");
 
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
     QVERIFY(emulatedCommandBarCompleter() != NULL);
     BeginTest("foo bar");
     TestPressKey("/\\ctrl-p");
@@ -3891,9 +3891,9 @@ void ViModeTest::VimStyleCommandBarTests()
     FinishTest("foo bar");
 
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
     QVERIFY(emulatedCommandBarCompleter() != NULL);
     BeginTest("foo bar");
     TestPressKey("/\\ctrl-n");
@@ -3917,9 +3917,9 @@ void ViModeTest::VimStyleCommandBarTests()
     FinishTest("foo bar");
 
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
     BeginTest("foo bar");
     TestPressKey("/\\ctrl-n\\ctrl-n");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("bar"));
@@ -3929,22 +3929,22 @@ void ViModeTest::VimStyleCommandBarTests()
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
     QCOMPARE(searchHistory(), QStringList() << "bar" << "foo" << "xyz");
 
     // Push out older entries if we have too many search items in the history.
     const int HISTORY_SIZE_LIMIT = 100;
     clearSearchHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(QString("searchhistoryitem %1").arg(i));
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(QString("searchhistoryitem %1").arg(i));
     }
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(searchHistory().first(), QString("searchhistoryitem 1"));
     QCOMPARE(searchHistory().last(), QString("searchhistoryitem 100"));
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(QString("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(QString("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(searchHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(searchHistory().first(), QString("searchhistoryitem 2"));
     QCOMPARE(searchHistory().last(), QString("searchhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
@@ -4093,7 +4093,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // If we're completing from history, though, the entire text gets set, and the completion prefix
     // is the beginning of the entire text, not the current word before the cursor.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(bar");
     BeginTest("");
     TestPressKey("/foo(b\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4105,7 +4105,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // If we're completing from history and we abort the completion via ctrl-c or ctrl-[, we revert the whole
     // text to the last manually typed text.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(b|ar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(b|ar");
     BeginTest("");
     TestPressKey("/foo(b\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4231,8 +4231,8 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Set the completion prefix for the search history completion as soon as it is shown.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(bar");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("foo(bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
     BeginTest("");
     TestPressKey("/f\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4560,8 +4560,8 @@ void ViModeTest::VimStyleCommandBarTests()
     // Command history tests.
     clearCommandHistory();
     QVERIFY(commandHistory().isEmpty());
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("bar");
     QCOMPARE(commandHistory(), QStringList() << "foo" << "bar");
     clearCommandHistory();
     QVERIFY(commandHistory().isEmpty());
@@ -4569,21 +4569,21 @@ void ViModeTest::VimStyleCommandBarTests()
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("xyz");
     QCOMPARE(commandHistory(), QStringList() << "bar" << "foo" << "xyz");
 
     // Push out older entries if we have too many command items in the history.
     clearCommandHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem(QString("commandhistoryitem %1").arg(i));
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem(QString("commandhistoryitem %1").arg(i));
     }
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(commandHistory().first(), QString("commandhistoryitem 1"));
     QCOMPARE(commandHistory().last(), QString("commandhistoryitem 100"));
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem(QString("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem(QString("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(commandHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(commandHistory().first(), QString("commandhistoryitem 2"));
     QCOMPARE(commandHistory().last(), QString("commandhistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
@@ -4620,8 +4620,8 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // With an empty command bar, ctrl-p / ctrl-n should go through history.
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("command1");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("command2");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("command1");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("command2");
     BeginTest("");
     TestPressKey(":\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4631,8 +4631,8 @@ void ViModeTest::VimStyleCommandBarTests()
     TestPressKey("\\ctrl-c"); // Dismiss bar
     FinishTest("");
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("command1");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("command2");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("command1");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("command2");
     BeginTest("");
     TestPressKey(":\\ctrl-n");
     verifyCommandBarCompletionVisible();
@@ -4644,8 +4644,8 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // If we're at a place where command completions are not allowed, ctrl-p/n should go through history.
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command1");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command2");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command1");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command2");
     BeginTest("");
     TestPressKey(":s/\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4655,8 +4655,8 @@ void ViModeTest::VimStyleCommandBarTests()
     TestPressKey("\\ctrl-c"); // Dismiss bar
     FinishTest("");
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command1");
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command2");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command1");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("s/command2");
     BeginTest("");
     TestPressKey(":s/\\ctrl-n");
     verifyCommandBarCompletionVisible();
@@ -4679,8 +4679,8 @@ void ViModeTest::VimStyleCommandBarTests()
     // "Replace" history tests.
     clearReplaceHistory();
     QVERIFY(replaceHistory().isEmpty());
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("bar");
     QCOMPARE(replaceHistory(), QStringList() << "foo" << "bar");
     clearReplaceHistory();
     QVERIFY(replaceHistory().isEmpty());
@@ -4688,28 +4688,28 @@ void ViModeTest::VimStyleCommandBarTests()
     // If we add something to the history, remove any earliest occurrences (this is what Vim appears to do)
     // and append to the end.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("bar");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("foo");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("bar");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("foo");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
     QCOMPARE(replaceHistory(), QStringList() << "bar" << "foo" << "xyz");
 
     // Push out older entries if we have too many replace items in the history.
     clearReplaceHistory();
     for (int i = 1; i <= HISTORY_SIZE_LIMIT; i++) {
-        KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem(QString("replacehistoryitem %1").arg(i));
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem(QString("replacehistoryitem %1").arg(i));
     }
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(replaceHistory().first(), QString("replacehistoryitem 1"));
     QCOMPARE(replaceHistory().last(), QString("replacehistoryitem 100"));
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem(QString("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem(QString("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
     QCOMPARE(replaceHistory().size(), HISTORY_SIZE_LIMIT);
     QCOMPARE(replaceHistory().first(), QString("replacehistoryitem 2"));
     QCOMPARE(replaceHistory().last(), QString("replacehistoryitem %1").arg(HISTORY_SIZE_LIMIT + 1));
 
     // Don't add empty replaces to the history.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("");
     QVERIFY(replaceHistory().isEmpty());
 
     // Some misc SedReplace tests.
@@ -4810,8 +4810,8 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-f / ctrl-d should cleanly finish sed find/ replace history completion.
     clearReplaceHistory();
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("searchxyz");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replacexyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("searchxyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replacexyz");
     TestPressKey(":s///g\\ctrl-d\\ctrl-p");
     QVERIFY(emulatedCommandBarCompleter()->popup()->isVisible());
     TestPressKey("\\ctrl-f");
@@ -4969,7 +4969,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-p on the first character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
     BeginTest("");
     TestPressKey(":s/search/replace/g\\ctrl-b\\right\\right\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4984,7 +4984,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-p on the last character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
     BeginTest("");
     TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -4999,7 +4999,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-p on some arbitrary character of the search term in a sed-replace should
     // invoke search history completion.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
     BeginTest("");
     TestPressKey(":s/xyzaaaaaa/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5018,7 +5018,7 @@ void ViModeTest::VimStyleCommandBarTests()
     clearSearchHistory();
     clearCommandHistory();
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyz");
     BeginTest("");
     TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\ctrl-p");
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
@@ -5033,7 +5033,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Make sure it's the search history we're invoking.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
     BeginTest("");
     TestPressKey(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5048,9 +5048,9 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // (Search history should be reversed).
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("abc");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("def");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("abc");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("def");
     BeginTest("");
     TestPressKey(":s//replace/g\\ctrl-b\\right\\right\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5061,11 +5061,11 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Completion prefix is the current find term.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zaaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("abc");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("def");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zbaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zcaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("abc");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("def");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zbaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xy:zcaaaaa");
     BeginTest("");
     TestPressKey(":s//replace/g\\ctrl-dxy:z\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5076,8 +5076,8 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Replace entire search term with completion.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,cd");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,xy");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,cd");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,xy");
     BeginTest("");
     TestPressKey(":s//replace/g\\ctrl-dab,\\ctrl-p\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ab,cd/replace/g"));
@@ -5091,7 +5091,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Place the cursor at the end of find term.
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,xy");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("ab,xy");
     BeginTest("");
     TestPressKey(":s//replace/g\\ctrl-dab,\\ctrl-pX");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ab,xyX/replace/g"));
@@ -5126,7 +5126,7 @@ void ViModeTest::VimStyleCommandBarTests()
     clearSearchHistory();
     clearReplaceHistory();
     clearCommandHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
     BeginTest("");
     TestPressKey(":s/search/replace/g\\left\\left\\left\\left\\left\\left\\left\\left\\left\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5141,7 +5141,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-p on the last character of the replace term in a sed-replace should
     // invoke replace history completion.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
     BeginTest("");
     TestPressKey(":s/xyz/replace/g\\left\\left\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5156,7 +5156,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // ctrl-p on some arbitrary character of the search term in a sed-replace should
     // invoke search history completion.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replaceaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replaceaaaaaa");
     BeginTest("");
     TestPressKey(":s/xyzaaaaaa/replace/g\\left\\left\\left\\left\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5175,7 +5175,7 @@ void ViModeTest::VimStyleCommandBarTests()
     clearSearchHistory();
     clearCommandHistory();
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyz");
     BeginTest("");
     TestPressKey(":s/xyz/replace/g\\left\\ctrl-p");
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
@@ -5190,9 +5190,9 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // (Replace history should be reversed).
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyzaaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("abc");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("def");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xyzaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("abc");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("def");
     BeginTest("");
     TestPressKey(":s/search//g\\left\\left\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5203,11 +5203,11 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Completion prefix is the current replace term.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zaaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("abc");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("def");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zbaaaaa");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zcaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zaaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("abc");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("def");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zbaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("xy:zcaaaaa");
     BeginTest("");
     TestPressKey(":'<,'>s/replace/search/g\\ctrl-fxy:z\\ctrl-p");
     verifyCommandBarCompletionVisible();
@@ -5219,8 +5219,8 @@ void ViModeTest::VimStyleCommandBarTests()
     // Replace entire search term with completion.
     clearReplaceHistory();
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,cd");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,cd");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
     BeginTest("");
     TestPressKey(":s/search//g\\ctrl-fab,\\ctrl-p\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ab,cd/g"));
@@ -5234,7 +5234,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Place the cursor at the end of replace term.
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
     BeginTest("");
     TestPressKey(":s/search//g\\ctrl-fab,\\ctrl-pX");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ab,xyX/g"));
@@ -5268,8 +5268,8 @@ void ViModeTest::VimStyleCommandBarTests()
     BeginTest("");
     clearReplaceHistory();
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("whoops");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ab,xy");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("whoops");
     TestPressKey(":s///g\\ctrl-f\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s//ab,xy/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5279,7 +5279,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // Move the cursor back to the last manual edit point when aborting completion.
     BeginTest("");
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("xyzaaaaa");
     TestPressKey(":s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\righta\\ctrl-p\\ctrl-[X");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/xyzaX/replace/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5290,7 +5290,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // current "find" term.
     BeginTest("");
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("doesnothavexyzasaprefix");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("doesnothavexyzasaprefix");
     TestPressKey(":s//replace/g\\ctrl-dxyz\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/xyz/replace/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5301,9 +5301,9 @@ void ViModeTest::VimStyleCommandBarTests()
     // work, but at least it won't crash!
     BeginTest("");
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("aa/aa\\/a");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("ss/ss");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("aa/aa\\/a");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("ss/ss");
     TestPressKey(":s//replace/g\\ctrl-d\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/ss\\/ss/replace/g"));
     TestPressKey("\\ctrl-p");
@@ -5313,9 +5313,9 @@ void ViModeTest::VimStyleCommandBarTests()
     TestPressKey("\\ctrl-c"); // Dismiss completer
     TestPressKey("\\ctrl-c"); // Dismiss bar.
     clearSearchHistory(); // Now do the same, but with a different delimiter.
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("aa:aa\\:a");
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("ss:ss");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("search");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("aa:aa\\:a");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("ss:ss");
     TestPressKey(":s::replace:g\\ctrl-d\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:ss\\:ss:replace:g"));
     TestPressKey("\\ctrl-p");
@@ -5329,7 +5329,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // Remove \C if occurs in search history.
     BeginTest("");
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("s\\Cear\\\\Cch");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("s\\Cear\\\\Cch");
     TestPressKey(":s::replace:g\\ctrl-d\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:sear\\\\Cch:replace:g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5340,7 +5340,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // current "replace" term.
     BeginTest("");
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("doesnothavexyzasaprefix");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("doesnothavexyzasaprefix");
     TestPressKey(":s/search//g\\ctrl-fxyz\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/xyz/g"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5351,9 +5351,9 @@ void ViModeTest::VimStyleCommandBarTests()
     // work, but at least it won't crash!
     BeginTest("");
     clearReplaceHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("aa/aa\\/a");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ss/ss");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("aa/aa\\/a");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ss/ss");
     TestPressKey(":s/search//g\\ctrl-f\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s/search/ss\\/ss/g"));
     TestPressKey("\\ctrl-p");
@@ -5363,9 +5363,9 @@ void ViModeTest::VimStyleCommandBarTests()
     TestPressKey("\\ctrl-c"); // Dismiss completer
     TestPressKey("\\ctrl-c"); // Dismiss bar.
     clearReplaceHistory(); // Now do the same, but with a different delimiter.
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("aa:aa\\:a");
-    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem("ss:ss");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("replace");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("aa:aa\\:a");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem("ss:ss");
     TestPressKey(":s:search::g\\ctrl-f\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("s:search:ss\\:ss:g"));
     TestPressKey("\\ctrl-p");
@@ -5380,7 +5380,7 @@ void ViModeTest::VimStyleCommandBarTests()
     // has the current text as a prefix.
     BeginTest("");
     clearSearchHistory();
-    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem("doesnothavexyzasaprefix");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem("doesnothavexyzasaprefix");
     TestPressKey("/xyz\\ctrl-p");
     QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("xyz"));
     TestPressKey("\\ctrl-c"); // Dismiss completer
@@ -5398,7 +5398,7 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Don't expand mappings meant for Normal mode in the emulated command bar.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "foo", "xyz", KateViGlobal::NonRecursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "foo", "xyz", KateViGlobal::NonRecursive);
     DoTest("bar foo xyz", "/foo\\enterrX", "bar Xoo xyz");
     clearAllMappings();
 
@@ -5906,7 +5906,7 @@ void ViModeTest::VimStyleCommandBarTests()
     if (printAction) {
         printAction->blockSignals(true);
     }
-    KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem("s/foo/bar/caa");
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem("s/foo/bar/caa");
     BeginTest("foo");
     TestPressKey(":s/foo/bar/c\\ctrl-b\\enter\\ctrl-p");
     QVERIFY(!emulatedCommandBarCompleter()->popup()->isVisible());
@@ -5932,13 +5932,13 @@ void ViModeTest::VimStyleCommandBarTests()
 
     // Should be usable in mappings.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyyl", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyyl", KateViGlobal::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "foo foo bar bar bar foo");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nna", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nna", KateViGlobal::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "foo foo bar bar bar bar");
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyqggidone<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "H", ":s/foo/bar/gc<enter>nnyqggidone<esc>", KateViGlobal::Recursive);
     DoTest("foo foo foo foo foo foo", "H", "donefoo foo bar foo foo foo");
 
     // Don't swallow "Ctrl+<key>" meant for the text edit.
@@ -5961,7 +5961,7 @@ public:
     {
         setRowCount(3);
         cc()->setAutomaticInvocationEnabled(true);
-        cc()->unregisterCompletionModel(KateGlobal::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
+        cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
         cc()->registerCompletionModel(this);
     }
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
@@ -5989,7 +5989,7 @@ public:
     {
         setRowCount(3);
         cc()->setAutomaticInvocationEnabled(true);
-        cc()->unregisterCompletionModel(KateGlobal::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
+        cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
         cc()->registerCompletionModel(this);
     }
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
@@ -6077,7 +6077,7 @@ void ViModeTest::CompletionTests()
     // Make sure the "Enter"/ "Return" used when invoking completions is not swallowed before being
     // passed to the key mapper.
     kate_view->registerCompletionModel(testModel);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "cb", "mapped-shouldntbehere", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::InsertModeMapping, "cb", "mapped-shouldntbehere", KateViGlobal::Recursive);
     BeginTest("");
     TestPressKey("ic");
     kate_view->userInvokedCompletion();
@@ -6481,34 +6481,34 @@ void ViModeTest::MacroTests()
 
     // Expand mappings,  but don't do *both* original keypresses and executed keypresses.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
     clearAllMacros();
     DoTest("", "qa'q@a", "hellhelloo");
     // Actually, just do the mapped keypresses, not the executed mappings (like Vim).
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
     clearAllMacros();
     BeginTest("");
     TestPressKey("qa'q");
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "igoodbye<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "igoodbye<c-c>", KateViGlobal::Recursive);
     TestPressKey("@a");
     FinishTest("hellgoodbyeo");
     // Clear the "stop recording macro keypresses because we're executing a mapping" when the mapping has finished
     // executing.
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
     clearAllMacros();
     DoTest("", "qa'ixyz\\ctrl-cq@a", "hellxyhellxyzozo");
     // ... make sure that *all* mappings have finished, though: take into account recursion.
     clearAllMappings();
     clearAllMacros();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
     DoTest("", "qa'q@a", "recursivrecursivee");
     clearAllMappings();
     clearAllMacros();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>ixyz<c-c>", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>ixyz<c-c>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
     DoTest("", "qa'q@a", "recursivxyrecursivxyzeze");
 
     clearAllMappings();
@@ -6555,8 +6555,8 @@ void ViModeTest::MacroTests()
     clearAllMacros();
     // Expand mapping in an executed macro, if the invocation of the macro "@a" is a prefix of a mapping M, and
     // M ends up not being triggered.
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "@aaaa", "idummy<esc>", KateViGlobal::Recursive);
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "S", "ixyz<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "@aaaa", "idummy<esc>", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, "S", "ixyz<esc>", KateViGlobal::Recursive);
     DoTest("", "qaSq@abrX", "Xyxyzz");
     clearAllMappings();
 
@@ -6593,11 +6593,11 @@ void ViModeTest::MacroTests()
         KConfigGroup viTestKConfigGroup(&viTestKConfig, "Kate Vi Test Stuff");
         BeginTest("");
         TestPressKey("qaia\\ctrl-cq");
-        KateGlobal::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
         viTestKConfig.sync();
         // Overwrite macro "a", and clear the document.
         TestPressKey("qaidummy\\ctrl-cqdd");
-        KateGlobal::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
         TestPressKey("@a");
         FinishTest("a");
     }
@@ -6610,11 +6610,11 @@ void ViModeTest::MacroTests()
         KConfigGroup viTestKConfigGroup(&viTestKConfig, "Kate Vi Test Stuff");
         BeginTest("");
         TestPressKey("qaia\\ctrl-cqqbib\\ctrl-cq");
-        KateGlobal::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
         viTestKConfig.sync();
         // Overwrite macros "a" & "b", and clear the document.
         TestPressKey("qaidummy\\ctrl-cqqbidummy\\ctrl-cqdd");
-        KateGlobal::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
         TestPressKey("@a@b");
         FinishTest("ba");
     }
@@ -7155,7 +7155,7 @@ void ViModeTest::MacroTests()
         fakeCodeCompletionModel->setCompletions(QStringList() << "completionB" << "semicolonfunctionnoargs();" << "semicolonfunctionwithargs(...);");
         TestPressKey("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq");
         // Save.
-        KateGlobal::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->writeConfig(viTestKConfigGroup);
         viTestKConfig.sync();
         // Overwrite 'a' and 'b' and their completions.
         fakeCodeCompletionModel->setCompletions(QStringList() << "blah1");
@@ -7163,7 +7163,7 @@ void ViModeTest::MacroTests()
         TestPressKey("ggqaiblah\\ctrl- \\enter\\ctrl-cq");
         TestPressKey("ddqbiblah\\ctrl- \\enter\\ctrl-cq");
         // Reload.
-        KateGlobal::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->readConfig(viTestKConfigGroup);
         // Replay reloaded.
         fakeCodeCompletionModel->setFailTestOnInvocation(true);
         kate_document->setText("funct\nnoa\ncomtail\ncomtail\ncom");
@@ -7309,45 +7309,45 @@ void ViModeTest::verifyTextEditBackgroundColour(const QColor &expectedBackground
 
 void ViModeTest::clearAllMappings()
 {
-    KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::NormalModeMapping);
-    KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
-    KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::InsertModeMapping);
-    KateGlobal::self()->viInputModeGlobal()->clearMappings(KateViGlobal::CommandModeMapping);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::NormalModeMapping);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::VisualModeMapping);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::InsertModeMapping);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::CommandModeMapping);
 }
 
 void ViModeTest::clearSearchHistory()
 {
-    KateGlobal::self()->viInputModeGlobal()->clearSearchHistory();
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearSearchHistory();
 }
 
 QStringList ViModeTest::searchHistory()
 {
-    return KateGlobal::self()->viInputModeGlobal()->searchHistory();
+    return KTextEditor::EditorPrivate::self()->viInputModeGlobal()->searchHistory();
 }
 
 void ViModeTest::clearCommandHistory()
 {
-    KateGlobal::self()->viInputModeGlobal()->clearCommandHistory();
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearCommandHistory();
 }
 
 QStringList ViModeTest::commandHistory()
 {
-    return KateGlobal::self()->viInputModeGlobal()->commandHistory();
+    return KTextEditor::EditorPrivate::self()->viInputModeGlobal()->commandHistory();
 }
 
 void ViModeTest::clearReplaceHistory()
 {
-    KateGlobal::self()->viInputModeGlobal()->clearReplaceHistory();
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearReplaceHistory();
 }
 
 QStringList ViModeTest::replaceHistory()
 {
-    return KateGlobal::self()->viInputModeGlobal()->replaceHistory();
+    return KTextEditor::EditorPrivate::self()->viInputModeGlobal()->replaceHistory();
 }
 
 void ViModeTest::clearAllMacros()
 {
-    KateGlobal::self()->viInputModeGlobal()->clearAllMacros();
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearAllMacros();
 }
 
 QCompleter *ViModeTest::emulatedCommandBarCompleter()
@@ -7439,7 +7439,7 @@ void ViModeTest::keyParsingTests()
 
     // Test that it can be used in mappings
     clearAllMappings();
-    KateGlobal::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, char_o_diaeresis, "ifoo", KateViGlobal::Recursive);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(KateViGlobal::NormalModeMapping, char_o_diaeresis, "ifoo", KateViGlobal::Recursive);
     DoTest("hello", QString("ll%1bar").arg(char_o_diaeresis), "hefoobarllo");
 }
 

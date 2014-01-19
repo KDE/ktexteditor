@@ -57,7 +57,7 @@ using KTextEditor::Range;
 void KateViModeBase::yankToClipBoard(QChar chosen_register, QString text)
 {
     if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-'))  && text.length() > 1) { //only yank to the clipboard if no register was specified and textlength > 1
-        KateGlobal::self()->copyToClipboard(text);
+        KTextEditor::EditorPrivate::self()->copyToClipboard(text);
     }
 }
 
@@ -940,7 +940,7 @@ QChar KateViModeBase::getChosenRegister(const QChar &defaultReg) const
 
 QString KateViModeBase::getRegisterContent(const QChar &reg)
 {
-    QString r = KateGlobal::self()->viInputModeGlobal()->getRegisterContent(reg);
+    QString r = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisterContent(reg);
 
     if (r.isNull()) {
         error(i18n("Nothing in register %1", reg));
@@ -951,12 +951,12 @@ QString KateViModeBase::getRegisterContent(const QChar &reg)
 
 OperationMode KateViModeBase::getRegisterFlag(const QChar &reg) const
 {
-    return KateGlobal::self()->viInputModeGlobal()->getRegisterFlag(reg);
+    return KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisterFlag(reg);
 }
 
 void KateViModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    KateGlobal::self()->viInputModeGlobal()->fillRegister(reg, text, flag);
+    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(reg, text, flag);
 }
 
 void KateViModeBase::addJump(KTextEditor::Cursor cursor)
@@ -1389,7 +1389,7 @@ void KateViModeBase::switchView(Direction direction)
 {
 
     QList<KateView *> visible_views;
-    foreach (KateView *view,  KateGlobal::self()->views()) {
+    foreach (KateView *view,  KTextEditor::EditorPrivate::self()->views()) {
         if (view->isVisible()) {
             visible_views.push_back(view);
         }

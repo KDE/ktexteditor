@@ -33,6 +33,7 @@ namespace KTextEditor
 
 class Application;
 class Document;
+class EditorPrivate;
 
 /**
  * \brief Accessor interface for Editor part.
@@ -105,10 +106,12 @@ protected:
     /**
      * Constructor.
      *
-     * Create the Editor object with \p parent.
-     * \param parent parent object
+     * Create the Editor object and pass it the internal
+     * implementation to store a d-pointer.
+     *
+     * @param impl d-pointer to use
      */
-    Editor(QObject *parent);
+    Editor (EditorPrivate *impl);
 
     /**
      * Virtual destructor.
@@ -230,7 +233,10 @@ Q_SIGNALS:
                          KTextEditor::Document *document);
 
 private:
-    class EditorPrivate *const d;
+    /**
+     * private d-pointer, pointing to the internal implementation
+     */
+    EditorPrivate *const d;
 };
 
 }

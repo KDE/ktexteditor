@@ -60,7 +60,7 @@ static void markModifiedLinesAsSaved(KateDocument *doc)
 
 void ModificationSystemTest::testInsertText()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("first line\n");
     doc->setText(content);
@@ -118,7 +118,7 @@ void ModificationSystemTest::testInsertText()
 
 void ModificationSystemTest::testRemoveText()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("first line\n");
     doc->setText(content);
@@ -176,7 +176,7 @@ void ModificationSystemTest::testRemoveText()
 
 void ModificationSystemTest::testInsertLine()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("0\n"
                           "2");
@@ -246,7 +246,7 @@ void ModificationSystemTest::testInsertLine()
 
 void ModificationSystemTest::testRemoveLine()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("0\n"
                           "1\n"
@@ -315,7 +315,7 @@ void ModificationSystemTest::testWrapLineMid()
 {
     for (int i = 0; i < 2; ++i) {
         bool insertNewLine = (i == 1);
-        KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+        KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
         const QString content("aaaa\n"
                               "bbbb\n"
@@ -387,7 +387,7 @@ void ModificationSystemTest::testWrapLineMid()
 
 void ModificationSystemTest::testWrapLineAtEnd()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("aaaa\n"
                           "bbbb");
@@ -457,7 +457,7 @@ void ModificationSystemTest::testWrapLineAtEnd()
 
 void ModificationSystemTest::testWrapLineAtStart()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("aaaa\n"
                           "bbbb");
@@ -527,7 +527,7 @@ void ModificationSystemTest::testWrapLineAtStart()
 
 void ModificationSystemTest::testUnWrapLine()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("aaaa\n"
                           "bbbb\n"
@@ -594,7 +594,7 @@ void ModificationSystemTest::testUnWrapLine()
 
 void ModificationSystemTest::testUnWrapLine1Empty()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("aaaa\n"
                           "\n"
@@ -661,7 +661,7 @@ void ModificationSystemTest::testUnWrapLine1Empty()
 
 void ModificationSystemTest::testUnWrapLine2Empty()
 {
-    KateDocument *doc = qobject_cast<KateDocument *>(KateGlobal::self()->createDocument(0));
+    KateDocument *doc = qobject_cast<KateDocument *>(KTextEditor::EditorPrivate::self()->createDocument(0));
 
     const QString content("aaaa\n"
                           "\n"

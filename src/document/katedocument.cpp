@@ -136,7 +136,7 @@ KateDocument::KateDocument(bool bSingleViewMode,
       m_readWriteStateBeforeLoading(false),
       m_isUntitled(true)
 {
-    setComponentData(KateGlobal::self()->aboutData());
+    setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
     /**
      * avoid spamming plasma and other window managers with progress dialogs
@@ -151,7 +151,7 @@ KateDocument::KateDocument(bool bSingleViewMode,
     QDBusConnection::sessionBus().registerObject(pathName, this, QDBusConnection::ExportAdaptors | QDBusConnection::ExportScriptableSlots);
 
     // register doc at factory
-    KateGlobal::self()->registerDocument(this);
+    KTextEditor::EditorPrivate::self()->registerDocument(this);
 
     // normal hl
     m_buffer->setHighlight(0);
@@ -169,13 +169,13 @@ KateDocument::KateDocument(bool bSingleViewMode,
     connect(KateHlManager::self(), SIGNAL(changed()), SLOT(internalHlChanged()));
 
     // signals for mod on hd
-    connect(KateGlobal::self()->dirWatch(), SIGNAL(dirty(QString)),
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(dirty(QString)),
             this, SLOT(slotModOnHdDirty(QString)));
 
-    connect(KateGlobal::self()->dirWatch(), SIGNAL(created(QString)),
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(created(QString)),
             this, SLOT(slotModOnHdCreated(QString)));
 
-    connect(KateGlobal::self()->dirWatch(), SIGNAL(deleted(QString)),
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)),
             this, SLOT(slotModOnHdDeleted(QString)));
 
     /**
@@ -253,7 +253,7 @@ KateDocument::~KateDocument()
     m_marks.clear();
 
     delete m_config;
-    KateGlobal::self()->deregisterDocument(this);
+    KTextEditor::EditorPrivate::self()->deregisterDocument(this);
 }
 //END
 
@@ -1554,7 +1554,7 @@ QStringList KateDocument::modes() const
 {
     QStringList m;
 
-    const QList<KateFileType *> &modeList = KateGlobal::self()->modeManager()->list();
+    const QList<KateFileType *> &modeList = KTextEditor::EditorPrivate::self()->modeManager()->list();
     foreach (KateFileType *type, modeList) {
         m << type->name;
     }
@@ -1595,7 +1595,7 @@ QString KateDocument::highlightingModeSection(int index) const
 
 QString KateDocument::modeSection(int index) const
 {
-    return KateGlobal::self()->modeManager()->list().at(index)->section;
+    return KTextEditor::EditorPrivate::self()->modeManager()->list().at(index)->section;
 }
 
 void KateDocument::bufferHlChanged()
@@ -2042,7 +2042,7 @@ bool KateDocument::openFile()
     emit KTextEditor::Document::textRemoved(this, documentRange(), m_buffer->text());
 
     // update file type, we do this here PRE-LOAD, therefore pass file name for reading from
-    updateFileType(KateGlobal::self()->modeManager()->fileType(this, localFilePath()));
+    updateFileType(KTextEditor::EditorPrivate::self()->modeManager()->fileType(this, localFilePath()));
 
     // read dir config (if possible and wanted)
     // do this PRE-LOAD to get encoding info!
@@ -2252,7 +2252,7 @@ bool KateDocument::saveFile()
     }
 
     // update file type, pass no file path, read file type content from this document
-    updateFileType(KateGlobal::self()->modeManager()->fileType(this, QString()));
+    updateFileType(KTextEditor::EditorPrivate::self()->modeManager()->fileType(this, QString()));
 
     // remember the oldpath...
     QString oldPath = m_dirWatchFile;
@@ -2381,7 +2381,7 @@ void KateDocument::activateDirWatch(const QString &useFileName)
 
     // add new file if needed
     if (url().isLocalFile() && !fileToUse.isEmpty()) {
-        KateGlobal::self()->dirWatch()->addFile(fileToUse);
+        KTextEditor::EditorPrivate::self()->dirWatch()->addFile(fileToUse);
         m_dirWatchFile = fileToUse;
     }
 }
@@ -2389,7 +2389,7 @@ void KateDocument::activateDirWatch(const QString &useFileName)
 void KateDocument::deactivateDirWatch()
 {
     if (!m_dirWatchFile.isEmpty()) {
-        KateGlobal::self()->dirWatch()->removeFile(m_dirWatchFile);
+        KTextEditor::EditorPrivate::self()->dirWatch()->removeFile(m_dirWatchFile);
     }
 
     m_dirWatchFile.clear();
@@ -2592,7 +2592,7 @@ void KateDocument::addView(KTextEditor::View *view)
 
     // apply the view & renderer vars from the file type
     if (!m_fileType.isEmpty()) {
-        readVariableLine(KateGlobal::self()->modeManager()->fileType(m_fileType).varLine, true);
+        readVariableLine(KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_fileType).varLine, true);
     }
 
     // apply the view & renderer vars from the file
@@ -3728,7 +3728,7 @@ void KateDocument::updateDocName()
 
     int count = -1;
 
-    foreach (KateDocument *doc, KateGlobal::self()->kateDocuments()) {
+    foreach (KateDocument *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
         if ((doc != this) && (doc->url().fileName() == url().fileName()))
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
@@ -4551,8 +4551,8 @@ void KateDocument::updateFileType(const QString &newType, bool user)
 
             m_config->configStart();
 
-            if (!m_hlSetByUser && !KateGlobal::self()->modeManager()->fileType(newType).hl.isEmpty()) {
-                int hl(KateHlManager::self()->nameFind(KateGlobal::self()->modeManager()->fileType(newType).hl));
+            if (!m_hlSetByUser && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
+                int hl(KateHlManager::self()->nameFind(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl));
 
                 if (hl >= 0) {
                     m_buffer->setHighlight(hl);
@@ -4563,8 +4563,8 @@ void KateDocument::updateFileType(const QString &newType, bool user)
              * set the indentation mode, if any in the mode...
              * and user did not set it before!
              */
-            if (!m_indenterSetByUser && !KateGlobal::self()->modeManager()->fileType(newType).indenter.isEmpty()) {
-                config()->setIndentationMode(KateGlobal::self()->modeManager()->fileType(newType).indenter);
+            if (!m_indenterSetByUser && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter.isEmpty()) {
+                config()->setIndentationMode(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter);
             }
 
             // views!
@@ -4578,7 +4578,7 @@ void KateDocument::updateFileType(const QString &newType, bool user)
             if (m_bomSetByUser) {
                 bom_settings = m_config->bom();
             }
-            readVariableLine(KateGlobal::self()->modeManager()->fileType(newType).varLine);
+            readVariableLine(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).varLine);
             if (m_bomSetByUser) {
                 m_config->setBom(bom_settings);
             }

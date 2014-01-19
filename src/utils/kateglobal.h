@@ -54,14 +54,17 @@ class KateWordCompletionModel;
 
 Q_DECLARE_METATYPE(KSharedConfig::Ptr)
 
+namespace KTextEditor
+{
+
 /**
- * KateGlobal
+ * KTextEditor::EditorPrivate
  * One instance of this class is hold alive during
  * a kate part session, as long as any factory, document
  * or view stay around, here is the place to put things
  * which are needed and shared by all this objects ;)
  */
-class KTEXTEDITOR_EXPORT KateGlobal : public KTextEditor::Editor, public KTextEditor::CommandInterface, public KTextEditor::TemplateScriptRegistrar
+class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTextEditor::CommandInterface, public KTextEditor::TemplateScriptRegistrar
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CommandInterface)
@@ -115,13 +118,13 @@ private:
      * Default constructor, private, as singleton
      * @param staticInstance pointer to fill with content of this
      */
-    KateGlobal(QPointer<KateGlobal> &staticInstance);
+    EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance);
 
 public:
     /**
      * Destructor
      */
-    ~KateGlobal();
+    ~EditorPrivate();
 
     /**
      * Create a new document object
@@ -221,7 +224,7 @@ public:
      * singleton accessor
      * @return instance of the factory
      */
-    static KateGlobal *self();
+    static KTextEditor::EditorPrivate *self();
 
     /**
      * register document at the factory
@@ -546,6 +549,8 @@ private:
      */
     QPointer<KTextEditor::Application> m_application;
 };
+
+}
 
 #endif
 

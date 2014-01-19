@@ -554,7 +554,7 @@ bool KateCommands::ViCommands::exec(KTextEditor::View *view,
     if (mappingCommands().contains(cmd)) {
         if (cmd.endsWith(QLatin1String("unmap"))) {
             if (args.count() == 1) {
-                KateGlobal::self()->viInputModeGlobal()->removeMapping(modeForMapCommand(cmd), args.at(0));
+                KTextEditor::EditorPrivate::self()->viInputModeGlobal()->removeMapping(modeForMapCommand(cmd), args.at(0));
                 return true;
             } else {
                 msg = i18n("Missing argument. Usage: %1 <from>",  cmd);
@@ -562,7 +562,7 @@ bool KateCommands::ViCommands::exec(KTextEditor::View *view,
             }
         }
         if (args.count() == 1) {
-            msg = KateGlobal::self()->viInputModeGlobal()->getMapping(modeForMapCommand(cmd), args.at(0), true);
+            msg = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMapping(modeForMapCommand(cmd), args.at(0), true);
             if (msg.isEmpty()) {
                 msg = i18n("No mapping found for \"%1\"", args.at(0));
                 return false;
@@ -571,7 +571,7 @@ bool KateCommands::ViCommands::exec(KTextEditor::View *view,
             }
         } else if (args.count() == 2) {
             KateViGlobal::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? KateViGlobal::Recursive : KateViGlobal::NonRecursive;
-            KateGlobal::self()->viInputModeGlobal()->addMapping(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
         } else {
             msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]",  cmd);
             return false;
@@ -687,7 +687,7 @@ KCompletion *KateCommands::ViCommands::completionObject(KTextEditor::View *view,
     KateView *v = static_cast<KateView *>(view);
 
     if (v && (cmd == QLatin1String("nn") || cmd == QLatin1String("nnoremap"))) {
-        QStringList l = KateGlobal::self()->viInputModeGlobal()->getMappings(KateViGlobal::NormalModeMapping);
+        QStringList l = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMappings(KateViGlobal::NormalModeMapping);
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();
         co->setItems(l);

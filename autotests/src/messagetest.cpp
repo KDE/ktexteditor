@@ -34,7 +34,7 @@ QTEST_MAIN(MessageTest)
 
 void MessageTest::initTestCase()
 {
-    KateGlobal::enableUnitTestMode();
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void MessageTest::cleanupTestCase()

@@ -438,12 +438,12 @@ void KateViEmulatedCommandBar::closed()
             m_view->getViInputModeManager()->setLastSearchBackwards(m_currentSearchIsBackwards);
             m_view->getViInputModeManager()->setLastSearchPlacesCursorAtEndOfMatch(m_currentSearchPlacesCursorAtEndOfMatch);
         }
-        KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(m_edit->text());
+        KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(m_edit->text());
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
             // do it inside closed() as we may still be showing the command response display.
-            KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem(m_edit->text());
+            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem(m_edit->text());
             // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
             // If we switch from Visual to Normal mode, we need to clear the selection.
             m_view->clearSelection();
@@ -583,7 +583,7 @@ void KateViEmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &new
 void KateViEmulatedCommandBar::activateSearchHistoryCompletion()
 {
     m_currentCompletionType = SearchHistory;
-    m_completionModel->setStringList(reversed(KateGlobal::self()->viInputModeGlobal()->searchHistory()));
+    m_completionModel->setStringList(reversed(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->searchHistory()));
     updateCompletionPrefix();
     m_completer->complete();
 }
@@ -621,16 +621,16 @@ void KateViEmulatedCommandBar::activateCommandCompletion()
 void KateViEmulatedCommandBar::activateCommandHistoryCompletion()
 {
     m_currentCompletionType = CommandHistory;
-    m_completionModel->setStringList(reversed(KateGlobal::self()->viInputModeGlobal()->commandHistory()));
+    m_completionModel->setStringList(reversed(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->commandHistory()));
     updateCompletionPrefix();
     m_completer->complete();
 }
 
 void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 {
-    if (!KateGlobal::self()->viInputModeGlobal()->searchHistory().isEmpty()) {
+    if (!KTextEditor::EditorPrivate::self()->viInputModeGlobal()->searchHistory().isEmpty()) {
         m_currentCompletionType = SedFindHistory;
-        m_completionModel->setStringList(reversed(KateGlobal::self()->viInputModeGlobal()->searchHistory()));
+        m_completionModel->setStringList(reversed(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->searchHistory()));
         m_completer->setCompletionPrefix(sedFindTerm());
         m_completer->complete();
     }
@@ -638,9 +638,9 @@ void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 
 void KateViEmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
-    if (!KateGlobal::self()->viInputModeGlobal()->replaceHistory().isEmpty()) {
+    if (!KTextEditor::EditorPrivate::self()->viInputModeGlobal()->replaceHistory().isEmpty()) {
         m_currentCompletionType = SedReplaceHistory;
-        m_completionModel->setStringList(reversed(KateGlobal::self()->viInputModeGlobal()->replaceHistory()));
+        m_completionModel->setStringList(reversed(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->replaceHistory()));
         m_completer->setCompletionPrefix(sedReplaceTerm());
         m_completer->complete();
     }
@@ -937,7 +937,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
                 textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
             } else {
-                textToInsert = KateGlobal::self()->viInputModeGlobal()->getRegisterContent(key);
+                textToInsert = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisterContent(key);
             }
             if (m_insertedTextShouldBeEscapedForSearchingAsLiteral) {
                 textToInsert = escapedForSearchingAsLiteral(textToInsert);
@@ -1007,9 +1007,9 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     const QString originalFindTerm = sedFindTerm();
                     const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
                     const QString commandWithSedSearchRegexConverted = withSedFindTermReplacedWith(convertedFindTerm);
-                    KateGlobal::self()->viInputModeGlobal()->appendSearchHistoryItem(originalFindTerm);
+                    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendSearchHistoryItem(originalFindTerm);
                     const QString replaceTerm = sedReplaceTerm();
-                    KateGlobal::self()->viInputModeGlobal()->appendReplaceHistoryItem(replaceTerm);
+                    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendReplaceHistoryItem(replaceTerm);
                     commandToExecute = commandWithSedSearchRegexConverted;
                     qCDebug(LOG_PART) << "Command to execute after replacing search term: " << commandToExecute;
                 }
@@ -1022,7 +1022,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                         switchToCommandResponseDisplay(commandResponseMessage);
                     }
                 }
-                KateGlobal::self()->viInputModeGlobal()->appendCommandHistoryItem(m_edit->text());
+                KTextEditor::EditorPrivate::self()->viInputModeGlobal()->appendCommandHistoryItem(m_edit->text());
             } else {
                 emit hideMe();
             }

@@ -56,19 +56,19 @@ Q_LOGGING_CATEGORY(LOG_PART, "katepart")
 
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
-void KateGlobal::enableUnitTestMode()
+void KTextEditor::EditorPrivate::enableUnitTestMode()
 {
     kateUnitTestMode = true;
 }
 
-bool KateGlobal::unitTestMode()
+bool KTextEditor::EditorPrivate::unitTestMode()
 {
     return kateUnitTestMode;
 }
 //END unit test mode
 
-KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
-    : KTextEditor::Editor(0)
+KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance)
+    : KTextEditor::Editor (this)
     , m_aboutData(QLatin1String("katepart"), QString(), i18n("Kate Part"), QLatin1String(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutData::License_LGPL_V2,
                   i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
@@ -211,7 +211,7 @@ KateGlobal::KateGlobal(QPointer<KateGlobal> &staticInstance)
     qRegisterMetaType<KSharedConfig::Ptr>("KSharedConfig::Ptr");
 }
 
-KateGlobal::~KateGlobal()
+KTextEditor::EditorPrivate::~EditorPrivate()
 {
     delete m_globalConfig;
     delete m_documentConfig;
@@ -239,7 +239,7 @@ KateGlobal::~KateGlobal()
     delete m_wordCompletionModel;
 }
 
-KTextEditor::Document *KateGlobal::createDocument(QObject *parent)
+KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
 {
     KateDocument *doc = new KateDocument(false, false, 0, parent);
 
@@ -248,13 +248,13 @@ KTextEditor::Document *KateGlobal::createDocument(QObject *parent)
     return doc;
 }
 
-const QList<KTextEditor::Document *> &KateGlobal::documents()
+const QList<KTextEditor::Document *> &KTextEditor::EditorPrivate::documents()
 {
     return m_docs;
 }
 
 //BEGIN KTextEditor::Editor config stuff
-void KateGlobal::readConfig(KConfig *config)
+void KTextEditor::EditorPrivate::readConfig(KConfig *config)
 {
     if (!config) {
         config = KSharedConfig::openConfig().data();
@@ -271,7 +271,7 @@ void KateGlobal::readConfig(KConfig *config)
     m_viInputModeGlobal->readConfig(KConfigGroup(config, "Kate Vi Input Mode Settings"));
 }
 
-void KateGlobal::writeConfig(KConfig *config)
+void KTextEditor::EditorPrivate::writeConfig(KConfig *config)
 {
     if (!config) {
         config = KSharedConfig::openConfig().data();
@@ -296,7 +296,7 @@ void KateGlobal::writeConfig(KConfig *config)
 }
 //END KTextEditor::Editor config stuff
 
-void KateGlobal::configDialog(QWidget *parent)
+void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
 {
     QPointer<KPageDialog> kd = new KPageDialog(parent);
 
@@ -343,12 +343,12 @@ void KateGlobal::configDialog(QWidget *parent)
     delete kd;
 }
 
-int KateGlobal::configPages() const
+int KTextEditor::EditorPrivate::configPages() const
 {
     return 4;
 }
 
-KTextEditor::ConfigPage *KateGlobal::configPage(int number, QWidget *parent)
+KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWidget *parent)
 {
     switch (number) {
     case 0:
@@ -370,7 +370,7 @@ KTextEditor::ConfigPage *KateGlobal::configPage(int number, QWidget *parent)
     return 0;
 }
 
-QString KateGlobal::configPageName(int number) const
+QString KTextEditor::EditorPrivate::configPageName(int number) const
 {
     switch (number) {
     case 0:
@@ -392,7 +392,7 @@ QString KateGlobal::configPageName(int number) const
     return QString();
 }
 
-QString KateGlobal::configPageFullName(int number) const
+QString KTextEditor::EditorPrivate::configPageFullName(int number) const
 {
     switch (number) {
     case 0:
@@ -414,7 +414,7 @@ QString KateGlobal::configPageFullName(int number) const
     return QString();
 }
 
-QIcon KateGlobal::configPageIcon(int number) const
+QIcon KTextEditor::EditorPrivate::configPageIcon(int number) const
 {
     switch (number) {
     case 0:
@@ -437,23 +437,23 @@ QIcon KateGlobal::configPageIcon(int number) const
 }
 
 /**
- * Cleanup the KateGlobal during QCoreApplication shutdown
+ * Cleanup the KTextEditor::EditorPrivate during QCoreApplication shutdown
  */
 static void cleanupGlobal()
 {
     /**
      * delete if there
      */
-    delete KateGlobal::self();
+    delete KTextEditor::EditorPrivate::self();
 }
 
-KateGlobal *KateGlobal::self()
+KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
 {
     /**
      * remember the static instance in a QPointer
      */
     static bool inited = false;
-    static QPointer<KateGlobal> staticInstance;
+    static QPointer<KTextEditor::EditorPrivate> staticInstance;
 
     /**
      * just return it, if already inited
@@ -470,7 +470,7 @@ KateGlobal *KateGlobal::self()
     /**
      * now create the object and store it
      */
-    new KateGlobal(staticInstance);
+    new KTextEditor::EditorPrivate(staticInstance);
 
     /**
      * register cleanup
@@ -484,66 +484,66 @@ KateGlobal *KateGlobal::self()
     return staticInstance.data();
 }
 
-void KateGlobal::registerDocument(KateDocument *doc)
+void KTextEditor::EditorPrivate::registerDocument(KateDocument *doc)
 {
     m_documents.append(doc);
     m_docs.append(doc);
 }
 
-void KateGlobal::deregisterDocument(KateDocument *doc)
+void KTextEditor::EditorPrivate::deregisterDocument(KateDocument *doc)
 {
     m_docs.removeAll(doc);
     m_documents.removeAll(doc);
 }
 
-void KateGlobal::registerView(KateView *view)
+void KTextEditor::EditorPrivate::registerView(KateView *view)
 {
     m_views.append(view);
 }
 
-void KateGlobal::deregisterView(KateView *view)
+void KTextEditor::EditorPrivate::deregisterView(KateView *view)
 {
     m_views.removeAll(view);
 }
 
 //BEGIN command interface
-bool KateGlobal::registerCommand(KTextEditor::Command *cmd)
+bool KTextEditor::EditorPrivate::registerCommand(KTextEditor::Command *cmd)
 {
     return m_cmdManager->registerCommand(cmd);
 }
 
-bool KateGlobal::unregisterCommand(KTextEditor::Command *cmd)
+bool KTextEditor::EditorPrivate::unregisterCommand(KTextEditor::Command *cmd)
 {
     return m_cmdManager->unregisterCommand(cmd);
 }
 
-KTextEditor::Command *KateGlobal::queryCommand(const QString &cmd) const
+KTextEditor::Command *KTextEditor::EditorPrivate::queryCommand(const QString &cmd) const
 {
     return m_cmdManager->queryCommand(cmd);
 }
 
-QList<KTextEditor::Command *> KateGlobal::commands() const
+QList<KTextEditor::Command *> KTextEditor::EditorPrivate::commands() const
 {
     return m_cmdManager->commands();
 }
 
-QStringList KateGlobal::commandList() const
+QStringList KTextEditor::EditorPrivate::commandList() const
 {
     return m_cmdManager->commandList();
 }
 //END command interface
 
-KTextEditor::TemplateScript *KateGlobal::registerTemplateScript(QObject *owner, const QString &script)
+KTextEditor::TemplateScript *KTextEditor::EditorPrivate::registerTemplateScript(QObject *owner, const QString &script)
 {
     return scriptManager()->registerTemplateScript(owner, script);
 }
 
-void KateGlobal::unregisterTemplateScript(KTextEditor::TemplateScript *templateScript)
+void KTextEditor::EditorPrivate::unregisterTemplateScript(KTextEditor::TemplateScript *templateScript)
 {
     scriptManager()->unregisterTemplateScript(templateScript);
 }
 
-void KateGlobal::updateColorPalette()
+void KTextEditor::EditorPrivate::updateColorPalette()
 {
     // reload the global schema (triggers reload for every view as well)
     m_rendererConfig->reloadSchema();
@@ -552,7 +552,7 @@ void KateGlobal::updateColorPalette()
     m_rendererConfig->updateConfig();
 }
 
-void KateGlobal::copyToClipboard(const QString &text)
+void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
 {
     /**
      * empty => nop
@@ -581,7 +581,7 @@ void KateGlobal::copyToClipboard(const QString &text)
     emit clipboardHistoryChanged();
 }
 
-bool KateGlobal::eventFilter(QObject *obj, QEvent *event)
+bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
 {
     Q_UNUSED(obj);
 

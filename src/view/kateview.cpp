@@ -136,7 +136,7 @@ KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
 
-    KXMLGUIClient::setComponentName(KateGlobal::self()->aboutData().componentName(), KateGlobal::self()->aboutData().displayName());
+    KXMLGUIClient::setComponentName(KTextEditor::EditorPrivate::self()->aboutData().componentName(), KTextEditor::EditorPrivate::self()->aboutData().displayName());
 
     // selection if for this view only and will invalidate if becoming empty
     m_selection.setView(this);
@@ -144,7 +144,7 @@ KateView::KateView(KateDocument *doc, QWidget *parent, KTextEditor::MainWindow *
     // use z depth defined in moving ranges interface
     m_selection.setZDepth(-100000.0);
 
-    KateGlobal::self()->registerView(this);
+    KTextEditor::EditorPrivate::self()->registerView(this);
 
     /**
      * try to let the main window, if any, create a view bar for this view
@@ -296,7 +296,7 @@ KateView::~KateView()
 
     delete m_config;
 
-    KateGlobal::self()->deregisterView(this);
+    KTextEditor::EditorPrivate::self()->deregisterView(this);
 }
 
 void KateView::setupConnections()
@@ -331,7 +331,7 @@ void KateView::setupActions()
     a->setWhatsThis(i18n("Use this command to copy the currently selected text to the system clipboard."));
 
     m_pasteMenu = ac->addAction(QLatin1String("edit_paste_menu"), new KatePasteMenu(i18n("Clipboard &History"), this));
-    connect(KateGlobal::self(), SIGNAL(clipboardHistoryChanged()), this, SLOT(slotClipboardHistoryChanged()));
+    connect(KTextEditor::EditorPrivate::self(), SIGNAL(clipboardHistoryChanged()), this, SLOT(slotClipboardHistoryChanged()));
 
     if (!m_doc->readOnly()) {
         a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
@@ -689,11 +689,11 @@ void KateView::setupActions()
 
 void KateView::slotConfigDialog()
 {
-    KateGlobal::self()->configDialog(this);
+    KTextEditor::EditorPrivate::self()->configDialog(this);
 
     // write config to global settings, else simple programs don't get config saved ever
     // like Konqueror, Dolphin, ...
-    KateGlobal::self()->writeConfig(KSharedConfig::openConfig().data());
+    KTextEditor::EditorPrivate::self()->writeConfig(KSharedConfig::openConfig().data());
 }
 
 void KateView::setupEditActions()
@@ -1193,7 +1193,7 @@ void KateView::slotReadWriteChanged()
 
     m_cut->setEnabled(m_doc->isReadWrite() && (selection() || m_config->smartCopyCut()));
     m_paste->setEnabled(m_doc->isReadWrite());
-    m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KateGlobal::self()->clipboardHistory().isEmpty());
+    m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     m_setEndOfLine->setEnabled(m_doc->isReadWrite());
 
     QStringList l;
@@ -1234,7 +1234,7 @@ void KateView::slotReadWriteChanged()
 
 void KateView::slotClipboardHistoryChanged()
 {
-    m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KateGlobal::self()->clipboardHistory().isEmpty());
+    m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
 }
 
 void KateView::slotUpdateUndo()
@@ -1749,9 +1749,9 @@ void KateView::updateConfig()
     reflectOnTheFlySpellCheckStatus(m_doc->isOnTheFlySpellCheckingEnabled());
 
     // register/unregister word completion...
-    unregisterCompletionModel(KateGlobal::self()->wordCompletionModel());
+    unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
     if (config()->wordCompletion()) {
-        registerCompletionModel(KateGlobal::self()->wordCompletionModel());
+        registerCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
     }
 
     m_cut->setEnabled(m_doc->isReadWrite() && (selection() || m_config->smartCopyCut()));
@@ -2207,7 +2207,7 @@ void KateView::copy() const
     }
 
     // copy to clipboard and our history!
-    KateGlobal::self()->copyToClipboard(text);
+    KTextEditor::EditorPrivate::self()->copyToClipboard(text);
 }
 
 void KateView::applyWordWrap()
@@ -2304,7 +2304,7 @@ bool KateView::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
     /**
      * get script
      */
-    KateTemplateScript *kateTemplateScript = KateGlobal::self()->scriptManager()->templateScript(templateScript);
+    KateTemplateScript *kateTemplateScript = KTextEditor::EditorPrivate::self()->scriptManager()->templateScript(templateScript);
 
     /**
      * the handler will delete itself when necessary
