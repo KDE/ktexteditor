@@ -20,6 +20,8 @@
 
 #include "document.h"
 
+#include "katedocument.h"
+
 using namespace KTextEditor;
 
 Document::Document(DocumentPrivate *impl, QObject *parent)
@@ -34,22 +36,12 @@ Document::~Document()
 
 bool Document::openingError() const
 {
-    return false; // FIXME KF 5; d->openingError;
+    return d->m_openingError;
 }
 
 QString Document::openingErrorMessage() const
 {
-    return QString (); //FIXME KF5 d->openingErrorMessage;
-}
-
-void Document::setOpeningError(bool errors)
-{
-    // FIXME KF 5; d->openingError = errors;
-}
-
-void Document::setOpeningErrorMessage(const QString &message)
-{
-    // FIXME KF 5; d->openingErrorMessage = message;
+    return d->m_openingErrorMessage;
 }
 
 bool Document::cursorInText(const Cursor &cursor)

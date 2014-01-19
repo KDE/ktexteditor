@@ -70,6 +70,8 @@ class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTex
     Q_INTERFACES(KTextEditor::CommandInterface)
     Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
 
+    friend class KTextEditor::Editor;
+
 public:
     /**
      * property to tell the editor to use a given session config for session related

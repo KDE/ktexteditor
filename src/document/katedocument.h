@@ -107,6 +107,7 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     Q_INTERFACES(KTextEditor::RecoveryInterface)
     Q_INTERFACES(KTextEditor::MessageInterface)
 
+    friend class KTextEditor::Document;
     friend class ::KateDocumentTest;
     friend class ::KateBuffer;
 
@@ -1267,6 +1268,16 @@ private:
      * message to show during loading
      */
     QPointer<KTextEditor::Message> m_loadingMessage;
+
+    /**
+     * Was there any open error on last file loading?
+     */
+    bool m_openingError;
+
+    /**
+     * Last open file error message
+     */
+    QString m_openingErrorMessage;
 };
 
 #endif

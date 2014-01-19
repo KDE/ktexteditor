@@ -293,6 +293,19 @@ public:
      */
     virtual bool documentSaveAs() = 0;
 
+    /**
+     * True, eg if the file for opening could not be read
+     * This doesn't have to handle the KPart job canceled cases.
+     * @return was there some problem loading the file?
+     */
+    bool openingError() const;
+
+    /**
+     * Error message if any problem occured on last load.
+     * @return error message what went wrong on loading
+     */
+    QString openingErrorMessage() const;
+
 Q_SIGNALS:
     /**
     * This signal should be emitted after a document has been saved to disk or for remote files uploaded.
@@ -851,18 +864,6 @@ Q_SIGNALS:
 
 private:
     DocumentPrivate *const d;
-
-public:
-    /**
-     * True, eg if the file for opening could not be read
-     * This doesn't have to handle the KPart job cancled cases
-     */
-    bool openingError() const;
-    QString openingErrorMessage() const;
-
-protected:
-    void setOpeningError(bool errors);
-    void setOpeningErrorMessage(const QString &message);
 };
 
 }

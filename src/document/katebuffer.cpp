@@ -183,8 +183,8 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
         m_doc->postMessage(message);
 
         // remember error
-        m_doc->setOpeningError(true);
-        m_doc->setOpeningErrorMessage(i18n("The file %1 does not exist.", m_doc->url().toString()));
+        m_doc->m_openingError = true;
+        m_doc->m_openingErrorMessage = i18n("The file %1 does not exist.", m_doc->url().toString());
         return true;
     }
 

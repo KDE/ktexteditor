@@ -134,7 +134,8 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_onTheFlyChecker(0),
       m_documentState(DocumentIdle),
       m_readWriteStateBeforeLoading(false),
-      m_isUntitled(true)
+      m_isUntitled(true),
+      m_openingError (false)
 {
     setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
@@ -2005,8 +2006,8 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
     postMessage(message);
 
     // remember error
-    setOpeningError(true);
-    setOpeningErrorMessage(i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.", this->url().toString()));
+    m_openingError = true;
+    m_openingErrorMessage = i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.", this->url().toString());
 
 }
 //END: error
@@ -2020,7 +2021,8 @@ bool KTextEditor::DocumentPrivate::openFile()
     emit aboutToInvalidateMovingInterfaceContent(this);
 
     // no open errors until now...
-    setOpeningError(false);
+    m_openingError = false;
+    m_openingErrorMessage.clear ();
 
     // add new m_file to dirwatch
     activateDirWatch();
@@ -2115,10 +2117,10 @@ bool KTextEditor::DocumentPrivate::openFile()
         postMessage(message);
 
         // remember error
-        setOpeningError(true);
-        setOpeningErrorMessage(i18n("The file %1 was opened with %2 encoding but contained invalid characters."
+        m_openingError = true;
+        m_openingErrorMessage = i18n("The file %1 was opened with %2 encoding but contained invalid characters."
                                     " It is set to read-only mode, as saving might destroy its content."
-                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the menu to be able to edit it.", this->url().toString(), QString::fromLatin1(m_buffer->textCodec()->name())));
+                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the menu to be able to edit it.", this->url().toString(), QString::fromLatin1(m_buffer->textCodec()->name()));
     }
 
     // warn: too long lines
@@ -2135,9 +2137,9 @@ bool KTextEditor::DocumentPrivate::openFile()
         postMessage(message);
 
         // remember error
-        setOpeningError(true);
-        setOpeningErrorMessage(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters)."
-                                    " Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit()));
+        m_openingError = true;
+        m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters)."
+                                    " Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit());
     }
 
     //

@@ -95,6 +95,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
 
+    friend class KTextEditor::View;
     friend class ::KateViewInternal;
     friend class ::KateIconBorder;
     friend class ::KateViModeBase;
