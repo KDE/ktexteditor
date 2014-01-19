@@ -108,7 +108,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
 {
     m_folding = new Kate::TextFolding(m_doc->buffer());
 
-    m_renderer = new KateRenderer(m_doc, *m_folding);
+    m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
     m_renderer->config()->setSchema(m_colorScheme);
     m_renderer->setPrinterFriendly(true);
 
