@@ -2049,9 +2049,6 @@ bool KTextEditor::DocumentPrivate::openFile()
         setEncoding(mimeType.mid(pos + 1));
     }
 
-    // do we have success ?
-    emit KTextEditor::Document::textRemoved(this, documentRange(), m_buffer->text());
-
     // update file type, we do this here PRE-LOAD, therefore pass file name for reading from
     updateFileType(KTextEditor::EditorPrivate::self()->modeManager()->fileType(this, localFilePath()));
 
@@ -2088,9 +2085,6 @@ bool KTextEditor::DocumentPrivate::openFile()
         view->setUpdatesEnabled(true);
         view->updateView(true);
     }
-
-    // emit all signals about new text after view updates
-    emit KTextEditor::Document::textInserted(this, documentRange());
 
     // Inform that the text has changed (required as we're not inside the usual editStart/End stuff)
     emit textChanged(this);
@@ -2482,8 +2476,6 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         m_modOnHdReason = OnDiskUnmodified;
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
-
-    emit KTextEditor::Document::textRemoved(this, documentRange(), m_buffer->text());
 
     {
         // remove all marks
