@@ -34,6 +34,8 @@
 #include "katevivisualmode.h"
 
 #include <KColorScheme>
+#include <KNotification>
+#include <KLocalizedString>
 
 #include <QLineEdit>
 #include <QVBoxLayout>
@@ -41,6 +43,7 @@
 #include <QCompleter>
 #include <QApplication>
 #include <QAbstractItemView>
+#include <QWhatsThis>
 
 #include <algorithm>
 
@@ -1092,14 +1095,67 @@ void KateViEmulatedCommandBar::showBarTypeIndicator(KateViEmulatedCommandBar::Mo
 
 QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute)
 {
-    // TODO - this is a hack-ish way of finding the response from the command; maybe
-    // add another overload of "execute" to KateCommandLineBar that returns the
-    // response message ... ?
-    m_view->cmdLineBar()->setText(QString());
-    m_view->cmdLineBar()->execute(commandToExecute);
-    KateCmdLineEdit *kateCommandLineEdit = m_view->cmdLineBar()->findChild<KateCmdLineEdit *>();
-    Q_ASSERT(kateCommandLineEdit);
-    const QString commandResponseMessage = kateCommandLineEdit->text();
+    // silently ignore leading space characters and colon characters (for vi-heads)
+    uint n = 0;
+    const uint textlen = commandToExecute.length();
+    while ((n < textlen) && commandToExecute[n].isSpace()) {
+        n++;
+    }
+
+    if (n >= textlen) {
+        return QString();
+    }
+
+    QString commandResponseMessage;
+    QString cmd = commandToExecute.mid(n);
+
+    // Parse any leading range expression, and strip it (and maybe do some other transforms on the command).
+    QString leadingRangeExpression;
+    KTextEditor::Range range = CommandRangeExpressionParser::parseRangeExpression(cmd, m_view, leadingRangeExpression, cmd);
+
+    if (cmd.length() > 0) {
+        KTextEditor::Command *p = KateCmd::self()->queryCommand(cmd);
+        KTextEditor::RangeCommand *ce = dynamic_cast<KTextEditor::RangeCommand *>(p);
+
+        // the following commands changes the focus themselves, so bar should be hidden before execution.
+
+        // we got a range and a valid command, but the command does not inherit the RangeCommand
+        // extension. bail out.
+        if ((!ce && range.isValid() && p) || (range.isValid() && ce && !ce->supportsRange(cmd))) {
+            commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
+        } else {
+
+            if (p) {
+                if ((ce && range.isValid() && ce->exec(m_view, cmd, commandResponseMessage, range)) ||
+                    (p->exec(m_view, cmd, commandResponseMessage))) {
+
+                    if (commandResponseMessage.length() > 0) {
+                        commandResponseMessage = i18n("Success: ") + commandResponseMessage;
+                    }
+                } else {
+                    if (commandResponseMessage.length() > 0) {
+                        if (commandResponseMessage.contains(QLatin1Char('\n'))) {
+                            // multiline error, use widget with more space
+                            QWhatsThis::showText(mapToGlobal(QPoint(0, 0)), commandResponseMessage);
+                        }
+                    } else {
+                        commandResponseMessage = i18n("Command \"%1\" failed.",  cmd);
+                    }
+                    KNotification::beep();
+                }
+            } else {
+                commandResponseMessage = i18n("No such command: \"%1\"",  cmd);
+                KNotification::beep();
+            }
+        }
+    }
+
+    // the following commands change the focus themselves
+    if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1String(" ")).at(0))) {
+        m_view->setFocus();
+    }
+
+    m_view->getViInputModeManager()->reset();
     return commandResponseMessage;
 }
 
