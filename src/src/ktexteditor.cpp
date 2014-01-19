@@ -44,37 +44,34 @@
 #include "annotationinterface.h"
 
 #include "kateglobal.h"
+#include "kateconfig.h"
 
 using namespace KTextEditor;
 
-class KTextEditor::EditorPrivate
-{
-public:
-    EditorPrivate()
-    {
-    }
-    QString defaultEncoding;
-};
-
 Editor::Editor(QObject *parent)
     : QObject(parent)
-    , d(new KTextEditor::EditorPrivate())
+    , d(nullptr)
 {
 }
 
 Editor::~Editor()
 {
-    delete d;
 }
 
-const QString &Editor::defaultEncoding() const
+Editor *KTextEditor::Editor::instance()
 {
-    return d->defaultEncoding;
+    /**
+     * Just use internal KateGlobal::self()
+     */
+    return KateGlobal::self();
 }
 
-void Editor::setDefaultEncoding(const QString &defaultEncoding)
+QString Editor::defaultEncoding () const
 {
-    d->defaultEncoding = defaultEncoding;
+    /**
+     * return default encoding in global config object
+     */
+    return KateGlobal::self()->documentConfig()->encoding ();
 }
 
 bool View::insertText(const QString &text)
@@ -84,14 +81,6 @@ bool View::insertText(const QString &text)
         return false;
     }
     return doc->insertText(cursorPosition(), text, blockSelection());
-}
-
-Editor *KTextEditor::Editor::instance()
-{
-    /**
-     * Just use internal KateGlobal::self()
-     */
-    return KateGlobal::self();
 }
 
 ConfigPage::ConfigPage(QWidget *parent)

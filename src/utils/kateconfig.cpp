@@ -908,11 +908,6 @@ bool KateDocumentConfig::setEncoding(const QString &encoding)
     configStart();
     m_encodingSet = true;
     m_encoding = QString::fromLatin1(codec->name());
-
-    if (isGlobal()) {
-        KateGlobal::self()->setDefaultEncoding(m_encoding);
-    }
-
     configEnd();
     return true;
 }
