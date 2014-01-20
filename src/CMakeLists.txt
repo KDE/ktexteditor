@@ -132,6 +132,7 @@ view/katetextanimation.cpp
 view/katestatusbar.cpp
 
 # vi input mode
+vimode/kateviappcommands.cpp
 vimode/kateviinputmodemanager.cpp
 vimode/katevimodebase.cpp
 vimode/katevinormalmode.cpp
