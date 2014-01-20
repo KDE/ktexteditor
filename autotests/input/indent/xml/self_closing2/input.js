@@ -3,6 +3,6 @@ v.selectAll();
 
 var r = v.selection();
 if( r.isValid() ) {
-  d.align( r );
+  v.align( r );
 }
 
