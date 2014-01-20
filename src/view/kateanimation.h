@@ -60,12 +60,12 @@ public:
     /**
      * Returns true, if the hide animation is running, otherwise false.
      */
-    bool hideAnimationActive() const;
+    bool isHideAnimationRunning() const;
 
     /**
      * Returns true, if the how animation is running, otherwise false.
      */
-    bool showAnimationActive() const;
+    bool isShowAnimationRunning() const;
 
 public Q_SLOTS:
     /**
@@ -94,8 +94,6 @@ Q_SIGNALS:
 private:
     QPointer<KMessageWidget> m_widget; ///< the widget to animate
     KateFadeEffect *m_fadeEffect;      ///< the fade effect
-    QTimer *m_hideTimer;               ///< timer to track hide animation
-    QTimer *m_showTimer;               ///< timer to track show animation
 };
 
 #endif

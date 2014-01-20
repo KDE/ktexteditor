@@ -48,11 +48,26 @@ public:
      */
     KateFadeEffect(QWidget *widget = 0);
 
+    /**
+     * Check whether the hide animation started by calling fadeOut()
+     * is still running. If animations are disabled, this function always
+     * returns @e false.
+     */
+    bool isHideAnimationRunning() const;
+
+    /**
+     * Check whether the show animation started by calling fadeIn()
+     * is still running. If animations are disabled, this function always
+     * returns @e false.
+     */
+    bool isShowAnimationRunning() const;
+
 public Q_SLOTS:
     /**
      * Call to fade out and hide the widget.
      */
     void fadeOut();
+
     /**
      * Call to show and fade in the widget
      */
@@ -60,16 +75,25 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     /**
-     * This signal is emitted when the hiding animation is finished.
-     * At this point, the associated widget is hidden.
+     * This signal is emitted when the fadeOut animation is finished, started by
+     * calling fadeOut(). If animations are disabled, this signal is
+     * emitted immediately.
      */
-    void widgetHidden();
+    void hideAnimationFinished();
+
+    /**
+     * This signal is emitted when the fadeIn animation is finished, started by
+     * calling fadeIn(). If animations are disabled, this signal is
+     * emitted immediately.
+     */
+    void showAnimationFinished();
 
 protected Q_SLOTS:
     /**
      * Helper to update opacity value
      */
     void opacityChanged(qreal value);
+
     /**
      * When the animation is finished, hide the widget if fading out.
      */

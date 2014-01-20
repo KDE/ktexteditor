@@ -49,6 +49,7 @@ void MessageTest::testPostMessage()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     QPointer<Message> message = new Message("Message text", Message::Information);
     message->setPosition(Message::TopInView);
@@ -77,6 +78,7 @@ void MessageTest::testAutoHide()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -109,6 +111,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
@@ -152,6 +155,7 @@ void MessageTest::testMessageQueue()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     //
     // add two messages, both with autoHide to 1 second, and check that the queue is processed correctly
@@ -209,6 +213,7 @@ void MessageTest::testPriority()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     //
     // add two messages
@@ -290,6 +295,7 @@ void MessageTest::testCreateView()
     v2->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(v1));
     QVERIFY(QTest::qWaitForWindowExposed(v2));
+    QTest::qWait(1000);
 
     // make sure both views show the message
     QVERIFY(v1->messageWidget()->isVisible());
@@ -313,6 +319,7 @@ void MessageTest::testHideView()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     // create message that hides after 2s immediately
     QPointer<Message> message = new Message("Message text", Message::Information);
@@ -359,6 +366,7 @@ void MessageTest::testHideViewAfterUserInteraction()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
+    QTest::qWait(1000);
 
     // create message that hides after 2s immediately
     QPointer<Message> message = new Message("Message text", Message::Information);

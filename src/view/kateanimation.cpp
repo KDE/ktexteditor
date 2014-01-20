@@ -38,44 +38,33 @@ KateAnimation::KateAnimation(KMessageWidget *widget, EffectType effect)
     // create wanted effect
     if (effect == FadeEffect) {
         m_fadeEffect = new KateFadeEffect(widget);
+
+        connect(m_fadeEffect, SIGNAL(hideAnimationFinished()), this, SIGNAL(widgetHidden()));
+        connect(m_fadeEffect, SIGNAL(showAnimationFinished()), this, SIGNAL(widgetShown()));
+    } else {
+        connect(m_widget, SIGNAL(hideAnimationFinished()), this, SIGNAL(widgetHidden()));
+        connect(m_widget, SIGNAL(showAnimationFinished()), this, SIGNAL(widgetShown()));
     }
-
-    // create tracking timer for hiding the widget
-    m_hideTimer = new QTimer(this);
-    m_hideTimer->setInterval(550); // 500 from KMessageWidget + 50 to make sure the hide animation is really finished
-    m_hideTimer->setSingleShot(true);
-    connect(m_hideTimer, SIGNAL(timeout()), this, SIGNAL(widgetHidden()));
-
-    // create tracking timer for showing the widget
-    m_showTimer = new QTimer(this);
-    m_showTimer->setInterval(550); // 500 from KMessageWidget + 50 to make sure the show animation is really finished
-    m_showTimer->setSingleShot(true);
-    connect(m_showTimer, SIGNAL(timeout()), this, SIGNAL(widgetShown()));
 }
 
-bool KateAnimation::hideAnimationActive() const
+bool KateAnimation::isHideAnimationRunning() const
 {
-    return m_hideTimer->isActive();
+    return m_fadeEffect ? m_fadeEffect->isHideAnimationRunning()
+        : m_widget->isHideAnimationRunning();
 }
 
-bool KateAnimation::showAnimationActive() const
+bool KateAnimation::isShowAnimationRunning() const
 {
-    return m_showTimer->isActive();
+    return m_fadeEffect ? m_fadeEffect->isShowAnimationRunning()
+        : m_widget->isShowAnimationRunning();
 }
 
 void KateAnimation::show()
 {
     Q_ASSERT(m_widget != 0);
 
-    // stop hide timer if needed
-    if (m_hideTimer->isActive()) {
-        m_hideTimer->stop();
-    }
-
     // show according to effects config
-    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)
-            || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
-       ) {
+    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)) {
         // launch show effect
         // NOTE: use a singleShot timer to avoid resizing issues when showing the message widget the first time (bug #316666)
         if (m_fadeEffect) {
@@ -83,10 +72,6 @@ void KateAnimation::show()
         } else {
             QTimer::singleShot(0, m_widget, SLOT(animatedShow()));
         }
-
-        // start timer in order to track when showing is done (this effectively works
-        // around the fact, that KMessageWidget does not have a hidden signal)
-        m_showTimer->start();
     } else {
         m_widget->show();
         emit widgetShown();
@@ -96,11 +81,6 @@ void KateAnimation::show()
 void KateAnimation::hide()
 {
     Q_ASSERT(m_widget != 0);
-
-    // stop show timer if needed
-    if (m_showTimer->isActive()) {
-        m_showTimer->stop();
-    }
 
     // hide according to effects config
     if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)
@@ -112,10 +92,6 @@ void KateAnimation::hide()
         } else {
             m_widget->animatedHide();
         }
-
-        // start timer in order to track when hiding is done (this effectively works
-        // around the fact, that KMessageWidget does not have a hidden signal)
-        m_hideTimer->start();
     } else {
         m_widget->hide();
         emit widgetHidden();

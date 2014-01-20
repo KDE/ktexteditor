@@ -37,6 +37,18 @@ KateFadeEffect::KateFadeEffect(QWidget *widget)
     connect(m_timeLine, SIGNAL(finished()), this, SLOT(animationFinished()));
 }
 
+bool KateFadeEffect::isHideAnimationRunning() const
+{
+    return (m_timeLine->direction() == QTimeLine::Backward)
+        && (m_timeLine->state() == QTimeLine::Running);
+}
+
+bool KateFadeEffect::isShowAnimationRunning() const
+{
+    return (m_timeLine->direction() == QTimeLine::Forward)
+        && (m_timeLine->state() == QTimeLine::Running);
+}
+
 void KateFadeEffect::fadeIn()
 {
     // stop time line if still running
@@ -86,7 +98,9 @@ void KateFadeEffect::animationFinished()
 
     if (m_timeLine->direction() == QTimeLine::Backward) {
         m_widget->hide();
-        emit widgetHidden();
+        emit hideAnimationFinished();
+    } else {
+        emit showAnimationFinished();
     }
 }
 
