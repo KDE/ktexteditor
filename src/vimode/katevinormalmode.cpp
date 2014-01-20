@@ -2802,63 +2802,67 @@ KateViRange KateViNormalMode::motionToPrevVisualLine()
 
 KateViRange KateViNormalMode::motionToPreviousSentence()
 {
-  Cursor c = findSentenceStart();
-  int linenum = c.line(), column;
-  const bool skipSpaces = doc()->line(linenum).isEmpty();
+    Cursor c = findSentenceStart();
+    int linenum = c.line(), column;
+    const bool skipSpaces = doc()->line(linenum).isEmpty();
 
-  if (skipSpaces) {
-    linenum--;
-    if (linenum >= 0) {
-      column = doc()->line(linenum).size() - 1;
-    }
-  } else {
-    column = c.column();
-  }
-
-  for (int i = linenum; i >= 0; i--) {
-    const QString &line = doc()->line(i);
-
-    if (line.isEmpty() && !skipSpaces) {
-      return KateViRange(i, 0, ViMotion::InclusiveMotion);
+    if (skipSpaces) {
+        linenum--;
+        if (linenum >= 0) {
+            column = doc()->line(linenum).size() - 1;
+        }
+    } else {
+        column = c.column();
     }
 
-    for (int j = column; j >= 0; j--) {
-      if (skipSpaces || QString::fromLatin1(".?!").indexOf(line.at(j)) != -1) {
-        c.setLine(i);
-        c.setColumn(j);
-        updateCursor(c);
-        c = findSentenceStart();
-        return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
-      }
+    for (int i = linenum; i >= 0; i--) {
+        const QString &line = doc()->line(i);
+
+        if (line.isEmpty() && !skipSpaces) {
+            return KateViRange(i, 0, ViMotion::InclusiveMotion);
+        }
+
+        if (column < 0 && line.size() > 0) {
+            column = line.size() - 1;
+        }
+
+        for (int j = column; j >= 0; j--) {
+            if (skipSpaces || QString::fromLatin1(".?!").indexOf(line.at(j)) != -1) {
+                c.setLine(i);
+                c.setColumn(j);
+                updateCursor(c);
+                c = findSentenceStart();
+                return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
+            }
+        }
+        column = line.size() - 1;
     }
-    column = line.size() - 1;
-  }
-  return KateViRange(0, 0, ViMotion::InclusiveMotion);
+    return KateViRange(0, 0, ViMotion::InclusiveMotion);
 }
 
 KateViRange KateViNormalMode::motionToNextSentence()
 {
-  Cursor c = findSentenceEnd();
-  int linenum = c.line(), column = c.column() + 1;
-  const bool skipSpaces = doc()->line(linenum).isEmpty();
+    Cursor c = findSentenceEnd();
+    int linenum = c.line(), column = c.column() + 1;
+    const bool skipSpaces = doc()->line(linenum).isEmpty();
 
-  for (int i = linenum; i < doc()->lines(); i++) {
-    const QString &line = doc()->line(i);
+    for (int i = linenum; i < doc()->lines(); i++) {
+        const QString &line = doc()->line(i);
 
-    if (line.isEmpty() && !skipSpaces) {
-      return KateViRange(i, 0, ViMotion::InclusiveMotion);
+        if (line.isEmpty() && !skipSpaces) {
+            return KateViRange(i, 0, ViMotion::InclusiveMotion);
+        }
+
+        for (int j = column; j < line.size(); j++) {
+            if (!line.at(j).isSpace()) {
+                return KateViRange(i, j, ViMotion::InclusiveMotion);
+            }
+        }
+        column = 0;
     }
 
-    for (int j = column; j < line.size(); j++) {
-      if (!line.at(j).isSpace()) {
-        return KateViRange(i, j, ViMotion::InclusiveMotion);
-      }
-    }
-    column = 0;
-  }
-
-  c = doc()->documentEnd();
-  return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
+    c = doc()->documentEnd();
+    return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
 }
 
 KateViRange KateViNormalMode::motionToBeforeParagraph()
