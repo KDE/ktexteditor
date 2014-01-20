@@ -38,7 +38,6 @@
 #include "katelayoutcache.h"
 #include "katetextlayout.h"
 #include "kateglobal.h"
-#include "kateviglobal.h"
 #include "katepartdebug.h"
 #include <katevicommandrangeexpressionparser.h>
 
@@ -368,7 +367,7 @@ void KateScrollBar::updatePixmap()
     m_pixmap.fill(QColor("transparent"));
 
     // The text currently selected in the document, to be drawn later.
-    const Range &selection = m_view->selectionRange();
+    const KTextEditor::Range &selection = m_view->selectionRange();
 
     QPainter painter;
     if (painter.begin(&m_pixmap)) {
@@ -423,7 +422,7 @@ void KateScrollBar::updatePixmap()
                 }
 
                 // Query the selection and draw it above the character with an alpha channel
-                if (selection.contains(Cursor(realLineNumber, x))) {
+                if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
                     painter.setPen(selectionColor);
                     painter.drawPoint(s_pixelMargin, pixelY);
                     // fill the line up in case the selection extends beyond it
@@ -938,10 +937,10 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     if (text.isEmpty()) {
         return;
     }
-    // silently ignore leading space characters and colon characters (for vi-heads)
+    // silently ignore leading space characters
     uint n = 0;
     const uint textlen = text.length();
-    while ((n < textlen) && (text[n].isSpace() || text[n] == QLatin1Char(':'))) {
+    while ((n < textlen) && (text[n].isSpace())) {
         n++;
     }
 
@@ -1036,10 +1035,6 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
 
     if (isVisible()) {
         m_hideTimer->start(4000);
-    }
-
-    if (m_view->viInputMode()) {
-        m_view->getViInputModeManager()->reset();
     }
 }
 
