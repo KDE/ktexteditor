@@ -1332,8 +1332,8 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 {
     configStart();
 
-    // default off again, until this is usable for large size documents
-    setDynWordWrap(config.readEntry(KEY_DYN_WORD_WRAP, false));
+    // default on
+    setDynWordWrap(config.readEntry(KEY_DYN_WORD_WRAP, true));
     setDynWordWrapIndicators(config.readEntry(KEY_DYN_WORD_WRAP_INDICATORS, 1));
     setDynWordWrapAlignIndent(config.readEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, 80));
 
