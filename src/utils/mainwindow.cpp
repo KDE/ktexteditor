@@ -160,6 +160,45 @@ KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
     return view;
 }
 
+bool MainWindow::closeView(KTextEditor::View *view)
+{
+    /**
+     * null check
+     */
+    if (!this) {
+        return false;
+    }
+
+    /**
+     * dispatch to parent
+     */
+    bool success = false;
+    QMetaObject::invokeMethod(parent()
+                              , "closeView"
+                              , Qt::DirectConnection
+                              , Q_RETURN_ARG(bool, success)
+                              , Q_ARG(KTextEditor::View *, view));
+    return success;
+}
+
+void MainWindow::splitView(Qt::Orientation orientation)
+{
+    /**
+     * null check
+     */
+    if (!this) {
+        return;
+    }
+
+    /**
+     * dispatch to parent
+     */
+    QMetaObject::invokeMethod(parent()
+                              , "splitView"
+                              , Qt::DirectConnection
+                              , Q_ARG(Qt::Orientation, orientation));
+}
+
 QWidget *MainWindow::createViewBar(KTextEditor::View *view)
 {
     /**

@@ -135,6 +135,19 @@ public:
      */
     KTextEditor::View *openUrl(const QUrl &url, const QString &encoding = QString());
 
+    /**
+     * Close selected view
+     * \param view the view
+     * \return true if view was closed
+     */
+    bool closeView(KTextEditor::View *view);
+
+    /**
+     * Split current view space according to @orientation
+     * \param orientation in which line split the view
+     */
+    void splitView(Qt::Orientation orientation);
+
     //
     // Signals related to view handling
     //

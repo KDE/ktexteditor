@@ -35,6 +35,27 @@ Application::~Application()
 {
 }
 
+bool Application::quit()
+{
+    /**
+     * null check
+     */
+    if (!this) {
+        return false;
+    }
+
+    /**
+     * dispatch to parent
+     */
+    bool success = false;
+    QMetaObject::invokeMethod(parent()
+                              , "quit"
+                              , Qt::DirectConnection
+                              , Q_RETURN_ARG(bool, success));
+
+    return success;
+}
+
 QList<KTextEditor::MainWindow *> Application::mainWindows()
 {
     /**
