@@ -35,7 +35,6 @@
 #include <QHash>
 #include <QMap>
 
-#include <QRegExp>
 #include <QObject>
 #include <QStringList>
 #include <QPointer>

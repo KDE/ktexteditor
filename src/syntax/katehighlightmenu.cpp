@@ -33,7 +33,6 @@
 #include <KMimeTypeChooser>
 #include <KIconLoader>
 
-#include <QRegExp>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QGroupBox>
