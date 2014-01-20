@@ -62,7 +62,6 @@ class KateViewBar;
 class KateGotoBar;
 class KateDictionaryBar;
 class KateSpellingMenu;
-class KateScriptConsole;
 class KateMessageWidget;
 class KateIconBorder;
 
@@ -581,7 +580,6 @@ public Q_SLOTS:
     void toggleNPSpaces();
     void toggleWriteLock();
     void switchToCmdLine();
-    void switchToConsole();
     void slotReadWriteChanged();
     void slotClipboardHistoryChanged();
 
@@ -637,7 +635,6 @@ private:
     KToggleAction         *m_toggleWWMarker;
     KToggleAction         *m_toggleNPSpaces;
     QAction               *m_switchCmdLine;
-    QAction               *m_switchConsole;
     KToggleAction         *m_viInputModeAction;
 
     KSelectAction         *m_setEndOfLine;
@@ -709,7 +706,6 @@ public:
 public:
     KateViewBar *bottomViewBar() const;
     KateCommandLineBar *cmdLineBar();
-    KateScriptConsole *consoleBar();
     KateDictionaryBar *dictionaryBar();
     KateViEmulatedCommandBar *viModeEmulatedCommandBar();
 
@@ -731,7 +727,6 @@ private:
 
     // created on demand..., only access them through the above accessors....
     KateCommandLineBar *m_cmdLine;
-    KateScriptConsole *m_console;
     KateSearchBar *m_searchBar;
     KateViEmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateGotoBar *m_gotoBar;
