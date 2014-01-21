@@ -54,6 +54,10 @@ public:
 
     QString sectionTranslated() const
     {
+        // empty string => no section to translate
+        if (section.isEmpty())
+            return QString();
+
         // use "Language Section" as for highlightings, to avoid double work!
         return hlGenerated ? i18nc("Language Section", section.toUtf8().data()) : section;
     }
