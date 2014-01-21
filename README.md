@@ -33,8 +33,8 @@ If you are using CMake, you need to have
 
     find_package(KF5TextEditor NO_MODULE)
 
-(or similar) in your CMakeLists.txt file, and you need to link any target that
-uses KTextEditor against KF5::TextEditor.
+(or similar) in your CMakeLists.txt file, and you need to link to
+KF5::TextEditor.
 
 After that, you can use KTextEditor::Editor to create an editor instance, and
 use that to manage KTextEditor::Document instances.
@@ -54,6 +54,13 @@ See the documentation for these classes for more information.
 ## Licensing
 
 Contributions to KTextEditor shall be licensed under LGPLv2+.
+
+## Further Documentation
+
+- @ref kte_design
+- @ref kte_howto
+- @ref kte_port_to_5
+- @ref kte_guidelines
 
 ## Links
 

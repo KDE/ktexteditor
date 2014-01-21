@@ -1,0 +1,122 @@
+/** \page kte_port_to_5 Porting to KDE Frameworks 5
+
+<p><b>
+\ref index "Overview" |
+\ref kte_design "Design" |
+\ref kte_guidelines "Coding Guidelines" |
+Porting to %KDE Frameworks 5 |
+\ref kte_howto "Using"
+</b></p>
+
+This document describes porting applications using the KTextEditor interfaces
+from KDE 4 to KDE Frameworks 5. This page does not try to be complete; its main
+goal is to show what interfaces were removed, changed or added to give some
+impression and orientation of what you have to do to port your application to
+the KDE Frameworks 5 KTextEditor interfaces.
+
+\section kte_port_intro Introduction
+The KTextEditor interfaces changes in KDE Frameworks 5 are neither binary nor
+source compatible to the KTextEditor interfaces included in KDE 4, so programs
+written/compiled for the KDE 4 KTextEditor interfaces will not compile
+(nor run) under Frameworks 5.
+
+The Frameworks 5 KTextEditor interfaces undergone a heavy cleanup, i.e. obsolete
+functions were removed, interfaces were merged and extended. All interface
+changes like for example parameter changes of a function are not mentioned in
+detail in this page, look into the particular class API documentation.
+
+\section kte_port_remove Removed Interfaces and Removed Classes
+Entirely removed interfaces and classes are:
+ - \p KTextEditor::Factory \n
+   Just use KTextEditor::Editor::instance() to get the editor instance.
+   This pointer is \e always valid.
+ - \p KTextEditor::EditorChooser \n
+   Instead, just use \p KTextEditor::editor();
+ - \p SmartInterface (removed since KDE 4.5)
+ - \p SmartCursor, \p SmartRange, \p SmartCursorNotifier, \p SmartCursorWatcher,
+   \p SmartRangeNotifier, \p SmartRangeWatcher (already unspoorted since KDE 4.5)
+ - \p LoadSaveFilterCheckPlugin was removed, since it was unused.
+
+\section kte_port_merge Merged Interfaces
+The following interfaces were merged, in order:
+ - \p CoordinatesToCursorInterface was merged into the KTextEditor::View.
+ - \p CodeCompletionModelControllerInterface2,
+   \p CodeCompletionModelControllerInterface3 and
+   \p CodeCompletionModelControllerInterface4
+   were merged into the \p KTextEditor::CodeCompletionModelControllerInterface.
+
+\section kte_port_rename Interface Changes
+The following interfaces were changed:
+ - \p KTextEditor::Editor::setSimpleMode() was removed.
+ - \p KTextEditor::View::setSelection(const Cursor &position, int length, bool wrap)
+   was removed in favor of the Range based KTextEditor::View::setSelection()
+ - \p KTextEditor::Document::activeView() \n
+   The active view was removed in favor of KTextEditor::MainWindow::activeView().
+ - \p KTextEditor::Document::wordRangeAt(const Cursor &position)
+   returns the Range of the word under \p position.
+ - \p KTextEditor::Document::wordAt(const Cursor &position)
+   returns the word under \p position.
+ - \p KTextEditor::Document::character() was renamed to
+   \p KTextEditor::Document::characterAt()
+ - \p KTextEditor::Document::readWriteChanged() \n
+   This signal is emitted whenever the read-only state of the document changes.
+ - \p KTextEditor::TextHintInterfacePrivate::needTextHint() now takes a View
+   as first parameter
+
+\section kte_port_new New Interfaces
+The following interfaces are new:
+ - KTextEditor::Application (since KDE 5.0) \n
+   The Application is an interface that is implemented by the host application.
+   It provides information about the documents managed by the application as well
+   as convenience functions for instance to open or close documents.
+ - KTextEditor::MainWindow (since KDE 5.0) \n
+   A MainWindow usually represents a toplevel window of the application.
+   It manages the views and also provides an accessor to the MainWindow's active
+   view through MainWindow::activeView(). The provides signals that indicate that
+   the active view has changed, or that a view has been created. Other than that,
+   it for instance allows to create tool views and similar convenience functions
+   to show view bars.
+ - KTextEditor::MessageInterface (since KDE 4.11) \n
+   Class providing notifications to the user in a KTextEditor::View.
+
+\section kte_port_enhanced_classes Significantly Enhanced Classes
+The following classes have been significantly enhanced:
+ - KTextEditor::Cursor \n
+   The Cursor now is a tuple of two ints, namely the line and column. It has no
+   virtual destructor so that you cannot derive from Cursor. Since a Cursor
+   uses 8 Bytes, it is even ok to pass a Cursor as copy in parameters instead
+   of a reference.
+   Further, the Cursor has been marked as Q_MOVABLE, making it behave like a
+   Plain Old Data (POD) type.
+ - KTextEditor::Range \n
+   The Range now is a tuple of two Cursors, namely the Range::startCursor() and the
+   Range::endCursor(). It has no virtual destructor so that you cannot derive from Range.
+   Further, the Range has been marked as Q_MOVABLE, making it behave like a
+   Plain Old Data (POD) type.
+
+\section kte_port_new_classes New Classes
+The following classes are either new, or were added late in the KDE 4 release cycle:
+ - KTextEditor::DocumentCursor \n
+   The DocumentCursor is a cursor associated to a KTextEditor::Document. It
+   provides convenience functions such as for text navigation. However, it does
+   not automatically maintain its position when the document's contents changes.
+ - KTextEditor::MovingCursor (since KDE 4.5) \n
+   The MovingCursor was introduced in KDE 4.5 as replacement to the SmartCursor.
+   A MovingCursor is bound to a specific Document and maintains its position.
+ - KTextEditor::MovingRange \n
+   The MovingRange was introduced in KDE 4.5 as replacement to the SmartRange.
+   A MovingRange is bound to a specific Document and maintains its position.
+ - KTextEditor::MovingRangeFeedback (since KDE 4.5) \n
+   Class providing notifications of changes to a KTextEditor::MovingRange.
+
+\section kte_port_plugins Plugin Architecture Changes
+The KTextEditor::Plugin system was heavily extended to support 'application
+plugins'. That is, a plugin can now create tool views in a MainWindow%s and
+access the Application's document list. So the applications are now shared
+between all applications using the KTextEditor interfaces (e.g. Kate, KDevelop,
+and Kile).
+
+\see KTextEditor::Plugin
+
+\author Dominik Haumann \<dhaumann@kde.org\>
+*/
