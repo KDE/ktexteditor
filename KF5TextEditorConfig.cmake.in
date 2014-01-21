@@ -16,7 +16,6 @@ find_package(KF5Parts "@KF5_VERSION@")
 find_package(KF5PrintUtils "@KF5_VERSION@")
 find_package(KF5Sonnet "@KF5_VERSION@")
 find_package(KF5XmlGui "@KF5_VERSION@")
-find_package(KF5Notifications "@KF5_VERSION@")
 
 include("${CMAKE_CURRENT_LIST_DIR}/KF5TextEditorTargets.cmake")
 

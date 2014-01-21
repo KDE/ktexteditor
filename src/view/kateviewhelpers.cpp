@@ -45,7 +45,6 @@
 #include <KColorScheme>
 #include <KColorUtils>
 #include <KLocalizedString>
-#include <KNotification>
 #include <KIconLoader>
 #include <KConfigGroup>
 #include <khelpclient.h>
@@ -1010,11 +1009,9 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
                     } else {
                         setText(i18n("Command \"%1\" failed.",  cmd));
                     }
-                    KNotification::beep();
                 }
             } else {
                 setText(i18n("No such command: \"%1\"",  cmd));
-                KNotification::beep();
             }
         }
     }

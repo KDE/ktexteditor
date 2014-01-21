@@ -34,7 +34,6 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KActionCollection>
-#include <KNotification>
 #include <KParts/Part>
 #include <KIconLoader>
 #include <KPageDialog>
@@ -515,7 +514,6 @@ void KateWordCompletionView::complete(bool fw)
                             ln = doc->line(l);
                             d->dcCursor.setPosition(l, ln.length());
                         } else {
-                            KNotification::beep();
                             return;
                         }
                     }
@@ -530,7 +528,6 @@ void KateWordCompletionView::complete(bool fw)
         else { // no match
             //qCDebug(LOG_PART)<<"NO MATCH";
             if ((! fw && d->dcCursor.line() == 0) || (fw && d->dcCursor.line() >= doc->lines())) {
-                KNotification::beep();
                 return;
             }
 

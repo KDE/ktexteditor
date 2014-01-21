@@ -50,7 +50,6 @@ if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
   find_package(KF5PrintUtils ${KF5_VERSION} REQUIRED)
   find_package(KF5Sonnet ${KF5_VERSION} REQUIRED)
   find_package(KF5XmlGui ${KF5_VERSION} REQUIRED)
-  find_package(KF5Notifications ${KF5_VERSION} REQUIRED)
 endif()
 
 # Subdirectories

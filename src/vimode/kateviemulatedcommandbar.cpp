@@ -34,7 +34,6 @@
 #include "katevivisualmode.h"
 
 #include <KColorScheme>
-#include <KNotification>
 #include <KLocalizedString>
 
 #include <QLineEdit>
@@ -1141,11 +1140,9 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
                     } else {
                         commandResponseMessage = i18n("Command \"%1\" failed.",  cmd);
                     }
-                    KNotification::beep();
                 }
             } else {
                 commandResponseMessage = i18n("No such command: \"%1\"",  cmd);
-                KNotification::beep();
             }
         }
     }
