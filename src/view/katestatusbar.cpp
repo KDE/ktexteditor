@@ -21,6 +21,8 @@
 #include "katestatusbar.h"
 
 #include "katemodemenu.h"
+#include "kateglobal.h"
+#include "katemodemanager.h"
 
 #include <KIconUtils>
 #include <KLocalizedString>
@@ -134,8 +136,8 @@ void KateStatusBar::updateStatus ()
     cursorPositionChanged ();
     selectionChanged ();
     modifiedChanged ();
-    documentConfigChanged ();
     m_infoLabel->clear ();
+    documentConfigChanged();
     modeChanged();
 }
 
@@ -195,5 +197,5 @@ void KateStatusBar::documentConfigChanged ()
 
 void KateStatusBar::modeChanged ()
 {
-    m_mode->setText( m_view->document()->mode() );
+    m_mode->setText( KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_view->document()->mode()).nameTranslated() );
 }
