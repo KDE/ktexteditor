@@ -129,6 +129,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_floatTopMessageWidget(0)
     , m_floatBottomMessageWidget(0)
     , m_mainWindow(mainWindow)
+    , m_statusBar(nullptr)
 {
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
@@ -222,8 +223,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     /**
      * create the status bar of this view
      */
-    m_statusBar = new KateStatusBar(this);
-    bottomViewBar()->addPermanentBarWidget(m_statusBar);
+    toggleStatusBar();
 
     // add layout for floating message widgets to KateViewInternal
     m_notificationLayout = new QVBoxLayout(m_viewInternal);
@@ -300,6 +300,25 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     delete m_config;
 
     KTextEditor::EditorPrivate::self()->deregisterView(this);
+}
+
+void KTextEditor::ViewPrivate::toggleStatusBar()
+{
+    /**
+     * if there, delete it
+     */
+    if (m_statusBar) {
+        bottomViewBar()->removePermanentBarWidget(m_statusBar);
+        delete m_statusBar;
+        m_statusBar = nullptr;
+        return;
+    }
+
+    /**
+     * else: create it
+     */
+    m_statusBar = new KateStatusBar(this);
+    bottomViewBar()->addPermanentBarWidget(m_statusBar);
 }
 
 void KTextEditor::ViewPrivate::setupConnections()

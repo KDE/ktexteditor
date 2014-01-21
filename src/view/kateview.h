@@ -935,6 +935,20 @@ public Q_SLOTS:
     virtual bool print();
     virtual void printPreview();
 
+public:
+    /**
+     * Get the view status bar
+     * @return status bar, in enabled
+     */
+    KateStatusBar *statusBar () const {
+        return m_statusBar;
+    }
+
+    /**
+     * Toogle status bar, e.g. create or remove it
+     */
+    void toggleStatusBar ();
+
 private:
     /**
      * the status bar of this view

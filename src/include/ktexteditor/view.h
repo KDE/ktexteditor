@@ -596,9 +596,6 @@ public:
      */
     virtual bool insertText(const QString &text);
 
-    /*
-     * Access to print routines
-     */
 public:
     /**
      * Print the document. This should result in showing the print dialog.
@@ -611,6 +608,21 @@ public:
      * Shows the print preview dialog/
      */
     virtual void printPreview() = 0;
+
+    /**
+     * Is the status bar enabled?
+     *
+     * @return status bar enabled?
+     */
+    bool isStatusBarEnabled() const;
+
+    /**
+     * Show/hide the status bar of the view.
+     * Per default, the status bar is enabled.
+     * 
+     * @param enable should the status bar be enabled?
+     */
+    void setStatusBarEnabled(bool enable);
 
 private:
     /**

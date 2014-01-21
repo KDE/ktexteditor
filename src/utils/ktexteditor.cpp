@@ -17,7 +17,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include <QtDBus>
+#include "kateview.h"
 
 #include "cursor.h"
 
@@ -81,6 +81,28 @@ bool View::insertText(const QString &text)
         return false;
     }
     return doc->insertText(cursorPosition(), text, blockSelection());
+}
+
+bool View::isStatusBarEnabled() const
+{
+    /**
+     * is the status bar around?
+     */
+    return !!d->statusBar();
+}
+
+void View::setStatusBarEnabled(bool enable)
+{
+    /**
+     * no state change, do nothing
+     */
+    if (enable == !!d->statusBar())
+        return;
+
+    /**
+     * else toggle it
+     */
+    d->toggleStatusBar ();
 }
 
 ConfigPage::ConfigPage(QWidget *parent)
