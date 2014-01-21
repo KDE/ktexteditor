@@ -64,6 +64,7 @@ class KateDictionaryBar;
 class KateSpellingMenu;
 class KateMessageWidget;
 class KateIconBorder;
+class KateStatusBar;
 
 class KToggleAction;
 class KSelectAction;
@@ -933,6 +934,12 @@ private:
 public Q_SLOTS:
     virtual bool print();
     virtual void printPreview();
+
+private:
+    /**
+     * the status bar of this view
+     */
+    KateStatusBar *m_statusBar;
 };
 
 }

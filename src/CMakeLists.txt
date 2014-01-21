@@ -125,6 +125,7 @@ view/katemessagewidget.cpp
 view/katefadeeffect.cpp
 view/kateanimation.cpp
 view/katetextanimation.cpp
+view/katestatusbar.cpp
 
 # vi input mode
 vimode/kateviinputmodemanager.cpp

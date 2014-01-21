@@ -2424,7 +2424,9 @@ void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
 
     // if we have any permanent widget, bar is always visible,
     // no need to show it
-    if (!m_permanentBarWidget) {
+    if (m_permanentBarWidget) {
+        m_permanentBarWidget->hide();
+    } else {
         setViewBarVisible(true);
     }
 }
@@ -2442,9 +2444,11 @@ void KateViewBar::hideCurrentBarWidget()
     }
     m_stack->hide();
 
-    // if we have any permanent widget, bar is always visible,
-    // no need to hide it
-    if (!m_permanentBarWidget) {
+    // if we have any permanent widget, make it visible again
+    if (m_permanentBarWidget) {
+        m_permanentBarWidget->show ();
+    } else {
+        // else: hide the bar
         setViewBarVisible(false);
     }
 

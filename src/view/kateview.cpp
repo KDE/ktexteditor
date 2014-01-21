@@ -57,6 +57,7 @@
 #include "katetemplatehandler.h"
 #include "katepartdebug.h"
 #include "printing/kateprinter.h"
+#include "katestatusbar.h"
 
 #include <ktexteditor/messageinterface.h>
 
@@ -217,6 +218,12 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     } else {
         m_vBox->addWidget(m_bottomViewBar);
     }
+
+    /**
+     * create the status bar of this view
+     */
+    m_statusBar = new KateStatusBar(this);
+    bottomViewBar()->addPermanentBarWidget(m_statusBar);
 
     // add layout for floating message widgets to KateViewInternal
     m_notificationLayout = new QVBoxLayout(m_viewInternal);
