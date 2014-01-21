@@ -24,10 +24,10 @@
 #include <QDate>
 #include <QRegExp>
 #include <KMessageBox>
-#include <unistd.h>
 #include <KLibrary>
 #include <KLocalizedString>
 #include <QLocale>
+#include <QHostInfo>
 
 #define DUMMY_VALUE QLatin1String("!KTE:TEMPLATEHANDLER_DUMMY_VALUE!")
 
@@ -79,11 +79,7 @@ bool TemplateInterface::expandMacros(QMap<QString, QString> &map, QWidget *paren
             } else if (placeholder == QLatin1String("day")) {
                 map[ placeholder ] = date.toString(QLatin1String("dd"));
             } else if (placeholder == QLatin1String("hostname")) {
-                char hostname[ 256 ];
-                hostname[ 0 ] = 0;
-                gethostname(hostname, 255);
-                hostname[ 255 ] = 0;
-                map[ placeholder ] = QString::fromLocal8Bit(hostname);
+                map[ placeholder ] = QHostInfo::localHostName();
             } else if (placeholder == QLatin1String("cursor")) {
                 map[ placeholder ] = QLatin1Char('|');
             } else if (placeholder == QLatin1String("selection")) {
