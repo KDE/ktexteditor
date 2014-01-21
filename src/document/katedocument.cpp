@@ -2323,8 +2323,9 @@ bool KTextEditor::DocumentPrivate::saveFile()
 
 void KTextEditor::DocumentPrivate::readDirConfig()
 {
-    if (!url().isLocalFile())
+    if (!url().isLocalFile()) {
         return;
+    }
 
     /**
      * search .kateconfig upwards
@@ -2359,8 +2360,9 @@ void KTextEditor::DocumentPrivate::readDirConfig()
         /**
          * else: cd up, if possible or abort
          */
-        if (!dir.cdUp())
+        if (!dir.cdUp()) {
             break;
+        }
     }
 }
 
