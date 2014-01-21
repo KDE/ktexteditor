@@ -1234,7 +1234,10 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
     } else {
         // Select current word so we can search for that the next time
         const Cursor cursorPos = view->cursorPosition();
-        view->selectWord(cursorPos);
+        KTextEditor::Range wordRange = view->document()->wordRangeAt(cursorPos);
+        if (wordRange.isValid()) {
+            selectRange(view, wordRange);
+        }
     }
 }
 
