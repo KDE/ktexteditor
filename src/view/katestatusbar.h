@@ -55,9 +55,6 @@ public Q_SLOTS:
 
     void modeChanged ();
 
-protected:
-    virtual bool eventFilter (QObject*, QEvent *);
-
 private:
     KTextEditor::ViewPrivate *const m_view;
     QStatusBar *const m_statusBar;

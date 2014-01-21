@@ -41,28 +41,31 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->setMargin(0);
     topLayout->addWidget(m_statusBar);
 
+    setFocusProxy(m_view);
+    m_statusBar->setFocusProxy(m_view);
+
     QString lineColText = i18n(" Line: %1 Col: %2 ", QLocale().toString(4444), QLocale().toString(44));
 
     m_lineColLabel = new QLabel( m_statusBar );
     m_lineColLabel->setMinimumWidth( m_lineColLabel->fontMetrics().width( lineColText ) );
     m_statusBar->addWidget( m_lineColLabel, 0 );
-    m_lineColLabel->installEventFilter( this );
+    m_lineColLabel->setFocusProxy(m_view);
 
     m_modifiedLabel = new QLabel( m_statusBar );
     m_modifiedLabel->setFixedSize( 16, 16 );
     m_statusBar->addWidget( m_modifiedLabel, 0 );
     m_modifiedLabel->setAlignment( Qt::AlignCenter );
-    m_modifiedLabel->installEventFilter( this );
+    m_modifiedLabel->setFocusProxy(m_view);
 
     m_selectModeLabel = new QLabel( i18n(" LINE "), m_statusBar );
     m_statusBar->addWidget( m_selectModeLabel, 0 );
     m_selectModeLabel->setAlignment( Qt::AlignCenter );
-    m_selectModeLabel->installEventFilter( this );
+    m_selectModeLabel->setFocusProxy(m_view);
 
     m_insertModeLabel = new QLabel( i18n(" INS "), m_statusBar );
     m_statusBar->addWidget( m_insertModeLabel, 0 );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
-    m_insertModeLabel->installEventFilter( this );
+    m_insertModeLabel->setFocusProxy(m_view);
 
     m_infoLabel = new KSqueezedTextLabel( m_statusBar );
     m_statusBar->addPermanentWidget( m_infoLabel, 1 );
@@ -70,7 +73,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_infoLabel->setMinimumSize( 0, 0 );
     m_infoLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored, QSizePolicy::Fixed ));
     m_infoLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
-    m_infoLabel->installEventFilter( this );
+    m_infoLabel->setFocusProxy(m_view);
 
     /**
      * add mode button which allows user to switch mode of document
@@ -80,7 +83,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_mode->setFlat(true);
     m_statusBar->addPermanentWidget( m_mode, 0 );
     m_mode->setMenu(m_view->modeAction()->menu());
-    m_mode->installEventFilter( this );
+    m_mode->setFocusProxy(m_view);
 
     /**
      * add encoding button which allows user to switch encoding of document
@@ -90,14 +93,13 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setFlat(true);
     m_statusBar->addPermanentWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
-    m_encoding->installEventFilter( this );
+    m_encoding->setFocusProxy(m_view);
 
 #ifdef Q_WS_MAC
     m_statusBar->setSizeGripEnabled( false );
     m_statusBar->addPermanentWidget( new QSizeGrip( m_statusBar ) );
 #endif
 
-    installEventFilter( m_statusBar );
     m_modPm = QIcon::fromTheme(QStringLiteral("document-save")).pixmap(16);
     m_modDiscPm = QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(16);
     QIcon icon = KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
@@ -116,18 +118,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->document(), SIGNAL(modeChanged(KTextEditor::Document*)), this, SLOT(modeChanged()));
 
     updateStatus ();
-}
-
-bool KateStatusBar::eventFilter(QObject*, QEvent *e)
-{
-    /**
-     * we forward focus always
-     */
-    if (e->type() == QEvent::MouseButtonPress) {
-        m_view->setFocus();
-    }
-
-    return false;
 }
 
 void KateStatusBar::updateStatus ()
