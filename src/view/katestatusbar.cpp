@@ -23,6 +23,7 @@
 #include "katemodemenu.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
+#include "katedocument.h"
 
 #include <KIconUtils>
 #include <KLocalizedString>
@@ -165,9 +166,8 @@ void KateStatusBar::informationMessage (KTextEditor::View *, const QString &mess
 
 void KateStatusBar::modifiedChanged()
 {
-    bool mod = m_view->document()->isModified();
-
-    bool modOnHD = false;//FIXME KF5 info && info->modifiedOnDisc;
+    const bool mod = m_view->doc()->isModified();
+    const bool modOnHD = m_view->doc()->isModifiedOnDisc();
 
     m_modifiedLabel->setPixmap(
         mod ?
