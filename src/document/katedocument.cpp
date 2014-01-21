@@ -2327,15 +2327,19 @@ void KTextEditor::DocumentPrivate::readDirConfig()
         return;
 
     /**
-     * go up to /
+     * search .kateconfig upwards
+     * with recursion guard
      */
-    QString currentDir = QFileInfo(localFilePath()).absolutePath();
-    Q_FOREVER {
-        //qCDebug(LOG_PART) << "search for config file in path: " << currentDir;
+    QSet<QString> seenDirectories;
+    QDir dir (QFileInfo(localFilePath()).absolutePath());
+    while (!seenDirectories.contains (dir.absolutePath ())) {
+        /**
+         * fill recursion guard
+         */
+        seenDirectories.insert (dir.absolutePath ());
 
         // try to open config file in this dir
-        QFile f(currentDir + QLatin1String("/.kateconfig"));
-
+        QFile f(dir.absolutePath () + QLatin1String("/.kateconfig"));
         if (f.open(QIODevice::ReadOnly)) {
             QTextStream stream(&f);
 
@@ -2352,14 +2356,11 @@ void KTextEditor::DocumentPrivate::readDirConfig()
             break;
         }
 
-        QString newDir = QFileInfo(currentDir).absolutePath();
-
-        // bail out on looping (for example reached /)
-        if (currentDir == newDir) {
+        /**
+         * else: cd up, if possible or abort
+         */
+        if (!dir.cdUp())
             break;
-        }
-
-        currentDir = newDir;
     }
 }
 
