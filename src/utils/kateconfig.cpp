@@ -190,7 +190,6 @@ KateDocumentConfig::KateDocumentConfig()
       m_bomSet(false),
       m_allowEolDetectionSet(false),
       m_backupFlagsSet(false),
-      m_searchDirConfigDepthSet(false),
       m_backupPrefixSet(false),
       m_backupSuffixSet(false),
       m_swapFileModeSet(false),
@@ -235,7 +234,6 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_bomSet(false),
       m_allowEolDetectionSet(false),
       m_backupFlagsSet(false),
-      m_searchDirConfigDepthSet(false),
       m_backupPrefixSet(false),
       m_backupSuffixSet(false),
       m_swapFileModeSet(false),
@@ -274,7 +272,6 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
       m_bomSet(false),
       m_allowEolDetectionSet(false),
       m_backupFlagsSet(false),
-      m_searchDirConfigDepthSet(false),
       m_backupPrefixSet(false),
       m_backupSuffixSet(false),
       m_swapFileModeSet(false),
@@ -315,7 +312,6 @@ const char *const KEY_EOL = "End of Line";
 const char *const KEY_ALLOW_EOL_DETECTION = "Allow End of Line Detection";
 const char *const KEY_BOM = "BOM";
 const char *const KEY_BACKUP_FLAGS = "Backup Flags";
-const char *const KEY_SEARCH_DIR_CONFIG_DEPTH = "Search Dir Config Depth";
 const char *const KEY_BACKUP_PREFIX = "Backup Prefix";
 const char *const KEY_BACKUP_SUFFIX = "Backup Suffix";
 const char *const KEY_SWAP_FILE_MODE = "Swap File Mode";
@@ -361,8 +357,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setBom(config.readEntry(KEY_BOM, false));
 
     setBackupFlags(config.readEntry(KEY_BACKUP_FLAGS, 0));
-
-    setSearchDirConfigDepth(config.readEntry(KEY_SEARCH_DIR_CONFIG_DEPTH, 9));
 
     setBackupPrefix(config.readEntry(KEY_BACKUP_PREFIX, QString()));
 
@@ -413,8 +407,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_BOM, bom());
 
     config.writeEntry(KEY_BACKUP_FLAGS, backupFlags());
-
-    config.writeEntry(KEY_SEARCH_DIR_CONFIG_DEPTH, searchDirConfigDepth());
 
     config.writeEntry(KEY_BACKUP_PREFIX, backupPrefix());
 
@@ -1138,29 +1130,6 @@ void KateDocumentConfig::setSwapDirectory(const QString &directory)
 
     m_swapDirectorySet = true;
     m_swapDirectory = directory;
-
-    configEnd();
-}
-
-int KateDocumentConfig::searchDirConfigDepth() const
-{
-    if (m_searchDirConfigDepthSet || isGlobal()) {
-        return m_searchDirConfigDepth;
-    }
-
-    return s_global->searchDirConfigDepth();
-}
-
-void KateDocumentConfig::setSearchDirConfigDepth(int depth)
-{
-    if (m_searchDirConfigDepthSet && m_searchDirConfigDepth == depth) {
-        return;
-    }
-
-    configStart();
-
-    m_searchDirConfigDepthSet = true;
-    m_searchDirConfigDepth = depth;
 
     configEnd();
 }

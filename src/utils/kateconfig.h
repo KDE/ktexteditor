@@ -312,15 +312,6 @@ public:
     uint swapSyncInterval() const;
     void setSwapSyncInterval(uint interval);
 
-    /**
-     * Should Kate Part search for dir wide config file
-     * and if, how depth?
-     * @return search depth (< 0 no search)
-     */
-    int searchDirConfigDepth() const;
-
-    void setSearchDirConfigDepth(int depth);
-
     bool onTheFlySpellCheck() const;
     void setOnTheFlySpellCheck(bool on);
 
@@ -340,7 +331,6 @@ private:
     int m_eol;
     bool m_bom;
     uint m_backupFlags;
-    int m_searchDirConfigDepth;
     QString m_encoding;
     QString m_backupPrefix;
     QString m_backupSuffix;
@@ -385,7 +375,6 @@ private:
     bool m_bomSet : 1;
     bool m_allowEolDetectionSet : 1;
     bool m_backupFlagsSet : 1;
-    bool m_searchDirConfigDepthSet : 1;
     bool m_backupPrefixSet : 1;
     bool m_backupSuffixSet : 1;
     bool m_swapFileModeSet : 1;

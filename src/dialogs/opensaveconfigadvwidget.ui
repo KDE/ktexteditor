@@ -33,22 +33,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="sbConfigFileSearchDepth">
-          <property name="whatsThis">
-           <string>The editor will search the given number of folder levels upwards for a .kateconfig file and load the settings line from it.</string>
-          </property>
-          <property name="specialValueText">
-           <string>Do not use config file</string>
-          </property>
-          <property name="minimum">
-           <number>-1</number>
-          </property>
-          <property name="maximum">
-           <number>64</number>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

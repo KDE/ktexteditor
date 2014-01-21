@@ -915,7 +915,6 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     connect(ui->chkNewLineAtEof, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(uiadv->chkBackupLocalFiles, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(uiadv->chkBackupRemoteFiles, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(uiadv->sbConfigFileSearchDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(uiadv->edtBackupPrefix, SIGNAL(textChanged(QString)), this, SLOT(slotChanged()));
     connect(uiadv->edtBackupSuffix, SIGNAL(textChanged(QString)), this, SLOT(slotChanged()));
     connect(uiadv->cmbSwapFileMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
@@ -1029,8 +1028,6 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->setSwapDirectory(uiadv->kurlSwapDirectory->url().toLocalFile());
     KateDocumentConfig::global()->setSwapSyncInterval(uiadv->spbSwapFileSync->value());
 
-    KateDocumentConfig::global()->setSearchDirConfigDepth(uiadv->sbConfigFileSearchDepth->value());
-
     KateDocumentConfig::global()->setRemoveSpaces(ui->cbRemoveTrailingSpaces->currentIndex());
 
     KateDocumentConfig::global()->setNewLineAtEof(ui->chkNewLineAtEof->isChecked());
@@ -1105,7 +1102,6 @@ void KateSaveConfigTab::reload()
 
     ui->cbRemoveTrailingSpaces->setCurrentIndex(KateDocumentConfig::global()->removeSpaces());
     ui->chkNewLineAtEof->setChecked(KateDocumentConfig::global()->newLineAtEof());
-    uiadv->sbConfigFileSearchDepth->setValue(KateDocumentConfig::global()->searchDirConfigDepth());
 
     // other stuff
     uint f(KateDocumentConfig::global()->backupFlags());

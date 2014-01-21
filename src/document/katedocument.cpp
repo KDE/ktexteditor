@@ -2323,44 +2323,43 @@ bool KTextEditor::DocumentPrivate::saveFile()
 
 void KTextEditor::DocumentPrivate::readDirConfig()
 {
-    int depth = config()->searchDirConfigDepth();
+    if (!url().isLocalFile())
+        return;
 
-    if (this->url().isLocalFile() && (depth > -1)) {
-        QString currentDir = QFileInfo(localFilePath()).absolutePath();
+    /**
+     * go up to /
+     */
+    QString currentDir = QFileInfo(localFilePath()).absolutePath();
+    Q_FOREVER {
+        //qCDebug(LOG_PART) << "search for config file in path: " << currentDir;
 
-        // only search as deep as specified or not at all ;)
-        while (depth > -1) {
-            //qCDebug(LOG_PART) << "search for config file in path: " << currentDir;
+        // try to open config file in this dir
+        QFile f(currentDir + QLatin1String("/.kateconfig"));
 
-            // try to open config file in this dir
-            QFile f(currentDir + QLatin1String("/.kateconfig"));
+        if (f.open(QIODevice::ReadOnly)) {
+            QTextStream stream(&f);
 
-            if (f.open(QIODevice::ReadOnly)) {
-                QTextStream stream(&f);
+            uint linesRead = 0;
+            QString line = stream.readLine();
+            while ((linesRead < 32) && !line.isNull()) {
+                readVariableLine(line);
 
-                uint linesRead = 0;
-                QString line = stream.readLine();
-                while ((linesRead < 32) && !line.isNull()) {
-                    readVariableLine(line);
+                line = stream.readLine();
 
-                    line = stream.readLine();
-
-                    linesRead++;
-                }
-
-                break;
+                linesRead++;
             }
 
-            QString newDir = QFileInfo(currentDir).absolutePath();
-
-            // bail out on looping (for example reached /)
-            if (currentDir == newDir) {
-                break;
-            }
-
-            currentDir = newDir;
-            --depth;
+            break;
         }
+
+        QString newDir = QFileInfo(currentDir).absolutePath();
+
+        // bail out on looping (for example reached /)
+        if (currentDir == newDir) {
+            break;
+        }
+
+        currentDir = newDir;
     }
 }
 
