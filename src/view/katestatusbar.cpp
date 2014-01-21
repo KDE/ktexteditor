@@ -20,6 +20,8 @@
 
 #include "katestatusbar.h"
 
+#include "katemodemenu.h"
+
 #include <KIconUtils>
 #include <KLocalizedString>
 
@@ -68,11 +70,25 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_infoLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
     m_infoLabel->installEventFilter( this );
 
+    /**
+     * add mode button which allows user to switch mode of document
+     * this will reuse the mode action menu of the view
+     */
+    m_mode = new QPushButton( QString(), m_statusBar );
+    m_mode->setFlat(true);
+    m_statusBar->addPermanentWidget( m_mode, 0 );
+    m_mode->setMenu(m_view->modeAction()->menu());
+    m_mode->installEventFilter( this );
 
-    m_encodingLabel = new QLabel( QString(), m_statusBar );
-    m_statusBar->addPermanentWidget( m_encodingLabel, 0 );
-    m_encodingLabel->setAlignment( Qt::AlignCenter );
-    m_encodingLabel->installEventFilter( this );
+    /**
+     * add encoding button which allows user to switch encoding of document
+     * this will reuse the encoding action menu of the view
+     */
+    m_encoding = new QPushButton( QString(), m_statusBar );
+    m_encoding->setFlat(true);
+    m_statusBar->addPermanentWidget( m_encoding, 0 );
+    m_encoding->setMenu(m_view->encodingAction()->menu());
+    m_encoding->installEventFilter( this );
 
 #ifdef Q_WS_MAC
     m_statusBar->setSizeGripEnabled( false );
@@ -95,15 +111,18 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->document(), SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
     connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*,bool,KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()) );
     connect(m_view->document(), SIGNAL(configChanged()), this, SLOT(documentConfigChanged()));
+    connect(m_view->document(), SIGNAL(modeChanged(KTextEditor::Document*)), this, SLOT(modeChanged()));
 
     updateStatus ();
 }
 
 bool KateStatusBar::eventFilter(QObject*, QEvent *e)
 {
+    /**
+     * we forward focus always
+     */
     if (e->type() == QEvent::MouseButtonPress) {
         m_view->setFocus();
-        return true;
     }
 
     return false;
@@ -117,6 +136,7 @@ void KateStatusBar::updateStatus ()
     modifiedChanged ();
     documentConfigChanged ();
     m_infoLabel->clear ();
+    modeChanged();
 }
 
 void KateStatusBar::viewModeChanged ()
@@ -170,5 +190,10 @@ void KateStatusBar::modifiedChanged()
 
 void KateStatusBar::documentConfigChanged ()
 {
-    m_encodingLabel->setText( QString::fromLatin1(" %1 ").arg (m_view->document()->encoding()) );
+    m_encoding->setText( m_view->document()->encoding() );
+}
+
+void KateStatusBar::modeChanged ()
+{
+    m_mode->setText( m_view->document()->mode() );
 }

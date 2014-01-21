@@ -65,6 +65,8 @@ class KateSpellingMenu;
 class KateMessageWidget;
 class KateIconBorder;
 class KateStatusBar;
+class KateViewEncodingAction;
+class KateModeMenu;
 
 class KToggleAction;
 class KSelectAction;
@@ -949,11 +951,37 @@ public:
      */
     void toggleStatusBar ();
 
+    /**
+     * Get the encoding menu
+     * @return the encoding menu
+     */
+    KateViewEncodingAction *encodingAction () const {
+        return m_encodingAction;
+    }
+
+    /**
+     * Get the mode menu
+     * @return the mode menu
+     */
+    KateModeMenu *modeAction () const {
+        return m_modeAction;
+    }
+
 private:
     /**
      * the status bar of this view
      */
     KateStatusBar *m_statusBar;
+
+    /**
+     * the encoding selection menu, used by view + status bar
+     */
+    KateViewEncodingAction *m_encodingAction;
+
+    /**
+     * the mode selection menu, used by view + status bar
+     */
+    KateModeMenu *m_modeAction;
 };
 
 }

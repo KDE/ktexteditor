@@ -220,11 +220,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
         m_vBox->addWidget(m_bottomViewBar);
     }
 
-    /**
-     * create the status bar of this view
-     */
-    toggleStatusBar();
-
     // add layout for floating message widgets to KateViewInternal
     m_notificationLayout = new QVBoxLayout(m_viewInternal);
     m_notificationLayout->setContentsMargins(20, 20, 20, 20);
@@ -248,6 +243,12 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
     // update the enabled state of the undo/redo actions...
     slotUpdateUndo();
+
+    /**
+     * create the status bar of this view
+     * do this after action creation, we use some of them!
+     */
+    toggleStatusBar();
 
     m_startingUp = false;
     updateConfig();
@@ -480,10 +481,10 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Configure various aspects of this editor."));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotConfigDialog()));
 
-    KateModeMenu *ftm = new KateModeMenu(i18n("&Mode"), this);
-    ac->addAction(QLatin1String("tools_mode"), ftm);
-    ftm->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
-    ftm->updateMenu(m_doc);
+    m_modeAction = new KateModeMenu(i18n("&Mode"), this);
+    ac->addAction(QLatin1String("tools_mode"), m_modeAction);
+    m_modeAction->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
+    m_modeAction->updateMenu(m_doc);
 
     KateHighlightingMenu *menu = new KateHighlightingMenu(i18n("&Highlighting"), this);
     ac->addAction(QLatin1String("tools_highlighting"), menu);
@@ -624,8 +625,8 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Enable/disable adding of byte order markers for UTF-8/UTF-16 encoded files while saving"));
     connect(m_addBom, SIGNAL(triggered(bool)), this, SLOT(setAddBom(bool)));
     // encoding menu
-    KateViewEncodingAction *encodingAction = new KateViewEncodingAction(m_doc, this, i18n("E&ncoding"), this);
-    ac->addAction(QLatin1String("set_encoding"), encodingAction);
+    m_encodingAction = new KateViewEncodingAction(m_doc, this, i18n("E&ncoding"), this);
+    ac->addAction(QLatin1String("set_encoding"), m_encodingAction);
 
     a = ac->addAction(KStandardAction::Find, this, SLOT(find()));
     a->setWhatsThis(i18n("Look up the first occurrence of a piece of text or regular expression."));

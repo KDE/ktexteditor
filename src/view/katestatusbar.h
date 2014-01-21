@@ -28,6 +28,7 @@
 
 #include <QLabel>
 #include <QPixmap>
+#include <QPushButton>
 #include <QStatusBar>
 
 class KateStatusBar : public KateViewBarWidget
@@ -52,6 +53,8 @@ public Q_SLOTS:
 
     void informationMessage (KTextEditor::View *view, const QString &message);
 
+    void modeChanged ();
+
 protected:
     virtual bool eventFilter (QObject*, QEvent *);
 
@@ -62,7 +65,8 @@ private:
     QLabel* m_modifiedLabel;
     QLabel* m_insertModeLabel;
     QLabel* m_selectModeLabel;
-    QLabel* m_encodingLabel;
+    QPushButton* m_mode;
+    QPushButton* m_encoding;
     KSqueezedTextLabel* m_infoLabel;
     QPixmap m_modPm, m_modDiscPm, m_modmodPm;
 };
