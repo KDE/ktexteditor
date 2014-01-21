@@ -29,6 +29,7 @@
 #include <KLocalizedString>
 
 #include <QVBoxLayout>
+#include <QFontDatabase>
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
@@ -82,6 +83,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      */
     m_mode = new QPushButton( QString(), m_statusBar );
     m_mode->setFlat(true);
+    m_mode->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
     m_statusBar->addPermanentWidget( m_mode, 0 );
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
@@ -92,6 +94,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      */
     m_encoding = new QPushButton( QString(), m_statusBar );
     m_encoding->setFlat(true);
+    m_encoding->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
     m_statusBar->addPermanentWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
