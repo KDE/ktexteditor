@@ -22,11 +22,7 @@
 
 #include "katepartdebug.h"
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <time.h>
-#include <sys/time.h>
+#include <qplatformdefs.h>
 
 #include <KLocalizedString>
 #include <KMessageBox>
