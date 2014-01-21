@@ -2480,17 +2480,15 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
-    {
-        // remove all marks
-        clearMarks();
+    // remove all marks
+    clearMarks();
 
-        // clear the buffer
-        m_buffer->clear();
+    // clear the buffer
+    m_buffer->clear();
 
-        // clear undo/redo history
-        m_undoManager->clearUndo();
-        m_undoManager->clearRedo();
-    }
+    // clear undo/redo history
+    m_undoManager->clearUndo();
+    m_undoManager->clearRedo();
 
     // no, we are no longer modified
     setModified(false);
@@ -2534,20 +2532,22 @@ void KTextEditor::DocumentPrivate::discardDataRecovery()
 
 void KTextEditor::DocumentPrivate::setReadWrite(bool rw)
 {
-    if (isReadWrite() != rw) {
-        KParts::ReadWritePart::setReadWrite(rw);
-
-        foreach (KTextEditor::ViewPrivate *view, m_views) {
-            view->slotUpdateUndo();
-            view->slotReadWriteChanged();
-        }
-        emit readWriteChanged(this);
+    if (isReadWrite() == rw) {
+        return;
     }
+
+    KParts::ReadWritePart::setReadWrite(rw);
+
+    foreach (KTextEditor::ViewPrivate *view, m_views) {
+        view->slotUpdateUndo();
+        view->slotReadWriteChanged();
+    }
+
+    emit readWriteChanged(this);
 }
 
 void KTextEditor::DocumentPrivate::setModified(bool m)
 {
-
     if (isModified() != m) {
         KParts::ReadWritePart::setModified(m);
 
