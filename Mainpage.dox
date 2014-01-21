@@ -1,14 +1,3 @@
-/*
-This file is part of the KDE project
-
-Copyright (c) 2005-2013 by Dominik Haumann <dhdev@gmx.de>
-Copyright (c) 2005 by Christoph Cullmann <cullmann@kde.org>
-
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.2
-or any later version published by the Free Software Foundation;
-*/
-
 /** \mainpage KTextEditor
 
 <p><b>
@@ -20,12 +9,9 @@ Overview |
 </b></p>
 
 \section kte_intro Introduction
-The KTextEditor interfaces - also called KTE interfaces - are a set of
-well-defined interfaces which an application or library can implement to provide
-advanced plain text editing services.  Applications which utilise this interface
-can thus allow the user to choose which implementation of the editor component
-to use. The only implementation right now is the Kate Editor Component
-(Kate Part).
+The KTextEditor (short: KTE) framework provides a set of well-defined
+interfaces that provide a full fledged text editor. Well-known applications
+that use the KTextEditor framework are Kate, KDevelop or Kile.
 
 \section kte_general General
  - \ref kte_design
@@ -52,7 +38,7 @@ to use. The only implementation right now is the Kate Editor Component
 <!-- grouped classes -> TODO Grouping -->
 
 @authors
-Dominik Haumann \<dhdev@gmx.de\><br>
+Dominik Haumann \<dhaumann@kde.org\><br>
 Christoph Cullmann \<cullmann@kde.org\><br>
 Hamish Rodda \<rodda@kde.org\><br>
 Joseph Wenninger \<jowenn@kde.org\><br>
@@ -61,9 +47,8 @@ Anders Lund \<anders@alweb.dk\><br>
 Matt Broadstone \<mbroadst@gmail.com\>
 
 @maintainers
-Dominik Haumann \<dhdev@gmx.de\><br>
+Dominik Haumann \<dhaumann@kde.org\><br>
 Christoph Cullmann \<cullmann@kde.org\><br>
-Hamish Rodda \<rodda@kde.org\>
 
 @licenses
 @lgpl
@@ -84,12 +69,11 @@ Design |
 \ref kte_howto "Using"
 </b></p>
 
-The core of the KTextEditor interfaces consists of several main interfaces:
-- KTextEditor::Factory \n
-  The Factory provides access to the editor object.
-- KTextEditor::Editor \n
-  The Editor interface allows you to create documents, get a document list,
-  and a be informed when a new document is created.
+The core of the KTextEditor interfaces consists of three main interfaces:
+- KTextEditor::Editor (singleton) \n
+  The Editor is a singleton accessed through KTextEditor::Editor::instance().
+  This singleton allows to create documents, get a document list, and a be
+  informed when a new document is created.
 - KTextEditor::Document \n
   The Document interface represents a single document and enables the creation of
   views, access to and manipulation of document contents, and access to document
@@ -97,7 +81,7 @@ The core of the KTextEditor interfaces consists of several main interfaces:
 - KTextEditor::View \n
   The View provides a widget that displays the contents of a Document, and its
   interface allows for manipulation of text selection, position of the cursor and mouse,
-  text selections, and behaviour of the view.  Additionally it provides access to 
+  text selections, and behavior of the view.  Additionally it provides access to
   the view extension interfaces.
 
 The hierarchy can be illustrated as follows:
@@ -124,7 +108,7 @@ Further notes about the Editor implementation can be found in the
 \see KTextEditor::Factory, KTextEditor::Editor, KTextEditor::Document,
      KTextEditor::View
 
-\author Dominik Haumann \<dhdev@gmx.de\>
+\author Dominik Haumann \<dhaumann@kde.org\>
 */
 
 
@@ -170,7 +154,7 @@ concepts are much cleaner than tuples, please keep the following guidelines:
   instead of two Cursors.
 
 \author Christoph Cullmann \<cullmann@kde.org\>
-\author Dominik Haumann \<dhdev@gmx.de\>
+\author Dominik Haumann \<dhaumann@kde.org\>
 */
 
 
@@ -384,7 +368,7 @@ Porting to %KDE Frameworks 5 |
 </b></p>
 
 This document describes porting applications using the KTextEditor interfaces
-from KDE 4 to KDE Frameworks 4. This page does not try to be complete; its main
+from KDE 4 to KDE Frameworks 5. This page does not try to be complete; its main
 goal is to show what interfaces were removed, changed or added to give some
 impression and orientation of what you have to do to port your application to
 the KDE Frameworks 5 KTextEditor interfaces.
@@ -393,18 +377,18 @@ the KDE Frameworks 5 KTextEditor interfaces.
 The KTextEditor interfaces changes in KDE Frameworks 5 are neither binary nor
 source compatible to the KTextEditor interfaces included in KDE 4, so programs
 written/compiled for the KDE 4 KTextEditor interfaces will not compile
-(nor run) under Frameworks 5. There are no plans to provide a compatibility layer.
+(nor run) under Frameworks 5.
 
 The Frameworks 5 KTextEditor interfaces undergone a heavy cleanup, i.e. obsolete
 functions were removed, interfaces were merged and extended. All interface
 changes like for example parameter changes of a function are not mentioned in
 detail in this page, look into the particular class API documentation.
 
-A KTextEditor::Factory class was introduced to access a specific Editor
-implementation, read \ref kte_design for detailed information.
-
 \section kte_port_remove Removed Interfaces and Removed Classes
-Entirely removed interfaces and classes are, in order:
+Entirely removed interfaces and classes are:
+ - \p KTextEditor::Factory \n
+   Just use KTextEditor::Editor::instance() to get the editor instance.
+   This pointer is \e always valid.
  - \p KTextEditor::EditorChooser \n
    Instead, just use \p KTextEditor::editor();
  - \p SmartInterface (removed since KDE 4.5)
@@ -424,7 +408,9 @@ The following interfaces were merged, in order:
 The following interfaces were changed:
  - \p KTextEditor::Editor::setSimpleMode() was removed.
  - \p KTextEditor::View::setSelection(const Cursor &position, int length, bool wrap)
-   was removed in favour of the Range based KTextEditor::View::setSelection()
+   was removed in favor of the Range based KTextEditor::View::setSelection()
+ - \p KTextEditor::Document::activeView() \n
+   The active view was removed in favor of KTextEditor::MainWindow::activeView().
  - \p KTextEditor::Document::wordRangeAt(const Cursor &position)
    returns the Range of the word under \p position.
  - \p KTextEditor::Document::wordAt(const Cursor &position)
@@ -438,7 +424,19 @@ The following interfaces were changed:
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
- - none, yet.
+ - KTextEditor::Application (since KDE 5.0) \n
+   The Application is an interface that is implemented by the host application.
+   It provides information about the documents managed by the application as well
+   as convenience functions for instance to open or close documents.
+ - KTextEditor::MainWindow (since KDE 5.0) \n
+   A MainWindow usually represents a toplevel window of the application.
+   It manages the views and also provides an accessor to the MainWindow's active
+   view through MainWindow::activeView(). The provides signals that indicate that
+   the active view has changed, or that a view has been created. Other than that,
+   it for instance allows to create tool views and similar convenience functions
+   to show view bars.
+ - KTextEditor::MessageInterface (since KDE 4.11) \n
+   Class providing notifications to the user in a KTextEditor::View.
 
 \section kte_port_enhanced_classes Significantly Enhanced Classes
 The following classes have been significantly enhanced:
@@ -450,14 +448,13 @@ The following classes have been significantly enhanced:
    Further, the Cursor has been marked as Q_MOVABLE, making it behave like a
    Plain Old Data (POD) type.
  - KTextEditor::Range \n
-   The Range now is a tuple of two Cursors, namely the startCursor and the
-   endCursor. It has no virtual destructor so that you cannot derive from Range.
+   The Range now is a tuple of two Cursors, namely the Range::startCursor() and the
+   Range::endCursor(). It has no virtual destructor so that you cannot derive from Range.
    Further, the Range has been marked as Q_MOVABLE, making it behave like a
    Plain Old Data (POD) type.
 
 \section kte_port_new_classes New Classes
-The following classes are either new, or were added late in the KDE 4 release
-horizon:
+The following classes are either new, or were added late in the KDE 4 release cycle:
  - KTextEditor::DocumentCursor \n
    The DocumentCursor is a cursor associated to a KTextEditor::Document. It
    provides convenience functions such as for text navigation. However, it does
@@ -470,21 +467,17 @@ horizon:
    A MovingRange is bound to a specific Document and maintains its position.
  - KTextEditor::MovingRangeFeedback (since KDE 4.5) \n
    Class providing notifications of changes to a KTextEditor::MovingRange.
- - KTextEditor::MessageInterface (since KDE 4.11) \n
-   Class providing notifications to the user in a KTextEditor::View.
 
 \section kte_port_plugins Plugin Architecture Changes
-The KTextEditor::Plugin interface changed to support more than only one
-KTextEditor::Document at a time. A plugin in a KDE 4 KTextEditor implementation
-no longer is bound to a single document (i.e. for \e every document a single
-instance of the plugin existed). Now, a plugin can handle several documents and
-views. Also a plugin now is able to load and save session related config
-settings if desired.
+The KTextEditor::Plugin system was heavily extended to support 'application
+plugins'. That is, a plugin can now create tool views in a MainWindow%s and
+access the Application's document list. So the applications are now shared
+between all applications using the KTextEditor interfaces (e.g. Kate, KDevelop,
+and Kile).
 
 \see KTextEditor::Plugin
 
-\author Dominik Haumann \<dhdev@gmx.de\>
-\author Hamish Rodda \<rodda@kde.org\>
+\author Dominik Haumann \<dhaumann@kde.org\>
 */
 
 
@@ -504,7 +497,7 @@ Using
 This HOWTO will explain step by step how to load a KTextEditor component and
 plug a single View into a KMainWindow.
 
-Tobics:
+Topics:
   - \ref kte_howto_header
   - \ref kte_howto_source
   - \ref kte_howto_notes
@@ -591,7 +584,7 @@ In order to compile link against the following libraries:
  - ktexteditor
  - kdeui
 
-\author Dominik Haumann \<dhdev@gmx.de\>
+\author Dominik Haumann \<dhaumann@kde.org\>
 */
 
 // DOXYGEN_REFERENCES = kdecore kdeui kio kparts
