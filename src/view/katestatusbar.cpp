@@ -101,55 +101,54 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
 
 bool KateStatusBar::eventFilter(QObject*, QEvent *e)
 {
-  if (e->type() == QEvent::MouseButtonPress)
-  {
-    m_view->setFocus();
-    return true;
-  }
+    if (e->type() == QEvent::MouseButtonPress) {
+        m_view->setFocus();
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
 void KateStatusBar::updateStatus ()
 {
-  viewModeChanged ();
-  cursorPositionChanged ();
-  selectionChanged ();
-  modifiedChanged ();
-  documentConfigChanged ();
-  m_infoLabel->clear ();
+    viewModeChanged ();
+    cursorPositionChanged ();
+    selectionChanged ();
+    modifiedChanged ();
+    documentConfigChanged ();
+    m_infoLabel->clear ();
 }
 
 void KateStatusBar::viewModeChanged ()
 {
-  m_insertModeLabel->setText( QString::fromLatin1(" %1 ").arg (m_view->viewMode()) );
+    m_insertModeLabel->setText( QString::fromLatin1(" %1 ").arg (m_view->viewMode()) );
 }
 
 void KateStatusBar::cursorPositionChanged ()
 {
-  KTextEditor::Cursor position (m_view->cursorPositionVirtual());
+    KTextEditor::Cursor position (m_view->cursorPositionVirtual());
 
-  m_lineColLabel->setText(
-      i18n(
-          " Line: %1 of %2 Col: %3 "
-        , QLocale().toString(position.line() + 1)
-        , m_view->document()->lines()
-        , QLocale().toString(position.column() + 1)
-        )
-    );
+    m_lineColLabel->setText(
+        i18n(
+            " Line: %1 of %2 Col: %3 "
+            , QLocale().toString(position.line() + 1)
+            , m_view->document()->lines()
+            , QLocale().toString(position.column() + 1)
+            )
+        );
 }
 
 void KateStatusBar::selectionChanged ()
 {
-  m_selectModeLabel->setText( m_view->blockSelection() ? i18n(" BLOCK ") : i18n(" LINE ") );
+    m_selectModeLabel->setText( m_view->blockSelection() ? i18n(" BLOCK ") : i18n(" LINE ") );
 }
 
 void KateStatusBar::informationMessage (KTextEditor::View *, const QString &message)
 {
-  m_infoLabel->setText( message );
+    m_infoLabel->setText( message );
 
-  // timer to reset this after 4 seconds
-  QTimer::singleShot(4000, this, SLOT(updateStatus()));
+    // timer to reset this after 4 seconds
+    QTimer::singleShot(4000, this, SLOT(updateStatus()));
 }
 
 void KateStatusBar::modifiedChanged()
