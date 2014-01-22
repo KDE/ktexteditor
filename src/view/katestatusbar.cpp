@@ -30,7 +30,6 @@
 
 #include <QHBoxLayout>
 #include <QFontDatabase>
-#include <QSizeGrip>
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
@@ -95,11 +94,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_lineColLabel = new QLabel( this );
     topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setFocusProxy(m_view);
-
-    /**
-     * size grip for window resizing
-     */
-    topLayout->addWidget(new QSizeGrip(this));
     
     m_modPm = QIcon::fromTheme(QStringLiteral("document-save")).pixmap(16);
     m_modDiscPm = QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(16);

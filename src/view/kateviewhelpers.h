@@ -439,8 +439,7 @@ public:
      * OTOH showing/hiding regular barWidgets will work as usual
      * (they will be shown above permanent widget)
      *
-     * If permanent widget already exists, new one replaces old one
-     * Old widget is not deleted, caller can do it if it wishes
+     * If permanent widget already exists, asserts!
      */
     void addPermanentBarWidget(KateViewBarWidget *barWidget);
 

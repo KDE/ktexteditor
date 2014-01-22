@@ -2367,13 +2367,11 @@ void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
 
 void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
 {
-    // remove old widget from layout (if any)
-    if (m_permanentBarWidget) {
-        m_permanentBarWidget->hide();
-        m_layout->removeWidget(m_permanentBarWidget);
-    }
-
-    m_layout->addWidget(barWidget, 0, Qt::AlignBottom);
+    Q_ASSERT(barWidget);
+    Q_ASSERT(!m_permanentBarWidget);        
+    
+    m_stack->addWidget(barWidget);
+    m_stack->show();
     m_permanentBarWidget = barWidget;
     m_permanentBarWidget->show();
 
@@ -2382,17 +2380,10 @@ void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
 
 void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
 {
-    if (m_permanentBarWidget != barWidget) {
-        qCDebug(LOG_PART) << "no such permanent widget exists in bar";
-        return;
-    }
-
-    if (!m_permanentBarWidget) {
-        return;
-    }
+    Q_ASSERT(m_permanentBarWidget == barWidget);
 
     m_permanentBarWidget->hide();
-    m_layout->removeWidget(m_permanentBarWidget);
+    m_stack->removeWidget(m_permanentBarWidget);
     m_permanentBarWidget = 0;
 
     if (!m_stack->isVisible()) {
@@ -2418,14 +2409,7 @@ void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
     barWidget->show();
     barWidget->setFocus(Qt::ShortcutFocusReason);
     m_stack->show();
-
-    // if we have any permanent widget, bar is always visible,
-    // no need to show it
-    if (m_permanentBarWidget) {
-        m_permanentBarWidget->hide();
-    } else {
-        setViewBarVisible(true);
-    }
+    setViewBarVisible(true);
 }
 
 bool KateViewBar::hasBarWidget(KateViewBarWidget *barWidget) const
@@ -2439,13 +2423,13 @@ void KateViewBar::hideCurrentBarWidget()
     if (current) {
         current->closed();
     }
-    m_stack->hide();
-
+    
     // if we have any permanent widget, make it visible again
     if (m_permanentBarWidget) {
-        m_permanentBarWidget->show ();
+        m_stack->setCurrentWidget (m_permanentBarWidget);
     } else {
         // else: hide the bar
+        m_stack->hide();
         setViewBarVisible(false);
     }
 
