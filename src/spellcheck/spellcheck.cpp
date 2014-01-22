@@ -290,6 +290,3 @@ void KateSpellCheckManager::trimRange(KTextEditor::DocumentPrivate *doc, KTextEd
     } while (cursor > r.start());
     r.setEnd(prevCursor);
 }
-
-#include "spellcheck.moc"
-

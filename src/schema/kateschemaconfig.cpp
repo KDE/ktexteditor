@@ -22,7 +22,6 @@
 
 //BEGIN Includes
 #include "kateschemaconfig.h"
-#include "kateschemaconfig.moc"
 
 #include "katedocument.h"
 #include "kateschema.h"

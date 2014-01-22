@@ -738,5 +738,3 @@ KateStyleTreeWidget *KateStyleTreeWidgetItem::treeWidget() const
     return static_cast<KateStyleTreeWidget *>(QTreeWidgetItem::treeWidget());
 }
 //END
-
-#include "katestyletreewidget.moc"

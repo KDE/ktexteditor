@@ -314,5 +314,3 @@ void KateArgumentHintTree::bottom()
         }
     }
 }
-
-#include "kateargumenthinttree.moc"

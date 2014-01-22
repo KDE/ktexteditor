@@ -328,5 +328,3 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
 
     return -1;
 }
-
-#include "kateargumenthintmodel.moc"

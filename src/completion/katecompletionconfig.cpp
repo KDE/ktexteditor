@@ -433,5 +433,3 @@ void KateCompletionConfig::moveGroupingOrderDown()
         ui->sortGroupingOrder->setCurrentItem(item);
     }
 }
-
-#include "katecompletionconfig.moc"

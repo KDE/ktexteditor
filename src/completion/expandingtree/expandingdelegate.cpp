@@ -352,5 +352,3 @@ QList<QTextLayout::FormatRange> ExpandingDelegate::highlightingFromVariantList(c
     }
     return ret;
 }
-
-#include "expandingdelegate.moc"

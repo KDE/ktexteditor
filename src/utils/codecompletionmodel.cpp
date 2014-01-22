@@ -117,5 +117,3 @@ void CodeCompletionModel::setHasGroups(bool hasGroups)
         emit hasGroupsChanged(this, hasGroups);
     }
 }
-
-#include "codecompletionmodel.moc"

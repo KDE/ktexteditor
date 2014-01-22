@@ -902,6 +902,3 @@ void KateOnTheFlyChecker::clearModificationList()
     }
     m_modificationList.clear();
 }
-
-#include "ontheflycheck.moc"
-
