@@ -222,9 +222,11 @@ void KateIndentConfigTab::apply()
 
 void KateIndentConfigTab::reload()
 {
-    ui->sbTabWidth->setSuffix(ki18np(" character", " characters").toString());
+    ui->sbTabWidth->setSpecialValueText(ki18nc("spinbox special value for 1","1 character").toString());//(ki18np(" character", " characters").toString());
+    ui->sbTabWidth->setSuffix(ki18nc("suffix for spinbox >1", " characters").toString());
     ui->sbTabWidth->setValue(KateDocumentConfig::global()->tabWidth());
-    ui->sbIndentWidth->setSuffix(ki18np(" character", " characters").toString());
+    ui->sbIndentWidth->setSpecialValueText(ki18nc("spinbox special value for 1","1 character").toString());
+    ui->sbIndentWidth->setSuffix(ki18nc("suffix for spinbox >1", " characters").toString());
     ui->sbIndentWidth->setValue(KateDocumentConfig::global()->indentationWidth());
     ui->chkKeepExtraSpaces->setChecked(KateDocumentConfig::global()->keepExtraSpaces());
     ui->chkIndentPaste->setChecked(KateDocumentConfig::global()->indentPastedText());
@@ -659,7 +661,9 @@ void KateEditGeneralConfigTab::reload()
 {
     ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
     ui->chkShowStaticWordWrapMarker->setChecked(KateRendererConfig::global()->wordWrapMarker());
-    ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at", " character", " characters").toString());
+    //ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at", " character", " characters").toString());
+    ui->sbWordWrap->setSpecialValueText(ki18nc("spinbox special value for 1 Wrap words at","1 character").toString());//(ki18np(" character", " characters").toString());
+    ui->sbWordWrap->setSuffix(ki18nc("suffix for spinbox >1 wrap words at", " characters").toString());
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
 }
