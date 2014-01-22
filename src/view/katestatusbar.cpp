@@ -36,46 +36,21 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
 {
+    setFocusProxy(m_view);
+
     /**
      * just add our status bar to central widget, full sized
      */
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
-  //  topLayout->addWidget(m_statusBar);
-
-    setFocusProxy(m_view);
-   // m_statusBar->setFocusProxy(m_view);
-
-    QString lineColText = i18n(" Line: %1 Col: %2 ", QLocale().toString(4444), QLocale().toString(44));
-
-    m_lineColLabel = new QLabel( this );
-    m_lineColLabel->setMinimumWidth( m_lineColLabel->fontMetrics().width( lineColText ) );
-    topLayout->addWidget( m_lineColLabel, 0 );
-    m_lineColLabel->setFocusProxy(m_view);
+    topLayout->setSpacing(4);
+    topLayout->addSpacing(4);
 
     m_modifiedLabel = new QLabel( this );
     m_modifiedLabel->setFixedSize( 16, 16 );
     topLayout->addWidget( m_modifiedLabel, 0 );
     m_modifiedLabel->setAlignment( Qt::AlignCenter );
     m_modifiedLabel->setFocusProxy(m_view);
-
-    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
-    topLayout->addWidget( m_selectModeLabel, 0 );
-    m_selectModeLabel->setAlignment( Qt::AlignCenter );
-    m_selectModeLabel->setFocusProxy(m_view);
-
-    m_insertModeLabel = new QLabel( i18n(" INS "), this );
-    topLayout->addWidget( m_insertModeLabel, 0 );
-    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
-    m_insertModeLabel->setFocusProxy(m_view);
-
-    m_infoLabel = new KSqueezedTextLabel( this );
-    topLayout->addWidget( m_infoLabel, 1 );
-    m_infoLabel->setTextFormat(Qt::PlainText);
-    m_infoLabel->setMinimumSize( 0, 0 );
-    m_infoLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored, QSizePolicy::Fixed ));
-    m_infoLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
-    m_infoLabel->setFocusProxy(m_view);
 
     /**
      * add mode button which allows user to switch mode of document
@@ -98,6 +73,28 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
+
+    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
+    topLayout->addWidget( m_selectModeLabel, 0 );
+    m_selectModeLabel->setAlignment( Qt::AlignCenter );
+    m_selectModeLabel->setFocusProxy(m_view);
+
+    m_insertModeLabel = new QLabel( i18n(" INS "), this );
+    topLayout->addWidget( m_insertModeLabel, 0 );
+    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
+    m_insertModeLabel->setFocusProxy(m_view);
+
+    m_infoLabel = new KSqueezedTextLabel( this );
+    topLayout->addWidget( m_infoLabel, 1 );
+    m_infoLabel->setTextFormat(Qt::PlainText);
+    m_infoLabel->setMinimumSize( 0, 0 );
+    m_infoLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored, QSizePolicy::Fixed ));
+    m_infoLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
+    m_infoLabel->setFocusProxy(m_view);
+
+    m_lineColLabel = new QLabel( this );
+    topLayout->addWidget( m_lineColLabel, 0 );
+    m_lineColLabel->setFocusProxy(m_view);
 
     /**
      * size grip for window resizing
@@ -137,7 +134,7 @@ void KateStatusBar::updateStatus ()
 
 void KateStatusBar::viewModeChanged ()
 {
-    m_insertModeLabel->setText( QString::fromLatin1(" %1 ").arg (m_view->viewMode()) );
+    m_insertModeLabel->setText( m_view->viewMode() );
 }
 
 void KateStatusBar::cursorPositionChanged ()
@@ -145,10 +142,8 @@ void KateStatusBar::cursorPositionChanged ()
     KTextEditor::Cursor position (m_view->cursorPositionVirtual());
 
     m_lineColLabel->setText(
-        i18n(
-            " Line: %1 of %2 Col: %3 "
+        i18n("Line %1, Col %2"
             , QLocale().toString(position.line() + 1)
-            , m_view->document()->lines()
             , QLocale().toString(position.column() + 1)
             )
         );
