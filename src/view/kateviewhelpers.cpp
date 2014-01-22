@@ -2371,6 +2371,7 @@ void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
     Q_ASSERT(!m_permanentBarWidget);        
     
     m_stack->addWidget(barWidget);
+    m_stack->setCurrentWidget(barWidget);
     m_stack->show();
     m_permanentBarWidget = barWidget;
     m_permanentBarWidget->show();
