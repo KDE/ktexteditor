@@ -99,11 +99,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
 
-#ifdef Q_WS_MAC
-    m_statusBar->setSizeGripEnabled( false );
-    m_statusBar->addPermanentWidget( new QSizeGrip( m_statusBar ) );
-#endif
-
     m_modPm = QIcon::fromTheme(QStringLiteral("document-save")).pixmap(16);
     m_modDiscPm = QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(16);
     QIcon icon = KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
