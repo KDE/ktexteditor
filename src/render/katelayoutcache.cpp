@@ -20,7 +20,6 @@
  */
 
 #include "katelayoutcache.h"
-#include "katelayoutcache.moc"
 
 #include <QtAlgorithms>
 

@@ -587,5 +587,3 @@ KTextEditor::Range KateWordCompletionView::range() const
     return m_dWCompletionModel->completionRange(m_view, m_view->cursorPosition());
 }
 //END
-
-#include "katewordcompletion.moc"

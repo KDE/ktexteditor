@@ -708,6 +708,3 @@ void PrintPainter::paintLineNumber(QPainter &painter, const uint number, const P
 }
 
 //END PrintPainter
-
-#include "printpainter.moc"
-

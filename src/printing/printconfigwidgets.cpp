@@ -660,6 +660,3 @@ void KatePrintLayout::writeSettings()
 }
 
 //END KatePrintLayout
-
-#include "printconfigwidgets.moc"
-

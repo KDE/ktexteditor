@@ -420,5 +420,3 @@ void KateCompletionTree::bottom()
         }
     }
 }
-
-#include "katecompletiontree.moc"

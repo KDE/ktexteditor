@@ -1454,6 +1454,3 @@ void KateCompletionWidget::tab(bool shift)
         }
     }
 }
-
-#include "katecompletionwidget.moc"
-

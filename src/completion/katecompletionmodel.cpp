@@ -2424,5 +2424,3 @@ void KateCompletionModel::clearCompletionModels()
     clearGroups();
     endResetModel();
 }
-
-#include "katecompletionmodel.moc"

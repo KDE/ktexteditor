@@ -177,4 +177,3 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
 //END KatePrinter
 
 #include "kateprinter.moc"
-
