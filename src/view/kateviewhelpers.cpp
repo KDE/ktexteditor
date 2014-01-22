@@ -2382,11 +2382,14 @@ void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
 {
     Q_ASSERT(m_permanentBarWidget == barWidget);
 
+    const bool hideBar = m_stack->currentWidget() == m_permanentBarWidget;
+    
     m_permanentBarWidget->hide();
     m_stack->removeWidget(m_permanentBarWidget);
     m_permanentBarWidget = 0;
 
-    if (!m_stack->isVisible()) {
+    if (hideBar) {
+        m_stack->hide();
         setViewBarVisible(false);
     }
 }
