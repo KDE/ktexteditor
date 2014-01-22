@@ -299,8 +299,8 @@ KTextEditor::Cursor KateViewInternal::endPos() const
         return KTextEditor::Cursor(thisLine.virtualLine(), thisLine.wrap() ? thisLine.endCol() - 1 : thisLine.endCol());
     }
 
-    qCDebug(LOG_PART) << "WARNING: could not find a lineRange at all";
-    return KTextEditor::Cursor(-1, -1);
+    // can happen, if view is still invisible
+    return KTextEditor::Cursor();
 }
 
 int KateViewInternal::endLine() const
