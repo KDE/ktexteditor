@@ -28,49 +28,49 @@
 #include <KIconUtils>
 #include <KLocalizedString>
 
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QFontDatabase>
+#include <QSizeGrip>
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
-    , m_statusBar(new QStatusBar(centralWidget()))
 {
     /**
      * just add our status bar to central widget, full sized
      */
-    QVBoxLayout *topLayout = new QVBoxLayout(centralWidget());
+    QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
-    topLayout->addWidget(m_statusBar);
+  //  topLayout->addWidget(m_statusBar);
 
     setFocusProxy(m_view);
-    m_statusBar->setFocusProxy(m_view);
+   // m_statusBar->setFocusProxy(m_view);
 
     QString lineColText = i18n(" Line: %1 Col: %2 ", QLocale().toString(4444), QLocale().toString(44));
 
-    m_lineColLabel = new QLabel( m_statusBar );
+    m_lineColLabel = new QLabel( this );
     m_lineColLabel->setMinimumWidth( m_lineColLabel->fontMetrics().width( lineColText ) );
-    m_statusBar->addWidget( m_lineColLabel, 0 );
+    topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setFocusProxy(m_view);
 
-    m_modifiedLabel = new QLabel( m_statusBar );
+    m_modifiedLabel = new QLabel( this );
     m_modifiedLabel->setFixedSize( 16, 16 );
-    m_statusBar->addWidget( m_modifiedLabel, 0 );
+    topLayout->addWidget( m_modifiedLabel, 0 );
     m_modifiedLabel->setAlignment( Qt::AlignCenter );
     m_modifiedLabel->setFocusProxy(m_view);
 
-    m_selectModeLabel = new QLabel( i18n(" LINE "), m_statusBar );
-    m_statusBar->addWidget( m_selectModeLabel, 0 );
+    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
+    topLayout->addWidget( m_selectModeLabel, 0 );
     m_selectModeLabel->setAlignment( Qt::AlignCenter );
     m_selectModeLabel->setFocusProxy(m_view);
 
-    m_insertModeLabel = new QLabel( i18n(" INS "), m_statusBar );
-    m_statusBar->addWidget( m_insertModeLabel, 0 );
+    m_insertModeLabel = new QLabel( i18n(" INS "), this );
+    topLayout->addWidget( m_insertModeLabel, 0 );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_insertModeLabel->setFocusProxy(m_view);
 
-    m_infoLabel = new KSqueezedTextLabel( m_statusBar );
-    m_statusBar->addPermanentWidget( m_infoLabel, 1 );
+    m_infoLabel = new KSqueezedTextLabel( this );
+    topLayout->addWidget( m_infoLabel, 1 );
     m_infoLabel->setTextFormat(Qt::PlainText);
     m_infoLabel->setMinimumSize( 0, 0 );
     m_infoLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored, QSizePolicy::Fixed ));
@@ -81,10 +81,10 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add mode button which allows user to switch mode of document
      * this will reuse the mode action menu of the view
      */
-    m_mode = new QPushButton( QString(), m_statusBar );
+    m_mode = new QPushButton( QString(), this );
     m_mode->setFlat(true);
     m_mode->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
-    m_statusBar->addPermanentWidget( m_mode, 0 );
+    topLayout->addWidget( m_mode, 0 );
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
 
@@ -92,13 +92,18 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add encoding button which allows user to switch encoding of document
      * this will reuse the encoding action menu of the view
      */
-    m_encoding = new QPushButton( QString(), m_statusBar );
+    m_encoding = new QPushButton( QString(), this );
     m_encoding->setFlat(true);
     m_encoding->setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
-    m_statusBar->addPermanentWidget( m_encoding, 0 );
+    topLayout->addWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
 
+    /**
+     * size grip for window resizing
+     */
+    topLayout->addWidget(new QSizeGrip(this));
+    
     m_modPm = QIcon::fromTheme(QStringLiteral("document-save")).pixmap(16);
     m_modDiscPm = QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(16);
     QIcon icon = KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
