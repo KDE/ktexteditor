@@ -305,6 +305,7 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KTextEditor::ViewPrivate *vie
       m_isSendingSyntheticSearchCompletedKeypress(false)
 {
     QHBoxLayout *layout = new QHBoxLayout();
+    layout->setMargin(0);
     centralWidget()->setLayout(layout);
     m_barTypeIndicator = new QLabel(this);
     m_barTypeIndicator->setObjectName(QLatin1String("bartypeindicator"));
