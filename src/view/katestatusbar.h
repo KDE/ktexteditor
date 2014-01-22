@@ -28,6 +28,7 @@
 
 #include <QLabel>
 #include <QPushButton>
+#include <QToolButton>
 
 class KateStatusBar : public KateViewBarWidget
 {
@@ -56,7 +57,7 @@ public Q_SLOTS:
 private:
     KTextEditor::ViewPrivate *const m_view;
     QLabel* m_lineColLabel;
-    QLabel* m_modifiedLabel;
+    QToolButton* m_modifiedLabel;
     QLabel* m_insertModeLabel;
     QLabel* m_selectModeLabel;
     QPushButton* m_mode;

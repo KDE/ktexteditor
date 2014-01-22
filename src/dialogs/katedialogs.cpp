@@ -1326,11 +1326,11 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     QLabel *label = new QLabel(i18n("&Go to line:"), centralWidget());
     label->setBuddy(gotoRange);
 
-    QToolButton *btnOK = new QToolButton(centralWidget());
-    btnOK->setAutoRaise(true);
-    btnOK->setIcon(QIcon(SmallIcon(QLatin1String("go-jump"))));
+    QPushButton *btnOK = new QPushButton(centralWidget());
+    btnOK->setFlat(true);
+    btnOK->setIcon(SmallIcon(QLatin1String("go-jump")));
     btnOK->setText(i18n("Go"));
-    btnOK->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+  //  btnOK->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(btnOK, SIGNAL(clicked()), this, SLOT(gotoLine()));
 
     topLayout->addWidget(label);

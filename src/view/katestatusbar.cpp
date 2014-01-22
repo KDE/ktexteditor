@@ -29,12 +29,11 @@
 #include <KIconLoader>
 
 #include <QHBoxLayout>
-#include <QPixmap>
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
-    , m_modifiedStatus (0)
+    , m_modifiedStatus (-1)
 {
     setFocusProxy(m_view);
 
@@ -43,13 +42,11 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      */
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
-    topLayout->setSpacing(4);
-    topLayout->addSpacing(4);
 
-    m_modifiedLabel = new QLabel( this );
-    m_modifiedLabel->setFixedSize (SmallIcon(QStringLiteral("document-save")).size());
+    m_modifiedLabel = new QToolButton( this );
+    m_modifiedLabel->setAutoRaise(true);
+    m_modifiedLabel->setEnabled(false);
     topLayout->addWidget( m_modifiedLabel, 0 );
-    m_modifiedLabel->setAlignment( Qt::AlignCenter );
     m_modifiedLabel->setFocusProxy(m_view);
 
     /**
@@ -164,20 +161,20 @@ void KateStatusBar::modifiedChanged()
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
         case 0x1:
-            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("document-save")));
+            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save")));
             break;
             
         case 0x2:
-            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("dialog-warning")));
+            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("dialog-warning")));
             break;
             
         case 0x3:
-            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
+            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
                                                QStringList() << QStringLiteral("emblem-important")));
             break;
         
         default:
-            m_modifiedLabel->setPixmap (QPixmap());
+            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("text-plain")));
             break;
     }
 }
