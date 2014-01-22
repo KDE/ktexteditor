@@ -83,7 +83,6 @@
 #include <QKeyEvent>
 #include <QApplication>
 #include <QLayout>
-#include <QStyle>
 #include <QClipboard>
 
 //#define VIEW_RANGE_DEBUG
@@ -175,29 +174,12 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     hbox->setMargin(0);
     hbox->setSpacing(0);
 
-    QStyleOption option;
-    option.initFrom(this);
-
-    if (style()->styleHint(QStyle::SH_ScrollView_FrameOnlyAroundContents, &option, this)) {
-        QHBoxLayout *extrahbox = new QHBoxLayout();
-        QFrame *frame = new QFrame(this);
-        extrahbox->setMargin(0);
-        extrahbox->setSpacing(0);
-        extrahbox->addWidget(m_viewInternal->m_leftBorder);
-        extrahbox->addWidget(m_viewInternal);
-        frame->setLayout(extrahbox);
-        hbox->addWidget(frame);
-        hbox->addSpacing(style()->pixelMetric(QStyle::PM_ScrollView_ScrollBarSpacing, &option, this));
-        frame->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-    } else {
-        hbox->addWidget(m_viewInternal->m_leftBorder);
-        hbox->addWidget(m_viewInternal);
-    }
+    /**
+     * add ICONBORDER | VIEWINTERNAL | LINE-SCROLLBAR
+     */
+    hbox->addWidget(m_viewInternal->m_leftBorder);
+    hbox->addWidget(m_viewInternal);
     hbox->addWidget(m_viewInternal->m_lineScroll);
-
-    if (style()->styleHint(QStyle::SH_ScrollView_FrameOnlyAroundContents, &option, this)) {
-        m_vBox->addSpacing(style()->pixelMetric(QStyle::PM_ScrollView_ScrollBarSpacing, &option, this));
-    }
 
     // add hbox: ColumnsScrollBar | Dummy
     hbox = new QHBoxLayout();
