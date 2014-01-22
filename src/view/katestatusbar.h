@@ -25,10 +25,20 @@
 #include "kateviewhelpers.h"
 
 #include <KSqueezedTextLabel>
+#include <KLocalizedString>
 
 #include <QLabel>
 #include <QPushButton>
 #include <QToolButton>
+
+class KateStatusBarOpenUpMenu: public QMenu
+{
+        Q_OBJECT
+public:
+        KateStatusBarOpenUpMenu(QWidget *parent);
+        virtual ~KateStatusBarOpenUpMenu();
+        virtual void setVisible(bool);
+};
 
 class KateStatusBar : public KateViewBarWidget
 {
@@ -62,8 +72,26 @@ private:
     QLabel* m_selectModeLabel;
     QPushButton* m_mode;
     QPushButton* m_encoding;
+    QPushButton* m_tabsIndent;
+    KLocalizedString m_spacesOnly;
+    KLocalizedString m_tabsOnly;
+    KLocalizedString m_tabSpacesMixed;
+    KLocalizedString m_spacesOnlyShowTabs;
     KSqueezedTextLabel* m_infoLabel;
+    QMenu *m_indentSettingsMenu;
     unsigned int m_modifiedStatus;
+    QActionGroup *m_tabGroup;
+    QActionGroup *m_indentGroup;
+    QAction *m_mixedAction;
+    QAction *m_hardAction;
+    QAction *m_softAction;
+    void addNumberAction(QActionGroup *group, QMenu *menu,int data);
+    void updateGroup(QActionGroup *group, int w);
+    
+public Q_SLOTS:
+    void slotTabGroup(QAction*);
+    void slotIndentGroup(QAction*);
+    void slotIndentTabMode(QAction*);
 };
 
 #endif

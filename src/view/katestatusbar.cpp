@@ -24,11 +24,31 @@
 #include "kateglobal.h"
 #include "katemodemanager.h"
 #include "katedocument.h"
+#include "kateconfig.h"
 
 #include <KLocalizedString>
 #include <KIconLoader>
 
 #include <QHBoxLayout>
+#include <QInputDialog>
+
+//BEGIN menu
+KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent) : QMenu(parent) {}
+KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu(){}
+
+void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
+    if (visibility) {
+        QRect geo=geometry();
+        QPoint pos=((QPushButton*)parent())->mapToGlobal(QPoint(0,0));
+        geo.moveTopLeft(QPoint(pos.x(),pos.y()-geo.height()));
+        if (geo.top()<0) geo.moveTop(0);
+        setGeometry(geo);
+    }
+    
+    QMenu::setVisible(visibility);
+}
+//END menu
+
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
@@ -37,6 +57,8 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
 {
     setFocusProxy(m_view);
 
+    QFrame *line;
+    
     /**
      * just add our status bar to central widget, full sized
      */
@@ -59,6 +81,11 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
 
+    line = new QFrame(this);
+    line->setFixedWidth(3);
+    line->setFrameShape(QFrame::VLine);
+    line->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(line,0);
     /**
      * add encoding button which allows user to switch encoding of document
      * this will reuse the encoding action menu of the view
@@ -69,6 +96,12 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
 
+    line = new QFrame(this);
+    line->setFixedWidth(3);
+    line->setFrameShape(QFrame::VLine);
+    line->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(line,0);
+    
     m_selectModeLabel = new QLabel( i18n(" LINE "), this );
     topLayout->addWidget( m_selectModeLabel, 0 );
     m_selectModeLabel->setAlignment( Qt::AlignCenter );
@@ -79,6 +112,84 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_insertModeLabel->setFocusProxy(m_view);
 
+    
+    line = new QFrame(this);
+    line->setFixedWidth(3);
+    line->setFrameShape(QFrame::VLine);
+    line->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(line,0);
+    
+    m_spacesOnly=ki18n("Soft Tabs: %1");
+    m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
+    m_tabsOnly=ki18n("Tab Size: %1");
+    m_tabSpacesMixed=ki18n("Indent/Tab: %1/%2");
+    int myWidth=0;
+    
+    
+    QAction *action;
+    m_tabGroup=new QActionGroup(this);
+    m_indentGroup=new QActionGroup(this);
+    
+    m_tabsIndent = new QPushButton( QString(), this );
+    m_indentSettingsMenu=new KateStatusBarOpenUpMenu(m_tabsIndent);
+    m_indentSettingsMenu->addSection(i18n("Show Tabs As"));
+    addNumberAction(m_tabGroup,m_indentSettingsMenu,-1);
+    addNumberAction(m_tabGroup,m_indentSettingsMenu,8);
+    addNumberAction(m_tabGroup,m_indentSettingsMenu,4);
+    addNumberAction(m_tabGroup,m_indentSettingsMenu,3);
+    addNumberAction(m_tabGroup,m_indentSettingsMenu,2);
+    m_indentSettingsMenu->addSection(i18n("Indentation Width"));
+    addNumberAction(m_indentGroup,m_indentSettingsMenu,-1);
+    addNumberAction(m_indentGroup,m_indentSettingsMenu,8);
+    addNumberAction(m_indentGroup,m_indentSettingsMenu,4);
+    addNumberAction(m_indentGroup,m_indentSettingsMenu,3);
+    addNumberAction(m_indentGroup,m_indentSettingsMenu,2);
+
+    action=m_indentSettingsMenu->addSeparator();
+    QActionGroup *radioGroup=new QActionGroup(m_indentSettingsMenu);
+    action=m_indentSettingsMenu->addAction(i18n("Mixed Tabs (Spaces + Tabs)"));
+    action->setCheckable(true);
+    action->setActionGroup(radioGroup);
+    m_mixedAction=action;
+    action=m_indentSettingsMenu->addAction(i18n("Hard Tabs (Tabs)"));
+    action->setCheckable(true);
+    action->setActionGroup(radioGroup);
+    m_hardAction=action;
+    action=m_indentSettingsMenu->addAction(i18n("Soft Tabs (Spaces)"));
+    action->setCheckable(true);
+    action->setActionGroup(radioGroup);
+    m_softAction=action;
+    
+    
+    m_tabsIndent->setFlat(true);
+    topLayout->addWidget( m_tabsIndent, 0 );
+    m_tabsIndent->setMenu(m_indentSettingsMenu);
+    m_tabsIndent->setFocusProxy(m_view);
+    
+    QString dummy(QLatin1String("XX"));
+    
+    m_tabsIndent->setText(m_spacesOnly.subs(dummy).toString());
+    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
+    
+    m_tabsIndent->setText(m_tabsOnly.subs(dummy).toString());
+    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
+    
+    m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(dummy).subs(dummy).toString());
+    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
+    
+    
+    m_tabsIndent->setText(m_tabSpacesMixed.subs(dummy).subs(dummy).toString());   
+    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
+    
+    m_tabsIndent->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed));
+    m_tabsIndent->setFixedWidth(myWidth);
+
+    line = new QFrame(this);
+    line->setFixedWidth(3);
+    line->setFrameShape(QFrame::VLine);
+    line->setFrameShadow(QFrame::Sunken);
+    topLayout->addWidget(line,0);
+    
     m_infoLabel = new KSqueezedTextLabel( this );
     topLayout->addWidget( m_infoLabel, 1 );
     m_infoLabel->setTextFormat(Qt::PlainText);
@@ -102,6 +213,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->document(), SIGNAL(configChanged()), this, SLOT(documentConfigChanged()));
     connect(m_view->document(), SIGNAL(modeChanged(KTextEditor::Document*)), this, SLOT(modeChanged()));
 
+    connect(m_tabGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotTabGroup(QAction*)));
+    connect(m_indentGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentGroup(QAction*)));
+    connect(radioGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentTabMode(QAction*)));
     updateStatus ();
 }
 
@@ -178,13 +292,120 @@ void KateStatusBar::modifiedChanged()
             break;
     }
 }
-
+        
 void KateStatusBar::documentConfigChanged ()
 {
     m_encoding->setText( m_view->document()->encoding() );
+    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
+    int tabWidth=config->tabWidth();
+    int indentationWidth=config->indentationWidth();
+    bool replaceTabsDyn=config->replaceTabsDyn();
+    
+    if (!replaceTabsDyn) {
+        if (tabWidth==indentationWidth) {
+            m_tabsIndent->setText(m_tabsOnly.subs(tabWidth,2).toString());
+            m_tabGroup->setEnabled(false);
+            m_hardAction->setChecked(true);
+        } else {
+            m_tabsIndent->setText(m_tabSpacesMixed.subs(indentationWidth,2).subs(tabWidth,2).toString());
+            m_tabGroup->setEnabled(true);
+            m_mixedAction->setChecked(true);
+        }
+    } else {
+         if (tabWidth==indentationWidth) {
+             m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth,2).toString());
+             m_tabGroup->setEnabled(false);
+             m_softAction->setChecked(true);
+         } else {
+              m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth,2).subs(tabWidth,2).toString());
+              m_tabGroup->setEnabled(true);
+              m_softAction->setChecked(true);
+        }
+    }
+    
+    updateGroup(m_tabGroup,tabWidth);
+    updateGroup(m_indentGroup,indentationWidth);
+        
 }
 
 void KateStatusBar::modeChanged ()
 {
     m_mode->setText( KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_view->document()->mode()).nameTranslated() );
+}
+
+void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu,int data) {
+    QAction *a;
+    if (data!=-1)
+        a=menu->addAction(QStringLiteral("%1").arg(data));
+    else
+        a=menu->addAction(i18n("Other"));
+    a->setData(data);
+    a->setCheckable(true);
+    a->setActionGroup(group);
+}
+
+void KateStatusBar::updateGroup(QActionGroup *group, int w) {
+    QAction *m1=0;
+    bool found=false;
+    //linear search should be fast enough here, no additional hash
+    Q_FOREACH(QAction *action, group->actions()) {
+        int val=action->data().toInt();
+        if (val==-1) m1=action;
+        if (val==w) {
+            found=true;
+            action->setChecked(true);
+        }
+    }
+    if (found) {
+        m1->setText(i18n("Other"));
+    } else {
+        m1->setText(ki18np("Other (%1)","Other (%1)").subs(w).toString());
+        m1->setChecked(true);
+    }
+}
+
+void KateStatusBar::slotTabGroup(QAction* a) {
+    int val=a->data().toInt();
+    bool ok;
+    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
+    if (val==-1) {
+        val=QInputDialog::getInt(this, i18n("Tab width"), i18n("[1-16]"), config->tabWidth(), 1, 16, 1, &ok);
+        if (!ok) val=config->tabWidth();
+    }
+    config->setTabWidth(val);
+}
+
+void KateStatusBar::slotIndentGroup(QAction* a) {
+    int val=a->data().toInt();
+    bool ok;
+    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
+    if (val==-1) {
+        val=QInputDialog::getInt(this, i18n("Indentation width"), i18n("[1-16]"), config->indentationWidth(), 1, 16, 1, &ok);
+        if (!ok) val=config->indentationWidth();
+    }
+    config->configStart();
+    config->setIndentationWidth(val);
+    if (m_hardAction->isChecked()) config->setTabWidth(val);
+    config->configEnd();
+}
+
+void KateStatusBar::slotIndentTabMode(QAction* a) {
+    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
+    if (a==m_softAction) {
+        config->setReplaceTabsDyn(true);   
+    } else if (a==m_mixedAction) {
+        if (config->replaceTabsDyn())
+            config->setReplaceTabsDyn(false);
+        m_tabGroup->setEnabled(true);
+    } else if (a==m_hardAction) {
+        if (config->replaceTabsDyn()) {
+            config->configStart();
+            config->setReplaceTabsDyn(false);
+            config->setTabWidth(config->indentationWidth());
+            config->configEnd();
+        } else {
+            config->setTabWidth(config->indentationWidth());
+        }
+        m_tabGroup->setEnabled(false);
+    }
 }
