@@ -25,15 +25,17 @@
 #include "katemodemanager.h"
 #include "katedocument.h"
 
-#include <KIconUtils>
 #include <KLocalizedString>
+#include <KIconLoader>
 
 #include <QHBoxLayout>
 #include <QFontDatabase>
+#include <QPixmap>
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
+    , m_modifiedStatus (0)
 {
     setFocusProxy(m_view);
 
@@ -46,7 +48,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addSpacing(4);
 
     m_modifiedLabel = new QLabel( this );
-    m_modifiedLabel->setFixedSize( 16, 16 );
+    m_modifiedLabel->setFixedSize (SmallIcon(QStringLiteral("document-save")).size());
     topLayout->addWidget( m_modifiedLabel, 0 );
     m_modifiedLabel->setAlignment( Qt::AlignCenter );
     m_modifiedLabel->setFocusProxy(m_view);
@@ -95,13 +97,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setFocusProxy(m_view);
     topLayout->addSpacing(4);
-    
-    m_modPm = QIcon::fromTheme(QStringLiteral("document-save")).pixmap(16);
-    m_modDiscPm = QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(16);
-    QIcon icon = KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
-                                        QIcon::fromTheme(QStringLiteral("emblem-important")),
-                                        Qt::TopLeftCorner);
-    m_modmodPm = icon.pixmap(16);
 
     // signals for the statusbar
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
@@ -161,16 +156,33 @@ void KateStatusBar::modifiedChanged()
 {
     const bool mod = m_view->doc()->isModified();
     const bool modOnHD = m_view->doc()->isModifiedOnDisc();
-
-    m_modifiedLabel->setPixmap(
-        mod ?
-        modOnHD ?
-        m_modmodPm :
-    m_modPm :
-        modOnHD ?
-        m_modDiscPm :
-        QPixmap()
-        );
+    
+    /**
+     * combine to modified status, update only if changed
+     */
+    unsigned int newStatus = (unsigned int)mod | ((unsigned int)modOnHD << 1);
+    if (m_modifiedStatus == newStatus)
+        return;
+    
+    m_modifiedStatus = newStatus;
+    switch (m_modifiedStatus) {
+        case 0x1:
+            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("document-save")));
+            break;
+            
+        case 0x2:
+            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("dialog-warning")));
+            break;
+            
+        case 0x3:
+            m_modifiedLabel->setPixmap (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
+                                               QStringList() << QStringLiteral("emblem-important")));
+            break;
+        
+        default:
+            m_modifiedLabel->setPixmap (QPixmap());
+            break;
+    }
 }
 
 void KateStatusBar::documentConfigChanged ()

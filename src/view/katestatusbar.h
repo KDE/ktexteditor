@@ -27,7 +27,6 @@
 #include <KSqueezedTextLabel>
 
 #include <QLabel>
-#include <QPixmap>
 #include <QPushButton>
 
 class KateStatusBar : public KateViewBarWidget
@@ -63,7 +62,7 @@ private:
     QPushButton* m_mode;
     QPushButton* m_encoding;
     KSqueezedTextLabel* m_infoLabel;
-    QPixmap m_modPm, m_modDiscPm, m_modmodPm;
+    unsigned int m_modifiedStatus;
 };
 
 #endif
