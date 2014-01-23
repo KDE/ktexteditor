@@ -28,6 +28,7 @@
 
 #include <KLocalizedString>
 #include <KIconLoader>
+#include <KAcceleratorManager>
 
 #include <QHBoxLayout>
 #include <QInputDialog>
@@ -64,6 +65,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     , m_view(view)
     , m_modifiedStatus (-1)
 {
+    KAcceleratorManager::setNoAccel(this);
     setFocusProxy(m_view);
 
     /**
