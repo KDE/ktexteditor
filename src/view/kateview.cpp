@@ -1109,7 +1109,7 @@ QString KTextEditor::ViewPrivate::viewMode() const
     /**
      * normal two modes
      */
-    QString currentMode = isOverwriteMode() ? i18n("<b>OVERWRITE</b>") : i18n("<b>INSERT</b>");
+    QString currentMode = isOverwriteMode() ? i18n("OVERWRITE") : i18n("INSERT");
 
     /**
      * if we are in vi mode, this will be overwritten by current vi mode

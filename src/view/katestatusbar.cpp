@@ -229,7 +229,7 @@ void KateStatusBar::cursorPositionChanged ()
     KTextEditor::Cursor position (m_view->cursorPositionVirtual());
 
     m_lineColLabel->setText(
-        i18n("<b>Line %1 Col %2</b>"
+        i18n("Line %1, Column %2"
             , QLocale().toString(position.line() + 1)
             , QLocale().toString(position.column() + 1)
             )
