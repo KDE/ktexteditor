@@ -887,13 +887,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
     a->setText(i18n("Move to Matching Bracket"));
     a->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(toMatchingBracket()));
-    m_editActions << a;
+    //m_editActions << a;
 
     a = ac->addAction(QLatin1String("select_matching_bracket"));
     a->setText(i18n("Select to Matching Bracket"));
     a->setShortcut(QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftToMatchingBracket()));
-    m_editActions << a;
+    //m_editActions << a;
 
     // anders: shortcuts doing any changes should not be created in read-only mode
     if (!m_doc->readOnly()) {
