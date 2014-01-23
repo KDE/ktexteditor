@@ -289,7 +289,7 @@ void KateStatusBar::documentConfigChanged ()
     } else {
          if (tabWidth==indentationWidth) {
              m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth,2).toString());
-             m_tabGroup->setEnabled(false);
+             m_tabGroup->setEnabled(true);
              m_softAction->setChecked(true);
          } else {
               m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth,2).subs(tabWidth,2).toString());
