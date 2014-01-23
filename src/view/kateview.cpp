@@ -2895,7 +2895,9 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
     return QStringList()  << QLatin1String("icon-bar")  << QLatin1String("line-numbers") << QLatin1String("dynamic-word-wrap")
            << QLatin1String("background-color")  << QLatin1String("selection-color")
            << QLatin1String("search-highlight-color")  << QLatin1String("replace-highlight-color")
-           << QLatin1String("folding-bar");
+           << QLatin1String("folding-bar") << QLatin1String("icon-border-color") << QLatin1String("folding-marker-color")
+           << QLatin1String("line-number-color") << QLatin1String("modification-markers");
+
 }
 
 QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
@@ -2920,6 +2922,14 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->allowMarkMenu();
     } else if (key == QLatin1String("folding-bar")) {
         return config()->foldingBar();
+    } else if (key == QLatin1String("icon-border-color")) {
+        return renderer()->config()->iconBarColor();
+    } else if (key == QLatin1String("folding-marker-color")) {
+        return renderer()->config()->foldingColor();
+    } else if (key == QLatin1String("line-number-color")) {
+        return renderer()->config()->lineNumberColor();
+    } else if (key == QLatin1String("modification-markers")) {
+        return config()->lineModification();
     }
 
     // return invalid variant
@@ -2937,7 +2947,14 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             renderer()->config()->setSearchHighlightColor(value.value<QColor>());
         } else if (key == QLatin1String("replace-highlight-color")) {
             renderer()->config()->setReplaceHighlightColor(value.value<QColor>());
+        } else if (key == QLatin1String("icon-border-color")) {
+            renderer()->config()->setIconBarColor(value.value<QColor>());
+        } else if (key == QLatin1String("folding-marker-color")) {
+            renderer()->config()->setFoldingColor(value.value<QColor>());
+        } else if (key == QLatin1String("line-number-color")) {
+            renderer()->config()->setLineNumberColor(value.value<QColor>());
         }
+
     } else if (value.type() == QVariant::Bool) {
         // Note explicit type check above. If we used canConvert, then
         // values of type UInt will be trapped here.
@@ -2951,7 +2968,10 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setAllowMarkMenu(value.toBool());
         } else if (key == QLatin1String("folding-bar")) {
             config()->setFoldingBar(value.toBool());
+        } else if (key == QLatin1String("modification-markers")) {
+            config()->setLineModification(value.toBool());
         }
+
     } else if (value.canConvert(QVariant::UInt)) {
         if (key == QLatin1String("default-mark-type")) {
             config()->setDefaultMarkType(value.toUInt());
