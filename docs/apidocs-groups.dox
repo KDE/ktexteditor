@@ -141,9 +141,6 @@ Use qobject_cast to cast a Plugin \e plugin into the
 \endcode
 
 \see KTextEditor::Plugin
-
-The following classes are a list of all available Plugin extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
 */
 
 
@@ -174,9 +171,6 @@ Use qobject_cast to cast a Command \e cmd into the
 \endcode
 
 \see KTextEditor::Command
-
-The following classes are a list of all available Command extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
 */
 
 
@@ -186,8 +180,4 @@ A CodeCompletionModel implementation may implement a CodeCompletionModel
 extension interface, but it does not \e need to.
 
 \see KTextEditor::CodeCompletionModel
-
-The following classes are a list of all available CodeCompletionModel
-extension interfaces.
-<!-- The classes are defined by the \ingroup doxygen command -->
 */
