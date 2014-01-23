@@ -1122,7 +1122,7 @@ QString KTextEditor::ViewPrivate::viewMode() const
          */
         if (m_viewInternal->getViInputModeManager()) {
             if (m_viewInternal->getViInputModeManager()->isRecordingMacro()) {
-                currentMode += QLatin1String(" (") + i18n("recording") + QLatin1String(") ");
+                currentMode.prepend (QLatin1String("(") + i18n("recording") + QLatin1String(") "));
             }
 
             /**
@@ -1130,7 +1130,7 @@ QString KTextEditor::ViewPrivate::viewMode() const
             */
             QString cmd = m_viewInternal->getViInputModeManager()->getVerbatimKeys();
             if (!cmd.isEmpty()) {
-                currentMode.append(QString::fromLatin1(" <em>%1</em>").arg(cmd));
+                currentMode.prepend(QString::fromLatin1("<em>%1</em> ").arg(cmd));
             }
         }
 
@@ -1144,7 +1144,7 @@ QString KTextEditor::ViewPrivate::viewMode() const
      * append read-only if needed
      */
     if (!m_doc->isReadWrite()) {
-        currentMode = i18n("%1 (R/O)", currentMode);
+        currentMode = i18n("(R/O) %1", currentMode);
     }
 
     /**

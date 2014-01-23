@@ -73,14 +73,15 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     option.initFrom(this);    
     topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
 
-    m_insertModeLabel = new QLabel( this );
-    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
-    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
-    m_insertModeLabel->setFocusProxy(m_view);
-
     m_lineColLabel = new QLabel( this );
     topLayout->addWidget( m_lineColLabel, 0 );
+    m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_lineColLabel->setFocusProxy(m_view);
+
+    m_insertModeLabel = new QLabel( this );
+    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
+    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
+    m_insertModeLabel->setFocusProxy(m_view);
 
     m_modifiedLabel = new QToolButton( this );
     m_modifiedLabel->setAutoRaise(true);
@@ -215,10 +216,10 @@ void KateStatusBar::selectionChanged ()
 
 void KateStatusBar::viewModeChanged ()
 {
-    // append BLOCK for block selection mode
+    // prepend BLOCK for block selection mode
     QString text = m_view->viewMode();
     if (m_view->blockSelection())
-        text = i18n (" %1 <em>[BLOCK]</em>", text);
+        text = i18n ("<em>[BLOCK]</em> %1", text);
     
     m_insertModeLabel->setText(text);
 }
