@@ -260,15 +260,6 @@ Q_SIGNALS:
                              enum KTextEditor::View::EditMode mode);
 
     /**
-     * This signal is emitted whenever the \p view wants to display a
-     * information \p message. The \p message can be displayed in the status bar
-     * for example.
-     * \param view view which sends out information
-     * \param message information message
-     */
-    void informationMessage(KTextEditor::View *view, const QString &message);
-
-    /**
      * This signal is emitted from \p view whenever the users inserts \p text
      * at \p position, that means the user typed/pasted text.
      * \param view view in which the text was inserted

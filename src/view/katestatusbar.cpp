@@ -49,6 +49,15 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
 }
 //END menu
 
+static QFrame *separator (QWidget *parent)
+{
+    QFrame * const line = new QFrame(parent);
+    line->setFixedWidth(2);
+    line->setFixedHeight(SmallIcon(QStringLiteral("document-save")).height());
+    line->setFrameShape(QFrame::VLine);
+    line->setFrameShadow(QFrame::Sunken);
+    return line;
+}
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
@@ -57,8 +66,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
 {
     setFocusProxy(m_view);
 
-    QFrame *line;
-    
     /**
      * just add our status bar to central widget, full sized
      */
@@ -81,11 +88,11 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
 
-    line = new QFrame(this);
-    line->setFixedWidth(3);
-    line->setFrameShape(QFrame::VLine);
-    line->setFrameShadow(QFrame::Sunken);
-    topLayout->addWidget(line,0);
+    /**
+     * separator
+     */
+    topLayout->addWidget(separator (this),0);
+
     /**
      * add encoding button which allows user to switch encoding of document
      * this will reuse the encoding action menu of the view
@@ -96,35 +103,16 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
 
-    line = new QFrame(this);
-    line->setFixedWidth(3);
-    line->setFrameShape(QFrame::VLine);
-    line->setFrameShadow(QFrame::Sunken);
-    topLayout->addWidget(line,0);
-    
-    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
-    topLayout->addWidget( m_selectModeLabel, 0 );
-    m_selectModeLabel->setAlignment( Qt::AlignCenter );
-    m_selectModeLabel->setFocusProxy(m_view);
+    /**
+     * separator
+     */
+    topLayout->addWidget(separator (this),0);
 
-    m_insertModeLabel = new QLabel( i18n(" INS "), this );
-    topLayout->addWidget( m_insertModeLabel, 0 );
-    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
-    m_insertModeLabel->setFocusProxy(m_view);
-
-    
-    line = new QFrame(this);
-    line->setFixedWidth(3);
-    line->setFrameShape(QFrame::VLine);
-    line->setFrameShadow(QFrame::Sunken);
-    topLayout->addWidget(line,0);
-    
     m_spacesOnly=ki18n("Soft Tabs: %1");
     m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
     m_tabsOnly=ki18n("Tab Size: %1");
     m_tabSpacesMixed=ki18n("Indent/Tab: %1/%2");
     int myWidth=0;
-    
     
     QAction *action;
     m_tabGroup=new QActionGroup(this);
@@ -159,8 +147,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
     m_softAction=action;
-    
-    
+
     m_tabsIndent->setFlat(true);
     topLayout->addWidget( m_tabsIndent, 0 );
     m_tabsIndent->setMenu(m_indentSettingsMenu);
@@ -184,19 +171,30 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_tabsIndent->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed));
     m_tabsIndent->setFixedWidth(myWidth);
 
-    line = new QFrame(this);
-    line->setFixedWidth(3);
-    line->setFrameShape(QFrame::VLine);
-    line->setFrameShadow(QFrame::Sunken);
-    topLayout->addWidget(line,0);
-    
-    m_infoLabel = new KSqueezedTextLabel( this );
-    topLayout->addWidget( m_infoLabel, 1 );
-    m_infoLabel->setTextFormat(Qt::PlainText);
-    m_infoLabel->setMinimumSize( 0, 0 );
-    m_infoLabel->setSizePolicy(QSizePolicy( QSizePolicy::Ignored, QSizePolicy::Fixed ));
-    m_infoLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
-    m_infoLabel->setFocusProxy(m_view);
+    /**
+     * separator
+     */
+    topLayout->addWidget(separator (this),0);
+
+    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
+    topLayout->addWidget( m_selectModeLabel, 0 );
+    m_selectModeLabel->setAlignment( Qt::AlignCenter );
+    m_selectModeLabel->setFocusProxy(m_view);
+
+    /**
+     * separator
+     */
+    topLayout->addWidget(separator (this),0);
+
+    m_insertModeLabel = new QLabel( i18n(" INS "), this );
+    topLayout->addWidget( m_insertModeLabel, 0 );
+    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
+    m_insertModeLabel->setFocusProxy(m_view);
+
+    /**
+     * stretch now
+     */
+    topLayout->addStretch (1000);
 
     m_lineColLabel = new QLabel( this );
     topLayout->addWidget( m_lineColLabel, 0 );
@@ -207,7 +205,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
-    connect(m_view, SIGNAL(informationMessage(KTextEditor::View*,QString)), this, SLOT(informationMessage(KTextEditor::View*,QString)));
     connect(m_view->document(), SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
     connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*,bool,KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()) );
     connect(m_view->document(), SIGNAL(configChanged()), this, SLOT(documentConfigChanged()));
@@ -225,7 +222,6 @@ void KateStatusBar::updateStatus ()
     cursorPositionChanged ();
     selectionChanged ();
     modifiedChanged ();
-    m_infoLabel->clear ();
     documentConfigChanged();
     modeChanged();
 }
@@ -250,14 +246,6 @@ void KateStatusBar::cursorPositionChanged ()
 void KateStatusBar::selectionChanged ()
 {
     m_selectModeLabel->setText( m_view->blockSelection() ? i18n(" BLOCK ") : i18n(" LINE ") );
-}
-
-void KateStatusBar::informationMessage (KTextEditor::View *, const QString &message)
-{
-    m_infoLabel->setText( message );
-
-    // timer to reset this after 4 seconds
-    QTimer::singleShot(4000, this, SLOT(updateStatus()));
 }
 
 void KateStatusBar::modifiedChanged()

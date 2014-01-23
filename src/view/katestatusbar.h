@@ -60,8 +60,6 @@ public Q_SLOTS:
 
     void documentConfigChanged ();
 
-    void informationMessage (KTextEditor::View *view, const QString &message);
-
     void modeChanged ();
 
 private:
@@ -77,7 +75,6 @@ private:
     KLocalizedString m_tabsOnly;
     KLocalizedString m_tabSpacesMixed;
     KLocalizedString m_spacesOnlyShowTabs;
-    KSqueezedTextLabel* m_infoLabel;
     QMenu *m_indentSettingsMenu;
     unsigned int m_modifiedStatus;
     QActionGroup *m_tabGroup;
