@@ -50,20 +50,11 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
 }
 //END menu
 
-static QFrame *separator (QWidget *parent)
-{
-    QFrame * const line = new QFrame(parent);
-    line->setFixedWidth(2);
-    line->setFixedHeight(SmallIcon(QStringLiteral("document-save")).height());
-    line->setFrameShape(QFrame::VLine);
-    line->setFrameShadow(QFrame::Sunken);
-    return line;
-}
-
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
     , m_modifiedStatus (-1)
+    , m_selectionMode (-1)
 {
     KAcceleratorManager::setNoAccel(this);
     setFocusProxy(m_view);
@@ -73,6 +64,23 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      */
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
+    topLayout->setSpacing(4);
+    
+    /**
+     * let one scrollbar space
+     */
+    QStyleOption option;
+    option.initFrom(this);    
+    topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
+
+    m_insertModeLabel = new QLabel( this );
+    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
+    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
+    m_insertModeLabel->setFocusProxy(m_view);
+
+    m_lineColLabel = new QLabel( this );
+    topLayout->addWidget( m_lineColLabel, 0 );
+    m_lineColLabel->setFocusProxy(m_view);
 
     m_modifiedLabel = new QToolButton( this );
     m_modifiedLabel->setAutoRaise(true);
@@ -91,11 +99,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_mode->setFocusProxy(m_view);
 
     /**
-     * separator
-     */
-    topLayout->addWidget(separator (this),0);
-
-    /**
      * add encoding button which allows user to switch encoding of document
      * this will reuse the encoding action menu of the view
      */
@@ -104,11 +107,6 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
-
-    /**
-     * separator
-     */
-    topLayout->addWidget(separator (this),0);
 
     m_spacesOnly=ki18n("Soft Tabs: %1");
     m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
@@ -172,37 +170,12 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     
     m_tabsIndent->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed));
     m_tabsIndent->setFixedWidth(myWidth);
-
+    
     /**
-     * separator
+     * let one scrollbar space
      */
-    topLayout->addWidget(separator (this),0);
-
-    m_selectModeLabel = new QLabel( i18n(" LINE "), this );
-    topLayout->addWidget( m_selectModeLabel, 0 );
-    m_selectModeLabel->setAlignment( Qt::AlignCenter );
-    m_selectModeLabel->setFocusProxy(m_view);
-
-    /**
-     * separator
-     */
-    topLayout->addWidget(separator (this),0);
-
-    m_insertModeLabel = new QLabel( i18n(" INS "), this );
-    topLayout->addWidget( m_insertModeLabel, 0 );
-    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
-    m_insertModeLabel->setFocusProxy(m_view);
-
-    /**
-     * stretch now
-     */
-    topLayout->addStretch (1000);
-
-    m_lineColLabel = new QLabel( this );
-    topLayout->addWidget( m_lineColLabel, 0 );
-    m_lineColLabel->setFocusProxy(m_view);
-    topLayout->addSpacing(4);
-
+    topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
+    
     // signals for the statusbar
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
@@ -220,17 +193,34 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
 
 void KateStatusBar::updateStatus ()
 {
+    selectionChanged ();
     viewModeChanged ();
     cursorPositionChanged ();
-    selectionChanged ();
     modifiedChanged ();
     documentConfigChanged();
     modeChanged();
 }
 
+void KateStatusBar::selectionChanged ()
+{
+    const unsigned int newSelectionMode = m_view->blockSelection();
+    if (newSelectionMode == m_selectionMode) {
+        return;
+    }
+    
+    // remember new mode and update info
+    m_selectionMode = newSelectionMode;
+    viewModeChanged();
+}
+
 void KateStatusBar::viewModeChanged ()
 {
-    m_insertModeLabel->setText( m_view->viewMode() );
+    // append BLOCK for block selection mode
+    QString text = m_view->viewMode();
+    if (m_view->blockSelection())
+        text = i18n (" %1 <em>[BLOCK]</em>", text);
+    
+    m_insertModeLabel->setText(text);
 }
 
 void KateStatusBar::cursorPositionChanged ()
@@ -238,16 +228,11 @@ void KateStatusBar::cursorPositionChanged ()
     KTextEditor::Cursor position (m_view->cursorPositionVirtual());
 
     m_lineColLabel->setText(
-        i18n("Line %1, Col %2"
+        i18n("<b>Line %1 Col %2</b>"
             , QLocale().toString(position.line() + 1)
             , QLocale().toString(position.column() + 1)
             )
         );
-}
-
-void KateStatusBar::selectionChanged ()
-{
-    m_selectModeLabel->setText( m_view->blockSelection() ? i18n(" BLOCK ") : i18n(" LINE ") );
 }
 
 void KateStatusBar::modifiedChanged()

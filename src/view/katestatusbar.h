@@ -67,7 +67,6 @@ private:
     QLabel* m_lineColLabel;
     QToolButton* m_modifiedLabel;
     QLabel* m_insertModeLabel;
-    QLabel* m_selectModeLabel;
     QPushButton* m_mode;
     QPushButton* m_encoding;
     QPushButton* m_tabsIndent;
@@ -77,6 +76,7 @@ private:
     KLocalizedString m_spacesOnlyShowTabs;
     QMenu *m_indentSettingsMenu;
     unsigned int m_modifiedStatus;
+    unsigned int m_selectionMode;
     QActionGroup *m_tabGroup;
     QActionGroup *m_indentGroup;
     QAction *m_mixedAction;
