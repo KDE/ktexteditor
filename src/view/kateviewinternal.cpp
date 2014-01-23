@@ -3713,6 +3713,7 @@ KateViInputModeManager *KateViewInternal::resetViInputModeManager()
 {
     if (m_viInputModeManager) {
         delete m_viInputModeManager;
+        m_viInputModeManager = nullptr;
     }
     m_viInputModeManager = new KateViInputModeManager(m_view, this);
 

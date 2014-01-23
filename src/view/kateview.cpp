@@ -1117,16 +1117,21 @@ QString KTextEditor::ViewPrivate::viewMode() const
     if (viInputMode()) {
         currentMode = KateViInputModeManager::modeToString(getCurrentViMode());
 
-        if (m_viewInternal->getViInputModeManager()->isRecordingMacro()) {
-            currentMode += QLatin1String(" (") + i18n("recording") + QLatin1String(") ");
-        }
-
         /**
-         * perhaps append the current keys of a command not finalized
+         * guard against calls during vi view input mode manager resets
          */
-        QString cmd = m_viewInternal->getViInputModeManager()->getVerbatimKeys();
-        if (!cmd.isEmpty()) {
-            currentMode.append(QString::fromLatin1(" <em>%1</em>").arg(cmd));
+        if (m_viewInternal->getViInputModeManager()) {
+            if (m_viewInternal->getViInputModeManager()->isRecordingMacro()) {
+                currentMode += QLatin1String(" (") + i18n("recording") + QLatin1String(") ");
+            }
+
+            /**
+            * perhaps append the current keys of a command not finalized
+            */
+            QString cmd = m_viewInternal->getViInputModeManager()->getVerbatimKeys();
+            if (!cmd.isEmpty()) {
+                currentMode.append(QString::fromLatin1(" <em>%1</em>").arg(cmd));
+            }
         }
 
         /**
