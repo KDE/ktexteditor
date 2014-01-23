@@ -2111,7 +2111,6 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_buffer->brokenEncoding()) {
         // this file can't be saved again without killing it
         setReadWrite(false);
-
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
                                             "It is set to read-only mode, as saving might destroy its content.<br />"
@@ -2132,7 +2131,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_buffer->tooLongLinesWrapped()) {
         // this file can't be saved again without modifications
         setReadWrite(false);
-
+        m_readWriteStateBeforeLoading=false;
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
                                             "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
