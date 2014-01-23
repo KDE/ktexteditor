@@ -62,6 +62,8 @@ The following interfaces were changed:
    This signal is emitted whenever the read-only state of the document changes.
  - \p KTextEditor::TextHintInterfacePrivate::needTextHint() now takes a View
    as first parameter
+ - \p KTextEditor::View now has a status bar by default. It can be controlled
+   by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
