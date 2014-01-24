@@ -197,10 +197,7 @@ bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == m_insertModeLabel) {
         if (event->type() == QEvent::MouseButtonDblClick) {
-            if (m_view->isViInputMode()) {
-                // m_view->toggleViInputMode(); // in VI Input mode: do nothing
-            }
-            else {
+            if (!m_view->viInputMode()) {
                 m_view->toggleInsert();
             }
             return true;

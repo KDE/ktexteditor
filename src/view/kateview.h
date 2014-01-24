@@ -119,8 +119,6 @@ public:
 
     QString viewMode() const;
 
-    bool isViInputMode() const;
-
     //
     // KTextEditor::ClipboardInterface
     //
