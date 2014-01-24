@@ -65,54 +65,35 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
     topLayout->setSpacing(4);
+
+    /**
+     * add a bit space
+     */
+    topLayout->addSpacing (4);
     
     /**
-     * let one scrollbar space
+     * show Line XXX, Column XXX
      */
-    QStyleOption option;
-    option.initFrom(this);    
-    topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
-
     m_lineColLabel = new QLabel( this );
+    m_lineColLabel->installEventFilter(this); // register for doubleclick
     topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_lineColLabel->setFocusProxy(m_view);
     m_lineColLabel->setWhatsThis(i18n("Current cursor position. Doubleclick to go to specific line."));
 
+    /**
+     * show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
+     */
     m_insertModeLabel = new QLabel( this );
+    m_insertModeLabel->installEventFilter(this); // register for doubleclick
     topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
     m_insertModeLabel->setFocusProxy(m_view);
     m_insertModeLabel->setWhatsThis(i18n("Insert mode and VI input mode indicator"));
 
-    m_modifiedLabel = new QToolButton( this );
-    m_modifiedLabel->setAutoRaise(true);
-    m_modifiedLabel->setEnabled(false);
-    topLayout->addWidget( m_modifiedLabel, 0 );
-    m_modifiedLabel->setFocusProxy(m_view);
-
     /**
-     * add mode button which allows user to switch mode of document
-     * this will reuse the mode action menu of the view
+     * allow to change indentation configuration
      */
-    m_mode = new QPushButton( QString(), this );
-    m_mode->setFlat(true);
-    topLayout->addWidget( m_mode, 0 );
-    m_mode->setMenu(m_view->modeAction()->menu());
-    m_mode->setFocusProxy(m_view);
-    m_mode->setWhatsThis(i18n("Syntax highlighting"));
-
-    /**
-     * add encoding button which allows user to switch encoding of document
-     * this will reuse the encoding action menu of the view
-     */
-    m_encoding = new QPushButton( QString(), this );
-    m_encoding->setFlat(true);
-    topLayout->addWidget( m_encoding, 0 );
-    m_encoding->setMenu(m_view->encodingAction()->menu());
-    m_encoding->setFocusProxy(m_view);
-    m_encoding->setWhatsThis(i18n("Encoding"));
-
     m_spacesOnly=ki18n("Soft Tabs: %1");
     m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
     m_tabsOnly=ki18n("Tab Size: %1");
@@ -175,15 +156,44 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     
     m_tabsIndent->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed));
     m_tabsIndent->setFixedWidth(myWidth);
-    
+
     /**
-     * let one scrollbar space
+     * add encoding button which allows user to switch encoding of document
+     * this will reuse the encoding action menu of the view
      */
-    topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
+    m_encoding = new QPushButton( QString(), this );
+    m_encoding->setFlat(true);
+    topLayout->addWidget( m_encoding, 0 );
+    m_encoding->setMenu(m_view->encodingAction()->menu());
+    m_encoding->setFocusProxy(m_view);
+    m_encoding->setWhatsThis(i18n("Encoding"));
+
+    /**
+     * add mode button which allows user to switch mode of document
+     * this will reuse the mode action menu of the view
+     */
+    m_mode = new QPushButton( QString(), this );
+    m_mode->setFlat(true);
+    topLayout->addWidget( m_mode, 0 );
+    m_mode->setMenu(m_view->modeAction()->menu());
+    m_mode->setFocusProxy(m_view);
+    m_mode->setWhatsThis(i18n("Syntax highlighting"));
+
+    /**
+     * show modification state of the document
+     */
+    m_modifiedLabel = new QToolButton( this );
+    m_modifiedLabel->setAutoRaise(true);
+    m_modifiedLabel->setEnabled(false);
+    topLayout->addWidget( m_modifiedLabel, 0 );
+    m_modifiedLabel->setFocusProxy(m_view);
+
+    /**
+     * add a bit space
+     */
+    topLayout->addSpacing (4);
     
     // signals for the statusbar
-    m_lineColLabel->installEventFilter(this); // register for doubleclick
-    m_insertModeLabel->installEventFilter(this); // register for doubleclick
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
