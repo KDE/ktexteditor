@@ -77,11 +77,13 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_lineColLabel->setFocusProxy(m_view);
+    m_lineColLabel->setToolTip(i18n("Current cursor position. Doubleclick to go to specific line."));
 
     m_insertModeLabel = new QLabel( this );
     topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
     m_insertModeLabel->setFocusProxy(m_view);
+    m_insertModeLabel->setToolTip(i18n("Insert mode and VI input mode indicator"));
 
     m_modifiedLabel = new QToolButton( this );
     m_modifiedLabel->setAutoRaise(true);
@@ -98,6 +100,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_mode, 0 );
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
+    m_mode->setToolTip(i18n("Syntax highlighting"));
 
     /**
      * add encoding button which allows user to switch encoding of document
@@ -108,6 +111,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
+    m_encoding->setToolTip(i18n("Encoding"));
 
     m_spacesOnly=ki18n("Soft Tabs: %1");
     m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
@@ -272,19 +276,23 @@ void KateStatusBar::modifiedChanged()
     switch (m_modifiedStatus) {
         case 0x1:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save")));
+            m_modifiedLabel->setToolTip(i18n("Document was modified since it was loaded"));
             break;
             
         case 0x2:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("dialog-warning")));
+            m_modifiedLabel->setToolTip(i18n("Document was modified or deleted by another program"));
             break;
             
         case 0x3:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
                                                QStringList() << QStringLiteral("emblem-important")));
+            // m_modifiedLabel->setToolTip(i18n("")); // unknown
             break;
         
         default:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("text-plain")));
+            m_modifiedLabel->setToolTip(i18n("Document was not modified since it was loaded"));
             break;
     }
 }
