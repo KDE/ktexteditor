@@ -296,6 +296,12 @@ void ViModeTest::init()
     delete kate_document;
 
     kate_document = new KTextEditor::DocumentPrivate(false, false, 0, NULL);
+    
+    // fixed indentation options
+    kate_document->config()->setTabWidth(8);
+    kate_document->config()->setIndentationWidth(2);
+    kate_document->config()->setReplaceTabsDyn(false);
+    
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
     kate_view->config()->setViInputMode(true);
