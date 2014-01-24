@@ -21,6 +21,7 @@
 
 #include <katedocument.h>
 #include <kateview.h>
+#include <kateconfig.h>
 
 #include <QtTestWidgets>
 
@@ -39,6 +40,12 @@ void TemplateHandlerTest::testUndo()
     initialValues.insert("index", "i");
 
     KTextEditor::DocumentPrivate doc(false, false, 0, this);
+    
+    // fixed indentation options
+    doc.config()->setTabWidth(8);
+    doc.config()->setIndentationWidth(4);
+    doc.config()->setReplaceTabsDyn(true);
+    
     KTextEditor::ViewPrivate view(&doc, 0);
 
     view.insertTemplateTextImplementation(Cursor(0, 0), snippet, initialValues, 0);
