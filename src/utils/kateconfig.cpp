@@ -327,7 +327,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 
     setTabWidth(config.readEntry(KEY_TAB_WIDTH, 8));
 
-    setIndentationWidth(config.readEntry(KEY_INDENTATION_WIDTH, 2));
+    setIndentationWidth(config.readEntry(KEY_INDENTATION_WIDTH, 4));
 
     setIndentationMode(config.readEntry(KEY_INDENTATION_MODE, "normal"));
 
@@ -342,9 +342,9 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setTabIndents(config.readEntry(KEY_TAB_INDENTS, true));
     setKeepExtraSpaces(config.readEntry(KEY_KEEP_EXTRA_SPACES, false));
     setIndentPastedText(config.readEntry(KEY_INDENT_PASTED_TEXT, false));
-    setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, false));
+    setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, true));
     setShowSpaces(config.readEntry(KEY_SHOW_SPACES, false));
-    setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, false));
+    setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, true));
     setRemoveSpaces(config.readEntry(KEY_REMOVE_SPACES, 0));
     setNewLineAtEof(config.readEntry(KEY_NEWLINE_AT_EOF, false));
     setOvr(config.readEntry(KEY_OVR, false));
