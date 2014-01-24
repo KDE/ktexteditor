@@ -52,8 +52,6 @@ class KateSpellCheckManager;
 class KateViGlobal;
 class KateWordCompletionModel;
 
-Q_DECLARE_METATYPE(KSharedConfig::Ptr)
-
 namespace KTextEditor
 {
 
@@ -71,33 +69,6 @@ class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTex
     Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
 
     friend class KTextEditor::Editor;
-
-public:
-    /**
-     * property to tell the editor to use a given session config for session related
-     * configuration instead of KSharedConfig::openConfig().
-     * MUST be set directly after first creation of the editor as otherwise
-     * some parts might not pick this up.
-     */
-    Q_PROPERTY(KSharedConfig::Ptr sessionConfig READ sessionConfig WRITE setSessionConfig)
-
-    /**
-     * Get session config, defaults to KSharedConfig::openConfig()
-     * @return session config
-     */
-    KSharedConfig::Ptr sessionConfig()
-    {
-        return m_sessionConfig;
-    }
-
-    /**
-     * Set session config
-     * @param sessionConfig new session config
-     */
-    void setSessionConfig(KSharedConfig::Ptr sessionConfig)
-    {
-        m_sessionConfig = sessionConfig;
-    }
 
     // unit testing
 public:
