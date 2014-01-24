@@ -110,7 +110,10 @@ public:
      * Returns a list of all documents of this editor.
      * @return list of all existing documents
      */
-    QList<KTextEditor::Document *> documents();
+    QList<KTextEditor::Document *> documents()
+    {
+        return m_documents.keys();
+    }
 
     /**
      * Set the global application object.
@@ -226,21 +229,12 @@ public:
     void deregisterView(KTextEditor::ViewPrivate *view);
 
     /**
-     * return a list of all registered docs
-     * @return all known documents
-     */
-    QList<KTextEditor::DocumentPrivate *> &kateDocuments()
-    {
-        return m_documents;
-    }
-
-    /**
      * return a list of all registered views
      * @return all known views
      */
-    QList<KTextEditor::ViewPrivate *> &views()
+    QList<KTextEditor::ViewPrivate *> views()
     {
-        return m_views;
+        return m_views.toList();
     }
 
     /**
@@ -407,6 +401,15 @@ public:
         return m_clipboardHistory;
     }
 
+    /**
+     * return a list of all registered docs
+     * @return all known documents
+     */
+    QList<KTextEditor::DocumentPrivate *> kateDocuments()
+    {
+        return m_documents.values();
+    }
+
 Q_SIGNALS:
     /**
      * Emitted if the history of clipboard changes via copyToClipboard
@@ -426,14 +429,14 @@ private:
     KAboutData m_aboutData;
 
     /**
-     * registered docs
+     * registered docs, map from general to specialized pointer
      */
-    QList<KTextEditor::DocumentPrivate *> m_documents;
+    QHash<KTextEditor::Document *, KTextEditor::DocumentPrivate *> m_documents;
 
     /**
      * registered views
      */
-    QList<KTextEditor::ViewPrivate *> m_views;
+    QSet<KTextEditor::ViewPrivate *> m_views;
 
     /**
      * global dirwatch object
@@ -500,17 +503,10 @@ private:
      */
     KateSpellCheckManager *m_spellCheckManager;
 
-    QList<KTextEditor::Document *> m_docs;
-
     /**
      * global instance of the simple word completion mode
      */
     KateWordCompletionModel *m_wordCompletionModel;
-
-    /**
-     * session config
-     */
-    KSharedConfig::Ptr m_sessionConfig;
 
     /**
      * clipboard history

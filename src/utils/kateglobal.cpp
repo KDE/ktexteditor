@@ -244,11 +244,6 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
     return doc;
 }
 
-QList<KTextEditor::Document *> KTextEditor::EditorPrivate::documents()
-{
-    return m_docs;
-}
-
 //BEGIN KTextEditor::Editor config stuff
 void KTextEditor::EditorPrivate::readConfig(KConfig *config)
 {
@@ -482,24 +477,26 @@ KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
 
 void KTextEditor::EditorPrivate::registerDocument(KTextEditor::DocumentPrivate *doc)
 {
-    m_documents.append(doc);
-    m_docs.append(doc);
+    Q_ASSERT (!m_documents.contains(doc));
+    m_documents.insert(doc, doc);
 }
 
 void KTextEditor::EditorPrivate::deregisterDocument(KTextEditor::DocumentPrivate *doc)
 {
-    m_docs.removeAll(doc);
-    m_documents.removeAll(doc);
+    Q_ASSERT (m_documents.contains(doc));
+    m_documents.remove(doc);
 }
 
 void KTextEditor::EditorPrivate::registerView(KTextEditor::ViewPrivate *view)
 {
-    m_views.append(view);
+    Q_ASSERT (!m_views.contains(view));
+    m_views.insert(view);
 }
 
 void KTextEditor::EditorPrivate::deregisterView(KTextEditor::ViewPrivate *view)
 {
-    m_views.removeAll(view);
+    Q_ASSERT (m_views.contains(view));
+    m_views.remove(view);
 }
 
 //BEGIN command interface
