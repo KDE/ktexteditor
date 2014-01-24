@@ -77,11 +77,13 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_lineColLabel, 0 );
     m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_lineColLabel->setFocusProxy(m_view);
+    m_lineColLabel->setWhatsThis(i18n("Current cursor position. Doubleclick to go to specific line."));
 
     m_insertModeLabel = new QLabel( this );
     topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
     m_insertModeLabel->setFocusProxy(m_view);
+    m_insertModeLabel->setWhatsThis(i18n("Insert mode and VI input mode indicator"));
 
     m_modifiedLabel = new QToolButton( this );
     m_modifiedLabel->setAutoRaise(true);
@@ -98,6 +100,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_mode, 0 );
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
+    m_mode->setWhatsThis(i18n("Syntax highlighting"));
 
     /**
      * add encoding button which allows user to switch encoding of document
@@ -108,6 +111,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addWidget( m_encoding, 0 );
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
+    m_encoding->setWhatsThis(i18n("Encoding"));
 
     m_spacesOnly=ki18n("Soft Tabs: %1");
     m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
@@ -178,6 +182,8 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
     
     // signals for the statusbar
+    m_lineColLabel->installEventFilter(this); // register for doubleclick
+    m_insertModeLabel->installEventFilter(this); // register for doubleclick
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
@@ -190,6 +196,24 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_indentGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentGroup(QAction*)));
     connect(radioGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentTabMode(QAction*)));
     updateStatus ();
+}
+
+bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == m_insertModeLabel) {
+        if (event->type() == QEvent::MouseButtonDblClick) {
+            if (!m_view->viInputMode()) {
+                m_view->toggleInsert();
+            }
+            return true;
+        }
+    } else if (obj == m_lineColLabel) {
+        if (event->type() == QEvent::MouseButtonDblClick) {
+            m_view->gotoLine();
+        }
+    }
+
+    return KateViewBarWidget::eventFilter(obj, event);
 }
 
 void KateStatusBar::updateStatus ()
@@ -252,19 +276,23 @@ void KateStatusBar::modifiedChanged()
     switch (m_modifiedStatus) {
         case 0x1:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save")));
+            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
             break;
             
         case 0x2:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("dialog-warning")));
+            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
             break;
             
         case 0x3:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
                                                QStringList() << QStringLiteral("emblem-important")));
+            // m_modifiedLabel->setWhatsThis(i18n("")); // unknown
             break;
         
         default:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("text-plain")));
+            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
             break;
     }
 }

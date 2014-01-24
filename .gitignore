@@ -1,1 +1,8 @@
 *.kate-swp
+
+# Dolphin
+.directory
+
+# kdevelop
+.kdev4/
+ktexteditor.kdev4
