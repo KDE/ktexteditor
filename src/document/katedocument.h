@@ -23,7 +23,6 @@
 #define _KATE_DOCUMENT_H_
 
 #include <QPointer>
-#include <QLinkedList>
 #include <QStack>
 #include <QMimeType>
 
@@ -154,7 +153,11 @@ private:
     //
 public:
     virtual KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
-    virtual QList<KTextEditor::View *> views() const;
+    
+    QList<KTextEditor::View *> views() const
+    {
+        return m_views.keys();
+    }
 
     virtual KTextEditor::View *activeView() const
     {
@@ -162,8 +165,7 @@ public:
     }
 
 private:
-    QLinkedList<KTextEditor::ViewPrivate *> m_views;
-    QList<KTextEditor::View *> m_textEditViews;
+    QHash<KTextEditor::View *, KTextEditor::ViewPrivate *> m_views;
     KTextEditor::View *m_activeView;
 
     //

@@ -247,9 +247,8 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     setAutoDeletePart(false);
 
     // clean up remaining views
-    while (!m_views.isEmpty()) {
-        delete m_views.takeFirst();
-    }
+    qDeleteAll (m_views.keys());
+    m_views.clear();
 
     // cu marks
     for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
@@ -301,11 +300,6 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
     }
 
     return newView;
-}
-
-QList<KTextEditor::View *> KTextEditor::DocumentPrivate::views() const
-{
-    return m_textEditViews;
 }
 
 KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range range, int line) const
@@ -2622,12 +2616,8 @@ void KTextEditor::DocumentPrivate::internalHlChanged()
 
 void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 {
-    if (!view) {
-        return;
-    }
-
-    m_views.append(static_cast<KTextEditor::ViewPrivate *>(view));
-    m_textEditViews.append(view);
+    Q_ASSERT (!m_views.contains(view));
+    m_views.insert(view, static_cast<KTextEditor::ViewPrivate *>(view));
 
     // apply the view & renderer vars from the file type
     if (!m_fileType.isEmpty()) {
@@ -2642,16 +2632,12 @@ void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 
 void KTextEditor::DocumentPrivate::removeView(KTextEditor::View *view)
 {
-    if (!view) {
-        return;
-    }
+    Q_ASSERT (m_views.contains(view));
+    m_views.remove(view);
 
     if (activeView() == view) {
         setActiveView(0L);
     }
-
-    m_views.removeAll(static_cast<KTextEditor::ViewPrivate *>(view));
-    m_textEditViews.removeAll(view);
 }
 
 void KTextEditor::DocumentPrivate::setActiveView(KTextEditor::View *view)
@@ -3927,10 +3913,9 @@ bool KTextEditor::DocumentPrivate::documentReload()
         m_storedVariables.clear();
 
         // save cursor positions for all views
-        QVector<KTextEditor::Cursor> cursorPositions;
-        cursorPositions.reserve(m_views.size());
-        foreach (KTextEditor::ViewPrivate *v, m_views) {
-            cursorPositions.append(v->cursorPosition());
+        QHash<KTextEditor::ViewPrivate *, KTextEditor::Cursor> cursorPositions;
+        foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+            cursorPositions.insert(v, v->cursorPosition());
         }
 
         m_reloading = true;
@@ -3940,12 +3925,11 @@ bool KTextEditor::DocumentPrivate::documentReload()
         m_userSetEncodingForNextReload = false;
 
         // restore cursor positions for all views
-        QLinkedList<KTextEditor::ViewPrivate *>::iterator it = m_views.begin();
-        for (int i = 0; i < m_views.size(); ++i, ++it) {
-            setActiveView(*it);
-            (*it)->setCursorPositionInternal(cursorPositions.at(i), m_config->tabWidth(), false);
-            if ((*it)->isVisible()) {
-                (*it)->repaintText(false);
+        foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+            setActiveView(v);
+            v->setCursorPositionInternal(cursorPositions.value(v), m_config->tabWidth(), false);
+            if (v->isVisible()) {
+                v->repaintText(false);
             }
         }
 
@@ -5419,7 +5403,7 @@ void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(const KTextEditor
 KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::defaultStyle(const KTextEditor::HighlightInterface::DefaultStyle ds) const
 {
     ///TODO: move attributes to document, they are not view-dependant
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access defaultStyle() without any View (will be fixed eventually)";
         return KTextEditor::Attribute::Ptr(0);
@@ -5440,7 +5424,7 @@ QList< KTextEditor::HighlightInterface::AttributeBlock > KTextEditor::DocumentPr
 
     QList< KTextEditor::HighlightInterface::AttributeBlock > attribs;
 
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attribs;
@@ -5468,7 +5452,7 @@ KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTex
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.last();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;
