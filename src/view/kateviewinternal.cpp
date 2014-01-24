@@ -3195,11 +3195,15 @@ void KateViewInternal::dragMoveEvent(QDragMoveEvent *event)
 
 void KateViewInternal::dropEvent(QDropEvent *event)
 {
+    /**
+     * if we have urls, pass this event off to the hosting application
+     */
     if (event->mimeData()->hasUrls()) {
-
         emit dropEventPass(event);
-
-    } else if (event->mimeData()->hasText() && doc()->isReadWrite()) {
+        return;
+    }
+    
+    if (event->mimeData()->hasText() && doc()->isReadWrite()) {
 
         const QString text = event->mimeData()->text();
 
