@@ -178,6 +178,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
     
     // signals for the statusbar
+    m_insertModeLabel->installEventFilter(this); // register for doubleclick
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
@@ -190,6 +191,23 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_indentGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentGroup(QAction*)));
     connect(radioGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentTabMode(QAction*)));
     updateStatus ();
+}
+
+bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == m_insertModeLabel) {
+        if (event->type() == QEvent::MouseButtonDblClick) {
+            if (m_view->isViInputMode()) {
+                // m_view->toggleViInputMode(); // in VI Input mode: do nothing
+            }
+            else {
+                m_view->toggleInsert();
+            }
+            return true;
+        }
+    }
+
+    return KateViewBarWidget::eventFilter(obj, event);
 }
 
 void KateStatusBar::updateStatus ()

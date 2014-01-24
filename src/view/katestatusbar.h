@@ -62,6 +62,9 @@ public Q_SLOTS:
 
     void modeChanged ();
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
+    
 private:
     KTextEditor::ViewPrivate *const m_view;
     QLabel* m_lineColLabel;

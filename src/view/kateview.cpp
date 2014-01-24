@@ -1153,6 +1153,11 @@ QString KTextEditor::ViewPrivate::viewMode() const
     return currentMode;
 }
 
+bool KTextEditor::ViewPrivate::isViInputMode() const
+{
+    return viInputMode();
+}
+
 void KTextEditor::ViewPrivate::slotGotFocus()
 {
     //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotGotFocus";
