@@ -32,7 +32,7 @@ void TemplateHandlerTest::testUndo()
 {
     const QString snippet = "for (${type} ${index} = ; ${index} < ; ++${index})\n"
                             "{\n"
-                            "\t${index}\n"
+                            "    ${index}\n"
                             "}";
     QMap<QString, QString> initialValues;
     initialValues.insert("type", "int");
@@ -45,7 +45,7 @@ void TemplateHandlerTest::testUndo()
 
     const QString result = "for (int i = ; i < ; ++i)\n"
                            "{\n"
-                           "\ti\n"
+                           "    i\n"
                            "}";
     QCOMPARE(doc.text(), result);
 
@@ -53,7 +53,7 @@ void TemplateHandlerTest::testUndo()
 
     const QString result2 = "for (int j = ; j < ; ++j)\n"
                             "{\n"
-                            "\tj\n"
+                            "    j\n"
                             "}";
     QCOMPARE(doc.text(), result2);
 
@@ -70,7 +70,7 @@ void TemplateHandlerTest::testUndo()
 
     const QString result3 = "for (int jjj = ; jjj < ; ++jjj)\n"
                             "{\n"
-                            "\tjjj\n"
+                            "    jjj\n"
                             "}";
     QCOMPARE(doc.text(), result3);
 
