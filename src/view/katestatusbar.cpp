@@ -178,6 +178,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addSpacing(style()->pixelMetric(QStyle::PM_ScrollBarExtent, &option, this));
     
     // signals for the statusbar
+    m_lineColLabel->installEventFilter(this); // register for doubleclick
     m_insertModeLabel->installEventFilter(this); // register for doubleclick
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
@@ -201,6 +202,10 @@ bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
                 m_view->toggleInsert();
             }
             return true;
+        }
+    } else if (obj == m_lineColLabel) {
+        if (event->type() == QEvent::MouseButtonDblClick) {
+            m_view->gotoLine();
         }
     }
 
