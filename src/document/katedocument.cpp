@@ -138,7 +138,8 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_documentState(DocumentIdle),
       m_readWriteStateBeforeLoading(false),
       m_isUntitled(true),
-      m_openingError(false)
+      m_openingError(false),
+      m_lineLengthLimitOverride(0)
 {
     setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
@@ -2024,6 +2025,32 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 }
 //END: error
 
+
+void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
+{
+    m_lineLengthLimitOverride=m_buffer->longestLineLoaded()+1;
+    m_buffer->clear();
+    openFile();
+    if (!m_openingError) {
+        setReadWrite(true);
+        m_readWriteStateBeforeLoading=true;
+    }
+    m_lineLengthLimitOverride=0;
+
+}
+
+int KTextEditor::DocumentPrivate::lineLengthLimit()
+{
+    int result;
+    if (m_lineLengthLimitOverride>0) {
+       result=m_lineLengthLimitOverride;
+    } else {
+       result=config()->lineLengthLimit();
+    }
+
+    return result;
+}
+
 //BEGIN KParts::ReadWrite stuff
 bool KTextEditor::DocumentPrivate::openFile()
 {
@@ -2111,6 +2138,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_buffer->brokenEncoding()) {
         // this file can't be saved again without killing it
         setReadWrite(false);
+        m_readWriteStateBeforeLoading=false;
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
                                             "It is set to read-only mode, as saving might destroy its content.<br />"
@@ -2134,16 +2162,22 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_readWriteStateBeforeLoading=false;
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
+                                            "The longest of those lines was %3 characters long<br/>"
                                             "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
-                                            this->url().toString(), config()->lineLengthLimit()),
+                                            this->url().toString(), config()->lineLengthLimit(),m_buffer->longestLineLoaded()),
                                        KTextEditor::Message::Warning);
+        QAction *increaseAndReload=new QAction(i18n("Temporarily raise limit and reload file"),message);
+        connect(increaseAndReload,SIGNAL(triggered()),this,SLOT(openWithLineLengthLimitOverride()));
+	message->addAction(increaseAndReload,true);
+	message->addAction(new QAction(i18n("Close"),message),true);
         message->setWordWrap(true);
         postMessage(message);
 
         // remember error
         m_openingError = true;
         m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters)."
-                                    " Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit());
+                                     "The longest of those lines was %3 characters long<br/>"
+                                     "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit(),m_buffer->longestLineLoaded());
     }
 
     //

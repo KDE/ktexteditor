@@ -133,6 +133,11 @@ public:
         return m_tooLongLinesWrapped;
     }
 
+    int longestLineLoaded() const
+    {
+        return m_longestLineLoaded;
+    }
+
     /**
      * Can the current codec handle all chars
      * @return chars can be encoded
@@ -260,6 +265,11 @@ private:
      * too long lines wrapped on load?
      */
     bool m_tooLongLinesWrapped;
+
+    /**
+     * length of the longest line loaded
+     */
+    int m_longestLineLoaded;
 
     /**
      * current highlighting mode or 0

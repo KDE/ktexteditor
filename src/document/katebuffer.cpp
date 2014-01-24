@@ -51,6 +51,7 @@ KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
       m_doc(doc),
       m_brokenEncoding(false),
       m_tooLongLinesWrapped(false),
+      m_longestLineLoaded(0),
       m_highlight(0),
       m_tabWidth(8),
       m_lineHighlighted(0),
@@ -143,6 +144,7 @@ void KateBuffer::clear()
     // reset the state
     m_brokenEncoding = false;
     m_tooLongLinesWrapped = false;
+    m_longestLineLoaded = 0;
 
     // back to line 0 with hl
     m_lineHighlighted = 0;
@@ -162,11 +164,12 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     //       over the years again and again. bugs: 306926, 239077, ...
 
     // line length limit
-    setLineLengthLimit(m_doc->config()->lineLengthLimit());
+    setLineLengthLimit(m_doc->lineLengthLimit());
 
     // then, try to load the file
     m_brokenEncoding = false;
     m_tooLongLinesWrapped = false;
+    m_longestLineLoaded = 0;
 
     /**
      * allow non-existent files without error, if local file!
@@ -200,7 +203,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     /**
      * try to load
      */
-    if (!load(m_file, m_brokenEncoding, m_tooLongLinesWrapped, enforceTextCodec)) {
+    if (!load(m_file, m_brokenEncoding, m_tooLongLinesWrapped, m_longestLineLoaded,  enforceTextCodec)) {
         return false;
     }
 
@@ -268,6 +271,7 @@ bool KateBuffer::saveFile(const QString &m_file)
     // no longer broken encoding, or we don't care
     m_brokenEncoding = false;
     m_tooLongLinesWrapped = false;
+    m_longestLineLoaded = 0;
 
     // okay
     return true;

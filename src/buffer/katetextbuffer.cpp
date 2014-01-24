@@ -535,7 +535,7 @@ void TextBuffer::debugPrint(const QString &title) const
     }
 }
 
-bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLongLinesWrapped, bool enforceTextCodec)
+bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLongLinesWrapped, int &longestLineLoaded, bool enforceTextCodec)
 {
     // fallback codec must exist
     Q_ASSERT(m_fallbackTextCodec);
@@ -614,6 +614,9 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
             // get unicode data for this line
             const QChar *unicodeData = file.unicode() + offset;
+
+
+            if (longestLineLoaded < length) longestLineLoaded=length;
 
             /**
              * split lines, if too large

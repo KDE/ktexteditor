@@ -1284,7 +1284,20 @@ private:
      * Last open file error message
      */
     QString m_openingErrorMessage;
+
+    /**
+     *
+     */
+    int m_lineLengthLimitOverride;
+
+public:
+    /**
+     * reads the line length limit from config, if it is not overriden
+     */
+    int lineLengthLimit();
+
+public Q_SLOTS:
+    void openWithLineLengthLimitOverride();
 };
 
 #endif
-

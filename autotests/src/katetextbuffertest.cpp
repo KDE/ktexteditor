@@ -447,7 +447,8 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
     buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
     bool a, b;
-    buffer.load(file_path, a, b, true);
+    int c;
+    buffer.load(file_path, a, b, c, true);
     buffer.clear();
     buffer.startEditing();
     buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("ABC"));
