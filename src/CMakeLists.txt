@@ -1,5 +1,5 @@
 # handle include files, both normal ones and generated ones
-add_subdirectory (include)
+add_subdirectory(include)
 
 # includes
 include_directories(
@@ -220,17 +220,28 @@ dialogs/viinputmodeconfigwidget.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
    
-add_library (KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
-generate_export_header (KF5TextEditor BASE_NAME KTextEditor)
-add_library (KF5::TextEditor ALIAS KF5TextEditor)
+add_library(KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
+generate_export_header(KF5TextEditor BASE_NAME KTextEditor)
+add_library(KF5::TextEditor ALIAS KF5TextEditor)
 
 target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
 
 # API is more or less KParts++, other stuff is used only internally
-target_link_libraries (KF5TextEditor
-    LINK_PUBLIC KF5::Parts
-    LINK_PRIVATE Qt5::Script KF5::I18n KF5::Archive KF5::GuiAddons KF5::IconThemes KF5::ItemViews KF5::KIOFileWidgets KF5::PrintUtils KF5::SonnetCore)
-    
+target_link_libraries(KF5TextEditor
+PUBLIC
+  KF5::Parts
+PRIVATE
+  Qt5::Script
+  KF5::I18n
+  KF5::Archive
+  KF5::GuiAddons
+  KF5::IconThemes
+  KF5::ItemViews
+  KF5::KIOFileWidgets
+  KF5::PrintUtils
+  KF5::SonnetCore
+)
+
 set_target_properties(KF5TextEditor
    PROPERTIES VERSION ${KTEXTEDITOR_VERSION_STRING}
    SOVERSION ${KTEXTEDITOR_SOVERSION}
@@ -245,8 +256,12 @@ install(FILES
   COMPONENT Devel
 )
 
+include(ECMGeneratePriFile)
+ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME)
+install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
+
 # handle data files, .desktop & .cmake
-add_subdirectory (data)
+add_subdirectory(data)
 
 # syntax highlighting data files
 add_subdirectory( syntax/data )
@@ -255,4 +270,4 @@ add_subdirectory( syntax/data )
 add_subdirectory( script/data )
 
 # add part
-add_subdirectory (part)
+add_subdirectory(part)
