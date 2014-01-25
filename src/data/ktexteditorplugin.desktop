@@ -3,3 +3,8 @@ Type=ServiceType
 X-KDE-ServiceType=KTextEditor/Plugin
 X-KDE-Derived=
 Comment=KTextEditor Plugin
+
+# if the name of your application is listed here,
+# you shall load that plugin per default
+[PropertyDef::X-KTextEditor-Load-Default]
+Type=QStringList
