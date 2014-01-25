@@ -85,7 +85,7 @@ private:
     QAction *m_mixedAction;
     QAction *m_hardAction;
     QAction *m_softAction;
-    void addNumberAction(QActionGroup *group, QMenu *menu,int data);
+    void addNumberAction(QActionGroup *group, QMenu *menu, int data);
     void updateGroup(QActionGroup *group, int w);
     
 public Q_SLOTS:

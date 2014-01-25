@@ -94,63 +94,62 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     /**
      * allow to change indentation configuration
      */
-    m_spacesOnly=ki18n("Soft Tabs: %1");
-    m_spacesOnlyShowTabs=ki18n("Soft Tabs: %1 (%2)");
-    m_tabsOnly=ki18n("Tab Size: %1");
-    m_tabSpacesMixed=ki18n("Indent/Tab: %1/%2");
-    int myWidth=0;
-    
+    m_spacesOnly = ki18n("Soft Tabs: %1");
+    m_spacesOnlyShowTabs = ki18n("Soft Tabs: %1 (%2)");
+    m_tabsOnly = ki18n("Tab Size: %1");
+    m_tabSpacesMixed = ki18n("Indent/Tab: %1/%2");
+
     QAction *action;
-    m_tabGroup=new QActionGroup(this);
-    m_indentGroup=new QActionGroup(this);
-    
-    m_tabsIndent = new QPushButton( QString(), this );
-    m_indentSettingsMenu=new KateStatusBarOpenUpMenu(m_tabsIndent);
+    m_tabGroup = new QActionGroup(this);
+    m_indentGroup = new QActionGroup(this);
+
+    m_tabsIndent = new QPushButton(QString(), this);
+    m_indentSettingsMenu = new KateStatusBarOpenUpMenu(m_tabsIndent);
     m_indentSettingsMenu->addSection(i18n("Show Tabs As"));
-    addNumberAction(m_tabGroup,m_indentSettingsMenu,-1);
-    addNumberAction(m_tabGroup,m_indentSettingsMenu,8);
-    addNumberAction(m_tabGroup,m_indentSettingsMenu,4);
-    addNumberAction(m_tabGroup,m_indentSettingsMenu,3);
-    addNumberAction(m_tabGroup,m_indentSettingsMenu,2);
+    addNumberAction(m_tabGroup, m_indentSettingsMenu, -1);
+    addNumberAction(m_tabGroup, m_indentSettingsMenu, 8);
+    addNumberAction(m_tabGroup, m_indentSettingsMenu, 4);
+    addNumberAction(m_tabGroup, m_indentSettingsMenu, 3);
+    addNumberAction(m_tabGroup, m_indentSettingsMenu, 2);
     m_indentSettingsMenu->addSection(i18n("Indentation Width"));
-    addNumberAction(m_indentGroup,m_indentSettingsMenu,-1);
-    addNumberAction(m_indentGroup,m_indentSettingsMenu,8);
-    addNumberAction(m_indentGroup,m_indentSettingsMenu,4);
-    addNumberAction(m_indentGroup,m_indentSettingsMenu,3);
-    addNumberAction(m_indentGroup,m_indentSettingsMenu,2);
+    addNumberAction(m_indentGroup, m_indentSettingsMenu, -1);
+    addNumberAction(m_indentGroup, m_indentSettingsMenu, 8);
+    addNumberAction(m_indentGroup, m_indentSettingsMenu, 4);
+    addNumberAction(m_indentGroup, m_indentSettingsMenu, 3);
+    addNumberAction(m_indentGroup, m_indentSettingsMenu, 2);
 
     action=m_indentSettingsMenu->addSeparator();
-    QActionGroup *radioGroup=new QActionGroup(m_indentSettingsMenu);
+    QActionGroup *radioGroup = new QActionGroup(m_indentSettingsMenu);
     action=m_indentSettingsMenu->addAction(i18n("Mixed Tabs (Spaces + Tabs)"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
-    m_mixedAction=action;
-    action=m_indentSettingsMenu->addAction(i18n("Hard Tabs (Tabs)"));
+    m_mixedAction = action;
+    action = m_indentSettingsMenu->addAction(i18n("Hard Tabs (Tabs)"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
-    m_hardAction=action;
-    action=m_indentSettingsMenu->addAction(i18n("Soft Tabs (Spaces)"));
+    m_hardAction = action;
+    action = m_indentSettingsMenu->addAction(i18n("Soft Tabs (Spaces)"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
-    m_softAction=action;
+    m_softAction = action;
 
     m_tabsIndent->setFlat(true);
-    topLayout->addWidget( m_tabsIndent, 0 );
+    topLayout->addWidget(m_tabsIndent, 0);
     m_tabsIndent->setMenu(m_indentSettingsMenu);
     m_tabsIndent->setFocusProxy(m_view);
-    
-    QString dummy(QLatin1String("XX"));
-    
+
+    const QString dummy(QLatin1String("XX"));
+
+    int myWidth = 0;
     m_tabsIndent->setText(m_spacesOnly.subs(dummy).toString());
     myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-    
+
     m_tabsIndent->setText(m_tabsOnly.subs(dummy).toString());
     myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-    
+
     m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(dummy).subs(dummy).toString());
     myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-    
-    
+
     m_tabsIndent->setText(m_tabSpacesMixed.subs(dummy).subs(dummy).toString());   
     myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
     
@@ -214,12 +213,13 @@ bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
         if (event->type() == QEvent::MouseButtonDblClick) {
             if (!m_view->viInputMode()) {
                 m_view->toggleInsert();
+                return true;
             }
-            return true;
         }
     } else if (obj == m_lineColLabel) {
         if (event->type() == QEvent::MouseButtonDblClick) {
             m_view->gotoLine();
+            return true;
         }
     }
 
@@ -336,10 +336,9 @@ void KateStatusBar::documentConfigChanged ()
               m_softAction->setChecked(true);
         }
     }
-    
+
     updateGroup(m_tabGroup,tabWidth);
     updateGroup(m_indentGroup,indentationWidth);
-        
 }
 
 void KateStatusBar::modeChanged ()
@@ -347,12 +346,14 @@ void KateStatusBar::modeChanged ()
     m_mode->setText( KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_view->document()->mode()).nameTranslated() );
 }
 
-void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu,int data) {
+void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu, int data)
+{
     QAction *a;
-    if (data!=-1)
-        a=menu->addAction(QStringLiteral("%1").arg(data));
-    else
-        a=menu->addAction(i18n("Other"));
+    if (data != -1) {
+        a = menu->addAction(QStringLiteral("%1").arg(data));
+    } else {
+        a = menu->addAction(i18n("Other..."));
+    }
     a->setData(data);
     a->setCheckable(true);
     a->setActionGroup(group);
