@@ -1,5 +1,8 @@
 [Desktop Entry]
 Name=Embedded Advanced Text Editor
+Name[pt_BR]=Editor de texto avançado integrado
+Name[sk]=Zabudovaný pokročilý textový editor
+Name[uk]=Вмонтований потужний текстовий редактор
 Name[x-test]=xxEmbedded Advanced Text Editorxx
 X-KDE-Library=katepart
 Icon=accessories-text-editor
