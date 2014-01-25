@@ -2169,7 +2169,7 @@ bool KTextEditor::DocumentPrivate::openFile()
 
         // remember error
         m_openingError = true;
-        m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters)."
+        m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br/>"
                                      "The longest of those lines was %3 characters long<br/>"
                                      "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit(),m_buffer->longestLineLoaded());
     }

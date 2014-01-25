@@ -350,7 +350,7 @@ void KatePrintHeaderFooter::setHFFont()
 
     if (ok) {
         lFontPreview->setFont(selectedFont);
-        QString text = i18n("%1, %pt");
+        QString text = i18n("%1, %2pt");
         lFontPreview->setText(text.arg(selectedFont.family()).arg(selectedFont.pointSize()));
     }
 }
