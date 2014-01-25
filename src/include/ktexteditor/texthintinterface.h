@@ -101,7 +101,7 @@ public:
      * Set the text hint delay to \p delay milliseconds.
      *
      * The delay specifies the time the user needs to hover over the text
-     * befure the tool tip is shown. Therefore, \p delay should not be
+     * before the tool tip is shown. Therefore, \p delay should not be
      * too large, a value of 200 milliseconds is recommended and set by
      * default.
      *
