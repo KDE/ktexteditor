@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Embedded Advanced Text Editor
+Name[x-test]=xxEmbedded Advanced Text Editorxx
 X-KDE-Library=katepart
 Icon=accessories-text-editor
 X-KDE-ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart,KTextEditor/Document
