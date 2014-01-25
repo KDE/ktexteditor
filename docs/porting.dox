@@ -60,8 +60,6 @@ The following interfaces were changed:
    \p KTextEditor::Document::characterAt()
  - \p KTextEditor::Document::readWriteChanged() \n
    This signal is emitted whenever the read-only state of the document changes.
- - \p KTextEditor::TextHintInterfacePrivate::needTextHint() now takes a View
-   as first parameter
  - \p KTextEditor::View now has a status bar by default. It can be controlled
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
 
@@ -83,18 +81,22 @@ The following interfaces are new:
 
 \section kte_port_enhanced_classes Significantly Enhanced Classes
 The following classes have been significantly enhanced:
- - KTextEditor::Cursor \n
+ - \p KTextEditor::Cursor \n
    The Cursor now is a tuple of two ints, namely the line and column. It has no
    virtual destructor so that you cannot derive from Cursor. Since a Cursor
    uses 8 Bytes, it is even ok to pass a Cursor as copy in parameters instead
    of a reference.
    Further, the Cursor has been marked as Q_MOVABLE, making it behave like a
    Plain Old Data (POD) type.
- - KTextEditor::Range \n
+ - \p KTextEditor::Range \n
    The Range now is a tuple of two Cursors, namely the Range::startCursor() and the
    Range::endCursor(). It has no virtual destructor so that you cannot derive from Range.
    Further, the Range has been marked as Q_MOVABLE, making it behave like a
    Plain Old Data (POD) type.
+ - \p KTextEditor::TextHintInterface \n
+   This interface now requires you to call registerTextHintProvider() and
+   unregisterTextHintProvider() with a cooresponding object that implements
+   \p KTextEditor::TextHintProvider.
 
 \section kte_port_new_classes New Classes
 The following classes are either new, or were added late in the KDE 4 release cycle:

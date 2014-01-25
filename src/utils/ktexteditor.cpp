@@ -177,6 +177,13 @@ TextHintInterface::TextHintInterface()
 TextHintInterface::~TextHintInterface()
 {}
 
+TextHintProvider::TextHintProvider()
+    : d(0)
+{}
+
+TextHintProvider::~TextHintProvider()
+{}
+
 VariableInterface::VariableInterface()
     : d(0)
 {}

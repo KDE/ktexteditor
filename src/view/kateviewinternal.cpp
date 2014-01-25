@@ -43,6 +43,7 @@
 #include "katetextanimation.h"
 
 #include <ktexteditor/movingrange.h>
+#include <ktexteditor/texthintinterface.h>
 #include <KCursor>
 #include "katepartdebug.h"
 
@@ -93,7 +94,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_scrollTimer(this)
     , m_cursorTimer(this)
     , m_textHintTimer(this)
-    , m_textHintEnabled(false)
+    , m_textHintDelay(200)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(0)
     , m_viInputMode(false)
@@ -2873,11 +2874,11 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         //We need to check whether the mouse position is actually within the widget,
         //because other widgets like the icon border forward their events to this,
         //and we will create invalid text hint requests if we don't check
-        if (m_textHintEnabled && geometry().contains(parentWidget()->mapFromGlobal(e->globalPos()))) {
+        if (textHintsEnabled() && geometry().contains(parentWidget()->mapFromGlobal(e->globalPos()))) {
             if (QToolTip::isVisible()) {
                 QToolTip::hideText();
             }
-            m_textHintTimer.start(m_textHintTimeout);
+            m_textHintTimer.start(m_textHintDelay);
             m_textHintPos = e->pos();
         }
     }
@@ -3106,14 +3107,22 @@ void KateViewInternal::textHintTimeout()
         return;
     }
 
-    QString tmp;
+    QStringList textHints;
+    foreach(KTextEditor::TextHintProvider * const p, m_textHintProviders) {
+        const QString hint = p->needTextHint(m_view, c);
+        if (!hint.isEmpty()) {
+            textHints.append(hint);
+        }
+    }
 
-    emit m_view->needTextHint(m_view, c, tmp);
-
-    if (!tmp.isEmpty()) {
-        qCDebug(LOG_PART) << "Hint text: " << tmp;
+    if (!textHints.isEmpty()) {
+        qCDebug(LOG_PART) << "Hint text: " << textHints;
+        QString hint;
+        foreach(const QString & str, textHints) {
+            hint += QStringLiteral("<p>%1</p>").arg(str);
+        }
         QPoint pos(startX() + m_textHintPos.x(), m_textHintPos.y());
-        QToolTip::showText(mapToGlobal(pos), tmp);
+        QToolTip::showText(mapToGlobal(pos), hint);
     }
 }
 
@@ -3367,23 +3376,45 @@ void KateViewInternal::doDragScroll()
     }
 }
 
-void KateViewInternal::enableTextHints(int timeout)
+void KateViewInternal::registerTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    if (timeout >= 0) {
-        m_textHintTimeout = timeout;
-        m_textHintEnabled = true;
-        m_textHintTimer.start(timeout);
-    } else {
-        qCWarning(LOG_PART) << "Attempt to enable text hints with negative timeout:" << timeout;
+    if (! m_textHintProviders.contains(provider)) {
+        m_textHintProviders.append(provider);
+    }
+
+    // we have a client, so start timeout
+    m_textHintTimer.start(m_textHintDelay);
+}
+
+void KateViewInternal::unregisterTextHintProvider(KTextEditor::TextHintProvider *provider)
+{
+    const int index = m_textHintProviders.indexOf(provider);
+    if (index >= 0) {
+        m_textHintProviders.removeAt(index);
+    }
+
+    if (m_textHintProviders.isEmpty()) {
+        m_textHintTimer.stop();
     }
 }
 
-void KateViewInternal::disableTextHints()
+void KateViewInternal::setTextHintDelay(int delay)
 {
-    if (m_textHintEnabled) {
-        m_textHintEnabled = false;
-        m_textHintTimer.stop();
+    if (delay <= 0) {
+        m_textHintDelay = 200; // ms
+    } else {
+        m_textHintDelay = delay; // ms
     }
+}
+
+int KateViewInternal::textHintDelay() const
+{
+    return m_textHintDelay;
+}
+
+bool KateViewInternal::textHintsEnabled()
+{
+    return ! m_textHintProviders.isEmpty();
 }
 
 //BEGIN EDIT STUFF

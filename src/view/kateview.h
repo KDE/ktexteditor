@@ -248,11 +248,10 @@ public:
     // KTextEditor::TextHintInterface
     //
 public:
-    void enableTextHints(int timeout = 200);
-    void disableTextHints();
-
-Q_SIGNALS:
-    void needTextHint(KTextEditor::View *view, const KTextEditor::Cursor &position, QString &text);
+    void registerTextHintProvider(KTextEditor::TextHintProvider *provider) Q_DECL_OVERRIDE;
+    void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider) Q_DECL_OVERRIDE;
+    void setTextHintDelay(int delay) Q_DECL_OVERRIDE;
+    int textHintDelay() const Q_DECL_OVERRIDE;
 
 public:
     bool dynWordWrap() const

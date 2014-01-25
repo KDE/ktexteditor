@@ -1501,14 +1501,24 @@ void KTextEditor::ViewPrivate::toggleWriteLock()
     m_doc->setReadWrite(! m_doc->isReadWrite());
 }
 
-void KTextEditor::ViewPrivate::enableTextHints(int timeout)
+void KTextEditor::ViewPrivate::registerTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    m_viewInternal->enableTextHints(timeout);
+    m_viewInternal->registerTextHintProvider(provider);
 }
 
-void KTextEditor::ViewPrivate::disableTextHints()
+void KTextEditor::ViewPrivate::unregisterTextHintProvider(KTextEditor::TextHintProvider *provider)
 {
-    m_viewInternal->disableTextHints();
+    m_viewInternal->unregisterTextHintProvider(provider);
+}
+
+void KTextEditor::ViewPrivate::setTextHintDelay(int delay)
+{
+    m_viewInternal->setTextHintDelay(delay);
+}
+
+int KTextEditor::ViewPrivate::textHintDelay() const
+{
+    return m_viewInternal->textHintDelay();
 }
 
 bool KTextEditor::ViewPrivate::viInputMode() const

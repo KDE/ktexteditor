@@ -46,6 +46,7 @@
 namespace KTextEditor
 {
 class MovingRange;
+class TextHintProvider;
 }
 
 class KateIconBorder;
@@ -418,19 +419,24 @@ private Q_SLOTS:
     void documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
     void documentTextRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
 
-    //TextHint
+    //
+    // KTE::TextHintInterface
+    //
 public:
-    void enableTextHints(int timeout);
-    void disableTextHints();
+    void registerTextHintProvider(KTextEditor::TextHintProvider *provider);
+    void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider);
+    void setTextHintDelay(int delay);
+    int textHintDelay() const;
+    bool textHintsEnabled(); // not part of the interface
 
 private:
-    bool m_textHintEnabled;
-    int m_textHintTimeout;
+    QVector<KTextEditor::TextHintProvider*> m_textHintProviders;
+    int m_textHintDelay;
     QPoint m_textHintPos;
 
-    /**
-     * IM input stuff
-     */
+    //
+    // IM input stuff
+    //
 public:
     virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 
