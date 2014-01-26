@@ -2276,17 +2276,17 @@ void ViModeTest::CommandModeTests()
     TestPressKey("\\:$c\\"); // Work around ambiguity in the code that parses commands to execute.
     TestPressKey("\\:$change\\");
     FinishTest("foo\nbar\n");
-    //FIXME: DoTest("foo\nbar\nbaz","ma\\:2,'achange\\","\nbaz");
+    DoTest("foo\nbar\nbaz","ma\\:2,'achange\\","\nbaz");
     DoTest("foo\nbar\nbaz", "\\:2,3c\\", "foo\n");
 
     // Testing ":j"
     DoTest("1\n2\n3\n4\n5", "\\:2,4j\\", "1\n2 3 4\n5");
 
-    //FIXME: DoTest("1\n2\n3\n4","jvj\\ctrl-c\\:'<,'>d\\enter","1\n4");
+    DoTest("1\n2\n3\n4","jvj\\ctrl-c\\:'<,'>d\\enter","1\n4");
     DoTest("1\n2\n3\n4", "\\:1+1+1+1d\\", "1\n2\n3");
-    //FIXME: DoTest("1\n2\n3\n4","2j\\:.,.-1d\\","1\n4");
+    DoTest("1\n2\n3\n4","2j\\:.,.-1d\\","1\n4");
     DoTest("1\n2\n3\n4", "\\:.+200-100-100+20-5-5-5-5+.-.,$-1+1-2+2-3+3-4+4-5+5-6+6-7+7-1000+1000+0-0-$+$-.+.-1d\\", "4");
-    //FIXME: DoTest("1\n2\n3\n4","majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\","");
+    DoTest("1\n2\n3\n4","majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\","");
 }
 
 class VimStyleCommandBarTestsSetUpAndTearDown
@@ -6603,7 +6603,7 @@ void ViModeTest::MacroTests()
     clearAllMacros();
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "qarOljq3@au", "OXXX\nXXXX\nXXXX\nXXXX");
 
-    { /* FIXME: this get broken
+    {
         VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
         // Make sure we can macro-ise an interactive sed replace.
         clearAllMacros();
@@ -6613,7 +6613,6 @@ void ViModeTest::MacroTests()
         DoTest("foo foo foo foo\nfoo foo foo foo", "qa:s/foo/bar/gc\\enteryyqAdone\\escqggj@a", "bar bar foo foodone\nbar bar foo foodone");
         clearAllMacros();
         DoTest("foo foo foo foo\nfoo foo foo foo", "qa:s/foo/bar/gc\\enteryyqqAdone\\escggj@aAdone\\esc", "bar bar foo foodone\nbar bar foo foodone");
-        */
     }
 
     clearAllMappings();
