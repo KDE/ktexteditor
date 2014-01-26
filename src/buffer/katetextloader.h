@@ -243,12 +243,25 @@ public:
                                     /**
                                      * no unicode BOM found, trigger prober
                                      */
-                                    KEncodingProber prober(m_proberType);
-                                    prober.feed(m_buffer.constData(), c);
+                                    
+                                    /**
+                                     * first: try to get HTML header encoding
+                                     */
+                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml (m_buffer, 0)) {
+                                        m_codec = codecForHtml;
+                                    }
+                                    
+                                    /**
+                                     * else: use KEncodingProber
+                                     */
+                                    else {
+                                        KEncodingProber prober(m_proberType);
+                                        prober.feed(m_buffer.constData(), c);
 
-                                    // we found codec with some confidence?
-                                    if (prober.confidence() > 0.5) {
-                                        m_codec = QTextCodec::codecForName(prober.encoding());
+                                        // we found codec with some confidence?
+                                        if (prober.confidence() > 0.5) {
+                                            m_codec = QTextCodec::codecForName(prober.encoding());
+                                        }
                                     }
 
                                     // no codec, no chance, encoding error
