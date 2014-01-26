@@ -743,21 +743,17 @@ void ViModeTest::VisualModeTests()
     // BUG #328277 - make sure kate doesn't crash
     DoTest("aaa\nbbb", "Vj>u>.", "    aaa\n    bbb", ShouldFail, "Crash is fixed, but correct repeat behaviour in this scenario is yet to be implemented");
 
-    // Selection with regular motions.
-    // TODO: these tests are now failing in ktexteditor.git but not in kate.git master.
-    // If I open KWrite and type the exact commands, I can see them working as expected.
-    // I'll try to fix this asap.
-//     DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-//     DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-//     DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-//     DoTest("Three. Different. Sentences.", "viWcX", "X Different. Sentences.");
-//     DoTest("Three. Different. Sentences.", "viwcX", "X. Different. Sentences.");
-//     DoTest("Three. Different. Sentences.", "vaWcX", "XDifferent. Sentences.");
-//     DoTest("Three. Different. Sentences.", "vawcX", "X. Different. Sentences.");
-//     DoTest("Three. Different. Sentences.", "vascX", "XDifferent. Sentences.");
-//     DoTest("Three. Different. Sentences.", "viscX", "X Different. Sentences.");
-//     DoTest("Three. Different. Sentences.", "vapcX", "X");
-//     DoTest("Three. Different. Sentences.", "vipcX", "X");
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "viWcX", "X Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "viwcX", "X. Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vaWcX", "XDifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "vawcX", "X. Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vascX", "XDifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "viscX", "X Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vapcX", "X");
+    DoTest("Three. Different. Sentences.", "vipcX", "X");
 }
 
 void ViModeTest::ReplaceModeTests()

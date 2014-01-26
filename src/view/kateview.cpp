@@ -1578,6 +1578,9 @@ KateViInputModeManager *KTextEditor::ViewPrivate::getViInputModeManager()
 
 KateViInputModeManager *KTextEditor::ViewPrivate::resetViInputModeManager()
 {
+    if (m_viModeEmulatedCommandBar) {
+        m_viModeEmulatedCommandBar->hideMe();
+    }
     return m_viewInternal->resetViInputModeManager();
 }
 
