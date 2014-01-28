@@ -141,7 +141,7 @@ private:
  * \see TextHintInterface
  * \p since 5.0
  */
-class TextHintProvider
+class KTEXTEDITOR_EXPORT TextHintProvider
 {
 public:
     /**
