@@ -30,6 +30,7 @@ namespace KTextEditor
 {
 
 class TextHintProvider;
+class View;
 
 /**
  * \brief Text hint interface showing tool tips under the mouse for the View.
