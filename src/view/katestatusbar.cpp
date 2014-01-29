@@ -355,9 +355,9 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w) {
         }
     }
     if (found) {
-        m1->setText(i18n("Other"));
+        m1->setText(i18n("Other..."));
     } else {
-        m1->setText(ki18np("Other (%1)","Other (%1)").subs(w).toString());
+        m1->setText(i18np("Other (%1)", "Other (%1)", w));
         m1->setChecked(true);
     }
 }
