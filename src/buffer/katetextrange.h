@@ -169,7 +169,7 @@ public:
      * Convert this clever range into a dumb one. Equal to toRange, allowing to use implicit conversion.
      * @return normal range
      */
-    operator const KTextEditor::Range() const
+    operator KTextEditor::Range() const
     {
         return KTextEditor::Range(start().toCursor(), end().toCursor());
     }

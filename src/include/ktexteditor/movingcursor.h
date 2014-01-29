@@ -279,7 +279,7 @@ public:
      * Even if this cursor belongs to a range, the created one not.
      * @return normal cursor
      */
-    operator const Cursor() const {
+    operator Cursor() const {
         return Cursor(line(), column());
     }
 
