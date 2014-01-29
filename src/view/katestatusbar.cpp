@@ -104,6 +104,10 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_indentGroup = new QActionGroup(this);
 
     m_tabsIndent = new QPushButton(QString(), this);
+    m_tabsIndent->setFlat(true);
+    topLayout->addWidget(m_tabsIndent, 0);
+    m_tabsIndent->setFocusProxy(m_view);
+
     m_indentSettingsMenu = new KateStatusBarOpenUpMenu(m_tabsIndent);
     m_indentSettingsMenu->addSection(i18n("Show Tabs As"));
     addNumberAction(m_tabGroup, m_indentSettingsMenu, -1);
@@ -118,9 +122,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     addNumberAction(m_indentGroup, m_indentSettingsMenu, 3);
     addNumberAction(m_indentGroup, m_indentSettingsMenu, 2);
 
-    action=m_indentSettingsMenu->addSeparator();
+    action = m_indentSettingsMenu->addSeparator();
     QActionGroup *radioGroup = new QActionGroup(m_indentSettingsMenu);
-    action=m_indentSettingsMenu->addAction(i18n("Mixed Tabs (Spaces + Tabs)"));
+    action = m_indentSettingsMenu->addAction(i18n("Mixed Tabs (Spaces + Tabs)"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
     m_mixedAction = action;
@@ -133,28 +137,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     action->setActionGroup(radioGroup);
     m_softAction = action;
 
-    m_tabsIndent->setFlat(true);
-    topLayout->addWidget(m_tabsIndent, 0);
     m_tabsIndent->setMenu(m_indentSettingsMenu);
-    m_tabsIndent->setFocusProxy(m_view);
-
-    const QString dummy(QLatin1String("XX"));
-
-    int myWidth = 0;
-    m_tabsIndent->setText(m_spacesOnly.subs(dummy).toString());
-    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-
-    m_tabsIndent->setText(m_tabsOnly.subs(dummy).toString());
-    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-
-    m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(dummy).subs(dummy).toString());
-    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-
-    m_tabsIndent->setText(m_tabSpacesMixed.subs(dummy).subs(dummy).toString());   
-    myWidth=myWidth<m_tabsIndent->sizeHint().width()?m_tabsIndent->sizeHint().width():myWidth;
-    
-    m_tabsIndent->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed));
-    m_tabsIndent->setFixedWidth(myWidth);
 
     /**
      * add encoding button which allows user to switch encoding of document
