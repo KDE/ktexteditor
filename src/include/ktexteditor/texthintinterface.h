@@ -44,6 +44,8 @@ class View;
  * when debugging an application, or showing a complete path of an include
  * directive.
  *
+ * \image html texthint.png "Text hint showing the contents of a variable"
+ *
  * To register as text hint provider, call registerTextHintProvider() with an
  * instance that inherits TextHintProvider. Finally, make sure you remove your
  * text hint provider by calling unregisterTextHintProvider().
@@ -103,7 +105,7 @@ public:
      *
      * The delay specifies the time the user needs to hover over the text
      * before the tool tip is shown. Therefore, \p delay should not be
-     * too large, a value of 200 milliseconds is recommended and set by
+     * too large, a value of 500 milliseconds is recommended and set by
      * default.
      *
      * If \p delay is <= 0, the default delay will be set.
@@ -114,7 +116,7 @@ public:
 
     /**
      * Get the text hint delay in milliseconds.
-     * By default, the text hint delay is set to 200 milliseconds.
+     * By default, the text hint delay is set to 500 milliseconds.
      * It can be changed by calling \p setTextHintDelay().
      */
     virtual int textHintDelay() const = 0;
@@ -157,7 +159,7 @@ public:
 
     /**
      * This function is called whenever the users hovers over text such
-     * that the text hint delay passes. Then, needTextHint() is called
+     * that the text hint delay passes. Then, textHint() is called
      * for each registered TextHintProvider.
      *
      * Return the text hint (possibly Qt richtext) for @p view at @p position.
@@ -168,8 +170,8 @@ public:
      * \param position text cursor under the mouse position
      * \return text tool tip to be displayed, may be Qt richtext
      */
-    virtual QString needTextHint(KTextEditor::View *view,
-                                 const KTextEditor::Cursor &position) = 0;
+    virtual QString textHint(KTextEditor::View *view,
+                             const KTextEditor::Cursor &position) = 0;
 
 private:
     class TextHintProviderPrivate * const d;

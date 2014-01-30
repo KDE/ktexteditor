@@ -94,7 +94,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_scrollTimer(this)
     , m_cursorTimer(this)
     , m_textHintTimer(this)
-    , m_textHintDelay(200)
+    , m_textHintDelay(500)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(0)
     , m_viInputMode(false)
@@ -3109,7 +3109,7 @@ void KateViewInternal::textHintTimeout()
 
     QStringList textHints;
     foreach(KTextEditor::TextHintProvider * const p, m_textHintProviders) {
-        const QString hint = p->needTextHint(m_view, c);
+        const QString hint = p->textHint(m_view, c);
         if (!hint.isEmpty()) {
             textHints.append(hint);
         }
