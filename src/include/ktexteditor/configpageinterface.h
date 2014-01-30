@@ -1,6 +1,6 @@
 /* This file is part of the KDE project
- *  Copyright (C) 2001-2005 Christoph Cullmann <cullmann@kde.org>
- *  Copyright (C) 2005 Dominik Haumann (dhdev@gmx.de) (documentation)
+   Copyright (C) 2001-2014 Christoph Cullmann <cullmann@kde.org>
+   Copyright (C) 2005-2014 Dominik Haumann <dhaumann@kde.org>
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -22,8 +22,7 @@
 #define KDELIBS_KTEXTEDITOR_CONFIGPAGEINTERFACE_H
 
 #include <ktexteditor_export.h>
-#include <QStringList>
-#include <QVariant>
+#include <QObject>
 #include <QIcon>
 
 namespace KTextEditor
@@ -32,7 +31,10 @@ namespace KTextEditor
 class ConfigPage;
 
 /**
- * \brief Config page interface extension for e.g. Editor and Plugin's.
+ * \brief Config page interface extension for the Editor and Plugin%s.
+ *
+ * \ingroup kte_group_plugin_extensions
+ * \ingroup kte_group_editor_extensions
  */
 class KTEXTEDITOR_EXPORT ConfigPageInterface
 {
@@ -45,7 +47,6 @@ public:
     virtual ~ConfigPageInterface();
 
 public:
-
     /**
      * Get the number of available config pages.
      * If a number < 1 is returned, it does not support config pages.

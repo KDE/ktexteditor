@@ -115,7 +115,7 @@ The following classes are either new, or were added late in the KDE 4 release cy
 \section kte_port_plugins Plugin Architecture Changes
 The KTextEditor::Plugin system was heavily extended to support 'application
 plugins'. That is, a plugin can now create tool views in a MainWindow%s and
-access the Application's document list. So the applications are now shared
+access the Application's document list. So the plugins are now shared
 between all applications using the KTextEditor interfaces (e.g. Kate, KDevelop,
 and Kile).
 

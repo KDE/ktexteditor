@@ -36,20 +36,47 @@ class MainWindow;
  * Topics:
  *  - \ref plugin_intro
  *  - \ref plugin_config
+ *  - \ref plugin_config_pages
  *  - \ref plugin_sessions
- *  - \ref plugin_arch
  *
  * \section plugin_intro Introduction
  *
- * The Plugin class provides methods to create loadable plugins for all
- * KTextEditor implementations. A plugin can handle several documents and
- * views. For every document the plugin should handle addDocument() is called
- * and for every view addView().
+ * The Plugin class provides methods to create loadable plugins for the
+ * KTextEditor framework. The Plugin class itself only has a single function
+ * createView() that is called for each MainWindow. In createView(), the
+ * plugin is responsible to create tool views through MainWindow::createToolView(),
+ * hook itself into the menus and toolbars through KXMLGuiClient, and attach
+ * itself to View%s or Document%s.
  *
  * \section plugin_config Configuration Management
  *
  * @todo write docu about config pages (new with kpluginmanager)
  * @todo write docu about save/load settings (related to config page)
+ *
+ * \section plugin_config_pages Plugin Config Pages
+ *
+ * If your plugin needs config pages, inherit your plugin also from
+ * KTextEditor::ConfigPageInterface like this:
+ * \code
+ * class MyPlugin : public KTextEditor::Plugin,
+ *                  public KTextEditor::ConfigPageInterface
+ * {
+ *     Q_OBJECT
+ *     Q_INTERFACES(KTextEditor::ConfigPageInterface)
+ * public:
+ *     // ...
+ *     virtual int configPages() const Q_DECL_OVERRIDE;
+ *     virtual ConfigPage *configPage(int number, QWidget *parent) Q_DECL_OVERRIDE;
+ *     virtual QString configPageName(int number) const Q_DECL_OVERRIDE;
+ *     virtual QString configPageFullName(int number) const Q_DECL_OVERRIDE;
+ *     virtual QIcon configPageIcon(int number) const Q_DECL_OVERRIDE;
+ * };
+ * \endcode
+ * In the implementation, you can then return the amount of config pages in
+ * configPages(). The host application will then call configPage() with parameters
+ * 0, ..., \e{configPages() - 1}. In addition, implement configPageName(),
+ * configPageFullName() and configPageIcon() to get a nice looking entry in the
+ * config dialog.
  *
  * \section plugin_sessions Session Management
  *
@@ -61,42 +88,17 @@ class MainWindow;
  * class MyPlugin : public KTextEditor::Plugin,
  *                  public KTextEditor::SessionConfigInterface
  * {
- *   Q_OBJECT
- *   Q_INTERFACES(KTextEditor::SessionConfigInterface)
- *
- *   // ...
- *   virtual void readSessionConfig (const KConfigGroup& config);
- *   virtual void writeSessionConfig (KConfigGroup& config);
- * };
- * \endcode
- *
- * \section plugin_arch Plugin Architecture
- *
- * After the plugin is loaded the editor implementation should call
- * addDocument() and addView() for all documents and views the plugin should
- * handle. If your plugin has a GUI it is common to add an extra class, like:
- * \code
- * class PluginView : public QObject, public KXMLGUIClient
- * {
  *     Q_OBJECT
+ *     Q_INTERFACES(KTextEditor::SessionConfigInterface)
  * public:
- *     // Constructor and other methods
- *     PluginView( KTextEditor::View* view )
- *       : QObject( view ), KXMLGUIClient( view ), m_view( view )
- *     { ... }
  *     // ...
- * private:
- *     KTextEditor::View* m_view;
+ *     void readSessionConfig (const KConfigGroup& config) Q_DECL_OVERRIDE;
+ *     void writeSessionConfig (KConfigGroup& config) Q_DECL_OVERRIDE;
  * };
  * \endcode
- * Your KTextEditor::Plugin derived class then will create a new PluginView
- * for every View, i.e. for every call of addView().
- *
- * The method removeView() will be called whenever a View is removed/closed.
- * If you have a PluginView for every view this is the place to remove it.
  *
  * \see KTextEditor::Editor, KTextEditor::Document, KTextEditor::View,
- *      KTextEditor::SessionConfigInterface
+ *      KTextEditor::ConfigPageInterface, KTextEditor::SessionConfigInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject
@@ -118,11 +120,12 @@ public:
     virtual ~Plugin();
 
     /**
-     * Create a new View for this plugin for the given KTextEditor::MainWindow
+     * Create a new View for this plugin for the given KTextEditor::MainWindow.
      * This may be called arbitrary often by the application to create as much
-     * views as mainwindows are around, the application will take care to delete
-     * this views if mainwindows close, you don't need to handle this yourself in
-     * the plugin.
+     * views as MainWindow%s exist, the application will take care to delete
+     * this views whenever a MainWindow is closed, so you do not need to handle
+     * deletion of the view yourself in the plugin.
+     *
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL
      */
