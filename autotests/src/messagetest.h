@@ -30,10 +30,10 @@ public Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
 
-//private Q_SLOTS:
-private:
+private Q_SLOTS:
     void testPostMessage();
     void testAutoHide();
+private:
     void testAutoHideAfterUserInteraction();
     void testMessageQueue();
     void testPriority();

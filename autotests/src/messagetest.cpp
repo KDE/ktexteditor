@@ -49,7 +49,6 @@ void MessageTest::testPostMessage()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
-    QTest::qWait(1000);
 
     QPointer<Message> message = new Message("Message text", Message::Information);
     message->setPosition(Message::TopInView);
@@ -78,7 +77,6 @@ void MessageTest::testAutoHide()
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
-    QTest::qWait(1000);
 
     //
     // show a message with autoHide. Check, if it's deleted correctly
