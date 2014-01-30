@@ -4,8 +4,7 @@
 \ref index "Overview" |
 Design |
 \ref kte_guidelines "Coding Guidelines" |
-\ref kte_port_to_5 "Porting to KDE Frameworks 5" |
-\ref kte_howto "Using"
+\ref kte_port_to_5 "Porting to KDE Frameworks 5"
 </b></p>
 
 The core of the KTextEditor interfaces consists of three main interfaces:

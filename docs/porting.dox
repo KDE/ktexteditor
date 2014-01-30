@@ -4,8 +4,7 @@
 \ref index "Overview" |
 \ref kte_design "Design" |
 \ref kte_guidelines "Coding Guidelines" |
-Porting to %KDE Frameworks 5 |
-\ref kte_howto "Using"
+Porting to %KDE Frameworks 5
 </b></p>
 
 This document describes porting applications using the KTextEditor interfaces

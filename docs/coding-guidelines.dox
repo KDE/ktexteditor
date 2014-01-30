@@ -4,8 +4,7 @@
 \ref index "Overview" |
 \ref kte_design "Design" |
 Coding Guidelines |
-\ref kte_port_to_5 "Porting to Frameworks 5" |
-\ref kte_howto "Using"
+\ref kte_port_to_5 "Porting to KDE Frameworks 5"
 </b></p>
 
 All KTextEditor interfaces have a consistent design.

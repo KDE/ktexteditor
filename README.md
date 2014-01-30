@@ -58,7 +58,6 @@ Contributions to KTextEditor shall be licensed under LGPLv2+.
 ## Further Documentation
 
 - @ref kte_design
-- @ref kte_howto
 - @ref kte_port_to_5
 - @ref kte_guidelines
 
