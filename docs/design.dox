@@ -27,25 +27,27 @@ The hierarchy can be illustrated as follows:
 \image html ktexteditorhierarchy.png "Basic KTextEditor Hierarchy"
 
 \section kte_design_user Notes for KTextEditor Users
-To use a KTextEditor implementation you first have to get the
-KTextEditor::Editor object. This can be done in several ways and is described
-in detail in the following documentation:
- - KTextEditor::Factory
+To use the KTextEditor framework you first have to get the KTextEditor::Editor
+singleton through KTextEditor::Editor::instance(). Using this obejct, documents
+can be created and deleted.
+
+\section kte_design_part Using KTextEditor as KPart
+If linking to KF5::TextEditor is not an option, you can also access the
+KTextEditor framework as follows
+\code
+  KService::Ptr service = KService::serviceByDesktopPath("katepart");
+  if (service) {
+      m_part = service->createInstance<KParts::ReadWritePart>(0);
+  }
+\endcode
 
 \section kte_design_developer Notes for KTextEditor Developers
-The KTextEditor::Factory provides access to its KTextEditor::Editor. The
-Editor has a list of all opened documents and can create new documents. A
-Document's content is visualized by a View. A Document can have any number of
-views (or none).  When the contents of the document are changed, the change
-is reflected in all views.
+The KTextEditor::Editor has a list of all opened documents and can create new
+documents. A Document's content is visualized by a KTextEditor::View. A Document
+can have any number of views (or none). When the content of the document is
+changed, the change is reflected in all views.
 
-The Factory \e should always return the same Editor object, as
-it does not make sense to load the same editor implementation several times.
-Further notes about the Editor implementation can be found in the
-\ref editor_notes.
-
-\see KTextEditor::Factory, KTextEditor::Editor, KTextEditor::Document,
-     KTextEditor::View
+\see KTextEditor::Editor, KTextEditor::Document, KTextEditor::View
 
 \author Dominik Haumann \<dhaumann@kde.org\>
 */

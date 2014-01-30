@@ -23,7 +23,6 @@
 #include <ktexteditor/configpageinterface.h>
 
 #include <QObject>
-#include <QIcon>
 
 class KAboutData;
 class KConfig;
@@ -36,54 +35,41 @@ class Document;
 class EditorPrivate;
 
 /**
- * \brief Accessor interface for Editor part.
+ * \brief Accessor interface for the KTextEditor framework.
  *
  * Topics:
  *  - \ref editor_intro
  *  - \ref editor_config
- *  - \ref editor_notes
  *  - \ref editor_extensions
  *
  * \section editor_intro Introduction
  *
- * The Editor part can be accessed via the KTextEditor::Factory or the
- * KTextEditor::EditorChooser and provides
- * general information and configuration methods for the Editor
- * implementation, for example KAboutData by using aboutData().
+ * The Editor part can either be accessed through the static accessor Editor::instance()
+ * or through the KParts component model (see \ref kte_design_part).
+ * The Editor singleton provides general information and configuration methods
+ * for the Editor, for example KAboutData by using aboutData().
  *
- * The Editor implementation has a list of all opened documents. Get this
- * list with documents(). To create a new Document call createDocument(). The
- * signal documentCreated() is emitted whenever the Editor created a new
- * document.
+ * The Editor has a list of all opened documents. Get this list with documents().
+ * To create a new Document call createDocument(). The signal documentCreated()
+ * is emitted whenever the Editor created a new document.
  *
  * \section editor_config Editor Configuration
  *
  * The config dialog can be shown with configDialog().
- * Instead of using the config dialog, the config
- * pages can be embedded into the application's config dialog. To do this,
- * configPages() returns the number of
- * config pages the Editor implementation provides and configPage() returns
- * the requested page. Further, a config page has a short descriptive name,
- * get it with configPageName(). You can get more detailed name by using
- * configPageFullName(). Also every config page has a pixmap, get it with
- * configPagePixmap(). The configuration can be saved and loaded with
+ * Instead of using the config dialog, the config pages can also be embedded
+ * into the application's config dialog, since the Editor also inherits
+ * ConfigPageInterface. To do this, configPages() returns the
+ * number of config pages that exist and configPage() returns the requested
+ * page. Further, a config page has a short descriptive name, get it with
+ * configPageName(). You can get more detailed name by using
+ * configPageFullName(). Also every config page has an icon, get it with
+ * configPageIcon(). The configuration can be saved and loaded with
  * readConfig() and writeConfig().
  *
- * \note We recommend to embedd the config pages into the main application's
+ * \note It is recommended to embed the config pages into the main application's
  *       config dialog instead of using a separate config dialog, if the config
  *       dialog does not look cluttered then. This way, all settings are grouped
  *       together in one place.
- *
- * \section editor_notes Implementation Notes
- *
- * Usually only one instance of the Editor exists. The Kate Part
- * implementation internally uses a static accessor to make sure that only one
- * Kate Part Editor object exists. So several factories still use the same
- * Editor.
- *
- * readConfig() and writeConfig() should be forwarded to all loaded plugins
- * as well, see KTextEditor::Plugin::readConfig() and
- * KTextEditor::Plugin::writeConfig().
  *
  * \section editor_extensions Editor Extension Interfaces
  *
@@ -94,8 +80,8 @@ class EditorPrivate;
  * variables. For further details read the detailed descriptions in the class
  * KTextEditor::CommandInterface.
  *
- * \see KTextEditor::Factory, KTextEditor::Document, KTextEditor::ConfigPage
- *      KTextEditor::Plugin, KTextEditor::CommandInterface
+ * \see KTextEditor::Document, KTextEditor::ConfigPageInterface,
+ *      KTextEditor::ConfigPage, KTextEditor::CommandInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
@@ -123,11 +109,12 @@ public:
      * Accessor to get the Editor instance.
      *
      * That Editor instance can be qobject-cast to specific extensions.
-     * If the result of the cast is not NULL, that extension is supported.
+     * If the result of the cast is not NULL, that extension is supported,
+     * see also \ref kte_group_command_extensions.
      *
      * This object will stay alive until QCoreApplication terminates.
      * You shall not delete it yourself.
-     * There is only ONE instance of this per process.
+     * There is only ONE Editor instance of this per process.
      *
      * \return Editor controller, after initial construction, will live until QCoreApplication is terminating.
      */
@@ -154,9 +141,12 @@ public:
 public:
     /**
      * Create a new document object with \p parent.
+     *
+     * For each created document, the signal documentCreated() is emitted.
+     *
      * \param parent parent object
      * \return new KTextEditor::Document object
-     * \see documents()
+     * \see documents(), documentCreated()
      */
     virtual Document *createDocument(QObject *parent) = 0;
 
@@ -190,10 +180,11 @@ public:
     /**
      * Read editor configuration from KConfig \p config.
      *
-     * \note Implementation Notes: If \p config is NULL you should use
-     *       kapp->config() as a fallback solution. Additionally the
-     *       readConfig() call should be forwarded to every loaded plugin.
-     * \param config config object
+     * \note If you pass a NULL pointer as \p config object, the Editor will
+     *       fall back to KSharedConfig::openConfig(), i.e. the process'
+     *       global config object.
+     *
+     * \param config config object or NULL, if the global config should be used
      * \see writeConfig()
      */
     virtual void readConfig(KConfig *config = 0) = 0;
@@ -201,10 +192,11 @@ public:
     /**
      * Write editor configuration to KConfig \p config.
      *
-     * \note Implementation Notes: If \p config is NULL you should use
-     *       kapp->config() as a fallback solution. Additionally the
-     *       writeConfig() call should be forwarded to every loaded plugin.
-     * \param config config object
+     * \note If you pass a NULL pointer as \p config object, the Editor will
+     *       fall back to KSharedConfig::openConfig(), i.e. the process'
+     *       global config object.
+     *
+     * \param config config object or NULL, if the global config should be used
      * \see readConfig()
      */
     virtual void writeConfig(KConfig *config = 0) = 0;
@@ -225,7 +217,7 @@ Q_SIGNALS:
     /**
      * The \p editor emits this signal whenever a \p document was successfully
      * created.
-     * \param editor editor which created the new document
+     * \param editor pointer to the Editor singleton which created the new document
      * \param document the newly created document instance
      * \see createDocument()
      */

@@ -24,6 +24,7 @@
 #include <ktexteditor_export.h>
 #include <QStringList>
 #include <QVariant>
+#include <QIcon>
 
 namespace KTextEditor
 {
@@ -68,7 +69,7 @@ public:
      * translated.
      * \param number index of config page
      * \return name of given page index
-         * \see configPageFullName(), configPagePixmap()
+         * \see configPageFullName(), configPageIcon()
      */
     virtual QString configPageName(int number) const = 0;
 
@@ -81,14 +82,14 @@ public:
      * something like "Shortcut Configuration".
      * \param number index of config page
      * \return full name of given page index
-         * \see configPageName(), configPagePixmap()
+         * \see configPageName(), configPageIcon()
      */
     virtual QString configPageFullName(int number) const = 0;
 
     /**
-     * Get a pixmap with \p size for the config page \p number.
+     * Get an icon for the config page \p number.
      * \param number index of config page
-     * \return pixmap for the given page index
+     * \return icon for the given page index
      * \see configPageName(), configPageFullName()
      */
     virtual QIcon configPageIcon(int number) const = 0;
