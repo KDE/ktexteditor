@@ -1,6 +1,6 @@
 /* This file is part of the KDE project
- *  Copyright (C) 2001-2005 Christoph Cullmann <cullmann@kde.org>
- *  Copyright (C) 2005 Dominik Haumann (dhdev@gmx.de) (documentation)
+ *  Copyright (C) 2001-2014 Christoph Cullmann <cullmann@kde.org>
+ *  Copyright (C) 2005-2014 Dominik Haumann <dhaumann@kde.org>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -29,18 +29,24 @@ namespace KTextEditor
 {
 
 /**
- * \brief Config page interface for the Editor.
+ * \brief Config page interface for the Editor and Plugin%s.
  *
  * \section configpage_intro Introduction
  *
  * The class ConfigPage represents a config page.
  * The config pages are usually embedded into a dialog that shows
  * buttons like \e Defaults, \e Reset and \e Apply. If one of the buttons is
- * clicked and the condig page sent the signal changed() beforehand the
+ * clicked and the config page sent the signal changed() beforehand the
  * Editor will call the corresponding slot, either defaults(), reset() or
  * apply().
  *
- * \see KTextEditor::Editor
+ * \section configpage_config Saving and Loading Config Data
+ *
+ * Saving and loading the configuration data can either be achieved by using
+ * the host application's KSharedConfig::openConfig() object, or by using an
+ * own configuration file.
+ *
+ * \see KTextEditor::Editor, KTextEditor::Plugin
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT ConfigPage : public QWidget
