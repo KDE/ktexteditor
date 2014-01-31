@@ -17,6 +17,9 @@ KDE Framework 5.0
       even when joining text and wrapping it again
   - still provide some default mark types
 - scrolling API: http://bugs.kde.org/show_bug.cgi?id=138956
-- KTE: Merge some interfaces
+- KTE: Merge some interfaces (TODO: TemplateInterface2)
 - KTE: SearchInterface, maybe merge into Document ? discussion needed.
 - KTE: VariableInterface, maybe merge into Document ? discussion needed.
+- KTE: ModificaionInterface, merge into Document, and:
+     - add: bool Document::isModifiedOnDisk()
+     - add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
