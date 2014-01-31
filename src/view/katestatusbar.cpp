@@ -257,32 +257,32 @@ void KateStatusBar::modifiedChanged()
 {
     const bool mod = m_view->doc()->isModified();
     const bool modOnHD = m_view->doc()->isModifiedOnDisc();
-    
+
     /**
      * combine to modified status, update only if changed
      */
     unsigned int newStatus = (unsigned int)mod | ((unsigned int)modOnHD << 1);
     if (m_modifiedStatus == newStatus)
         return;
-    
+
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
         case 0x1:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
             break;
-            
+
         case 0x2:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("dialog-warning")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
             break;
-            
+
         case 0x3:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
                                                QStringList() << QStringLiteral("emblem-important")));
-            // m_modifiedLabel->setWhatsThis(i18n("")); // unknown
+            m_modifiedLabel->setWhatsThis(QString());
             break;
-        
+
         default:
             m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("text-plain")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
