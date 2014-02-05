@@ -22,6 +22,7 @@
 #include "kateglobal.h"
 
 #include "katepartdebug.h"
+#include <kcompletionmatches.h>
 
 //BEGIN KateCmd
 #define CMD_HIST_LENGTH 256
