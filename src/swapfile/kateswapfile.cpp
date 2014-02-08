@@ -38,7 +38,7 @@
 #include <QApplication>
 #include <QCryptographicHash>
 
-#ifdef HAVE_FDATASYNC
+#ifndef Q_OS_WIN
 #include <unistd.h>
 #endif
 

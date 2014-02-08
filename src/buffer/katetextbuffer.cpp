@@ -28,7 +28,7 @@
 #include "kateview.h"
 #include "katepartdebug.h"
 
-#if HAVE_FDATASYNC
+#ifndef Q_OS_WIN
 #include <unistd.h>
 #endif
 
