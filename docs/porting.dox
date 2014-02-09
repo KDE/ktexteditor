@@ -61,6 +61,8 @@ The following interfaces were changed:
    This signal is emitted whenever the read-only state of the document changes.
  - \p KTextEditor::View now has a status bar by default. It can be controlled
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
+ - \p KTextEditor::View::informationMessage() was removed in favor of the
+   MessageInterface.
 
 \section kte_port_new New Interfaces
 The following interfaces are new:

@@ -377,8 +377,8 @@ public:
 
     /**
      * Get the screen coordinates (x, y) of the supplied \a cursor relative
-     * to the view widget in pixels. Thus, 0,0 represents the top left hand of
-     * the view widget.
+     * to the view widget in pixels. Thus, (0, 0) represents the top left hand
+     * of the view widget.
      *
      * To map pixel coordinates to a Cursor position (the reverse transformation)
      * use coordinatesToCursor().
@@ -391,8 +391,18 @@ public:
     virtual QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const = 0;
 
     /**
-     * Get the screen coordinates (x/y) of the cursor position in pixels.
+     * Get the screen coordinates (x, y) of the cursor position in pixels.
+     * The returned coordinates are relative to the View such that (0, 0)
+     * represents tht top-left corner of the View.
+     *
+     * If global screen coordinates are required, e.g. for showing a QToolTip,
+     * convert the view coordinates to global screen coordinates as follows:
+     * \code
+     * QPoint viewCoordinates = view->cursorPositionCoordinates();
+     * QPoint globalCoorinates = view->mapToGlobal(viewCoordinates);
+     * \endcode
      * \return cursor screen coordinates
+     * \see cursorToCoordinate(), coordinatesToCursor()
      */
     virtual QPoint cursorPositionCoordinates() const = 0;
 
