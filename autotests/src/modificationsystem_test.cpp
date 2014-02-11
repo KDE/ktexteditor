@@ -65,33 +65,31 @@ void ModificationSystemTest::testInsertText()
     const QString content("first line\n");
     doc->setText(content);
 
-    Kate::TextLine line0 = doc->plainKateTextLine(0);
-
     // now all lines should have state "Modified"
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     // clear all modification flags, forces no flags
     doc->setModified(false);
     doc->undoManager()->updateLineModifications();
     clearModificationFlags(doc);
 
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     // now we have an a unmodified file, start real tests
     // insert text in line 0, then undo and redo
     doc->insertText(Cursor(0, 2), "_");
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     doc->undo();
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     doc->redo();
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -101,17 +99,17 @@ void ModificationSystemTest::testInsertText()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     doc->redo();
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     delete doc;
 }
@@ -123,33 +121,31 @@ void ModificationSystemTest::testRemoveText()
     const QString content("first line\n");
     doc->setText(content);
 
-    Kate::TextLine line0 = doc->plainKateTextLine(0);
-
     // now all lines should have state "Modified"
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     // clear all modification flags, forces no flags
     doc->setModified(false);
     doc->undoManager()->updateLineModifications();
     clearModificationFlags(doc);
 
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     // now we have an a unmodified file, start real tests
     // remove text in line 0, then undo and redo
     doc->removeText(Range(Cursor(0, 1), Cursor(0, 2)));
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     doc->undo();
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     doc->redo();
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -159,17 +155,17 @@ void ModificationSystemTest::testRemoveText()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(line0->markedAsModified());
-    QVERIFY(!line0->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineSaved(0));
 
     doc->redo();
-    QVERIFY(!line0->markedAsModified());
-    QVERIFY(line0->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineSaved(0));
 
     delete doc;
 }
@@ -190,26 +186,26 @@ void ModificationSystemTest::testInsertLine()
     // insert at line 1
     doc->insertLine(1, "1");
 
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -219,27 +215,27 @@ void ModificationSystemTest::testInsertLine()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     delete doc;
 }
@@ -261,24 +257,24 @@ void ModificationSystemTest::testRemoveLine()
     // remove at line 1
     doc->removeLine(1);
 
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -288,25 +284,25 @@ void ModificationSystemTest::testRemoveLine()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     delete doc;
 }
@@ -330,26 +326,26 @@ void ModificationSystemTest::testWrapLineMid()
         // wrap line 1 at |: bb|bb
         doc->editWrapLine(1, 2, insertNewLine);
 
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(doc->plainKateTextLine(2)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-        QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(doc->lineModified(1));
+        QVERIFY(doc->lineModified(2));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(!doc->lineSaved(1));
+        QVERIFY(!doc->lineSaved(2));
 
         doc->undo();
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(!doc->lineModified(1));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(doc->lineSaved(1));
 
         doc->redo();
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(doc->plainKateTextLine(2)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-        QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(doc->lineModified(1));
+        QVERIFY(doc->lineModified(2));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(!doc->lineSaved(1));
+        QVERIFY(!doc->lineSaved(2));
 
         //
         // now simulate "save", then do the undo/redo tests again
@@ -359,27 +355,27 @@ void ModificationSystemTest::testWrapLineMid()
         doc->undoManager()->updateLineModifications();
 
         // now no line should have state "Modified"
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-        QVERIFY(doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(!doc->lineModified(1));
+        QVERIFY(!doc->lineModified(2));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(doc->lineSaved(1));
+        QVERIFY(doc->lineSaved(2));
 
         // undo the text insertion
         doc->undo();
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(doc->lineModified(1));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(!doc->lineSaved(1));
 
         doc->redo();
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-        QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-        QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-        QVERIFY(doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+        QVERIFY(!doc->lineModified(0));
+        QVERIFY(!doc->lineModified(1));
+        QVERIFY(!doc->lineModified(2));
+        QVERIFY(!doc->lineSaved(0));
+        QVERIFY(doc->lineSaved(1));
+        QVERIFY(doc->lineSaved(2));
 
         delete doc;
     }
@@ -401,26 +397,26 @@ void ModificationSystemTest::testWrapLineAtEnd()
     // wrap line 0 at end
     doc->editWrapLine(0, 4);
 
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -430,27 +426,27 @@ void ModificationSystemTest::testWrapLineAtEnd()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     delete doc;
 }
@@ -471,26 +467,26 @@ void ModificationSystemTest::testWrapLineAtStart()
     // wrap line 0 at end
     doc->editWrapLine(0, 0);
 
-    QVERIFY(doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -500,27 +496,27 @@ void ModificationSystemTest::testWrapLineAtStart()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     delete doc;
 }
@@ -542,24 +538,24 @@ void ModificationSystemTest::testUnWrapLine()
     // join line 0 and 1
     doc->editUnWrapLine(0);
 
-    QVERIFY(doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -569,25 +565,25 @@ void ModificationSystemTest::testUnWrapLine()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     delete doc;
 }
@@ -609,24 +605,24 @@ void ModificationSystemTest::testUnWrapLine1Empty()
     // join line 1 and 2
     doc->editUnWrapLine(1);
 
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -636,25 +632,25 @@ void ModificationSystemTest::testUnWrapLine1Empty()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     delete doc;
 }
@@ -676,24 +672,24 @@ void ModificationSystemTest::testUnWrapLine2Empty()
     // join line 0 and 1
     doc->editUnWrapLine(0);
 
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     //
     // now simulate "save", then do the undo/redo tests again
@@ -703,25 +699,25 @@ void ModificationSystemTest::testUnWrapLine2Empty()
     doc->undoManager()->updateLineModifications();
 
     // now no line should have state "Modified"
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     // undo the text insertion
     doc->undo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(2)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(doc->lineModified(1));
+    QVERIFY(!doc->lineModified(2));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
+    QVERIFY(!doc->lineSaved(2));
 
     doc->redo();
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsModified());
-    QVERIFY(!doc->plainKateTextLine(0)->markedAsSavedOnDisk());
-    QVERIFY(!doc->plainKateTextLine(1)->markedAsSavedOnDisk());
+    QVERIFY(!doc->lineModified(0));
+    QVERIFY(!doc->lineModified(1));
+    QVERIFY(!doc->lineSaved(0));
+    QVERIFY(!doc->lineSaved(1));
 
     delete doc;
 }
