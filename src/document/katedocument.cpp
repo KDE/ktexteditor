@@ -797,6 +797,42 @@ int KTextEditor::DocumentPrivate::lineLength(int line) const
 
     return l->length();
 }
+
+bool KTextEditor::DocumentPrivate::lineModified(int line) const
+{
+    if (line < 0 || line >= lines()) {
+        return false;
+    }
+
+    Kate::TextLine l = m_buffer->plainLine(line);
+    Q_ASSERT(l);
+
+    return l->markedAsModified();
+}
+
+bool KTextEditor::DocumentPrivate::lineSaved(int line) const
+{
+    if (line < 0 || line >= lines()) {
+        return false;
+    }
+
+    Kate::TextLine l = m_buffer->plainLine(line);
+    Q_ASSERT(l);
+
+    return l->markedAsSavedOnDisk();
+}
+
+bool KTextEditor::DocumentPrivate::lineTouched(int line) const
+{
+    if (line < 0 || line >= lines()) {
+        return false;
+    }
+
+    Kate::TextLine l = m_buffer->plainLine(line);
+    Q_ASSERT(l);
+
+    return l->markedAsModified() || l->markedAsSavedOnDisk();
+}
 //END
 
 //BEGIN KTextEditor::EditInterface internal stuff

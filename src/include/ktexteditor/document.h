@@ -454,6 +454,41 @@ public:
     virtual int lines() const = 0;
 
     /**
+     * Check whether \p line currently contains unsaved data.
+     * If \p line contains unsaved data, \e true is returned, otherwise \e false.
+     * When the user saves the file, a modified line turns into a \e saved line.
+     * In this case lineModified() returns \e false and in its stead lineSaved()
+     * returns \e true.
+     * \param line line to query
+     * \see lineSaved()
+     * \since 5.0
+     */
+    virtual bool lineModified(int line) const = 0;
+
+    /**
+     * Check whether \p line currently contains only saved text.
+     * Saved text in this case implies that a line was touched at some point
+     * by the user and then then changes were either undone or the user saved
+     * the file.
+     *
+     * In case \p line was touched and currently contains only saved data,
+     * \e true is returned, otherwise \e false.
+     * \param line line to query
+     * \see lineModified()
+     * \since 5.0
+     */
+    virtual bool lineSaved(int line) const = 0;
+
+    /**
+     * Check whether \p line was touched since the file was opened.
+     * This equals the statement lineModified() || lineSaved().
+     * \param line line to query
+     * \see lineModified(), lineSaved()
+     * \since 5.0
+     */
+    virtual bool lineTouched(int line) const = 0;
+
+    /**
      * End position of the document.
      * \return The last column on the last line of the document
      * \see all()
