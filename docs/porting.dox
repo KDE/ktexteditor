@@ -30,7 +30,7 @@ Entirely removed interfaces and classes are:
    Just use KTextEditor::Editor::instance() to get the editor instance.
    This pointer is \e always valid.
  - \p KTextEditor::EditorChooser \n
-   Instead, just use \p KTextEditor::editor::instance();
+   Instead, just use \p KTextEditor::Editor::instance();
  - \p SmartInterface (removed since KDE 4.5)
  - \p SmartCursor, \p SmartRange, \p SmartCursorNotifier, \p SmartCursorWatcher,
    \p SmartRangeNotifier, \p SmartRangeWatcher (already unsupported since KDE 4.5)
