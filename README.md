@@ -47,7 +47,7 @@ use that to manage KTextEditor::Document instances.
     // create a new document
     KTextEditor::Document *doc = editor->createDocument(this);
     // create a widget to display the document
-    KTextEditor::View *view = editor->createView(containerWidget);
+    KTextEditor::View *view = doc->createView(containerWidget);
 
 See the documentation for these classes for more information.
 
