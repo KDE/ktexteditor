@@ -11,6 +11,7 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(CMakePackageConfigHelpers)
 include(CheckFunctionExists)
+include(CheckSymbolExists)
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
@@ -86,7 +87,7 @@ install(FILES
 )
 
 # config.h
-check_function_exists (fdatasync HAVE_FDATASYNC)
+check_symbol_exists (fdatasync unistd.h HAVE_FDATASYNC)
 configure_file (config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 # let our config.h be found first in any case
