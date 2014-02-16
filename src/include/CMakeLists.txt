@@ -1,13 +1,15 @@
 # KTextEditor interface headers
-ecm_generate_headers(AnnotationInterface CodeCompletionModelControllerInterface HighlightInterface MovingCursor Range TextHintInterface
+ecm_generate_headers(KTextEditor_CamelCase_HEADERS
+  HEADER_NAMES
+  AnnotationInterface CodeCompletionModelControllerInterface HighlightInterface MovingCursor Range TextHintInterface
   Cursor MarkInterface MovingInterface RecoveryInterface VariableInterface
   Document  MovingRange SearchInterface View
   Attribute CommandInterface DocumentCursor MessageInterface MovingRangeFeedback SessionConfigInterface
   CodeCompletionInterface ConfigInterface Editor TemplateInterface
   CodeCompletionModel ConfigPage ConfigPageInterface ModificationInterface TemplateInterface2
   Application MainWindow Plugin
-  MODULE_NAME "KTextEditor" PREFIX "KTextEditor" RELATIVE "ktexteditor" REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)
-    
+  PREFIX KTextEditor RELATIVE ktexteditor REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)
+
 # export headers to parent scope
 set (KTEXTEDITOR_PUBLIC_HEADERS ${KTEXTEDITOR_PUBLIC_HEADERS} PARENT_SCOPE)
 
@@ -15,4 +17,4 @@ set (KTEXTEDITOR_PUBLIC_HEADERS ${KTEXTEDITOR_PUBLIC_HEADERS} PARENT_SCOPE)
 install (FILES ${KTEXTEDITOR_PUBLIC_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/KTextEditor/ktexteditor COMPONENT Devel)
 
 # install CamelCase headers
-install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/KTextEditor/KTextEditor DESTINATION ${INCLUDE_INSTALL_DIR}/KTextEditor COMPONENT Devel)
+install(FILES ${KTextEditor_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/KTextEditor/KTextEditor COMPONENT Devel)
