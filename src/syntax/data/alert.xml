@@ -41,13 +41,13 @@
     </list>
     <list name="alerts_mid">
       <item> BUG </item>
-      <item> CAUTION </item>
       <item> FIXME </item>
       <item> DEPRECATED </item>
       <item> TASK </item>
       <item> TODO </item>
       <item> TBD </item>
       <item> WARNING </item>
+      <item> CAUTION </item>
       <item> NOLINT </item>
     </list>
     <list name="alerts_lo">
