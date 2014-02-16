@@ -3,8 +3,12 @@ add_subdirectory(include)
 
 # includes
 include_directories(
+  # for config.h
   ${CMAKE_BINARY_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/include/KTextEditor
+  
+  # for generated ktexteditor headers
+  ${CMAKE_CURRENT_BINARY_DIR}/include
+  
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/include/ktexteditor
