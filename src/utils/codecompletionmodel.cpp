@@ -64,7 +64,7 @@ QMap< int, QVariant > CodeCompletionModel::itemData(const QModelIndex &index) co
 {
     QMap<int, QVariant> ret = QAbstractItemModel::itemData(index);
 
-    for (int i = CompletionRole; i <= LastItemDataRole; ++i) {
+    for (int i = CompletionRole; i <= AccessibilityAccept; ++i) {
         QVariant v = data(index, i);
         if (v.isValid()) {
             ret.insert(i, v);

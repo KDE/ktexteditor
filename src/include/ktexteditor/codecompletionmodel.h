@@ -361,8 +361,6 @@ public:
 
         LastExtraItemDataRole
     };
-    // KDE5 remove
-    static const int LastItemDataRole = AccessibilityAccept;
 
     void setRowCount(int rowCount);
 
