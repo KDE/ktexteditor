@@ -1074,7 +1074,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     } else if (dataname == QLatin1String("RangeDetect")) {
         tmpItem = (new KateHlRangeDetect(attr, context, regionId, regionId2, chr, chr1));
     } else if (dataname == QLatin1String("LineContinue")) {
-        tmpItem = (new KateHlLineContinue(attr, context, regionId, regionId2));
+        tmpItem = (new KateHlLineContinue(attr, context, regionId, regionId2, chr));
     } else if (dataname == QLatin1String("StringDetect")) {
         tmpItem = (new KateHlStringDetect(attr, context, regionId, regionId2, stringdata, insensitive));
     } else if (dataname == QLatin1String("WordDetect")) {

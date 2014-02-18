@@ -250,7 +250,7 @@ public:
 class KateHlLineContinue : public KateHlItem
 {
 public:
-    KateHlLineContinue(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
+    KateHlLineContinue(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, QChar c);
 
     virtual bool endEnable(QChar c)
     {
@@ -261,6 +261,8 @@ public:
     {
         return true;
     }
+private:
+    QChar m_trailer;
 };
 
 class KateHlCStringChar : public KateHlItem
