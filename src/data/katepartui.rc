@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="KatePartView" version="68">
+<kpartgui name="KatePartView" version="69">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -40,11 +40,15 @@
     </Menu>
     <Action name="edit_replace" group="edit_find_merge" />
     <Separator group="edit_find_merge" />
-    <Menu name="edit_matching_bracket" group="edit_find_merge"><text>Matching Bracket</text>
-        <Action name="to_matching_bracket" group="edit_matching_bracket" />
-        <Action name="select_matching_bracket" group="edit_matching_bracket" />
+    <Menu name="edit_goto" group="edit_goto"><text>Go To</text>
+      <Action name="to_matching_bracket" group="edit_goto" />
+      <Action name="select_matching_bracket" group="edit_goto" />
+      <Separator group="edit_goto" />
+      <Action name="modified_line_up" group="edit_goto"/>
+      <Action name="modified_line_down" group="edit_goto"/>
+      <Separator group="edit_goto" />
+      <Action name="go_goto_line" group="edit_goto"/>
     </Menu>
-    <Action name="go_goto_line" group="edit_find_merge"/>
   </Menu>
 
   <Menu name="view" noMerge="1"><text>&amp;View</text>

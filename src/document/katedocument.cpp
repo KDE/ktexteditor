@@ -5627,6 +5627,21 @@ bool KTextEditor::DocumentPrivate::isComment(int line, int column)
     return defaultStyle == KTextEditor::HighlightInterface::dsComment;
 }
 
+int KTextEditor::DocumentPrivate::findModifiedLine(int startLine, bool down)
+{
+    const int offset = down ? 1 : -1;
+    const int lineCount = lines();
+    while (startLine >= 0 && startLine < lineCount) {
+        Kate::TextLine tl = m_buffer->plainLine(startLine);
+        if (tl && (tl->markedAsModified() || tl->markedAsSavedOnDisk())) {
+            return startLine;
+        }
+        startLine += offset;
+    }
+
+    return -1;
+}
+
 //BEGIN KTextEditor::MessageInterface
 bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 {
