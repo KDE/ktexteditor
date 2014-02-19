@@ -372,7 +372,7 @@ public:
      */
     virtual QChar characterAt(const Cursor &position) const = 0;
 
-    /*
+    /**
      * Get the word at the text position \p cursor.
      * The returned word is defined by the word boundaries to the left and
      * right starting at \p cursor. The algorithm takes highlighting information
@@ -389,7 +389,7 @@ public:
      */
     virtual QString wordAt(const KTextEditor::Cursor &cursor) const = 0;
 
-    /*
+    /**
      * Get the text range for the word located under the text position \p cursor.
      * The returned word is defined by the word boundaries to the left and
      * right starting at \p cursor. The algorithm takes highlighting information
@@ -457,13 +457,13 @@ public:
      * Check whether \p line currently contains unsaved data.
      * If \p line contains unsaved data, \e true is returned, otherwise \e false.
      * When the user saves the file, a modified line turns into a \e saved line.
-     * In this case lineModified() returns \e false and in its stead lineSaved()
+     * In this case isLineModified() returns \e false and in its stead isLineSaved()
      * returns \e true.
      * \param line line to query
-     * \see lineSaved()
+     * \see isLineSaved(), isLineTouched()
      * \since 5.0
      */
-    virtual bool lineModified(int line) const = 0;
+    virtual bool isLineModified(int line) const = 0;
 
     /**
      * Check whether \p line currently contains only saved text.
@@ -474,19 +474,19 @@ public:
      * In case \p line was touched and currently contains only saved data,
      * \e true is returned, otherwise \e false.
      * \param line line to query
-     * \see lineModified()
+     * \see isLineModified(), isLineTouched()
      * \since 5.0
      */
-    virtual bool lineSaved(int line) const = 0;
+    virtual bool isLineSaved(int line) const = 0;
 
     /**
      * Check whether \p line was touched since the file was opened.
-     * This equals the statement lineModified() || lineSaved().
+     * This equals the statement isLineModified() || isLineSaved().
      * \param line line to query
-     * \see lineModified(), lineSaved()
+     * \see isLineModified(), isLineSaved()
      * \since 5.0
      */
-    virtual bool lineTouched(int line) const = 0;
+    virtual bool isLineTouched(int line) const = 0;
 
     /**
      * End position of the document.

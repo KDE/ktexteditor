@@ -798,7 +798,7 @@ int KTextEditor::DocumentPrivate::lineLength(int line) const
     return l->length();
 }
 
-bool KTextEditor::DocumentPrivate::lineModified(int line) const
+bool KTextEditor::DocumentPrivate::isLineModified(int line) const
 {
     if (line < 0 || line >= lines()) {
         return false;
@@ -810,7 +810,7 @@ bool KTextEditor::DocumentPrivate::lineModified(int line) const
     return l->markedAsModified();
 }
 
-bool KTextEditor::DocumentPrivate::lineSaved(int line) const
+bool KTextEditor::DocumentPrivate::isLineSaved(int line) const
 {
     if (line < 0 || line >= lines()) {
         return false;
@@ -822,7 +822,7 @@ bool KTextEditor::DocumentPrivate::lineSaved(int line) const
     return l->markedAsSavedOnDisk();
 }
 
-bool KTextEditor::DocumentPrivate::lineTouched(int line) const
+bool KTextEditor::DocumentPrivate::isLineTouched(int line) const
 {
     if (line < 0 || line >= lines()) {
         return false;

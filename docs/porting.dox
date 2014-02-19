@@ -57,6 +57,8 @@ The following interfaces were changed:
    returns the word under \p position.
  - \p KTextEditor::Document::character() was renamed to
    \p KTextEditor::Document::characterAt()
+ - \p KTextEditor::Document::isLineModified(), \p KTextEditor::Document::isLineSaved(),
+   and \p KTextEditor::Document::isLineTouched() are new.
  - \p KTextEditor::Document::readWriteChanged() \n
    This signal is emitted whenever the read-only state of the document changes.
  - \p KTextEditor::View now has a status bar by default. It can be controlled
@@ -66,18 +68,18 @@ The following interfaces were changed:
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
- - KTextEditor::Application (since KDE 5.0) \n
+ - \p KTextEditor::Application (since KDE 5.0) \n
    The Application is an interface that is implemented by the host application.
    It provides information about the documents managed by the application as well
    as convenience functions for instance to open or close documents.
- - KTextEditor::MainWindow (since KDE 5.0) \n
+ - \p KTextEditor::MainWindow (since KDE 5.0) \n
    A MainWindow usually represents a toplevel window of the application.
    It manages the views and also provides an accessor to the MainWindow's active
    view through MainWindow::activeView(). The provides signals that indicate that
    the active view has changed, or that a view has been created. Other than that,
    it for instance allows to create tool views and similar convenience functions
    to show view bars.
- - KTextEditor::MessageInterface (since KDE 4.11) \n
+ - \p KTextEditor::MessageInterface (since KDE 4.11) \n
    Class providing notifications to the user in a KTextEditor::View.
 
 \section kte_port_enhanced_classes Significantly Enhanced Classes
@@ -101,17 +103,17 @@ The following classes have been significantly enhanced:
 
 \section kte_port_new_classes New Classes
 The following classes are either new, or were added late in the KDE 4 release cycle:
- - KTextEditor::DocumentCursor \n
+ - \p KTextEditor::DocumentCursor \n
    The DocumentCursor is a cursor associated to a KTextEditor::Document. It
    provides convenience functions such as for text navigation. However, it does
    not automatically maintain its position when the document's contents changes.
- - KTextEditor::MovingCursor (since KDE 4.5) \n
+ - \p KTextEditor::MovingCursor (since KDE 4.5) \n
    The MovingCursor was introduced in KDE 4.5 as replacement to the SmartCursor.
    A MovingCursor is bound to a specific Document and maintains its position.
- - KTextEditor::MovingRange \n
+ - \p KTextEditor::MovingRange \n
    The MovingRange was introduced in KDE 4.5 as replacement to the SmartRange.
    A MovingRange is bound to a specific Document and maintains its position.
- - KTextEditor::MovingRangeFeedback (since KDE 4.5) \n
+ - \p KTextEditor::MovingRangeFeedback (since KDE 4.5) \n
    Class providing notifications of changes to a KTextEditor::MovingRange.
 
 \section kte_port_plugins Plugin Architecture Changes

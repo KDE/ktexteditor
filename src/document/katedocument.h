@@ -202,9 +202,9 @@ public:
     virtual QString wordAt(const KTextEditor::Cursor &cursor) const;
     virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const;
     virtual int lines() const;
-    virtual bool lineModified(int line) const Q_DECL_OVERRIDE;
-    virtual bool lineSaved(int line) const Q_DECL_OVERRIDE;
-    virtual bool lineTouched(int line) const Q_DECL_OVERRIDE;
+    virtual bool isLineModified(int line) const Q_DECL_OVERRIDE;
+    virtual bool isLineSaved(int line) const Q_DECL_OVERRIDE;
+    virtual bool isLineTouched(int line) const Q_DECL_OVERRIDE;
     virtual KTextEditor::Cursor documentEnd() const;
     virtual int totalCharacters() const;
     virtual int lineLength(int line) const;
