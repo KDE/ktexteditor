@@ -576,6 +576,16 @@ void KateScriptDocument::editEnd()
     m_document->editEnd();
 }
 
+bool KateScriptDocument::isValidTextPosition(int line, int column)
+{
+    return m_document->isValidTextPosition(KTextEditor::Cursor(line, column));
+}
+
+bool KateScriptDocument::isValidTextPosition(const KTextEditor::Cursor& cursor)
+{
+    return m_document->isValidTextPosition(cursor);
+}
+
 int KateScriptDocument::firstColumn(int line)
 {
     Kate::TextLine textLine = m_document->plainKateTextLine(line);

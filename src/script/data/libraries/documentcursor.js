@@ -71,7 +71,7 @@ DocumentCursor.invalid = function(doc) {
 
 
 DocumentCursor.prototype.isValidTextPosition = function() {
-  return this.isValid() && this.line < this.document.lines() && this.column <= this.document.lineLength(this.line);
+  return this.document.isValidTextPosition(this.line, this.column);
 }
 
 DocumentCursor.prototype.atStartOfLine = function() {

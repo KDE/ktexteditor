@@ -119,6 +119,8 @@ public:
 
     Q_INVOKABLE KTextEditor::Range documentRange();
     Q_INVOKABLE KTextEditor::Cursor documentEnd();
+    Q_INVOKABLE bool isValidTextPosition(int line, int column);
+    Q_INVOKABLE bool isValidTextPosition(const KTextEditor::Cursor& cursor);
 
     /**
      * Get the syntax highlighting attribute at a given position in the document.
