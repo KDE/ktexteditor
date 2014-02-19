@@ -5627,7 +5627,7 @@ bool KTextEditor::DocumentPrivate::isComment(int line, int column)
     return defaultStyle == KTextEditor::HighlightInterface::dsComment;
 }
 
-int KTextEditor::DocumentPrivate::findModifiedLine(int startLine, bool down)
+int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
 {
     const int offset = down ? 1 : -1;
     const int lineCount = lines();

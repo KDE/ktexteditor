@@ -94,6 +94,10 @@ public:
     Q_INVOKABLE bool wrapLine(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE void joinLines(int startLine, int endLine);
     Q_INVOKABLE int lines();
+    Q_INVOKABLE bool isLineModified(int line);
+    Q_INVOKABLE bool isLineSaved(int line);
+    Q_INVOKABLE bool isLineTouched(int line);
+    Q_INVOKABLE int findTouchedLine(int startLine, bool down);
     Q_INVOKABLE int length();
     Q_INVOKABLE int lineLength(int line);
     Q_INVOKABLE void editBegin();

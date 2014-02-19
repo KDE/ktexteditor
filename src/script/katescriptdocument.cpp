@@ -536,6 +536,26 @@ int KateScriptDocument::lines()
     return m_document->lines();
 }
 
+bool KateScriptDocument::isLineModified(int line)
+{
+    return m_document->isLineModified(line);
+}
+
+bool KateScriptDocument::isLineSaved(int line)
+{
+    return m_document->isLineSaved(line);
+}
+
+bool KateScriptDocument::isLineTouched(int line)
+{
+    return m_document->isLineTouched(line);
+}
+
+int KateScriptDocument::findTouchedLine(int startLine, bool down)
+{
+    return m_document->findTouchedLine(startLine, down);
+}
+
 int KateScriptDocument::length()
 {
     return m_document->totalCharacters();

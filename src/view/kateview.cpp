@@ -2826,7 +2826,7 @@ void KTextEditor::ViewPrivate::shiftToMatchingBracket()
 void KTextEditor::ViewPrivate::toPrevModifiedLine()
 {
     const int startLine = m_viewInternal->m_cursor.line() - 1;
-    const int line = m_doc->findModifiedLine(startLine, false);
+    const int line = m_doc->findTouchedLine(startLine, false);
     if (line >= 0) {
         KTextEditor::Cursor c(line, 0);
         m_viewInternal->updateSelection(c, false);
@@ -2837,7 +2837,7 @@ void KTextEditor::ViewPrivate::toPrevModifiedLine()
 void KTextEditor::ViewPrivate::toNextModifiedLine()
 {
     const int startLine = m_viewInternal->m_cursor.line() + 1;
-    const int line = m_doc->findModifiedLine(startLine, true);
+    const int line = m_doc->findTouchedLine(startLine, true);
     if (line >= 0) {
         KTextEditor::Cursor c(line, 0);
         m_viewInternal->updateSelection(c, false);

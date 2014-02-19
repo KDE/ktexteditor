@@ -1206,7 +1206,12 @@ public:
     bool isComment(int line, int column);
 
 public:
-    int findModifiedLine(int startLine, bool down);
+    /**
+     * Find the next modified/saved line, starting at @p startLine. If @p down
+     * is \e true, the search is performed downwards, otherwise upwards.
+     * @return the touched line in the requested search direction, or -1 if not found
+     */
+    int findTouchedLine(int startLine, bool down);
 
 private Q_SLOTS:
     /**

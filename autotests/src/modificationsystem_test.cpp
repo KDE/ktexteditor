@@ -720,17 +720,17 @@ void ModificationSystemTest::testNavigation()
 
     // test down navigation:
     const bool down = true;
-    QCOMPARE(doc.findModifiedLine(-1, down), -1);
-    QCOMPARE(doc.findModifiedLine(0, down), 0);
-    QCOMPARE(doc.findModifiedLine(1, down), 2);
-    QCOMPARE(doc.findModifiedLine(2, down), 2);
-    QCOMPARE(doc.findModifiedLine(3, down), -1);
+    QCOMPARE(doc.findTouchedLine(-1, down), -1);
+    QCOMPARE(doc.findTouchedLine(0, down), 0);
+    QCOMPARE(doc.findTouchedLine(1, down), 2);
+    QCOMPARE(doc.findTouchedLine(2, down), 2);
+    QCOMPARE(doc.findTouchedLine(3, down), -1);
 
     // test up navigation
     const bool up = false;
-    QCOMPARE(doc.findModifiedLine(-1, up), -1);
-    QCOMPARE(doc.findModifiedLine(0, up), 0);
-    QCOMPARE(doc.findModifiedLine(1, up), 0);
-    QCOMPARE(doc.findModifiedLine(2, up), 2);
-    QCOMPARE(doc.findModifiedLine(3, up), -1);
+    QCOMPARE(doc.findTouchedLine(-1, up), -1);
+    QCOMPARE(doc.findTouchedLine(0, up), 0);
+    QCOMPARE(doc.findTouchedLine(1, up), 0);
+    QCOMPARE(doc.findTouchedLine(2, up), 2);
+    QCOMPARE(doc.findTouchedLine(3, up), -1);
 }
