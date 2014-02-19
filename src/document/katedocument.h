@@ -201,6 +201,7 @@ public:
     virtual QChar characterAt(const KTextEditor::Cursor &position) const;
     virtual QString wordAt(const KTextEditor::Cursor &cursor) const;
     virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const;
+    virtual bool isValidTextPosition(const KTextEditor::Cursor& cursor) const;
     virtual int lines() const;
     virtual bool isLineModified(int line) const Q_DECL_OVERRIDE;
     virtual bool isLineSaved(int line) const Q_DECL_OVERRIDE;

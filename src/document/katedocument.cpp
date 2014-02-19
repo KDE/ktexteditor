@@ -412,6 +412,28 @@ KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(const KTextEditor::
     return KTextEditor::Range(line, start, line, end);
 }
 
+bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor& cursor) const
+{
+    const int ln = cursor.line();
+    const int col = cursor.column();
+    // cursor in document range?
+    if (ln < 0 || col < 0 || ln >= lines() || col > lineLength(ln)) {
+        return false;
+    }
+
+    const QString str = line(ln);
+    Q_ASSERT(str.length() >= col);
+
+    // cursor at end of line?
+    const int len = lineLength(ln);
+    if (col == len) {
+        return true;
+    }
+
+    // cursor in the middle of a surrogate?
+    return ! str.at(col).isLowSurrogate();
+}
+
 QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &range, bool blockwise) const
 {
     QStringList ret;

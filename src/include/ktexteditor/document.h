@@ -407,10 +407,7 @@ public:
      */
     virtual KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const = 0;
 
-    // TODO: KDE5 add this function (Sven Brauch, Dominik Haumann, Milian Wolff)
-    //       and use this in Kate Part's text selection to disallow seleting
-    //       half surrogates.
-    /*
+    /**
      * Get whether \p cursor is a valid text position.
      * A cursor position at (line, column) is valid, if
      * - line >= 0 and line < lines() holds, and
@@ -422,10 +419,9 @@ public:
      * \param cursor cursor position to check for validity
      * \return true, if \p cursor is a valid text position, otherwise \p false
      *
-     * \see KTextEditor::Range::isValid()
+     * \since 5.0
      */
-    // in impl, use QChar::isHighSurrogate() + QChar::isLowSurrogate()
-    //bool isValidTextPosition(const KTextEditor::Cursor& cursor) const = 0;
+    virtual bool isValidTextPosition(const KTextEditor::Cursor& cursor) const = 0;
 
     /**
      * Get the document content within the given \p range.
