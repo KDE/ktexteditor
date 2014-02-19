@@ -722,3 +722,37 @@ void ModificationSystemTest::testUnWrapLine2Empty()
     delete doc;
 }
 
+void ModificationSystemTest::testNavigation()
+{
+    KTextEditor::DocumentPrivate doc;
+
+    const QString content("0\n"
+                          "1\n"
+                          "2");
+    doc.setText(content);
+
+    // clear all modification flags, forces no flags
+    doc.setModified(false);
+    doc.undoManager()->updateLineModifications();
+    clearModificationFlags(&doc);
+
+    // touch line 0 and line 2:
+    doc.insertText(Cursor(0, 1), QLatin1String("-"));
+    doc.insertText(Cursor(2, 1), QLatin1String("-"));
+
+    // test down navigation:
+    const bool down = true;
+    QCOMPARE(doc.findModifiedLine(-1, down), -1);
+    QCOMPARE(doc.findModifiedLine(0, down), 0);
+    QCOMPARE(doc.findModifiedLine(1, down), 2);
+    QCOMPARE(doc.findModifiedLine(2, down), 2);
+    QCOMPARE(doc.findModifiedLine(3, down), -1);
+
+    // test up navigation
+    const bool up = false;
+    QCOMPARE(doc.findModifiedLine(-1, up), -1);
+    QCOMPARE(doc.findModifiedLine(0, up), 0);
+    QCOMPARE(doc.findModifiedLine(1, up), 0);
+    QCOMPARE(doc.findModifiedLine(2, up), 2);
+    QCOMPARE(doc.findModifiedLine(3, up), -1);
+}

@@ -49,6 +49,8 @@ private Q_SLOTS:
     void testUnWrapLine();
     void testUnWrapLine1Empty();
     void testUnWrapLine2Empty();
+
+    void testNavigation();
 };
 
 #endif
