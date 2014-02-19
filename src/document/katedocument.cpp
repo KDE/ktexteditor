@@ -426,12 +426,13 @@ bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor
 
     // cursor at end of line?
     const int len = lineLength(ln);
-    if (col == len) {
+    if (col == 0 || col == len) {
         return true;
     }
 
-    // cursor in the middle of a surrogate?
-    return ! str.at(col).isLowSurrogate();
+    // cursor in the middle of a valid utf32-surrogate?
+    return (! str.at(col).isLowSurrogate())
+        || (! str.at(col-1).isHighSurrogate());
 }
 
 QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &range, bool blockwise) const

@@ -36,6 +36,8 @@ private Q_SLOTS:
 
     void testConvenienceApi();
     void testOperators();
+
+    void testValidTextPosition();
 };
 
 #endif

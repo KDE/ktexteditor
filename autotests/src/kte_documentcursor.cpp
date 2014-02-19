@@ -20,12 +20,6 @@
 #include "kte_documentcursor.h"
 
 #include <katedocument.h>
-#include <katebuffer.h>
-#include <kateglobal.h>
-#include <kateview.h>
-#include <kateconfig.h>
-#include <katesearchbar.h>
-#include <ktexteditor/movingrange.h>
 #include <ktexteditor/documentcursor.h>
 
 #include <QtTestWidgets>
@@ -279,6 +273,60 @@ void DocumentCursorTest::testOperators()
     QVERIFY(!(c14 < m02));
     QVERIFY(c14 > m02);
     QVERIFY(c14 != m02);
+}
+
+void DocumentCursorTest::testValidTextPosition()
+{
+    // test: utf-32 characters that are visually only one single character (Unicode surrogates)
+    // Inside such a utf-32 character, the text position is not valid.
+    KTextEditor::DocumentPrivate doc;
+    DocumentCursor c(&doc);
+
+    // 0xfffe: byte-order-mark (BOM)
+    // 0x002d: '-'
+    // 0x3dd8, 0x38de: an utf32-surrogate, see http://www.fileformat.info/info/unicode/char/1f638/browsertest.htm
+    const unsigned short line0[] = {0xfffe, 0x2d00, 0x3dd8, 0x38de, 0x2d00}; // -xx- where xx is one utf32 char
+    const unsigned short line1[] = {0xfffe, 0x2d00, 0x3dd8, 0x2d00, 0x2d00}; // -x-- where x is a high surrogate (broken utf32)
+    const unsigned short line2[] = {0xfffe, 0x2d00, 0x2d00, 0x38de, 0x2d00}; // --x- where x is a low surrogate (broken utf32)
+    doc.setText(QString::fromUtf16(line0, 5));
+    doc.insertLine(1, QString::fromUtf16(line1, 5));
+    doc.insertLine(2, QString::fromUtf16(line2, 5));
+
+    // set to true if you want to see the contents
+    const bool showView = false;
+    if (showView) {
+        doc.createView(0)->show();
+        QTest::qWait(5000);
+    }
+
+    // line 0: invalid in utf-32 char
+    c.setPosition(0, 0); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(0, 1); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(0, 2); QVERIFY(! c.isValidTextPosition());
+    c.setPosition(0, 3); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(0, 4); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(0, 5); QVERIFY(! c.isValidTextPosition());
+
+    // line 1, valid in broken utf-32 char (2nd part missing)
+    c.setPosition(1, 0); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(1, 1); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(1, 2); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(1, 3); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(1, 4); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(1, 5); QVERIFY(! c.isValidTextPosition());
+
+    // line 2, valid in broken utf-32 char (1st part missing)
+    c.setPosition(2, 0); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(2, 1); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(2, 2); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(2, 3); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(2, 4); QVERIFY(  c.isValidTextPosition());
+    c.setPosition(2, 5); QVERIFY(! c.isValidTextPosition());
+
+    // test out-of-range
+    c.setPosition(-1, 0); QVERIFY(!c.isValidTextPosition());
+    c.setPosition(3, 0); QVERIFY(!c.isValidTextPosition());
+    c.setPosition(0, -1); QVERIFY(!c.isValidTextPosition());
 }
 
 #include "moc_kte_documentcursor.cpp"
