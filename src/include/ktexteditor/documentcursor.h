@@ -158,22 +158,28 @@ private:
 public:
 
     /**
-     * Returns whether the current position of this cursor is a valid position,
+     * Check if the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
-     * \return \e true , if the cursor position is valid, otherwise \e false
+     * \return \e true, if the cursor position is valid, otherwise \e false
+     * \see KTextEditor::Cursor::isValid(), isValidTextPosition()
      */
     inline bool isValid() const {
-        return line() >= 0 && column() >= 0;
+        return m_cursor.isValid();
     }
 
     /**
-     * Check whether the current position of this cursor is a valid text
-     * position.
-     * \return \e true , if the cursor is a valid text position, otherwise \e false
+     * Check if this cursor is currently at a valid text position.
+     * A cursor position at (line, column) is valid, if
+     * - line >= 0 and line < lines() holds, and
+     * - column >= 0 and column <= lineLength(column).
+     *
+     * The text position is also invalid if it is inside a Unicode surrogate.
+     * Therefore, use this function when iterating over the characters of a line.
+     *
+     * \see KTextEditor::Document::isValidTextPosition(), isValid()
      */
-    // TODO KDE5: use KTE::Document::isValidTextPosition()
     inline bool isValidTextPosition() const {
-        return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
+        return document()->isValidTextPosition(m_cursor);
     }
 
     /**
