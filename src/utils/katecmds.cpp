@@ -1002,11 +1002,17 @@ KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEd
 
 Range KateCommands::SedReplace::InteractiveSedReplacer::currentMatch()
 {
-    const Range currentMatch = fullCurrentMatch().first();
-    if (currentMatch.start().line() > m_endLine) {
+    QVector<Range> matches = fullCurrentMatch();
+
+    if (matches.isEmpty()) {
         return Range::invalid();
     }
-    return currentMatch;
+
+    if (matches.first().start().line() > m_endLine) {
+        return Range::invalid();
+    }
+
+    return matches.first();
 }
 
 void KateCommands::SedReplace::InteractiveSedReplacer::skipCurrentMatch()
@@ -1031,7 +1037,10 @@ void KateCommands::SedReplace::InteractiveSedReplacer::replaceCurrentMatch()
 
     // Begin next search from directly after replacement.
     if (!replacementText.contains(QLatin1Char('\n'))) {
-        m_currentSearchPos = Cursor(currentMatch.start().line(), currentMatch.start().column() + replacementText.length());
+        const int moveChar = currentMatch.isEmpty() ? 1 : 0; // if the search was for \s*, make sure we advance a char
+        const int col = currentMatch.start().column() + replacementText.length() + moveChar;
+
+        m_currentSearchPos = Cursor(currentMatch.start().line(), col);
     } else {
         m_currentSearchPos = Cursor(currentMatch.start().line() + replacementText.count(QLatin1Char('\n')),
                                     replacementText.length() - replacementText.lastIndexOf(QLatin1Char('\n')) - 1);
@@ -1078,6 +1087,10 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessa
 
 const QVector< Range > KateCommands::SedReplace::InteractiveSedReplacer::fullCurrentMatch()
 {
+    if (m_currentSearchPos > m_doc->documentEnd()) {
+        return QVector<Range>();
+    }
+
     return m_regExpSearch.search(m_findPattern, Range(m_currentSearchPos, m_doc->documentEnd()));
 }
 
