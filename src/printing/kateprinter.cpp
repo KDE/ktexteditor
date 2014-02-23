@@ -92,7 +92,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
         parentWidget = QApplication::activeWindow();
     }
 
-    QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, KdePrint::SystemSelectsPages, tabs, parentWidget));
+    QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, tabs, parentWidget));
 
     if (m_view && m_view->selection()) {
         printer->setPrintRange(QPrinter::Selection);
