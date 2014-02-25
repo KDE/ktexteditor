@@ -28,12 +28,11 @@
 
 #include <KConfigGroup>
 #include <KSharedConfig>
-#include <KDEPrintDialog>
 
 #include <QApplication>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QPrintPreviewDialog>
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtPrintSupport/QPrintPreviewDialog>
 
 #include "printconfigwidgets.h"
 #include "printpainter.h"
@@ -92,7 +91,8 @@ bool KatePrinterPrivate::print(QPrinter *printer)
         parentWidget = QApplication::activeWindow();
     }
 
-    QScopedPointer<QPrintDialog> printDialog(KdePrint::createPrintDialog(printer, tabs, parentWidget));
+    QScopedPointer<QPrintDialog> printDialog(new QPrintDialog(printer, parentWidget));
+    printDialog->setOptionTabs(tabs);
 
     if (m_view && m_view->selection()) {
         printer->setPrintRange(QPrinter::Selection);

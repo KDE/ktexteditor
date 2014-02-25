@@ -236,13 +236,13 @@ PUBLIC
   KF5::Parts
 PRIVATE
   Qt5::Script
+  Qt5::PrintSupport
   KF5::I18n
   KF5::Archive
   KF5::GuiAddons
   KF5::IconThemes
   KF5::ItemViews
   KF5::KIOFileWidgets
-  KF5::PrintUtils
   KF5::SonnetCore
 )
 
