@@ -31,32 +31,21 @@ ecm_setup_version(
 set(REQUIRED_QT_VERSION "5.2.0")
 
 # Required Qt5 components to build this framework
-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Script)
+find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Script PrintSupport)
 
-# Required KF5 frameworks
-if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  # KF5 frameworks
-  #
-  # Content of this block is only executed when building the framework
-  # standalone. KF5 frameworks required to build this framework should be added
-  # here. It is done this way to avoid chicken-and-egg problem when building
-  # KF5 as a whole: one cannot depend on packages which have not been installed
-  # yet. For example:
-  find_package(KF5Archive ${KF5_VERSION} REQUIRED)
-  find_package(KF5Config ${KF5_VERSION} REQUIRED)
-  find_package(KF5GuiAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5I18n ${KF5_VERSION} REQUIRED)
-  find_package(KF5JobWidgets ${KF5_VERSION} REQUIRED)
-  find_package(KF5KIO ${KF5_VERSION} REQUIRED)
-  find_package(KF5Parts ${KF5_VERSION} REQUIRED)
-  find_package(KF5PrintUtils ${KF5_VERSION} REQUIRED)
-  find_package(KF5Sonnet ${KF5_VERSION} REQUIRED)
-  find_package(KF5XmlGui ${KF5_VERSION} REQUIRED)
-endif()
+find_package(KF5Archive ${KF5_VERSION} REQUIRED)
+find_package(KF5Config ${KF5_VERSION} REQUIRED)
+find_package(KF5GuiAddons ${KF5_VERSION} REQUIRED)
+find_package(KF5I18n ${KF5_VERSION} REQUIRED)
+find_package(KF5KIO ${KF5_VERSION} REQUIRED)
+find_package(KF5Parts ${KF5_VERSION} REQUIRED)
+find_package(KF5Sonnet ${KF5_VERSION} REQUIRED)
 
 # Subdirectories
 add_subdirectory(src)
-add_subdirectory(autotests)
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
+endif()
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5TextEditor")
@@ -94,6 +83,4 @@ configure_file (config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 # let our config.h be found first in any case
 include_directories (BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-endif()
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
