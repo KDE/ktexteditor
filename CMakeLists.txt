@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(KTextEditor)
 
 # ECM setup
-find_package(ECM 0.0.10 REQUIRED NO_MODULE)
+find_package(ECM 0.0.11 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(FeatureSummary)
@@ -17,7 +17,7 @@ include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
-set(KF5_VERSION "4.96.0")
+set(KF5_VERSION "4.97.0")
 
 ecm_setup_version(
   ${KF5_VERSION}
