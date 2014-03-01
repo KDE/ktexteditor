@@ -2,7 +2,7 @@
  * name: C++/boost Style
  * license: LGPL
  * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 21
+ * revision: 30
  * kate-version: 3.4
  * priority: 10
  * indent-languages: C++, C++/Qt4
@@ -31,12 +31,14 @@
  *
  * Ok, you've been warned :-)
  *
+ * More info available here: http://zaufi.github.io/programming/2013/11/29/kate-cppstyle-indenter/
+ *
  * Some settings it assumes being in effect:
- * indent-width 4;
- * space-indent true;
- * auto-brackets true;
- * replace-tabs true;
- * replace-tabs-save true;
+ * - indent-width 4;
+ * - space-indent true;
+ * - auto-brackets true; <-- TODO REALLY?
+ * - replace-tabs true;
+ * - replace-tabs-save true;
  *
  * \todo Better to check (assert) some of that modelines...
  */
@@ -44,6 +46,7 @@
 // required katepart js libraries
 require ("range.js");
 require ("string.js");
+require ("utils.js")
 
 // specifies the characters which should trigger indent, beside the default '\n'
 // ':' is for `case'/`default' and class access specifiers: public, protected, private
@@ -59,20 +62,9 @@ triggerCharacters = "{}()[]<>/:;,#\\?!|&/%.@ '\"=*^";
 
 var debugMode = false;
 
-/// \todo Move to a separate library?
-function dbg()
-{
-    if (debugMode)
-    {
-        debug.apply(this, arguments);
-    }
-}
-
 //BEGIN global variables and functions
 var gIndentWidth = 4;
 var gSameLineCommentStartAt = 60;                           ///< Position for same-line-comments (inline comments)
-var gMode = "C++";
-var gAttr = "Normal Text";
 var gBraceMap = {
     '(': ')', ')': '('
   , '<': '>', '>': '<'
@@ -81,94 +73,57 @@ var gBraceMap = {
   };
 //END global variables and functions
 
-/// Check if given line/column located withing a braces
-function isInsideBraces(line, column, ch)
-{
-    var cursor = document.anchor(line, column, ch);
-    return cursor.isValid();
-}
-
 /**
- * Split a given text line by comment into parts \e before and \e after the comment
- * \return an object w/ the following fields:
- *   \li \c hasComment -- boolean: \c true if comment present on the line, \c false otherwise
- *   \li \c before -- text before the comment
- *   \li \c after -- text of the comment
- *
- * \todo Make it smart and check highlighting style where \c '//' string is found.
- * \todo Possible it would be quite reasonable to analyze a type of the comment:
- * Is it C++ or Doxygen? Is it single or w/ some text before?
+ * Try to (re)align (to 60th position) inline comment if present
+ * \return \c true if comment line was moved above
  */
-function splitByComment(text)
+function alignInlineComment(line)
 {
-    var commentStartPos = text.indexOf("//");
-    var before = "";
-    var after = "";
-    var found = commentStartPos != -1;
-    if (found)
+    // Check is there any comment on the current line
+    var sc = splitByComment(line);
+    // Did we found smth and if so, make sure it is not a string or comment...
+    if (sc.hasComment && !isStringOrComment(line, sc.before.length - 1))
     {
-        before = text.substring(0, commentStartPos);
-        after = text.substring(commentStartPos + 2, text.length);
+        var rbefore = sc.before.rtrim();
+        var cursor = view.cursorPosition();
+        /// \attention Kate has a BUG: even if everything is Ok and no realign
+        /// required, document gets modified anyway! So condition below
+        /// designed to prevent document modification w/o real actions won't
+        /// help anyway :-( Need to fix Kate before!
+        if (rbefore.length < gSameLineCommentStartAt && sc.before.length != gSameLineCommentStartAt)
+        {
+            // Ok, test on the line is shorter than needed.
+            // But what about current padding?
+            if (sc.before.length < gSameLineCommentStartAt)
+                // Need to add some padding
+                document.insertText(
+                    line
+                  , sc.before.length
+                  , String().fill(' ', gSameLineCommentStartAt - sc.before.length)
+                  );
+            else
+                // Need to remove a redundant padding
+                document.removeText(line, gSameLineCommentStartAt, line, sc.before.length);
+            // Keep cursor at the place we've found it before
+            view.setCursorPosition(cursor);
+        }
+        else if (gSameLineCommentStartAt < rbefore.length)
+        {
+            // Move inline comment before the current line
+            var startPos = document.firstColumn(line);
+            var currentLineText = String().fill(' ', startPos) + "//" + sc.after.rtrim() + "\n";
+            document.removeText(line, rbefore.length, line, document.lineLength(line));
+            document.insertText(line, 0, currentLineText);
+            // Keep cursor at the place we've found it before
+            view.setCursorPosition(new Cursor(line + 1, cursor.column));
+            return true;
+        }
     }
-    else before = text;
-    return {hasComment: found, before: before, after: after};
+    return false;
 }
 
-/**
- * \brief Remove possible comment from text
- */
-function stripComment(text)
-{
-    var result = splitByComment(text);
-    if (result.hasComment)
-        return result.before.rtrim();
-    return text.rtrim();
-}
 
-/// Return \c true if attribute at given position is a \e Comment
-function isComment(line, column)
-{
-    // Check if we are not withing a string or a comment
-    var c = new Cursor(line, column);
-    var mode = document.attributeName(c);
-    dbg("isComment: Check mode @ " + c + ": " + mode);
-    return gMode == "Doxygen" || document.isComment(c);
-}
-
-/// Return \c true if attribute at given position is a \e String
-function isString(line, column)
-{
-    // Check if we are not withing a string or a comment
-    var c = new Cursor(line, column);
-    var mode = document.attributeName(c);
-    dbg("isString: Check mode @ " + c + ": " + mode);
-    return document.isString(c) || document.isChar(c);
-}
-
-/// Return \c true if attribute at given position is a \e String or \e Comment
-function isStringOrComment(line, column)
-{
-    // Check if we are not withing a string or a comment
-    var c = new Cursor(line, column);
-    var mode = document.attributeName(c);
-    dbg("isStringOrComment: Check mode @ " + c + ": " + mode);
-    return gMode == "Doxygen" || document.isString(c) || document.isChar(c) || document.isComment(c);
-}
-
-/**
- * Add a character \c c to the given position if absent.
- * Set new cursor position to the next one after the current.
- */
-function addCharOrJumpOverIt(line, column, char)
-{
-    // Make sure there is a space at given position
-    dbg("addCharOrJumpOverIt: checking @Cursor("+line+","+column+"), c='"+document.charAt(line, column)+"'");
-    if (document.lineLength(line) <= column || document.charAt(line, column) != char)
-        document.insertText(line, column, char);
-    view.setCursorPosition(line, column + 1);
-}
-
-function tryIndentRelativePrevLine(line)
+function tryIndentRelativePrevNonCommentLine(line)
 {
     var current_line = line - 1;
     while (0 <= current_line && isStringOrComment(current_line, document.firstColumn(current_line)))
@@ -188,55 +143,6 @@ function tryIndentRelativePrevLine(line)
     return document.firstColumn(current_line) - (needHalfUnindent ? 2 : 0);
 }
 
-/// Try to (re)align (to 60th position) inline comment if present
-function alignInlineComment(line)
-{
-    // Check is there any comment on the current line
-    var currentLineText = document.line(line);
-    var sc = splitByComment(currentLineText);
-    // Did we found smth and if so, make sure it is not a string or comment...
-    if (sc.hasComment && !isStringOrComment(line, sc.before.length - 1))
-    {
-        var rbefore = sc.before.rtrim();
-        /// \attention Kate has a BUG: even if everything is Ok and no realign
-        /// required, document gets modified anyway! So condition below
-        /// designed to prevent document modification w/o real actions won't
-        /// help anyway :-( Need to fix Kate before!
-        if (rbefore.length < gSameLineCommentStartAt && sc.before.length != gSameLineCommentStartAt)
-        {
-            // Ok, test on the line is shorter than needed.
-            // But what about current padding?
-            if (sc.before.length < gSameLineCommentStartAt)
-                // Need to add some padding
-                document.insertText(
-                    line
-                  , sc.before.length
-                  , String().fill(' ', gSameLineCommentStartAt - sc.before.length)
-                  );
-            else
-                // Need to remove a redundant padding
-                document.removeText(line, gSameLineCommentStartAt, line, sc.before.length);
-        }
-        else if (gSameLineCommentStartAt < rbefore.length)
-        {
-            // Move inline comment before the current line
-            var startPos = document.firstColumn(line);
-            currentLineText = String().fill(' ', startPos) + "//" + sc.after.rtrim() + "\n";
-            document.removeText(line, rbefore.length, line, document.lineLength(line));
-            document.insertText(line, 0, currentLineText);
-        }
-    }
-}
-
-/**
- * Check if a character right before cursor is the very first on the line
- * and the same as a given one.
- */
-function justEnteredCharIsFirstOnLine(line, column, char)
-{
-    return document.firstChar(line) == char && document.firstColumn(line) == (column - 1);
-}
-
 /**
  * Try to keep same-line comment.
  * I.e. if \c ENTER was hit on a line w/ inline comment and before it,
@@ -249,10 +155,11 @@ function tryToKeepInlineComment(line)
     if (document.line(line - 1).trim().length == 0)
         return;
 
-    // Check is there any comment on the current line
-    var currentLineText = document.line(line);
-    var sc = splitByComment(currentLineText);
-    if (sc.hasComment && !isStringOrComment(line, sc.before.length - 1) && sc.after.length > 0)
+    // Check is there any comment on the current (non empty) line
+    var sc = splitByComment(line);
+    dbg("sc.hasComment="+sc.hasComment);
+    dbg("sc.before.rtrim().length="+sc.before.rtrim().length);
+    if (sc.hasComment)
     {
         // Ok, here is few cases possible when ENTER pressed in different positions
         // |  |smth|was here; |        |// comment
@@ -273,7 +180,7 @@ function tryToKeepInlineComment(line)
               );
             // Remove it from current line starting from current position
             // 'till the line end
-            document.removeText(line, sc.before.rtrim().length, line, currentLineText.length);
+            document.removeText(line, sc.before.rtrim().length, line, document.lineLength(line));
         }
         else
         {
@@ -389,7 +296,7 @@ function tryToAlignAfterOpenBrace_ch(line)
         if (document.charAt(line - 1, pos - 1) != '<')
             result = document.firstColumn(line - 1) + gIndentWidth;
         else
-            result = document.firstColumn(line - 1) + 2;
+            result = document.firstColumn(line - 1) + (gIndentWidth / 2);
     }
 
     if (result != -1)
@@ -595,32 +502,35 @@ function trySplitComment_ch(line)
  * - \c do
  * - \c case
  * - \c default
+ * - \c return
  * - and access modifiers \c public, \c protected and \c private
  */
 function tryIndentAfterSomeKeywords_ch(line)
 {
     var result = -1;
     // Check if ENTER was pressed after some keywords...
-    var prevString = document.line(line - 1);
-    var r = /^(\s*)((if|for|while)\s*\(|\bdo\b|(((public|protected|private)(\s+(slots|Q_SLOTS))?)|default|case\s+.*)\s*:).*$/
+    var sr = splitByComment(line - 1);
+    var prevString = sr.before;
+    dbg("tryIndentAfterSomeKeywords_ch prevString='"+prevString+"'");
+    var r = /^(\s*)((if|for|while)\s*\(|\bdo\b|\breturn\b|(((public|protected|private)(\s+(slots|Q_SLOTS))?)|default|case\s+.*)\s*:).*$/
       .exec(prevString);
     if (r != null)
     {
         dbg("r=",r);
-        result = r[1].length + gIndentWidth;
+        if (!r[2].startsWith("return") || !prevString.rtrim().endsWith(';'))
+            result = r[1].length + gIndentWidth;
     }
     else
     {
         r = /^\s*\belse\b.*$/.exec(prevString)
         if (r != null)
         {
-            var prevPrevString = document.line(line - 2);
-            prevPrevString = stripComment(prevPrevString);
-            dbg("tryIndentAfterSomeKeywords_ch prevPrevString="+prevPrevString);
+            var prevPrevString = stripComment(line - 2);
+            dbg("tryIndentAfterSomeKeywords_ch prevPrevString='"+prevPrevString+"'");
             if (prevPrevString.endsWith('}'))
                 result = document.firstColumn(line - 2);
             else if (prevPrevString.match(/^\s*[\])>]/))
-                result = document.firstColumn(line - 2) - gIndentWidth - (gIndentWidth/2);
+                result = document.firstColumn(line - 2) - gIndentWidth - (gIndentWidth / 2);
             else
                 result = document.firstColumn(line - 2) - gIndentWidth;
             // Realign 'else' statement if needed
@@ -852,6 +762,148 @@ function tryAfterBreakContinue_ch(line)
     return result;
 }
 
+/// \internal
+function getStringAligmentAfterSplit(line)
+{
+    var prevLineFirstChar = document.firstChar(line - 1);
+    var halfIndent = prevLineFirstChar == ','
+      || prevLineFirstChar == ':'
+      || prevLineFirstChar == '?'
+      || prevLineFirstChar == '<'
+      || prevLineFirstChar == '>'
+      || prevLineFirstChar == '&'
+      ;
+    return document.firstColumn(line - 1) + (
+        prevLineFirstChar != '"'
+      ? (halfIndent ? (gIndentWidth / 2) : gIndentWidth)
+      : 0
+      );
+}
+
+/**
+ * Handle the case when \c ENTER has pressed in the middle of a string.
+ * Find a string begin (a quote char) and analyze if it is a C++11 raw
+ * string literal. If it is not, add a "closing" quote to a previous line
+ * and to the current one. Align a 2nd part (the moved down one) of a string
+ * according a previous line. If latter is a pure string, then give the same
+ * indentation level, otherwise incrase it to one \c TAB.
+ *
+ * Here is few cases possible:
+ * - \c ENTER has pressed in a line <code>auto some = ""|</code>, so a new
+ *   line just have an empty string or some text which is doesn't matter now;
+ * - \c ENTER has pressed in a line <code>auto some = "possible some text here| and here"</code>,
+ *   then a new line will have <code> and here"</code> text
+ *
+ * In both cases attribute at (line-1, lastColumn-1) will be \c String
+ */
+function trySplitString_ch(line)
+{
+    var result = -1;
+    var column = document.lastColumn(line - 1);
+
+    if (isComment(line - 1, column))
+        return result;                                      // Do nothing for comments
+
+    // Check if last char on a prev line has string attribute
+    var lastColumnIsString = isString(line - 1, column);
+    var firstColumnIsString = isString(line, 0);
+    var firstChar = (document.charAt(line, 0) == '"');
+    if (!lastColumnIsString)                                // If it is not,
+    {
+        // TODO TBD
+        if (firstColumnIsString && firstChar == '"')
+            result = getStringAligmentAfterSplit(line);
+        return result;                                      // then nothing to do...
+    }
+
+    var lastChar = (document.charAt(line - 1, column) == '"');
+    var prevLastColumnIsString = isString(line - 1, column - 1);
+    var prevLastChar = (document.charAt(line - 1, column - 1) == '"');
+    dbg("trySplitString_ch: lastColumnIsString="+lastColumnIsString);
+    dbg("trySplitString_ch: lastChar="+lastChar);
+    dbg("trySplitString_ch: prevLastColumnIsString="+prevLastColumnIsString);
+    dbg("trySplitString_ch: prevLastChar="+prevLastChar);
+    dbg("trySplitString_ch: isString(line,0)="+firstColumnIsString);
+    dbg("trySplitString_ch: firstChar="+firstChar);
+    var startOfString = firstColumnIsString && firstChar;
+    var endOfString = !(firstColumnIsString || firstChar);
+    var should_proceed = !lastChar && prevLastColumnIsString && (endOfString || !prevLastChar && startOfString)
+      || lastChar && !prevLastColumnIsString && !prevLastChar && (endOfString || startOfString)
+      ;
+    dbg("trySplitString_ch: ------ should_proceed="+should_proceed);
+    if (should_proceed)
+    {
+        // Add closing quote to the previous line
+        document.insertText(line - 1, document.lineLength(line - 1), '"');
+        // and open quote to the current one
+        document.insertText(line, 0, '"');
+        // NOTE If AutoBrace plugin is used, it won't add a quote
+        // char, if cursor positioned right before another quote char
+        // (which was moved from a line above in this case)...
+        // So, lets force it!
+        if (startOfString && document.charAt(line, 1) != '"')
+        {
+            document.insertText(line, 1, '"');              // Add one more!
+            view.setCursorPosition(line, 1);                // Step back inside of string
+        }
+        result = getStringAligmentAfterSplit(line);
+    }
+    if (result != -1)
+    {
+        dbg("trySplitString_ch result="+result);
+        tryToKeepInlineComment(line);
+    }
+    return result;
+}
+
+/**
+ * Here is few cases possible:
+ * \code
+ *  // set some var to lambda function
+ *  auto some = [foo](bar)|
+ *
+ *  // lambda as a parameter (possible the first one,
+ *  // i.e. w/o a leading comma)
+ *  std::foreach(
+ *      begin(container)
+ *    , end(container)
+ *    , [](const value_type& v)|
+ *    );
+ * \endcode
+ */
+function tryAfterLambda_ch(line)
+{
+    var result = -1;
+    var column = document.lastColumn(line - 1);
+
+    if (isComment(line - 1, column))
+        return result;                                      // Do nothing for comments
+
+    var sr = splitByComment(line - 1);
+    if (sr.before.match(/\[[^\]]*\]\([^{]*\)[^{}]*$/))
+    {
+        var align = document.firstColumn(line - 1);
+        var before = sr.before.ltrim();
+        if (before.startsWith(','))
+            align += 2;
+        var padding = String().fill(' ', align);
+        var tail = before.startsWith('auto ') ? "};" : "}";
+        document.insertText(
+            line
+          , 0
+          , padding + "{\n" + padding + String().fill(' ', gIndentWidth) + "\n" + padding + tail
+          );
+        view.setCursorPosition(line + 1, align + gIndentWidth);
+        result = -2;
+    }
+
+    if (result != -1)
+    {
+        dbg("tryAfterLambda_ch result="+result);
+    }
+    return result;
+}
+
 /// Wrap \c tryToKeepInlineComment as \e caret-handler
 function tryToKeepInlineComment_ch(line)
 {
@@ -890,6 +942,8 @@ function caretPressed(cursor)
       , tryPreprocessor_ch
       , tryAfterBlockComment_ch
       , tryAfterBreakContinue_ch
+      , trySplitString_ch                                   // Handle ENTER pressed in the middle of a string
+      , tryAfterLambda_ch                                   // Handle ENTER after lambda prototype and before body
       , tryToKeepInlineComment_ch                           // NOTE This must be a last checker!
     ];
 
@@ -930,7 +984,6 @@ function caretPressed(cursor)
  *  std::string bug = "some text//
  * \endcode
  *
- * \todo Refactoring required to avoid regex here... better to use \c splitByComment()
  */
 function trySameLineComment(cursor)
 {
@@ -941,7 +994,7 @@ function trySameLineComment(cursor)
     if (document.isString(line, column))
         return;
 
-    var sc = splitByComment(document.line(line));
+    var sc = splitByComment(line);
     if (sc.hasComment)                                      // Is there any comment on a line?
     {
         // Make sure we r not in a comment already
@@ -1020,7 +1073,7 @@ function tryTemplate(cursor)
     }
     else if (justEnteredCharIsFirstOnLine(line, column, '<'))
     {
-        result = tryIndentRelativePrevLine(line);
+        result = tryIndentRelativePrevNonCommentLine(line);
     }
     // Add a space after 2nd '<' if a word before is not a 'operator'
     else if (document.charAt(line, column - 2) == '<')
@@ -1055,8 +1108,8 @@ function tryTemplate(cursor)
 }
 
 /**
- * This function called for some characters and try to do the following:
- * if cursor (right after a trigger character is entered) positioned withing
+ * This function called for some characters and trying to do the following:
+ * if the cursor (right after a trigger character is entered) is positioned withing
  * a parenthesis, move the entered character out of parenthesis.
  *
  * For example:
@@ -1215,7 +1268,7 @@ function tryComma(cursor)
     var column = cursor.column;
     // Check is comma a very first character on a line...
     if (justEnteredCharIsFirstOnLine(line, column, ','))
-        result = tryIndentRelativePrevLine(line);
+        result = tryIndentRelativePrevNonCommentLine(line);
 
     cursor = tryJumpOverParenthesis(cursor);                // Try to jump out of parenthesis
     if (document.charAt(cursor) != ' ')
@@ -1340,7 +1393,8 @@ function trySemicolon(cursor)
             var lineLength = document.lineLength(line);
             for (var i = column; i < lineLength; ++i)
             {
-                if (document.charAt(line, i) != ')')
+                var c = document.charAt(line, i);
+                if (!(c == ')' || c == ']'))
                 {
                     should_proceed = false;
                     break;
@@ -1354,7 +1408,16 @@ function trySemicolon(cursor)
                 // Append ';' to the end of line
                 document.insertText(line, lineLength - 1, ";");
                 view.setCursorPosition(line, lineLength);
+                cursor = view.cursorPosition();
+                column = cursor.column;
             }
+        }
+        // In C++ there is no need to have more than one semicolon.
+        // So remove a redundant one!
+        if (document.charAt(line, column - 2) == ';')
+        {
+            // Remove just entered ';'
+            document.removeText(line, column - 1, line, column);
         }
     }
     return result;
@@ -1379,7 +1442,7 @@ function tryOperator(cursor, ch)
     var halfTabNeeded = justEnteredCharIsFirstOnLine(line, column, ch)
       && document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1
       ;
-    dbg("tryOperator: halfTabNeeded=",halfTabNeeded);
+    dbg("tryOperator: halfTabNeeded =", halfTabNeeded);
     if (halfTabNeeded)
     {
         // check if we r at function call or array index
@@ -1387,16 +1450,16 @@ function tryOperator(cursor, ch)
           || document.anchor(line, document.firstColumn(line), '[').isValid()
           || document.anchor(line, document.firstColumn(line), '{').isValid()
           ;
-        dbg("tryOperator: insideBraces=",insideBraces);
+        dbg("tryOperator: insideBraces =",insideBraces);
         result = document.firstColumn(line - 1) + (insideBraces && ch != '.' ? -2 : 2);
     }
-    var prev = cursor;
+    var prev_pos = cursor;
     cursor = tryJumpOverParenthesis(cursor);                // Try to jump out of parenthesis
     cursor = tryAddSpaceAfterClosedBracketOrQuote(cursor);
 
     // Check if a space before '?' still needed
-    if (prev == cursor && ch == '?' && document.charAt(line, cursor.column - 1) != ' ')
-        document.insertText(line, cursor.column - 1, ' ');  // Add it!
+    if (prev_pos == cursor && ch == '?' && document.charAt(line, cursor.column - 1) != ' ')
+        document.insertText(line, cursor.column - 1, " ");  // Add it!
 
     cursor = view.cursorPosition();                         // Update cursor position
     line = cursor.line;
@@ -1406,26 +1469,136 @@ function tryOperator(cursor, ch)
     {
         addCharOrJumpOverIt(line, column, ' ');
     }
+    // Handle operator| and/or operator||
     else if (ch == '|')
     {
-        // Check if there was another '|' before
-        // TODO Generalize this pattern... it happens really often.
-        var pc = document.charAt(line, column - 3);
+        /**
+         * Here is 6+3 cases possible (the last bar is just entered):
+         * 0) <tt>???</tt> -- add a space before bar and after if needed
+         * 1) <tt>?? </tt> -- add a space after if needed
+         * 2) <tt>??|</tt> -- add a space before 1st bar and after the 2nd if needed
+         * 3) <tt>? |</tt> -- add a space after the 2nd bar if needed
+         * 4) <tt>?| </tt> -- add a space before 1st bar, remove the mid one, add a space after 2nd bar
+         * 5) <tt> | </tt> -- remove the mid space, add one after 2nd bar
+         * and finally,
+         * 6a) <tt>|| </tt> -- add a space before 1st bar if needed, remove the last bar
+         * 6b) <tt> ||</tt> -- remove the last bar and add a space after 2nd bar if needed
+         * 6c) <tt>||</tt> -- add a space after if needed
+         */
+        var prev = document.text(line, column - 4, line, column - 1);
+        dbg("tryOperator: checking @Cursor("+line+","+(column - 4)+"), prev='"+prev+"'");
         var space_offset = 0;
-        dbg("tryOperator: checking @Cursor("+line+","+(column - 3)+"), c='"+pc+"'");
-        if (pc == '|')
+        if (prev.endsWith(" | "))
         {
-            document.removeText(line, column - 1, line, column);
-            document.insertText(line, column - 2, "|");
+            // case 5: remove the mid space
+            document.removeText(line, column - 2, line, column - 1);
             space_offset = -1;
         }
-        else if (pc != ' ')
+        else if (prev.endsWith("|| "))
         {
-            document.insertText(line, column - 1, " ");
-            space_offset = space_offset + 1;
+            // case 6a: add a space before 1st bar if needed, remove the last bar
+            document.removeText(line, column - 1, line, column);
+            var space_has_added = addCharOrJumpOverIt(line, column - 4, ' ');
+            space_offset = (space_has_added ? 1 : 0) - 2;
         }
-        if (space_offset != -1)
-            addCharOrJumpOverIt(line, column + space_offset, ' ');
+        else if (prev.endsWith(" ||"))
+        {
+            // case 6b: remove the last bar
+            document.removeText(line, column - 1, line, column);
+            space_offset = -1;
+        }
+        else if (prev.endsWith("||"))
+        {
+            // case 6a: add a space before and remove the last bar
+            document.removeText(line, column - 1, line, column);
+            document.insertText(line, column - 3, " ");
+        }
+        else if (prev.endsWith("| "))
+        {
+            // case 4: add a space before 1st bar, remove the mid one
+            document.removeText(line, column - 2, line, column - 1);
+            document.insertText(line, column - 3, " ");
+        }
+        else if (prev.endsWith(" |") || prev.endsWith(" "))
+        {
+            // case 3 and 1
+        }
+        else
+        {
+            // case 2: add a space before 1st bar
+            if (prev.endsWith('|'))
+                space_offset = 1;
+            // case 0: add a space before bar
+            document.insertText(line, column - 1 - space_offset, " ");
+            space_offset = 1;
+        }
+        addCharOrJumpOverIt(line, column + space_offset, ' ');
+    }
+    // Handle operator% and/or operator^
+    else if (ch == '%' || ch == '^')
+    {
+        var prev = document.text(line, column - 4, line, column - 1);
+        dbg("tryOperator: checking2 @Cursor("+line+","+(column - 4)+"), prev='"+prev+"'");
+        var patterns = [" % ", "% ", " %", "%", " "];
+        for (
+            var i = 0
+          ; i < patterns.length
+          ; i++
+          ) patterns[i] = patterns[i].replace('%', ch);
+
+        var space_offset = 0;
+        if (prev.endsWith(patterns[0]))
+        {
+            // case 0: remove just entered char
+            document.removeText(line, column - 1, line, column);
+            space_offset = -2;
+        }
+        else if (prev.endsWith(patterns[1]))
+        {
+            // case 1: remove just entered char, add a space before
+            document.removeText(line, column - 1, line, column);
+            document.insertText(line, column - 3, " ");
+            space_offset = -1;
+        }
+        else if (prev.endsWith(patterns[2]))
+        {
+            // case 2: remove just entered char
+            document.removeText(line, column - 1, line, column);
+            space_offset = -1;
+        }
+        else if (prev.endsWith(patterns[3]))
+        {
+            // case 3: add a space before
+            document.removeText(line, column - 1, line, column);
+            document.insertText(line, column - 2, " ");
+            space_offset = 0;
+        }
+        else if (prev.endsWith(patterns[4]))
+        {
+            // case 4: no space needed before
+            space_offset = 0;
+        }
+        else
+        {
+            // case everything else: surround operator w/ spaces
+            document.insertText(line, column - 1, " ");
+            space_offset = 1;
+        }
+        addCharOrJumpOverIt(line, column + space_offset, ' ');
+    }
+    else if (ch == '.')                                     // Replace '..' w/ '...'
+    {
+        var prev = document.text(line, column - 3, line, column);
+        dbg("tryOperator: checking3 @Cursor("+line+","+(column - 4)+"), prev='"+prev+"'");
+        if (prev == "...")                                  // If there is already 3 dots
+        {
+            // Remove just entered (redundant) one
+            document.removeText(line, column - 1, line, column);
+        }
+        else if (prev[1] == '.' && prev[2] == '.')          // Append one more if only two here
+        {
+            addCharOrJumpOverIt(line, column, '.');
+        }                                                   // Otherwise, do nothing...
     }
     if (result != -2)
     {
@@ -1629,6 +1802,9 @@ function tryColon(cursor)
     var line = cursor.line;
     var column = cursor.column;
 
+    if (isStringOrComment(line, column))
+        return result;                                      // Do nothing for comments and strings
+
     // Check if just entered ':' is a first on a line
     if (justEnteredCharIsFirstOnLine(line, column, ':'))
     {
@@ -1671,22 +1847,58 @@ function tryColon(cursor)
                 }
             }
         }
-        else if (document.charAt(line, column - 2) == ' ' && currentLine.ltrim().startsWith("for ("))
+        else if (document.charAt(line, column - 2) == ' ')
         {
-            // Looks like a range based `for'!
-            // Add a space after ':'
-            document.insertText(line, column, " ");
+            // Is it looks like a range based `for' or class/struct/enum?
+            var add_space = currentLine.ltrim().startsWith("for (")
+              || currentLine.ltrim().startsWith("class ")
+              || currentLine.ltrim().startsWith("struct ")
+              || currentLine.ltrim().startsWith("enum ")
+              ;
+            if (add_space)
+            {
+                // Add a space after ':'
+                document.insertText(line, column, " ");
+            }
+            else if (document.charAt(line, column - 3) == ':')
+            {
+                // Transform ': :' -> '::'
+                document.removeText(line, column - 2, line, column - 1);
+            }
         }
-        else if (document.charAt(line, column - 2) == '>')
+        else if (document.charAt(line, column - 2) == ':')
         {
-            // Add one more ':'
-            // Example some<T>: --> some<T>::
-            document.insertText(line, column, ":");
+            // A char before is (already) a one more colon.
+            // Make sure there is no more than two colons...
+            // NOTE In C++ it is not possible to have more than two of them adjacent!
+            if (document.charAt(line, column - 3) == ':')
+            {
+                // Remove the current (just entered) one...
+                document.removeText(line, column - 1, line, column);
+            }
         }
         else
         {
-            cursor = tryJumpOverParenthesis(cursor);        // Try to jump out of parenthesis
-            tryAddSpaceAfterClosedBracketOrQuote(cursor);   // Try add a space after close bracket
+            // Check that it is not a 'case' and not a magic sequence.
+            // NOTE "Magic sequence" means support for dynamic expand functions.
+            // http://zaufi.github.io/programming/2014/02/13/kate-c++-stuff/
+            var is_magic_sequence = document.charAt(
+                line
+              , document.wordRangeAt(line, column - 1).start.column - 1
+              ) == ';';
+            if (!currentLine.ltrim().startsWith("case ") && !is_magic_sequence)
+            {
+                // Add one more ':'
+                // Example some<T>: --> some<T>:: or std: --> std::
+                document.insertText(line, column, ":");
+            }
+            else
+            {
+                // Try to jump out of parenthesis
+                cursor = tryJumpOverParenthesis(cursor);
+                // Try add a space after close bracket
+                tryAddSpaceAfterClosedBracketOrQuote(cursor);
+            }
         }
     }
     return result;
@@ -1794,7 +2006,7 @@ function tryDoxygenGrouping(cursor)
     var column = cursor.column;
     var firstColumn = document.firstColumn(line);
     // Check the symbol before the just entered
-    var looks_like_doxgorup = isStringOrComment(line, column - 2)// ")
+    var looks_like_doxgorup = isStringOrComment(line, column - 2)
       && firstColumn == (column - 4)
       && document.line(line).ltrim().startsWith("// ")
       ;
@@ -1837,7 +2049,8 @@ function tryStringLiteral(cursor, ch)
         // Ok, just check attribute of the char right before '"'
         new_string_just_started = !isString(line, column - 2);
 
-    //
+    // TODO Add a space after possible operator right before just
+    // started string literal...
     if (new_string_just_started)
     {
         // Is there anything after just entered '"'?
@@ -1964,7 +2177,7 @@ function tryEqualOperator(cursor)
     var line = cursor.line;
     var column = cursor.column;
 
-    // Do nothing for comments of string literals or lines shorter than 2
+    // Do nothing for comments or string literals or lines shorter than 2
     if (2 < column && isStringOrComment(line, column))
         return cursor;
 
@@ -2031,6 +2244,13 @@ function tryEqualOperator(cursor)
                 {
                     case '=':                               // Stick the current '=' to the previous char
                     case '|':
+                    case '&':
+                    case '^':
+                    case '<':
+                    case '>':
+                    case '*':
+                    case '/':
+                    case '%':
                         document.removeText(line, column - 1, line, column);
                         document.insertText(line, column - 2, '=');
                         break;
@@ -2172,6 +2392,20 @@ function processChar(line, ch)
         default:
             break;                                          // Nothing to do...
     }
+
+    // Make sure it is not a pure comment line
+    var currentLineText = document.line(cursor.line).ltrim();
+    if (ch != '\n' && !currentLineText.startsWith("//"))
+    {
+        // Ok, try to keep an inline comment aligned (if any)...
+        // BUG If '=' was inserted (and a space added) in a code line w/ inline comment,
+        // it seems kate do not update highlighting, so position, where comment was before,
+        // still counted as a 'Comment' attribute, but actually it should be 'Normal Text'...
+        // It is why adding '=' will not realign an inline comment...
+        if (alignInlineComment(cursor.line) && ch == ' ')
+            document.insertText(view.cursorPosition(), ' ');
+    }
+
     document.editEnd();
     return result;
 }
@@ -2498,14 +2732,13 @@ function indent(line, indentWidth, ch)
 {
     // NOTE Update some global variables
     gIndentWidth = indentWidth;
-    gMode = document.highlightingModeAt(view.cursorPosition());
-    gAttr = document.attributeName(view.cursorPosition());
+    var crsr = view.cursorPosition();
 
     dbg("indentWidth: " + indentWidth);
-    dbg("      gMode: " + gMode);
-    dbg("      gAttr: " + gAttr);
+    dbg("       Mode: " + document.highlightingModeAt(crsr));
+    dbg("  Attribute: " + document.attributeName(crsr));
     dbg("       line: " + line);
-    dbg("         ch: '" + ch + "'");
+    dbg("       char: " + crsr + " -> '" + ch + "'");
 
     if (ch != "")
         return processChar(line, ch);

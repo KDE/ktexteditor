@@ -9,7 +9,7 @@ public:
 protected:
     void ok();
 
-public Q_SLOTS:
+public slots:
     void ok();
 
 private Q_SLOTS:
