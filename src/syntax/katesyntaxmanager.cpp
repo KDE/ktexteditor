@@ -204,6 +204,10 @@ QString KateHlManager::defaultStyleName(int n, bool translateNames)
         translatedNames << i18nc("@item:intable Text context", "Error");
     }
 
+    // sanity checks
+    Q_ASSERT(n >= 0);
+    Q_ASSERT(n < names.size());
+
     return translateNames ? translatedNames[n] : names[n];
 }
 
