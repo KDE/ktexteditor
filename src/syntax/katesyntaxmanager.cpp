@@ -116,7 +116,7 @@ int KateHlManager::nameFind(const QString &name)
     return -1;
 }
 
-int KateHlManager::defaultStyles()
+int KateHlManager::defaultStyleCount()
 {
     return HighlightInterface::DS_COUNT;
 }
@@ -205,6 +205,98 @@ QString KateHlManager::defaultStyleName(int n, bool translateNames)
     }
 
     return translateNames ? translatedNames[n] : names[n];
+}
+
+int KateHlManager::defaultStyleNameToIndex(const QString &name)
+{
+    //
+    // Normal text and source code 
+    //
+    if (name == QLatin1String("dsNormal")) {
+        return KTextEditor::HighlightInterface::dsNormal;
+    } else if (name == QLatin1String("dsKeyword")) {
+        return KTextEditor::HighlightInterface::dsKeyword;
+    } else if (name == QLatin1String("dsFunction")) {
+        return KTextEditor::HighlightInterface::dsFunction;
+    } else if (name == QLatin1String("dsVariable")) {
+        return KTextEditor::HighlightInterface::dsVariable;
+    } else if (name == QLatin1String("dsControlFlow")) {
+        return KTextEditor::HighlightInterface::dsControlFlow;
+    } else if (name == QLatin1String("dsOperator")) {
+        return KTextEditor::HighlightInterface::dsOperator;
+    } else if (name == QLatin1String("dsBuiltIn")) {
+        return KTextEditor::HighlightInterface::dsBuiltIn;
+    } else if (name == QLatin1String("dsExtension")) {
+        return KTextEditor::HighlightInterface::dsExtension;
+    } else if (name == QLatin1String("dsPreprocessor")) {
+        return KTextEditor::HighlightInterface::dsPreprocessor;
+    } else if (name == QLatin1String("dsAttribute")) {
+        return KTextEditor::HighlightInterface::dsAttribute;
+    }
+
+    //
+    // Strings & Characters
+    //
+    if (name == QLatin1String("dsChar")) {
+        return KTextEditor::HighlightInterface::dsChar;
+    } else if (name == QLatin1String("dsSpecialChar")) {
+        return KTextEditor::HighlightInterface::dsSpecialChar;
+    } else if (name == QLatin1String("dsString")) {
+        return KTextEditor::HighlightInterface::dsString;
+    } else if (name == QLatin1String("dsVerbatimString")) {
+        return KTextEditor::HighlightInterface::dsVerbatimString;
+    } else if (name == QLatin1String("dsSpecialString")) {
+        return KTextEditor::HighlightInterface::dsSpecialString;
+    } else if (name == QLatin1String("dsImport")) {
+        return KTextEditor::HighlightInterface::dsImport;
+    }
+
+    //
+    // Numbers, Types & Constants
+    //
+    if (name == QLatin1String("dsDataType")) {
+        return KTextEditor::HighlightInterface::dsDataType;
+    } else if (name == QLatin1String("dsDecVal")) {
+        return KTextEditor::HighlightInterface::dsDecVal;
+    } else if (name == QLatin1String("dsBaseN")) {
+        return KTextEditor::HighlightInterface::dsBaseN;
+    } else if (name == QLatin1String("dsFloat")) {
+        return KTextEditor::HighlightInterface::dsFloat;
+    } else if (name == QLatin1String("dsConstant")) {
+        return KTextEditor::HighlightInterface::dsConstant;
+    }
+
+    //
+    // Comments & Documentation
+    //
+    if (name == QLatin1String("dsComment")) {
+        return KTextEditor::HighlightInterface::dsComment;
+    } else if (name == QLatin1String("dsDocumentation")) {
+        return KTextEditor::HighlightInterface::dsDocumentation;
+    } else if (name == QLatin1String("dsAnnotation")) {
+        return KTextEditor::HighlightInterface::dsAnnotation;
+    } else if (name == QLatin1String("dsCommentVar")) {
+        return KTextEditor::HighlightInterface::dsCommentVar;
+    } else if (name == QLatin1String("dsRegionMarker")) {
+        return KTextEditor::HighlightInterface::dsRegionMarker;
+    } else if (name == QLatin1String("dsInformation")) {
+        return KTextEditor::HighlightInterface::dsInformation;
+    } else if (name == QLatin1String("dsWarning")) {
+        return KTextEditor::HighlightInterface::dsWarning;
+    } else if (name == QLatin1String("dsAlert")) {
+        return KTextEditor::HighlightInterface::dsAlert;
+    }
+
+    //
+    // Misc
+    //
+    if (name == QLatin1String("dsOthers")) {
+        return KTextEditor::HighlightInterface::dsOthers;
+    } else if (name == QLatin1String("dsError")) {
+        return KTextEditor::HighlightInterface::dsError;
+    }
+
+    return KTextEditor::HighlightInterface::dsNormal;
 }
 
 void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, KConfig *cfg)
@@ -448,7 +540,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(),
                         QLatin1String("Default Item Styles - Schema ") + schema);
 
-    for (int z = 0; z < defaultStyles(); z++) {
+    for (int z = 0; z < defaultStyleCount(); z++) {
         KTextEditor::Attribute::Ptr i = list.at(z);
         QStringList s = config.readEntry(defaultStyleName(z), QStringList());
         if (!s.isEmpty()) {
@@ -512,7 +604,7 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg,
                         QLatin1String("Default Item Styles - Schema ") + schema);
 
-    for (int z = 0; z < defaultStyles(); z++) {
+    for (int z = 0; z < defaultStyleCount(); z++) {
         QStringList settings;
         KTextEditor::Attribute::Ptr p = list.at(z);
 

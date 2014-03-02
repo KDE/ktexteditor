@@ -74,10 +74,6 @@ public:
      */
     QString nameForIdentifier(const QString &);
 
-    // methodes to get the default style count + names
-    static int defaultStyles();
-    static QString defaultStyleName(int n, bool translateNames = false);
-
     void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
     void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
 
@@ -105,6 +101,28 @@ public:
 
 Q_SIGNALS:
     void changed();
+
+//
+// methodes to get the default style count + names
+//
+public:
+    /**
+     * Return the number of default styles.
+     */
+    static int defaultStyleCount();
+
+    /**
+     * Return the name of default style @p n. If @p translateNames is @e true,
+     * the default style name is translated.
+     */
+    static QString defaultStyleName(int n, bool translateNames = false);
+
+    /**
+     * Return the index for the default style @p name.
+     * @param name @e untranslated default style
+     * @see KTextEditor::HighlightInterface::DefaultStyles)
+     */
+    static int defaultStyleNameToIndex(const QString &name);
 
 private:
     friend class KateHighlighting;

@@ -46,8 +46,6 @@ public:
         Spellchecking
     };
 
-    static int indexForStyleName(const QString &name);
-
     QString name() const;
     void setName(const QString &name);
 
