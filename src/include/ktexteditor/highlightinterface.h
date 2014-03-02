@@ -74,20 +74,49 @@ class KTEXTEDITOR_EXPORT HighlightInterface
 public:
     ///TODO: Documentation
     enum DefaultStyle {
-        dsNormal,
+        // normal text
+        dsNormal = 0,
         dsKeyword,
+        dsFunction,
+        dsVariable,
+        dsControlFlow,
+        dsOperator,
+        dsBuiltIn,
+        dsExtension,
+        dsPreprocessor,
+        dsAttribute,
+
+        // Strings & Characters
+        dsChar,
+        dsSpecialChar,
+        dsString,
+        dsVerbatimString,
+        dsSpecialString,
+        dsImport,
+
+        // Number, Types & Constants
         dsDataType,
         dsDecVal,
         dsBaseN,
         dsFloat,
-        dsChar,
-        dsString,
+        dsConstant,
+
+        // Comments & Documentation
         dsComment,
-        dsOthers,
-        dsAlert,
-        dsFunction,
+        dsDocumentation,
+        dsAnnotation,
+        dsCommentVar,
         dsRegionMarker,
-        dsError
+        dsInformation,
+        dsWarning,
+        dsAlert,
+
+        // Misc
+        dsOthers,
+        dsError,
+
+        // number of default styles, insert new default styles before this line
+        DS_COUNT
     };
 
     /**

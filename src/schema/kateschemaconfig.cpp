@@ -520,7 +520,7 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     KateAttributeList *l = attributeList(schema);
     updateColorPalette(l->at(0)->foreground().color());
 
-    for (uint i = 0; i < KateHlManager::self()->defaultStyles(); i++) {
+    for (int i = 0; i < KateHlManager::self()->defaultStyles(); i++) {
         m_defaultStyles->addItem(KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 }
