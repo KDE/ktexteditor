@@ -116,9 +116,9 @@ int KateHlManager::nameFind(const QString &name)
     return -1;
 }
 
-uint KateHlManager::defaultStyles()
+int KateHlManager::defaultStyleCount()
 {
-    return 14;
+    return HighlightInterface::DS_COUNT;
 }
 
 QString KateHlManager::defaultStyleName(int n, bool translateNames)
@@ -129,40 +129,178 @@ QString KateHlManager::defaultStyleName(int n, bool translateNames)
     if (names.isEmpty()) {
         names << QLatin1String("Normal");
         names << QLatin1String("Keyword");
+        names << QLatin1String("Function");
+        names << QLatin1String("Variable");
+        names << QLatin1String("Control Flow");
+        names << QLatin1String("Operator");
+        names << QLatin1String("Built-in");
+        names << QLatin1String("Extension");
+        names << QLatin1String("Preprocessor");
+        names << QLatin1String("Attribute");
+
+        names << QLatin1String("Character");
+        names << QLatin1String("Special Character");
+        names << QLatin1String("String");
+        names << QLatin1String("Verbatim String");
+        names << QLatin1String("Special String");
+        names << QLatin1String("Import");
+
         names << QLatin1String("Data Type");
         names << QLatin1String("Decimal/Value");
         names << QLatin1String("Base-N Integer");
         names << QLatin1String("Floating Point");
-        names << QLatin1String("Character");
-        names << QLatin1String("String");
+        names << QLatin1String("Constant");
+
         names << QLatin1String("Comment");
-        names << QLatin1String("Others");
-        names << QLatin1String("Alert");
-        names << QLatin1String("Function");
+        names << QLatin1String("Documentation");
+        names << QLatin1String("Annotation");
+        names << QLatin1String("Comment Variable");
         // this next one is for denoting the beginning/end of a user defined folding region
         names << QLatin1String("Region Marker");
+        names << QLatin1String("Information");
+        names << QLatin1String("Warning");
+        names << QLatin1String("Alert");
+
+        names << QLatin1String("Others");
         // this one is for marking invalid input
         names << QLatin1String("Error");
 
         translatedNames << i18nc("@item:intable Text context", "Normal");
         translatedNames << i18nc("@item:intable Text context", "Keyword");
+        translatedNames << i18nc("@item:intable Text context", "Function");
+        translatedNames << i18nc("@item:intable Text context", "Variable");
+        translatedNames << i18nc("@item:intable Text context", "Control Flow");
+        translatedNames << i18nc("@item:intable Text context", "Operator");
+        translatedNames << i18nc("@item:intable Text context", "Built-in");
+        translatedNames << i18nc("@item:intable Text context", "Extension");
+        translatedNames << i18nc("@item:intable Text context", "Preprocessor");
+        translatedNames << i18nc("@item:intable Text context", "Attribute");
+
+        translatedNames << i18nc("@item:intable Text context", "Character");
+        translatedNames << i18nc("@item:intable Text context", "Special Character");
+        translatedNames << i18nc("@item:intable Text context", "String");
+        translatedNames << i18nc("@item:intable Text context", "Verbatim String");
+        translatedNames << i18nc("@item:intable Text context", "Special String");
+        translatedNames << i18nc("@item:intable Text context", "Imports, Modules, Includes");
+
         translatedNames << i18nc("@item:intable Text context", "Data Type");
         translatedNames << i18nc("@item:intable Text context", "Decimal/Value");
         translatedNames << i18nc("@item:intable Text context", "Base-N Integer");
         translatedNames << i18nc("@item:intable Text context", "Floating Point");
-        translatedNames << i18nc("@item:intable Text context", "Character");
-        translatedNames << i18nc("@item:intable Text context", "String");
+        translatedNames << i18nc("@item:intable Text context", "Constant");
+
         translatedNames << i18nc("@item:intable Text context", "Comment");
-        translatedNames << i18nc("@item:intable Text context", "Others");
-        translatedNames << i18nc("@item:intable Text context", "Alert");
-        translatedNames << i18nc("@item:intable Text context", "Function");
+        translatedNames << i18nc("@item:intable Text context", "Documentation");
+        translatedNames << i18nc("@item:intable Text context", "Annotation");
+        translatedNames << i18nc("@item:intable Text context", "Comment Variable");
         // this next one is for denoting the beginning/end of a user defined folding region
         translatedNames << i18nc("@item:intable Text context", "Region Marker");
+        translatedNames << i18nc("@item:intable Text context", "Information");
+        translatedNames << i18nc("@item:intable Text context", "Warning");
+        translatedNames << i18nc("@item:intable Text context", "Alert");
+
+        translatedNames << i18nc("@item:intable Text context", "Others");
         // this one is for marking invalid input
         translatedNames << i18nc("@item:intable Text context", "Error");
     }
 
+    // sanity checks
+    Q_ASSERT(n >= 0);
+    Q_ASSERT(n < names.size());
+
     return translateNames ? translatedNames[n] : names[n];
+}
+
+int KateHlManager::defaultStyleNameToIndex(const QString &name)
+{
+    //
+    // Normal text and source code 
+    //
+    if (name == QLatin1String("dsNormal")) {
+        return KTextEditor::HighlightInterface::dsNormal;
+    } else if (name == QLatin1String("dsKeyword")) {
+        return KTextEditor::HighlightInterface::dsKeyword;
+    } else if (name == QLatin1String("dsFunction")) {
+        return KTextEditor::HighlightInterface::dsFunction;
+    } else if (name == QLatin1String("dsVariable")) {
+        return KTextEditor::HighlightInterface::dsVariable;
+    } else if (name == QLatin1String("dsControlFlow")) {
+        return KTextEditor::HighlightInterface::dsControlFlow;
+    } else if (name == QLatin1String("dsOperator")) {
+        return KTextEditor::HighlightInterface::dsOperator;
+    } else if (name == QLatin1String("dsBuiltIn")) {
+        return KTextEditor::HighlightInterface::dsBuiltIn;
+    } else if (name == QLatin1String("dsExtension")) {
+        return KTextEditor::HighlightInterface::dsExtension;
+    } else if (name == QLatin1String("dsPreprocessor")) {
+        return KTextEditor::HighlightInterface::dsPreprocessor;
+    } else if (name == QLatin1String("dsAttribute")) {
+        return KTextEditor::HighlightInterface::dsAttribute;
+    }
+
+    //
+    // Strings & Characters
+    //
+    if (name == QLatin1String("dsChar")) {
+        return KTextEditor::HighlightInterface::dsChar;
+    } else if (name == QLatin1String("dsSpecialChar")) {
+        return KTextEditor::HighlightInterface::dsSpecialChar;
+    } else if (name == QLatin1String("dsString")) {
+        return KTextEditor::HighlightInterface::dsString;
+    } else if (name == QLatin1String("dsVerbatimString")) {
+        return KTextEditor::HighlightInterface::dsVerbatimString;
+    } else if (name == QLatin1String("dsSpecialString")) {
+        return KTextEditor::HighlightInterface::dsSpecialString;
+    } else if (name == QLatin1String("dsImport")) {
+        return KTextEditor::HighlightInterface::dsImport;
+    }
+
+    //
+    // Numbers, Types & Constants
+    //
+    if (name == QLatin1String("dsDataType")) {
+        return KTextEditor::HighlightInterface::dsDataType;
+    } else if (name == QLatin1String("dsDecVal")) {
+        return KTextEditor::HighlightInterface::dsDecVal;
+    } else if (name == QLatin1String("dsBaseN")) {
+        return KTextEditor::HighlightInterface::dsBaseN;
+    } else if (name == QLatin1String("dsFloat")) {
+        return KTextEditor::HighlightInterface::dsFloat;
+    } else if (name == QLatin1String("dsConstant")) {
+        return KTextEditor::HighlightInterface::dsConstant;
+    }
+
+    //
+    // Comments & Documentation
+    //
+    if (name == QLatin1String("dsComment")) {
+        return KTextEditor::HighlightInterface::dsComment;
+    } else if (name == QLatin1String("dsDocumentation")) {
+        return KTextEditor::HighlightInterface::dsDocumentation;
+    } else if (name == QLatin1String("dsAnnotation")) {
+        return KTextEditor::HighlightInterface::dsAnnotation;
+    } else if (name == QLatin1String("dsCommentVar")) {
+        return KTextEditor::HighlightInterface::dsCommentVar;
+    } else if (name == QLatin1String("dsRegionMarker")) {
+        return KTextEditor::HighlightInterface::dsRegionMarker;
+    } else if (name == QLatin1String("dsInformation")) {
+        return KTextEditor::HighlightInterface::dsInformation;
+    } else if (name == QLatin1String("dsWarning")) {
+        return KTextEditor::HighlightInterface::dsWarning;
+    } else if (name == QLatin1String("dsAlert")) {
+        return KTextEditor::HighlightInterface::dsAlert;
+    }
+
+    //
+    // Misc
+    //
+    if (name == QLatin1String("dsOthers")) {
+        return KTextEditor::HighlightInterface::dsOthers;
+    } else if (name == QLatin1String("dsError")) {
+        return KTextEditor::HighlightInterface::dsError;
+    }
+
+    return KTextEditor::HighlightInterface::dsNormal;
 }
 
 void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, KConfig *cfg)
@@ -188,6 +326,108 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
         attrib->setFontBold(true);
         list.append(attrib);
     }
+    {
+        // dsFunction
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NeutralText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NeutralText).color());
+        list.append(attrib);
+    }
+    {
+        // dsVariable
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::LinkText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::LinkText).color());
+        list.append(attrib);
+    }
+    {
+        // dsControlFlow
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground().color());
+        attrib->setSelectedForeground(schemeSelected.foreground().color());
+        attrib->setFontBold(true);
+        list.append(attrib);
+    }
+    {
+        // dsOperator
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground().color());
+        attrib->setSelectedForeground(schemeSelected.foreground().color());
+        list.append(attrib);
+    }
+    {
+        // dsBuiltIn
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::VisitedText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::VisitedText).color());
+        list.append(attrib);
+    }
+    {
+        // dsExtension
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(QColor(0, 149, 255));
+        attrib->setSelectedForeground(schemeSelected.foreground().color());
+        attrib->setFontBold(true);
+        list.append(attrib);
+    }
+    {
+        // dsPreprocessor
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::PositiveText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::PositiveText).color());
+        list.append(attrib);
+    }
+    {
+        // dsAttribute
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::LinkText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::LinkText).color());
+        list.append(attrib);
+    }
+
+    {
+        // dsChar
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::ActiveText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::ActiveText).color());
+        list.append(attrib);
+    }
+    {
+        // dsSpecialChar
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::ActiveText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::ActiveText).color());
+        list.append(attrib);
+    }
+    {
+        // dsString
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
+        list.append(attrib);
+    }
+    {
+        // dsVerbatimString
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
+        list.append(attrib);
+    }
+    {
+        // dsSpecialString
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
+        list.append(attrib);
+    }
+    {
+        // dsImport
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::VisitedText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::VisitedText).color());
+        list.append(attrib);
+    }
+
     {
         // dsDataType
         Attribute::Ptr attrib(new KTextEditor::Attribute());
@@ -217,19 +457,14 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
         list.append(attrib);
     }
     {
-        // dsChar
+        // dsConstant
         Attribute::Ptr attrib(new KTextEditor::Attribute());
-        attrib->setForeground(scheme.foreground(KColorScheme::ActiveText).color());
-        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::ActiveText).color());
+        attrib->setForeground(scheme.foreground().color());
+        attrib->setSelectedForeground(schemeSelected.foreground().color());
+        attrib->setFontBold(true);
         list.append(attrib);
     }
-    {
-        // dsString
-        Attribute::Ptr attrib(new KTextEditor::Attribute());
-        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
-        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
-        list.append(attrib);
-    }
+
     {
         // dsComment
         Attribute::Ptr attrib(new KTextEditor::Attribute());
@@ -238,23 +473,21 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
         list.append(attrib);
     }
     {
-        // dsOthers
-        Attribute::Ptr attrib(new KTextEditor::Attribute());
-        attrib->setForeground(scheme.foreground(KColorScheme::PositiveText).color());
-        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::PositiveText).color());
-        list.append(attrib);
-    }
-    {
-        // dsAlert
+        // dsDocumentation
         Attribute::Ptr attrib(new KTextEditor::Attribute());
         attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
         attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
-        attrib->setFontBold(true);
-        attrib->setBackground(scheme.background(KColorScheme::NegativeBackground).color());
         list.append(attrib);
     }
     {
-        // dsFunction
+        // dsAnnotation
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::VisitedText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::VisitedText).color());
+        list.append(attrib);
+    }
+    {
+        // dsCommentVar
         Attribute::Ptr attrib(new KTextEditor::Attribute());
         attrib->setForeground(scheme.foreground(KColorScheme::VisitedText).color());
         attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::VisitedText).color());
@@ -269,6 +502,37 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
         list.append(attrib);
     }
     {
+        // dsInformation
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NeutralText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NeutralText).color());
+        list.append(attrib);
+    }
+    {
+        // dsWarning
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
+        list.append(attrib);
+    }
+    {
+        // dsAlert
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::NegativeText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::NegativeText).color());
+        attrib->setFontBold(true);
+        attrib->setBackground(scheme.background(KColorScheme::NegativeBackground).color());
+        list.append(attrib);
+    }
+
+    {
+        // dsOthers
+        Attribute::Ptr attrib(new KTextEditor::Attribute());
+        attrib->setForeground(scheme.foreground(KColorScheme::PositiveText).color());
+        attrib->setSelectedForeground(schemeSelected.foreground(KColorScheme::PositiveText).color());
+        list.append(attrib);
+    }
+    {
         // dsError
         Attribute::Ptr attrib(new KTextEditor::Attribute());
         attrib->setForeground(scheme.foreground(KColorScheme::NegativeText));
@@ -280,7 +544,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(),
                         QLatin1String("Default Item Styles - Schema ") + schema);
 
-    for (uint z = 0; z < defaultStyles(); z++) {
+    for (int z = 0; z < defaultStyleCount(); z++) {
         KTextEditor::Attribute::Ptr i = list.at(z);
         QStringList s = config.readEntry(defaultStyleName(z), QStringList());
         if (!s.isEmpty()) {
@@ -344,7 +608,7 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg,
                         QLatin1String("Default Item Styles - Schema ") + schema);
 
-    for (uint z = 0; z < defaultStyles(); z++) {
+    for (int z = 0; z < defaultStyleCount(); z++) {
         QStringList settings;
         KTextEditor::Attribute::Ptr p = list.at(z);
 

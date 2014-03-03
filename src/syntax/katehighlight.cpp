@@ -859,9 +859,12 @@ void KateHighlighting::addToKateExtendedAttributeList()
         const QString spellChecking = KateHlManager::self()->syntax->groupData(data, QLatin1String("spellChecking"));
         const QString fontFamily = KateHlManager::self()->syntax->groupData(data, QLatin1String("fontFamily"));
 
+        const QString itemDataName = KateHlManager::self()->syntax->groupData(data, QLatin1String("name")).simplified();
+        const QString defStyleName = KateHlManager::self()->syntax->groupData(data, QLatin1String("defStyleNum"));
+
         KateExtendedAttribute::Ptr newData(new KateExtendedAttribute(
-                                               buildPrefix + KateHlManager::self()->syntax->groupData(data, QLatin1String("name")).simplified(),
-                                               KateExtendedAttribute::indexForStyleName(KateHlManager::self()->syntax->groupData(data, QLatin1String("defStyleNum")))));
+                                               buildPrefix + itemDataName,
+                                               KateHlManager::defaultStyleNameToIndex(defStyleName)));
 
         /* here the custom style overrides are specified, if needed */
         if (!color.isEmpty()) {
