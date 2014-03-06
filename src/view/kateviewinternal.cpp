@@ -1950,6 +1950,10 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
         return;
     }
 
+    if (m_cursor.line() != newCursor.line()) {
+        m_leftBorder->updateViRelLineNumbers();
+    }
+
     // unfold if required
     m_view->textFolding().ensureLineIsVisible(newCursor.line());
 

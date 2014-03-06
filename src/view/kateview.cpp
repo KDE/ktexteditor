@@ -1541,6 +1541,11 @@ bool KTextEditor::ViewPrivate::viInputModeStealKeys() const
     return m_viewInternal->m_viInputModeStealKeys;
 }
 
+bool KTextEditor::ViewPrivate::viRelativeLineNumbers() const
+{
+    return m_viewInternal->m_viRelLineNumbers;
+}
+
 void KTextEditor::ViewPrivate::toggleViInputMode()
 {
     config()->setViInputMode(!config()->viInputMode());
@@ -1763,6 +1768,9 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     // whether vi input mode should override actions or not
     m_viewInternal->m_viInputModeStealKeys = config()->viInputModeStealKeys();
+
+    // whether relative line numbers should be used or not.
+    m_viewInternal->m_leftBorder->setViRelLineNumbersOn(config()->viRelativeLineNumbers());
 
     reflectOnTheFlySpellCheckStatus(m_doc->isOnTheFlySpellCheckingEnabled());
 

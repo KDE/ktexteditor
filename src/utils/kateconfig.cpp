@@ -1210,6 +1210,7 @@ KateViewConfig::KateViewConfig()
     m_persistentSelectionSet(false),
     m_viInputModeSet(false),
     m_viInputModeStealKeysSet(false),
+    m_viRelativeLineNumbersSet(false),
     m_automaticCompletionInvocationSet(false),
     m_wordCompletionSet(false),
     m_wordCompletionMinimalWordLengthSet(false),
@@ -1249,6 +1250,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_persistentSelectionSet(false),
     m_viInputModeSet(false),
     m_viInputModeStealKeysSet(false),
+    m_viRelativeLineNumbersSet(false),
     m_automaticCompletionInvocationSet(false),
     m_wordCompletionSet(false),
     m_wordCompletionMinimalWordLengthSet(false),
@@ -1289,6 +1291,7 @@ const char *const KEY_ALLOW_MARK_MENU = "Allow Mark Menu";
 const char *const KEY_PERSISTENT_SELECTION = "Persistent Selection";
 const char *const KEY_VI_INPUT_MODE = "Vi Input Mode";
 const char *const KEY_VI_INPUT_MODE_STEAL_KEYS = "Vi Input Mode Steal Keys";
+const char *const KEY_VI_RELATIVE_LINE_NUMBERS = "Vi Relative Line Numbers";
 const char *const KEY_AUTOMATIC_COMPLETION_INVOCATION = "Auto Completion";
 const char *const KEY_WORD_COMPLETION = "Word Completion";
 const char *const KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH = "Word Completion Minimal Word Length";
@@ -1340,6 +1343,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 
     setViInputMode(config.readEntry(KEY_VI_INPUT_MODE, false));
     setViInputModeStealKeys(config.readEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, false));
+    setViRelativeLineNumbers(config.readEntry(KEY_VI_RELATIVE_LINE_NUMBERS, false));
 
     setAutomaticCompletionInvocation(config.readEntry(KEY_AUTOMATIC_COMPLETION_INVOCATION, true));
     setWordCompletion(config.readEntry(KEY_WORD_COMPLETION, true));
@@ -1409,6 +1413,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
 
     config.writeEntry(KEY_VI_INPUT_MODE, viInputMode());
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
+    config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
 
     if (isGlobal()) {
         // Write search pattern history
@@ -1909,6 +1914,27 @@ void KateViewConfig::setViInputModeStealKeys(bool on)
     configStart();
     m_viInputModeStealKeysSet = true;
     m_viInputModeStealKeys = on;
+    configEnd();
+}
+
+bool KateViewConfig::viRelativeLineNumbers() const
+{
+    if (m_viRelativeLineNumbersSet  || isGlobal()) {
+        return m_viRelativeLineNumbers;
+    }
+
+    return s_global->viRelativeLineNumbers();
+}
+
+void KateViewConfig::setViRelativeLineNumbers(bool on)
+{
+    if (m_viRelativeLineNumbersSet && m_viRelativeLineNumbers ==  on) {
+        return;
+    }
+
+    configStart();
+    m_viRelativeLineNumbersSet = true;
+    m_viRelativeLineNumbers = on;
     configEnd();
 }
 

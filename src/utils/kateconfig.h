@@ -521,6 +521,9 @@ public:
     bool viInputModeStealKeys() const;
     void setViInputModeStealKeys(bool on);
 
+    bool viRelativeLineNumbers() const;
+    void setViRelativeLineNumbers(bool on);
+
     // Do we still need the enum and related functions below?
     enum TextToSearch {
         Nowhere = 0,
@@ -571,6 +574,7 @@ private:
     bool m_persistentSelection;
     bool m_viInputMode;
     bool m_viInputModeStealKeys;
+    bool m_viRelativeLineNumbers;
     bool m_automaticCompletionInvocation;
     bool m_wordCompletion;
     int m_wordCompletionMinimalWordLength;
@@ -597,6 +601,7 @@ private:
     bool m_persistentSelectionSet : 1;
     bool m_viInputModeSet : 1;
     bool m_viInputModeStealKeysSet : 1;
+    bool m_viRelativeLineNumbersSet : 1;
     bool m_automaticCompletionInvocationSet : 1;
     bool m_wordCompletionSet : 1;
     bool m_wordCompletionMinimalWordLengthSet : 1;

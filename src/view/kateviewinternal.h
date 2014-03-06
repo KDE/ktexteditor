@@ -462,6 +462,7 @@ private:
 private:
     bool m_viInputMode;
     bool m_viInputModeStealKeys;
+    bool m_viRelLineNumbers;
 
     /**
      * returns the current vi mode

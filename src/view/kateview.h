@@ -765,6 +765,12 @@ public:
     bool viInputModeStealKeys() const;
 
     /**
+     * @return boolean indicating whether relative line numbers should
+     * be used or not.
+     */
+    bool viRelativeLineNumbers() const;
+
+    /**
      * Update vi mode statusbar according to the current mode
      */
     void updateViModeBarMode();
