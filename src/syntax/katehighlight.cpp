@@ -35,6 +35,7 @@
 #include "kateconfig.h"
 #include "kateextendedattribute.h"
 #include "katepartdebug.h"
+#include "katedefaultcolors.h"
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -845,6 +846,8 @@ void KateHighlighting::addToKateExtendedAttributeList()
     KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
     KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("highlighting"), QLatin1String("itemData"));
 
+    KateDefaultColors colors;
+
     //begin with the real parsing
     while (KateHlManager::self()->syntax->nextGroup(data)) {
         // read all attributes
@@ -868,10 +871,10 @@ void KateHighlighting::addToKateExtendedAttributeList()
 
         /* here the custom style overrides are specified, if needed */
         if (!color.isEmpty()) {
-            newData->setForeground(QColor(color));
+            newData->setForeground(colors.adaptToScheme(QColor(color), KateDefaultColors::ForegroundColor));
         }
         if (!selColor.isEmpty()) {
-            newData->setSelectedForeground(QColor(selColor));
+            newData->setSelectedForeground(colors.adaptToScheme(QColor(selColor), KateDefaultColors::ForegroundColor));
         }
         if (!bold.isEmpty()) {
             newData->setFontBold(IS_TRUE(bold));
@@ -887,10 +890,10 @@ void KateHighlighting::addToKateExtendedAttributeList()
             newData->setFontStrikeOut(IS_TRUE(strikeOut));
         }
         if (!bgColor.isEmpty()) {
-            newData->setBackground(QColor(bgColor));
+            newData->setBackground(colors.adaptToScheme(QColor(bgColor), KateDefaultColors::BackgroundColor));
         }
         if (!selBgColor.isEmpty()) {
-            newData->setSelectedBackground(QColor(selBgColor));
+            newData->setSelectedBackground(colors.adaptToScheme(QColor(selBgColor), KateDefaultColors::BackgroundColor));
         }
         // is spellchecking desired?
         if (!spellChecking.isEmpty()) {
