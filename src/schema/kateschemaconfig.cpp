@@ -33,11 +33,10 @@
 #include "katecolortreewidget.h"
 #include "katepartdebug.h"
 #include "ktexteditor/highlightinterface.h"
+#include "katedefaultcolors.h"
 
 #include "ui_howtoimportschema.h"
 
-#include <KColorScheme>
-#include <KColorUtils>
 #include <KFontChooser>
 #include <KMessageBox>
 #include <KComboBox>
@@ -78,8 +77,7 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
 {
     QVector<KateColorItem> items;
 
-    KColorScheme schemeWindow = KColorScheme(QPalette::Active, KColorScheme::Window);
-    KColorScheme schemeView = KColorScheme(QPalette::Active, KColorScheme::View);
+    KateDefaultColors colors;
 
     //
     // editor background colors
@@ -90,31 +88,31 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     ci.name = i18n("Text Area");
     ci.key = QLatin1String("Color Background");
     ci.whatsThis = i18n("<p>Sets the background color of the editing area.</p>");
-    ci.defaultColor = schemeView.background().color();
+    ci.defaultColor = colors.color(Kate::Background);
     items.append(ci);
 
     ci.name = i18n("Selected Text");
     ci.key = QLatin1String("Color Selection");
     ci.whatsThis = i18n("<p>Sets the background color of the selection.</p><p>To set the text color for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog.</p>");
-    ci.defaultColor = KColorScheme(QPalette::Inactive, KColorScheme::Selection).background().color();
+    ci.defaultColor = colors.color(Kate::SelectionBackground);
     items.append(ci);
 
     ci.name = i18n("Current Line");
     ci.key = QLatin1String("Color Highlighted Line");
     ci.whatsThis = i18n("<p>Sets the background color of the currently active line, which means the line where your cursor is positioned.</p>");
-    ci.defaultColor = schemeView.background(KColorScheme::AlternateBackground).color();
+    ci.defaultColor = colors.color(Kate::HighlightedLineBackground);
     items.append(ci);
 
     ci.name = i18n("Search Highlight");
     ci.key = QLatin1String("Color Search Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of search results.</p>");
-    ci.defaultColor = Qt::yellow; // schemeView.background(KColorScheme::NeutralBackground).color();
+    ci.defaultColor = colors.color(Kate::SearchHighlight);
     items.append(ci);
 
     ci.name = i18n("Replace Highlight");
     ci.key = QLatin1String("Color Replace Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of replaced text.</p>");
-    ci.defaultColor = Qt::green; // schemeView.background(KColorScheme::PositiveBackground).color();
+    ci.defaultColor = colors.color(Kate::ReplaceHighlight);
     items.append(ci);
 
     //
@@ -125,44 +123,43 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     ci.name = i18n("Background Area");
     ci.key = QLatin1String("Color Icon Bar");
     ci.whatsThis = i18n("<p>Sets the background color of the icon border.</p>");
-    ci.defaultColor = schemeWindow.background().color();
+    ci.defaultColor = colors.color(Kate::IconBar);
     items.append(ci);
 
     ci.name = i18n("Line Numbers");
     ci.key = QLatin1String("Color Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the line numbers (if enabled).</p>");
-    ci.defaultColor = schemeWindow.foreground().color();
+    ci.defaultColor = colors.color(Kate::LineNumber);
     items.append(ci);
 
     ci.name = i18n("Separator");
     ci.key = QLatin1String("Color Separator");
     ci.whatsThis = i18n("<p>This color will be used to draw the line between line numbers and the icon borders, if both are enabled.</p>");
-    ci.defaultColor = schemeView.foreground(KColorScheme::InactiveText).color();
+    ci.defaultColor = colors.color(Kate::Separator);
     items.append(ci);
 
     ci.name = i18n("Word Wrap Marker");
     ci.key = QLatin1String("Color Word Wrap Marker");
     ci.whatsThis = i18n("<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of visually-wrapped lines</dd></dl>");
-    qreal bgLuma = KColorUtils::luma(schemeView.background().color());
-    ci.defaultColor = KColorUtils::shade(schemeView.background().color(), bgLuma > 0.3 ? -0.15 : 0.03);
+    ci.defaultColor = colors.color(Kate::WordWrapMarker);
     items.append(ci);
 
     ci.name = i18n("Code Folding");
     ci.key = QLatin1String("Color Code Folding");
     ci.whatsThis = i18n("<p>Sets the color of the code folding bar.</p>");
-    ci.defaultColor = KColorScheme(QPalette::Inactive, KColorScheme::Selection).background().color();
+    ci.defaultColor = colors.color(Kate::CodeFolding);
     items.append(ci);
 
     ci.name = i18n("Modified Lines");
     ci.key = QLatin1String("Color Modified Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for modified lines.</p>");
-    ci.defaultColor = schemeView.background(KColorScheme::NegativeBackground).color();
+    ci.defaultColor = colors.color(Kate::ModifiedLine);
     items.append(ci);
 
     ci.name = i18n("Saved Lines");
     ci.key = QLatin1String("Color Saved Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for saved lines.</p>");
-    ci.defaultColor = schemeView.background(KColorScheme::PositiveBackground).color();
+    ci.defaultColor = colors.color(Kate::SavedLine);
     items.append(ci);
 
     //
@@ -173,26 +170,25 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     ci.name = i18n("Spelling Mistake Line");
     ci.key = QLatin1String("Color Spelling Mistake Line");
     ci.whatsThis = i18n("<p>Sets the color of the line that is used to indicate spelling mistakes.</p>");
-    ci.defaultColor = schemeView.foreground(KColorScheme::NegativeText).color();
+    ci.defaultColor = colors.color(Kate::SpellingMistakeLine);
     items.append(ci);
 
     ci.name = i18n("Tab and Space Markers");
     ci.key = QLatin1String("Color Tab Marker");
     ci.whatsThis = i18n("<p>Sets the color of the tabulator marks.</p>");
-    ci.defaultColor = KColorUtils::shade(schemeView.background().color(), bgLuma > 0.7 ? -0.35 : 0.3);
+    ci.defaultColor = colors.color(Kate::TabMarker);
     items.append(ci);
 
     ci.name = i18n("Indentation Line");
     ci.key = QLatin1String("Color Indentation Line");
     ci.whatsThis = i18n("<p>Sets the color of the vertical indentation lines.</p>");
-    ci.defaultColor = KColorUtils::shade(schemeView.background().color(), bgLuma > 0.7 ? -0.35 : 0.3);
+    ci.defaultColor = colors.color(Kate::IndentationLine);
     items.append(ci);
 
     ci.name = i18n("Bracket Highlight");
     ci.key = QLatin1String("Color Highlighted Bracket");
     ci.whatsThis = i18n("<p>Sets the bracket matching color. This means, if you place the cursor e.g. at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>");
-    ci.defaultColor = KColorUtils::tint(schemeView.background().color(),
-                                        schemeView.decoration(KColorScheme::HoverColor).color());
+    ci.defaultColor = colors.color(Kate::HighlightedBracket);
     items.append(ci);
 
     //
@@ -200,41 +196,23 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     //
     ci.category = i18n("Marker Colors");
 
-    ci.name = i18n("Bookmark");
-    ci.key = QLatin1String("Color MarkType 1");
+    const QString markerNames[Kate::LAST_MARK + 1] = {
+        i18n("Bookmark"),
+        i18n("Active Breakpoint"),
+        i18n("Reached Breakpoint"),
+        i18n("Disabled Breakpoint"),
+        i18n("Execution"),
+        i18n("Warning"),
+        i18n("Error")
+    };
+
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
-    ci.defaultColor = Qt::blue; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Active Breakpoint");
-    ci.key = QLatin1String("Color MarkType 2");
-    ci.defaultColor = Qt::red; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Reached Breakpoint");
-    ci.key = QLatin1String("Color MarkType 3");
-    ci.defaultColor = Qt::yellow; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Disabled Breakpoint");
-    ci.key = QLatin1String("Color MarkType 4");
-    ci.defaultColor = Qt::magenta; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Execution");
-    ci.key = QLatin1String("Color MarkType 5");
-    ci.defaultColor = Qt::gray; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Warning");
-    ci.key = QLatin1String("Color MarkType 6");
-    ci.defaultColor = Qt::green; // TODO: if possible, derive from system color scheme
-    items.append(ci);
-
-    ci.name = i18n("Error");
-    ci.key = QLatin1String("Color MarkType 7");
-    ci.defaultColor = Qt::red; // TODO: if possible, derive from system color scheme
-    items.append(ci);
+    for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; ++i) {
+        ci.defaultColor = colors.mark(i);
+        ci.name = markerNames[i];
+        ci.key = QLatin1String("Color MarkType ") + QString::number(i + 1);
+        items.append(ci);
+    }
 
     //
     // text templates
@@ -245,22 +223,22 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
 
     ci.name = i18n("Background");
     ci.key = QLatin1String("Color Template Background");
-    ci.defaultColor = schemeWindow.background().color();
+    ci.defaultColor = colors.color(Kate::TemplateBackground);
     items.append(ci);
 
     ci.name = i18n("Editable Placeholder");
     ci.key = QLatin1String("Color Template Editable Placeholder");
-    ci.defaultColor = schemeView.background(KColorScheme::PositiveBackground).color();
+    ci.defaultColor = colors.color(Kate::TemplateEditablePlaceholder);
     items.append(ci);
 
     ci.name = i18n("Focused Editable Placeholder");
     ci.key = QLatin1String("Color Template Focused Editable Placeholder");
-    ci.defaultColor = schemeWindow.background(KColorScheme::PositiveBackground).color();
+    ci.defaultColor = colors.color(Kate::TemplateFocusedEditablePlaceholder);
     items.append(ci);
 
     ci.name = i18n("Not Editable Placeholder");
     ci.key = QLatin1String("Color Template Not Editable Placeholder");
-    ci.defaultColor = schemeView.background(KColorScheme::NegativeBackground).color();
+    ci.defaultColor = colors.color(Kate::TemplateNotEditablePlaceholder);
     items.append(ci);
 
     //

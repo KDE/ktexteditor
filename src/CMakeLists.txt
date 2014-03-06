@@ -188,6 +188,7 @@ utils/movingrangefeedback.cpp
 utils/messageinterface.cpp
 utils/application.cpp
 utils/mainwindow.cpp
+utils/katedefaultcolors.cpp
 
 # schema
 schema/kateschema.cpp
