@@ -197,6 +197,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_cmds.push_back(KateCommands::Character::self());
     m_cmds.push_back(KateCommands::Date::self());
     m_cmds.push_back(KateViAppCommands::self());
+    m_cmds.push_back(KateViBufferCommands::self());
 
     for (QList<KTextEditor::Command *>::iterator it = m_cmds.begin(); it != m_cmds.end(); ++it) {
         m_cmdManager->registerCommand(*it);

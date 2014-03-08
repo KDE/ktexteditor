@@ -60,4 +60,39 @@ private:
     QRegExp re_only;
 };
 
+class KateViBufferCommands : public QObject, public KTextEditor::Command
+{
+    Q_OBJECT
+
+    KateViBufferCommands();
+    static KateViBufferCommands* m_instance;
+
+public:
+    virtual ~KateViBufferCommands();
+    virtual const QStringList& cmds();
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg);
+    virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
+
+    static KateViBufferCommands* self() {
+        if (m_instance == 0) {
+            m_instance = new KateViBufferCommands();
+        }
+        return m_instance;
+    }
+
+private:
+    void switchDocument(KTextEditor::View *, const QString &doc);
+    void prevBuffer(KTextEditor::View *);
+    void nextBuffer(KTextEditor::View *);
+    void firstBuffer(KTextEditor::View *);
+    void lastBuffer(KTextEditor::View *);
+    void prevTab(KTextEditor::View *);
+    void nextTab(KTextEditor::View *);
+    void firstTab(KTextEditor::View *);
+    void lastTab(KTextEditor::View *);
+
+    void activateDocument(KTextEditor::View *, KTextEditor::Document *);
+    QList<KTextEditor::Document *> documents();
+};
+
 #endif

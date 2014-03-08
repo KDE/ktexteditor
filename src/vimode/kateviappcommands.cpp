@@ -31,6 +31,7 @@
 #include <QDir>
 #include <QTimer>
 
+//BEGIN KateViAppCommands
 KateViAppCommands *KateViAppCommands::m_instance = 0;
 
 KateViAppCommands::KateViAppCommands()
@@ -65,16 +66,16 @@ KateViAppCommands::~KateViAppCommands()
     m_instance = 0;
 }
 
-const QStringList& KateViAppCommands::cmds()
+const QStringList &KateViAppCommands::cmds()
 {
     static QStringList l;
 
     if (l.empty()) {
         l << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
-        << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
-        << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
-        << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
-        << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose");
+          << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
+          << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
+          << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
+          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose");
     }
 
     return l;
@@ -82,15 +83,15 @@ const QStringList& KateViAppCommands::cmds()
 
 bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg)
 {
-    QStringList args(cmd.split( QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
-    QString command( args.takeFirst() );
+    QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
+    QString command(args.takeFirst());
 
     KTextEditor::MainWindow *mainWin = view->mainWindow();
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
 
     if (re_write.exactMatch(command)) {  //TODO: handle writing to specific file
         if (!re_write.cap(1).isEmpty()) { // [a]ll
-            Q_FOREACH (KTextEditor::Document *doc, app->documents()) {
+            Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                 doc->save();
             }
             msg = i18n("All documents written to disk");
@@ -102,21 +103,20 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
     // Other buffer commands are implemented by the KateFileTree plugin
     else if (re_close.exactMatch(command)) {
         app->closeDocument(view->document());
-    }
-    else if (re_quit.exactMatch(command)) {
+    } else if (re_quit.exactMatch(command)) {
         const bool save = !re_quit.cap(1).isEmpty(); // :[w]q
         const bool allDocuments = !re_quit.cap(2).isEmpty(); // :q[all]
         const bool doNotPromptForSave = !re_quit.cap(3).isEmpty(); // :q[!]
 
         if (allDocuments) {
             if (save) {
-                Q_FOREACH (KTextEditor::Document *doc, app->documents()) {
+                Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                     doc->save();
                 }
             }
 
             if (doNotPromptForSave) {
-                Q_FOREACH (KTextEditor::Document *doc, app->documents()) {
+                Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                     if (doc->isModified()) {
                         doc->setModified(false);
                     }
@@ -145,7 +145,7 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
         }
     } else if (re_exit.exactMatch(command)) {
         if (!re_exit.cap(1).isEmpty()) { // a[ll]
-            Q_FOREACH (KTextEditor::Document *doc, app->documents()) {
+            Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                 doc->save();
             }
             QTimer::singleShot(0, this, SLOT(quit()));
@@ -160,8 +160,7 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
                 QTimer::singleShot(0, this, SLOT(quit()));
             }
         }
-    }
-    else if (re_edit.exactMatch(command)) {
+    } else if (re_edit.exactMatch(command)) {
         QString argument = args.join(QLatin1Char(' '));
         if (argument.isEmpty() || argument == QLatin1String("!")) {
             view->document()->documentReload();
@@ -186,25 +185,21 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
                 app->openUrl(QUrl())->saveAs(url);
             }
         }
-    }
-    else if (re_new.exactMatch(command)) {
+    } else if (re_new.exactMatch(command)) {
         if (re_new.cap(1) == QLatin1String("v")) { // vertical split
             mainWin->splitView(Qt::Vertical);
         } else {                    // horizontal split
             mainWin->splitView(Qt::Horizontal);
         }
         mainWin->openUrl(QUrl());
-    }
-    else if (command == QLatin1String("enew")) {
+    } else if (command == QLatin1String("enew")) {
         mainWin->openUrl(QUrl());
-    }
-    else if (re_split.exactMatch(command)) {
+    } else if (re_split.exactMatch(command)) {
         mainWin->splitView(Qt::Horizontal);
-    }
-    else if (re_vsplit.exactMatch(command)) {
+    } else if (re_vsplit.exactMatch(command)) {
         mainWin->splitView(Qt::Vertical);
     } else if (re_only.exactMatch(command)) {
-        Q_FOREACH (KTextEditor::View *it, mainWin->views()) {
+        Q_FOREACH(KTextEditor::View * it, mainWin->views()) {
             if (it != view) {
                 mainWin->closeView(it);
             }
@@ -220,71 +215,65 @@ bool KateViAppCommands::help(KTextEditor::View *view, const QString &cmd, QStrin
 
     if (re_write.exactMatch(cmd)) {
         msg = i18n("<p><b>w/wa &mdash; write document(s) to disk</b></p>"
-        "<p>Usage: <tt><b>w[a]</b></tt></p>"
-        "<p>Writes the current document(s) to disk. "
-        "It can be called in two ways:<br />"
-        " <tt>w</tt> &mdash; writes the current document to disk<br />"
-        " <tt>wa</tt> &mdash; writes all documents to disk.</p>"
-        "<p>If no file name is associated with the document, "
-        "a file dialog will be shown.</p>");
+                   "<p>Usage: <tt><b>w[a]</b></tt></p>"
+                   "<p>Writes the current document(s) to disk. "
+                   "It can be called in two ways:<br />"
+                   " <tt>w</tt> &mdash; writes the current document to disk<br />"
+                   " <tt>wa</tt> &mdash; writes all documents to disk.</p>"
+                   "<p>If no file name is associated with the document, "
+                   "a file dialog will be shown.</p>");
         return true;
-    }
-    else if (re_quit.exactMatch(cmd)) {
+    } else if (re_quit.exactMatch(cmd)) {
         msg = i18n("<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p>"
-        "<p>Usage: <tt><b>[w]q[a]</b></tt></p>"
-        "<p>Quits the application. If <tt>w</tt> is prepended, it also writes"
-        " the document(s) to disk. This command "
-        "can be called in several ways:<br />"
-        " <tt>q</tt> &mdash; closes the current view.<br />"
-        " <tt>qa</tt> &mdash; closes all views, effectively quitting the application.<br />"
-        " <tt>wq</tt> &mdash; writes the current document to disk and closes its view.<br />"
-        " <tt>wqa</tt> &mdash; writes all documents to disk and quits.</p>"
-        "<p>In all cases, if the view being closed is the last view, the application quits. "
-        "If no file name is associated with the document and it should be written to disk, "
-        "a file dialog will be shown.</p>");
+                   "<p>Usage: <tt><b>[w]q[a]</b></tt></p>"
+                   "<p>Quits the application. If <tt>w</tt> is prepended, it also writes"
+                   " the document(s) to disk. This command "
+                   "can be called in several ways:<br />"
+                   " <tt>q</tt> &mdash; closes the current view.<br />"
+                   " <tt>qa</tt> &mdash; closes all views, effectively quitting the application.<br />"
+                   " <tt>wq</tt> &mdash; writes the current document to disk and closes its view.<br />"
+                   " <tt>wqa</tt> &mdash; writes all documents to disk and quits.</p>"
+                   "<p>In all cases, if the view being closed is the last view, the application quits. "
+                   "If no file name is associated with the document and it should be written to disk, "
+                   "a file dialog will be shown.</p>");
         return true;
-    }
-    else if (re_exit.exactMatch(cmd)) {
+    } else if (re_exit.exactMatch(cmd)) {
         msg = i18n("<p><b>x/xa &mdash; write and quit</b></p>"
-        "<p>Usage: <tt><b>x[a]</b></tt></p>"
-        "<p>Saves document(s) and quits (e<b>x</b>its). This command "
-        "can be called in two ways:<br />"
-        " <tt>x</tt> &mdash; closes the current view.<br />"
-        " <tt>xa</tt> &mdash; closes all views, effectively quitting the application.</p>"
-        "<p>In all cases, if the view being closed is the last view, the application quits. "
-        "If no file name is associated with the document and it should be written to disk, "
-        "a file dialog will be shown.</p>"
-        "<p>Unlike the 'w' commands, this command only writes the document if it is modified."
-        "</p>");
+                   "<p>Usage: <tt><b>x[a]</b></tt></p>"
+                   "<p>Saves document(s) and quits (e<b>x</b>its). This command "
+                   "can be called in two ways:<br />"
+                   " <tt>x</tt> &mdash; closes the current view.<br />"
+                   " <tt>xa</tt> &mdash; closes all views, effectively quitting the application.</p>"
+                   "<p>In all cases, if the view being closed is the last view, the application quits. "
+                   "If no file name is associated with the document and it should be written to disk, "
+                   "a file dialog will be shown.</p>"
+                   "<p>Unlike the 'w' commands, this command only writes the document if it is modified."
+                   "</p>");
         return true;
-    }
-    else if (re_split.exactMatch(cmd)) {
+    } else if (re_split.exactMatch(cmd)) {
         msg = i18n("<p><b>sp,split&mdash; Split horizontally the current view into two</b></p>"
-        "<p>Usage: <tt><b>sp[lit]</b></tt></p>"
-        "<p>The result is two views on the same document.</p>");
+                   "<p>Usage: <tt><b>sp[lit]</b></tt></p>"
+                   "<p>The result is two views on the same document.</p>");
         return true;
-    }
-    else if (re_vsplit.exactMatch(cmd)) {
+    } else if (re_vsplit.exactMatch(cmd)) {
         msg = i18n("<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></p>"
-        "<p>Usage: <tt><b>vs[plit]</b></tt></p>"
-        "<p>The result is two views on the same document.</p>");
+                   "<p>Usage: <tt><b>vs[plit]</b></tt></p>"
+                   "<p>The result is two views on the same document.</p>");
         return true;
-    }
-    else if (re_new.exactMatch(cmd)) {
+    } else if (re_new.exactMatch(cmd)) {
         msg = i18n("<p><b>[v]new &mdash; split view and create new document</b></p>"
-        "<p>Usage: <tt><b>[v]new</b></tt></p>"
-        "<p>Splits the current view and opens a new document in the new view."
-        " This command can be called in two ways:<br />"
-        " <tt>new</tt> &mdash; splits the view horizontally and opens a new document.<br />"
-        " <tt>vnew</tt> &mdash; splits the view vertically and opens a new document.<br />"
-        "</p>");
+                   "<p>Usage: <tt><b>[v]new</b></tt></p>"
+                   "<p>Splits the current view and opens a new document in the new view."
+                   " This command can be called in two ways:<br />"
+                   " <tt>new</tt> &mdash; splits the view horizontally and opens a new document.<br />"
+                   " <tt>vnew</tt> &mdash; splits the view vertically and opens a new document.<br />"
+                   "</p>");
         return true;
-    }
-    else if (re_edit.exactMatch(cmd)) {
+    } else if (re_edit.exactMatch(cmd)) {
         msg = i18n("<p><b>e[dit] &mdash; reload current document</b></p>"
-        "<p>Usage: <tt><b>e[dit]</b></tt></p>"
-        "<p>Starts <b>e</b>diting the current document again. This is useful to re-edit"
-        " the current file, when it has been changed by another program.</p>");
+                   "<p>Usage: <tt><b>e[dit]</b></tt></p>"
+                   "<p>Starts <b>e</b>diting the current document again. This is useful to re-edit"
+                   " the current file, when it has been changed by another program.</p>");
         return true;
     }
 
@@ -311,3 +300,212 @@ void KateViAppCommands::quit()
 {
     KTextEditor::Editor::instance()->application()->quit();
 }
+
+//END KateViAppCommands
+
+//BEGIN KateViBufferCommand
+KateViBufferCommands *KateViBufferCommands::m_instance = 0;
+
+KateViBufferCommands::KateViBufferCommands()
+    : QObject(), KTextEditor::Command()
+{
+}
+
+KateViBufferCommands::~KateViBufferCommands()
+{
+    KTextEditor::CommandInterface *iface = qobject_cast<KTextEditor::CommandInterface *>(KTextEditor::Editor::instance());
+
+    if (iface) {
+        iface->unregisterCommand(this);
+    }
+
+    m_instance = 0;
+}
+
+const QStringList &KateViBufferCommands::cmds()
+{
+    static QStringList sl;
+
+    if (sl.empty()) {
+        sl << QLatin1String("ls")
+           << QLatin1String("b") << QLatin1String("buffer")
+           << QLatin1String("bn") << QLatin1String("bnext") << QLatin1String("bp") << QLatin1String("bprevious")
+           << QLatin1String("tabn") << QLatin1String("tabnext") << QLatin1String("tabp") << QLatin1String("tabprevious")
+           << QLatin1String("bf") << QLatin1String("bfirst") << QLatin1String("bl") << QLatin1String("blast")
+           << QLatin1String("tabf") << QLatin1String("tabfirst") << QLatin1String("tabl") << QLatin1String("tablast");
+    }
+
+    return sl;
+}
+
+bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString & /*msg*/)
+{
+    // create list of args
+    QStringList args(cmd.split(QLatin1Char(' '), QString::KeepEmptyParts));
+    QString command = args.takeFirst(); // same as cmd if split failed
+    QString argument = args.join(QLatin1String(" "));
+
+    if (command == QLatin1String("ls")) {
+        // TODO: open quickview
+    } else if (command == QLatin1String("b") || command == QLatin1String("buffer")) {
+        switchDocument(view, argument);
+    } else if (command == QLatin1String("bp") || command == QLatin1String("bprevious")) {
+        prevBuffer(view);
+    } else if (command == QLatin1String("bn") || command == QLatin1String("bnext")) {
+        nextBuffer(view);
+    } else if (command == QLatin1String("bf") || command == QLatin1String("bfirst")) {
+        firstBuffer(view);
+    } else if (command == QLatin1String("bl") || command == QLatin1String("blast")) {
+        lastBuffer(view);
+    } else if (command == QLatin1String("tabn") || command == QLatin1String("tabnext")) {
+        nextTab(view);
+    } else if (command == QLatin1String("tabp") || command == QLatin1String("tabprevious")) {
+        prevTab(view);
+    } else if (command == QLatin1String("tabf") || command == QLatin1String("tabfirst")) {
+        firstTab(view);
+    } else if (command == QLatin1String("tabl") || command == QLatin1String("tablast")) {
+        lastTab(view);
+    }
+    return true;
+}
+
+void KateViBufferCommands::switchDocument(KTextEditor::View *view, const QString &address)
+{
+
+    if (address.isEmpty()) {
+        // no argument: switch to the previous document
+        prevBuffer(view);
+        return;
+    }
+
+    const int idx = address.toInt();
+    QList<KTextEditor::Document *> docs = documents();
+
+    if (idx > 0 && idx <= docs.size()) {
+        // numerical argument: switch to the nth document
+        activateDocument(view, docs.at(idx - 1));
+    } else {
+        // string argument: switch to the given file
+        KTextEditor::Document *doc = 0;
+
+        Q_FOREACH(KTextEditor::Document *it, docs) {
+            if (it->documentName() == address) {
+                doc = it;
+                break;
+            }
+        }
+
+        if (doc) {
+            activateDocument(view, docs.at(idx - 1));
+        }
+    }
+}
+
+void KateViBufferCommands::prevBuffer(KTextEditor::View *view)
+{
+    QList<KTextEditor::Document *> docs = documents();
+    const int idx = docs.indexOf(view->document());
+
+    if (idx > 0) {
+        activateDocument(view, docs.at(idx - 1));
+    } else { // wrap
+        activateDocument(view, docs.last());
+    }
+}
+
+void KateViBufferCommands::nextBuffer(KTextEditor::View *view)
+{
+    QList<KTextEditor::Document *> docs = documents();
+    const int idx = docs.indexOf(view->document());
+
+    if (idx + 1 < docs.size()) {
+        activateDocument(view, docs.at(idx + 1));
+    } else { // wrap
+        activateDocument(view, docs.first());
+    }
+}
+
+void KateViBufferCommands::firstBuffer(KTextEditor::View *view)
+{
+    activateDocument(view, documents().first());
+}
+
+void KateViBufferCommands::lastBuffer(KTextEditor::View *view)
+{
+    activateDocument(view, documents().last());
+}
+
+void KateViBufferCommands::prevTab(KTextEditor::View *view)
+{
+    prevBuffer(view); // TODO: implement properly, when interface is added
+}
+
+void KateViBufferCommands::nextTab(KTextEditor::View *view)
+{
+    nextBuffer(view); // TODO: implement properly, when interface is added
+}
+
+void KateViBufferCommands::firstTab(KTextEditor::View *view)
+{
+    firstBuffer(view); // TODO: implement properly, when interface is added
+}
+
+void KateViBufferCommands::lastTab(KTextEditor::View *view)
+{
+    lastBuffer(view); // TODO: implement properly, when interface is added
+}
+
+void KateViBufferCommands::activateDocument(KTextEditor::View *view, KTextEditor::Document *doc)
+{
+    KTextEditor::MainWindow *mainWindow = view->mainWindow();
+    mainWindow->activateView(doc);
+}
+
+QList< KTextEditor::Document * > KateViBufferCommands::documents()
+{
+    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
+    return app->documents();
+}
+
+bool KateViBufferCommands::help(KTextEditor::View * /*view*/, const QString &cmd, QString &msg)
+{
+    if (cmd == QLatin1String("b") || cmd == QLatin1String("buffer")) {
+        msg = i18n("<p><b>b,buffer &mdash; Edit document N from the document list</b></p>"
+                   "<p>Usage: <tt><b>b[uffer] [N]</b></tt></p>");
+        return true;
+    } else if (cmd == QLatin1String("bp") || cmd == QLatin1String("bprevious") ||
+               cmd == QLatin1String("tabp") || cmd == QLatin1String("tabprevious")) {
+        msg = i18n("<p><b>bp,bprev &mdash; previous buffer</b></p>"
+                   "<p>Usage: <tt><b>bp[revious] [N]</b></tt></p>"
+                   "<p>Goes to <b>[N]</b>th previous document (\"<b>b</b>uffer\") in document list. </p>"
+                   "<p> <b>[N]</b> defaults to one. </p>"
+                   "<p>Wraps around the start of the document list.</p>");
+        return true;
+    } else if (cmd == QLatin1String("bn") || cmd == QLatin1String("bnext") ||
+               cmd == QLatin1String("tabn") || cmd == QLatin1String("tabnext")) {
+        msg = i18n("<p><b>bn,bnext &mdash; switch to next document</b></p>"
+                   "<p>Usage: <tt><b>bn[ext] [N]</b></tt></p>"
+                   "<p>Goes to <b>[N]</b>th next document (\"<b>b</b>uffer\") in document list."
+                   "<b>[N]</b> defaults to one. </p>"
+                   "<p>Wraps around the end of the document list.</p>");
+        return true;
+    } else if (cmd == QLatin1String("bf") || cmd == QLatin1String("bfirst") ||
+               cmd == QLatin1String("tabf") || cmd == QLatin1String("tabfirst")) {
+        msg = i18n("<p><b>bf,bfirst &mdash; first document</b></p>"
+                   "<p>Usage: <tt><b>bf[irst]</b></tt></p>"
+                   "<p>Goes to the <b>f</b>irst document (\"<b>b</b>uffer\") in document list.</p>");
+        return true;
+    } else if (cmd == QLatin1String("bl") || cmd == QLatin1String("blast") ||
+               cmd == QLatin1String("tabl") || cmd == QLatin1String("tablast")) {
+        msg = i18n("<p><b>bl,blast &mdash; last document</b></p>"
+                   "<p>Usage: <tt><b>bl[ast]</b></tt></p>"
+                   "<p>Goes to the <b>l</b>ast document (\"<b>b</b>uffer\") in document list.</p>");
+        return true;
+    } else if (cmd == QLatin1String("ls")) {
+        msg = i18n("<p><b>ls</b></p>"
+                   "<p>list current buffers<p>");
+    }
+
+    return false;
+}
+//END KateViBufferCommand
