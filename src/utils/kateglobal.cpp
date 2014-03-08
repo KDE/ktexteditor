@@ -27,6 +27,7 @@
 #include "kateview.h"
 #include "katerenderer.h"
 #include "katecmds.h"
+#include "katevicmds.h"
 #include "kateviappcommands.h"
 #include "katemodemanager.h"
 #include "kateschema.h"
@@ -190,9 +191,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     // init the cmds
     //
     m_cmds.push_back(KateCommands::CoreCommands::self());
-    m_cmds.push_back(KateCommands::ViCommands::self());
-    m_cmds.push_back(KateCommands::AppCommands::self());
-    m_cmds.push_back(KateCommands::SedReplace::self());
+    m_cmds.push_back(KateViCommands::ViCommands::self());
+    m_cmds.push_back(KateViCommands::AppCommands::self());
+    m_cmds.push_back(KateViCommands::SedReplace::self());
     m_cmds.push_back(KateCommands::Character::self());
     m_cmds.push_back(KateCommands::Date::self());
     m_cmds.push_back(KateViAppCommands::self());

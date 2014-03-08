@@ -21,7 +21,7 @@
 #define KATEVIEMULATEDCOMMANDBAR_H
 
 #include "kateviewhelpers.h"
-#include "katecmds.h"
+#include "katevicmds.h"
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
@@ -51,7 +51,7 @@ public:
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();
 
-    void startInteractiveSearchAndReplace(QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    void startInteractiveSearchAndReplace(QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
 
 private:
     bool m_isActive;
@@ -76,7 +76,7 @@ private:
     QLabel *m_interactiveSedReplaceLabel;
     bool m_interactiveSedReplaceActive;
     void updateInteractiveSedReplaceLabelText();
-    QSharedPointer<KateCommands::SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+    QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
     void finishInteractiveSedReplace();
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);

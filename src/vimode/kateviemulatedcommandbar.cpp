@@ -732,7 +732,7 @@ KateViEmulatedCommandBar::ParsedSedExpression KateViEmulatedCommandBar::parseAsS
     const QString commandWithoutRangeExpression = withoutRangeExpression();
     ParsedSedExpression parsedSedExpression;
     QString delimiter;
-    parsedSedExpression.parsedSuccessfully = KateCommands::SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
+    parsedSedExpression.parsedSuccessfully = KateViCommands::SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
     if (parsedSedExpression.parsedSuccessfully) {
         parsedSedExpression.delimiter = delimiter.at(0);
         if (parsedSedExpression.replaceBeginPos == -1) {
@@ -1053,7 +1053,7 @@ bool KateViEmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
     return m_isSendingSyntheticSearchCompletedKeypress;
 }
 
-void KateViEmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer< KateCommands::SedReplace::InteractiveSedReplacer > interactiveSedReplace)
+void KateViEmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer< KateViCommands::SedReplace::InteractiveSedReplacer > interactiveSedReplace)
 {
     m_interactiveSedReplaceActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
