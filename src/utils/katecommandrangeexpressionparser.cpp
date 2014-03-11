@@ -20,7 +20,7 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
-#include "katevicommandrangeexpressionparser.h"
+#include "katecommandrangeexpressionparser.h"
 
 #include "kateview.h"
 #include "katedocument.h"
@@ -32,15 +32,15 @@ using KTextEditor::Cursor;
 
 namespace
 {
-ViCommandRangeExpressionParser rangeExpressionParser;
+CommandRangeExpressionParser rangeExpressionParser;
 }
 
-ViCommandRangeExpressionParser::ViCommandRangeExpressionParser()
+CommandRangeExpressionParser::CommandRangeExpressionParser()
 {
     m_line.setPattern(QLatin1String("\\d+"));
     m_lastLine.setPattern(QLatin1String("\\$"));
     m_thisLine.setPattern(QLatin1String("\\."));
-    m_mark.setPattern(QLatin1String("\\'[0-9a-z><\\+\\*\\_]"));
+
     m_forwardSearch.setPattern(QLatin1String("/([^/]*)/?"));
     m_forwardSearch2.setPattern(QLatin1String("/[^/]*/?")); // no group
     m_backwardSearch.setPattern(QLatin1String("\\?([^?]*)\\??"));
@@ -66,12 +66,12 @@ ViCommandRangeExpressionParser::ViCommandRangeExpressionParser()
     m_cmdRange.setPattern(QLatin1String("^(") + m_position.pattern() + QLatin1String(")((?:,(") + m_position.pattern() + QLatin1String("))?)"));
 }
 
-Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
 {
     return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, view);
 }
 
-Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view)
+Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view)
 {
     Range parsedRange(0, -1, 0, -1);
     if (command.isEmpty()) {
@@ -114,7 +114,7 @@ Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &comman
     return parsedRange;
 }
 
-int ViCommandRangeExpressionParser::calculatePosition(const QString &string, KTextEditor::ViewPrivate *view)
+int CommandRangeExpressionParser::calculatePosition(const QString &string, KTextEditor::ViewPrivate *view)
 {
 
     int pos = 0;
@@ -143,8 +143,6 @@ int ViCommandRangeExpressionParser::calculatePosition(const QString &string, KTe
             values.push_back(view->doc()->lines());
         } else if (m_thisLine.exactMatch(line)) {
             values.push_back(view->cursorPosition().line() + 1);
-        } else if (m_mark.exactMatch(line)) {
-            values.push_back(view->getViInputModeManager()->getMarkPosition(line.at(1)).line() + 1);
         } else if (m_forwardSearch.exactMatch(line)) {
             m_forwardSearch.indexIn(line);
             QString pattern = m_forwardSearch.capturedTexts().at(1);

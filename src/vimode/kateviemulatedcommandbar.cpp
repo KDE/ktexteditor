@@ -20,8 +20,6 @@
 
 #include "kateviemulatedcommandbar.h"
 
-#include "katecmd.h"
-#include "katecmds.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
@@ -31,7 +29,13 @@
 #include "kateviglobal.h"
 #include "katevikeyparser.h"
 #include "katevinormalmode.h"
+
+#include "katevicmds.h"
 #include "katevivisualmode.h"
+#include "kateviappcommands.h"
+
+#include "katecmds.h"
+#include "katescriptmanager.h"
 
 #include <KColorScheme>
 #include <KLocalizedString>
@@ -364,6 +368,29 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KTextEditor::ViewPrivate *vie
     connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_commandResponseMessageDisplayHide, SLOT(stop()));
     // We can restart the timer once the view has focus again, though.
     connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideCommandResponseTimer()));
+
+    QList<KTextEditor::Command *> cmds;
+
+    cmds.push_back(KateCommands::CoreCommands::self());
+    cmds.push_back(KateViCommands::ViCommands::self());
+    cmds.push_back(KateViCommands::AppCommands::self());
+    cmds.push_back(KateViCommands::SedReplace::self());
+    cmds.push_back(KateViAppCommands::self());
+    cmds.push_back(KateViBufferCommands::self());
+
+    Q_FOREACH (KTextEditor::Command *cmd, KateScriptManager::self()->commandLineScripts()) {
+        cmds.push_back(cmd);
+    }
+
+    Q_FOREACH (KTextEditor::Command *cmd, cmds) {
+        QStringList l = cmd->cmds();
+
+        for (int z = 0; z < l.count(); z++) {
+            m_cmdDict.insert(l[z], cmd);
+        }
+
+        m_cmdCompletion.insertItems(l);
+    }
 }
 
 KateViEmulatedCommandBar::~KateViEmulatedCommandBar()
@@ -617,7 +644,7 @@ void KateViEmulatedCommandBar::activateWordFromDocumentCompletion()
 
 void KateViEmulatedCommandBar::activateCommandCompletion()
 {
-    m_completionModel->setStringList(KateCmd::self()->commandCompletionObject()->items());
+    m_completionModel->setStringList(m_cmdCompletion.items());
     m_currentCompletionType = Commands;
 }
 
@@ -835,7 +862,7 @@ QString KateViEmulatedCommandBar::rangeExpression()
     QString rangeExpression;
     QString unused;
     const QString command = m_edit->text();
-    CommandRangeExpressionParser::parseRangeExpression(command, m_view, rangeExpression, unused);
+    ViCommandRangeExpressionParser::parseRangeExpression(command, m_view, rangeExpression, unused);
     return rangeExpression;
 }
 
@@ -1111,10 +1138,10 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
 
     // Parse any leading range expression, and strip it (and maybe do some other transforms on the command).
     QString leadingRangeExpression;
-    KTextEditor::Range range = CommandRangeExpressionParser::parseRangeExpression(cmd, m_view, leadingRangeExpression, cmd);
+    KTextEditor::Range range = ViCommandRangeExpressionParser::parseRangeExpression(cmd, m_view, leadingRangeExpression, cmd);
 
     if (cmd.length() > 0) {
-        KTextEditor::Command *p = KateCmd::self()->queryCommand(cmd);
+        KTextEditor::Command *p = queryCommand(cmd);
         KTextEditor::RangeCommand *ce = dynamic_cast<KTextEditor::RangeCommand *>(p);
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.
@@ -1278,3 +1305,27 @@ void KateViEmulatedCommandBar::startHideCommandResponseTimer()
     }
 }
 
+KTextEditor::Command *KateViEmulatedCommandBar::queryCommand(const QString &cmd) const
+{
+    // a command can be named ".*[\w\-]+" with the constrain that it must
+    // contain at least one letter.
+    int f = 0;
+    bool b = false;
+
+    // special case: '-' and '_' can be part of a command name, but if the
+    // command is 's' (substitute), it should be considered the delimiter and
+    // should not be counted as part of the command name
+    if (cmd.length() >= 2 && cmd.at(0) == QLatin1Char('s') && (cmd.at(1) == QLatin1Char('-') || cmd.at(1) == QLatin1Char('_'))) {
+        return m_cmdDict.value(QLatin1String("s"));
+    }
+
+    for (; f < cmd.length(); f++) {
+        if (cmd[f].isLetter()) {
+            b = true;
+        }
+        if (b && (! cmd[f].isLetterOrNumber() && cmd[f] != QLatin1Char('-') && cmd[f] != QLatin1Char('_'))) {
+            break;
+        }
+    }
+    return m_cmdDict.value(cmd.left(f));
+}

@@ -26,15 +26,14 @@
 #include "katedocument.h"
 #include "kateview.h"
 #include "katerenderer.h"
+#include "katecmd.h"
 #include "katecmds.h"
-#include "katevicmds.h"
-#include "kateviappcommands.h"
+#include "katesedcmd.h"
 #include "katemodemanager.h"
 #include "kateschema.h"
 #include "kateschemaconfig.h"
 #include "kateconfig.h"
 #include "katescriptmanager.h"
-#include "katecmd.h"
 #include "katebuffer.h"
 #include "kateviglobal.h"
 #include "katewordcompletion.h"
@@ -191,13 +190,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     // init the cmds
     //
     m_cmds.push_back(KateCommands::CoreCommands::self());
-    m_cmds.push_back(KateViCommands::ViCommands::self());
-    m_cmds.push_back(KateViCommands::AppCommands::self());
-    m_cmds.push_back(KateViCommands::SedReplace::self());
     m_cmds.push_back(KateCommands::Character::self());
     m_cmds.push_back(KateCommands::Date::self());
-    m_cmds.push_back(KateViAppCommands::self());
-    m_cmds.push_back(KateViBufferCommands::self());
+    m_cmds.push_back(KateCommands::SedReplace::self());
 
     for (QList<KTextEditor::Command *>::iterator it = m_cmds.begin(); it != m_cmds.end(); ++it) {
         m_cmdManager->registerCommand(*it);

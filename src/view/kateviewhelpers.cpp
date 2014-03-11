@@ -39,7 +39,7 @@
 #include "katetextlayout.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
-#include <katevicommandrangeexpressionparser.h>
+#include "katecommandrangeexpressionparser.h"
 
 #include <KCharsets>
 #include <KColorScheme>

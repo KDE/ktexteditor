@@ -20,8 +20,8 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
-#ifndef KATE_VI_COMMAND_RANGE_EXPRESSION_PARSER_INCLUDED
-#define KATE_VI_COMMAND_RANGE_EXPRESSION_PARSER_INCLUDED
+#ifndef KATE_COMMAND_RANGE_EXPRESSION_PARSER_INCLUDED
+#define KATE_COMMAND_RANGE_EXPRESSION_PARSER_INCLUDED
 
 #include <ktexteditor/range.h>
 
@@ -29,10 +29,10 @@
 
 namespace KTextEditor { class ViewPrivate; }
 
-class ViCommandRangeExpressionParser
+class CommandRangeExpressionParser
 {
 public:
-    ViCommandRangeExpressionParser();
+    CommandRangeExpressionParser();
     /**
      * Attempt to parse any leading range expression (e.g. "%", "'<,'>", ".,+6" etc) in @c command and
      * return it as a Range.  If parsing was successful, the range will be valid, the string

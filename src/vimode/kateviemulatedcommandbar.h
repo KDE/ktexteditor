@@ -22,11 +22,15 @@
 
 #include "kateviewhelpers.h"
 #include "katevicmds.h"
+
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor {
+    class ViewPrivate;
+    class Command;
+}
 class QLabel;
 class QCompleter;
 class QStringListModel;
@@ -153,6 +157,12 @@ private:
      */
     QString withoutRangeExpression();
     QString rangeExpression();
+
+private:
+    KCompletion m_cmdCompletion;
+    QHash<QString, KTextEditor::Command *> m_cmdDict;
+    KTextEditor::Command *queryCommand(const QString &cmd) const;
+
 private Q_SLOTS:
     void editTextChanged(const QString &newText);
     void updateMatchHighlightAttrib();
