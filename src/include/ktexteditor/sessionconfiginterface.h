@@ -193,10 +193,7 @@ public:
         SkipUrl           = 1 << 0,
         SkipMode          = 1 << 1,
         SkipHighlighting  = 1 << 2,
-        SkipEncoding      = 1 << 3,
-
-        // TODO KDE5: remove for KDE5, since text folding moved to the View
-        SkipFolding       = 1 << 4
+        SkipEncoding      = 1 << 3
     };
 
     /**
