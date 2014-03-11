@@ -618,7 +618,7 @@ bool KateViNormalMode::commandEnterInsertModeBeforeFirstNonBlankInLine()
 
 bool KateViNormalMode::commandEnterInsertModeLast()
 {
-    Cursor c = m_view->getViInputModeManager()->getMarkPosition(QLatin1Char('^'));
+    Cursor c = m_viInputModeManager->getMarkPosition(QLatin1Char('^'));
     if (c.isValid()) {
         updateCursor(c);
     }
@@ -650,8 +650,8 @@ bool KateViNormalMode::commandEnterVisualBlockMode()
 bool KateViNormalMode::commandReselectVisual()
 {
     // start last visual mode and set start = `< and cursor = `>
-    Cursor c1 = m_view->getViInputModeManager()->getMarkPosition(QLatin1Char('<'));
-    Cursor c2 = m_view->getViInputModeManager()->getMarkPosition(QLatin1Char('>'));
+    Cursor c1 = m_viInputModeManager->getMarkPosition(QLatin1Char('<'));
+    Cursor c2 = m_viInputModeManager->getMarkPosition(QLatin1Char('>'));
 
     // we should either get two valid cursors or two invalid cursors
     Q_ASSERT(c1.isValid() == c2.isValid());
@@ -1484,7 +1484,7 @@ bool KateViNormalMode::commandSetMark()
 {
     Cursor c(m_view->cursorPosition());
 
-    m_view->getViInputModeManager()->addMark(doc(), m_keys.at(m_keys.size() - 1), c);
+    m_viInputModeManager->addMark(doc(), m_keys.at(m_keys.size() - 1), c);
     qCDebug(LOG_PART) << "set mark at (" << c.line() << "," << c.column() << ")";
 
     return true;
@@ -2447,7 +2447,7 @@ KateViRange KateViNormalMode::motionToMark()
         reg = QLatin1Char('\'');
     }
 
-    Cursor c = m_view->getViInputModeManager()->getMarkPosition(reg);
+    Cursor c = m_viInputModeManager->getMarkPosition(reg);
     if (c.isValid()) {
         r.endLine = c.line();
         r.endColumn = c.column();
