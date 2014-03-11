@@ -428,7 +428,7 @@ void ViModeTest::TestPressKey(QString str)
                 }
                 const QString commandToExecute = str.mid(start_cmd, i - start_cmd).replace("\\\\", "\\");
                 qDebug() << "Executing command directly from ViModeTest:\n" << commandToExecute;
-                kate_view->cmdLineBar()->execute(commandToExecute);
+                kate_view->viModeEmulatedCommandBar()->executeCommand(commandToExecute);
                 // We've handled the command; go back round the loop, avoiding sending
                 // the closing \ to vi_input_mode_manager.
                 continue;

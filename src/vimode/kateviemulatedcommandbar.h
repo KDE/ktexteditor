@@ -52,6 +52,7 @@ public:
     bool isSendingSyntheticSearchCompletedKeypress();
 
     void startInteractiveSearchAndReplace(QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    QString executeCommand(const QString &commandToExecute);
 
 private:
     bool m_isActive;
@@ -70,7 +71,6 @@ private:
     QTimer *m_commandResponseMessageDisplayHide;
     QLabel *m_commandResponseMessageDisplay;
     long m_commandResponseMessageTimeOutMS;
-    QString executeCommand(const QString &commandToExecute);
     void switchToCommandResponseDisplay(const QString &commandResponseMessage);
 
     QLabel *m_interactiveSedReplaceLabel;
