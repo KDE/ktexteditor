@@ -26,7 +26,7 @@
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/searchinterface.h>
+#include <searchinterface.h>
 
 namespace KTextEditor { class ViewPrivate; }
 class KateViewConfig;

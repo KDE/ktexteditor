@@ -3,7 +3,7 @@ ecm_generate_headers(KTextEditor_CamelCase_HEADERS
   HEADER_NAMES
   AnnotationInterface CodeCompletionModelControllerInterface HighlightInterface MovingCursor Range TextHintInterface
   Cursor MarkInterface MovingInterface RecoveryInterface
-  Document  MovingRange SearchInterface View
+  Document  MovingRange View
   Attribute CommandInterface DocumentCursor MessageInterface MovingRangeFeedback SessionConfigInterface
   CodeCompletionInterface ConfigInterface Editor TemplateInterface
   CodeCompletionModel ConfigPage ConfigPageInterface ModificationInterface TemplateInterface2

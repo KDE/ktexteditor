@@ -22,7 +22,7 @@
 #ifndef KATE_MATCH_H
 #define KATE_MATCH_H
 
-#include <ktexteditor/searchinterface.h>
+#include <searchinterface.h>
 
 namespace KTextEditor { class DocumentPrivate; }
 

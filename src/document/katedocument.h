@@ -30,7 +30,7 @@
 
 #include <ktexteditor/document.h>
 #include <ktexteditor/sessionconfiginterface.h>
-#include <ktexteditor/searchinterface.h>
+#include <searchinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/configinterface.h>
