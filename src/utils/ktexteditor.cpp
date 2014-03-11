@@ -39,7 +39,6 @@
 #include "sessionconfiginterface.h"
 #include "templateinterface.h"
 #include "texthintinterface.h"
-#include "variableinterface.h"
 
 #include "annotationinterface.h"
 
@@ -182,13 +181,6 @@ TextHintProvider::TextHintProvider()
 {}
 
 TextHintProvider::~TextHintProvider()
-{}
-
-VariableInterface::VariableInterface()
-    : d(0)
-{}
-
-VariableInterface::~VariableInterface()
 {}
 
 RecoveryInterface::RecoveryInterface()

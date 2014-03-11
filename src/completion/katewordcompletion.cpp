@@ -27,7 +27,6 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 
-#include <ktexteditor/variableinterface.h>
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/range.h>
 

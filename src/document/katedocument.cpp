@@ -4352,7 +4352,6 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                 setViewVariable(var, val);
             } else {
                 m_storedVariables.insert(var, val);
-                emit variableChanged(this, var, val);
             }
         }
     }

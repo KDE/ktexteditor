@@ -113,8 +113,7 @@ class DocumentPrivate;
  * \see KParts::ReadWritePart, KTextEditor::Editor, KTextEditor::View,
  *      KTextEditor::MarkInterface,
  *      KTextEditor::ModificationInterface, KTextEditor::SearchInterface,
- *      KTextEditor::SessionConfigInterface, KTextEditor::MovingInterface,
- *      KTextEditor::VariableInterface
+ *      KTextEditor::SessionConfigInterface, KTextEditor::MovingInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart

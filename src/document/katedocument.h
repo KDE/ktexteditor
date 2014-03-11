@@ -32,7 +32,6 @@
 #include <ktexteditor/sessionconfiginterface.h>
 #include <ktexteditor/searchinterface.h>
 #include <ktexteditor/markinterface.h>
-#include <ktexteditor/variableinterface.h>
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/annotationinterface.h>
@@ -82,7 +81,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     public KTextEditor::ParameterizedSessionConfigInterface,
     public KTextEditor::SearchInterface,
     public KTextEditor::MarkInterface,
-    public KTextEditor::VariableInterface,
     public KTextEditor::ModificationInterface,
     public KTextEditor::ConfigInterface,
     public KTextEditor::AnnotationInterface,
@@ -97,7 +95,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     Q_INTERFACES(KTextEditor::ParameterizedSessionConfigInterface)
     Q_INTERFACES(KTextEditor::SearchInterface)
     Q_INTERFACES(KTextEditor::MarkInterface)
-    Q_INTERFACES(KTextEditor::VariableInterface)
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
@@ -559,9 +556,6 @@ public:
     virtual QString variable(const QString &name) const;
     // ### TODO KDE5: add to KTextEditor::VaribaleInterface
     virtual QString setVariable(const QString &name, const QString &value);
-
-Q_SIGNALS:
-    void variableChanged(KTextEditor::Document *, const QString &, const QString &);
 
 private:
     QMap<QString, QString> m_storedVariables;
