@@ -35,6 +35,13 @@ Entirely removed interfaces and classes are:
  - \p SmartCursor, \p SmartRange, \p SmartCursorNotifier, \p SmartCursorWatcher,
    \p SmartRangeNotifier, \p SmartRangeWatcher (already unsupported since KDE 4.5)
  - \p LoadSaveFilterCheckPlugin was removed, since it was unused.
+ - \p KTextEditor::VariableInterface \n
+   This interface was not used by other applications and therefore got removed.
+   If required, it can be added again.
+ - \p KTextEditor::SearchInterface \n
+   This interface was not used by other applications and therefore got removed.
+   If required, it can be added again (see file
+   ktexteditor/src/search/searchinterface.h).
 
 \section kte_port_merge Merged Interfaces
 The following interfaces were merged, in order:
