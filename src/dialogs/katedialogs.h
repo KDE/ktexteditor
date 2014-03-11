@@ -28,6 +28,7 @@
 
 #include "katehighlight.h"
 #include "kateviewhelpers.h"
+#include "kateviglobal.h"
 
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/modificationinterface.h>
@@ -65,6 +66,7 @@ class QLabel;
 class QCheckBox;
 class QKeyEvent;
 class QTemporaryFile;
+class QTableWidget;
 
 namespace Ui
 {
@@ -234,6 +236,10 @@ public:
 protected:
     Ui::ViInputModeConfigWidget *ui;
 
+private:
+    void applyTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
+    void reloadTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
+
 public Q_SLOTS:
     void apply();
     void reload();
@@ -242,8 +248,8 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
-    void addNewNormalModeMappingRow();
-    void removeSelectedNormalMappingRow();
+    void addMappingRow();
+    void removeSelectedMappingRows();
     void importNormalMappingRow();
 };
 
