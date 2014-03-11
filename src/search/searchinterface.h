@@ -21,7 +21,6 @@
 #ifndef KDELIBS_KTEXTEDITOR_SEARCHINTERFACE_H
 #define KDELIBS_KTEXTEDITOR_SEARCHINTERFACE_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/range.h>
 
 class QString;
@@ -100,7 +99,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  * \see KTextEditor::Document
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
-class KTEXTEDITOR_EXPORT SearchInterface
+class SearchInterface
 {
 public:
     /**
@@ -156,8 +155,6 @@ private:
 };
 
 }
-
-Q_DECLARE_INTERFACE(KTextEditor::SearchInterface, "org.kde.KTextEditor.SearchInterface")
 
 #endif
 

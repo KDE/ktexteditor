@@ -93,7 +93,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     Q_OBJECT
     Q_INTERFACES(KTextEditor::SessionConfigInterface)
     Q_INTERFACES(KTextEditor::ParameterizedSessionConfigInterface)
-    Q_INTERFACES(KTextEditor::SearchInterface)
     Q_INTERFACES(KTextEditor::MarkInterface)
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
