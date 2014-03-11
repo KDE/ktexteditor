@@ -58,6 +58,8 @@ The following interfaces were changed:
    was removed in favor of the Range based KTextEditor::View::setSelection()
  - \p KTextEditor::Document::activeView() \n
    The active view was removed in favor of KTextEditor::MainWindow::activeView().
+ - \p KTextEditor::Document::checksum() \n
+   This function returns the md5 checksum of the file on disk.
  - \p KTextEditor::Document::wordRangeAt(const Cursor &position)
    returns the Range of the word under \p position.
  - \p KTextEditor::Document::wordAt(const Cursor &position)

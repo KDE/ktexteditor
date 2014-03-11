@@ -4475,9 +4475,9 @@ void KTextEditor::DocumentPrivate::slotModOnHdDirty(const QString &path)
 {
     if ((path == m_dirWatchFile) && (!m_modOnHd || m_modOnHdReason != OnDiskModified)) {
         // compare md5 with the one we have (if we have one)
-        if (!digest().isEmpty()) {
-            QByteArray oldDigest = digest();
-            if (createDigest() && oldDigest == digest()) {
+        if (!checksum().isEmpty()) {
+            QByteArray oldDigest = checksum();
+            if (createDigest() && oldDigest == checksum()) {
                 return;
             }
         }
@@ -4524,7 +4524,7 @@ void KTextEditor::DocumentPrivate::slotModOnHdDeleted(const QString &path)
     }
 }
 
-const QByteArray &KTextEditor::DocumentPrivate::digest() const
+QByteArray KTextEditor::DocumentPrivate::checksum() const
 {
     return m_buffer->digest();
 }

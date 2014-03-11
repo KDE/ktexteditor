@@ -515,17 +515,17 @@ public:
     //
 public:
     /**
-    * md5 digest of the document on disk, set either through file loading
-    * in openFile() or in KTextEditor::DocumentPrivate::saveFile()
-    * @return md5 digest for this document
-    */
+     * md5 digest of the document on disk, set either through file loading
+     * in openFile() or in KTextEditor::DocumentPrivate::saveFile()
+     * @return md5 digest for this document
+     */
     const QByteArray &digest() const;
 
     /**
-    * Set the md5sum of this buffer. Make sure this checksum is up-to-date
-    * when reading digest().
-    * @param md5sum md5 digest for the document on disk
-    */
+     * Set the md5sum of this buffer. Make sure this checksum is up-to-date
+     * when reading digest().
+     * @param md5sum md5 digest for the document on disk
+     */
     void setDigest(const QByteArray &md5sum);
 
 private:

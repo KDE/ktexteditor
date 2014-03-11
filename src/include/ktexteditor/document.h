@@ -190,6 +190,16 @@ public:
      */
     virtual QString mimeType() = 0;
 
+    /**
+     * Get the md5 checksum of the Document's contents on disk.
+     * The returned md5sum equals the md5sum of the file written to disk.
+     * If the document is a remote document, the checksum may not be
+     * available. In this case, QByteArray::isNull() returns \e true.
+     *
+     * \return the md5 checksum of the document
+     */
+    virtual QByteArray checksum() const = 0;
+
     /*
      * SIGNALS
      * following signals should be emitted by the editor document.

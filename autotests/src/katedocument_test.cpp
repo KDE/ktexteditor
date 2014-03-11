@@ -340,9 +340,9 @@ void KateDocumentTest::testDigest()
     // make sure, Kate::TextBuffer and KTextEditor::DocumentPrivate::createDigest() equal
     KTextEditor::DocumentPrivate doc;
     doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"md5checksum.txt")));
-    const QByteArray bufferDigest(doc.digest());
+    const QByteArray bufferDigest(doc.checksum());
     QVERIFY(doc.createDigest());
-    const QByteArray docDigest(doc.digest());
+    const QByteArray docDigest(doc.checksum());
 
     QCOMPARE(bufferDigest, fileDigest);
     QCOMPARE(docDigest, fileDigest);

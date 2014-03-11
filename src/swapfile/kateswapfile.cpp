@@ -152,12 +152,12 @@ bool SwapFile::isValidSwapFile(QDataStream &stream, bool checkDigest) const
         return false;
     }
 
-    // read md5 digest
-    QByteArray digest;
-    stream >> digest;
-//   qCDebug(LOG_PART) << "DIGEST:" << digest << m_document->digest();
-    if (checkDigest && digest != m_document->digest()) {
-        qCWarning(LOG_PART) << "Can't recover from swap file, digest of document has changed";
+    // read md5 checksum
+    QByteArray checksum;
+    stream >> checksum;
+//   qCDebug(LOG_PART) << "DIGEST:" << checksum << m_document->checksum();
+    if (checkDigest && checksum != m_document->checksum()) {
+        qCWarning(LOG_PART) << "Can't recover from swap file, checksum of document has changed";
         return false;
     }
 
@@ -444,8 +444,8 @@ void SwapFile::startEditing()
         // write file header
         m_stream << QByteArray(swapFileVersionString);
 
-        // write md5 digest
-        m_stream << m_document->digest();
+        // write md5 checksum
+        m_stream << m_document->checksum();
     } else if (m_stream.device() == 0) {
         m_swapfile.open(QIODevice::Append);
         m_stream.setDevice(&m_swapfile);
@@ -586,7 +586,7 @@ QString SwapFile::fileName()
     if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory) {
         path = KateDocumentConfig::global()->swapDirectory();
         path.append(QDir::separator());
-        path.append(QString::fromLatin1(m_document->buffer().digest()));
+        path.append(QString::fromLatin1(m_document->checksum()));
         path.append(QLatin1String(".kate-swp"));
     } else {
         path = url.toLocalFile();

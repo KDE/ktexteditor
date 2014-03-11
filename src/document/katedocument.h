@@ -952,7 +952,7 @@ public:
      * md5 digest of this document
      * @return md5 digest for this document
      */
-    const QByteArray &digest() const;
+    QByteArray checksum() const Q_DECL_OVERRIDE;
 
     void updateFileType(const QString &newType, bool user = false);
 
