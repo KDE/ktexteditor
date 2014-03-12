@@ -39,6 +39,7 @@
 #include <ktexteditor/codecompletionmodel.h>
 #include <katewordcompletion.h>
 #include <katecompletionwidget.h>
+#include "inputmode/kateviinputmode.h"
 
 #include <QLabel>
 #include <QCompleter>
@@ -304,11 +305,12 @@ void ViModeTest::init()
     
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
     mainWindowLayout->addWidget(kate_view);
-    kate_view->config()->setViInputMode(true);
-    Q_ASSERT(kate_view->viInputMode());
-    vi_input_mode_manager = kate_view->getViInputModeManager();
+    kate_view->setInputMode(View::ViInputMode);
+    Q_ASSERT(kate_view->currentInputMode()->viewInputMode() == KTextEditor::View::ViInputMode);
+    vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
+    vi_input_mode_manager = vi_input_mode->viInputModeManager();
     Q_ASSERT(vi_input_mode_manager);
-    vi_global = vi_input_mode_manager->viGlobal();
+    vi_global = vi_input_mode->viGlobal();
     Q_ASSERT(vi_global);
     kate_document->config()->setShowSpaces(true); // Flush out some issues in the KateRenderer when rendering spaces.
 
@@ -357,7 +359,7 @@ ViModeTest::~ViModeTest()
 void ViModeTest::BeginTest(const QString &original_text)
 {
     vi_input_mode_manager->viEnterNormalMode();
-    vi_input_mode_manager = kate_view->resetViInputModeManager();
+    vi_input_mode_manager = vi_input_mode->resetViInputModeManager();
     kate_document->setText(original_text);
     kate_document->undoManager()->clearUndo();
     kate_document->undoManager()->clearRedo();
@@ -431,7 +433,7 @@ void ViModeTest::TestPressKey(QString str)
                 }
                 const QString commandToExecute = str.mid(start_cmd, i - start_cmd).replace("\\\\", "\\");
                 qDebug() << "Executing command directly from ViModeTest:\n" << commandToExecute;
-                kate_view->viModeEmulatedCommandBar()->executeCommand(commandToExecute);
+                vi_input_mode->viModeEmulatedCommandBar()->executeCommand(commandToExecute);
                 // We've handled the command; go back round the loop, avoiding sending
                 // the closing \ to vi_input_mode_manager.
                 continue;
@@ -699,10 +701,11 @@ void ViModeTest::VisualModeTests()
     kate_document->setText("foo bar");
     kate_view->setSelection(Range(Cursor(0, 1), Cursor(0, 4)));
     QCOMPARE(kate_document->text(kate_view->selectionRange()), QString("oo "));
-    kate_view->config()->setViInputMode(true);
+    kate_view->setInputMode(View::ViInputMode);
     qDebug() << "selected: " << kate_document->text(kate_view->selectionRange());
-    QVERIFY(kate_view->viInputMode());
-    vi_input_mode_manager = kate_view->getViInputModeManager();
+    QVERIFY(kate_view->currentInputMode()->viewInputMode() == View::ViInputMode);
+    vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
+    vi_input_mode_manager = vi_input_mode->viInputModeManager();
     QVERIFY(vi_input_mode_manager->getCurrentViMode() == VisualMode);
     TestPressKey("l");
     QCOMPARE(kate_document->text(kate_view->selectionRange()), QString("oo b"));
@@ -2302,8 +2305,8 @@ void ViModeTest::CommandModeTests()
 class VimStyleCommandBarTestsSetUpAndTearDown
 {
 public:
-    VimStyleCommandBarTestsSetUpAndTearDown(KTextEditor::ViewPrivate *kateView, QMainWindow *mainWindow)
-        : m_kateView(kateView), m_mainWindow(mainWindow), m_windowKeepActive(mainWindow)
+    VimStyleCommandBarTestsSetUpAndTearDown(KateViInputMode *inputMode, KTextEditor::ViewPrivate *kateView, QMainWindow *mainWindow)
+        : m_kateView(kateView), m_mainWindow(mainWindow), m_windowKeepActive(mainWindow), m_viInputMode(inputMode)
     {
         m_mainWindow->show();
         m_kateView->show();
@@ -2319,7 +2322,7 @@ public:
     {
         m_mainWindow->removeEventFilter(&m_windowKeepActive);
         // Use invokeMethod to avoid having to export KateViewBar for testing.
-        QMetaObject::invokeMethod(m_kateView->viModeEmulatedCommandBar(), "hideMe");
+        QMetaObject::invokeMethod(m_viInputMode->viModeEmulatedCommandBar(), "hideMe");
         m_kateView->hide();
         m_mainWindow->hide();
         KateViewConfig::global()->setViInputModeStealKeys(false);
@@ -2331,6 +2334,7 @@ private:
     KTextEditor::ViewPrivate *m_kateView;
     QMainWindow *m_mainWindow;
     WindowKeepActive m_windowKeepActive;
+    KateViInputMode *m_viInputMode;
 };
 
 void ViModeTest::MappingTests()
@@ -2664,7 +2668,7 @@ void ViModeTest::MappingTests()
     }
 
     {
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
+        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Can have mappings in Emulated Command Bar.
         clearAllMappings();
         vi_global->addMapping(KateViGlobal::CommandModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
@@ -2793,7 +2797,7 @@ void ViModeTest::MappingTests()
         DoTest("", "\\:iunmap l\\ilm\\esc", "le");
 
         {
-            VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
+            VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
             // cmap works in emulated command bar and is recursive.
             // NOTE: need to do the cmap call using the direct execution (i.e. \\:cmap blah blah\\), *not* using
             // the emulated command bar (:cmap blah blah\\enter), as this will be subject to mappings, which
@@ -2911,7 +2915,7 @@ void ViModeTest::yankHighlightingTests()
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     kate_document->documentReload();
     kate_document->clear();
-    vi_input_mode_manager = kate_view->resetViInputModeManager(); // This implicitly deletes KateViNormal
+    vi_input_mode_manager = vi_input_mode->resetViInputModeManager(); // This implicitly deletes KateViNormal
     FinishTest("");
 }
 
@@ -2919,10 +2923,10 @@ void ViModeTest::VimStyleCommandBarTests()
 {
     // Ensure that some preconditions for these tests are setup, and (more importantly)
     // ensure that they are reverted no matter how these tests end.
-    VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
+    VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
 
     // Verify that we can get a non-null pointer to the emulated command bar.
-    KateViEmulatedCommandBar *emulatedCommandBar = kate_view->viModeEmulatedCommandBar();
+    KateViEmulatedCommandBar *emulatedCommandBar = vi_input_mode->viModeEmulatedCommandBar();
     QVERIFY(emulatedCommandBar);
 
     // Should initially be hidden.
@@ -6546,7 +6550,7 @@ void ViModeTest::MacroTests()
     {
         // Ensure that we can call emulated command bar searches, and that we don't record
         // synthetic keypresses.
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
+        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         clearAllMacros();
         DoTest("foo bar\nblank line", "qa/bar\\enterqgg@arX", "foo Xar\nblank line");
         // More complex searching stuff.
@@ -6614,7 +6618,7 @@ void ViModeTest::MacroTests()
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "qarOljq3@au", "OXXX\nXXXX\nXXXX\nXXXX");
 
     {
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(kate_view, mainWindow);
+        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Make sure we can macro-ise an interactive sed replace.
         clearAllMacros();
         DoTest("foo foo foo foo\nfoo foo foo foo", "qa:s/foo/bar/gc\\enteryynyAdone\\escqggj@a", "bar bar foo bardone\nbar bar foo bardone");
@@ -7331,7 +7335,7 @@ void ViModeTest::waitForCompletionWidgetToActivate(KTextEditor::ViewPrivate *kat
 
 KateViEmulatedCommandBar *ViModeTest::emulatedCommandBar()
 {
-    KateViEmulatedCommandBar *emulatedCommandBar = kate_view->viModeEmulatedCommandBar();
+    KateViEmulatedCommandBar *emulatedCommandBar = vi_input_mode->viModeEmulatedCommandBar();
     Q_ASSERT(emulatedCommandBar);
     return emulatedCommandBar;
 }
@@ -7440,7 +7444,7 @@ void ViModeTest::clearAllMacros()
 
 QCompleter *ViModeTest::emulatedCommandBarCompleter()
 {
-    return kate_view->viModeEmulatedCommandBar()->findChild<QCompleter *>("completer");
+    return vi_input_mode->viModeEmulatedCommandBar()->findChild<QCompleter *>("completer");
 }
 
 void ViModeTest::verifyCommandBarCompletionVisible()

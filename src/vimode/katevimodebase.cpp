@@ -24,22 +24,22 @@
 #include "katevimodebase.h"
 #include "katevirange.h"
 #include "kateglobal.h"
+#include "kateviinputmode.h"
 #include "kateviglobal.h"
 #include "katevivisualmode.h"
 #include "katevinormalmode.h"
 #include "katevireplacemode.h"
 #include "kateviinputmodemanager.h"
 #include "katelayoutcache.h"
+#include "kateconfig.h"
+#include "katedocument.h"
+#include "kateviewinternal.h"
+#include "katerenderer.h"
+#include "katepartdebug.h"
 
 #include <QString>
 #include <KLocalizedString>
 #include <QRegExp>
-#include "kateconfig.h"
-#include "katedocument.h"
-#include "kateviewinternal.h"
-#include <ktexteditor/view.h>
-#include "katerenderer.h"
-#include "katepartdebug.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;
@@ -916,7 +916,7 @@ int KateViModeBase::findLineStartingWitchChar(const QChar &c, unsigned int count
 
 void KateViModeBase::updateCursor(const Cursor &c) const
 {
-    m_viewInternal->updateCursor(c);
+    m_viInputModeManager->updateCursor(c);
 }
 
 /**
@@ -1045,7 +1045,7 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
         return r;
     }
 
-    KateLayoutCache *cache = m_viewInternal->cache();
+    KateLayoutCache *cache = m_viInputModeManager->inputAdapter()->layoutCache();
 
     // Work out the real and visual line pair of the beginning of the visual line we'd end up
     // on by moving lines visual lines.  We ignore the column, for now.
@@ -1224,11 +1224,6 @@ void KateViModeBase::error(const QString &errorMsg)
 {
     delete m_infoMessage;
 
-    // nop if no vi mode around
-    if (!m_view->viInputMode()) {
-        return;
-    }
-
     m_infoMessage = new KTextEditor::Message(errorMsg, KTextEditor::Message::Error);
     m_infoMessage->setPosition(KTextEditor::Message::BottomInView);
     m_infoMessage->setAutoHide(2000); // 2 seconds
@@ -1240,11 +1235,6 @@ void KateViModeBase::error(const QString &errorMsg)
 void KateViModeBase::message(const QString &msg)
 {
     delete m_infoMessage;
-
-    // nop if no vi mode around
-    if (!m_view->viInputMode()) {
-        return;
-    }
 
     m_infoMessage = new KTextEditor::Message(msg, KTextEditor::Message::Positive);
     m_infoMessage->setPosition(KTextEditor::Message::BottomInView);
@@ -1467,7 +1457,7 @@ void KateViModeBase::switchView(Direction direction)
     }
     if (bestview != NULL) {
         bestview->setFocus();
-        KateViewConfig::global()->setViInputMode(true);
+        bestview->setInputMode(KTextEditor::View::ViInputMode);
     }
 }
 
@@ -1539,10 +1529,10 @@ void KateViModeBase::findPrev()
 
 unsigned int KateViModeBase::linesDisplayed() const
 {
-    return m_viewInternal->linesDisplayed();
+    return m_viInputModeManager->inputAdapter()->linesDisplayed();
 }
 
 void KateViModeBase::scrollViewLines(int l)
 {
-    m_viewInternal->scrollViewLines(l);
+    m_viInputModeManager->inputAdapter()->scrollViewLines(l);
 }

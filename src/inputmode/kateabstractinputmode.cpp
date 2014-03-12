@@ -1,4 +1,4 @@
-/* This file is part of the KDE libraries
+/*  This file is part of the KDE libraries and the Kate part.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -16,34 +16,35 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_CONFIG_PAGE_H__
-#define __KATE_CONFIG_PAGE_H__
+#include "kateabstractinputmode.h"
+#include "kateviewinternal.h"
 
-#include <ktexteditor/configpage.h>
-
-class KateConfigPage : public KTextEditor::ConfigPage
+KateAbstractInputMode::~KateAbstractInputMode()
 {
-    Q_OBJECT
+}
 
-public:
-    explicit KateConfigPage(QWidget *parent = 0, const char *name = 0);
-    virtual ~KateConfigPage();
-    virtual void reload() = 0;
+KateAbstractInputMode::KateAbstractInputMode(KateViewInternal *viewInternal)
+    : m_viewInternal(viewInternal)
+    , m_view(viewInternal->view())
+{
+}
 
-public:
-    bool hasChanged()
-    {
-        return m_changed;
-    }
+KateLayoutCache *KateAbstractInputMode::layoutCache() const
+{
+    return m_viewInternal->cache();
+}
 
-protected Q_SLOTS:
-    void slotChanged();
+void KateAbstractInputMode::updateCursor(const KTextEditor::Cursor &c)
+{
+    m_viewInternal->updateCursor(c);
+}
 
-private Q_SLOTS:
-    void somethingHasChanged();
+int KateAbstractInputMode::linesDisplayed() const
+{
+    return m_viewInternal->linesDisplayed();
+}
 
-protected:
-    bool m_changed;
-};
-
-#endif
+void KateAbstractInputMode::scrollViewLines(int offset)
+{
+    return m_viewInternal->scrollViewLines(offset);
+}

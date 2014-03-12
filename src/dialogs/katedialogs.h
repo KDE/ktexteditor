@@ -81,8 +81,6 @@ class CompletionConfigTab;
 class SpellCheckConfigWidget;
 }
 
-class KateViInputModeConfigTab;
-
 class KateGotoBar : public KateViewBarWidget
 {
     Q_OBJECT
@@ -250,8 +248,8 @@ private:
     KateNavigationConfigTab *navigationConfigTab;
     KateIndentConfigTab *indentConfigTab;
     KateCompletionConfigTab *completionConfigTab;
-    KateViInputModeConfigTab *viInputModeConfigTab;
     KateSpellCheckConfigTab *spellCheckConfigTab;
+    QList<KateConfigPage *> m_inputModeConfigTabs;
 };
 
 class KateViewDefaultsConfig : public KateConfigPage

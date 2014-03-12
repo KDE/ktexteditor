@@ -20,6 +20,7 @@
  */
 
 #include "kateglobal.h"
+#include "config.h"
 
 #include <ktexteditor_version.h>
 
@@ -35,10 +36,12 @@
 #include "kateconfig.h"
 #include "katescriptmanager.h"
 #include "katebuffer.h"
-#include "kateviglobal.h"
 #include "katewordcompletion.h"
 #include "spellcheck/spellcheck.h"
 #include "katepartdebug.h"
+
+#include "katenormalinputmodefactory.h"
+#include "kateviinputmodefactory.h"
 
 #include <KServiceTypeTrader>
 #include <kdirwatch.h>
@@ -168,9 +171,16 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_schemaManager = new KateSchemaManager();
 
     //
-    // vi input mode global
+    // input mode factories
     //
-    m_viInputModeGlobal = new KateViGlobal();
+    KateAbstractInputModeFactory *fact;
+    fact = new KateNormalInputModeFactory();
+    m_inputModeFactories.insert(KTextEditor::View::NormalInputMode, fact);
+
+#ifdef BUILD_VIMODE
+    fact = new KateViInputModeFactory();
+    m_inputModeFactories.insert(KTextEditor::View::ViInputMode, fact);
+#endif
 
     //
     // spell check manager
@@ -212,8 +222,6 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_modeManager;
     delete m_schemaManager;
 
-    delete m_viInputModeGlobal;
-
     delete m_dirWatch;
 
     // cu managers
@@ -228,6 +236,8 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     // delete the commands before we delete the cmd manager
     qDeleteAll(m_cmds);
     delete m_cmdManager;
+
+    qDeleteAll(m_inputModeFactories);
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
@@ -459,3 +469,7 @@ bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
     return false; // always continue processing
 }
 
+QList< KateAbstractInputModeFactory *> KTextEditor::EditorPrivate::inputModeFactories()
+{
+    return m_inputModeFactories.values();
+}

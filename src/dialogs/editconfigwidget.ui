@@ -82,6 +82,38 @@
     </widget>
    </item>
    <item>
+    <widget class="QGroupBox" name="gbInputMode">
+     <property name="title">
+      <string>InputMode</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="lblInputMode">
+        <property name="text">
+         <string>Default input mode</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbInputMode"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="gbMisc">
      <property name="title">
       <string>Misc</string>

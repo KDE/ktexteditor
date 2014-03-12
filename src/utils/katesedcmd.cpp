@@ -132,8 +132,6 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
         return interactiveSedReplace(kateView, interactiveSedReplacer);
     }
 
-    kateView->setSearchPattern(find);
-
     interactiveSedReplacer->replaceAllRemaining();
     msg = interactiveSedReplacer->finalStatusReportMessage();
 

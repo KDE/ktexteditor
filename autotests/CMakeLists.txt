@@ -109,7 +109,6 @@ ktexteditor_unit_tests(
   plaintextsearch_test
   regexpsearch_test
   scriptdocument_test
-  vimode_test
   wordcompletiontest
   searchbar_test
   movingcursor_test
@@ -126,6 +125,10 @@ ktexteditor_unit_tests(
   bug286887
   katewildcardmatcher_test
 )
+
+if (BUILD_VIMODE)
+  ktexteditor_unit_tests(vimode_test)
+endif()
 
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test(indenttest src/script_test_base.cpp src/testutils.cpp)

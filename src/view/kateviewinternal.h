@@ -53,8 +53,7 @@ class KateIconBorder;
 class KateScrollBar;
 class KateTextLayout;
 class KateTextAnimation;
-
-class KateViInputModeManager;
+class KateAbstractInputMode;
 
 class QScrollBar;
 
@@ -68,7 +67,7 @@ class KateViewInternal : public QWidget
     friend class CalculatingCursor;
     friend class BoundedCursor;
     friend class WrappingCursor;
-    friend class KateViModeBase;
+    friend class KateAbstractInputMode;
 
 public:
     enum Bias {
@@ -458,32 +457,10 @@ private:
         return m_view->doc();
     }
 
-    // vi Mode
+    // input modes
 private:
-    bool m_viInputMode;
-    bool m_viInputModeStealKeys;
-    bool m_viRelLineNumbers;
-
-    /**
-     * returns the current vi mode
-     */
-    ViMode getCurrentViMode();
-
-    /**
-     * an instance of KateViInputModeManager. used for interacting with the vi input mode when
-     * enabled
-     */
-    KateViInputModeManager *m_viInputModeManager;
-
-    /**
-     * @return a pointer to a KateViInputModeManager
-     */
-    KateViInputModeManager *getViInputModeManager();
-
-    /**
-     * @return a pointer to a new KateViInputModeManager
-     */
-    KateViInputModeManager *resetViInputModeManager();
+    QMap<KTextEditor::View::InputMode, KateAbstractInputMode *> m_inputModes;
+    KateAbstractInputMode *m_currentInputMode;
 };
 
 #endif

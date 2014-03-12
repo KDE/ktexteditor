@@ -1216,7 +1216,7 @@ KateViewConfig::KateViewConfig()
     m_searchFlagsSet(false),
     m_defaultMarkTypeSet(false),
     m_persistentSelectionSet(false),
-    m_viInputModeSet(false),
+    m_inputModeSet(false),
     m_viInputModeStealKeysSet(false),
     m_viRelativeLineNumbersSet(false),
     m_automaticCompletionInvocationSet(false),
@@ -1256,7 +1256,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_searchFlagsSet(false),
     m_defaultMarkTypeSet(false),
     m_persistentSelectionSet(false),
-    m_viInputModeSet(false),
+    m_inputModeSet(false),
     m_viInputModeStealKeysSet(false),
     m_viRelativeLineNumbersSet(false),
     m_automaticCompletionInvocationSet(false),
@@ -1297,7 +1297,7 @@ const char *const KEY_MAX_HISTORY_SIZE = "Maximum Search History Size";
 const char *const KEY_DEFAULT_MARK_TYPE = "Default Mark Type";
 const char *const KEY_ALLOW_MARK_MENU = "Allow Mark Menu";
 const char *const KEY_PERSISTENT_SELECTION = "Persistent Selection";
-const char *const KEY_VI_INPUT_MODE = "Vi Input Mode";
+const char *const KEY_INPUT_MODE = "Input Mode";
 const char *const KEY_VI_INPUT_MODE_STEAL_KEYS = "Vi Input Mode Steal Keys";
 const char *const KEY_VI_RELATIVE_LINE_NUMBERS = "Vi Relative Line Numbers";
 const char *const KEY_AUTOMATIC_COMPLETION_INVOCATION = "Auto Completion";
@@ -1349,7 +1349,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 
     setPersistentSelection(config.readEntry(KEY_PERSISTENT_SELECTION, false));
 
-    setViInputMode(config.readEntry(KEY_VI_INPUT_MODE, false));
+    setInputModeRaw(config.readEntry(KEY_INPUT_MODE, 0));
     setViInputModeStealKeys(config.readEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, false));
     setViRelativeLineNumbers(config.readEntry(KEY_VI_RELATIVE_LINE_NUMBERS, false));
 
@@ -1419,7 +1419,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_SMART_COPY_CUT, smartCopyCut());
     config.writeEntry(KEY_SCROLL_PAST_END, scrollPastEnd());
 
-    config.writeEntry(KEY_VI_INPUT_MODE, viInputMode());
+    config.writeEntry(KEY_INPUT_MODE, static_cast<int>(inputMode()));
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
     config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
 
@@ -1881,32 +1881,32 @@ void KateViewConfig::setPersistentSelection(bool on)
     configEnd();
 }
 
-bool KateViewConfig::viInputMode() const
+KTextEditor::View::InputMode KateViewConfig::inputMode() const
 {
-    if (m_viInputModeSet || isGlobal()) {
-        return m_viInputMode;
+    if (m_inputModeSet || isGlobal()) {
+        return m_inputMode;
     }
 
-    return s_global->viInputMode();
+    return s_global->inputMode();
 }
 
-void KateViewConfig::setViInputMode(bool on)
+void KateViewConfig::setInputMode(KTextEditor::View::InputMode mode)
 {
-    if (m_viInputModeSet && m_viInputMode == on) {
+    if (m_inputModeSet && m_inputMode == mode) {
         return;
     }
 
     configStart();
 
-    m_viInputModeSet = true;
-    m_viInputMode = on;
-
-    // make sure to turn off edits mergin when leaving vi input mode
-    if (!on && m_view) {
-        m_view->doc()->setUndoMergeAllEdits(false);
-    }
+    m_inputModeSet = true;
+    m_inputMode = mode;
 
     configEnd();
+}
+
+void KateViewConfig::setInputModeRaw(int rawmode)
+{
+    setInputMode(static_cast<KTextEditor::View::InputMode>(rawmode));
 }
 
 bool KateViewConfig::viInputModeStealKeys() const

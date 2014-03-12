@@ -30,6 +30,7 @@
 #include "kateviemulatedcommandbar.h"
 #include "katecmd.h"
 #include "katepartdebug.h"
+#include "kateviinputmode.h"
 
 #include <KLocalizedString>
 
@@ -335,9 +336,9 @@ bool KateViCommands::AppCommands::help(KTextEditor::View *view, const QString &c
 //BEGIN SedReplace
 KateViCommands::SedReplace *KateViCommands::SedReplace::m_instance = 0;
 
-bool KateViCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *view, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
+bool KateViCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
 {
-    KateViEmulatedCommandBar *emulatedCommandBar = view->viModeEmulatedCommandBar();
+    KateViEmulatedCommandBar *emulatedCommandBar = m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar();
     emulatedCommandBar->startInteractiveSearchAndReplace(interactiveSedReplace);
     return true;
 }

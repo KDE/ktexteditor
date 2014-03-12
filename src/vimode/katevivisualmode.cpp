@@ -27,6 +27,7 @@
 #include "katevimotion.h"
 #include "katevirange.h"
 #include "katedocument.h"
+#include "kateviinputmode.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;
@@ -238,7 +239,11 @@ void KateViVisualMode::goToPos(const Cursor &c)
 
 void KateViVisualMode::updateSelection()
 {
-    if (!m_view->viInputMode() || (m_viInputModeManager->isHandlingKeypress() && !m_isUndo)) {
+    if (!m_viInputModeManager->inputAdapter()->isActive()) {
+        return;
+    }
+
+    if (m_viInputModeManager->isHandlingKeypress() && !m_isUndo) {
         return;
     }
 

@@ -40,6 +40,7 @@ class KateViCommand;
 class KateViMotion;
 class KateViKeyParser;
 class KateViInputModeManager;
+class KateViInputMode;
 
 /**
  * Commands for the vi normal mode
@@ -47,6 +48,8 @@ class KateViInputModeManager;
 class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
 {
     Q_OBJECT
+
+    friend KateViInputMode;
 
 public:
     KateViNormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);

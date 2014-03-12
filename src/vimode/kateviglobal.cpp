@@ -25,9 +25,10 @@
 #include "kateviglobal.h"
 #include "katevikeyparser.h"
 #include "kateviemulatedcommandbar.h"
-
-#include "kconfiggroup.h"
 #include "katepartdebug.h"
+#include "kateviinputmode.h"
+
+#include <kconfiggroup.h>
 #include <ktexteditor/movingcursor.h>
 #include <QApplication>
 #include <QClipboard>
@@ -219,12 +220,12 @@ bool KateViGlobal::isMappingRecursive(MappingMode mode, const QString &from) con
     return m_mappingsForMode[mode][from].isRecursive;
 }
 
-KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KTextEditor::ViewPrivate *view)
+KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KateViInputMode *viInputMode)
 {
-    if (view->viModeEmulatedCommandBar()->isActive()) {
+    if (viInputMode->viModeEmulatedCommandBar()->isActive()) {
         return CommandModeMapping;
     }
-    const ViMode mode = view->getCurrentViMode();
+    const ViMode mode = viInputMode->viInputModeManager()->getCurrentViMode();
     switch (mode) {
     case NormalMode:
         return NormalModeMapping;

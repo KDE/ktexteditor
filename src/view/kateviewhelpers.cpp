@@ -39,6 +39,7 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "katecommandrangeexpressionparser.h"
+#include "kateabstractinputmode.h"
 
 #include <KCharsets>
 #include <KColorScheme>
@@ -1041,9 +1042,6 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
             (ev->key() == Qt::Key_BracketLeft && ev->modifiers() == Qt::ControlModifier)) {
         m_view->setFocus();
         hideLineEdit();
-        if (m_view->viInputMode()) {
-            m_view->getViInputModeManager()->reset();
-        }
         clear();
     } else if (ev->key() == Qt::Key_Up) {
         fromHistory(true);
@@ -1607,7 +1605,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
             if (realLine > -1) {
                 if (m_viewInternal->cache()->viewLine(z).startCol() == 0) {
-                    if (m_viRelLineNumbersOn && m_view->viInputMode()) {
+                    if (m_viRelLineNumbersOn && m_view->currentInputMode()->viewInputMode() == KTextEditor::View::ViInputMode) { // FIXME: make it more general
                         int diff = abs(realLine - currentLine);
                         if (diff > 0) {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,

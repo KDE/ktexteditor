@@ -41,6 +41,8 @@ find_package(KF5KIO ${KF5_VERSION} REQUIRED)
 find_package(KF5Parts ${KF5_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_VERSION} REQUIRED)
 
+option (BUILD_VIMODE "Build vimode in" ON)
+
 # Subdirectories
 add_subdirectory(src)
 if (BUILD_TESTING)

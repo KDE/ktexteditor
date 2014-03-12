@@ -25,7 +25,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/schema
   ${CMAKE_CURRENT_SOURCE_DIR}/undo
   ${CMAKE_CURRENT_SOURCE_DIR}/utils
-  ${CMAKE_CURRENT_SOURCE_DIR}/vimode
+  ${CMAKE_CURRENT_SOURCE_DIR}/inputmode
   ${CMAKE_CURRENT_SOURCE_DIR}/view
   ${CMAKE_CURRENT_SOURCE_DIR}/swapfile
   ${CMAKE_CURRENT_SOURCE_DIR}/variableeditor)
@@ -57,6 +57,7 @@ completion/expandingtree/expandingtree.cpp
 completion/katewordcompletion.cpp
 
 # dialogs
+dialogs/kateconfigpage.cpp
 dialogs/katedialogs.cpp
 dialogs/kateconfigpage.cpp
 
@@ -132,25 +133,6 @@ view/kateanimation.cpp
 view/katetextanimation.cpp
 view/katestatusbar.cpp
 
-# vi input mode
-vimode/kateviappcommands.cpp
-vimode/katevicmds.cpp
-vimode/kateviinputmodemanager.cpp
-vimode/katevimodebase.cpp
-vimode/katevinormalmode.cpp
-vimode/kateviinsertmode.cpp
-vimode/katevicommand.cpp
-vimode/katevimotion.cpp
-vimode/katevirange.cpp
-vimode/katevikeyparser.cpp
-vimode/kateviglobal.cpp
-vimode/katevivisualmode.cpp
-vimode/katevireplacemode.cpp
-vimode/kateviemulatedcommandbar.cpp
-vimode/katevicommandrangeexpressionparser.cpp
-vimode/katevikeymapper.cpp
-vimode/kateviinputmodeconfigtab.cpp
-
 # spell checking
 spellcheck/prefixstore.h
 spellcheck/prefixstore.cpp
@@ -207,7 +189,14 @@ swapfile/kateswapfile.cpp
 
 # export as HTML
 export/exporter.cpp
-export/htmlexporter.cpp)
+export/htmlexporter.cpp
+
+# input modes
+inputmode/kateabstractinputmode.cpp
+inputmode/kateabstractinputmodefactory.cpp
+inputmode/katenormalinputmode.cpp
+inputmode/katenormalinputmodefactory.cpp
+)
 
 qt5_wrap_ui(ktexteditor_LIB_SRCS 
 dialogs/textareaappearanceconfigwidget.ui
@@ -226,10 +215,37 @@ dialogs/completionconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
 spellcheck/spellcheckbar.ui
-vimode/viinputmodeconfigwidget.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
-   
+
+if (BUILD_VIMODE)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/vimode)
+  qt5_wrap_ui(ktexteditor_LIB_SRCS vimode/viinputmodeconfigwidget.ui)
+  set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
+    inputmode/kateviinputmode.cpp
+    inputmode/kateviinputmodefactory.cpp
+
+    # vi input mode
+    vimode/kateviappcommands.cpp
+    vimode/katevicmds.cpp
+    vimode/kateviinputmodemanager.cpp
+    vimode/katevimodebase.cpp
+    vimode/katevinormalmode.cpp
+    vimode/kateviinsertmode.cpp
+    vimode/katevicommand.cpp
+    vimode/katevimotion.cpp
+    vimode/katevirange.cpp
+    vimode/katevikeyparser.cpp
+    vimode/kateviglobal.cpp
+    vimode/katevivisualmode.cpp
+    vimode/katevireplacemode.cpp
+    vimode/kateviemulatedcommandbar.cpp
+    vimode/katevicommandrangeexpressionparser.cpp
+    vimode/katevikeymapper.cpp
+    vimode/kateviinputmodeconfigtab.cpp
+  )
+endif()
+
 add_library(KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
 generate_export_header(KF5TextEditor BASE_NAME KTextEditor)
 add_library(KF5::TextEditor ALIAS KF5TextEditor)

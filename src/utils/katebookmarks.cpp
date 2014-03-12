@@ -21,6 +21,7 @@
 
 #include "katedocument.h"
 #include "kateview.h"
+#include "kateabstractinputmode.h"
 
 #include <KActionCollection>
 #include <KGuiItem>
@@ -172,7 +173,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         if (before) {
             QAction *a = new QAction(QString::fromLatin1("%1  %3  - \"%2\"")
                                      .arg(bookmarkLineArray.at(i) + 1).arg(bText)
-                                     .arg(m_view->getViInputModeManager()->getMarksOnTheLine(bookmarkLineArray.at(i))), &menu);
+                                     .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), &menu);
             menu.insertAction(before, a);
             connect(a, SIGNAL(activated()), this, SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
@@ -183,7 +184,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         } else {
             QAction *a = menu.addAction(QString::fromLatin1("%1  %3  - \"%2\"")
                                         .arg(bookmarkLineArray.at(i) + 1).arg(bText)
-                                        .arg(m_view->getViInputModeManager()->getMarksOnTheLine(bookmarkLineArray.at(i))),
+                                        .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
                                         this, SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
         }

@@ -56,7 +56,6 @@ KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateViGlobal
     // after initial reload, connect the stuff for the changed () signal
     //
 
-    connect(ui->chkViInputModeDefault, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkViCommandsOverride, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkViRelLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->tblNormalModeMappings, SIGNAL(cellChanged(int,int)), this, SLOT(slotChanged()));
@@ -126,7 +125,6 @@ void KateViInputModeConfigTab::apply()
     KateViewConfig::global()->configStart();
 
     // General options.
-    KateViewConfig::global()->setViInputMode(ui->chkViInputModeDefault->isChecked());
     KateViewConfig::global()->setViRelativeLineNumbers(ui->chkViRelLineNumbers->isChecked());
     KateViewConfig::global()->setViInputModeStealKeys(ui->chkViCommandsOverride->isChecked());
 
@@ -142,10 +140,8 @@ void KateViInputModeConfigTab::apply()
 void KateViInputModeConfigTab::reload()
 {
     // General options.
-    ui->chkViInputModeDefault->setChecked(KateViewConfig::global()->viInputMode());
     ui->chkViRelLineNumbers->setChecked( KateViewConfig::global()->viRelativeLineNumbers () );
     ui->chkViCommandsOverride->setChecked(KateViewConfig::global()->viInputModeStealKeys());
-    ui->chkViCommandsOverride->setEnabled(ui->chkViInputModeDefault->isChecked());
 
     // Mappings.
     reloadTab(ui->tblNormalModeMappings, KateViGlobal::NormalModeMapping);

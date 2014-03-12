@@ -69,12 +69,16 @@ class Mark;
 class MarkInterface;
 }
 
+class KateViInputMode;
+
 class KTEXTEDITOR_EXPORT KateViInputModeManager : public QObject
 {
     Q_OBJECT
 
+    friend KateViInputMode;
+
 public:
-    KateViInputModeManager(KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
+    KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~KateViInputModeManager();
 
     /**
@@ -332,6 +336,9 @@ public:
     KateViGlobal *viGlobal() const;
     KTextEditor::ViewPrivate *view() const;
 
+    KateViInputMode *inputAdapter() { return m_inputAdapter; }
+    void updateCursor(const KTextEditor::Cursor &c);
+
 private Q_SLOTS:
     void markChanged(KTextEditor::Document *doc,
                      KTextEditor::Mark mark,
@@ -346,6 +353,7 @@ private:
     ViMode m_currentViMode;
     ViMode m_previousViMode;
 
+    KateViInputMode *m_inputAdapter;
     KTextEditor::ViewPrivate *m_view;
     KateViewInternal *m_viewInternal;
     KateViKeyParser *m_keyParser;

@@ -31,11 +31,13 @@
 #include <KSharedConfig>
 
 #include "katevimodebase.h"
+#include "kateviinputmodemanager.h"
 #include <ktexteditor_export.h>
 
 class QString;
 class QChar;
 class KConfigGroup;
+class KateViInputMode;
 
 namespace KateVi
 {
@@ -82,7 +84,7 @@ public:
      * Returns CommandModeMapping if the emulated command bar is active, else the mapping mode
      * corresponding to the current Vi mode.
      */
-    static MappingMode mappingModeForCurrentViMode(KTextEditor::ViewPrivate *view);
+    static MappingMode mappingModeForCurrentViMode(KateViInputMode *viInputMode);
 
     QStringList searchHistory();
     void clearSearchHistory();

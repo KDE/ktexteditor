@@ -23,6 +23,7 @@
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/markinterface.h>
+#include "ktexteditor/view.h"
 #include <KEncodingProber>
 
 #include <QBitRef>
@@ -515,8 +516,9 @@ public:
     bool persistentSelection() const;
     void setPersistentSelection(bool on);
 
-    bool viInputMode() const;
-    void setViInputMode(bool on);
+    KTextEditor::View::InputMode inputMode() const;
+    void setInputMode(KTextEditor::View::InputMode mode);
+    void setInputModeRaw(int rawmode);
 
     bool viInputModeStealKeys() const;
     void setViInputModeStealKeys(bool on);
@@ -572,7 +574,7 @@ private:
     QStringListModel m_replacementHistoryModel;
     uint m_defaultMarkType;
     bool m_persistentSelection;
-    bool m_viInputMode;
+    KTextEditor::View::InputMode m_inputMode;
     bool m_viInputModeStealKeys;
     bool m_viRelativeLineNumbers;
     bool m_automaticCompletionInvocation;
@@ -599,7 +601,7 @@ private:
     bool m_searchFlagsSet : 1;
     bool m_defaultMarkTypeSet : 1;
     bool m_persistentSelectionSet : 1;
-    bool m_viInputModeSet : 1;
+    bool m_inputModeSet : 1;
     bool m_viInputModeStealKeysSet : 1;
     bool m_viRelativeLineNumbersSet : 1;
     bool m_automaticCompletionInvocationSet : 1;

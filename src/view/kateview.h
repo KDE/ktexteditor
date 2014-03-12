@@ -36,7 +36,6 @@
 #include <QModelIndex>
 #include <QMenu>
 
-#include "kateviinputmodemanager.h"
 #include "katetextrange.h"
 #include "katetextfolding.h"
 #include "katerenderer.h"
@@ -49,14 +48,11 @@ class Message;
 
 namespace KTextEditor { class DocumentPrivate; }
 class KateBookmarks;
-class KateCommandLineBar;
 class KateViewConfig;
 class KateRenderer;
 class KateSpellCheckDialog;
 class KateCompletionWidget;
 class KateViewInternal;
-class KateSearchBar;
-class KateViEmulatedCommandBar;
 class KateViewBar;
 class KateGotoBar;
 class KateDictionaryBar;
@@ -66,6 +62,7 @@ class KateIconBorder;
 class KateStatusBar;
 class KateViewEncodingAction;
 class KateModeMenu;
+class KateAbstractInputMode;
 
 class KToggleAction;
 class KSelectAction;
@@ -117,6 +114,8 @@ public:
     virtual QString viewModeHuman() const;
     virtual InputMode viewInputMode() const;
     virtual QString viewInputModeHuman() const;
+
+    void setInputMode(InputMode mode);
 
     //
     // KTextEditor::ClipboardInterface
@@ -406,32 +405,6 @@ public:
 
     QString currentTextLine();
 
-    /**
-     * The current search pattern.
-     * This is set by the last search.
-     * @return the search pattern or the empty string if not set
-     */
-    QString searchPattern() const;
-
-    /**
-     * The current replacement string.
-     * This is set by the last search and replace.
-     * @return the replacment string or the empty string if not set
-     */
-    QString replacementPattern() const;
-
-    /**
-     * Set the current search pattern.
-     * @param searchPattern the search pattern
-     */
-    void setSearchPattern(const QString &searchPattern);
-
-    /**
-     * Set the current replacement pattern.
-     * @param replacementPattern the replacement pattern
-     */
-    void setReplacementPattern(const QString &replacementPattern);
-
 public Q_SLOTS:
     void indent();
     void unIndent();
@@ -557,10 +530,6 @@ public Q_SLOTS:
     void toggleScrollBarMiniMap();
     void toggleScrollBarMiniMapAll();
     void toggleDynWordWrap();
-    void toggleViInputMode();
-
-    void showViModeEmulatedCommandBar();
-
     void setDynWrapIndicators(int mode);
 
 public:
@@ -582,6 +551,8 @@ private Q_SLOTS:
      * used to update actions after selection changed
      */
     void slotSelectionChanged();
+
+    void toggleInputMode(bool);
 
 public:
     /**
@@ -672,6 +643,8 @@ private:
     QAction *m_selectAll;
     QAction *m_deSelect;
 
+    QList<QAction *> m_inputModeActions;
+
     KToggleAction *m_toggleBlockSelection;
     KToggleAction *m_toggleInsert;
     KToggleAction *m_toggleWriteLock;
@@ -730,16 +703,9 @@ public:
      */
 public:
     KateViewBar *bottomViewBar() const;
-    KateCommandLineBar *cmdLineBar();
     KateDictionaryBar *dictionaryBar();
-    KateViEmulatedCommandBar *viModeEmulatedCommandBar();
 
 private:
-    KateSearchBar *searchBar(bool initHintAsPower = false);
-    bool hasSearchBar() const
-    {
-        return m_searchBar != 0;
-    }
     KateGotoBar *gotoBar();
 
     /**
@@ -751,46 +717,12 @@ private:
     KateViewBar *m_bottomViewBar;
 
     // created on demand..., only access them through the above accessors....
-    KateCommandLineBar *m_cmdLine;
-    KateSearchBar *m_searchBar;
-    KateViEmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateGotoBar *m_gotoBar;
     KateDictionaryBar *m_dictionaryBar;
 
-    // vi Mode
+    // input modes
 public:
-    /**
-     * @return boolean indicating whether vi mode is active or not
-     */
-    bool viInputMode() const;
-
-    /**
-     * @return the current vi mode
-     */
-    ViMode getCurrentViMode() const;
-
-    /**
-     * @return a pointer to the KateViInputModeManager belonging to the view
-     */
-    KateViInputModeManager *getViInputModeManager();
-
-    /**
-     * Replace ViInputModeManager by new one.
-     * @return a pointer to the new KateViInputModeManager.
-     */
-    KateViInputModeManager *resetViInputModeManager();
-
-    /**
-     * @return boolean indicating whether vi mode will override actions or not
-     */
-    bool viInputModeStealKeys() const;
-
-    /**
-     * @return boolean indicating whether relative line numbers should
-     * be used or not.
-     */
-    bool viRelativeLineNumbers() const;
-
+    KateAbstractInputMode *currentInputMode() const;
 public:
     KTextEditor::Range visibleRange();
 

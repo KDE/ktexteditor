@@ -1,4 +1,4 @@
-/* This file is part of the KDE libraries
+/*  This file is part of the KDE libraries and the Kate part.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -16,34 +16,23 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_CONFIG_PAGE_H__
-#define __KATE_CONFIG_PAGE_H__
+#ifndef __KATE_NORMAL_INPUT_MODE_FACTORY_H__
+#define __KATE_NORMAL_INPUT_MODE_FACTORY_H__
 
-#include <ktexteditor/configpage.h>
+#include "kateabstractinputmodefactory.h"
 
-class KateConfigPage : public KTextEditor::ConfigPage
+class KateNormalInputModeFactory : public KateAbstractInputModeFactory
 {
-    Q_OBJECT
-
 public:
-    explicit KateConfigPage(QWidget *parent = 0, const char *name = 0);
-    virtual ~KateConfigPage();
-    virtual void reload() = 0;
+    KateNormalInputModeFactory();
 
-public:
-    bool hasChanged()
-    {
-        return m_changed;
-    }
+    virtual ~KateNormalInputModeFactory();
+    virtual KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal);
 
-protected Q_SLOTS:
-    void slotChanged();
+    virtual QString name();
+    virtual KTextEditor::View::InputMode inputMode();
 
-private Q_SLOTS:
-    void somethingHasChanged();
-
-protected:
-    bool m_changed;
+    virtual KateConfigPage *createConfigPage(QWidget *);
 };
 
 #endif

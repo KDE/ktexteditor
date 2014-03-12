@@ -42,6 +42,7 @@
 #include "katevivisualmode.h"
 #include "katecmd.h"
 #include <ktexteditor/attribute.h>
+#include "kateviinputmode.h"
 
 #include <QApplication>
 #include <QList>
@@ -1442,8 +1443,8 @@ bool KateViNormalMode::commandSwitchToCmdLine()
         initialText = QLatin1String(".,.+") + QString::number(getCount() - 1);
     }
 
-    m_view->showViModeEmulatedCommandBar();
-    m_view->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::Command, initialText);
+    m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
+    m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::Command, initialText);
 
     m_commandShouldKeepSelection = true;
 
@@ -1452,15 +1453,15 @@ bool KateViNormalMode::commandSwitchToCmdLine()
 
 bool KateViNormalMode::commandSearchBackward()
 {
-    m_view->showViModeEmulatedCommandBar();
-    m_view->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchBackward);
+    m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
+    m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchBackward);
     return true;
 }
 
 bool KateViNormalMode::commandSearchForward()
 {
-    m_view->showViModeEmulatedCommandBar();
-    m_view->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
+    m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
+    m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
     m_viInputModeManager->setLastSearchBackwards(false);
     return true;
 }

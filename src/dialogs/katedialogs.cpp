@@ -62,6 +62,7 @@
 #include <KColorCombo>
 #include <KComboBox>
 #include "katepartdebug.h"
+#include "kateabstractinputmodefactory.h"
 #include <KIconLoader>
 #include <KShortcutsDialog>
 #include <KLineEdit>
@@ -452,12 +453,18 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     ui = new Ui::EditConfigWidget();
     ui->setupUi(newWidget);
 
+    QList<KateAbstractInputModeFactory *> inputModes = KTextEditor::EditorPrivate::self()->inputModeFactories();
+    Q_FOREACH(KateAbstractInputModeFactory *fact, inputModes) {
+        ui->cmbInputMode->addItem(fact->name(), static_cast<int>(fact->inputMode()));
+    }
+
     reload();
 
     connect(ui->chkStaticWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkShowStaticWordWrapMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->sbWordWrap, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(ui->chkSmartCopyCut, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(ui->cmbInputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 
     // "What's this?" help is in the ui-file
 
@@ -489,6 +496,8 @@ void KateEditGeneralConfigTab::apply()
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->setSmartCopyCut(ui->chkSmartCopyCut->isChecked());
     KateViewConfig::global()->configEnd();
+
+    KateViewConfig::global()->setInputModeRaw(ui->cmbInputMode->currentData().toInt());
 }
 
 void KateEditGeneralConfigTab::reload()
@@ -500,6 +509,9 @@ void KateEditGeneralConfigTab::reload()
     ui->sbWordWrap->setSuffix(ki18nc("suffix for spinbox >1 wrap words at (value is at 20 or larger)", " characters").toString());
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
+
+    const int id = static_cast<int>(KateViewConfig::global()->inputMode());
+    ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
 }
 
 QString KateEditGeneralConfigTab::name() const
@@ -516,7 +528,6 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     , navigationConfigTab(new KateNavigationConfigTab(this))
     , indentConfigTab(new KateIndentConfigTab(this))
     , completionConfigTab(new KateCompletionConfigTab(this))
-    , viInputModeConfigTab(new KateViInputModeConfigTab(this, KTextEditor::EditorPrivate::self()->viInputModeGlobal()))
     , spellCheckConfigTab(new KateSpellCheckConfigTab(this))
 {
     QVBoxLayout *layout = new QVBoxLayout;
@@ -528,15 +539,24 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     tabWidget->insertTab(1, navigationConfigTab, navigationConfigTab->name());
     tabWidget->insertTab(2, indentConfigTab, indentConfigTab->name());
     tabWidget->insertTab(3, completionConfigTab, completionConfigTab->name());
-    tabWidget->insertTab(4, viInputModeConfigTab, viInputModeConfigTab->name());
-    tabWidget->insertTab(5, spellCheckConfigTab, spellCheckConfigTab->name());
+    tabWidget->insertTab(4, spellCheckConfigTab, spellCheckConfigTab->name());
 
     connect(editConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
     connect(navigationConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
     connect(indentConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
     connect(completionConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
-    connect(viInputModeConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
     connect(spellCheckConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
+
+    int i = tabWidget->count();
+    Q_FOREACH(KateAbstractInputModeFactory *factory, KTextEditor::EditorPrivate::self()->inputModeFactories()) {
+        KateConfigPage *tab = factory->createConfigPage(this);
+        if (tab) {
+            m_inputModeConfigTabs << tab;
+            tabWidget->insertTab(i, tab, tab->name());
+            connect(tab, SIGNAL(changed()), this, SLOT(slotChanged()));
+            i++;
+        }
+    }
 
     layout->addWidget(tabWidget);
     setLayout(layout);
@@ -544,6 +564,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
 
 KateEditConfigTab::~KateEditConfigTab()
 {
+    qDeleteAll(m_inputModeConfigTabs);
 }
 
 void KateEditConfigTab::apply()
@@ -553,8 +574,10 @@ void KateEditConfigTab::apply()
     navigationConfigTab->apply();
     indentConfigTab->apply();
     completionConfigTab->apply();
-    viInputModeConfigTab->apply();
     spellCheckConfigTab->apply();
+    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+        tab->apply();
+    }
 }
 
 void KateEditConfigTab::reload()
@@ -563,8 +586,10 @@ void KateEditConfigTab::reload()
     navigationConfigTab->reload();
     indentConfigTab->reload();
     completionConfigTab->reload();
-    viInputModeConfigTab->reload();
     spellCheckConfigTab->reload();
+    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+        tab->reload();
+    }
 }
 
 void KateEditConfigTab::reset()
@@ -573,8 +598,10 @@ void KateEditConfigTab::reset()
     navigationConfigTab->reset();
     indentConfigTab->reset();
     completionConfigTab->reset();
-    viInputModeConfigTab->reset();
     spellCheckConfigTab->reset();
+    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+        tab->reset();
+    }
 }
 
 void KateEditConfigTab::defaults()
@@ -583,8 +610,10 @@ void KateEditConfigTab::defaults()
     navigationConfigTab->defaults();
     indentConfigTab->defaults();
     completionConfigTab->defaults();
-    viInputModeConfigTab->defaults();
     spellCheckConfigTab->defaults();
+    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+        tab->defaults();
+    }
 }
 
 QString KateEditConfigTab::name() const

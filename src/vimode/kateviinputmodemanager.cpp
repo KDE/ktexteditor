@@ -43,6 +43,7 @@
 #include "katevikeymapper.h"
 #include "kateviemulatedcommandbar.h"
 #include "katepartdebug.h"
+#include "kateviinputmode.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -50,7 +51,8 @@ using KTextEditor::Mark;
 using KTextEditor::MarkInterface;
 using KTextEditor::MovingCursor;
 
-KateViInputModeManager::KateViInputModeManager(KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
+KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
+    : m_inputAdapter(inputAdapter)
 {
     m_viNormalMode = new KateViNormalMode(this, view, viewInternal);
     m_viInsertMode = new KateViInsertMode(this, view, viewInternal);
@@ -62,8 +64,6 @@ KateViInputModeManager::KateViInputModeManager(KTextEditor::ViewPrivate *view, K
 
     m_view = view;
     m_viewInternal = viewInternal;
-
-    m_view->setCaretStyle(KateRenderer::Block, true);
 
     m_insideHandlingKeyPressCount = 0;
 
@@ -95,12 +95,6 @@ KateViInputModeManager::KateViInputModeManager(KTextEditor::ViewPrivate *view, K
     // KateViVisualMode (which inherits from KateViNormalMode) to respond
     // to changes in the document as well.
     m_viNormalMode->beginMonitoringDocumentChanges();
-
-    if (view->selection()) {
-        changeViMode(VisualMode);
-        m_view->setCursorPosition(Cursor(view->selectionRange().end().line(), view->selectionRange().end().column() - 1));
-        m_viVisualMode->updateSelection();
-    }
 }
 
 KateViInputModeManager::~KateViInputModeManager()
@@ -117,7 +111,7 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
     m_insideHandlingKeyPressCount++;
     bool res = false;
     bool keyIsPartOfMapping = false;
-    const bool isSyntheticSearchCompletedKeyPress = m_view->viModeEmulatedCommandBar()->isSendingSyntheticSearchCompletedKeypress();
+    const bool isSyntheticSearchCompletedKeyPress = m_inputAdapter->viModeEmulatedCommandBar()->isSendingSyntheticSearchCompletedKeypress();
 
     // With macros, we want to record the keypresses *before* they are mapped, but if they end up *not* being part
     // of a mapping, we don't want to record them when they are played back by m_keyMapper, hence
@@ -150,8 +144,8 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
             appendKeyEventToLog(copy);
         }
 
-        if (m_view->viModeEmulatedCommandBar()->isActive()) {
-            res = m_view->viModeEmulatedCommandBar()->handleKeyPress(e);
+        if (m_inputAdapter->viModeEmulatedCommandBar()->isActive()) {
+            res = m_inputAdapter->viModeEmulatedCommandBar()->handleKeyPress(e);
         } else {
             res = getCurrentViModeHandler()->handleKeypress(e);
         }
@@ -322,7 +316,7 @@ void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
     qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
     m_isRecordingMacro = true;
     m_recordingMacroRegister = macroRegister;
-    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMacro(macroRegister);
+    m_inputAdapter->viGlobal()->clearMacro(macroRegister);
     m_currentMacroKeyEventsLog.clear();
     m_currentMacroCompletionsLog.clear();
 }
@@ -331,7 +325,7 @@ void KateViInputModeManager::finishRecordingMacro()
 {
     Q_ASSERT(m_isRecordingMacro);
     m_isRecordingMacro = false;
-    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->storeMacro(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
+    m_inputAdapter->viGlobal()->storeMacro(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
 }
 
 bool KateViInputModeManager::isRecordingMacro()
@@ -346,12 +340,12 @@ void KateViInputModeManager::replayMacro(QChar macroRegister)
     }
     m_lastPlayedMacroRegister = macroRegister;
     qCDebug(LOG_PART) << "Replaying macro: " << macroRegister;
-    const QString macroAsFeedableKeypresses = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMacro(macroRegister);
+    const QString macroAsFeedableKeypresses = m_inputAdapter->viGlobal()->getMacro(macroRegister);
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     m_macrosBeingReplayedCount++;
     m_nextLoggedMacroCompletionIndex.push(0);
-    m_macroCompletionsToReplay.push(KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMacroCompletions(macroRegister));
+    m_macroCompletionsToReplay.push(m_inputAdapter->viGlobal()->getMacroCompletions(macroRegister));
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
     feedKeyPresses(macroAsFeedableKeypresses);
     m_keyMapperStack.pop();
@@ -487,7 +481,7 @@ void KateViInputModeManager::viEnterNormalMode()
 
         if (r.isValid()) {
             QString insertedText = m_view->doc()->text(r);
-            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(QLatin1Char('^'), insertedText);
+            m_inputAdapter->viGlobal()->fillRegister(QLatin1Char('^'), insertedText);
         }
 
         addMark(m_view->doc(), QLatin1Char('^'), Cursor(m_view->cursorPosition()), false, false);
@@ -580,7 +574,7 @@ const QString KateViInputModeManager::getVerbatimKeys() const
 void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 {
 
-    if (KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
+    if (m_inputAdapter->viGlobal()->getRegisters()->size() > 0) {
         QStringList names = config.readEntry("ViRegisterNames", QStringList());
         QStringList contents = config.readEntry("ViRegisterContents", QStringList());
         QList<int> flags = config.readEntry("ViRegisterFlags", QList<int>());
@@ -589,7 +583,7 @@ void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
         if (names.size() == contents.size() && contents.size() == flags.size()) {
             for (int i = 0; i < names.size(); i++) {
                 if (!names.at(i).isEmpty()) {
-                    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(names.at(i).at(0), contents.at(i), (OperationMode)(flags.at(i)));
+                    m_inputAdapter->viGlobal()->fillRegister(names.at(i).at(0), contents.at(i), (OperationMode)(flags.at(i)));
                 }
             }
         }
@@ -616,8 +610,8 @@ void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 
 void KateViInputModeManager::writeSessionConfig(KConfigGroup &config)
 {
-    if (KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters()->size() > 0) {
-        const QMap<QChar, KateViRegister> *regs = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisters();
+    if (m_inputAdapter->viGlobal()->getRegisters()->size() > 0) {
+        const QMap<QChar, KateViRegister> *regs = m_inputAdapter->viGlobal()->getRegisters();
         QStringList names, contents;
         QList<int> flags;
         QMap<QChar, KateViRegister>::const_iterator i;
@@ -869,11 +863,9 @@ QString KateViInputModeManager::getMarksOnTheLine(int line)
 {
     QString res;
 
-    if (m_view->viInputMode()) {
-        foreach (QChar markerChar, m_marks.keys()) {
-            if (m_marks.value(markerChar)->line() == line) {
-                res += markerChar + QLatin1String(":") + QString::number(m_marks.value(markerChar)->column()) + QLatin1String(" ");
-            }
+    foreach (QChar markerChar, m_marks.keys()) {
+        if (m_marks.value(markerChar)->line() == line) {
+            res += markerChar + QLatin1String(":") + QString::number(m_marks.value(markerChar)->column()) + QLatin1String(" ");
         }
     }
 
@@ -935,9 +927,14 @@ KateViInputModeManager::Completion::CompletionType KateViInputModeManager::Compl
     return m_completionType;
 }
 
+void KateViInputModeManager::updateCursor(const Cursor &c)
+{
+    m_inputAdapter->updateCursor(c);
+}
+
 KateViGlobal *KateViInputModeManager::viGlobal() const
 {
-    return KTextEditor::EditorPrivate::self()->viInputModeGlobal();
+    return m_inputAdapter->viGlobal();
 }
 
 KTextEditor::ViewPrivate *KateViInputModeManager::view() const

@@ -32,6 +32,7 @@ class QLineEdit;
 class QLabel;
 class QCompleter;
 class QMainWindow;
+class KateViEmulatedCommandBar;
 
 class WindowKeepActive : public QObject
 {
@@ -190,6 +191,7 @@ private:
     KTextEditor::ViewPrivate *kate_view;
     QMainWindow *mainWindow;
     QVBoxLayout *mainWindowLayout;
+    KateViInputMode *vi_input_mode;
     KateViGlobal *vi_global;
     KateViInputModeManager *vi_input_mode_manager;
 

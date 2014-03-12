@@ -25,6 +25,7 @@
 #include "katemodemanager.h"
 #include "katedocument.h"
 #include "kateconfig.h"
+#include "kateabstractinputmode.h"
 
 #include <KLocalizedString>
 #include <KIconLoader>
@@ -194,10 +195,8 @@ bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == m_insertModeLabel) {
         if (event->type() == QEvent::MouseButtonDblClick) {
-            if (!m_view->viInputMode()) {
-                m_view->toggleInsert();
-                return true;
-            }
+            m_view->currentInputMode()->toggleInsert();
+            return true;
         }
     } else if (obj == m_lineColLabel) {
         if (event->type() == QEvent::MouseButtonDblClick) {

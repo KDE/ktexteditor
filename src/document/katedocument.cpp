@@ -41,7 +41,6 @@
 #include "kateschema.h"
 #include "katebuffer.h"
 #include "kateundomanager.h"
-#include "katevireplacemode.h"
 #include "spellcheck/prefixstore.h"
 #include "spellcheck/ontheflycheck.h"
 #include "spellcheck/spellcheck.h"
@@ -49,6 +48,7 @@
 #include "kateswapfile.h"
 #include "katepartdebug.h"
 #include "printing/kateprinter.h"
+#include "kateabstractinputmode.h"
 
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
@@ -2778,17 +2778,14 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
 
     KTextEditor::Cursor oldCur(view->cursorPosition());
 
-    if (config()->ovr()
-            || (view->viInputMode() && view->getViInputModeManager()->getCurrentViMode() == ReplaceMode)) {
-
+    if (view->currentInputMode()->overwrite()) {
         KTextEditor::Range r = KTextEditor::Range(view->cursorPosition(), qMin(chars.length(),
                                textLine->length() - view->cursorPosition().column()));
 
         // replace mode needs to know what was removed so it can be restored with backspace
-        if (view->viInputMode() && view->getViInputModeManager()->getCurrentViMode() == ReplaceMode
-                && oldCur.column() < line(view->cursorPosition().line()).length()) {
+        if (oldCur.column() < line(view->cursorPosition().line()).length()) {
             QChar removed = line(view->cursorPosition().line()).at(r.start().column());
-            view->getViInputModeManager()->getViReplaceMode()->overwrittenChar(removed);
+            view->currentInputMode()->overwrittenChar(removed);
         }
 
         removeText(r);
@@ -3085,14 +3082,12 @@ void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, con
 
     if (!view->config()->persistentSelection() && view->selection()) {
         view->removeSelectedText();
-    } else if (config()->ovr() && c.column() < lineLen) {
+    } else if (view->currentInputMode()->overwrite() && c.column() < lineLen) {
         KTextEditor::Range r = KTextEditor::Range(view->cursorPosition(), 1);
 
-        if (view->viInputMode() && view->getViInputModeManager()->getCurrentViMode() == ReplaceMode) {
-            // vi replace mode needs to know what was removed so it can be restored with backspace
-            QChar removed = line(view->cursorPosition().line()).at(r.start().column());
-            view->getViInputModeManager()->getViReplaceMode()->overwrittenChar(removed);
-        }
+        // replace mode needs to know what was removed so it can be restored with backspace
+        QChar removed = line(view->cursorPosition().line()).at(r.start().column());
+        view->currentInputMode()->overwrittenChar(removed);
         removeText(r);
     }
 

@@ -26,6 +26,7 @@
 #include "katescript.h"
 
 #include <ktexteditor/editor.h>
+#include "ktexteditor/view.h"
 
 #include <KService>
 #include <KAboutData>
@@ -37,6 +38,7 @@
 
 #include <QList>
 #include <QPointer>
+#include <QMap>
 
 class KateCmd;
 class KateModeManager;
@@ -51,8 +53,8 @@ class KateScriptManager;
 class KDirWatch;
 class KateHlManager;
 class KateSpellCheckManager;
-class KateViGlobal;
 class KateWordCompletionModel;
+class KateAbstractInputModeFactory;
 
 namespace KTextEditor
 {
@@ -311,15 +313,6 @@ public:
     }
 
     /**
-     * vi input mode global
-     * @return vi input mode global
-     */
-    KateViGlobal *viInputModeGlobal()
-    {
-        return m_viInputModeGlobal;
-    }
-
-    /**
      * spell check manager
      * @return spell check manager
      */
@@ -385,6 +378,11 @@ public:
     {
         return m_documents.values();
     }
+
+    /**
+     * @return list of available input mode factories
+     */
+    QList<KateAbstractInputModeFactory *> inputModeFactories();
 
 Q_SIGNALS:
     /**
@@ -470,11 +468,6 @@ private:
     KateCmd *m_cmdManager;
 
     /**
-     * vi input mode global
-     */
-    KateViGlobal *m_viInputModeGlobal;
-
-    /**
      * spell check manager
      */
     KateSpellCheckManager *m_spellCheckManager;
@@ -493,6 +486,11 @@ private:
      * access to application
      */
     QPointer<KTextEditor::Application> m_application;
+
+    /**
+     * input modes map
+     */
+    QMap<KTextEditor::View::InputMode, KateAbstractInputModeFactory *> m_inputModeFactories;
 };
 
 }

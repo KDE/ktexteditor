@@ -31,7 +31,6 @@
 #include "katedocument.h"
 #include "kateundomanager.h"
 #include "kateglobal.h"
-#include "kateviglobal.h"
 #include "katehighlight.h"
 #include "katehighlightmenu.h"
 #include "katedialogs.h"
@@ -42,8 +41,6 @@
 #include "katemodemenu.h"
 #include "kateautoindent.h"
 #include "katecompletionwidget.h"
-#include "katesearchbar.h"
-#include "kateviemulatedcommandbar.h"
 #include "katewordcompletion.h"
 #include "katelayoutcache.h"
 #include "spellcheck/spellcheck.h"
@@ -58,6 +55,7 @@
 #include "katepartdebug.h"
 #include "printing/kateprinter.h"
 #include "katestatusbar.h"
+#include "kateabstractinputmode.h"
 
 #include <KTextEditor/Message>
 
@@ -115,9 +113,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_selection(m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
     , blockSelect(false)
     , m_bottomViewBar(0)
-    , m_cmdLine(0)
-    , m_searchBar(0)
-    , m_viModeEmulatedCommandBar(0)
     , m_gotoBar(0)
     , m_dictionaryBar(NULL)
     , m_spellingMenu(new KateSpellingMenu(this))
@@ -237,10 +232,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
     slotHlChanged();
     KCursor::setAutoHideCursor(m_viewInternal, true);
-
-    if (viInputMode() /* && FIXME: HAEHH? !config()->viInputModeHideStatusBar() */) {
-        deactivateEditActions();
-    }
 
     // user interaction (scrollling) starts notification auto-hide timer
     connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_topMessageWidget, SLOT(startAutoHideTimer()));
@@ -594,11 +585,17 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Show/hide the command line on the bottom of the view."));
     connect(a, SIGNAL(triggered(bool)), SLOT(switchToCmdLine()));
 
-    a = m_viInputModeAction = new KToggleAction(i18n("&VI Input Mode"), this);
-    ac->addAction(QLatin1String("view_vi_input_mode"), a);
-    a->setShortcut(QKeySequence(Qt::CTRL + Qt::META + Qt::Key_V));
-    a->setWhatsThis(i18n("Activate/deactivate VI input mode"));
-    connect(a, SIGNAL(triggered(bool)), SLOT(toggleViInputMode()));
+    KActionMenu *am = new KActionMenu(i18n("Input Modes"), this);
+    ac->addAction(QLatin1String("view_input_modes"), am);
+
+    Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
+        a = new KToggleAction(mode->viewInputModeHuman(), this);
+        am->addAction(a);
+        a->setWhatsThis(i18n("Activate/deactivate %1").arg(mode->viewInputModeHuman()));
+        a->setData(static_cast<int>(mode->viewInputMode()));
+        connect(a, SIGNAL(triggered(bool)), SLOT(toggleInputMode(bool)));
+        m_inputModeActions << a;
+    }
 
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QLatin1String("set_eol"), a);
@@ -1104,48 +1101,12 @@ void KTextEditor::ViewPrivate::unfoldLine(int startLine)
 
 KTextEditor::View::ViewMode KTextEditor::ViewPrivate::viewMode() const
 {
-    if (viInputMode()) {
-        return m_viewInternal->getViInputModeManager()->getCurrentViewMode();
-    } else {
-        return isOverwriteMode() ? KTextEditor::View::NormalModeOverwrite : KTextEditor::View::NormalModeInsert;
-    }
+    return currentInputMode()->viewMode();
 }
 
 QString KTextEditor::ViewPrivate::viewModeHuman() const
 {
-    /**
-     * normal two modes
-     */
-    QString currentMode = isOverwriteMode() ? i18n("OVERWRITE") : i18n("INSERT");
-
-    /**
-     * if we are in vi mode, this will be overwritten by current vi mode
-     */
-    if (viInputMode()) {
-        currentMode = KateViInputModeManager::modeToString(getCurrentViMode());
-
-        /**
-         * guard against calls during vi view input mode manager resets
-         */
-        if (m_viewInternal->getViInputModeManager()) {
-            if (m_viewInternal->getViInputModeManager()->isRecordingMacro()) {
-                currentMode.prepend (QLatin1String("(") + i18n("recording") + QLatin1String(") "));
-            }
-
-            /**
-            * perhaps append the current keys of a command not finalized
-            */
-            QString cmd = m_viewInternal->getViInputModeManager()->getVerbatimKeys();
-            if (!cmd.isEmpty()) {
-                currentMode.prepend(QString::fromLatin1("<em>%1</em> ").arg(cmd));
-            }
-        }
-
-        /**
-         * make it bold
-         */
-        currentMode = QString::fromLatin1("<b>%1</b>").arg(currentMode);
-    }
+    QString currentMode = currentInputMode()->viewModeHuman();
 
     /**
      * append read-only if needed
@@ -1162,33 +1123,52 @@ QString KTextEditor::ViewPrivate::viewModeHuman() const
 
 KTextEditor::View::InputMode KTextEditor::ViewPrivate::viewInputMode() const
 {
-    return viInputMode() ? KTextEditor::View::ViInputMode : KTextEditor::View::NormalInputMode;
+    return currentInputMode()->viewInputMode();
 }
 
 QString KTextEditor::ViewPrivate::viewInputModeHuman() const
 {
-    return viInputMode() ? i18n("vi-mode") : i18n("Normal");
+    return currentInputMode()->viewInputModeHuman();
 }
 
+void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
+{
+    if (currentInputMode()->viewInputMode() == mode) {
+        return;
+    }
+
+    if (!m_viewInternal->m_inputModes.contains(mode)) {
+        return;
+    }
+
+    m_viewInternal->m_currentInputMode->deactivate();
+    m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode];
+    m_viewInternal->m_currentInputMode->activate();
+
+    config()->setInputMode(mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
+
+    /* small duplication, but need to do this; TODO: make it more sane */
+    Q_FOREACH(QAction *action, m_inputModeActions) {
+        bool checked = static_cast<InputMode>(action->data().toInt()) == mode;
+        action->setChecked(checked);
+    }
+
+    /* inform the rest of the system about the change */
+    emit viewInputModeChanged(this, mode);
+    emit viewModeChanged(this, viewMode());
+}
 
 void KTextEditor::ViewPrivate::slotGotFocus()
 {
     //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotGotFocus";
-
-    if (!viInputMode()) {
-        activateEditActions();
-    }
+    currentInputMode()->gotFocus();
     emit focusIn(this);
 }
 
 void KTextEditor::ViewPrivate::slotLostFocus()
 {
     //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotLostFocus";
-
-    if (!viInputMode()) {
-        deactivateEditActions();
-    }
-
+    currentInputMode()->lostFocus();
     emit focusOut(this);
 }
 
@@ -1245,10 +1225,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
         }
     slotUpdateUndo();
 
-    // inform search bar
-    if (m_searchBar) {
-        m_searchBar->slotReadWriteChanged();
-    }
+    currentInputMode()->readWriteChanged(m_doc->isReadWrite());
 
     // => view mode changed
     emit viewModeChanged(this, viewMode());
@@ -1351,8 +1328,9 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
 //   m_savedFoldingState = config.readEntry("TextFolding", QVariantList());
 //   applyFoldingState ();
 
-    // save vi registers and jump list
-    getViInputModeManager()->readSessionConfig(config);
+    Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
+        mode->readSessionConfig(config);
+    }
 }
 
 void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags)
@@ -1368,8 +1346,9 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
 //   config.writeEntry("TextFolding", m_savedFoldingState);
 //   m_savedFoldingState.clear ();
 
-    // save vi registers and jump list
-    getViInputModeManager()->writeSessionConfig(config);
+    Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
+        mode->writeSessionConfig(config);
+    }
 }
 
 int KTextEditor::ViewPrivate::getEol() const
@@ -1543,131 +1522,34 @@ int KTextEditor::ViewPrivate::textHintDelay() const
     return m_viewInternal->textHintDelay();
 }
 
-bool KTextEditor::ViewPrivate::viInputMode() const
-{
-    return m_viewInternal->m_viInputMode;
-}
-
-bool KTextEditor::ViewPrivate::viInputModeStealKeys() const
-{
-    return m_viewInternal->m_viInputModeStealKeys;
-}
-
-bool KTextEditor::ViewPrivate::viRelativeLineNumbers() const
-{
-    return m_viewInternal->m_viRelLineNumbers;
-}
-
-void KTextEditor::ViewPrivate::toggleViInputMode()
-{
-    config()->setViInputMode(!config()->viInputMode());
-
-    if (viInputMode()) {
-        m_viewInternal->getViInputModeManager()->viEnterNormalMode();
-        deactivateEditActions();
-    } else { // disabling the vi input mode
-        activateEditActions();
-    }
-
-    emit viewModeChanged(this, viewMode());
-    emit viewInputModeChanged(this, viewInputMode());
-}
-
-void KTextEditor::ViewPrivate::showViModeEmulatedCommandBar()
-{
-    bottomViewBar()->addBarWidget(viModeEmulatedCommandBar());
-    bottomViewBar()->showBarWidget(viModeEmulatedCommandBar());
-}
-
-ViMode KTextEditor::ViewPrivate::getCurrentViMode() const
-{
-    return m_viewInternal->getCurrentViMode();
-}
-
-KateViInputModeManager *KTextEditor::ViewPrivate::getViInputModeManager()
-{
-    return m_viewInternal->getViInputModeManager();
-}
-
-KateViInputModeManager *KTextEditor::ViewPrivate::resetViInputModeManager()
-{
-    if (m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar->hideMe();
-    }
-
-    KateViInputModeManager * manager = m_viewInternal->resetViInputModeManager();
-
-    if (m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar->setViInputModeManager(manager);
-    }
-
-    return manager;
-}
-
 void KTextEditor::ViewPrivate::find()
 {
-    if (viInputMode()) {
-        showViModeEmulatedCommandBar();
-        viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
-    } else {
-        const bool INIT_HINT_AS_INCREMENTAL = false;
-        KateSearchBar *const bar = searchBar(INIT_HINT_AS_INCREMENTAL);
-        bar->enterIncrementalMode();
-        bottomViewBar()->addBarWidget(bar);
-        bottomViewBar()->showBarWidget(bar);
-        bar->setFocus();
-    }
+    currentInputMode()->find();
 }
 
 void KTextEditor::ViewPrivate::findSelectedForwards()
 {
-    if (viInputMode()) {
-        getViInputModeManager()->findNext();
-    } else {
-        KateSearchBar::nextMatchForSelection(this, KateSearchBar::SearchForward);
-    }
+    currentInputMode()->findSelectedForwards();
 }
 
 void KTextEditor::ViewPrivate::findSelectedBackwards()
 {
-    if (viInputMode()) {
-        getViInputModeManager()->findPrevious();
-    } else {
-        KateSearchBar::nextMatchForSelection(this, KateSearchBar::SearchBackward);
-    }
+    currentInputMode()->findSelectedBackwards();
 }
 
 void KTextEditor::ViewPrivate::replace()
 {
-    if (viInputMode()) {
-        showViModeEmulatedCommandBar();
-        viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
-    } else {
-        const bool INIT_HINT_AS_POWER = true;
-        KateSearchBar *const bar = searchBar(INIT_HINT_AS_POWER);
-        bar->enterPowerMode();
-        bottomViewBar()->addBarWidget(bar);
-        bottomViewBar()->showBarWidget(bar);
-        bar->setFocus();
-    }
+    currentInputMode()->findReplace();
 }
 
 void KTextEditor::ViewPrivate::findNext()
 {
-    if (viInputMode()) {
-        getViInputModeManager()->findNext();
-    } else {
-        searchBar()->findNext();
-    }
+    currentInputMode()->findNext();
 }
 
 void KTextEditor::ViewPrivate::findPrevious()
 {
-    if (viInputMode()) {
-        getViInputModeManager()->findPrevious();
-    } else {
-        searchBar()->findPrevious();
-    }
+    currentInputMode()->findPrevious();
 }
 
 void KTextEditor::ViewPrivate::slotSelectionChanged()
@@ -1690,19 +1572,7 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
 
 void KTextEditor::ViewPrivate::switchToCmdLine()
 {
-    if (viInputMode()) {
-        showViModeEmulatedCommandBar();
-        viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::Command);
-    } else {
-        // if the user has selected text, insert the selection's range (start line to end line) in the
-        // command line when opened
-        if (selectionRange().start().line() != -1 && selectionRange().end().line() != -1) {
-            cmdLineBar()->setText(QString::number(selectionRange().start().line() + 1) + QLatin1Char(',')
-                                  + QString::number(selectionRange().end().line() + 1));
-        }
-        bottomViewBar()->showBarWidget(cmdLineBar());
-        cmdLineBar()->setFocus();
-    }
+    currentInputMode()->activateCommandLine();
 }
 
 KateRenderer *KTextEditor::ViewPrivate::renderer()
@@ -1758,9 +1628,6 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_toggleBlockSelection->setChecked(blockSelection());
     m_toggleInsert->setChecked(isOverwriteMode());
 
-    // vi modes
-    m_viInputModeAction->setChecked(config()->viInputMode());
-
     updateFoldingConfig();
 
     // bookmark
@@ -1768,14 +1635,7 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     m_viewInternal->setAutoCenterLines(config()->autoCenterLines());
 
-    // vi input mode
-    m_viewInternal->m_viInputMode = config()->viInputMode();
-
-    // whether vi input mode should override actions or not
-    m_viewInternal->m_viInputModeStealKeys = config()->viInputModeStealKeys();
-
-    // whether relative line numbers should be used or not.
-    m_viewInternal->m_leftBorder->setViRelLineNumbersOn(config()->viRelativeLineNumbers());
+    setInputMode(config()->inputMode());
 
     reflectOnTheFlySpellCheckStatus(m_doc->isOnTheFlySpellCheckingEnabled());
 
@@ -1834,10 +1694,6 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
     m_viewInternal->updateBracketMarkAttributes();
     m_viewInternal->updateBracketMarks();
 
-    if (m_searchBar) {
-        m_searchBar->updateHighlightColors();
-    }
-
     // now redraw...
     m_viewInternal->cache()->clear();
     tagAll();
@@ -1848,6 +1704,8 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
     m_viewInternal->m_leftBorder->repaint();
 
     m_viewInternal->m_lineScroll->queuePixmapUpdate();
+
+    currentInputMode()->updateRendererConfig();
 
 // @@ showIndentLines is not cached anymore.
 //  m_renderer->setShowIndentLines (m_renderer->config()->showIndentationLines());
@@ -2493,34 +2351,6 @@ QString KTextEditor::ViewPrivate::currentTextLine()
     return m_doc->line(cursorPosition().line());
 }
 
-QString KTextEditor::ViewPrivate::searchPattern() const
-{
-    if (hasSearchBar()) {
-        return m_searchBar->searchPattern();
-    } else {
-        return QString();
-    }
-}
-
-QString KTextEditor::ViewPrivate::replacementPattern() const
-{
-    if (hasSearchBar()) {
-        return m_searchBar->replacementPattern();
-    } else {
-        return QString();
-    }
-}
-
-void KTextEditor::ViewPrivate::setSearchPattern(const QString &searchPattern)
-{
-    searchBar()->setSearchPattern(searchPattern);
-}
-
-void KTextEditor::ViewPrivate::setReplacementPattern(const QString &replacementPattern)
-{
-    searchBar()->setReplacementPattern(replacementPattern);
-}
-
 void KTextEditor::ViewPrivate::indent()
 {
     KTextEditor::Cursor c(cursorPosition().line(), 0);
@@ -3054,24 +2884,6 @@ KateViewBar *KTextEditor::ViewPrivate::bottomViewBar() const
     return m_bottomViewBar;
 }
 
-KateCommandLineBar *KTextEditor::ViewPrivate::cmdLineBar()
-{
-    if (!m_cmdLine) {
-        m_cmdLine = new KateCommandLineBar(this, bottomViewBar());
-        bottomViewBar()->addBarWidget(m_cmdLine);
-    }
-
-    return m_cmdLine;
-}
-
-KateSearchBar *KTextEditor::ViewPrivate::searchBar(bool initHintAsPower)
-{
-    if (!m_searchBar) {
-        m_searchBar = new KateSearchBar(initHintAsPower, this, KateViewConfig::global());
-    }
-    return m_searchBar;
-}
-
 KateGotoBar *KTextEditor::ViewPrivate::gotoBar()
 {
     if (!m_gotoBar) {
@@ -3090,16 +2902,6 @@ KateDictionaryBar *KTextEditor::ViewPrivate::dictionaryBar()
     }
 
     return m_dictionaryBar;
-}
-
-KateViEmulatedCommandBar *KTextEditor::ViewPrivate::viModeEmulatedCommandBar()
-{
-    if (!m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar = new KateViEmulatedCommandBar(m_viewInternal->getViInputModeManager(), this);
-        m_viModeEmulatedCommandBar->hide();
-    }
-
-    return m_viModeEmulatedCommandBar;
 }
 
 void KTextEditor::ViewPrivate::setAnnotationModel(KTextEditor::AnnotationModel *model)
@@ -3424,6 +3226,37 @@ void KTextEditor::ViewPrivate::createHighlights()
             start = matches.first().end();
         }
     } while (matches.first().isValid());
+}
+
+KateAbstractInputMode *KTextEditor::ViewPrivate::currentInputMode() const
+{
+    return m_viewInternal->m_currentInputMode;
+}
+
+void KTextEditor::ViewPrivate::toggleInputMode(bool on)
+{
+    QAction *a = dynamic_cast<QAction *>(sender());
+    if (!a) {
+        return;
+    }
+
+    InputMode newmode = static_cast<KTextEditor::View::InputMode>(a->data().toInt());
+
+    if (currentInputMode()->viewInputMode() == newmode) {
+        if (!on) {
+            a->setChecked(true); // nasty
+        }
+
+        return;
+    }
+
+    Q_FOREACH(QAction *ac, m_inputModeActions) {
+        if (ac != a) {
+            ac->setChecked(false);
+        }
+    }
+
+    setInputMode(newmode);
 }
 
 //BEGIN KTextEditor::PrintInterface stuff

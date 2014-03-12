@@ -26,6 +26,7 @@
 #include "kateviewhelpers.h"
 #include "katepartdebug.h"
 #include "katecmd.h"
+#include "kateabstractinputmode.h"
 
 #include <KXMLGUIFactory>
 #include <KActionCollection>
@@ -55,12 +56,7 @@ KateScriptAction::~KateScriptAction()
 void KateScriptAction::exec()
 {
     if (m_interactive) {
-        if (!m_view->viInputMode()) {
-            KateCommandLineBar *cmdLine = m_view->cmdLineBar();
-
-            m_view->bottomViewBar()->showBarWidget(cmdLine);
-            cmdLine->setText(m_command + QLatin1Char(' '), false);
-        }
+        m_view->currentInputMode()->launchInteractiveCommand(m_command + QLatin1Char(' '));
     } else {
         KTextEditor::Command *p = KateCmd::self()->queryCommand(m_command);
         if (p) {
