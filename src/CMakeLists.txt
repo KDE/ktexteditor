@@ -58,6 +58,7 @@ completion/katewordcompletion.cpp
 
 # dialogs
 dialogs/katedialogs.cpp
+dialogs/kateconfigpage.cpp
 
 # document (THE document, buffer, lines/cursors/..., CORE STUFF)
 document/katedocument.cpp
@@ -148,6 +149,7 @@ vimode/katevireplacemode.cpp
 vimode/kateviemulatedcommandbar.cpp
 vimode/katevicommandrangeexpressionparser.cpp
 vimode/katevikeymapper.cpp
+vimode/kateviinputmodeconfigtab.cpp
 
 # spell checking
 spellcheck/prefixstore.h
@@ -227,7 +229,7 @@ dialogs/completionconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
 spellcheck/spellcheckbar.ui
-dialogs/viinputmodeconfigwidget.ui
+vimode/viinputmodeconfigwidget.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
    

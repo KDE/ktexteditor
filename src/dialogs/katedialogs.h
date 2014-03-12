@@ -28,12 +28,11 @@
 
 #include "katehighlight.h"
 #include "kateviewhelpers.h"
-#include "kateviglobal.h"
+#include "kateconfigpage.h"
 
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/document.h>
-#include <ktexteditor/configpage.h>
 
 #include <sonnet/configwidget.h>
 #include <sonnet/dictionarycombobox.h>
@@ -79,33 +78,10 @@ class IndentationConfigWidget;
 class OpenSaveConfigWidget;
 class OpenSaveConfigAdvWidget;
 class CompletionConfigTab;
-class ViInputModeConfigWidget;
 class SpellCheckConfigWidget;
 }
 
-class KateConfigPage : public KTextEditor::ConfigPage
-{
-    Q_OBJECT
-
-public:
-    explicit KateConfigPage(QWidget *parent = 0, const char *name = 0);
-    virtual ~KateConfigPage();
-
-public:
-    bool hasChanged()
-    {
-        return m_changed;
-    }
-
-protected Q_SLOTS:
-    void slotChanged();
-
-private Q_SLOTS:
-    void somethingHasChanged();
-
-protected:
-    bool m_changed;
-};
+class KateViInputModeConfigTab;
 
 class KateGotoBar : public KateViewBarWidget
 {
@@ -223,34 +199,6 @@ public Q_SLOTS:
     void reload();
     void reset() {}
     void defaults() {}
-};
-
-class KateViInputModeConfigTab : public KateConfigPage
-{
-    Q_OBJECT
-
-public:
-    KateViInputModeConfigTab(QWidget *parent);
-    ~KateViInputModeConfigTab();
-
-protected:
-    Ui::ViInputModeConfigWidget *ui;
-
-private:
-    void applyTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
-    void reloadTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
-
-public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
-
-private Q_SLOTS:
-    void showWhatsThis(const QString &text);
-    void addMappingRow();
-    void removeSelectedMappingRows();
-    void importNormalMappingRow();
 };
 
 class KateSpellCheckConfigTab : public KateConfigPage
