@@ -428,6 +428,25 @@ ViMode KateViInputModeManager::getCurrentViMode() const
     return m_currentViMode;
 }
 
+KTextEditor::View::ViewMode KateViInputModeManager::getCurrentViewMode() const
+{
+    switch (m_currentViMode) {
+        case InsertMode:
+            return KTextEditor::View::ViModeInsert;
+        case VisualMode:
+            return KTextEditor::View::ViModeVisual;
+        case VisualLineMode:
+            return KTextEditor::View::ViModeVisualLine;
+        case VisualBlockMode:
+            return KTextEditor::View::ViModeVisualBlock;
+        case ReplaceMode:
+            return KTextEditor::View::ViModeReplace;
+        case NormalMode:
+        default:
+            return KTextEditor::View::ViModeNormal;
+    }
+}
+
 ViMode KateViInputModeManager::getPreviousViMode() const
 {
     return m_previousViMode;

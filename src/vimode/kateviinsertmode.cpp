@@ -298,7 +298,7 @@ bool KateViInsertMode::commandSwitchToNormalModeForJustOneCommand()
         m_view->setCursorPosition(Cursor(cursorPos.line(), cursorPos.column() - 1));
     }
     m_view->setCaretStyle(KateRenderer::Block, true);
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
     m_viewInternal->repaint();
     return true;
 }

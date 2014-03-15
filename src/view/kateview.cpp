@@ -1105,16 +1105,16 @@ void KTextEditor::ViewPrivate::unfoldLine(int startLine)
     }
 }
 
-KTextEditor::View::EditMode KTextEditor::ViewPrivate::viewEditMode() const
+KTextEditor::View::ViewMode KTextEditor::ViewPrivate::viewMode() const
 {
     if (viInputMode()) {
-        return EditViMode;
+        return m_viewInternal->getViInputModeManager()->getCurrentViewMode();
+    } else {
+        return isOverwriteMode() ? KTextEditor::View::NormalModeOverwrite : KTextEditor::View::NormalModeInsert;
     }
-
-    return isOverwriteMode() ? EditOverwrite : EditInsert;
 }
 
-QString KTextEditor::ViewPrivate::viewMode() const
+QString KTextEditor::ViewPrivate::viewModeHuman() const
 {
     /**
      * normal two modes
@@ -1162,6 +1162,17 @@ QString KTextEditor::ViewPrivate::viewMode() const
      */
     return currentMode;
 }
+
+KTextEditor::View::InputMode KTextEditor::ViewPrivate::viewInputMode() const
+{
+    return viInputMode() ? KTextEditor::View::ViInputMode : KTextEditor::View::NormalInputMode;
+}
+
+QString KTextEditor::ViewPrivate::viewInputModeHuman() const
+{
+    return viInputMode() ? i18n("vi-mode") : i18n("Normal");
+}
+
 
 void KTextEditor::ViewPrivate::slotGotFocus()
 {
@@ -1243,8 +1254,8 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     }
 
     // => view mode changed
-    emit viewModeChanged(this);
-    emit viewEditModeChanged(this, viewEditMode());
+    emit viewModeChanged(this, viewMode());
+    emit viewInputModeChanged(this, viewInputMode());
 }
 
 void KTextEditor::ViewPrivate::slotClipboardHistoryChanged()
@@ -1297,8 +1308,8 @@ void KTextEditor::ViewPrivate::toggleInsert()
     m_doc->config()->setOvr(!m_doc->config()->ovr());
     m_toggleInsert->setChecked(isOverwriteMode());
 
-    emit viewModeChanged(this);
-    emit viewEditModeChanged(this, viewEditMode());
+    emit viewModeChanged(this, viewMode());
+    emit viewInputModeChanged(this, viewInputMode());
 }
 
 void KTextEditor::ViewPrivate::slotSaveCanceled(const QString &error)
@@ -1557,28 +1568,14 @@ void KTextEditor::ViewPrivate::toggleViInputMode()
         activateEditActions();
     }
 
-    emit viewModeChanged(this);
-    emit viewEditModeChanged(this, viewEditMode());
+    emit viewModeChanged(this, viewMode());
+    emit viewInputModeChanged(this, viewInputMode());
 }
 
 void KTextEditor::ViewPrivate::showViModeEmulatedCommandBar()
 {
     bottomViewBar()->addBarWidget(viModeEmulatedCommandBar());
     bottomViewBar()->showBarWidget(viModeEmulatedCommandBar());
-}
-
-void KTextEditor::ViewPrivate::updateViModeBarMode()
-{
-    // view mode changed => status bar in container apps might change!
-    emit viewModeChanged(this);
-    emit viewEditModeChanged(this, viewEditMode());
-}
-
-void KTextEditor::ViewPrivate::updateViModeBarCmd()
-{
-    // view mode changed => status bar in container apps might change!
-    emit viewModeChanged(this);
-    emit viewEditModeChanged(this, viewEditMode());
 }
 
 ViMode KTextEditor::ViewPrivate::getCurrentViMode() const

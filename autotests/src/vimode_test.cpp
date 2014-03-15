@@ -6460,18 +6460,18 @@ void ViModeTest::MacroTests()
     const QString macroIsRecordingStatus = i18n("(recording)");
     clearAllMacros();
     BeginTest("");
-    QVERIFY(!kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     TestPressKey("qa");
-    QVERIFY(kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     TestPressKey("q");
-    QVERIFY(!kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     FinishTest("");
 
     // The closing "q" is not treated as the beginning of a new "begin recording macro" command.
     clearAllMacros();
     BeginTest("foo");
     TestPressKey("qaqa");
-    QVERIFY(!kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     TestPressKey("xyz\\esc");
     FinishTest("fxyzoo");
 
@@ -6485,11 +6485,11 @@ void ViModeTest::MacroTests()
     // Update the status on qb.
     clearAllMacros();
     BeginTest("");
-    QVERIFY(!kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     TestPressKey("qb");
-    QVERIFY(kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     TestPressKey("q");
-    QVERIFY(!kate_view->viewMode().contains(macroIsRecordingStatus));
+    QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
     FinishTest("");
 
     // Record and playback a single keypress into macro register "b".

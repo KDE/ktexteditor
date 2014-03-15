@@ -234,7 +234,7 @@ void KateStatusBar::selectionChanged ()
 void KateStatusBar::viewModeChanged ()
 {
     // prepend BLOCK for block selection mode
-    QString text = m_view->viewMode();
+    QString text = m_view->viewModeHuman();
     if (m_view->blockSelection())
         text = i18n ("<em>[BLOCK]</em> %1", text);
     

@@ -29,6 +29,7 @@
 #include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/markinterface.h>
+#include <ktexteditor/view.h>
 
 class KateViGlobal;
 class KConfigGroup;
@@ -97,6 +98,11 @@ public:
      * @return The current vi mode
      */
     ViMode getCurrentViMode() const;
+
+    /**
+     * @return The current vi mode string representation
+     */
+    KTextEditor::View::ViewMode getCurrentViewMode() const;
 
     /**
      * @return the previous vi mode

@@ -1161,7 +1161,7 @@ bool KateViModeBase::startNormalMode()
 
     m_viInputModeManager->viEnterNormalMode();
     m_view->doc()->setUndoMergeAllEdits(false);
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1170,7 +1170,7 @@ bool KateViModeBase::startInsertMode()
 {
     m_viInputModeManager->viEnterInsertMode();
     m_view->doc()->setUndoMergeAllEdits(true);
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1179,7 +1179,7 @@ bool KateViModeBase::startReplaceMode()
 {
     m_view->doc()->setUndoMergeAllEdits(true);
     m_viInputModeManager->viEnterReplaceMode();
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1196,7 +1196,7 @@ bool KateViModeBase::startVisualMode()
         m_viInputModeManager->viEnterVisualMode();
     }
 
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1210,7 +1210,7 @@ bool KateViModeBase::startVisualBlockMode()
         m_viInputModeManager->viEnterVisualMode(VisualBlockMode);
     }
 
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }
@@ -1224,7 +1224,7 @@ bool KateViModeBase::startVisualLineMode()
         m_viInputModeManager->viEnterVisualMode(VisualLineMode);
     }
 
-    m_view->updateViModeBarMode();
+    emit m_view->viewModeChanged(m_view, m_view->viewMode());
 
     return true;
 }

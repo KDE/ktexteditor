@@ -2410,7 +2410,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
                                              e->isAutoRepeat(), e->count());
                 QCoreApplication::postEvent(parent(), copy);
             }
-            m_view->updateViModeBarCmd();
+            emit m_view->viewModeChanged(m_view, m_view->viewMode());
             return;
         }
     }

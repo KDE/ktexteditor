@@ -116,7 +116,10 @@ public:
 
     KTextEditor::Document *document() const;
 
-    QString viewMode() const;
+    virtual ViewMode viewMode() const;
+    virtual QString viewModeHuman() const;
+    virtual InputMode viewInputMode() const;
+    virtual QString viewInputModeHuman() const;
 
     //
     // KTextEditor::ClipboardInterface
@@ -403,7 +406,7 @@ public:
      Return values for "save" related commands.
     */
     bool isOverwriteMode() const;
-    EditMode viewEditMode() const;
+
     QString currentTextLine();
 
     /**
@@ -768,16 +771,6 @@ public:
      * be used or not.
      */
     bool viRelativeLineNumbers() const;
-
-    /**
-     * Update vi mode statusbar according to the current mode
-     */
-    void updateViModeBarMode();
-
-    /**
-     * Update vi mode statusbar with the (partial) vi command being typed
-     */
-    void updateViModeBarCmd();
 
 public:
     KTextEditor::Range visibleRange();

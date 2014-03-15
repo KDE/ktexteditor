@@ -115,16 +115,20 @@ class ViewPrivate;
  * implementation does not support mouse tracking, mouseTrackingEnabled() will
  * always return \e false.
  *
- * \section view_modes Edit Modes
+ * \section view_modes Input/View Modes
  *
- * A view supports several edit modes (EditMode). Common edit modes are
- * \e insert-mode (INS) and \e overwrite-mode (OVR). Which edit modes the
- * editor supports depends on the implementation, another well-known mode is
- * the \e command-mode when using the Vi Input Mode. The getter viewMode()
- * returns a string like \p INS or \p OVR and is represented in the user
- * interface for example in the status bar. Further you can get the edit
- * mode as enum by using viewEditMode(). Whenever the edit mode changed the
- * signals viewModeChanged() and viewEditModeChanged() are emitted.
+ * A view supports several input modes. Common input modes are
+ * \e NormalInputMode and \e ViInputMode. Which input modes the editor supports depends on the
+ * implementation. The getter viewInputMode() returns enum \InputMode representing the current mode.
+ *
+ * Input modes can have their own view modes. In case of default \e NormalInputMode those are
+ * \e NormalModeInsert and \e NormalModeOverwrite. You can use viewMode() getter to obtain those.
+ *
+ * For viewMode() and viewInputMode() there are also variants with \e Human suffix, which
+ * returns the human readable representation (i18n) usable for displaying in user interface.
+ *
+ * Whenever the input/view mode changes the signals
+ * viewInputModeChanged()/viewModeChanged() are emitted.
  *
  * \section view_extensions View Extension Interfaces
  *
@@ -184,7 +188,42 @@ public:
      */
 public:
     /**
+    * Possible input modes.
+    * These correspond to various modes the text editor might be in.
+    */
+    enum InputMode {
+        NormalInputMode = 0, /**< Normal Mode. */
+        ViInputMode = 1      /**< Vi mode. The view will behave like the editor vi(m) */
+    };
+
+    /**
+     * Possible view modes
+     * These correspond to various modes the text editor might be in.
+     */
+    enum ViewMode {
+        NormalModeInsert = 0,    /**< Insert mode. Characters will be added. */
+        NormalModeOverwrite = 1, /**< Overwrite mode. Characters will be replaced. */
+
+        ViModeNormal = 10,
+        ViModeInsert = 11,
+        ViModeVisual = 12,
+        ViModeVisualLine = 13,
+        ViModeVisualBlock = 14,
+        ViModeReplace = 15
+    };
+
+    /**
      * Get the current view mode/state.
+     * This can be used to detect the view's current mode. For
+     * example \NormalInputMode, \ViInputMode or whatever other input modes are
+     * supported. \see viewModeHuman() for translated version.
+     * \return
+     * \see viewModeChanged()
+     */
+    virtual ViewMode viewMode() const = 0;
+
+    /**
+     * Get the current view mode state.
      * This can be used to visually indicate the view's current mode, for
      * example \e INSERT mode, \e OVERWRITE mode or \e COMMAND mode - or
      * whatever other edit modes are supported. The string should be
@@ -194,28 +233,25 @@ public:
      * \return
      * \see viewModeChanged()
      */
-    virtual QString viewMode() const = 0;
+    virtual QString viewModeHuman() const = 0;
 
     /**
-     * Possible edit modes.
-     * These correspond to various modes the text editor might be in.
-     */
-    enum EditMode {
-        EditInsert = 0,    /**< Insert mode. Characters will be added. */
-        EditOverwrite = 1, /**< Overwrite mode. Characters will be replaced. */
-        EditViMode = 2     /**< Vi mode. The view will behave like the editor vi(m) @since 4.11 */
-    };
-
-    /**
-     * Get the view's current edit mode.
-     * The current mode can be \e insert mode, \e replace mode or any other
-     * the editor supports, e.g. a vim like \e command mode. If in doubt
-     * return EditInsert.
+     * Get the view's current input mode.
+     * The current mode can be \NormalInputMode and \ViInputMode.
+     * For human translated version \see viewInputModeHuman.
      *
-     * \return the current edit mode of this view
-     * \see viewEditModeChanged()
+     * \return the current input mode of this view
+     * \see viewInputModeChanged()
      */
-    virtual enum EditMode viewEditMode() const = 0;
+    virtual InputMode viewInputMode() const = 0;
+
+    /**
+     * Get the view's current input mode in human readable form.
+     * The string should be translated (i18n). For id like version \see viewInputMode
+     *
+     * \return the current input mode of this view in human readable form
+     */
+    virtual QString viewInputModeHuman() const = 0;
 
     /**
      * Get the view's main window, if any
@@ -245,19 +281,18 @@ Q_SIGNALS:
     /**
      * This signal is emitted whenever the view mode of \p view changes.
      * \param view the view which changed its mode
+     * \param mode new view mode
      * \see viewMode()
      */
-    void viewModeChanged(KTextEditor::View *view);
+    void viewModeChanged(KTextEditor::View *view, ViewMode mode);
 
     /**
-     * This signal is emitted whenever the \p view's edit \p mode changed from
-     * either EditInsert to EditOverwrite or vice versa.
-     * \param view view which changed its edit mode
-     * \param mode new edit mode
-     * \see viewEditMode()
+     * This signal is emitted whenever the \p view's input \p mode changes.
+     * \param view view which changed its input mode
+     * \param mode new input mode
+     * \see viewInputMode()
      */
-    void viewEditModeChanged(KTextEditor::View *view,
-                             enum KTextEditor::View::EditMode mode);
+    void viewInputModeChanged(KTextEditor::View *view, InputMode mode);
 
     /**
      * This signal is emitted from \p view whenever the users inserts \p text
