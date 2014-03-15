@@ -31,9 +31,11 @@
 
 #include "ui_viinputmodeconfigwidget.h"
 
-KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent)
+KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateViGlobal *viGlobal)
     : KateConfigPage(parent)
+    , m_viGlobal(viGlobal)
 {
+
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
     QVBoxLayout *layout = new QVBoxLayout;
@@ -85,24 +87,24 @@ void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, KateViGloba
             const KateViGlobal::MappingRecursion recursion = recursive->checkState() == Qt::Checked ?
                     KateViGlobal::Recursive :
                     KateViGlobal::NonRecursive;
-            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(mode, from->text(), to->text(), recursion);
+            m_viGlobal->addMapping(mode, from->text(), to->text(), recursion);
         }
     }
 }
 
 void KateViInputModeConfigTab::reloadTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode)
 {
-    QStringList l = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMappings(mode);
+    QStringList l = m_viGlobal->getMappings(mode);
     mappingsTable->setRowCount(l.size());
 
     int i = 0;
     foreach (const QString &f, l) {
         QTableWidgetItem *from = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(f));
-        QString s = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMapping(mode, f);
+        QString s = m_viGlobal->getMapping(mode, f);
         QTableWidgetItem *to = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(s));
         QTableWidgetItem *recursive = new QTableWidgetItem();
         recursive->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
-        const bool isRecursive = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->isMappingRecursive(mode, f);
+        const bool isRecursive = m_viGlobal->isMappingRecursive(mode, f);
         recursive->setCheckState(isRecursive ? Qt::Checked : Qt::Unchecked);
 
         mappingsTable->setItem(i, 0, from);
@@ -129,7 +131,7 @@ void KateViInputModeConfigTab::apply()
     KateViewConfig::global()->setViInputModeStealKeys(ui->chkViCommandsOverride->isChecked());
 
     // Mappings.
-    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->clearMappings(KateViGlobal::NormalModeMapping);
+    m_viGlobal->clearMappings(KateViGlobal::NormalModeMapping);
     applyTab(ui->tblNormalModeMappings, KateViGlobal::NormalModeMapping);
     applyTab(ui->tblInsertModeMappings, KateViGlobal::InsertModeMapping);
     applyTab(ui->tblVisualModeMappings, KateViGlobal::VisualModeMapping);

@@ -30,7 +30,7 @@ class KateViInputModeConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateViInputModeConfigTab(QWidget *parent);
+    KateViInputModeConfigTab(QWidget *parent, KateViGlobal *viGlobal);
     ~KateViInputModeConfigTab();
 
 protected:
@@ -51,6 +51,9 @@ private Q_SLOTS:
     void addMappingRow();
     void removeSelectedMappingRows();
     void importNormalMappingRow();
+
+private:
+    KateViGlobal *m_viGlobal;
 };
 
 #endif

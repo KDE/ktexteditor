@@ -41,6 +41,7 @@
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
 #include "kateviinputmodeconfigtab.h"
+#include "kateglobal.h"
 
 // auto generated ui files
 #include "ui_modonhdwidget.h"
@@ -485,7 +486,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     , navigationConfigTab(new KateNavigationConfigTab(this))
     , indentConfigTab(new KateIndentConfigTab(this))
     , completionConfigTab(new KateCompletionConfigTab(this))
-    , viInputModeConfigTab(new KateViInputModeConfigTab(this))
+    , viInputModeConfigTab(new KateViInputModeConfigTab(this, KTextEditor::EditorPrivate::self()->viInputModeGlobal()))
     , spellCheckConfigTab(new KateSpellCheckConfigTab(this))
 {
     QVBoxLayout *layout = new QVBoxLayout;
