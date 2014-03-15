@@ -29,6 +29,8 @@
 
 namespace KTextEditor { class ViewPrivate; }
 
+class KateViInputModeManager;
+
 class ViCommandRangeExpressionParser
 {
 public:
@@ -43,10 +45,10 @@ public:
      *
      * An invalid Range is returned if no leading range expression could be found.
      */
-    static KTextEditor::Range parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand);
+    static KTextEditor::Range parseRangeExpression(const QString &command, KateViInputModeManager *vimanager, QString &destRangeExpression, QString &destTransformedCommand);
 private:
-    KTextEditor::Range parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view);
-    int calculatePosition(const QString &string, KTextEditor::ViewPrivate *view);
+    KTextEditor::Range parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KateViInputModeManager *vimanager);
+    int calculatePosition(const QString &string, KateViInputModeManager *vimanager);
     QRegExp m_line;
     QRegExp m_lastLine;
     QRegExp m_thisLine;

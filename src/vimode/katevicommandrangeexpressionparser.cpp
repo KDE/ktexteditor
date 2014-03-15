@@ -24,6 +24,7 @@
 
 #include "kateview.h"
 #include "katedocument.h"
+#include "kateviinputmodemanager.h"
 
 #include <QStringList>
 
@@ -66,12 +67,12 @@ ViCommandRangeExpressionParser::ViCommandRangeExpressionParser()
     m_cmdRange.setPattern(QLatin1String("^(") + m_position.pattern() + QLatin1String(")((?:,(") + m_position.pattern() + QLatin1String("))?)"));
 }
 
-Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
+Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, KateViInputModeManager *vimanager, QString &destRangeExpression, QString &destTransformedCommand)
 {
-    return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, view);
+    return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, vimanager);
 }
 
-Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view)
+Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KateViInputModeManager *vimanager)
 {
     Range parsedRange(0, -1, 0, -1);
     if (command.isEmpty()) {
@@ -89,13 +90,13 @@ Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &comman
 
         QString position_string1 = m_cmdRange.capturedTexts().at(1);
         QString position_string2 = m_cmdRange.capturedTexts().at(4);
-        int position1 = calculatePosition(position_string1, view);
+        int position1 = calculatePosition(position_string1, vimanager);
 
         int position2;
         if (!position_string2.isEmpty()) {
             // remove the comma
             position_string2 = m_cmdRange.capturedTexts().at(5);
-            position2 = calculatePosition(position_string2, view);
+            position2 = calculatePosition(position_string2, vimanager);
         } else {
             position2 = position1;
         }
@@ -114,13 +115,14 @@ Range ViCommandRangeExpressionParser::parseRangeExpression(const QString &comman
     return parsedRange;
 }
 
-int ViCommandRangeExpressionParser::calculatePosition(const QString &string, KTextEditor::ViewPrivate *view)
+int ViCommandRangeExpressionParser::calculatePosition(const QString &string, KateViInputModeManager *vimanager)
 {
 
     int pos = 0;
     QList<bool> operators_list;
     QStringList split = string.split(QRegExp(QLatin1String("[-+](?!([+-]|$))")));
     QList<int> values;
+    KTextEditor::ViewPrivate *view = vimanager->view();
 
     foreach (QString line, split) {
         pos += line.size();
@@ -144,7 +146,7 @@ int ViCommandRangeExpressionParser::calculatePosition(const QString &string, KTe
         } else if (m_thisLine.exactMatch(line)) {
             values.push_back(view->cursorPosition().line() + 1);
         } else if (m_mark.exactMatch(line)) {
-            values.push_back(view->getViInputModeManager()->getMarkPosition(line.at(1)).line() + 1);
+            values.push_back(vimanager->getMarkPosition(line.at(1)).line() + 1);
         } else if (m_forwardSearch.exactMatch(line)) {
             m_forwardSearch.indexIn(line);
             QString pattern = m_forwardSearch.capturedTexts().at(1);

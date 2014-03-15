@@ -863,7 +863,7 @@ QString KateViEmulatedCommandBar::rangeExpression()
     QString rangeExpression;
     QString unused;
     const QString command = m_edit->text();
-    ViCommandRangeExpressionParser::parseRangeExpression(command, m_view, rangeExpression, unused);
+    ViCommandRangeExpressionParser::parseRangeExpression(command, m_viInputModeManager, rangeExpression, unused);
     return rangeExpression;
 }
 
@@ -1139,7 +1139,7 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
 
     // Parse any leading range expression, and strip it (and maybe do some other transforms on the command).
     QString leadingRangeExpression;
-    KTextEditor::Range range = ViCommandRangeExpressionParser::parseRangeExpression(cmd, m_view, leadingRangeExpression, cmd);
+    KTextEditor::Range range = ViCommandRangeExpressionParser::parseRangeExpression(cmd, m_viInputModeManager, leadingRangeExpression, cmd);
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
