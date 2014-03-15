@@ -940,7 +940,7 @@ QChar KateViModeBase::getChosenRegister(const QChar &defaultReg) const
 
 QString KateViModeBase::getRegisterContent(const QChar &reg)
 {
-    QString r = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisterContent(reg);
+    QString r = m_viInputModeManager->viGlobal()->getRegisterContent(reg);
 
     if (r.isNull()) {
         error(i18n("Nothing in register %1", reg));
@@ -951,12 +951,12 @@ QString KateViModeBase::getRegisterContent(const QChar &reg)
 
 OperationMode KateViModeBase::getRegisterFlag(const QChar &reg) const
 {
-    return KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getRegisterFlag(reg);
+    return m_viInputModeManager->viGlobal()->getRegisterFlag(reg);
 }
 
 void KateViModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    KTextEditor::EditorPrivate::self()->viInputModeGlobal()->fillRegister(reg, text, flag);
+    m_viInputModeManager->viGlobal()->fillRegister(reg, text, flag);
 }
 
 void KateViModeBase::addJump(KTextEditor::Cursor cursor)
@@ -1054,9 +1054,11 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
         return r;
     }
 
+    KateLayoutCache *cache = m_viewInternal->cache();
+
     // Work out the real and visual line pair of the beginning of the visual line we'd end up
     // on by moving lines visual lines.  We ignore the column, for now.
-    int finishVisualLine = m_viewInternal->cache()->viewLine(m_view->cursorPosition());
+    int finishVisualLine = cache->viewLine(m_view->cursorPosition());
     int finishRealLine = m_view->cursorPosition().line();
     int count = qAbs(lines);
     bool invalidPos = false;
@@ -1064,7 +1066,7 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
         // Find the beginning of the visual line "lines" visual lines down.
         while (count > 0) {
             finishVisualLine++;
-            if (finishVisualLine >= m_viewInternal->cache()->line(finishRealLine)->viewLineCount()) {
+            if (finishVisualLine >= cache->line(finishRealLine)->viewLineCount()) {
                 finishRealLine++;
                 finishVisualLine = 0;
             }
@@ -1084,7 +1086,7 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
                     invalidPos = true;
                     break;
                 }
-                finishVisualLine = m_viewInternal->cache()->line(finishRealLine)->viewLineCount() - 1;
+                finishVisualLine = cache->line(finishRealLine)->viewLineCount() - 1;
             }
             count--;
         }
@@ -1101,15 +1103,15 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
 
     if (m_stickyColumn == -1 || !m_lastMotionWasVisualLineUpOrDown) {
         // Compute new sticky column. It is a *visual* sticky column.
-        int startVisualLine = m_viewInternal->cache()->viewLine(m_view->cursorPosition());
+        int startVisualLine = cache->viewLine(m_view->cursorPosition());
         int startRealLine = m_view->cursorPosition().line();
         const Kate::TextLine startLine = doc()->plainKateTextLine(c.line());
         // Adjust for the fact that if the portion of the line before wrapping is indented,
         // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
-        const bool isWrappedContinuation = (m_viewInternal->cache()->textLayout(startRealLine, startVisualLine).lineLayout().lineNumber() != 0);
-        const int numInvisibleIndentChars = isWrappedContinuation ? startLine->toVirtualColumn(m_viewInternal->cache()->line(startRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+        const bool isWrappedContinuation = (cache->textLayout(startRealLine, startVisualLine).lineLayout().lineNumber() != 0);
+        const int numInvisibleIndentChars = isWrappedContinuation ? startLine->toVirtualColumn(cache->line(startRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
 
-        const int realLineStartColumn = m_viewInternal->cache()->textLayout(startRealLine, startVisualLine).startCol();
+        const int realLineStartColumn = cache->textLayout(startRealLine, startVisualLine).startCol();
         const int lineStartVirtualColumn = startLine->toVirtualColumn(realLineStartColumn, tabstop);
         const int visualColumnNoInvisibleIndent  = startLine->toVirtualColumn(c.column(), tabstop) - lineStartVirtualColumn;
         m_stickyColumn = visualColumnNoInvisibleIndent + numInvisibleIndentChars;
@@ -1118,14 +1120,14 @@ KateViRange KateViModeBase::goVisualLineUpDown(int lines)
 
     // The "real" (non-virtual) beginning of the current "line", which might be a wrapped continuation of a
     // "real" line.
-    const int realLineStartColumn = m_viewInternal->cache()->textLayout(finishRealLine, finishVisualLine).startCol();
+    const int realLineStartColumn = cache->textLayout(finishRealLine, finishVisualLine).startCol();
     const Kate::TextLine endLine = doc()->plainKateTextLine(r.endLine);
     // Adjust for the fact that if the portion of the line before wrapping is indented,
     // the continuations are also "invisibly" (i.e. without any spaces in the text itself) indented.
-    const bool isWrappedContinuation = (m_viewInternal->cache()->textLayout(finishRealLine, finishVisualLine).lineLayout().lineNumber() != 0);
-    const int numInvisibleIndentChars = isWrappedContinuation ? endLine->toVirtualColumn(m_viewInternal->cache()->line(finishRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
+    const bool isWrappedContinuation = (cache->textLayout(finishRealLine, finishVisualLine).lineLayout().lineNumber() != 0);
+    const int numInvisibleIndentChars = isWrappedContinuation ? endLine->toVirtualColumn(cache->line(finishRealLine)->textLine()->nextNonSpaceChar(0), tabstop) : 0;
     if (m_stickyColumn == (unsigned int)KateVi::EOL) {
-        const int visualEndColumn = m_viewInternal->cache()->textLayout(finishRealLine, finishVisualLine).lineLayout().textLength() - 1;
+        const int visualEndColumn = cache->textLayout(finishRealLine, finishVisualLine).lineLayout().textLength() - 1;
         r.endColumn = endLine->fromVirtualColumn(visualEndColumn + realLineStartColumn - numInvisibleIndentChars, tabstop);
     } else {
         // Algorithm: find the "real" column corresponding to the start of the line.  Offset from that
