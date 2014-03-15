@@ -40,6 +40,7 @@ class ModeConfigPage : public KateConfigPage
 public:
     explicit ModeConfigPage(QWidget *parent);
     ~ModeConfigPage();
+    virtual QString name() const;
 
 public Q_SLOTS:
     void apply();

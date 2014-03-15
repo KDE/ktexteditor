@@ -129,6 +129,7 @@ class KateIndentConfigTab : public KateConfigPage
 public:
     KateIndentConfigTab(QWidget *parent);
     ~KateIndentConfigTab();
+    virtual QString name() const;
 
 protected:
     Ui::IndentationConfigWidget *ui;
@@ -151,6 +152,7 @@ class KateCompletionConfigTab : public KateConfigPage
 public:
     KateCompletionConfigTab(QWidget *parent);
     ~KateCompletionConfigTab();
+    virtual QString name() const;
 
 protected:
     Ui::CompletionConfigTab *ui;
@@ -172,6 +174,7 @@ class KateEditGeneralConfigTab : public KateConfigPage
 public:
     KateEditGeneralConfigTab(QWidget *parent);
     ~KateEditGeneralConfigTab();
+    virtual QString name() const;
 
 private:
     Ui::EditConfigWidget *ui;
@@ -190,6 +193,7 @@ class KateNavigationConfigTab : public KateConfigPage
 public:
     KateNavigationConfigTab(QWidget *parent);
     ~KateNavigationConfigTab();
+    virtual QString name() const;
 
 private:
     Ui::NavigationConfigWidget *ui;
@@ -208,6 +212,7 @@ class KateSpellCheckConfigTab : public KateConfigPage
 public:
     KateSpellCheckConfigTab(QWidget *parent);
     ~KateSpellCheckConfigTab();
+    virtual QString name() const;
 
 protected:
     Ui::SpellCheckConfigWidget *ui;
@@ -230,6 +235,9 @@ class KateEditConfigTab : public KateConfigPage
 public:
     KateEditConfigTab(QWidget *parent);
     ~KateEditConfigTab();
+    virtual QString name() const;
+    virtual QString fullName() const;
+    virtual QIcon icon() const;
 
 public Q_SLOTS:
     void apply();
@@ -253,6 +261,9 @@ class KateViewDefaultsConfig : public KateConfigPage
 public:
     KateViewDefaultsConfig(QWidget *parent);
     ~KateViewDefaultsConfig();
+    virtual QString name() const;
+    virtual QString fullName() const;
+    virtual QIcon icon() const;
 
 public Q_SLOTS:
     void apply();
@@ -272,6 +283,9 @@ class KateSaveConfigTab : public KateConfigPage
 public:
     KateSaveConfigTab(QWidget *parent);
     ~KateSaveConfigTab();
+    virtual QString name() const;
+    virtual QString fullName() const;
+    virtual QIcon icon() const;
 
 public Q_SLOTS:
     void apply();

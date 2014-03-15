@@ -1370,5 +1370,21 @@ void KateSchemaConfigPage::comboBoxIndexChanged(int currentIndex)
 {
     schemaChanged(schemaCombo->itemData(currentIndex).toString());
 }
+
+QString KateSchemaConfigPage::name() const
+{
+    return i18n("Fonts & Colors");
+}
+
+QString KateSchemaConfigPage::fullName() const
+{
+    return i18n("Font & Color Schemas");
+}
+
+QIcon KateSchemaConfigPage::icon() const
+{
+    return QIcon::fromTheme(QLatin1String("preferences-desktop-color"));
+}
+
 //END KateSchemaConfigPage
 

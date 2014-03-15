@@ -112,6 +112,16 @@ ConfigPage::ConfigPage(QWidget *parent)
 ConfigPage::~ConfigPage()
 {}
 
+QString ConfigPage::fullName() const
+{
+    return QString();
+}
+
+QIcon ConfigPage::icon() const
+{
+    return QIcon::fromTheme(QLatin1String("document-properties"));
+}
+
 View::View (ViewPrivate *impl, QWidget *parent)
     : QWidget (parent), KXMLGUIClient()
     , d(impl)

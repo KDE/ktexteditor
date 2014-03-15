@@ -65,36 +65,6 @@ public:
      */
     virtual ConfigPage *configPage(int number, QWidget *parent) = 0;
 
-    /**
-     * Get a readable name for the config page \p number. The name should be
-     * translated.
-     * \param number index of config page
-     * \return name of given page index
-         * \see configPageFullName(), configPageIcon()
-     */
-    virtual QString configPageName(int number) const = 0;
-
-    /**
-     * Get a readable full name for the config page \e number. The name
-     * should be translated.
-     *
-     * Example: If the name is "Filetypes", the full name could be
-     * "Filetype Specific Settings". For "Shortcuts" the full name would be
-     * something like "Shortcut Configuration".
-     * \param number index of config page
-     * \return full name of given page index
-         * \see configPageName(), configPageIcon()
-     */
-    virtual QString configPageFullName(int number) const = 0;
-
-    /**
-     * Get an icon for the config page \p number.
-     * \param number index of config page
-     * \return icon for the given page index
-     * \see configPageName(), configPageFullName()
-     */
-    virtual QIcon configPageIcon(int number) const = 0;
-
 private:
     class ConfigPageInterfacePrivate *const d;
 };

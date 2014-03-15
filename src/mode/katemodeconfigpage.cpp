@@ -302,3 +302,7 @@ void ModeConfigPage::hlDownload()
     diag.exec();
 }
 
+QString ModeConfigPage::name() const
+{
+    return i18n("Modes && Filetypes");
+}

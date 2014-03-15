@@ -32,6 +32,7 @@ class KateViInputModeConfigTab : public KateConfigPage
 public:
     KateViInputModeConfigTab(QWidget *parent, KateViGlobal *viGlobal);
     ~KateViInputModeConfigTab();
+    virtual QString name() const;
 
 protected:
     Ui::ViInputModeConfigWidget *ui;

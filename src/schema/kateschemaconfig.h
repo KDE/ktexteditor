@@ -178,6 +178,9 @@ class KateSchemaConfigPage : public KateConfigPage
 public:
     explicit KateSchemaConfigPage(QWidget *parent);
     virtual ~KateSchemaConfigPage();
+    virtual QString name() const;
+    virtual QString fullName() const;
+    virtual QIcon icon() const;
 
 public Q_SLOTS:
     void apply();

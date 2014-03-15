@@ -186,12 +186,6 @@ public:
      */
     KTextEditor::ConfigPage *configPage(int number, QWidget *parent);
 
-    QString configPageName(int number) const;
-
-    QString configPageFullName(int number) const;
-
-    QIcon configPageIcon(int number) const;
-
     /**
      * Kate Part Internal stuff ;)
      */

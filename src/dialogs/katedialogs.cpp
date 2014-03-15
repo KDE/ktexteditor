@@ -225,6 +225,12 @@ void KateIndentConfigTab::reload()
 
     ui->sbIndentWidth->setEnabled(!ui->rbIndentWithTabs->isChecked());
 }
+
+QString KateIndentConfigTab::name() const
+{
+    return i18n("Indentation");
+}
+
 //END KateIndentConfigTab
 
 //BEGIN KateCompletionConfigTab
@@ -289,6 +295,12 @@ void KateCompletionConfigTab::reload()
     ui->minimalWordLength->setValue(KateViewConfig::global()->wordCompletionMinimalWordLength());
     ui->removeTail->setChecked(KateViewConfig::global()->wordCompletionRemoveTail());
 }
+
+QString KateCompletionConfigTab::name() const
+{
+    return i18n("Auto Completion");
+}
+
 //END KateCompletionConfigTab
 
 //BEGIN KateSpellCheckConfigTab
@@ -347,6 +359,12 @@ void KateSpellCheckConfigTab::reload()
 {
     // does nothing
 }
+
+QString KateSpellCheckConfigTab::name() const
+{
+    return i18n("Spellcheck");
+}
+
 //END KateSpellCheckConfigTab
 
 //BEGIN KateNavigationConfigTab
@@ -417,6 +435,12 @@ void KateNavigationConfigTab::reload()
     ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
     ui->chkScrollPastEnd->setChecked(KateViewConfig::global()->scrollPastEnd());
 }
+
+QString KateNavigationConfigTab::name() const
+{
+    return i18n("Text Navigation");
+}
+
 //END KateNavigationConfigTab
 
 //BEGIN KateEditGeneralConfigTab
@@ -477,6 +501,12 @@ void KateEditGeneralConfigTab::reload()
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
 }
+
+QString KateEditGeneralConfigTab::name() const
+{
+    return i18n("General");
+}
+
 //END KateEditGeneralConfigTab
 
 //BEGIN KateEditConfigTab
@@ -494,12 +524,12 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     QTabWidget *tabWidget = new QTabWidget(this);
 
     // add all tabs
-    tabWidget->insertTab(0, editConfigTab, i18n("General"));
-    tabWidget->insertTab(1, navigationConfigTab, i18n("Text Navigation"));
-    tabWidget->insertTab(2, indentConfigTab, i18n("Indentation"));
-    tabWidget->insertTab(3, completionConfigTab, i18n("Auto Completion"));
-    tabWidget->insertTab(4, viInputModeConfigTab, i18n("Vi Input Mode"));
-    tabWidget->insertTab(5, spellCheckConfigTab, i18n("Spellcheck"));
+    tabWidget->insertTab(0, editConfigTab, editConfigTab->name());
+    tabWidget->insertTab(1, navigationConfigTab, navigationConfigTab->name());
+    tabWidget->insertTab(2, indentConfigTab, indentConfigTab->name());
+    tabWidget->insertTab(3, completionConfigTab, completionConfigTab->name());
+    tabWidget->insertTab(4, viInputModeConfigTab, viInputModeConfigTab->name());
+    tabWidget->insertTab(5, spellCheckConfigTab, spellCheckConfigTab->name());
 
     connect(editConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
     connect(navigationConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
@@ -556,6 +586,22 @@ void KateEditConfigTab::defaults()
     viInputModeConfigTab->defaults();
     spellCheckConfigTab->defaults();
 }
+
+QString KateEditConfigTab::name() const
+{
+    return i18n("Editing");
+}
+
+QString KateEditConfigTab::fullName() const
+{
+    return i18n("Editing Options");
+}
+
+QIcon KateEditConfigTab::icon() const
+{
+    return QIcon::fromTheme(QLatin1String("accessories-text-editor"));
+}
+
 //END KateEditConfigTab
 
 //BEGIN KateViewDefaultsConfig
@@ -685,6 +731,22 @@ void KateViewDefaultsConfig::defaults()
 {
     ;
 }
+
+QString KateViewDefaultsConfig::name() const
+{
+    return i18n("Appearance");
+}
+
+QString KateViewDefaultsConfig::fullName() const
+{
+    return i18n("Appearance");
+}
+
+QIcon KateViewDefaultsConfig::icon() const
+{
+    return QIcon::fromTheme(QLatin1String("preferences-desktop-theme"));
+}
+
 //END KateViewDefaultsConfig
 
 //BEGIN KateSaveConfigTab
@@ -744,7 +806,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     // add all tabs
     tabWidget->insertTab(0, tmpWidget, i18n("General"));
     tabWidget->insertTab(1, tmpWidget2, i18n("Advanced"));
-    tabWidget->insertTab(2, modeConfigPage, i18n("Modes && Filetypes"));
+    tabWidget->insertTab(2, modeConfigPage, modeConfigPage->name());
 
     connect(modeConfigPage, SIGNAL(changed()), this, SLOT(slotChanged()));
 
@@ -948,6 +1010,21 @@ void KateSaveConfigTab::defaults()
     uiadv->kurlSwapDirectory->setDisabled(true);
     uiadv->lblSwapDirectory->setDisabled(true);
     uiadv->spbSwapFileSync->setValue(15);
+}
+
+QString KateSaveConfigTab::name() const
+{
+    return i18n("Open/Save");
+}
+
+QString KateSaveConfigTab::fullName() const
+{
+    return i18n("File Opening & Saving");
+}
+
+QIcon KateSaveConfigTab::icon() const
+{
+    return QIcon::fromTheme(QLatin1String("document-save"));
 }
 
 //END KateSaveConfigTab

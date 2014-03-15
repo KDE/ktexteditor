@@ -40,6 +40,9 @@ namespace KTextEditor
  * Editor will call the corresponding slot, either defaults(), reset() or
  * apply().
  *
+ * To obtain a useful navigation information for displaying to a user see name(),
+ * fullName() and icon() functions.
+ *
  * \section configpage_config Saving and Loading Config Data
  *
  * Saving and loading the configuration data can either be achieved by using
@@ -65,6 +68,32 @@ public:
      * Virtual destructor.
      */
     virtual ~ConfigPage();
+
+    /**
+     * Get a readable name for the config page. The name should be translated.
+     * \return name of given page index
+     * \see fullName(), icon()
+     */
+    virtual QString name() const = 0;
+
+    /**
+     * Get a readable full name for the config page. The name
+     * should be translated.
+     *
+     * Example: If the name is "Filetypes", the full name could be
+     * "Filetype Specific Settings". For "Shortcuts" the full name would be
+     * something like "Shortcut Configuration".
+     * \return full name of given page index
+     * \see name(), icon()
+     */
+    virtual QString fullName() const;
+
+    /**
+     * Get an icon for the config page.
+     * \return icon for the given page index
+     * \see name(), fullName()
+     */
+    virtual QIcon icon() const;
 
 public Q_SLOTS:
     /**

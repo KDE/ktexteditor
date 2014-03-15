@@ -229,3 +229,8 @@ void KateViInputModeConfigTab::importNormalMappingRow()
         }
     }
 }
+
+QString KateViInputModeConfigTab::name() const
+{
+    return i18n("Vi Input Mode");
+}

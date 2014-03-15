@@ -297,18 +297,16 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
     QList<KTextEditor::ConfigPage *> editorPages;
 
     for (int i = 0; i < configPages(); ++i) {
-        const QString name = configPageName(i);
-
         QFrame *page = new QFrame();
+        KTextEditor::ConfigPage *cp = configPage(i, page);
 
-        KPageWidgetItem *item = kd->addPage(page, name);
-        item->setHeader(configPageFullName(i));
-        item->setIcon(configPageIcon(i));
+        KPageWidgetItem *item = kd->addPage(page, cp->name());
+        item->setHeader(cp->fullName());
+        item->setIcon(cp->icon());
 
         QVBoxLayout *topLayout = new QVBoxLayout(page);
         topLayout->setMargin(0);
 
-        KTextEditor::ConfigPage *cp = configPage(i, page);
         connect(kd, SIGNAL(applyClicked()), cp, SLOT(apply()));
         topLayout->addWidget(cp);
         editorPages.append(cp);
@@ -358,72 +356,6 @@ KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWid
     }
 
     return 0;
-}
-
-QString KTextEditor::EditorPrivate::configPageName(int number) const
-{
-    switch (number) {
-    case 0:
-        return i18n("Appearance");
-
-    case 1:
-        return i18n("Fonts & Colors");
-
-    case 2:
-        return i18n("Editing");
-
-    case 3:
-        return i18n("Open/Save");
-
-    default:
-        break;
-    }
-
-    return QString();
-}
-
-QString KTextEditor::EditorPrivate::configPageFullName(int number) const
-{
-    switch (number) {
-    case 0:
-        return i18n("Appearance");
-
-    case 1:
-        return i18n("Font & Color Schemas");
-
-    case 2:
-        return i18n("Editing Options");
-
-    case 3:
-        return i18n("File Opening & Saving");
-
-    default:
-        break;
-    }
-
-    return QString();
-}
-
-QIcon KTextEditor::EditorPrivate::configPageIcon(int number) const
-{
-    switch (number) {
-    case 0:
-        return QIcon::fromTheme(QLatin1String("preferences-desktop-theme"));
-
-    case 1:
-        return QIcon::fromTheme(QLatin1String("preferences-desktop-color"));
-
-    case 2:
-        return QIcon::fromTheme(QLatin1String("accessories-text-editor"));
-
-    case 3:
-        return QIcon::fromTheme(QLatin1String("document-save"));
-
-    default:
-        break;
-    }
-
-    return QIcon::fromTheme(QLatin1String("document-properties"));
 }
 
 /**
