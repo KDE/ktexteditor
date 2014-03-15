@@ -1596,7 +1596,14 @@ KateViInputModeManager *KTextEditor::ViewPrivate::resetViInputModeManager()
     if (m_viModeEmulatedCommandBar) {
         m_viModeEmulatedCommandBar->hideMe();
     }
-    return m_viewInternal->resetViInputModeManager();
+
+    KateViInputModeManager * manager = m_viewInternal->resetViInputModeManager();
+
+    if (m_viModeEmulatedCommandBar) {
+        m_viModeEmulatedCommandBar->setViInputModeManager(manager);
+    }
+
+    return manager;
 }
 
 void KTextEditor::ViewPrivate::find()
@@ -3090,7 +3097,7 @@ KateDictionaryBar *KTextEditor::ViewPrivate::dictionaryBar()
 KateViEmulatedCommandBar *KTextEditor::ViewPrivate::viModeEmulatedCommandBar()
 {
     if (!m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar = new KateViEmulatedCommandBar(this, this);
+        m_viModeEmulatedCommandBar = new KateViEmulatedCommandBar(m_viewInternal->getViInputModeManager(), this);
         m_viModeEmulatedCommandBar->hide();
     }
 

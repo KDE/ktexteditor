@@ -46,7 +46,7 @@ class KTEXTEDITOR_EXPORT KateViEmulatedCommandBar : public KateViewBarWidget
     Q_OBJECT
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
-    explicit KateViEmulatedCommandBar(KTextEditor::ViewPrivate *view, QWidget *parent = 0);
+    explicit KateViEmulatedCommandBar(KateViInputModeManager *viInputModeManager, QWidget *parent = 0);
     virtual ~KateViEmulatedCommandBar();
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
@@ -58,7 +58,10 @@ public:
     void startInteractiveSearchAndReplace(QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
     QString executeCommand(const QString &commandToExecute);
 
+    void setViInputModeManager(KateViInputModeManager *viInputModeManager);
+
 private:
+    KateViInputModeManager *m_viInputModeManager;
     bool m_isActive;
     Mode m_mode;
     KTextEditor::ViewPrivate *m_view;

@@ -916,3 +916,12 @@ KateViInputModeManager::Completion::CompletionType KateViInputModeManager::Compl
     return m_completionType;
 }
 
+KateViGlobal *KateViInputModeManager::viGlobal() const
+{
+    return KTextEditor::EditorPrivate::self()->viInputModeGlobal();
+}
+
+KTextEditor::ViewPrivate *KateViInputModeManager::view() const
+{
+    return m_view;
+}

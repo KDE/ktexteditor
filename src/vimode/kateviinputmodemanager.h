@@ -30,6 +30,7 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/markinterface.h>
 
+class KateViGlobal;
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
 namespace KTextEditor { class DocumentPrivate; }
@@ -322,6 +323,8 @@ public:
     static QString modeToString(ViMode mode);
 
     KateViKeyMapper *keyMapper();
+    KateViGlobal *viGlobal() const;
+    KTextEditor::ViewPrivate *view() const;
 
 private Q_SLOTS:
     void markChanged(KTextEditor::Document *doc,
