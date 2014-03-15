@@ -27,6 +27,7 @@
 #include "kateviglobal.h"
 #include "kateregexpsearch.h"
 #include <katesedcmd.h>
+#include "katevicommandinterface.h"
 
 #include <QStringList>
 
@@ -47,7 +48,7 @@ namespace KateViCommands
  * hard to kateview
  */
 class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-    public KTextEditor::RangeCommand
+    public KTextEditor::RangeCommand, public KateViCommandInterface
 {
     CoreCommands() { }
     static CoreCommands *m_instance;
@@ -115,7 +116,7 @@ public:
  * This KTextEditor::Command provides vi 'ex' commands
  */
 class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-    public KTextEditor::RangeCommand
+    public KTextEditor::RangeCommand, public KateViCommandInterface
 {
     ViCommands() { }
     static ViCommands *m_instance;
@@ -189,7 +190,7 @@ private:
 /**
  * This KTextEditor::Command provides vi commands for the application
  */
-class AppCommands : public KTextEditor::Command
+class AppCommands : public KTextEditor::Command, public KateViCommandInterface
 {
     AppCommands();
     static AppCommands *m_instance;
@@ -238,7 +239,7 @@ private:
  * Support vim/sed style search and replace
  * @author Charles Samuels <charles@kde.org>
  **/
-class SedReplace : public KateCommands::SedReplace
+class SedReplace : public KateCommands::SedReplace, public KateViCommandInterface
 {
     SedReplace() { }
     static SedReplace *m_instance;

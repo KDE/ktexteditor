@@ -80,7 +80,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
     if (mappingCommands().contains(cmd)) {
         if (cmd.endsWith(QLatin1String("unmap"))) {
             if (args.count() == 1) {
-                KTextEditor::EditorPrivate::self()->viInputModeGlobal()->removeMapping(modeForMapCommand(cmd), args.at(0));
+                m_viGlobal->removeMapping(modeForMapCommand(cmd), args.at(0));
                 return true;
             } else {
                 msg = i18n("Missing argument. Usage: %1 <from>",  cmd);
@@ -88,7 +88,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
             }
         }
         if (args.count() == 1) {
-            msg = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMapping(modeForMapCommand(cmd), args.at(0), true);
+            msg = m_viGlobal->getMapping(modeForMapCommand(cmd), args.at(0), true);
             if (msg.isEmpty()) {
                 msg = i18n("No mapping found for \"%1\"", args.at(0));
                 return false;
@@ -97,7 +97,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
             }
         } else if (args.count() == 2) {
             KateViGlobal::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? KateViGlobal::Recursive : KateViGlobal::NonRecursive;
-            KTextEditor::EditorPrivate::self()->viInputModeGlobal()->addMapping(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
+            m_viGlobal->addMapping(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
         } else {
             msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]",  cmd);
             return false;
@@ -106,7 +106,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
         return true;
     }
 
-    KateViNormalMode *nm = v->getViInputModeManager()->getViNormalMode();
+    KateViNormalMode *nm = m_viInputModeManager->getViNormalMode();
 
     if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") ||
             cmd == QLatin1String("c") || cmd == QLatin1String("change") ||  cmd == QLatin1String("<") || cmd == QLatin1String(">") ||
@@ -181,7 +181,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
                     line = v->cursorPosition().line();
                 }
 
-                v->getViInputModeManager()->addMark(v->doc(), r, KTextEditor::Cursor(line, 0));
+                m_viInputModeManager->addMark(v->doc(), r, KTextEditor::Cursor(line, 0));
             }
         } else {
             msg = i18n("Wrong arguments");
@@ -213,7 +213,7 @@ KCompletion *KateViCommands::ViCommands::completionObject(KTextEditor::View *vie
     KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (v && (cmd == QLatin1String("nn") || cmd == QLatin1String("nnoremap"))) {
-        QStringList l = KTextEditor::EditorPrivate::self()->viInputModeGlobal()->getMappings(KateViGlobal::NormalModeMapping);
+        QStringList l = m_viGlobal->getMappings(KateViGlobal::NormalModeMapping);
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();
         co->setItems(l);
@@ -366,9 +366,9 @@ bool KateViCommands::AppCommands::help(KTextEditor::View *view, const QString &c
 //BEGIN SedReplace
 KateViCommands::SedReplace *KateViCommands::SedReplace::m_instance = 0;
 
-bool KateViCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
+bool KateViCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *view, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
 {
-    KateViEmulatedCommandBar *emulatedCommandBar = kateView->viModeEmulatedCommandBar();
+    KateViEmulatedCommandBar *emulatedCommandBar = view->viModeEmulatedCommandBar();
     emulatedCommandBar->startInteractiveSearchAndReplace(interactiveSedReplace);
     return true;
 }

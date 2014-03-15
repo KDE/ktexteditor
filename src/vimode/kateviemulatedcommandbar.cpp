@@ -1144,6 +1144,12 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
         KTextEditor::RangeCommand *ce = dynamic_cast<KTextEditor::RangeCommand *>(p);
+        KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
+
+        if (ci) {
+            ci->setViInputModeManager(m_viInputModeManager);
+            ci->setViGlobal(m_viInputModeManager->viGlobal());
+        }
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.
 
