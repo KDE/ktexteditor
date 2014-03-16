@@ -190,6 +190,7 @@ private:
     KTextEditor::ViewPrivate *kate_view;
     QMainWindow *mainWindow;
     QVBoxLayout *mainWindowLayout;
+    KateViGlobal *vi_global;
     KateViInputModeManager *vi_input_mode_manager;
 
     bool m_firstBatchOfKeypressesForTest;
