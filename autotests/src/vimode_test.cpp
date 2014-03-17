@@ -6659,14 +6659,13 @@ void ViModeTest::MacroTests()
     {
         clearAllMacros();
         KConfig viTestKConfig(viTestKConfigFileName);
-        KConfigGroup viTestKConfigGroup(&viTestKConfig, "Kate Vi Test Stuff");
         BeginTest("");
         TestPressKey("qaia\\ctrl-cq");
-        vi_global->writeConfig(viTestKConfigGroup);
+        vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite macro "a", and clear the document.
         TestPressKey("qaidummy\\ctrl-cqdd");
-        vi_global->readConfig(viTestKConfigGroup);
+        vi_global->readConfig(&viTestKConfig);
         TestPressKey("@a");
         FinishTest("a");
     }
@@ -6676,14 +6675,13 @@ void ViModeTest::MacroTests()
         clearAllMacros();
         const QString viTestKConfigFileName = "vimodetest-katevimoderc";
         KConfig viTestKConfig(viTestKConfigFileName);
-        KConfigGroup viTestKConfigGroup(&viTestKConfig, "Kate Vi Test Stuff");
         BeginTest("");
         TestPressKey("qaia\\ctrl-cqqbib\\ctrl-cq");
-        vi_global->writeConfig(viTestKConfigGroup);
+        vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite macros "a" & "b", and clear the document.
         TestPressKey("qaidummy\\ctrl-cqqbidummy\\ctrl-cqdd");
-        vi_global->readConfig(viTestKConfigGroup);
+        vi_global->readConfig(&viTestKConfig);
         TestPressKey("@a@b");
         FinishTest("ba");
     }
@@ -7203,7 +7201,6 @@ void ViModeTest::MacroTests()
     {
         const QString viTestKConfigFileName = "vimodetest-katevimoderc";
         KConfig viTestKConfig(viTestKConfigFileName);
-        KConfigGroup viTestKConfigGroup(&viTestKConfig, "Kate Vi Test Stuff");
         // Test loading and saving of macro completions.
         clearAllMacros();
         BeginTest("funct\nnoa\ncomtail\ncomtail\ncom");
@@ -7224,7 +7221,7 @@ void ViModeTest::MacroTests()
         fakeCodeCompletionModel->setCompletions(QStringList() << "completionB" << "semicolonfunctionnoargs();" << "semicolonfunctionwithargs(...);");
         TestPressKey("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq");
         // Save.
-        vi_global->writeConfig(viTestKConfigGroup);
+        vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite 'a' and 'b' and their completions.
         fakeCodeCompletionModel->setCompletions(QStringList() << "blah1");
@@ -7232,7 +7229,7 @@ void ViModeTest::MacroTests()
         TestPressKey("ggqaiblah\\ctrl- \\enter\\ctrl-cq");
         TestPressKey("ddqbiblah\\ctrl- \\enter\\ctrl-cq");
         // Reload.
-        vi_global->readConfig(viTestKConfigGroup);
+        vi_global->readConfig(&viTestKConfig);
         // Replay reloaded.
         fakeCodeCompletionModel->setFailTestOnInvocation(true);
         kate_document->setText("funct\nnoa\ncomtail\ncomtail\ncom");

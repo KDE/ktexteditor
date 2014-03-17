@@ -85,7 +85,7 @@ KateGlobalConfig::KateGlobalConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KSharedConfig::openConfig(), "Kate Part Defaults");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Editor");
     readConfig(cg);
 }
 
@@ -117,6 +117,10 @@ void KateGlobalConfig::writeConfig(KConfigGroup &config)
 
 void KateGlobalConfig::updateConfig()
 {
+    // write config
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Editor");
+    writeConfig(cg);
+    KTextEditor::EditorPrivate::config()->sync();
 }
 
 void KateGlobalConfig::setProberType(KEncodingProber::ProberType proberType)
@@ -201,7 +205,7 @@ KateDocumentConfig::KateDocumentConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KSharedConfig::openConfig(), "Kate Document Defaults");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Document");
     readConfig(cg);
 }
 
@@ -431,6 +435,11 @@ void KateDocumentConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->kateDocuments().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->kateDocuments())[z]->updateConfig();
         }
+        
+        // write config
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Document");
+        writeConfig(cg);
+        KTextEditor::EditorPrivate::config()->sync();
     }
 }
 
@@ -1222,7 +1231,7 @@ KateViewConfig::KateViewConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KSharedConfig::openConfig(), "Kate View Defaults");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "View");
     readConfig(config);
 }
 
@@ -1434,6 +1443,11 @@ void KateViewConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->views())[z]->updateConfig();
         }
+        
+        // write config
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "View");
+        writeConfig(cg);
+        KTextEditor::EditorPrivate::config()->sync();
     }
 }
 
@@ -2110,7 +2124,7 @@ KateRendererConfig::KateRendererConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KSharedConfig::openConfig(), "Kate Renderer Defaults");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "Renderer");
     readConfig(config);
 }
 
@@ -2201,6 +2215,11 @@ void KateRendererConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->views())[z]->renderer()->updateConfig();
         }
+        
+        // write config
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Renderer");
+        writeConfig(cg);
+        KTextEditor::EditorPrivate::config()->sync();
     }
 }
 

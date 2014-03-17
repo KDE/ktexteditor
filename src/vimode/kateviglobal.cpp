@@ -34,14 +34,22 @@
 
 KateViGlobal::KateViGlobal()
 {
+    // read global settings
+    readConfig(config().data());
 }
 
 KateViGlobal::~KateViGlobal()
 {
+    // write global settings
+    readConfig(config().data());
+    config().data()->sync();
 }
 
-void KateViGlobal::writeConfig(KConfigGroup &config) const
+void KateViGlobal::writeConfig(KConfig *configFile) const
 {
+    // FIXME: use own groups instead of one big group!
+    KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
+    
     writeMappingsToConfig(config, QLatin1String("Normal"), NormalModeMapping);
     writeMappingsToConfig(config, QLatin1String("Visual"), VisualModeMapping);
     writeMappingsToConfig(config, QLatin1String("Insert"), InsertModeMapping);
@@ -67,8 +75,11 @@ void KateViGlobal::writeConfig(KConfigGroup &config) const
     config.writeEntry("Macro Completions", macroCompletions);
 }
 
-void KateViGlobal::readConfig(const KConfigGroup &config)
+void KateViGlobal::readConfig(const KConfig *configFile)
 {
+    // FIXME: use own groups instead of one big group!
+    const KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
+    
     readMappingsFromConfig(config, QLatin1String("Normal"), NormalModeMapping);
     readMappingsFromConfig(config, QLatin1String("Visual"), VisualModeMapping);
     readMappingsFromConfig(config, QLatin1String("Insert"), InsertModeMapping);

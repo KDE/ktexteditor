@@ -28,6 +28,8 @@
 #include <QList>
 #include <QPair>
 
+#include <KSharedConfig>
+
 #include "katevimodebase.h"
 #include <ktexteditor_export.h>
 
@@ -47,9 +49,18 @@ class KTEXTEDITOR_EXPORT KateViGlobal
 public:
     KateViGlobal();
     ~KateViGlobal();
+    
+    /**
+     * The global configuration of katepart for the vi mode, e.g. katevirc
+     * @return global shared access to katevirc config
+     */
+    static KSharedConfigPtr config()
+    {
+        return KSharedConfig::openConfig(QStringLiteral("katevirc"));
+    }
 
-    void writeConfig(KConfigGroup &config) const;
-    void readConfig(const KConfigGroup &config);
+    void writeConfig(KConfig *config) const;
+    void readConfig(const KConfig *config);
     QString getRegisterContent(const QChar &reg) const;
     OperationMode getRegisterFlag(const QChar &reg) const;
     void addToNumberedRegister(const QString &text, OperationMode flag = CharWise);

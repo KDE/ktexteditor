@@ -699,11 +699,8 @@ void KTextEditor::ViewPrivate::setupActions()
 
 void KTextEditor::ViewPrivate::slotConfigDialog()
 {
+    // invoke config dialog, will auto-save configuration to katepartrc
     KTextEditor::EditorPrivate::self()->configDialog(this);
-
-    // write config to global settings, else simple programs don't get config saved ever
-    // like Konqueror, Dolphin, ...
-    KTextEditor::EditorPrivate::self()->writeConfig(KSharedConfig::openConfig().data());
 }
 
 void KTextEditor::ViewPrivate::setupEditActions()

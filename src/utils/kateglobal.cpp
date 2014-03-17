@@ -243,47 +243,6 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
     return doc;
 }
 
-//BEGIN KTextEditor::Editor config stuff
-void KTextEditor::EditorPrivate::readConfig(KConfig *config)
-{
-    if (!config) {
-        config = KSharedConfig::openConfig().data();
-    }
-
-    KateGlobalConfig::global()->readConfig(KConfigGroup(config, "Kate Part Defaults"));
-
-    KateDocumentConfig::global()->readConfig(KConfigGroup(config, "Kate Document Defaults"));
-
-    KateViewConfig::global()->readConfig(KConfigGroup(config, "Kate View Defaults"));
-
-    KateRendererConfig::global()->readConfig(KConfigGroup(config, "Kate Renderer Defaults"));
-
-    m_viInputModeGlobal->readConfig(KConfigGroup(config, "Kate Vi Input Mode Settings"));
-}
-
-void KTextEditor::EditorPrivate::writeConfig(KConfig *config)
-{
-    if (!config) {
-        config = KSharedConfig::openConfig().data();
-    }
-
-    KConfigGroup cgGlobal(config, "Kate Part Defaults");
-    KateGlobalConfig::global()->writeConfig(cgGlobal);
-
-    KConfigGroup cg(config, "Kate Document Defaults");
-    KateDocumentConfig::global()->writeConfig(cg);
-
-    KConfigGroup cgDefault(config, "Kate View Defaults");
-    KateViewConfig::global()->writeConfig(cgDefault);
-
-    KConfigGroup cgRenderer(config, "Kate Renderer Defaults");
-    KateRendererConfig::global()->writeConfig(cgRenderer);
-
-    KConfigGroup cgViInputMode(config, "Kate Vi Input Mode Settings");
-    m_viInputModeGlobal->writeConfig(cgViInputMode);
-
-    config->sync();
-}
 //END KTextEditor::Editor config stuff
 
 void KTextEditor::EditorPrivate::configDialog(QWidget *parent)

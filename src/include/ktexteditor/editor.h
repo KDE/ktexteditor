@@ -177,37 +177,12 @@ public:
      */
 public:
     /**
-     * Read editor configuration from KConfig \p config.
-     *
-     * \note If you pass a NULL pointer as \p config object, the Editor will
-     *       fall back to KSharedConfig::openConfig(), i.e. the process'
-     *       global config object.
-     *
-     * \param config config object or NULL, if the global config should be used
-     * \see writeConfig()
-     */
-    virtual void readConfig(KConfig *config = 0) = 0;
-
-    /**
-     * Write editor configuration to KConfig \p config.
-     *
-     * \note If you pass a NULL pointer as \p config object, the Editor will
-     *       fall back to KSharedConfig::openConfig(), i.e. the process'
-     *       global config object.
-     *
-     * \param config config object or NULL, if the global config should be used
-     * \see readConfig()
-     */
-    virtual void writeConfig(KConfig *config = 0) = 0;
-
-    /**
      * Show the editor's config dialog, changes will be applied to the
-     * editor, but not saved anywhere automagically, call \p writeConfig()
-     * to save them.
+     * editor and the configuration changes are saved.
      *
      * \note Instead of using the config dialog, the config pages can be
      *       embedded into your own config dialog by using configPages() and
-     *       configPage() inherited by ConfigPageInterface.
+     *       configPage().
      * \param parent parent widget
      */
     virtual void configDialog(QWidget *parent) = 0;
@@ -223,6 +198,8 @@ public:
     /**
      * Get the config page with the \p number, config pages from 0 to
      * configPages()-1 are available if configPages() > 0.
+     * Configuration changes done over this widget are automatically
+     * saved.
      * \param number index of config page
      * \param parent parent widget for config page
      * \return created config page or NULL, if the number is out of bounds

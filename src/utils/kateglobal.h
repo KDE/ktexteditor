@@ -29,6 +29,8 @@
 
 #include <KService>
 #include <KAboutData>
+#include <KSharedConfig>
+
 #include <ktexteditor/application.h>
 #include <ktexteditor/commandinterface.h>
 #include <ktexteditor/templateinterface2.h>
@@ -153,18 +155,6 @@ public:
     */
 public:
     /**
-     * Read editor configuration from given config object
-     * @param config config object
-     */
-    void readConfig(KConfig *config = 0);
-
-    /**
-     * Write editor configuration to given config object
-     * @param config config object
-     */
-    void writeConfig(KConfig *config = 0);
-
-    /**
      * Shows a config dialog for the part, changes will be applied
      * to the editor, but not saved anywhere automagically, call
      * writeConfig to save them
@@ -238,6 +228,15 @@ public:
     KDirWatch *dirWatch()
     {
         return m_dirWatch;
+    }
+    
+    /**
+     * The global configuration of katepart, e.g. katepartrc
+     * @return global shared access to katepartrc config
+     */
+    static KSharedConfigPtr config()
+    {
+        return KSharedConfig::openConfig(QStringLiteral("katepartrc"));
     }
 
     /**
