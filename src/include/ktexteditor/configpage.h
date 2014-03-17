@@ -83,7 +83,7 @@ public:
      * Example: If the name is "Filetypes", the full name could be
      * "Filetype Specific Settings". For "Shortcuts" the full name would be
      * something like "Shortcut Configuration".
-     * \return full name of given page index
+     * \return full name of given page index, default implementation returns name()
      * \see name(), icon()
      */
     virtual QString fullName() const;

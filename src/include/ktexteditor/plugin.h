@@ -28,6 +28,7 @@
 namespace KTextEditor
 {
 
+class ConfigPage;
 class MainWindow;
 
 /**
@@ -130,6 +131,24 @@ public:
      * \return the new created view or NULL
      */
     virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
+  
+    /**
+     * Get the number of available config pages.
+     * If a number < 1 is returned, it does not support config pages.
+     * \return number of config pages, default implementation says 0
+     * \see configPage()
+     */
+    virtual int configPages() const;
+
+    /**
+     * Get the config page with the \p number, config pages from 0 to
+     * configPages()-1 are available if configPages() > 0.
+     * \param number index of config page
+     * \param parent parent widget for config page
+     * \return created config page or NULL, if the number is out of bounds, default implementation returns NULL
+     * \see configPages()
+     */
+    virtual ConfigPage *configPage(int number, QWidget *parent);
 
 private:
     class PluginPrivate *const d;

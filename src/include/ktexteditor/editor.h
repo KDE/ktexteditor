@@ -20,7 +20,7 @@
 #ifndef KDELIBS_KTEXTEDITOR_EDITOR_H
 #define KDELIBS_KTEXTEDITOR_EDITOR_H
 
-#include <ktexteditor/configpageinterface.h>
+#include <ktexteditor_export.h>
 
 #include <QObject>
 
@@ -33,6 +33,7 @@ namespace KTextEditor
 class Application;
 class Document;
 class EditorPrivate;
+class ConfigPage;
 
 /**
  * \brief Accessor interface for the KTextEditor framework.
@@ -57,8 +58,7 @@ class EditorPrivate;
  *
  * The config dialog can be shown with configDialog().
  * Instead of using the config dialog, the config pages can also be embedded
- * into the application's config dialog, since the Editor also inherits
- * ConfigPageInterface. To do this, configPages() returns the
+ * into the application's config dialog. To do this, configPages() returns the
  * number of config pages that exist and configPage() returns the requested
  * page. Further, a config page has a short descriptive name, get it with
  * configPageName(). You can get more detailed name by using
@@ -80,11 +80,10 @@ class EditorPrivate;
  * variables. For further details read the detailed descriptions in the class
  * KTextEditor::CommandInterface.
  *
- * \see KTextEditor::Document, KTextEditor::ConfigPageInterface,
- *      KTextEditor::ConfigPage, KTextEditor::CommandInterface
+ * \see KTextEditor::Document, KTextEditor::ConfigPage, KTextEditor::CommandInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
-class KTEXTEDITOR_EXPORT Editor : public QObject, public ConfigPageInterface
+class KTEXTEDITOR_EXPORT Editor : public QObject
 {
     Q_OBJECT
 
@@ -212,6 +211,24 @@ public:
      * \param parent parent widget
      */
     virtual void configDialog(QWidget *parent) = 0;
+
+    /**
+     * Get the number of available config pages.
+     * If a number < 1 is returned, it does not support config pages.
+     * \return number of config pages
+     * \see configPage()
+     */
+    virtual int configPages() const = 0;
+
+    /**
+     * Get the config page with the \p number, config pages from 0 to
+     * configPages()-1 are available if configPages() > 0.
+     * \param number index of config page
+     * \param parent parent widget for config page
+     * \return created config page or NULL, if the number is out of bounds
+     * \see configPages()
+     */
+    virtual ConfigPage *configPage(int number, QWidget *parent) = 0;
 
 Q_SIGNALS:
     /**

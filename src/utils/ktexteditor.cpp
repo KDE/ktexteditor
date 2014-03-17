@@ -114,7 +114,7 @@ ConfigPage::~ConfigPage()
 
 QString ConfigPage::fullName() const
 {
-    return QString();
+    return name();
 }
 
 QIcon ConfigPage::icon() const
@@ -136,7 +136,17 @@ Plugin::Plugin(QObject *parent)
 {}
 
 Plugin::~Plugin()
-{}
+{}    
+
+int Plugin::configPages() const
+{
+    return 0;
+}
+
+ConfigPage *Plugin::configPage(int, QWidget *)
+{
+    return nullptr;
+}
 
 MarkInterface::MarkInterface()
     : d(0)

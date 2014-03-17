@@ -183,7 +183,6 @@ utils/codecompletioninterface.cpp
 utils/codecompletionmodel.cpp
 utils/codecompletionmodelcontrollerinterface.cpp
 utils/configinterface.cpp
-utils/configpageinterface.cpp
 utils/highlightinterface.cpp
 utils/movinginterface.cpp
 utils/movingcursor.cpp
