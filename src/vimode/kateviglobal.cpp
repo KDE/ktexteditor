@@ -41,7 +41,7 @@ KateViGlobal::KateViGlobal()
 KateViGlobal::~KateViGlobal()
 {
     // write global settings
-    readConfig(config().data());
+    writeConfig(config().data());
     config().data()->sync();
 }
 
