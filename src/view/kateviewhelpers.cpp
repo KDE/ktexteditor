@@ -2070,9 +2070,6 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     int result = rA->data().toInt();
     if (result > 100) {
         KateViewConfig::global()->setDefaultMarkType(vec[result - 100]);
-        // flush config, otherwise it isn't necessarily done
-        KConfigGroup cg(KSharedConfig::openConfig(), "Kate View Defaults");
-        KateViewConfig::global()->writeConfig(cg);
     } else {
         MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes) vec[result];
         if (m_doc->mark(line) & markType) {

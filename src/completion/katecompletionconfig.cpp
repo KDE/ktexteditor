@@ -20,6 +20,7 @@
 
 #include "katecompletionconfig.h"
 #include "katecompletionmodel.h"
+#include "kateglobal.h"
 #include "ui_completionconfigwidget.h"
 
 #include <KSharedConfig>
@@ -149,7 +150,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     }
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KSharedConfig::openConfig(), "Kate Code Completion Defaults");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "Code Completion");
     readConfig(config);
 
     // buttons
@@ -306,7 +307,7 @@ void KateCompletionConfig::apply()
 {
     applyInternal();
 
-    KConfigGroup config(KSharedConfig::openConfig(), "Kate Code Completion Defaults");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "Code Completion");
     writeConfig(config);
 }
 

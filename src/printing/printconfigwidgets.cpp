@@ -87,8 +87,8 @@ bool KatePrintTextSettings::printGuide()
 
 void KatePrintTextSettings::readSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     KConfigGroup textGroup(&printGroup, "Text");
     bool isLineNumbersChecked = textGroup.readEntry("LineNumbers", false);
@@ -100,8 +100,8 @@ void KatePrintTextSettings::readSettings()
 
 void KatePrintTextSettings::writeSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     KConfigGroup textGroup(&printGroup, "Text");
     textGroup.writeEntry("LineNumbers", printLineNumbers());
@@ -403,8 +403,8 @@ void KatePrintHeaderFooter::showContextMenu(const QPoint &pos)
 
 void KatePrintHeaderFooter::readSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     // Header
     KConfigGroup headerFooterGroup(&printGroup, "HeaderFooter");
@@ -459,8 +459,8 @@ void KatePrintHeaderFooter::readSettings()
 
 void KatePrintHeaderFooter::writeSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     // Header
     KConfigGroup headerFooterGroup(&printGroup, "HeaderFooter");
@@ -615,8 +615,8 @@ QColor KatePrintLayout::boxColor()
 
 void KatePrintLayout::readSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     KConfigGroup layoutGroup(&printGroup, "Layout");
 
@@ -645,8 +645,8 @@ void KatePrintLayout::readSettings()
 
 void KatePrintLayout::writeSettings()
 {
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup printGroup(config, "Kate Print Settings");
+    KSharedConfigPtr config = KTextEditor::EditorPrivate::config();
+    KConfigGroup printGroup(config, "Printing");
 
     KConfigGroup layoutGroup(&printGroup, "Layout");
     layoutGroup.writeEntry("ColorScheme", colorScheme());
