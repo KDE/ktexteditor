@@ -26,7 +26,6 @@
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
-#include <ktexteditor/sessionconfiginterface.h>
 #include <ktexteditor/templateinterface.h>
 #include <ktexteditor/templateinterface2.h>
 #include <ktexteditor/configinterface.h>
@@ -82,7 +81,6 @@ namespace KTextEditor
 //
 class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     public KTextEditor::TextHintInterface,
-    public KTextEditor::SessionConfigInterface,
     public KTextEditor::TemplateInterface2,
     public KTextEditor::CodeCompletionInterface,
     public KTextEditor::ConfigInterface,
@@ -90,7 +88,6 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
-    Q_INTERFACES(KTextEditor::SessionConfigInterface)
     Q_INTERFACES(KTextEditor::TemplateInterface)
     Q_INTERFACES(KTextEditor::TemplateInterface2)
     Q_INTERFACES(KTextEditor::ConfigInterface)
@@ -511,8 +508,30 @@ public Q_SLOTS:
 
     // config file / session management functions
 public:
-    void readSessionConfig(const KConfigGroup &);
-    void writeSessionConfig(KConfigGroup &);
+    /**
+     * Read session settings from the given \p config.
+     * 
+     * Known flags:
+     *  "SkipUrl" => don't save/restore the file
+     *  "SkipMode" => don't save/restore the mode
+     *  "SkipHighlighting" => don't save/restore the highlighting
+     *  "SkipEncoding" => don't save/restore the encoding
+     *
+     * \param config read the session settings from this KConfigGroup
+     * \param flags additional flags
+     * \see writeSessionConfig()
+     */
+    virtual void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
+
+    /**
+     * Write session settings to the \p config.
+     * See readSessionConfig() for more details.
+     *
+     * \param config write the session settings to this KConfigGroup
+     * \param flags additional flags
+     * \see readSessionConfig()
+     */
+    virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
 
 public Q_SLOTS:
     void setEol(int eol);

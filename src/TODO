@@ -29,8 +29,6 @@ KTE::Range, add from KDevelop's SimpleRange:
   }
 
 
-add QByteArray KTE::Document::checksum() const
-
 ? add QIcon KTE::Document::documentIcon() const -> considers modified state and all
 ? add QIcon KTE::Document::mimetypeIcon() const ?
 
@@ -50,7 +48,3 @@ KTE::ModificationInterface
 - add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
 
 merge KTE::RecoveryInterface into KTE::Document
-
-copy read/writeSessionConfig into KTE::Document (with enum to skip items)
-copy read/writeSessionConfig into KTE::View (with enum to skip items)
-then, KTE::SessionConfigInterface is only Plugin extension interface

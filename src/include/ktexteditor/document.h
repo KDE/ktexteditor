@@ -33,6 +33,8 @@
 #include <QList>
 #include <QMetaType>
 
+class KConfigGroup;
+
 namespace KTextEditor
 {
 
@@ -875,6 +877,32 @@ public:
      * Shows the print preview dialog/
      */
     virtual void printPreview() = 0;
+
+public:
+    /**
+     * Read session settings from the given \p config.
+     * 
+     * Known flags:
+     *  "SkipUrl" => don't save/restore the file
+     *  "SkipMode" => don't save/restore the mode
+     *  "SkipHighlighting" => don't save/restore the highlighting
+     *  "SkipEncoding" => don't save/restore the encoding
+     *
+     * \param config read the session settings from this KConfigGroup
+     * \param flags additional flags
+     * \see writeSessionConfig()
+     */
+    virtual void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
+
+    /**
+     * Write session settings to the \p config.
+     * See readSessionConfig() for more details.
+     *
+     * \param config write the session settings to this KConfigGroup
+     * \param flags additional flags
+     * \see readSessionConfig()
+     */
+    virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
 
 private:
     /**

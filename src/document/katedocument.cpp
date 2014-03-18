@@ -1676,15 +1676,9 @@ void KTextEditor::DocumentPrivate::bomSetByUser()
 //END
 
 //BEGIN KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
-void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig)
+void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig, const QSet<QString> &flags)
 {
-    readParameterizedSessionConfig(kconfig, SkipNone);
-}
-
-void KTextEditor::DocumentPrivate::readParameterizedSessionConfig(const KConfigGroup &kconfig,
-        unsigned long configParameters)
-{
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipEncoding)) {
+    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
         // get the encoding
         QString tmpenc = kconfig.readEntry("Encoding");
         if (!tmpenc.isEmpty() && (tmpenc != encoding())) {
@@ -1692,7 +1686,7 @@ void KTextEditor::DocumentPrivate::readParameterizedSessionConfig(const KConfigG
         }
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipUrl)) {
+    if (!flags.contains(QStringLiteral("SkipUrl"))) {
         // restore the url
         QUrl url(kconfig.readEntry("URL"));
 
@@ -1706,14 +1700,14 @@ void KTextEditor::DocumentPrivate::readParameterizedSessionConfig(const KConfigG
         completed(); //perhaps this should be emitted at the end of this function
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipMode)) {
+    if (!flags.contains(QStringLiteral("SkipMode"))) {
         // restore the filetype
         if (kconfig.hasKey("Mode")) {
             updateFileType(kconfig.readEntry("Mode", fileType()));
         }
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipHighlighting)) {
+    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // restore the hl stuff
         if (kconfig.hasKey("Highlighting")) {
             int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
@@ -1733,13 +1727,7 @@ void KTextEditor::DocumentPrivate::readParameterizedSessionConfig(const KConfigG
     }
 }
 
-void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig)
-{
-    writeParameterizedSessionConfig(kconfig, SkipNone);
-}
-
-void KTextEditor::DocumentPrivate::writeParameterizedSessionConfig(KConfigGroup &kconfig,
-        unsigned long configParameters)
+void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, const QSet<QString> &flags)
 {
     if (this->url().isLocalFile()) {
         const QString path = this->url().toLocalFile();
@@ -1748,22 +1736,22 @@ void KTextEditor::DocumentPrivate::writeParameterizedSessionConfig(KConfigGroup 
         }
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipUrl)) {
+    if (!flags.contains(QStringLiteral("SkipUrl"))) {
         // save url
         kconfig.writeEntry("URL", this->url().toString());
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipEncoding)) {
+    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
         // save encoding
         kconfig.writeEntry("Encoding", encoding());
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipMode)) {
+    if (!flags.contains(QStringLiteral("SkipMode"))) {
         // save file type
         kconfig.writeEntry("Mode", m_fileType);
     }
 
-    if (!(configParameters & KTextEditor::ParameterizedSessionConfigInterface::SkipHighlighting)) {
+    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // save hl
         kconfig.writeEntry("Highlighting", highlight()->name());
     }

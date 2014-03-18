@@ -29,7 +29,6 @@
 #include <KJob>
 
 #include <ktexteditor/document.h>
-#include <ktexteditor/sessionconfiginterface.h>
 #include <searchinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/modificationinterface.h>
@@ -77,8 +76,6 @@ class KateAutoIndent;
 // Kate KTextEditor::Document class (and even KTextEditor::Editor ;)
 //
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
-    public KTextEditor::SessionConfigInterface,
-    public KTextEditor::ParameterizedSessionConfigInterface,
     public KTextEditor::SearchInterface,
     public KTextEditor::MarkInterface,
     public KTextEditor::ModificationInterface,
@@ -91,8 +88,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::SessionConfigInterface)
-    Q_INTERFACES(KTextEditor::ParameterizedSessionConfigInterface)
     Q_INTERFACES(KTextEditor::MarkInterface)
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
@@ -460,14 +455,31 @@ public:
      */
     void bomSetByUser();
 
-    //
-    // KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
-    //
 public:
-    virtual void readSessionConfig(const KConfigGroup &);
-    virtual void writeSessionConfig(KConfigGroup &);
-    virtual void readParameterizedSessionConfig(const KConfigGroup &, unsigned long configParameters);
-    virtual void writeParameterizedSessionConfig(KConfigGroup &, unsigned long configParameters);
+    /**
+     * Read session settings from the given \p config.
+     * 
+     * Known flags:
+     *  "SkipUrl" => don't save/restore the file
+     *  "SkipMode" => don't save/restore the mode
+     *  "SkipHighlighting" => don't save/restore the highlighting
+     *  "SkipEncoding" => don't save/restore the encoding
+     *
+     * \param config read the session settings from this KConfigGroup
+     * \param flags additional flags
+     * \see writeSessionConfig()
+     */
+    virtual void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
+
+    /**
+     * Write session settings to the \p config.
+     * See readSessionConfig() for more details.
+     *
+     * \param config write the session settings to this KConfigGroup
+     * \param flags additional flags
+     * \see readSessionConfig()
+     */
+    virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
 
 Q_SIGNALS:
     void configChanged();

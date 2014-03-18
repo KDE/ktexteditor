@@ -1340,7 +1340,7 @@ void KTextEditor::ViewPrivate::joinLines()
     m_doc->joinLines(first, last);
 }
 
-void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config)
+void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags)
 {
     // cursor position
     setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
@@ -1353,7 +1353,7 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config)
     getViInputModeManager()->readSessionConfig(config);
 }
 
-void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config)
+void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags)
 {
     // cursor position
     config.writeEntry("CursorLine", m_viewInternal->m_cursor.line());

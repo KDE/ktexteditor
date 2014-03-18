@@ -32,6 +32,8 @@
 
 class QMenu;
 
+class KConfigGroup;
+
 namespace KTextEditor
 {
 
@@ -655,6 +657,29 @@ public:
      * @param enable should the status bar be enabled?
      */
     void setStatusBarEnabled(bool enable);
+
+public:
+    /**
+     * Read session settings from the given \p config.
+     * 
+     * Known flags:
+     *  none atm
+     *
+     * \param config read the session settings from this KConfigGroup
+     * \param flags additional flags
+     * \see writeSessionConfig()
+     */
+    virtual void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
+
+    /**
+     * Write session settings to the \p config.
+     * See readSessionConfig() for more details.
+     *
+     * \param config write the session settings to this KConfigGroup
+     * \param flags additional flags
+     * \see readSessionConfig()
+     */
+    virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
 
 private:
     /**
