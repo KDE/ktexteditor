@@ -25,6 +25,7 @@
 #include "kateglobal.h"
 #include "kateviewhelpers.h"
 #include "katepartdebug.h"
+#include "katecmd.h"
 
 #include <KXMLGUIFactory>
 #include <KActionCollection>
@@ -53,13 +54,19 @@ KateScriptAction::~KateScriptAction()
 
 void KateScriptAction::exec()
 {
-    KateCommandLineBar *cmdLine = m_view->cmdLineBar();
-
     if (m_interactive) {
-        m_view->bottomViewBar()->showBarWidget(cmdLine);
-        cmdLine->setText(m_command + QLatin1Char(' '), false);
+        if (!m_view->viInputMode()) {
+            KateCommandLineBar *cmdLine = m_view->cmdLineBar();
+
+            m_view->bottomViewBar()->showBarWidget(cmdLine);
+            cmdLine->setText(m_command + QLatin1Char(' '), false);
+        }
     } else {
-        cmdLine->execute(m_command);
+        KTextEditor::Command *p = KateCmd::self()->queryCommand(m_command);
+        if (p) {
+            QString msg;
+            p->exec(m_view, m_command, msg);
+        }
     }
 }
 //END KateScriptAction
