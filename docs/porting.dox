@@ -76,6 +76,10 @@ The following interfaces were changed:
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
  - \p KTextEditor::View::informationMessage() was removed in favor of the
    MessageInterface.
+ - \p KTextEditor::View::viewModeChanged() gained an additional parameter with the current view edit mode.
+ - New enums \p KTextEditor::View::InputMode() and \p KTextEditor::View::ViewMode().
+ - \p KTextEditor::View::viewEditModeChanged() was renamed to \p KTextEditor::View::viewInputModeChanged().
+ - New functions \p KTextEditor::View::viewModeHuman and \p KTextEditor::View::viewInputModeHuman().
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
