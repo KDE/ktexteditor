@@ -42,6 +42,9 @@ Entirely removed interfaces and classes are:
    This interface was not used by other applications and therefore got removed.
    If required, it can be added again (see file
    ktexteditor/src/search/searchinterface.h).
+ - \p KTextEditor::ConfigPageInterface \n
+   This interface was removed. The functions \p configPages() and \p configPage()
+   were both added to the \p KTextEditor::Editor and the \p KTextEditor::Plugin interface.
 
 \section kte_port_merge Merged Interfaces
 The following interfaces were merged, in order:
@@ -54,18 +57,17 @@ The following interfaces were merged, in order:
 \section kte_port_rename Interface Changes
 The following interfaces were changed:
  - \p KTextEditor::Editor::setSimpleMode() was removed.
+ - \p KTextEditor::Editor::readConfig() and \p KTextEditor::Editor::writeConfig() \n
+   Both functions were removed. The Editor configuration is automatically saved
+   to \e katepartrc now and shared among all applications that use the KTextEditor framework.
  - \p KTextEditor::View::setSelection(const Cursor &position, int length, bool wrap)
    was removed in favor of the Range based KTextEditor::View::setSelection()
  - \p KTextEditor::Document::activeView() \n
    The active view was removed in favor of KTextEditor::MainWindow::activeView().
- - \p KTextEditor::Document::checksum() \n
-   This function returns the md5 checksum of the file on disk.
- - \p KTextEditor::Document::wordRangeAt(const Cursor &position)
-   returns the Range of the word under \p position.
- - \p KTextEditor::Document::wordAt(const Cursor &position)
-   returns the word under \p position.
- - \p KTextEditor::Document::character() was renamed to
-   \p KTextEditor::Document::characterAt()
+ - \p KTextEditor::Document::checksum() returns the md5 checksum of the file on disk.
+ - \p KTextEditor::Document::wordRangeAt() returns the Range of the word under the given cursor.
+ - \p KTextEditor::Document::wordAt() returns the word under the given cursor.
+ - \p KTextEditor::Document::character() was renamed to \p KTextEditor::Document::characterAt()
  - \p KTextEditor::Document::isLineModified(), \p KTextEditor::Document::isLineSaved(),
    and \p KTextEditor::Document::isLineTouched() are new.
  - \p KTextEditor::Document::readWriteChanged() \n

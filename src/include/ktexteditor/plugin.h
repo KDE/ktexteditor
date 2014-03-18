@@ -56,28 +56,19 @@ class MainWindow;
  *
  * \section plugin_config_pages Plugin Config Pages
  *
- * If your plugin needs config pages, inherit your plugin also from
- * KTextEditor::ConfigPageInterface like this:
+ * If your plugin needs config pages, override the funcions configPages()
+ * and configPage() in your plugin as follows:
  * \code
  * class MyPlugin : public KTextEditor::Plugin,
- *                  public KTextEditor::ConfigPageInterface
  * {
  *     Q_OBJECT
- *     Q_INTERFACES(KTextEditor::ConfigPageInterface)
  * public:
  *     // ...
- *     virtual int configPages() const Q_DECL_OVERRIDE;
- *     virtual ConfigPage *configPage(int number, QWidget *parent) Q_DECL_OVERRIDE;
- *     virtual QString configPageName(int number) const Q_DECL_OVERRIDE;
- *     virtual QString configPageFullName(int number) const Q_DECL_OVERRIDE;
- *     virtual QIcon configPageIcon(int number) const Q_DECL_OVERRIDE;
+ *     int configPages() const Q_DECL_OVERRIDE;
+ *     ConfigPage *configPage(int number, QWidget *parent) Q_DECL_OVERRIDE;
  * };
  * \endcode
- * In the implementation, you can then return the amount of config pages in
- * configPages(). The host application will then call configPage() with parameters
- * 0, ..., \e{configPages() - 1}. In addition, implement configPageName(),
- * configPageFullName() and configPageIcon() to get a nice looking entry in the
- * config dialog.
+ * The host application will call configPage() for each config page.
  *
  * \section plugin_sessions Session Management
  *
@@ -99,7 +90,7 @@ class MainWindow;
  * \endcode
  *
  * \see KTextEditor::Editor, KTextEditor::Document, KTextEditor::View,
- *      KTextEditor::ConfigPageInterface, KTextEditor::SessionConfigInterface
+ *      KTextEditor::SessionConfigInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject
