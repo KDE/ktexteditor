@@ -284,7 +284,7 @@ Q_SIGNALS:
      * \param mode new view mode
      * \see viewMode()
      */
-    void viewModeChanged(KTextEditor::View *view, ViewMode mode);
+    void viewModeChanged(KTextEditor::View *view, KTextEditor::View::ViewMode mode);
 
     /**
      * This signal is emitted whenever the \p view's input \p mode changes.
@@ -292,7 +292,7 @@ Q_SIGNALS:
      * \param mode new input mode
      * \see viewInputMode()
      */
-    void viewInputModeChanged(KTextEditor::View *view, InputMode mode);
+    void viewInputModeChanged(KTextEditor::View *view, KTextEditor::View::InputMode mode);
 
     /**
      * This signal is emitted from \p view whenever the users inserts \p text

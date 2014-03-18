@@ -177,7 +177,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     
     // signals for the statusbar
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
-    connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*)), this, SLOT(viewModeChanged()));
+    connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*,KTextEditor::View::ViewMode)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
     connect(m_view->document(), SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
     connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*,bool,KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()) );
