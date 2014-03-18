@@ -751,19 +751,19 @@ bool KateViNormalMode::commandDeleteToEOL()
     Cursor c(m_view->cursorPosition());
     OperationMode m = CharWise;
 
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    m_commandRange.endColumn = KateVi::EOL;
+    switch (m_viInputModeManager->getCurrentViMode()) {
+    case NormalMode:
         m_commandRange.startLine = c.line();
         m_commandRange.startColumn = c.column();
         m_commandRange.endLine = c.line() + getCount() - 1;
-        m_commandRange.endColumn = doc()->lineLength(m_commandRange.endLine) - 1;
-    }
-
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode
-            || m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
+        break;
+    case VisualMode:
+    case VisualLineMode:
         m = LineWise;
-    } else if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
+        break;
+    case VisualBlockMode:
         m_commandRange.normalize();
-        m_commandRange.endColumn = KateVi::EOL;
         m = Block;
     }
 
