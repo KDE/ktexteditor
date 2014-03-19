@@ -27,6 +27,14 @@
 class KAboutData;
 class KConfig;
 
+/**
+ * The KTextEditor namespace contains all the public API that is required
+ * to use the KTextEditor component. Using the KTextEditor interfaces is
+ * described in the article \ref index.
+ *
+ * @warning All classes that are \e not part of the KTextEditor namespace
+ *          are internal and subject to change. We mean it!
+ */
 namespace KTextEditor
 {
 
