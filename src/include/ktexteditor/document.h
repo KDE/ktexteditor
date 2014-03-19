@@ -1,6 +1,6 @@
 /* This file is part of the KDE libraries
-   Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
-   Copyright (C) 2005 Dominik Haumann (dhdev@gmx.de) (documentation)
+   Copyright (C) 2001-2014 Christoph Cullmann <cullmann@kde.org>
+   Copyright (C) 2005-2014 Dominik Haumann (dhaumann@kde.org)
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -883,10 +883,10 @@ public:
      * Read session settings from the given \p config.
      * 
      * Known flags:
-     *  "SkipUrl" => don't save/restore the file
-     *  "SkipMode" => don't save/restore the mode
-     *  "SkipHighlighting" => don't save/restore the highlighting
-     *  "SkipEncoding" => don't save/restore the encoding
+     * - \p SkipUrl => do not save/restore the file
+     * - \p SkipMode => do not save/restore the mode
+     * - \p SkipHighlighting => do not save/restore the highlighting
+     * - \p SkipEncoding => do not save/restore the encoding
      *
      * \param config read the session settings from this KConfigGroup
      * \param flags additional flags
@@ -896,7 +896,7 @@ public:
 
     /**
      * Write session settings to the \p config.
-     * See readSessionConfig() for more details.
+     * See readSessionConfig() for more details about available \p flags.
      *
      * \param config write the session settings to this KConfigGroup
      * \param flags additional flags

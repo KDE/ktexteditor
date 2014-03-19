@@ -1,6 +1,6 @@
 /* This file is part of the KDE libraries
-   Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
-   Copyright (C) 2005 Dominik Haumann (dhdev@gmx.de) (documentation)
+   Copyright (C) 2001-2014 Christoph Cullmann <cullmann@kde.org>
+   Copyright (C) 2005-2014 Dominik Haumann (dhaumann@kde.org)
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -36,7 +36,6 @@ class MainWindow;
  *
  * Topics:
  *  - \ref plugin_intro
- *  - \ref plugin_config
  *  - \ref plugin_config_pages
  *  - \ref plugin_sessions
  *
@@ -48,11 +47,6 @@ class MainWindow;
  * plugin is responsible to create tool views through MainWindow::createToolView(),
  * hook itself into the menus and toolbars through KXMLGuiClient, and attach
  * itself to View%s or Document%s.
- *
- * \section plugin_config Configuration Management
- *
- * @todo write docu about config pages (new with kpluginmanager)
- * @todo write docu about save/load settings (related to config page)
  *
  * \section plugin_config_pages Plugin Config Pages
  *
@@ -117,6 +111,11 @@ public:
      * views as MainWindow%s exist, the application will take care to delete
      * this views whenever a MainWindow is closed, so you do not need to handle
      * deletion of the view yourself in the plugin.
+     *
+     * \note Session configuration: The host application will try to cast the
+     *       returned QObject with \p qobject_cast into the SessionConfigInterface.
+     *       This way, not only your Plugin, but also each Plugin view can have
+     *       session related settings.
      *
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL

@@ -1,6 +1,6 @@
 /* This file is part of the KDE libraries
-   Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
-   Copyright (C) 2005 Dominik Haumann (dhdev@gmx.de) (documentation)
+   Copyright (C) 2001-2014 Christoph Cullmann <cullmann@kde.org>
+   Copyright (C) 2005-2014 Dominik Haumann (dhaumann@kde.org)
    Copyright (C) 2009 Michel Ludwig (michel.ludwig@kdemail.net)
 
    This library is free software; you can redistribute it and/or
@@ -38,10 +38,10 @@ namespace KTextEditor
  *
  * \section sessionconfig_intro Introduction
  *
- * The SessionConfigInterface is an extension for Documents, Views and Plugins
+ * The SessionConfigInterface is an extension for Plugin%s and Plugin views
  * to add support for session-specific configuration settings.
  * readSessionConfig() is called whenever session-specific settings are to be
- * read from the given KConfig* and writeSessionConfig() whenever they are to
+ * read from the given KConfigGroup and writeSessionConfig() whenever they are to
  * be written, for example when a session changed or was closed.
  *
  * \note A \e session does not have anything to do with an X-session under Unix.
@@ -50,20 +50,20 @@ namespace KTextEditor
  *
  * \section sessionconfig_support Adding Session Support
  *
- * To add support for sessions a KTextEditor implementation has to derive the
- * Document and View class from SessionConfigInterface and reimplement
- * readSessionConfig() and writeSessionConfig().
- *
- * The same applies to a Plugin, read the detailed description for plugins.
+ * To add support for sessions, your Plugin has to inherit the SessionConfigInterface
+ * and reimplement readSessionConfig() and writeSessionConfig().
  *
  * \section sessionconfig_access Accessing the SessionConfigInterface
  *
- * The SessionConfigInterface is supposed to be an extension interface for a
- * Document, a View or a Plugin, i.e. the Document/View/Plugin inherits the
- * interface \e provided that it implements the interface. Use qobject_cast to
+ * This secion is for application developers such as Kate, KDevelop, etc that
+ * what to support session configuration for plugins.
+ *
+ * The SessionConfigInterface is an extension interface for a Plugin or a
+ * Plugin view, i.e. Plugin/Plugin view inherits the interface
+ * \e provided that it implements the interface. Use qobject_cast to
  * access the interface:
  * \code
- * // object is of type KTextEditor::Document* or View* or Plugin*
+ * // object is of type Plugin* or, in case of a plugin view, QObject*
  * KTextEditor::SessionConfigInterface *iface =
  *     qobject_cast<KTextEditor::SessionConfigInterface*>( object );
  *
@@ -73,9 +73,8 @@ namespace KTextEditor
  * }
  * \endcode
  *
- * \see KTextEditor::Document, KTextEditor::View, KTextEditor::Plugin
+ * \see KTextEditor::Plugin
  * \author Christoph Cullmann \<cullmann@kde.org\>
- * \note KDE5: Replace this interface with ParameterizedSessionConfigInterface
  */
 class KTEXTEDITOR_EXPORT SessionConfigInterface
 {
@@ -87,9 +86,6 @@ public:
      */
     virtual ~SessionConfigInterface();
 
-    //
-    // SLOTS !!!
-    //
 public:
     /**
      * Read session settings from the given \p config.

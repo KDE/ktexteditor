@@ -45,6 +45,12 @@ Entirely removed interfaces and classes are:
  - \p KTextEditor::ConfigPageInterface \n
    This interface was removed. The functions \p configPages() and \p configPage()
    were both added to the \p KTextEditor::Editor and the \p KTextEditor::Plugin interface.
+ - \p KTextEditor::ParameterizedSessionConfigInterface \n
+   This interface was removed. The functions are now available directly in the
+   Document and the View as follows:
+   - \p KTextEditor::Document::readSessionConfig() and \p KTextEditor::Document::writeSessionConfig()
+   - \p KTextEditor::View::readSessionConfig() and \p KTextEditor::View::writeSessionConfig()
+
 
 \section kte_port_merge Merged Interfaces
 The following interfaces were merged, in order:
@@ -80,6 +86,9 @@ The following interfaces were changed:
  - New enums \p KTextEditor::View::InputMode() and \p KTextEditor::View::ViewMode().
  - \p KTextEditor::View::viewEditModeChanged() was renamed to \p KTextEditor::View::viewInputModeChanged().
  - New functions \p KTextEditor::View::viewModeHuman and \p KTextEditor::View::viewInputModeHuman().
+ - \p KTextEditor::SessionConfigInterface \n
+   This interface is an extension only for a \p KTextEditor::Plugin and the Plugin
+   view's returned by \p KTextEditor::Plugin::createView().
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
