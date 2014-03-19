@@ -5,8 +5,8 @@ ecm_generate_headers(KTextEditor_CamelCase_HEADERS
   Cursor MarkInterface MovingInterface RecoveryInterface
   Document  MovingRange View
   Attribute CommandInterface DocumentCursor MessageInterface MovingRangeFeedback SessionConfigInterface
-  CodeCompletionInterface ConfigInterface Editor TemplateInterface
-  CodeCompletionModel ConfigPage ModificationInterface TemplateInterface2
+  CodeCompletionInterface ConfigInterface Editor
+  CodeCompletionModel ConfigPage ModificationInterface
   Application MainWindow Plugin
   PREFIX KTextEditor RELATIVE ktexteditor REQUIRED_HEADERS KTEXTEDITOR_PUBLIC_HEADERS)
 

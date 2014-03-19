@@ -26,7 +26,7 @@
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
-#include <ktexteditor/templateinterface.h>
+#include "templateinterface.h"
 
 namespace KTextEditor
 {

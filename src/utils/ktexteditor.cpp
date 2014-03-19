@@ -37,7 +37,7 @@
 #include "modificationinterface.h"
 #include "searchinterface.h"
 #include "sessionconfiginterface.h"
-#include "templateinterface.h"
+#include "draft/templateinterface.h"
 #include "texthintinterface.h"
 
 #include "annotationinterface.h"

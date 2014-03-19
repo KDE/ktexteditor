@@ -26,8 +26,8 @@
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
-#include <ktexteditor/templateinterface.h>
-#include <ktexteditor/templateinterface2.h>
+#include <draft/templateinterface.h>
+#include <draft/templateinterface2.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/mainwindow.h>

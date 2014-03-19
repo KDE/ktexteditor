@@ -33,7 +33,7 @@
 
 #include <ktexteditor/application.h>
 #include <ktexteditor/commandinterface.h>
-#include <ktexteditor/templateinterface2.h>
+#include <draft/templateinterface2.h>
 
 #include <QList>
 #include <QPointer>

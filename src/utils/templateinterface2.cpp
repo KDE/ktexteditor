@@ -17,8 +17,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "templateinterface.h"
-#include "templateinterface2.h"
+#include "draft/templateinterface.h"
+#include "draft/templateinterface2.h"
 
 using namespace KTextEditor;
 

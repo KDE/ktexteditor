@@ -17,7 +17,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "templateinterface.h"
+#include "draft/templateinterface.h"
 #include "document.h"
 #include "view.h"
 #include <QString>

@@ -22,7 +22,7 @@
 
 #include "katescript.h"
 #include "kateview.h"
-#include <ktexteditor/templateinterface2.h>
+#include <draft/templateinterface2.h>
 
 class KateTemplateScript : public KateScript, public KTextEditor::TemplateScript
 {

@@ -208,8 +208,7 @@ swapfile/kateswapfile.cpp
 
 # export as HTML
 export/exporter.cpp
-export/htmlexporter.cpp
-   )
+export/htmlexporter.cpp)
 
 qt5_wrap_ui(ktexteditor_LIB_SRCS 
 dialogs/textareaappearanceconfigwidget.ui
