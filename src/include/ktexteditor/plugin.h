@@ -42,18 +42,18 @@ class MainWindow;
  * \section plugin_intro Introduction
  *
  * The Plugin class provides methods to create loadable plugins for the
- * KTextEditor framework. The Plugin class itself only has a single function
- * createView() that is called for each MainWindow. In createView(), the
- * plugin is responsible to create tool views through MainWindow::createToolView(),
+ * KTextEditor framework. The Plugin class itself a function createView()
+ * that is called for each MainWindow. In createView(), the plugin is
+ * responsible to create tool views through MainWindow::createToolView(),
  * hook itself into the menus and toolbars through KXMLGuiClient, and attach
  * itself to View%s or Document%s.
  *
  * \section plugin_config_pages Plugin Config Pages
  *
- * If your plugin needs config pages, override the funcions configPages()
+ * If your plugin needs config pages, override the functions configPages()
  * and configPage() in your plugin as follows:
  * \code
- * class MyPlugin : public KTextEditor::Plugin,
+ * class MyPlugin : public KTextEditor::Plugin
  * {
  *     Q_OBJECT
  * public:
@@ -83,8 +83,8 @@ class MainWindow;
  * };
  * \endcode
  *
- * \see KTextEditor::Editor, KTextEditor::Document, KTextEditor::View,
- *      KTextEditor::SessionConfigInterface
+ * \see KTextEditor::SessionConfigInterface, KTextEditor::ConfigPage,
+ *      KTextEditor::MainWindow
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Plugin : public QObject
@@ -108,8 +108,8 @@ public:
     /**
      * Create a new View for this plugin for the given KTextEditor::MainWindow.
      * This may be called arbitrary often by the application to create as much
-     * views as MainWindow%s exist, the application will take care to delete
-     * this views whenever a MainWindow is closed, so you do not need to handle
+     * views as MainWindow%s exist. The application will take care to delete
+     * a view whenever a MainWindow is closed, so you do not need to handle
      * deletion of the view yourself in the plugin.
      *
      * \note Session configuration: The host application will try to cast the
