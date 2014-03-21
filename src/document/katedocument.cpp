@@ -4804,13 +4804,13 @@ KateHighlighting *KTextEditor::DocumentPrivate::highlight() const
     return m_buffer->highlight();
 }
 
-Kate::TextLine KTextEditor::DocumentPrivate::kateTextLine(uint i)
+Kate::TextLine KTextEditor::DocumentPrivate::kateTextLine(int i)
 {
     m_buffer->ensureHighlighted(i);
     return m_buffer->plainLine(i);
 }
 
-Kate::TextLine KTextEditor::DocumentPrivate::plainKateTextLine(uint i)
+Kate::TextLine KTextEditor::DocumentPrivate::plainKateTextLine(int i)
 {
     return m_buffer->plainLine(i);
 }

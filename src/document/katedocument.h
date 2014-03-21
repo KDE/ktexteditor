@@ -72,9 +72,12 @@ class KateDocumentTest;
 
 class KateAutoIndent;
 
-//
-// Kate KTextEditor::Document class (and even KTextEditor::Editor ;)
-//
+/**
+ * @brief Backend of KTextEditor::Document related public KTextEditor interfaces.
+ *
+ * @warning This file is @e private API and not part of the public
+ *          KTextEditor interfaces.
+ */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
     public KTextEditor::SearchInterface,
     public KTextEditor::MarkInterface,
@@ -386,14 +389,12 @@ public:
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
-     *
      */
     virtual QString mode() const;
 
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
-     *
      */
     virtual QString highlightingMode() const;
 
@@ -929,8 +930,14 @@ public:
 
     // code folding
 public:
-    Kate::TextLine kateTextLine(uint i);
-    Kate::TextLine plainKateTextLine(uint i);
+    /**
+     * Same as plainKateTextLine(), except that it is made sure
+     * the line is highlighted.
+     */
+    Kate::TextLine kateTextLine(int i);
+
+    //! @copydoc KateBuffer::plainLine()
+    Kate::TextLine plainKateTextLine(int i);
 
 Q_SIGNALS:
     void aboutToRemoveText(const KTextEditor::Range &);
