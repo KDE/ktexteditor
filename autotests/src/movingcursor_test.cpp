@@ -29,17 +29,6 @@ using namespace KTextEditor;
 
 QTEST_MAIN(MovingCursorTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                    + ", " + QByteArray::number(cursor.column()) + "]";
-    return qstrdup(ba.data());
-}
-}
-
 MovingCursorTest::MovingCursorTest()
     : QObject()
 {

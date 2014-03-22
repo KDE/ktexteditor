@@ -33,17 +33,6 @@ using namespace KTextEditor;
 
 QTEST_MAIN(KateViewTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                    + ", " + QByteArray::number(cursor.column()) + "]";
-    return qstrdup(ba.data());
-}
-}
-
 KateViewTest::KateViewTest()
     : QObject()
 {

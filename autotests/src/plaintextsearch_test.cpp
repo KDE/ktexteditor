@@ -29,19 +29,6 @@ Q_DECLARE_METATYPE(KTextEditor::Range)
 
 QTEST_MAIN(PlainTextSearchTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Range &range)
-{
-    QByteArray ba = "Range[";
-    ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + ", ";
-    ba += QByteArray::number(range.end().line())   + ", " + QByteArray::number(range.end().column());
-    ba += "]";
-    return qstrdup(ba.data());
-}
-}
-
 QtMessageHandler PlainTextSearchTest::s_msgHandler = 0;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)

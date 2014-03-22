@@ -578,5 +578,16 @@ inline uint qHash(const KTextEditor::Range& range)
     return qHash(range.start()) + qHash(range.end()) * 41;
 }
 
-#endif
+namespace QTest
+{
+    // forward declaration of template in qtestcase.h
+    template<typename T> char* toString(const T&);
 
+    /**
+     * QTestLib integration to have nice output in e.g. QCOMPARE failures.
+     */
+    template<>
+    KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
+}
+
+#endif

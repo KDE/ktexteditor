@@ -29,19 +29,6 @@ Q_DECLARE_METATYPE(KTextEditor::Range)
 
 QTEST_MAIN(RegExpSearchTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Range &range)
-{
-    QByteArray ba = "Range[";
-    ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + ", ";
-    ba += QByteArray::number(range.end().line())   + ", " + QByteArray::number(range.end().column());
-    ba += "]";
-    return qstrdup(ba.data());
-}
-}
-
 #define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
 
 using namespace KTextEditor;

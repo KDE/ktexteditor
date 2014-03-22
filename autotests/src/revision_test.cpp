@@ -31,27 +31,6 @@ using namespace KTextEditor;
 
 QTEST_MAIN(RevisionTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                    + ", " + QByteArray::number(cursor.column()) + "]";
-    return qstrdup(ba.data());
-}
-
-template<>
-char *toString(const KTextEditor::Range &range)
-{
-    QByteArray ba = "Range[" + QByteArray::number(range.start().line())
-                    + ", " + QByteArray::number(range.start().column()) + " - "
-                    + QByteArray::number(range.end().line())
-                    + ", " + QByteArray::number(range.end().column()) + "]";
-    return qstrdup(ba.data());
-}
-}
-
 RevisionTest::RevisionTest()
     : QObject()
 {

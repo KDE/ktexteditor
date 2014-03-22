@@ -340,5 +340,17 @@ inline uint qHash(const KTextEditor::Cursor& cursor)
     return cursor.line() * 53 + cursor.column() * 47;
 }
 
+namespace QTest
+{
+    // forward declaration of template in qtestcase.h
+    template<typename T> char* toString(const T&);
+
+    /**
+     * QTestLib integration to have nice output in e.g. QCOMPARE failures.
+     */
+    template<>
+    char *toString(const KTextEditor::Cursor &cursor);
+}
+
 #endif
 

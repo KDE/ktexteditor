@@ -29,18 +29,6 @@ Q_DECLARE_METATYPE(KTextEditor::Cursor)
 
 QTEST_MAIN(ScriptDocumentTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[";
-    ba += QByteArray::number(cursor.line()) + ", " + QByteArray::number(cursor.column());
-    ba += "]";
-    return qstrdup(ba.data());
-}
-}
-
 QtMessageHandler ScriptDocumentTest::s_msgHandler = 0;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)

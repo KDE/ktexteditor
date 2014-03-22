@@ -44,17 +44,6 @@ using namespace KTextEditor;
 
 QTEST_MAIN(KateDocumentTest)
 
-namespace QTest
-{
-template<>
-char *toString(const KTextEditor::Cursor &cursor)
-{
-    QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                    + ", " + QByteArray::number(cursor.column()) + "]";
-    return qstrdup(ba.data());
-}
-}
-
 class MovingRangeInvalidator : public QObject
 {
     Q_OBJECT
