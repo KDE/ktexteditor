@@ -223,14 +223,14 @@ Command::~Command()
         static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->unregisterCommand (this);
 }
 
-KCompletion *Command::completionObject(KTextEditor::View *, const QString &)
-{
-    return nullptr;
-}
-
 bool Command::supportsRange(const QString &)
 {
     return false;
+}
+
+KCompletion *Command::completionObject(KTextEditor::View *, const QString &)
+{
+    return nullptr;
 }
 
 bool Command::wantsToProcessText(const QString &)
