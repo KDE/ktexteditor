@@ -40,26 +40,28 @@ class Document;
  * @section message_intro Introduction
  *
  * The Message class holds the data used to display interactive message widgets
- * in the editor. To post a message, use the postMessage of the document.
- * Example:
+ * in the editor. Use the Document::postMessage() to post a message as follows:
  *
+ * @code
  * // always use a QPointer go guard your Message, if you keep a pointer
  * // after calling postMessage()
- * QPointer<Message> message = new Message("text", Message::Information);
+ * QPointer<KTextEditor::Message> message =
+ *     new KTextEditor::Message("text", KTextEditor::Message::Information);
  * message->setWordWrap(true);
  * message->addAction(...); // add your actions...
- * iface->postMessage(message);
+ * document->postMessage(message);
+ * @endcode
  *
- * // The Message is deleted automatically if the Message gets closed,
- * // meaning that you usually can forget the pointer.
- * // If you really need to delete a message before the user processed it,
- * // guard it with a QPointer!
+ * A Message is deleted automatically if the Message gets closed, meaning that
+ * you usually can forget the pointer. If you really need to delete a message
+ * before the user processed it, always guard it with a QPointer!
  *
  * @section message_creation Message Creation and Deletion
  *
  * To create a new Message, use code like this:
  * @code
- * QPointer<Message> message = new Message("My information text", Message::Information);
+ * QPointer<KTextEditor::Message> message =
+ *     new KTextEditor::Message("My information text", KTextEditor::Message::Information);
  * message->setWordWrap(true);
  * // ...
  * @endcode
@@ -67,7 +69,7 @@ class Document;
  * Although discouraged in general, the text of the Message can be changed
  * on the fly when it is already visible with setText().
  *
- * Once you posted the Message through MessageInterface::postMessage(), the
+ * Once you posted the Message through Document::postMessage(), the
  * lifetime depends on the user interaction. The Message gets automatically
  * deleted either if the user clicks a closing action in the message, or for
  * instance if the document is reloaded.
@@ -98,7 +100,6 @@ class Document;
  * The default autohide mode is set to AutoHideMode::AfterUserInteraction.
  * This way, it is unlikely the user misses a notification.
  *
- * @see MessageInterface
  * @author Dominik Haumann \<dhaumann@kde.org\>
  * @since KDE 4.11
  */
@@ -285,9 +286,9 @@ public:
     /**
      * Set the document pointer to @p document.
      * This is called by the implementation, as soon as you post a message
-     * through MessageInterface::postMessage(), so that you do not have to
+     * through Document::postMessage(), so that you do not have to
      * call this yourself.
-     * @see MessageInterface, document()
+     * @see document()
      */
     void setDocument(KTextEditor::Document *document);
 
@@ -312,7 +313,7 @@ public:
 public Q_SLOTS:
     /**
      * Sets the notification contents to @p text.
-     * If the message was already sent through MessageInterface::postMessage(),
+     * If the message was already sent through Document::postMessage(),
      * the displayed text changes on the fly.
      * @note Change text on the fly with care, since changing the text may
      *       resize the notification widget, which may result in a distracting
@@ -342,7 +343,7 @@ Q_SIGNALS:
 
     /**
      * This signal is emitted whenever setText() is called.
-     * If the message was already sent through MessageInterface::postMessage(),
+     * If the message was already sent through Document::postMessage(),
      * the displayed text changes on the fly.
      * @note Change text on the fly with care, since changing the text may
      *       resize the notification widget, which may result in a distracting
@@ -355,7 +356,7 @@ Q_SIGNALS:
 
     /**
      * This signal is emitted whenever setIcon() is called.
-     * If the message was already sent through MessageInterface::postMessage(),
+     * If the message was already sent through Document::postMessage(),
      * the displayed icon changes on the fly.
      * @note Change the icon on the fly with care, since changing the text may
      *       resize the notification widget, which may result in a distracting

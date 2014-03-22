@@ -102,6 +102,17 @@ class View;
  * to read-only mode or to read/write mode. The read-only mode can be controlled
  * with setReadWrite().
  *
+ * \section doc_notifications Notifications in Documents and Views
+ *
+ * A Document has the ability to show a Message to the user in a View.
+ * The Message then is shown either the specified View if Message::setView()
+ * was called, or in all View%s of the Document.
+ *
+ * To post a message just create a new Message and send it with postMessage().
+ * Further information is available in the API documentation of Message.
+ *
+ * @see Message
+ *
  * \section doc_extensions Document Extension Interfaces
  *
  * A simple document represents text and provides text manipulation methods.
@@ -114,9 +125,8 @@ class View;
  * \ref kte_group_doc_extensions.
  *
  * \see KParts::ReadWritePart, KTextEditor::Editor, KTextEditor::View,
- *      KTextEditor::MarkInterface,
- *      KTextEditor::ModificationInterface,
- *      KTextEditor::SessionConfigInterface, KTextEditor::MovingInterface
+ *      KTextEditor::MarkInterface, KTextEditor::ModificationInterface,
+ *      KTextEditor::MovingInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Document : public KParts::ReadWritePart
