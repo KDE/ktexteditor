@@ -23,7 +23,7 @@
 
 #include <ktexteditor_export.h>
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 
 #include <KCompletion>
 

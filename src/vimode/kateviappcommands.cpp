@@ -35,10 +35,12 @@
 KateViAppCommands *KateViAppCommands::m_instance = 0;
 
 KateViAppCommands::KateViAppCommands()
-    : KTextEditor::Command()
+    : KTextEditor::Command(QStringList() << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
+          << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
+          << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
+          << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
+          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose"))
 {
-    KTextEditor::Editor::instance()->registerCommand(this);
-
     re_write.setPattern(QLatin1String("w(a)?"));
     re_close.setPattern(QLatin1String("bd(elete)?|tabc(lose)?"));
     re_quit.setPattern(QLatin1String("(w)?q(a|all)?(!)?"));
@@ -52,24 +54,7 @@ KateViAppCommands::KateViAppCommands()
 
 KateViAppCommands::~KateViAppCommands()
 {
-    KTextEditor::Editor::instance()->unregisterCommand(this);
-
     m_instance = 0;
-}
-
-const QStringList &KateViAppCommands::cmds()
-{
-    static QStringList l;
-
-    if (l.empty()) {
-        l << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
-          << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
-          << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
-          << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
-          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose");
-    }
-
-    return l;
 }
 
 bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
@@ -298,31 +283,18 @@ void KateViAppCommands::quit()
 KateViBufferCommands *KateViBufferCommands::m_instance = 0;
 
 KateViBufferCommands::KateViBufferCommands()
-    : KTextEditor::Command()
+    : KTextEditor::Command(QStringList() << QLatin1String("ls")
+           << QLatin1String("b") << QLatin1String("buffer")
+           << QLatin1String("bn") << QLatin1String("bnext") << QLatin1String("bp") << QLatin1String("bprevious")
+           << QLatin1String("tabn") << QLatin1String("tabnext") << QLatin1String("tabp") << QLatin1String("tabprevious")
+           << QLatin1String("bf") << QLatin1String("bfirst") << QLatin1String("bl") << QLatin1String("blast")
+           << QLatin1String("tabf") << QLatin1String("tabfirst") << QLatin1String("tabl") << QLatin1String("tablast"))
 {
 }
 
 KateViBufferCommands::~KateViBufferCommands()
 {
-    KTextEditor::Editor::instance()->unregisterCommand(this);
-
     m_instance = 0;
-}
-
-const QStringList &KateViBufferCommands::cmds()
-{
-    static QStringList sl;
-
-    if (sl.empty()) {
-        sl << QLatin1String("ls")
-           << QLatin1String("b") << QLatin1String("buffer")
-           << QLatin1String("bn") << QLatin1String("bnext") << QLatin1String("bp") << QLatin1String("bprevious")
-           << QLatin1String("tabn") << QLatin1String("tabnext") << QLatin1String("tabp") << QLatin1String("tabprevious")
-           << QLatin1String("bf") << QLatin1String("bfirst") << QLatin1String("bl") << QLatin1String("blast")
-           << QLatin1String("tabf") << QLatin1String("tabfirst") << QLatin1String("tabl") << QLatin1String("tablast");
-    }
-
-    return sl;
 }
 
 bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)

@@ -225,26 +225,6 @@ public:
 
 public:
     /**
-     * Register a the new command \p cmd. The command will be registered for
-     * all documents, i.e. every command is global.
-     *
-     * \param cmd command to register
-     * \return \e true on success, otherwise \e false
-     * \see unregisterCommand()
-     */
-    virtual bool registerCommand(Command *cmd) = 0;
-
-    /**
-     * Unregister the command \p cmd. The command will be unregistered for
-     * all documents.
-     *
-     * \param cmd command to unregister
-     * \return \e true on success, otherwise \e false
-     * \see registerCommand()
-     */
-    virtual bool unregisterCommand(Command *cmd) = 0;
-
-    /**
      * Query for the command \p cmd.
      * If the command \p cmd does not exist the return value is NULL.
      *

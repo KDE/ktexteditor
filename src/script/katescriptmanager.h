@@ -21,7 +21,7 @@
 #ifndef KATE_SCRIPT_MANAGER_H
 #define KATE_SCRIPT_MANAGER_H
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 #include <ktexteditor/cursor.h>
 
 #include <QVector>
@@ -82,12 +82,6 @@ public:
      * @return help available or not
      */
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds();
 
     static KateScriptManager *self()
     {

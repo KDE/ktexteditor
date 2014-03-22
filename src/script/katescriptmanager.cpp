@@ -40,17 +40,15 @@
 
 KateScriptManager *KateScriptManager::m_instance = 0;
 
-KateScriptManager::KateScriptManager() : KTextEditor::Command()
+KateScriptManager::KateScriptManager()
+    : KTextEditor::Command(QStringList() << QLatin1String("reload-scripts"))
 {
-    KateCmd::self()->registerCommand(this);
-
     // use cached info
     collect();
 }
 
 KateScriptManager::~KateScriptManager()
 {
-    KateCmd::self()->unregisterCommand(this);
     qDeleteAll(m_indentationScripts);
     qDeleteAll(m_commandLineScripts);
     m_instance = 0;
@@ -367,16 +365,6 @@ bool KateScriptManager::help(KTextEditor::View *view, const QString &cmd, QStrin
         msg = i18n("Command not found: %1", cmd);
         return false;
     }
-}
-
-const QStringList &KateScriptManager::cmds()
-{
-    static QStringList l;
-
-    l.clear();
-    l << QLatin1String("reload-scripts");
-
-    return l;
 }
 
 KTextEditor::TemplateScript *KateScriptManager::registerTemplateScript(QObject *owner, const QString &script)

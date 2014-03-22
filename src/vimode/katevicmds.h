@@ -23,7 +23,7 @@
 #ifndef __KATE_VI_CMDS_H__
 #define __KATE_VI_CMDS_H__
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 #include "kateviglobal.h"
 #include "kateregexpsearch.h"
 #include <katesedcmd.h>
@@ -42,69 +42,18 @@ namespace KateViCommands
 {
 
 /**
- * This KTextEditor::Command provides access to a lot of the core functionality
- * of kate part, settings, utilities, navigation etc.
- * it needs to get a kateview pointer, it will cast the kate::view pointer
- * hard to kateview
- */
-class CoreCommands
-    : public KTextEditor::Command
-    , public KateViCommandInterface
-{
-    CoreCommands() { }
-    static CoreCommands *m_instance;
-
-public:
-    ~CoreCommands()
-    {
-        m_instance = 0;
-    }
-
-    /**
-     * execute command on given range
-     * @param view view to use for execution
-     * @param cmd cmd string
-     * @param errorMsg error to return if no success
-     * @param rangeStart first line in range
-     * @param rangeEnd last line in range
-     * @return success
-     */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
-
-    bool supportsRange(const QString &range);
-
-    /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &);
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds();
-
-    /**
-     * Reimplement from KTextEditor::Command
-     */
-    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
-
-    static CoreCommands *self()
-    {
-        if (m_instance == 0) {
-            m_instance = new CoreCommands();
-        }
-        return m_instance;
-    }
-};
-
-/**
  * This KTextEditor::Command provides vi 'ex' commands
  */
 class ViCommands
     : public KTextEditor::Command
     , public KateViCommandInterface
 {
-    ViCommands() { }
+    ViCommands()
+        : KTextEditor::Command (QStringList() << mappingCommands() << QLatin1String("d") << QLatin1String("delete") << QLatin1String("j") << QLatin1String("c") << QLatin1String("change") << QLatin1String("<") << QLatin1String(">") << QLatin1String("y") << QLatin1String("yank") <<
+          QLatin1String("ma") << QLatin1String("mark") << QLatin1String("k"))
+    {
+        
+    }
     static ViCommands *m_instance;
 
 public:
@@ -132,12 +81,6 @@ public:
     {
         return false;
     }
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds();
 
     /**
      * Reimplement from KTextEditor::Command
@@ -183,12 +126,6 @@ public:
 
     /** Help for AppCommands */
     bool help(class KTextEditor::View *, const QString &, QString &);
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds();
 
     static AppCommands *self()
     {

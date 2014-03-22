@@ -24,7 +24,7 @@
 #include "katescript.h"
 #include "kateview.h"
 
-#include <KTextEditor/CommandInterface>
+#include <KTextEditor/Command>
 
 class KateCommandLineScriptHeader
 {
@@ -133,7 +133,6 @@ public:
     // KTextEditor::Command interface
     //
 public:
-    virtual const QStringList &cmds();
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool supportsRange(const QString &cmd);

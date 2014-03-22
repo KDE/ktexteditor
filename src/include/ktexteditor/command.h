@@ -19,8 +19,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef KDELIBS_KTEXTEDITOR_COMMANDINTERFACE_H
-#define KDELIBS_KTEXTEDITOR_COMMANDINTERFACE_H
+#ifndef KDELIBS_KTEXTEDITOR_COMMAND_H
+#define KDELIBS_KTEXTEDITOR_COMMAND_H
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/range.h>
@@ -32,7 +32,6 @@ class KCompletion;
 namespace KTextEditor
 {
 
-class Editor;
 class View;
 
 /**
@@ -41,8 +40,8 @@ class View;
  * \section cmd_intro Introduction
  *
  * The Command class represents a command for the editor command line. A
- * command simply consists of a string, for example \e find. To register a
- * command use CommandInterface::registerCommand(). The Editor itself queries
+ * command simply consists of a string, for example \e find. The command
+ * auto-registers itself at the Editor. The Editor itself queries
  * the command for a list of accepted strings/commands by calling cmds().
  * If the command gets invoked the function exec() is called, i.e. you have
  * to implement the \e reaction in exec(). Whenever the user needs help for
@@ -90,24 +89,30 @@ class KTEXTEDITOR_EXPORT Command : public QObject
 public:
     /**
      * Constructor with \p parent.
+     * Will register this command for the commands names given in \p cmds at the global editor instance.
      */
-    Command(QObject *parent = nullptr);
+    Command(const QStringList &cmds, QObject *parent = nullptr);
 
     /**
      * Virtual destructor.
+     * Will unregister this command at the global editor instance.
      */
     virtual ~Command();
 
 public:
     /**
      * Return a list of strings a command may begin with.
+     * This is the same list the command was constructed with.
      * A string is the start part of a pure text which can be handled by this
      * command, i.e. for the command s/sdl/sdf/g the corresponding string is
      * simply \e s, and for char:1212 simply \e char.
      * \return list of supported commands
      */
-    virtual const QStringList &cmds() = 0;
-
+    inline const QStringList &cmds() const
+    {
+        return m_cmds;
+    }
+    
     /**
      * Find out if a given command can act on a range. This is used for checking
      * if a command should be called when the user also gave a range or if an
@@ -189,7 +194,15 @@ public:
     virtual void processText(KTextEditor::View *view, const QString &text);
 
 private:
-    class CommandPrivate *const d;
+    /**
+     * the command list this command got constructed with
+     */
+    const QStringList m_cmds;
+    
+    /**
+     * Private d-pointer
+     */
+    class CommandPrivate * const d;
 };
 
 }

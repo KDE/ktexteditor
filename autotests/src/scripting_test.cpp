@@ -28,7 +28,7 @@
 #include "kateconfig.h"
 #include "katecmd.h"
 #include "kateglobal.h"
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 
 #include <kconfig.h>
 #include <kconfiggroup.h>

@@ -21,7 +21,7 @@
 #ifndef VIMODE_APP_COMMANDS_INCLUDED
 #define VIMODE_APP_COMMANDS_INCLUDED
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 #include <QObject>
 
 class KateViAppCommands : public KTextEditor::Command
@@ -33,7 +33,6 @@ class KateViAppCommands : public KTextEditor::Command
 
 public:
     virtual ~KateViAppCommands();
-    virtual const QStringList &cmds();
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 
@@ -69,7 +68,6 @@ class KateViBufferCommands : public KTextEditor::Command
 
 public:
     virtual ~KateViBufferCommands();
-    virtual const QStringList& cmds();
     virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 

@@ -23,7 +23,7 @@
 #ifndef __KATE_CMDS_H__
 #define __KATE_CMDS_H__
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 
 #include <QStringList>
 
@@ -44,7 +44,20 @@ namespace KateCommands
  */
 class CoreCommands : public KTextEditor::Command
 {
-    CoreCommands() { }
+    CoreCommands()
+        : KTextEditor::Command(QStringList() << QLatin1String("indent") << QLatin1String("unindent") << QLatin1String("cleanindent") << QLatin1String("fold") << QLatin1String("tfold") << QLatin1String("unfold")
+          << QLatin1String("comment") << QLatin1String("uncomment") << QLatin1String("goto") << QLatin1String("kill-line")
+          << QLatin1String("set-tab-width") << QLatin1String("set-replace-tabs") << QLatin1String("set-show-tabs")
+          << QLatin1String("set-indent-width")
+          << QLatin1String("set-indent-mode") << QLatin1String("set-auto-indent")
+          << QLatin1String("set-line-numbers") << QLatin1String("set-folding-markers") << QLatin1String("set-icon-border")
+          << QLatin1String("set-indent-pasted-text") << QLatin1String("set-word-wrap") << QLatin1String("set-word-wrap-column")
+          << QLatin1String("set-replace-tabs-save") << QLatin1String("set-remove-trailing-spaces")
+          << QLatin1String("set-highlight") << QLatin1String("set-mode") << QLatin1String("set-show-indent")
+          << QLatin1String("print"))
+    {
+    }
+    
     static CoreCommands *m_instance;
 
 public:
@@ -79,12 +92,6 @@ public:
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &);
 
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds();
-
     /** override from KTextEditor::Command */
     KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
 
@@ -107,7 +114,11 @@ public:
  **/
 class Character : public KTextEditor::Command
 {
-    Character() { }
+    Character()
+        : KTextEditor::Command(QStringList() << QLatin1String("char"))
+    {
+    }
+
     static Character *m_instance;
 
 public:
@@ -129,16 +140,6 @@ public:
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &);
 
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds()
-    {
-        static QStringList test(QString::fromLatin1("char"));
-        return test;
-    }
-
     static Character *self()
     {
         if (m_instance == 0) {
@@ -153,7 +154,11 @@ public:
  */
 class Date : public KTextEditor::Command
 {
-    Date() { }
+    Date()
+        : KTextEditor::Command(QStringList() << QLatin1String("date"))
+    {
+    }
+
     static Date *m_instance;
 
 public:
@@ -174,16 +179,6 @@ public:
 
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &);
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds()
-    {
-        static QStringList test(QString::fromLatin1("date"));
-        return test;
-    }
 
     static Date *self()
     {

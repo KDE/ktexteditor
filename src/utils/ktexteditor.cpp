@@ -32,7 +32,7 @@
 #include "plugin.h"
 
 #include "recoveryinterface.h"
-#include "commandinterface.h"
+#include "command.h"
 #include "markinterface.h"
 #include "modificationinterface.h"
 #include "searchinterface.h"
@@ -44,6 +44,7 @@
 
 #include "kateglobal.h"
 #include "kateconfig.h"
+#include "katecmd.h"
 
 using namespace KTextEditor;
 
@@ -206,14 +207,20 @@ RecoveryInterface::~RecoveryInterface()
 {
 }
 
-Command::Command(QObject *parent)
+Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)
+    , m_cmds (cmds)
     , d(nullptr)
 {
+    // register this command
+    static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->registerCommand (this);
 }
 
 Command::~Command()
 {
+    // unregister this command, if instance is still there!
+    if (KTextEditor::Editor::instance())
+        static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->unregisterCommand (this);
 }
 
 KCompletion *Command::completionObject(KTextEditor::View *, const QString &)

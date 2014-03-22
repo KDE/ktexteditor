@@ -23,7 +23,7 @@
 #ifndef __KATE_SED_CMD_H__
 #define __KATE_SED_CMD_H__
 
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 #include "kateregexpsearch.h"
 
 #include <QStringList>
@@ -50,7 +50,9 @@ class SedReplace : public KTextEditor::Command
     static SedReplace *m_instance;
 
 protected:
-    SedReplace() { }
+    SedReplace() : KTextEditor::Command(QStringList() << QLatin1String("s") << QLatin1String("%s") << QLatin1String("$s"))
+    {
+    }
 
 public:
     ~SedReplace()
@@ -85,18 +87,6 @@ public:
     bool help(class KTextEditor::View *, const QString &, QString &)
     {
         return false;
-    }
-
-    /**
-     * supported commands as prefixes
-     * @return prefix list
-     */
-    const QStringList &cmds()
-    {
-        static QStringList l(QString::fromLatin1("s"));
-        if (l.isEmpty()) {
-            l << QLatin1String("%s") << QLatin1String("$s");
-        } return l;
     }
 
     static SedReplace *self()

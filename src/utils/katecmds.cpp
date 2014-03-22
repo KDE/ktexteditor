@@ -58,25 +58,6 @@ static bool getBoolArg(const QString &t, bool *val)
     return false;
 }
 
-const QStringList &KateCommands::CoreCommands::cmds()
-{
-    static QStringList l;
-
-    if (l.isEmpty())
-        l << QLatin1String("indent") << QLatin1String("unindent") << QLatin1String("cleanindent") << QLatin1String("fold") << QLatin1String("tfold") << QLatin1String("unfold")
-          << QLatin1String("comment") << QLatin1String("uncomment") << QLatin1String("goto") << QLatin1String("kill-line")
-          << QLatin1String("set-tab-width") << QLatin1String("set-replace-tabs") << QLatin1String("set-show-tabs")
-          << QLatin1String("set-indent-width")
-          << QLatin1String("set-indent-mode") << QLatin1String("set-auto-indent")
-          << QLatin1String("set-line-numbers") << QLatin1String("set-folding-markers") << QLatin1String("set-icon-border")
-          << QLatin1String("set-indent-pasted-text") << QLatin1String("set-word-wrap") << QLatin1String("set-word-wrap-column")
-          << QLatin1String("set-replace-tabs-save") << QLatin1String("set-remove-trailing-spaces")
-          << QLatin1String("set-highlight") << QLatin1String("set-mode") << QLatin1String("set-show-indent")
-          << QLatin1String("print");
-
-    return l;
-}
-
 bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, QString &msg)
 {
     QString realcmd = cmd.trimmed();

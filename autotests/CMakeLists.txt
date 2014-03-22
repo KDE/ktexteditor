@@ -7,8 +7,13 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
 include_directories(
+  # for config.h
   ${CMAKE_BINARY_DIR}
-  ${CMAKE_BINARY_DIR}/src/include/KTextEditor
+  
+  # for generated ktexteditor headers
+  ${CMAKE_BINARY_DIR}/src/include
+  
+  # for normal sources
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/include
   ${CMAKE_SOURCE_DIR}/src/buffer

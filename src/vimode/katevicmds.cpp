@@ -40,17 +40,6 @@
 //BEGIN ViCommands
 KateViCommands::ViCommands *KateViCommands::ViCommands::m_instance = 0;
 
-const QStringList &KateViCommands::ViCommands::cmds()
-{
-    static QStringList l;
-
-    if (l.isEmpty())
-        l << mappingCommands() << QLatin1String("d") << QLatin1String("delete") << QLatin1String("j") << QLatin1String("c") << QLatin1String("change") << QLatin1String("<") << QLatin1String(">") << QLatin1String("y") << QLatin1String("yank") <<
-          QLatin1String("ma") << QLatin1String("mark") << QLatin1String("k");
-
-    return l;
-}
-
 bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
                                     const QString &_cmd,
                                     QString &msg,
@@ -278,7 +267,7 @@ bool KateViCommands::ViCommands::isMapCommandRecursive(const QString &mapCommand
 KateViCommands::AppCommands *KateViCommands::AppCommands::m_instance = 0;
 
 KateViCommands::AppCommands::AppCommands()
-    : KTextEditor::Command()
+    : KTextEditor::Command(QStringList() << QLatin1String("w"))
 {
     re_write.setPattern(QLatin1String("w")); // temporarily add :w
     //re_write.setPattern("w(a)?");
@@ -287,19 +276,6 @@ KateViCommands::AppCommands::AppCommands()
     //re_changeBuffer.setPattern("b(n|p)");
     //re_edit.setPattern("e(dit)?");
     //re_new.setPattern("(v)?new");
-}
-
-const QStringList &KateViCommands::AppCommands::cmds()
-{
-    static QStringList l;
-
-    if (l.empty()) {
-        //l << "q" << "qa" << "w" << "wq" << "wa" << "wqa" << "x" << "xa"
-        //<< "bn" << "bp" << "new" << "vnew" << "e" << "edit" << "enew";
-        l << QLatin1String("w");
-    }
-
-    return l;
 }
 
 // commands that don't need to live in the hosting application should be

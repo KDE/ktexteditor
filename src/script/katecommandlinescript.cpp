@@ -33,14 +33,13 @@
 
 KateCommandLineScript::KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header)
     : KateScript(url)
+    , KTextEditor::Command(header.functions())
     , m_commandHeader(header)
 {
-    KateCmd::self()->registerCommand(this);
 }
 
 KateCommandLineScript::~KateCommandLineScript()
 {
-    KateCmd::self()->unregisterCommand(this);
 }
 
 const KateCommandLineScriptHeader &KateCommandLineScript::commandHeader()
@@ -102,11 +101,6 @@ ScriptActionInfo KateCommandLineScript::actionInfo(const QString &cmd)
     info.setShortcut(result.property(QLatin1String("shortcut")).toString());
 
     return info;
-}
-
-const QStringList &KateCommandLineScript::cmds()
-{
-    return m_commandHeader.functions();
 }
 
 bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,

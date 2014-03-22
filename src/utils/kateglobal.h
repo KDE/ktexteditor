@@ -32,7 +32,7 @@
 #include <KSharedConfig>
 
 #include <ktexteditor/application.h>
-#include <ktexteditor/commandinterface.h>
+#include <KTextEditor/Command>
 #include <draft/templateinterface2.h>
 
 #include <QList>
@@ -336,22 +336,6 @@ public:
     {
         return m_wordCompletionModel;
     }
-
-    /**
-     * register given command
-     * this works global, for all documents
-     * @param cmd command to register
-     * @return success
-     */
-    bool registerCommand(KTextEditor::Command *cmd);
-
-    /**
-     * unregister given command
-     * this works global, for all documents
-     * @param cmd command to unregister
-     * @return success
-     */
-    bool unregisterCommand(KTextEditor::Command *cmd);
 
     /**
      * query for command

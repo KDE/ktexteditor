@@ -194,10 +194,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_cmds.push_back(KateCommands::Date::self());
     m_cmds.push_back(KateCommands::SedReplace::self());
 
-    for (QList<KTextEditor::Command *>::iterator it = m_cmds.begin(); it != m_cmds.end(); ++it) {
-        m_cmdManager->registerCommand(*it);
-    }
-
     // global word completion model
     m_wordCompletionModel = new KateWordCompletionModel(this);
 
@@ -220,18 +216,18 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
     delete m_dirWatch;
 
-    // you too
-    qDeleteAll(m_cmds);
-
     // cu managers
     delete m_scriptManager;
     delete m_hlManager;
-    delete m_cmdManager;
 
     delete m_spellCheckManager;
 
     // cu model
     delete m_wordCompletionModel;
+
+    // delete the commands before we delete the cmd manager
+    qDeleteAll(m_cmds);
+    delete m_cmdManager;
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
@@ -389,17 +385,6 @@ void KTextEditor::EditorPrivate::deregisterView(KTextEditor::ViewPrivate *view)
     m_views.remove(view);
 }
 
-//BEGIN command interface
-bool KTextEditor::EditorPrivate::registerCommand(KTextEditor::Command *cmd)
-{
-    return m_cmdManager->registerCommand(cmd);
-}
-
-bool KTextEditor::EditorPrivate::unregisterCommand(KTextEditor::Command *cmd)
-{
-    return m_cmdManager->unregisterCommand(cmd);
-}
-
 KTextEditor::Command *KTextEditor::EditorPrivate::queryCommand(const QString &cmd) const
 {
     return m_cmdManager->queryCommand(cmd);
@@ -414,7 +399,6 @@ QStringList KTextEditor::EditorPrivate::commandList() const
 {
     return m_cmdManager->commandList();
 }
-//END command interface
 
 KTextEditor::TemplateScript *KTextEditor::EditorPrivate::registerTemplateScript(QObject *owner, const QString &script)
 {
