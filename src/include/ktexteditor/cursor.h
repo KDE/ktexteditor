@@ -335,9 +335,9 @@ Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_MOVABLE_TYPE);
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-KTEXTEDITOR_EXPORT inline uint qHash(const KTextEditor::Cursor& cursor)
+inline uint qHash(const KTextEditor::Cursor& cursor, uint seed = 0) Q_DECL_NOTHROW
 {
-    return cursor.line() * 53 + cursor.column() * 47;
+    return qHash(qMakePair(cursor.line(), cursor.column()), seed);
 }
 
 namespace QTest
