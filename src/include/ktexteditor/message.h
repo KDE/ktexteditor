@@ -370,50 +370,6 @@ private:
     class MessagePrivate *const d;
 };
 
-/**
- * \brief Message interface for posting interactive Message%s to a Document and its View%s.
- *
- * \ingroup kte_group_doc_extensions
- *
- * This interface allows to post Message%s to a Document. The Message then
- * is shown either the specified View if Message::setView() was called, or
- * in all View%s of the Document.
- *
- * \section message_interface Working with Messages
- *
- * To post a message, you first have to cast the Document to this interface,
- * and then create a Message. Example:
- * \code
- * // doc is of type KTextEditor::Document*
- * KTextEditor::MessageInterface *iface =
- *     qobject_cast<KTextEditor::MessageInterface*>( doc );
- *
- * if( !iface ) {
- *     // the implementation does not support the interface
- *     return;
- * }
- * \endcode
- *
- * @see Message
- * @author Dominik Haumann \<dhaumann@kde.org\>
- * @since KDE 4.11
- */
-class KTEXTEDITOR_EXPORT MessageInterface
-{
-public:
-    /**
-     * Default constructor, for internal use.
-     */
-    MessageInterface();
-    /**
-     * Destructor, for internal use.
-     */
-    virtual ~MessageInterface();
-
-private:
-    class MessageInterfacePrivate *const d;
-};
-
 }
 
 #endif
