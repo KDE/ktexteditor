@@ -18,17 +18,6 @@ KTE::HighlightInterface:
 - evaluate to add color functions:
 - QColor backgroundColor(), selectionColor(), ...
 
-KTextEditor::Cursor: add from KDevelop's SimpleCursor:
-- inline uint qHash(const KDevelop::SimpleCursor& cursor) {
-      return cursor.line * 53 + cursor.column * 47;
-  }
-
-KTE::Range, add from KDevelop's SimpleRange:
-- inline uint qHash(const KDevelop::SimpleRange& range) {
-      return qHash(range.start) + qHash(range.end)*41;
-  }
-
-
 ? add QIcon KTE::Document::documentIcon() const -> considers modified state and all
 ? add QIcon KTE::Document::mimetypeIcon() const ?
 

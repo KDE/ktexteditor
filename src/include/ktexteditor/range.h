@@ -569,5 +569,14 @@ private:
 
 Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_MOVABLE_TYPE);
 
+/**
+ * QHash function for KTextEditor::Range.
+ * Returns the hash value for @p range.
+ */
+inline uint qHash(const KTextEditor::Range& range)
+{
+    return qHash(range.start()) + qHash(range.end()) * 41;
+}
+
 #endif
 
