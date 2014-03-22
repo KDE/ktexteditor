@@ -416,7 +416,5 @@ private:
 
 }
 
-Q_DECLARE_INTERFACE(KTextEditor::MessageInterface, "org.kde.KTextEditor.MessageInterface")
-
 #endif
 
