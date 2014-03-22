@@ -5,9 +5,6 @@ merge kateextendedattribute.h into kte/attribute.h
 - default style (maybe extend default style with dsInvalid)
 - name ???
 
-merge KTE::RangeCommand into KTE::Command?
--> ask Simon and Michal
-
 KTE::HighlightInterface:
 - evaluate to add color functions:
 - QColor backgroundColor(), selectionColor(), ...
