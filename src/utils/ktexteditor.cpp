@@ -206,22 +206,31 @@ RecoveryInterface::~RecoveryInterface()
 {
 }
 
-KCompletion *Command::completionObject(KTextEditor::View *view, const QString &cmdname)
+Command::Command(QObject *parent)
+    : QObject(parent)
+    , d(nullptr)
 {
-    Q_UNUSED(view)
-    Q_UNUSED(cmdname)
+}
 
+Command::~Command()
+{
+}
+
+KCompletion *Command::completionObject(KTextEditor::View *, const QString &)
+{
     return nullptr;
 }
-bool Command::wantsToProcessText(const QString &cmdname)
-{
-    Q_UNUSED(cmdname)
 
+bool Command::supportsRange(const QString &)
+{
     return false;
 }
 
-void Command::processText(KTextEditor::View *view, const QString &text)
+bool Command::wantsToProcessText(const QString &)
 {
-    Q_UNUSED(view)
-    Q_UNUSED(text)
+    return false;
+}
+
+void Command::processText(KTextEditor::View *, const QString &)
+{
 }

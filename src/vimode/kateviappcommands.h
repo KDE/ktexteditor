@@ -24,7 +24,7 @@
 #include <ktexteditor/commandinterface.h>
 #include <QObject>
 
-class KateViAppCommands : public QObject, public KTextEditor::Command
+class KateViAppCommands : public KTextEditor::Command
 {
     Q_OBJECT
 
@@ -34,7 +34,7 @@ class KateViAppCommands : public QObject, public KTextEditor::Command
 public:
     virtual ~KateViAppCommands();
     virtual const QStringList &cmds();
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg);
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 
     static KateViAppCommands* self() {
@@ -60,7 +60,7 @@ private:
     QRegExp re_only;
 };
 
-class KateViBufferCommands : public QObject, public KTextEditor::Command
+class KateViBufferCommands : public KTextEditor::Command
 {
     Q_OBJECT
 
@@ -70,7 +70,7 @@ class KateViBufferCommands : public QObject, public KTextEditor::Command
 public:
     virtual ~KateViBufferCommands();
     virtual const QStringList& cmds();
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg);
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 
     static KateViBufferCommands* self() {

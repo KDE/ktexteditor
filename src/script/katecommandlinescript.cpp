@@ -109,8 +109,12 @@ const QStringList &KateCommandLineScript::cmds()
     return m_commandHeader.functions();
 }
 
-bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg)
+bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,
+                                 const KTextEditor::Range &range)
 {
+    if (range.isValid())
+        view->setSelection(range);
+    
     KShell::Errors errorCode;
     QStringList args(KShell::splitArgs(cmd, KShell::NoOptions, &errorCode));
 
@@ -137,13 +141,6 @@ bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QS
     }
 
     return false;
-}
-
-bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,
-                                 const KTextEditor::Range &range)
-{
-    view->setSelection(range);
-    return exec(view, cmd, msg);
 }
 
 bool KateCommandLineScript::supportsRange(const QString &)

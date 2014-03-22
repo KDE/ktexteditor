@@ -45,7 +45,7 @@ namespace KateCommands
  * Support vim/sed style search and replace
  * @author Charles Samuels <charles@kde.org>
  **/
-class SedReplace : public KTextEditor::Command, public KTextEditor::RangeCommand
+class SedReplace : public KTextEditor::Command
 {
     static SedReplace *m_instance;
 
@@ -73,8 +73,6 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
-
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
               const KTextEditor::Range &r);
 

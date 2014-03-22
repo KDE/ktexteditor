@@ -211,13 +211,6 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
 
 bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
                                       const QString &_cmd,
-                                      QString &errorMsg)
-{
-    return exec(view, _cmd, errorMsg, KTextEditor::Range::invalid());
-}
-
-bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
-                                      const QString &_cmd,
                                       QString &errorMsg,
                                       const KTextEditor::Range &range)
 {
@@ -520,7 +513,7 @@ bool KateCommands::Character::help(class KTextEditor::View *, const QString &cmd
     return false;
 }
 
-bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd, QString &)
+bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd, QString &, const KTextEditor::Range &)
 {
     QString cmd = _cmd;
 
@@ -600,7 +593,7 @@ bool KateCommands::Date::help(class KTextEditor::View *, const QString &cmd, QSt
     return false;
 }
 
-bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QString &)
+bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     if (!cmd.startsWith(QLatin1String("date"))) {
         return false;

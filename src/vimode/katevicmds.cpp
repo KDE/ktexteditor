@@ -53,13 +53,6 @@ const QStringList &KateViCommands::ViCommands::cmds()
 
 bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
                                     const QString &_cmd,
-                                    QString &msg)
-{
-    return exec(view, _cmd, msg, KTextEditor::Range::invalid());
-}
-
-bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
-                                    const QString &_cmd,
                                     QString &msg,
                                     const KTextEditor::Range &range)
 {
@@ -314,7 +307,7 @@ const QStringList &KateViCommands::AppCommands::cmds()
 // done from the editor part and needs to be implemented in the hosting
 // application.
 bool KateViCommands::AppCommands::exec(KTextEditor::View *view,
-                                     const QString &cmd, QString &msg)
+                                     const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
     QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
     QString command(args.takeFirst());

@@ -117,8 +117,7 @@ private:
  * A specialized class for scripts that are of type
  * KateScriptInformation::IndentationScript
  */
-class KateCommandLineScript : public KateScript, public KTextEditor::Command,
-    public KTextEditor::RangeCommand
+class KateCommandLineScript : public KateScript, public KTextEditor::Command
 {
 public:
     KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header);
@@ -136,8 +135,7 @@ public:
 public:
     virtual const QStringList &cmds();
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg);
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range);
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
     virtual bool supportsRange(const QString &cmd);
 
 private:

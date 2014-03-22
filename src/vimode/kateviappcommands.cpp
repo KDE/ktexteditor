@@ -35,8 +35,7 @@
 KateViAppCommands *KateViAppCommands::m_instance = 0;
 
 KateViAppCommands::KateViAppCommands()
-    : QObject()
-    , KTextEditor::Command()
+    : KTextEditor::Command()
 {
     KTextEditor::CommandInterface *iface = qobject_cast<KTextEditor::CommandInterface*>(KTextEditor::Editor::instance());
 
@@ -81,7 +80,7 @@ const QStringList &KateViAppCommands::cmds()
     return l;
 }
 
-bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg)
+bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
     QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
     QString command(args.takeFirst());
@@ -307,7 +306,7 @@ void KateViAppCommands::quit()
 KateViBufferCommands *KateViBufferCommands::m_instance = 0;
 
 KateViBufferCommands::KateViBufferCommands()
-    : QObject(), KTextEditor::Command()
+    : KTextEditor::Command()
 {
 }
 
@@ -338,7 +337,7 @@ const QStringList &KateViBufferCommands::cmds()
     return sl;
 }
 
-bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString & /*msg*/)
+bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     // create list of args
     QStringList args(cmd.split(QLatin1Char(' '), QString::KeepEmptyParts));

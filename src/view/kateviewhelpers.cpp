@@ -965,7 +965,6 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = KateCmd::self()->queryCommand(cmd);
-        KTextEditor::RangeCommand *ce = dynamic_cast<KTextEditor::RangeCommand *>(p);
 
         m_oldText = leadingRangeExpression + cmd;
         m_msgMode = true;
@@ -977,15 +976,13 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
 
         // we got a range and a valid command, but the command does not inherit the RangeCommand
         // extension. bail out.
-        if ((!ce && range.isValid() && p) || (range.isValid() && ce && !ce->supportsRange(cmd))) {
+        if (range.isValid() && !p->supportsRange(cmd)) {
             setText(i18n("Error: No range allowed for command \"%1\".",  cmd));
         } else {
 
             if (p) {
                 QString msg;
-
-                if ((ce && range.isValid() && ce->exec(m_view, cmd, msg, range)) ||
-                        (p->exec(m_view, cmd, msg))) {
+                if (p->exec(m_view, cmd, msg, range)) {
 
                     // append command along with range (will be empty if none given) to history
                     KateCmd::self()->appendHistory(leadingRangeExpression + cmd);

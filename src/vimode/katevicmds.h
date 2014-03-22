@@ -49,7 +49,6 @@ namespace KateViCommands
  */
 class CoreCommands
     : public KTextEditor::Command
-    , public KTextEditor::RangeCommand
     , public KateViCommandInterface
 {
     CoreCommands() { }
@@ -60,15 +59,6 @@ public:
     {
         m_instance = 0;
     }
-
-    /**
-     * execute command
-     * @param view view to use for execution
-     * @param cmd cmd string
-     * @param errorMsg error to return if no success
-     * @return success
-     */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg);
 
     /**
      * execute command on given range
@@ -112,7 +102,6 @@ public:
  */
 class ViCommands
     : public KTextEditor::Command
-    , public KTextEditor::RangeCommand
     , public KateViCommandInterface
 {
     ViCommands() { }
@@ -123,15 +112,6 @@ public:
     {
         m_instance = 0;
     }
-
-    /**
-     * execute command
-     * @param view view to use for execution
-     * @param cmd cmd string
-     * @param msg message returned from running the command
-     * @return success
-     */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg);
 
     /**
      * execute command on given range
@@ -198,7 +178,8 @@ public:
      * @param msg message returned from running the command
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg);
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
 
     /** Help for AppCommands */
     bool help(class KTextEditor::View *, const QString &, QString &);

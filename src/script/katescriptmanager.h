@@ -37,7 +37,7 @@ class QString;
  * Manage the scripts on disks -- find them and query them.
  * Provides access to loaded scripts too.
  */
-class KateScriptManager : public QObject, public KTextEditor::Command
+class KateScriptManager : public KTextEditor::Command
 {
     Q_OBJECT
 
@@ -72,7 +72,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg);
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &);
 
     /**
      * get help for a command

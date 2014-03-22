@@ -80,17 +80,23 @@ class View;
  * The class RangeCommand enables you to support ranges so that you can apply
  * commands on regions of text.
  *
- * \see KTextEditor::CommandInterface, KTextEditor::RangeCommand
+ * \see KTextEditor::CommandInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
- * \note KDE5: derive from QObject, so qobject_cast works for extension interfaces.
  */
-class KTEXTEDITOR_EXPORT Command
+class KTEXTEDITOR_EXPORT Command : public QObject
 {
+    Q_OBJECT
+
 public:
+    /**
+     * Constructor with \p parent.
+     */
+    Command(QObject *parent = nullptr);
+
     /**
      * Virtual destructor.
      */
-    virtual ~Command() {}
+    virtual ~Command();
 
 public:
     /**
@@ -103,16 +109,30 @@ public:
     virtual const QStringList &cmds() = 0;
 
     /**
+     * Find out if a given command can act on a range. This is used for checking
+     * if a command should be called when the user also gave a range or if an
+     * error should be raised.
+     *
+     * \return \e true if command supports acting on a range of lines, false if
+     * not, default implementation returns false
+     */
+    virtual bool supportsRange(const QString &cmd);
+
+    /**
      * Execute the command for the given \p view and \p cmd string.
      * Return the success value and a \p msg for status. As example we
      * consider a replace command. The replace command would return the number
      * of replaced strings as \p msg, like "16 replacements made." If an error
      * occurred in the usage it would return \e false and set the \p msg to
      * something like "missing argument." or such.
+     * 
+     * If a non-invalid range is given, the command shall be executed on that range.
+     * supportsRange() tells if the command supports that.
      *
      * \return \e true on success, otherwise \e false
      */
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg,
+                      const KTextEditor::Range &range = KTextEditor::Range::invalid()) = 0;
 
     /**
      * Shows help for the given \p view and \p cmd string.
@@ -167,6 +187,9 @@ public:
      * \see wantsToProcessText()
      */
     virtual void processText(KTextEditor::View *view, const QString &text);
+
+private:
+    class CommandPrivate *const d;
 };
 
 /**
@@ -254,57 +277,8 @@ public:
     virtual QStringList commandList() const = 0;
 };
 
-/**
- * \brief Extension interface for a Command making the exec method take a line
- * range
- *
- * \ingroup kte_group_command_extensions
- *
- * \section cmdext_intro Introduction
- *
- * The RangeCommand extension extends the Command interface by making it
- * possible to send a range to a command indicating that it should only do its
- * work on those lines.
- *
- * The method supportsRange() takes a QString reference and should return true
- * if the given command name supports a range and false if not.
- *
- * \see KTextEditor::CommandInterface, KTextEditor::Command, KTextEditor::Range
- * \author Erlend Hamberg \<ehamberg@gmail.com\>
- * \since 4.2
- * \note KDE5: merge with KTextEditor::Command?
- */
-class KTEXTEDITOR_EXPORT RangeCommand
-{
-public:
-    /**
-     * Virtual destructor.
-     */
-    virtual ~RangeCommand() {}
-
-    /**
-     * Execute the command for the given \p range on the given \p view and \p
-     * cmd string.  Return the success value and a \p msg for status.
-     *
-     * \return \e true on success, otherwise \e false
-     */
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg,
-                      const KTextEditor::Range &range) = 0;
-
-    /**
-     * Find out if a given command can act on a range. This is used for checking
-     * if a command should be called when the user also gave a range or if an
-     * error should be raised.
-     *
-     * \return \e true if command supports acting on a range of lines, false if
-     * not
-     */
-    virtual bool supportsRange(const QString &cmd) = 0;
-};
-
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::CommandInterface, "org.kde.KTextEditor.CommandInterface")
 
 #endif
-

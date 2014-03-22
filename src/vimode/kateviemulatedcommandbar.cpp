@@ -1143,7 +1143,6 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
-        KTextEditor::RangeCommand *ce = dynamic_cast<KTextEditor::RangeCommand *>(p);
         KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
 
         if (ci) {
@@ -1155,13 +1154,12 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
 
         // we got a range and a valid command, but the command does not inherit the RangeCommand
         // extension. bail out.
-        if ((!ce && range.isValid() && p) || (range.isValid() && ce && !ce->supportsRange(cmd))) {
+        if (range.isValid() && !p->supportsRange(cmd)) {
             commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
         } else {
 
             if (p) {
-                if ((ce && range.isValid() && ce->exec(m_view, cmd, commandResponseMessage, range)) ||
-                    (p->exec(m_view, cmd, commandResponseMessage))) {
+                if (p->exec(m_view, cmd, commandResponseMessage, range)) {
 
                     if (commandResponseMessage.length() > 0) {
                         commandResponseMessage = i18n("Success: ") + commandResponseMessage;

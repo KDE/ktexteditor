@@ -40,7 +40,7 @@
 
 KateScriptManager *KateScriptManager::m_instance = 0;
 
-KateScriptManager::KateScriptManager() : QObject(), KTextEditor::Command()
+KateScriptManager::KateScriptManager() : KTextEditor::Command()
 {
     KateCmd::self()->registerCommand(this);
 
@@ -336,7 +336,7 @@ void KateScriptManager::reload()
 
 /// Kate::Command stuff
 
-bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QString &errorMsg)
+bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QString &errorMsg, const KTextEditor::Range &)
 {
     QStringList args(_cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.first());

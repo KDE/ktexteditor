@@ -36,8 +36,7 @@
 
 KateCommands::SedReplace *KateCommands::SedReplace::m_instance = 0;
 
-namespace {
-int backslashString(const QString &haystack, const QString &needle, int index)
+static int backslashString(const QString &haystack, const QString &needle, int index)
 {
     int len = haystack.length();
     int searchlen = needle.length();
@@ -62,7 +61,7 @@ int backslashString(const QString &haystack, const QString &needle, int index)
 }
 
 // exchange "\t" for the actual tab character, for example
-void exchangeAbbrevs(QString &str)
+static void exchangeAbbrevs(QString &str)
 {
     // the format is (findreplace)*[nullzero]
     const char *magic = "a\x07t\tn\n";
@@ -77,12 +76,6 @@ void exchangeAbbrevs(QString &str)
         ++magic;
         ++magic;
     }
-}
-}
-
-bool KateCommands::SedReplace::exec(KTextEditor::View *view, const QString &cmd, QString &msg)
-{
-    return exec(view, cmd, msg, KTextEditor::Range::invalid());
 }
 
 bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString &cmd,
