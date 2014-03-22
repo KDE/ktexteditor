@@ -9,6 +9,7 @@ include_directories(
   # for generated ktexteditor headers
   ${CMAKE_CURRENT_BINARY_DIR}/include
 
+  # for normal sources
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/include/ktexteditor
@@ -27,8 +28,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/vimode
   ${CMAKE_CURRENT_SOURCE_DIR}/view
   ${CMAKE_CURRENT_SOURCE_DIR}/swapfile
-  ${CMAKE_CURRENT_SOURCE_DIR}/variableeditor
-  ${CMAKE_CURRENT_SOURCE_DIR}/draft)
+  ${CMAKE_CURRENT_SOURCE_DIR}/variableeditor)
 
 # KTextEditor interface sources
 set(ktexteditor_LIB_SRCS
