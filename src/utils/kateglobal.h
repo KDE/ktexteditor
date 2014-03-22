@@ -64,10 +64,9 @@ namespace KTextEditor
  * or view stay around, here is the place to put things
  * which are needed and shared by all this objects ;)
  */
-class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTextEditor::CommandInterface, public KTextEditor::TemplateScriptRegistrar
+class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTextEditor::TemplateScriptRegistrar
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::CommandInterface)
     Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
 
     friend class KTextEditor::Editor;

@@ -37,11 +37,7 @@ KateViAppCommands *KateViAppCommands::m_instance = 0;
 KateViAppCommands::KateViAppCommands()
     : KTextEditor::Command()
 {
-    KTextEditor::CommandInterface *iface = qobject_cast<KTextEditor::CommandInterface*>(KTextEditor::Editor::instance());
-
-    if (iface) {
-        iface->registerCommand(this);
-    }
+    KTextEditor::Editor::instance()->registerCommand(this);
 
     re_write.setPattern(QLatin1String("w(a)?"));
     re_close.setPattern(QLatin1String("bd(elete)?|tabc(lose)?"));
@@ -56,11 +52,7 @@ KateViAppCommands::KateViAppCommands()
 
 KateViAppCommands::~KateViAppCommands()
 {
-    KTextEditor::CommandInterface *iface = qobject_cast<KTextEditor::CommandInterface*>(KTextEditor::Editor::instance());
-
-    if (iface) {
-        iface->unregisterCommand(this);
-    }
+    KTextEditor::Editor::instance()->unregisterCommand(this);
 
     m_instance = 0;
 }
@@ -312,11 +304,7 @@ KateViBufferCommands::KateViBufferCommands()
 
 KateViBufferCommands::~KateViBufferCommands()
 {
-    KTextEditor::CommandInterface *iface = qobject_cast<KTextEditor::CommandInterface *>(KTextEditor::Editor::instance());
-
-    if (iface) {
-        iface->unregisterCommand(this);
-    }
+    KTextEditor::Editor::instance()->unregisterCommand(this);
 
     m_instance = 0;
 }

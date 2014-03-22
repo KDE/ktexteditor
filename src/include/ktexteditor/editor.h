@@ -39,6 +39,7 @@ namespace KTextEditor
 {
 
 class Application;
+class Command;
 class Document;
 class EditorPrivate;
 class ConfigPage;
@@ -160,6 +161,17 @@ public:
      */
     virtual QList<Document *> documents() = 0;
 
+Q_SIGNALS:
+    /**
+     * The \p editor emits this signal whenever a \p document was successfully
+     * created.
+     * \param editor pointer to the Editor singleton which created the new document
+     * \param document the newly created document instance
+     * \see createDocument()
+     */
+    void documentCreated(KTextEditor::Editor *editor,
+                         KTextEditor::Document *document);
+
     /*
      * General Information about this editor.
      */
@@ -211,16 +223,49 @@ public:
      */
     virtual ConfigPage *configPage(int number, QWidget *parent) = 0;
 
-Q_SIGNALS:
+public:
     /**
-     * The \p editor emits this signal whenever a \p document was successfully
-     * created.
-     * \param editor pointer to the Editor singleton which created the new document
-     * \param document the newly created document instance
-     * \see createDocument()
+     * Register a the new command \p cmd. The command will be registered for
+     * all documents, i.e. every command is global.
+     *
+     * \param cmd command to register
+     * \return \e true on success, otherwise \e false
+     * \see unregisterCommand()
      */
-    void documentCreated(KTextEditor::Editor *editor,
-                         KTextEditor::Document *document);
+    virtual bool registerCommand(Command *cmd) = 0;
+
+    /**
+     * Unregister the command \p cmd. The command will be unregistered for
+     * all documents.
+     *
+     * \param cmd command to unregister
+     * \return \e true on success, otherwise \e false
+     * \see registerCommand()
+     */
+    virtual bool unregisterCommand(Command *cmd) = 0;
+
+    /**
+     * Query for the command \p cmd.
+     * If the command \p cmd does not exist the return value is NULL.
+     *
+     * \param cmd name of command to query for
+     * \return the found command or NULL if no such command exists
+     */
+    virtual Command *queryCommand(const QString &cmd) const = 0;
+
+    /**
+     * Get a list of all registered commands.
+     * \return list of all commands
+     * \see queryCommand(), commandList()
+     */
+    virtual QList<Command *> commands() const = 0;
+
+    /**
+     * Get a list of available command line strings.
+     * \return command line strings
+     * \see commands()
+     */
+    virtual QStringList commandList() const = 0;
 
 private:
     /**
