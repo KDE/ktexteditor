@@ -349,7 +349,7 @@ namespace QTest
      * QTestLib integration to have nice output in e.g. QCOMPARE failures.
      */
     template<>
-    char *toString(const KTextEditor::Cursor &cursor);
+    KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Cursor &cursor);
 }
 
 #endif
