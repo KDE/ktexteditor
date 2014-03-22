@@ -1127,24 +1127,19 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
 
         // if we got a command, check if it wants to do something.
         if (m_command) {
-            //qCDebug(LOG_PART)<<"Checking for CommandExtension..";
-            KTextEditor::CommandExtension *ce = dynamic_cast<KTextEditor::CommandExtension *>(m_command);
-            if (ce) {
-                KCompletion *cmpl = ce->completionObject(m_view, text().left(m_cmdend).trimmed());
-                if (cmpl) {
-                    // We need to prepend the current command name + flag string
-                    // when completion is done
-                    //qCDebug(LOG_PART)<<"keypress in commandline: Setting completion object!";
+            KCompletion *cmpl = m_command->completionObject(m_view, text().left(m_cmdend).trimmed());
+            if (cmpl) {
+                // We need to prepend the current command name + flag string
+                // when completion is done
+                //qCDebug(LOG_PART)<<"keypress in commandline: Setting completion object!";
 
-                    setCompletionObject(cmpl);
-                }
+                setCompletionObject(cmpl);
             }
         }
-    } else if (m_command) { // check if we should call the commands processText()
-        KTextEditor::CommandExtension *ce = dynamic_cast<KTextEditor::CommandExtension *>(m_command);
-        if (ce && ce->wantsToProcessText(text().left(m_cmdend).trimmed())
-                && !(ev->text().isNull() || ev->text().isEmpty())) {
-            ce->processText(m_view, text());
+    } else if (m_command && !ev->text().isEmpty()) {
+        // check if we should call the commands processText()
+        if (m_command->wantsToProcessText(text().left(m_cmdend).trimmed())) {
+            m_command->processText(m_view, text());
         }
     }
 }

@@ -58,18 +58,29 @@ class View;
  * These getters allow KTextEditor implementations to plug commands into menus
  * and toolbars, so that a user can assign shortcuts.
  *
+ * \section cmd_completion Command Completion
+ *
+ * The Command optionally can show a completion popup to help the user select
+ * a valid entry as first parameter to the Command. To this end, return a
+ * valid completion item by reiplementing completionObject().
+ *
+ * The returned completion object is deleted automatically once it is not needed
+ * anymore. Therefore neither delete the completion object yourself nor return
+ * the same completion object twice.
+ *
+ * \section cmd_interactive Interactive Commands
+ *
+ * In case the Command needs to interactively process the text of the parameters,
+ * override wantsToProcessText() by returning @e true and reimplement processText().
+ *
+ * A typical example of an interative command would be the incremental search.
+ *
  * \section cmd_extension Command Extensions
  *
- * If your command needs to interactively react on changes while the user is
- * typing text - look at the \e ifind command in Kate for example - you have
- * to additionally derive your command from the class CommandExtension. The
- * command extension provides methods to give help on \e flags or add a
- * KCompletion object and process the typed text interactively. Besides that
- * the class RangeCommand enables you to support ranges so that you can apply
+ * The class RangeCommand enables you to support ranges so that you can apply
  * commands on regions of text.
  *
- * \see KTextEditor::CommandInterface, KTextEditor::CommandExtension,
- *      KTextEditor::RangeCommand
+ * \see KTextEditor::CommandInterface, KTextEditor::RangeCommand
  * \author Christoph Cullmann \<cullmann@kde.org\>
  * \note KDE5: derive from QObject, so qobject_cast works for extension interfaces.
  */
@@ -111,65 +122,26 @@ public:
      * \return \e true if your command has a help text, otherwise \e false
      */
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg) = 0;
-};
-
-/**
- * \brief Extension interface for a Command.
- *
- * \ingroup kte_group_command_extensions
- *
- * \section cmdext_intro Introduction
- *
- * The CommandExtension extends the Command interface allowing to interact
- * with commands during typing. This allows for completion and for example
- * the isearch plugin. If you develop a command that wants to complete or
- * process text as the user types the arguments, or that has flags, you can
- * have your command inherit this class.
- *
- * If your command supports flags return them by reimplementing
- * flagCompletions(). You can return your own KCompletion object if the
- * command has available completion data. If you want to interactively react
- * on changes return \e true in wantsToProcessText() for the given command
- * and reimplement processText().
- *
- * \see KTextEditor::CommandInterface, KTextEditor::Command, KCompletion
- * \author Christoph Cullmann \<cullmann@kde.org\>
- */
-class KTEXTEDITOR_EXPORT CommandExtension
-{
-public:
-    /**
-     * Virtual destructor.
-     */
-    virtual ~CommandExtension() {}
-
-    /**
-     * Fill in a \p list of flags to complete from. Each flag is a single
-     * letter, any following text in the string is taken to be a description
-     * of the flag's meaning, and showed to the user as a hint.
-     * Implement this method if your command has flags.
-     *
-     * This method is called each time the flag string in the typed command
-     * is changed, so that the available flags can be adjusted. When
-     * completions are displayed, existing flags are left out.
-     * \param list flag list
-     */ //### this is yet to be tried
-    virtual void flagCompletions(QStringList &list) = 0;
 
     /**
      * Return a KCompletion object that will substitute the command line
      * default one while typing the first argument of the command \p cmdname.
      * The text will be added to the command separated by one space character.
      *
-     * Implement this method if your command can provide a completion object.
+     * Override this method if your command can provide a completion object.
+     * The returned completion object is deleted automatically once it is not needed
+     * anymore. Therefore neither delete the completion object yourself nor return
+     * the same completion object twice.
+     *
+     * The default implementation returns a null pointer (\e nullptr).
      *
      * \param view the view the command will work on
      * \param cmdname the command name associated with this request.
-     * \return the completion object or NULL, if you do not support a
-     *         completion object
+     * \return a valid completion object or \e nullptr, if a completion object is
+     *         not supported
      */
     virtual KCompletion *completionObject(KTextEditor::View *view,
-                                          const QString &cmdname) = 0;
+                                          const QString &cmdname);
 
     /**
      * Check, whether the command wants to process text interactively for the
@@ -185,7 +157,7 @@ public:
      *         otherwise \e false
      * \see processText()
      */
-    virtual bool wantsToProcessText(const QString &cmdname) = 0;
+    virtual bool wantsToProcessText(const QString &cmdname);
 
     /**
      * This is called by the command line each time the argument text for the
@@ -193,8 +165,8 @@ public:
      * \param view the current view
      * \param text the current command text typed by the user
      * \see wantsToProcessText()
-     */ // ### yet to be tested. The obvious candidate is isearch.
-    virtual void processText(KTextEditor::View *view, const QString &text) = 0;
+     */
+    virtual void processText(KTextEditor::View *view, const QString &text);
 };
 
 /**
@@ -226,8 +198,7 @@ public:
  * }
  * \endcode
  *
- * \see KTextEditor::Editor, KTextEditor::Command,
- *      KTextEditor::CommandExtension
+ * \see KTextEditor::Editor, KTextEditor::Command
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT CommandInterface

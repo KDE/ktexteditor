@@ -42,8 +42,7 @@ namespace KateCommands
  * it needs to get a kateview pointer, it will cast the kate::view pointer
  * hard to kateview
  */
-class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-    public KTextEditor::RangeCommand
+class CoreCommands : public KTextEditor::Command, public KTextEditor::RangeCommand
 {
     CoreCommands() { }
     static CoreCommands *m_instance;
@@ -86,17 +85,8 @@ public:
      */
     const QStringList &cmds();
 
-    /**
-    * override completionObject from interfaces/document.h .
-    */
-    KCompletion *completionObject(KTextEditor::View *, const QString &);
-
-    virtual void flagCompletions(QStringList &) {}
-    virtual bool wantsToProcessText(const QString &)
-    {
-        return false;
-    }
-    virtual void processText(KTextEditor::View *, const QString &) {}
+    /** override from KTextEditor::Command */
+    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
 
     static CoreCommands *self()
     {

@@ -6,9 +6,6 @@ merge kateextendedattribute.h into kte/attribute.h
 - name ???
 
 merge KTE::RangeCommand into KTE::Command?
-- merge KTE::CommandExtension::completionObject into KTE::Command and return
-  0 by default.
-- also: is KTE::CommandExtension needed? Also merge into KTE::Command?
 -> ask Simon and Michal
 
 KTE::HighlightInterface:

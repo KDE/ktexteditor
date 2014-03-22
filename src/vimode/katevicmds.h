@@ -47,8 +47,10 @@ namespace KateViCommands
  * it needs to get a kateview pointer, it will cast the kate::view pointer
  * hard to kateview
  */
-class CoreCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-    public KTextEditor::RangeCommand, public KateViCommandInterface
+class CoreCommands
+    : public KTextEditor::Command
+    , public KTextEditor::RangeCommand
+    , public KateViCommandInterface
 {
     CoreCommands() { }
     static CoreCommands *m_instance;
@@ -92,16 +94,9 @@ public:
     const QStringList &cmds();
 
     /**
-    * override completionObject from interfaces/document.h .
-    */
-    KCompletion *completionObject(KTextEditor::View *, const QString &);
-
-    virtual void flagCompletions(QStringList &) {}
-    virtual bool wantsToProcessText(const QString &)
-    {
-        return false;
-    }
-    virtual void processText(KTextEditor::View *, const QString &) {}
+     * Reimplement from KTextEditor::Command
+     */
+    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
 
     static CoreCommands *self()
     {
@@ -115,8 +110,10 @@ public:
 /**
  * This KTextEditor::Command provides vi 'ex' commands
  */
-class ViCommands : public KTextEditor::Command, public KTextEditor::CommandExtension,
-    public KTextEditor::RangeCommand, public KateViCommandInterface
+class ViCommands
+    : public KTextEditor::Command
+    , public KTextEditor::RangeCommand
+    , public KateViCommandInterface
 {
     ViCommands() { }
     static ViCommands *m_instance;
@@ -163,16 +160,9 @@ public:
     const QStringList &cmds();
 
     /**
-    * override completionObject from interfaces/document.h .
-    */
-    KCompletion *completionObject(KTextEditor::View *, const QString &);
-
-    virtual void flagCompletions(QStringList &) {}
-    virtual bool wantsToProcessText(const QString &)
-    {
-        return false;
-    }
-    virtual void processText(KTextEditor::View *, const QString &) {}
+     * Reimplement from KTextEditor::Command
+     */
+    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
 
     static ViCommands *self()
     {

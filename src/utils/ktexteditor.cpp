@@ -206,3 +206,22 @@ RecoveryInterface::~RecoveryInterface()
 {
 }
 
+KCompletion *Command::completionObject(KTextEditor::View *view, const QString &cmdname)
+{
+    Q_UNUSED(view)
+    Q_UNUSED(cmdname)
+
+    return nullptr;
+}
+bool Command::wantsToProcessText(const QString &cmdname)
+{
+    Q_UNUSED(cmdname)
+
+    return false;
+}
+
+void Command::processText(KTextEditor::View *view, const QString &text)
+{
+    Q_UNUSED(view)
+    Q_UNUSED(text)
+}
