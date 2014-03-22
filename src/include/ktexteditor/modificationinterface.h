@@ -110,19 +110,6 @@ public:
     virtual void setModifiedOnDiskWarning(bool on) = 0;
 
     /*
-     * These stuff is implemented as SLOTS in the real document
-     */
-public:
-    /**
-     * Ask the user what to do, if the file was modified on disk.
-     * The argument \p view is used to avoid asking again, when the editor
-     * regains focus after the dialog is hidden.
-     * \param view the view that should be notified of the user's decision
-     * \see setModifiedOnDisk(), modifiedOnDisk()
-     */
-    virtual void slotModifiedOnDisk(View *view = 0) = 0;
-
-    /*
      * These stuff is implemented as SIGNALS in the real document
      */
 public:

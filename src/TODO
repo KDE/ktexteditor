@@ -25,7 +25,6 @@ KTE::HighlightInterface:
 
 KTE::ModificationInterface
 - merge enum OnDiskModified and OnDiskCreated into OnDiskModified
-- some strange functions, have a look again (e.g. slotModifiedOnDisk???)
 - merge entire interface into KTE::Document ?
 - add: bool Document::isModifiedOnDisk()
 - add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
