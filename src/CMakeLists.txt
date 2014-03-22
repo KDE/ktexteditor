@@ -28,7 +28,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/view
   ${CMAKE_CURRENT_SOURCE_DIR}/swapfile
   ${CMAKE_CURRENT_SOURCE_DIR}/variableeditor
-  ${CMAKE_CURRENT_SOURCE_DIR}/kte5)
+  ${CMAKE_CURRENT_SOURCE_DIR}/draft)
 
 # KTextEditor interface sources
 set(ktexteditor_LIB_SRCS
