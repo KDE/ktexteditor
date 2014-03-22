@@ -69,11 +69,6 @@ Range::Range(int startLine, int startColumn, int endLine, int endColumn)
     }
 }
 
-bool Range::isValid() const
-{
-    return start().isValid() && end().isValid();
-}
-
 Range Range::invalid()
 {
     return Range(Cursor(-1, -1), Cursor(-1, -1));
@@ -201,11 +196,6 @@ int KTextEditor::Range::columnWidth() const
 int KTextEditor::Range::numberOfLines() const
 {
     return end().line() - start().line();
-}
-
-bool KTextEditor::Range::isEmpty() const
-{
-    return start() == end();
 }
 
 int Range::positionRelativeToCursor(const Cursor &cursor) const

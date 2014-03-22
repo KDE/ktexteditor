@@ -101,7 +101,9 @@ public:
     /**
      * Validity check.  In the base class, returns true unless the range starts before (0,0).
      */
-    bool isValid() const;
+    inline bool isValid() const {
+        return start().isValid() && end().isValid();
+    }
 
     /**
      * Returns an invalid range.
@@ -120,7 +122,7 @@ public:
      *
      * \returns const reference to the start position of this range.
      */
-    const Cursor &start() const {
+    inline const Cursor &start() const {
         return m_start;
     }
 
@@ -129,7 +131,7 @@ public:
      *
      * \returns const reference to the end position of this range.
      */
-    const Cursor &end() const {
+    inline const Cursor &end() const {
         return m_end;
     }
 
@@ -173,7 +175,7 @@ public:
      *
      * \param start new start cursor
      */
-    void setStart(const Cursor &start) {
+    inline void setStart(const Cursor &start) {
         if (start > end()) {
             setRange(start, start);
         } else {
@@ -188,7 +190,7 @@ public:
      *
      * \param end new end cursor
      */
-    void setEnd(const Cursor &end) {
+    inline void setEnd(const Cursor &end) {
         if (end < start()) {
             setRange(end, end);
         } else {
@@ -245,7 +247,9 @@ public:
      *
      * \returns \e true if the range contains no characters, otherwise \e false
      */
-    bool isEmpty() const;
+    bool isEmpty() const {
+        return start() == end();
+    }
 
     //BEGIN comparison functions
     /**

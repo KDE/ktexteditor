@@ -79,7 +79,7 @@ public:
      * Returns whether the current position of this cursor is a valid position
      * (line + column must both be >= 0).
      */
-    bool isValid() const {
+    inline bool isValid() const {
         return m_line >= 0 && m_column >= 0;
     }
 
@@ -110,7 +110,7 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(const Cursor &position) {
+    inline void setPosition(const Cursor &position) {
         m_line = position.m_line;
         m_column = position.m_column;
     }
@@ -123,7 +123,7 @@ public:
      * \param line new cursor line
      * \param column new cursor column
      */
-    void setPosition(int line, int column) {
+    inline void setPosition(int line, int column) {
         m_line = line;
         m_column = column;
     }
@@ -132,7 +132,7 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    int line() const {
+    inline int line() const {
         return m_line;
     }
 
@@ -140,7 +140,7 @@ public:
      * Set the cursor line to \e line.
      * \param line new cursor line
      */
-    void setLine(int line) {
+    inline void setLine(int line) {
         m_line = line;
     }
 
@@ -148,7 +148,7 @@ public:
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    int column() const {
+    inline int column() const {
         return m_column;
     }
 
@@ -156,7 +156,7 @@ public:
      * Set the cursor column to \e column.
      * \param column new cursor column
      */
-    void setColumn(int column) {
+    inline void setColumn(int column) {
         m_column = column;
     }
 
@@ -164,7 +164,7 @@ public:
      * Determine if this cursor is located at the start of a line.
      * \return \e true if the cursor is situated at the start of the line, \e false if it isn't.
      */
-    bool atStartOfLine() const {
+    inline bool atStartOfLine() const {
         return m_column == 0;
     }
 
@@ -172,7 +172,7 @@ public:
      * Determine if this cursor is located at the start of a document.
      * \return \e true if the cursor is situated at the start of the document, \e false if it isn't.
      */
-    bool atStartOfDocument() const {
+    inline bool atStartOfDocument() const {
         return m_line == 0 && m_column == 0;
     }
 
@@ -181,7 +181,7 @@ public:
      * \param line will be filled with current cursor line
      * \param column will be filled with current cursor column
      */
-    void position(int &line, int &column) const {
+    inline void position(int &line, int &column) const {
         line = m_line;
         column = m_column;
     }
