@@ -18,7 +18,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "messageinterface.h"
+#include "ktexteditor/message.h"
 
 namespace KTextEditor
 {
@@ -174,15 +174,6 @@ void Message::setPosition(Message::MessagePosition position)
 Message::MessagePosition Message::position() const
 {
     return d->position;
-}
-
-MessageInterface::MessageInterface()
-    : d(0)
-{
-}
-
-MessageInterface::~MessageInterface()
-{
 }
 
 }

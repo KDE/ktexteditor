@@ -32,7 +32,7 @@
 #include "katebuffer.h"
 #include "katedocument.h"
 
-#include <ktexteditor/messageinterface.h>
+#include <KTextEditor/Message>
 
 namespace KTextEditor { class ViewPrivate; }
 

@@ -59,7 +59,7 @@
 #include "printing/kateprinter.h"
 #include "katestatusbar.h"
 
-#include <ktexteditor/messageinterface.h>
+#include <KTextEditor/Message>
 
 #include <KParts/Event>
 

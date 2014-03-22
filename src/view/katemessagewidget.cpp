@@ -22,7 +22,8 @@
 
 #include "katepartdebug.h"
 
-#include <ktexteditor/messageinterface.h>
+#include <KTextEditor/Message>
+
 #include <KMessageWidget>
 #include <kateanimation.h>
 

@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KTEXTEDITOR_MESSAGEINTERFACE_H
-#define KTEXTEDITOR_MESSAGEINTERFACE_H
+#ifndef KTEXTEDITOR_MESSAGE_H
+#define KTEXTEDITOR_MESSAGE_H
 
 #include <QObject>
 #include <QList>
@@ -40,7 +40,20 @@ class Document;
  * @section message_intro Introduction
  *
  * The Message class holds the data used to display interactive message widgets
- * in the editor. To post a message, use the MessageInterface.
+ * in the editor. To post a message, use the postMessage of the document.
+ * Example:
+ *
+ * // always use a QPointer go guard your Message, if you keep a pointer
+ * // after calling postMessage()
+ * QPointer<Message> message = new Message("text", Message::Information);
+ * message->setWordWrap(true);
+ * message->addAction(...); // add your actions...
+ * iface->postMessage(message);
+ *
+ * // The Message is deleted automatically if the Message gets closed,
+ * // meaning that you usually can forget the pointer.
+ * // If you really need to delete a message before the user processed it,
+ * // guard it with a QPointer!
  *
  * @section message_creation Message Creation and Deletion
  *
@@ -379,18 +392,6 @@ private:
  *     // the implementation does not support the interface
  *     return;
  * }
- *
- * // always use a QPointer go guard your Message, if you keep a pointer
- * // after calling postMessage()
- * QPointer<Message> message = new Message("text", Message::Information);
- * message->setWordWrap(true);
- * message->addAction(...); // add your actions...
- * iface->postMessage(message);
- *
- * // The Message is deleted automatically if the Message gets closed,
- * // meaning that you usually can forget the pointer.
- * // If you really need to delete a message before the user processed it,
- * // guard it with a QPointer!
  * \endcode
  *
  * @see Message
@@ -408,22 +409,6 @@ public:
      * Destructor, for internal use.
      */
     virtual ~MessageInterface();
-
-    /**
-     * Post @p message to the Document and its View%s.
-     * If multiple Message%s are posted, the one with the highest priority
-     * is shown first.
-     *
-     * Usually, you can simply forget the pointer, as the Message is deleted
-     * automatically, once it is processed or the document gets closed.
-     *
-     * If the Document does not have a View yet, the Message is queued and
-     * shown, once a View for the Document is created.
-     *
-     * @param message the message to show
-     * @return @e true, if @p message was posted. @e false, if message == 0.
-     */
-    virtual bool postMessage(Message *message) = 0;
 
 private:
     class MessageInterfacePrivate *const d;

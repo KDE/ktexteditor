@@ -38,9 +38,10 @@ class KConfigGroup;
 namespace KTextEditor
 {
 
-class View;
-class MainWindow;
 class DocumentPrivate;
+class MainWindow;
+class Message;
+class View;
 
 /**
  * \brief A KParts derived class representing a text document.
@@ -878,6 +879,23 @@ public:
      */
     virtual void printPreview() = 0;
 
+public:
+    /**
+     * Post @p message to the Document and its View%s.
+     * If multiple Message%s are posted, the one with the highest priority
+     * is shown first.
+     *
+     * Usually, you can simply forget the pointer, as the Message is deleted
+     * automatically, once it is processed or the document gets closed.
+     *
+     * If the Document does not have a View yet, the Message is queued and
+     * shown, once a View for the Document is created.
+     *
+     * @param message the message to show
+     * @return @e true, if @p message was posted. @e false, if message == 0.
+     */
+    virtual bool postMessage(Message *message) = 0;
+    
 public:
     /**
      * Read session settings from the given \p config.

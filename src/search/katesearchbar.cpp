@@ -29,9 +29,9 @@
 #include "kateconfig.h"
 #include "katerenderer.h"
 
-#include <ktexteditor/movingcursor.h>
-#include <ktexteditor/movingrange.h>
-#include <ktexteditor/messageinterface.h>
+#include <KTextEditor/Message>
+#include <KTextEditor/MovingCursor>
+#include <KTextEditor/MovingRange>
 
 #include "ui_searchbarincremental.h"
 #include "ui_searchbarpower.h"

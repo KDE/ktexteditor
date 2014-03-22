@@ -80,8 +80,7 @@ The following interfaces were changed:
    This signal is emitted whenever the read-only state of the document changes.
  - \p KTextEditor::View now has a status bar by default. It can be controlled
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
- - \p KTextEditor::View::informationMessage() was removed in favor of the
-   MessageInterface.
+ - \p KTextEditor::View::informationMessage() was removed in favor of \p KTextEditor::Document::postMessage().
  - \p KTextEditor::View::viewModeChanged() gained an additional parameter with the current view edit mode.
  - New enums \p KTextEditor::View::InputMode() and \p KTextEditor::View::ViewMode().
  - \p KTextEditor::View::viewEditModeChanged() was renamed to \p KTextEditor::View::viewInputModeChanged().
@@ -107,7 +106,7 @@ The following interfaces are new:
    the active view has changed, or that a view has been created. Other than that,
    it for instance allows to create tool views and similar convenience functions
    to show view bars.
- - \p KTextEditor::MessageInterface (since KDE 4.11) \n
+ - \p KTextEditor::Message (since KDE 4.11) \n
    Class providing notifications to the user in a KTextEditor::View.
 
 \section kte_port_enhanced_classes Significantly Enhanced Classes

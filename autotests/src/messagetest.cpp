@@ -23,7 +23,7 @@
 #include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
-#include <ktexteditor/messageinterface.h>
+#include <ktexteditor/message.h>
 #include <katemessagewidget.h>
 
 #include <QtTestWidgets>

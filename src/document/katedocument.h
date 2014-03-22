@@ -37,7 +37,7 @@
 #include <ktexteditor/highlightinterface.h>
 #include <ktexteditor/movinginterface.h>
 #include <ktexteditor/recoveryinterface.h>
-#include <ktexteditor/messageinterface.h>
+#include <ktexteditor/message.h>
 #include <ktexteditor/mainwindow.h>
 
 #include <ktexteditor_export.h>
@@ -87,7 +87,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     public KTextEditor::HighlightInterface,
     public KTextEditor::MovingInterface,
     public KTextEditor::RecoveryInterface,
-    public KTextEditor::MessageInterface,
     private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
@@ -98,7 +97,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     Q_INTERFACES(KTextEditor::HighlightInterface)
     Q_INTERFACES(KTextEditor::MovingInterface)
     Q_INTERFACES(KTextEditor::RecoveryInterface)
-    Q_INTERFACES(KTextEditor::MessageInterface)
 
     friend class KTextEditor::Document;
     friend class ::KateDocumentTest;
