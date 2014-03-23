@@ -24,7 +24,7 @@ functions were removed, interfaces were merged and extended. All interface
 changes like for example parameter changes of a function are not mentioned in
 detail in this page, look into the particular class API documentation.
 
-\section kte_port_remove Removed Interfaces and Removed Classes
+\section kte_port_remove Removed/Merged Interfaces and Classes
 Entirely removed interfaces and classes are:
  - \p KTextEditor::Factory \n
    Just use KTextEditor::Editor::instance() to get the editor instance.
@@ -50,15 +50,30 @@ Entirely removed interfaces and classes are:
    Document and the View as follows:
    - \p KTextEditor::Document::readSessionConfig() and \p KTextEditor::Document::writeSessionConfig()
    - \p KTextEditor::View::readSessionConfig() and \p KTextEditor::View::writeSessionConfig()
-
-
-\section kte_port_merge Merged Interfaces
-The following interfaces were merged, in order:
- - \p CoordinatesToCursorInterface was merged into the KTextEditor::View.
+ - \p CoordinatesToCursorInterface was merged into the \p KTextEditor::View.
  - \p CodeCompletionModelControllerInterface2,
    \p CodeCompletionModelControllerInterface3 and
    \p CodeCompletionModelControllerInterface4
    were merged into the \p KTextEditor::CodeCompletionModelControllerInterface.
+ - \p KTextEditor::CommandInterface \n
+   This interface was merged into the \p KTextEditor::Editor.
+ - \p KTextEditor::Command \n
+   A Command now automatically registers and unregisters itself. Hence,
+   \p CommandInterface::registerCommand() and \p CommandInterface::unregisterCommand() were removed.
+ - \p KTextEditor::CommandExtension \n
+   This interface was merged into \p KTextEditor::Command.
+   KTextEditor::CommandExtension::flagCompletions() was removed since it was
+   never implemented and therefore unused.
+- \p KTextEditor::RangeCommand \n
+   This interface was merged into \p KTextEditor::Command. The function
+   \p KTextEditor::Command::exec() now takes a Range as 3rd parameter.
+ - \p KTextEditor::HighlightInterface \n
+   The default styles are now in the namespace \p KTextEditor::DefaultStyle.
+   The rest of this interface was merged into the \p KTextEditor::Document and \p KTextEditor::View, see:
+   - \p KTextEditor::Document::defaultStyleAt()
+   - \p KTextEditor::View::defaultStyleAttribute()
+   - \p KTextEditor::View::lineAttributes()
+ - \p KTextEditor::HighlightInterface::AttributeBlock moved to \p KTextEditor::AttributeBlock.
 
 \section kte_port_rename Interface Changes
 The following interfaces were changed:
@@ -82,23 +97,12 @@ The following interfaces were changed:
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
  - \p KTextEditor::View::informationMessage() was removed in favor of \p KTextEditor::Document::postMessage().
  - \p KTextEditor::View::viewModeChanged() gained an additional parameter with the current view edit mode.
- - New enums \p KTextEditor::View::InputMode() and \p KTextEditor::View::ViewMode().
+ - New enums \p KTextEditor::View::InputMode and \p KTextEditor::View::ViewMode.
  - \p KTextEditor::View::viewEditModeChanged() was renamed to \p KTextEditor::View::viewInputModeChanged().
  - New functions \p KTextEditor::View::viewModeHuman and \p KTextEditor::View::viewInputModeHuman().
  - \p KTextEditor::SessionConfigInterface \n
    This interface is an extension only for a \p KTextEditor::Plugin and the Plugin
    view's returned by \p KTextEditor::Plugin::createView().
- - \p KTextEditor::CommandExtension \n
-   This interface was merged into \p KTextEditor::Command.
-   KTextEditor::CommandExtension::flagCompletions() was removed since it was
-   never implemented and therefore unused.
- - \p KTextEditor::HighlightInterface \n
-   The default styles are now in the namespace \p KTextEditor::DefaultStyle.
-   The rest of this interface was merged into the \p KTextEditor::Document and \p KTextEditor::View, see:
-   - \p KTextEditor::Document::defaultStyleAt()
-   - \p KTextEditor::View::defaultStyleAttribute()
-   - \p KTextEditor::View::lineAttributes()
-   Further, the AttributeBlock was moved to \p KTextEditor::AttributeBlock.
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
