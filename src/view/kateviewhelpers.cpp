@@ -1169,8 +1169,8 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_viewInternal(internalView)
     , m_iconBorderOn(false)
     , m_lineNumbersOn(false)
-    , m_viRelLineNumbersOn(false)
-    , m_updateViRelLineNumbers(false)
+    , m_relLineNumbersOn(false)
+    , m_updateRelLineNumbers(false)
     , m_foldingMarkersOn(false)
     , m_dynWrapIndicatorsOn(false)
     , m_annotationBorderOn(false)
@@ -1254,13 +1254,13 @@ void KateIconBorder::setLineNumbersOn(bool enable)
     QTimer::singleShot(0, this, SLOT(update()));
 }
 
-void KateIconBorder::setViRelLineNumbersOn(bool enable)
+void KateIconBorder::setRelLineNumbersOn(bool enable)
 {
-    if (enable == m_viRelLineNumbersOn) {
+    if (enable == m_relLineNumbersOn) {
         return;
     }
 
-    m_viRelLineNumbersOn = enable;
+    m_relLineNumbersOn = enable;
     /*
      * We don't have to touch the m_dynWrapIndicatorsOn because
      * we already got it right from the m_lineNumbersOn
@@ -1270,10 +1270,10 @@ void KateIconBorder::setViRelLineNumbersOn(bool enable)
     QTimer::singleShot( 0, this, SLOT(update()) );
 }
 
-void KateIconBorder::updateViRelLineNumbers()
+void KateIconBorder::updateRelLineNumbers()
 {
-    if (m_viRelLineNumbersOn) {
-        m_updateViRelLineNumbers = true;
+    if (m_relLineNumbersOn) {
+        m_updateRelLineNumbers = true;
         update();
     }
 }
@@ -1605,7 +1605,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
             if (realLine > -1) {
                 if (m_viewInternal->cache()->viewLine(z).startCol() == 0) {
-                    if (m_viRelLineNumbersOn && m_view->currentInputMode()->viewInputMode() == KTextEditor::View::ViInputMode) { // FIXME: make it more general
+                    if (m_relLineNumbersOn) {
                         int diff = abs(realLine - currentLine);
                         if (diff > 0) {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
@@ -1614,8 +1614,8 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
                                        Qt::TextDontClip|Qt::AlignLeft|Qt::AlignVCenter, QString::fromLatin1("%1").arg(realLine + 1));
                         }
-                        if (m_updateViRelLineNumbers) {
-                            m_updateViRelLineNumbers = false;
+                        if (m_updateRelLineNumbers) {
+                            m_updateRelLineNumbers = false;
                             update();
                         }
                     } else if (m_lineNumbersOn) {

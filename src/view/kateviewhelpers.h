@@ -190,7 +190,7 @@ public:
 
     void setIconBorderOn(bool enable);
     void setLineNumbersOn(bool enable);
-    void setViRelLineNumbersOn(bool enable);
+    void setRelLineNumbersOn(bool enable);
     void setAnnotationBorderOn(bool enable);
     void setDynWrapIndicators(int state);
     int dynWrapIndicators()  const
@@ -224,7 +224,7 @@ public:
     }
     inline bool viRelNumbersOn()     const
     {
-        return m_viRelLineNumbersOn;
+        return m_relLineNumbersOn;
     }
     inline bool foldingMarkersOn()   const
     {
@@ -235,7 +235,7 @@ public:
         return m_annotationBorderOn;
     }
 
-    void updateViRelLineNumbers();
+    void updateRelLineNumbers();
 
     enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
     BorderArea positionToArea(const QPoint &) const;
@@ -270,8 +270,8 @@ private:
 
     bool m_iconBorderOn: 1;
     bool m_lineNumbersOn: 1;
-    bool m_viRelLineNumbersOn:1;
-    bool m_updateViRelLineNumbers:1;
+    bool m_relLineNumbersOn:1;
+    bool m_updateRelLineNumbers:1;
     bool m_foldingMarkersOn: 1;
     bool m_dynWrapIndicatorsOn: 1;
     bool m_annotationBorderOn: 1;

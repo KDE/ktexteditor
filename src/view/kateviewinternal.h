@@ -209,6 +209,11 @@ public:
     QPoint cursorCoordinates(bool includeBorder = true) const;
     KTextEditor::Cursor findMatchingBracket();
 
+    KateIconBorder *iconBorder() const
+    {
+        return m_leftBorder;
+    }
+
     // EVENT HANDLING STUFF - IMPORTANT
 private:
     void fixDropEvent(QDropEvent *event);

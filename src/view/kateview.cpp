@@ -1635,6 +1635,10 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     m_viewInternal->setAutoCenterLines(config()->autoCenterLines());
 
+    Q_FOREACH(KateAbstractInputMode *input, m_viewInternal->m_inputModes) {
+        input->updateConfig();
+    }
+
     setInputMode(config()->inputMode());
 
     reflectOnTheFlySpellCheckStatus(m_doc->isOnTheFlySpellCheckingEnabled());

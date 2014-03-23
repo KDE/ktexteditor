@@ -36,7 +36,6 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateViGlobal *g
     , m_activated(false)
 {
     m_relLineNumbers = KateViewConfig::global()->viRelativeLineNumbers();
-
     m_viModeManager = new KateViInputModeManager(this, view(), viewInternal);
 }
 
@@ -57,6 +56,7 @@ void KateViInputMode::activate()
         view()->setCursorPosition(Cursor(view()->selectionRange().end().line(), view()->selectionRange().end().column() - 1));
         m_viModeManager->m_viVisualMode->updateSelection();
     }
+    viewInternal()->iconBorder()->setRelLineNumbersOn(m_relLineNumbers);
 }
 
 void KateViInputMode::deactivate()
@@ -68,6 +68,7 @@ void KateViInputMode::deactivate()
     // make sure to turn off edits mergin when leaving vi input mode
     view()->doc()->setUndoMergeAllEdits(false);
     m_activated = false;
+    viewInternal()->iconBorder()->setRelLineNumbersOn(false);
 }
 
 void KateViInputMode::reset()
@@ -170,6 +171,10 @@ void KateViInputMode::updateConfig()
 
     // whether relative line numbers should be used or not.
     m_relLineNumbers = cfg->viRelativeLineNumbers();
+
+    if (m_activated) {
+        viewInternal()->iconBorder()->setRelLineNumbersOn(m_relLineNumbers);
+    }
 }
 
 void KateViInputMode::readWriteChanged(bool)

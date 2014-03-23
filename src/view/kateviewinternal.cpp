@@ -1943,7 +1943,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
     }
 
     if (m_cursor.line() != newCursor.line()) {
-        m_leftBorder->updateViRelLineNumbers();
+        m_leftBorder->updateRelLineNumbers();
     }
 
     // unfold if required
