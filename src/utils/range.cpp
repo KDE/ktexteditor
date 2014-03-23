@@ -26,54 +26,6 @@
 
 using namespace KTextEditor;
 
-Range::Range()
-{
-}
-
-Range::Range(const Cursor &start, const Cursor &end)
-{
-    if (start <= end) {
-        m_start = start;
-        m_end = end;
-    } else {
-        m_start = end;
-        m_end = start;
-    }
-}
-
-Range::Range(const Cursor &start, int width)
-    : m_start(start)
-    , m_end(start.line(), start.column() + width)
-{
-}
-
-Range::Range(const Cursor &start, int endLine, int endColumn)
-    : m_start(start)
-    , m_end(endLine, endColumn)
-{
-    if (m_end < m_start) {
-        Cursor temp = m_end;
-        m_end = m_start;
-        m_start = temp;
-    }
-}
-
-Range::Range(int startLine, int startColumn, int endLine, int endColumn)
-    : m_start(startLine, startColumn)
-    , m_end(endLine, endColumn)
-{
-    if (m_end < m_start) {
-        Cursor temp = m_end;
-        m_end = m_start;
-        m_start = temp;
-    }
-}
-
-Range Range::invalid()
-{
-    return Range(Cursor(-1, -1), Cursor(-1, -1));
-}
-
 void Range::setRange(const Range &range)
 {
     m_start = range.start();
@@ -87,56 +39,6 @@ void Range::setRange(const Cursor &start, const Cursor &end)
     } else {
         setRange(Range(start, end));
     }
-}
-
-bool Range::containsLine(int line) const
-{
-    return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
-}
-
-bool Range::overlapsLine(int line) const
-{
-    return line >= start().line() && line <= end().line();
-}
-
-bool Range::overlapsColumn(int col) const
-{
-    return start().column() <= col && end().column() > col;
-}
-
-bool Range::contains(const Cursor &cursor) const
-{
-    return cursor >= start() && cursor < end();
-}
-
-bool Range::contains(const Range &range) const
-{
-    return range.start() >= start() && range.end() <= end();
-}
-
-bool Range::containsColumn(int column) const
-{
-    return column >= start().column() && column < end().column();
-}
-
-bool Range::overlaps(const Range &range) const
-{
-    if (range.start() <= start()) {
-        return range.end() > start();
-    }
-
-    else if (range.end() >= end()) {
-        return range.start() < end();
-    }
-
-    else {
-        return contains(range);
-    }
-}
-
-bool Range::boundaryAtCursor(const Cursor &cursor) const
-{
-    return cursor == start() || cursor == end();
 }
 
 bool Range::confineToRange(const Range &range)
@@ -178,48 +80,9 @@ void Range::setBothLines(int line)
     setRange(Range(line, start().column(), line, end().column()));
 }
 
-bool KTextEditor::Range::onSingleLine() const
-{
-    return start().line() == end().line();
-}
-
-int KTextEditor::Range::columnWidth() const
-{
-    return end().column() - start().column();
-}
-
-int KTextEditor::Range::numberOfLines() const
-{
-    return end().line() - start().line();
-}
-
 void KTextEditor::Range::setBothColumns(int column)
 {
     setRange(Range(start().line(), column, end().line(), column));
-}
-
-Range KTextEditor::Range::intersect(const Range &range) const
-{
-    if (!isValid() || !range.isValid() || *this > range || *this < range) {
-        return invalid();
-    }
-
-    return Range(qMax(start(), range.start()), qMin(end(), range.end()));
-}
-
-Range KTextEditor::Range::encompass(const Range &range) const
-{
-    if (!isValid())
-        if (range.isValid()) {
-            return range;
-        } else {
-            return invalid();
-        }
-    else if (!range.isValid()) {
-        return *this;
-    } else {
-        return Range(qMin(start(), range.start()), qMax(end(), range.end()));
-    }
 }
 
 namespace QTest {
