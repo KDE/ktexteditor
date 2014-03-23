@@ -72,7 +72,7 @@ class View;
  * \endcode
  *
  * \see TextHintProvider
- * \since KDE 4.11
+ * \since 4.11
  */
 class KTEXTEDITOR_EXPORT TextHintInterface
 {

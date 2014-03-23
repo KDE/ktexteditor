@@ -101,7 +101,7 @@ class Document;
  * This way, it is unlikely the user misses a notification.
  *
  * @author Dominik Haumann \<dhaumann@kde.org\>
- * @since KDE 4.11
+ * @since 4.11
  */
 class KTEXTEDITOR_EXPORT Message : public QObject
 {

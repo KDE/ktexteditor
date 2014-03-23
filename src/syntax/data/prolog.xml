@@ -130,7 +130,7 @@ All bugs except three by the author. !FOLD THIS AWAY if long comments annoy you.
 BUG - Nobody's perfect - If I knew about the bug you found, it would have been
       fixed already.
  one- Takes a "shebang" at the start of text on other than the 1st line (Kate).
- two- Indentation-based folding is not reliable (Kate; fixed in KDE 4.9?).
+ two- Indentation-based folding is not reliable (Kate; fixed in kdelibs 4.9?).
  three- Folding is sometimes broken (Kate?).  See SOLUTIONS below.
   4 - An optional leading sign is not highlighted as part of the number.
   5 - A float w/o fractional part and exponent is highlighted as an integer.

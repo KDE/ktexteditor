@@ -452,7 +452,7 @@ Q_SIGNALS:
      *                  else the code-completion will be completely broken to the user.
      *                  Consider that there may always be additional completion-models apart from yours.
      *
-     * @since KDE 4.3
+     * @since 4.3
      */
     void waitForReset();
 

@@ -218,7 +218,7 @@ public:
      * The following functions allow for QAction%s to be associated with attributes,
      * and thus with ranges which use this attribute.
      *
-     * \note This feature is currently not implemented (ETA KDE 4.1).
+     * \note This feature is currently not implemented.
      * \{
      */
     /**
