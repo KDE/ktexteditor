@@ -54,18 +54,6 @@ DocumentCursor::DocumentCursor(const DocumentCursor &other)
 {
 }
 
-DocumentCursor &DocumentCursor::operator= (const DocumentCursor &other)
-{
-    m_document = other.m_document;
-    m_cursor = other.m_cursor;
-    return *this;
-}
-
-KTextEditor::Document *DocumentCursor::document() const
-{
-    return m_document;
-}
-
 void DocumentCursor::setPosition(const KTextEditor::Cursor &position)
 {
     if (position.isValid()) {
@@ -73,20 +61,6 @@ void DocumentCursor::setPosition(const KTextEditor::Cursor &position)
     } else {
         m_cursor = KTextEditor::Cursor::invalid();
     }
-}
-
-int DocumentCursor::line() const
-{
-    return m_cursor.line();
-}
-
-int DocumentCursor::column() const
-{
-    return m_cursor.column();
-}
-
-DocumentCursor::~DocumentCursor()
-{
 }
 
 void DocumentCursor::makeValid()
@@ -100,12 +74,13 @@ void DocumentCursor::makeValid()
         m_cursor = m_document->documentEnd();
     } else if (col > m_document->lineLength(line)) {
         m_cursor.setColumn(m_document->lineLength(line));
+    } else if (col < 0) {
+        m_cursor.setColumn(0);
+    } else if (!isValidTextPosition()) {
+        // inside a unicode surrogate (utf-32 character)
+        // -> move half one char left to the start of the utf-32 char
+        m_cursor.setColumn(col - 1);
     }
-// TODO KDE5 if QChar::isLowSurrogate() -> move one to the left.
-//   } else if (m_document->characterAt(m_cursor).isLowSurrogate()) {
-//     Q_ASSERT(col > 0);
-//     m_cursor.setColumn(col - 1);
-//   }
 
     Q_ASSERT(isValidTextPosition());
 }
@@ -235,16 +210,6 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
         setPosition(c);
     }
     return true;
-}
-
-const Cursor &DocumentCursor::toCursor() const
-{
-    return m_cursor;
-}
-
-DocumentCursor::operator const Cursor &() const
-{
-    return m_cursor;
 }
 
 }

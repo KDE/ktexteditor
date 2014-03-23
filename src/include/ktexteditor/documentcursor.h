@@ -115,7 +115,9 @@ public:
      * Gets the document to which this cursor is bound.
      * \return a pointer to the document
      */
-    Document *document() const;
+    inline Document *document() const {
+        return m_document;
+    }
 
     /**
      * Set the current cursor position to \e position.
@@ -130,18 +132,24 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    int line() const;
+    inline int line() const {
+        return m_cursor.line();
+    }
 
     /**
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    int column() const;
+    inline int column() const {
+        return m_cursor.column();
+    }
 
     /**
      * Destruct the moving cursor.
      */
-    ~DocumentCursor();
+    ~DocumentCursor()
+    {
+    }
 
     //
     // forbidden stuff
@@ -286,13 +294,17 @@ public:
      * Convert this clever cursor into a dumb one.
      * @return normal cursor
      */
-    const Cursor &toCursor() const;
+    inline Cursor toCursor() const {
+        return m_cursor;
+    }
 
     /**
      * Convert this clever cursor into a dumb one. Equal to toCursor, allowing to use implicit conversion.
      * @return normal cursor
      */
-    operator const Cursor &() const;
+    inline operator Cursor () const {
+        return m_cursor;
+    }
 
     //
     // operators for: DocumentCursor <-> DocumentCursor
@@ -301,7 +313,11 @@ public:
      * Assignment operator. Same as the copy constructor. Make sure that
      * the assigned Document is a valid document pointer.
      */
-    DocumentCursor &operator= (const DocumentCursor &other);
+    DocumentCursor &operator= (const DocumentCursor &other) {
+        m_document = other.m_document;
+        m_cursor = other.m_cursor;
+        return *this;
+    }
 
     /**
      * Equality operator.
