@@ -41,8 +41,6 @@
 #include <KConfigGroup>
 #include <KMessageBox>
 
-#include <ktexteditor/highlightinterface.h>
-
 #include <QSet>
 #include <QStringList>
 #include <QTextStream>
@@ -833,7 +831,7 @@ void KateHighlighting::createKateExtendedAttribute(QList<KateExtendedAttribute::
 
     // If no highlighting is selected or we have no attributes we need only one default.
     if (noHl || list.isEmpty()) {
-        list.append(KateExtendedAttribute::Ptr(new KateExtendedAttribute(i18n("Normal Text"), KTextEditor::HighlightInterface::dsNormal)));
+        list.append(KateExtendedAttribute::Ptr(new KateExtendedAttribute(i18n("Normal Text"), KTextEditor::dsNormal)));
     }
 }
 

@@ -118,7 +118,7 @@ int KateHlManager::nameFind(const QString &name)
 
 int KateHlManager::defaultStyleCount()
 {
-    return HighlightInterface::DS_COUNT;
+    return KTextEditor::dsError;
 }
 
 QString KateHlManager::defaultStyleName(int n, bool translateNames)
@@ -217,90 +217,90 @@ int KateHlManager::defaultStyleNameToIndex(const QString &name)
     // Normal text and source code 
     //
     if (name == QLatin1String("dsNormal")) {
-        return KTextEditor::HighlightInterface::dsNormal;
+        return KTextEditor::dsNormal;
     } else if (name == QLatin1String("dsKeyword")) {
-        return KTextEditor::HighlightInterface::dsKeyword;
+        return KTextEditor::dsKeyword;
     } else if (name == QLatin1String("dsFunction")) {
-        return KTextEditor::HighlightInterface::dsFunction;
+        return KTextEditor::dsFunction;
     } else if (name == QLatin1String("dsVariable")) {
-        return KTextEditor::HighlightInterface::dsVariable;
+        return KTextEditor::dsVariable;
     } else if (name == QLatin1String("dsControlFlow")) {
-        return KTextEditor::HighlightInterface::dsControlFlow;
+        return KTextEditor::dsControlFlow;
     } else if (name == QLatin1String("dsOperator")) {
-        return KTextEditor::HighlightInterface::dsOperator;
+        return KTextEditor::dsOperator;
     } else if (name == QLatin1String("dsBuiltIn")) {
-        return KTextEditor::HighlightInterface::dsBuiltIn;
+        return KTextEditor::dsBuiltIn;
     } else if (name == QLatin1String("dsExtension")) {
-        return KTextEditor::HighlightInterface::dsExtension;
+        return KTextEditor::dsExtension;
     } else if (name == QLatin1String("dsPreprocessor")) {
-        return KTextEditor::HighlightInterface::dsPreprocessor;
+        return KTextEditor::dsPreprocessor;
     } else if (name == QLatin1String("dsAttribute")) {
-        return KTextEditor::HighlightInterface::dsAttribute;
+        return KTextEditor::dsAttribute;
     }
 
     //
     // Strings & Characters
     //
     if (name == QLatin1String("dsChar")) {
-        return KTextEditor::HighlightInterface::dsChar;
+        return KTextEditor::dsChar;
     } else if (name == QLatin1String("dsSpecialChar")) {
-        return KTextEditor::HighlightInterface::dsSpecialChar;
+        return KTextEditor::dsSpecialChar;
     } else if (name == QLatin1String("dsString")) {
-        return KTextEditor::HighlightInterface::dsString;
+        return KTextEditor::dsString;
     } else if (name == QLatin1String("dsVerbatimString")) {
-        return KTextEditor::HighlightInterface::dsVerbatimString;
+        return KTextEditor::dsVerbatimString;
     } else if (name == QLatin1String("dsSpecialString")) {
-        return KTextEditor::HighlightInterface::dsSpecialString;
+        return KTextEditor::dsSpecialString;
     } else if (name == QLatin1String("dsImport")) {
-        return KTextEditor::HighlightInterface::dsImport;
+        return KTextEditor::dsImport;
     }
 
     //
     // Numbers, Types & Constants
     //
     if (name == QLatin1String("dsDataType")) {
-        return KTextEditor::HighlightInterface::dsDataType;
+        return KTextEditor::dsDataType;
     } else if (name == QLatin1String("dsDecVal")) {
-        return KTextEditor::HighlightInterface::dsDecVal;
+        return KTextEditor::dsDecVal;
     } else if (name == QLatin1String("dsBaseN")) {
-        return KTextEditor::HighlightInterface::dsBaseN;
+        return KTextEditor::dsBaseN;
     } else if (name == QLatin1String("dsFloat")) {
-        return KTextEditor::HighlightInterface::dsFloat;
+        return KTextEditor::dsFloat;
     } else if (name == QLatin1String("dsConstant")) {
-        return KTextEditor::HighlightInterface::dsConstant;
+        return KTextEditor::dsConstant;
     }
 
     //
     // Comments & Documentation
     //
     if (name == QLatin1String("dsComment")) {
-        return KTextEditor::HighlightInterface::dsComment;
+        return KTextEditor::dsComment;
     } else if (name == QLatin1String("dsDocumentation")) {
-        return KTextEditor::HighlightInterface::dsDocumentation;
+        return KTextEditor::dsDocumentation;
     } else if (name == QLatin1String("dsAnnotation")) {
-        return KTextEditor::HighlightInterface::dsAnnotation;
+        return KTextEditor::dsAnnotation;
     } else if (name == QLatin1String("dsCommentVar")) {
-        return KTextEditor::HighlightInterface::dsCommentVar;
+        return KTextEditor::dsCommentVar;
     } else if (name == QLatin1String("dsRegionMarker")) {
-        return KTextEditor::HighlightInterface::dsRegionMarker;
+        return KTextEditor::dsRegionMarker;
     } else if (name == QLatin1String("dsInformation")) {
-        return KTextEditor::HighlightInterface::dsInformation;
+        return KTextEditor::dsInformation;
     } else if (name == QLatin1String("dsWarning")) {
-        return KTextEditor::HighlightInterface::dsWarning;
+        return KTextEditor::dsWarning;
     } else if (name == QLatin1String("dsAlert")) {
-        return KTextEditor::HighlightInterface::dsAlert;
+        return KTextEditor::dsAlert;
     }
 
     //
     // Misc
     //
     if (name == QLatin1String("dsOthers")) {
-        return KTextEditor::HighlightInterface::dsOthers;
+        return KTextEditor::dsOthers;
     } else if (name == QLatin1String("dsError")) {
-        return KTextEditor::HighlightInterface::dsError;
+        return KTextEditor::dsError;
     }
 
-    return KTextEditor::HighlightInterface::dsNormal;
+    return KTextEditor::dsNormal;
 }
 
 void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, KConfig *cfg)
@@ -308,7 +308,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     KColorScheme scheme(QPalette::Active, KColorScheme::View);
     KColorScheme schemeSelected(QPalette::Active, KColorScheme::Selection);
 
-    ///NOTE: it's important to append in the order of the HighlightInterface::DefaultStyle
+    ///NOTE: it's important to append in the order of the KTextEditor::DefaultStyle
     ///      enum, to make KTextEditor::DocumentPrivate::defaultStyle() work properly.
 
     {

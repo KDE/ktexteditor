@@ -22,6 +22,8 @@
 #define KDELIBS_KTEXTEDITOR_VIEW_H
 
 #include <ktexteditor_export.h>
+#include <ktexteditor/attribute.h>
+#include <ktexteditor/document.h>
 #include <ktexteditor/range.h>
 
 // gui merging
@@ -680,6 +682,21 @@ public:
      * \see readSessionConfig()
      */
     virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
+
+public:
+    /**
+     * Returns the attribute for the default style \p defaultStyle.
+     * @param defaultStyle default style to get the attribute for
+     * @see KTextEditor::Attribute
+     */
+    virtual KTextEditor::Attribute::Ptr defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const = 0;
+
+    /**
+     * Get the list of AttributeBlocks for a given \p line in the document.
+     *
+     * \return list of AttributeBlocks for given \p line.
+     */
+    virtual QList<KTextEditor::AttributeBlock> lineAttributes(int line) = 0;
 
 private:
     /**

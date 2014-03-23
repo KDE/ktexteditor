@@ -3438,3 +3438,42 @@ void KTextEditor::ViewPrivate::printPreview()
 }
 
 //END
+
+KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const
+{
+    KateRendererConfig * renderConfig = const_cast<KTextEditor::ViewPrivate*>(this)->renderer()->config();
+
+    KTextEditor::Attribute::Ptr style = m_doc->highlight()->attributes(renderConfig->schema()).at(defaultStyle);
+    if (!style->hasProperty(QTextFormat::BackgroundBrush)) {
+        // make sure the returned style has the default background color set
+        style = new KTextEditor::Attribute(*style);
+        style->setBackground(QBrush(renderConfig->backgroundColor()));
+    }
+    return style;
+}
+
+QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int line)
+{
+    QList<KTextEditor::AttributeBlock> attribs;
+
+    if (line < 0 || line >= m_doc->lines())
+        return attribs;
+
+    Kate::TextLine kateLine = m_doc->kateTextLine(line);
+    if (!kateLine) {
+        return attribs;
+    }
+
+    const QVector<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
+    for (int i = 0; i < intAttrs.size(); ++i) {
+        if (intAttrs[i].length > 0 && intAttrs[i].attributeValue > 0) {
+            attribs << KTextEditor::AttributeBlock(
+                        intAttrs.at(i).offset,
+                        intAttrs.at(i).length,
+                        renderer()->attribute(intAttrs.at(i).attributeValue)
+                    );
+        }
+    }
+
+    return attribs;
+}

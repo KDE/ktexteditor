@@ -27,7 +27,6 @@
 #include "katescript.h"
 #include "katepartdebug.h"
 
-#include <ktexteditor/highlightinterface.h>
 #include <ktexteditor/movingcursor.h>
 
 #include <QScriptEngine>
@@ -81,7 +80,7 @@ bool KateScriptDocument::isComment(const KTextEditor::Cursor &cursor)
 bool KateScriptDocument::isString(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::HighlightInterface::dsString;
+    return defaultStyle == KTextEditor::dsString;
 }
 
 bool KateScriptDocument::isString(const KTextEditor::Cursor &cursor)
@@ -92,7 +91,7 @@ bool KateScriptDocument::isString(const KTextEditor::Cursor &cursor)
 bool KateScriptDocument::isRegionMarker(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::HighlightInterface::dsRegionMarker;
+    return defaultStyle == KTextEditor::dsRegionMarker;
 }
 
 bool KateScriptDocument::isRegionMarker(const KTextEditor::Cursor &cursor)
@@ -103,7 +102,7 @@ bool KateScriptDocument::isRegionMarker(const KTextEditor::Cursor &cursor)
 bool KateScriptDocument::isChar(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::HighlightInterface::dsChar;
+    return defaultStyle == KTextEditor::dsChar;
 }
 
 bool KateScriptDocument::isChar(const KTextEditor::Cursor &cursor)
@@ -114,7 +113,7 @@ bool KateScriptDocument::isChar(const KTextEditor::Cursor &cursor)
 bool KateScriptDocument::isOthers(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::HighlightInterface::dsOthers;
+    return defaultStyle == KTextEditor::dsOthers;
 }
 
 bool KateScriptDocument::isOthers(const KTextEditor::Cursor &cursor)
@@ -757,11 +756,11 @@ QString KateScriptDocument::setVariable(const QString &s, const QString &v)
 
 bool KateScriptDocument::_isCode(int defaultStyle)
 {
-    return (defaultStyle != KTextEditor::HighlightInterface::dsComment
-            && defaultStyle != KTextEditor::HighlightInterface::dsString
-            && defaultStyle != KTextEditor::HighlightInterface::dsRegionMarker
-            && defaultStyle != KTextEditor::HighlightInterface::dsChar
-            && defaultStyle != KTextEditor::HighlightInterface::dsOthers);
+    return (defaultStyle != KTextEditor::dsComment
+            && defaultStyle != KTextEditor::dsString
+            && defaultStyle != KTextEditor::dsRegionMarker
+            && defaultStyle != KTextEditor::dsChar
+            && defaultStyle != KTextEditor::dsOthers);
 }
 
 void KateScriptDocument::indent(KTextEditor::Range range, int change)

@@ -39,8 +39,6 @@
 #include <QBrush>
 #include <QRegularExpression>
 
-#include <ktexteditor/highlightinterface.h>
-
 static const QChar tabChar(QLatin1Char('\t'));
 static const QChar spaceChar(QLatin1Char(' '));
 static const QChar nbSpaceChar(0xa0); // non-breaking space
@@ -444,7 +442,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
             }
 
             backgroundAttribute->setBackground(config()->selectionColor());
-            backgroundAttribute->setForeground(attribute(KTextEditor::HighlightInterface::dsNormal)->selectedForeground().color());
+            backgroundAttribute->setForeground(attribute(KTextEditor::dsNormal)->selectedForeground().color());
 
             // Create a range for the current selection
             if (completionHighlight && completionSelected) {
@@ -589,7 +587,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             // We may have changed the pen, be absolutely sure it gets set back to
             // normal foreground color before drawing text for text that does not
             // set the pen color
-            paint.setPen(attribute(KTextEditor::HighlightInterface::dsNormal)->foreground().color());
+            paint.setPen(attribute(KTextEditor::dsNormal)->foreground().color());
             // Draw the text :)
             if (drawSelection) {
                 // FIXME toVector() may be a performance issue
@@ -800,7 +798,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 }
                 // still no color found, fall back to default style
                 if (!color.isValid()) {
-                    color = attribute(KTextEditor::HighlightInterface::dsNormal)->foreground().color();
+                    color = attribute(KTextEditor::dsNormal)->foreground().color();
                 }
             }
 

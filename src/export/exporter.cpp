@@ -28,7 +28,6 @@
 
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
-#include <ktexteditor/highlightinterface.h>
 
 #include <KLocalizedString>
 
@@ -92,17 +91,12 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
 
     exporter.reset(new HTMLExporter(m_view, output, !useSelection));
 
-    KTextEditor::HighlightInterface *hiface = qobject_cast<KTextEditor::HighlightInterface *>(m_view->document());
-
     const KTextEditor::Attribute::Ptr noAttrib(0);
 
     for (int i = range.start().line(); (i <= range.end().line()) && (i < m_view->document()->lines()); ++i) {
         const QString &line = m_view->document()->line(i);
 
-        QList<KTextEditor::HighlightInterface::AttributeBlock> attribs;
-        if (hiface) {
-            attribs = hiface->lineAttributes(i);
-        }
+        QList<KTextEditor::AttributeBlock> attribs = m_view->lineAttributes(i);
 
         int lineStart = 0;
         int remainingChars = line.length();
@@ -117,7 +111,7 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
 
         int handledUntil = lineStart;
 
-        foreach(const KTextEditor::HighlightInterface::AttributeBlock & block, attribs) {
+        foreach (const KTextEditor::AttributeBlock & block, attribs) {
             // honor (block-) selections
             if (block.start + block.length <= lineStart) {
                 continue;

@@ -28,7 +28,6 @@
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/movingrange.h>
-#include <ktexteditor/highlightinterface.h>
 #include "kateconfig.h"
 #include "katedocument.h"
 #include <katebuffer.h>
@@ -347,15 +346,8 @@ void KateScrollBar::updatePixmap()
     //qCDebug(LOG_PART) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
     //qCDebug(LOG_PART) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
-    QColor backgroundColor;
-    QColor defaultTextColor;
-    if (m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)) {
-        backgroundColor = m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)->background().color();
-        defaultTextColor = m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)->foreground().color();
-    } else {
-        backgroundColor = palette().color(QPalette::Base);
-        defaultTextColor = palette().color(QPalette::Text);
-    }
+    const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
+    const QColor defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
     QColor modifiedLineColor = m_view->renderer()->config()->modifiedLineColor();
     QColor savedLineColor = m_view->renderer()->config()->savedLineColor();
     // move the modified line color away from the background color
@@ -517,16 +509,9 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     m_mapSliderRect = visibleRect;
 
     // calculate colors
-    QColor backgroundColor;
-    QColor foregroundColor;
-    // TODO KDE5: If HighlightInterface is a View interface, use HighlightInterface::defaultStyle() again.
-    if (m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)) {
-        backgroundColor = m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)->background().color();
-        foregroundColor = m_doc->defaultStyle(KTextEditor::HighlightInterface::dsNormal)->foreground().color();
-    } else {
-        backgroundColor = palette().color(QPalette::Base);
-        foregroundColor = palette().color(QPalette::Text);
-    }
+    const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+
     int backgroundLightness = backgroundColor.lightness();
     int foregroundLightness = foregroundColor.lightness();
     int lighnessDiff = (foregroundLightness - backgroundLightness);

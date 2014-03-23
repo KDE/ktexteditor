@@ -23,8 +23,6 @@
 
 #include "kateextendedattribute.h"
 
-#include <ktexteditor/highlightinterface.h>
-
 KateExtendedAttribute::KateExtendedAttribute(const QString &name, int defaultStyleIndex)
 {
     setName(name);

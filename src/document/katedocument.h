@@ -34,7 +34,6 @@
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/annotationinterface.h>
-#include <ktexteditor/highlightinterface.h>
 #include <ktexteditor/movinginterface.h>
 #include <ktexteditor/recoveryinterface.h>
 #include <ktexteditor/message.h>
@@ -84,7 +83,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     public KTextEditor::ModificationInterface,
     public KTextEditor::ConfigInterface,
     public KTextEditor::AnnotationInterface,
-    public KTextEditor::HighlightInterface,
     public KTextEditor::MovingInterface,
     public KTextEditor::RecoveryInterface,
     private KTextEditor::MovingRangeFeedback
@@ -94,7 +92,6 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
-    Q_INTERFACES(KTextEditor::HighlightInterface)
     Q_INTERFACES(KTextEditor::MovingInterface)
     Q_INTERFACES(KTextEditor::RecoveryInterface)
 
@@ -384,6 +381,11 @@ private:
      * Access to the mode/highlighting subsystem
      */
 public:
+    /**
+     * @copydoc KTextEditor::Document::defaultStyleAt()
+     */
+    KTextEditor::DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const Q_DECL_OVERRIDE;
+
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
@@ -1133,14 +1135,12 @@ public:
     virtual void discardDataRecovery();
 
     //
-    // KTextEditor::HighlightInterface
+    // Highlighting information
     //
 public:
-    virtual KTextEditor::Attribute::Ptr defaultStyle(const KTextEditor::HighlightInterface::DefaultStyle ds) const;
-    virtual QList< KTextEditor::HighlightInterface::AttributeBlock > lineAttributes(const unsigned int line);
     virtual QStringList embeddedHighlightingModes() const;
     virtual QString highlightingModeAt(const KTextEditor::Cursor &position);
-    // TODO KDE5: maybe make available in HighlightInterface for convenience
+    // TODO KDE5: move to View
     virtual KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor &position);
 
     //

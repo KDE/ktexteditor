@@ -25,7 +25,6 @@
 #include "kateview.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
-#include <ktexteditor/highlightinterface.h>
 
 #include <iostream>
 #include <KLocalizedString>
@@ -189,37 +188,37 @@ bool KateScript::load()
     m_engine->globalObject().setProperty(QLatin1String("i18np"), m_engine->newFunction(Kate::Script::i18np));
 
     // register default styles as ds* global properties
-    m_engine->globalObject().setProperty(QLatin1String("dsNormal"), KTextEditor::HighlightInterface::dsNormal);
-    m_engine->globalObject().setProperty(QLatin1String("dsKeyword"), KTextEditor::HighlightInterface::dsKeyword);
-    m_engine->globalObject().setProperty(QLatin1String("dsFunction"), KTextEditor::HighlightInterface::dsFunction);
-    m_engine->globalObject().setProperty(QLatin1String("dsVariable"), KTextEditor::HighlightInterface::dsVariable);
-    m_engine->globalObject().setProperty(QLatin1String("dsControlFlow"), KTextEditor::HighlightInterface::dsControlFlow);
-    m_engine->globalObject().setProperty(QLatin1String("dsOperator"), KTextEditor::HighlightInterface::dsOperator);
-    m_engine->globalObject().setProperty(QLatin1String("dsBuiltIn"), KTextEditor::HighlightInterface::dsBuiltIn);
-    m_engine->globalObject().setProperty(QLatin1String("dsExtension"), KTextEditor::HighlightInterface::dsExtension);
-    m_engine->globalObject().setProperty(QLatin1String("dsPreprocessor"), KTextEditor::HighlightInterface::dsPreprocessor);
-    m_engine->globalObject().setProperty(QLatin1String("dsAttribute"), KTextEditor::HighlightInterface::dsAttribute);
-    m_engine->globalObject().setProperty(QLatin1String("dsChar"), KTextEditor::HighlightInterface::dsChar);
-    m_engine->globalObject().setProperty(QLatin1String("dsSpecialChar"), KTextEditor::HighlightInterface::dsSpecialChar);
-    m_engine->globalObject().setProperty(QLatin1String("dsString"), KTextEditor::HighlightInterface::dsString);
-    m_engine->globalObject().setProperty(QLatin1String("dsVerbatimString"), KTextEditor::HighlightInterface::dsVerbatimString);
-    m_engine->globalObject().setProperty(QLatin1String("dsSpecialString"), KTextEditor::HighlightInterface::dsSpecialString);
-    m_engine->globalObject().setProperty(QLatin1String("dsImport"), KTextEditor::HighlightInterface::dsImport);
-    m_engine->globalObject().setProperty(QLatin1String("dsDataType"), KTextEditor::HighlightInterface::dsDataType);
-    m_engine->globalObject().setProperty(QLatin1String("dsDecVal"), KTextEditor::HighlightInterface::dsDecVal);
-    m_engine->globalObject().setProperty(QLatin1String("dsBaseN"), KTextEditor::HighlightInterface::dsBaseN);
-    m_engine->globalObject().setProperty(QLatin1String("dsFloat"), KTextEditor::HighlightInterface::dsFloat);
-    m_engine->globalObject().setProperty(QLatin1String("dsConstant"), KTextEditor::HighlightInterface::dsConstant);
-    m_engine->globalObject().setProperty(QLatin1String("dsComment"), KTextEditor::HighlightInterface::dsComment);
-    m_engine->globalObject().setProperty(QLatin1String("dsDocumentation"), KTextEditor::HighlightInterface::dsDocumentation);
-    m_engine->globalObject().setProperty(QLatin1String("dsAnnotation"), KTextEditor::HighlightInterface::dsAnnotation);
-    m_engine->globalObject().setProperty(QLatin1String("dsCommentVar"), KTextEditor::HighlightInterface::dsCommentVar);
-    m_engine->globalObject().setProperty(QLatin1String("dsRegionMarker"), KTextEditor::HighlightInterface::dsRegionMarker);
-    m_engine->globalObject().setProperty(QLatin1String("dsInformation"), KTextEditor::HighlightInterface::dsInformation);
-    m_engine->globalObject().setProperty(QLatin1String("dsWarning"), KTextEditor::HighlightInterface::dsWarning);
-    m_engine->globalObject().setProperty(QLatin1String("dsAlert"), KTextEditor::HighlightInterface::dsAlert);
-    m_engine->globalObject().setProperty(QLatin1String("dsOthers"), KTextEditor::HighlightInterface::dsOthers);
-    m_engine->globalObject().setProperty(QLatin1String("dsError"), KTextEditor::HighlightInterface::dsError);
+    m_engine->globalObject().setProperty(QLatin1String("dsNormal"), KTextEditor::dsNormal);
+    m_engine->globalObject().setProperty(QLatin1String("dsKeyword"), KTextEditor::dsKeyword);
+    m_engine->globalObject().setProperty(QLatin1String("dsFunction"), KTextEditor::dsFunction);
+    m_engine->globalObject().setProperty(QLatin1String("dsVariable"), KTextEditor::dsVariable);
+    m_engine->globalObject().setProperty(QLatin1String("dsControlFlow"), KTextEditor::dsControlFlow);
+    m_engine->globalObject().setProperty(QLatin1String("dsOperator"), KTextEditor::dsOperator);
+    m_engine->globalObject().setProperty(QLatin1String("dsBuiltIn"), KTextEditor::dsBuiltIn);
+    m_engine->globalObject().setProperty(QLatin1String("dsExtension"), KTextEditor::dsExtension);
+    m_engine->globalObject().setProperty(QLatin1String("dsPreprocessor"), KTextEditor::dsPreprocessor);
+    m_engine->globalObject().setProperty(QLatin1String("dsAttribute"), KTextEditor::dsAttribute);
+    m_engine->globalObject().setProperty(QLatin1String("dsChar"), KTextEditor::dsChar);
+    m_engine->globalObject().setProperty(QLatin1String("dsSpecialChar"), KTextEditor::dsSpecialChar);
+    m_engine->globalObject().setProperty(QLatin1String("dsString"), KTextEditor::dsString);
+    m_engine->globalObject().setProperty(QLatin1String("dsVerbatimString"), KTextEditor::dsVerbatimString);
+    m_engine->globalObject().setProperty(QLatin1String("dsSpecialString"), KTextEditor::dsSpecialString);
+    m_engine->globalObject().setProperty(QLatin1String("dsImport"), KTextEditor::dsImport);
+    m_engine->globalObject().setProperty(QLatin1String("dsDataType"), KTextEditor::dsDataType);
+    m_engine->globalObject().setProperty(QLatin1String("dsDecVal"), KTextEditor::dsDecVal);
+    m_engine->globalObject().setProperty(QLatin1String("dsBaseN"), KTextEditor::dsBaseN);
+    m_engine->globalObject().setProperty(QLatin1String("dsFloat"), KTextEditor::dsFloat);
+    m_engine->globalObject().setProperty(QLatin1String("dsConstant"), KTextEditor::dsConstant);
+    m_engine->globalObject().setProperty(QLatin1String("dsComment"), KTextEditor::dsComment);
+    m_engine->globalObject().setProperty(QLatin1String("dsDocumentation"), KTextEditor::dsDocumentation);
+    m_engine->globalObject().setProperty(QLatin1String("dsAnnotation"), KTextEditor::dsAnnotation);
+    m_engine->globalObject().setProperty(QLatin1String("dsCommentVar"), KTextEditor::dsCommentVar);
+    m_engine->globalObject().setProperty(QLatin1String("dsRegionMarker"), KTextEditor::dsRegionMarker);
+    m_engine->globalObject().setProperty(QLatin1String("dsInformation"), KTextEditor::dsInformation);
+    m_engine->globalObject().setProperty(QLatin1String("dsWarning"), KTextEditor::dsWarning);
+    m_engine->globalObject().setProperty(QLatin1String("dsAlert"), KTextEditor::dsAlert);
+    m_engine->globalObject().setProperty(QLatin1String("dsOthers"), KTextEditor::dsOthers);
+    m_engine->globalObject().setProperty(QLatin1String("dsError"), KTextEditor::dsError);
 
     // register scripts itself
     QScriptValue result = m_engine->evaluate(source, m_url);

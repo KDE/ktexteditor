@@ -1000,6 +1000,19 @@ private:
      * the mode selection menu, used by view + status bar
      */
     KateModeMenu *m_modeAction;
+
+public:
+    /**
+     * Returns the attribute for the default style \p defaultStyle.
+     */
+    Attribute::Ptr defaultStyleAttribute(DefaultStyle defaultStyle) const Q_DECL_OVERRIDE;
+
+    /**
+     * Get the list of AttributeBlocks for a given \p line in the document.
+     *
+     * \return list of AttributeBlocks for given \p line.
+     */
+    virtual QList<KTextEditor::AttributeBlock> lineAttributes(int line) Q_DECL_OVERRIDE;
 };
 
 }

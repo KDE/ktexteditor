@@ -25,8 +25,6 @@
 #include "katetextline.h"
 #include "kateextendedattribute.h"
 
-#include <ktexteditor/highlightinterface.h>
-
 #include <KConfig>
 #include <KActionMenu>
 
@@ -120,7 +118,7 @@ public:
     /**
      * Return the index for the default style @p name.
      * @param name @e untranslated default style
-     * @see KTextEditor::HighlightInterface::DefaultStyles)
+     * @see KTextEditor::DefaultStyles)
      */
     static int defaultStyleNameToIndex(const QString &name);
 

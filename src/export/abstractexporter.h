@@ -28,7 +28,6 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 #include <ktexteditor/configinterface.h>
-#include <ktexteditor/highlightinterface.h>
 
 class AbstractExporter
 {
@@ -38,7 +37,8 @@ public:
     AbstractExporter(KTextEditor::View *view,
                      QTextStream &output, const bool encapsulate = false)
         : m_view(view), m_output(output), m_encapsulate(encapsulate),
-          m_defaultAttribute(0) {
+          m_defaultAttribute(0)
+    {
         QColor defaultBackground;
         if (KTextEditor::ConfigInterface *ciface = qobject_cast< KTextEditor::ConfigInterface * >(m_view)) {
             QVariant variant = ciface->configValue(QLatin1String("background-color"));
@@ -46,10 +46,9 @@ public:
                 defaultBackground = variant.value<QColor>();
             }
         }
-        if (KTextEditor::HighlightInterface *hiface = qobject_cast< KTextEditor::HighlightInterface * >(m_view->document())) {
-            m_defaultAttribute = hiface->defaultStyle(KTextEditor::HighlightInterface::dsNormal);
-            m_defaultAttribute->setBackground(QBrush(defaultBackground));
-        }
+
+        m_defaultAttribute = view->defaultStyleAttribute(KTextEditor::dsNormal);
+        m_defaultAttribute->setBackground(QBrush(defaultBackground));
     }
 
     /// Gets called after everything got exported.
@@ -64,8 +63,6 @@ public:
     virtual void closeLine(const bool lastLine) = 0;
 
     /// Export \p text with given text attribute \p attrib.
-    /// NOTE: Check \p attrib, it might be null for KTextEditors that do not implement the
-    ///       HighlightInterface.
     virtual void exportText(const QString &text, const KTextEditor::Attribute::Ptr &attrib) = 0;
 
 protected:

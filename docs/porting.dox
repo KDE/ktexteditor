@@ -92,6 +92,13 @@ The following interfaces were changed:
    This interface was merged into \p KTextEditor::Command.
    KTextEditor::CommandExtension::flagCompletions() was removed since it was
    never implemented and therefore unused.
+ - \p KTextEditor::HighlightInterface \n
+   The default styles are now in the namespace \p KTextEditor::DefaultStyle.
+   The rest of this interface was merged into the \p KTextEditor::Document and \p KTextEditor::View, see:
+   - \p KTextEditor::Document::defaultStyleAt()
+   - \p KTextEditor::View::defaultStyleAttribute()
+   - \p KTextEditor::View::lineAttributes()
+   Further, the AttributeBlock was moved to \p KTextEditor::AttributeBlock.
 
 \section kte_port_new New Interfaces
 The following interfaces are new:

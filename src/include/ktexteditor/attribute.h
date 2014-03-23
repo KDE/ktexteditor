@@ -330,7 +330,41 @@ private:
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Attribute::Effects)
 
+/**
+ * An AttributeBlock represents an Attribute with its
+ * dimension in a given line.
+ *
+ * \see lineAttributes()
+ */
+class AttributeBlock
+{
+public:
+    /**
+     * Constructor of AttributeBlock.
+     */
+    AttributeBlock(const int _start, const int _length, const Attribute::Ptr &_attribute)
+        : start(_start), length(_length), attribute(_attribute) {
+    }
+
+    /**
+     * The column this attribute starts at.
+     */
+    int start;
+
+    /**
+     * The number of columns this attribute spans.
+     */
+    int length;
+
+    /**
+     * The attribute for the current range.
+     */
+    Attribute::Ptr attribute;
+};
+
 }
+
+Q_DECLARE_TYPEINFO(KTextEditor::AttributeBlock, Q_MOVABLE_TYPE);
 
 #endif
 

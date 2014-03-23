@@ -15,11 +15,6 @@ KTE::HighlightInterface:
 KTE::ViewCursor
 - factor WrappingCursor/BoundedCursor into a public ViewCursor
 
-KTE::HighlightInterface:
-- add defaultStyleAt(Cursor) into KTE::Document
-- move defaultStyleAttribute(enum ) into KTE::View
-- lineAttributes() + AttributeBlock: move to KTE::View
-
 KTE::ModificationInterface
 - merge enum OnDiskModified and OnDiskCreated into OnDiskModified
 - merge entire interface into KTE::Document ?

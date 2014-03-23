@@ -44,6 +44,101 @@ class Message;
 class View;
 
 /**
+ * The following list all valid default styles that is used for the syntax
+ * highlighting files in the itemData's defStyleNum attribute.
+ * Not all default styles are used by a syntax highlighting file.
+ */
+enum DefaultStyle {
+    //
+    // normal text
+    //
+    /** Default for normal text and source code. */
+    dsNormal = 0,
+    /** Used for language keywords. */
+    dsKeyword,
+    /** Used for function definitions and function calls. */
+    dsFunction,
+    /** Used for variables, if applicable. */
+    dsVariable,
+    /** Used for control flow highlighting, e.g., if, then, else, return, continue. */
+    dsControlFlow,
+    /** Used for operators such as +, -, *, / and :: etc. */
+    dsOperator,
+    /** Used for built-in language classes and functions. */
+    dsBuiltIn,
+    /** Used for extensions, such as Qt or boost. */
+    dsExtension,
+    /** Used for preprocessor statements. */
+    dsPreprocessor,
+    /** Used for attributes of a function, e.g. \@override in Java. */
+    dsAttribute,
+
+    //
+    // Strings & Characters
+    //
+    /** Used for a single character. */
+    dsChar,
+    /** Used for an escaped character. */
+    dsSpecialChar,
+    /** Used for strings. */
+    dsString,
+    /** Used for verbatim strings such as HERE docs. */
+    dsVerbatimString,
+    /** Used for special strings such as regular expressions or LaTeX math mode. */
+    dsSpecialString,
+    /** Used for includes, imports and modules. */
+    dsImport,
+
+    //
+    // Number, Types & Constants
+    //
+    /** Used for data types such as int, char, float etc. */
+    dsDataType,
+    /** Used for decimal values. */
+    dsDecVal,
+    /** Used for numbers with base other than 10. */
+    dsBaseN,
+    /** Used for floating point numbers. */
+    dsFloat,
+    /** Used for language constants. */
+    dsConstant,
+
+    //
+    // Comments & Documentation
+    //
+    /** Used for normal comments. */
+    dsComment,
+    /** Used for comments that reflect API documentation. */
+    dsDocumentation,
+    /** Used for annotations in comments, e.g. \@param in Doxygen or JavaDoc. */
+    dsAnnotation,
+    /** Used to refer to variables in a comment, e.g. after \@param in Doxygen or JavaDoc. */
+    dsCommentVar,
+    /** Used for region merkers, typically defined by BEGIN/END. */
+    dsRegionMarker,
+    /** Used for information, e.g. the keyword \@note in Doxygen. */
+    dsInformation,
+    /** Used for warnings, e.g. the keyword \@warning in Doxygen. */
+    dsWarning,
+    /** Used for comment specials TODO and WARNING in comments. */
+    dsAlert,
+
+    //
+    // Misc
+    //
+    /** Used for attributes that do not match any of the other default styles. */
+    dsOthers,
+    /** Used to indicate wrong syntax. */
+    dsError
+
+    //
+    // WARNING: Whenever you add a default style to this list,
+    //          make sure to adapt KateHlManager::defaultStyleCount()
+    //
+};
+
+
+/**
  * \brief A KParts derived class representing a text document.
  *
  * Topics:
@@ -758,6 +853,22 @@ Q_SIGNALS:
      * Access to the mode/highlighting subsystem
      */
 public:
+    /**
+     * Get the default style of the character located at @p position.
+     * If @p position is not a valid text position, the default style
+     * DefaultStyle::dsNormal is returned.
+     *
+     * @note Further information about the colors of default styles depend on
+     *       the currently chosen schema. Since each View may have a different
+     *       color schema, the color information can be obtained through
+     *       View::defaultStyleAttribute() and View::lineAttributes().
+     *
+     * @param position text position
+     * @return default style, see enum KTextEditor::DefaultStyle
+     * @see View::defaultStyleAttribute(), View::lineAttributes()
+     */
+    virtual DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const = 0;
+
     /**
      * Return the name of the currently used mode
      * \return name of the used mode

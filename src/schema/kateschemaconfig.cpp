@@ -32,7 +32,6 @@
 #include "katestyletreewidget.h"
 #include "katecolortreewidget.h"
 #include "katepartdebug.h"
-#include "ktexteditor/highlightinterface.h"
 #include "katedefaultcolors.h"
 
 #include "ui_howtoimportschema.h"
@@ -501,8 +500,8 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // normal text and source code
     QTreeWidgetItem *parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Normal Text & Source Code"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::HighlightInterface::dsNormal;
-         i <= (int)KTextEditor::HighlightInterface::dsAttribute; ++i)
+    for (int i = (int)KTextEditor::dsNormal;
+         i <= (int)KTextEditor::dsAttribute; ++i)
     {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
@@ -510,8 +509,8 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // Number, Types & Constants
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Numbers, Types & Constants"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::HighlightInterface::dsDataType;
-         i <= (int)KTextEditor::HighlightInterface::dsConstant; ++i)
+    for (int i = (int)KTextEditor::dsDataType;
+         i <= (int)KTextEditor::dsConstant; ++i)
     {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
@@ -519,8 +518,8 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // strings & characters
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Strings & Characters"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::HighlightInterface::dsChar;
-         i <= (int)KTextEditor::HighlightInterface::dsImport; ++i)
+    for (int i = (int)KTextEditor::dsChar;
+         i <= (int)KTextEditor::dsImport; ++i)
     {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
@@ -528,8 +527,8 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // comments & documentation
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Comments & Documentation"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::HighlightInterface::dsComment;
-         i <= (int)KTextEditor::HighlightInterface::dsAlert; ++i)
+    for (int i = (int)KTextEditor::dsComment;
+         i <= (int)KTextEditor::dsAlert; ++i)
     {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
@@ -537,8 +536,8 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // Misc
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Miscellaneous"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::HighlightInterface::dsOthers;
-         i <= (int)KTextEditor::HighlightInterface::dsError; ++i)
+    for (int i = (int)KTextEditor::dsOthers;
+         i <= (int)KTextEditor::dsError; ++i)
     {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }

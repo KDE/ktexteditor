@@ -1600,6 +1600,22 @@ bool KTextEditor::DocumentPrivate::setMode(const QString &name)
     return true;
 }
 
+KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(const KTextEditor::Cursor &position) const
+{
+    // TODO, FIXME KDE5: in surrogate, use 2 bytes before
+    if (! isValidTextPosition(position)) {
+        return dsNormal;
+    }
+
+    int ds = const_cast<KTextEditor::DocumentPrivate*>(this)->
+        defStyleNum(position.line(), position.column());
+    if (ds < 0 || ds > static_cast<int>(dsError)) {
+        return dsNormal;
+    }
+
+    return static_cast<DefaultStyle>(ds);
+}
+
 QString KTextEditor::DocumentPrivate::mode() const
 {
     return m_fileType;
@@ -5443,56 +5459,8 @@ void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(const KTextEditor
 }
 
 //
-// KTextEditor::HighlightInterface
+// Highlighting information
 //
-
-KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::defaultStyle(const KTextEditor::HighlightInterface::DefaultStyle ds) const
-{
-    ///TODO: move attributes to document, they are not view-dependant
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
-    if (!view) {
-        qCWarning(LOG_PART) << "ATTENTION: cannot access defaultStyle() without any View (will be fixed eventually)";
-        return KTextEditor::Attribute::Ptr(0);
-    }
-
-    KTextEditor::Attribute::Ptr style = highlight()->attributes(view->renderer()->config()->schema()).at(ds);
-    if (!style->hasProperty(QTextFormat::BackgroundBrush)) {
-        // make sure the returned style has the default background color set
-        style = new KTextEditor::Attribute(*style);
-        style->setBackground(QBrush(view->renderer()->config()->backgroundColor()));
-    }
-    return style;
-}
-
-QList< KTextEditor::HighlightInterface::AttributeBlock > KTextEditor::DocumentPrivate::lineAttributes(const unsigned int line)
-{
-    ///TODO: move attributes to document, they are not view-dependant
-
-    QList< KTextEditor::HighlightInterface::AttributeBlock > attribs;
-
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
-    if (!view) {
-        qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
-        return attribs;
-    }
-
-    Kate::TextLine kateLine = kateTextLine(line);
-    if (!kateLine) {
-        return attribs;
-    }
-
-    const QVector<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
-    for (int i = 0; i < intAttrs.size(); ++i) {
-        if (intAttrs[i].length > 0 && intAttrs[i].attributeValue > 0)
-            attribs << KTextEditor::HighlightInterface::AttributeBlock(
-                        intAttrs.at(i).offset,
-                        intAttrs.at(i).length,
-                        view->renderer()->attribute(intAttrs.at(i).attributeValue)
-                    );
-    }
-
-    return attribs;
-}
 
 KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTextEditor::Cursor &position)
 {
@@ -5611,7 +5579,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
 bool KTextEditor::DocumentPrivate::isComment(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
-    return defaultStyle == KTextEditor::HighlightInterface::dsComment;
+    return defaultStyle == KTextEditor::dsComment;
 }
 
 int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
