@@ -141,7 +141,7 @@ public:
      *
      * \returns const reference to the start position of this range.
      */
-    Q_DECL_CONSTEXPR inline const Cursor &start() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline Cursor start() const Q_DECL_NOEXCEPT {
         return m_start;
     }
 
@@ -150,7 +150,7 @@ public:
      *
      * \returns const reference to the end position of this range.
      */
-    Q_DECL_CONSTEXPR inline const Cursor &end() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline Cursor end() const Q_DECL_NOEXCEPT {
         return m_end;
     }
 
