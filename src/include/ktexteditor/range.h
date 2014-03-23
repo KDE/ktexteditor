@@ -327,34 +327,6 @@ public:
      */
     bool overlapsColumn(int column) const;
 
-    /**
-     * Determine where \p cursor is positioned in relationship to this range.
-     * Equivalency (a return value of 0) is returned when \p cursor is \e contained
-     * within the range, not when \e overlapped - i.e., \p cursor may be on a
-     * line which is also partially occupied by this range, but the position
-     * may not be eqivalent.  For overlap checking, use positionRelativeToLine().
-     *
-     * \param cursor position to check
-     *
-     * \return \e -1 if before, \e +1 if after, and \e 0 if \p cursor is contained within the range.
-     *
-     * \see positionRelativeToLine()
-     */
-    int positionRelativeToCursor(const Cursor &cursor) const;
-
-    /**
-     * Determine where \p line is positioned in relationship to this range.
-     * Equivalency (a return value of 0) is returned when \p line is \e overlapped
-     * within the range, not when \e contained - i.e., this range may not cover an entire line,
-     * but \p line's position will still be eqivalent.  For containment checking, use positionRelativeToCursor().
-     *
-     * \param line line to check
-     *
-     * \return \e -1 if before, \e +1 if after, and \e 0 if \p line is overlapped by this range.
-     *
-     * \see positionRelativeToCursor()
-     */
-    int positionRelativeToLine(int line) const;
 
     /**
      * Check whether \p cursor is located at either of the start() or end()
@@ -367,27 +339,6 @@ public:
      */
     bool boundaryAtCursor(const Cursor &cursor) const;
 
-    /**
-     * Check whether \p line is on the same line as either of the start() or
-     * end() boundaries.
-     *
-     * \param line line to check
-     *
-     * \return \e true if \p line is on the same line as either of the
-     *         boundaries, otherwise \e false
-     */
-    bool boundaryOnLine(int line) const;
-
-    /**
-     * Check whether \p column is on the same column as either of the start()
-     * or end() boundaries.
-     *
-     * \param column column to check
-     *
-     * \return \e true if \p column is on the same column as either of the
-     *         boundaries, otherwise \e false
-     */
-    bool boundaryOnColumn(int column) const;
     //!\}
     //END
 

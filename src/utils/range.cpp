@@ -139,11 +139,6 @@ bool Range::boundaryAtCursor(const Cursor &cursor) const
     return cursor == start() || cursor == end();
 }
 
-bool Range::boundaryOnLine(int line) const
-{
-    return start().line() == line || end().line() == line;
-}
-
 bool Range::confineToRange(const Range &range)
 {
     if (start() < range.start())
@@ -196,32 +191,6 @@ int KTextEditor::Range::columnWidth() const
 int KTextEditor::Range::numberOfLines() const
 {
     return end().line() - start().line();
-}
-
-int Range::positionRelativeToCursor(const Cursor &cursor) const
-{
-    if (end() <= cursor) {
-        return -1;
-    }
-
-    if (start() > cursor) {
-        return +1;
-    }
-
-    return 0;
-}
-
-int Range::positionRelativeToLine(int line) const
-{
-    if (end().line() < line) {
-        return -1;
-    }
-
-    if (start().line() > line) {
-        return +1;
-    }
-
-    return 0;
 }
 
 void KTextEditor::Range::setBothColumns(int column)
