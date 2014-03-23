@@ -83,11 +83,13 @@ public:
     KateViInputModeManager *viInputModeManager();
     KateViInputModeManager *resetViInputModeManager();
     bool isActive() { return m_activated; }
+    void setCaretStyle(KateRenderer::caretStyles caret);
 
 private:
     KateViInputModeManager *m_viModeManager;
     KateViEmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateViGlobal *m_viGlobal;
+    KateRenderer::caretStyles m_caret;
 
     // configs
     bool m_relLineNumbers;

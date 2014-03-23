@@ -32,6 +32,7 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateViGlobal *g
     : KateAbstractInputMode(viewInternal)
     , m_viModeEmulatedCommandBar(0)
     , m_viGlobal(global)
+    , m_caret(KateRenderer::Block)
     , m_activated(false)
 {
     m_relLineNumbers = KateViewConfig::global()->viRelativeLineNumbers();
@@ -48,7 +49,7 @@ KateViInputMode::~KateViInputMode()
 void KateViInputMode::activate()
 {
     m_activated = true;
-    view()->setCaretStyle(KateRenderer::Block, true); // TODO: can we end up in insert mode?
+    setCaretStyle(KateRenderer::Block); // TODO: can we end up in insert mode?
     reset(); // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
@@ -267,21 +268,7 @@ bool KateViInputMode::blinkCaret() const
 
 KateRenderer::caretStyles KateViInputMode::caretStyle() const
 {
-    switch (m_viModeManager->getCurrentViMode()) {
-        case InsertMode:
-            return KateRenderer::Line;
-        case ReplaceMode:
-            return KateRenderer::Underline;
-        case NormalMode:
-            if (!m_viModeManager->getViNormalMode()->m_awaitingMotionOrTextObject.isEmpty()) {
-                return KateRenderer::Half;
-            }
-        case VisualBlockMode:
-        case VisualLineMode:
-        case VisualMode:
-        default:
-            return KateRenderer::Block;
-    }
+    return m_caret;
 }
 
 void KateViInputMode::toggleInsert()
@@ -327,4 +314,14 @@ void KateViInputMode::launchInteractiveCommand(const QString &)
 QString KateViInputMode::bookmarkLabel(int line) const
 {
     return m_viModeManager->getMarksOnTheLine(line);
+}
+
+void KateViInputMode::setCaretStyle(KateRenderer::caretStyles caret)
+{
+    if (m_caret != caret) {
+        m_caret = caret;
+
+        view()->renderer()->setDrawCaret(true);
+        viewInternal()->setCaretStyle(m_caret); // force repaint
+    }
 }

@@ -492,7 +492,7 @@ void KateViInputModeManager::viEnterNormalMode()
     if (moveCursorLeft) {
         m_viewInternal->cursorPrevChar();
     }
-    m_view->setCaretStyle(KateRenderer::Block, true);
+    m_inputAdapter->setCaretStyle(KateRenderer::Block);
     m_viewInternal->update();
 }
 
@@ -505,7 +505,7 @@ void KateViInputModeManager::viEnterInsertMode()
         // after returning from temporary normal mode will be treated as commands!
         m_currentChangeKeyEventsLog.append(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QLatin1String("i")));
     }
-    m_view->setCaretStyle(KateRenderer::Line, true);
+    m_inputAdapter->setCaretStyle(KateRenderer::Line);
     setTemporaryNormalMode(false);
     m_viewInternal->update();
 }
@@ -516,7 +516,7 @@ void KateViInputModeManager::viEnterVisualMode(ViMode mode)
 
     // If the selection is inclusive, the caret should be a block.
     // If the selection is exclusive, the caret should be a line.
-    m_view->setCaretStyle(KateRenderer::Block, true);
+    m_inputAdapter->setCaretStyle(KateRenderer::Block);
     m_viewInternal->update();
     getViVisualMode()->setVisualModeType(mode);
     getViVisualMode()->init();
@@ -525,7 +525,7 @@ void KateViInputModeManager::viEnterVisualMode(ViMode mode)
 void KateViInputModeManager::viEnterReplaceMode()
 {
     changeViMode(ReplaceMode);
-    m_view->setCaretStyle(KateRenderer::Underline, true);
+    m_inputAdapter->setCaretStyle(KateRenderer::Underline);
     m_viewInternal->update();
 }
 

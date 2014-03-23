@@ -125,7 +125,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
     clearYankHighlight();
 
     if (keyCode == Qt::Key_Escape || (keyCode == Qt::Key_C && e->modifiers() == Qt::ControlModifier) || (keyCode == Qt::Key_BracketLeft && e->modifiers() == Qt::ControlModifier)) {
-        m_view->setCaretStyle(KateRenderer::Block, true);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
         m_pendingResetIsDueToExit = true;
         // Vim in weird as if we e.g. i<ctrl-o><ctrl-c> it claims (in the status bar) to still be in insert mode,
         // but behaves as if it's in normal mode. I'm treating the status bar thing as a bug and just exiting
@@ -142,7 +142,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
 
     // Use replace caret when reading a character for "r"
     if (key == QLatin1Char('r') && !waitingForRegisterOrCharToSearch) {
-        m_view->setCaretStyle(KateRenderer::Underline, true);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Underline);
     }
 
     m_keysVerbatim.append(KateViKeyParser::self()->decodeKeySequence(key));
@@ -278,7 +278,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
     // since visual mode inherits from it.
     if (m_viInputModeManager->getCurrentViMode() == NormalMode &&
             !m_awaitingMotionOrTextObject.isEmpty()) {
-        m_view->setCaretStyle(KateRenderer::Half, true);
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Half);
     }
 
     //qCDebug(LOG_PART) << "checkFrom: " << checkFrom;
@@ -388,7 +388,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
                         }
 
                         if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
-                            m_view->setCaretStyle(KateRenderer::Block, true);
+                            m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
                         }
                         m_commandWithMotion = false;
                         reset();
@@ -423,7 +423,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
             //qCDebug(LOG_PART) << "Running command at index " << m_matchingCommands.at( 0 );
 
             if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
-                m_view->setCaretStyle(KateRenderer::Block, true);
+                m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
             }
 
             KateViCommand *cmd = m_commands.at(m_matchingCommands.at(0));

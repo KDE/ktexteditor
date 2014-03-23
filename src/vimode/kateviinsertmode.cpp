@@ -26,11 +26,13 @@
 #include "kateviewinternal.h"
 #include "kateconfig.h"
 #include "katecompletionwidget.h"
-#include <katecompletiontree.h>
+#include "katecompletiontree.h"
 #include "kateglobal.h"
 #include "katevikeyparser.h"
-#include <KLocalizedString>
 #include "katepartdebug.h"
+#include "kateviinputmode.h"
+
+#include <KLocalizedString>
 
 using KTextEditor::Cursor;
 
@@ -297,7 +299,7 @@ bool KateViInsertMode::commandSwitchToNormalModeForJustOneCommand()
     if (doc()->line(cursorPos.line()).length() == cursorPos.column()) {
         m_view->setCursorPosition(Cursor(cursorPos.line(), cursorPos.column() - 1));
     }
-    m_view->setCaretStyle(KateRenderer::Block, true);
+    m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
     emit m_view->viewModeChanged(m_view, m_view->viewMode());
     m_viewInternal->repaint();
     return true;
