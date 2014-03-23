@@ -24,7 +24,8 @@
 #include <QDate>
 #include <QRegExp>
 #include <KMessageBox>
-#include <KLibrary>
+#include <KPluginLoader>
+#include <QLibrary>
 #include <KLocalizedString>
 #include <QLocale>
 #include <QHostInfo>
@@ -56,8 +57,8 @@ bool TemplateInterface::expandMacros(QMap<QString, QString> &map, QWidget *paren
             } else if (placeholder == QLatin1String("loginname")) {
             } else if (kabcitems.contains(placeholder)) {
                 if (kabcbridgecall == 0) {
-                    KLibrary lib(QLatin1String("ktexteditorkabcbridge"));
-                    kabcbridgecall = (kabcbridgecalltype)lib.resolveFunction("ktexteditorkabcbridge");
+                    QLibrary lib(KPluginLoader::findPlugin(QLatin1String("ktexteditorkabcbridge")));
+                    kabcbridgecall = (kabcbridgecalltype)lib.resolve("ktexteditorkabcbridge");
                     if (kabcbridgecall == 0) {
                         KMessageBox::sorry(parentWindow, i18n("The template needs information about you, which is stored in your address book.\nHowever, the required plugin could not be loaded.\n\nPlease install the KDEPIM/Kontact package for your system."));
                         return false;
