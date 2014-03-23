@@ -1903,20 +1903,6 @@ void KateViewInternal::updateSelection(const KTextEditor::Cursor &_newCursor, bo
 #endif
 }
 
-void KateViewInternal::setCaretStyle(KateRenderer::caretStyles style, bool repaint)
-{
-    renderer()->setCaretStyle(style);
-
-    if (repaint) {
-        if (m_cursorTimer.isActive() &&
-                QApplication::cursorFlashTime() > 0) {
-            m_cursorTimer.start(QApplication::cursorFlashTime() / 2);
-        }
-        renderer()->setDrawCaret(true);
-        paintCursor();
-    }
-}
-
 void KateViewInternal::setSelection(const KTextEditor::Range &range)
 {
     disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(viewSelectionChanged()));
@@ -2939,9 +2925,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     paint.save();
 
-    // TODO put in the proper places
-    setCaretStyle(m_currentInputMode->caretStyle());
-
+    renderer()->setCaretStyle(m_currentInputMode->caretStyle());
     renderer()->setShowTabs(doc()->config()->showTabs());
     renderer()->setShowTrailingSpaces(doc()->config()->showSpaces());
 

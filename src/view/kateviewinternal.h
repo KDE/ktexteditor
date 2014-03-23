@@ -151,6 +151,8 @@ public Q_SLOTS:
     void slotIncFontSizes();
     void slotDecFontSizes();
 
+    void paintCursor();
+
 private Q_SLOTS:
     void scrollLines(int line); // connected to the sliderMoved of the m_lineScroll
     void scrollViewLines(int offset);
@@ -172,15 +174,6 @@ public:
     void doDeletePrevWord();
     void doDeleteNextWord();
 
-    /**
-     * Set the caret's style.
-     * The caret can be a box or a line; see the documentation
-     * of KateRenderer::caretStyles for other options.
-     * @param style the caret style
-     * @param repaint whether to update the caret instantly.
-     *        This also resets the caret's timer.
-     */
-    void setCaretStyle(KateRenderer::caretStyles style, bool repaint = false);
     void cursorPrevChar(bool sel = false);
     void cursorNextChar(bool sel = false);
     void wordPrev(bool sel = false);
@@ -269,8 +262,6 @@ private:
     void moveCursorToSelectionEdge();
     void updateCursor(const KTextEditor::Cursor &newCursor, bool force = false, bool center = false, bool calledExternally = false);
     void updateBracketMarks();
-
-    void paintCursor();
 
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);

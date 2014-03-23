@@ -2306,11 +2306,6 @@ void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
     }
 }
 
-void KTextEditor::ViewPrivate::setCaretStyle(KateRenderer::caretStyles style, bool repaint)
-{
-    m_viewInternal->setCaretStyle(style, repaint);
-}
-
 bool KTextEditor::ViewPrivate::setCursorPosition(KTextEditor::Cursor position)
 {
     return setCursorPositionInternal(position, 1, true);
