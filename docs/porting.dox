@@ -58,8 +58,9 @@ Entirely removed interfaces and classes are:
  - \p KTextEditor::CommandInterface \n
    This interface was merged into the \p KTextEditor::Editor.
  - \p KTextEditor::Command \n
-   A Command now automatically registers and unregisters itself. Hence,
-   \p CommandInterface::registerCommand() and \p CommandInterface::unregisterCommand() were removed.
+   This class now inherits QObject. Further, a Command now automatically
+   registers and unregisters itself. Hence, \p CommandInterface::registerCommand()
+   and \p CommandInterface::unregisterCommand() were removed.
  - \p KTextEditor::CommandExtension \n
    This interface was merged into \p KTextEditor::Command.
    KTextEditor::CommandExtension::flagCompletions() was removed since it was
