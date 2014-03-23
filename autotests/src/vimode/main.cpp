@@ -19,8 +19,8 @@
    Boston, MA 02110-1301, USA.
    */
 
-#include "vimode_test.h"
-#include "moc_vimode_test.cpp"
+#include "main.h"
+#include "moc_main.cpp"
 
 #include <kateviinputmodemanager.h>
 #include <katedocument.h>

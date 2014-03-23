@@ -27,7 +27,6 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/syntax
   ${CMAKE_SOURCE_DIR}/src/undo
   ${CMAKE_SOURCE_DIR}/src/utils
-  ${CMAKE_SOURCE_DIR}/src/vimode
   ${CMAKE_SOURCE_DIR}/src/view
 )
 
@@ -126,13 +125,13 @@ ktexteditor_unit_tests(
   katewildcardmatcher_test
 )
 
-if (BUILD_VIMODE)
-  ktexteditor_unit_tests(vimode_test)
-endif()
-
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
 ktexteditor_unit_test(indenttest src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(commands_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(scripting_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(bug313759 src/testutils.cpp)
 ktexteditor_unit_test(bug317111 src/testutils.cpp)
+
+if (BUILD_VIMODE)
+  add_subdirectory(src/vimode)
+endif()
