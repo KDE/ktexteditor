@@ -1,19 +1,6 @@
-TODO list that needs to be fixed before KDE Framework 5.0
-
-merge kateextendedattribute.h into kte/attribute.h
-- spell checking
-- default style (maybe extend default style with dsInvalid)
-- name ???
-
-KTE::HighlightInterface:
-- evaluate to add color functions:
-- QColor backgroundColor(), selectionColor(), ...
-
-? add QIcon KTE::Document::documentIcon() const -> considers modified state and all
-? add QIcon KTE::Document::mimetypeIcon() const ?
-
-KTE::ViewCursor
-- factor WrappingCursor/BoundedCursor into a public ViewCursor
+#
+# TODO list that needs to be fixed before KDE Framework 5.0
+#
 
 KTE::ModificationInterface
 - merge enum OnDiskModified and OnDiskCreated into OnDiskModified
@@ -22,3 +9,18 @@ KTE::ModificationInterface
 - add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
 
 merge KTE::RecoveryInterface into KTE::Document
+
+merge kateextendedattribute.h into kte/attribute.h
+- spell checking
+- default style (maybe extend default style with dsInvalid)
+- name ???
+
+#
+# TODO list after KDE Framework 5.0
+#
+
+? add QIcon KTE::Document::documentIcon() const -> considers modified state and all
+? add QIcon KTE::Document::mimetypeIcon() const ?
+
+KTE::ViewCursor
+- factor WrappingCursor/BoundedCursor into a public ViewCursor
