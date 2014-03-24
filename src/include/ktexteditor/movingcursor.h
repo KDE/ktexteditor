@@ -167,6 +167,7 @@ public:
     /**
      * Returns whether the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
+     *
      * \return \e true , if the cursor position is valid, otherwise \e false
      */
     inline bool isValid() const {
@@ -174,13 +175,20 @@ public:
     }
 
     /**
-     * Check whether the current position of this cursor is a valid text
-     * position.
-     * \return \e true , if the cursor is a valid text position , otherwise \e false
+     * Check whether this MovingCursor is located at a valid text position.
+     * A cursor position at (line, column) is valid, if
+     * - line >= 0 and line < document()->lines() holds, and
+     * - column >= 0 and column <= lineLength(column).
+     *
+     * Further, the text position is also invalid if it is inside a Unicode
+     * surrogate (utf-32 character).
+     *
+     * \return \e true, if the cursor is a valid text position, otherwise \e false
+     *
+     * \see Document::isValidTextPosition()
      */
-    // TODO KDE5: use KTE::Document::isValidTextPosition()
     inline bool isValidTextPosition() const {
-        return isValid() && line() < document()->lines() && column() <= document()->lineLength(line());
+        return document()->isValidTextPosition(toCursor());
     }
 
     /**

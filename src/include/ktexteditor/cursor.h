@@ -187,7 +187,7 @@ public:
     }
 
     /**
-     * Determine if this cursor is located at the start of a line.
+     * Determine if this cursor is located at the start of a line (= at column 0).
      * \return \e true if the cursor is situated at the start of the line, \e false if it isn't.
      */
     Q_DECL_CONSTEXPR inline bool atStartOfLine() const Q_DECL_NOEXCEPT {
@@ -195,7 +195,7 @@ public:
     }
 
     /**
-     * Determine if this cursor is located at the start of a document.
+     * Determine if this cursor is located at the start of a document (= at position (0, 0)).
      * \return \e true if the cursor is situated at the start of the document, \e false if it isn't.
      */
     Q_DECL_CONSTEXPR inline bool atStartOfDocument() const Q_DECL_NOEXCEPT {
