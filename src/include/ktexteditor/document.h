@@ -779,15 +779,6 @@ public:
     virtual bool removeText(const Range &range, bool block = false) = 0;
 
     /**
-     * Checks whether the \p cursor specifies a valid position in a document.
-     * It can optionally be overridden by an implementation.
-     * \param cursor which should be checked
-     * \return \e true, if the cursor is valid, otherwise \e false
-     * \see DocumentCursor::isValid()
-     */
-    virtual bool cursorInText(const Cursor &cursor);
-
-    /**
      * Insert line(s) at the given line number. The newline character '\\n'
      * is treated as line delimiter, so it is possible to insert multiple
      * lines. To append lines at the end of the document, use

@@ -44,14 +44,6 @@ QString Document::openingErrorMessage() const
     return d->m_openingErrorMessage;
 }
 
-bool Document::cursorInText(const Cursor &cursor)
-{
-    if ((cursor.line() < 0) || (cursor.line() >= lines())) {
-        return false;
-    }
-    return (cursor.column() >= 0) && (cursor.column() <= lineLength(cursor.line())); // = because new line isn't usually contained in line length
-}
-
 bool KTextEditor::Document::replaceText(const Range &range, const QString &text, bool block)
 {
     bool success = true;
