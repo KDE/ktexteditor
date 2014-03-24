@@ -845,7 +845,14 @@ Q_SIGNALS:
 
     /**
      * Editing transaction has finished.
+     *
+     * @note This signal is emitted also for editing actions that maybe do not
+     *       modify the @p document contents (think of calling startEditing()
+     *       directly followed by endEditing()). If you want to get notified only
+     *       after text really changed, connect to the signal textChanged().
+     *
      * \param document document which emitted this signal
+     * @see textChanged()
      */
     void editingFinished(KTextEditor::Document *document);
 
@@ -878,7 +885,7 @@ Q_SIGNALS:
      * @param text removed text
      */
     void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &text);
-   
+
     /**
      * The \p document emits this signal whenever its text changes.
      * \param document document which emitted this signal
@@ -1135,9 +1142,9 @@ public:
      * \see isDataRecoveryAvailable(), recoverData()
      */
     virtual void discardDataRecovery() = 0;
-    
+
     //!\}
- 
+
 private:
     /**
      * private d-pointer, pointing to the internal implementation
