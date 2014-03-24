@@ -147,9 +147,7 @@ class ViewPrivate;
  * \ref kte_group_view_extensions.
  *
  * \see KTextEditor::Document, KTextEditor::TemplateInterface,
- *      KTextEditor::CodeCompletionInterface,
- *      KTextEditor::SessionConfigInterface, KTextEditor::TemplateInterface,
- *      KXMLGUIClient
+ *      KTextEditor::CodeCompletionInterface, KXMLGUIClient
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient

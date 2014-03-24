@@ -276,6 +276,7 @@ public:
         EffectCycleGradient = 0x8 /**< Cycle colors. */
     };
     Q_DECLARE_FLAGS(Effects, Effect)
+
     /**
      * \name Dynamic highlighting
      *
@@ -331,10 +332,13 @@ private:
 Q_DECLARE_OPERATORS_FOR_FLAGS(Attribute::Effects)
 
 /**
- * An AttributeBlock represents an Attribute with its
- * dimension in a given line.
+ * @brief Attribute%s of a part of a line.
  *
- * \see lineAttributes()
+ * An AttributeBlock represents an Attribute spanning the interval
+ * [start, start + length) of a given line. An AttributeBlock is
+ * obtained by calling KTextEditor::View::lineAttributes().
+ *
+ * \see KTextEditor::View::lineAttributes()
  */
 class AttributeBlock
 {
