@@ -56,7 +56,11 @@ using KTextEditor::Range;
 
 void KateViModeBase::yankToClipBoard(QChar chosen_register, QString text)
 {
-    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-'))  && text.length() > 1) { //only yank to the clipboard if no register was specified and textlength > 1
+    //only yank to the clipboard if no register was specified,
+    // textlength > 1 and there is something else then whitespace
+    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-'))
+        && text.length() > 1 && !text.trimmed().isEmpty())
+    {
         KTextEditor::EditorPrivate::self()->copyToClipboard(text);
     }
 }
