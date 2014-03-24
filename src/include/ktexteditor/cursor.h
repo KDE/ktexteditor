@@ -1,6 +1,7 @@
 /* This file is part of the KDE project
    Copyright (C) 2003-2005 Hamish Rodda <rodda@kde.org>
    Copyright (C) 2001-2005 Christoph Cullmann <cullmann@kde.org>
+   Copyright (C) 2014 Dominik Haumann <dhaumann@kde.org>
    Copyright (C) 2002 Christian Couder <christian@kdevelop.org>
    Copyright (C) 2001 Joseph Wenninger <jowenn@kde.org>
    Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
@@ -35,29 +36,54 @@ class Document;
 class Range;
 
 /**
- * \short An object which represents a position in a Document.
+ * \short The Cursor represents a position in a Document.
  *
- * A Cursor is a basic class which contains the line() and column() a position
- * in a Document. It is very lightweight and maintains no affiliation with a
- * particular Document.
+ * \section kte_cursor_intro Introduction
+ * A Cursor represents a position in a Document through a tuple
+ * of two int%s, namely the line() and column(). A Cursor maintains
+ * no affiliation with a particular Document, meaning that it remains
+ * constant if not changed through the Cursor API.
  *
- * If you want additional functionality such as the ability to maintain position
- * in a document, see MovingCursor.
+ * \section kte_cursor_notes Important Notes
  *
- * \note Lines and columns start at 0.
+ * Working with a cursor, one should be aware of the following notes:
+ * - Lines and columns start a 0.
+ * - The Cursor class is designed to be passed by value (only 8 Bytes).
+ * - Think of cursors as having their position at the start of a character,
+ *   not in the middle of one.
+ * - invalid() Cursor%s are located at (-1, -1). In addition, an Cursor
+ *   is invalid(), if either its line() and/or its column() is arbitrarily
+ *   negative, i.e. < 0.
+ * - All Cursor%s with line() >= 0 and column() >= 0 are valid. In this case
+ *   isValid() returns \e true.
+ * - A Cursor has a non-virtual destructor. Hence, you cannot derive from Cursor.
  *
- * \note The Cursor class is designed to be passed via value.
+ * \section kte_cursor_properties Cursor Efficiency
  *
- * \note Think of cursors as having their position at the start of a character,
- *       not in the middle of one.
+ * The Cursor consists of just two int%s, the line() and the column().
+ * Therefore, a Cursor instance takes 8 Bytes of memory. Further, a Cursor
+ * is a non-virtual class, turning it into a primitive old data type (POD).
+ * Thus, it can be moved and copied very efficiently.
  *
- * \sa MovingCursor, Range
+ * \section kte_cursor_more Additional Concepts
+ *
+ * In addition to the Cursor, the KTextEditor API provides advanced concepts:
+ * - The DocumentCursor is a Cursor bound to a specific Document. In addition
+ *   to the Cursor API, it provides convenience functions like
+ *   DocumentCursor::isValidTextPosition() or DocumentCursor::move().
+ *   The DocumentCursor does not maintain its position, though.
+ * - The MovingCursor is also bound to a specific Document. In addition to the
+ *   DocumentCursor, the MovingCursor maintains its position, meaning that
+ *   whenever the Document changes, the MovingCursor moves, too.
+ * - The Cursor forms the basis for the Range.
+ *
+ * \sa DocumentCursor, MovingCursor, Range
  */
 class KTEXTEDITOR_EXPORT Cursor
 {
 public:
     /**
-     * The default constructor creates a cursor at position (0,0).
+     * The default constructor creates a cursor at position (0, 0).
      */
     Q_DECL_CONSTEXPR Cursor() Q_DECL_NOEXCEPT
         : m_line(0)
