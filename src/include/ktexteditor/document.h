@@ -176,10 +176,10 @@ enum DefaultStyle {
  *
  * If the editor part supports it, a document provides full undo/redo history.
  * Text manipulation actions can be grouped together using startEditing()
- * and endEditing(). All actions in between are grouped together to only one
+ * and finishEditing(). All actions in between are grouped together to only one
  * undo/redo action. Due to internal reference counting you can call
- * startEditing() and endEditing() as often as you wish, but make sure you
- * call endEditing() exactly as often as you call startEditing(), otherwise
+ * startEditing() and finishEditing() as often as you wish, but make sure you
+ * call finishEditing() exactly as often as you call startEditing(), otherwise
  * the reference counter gets confused.
  *
  * \section doc_views Document Views
@@ -499,27 +499,25 @@ public:
      * repaint events do not occur in between.
      *
      * Your application should \e not return control to the event loop while
-     * it has an unterminated (i.e. no matching endEditing() call) editing
+     * it has an unterminated (i.e. no matching finishEditing() call) editing
      * sequence (result undefined) - so do all of your work in one go!
      *
-     * This call stacks, like the endEditing() calls, this means you can
+     * This call stacks, like the finishEditing() calls, this means you can
      * safely call it three times in a row for example if you call
-     * endEditing() three times, too. Internally, it just does counting the
+     * finishEditing() three times, too. Internally, it just does counting the
      * running editing sessions.
      *
-     * \return \e true on success, otherwise \e false. Parts not supporting
-     *         it should return \e false
-     * \see endEditing()
+     * @return returns true, if no transaction was already running
+     * \see finishEditing()
      */
     virtual bool startEditing() = 0;
 
     /**
      * End an editing sequence.
-     * \return \e true on success, otherwise \e false. Parts not supporting
-     *         it should return \e false.
+     * @return returns true, if this finished last running transaction
      * \see startEditing() for more details
      */
-    virtual bool endEditing() = 0;
+    virtual bool finishEditing() = 0;
 
     /*
      * General access to the document's text content.
@@ -832,50 +830,53 @@ public:
      */
 Q_SIGNALS:
     /**
+     * Editing transaction has started.
+     * \param document document which emitted this signal
+     */
+    void editingStarted(KTextEditor::Document *document);
+
+    /**
+     * Editing transaction has finished.
+     * \param document document which emitted this signal
+     */
+    void editingFinished(KTextEditor::Document *document);
+
+    /**
+     * A line got wrapped.
+     * \param document document which emitted this signal
+     * @param position position where the wrap occurred
+     */
+    void lineWrapped(KTextEditor::Document *document, const KTextEditor::Cursor &position);
+
+    /**
+     * A line got unwrapped.
+     * \param document document which emitted this signal
+     * @param line line where the unwrap occurred
+     */
+    void lineUnwrapped(KTextEditor::Document *document, int line);
+
+    /**
+     * Text got inserted.
+     * \param document document which emitted this signal
+     * @param position position where the insertion occurred
+     * @param text inserted text
+     */
+    void textInserted(KTextEditor::Document *document, const KTextEditor::Cursor &position, const QString &text);
+
+    /**
+     * Text got removed.
+     * \param document document which emitted this signal
+     * @param range range where the removal occurred
+     * @param text removed text
+     */
+    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &text);
+   
+    /**
      * The \p document emits this signal whenever its text changes.
      * \param document document which emitted this signal
      * \see text(), textLine()
      */
     void textChanged(KTextEditor::Document *document);
-
-    /**
-     * The \p document emits this signal whenever text was inserted.  The
-     * insertion occurred at range.start(), and new text now occupies up to
-     * range.end().
-     * \param document document which emitted this signal
-     * \param range range that the newly inserted text occupies
-     * \see insertText(), insertLine()
-     */
-    void textInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
-
-    /**
-     * The \p document emits this signal whenever \p range was removed, i.e.
-     * text was removed.
-     * \param document document which emitted this signal
-     * \param range range that the removed text previously occupied
-     * \param oldText the text that has been removed
-     * \see removeText(), removeLine(), clear()
-     */
-    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
-
-    /**
-     * Upon emission, the document's content may only be changed by the initiator
-     * of this signal until exclusiveEditEnd() is signalled. It is, however,
-     * possible to listen to changes of the content.
-     *
-     * Signalled e.g. on undo or redo.
-     *
-     * @since 4.5
-     */
-    void exclusiveEditStart(KTextEditor::Document *document);
-
-    /**
-     * In conjunction with exclusiveEditStart(), signals that the document's content
-     * may be changed again without restriction.
-     *
-     * @since 4.5
-     */
-    void exclusiveEditEnd(KTextEditor::Document *document);
 
     //!\}
 

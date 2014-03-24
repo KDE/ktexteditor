@@ -14,10 +14,6 @@ merge kateextendedattribute.h into kte/attribute.h
 - name ???
 
 What about
-- Document::exclusiveEditStart()
-- Document::exclusiveEditEnd()
-- virtual bool Document::startEditing() = 0; --> return void ?
-- virtual bool Document::endEditing() = 0;   --> return void ?
 - remove bool Document::cursorInText(const Cursor &cursor) in favor of
   bool Document::isValidTextPosition(const Cursor &cursor) ?
   The latter also returns false for cursors in utf-32 surrogates.

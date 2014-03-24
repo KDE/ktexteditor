@@ -192,6 +192,8 @@ bool TextBuffer::startEditing()
 
     // transaction has started
     emit editingStarted();
+    if (m_document)
+        emit m_document->KTextEditor::Document::editingStarted(m_document);
 
     // first transaction started
     return true;
@@ -218,6 +220,8 @@ bool TextBuffer::finishEditing()
 
     // transaction has finished
     emit editingFinished();
+    if (m_document)
+        emit m_document->KTextEditor::Document::editingFinished(m_document);
 
     // last transaction finished
     return true;
@@ -262,6 +266,8 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
 
     // emit signal about done change
     emit lineWrapped(position);
+    if (m_document)
+        emit m_document->KTextEditor::Document::lineWrapped(m_document, position);
 }
 
 void TextBuffer::unwrapLine(int line)
@@ -314,6 +320,8 @@ void TextBuffer::unwrapLine(int line)
 
     // emit signal about done change
     emit lineUnwrapped(line);
+    if (m_document)
+        emit m_document->KTextEditor::Document::lineUnwrapped(m_document, line);
 }
 
 void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &text)
@@ -349,6 +357,8 @@ void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &
 
     // emit signal about done change
     emit textInserted(position, text);
+    if (m_document)
+        emit m_document->KTextEditor::Document::textInserted(m_document, position, text);
 }
 
 void TextBuffer::removeText(const KTextEditor::Range &range)
@@ -392,6 +402,8 @@ void TextBuffer::removeText(const KTextEditor::Range &range)
 
     // emit signal about done change
     emit textRemoved(range, text);
+    if (m_document)
+        emit m_document->KTextEditor::Document::textRemoved(m_document, range, text);
 }
 
 int TextBuffer::blockForLine(int line) const

@@ -116,9 +116,9 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(false);
     cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
-    connect(parent->document(), &KTextEditor::Document::textInserted,
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textInserted,
             this, &FakeCodeCompletionTestModel::textInserted);
-    connect(parent->document(), &KTextEditor::Document::textRemoved,
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textRemoved,
             this, &FakeCodeCompletionTestModel::textRemoved);
 }
 void FakeCodeCompletionTestModel::setCompletions(const QStringList &completions)
@@ -314,9 +314,9 @@ void ViModeTest::init()
     Q_ASSERT(vi_global);
     kate_document->config()->setShowSpaces(true); // Flush out some issues in the KateRenderer when rendering spaces.
 
-    connect(kate_document, &KTextEditor::Document::textInserted,
+    connect(kate_document, &KTextEditor::DocumentPrivate::textInserted,
             this, &ViModeTest::textInserted);
-    connect(kate_document, &KTextEditor::Document::textRemoved,
+    connect(kate_document, &KTextEditor::DocumentPrivate::textRemoved,
             this, &ViModeTest::textRemoved);
 }
 

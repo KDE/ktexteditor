@@ -58,7 +58,7 @@ bool KTextEditor::Document::replaceText(const Range &range, const QString &text,
     startEditing();
     success &= removeText(range, block);
     success &= insertText(range.start(), text, block);
-    endEditing();
+    finishEditing();
     return success;
 }
 
@@ -68,7 +68,7 @@ bool Document::replaceText(const Range &range, const QStringList &text, bool blo
     startEditing();
     success &= removeText(range, block);
     success &= insertText(range.start(), text, block);
-    endEditing();
+    finishEditing();
     return success;
 }
 

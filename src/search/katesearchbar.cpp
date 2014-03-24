@@ -865,7 +865,7 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
     // After last match
     if (matchCounter > 0) {
         if (replacement != NULL) {
-            m_view->document()->endEditing();
+            m_view->document()->finishEditing();
         }
     }
 

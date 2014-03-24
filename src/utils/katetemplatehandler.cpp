@@ -100,7 +100,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     connect(doc(), &KTextEditor::Document::aboutToReload,
             this, &KateTemplateHandler::cleanupAndExit);
 
-    connect(doc(), &KTextEditor::Document::textInserted,
+    connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
             this, &KateTemplateHandler::slotTemplateInserted);
 
     ///TODO: maybe use Kate::CutCopyPasteEdit or similar?
@@ -152,9 +152,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
 
             connect(doc(), &KTextEditor::Document::viewCreated,
                     this, &KateTemplateHandler::slotViewCreated);
-            connect(doc(), &KTextEditor::Document::textInserted,
+            connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
                     this, &KateTemplateHandler::slotTextChanged);
-            connect(doc(), &KTextEditor::Document::textRemoved,
+            connect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
                     this, &KateTemplateHandler::slotTextChanged);
 
             setEditWithUndo(undoManager->isActive());
@@ -185,7 +185,7 @@ void KateTemplateHandler::slotTemplateInserted(Document *document, const Range &
 
     m_wholeTemplateRange = doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
 
-    disconnect(doc(), &KTextEditor::Document::textInserted,
+    disconnect(doc(), &KTextEditor::DocumentPrivate::textInserted,
                this, &KateTemplateHandler::slotTemplateInserted);
 }
 
@@ -194,9 +194,9 @@ void KateTemplateHandler::cleanupAndExit()
     ifDebug(qCDebug(LOG_PART) << "cleaning up and exiting";)
     disconnect(doc(), &KTextEditor::Document::viewCreated,
                this, &KateTemplateHandler::slotViewCreated);
-    disconnect(doc(), &KTextEditor::Document::textInserted,
+    disconnect(doc(), &KTextEditor::DocumentPrivate::textInserted,
                this, &KateTemplateHandler::slotTextChanged);
-    disconnect(doc(), &KTextEditor::Document::textRemoved,
+    disconnect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
                this, &KateTemplateHandler::slotTextChanged);
 
     if (!m_templateRanges.isEmpty()) {

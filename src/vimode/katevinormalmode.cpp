@@ -486,9 +486,9 @@ void KateViNormalMode::reset()
 
 void KateViNormalMode::beginMonitoringDocumentChanges()
 {
-    connect(doc(), &KTextEditor::Document::textInserted,
+    connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
             this, &KateViNormalMode::textInserted);
-    connect(doc(), &KTextEditor::Document::textRemoved,
+    connect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
             this, &KateViNormalMode::textRemoved);
 }
 

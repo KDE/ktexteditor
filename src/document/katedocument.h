@@ -199,13 +199,33 @@ public:
 Q_SIGNALS:
     void charactersSemiInteractivelyInserted(const KTextEditor::Cursor &position, const QString &text);
 
+    /**
+     * The \p document emits this signal whenever text was inserted.  The
+     * insertion occurred at range.start(), and new text now occupies up to
+     * range.end().
+     * \param document document which emitted this signal
+     * \param range range that the newly inserted text occupies
+     * \see insertText(), insertLine()
+     */
+    void textInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
+
+    /**
+     * The \p document emits this signal whenever \p range was removed, i.e.
+     * text was removed.
+     * \param document document which emitted this signal
+     * \param range range that the removed text previously occupied
+     * \param oldText the text that has been removed
+     * \see removeText(), removeLine(), clear()
+     */
+    void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
+
 public:
 //BEGIN editStart/editEnd (start, end, undo, cursor update, view update)
     /**
      * Enclose editor actions with @p editStart() and @p editEnd() to group
      * them.
      */
-    void editStart();
+    bool editStart();
 
     /**
      * Alias for @p editStart()
@@ -219,20 +239,18 @@ public:
      * End a editor operation.
      * @see editStart()
      */
-    void editEnd();
+    bool editEnd();
 
     void pushEditState();
     void popEditState();
 
     virtual bool startEditing()
     {
-        editStart();
-        return true;
+        return editStart();
     }
-    virtual bool endEditing()
+    virtual bool finishEditing()
     {
-        editEnd();
-        return true;
+        return editEnd();
     }
 
 //END editStart/editEnd

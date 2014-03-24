@@ -862,12 +862,12 @@ bool KTextEditor::DocumentPrivate::isLineTouched(int line) const
 //
 // Starts an edit session with (or without) undo, update of view disabled during session
 //
-void KTextEditor::DocumentPrivate::editStart()
+bool KTextEditor::DocumentPrivate::editStart()
 {
     editSessionNumber++;
 
     if (editSessionNumber > 1) {
-        return;
+        return false;
     }
 
     editIsRunning = true;
@@ -879,16 +879,17 @@ void KTextEditor::DocumentPrivate::editStart()
     }
 
     m_buffer->editStart();
+    return true;
 }
 
 //
 // End edit session and update Views
 //
-void KTextEditor::DocumentPrivate::editEnd()
+bool KTextEditor::DocumentPrivate::editEnd()
 {
     if (editSessionNumber == 0) {
         Q_ASSERT(0);
-        return;
+        return false;
     }
 
     // wrap the new/changed text, if something really changed!
@@ -900,7 +901,7 @@ void KTextEditor::DocumentPrivate::editEnd()
     editSessionNumber--;
 
     if (editSessionNumber > 0) {
-        return;
+        return false;
     }
 
     // end buffer edit, will trigger hl update
@@ -920,6 +921,7 @@ void KTextEditor::DocumentPrivate::editEnd()
     }
 
     editIsRunning = false;
+    return true;
 }
 
 void KTextEditor::DocumentPrivate::pushEditState()
@@ -1111,7 +1113,7 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
     // insert text into line
     m_buffer->insertText(KTextEditor::Cursor(line, col2), s2);
 
-    emit KTextEditor::Document::textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
+    emit textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
 
     editEnd();
 
@@ -1159,7 +1161,7 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
     // remove text from line
     m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, col), KTextEditor::Cursor(line, col + len)));
 
-    emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
+    emit textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
 
     editEnd();
 
@@ -1261,7 +1263,7 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         }
     }
 
-    emit KTextEditor::Document::textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
+    emit textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
 
     editEnd();
 
@@ -1329,7 +1331,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         emit marksChanged(this);
     }
 
-    emit KTextEditor::Document::textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QLatin1String("\n"));
+    emit textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QLatin1String("\n"));
 
     editEnd();
 
@@ -1399,7 +1401,7 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
         rangeInserted.setEnd(KTextEditor::Cursor(line + 1, 0));
     }
 
-    emit KTextEditor::Document::textInserted(this, rangeInserted);
+    emit textInserted(this, rangeInserted);
 
     editEnd();
 
@@ -1492,7 +1494,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    emit KTextEditor::Document::textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
+    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
 
     editEnd();
 
