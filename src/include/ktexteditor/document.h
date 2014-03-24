@@ -146,6 +146,8 @@ enum DefaultStyle {
  *  - \ref doc_manipulation
  *  - \ref doc_views
  *  - \ref doc_readwrite
+ *  - \ref doc_notifications
+ *  - \ref doc_recovery
  *  - \ref doc_extensions
  *
  * \section doc_intro Introduction
@@ -182,6 +184,21 @@ enum DefaultStyle {
  * call finishEditing() exactly as often as you call startEditing(), otherwise
  * the reference counter gets confused.
  *
+ * @note The signal finishEditing() is always emitted in the final call of
+ *       endEditing(). Contrary, the signal textChanged() is emitted only
+ *       if text changed. Hence, textChanged() is more accurate with respect
+ *       to changes in the Document.
+ *
+ * Every text editing action between startEditing() and finishEditing() is also
+ * available through the signals lineWrapped(), lineUnwrapped(),
+ * textInserted() and textRemoved(). However, these signals should be used with
+ * care. Please be aware of the following warning:
+ *
+ * @warning Never change the Document's contents when edit actions are active,
+ *          i.e. in between of startEditing() and finishEditing(). In case you
+ *          violate this, the currently active edit action may perform edits
+ *          that lead to undefined behavior.
+ *
  * \section doc_views Document Views
  *
  * A View displays the document's content. As already mentioned, a document
@@ -214,11 +231,11 @@ enum DefaultStyle {
  * with unsaved changes in the Document, the View notifies the user about
  * the lost data and asks, whether the data should be recovered.
  *
- * This interface gives you control over the data recovery process. Use
+ * This Document gives you control over the data recovery process. Use
  * isDataRecoveryAvailable() to check for lost data. If you do not want the
  * editor component to handle the data recovery process automatically, you can
  * either trigger the data recovery by calling recoverData() or discard it
- * by discardDataRecovery().
+ * through discardDataRecovery().
  *
  * \section doc_extensions Document Extension Interfaces
  *

@@ -75,6 +75,11 @@ Entirely removed interfaces and classes are:
    - \p KTextEditor::View::defaultStyleAttribute()
    - \p KTextEditor::View::lineAttributes()
  - \p KTextEditor::HighlightInterface::AttributeBlock moved to \p KTextEditor::AttributeBlock.
+ - \p KTextEditor::RecoveryInterface \n
+   This interface was merged into the \p KTextEditor::Document, see
+   - \p KTextEditor::Document::isDataRecoveryAvailable()
+   - \p KTextEditor::Document::recoverData()
+   - \p KTextEditor::Document::discardDataRecovery()
 
 \section kte_port_rename Interface Changes
 The following interfaces were changed:
@@ -94,6 +99,17 @@ The following interfaces were changed:
    and \p KTextEditor::Document::isLineTouched() are new.
  - \p KTextEditor::Document::readWriteChanged() \n
    This signal is emitted whenever the read-only state of the document changes.
+ - \p KTextEditor::Document::exclusiveEditStart() was renamed to \p KTextEditor::Document::editingStarted().
+ - \p KTextEditor::Document::exclusiveEditEnd() was renamed to \p KTextEditor::Document::editingFinished().
+ - New \p KTextEditor::Document gained new editing signals: \n
+   - \p KTextEditor::Document::lineWrapped() and \p KTextEditor::Document::lineUnwrapped()
+   - \p KTextEditor::Document::textInserted() and \p KTextEditor::Document::textRemoved()
+   - \p KTextEditor::Document::textChanged()
+   These signals are emitted only between the signals \p KTextEditor::Document::editingStarted()
+   and before \p KTextEditor::Document::editingFinished(). Note, that you should
+   \e never modify the document between these two signals.
+ - \p KTextEditor::Document::cursorInText() was unused and removed in favor of
+   \p KTextEditor::Document::isValidTextPosition().
  - \p KTextEditor::View now has a status bar by default. It can be controlled
    by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
  - \p KTextEditor::View::informationMessage() was removed in favor of \p KTextEditor::Document::postMessage().
