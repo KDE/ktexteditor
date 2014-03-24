@@ -50,7 +50,7 @@ class ConfigPage;
  * Topics:
  *  - \ref editor_intro
  *  - \ref editor_config
- *  - \ref editor_extensions
+ *  - \ref editor_commands
  *
  * \section editor_intro Introduction
  *
@@ -76,16 +76,16 @@ class ConfigPage;
  *       dialog does not look cluttered then. This way, all settings are grouped
  *       together in one place.
  *
- * \section editor_extensions Editor Extension Interfaces
+ * \section editor_commands Command Line Commands
  *
- * There is only a single extension interface for the Editor: the
- * CommandInterface. With the CommandInterface it is possible to add and
- * remove new command line commands which are valid for all documents. Common
- * use cases are for example commands like \e find or setting document
- * variables. For further details read the detailed descriptions in the class
- * KTextEditor::CommandInterface.
+ * With Commands it is possible to add new commands to the command line.
+ * These Command%s then are added to all document View%s.
+ * Common use cases include commands like \e find or setting document variables.
+ * The list of all registered commands can be obtained either through commandList()
+ * or through commands(). Further, a specific command can be obtained through
+ * queryCommand(). For further information, read the Command API documentation.
  *
- * \see KTextEditor::Document, KTextEditor::ConfigPage, KTextEditor::CommandInterface
+ * \see KTextEditor::Document, KTextEditor::ConfigPage, KTextEditor::Command
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
 class KTEXTEDITOR_EXPORT Editor : public QObject
