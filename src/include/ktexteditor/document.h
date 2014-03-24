@@ -44,7 +44,7 @@ class Message;
 class View;
 
 /**
- * The following list all valid default styles that is used for the syntax
+ * The following lists all valid default styles that are used for the syntax
  * highlighting files in the itemData's defStyleNum attribute.
  * Not all default styles are used by a syntax highlighting file.
  */
@@ -114,7 +114,7 @@ enum DefaultStyle {
     dsAnnotation,
     /** Used to refer to variables in a comment, e.g. after \@param in Doxygen or JavaDoc. */
     dsCommentVar,
-    /** Used for region merkers, typically defined by BEGIN/END. */
+    /** Used for region markers, typically defined by BEGIN/END. */
     dsRegionMarker,
     /** Used for information, e.g. the keyword \@note in Doxygen. */
     dsInformation,
@@ -248,9 +248,10 @@ public:
      */
     virtual ~Document();
 
-    /*
-     * Methods to create and manage the views of this document and access the
-     * global editor object.
+    /**
+     * \name Manage View%s of this Document
+     *
+     * \{
      */
 public:
     /**
@@ -279,8 +280,12 @@ Q_SIGNALS:
      */
     void viewCreated(KTextEditor::Document *document, KTextEditor::View *view);
 
-    /*
-     * General information about this document and its content.
+    //!\}
+
+    /**
+     * \name General Information about this Document
+     *
+     * \{
      */
 public:
     /**
@@ -374,9 +379,13 @@ public:
      */
     virtual QString encoding() const = 0;
 
-    /*
-     * General file related actions.
+    //!\}
+
+    /**
+     * \name File Loading and Saving
+     *
      * All this actions cause user interaction in some cases.
+     * \{
      */
 public:
     /**
@@ -417,22 +426,65 @@ public:
      */
     QString openingErrorMessage() const;
 
+    /*
+     * SIGNALS
+     * Following signals should be emitted by the document if the text content
+     * is changed.
+     */
 Q_SIGNALS:
     /**
-    * This signal should be emitted after a document has been saved to disk or for remote files uploaded.
-    * saveAs should be set to true, if the operation is a save as operation
-    */
+     * This signal should be emitted after a document has been saved to disk or for remote files uploaded.
+     * saveAs should be set to true, if the operation is a save as operation
+     */
     void documentSavedOrUploaded(KTextEditor::Document *document, bool saveAs);
 
-    /*
-     * Methodes to create/end editing sequences.
+    /**
+     * Warn anyone listening that the current document is about to close.
+     * At this point all of the information is still accessible, such as the text,
+     * cursors and ranges.
+     *
+     * Any modifications made to the document at this point will be lost.
+     *
+     * \param document the document being closed
+     */
+    void aboutToClose(KTextEditor::Document *document);
+
+    /**
+     * Warn anyone listening that the current document is about to reload.
+     * At this point all of the information is still accessible, such as the text,
+     * cursors and ranges.
+     *
+     * Any modifications made to the document at this point will be lost.
+     *
+     * \param document the document being reloaded
+     */
+    void aboutToReload(KTextEditor::Document *document);
+
+    /**
+     * Emitted after the current document was reloaded.
+     * At this point, some information might have been invalidated, like
+     * for example the editing history.
+     *
+     * \param document the document that was reloaded.
+     *
+     * @since 4.6
+     */
+    void reloaded(KTextEditor::Document *document);
+
+    //!\}
+
+    /**
+     * \name Text Manipulation
+     *
+     * \{
      */
 public:
     /**
      * Begin an editing sequence.
+     *
      * Edit commands during this sequence will be bunched together so that
      * they represent a single undo command in the editor, and so that
-     * repaint events do not occur inbetween.
+     * repaint events do not occur in between.
      *
      * Your application should \e not return control to the event loop while
      * it has an unterminated (i.e. no matching endEditing() call) editing
@@ -440,11 +492,8 @@ public:
      *
      * This call stacks, like the endEditing() calls, this means you can
      * safely call it three times in a row for example if you call
-     * endEditing() three times, too, it internaly just does counting the
+     * endEditing() three times, too. Internally, it just does counting the
      * running editing sessions.
-     *
-     * If the texteditor part does not support these transactions,
-     * both calls just do nothing.
      *
      * \return \e true on success, otherwise \e false. Parts not supporting
      *         it should return \e false
@@ -798,39 +847,6 @@ Q_SIGNALS:
     void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
 
     /**
-     * Warn anyone listening that the current document is about to close.
-     * At this point all of the information is still accessible, such as the text,
-     * cursors and ranges.
-     *
-     * Any modifications made to the document at this point will be lost.
-     *
-     * \param document the document being closed
-     */
-    void aboutToClose(KTextEditor::Document *document);
-
-    /**
-     * Warn anyone listening that the current document is about to reload.
-     * At this point all of the information is still accessible, such as the text,
-     * cursors and ranges.
-     *
-     * Any modifications made to the document at this point will be lost.
-     *
-     * \param document the document being reloaded
-     */
-    void aboutToReload(KTextEditor::Document *document);
-
-    /**
-     * Emitted after the current document was reloaded.
-     * At this point, some information might have been invalidated, like
-     * for example the editing history.
-     *
-     * \param document the document that was reloaded.
-     *
-     * @since 4.6
-     */
-    void reloaded(KTextEditor::Document *document);
-
-    /**
      * Upon emission, the document's content may only be changed by the initiator
      * of this signal until exclusiveEditEnd() is signalled. It is, however,
      * possible to listen to changes of the content.
@@ -849,8 +865,12 @@ Q_SIGNALS:
      */
     void exclusiveEditEnd(KTextEditor::Document *document);
 
-    /*
-     * Access to the mode/highlighting subsystem
+    //!\}
+
+    /**
+     * \name Highlighting and Related Information
+     * 
+     * \{
      */
 public:
     /**
@@ -984,8 +1004,12 @@ Q_SIGNALS:
      */
     void highlightingModeChanged(KTextEditor::Document *document);
 
-    /*
-     * Access to print routines
+    //!\}
+
+    /**
+     * \name Printing
+     *
+     * \{
      */
 public:
     /**
@@ -1000,6 +1024,13 @@ public:
      */
     virtual void printPreview() = 0;
 
+    //!\}
+
+    /**
+     * \name Showing Interactive Notifications
+     *
+     * \{
+     */
 public:
     /**
      * Post @p message to the Document and its View%s.
@@ -1016,7 +1047,14 @@ public:
      * @return @e true, if @p message was posted. @e false, if message == 0.
      */
     virtual bool postMessage(Message *message) = 0;
-    
+
+    //!\}
+
+    /**
+     * \name Session Configuration
+     *
+     * \{
+     */
 public:
     /**
      * Read session settings from the given \p config.
@@ -1042,6 +1080,8 @@ public:
      * \see readSessionConfig()
      */
     virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) = 0;
+
+    //!\}
 
 private:
     /**
