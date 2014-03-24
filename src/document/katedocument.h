@@ -562,12 +562,31 @@ public:
     QMimeType mimeTypeForContent();
 
     //
-    // KTextEditor::VariableInterface
+    // once was KTextEditor::VariableInterface
     //
 public:
+    /**
+     * Returns the value for the variable @p name.
+     * If the Document does not have a variable called @p name,
+     * an empty QString() is returned.
+     *
+     * @param name variable to query
+     * @return value of the variable @p name
+     * @see setVariable()
+     */
     virtual QString variable(const QString &name) const;
-    // ### TODO KDE5: add to KTextEditor::VaribaleInterface
-    virtual QString setVariable(const QString &name, const QString &value);
+
+    /**
+     * Set the variable @p name to @p value. Setting and changing a variable
+     * has immediate effect on the Document. For instance, setting the variable
+     * @e indent-mode to @e cstyle will immediately cause the Document to load
+     * the C Style indenter.
+     *
+     * @param name the variable name
+     * @param value the value to be set
+     * @see variable()
+     */
+    virtual void setVariable(const QString &name, const QString &value);
 
 private:
     QMap<QString, QString> m_storedVariables;

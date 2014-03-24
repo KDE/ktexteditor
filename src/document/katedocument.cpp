@@ -4458,14 +4458,13 @@ QString KTextEditor::DocumentPrivate::variable(const QString &name) const
     return m_storedVariables.value(name, QString());
 }
 
-QString KTextEditor::DocumentPrivate::setVariable(const QString &name, const QString &value)
+void KTextEditor::DocumentPrivate::setVariable(const QString &name, const QString &value)
 {
     QString s = QLatin1String("kate: ");
     s.append(name);
     s.append(QLatin1Char(' '));
     s.append(value);
     readVariableLine(s);
-    return m_storedVariables.value(name, QString());
 }
 
 //END
