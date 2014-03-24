@@ -119,9 +119,10 @@ public:
      *
      * \param mainWindow the MainWindow for which a view should be created
      * \return the new created view or NULL
+     * @see SessionConfigInterface
      */
     virtual QObject *createView(KTextEditor::MainWindow *mainWindow) = 0;
-  
+
     /**
      * Get the number of available config pages.
      * If a number < 1 is returned, it does not support config pages.

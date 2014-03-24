@@ -112,15 +112,12 @@ public:
     /**
      * Accessor to get the Editor instance.
      *
-     * That Editor instance can be qobject-cast to specific extensions.
-     * If the result of the cast is not NULL, that extension is supported,
-     * see also \ref kte_group_command_extensions.
+     * @note This object will stay alive until QCoreApplication terminates.
+     *       You shall not delete it yourself.
+     *       There is only ONE Editor instance of this per process.
      *
-     * This object will stay alive until QCoreApplication terminates.
-     * You shall not delete it yourself.
-     * There is only ONE Editor instance of this per process.
-     *
-     * \return Editor controller, after initial construction, will live until QCoreApplication is terminating.
+     * \return Editor controller, after initial construction, will
+     *        live until QCoreApplication is terminating.
      */
     static Editor *instance();
 
