@@ -208,6 +208,18 @@ enum DefaultStyle {
  *
  * @see Message
  *
+ * \section doc_recovery Crash Recovery for Documents
+ *
+ * When the system or the application using the editor component crashed
+ * with unsaved changes in the Document, the View notifies the user about
+ * the lost data and asks, whether the data should be recovered.
+ *
+ * This interface gives you control over the data recovery process. Use
+ * isDataRecoveryAvailable() to check for lost data. If you do not want the
+ * editor component to handle the data recovery process automatically, you can
+ * either trigger the data recovery by calling recoverData() or discard it
+ * by discardDataRecovery().
+ *
  * \section doc_extensions Document Extension Interfaces
  *
  * A simple document represents text and provides text manipulation methods.
@@ -1083,6 +1095,40 @@ public:
 
     //!\}
 
+    /**
+     * \name Crash Recovery
+     *
+     * \{
+     */
+public:
+    /**
+     * Returns whether a recovery is available for the current document.
+     *
+     * \see recoverData(), discardDataRecovery()
+     */
+    virtual bool isDataRecoveryAvailable() const = 0;
+
+    /**
+     * If recover data is available, calling recoverData() will trigger the
+     * recovery of the data. If isDataRecoveryAvailable() returns \e false,
+     * calling this function does nothing.
+     *
+     * \see isDataRecoveryAvailable(), discardDataRecovery()
+     */
+    virtual void recoverData() = 0;
+
+    /**
+     * If recover data is available, calling discardDataRecovery() will discard
+     * the recover data and the recover data is lost.
+     * If isDataRecoveryAvailable() returns \e false, calling this function
+     * does nothing.
+     *
+     * \see isDataRecoveryAvailable(), recoverData()
+     */
+    virtual void discardDataRecovery() = 0;
+    
+    //!\}
+ 
 private:
     /**
      * private d-pointer, pointing to the internal implementation

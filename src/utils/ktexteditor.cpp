@@ -31,7 +31,6 @@
 
 #include "plugin.h"
 
-#include "recoveryinterface.h"
 #include "command.h"
 #include "markinterface.h"
 #include "modificationinterface.h"
@@ -197,15 +196,6 @@ TextHintProvider::TextHintProvider()
 
 TextHintProvider::~TextHintProvider()
 {}
-
-RecoveryInterface::RecoveryInterface()
-    : d(0)
-{
-}
-
-RecoveryInterface::~RecoveryInterface()
-{
-}
 
 Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)
