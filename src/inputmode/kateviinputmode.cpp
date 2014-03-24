@@ -18,11 +18,11 @@
 
 #include "kateviinputmode.h"
 #include "kateviewinternal.h"
-#include "kateviinputmodemanager.h"
-#include "katevireplacemode.h"
-#include "kateviemulatedcommandbar.h"
 #include "kateconfig.h"
-#include "katevivisualmode.h"
+#include "vimode/kateviinputmodemanager.h"
+#include "vimode/kateviemulatedcommandbar.h"
+#include "vimode/katevireplacemode.h"
+#include "vimode/katevivisualmode.h"
 
 #include <KLocalizedString>
 

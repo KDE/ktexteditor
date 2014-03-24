@@ -18,8 +18,8 @@
 
 #include "kateviinputmodefactory.h"
 #include "kateviinputmode.h"
-#include "kateviglobal.h"
-#include "kateviinputmodeconfigtab.h"
+#include "vimode/kateviglobal.h"
+#include "vimode/kateviinputmodeconfigtab.h"
 
 #include <KLocalizedString>
 #include <KConfig>

@@ -219,7 +219,6 @@ dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
 if (BUILD_VIMODE)
-  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/vimode)
   qt5_wrap_ui(ktexteditor_LIB_SRCS vimode/viinputmodeconfigwidget.ui)
   set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
     inputmode/kateviinputmode.cpp
