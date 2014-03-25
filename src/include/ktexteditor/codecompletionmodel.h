@@ -428,8 +428,8 @@ public:
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
     /**
-     * This function returns true if the model needs grouping, otherwise false
-     * in KDE 4 default value was true, in KF 5 the default is false
+     * This function returns true if the model needs grouping, otherwise false.
+     * The default is false if not changed via setHasGroups().
      */
     bool hasGroups() const;
 
