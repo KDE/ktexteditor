@@ -526,7 +526,7 @@ public:
              * Construct the object => start editing transaction
              * @param document document for the transaction
              */
-            EditingTransaction(Document *document);
+            explicit EditingTransaction(Document *document);
             
             /**
              * Destruct the object => end editing transaction
