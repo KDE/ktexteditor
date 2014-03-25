@@ -819,7 +819,7 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
             // Work with the match
             if (replacement != NULL) {
                 if (matchCounter == 0) {
-                    m_view->document()->startEditing();
+                    static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->startEditing();
                 }
 
                 // Replace
@@ -865,7 +865,7 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
     // After last match
     if (matchCounter > 0) {
         if (replacement != NULL) {
-            m_view->document()->finishEditing();
+            static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->finishEditing();
         }
     }
 

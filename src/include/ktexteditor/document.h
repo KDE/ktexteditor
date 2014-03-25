@@ -39,6 +39,7 @@ namespace KTextEditor
 {
 
 class DocumentPrivate;
+class EditingTransactionPrivate;
 class MainWindow;
 class Message;
 class View;
@@ -509,32 +510,40 @@ Q_SIGNALS:
      */
 public:
     /**
-     * Begin an editing sequence.
+     * Editing transaction support.
      *
      * Edit commands during this sequence will be bunched together so that
      * they represent a single undo command in the editor, and so that
      * repaint events do not occur in between.
      *
      * Your application should \e not return control to the event loop while
-     * it has an unterminated (i.e. no matching finishEditing() call) editing
+     * it has an unterminated (i.e. this object is not destructed) editing
      * sequence (result undefined) - so do all of your work in one go!
-     *
-     * This call stacks, like the finishEditing() calls, this means you can
-     * safely call it three times in a row for example if you call
-     * finishEditing() three times, too. Internally, it just does counting the
-     * running editing sessions.
-     *
-     * @return returns true, if no transaction was already running
-     * \see finishEditing()
      */
-    virtual bool startEditing() = 0;
-
-    /**
-     * End an editing sequence.
-     * @return returns true, if this finished last running transaction
-     * \see startEditing() for more details
-     */
-    virtual bool finishEditing() = 0;
+    class EditingTransaction {
+        public:
+            /**
+             * Construct the object => start editing transaction
+             * @param document document for the transaction
+             */
+            EditingTransaction(Document *document);
+            
+            /**
+             * Destruct the object => end editing transaction
+             */
+            ~EditingTransaction();
+        
+        private:
+            /**
+             * no copying allowed
+             */
+            Q_DISABLE_COPY(EditingTransaction)
+            
+            /**
+             * private d-pointer
+             */
+            EditingTransactionPrivate *const d;
+    };
 
     /*
      * General access to the document's text content.

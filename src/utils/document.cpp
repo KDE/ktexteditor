@@ -34,6 +34,50 @@ Document::~Document()
 {
 }
 
+namespace KTextEditor {
+
+/**
+ * Private d-pointer type for EditingTransaction
+ */
+class EditingTransactionPrivate {
+    public:
+        /**
+         * real document implementation
+         */
+        DocumentPrivate *document;
+};
+
+}
+
+Document::EditingTransaction::EditingTransaction(Document *document)
+    : d (new EditingTransactionPrivate())
+{
+    /**
+     * store the document casted to private type
+     */
+    d->document = qobject_cast<KTextEditor::DocumentPrivate *> (document);
+    
+    /**
+     * start the editing transaction
+     */
+    if (d->document)
+        d->document->startEditing ();
+}
+
+Document::EditingTransaction::~EditingTransaction()
+{
+    /**
+     * finish the editing transaction
+     */
+    if (d->document)
+        d->document->finishEditing ();
+    
+    /**
+     * delete our d-pointer
+     */
+    delete d;
+}
+
 bool Document::openingError() const
 {
     return d->m_openingError;
@@ -47,20 +91,18 @@ QString Document::openingErrorMessage() const
 bool KTextEditor::Document::replaceText(const Range &range, const QString &text, bool block)
 {
     bool success = true;
-    startEditing();
+    EditingTransaction transaction(this);
     success &= removeText(range, block);
     success &= insertText(range.start(), text, block);
-    finishEditing();
     return success;
 }
 
 bool Document::replaceText(const Range &range, const QStringList &text, bool block)
 {
     bool success = true;
-    startEditing();
+    EditingTransaction transaction(this);
     success &= removeText(range, block);
     success &= insertText(range.start(), text, block);
-    finishEditing();
     return success;
 }
 
