@@ -8,11 +8,6 @@ KTE::ModificationInterface
 - add: bool Document::isModifiedOnDisk()
 - add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
 
-merge kateextendedattribute.h into kte/attribute.h
-- spell checking
-- default style (maybe extend default style with dsInvalid)
-- name ???
-
 #
 # TODO list after KDE Framework 5.0
 #
