@@ -28,7 +28,7 @@ class KTextEditor::CodeCompletionModelPrivate
 {
 public:
     CodeCompletionModelPrivate()
-        : rowCount(0), hasGroups(true)
+        : rowCount(0), hasGroups(false)
     {}
 
     int rowCount;

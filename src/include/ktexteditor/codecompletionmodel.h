@@ -429,8 +429,7 @@ public:
 
     /**
      * This function returns true if the model needs grouping, otherwise false
-     * in KDE 4 default value is true, in KDE 5 the default will be false
-     * TODO KDE 5
+     * in KDE 4 default value was true, in KF 5 the default is false
      */
     bool hasGroups() const;
 
