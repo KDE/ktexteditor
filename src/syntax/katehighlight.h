@@ -159,8 +159,13 @@ public:
                      const Kate::TextLineData *nextLine,
                      bool &ctxChanged,
                      int tabWidth = 0);
-
-    void setKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &,
+    /**
+     * Saves the attribute definitions to the config file.
+     *
+     * @param schema The id of the schema group to save
+     * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
+     */
+    void setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list,
                                       KConfig *cfg = 0 /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
     const QString &name() const
@@ -296,8 +301,8 @@ public:
         return m_indentation;
     }
 
-    void getKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &, KConfig *cfg = 0);
-    void getKateExtendedAttributeListCopy(const QString &schema, QList<KateExtendedAttribute::Ptr> &, KConfig *cfg = 0);
+    void getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = 0);
+    void getKateExtendedAttributeListCopy(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = 0);
 
     const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
     const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;
@@ -326,7 +331,7 @@ private:
     void handleKateHlIncludeRulesRecursive(int index, KateHlIncludeRules *list);
     int addToContextList(const QString &ident, int ctx0);
     void addToKateExtendedAttributeList();
-    void createKateExtendedAttribute(QList<KateExtendedAttribute::Ptr> &list);
+    void createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list);
     void readGlobalKeywordConfig();
     void readWordWrapConfig();
     void readCommentConfig();
@@ -344,13 +349,13 @@ private:
      */
     KateHlContext *generateContextStack(Kate::TextLineData::ContextStack &contextStack, KateHlContextModification modification, int &indexLastContextPreviousLine);
 
-    KateHlItem *createKateHlItem(KateSyntaxContextData *data, QList<KateExtendedAttribute::Ptr> &iDl, QStringList *RegionList, QStringList *ContextList);
-    int lookupAttrName(const QString &name, QList<KateExtendedAttribute::Ptr> &iDl);
+    KateHlItem *createKateHlItem(KateSyntaxContextData *data, QList<KTextEditor::Attribute::Ptr> &iDl, QStringList *RegionList, QStringList *ContextList);
+    int lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl);
 
     void createContextNameList(QStringList *ContextNameList, int ctx0);
     KateHlContextModification getContextModificationFromString(QStringList *ContextNameList, QString tmpLineEndContext,/*NO CONST*/ QString &unres);
 
-    QList<KateExtendedAttribute::Ptr> internalIDList;
+    QList<KTextEditor::Attribute::Ptr> internalIDList;
 
     QVector<KateHlContext *> m_contexts;
 

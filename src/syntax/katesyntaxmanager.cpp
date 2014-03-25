@@ -592,7 +592,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
                     col = tmp.toUInt(0, 16);
                     i->setSelectedBackground(QColor(col));
                 } else {
-                    i->clearProperty(KTextEditor::Attribute::SelectedBackground);
+                    i->clearProperty(SelectedBackground);
                 }
             }
             tmp = s[8]; if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
@@ -613,13 +613,13 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
         KTextEditor::Attribute::Ptr p = list.at(z);
 
         settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : QString());
-        settings << (p->hasProperty(KTextEditor::Attribute::SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : QString());
+        settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : QString());
         settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QLatin1String("1") : QLatin1String("0")) : QString());
         settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : QString());
         settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : QString());
         settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : QString());
         settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : QLatin1String("-"));
-        settings << (p->hasProperty(KTextEditor::Attribute::SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : QLatin1String("-"));
+        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : QLatin1String("-"));
         settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : QString());
         settings << QLatin1String("---");
 

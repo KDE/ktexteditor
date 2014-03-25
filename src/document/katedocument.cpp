@@ -5569,7 +5569,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
     }
 
     KTextEditor::Attribute::Ptr a = attributes[attribute];
-    return a->property(KateExtendedAttribute::AttributeDefaultStyleIndex).toInt();
+    return a->defaultStyle();
 }
 
 bool KTextEditor::DocumentPrivate::isComment(int line, int column)

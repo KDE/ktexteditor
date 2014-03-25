@@ -607,7 +607,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     cachingItems.clear();
 }
 
-void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &list, KConfig *cfg)
+void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
 {
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
@@ -615,7 +615,7 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
     list.clear();
     createKateExtendedAttribute(list);
 
-    foreach (KateExtendedAttribute::Ptr p, list) {
+    foreach (KTextEditor::Attribute::Ptr p, list) {
         Q_ASSERT(p);
 
         QStringList s = config.readEntry(p->name(), QStringList());
@@ -627,13 +627,13 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
                 s << QString();
             }
             QString name = p->name();
-            bool spellCheck = p->performSpellchecking();
+            bool spellCheck = !p->skipSpellChecking();
             p->clear();
             p->setName(name);
-            p->setPerformSpellchecking(spellCheck);
+            p->setSkipSpellChecking(!spellCheck);
 
             QString tmp = s[0]; if (!tmp.isEmpty()) {
-                p->setDefaultStyleIndex(tmp.toInt());
+                p->setDefaultStyle(static_cast<KTextEditor::DefaultStyle> (tmp.toInt()));
             }
 
             QRgb col;
@@ -678,25 +678,19 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
     }
 }
 
-void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QList< KateExtendedAttribute::Ptr > &list, KConfig *cfg)
+void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QList< KTextEditor::Attribute::Ptr > &list, KConfig *cfg)
 {
-    QList<KateExtendedAttribute::Ptr> attributes;
+    QList<KTextEditor::Attribute::Ptr> attributes;
     getKateExtendedAttributeList(schema, attributes, cfg);
 
     list.clear();
 
-    foreach (const KateExtendedAttribute::Ptr &attribute, attributes) {
-        list.append(KateExtendedAttribute::Ptr(new KateExtendedAttribute(*attribute.data())));
+    foreach (const KTextEditor::Attribute::Ptr &attribute, attributes) {
+        list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*attribute.data())));
     }
 }
 
-/**
- * Saves the attribute definitions to the config file.
- *
- * @param schema The id of the schema group to save
- * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
- */
-void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList<KateExtendedAttribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
+void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
 {
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
@@ -706,21 +700,21 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
     KateAttributeList defList;
     KateHlManager::self()->getDefaults(schema, defList);
 
-    foreach (const KateExtendedAttribute::Ptr &p, list) {
+    foreach (const KTextEditor::Attribute::Ptr &p, list) {
         Q_ASSERT(p);
 
         settings.clear();
-        uint defStyle = p->defaultStyleIndex();
+        KTextEditor::DefaultStyle defStyle = p->defaultStyle();
         KTextEditor::Attribute::Ptr a(defList[defStyle]);
-        settings << QString::number(p->defaultStyleIndex(), 10);
+        settings << QString::number(p->defaultStyle(), 10);
         settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->foreground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(KTextEditor::Attribute::SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
         settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontBold() ? QLatin1String("1") : QLatin1String("0")) : QString()));
         settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : QString()));
         settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : QString()));
         settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : QString()));
         settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(QTextFormat::BackgroundBrush)) ? QString::number(a->background().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(KTextEditor::Attribute::SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(KTextEditor::Attribute::SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
         settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : (writeDefaultsToo ? a->fontFamily() : QString()));
         settings << QLatin1String("---");
         config.writeEntry(p->name(), settings);
@@ -818,7 +812,7 @@ void KateHighlighting::done()
  *
  * @param list A reference to the internal list containing the parsed default config
  */
-void KateHighlighting::createKateExtendedAttribute(QList<KateExtendedAttribute::Ptr> &list)
+void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list)
 {
     // If the internal list isn't already available read the config file
     if (!noHl) {
@@ -831,7 +825,7 @@ void KateHighlighting::createKateExtendedAttribute(QList<KateExtendedAttribute::
 
     // If no highlighting is selected or we have no attributes we need only one default.
     if (noHl || list.isEmpty()) {
-        list.append(KateExtendedAttribute::Ptr(new KateExtendedAttribute(i18n("Normal Text"), KTextEditor::dsNormal)));
+        list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
     }
 }
 
@@ -863,9 +857,9 @@ void KateHighlighting::addToKateExtendedAttributeList()
         const QString itemDataName = KateHlManager::self()->syntax->groupData(data, QLatin1String("name")).simplified();
         const QString defStyleName = KateHlManager::self()->syntax->groupData(data, QLatin1String("defStyleNum"));
 
-        KateExtendedAttribute::Ptr newData(new KateExtendedAttribute(
+        KTextEditor::Attribute::Ptr newData(new KTextEditor::Attribute(
                                                buildPrefix + itemDataName,
-                                               KateHlManager::defaultStyleNameToIndex(defStyleName)));
+                                               static_cast<KTextEditor::DefaultStyle> (KateHlManager::defaultStyleNameToIndex(defStyleName))));
 
         /* here the custom style overrides are specified, if needed */
         if (!color.isEmpty()) {
@@ -895,7 +889,7 @@ void KateHighlighting::addToKateExtendedAttributeList()
         }
         // is spellchecking desired?
         if (!spellChecking.isEmpty()) {
-            newData->setPerformSpellchecking(IS_TRUE(spellChecking));
+            newData->setSkipSpellChecking(!(IS_TRUE(spellChecking)));
         }
         if (!fontFamily.isEmpty()) {
             newData->setFontFamily(fontFamily);
@@ -920,7 +914,7 @@ void KateHighlighting::addToKateExtendedAttributeList()
  *
  * @return The index of the attribute, or 0 if the attribute isn't found
  */
-int  KateHighlighting::lookupAttrName(const QString &name, QList<KateExtendedAttribute::Ptr> &iDl)
+int  KateHighlighting::lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl)
 {
     for (int i = 0; i < iDl.count(); i++)
         if (iDl.at(i)->name() == buildPrefix + name) {
@@ -948,7 +942,7 @@ int  KateHighlighting::lookupAttrName(const QString &name, QList<KateExtendedAtt
  * @return A pointer to the newly created item object
  */
 KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
-        QList<KateExtendedAttribute::Ptr> &iDl,
+        QList<KTextEditor::Attribute::Ptr> &iDl,
         QStringList *RegionList,
         QStringList *ContextNameList)
 {
@@ -1131,8 +1125,8 @@ int KateHighlighting::attribute(int ctx) const
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 {
     QList<KTextEditor::Attribute::Ptr> attributeList = attributes(QString());
-    if (attr < attributeList.length() && attributeList[attr]->hasProperty(KateExtendedAttribute::Spellchecking)) {
-        return attributeList[attr]->boolProperty(KateExtendedAttribute::Spellchecking);
+    if (attr < attributeList.length() && attributeList[attr]->hasProperty(Spellchecking)) {
+        return !attributeList[attr]->boolProperty(Spellchecking);
     }
     return true;
 }
@@ -1945,7 +1939,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
     // This list is needed for the translation of the attribute parameter,
     // if the itemData name is given instead of the index
     addToKateExtendedAttributeList();
-    QList<KateExtendedAttribute::Ptr> iDl = internalIDList;
+    QList<KTextEditor::Attribute::Ptr> iDl = internalIDList;
 
     createContextNameList(&ContextNameList, ctx0);
 
@@ -2164,7 +2158,7 @@ void KateHighlighting::clearAttributeArrays()
 
         KateHlManager::self()->getDefaults(it.key(), defaultStyleList);
 
-        QList<KateExtendedAttribute::Ptr> itemDataList;
+        QList<KTextEditor::Attribute::Ptr> itemDataList;
         getKateExtendedAttributeList(it.key(), itemDataList);
 
         uint nAttribs = itemDataList.count();
@@ -2172,8 +2166,8 @@ void KateHighlighting::clearAttributeArrays()
         array.clear();
 
         for (uint z = 0; z < nAttribs; z++) {
-            KateExtendedAttribute::Ptr itemData = itemDataList.at(z);
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyleIndex())));
+            KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
+            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
 
             if (itemData && itemData->hasAnyProperty()) {
                 *newAttribute += *itemData;
@@ -2197,13 +2191,13 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
 
     KateHlManager::self()->getDefaults(schema, defaultStyleList);
 
-    QList<KateExtendedAttribute::Ptr> itemDataList;
+    QList<KTextEditor::Attribute::Ptr> itemDataList;
     getKateExtendedAttributeList(schema, itemDataList);
 
     uint nAttribs = itemDataList.count();
     for (uint z = 0; z < nAttribs; z++) {
-        KateExtendedAttribute::Ptr itemData = itemDataList.at(z);
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyleIndex())));
+        KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
 
         if (itemData && itemData->hasAnyProperty()) {
             *newAttribute += *itemData;

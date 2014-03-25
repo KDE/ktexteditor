@@ -24,37 +24,30 @@
 
 #include <ktexteditor/attribute.h>
 
-class KateExtendedAttribute;
-
-typedef QList<KTextEditor::Attribute::Ptr> KateAttributeList;
-
 /**
- * An extension of the KTextEditor::Attribute class, with convenience functions
- * for access to extra kate-specific information, and a parent heirachy system
- * for display in the config
+ * Custom property types, which may or may not be supported by implementations.
+ * Internally used
  */
-class KateExtendedAttribute : public KTextEditor::Attribute
-{
-public:
-    typedef QExplicitlySharedDataPointer<KateExtendedAttribute> Ptr;
-
-    explicit KateExtendedAttribute(const QString &name, int defaultStyleIndex = -1);
-
-    enum InternalProperties {
+enum CustomProperties {
+        /// Draws an outline around the text
+        Outline = QTextFormat::UserProperty,
+        /// Changes the brush used to paint the text when it is selected
+        SelectedForeground,
+        /// Changes the brush used to paint the background when it is selected
+        SelectedBackground,
+        /// Determines whether background color is drawn over whitespace. Defaults to true.
+        BackgroundFillWhitespace,
+        /// Defined to allow storage of dynamic effect information
+        AttributeDynamicEffect = 0x10A00,
+        /// Defined for internal usage of KTextEditor implementations
+        AttributeInternalProperty = 0x10E00,
         AttributeName = AttributeInternalProperty,
         AttributeDefaultStyleIndex,
-        Spellchecking
-    };
-
-    QString name() const;
-    void setName(const QString &name);
-
-    bool isDefaultStyle() const;
-    int defaultStyleIndex() const;
-    void setDefaultStyleIndex(int index);
-
-    bool performSpellchecking() const;
-    void setPerformSpellchecking(bool spellchecking);
+        Spellchecking,
+        /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
+        AttributeUserProperty = 0x110000
 };
+
+typedef QList<KTextEditor::Attribute::Ptr> KateAttributeList;
 
 #endif

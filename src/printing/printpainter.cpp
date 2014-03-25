@@ -498,7 +498,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     int _ystart = y;
     QString _hlName = m_doc->highlight()->name();
 
-    QList<KateExtendedAttribute::Ptr> _attributes; // list of highlight attributes for the legend
+    QList<KTextEditor::Attribute::Ptr> _attributes; // list of highlight attributes for the legend
     m_doc->highlight()->getKateExtendedAttributeList(m_colorScheme, _attributes);
 
     KateAttributeList _defaultAttributes;
@@ -535,7 +535,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     y += 1 + pl.innerMargin;
 
     int _widest(0);
-    foreach (const KateExtendedAttribute::Ptr &attribute, _attributes) {
+    foreach (const KTextEditor::Attribute::Ptr &attribute, _attributes) {
         _widest = qMax(QFontMetrics(attribute->font()).width(attribute->name().section(QLatin1Char(':'), 1, 1)), _widest);
     }
 
@@ -547,7 +547,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
 
     _titleFont.setUnderline(true);
     QString _currentHlName;
-    foreach (const KateExtendedAttribute::Ptr &attribute, _attributes) {
+    foreach (const KTextEditor::Attribute::Ptr &attribute, _attributes) {
         QString _hl = attribute->name().section(QLatin1Char(':'), 0, 0);
         QString _name = attribute->name().section(QLatin1Char(':'), 1, 1);
         if (_hl != _hlName && _hl != _currentHlName) {
@@ -563,7 +563,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
             _i = 0;
         }
 
-        KTextEditor::Attribute _attr =  *_defaultAttributes[attribute->defaultStyleIndex()];
+        KTextEditor::Attribute _attr =  *_defaultAttributes[attribute->defaultStyle()];
         _attr += *attribute;
         painter.setPen(_attr.foreground().color());
         painter.setFont(_attr.font());

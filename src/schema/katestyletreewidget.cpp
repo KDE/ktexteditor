@@ -65,8 +65,8 @@ private:
 class KateStyleTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-    KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr());
-    KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KateExtendedAttribute::Ptr data = KateExtendedAttribute::Ptr());
+    KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
+    KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     ~KateStyleTreeWidgetItem() {}
 
     enum columns {
@@ -122,7 +122,7 @@ private:
 
     KTextEditor::Attribute::Ptr currentStyle, // the style currently in use (was "is")
                 defaultStyle; // default style for hl mode contexts and default styles (was "ds")
-    KateExtendedAttribute::Ptr  actualStyle;  // itemdata for hl mode contexts (was "st")
+    KTextEditor::Attribute::Ptr  actualStyle;  // itemdata for hl mode contexts (was "st")
 };
 //END
 
@@ -226,7 +226,7 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
     QIcon cl = brushIcon(i->style()->foreground().color());
     QIcon scl = brushIcon(i->style()->selectedForeground().color());
     QIcon bgcl = i->style()->hasProperty(QTextFormat::BackgroundBrush) ? brushIcon(i->style()->background().color()) : emptyColorIcon;
-    QIcon sbgcl = i->style()->hasProperty(KTextEditor::Attribute::SelectedBackground) ? brushIcon(i->style()->selectedBackground().color()) : emptyColorIcon;
+    QIcon sbgcl = i->style()->hasProperty(SelectedBackground) ? brushIcon(i->style()->selectedBackground().color()) : emptyColorIcon;
 
     m.addSection(i->contextName());
 
@@ -280,7 +280,7 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
         a->setData(3);
     }
 
-    if (style->hasProperty(KTextEditor::Attribute::SelectedBackground)) {
+    if (style->hasProperty(SelectedBackground)) {
         a = m.addAction(emptyColorIcon, i18n("Unset Selected Background Color"), this, SLOT(unsetColor()));
         a->setData(4);
     }
@@ -330,12 +330,12 @@ void KateStyleTreeWidget::emitChanged()
     emit changed();
 }
 
-void KateStyleTreeWidget::addItem(const QString &styleName, KTextEditor::Attribute::Ptr  defaultstyle, KateExtendedAttribute::Ptr  data)
+void KateStyleTreeWidget::addItem(const QString &styleName, KTextEditor::Attribute::Ptr  defaultstyle, KTextEditor::Attribute::Ptr  data)
 {
     new KateStyleTreeWidgetItem(this, styleName, defaultstyle, data);
 }
 
-void KateStyleTreeWidget::addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr  defaultstyle, KateExtendedAttribute::Ptr  data)
+void KateStyleTreeWidget::addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr  defaultstyle, KTextEditor::Attribute::Ptr  data)
 {
     new KateStyleTreeWidgetItem(parent, styleName, defaultstyle, data);
     updateGroupHeadings();
@@ -413,7 +413,7 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 }
 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &stylename,
-        KTextEditor::Attribute::Ptr defaultAttribute, KateExtendedAttribute::Ptr actualAttribute)
+        KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent),
       currentStyle(0L),
       defaultStyle(defaultAttribute),
@@ -424,7 +424,7 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const 
 }
 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &stylename,
-        KTextEditor::Attribute::Ptr defaultAttribute, KateExtendedAttribute::Ptr actualAttribute)
+        KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent),
       currentStyle(0L),
       defaultStyle(defaultAttribute),
@@ -556,12 +556,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::FontUnderline);
     }
 
-    if (currentStyle->hasProperty(KTextEditor::Attribute::Outline)) {
+    if (currentStyle->hasProperty(Outline)) {
         if (currentStyle->outline() != actualStyle->outline()) {
             actualStyle->setOutline(currentStyle->outline());
         }
     } else {
-        actualStyle->clearProperty(KTextEditor::Attribute::Outline);
+        actualStyle->clearProperty(Outline);
     }
 
     if (currentStyle->hasProperty(QTextFormat::ForegroundBrush)) {
@@ -572,12 +572,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::ForegroundBrush);
     }
 
-    if (currentStyle->hasProperty(KTextEditor::Attribute::SelectedForeground)) {
+    if (currentStyle->hasProperty(SelectedForeground)) {
         if (currentStyle->selectedForeground() != actualStyle->selectedForeground()) {
             actualStyle->setSelectedForeground(currentStyle->selectedForeground());
         }
     } else {
-        actualStyle->clearProperty(KTextEditor::Attribute::SelectedForeground);
+        actualStyle->clearProperty(SelectedForeground);
     }
 
     if (currentStyle->hasProperty(QTextFormat::BackgroundBrush)) {
@@ -588,12 +588,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::BackgroundBrush);
     }
 
-    if (currentStyle->hasProperty(KTextEditor::Attribute::SelectedBackground)) {
+    if (currentStyle->hasProperty(SelectedBackground)) {
         if (currentStyle->selectedBackground() != actualStyle->selectedBackground()) {
             actualStyle->setSelectedBackground(currentStyle->selectedBackground());
         }
     } else {
-        actualStyle->clearProperty(KTextEditor::Attribute::SelectedBackground);
+        actualStyle->clearProperty(SelectedBackground);
     }
 }
 
@@ -710,10 +710,10 @@ void KateStyleTreeWidgetItem::unsetColor(int colorId)
         }
         break;
     case 2:
-        if (defaultStyle->hasProperty(KTextEditor::Attribute::SelectedForeground)) {
+        if (defaultStyle->hasProperty(SelectedForeground)) {
             currentStyle->setSelectedForeground(defaultStyle->selectedForeground());
         } else {
-            currentStyle->clearProperty(KTextEditor::Attribute::SelectedForeground);
+            currentStyle->clearProperty(SelectedForeground);
         }
         break;
     case 3:
@@ -722,8 +722,8 @@ void KateStyleTreeWidgetItem::unsetColor(int colorId)
         }
         break;
     case 4:
-        if (currentStyle->hasProperty(KTextEditor::Attribute::SelectedBackground)) {
-            currentStyle->clearProperty(KTextEditor::Attribute::SelectedBackground);
+        if (currentStyle->hasProperty(SelectedBackground)) {
+            currentStyle->clearProperty(SelectedBackground);
         }
         break;
     }

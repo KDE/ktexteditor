@@ -529,10 +529,10 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
 void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange &target, const KTextEditor::Attribute &attribute) const
 {
-    if (attribute.hasProperty(KTextEditor::Attribute::SelectedForeground)) {
+    if (attribute.hasProperty(SelectedForeground)) {
         target.format.setForeground(attribute.selectedForeground());
     }
-    if (attribute.hasProperty(KTextEditor::Attribute::SelectedBackground)) {
+    if (attribute.hasProperty(SelectedBackground)) {
         target.format.setBackground(attribute.selectedBackground());
     }
 }

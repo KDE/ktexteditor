@@ -33,6 +33,100 @@ namespace KTextEditor
 {
 
 /**
+ * The following lists all valid default styles that are used for the syntax
+ * highlighting files in the itemData's defStyleNum attribute.
+ * Not all default styles are used by a syntax highlighting file.
+ */
+enum DefaultStyle {
+    //
+    // normal text
+    //
+    /** Default for normal text and source code. */
+    dsNormal = 0,
+    /** Used for language keywords. */
+    dsKeyword,
+    /** Used for function definitions and function calls. */
+    dsFunction,
+    /** Used for variables, if applicable. */
+    dsVariable,
+    /** Used for control flow highlighting, e.g., if, then, else, return, continue. */
+    dsControlFlow,
+    /** Used for operators such as +, -, *, / and :: etc. */
+    dsOperator,
+    /** Used for built-in language classes and functions. */
+    dsBuiltIn,
+    /** Used for extensions, such as Qt or boost. */
+    dsExtension,
+    /** Used for preprocessor statements. */
+    dsPreprocessor,
+    /** Used for attributes of a function, e.g. \@override in Java. */
+    dsAttribute,
+
+    //
+    // Strings & Characters
+    //
+    /** Used for a single character. */
+    dsChar,
+    /** Used for an escaped character. */
+    dsSpecialChar,
+    /** Used for strings. */
+    dsString,
+    /** Used for verbatim strings such as HERE docs. */
+    dsVerbatimString,
+    /** Used for special strings such as regular expressions or LaTeX math mode. */
+    dsSpecialString,
+    /** Used for includes, imports and modules. */
+    dsImport,
+
+    //
+    // Number, Types & Constants
+    //
+    /** Used for data types such as int, char, float etc. */
+    dsDataType,
+    /** Used for decimal values. */
+    dsDecVal,
+    /** Used for numbers with base other than 10. */
+    dsBaseN,
+    /** Used for floating point numbers. */
+    dsFloat,
+    /** Used for language constants. */
+    dsConstant,
+
+    //
+    // Comments & Documentation
+    //
+    /** Used for normal comments. */
+    dsComment,
+    /** Used for comments that reflect API documentation. */
+    dsDocumentation,
+    /** Used for annotations in comments, e.g. \@param in Doxygen or JavaDoc. */
+    dsAnnotation,
+    /** Used to refer to variables in a comment, e.g. after \@param in Doxygen or JavaDoc. */
+    dsCommentVar,
+    /** Used for region markers, typically defined by BEGIN/END. */
+    dsRegionMarker,
+    /** Used for information, e.g. the keyword \@note in Doxygen. */
+    dsInformation,
+    /** Used for warnings, e.g. the keyword \@warning in Doxygen. */
+    dsWarning,
+    /** Used for comment specials TODO and WARNING in comments. */
+    dsAlert,
+
+    //
+    // Misc
+    //
+    /** Used for attributes that do not match any of the other default styles. */
+    dsOthers,
+    /** Used to indicate wrong syntax. */
+    dsError
+
+    //
+    // WARNING: Whenever you add a default style to this list,
+    //          make sure to adapt KateHlManager::defaultStyleCount()
+    //
+};
+
+/**
  * \brief A class which provides customized text decorations.
  *
  * The Attribute class extends QTextCharFormat, the class which Qt
@@ -60,12 +154,23 @@ namespace KTextEditor
 class KTEXTEDITOR_EXPORT Attribute : public QTextCharFormat, public QSharedData
 {
 public:
+    /**
+     * Shared data pointer for Attribute
+     */
     typedef QExplicitlySharedDataPointer<Attribute> Ptr;
 
     /**
-     * Default constructor.  The resulting Attribute has no properties set to begin with.
+     * Default constructor.
+     * The resulting Attribute has no properties set to begin with.
      */
     Attribute();
+    
+    /**
+     * Construct attribute with given name & default style properties.
+     * @param name attribute name
+     * @param style attribute default style
+     */
+    Attribute(const QString &name, DefaultStyle style);
 
     /**
      * Copy constructor.
@@ -77,35 +182,7 @@ public:
      */
     virtual ~Attribute();
 
-    /**
-     * Notify the editor implementation that a property of this attribute
-     * has been changed.
-     *
-     * This is used to re-render any text which has this attribute assigned
-     * to it.
-     */
-    void changed() const;
-
     //BEGIN custom properties
-    /**
-     * Custom property types, which may or may not be supported by implementations.
-     */
-    enum CustomProperties {
-        /// Draws an outline around the text
-        Outline = QTextFormat::UserProperty,
-        /// Changes the brush used to paint the text when it is selected
-        SelectedForeground,
-        /// Changes the brush used to paint the background when it is selected
-        SelectedBackground,
-        /// Determines whether background color is drawn over whitespace. Defaults to true.
-        BackgroundFillWhitespace,
-        /// Defined to allow storage of dynamic effect information
-        AttributeDynamicEffect = 0x10A00,
-        /// Defined for internal usage of KTextEditor implementations
-        AttributeInternalProperty = 0x10E00,
-        /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
-        AttributeUserProperty = 0x110000
-    };
 
     /**
      * \name Custom properties
@@ -114,6 +191,49 @@ public:
      * rendering by editor implementations.
      * \{
      */
+    
+    /**
+     * Attribute name
+     * 
+     * \return attribute name
+     */
+    QString name() const;
+    
+    /**
+     * Set attribute name
+     * 
+     * \param name new attribute name
+     */
+    void setName(const QString &name);
+
+    /**
+     * Default style of this attribute
+     * 
+     * \return default style
+     */
+    DefaultStyle defaultStyle() const;
+    
+    /**
+     * Set default style of this attribute
+     * 
+     * \param style new default style
+     */
+    void setDefaultStyle(DefaultStyle style);
+
+    /**
+     * Should spellchecking be skipped?
+     * 
+     * \return skip spellchecking?
+     */
+    bool skipSpellChecking() const;
+    
+    /**
+     * Set if we should spellchecking be skipped?
+     * 
+     * @param skipspellchecking should spellchecking be skipped?
+     */
+    void setSkipSpellChecking(bool skipspellchecking);
+
     /**
      * Find out if the font weight is set to QFont::Bold.
      *
@@ -196,7 +316,6 @@ public:
      */
     void setBackgroundFillWhitespace(bool fillWhitespace);
 
-    // Fix deficiencies in QText{Char}Format
     /**
      * Clear all set properties.
      */
@@ -208,50 +327,19 @@ public:
      * \return \e true if any properties are set, otherwise \e false
      */
     bool hasAnyProperty() const;
-    //END
 
-    //BEGIN Action association
-    /**
-     * \}
-     * \name Action association
-     *
-     * The following functions allow for QAction%s to be associated with attributes,
-     * and thus with ranges which use this attribute.
-     *
-     * \note This feature is currently not implemented.
-     * \{
-     */
-    /**
-     * Associate an action with this attribute.  When assigned to a range, this attribute
-     * will enable the associated action(s) when the caret enters the range, and
-     * disable them on exit.  The action is also added to the context menu when
-     * the caret is within an associated range.
-     *
-     * \param action QAction to associate with this Attribute
-     */
-    void associateAction(QAction *action);
-
-    /**
-     * Remove the association with an action from this attribute; it will no
-     * longer be managed by associated ranges.
-     *
-     * \param action QAction to dissociate from this Attribute
-     */
-    void dissociateAction(QAction *action);
-
-    /**
-     * Returns a list of currently associated QAction%s.
-     */
-    const QList<QAction *> &associatedActions() const;
-
-    /**
-     * Clears all associations between QAction%s and this attribute.
-     */
-    void clearAssociatedActions();
-    //!\}
     //END
 
     //BEGIN Dynamic highlighting
+
+    /**
+     * \name Dynamic highlighting
+     *
+     * The following functions allow for text to be highlighted dynamically based on
+     * several events.
+     * \{
+     */
+
     /**
      * Several automatic activation mechanisms exist for associated attributes.
      * Using this you can conveniently have your ranges highlighted when either
@@ -263,27 +351,6 @@ public:
         /// Activate attribute on caret in
         ActivateCaretIn
     };
-
-    /**
-     * Dynamic effects for display.
-     * \todo Pulse and CycleGradient are unclear.
-     */
-    enum Effect {
-        EffectNone          = 0x0 /**< No effect. Just display. */,
-        EffectFadeIn        = 0x1 /**< Fade in and stay there. */,
-        EffectFadeOut       = 0x2 /**< Fade out to vanish. */,
-        EffectPulse         = 0x4 /**< Pulse (throb); change weight. */,
-        EffectCycleGradient = 0x8 /**< Cycle colors. */
-    };
-    Q_DECLARE_FLAGS(Effects, Effect)
-
-    /**
-     * \name Dynamic highlighting
-     *
-     * The following functions allow for text to be highlighted dynamically based on
-     * several events.
-     * \{
-     */
 
     /**
      * Return the attribute to use when the event referred to by \a type occurs.
@@ -304,9 +371,8 @@ public:
      */
     void setDynamicAttribute(ActivationType type, Attribute::Ptr attribute);
 
-    Effects effects() const;
-    void setEffects(Effects effects);
     //!\}
+
     //END
 
     /**
@@ -326,10 +392,11 @@ public:
     Attribute &operator=(const Attribute &a);
 
 private:
+    /**
+     * Private d-pointer
+     */
     class AttributePrivate *const d;
 };
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(Attribute::Effects)
 
 /**
  * @brief Attribute%s of a part of a line.
@@ -346,7 +413,7 @@ public:
     /**
      * Constructor of AttributeBlock.
      */
-    AttributeBlock(const int _start, const int _length, const Attribute::Ptr &_attribute)
+    AttributeBlock(int _start, int _length, const Attribute::Ptr &_attribute)
         : start(_start), length(_length), attribute(_attribute) {
     }
 
@@ -371,4 +438,3 @@ public:
 Q_DECLARE_TYPEINFO(KTextEditor::AttributeBlock, Q_MOVABLE_TYPE);
 
 #endif
-

@@ -210,7 +210,7 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
             bool hasStyle = true;
             if (attribute != -1) {
                 KTextEditor::Attribute::Ptr a = attributes[textLine->attribute(foundAt)];
-                const int ds = a->property(KateExtendedAttribute::AttributeDefaultStyleIndex).toInt();
+                const int ds = a->defaultStyle();
                 hasStyle = (ds == attribute);
             }
 
@@ -259,13 +259,13 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         QChar ch = document()->characterAt(cursor->toCursor());
         if (ch == lc) {
             KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor->line())->attribute(cursor->column())];
-            const int ds = a->property(KateExtendedAttribute::AttributeDefaultStyleIndex).toInt();
+            const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 --count;
             }
         } else if (ch == rc) {
             KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor->line())->attribute(cursor->column())];
-            const int ds = a->property(KateExtendedAttribute::AttributeDefaultStyleIndex).toInt();
+            const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 ++count;
             }
@@ -724,7 +724,7 @@ QString KateScriptDocument::attributeName(int line, int column)
     // just use the global default schema, we anyway only want the style number!
     QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
     KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(line)->attribute(column)];
-    return a->property(KateExtendedAttribute::AttributeName).toString();
+    return a->name();
 }
 
 QString KateScriptDocument::attributeName(const KTextEditor::Cursor &cursor)

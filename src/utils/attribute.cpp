@@ -18,6 +18,7 @@
  */
 
 #include "attribute.h"
+#include "kateextendedattribute.h"
 
 using namespace KTextEditor;
 
@@ -30,7 +31,6 @@ public:
         dynamicAttributes.append(Attribute::Ptr());
     }
 
-    QList<QAction *> associatedActions;
     QList<Attribute::Ptr> dynamicAttributes;
 };
 
@@ -39,12 +39,18 @@ Attribute::Attribute()
 {
 }
 
+Attribute::Attribute(const QString &name, DefaultStyle style)
+    : d(new AttributePrivate())
+{
+    setName(name);
+    setDefaultStyle(style);
+}
+
 Attribute::Attribute(const Attribute &a)
     : QTextCharFormat(a)
     , QSharedData()
     , d(new AttributePrivate())
 {
-    d->associatedActions = a.d->associatedActions;
     d->dynamicAttributes = a.d->dynamicAttributes;
 }
 
@@ -56,8 +62,6 @@ Attribute::~Attribute()
 Attribute &Attribute::operator+=(const Attribute &a)
 {
     merge(a);
-
-    d->associatedActions += a.associatedActions();
 
     for (int i = 0; i < a.d->dynamicAttributes.count(); ++i)
         if (i < d->dynamicAttributes.count()) {
@@ -87,6 +91,36 @@ void Attribute::setDynamicAttribute(ActivationType type, Attribute::Ptr attribut
     }
 
     d->dynamicAttributes[type] = attribute;
+}
+
+QString Attribute::name() const
+{
+    return stringProperty(AttributeName);
+}
+
+void Attribute::setName(const QString &name)
+{
+    setProperty(AttributeName, name);
+}
+
+DefaultStyle Attribute::defaultStyle() const
+{
+    return static_cast<DefaultStyle> (intProperty(AttributeDefaultStyleIndex));
+}
+
+void Attribute::setDefaultStyle(DefaultStyle style)
+{
+    setProperty(AttributeDefaultStyleIndex, QVariant(static_cast<int>(style)));
+}
+
+bool Attribute::skipSpellChecking() const
+{
+    return boolProperty(Spellchecking);
+}
+
+void Attribute::setSkipSpellChecking(bool skipspellchecking)
+{
+    setProperty(Spellchecking, QVariant(skipspellchecking));
 }
 
 QBrush Attribute::outline() const
@@ -149,7 +183,6 @@ void Attribute::clear()
 {
     QTextCharFormat::operator=(QTextCharFormat());
 
-    d->associatedActions.clear();
     d->dynamicAttributes.clear();
     d->dynamicAttributes.append(Ptr());
     d->dynamicAttributes.append(Ptr());
@@ -165,33 +198,9 @@ void Attribute::setFontBold(bool bold)
     setFontWeight(bold ? QFont::Bold : 0);
 }
 
-void Attribute::clearAssociatedActions()
-{
-    d->associatedActions.clear();
-}
-
 bool Attribute::hasAnyProperty() const
 {
     return properties().count();
-}
-
-const QList<QAction *> &Attribute::associatedActions() const
-{
-    return d->associatedActions;
-}
-
-Attribute::Effects KTextEditor::Attribute::effects() const
-{
-    if (hasProperty(AttributeDynamicEffect)) {
-        return Effects(intProperty(AttributeDynamicEffect));
-    }
-
-    return EffectNone;
-}
-
-void KTextEditor::Attribute::setEffects(Effects effects)
-{
-    setProperty(AttributeDynamicEffect, QVariant(effects));
 }
 
 Attribute &KTextEditor::Attribute::operator =(const Attribute &a)
@@ -199,7 +208,6 @@ Attribute &KTextEditor::Attribute::operator =(const Attribute &a)
     QTextCharFormat::operator=(a);
     Q_ASSERT(static_cast<QTextCharFormat>(*this) == a);
 
-    d->associatedActions = a.d->associatedActions;
     d->dynamicAttributes = a.d->dynamicAttributes;
 
     return *this;
