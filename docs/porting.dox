@@ -67,7 +67,7 @@ Entirely removed interfaces and classes are:
    never implemented and therefore unused.
  - \p KTextEditor::RangeCommand \n
    This interface was merged into \p KTextEditor::Command. The function
-   \p KTextEditor::Command::exec() now takes a Range as 3rd parameter.
+   \p KTextEditor::Command::exec() now takes an optional Range as 3rd parameter.
  - \p KTextEditor::HighlightInterface \n
    The default styles are now in the namespace \p KTextEditor::DefaultStyle.
    The rest of this interface was merged into the \p KTextEditor::Document and \p KTextEditor::View, see:

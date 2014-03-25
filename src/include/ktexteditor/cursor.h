@@ -51,7 +51,7 @@ class Range;
  * - The Cursor class is designed to be passed by value (only 8 Bytes).
  * - Think of cursors as having their position at the start of a character,
  *   not in the middle of one.
- * - invalid() Cursor%s are located at (-1, -1). In addition, an Cursor
+ * - invalid() Cursor%s are located at (-1, -1). In addition, a Cursor
  *   is invalid(), if either its line() and/or its column() is arbitrarily
  *   negative, i.e. < 0.
  * - All Cursor%s with line() >= 0 and column() >= 0 are valid. In this case

@@ -184,7 +184,7 @@ enum DefaultStyle {
  * call finishEditing() exactly as often as you call startEditing(), otherwise
  * the reference counter gets confused.
  *
- * @note The signal finishEditing() is always emitted in the final call of
+ * @note The signal editingFinished() is always emitted in the final call of
  *       endEditing(). Contrary, the signal textChanged() is emitted only
  *       if text changed. Hence, textChanged() is more accurate with respect
  *       to changes in the Document.
