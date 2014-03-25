@@ -99,6 +99,7 @@ The following interfaces were changed:
    and \p KTextEditor::Document::isLineTouched() are new.
  - \p KTextEditor::Document::readWriteChanged() \n
    This signal is emitted whenever the read-only state of the document changes.
+ - \p KTextEditor::Document::endEditing() was renamed to \p KTextEditor::Document::finishEditing().
  - \p KTextEditor::Document::exclusiveEditStart() was renamed to \p KTextEditor::Document::editingStarted().
  - \p KTextEditor::Document::exclusiveEditEnd() was renamed to \p KTextEditor::Document::editingFinished().
  - New \p KTextEditor::Document gained new editing signals: \n
