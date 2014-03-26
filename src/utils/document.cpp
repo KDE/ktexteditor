@@ -45,6 +45,11 @@ class EditingTransactionPrivate {
          * real document implementation
          */
         DocumentPrivate *document;
+
+        /**
+         * Indicator for running editing transaction
+         */
+        bool transactionRunning;
 };
 
 }
@@ -52,16 +57,31 @@ class EditingTransactionPrivate {
 Document::EditingTransaction::EditingTransaction(Document *document)
     : d (new EditingTransactionPrivate())
 {
-    /**
-     * store the document casted to private type
-     */
+    // Alghouth it works in release-mode, we usually want a valid document
+    Q_ASSERT(document != nullptr);
+
+    // initialize d-pointer
     d->document = qobject_cast<KTextEditor::DocumentPrivate *> (document);
-    
-    /**
-     * start the editing transaction
-     */
-    if (d->document)
+    d->transactionRunning = false;
+
+    // start the editing transaction
+    start();
+}
+
+void Document::EditingTransaction::start()
+{
+    if (d->document && !d->transactionRunning) {
         d->document->startEditing ();
+        d->transactionRunning = true;
+    }
+}
+
+void Document::EditingTransaction::finish()
+{
+    if (d->document && d->transactionRunning) {
+        d->document->finishEditing ();
+        d->transactionRunning = false;
+    }
 }
 
 Document::EditingTransaction::~EditingTransaction()
@@ -69,9 +89,8 @@ Document::EditingTransaction::~EditingTransaction()
     /**
      * finish the editing transaction
      */
-    if (d->document)
-        d->document->finishEditing ();
-    
+    finish();
+
     /**
      * delete our d-pointer
      */

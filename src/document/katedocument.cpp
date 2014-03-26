@@ -315,6 +315,11 @@ KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range 
 
 //BEGIN KTextEditor::EditInterface stuff
 
+bool KTextEditor::DocumentPrivate::isEditingTransactionRunning() const
+{
+    return editSessionNumber > 0;
+}
+
 QString KTextEditor::DocumentPrivate::text() const
 {
     return m_buffer->text();

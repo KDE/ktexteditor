@@ -90,7 +90,8 @@ class View;
  * is increased the first time (by creating an instance of EditingTransaction),
  * the signal editingStarted() is emitted. Only when the internal reference counter
  * reaches zero again, the signal editingFinished() and optionally the signal
- * textChanged() are emitted.
+ * textChanged() are emitted. Whether an editing transaction is currently active
+ * can be checked by calling isEditingTransactionRunning().
  *
  * @note The signal editingFinished() is always emitted when the last istance
  *       of EditingTransaction is destroyed. Contrary, the signal textChanged()
@@ -426,31 +427,75 @@ public:
      * Your application should \e not return control to the event loop while
      * it has an unterminated (i.e. this object is not destructed) editing
      * sequence (result undefined) - so do all of your work in one go!
+     *
+     * Using this class typically looks as follows:
+     * @code
+     * void foo() {
+     *     KTextEditor::Document::EditingTransaction transaction(document);
+     *     // now call editing functions
+     *     document->removeText(...)
+     *     document->insertText(...)
+     * }
+     * @endcode
+     *
+     * Although usually not required, the EditingTransaction additionally
+     * allows to manually call finish() and start() in between.
+     *
+     * @see editingStarted(), editingFinished()
      */
-    class EditingTransaction {
+    class KTEXTEDITOR_EXPORT EditingTransaction {
         public:
             /**
-             * Construct the object => start editing transaction
+             * Constructs the object and starts an editing transaction by
+             * calling start().
+             *
              * @param document document for the transaction
+             * @see start()
              */
             explicit EditingTransaction(Document *document);
-            
+
             /**
-             * Destruct the object => end editing transaction
+             * Destructs the object and, if needed, finishs a running editing
+             * transaction by calling finish().
+             *
+             * @see finish()
              */
             ~EditingTransaction();
-        
+
+            /**
+             * By calling start(), the editing transaction can be started again.
+             * This function only is of use in combination with finish().
+             *
+             * @see finish()
+             */
+            void start();
+
+            /**
+             * By calling finish(), the editing transaction can be finished
+             * already before destruction of this instance.
+             *
+             * @see start()
+             */
+            void finish();
+
         private:
             /**
              * no copying allowed
              */
             Q_DISABLE_COPY(EditingTransaction)
-            
+
             /**
              * private d-pointer
              */
             EditingTransactionPrivate *const d;
     };
+
+    /**
+     * Check whether an editing transaction is currently running.
+     *
+     * @see EditingTransaction
+     */
+    virtual bool isEditingTransactionRunning() const = 0;
 
     /*
      * General access to the document's text content.

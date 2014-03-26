@@ -101,6 +101,7 @@ The following interfaces were changed:
    This signal is emitted whenever the read-only state of the document changes.
  - \p KTextEditor::Document::startEditing() and \p KTextEditor::Document::endEditing()
    were removed in favour of the RAII class \p KTextEditor::Document::EditingTransaction.
+   Further, \p KTextEditor::Document::isEditingTransactionRunning() was added.
  - \p KTextEditor::Document::exclusiveEditStart() was renamed to \p KTextEditor::Document::editingStarted().
  - \p KTextEditor::Document::exclusiveEditEnd() was renamed to \p KTextEditor::Document::editingFinished().
  - New \p KTextEditor::Document gained new editing signals: \n

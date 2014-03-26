@@ -180,6 +180,7 @@ public Q_SLOTS:
     }
 
 public:
+    virtual bool isEditingTransactionRunning() const Q_DECL_OVERRIDE;
     virtual QString text(const KTextEditor::Range &range, bool blockwise = false) const;
     virtual QStringList textLines(const KTextEditor::Range &range, bool block = false) const;
     virtual QString text() const;
