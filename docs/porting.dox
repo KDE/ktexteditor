@@ -99,7 +99,8 @@ The following interfaces were changed:
    and \p KTextEditor::Document::isLineTouched() are new.
  - \p KTextEditor::Document::readWriteChanged() \n
    This signal is emitted whenever the read-only state of the document changes.
- - \p KTextEditor::Document::endEditing() was renamed to \p KTextEditor::Document::finishEditing().
+ - \p KTextEditor::Document::startEditing() and \p KTextEditor::Document::endEditing()
+   were removed in favour of the RAII class \p KTextEditor::Document::EditingTransaction.
  - \p KTextEditor::Document::exclusiveEditStart() was renamed to \p KTextEditor::Document::editingStarted().
  - \p KTextEditor::Document::exclusiveEditEnd() was renamed to \p KTextEditor::Document::editingFinished().
  - New \p KTextEditor::Document gained new editing signals: \n
@@ -121,6 +122,9 @@ The following interfaces were changed:
  - \p KTextEditor::SessionConfigInterface \n
    This interface is an extension only for a \p KTextEditor::Plugin and the Plugin
    view's returned by \p KTextEditor::Plugin::createView().
+ - \p KTextEditor::CodeCompletionModel \n
+   \p KTextEditor::CodeCompletionModel::hasGroups() now returns \e false (KF5)
+   instead of \e true (KDE4).
 
 \section kte_port_new New Interfaces
 The following interfaces are new:
@@ -154,8 +158,11 @@ The following classes have been significantly enhanced:
    Plain Old Data (POD) type.
  - \p KTextEditor::TextHintInterface \n
    This interface now requires you to call registerTextHintProvider() and
-   unregisterTextHintProvider() with a cooresponding object that implements
+   unregisterTextHintProvider() with a corresponding object that implements
    \p KTextEditor::TextHintProvider.
+ - \p KTextEditor::Attribute \n
+   This class was extended by several attributes that were internal to Kate Part
+   before, including the name, spell checking, and the default style.
 
 \section kte_port_new_classes New Classes
 The following classes are either new, or were added late in the KDE 4 release cycle:
@@ -174,7 +181,7 @@ The following classes are either new, or were added late in the KDE 4 release cy
 
 \section kte_port_plugins Plugin Architecture Changes
 The KTextEditor::Plugin system was heavily extended to support 'application
-plugins'. That is, a plugin can now create tool views in a MainWindow%s and
+plugins'. That is, a plugin can now create tool views in a KTextEditor::MainWindow%s and
 access the Application's document list. So the plugins are now shared
 between all applications using the KTextEditor interfaces (e.g. Kate, KDevelop,
 and Kile).

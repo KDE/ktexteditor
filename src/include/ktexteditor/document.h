@@ -83,26 +83,27 @@ class View;
  * textInserted() and textRemoved(). Note, that the first line in the
  * document is line 0.
  *
- * If the editor part supports it, a document provides full undo/redo history.
- * Text manipulation actions can be grouped together using startEditing()
- * and finishEditing(). All actions in between are grouped together to only one
- * undo/redo action. Due to internal reference counting you can call
- * startEditing() and finishEditing() as often as you wish, but make sure you
- * call finishEditing() exactly as often as you call startEditing(), otherwise
- * the reference counter gets confused.
+ * A Document provides full undo/redo history.
+ * Text manipulation actions can be grouped together to one undo/redo action by
+ * using an the class EditingTransaction. You can stack multiple EditingTransaction%s.
+ * Internally, the Document has a reference counter. If this reference counter
+ * is increased the first time (by creating an instance of EditingTransaction),
+ * the signal editingStarted() is emitted. Only when the internal reference counter
+ * reaches zero again, the signal editingFinished() and optionally the signal
+ * textChanged() are emitted.
  *
- * @note The signal editingFinished() is always emitted in the final call of
- *       endEditing(). Contrary, the signal textChanged() is emitted only
- *       if text changed. Hence, textChanged() is more accurate with respect
- *       to changes in the Document.
+ * @note The signal editingFinished() is always emitted when the last istance
+ *       of EditingTransaction is destroyed. Contrary, the signal textChanged()
+ *       is emitted only if text changed. Hence, textChanged() is more accurate
+ *       with respect to changes in the Document.
  *
- * Every text editing action between startEditing() and finishEditing() is also
- * available through the signals lineWrapped(), lineUnwrapped(),
- * textInserted() and textRemoved(). However, these signals should be used with
- * care. Please be aware of the following warning:
+ * Every text editing transaction is also available through the signals
+ * lineWrapped(), lineUnwrapped(), textInserted() and textRemoved().
+ * However, these signals should be used with care. Please be aware of the
+ * following warning:
  *
  * @warning Never change the Document's contents when edit actions are active,
- *          i.e. in between of startEditing() and finishEditing(). In case you
+ *          i.e. in between of (foreign) editing transactions. In case you
  *          violate this, the currently active edit action may perform edits
  *          that lead to undefined behavior.
  *
@@ -762,8 +763,8 @@ Q_SIGNALS:
      * Editing transaction has finished.
      *
      * @note This signal is emitted also for editing actions that maybe do not
-     *       modify the @p document contents (think of calling startEditing()
-     *       directly followed by endEditing()). If you want to get notified only
+     *       modify the @p document contents (think of having an empty
+     *       EditingTransaction). If you want to get notified only
      *       after text really changed, connect to the signal textChanged().
      *
      * \param document document which emitted this signal
