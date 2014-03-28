@@ -37,17 +37,6 @@ class KateFactory : public KPluginFactory
 
 public:
     /**
-     * This constructor creates a factory for a plugin with the given \p componentName.
-     *
-     * \param componentName the component name of the plugin
-     * \param parent a parent object
-     */
-    explicit KateFactory(const char *componentName = 0, QObject *parent = 0)
-        : KPluginFactory(componentName, parent)
-    {
-    }
-
-    /**
      * This function is called when the factory asked to create an Object.
      *
      * You may reimplement it to provide a very flexible factory. This is especially useful to
