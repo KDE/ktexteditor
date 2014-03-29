@@ -208,10 +208,10 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     }
 
     connect(m_undoManager, SIGNAL(undoChanged()), this, SIGNAL(undoChanged()));
-    connect(m_undoManager, SIGNAL(undoStart(KTextEditor::Document*)),   this, SIGNAL(exclusiveEditStart(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(undoEnd(KTextEditor::Document*)),     this, SIGNAL(exclusiveEditEnd(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(redoStart(KTextEditor::Document*)),   this, SIGNAL(exclusiveEditStart(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(redoEnd(KTextEditor::Document*)),     this, SIGNAL(exclusiveEditEnd(KTextEditor::Document*)));
+    connect(m_undoManager, SIGNAL(undoStart(KTextEditor::Document*)),   this, SIGNAL(editingStarted(KTextEditor::Document*)));
+    connect(m_undoManager, SIGNAL(undoEnd(KTextEditor::Document*)),     this, SIGNAL(editingFinished(KTextEditor::Document*)));
+    connect(m_undoManager, SIGNAL(redoStart(KTextEditor::Document*)),   this, SIGNAL(editingStarted(KTextEditor::Document*)));
+    connect(m_undoManager, SIGNAL(redoEnd(KTextEditor::Document*)),     this, SIGNAL(editingFinished(KTextEditor::Document*)));
 
     connect(this, SIGNAL(sigQueryClose(bool*,bool*)), this, SLOT(slotQueryClose_save(bool*,bool*)));
 
