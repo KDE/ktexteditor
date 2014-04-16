@@ -39,7 +39,7 @@ VimCodeCompletionTestModel::VimCodeCompletionTestModel(KTextEditor::View *parent
 {
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(true);
-    // It Would add additional items and we don't want that in tests
+    // It would add additional items and we don't want that in tests
     cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
     cc()->registerCompletionModel(this);
 }

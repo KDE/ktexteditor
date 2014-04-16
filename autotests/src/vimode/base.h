@@ -38,7 +38,7 @@ class KateViEmulatedCommandBar;
 #define FinishTest(...) FinishTest_( __LINE__, __VA_ARGS__ )
 
 
-/// Helper class that reperesents a change in a document.
+/// Helper class that represents a change in a document.
 class DocChange
 {
 public:
