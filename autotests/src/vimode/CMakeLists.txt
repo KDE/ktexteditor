@@ -10,17 +10,17 @@ set (VIMODE_TEST_LINK_LIBS KF5TextEditor
   Qt5::Test
 )
 
-macro(vimode_unit_tests)
-  foreach(_testname ${ARGN})
-    add_executable(${_testname} ${_testname}.cpp)
-    add_test(vimode/${_testname} ${_testname})
-    target_link_libraries(${_testname} ${VIMODE_TEST_LINK_LIBS})
-    ecm_mark_as_test(${_testname})
-  endforeach()
+macro(vimode_unit_test)
+  add_executable(${ARGN})
+  add_test(vimode/${ARGV0} ${ARGV0})
+  target_link_libraries(${ARGV0} ${VIMODE_TEST_LINK_LIBS})
+  ecm_mark_as_test(${ARGV0})
 endmacro()
 
-vimode_unit_tests(
-  main
-)
+
+vimode_unit_test(modes modes.cpp base.cpp)
+vimode_unit_test(view view.cpp base.cpp)
+vimode_unit_test(completion completion.cpp base.cpp fakecodecompletiontestmodel.cpp)
+vimode_unit_test(keys keys.cpp base.cpp fakecodecompletiontestmodel.cpp)
 
 add_custom_target(vimode_tests ${CMAKE_CTEST_COMMAND} --force-new-ctest-process -R "vimode/")
