@@ -541,6 +541,9 @@ public:
     bool wordCompletion() const;
     void setWordCompletion(bool on);
 
+    bool keywordCompletion () const;
+    void setKeywordCompletion (bool on);
+
     int wordCompletionMinimalWordLength() const;
     void setWordCompletionMinimalWordLength(int length);
 
@@ -579,6 +582,7 @@ private:
     bool m_viRelativeLineNumbers;
     bool m_automaticCompletionInvocation;
     bool m_wordCompletion;
+    bool m_keywordCompletion;
     int m_wordCompletionMinimalWordLength;
     bool m_wordCompletionRemoveTail;
     bool m_smartCopyCut;
@@ -606,6 +610,7 @@ private:
     bool m_viRelativeLineNumbersSet : 1;
     bool m_automaticCompletionInvocationSet : 1;
     bool m_wordCompletionSet : 1;
+    bool m_keywordCompletionSet : 1;
     bool m_wordCompletionMinimalWordLengthSet : 1;
     bool m_smartCopyCutSet : 1;
     bool m_scrollPastEndSet : 1;

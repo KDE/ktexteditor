@@ -42,6 +42,7 @@
 #include "kateautoindent.h"
 #include "katecompletionwidget.h"
 #include "katewordcompletion.h"
+#include "katekeywordcompletion.h"
 #include "katelayoutcache.h"
 #include "spellcheck/spellcheck.h"
 #include "spellcheck/spellcheckdialog.h"
@@ -1645,8 +1646,12 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     // register/unregister word completion...
     unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+    unregisterCompletionModel (KTextEditor::EditorPrivate::self()->keywordCompletionModel());
     if (config()->wordCompletion()) {
         registerCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+    }
+    if (config()->keywordCompletion()) {
+        registerCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
     }
 
     m_cut->setEnabled(m_doc->isReadWrite() && (selection() || m_config->smartCopyCut()));

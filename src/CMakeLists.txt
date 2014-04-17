@@ -56,6 +56,9 @@ completion/expandingtree/expandingtree.cpp
 # simple internal word completion
 completion/katewordcompletion.cpp
 
+# internal syntax-file based keyword completion
+completion/katekeywordcompletion.cpp
+
 # dialogs
 dialogs/kateconfigpage.cpp
 dialogs/katedialogs.cpp

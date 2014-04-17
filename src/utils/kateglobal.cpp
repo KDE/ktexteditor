@@ -37,6 +37,7 @@
 #include "katescriptmanager.h"
 #include "katebuffer.h"
 #include "katewordcompletion.h"
+#include "katekeywordcompletion.h"
 #include "spellcheck/spellcheck.h"
 #include "katepartdebug.h"
 
@@ -206,6 +207,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     // global word completion model
     m_wordCompletionModel = new KateWordCompletionModel(this);
+
+    // global keyword completion model
+    m_keywordCompletionModel = new KateKeywordCompletionModel (this);
 
     // tap to QApplication object
     // TODO: recheck the frameworks, if there is a better way of handling the PaletteChange "signal"

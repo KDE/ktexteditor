@@ -55,6 +55,7 @@ class KateHlManager;
 class KateSpellCheckManager;
 class KateWordCompletionModel;
 class KateAbstractInputModeFactory;
+class KateKeywordCompletionModel;
 
 namespace KTextEditor
 {
@@ -331,6 +332,12 @@ public:
     }
 
     /**
+      * global instance of the language-aware keyword completion model
+      * @return global instance of the keyword completion model
+      */
+     KateKeywordCompletionModel *keywordCompletionModel () { return m_keywordCompletionModel; }
+
+    /**
      * query for command
      * @param cmd name of command to query for
      * @return found command or 0
@@ -476,6 +483,11 @@ private:
      * global instance of the simple word completion mode
      */
     KateWordCompletionModel *m_wordCompletionModel;
+
+    /**
+     * global instance of the language-specific keyword completion model
+     */
+    KateKeywordCompletionModel *m_keywordCompletionModel;
 
     /**
      * clipboard history

@@ -193,6 +193,7 @@ class KateHlKeyword : public KateHlItem
 public:
     KateHlKeyword(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, bool insensitive, const QString &delims);
     virtual ~KateHlKeyword();
+    QSet<QString> allKeywords() const;
 
     void addList(const QStringList &);
     virtual int checkHgl(const QString &text, int offset, int len);
