@@ -42,6 +42,23 @@ KateViewTest::~KateViewTest()
 {
 }
 
+void KateViewTest::testCoordinatesToCursor()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText("Hi World!\nHi\n");
+
+    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(nullptr));
+    view1->show();
+
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))),
+             KTextEditor::Cursor(0, 2));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))),
+             KTextEditor::Cursor(1, 1));
+    // behind end of line should give an invalid cursor
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))),
+             KTextEditor::Cursor::invalid());
+}
+
 void KateViewTest::testReloadMultipleViews()
 {
     QTemporaryFile file("XXXXXX.cpp");
