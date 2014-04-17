@@ -48,7 +48,9 @@ private Q_SLOTS:
     void CommandModeTests();
 
     // Replace mode.
-    void ReplaceModeTest();
+    void ReplaceBasicTests();
+    void ReplaceUndoTests();
+    void ReplaceInsertFromLineTests();
 };
 
 
