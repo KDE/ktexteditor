@@ -299,7 +299,7 @@ private Q_SLOTS:
     void showBlock();
 
 private:
-    QString m_hoveredAnnotationText;
+    QString m_hoveredAnnotationGroupIdentifier;
 
     void initializeFoldingColors();
 };
