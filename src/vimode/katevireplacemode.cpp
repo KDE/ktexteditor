@@ -18,14 +18,17 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevireplacemode.h"
-#include "kateviinputmodemanager.h"
-#include "kateview.h"
-#include "kateviewinternal.h"
-#include "kateconfig.h"
+
+#include <view/kateviewinternal.h>
+#include <vimode/katevireplacemode.h>
+#include <vimode/kateviinputmodemanager.h>
+#include <utils/kateconfig.h>
+
 
 KateViReplaceMode::KateViReplaceMode(KateViInputModeManager *viInputModeManager,
-                                     KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal) : KateViModeBase()
+                                     KTextEditor::ViewPrivate *view,
+                                     KateViewInternal *viewInternal)
+    : KateViModeBase()
 {
     m_view = view;
     m_viewInternal = viewInternal;
@@ -34,35 +37,36 @@ KateViReplaceMode::KateViReplaceMode(KateViInputModeManager *viInputModeManager,
 
 KateViReplaceMode::~KateViReplaceMode()
 {
+    /* There's nothing to do here. */
 }
 
 bool KateViReplaceMode::commandInsertFromLine(int offset)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
-    KTextEditor::Cursor c2(c.line(), c.column() + 1);
 
     if (c.line() + offset >= doc()->lines() || c.line() + offset < 0) {
         return false;
     }
 
-    QString line = doc()->line(c.line() + offset);
-    int tabWidth = doc()->config()->tabWidth();
-    QChar ch = getCharAtVirtualColumn(line, m_view->virtualCursorColumn(), tabWidth);
-
+    // Fetch the new character from the specified line.
+    KTextEditor::Cursor target(c.line() + offset, c.column());
+    QChar ch = doc()->characterAt(target);
     if (ch == QChar::Null) {
         return false;
     }
 
+    // The cursor is at the end of the line: just append the char.
     if (c.column() == doc()->lineLength(c.line())) {
         return doc()->insertText(c, ch);
     }
 
+    // We can replace the current one with the fetched character.
+    KTextEditor::Cursor next(c.line(), c.column() + 1);
     QChar removed = doc()->line(c.line()).at(c.column());
-    if (doc()->replaceText(KTextEditor::Range(c, c2), ch)) {
+    if (doc()->replaceText(KTextEditor::Range(c, next), ch)) {
         overwrittenChar(removed);
         return true;
     }
-
     return false;
 }
 
@@ -92,10 +96,6 @@ bool KateViReplaceMode::commandMoveOneWordRight()
     return true;
 }
 
-/**
- * checks if the key is a valid command
- * @return true if a command was completed and executed, false otherwise
- */
 bool KateViReplaceMode::handleKeypress(const QKeyEvent *e)
 {
     // backspace should work even if the shift key is down
@@ -193,7 +193,8 @@ void KateViReplaceMode::backspace()
 
     if (c1.column() > 0) {
         if (!m_overwritten.isEmpty()) {
-            doc()->removeText(KTextEditor::Range(c1.line(), c1.column() - 1, c1.line(), c1.column()));
+            doc()->removeText(KTextEditor::Range(c1.line(), c1.column() - 1,
+                                                 c1.line(), c1.column()));
             doc()->insertText(c2, m_overwritten.right(1));
             m_overwritten.remove(m_overwritten.length() - 1, 1);
         }

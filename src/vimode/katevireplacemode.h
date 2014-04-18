@@ -18,40 +18,62 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+
 #ifndef KATE_VI_REPLACE_MODE_INCLUDED
 #define KATE_VI_REPLACE_MODE_INCLUDED
 
-#include "katevimodebase.h"
 
-namespace KTextEditor { class ViewPrivate; }
-class KateViewInternal;
-class QKeyEvent;
+#include <vimode/katevimodebase.h>
+
 
 /**
  * Commands for the vi replace mode
  */
-
 class KateViReplaceMode : public KateViModeBase
 {
 public:
-    KateViReplaceMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
+    explicit KateViReplaceMode(KateViInputModeManager *viInputModeManager,
+                               KTextEditor::ViewPrivate *view,
+                               KateViewInternal *viewInternal);
     ~KateViReplaceMode();
 
-    bool handleKeypress(const QKeyEvent *e);
+    /// Update the track of overwritten characters with the \p s character.
+    inline void overwrittenChar(const QChar &s)
+    {
+        m_overwritten += s;
+    }
 
+protected:
+    /**
+     * Checks if the key is a valid command in replace mode.
+     *
+     * @returns true if a command was completed and executed, false otherwise.
+     */
+    bool handleKeypress(const QKeyEvent *e) override;
+
+private:
+    /**
+     * Replace the character at the current column with a character from
+     * the same column but in a different line.
+     *
+     * @param offset The offset of the line to be picked. This value is
+     * relative to the current line.
+     * @returns true if the character could be replaced, false otherwise.
+     */
     bool commandInsertFromLine(int offset);
+
+    // Auxiliar methods for moving the cursor in replace mode.
 
     bool commandMoveOneWordLeft();
     bool commandMoveOneWordRight();
 
-    void overwrittenChar(const QChar &s)
-    {
-        m_overwritten += s;
-    }
+    /// It removes a modification in the previous character.
     void backspace();
 
 private:
+    /// Keeps track of the characters that have been overwritten so far.
     QString m_overwritten;
 };
 
-#endif
+
+#endif /* KATE_VI_REPLACE_MODE_INCLUDED */
