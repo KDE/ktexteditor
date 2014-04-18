@@ -33,7 +33,7 @@
    <item>
     <widget class="QGroupBox" name="gbWordCompletion">
      <property name="title">
-      <string>A&amp;uto Word Completion HI</string>
+      <string>A&amp;uto Word Completion</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
