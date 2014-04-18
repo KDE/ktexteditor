@@ -1483,10 +1483,17 @@ void ModesTest::ReplaceUndoTests()
     DoTest("qwerty", "lRX\\backspace\\backspaceX", "Xwerty");
 
     // Ctrl-W
-    // TODO
+    DoTest("", "R\\ctrl-w", "");
+    DoTest("Hello", "lRXX\\ctrl-w", "Hello");
+    DoTest("Hello", "lR\t\\ctrl-w", "Hello");
+    DoTest("Hello", "lRXX\\left\\ctrl-w", "HXXlo");
 
     // Ctrl-U
-    // TODO
+    DoTest("", "R\\ctrl-u", "");
+    DoTest("Hello", "lRXX\\ctrl-u", "Hello");
+    DoTest("Hello", "lR\t\\ctrl-u", "Hello");
+    DoTest("Hello", "lRXX\\left\\ctrl-u", "HXXlo");
+    DoTest("Hello World", "3lRXX XX\\ctrl-u", "Hello World");
 }
 
 void ModesTest::ReplaceInsertFromLineTests()

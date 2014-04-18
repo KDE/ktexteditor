@@ -67,8 +67,11 @@ private:
     bool commandMoveOneWordLeft();
     bool commandMoveOneWordRight();
 
-    /// It removes a modification in the previous character.
+    // Auxiliar methods for removing modifications.
+
     void backspace();
+    void commandBackWord();
+    void commandBackLine();
 
 private:
     /// Keeps track of the characters that have been overwritten so far.
