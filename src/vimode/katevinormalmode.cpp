@@ -1135,6 +1135,9 @@ bool KateViNormalMode::commandChange()
         // (done above) and then starting block prepend.
         return commandPrependToBlock();
     } else {
+        if (m_commandRange.startLine < m_commandRange.endLine) {
+            c.setLine(m_commandRange.startLine);
+        }
         c.setColumn(m_commandRange.startColumn);
     }
 
