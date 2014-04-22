@@ -77,6 +77,8 @@ KateViInputModeConfigTab::~KateViInputModeConfigTab()
 
 void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode)
 {
+    m_viGlobal->clearMappings(mode);
+
     for (int i = 0; i < mappingsTable->rowCount(); i++) {
         QTableWidgetItem *from = mappingsTable->item(i, 0);
         QTableWidgetItem *to = mappingsTable->item(i, 1);
@@ -129,7 +131,6 @@ void KateViInputModeConfigTab::apply()
     KateViewConfig::global()->setViInputModeStealKeys(ui->chkViCommandsOverride->isChecked());
 
     // Mappings.
-    m_viGlobal->clearMappings(KateViGlobal::NormalModeMapping);
     applyTab(ui->tblNormalModeMappings, KateViGlobal::NormalModeMapping);
     applyTab(ui->tblInsertModeMappings, KateViGlobal::InsertModeMapping);
     applyTab(ui->tblVisualModeMappings, KateViGlobal::VisualModeMapping);
