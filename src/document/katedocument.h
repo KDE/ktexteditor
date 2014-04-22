@@ -817,6 +817,8 @@ private:
     bool removeStringFromBeginning(int line, const QString &str);
     bool removeStringFromEnd(int line, const QString &str);
 
+    QString eventuallyReplaceTabs(QString str) const;
+
     /**
       Find the position (line and col) of the next char
       that is not a space. If found line and col point to the found character.

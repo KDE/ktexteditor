@@ -23,6 +23,7 @@
 #include <katedocument.h>
 #include <ktexteditor/movingcursor.h>
 #include <kateconfig.h>
+#include <kateview.h>
 
 #include <QtTestWidgets>
 #include <QTemporaryFile>
@@ -271,6 +272,66 @@ void KateDocumentTest::testForgivingApiUsage()
 
     doc.setText("nY\nnYY\n");
     QVERIFY(doc.removeText(Range(0, 0, 0, 1000)));
+}
+
+void KateDocumentTest::testReplaceTabs()
+{
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+
+    auto reset = [&]() {
+        doc.setText("  Hi!");
+        view->setCursorPosition(Cursor(0, 0));
+    };
+
+    doc.config()->setTabWidth(4);
+    doc.config()->setIndentationMode("cppstyle");
+
+    // no replace tabs, no indent pasted text
+    doc.setConfigValue("replace-tabs", false);
+    doc.setConfigValue("indent-pasted-text", false);
+
+    reset();
+    doc.insertText(Cursor(0, 0), "\t");
+    QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
+
+    reset();
+    doc.typeChars(view, "\t");
+    QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
+
+    reset();
+    doc.paste(view, "some\ncode\n  3\nhi\n");
+    QCOMPARE(doc.text(), QStringLiteral("some\ncode\n  3\nhi\n  Hi!"));
+
+    // now, enable replace tabs
+    doc.setConfigValue("replace-tabs", true);
+
+    reset();
+    doc.insertText(Cursor(0, 0), "\t");
+    // calling insertText does not replace tabs
+    QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
+
+    reset();
+    doc.typeChars(view, "\t");
+    // typing text replaces tabs
+    QCOMPARE(doc.text(), QStringLiteral("      Hi!"));
+
+    reset();
+    doc.paste(view, "\t");
+    // pasting text does not with indent-pasted off
+    QCOMPARE(doc.text(), QStringLiteral("\t  Hi!"));
+
+    doc.setConfigValue("indent-pasted-text", true);
+    doc.setText("int main() {\n    \n}");
+    view->setCursorPosition(Cursor(1, 4));
+    doc.paste(view, "\tHi");
+    // ... and it still does not with indent-pasted on.
+    // This behaviour is up to discussion.
+    QCOMPARE(doc.text(), QStringLiteral("int main() {\n    Hi\n}"));
+
+    reset();
+    doc.paste(view, "some\ncode\n  3\nhi");
+    QCOMPARE(doc.text(), QStringLiteral("some\ncode\n3\nhi  Hi!"));
 }
 
 /**

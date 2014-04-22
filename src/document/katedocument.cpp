@@ -601,12 +601,9 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
         }
     }
 
-    bool replacetabs = (config()->replaceTabsDyn());
     int tabWidth = config()->tabWidth();
 
     static const QChar newLineChar(QLatin1Char('\n'));
-    static const QChar tabChar(QLatin1Char('\t'));
-    static const QChar spaceChar(QLatin1Char(' '));
 
     int insertColumnExpanded = insertColumn;
     Kate::TextLine l = plainKateTextLine(currentLine);
@@ -646,17 +643,6 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
             currentLineStart = pos + 1;
             if (l) {
                 insertColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
-            }
-        } else {
-            if (replacetabs && ch == tabChar) {
-                int spacesRequired = tabWidth - ((insertColumnExpanded + pos - currentLineStart) % tabWidth);
-                editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart) + QString(spacesRequired, spaceChar));
-
-                insertColumn += pos - currentLineStart + spacesRequired;
-                currentLineStart = pos + 1;
-                if (l) {
-                    insertColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
-                }
             }
         }
     }
@@ -2811,6 +2797,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
                                 , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
         view->setSelection(selectionRange);
     } else {
+        chars = eventuallyReplaceTabs(chars);
         insertText(view->cursorPosition(), chars);
     }
 
@@ -3152,6 +3139,24 @@ bool KTextEditor::DocumentPrivate::removeStringFromEnd(int line, const QString &
     }
 
     return there;
+}
+
+/*
+  Replace tabs by spaces in the given string, if enabled.
+ */
+QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(QString str) const
+{
+    const bool replacetabs = config()->replaceTabsDyn();
+    if ( ! replacetabs ) {
+        return str;
+    }
+    const int tabWidth = config()->tabWidth();
+    static const QLatin1Char tabChar('\t');
+    static QString replacement;
+    if ( replacement.size() != tabWidth ) {
+        replacement = QStringLiteral(" ").repeated(tabWidth);
+    }
+    return str.replace(tabChar, replacement);
 }
 
 /*

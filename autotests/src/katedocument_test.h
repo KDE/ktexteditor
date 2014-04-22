@@ -43,6 +43,8 @@ private Q_SLOTS:
     void testRemoveMultipleLines();
     void testInsertNewline();
 
+    void testReplaceTabs();
+
     void testDigest();
 };
 
