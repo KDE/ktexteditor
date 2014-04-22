@@ -32,20 +32,24 @@ class ModesTest : public BaseTest
 
 private Q_SLOTS:
     // Normal mode.
-    void NormalModeMotionsTest();
-    void NormalModeCommandsTest();
-    void NormalModeControlTest();
-    // TODO: this one is ugly
-    void NormalModeNotYetImplementedFeaturesTest();
+    void NormalMotionsTests();
+    void NormalCommandsTests();
+    void NormalControlTests();
+    void NormalNotYetImplementedFeaturesTests();
 
     // Insert mode.
-    void InsertModeTests();
+    void InsertTests();
+    void InsertKeysTests();
 
     // Visual mode.
-    void VisualModeTests();
+    void VisualMotionsTests();
+    void VisualCommandsTests();
+    void VisualExternalTests();
 
     // Command mode.
-    void CommandModeTests();
+    void CommandTests();
+    void CommandSedTests();
+    void CommandDeleteTests();
 
     // Replace mode.
     void ReplaceBasicTests();

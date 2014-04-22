@@ -31,7 +31,7 @@ QTEST_MAIN(ModesTest)
 
 //BEGIN: Normal mode.
 
-void ModesTest::NormalModeMotionsTest()
+void ModesTest::NormalMotionsTests()
 {
     // Test moving around an empty document (nothing should happen)
     DoTest("", "jkhl", "");
@@ -710,9 +710,8 @@ void ModesTest::NormalModeMotionsTest()
     DoTest("<a, b, c>", "ci>X", "<X>");
 }
 
-void ModesTest::NormalModeCommandsTest()
+void ModesTest::NormalCommandsTests()
 {
-
     // Testing "J"
     DoTest("foo\nbar", "J", "foo bar");
     DoTest("foo\nbar", "JrX", "fooXbar");
@@ -908,13 +907,13 @@ void ModesTest::NormalModeCommandsTest()
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
     BeginTest("asdasdasd\nasdasdasdasdasdasdasd");
     kate_document->setWordWrap(true);
-    kate_document->setWordWrapAt( 10 );
+    kate_document->setWordWrapAt(10);
     TestPressKey("Jii");
     FinishTest("iasdasdasd\n \nasdasdasda \nsdasdasdas \nd");
     kate_document->setWordWrap(oldDynWordWrap);
 }
 
-void ModesTest::NormalModeControlTest()
+void ModesTest::NormalControlTests()
 {
     // Testing "Ctrl-x"
     DoTest("150", "101\\ctrl-x", "49");
@@ -966,7 +965,7 @@ void ModesTest::NormalModeControlTest()
     DoTest("line 1\nline 2\n", "ddu\\ctrl-r", "line 2\n");
 }
 
-void ModesTest::NormalModeNotYetImplementedFeaturesTest()
+void ModesTest::NormalNotYetImplementedFeaturesTests()
 {
     QSKIP("This tests never worked :(", SkipAll);
 
@@ -981,9 +980,9 @@ void ModesTest::NormalModeNotYetImplementedFeaturesTest()
 
 //BEGIN: Insert mode.
 
-void ModesTest::InsertModeTests()
+void ModesTest::InsertTests()
 {
-
+    // Basic stuff.
     DoTest("bar", "s\\ctrl-c", "ar");
     DoTest("bar", "ls\\ctrl-cx", "r");
     DoTest("foo\nbar", "S\\ctrl-c", "\nbar");
@@ -998,6 +997,8 @@ void ModesTest::InsertModeTests()
     DoTest("foo bar", "wlI\\ctrl-cx", "oo bar");
     DoTest("foo bar", "wli\\ctrl-cx", "foo ar");
     DoTest("foo bar", "wlihello\\ctrl-c", "foo bhelloar");
+
+    // With count.
     DoTest("", "5ihello\\esc", "hellohellohellohellohello");
     DoTest("bar", "5ahello\\esc", "bhellohellohellohellohelloar");
     DoTest("   bar", "5Ihello\\esc", "   hellohellohellohellohellobar");
@@ -1012,19 +1013,26 @@ void ModesTest::InsertModeTests()
     DoTest("foo\nbar", "j5Ohello\\esc", "foo\nhello\nhello\nhello\nhello\nhello\nbar");
     DoTest("bar", "5ohello\\esc2ixyz\\esc", "bar\nhello\nhello\nhello\nhello\nhellxyzxyzo");
     DoTest("", "ihello\\esc5.", "hellhellohellohellohellohelloo");
+
     // Ensure that the flag that says that counted repeats should begin on a new line is reset.
     DoTest("foo", "obar\\ctrl-c5ixyz\\esc", "foo\nbaxyzxyzxyzxyzxyzr");
     DoTest("foo", "obar\\ctrl-cgg\\ctrl-vlljAxyz\\esc5i123\\esc", "fooxy123123123123123z\nbarxyz");
     DoTest("foo foo foo", "c3wbar\\esc", "bar");
     DoTest("abc", "lOxyz", "xyz\nabc");
 
-    // Testing "Ctrl-w"
+    // Test that our test driver can handle newlines during insert mode :)
+    DoTest("", "ia\\returnb", "a\nb");
+}
+
+void ModesTest::InsertKeysTests()
+{
+    // Ctrl-w
     DoTest("foobar", "$i\\ctrl-w", "r");
     DoTest("foobar\n", "A\\ctrl-w", "\n");
     DoTest("   foo", "i\\ctrl-wX\\esc", "X   foo");
     DoTest("   foo", "lli\\ctrl-wX\\esc", "X foo");
 
-    // Testing "Ctrl-u"
+    // Ctrl-u
     DoTest("", "i\\ctrl-u", "");
     DoTest("foobar", "i\\ctrl-u", "foobar");
     DoTest("foobar", "fbi\\ctrl-u", "bar");
@@ -1033,70 +1041,67 @@ void ModesTest::InsertModeTests()
     DoTest("foobar\n  second", "jfci\\ctrl-u", "foobar\n  cond");
     DoTest("foobar\n  second", "j$a\\ctrl-u", "foobar\n  ");
 
-    // Testing "Ctrl-e"
+    // Ctrl-e
     DoTest("foo\nbar", "i\\ctrl-e", "bfoo\nbar");
     DoTest("foo\nbar", "i\\ctrl-e\\ctrl-e\\ctrl-e", "barfoo\nbar");
     DoTest("foo\nb", "i\\ctrl-e\\ctrl-e", "bfoo\nb");
 
-    // Testing "Ctrl-y"
+    // Ctrl-y
     DoTest("foo\nbar", "ji\\ctrl-y", "foo\nfbar");
     DoTest("foo\nbar", "ji\\ctrl-y\\ctrl-y\\ctrl-y", "foo\nfoobar");
     DoTest("f\nbar", "ji\\ctrl-y\\ctrl-y", "f\nfbar");
 
-    // Testing "Ctrl-R"
+    // Ctrl-R
     DoTest("barbaz", "\"ay3li\\ctrl-ra", "barbarbaz");
     DoTest("barbaz", "\"ay3li\\ctrl-raX", "barXbarbaz");
     DoTest("bar\nbaz", "\"byylli\\ctrl-rb", "bar\nbar\nbaz");
 
-    // Testing "Ctrl-O"
+    // Ctrl-O
     DoTest("foo bar baz", "3li\\ctrl-od2w", "foobaz");
     DoTest("foo bar baz", "3li\\ctrl-od2w\\ctrl-w", "baz");
     DoTest("foo bar baz", "i\\ctrl-o3l\\ctrl-w", " bar baz");
     DoTest("foo\nbar\nbaz", "li\\ctrl-oj\\ctrl-w\\ctrl-oj\\ctrl-w", "foo\nar\naz");
+
     // Test that the text written after the Ctrl-O command completes is treated as
     // an insertion of text (rather than a sequence of commands) when repeated via "."
     DoTest("", "isausage\\ctrl-obugo\\esc.", "ugugoosausage");
+
     // 'Step back' on Ctrl-O if at the end of the line
     DoTest("foo bar baz", "A\\ctrl-ox", "foo bar ba");
+
     // Paste acts as gp when executing in a Ctrl-O
     DoTest("foo bar baz", "yiwea\\ctrl-opd", "foo foodbar baz");
     DoTest("bar", "A\\ctrl-o\\ctrl-chx", "br");
     DoTest("bar", "A\\ctrl-o\\eschx", "br");
 
-    // Testing "Ctrl-D" "Ctrl-T"
+    // Ctrl-D & Ctrl-T
     DoTest("foo", "i\\ctrl-t", "  foo");
     DoTest(" foo", "i\\ctrl-d", "foo");
     DoTest("foo\nbar", "i\\ctrl-t\\ctrl-d", "foo\nbar");
 
-    // Testing "Ctrl-H"
+    // Ctrl-H
     DoTest("foo", "i\\ctrl-h", "foo");
     DoTest(" foo", "li\\ctrl-h", "foo");
     DoTest("foo\nbar", "ji\\ctrl-h", "foobar");
     DoTest("1234567890", "A\\ctrl-h\\ctrl-h\\ctrl-h\\ctrl-h\\ctrl-h", "12345");
     DoTest("1\n2\n3", "GA\\ctrl-h\\ctrl-h\\ctrl-h\\ctrl-h", "1");
 
-    // Testing "Ctrl-J"
+    // Ctrl-J
     DoTest("foo", "i\\ctrl-j", "\nfoo");
     DoTest("foo", "lli\\ctrl-j", "fo\no");
     DoTest("foo\nbar", "ji\\ctrl-j", "foo\n\nbar");
     DoTest("foobar", "A\\ctrl-j", "foobar\n");
     DoTest("foobar", "li\\ctrl-j\\ctrl-cli\\ctrl-j\\ctrl-cli\\ctrl-j\\ctrl-cli\\ctrl-j\\ctrl-cli\\ctrl-j\\ctrl-c", "f\no\no\nb\na\nr");
 
-    // Testing ctrl-left and ctrl-right.
+    // Ctrl-left & Ctrl-right.
     DoTest("foo bar", "i\\ctrl-\\rightX\\esc", "foo Xbar");
     DoTest("foo bar", "i\\ctrl-\\right\\ctrl-\\rightX\\esc", "foo barX");
     DoTest("foo", "\\endi\\ctrl-\\left\\ctrl-\\leftX", "Xfoo"); // we crashed here before
 
-    // Enter/ Return.
+    // Special keys: enter, return, insert, etc.
     DoTest("", "ifoo\\enterbar", "foo\nbar");
     DoTest("", "ifoo\\returnbar", "foo\nbar");
-
-    // Insert key
     DoTest("", "\\insertfoo", "foo");
-
-    // Test that our test driver can handle newlines during insert mode :)
-    DoTest("", "ia\\returnb", "a\nb");
-
     DoTest("foo bar", "i\\home\\delete", "oo bar");
 }
 
@@ -1104,13 +1109,29 @@ void ModesTest::InsertModeTests()
 
 //BEGIN: Visual mode.
 
-void ModesTest::VisualModeTests()
+void ModesTest::VisualMotionsTests()
 {
+    // Basic motions.
+    DoTest("\n", "vjcX", "X");
     DoTest("foobar", "vlllx", "ar");
     DoTest("foo\nbar", "Vd", "bar");
+    DoTest("Hello.\nWorld", "2lvjcX", "HeXld");
+    DoTest("Three. Different. Sentences.\n\n", "vapcX", "X");
     DoTest("1234\n1234\n1234", "l\\ctrl-vljjd", "14\n14\n14");
     QCOMPARE(kate_view->blockSelection(), false);
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "viWcX", "X Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "viwcX", "X. Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vaWcX", "XDifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "vawcX", "X. Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vascX", "XDifferent. Sentences.");
+    DoTest("Three. Different. Sentences.", "viscX", "X Different. Sentences.");
+    DoTest("Three. Different. Sentences.", "vapcX", "X");
+    DoTest("Three. Different. Sentences.", "vipcX", "X");
 
+    // With count.
     DoTest("12345678", "lv3lyx", "1345678");
     DoTest("12345678", "$hv3hyx", "1235678");
     DoTest("aaa\nbbb", "lvj~x", "aA\nBBb");
@@ -1119,20 +1140,45 @@ void ModesTest::VisualModeTests()
     DoTest("ab\ncd", "jVlkgux", "a\ncd");
     DoTest("ABCD\nABCD\nABCD\nABCD", "lj\\ctrl-vjlgux", "ABCD\nAcD\nAbcD\nABCD");
     DoTest("abcd\nabcd\nabcd\nabcd", "jjjlll\\ctrl-vkkhgUx", "abcd\nabD\nabCD\nabCD");
+
     // Cancelling visual mode should not reset the cursor.
     DoTest("12345678", "lv3l\\escx", "1234678");
     DoTest("12345678", "lv3l\\ctrl-cx", "1234678");
+
     // Don't forget to clear the flag that says we shouldn't reset the cursor, though!
     DoTest("12345678", "lv3l\\ctrl-cxv3lyx", "123478");
     DoTest("12345678", "y\\escv3lyx", "2345678");
 
+    // Regression test for ][ in Visual Mode.
+    DoTest("foo {\n\n}", "lV][d", "");
+
+    // Misc tests for motions starting in front of the Visual Mode start point.
+    DoTest("{foo}", "lvb%x", "{");
+    DoTest("foo bar", "wvbfax", "foo r");
+    DoTest("(foo bar)", "wwv^%x", "(foo ");
+
+    // * and #
+    DoTest("foo foo", "v*x", "oo");
+    DoTest("foo foo", "wv#x", "oo");
+
+    // Quick test that "{" and "}" motions work in visual mode
+    DoTest("foo\n\n\nbar\n", "v}}d", "");
+    DoTest("\n\nfoo\nbar\n", "jjjv{d", "\nar\n");
+
+    // ctrl-left and ctrl-right
+    DoTest("foo bar xyz", "v\\ctrl-\\rightd", "ar xyz");
+    DoTest("foo bar xyz", "$v\\ctrl-\\leftd", "foo bar ");
+}
+
+void ModesTest::VisualCommandsTests()
+{
     // Testing "d"
     DoTest("foobarbaz", "lvlkkjl2ld", "fbaz");
     DoTest("foobar", "v$d", "");
     DoTest("foo\nbar\nbaz", "jVlld", "foo\nbaz");
     DoTest("01\n02\n03\n04\n05", "Vjdj.", "03");
 
-    // testing Del key
+    // Testing Del key
     DoTest("foobarbaz", "lvlkkjl2l\\delete", "fbaz");
 
     // Testing "D"
@@ -1152,6 +1198,9 @@ void ModesTest::VisualModeTests()
     DoTest("TeSt", "vlgu", "teSt");
     DoTest("FOO\nBAR\nBAZ", "\\ctrl-vljju", "foO\nbaR\nbaZ");
     DoTest("AAAA\nBBBB\nCCCC\nDDDD", "vjlujjl.", "aaaa\nbbBB\nCccc\ndddD");
+
+    // Testing "gv"
+    DoTest("foo\nbar\nxyz", "l\\ctrl-vjj\\ctrl-cgvr.", "f.o\nb.r\nx.z");
 
     // Testing "g~"
     DoTest("fOo bAr", "Vg~", "FoO BaR");
@@ -1233,34 +1282,15 @@ void ModesTest::VisualModeTests()
     DoTest("foo", "ciwbar\\escu", "foo");
     DoTest("foo", "ccbar\\escu", "foo");
 
-    // Regression test for ][ in Visual Mode.
-    DoTest("foo {\n\n}", "lV][d", "");
-
-    // Misc tests for motions starting in front of the Visual Mode start point.
-    DoTest("{foo}", "lvb%x", "{");
-    DoTest("foo bar", "wvbfax", "foo r");
-    DoTest("(foo bar)", "wwv^%x", "(foo ");
-
-    // * and #
-    DoTest("foo foo", "v*x", "oo");
-    DoTest("foo foo", "wv#x", "oo");
-
-    // Regression test for gv.
-    DoTest("foo\nbar\nxyz", "l\\ctrl-vjj\\ctrl-cgvr.", "f.o\nb.r\nx.z");
-
-    // Quick test that "{" and "}" motions work in visual mode
-    DoTest("foo\n\n\nbar\n", "v}}d", "");
-    DoTest("\n\nfoo\nbar\n", "jjjv{d", "\nar\n");
-
-    // ctrl-left and ctrl-right
-    DoTest("foo bar xyz", "v\\ctrl-\\rightd", "ar xyz");
-    DoTest("foo bar xyz", "$v\\ctrl-\\leftd", "foo bar ");
-
     // Pasting should replace the current selection.
     DoTest("foo bar xyz", "yiwwviwp", "foo foo xyz");
+
     // Undo should undo both paste and removal of selection.
     DoTest("foo bar xyz", "yiwwviwpu", "foo bar xyz");
     DoTest("foo\nbar\n123\nxyz", "yiwjVjp", "foo\nfoo\nxyz");
+
+    // Regression test for bug 309191
+    DoTest("foo bar", "vedud", " bar");
 
     // Set the *whole* selection to the given text object, even if the cursor is no
     // longer at the position where Visual Mode was started.
@@ -1272,6 +1302,7 @@ void ModesTest::VisualModeTests()
     DoTest("foo<hello>", "fhlvli<d", "foo<>");
     DoTest("foo\"hello\"", "fhlvli\"d", "foo\"\"");
     DoTest("foo'hello'", "fhlvli'd", "foo''");
+
     // A couple of spot tests, where the beginning of the text object occurs after the start position of Visual Mode;
     // the selection should  remain unchanged if we the text object motion is triggered, here.
     DoTest("foobarxyz\n(12345)", "llvjibd", "fo345)");
@@ -1281,13 +1312,42 @@ void ModesTest::VisualModeTests()
     // Ensure we reset the flag that says that the current motion is a text object!
     DoTest("foo[hello]", "jfhlvli[^d", "ello]");
 
-    // Test that selecting a range "externally" to Vim (i.e. via the mouse, or one of the ktexteditor api's)
-    // switches us into Visual Mode.
+    // proper yanking in block mode
+    {
+        BeginTest("aaaa\nbbbb\ncccc\ndddd");
+        TestPressKey("lj\\ctrl-vljy");
+        KateBuffer &buffer = kate_document->buffer();
+        QList<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
+        QCOMPARE(ranges.size(), 1);
+        const KTextEditor::Range &range = ranges[0]->toRange();
+        QCOMPARE(range.start().column(), 1);
+        QCOMPARE(range.end().column(), 3);
+    }
+
+    // proper selection in block mode after switching to cmdline
+    {
+        BeginTest("aaaa\nbbbb\ncccc\ndddd");
+        TestPressKey("lj\\ctrl-vlj:");
+        QCOMPARE(kate_view->selectionText(), QString("bb\ncc"));
+    }
+
+    // BUG #328277 - make sure kate doesn't crash
+    DoTest("aaa\nbbb", "Vj>u>.", "    aaa\n    bbb", ShouldFail, "Crash is fixed, but correct repeat behaviour in this scenario is yet to be implemented");
+}
+
+void ModesTest::VisualExternalTests()
+{
+    // Test that selecting a range "externally" to Vim (i.e. via the mouse, or
+    // one of the ktexteditor api's) switches us into Visual Mode.
     BeginTest("foo bar");
-    kate_view->setSelection(Range(0, 1, 0, 4)); // Actually selects "oo " (i.e. without the "b").
+
+    // Actually selects "oo " (i.e. without the "b").
+    kate_view->setSelection(Range(0, 1, 0, 4));
     TestPressKey("d");
     FinishTest("fbar");
-    // Undoing a command that we executed in Visual Mode should also return us to Visual Mode.
+
+    // Undoing a command that we executed in Visual Mode should also return
+    // us to Visual Mode.
     BeginTest("foo bar");
     TestPressKey("lvllldu");
     QCOMPARE(vi_input_mode_manager->getCurrentViMode(), VisualMode);
@@ -1314,10 +1374,7 @@ void ModesTest::VisualModeTests()
     TestPressKey("d");
     QCOMPARE(kate_document->text(), QString("far"));
 
-    // Regression test for bug 309191
-    DoTest("foo bar", "vedud", " bar");
-
-    // test returning to correct mode when selecting ranges with mouse
+    // Test returning to correct mode when selecting ranges with mouse
     BeginTest("foo bar\nbar baz");
     TestPressKey("i"); // get me into insert mode
     kate_view->setSelection(Range(0, 1, 1, 4));
@@ -1329,94 +1386,18 @@ void ModesTest::VisualModeTests()
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)VisualMode);
     kate_view->setSelection(Range::invalid());
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)NormalMode);
-
-    // proper yanking in block mode
-    {
-        BeginTest("aaaa\nbbbb\ncccc\ndddd");
-        TestPressKey("lj\\ctrl-vljy");
-        KateBuffer &buffer = kate_document->buffer();
-        QList<Kate::TextRange *> ranges = buffer.rangesForLine(1, kate_view, true);
-        QCOMPARE(ranges.size(), 1);
-        const KTextEditor::Range &range = ranges[0]->toRange();
-        QCOMPARE(range.start().column(), 1);
-        QCOMPARE(range.end().column(), 3);
-    }
-
-    // proper selection in block mode after switching to cmdline
-    {
-        BeginTest("aaaa\nbbbb\ncccc\ndddd");
-        TestPressKey("lj\\ctrl-vlj:");
-        QCOMPARE(kate_view->selectionText(), QString("bb\ncc"));
-    }
-
-    // BUG #328277 - make sure kate doesn't crash
-    DoTest("aaa\nbbb", "Vj>u>.", "    aaa\n    bbb", ShouldFail, "Crash is fixed, but correct repeat behaviour in this scenario is yet to be implemented");
-
-    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-    DoTest("Three. Different. Sentences.", "v)cX", "Xifferent. Sentences.");
-    DoTest("Three. Different. Sentences.", "viWcX", "X Different. Sentences.");
-    DoTest("Three. Different. Sentences.", "viwcX", "X. Different. Sentences.");
-    DoTest("Three. Different. Sentences.", "vaWcX", "XDifferent. Sentences.");
-    DoTest("Three. Different. Sentences.", "vawcX", "X. Different. Sentences.");
-    DoTest("Three. Different. Sentences.", "vascX", "XDifferent. Sentences.");
-    DoTest("Three. Different. Sentences.", "viscX", "X Different. Sentences.");
-    DoTest("Three. Different. Sentences.", "vapcX", "X");
-    DoTest("Three. Different. Sentences.", "vipcX", "X");
-
-    // Get the range right.
-    DoTest("\n", "vjcX", "X");
-    DoTest("Hello.\nWorld", "2lvjcX", "HeXld");
-    DoTest("Three. Different. Sentences.\n\n", "vapcX", "X");
 }
 
 //END: Visual mode.
 
 //BEGIN: Command mode.
 
-void ModesTest::CommandModeTests()
+void ModesTest::CommandTests()
 {
     // Testing ":<num>"
     DoTest("foo\nbar\nbaz", "\\:2\\x", "foo\nar\nbaz");
     DoTest("foo\nbar\nbaz", "jmak\\:'a\\x", "foo\nar\nbaz");
     DoTest("foo\nbar\nbaz", "\\:$\\x", "foo\nbar\naz");
-
-    // Testing ":s" (sed)
-    DoTest("foo", "\\:s/foo/bar\\", "bar");
-    DoTest("foobarbaz", "\\:s/bar/xxx\\", "fooxxxbaz");
-    DoTest("foo", "\\:s/bar/baz\\", "foo");
-    DoTest("foo\nfoo\nfoo", "j\\:s/foo/bar\\", "foo\nbar\nfoo");
-    DoTest("foo\nfoo\nfoo", "2jma2k\\:'a,'as/foo/bar\\", "foo\nfoo\nbar");
-    DoTest("foo\nfoo\nfoo", "\\:%s/foo/bar\\", "bar\nbar\nbar");
-    DoTest("foo\nfoo\nfoo", "\\:2,3s/foo/bar\\", "foo\nbar\nbar");
-    DoTest("foo\nfoo\nfoo\nfoo", "j2lmajhmbgg\\:'a,'bs/foo/bar\\", "foo\nbar\nbar\nfoo");
-    DoTest("foo\nfoo\nfoo\nfoo", "jlma2jmbgg\\:'b,'as/foo/bar\\", "foo\nbar\nbar\nbar");
-    DoTest("foo", "\\:s/$/x/g\\", "foox");
-    DoTest("foo", "\\:s/.*/x/g\\", "x");
-    DoTest("abc", "\\:s/\\\\s*/x/g\\", "xaxbxc");
-    //DoTest("abc\n123", "\\:s/\\\\s*/x/g\\", "xaxbxc\nx1x2x3"); // currently not working properly
-
-    DoTest("foo/bar", "\\:s-/--\\", "foobar");
-    DoTest("foo/bar", "\\:s_/__\\", "foobar");
-
-    DoTest("foo\nfoo\nfoo", "\\:2s/foo/bar\\", "foo\nbar\nfoo");
-    DoTest("foo\nfoo\nfoo", "2jmagg\\:'as/foo/bar\\", "foo\nfoo\nbar");
-    DoTest("foo\nfoo\nfoo", "\\:$s/foo/bar\\", "foo\nfoo\nbar");
-
-    // Testing ":d", ":delete"
-    DoTest("foo\nbar\nbaz", "\\:2d\\", "foo\nbaz");
-    DoTest("foo\nbar\nbaz", "\\:%d\\", "");
-    BeginTest("foo\nbar\nbaz");
-    TestPressKey("\\:$d\\"); // Work around ambiguity in the code that parses commands to execute.
-    TestPressKey("\\:$d\\");
-    FinishTest("foo");
-    DoTest("foo\nbar\nbaz", "ma\\:2,'ad\\", "baz");
-    DoTest("foo\nbar\nbaz", "\\:/foo/,/bar/d\\", "baz");
-    DoTest("foo\nbar\nbaz", "\\:2,3delete\\", "foo");
-
-    DoTest("foo\nbar\nbaz", "\\:d\\", "bar\nbaz");
-    DoTest("foo\nbar\nbaz", "\\:d 33\\", "");
-    DoTest("foo\nbar\nbaz", "\\:3d a\\k\"ap", "foo\nbaz\nbar");
 
     // Testing ":y", ":yank"
     DoTest("foo\nbar\nbaz", "\\:3y\\p", "foo\nbaz\nbar\nbaz");
@@ -1457,6 +1438,47 @@ void ModesTest::CommandModeTests()
     DoTest("1\n2\n3\n4","2j\\:.,.-1d\\","1\n4");
     DoTest("1\n2\n3\n4", "\\:.+200-100-100+20-5-5-5-5+.-.,$-1+1-2+2-3+3-4+4-5+5-6+6-7+7-1000+1000+0-0-$+$-.+.-1d\\", "4");
     DoTest("1\n2\n3\n4","majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\","");
+}
+
+void ModesTest::CommandSedTests()
+{
+    DoTest("foo", "\\:s/foo/bar\\", "bar");
+    DoTest("foobarbaz", "\\:s/bar/xxx\\", "fooxxxbaz");
+    DoTest("foo", "\\:s/bar/baz\\", "foo");
+    DoTest("foo\nfoo\nfoo", "j\\:s/foo/bar\\", "foo\nbar\nfoo");
+    DoTest("foo\nfoo\nfoo", "2jma2k\\:'a,'as/foo/bar\\", "foo\nfoo\nbar");
+    DoTest("foo\nfoo\nfoo", "\\:%s/foo/bar\\", "bar\nbar\nbar");
+    DoTest("foo\nfoo\nfoo", "\\:2,3s/foo/bar\\", "foo\nbar\nbar");
+    DoTest("foo\nfoo\nfoo\nfoo", "j2lmajhmbgg\\:'a,'bs/foo/bar\\", "foo\nbar\nbar\nfoo");
+    DoTest("foo\nfoo\nfoo\nfoo", "jlma2jmbgg\\:'b,'as/foo/bar\\", "foo\nbar\nbar\nbar");
+    DoTest("foo", "\\:s/$/x/g\\", "foox");
+    DoTest("foo", "\\:s/.*/x/g\\", "x");
+    DoTest("abc", "\\:s/\\\\s*/x/g\\", "xaxbxc");
+    //DoTest("abc\n123", "\\:s/\\\\s*/x/g\\", "xaxbxc\nx1x2x3"); // currently not working properly
+
+    DoTest("foo/bar", "\\:s-/--\\", "foobar");
+    DoTest("foo/bar", "\\:s_/__\\", "foobar");
+
+    DoTest("foo\nfoo\nfoo", "\\:2s/foo/bar\\", "foo\nbar\nfoo");
+    DoTest("foo\nfoo\nfoo", "2jmagg\\:'as/foo/bar\\", "foo\nfoo\nbar");
+    DoTest("foo\nfoo\nfoo", "\\:$s/foo/bar\\", "foo\nfoo\nbar");
+}
+
+void ModesTest::CommandDeleteTests()
+{
+    DoTest("foo\nbar\nbaz", "\\:2d\\", "foo\nbaz");
+    DoTest("foo\nbar\nbaz", "\\:%d\\", "");
+    BeginTest("foo\nbar\nbaz");
+    TestPressKey("\\:$d\\"); // Work around ambiguity in the code that parses commands to execute.
+    TestPressKey("\\:$d\\");
+    FinishTest("foo");
+    DoTest("foo\nbar\nbaz", "ma\\:2,'ad\\", "baz");
+    DoTest("foo\nbar\nbaz", "\\:/foo/,/bar/d\\", "baz");
+    DoTest("foo\nbar\nbaz", "\\:2,3delete\\", "foo");
+
+    DoTest("foo\nbar\nbaz", "\\:d\\", "bar\nbaz");
+    DoTest("foo\nbar\nbaz", "\\:d 33\\", "");
+    DoTest("foo\nbar\nbaz", "\\:3d a\\k\"ap", "foo\nbaz\nbar");
 }
 
 //END: Command mode.
