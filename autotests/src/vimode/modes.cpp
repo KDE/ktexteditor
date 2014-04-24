@@ -1130,6 +1130,7 @@ void ModesTest::VisualMotionsTests()
     DoTest("Three. Different. Sentences.", "viscX", "X Different. Sentences.");
     DoTest("Three. Different. Sentences.", "vapcX", "X");
     DoTest("Three. Different. Sentences.", "vipcX", "X");
+    DoTest("Hello.\n", "vap\\esciX", "Hello.\nX");
 
     // With count.
     DoTest("12345678", "lv3lyx", "1345678");
