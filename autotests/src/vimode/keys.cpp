@@ -609,6 +609,13 @@ void KeysTest::MappingTests()
     QApplication::sendPostedEvents();
     FinishTest("foo bar");
 
+    // Mapping the u and the U commands to other keys.
+    clearAllMappings();
+    vi_global->addMapping(KateViGlobal::NormalModeMapping, "t", "u", KateViGlobal::Recursive);
+    vi_global->addMapping(KateViGlobal::NormalModeMapping, "r", "U", KateViGlobal::Recursive);
+    DoTest("", "ihello\\esct", "");
+    DoTest("", "ihello\\esctr", "hello");
+
     // Clear mappings for subsequent tests.
     clearAllMappings();
 }

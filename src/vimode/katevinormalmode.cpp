@@ -1475,7 +1475,13 @@ bool KateViNormalMode::commandUndo()
     m_viInputModeManager->clearCurrentChangeLog();
 
     if (doc()->undoCount() > 0) {
+        const bool mapped = m_viInputModeManager->keyMapper()->isExecutingMapping();
+
+        if (mapped)
+            doc()->editEnd();
         doc()->undo();
+        if (mapped)
+            doc()->editBegin();
         return true;
     }
     return false;
@@ -1484,7 +1490,13 @@ bool KateViNormalMode::commandUndo()
 bool KateViNormalMode::commandRedo()
 {
     if (doc()->redoCount() > 0) {
+        const bool mapped = m_viInputModeManager->keyMapper()->isExecutingMapping();
+
+        if (mapped)
+            doc()->editEnd();
         doc()->redo();
+        if (mapped)
+            doc()->editBegin();
         return true;
     }
     return false;
