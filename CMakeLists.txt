@@ -44,6 +44,7 @@ find_package(KF5Sonnet ${KF5_VERSION} REQUIRED)
 option (BUILD_VIMODE "Build vimode in" ON)
 
 # Subdirectories
+add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
 add_subdirectory(src)
 if (BUILD_TESTING)
     add_subdirectory(autotests)

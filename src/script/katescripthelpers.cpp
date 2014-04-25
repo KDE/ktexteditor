@@ -18,6 +18,11 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+// Undefine this because we don't want our i18n*() method names to be turned
+// into i18nd*(). This means any translated string in this file should use
+// i18nd("ktexteditor5", "foo") instead of i18n("foo")
+#undef TRANSLATION_DOMAIN
+
 #include "katescripthelpers.h"
 #include "katescript.h"
 #include "katescriptdocument.h"
@@ -47,7 +52,7 @@ bool readFile(const QString &sourceUrl, QString &sourceCode)
 
     QFile file(sourceUrl);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCDebug(LOG_PART) << i18n("Unable to find '%1'", sourceUrl);
+        qCDebug(LOG_PART) << QString::fromLatin1("Unable to find '%1'").arg(sourceUrl);
         return false;
     } else {
         QTextStream stream(&file);
