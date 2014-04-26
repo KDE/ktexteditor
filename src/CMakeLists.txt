@@ -251,7 +251,7 @@ add_library(KF5TextEditor ${ktexteditor_LIB_SRCS} ${KTEXTEDITOR_PUBLIC_HEADERS})
 generate_export_header(KF5TextEditor BASE_NAME KTextEditor)
 add_library(KF5::TextEditor ALIAS KF5TextEditor)
 
-target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KTextEditor>")
+target_include_directories(KF5TextEditor INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/KTextEditor>")
 
 # API is more or less KParts++, other stuff is used only internally
 target_link_libraries(KF5TextEditor
@@ -275,11 +275,11 @@ set_target_properties(KF5TextEditor
    EXPORT_NAME "TextEditor"
 )
 
-install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5TextEditor EXPORT KF5TextEditorTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_export.h
-  DESTINATION ${INCLUDE_INSTALL_DIR}/KTextEditor
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/KTextEditor
   COMPONENT Devel
 )
 
