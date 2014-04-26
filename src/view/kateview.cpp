@@ -211,7 +211,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     setFocusProxy(m_viewInternal);
     setFocusPolicy(Qt::StrongFocus);
 
-    setXMLFile(QLatin1String("katepartui.rc"));
+    setXMLFile(QLatin1String("katepart5ui.rc"));
 
     setupConnections();
     setupActions();
