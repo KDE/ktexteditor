@@ -1,1 +1,9 @@
+maintainer: cullmann
+description: Advanced embeddable text editor
 tier: 3
+type: solution
+platforms:
+    - name: All
+portingAid: false
+deprecated: false
+release: true
