@@ -76,7 +76,7 @@ QScriptValue read(QScriptContext *context, QScriptEngine *)
          */
         const QString name = context->argument(i).toString();
         const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                 QLatin1String("katepart/script/files/") + name);
+                                 QLatin1String("katepart5/script/files/") + name);
         if (fullName.isEmpty()) {
             continue;
         }
@@ -114,7 +114,7 @@ QScriptValue require(QScriptContext *context, QScriptEngine *engine)
          */
         const QString name = context->argument(i).toString();
         const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                 QLatin1String("katepart/script/libraries/") + name);
+                                 QLatin1String("katepart5/script/libraries/") + name);
         if (fullName.isEmpty()) {
             continue;
         }

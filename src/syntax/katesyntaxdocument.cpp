@@ -352,7 +352,7 @@ void KateSyntaxDocument::setupModeList(bool force)
     // Let's get a list of all the xml files for hl
     QStringList list;
 
-    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart/syntax"), QStandardPaths::LocateDirectory);
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/syntax"), QStandardPaths::LocateDirectory);
     foreach (const QString &dir, dirs) {
         const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.xml"));
         foreach (const QString &file, fileNames) {

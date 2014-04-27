@@ -196,7 +196,7 @@ AL GUSTO (simple changes):
   The simplified syntax below should highlight 99.999% of ISO-Prolog texts
 correctly, as well as many non-ISO Prolog texts.
   Else modify this file.  Save with new name in your HOME directory to
-.kde/share/apps/katepart/syntax/prolog-xy.xml You may read the NOTE at the end
+.local/share/katepart5/syntax/prolog-xy.xml You may read the NOTE at the end
 of this file.  WARNING: Be careful, though: the highlighting works according to
 it's program code, not neccessarily it's documentation...
 
@@ -1106,7 +1106,7 @@ TODO sorted by priority
 	(don't use a space between the two - [author: dashes/minus]
 	That's just because XML comments don't allow that:-(
 
-    To use your syntax file, copy it to .kde/share/apps/katepart/syntax/ in
+    To use your syntax file, copy it to .local/share/katepart5/syntax/ in
     your home directory. You have to open a new instance of kwrite/kate to use
     the new syntax file.
 -->

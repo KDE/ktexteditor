@@ -6,7 +6,7 @@
   Corresponds to GNU M4 version 1.4.16.
 
   For KatePart (Kate, KWrite etc) copy this file to
-    ~/.kde/share/apps/katepart/syntax/
+    ~/.local/share/katepart5/syntax/
 
   For Qt Creator copy this file to
     ~/.config/Nokia/qtcreator/generic-highlighter/

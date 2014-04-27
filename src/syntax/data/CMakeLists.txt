@@ -20,4 +20,4 @@ file(GLOB HIGHLIGHTERS "${CMAKE_CURRENT_SOURCE_DIR}/*.xml")
 
 install( FILES language.dtd syntax.template ${HIGHLIGHTERS}
                ${CMAKE_CURRENT_BINARY_DIR}/html-php.xml ${CMAKE_CURRENT_BINARY_DIR}/css-php.xml ${CMAKE_CURRENT_BINARY_DIR}/javascript-php.xml
-               DESTINATION ${DATA_INSTALL_DIR}/katepart/syntax)
+               DESTINATION ${DATA_INSTALL_DIR}/katepart5/syntax)

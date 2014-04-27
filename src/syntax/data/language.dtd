@@ -31,7 +31,7 @@
 	 (don't use a space between the two - That's just because XML
          comments don't allow that:-(
 
-        To use your syntax file, copy it to .kde/share/apps/katepart/syntax/ in
+        To use your syntax file, copy it to ~/.local/share/katepart5/syntax/ in
         your home directory. You have to open a new instance of kwrite/kate to use
         the new syntax file.
 

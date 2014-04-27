@@ -27,7 +27,7 @@
 
 -->
 
-<!-- Store this in /usr/share/apps/katepart/syntax -->
+<!-- Store this in /usr/share/katepart5/syntax -->
 
 <language name="Euphoria" version="2.08" kateversion="2.4" section="Scripts" extensions="*.e;*.ex;*.exw;*.exu" mimetype="text/x-euphoria" author="Irv Mullins (irvm@ellijay.com)" license="LGPL">
   <highlighting>
