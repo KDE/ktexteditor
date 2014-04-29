@@ -6,7 +6,7 @@
   <!ENTITY wikiLinkWithDescription "\[\[[^]|]*\|[^]]*\]\]">
   <!ENTITY wikiLinkWithoutDescription "\[\[[^]|]*\]\]">
 ]>
-<language name="MediaWiki" section="Markup" version="1.10" kateversion="3.10" extensions="*.mediawiki" mimetype="" license="FDL" >
+<language name="MediaWiki" section="Markup" version="1.11" kateversion="3.10" extensions="*.mediawiki" mimetype="" license="FDL" >
   <highlighting>
     <contexts>
       <context attribute="Normal" lineEndContext="#stay" name="normal" >
@@ -379,12 +379,12 @@
 
       <context name="JavaScriptSourceContent" attribute="NoWiki" lineEndContext="#stay">
         <IncludeRules context="SourceEnd" />
-        <IncludeRules context="##JavaScript" />
+        <IncludeRules context="Normal##JavaScript" />
       </context>
       <context name="JavaScriptSyntaxHighlightContent" attribute="NoWiki" lineEndContext="#stay">
         <StringDetect String="&lt;/syntaxhighlight&gt;" context="#pop#pop#pop" attribute="HtmlTag" />
         <IncludeRules context="SyntaxHighlightEnd" />
-        <IncludeRules context="##JavaScript" />
+        <IncludeRules context="Normal##JavaScript" />
       </context>
 
 
