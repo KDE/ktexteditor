@@ -118,6 +118,16 @@ void IndentTest::testPascal()
     runTest(ExpectedFailures());
 }
 
+void IndentTest::testAda_data()
+{
+  getTestData("ada");
+}
+
+void IndentTest::testAda()
+{
+  runTest( ExpectedFailures() );
+}
+
 void IndentTest::testRuby_data()
 {
     getTestData("ruby");
