@@ -190,18 +190,17 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
                 Q_ASSERT(l->isValid());
                 Q_ASSERT(l->length() >= startPos.column() || m_renderer->view()->wrapCursor());
 
+                bool found = false;
                 for (; _viewLine < l->viewLineCount(); ++_viewLine) {
                     const KateTextLayout &t = l->viewLine(_viewLine);
                     if (t.startCol() >= startPos.column() || _viewLine == l->viewLineCount() - 1) {
-                        goto foundViewLine;
+                        found = true;
+                        break;
                     }
                 }
 
                 // FIXME FIXME need to calculate past-end-of-line position here...
-                Q_ASSERT(false);
-
-            foundViewLine:
-                Q_ASSERT(true);
+                Q_ASSERT(found);
             }
         }
     }

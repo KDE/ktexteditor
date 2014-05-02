@@ -608,6 +608,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         for (int i = 0; i < range->viewLineCount(); ++i) {
             KateTextLayout line = range->viewLine(i);
 
+            bool haveBackground = false;
             // Determine the background to use, if any, for the end of this view line
             backgroundBrushSet = false;
             while (it2.hasNext()) {
@@ -622,13 +623,14 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                         backgroundBrush = fr.format.background();
                     }
 
-                    goto backgroundDetermined;
+                    haveBackground = true;
+                    break;
                 }
 
                 it2.next();
             }
 
-            while (it.hasNext()) {
+            while (!haveBackground && it.hasNext()) {
                 const QTextLayout::FormatRange &fr = it.peekNext();
                 if (fr.start > line.endCol()) {
                     break;
@@ -645,8 +647,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
                 it.next();
             }
-
-        backgroundDetermined:
 
             // Draw selection or background color outside of areas where text is rendered
             if (!m_printerFriendly) {

@@ -216,29 +216,25 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
 
     //groupOfParent returns a group when the index is a member of that group, but not the group head/label.
     if (!hasGroups() || groupOfParent(index)) {
-        switch (role) {
-        case Qt::TextAlignmentRole:
+        if ( role == Qt::TextAlignmentRole ) {
             if (isColumnMergingEnabled() && m_columnMerges.count()) {
                 int c = 0;
                 foreach (const QList<int> &list, m_columnMerges) {
-                    foreach (int column, list) {
-                        if (c++ == index.column()) {
-                            if (column == CodeCompletionModel::Scope)
-                                if (list.count() == 1) {
-                                    return Qt::AlignRight;
-                                }
-
-                            goto dontalign;
-                        }
+                    if (index.column() < c + list.size()) {
+                        c += list.size();
+                        continue;
+                    }
+                    else if (list.count() == 1 && list.first() == CodeCompletionModel::Scope) {
+                        return Qt::AlignRight;
+                    }
+                    else {
+                        return QVariant();
                     }
                 }
 
             } else if ((!isColumnMergingEnabled() || m_columnMerges.isEmpty()) && index.column() == CodeCompletionModel::Scope) {
                 return Qt::AlignRight;
             }
-
-        dontalign:
-            break;
         }
 
         // Merge text for column merging
@@ -1823,28 +1819,26 @@ bool KateCompletionModel::Item::filter()
         if (model->filterContextMatchesOnly()) {
             QVariant contextMatch = sourceIndex.data(CodeCompletionModel::MatchQuality);
             if (contextMatch.canConvert(QVariant::Int) && !contextMatch.toInt()) {
-                goto filter;
+                return false;
             }
         }
 
         if (model->filterByAttribute()) {
             int completionFlags = sourceIndex.data(CodeCompletionModel::CompletionRole).toInt();
             if (model->filterAttributes() & completionFlags) {
-                goto filter;
+                return false;
             }
         }
 
         if (model->maximumInheritanceDepth() > 0) {
             int inheritanceDepth = sourceIndex.data(CodeCompletionModel::InheritanceDepth).toInt();
             if (inheritanceDepth > model->maximumInheritanceDepth()) {
-                goto filter;
+                return false;
             }
         }
     }
 
     matchFilters = true;
-
-filter:
     return matchFilters;
 }
 
