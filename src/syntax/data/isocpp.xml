@@ -11,7 +11,7 @@
 <language
     name="ISO C++"
     section="Sources"
-    version="2.2"
+    version="2.1"
     kateversion="2.4"
     indenter="cstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
@@ -432,6 +432,22 @@
       </context>
 
       <context name="AlignedComments" lineEndContext="#stay" attribute="Comment">
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="0" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="4" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="8" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="12" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="16" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="20" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="24" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="28" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="32" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="36" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="40" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="44" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="48" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="52" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="56" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="60" char="/" char1="/" />
         <Detect2Chars attribute="Comment" context="Commentar 1" char="/" char1="/" />
       </context>
     </contexts>
