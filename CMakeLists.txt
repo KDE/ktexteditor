@@ -46,6 +46,9 @@ option (BUILD_VIMODE "Build vimode in" ON)
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
+if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+    ki18n_install(po)
+endif()
 add_subdirectory(src)
 if (BUILD_TESTING)
     add_subdirectory(autotests)
