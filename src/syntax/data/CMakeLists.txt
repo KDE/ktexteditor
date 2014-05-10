@@ -1,5 +1,7 @@
 ########### install files ###############
 
+find_package(Perl REQUIRED)
+
 add_custom_target(GeneratePhpXmlFiles ALL DEPENDS
  ${CMAKE_CURRENT_BINARY_DIR}/css-php.xml
  ${CMAKE_CURRENT_BINARY_DIR}/html-php.xml
