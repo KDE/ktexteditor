@@ -61,20 +61,41 @@ TODO
   Allowed predefined default styles for itemData, available are:
     - dsNormal,   used for normal text
     - dsKeyword,  used for keywords
+    - dsFunction, used for function calls
+    - dsVariable, used for variables
+    - dsControlFlow, used for control flow, e.g. if, then, else, continue, break
+    - dsOperator, used for operators such as +, -, *, ::
+    - dsBuiltIn,  used for built-in language classes and functions
+    - dsExtension,used for extensions, such as boost, Qt
+    - dsPreprocessor, used for preprocessor statements
+    - dsAttribute,used for attributes, e.g. @override in java
+
+    - dsChar,     used for a character
+    - dsSpecialChar, used for escaped characters
+    - dsString,   used for strings
+    - dsVerbatimString, used for strings such as HERE docs
+    - dsSpecialString, used for strings such as regular expressions or LaTeX math mode
+    - dsImport,   used for includes, imports and modules
+
     - dsDataType, used for data types
     - dsDecVal,   used for decimal values
     - dsBaseN,    used for values with a base other than 10
     - dsFloat,    used for float values
-    - dsChar,     used for a character
-    - dsString,   used for strings
+    - dsConstant, used for language constants
+
     - dsComment,  used for comments
-    - dsOthers,   used for 'other' things
-    - dsAlert,    used for warning messages
-    - dsFunction, used for function calls
+    - dsDocumentation, used for comments that are API documentation
+    - dsAnnotation, used for annotation in comments, e.g. @param in doxygen
+    - dsCommentVar, used for variables in comments, e.g. after @param in doxygen
     - dsRegionMarker, used for region markers
+    - dsInformation, used for information in comments, e.g. @note in doxygen
+    - dsWarning,  used for warnings in comments, e.g. @warning in doxygen
+    - dsAlert,    used for warning messages such as TODO, WARNING in comments
+
+    - dsOthers,   used for 'other' things
     - dsError,    used for error highlighting.
 -->
-<!ENTITY % defStyles "dsNormal|dsKeyword|dsDataType|dsDecVal|dsBaseN|dsFloat|dsChar|dsString|dsComment|dsOthers|dsAlert|dsFunction|dsRegionMarker|dsError">
+<!ENTITY % defStyles "dsNormal|dsKeyword|dsFunction|dsVariable|dsControlFlow|dsOperator|dsBuiltIn|dsExtension|dsPreprocessor|dsAttribute|dsChar|dsSpecialChar|dsString|dsVerbatimString|dsSpecialString|dsImport|dsDataType|dsDecVal|dsBaseN|dsFloat|dsConstant|dsComment|dsDocumentation|dsAnnotation|dsCommentVar|dsRegionMarker|dsInformation|dsWarning|dsAlert|dsOthers|dsError">
 
 <!-- Language specification
   name:        The name of this syntax description. Used in the Highlightning Mode menu
