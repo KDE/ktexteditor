@@ -101,7 +101,7 @@ TODO
   name:        The name of this syntax description. Used in the Highlightning Mode menu
   section:     The logical group to which this syntax description belongs. Used for sub menus
   extensions:  A file glob or pattern to decide for which documents to use this syntax description
-  style:       Attribute style that this highlighter provides to kate scripts [optional]
+  style:       The style that this highlighter provides. It is used through required-syntax-style by the indenters. [optional]
   mimetype:    A list of mimetypes to decide for which documents to use this syntax description [optional]
   version:     Version number of this syntax description [optional]
   kateversion: Kate version required for using this file [optional]
