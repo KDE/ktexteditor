@@ -11,10 +11,8 @@ set (VIMODE_TEST_LINK_LIBS KF5TextEditor
 )
 
 macro(vimode_unit_test)
-  add_executable(${ARGN})
-  add_test(vimode/${ARGV0} ${ARGV0})
-  target_link_libraries(${ARGV0} ${VIMODE_TEST_LINK_LIBS})
-  ecm_mark_as_test(${ARGV0})
+  ecm_add_test(${ARGN} TEST_NAME ${ARGV0}
+               LINK_LIBRARIES ${VIMODE_TEST_LINK_LIBS})
 endmacro()
 
 

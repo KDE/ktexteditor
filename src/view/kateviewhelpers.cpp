@@ -1607,7 +1607,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             if (realLine > -1) {
                 if (m_viewInternal->cache()->viewLine(z).startCol() == 0) {
                     if (m_relLineNumbersOn) {
-                        int diff = abs(realLine - currentLine);
+                        int diff = abs(realLine - static_cast<int>(currentLine));
                         if (diff > 0) {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
                                        Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::fromLatin1("%1").arg(diff));
@@ -2382,8 +2382,8 @@ void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
 void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
 {
     Q_ASSERT(barWidget);
-    Q_ASSERT(!m_permanentBarWidget);        
-    
+    Q_ASSERT(!m_permanentBarWidget);
+
     m_stack->addWidget(barWidget);
     m_stack->setCurrentWidget(barWidget);
     m_stack->show();
@@ -2398,7 +2398,7 @@ void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
     Q_ASSERT(m_permanentBarWidget == barWidget);
 
     const bool hideBar = m_stack->currentWidget() == m_permanentBarWidget;
-    
+
     m_permanentBarWidget->hide();
     m_stack->removeWidget(m_permanentBarWidget);
     m_permanentBarWidget = 0;
@@ -2441,7 +2441,7 @@ void KateViewBar::hideCurrentBarWidget()
     if (current) {
         current->closed();
     }
-    
+
     // if we have any permanent widget, make it visible again
     if (m_permanentBarWidget) {
         m_stack->setCurrentWidget (m_permanentBarWidget);

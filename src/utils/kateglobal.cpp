@@ -74,8 +74,8 @@ bool KTextEditor::EditorPrivate::unitTestMode()
 
 KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance)
     : KTextEditor::Editor (this)
-    , m_aboutData(QLatin1String("katepart"), QString(), i18n("Kate Part"), QLatin1String(KTEXTEDITOR_VERSION_STRING),
-                  i18n("Embeddable editor component"), KAboutData::License_LGPL_V2,
+    , m_aboutData(QLatin1String("katepart"), i18n("Kate Part"), QLatin1String(KTEXTEDITOR_VERSION_STRING),
+                  i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
                   i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
     , m_application(nullptr)
 {

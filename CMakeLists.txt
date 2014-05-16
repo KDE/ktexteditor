@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(KTextEditor)
 
 # ECM setup
-find_package(ECM 0.0.12 REQUIRED NO_MODULE)
+find_package(ECM 0.0.13 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(FeatureSummary)
@@ -17,8 +17,8 @@ include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
-set(KF5_VERSION "4.98.0") # handled by release scripts
-set(KF5_DEP_VERSION "4.98.0") # handled by release scripts
+set(KF5_VERSION "4.99.0") # handled by release scripts
+set(KF5_DEP_VERSION "4.99.0") # handled by release scripts
 
 ecm_setup_version(
   ${KF5_VERSION}
@@ -46,6 +46,9 @@ option (BUILD_VIMODE "Build vimode in" ON)
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
+if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+    ki18n_install(po)
+endif()
 add_subdirectory(src)
 if (BUILD_TESTING)
     add_subdirectory(autotests)

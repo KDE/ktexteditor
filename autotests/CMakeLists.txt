@@ -1,6 +1,7 @@
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
 
 include(ECMMarkAsTest)
+include(ECMAddTests)
 
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
@@ -49,8 +50,8 @@ ecm_mark_as_test(kateencodingtest)
 
 # test macro for encoding tests
 MACRO(KTEXTEDITOR_ENCODING_TEST _encoding _testname)
-  ADD_TEST (encoding_${_testname}_create kateencodingtest ${_encoding} ${CMAKE_SOURCE_DIR}/autotests/input/encoding/${_testname} ${CMAKE_CURRENT_BINARY_DIR}/${_testname} )
-  ADD_TEST (encoding_${_testname}_diff ${CMAKE_COMMAND} -E compare_files ${CMAKE_SOURCE_DIR}/autotests/input/encoding/${_testname} ${CMAKE_CURRENT_BINARY_DIR}/${_testname} )
+  ADD_TEST (NAME encoding_${_testname}_create COMMAND kateencodingtest ${_encoding} ${CMAKE_SOURCE_DIR}/autotests/input/encoding/${_testname} ${CMAKE_CURRENT_BINARY_DIR}/${_testname} )
+  ADD_TEST (NAME encoding_${_testname}_diff COMMAND ${CMAKE_COMMAND} -E compare_files ${CMAKE_SOURCE_DIR}/autotests/input/encoding/${_testname} ${CMAKE_CURRENT_BINARY_DIR}/${_testname} )
 ENDMACRO(KTEXTEDITOR_ENCODING_TEST)
 
 # add tests
@@ -85,44 +86,35 @@ KTEXTEDITOR_ENCODING_TEST ("utf-8" "koi8-r.txt")
 # one character latin-15 test, segfaulted
 KTEXTEDITOR_ENCODING_TEST ("utf-8" "one-char-latin-15.txt")
 
-macro(ktexteditor_unit_tests)
-  foreach(_testname ${ARGN})
-    add_executable(${_testname} src/${_testname}.cpp)
-    add_test(${_testname} ${_testname})
-    target_link_libraries(${_testname} ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test)
-    ecm_mark_as_test(${_testname})
-  endforeach()
-endmacro()
-
 macro(ktexteditor_unit_test testname)
-  add_executable(${testname} src/${testname}.cpp ${ARGN})
-  add_test(${testname} ${testname})
-  target_link_libraries(${testname} ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test)
-  ecm_mark_as_test(${testname})
+  ecm_add_test(src/${testname}.cpp ${ARGN}
+               TEST_NAME ${testname}
+	       LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test)
 endmacro()
 
-ktexteditor_unit_tests(
-  katetextbuffertest
-  range_test
-  undomanager_test
-  plaintextsearch_test
-  regexpsearch_test
-  scriptdocument_test
-  wordcompletiontest
-  searchbar_test
-  movingcursor_test
-  messagetest
-  kte_documentcursor
-  bug313769
-  katedocument_test
-  movingrange_test
-  kateview_test
-  revision_test
-  modificationsystem_test
-  templatehandler_test
-  katefoldingtest
-  bug286887
-  katewildcardmatcher_test
+ecm_add_tests(
+  src/katetextbuffertest.cpp
+  src/range_test.cpp
+  src/undomanager_test.cpp
+  src/plaintextsearch_test.cpp
+  src/regexpsearch_test.cpp
+  src/scriptdocument_test.cpp
+  src/wordcompletiontest.cpp
+  src/searchbar_test.cpp
+  src/movingcursor_test.cpp
+  src/messagetest.cpp
+  src/kte_documentcursor.cpp
+  src/bug313769.cpp
+  src/katedocument_test.cpp
+  src/movingrange_test.cpp
+  src/kateview_test.cpp
+  src/revision_test.cpp
+  src/modificationsystem_test.cpp
+  src/templatehandler_test.cpp
+  src/katefoldingtest.cpp
+  src/bug286887.cpp
+  src/katewildcardmatcher_test.cpp
+  LINK_LIBRARIES ${KTEXTEDITOR_TEST_LINK_LIBS} Qt5::Test
 )
 
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
