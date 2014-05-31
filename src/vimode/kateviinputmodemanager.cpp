@@ -573,22 +573,6 @@ const QString KateViInputModeManager::getVerbatimKeys() const
 
 void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 {
-
-    if (m_inputAdapter->viGlobal()->getRegisters()->size() > 0) {
-        QStringList names = config.readEntry("ViRegisterNames", QStringList());
-        QStringList contents = config.readEntry("ViRegisterContents", QStringList());
-        QList<int> flags = config.readEntry("ViRegisterFlags", QList<int>());
-
-        // sanity check
-        if (names.size() == contents.size() && contents.size() == flags.size()) {
-            for (int i = 0; i < names.size(); i++) {
-                if (!names.at(i).isEmpty()) {
-                    m_inputAdapter->viGlobal()->fillRegister(names.at(i).at(0), contents.at(i), (OperationMode)(flags.at(i)));
-                }
-            }
-        }
-    }
-
     // Reading jump list
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     jump_list->clear();
@@ -610,27 +594,6 @@ void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 
 void KateViInputModeManager::writeSessionConfig(KConfigGroup &config)
 {
-    if (m_inputAdapter->viGlobal()->getRegisters()->size() > 0) {
-        const QMap<QChar, KateViRegister> *regs = m_inputAdapter->viGlobal()->getRegisters();
-        QStringList names, contents;
-        QList<int> flags;
-        QMap<QChar, KateViRegister>::const_iterator i;
-        for (i = regs->constBegin(); i != regs->constEnd(); ++i) {
-            if (i.value().first.length() <= 1000) {
-                names << i.key();
-                contents << i.value().first;
-                flags << int(i.value().second);
-            } else {
-                qCDebug(LOG_PART) << "Did not save contents of register " << i.key() << ": contents too long ("
-                                  << i.value().first.length() << " characters)";
-            }
-        }
-
-        config.writeEntry("ViRegisterNames", names);
-        config.writeEntry("ViRegisterContents", contents);
-        config.writeEntry("ViRegisterFlags", flags);
-    }
-
     // Writing Jump List
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     QStringList l;
