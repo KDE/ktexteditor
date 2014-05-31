@@ -474,6 +474,10 @@ void KateViNormalMode::resetParser()
     m_commandShouldKeepSelection = false;
 
     m_currentChangeEndMarker = Cursor::invalid();
+
+    if(m_viInputModeManager->getCurrentViMode() == NormalMode) {
+        m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
+    }
 }
 
 // reset the command parser

@@ -326,6 +326,7 @@ void KateViInputMode::setCaretStyle(KateRenderer::caretStyles caret)
     if (m_caret != caret) {
         m_caret = caret;
 
+        view()->renderer()->setCaretStyle(m_caret);
         view()->renderer()->setDrawCaret(true);
         viewInternal()->paintCursor();
     }

@@ -903,6 +903,9 @@ void ModesTest::NormalCommandsTests()
     DoTest("\\foo bar", "cWxyz\\esc", "xyz bar");
     DoTest("foo   ", "lllcwxyz\\esc", "fooxyz");
 
+    DoTest("foo", "yr", "foo");
+    QCOMPARE(kate_view->renderer()->caretStyle(), KateRenderer::Block);
+
     // BUG #332523
     const bool oldDynWordWrap = KateViewConfig::global()->dynWordWrap();
     BeginTest("asdasdasd\nasdasdasdasdasdasdasd");
