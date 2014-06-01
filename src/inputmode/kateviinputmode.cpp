@@ -314,22 +314,6 @@ KateViInputModeManager *KateViInputMode::viInputModeManager()
     return m_viModeManager;
 }
 
-KateViInputModeManager *KateViInputMode::resetViInputModeManager()
-{
-    if (m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar->hideMe();
-    }
-
-    delete m_viModeManager;
-    m_viModeManager = new KateViInputModeManager(this, view(), viewInternal());
-
-    if (m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar->setViInputModeManager(m_viModeManager);
-    }
-
-    return m_viModeManager;
-}
-
 void KateViInputMode::launchInteractiveCommand(const QString &)
 {
     // do nothing so far

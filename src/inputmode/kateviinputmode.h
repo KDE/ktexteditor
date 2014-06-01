@@ -82,7 +82,6 @@ public:
     KateViEmulatedCommandBar *viModeEmulatedCommandBar();
     KateViGlobal *viGlobal();
     KateViInputModeManager *viInputModeManager();
-    KateViInputModeManager *resetViInputModeManager();
     bool isActive() { return m_activated; }
     void setCaretStyle(KateRenderer::caretStyles caret);
 

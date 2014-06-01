@@ -90,7 +90,8 @@ void ViewTest::yankHighlightingTests()
     QCOMPARE(rangesOnFirstLine().size(), rangesInitial.size() + 1);
     kate_document->documentReload();
     kate_document->clear();
-    vi_input_mode_manager = vi_input_mode->resetViInputModeManager(); // This implicitly deletes KateViNormal
+    vi_input_mode->reset();
+    vi_input_mode_manager = vi_input_mode->viInputModeManager();
     FinishTest("");
 }
 
