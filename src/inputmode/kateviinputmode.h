@@ -76,6 +76,7 @@ public:
     virtual void launchInteractiveCommand(const QString &command);
 
     virtual QString bookmarkLabel(int line) const;
+
 public:
     void showViModeEmulatedCommandBar();
     KateViEmulatedCommandBar *viModeEmulatedCommandBar();

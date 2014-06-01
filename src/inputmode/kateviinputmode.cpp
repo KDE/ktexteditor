@@ -28,6 +28,35 @@
 
 #include <QCoreApplication>
 
+namespace {
+    QString viModeToString(ViMode mode)
+    {
+        QString modeStr;
+        switch (mode) {
+            case InsertMode:
+                modeStr = i18n("VI: INSERT MODE");
+                break;
+            case NormalMode:
+                modeStr = i18n("VI: NORMAL MODE");
+                break;
+            case VisualMode:
+                modeStr = i18n("VI: VISUAL");
+                break;
+            case VisualBlockMode:
+                modeStr = i18n("VI: VISUAL BLOCK");
+                break;
+            case VisualLineMode:
+                modeStr = i18n("VI: VISUAL LINE");
+                break;
+            case ReplaceMode:
+                modeStr = i18n("VI: REPLACE");
+                break;
+        }
+
+        return modeStr;
+    }
+}
+
 KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateViGlobal *global)
     : KateAbstractInputMode(viewInternal)
     , m_viModeEmulatedCommandBar(0)
@@ -123,23 +152,17 @@ KTextEditor::View::ViewMode KateViInputMode::viewMode() const
 
 QString KateViInputMode::viewModeHuman() const
 {
-    QString currentMode = KateViInputModeManager::modeToString(m_viModeManager->getCurrentViMode());
+    QString currentMode = viModeToString(m_viModeManager->getCurrentViMode());
 
     if (m_viModeManager->isRecordingMacro()) {
-        currentMode.prepend (QLatin1String("(") + i18n("recording") + QLatin1String(") "));
+        currentMode.prepend(QLatin1String("(") + i18n("recording") + QLatin1String(") "));
     }
 
-    /**
-     * perhaps append the current keys of a command not finalized
-     */
     QString cmd = m_viModeManager->getVerbatimKeys();
     if (!cmd.isEmpty()) {
         currentMode.prepend(QString::fromLatin1("<em>%1</em> ").arg(cmd));
     }
 
-    /**
-     * make it bold
-     */
     return QString::fromLatin1("<b>%1</b>").arg(currentMode);
 }
 
@@ -297,12 +320,8 @@ KateViInputModeManager *KateViInputMode::resetViInputModeManager()
         m_viModeEmulatedCommandBar->hideMe();
     }
 
-    if (m_viModeManager) {
-        delete m_viModeManager;
-        m_viModeManager = nullptr;
-    }
+    delete m_viModeManager;
     m_viModeManager = new KateViInputModeManager(this, view(), viewInternal());
-
 
     if (m_viModeEmulatedCommandBar) {
         m_viModeEmulatedCommandBar->setViInputModeManager(m_viModeManager);
