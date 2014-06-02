@@ -9,4 +9,4 @@ install( FILES katepart.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
 target_link_libraries (katepart KF5TextEditor)
 
 # install the part
-install (TARGETS katepart DESTINATION ${PLUGIN_INSTALL_DIR})
+install (TARGETS katepart DESTINATION ${PLUGIN_INSTALL_DIR}/kf5/parts)
