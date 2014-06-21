@@ -11,7 +11,7 @@ set (VIMODE_TEST_LINK_LIBS KF5TextEditor
 )
 
 macro(vimode_unit_test)
-  ecm_add_test(${ARGN} NAME_PREFIX vimode_ TEST_NAME ${ARGV0}
+  ecm_add_test(${ARGN} TEST_NAME "vimode_${ARGV0}"
                LINK_LIBRARIES ${VIMODE_TEST_LINK_LIBS})
 endmacro()
 
