@@ -52,6 +52,7 @@ private Q_SLOTS:
     void CommandDeleteTests();
 
     // Replace mode.
+    void ReplaceCharacter();
     void ReplaceBasicTests();
     void ReplaceUndoTests();
     void ReplaceInsertFromLineTests();

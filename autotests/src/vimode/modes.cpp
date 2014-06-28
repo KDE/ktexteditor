@@ -1489,6 +1489,15 @@ void ModesTest::CommandDeleteTests()
 
 //BEGIN: Replace mode.
 
+void ModesTest::ReplaceCharacter()
+{
+    DoTest("", "rr", "");
+    DoTest("a", "rb", "b");
+    DoTest("abc", "lr\\enter", "a\nc");
+    DoTest("abc", "l\\backspace", "abc");
+    DoTest("abc", "l\\left", "abc");
+}
+
 void ModesTest::ReplaceBasicTests()
 {
     // Basic stuff.
