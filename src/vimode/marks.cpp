@@ -34,6 +34,8 @@ namespace {
     const QChar SelectionEnd = QLatin1Char('>');
     const QChar FirstUserMark = QLatin1Char('a');
     const QChar LastUserMark = QLatin1Char('z');
+    const QChar BeforeJump = QLatin1Char('\'');
+    const QChar BeforeJumpAlter = QLatin1Char('`');
     const QString UserMarks = QLatin1String("abcdefghijklmnopqrstuvwxyz");
 }
 
@@ -70,10 +72,13 @@ void Marks::writeSessionConfig(KConfigGroup &config)
     config.writeEntry("ViMarks", l);
 }
 
-void Marks::setMark(const QChar &mark, const KTextEditor::Cursor &pos, const bool moveoninsert)
+void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos, const bool moveoninsert)
 {
     m_settingMark = true;
     uint marktype = m_doc->mark(pos.line());
+
+    // ` and ' is the same register (position before jump)
+    const QChar mark = (_mark == BeforeJumpAlter) ? BeforeJump : _mark;
 
     // delete old cursor if any
     if (KTextEditor::MovingCursor *oldCursor = m_marks.value(mark)) {

@@ -2529,11 +2529,6 @@ KateViRange KateViNormalMode::motionToMark()
 
     QChar reg = m_keys.at(m_keys.size() - 1);
 
-    // ` and ' is the same register (position before jump)
-    if (reg == QLatin1Char('`')) {
-        reg = QLatin1Char('\'');
-    }
-
     Cursor c = m_viInputModeManager->marks()->getMarkPosition(reg);
     if (c.isValid()) {
         r.endLine = c.line();
