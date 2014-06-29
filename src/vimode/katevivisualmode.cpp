@@ -192,8 +192,8 @@ void KateViVisualMode::saveRangeMarks()
     // DO NOT save these marks if the
     // action that exited visual mode deleted the selection
     if (m_deleteCommand == false) {
-        m_viInputModeManager->addMark(doc(), QLatin1Char('<'), m_start);
-        m_viInputModeManager->addMark(doc(), QLatin1Char('>'), m_view->cursorPosition());
+        m_viInputModeManager->marks()->setSelectionStart(m_start);
+        m_viInputModeManager->marks()->setSelectionFinish(m_view->cursorPosition());
     }
 }
 

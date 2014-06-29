@@ -146,7 +146,7 @@ int ViCommandRangeExpressionParser::calculatePosition(const QString &string, Kat
         } else if (m_thisLine.exactMatch(line)) {
             values.push_back(view->cursorPosition().line() + 1);
         } else if (m_mark.exactMatch(line)) {
-            values.push_back(vimanager->getMarkPosition(line.at(1)).line() + 1);
+            values.push_back(vimanager->marks()->getMarkPosition(line.at(1)).line() + 1);
         } else if (m_forwardSearch.exactMatch(line)) {
             m_forwardSearch.indexIn(line);
             QString pattern = m_forwardSearch.capturedTexts().at(1);

@@ -31,6 +31,8 @@
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/view.h>
 
+#include "marks.h"
+
 class KateViGlobal;
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -302,40 +304,21 @@ public:
     KTextEditor::Cursor getPrevJump(KTextEditor::Cursor cursor);
     void PrintJumpList();
 
+    inline KateVi::Marks *marks() { return m_marks; }
+
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
     void writeSessionConfig(KConfigGroup &config);
-
-    // marks
-    /**
-     * Add a mark to the document.
-     * By default, the mark is made visible in the document
-     * by highlighting its line, and it moves when inserting
-     * text at it.
-     * @param doc the document to insert the mark into
-     * @param mark the mark's name
-     * @param pos the mark's position
-     * @param moveoninsert whether the mark should move or stay behind
-     *        when inserting text at it
-     * @param showmark whether to highlight the mark's line
-     */
-    void addMark(KTextEditor::DocumentPrivate *doc, const QChar &mark, const KTextEditor::Cursor &pos,
-                 const bool moveoninsert = true, const bool showmark = true);
-    KTextEditor::Cursor getMarkPosition(const QChar &mark) const;
-    void syncViMarksAndBookmarks();
-    QString getMarksOnTheLine(int line);
 
     KateViKeyMapper *keyMapper();
     KateViGlobal *viGlobal() const;
     KTextEditor::ViewPrivate *view() const;
 
     KateViInputMode *inputAdapter() { return m_inputAdapter; }
-    void updateCursor(const KTextEditor::Cursor &c);
+    void message(const QString &msg);
+    void error(const QString &msg);
 
-private Q_SLOTS:
-    void markChanged(KTextEditor::Document *doc,
-                     KTextEditor::Mark mark,
-                     KTextEditor::MarkInterface::MarkChangeAction action);
+    void updateCursor(const KTextEditor::Cursor &c);
 
 private:
     KateViNormalMode *m_viNormalMode;
@@ -411,18 +394,11 @@ private:
      */
     bool m_temporaryNormalMode;
 
-    /**
-     * true when mark set inside viinputmodemanager to do not serve it as bookmark set;
-     */
-    bool m_markSetInsideViInputModeManager;
-
     // jump list
     QList<KateViJump> *jump_list;
     QList<KateViJump>::iterator current_jump;
 
-    // marks
-    QMap<QChar, KTextEditor::MovingCursor *> m_marks;
-
+    KateVi::Marks *m_marks;
 };
 
 #endif

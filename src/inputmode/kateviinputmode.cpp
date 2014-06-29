@@ -321,7 +321,7 @@ void KateViInputMode::launchInteractiveCommand(const QString &)
 
 QString KateViInputMode::bookmarkLabel(int line) const
 {
-    return m_viModeManager->getMarksOnTheLine(line);
+    return m_viModeManager->marks()->getMarksOnTheLine(line);
 }
 
 void KateViInputMode::setCaretStyle(KateRenderer::caretStyles caret)

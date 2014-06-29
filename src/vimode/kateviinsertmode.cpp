@@ -544,7 +544,7 @@ void KateViInsertMode::leaveInsertMode(bool force)
 
             m_blockInsert = None;
         } else {
-            const QString added = doc()->text(Range(m_viInputModeManager->getMarkPosition(QLatin1Char('^')), m_view->cursorPosition()));
+            const QString added = doc()->text(Range(m_viInputModeManager->marks()->getStartEditYanked(), m_view->cursorPosition()));
 
             if (m_count > 1) {
                 for (unsigned int i = 0; i < m_count - 1; i++) {

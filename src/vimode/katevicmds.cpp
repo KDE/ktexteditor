@@ -164,7 +164,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
                     line = v->cursorPosition().line();
                 }
 
-                m_viInputModeManager->addMark(v->doc(), r, KTextEditor::Cursor(line, 0));
+                m_viInputModeManager->marks()->setUserMark(r, KTextEditor::Cursor(line, 0));
             }
         } else {
             msg = i18n("Wrong arguments");

@@ -620,7 +620,7 @@ bool KateViNormalMode::commandEnterInsertModeBeforeFirstNonBlankInLine()
 
 bool KateViNormalMode::commandEnterInsertModeLast()
 {
-    Cursor c = m_viInputModeManager->getMarkPosition(QLatin1Char('^'));
+    Cursor c = m_viInputModeManager->marks()->getInsertStopped();
     if (c.isValid()) {
         updateCursor(c);
     }
@@ -652,8 +652,8 @@ bool KateViNormalMode::commandEnterVisualBlockMode()
 bool KateViNormalMode::commandReselectVisual()
 {
     // start last visual mode and set start = `< and cursor = `>
-    Cursor c1 = m_viInputModeManager->getMarkPosition(QLatin1Char('<'));
-    Cursor c2 = m_viInputModeManager->getMarkPosition(QLatin1Char('>'));
+    Cursor c1 = m_viInputModeManager->marks()->getSelectionStart();
+    Cursor c2 = m_viInputModeManager->marks()->getSelectionFinish();
 
     // we should either get two valid cursors or two invalid cursors
     Q_ASSERT(c1.isValid() == c2.isValid());
@@ -1523,8 +1523,9 @@ bool KateViNormalMode::commandSetMark()
 {
     Cursor c(m_view->cursorPosition());
 
-    m_viInputModeManager->addMark(doc(), m_keys.at(m_keys.size() - 1), c);
-    qCDebug(LOG_PART) << "set mark at (" << c.line() << "," << c.column() << ")";
+    QChar mark = m_keys.at(m_keys.size() - 1);
+    m_viInputModeManager->marks()->setUserMark(mark, c);
+    qCDebug(LOG_PART) << "set mark [" << mark << "] at (" << c.line() << "," << c.column() << ")";
 
     return true;
 }
@@ -2533,7 +2534,7 @@ KateViRange KateViNormalMode::motionToMark()
         reg = QLatin1Char('\'');
     }
 
-    Cursor c = m_viInputModeManager->getMarkPosition(reg);
+    Cursor c = m_viInputModeManager->marks()->getMarkPosition(reg);
     if (c.isValid()) {
         r.endLine = c.line();
         r.endColumn = c.column();
@@ -4078,24 +4079,24 @@ void KateViNormalMode::textInserted(KTextEditor::Document *document, Range range
             // Presumably a linewise paste, in which case we ignore the leading '\n'
             newBeginMarkerPos = Cursor(newBeginMarkerPos.line() + 1, 0);
         }
-        m_viInputModeManager->addMark(doc(), QLatin1Char('['), newBeginMarkerPos, false);
+        m_viInputModeManager->marks()->setStartEditYanked(newBeginMarkerPos);
     }
-    m_viInputModeManager->addMark(doc(), QLatin1Char('.'), range.start());
+    m_viInputModeManager->marks()->setLastChange(range.start());
     Cursor editEndMarker = range.end();
     if (!isInsertMode) {
         editEndMarker.setColumn(editEndMarker.column() - 1);
     }
-    m_viInputModeManager->addMark(doc(), QLatin1Char(']'), editEndMarker);
+    m_viInputModeManager->marks()->setFinishEditYanked(editEndMarker);
     m_currentChangeEndMarker = range.end();
     if (m_isUndo) {
         const bool addsMultipleLines = range.start().line() != range.end().line();
-        m_viInputModeManager->addMark(doc(), QLatin1Char('['), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char('[')).line(), 0));
+        m_viInputModeManager->marks()->setStartEditYanked(Cursor(m_viInputModeManager->marks()->getStartEditYanked().line(), 0));
         if (addsMultipleLines) {
-            m_viInputModeManager->addMark(doc(), QLatin1Char(']'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char(']')).line() + 1, 0));
-            m_viInputModeManager->addMark(doc(), QLatin1Char('.'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char('.')).line() + 1, 0));
+            m_viInputModeManager->marks()->setFinishEditYanked(Cursor(m_viInputModeManager->marks()->getFinishEditYanked().line() + 1, 0));
+            m_viInputModeManager->marks()->setLastChange(Cursor(m_viInputModeManager->marks()->getLastChange().line() + 1, 0));
         } else {
-            m_viInputModeManager->addMark(doc(), QLatin1Char(']'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char(']')).line(), 0));
-            m_viInputModeManager->addMark(doc(), QLatin1Char('.'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char('.')).line(), 0));
+            m_viInputModeManager->marks()->setFinishEditYanked(Cursor(m_viInputModeManager->marks()->getFinishEditYanked().line(), 0));
+            m_viInputModeManager->marks()->setLastChange(Cursor(m_viInputModeManager->marks()->getLastChange().line(), 0));
         }
     }
 }
@@ -4104,23 +4105,23 @@ void KateViNormalMode::textRemoved(KTextEditor::Document *document, Range range)
 {
     Q_UNUSED(document);
     const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == InsertMode;
-    m_viInputModeManager->addMark(doc(), QLatin1Char('.'), range.start());
+    m_viInputModeManager->marks()->setLastChange(range.start());
     if (!isInsertMode) {
         // Don't go resetting [ just because we did a Ctrl-h!
-        m_viInputModeManager->addMark(doc(), QLatin1Char('['), range.start());
+        m_viInputModeManager->marks()->setStartEditYanked(range.start());
     } else {
         // Don't go disrupting our continued insertion just because we did a Ctrl-h!
         m_currentChangeEndMarker = range.start();
     }
-    m_viInputModeManager->addMark(doc(), QLatin1Char(']'), range.start());
+    m_viInputModeManager->marks()->setFinishEditYanked(range.start());
     if (m_isUndo) {
         // Slavishly follow Vim's weird rules: if an undo removes several lines, then all markers should
         // be at the beginning of the line after the last line removed, else they should at the beginning
         // of the line above that.
         const int markerLineAdjustment = (range.start().line() != range.end().line()) ? 1 : 0;
-        m_viInputModeManager->addMark(doc(), QLatin1Char('['), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char('[')).line() + markerLineAdjustment, 0));
-        m_viInputModeManager->addMark(doc(), QLatin1Char(']'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char(']')).line() + markerLineAdjustment, 0));
-        m_viInputModeManager->addMark(doc(), QLatin1Char('.'), Cursor(m_viInputModeManager->getMarkPosition(QLatin1Char('.')).line() + markerLineAdjustment, 0));
+        m_viInputModeManager->marks()->setStartEditYanked(Cursor(m_viInputModeManager->marks()->getStartEditYanked().line() + markerLineAdjustment, 0));
+        m_viInputModeManager->marks()->setFinishEditYanked(Cursor(m_viInputModeManager->marks()->getFinishEditYanked().line() + markerLineAdjustment, 0));
+        m_viInputModeManager->marks()->setLastChange(Cursor(m_viInputModeManager->marks()->getLastChange().line() + markerLineAdjustment, 0));
     }
 }
 

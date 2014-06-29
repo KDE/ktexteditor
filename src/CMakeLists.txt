@@ -244,6 +244,7 @@ if (BUILD_VIMODE)
     vimode/katevicommandrangeexpressionparser.cpp
     vimode/katevikeymapper.cpp
     vimode/kateviinputmodeconfigtab.cpp
+    vimode/marks.cpp
   )
 endif()
 
