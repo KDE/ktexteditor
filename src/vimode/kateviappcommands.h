@@ -37,7 +37,7 @@ public:
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 
     static KateViAppCommands* self() {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new KateViAppCommands();
         }
         return m_instance;
@@ -72,7 +72,7 @@ public:
     virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
 
     static KateViBufferCommands* self() {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new KateViBufferCommands();
         }
         return m_instance;
