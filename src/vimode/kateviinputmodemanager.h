@@ -32,6 +32,7 @@
 #include <ktexteditor/view.h>
 
 #include "marks.h"
+#include "jumps.h"
 
 class KateViGlobal;
 class KConfigGroup;
@@ -57,11 +58,6 @@ enum ViMode {
     VisualLineMode,
     VisualBlockMode,
     ReplaceMode
-};
-
-struct KateViJump {
-    int line;
-    int column;
 };
 
 namespace KTextEditor
@@ -298,13 +294,8 @@ public:
 
     void reset();
 
-    // Jump Lists
-    void addJump(KTextEditor::Cursor cursor);
-    KTextEditor::Cursor getNextJump(KTextEditor::Cursor cursor);
-    KTextEditor::Cursor getPrevJump(KTextEditor::Cursor cursor);
-    void PrintJumpList();
-
     inline KateVi::Marks *marks() { return m_marks; }
+    inline KateVi::Jumps *jumps() { return m_jumps; }
 
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
@@ -394,11 +385,8 @@ private:
      */
     bool m_temporaryNormalMode;
 
-    // jump list
-    QList<KateViJump> *jump_list;
-    QList<KateViJump>::iterator current_jump;
-
     KateVi::Marks *m_marks;
+    KateVi::Jumps *m_jumps;
 };
 
 #endif

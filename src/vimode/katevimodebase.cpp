@@ -954,19 +954,14 @@ void KateViModeBase::fillRegister(const QChar &reg, const QString &text, Operati
     m_viInputModeManager->viGlobal()->fillRegister(reg, text, flag);
 }
 
-void KateViModeBase::addJump(KTextEditor::Cursor cursor)
-{
-    m_viInputModeManager->addJump(cursor);
-}
-
 KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor) const
 {
-    return m_viInputModeManager->getNextJump(cursor);
+    return m_viInputModeManager->jumps()->next(cursor);
 }
 
 KTextEditor::Cursor KateViModeBase::getPrevJump(KTextEditor::Cursor cursor) const
 {
-    return m_viInputModeManager->getPrevJump(cursor);
+    return m_viInputModeManager->jumps()->prev(cursor);
 }
 
 KateViRange KateViModeBase::goLineDown()
@@ -1505,7 +1500,7 @@ void KateViModeBase::goToPos(const KateViRange &r)
     c.setColumn(r.endColumn);
 
     if (r.jump) {
-        m_viInputModeManager->addJump(m_view->cursorPosition());
+        m_viInputModeManager->jumps()->add(m_view->cursorPosition());
     }
 
     if (c.line() >= doc()->lines()) {

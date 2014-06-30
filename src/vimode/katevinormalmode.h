@@ -289,8 +289,6 @@ public:
     KateViRange textObjectAComma();
     KateViRange textObjectInnerComma();
 
-    void addCurrentPositionToJumpList();
-
     virtual void reset();
 
     void beginMonitoringDocumentChanges();

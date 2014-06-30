@@ -540,11 +540,6 @@ void KateViNormalMode::executeCommand(const KateViCommand *cmd)
     }
 }
 
-void KateViNormalMode::addCurrentPositionToJumpList()
-{
-    m_viInputModeManager->addJump(m_view->cursorPosition());
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // COMMANDS AND OPERATORS
 ////////////////////////////////////////////////////////////////////////////////

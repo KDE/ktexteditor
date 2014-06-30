@@ -79,10 +79,9 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
     m_lastSearchCaseSensitive = false;
     m_lastSearchPlacedCursorAtEndOfMatch = false;
 
-    jump_list = new QList<KateViJump>;
-    current_jump = jump_list->begin();
     m_temporaryNormalMode = false;
 
+    m_jumps = new KateVi::Jumps();
     m_marks = new KateVi::Marks(this);
 
     // We have to do this outside of KateViNormalMode, as we don't want
@@ -97,7 +96,7 @@ KateViInputModeManager::~KateViInputModeManager()
     delete m_viInsertMode;
     delete m_viVisualMode;
     delete m_viReplaceMode;
-    delete jump_list;
+    delete m_jumps;
     delete m_marks;
 }
 
@@ -568,30 +567,13 @@ const QString KateViInputModeManager::getVerbatimKeys() const
 
 void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
 {
-    // Reading jump list
-    // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
-    jump_list->clear();
-    QStringList jumps = config.readEntry("JumpList", QStringList());
-    for (int i = 0; i + 1 < jumps.size(); i += 2) {
-        KateViJump jump = {jumps.at(i).toInt(), jumps.at(i + 1).toInt() };
-        jump_list->push_back(jump);
-    }
-    current_jump = jump_list->end();
-    PrintJumpList();
-
+    m_jumps->readSessionConfig(config);
     m_marks->readSessionConfig(config);
 }
 
 void KateViInputModeManager::writeSessionConfig(KConfigGroup &config)
 {
-    // Writing Jump List
-    // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
-    QStringList l;
-    for (int i = 0; i < jump_list->size(); i++) {
-        l << QString::number(jump_list->at(i).line) << QString::number(jump_list->at(i).column);
-    }
-    config.writeEntry("JumpList", l);
-
+    m_jumps->writeSessionConfig(config);
     m_marks->writeSessionConfig(config);
 }
 
@@ -600,82 +582,6 @@ void KateViInputModeManager::reset()
     if (m_viVisualMode) {
         m_viVisualMode->reset();
     }
-}
-
-void KateViInputModeManager::addJump(Cursor cursor)
-{
-    for (QList<KateViJump>::iterator iterator = jump_list->begin();
-            iterator != jump_list->end();
-            iterator ++) {
-        if ((*iterator).line == cursor.line()) {
-            jump_list->erase(iterator);
-            break;
-        }
-    }
-
-    KateViJump jump = { cursor.line(), cursor.column()};
-    jump_list->push_back(jump);
-    current_jump = jump_list->end();
-
-    // DEBUG
-    PrintJumpList();
-
-}
-
-Cursor KateViInputModeManager::getNextJump(Cursor cursor)
-{
-    if (current_jump != jump_list->end()) {
-        KateViJump jump;
-        if (current_jump + 1 != jump_list->end()) {
-            jump = *(++current_jump);
-        } else {
-            jump = *(current_jump);
-        }
-
-        cursor = Cursor(jump.line, jump.column);
-    }
-
-    // DEBUG
-    PrintJumpList();
-
-    return cursor;
-}
-
-Cursor KateViInputModeManager::getPrevJump(Cursor cursor)
-{
-    if (current_jump == jump_list->end()) {
-        addJump(cursor);
-        current_jump--;
-    }
-
-    if (current_jump != jump_list->begin()) {
-        KateViJump jump;
-        jump = *(--current_jump);
-        cursor = Cursor(jump.line, jump.column);
-    }
-
-    // DEBUG
-    PrintJumpList();
-
-    return cursor;
-}
-
-void KateViInputModeManager::PrintJumpList()
-{
-    qCDebug(LOG_PART) << "Jump List";
-    for (QList<KateViJump>::iterator iter = jump_list->begin();
-            iter != jump_list->end();
-            iter++) {
-        if (iter == current_jump) {
-            qCDebug(LOG_PART) << (*iter).line << (*iter).column << "<< Current Jump";
-        } else {
-            qCDebug(LOG_PART) << (*iter).line << (*iter).column;
-        }
-    }
-    if (current_jump == jump_list->end()) {
-        qCDebug(LOG_PART) << "    << Current Jump";
-    }
-
 }
 
 KateViKeyMapper *KateViInputModeManager::keyMapper()
