@@ -62,7 +62,7 @@ void Marks::readSessionConfig(const KConfigGroup &config)
     syncViMarksAndBookmarks();
 }
 
-void Marks::writeSessionConfig(KConfigGroup &config)
+void Marks::writeSessionConfig(KConfigGroup &config) const
 {
     QStringList l;
     Q_FOREACH (QChar key, m_marks.keys()) {
@@ -215,7 +215,7 @@ void Marks::syncViMarksAndBookmarks()
     }
 }
 
-QString Marks::getMarksOnTheLine(int line)
+QString Marks::getMarksOnTheLine(int line) const
 {
     QString res;
 

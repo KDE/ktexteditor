@@ -41,7 +41,7 @@ class Marks : public QObject
     Q_OBJECT
 
 public:
-    Marks(KateViInputModeManager *imm);
+    explicit Marks(KateViInputModeManager *imm);
     ~Marks();
 
     /** JBOS == Just a Bunch Of Shortcuts **/
@@ -61,10 +61,10 @@ public:
     KTextEditor::Cursor getSelectionFinish() const;
     KTextEditor::Cursor getMarkPosition(const QChar &mark) const;
 
-    void writeSessionConfig(KConfigGroup &config);
+    void writeSessionConfig(KConfigGroup &config) const;
     void readSessionConfig(const KConfigGroup &config);
 
-    QString getMarksOnTheLine(int line);
+    QString getMarksOnTheLine(int line) const;
 
 private:
     void syncViMarksAndBookmarks();
