@@ -54,13 +54,13 @@ using KTextEditor::MovingCursor;
 KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : m_inputAdapter(inputAdapter)
 {
+    m_currentViMode = NormalMode;
+    m_previousViMode = NormalMode;
+
     m_viNormalMode = new KateViNormalMode(this, view, viewInternal);
     m_viInsertMode = new KateViInsertMode(this, view, viewInternal);
     m_viVisualMode = new KateViVisualMode(this, view, viewInternal);
     m_viReplaceMode = new KateViReplaceMode(this, view, viewInternal);
-
-    m_currentViMode = NormalMode;
-    m_previousViMode = NormalMode;
 
     m_view = view;
     m_viewInternal = viewInternal;
