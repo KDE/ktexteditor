@@ -286,6 +286,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
         bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
         m_statusBar = nullptr;
+        emit statusBarEnabledChanged(this, false);
         return;
     }
 
@@ -294,6 +295,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
      */
     m_statusBar = new KateStatusBar(this);
     bottomViewBar()->addPermanentBarWidget(m_statusBar);
+    emit statusBarEnabledChanged(this, true);
 }
 
 void KTextEditor::ViewPrivate::setupConnections()

@@ -658,6 +658,14 @@ public:
      */
     void setStatusBarEnabled(bool enable);
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted whenever the status bar of \p view is toggled.
+     *
+     * @param enabled Whether the status bar is currently enabled or not
+     */
+    void statusBarEnabledChanged(KTextEditor::View *view, bool enabled);
+
 public:
     /**
      * Read session settings from the given \p config.
