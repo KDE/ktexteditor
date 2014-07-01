@@ -1070,7 +1070,7 @@ void KateDocumentConfig::setBackupSuffix(const QString &suffix)
 
 uint KateDocumentConfig::swapSyncInterval() const
 {
-    if (m_swapSyncInterval || isGlobal()) {
+    if (m_swapSyncIntervalSet || isGlobal()) {
         return m_swapSyncInterval;
     }
 
