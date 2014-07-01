@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KDELIBS_KTEXTEDITOR_VIEW_H
-#define KDELIBS_KTEXTEDITOR_VIEW_H
+#ifndef KTEXTEDITOR_VIEW_H
+#define KTEXTEDITOR_VIEW_H
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/attribute.h>

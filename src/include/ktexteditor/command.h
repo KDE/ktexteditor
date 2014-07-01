@@ -19,8 +19,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef KDELIBS_KTEXTEDITOR_COMMAND_H
-#define KDELIBS_KTEXTEDITOR_COMMAND_H
+#ifndef KTEXTEDITOR_COMMAND_H
+#define KTEXTEDITOR_COMMAND_H
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/range.h>

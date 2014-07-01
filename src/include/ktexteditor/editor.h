@@ -17,8 +17,8 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.*/
 
-#ifndef KDELIBS_KTEXTEDITOR_EDITOR_H
-#define KDELIBS_KTEXTEDITOR_EDITOR_H
+#ifndef KTEXTEDITOR_EDITOR_H
+#define KTEXTEDITOR_EDITOR_H
 
 #include <ktexteditor_export.h>
 

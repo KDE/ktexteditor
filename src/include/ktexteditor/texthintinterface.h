@@ -17,8 +17,8 @@
    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
    Boston, MA 02110-1301, USA.
 */
-#ifndef KDELIBS_KTEXTEDITOR_TEXTHINTINTERFACE_H
-#define KDELIBS_KTEXTEDITOR_TEXTHINTINTERFACE_H
+#ifndef KTEXTEDITOR_TEXTHINTINTERFACE_H
+#define KTEXTEDITOR_TEXTHINTINTERFACE_H
 
 #include <QString>
 

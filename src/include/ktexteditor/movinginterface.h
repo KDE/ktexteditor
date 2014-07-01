@@ -21,8 +21,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KDELIBS_KTEXTEDITOR_MOVINGINTERFACE_H
-#define KDELIBS_KTEXTEDITOR_MOVINGINTERFACE_H
+#ifndef KTEXTEDITOR_MOVINGINTERFACE_H
+#define KTEXTEDITOR_MOVINGINTERFACE_H
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/movingcursor.h>
