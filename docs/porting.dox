@@ -114,7 +114,8 @@ The following interfaces were changed:
  - \p KTextEditor::Document::cursorInText() was unused and removed in favor of
    \p KTextEditor::Document::isValidTextPosition().
  - \p KTextEditor::View now has a status bar by default. It can be controlled
-   by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled()
+   by \p View::setStatusBarEnabled() and \p View::isStatusBarEnabled(). Whenever the visibility
+   of the statusbar changes, the signal \p View::statusBarEnabledChanged() is emitted.
  - \p KTextEditor::View::informationMessage() was removed in favor of \p KTextEditor::Document::postMessage().
  - \p KTextEditor::View::viewModeChanged() gained an additional parameter with the current view edit mode.
  - New enums \p KTextEditor::View::InputMode and \p KTextEditor::View::ViewMode.
