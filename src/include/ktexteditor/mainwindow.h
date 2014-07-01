@@ -148,6 +148,13 @@ public:
      */
     void splitView(Qt::Orientation orientation);
 
+    /**
+     * Close the split view that contains the given view.
+     * \param view the view.
+     * \return true if the split view was closed.
+     */
+    bool closeSplitView(KTextEditor::View *view);
+
     //
     // Signals related to view handling
     //

@@ -199,6 +199,27 @@ void MainWindow::splitView(Qt::Orientation orientation)
                               , Q_ARG(Qt::Orientation, orientation));
 }
 
+bool MainWindow::closeSplitView(KTextEditor::View *view)
+{
+    /**
+     * null check
+     */
+    if (!this) {
+        return false;
+    }
+
+    /**
+     * dispatch to parent
+     */
+    bool success = false;
+    QMetaObject::invokeMethod(parent()
+                              , "closeSplitView"
+                              , Qt::DirectConnection
+                              , Q_RETURN_ARG(bool, success)
+                              , Q_ARG(KTextEditor::View *, view));
+    return success;
+}
+
 QWidget *MainWindow::createViewBar(KTextEditor::View *view)
 {
     /**
