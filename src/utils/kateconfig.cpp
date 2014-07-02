@@ -1227,6 +1227,7 @@ KateViewConfig::KateViewConfig()
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
+    m_foldFirstLineSet (false),
     m_view(0)
 {
     s_global = this;
@@ -1268,6 +1269,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
+    m_foldFirstLineSet (false),
     m_view(view)
 {
 }
@@ -1309,6 +1311,7 @@ const char *const KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH = "Word Completion Min
 const char *const KEY_WORD_COMPLETION_REMOVE_TAIL = "Word Completion Remove Tail";
 const char *const KEY_SMART_COPY_CUT = "Smart Copy Cut";
 const char *const KEY_SCROLL_PAST_END = "Scroll Past End";
+const char *const KEY_FOLD_FIRST_LINE = "Fold First Line";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -1363,6 +1366,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setWordCompletionRemoveTail(config.readEntry(KEY_WORD_COMPLETION_REMOVE_TAIL, true));
     setSmartCopyCut(config.readEntry(KEY_SMART_COPY_CUT, false));
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
+    setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
 
     if (isGlobal()) {
         // Read search pattern history
@@ -1423,6 +1427,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
 
     config.writeEntry(KEY_SMART_COPY_CUT, smartCopyCut());
     config.writeEntry(KEY_SCROLL_PAST_END, scrollPastEnd());
+    config.writeEntry(KEY_FOLD_FIRST_LINE, foldFirstLine());
 
     config.writeEntry(KEY_INPUT_MODE, static_cast<int>(inputMode()));
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
@@ -2101,6 +2106,29 @@ void KateViewConfig::setScrollPastEnd(bool on)
 
     m_scrollPastEndSet = true;
     m_scrollPastEnd = on;
+
+    configEnd();
+}
+
+bool KateViewConfig::foldFirstLine() const
+{
+    if (m_foldFirstLineSet || isGlobal()) {
+        return m_foldFirstLine;
+    }
+
+    return s_global->foldFirstLine();
+}
+
+void KateViewConfig::setFoldFirstLine(bool on)
+{
+    if (m_foldFirstLineSet && m_foldFirstLine == on) {
+        return;
+    }
+
+    configStart();
+
+    m_foldFirstLineSet = true;
+    m_foldFirstLine = on;
 
     configEnd();
 }

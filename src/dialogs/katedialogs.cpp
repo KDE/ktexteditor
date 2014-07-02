@@ -674,6 +674,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     connect(textareaUi->chkShowIndentationLines, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowWholeBracketExpression, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkAnimateBracketMatching, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkFoldFirstLine,  SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
 
     connect(bordersUi->chkIconBorder, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMarks, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
@@ -725,6 +726,7 @@ void KateViewDefaultsConfig::apply()
     KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
     KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
+    KateViewConfig::global()->setFoldFirstLine(textareaUi->chkFoldFirstLine->isChecked());
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -751,6 +753,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->chkShowIndentationLines->setChecked(KateRendererConfig::global()->showIndentationLines());
     textareaUi->chkShowWholeBracketExpression->setChecked(KateRendererConfig::global()->showWholeBracketExpression());
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
+    textareaUi->chkFoldFirstLine->setChecked(KateViewConfig::global()->foldFirstLine());
 }
 
 void KateViewDefaultsConfig::reset()
