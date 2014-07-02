@@ -88,6 +88,17 @@
 
 //END includes
 
+namespace {
+
+bool hasCommentInFirstLine(KTextEditor::DocumentPrivate* doc)
+{
+    const Kate::TextLine& line = doc->kateTextLine(0);
+    Q_ASSERT(line);
+    return doc->isComment(0, line->firstChar());
+}
+
+}
+
 void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
 {
     if (range.start().column() > range.end().column()) {
@@ -1663,6 +1674,14 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_viewInternal->cache()->clear();
     tagAll();
     updateView(true);
+
+    if (hasCommentInFirstLine(m_doc)) {
+        if (config()->foldFirstLine()) {
+            foldLine(0);
+        } else {
+            unfoldLine(0);
+        }
+    }
 
     emit configChanged();
 }
