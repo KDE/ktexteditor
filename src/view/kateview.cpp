@@ -594,7 +594,7 @@ void KTextEditor::ViewPrivate::setupActions()
     Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
         a = new KToggleAction(mode->viewInputModeHuman(), this);
         am->addAction(a);
-        a->setWhatsThis(i18n("Activate/deactivate %1").arg(mode->viewInputModeHuman()));
+        a->setWhatsThis(i18n("Activate/deactivate %1", mode->viewInputModeHuman()));
         a->setData(static_cast<int>(mode->viewInputMode()));
         connect(a, SIGNAL(triggered(bool)), SLOT(toggleInputMode(bool)));
         m_inputModeActions << a;
