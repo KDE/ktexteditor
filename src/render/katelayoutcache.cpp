@@ -400,6 +400,8 @@ int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
         return 0;
     }
 
+    Q_ASSERT(realCursor.line() < m_renderer->doc()->lines());
+
     KateLineLayoutPtr thisLine = line(realCursor.line());
 
     for (int i = 0; i < thisLine->viewLineCount(); ++i) {
