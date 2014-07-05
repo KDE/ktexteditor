@@ -27,20 +27,6 @@
 #include "katesyntaxmanager.h"
 #include "katesyntaxdocument.h"
 #include "katepartdebug.h"
-
-#include "ui_filetypeconfigwidget.h"
-
-#include <KMimeTypeChooser>
-#include <KIconLoader>
-
-#include <QCheckBox>
-#include <QComboBox>
-#include <QGroupBox>
-
-#include <QLabel>
-#include <QLayout>
-#include <QPushButton>
-#include <QToolButton>
 //END Includes
 
 KateHighlightingMenu::~KateHighlightingMenu()
