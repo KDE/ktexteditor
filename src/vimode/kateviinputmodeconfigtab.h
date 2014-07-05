@@ -20,9 +20,10 @@
 #define __KATE_VI_INPUT_MODE_CONFIG_TAB_H__
 
 #include "kateconfigpage.h"
-#include "kateviglobal.h"
+#include "mappings.h"
 
 class QTableWidget;
+
 namespace Ui { class ViInputModeConfigWidget; }
 
 class KateViInputModeConfigTab : public KateConfigPage
@@ -30,7 +31,7 @@ class KateViInputModeConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateViInputModeConfigTab(QWidget *parent, KateViGlobal *viGlobal);
+    KateViInputModeConfigTab(QWidget *parent, KateVi::Mappings *mappings);
     ~KateViInputModeConfigTab();
     virtual QString name() const;
 
@@ -38,8 +39,8 @@ protected:
     Ui::ViInputModeConfigWidget *ui;
 
 private:
-    void applyTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
-    void reloadTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode);
+    void applyTab(QTableWidget *mappingsTable, KateVi::Mappings::MappingMode mode);
+    void reloadTab(QTableWidget *mappingsTable, KateVi::Mappings::MappingMode mode);
 
 public Q_SLOTS:
     void apply();
@@ -54,7 +55,7 @@ private Q_SLOTS:
     void importNormalMappingRow();
 
 private:
-    KateViGlobal *m_viGlobal;
+    KateVi::Mappings *m_mappings;
 };
 
 #endif

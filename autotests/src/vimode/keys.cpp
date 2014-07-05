@@ -27,7 +27,9 @@
 #include <inputmode/kateviinputmode.h>
 #include "keys.h"
 #include "fakecodecompletiontestmodel.h"
+#include "mappings.h"
 
+using namespace KateVi;
 using namespace KTextEditor;
 
 
@@ -103,20 +105,20 @@ void KeysTest::MappingTests()
         // Check storage and retrieval of mapping recursion.
         clearAllMappings();
 
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello", KateViGlobal::Recursive);
-        QVERIFY(vi_global->isMappingRecursive(KateViGlobal::NormalModeMapping, "'"));
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello", Mappings::Recursive);
+        QVERIFY(vi_global->mappings()->isRecursive(Mappings::NormalModeMapping, "'"));
 
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "ihello", KateViGlobal::NonRecursive);
-        QVERIFY(!vi_global->isMappingRecursive(KateViGlobal::NormalModeMapping, "a"));
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "ihello", Mappings::NonRecursive);
+        QVERIFY(!vi_global->mappings()->isRecursive(Mappings::NormalModeMapping, "a"));
     }
 
     clearAllMappings();
 
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "<esc>ihello<esc>^aworld<esc>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "<esc>ihello<esc>^aworld<esc>", Mappings::Recursive);
     DoTest("", "'", "hworldello");
 
     // Ensure that the non-mapping logged keypresses are cleared before we execute a mapping
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'a", "rO", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "rO", Mappings::Recursive);
     DoTest("X", "'a", "O");
 
     {
@@ -128,7 +130,7 @@ void KeysTest::MappingTests()
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
-            vi_global->addMapping(KateViGlobal::NormalModeMapping, "'" + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", KateViGlobal::Recursive);
+            vi_global->mappings()->add(Mappings::NormalModeMapping, "'" + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", Mappings::Recursive);
         }
         TestPressKey("'123");
         QCOMPARE(kate_document->text(), QString("")); // Shouldn't add anything until after the timeout!
@@ -139,9 +141,9 @@ void KeysTest::MappingTests()
     // Mappings are not "counted": any count entered applies to the first command/ motion in the mapped sequence,
     // and is not used to replay the entire mapped sequence <count> times in a row.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'downmapping", "j", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ifoo<esc>ibar<esc>", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'testmotionmapping", "lj", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'downmapping", "j", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "ifoo<esc>ibar<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmotionmapping", "lj", Mappings::Recursive);
     DoTest("AAAA\nXXXX\nXXXX\nXXXX\nXXXX\nBBBB\nCCCC\nDDDD", "jd3'downmapping", "AAAA\nBBBB\nCCCC\nDDDD");
     DoTest("", "5'testmapping", "foofoofoofoofobaro");
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "3'testmotionmappingrO", "XXXX\nXXXO\nXXXX\nXXXX");
@@ -151,13 +153,13 @@ void KeysTest::MappingTests()
     // will mean "go to position 1 percent of the way through the document" rather than
     // go to matching item.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gl", "%", Mappings::Recursive);
     DoTest("0\n1\n2\n3\n4\n5\nfoo bar(xyz) baz", "jjjjjjwdgl", "0\n1\n2\n3\n4\n5\nfoo  baz");
 
     // Test that countable mappings work even when triggered by timeouts.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'testmapping", "ljrO", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'testmappingdummy", "dummy", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "ljrO", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmappingdummy", "dummy", Mappings::Recursive);
     BeginTest("XXXX\nXXXX\nXXXX\nXXXX");
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
     TestPressKey("3'testmapping");
@@ -167,21 +169,21 @@ void KeysTest::MappingTests()
     // Test that telescoping mappings don't interfere with built-in commands. Assumes that gp
     // is implemented and working.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gdummy", "idummy", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gdummy", "idummy", Mappings::Recursive);
     DoTest("hello", "yiwgpx", "hhellollo");
 
     // Test that we can map a sequence of keys that extends a built-in command and use
     // that sequence without the built-in command firing.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gpa", "idummy", Mappings::Recursive);
     DoTest("hello", "yiwgpa", "dummyhello");
 
     // Test that we can map a sequence of keys that extends a built-in command and still
     // have the original built-in command fire if we timeout after entering that command.
     // Once again, assumes that gp is implemented and working.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gpa", "idummy", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gpa", "idummy", Mappings::Recursive);
     BeginTest("hello");
     vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
     TestPressKey("yiwgp");
@@ -193,17 +195,17 @@ void KeysTest::MappingTests()
     // (the "g" in the first "dg" is a partial mapping of "gj"), when extended to something
     // that is definitely not a mapping ("gg"), results in the full command being executed ("dgg").
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gj", "aj", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gj", "aj", Mappings::Recursive);
     DoTest("foo\nbar\nxyz", "jjdgg", "");
 
     // Make sure that a mapped sequence of commands is merged into a single undo-able edit.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>ofoo<esc>ofoo<esc>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "ofoo<esc>ofoo<esc>ofoo<esc>", Mappings::Recursive);
     DoTest("bar", "'au", "bar");
 
     // Make sure that a counted mapping is merged into a single undoable edit.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'a", "ofoo<esc>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'a", "ofoo<esc>", Mappings::Recursive);
     DoTest("bar", "5'au", "bar");
 
     // Some test setup for non-recursive mapping g -> gj (cf: bug:314415)
@@ -221,35 +223,35 @@ void KeysTest::MappingTests()
 
     // Test that non-recursive mappings are not expanded.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "j", "gj", Mappings::NonRecursive);
     DoTest(multiVirtualLineText, "jrX", expectedAfterVirtualLineDownAndChange);
     KateViewConfig::global()->setDynWordWrap(false);
 
     // Test that recursive mappings are expanded.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "rx", Mappings::Recursive);
     DoTest("foo", "la", "fxo");
 
     // Test that the flag that stops mappings being expanded is reset after the mapping has been executed.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "j", "gj", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "X", "rx", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "j", "gj", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "rx", Mappings::Recursive);
     DoTest("foo", "jla", "fxo");
 
     // Even if we start with a recursive mapping, as soon as we hit one that is not recursive, we should stop
     // expanding.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "X", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "X", "r.", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "i", "a", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "X", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "X", "r.", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "i", "a", Mappings::Recursive);
     DoTest("foo", "li", "oo");
 
     // Regression test: Using a mapping may trigger a call to updateSelection(), which can change the mode
     // from VisualLineMode to plain VisualMode.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::VisualModeMapping, "gA", "%", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::VisualModeMapping, "gA", "%", Mappings::NonRecursive);
     DoTest("xyz\nfoo\n{\nbar\n}", "jVjgAdgglP", "foo\n{\nbar\n}\nxyz");
     // Piggy back on the previous test with a regression test for issue where, if gA is mapped to %, vgly
     // will yank one more character than it should.
@@ -257,7 +259,7 @@ void KeysTest::MappingTests()
     // Make sure that a successful mapping does not break the "if we select stuff externally in Normal mode,
     // we should switch to Visual Mode" thing.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gA", "%", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gA", "%", Mappings::NonRecursive);
     BeginTest("foo bar xyz()");
     TestPressKey("gAr.");
     kate_view->setSelection(Range(0, 1, 0, 4)); // Actually selects "oo " (i.e. without the "b").
@@ -266,24 +268,24 @@ void KeysTest::MappingTests()
 
     // Regression tests for BUG:260655
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "f", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "f", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
     DoTest("foo dar", "adr.", "foo .ar");
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "F", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "F", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
     DoTest("foo dar", "$adr.", "foo .ar");
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "t", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "t", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
     DoTest("foo dar", "adr.", "foo.dar");
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "T", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "T", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
     DoTest("foo dar", "$adr.", "foo d.r");
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "r", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "d", "i", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "r", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "d", "i", Mappings::NonRecursive);
     DoTest("foo dar", "ad", "doo dar");
     // Feel free to map the keypress after that, though.
     DoTest("foo dar", "addber\\esc", "berdoo dar");
@@ -295,7 +297,7 @@ void KeysTest::MappingTests()
     clearAllMappings();
     {
         // Ctrl.
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "<c-a><c-b>", "ictrl<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><c-b>", "ictrl<esc>", Mappings::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -309,7 +311,7 @@ void KeysTest::MappingTests()
     }
     {
         // Shift.
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "<c-a>C", "ishift<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a>C", "ishift<esc>", Mappings::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -323,7 +325,7 @@ void KeysTest::MappingTests()
     }
     {
         // Alt.
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "<c-a><a-b>", "ialt<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><a-b>", "ialt<esc>", Mappings::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -337,7 +339,7 @@ void KeysTest::MappingTests()
     }
     {
         // Meta.
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "<c-a><m-b>", "imeta<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "<c-a><m-b>", "imeta<esc>", Mappings::NonRecursive);
         BeginTest("");
         QKeyEvent *ctrlKeyDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_Control, Qt::NoModifier);
         QApplication::postEvent(kate_view->focusProxy(), ctrlKeyDown);
@@ -352,50 +354,50 @@ void KeysTest::MappingTests()
     {
         // Can have mappings in Visual mode, distinct from Normal mode..
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "a", "3l", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "3l", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "inose<esc>", Mappings::NonRecursive);
         DoTest("0123456", "lvad", "056");
 
         // The recursion in Visual Mode is distinct from that of  Normal mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "b", Mappings::Recursive);
         DoTest("XXX\nXXX", "lvajd", "XXX");
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "b", "<esc>", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::Recursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "b", Mappings::NonRecursive);
         DoTest("XXX\nXXX", "lvajd", "XXX\nXXX");
 
         // A Visual mode mapping applies to all Visual modes (line, block, etc).
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "a", "2j", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "2j", Mappings::NonRecursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
         // Same for recursion.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "b", "2j", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "a", "b", KateViGlobal::Recursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "b", "2j", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "a", "b", Mappings::Recursive);
         DoTest("123\n456\n789", "lvad", "19");
         DoTest("123\n456\n789", "l\\ctrl-vad", "13\n46\n79");
         DoTest("123\n456\n789", "lVad", "");
 
         // Can clear Visual mode mappings.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        vi_global->clearMappings(KateViGlobal::VisualModeMapping);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        vi_global->clearMappings(KateViGlobal::VisualModeMapping);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "h", "l", KateViGlobal::Recursive);
-        vi_global->clearMappings(KateViGlobal::VisualModeMapping);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "l", Mappings::Recursive);
+        vi_global->mappings()->clear(Mappings::VisualModeMapping);
         DoTest("123\n456\n789", "lvhd", "3\n456\n789");
         DoTest("123\n456\n789", "l\\ctrl-vhd", "3\n456\n789");
         DoTest("123\n456\n789", "lVhd", "456\n789");
@@ -403,24 +405,24 @@ void KeysTest::MappingTests()
     {
         // Can have mappings in Insert mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "inose<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "xyz", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "inose<esc>", Mappings::NonRecursive);
         DoTest("foo", "ia\\esc", "xyzfoo");
 
         // Recursion for Insert mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "b", "c", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::NonRecursive);
         DoTest("", "ia\\esc", "b");
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "b", "c", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::Recursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "b", "c", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::Recursive);
         DoTest("", "ia\\esc", "c");
 
         clearAllMappings();
         // Clear mappings for Insert mode.
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "a", "b", KateViGlobal::NonRecursive);
-        vi_global->clearMappings(KateViGlobal::InsertModeMapping);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "a", "b", Mappings::NonRecursive);
+        vi_global->mappings()->clear(Mappings::InsertModeMapping);
         DoTest("", "ia\\esc", "a");
     }
 
@@ -428,32 +430,32 @@ void KeysTest::MappingTests()
         VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Can have mappings in Emulated Command Bar.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::CommandModeMapping, "a", "xyz", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, "a", "xyz", Mappings::NonRecursive);
         DoTest(" a xyz", "/a\\enterrX", " a Xyz");
         // Use mappings from Normal mode as soon as we exit command bar via Enter.
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "a", "ixyz<c-c>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "a", "ixyz<c-c>", Mappings::NonRecursive);
         DoTest(" a xyz", "/a\\entera", " a xyzxyz");
         // Multiple mappings.
-        vi_global->addMapping(KateViGlobal::CommandModeMapping, "b", "123", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, "b", "123", Mappings::NonRecursive);
         DoTest("  xyz123", "/ab\\enterrX", "  Xyz123");
         // Recursive mappings.
-        vi_global->addMapping(KateViGlobal::CommandModeMapping, "b", "a", KateViGlobal::Recursive);
+        vi_global->mappings()->add(Mappings::CommandModeMapping, "b", "a", Mappings::Recursive);
         DoTest("  xyz", "/b\\enterrX", "  Xyz");
         // Can clear all.
-        vi_global->clearMappings(KateViGlobal::CommandModeMapping);
+        vi_global->mappings()->clear(Mappings::CommandModeMapping);
         DoTest("  ab xyz xyz123", "/ab\\enterrX", "  Xb xyz xyz123");
     }
 
     // Test that not *both* of the mapping and the mapped keys are logged for repetition via "."
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "ixyz", "iabc", KateViGlobal::NonRecursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "gl", "%", KateViGlobal::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "ixyz", "iabc", Mappings::NonRecursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "gl", "%", Mappings::NonRecursive);
     DoTest("", "ixyz\\esc.", "ababcc");
     DoTest("foo()X\nbarxyz()Y", "cglbaz\\escggj.", "bazX\nbazY");
 
     // Regression test for a crash when executing a mapping that switches to Normal mode.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::VisualModeMapping, "h", "d", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::VisualModeMapping, "h", "d", Mappings::Recursive);
     DoTest("foo", "vlh", "o");
 
     {
@@ -463,43 +465,43 @@ void KeysTest::MappingTests()
 
         // "nn" is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:nn foo l\\foorX", "xXx");
 
         // "no" is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:no foo l\\foorX", "xXx");
 
         // "noremap" is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:noremap foo l\\foorX", "xXx");
 
         // "nm" is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:nm foo l\\foorX", "abXxxx");
 
         // "nmap" is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:nmap foo l\\foorX", "abXxxx");
 
         // Unfortunately, "map" is a reserved word :/
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "l", "iabc<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "iabc<esc>", Mappings::NonRecursive);
         DoTest("xxx", "\\:map foo l\\foorX", "abXxxx", ShouldFail, "'map' is reserved for other stuff in Kate command line");
 
         // nunmap works in normal mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "w", "ciwabc<esc>", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::NormalModeMapping, "b", "ciwxyz<esc>", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "w", "ciwabc<esc>", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::NormalModeMapping, "b", "ciwxyz<esc>", Mappings::NonRecursive);
         DoTest(" 123 456 789", "\\:nunmap b\\WWwbrX", " 123 Xbc 789");
 
         // vmap works in Visual mode and is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("abco", "\\:vmap foo l\\v\\rightfoogU", "co");
 
         // vmap does not work in Normal mode.
@@ -508,49 +510,49 @@ void KeysTest::MappingTests()
 
         // vm works in Visual mode and is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("abco", "\\:vm foo l\\v\\rightfoogU", "co");
 
         // vn works in Visual mode and is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("abco", "\\:vn foo l\\v\\rightfoogU", "ABCo");
 
         // vnoremap works in Visual mode and is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("abco", "\\:vnoremap foo l\\v\\rightfoogU", "ABCo");
 
         // vunmap works in Visual Mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "l", "w", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::VisualModeMapping, "gU", "2b", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "w", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::VisualModeMapping, "gU", "2b", Mappings::NonRecursive);
         DoTest("foo bar xyz", "\\:vunmap gU\\wvlgUd", "foo BAR Xyz");
 
         // imap works in Insert mode and is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("", "\\:imap foo l\\ifoo\\esc", "d");
 
         // im works in Insert mode and is recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("", "\\:im foo l\\ifoo\\esc", "d");
 
         // ino works in Insert mode and is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("", "\\:ino foo l\\ifoo\\esc", "l");
 
         // inoremap works in Insert mode and is not recursive.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
         DoTest("", "\\:inoremap foo l\\ifoo\\esc", "l");
 
         // iunmap works in Insert mode.
         clearAllMappings();
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "l", "d", KateViGlobal::NonRecursive);
-        vi_global->addMapping(KateViGlobal::InsertModeMapping, "m", "e", KateViGlobal::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "d", Mappings::NonRecursive);
+        vi_global->mappings()->add(Mappings::InsertModeMapping, "m", "e", Mappings::NonRecursive);
         DoTest("", "\\:iunmap l\\ilm\\esc", "le");
 
         {
@@ -560,28 +562,28 @@ void KeysTest::MappingTests()
             // the emulated command bar (:cmap blah blah\\enter), as this will be subject to mappings, which
             // can interfere with the tests!
             clearAllMappings();
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cmap foo l\\/foo\\enterrX", " l X foo");
 
             // cm works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cm foo l\\/foo\\enterrX", " l X foo");
 
             // cnoremap works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cnoremap foo l\\/foo\\enterrX", " X d foo");
 
             // cno works in emulated command bar and is recursive.
             clearAllMappings();
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
             DoTest(" l d foo", "\\:cno foo l\\/foo\\enterrX", " X d foo");
 
             // cunmap works in emulated command bar.
             clearAllMappings();
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "l", "d", KateViGlobal::NonRecursive);
-            vi_global->addMapping(KateViGlobal::CommandModeMapping, "m", "e", KateViGlobal::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "l", "d", Mappings::NonRecursive);
+            vi_global->mappings()->add(Mappings::CommandModeMapping, "m", "e", Mappings::NonRecursive);
             DoTest(" de le", "\\:cunmap l\\/lm\\enterrX", " de Xe");
         }
 
@@ -594,8 +596,8 @@ void KeysTest::MappingTests()
     // be part of a different mapping (but end up not being so).
     // (Here, the leading "i" in "irecursive<c-c>" could be part of the mapping "ihello<c-c>").
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
     DoTest("", "'", "recursive");
 
     // Capslock in insert mode is not handled by Vim nor by KateViewInternal, and ends up
@@ -611,8 +613,8 @@ void KeysTest::MappingTests()
 
     // Mapping the u and the U commands to other keys.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "t", "u", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "r", "U", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "t", "u", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "r", "U", Mappings::Recursive);
     DoTest("", "ihello\\esct", "");
     DoTest("", "ihello\\esctr", "hello");
 
@@ -631,7 +633,7 @@ void KeysTest::ParsingTests()
 
     // Test that it can be used in mappings
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, char_o_diaeresis, "ifoo", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, char_o_diaeresis, "ifoo", Mappings::Recursive);
     DoTest("hello", QString("ll%1bar").arg(char_o_diaeresis), "hefoobarllo");
 
     // Test that <cr> is parsed like <enter>
@@ -781,34 +783,34 @@ void KeysTest::MacroTests()
 
     // Expand mappings,  but don't do *both* original keypresses and executed keypresses.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
     clearAllMacros();
     DoTest("", "qa'q@a", "hellhelloo");
     // Actually, just do the mapped keypresses, not the executed mappings (like Vim).
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
     clearAllMacros();
     BeginTest("");
     TestPressKey("qa'q");
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "igoodbye<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "igoodbye<c-c>", Mappings::Recursive);
     TestPressKey("@a");
     FinishTest("hellgoodbyeo");
     // Clear the "stop recording macro keypresses because we're executing a mapping" when the mapping has finished
     // executing.
     clearAllMappings();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
     clearAllMacros();
     DoTest("", "qa'ixyz\\ctrl-cq@a", "hellxyhellxyzozo");
     // ... make sure that *all* mappings have finished, though: take into account recursion.
     clearAllMappings();
     clearAllMacros();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
     DoTest("", "qa'q@a", "recursivrecursivee");
     clearAllMappings();
     clearAllMacros();
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "'", "ihello<c-c>ixyz<c-c>", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "'", "ihello<c-c>ixyz<c-c>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "ihello<c-c>", "irecursive<c-c>", Mappings::Recursive);
     DoTest("", "qa'q@a", "recursivxyrecursivxyzeze");
 
     clearAllMappings();
@@ -854,8 +856,8 @@ void KeysTest::MacroTests()
     clearAllMacros();
     // Expand mapping in an executed macro, if the invocation of the macro "@a" is a prefix of a mapping M, and
     // M ends up not being triggered.
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "@aaaa", "idummy<esc>", KateViGlobal::Recursive);
-    vi_global->addMapping(KateViGlobal::NormalModeMapping, "S", "ixyz<esc>", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "@aaaa", "idummy<esc>", Mappings::Recursive);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "S", "ixyz<esc>", Mappings::Recursive);
     DoTest("", "qaSq@abrX", "Xyxyzz");
     clearAllMappings();
 

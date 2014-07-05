@@ -29,6 +29,7 @@
 #include "kateviinputmode.h"
 #include "history.h"
 #include "macros.h"
+#include "mappings.h"
 
 #include <kconfiggroup.h>
 #include <ktexteditor/movingcursor.h>
@@ -43,6 +44,7 @@ KateViGlobal::KateViGlobal()
     m_replaceHistory = new History();
     m_commandHistory = new History();
     m_macros = new Macros();
+    m_mappings = new Mappings();
 
     // read global settings
     readConfig(config().data());
@@ -58,19 +60,15 @@ KateViGlobal::~KateViGlobal()
     delete m_replaceHistory;
     delete m_commandHistory;
     delete m_macros;
+    delete m_mappings;
 }
 
 void KateViGlobal::writeConfig(KConfig *configFile) const
 {
     // FIXME: use own groups instead of one big group!
     KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
-    
-    writeMappingsToConfig(config, QLatin1String("Normal"), NormalModeMapping);
-    writeMappingsToConfig(config, QLatin1String("Visual"), VisualModeMapping);
-    writeMappingsToConfig(config, QLatin1String("Insert"), InsertModeMapping);
-    writeMappingsToConfig(config, QLatin1String("Command"), CommandModeMapping);
-
     m_macros->writeConfig(config);
+    m_mappings->writeConfig(config);
 
     if (m_registers.isEmpty()) {
         return;
@@ -100,12 +98,8 @@ void KateViGlobal::readConfig(const KConfig *configFile)
     // FIXME: use own groups instead of one big group!
     const KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
     
-    readMappingsFromConfig(config, QLatin1String("Normal"), NormalModeMapping);
-    readMappingsFromConfig(config, QLatin1String("Visual"), VisualModeMapping);
-    readMappingsFromConfig(config, QLatin1String("Insert"), InsertModeMapping);
-    readMappingsFromConfig(config, QLatin1String("Command"), CommandModeMapping);
-
     m_macros->readConfig(config);
+    m_mappings->readConfig(config);
 
     QStringList names = config.readEntry("ViRegisterNames", QStringList());
     QStringList contents = config.readEntry("ViRegisterContents", QStringList());
@@ -193,115 +187,5 @@ void KateViGlobal::fillRegister(const QChar &reg, const QString &text, Operation
     if (reg == QLatin1Char('0') || reg == QLatin1Char('1') || reg == QLatin1Char('-')) {
         m_defaultRegister = reg;
         qCDebug(LOG_PART) << "Register " << '"' << " set to point to \"" << reg;
-    }
-}
-
-void KateViGlobal::addMapping(MappingMode mode, const QString &from, const QString &to, KateViGlobal::MappingRecursion recursion)
-{
-    const QString encodedMapping = KateViKeyParser::self()->encodeKeySequence(from);
-    const QString encodedTo = KateViKeyParser::self()->encodeKeySequence(to);
-    const Mapping mapping(encodedTo, recursion == KateViGlobal::Recursive);
-    if (!from.isEmpty()) {
-        m_mappingsForMode[mode][encodedMapping] = mapping;
-    }
-}
-
-void KateViGlobal::removeMapping(MappingMode mode, const QString &from)
-{
-    m_mappingsForMode[mode].remove(from);
-}
-
-const QString KateViGlobal::getMapping(MappingMode mode, const QString &from, bool decode) const
-{
-    const QString ret = m_mappingsForMode[mode][from].mappedKeyPresses;
-
-    if (decode) {
-        return KateViKeyParser::self()->decodeKeySequence(ret);
-    }
-    return ret;
-}
-
-const QStringList KateViGlobal::getMappings(MappingMode mode, bool decode) const
-{
-    const QHash <QString, Mapping> mappingsForMode = m_mappingsForMode[mode];
-
-    QStringList mappings;
-    foreach (const QString mapping, mappingsForMode.keys()) {
-        if (decode) {
-            mappings << KateViKeyParser::self()->decodeKeySequence(mapping);
-        } else {
-            mappings << mapping;
-        }
-    }
-
-    return mappings;
-}
-
-bool KateViGlobal::isMappingRecursive(MappingMode mode, const QString &from) const
-{
-    return m_mappingsForMode[mode][from].isRecursive;
-}
-
-KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KateViInputMode *viInputMode)
-{
-    if (viInputMode->viModeEmulatedCommandBar()->isActive()) {
-        return CommandModeMapping;
-    }
-    const ViMode mode = viInputMode->viInputModeManager()->getCurrentViMode();
-    switch (mode) {
-    case NormalMode:
-        return NormalModeMapping;
-    case VisualMode:
-    case VisualLineMode:
-    case VisualBlockMode:
-        return VisualModeMapping;
-    case InsertMode:
-    case ReplaceMode:
-        return InsertModeMapping;
-    default:
-        Q_ASSERT(false && "unrecognised ViMode!");
-        return NormalModeMapping; // Return arbitrary mode to satisfy compiler.
-    }
-}
-
-void KateViGlobal::clearMappings(MappingMode mode)
-{
-    m_mappingsForMode[mode].clear();
-}
-
-void KateViGlobal::writeMappingsToConfig(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const
-{
-    config.writeEntry(mappingModeName + QLatin1String(" Mode Mapping Keys"), getMappings(mappingMode, true));
-    QStringList l;
-    QList<bool> isRecursive;
-    foreach (const QString &s, getMappings(mappingMode)) {
-        l << KateViKeyParser::self()->decodeKeySequence(getMapping(mappingMode, s));
-        isRecursive << isMappingRecursive(mappingMode, s);
-    }
-    config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings"), l);
-    config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), isRecursive);
-}
-
-void KateViGlobal::readMappingsFromConfig(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode)
-{
-    const QStringList keys = config.readEntry(mappingModeName + QLatin1String(" Mode Mapping Keys"), QStringList());
-    const QStringList mappings = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings"), QStringList());
-    const QList<bool> isRecursive = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), QList<bool>());
-
-    // sanity check
-    if (keys.length() == mappings.length()) {
-        for (int i = 0; i < keys.length(); i++) {
-            // "Recursion" is a newly-introduced part of the config that some users won't have,
-            // so rather than abort (and lose our mappings) if there are not enough entries, simply
-            // treat any missing ones as Recursive (for backwards compatibility).
-            MappingRecursion recursion = Recursive;
-            if (isRecursive.size() > i && !isRecursive.at(i)) {
-                recursion = NonRecursive;
-            }
-            addMapping(mappingMode, keys.at(i), mappings.at(i), recursion);
-            qCDebug(LOG_PART) <<  + " mapping " << keys.at(i) << " -> " << mappings.at(i);
-        }
-    } else {
-        qCDebug(LOG_PART) << "Error when reading mappings from " << mappingModeName << " config: number of keys != number of values";
     }
 }

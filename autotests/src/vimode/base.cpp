@@ -26,7 +26,9 @@
 #include <inputmode/kateviinputmode.h>
 #include "base.h"
 #include "macros.h"
+#include "mappings.h"
 
+using namespace KateVi;
 using namespace KTextEditor;
 
 
@@ -304,10 +306,10 @@ void BaseTest::ensureKateViewVisible()
 
 void BaseTest::clearAllMappings()
 {
-    vi_global->clearMappings(KateViGlobal::NormalModeMapping);
-    vi_global->clearMappings(KateViGlobal::VisualModeMapping);
-    vi_global->clearMappings(KateViGlobal::InsertModeMapping);
-    vi_global->clearMappings(KateViGlobal::CommandModeMapping);
+    vi_global->mappings()->clear(Mappings::NormalModeMapping);
+    vi_global->mappings()->clear(Mappings::VisualModeMapping);
+    vi_global->mappings()->clear(Mappings::InsertModeMapping);
+    vi_global->mappings()->clear(Mappings::CommandModeMapping);
 }
 
 void BaseTest::clearAllMacros()

@@ -248,6 +248,7 @@ if (BUILD_VIMODE)
     vimode/jumps.cpp
     vimode/history.cpp
     vimode/macros.cpp
+    vimode/mappings.cpp
   )
 endif()
 

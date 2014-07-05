@@ -43,6 +43,7 @@ namespace KateVi
 const unsigned int EOL = 99999;
     class History;
     class Macros;
+    class Mappings;
 }
 
 typedef QPair<QString, OperationMode> KateViRegister;
@@ -73,25 +74,13 @@ public:
         return &m_registers;
     }
 
-    enum MappingRecursion { Recursive, NonRecursive };
-    enum MappingMode { NormalModeMapping, VisualModeMapping, InsertModeMapping, CommandModeMapping };
-    void clearMappings(MappingMode mode);
-    void addMapping(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion);
-    void removeMapping(MappingMode mode, const QString &from);
-    const QString getMapping(MappingMode mode, const QString &from, bool decode = false) const;
-    const QStringList getMappings(MappingMode mode, bool decode = false) const;
-    bool isMappingRecursive(MappingMode mode, const QString &from) const;
-    /**
-     * Returns CommandModeMapping if the emulated command bar is active, else the mapping mode
-     * corresponding to the current Vi mode.
-     */
-    static MappingMode mappingModeForCurrentViMode(KateViInputMode *viInputMode);
+    inline KateVi::Mappings *mappings() { return m_mappings; }
 
     inline KateVi::History *searchHistory() { return m_searchHistory; }
     inline KateVi::History *commandHistory() { return m_commandHistory; }
     inline KateVi::History *replaceHistory() { return m_replaceHistory; }
 
-    KateVi::Macros *macros() { return m_macros; }
+    inline KateVi::Macros *macros() { return m_macros; }
 
 private:
     // registers
@@ -101,34 +90,7 @@ private:
     QString m_registerTemp;
     KateViRegister getRegister(const QChar &reg) const;
 
-    // Mappings.
-    struct Mapping {
-        Mapping(const QString &mappedKeyPresses, bool isRecursive)
-            : mappedKeyPresses(mappedKeyPresses), isRecursive(isRecursive)
-        {
-        }
-        Mapping(const Mapping &other)
-            : mappedKeyPresses(other.mappedKeyPresses), isRecursive(other.isRecursive)
-        {
-        }
-        Mapping()
-            : mappedKeyPresses(), isRecursive(false)
-        {
-        }
-        Mapping &operator=(const Mapping &other)
-        {
-            mappedKeyPresses = other.mappedKeyPresses;
-            isRecursive = other.isRecursive;
-            return *this;
-        }
-        QString mappedKeyPresses;
-        bool isRecursive;
-    };
-
-    QHash <MappingMode, QHash<QString, Mapping> > m_mappingsForMode;
-
-    void writeMappingsToConfig(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const;
-    void readMappingsFromConfig(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode);
+    KateVi::Mappings *m_mappings;
 
     KateVi::History *m_searchHistory;
     KateVi::History *m_commandHistory;

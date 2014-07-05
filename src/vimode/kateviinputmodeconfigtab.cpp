@@ -18,7 +18,6 @@
 
 #include "kateviinputmodeconfigtab.h"
 #include "kateconfig.h"
-#include "kateviglobal.h"
 #include "katevikeyparser.h"
 #include "kateglobal.h"
 
@@ -31,9 +30,11 @@
 
 #include "ui_viinputmodeconfigwidget.h"
 
-KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateViGlobal *viGlobal)
+using namespace KateVi;
+
+KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateVi::Mappings *mappings)
     : KateConfigPage(parent)
-    , m_viGlobal(viGlobal)
+    , m_mappings(mappings)
 {
 
     // This will let us have more separation between this page and
@@ -75,9 +76,9 @@ KateViInputModeConfigTab::~KateViInputModeConfigTab()
     delete ui;
 }
 
-void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode)
+void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
 {
-    m_viGlobal->clearMappings(mode);
+    m_mappings->clear(mode);
 
     for (int i = 0; i < mappingsTable->rowCount(); i++) {
         QTableWidgetItem *from = mappingsTable->item(i, 0);
@@ -85,27 +86,27 @@ void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, KateViGloba
         QTableWidgetItem *recursive = mappingsTable->item(i, 2);
 
         if (from && to && recursive) {
-            const KateViGlobal::MappingRecursion recursion = recursive->checkState() == Qt::Checked ?
-                    KateViGlobal::Recursive :
-                    KateViGlobal::NonRecursive;
-            m_viGlobal->addMapping(mode, from->text(), to->text(), recursion);
+            const Mappings::MappingRecursion recursion = recursive->checkState() == Qt::Checked ?
+                    Mappings::Recursive :
+                    Mappings::NonRecursive;
+            m_mappings->add(mode, from->text(), to->text(), recursion);
         }
     }
 }
 
-void KateViInputModeConfigTab::reloadTab(QTableWidget *mappingsTable, KateViGlobal::MappingMode mode)
+void KateViInputModeConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
 {
-    QStringList l = m_viGlobal->getMappings(mode);
+    QStringList l = m_mappings->getAll(mode);
     mappingsTable->setRowCount(l.size());
 
     int i = 0;
     foreach (const QString &f, l) {
         QTableWidgetItem *from = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(f));
-        QString s = m_viGlobal->getMapping(mode, f);
+        QString s = m_mappings->get(mode, f);
         QTableWidgetItem *to = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(s));
         QTableWidgetItem *recursive = new QTableWidgetItem();
         recursive->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
-        const bool isRecursive = m_viGlobal->isMappingRecursive(mode, f);
+        const bool isRecursive = m_mappings->isRecursive(mode, f);
         recursive->setCheckState(isRecursive ? Qt::Checked : Qt::Unchecked);
 
         mappingsTable->setItem(i, 0, from);
@@ -131,9 +132,9 @@ void KateViInputModeConfigTab::apply()
     KateViewConfig::global()->setViInputModeStealKeys(ui->chkViCommandsOverride->isChecked());
 
     // Mappings.
-    applyTab(ui->tblNormalModeMappings, KateViGlobal::NormalModeMapping);
-    applyTab(ui->tblInsertModeMappings, KateViGlobal::InsertModeMapping);
-    applyTab(ui->tblVisualModeMappings, KateViGlobal::VisualModeMapping);
+    applyTab(ui->tblNormalModeMappings, Mappings::NormalModeMapping);
+    applyTab(ui->tblInsertModeMappings, Mappings::InsertModeMapping);
+    applyTab(ui->tblVisualModeMappings, Mappings::VisualModeMapping);
 
     KateViewConfig::global()->configEnd();
 }
@@ -145,9 +146,9 @@ void KateViInputModeConfigTab::reload()
     ui->chkViCommandsOverride->setChecked(KateViewConfig::global()->viInputModeStealKeys());
 
     // Mappings.
-    reloadTab(ui->tblNormalModeMappings, KateViGlobal::NormalModeMapping);
-    reloadTab(ui->tblInsertModeMappings, KateViGlobal::InsertModeMapping);
-    reloadTab(ui->tblVisualModeMappings, KateViGlobal::VisualModeMapping);
+    reloadTab(ui->tblNormalModeMappings, Mappings::NormalModeMapping);
+    reloadTab(ui->tblInsertModeMappings, Mappings::InsertModeMapping);
+    reloadTab(ui->tblVisualModeMappings, Mappings::VisualModeMapping);
 }
 
 void KateViInputModeConfigTab::showWhatsThis(const QString &text)

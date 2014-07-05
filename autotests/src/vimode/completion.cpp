@@ -26,7 +26,9 @@
 #include <katewordcompletion.h>
 #include "completion.h"
 #include "fakecodecompletiontestmodel.h"
+#include "mappings.h"
 
+using namespace KateVi;
 using namespace KTextEditor;
 
 
@@ -504,7 +506,7 @@ void CompletionTest::CompletionTests()
     // Make sure the "Enter"/ "Return" used when invoking completions is not swallowed before being
     // passed to the key mapper.
     kate_view->registerCompletionModel(testModel);
-    vi_global->addMapping(KateViGlobal::InsertModeMapping, "cb", "mapped-shouldntbehere", KateViGlobal::Recursive);
+    vi_global->mappings()->add(Mappings::InsertModeMapping, "cb", "mapped-shouldntbehere", Mappings::Recursive);
     BeginTest("");
     TestPressKey("ic");
     kate_view->userInvokedCompletion();

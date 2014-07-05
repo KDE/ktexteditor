@@ -28,6 +28,7 @@
 #include "kateregexpsearch.h"
 #include <katesedcmd.h>
 #include "katevicommandinterface.h"
+#include "mappings.h"
 
 #include <QStringList>
 
@@ -96,7 +97,7 @@ public:
     }
 private:
     const QStringList &mappingCommands();
-    KateViGlobal::MappingMode modeForMapCommand(const QString &mapCommand);
+    KateVi::Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
     bool isMapCommandRecursive(const QString &mapCommand);
 };
 

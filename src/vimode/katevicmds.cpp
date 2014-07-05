@@ -39,6 +39,8 @@
 #include <QRegExp>
 #include <QUrl>
 
+using namespace KateVi;
+
 //BEGIN ViCommands
 KateViCommands::ViCommands *KateViCommands::ViCommands::m_instance = 0;
 
@@ -64,7 +66,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
     if (mappingCommands().contains(cmd)) {
         if (cmd.endsWith(QLatin1String("unmap"))) {
             if (args.count() == 1) {
-                m_viGlobal->removeMapping(modeForMapCommand(cmd), args.at(0));
+                m_viGlobal->mappings()->remove(modeForMapCommand(cmd), args.at(0));
                 return true;
             } else {
                 msg = i18n("Missing argument. Usage: %1 <from>",  cmd);
@@ -72,7 +74,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
             }
         }
         if (args.count() == 1) {
-            msg = m_viGlobal->getMapping(modeForMapCommand(cmd), args.at(0), true);
+            msg = m_viGlobal->mappings()->get(modeForMapCommand(cmd), args.at(0), true);
             if (msg.isEmpty()) {
                 msg = i18n("No mapping found for \"%1\"", args.at(0));
                 return false;
@@ -80,8 +82,8 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
                 msg = i18n("\"%1\" is mapped to \"%2\"", args.at(0), msg);
             }
         } else if (args.count() == 2) {
-            KateViGlobal::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? KateViGlobal::Recursive : KateViGlobal::NonRecursive;
-            m_viGlobal->addMapping(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
+            Mappings::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? Mappings::Recursive : Mappings::NonRecursive;
+            m_viGlobal->mappings()->add(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
         } else {
             msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]",  cmd);
             return false;
@@ -197,7 +199,7 @@ KCompletion *KateViCommands::ViCommands::completionObject(KTextEditor::View *vie
     KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
     if (v && (cmd == QLatin1String("nn") || cmd == QLatin1String("nnoremap"))) {
-        QStringList l = m_viGlobal->getMappings(KateViGlobal::NormalModeMapping);
+        QStringList l = m_viGlobal->mappings()->getAll(Mappings::NormalModeMapping);
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();
         co->setItems(l);
@@ -221,28 +223,28 @@ const QStringList &KateViCommands::ViCommands::mappingCommands()
     return mappingsCommands;
 }
 
-KateViGlobal::MappingMode KateViCommands::ViCommands::modeForMapCommand(const QString &mapCommand)
+Mappings::MappingMode KateViCommands::ViCommands::modeForMapCommand(const QString &mapCommand)
 {
-    static QMap<QString, KateViGlobal::MappingMode> modeForMapCommand;
+    static QMap<QString, Mappings::MappingMode> modeForMapCommand;
     if (modeForMapCommand.isEmpty()) {
         // Normal is the default.
-        modeForMapCommand.insert(QLatin1String("vmap"), KateViGlobal::VisualModeMapping);
-        modeForMapCommand.insert(QLatin1String("vm"), KateViGlobal::VisualModeMapping);
-        modeForMapCommand.insert(QLatin1String("vnoremap"), KateViGlobal::VisualModeMapping);
-        modeForMapCommand.insert(QLatin1String("vn"), KateViGlobal::VisualModeMapping);
-        modeForMapCommand.insert(QLatin1String("imap"), KateViGlobal::InsertModeMapping);
-        modeForMapCommand.insert(QLatin1String("im"), KateViGlobal::InsertModeMapping);
-        modeForMapCommand.insert(QLatin1String("inoremap"), KateViGlobal::InsertModeMapping);
-        modeForMapCommand.insert(QLatin1String("ino"), KateViGlobal::InsertModeMapping);
-        modeForMapCommand.insert(QLatin1String("cmap"), KateViGlobal::CommandModeMapping);
-        modeForMapCommand.insert(QLatin1String("cm"), KateViGlobal::CommandModeMapping);
-        modeForMapCommand.insert(QLatin1String("cnoremap"), KateViGlobal::CommandModeMapping);
-        modeForMapCommand.insert(QLatin1String("cno"), KateViGlobal::CommandModeMapping);
+        modeForMapCommand.insert(QLatin1String("vmap"), Mappings::VisualModeMapping);
+        modeForMapCommand.insert(QLatin1String("vm"), Mappings::VisualModeMapping);
+        modeForMapCommand.insert(QLatin1String("vnoremap"), Mappings::VisualModeMapping);
+        modeForMapCommand.insert(QLatin1String("vn"), Mappings::VisualModeMapping);
+        modeForMapCommand.insert(QLatin1String("imap"), Mappings::InsertModeMapping);
+        modeForMapCommand.insert(QLatin1String("im"), Mappings::InsertModeMapping);
+        modeForMapCommand.insert(QLatin1String("inoremap"), Mappings::InsertModeMapping);
+        modeForMapCommand.insert(QLatin1String("ino"), Mappings::InsertModeMapping);
+        modeForMapCommand.insert(QLatin1String("cmap"), Mappings::CommandModeMapping);
+        modeForMapCommand.insert(QLatin1String("cm"), Mappings::CommandModeMapping);
+        modeForMapCommand.insert(QLatin1String("cnoremap"), Mappings::CommandModeMapping);
+        modeForMapCommand.insert(QLatin1String("cno"), Mappings::CommandModeMapping);
 
-        modeForMapCommand.insert(QLatin1String("nunmap"), KateViGlobal::NormalModeMapping);
-        modeForMapCommand.insert(QLatin1String("vunmap"), KateViGlobal::VisualModeMapping);
-        modeForMapCommand.insert(QLatin1String("iunmap"), KateViGlobal::InsertModeMapping);
-        modeForMapCommand.insert(QLatin1String("cunmap"), KateViGlobal::CommandModeMapping);
+        modeForMapCommand.insert(QLatin1String("nunmap"), Mappings::NormalModeMapping);
+        modeForMapCommand.insert(QLatin1String("vunmap"), Mappings::VisualModeMapping);
+        modeForMapCommand.insert(QLatin1String("iunmap"), Mappings::InsertModeMapping);
+        modeForMapCommand.insert(QLatin1String("cunmap"), Mappings::CommandModeMapping);
     }
     return modeForMapCommand[mapCommand];
 }

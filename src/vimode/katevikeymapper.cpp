@@ -21,11 +21,14 @@
 #include "katevikeymapper.h"
 #include "kateglobal.h"
 #include "kateviglobal.h"
+#include "mappings.h"
 #include "katepartdebug.h"
 #include "katedocument.h"
 #include "kateviinputmodemanager.h"
 
 #include <QTimer>
+
+using namespace KateVi;
 
 KateViKeyMapper::KateViKeyMapper(KateViInputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
     : m_viInputModeManager(kateViInputModeManager),
@@ -46,8 +49,8 @@ void KateViKeyMapper::executeMapping()
     m_mappingKeys.clear();
     m_mappingTimer->stop();
     m_numMappingsBeingExecuted++;
-    const QString mappedKeypresses = m_viInputModeManager->viGlobal()->getMapping(KateViGlobal::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch);
-    if (!m_viInputModeManager->viGlobal()->isMappingRecursive(KateViGlobal::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
+    const QString mappedKeypresses = m_viInputModeManager->viGlobal()->mappings()->get(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch);
+    if (!m_viInputModeManager->viGlobal()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
         qCDebug(LOG_PART) << "Non-recursive: " << mappedKeypresses;
         m_doNotExpandFurtherMappings = true;
     }
@@ -91,7 +94,7 @@ bool KateViKeyMapper::handleKeypress(QChar key)
         bool isPartialMapping = false;
         bool isFullMapping = false;
         m_fullMappingMatch.clear();
-        foreach (const QString &mapping, m_viInputModeManager->viGlobal()->getMappings(KateViGlobal::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()))) {
+        foreach (const QString &mapping, m_viInputModeManager->viGlobal()->mappings()->getAll(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()))) {
             if (mapping.startsWith(m_mappingKeys)) {
                 if (mapping == m_mappingKeys) {
                     isFullMapping = true;
