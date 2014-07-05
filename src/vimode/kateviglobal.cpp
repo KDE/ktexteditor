@@ -27,14 +27,21 @@
 #include "kateviemulatedcommandbar.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
+#include "history.h"
 
 #include <kconfiggroup.h>
 #include <ktexteditor/movingcursor.h>
 #include <QApplication>
 #include <QClipboard>
 
+using namespace KateVi;
+
 KateViGlobal::KateViGlobal()
 {
+    m_searchHistory = new History();
+    m_replaceHistory = new History();
+    m_commandHistory = new History();
+
     // read global settings
     readConfig(config().data());
 }
@@ -44,6 +51,10 @@ KateViGlobal::~KateViGlobal()
     // write global settings
     writeConfig(config().data());
     config().data()->sync();
+
+    delete m_searchHistory;
+    delete m_replaceHistory;
+    delete m_commandHistory;
 }
 
 void KateViGlobal::writeConfig(KConfig *configFile) const
@@ -280,51 +291,6 @@ KateViGlobal::MappingMode KateViGlobal::mappingModeForCurrentViMode(KateViInputM
 void KateViGlobal::clearMappings(MappingMode mode)
 {
     m_mappingsForMode[mode].clear();
-}
-
-void KateViGlobal::clearSearchHistory()
-{
-    m_searchHistory.clear();
-}
-
-QStringList KateViGlobal::searchHistory()
-{
-    return m_searchHistory.items();
-}
-
-void KateViGlobal::appendSearchHistoryItem(const QString &searchHistoryItem)
-{
-    m_searchHistory.appendItem(searchHistoryItem);
-}
-
-QStringList KateViGlobal::commandHistory()
-{
-    return m_commandHistory.items();
-}
-
-void KateViGlobal::clearCommandHistory()
-{
-    m_commandHistory.clear();
-}
-
-void KateViGlobal::appendCommandHistoryItem(const QString &commandHistoryItem)
-{
-    m_commandHistory.appendItem(commandHistoryItem);
-}
-
-QStringList KateViGlobal::replaceHistory()
-{
-    return m_replaceHistory.items();
-}
-
-void KateViGlobal::appendReplaceHistoryItem(const QString &replaceHistoryItem)
-{
-    m_replaceHistory.appendItem(replaceHistoryItem);
-}
-
-void KateViGlobal::clearReplaceHistory()
-{
-    m_replaceHistory.clear();
 }
 
 void KateViGlobal::clearAllMacros()

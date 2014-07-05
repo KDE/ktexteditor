@@ -40,6 +40,7 @@
 #include "katevimotion.h"
 #include "katevinormalmode.h"
 #include "katevivisualmode.h"
+#include "history.h"
 #include "katecmd.h"
 #include <ktexteditor/attribute.h>
 #include "kateviinputmode.h"
@@ -2777,7 +2778,7 @@ KateViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
 KateViRange KateViNormalMode::motionToNextOccurrence()
 {
     QString word = getWordUnderCursor();
-    m_viInputModeManager->viGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
+    m_viInputModeManager->viGlobal()->searchHistory()->append(QString::fromLatin1("\\<%1\\>").arg(word));
     word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
 
     m_viInputModeManager->setLastSearchPattern(word);
@@ -2792,7 +2793,7 @@ KateViRange KateViNormalMode::motionToNextOccurrence()
 KateViRange KateViNormalMode::motionToPrevOccurrence()
 {
     QString word = getWordUnderCursor();
-    m_viInputModeManager->viGlobal()->appendSearchHistoryItem(QString::fromLatin1("\\<%1\\>").arg(word));
+    m_viInputModeManager->viGlobal()->searchHistory()->append(QString::fromLatin1("\\<%1\\>").arg(word));
     word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
 
     m_viInputModeManager->setLastSearchPattern(word);

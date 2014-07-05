@@ -33,6 +33,7 @@
 #include "katevicmds.h"
 #include "katevivisualmode.h"
 #include "kateviappcommands.h"
+#include "history.h"
 
 #include "katecmds.h"
 #include "katescriptmanager.h"
@@ -469,12 +470,12 @@ void KateViEmulatedCommandBar::closed()
             m_viInputModeManager->setLastSearchBackwards(m_currentSearchIsBackwards);
             m_viInputModeManager->setLastSearchPlacesCursorAtEndOfMatch(m_currentSearchPlacesCursorAtEndOfMatch);
         }
-        m_viInputModeManager->viGlobal()->appendSearchHistoryItem(m_edit->text());
+        m_viInputModeManager->viGlobal()->searchHistory()->append(m_edit->text());
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
             // do it inside closed() as we may still be showing the command response display.
-            m_viInputModeManager->viGlobal()->appendCommandHistoryItem(m_edit->text());
+            m_viInputModeManager->viGlobal()->commandHistory()->append(m_edit->text());
             // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
             // If we switch from Visual to Normal mode, we need to clear the selection.
             m_view->clearSelection();
@@ -614,7 +615,7 @@ void KateViEmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &new
 void KateViEmulatedCommandBar::activateSearchHistoryCompletion()
 {
     m_currentCompletionType = SearchHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()));
+    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()->items()));
     updateCompletionPrefix();
     m_completer->complete();
 }
@@ -652,16 +653,16 @@ void KateViEmulatedCommandBar::activateCommandCompletion()
 void KateViEmulatedCommandBar::activateCommandHistoryCompletion()
 {
     m_currentCompletionType = CommandHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->commandHistory()));
+    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->commandHistory()->items()));
     updateCompletionPrefix();
     m_completer->complete();
 }
 
 void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 {
-    if (!m_viInputModeManager->viGlobal()->searchHistory().isEmpty()) {
+    if (!m_viInputModeManager->viGlobal()->searchHistory()->isEmpty()) {
         m_currentCompletionType = SedFindHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()));
+        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()->items()));
         m_completer->setCompletionPrefix(sedFindTerm());
         m_completer->complete();
     }
@@ -669,9 +670,9 @@ void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 
 void KateViEmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
-    if (!m_viInputModeManager->viGlobal()->replaceHistory().isEmpty()) {
+    if (!m_viInputModeManager->viGlobal()->replaceHistory()->isEmpty()) {
         m_currentCompletionType = SedReplaceHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->replaceHistory()));
+        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->replaceHistory()->items()));
         m_completer->setCompletionPrefix(sedReplaceTerm());
         m_completer->complete();
     }
@@ -1038,9 +1039,9 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     const QString originalFindTerm = sedFindTerm();
                     const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
                     const QString commandWithSedSearchRegexConverted = withSedFindTermReplacedWith(convertedFindTerm);
-                    m_viInputModeManager->viGlobal()->appendSearchHistoryItem(originalFindTerm);
+                    m_viInputModeManager->viGlobal()->searchHistory()->append(originalFindTerm);
                     const QString replaceTerm = sedReplaceTerm();
-                    m_viInputModeManager->viGlobal()->appendReplaceHistoryItem(replaceTerm);
+                    m_viInputModeManager->viGlobal()->replaceHistory()->append(replaceTerm);
                     commandToExecute = commandWithSedSearchRegexConverted;
                     qCDebug(LOG_PART) << "Command to execute after replacing search term: " << commandToExecute;
                 }
@@ -1053,7 +1054,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                         switchToCommandResponseDisplay(commandResponseMessage);
                     }
                 }
-                m_viInputModeManager->viGlobal()->appendCommandHistoryItem(m_edit->text());
+                m_viInputModeManager->viGlobal()->commandHistory()->append(m_edit->text());
             } else {
                 emit hideMe();
             }

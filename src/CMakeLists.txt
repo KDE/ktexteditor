@@ -246,6 +246,7 @@ if (BUILD_VIMODE)
     vimode/kateviinputmodeconfigtab.cpp
     vimode/marks.cpp
     vimode/jumps.cpp
+    vimode/history.cpp
   )
 endif()
 

@@ -42,6 +42,7 @@ class KateViInputMode;
 namespace KateVi
 {
 const unsigned int EOL = 99999;
+    class History;
 }
 
 typedef QPair<QString, OperationMode> KateViRegister;
@@ -51,7 +52,7 @@ class KTEXTEDITOR_EXPORT KateViGlobal
 public:
     KateViGlobal();
     ~KateViGlobal();
-    
+
     /**
      * The global configuration of katepart for the vi mode, e.g. katevirc
      * @return global shared access to katevirc config
@@ -86,17 +87,9 @@ public:
      */
     static MappingMode mappingModeForCurrentViMode(KateViInputMode *viInputMode);
 
-    QStringList searchHistory();
-    void clearSearchHistory();
-    void appendSearchHistoryItem(const QString &searchHistoryItem);
-
-    QStringList commandHistory();
-    void clearCommandHistory();
-    void appendCommandHistoryItem(const QString &commandHistoryItem);
-
-    QStringList replaceHistory();
-    void clearReplaceHistory();
-    void appendReplaceHistoryItem(const QString &replaceHistoryItem);
+    inline KateVi::History *searchHistory() { return m_searchHistory; }
+    inline KateVi::History *commandHistory() { return m_commandHistory; }
+    inline KateVi::History *replaceHistory() { return m_replaceHistory; }
 
     void clearAllMacros();
     void clearMacro(QChar macroRegister);
@@ -147,36 +140,9 @@ private:
     QString encodeMacroCompletionForConfig(const KateViInputModeManager::Completion &completionForMacro) const;
     KateViInputModeManager::Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
-    class History
-    {
-    public:
-        void appendItem(const QString &historyItem)
-        {
-            if (historyItem.isEmpty()) {
-                return;
-            }
-            const int HISTORY_SIZE_LIMIT = 100;
-            m_items.removeAll(historyItem);
-            if (m_items.size() == HISTORY_SIZE_LIMIT) {
-                m_items.removeFirst();
-            }
-            m_items.append(historyItem);
-        }
-        QStringList items() const
-        {
-            return m_items;
-        }
-        void clear()
-        {
-            m_items.clear();
-        }
-    private:
-        QStringList m_items;
-    };
-
-    History m_searchHistory;
-    History m_commandHistory;
-    History m_replaceHistory;
+    KateVi::History *m_searchHistory;
+    KateVi::History *m_commandHistory;
+    KateVi::History *m_replaceHistory;
 
     QHash<QChar, QString > m_macroForRegister;
     QHash<QChar, QList<KateViInputModeManager::Completion> > m_macroCompletionsForRegister;
