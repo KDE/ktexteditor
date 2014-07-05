@@ -26,6 +26,7 @@
 
 #include <ktexteditor/range.h>
 #include "katevinormalmode.h"
+#include "kateviinputmodemanager.h"
 
 class KateViRange;
 class KateViInputModeManager;

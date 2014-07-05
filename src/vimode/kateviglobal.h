@@ -31,7 +31,6 @@
 #include <KSharedConfig>
 
 #include "katevimodebase.h"
-#include "kateviinputmodemanager.h"
 #include <ktexteditor_export.h>
 
 class QString;
@@ -43,6 +42,7 @@ namespace KateVi
 {
 const unsigned int EOL = 99999;
     class History;
+    class Macros;
 }
 
 typedef QPair<QString, OperationMode> KateViRegister;
@@ -91,14 +91,7 @@ public:
     inline KateVi::History *commandHistory() { return m_commandHistory; }
     inline KateVi::History *replaceHistory() { return m_replaceHistory; }
 
-    void clearAllMacros();
-    void clearMacro(QChar macroRegister);
-    void storeMacro(QChar macroRegister, const QList<QKeyEvent> macroKeyEventLog, const QList<KateViInputModeManager::Completion> completions);
-    /**
-     * Get the named macro in a format suitable for passing to feedKeyPresses.
-     */
-    QString getMacro(QChar macroRegister);
-    QList< KateViInputModeManager::Completion > getMacroCompletions(QChar macroRegister);
+    KateVi::Macros *macros() { return m_macros; }
 
 private:
     // registers
@@ -136,16 +129,12 @@ private:
 
     void writeMappingsToConfig(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const;
     void readMappingsFromConfig(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode);
-    int readMacroCompletions(QChar macroRegister, const QStringList &encodedMacroCompletions, int macroCompletionIndex);
-    QString encodeMacroCompletionForConfig(const KateViInputModeManager::Completion &completionForMacro) const;
-    KateViInputModeManager::Completion decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion);
 
     KateVi::History *m_searchHistory;
     KateVi::History *m_commandHistory;
     KateVi::History *m_replaceHistory;
 
-    QHash<QChar, QString > m_macroForRegister;
-    QHash<QChar, QList<KateViInputModeManager::Completion> > m_macroCompletionsForRegister;
+    KateVi::Macros *m_macros;
 };
 
 #endif

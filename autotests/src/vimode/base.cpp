@@ -25,6 +25,7 @@
 #include <kateviemulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "base.h"
+#include "macros.h"
 
 using namespace KTextEditor;
 
@@ -311,7 +312,7 @@ void BaseTest::clearAllMappings()
 
 void BaseTest::clearAllMacros()
 {
-    vi_global->clearAllMacros();
+    vi_global->macros()->clear();
 }
 
 void BaseTest::textInserted(Document *document, Range range)

@@ -44,6 +44,7 @@
 #include "kateviemulatedcommandbar.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
+#include "macros.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -310,7 +311,7 @@ void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
     qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
     m_isRecordingMacro = true;
     m_recordingMacroRegister = macroRegister;
-    m_inputAdapter->viGlobal()->clearMacro(macroRegister);
+    m_inputAdapter->viGlobal()->macros()->remove(macroRegister);
     m_currentMacroKeyEventsLog.clear();
     m_currentMacroCompletionsLog.clear();
 }
@@ -319,7 +320,7 @@ void KateViInputModeManager::finishRecordingMacro()
 {
     Q_ASSERT(m_isRecordingMacro);
     m_isRecordingMacro = false;
-    m_inputAdapter->viGlobal()->storeMacro(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
+    m_inputAdapter->viGlobal()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
 }
 
 bool KateViInputModeManager::isRecordingMacro()
@@ -334,12 +335,12 @@ void KateViInputModeManager::replayMacro(QChar macroRegister)
     }
     m_lastPlayedMacroRegister = macroRegister;
     qCDebug(LOG_PART) << "Replaying macro: " << macroRegister;
-    const QString macroAsFeedableKeypresses = m_inputAdapter->viGlobal()->getMacro(macroRegister);
+    const QString macroAsFeedableKeypresses = m_inputAdapter->viGlobal()->macros()->get(macroRegister);
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     m_macrosBeingReplayedCount++;
     m_nextLoggedMacroCompletionIndex.push(0);
-    m_macroCompletionsToReplay.push(m_inputAdapter->viGlobal()->getMacroCompletions(macroRegister));
+    m_macroCompletionsToReplay.push(m_inputAdapter->viGlobal()->macros()->getCompletions(macroRegister));
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
     feedKeyPresses(macroAsFeedableKeypresses);
     m_keyMapperStack.pop();

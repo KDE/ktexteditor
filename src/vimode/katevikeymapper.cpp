@@ -23,6 +23,7 @@
 #include "kateviglobal.h"
 #include "katepartdebug.h"
 #include "katedocument.h"
+#include "kateviinputmodemanager.h"
 
 #include <QTimer>
 

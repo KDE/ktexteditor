@@ -31,6 +31,7 @@
 #include "katecmd.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
+#include "kateviinputmodemanager.h"
 
 #include <KLocalizedString>
 

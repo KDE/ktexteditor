@@ -28,6 +28,7 @@
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include "history.h"
+#include "macros.h"
 
 #include <kconfiggroup.h>
 #include <ktexteditor/movingcursor.h>
@@ -41,6 +42,7 @@ KateViGlobal::KateViGlobal()
     m_searchHistory = new History();
     m_replaceHistory = new History();
     m_commandHistory = new History();
+    m_macros = new Macros();
 
     // read global settings
     readConfig(config().data());
@@ -55,6 +57,7 @@ KateViGlobal::~KateViGlobal()
     delete m_searchHistory;
     delete m_replaceHistory;
     delete m_commandHistory;
+    delete m_macros;
 }
 
 void KateViGlobal::writeConfig(KConfig *configFile) const
@@ -67,24 +70,7 @@ void KateViGlobal::writeConfig(KConfig *configFile) const
     writeMappingsToConfig(config, QLatin1String("Insert"), InsertModeMapping);
     writeMappingsToConfig(config, QLatin1String("Command"), CommandModeMapping);
 
-    QStringList macroRegisters;
-    foreach (const QChar &macroRegister, m_macroForRegister.keys()) {
-        macroRegisters.append(macroRegister);
-    }
-    QStringList macroContents;
-    foreach (const QChar &macroRegister, m_macroForRegister.keys()) {
-        macroContents.append(KateViKeyParser::self()->decodeKeySequence(m_macroForRegister[macroRegister]));
-    }
-    QStringList macroCompletions;
-    foreach (const QChar &macroRegister, m_macroForRegister.keys()) {
-        macroCompletions.append(QString::number(m_macroCompletionsForRegister[macroRegister].length()));
-        foreach (KateViInputModeManager::Completion completionForMacro, m_macroCompletionsForRegister[macroRegister]) {
-            macroCompletions.append(encodeMacroCompletionForConfig(completionForMacro));
-        }
-    }
-    config.writeEntry("Macro Registers", macroRegisters);
-    config.writeEntry("Macro Contents", macroContents);
-    config.writeEntry("Macro Completions", macroCompletions);
+    m_macros->writeConfig(config);
 
     if (m_registers.isEmpty()) {
         return;
@@ -119,17 +105,7 @@ void KateViGlobal::readConfig(const KConfig *configFile)
     readMappingsFromConfig(config, QLatin1String("Insert"), InsertModeMapping);
     readMappingsFromConfig(config, QLatin1String("Command"), CommandModeMapping);
 
-    const QStringList macroRegisters = config.readEntry("Macro Registers", QStringList());
-    const QStringList macroContents = config.readEntry("Macro Contents", QStringList());
-    const QStringList macroCompletions = config.readEntry("Macro Completions", QStringList());
-    int macroCompletionsIndex = 0;
-    if (macroRegisters.length() == macroContents.length()) {
-        for (int macroIndex = 0; macroIndex < macroRegisters.length(); macroIndex++) {
-            const QChar macroRegister = macroRegisters[macroIndex].at(0);
-            m_macroForRegister[macroRegister] = KateViKeyParser::self()->encodeKeySequence(macroContents[macroIndex]);
-            macroCompletionsIndex = readMacroCompletions(macroRegister, macroCompletions, macroCompletionsIndex);
-        }
-    }
+    m_macros->readConfig(config);
 
     QStringList names = config.readEntry("ViRegisterNames", QStringList());
     QStringList contents = config.readEntry("ViRegisterContents", QStringList());
@@ -293,39 +269,6 @@ void KateViGlobal::clearMappings(MappingMode mode)
     m_mappingsForMode[mode].clear();
 }
 
-void KateViGlobal::clearAllMacros()
-{
-    m_macroForRegister.clear();
-}
-
-void KateViGlobal::clearMacro(QChar macroRegister)
-{
-    m_macroForRegister[macroRegister].clear();
-}
-
-void KateViGlobal::storeMacro(QChar macroRegister, const QList< QKeyEvent > macroKeyEventLog, const QList< KateViInputModeManager::Completion > completions)
-{
-    m_macroForRegister[macroRegister].clear();
-    QList <QKeyEvent> withoutClosingQ = macroKeyEventLog;
-    Q_ASSERT(!macroKeyEventLog.isEmpty() && macroKeyEventLog.last().key() == Qt::Key_Q);
-    withoutClosingQ.pop_back();
-    foreach (QKeyEvent keyEvent, withoutClosingQ) {
-        const QChar key = KateViKeyParser::self()->KeyEventToQChar(keyEvent);
-        m_macroForRegister[macroRegister].append(key);
-    }
-    m_macroCompletionsForRegister[macroRegister] = completions;
-}
-
-QString KateViGlobal::getMacro(QChar macroRegister)
-{
-    return m_macroForRegister[macroRegister];
-}
-
-QList< KateViInputModeManager::Completion > KateViGlobal::getMacroCompletions(QChar macroRegister)
-{
-    return m_macroCompletionsForRegister[macroRegister];
-}
-
 void KateViGlobal::writeMappingsToConfig(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const
 {
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mapping Keys"), getMappings(mappingMode, true));
@@ -361,58 +304,4 @@ void KateViGlobal::readMappingsFromConfig(const KConfigGroup &config, const QStr
     } else {
         qCDebug(LOG_PART) << "Error when reading mappings from " << mappingModeName << " config: number of keys != number of values";
     }
-}
-
-int KateViGlobal::readMacroCompletions(QChar macroRegister, const QStringList &encodedMacroCompletions, int macroCompletionsIndex)
-{
-    if (macroCompletionsIndex < encodedMacroCompletions.length()) {
-        bool parsedNumCompletionsSuccessfully = false;
-        const QString numCompletionsAsString = encodedMacroCompletions[macroCompletionsIndex++];
-        const int numCompletions = numCompletionsAsString.toInt(&parsedNumCompletionsSuccessfully);
-        int count = 0;
-        m_macroCompletionsForRegister[macroRegister].clear();
-        while (count < numCompletions && macroCompletionsIndex < encodedMacroCompletions.length()) {
-            const QString encodedMacroCompletion = encodedMacroCompletions[macroCompletionsIndex++];
-            count++;
-            m_macroCompletionsForRegister[macroRegister].append(decodeMacroCompletionFromConfig(encodedMacroCompletion));
-
-        }
-    }
-    return macroCompletionsIndex;
-}
-
-QString KateViGlobal::encodeMacroCompletionForConfig(const KateViInputModeManager::Completion &completionForMacro) const
-{
-    const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1String(";"));
-    QString encodedMacroCompletion = completionForMacro.completedText().remove(QLatin1String("()")).remove(QLatin1String(";"));
-    if (completionForMacro.completionType() == KateViInputModeManager::Completion::FunctionWithArgs) {
-        encodedMacroCompletion += QLatin1String("(...)");
-    } else if (completionForMacro.completionType() == KateViInputModeManager::Completion::FunctionWithoutArgs) {
-        encodedMacroCompletion += QLatin1String("()");
-    }
-    if (endedWithSemiColon) {
-        encodedMacroCompletion += QLatin1Char(';');
-    }
-    if (completionForMacro.removeTail()) {
-        encodedMacroCompletion += QLatin1Char('|');
-    }
-    return encodedMacroCompletion;
-}
-
-KateViInputModeManager::Completion KateViGlobal::decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion)
-{
-    const bool removeTail = encodedMacroCompletion.endsWith(QLatin1String("|"));
-    KateViInputModeManager::Completion::CompletionType completionType = KateViInputModeManager::Completion::PlainText;
-    if (encodedMacroCompletion.contains(QLatin1String("(...)"))) {
-        completionType = KateViInputModeManager::Completion::FunctionWithArgs;
-    } else if (encodedMacroCompletion.contains(QLatin1String("()"))) {
-        completionType = KateViInputModeManager::Completion::FunctionWithoutArgs;
-    }
-    QString completionText = encodedMacroCompletion;
-    completionText.replace(QLatin1String("(...)"), QLatin1String("()")).remove(QLatin1String("|"));
-
-    qCDebug(LOG_PART) << "Loaded completion: " << completionText << " , " << removeTail << " , " << completionType;
-
-    return KateViInputModeManager::Completion(completionText, removeTail, completionType);
-
 }
