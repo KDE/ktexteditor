@@ -340,10 +340,6 @@ protected:
     QString m_keys;
     QString m_lastTFcommand; // holds the last t/T/f/F command so that it can be repeated with ;/,
 
-    // registers
-    QChar m_defaultRegister;
-    QString m_registerTemp;
-
     unsigned int m_countTemp;
     int m_motionOperatorIndex;
     uint m_scroll_count_limit;

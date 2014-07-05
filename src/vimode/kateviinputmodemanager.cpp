@@ -45,6 +45,7 @@
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include "macros.h"
+#include "registers.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -476,7 +477,7 @@ void KateViInputModeManager::viEnterNormalMode()
 
         if (r.isValid()) {
             QString insertedText = m_view->doc()->text(r);
-            m_inputAdapter->viGlobal()->fillRegister(QLatin1Char('^'), insertedText);
+            m_inputAdapter->viGlobal()->registers()->setInsertStopped(insertedText);
         }
 
         m_marks->setInsertStopped(Cursor(m_view->cursorPosition()));

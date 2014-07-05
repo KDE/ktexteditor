@@ -36,7 +36,7 @@
 #include "kateviewinternal.h"
 #include "katerenderer.h"
 #include "katepartdebug.h"
-#include "definitions.h"
+#include "registers.h"
 
 #include <QString>
 #include <KLocalizedString>
@@ -44,6 +44,7 @@
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;
+using namespace KateVi;
 
 // TODO: the "previous word/WORD [end]" methods should be optimized. now they're being called in a
 // loop and all calculations done up to finding a match are trown away when called with a count > 1
@@ -82,10 +83,10 @@ bool KateViModeBase::deleteRange(KateViRange &r, OperationMode mode, bool addToR
         res = doc()->removeText(Range(r.startLine, r.startColumn, r.endLine, r.endColumn), mode == Block);
     }
 
-    QChar chosenRegister = getChosenRegister(QLatin1Char('0'));
+    QChar chosenRegister = getChosenRegister(ZeroRegister);
     if (addToRegister) {
         if (r.startLine == r.endLine) {
-            chosenRegister = getChosenRegister(QLatin1Char('-'));
+            chosenRegister = getChosenRegister(SmallDeleteRegister);
             fillRegister(chosenRegister, removedText, mode);
         } else {
             fillRegister(chosenRegister,  removedText, mode);
@@ -929,14 +930,12 @@ void KateViModeBase::updateCursor(const Cursor &c) const
  */
 QChar KateViModeBase::getChosenRegister(const QChar &defaultReg) const
 {
-    QChar reg = (m_register != QChar::Null) ? m_register : defaultReg;
-
-    return reg;
+    return (m_register != QChar::Null) ? m_register : defaultReg;
 }
 
 QString KateViModeBase::getRegisterContent(const QChar &reg)
 {
-    QString r = m_viInputModeManager->viGlobal()->getRegisterContent(reg);
+    QString r = m_viInputModeManager->viGlobal()->registers()->getContent(reg);
 
     if (r.isNull()) {
         error(i18n("Nothing in register %1", reg));
@@ -947,12 +946,12 @@ QString KateViModeBase::getRegisterContent(const QChar &reg)
 
 OperationMode KateViModeBase::getRegisterFlag(const QChar &reg) const
 {
-    return m_viInputModeManager->viGlobal()->getRegisterFlag(reg);
+    return m_viInputModeManager->viGlobal()->registers()->getFlag(reg);
 }
 
 void KateViModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    m_viInputModeManager->viGlobal()->fillRegister(reg, text, flag);
+    m_viInputModeManager->viGlobal()->registers()->set(reg, text, flag);
 }
 
 KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor) const

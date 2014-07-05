@@ -37,6 +37,7 @@
 
 #include "katecmds.h"
 #include "katescriptmanager.h"
+#include "registers.h"
 
 #include <KColorScheme>
 #include <KLocalizedString>
@@ -968,7 +969,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
                 textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
             } else {
-                textToInsert = m_viInputModeManager->viGlobal()->getRegisterContent(key);
+                textToInsert = m_viInputModeManager->viGlobal()->registers()->getContent(key);
             }
             if (m_insertedTextShouldBeEscapedForSearchingAsLiteral) {
                 textToInsert = escapedForSearchingAsLiteral(textToInsert);

@@ -43,9 +43,8 @@ namespace KateVi
     class History;
     class Macros;
     class Mappings;
+    class Registers;
 }
-
-typedef QPair<QString, OperationMode> KateViRegister;
 
 class KTEXTEDITOR_EXPORT KateViGlobal
 {
@@ -64,14 +63,8 @@ public:
 
     void writeConfig(KConfig *config) const;
     void readConfig(const KConfig *config);
-    QString getRegisterContent(const QChar &reg) const;
-    OperationMode getRegisterFlag(const QChar &reg) const;
-    void addToNumberedRegister(const QString &text, OperationMode flag = CharWise);
-    void fillRegister(const QChar &reg, const QString &text, OperationMode flag = CharWise);
-    const QMap<QChar, KateViRegister> *getRegisters() const
-    {
-        return &m_registers;
-    }
+
+    inline KateVi::Registers *registers() const { return m_registers; }
 
     inline KateVi::Mappings *mappings() { return m_mappings; }
 
@@ -82,12 +75,7 @@ public:
     inline KateVi::Macros *macros() { return m_macros; }
 
 private:
-    // registers
-    QList<KateViRegister> m_numberedRegisters;
-    QMap<QChar, KateViRegister> m_registers;
-    QChar m_defaultRegister;
-    QString m_registerTemp;
-    KateViRegister getRegister(const QChar &reg) const;
+    KateVi::Registers *m_registers;
 
     KateVi::Mappings *m_mappings;
 

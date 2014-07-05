@@ -249,6 +249,7 @@ if (BUILD_VIMODE)
     vimode/history.cpp
     vimode/macros.cpp
     vimode/mappings.cpp
+    vimode/registers.cpp
   )
 endif()
 

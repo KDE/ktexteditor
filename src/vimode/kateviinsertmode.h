@@ -98,7 +98,6 @@ protected:
     unsigned int m_eolPos; // length of first line in eol mode before text is appended
     KateViRange m_blockRange;
 
-    QString m_registerTemp;
     QString m_keys;
 
     unsigned int m_count;

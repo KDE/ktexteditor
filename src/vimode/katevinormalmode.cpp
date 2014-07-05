@@ -44,6 +44,7 @@
 #include "katecmd.h"
 #include <ktexteditor/attribute.h>
 #include "kateviinputmode.h"
+#include "registers.h"
 
 #include <QApplication>
 #include <QList>
@@ -51,6 +52,8 @@
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;
+
+using namespace KateVi;
 
 #define ADDCMD(STR, FUNC, FLGS) m_commands.push_back( \
         new KateViCommand( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
@@ -74,8 +77,6 @@ KateViNormalMode::KateViNormalMode(KateViInputModeManager *viInputModeManager, K
     m_matchingItems[QLatin1String("*/")] = QLatin1String("-/*");
 
     m_matchItemRegex = generateMatchingItemRegex();
-
-    m_defaultRegister = QLatin1Char('"');
 
     m_scroll_count_limit = 1000; // Limit of count for scroll commands.
 
@@ -1228,7 +1229,7 @@ bool KateViNormalMode::commandYank()
 
     highlightYank(m_commandRange, m);
 
-    QChar  chosen_register =  getChosenRegister(QLatin1Char('0'));
+    QChar  chosen_register =  getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, yankedText, m);
     yankToClipBoard(chosen_register, yankedText);
 
@@ -1248,7 +1249,7 @@ bool KateViNormalMode::commandYankLine()
     KateViRange yankRange(linenum, 0, linenum + getCount() - 1, getLine(linenum + getCount() - 1).length(), ViMotion::InclusiveMotion);
     highlightYank(yankRange);
 
-    QChar  chosen_register =  getChosenRegister(QLatin1Char('0'));
+    QChar  chosen_register =  getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, lines, LineWise);
     yankToClipBoard(chosen_register, lines);
 
@@ -1290,7 +1291,7 @@ bool KateViNormalMode::commandYankToEOL()
     m_commandRange.motionType = motion;
     highlightYank(m_commandRange);
 
-    QChar chosen_register =  getChosenRegister(QLatin1Char('0'));
+    QChar chosen_register =  getChosenRegister(ZeroRegister);
     fillRegister(chosen_register,  yankedText, m);
     yankToClipBoard(chosen_register, yankedText);
 
@@ -3785,7 +3786,7 @@ bool KateViNormalMode::paste(PasteLocation pasteLocation, bool isgPaste, bool is
 {
     Cursor pasteAt(m_view->cursorPosition());
     Cursor cursorAfterPaste = pasteAt;
-    QChar reg = getChosenRegister(m_defaultRegister);
+    QChar reg = getChosenRegister(UnnamedRegister);
 
     OperationMode m = getRegisterFlag(reg);
     QString textToInsert = getRegisterContent(reg);
