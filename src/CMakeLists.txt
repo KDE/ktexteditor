@@ -241,7 +241,7 @@ if (BUILD_VIMODE)
     vimode/katevivisualmode.cpp
     vimode/katevireplacemode.cpp
     vimode/kateviemulatedcommandbar.cpp
-    vimode/katevicommandrangeexpressionparser.cpp
+    vimode/commandrangeexpressionparser.cpp
     vimode/katevikeymapper.cpp
     vimode/kateviinputmodeconfigtab.cpp
     vimode/marks.cpp

@@ -24,7 +24,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
-#include "katevicommandrangeexpressionparser.h"
+#include "commandrangeexpressionparser.h"
 #include "kateview.h"
 #include "kateviglobal.h"
 #include "katevikeyparser.h"
@@ -50,6 +50,8 @@
 #include <QWhatsThis>
 
 #include <algorithm>
+
+using namespace KateVi;
 
 namespace
 {
@@ -861,11 +863,8 @@ QString KateViEmulatedCommandBar::withoutRangeExpression()
 
 QString KateViEmulatedCommandBar::rangeExpression()
 {
-    QString rangeExpression;
-    QString unused;
     const QString command = m_edit->text();
-    ViCommandRangeExpressionParser::parseRangeExpression(command, m_viInputModeManager, rangeExpression, unused);
-    return rangeExpression;
+    return CommandRangeExpressionParser(m_viInputModeManager).parseRangeString(command);
 }
 
 bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
@@ -1138,9 +1137,7 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
     QString commandResponseMessage;
     QString cmd = commandToExecute.mid(n);
 
-    // Parse any leading range expression, and strip it (and maybe do some other transforms on the command).
-    QString leadingRangeExpression;
-    KTextEditor::Range range = ViCommandRangeExpressionParser::parseRangeExpression(cmd, m_viInputModeManager, leadingRangeExpression, cmd);
+    KTextEditor::Range range = CommandRangeExpressionParser(m_viInputModeManager).parseRange(cmd, cmd);
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
