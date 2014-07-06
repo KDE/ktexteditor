@@ -22,7 +22,6 @@
 #ifndef KATE_VI_COMMAND_H
 #define KATE_VI_COMMAND_H
 
-#include <ktexteditor_export.h>
 #include <QString>
 
 class KateViKeyParser;
@@ -38,7 +37,7 @@ enum KateViCommandFlags {
             // whole Visual Mode selection to the text object
 };
 
-class KTEXTEDITOR_EXPORT KateViCommand
+class KateViCommand
 {
 public:
     KateViCommand(KateViNormalMode *parent, QString pattern,
