@@ -33,6 +33,7 @@
 
 #include "marks.h"
 #include "jumps.h"
+#include "definitions.h"
 
 class KateViGlobal;
 class KConfigGroup;
@@ -47,18 +48,6 @@ class KateViReplaceMode;
 class KateViKeyParser;
 class KateViKeyMapper;
 class QString;
-
-/**
- * The four vi modes supported by Kate's vi input mode
- */
-enum ViMode {
-    NormalMode,
-    InsertMode,
-    VisualMode,
-    VisualLineMode,
-    VisualBlockMode,
-    ReplaceMode
-};
 
 namespace KTextEditor
 {

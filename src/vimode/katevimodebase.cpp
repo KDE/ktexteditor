@@ -36,6 +36,7 @@
 #include "kateviewinternal.h"
 #include "katerenderer.h"
 #include "katepartdebug.h"
+#include "definitions.h"
 
 #include <QString>
 #include <KLocalizedString>

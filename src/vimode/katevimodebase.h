@@ -29,6 +29,7 @@
 
 #include "kateview.h"
 #include "katevirange.h"
+#include "definitions.h"
 
 #include <QList>
 
@@ -43,12 +44,6 @@ namespace KTextEditor { class DocumentPrivate; }
 class KateViVisualMode;
 class KateViNormalMode;
 class KateViInputModeManager;
-
-enum OperationMode {
-    CharWise = 0,
-    LineWise,
-    Block
-};
 
 enum Direction {
     Up,

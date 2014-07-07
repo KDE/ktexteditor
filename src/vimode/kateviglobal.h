@@ -40,7 +40,6 @@ class KateViInputMode;
 
 namespace KateVi
 {
-const unsigned int EOL = 99999;
     class History;
     class Macros;
     class Mappings;
