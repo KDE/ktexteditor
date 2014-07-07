@@ -20,36 +20,29 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <stdio.h>
-
-#include "kateviglobal.h"
-#include "katevikeyparser.h"
-#include "kateviemulatedcommandbar.h"
-#include "katepartdebug.h"
-#include "kateviinputmode.h"
+#include "globalstate.h"
 #include "history.h"
 #include "macros.h"
 #include "mappings.h"
 #include "registers.h"
 
 #include <kconfiggroup.h>
-#include <ktexteditor/movingcursor.h>
 
 using namespace KateVi;
 
-KateViGlobal::KateViGlobal()
+GlobalState::GlobalState()
 {
-    m_searchHistory = new History();
-    m_replaceHistory = new History();
-    m_commandHistory = new History();
     m_macros = new Macros();
     m_mappings = new Mappings();
     m_registers = new Registers();
+    m_searchHistory = new History();
+    m_replaceHistory = new History();
+    m_commandHistory = new History();
 
     readConfig(config().data());
 }
 
-KateViGlobal::~KateViGlobal()
+GlobalState::~GlobalState()
 {
     writeConfig(config().data());
     config().data()->sync();
@@ -62,7 +55,7 @@ KateViGlobal::~KateViGlobal()
     delete m_registers;
 }
 
-void KateViGlobal::writeConfig(KConfig *configFile) const
+void GlobalState::writeConfig(KConfig *configFile) const
 {
     // FIXME: use own groups instead of one big group!
     KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
@@ -71,7 +64,7 @@ void KateViGlobal::writeConfig(KConfig *configFile) const
     m_registers->writeConfig(config);
 }
 
-void KateViGlobal::readConfig(const KConfig *configFile)
+void GlobalState::readConfig(const KConfig *configFile)
 {
     // FIXME: use own groups instead of one big group!
     const KConfigGroup config(configFile, "Kate Vi Input Mode Settings");
@@ -79,4 +72,9 @@ void KateViGlobal::readConfig(const KConfig *configFile)
     m_macros->readConfig(config);
     m_mappings->readConfig(config);
     m_registers->readConfig(config);
+}
+
+KSharedConfigPtr GlobalState::config() const
+{
+    return KSharedConfig::openConfig(QStringLiteral("katevirc"));
 }

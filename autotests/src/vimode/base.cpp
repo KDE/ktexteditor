@@ -25,8 +25,9 @@
 #include <kateviemulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "base.h"
-#include "macros.h"
-#include "mappings.h"
+#include "vimode/macros.h"
+#include "vimode/mappings.h"
+#include "vimode/globalstate.h"
 
 using namespace KateVi;
 using namespace KTextEditor;
@@ -100,7 +101,7 @@ void BaseTest::init()
     vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
     vi_input_mode_manager = vi_input_mode->viInputModeManager();
     Q_ASSERT(vi_input_mode_manager);
-    vi_global = vi_input_mode->viGlobal();
+    vi_global = vi_input_mode->globalState();
     Q_ASSERT(vi_global);
     kate_document->config()->setShowSpaces(true); // Flush out some issues in the KateRenderer when rendering spaces.
 

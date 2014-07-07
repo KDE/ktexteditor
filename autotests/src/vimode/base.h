@@ -118,7 +118,7 @@ protected:
     KTextEditor::DocumentPrivate *kate_document;
     KTextEditor::ViewPrivate *kate_view;
     KateViInputMode *vi_input_mode;
-    KateViGlobal *vi_global;
+    KateVi::GlobalState *vi_global;
     KateViInputModeManager *vi_input_mode_manager;
 
     bool m_firstBatchOfKeypressesForTest;

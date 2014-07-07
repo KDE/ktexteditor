@@ -237,7 +237,7 @@ if (BUILD_VIMODE)
     vimode/katevimotion.cpp
     vimode/katevirange.cpp
     vimode/katevikeyparser.cpp
-    vimode/kateviglobal.cpp
+    vimode/globalstate.cpp
     vimode/katevivisualmode.cpp
     vimode/katevireplacemode.cpp
     vimode/kateviemulatedcommandbar.cpp

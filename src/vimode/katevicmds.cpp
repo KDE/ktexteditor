@@ -25,13 +25,13 @@
 #include "katedocument.h"
 #include "kateview.h"
 #include "kateglobal.h"
-#include "kateviglobal.h"
 #include "katevinormalmode.h"
 #include "kateviemulatedcommandbar.h"
 #include "katecmd.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include "kateviinputmodemanager.h"
+#include "globalstate.h"
 
 #include <KLocalizedString>
 

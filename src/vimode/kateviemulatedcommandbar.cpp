@@ -26,7 +26,7 @@
 #include "katepartdebug.h"
 #include "commandrangeexpressionparser.h"
 #include "kateview.h"
-#include "kateviglobal.h"
+#include "globalstate.h"
 #include "katevikeyparser.h"
 #include "katevinormalmode.h"
 
@@ -473,12 +473,12 @@ void KateViEmulatedCommandBar::closed()
             m_viInputModeManager->setLastSearchBackwards(m_currentSearchIsBackwards);
             m_viInputModeManager->setLastSearchPlacesCursorAtEndOfMatch(m_currentSearchPlacesCursorAtEndOfMatch);
         }
-        m_viInputModeManager->viGlobal()->searchHistory()->append(m_edit->text());
+        m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
             // do it inside closed() as we may still be showing the command response display.
-            m_viInputModeManager->viGlobal()->commandHistory()->append(m_edit->text());
+            m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
             // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
             // If we switch from Visual to Normal mode, we need to clear the selection.
             m_view->clearSelection();
@@ -618,7 +618,7 @@ void KateViEmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &new
 void KateViEmulatedCommandBar::activateSearchHistoryCompletion()
 {
     m_currentCompletionType = SearchHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()->items()));
+    m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->searchHistory()->items()));
     updateCompletionPrefix();
     m_completer->complete();
 }
@@ -656,16 +656,16 @@ void KateViEmulatedCommandBar::activateCommandCompletion()
 void KateViEmulatedCommandBar::activateCommandHistoryCompletion()
 {
     m_currentCompletionType = CommandHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->commandHistory()->items()));
+    m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->commandHistory()->items()));
     updateCompletionPrefix();
     m_completer->complete();
 }
 
 void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 {
-    if (!m_viInputModeManager->viGlobal()->searchHistory()->isEmpty()) {
+    if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
         m_currentCompletionType = SedFindHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->searchHistory()->items()));
+        m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->searchHistory()->items()));
         m_completer->setCompletionPrefix(sedFindTerm());
         m_completer->complete();
     }
@@ -673,9 +673,9 @@ void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
 
 void KateViEmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
-    if (!m_viInputModeManager->viGlobal()->replaceHistory()->isEmpty()) {
+    if (!m_viInputModeManager->globalState()->replaceHistory()->isEmpty()) {
         m_currentCompletionType = SedReplaceHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->viGlobal()->replaceHistory()->items()));
+        m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->replaceHistory()->items()));
         m_completer->setCompletionPrefix(sedReplaceTerm());
         m_completer->complete();
     }
@@ -969,7 +969,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
                 textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
             } else {
-                textToInsert = m_viInputModeManager->viGlobal()->registers()->getContent(key);
+                textToInsert = m_viInputModeManager->globalState()->registers()->getContent(key);
             }
             if (m_insertedTextShouldBeEscapedForSearchingAsLiteral) {
                 textToInsert = escapedForSearchingAsLiteral(textToInsert);
@@ -1039,9 +1039,9 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     const QString originalFindTerm = sedFindTerm();
                     const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
                     const QString commandWithSedSearchRegexConverted = withSedFindTermReplacedWith(convertedFindTerm);
-                    m_viInputModeManager->viGlobal()->searchHistory()->append(originalFindTerm);
+                    m_viInputModeManager->globalState()->searchHistory()->append(originalFindTerm);
                     const QString replaceTerm = sedReplaceTerm();
-                    m_viInputModeManager->viGlobal()->replaceHistory()->append(replaceTerm);
+                    m_viInputModeManager->globalState()->replaceHistory()->append(replaceTerm);
                     commandToExecute = commandWithSedSearchRegexConverted;
                     qCDebug(LOG_PART) << "Command to execute after replacing search term: " << commandToExecute;
                 }
@@ -1054,7 +1054,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                         switchToCommandResponseDisplay(commandResponseMessage);
                     }
                 }
-                m_viInputModeManager->viGlobal()->commandHistory()->append(m_edit->text());
+                m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
             } else {
                 emit hideMe();
             }
@@ -1146,7 +1146,7 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
 
         if (ci) {
             ci->setViInputModeManager(m_viInputModeManager);
-            ci->setViGlobal(m_viInputModeManager->viGlobal());
+            ci->setViGlobal(m_viInputModeManager->globalState());
         }
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.

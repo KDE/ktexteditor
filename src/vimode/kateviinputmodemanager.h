@@ -35,7 +35,10 @@
 #include "jumps.h"
 #include "definitions.h"
 
-class KateViGlobal;
+namespace KateVi
+{
+class GlobalState;
+}
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
 namespace KTextEditor { class DocumentPrivate; }
@@ -291,7 +294,7 @@ public:
     void writeSessionConfig(KConfigGroup &config);
 
     KateViKeyMapper *keyMapper();
-    KateViGlobal *viGlobal() const;
+    KateVi::GlobalState *globalState() const;
     KTextEditor::ViewPrivate *view() const;
 
     KateViInputMode *inputAdapter() { return m_inputAdapter; }

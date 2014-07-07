@@ -33,7 +33,7 @@
 
 #include "kateconfig.h"
 #include "kateglobal.h"
-#include "kateviglobal.h"
+#include "globalstate.h"
 #include "kateviewinternal.h"
 #include "katevinormalmode.h"
 #include "kateviinsertmode.h"
@@ -312,7 +312,7 @@ void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
     qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
     m_isRecordingMacro = true;
     m_recordingMacroRegister = macroRegister;
-    m_inputAdapter->viGlobal()->macros()->remove(macroRegister);
+    m_inputAdapter->globalState()->macros()->remove(macroRegister);
     m_currentMacroKeyEventsLog.clear();
     m_currentMacroCompletionsLog.clear();
 }
@@ -321,7 +321,7 @@ void KateViInputModeManager::finishRecordingMacro()
 {
     Q_ASSERT(m_isRecordingMacro);
     m_isRecordingMacro = false;
-    m_inputAdapter->viGlobal()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
+    m_inputAdapter->globalState()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
 }
 
 bool KateViInputModeManager::isRecordingMacro()
@@ -336,12 +336,12 @@ void KateViInputModeManager::replayMacro(QChar macroRegister)
     }
     m_lastPlayedMacroRegister = macroRegister;
     qCDebug(LOG_PART) << "Replaying macro: " << macroRegister;
-    const QString macroAsFeedableKeypresses = m_inputAdapter->viGlobal()->macros()->get(macroRegister);
+    const QString macroAsFeedableKeypresses = m_inputAdapter->globalState()->macros()->get(macroRegister);
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     m_macrosBeingReplayedCount++;
     m_nextLoggedMacroCompletionIndex.push(0);
-    m_macroCompletionsToReplay.push(m_inputAdapter->viGlobal()->macros()->getCompletions(macroRegister));
+    m_macroCompletionsToReplay.push(m_inputAdapter->globalState()->macros()->getCompletions(macroRegister));
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
     feedKeyPresses(macroAsFeedableKeypresses);
     m_keyMapperStack.pop();
@@ -477,7 +477,7 @@ void KateViInputModeManager::viEnterNormalMode()
 
         if (r.isValid()) {
             QString insertedText = m_view->doc()->text(r);
-            m_inputAdapter->viGlobal()->registers()->setInsertStopped(insertedText);
+            m_inputAdapter->globalState()->registers()->setInsertStopped(insertedText);
         }
 
         m_marks->setInsertStopped(Cursor(m_view->cursorPosition()));
@@ -619,9 +619,9 @@ void KateViInputModeManager::updateCursor(const Cursor &c)
     m_inputAdapter->updateCursor(c);
 }
 
-KateViGlobal *KateViInputModeManager::viGlobal() const
+KateVi::GlobalState *KateViInputModeManager::globalState() const
 {
-    return m_inputAdapter->viGlobal();
+    return m_inputAdapter->globalState();
 }
 
 KTextEditor::ViewPrivate *KateViInputModeManager::view() const

@@ -18,7 +18,7 @@
 
 #include "kateviinputmodefactory.h"
 #include "kateviinputmode.h"
-#include "vimode/kateviglobal.h"
+#include "vimode/globalstate.h"
 #include "vimode/kateviinputmodeconfigtab.h"
 
 #include <KLocalizedString>
@@ -26,7 +26,7 @@
 
 KateViInputModeFactory::KateViInputModeFactory()
     : KateAbstractInputModeFactory()
-    , m_viGlobal(new KateViGlobal())
+    , m_viGlobal(new KateVi::GlobalState())
 {
 }
 

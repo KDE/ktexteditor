@@ -20,7 +20,7 @@
  */
 #include "katevikeymapper.h"
 #include "kateglobal.h"
-#include "kateviglobal.h"
+#include "globalstate.h"
 #include "mappings.h"
 #include "katepartdebug.h"
 #include "katedocument.h"
@@ -49,8 +49,8 @@ void KateViKeyMapper::executeMapping()
     m_mappingKeys.clear();
     m_mappingTimer->stop();
     m_numMappingsBeingExecuted++;
-    const QString mappedKeypresses = m_viInputModeManager->viGlobal()->mappings()->get(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch);
-    if (!m_viInputModeManager->viGlobal()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
+    const QString mappedKeypresses = m_viInputModeManager->globalState()->mappings()->get(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch);
+    if (!m_viInputModeManager->globalState()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
         qCDebug(LOG_PART) << "Non-recursive: " << mappedKeypresses;
         m_doNotExpandFurtherMappings = true;
     }
@@ -94,7 +94,7 @@ bool KateViKeyMapper::handleKeypress(QChar key)
         bool isPartialMapping = false;
         bool isFullMapping = false;
         m_fullMappingMatch.clear();
-        foreach (const QString &mapping, m_viInputModeManager->viGlobal()->mappings()->getAll(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()))) {
+        foreach (const QString &mapping, m_viInputModeManager->globalState()->mappings()->getAll(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()))) {
             if (mapping.startsWith(m_mappingKeys)) {
                 if (mapping == m_mappingKeys) {
                     isFullMapping = true;

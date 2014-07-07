@@ -21,16 +21,19 @@
 #ifndef _KATE_VI_COMMAND_INTERFACE_
 #define _KATE_VI_COMMAND_INTERFACE_
 
-class KateViGlobal;
+namespace KateVi {
+class GlobalState;
+}
+
 class KateViInputModeManager;
 
 class KateViCommandInterface {
 public:
-    void setViGlobal(KateViGlobal *g)  { m_viGlobal = g; }
+    void setViGlobal(KateVi::GlobalState *g)  { m_viGlobal = g; }
     void setViInputModeManager(KateViInputModeManager *m)  { m_viInputModeManager = m; }
 
 protected:
-    KateViGlobal *m_viGlobal;
+    KateVi::GlobalState *m_viGlobal;
     KateViInputModeManager *m_viInputModeManager;
 };
 

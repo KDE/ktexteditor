@@ -21,7 +21,7 @@
 
 #include "kateabstractinputmodefactory.h"
 
-class KateViGlobal;
+namespace KateVi { class GlobalState; }
 class KateViInputMode;
 
 class KateViInputModeFactory : public KateAbstractInputModeFactory
@@ -38,7 +38,7 @@ public:
 
     virtual KateConfigPage *createConfigPage(QWidget *);
 private:
-    KateViGlobal *m_viGlobal;
+    KateVi::GlobalState *m_viGlobal;
 };
 
 #endif

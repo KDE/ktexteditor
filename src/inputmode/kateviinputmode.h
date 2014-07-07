@@ -21,16 +21,17 @@
 
 #include "kateabstractinputmode.h"
 
-class KateViGlobal;
+namespace KateVi {
+class GlobalState;
+}
 class KateViInputModeFactory;
 class KateViInputModeManager;
 class KateViEmulatedCommandBar;
 
 class KTEXTEDITOR_EXPORT KateViInputMode : public KateAbstractInputMode
 {
-    KateViInputMode(KateViewInternal *viewInternal, KateViGlobal *global);
+    explicit KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalState *global);
     friend KateViInputModeFactory;
-    friend KateViInputModeManager;
 
 public:
     virtual ~KateViInputMode();
@@ -80,15 +81,15 @@ public:
 public:
     void showViModeEmulatedCommandBar();
     KateViEmulatedCommandBar *viModeEmulatedCommandBar();
-    KateViGlobal *viGlobal();
-    KateViInputModeManager *viInputModeManager();
-    bool isActive() { return m_activated; }
-    void setCaretStyle(KateRenderer::caretStyles caret);
+    inline KateVi::GlobalState *globalState() const { return m_viGlobal; }
+    inline KateViInputModeManager *viInputModeManager() const { return m_viModeManager; }
+    inline bool isActive() const { return m_activated; }
+    void setCaretStyle(const KateRenderer::caretStyles caret);
 
 private:
     KateViInputModeManager *m_viModeManager;
     KateViEmulatedCommandBar *m_viModeEmulatedCommandBar;
-    KateViGlobal *m_viGlobal;
+    KateVi::GlobalState *m_viGlobal;
     KateRenderer::caretStyles m_caret;
 
     // configs

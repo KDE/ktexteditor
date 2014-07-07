@@ -57,7 +57,7 @@ namespace {
     }
 }
 
-KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateViGlobal *global)
+KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalState *global)
     : KateAbstractInputMode(viewInternal)
     , m_viModeEmulatedCommandBar(0)
     , m_viGlobal(global)
@@ -304,16 +304,6 @@ void KateViInputMode::toggleInsert()
     // do nothing
 }
 
-KateViGlobal *KateViInputMode::viGlobal()
-{
-    return m_viGlobal;
-}
-
-KateViInputModeManager *KateViInputMode::viInputModeManager()
-{
-    return m_viModeManager;
-}
-
 void KateViInputMode::launchInteractiveCommand(const QString &)
 {
     // do nothing so far
@@ -324,7 +314,7 @@ QString KateViInputMode::bookmarkLabel(int line) const
     return m_viModeManager->marks()->getMarksOnTheLine(line);
 }
 
-void KateViInputMode::setCaretStyle(KateRenderer::caretStyles caret)
+void KateViInputMode::setCaretStyle(const KateRenderer::caretStyles caret)
 {
     if (m_caret != caret) {
         m_caret = caret;

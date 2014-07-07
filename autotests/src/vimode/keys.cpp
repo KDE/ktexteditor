@@ -27,7 +27,8 @@
 #include <inputmode/kateviinputmode.h>
 #include "keys.h"
 #include "fakecodecompletiontestmodel.h"
-#include "mappings.h"
+#include "vimode/mappings.h"
+#include "vimode/globalstate.h"
 
 using namespace KateVi;
 using namespace KTextEditor;

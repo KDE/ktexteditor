@@ -20,70 +20,48 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_GLOBAL_H_INCLUDED
-#define KATE_VI_GLOBAL_H_INCLUDED
-
-#include <QMap>
-#include <QHash>
-#include <QList>
-#include <QPair>
+#ifndef KATEVI_GLOBAL_STATE_H
+#define KATEVI_GLOBAL_STATE_H
 
 #include <KSharedConfig>
-
-#include "katevimodebase.h"
 #include <ktexteditor_export.h>
-
-class QString;
-class QChar;
-class KConfigGroup;
-class KateViInputMode;
 
 namespace KateVi
 {
-    class History;
-    class Macros;
-    class Mappings;
-    class Registers;
-}
+class History;
+class Macros;
+class Mappings;
+class Registers;
 
-class KTEXTEDITOR_EXPORT KateViGlobal
+class KTEXTEDITOR_EXPORT GlobalState
 {
 public:
-    KateViGlobal();
-    ~KateViGlobal();
-
-    /**
-     * The global configuration of katepart for the vi mode, e.g. katevirc
-     * @return global shared access to katevirc config
-     */
-    static KSharedConfigPtr config()
-    {
-        return KSharedConfig::openConfig(QStringLiteral("katevirc"));
-    }
+    explicit GlobalState();
+    ~GlobalState();
 
     void writeConfig(KConfig *config) const;
     void readConfig(const KConfig *config);
 
+    inline KateVi::Macros *macros() const { return m_macros; }
+    inline KateVi::Mappings *mappings() const { return m_mappings; }
     inline KateVi::Registers *registers() const { return m_registers; }
 
-    inline KateVi::Mappings *mappings() { return m_mappings; }
-
-    inline KateVi::History *searchHistory() { return m_searchHistory; }
-    inline KateVi::History *commandHistory() { return m_commandHistory; }
-    inline KateVi::History *replaceHistory() { return m_replaceHistory; }
-
-    inline KateVi::Macros *macros() { return m_macros; }
+    inline KateVi::History *searchHistory() const { return m_searchHistory; }
+    inline KateVi::History *commandHistory() const { return m_commandHistory; }
+    inline KateVi::History *replaceHistory() const { return m_replaceHistory; }
 
 private:
-    KateVi::Registers *m_registers;
+    KSharedConfigPtr config() const;
 
+private:
+    KateVi::Macros *m_macros;
     KateVi::Mappings *m_mappings;
+    KateVi::Registers *m_registers;
 
     KateVi::History *m_searchHistory;
     KateVi::History *m_commandHistory;
     KateVi::History *m_replaceHistory;
-
-    KateVi::Macros *m_macros;
 };
+}
 
 #endif

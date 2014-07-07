@@ -21,7 +21,7 @@
  */
 
 #include "kateglobal.h"
-#include "kateviglobal.h"
+#include "globalstate.h"
 #include "katevivisualmode.h"
 #include "katevicommand.h"
 #include "katevimotion.h"

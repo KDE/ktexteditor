@@ -25,7 +25,7 @@
 #include "katevirange.h"
 #include "kateglobal.h"
 #include "kateviinputmode.h"
-#include "kateviglobal.h"
+#include "globalstate.h"
 #include "katevivisualmode.h"
 #include "katevinormalmode.h"
 #include "katevireplacemode.h"
@@ -935,7 +935,7 @@ QChar KateViModeBase::getChosenRegister(const QChar &defaultReg) const
 
 QString KateViModeBase::getRegisterContent(const QChar &reg)
 {
-    QString r = m_viInputModeManager->viGlobal()->registers()->getContent(reg);
+    QString r = m_viInputModeManager->globalState()->registers()->getContent(reg);
 
     if (r.isNull()) {
         error(i18n("Nothing in register %1", reg));
@@ -946,12 +946,12 @@ QString KateViModeBase::getRegisterContent(const QChar &reg)
 
 OperationMode KateViModeBase::getRegisterFlag(const QChar &reg) const
 {
-    return m_viInputModeManager->viGlobal()->registers()->getFlag(reg);
+    return m_viInputModeManager->globalState()->registers()->getFlag(reg);
 }
 
 void KateViModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    m_viInputModeManager->viGlobal()->registers()->set(reg, text, flag);
+    m_viInputModeManager->globalState()->registers()->set(reg, text, flag);
 }
 
 KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor) const
