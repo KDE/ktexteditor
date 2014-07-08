@@ -32,6 +32,7 @@ KateViInputModeFactory::KateViInputModeFactory()
 
 KateViInputModeFactory::~KateViInputModeFactory()
 {
+    delete m_viGlobal;
 }
 
 KateAbstractInputMode *KateViInputModeFactory::createInputMode(KateViewInternal *viewInternal)
