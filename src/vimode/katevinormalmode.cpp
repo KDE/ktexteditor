@@ -45,6 +45,7 @@
 #include <ktexteditor/attribute.h>
 #include "kateviinputmode.h"
 #include "registers.h"
+#include "searcher.h"
 
 #include <QApplication>
 #include <QList>
@@ -1479,7 +1480,6 @@ bool KateViNormalMode::commandSearchForward()
 {
     m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
     m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
-    m_viInputModeManager->setLastSearchBackwards(false);
     return true;
 }
 
@@ -2783,33 +2783,15 @@ KateViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
 
 KateViRange KateViNormalMode::motionToNextOccurrence()
 {
-    QString word = getWordUnderCursor();
-    m_viInputModeManager->globalState()->searchHistory()->append(QString::fromLatin1("\\<%1\\>").arg(word));
-    word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
-
-    m_viInputModeManager->setLastSearchPattern(word);
-    m_viInputModeManager->setLastSearchBackwards(false);
-    m_viInputModeManager->setLastSearchCaseSensitive(false);
-    m_viInputModeManager->setLastSearchPlacesCursorAtEndOfMatch(false);
-
-    const KateViRange match = findPatternForMotion(word, false, false, getWordRangeUnderCursor().start(), getCount());
+    const QString word = getWordUnderCursor();
+    const KateViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
     return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
 }
 
 KateViRange KateViNormalMode::motionToPrevOccurrence()
 {
-    QString word = getWordUnderCursor();
-    m_viInputModeManager->globalState()->searchHistory()->append(QString::fromLatin1("\\<%1\\>").arg(word));
-    word.prepend(QLatin1String("\\b")).append(QLatin1String("\\b"));
-
-    m_viInputModeManager->setLastSearchPattern(word);
-    m_viInputModeManager->setLastSearchBackwards(true);
-    m_viInputModeManager->setLastSearchCaseSensitive(false);
-    m_viInputModeManager->setLastSearchPlacesCursorAtEndOfMatch(false);
-
-    // Search from the beginning of the word under the cursor, so that the current word isn't found
-    // first.
-    const KateViRange match = findPatternForMotion(word, true, false, getWordRangeUnderCursor().start(), getCount());
+    const QString word = getWordUnderCursor();
+    const KateViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
     return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
 }
 

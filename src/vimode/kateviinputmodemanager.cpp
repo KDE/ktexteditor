@@ -46,6 +46,7 @@
 #include "kateviinputmode.h"
 #include "macros.h"
 #include "registers.h"
+#include "searcher.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -77,14 +78,12 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
 
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
 
-    m_lastSearchBackwards = false;
-    m_lastSearchCaseSensitive = false;
-    m_lastSearchPlacedCursorAtEndOfMatch = false;
-
     m_temporaryNormalMode = false;
 
     m_jumps = new KateVi::Jumps();
     m_marks = new KateVi::Marks(this);
+
+    m_searcher = new KateVi::Searcher(this);
 
     // We have to do this outside of KateViNormalMode, as we don't want
     // KateViVisualMode (which inherits from KateViNormalMode) to respond
@@ -296,16 +295,6 @@ void KateViInputModeManager::repeatLastChange()
     m_isReplayingLastChange = false;
 }
 
-void KateViInputModeManager::findNext()
-{
-    getCurrentViModeHandler()->findNext();
-}
-
-void KateViInputModeManager::findPrevious()
-{
-    getCurrentViModeHandler()->findPrev();
-}
-
 void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
 {
     Q_ASSERT(!m_isRecordingMacro);
@@ -395,16 +384,6 @@ void KateViInputModeManager::doNotLogCurrentKeypress()
     }
     Q_ASSERT(!m_currentChangeKeyEventsLog.isEmpty());
     m_currentChangeKeyEventsLog.pop_back();
-}
-
-const QString KateViInputModeManager::getLastSearchPattern() const
-{
-    return m_lastSearchPattern;
-}
-
-void KateViInputModeManager::setLastSearchPattern(const QString &p)
-{
-    m_lastSearchPattern = p;
 }
 
 void KateViInputModeManager::changeViMode(ViMode newMode)

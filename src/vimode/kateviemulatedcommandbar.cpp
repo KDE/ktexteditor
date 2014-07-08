@@ -38,6 +38,7 @@
 #include "katecmds.h"
 #include "katescriptmanager.h"
 #include "registers.h"
+#include "searcher.h"
 
 #include <KColorScheme>
 #include <KLocalizedString>
@@ -308,9 +309,6 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInp
     , m_commandResponseMessageTimeOutMS(4000)
     , m_isNextTextChangeDueToCompletionChange(false)
     , m_currentCompletionType(None)
-    , m_currentSearchIsCaseSensitive(false)
-    , m_currentSearchIsBackwards(false)
-    , m_currentSearchPlacesCursorAtEndOfMatch(false)
     , m_isSendingSyntheticSearchCompletedKeypress(false)
 {
     QHBoxLayout *layout = new QHBoxLayout();
@@ -467,13 +465,6 @@ void KateViEmulatedCommandBar::closed()
         m_isSendingSyntheticSearchCompletedKeypress = true;
         QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
         m_isSendingSyntheticSearchCompletedKeypress = false;
-        if (!m_wasAborted) {
-            m_viInputModeManager->setLastSearchPattern(m_currentSearchPattern);
-            m_viInputModeManager->setLastSearchCaseSensitive(m_currentSearchIsCaseSensitive);
-            m_viInputModeManager->setLastSearchBackwards(m_currentSearchIsBackwards);
-            m_viInputModeManager->setLastSearchPlacesCursorAtEndOfMatch(m_currentSearchPlacesCursorAtEndOfMatch);
-        }
-        m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
@@ -1232,7 +1223,7 @@ void KateViEmulatedCommandBar::editTextChanged(const QString &newText)
         const bool searchBackwards = (m_mode == SearchBackward);
         const bool placeCursorAtEndOfMatch = shouldPlaceCursorAtEndOfMatch(qtRegexPattern, searchBackwards);
         if (isRepeatLastSearch(qtRegexPattern, searchBackwards)) {
-            qtRegexPattern = m_viInputModeManager->getLastSearchPattern();
+            qtRegexPattern = m_viInputModeManager->searcher()->getLastSearchPattern();
         } else {
             qtRegexPattern = withSearchConfigRemoved(qtRegexPattern, searchBackwards);
             qtRegexPattern = vimRegexToQtRegexPattern(qtRegexPattern);
@@ -1249,14 +1240,10 @@ void KateViEmulatedCommandBar::editTextChanged(const QString &newText)
 
         qDebug() << "Final regex: " << qtRegexPattern;
 
-        m_currentSearchPattern = qtRegexPattern;
-        m_currentSearchIsCaseSensitive = caseSensitive;
-        m_currentSearchIsBackwards = searchBackwards;
-        m_currentSearchPlacesCursorAtEndOfMatch = placeCursorAtEndOfMatch;
-
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.
-        Range match = m_viInputModeManager->getCurrentViModeHandler()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, m_startingCursorPos);
+        int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
+        Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c);
 
         if (match.isValid()) {
             // The returned range ends one past the last character of the match, so adjust.

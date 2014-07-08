@@ -250,6 +250,7 @@ if (BUILD_VIMODE)
     vimode/macros.cpp
     vimode/mappings.cpp
     vimode/registers.cpp
+    vimode/searcher.cpp
   )
 endif()
 
