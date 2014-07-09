@@ -45,6 +45,7 @@ public:
 private Q_SLOTS:
     void closeCurrentDocument();
     void closeCurrentView();
+    void closeCurrentSplitView();
     void quit();
 
 private:
@@ -56,6 +57,7 @@ private:
     QRegExp re_new;
     QRegExp re_split;
     QRegExp re_vsplit;
+    QRegExp re_vclose;
     QRegExp re_only;
 };
 

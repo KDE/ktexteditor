@@ -1866,6 +1866,11 @@ bool KateViNormalMode::commandSplitVert()
     return executeKateCommand(QLatin1String("vsplit"));
 }
 
+bool KateViNormalMode::commandCloseView()
+{
+    return executeKateCommand(QLatin1String("close"));
+}
+
 bool KateViNormalMode::commandSwitchToNextTab()
 {
     QString command = QString::fromLatin1("bn");
@@ -3619,6 +3624,7 @@ void KateViNormalMode::initializeCommands()
     ADDCMD("<c-w><c-s>", commandSplitHoriz, 0);
     ADDCMD("<c-w>v", commandSplitVert, 0);
     ADDCMD("<c-w><c-v>", commandSplitVert, 0);
+    ADDCMD("<c-w>c", commandCloseView, 0);
 
     ADDCMD("gt", commandSwitchToNextTab, 0);
     ADDCMD("gT", commandSwitchToPrevTab, 0);

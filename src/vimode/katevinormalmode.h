@@ -166,6 +166,7 @@ public:
 
     bool commandSplitHoriz();
     bool commandSplitVert();
+    bool commandCloseView();
 
     bool commandSwitchToNextTab();
     bool commandSwitchToPrevTab();

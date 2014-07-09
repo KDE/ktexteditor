@@ -39,7 +39,7 @@ KateViAppCommands::KateViAppCommands()
           << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
           << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
           << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
-          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose"))
+          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose") << QLatin1String("clo") << QLatin1String("close"))
 {
     re_write.setPattern(QLatin1String("w(a)?"));
     re_close.setPattern(QLatin1String("bd(elete)?|tabc(lose)?"));
@@ -49,6 +49,7 @@ KateViAppCommands::KateViAppCommands()
     re_new.setPattern(QLatin1String("(v)?new"));
     re_split.setPattern(QLatin1String("sp(lit)?"));
     re_vsplit.setPattern(QLatin1String("vs(plit)?"));
+    re_vclose.setPattern(QLatin1String("clo(se)?"));
     re_only.setPattern(QLatin1String("on(ly)?"));
 }
 
@@ -174,6 +175,8 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
         mainWin->splitView(Qt::Horizontal);
     } else if (re_vsplit.exactMatch(command)) {
         mainWin->splitView(Qt::Vertical);
+    } else if (re_vclose.exactMatch(command)) {
+        QTimer::singleShot(0, this, SLOT(closeCurrentSplitView()));
     } else if (re_only.exactMatch(command)) {
         Q_FOREACH(KTextEditor::View * it, mainWin->views()) {
             if (it != view) {
@@ -236,6 +239,11 @@ bool KateViAppCommands::help(KTextEditor::View *view, const QString &cmd, QStrin
                    "<p>Usage: <tt><b>vs[plit]</b></tt></p>"
                    "<p>The result is two views on the same document.</p>");
         return true;
+    } else if (re_vclose.exactMatch(cmd)) {
+        msg = i18n("<p><b>clo[se]&mdash; Close the current view</b></p>"
+                   "<p>Usage: <tt><b>clo[se]</b></tt></p>"
+                   "<p>After executing it, the current view will be closed.</p>");
+        return true;
     } else if (re_new.exactMatch(cmd)) {
         msg = i18n("<p><b>[v]new &mdash; split view and create new document</b></p>"
                    "<p>Usage: <tt><b>[v]new</b></tt></p>"
@@ -270,6 +278,13 @@ void KateViAppCommands::closeCurrentView()
     KTextEditor::MainWindow *mw = app->activeMainWindow();
     mw->closeView(mw->activeView());
     qDebug() << "called close view";
+}
+
+void KateViAppCommands::closeCurrentSplitView()
+{
+    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
+    KTextEditor::MainWindow *mw = app->activeMainWindow();
+    mw->closeSplitView(mw->activeView());
 }
 
 void KateViAppCommands::quit()
