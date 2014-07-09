@@ -71,7 +71,6 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
 KateViInputMode::~KateViInputMode()
 {
     delete m_viModeManager;
-    delete m_viModeEmulatedCommandBar;
 }
 
 void KateViInputMode::activate()

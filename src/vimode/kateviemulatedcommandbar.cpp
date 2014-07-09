@@ -358,7 +358,7 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInp
     // so don't actually set it as the QLineEdit's completer.
     m_completer->setWidget(m_edit);
     m_completer->setObjectName(QLatin1String("completer"));
-    m_completionModel = new QStringListModel;
+    m_completionModel = new QStringListModel(this);
     m_completer->setModel(m_completionModel);
     m_completer->setCaseSensitivity(Qt::CaseInsensitive);
     m_completer->popup()->installEventFilter(this);
