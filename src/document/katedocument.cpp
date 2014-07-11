@@ -5566,10 +5566,10 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
         return -1;
     }
 
-    KateView* view = static_cast<KateView*>(activeView());
+    KTextEditor::ViewPrivate* view = static_cast<KTextEditor::ViewPrivate*>(activeView());
     if (!view) {
         if (!m_views.isEmpty()) {
-            view = m_views.first();
+            view = m_views.begin().value();
         } else {
             //FIXME: find a way to use this function without any view, or move it to the KateView.
             return -1;
