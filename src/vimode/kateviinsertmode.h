@@ -90,8 +90,6 @@ public:
 protected:
     void leaveInsertMode(bool force = false);
     void completionFinished();
-    void replayCompletion();
-    int findNextMergeableBracketPos(const Cursor &startPos) const;
 
 protected:
     BlockInsert m_blockInsert;

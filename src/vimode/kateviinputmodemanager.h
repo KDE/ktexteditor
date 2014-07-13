@@ -34,11 +34,14 @@
 #include "marks.h"
 #include "jumps.h"
 #include "definitions.h"
+#include "completion.h"
 
 namespace KateVi
 {
 class GlobalState;
 class Searcher;
+class CompletionRecorder;
+class CompletionReplayer;
 }
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -177,11 +180,7 @@ public:
     /**
      * clear the key event log
      */
-    void clearCurrentChangeLog()
-    {
-        m_currentChangeKeyEventsLog.clear();
-        m_currentChangeCompletionsLog.clear();
-    }
+    void clearCurrentChangeLog();
 
     /**
      * copy the contents of the key events log to m_lastChange so that it can be repeated
@@ -193,27 +192,14 @@ public:
      */
     void repeatLastChange();
 
-    class Completion
-    {
-    public:
-        enum CompletionType { PlainText, FunctionWithoutArgs, FunctionWithArgs };
-        Completion(const QString &completedText, bool removeTail, CompletionType completionType);
-        QString completedText() const;
-        bool removeTail() const;
-        CompletionType completionType() const;
-    private:
-        QString m_completedText;
-        bool m_removeTail;
-        CompletionType m_completionType;
-    };
     void startRecordingMacro(QChar macroRegister);
     void finishRecordingMacro();
     bool isRecordingMacro();
     void replayMacro(QChar macroRegister);
     bool isReplayingMacro();
-    void logCompletionEvent(const Completion &completion);
-    Completion nextLoggedCompletion();
     void doNotLogCurrentKeypress();
+    void appendToMacroKeyEventsLog(const QKeyEvent& event);
+    void appendToChangeKeyEventsLog(const QKeyEvent& event);
 
     bool getTemporaryNormalMode()
     {
@@ -231,6 +217,9 @@ public:
     inline KateVi::Jumps *jumps() { return m_jumps; }
 
     inline KateVi::Searcher *searcher() { return m_searcher; }
+
+    KateVi::CompletionRecorder *completionRecorder() { return m_completionRecorder; }
+    KateVi::CompletionReplayer *completionReplayer() { return m_completionReplayer; }
 
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
@@ -279,29 +268,18 @@ private:
     int m_macrosBeingReplayedCount;
     QChar m_lastPlayedMacroRegister;
 
-    QList<Completion> m_currentMacroCompletionsLog;
-
-    /**
-     * Stuff for retrieving the next completion for the macro.
-     * Needs to be on a stack for if macros call other macros
-     * which have their own stored completions.
-     */
-    QStack<QList<Completion> > m_macroCompletionsToReplay;
-    QStack< int > m_nextLoggedMacroCompletionIndex;
-
     /**
      * a continually updated list of the key events that was part of the last change.
      * updated until copied to m_lastChange when the change is completed.
      */
     QList<QKeyEvent> m_currentChangeKeyEventsLog;
-    QList<Completion> m_currentChangeCompletionsLog;
-    QList<Completion> m_lastChangeCompletionsLog;
-    int m_nextLoggedLastChangeComplexIndex;
 
     /**
      * a list of the (encoded) key events that was part of the last change.
      */
     QString m_lastChange;
+
+    KateVi::CompletionList m_lastChangeCompletionsLog;
 
     /**
      * true when normal mode was started by Ctrl-O command in insert mode.
@@ -312,6 +290,8 @@ private:
     KateVi::Jumps *m_jumps;
 
     KateVi::Searcher *m_searcher;
+    KateVi::CompletionRecorder *m_completionRecorder;
+    KateVi::CompletionReplayer *m_completionReplayer;
 };
 
 #endif

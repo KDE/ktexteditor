@@ -45,7 +45,7 @@ void Macros::writeConfig(KConfigGroup &config) const
     QStringList macroCompletions;
     foreach (const QChar &macroRegister, m_macros.keys()) {
         macroCompletions.append(QString::number(m_completions[macroRegister].length()));
-        foreach (KateViInputModeManager::Completion completionForMacro, m_completions[macroRegister]) {
+        foreach (Completion completionForMacro, m_completions[macroRegister]) {
             macroCompletions.append(encodeMacroCompletionForConfig(completionForMacro));
         }
     }
@@ -79,7 +79,7 @@ void Macros::remove(const QChar &reg)
     m_macros.remove(reg);
 }
 
-void Macros::store(const QChar &reg, const QList<QKeyEvent> &macroKeyEventLog, const QList<KateViInputModeManager::Completion> &completions)
+void Macros::store(const QChar &reg, const QList<QKeyEvent> &macroKeyEventLog, const CompletionList &completions)
 {
     m_macros[reg].clear();
     QList<QKeyEvent> withoutClosingQ = macroKeyEventLog;
@@ -97,9 +97,9 @@ QString Macros::get(const QChar &reg) const
     return m_macros.contains(reg) ? m_macros[reg] : QString();
 }
 
-QList<KateViInputModeManager::Completion> Macros::getCompletions(const QChar &reg) const
+CompletionList Macros::getCompletions(const QChar &reg) const
 {
-    return m_completions.contains(reg) ? m_completions[reg] : QList<KateViInputModeManager::Completion>();
+    return m_completions.contains(reg) ? m_completions[reg] : CompletionList();
 }
 
 int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMacroCompletions, int macroCompletionsIndex)
@@ -120,13 +120,13 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
     return macroCompletionsIndex;
 }
 
-QString Macros::encodeMacroCompletionForConfig(const KateViInputModeManager::Completion &completionForMacro) const
+QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro) const
 {
     const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1String(";"));
     QString encodedMacroCompletion = completionForMacro.completedText().remove(QLatin1String("()")).remove(QLatin1String(";"));
-    if (completionForMacro.completionType() == KateViInputModeManager::Completion::FunctionWithArgs) {
+    if (completionForMacro.completionType() == Completion::FunctionWithArgs) {
         encodedMacroCompletion += QLatin1String("(...)");
-    } else if (completionForMacro.completionType() == KateViInputModeManager::Completion::FunctionWithoutArgs) {
+    } else if (completionForMacro.completionType() == Completion::FunctionWithoutArgs) {
         encodedMacroCompletion += QLatin1String("()");
     }
     if (endedWithSemiColon) {
@@ -138,19 +138,19 @@ QString Macros::encodeMacroCompletionForConfig(const KateViInputModeManager::Com
     return encodedMacroCompletion;
 }
 
-KateViInputModeManager::Completion Macros::decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion)
+Completion Macros::decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion)
 {
     const bool removeTail = encodedMacroCompletion.endsWith(QLatin1String("|"));
-    KateViInputModeManager::Completion::CompletionType completionType = KateViInputModeManager::Completion::PlainText;
+    Completion::CompletionType completionType = Completion::PlainText;
     if (encodedMacroCompletion.contains(QLatin1String("(...)"))) {
-        completionType = KateViInputModeManager::Completion::FunctionWithArgs;
+        completionType = Completion::FunctionWithArgs;
     } else if (encodedMacroCompletion.contains(QLatin1String("()"))) {
-        completionType = KateViInputModeManager::Completion::FunctionWithoutArgs;
+        completionType = Completion::FunctionWithoutArgs;
     }
     QString completionText = encodedMacroCompletion;
     completionText.replace(QLatin1String("(...)"), QLatin1String("()")).remove(QLatin1String("|"));
 
     qCDebug(LOG_PART) << "Loaded completion: " << completionText << " , " << removeTail << " , " << completionType;
 
-    return KateViInputModeManager::Completion(completionText, removeTail, completionType);
+    return Completion(completionText, removeTail, completionType);
 }

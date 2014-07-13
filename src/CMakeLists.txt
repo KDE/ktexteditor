@@ -251,6 +251,9 @@ if (BUILD_VIMODE)
     vimode/mappings.cpp
     vimode/registers.cpp
     vimode/searcher.cpp
+    vimode/completion.cpp
+    vimode/completionrecorder.cpp
+    vimode/completionreplayer.cpp
   )
 endif()
 

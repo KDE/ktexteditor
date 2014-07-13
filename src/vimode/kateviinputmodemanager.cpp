@@ -47,6 +47,8 @@
 #include "macros.h"
 #include "registers.h"
 #include "searcher.h"
+#include "completionrecorder.h"
+#include "completionreplayer.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -84,6 +86,8 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
     m_marks = new KateVi::Marks(this);
 
     m_searcher = new KateVi::Searcher(this);
+    m_completionRecorder = new KateVi::CompletionRecorder(this);
+    m_completionReplayer = new KateVi::CompletionReplayer(this);
 
     // We have to do this outside of KateViNormalMode, as we don't want
     // KateViVisualMode (which inherits from KateViNormalMode) to respond
@@ -99,6 +103,8 @@ KateViInputModeManager::~KateViInputModeManager()
     delete m_viReplaceMode;
     delete m_jumps;
     delete m_marks;
+    delete m_completionRecorder;
+    delete m_completionReplayer;
 }
 
 bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
@@ -284,14 +290,16 @@ void KateViInputModeManager::storeLastChangeCommand()
 
         m_lastChange.append(key);
     }
-    m_lastChangeCompletionsLog = m_currentChangeCompletionsLog;
+
+    m_lastChangeCompletionsLog = m_completionRecorder->currentChangeCompletionsLog();
 }
 
 void KateViInputModeManager::repeatLastChange()
 {
     m_isReplayingLastChange = true;
-    m_nextLoggedLastChangeComplexIndex = 0;
+    m_completionReplayer->start(m_lastChangeCompletionsLog);
     feedKeyPresses(m_lastChange);
+    m_completionReplayer->stop();
     m_isReplayingLastChange = false;
 }
 
@@ -303,14 +311,15 @@ void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
     m_recordingMacroRegister = macroRegister;
     m_inputAdapter->globalState()->macros()->remove(macroRegister);
     m_currentMacroKeyEventsLog.clear();
-    m_currentMacroCompletionsLog.clear();
+    m_completionRecorder->start();
 }
 
 void KateViInputModeManager::finishRecordingMacro()
 {
     Q_ASSERT(m_isRecordingMacro);
     m_isRecordingMacro = false;
-    m_inputAdapter->globalState()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, m_currentMacroCompletionsLog);
+    KateVi::CompletionList completions = m_completionRecorder->stop();
+    m_inputAdapter->globalState()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, completions);
 }
 
 bool KateViInputModeManager::isRecordingMacro()
@@ -329,51 +338,24 @@ void KateViInputModeManager::replayMacro(QChar macroRegister)
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     m_macrosBeingReplayedCount++;
-    m_nextLoggedMacroCompletionIndex.push(0);
-    m_macroCompletionsToReplay.push(m_inputAdapter->globalState()->macros()->getCompletions(macroRegister));
+    m_completionReplayer->start(m_inputAdapter->globalState()->macros()->getCompletions(macroRegister));
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
     feedKeyPresses(macroAsFeedableKeypresses);
     m_keyMapperStack.pop();
-    m_macroCompletionsToReplay.pop();
-    m_nextLoggedMacroCompletionIndex.pop();
+    m_completionReplayer->stop();
     m_macrosBeingReplayedCount--;
     qCDebug(LOG_PART) << "Finished replaying: " << macroRegister;
+}
+
+void KateViInputModeManager::clearCurrentChangeLog()
+{
+    m_currentChangeKeyEventsLog.clear();
+    m_completionRecorder->clearCurrentChangeCompletionsLog();
 }
 
 bool KateViInputModeManager::isReplayingMacro()
 {
     return m_macrosBeingReplayedCount > 0;
-}
-
-void KateViInputModeManager::logCompletionEvent(const KateViInputModeManager::Completion &completion)
-{
-    // Ctrl-space is a special code that means: if you're replaying a macro, fetch and execute
-    // the next logged completion.
-    QKeyEvent ctrlSpace(QKeyEvent::KeyPress, Qt::Key_Space, Qt::ControlModifier, QLatin1String(" "));
-    if (isRecordingMacro()) {
-        m_currentMacroKeyEventsLog.append(ctrlSpace);
-        m_currentMacroCompletionsLog.append(completion);
-    }
-    m_currentChangeKeyEventsLog.append(ctrlSpace);
-    m_currentChangeCompletionsLog.append(completion);
-}
-
-KateViInputModeManager::Completion KateViInputModeManager::nextLoggedCompletion()
-{
-    Q_ASSERT(isReplayingLastChange() || isReplayingMacro());
-    if (isReplayingLastChange()) {
-        if (m_nextLoggedLastChangeComplexIndex >= m_lastChangeCompletionsLog.length()) {
-            qCDebug(LOG_PART) << "Something wrong here: requesting more completions for last change than we actually have.  Returning dummy.";
-            return Completion(QString(), false, Completion::PlainText);
-        }
-        return m_lastChangeCompletionsLog[m_nextLoggedLastChangeComplexIndex++];
-    } else {
-        if (m_nextLoggedMacroCompletionIndex.top() >= m_macroCompletionsToReplay.top().length()) {
-            qCDebug(LOG_PART) << "Something wrong here: requesting more completions for macro than we actually have.  Returning dummy.";
-            return Completion(QString(), false, Completion::PlainText);
-        }
-        return m_macroCompletionsToReplay.top()[m_nextLoggedMacroCompletionIndex.top()++];
-    }
 }
 
 void KateViInputModeManager::doNotLogCurrentKeypress()
@@ -570,29 +552,6 @@ KateViKeyMapper *KateViInputModeManager::keyMapper()
     return m_keyMapperStack.top().data();
 }
 
-KateViInputModeManager::Completion::Completion(const QString &completedText, bool removeTail, CompletionType completionType)
-    : m_completedText(completedText),
-      m_removeTail(removeTail),
-      m_completionType(completionType)
-{
-    if (m_completionType == FunctionWithArgs || m_completionType == FunctionWithoutArgs) {
-        qCDebug(LOG_PART) << "Completing a function while not removing tail currently unsupported; will remove tail instead";
-        m_removeTail = true;
-    }
-}
-QString KateViInputModeManager::Completion::completedText() const
-{
-    return m_completedText;
-}
-bool KateViInputModeManager::Completion::removeTail() const
-{
-    return m_removeTail;
-}
-KateViInputModeManager::Completion::CompletionType KateViInputModeManager::Completion::completionType() const
-{
-    return m_completionType;
-}
-
 void KateViInputModeManager::updateCursor(const Cursor &c)
 {
     m_inputAdapter->updateCursor(c);
@@ -616,4 +575,14 @@ void KateViInputModeManager::error(const QString &msg)
 void KateViInputModeManager::message(const QString &msg)
 {
     m_viNormalMode->message(msg);
+}
+
+void KateViInputModeManager::appendToMacroKeyEventsLog(const QKeyEvent &event)
+{
+    m_currentMacroKeyEventsLog.append(event);
+}
+
+void KateViInputModeManager::appendToChangeKeyEventsLog(const QKeyEvent &event)
+{
+    m_currentChangeKeyEventsLog.append(event);
 }
