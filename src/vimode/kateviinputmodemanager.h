@@ -40,6 +40,7 @@ class CompletionRecorder;
 class CompletionReplayer;
 class Marks;
 class Jumps;
+class MacroRecorder;
 }
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -188,13 +189,7 @@ public:
      */
     void repeatLastChange();
 
-    void startRecordingMacro(QChar macroRegister);
-    void finishRecordingMacro();
-    bool isRecordingMacro();
-    void replayMacro(QChar macroRegister);
-    bool isReplayingMacro();
     void doNotLogCurrentKeypress();
-    void appendToMacroKeyEventsLog(const QKeyEvent& event);
     void appendToChangeKeyEventsLog(const QKeyEvent& event);
 
     bool getTemporaryNormalMode()
@@ -217,6 +212,8 @@ public:
     KateVi::CompletionRecorder *completionRecorder() { return m_completionRecorder; }
     KateVi::CompletionReplayer *completionReplayer() { return m_completionReplayer; }
 
+    KateVi::MacroRecorder *macroRecorder() { return m_macroRecorder; }
+
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
     void writeSessionConfig(KConfigGroup &config);
@@ -228,6 +225,9 @@ public:
     KateViInputMode *inputAdapter() { return m_inputAdapter; }
 
     void updateCursor(const KTextEditor::Cursor &c);
+
+    void pushKeyMapper(QSharedPointer<KateViKeyMapper> mapper);
+    void popKeyMapper();
 
 private:
     KateViNormalMode *m_viNormalMode;
@@ -254,14 +254,6 @@ private:
      */
     bool m_isReplayingLastChange;
 
-    bool m_isRecordingMacro;
-
-    QChar m_recordingMacroRegister;
-    QList<QKeyEvent> m_currentMacroKeyEventsLog;
-
-    int m_macrosBeingReplayedCount;
-    QChar m_lastPlayedMacroRegister;
-
     /**
      * a continually updated list of the key events that was part of the last change.
      * updated until copied to m_lastChange when the change is completed.
@@ -286,6 +278,8 @@ private:
     KateVi::Searcher *m_searcher;
     KateVi::CompletionRecorder *m_completionRecorder;
     KateVi::CompletionReplayer *m_completionReplayer;
+
+    KateVi::MacroRecorder *m_macroRecorder;
 };
 
 #endif

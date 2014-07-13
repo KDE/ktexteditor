@@ -21,6 +21,7 @@
 #include "completionrecorder.h"
 #include "kateviinputmodemanager.h"
 #include "katepartdebug.h"
+#include "macrorecorder.h"
 
 #include <QKeyEvent>
 
@@ -43,8 +44,8 @@ CompletionRecorder::~CompletionRecorder()
 
 void CompletionRecorder::logCompletionEvent(const Completion &completion)
 {
-    if (m_viInputModeManager->isRecordingMacro()) {
-        m_viInputModeManager->appendToMacroKeyEventsLog(CompletionEvent);
+    if (m_viInputModeManager->macroRecorder()->isRecording()) {
+        m_viInputModeManager->macroRecorder()->record(CompletionEvent);
         m_currentMacroCompletionsLog.append(completion);
     }
 

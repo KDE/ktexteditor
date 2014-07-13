@@ -47,6 +47,7 @@
 #include "registers.h"
 #include "marks.h"
 #include "searcher.h"
+#include "macrorecorder.h"
 
 #include <QApplication>
 #include <QList>
@@ -170,10 +171,10 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
 
     m_keys.append(key);
 
-    if (m_viInputModeManager->isRecordingMacro() && key == QLatin1Char('q')) {
+    if (m_viInputModeManager->macroRecorder()->isRecording() && key == QLatin1Char('q')) {
         // Need to special case this "finish macro" q, as the "begin macro" q
         // needs a parameter whereas the finish macro does not.
-        m_viInputModeManager->finishRecordingMacro();
+        m_viInputModeManager->macroRecorder()->stop();
         resetParser();
         return true;
     }
@@ -1942,7 +1943,7 @@ bool KateViNormalMode::commandCollapseToplevelNodes()
 bool KateViNormalMode::commandStartRecordingMacro()
 {
     const QChar reg = m_keys[m_keys.size() - 1];
-    m_viInputModeManager->startRecordingMacro(reg);
+    m_viInputModeManager->macroRecorder()->start(reg);
     return true;
 }
 
@@ -1957,7 +1958,7 @@ bool KateViNormalMode::commandReplayMacro()
     resetParser();
     doc()->editBegin();
     for (unsigned int i = 0; i < count; i++) {
-        m_viInputModeManager->replayMacro(reg);
+        m_viInputModeManager->macroRecorder()->replay(reg);
     }
     doc()->editEnd();
     return true;

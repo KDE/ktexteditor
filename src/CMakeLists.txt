@@ -254,6 +254,7 @@ if (BUILD_VIMODE)
     vimode/completion.cpp
     vimode/completionrecorder.cpp
     vimode/completionreplayer.cpp
+    vimode/macrorecorder.cpp
   )
 endif()
 

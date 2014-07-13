@@ -25,6 +25,7 @@
 #include "vimode/katevivisualmode.h"
 #include "vimode/marks.h"
 #include "vimode/searcher.h"
+#include "vimode/macrorecorder.h"
 
 #include <KLocalizedString>
 
@@ -155,7 +156,7 @@ QString KateViInputMode::viewModeHuman() const
 {
     QString currentMode = viModeToString(m_viModeManager->getCurrentViMode());
 
-    if (m_viModeManager->isRecordingMacro()) {
+    if (m_viModeManager->macroRecorder()->isRecording()) {
         currentMode.prepend(QLatin1String("(") + i18n("recording") + QLatin1String(") "));
     }
 

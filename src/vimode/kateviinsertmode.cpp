@@ -34,6 +34,7 @@
 #include "completionrecorder.h"
 #include "completionreplayer.h"
 #include "marks.h"
+#include "macrorecorder.h"
 
 #include <KLocalizedString>
 
@@ -359,7 +360,7 @@ bool KateViInsertMode::handleKeypress(const QKeyEvent *e)
                 return true;
             case Qt::Key_Enter:
             case Qt::Key_Return:
-                if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->isReplayingMacro() && !m_viInputModeManager->isReplayingLastChange()) {
+                if (m_view->completionWidget()->isCompletionActive() && !m_viInputModeManager->macroRecorder()->isReplaying() && !m_viInputModeManager->isReplayingLastChange()) {
                     // Filter out Enter/ Return's that trigger a completion when recording macros/ last change stuff; they
                     // will be replaced with the special code "ctrl-space".
                     // (This is why there is a "!m_viInputModeManager->isReplayingMacro()" above.)
@@ -386,7 +387,7 @@ bool KateViInsertMode::handleKeypress(const QKeyEvent *e)
             case Qt::Key_Space:
                 // We use Ctrl-space as a special code in macros/ last change, which means: if replaying
                 // a macro/ last change, fetch and execute the next completion for this macro/ last change ...
-                if (!m_viInputModeManager->isReplayingMacro() && !m_viInputModeManager->isReplayingLastChange()) {
+                if (!m_viInputModeManager->macroRecorder()->isReplaying() && !m_viInputModeManager->isReplayingLastChange()) {
                     commandCompleteNext();
                     // ... therefore, we should not record ctrl-space indiscriminately.
                     m_viInputModeManager->doNotLogCurrentKeypress();
@@ -408,13 +409,13 @@ bool KateViInsertMode::handleKeypress(const QKeyEvent *e)
                 return true;
                 break;
             case Qt::Key_N:
-                if (!m_viInputModeManager->isReplayingMacro()) {
+                if (!m_viInputModeManager->macroRecorder()->isReplaying()) {
                     commandCompleteNext();
                 }
                 return true;
                 break;
             case Qt::Key_P:
-                if (!m_viInputModeManager->isReplayingMacro()) {
+                if (!m_viInputModeManager->macroRecorder()->isReplaying()) {
                     commandCompletePrevious();
                 }
                 return true;

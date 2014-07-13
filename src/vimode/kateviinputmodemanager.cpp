@@ -51,6 +51,7 @@
 #include "searcher.h"
 #include "completionrecorder.h"
 #include "completionreplayer.h"
+#include "macrorecorder.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -76,10 +77,6 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
 
     m_isReplayingLastChange = false;
 
-    m_isRecordingMacro = false;
-    m_macrosBeingReplayedCount = 0;
-    m_lastPlayedMacroRegister = QChar::Null;
-
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
 
     m_temporaryNormalMode = false;
@@ -90,6 +87,8 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
     m_searcher = new KateVi::Searcher(this);
     m_completionRecorder = new KateVi::CompletionRecorder(this);
     m_completionReplayer = new KateVi::CompletionReplayer(this);
+
+    m_macroRecorder = new KateVi::MacroRecorder(this);
 
     // We have to do this outside of KateViNormalMode, as we don't want
     // KateViVisualMode (which inherits from KateViNormalMode) to respond
@@ -105,6 +104,7 @@ KateViInputModeManager::~KateViInputModeManager()
     delete m_viReplaceMode;
     delete m_jumps;
     delete m_marks;
+    delete m_macroRecorder;
     delete m_completionRecorder;
     delete m_completionReplayer;
 }
@@ -120,9 +120,8 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
     // of a mapping, we don't want to record them when they are played back by m_keyMapper, hence
     // the "!isPlayingBackRejectedKeys()". And obviously, since we're recording keys before they are mapped, we don't
     // want to also record the executed mapping, as when we replayed the macro, we'd get duplication!
-    if (isRecordingMacro() && !isReplayingMacro() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping() && !keyMapper()->isPlayingBackRejectedKeys()) {
-        QKeyEvent copy(e->type(), e->key(), e->modifiers(), e->text());
-        m_currentMacroKeyEventsLog.append(copy);
+    if (m_macroRecorder->isRecording() && !m_macroRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping() && !keyMapper()->isPlayingBackRejectedKeys()) {
+        m_macroRecorder->record(*e);
     }
 
     if (!isReplayingLastChange() && !isSyntheticSearchCompletedKeyPress) {
@@ -305,67 +304,15 @@ void KateViInputModeManager::repeatLastChange()
     m_isReplayingLastChange = false;
 }
 
-void KateViInputModeManager::startRecordingMacro(QChar macroRegister)
-{
-    Q_ASSERT(!m_isRecordingMacro);
-    qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
-    m_isRecordingMacro = true;
-    m_recordingMacroRegister = macroRegister;
-    m_inputAdapter->globalState()->macros()->remove(macroRegister);
-    m_currentMacroKeyEventsLog.clear();
-    m_completionRecorder->start();
-}
-
-void KateViInputModeManager::finishRecordingMacro()
-{
-    Q_ASSERT(m_isRecordingMacro);
-    m_isRecordingMacro = false;
-    KateVi::CompletionList completions = m_completionRecorder->stop();
-    m_inputAdapter->globalState()->macros()->store(m_recordingMacroRegister, m_currentMacroKeyEventsLog, completions);
-}
-
-bool KateViInputModeManager::isRecordingMacro()
-{
-    return m_isRecordingMacro;
-}
-
-void KateViInputModeManager::replayMacro(QChar macroRegister)
-{
-    if (macroRegister == QLatin1Char('@')) {
-        macroRegister = m_lastPlayedMacroRegister;
-    }
-    m_lastPlayedMacroRegister = macroRegister;
-    qCDebug(LOG_PART) << "Replaying macro: " << macroRegister;
-    const QString macroAsFeedableKeypresses = m_inputAdapter->globalState()->macros()->get(macroRegister);
-    qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
-
-    m_macrosBeingReplayedCount++;
-    m_completionReplayer->start(m_inputAdapter->globalState()->macros()->getCompletions(macroRegister));
-    m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
-    feedKeyPresses(macroAsFeedableKeypresses);
-    m_keyMapperStack.pop();
-    m_completionReplayer->stop();
-    m_macrosBeingReplayedCount--;
-    qCDebug(LOG_PART) << "Finished replaying: " << macroRegister;
-}
-
 void KateViInputModeManager::clearCurrentChangeLog()
 {
     m_currentChangeKeyEventsLog.clear();
     m_completionRecorder->clearCurrentChangeCompletionsLog();
 }
 
-bool KateViInputModeManager::isReplayingMacro()
-{
-    return m_macrosBeingReplayedCount > 0;
-}
-
 void KateViInputModeManager::doNotLogCurrentKeypress()
 {
-    if (m_isRecordingMacro) {
-        Q_ASSERT(!m_currentMacroKeyEventsLog.isEmpty());
-        m_currentMacroKeyEventsLog.pop_back();
-    }
+    m_macroRecorder->dropLast();
     Q_ASSERT(!m_currentChangeKeyEventsLog.isEmpty());
     m_currentChangeKeyEventsLog.pop_back();
 }
@@ -569,12 +516,18 @@ KTextEditor::ViewPrivate *KateViInputModeManager::view() const
     return m_view;
 }
 
-void KateViInputModeManager::appendToMacroKeyEventsLog(const QKeyEvent &event)
-{
-    m_currentMacroKeyEventsLog.append(event);
-}
-
 void KateViInputModeManager::appendToChangeKeyEventsLog(const QKeyEvent &event)
 {
     m_currentChangeKeyEventsLog.append(event);
+}
+
+
+void KateViInputModeManager::pushKeyMapper(QSharedPointer<KateViKeyMapper> mapper)
+{
+    m_keyMapperStack.push(mapper);
+}
+
+void KateViInputModeManager::popKeyMapper()
+{
+    m_keyMapperStack.pop();
 }
