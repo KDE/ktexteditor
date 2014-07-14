@@ -56,6 +56,7 @@
 #include <QBoxLayout>
 #include <QApplication>
 #include <QClipboard>
+#include <QPushButton>
 
 Q_LOGGING_CATEGORY(LOG_PART, "katepart")
 
@@ -276,7 +277,7 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         QVBoxLayout *topLayout = new QVBoxLayout(page);
         topLayout->setMargin(0);
 
-        connect(kd, SIGNAL(applyClicked()), cp, SLOT(apply()));
+        connect(kd->button(QDialogButtonBox::Apply), SIGNAL(clicked()), cp, SLOT(apply()));
         topLayout->addWidget(cp);
         editorPages.append(cp);
     }
