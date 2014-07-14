@@ -38,6 +38,7 @@
 namespace KateVi
 {
 class GlobalState;
+class Searcher;
 }
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -192,16 +193,6 @@ public:
      */
     void repeatLastChange();
 
-    /**
-     * find next occurence of last search
-     */
-    void findNext();
-
-    /**
-     * find previous occurence of last search
-     */
-    void findPrevious();
-
     class Completion
     {
     public:
@@ -224,56 +215,6 @@ public:
     Completion nextLoggedCompletion();
     void doNotLogCurrentKeypress();
 
-    /**
-     * The current search pattern.
-     * This is set by the last search.
-     * @return the search pattern or the empty string if not set
-     */
-    const QString getLastSearchPattern() const;
-
-    /**
-     * Set the current search pattern.
-     * This is used by the "n" and "N" motions.
-     * @param p the search pattern
-     */
-    void setLastSearchPattern(const QString &p);
-
-    /**
-     * get search direction of last search. (true if backwards, false if forwards)
-     */
-    bool lastSearchBackwards() const
-    {
-        return m_lastSearchBackwards;
-    }
-
-    /**
-     * set search direction of last search. (true if backwards, false if forwards)
-     */
-    void setLastSearchBackwards(bool b)
-    {
-        m_lastSearchBackwards = b;
-    }
-
-    void setLastSearchCaseSensitive(bool caseSensitive)
-    {
-        m_lastSearchCaseSensitive = caseSensitive;
-    };
-
-    void setLastSearchPlacesCursorAtEndOfMatch(bool b)
-    {
-        m_lastSearchPlacedCursorAtEndOfMatch = b;
-    };
-
-    bool lastSearchCaseSensitive()
-    {
-        return m_lastSearchCaseSensitive;
-    };
-
-    bool lastSearchPlacesCursorAtEndOfMatch()
-    {
-        return m_lastSearchPlacedCursorAtEndOfMatch;
-    };
-
     bool getTemporaryNormalMode()
     {
         return m_temporaryNormalMode;
@@ -288,6 +229,8 @@ public:
 
     inline KateVi::Marks *marks() { return m_marks; }
     inline KateVi::Jumps *jumps() { return m_jumps; }
+
+    inline KateVi::Searcher *searcher() { return m_searcher; }
 
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
@@ -360,18 +303,6 @@ private:
      */
     QString m_lastChange;
 
-    QString m_lastSearchPattern;
-    /**
-     * keeps track of whether the last search was done backwards or not.
-     */
-    bool m_lastSearchBackwards;
-    /**
-     * keeps track of whether the last search was case-sensitive or not.
-     */
-    bool m_lastSearchCaseSensitive;
-
-    bool m_lastSearchPlacedCursorAtEndOfMatch;
-
     /**
      * true when normal mode was started by Ctrl-O command in insert mode.
      */
@@ -379,6 +310,8 @@ private:
 
     KateVi::Marks *m_marks;
     KateVi::Jumps *m_jumps;
+
+    KateVi::Searcher *m_searcher;
 };
 
 #endif

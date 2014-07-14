@@ -87,13 +87,11 @@ public:
     void error(const QString &errorMsg);
     void message(const QString &msg);
 
-    Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count = -1 /* i.e use getCount() */) const;
-
-    void findNext();
-    void findPrev();
-
     KateViRange motionFindNext();
     KateViRange motionFindPrev();
+
+    virtual void goToPos(const KateViRange &r);
+    unsigned int getCount() const;
 
 protected:
     // helper methods
@@ -104,7 +102,6 @@ protected:
     const QChar getCharUnderCursor() const;
     const QString getWordUnderCursor() const;
     const Range getWordRangeUnderCursor() const;
-    KateViRange findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count = 1) const;
     Cursor findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     Cursor findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     Cursor findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
@@ -125,7 +122,6 @@ protected:
 
     void addToNumberUnderCursor(int count);
 
-    virtual void goToPos(const KateViRange &r);
     KateViRange goLineUp();
     KateViRange goLineDown();
     KateViRange goLineUpDown(int lines);
@@ -133,14 +129,6 @@ protected:
 
     unsigned int linesDisplayed() const;
     void scrollViewLines(int l);
-
-    unsigned int getCount() const
-    {
-        if (m_oneTimeCountOverride != -1) {
-            return m_oneTimeCountOverride;
-        }
-        return (m_count > 0) ? m_count : 1;
-    }
 
     bool isCounted() const
     {

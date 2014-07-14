@@ -23,6 +23,7 @@
 #include "vimode/kateviemulatedcommandbar.h"
 #include "vimode/katevireplacemode.h"
 #include "vimode/katevivisualmode.h"
+#include "vimode/searcher.h"
 
 #include <KLocalizedString>
 
@@ -212,12 +213,12 @@ void KateViInputMode::find()
 
 void KateViInputMode::findSelectedForwards()
 {
-    m_viModeManager->findNext();
+    m_viModeManager->searcher()->findNext();
 }
 
 void KateViInputMode::findSelectedBackwards()
 {
-    m_viModeManager->findPrevious();
+    m_viModeManager->searcher()->findPrevious();
 }
 
 void KateViInputMode::findReplace()
@@ -228,12 +229,12 @@ void KateViInputMode::findReplace()
 
 void KateViInputMode::findNext()
 {
-    m_viModeManager->findNext();
+    m_viModeManager->searcher()->findNext();
 }
 
 void KateViInputMode::findPrevious()
 {
-    m_viModeManager->findPrevious();
+    m_viModeManager->searcher()->findPrevious();
 }
 
 void KateViInputMode::activateCommandLine()

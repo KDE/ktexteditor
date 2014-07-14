@@ -105,11 +105,6 @@ private:
     enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
     void setBarBackground(BarBackgroundStatus status);
 
-    QString m_currentSearchPattern;
-    bool m_currentSearchIsCaseSensitive;
-    bool m_currentSearchIsBackwards;
-    bool m_currentSearchPlacesCursorAtEndOfMatch;
-
     bool m_isSendingSyntheticSearchCompletedKeypress;
 
     virtual bool eventFilter(QObject *object, QEvent *event);
