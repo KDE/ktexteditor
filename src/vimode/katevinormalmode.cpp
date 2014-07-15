@@ -45,6 +45,7 @@
 #include <ktexteditor/attribute.h>
 #include "kateviinputmode.h"
 #include "registers.h"
+#include "marks.h"
 #include "searcher.h"
 
 #include <QApplication>

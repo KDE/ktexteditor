@@ -32,6 +32,7 @@
 #include "kateviinputmode.h"
 #include "kateviinputmodemanager.h"
 #include "globalstate.h"
+#include "marks.h"
 
 #include <KLocalizedString>
 

@@ -36,6 +36,8 @@
 #include "kateviewinternal.h"
 #include "katerenderer.h"
 #include "katepartdebug.h"
+#include "marks.h"
+#include "jumps.h"
 #include "registers.h"
 #include "searcher.h"
 

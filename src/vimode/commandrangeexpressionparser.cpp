@@ -25,6 +25,7 @@
 #include "kateview.h"
 #include "katedocument.h"
 #include "kateviinputmodemanager.h"
+#include "marks.h"
 
 #include <QStringList>
 #include <QRegularExpression>

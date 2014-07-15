@@ -24,15 +24,11 @@
 #define KATE_VI_INPUT_MODE_MANAGER_INCLUDED
 
 #include <QKeyEvent>
-#include <QList>
 #include <QStack>
 #include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
-#include <ktexteditor/markinterface.h>
 #include <ktexteditor/view.h>
 
-#include "marks.h"
-#include "jumps.h"
 #include "definitions.h"
 #include "completion.h"
 
@@ -42,6 +38,8 @@ class GlobalState;
 class Searcher;
 class CompletionRecorder;
 class CompletionReplayer;
+class Marks;
+class Jumps;
 }
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }

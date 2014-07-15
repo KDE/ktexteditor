@@ -44,6 +44,8 @@
 #include "kateviemulatedcommandbar.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
+#include "marks.h"
+#include "jumps.h"
 #include "macros.h"
 #include "registers.h"
 #include "searcher.h"

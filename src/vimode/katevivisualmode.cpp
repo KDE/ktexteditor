@@ -28,6 +28,7 @@
 #include "katevirange.h"
 #include "katedocument.h"
 #include "kateviinputmode.h"
+#include "marks.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Range;

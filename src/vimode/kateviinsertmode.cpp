@@ -33,6 +33,7 @@
 #include "kateviinputmode.h"
 #include "completionrecorder.h"
 #include "completionreplayer.h"
+#include "marks.h"
 
 #include <KLocalizedString>
 
