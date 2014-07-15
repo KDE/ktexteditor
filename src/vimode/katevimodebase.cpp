@@ -40,6 +40,7 @@
 #include "jumps.h"
 #include "registers.h"
 #include "searcher.h"
+#include "lastchangerecorder.h"
 
 #include <QString>
 #include <KLocalizedString>
@@ -1043,7 +1044,7 @@ bool KateViModeBase::startNormalMode()
      * '.' command
      * - ignore transition from Visual Modes
      */
-    if (!(m_viInputModeManager->isAnyVisualMode() || m_viInputModeManager->isReplayingLastChange())) {
+    if (!(m_viInputModeManager->isAnyVisualMode() || m_viInputModeManager->lastChangeRecorder()->isReplaying())) {
         m_viInputModeManager->storeLastChangeCommand();
         m_viInputModeManager->clearCurrentChangeLog();
     }

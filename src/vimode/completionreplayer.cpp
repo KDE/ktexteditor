@@ -25,6 +25,7 @@
 #include "katedocument.h"
 #include "completionrecorder.h"
 #include "macrorecorder.h"
+#include "lastchangerecorder.h"
 
 #include <QKeyEvent>
 
@@ -117,7 +118,7 @@ void CompletionReplayer::replay()
         m_view->setCursorPosition(Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + offsetFinalCursorPosBy));
     }
 
-    if (!m_viInputModeManager->isReplayingLastChange()) {
+    if (!m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
         Q_ASSERT(m_viInputModeManager->macroRecorder()->isReplaying());
         // Post the completion back: it needs to be added to the "last change" list ...
         m_viInputModeManager->completionRecorder()->logCompletionEvent(completion);
@@ -130,7 +131,7 @@ void CompletionReplayer::replay()
 
 Completion CompletionReplayer::nextCompletion()
 {
-    Q_ASSERT(m_viInputModeManager->isReplayingLastChange() || m_viInputModeManager->macroRecorder()->isReplaying());
+    Q_ASSERT(m_viInputModeManager->lastChangeRecorder()->isReplaying() || m_viInputModeManager->macroRecorder()->isReplaying());
 
     if (m_nextCompletionIndex.top() >= m_CompletionsToReplay.top().length()) {
         qCDebug(LOG_PART) << "Something wrong here: requesting more completions for macro than we actually have.  Returning dummy.";

@@ -41,6 +41,7 @@ class CompletionReplayer;
 class Marks;
 class Jumps;
 class MacroRecorder;
+class LastChangeRecorder;
 }
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -162,14 +163,6 @@ public:
     KateViReplaceMode *getViReplaceMode();
 
     /**
-     * @return true if running replaying the last change due to pressing "."
-     */
-    bool isReplayingLastChange() const
-    {
-        return m_isReplayingLastChange;
-    }
-
-    /**
      * append a QKeyEvent to the key event log
      */
     void appendKeyEventToLog(const QKeyEvent &e);
@@ -190,7 +183,6 @@ public:
     void repeatLastChange();
 
     void doNotLogCurrentKeypress();
-    void appendToChangeKeyEventsLog(const QKeyEvent& event);
 
     bool getTemporaryNormalMode()
     {
@@ -213,6 +205,8 @@ public:
     KateVi::CompletionReplayer *completionReplayer() { return m_completionReplayer; }
 
     KateVi::MacroRecorder *macroRecorder() { return m_macroRecorder; }
+
+    KateVi::LastChangeRecorder *lastChangeRecorder() { return m_lastChangeRecorder; }
 
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
@@ -250,17 +244,6 @@ private:
     int m_insideHandlingKeyPressCount;
 
     /**
-     * set to true when replaying the last change (due to e.g. pressing ".")
-     */
-    bool m_isReplayingLastChange;
-
-    /**
-     * a continually updated list of the key events that was part of the last change.
-     * updated until copied to m_lastChange when the change is completed.
-     */
-    QList<QKeyEvent> m_currentChangeKeyEventsLog;
-
-    /**
      * a list of the (encoded) key events that was part of the last change.
      */
     QString m_lastChange;
@@ -280,6 +263,8 @@ private:
     KateVi::CompletionReplayer *m_completionReplayer;
 
     KateVi::MacroRecorder *m_macroRecorder;
+
+    KateVi::LastChangeRecorder *m_lastChangeRecorder;
 };
 
 #endif

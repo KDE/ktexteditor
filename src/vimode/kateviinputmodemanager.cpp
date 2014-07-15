@@ -52,6 +52,7 @@
 #include "completionrecorder.h"
 #include "completionreplayer.h"
 #include "macrorecorder.h"
+#include "lastchangerecorder.h"
 
 using KTextEditor::Cursor;
 using KTextEditor::Document;
@@ -75,8 +76,6 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
 
     m_insideHandlingKeyPressCount = 0;
 
-    m_isReplayingLastChange = false;
-
     m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
 
     m_temporaryNormalMode = false;
@@ -89,6 +88,8 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
     m_completionReplayer = new KateVi::CompletionReplayer(this);
 
     m_macroRecorder = new KateVi::MacroRecorder(this);
+
+    m_lastChangeRecorder = new KateVi::LastChangeRecorder(this);
 
     // We have to do this outside of KateViNormalMode, as we don't want
     // KateViVisualMode (which inherits from KateViNormalMode) to respond
@@ -107,6 +108,7 @@ KateViInputModeManager::~KateViInputModeManager()
     delete m_macroRecorder;
     delete m_completionRecorder;
     delete m_completionReplayer;
+    delete m_lastChangeRecorder;
 }
 
 bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
@@ -124,7 +126,7 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
         m_macroRecorder->record(*e);
     }
 
-    if (!isReplayingLastChange() && !isSyntheticSearchCompletedKeyPress) {
+    if (!m_lastChangeRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress) {
         if (e->key() == Qt::Key_AltGr) {
             return true; // do nothing
         }
@@ -140,10 +142,9 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
     }
 
     if (!keyIsPartOfMapping) {
-        if (!isReplayingLastChange() && !isSyntheticSearchCompletedKeyPress) {
+        if (!m_lastChangeRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress) {
             // record key press so that it can be repeated via "."
-            QKeyEvent copy(e->type(), e->key(), e->modifiers(), e->text());
-            appendKeyEventToLog(copy);
+            m_lastChangeRecorder->record(*e);
         }
 
         if (m_inputAdapter->viModeEmulatedCommandBar()->isActive()) {
@@ -250,71 +251,27 @@ bool KateViInputModeManager::isHandlingKeypress() const
     return m_insideHandlingKeyPressCount > 0;
 }
 
-void KateViInputModeManager::appendKeyEventToLog(const QKeyEvent &e)
-{
-    if (e.key() != Qt::Key_Shift && e.key() != Qt::Key_Control
-            && e.key() != Qt::Key_Meta && e.key() != Qt::Key_Alt) {
-        m_currentChangeKeyEventsLog.append(e);
-    }
-}
-
 void KateViInputModeManager::storeLastChangeCommand()
 {
-    m_lastChange.clear();
-
-    QList<QKeyEvent> keyLog = m_currentChangeKeyEventsLog;
-
-    for (int i = 0; i < keyLog.size(); i++) {
-        int keyCode = keyLog.at(i).key();
-        QString text = keyLog.at(i).text();
-        int mods = keyLog.at(i).modifiers();
-        QChar key;
-
-        if (text.length() > 0) {
-            key = text.at(0);
-        }
-
-        if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20)
-                || (mods != Qt::NoModifier && mods != Qt::ShiftModifier)) {
-            QString keyPress;
-
-            keyPress.append(QLatin1Char('<'));
-            keyPress.append((mods & Qt::ShiftModifier)   ? QLatin1String("s-") : QString());
-            keyPress.append((mods & Qt::ControlModifier) ? QLatin1String("c-") : QString());
-            keyPress.append((mods & Qt::AltModifier)     ? QLatin1String("a-") : QString());
-            keyPress.append((mods & Qt::MetaModifier)    ? QLatin1String("m-") : QString());
-            keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : KateViKeyParser::self()->qt2vi(keyCode));
-            keyPress.append(QLatin1Char('>'));
-
-            key = KateViKeyParser::self()->encodeKeySequence(keyPress).at(0);
-        }
-
-        m_lastChange.append(key);
-    }
-
+    m_lastChange = m_lastChangeRecorder->encodedChanges();
     m_lastChangeCompletionsLog = m_completionRecorder->currentChangeCompletionsLog();
 }
 
 void KateViInputModeManager::repeatLastChange()
 {
-    m_isReplayingLastChange = true;
-    m_completionReplayer->start(m_lastChangeCompletionsLog);
-    feedKeyPresses(m_lastChange);
-    m_completionReplayer->stop();
-    m_isReplayingLastChange = false;
+    m_lastChangeRecorder->replay(m_lastChange, m_lastChangeCompletionsLog);
 }
 
 void KateViInputModeManager::clearCurrentChangeLog()
 {
-    m_currentChangeKeyEventsLog.clear();
+    m_lastChangeRecorder->clear();
     m_completionRecorder->clearCurrentChangeCompletionsLog();
 }
 
 void KateViInputModeManager::doNotLogCurrentKeypress()
 {
     m_macroRecorder->dropLast();
-    Q_ASSERT(!m_currentChangeKeyEventsLog.isEmpty());
-    m_currentChangeKeyEventsLog.pop_back();
+    m_lastChangeRecorder->dropLast();
 }
 
 void KateViInputModeManager::changeViMode(ViMode newMode)
@@ -380,7 +337,7 @@ void KateViInputModeManager::viEnterNormalMode()
     bool moveCursorLeft = (m_currentViMode == InsertMode || m_currentViMode == ReplaceMode)
                           && m_viewInternal->getCursor().column() > 0;
 
-    if (!isReplayingLastChange() && m_currentViMode == InsertMode) {
+    if (!m_lastChangeRecorder->isReplaying() && m_currentViMode == InsertMode) {
         // '^ is the insert mark and "^ is the insert register,
         // which holds the last inserted text
         Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
@@ -409,7 +366,7 @@ void KateViInputModeManager::viEnterInsertMode()
     if (getTemporaryNormalMode()) {
         // Ensure the key log contains a request to re-enter Insert mode, else the keystrokes made
         // after returning from temporary normal mode will be treated as commands!
-        m_currentChangeKeyEventsLog.append(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QLatin1String("i")));
+        m_lastChangeRecorder->record(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QLatin1String("i")));
     }
     m_inputAdapter->setCaretStyle(KateRenderer::Line);
     setTemporaryNormalMode(false);
@@ -514,11 +471,6 @@ KateVi::GlobalState *KateViInputModeManager::globalState() const
 KTextEditor::ViewPrivate *KateViInputModeManager::view() const
 {
     return m_view;
-}
-
-void KateViInputModeManager::appendToChangeKeyEventsLog(const QKeyEvent &event)
-{
-    m_currentChangeKeyEventsLog.append(event);
 }
 
 

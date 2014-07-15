@@ -48,6 +48,7 @@
 #include "marks.h"
 #include "searcher.h"
 #include "macrorecorder.h"
+#include "lastchangerecorder.h"
 
 #include <QApplication>
 #include <QList>
@@ -517,7 +518,7 @@ void KateViNormalMode::executeCommand(const KateViCommand *cmd)
     // if the command was a change, and it didn't enter insert mode, store the key presses so that
     // they can be repeated with '.'
     if (m_viInputModeManager->getCurrentViMode() != InsertMode) {
-        if (cmd->isChange() && !m_viInputModeManager->isReplayingLastChange()) {
+        if (cmd->isChange() && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
             m_viInputModeManager->storeLastChangeCommand();
         }
 

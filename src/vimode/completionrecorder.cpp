@@ -22,6 +22,7 @@
 #include "kateviinputmodemanager.h"
 #include "katepartdebug.h"
 #include "macrorecorder.h"
+#include "lastchangerecorder.h"
 
 #include <QKeyEvent>
 
@@ -49,7 +50,7 @@ void CompletionRecorder::logCompletionEvent(const Completion &completion)
         m_currentMacroCompletionsLog.append(completion);
     }
 
-    m_viInputModeManager->appendToChangeKeyEventsLog(CompletionEvent);
+    m_viInputModeManager->lastChangeRecorder()->record(CompletionEvent);
     m_currentChangeCompletionsLog.append(completion);
 }
 
