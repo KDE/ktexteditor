@@ -1295,9 +1295,6 @@ void ModesTest::VisualCommandsTests()
     DoTest("foo bar xyz", "yiwwviwpu", "foo bar xyz");
     DoTest("foo\nbar\n123\nxyz", "yiwjVjp", "foo\nfoo\nxyz");
 
-    // Regression test for bug 309191
-    DoTest("foo bar", "vedud", " bar");
-
     // Set the *whole* selection to the given text object, even if the cursor is no
     // longer at the position where Visual Mode was started.
     // This seems to work (in Vim) only when the start of the given text object occurs before them
@@ -1352,13 +1349,27 @@ void ModesTest::VisualExternalTests()
     TestPressKey("d");
     FinishTest("fbar");
 
-    // Undoing a command that we executed in Visual Mode should also return
-    // us to Visual Mode.
-    BeginTest("foo bar");
-    TestPressKey("lvllldu");
-    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), VisualMode);
-    QCOMPARE(kate_view->selectionText(), QString("oo b"));
-    FinishTest("foo bar");
+    // Always return to normal mode when undoing/redoing.
+    BeginTest("");
+    TestPressKey("iHello World!\\esc");
+    TestPressKey("0wvlldu");
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    QCOMPARE(kate_view->selectionText(), QString(""));
+    QCOMPARE(kate_document->text(), QString("Hello World!"));
+    TestPressKey("u");
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    QCOMPARE(kate_document->text(), QString(""));
+    TestPressKey("\\ctrl-r");
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    FinishTest("Hello World!");
+
+    // Make sure that we don't screw up selection after an undo.
+    BeginTest("Hola\nHola\nHello\nHallo\n");
+    TestPressKey("jVjduVk");
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), VisualLineMode);
+    QCOMPARE(kate_view->selectionText(), QString("Hola\nHello"));
+    FinishTest("Hola\nHola\nHello\nHallo\n");
+
 
     // Test that, if kate_view has a selection before the Vi mode stuff is loaded, then we
     // end up in Visual Mode: this mimics what happens if we click on a Find result in

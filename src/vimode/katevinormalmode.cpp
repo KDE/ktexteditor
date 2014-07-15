@@ -1496,6 +1496,11 @@ bool KateViNormalMode::commandUndo()
         doc()->undo();
         if (mapped)
             doc()->editBegin();
+        if (m_viInputModeManager->isAnyVisualMode()) {
+            m_viInputModeManager->getViVisualMode()->setStart(Cursor(-1, -1));
+            m_view->clearSelection();
+            startNormalMode();
+        }
         return true;
     }
     return false;
@@ -1511,6 +1516,11 @@ bool KateViNormalMode::commandRedo()
         doc()->redo();
         if (mapped)
             doc()->editBegin();
+        if (m_viInputModeManager->isAnyVisualMode()) {
+            m_viInputModeManager->getViVisualMode()->setStart(Cursor(-1, -1));
+            m_view->clearSelection();
+            startNormalMode();
+        }
         return true;
     }
     return false;
