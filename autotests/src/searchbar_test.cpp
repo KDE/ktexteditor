@@ -601,6 +601,7 @@ void SearchBarTest::testReplaceInBlockMode()
 {
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
+    view.setInputMode(View::NormalInputMode);
     KateViewConfig config(&view);
 
     doc.setText("111\n111");

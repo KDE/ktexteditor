@@ -1376,6 +1376,7 @@ void ModesTest::VisualExternalTests()
     // KDevelop's "grepview" plugin.
     delete kate_view;
     kate_view = new KTextEditor::ViewPrivate(kate_document, mainWindow);
+    kate_view->setInputMode(View::NormalInputMode);
     mainWindowLayout->addWidget(kate_view);
     kate_document->setText("foo bar");
     kate_view->setSelection(Range(Cursor(0, 1), Cursor(0, 4)));
