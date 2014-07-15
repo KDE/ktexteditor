@@ -228,8 +228,6 @@ public:
     KTextEditor::ViewPrivate *view() const;
 
     KateViInputMode *inputAdapter() { return m_inputAdapter; }
-    void message(const QString &msg);
-    void error(const QString &msg);
 
     void updateCursor(const KTextEditor::Cursor &c);
 

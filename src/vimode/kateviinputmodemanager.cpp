@@ -567,16 +567,6 @@ KTextEditor::ViewPrivate *KateViInputModeManager::view() const
     return m_view;
 }
 
-void KateViInputModeManager::error(const QString &msg)
-{
-    m_viNormalMode->error(msg);
-}
-
-void KateViInputModeManager::message(const QString &msg)
-{
-    m_viNormalMode->message(msg);
-}
-
 void KateViInputModeManager::appendToMacroKeyEventsLog(const QKeyEvent &event)
 {
     m_currentMacroKeyEventsLog.append(event);

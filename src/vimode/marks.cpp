@@ -20,6 +20,7 @@
 #include "kateview.h"
 #include "katedocument.h"
 #include "kateviinputmodemanager.h"
+#include "katevinormalmode.h"
 
 #include <KLocalizedString>
 
@@ -110,7 +111,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos, const bo
 
         // only show message for active view
         if (m_doc->activeView() == m_inputModeManager->view()) {
-            m_inputModeManager->message(i18n("Mark set: %1", mark));
+            m_inputModeManager->getViNormalMode()->message(i18n("Mark set: %1", mark));
         }
     }
 
@@ -156,7 +157,7 @@ void Marks::markChanged(KTextEditor::Document *doc,
         }
 
         if (!freeMarkerCharFound) {
-            m_inputModeManager->error(i18n("There are no more chars for the next bookmark."));
+            m_inputModeManager->getViNormalMode()->error(i18n("There are no more chars for the next bookmark."));
         }
     }
 }
