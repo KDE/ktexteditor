@@ -65,10 +65,8 @@ class MarkInterface;
 
 class KateViInputMode;
 
-class KTEXTEDITOR_EXPORT KateViInputModeManager : public QObject
+class KTEXTEDITOR_EXPORT KateViInputModeManager
 {
-    Q_OBJECT
-
     friend KateViInputMode;
 
 public:
