@@ -3556,13 +3556,18 @@ bool KateViewInternal::rangeAffectsView(const KTextEditor::Range &range, bool re
 QVariant KateViewInternal::inputMethodQuery(Qt::InputMethodQuery query) const
 {
     switch (query) {
-    case Qt::ImMicroFocus: {
+    case Qt::ImCursorRectangle: {
         // Cursor placement code is changed for Asian input method that
         // shows candidate window. This behavior is same as Qt/E 2.3.7
         // which supports Asian input methods. Asian input methods need
         // start point of IM selection text to place candidate window as
         // adjacent to the selection text.
-        return QRect(cursorToCoordinate(m_cursor, true, false), QSize(0, renderer()->lineHeight()));
+        //
+        // in Qt5, cursor rectangle is used as QRectF internally, and it
+        // will be checked by QRectF::isValid(), which will mark rectangle
+        // with width == 0 or height == 0 as invalid.
+        auto lineHeight = renderer()->lineHeight();
+        return QRect(cursorToCoordinate(m_cursor, true, false), QSize(1, lineHeight ? lineHeight : 1));
     }
 
     case Qt::ImFont:
