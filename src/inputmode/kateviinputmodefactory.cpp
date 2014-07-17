@@ -19,7 +19,7 @@
 #include "kateviinputmodefactory.h"
 #include "kateviinputmode.h"
 #include "vimode/globalstate.h"
-#include "vimode/kateviinputmodeconfigtab.h"
+#include <vimode/config/configtab.h>
 
 #include <KLocalizedString>
 #include <KConfig>
@@ -42,7 +42,7 @@ KateAbstractInputMode *KateViInputModeFactory::createInputMode(KateViewInternal 
 
 KateConfigPage *KateViInputModeFactory::createConfigPage(QWidget *parent)
 {
-    return new KateViInputModeConfigTab(parent, m_viGlobal->mappings());
+    return new KateVi::ConfigTab(parent, m_viGlobal->mappings());
 }
 
 KTextEditor::View::InputMode KateViInputModeFactory::inputMode()

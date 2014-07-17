@@ -16,37 +16,41 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_VI_INPUT_MODE_CONFIG_TAB_H__
-#define __KATE_VI_INPUT_MODE_CONFIG_TAB_H__
+#ifndef KATEVI_CONFIG_TAB_H
+#define KATEVI_CONFIG_TAB_H
 
-#include "kateconfigpage.h"
-#include "mappings.h"
+#include <dialogs/kateconfigpage.h>
+#include <vimode/mappings.h>
 
 class QTableWidget;
 
-namespace Ui { class ViInputModeConfigWidget; }
+namespace KateVi
+{
 
-class KateViInputModeConfigTab : public KateConfigPage
+namespace Ui { class ConfigWidget; }
+
+class ConfigTab : public KateConfigPage
 {
     Q_OBJECT
 
 public:
-    KateViInputModeConfigTab(QWidget *parent, KateVi::Mappings *mappings);
-    ~KateViInputModeConfigTab();
+    explicit ConfigTab(QWidget *parent, Mappings *mappings);
+    virtual ~ConfigTab();
+
     virtual QString name() const;
 
 protected:
-    Ui::ViInputModeConfigWidget *ui;
+    Ui::ConfigWidget *ui;
 
 private:
-    void applyTab(QTableWidget *mappingsTable, KateVi::Mappings::MappingMode mode);
-    void reloadTab(QTableWidget *mappingsTable, KateVi::Mappings::MappingMode mode);
+    void applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
+    void reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
 
 public Q_SLOTS:
     void apply();
     void reload();
-    void reset() {}
-    void defaults() {}
+    void reset();
+    void defaults();
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
@@ -55,7 +59,9 @@ private Q_SLOTS:
     void importNormalMappingRow();
 
 private:
-    KateVi::Mappings *m_mappings;
+    Mappings *m_mappings;
 };
 
-#endif
+}
+
+#endif /* KATEVI_CONFIG_TAB_H */

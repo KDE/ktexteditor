@@ -16,33 +16,31 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateviinputmodeconfigtab.h"
-#include "kateconfig.h"
-#include "katevikeyparser.h"
-#include "kateglobal.h"
-
-#include <KMessageBox>
-#include <KLocalizedString>
-
 #include <QFileDialog>
 #include <QTableWidgetItem>
 #include <QWhatsThis>
 
-#include "ui_viinputmodeconfigwidget.h"
+#include <KMessageBox>
+#include <KLocalizedString>
+
+#include <utils/kateconfig.h>
+#include <utils/kateglobal.h>
+#include <vimode/katevikeyparser.h>
+#include <vimode/config/configtab.h>
+#include "ui_configwidget.h"
 
 using namespace KateVi;
 
-KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateVi::Mappings *mappings)
+ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
     : KateConfigPage(parent)
     , m_mappings(mappings)
 {
-
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
     QVBoxLayout *layout = new QVBoxLayout;
     QWidget *newWidget = new QWidget(this);
 
-    ui = new Ui::ViInputModeConfigWidget();
+    ui = new Ui::ConfigWidget();
     ui->setupUi(newWidget);
 
     // Make the header take all the width in equal parts.
@@ -54,9 +52,8 @@ KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateVi::Mapp
     reload();
 
     //
-    // after initial reload, connect the stuff for the changed () signal
+    // after initial reload, connect the stuff for the changed() signal
     //
-
     connect(ui->chkViCommandsOverride, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkViRelLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->tblNormalModeMappings, SIGNAL(cellChanged(int,int)), this, SLOT(slotChanged()));
@@ -71,12 +68,12 @@ KateViInputModeConfigTab::KateViInputModeConfigTab(QWidget *parent, KateVi::Mapp
     setLayout(layout);
 }
 
-KateViInputModeConfigTab::~KateViInputModeConfigTab()
+ConfigTab::~ConfigTab()
 {
     delete ui;
 }
 
-void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
+void ConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
 {
     m_mappings->clear(mode);
 
@@ -94,9 +91,9 @@ void KateViInputModeConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::M
     }
 }
 
-void KateViInputModeConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
+void ConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
 {
-    QStringList l = m_mappings->getAll(mode);
+    const QStringList &l = m_mappings->getAll(mode);
     mappingsTable->setRowCount(l.size());
 
     int i = 0;
@@ -117,7 +114,7 @@ void KateViInputModeConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::
     }
 }
 
-void KateViInputModeConfigTab::apply()
+void ConfigTab::apply()
 {
     // nothing changed, no need to apply stuff
     if (!hasChanged()) {
@@ -139,7 +136,7 @@ void KateViInputModeConfigTab::apply()
     KateViewConfig::global()->configEnd();
 }
 
-void KateViInputModeConfigTab::reload()
+void ConfigTab::reload()
 {
     // General options.
     ui->chkViRelLineNumbers->setChecked( KateViewConfig::global()->viRelativeLineNumbers () );
@@ -151,12 +148,22 @@ void KateViInputModeConfigTab::reload()
     reloadTab(ui->tblVisualModeMappings, Mappings::VisualModeMapping);
 }
 
-void KateViInputModeConfigTab::showWhatsThis(const QString &text)
+void ConfigTab::reset()
+{
+    /* Do nothing. */
+}
+
+void ConfigTab::defaults()
+{
+    /* Do nothing. */
+}
+
+void ConfigTab::showWhatsThis(const QString &text)
 {
     QWhatsThis::showText(QCursor::pos(), text);
 }
 
-void KateViInputModeConfigTab::addMappingRow()
+void ConfigTab::addMappingRow()
 {
     // Pick the current widget.
     QTableWidget *mappingsTable = ui->tblNormalModeMappings;
@@ -177,7 +184,7 @@ void KateViInputModeConfigTab::addMappingRow()
     mappingsTable->editItem(mappingsTable->currentItem());
 }
 
-void KateViInputModeConfigTab::removeSelectedMappingRows()
+void ConfigTab::removeSelectedMappingRows()
 {
     // Pick the current widget.
     QTableWidget *mappingsTable = ui->tblNormalModeMappings;
@@ -196,9 +203,9 @@ void KateViInputModeConfigTab::removeSelectedMappingRows()
     }
 }
 
-void KateViInputModeConfigTab::importNormalMappingRow()
+void ConfigTab::importNormalMappingRow()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
+    const QString &fileName = QFileDialog::getOpenFileName(this);
 
     if (fileName.isEmpty()) {
         return;
@@ -228,7 +235,7 @@ void KateViInputModeConfigTab::importNormalMappingRow()
     }
 }
 
-QString KateViInputModeConfigTab::name() const
+QString ConfigTab::name() const
 {
     return i18n("Vi Input Mode");
 }

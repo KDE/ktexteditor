@@ -221,7 +221,7 @@ dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
 if (BUILD_VIMODE)
-  qt5_wrap_ui(ktexteditor_LIB_SRCS vimode/viinputmodeconfigwidget.ui)
+  qt5_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
   set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
     inputmode/kateviinputmode.cpp
     inputmode/kateviinputmodefactory.cpp
@@ -243,7 +243,7 @@ if (BUILD_VIMODE)
     vimode/kateviemulatedcommandbar.cpp
     vimode/commandrangeexpressionparser.cpp
     vimode/katevikeymapper.cpp
-    vimode/kateviinputmodeconfigtab.cpp
+    vimode/config/configtab.cpp
     vimode/marks.cpp
     vimode/jumps.cpp
     vimode/history.cpp
