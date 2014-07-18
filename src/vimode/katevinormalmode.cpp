@@ -120,7 +120,6 @@ KateViNormalMode::~KateViNormalMode()
 bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
 {
     const int keyCode = e->key();
-    const QString text = e->text();
 
     // ignore modifier keys alone
     if (keyCode == Qt::Key_Shift || keyCode == Qt::Key_Control
