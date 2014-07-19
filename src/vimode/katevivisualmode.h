@@ -28,7 +28,9 @@
 #include "katevinormalmode.h"
 #include "kateviinputmodemanager.h"
 
-class KateViRange;
+namespace KateVi {
+    class ViRange;
+}
 class KateViInputModeManager;
 
 class KateViVisualMode : public KateViNormalMode
@@ -100,7 +102,7 @@ private:
      * (i.e. move the cursor) while a text object may modify both the start and
      * the end.
      */
-    void goToPos(const KateViRange &r);
+    void goToPos(const KateVi::ViRange &r);
     ViMode m_mode;
     Cursor m_start;
     ViMode m_lastVisualMode; // used when reselecting a visual selection

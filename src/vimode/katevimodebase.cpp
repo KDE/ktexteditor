@@ -22,7 +22,7 @@
  */
 
 #include "katevimodebase.h"
-#include "katevirange.h"
+#include <vimode/range.h>
 #include "kateglobal.h"
 #include "kateviinputmode.h"
 #include "globalstate.h"
@@ -71,7 +71,7 @@ void KateViModeBase::yankToClipBoard(QChar chosen_register, QString text)
     }
 }
 
-bool KateViModeBase::deleteRange(KateViRange &r, OperationMode mode, bool addToRegister)
+bool KateViModeBase::deleteRange(KateVi::ViRange &r, OperationMode mode, bool addToRegister)
 {
     r.normalize();
     bool res = false;
@@ -101,7 +101,7 @@ bool KateViModeBase::deleteRange(KateViRange &r, OperationMode mode, bool addToR
     return res;
 }
 
-const QString KateViModeBase::getRange(KateViRange &r, OperationMode mode) const
+const QString KateViModeBase::getRange(KateVi::ViRange &r, OperationMode mode) const
 {
     r.normalize();
     QString s;
@@ -111,7 +111,7 @@ const QString KateViModeBase::getRange(KateViRange &r, OperationMode mode) const
         r.endColumn = getLine(r.endLine).length();
     }
 
-    if (r.motionType == ViMotion::InclusiveMotion) {
+    if (r.motionType == InclusiveMotion) {
         r.endColumn++;
     }
 
@@ -257,7 +257,6 @@ Cursor KateViModeBase::findNextWORDStart(int fromLine, int fromColumn, bool only
 {
     Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
-    KateViRange r(cursor.line(), cursor.column(), ViMotion::ExclusiveMotion);
 
     int l = fromLine;
     int c = fromColumn;
@@ -564,15 +563,15 @@ Cursor KateViModeBase::findWORDEnd(int fromLine, int fromColumn, bool onlyCurren
     return Cursor(l, c);
 }
 
-KateViRange innerRange(KateViRange range, bool inner)
+ViRange innerRange(KateVi::ViRange range, bool inner)
 {
-    KateViRange r = range;
+    ViRange r = range;
 
     if (inner) {
         const int columnDistance = qAbs(r.startColumn - r.endColumn);
         if ((r.startLine == r.endLine) && columnDistance == 1) {
             // Start and end are right next to each other; there is nothing inside them.
-            return KateViRange::invalid();
+            return ViRange::invalid();
         }
         r.startColumn++;
         r.endColumn--;
@@ -581,10 +580,10 @@ KateViRange innerRange(KateViRange range, bool inner)
     return r;
 }
 
-KateViRange KateViModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
+ViRange KateViModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
 {
     Cursor cursor(m_view->cursorPosition());
-    KateViRange r;
+    ViRange r;
     r.startLine = cursor.line();
     r.endLine = cursor.line();
 
@@ -633,20 +632,20 @@ KateViRange KateViModeBase::findSurroundingQuotes(const QChar &c, bool inner) co
         }
 
         // Nothing found - give up :)
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     r.startColumn = line.lastIndexOf(c, cursor.column());
     r.endColumn = line.indexOf(c, cursor.column());
 
     if (r.startColumn == -1 || r.endColumn == -1 || r.startColumn > r.endColumn) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     return innerRange(r, inner);
 }
 
-KateViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
+ViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
         const QChar &c2,
         bool inner,
         const QChar &nested1,
@@ -655,7 +654,7 @@ KateViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
 
     Cursor cursor(m_view->cursorPosition());
 
-    KateViRange r(cursor.line(), cursor.column(), ViMotion::InclusiveMotion);
+    ViRange r(cursor, InclusiveMotion);
 
     // Chars should not differs. For equal chars use findSurroundingQuotes.
     Q_ASSERT(c1 != c2);
@@ -703,7 +702,7 @@ KateViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
         }
 
         if (!should_break) {
-            return KateViRange::invalid();
+            return ViRange::invalid();
         }
 
         r.endColumn = column;
@@ -754,7 +753,7 @@ KateViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
         }
 
         if (!should_break) {
-            return KateViRange::invalid();
+            return ViRange::invalid();
         }
 
         r.startColumn = column;
@@ -765,7 +764,7 @@ KateViRange KateViModeBase::findSurroundingBrackets(const QChar &c1,
     return innerRange(r, inner);
 }
 
-KateViRange KateViModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner) const
+ViRange KateViModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner) const
 {
     Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
@@ -773,10 +772,10 @@ KateViRange KateViModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2
     int col1 = line.lastIndexOf(c1, cursor.column());
     int col2 = line.indexOf(c2, cursor.column());
 
-    KateViRange r(cursor.line(), col1, cursor.line(), col2, ViMotion::InclusiveMotion);
+    ViRange r(cursor.line(), col1, cursor.line(), col2, InclusiveMotion);
 
     if (col1 == -1 || col2 == -1 || col1 > col2) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     if (inner) {
@@ -864,12 +863,12 @@ KTextEditor::Cursor KateViModeBase::getPrevJump(KTextEditor::Cursor cursor) cons
     return m_viInputModeManager->jumps()->prev(cursor);
 }
 
-KateViRange KateViModeBase::goLineDown()
+ViRange KateViModeBase::goLineDown()
 {
     return goLineUpDown(getCount());
 }
 
-KateViRange KateViModeBase::goLineUp()
+ViRange KateViModeBase::goLineUp()
 {
     return goLineUpDown(-getCount());
 }
@@ -878,10 +877,10 @@ KateViRange KateViModeBase::goLineUp()
  * method for moving up or down one or more lines
  * note: the sticky column is always a virtual column
  */
-KateViRange KateViModeBase::goLineUpDown(int lines)
+ViRange KateViModeBase::goLineUpDown(int lines)
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
     int tabstop = doc()->config()->tabWidth();
 
     // if in an empty document, just return
@@ -932,11 +931,10 @@ KateViRange KateViModeBase::goLineUpDown(int lines)
     return r;
 }
 
-KateViRange KateViModeBase::goVisualLineUpDown(int lines)
+ViRange KateViModeBase::goVisualLineUpDown(int lines)
 {
-
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
     int tabstop = doc()->config()->tabWidth();
 
     if (lines == 0) {
@@ -1360,17 +1358,17 @@ void KateViModeBase::switchView(Direction direction)
     }
 }
 
-KateViRange KateViModeBase::motionFindPrev()
+ViRange KateViModeBase::motionFindPrev()
 {
     return m_viInputModeManager->searcher()->motionFindPrev(getCount());
 }
 
-KateViRange KateViModeBase::motionFindNext()
+ViRange KateViModeBase::motionFindNext()
 {
     return m_viInputModeManager->searcher()->motionFindNext(getCount());
 }
 
-void KateViModeBase::goToPos(const KateViRange &r)
+void KateViModeBase::goToPos(const ViRange &r)
 {
     Cursor c;
     c.setLine(r.endLine);

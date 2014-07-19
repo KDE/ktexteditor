@@ -25,7 +25,7 @@
 #include "katevivisualmode.h"
 #include "katevicommand.h"
 #include "katevimotion.h"
-#include "katevirange.h"
+#include <vimode/range.h>
 #include "katedocument.h"
 #include "kateviinputmode.h"
 #include "marks.h"
@@ -84,7 +84,7 @@ void KateViVisualMode::SelectLines(Range range)
                                Cursor(endline, m_view->doc()->lineLength(endline) + 1)));
 }
 
-void KateViVisualMode::goToPos(const KateViRange &r)
+void KateViVisualMode::goToPos(const KateVi::ViRange &r)
 {
     Cursor c = m_view->cursorPosition();
 
@@ -232,7 +232,7 @@ void KateViVisualMode::switchStartEnd()
 
 void KateViVisualMode::goToPos(const Cursor &c)
 {
-    KateViRange r;
+    KateVi::ViRange r;
     r.endColumn = c.column();
     r.endLine = c.line();
     goToPos(r);

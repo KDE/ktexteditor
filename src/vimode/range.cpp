@@ -19,40 +19,41 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <QtGlobal>
-#include "katevirange.h"
-KateViRange::KateViRange(int slin, int scol, int elin, int ecol, ViMotion::MotionType inc)
-    : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol), motionType(inc)
+#include <ktexteditor/cursor.h>
+#include <vimode/range.h>
+
+using namespace KateVi;
+/*
+ViRange::ViRange()
+    : ViRange(-1, -1, -1, -1, InclusiveMotion)
 {
-    valid = true;
-    jump = false;
+} */
+
+ViRange::ViRange(int slin, int scol, int elin, int ecol, MotionType inc)
+    : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol)
+    , motionType(inc), valid(true), jump(false)
+{
 }
 
-// for motions which only return a position, in constrast to "text objects"
-// which returns a range
-KateViRange::KateViRange(int elin, int ecol, ViMotion::MotionType inc)
-    : endLine(elin), endColumn(ecol), motionType(inc)
+ViRange::ViRange(int elin, int ecol, MotionType inc)
+    : ViRange(-1, -1, elin, ecol, inc)
 {
-    startLine = -1;
-    startColumn = -1;
-    valid = true;
-    jump = false;
 }
 
-KateViRange::KateViRange()
+ViRange::ViRange(const KTextEditor::Cursor& c, MotionType mt)
+    : ViRange(-1, -1, c.line(), c.column(), mt)
 {
-    startLine = -1;
-    startColumn = -1;
-    endLine = -1;
-    endColumn = -1;
-    valid = true;
-    jump = false;
-    motionType = ViMotion::InclusiveMotion;
 }
 
-void KateViRange::normalize()
+ViRange::ViRange(const KTextEditor::Cursor& c1, const KTextEditor::Cursor c2, MotionType mt)
+    : ViRange(c1.line(), c1.column(), c2.line(), c2.column(), mt)
+{
+}
+
+void ViRange::normalize()
 {
     int sl = startLine, el = endLine, sc = startColumn, ec = endColumn;
+
     if (sl < el) {
         startLine = sl;
         startColumn = sc;
@@ -69,4 +70,20 @@ void KateViRange::normalize()
             endColumn = qMax(sc, ec);
         }
     }
+}
+
+ViRange ViRange::invalid()
+{
+    ViRange r;
+    r.valid = false;
+    return r;
+}
+
+QDebug operator<<(QDebug s, const ViRange &range)
+{
+    s   << "[" << " (" << range.startLine << ", " << range.startColumn << ")"
+        << " -> " << " (" << range.endLine << ", " << range.endColumn << ")"
+        << "]" << " (" << (range.motionType == InclusiveMotion ? "Inclusive" : "Exclusive")
+        << ") (jump: " << (range.jump ? "true" : "false") << ")";
+    return s;
 }

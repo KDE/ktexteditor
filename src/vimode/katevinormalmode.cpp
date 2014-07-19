@@ -307,7 +307,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
                     if (checkFrom == 0) {
                         // no command given before motion, just move the cursor to wherever
                         // the motion says it should go to
-                        KateViRange r = m_motions.at(i)->execute();
+                        ViRange r = m_motions.at(i)->execute();
                         m_motionCanChangeWholeVisualModeSelection = m_motions.at(i)->canChangeWholeVisualModeSelection();
 
                         // jump over folding regions since we are just moving the cursor
@@ -713,7 +713,7 @@ bool KateViNormalMode::commandDeleteLine()
 {
     Cursor c(m_view->cursorPosition());
 
-    KateViRange r;
+    ViRange r;
 
     r.startLine = c.line();
     r.endLine = c.line() + getCount() - 1;
@@ -1181,13 +1181,13 @@ bool KateViNormalMode::commandChangeLine()
 
     // if count >= 2 start by deleting the whole lines
     if (getCount() >= 2) {
-        KateViRange r(c.line(), 0, c.line() + getCount() - 2, 0, ViMotion::InclusiveMotion);
+        ViRange r(c.line(), 0, c.line() + getCount() - 2, 0, InclusiveMotion);
         deleteRange(r);
     }
 
     // ... then delete the _contents_ of the last line, but keep the line
-    KateViRange r(c.line(), c.column(), c.line(), doc()->lineLength(c.line()) - 1,
-                  ViMotion::InclusiveMotion);
+    ViRange r(c.line(), c.column(), c.line(), doc()->lineLength(c.line()) - 1,
+                  InclusiveMotion);
     deleteRange(r, CharWise, true);
 
     // ... then enter insert mode
@@ -1249,7 +1249,7 @@ bool KateViNormalMode::commandYankLine()
         lines.append(getLine(linenum + i) + QLatin1Char('\n'));
     }
 
-    KateViRange yankRange(linenum, 0, linenum + getCount() - 1, getLine(linenum + getCount() - 1).length(), ViMotion::InclusiveMotion);
+    ViRange yankRange(linenum, 0, linenum + getCount() - 1, getLine(linenum + getCount() - 1).length(), InclusiveMotion);
     highlightYank(yankRange);
 
     QChar  chosen_register =  getChosenRegister(ZeroRegister);
@@ -1264,10 +1264,10 @@ bool KateViNormalMode::commandYankToEOL()
     OperationMode m = CharWise;
     Cursor c(m_view->cursorPosition());
 
-    ViMotion::MotionType motion = m_commandRange.motionType;
+    MotionType motion = m_commandRange.motionType;
     m_commandRange.endLine = c.line() + getCount() - 1;
     m_commandRange.endColumn = doc()->lineLength(m_commandRange.endLine) - 1;
-    m_commandRange.motionType = ViMotion::InclusiveMotion;
+    m_commandRange.motionType = InclusiveMotion;
 
     switch (m_viInputModeManager->getCurrentViMode()) {
     case NormalMode:
@@ -1348,7 +1348,7 @@ bool KateViNormalMode::commandIndentedPasteBefore()
 bool KateViNormalMode::commandDeleteChar()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), c.line(), c.column() + getCount(), ViMotion::ExclusiveMotion);
+    ViRange r(c.line(), c.column(), c.line(), c.column() + getCount(), ExclusiveMotion);
 
     if (m_commandRange.startLine != -1 && m_commandRange.startColumn != -1) {
         r = m_commandRange;
@@ -1374,7 +1374,7 @@ bool KateViNormalMode::commandDeleteCharBackward()
 {
     Cursor c(m_view->cursorPosition());
 
-    KateViRange r(c.line(), c.column() - getCount(), c.line(), c.column(), ViMotion::ExclusiveMotion);
+    ViRange r(c.line(), c.column() - getCount(), c.line(), c.column(), ExclusiveMotion);
 
     if (m_commandRange.startLine != -1 && m_commandRange.startColumn != -1) {
         r = m_commandRange;
@@ -2017,21 +2017,21 @@ bool KateViNormalMode::commandToggleRegionVisibility()
 // MOTIONS
 ////////////////////////////////////////////////////////////////////////////////
 
-KateViRange KateViNormalMode::motionDown()
+ViRange KateViNormalMode::motionDown()
 {
     return goLineDown();
 }
 
-KateViRange KateViNormalMode::motionUp()
+ViRange KateViNormalMode::motionUp()
 {
     return goLineUp();
 }
 
-KateViRange KateViNormalMode::motionLeft()
+ViRange KateViNormalMode::motionLeft()
 {
     Cursor cursor(m_view->cursorPosition());
     m_stickyColumn = -1;
-    KateViRange r(cursor.line(), cursor.column(), ViMotion::ExclusiveMotion);
+    ViRange r(cursor, ExclusiveMotion);
     r.endColumn -= getCount();
 
     if (r.endColumn < 0) {
@@ -2041,11 +2041,11 @@ KateViRange KateViNormalMode::motionLeft()
     return r;
 }
 
-KateViRange KateViNormalMode::motionRight()
+ViRange KateViNormalMode::motionRight()
 {
     Cursor cursor(m_view->cursorPosition());
     m_stickyColumn = -1;
-    KateViRange r(cursor.line(), cursor.column(), ViMotion::ExclusiveMotion);
+    ViRange r(cursor, ExclusiveMotion);
     r.endColumn += getCount();
 
     // make sure end position isn't > line length
@@ -2056,61 +2056,57 @@ KateViRange KateViNormalMode::motionRight()
     return r;
 }
 
-KateViRange KateViNormalMode::motionPageDown()
+ViRange KateViNormalMode::motionPageDown()
 {
     Cursor c(m_view->cursorPosition());
-    int linesToScroll = linesDisplayed();
-
-    KateViRange r(c.line() + linesToScroll, c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
+    r.endLine += linesDisplayed();
 
     if (r.endLine >= doc()->lines()) {
         r.endLine = doc()->lines() - 1;
     }
-
     return r;
 }
 
-KateViRange KateViNormalMode::motionPageUp()
+ViRange KateViNormalMode::motionPageUp()
 {
     Cursor c(m_view->cursorPosition());
-    int linesToScroll = linesDisplayed();
-
-    KateViRange r(c.line() - linesToScroll, c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
+    r.endLine -= linesDisplayed();
 
     if (r.endLine < 0) {
         r.endLine = 0;
     }
-
     return r;
 }
 
-KateViRange KateViNormalMode::motionDownToFirstNonBlank()
+ViRange KateViNormalMode::motionDownToFirstNonBlank()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r = goLineDown();
+    ViRange r = goLineDown();
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
 }
 
-KateViRange KateViNormalMode::motionUpToFirstNonBlank()
+ViRange KateViNormalMode::motionUpToFirstNonBlank()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r = goLineUp();
+    ViRange r = goLineUp();
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
 }
 
-KateViRange KateViNormalMode::motionWordForward()
+ViRange KateViNormalMode::motionWordForward()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::ExclusiveMotion);
+    ViRange r(c, ExclusiveMotion);
 
     m_stickyColumn = -1;
 
     // Special case: If we're already on the very last character in the document, the motion should be
     // inclusive so the last character gets included
     if (c.line() == doc()->lines() - 1 && c.column() == doc()->lineLength(c.line()) - 1) {
-        r.motionType = ViMotion::InclusiveMotion;
+        r.motionType = InclusiveMotion;
     } else {
         for (unsigned int i = 0; i < getCount(); i++) {
             c = findNextWordStart(c.line(), c.column());
@@ -2121,7 +2117,7 @@ KateViRange KateViNormalMode::motionWordForward()
                 // if we still haven't "used up the count", make the motion inclusive, so that the last char
                 // is included
                 if (i < getCount()) {
-                    r.motionType = ViMotion::InclusiveMotion;
+                    r.motionType = InclusiveMotion;
                 }
                 break;
             }
@@ -2134,10 +2130,10 @@ KateViRange KateViNormalMode::motionWordForward()
     return r;
 }
 
-KateViRange KateViNormalMode::motionWordBackward()
+ViRange KateViNormalMode::motionWordBackward()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::ExclusiveMotion);
+    ViRange r(c, ExclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2156,10 +2152,10 @@ KateViRange KateViNormalMode::motionWordBackward()
     return r;
 }
 
-KateViRange KateViNormalMode::motionWORDForward()
+ViRange KateViNormalMode::motionWORDForward()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::ExclusiveMotion);
+    ViRange r(c, ExclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2178,10 +2174,10 @@ KateViRange KateViNormalMode::motionWORDForward()
     return r;
 }
 
-KateViRange KateViNormalMode::motionWORDBackward()
+ViRange KateViNormalMode::motionWORDBackward()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::ExclusiveMotion);
+    ViRange r(c, ExclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2199,10 +2195,10 @@ KateViRange KateViNormalMode::motionWORDBackward()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToEndOfWord()
+ViRange KateViNormalMode::motionToEndOfWord()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2216,10 +2212,10 @@ KateViRange KateViNormalMode::motionToEndOfWord()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToEndOfWORD()
+ViRange KateViNormalMode::motionToEndOfWORD()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2237,10 +2233,10 @@ KateViRange KateViNormalMode::motionToEndOfWORD()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToEndOfPrevWord()
+ViRange KateViNormalMode::motionToEndOfPrevWord()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2261,10 +2257,10 @@ KateViRange KateViNormalMode::motionToEndOfPrevWord()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToEndOfPrevWORD()
+ViRange KateViNormalMode::motionToEndOfPrevWORD()
 {
     Cursor c(m_view->cursorPosition());
-    KateViRange r(c.line(), c.column(), ViMotion::InclusiveMotion);
+    ViRange r(c, InclusiveMotion);
 
     m_stickyColumn = -1;
 
@@ -2284,7 +2280,7 @@ KateViRange KateViNormalMode::motionToEndOfPrevWORD()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToEOL()
+ViRange KateViNormalMode::motionToEOL()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -2295,33 +2291,33 @@ KateViRange KateViNormalMode::motionToEOL()
     }
 
     unsigned int line = c.line() + (getCount() - 1);
-    KateViRange r(line, doc()->lineLength(line) - 1, ViMotion::InclusiveMotion);
+    ViRange r(line, doc()->lineLength(line) - 1, InclusiveMotion);
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToColumn0()
+ViRange KateViNormalMode::motionToColumn0()
 {
     m_stickyColumn = -1;
     Cursor cursor(m_view->cursorPosition());
-    KateViRange r(cursor.line(), 0, ViMotion::ExclusiveMotion);
+    ViRange r(cursor.line(), 0, ExclusiveMotion);
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToFirstCharacterOfLine()
+ViRange KateViNormalMode::motionToFirstCharacterOfLine()
 {
     m_stickyColumn = -1;
 
     Cursor cursor(m_view->cursorPosition());
     int c = getFirstNonBlank();
 
-    KateViRange r(cursor.line(), c, ViMotion::ExclusiveMotion);
+    ViRange r(cursor.line(), c, ExclusiveMotion);
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionFindChar()
+ViRange KateViNormalMode::motionFindChar()
 {
     m_lastTFcommand = m_keys;
     Cursor cursor(m_view->cursorPosition());
@@ -2338,19 +2334,19 @@ KateViRange KateViNormalMode::motionFindChar()
         }
     }
 
-    KateViRange r;
+    ViRange r;
 
     if (matchColumn != -1) {
         r.endColumn = matchColumn;
         r.endLine = cursor.line();
     } else {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionFindCharBackward()
+ViRange KateViNormalMode::motionFindCharBackward()
 {
     m_lastTFcommand = m_keys;
     Cursor cursor(m_view->cursorPosition());
@@ -2375,26 +2371,26 @@ KateViRange KateViNormalMode::motionFindCharBackward()
         i--;
     }
 
-    KateViRange r;
+    ViRange r;
 
     if (matchColumn != -1) {
         r.endColumn = matchColumn;
         r.endLine = cursor.line();
     } else {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToChar()
+ViRange KateViNormalMode::motionToChar()
 {
     m_lastTFcommand = m_keys;
     Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
 
     m_stickyColumn = -1;
-    KateViRange r;
+    ViRange r;
     r.endColumn = -1;
     r.endLine = -1;
 
@@ -2407,7 +2403,7 @@ KateViRange KateViNormalMode::motionToChar()
             if (m_isRepeatedTFcommand) {
                 matchColumn = lastColumn;
             } else {
-                return KateViRange::invalid();
+                return ViRange::invalid();
             }
             break;
         }
@@ -2420,7 +2416,7 @@ KateViRange KateViNormalMode::motionToChar()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToCharBackward()
+ViRange KateViNormalMode::motionToCharBackward()
 {
     m_lastTFcommand = m_keys;
     Cursor cursor(m_view->cursorPosition());
@@ -2434,7 +2430,7 @@ KateViRange KateViNormalMode::motionToCharBackward()
     unsigned int hits = 0;
     int i = cursor.column() - (m_isRepeatedTFcommand ? 2 : 1);
 
-    KateViRange r;
+    ViRange r;
 
     while (hits != getCount() && i >= 0) {
         if (line.at(i) == m_keys.at(m_keys.size() - 1)) {
@@ -2460,7 +2456,7 @@ KateViRange KateViNormalMode::motionToCharBackward()
     return r;
 }
 
-KateViRange KateViNormalMode::motionRepeatlastTF()
+ViRange KateViNormalMode::motionRepeatlastTF()
 {
     if (!m_lastTFcommand.isEmpty()) {
         m_isRepeatedTFcommand = true;
@@ -2477,10 +2473,10 @@ KateViRange KateViNormalMode::motionRepeatlastTF()
     }
 
     // there was no previous t/f command
-    return KateViRange::invalid();
+    return ViRange::invalid();
 }
 
-KateViRange KateViNormalMode::motionRepeatlastTFBackward()
+ViRange KateViNormalMode::motionRepeatlastTFBackward()
 {
     if (!m_lastTFcommand.isEmpty()) {
         m_isRepeatedTFcommand = true;
@@ -2497,12 +2493,12 @@ KateViRange KateViNormalMode::motionRepeatlastTFBackward()
     }
 
     // there was no previous t/f command
-    return KateViRange::invalid();
+    return ViRange::invalid();
 }
 
-KateViRange KateViNormalMode::motionToLineFirst()
+ViRange KateViNormalMode::motionToLineFirst()
 {
-    KateViRange r(getCount() - 1, 0, ViMotion::InclusiveMotion);
+    ViRange r(getCount() - 1, 0, InclusiveMotion);
     m_stickyColumn = -1;
 
     if (r.endLine > doc()->lines() - 1) {
@@ -2513,9 +2509,9 @@ KateViRange KateViNormalMode::motionToLineFirst()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToLineLast()
+ViRange KateViNormalMode::motionToLineLast()
 {
-    KateViRange r(doc()->lines() - 1, 0, ViMotion::InclusiveMotion);
+    ViRange r(doc()->lines() - 1, 0, InclusiveMotion);
     m_stickyColumn = -1;
 
     // don't use getCount() here, no count and a count of 1 is different here...
@@ -2531,7 +2527,7 @@ KateViRange KateViNormalMode::motionToLineLast()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToScreenColumn()
+ViRange KateViNormalMode::motionToScreenColumn()
 {
     m_stickyColumn = -1;
 
@@ -2543,12 +2539,12 @@ KateViRange KateViNormalMode::motionToScreenColumn()
         column = doc()->lineLength(c.line()) - 1;
     }
 
-    return KateViRange(c.line(), column, ViMotion::ExclusiveMotion);
+    return ViRange(c.line(), column, ExclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToMark()
+ViRange KateViNormalMode::motionToMark()
 {
-    KateViRange r;
+    ViRange r;
 
     m_stickyColumn = -1;
 
@@ -2568,18 +2564,18 @@ KateViRange KateViNormalMode::motionToMark()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToMarkLine()
+ViRange KateViNormalMode::motionToMarkLine()
 {
-    KateViRange r = motionToMark();
+    ViRange r = motionToMark();
     r.endColumn = getFirstNonBlank(r.endLine);
     r.jump = true;
     m_stickyColumn = -1;
     return r;
 }
 
-KateViRange KateViNormalMode::motionToMatchingItem()
+ViRange KateViNormalMode::motionToMatchingItem()
 {
-    KateViRange r;
+    ViRange r;
     int lines = doc()->lines();
 
     // If counted, then it's not a motion to matching item anymore,
@@ -2602,7 +2598,7 @@ KateViRange KateViNormalMode::motionToMatchingItem()
     m_stickyColumn = -1;
 
     if (n1 < 0) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     QRegExp brackets(QLatin1String("[(){}\\[\\]]"));
@@ -2699,16 +2695,16 @@ KateViRange KateViNormalMode::motionToMatchingItem()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToNextBraceBlockStart()
+ViRange KateViNormalMode::motionToNextBraceBlockStart()
 {
-    KateViRange r;
+    ViRange r;
 
     m_stickyColumn = -1;
 
     int line = findLineStartingWitchChar(QLatin1Char('{'), getCount());
 
     if (line == -1) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     r.endLine = line;
@@ -2718,7 +2714,7 @@ KateViRange KateViNormalMode::motionToNextBraceBlockStart()
     if (motionWillBeUsedWithCommand()) {
         // Delete from cursor (inclusive) to the '{' (exclusive).
         // If we are on the first column, then delete the entire current line.
-        r.motionType = ViMotion::ExclusiveMotion;
+        r.motionType = ExclusiveMotion;
         if (m_view->cursorPosition().column() != 0) {
             r.endLine--;
             r.endColumn = doc()->lineLength(r.endLine);
@@ -2728,16 +2724,16 @@ KateViRange KateViNormalMode::motionToNextBraceBlockStart()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToPreviousBraceBlockStart()
+ViRange KateViNormalMode::motionToPreviousBraceBlockStart()
 {
-    KateViRange r;
+    ViRange r;
 
     m_stickyColumn = -1;
 
     int line = findLineStartingWitchChar(QLatin1Char('{'), getCount(), false);
 
     if (line == -1) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     r.endLine = line;
@@ -2746,22 +2742,22 @@ KateViRange KateViNormalMode::motionToPreviousBraceBlockStart()
 
     if (motionWillBeUsedWithCommand()) {
         // With a command, do not include the { or the cursor position.
-        r.motionType = ViMotion::ExclusiveMotion;
+        r.motionType = ExclusiveMotion;
     }
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToNextBraceBlockEnd()
+ViRange KateViNormalMode::motionToNextBraceBlockEnd()
 {
-    KateViRange r;
+    ViRange r;
 
     m_stickyColumn = -1;
 
     int line = findLineStartingWitchChar(QLatin1Char('}'), getCount());
 
     if (line == -1) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     r.endLine = line;
@@ -2771,7 +2767,7 @@ KateViRange KateViNormalMode::motionToNextBraceBlockEnd()
     if (motionWillBeUsedWithCommand()) {
         // Delete from cursor (inclusive) to the '}' (exclusive).
         // If we are on the first column, then delete the entire current line.
-        r.motionType = ViMotion::ExclusiveMotion;
+        r.motionType = ExclusiveMotion;
         if (m_view->cursorPosition().column() != 0) {
             r.endLine--;
             r.endColumn = doc()->lineLength(r.endLine);
@@ -2781,16 +2777,16 @@ KateViRange KateViNormalMode::motionToNextBraceBlockEnd()
     return r;
 }
 
-KateViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
+ViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
 {
-    KateViRange r;
+    ViRange r;
 
     m_stickyColumn = -1;
 
     int line = findLineStartingWitchChar(QLatin1Char('}'), getCount(), false);
 
     if (line == -1) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
 
     r.endLine = line;
@@ -2798,27 +2794,27 @@ KateViRange KateViNormalMode::motionToPreviousBraceBlockEnd()
     r.jump = true;
 
     if (motionWillBeUsedWithCommand()) {
-        r.motionType = ViMotion::ExclusiveMotion;
+        r.motionType = ExclusiveMotion;
     }
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToNextOccurrence()
+ViRange KateViNormalMode::motionToNextOccurrence()
 {
     const QString word = getWordUnderCursor();
-    const KateViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
-    return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
+    const ViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
+    return ViRange(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToPrevOccurrence()
+ViRange KateViNormalMode::motionToPrevOccurrence()
 {
     const QString word = getWordUnderCursor();
-    const KateViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
-    return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
+    const ViRange match = m_viInputModeManager->searcher()->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
+    return ViRange(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToFirstLineOfWindow()
+ViRange KateViNormalMode::motionToFirstLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2827,12 +2823,12 @@ KateViRange KateViNormalMode::motionToFirstLineOfWindow()
         lines_to_go = - m_view->cursorPosition().line();
     }
 
-    KateViRange r = goLineUpDown(lines_to_go);
+    ViRange r = goLineUpDown(lines_to_go);
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
 }
 
-KateViRange KateViNormalMode::motionToMiddleLineOfWindow()
+ViRange KateViNormalMode::motionToMiddleLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2841,12 +2837,12 @@ KateViRange KateViNormalMode::motionToMiddleLineOfWindow()
         lines_to_go = m_viewInternal->endLine() / 2 - m_view->cursorPosition().line();
     }
 
-    KateViRange r = goLineUpDown(lines_to_go);
+    ViRange r = goLineUpDown(lines_to_go);
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
 }
 
-KateViRange KateViNormalMode::motionToLastLineOfWindow()
+ViRange KateViNormalMode::motionToLastLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2855,22 +2851,22 @@ KateViRange KateViNormalMode::motionToLastLineOfWindow()
         lines_to_go = m_viewInternal->endLine() - m_view->cursorPosition().line();
     }
 
-    KateViRange r = goLineUpDown(lines_to_go);
+    ViRange r = goLineUpDown(lines_to_go);
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
 }
 
-KateViRange KateViNormalMode::motionToNextVisualLine()
+ViRange KateViNormalMode::motionToNextVisualLine()
 {
     return goVisualLineUpDown(getCount());
 }
 
-KateViRange KateViNormalMode::motionToPrevVisualLine()
+ViRange KateViNormalMode::motionToPrevVisualLine()
 {
     return goVisualLineUpDown(-getCount());
 }
 
-KateViRange KateViNormalMode::motionToPreviousSentence()
+ViRange KateViNormalMode::motionToPreviousSentence()
 {
     Cursor c = findSentenceStart();
     int linenum = c.line(), column;
@@ -2889,7 +2885,7 @@ KateViRange KateViNormalMode::motionToPreviousSentence()
         const QString &line = doc()->line(i);
 
         if (line.isEmpty() && !skipSpaces) {
-            return KateViRange(i, 0, ViMotion::InclusiveMotion);
+            return ViRange(i, 0, InclusiveMotion);
         }
 
         if (column < 0 && line.size() > 0) {
@@ -2902,15 +2898,15 @@ KateViRange KateViNormalMode::motionToPreviousSentence()
                 c.setColumn(j);
                 updateCursor(c);
                 c = findSentenceStart();
-                return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
+                return ViRange(c, InclusiveMotion);
             }
         }
         column = line.size() - 1;
     }
-    return KateViRange(0, 0, ViMotion::InclusiveMotion);
+    return ViRange(0, 0, InclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToNextSentence()
+ViRange KateViNormalMode::motionToNextSentence()
 {
     Cursor c = findSentenceEnd();
     int linenum = c.line(), column = c.column() + 1;
@@ -2920,22 +2916,22 @@ KateViRange KateViNormalMode::motionToNextSentence()
         const QString &line = doc()->line(i);
 
         if (line.isEmpty() && !skipSpaces) {
-            return KateViRange(i, 0, ViMotion::InclusiveMotion);
+            return ViRange(i, 0, InclusiveMotion);
         }
 
         for (int j = column; j < line.size(); j++) {
             if (!line.at(j).isSpace()) {
-                return KateViRange(i, j, ViMotion::InclusiveMotion);
+                return ViRange(i, j, InclusiveMotion);
             }
         }
         column = 0;
     }
 
     c = doc()->documentEnd();
-    return KateViRange(c.line(), c.column(), ViMotion::InclusiveMotion);
+    return ViRange(c, InclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToBeforeParagraph()
+ViRange KateViNormalMode::motionToBeforeParagraph()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -2958,12 +2954,12 @@ KateViRange KateViNormalMode::motionToBeforeParagraph()
         line = 0;
     }
 
-    KateViRange r(line, 0, ViMotion::InclusiveMotion);
+    ViRange r(line, 0, InclusiveMotion);
 
     return r;
 }
 
-KateViRange KateViNormalMode::motionToAfterParagraph()
+ViRange KateViNormalMode::motionToAfterParagraph()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -2989,22 +2985,22 @@ KateViRange KateViNormalMode::motionToAfterParagraph()
     // if we ended up on the last line, the cursor should be placed on the last column
     int column = (line == doc()->lines() - 1) ? qMax(getLine(line).length() - 1, 0) : 0;
 
-    return KateViRange(line, column, ViMotion::InclusiveMotion);
+    return ViRange(line, column, InclusiveMotion);
 }
 
-KateViRange KateViNormalMode::motionToIncrementalSearchMatch()
+ViRange KateViNormalMode::motionToIncrementalSearchMatch()
 {
-    return KateViRange(m_positionWhenIncrementalSearchBegan.line(),
+    return ViRange(m_positionWhenIncrementalSearchBegan.line(),
                        m_positionWhenIncrementalSearchBegan.column(),
                        m_view->cursorPosition().line(),
-                       m_view->cursorPosition().column(), ViMotion::ExclusiveMotion);
+                       m_view->cursorPosition().column(), ExclusiveMotion);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // TEXT OBJECTS
 ////////////////////////////////////////////////////////////////////////////////
 
-KateViRange KateViNormalMode::textObjectAWord()
+ViRange KateViNormalMode::textObjectAWord()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -3024,7 +3020,7 @@ KateViRange KateViNormalMode::textObjectAWord()
         c2 = findWordEnd(c2.line(), c2.column());
     }
     if (!c1.isValid() || !c2.isValid()) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
     // Adhere to some of Vim's bizarre rules of whether to swallow ensuing spaces or not.
     // Don't ask ;)
@@ -3054,17 +3050,10 @@ KateViRange KateViNormalMode::textObjectAWord()
         }
     }
 
-    KateViRange r(c.line(), c.column(), !swallowCarriageReturnAtEndOfLine ? ViMotion::InclusiveMotion : ViMotion::ExclusiveMotion);
-
-    r.startLine = c1.line();
-    r.endLine = c2.line();
-    r.startColumn = c1.column();
-    r.endColumn = c2.column();
-
-    return r;
+    return ViRange(c1, c2, !swallowCarriageReturnAtEndOfLine ? InclusiveMotion : ExclusiveMotion);
 }
 
-KateViRange KateViNormalMode::textObjectInnerWord()
+ViRange KateViNormalMode::textObjectInnerWord()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -3083,22 +3072,14 @@ KateViRange KateViNormalMode::textObjectInnerWord()
         c2 = doc()->documentEnd();
     }
 
-    KateViRange r;
-
     // sanity check
     if (c1.line() != c2.line() || c1.column() > c2.column()) {
-        return KateViRange::invalid();
-    } else {
-        r.startLine = c1.line();
-        r.endLine = c2.line();
-        r.startColumn = c1.column();
-        r.endColumn = c2.column();
+        return ViRange::invalid();
     }
-
-    return r;
+    return ViRange(c1, c2, InclusiveMotion);
 }
 
-KateViRange KateViNormalMode::textObjectAWORD()
+ViRange KateViNormalMode::textObjectAWORD()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -3118,7 +3099,7 @@ KateViRange KateViNormalMode::textObjectAWORD()
         c2 = findWORDEnd(c2.line(), c2.column());
     }
     if (!c1.isValid() || !c2.isValid()) {
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
     // Adhere to some of Vim's bizarre rules of whether to swallow ensuing spaces or not.
     // Don't ask ;)
@@ -3148,17 +3129,10 @@ KateViRange KateViNormalMode::textObjectAWORD()
         }
     }
 
-    KateViRange r(c.line(), c.column(), !swallowCarriageReturnAtEndOfLine ? ViMotion::InclusiveMotion : ViMotion::ExclusiveMotion);
-
-    r.startLine = c1.line();
-    r.endLine = c2.line();
-    r.startColumn = c1.column();
-    r.endColumn = c2.column();
-
-    return r;
+    return ViRange(c1, c2, !swallowCarriageReturnAtEndOfLine ? InclusiveMotion : ExclusiveMotion);
 }
 
-KateViRange KateViNormalMode::textObjectInnerWORD()
+ViRange KateViNormalMode::textObjectInnerWORD()
 {
     Cursor c(m_view->cursorPosition());
 
@@ -3176,19 +3150,11 @@ KateViRange KateViNormalMode::textObjectInnerWORD()
         c2 = doc()->documentEnd();
     }
 
-    KateViRange r;
-
     // sanity check
     if (c1.line() != c2.line() || c1.column() > c2.column()) {
-        return KateViRange::invalid();
-    } else {
-        r.startLine = c1.line();
-        r.endLine = c2.line();
-        r.startColumn = c1.column();
-        r.endColumn = c2.column();
+        return ViRange::invalid();
     }
-
-    return r;
+    return ViRange(c1, c2, InclusiveMotion);
 }
 
 Cursor KateViNormalMode::findSentenceStart()
@@ -3313,9 +3279,9 @@ Cursor KateViNormalMode::findParagraphEnd()
     return doc()->documentEnd();
 }
 
-KateViRange KateViNormalMode::textObjectInnerSentence()
+ViRange KateViNormalMode::textObjectInnerSentence()
 {
-    KateViRange r;
+    ViRange r;
     Cursor c1 = findSentenceStart();
     Cursor c2 = findSentenceEnd();
     updateCursor(c1);
@@ -3327,10 +3293,10 @@ KateViRange KateViNormalMode::textObjectInnerSentence()
     return r;
 }
 
-KateViRange KateViNormalMode::textObjectASentence()
+ViRange KateViNormalMode::textObjectASentence()
 {
     int i;
-    KateViRange r = textObjectInnerSentence();
+    ViRange r = textObjectInnerSentence();
     const QString &line = doc()->line(r.endLine);
 
     // Skip whitespaces and tabs.
@@ -3356,9 +3322,9 @@ KateViRange KateViNormalMode::textObjectASentence()
     return r;
 }
 
-KateViRange KateViNormalMode::textObjectInnerParagraph()
+ViRange KateViNormalMode::textObjectInnerParagraph()
 {
-    KateViRange r;
+    ViRange r;
     Cursor c1 = findParagraphStart();
     Cursor c2 = findParagraphEnd();
     updateCursor(c1);
@@ -3370,10 +3336,10 @@ KateViRange KateViNormalMode::textObjectInnerParagraph()
     return r;
 }
 
-KateViRange KateViNormalMode::textObjectAParagraph()
+ViRange KateViNormalMode::textObjectAParagraph()
 {
     Cursor original(m_view->cursorPosition());
-    KateViRange r = textObjectInnerParagraph();
+    ViRange r = textObjectInnerParagraph();
     int lines = doc()->lines();
 
     if (r.endLine + 1 < lines) {
@@ -3402,77 +3368,77 @@ KateViRange KateViNormalMode::textObjectAParagraph()
         updateCursor(Cursor(r.startLine, r.startColumn));
     } else {
         // We went too far and we're on empty lines, do nothing.
-        return KateViRange::invalid();
+        return ViRange::invalid();
     }
     return r;
 }
 
-KateViRange KateViNormalMode::textObjectAQuoteDouble()
+ViRange KateViNormalMode::textObjectAQuoteDouble()
 {
     return findSurroundingQuotes(QLatin1Char('"'), false);
 }
 
-KateViRange KateViNormalMode::textObjectInnerQuoteDouble()
+ViRange KateViNormalMode::textObjectInnerQuoteDouble()
 {
     return findSurroundingQuotes(QLatin1Char('"'), true);
 }
 
-KateViRange KateViNormalMode::textObjectAQuoteSingle()
+ViRange KateViNormalMode::textObjectAQuoteSingle()
 {
     return findSurroundingQuotes(QLatin1Char('\''), false);
 }
 
-KateViRange KateViNormalMode::textObjectInnerQuoteSingle()
+ViRange KateViNormalMode::textObjectInnerQuoteSingle()
 {
     return findSurroundingQuotes(QLatin1Char('\''), true);
 }
 
-KateViRange KateViNormalMode::textObjectABackQuote()
+ViRange KateViNormalMode::textObjectABackQuote()
 {
     return findSurroundingQuotes(QLatin1Char('`'), false);
 }
 
-KateViRange KateViNormalMode::textObjectInnerBackQuote()
+ViRange KateViNormalMode::textObjectInnerBackQuote()
 {
     return findSurroundingQuotes(QLatin1Char('`'), true);
 }
 
-KateViRange KateViNormalMode::textObjectAParen()
+ViRange KateViNormalMode::textObjectAParen()
 {
 
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false,  QLatin1Char('('), QLatin1Char(')'));
 }
 
-KateViRange KateViNormalMode::textObjectInnerParen()
+ViRange KateViNormalMode::textObjectInnerParen()
 {
 
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), true, QLatin1Char('('), QLatin1Char(')'));
 }
 
-KateViRange KateViNormalMode::textObjectABracket()
+ViRange KateViNormalMode::textObjectABracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false,  QLatin1Char('['), QLatin1Char(']'));
 }
 
-KateViRange KateViNormalMode::textObjectInnerBracket()
+ViRange KateViNormalMode::textObjectInnerBracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), true, QLatin1Char('['), QLatin1Char(']'));
 }
 
-KateViRange KateViNormalMode::textObjectACurlyBracket()
+ViRange KateViNormalMode::textObjectACurlyBracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false,  QLatin1Char('{'), QLatin1Char('}'));
 }
 
-KateViRange KateViNormalMode::textObjectInnerCurlyBracket()
+ViRange KateViNormalMode::textObjectInnerCurlyBracket()
 {
-    const KateViRange allBetweenCurlyBrackets = findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), true, QLatin1Char('{'), QLatin1Char('}'));
+    const ViRange allBetweenCurlyBrackets = findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), true, QLatin1Char('{'), QLatin1Char('}'));
     // Emulate the behaviour of vim, which tries to leave the closing bracket on its own line
     // if it was originally on a line different to that of the opening bracket.
-    KateViRange innerCurlyBracket(allBetweenCurlyBrackets);
+    ViRange innerCurlyBracket(allBetweenCurlyBrackets);
 
     if (innerCurlyBracket.startLine != innerCurlyBracket.endLine) {
         const bool openingBraceIsLastCharOnLine = innerCurlyBracket.startColumn == doc()->line(innerCurlyBracket.startLine).length();
@@ -3483,7 +3449,7 @@ KateViRange KateViNormalMode::textObjectInnerCurlyBracket()
         if (stuffToDeleteIsAllOnEndLine) {
             if (!closingBracketHasLeadingNonWhitespace) {
                 // Nothing there to select - abort.
-                return KateViRange::invalid();
+                return ViRange::invalid();
             } else {
                 // Shift the beginning of the range to the start of the line containing the closing bracket.
                 innerCurlyBracket.startLine++;
@@ -3511,24 +3477,24 @@ KateViRange KateViNormalMode::textObjectInnerCurlyBracket()
     return innerCurlyBracket;
 }
 
-KateViRange KateViNormalMode::textObjectAInequalitySign()
+ViRange KateViNormalMode::textObjectAInequalitySign()
 {
 
     return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), false,  QLatin1Char('<'), QLatin1Char('>'));
 }
 
-KateViRange KateViNormalMode::textObjectInnerInequalitySign()
+ViRange KateViNormalMode::textObjectInnerInequalitySign()
 {
 
     return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), true, QLatin1Char('<'), QLatin1Char('>'));
 }
 
-KateViRange KateViNormalMode::textObjectAComma()
+ViRange KateViNormalMode::textObjectAComma()
 {
     return textObjectComma(false);
 }
 
-KateViRange KateViNormalMode::textObjectInnerComma()
+ViRange KateViNormalMode::textObjectInnerComma()
 {
     return textObjectComma(true);
 }
@@ -3926,7 +3892,7 @@ int KateViNormalMode::getFirstNonBlank(int line) const
 }
 
 // Tries to shrinks toShrink so that it fits tightly around rangeToShrinkTo.
-void KateViNormalMode::shrinkRangeAroundCursor(KateViRange &toShrink, const KateViRange &rangeToShrinkTo) const
+void KateViNormalMode::shrinkRangeAroundCursor(KateVi::ViRange &toShrink, const ViRange &rangeToShrinkTo) const
 {
     if (!toShrink.valid || !rangeToShrinkTo.valid) {
         return;
@@ -3977,12 +3943,12 @@ void KateViNormalMode::shrinkRangeAroundCursor(KateViRange &toShrink, const Kate
     }
 }
 
-KateViRange KateViNormalMode::textObjectComma(bool inner) const
+ViRange KateViNormalMode::textObjectComma(bool inner) const
 {
     // Basic algorithm: look left and right of the cursor for all combinations
     // of enclosing commas and the various types of brackets, and pick the pair
     // closest to the cursor that surrounds the cursor.
-    KateViRange r(0, 0, m_view->doc()->lines(), m_view->doc()->line(m_view->doc()->lastLine()).length(), ViMotion::InclusiveMotion);
+    ViRange r(0, 0, m_view->doc()->lines(), m_view->doc()->line(m_view->doc()->lastLine()).length(), InclusiveMotion);
 
     shrinkRangeAroundCursor(r, findSurroundingQuotes(QLatin1Char(','), inner));
     shrinkRangeAroundCursor(r, findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), inner, QLatin1Char('('), QLatin1Char(')')));
@@ -4009,7 +3975,7 @@ void KateViNormalMode::updateYankHighlightAttrib()
     m_highlightYankAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(yankedColor);
 }
 
-void KateViNormalMode::highlightYank(const KateViRange &range, const OperationMode mode)
+void KateViNormalMode::highlightYank(const ViRange &range, const OperationMode mode)
 {
     clearYankHighlight();
 

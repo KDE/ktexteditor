@@ -51,7 +51,7 @@ const QString Searcher::getLastSearchPattern() const
 
 void Searcher::findNext()
 {
-    const KateViRange r = motionFindPrev();
+    const ViRange r = motionFindPrev();
     if (r.valid) {
         m_viInputModeManager->getCurrentViModeHandler()->goToPos(r);
     }
@@ -59,15 +59,15 @@ void Searcher::findNext()
 
 void Searcher::findPrevious()
 {
-    const KateViRange r = motionFindPrev();
+    const ViRange r = motionFindPrev();
     if (r.valid) {
         m_viInputModeManager->getCurrentViModeHandler()->goToPos(r);
     }
 }
 
-KateViRange Searcher::motionFindNext(int count)
+ViRange Searcher::motionFindNext(int count)
 {
-    KateViRange match = findPatternForMotion(
+    ViRange match = findPatternForMotion(
         m_lastSearchPattern,
         m_lastSearchBackwards,
         m_lastSearchCaseSensitive,
@@ -75,15 +75,15 @@ KateViRange Searcher::motionFindNext(int count)
         count);
 
     if (!m_lastSearchPlacedCursorAtEndOfMatch) {
-        return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
+        return ViRange(match.startLine, match.startColumn, ExclusiveMotion);
     } else {
-        return KateViRange(match.endLine, match.endColumn - 1, ViMotion::ExclusiveMotion);
+        return ViRange(match.endLine, match.endColumn - 1, ExclusiveMotion);
     }
 }
 
-KateViRange Searcher::motionFindPrev(int count)
+ViRange Searcher::motionFindPrev(int count)
 {
-    KateViRange match = findPatternForMotion(
+    ViRange match = findPatternForMotion(
         m_lastSearchPattern,
         !m_lastSearchBackwards,
         m_lastSearchCaseSensitive,
@@ -91,24 +91,23 @@ KateViRange Searcher::motionFindPrev(int count)
         count);
 
     if (!m_lastSearchPlacedCursorAtEndOfMatch) {
-        return KateViRange(match.startLine, match.startColumn, ViMotion::ExclusiveMotion);
+        return ViRange(match.startLine, match.startColumn, ExclusiveMotion);
     } else {
-        return KateViRange(match.endLine, match.endColumn - 1, ViMotion::ExclusiveMotion);
+        return ViRange(match.endLine, match.endColumn - 1, ExclusiveMotion);
     }
 }
 
-KateViRange Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count) const
+ViRange Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count) const
 {
     if (pattern.isEmpty()) {
-        return KateViRange();
+        return ViRange();
     }
 
     Range match = findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
-
-    return KateViRange(match.start().line(), match.start().column(), match.end().line(), match.end().column(), ViMotion::ExclusiveMotion);
+    return ViRange(match.start(), match.end(), ExclusiveMotion);
 }
 
-KateViRange Searcher::findWordForMotion(const QString &word, bool backwards, const Cursor &startFrom, int count)
+ViRange Searcher::findWordForMotion(const QString &word, bool backwards, const Cursor &startFrom, int count)
 {
     m_lastSearchBackwards = backwards;
     m_lastSearchCaseSensitive = false;

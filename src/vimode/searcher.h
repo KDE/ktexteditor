@@ -21,7 +21,7 @@
 #ifndef KATEVI_SEARCHER_H
 #define KATEVI_SEARCHER_H
 
-#include "katevirange.h"
+#include <vimode/range.h>
 
 #include <QString>
 
@@ -47,9 +47,9 @@ public:
     void findPrevious();
 
     /** Simple searchers **/
-    KateViRange motionFindNext(int count = 1);
-    KateViRange motionFindPrev(int count = 1);
-    KateViRange findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
+    KateVi::ViRange motionFindNext(int count = 1);
+    KateVi::ViRange motionFindPrev(int count = 1);
+    KateVi::ViRange findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
 
     /** Extended searcher for ECB **/
     KTextEditor::Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count);
@@ -57,7 +57,7 @@ public:
     const QString getLastSearchPattern() const;
 
 private:
-    KateViRange findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
+    KateVi::ViRange findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
     KTextEditor::Range findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const;
 
 private:

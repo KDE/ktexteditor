@@ -28,7 +28,7 @@
 #include <ktexteditor_export.h>
 
 #include "kateview.h"
-#include "katevirange.h"
+#include <vimode/range.h>
 #include "definitions.h"
 
 #include <QList>
@@ -87,17 +87,17 @@ public:
     void error(const QString &errorMsg);
     void message(const QString &msg);
 
-    KateViRange motionFindNext();
-    KateViRange motionFindPrev();
+    KateVi::ViRange motionFindNext();
+    KateVi::ViRange motionFindPrev();
 
-    virtual void goToPos(const KateViRange &r);
+    virtual void goToPos(const KateVi::ViRange &r);
     unsigned int getCount() const;
 
 protected:
     // helper methods
     void yankToClipBoard(QChar chosen_register, QString text);
-    bool deleteRange(KateViRange &r, OperationMode mode = LineWise, bool addToRegister = true);
-    const QString getRange(KateViRange &r, OperationMode mode = LineWise) const;
+    bool deleteRange(KateVi::ViRange &r, OperationMode mode = LineWise, bool addToRegister = true);
+    const QString getRange(KateVi::ViRange &r, OperationMode mode = LineWise) const;
     const QString getLine(int line = -1) const;
     const QChar getCharUnderCursor() const;
     const QString getWordUnderCursor() const;
@@ -111,10 +111,10 @@ protected:
     Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
-    KateViRange findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
+    KateVi::ViRange findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
                                         const QChar &nested1, const QChar &nested2) const;
-    KateViRange findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
-    KateViRange findSurroundingQuotes(const QChar &c, bool inner = false) const;
+    KateVi::ViRange findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
+    KateVi::ViRange findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
     void updateCursor(const Cursor &c) const;
@@ -122,10 +122,10 @@ protected:
 
     void addToNumberUnderCursor(int count);
 
-    KateViRange goLineUp();
-    KateViRange goLineDown();
-    KateViRange goLineUpDown(int lines);
-    KateViRange goVisualLineUpDown(int lines);
+    KateVi::ViRange goLineUp();
+    KateVi::ViRange goLineDown();
+    KateVi::ViRange goLineUpDown(int lines);
+    KateVi::ViRange goVisualLineUpDown(int lines);
 
     unsigned int linesDisplayed() const;
     void scrollViewLines(int l);
@@ -161,7 +161,7 @@ protected:
 protected:
     QChar m_register;
 
-    KateViRange m_commandRange;
+    KateVi::ViRange m_commandRange;
     unsigned int m_count;
     int m_oneTimeCountOverride;
     bool m_iscounted;
