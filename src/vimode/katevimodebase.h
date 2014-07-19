@@ -24,7 +24,7 @@
 #ifndef KATE_VI_MODE_BASE_INCLUDED
 #define KATE_VI_MODE_BASE_INCLUDED
 
-#include <ktexteditor/cursor.h>
+#include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
 #include "kateview.h"
@@ -32,9 +32,6 @@
 #include "definitions.h"
 
 #include <QList>
-
-using KTextEditor::Cursor;
-using KTextEditor::Range;
 
 class QKeyEvent;
 class QString;
@@ -101,15 +98,15 @@ protected:
     const QString getLine(int line = -1) const;
     const QChar getCharUnderCursor() const;
     const QString getWordUnderCursor() const;
-    const Range getWordRangeUnderCursor() const;
-    Cursor findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findPrevWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findPrevWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findPrevWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
-    Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    const KTextEditor::Range getWordRangeUnderCursor() const;
+    KTextEditor::Cursor findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findPrevWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findPrevWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findPrevWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
+    KTextEditor::Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
     KateVi::ViRange findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
                                         const QChar &nested1, const QChar &nested2) const;
@@ -117,7 +114,7 @@ protected:
     KateVi::ViRange findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
-    void updateCursor(const Cursor &c) const;
+    void updateCursor(const KTextEditor::Cursor &c) const;
     const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht) const;
 
     void addToNumberUnderCursor(int count);

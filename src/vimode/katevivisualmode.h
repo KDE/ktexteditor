@@ -56,34 +56,34 @@ public:
     void reset();
     void setVisualModeType(ViMode mode);
     void saveRangeMarks();
-    void setStart(const Cursor &c)
+    void setStart(const KTextEditor::Cursor &c)
     {
         m_start = c;
     }
-    Cursor getStart()
+    KTextEditor::Cursor getStart()
     {
         return m_start;
     }
 
-    void goToPos(const Cursor &c);
+    void goToPos(const KTextEditor::Cursor &c);
 
     ViMode getLastVisualMode() const
     {
         return m_lastVisualMode;
     }
-    Cursor getStart() const
+    KTextEditor::Cursor getStart() const
     {
         return m_start;
     }
 
     // Selects all lines in range;
-    void SelectLines(Range range);
+    void SelectLines(KTextEditor::Range range);
 
     // Selects range between c1 and c2, but includes the end cursor position.
-    void SelectInclusive(Cursor c1, Cursor c2);
+    void SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2);
 
     // Select block between c1 and c2.
-    void SelectBlockInclusive(Cursor c1, Cursor c2);
+    void SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2);
 
 public Q_SLOTS:
     /**
@@ -104,7 +104,7 @@ private:
      */
     void goToPos(const KateVi::ViRange &r);
     ViMode m_mode;
-    Cursor m_start;
+    KTextEditor::Cursor m_start;
     ViMode m_lastVisualMode; // used when reselecting a visual selection
 };
 

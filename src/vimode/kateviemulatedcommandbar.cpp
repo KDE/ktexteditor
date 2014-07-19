@@ -339,7 +339,7 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInp
     layout->addWidget(m_interactiveSedReplaceLabel);
 
     updateMatchHighlightAttrib();
-    m_highlightedMatch = m_view->doc()->newMovingRange(Range::invalid(), Kate::TextRange::DoNotExpand);
+    m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
     m_highlightedMatch->setView(m_view); // Show only in this view.
     m_highlightedMatch->setAttributeOnlyForViews(true);
     // Use z depth defined in moving ranges interface.
@@ -452,7 +452,7 @@ void KateViEmulatedCommandBar::closed()
         }
     }
     m_startingCursorPos = KTextEditor::Cursor::invalid();
-    updateMatchHighlight(Range::invalid());
+    updateMatchHighlight(KTextEditor::Range());
     m_completer->popup()->hide();
     m_isActive = false;
 
@@ -489,7 +489,7 @@ void KateViEmulatedCommandBar::updateMatchHighlightAttrib()
     m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
 }
 
-void KateViEmulatedCommandBar::updateMatchHighlight(const Range &matchRange)
+void KateViEmulatedCommandBar::updateMatchHighlight(const KTextEditor::Range &matchRange)
 {
     // Note that if matchRange is invalid, the highlight will not be shown, so we
     // don't need to check for that explicitly.
@@ -874,7 +874,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
         // with mappings and macros.
         if (keyEvent->text() == QLatin1String("y") || keyEvent->text() == QLatin1String("n")) {
-            const Cursor cursorPosIfFinalMatch = m_interactiveSedReplacer->currentMatch().start();
+            const KTextEditor::Cursor cursorPosIfFinalMatch = m_interactiveSedReplacer->currentMatch().start();
             if (keyEvent->text() == QLatin1String("y")) {
                 m_interactiveSedReplacer->replaceCurrentMatch();
             } else {
@@ -1202,7 +1202,7 @@ void KateViEmulatedCommandBar::finishInteractiveSedReplace()
     m_interactiveSedReplacer.clear();
 }
 
-void KateViEmulatedCommandBar::moveCursorTo(const Cursor &cursorPos)
+void KateViEmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 {
     m_view->setCursorPosition(cursorPos);
     if (m_viInputModeManager->getCurrentViMode() == VisualMode || m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
@@ -1243,13 +1243,13 @@ void KateViEmulatedCommandBar::editTextChanged(const QString &newText)
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.
         int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
-        Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c);
+        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c);
 
         if (match.isValid()) {
             // The returned range ends one past the last character of the match, so adjust.
-            Cursor realMatchEnd = Cursor(match.end().line(), match.end().column() - 1);
+            KTextEditor::Cursor realMatchEnd = KTextEditor::Cursor(match.end().line(), match.end().column() - 1);
             if (realMatchEnd.column() == -1) {
-                realMatchEnd = Cursor(realMatchEnd.line() - 1, m_view->doc()->lineLength(realMatchEnd.line() - 1));
+                realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, m_view->doc()->lineLength(realMatchEnd.line() - 1));
             }
             moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd :  match.start());
             setBarBackground(MatchFound);

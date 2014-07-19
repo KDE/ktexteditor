@@ -84,7 +84,7 @@ void KateViInputMode::activate()
 
     if (view()->selection()) {
         m_viModeManager->changeViMode(VisualMode);
-        view()->setCursorPosition(Cursor(view()->selectionRange().end().line(), view()->selectionRange().end().column() - 1));
+        view()->setCursorPosition(KTextEditor::Cursor(view()->selectionRange().end().line(), view()->selectionRange().end().column() - 1));
         m_viModeManager->m_viVisualMode->updateSelection();
     }
     viewInternal()->iconBorder()->setRelLineNumbersOn(m_relLineNumbers);

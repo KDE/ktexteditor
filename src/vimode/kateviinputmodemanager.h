@@ -34,18 +34,17 @@
 
 namespace KateVi
 {
-class GlobalState;
-class Searcher;
-class CompletionRecorder;
-class CompletionReplayer;
-class Marks;
-class Jumps;
-class MacroRecorder;
-class LastChangeRecorder;
+    class GlobalState;
+    class Searcher;
+    class CompletionRecorder;
+    class CompletionReplayer;
+    class Marks;
+    class Jumps;
+    class MacroRecorder;
+    class LastChangeRecorder;
 }
+
 class KConfigGroup;
-namespace KTextEditor { class ViewPrivate; }
-namespace KTextEditor { class DocumentPrivate; }
 class KateViewInternal;
 class KateViModeBase;
 class KateViNormalMode;
@@ -58,9 +57,11 @@ class QString;
 
 namespace KTextEditor
 {
-class MovingCursor;
-class Mark;
-class MarkInterface;
+    class ViewPrivate;
+    class DocumentPrivate;
+    class MovingCursor;
+    class Mark;
+    class MarkInterface;
 }
 
 class KateViInputMode;

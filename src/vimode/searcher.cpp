@@ -97,17 +97,17 @@ ViRange Searcher::motionFindPrev(int count)
     }
 }
 
-ViRange Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const Cursor &startFrom, int count) const
+ViRange Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
 {
     if (pattern.isEmpty()) {
         return ViRange();
     }
 
-    Range match = findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
+    KTextEditor::Range match = findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
     return ViRange(match.start(), match.end(), ExclusiveMotion);
 }
 
-ViRange Searcher::findWordForMotion(const QString &word, bool backwards, const Cursor &startFrom, int count)
+ViRange Searcher::findWordForMotion(const QString &word, bool backwards, const KTextEditor::Cursor &startFrom, int count)
 {
     m_lastSearchBackwards = backwards;
     m_lastSearchCaseSensitive = false;
@@ -134,7 +134,7 @@ KTextEditor::Range Searcher::findPattern(const QString &pattern, bool backwards,
 
 KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
 {
-    Cursor searchBegin = startFrom;
+    KTextEditor::Cursor searchBegin = startFrom;
     KTextEditor::Search::SearchOptions flags = KTextEditor::Search::Regex;
 
     if (backwards) {
@@ -143,10 +143,10 @@ KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool back
     if (!caseSensitive) {
         flags |= KTextEditor::Search::CaseInsensitive;
     }
-    Range finalMatch;
+    KTextEditor::Range finalMatch;
     for (int i = 0; i < count; i++) {
         if (!backwards) {
-            const KTextEditor::Range matchRange = m_view->doc()->searchText(KTextEditor::Range(Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags).first();
+            const KTextEditor::Range matchRange = m_view->doc()->searchText(KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags).first();
 
             if (matchRange.isValid()) {
                 finalMatch = matchRange;
@@ -168,10 +168,10 @@ KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool back
             // Unfortunately, searchText doesn't necessarily turn up all matches (just the first one, sometimes)
             // so we must repeatedly search in such a way that the previous match isn't found, until we either
             // find no matches at all, or the first match that is before searchBegin.
-            Cursor newSearchBegin = Cursor(searchBegin.line(), m_view->doc()->lineLength(searchBegin.line()));
-            Range bestMatch = KTextEditor::Range::invalid();
+            KTextEditor::Cursor newSearchBegin = KTextEditor::Cursor(searchBegin.line(), m_view->doc()->lineLength(searchBegin.line()));
+            KTextEditor::Range bestMatch = KTextEditor::Range::invalid();
             while (true) {
-                QVector<Range> matchesUnfiltered = m_view->doc()->searchText(Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
+                QVector<KTextEditor::Range> matchesUnfiltered = m_view->doc()->searchText(KTextEditor::Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
                 qCDebug(LOG_PART) << "matchesUnfiltered: " << matchesUnfiltered << " searchBegin: " << newSearchBegin;
 
                 if (matchesUnfiltered.size() == 1 && !matchesUnfiltered.first().isValid()) {
@@ -181,8 +181,8 @@ KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool back
                 // After sorting, the last element in matchesUnfiltered is the last match position.
                 qSort(matchesUnfiltered);
 
-                QVector<Range> filteredMatches;
-                foreach (Range unfilteredMatch, matchesUnfiltered) {
+                QVector<KTextEditor::Range> filteredMatches;
+                foreach (KTextEditor::Range unfilteredMatch, matchesUnfiltered) {
                     if (unfilteredMatch.start() < searchBegin) {
                         filteredMatches.append(unfilteredMatch);
                     }
@@ -200,7 +200,7 @@ KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool back
                 }
             }
 
-            Range matchRange = bestMatch;
+            KTextEditor::Range matchRange = bestMatch;
 
             if (matchRange.isValid()) {
                 finalMatch = matchRange;

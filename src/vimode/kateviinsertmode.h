@@ -103,7 +103,7 @@ protected:
 
     bool m_isExecutingCompletion;
     QString m_textInsertedByCompletion;
-    Cursor m_textInsertedByCompletionEndPos;
+    KTextEditor::Cursor m_textInsertedByCompletionEndPos;
 
 private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);

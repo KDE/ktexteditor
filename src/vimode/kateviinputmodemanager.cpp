@@ -54,12 +54,6 @@
 #include "macrorecorder.h"
 #include "lastchangerecorder.h"
 
-using KTextEditor::Cursor;
-using KTextEditor::Document;
-using KTextEditor::Mark;
-using KTextEditor::MarkInterface;
-using KTextEditor::MovingCursor;
-
 KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : m_inputAdapter(inputAdapter)
 {
@@ -340,14 +334,14 @@ void KateViInputModeManager::viEnterNormalMode()
     if (!m_lastChangeRecorder->isReplaying() && m_currentViMode == InsertMode) {
         // '^ is the insert mark and "^ is the insert register,
         // which holds the last inserted text
-        Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
+        KTextEditor::Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
 
         if (r.isValid()) {
             QString insertedText = m_view->doc()->text(r);
             m_inputAdapter->globalState()->registers()->setInsertStopped(insertedText);
         }
 
-        m_marks->setInsertStopped(Cursor(m_view->cursorPosition()));
+        m_marks->setInsertStopped(KTextEditor::Cursor(m_view->cursorPosition()));
     }
 
     changeViMode(NormalMode);
@@ -362,7 +356,7 @@ void KateViInputModeManager::viEnterNormalMode()
 void KateViInputModeManager::viEnterInsertMode()
 {
     changeViMode(InsertMode);
-    m_marks->setInsertStopped(Cursor(m_view->cursorPosition()));
+    m_marks->setInsertStopped(KTextEditor::Cursor(m_view->cursorPosition()));
     if (getTemporaryNormalMode()) {
         // Ensure the key log contains a request to re-enter Insert mode, else the keystrokes made
         // after returning from temporary normal mode will be treated as commands!
@@ -458,7 +452,7 @@ KateViKeyMapper *KateViInputModeManager::keyMapper()
     return m_keyMapperStack.top().data();
 }
 
-void KateViInputModeManager::updateCursor(const Cursor &c)
+void KateViInputModeManager::updateCursor(const KTextEditor::Cursor &c)
 {
     m_inputAdapter->updateCursor(c);
 }

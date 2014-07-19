@@ -32,7 +32,7 @@
 #include <QHash>
 #include <QRegExp>
 
-#include <ktexteditor/cursor.h>
+#include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
 class QKeyEvent;
@@ -302,7 +302,7 @@ protected:
     OperationMode getOperationMode() const;
 
     void highlightYank(const KateVi::ViRange &range, const OperationMode mode = CharWise);
-    void addHighlightYank(const Range &range);
+    void addHighlightYank(const KTextEditor::Range &range);
 
     bool motionWillBeUsedWithCommand() const
     {
@@ -325,17 +325,17 @@ protected:
 
     KateVi::ViRange textObjectComma(bool inner) const;
     void shrinkRangeAroundCursor(KateVi::ViRange &toShrink, const KateVi::ViRange &rangeToShrinkTo) const;
-    Cursor findSentenceStart();
-    Cursor findSentenceEnd();
-    Cursor findParagraphStart();
-    Cursor findParagraphEnd();
+    KTextEditor::Cursor findSentenceStart();
+    KTextEditor::Cursor findSentenceEnd();
+    KTextEditor::Cursor findParagraphStart();
+    KTextEditor::Cursor findParagraphEnd();
 
 protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
     enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
     bool paste(KateViNormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
-    Cursor cursorPosAtEndOfPaste(const Cursor &pasteLocation, const QString &pastedText) const;
+    KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const;
 
 protected:
     QString m_keys;
@@ -374,8 +374,8 @@ protected:
     QSet<KTextEditor::MovingRange *> m_highlightedYanks;
     QSet<KTextEditor::MovingRange *> &highlightedYankForDocument();
 
-    Cursor m_currentChangeEndMarker;
-    Cursor m_positionWhenIncrementalSearchBegan;
+    KTextEditor::Cursor m_currentChangeEndMarker;
+    KTextEditor::Cursor m_positionWhenIncrementalSearchBegan;
 
 private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);

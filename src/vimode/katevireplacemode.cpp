@@ -76,7 +76,7 @@ bool KateViReplaceMode::commandMoveOneWordLeft()
     c = findPrevWordStart(c.line(), c.column());
 
     if (!c.isValid()) {
-        c = Cursor(0, 0);
+        c = KTextEditor::Cursor(0, 0);
     }
 
     updateCursor(c);

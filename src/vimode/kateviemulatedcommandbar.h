@@ -23,7 +23,7 @@
 #include "kateviewhelpers.h"
 #include "katevicmds.h"
 
-#include <ktexteditor/cursor.h>
+#include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
 

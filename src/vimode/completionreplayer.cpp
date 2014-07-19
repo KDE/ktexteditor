@@ -30,7 +30,6 @@
 #include <QKeyEvent>
 
 using namespace KateVi;
-using namespace KTextEditor;
 
 CompletionReplayer::CompletionReplayer(KateViInputModeManager *viInputModeManager)
     : m_viInputModeManager(viInputModeManager)
@@ -57,12 +56,12 @@ void CompletionReplayer::stop()
 void CompletionReplayer::replay()
 {
     const KateVi::Completion completion = nextCompletion();
-    ViewPrivate *m_view = m_viInputModeManager->view();
-    DocumentPrivate *doc = m_view->doc();
+    KTextEditor::ViewPrivate *m_view = m_viInputModeManager->view();
+    KTextEditor::DocumentPrivate *doc = m_view->doc();
 
     // Find beginning of the word.
-    Cursor cursorPos = m_view->cursorPosition();
-    Cursor wordStart = Cursor::invalid();
+    KTextEditor::Cursor cursorPos = m_view->cursorPosition();
+    KTextEditor::Cursor wordStart = KTextEditor::Cursor::invalid();
     if (!doc->characterAt(cursorPos).isLetterOrNumber() && doc->characterAt(cursorPos) != QLatin1Char('_')) {
         cursorPos.setColumn(cursorPos.column() - 1);
     }
@@ -72,13 +71,13 @@ void CompletionReplayer::replay()
     }
     // Find end of current word.
     cursorPos = m_view->cursorPosition();
-    Cursor wordEnd = Cursor(cursorPos.line(), cursorPos.column() - 1);
+    KTextEditor::Cursor wordEnd = KTextEditor::Cursor(cursorPos.line(), cursorPos.column() - 1);
     while (cursorPos.column() < doc->lineLength(cursorPos.line()) && (doc->characterAt(cursorPos).isLetterOrNumber() || doc->characterAt(cursorPos) == QLatin1Char('_'))) {
         wordEnd = cursorPos;
         cursorPos.setColumn(cursorPos.column() + 1);
     }
     QString completionText = completion.completedText();
-    const Range currentWord = Range(wordStart, Cursor(wordEnd.line(), wordEnd.column() + 1));
+    const KTextEditor::Range currentWord = KTextEditor::Range(wordStart, KTextEditor::Cursor(wordEnd.line(), wordEnd.column() + 1));
     // Should we merge opening brackets? Yes, if completion is a function with arguments and after the cursor
     // there is (optional whitespace) followed by an open bracket.
     int offsetFinalCursorPosBy = 0;
@@ -104,18 +103,18 @@ void CompletionReplayer::replay()
             offsetFinalCursorPosBy = completionText.endsWith(QLatin1Char(';')) ? -2 : -1;
         }
     }
-    Cursor deleteEnd =  completion.removeTail() ? currentWord.end() :
-                        Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
+    KTextEditor::Cursor deleteEnd =  completion.removeTail() ? currentWord.end() :
+                        KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
 
     if (currentWord.isValid()) {
-        doc->removeText(Range(currentWord.start(), deleteEnd));
+        doc->removeText(KTextEditor::Range(currentWord.start(), deleteEnd));
         doc->insertText(currentWord.start(), completionText);
     } else {
         doc->insertText(m_view->cursorPosition(), completionText);
     }
 
     if (offsetFinalCursorPosBy != 0) {
-        m_view->setCursorPosition(Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + offsetFinalCursorPosBy));
+        m_view->setCursorPosition(KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + offsetFinalCursorPosBy));
     }
 
     if (!m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
@@ -143,8 +142,8 @@ Completion CompletionReplayer::nextCompletion()
 
 int CompletionReplayer::findNextMergeableBracketPos(const KTextEditor::Cursor &startPos) const
 {
-    DocumentPrivate *doc = m_viInputModeManager->view()->doc();
-    const QString lineAfterCursor = doc->text(Range(startPos, Cursor(startPos.line(), doc->lineLength(startPos.line()))));
+    KTextEditor::DocumentPrivate *doc = m_viInputModeManager->view()->doc();
+    const QString lineAfterCursor = doc->text(KTextEditor::Range(startPos, KTextEditor::Cursor(startPos.line(), doc->lineLength(startPos.line()))));
     QRegExp whitespaceThenOpeningBracket(QLatin1String("^\\s*(\\()"));
     int nextMergableBracketAfterCursorPos = -1;
     if (lineAfterCursor.contains(whitespaceThenOpeningBracket)) {
