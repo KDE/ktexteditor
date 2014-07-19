@@ -30,10 +30,6 @@
 #include "kateviinputmode.h"
 #include "marks.h"
 
-using KTextEditor::Cursor;
-using KTextEditor::Range;
-using KTextEditor::View;
-
 #define ADDCMD(STR,FUNC, FLGS) m_commands.push_back( \
         new KateViCommand( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
 
@@ -55,32 +51,32 @@ KateViVisualMode::~KateViVisualMode()
 {
 }
 
-void KateViVisualMode::SelectInclusive(Cursor c1, KTextEditor::Cursor c2)
+void KateViVisualMode::SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
 {
     if (c1 >= c2)
-        m_view->setSelection(Range(c1.line(), c1.column() + 1,
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
                                    c2.line(), c2.column()));
     else
-        m_view->setSelection(Range(c1.line(), c1.column(),
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
                                    c2.line(), c2.column() + 1));
 }
 
-void KateViVisualMode::SelectBlockInclusive(Cursor c1, KTextEditor::Cursor c2)
+void KateViVisualMode::SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
 {
     m_view->setBlockSelection(true);
     if (c1.column() >= c2.column())
-        m_view->setSelection(Range(c1.line(), c1.column() + 1,
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
                                    c2.line(), c2.column()));
     else
-        m_view->setSelection(Range(c1.line(), c1.column(),
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
                                    c2.line(), c2.column() + 1));
 }
 
-void KateViVisualMode::SelectLines(Range range)
+void KateViVisualMode::SelectLines(KTextEditor::Range range)
 {
     int startline = qMin(range.start().line(), range.end().line());
     int endline   = qMax(range.start().line(), range.end().line());
-    m_view->setSelection(Range(Cursor(startline, 0),
+    m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(startline, 0),
                                KTextEditor::Cursor(endline, m_view->doc()->lineLength(endline) + 1)));
 }
 
@@ -135,7 +131,7 @@ void KateViVisualMode::goToPos(const KateVi::ViRange &r)
 
     // If visual mode is linewise
     if (isVisualLine()) {
-        SelectLines(Range(m_start, c));
+        SelectLines(KTextEditor::Range(m_start, c));
         return;
     }
 
@@ -160,7 +156,7 @@ void KateViVisualMode::reset()
             if (m_start.line() != -1 && m_start.column() != -1) {
                 if (m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
                     if (m_start.line() < c.line()) {
-                        updateCursor(Cursor(m_start.line(), 0));
+                        updateCursor(KTextEditor::Cursor(m_start.line(), 0));
                         m_stickyColumn = -1;
                     }
                 } else {
@@ -207,7 +203,7 @@ void KateViVisualMode::init()
 
     if (isVisualLine()) {
         KTextEditor::Cursor c = m_view->cursorPosition();
-        SelectLines(Range(c, c));
+        SelectLines(KTextEditor::Range(c, c));
     }
 
     m_commandRange.startLine = m_commandRange.endLine = m_start.line();
@@ -251,7 +247,7 @@ void KateViVisualMode::updateSelection()
     // If we are there it's already not VisualBlock mode.
     m_view->setBlockSelection(false);
 
-    Range r = m_view->selectionRange();
+    KTextEditor::Range r = m_view->selectionRange();
 
     // If not valid going back to normal mode
     if (!r.isValid()) {

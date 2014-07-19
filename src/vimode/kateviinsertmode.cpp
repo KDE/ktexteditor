@@ -301,7 +301,7 @@ bool KateViInsertMode::commandSwitchToNormalModeForJustOneCommand()
     const KTextEditor::Cursor cursorPos = m_view->cursorPosition();
     // If we're at end of the line, move the cursor back one step, as in Vim.
     if (doc()->line(cursorPos.line()).length() == cursorPos.column()) {
-        m_view->setCursorPosition(Cursor(cursorPos.line(), cursorPos.column() - 1));
+        m_view->setCursorPosition(KTextEditor::Cursor(cursorPos.line(), cursorPos.column() - 1));
     }
     m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
     emit m_view->viewModeChanged(m_view, m_view->viewMode());
