@@ -105,21 +105,6 @@ void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
     TextBlock *block = m_buffer.blockForIndex(m_buffer.blockForLine(position.line()));
     Q_ASSERT(block);
 
-    // get line
-    TextLine textLine = block->line(position.line());
-
-#if 0 // this is no good idea, smart cursors don't do that, too, for non-wrapping cursors
-    // now, validate column, else stay invalid
-    if (position.column() > textLine->text().size()) {
-        if (!m_range) {
-            m_buffer.m_invalidCursors.insert(this);
-        }
-        m_block = 0;
-        m_line = m_column = -1;
-        return;
-    }
-#endif
-
     // if cursor was invalid before, remove it from invalid cursor list
     if (!m_range && !m_block && !init) {
         Q_ASSERT(m_buffer.m_invalidCursors.contains(this));
