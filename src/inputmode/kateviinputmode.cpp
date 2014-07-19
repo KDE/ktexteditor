@@ -21,8 +21,8 @@
 #include "kateconfig.h"
 #include "vimode/kateviinputmodemanager.h"
 #include "vimode/kateviemulatedcommandbar.h"
-#include "vimode/katevireplacemode.h"
-#include "vimode/katevivisualmode.h"
+#include <vimode/modes/replacemode.h>
+#include <vimode/modes/visualmode.h>
 #include "vimode/marks.h"
 #include "vimode/searcher.h"
 #include "vimode/macrorecorder.h"

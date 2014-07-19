@@ -21,26 +21,26 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevimodebase.h"
+#include <vimode/modes/modebase.h>
 #include <vimode/range.h>
 #include "kateglobal.h"
 #include "kateviinputmode.h"
-#include "globalstate.h"
-#include "katevivisualmode.h"
-#include "katevinormalmode.h"
-#include "katevireplacemode.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/globalstate.h>
+#include <vimode/modes/visualmode.h>
+#include <vimode/modes/normalmode.h>
+#include <vimode/modes/replacemode.h>
+#include <vimode/kateviinputmodemanager.h>
 #include "katelayoutcache.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateviewinternal.h"
 #include "katerenderer.h"
 #include "katepartdebug.h"
-#include "marks.h"
-#include "jumps.h"
-#include "registers.h"
-#include "searcher.h"
-#include "lastchangerecorder.h"
+#include <vimode/marks.h>
+#include <vimode/jumps.h>
+#include <vimode/registers.h>
+#include <vimode/searcher.h>
+#include <vimode/lastchangerecorder.h>
 
 #include <QString>
 #include <KLocalizedString>
@@ -58,7 +58,7 @@ using namespace KateVi;
 // HELPER METHODS
 ////////////////////////////////////////////////////////////////////////////////
 
-void KateViModeBase::yankToClipBoard(QChar chosen_register, QString text)
+void ModeBase::yankToClipBoard(QChar chosen_register, QString text)
 {
     //only yank to the clipboard if no register was specified,
     // textlength > 1 and there is something else then whitespace
@@ -69,7 +69,7 @@ void KateViModeBase::yankToClipBoard(QChar chosen_register, QString text)
     }
 }
 
-bool KateViModeBase::deleteRange(KateVi::Range &r, OperationMode mode, bool addToRegister)
+bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
 {
     r.normalize();
     bool res = false;
@@ -99,7 +99,7 @@ bool KateViModeBase::deleteRange(KateVi::Range &r, OperationMode mode, bool addT
     return res;
 }
 
-const QString KateViModeBase::getRange(KateVi::Range &r, OperationMode mode) const
+const QString ModeBase::getRange(Range &r, OperationMode mode) const
 {
     r.normalize();
     QString s;
@@ -126,12 +126,12 @@ const QString KateViModeBase::getRange(KateVi::Range &r, OperationMode mode) con
     return s;
 }
 
-const QString KateViModeBase::getLine(int line) const
+const QString ModeBase::getLine(int line) const
 {
     return (line < 0) ? m_view->currentTextLine() : doc()->line(line);
 }
 
-const QChar KateViModeBase::getCharUnderCursor() const
+const QChar ModeBase::getCharUnderCursor() const
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -144,13 +144,13 @@ const QChar KateViModeBase::getCharUnderCursor() const
     return line.at(c.column());
 }
 
-const QString KateViModeBase::getWordUnderCursor() const
+const QString ModeBase::getWordUnderCursor() const
 {
 
     return doc()->text(getWordRangeUnderCursor());
 }
 
-const KTextEditor::Range KateViModeBase::getWordRangeUnderCursor() const
+const KTextEditor::Range ModeBase::getWordRangeUnderCursor() const
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -185,7 +185,7 @@ const KTextEditor::Range KateViModeBase::getWordRangeUnderCursor() const
     return KTextEditor::Range(c1, c2);
 }
 
-KTextEditor::Cursor KateViModeBase::findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -250,7 +250,7 @@ KTextEditor::Cursor KateViModeBase::findNextWordStart(int fromLine, int fromColu
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
@@ -291,7 +291,7 @@ KTextEditor::Cursor KateViModeBase::findNextWORDStart(int fromLine, int fromColu
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -331,7 +331,7 @@ KTextEditor::Cursor KateViModeBase::findPrevWordEnd(int fromLine, int fromColumn
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -368,7 +368,7 @@ KTextEditor::Cursor KateViModeBase::findPrevWORDEnd(int fromLine, int fromColumn
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -436,7 +436,7 @@ KTextEditor::Cursor KateViModeBase::findPrevWordStart(int fromLine, int fromColu
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findPrevWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findPrevWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -484,7 +484,7 @@ KTextEditor::Cursor KateViModeBase::findPrevWORDStart(int fromLine, int fromColu
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -525,7 +525,7 @@ KTextEditor::Cursor KateViModeBase::findWordEnd(int fromLine, int fromColumn, bo
     return KTextEditor::Cursor(l, c);
 }
 
-KTextEditor::Cursor KateViModeBase::findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
+KTextEditor::Cursor ModeBase::findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
     QString line = getLine(fromLine);
 
@@ -560,7 +560,7 @@ KTextEditor::Cursor KateViModeBase::findWORDEnd(int fromLine, int fromColumn, bo
     return KTextEditor::Cursor(l, c);
 }
 
-Range innerRange(KateVi::Range range, bool inner)
+Range innerRange(Range range, bool inner)
 {
     Range r = range;
 
@@ -577,7 +577,7 @@ Range innerRange(KateVi::Range range, bool inner)
     return r;
 }
 
-Range KateViModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
+Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     Range r;
@@ -642,7 +642,7 @@ Range KateViModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
     return innerRange(r, inner);
 }
 
-Range KateViModeBase::findSurroundingBrackets(const QChar &c1,
+Range ModeBase::findSurroundingBrackets(const QChar &c1,
         const QChar &c2,
         bool inner,
         const QChar &nested1,
@@ -761,7 +761,7 @@ Range KateViModeBase::findSurroundingBrackets(const QChar &c1,
     return innerRange(r, inner);
 }
 
-Range KateViModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner) const
+Range ModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
@@ -783,7 +783,7 @@ Range KateViModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool
     return r;
 }
 
-int KateViModeBase::findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward) const
+int ModeBase::findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward) const
 {
     int line = m_view->cursorPosition().line();
     int lines = doc()->lines();
@@ -816,7 +816,7 @@ int KateViModeBase::findLineStartingWitchChar(const QChar &c, unsigned int count
     return -1;
 }
 
-void KateViModeBase::updateCursor(const KTextEditor::Cursor &c) const
+void ModeBase::updateCursor(const KTextEditor::Cursor &c) const
 {
     m_viInputModeManager->updateCursor(c);
 }
@@ -824,12 +824,12 @@ void KateViModeBase::updateCursor(const KTextEditor::Cursor &c) const
 /**
  * @return the register given for the command. If no register was given, defaultReg is returned.
  */
-QChar KateViModeBase::getChosenRegister(const QChar &defaultReg) const
+QChar ModeBase::getChosenRegister(const QChar &defaultReg) const
 {
     return (m_register != QChar::Null) ? m_register : defaultReg;
 }
 
-QString KateViModeBase::getRegisterContent(const QChar &reg)
+QString ModeBase::getRegisterContent(const QChar &reg)
 {
     QString r = m_viInputModeManager->globalState()->registers()->getContent(reg);
 
@@ -840,32 +840,32 @@ QString KateViModeBase::getRegisterContent(const QChar &reg)
     return r;
 }
 
-OperationMode KateViModeBase::getRegisterFlag(const QChar &reg) const
+OperationMode ModeBase::getRegisterFlag(const QChar &reg) const
 {
     return m_viInputModeManager->globalState()->registers()->getFlag(reg);
 }
 
-void KateViModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
+void ModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
     m_viInputModeManager->globalState()->registers()->set(reg, text, flag);
 }
 
-KTextEditor::Cursor KateViModeBase::getNextJump(KTextEditor::Cursor cursor) const
+KTextEditor::Cursor ModeBase::getNextJump(KTextEditor::Cursor cursor) const
 {
     return m_viInputModeManager->jumps()->next(cursor);
 }
 
-KTextEditor::Cursor KateViModeBase::getPrevJump(KTextEditor::Cursor cursor) const
+KTextEditor::Cursor ModeBase::getPrevJump(KTextEditor::Cursor cursor) const
 {
     return m_viInputModeManager->jumps()->prev(cursor);
 }
 
-Range KateViModeBase::goLineDown()
+Range ModeBase::goLineDown()
 {
     return goLineUpDown(getCount());
 }
 
-Range KateViModeBase::goLineUp()
+Range ModeBase::goLineUp()
 {
     return goLineUpDown(-getCount());
 }
@@ -874,7 +874,7 @@ Range KateViModeBase::goLineUp()
  * method for moving up or down one or more lines
  * note: the sticky column is always a virtual column
  */
-Range KateViModeBase::goLineUpDown(int lines)
+Range ModeBase::goLineUpDown(int lines)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -928,7 +928,7 @@ Range KateViModeBase::goLineUpDown(int lines)
     return r;
 }
 
-Range KateViModeBase::goVisualLineUpDown(int lines)
+Range ModeBase::goVisualLineUpDown(int lines)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -1033,7 +1033,7 @@ Range KateViModeBase::goVisualLineUpDown(int lines)
     return r;
 }
 
-bool KateViModeBase::startNormalMode()
+bool ModeBase::startNormalMode()
 {
     /* store the key presses for this "insert mode session" so that it can be repeated with the
      * '.' command
@@ -1051,7 +1051,7 @@ bool KateViModeBase::startNormalMode()
     return true;
 }
 
-bool KateViModeBase::startInsertMode()
+bool ModeBase::startInsertMode()
 {
     m_viInputModeManager->viEnterInsertMode();
     m_view->doc()->setUndoMergeAllEdits(true);
@@ -1060,7 +1060,7 @@ bool KateViModeBase::startInsertMode()
     return true;
 }
 
-bool KateViModeBase::startReplaceMode()
+bool ModeBase::startReplaceMode()
 {
     m_view->doc()->setUndoMergeAllEdits(true);
     m_viInputModeManager->viEnterReplaceMode();
@@ -1069,14 +1069,14 @@ bool KateViModeBase::startReplaceMode()
     return true;
 }
 
-bool KateViModeBase::startVisualMode()
+bool ModeBase::startVisualMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(VisualMode);
-        m_viInputModeManager->changeViMode(VisualMode);
-    } else if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(VisualMode);
-        m_viInputModeManager->changeViMode(VisualMode);
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
+        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualMode);
+        m_viInputModeManager->changeViMode(ViMode::VisualMode);
+    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
+        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualMode);
+        m_viInputModeManager->changeViMode(ViMode::VisualMode);
     } else {
         m_viInputModeManager->viEnterVisualMode();
     }
@@ -1086,13 +1086,13 @@ bool KateViModeBase::startVisualMode()
     return true;
 }
 
-bool KateViModeBase::startVisualBlockMode()
+bool ModeBase::startVisualBlockMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(VisualBlockMode);
-        m_viInputModeManager->changeViMode(VisualBlockMode);
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
+        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualBlockMode);
+        m_viInputModeManager->changeViMode(ViMode::VisualBlockMode);
     } else {
-        m_viInputModeManager->viEnterVisualMode(VisualBlockMode);
+        m_viInputModeManager->viEnterVisualMode(ViMode::VisualBlockMode);
     }
 
     emit m_view->viewModeChanged(m_view, m_view->viewMode());
@@ -1100,13 +1100,13 @@ bool KateViModeBase::startVisualBlockMode()
     return true;
 }
 
-bool KateViModeBase::startVisualLineMode()
+bool ModeBase::startVisualLineMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode) {
-        m_viInputModeManager->getViVisualMode()->setVisualModeType(VisualLineMode);
-        m_viInputModeManager->changeViMode(VisualLineMode);
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
+        m_viInputModeManager->getViVisualMode()->setVisualModeType(ViMode::VisualLineMode);
+        m_viInputModeManager->changeViMode(ViMode::VisualLineMode);
     } else {
-        m_viInputModeManager->viEnterVisualMode(VisualLineMode);
+        m_viInputModeManager->viEnterVisualMode(ViMode::VisualLineMode);
     }
 
     emit m_view->viewModeChanged(m_view, m_view->viewMode());
@@ -1114,7 +1114,7 @@ bool KateViModeBase::startVisualLineMode()
     return true;
 }
 
-void KateViModeBase::error(const QString &errorMsg)
+void ModeBase::error(const QString &errorMsg)
 {
     delete m_infoMessage;
 
@@ -1126,7 +1126,7 @@ void KateViModeBase::error(const QString &errorMsg)
     m_view->doc()->postMessage(m_infoMessage);
 }
 
-void KateViModeBase::message(const QString &msg)
+void ModeBase::message(const QString &msg)
 {
     delete m_infoMessage;
 
@@ -1138,12 +1138,12 @@ void KateViModeBase::message(const QString &msg)
     m_view->doc()->postMessage(m_infoMessage);
 }
 
-QString KateViModeBase::getVerbatimKeys() const
+QString ModeBase::getVerbatimKeys() const
 {
     return m_keysVerbatim;
 }
 
-const QChar KateViModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn,
+const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn,
         int tabWidth) const
 {
     int column = 0;
@@ -1177,7 +1177,7 @@ const QChar KateViModeBase::getCharAtVirtualColumn(const QString &line, int virt
     return QChar::Null;
 }
 
-void KateViModeBase::addToNumberUnderCursor(int count)
+void ModeBase::addToNumberUnderCursor(int count)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     QString line = getLine();
@@ -1262,7 +1262,7 @@ void KateViModeBase::addToNumberUnderCursor(int count)
     updateCursor(KTextEditor::Cursor(m_view->cursorPosition().line(), numberStartPos + newNumberText.length() - 1));
 }
 
-void KateViModeBase::switchView(Direction direction)
+void ModeBase::switchView(Direction direction)
 {
 
     QList<KTextEditor::ViewPrivate *> visible_views;
@@ -1355,17 +1355,17 @@ void KateViModeBase::switchView(Direction direction)
     }
 }
 
-Range KateViModeBase::motionFindPrev()
+Range ModeBase::motionFindPrev()
 {
     return m_viInputModeManager->searcher()->motionFindPrev(getCount());
 }
 
-Range KateViModeBase::motionFindNext()
+Range ModeBase::motionFindNext()
 {
     return m_viInputModeManager->searcher()->motionFindNext(getCount());
 }
 
-void KateViModeBase::goToPos(const Range &r)
+void ModeBase::goToPos(const Range &r)
 {
     KTextEditor::Cursor c;
     c.setLine(r.endLine);
@@ -1382,17 +1382,17 @@ void KateViModeBase::goToPos(const Range &r)
     updateCursor(c);
 }
 
-unsigned int KateViModeBase::linesDisplayed() const
+unsigned int ModeBase::linesDisplayed() const
 {
     return m_viInputModeManager->inputAdapter()->linesDisplayed();
 }
 
-void KateViModeBase::scrollViewLines(int l)
+void ModeBase::scrollViewLines(int l)
 {
     m_viInputModeManager->inputAdapter()->scrollViewLines(l);
 }
 
-unsigned int KateViModeBase::getCount() const
+unsigned int ModeBase::getCount() const
 {
     if (m_oneTimeCountOverride != -1) {
         return m_oneTimeCountOverride;

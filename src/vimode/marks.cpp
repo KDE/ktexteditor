@@ -20,7 +20,7 @@
 #include "kateview.h"
 #include "katedocument.h"
 #include "kateviinputmodemanager.h"
-#include "katevinormalmode.h"
+#include <vimode/modes/normalmode.h>
 
 #include <KLocalizedString>
 

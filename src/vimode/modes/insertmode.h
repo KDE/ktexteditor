@@ -20,20 +20,24 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_INSERT_MODE_INCLUDED
-#define KATE_VI_INSERT_MODE_INCLUDED
+#ifndef KATEVI_INSERT_MODE_H
+#define KATEVI_INSERT_MODE_H
 
-#include "katevimodebase.h"
+#include <vimode/modes/modebase.h>
 #include <ktexteditor_export.h>
 
 class KateViMotion;
 namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 
+class QKeyEvent;
+
+namespace KateVi
+{
+
 /**
  * Commands for the vi insert mode
  */
-
 enum BlockInsert {
     None,
     Prepend,
@@ -41,16 +45,16 @@ enum BlockInsert {
     AppendEOL
 };
 
-class QKeyEvent;
-
-class KTEXTEDITOR_EXPORT KateViInsertMode : public KateViModeBase
+class KTEXTEDITOR_EXPORT InsertMode : public ModeBase
 {
     Q_OBJECT
 public:
-    KateViInsertMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
-    ~KateViInsertMode();
+    explicit InsertMode(KateViInputModeManager *viInputModeManager,
+                        KTextEditor::ViewPrivate *view,
+                        KateViewInternal *viewInternal);
+    virtual ~InsertMode();
 
-    bool handleKeypress(const QKeyEvent *e);
+    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
     bool commandInsertFromAbove();
     bool commandInsertFromBelow();
@@ -75,8 +79,8 @@ public:
     bool commandInsertContentOfRegister();
     bool commandSwitchToNormalModeForJustOneCommand();
 
-    void setBlockPrependMode(KateVi::Range blockRange);
-    void setBlockAppendMode(KateVi::Range blockRange, BlockInsert b);
+    void setBlockPrependMode(Range blockRange);
+    void setBlockAppendMode(Range blockRange, BlockInsert b);
 
     void setCount(int count)
     {
@@ -94,7 +98,7 @@ protected:
 protected:
     BlockInsert m_blockInsert;
     unsigned int m_eolPos; // length of first line in eol mode before text is appended
-    KateVi::Range m_blockRange;
+    Range m_blockRange;
 
     QString m_keys;
 
@@ -108,5 +112,7 @@ protected:
 private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
 };
+
+}
 
 #endif

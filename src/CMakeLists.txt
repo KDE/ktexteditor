@@ -227,23 +227,25 @@ if (BUILD_VIMODE)
     inputmode/kateviinputmodefactory.cpp
 
     # vi input mode
+    vimode/config/configtab.cpp
+
+    vimode/modes/insertmode.cpp
+    vimode/modes/modebase.cpp
+    vimode/modes/normalmode.cpp
+    vimode/modes/replacemode.cpp
+    vimode/modes/visualmode.cpp
+
     vimode/kateviappcommands.cpp
     vimode/katevicmds.cpp
     vimode/kateviinputmodemanager.cpp
-    vimode/katevimodebase.cpp
-    vimode/katevinormalmode.cpp
-    vimode/kateviinsertmode.cpp
     vimode/katevicommand.cpp
     vimode/katevimotion.cpp
     vimode/range.cpp
     vimode/katevikeyparser.cpp
     vimode/globalstate.cpp
-    vimode/katevivisualmode.cpp
-    vimode/katevireplacemode.cpp
     vimode/kateviemulatedcommandbar.cpp
     vimode/commandrangeexpressionparser.cpp
     vimode/katevikeymapper.cpp
-    vimode/config/configtab.cpp
     vimode/marks.cpp
     vimode/jumps.cpp
     vimode/history.cpp

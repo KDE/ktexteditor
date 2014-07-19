@@ -25,7 +25,7 @@
 #include <vimode/range.h>
 #include <ktexteditor_export.h>
 
-class KateViNormalMode;
+namespace KateVi { class NormalMode; }
 
 /**
  * combined class for motions and text objects. execute() returns a KateViRange.
@@ -37,12 +37,12 @@ class KateViNormalMode;
 class KTEXTEDITOR_EXPORT KateViMotion : public KateViCommand
 {
 public:
-    KateViMotion(KateViNormalMode *parent, const QString &pattern,
-                 KateVi::Range(KateViNormalMode::*commandMethod)(), unsigned int flags = 0);
+    KateViMotion(KateVi::NormalMode *parent, const QString &pattern,
+                 KateVi::Range(KateVi::NormalMode::*commandMethod)(), unsigned int flags = 0);
     KateVi::Range execute() const;
 
 protected:
-    KateVi::Range(KateViNormalMode::*m_ptr2commandMethod)();
+    KateVi::Range(KateVi::NormalMode::*m_ptr2commandMethod)();
 };
 
 #endif

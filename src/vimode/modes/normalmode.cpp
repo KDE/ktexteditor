@@ -28,27 +28,27 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "kateundomanager.h"
-#include "katevicommand.h"
-#include "kateviemulatedcommandbar.h"
+#include <vimode/katevicommand.h>
+#include <vimode/kateviemulatedcommandbar.h>
 #include "kateviewhelpers.h"
 #include "kateviewinternal.h"
-#include "globalstate.h"
-#include "kateviinputmodemanager.h"
-#include "kateviinsertmode.h"
-#include "katevikeymapper.h"
-#include "katevikeyparser.h"
-#include "katevimotion.h"
-#include "katevinormalmode.h"
-#include "katevivisualmode.h"
-#include "history.h"
+#include <vimode/globalstate.h>
+#include <vimode/kateviinputmodemanager.h>
+#include <vimode/modes/insertmode.h>
+#include <vimode/katevikeymapper.h>
+#include <vimode/katevikeyparser.h>
+#include <vimode/katevimotion.h>
+#include <vimode/modes/normalmode.h>
+#include <vimode/modes/visualmode.h>
+#include <vimode/history.h>
 #include "katecmd.h"
 #include <ktexteditor/attribute.h>
 #include "kateviinputmode.h"
-#include "registers.h"
-#include "marks.h"
-#include "searcher.h"
-#include "macrorecorder.h"
-#include "lastchangerecorder.h"
+#include <vimode/registers.h>
+#include <vimode/marks.h>
+#include <vimode/searcher.h>
+#include <vimode/macrorecorder.h>
+#include <vimode/lastchangerecorder.h>
 
 #include <QApplication>
 #include <QList>
@@ -57,13 +57,13 @@
 using namespace KateVi;
 
 #define ADDCMD(STR, FUNC, FLGS) m_commands.push_back( \
-        new KateViCommand( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
+        new KateViCommand( this, QLatin1String(STR), &NormalMode::FUNC, FLGS ) );
 
 #define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( \
-        new KateViMotion( this, QLatin1String(STR), &KateViNormalMode::FUNC, FLGS ) );
+        new KateViMotion( this, QLatin1String(STR), &NormalMode::FUNC, FLGS ) );
 
-KateViNormalMode::KateViNormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view,
-                                   KateViewInternal *viewInternal) : KateViModeBase()
+NormalMode::NormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
+    : ModeBase()
 {
     m_view = view;
     m_viewInternal = viewInternal;
@@ -103,7 +103,7 @@ KateViNormalMode::KateViNormalMode(KateViInputModeManager *viInputModeManager, K
             this, SLOT(aboutToDeleteMovingInterfaceContent()));
 }
 
-KateViNormalMode::~KateViNormalMode()
+NormalMode::~NormalMode()
 {
     qDeleteAll(m_commands);
     qDeleteAll(m_motions);
@@ -114,7 +114,7 @@ KateViNormalMode::~KateViNormalMode()
  * parses a key stroke to check if it's a valid (part of) a command
  * @return true if a command was completed and executed, false otherwise
  */
-bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
+bool NormalMode::handleKeypress(const QKeyEvent *e)
 {
     const int keyCode = e->key();
 
@@ -278,7 +278,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
     // Use operator-pending caret when reading a motion for an operator
     // in normal mode. We need to check that we are indeed in normal mode
     // since visual mode inherits from it.
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode &&
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode &&
             !m_awaitingMotionOrTextObject.isEmpty()) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Half);
     }
@@ -389,7 +389,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
                                               << "to (" << m_commandRange.endLine << "," << m_commandRange.endColumn << ")";
                         }
 
-                        if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+                        if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
                             m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
                         }
                         m_commandWithMotion = false;
@@ -424,7 +424,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
                 && !m_commands.at(m_matchingCommands.at(0))->needsMotion()) {
             //qCDebug(LOG_PART) << "Running command at index " << m_matchingCommands.at( 0 );
 
-            if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+            if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
                 m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
             }
 
@@ -453,7 +453,7 @@ bool KateViNormalMode::handleKeypress(const QKeyEvent *e)
  * (re)set to start configuration. This is done when a command is completed
  * executed or when a command is aborted
  */
-void KateViNormalMode::resetParser()
+void NormalMode::resetParser()
 {
 //  qCDebug(LOG_PART) << "***RESET***";
     m_keys.clear();
@@ -477,28 +477,28 @@ void KateViNormalMode::resetParser()
 
     m_currentChangeEndMarker = KTextEditor::Cursor::invalid();
 
-    if(m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    if(m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
     }
 }
 
 // reset the command parser
-void KateViNormalMode::reset()
+void NormalMode::reset()
 {
     resetParser();
     m_commandRange.startLine = -1;
     m_commandRange.startColumn = -1;
 }
 
-void KateViNormalMode::beginMonitoringDocumentChanges()
+void NormalMode::beginMonitoringDocumentChanges()
 {
     connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
-            this, &KateViNormalMode::textInserted);
+            this, &NormalMode::textInserted);
     connect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
-            this, &KateViNormalMode::textRemoved);
+            this, &NormalMode::textRemoved);
 }
 
-void KateViNormalMode::executeCommand(const KateViCommand *cmd)
+void NormalMode::executeCommand(const KateViCommand *cmd)
 {
     const ViMode originalViMode = m_viInputModeManager->getCurrentViMode();
 
@@ -513,14 +513,14 @@ void KateViNormalMode::executeCommand(const KateViCommand *cmd)
 
     // if the command was a change, and it didn't enter insert mode, store the key presses so that
     // they can be repeated with '.'
-    if (m_viInputModeManager->getCurrentViMode() != InsertMode) {
+    if (m_viInputModeManager->getCurrentViMode() != ViMode::InsertMode) {
         if (cmd->isChange() && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
             m_viInputModeManager->storeLastChangeCommand();
         }
 
         // when we transition to visual mode, remember the command in the keys history (V, v, ctrl-v, ...)
         // this will later result in buffer filled with something like this "Vjj>" which we can use later with repeat "."
-        const bool commandSwitchedToVisualMode = ((originalViMode == NormalMode) && m_viInputModeManager->isAnyVisualMode());
+        const bool commandSwitchedToVisualMode = ((originalViMode == ViMode::NormalMode) && m_viInputModeManager->isAnyVisualMode());
         if (!commandSwitchedToVisualMode) {
             m_viInputModeManager->clearCurrentChangeLog();
         }
@@ -528,7 +528,7 @@ void KateViNormalMode::executeCommand(const KateViCommand *cmd)
 
     // make sure the cursor does not end up after the end of the line
     KTextEditor::Cursor c(m_view->cursorPosition());
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         int lineLength = doc()->lineLength(c.line());
 
         if (c.column() >= lineLength) {
@@ -550,7 +550,7 @@ void KateViNormalMode::executeCommand(const KateViCommand *cmd)
  * enter insert mode at the cursor position
  */
 
-bool KateViNormalMode::commandEnterInsertMode()
+bool NormalMode::commandEnterInsertMode()
 {
     m_stickyColumn = -1;
     m_viInputModeManager->getViInsertMode()->setCount(getCount());
@@ -561,7 +561,7 @@ bool KateViNormalMode::commandEnterInsertMode()
  * enter insert mode after the current character
  */
 
-bool KateViNormalMode::commandEnterInsertModeAppend()
+bool NormalMode::commandEnterInsertModeAppend()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c.setColumn(c.column() + 1);
@@ -587,7 +587,7 @@ bool KateViNormalMode::commandEnterInsertModeAppend()
  * start insert mode after the last character of the line
  */
 
-bool KateViNormalMode::commandEnterInsertModeAppendEOL()
+bool NormalMode::commandEnterInsertModeAppendEOL()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c.setColumn(doc()->lineLength(c.line()));
@@ -598,7 +598,7 @@ bool KateViNormalMode::commandEnterInsertModeAppendEOL()
     return startInsertMode();
 }
 
-bool KateViNormalMode::commandEnterInsertModeBeforeFirstNonBlankInLine()
+bool NormalMode::commandEnterInsertModeBeforeFirstNonBlankInLine()
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     int c = getFirstNonBlank();
@@ -615,7 +615,7 @@ bool KateViNormalMode::commandEnterInsertModeBeforeFirstNonBlankInLine()
  * enter insert mode at the last insert position
  */
 
-bool KateViNormalMode::commandEnterInsertModeLast()
+bool NormalMode::commandEnterInsertModeLast()
 {
     KTextEditor::Cursor c = m_viInputModeManager->marks()->getInsertStopped();
     if (c.isValid()) {
@@ -626,7 +626,7 @@ bool KateViNormalMode::commandEnterInsertModeLast()
     return startInsertMode();
 }
 
-bool KateViNormalMode::commandEnterVisualLineMode()
+bool NormalMode::commandEnterVisualLineMode()
 {
     if (m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
         reset();
@@ -636,7 +636,7 @@ bool KateViNormalMode::commandEnterVisualLineMode()
     return startVisualLineMode();
 }
 
-bool KateViNormalMode::commandEnterVisualBlockMode()
+bool NormalMode::commandEnterVisualBlockMode()
 {
     if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
         reset();
@@ -646,7 +646,7 @@ bool KateViNormalMode::commandEnterVisualBlockMode()
     return startVisualBlockMode();
 }
 
-bool KateViNormalMode::commandReselectVisual()
+bool NormalMode::commandReselectVisual()
 {
     // start last visual mode and set start = `< and cursor = `>
     KTextEditor::Cursor c1 = m_viInputModeManager->marks()->getSelectionStart();
@@ -660,13 +660,13 @@ bool KateViNormalMode::commandReselectVisual()
         bool returnValue = false;
 
         switch (m_viInputModeManager->getViVisualMode()->getLastVisualMode()) {
-        case VisualMode:
+        case ViMode::VisualMode:
             returnValue = commandEnterVisualMode();
             break;
-        case VisualLineMode:
+        case ViMode::VisualLineMode:
             returnValue = commandEnterVisualLineMode();
             break;
-        case VisualBlockMode:
+        case ViMode::VisualBlockMode:
             returnValue = commandEnterVisualBlockMode();
             break;
         default:
@@ -681,9 +681,9 @@ bool KateViNormalMode::commandReselectVisual()
     return false;
 }
 
-bool KateViNormalMode::commandEnterVisualMode()
+bool NormalMode::commandEnterVisualMode()
 {
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode) {
         reset();
         return true;
     }
@@ -691,7 +691,7 @@ bool KateViNormalMode::commandEnterVisualMode()
     return startVisualMode();
 }
 
-bool KateViNormalMode::commandToOtherEnd()
+bool NormalMode::commandToOtherEnd()
 {
     if (m_viInputModeManager->isAnyVisualMode()) {
         m_viInputModeManager->getViVisualMode()->switchStartEnd();
@@ -701,12 +701,12 @@ bool KateViNormalMode::commandToOtherEnd()
     return false;
 }
 
-bool KateViNormalMode::commandEnterReplaceMode()
+bool NormalMode::commandEnterReplaceMode()
 {
     return startReplaceMode();
 }
 
-bool KateViNormalMode::commandDeleteLine()
+bool NormalMode::commandDeleteLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -739,29 +739,29 @@ bool KateViNormalMode::commandDeleteLine()
     return ret;
 }
 
-bool KateViNormalMode::commandDelete()
+bool NormalMode::commandDelete()
 {
     m_deleteCommand = true;
     return deleteRange(m_commandRange, getOperationMode());
 }
 
-bool KateViNormalMode::commandDeleteToEOL()
+bool NormalMode::commandDeleteToEOL()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     OperationMode m = CharWise;
 
     m_commandRange.endColumn = KateVi::EOL;
     switch (m_viInputModeManager->getCurrentViMode()) {
-    case NormalMode:
+    case ViMode::NormalMode:
         m_commandRange.startLine = c.line();
         m_commandRange.startColumn = c.column();
         m_commandRange.endLine = c.line() + getCount() - 1;
         break;
-    case VisualMode:
-    case VisualLineMode:
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
         m = LineWise;
         break;
-    case VisualBlockMode:
+    case ViMode::VisualBlockMode:
         m_commandRange.normalize();
         m = Block;
         break;
@@ -806,7 +806,7 @@ bool KateViNormalMode::commandDeleteToEOL()
     return r;
 }
 
-bool KateViNormalMode::commandMakeLowercase()
+bool NormalMode::commandMakeLowercase()
 {
     KTextEditor::Cursor c = m_view->cursorPosition();
 
@@ -824,7 +824,7 @@ bool KateViNormalMode::commandMakeLowercase()
 
     doc()->replaceText(range, lowerCase, m == Block);
 
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         updateCursor(start);
     } else {
         updateCursor(c);
@@ -833,7 +833,7 @@ bool KateViNormalMode::commandMakeLowercase()
     return true;
 }
 
-bool KateViNormalMode::commandMakeLowercaseLine()
+bool NormalMode::commandMakeLowercaseLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -850,7 +850,7 @@ bool KateViNormalMode::commandMakeLowercaseLine()
     return commandMakeLowercase();
 }
 
-bool KateViNormalMode::commandMakeUppercase()
+bool NormalMode::commandMakeUppercase()
 {
     qCDebug(LOG_PART) << "Heere!";
     if (!m_commandRange.valid) {
@@ -871,7 +871,7 @@ bool KateViNormalMode::commandMakeUppercase()
     KTextEditor::Range range(start, end);
 
     doc()->replaceText(range, upperCase, m == Block);
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         updateCursor(start);
     } else {
         updateCursor(c);
@@ -880,7 +880,7 @@ bool KateViNormalMode::commandMakeUppercase()
     return true;
 }
 
-bool KateViNormalMode::commandMakeUppercaseLine()
+bool NormalMode::commandMakeUppercaseLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -897,7 +897,7 @@ bool KateViNormalMode::commandMakeUppercaseLine()
     return commandMakeUppercase();
 }
 
-bool KateViNormalMode::commandChangeCase()
+bool NormalMode::commandChangeCase()
 {
     switchView();
     QString text;
@@ -905,8 +905,8 @@ bool KateViNormalMode::commandChangeCase()
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     // in visual mode, the range is from start position to end position...
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode
-            || m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode
+            || m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
         KTextEditor::Cursor c2 = m_viInputModeManager->getViVisualMode()->getStart();
 
         if (c2 > c) {
@@ -918,7 +918,7 @@ bool KateViNormalMode::commandChangeCase()
         range.setRange(c, c2);
         // ... in visual line mode, the range is from column 0 on the first line to
         // the line length of the last line...
-    } else if (m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
+    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
         KTextEditor::Cursor c2 = m_viInputModeManager->getViVisualMode()->getStart();
 
         if (c2 > c) {
@@ -943,7 +943,7 @@ bool KateViNormalMode::commandChangeCase()
         range.setRange(c, c2);
     }
 
-    bool block = m_viInputModeManager->getCurrentViMode() == VisualBlockMode;
+    bool block = m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode;
 
     // get the text the command should operate on
     text = doc()->text(range, block);
@@ -962,7 +962,7 @@ bool KateViNormalMode::commandChangeCase()
 
     // in normal mode, move the cursor to the right, in visual mode move the
     // cursor to the start of the selection
-    if (m_viInputModeManager->getCurrentViMode() == NormalMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         updateCursor(range.end());
     } else {
         updateCursor(range.start());
@@ -971,7 +971,7 @@ bool KateViNormalMode::commandChangeCase()
     return true;
 }
 
-bool KateViNormalMode::commandChangeCaseRange()
+bool NormalMode::commandChangeCaseRange()
 {
     OperationMode m = getOperationMode();
     QString changedCase = getRange(m_commandRange, m);
@@ -992,7 +992,7 @@ bool KateViNormalMode::commandChangeCaseRange()
     return true;
 }
 
-bool KateViNormalMode::commandChangeCaseLine()
+bool NormalMode::commandChangeCaseLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1020,7 +1020,7 @@ bool KateViNormalMode::commandChangeCaseLine()
 
 }
 
-bool KateViNormalMode::commandOpenNewLineUnder()
+bool NormalMode::commandOpenNewLineUnder()
 {
     doc()->setUndoMergeAllEdits(true);
 
@@ -1040,7 +1040,7 @@ bool KateViNormalMode::commandOpenNewLineUnder()
     return true;
 }
 
-bool KateViNormalMode::commandOpenNewLineOver()
+bool NormalMode::commandOpenNewLineOver()
 {
     doc()->setUndoMergeAllEdits(true);
 
@@ -1067,7 +1067,7 @@ bool KateViNormalMode::commandOpenNewLineOver()
     return true;
 }
 
-bool KateViNormalMode::commandJoinLines()
+bool NormalMode::commandJoinLines()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1116,7 +1116,7 @@ bool KateViNormalMode::commandJoinLines()
     return true;
 }
 
-bool KateViNormalMode::commandChange()
+bool NormalMode::commandChange()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1155,7 +1155,7 @@ bool KateViNormalMode::commandChange()
     return true;
 }
 
-bool KateViNormalMode::commandChangeToEOL()
+bool NormalMode::commandChangeToEOL()
 {
     commandDeleteToEOL();
 
@@ -1167,7 +1167,7 @@ bool KateViNormalMode::commandChangeToEOL()
     return commandEnterInsertModeAppend();
 }
 
-bool KateViNormalMode::commandChangeLine()
+bool NormalMode::commandChangeLine()
 {
     m_deleteCommand = true;
     KTextEditor::Cursor c(m_view->cursorPosition());
@@ -1199,7 +1199,7 @@ bool KateViNormalMode::commandChangeLine()
     return true;
 }
 
-bool KateViNormalMode::commandSubstituteChar()
+bool NormalMode::commandSubstituteChar()
 {
     if (commandDeleteChar()) {
         // The count is only used for deletion of chars; the inserted text is not repeated
@@ -1211,13 +1211,13 @@ bool KateViNormalMode::commandSubstituteChar()
     return false;
 }
 
-bool KateViNormalMode::commandSubstituteLine()
+bool NormalMode::commandSubstituteLine()
 {
     m_deleteCommand = true;
     return commandChangeLine();
 }
 
-bool KateViNormalMode::commandYank()
+bool NormalMode::commandYank()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1236,7 +1236,7 @@ bool KateViNormalMode::commandYank()
     return r;
 }
 
-bool KateViNormalMode::commandYankLine()
+bool NormalMode::commandYankLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     QString lines;
@@ -1256,7 +1256,7 @@ bool KateViNormalMode::commandYankLine()
     return true;
 }
 
-bool KateViNormalMode::commandYankToEOL()
+bool NormalMode::commandYankToEOL()
 {
     OperationMode m = CharWise;
     KTextEditor::Cursor c(m_view->cursorPosition());
@@ -1267,19 +1267,19 @@ bool KateViNormalMode::commandYankToEOL()
     m_commandRange.motionType = InclusiveMotion;
 
     switch (m_viInputModeManager->getCurrentViMode()) {
-    case NormalMode:
+    case ViMode::NormalMode:
         m_commandRange.startLine = c.line();
         m_commandRange.startColumn = c.column();
         break;
-    case VisualMode:
-    case VisualLineMode:
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
         m = LineWise;
         {
-            KateViVisualMode *visual = static_cast<KateViVisualMode *>(this);
+            VisualMode *visual = static_cast<VisualMode *>(this);
             visual->setStart(KTextEditor::Cursor(visual->getStart().line(), 0));
         }
         break;
-    case VisualBlockMode:
+    case ViMode::VisualBlockMode:
         m = Block;
         break;
     default:
@@ -1304,13 +1304,13 @@ bool KateViNormalMode::commandYankToEOL()
 // was multi-line or linewise in which case it will end up
 // on the *first* character of the pasted text(!)
 // If linewise, will paste after the current line.
-bool KateViNormalMode::commandPaste()
+bool NormalMode::commandPaste()
 {
     return paste(AfterCurrentPosition, false, false);
 }
 
 // As with commandPaste, except that the text is pasted *at* the cursor position
-bool KateViNormalMode::commandPasteBefore()
+bool NormalMode::commandPasteBefore()
 {
     return paste(AtCurrentPosition, false, false);
 }
@@ -1320,29 +1320,29 @@ bool KateViNormalMode::commandPasteBefore()
 // If linewise, cursor will be at the beginning of the line *after* the last line of pasted text,
 // unless that line is the last line of the document; then it will be placed at the beginning of the
 // last line pasted.
-bool KateViNormalMode::commandgPaste()
+bool NormalMode::commandgPaste()
 {
     return paste(AfterCurrentPosition, true, false);
 }
 
 // As with commandgPaste, except that it pastes *at* the current cursor position or, if linewise,
 // at the current line.
-bool KateViNormalMode::commandgPasteBefore()
+bool NormalMode::commandgPasteBefore()
 {
     return paste(AtCurrentPosition, true, false);
 }
 
-bool KateViNormalMode::commandIndentedPaste()
+bool NormalMode::commandIndentedPaste()
 {
     return paste(AfterCurrentPosition, false, true);
 }
 
-bool KateViNormalMode::commandIndentedPasteBefore()
+bool NormalMode::commandIndentedPasteBefore()
 {
     return paste(AtCurrentPosition, false, true);
 }
 
-bool KateViNormalMode::commandDeleteChar()
+bool NormalMode::commandDeleteChar()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c.line(), c.column(), c.line(), c.column() + getCount(), ExclusiveMotion);
@@ -1367,7 +1367,7 @@ bool KateViNormalMode::commandDeleteChar()
     return deleteRange(r, m);
 }
 
-bool KateViNormalMode::commandDeleteCharBackward()
+bool NormalMode::commandDeleteCharBackward()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1393,7 +1393,7 @@ bool KateViNormalMode::commandDeleteCharBackward()
     return deleteRange(r, m);
 }
 
-bool KateViNormalMode::commandReplaceCharacter()
+bool NormalMode::commandReplaceCharacter()
 {
     QString key = KateViKeyParser::self()->decodeKeySequence(m_keys.right(1));
 
@@ -1445,7 +1445,7 @@ bool KateViNormalMode::commandReplaceCharacter()
     return r;
 }
 
-bool KateViNormalMode::commandSwitchToCmdLine()
+bool NormalMode::commandSwitchToCmdLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1468,21 +1468,21 @@ bool KateViNormalMode::commandSwitchToCmdLine()
     return true;
 }
 
-bool KateViNormalMode::commandSearchBackward()
+bool NormalMode::commandSearchBackward()
 {
     m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
     m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchBackward);
     return true;
 }
 
-bool KateViNormalMode::commandSearchForward()
+bool NormalMode::commandSearchForward()
 {
     m_viInputModeManager->inputAdapter()->showViModeEmulatedCommandBar();
     m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
     return true;
 }
 
-bool KateViNormalMode::commandUndo()
+bool NormalMode::commandUndo()
 {
     // See BUG #328277
     m_viInputModeManager->clearCurrentChangeLog();
@@ -1505,7 +1505,7 @@ bool KateViNormalMode::commandUndo()
     return false;
 }
 
-bool KateViNormalMode::commandRedo()
+bool NormalMode::commandRedo()
 {
     if (doc()->redoCount() > 0) {
         const bool mapped = m_viInputModeManager->keyMapper()->isExecutingMapping();
@@ -1525,7 +1525,7 @@ bool KateViNormalMode::commandRedo()
     return false;
 }
 
-bool KateViNormalMode::commandSetMark()
+bool NormalMode::commandSetMark()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1536,7 +1536,7 @@ bool KateViNormalMode::commandSetMark()
     return true;
 }
 
-bool KateViNormalMode::commandIndentLine()
+bool NormalMode::commandIndentLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1545,7 +1545,7 @@ bool KateViNormalMode::commandIndentLine()
     return true;
 }
 
-bool KateViNormalMode::commandUnindentLine()
+bool NormalMode::commandUnindentLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1554,7 +1554,7 @@ bool KateViNormalMode::commandUnindentLine()
     return true;
 }
 
-bool KateViNormalMode::commandIndentLines()
+bool NormalMode::commandIndentLines()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const bool downwards = m_commandRange.startLine < m_commandRange.endLine;
@@ -1574,7 +1574,7 @@ bool KateViNormalMode::commandIndentLines()
     return true;
 }
 
-bool KateViNormalMode::commandUnindentLines()
+bool NormalMode::commandUnindentLines()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const bool downwards = m_commandRange.startLine < m_commandRange.endLine;
@@ -1594,7 +1594,7 @@ bool KateViNormalMode::commandUnindentLines()
     return true;
 }
 
-bool KateViNormalMode::commandScrollPageDown()
+bool NormalMode::commandScrollPageDown()
 {
     if (getCount() < m_scroll_count_limit) {
 
@@ -1605,7 +1605,7 @@ bool KateViNormalMode::commandScrollPageDown()
     return true;
 }
 
-bool KateViNormalMode::commandScrollPageUp()
+bool NormalMode::commandScrollPageUp()
 {
     if (getCount() < m_scroll_count_limit) {
         for (uint i = 0; i < getCount(); i++) {
@@ -1616,7 +1616,7 @@ bool KateViNormalMode::commandScrollPageUp()
 
 }
 
-bool KateViNormalMode::commandScrollHalfPageUp()
+bool NormalMode::commandScrollHalfPageUp()
 {
     if (getCount() < m_scroll_count_limit) {
         for (uint i = 0; i < getCount(); i++) {
@@ -1626,7 +1626,7 @@ bool KateViNormalMode::commandScrollHalfPageUp()
     return true;
 }
 
-bool KateViNormalMode::commandScrollHalfPageDown()
+bool NormalMode::commandScrollHalfPageDown()
 {
     if (getCount() < m_scroll_count_limit) {
         for (uint i = 0; i < getCount(); i++) {
@@ -1636,7 +1636,7 @@ bool KateViNormalMode::commandScrollHalfPageDown()
     return true;
 }
 
-bool KateViNormalMode::commandCenterView(bool onFirst)
+bool NormalMode::commandCenterView(bool onFirst)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const int virtualCenterLine = m_viewInternal->startLine() + linesDisplayed() / 2;
@@ -1650,17 +1650,17 @@ bool KateViNormalMode::commandCenterView(bool onFirst)
     return true;
 }
 
-bool KateViNormalMode::commandCenterViewOnNonBlank()
+bool NormalMode::commandCenterViewOnNonBlank()
 {
     return commandCenterView(true);
 }
 
-bool KateViNormalMode::commandCenterViewOnCursor()
+bool NormalMode::commandCenterViewOnCursor()
 {
     return commandCenterView(false);
 }
 
-bool KateViNormalMode::commandTopView(bool onFirst)
+bool NormalMode::commandTopView(bool onFirst)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const int virtualCenterLine = m_viewInternal->startLine();
@@ -1674,17 +1674,17 @@ bool KateViNormalMode::commandTopView(bool onFirst)
     return true;
 }
 
-bool KateViNormalMode::commandTopViewOnNonBlank()
+bool NormalMode::commandTopViewOnNonBlank()
 {
     return commandTopView(true);
 }
 
-bool KateViNormalMode::commandTopViewOnCursor()
+bool NormalMode::commandTopViewOnCursor()
 {
     return commandTopView(false);
 }
 
-bool KateViNormalMode::commandBottomView(bool onFirst)
+bool NormalMode::commandBottomView(bool onFirst)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const int virtualCenterLine = m_viewInternal->endLine();
@@ -1698,24 +1698,24 @@ bool KateViNormalMode::commandBottomView(bool onFirst)
     return true;
 }
 
-bool KateViNormalMode::commandBottomViewOnNonBlank()
+bool NormalMode::commandBottomViewOnNonBlank()
 {
     return commandBottomView(true);
 }
 
-bool KateViNormalMode::commandBottomViewOnCursor()
+bool NormalMode::commandBottomViewOnCursor()
 {
     return commandBottomView(false);
 }
 
-bool KateViNormalMode::commandAbort()
+bool NormalMode::commandAbort()
 {
     m_pendingResetIsDueToExit = true;
     reset();
     return true;
 }
 
-bool KateViNormalMode::commandPrintCharacterCode()
+bool NormalMode::commandPrintCharacterCode()
 {
     QChar ch = getCharUnderCursor();
 
@@ -1740,7 +1740,7 @@ bool KateViNormalMode::commandPrintCharacterCode()
     return true;
 }
 
-bool KateViNormalMode::commandRepeatLastChange()
+bool NormalMode::commandRepeatLastChange()
 {
     const int repeatCount = getCount();
     resetParser();
@@ -1754,7 +1754,7 @@ bool KateViNormalMode::commandRepeatLastChange()
     return true;
 }
 
-bool KateViNormalMode::commandAlignLine()
+bool NormalMode::commandAlignLine()
 {
     const int line = m_view->cursorPosition().line();
     KTextEditor::Range alignRange(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, 0));
@@ -1764,7 +1764,7 @@ bool KateViNormalMode::commandAlignLine()
     return true;
 }
 
-bool KateViNormalMode::commandAlignLines()
+bool NormalMode::commandAlignLines()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     m_commandRange.normalize();
@@ -1777,21 +1777,21 @@ bool KateViNormalMode::commandAlignLines()
     return true;
 }
 
-bool KateViNormalMode::commandAddToNumber()
+bool NormalMode::commandAddToNumber()
 {
     addToNumberUnderCursor(getCount());
 
     return true;
 }
 
-bool KateViNormalMode::commandSubtractFromNumber()
+bool NormalMode::commandSubtractFromNumber()
 {
     addToNumberUnderCursor(-getCount());
 
     return true;
 }
 
-bool KateViNormalMode::commandPrependToBlock()
+bool NormalMode::commandPrependToBlock()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1806,7 +1806,7 @@ bool KateViNormalMode::commandPrependToBlock()
     return startInsertMode();
 }
 
-bool KateViNormalMode::commandAppendToBlock()
+bool NormalMode::commandAppendToBlock()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1830,7 +1830,7 @@ bool KateViNormalMode::commandAppendToBlock()
     return startInsertMode();
 }
 
-bool KateViNormalMode::commandGoToNextJump()
+bool NormalMode::commandGoToNextJump()
 {
     KTextEditor::Cursor c = getNextJump(m_view->cursorPosition());
     updateCursor(c);
@@ -1838,7 +1838,7 @@ bool KateViNormalMode::commandGoToNextJump()
     return true;
 }
 
-bool KateViNormalMode::commandGoToPrevJump()
+bool NormalMode::commandGoToPrevJump()
 {
     KTextEditor::Cursor c = getPrevJump(m_view->cursorPosition());
     updateCursor(c);
@@ -1846,52 +1846,52 @@ bool KateViNormalMode::commandGoToPrevJump()
     return true;
 }
 
-bool KateViNormalMode::commandSwitchToLeftView()
+bool NormalMode::commandSwitchToLeftView()
 {
     switchView(Left);
     return true;
 }
 
-bool KateViNormalMode::commandSwitchToDownView()
+bool NormalMode::commandSwitchToDownView()
 {
     switchView(Down);
     return true;
 }
 
-bool KateViNormalMode::commandSwitchToUpView()
+bool NormalMode::commandSwitchToUpView()
 {
     switchView(Up);
     return true;
 }
 
-bool KateViNormalMode::commandSwitchToRightView()
+bool NormalMode::commandSwitchToRightView()
 {
     switchView(Right);
     return true;
 }
 
-bool KateViNormalMode::commandSwitchToNextView()
+bool NormalMode::commandSwitchToNextView()
 {
     switchView(Next);
     return true;
 }
 
-bool KateViNormalMode::commandSplitHoriz()
+bool NormalMode::commandSplitHoriz()
 {
     return executeKateCommand(QLatin1String("split"));
 }
 
-bool KateViNormalMode::commandSplitVert()
+bool NormalMode::commandSplitVert()
 {
     return executeKateCommand(QLatin1String("vsplit"));
 }
 
-bool KateViNormalMode::commandCloseView()
+bool NormalMode::commandCloseView()
 {
     return executeKateCommand(QLatin1String("close"));
 }
 
-bool KateViNormalMode::commandSwitchToNextTab()
+bool NormalMode::commandSwitchToNextTab()
 {
     QString command = QString::fromLatin1("bn");
 
@@ -1902,7 +1902,7 @@ bool KateViNormalMode::commandSwitchToNextTab()
     return executeKateCommand(command);
 }
 
-bool KateViNormalMode::commandSwitchToPrevTab()
+bool NormalMode::commandSwitchToPrevTab()
 {
     QString command = QString::fromLatin1("bp");
 
@@ -1913,7 +1913,7 @@ bool KateViNormalMode::commandSwitchToPrevTab()
     return executeKateCommand(command);
 }
 
-bool KateViNormalMode::commandFormatLine()
+bool NormalMode::commandFormatLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -1922,13 +1922,13 @@ bool KateViNormalMode::commandFormatLine()
     return true;
 }
 
-bool KateViNormalMode::commandFormatLines()
+bool NormalMode::commandFormatLines()
 {
     reformatLines(m_commandRange.startLine, m_commandRange.endLine);
     return true;
 }
 
-bool KateViNormalMode::commandCollapseToplevelNodes()
+bool NormalMode::commandCollapseToplevelNodes()
 {
 #if 0
     //FIXME FOLDING
@@ -1937,14 +1937,14 @@ bool KateViNormalMode::commandCollapseToplevelNodes()
     return true;
 }
 
-bool KateViNormalMode::commandStartRecordingMacro()
+bool NormalMode::commandStartRecordingMacro()
 {
     const QChar reg = m_keys[m_keys.size() - 1];
     m_viInputModeManager->macroRecorder()->start(reg);
     return true;
 }
 
-bool KateViNormalMode::commandReplayMacro()
+bool NormalMode::commandReplayMacro()
 {
     // "@<registername>" will have been added to the log; it needs to be cleared
     // *before* we replay the macro keypresses, else it can cause an infinite loop
@@ -1961,17 +1961,17 @@ bool KateViNormalMode::commandReplayMacro()
     return true;
 }
 
-bool KateViNormalMode::commandCloseNocheck()
+bool NormalMode::commandCloseNocheck()
 {
     return executeKateCommand(QLatin1String("q!"));
 }
 
-bool KateViNormalMode::commandCloseWrite()
+bool NormalMode::commandCloseWrite()
 {
     return executeKateCommand(QLatin1String("wq"));
 }
 
-bool KateViNormalMode::commandCollapseLocal()
+bool NormalMode::commandCollapseLocal()
 {
 #if 0
     //FIXME FOLDING
@@ -1981,7 +1981,7 @@ bool KateViNormalMode::commandCollapseLocal()
     return true;
 }
 
-bool KateViNormalMode::commandExpandAll()
+bool NormalMode::commandExpandAll()
 {
 #if 0
     //FIXME FOLDING
@@ -1990,7 +1990,7 @@ bool KateViNormalMode::commandExpandAll()
     return true;
 }
 
-bool KateViNormalMode::commandExpandLocal()
+bool NormalMode::commandExpandLocal()
 {
 #if 0
     //FIXME FOLDING
@@ -2000,7 +2000,7 @@ bool KateViNormalMode::commandExpandLocal()
     return true;
 }
 
-bool KateViNormalMode::commandToggleRegionVisibility()
+bool NormalMode::commandToggleRegionVisibility()
 {
 #if 0
     //FIXME FOLDING
@@ -2014,17 +2014,17 @@ bool KateViNormalMode::commandToggleRegionVisibility()
 // MOTIONS
 ////////////////////////////////////////////////////////////////////////////////
 
-Range KateViNormalMode::motionDown()
+Range NormalMode::motionDown()
 {
     return goLineDown();
 }
 
-Range KateViNormalMode::motionUp()
+Range NormalMode::motionUp()
 {
     return goLineUp();
 }
 
-Range KateViNormalMode::motionLeft()
+Range NormalMode::motionLeft()
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     m_stickyColumn = -1;
@@ -2038,7 +2038,7 @@ Range KateViNormalMode::motionLeft()
     return r;
 }
 
-Range KateViNormalMode::motionRight()
+Range NormalMode::motionRight()
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     m_stickyColumn = -1;
@@ -2053,7 +2053,7 @@ Range KateViNormalMode::motionRight()
     return r;
 }
 
-Range KateViNormalMode::motionPageDown()
+Range NormalMode::motionPageDown()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2065,7 +2065,7 @@ Range KateViNormalMode::motionPageDown()
     return r;
 }
 
-Range KateViNormalMode::motionPageUp()
+Range NormalMode::motionPageUp()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2077,7 +2077,7 @@ Range KateViNormalMode::motionPageUp()
     return r;
 }
 
-Range KateViNormalMode::motionDownToFirstNonBlank()
+Range NormalMode::motionDownToFirstNonBlank()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r = goLineDown();
@@ -2085,7 +2085,7 @@ Range KateViNormalMode::motionDownToFirstNonBlank()
     return r;
 }
 
-Range KateViNormalMode::motionUpToFirstNonBlank()
+Range NormalMode::motionUpToFirstNonBlank()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r = goLineUp();
@@ -2093,7 +2093,7 @@ Range KateViNormalMode::motionUpToFirstNonBlank()
     return r;
 }
 
-Range KateViNormalMode::motionWordForward()
+Range NormalMode::motionWordForward()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, ExclusiveMotion);
@@ -2127,7 +2127,7 @@ Range KateViNormalMode::motionWordForward()
     return r;
 }
 
-Range KateViNormalMode::motionWordBackward()
+Range NormalMode::motionWordBackward()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, ExclusiveMotion);
@@ -2149,7 +2149,7 @@ Range KateViNormalMode::motionWordBackward()
     return r;
 }
 
-Range KateViNormalMode::motionWORDForward()
+Range NormalMode::motionWORDForward()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, ExclusiveMotion);
@@ -2171,7 +2171,7 @@ Range KateViNormalMode::motionWORDForward()
     return r;
 }
 
-Range KateViNormalMode::motionWORDBackward()
+Range NormalMode::motionWORDBackward()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, ExclusiveMotion);
@@ -2192,7 +2192,7 @@ Range KateViNormalMode::motionWORDBackward()
     return r;
 }
 
-Range KateViNormalMode::motionToEndOfWord()
+Range NormalMode::motionToEndOfWord()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2209,7 +2209,7 @@ Range KateViNormalMode::motionToEndOfWord()
     return r;
 }
 
-Range KateViNormalMode::motionToEndOfWORD()
+Range NormalMode::motionToEndOfWORD()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2230,7 +2230,7 @@ Range KateViNormalMode::motionToEndOfWORD()
     return r;
 }
 
-Range KateViNormalMode::motionToEndOfPrevWord()
+Range NormalMode::motionToEndOfPrevWord()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2254,7 +2254,7 @@ Range KateViNormalMode::motionToEndOfPrevWord()
     return r;
 }
 
-Range KateViNormalMode::motionToEndOfPrevWORD()
+Range NormalMode::motionToEndOfPrevWORD()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c, InclusiveMotion);
@@ -2277,7 +2277,7 @@ Range KateViNormalMode::motionToEndOfPrevWORD()
     return r;
 }
 
-Range KateViNormalMode::motionToEOL()
+Range NormalMode::motionToEOL()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -2293,7 +2293,7 @@ Range KateViNormalMode::motionToEOL()
     return r;
 }
 
-Range KateViNormalMode::motionToColumn0()
+Range NormalMode::motionToColumn0()
 {
     m_stickyColumn = -1;
     KTextEditor::Cursor cursor(m_view->cursorPosition());
@@ -2302,7 +2302,7 @@ Range KateViNormalMode::motionToColumn0()
     return r;
 }
 
-Range KateViNormalMode::motionToFirstCharacterOfLine()
+Range NormalMode::motionToFirstCharacterOfLine()
 {
     m_stickyColumn = -1;
 
@@ -2314,7 +2314,7 @@ Range KateViNormalMode::motionToFirstCharacterOfLine()
     return r;
 }
 
-Range KateViNormalMode::motionFindChar()
+Range NormalMode::motionFindChar()
 {
     m_lastTFcommand = m_keys;
     KTextEditor::Cursor cursor(m_view->cursorPosition());
@@ -2343,7 +2343,7 @@ Range KateViNormalMode::motionFindChar()
     return r;
 }
 
-Range KateViNormalMode::motionFindCharBackward()
+Range NormalMode::motionFindCharBackward()
 {
     m_lastTFcommand = m_keys;
     KTextEditor::Cursor cursor(m_view->cursorPosition());
@@ -2380,7 +2380,7 @@ Range KateViNormalMode::motionFindCharBackward()
     return r;
 }
 
-Range KateViNormalMode::motionToChar()
+Range NormalMode::motionToChar()
 {
     m_lastTFcommand = m_keys;
     KTextEditor::Cursor cursor(m_view->cursorPosition());
@@ -2413,7 +2413,7 @@ Range KateViNormalMode::motionToChar()
     return r;
 }
 
-Range KateViNormalMode::motionToCharBackward()
+Range NormalMode::motionToCharBackward()
 {
     m_lastTFcommand = m_keys;
     KTextEditor::Cursor cursor(m_view->cursorPosition());
@@ -2453,7 +2453,7 @@ Range KateViNormalMode::motionToCharBackward()
     return r;
 }
 
-Range KateViNormalMode::motionRepeatlastTF()
+Range NormalMode::motionRepeatlastTF()
 {
     if (!m_lastTFcommand.isEmpty()) {
         m_isRepeatedTFcommand = true;
@@ -2473,7 +2473,7 @@ Range KateViNormalMode::motionRepeatlastTF()
     return Range::invalid();
 }
 
-Range KateViNormalMode::motionRepeatlastTFBackward()
+Range NormalMode::motionRepeatlastTFBackward()
 {
     if (!m_lastTFcommand.isEmpty()) {
         m_isRepeatedTFcommand = true;
@@ -2493,7 +2493,7 @@ Range KateViNormalMode::motionRepeatlastTFBackward()
     return Range::invalid();
 }
 
-Range KateViNormalMode::motionToLineFirst()
+Range NormalMode::motionToLineFirst()
 {
     Range r(getCount() - 1, 0, InclusiveMotion);
     m_stickyColumn = -1;
@@ -2506,7 +2506,7 @@ Range KateViNormalMode::motionToLineFirst()
     return r;
 }
 
-Range KateViNormalMode::motionToLineLast()
+Range NormalMode::motionToLineLast()
 {
     Range r(doc()->lines() - 1, 0, InclusiveMotion);
     m_stickyColumn = -1;
@@ -2524,7 +2524,7 @@ Range KateViNormalMode::motionToLineLast()
     return r;
 }
 
-Range KateViNormalMode::motionToScreenColumn()
+Range NormalMode::motionToScreenColumn()
 {
     m_stickyColumn = -1;
 
@@ -2539,7 +2539,7 @@ Range KateViNormalMode::motionToScreenColumn()
     return Range(c.line(), column, ExclusiveMotion);
 }
 
-Range KateViNormalMode::motionToMark()
+Range NormalMode::motionToMark()
 {
     Range r;
 
@@ -2561,7 +2561,7 @@ Range KateViNormalMode::motionToMark()
     return r;
 }
 
-Range KateViNormalMode::motionToMarkLine()
+Range NormalMode::motionToMarkLine()
 {
     Range r = motionToMark();
     r.endColumn = getFirstNonBlank(r.endLine);
@@ -2570,7 +2570,7 @@ Range KateViNormalMode::motionToMarkLine()
     return r;
 }
 
-Range KateViNormalMode::motionToMatchingItem()
+Range NormalMode::motionToMatchingItem()
 {
     Range r;
     int lines = doc()->lines();
@@ -2692,7 +2692,7 @@ Range KateViNormalMode::motionToMatchingItem()
     return r;
 }
 
-Range KateViNormalMode::motionToNextBraceBlockStart()
+Range NormalMode::motionToNextBraceBlockStart()
 {
     Range r;
 
@@ -2721,7 +2721,7 @@ Range KateViNormalMode::motionToNextBraceBlockStart()
     return r;
 }
 
-Range KateViNormalMode::motionToPreviousBraceBlockStart()
+Range NormalMode::motionToPreviousBraceBlockStart()
 {
     Range r;
 
@@ -2745,7 +2745,7 @@ Range KateViNormalMode::motionToPreviousBraceBlockStart()
     return r;
 }
 
-Range KateViNormalMode::motionToNextBraceBlockEnd()
+Range NormalMode::motionToNextBraceBlockEnd()
 {
     Range r;
 
@@ -2774,7 +2774,7 @@ Range KateViNormalMode::motionToNextBraceBlockEnd()
     return r;
 }
 
-Range KateViNormalMode::motionToPreviousBraceBlockEnd()
+Range NormalMode::motionToPreviousBraceBlockEnd()
 {
     Range r;
 
@@ -2797,21 +2797,21 @@ Range KateViNormalMode::motionToPreviousBraceBlockEnd()
     return r;
 }
 
-Range KateViNormalMode::motionToNextOccurrence()
+Range NormalMode::motionToNextOccurrence()
 {
     const QString word = getWordUnderCursor();
     const Range match = m_viInputModeManager->searcher()->findWordForMotion(word, false, getWordRangeUnderCursor().start(), getCount());
     return Range(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
-Range KateViNormalMode::motionToPrevOccurrence()
+Range NormalMode::motionToPrevOccurrence()
 {
     const QString word = getWordUnderCursor();
     const Range match = m_viInputModeManager->searcher()->findWordForMotion(word, true, getWordRangeUnderCursor().start(), getCount());
     return Range(match.startLine, match.startColumn, ExclusiveMotion);
 }
 
-Range KateViNormalMode::motionToFirstLineOfWindow()
+Range NormalMode::motionToFirstLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2825,7 +2825,7 @@ Range KateViNormalMode::motionToFirstLineOfWindow()
     return r;
 }
 
-Range KateViNormalMode::motionToMiddleLineOfWindow()
+Range NormalMode::motionToMiddleLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2839,7 +2839,7 @@ Range KateViNormalMode::motionToMiddleLineOfWindow()
     return r;
 }
 
-Range KateViNormalMode::motionToLastLineOfWindow()
+Range NormalMode::motionToLastLineOfWindow()
 {
     int lines_to_go;
     if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
@@ -2853,17 +2853,17 @@ Range KateViNormalMode::motionToLastLineOfWindow()
     return r;
 }
 
-Range KateViNormalMode::motionToNextVisualLine()
+Range NormalMode::motionToNextVisualLine()
 {
     return goVisualLineUpDown(getCount());
 }
 
-Range KateViNormalMode::motionToPrevVisualLine()
+Range NormalMode::motionToPrevVisualLine()
 {
     return goVisualLineUpDown(-getCount());
 }
 
-Range KateViNormalMode::motionToPreviousSentence()
+Range NormalMode::motionToPreviousSentence()
 {
     KTextEditor::Cursor c = findSentenceStart();
     int linenum = c.line(), column;
@@ -2903,7 +2903,7 @@ Range KateViNormalMode::motionToPreviousSentence()
     return Range(0, 0, InclusiveMotion);
 }
 
-Range KateViNormalMode::motionToNextSentence()
+Range NormalMode::motionToNextSentence()
 {
     KTextEditor::Cursor c = findSentenceEnd();
     int linenum = c.line(), column = c.column() + 1;
@@ -2928,7 +2928,7 @@ Range KateViNormalMode::motionToNextSentence()
     return Range(c, InclusiveMotion);
 }
 
-Range KateViNormalMode::motionToBeforeParagraph()
+Range NormalMode::motionToBeforeParagraph()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -2956,7 +2956,7 @@ Range KateViNormalMode::motionToBeforeParagraph()
     return r;
 }
 
-Range KateViNormalMode::motionToAfterParagraph()
+Range NormalMode::motionToAfterParagraph()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -2985,7 +2985,7 @@ Range KateViNormalMode::motionToAfterParagraph()
     return Range(line, column, InclusiveMotion);
 }
 
-Range KateViNormalMode::motionToIncrementalSearchMatch()
+Range NormalMode::motionToIncrementalSearchMatch()
 {
     return Range(m_positionWhenIncrementalSearchBegan.line(),
                        m_positionWhenIncrementalSearchBegan.column(),
@@ -2997,7 +2997,7 @@ Range KateViNormalMode::motionToIncrementalSearchMatch()
 // TEXT OBJECTS
 ////////////////////////////////////////////////////////////////////////////////
 
-Range KateViNormalMode::textObjectAWord()
+Range NormalMode::textObjectAWord()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -3050,7 +3050,7 @@ Range KateViNormalMode::textObjectAWord()
     return Range(c1, c2, !swallowCarriageReturnAtEndOfLine ? InclusiveMotion : ExclusiveMotion);
 }
 
-Range KateViNormalMode::textObjectInnerWord()
+Range NormalMode::textObjectInnerWord()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -3076,7 +3076,7 @@ Range KateViNormalMode::textObjectInnerWord()
     return Range(c1, c2, InclusiveMotion);
 }
 
-Range KateViNormalMode::textObjectAWORD()
+Range NormalMode::textObjectAWORD()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -3129,7 +3129,7 @@ Range KateViNormalMode::textObjectAWORD()
     return Range(c1, c2, !swallowCarriageReturnAtEndOfLine ? InclusiveMotion : ExclusiveMotion);
 }
 
-Range KateViNormalMode::textObjectInnerWORD()
+Range NormalMode::textObjectInnerWORD()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -3154,7 +3154,7 @@ Range KateViNormalMode::textObjectInnerWORD()
     return Range(c1, c2, InclusiveMotion);
 }
 
-KTextEditor::Cursor KateViNormalMode::findSentenceStart()
+KTextEditor::Cursor NormalMode::findSentenceStart()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     int linenum = c.line(), column = c.column();
@@ -3189,7 +3189,7 @@ KTextEditor::Cursor KateViNormalMode::findSentenceStart()
     return KTextEditor::Cursor(0, 0);
 }
 
-KTextEditor::Cursor KateViNormalMode::findSentenceEnd()
+KTextEditor::Cursor NormalMode::findSentenceEnd()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     int linenum = c.line(), column = c.column();
@@ -3229,7 +3229,7 @@ KTextEditor::Cursor KateViNormalMode::findSentenceEnd()
     return KTextEditor::Cursor(linenum, j - 1);
 }
 
-KTextEditor::Cursor KateViNormalMode::findParagraphStart()
+KTextEditor::Cursor NormalMode::findParagraphStart()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     const bool firstBlank = doc()->line(c.line()).isEmpty();
@@ -3252,7 +3252,7 @@ KTextEditor::Cursor KateViNormalMode::findParagraphStart()
     return KTextEditor::Cursor(0, 0);
 }
 
-KTextEditor::Cursor KateViNormalMode::findParagraphEnd()
+KTextEditor::Cursor NormalMode::findParagraphEnd()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     int prev = c.line(), lines = doc()->lines();
@@ -3276,7 +3276,7 @@ KTextEditor::Cursor KateViNormalMode::findParagraphEnd()
     return doc()->documentEnd();
 }
 
-Range KateViNormalMode::textObjectInnerSentence()
+Range NormalMode::textObjectInnerSentence()
 {
     Range r;
     KTextEditor::Cursor c1 = findSentenceStart();
@@ -3290,7 +3290,7 @@ Range KateViNormalMode::textObjectInnerSentence()
     return r;
 }
 
-Range KateViNormalMode::textObjectASentence()
+Range NormalMode::textObjectASentence()
 {
     int i;
     Range r = textObjectInnerSentence();
@@ -3319,7 +3319,7 @@ Range KateViNormalMode::textObjectASentence()
     return r;
 }
 
-Range KateViNormalMode::textObjectInnerParagraph()
+Range NormalMode::textObjectInnerParagraph()
 {
     Range r;
     KTextEditor::Cursor c1 = findParagraphStart();
@@ -3333,7 +3333,7 @@ Range KateViNormalMode::textObjectInnerParagraph()
     return r;
 }
 
-Range KateViNormalMode::textObjectAParagraph()
+Range NormalMode::textObjectAParagraph()
 {
     KTextEditor::Cursor original(m_view->cursorPosition());
     Range r = textObjectInnerParagraph();
@@ -3370,67 +3370,67 @@ Range KateViNormalMode::textObjectAParagraph()
     return r;
 }
 
-Range KateViNormalMode::textObjectAQuoteDouble()
+Range NormalMode::textObjectAQuoteDouble()
 {
     return findSurroundingQuotes(QLatin1Char('"'), false);
 }
 
-Range KateViNormalMode::textObjectInnerQuoteDouble()
+Range NormalMode::textObjectInnerQuoteDouble()
 {
     return findSurroundingQuotes(QLatin1Char('"'), true);
 }
 
-Range KateViNormalMode::textObjectAQuoteSingle()
+Range NormalMode::textObjectAQuoteSingle()
 {
     return findSurroundingQuotes(QLatin1Char('\''), false);
 }
 
-Range KateViNormalMode::textObjectInnerQuoteSingle()
+Range NormalMode::textObjectInnerQuoteSingle()
 {
     return findSurroundingQuotes(QLatin1Char('\''), true);
 }
 
-Range KateViNormalMode::textObjectABackQuote()
+Range NormalMode::textObjectABackQuote()
 {
     return findSurroundingQuotes(QLatin1Char('`'), false);
 }
 
-Range KateViNormalMode::textObjectInnerBackQuote()
+Range NormalMode::textObjectInnerBackQuote()
 {
     return findSurroundingQuotes(QLatin1Char('`'), true);
 }
 
-Range KateViNormalMode::textObjectAParen()
+Range NormalMode::textObjectAParen()
 {
 
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false,  QLatin1Char('('), QLatin1Char(')'));
 }
 
-Range KateViNormalMode::textObjectInnerParen()
+Range NormalMode::textObjectInnerParen()
 {
 
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), true, QLatin1Char('('), QLatin1Char(')'));
 }
 
-Range KateViNormalMode::textObjectABracket()
+Range NormalMode::textObjectABracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false,  QLatin1Char('['), QLatin1Char(']'));
 }
 
-Range KateViNormalMode::textObjectInnerBracket()
+Range NormalMode::textObjectInnerBracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), true, QLatin1Char('['), QLatin1Char(']'));
 }
 
-Range KateViNormalMode::textObjectACurlyBracket()
+Range NormalMode::textObjectACurlyBracket()
 {
 
     return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false,  QLatin1Char('{'), QLatin1Char('}'));
 }
 
-Range KateViNormalMode::textObjectInnerCurlyBracket()
+Range NormalMode::textObjectInnerCurlyBracket()
 {
     const Range allBetweenCurlyBrackets = findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), true, QLatin1Char('{'), QLatin1Char('}'));
     // Emulate the behaviour of vim, which tries to leave the closing bracket on its own line
@@ -3474,31 +3474,31 @@ Range KateViNormalMode::textObjectInnerCurlyBracket()
     return innerCurlyBracket;
 }
 
-Range KateViNormalMode::textObjectAInequalitySign()
+Range NormalMode::textObjectAInequalitySign()
 {
 
     return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), false,  QLatin1Char('<'), QLatin1Char('>'));
 }
 
-Range KateViNormalMode::textObjectInnerInequalitySign()
+Range NormalMode::textObjectInnerInequalitySign()
 {
 
     return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), true, QLatin1Char('<'), QLatin1Char('>'));
 }
 
-Range KateViNormalMode::textObjectAComma()
+Range NormalMode::textObjectAComma()
 {
     return textObjectComma(false);
 }
 
-Range KateViNormalMode::textObjectInnerComma()
+Range NormalMode::textObjectInnerComma()
 {
     return textObjectComma(true);
 }
 
 // add commands
 // when adding commands here, remember to add them to visual mode too (if applicable)
-void KateViNormalMode::initializeCommands()
+void NormalMode::initializeCommands()
 {
     ADDCMD("a", commandEnterInsertModeAppend, IS_CHANGE);
     ADDCMD("A", commandEnterInsertModeAppendEOL, IS_CHANGE);
@@ -3701,7 +3701,7 @@ void KateViNormalMode::initializeCommands()
     ADDMOTION("?<enter>", motionToIncrementalSearchMatch, IS_NOT_LINEWISE);
 }
 
-QRegExp KateViNormalMode::generateMatchingItemRegex() const
+QRegExp NormalMode::generateMatchingItemRegex() const
 {
     QString pattern(QLatin1String("\\[|\\]|\\{|\\}|\\(|\\)|"));
     QList<QString> keys = m_matchingItems.keys();
@@ -3733,15 +3733,15 @@ QRegExp KateViNormalMode::generateMatchingItemRegex() const
 // 2. if we're in visual line mode OR the range spans several lines, it should be LineWise
 // 3. if neither of these is true, CharWise is returned
 // 4. there are some motion that makes all operator charwise, if we have one of them mode will be CharWise
-OperationMode KateViNormalMode::getOperationMode() const
+OperationMode NormalMode::getOperationMode() const
 {
     OperationMode m = CharWise;
 
-    if (m_viInputModeManager->getCurrentViMode() == VisualBlockMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
         m = Block;
-    } else if (m_viInputModeManager->getCurrentViMode() == VisualLineMode
+    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode
                || (m_commandRange.startLine != m_commandRange.endLine
-                   && m_viInputModeManager->getCurrentViMode() != VisualMode)) {
+                   && m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode)) {
         m = LineWise;
     }
 
@@ -3756,7 +3756,7 @@ OperationMode KateViNormalMode::getOperationMode() const
     return m;
 }
 
-bool KateViNormalMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste)
+bool NormalMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste)
 {
     KTextEditor::Cursor pasteAt(m_view->cursorPosition());
     KTextEditor::Cursor cursorAfterPaste = pasteAt;
@@ -3840,7 +3840,7 @@ bool KateViNormalMode::paste(PasteLocation pasteLocation, bool isgPaste, bool is
     return true;
 }
 
-KTextEditor::Cursor KateViNormalMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
+KTextEditor::Cursor NormalMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
 {
     KTextEditor::Cursor cAfter = pasteLocation;
     const QStringList textLines = pastedText.split(QLatin1String("\n"));
@@ -3853,7 +3853,7 @@ KTextEditor::Cursor KateViNormalMode::cursorPosAtEndOfPaste(const KTextEditor::C
     return cAfter;
 }
 
-void KateViNormalMode::joinLines(unsigned int from, unsigned int to) const
+void NormalMode::joinLines(unsigned int from, unsigned int to) const
 {
     // make sure we don't try to join lines past the document end
     if (to >= (unsigned int)(doc()->lines())) {
@@ -3868,13 +3868,13 @@ void KateViNormalMode::joinLines(unsigned int from, unsigned int to) const
     doc()->joinLines(from, to);
 }
 
-void KateViNormalMode::reformatLines(unsigned int from, unsigned int to) const
+void NormalMode::reformatLines(unsigned int from, unsigned int to) const
 {
     joinLines(from, to);
     doc()->wrapText(from, to);
 }
 
-int KateViNormalMode::getFirstNonBlank(int line) const
+int NormalMode::getFirstNonBlank(int line) const
 {
     if (line < 0) {
         line = m_view->cursorPosition().line();
@@ -3889,7 +3889,7 @@ int KateViNormalMode::getFirstNonBlank(int line) const
 }
 
 // Tries to shrinks toShrink so that it fits tightly around rangeToShrinkTo.
-void KateViNormalMode::shrinkRangeAroundCursor(KateVi::Range &toShrink, const Range &rangeToShrinkTo) const
+void NormalMode::shrinkRangeAroundCursor(KateVi::Range &toShrink, const Range &rangeToShrinkTo) const
 {
     if (!toShrink.valid || !rangeToShrinkTo.valid) {
         return;
@@ -3940,7 +3940,7 @@ void KateViNormalMode::shrinkRangeAroundCursor(KateVi::Range &toShrink, const Ra
     }
 }
 
-Range KateViNormalMode::textObjectComma(bool inner) const
+Range NormalMode::textObjectComma(bool inner) const
 {
     // Basic algorithm: look left and right of the cursor for all combinations
     // of enclosing commas and the various types of brackets, and pick the pair
@@ -3959,7 +3959,7 @@ Range KateViNormalMode::textObjectComma(bool inner) const
     return r;
 }
 
-void KateViNormalMode::updateYankHighlightAttrib()
+void NormalMode::updateYankHighlightAttrib()
 {
     if (!m_highlightYankAttribute) {
         m_highlightYankAttribute = new KTextEditor::Attribute;
@@ -3972,7 +3972,7 @@ void KateViNormalMode::updateYankHighlightAttrib()
     m_highlightYankAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(yankedColor);
 }
 
-void KateViNormalMode::highlightYank(const Range &range, const OperationMode mode)
+void NormalMode::highlightYank(const Range &range, const OperationMode mode)
 {
     clearYankHighlight();
 
@@ -3987,7 +3987,7 @@ void KateViNormalMode::highlightYank(const Range &range, const OperationMode mod
     }
 }
 
-void KateViNormalMode::addHighlightYank(const KTextEditor::Range &yankRange)
+void NormalMode::addHighlightYank(const KTextEditor::Range &yankRange)
 {
     KTextEditor::MovingRange *highlightedYank = m_view->doc()->newMovingRange(yankRange, Kate::TextRange::DoNotExpand);
     highlightedYank->setView(m_view); // show only in this view
@@ -3999,28 +3999,28 @@ void KateViNormalMode::addHighlightYank(const KTextEditor::Range &yankRange)
     highlightedYankForDocument().insert(highlightedYank);
 }
 
-void KateViNormalMode::clearYankHighlight()
+void NormalMode::clearYankHighlight()
 {
     QSet<KTextEditor::MovingRange *> &pHighlightedYanks = highlightedYankForDocument();
     qDeleteAll(pHighlightedYanks);
     pHighlightedYanks.clear();
 }
 
-void KateViNormalMode::aboutToDeleteMovingInterfaceContent()
+void NormalMode::aboutToDeleteMovingInterfaceContent()
 {
     QSet<KTextEditor::MovingRange *> &pHighlightedYanks = highlightedYankForDocument();
-    // Prevent double-deletion in case this KateViNormalMode is deleted.
+    // Prevent double-deletion in case this NormalMode is deleted.
     pHighlightedYanks.clear();
 }
 
-QSet<KTextEditor::MovingRange *> &KateViNormalMode::highlightedYankForDocument()
+QSet<KTextEditor::MovingRange *> &NormalMode::highlightedYankForDocument()
 {
     // Work around the fact that both Normal and Visual mode will have their own m_highlightedYank -
     // make Normal's the canonical one.
     return m_viInputModeManager->getViNormalMode()->m_highlightedYanks;
 }
 
-bool KateViNormalMode::waitingForRegisterOrCharToSearch()
+bool NormalMode::waitingForRegisterOrCharToSearch()
 {
     if (m_keys.size() != 1) {
         return false;
@@ -4033,10 +4033,10 @@ bool KateViNormalMode::waitingForRegisterOrCharToSearch()
             || ch == QLatin1Char('q') || ch == QLatin1Char('@'));
 }
 
-void KateViNormalMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
+void NormalMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == InsertMode;
+    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode;
     const bool continuesInsertion = range.start().line() == m_currentChangeEndMarker.line() && range.start().column() == m_currentChangeEndMarker.column();
     const bool beginsWithNewline = doc()->text(range)[0] == QLatin1Char('\n');
     if (!continuesInsertion) {
@@ -4067,10 +4067,10 @@ void KateViNormalMode::textInserted(KTextEditor::Document *document, KTextEditor
     }
 }
 
-void KateViNormalMode::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
+void NormalMode::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == InsertMode;
+    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode;
     m_viInputModeManager->marks()->setLastChange(range.start());
     if (!isInsertMode) {
         // Don't go resetting [ just because we did a Ctrl-h!
@@ -4091,17 +4091,17 @@ void KateViNormalMode::textRemoved(KTextEditor::Document *document, KTextEditor:
     }
 }
 
-void KateViNormalMode::undoBeginning()
+void NormalMode::undoBeginning()
 {
     m_isUndo = true;
 }
 
-void KateViNormalMode::undoEnded()
+void NormalMode::undoEnded()
 {
     m_isUndo = false;
 }
 
-bool KateViNormalMode::executeKateCommand(const QString &command)
+bool NormalMode::executeKateCommand(const QString &command)
 {
     KTextEditor::Command *p = KateCmd::self()->queryCommand(command);
 

@@ -21,26 +21,26 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_VISUAL_MODE_INCLUDED
-#define KATE_VI_VISUAL_MODE_INCLUDED
+#ifndef KATEVI_VISUAL_MODE_H
+#define KATEVI_VISUAL_MODE_H
 
 #include <ktexteditor/range.h>
-#include "katevinormalmode.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/modes/normalmode.h>
 
-namespace KateVi {
-    class Range;
-}
 class KateViInputModeManager;
 
-class KateViVisualMode : public KateViNormalMode
+namespace KateVi
 {
 
+class VisualMode : public NormalMode
+{
     Q_OBJECT
 
 public:
-    KateViVisualMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
-    ~KateViVisualMode();
+    explicit VisualMode(KateViInputModeManager *viInputModeManager,
+                        KTextEditor::ViewPrivate *view,
+                        KateViewInternal *viewInternal);
+    virtual ~VisualMode();
 
     void init();
 
@@ -48,10 +48,12 @@ public:
     {
         return m_mode == VisualLineMode;
     }
+
     bool isVisualBlock() const
     {
         return m_mode == VisualBlockMode;
     }
+
     void switchStartEnd();
     void reset();
     void setVisualModeType(ViMode mode);
@@ -60,6 +62,7 @@ public:
     {
         m_start = c;
     }
+
     KTextEditor::Cursor getStart()
     {
         return m_start;
@@ -71,6 +74,7 @@ public:
     {
         return m_lastVisualMode;
     }
+
     KTextEditor::Cursor getStart() const
     {
         return m_start;
@@ -107,5 +111,7 @@ private:
     KTextEditor::Cursor m_start;
     ViMode m_lastVisualMode; // used when reselecting a visual selection
 };
+
+}
 
 #endif

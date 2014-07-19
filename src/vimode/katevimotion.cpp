@@ -20,8 +20,8 @@
 
 #include "katevimotion.h"
 
-KateViMotion::KateViMotion(KateViNormalMode *parent, const QString &pattern,
-                           KateVi::Range(KateViNormalMode::*commandMethod)(), unsigned int flags)
+KateViMotion::KateViMotion(KateVi::NormalMode *parent, const QString &pattern,
+                           KateVi::Range(KateVi::NormalMode::*commandMethod)(), unsigned int flags)
     : KateViCommand(parent, pattern, 0, flags)
 {
     m_ptr2commandMethod = commandMethod;

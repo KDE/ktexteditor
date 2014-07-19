@@ -25,7 +25,7 @@
 #include "katedocument.h"
 #include "kateview.h"
 #include "kateglobal.h"
-#include "katevinormalmode.h"
+#include <vimode/modes/normalmode.h>
 #include "kateviemulatedcommandbar.h"
 #include "katecmd.h"
 #include "katepartdebug.h"
@@ -93,7 +93,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
         return true;
     }
 
-    KateViNormalMode *nm = m_viInputModeManager->getViNormalMode();
+    KateVi::NormalMode *nm = m_viInputModeManager->getViNormalMode();
 
     if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") ||
             cmd == QLatin1String("c") || cmd == QLatin1String("change") ||  cmd == QLatin1String("<") || cmd == QLatin1String(">") ||

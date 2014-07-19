@@ -21,26 +21,24 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_MODE_BASE_INCLUDED
-#define KATE_VI_MODE_BASE_INCLUDED
+#ifndef KATEVI_MODE_BASE_H
+#define KATEVI_MODE_BASE_H
 
 #include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
 #include "kateview.h"
 #include <vimode/range.h>
-#include "definitions.h"
-
-#include <QList>
+#include <vimode/definitions.h>
 
 class QKeyEvent;
 class QString;
 class QRegExp;
-class QTimer;
 namespace KTextEditor { class DocumentPrivate; }
-class KateViVisualMode;
-class KateViNormalMode;
 class KateViInputModeManager;
+
+namespace KateVi
+{
 
 enum Direction {
     Up,
@@ -51,12 +49,12 @@ enum Direction {
     Prev
 };
 
-class KTEXTEDITOR_EXPORT KateViModeBase : public QObject
+class KTEXTEDITOR_EXPORT ModeBase : public QObject
 {
     Q_OBJECT
 
 public:
-    KateViModeBase()
+    ModeBase()
         : QObject(),
           m_count(0),
           m_oneTimeCountOverride(-1),
@@ -64,7 +62,7 @@ public:
           m_stickyColumn(-1)
     {
     }
-    virtual ~KateViModeBase() {}
+    virtual ~ModeBase() {}
 
     /**
      * @return normal mode command accumulated so far
@@ -84,17 +82,17 @@ public:
     void error(const QString &errorMsg);
     void message(const QString &msg);
 
-    KateVi::Range motionFindNext();
-    KateVi::Range motionFindPrev();
+    Range motionFindNext();
+    Range motionFindPrev();
 
-    virtual void goToPos(const KateVi::Range &r);
+    virtual void goToPos(const Range &r);
     unsigned int getCount() const;
 
 protected:
     // helper methods
     void yankToClipBoard(QChar chosen_register, QString text);
-    bool deleteRange(KateVi::Range &r, OperationMode mode = LineWise, bool addToRegister = true);
-    const QString getRange(KateVi::Range &r, OperationMode mode = LineWise) const;
+    bool deleteRange(Range &r, OperationMode mode = LineWise, bool addToRegister = true);
+    const QString getRange(Range &r, OperationMode mode = LineWise) const;
     const QString getLine(int line = -1) const;
     const QChar getCharUnderCursor() const;
     const QString getWordUnderCursor() const;
@@ -108,10 +106,10 @@ protected:
     KTextEditor::Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     KTextEditor::Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
-    KateVi::Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
+    Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
                                         const QChar &nested1, const QChar &nested2) const;
-    KateVi::Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
-    KateVi::Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
+    Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
+    Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
     int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
     void updateCursor(const KTextEditor::Cursor &c) const;
@@ -119,10 +117,10 @@ protected:
 
     void addToNumberUnderCursor(int count);
 
-    KateVi::Range goLineUp();
-    KateVi::Range goLineDown();
-    KateVi::Range goLineUpDown(int lines);
-    KateVi::Range goVisualLineUpDown(int lines);
+    Range goLineUp();
+    Range goLineDown();
+    Range goLineUpDown(int lines);
+    Range goVisualLineUpDown(int lines);
 
     unsigned int linesDisplayed() const;
     void scrollViewLines(int l);
@@ -158,7 +156,7 @@ protected:
 protected:
     QChar m_register;
 
-    KateVi::Range m_commandRange;
+    Range m_commandRange;
     unsigned int m_count;
     int m_oneTimeCountOverride;
     bool m_iscounted;
@@ -177,5 +175,7 @@ protected:
     // info message of vi mode
     QPointer<KTextEditor::Message> m_infoMessage;
 };
+
+}
 
 #endif

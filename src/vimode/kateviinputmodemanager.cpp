@@ -35,10 +35,10 @@
 #include "kateglobal.h"
 #include "globalstate.h"
 #include "kateviewinternal.h"
-#include "katevinormalmode.h"
-#include "kateviinsertmode.h"
-#include "katevivisualmode.h"
-#include "katevireplacemode.h"
+#include <vimode/modes/normalmode.h>
+#include <vimode/modes/insertmode.h>
+#include <vimode/modes/visualmode.h>
+#include <vimode/modes/replacemode.h>
 #include "katevikeyparser.h"
 #include "katevikeymapper.h"
 #include "kateviemulatedcommandbar.h"
@@ -57,13 +57,13 @@
 KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : m_inputAdapter(inputAdapter)
 {
-    m_currentViMode = NormalMode;
-    m_previousViMode = NormalMode;
+    m_currentViMode = ViMode::NormalMode;
+    m_previousViMode = ViMode::NormalMode;
 
-    m_viNormalMode = new KateViNormalMode(this, view, viewInternal);
-    m_viInsertMode = new KateViInsertMode(this, view, viewInternal);
-    m_viVisualMode = new KateViVisualMode(this, view, viewInternal);
-    m_viReplaceMode = new KateViReplaceMode(this, view, viewInternal);
+    m_viNormalMode = new KateVi::NormalMode(this, view, viewInternal);
+    m_viInsertMode = new KateVi::InsertMode(this, view, viewInternal);
+    m_viVisualMode = new KateVi::VisualMode(this, view, viewInternal);
+    m_viReplaceMode = new KateVi::ReplaceMode(this, view, viewInternal);
 
     m_view = view;
     m_viewInternal = viewInternal;
@@ -85,8 +85,8 @@ KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KT
 
     m_lastChangeRecorder = new KateVi::LastChangeRecorder(this);
 
-    // We have to do this outside of KateViNormalMode, as we don't want
-    // KateViVisualMode (which inherits from KateViNormalMode) to respond
+    // We have to do this outside of KateVi::NormalMode, as we don't want
+    // KateViVisualMode (which inherits from KateVi::NormalMode) to respond
     // to changes in the document as well.
     m_viNormalMode->beginMonitoringDocumentChanges();
 }
@@ -282,17 +282,17 @@ ViMode KateViInputModeManager::getCurrentViMode() const
 KTextEditor::View::ViewMode KateViInputModeManager::getCurrentViewMode() const
 {
     switch (m_currentViMode) {
-        case InsertMode:
+        case ViMode::InsertMode:
             return KTextEditor::View::ViModeInsert;
-        case VisualMode:
+        case ViMode::VisualMode:
             return KTextEditor::View::ViModeVisual;
-        case VisualLineMode:
+        case ViMode::VisualLineMode:
             return KTextEditor::View::ViModeVisualLine;
-        case VisualBlockMode:
+        case ViMode::VisualBlockMode:
             return KTextEditor::View::ViModeVisualBlock;
-        case ReplaceMode:
+        case ViMode::ReplaceMode:
             return KTextEditor::View::ViModeReplace;
-        case NormalMode:
+        case ViMode::NormalMode:
         default:
             return KTextEditor::View::ViModeNormal;
     }
@@ -305,21 +305,23 @@ ViMode KateViInputModeManager::getPreviousViMode() const
 
 bool KateViInputModeManager::isAnyVisualMode() const
 {
-    return ((m_currentViMode == VisualMode) || (m_currentViMode == VisualLineMode) || (m_currentViMode == VisualBlockMode));
+    return ((m_currentViMode == ViMode::VisualMode) ||
+            (m_currentViMode == ViMode::VisualLineMode) ||
+            (m_currentViMode == ViMode::VisualBlockMode));
 }
 
-KateViModeBase *KateViInputModeManager::getCurrentViModeHandler() const
+KateVi::ModeBase *KateViInputModeManager::getCurrentViModeHandler() const
 {
     switch (m_currentViMode) {
-    case NormalMode:
+    case ViMode::NormalMode:
         return m_viNormalMode;
-    case InsertMode:
+    case ViMode::InsertMode:
         return m_viInsertMode;
-    case VisualMode:
-    case VisualLineMode:
-    case VisualBlockMode:
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+    case ViMode::VisualBlockMode:
         return m_viVisualMode;
-    case ReplaceMode:
+    case ViMode::ReplaceMode:
         return m_viReplaceMode;
     }
     qCDebug(LOG_PART) << "WARNING: Unknown Vi mode.";
@@ -328,10 +330,10 @@ KateViModeBase *KateViInputModeManager::getCurrentViModeHandler() const
 
 void KateViInputModeManager::viEnterNormalMode()
 {
-    bool moveCursorLeft = (m_currentViMode == InsertMode || m_currentViMode == ReplaceMode)
+    bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)
                           && m_viewInternal->getCursor().column() > 0;
 
-    if (!m_lastChangeRecorder->isReplaying() && m_currentViMode == InsertMode) {
+    if (!m_lastChangeRecorder->isReplaying() && m_currentViMode == ViMode::InsertMode) {
         // '^ is the insert mark and "^ is the insert register,
         // which holds the last inserted text
         KTextEditor::Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
@@ -344,7 +346,7 @@ void KateViInputModeManager::viEnterNormalMode()
         m_marks->setInsertStopped(KTextEditor::Cursor(m_view->cursorPosition()));
     }
 
-    changeViMode(NormalMode);
+    changeViMode(ViMode::NormalMode);
 
     if (moveCursorLeft) {
         m_viewInternal->cursorPrevChar();
@@ -355,7 +357,7 @@ void KateViInputModeManager::viEnterNormalMode()
 
 void KateViInputModeManager::viEnterInsertMode()
 {
-    changeViMode(InsertMode);
+    changeViMode(ViMode::InsertMode);
     m_marks->setInsertStopped(KTextEditor::Cursor(m_view->cursorPosition()));
     if (getTemporaryNormalMode()) {
         // Ensure the key log contains a request to re-enter Insert mode, else the keystrokes made
@@ -386,22 +388,22 @@ void KateViInputModeManager::viEnterReplaceMode()
     m_viewInternal->update();
 }
 
-KateViNormalMode *KateViInputModeManager::getViNormalMode()
+KateVi::NormalMode *KateViInputModeManager::getViNormalMode()
 {
     return m_viNormalMode;
 }
 
-KateViInsertMode *KateViInputModeManager::getViInsertMode()
+KateVi::InsertMode *KateViInputModeManager::getViInsertMode()
 {
     return m_viInsertMode;
 }
 
-KateViVisualMode *KateViInputModeManager::getViVisualMode()
+KateVi::VisualMode *KateViInputModeManager::getViVisualMode()
 {
     return m_viVisualMode;
 }
 
-KateViReplaceMode *KateViInputModeManager::getViReplaceMode()
+KateVi::ReplaceMode *KateViInputModeManager::getViReplaceMode()
 {
     return m_viReplaceMode;
 }
@@ -411,16 +413,16 @@ const QString KateViInputModeManager::getVerbatimKeys() const
     QString cmd;
 
     switch (getCurrentViMode()) {
-    case NormalMode:
+    case ViMode::NormalMode:
         cmd = m_viNormalMode->getVerbatimKeys();
         break;
-    case InsertMode:
-    case ReplaceMode:
+    case ViMode::InsertMode:
+    case ViMode::ReplaceMode:
         // ...
         break;
-    case VisualMode:
-    case VisualLineMode:
-    case VisualBlockMode:
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+    case ViMode::VisualBlockMode:
         cmd = m_viVisualMode->getVerbatimKeys();
         break;
     }

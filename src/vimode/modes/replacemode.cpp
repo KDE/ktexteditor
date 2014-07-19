@@ -20,27 +20,28 @@
 
 
 #include <view/kateviewinternal.h>
-#include <vimode/katevireplacemode.h>
+#include <vimode/modes/replacemode.h>
 #include <vimode/kateviinputmodemanager.h>
 #include <utils/kateconfig.h>
 
+using namespace KateVi;
 
-KateViReplaceMode::KateViReplaceMode(KateViInputModeManager *viInputModeManager,
-                                     KTextEditor::ViewPrivate *view,
-                                     KateViewInternal *viewInternal)
-    : KateViModeBase()
+ReplaceMode::ReplaceMode(KateViInputModeManager *viInputModeManager,
+                         KTextEditor::ViewPrivate *view,
+                         KateViewInternal *viewInternal)
+    : ModeBase()
 {
     m_view = view;
     m_viewInternal = viewInternal;
     m_viInputModeManager = viInputModeManager;
 }
 
-KateViReplaceMode::~KateViReplaceMode()
+ReplaceMode::~ReplaceMode()
 {
     /* There's nothing to do here. */
 }
 
-bool KateViReplaceMode::commandInsertFromLine(int offset)
+bool ReplaceMode::commandInsertFromLine(int offset)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -70,7 +71,7 @@ bool KateViReplaceMode::commandInsertFromLine(int offset)
     return false;
 }
 
-bool KateViReplaceMode::commandMoveOneWordLeft()
+bool ReplaceMode::commandMoveOneWordLeft()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findPrevWordStart(c.line(), c.column());
@@ -83,7 +84,7 @@ bool KateViReplaceMode::commandMoveOneWordLeft()
     return true;
 }
 
-bool KateViReplaceMode::commandMoveOneWordRight()
+bool ReplaceMode::commandMoveOneWordRight()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findNextWordStart(c.line(), c.column());
@@ -96,7 +97,7 @@ bool KateViReplaceMode::commandMoveOneWordRight()
     return true;
 }
 
-bool KateViReplaceMode::handleKeypress(const QKeyEvent *e)
+bool ReplaceMode::handleKeypress(const QKeyEvent *e)
 {
     // backspace should work even if the shift key is down
     if (e->modifiers() != Qt::ControlModifier && e->key() == Qt::Key_Backspace) {
@@ -185,7 +186,7 @@ bool KateViReplaceMode::handleKeypress(const QKeyEvent *e)
     return false;
 }
 
-void KateViReplaceMode::backspace()
+void ReplaceMode::backspace()
 {
     KTextEditor::Cursor c1(m_view->cursorPosition());
     KTextEditor::Cursor c2(c1.line(), c1.column() - 1);
@@ -201,7 +202,7 @@ void KateViReplaceMode::backspace()
     }
 }
 
-void KateViReplaceMode::commandBackWord()
+void ReplaceMode::commandBackWord()
 {
     KTextEditor::Cursor current(m_view->cursorPosition());
     KTextEditor::Cursor to(findPrevWordStart(current.line(), current.column()));
@@ -216,7 +217,7 @@ void KateViReplaceMode::commandBackWord()
     }
 }
 
-void KateViReplaceMode::commandBackLine()
+void ReplaceMode::commandBackLine()
 {
     const int column = m_view->cursorPosition().column();
 

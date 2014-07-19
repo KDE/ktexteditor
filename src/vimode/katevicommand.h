@@ -25,7 +25,7 @@
 #include <QString>
 
 class KateViKeyParser;
-class KateViNormalMode;
+namespace KateVi { class NormalMode; }
 
 enum KateViCommandFlags {
     REGEX_PATTERN = 0x1,    // the pattern is a regex
@@ -40,8 +40,8 @@ enum KateViCommandFlags {
 class KateViCommand
 {
 public:
-    KateViCommand(KateViNormalMode *parent, QString pattern,
-                  bool (KateViNormalMode::*pt2Func)(), unsigned int flags = 0);
+    KateViCommand(KateVi::NormalMode *parent, QString pattern,
+                  bool (KateVi::NormalMode::*pt2Func)(), unsigned int flags = 0);
     ~KateViCommand();
 
     bool matches(const QString &pattern) const;
@@ -77,10 +77,10 @@ public:
     }
 
 protected:
-    KateViNormalMode *m_parent;
+    KateVi::NormalMode *m_parent;
     QString m_pattern;
     unsigned int m_flags;
-    bool (KateViNormalMode::*m_ptr2commandMethod)();
+    bool (KateVi::NormalMode::*m_ptr2commandMethod)();
     KateViKeyParser *m_keyParser;
 };
 

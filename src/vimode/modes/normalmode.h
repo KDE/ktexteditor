@@ -21,11 +21,11 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_NORMAL_MODE_INCLUDED
-#define KATE_VI_NORMAL_MODE_INCLUDED
+#ifndef KATEVI_NORMAL_MODE_H
+#define KATEVI_NORMAL_MODE_H
 
 #include <vimode/range.h>
-#include "katevimodebase.h"
+#include <vimode/modes/modebase.h>
 
 #include <QVector>
 #include <QStack>
@@ -42,20 +42,23 @@ class KateViKeyParser;
 class KateViInputModeManager;
 class KateViInputMode;
 
+namespace KateVi
+{
+
 /**
  * Commands for the vi normal mode
  */
-class KTEXTEDITOR_EXPORT KateViNormalMode : public KateViModeBase
+class KTEXTEDITOR_EXPORT NormalMode : public ModeBase
 {
     Q_OBJECT
 
     friend KateViInputMode;
 
 public:
-    KateViNormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
-    virtual ~KateViNormalMode();
+    explicit NormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
+    virtual ~NormalMode();
 
-    bool handleKeypress(const QKeyEvent *e);
+    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
     bool commandEnterInsertMode();
     bool commandEnterInsertModeAppend();
@@ -188,107 +191,107 @@ public:
 
     // MOTIONS
 
-    KateVi::Range motionLeft();
-    KateVi::Range motionRight();
-    KateVi::Range motionDown();
-    KateVi::Range motionUp();
+    Range motionLeft();
+    Range motionRight();
+    Range motionDown();
+    Range motionUp();
 
-    KateVi::Range motionPageDown();
-    KateVi::Range motionPageUp();
+    Range motionPageDown();
+    Range motionPageUp();
 
-    KateVi::Range motionUpToFirstNonBlank();
-    KateVi::Range motionDownToFirstNonBlank();
+    Range motionUpToFirstNonBlank();
+    Range motionDownToFirstNonBlank();
 
-    KateVi::Range motionWordForward();
-    KateVi::Range motionWordBackward();
-    KateVi::Range motionWORDForward();
-    KateVi::Range motionWORDBackward();
+    Range motionWordForward();
+    Range motionWordBackward();
+    Range motionWORDForward();
+    Range motionWORDBackward();
 
-    KateVi::Range motionToEndOfWord();
-    KateVi::Range motionToEndOfWORD();
-    KateVi::Range motionToEndOfPrevWord();
-    KateVi::Range motionToEndOfPrevWORD();
+    Range motionToEndOfWord();
+    Range motionToEndOfWORD();
+    Range motionToEndOfPrevWord();
+    Range motionToEndOfPrevWORD();
 
-    KateVi::Range motionFindChar();
-    KateVi::Range motionFindCharBackward();
-    KateVi::Range motionToChar();
-    KateVi::Range motionToCharBackward();
-    KateVi::Range motionRepeatlastTF();
-    KateVi::Range motionRepeatlastTFBackward();
+    Range motionFindChar();
+    Range motionFindCharBackward();
+    Range motionToChar();
+    Range motionToCharBackward();
+    Range motionRepeatlastTF();
+    Range motionRepeatlastTFBackward();
 
-    KateVi::Range motionToEOL();
-    KateVi::Range motionToColumn0();
-    KateVi::Range motionToFirstCharacterOfLine();
+    Range motionToEOL();
+    Range motionToColumn0();
+    Range motionToFirstCharacterOfLine();
 
-    KateVi::Range motionToLineFirst();
-    KateVi::Range motionToLineLast();
+    Range motionToLineFirst();
+    Range motionToLineLast();
 
-    KateVi::Range motionToScreenColumn();
+    Range motionToScreenColumn();
 
-    KateVi::Range motionToMark();
-    KateVi::Range motionToMarkLine();
+    Range motionToMark();
+    Range motionToMarkLine();
 
-    KateVi::Range motionToMatchingItem();
+    Range motionToMatchingItem();
 
-    KateVi::Range motionToPreviousBraceBlockStart();
-    KateVi::Range motionToNextBraceBlockStart();
-    KateVi::Range motionToPreviousBraceBlockEnd();
-    KateVi::Range motionToNextBraceBlockEnd();
+    Range motionToPreviousBraceBlockStart();
+    Range motionToNextBraceBlockStart();
+    Range motionToPreviousBraceBlockEnd();
+    Range motionToNextBraceBlockEnd();
 
-    KateVi::Range motionToNextOccurrence();
-    KateVi::Range motionToPrevOccurrence();
+    Range motionToNextOccurrence();
+    Range motionToPrevOccurrence();
 
-    KateVi::Range motionToFirstLineOfWindow();
-    KateVi::Range motionToMiddleLineOfWindow();
-    KateVi::Range motionToLastLineOfWindow();
+    Range motionToFirstLineOfWindow();
+    Range motionToMiddleLineOfWindow();
+    Range motionToLastLineOfWindow();
 
-    KateVi::Range motionToNextVisualLine();
-    KateVi::Range motionToPrevVisualLine();
+    Range motionToNextVisualLine();
+    Range motionToPrevVisualLine();
 
-    KateVi::Range motionToPreviousSentence();
-    KateVi::Range motionToNextSentence();
+    Range motionToPreviousSentence();
+    Range motionToNextSentence();
 
-    KateVi::Range motionToBeforeParagraph();
-    KateVi::Range motionToAfterParagraph();
+    Range motionToBeforeParagraph();
+    Range motionToAfterParagraph();
 
-    KateVi::Range motionToIncrementalSearchMatch();
+    Range motionToIncrementalSearchMatch();
 
     // TEXT OBJECTS
 
-    KateVi::Range textObjectAWord();
-    KateVi::Range textObjectInnerWord();
-    KateVi::Range textObjectAWORD();
-    KateVi::Range textObjectInnerWORD();
+    Range textObjectAWord();
+    Range textObjectInnerWord();
+    Range textObjectAWORD();
+    Range textObjectInnerWORD();
 
-    KateVi::Range textObjectInnerSentence();
-    KateVi::Range textObjectASentence();
+    Range textObjectInnerSentence();
+    Range textObjectASentence();
 
-    KateVi::Range textObjectInnerParagraph();
-    KateVi::Range textObjectAParagraph();
+    Range textObjectInnerParagraph();
+    Range textObjectAParagraph();
 
-    KateVi::Range textObjectAQuoteDouble();
-    KateVi::Range textObjectInnerQuoteDouble();
+    Range textObjectAQuoteDouble();
+    Range textObjectInnerQuoteDouble();
 
-    KateVi::Range textObjectAQuoteSingle();
-    KateVi::Range textObjectInnerQuoteSingle();
+    Range textObjectAQuoteSingle();
+    Range textObjectInnerQuoteSingle();
 
-    KateVi::Range textObjectABackQuote();
-    KateVi::Range textObjectInnerBackQuote();
+    Range textObjectABackQuote();
+    Range textObjectInnerBackQuote();
 
-    KateVi::Range textObjectAParen();
-    KateVi::Range textObjectInnerParen();
+    Range textObjectAParen();
+    Range textObjectInnerParen();
 
-    KateVi::Range textObjectABracket();
-    KateVi::Range textObjectInnerBracket();
+    Range textObjectABracket();
+    Range textObjectInnerBracket();
 
-    KateVi::Range textObjectACurlyBracket();
-    KateVi::Range textObjectInnerCurlyBracket();
+    Range textObjectACurlyBracket();
+    Range textObjectInnerCurlyBracket();
 
-    KateVi::Range textObjectAInequalitySign();
-    KateVi::Range textObjectInnerInequalitySign();
+    Range textObjectAInequalitySign();
+    Range textObjectInnerInequalitySign();
 
-    KateVi::Range textObjectAComma();
-    KateVi::Range textObjectInnerComma();
+    Range textObjectAComma();
+    Range textObjectInnerComma();
 
     virtual void reset();
 
@@ -301,7 +304,7 @@ protected:
     void executeCommand(const KateViCommand *cmd);
     OperationMode getOperationMode() const;
 
-    void highlightYank(const KateVi::Range &range, const OperationMode mode = CharWise);
+    void highlightYank(const Range &range, const OperationMode mode = CharWise);
     void addHighlightYank(const KTextEditor::Range &range);
 
     bool motionWillBeUsedWithCommand() const
@@ -323,8 +326,8 @@ protected:
      */
     int getFirstNonBlank(int line = -1) const;
 
-    KateVi::Range textObjectComma(bool inner) const;
-    void shrinkRangeAroundCursor(KateVi::Range &toShrink, const KateVi::Range &rangeToShrinkTo) const;
+    Range textObjectComma(bool inner) const;
+    void shrinkRangeAroundCursor(Range &toShrink, const Range &rangeToShrinkTo) const;
     KTextEditor::Cursor findSentenceStart();
     KTextEditor::Cursor findSentenceEnd();
     KTextEditor::Cursor findParagraphStart();
@@ -334,7 +337,7 @@ protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
     enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
-    bool paste(KateViNormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
+    bool paste(NormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
     KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const;
 
 protected:
@@ -387,5 +390,7 @@ private Q_SLOTS:
     void clearYankHighlight();
     void aboutToDeleteMovingInterfaceContent();
 };
+
+}
 
 #endif

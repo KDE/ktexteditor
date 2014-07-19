@@ -19,23 +19,25 @@
  */
 
 
-#ifndef KATE_VI_REPLACE_MODE_INCLUDED
-#define KATE_VI_REPLACE_MODE_INCLUDED
+#ifndef KATEVI_REPLACE_MODE_H
+#define KATEVI_REPLACE_MODE_H
 
 
-#include <vimode/katevimodebase.h>
+#include <vimode/modes/modebase.h>
 
+namespace KateVi
+{
 
 /**
  * Commands for the vi replace mode
  */
-class KateViReplaceMode : public KateViModeBase
+class ReplaceMode : public ModeBase
 {
 public:
-    explicit KateViReplaceMode(KateViInputModeManager *viInputModeManager,
-                               KTextEditor::ViewPrivate *view,
-                               KateViewInternal *viewInternal);
-    ~KateViReplaceMode();
+    explicit ReplaceMode(KateViInputModeManager *viInputModeManager,
+                         KTextEditor::ViewPrivate *view,
+                         KateViewInternal *viewInternal);
+    virtual ~ReplaceMode();
 
     /// Update the track of overwritten characters with the \p s character.
     inline void overwrittenChar(const QChar &s)
@@ -49,7 +51,7 @@ protected:
      *
      * @returns true if a command was completed and executed, false otherwise.
      */
-    bool handleKeypress(const QKeyEvent *e) override;
+    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
 private:
     /**
@@ -78,5 +80,6 @@ private:
     QString m_overwritten;
 };
 
+}
 
-#endif /* KATE_VI_REPLACE_MODE_INCLUDED */
+#endif /* KATEVI_REPLACE_MODE_H */

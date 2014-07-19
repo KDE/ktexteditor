@@ -20,7 +20,7 @@
 
 #include "searcher.h"
 #include "kateviinputmodemanager.h"
-#include "katevimodebase.h"
+#include <vimode/modes/modebase.h>
 #include "katepartdebug.h"
 #include "kateview.h"
 #include "katedocument.h"

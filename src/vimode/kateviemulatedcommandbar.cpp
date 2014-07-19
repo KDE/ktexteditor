@@ -28,10 +28,11 @@
 #include "kateview.h"
 #include "globalstate.h"
 #include "katevikeyparser.h"
-#include "katevinormalmode.h"
+#include <vimode/kateviinputmodemanager.h>
+#include <vimode/modes/normalmode.h>
 
 #include "katevicmds.h"
-#include "katevivisualmode.h"
+#include <vimode/modes/visualmode.h>
 #include "kateviappcommands.h"
 #include "history.h"
 
@@ -1205,7 +1206,9 @@ void KateViEmulatedCommandBar::finishInteractiveSedReplace()
 void KateViEmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 {
     m_view->setCursorPosition(cursorPos);
-    if (m_viInputModeManager->getCurrentViMode() == VisualMode || m_viInputModeManager->getCurrentViMode() == VisualLineMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode ||
+        m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
+
         m_viInputModeManager->getViVisualMode()->goToPos(cursorPos);
     }
 }

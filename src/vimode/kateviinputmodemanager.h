@@ -42,15 +42,15 @@ namespace KateVi
     class Jumps;
     class MacroRecorder;
     class LastChangeRecorder;
+    class ModeBase;
+    class NormalMode;
+    class InsertMode;
+    class VisualMode;
+    class ReplaceMode;
 }
 
 class KConfigGroup;
 class KateViewInternal;
-class KateViModeBase;
-class KateViNormalMode;
-class KateViInsertMode;
-class KateViVisualMode;
-class KateViReplaceMode;
 class KateViKeyParser;
 class KateViKeyMapper;
 class QString;
@@ -114,7 +114,7 @@ public:
     /**
      * @return one of getViNormalMode(), getViVisualMode(), etc, depending on getCurrentViMode().
      */
-    KateViModeBase *getCurrentViModeHandler() const;
+    KateVi::ModeBase *getCurrentViModeHandler() const;
 
     const QString getVerbatimKeys() const;
 
@@ -144,24 +144,24 @@ public:
     void viEnterReplaceMode();
 
     /**
-     * @return the KateViNormalMode instance
+     * @return the KateVi::NormalMode instance
      */
-    KateViNormalMode *getViNormalMode();
+    KateVi::NormalMode *getViNormalMode();
 
     /**
-     * @return the KateViInsertMode instance
+     * @return the KateVi::InsertMode instance
      */
-    KateViInsertMode *getViInsertMode();
+    KateVi::InsertMode *getViInsertMode();
 
     /**
      * @return the KateViVisualMode instance
      */
-    KateViVisualMode *getViVisualMode();
+    KateVi::VisualMode *getViVisualMode();
 
     /**
      * @return the KateViReplaceMode instance
      */
-    KateViReplaceMode *getViReplaceMode();
+    KateVi::ReplaceMode *getViReplaceMode();
 
     /**
      * append a QKeyEvent to the key event log
@@ -225,10 +225,10 @@ public:
     void popKeyMapper();
 
 private:
-    KateViNormalMode *m_viNormalMode;
-    KateViInsertMode *m_viInsertMode;
-    KateViVisualMode *m_viVisualMode;
-    KateViReplaceMode *m_viReplaceMode;
+    KateVi::NormalMode *m_viNormalMode;
+    KateVi::InsertMode *m_viInsertMode;
+    KateVi::VisualMode *m_viVisualMode;
+    KateVi::ReplaceMode *m_viReplaceMode;
 
     ViMode m_currentViMode;
     ViMode m_previousViMode;

@@ -23,8 +23,8 @@
 
 #include <QRegExp>
 
-KateViCommand::KateViCommand(KateViNormalMode *parent, QString pattern,
-                             bool(KateViNormalMode::*commandMethod)(), unsigned int flags)
+KateViCommand::KateViCommand(KateVi::NormalMode *parent, QString pattern,
+                             bool(KateVi::NormalMode::*commandMethod)(), unsigned int flags)
 {
     m_parent = parent;
     m_pattern = KateViKeyParser::self()->encodeKeySequence(pattern);
