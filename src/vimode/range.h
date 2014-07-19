@@ -40,7 +40,7 @@ namespace KateVi
 class KTEXTEDITOR_EXPORT ViRange
 {
 public:
-//     ViRange();
+    ViRange();
 
     /**
      * For motions which only return a position, in contrast to

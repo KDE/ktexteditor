@@ -23,11 +23,11 @@
 #include <vimode/range.h>
 
 using namespace KateVi;
-/*
+
 ViRange::ViRange()
     : ViRange(-1, -1, -1, -1, InclusiveMotion)
 {
-} */
+}
 
 ViRange::ViRange(int slin, int scol, int elin, int ecol, MotionType inc)
     : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol)
