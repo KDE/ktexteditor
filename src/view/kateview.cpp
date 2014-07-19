@@ -271,6 +271,9 @@ KTextEditor::ViewPrivate::~ViewPrivate()
         factory()->removeClient(this);
     }
 
+    // delete internal view before view bar!
+    delete m_viewInternal;
+
     /**
      * remove view bar again, if needed
      */
@@ -278,9 +281,7 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     m_bottomViewBar = 0;
 
     m_doc->removeView(this);
-
-    delete m_viewInternal;
-
+    
     delete m_renderer;
 
     delete m_config;
