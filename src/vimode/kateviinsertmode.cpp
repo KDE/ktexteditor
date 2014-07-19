@@ -117,14 +117,14 @@ bool KateViInsertMode::commandDeleteWord()
         }
     }
 
-    KateVi::ViRange r(c2, c1, ExclusiveMotion);
+    KateVi::Range r(c2, c1, ExclusiveMotion);
     return deleteRange(r, CharWise, false);
 }
 
 bool KateViInsertMode::commandDeleteLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
-    KateVi::ViRange r(c.line(), 0, c.line(), c.column(), ExclusiveMotion);
+    KateVi::Range r(c.line(), 0, c.line(), c.column(), ExclusiveMotion);
 
     if (c.column() == 0) {
         // Try to move the current line to the end of the previous line.
@@ -153,7 +153,7 @@ bool KateViInsertMode::commandDeleteCharBackward()
     qCDebug(LOG_PART) << "Char backward!\n";
     KTextEditor::Cursor c(m_view->cursorPosition());
 
-    KateVi::ViRange r(c.line(), c.column() - getCount(), c.line(), c.column(), ExclusiveMotion);
+    KateVi::Range r(c.line(), c.column() - getCount(), c.line(), c.column(), ExclusiveMotion);
 
     if (c.column() == 0) {
         if (c.line() == 0) {
@@ -564,7 +564,7 @@ void KateViInsertMode::leaveInsertMode(bool force)
     startNormalMode();
 }
 
-void KateViInsertMode::setBlockPrependMode(KateVi::ViRange blockRange)
+void KateViInsertMode::setBlockPrependMode(KateVi::Range blockRange)
 {
     // ignore if not more than one line is selected
     if (blockRange.startLine != blockRange.endLine) {
@@ -573,7 +573,7 @@ void KateViInsertMode::setBlockPrependMode(KateVi::ViRange blockRange)
     }
 }
 
-void KateViInsertMode::setBlockAppendMode(KateVi::ViRange blockRange, BlockInsert b)
+void KateViInsertMode::setBlockAppendMode(KateVi::Range blockRange, BlockInsert b)
 {
     Q_ASSERT(b == Append || b == AppendEOL);
 

@@ -75,8 +75,8 @@ public:
     bool commandInsertContentOfRegister();
     bool commandSwitchToNormalModeForJustOneCommand();
 
-    void setBlockPrependMode(KateVi::ViRange blockRange);
-    void setBlockAppendMode(KateVi::ViRange blockRange, BlockInsert b);
+    void setBlockPrependMode(KateVi::Range blockRange);
+    void setBlockAppendMode(KateVi::Range blockRange, BlockInsert b);
 
     void setCount(int count)
     {
@@ -94,7 +94,7 @@ protected:
 protected:
     BlockInsert m_blockInsert;
     unsigned int m_eolPos; // length of first line in eol mode before text is appended
-    KateVi::ViRange m_blockRange;
+    KateVi::Range m_blockRange;
 
     QString m_keys;
 

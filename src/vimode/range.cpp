@@ -19,38 +19,38 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <ktexteditor/cursor.h>
+#include <ktexteditor/range.h>
 #include <vimode/range.h>
 
 using namespace KateVi;
 
-ViRange::ViRange()
-    : ViRange(-1, -1, -1, -1, InclusiveMotion)
+Range::Range()
+    : Range(-1, -1, -1, -1, InclusiveMotion)
 {
 }
 
-ViRange::ViRange(int slin, int scol, int elin, int ecol, MotionType inc)
+Range::Range(int slin, int scol, int elin, int ecol, MotionType inc)
     : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol)
     , motionType(inc), valid(true), jump(false)
 {
 }
 
-ViRange::ViRange(int elin, int ecol, MotionType inc)
-    : ViRange(-1, -1, elin, ecol, inc)
+Range::Range(int elin, int ecol, MotionType inc)
+    : Range(-1, -1, elin, ecol, inc)
 {
 }
 
-ViRange::ViRange(const KTextEditor::Cursor& c, MotionType mt)
-    : ViRange(-1, -1, c.line(), c.column(), mt)
+Range::Range(const KTextEditor::Cursor& c, MotionType mt)
+    : Range(-1, -1, c.line(), c.column(), mt)
 {
 }
 
-ViRange::ViRange(const KTextEditor::Cursor& c1, const KTextEditor::Cursor c2, MotionType mt)
-    : ViRange(c1.line(), c1.column(), c2.line(), c2.column(), mt)
+Range::Range(const KTextEditor::Cursor& c1, const KTextEditor::Cursor c2, MotionType mt)
+    : Range(c1.line(), c1.column(), c2.line(), c2.column(), mt)
 {
 }
 
-void ViRange::normalize()
+void Range::normalize()
 {
     int sl = startLine, el = endLine, sc = startColumn, ec = endColumn;
 
@@ -72,14 +72,19 @@ void ViRange::normalize()
     }
 }
 
-ViRange ViRange::invalid()
+KTextEditor::Range Range::toEditorRange() const
 {
-    ViRange r;
+    return KTextEditor::Range(startLine, startColumn, endLine, endColumn);
+}
+
+Range Range::invalid()
+{
+    Range r;
     r.valid = false;
     return r;
 }
 
-QDebug operator<<(QDebug s, const ViRange &range)
+QDebug operator<<(QDebug s, const Range &range)
 {
     s   << "[" << " (" << range.startLine << ", " << range.startColumn << ")"
         << " -> " << " (" << range.endLine << ", " << range.endColumn << ")"

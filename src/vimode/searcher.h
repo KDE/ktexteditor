@@ -47,9 +47,9 @@ public:
     void findPrevious();
 
     /** Simple searchers **/
-    KateVi::ViRange motionFindNext(int count = 1);
-    KateVi::ViRange motionFindPrev(int count = 1);
-    KateVi::ViRange findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
+    KateVi::Range motionFindNext(int count = 1);
+    KateVi::Range motionFindPrev(int count = 1);
+    KateVi::Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
 
     /** Extended searcher for ECB **/
     KTextEditor::Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count);
@@ -57,7 +57,7 @@ public:
     const QString getLastSearchPattern() const;
 
 private:
-    KateVi::ViRange findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
+    KateVi::Range findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
     KTextEditor::Range findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const;
 
 private:

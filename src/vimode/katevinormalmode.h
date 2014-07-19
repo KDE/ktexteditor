@@ -188,107 +188,107 @@ public:
 
     // MOTIONS
 
-    KateVi::ViRange motionLeft();
-    KateVi::ViRange motionRight();
-    KateVi::ViRange motionDown();
-    KateVi::ViRange motionUp();
+    KateVi::Range motionLeft();
+    KateVi::Range motionRight();
+    KateVi::Range motionDown();
+    KateVi::Range motionUp();
 
-    KateVi::ViRange motionPageDown();
-    KateVi::ViRange motionPageUp();
+    KateVi::Range motionPageDown();
+    KateVi::Range motionPageUp();
 
-    KateVi::ViRange motionUpToFirstNonBlank();
-    KateVi::ViRange motionDownToFirstNonBlank();
+    KateVi::Range motionUpToFirstNonBlank();
+    KateVi::Range motionDownToFirstNonBlank();
 
-    KateVi::ViRange motionWordForward();
-    KateVi::ViRange motionWordBackward();
-    KateVi::ViRange motionWORDForward();
-    KateVi::ViRange motionWORDBackward();
+    KateVi::Range motionWordForward();
+    KateVi::Range motionWordBackward();
+    KateVi::Range motionWORDForward();
+    KateVi::Range motionWORDBackward();
 
-    KateVi::ViRange motionToEndOfWord();
-    KateVi::ViRange motionToEndOfWORD();
-    KateVi::ViRange motionToEndOfPrevWord();
-    KateVi::ViRange motionToEndOfPrevWORD();
+    KateVi::Range motionToEndOfWord();
+    KateVi::Range motionToEndOfWORD();
+    KateVi::Range motionToEndOfPrevWord();
+    KateVi::Range motionToEndOfPrevWORD();
 
-    KateVi::ViRange motionFindChar();
-    KateVi::ViRange motionFindCharBackward();
-    KateVi::ViRange motionToChar();
-    KateVi::ViRange motionToCharBackward();
-    KateVi::ViRange motionRepeatlastTF();
-    KateVi::ViRange motionRepeatlastTFBackward();
+    KateVi::Range motionFindChar();
+    KateVi::Range motionFindCharBackward();
+    KateVi::Range motionToChar();
+    KateVi::Range motionToCharBackward();
+    KateVi::Range motionRepeatlastTF();
+    KateVi::Range motionRepeatlastTFBackward();
 
-    KateVi::ViRange motionToEOL();
-    KateVi::ViRange motionToColumn0();
-    KateVi::ViRange motionToFirstCharacterOfLine();
+    KateVi::Range motionToEOL();
+    KateVi::Range motionToColumn0();
+    KateVi::Range motionToFirstCharacterOfLine();
 
-    KateVi::ViRange motionToLineFirst();
-    KateVi::ViRange motionToLineLast();
+    KateVi::Range motionToLineFirst();
+    KateVi::Range motionToLineLast();
 
-    KateVi::ViRange motionToScreenColumn();
+    KateVi::Range motionToScreenColumn();
 
-    KateVi::ViRange motionToMark();
-    KateVi::ViRange motionToMarkLine();
+    KateVi::Range motionToMark();
+    KateVi::Range motionToMarkLine();
 
-    KateVi::ViRange motionToMatchingItem();
+    KateVi::Range motionToMatchingItem();
 
-    KateVi::ViRange motionToPreviousBraceBlockStart();
-    KateVi::ViRange motionToNextBraceBlockStart();
-    KateVi::ViRange motionToPreviousBraceBlockEnd();
-    KateVi::ViRange motionToNextBraceBlockEnd();
+    KateVi::Range motionToPreviousBraceBlockStart();
+    KateVi::Range motionToNextBraceBlockStart();
+    KateVi::Range motionToPreviousBraceBlockEnd();
+    KateVi::Range motionToNextBraceBlockEnd();
 
-    KateVi::ViRange motionToNextOccurrence();
-    KateVi::ViRange motionToPrevOccurrence();
+    KateVi::Range motionToNextOccurrence();
+    KateVi::Range motionToPrevOccurrence();
 
-    KateVi::ViRange motionToFirstLineOfWindow();
-    KateVi::ViRange motionToMiddleLineOfWindow();
-    KateVi::ViRange motionToLastLineOfWindow();
+    KateVi::Range motionToFirstLineOfWindow();
+    KateVi::Range motionToMiddleLineOfWindow();
+    KateVi::Range motionToLastLineOfWindow();
 
-    KateVi::ViRange motionToNextVisualLine();
-    KateVi::ViRange motionToPrevVisualLine();
+    KateVi::Range motionToNextVisualLine();
+    KateVi::Range motionToPrevVisualLine();
 
-    KateVi::ViRange motionToPreviousSentence();
-    KateVi::ViRange motionToNextSentence();
+    KateVi::Range motionToPreviousSentence();
+    KateVi::Range motionToNextSentence();
 
-    KateVi::ViRange motionToBeforeParagraph();
-    KateVi::ViRange motionToAfterParagraph();
+    KateVi::Range motionToBeforeParagraph();
+    KateVi::Range motionToAfterParagraph();
 
-    KateVi::ViRange motionToIncrementalSearchMatch();
+    KateVi::Range motionToIncrementalSearchMatch();
 
     // TEXT OBJECTS
 
-    KateVi::ViRange textObjectAWord();
-    KateVi::ViRange textObjectInnerWord();
-    KateVi::ViRange textObjectAWORD();
-    KateVi::ViRange textObjectInnerWORD();
+    KateVi::Range textObjectAWord();
+    KateVi::Range textObjectInnerWord();
+    KateVi::Range textObjectAWORD();
+    KateVi::Range textObjectInnerWORD();
 
-    KateVi::ViRange textObjectInnerSentence();
-    KateVi::ViRange textObjectASentence();
+    KateVi::Range textObjectInnerSentence();
+    KateVi::Range textObjectASentence();
 
-    KateVi::ViRange textObjectInnerParagraph();
-    KateVi::ViRange textObjectAParagraph();
+    KateVi::Range textObjectInnerParagraph();
+    KateVi::Range textObjectAParagraph();
 
-    KateVi::ViRange textObjectAQuoteDouble();
-    KateVi::ViRange textObjectInnerQuoteDouble();
+    KateVi::Range textObjectAQuoteDouble();
+    KateVi::Range textObjectInnerQuoteDouble();
 
-    KateVi::ViRange textObjectAQuoteSingle();
-    KateVi::ViRange textObjectInnerQuoteSingle();
+    KateVi::Range textObjectAQuoteSingle();
+    KateVi::Range textObjectInnerQuoteSingle();
 
-    KateVi::ViRange textObjectABackQuote();
-    KateVi::ViRange textObjectInnerBackQuote();
+    KateVi::Range textObjectABackQuote();
+    KateVi::Range textObjectInnerBackQuote();
 
-    KateVi::ViRange textObjectAParen();
-    KateVi::ViRange textObjectInnerParen();
+    KateVi::Range textObjectAParen();
+    KateVi::Range textObjectInnerParen();
 
-    KateVi::ViRange textObjectABracket();
-    KateVi::ViRange textObjectInnerBracket();
+    KateVi::Range textObjectABracket();
+    KateVi::Range textObjectInnerBracket();
 
-    KateVi::ViRange textObjectACurlyBracket();
-    KateVi::ViRange textObjectInnerCurlyBracket();
+    KateVi::Range textObjectACurlyBracket();
+    KateVi::Range textObjectInnerCurlyBracket();
 
-    KateVi::ViRange textObjectAInequalitySign();
-    KateVi::ViRange textObjectInnerInequalitySign();
+    KateVi::Range textObjectAInequalitySign();
+    KateVi::Range textObjectInnerInequalitySign();
 
-    KateVi::ViRange textObjectAComma();
-    KateVi::ViRange textObjectInnerComma();
+    KateVi::Range textObjectAComma();
+    KateVi::Range textObjectInnerComma();
 
     virtual void reset();
 
@@ -301,7 +301,7 @@ protected:
     void executeCommand(const KateViCommand *cmd);
     OperationMode getOperationMode() const;
 
-    void highlightYank(const KateVi::ViRange &range, const OperationMode mode = CharWise);
+    void highlightYank(const KateVi::Range &range, const OperationMode mode = CharWise);
     void addHighlightYank(const KTextEditor::Range &range);
 
     bool motionWillBeUsedWithCommand() const
@@ -323,8 +323,8 @@ protected:
      */
     int getFirstNonBlank(int line = -1) const;
 
-    KateVi::ViRange textObjectComma(bool inner) const;
-    void shrinkRangeAroundCursor(KateVi::ViRange &toShrink, const KateVi::ViRange &rangeToShrinkTo) const;
+    KateVi::Range textObjectComma(bool inner) const;
+    void shrinkRangeAroundCursor(KateVi::Range &toShrink, const KateVi::Range &rangeToShrinkTo) const;
     KTextEditor::Cursor findSentenceStart();
     KTextEditor::Cursor findSentenceEnd();
     KTextEditor::Cursor findParagraphStart();

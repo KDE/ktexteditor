@@ -27,6 +27,7 @@
 
 namespace KTextEditor {
     class Cursor;
+    class Range;
 }
 
 enum MotionType {
@@ -37,20 +38,20 @@ enum MotionType {
 namespace KateVi
 {
 
-class KTEXTEDITOR_EXPORT ViRange
+class KTEXTEDITOR_EXPORT Range
 {
 public:
-    ViRange();
+    Range();
 
     /**
      * For motions which only return a position, in contrast to
      * "text objects" which returns a full blown range.
      */
-    explicit ViRange(int elin, int ecol, MotionType inc);
+    explicit Range(int elin, int ecol, MotionType inc);
 
-    explicit ViRange(int slin, int scol, int elin, int ecol, MotionType mt);
-    explicit ViRange(const KTextEditor::Cursor &c, MotionType mt);
-    explicit ViRange(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, MotionType mt);
+    explicit Range(int slin, int scol, int elin, int ecol, MotionType mt);
+    explicit Range(const KTextEditor::Cursor &c, MotionType mt);
+    explicit Range(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, MotionType mt);
 
     /**
      * Modifies this range so the start attributes are lesser than
@@ -59,14 +60,19 @@ public:
     void normalize();
 
     /**
+     * @returns an equivalent KTextEditor::Range for this Range.
+     */
+    KTextEditor::Range toEditorRange() const;
+
+    /**
      * Writes this KateViRange to the debug output in a nicely formatted way.
      */
-    friend QDebug operator<< (QDebug s, const ViRange &range);
+    friend QDebug operator<< (QDebug s, const Range &range);
 
     /**
      * @returns an invalid KateViRange allocated on stack.
      */
-    static KateVi::ViRange invalid();
+    static KateVi::Range invalid();
 
 public:
     int startLine, startColumn;

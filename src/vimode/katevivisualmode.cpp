@@ -80,7 +80,7 @@ void KateViVisualMode::SelectLines(KTextEditor::Range range)
                                KTextEditor::Cursor(endline, m_view->doc()->lineLength(endline) + 1)));
 }
 
-void KateViVisualMode::goToPos(const KateVi::ViRange &r)
+void KateViVisualMode::goToPos(const KateVi::Range &r)
 {
     KTextEditor::Cursor c = m_view->cursorPosition();
 
@@ -228,9 +228,7 @@ void KateViVisualMode::switchStartEnd()
 
 void KateViVisualMode::goToPos(const KTextEditor::Cursor &c)
 {
-    KateVi::ViRange r;
-    r.endColumn = c.column();
-    r.endLine = c.line();
+    KateVi::Range r(c, InclusiveMotion);
     goToPos(r);
 }
 
