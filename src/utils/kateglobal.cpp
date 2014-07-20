@@ -80,9 +80,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
                   i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
     , m_application(nullptr)
 {
-    // FIXME KF5
-    QLoggingCategory::setFilterRules(QStringLiteral("katepart = true"));
-
     // remember this
     staticInstance = this;
 
