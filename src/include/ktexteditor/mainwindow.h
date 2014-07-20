@@ -155,6 +155,12 @@ public:
      */
     bool closeSplitView(KTextEditor::View *view);
 
+    /**
+     * \returns true if the given views \param view1 and \param view2 share
+     * the same split view, false otherwise.
+     */
+    bool viewsInSameSplitView(KTextEditor::View *view1, KTextEditor::View *view2);
+
     //
     // Signals related to view handling
     //

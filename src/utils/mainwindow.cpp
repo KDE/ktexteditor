@@ -220,6 +220,29 @@ bool MainWindow::closeSplitView(KTextEditor::View *view)
     return success;
 }
 
+bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1,
+                                      KTextEditor::View *view2)
+{
+    /**
+     * null check
+     */
+    if (!this) {
+        return false;
+    }
+
+    /**
+     * dispatch to parent
+     */
+    bool success = false;
+    QMetaObject::invokeMethod(parent()
+                              , "viewsInSameSplitView"
+                              , Qt::DirectConnection
+                              , Q_RETURN_ARG(bool, success)
+                              , Q_ARG(KTextEditor::View *, view1)
+                              , Q_ARG(KTextEditor::View *, view2));
+    return success;
+}
+
 QWidget *MainWindow::createViewBar(KTextEditor::View *view)
 {
     /**
