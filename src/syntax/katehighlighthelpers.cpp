@@ -614,75 +614,80 @@ int KateHlAnyChar::checkHgl(const QString &text, int offset, int)
 //BEGIN KateHlRegExpr
 KateHlRegExpr::KateHlRegExpr(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &regexp, bool insensitive, bool minimal)
     : KateHlItem(attribute, context, regionId, regionId2)
-    , handlesLinestart(regexp.startsWith(QLatin1Char('^')))
-    , _regexp(regexp)
-    , _insensitive(insensitive)
-    , _minimal(minimal)
-    , _lastOffset(-2) // -2 is start value, -1 is "not found at all"
-    , Expr(regexp, _insensitive ? Qt::CaseInsensitive : Qt::CaseSensitive)
+    , m_regularExpression (regexp, (insensitive ? QRegularExpression::CaseInsensitiveOption : QRegularExpression::NoPatternOption)
+                 | (minimal ? QRegularExpression::InvertedGreedinessOption : QRegularExpression::NoPatternOption))
+    , m_handlesLineStart (regexp.startsWith(QLatin1Char('^')))
 {
-    // minimal or not ;)
-    Expr.setMinimal(_minimal);
 }
 
 int KateHlRegExpr::checkHgl(const QString &text, int offset, int /*len*/)
 {
-    if (offset && handlesLinestart) {
+    /**
+     * skip any match, if we have ^ and offset is already > 0
+     */
+    if (m_handlesLineStart && (offset > 0)) {
         return 0;
     }
-
-    // optimization: if we check something on the same text as the last time,
-    //               try to reuse what we got that time
-    if (haveCache) {
-        if (offset < _lastOffset || _lastOffset == -1) {
-            // reuse last match: not found or offset before match
-            return 0;
-        } else if (offset == _lastOffset) {
-            // reuse last match: found at this position
-            return (_lastOffset + _lastOffsetLength);
-        }
+    
+    /**
+     * perhaps clear cache?
+     * that is needed, if we had a match and our current offset is already too large!
+     */
+    if (haveCache && m_lastMatch.hasMatch() && (offset > m_lastMatch.capturedStart())) {
+        haveCache = false;
     }
-
-    haveCache = true;
-    _lastOffset = Expr.indexIn(text, offset, QRegExp::CaretAtOffset);
-
-    if (_lastOffset == -1) {
+    
+    /**
+     * try to match if not already cached
+     * store result in member variable for later reuse
+     */
+    if (!haveCache) {
+        m_lastMatch = m_regularExpression.match(text, offset);
+        haveCache = true;
+    }
+    
+    /**
+     * no match or we match at wrong position?
+     * => bad match
+     */
+    if (!m_lastMatch.hasMatch() || offset != m_lastMatch.capturedStart()) {
         return 0;
     }
-
-    _lastOffsetLength = Expr.matchedLength();
-
-    if (_lastOffset == offset) {
-        // only valid when we match at the exact offset
-        return (_lastOffset + _lastOffsetLength);
-    } else {
-        return 0;
-    }
+    
+    /**
+     * else: return current capture end
+     */
+    return m_lastMatch.capturedEnd();
 }
 
 void KateHlRegExpr::capturedTexts(QStringList &list)
 {
-    list = Expr.capturedTexts();
+    /**
+     * return stored list, if any
+     */
+    list = m_lastMatch.capturedTexts();
 }
 
 KateHlItem *KateHlRegExpr::clone(const QStringList *args)
 {
-    QString regexp = _regexp;
+    QString regexp = m_regularExpression.pattern();
     QStringList escArgs = *args;
 
     for (QStringList::Iterator it = escArgs.begin(); it != escArgs.end(); ++it) {
-        (*it).replace(QRegExp(QLatin1String("(\\W)")), QLatin1String("\\\\1"));
+        (*it).replace(QRegularExpression(QLatin1String("(\\W)")), QLatin1String("\\\\1"));
     }
 
     dynamicSubstitute(regexp, &escArgs);
 
-    if (regexp == _regexp) {
+    if (regexp == m_regularExpression.pattern()) {
         return this;
     }
 
     // qCDebug(LOG_PART) << "clone regexp: " << regexp;
 
-    KateHlRegExpr *ret = new KateHlRegExpr(attr, ctx, region, region2, regexp, _insensitive, _minimal);
+    KateHlRegExpr *ret = new KateHlRegExpr(attr, ctx, region, region2, regexp
+        , m_regularExpression.patternOptions() & QRegularExpression::CaseInsensitiveOption
+        , m_regularExpression.patternOptions() & QRegularExpression::InvertedGreedinessOption);
     ret->dynamicChild = true;
     return ret;
 }

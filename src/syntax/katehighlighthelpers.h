@@ -24,7 +24,7 @@
 
 #include "katehighlight.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 class KateHlItem
 {
@@ -305,18 +305,21 @@ public:
     virtual KateHlItem *clone(const QStringList *args);
 
 private:
-    bool handlesLinestart;
-    QString _regexp;
-    bool _insensitive;
-    bool _minimal;
-
-    // optimization stuff below
-    /// index of the last match
-    int _lastOffset;
-    /// length of the last match
-    int _lastOffsetLength;
-
-    QRegExp Expr;
+    /**
+     * regular expression to match
+     */
+    const QRegularExpression m_regularExpression;
+    
+    /**
+     * does the regular expression start with ^?
+     * allows to skip for any offset > 0
+     */
+    const bool m_handlesLineStart;
+    
+    /**
+     * last match, if any
+     */
+    QRegularExpressionMatch m_lastMatch;
 };
 
 class KateHlDetectSpaces : public KateHlItem
