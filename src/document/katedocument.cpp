@@ -141,6 +141,14 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_openingError(false),
       m_lineLengthLimitOverride(0)
 {
+    /**
+     * no plugins from kparts here
+     */
+    setPluginLoadingMode (DoNotLoadPlugins);
+    
+    /**
+     * pass on our component data, do this after plugin loading is off
+     */
     setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
     /**
