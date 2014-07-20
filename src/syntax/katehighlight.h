@@ -32,7 +32,7 @@
 #include <QHash>
 #include <QMap>
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QObject>
 #include <QStringList>
 #include <QPointer>
@@ -227,7 +227,7 @@ public:
     /**
      *
      */
-    QLinkedList<QRegExp> emptyLines(int attribute = 0) const;
+    QLinkedList<QRegularExpression> emptyLines(int attribute = 0) const;
 
     bool isEmptyLine(const Kate::TextLineData *textline) const;
 
@@ -432,7 +432,7 @@ private:
         CSLPos  singleLineCommentPosition;
         QString deliminator;
         QString wordWrapDeliminator;
-        QLinkedList<QRegExp> emptyLines;
+        QLinkedList<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
         KatePrefixStore characterEncodingsPrefixStore;
         QHash<QChar, QString> reverseCharacterEncodings;

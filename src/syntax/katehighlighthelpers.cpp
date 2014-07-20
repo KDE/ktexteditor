@@ -206,9 +206,8 @@ KateHlWordDetect::KateHlWordDetect(int attribute, KateHlContextModification cont
 
 inline bool isWordCharacter(const QChar &c)
 {
-    // The Qt docs say for word characters:
-    //      \w  - Matches a word character (QChar::isLetterOrNumber(), QChar::isMark(), or '_').
-    // see also: http://doc.trolltech.com/qregexp.html
+    // http://pcre.org/pcre.txt say for word characters:
+    //     \w  any character that matches \p{L} or \p{N}, plus underscore
     return c.isLetterOrNumber() || c.isMark() || c.unicode() == '_';
 }
 

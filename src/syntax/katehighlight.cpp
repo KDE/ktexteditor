@@ -1184,7 +1184,7 @@ bool KateHighlighting::canBreakAt(QChar c, int attrib) const
     return (m_additionalData[ hlKeyForAttrib(attrib) ]->wordWrapDeliminator.indexOf(c) != -1) && (sq.indexOf(c) == -1);
 }
 
-QLinkedList<QRegExp> KateHighlighting::emptyLines(int attrib) const
+QLinkedList<QRegularExpression> KateHighlighting::emptyLines(int attrib) const
 {
 #ifdef HIGHLIGHTING_DEBUG
     qCDebug(LOG_PART) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
@@ -1276,7 +1276,7 @@ void KateHighlighting::readEmptyLineConfig()
     KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
     KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("general"), QLatin1String("emptyLine"));
 
-    QLinkedList<QRegExp> exprList;
+    QLinkedList<QRegularExpression> exprList;
 
     if (data) {
         while (KateHlManager::self()->syntax->nextGroup(data)) {
@@ -1286,7 +1286,7 @@ void KateHighlighting::readEmptyLineConfig()
 
             QString regexprline = KateHlManager::self()->syntax->groupData(data, QLatin1String("regexpr"));
             bool regexprcase = (KateHlManager::self()->syntax->groupData(data, QLatin1String("casesensitive")).toUpper().compare(QLatin1String("TRUE")) == 0);
-            exprList.append(QRegExp(regexprline, regexprcase ? Qt::CaseSensitive : Qt::CaseInsensitive));
+            exprList.append(QRegularExpression(regexprline, !regexprcase ? QRegularExpression::CaseInsensitiveOption : QRegularExpression::NoPatternOption));
         }
         KateHlManager::self()->syntax->freeGroupInfo(data);
     }
@@ -1459,7 +1459,7 @@ void KateHighlighting::readSpellCheckingConfig()
             if (encoding.isEmpty() || (character.isEmpty() && !ignoredIsTrue)) {
                 continue;
             }
-            QRegExp newLineRegExp(QLatin1String("\\r|\\n"));
+            QRegularExpression newLineRegExp(QLatin1String("\\r|\\n"));
             if (encoding.indexOf(newLineRegExp) >= 0) {
                 encoding.replace(newLineRegExp, QLatin1String("<\\n|\\r>"));
 
@@ -2243,16 +2243,18 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
         return true;
     }
 
-    QLinkedList<QRegExp> l;
-    l = emptyLines(textline->attribute(0));
+    const QLinkedList<QRegularExpression> l = emptyLines(textline->attribute(0));
     if (l.isEmpty()) {
         return false;
     }
-    foreach (const QRegExp &re, l) {
-        if (re.exactMatch(txt)) {
+
+    foreach (const QRegularExpression &re, l) {
+        const QRegularExpressionMatch match = re.match (txt, 0, QRegularExpression::NormalMatch, QRegularExpression::AnchoredMatchOption);
+        if (match.hasMatch() && match.capturedLength() == txt.length()) {
             return true;
         }
     }
+
     return false;
 }
 
