@@ -96,7 +96,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     friend class ::KateIconBorder;
 
 public:
-    ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR);
     ~ViewPrivate ();
 
     /**

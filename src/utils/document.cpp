@@ -58,7 +58,7 @@ Document::EditingTransaction::EditingTransaction(Document *document)
     : d (new EditingTransactionPrivate())
 {
     // Alghouth it works in release-mode, we usually want a valid document
-    Q_ASSERT(document != nullptr);
+    Q_ASSERT(document != Q_NULLPTR);
 
     // initialize d-pointer
     d->document = qobject_cast<KTextEditor::DocumentPrivate *> (document);

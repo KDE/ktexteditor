@@ -138,7 +138,7 @@ private:
     // KTextEditor::Document stuff
     //
 public:
-    virtual KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    virtual KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR);
     
     QList<KTextEditor::View *> views() const
     {

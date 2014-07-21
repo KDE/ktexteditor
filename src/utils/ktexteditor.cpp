@@ -106,7 +106,7 @@ void View::setStatusBarEnabled(bool enable)
 
 ConfigPage::ConfigPage(QWidget *parent)
     : QWidget(parent)
-    , d(0)
+    , d(Q_NULLPTR)
 {}
 
 ConfigPage::~ConfigPage()
@@ -132,7 +132,7 @@ View::~View()
 
 Plugin::Plugin(QObject *parent)
     : QObject(parent)
-    , d(0)
+    , d(Q_NULLPTR)
 {}
 
 Plugin::~Plugin()
@@ -145,53 +145,53 @@ int Plugin::configPages() const
 
 ConfigPage *Plugin::configPage(int, QWidget *)
 {
-    return nullptr;
+    return Q_NULLPTR;
 }
 
 MarkInterface::MarkInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 MarkInterface::~MarkInterface()
 {}
 
 ModificationInterface::ModificationInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 ModificationInterface::~ModificationInterface()
 {}
 
 SearchInterface::SearchInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 SearchInterface::~SearchInterface()
 {}
 
 SessionConfigInterface::SessionConfigInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 SessionConfigInterface::~SessionConfigInterface()
 {}
 
 TemplateInterface::TemplateInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 TemplateInterface::~TemplateInterface()
 {}
 
 TextHintInterface::TextHintInterface()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 TextHintInterface::~TextHintInterface()
 {}
 
 TextHintProvider::TextHintProvider()
-    : d(0)
+    : d(Q_NULLPTR)
 {}
 
 TextHintProvider::~TextHintProvider()
@@ -200,7 +200,7 @@ TextHintProvider::~TextHintProvider()
 Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)
     , m_cmds (cmds)
-    , d(nullptr)
+    , d(Q_NULLPTR)
 {
     // register this command
     static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->registerCommand (this);
@@ -220,7 +220,7 @@ bool Command::supportsRange(const QString &)
 
 KCompletion *Command::completionObject(KTextEditor::View *, const QString &)
 {
-    return nullptr;
+    return Q_NULLPTR;
 }
 
 bool Command::wantsToProcessText(const QString &)

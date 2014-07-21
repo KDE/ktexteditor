@@ -27,7 +27,7 @@ namespace KTextEditor
 
 Application::Application(QObject *parent)
     : QObject(parent)
-    , d(nullptr)
+    , d(Q_NULLPTR)
 {
 }
 
@@ -82,13 +82,13 @@ KTextEditor::MainWindow *Application::activeMainWindow()
      * null check
      */
     if (!this) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     /**
      * dispatch to parent
      */
-    KTextEditor::MainWindow *window = nullptr;
+    KTextEditor::MainWindow *window = Q_NULLPTR;
     QMetaObject::invokeMethod(parent()
                               , "activeMainWindow"
                               , Qt::DirectConnection
@@ -122,13 +122,13 @@ KTextEditor::Document *Application::findUrl(const QUrl &url)
      * null check
      */
     if (!this) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     /**
      * dispatch to parent
      */
-    KTextEditor::Document *document = nullptr;
+    KTextEditor::Document *document = Q_NULLPTR;
     QMetaObject::invokeMethod(parent()
                               , "findUrl"
                               , Qt::DirectConnection
@@ -143,13 +143,13 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
      * null check
      */
     if (!this) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     /**
      * dispatch to parent
      */
-    KTextEditor::Document *document = nullptr;
+    KTextEditor::Document *document = Q_NULLPTR;
     QMetaObject::invokeMethod(parent()
                               , "openUrl"
                               , Qt::DirectConnection
@@ -207,13 +207,13 @@ KTextEditor::Plugin *Application::plugin(const QString &name)
      * null check
      */
     if (!this) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     /**
      * dispatch to parent
      */
-    Plugin *plugin = nullptr;
+    Plugin *plugin = Q_NULLPTR;
     QMetaObject::invokeMethod(parent()
                               , "plugin"
                               , Qt::DirectConnection

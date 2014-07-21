@@ -47,7 +47,7 @@ void KateViewTest::testCoordinatesToCursor()
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText("Hi World!\nHi\n");
 
-    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(nullptr));
+    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(Q_NULLPTR));
     view1->show();
 
     QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))),

@@ -277,7 +277,7 @@ void KateDocumentTest::testForgivingApiUsage()
 void KateDocumentTest::testReplaceTabs()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(Q_NULLPTR));
 
     auto reset = [&]() {
         doc.setText("  Hi!");

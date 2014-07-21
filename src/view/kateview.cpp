@@ -135,7 +135,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_floatTopMessageWidget(0)
     , m_floatBottomMessageWidget(0)
     , m_mainWindow(mainWindow)
-    , m_statusBar(nullptr)
+    , m_statusBar(Q_NULLPTR)
 {
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
@@ -297,7 +297,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
     if (m_statusBar) {
         bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
-        m_statusBar = nullptr;
+        m_statusBar = Q_NULLPTR;
         emit statusBarEnabledChanged(this, false);
         return;
     }

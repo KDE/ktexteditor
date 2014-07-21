@@ -91,7 +91,7 @@ public:
      * Constructor with \p parent.
      * Will register this command for the commands names given in \p cmds at the global editor instance.
      */
-    Command(const QStringList &cmds, QObject *parent = nullptr);
+    Command(const QStringList &cmds, QObject *parent = Q_NULLPTR);
 
     /**
      * Virtual destructor.
