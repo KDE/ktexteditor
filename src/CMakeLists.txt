@@ -200,7 +200,7 @@ inputmode/katenormalinputmode.cpp
 inputmode/katenormalinputmodefactory.cpp
 )
 
-qt5_wrap_ui(ktexteditor_LIB_SRCS 
+ki18n_wrap_ui(ktexteditor_LIB_SRCS 
 dialogs/textareaappearanceconfigwidget.ui
 dialogs/bordersappearanceconfigwidget.ui
 dialogs/commandmenuconfigwidget.ui
@@ -221,7 +221,7 @@ dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
 if (BUILD_VIMODE)
-  qt5_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
+  ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
   set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
     inputmode/kateviinputmode.cpp
     inputmode/kateviinputmodefactory.cpp
