@@ -178,11 +178,7 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
     } else if (re_vclose.exactMatch(command)) {
         QTimer::singleShot(0, this, SLOT(closeCurrentSplitView()));
     } else if (re_only.exactMatch(command)) {
-        Q_FOREACH(KTextEditor::View * it, mainWin->views()) {
-            if (it != view) {
-                mainWin->closeView(it);
-            }
-        }
+        QTimer::singleShot(0, this, SLOT(closeOtherSplitViews()));
     }
 
     return true;
@@ -264,6 +260,17 @@ bool KateViAppCommands::help(KTextEditor::View *view, const QString &cmd, QStrin
     return false;
 }
 
+KTextEditor::View * KateViAppCommands::findViewInDifferentSplitView(KTextEditor::MainWindow *window,
+                                                                    KTextEditor::View *view)
+{
+    Q_FOREACH (KTextEditor::View *it, window->views()) {
+        if (!window->viewsInSameSplitView(it, view)) {
+            return it;
+        }
+    }
+    return Q_NULLPTR;
+}
+
 void KateViAppCommands::closeCurrentDocument()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
@@ -285,6 +292,18 @@ void KateViAppCommands::closeCurrentSplitView()
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
     mw->closeSplitView(mw->activeView());
+}
+
+void KateViAppCommands::closeOtherSplitViews()
+{
+    KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
+    KTextEditor::MainWindow *mw = app->activeMainWindow();
+    KTextEditor::View *view = mw->activeView();
+    KTextEditor::View *viewToRemove = Q_NULLPTR;
+
+    while ((viewToRemove = findViewInDifferentSplitView(mw, view))) {
+        mw->closeSplitView(viewToRemove);
+    }
 }
 
 void KateViAppCommands::quit()

@@ -24,6 +24,10 @@
 #include <KTextEditor/Command>
 #include <QObject>
 
+namespace KTextEditor {
+    class MainWindow;
+}
+
 class KateViAppCommands : public KTextEditor::Command
 {
     Q_OBJECT
@@ -42,10 +46,21 @@ public:
         }
         return m_instance;
     }
+
+private:
+    /**
+     * @returns a view in the given \p window that does not share a split
+     * view with the given \p view. If such view could not be found, then
+     * nullptr is returned.
+     */
+    KTextEditor::View * findViewInDifferentSplitView(KTextEditor::MainWindow *window,
+                                                     KTextEditor::View *view);
+
 private Q_SLOTS:
     void closeCurrentDocument();
     void closeCurrentView();
     void closeCurrentSplitView();
+    void closeOtherSplitViews();
     void quit();
 
 private:
