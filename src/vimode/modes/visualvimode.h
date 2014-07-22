@@ -21,26 +21,25 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATEVI_VISUAL_MODE_H
-#define KATEVI_VISUAL_MODE_H
+#ifndef KATEVI_VISUAL_VI_MODE_H
+#define KATEVI_VISUAL_VI_MODE_H
 
 #include <ktexteditor/range.h>
-#include <vimode/modes/normalmode.h>
-
-class KateViInputModeManager;
+#include <vimode/modes/normalvimode.h>
 
 namespace KateVi
 {
+class InputModeManager;
 
-class VisualMode : public NormalMode
+class VisualViMode : public NormalViMode
 {
     Q_OBJECT
 
 public:
-    explicit VisualMode(KateViInputModeManager *viInputModeManager,
+    explicit VisualViMode(InputModeManager *viInputModeManager,
                         KTextEditor::ViewPrivate *view,
                         KateViewInternal *viewInternal);
-    virtual ~VisualMode();
+    virtual ~VisualViMode();
 
     void init();
 
@@ -106,7 +105,7 @@ private:
      * (i.e. move the cursor) while a text object may modify both the start and
      * the end.
      */
-    void goToPos(const KateVi::Range &r);
+    void goToPos(const Range &r);
     ViMode m_mode;
     KTextEditor::Cursor m_start;
     ViMode m_lastVisualMode; // used when reselecting a visual selection
@@ -114,4 +113,4 @@ private:
 
 }
 
-#endif
+#endif /* KATEVI_VISUAL_VI_MODE_H */

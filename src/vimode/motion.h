@@ -18,16 +18,34 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevimotion.h"
+#ifndef KATEVI_MOTION_H
+#define KATEVI_MOTION_H
 
-KateViMotion::KateViMotion(KateVi::NormalMode *parent, const QString &pattern,
-                           KateVi::Range(KateVi::NormalMode::*commandMethod)(), unsigned int flags)
-    : KateViCommand(parent, pattern, 0, flags)
+#include <vimode/command.h>
+#include <vimode/range.h>
+#include <ktexteditor_export.h>
+
+namespace KateVi
 {
-    m_ptr2commandMethod = commandMethod;
+class NormalViMode;
+
+/**
+ * combined class for motions and text objects. execute() returns a KateViRange.
+ * For motions the returned range is only a position (start pos is (-1, -1) to
+ * indicate this) for text objects a range (startx, starty), (endx, endy) is
+ * returned
+ */
+class KTEXTEDITOR_EXPORT Motion : public Command
+{
+public:
+    Motion(NormalViMode *parent, const QString &pattern,
+           Range(NormalViMode::*commandMethod)(), unsigned int flags = 0);
+    Range execute() const;
+
+protected:
+    Range(NormalViMode::*m_ptr2commandMethod)();
+};
+
 }
 
-KateVi::Range KateViMotion::execute() const
-{
-    return (m_parent->*m_ptr2commandMethod)();
-}
+#endif /* KATEVI_MOTION_H */

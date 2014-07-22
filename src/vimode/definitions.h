@@ -19,12 +19,8 @@
 #ifndef KATEVI_DEFINITIONS_H
 #define KATEVI_DEFINITIONS_H
 
-    enum OperationMode {
-        CharWise = 0,
-        LineWise,
-        Block
-    };
-
+namespace KateVi
+{
     /**
      * The four vi modes supported by Kate's vi input mode
      */
@@ -37,8 +33,12 @@
         ReplaceMode
     };
 
-namespace KateVi // TODO: extend to enums after transition of all clases to KateVi namespace
-{
+    enum OperationMode {
+        CharWise = 0,
+        LineWise,
+        Block
+    };
+
     const unsigned int EOL = 99999;
 }
 

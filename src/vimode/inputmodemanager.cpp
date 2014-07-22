@@ -21,7 +21,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 
 #include <QKeyEvent>
 #include <QString>
@@ -35,13 +35,13 @@
 #include "kateglobal.h"
 #include "globalstate.h"
 #include "kateviewinternal.h"
-#include <vimode/modes/normalmode.h>
-#include <vimode/modes/insertmode.h>
-#include <vimode/modes/visualmode.h>
-#include <vimode/modes/replacemode.h>
-#include "katevikeyparser.h"
-#include "katevikeymapper.h"
-#include "kateviemulatedcommandbar.h"
+#include <vimode/modes/normalvimode.h>
+#include <vimode/modes/insertvimode.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/keyparser.h>
+#include <vimode/keymapper.h>
+#include <vimode/emulatedcommandbar.h>
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include "marks.h"
@@ -54,44 +54,46 @@
 #include "macrorecorder.h"
 #include "lastchangerecorder.h"
 
-KateViInputModeManager::KateViInputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
+using namespace KateVi;
+
+InputModeManager::InputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : m_inputAdapter(inputAdapter)
 {
     m_currentViMode = ViMode::NormalMode;
     m_previousViMode = ViMode::NormalMode;
 
-    m_viNormalMode = new KateVi::NormalMode(this, view, viewInternal);
-    m_viInsertMode = new KateVi::InsertMode(this, view, viewInternal);
-    m_viVisualMode = new KateVi::VisualMode(this, view, viewInternal);
-    m_viReplaceMode = new KateVi::ReplaceMode(this, view, viewInternal);
+    m_viNormalMode = new NormalViMode(this, view, viewInternal);
+    m_viInsertMode = new InsertViMode(this, view, viewInternal);
+    m_viVisualMode = new VisualViMode(this, view, viewInternal);
+    m_viReplaceMode = new ReplaceViMode(this, view, viewInternal);
 
     m_view = view;
     m_viewInternal = viewInternal;
 
     m_insideHandlingKeyPressCount = 0;
 
-    m_keyMapperStack.push(QSharedPointer<KateViKeyMapper>(new KateViKeyMapper(this, m_view->doc(), m_view)));
+    m_keyMapperStack.push(QSharedPointer<KeyMapper>(new KeyMapper(this, m_view->doc(), m_view)));
 
     m_temporaryNormalMode = false;
 
-    m_jumps = new KateVi::Jumps();
-    m_marks = new KateVi::Marks(this);
+    m_jumps = new Jumps();
+    m_marks = new Marks(this);
 
-    m_searcher = new KateVi::Searcher(this);
-    m_completionRecorder = new KateVi::CompletionRecorder(this);
-    m_completionReplayer = new KateVi::CompletionReplayer(this);
+    m_searcher = new Searcher(this);
+    m_completionRecorder = new CompletionRecorder(this);
+    m_completionReplayer = new CompletionReplayer(this);
 
-    m_macroRecorder = new KateVi::MacroRecorder(this);
+    m_macroRecorder = new MacroRecorder(this);
 
-    m_lastChangeRecorder = new KateVi::LastChangeRecorder(this);
+    m_lastChangeRecorder = new LastChangeRecorder(this);
 
-    // We have to do this outside of KateVi::NormalMode, as we don't want
-    // KateViVisualMode (which inherits from KateVi::NormalMode) to respond
+    // We have to do this outside of NormalMode, as we don't want
+    // VisualMode (which inherits from NormalMode) to respond
     // to changes in the document as well.
     m_viNormalMode->beginMonitoringDocumentChanges();
 }
 
-KateViInputModeManager::~KateViInputModeManager()
+InputModeManager::~InputModeManager()
 {
     delete m_viNormalMode;
     delete m_viInsertMode;
@@ -105,7 +107,7 @@ KateViInputModeManager::~KateViInputModeManager()
     delete m_lastChangeRecorder;
 }
 
-bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
+bool InputModeManager::handleKeypress(const QKeyEvent *e)
 {
     m_insideHandlingKeyPressCount++;
     bool res = false;
@@ -127,7 +129,7 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
 
         // Hand off to the key mapper, and decide if this key is part of a mapping.
         if (e->key() != Qt::Key_Control && e->key() != Qt::Key_Shift && e->key() != Qt::Key_Alt && e->key() != Qt::Key_Meta) {
-            const QChar key = KateViKeyParser::self()->KeyEventToQChar(*e);
+            const QChar key = KeyParser::self()->KeyEventToQChar(*e);
             if (keyMapper()->handleKeypress(key)) {
                 keyIsPartOfMapping = true;
                 res = true;
@@ -154,14 +156,14 @@ bool KateViInputModeManager::handleKeypress(const QKeyEvent *e)
     return res;
 }
 
-void KateViInputModeManager::feedKeyPresses(const QString &keyPresses) const
+void InputModeManager::feedKeyPresses(const QString &keyPresses) const
 {
     int key;
     Qt::KeyboardModifiers mods;
     QString text;
 
     foreach (const QChar &c, keyPresses) {
-        QString decoded = KateViKeyParser::self()->decodeKeySequence(QString(c));
+        QString decoded = KeyParser::self()->decodeKeySequence(QString(c));
         key = -1;
         mods = Qt::NoModifier;
         text.clear();
@@ -204,7 +206,7 @@ void KateViInputModeManager::feedKeyPresses(const QString &keyPresses) const
                 }
 
                 if (decoded.length() > 1) {
-                    key = KateViKeyParser::self()->vi2qt(decoded);
+                    key = KeyParser::self()->vi2qt(decoded);
                 } else if (decoded.length() == 1) {
                     key = int(decoded.at(0).toUpper().toLatin1());
                     text = decoded.at(0);
@@ -213,7 +215,7 @@ void KateViInputModeManager::feedKeyPresses(const QString &keyPresses) const
                     qCWarning(LOG_PART) << "decoded is empty. skipping key press.";
                 }
             } else { // no modifiers
-                key = KateViKeyParser::self()->vi2qt(decoded);
+                key = KeyParser::self()->vi2qt(decoded);
             }
         } else {
             key = decoded.at(0).unicode();
@@ -240,46 +242,46 @@ void KateViInputModeManager::feedKeyPresses(const QString &keyPresses) const
     }
 }
 
-bool KateViInputModeManager::isHandlingKeypress() const
+bool InputModeManager::isHandlingKeypress() const
 {
     return m_insideHandlingKeyPressCount > 0;
 }
 
-void KateViInputModeManager::storeLastChangeCommand()
+void InputModeManager::storeLastChangeCommand()
 {
     m_lastChange = m_lastChangeRecorder->encodedChanges();
     m_lastChangeCompletionsLog = m_completionRecorder->currentChangeCompletionsLog();
 }
 
-void KateViInputModeManager::repeatLastChange()
+void InputModeManager::repeatLastChange()
 {
     m_lastChangeRecorder->replay(m_lastChange, m_lastChangeCompletionsLog);
 }
 
-void KateViInputModeManager::clearCurrentChangeLog()
+void InputModeManager::clearCurrentChangeLog()
 {
     m_lastChangeRecorder->clear();
     m_completionRecorder->clearCurrentChangeCompletionsLog();
 }
 
-void KateViInputModeManager::doNotLogCurrentKeypress()
+void InputModeManager::doNotLogCurrentKeypress()
 {
     m_macroRecorder->dropLast();
     m_lastChangeRecorder->dropLast();
 }
 
-void KateViInputModeManager::changeViMode(ViMode newMode)
+void InputModeManager::changeViMode(ViMode newMode)
 {
     m_previousViMode = m_currentViMode;
     m_currentViMode = newMode;
 }
 
-ViMode KateViInputModeManager::getCurrentViMode() const
+ViMode InputModeManager::getCurrentViMode() const
 {
     return m_currentViMode;
 }
 
-KTextEditor::View::ViewMode KateViInputModeManager::getCurrentViewMode() const
+KTextEditor::View::ViewMode InputModeManager::getCurrentViewMode() const
 {
     switch (m_currentViMode) {
         case ViMode::InsertMode:
@@ -298,19 +300,19 @@ KTextEditor::View::ViewMode KateViInputModeManager::getCurrentViewMode() const
     }
 }
 
-ViMode KateViInputModeManager::getPreviousViMode() const
+ViMode InputModeManager::getPreviousViMode() const
 {
     return m_previousViMode;
 }
 
-bool KateViInputModeManager::isAnyVisualMode() const
+bool InputModeManager::isAnyVisualMode() const
 {
     return ((m_currentViMode == ViMode::VisualMode) ||
             (m_currentViMode == ViMode::VisualLineMode) ||
             (m_currentViMode == ViMode::VisualBlockMode));
 }
 
-KateVi::ModeBase *KateViInputModeManager::getCurrentViModeHandler() const
+::ModeBase *InputModeManager::getCurrentViModeHandler() const
 {
     switch (m_currentViMode) {
     case ViMode::NormalMode:
@@ -328,7 +330,7 @@ KateVi::ModeBase *KateViInputModeManager::getCurrentViModeHandler() const
     return NULL;
 }
 
-void KateViInputModeManager::viEnterNormalMode()
+void InputModeManager::viEnterNormalMode()
 {
     bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)
                           && m_viewInternal->getCursor().column() > 0;
@@ -355,7 +357,7 @@ void KateViInputModeManager::viEnterNormalMode()
     m_viewInternal->update();
 }
 
-void KateViInputModeManager::viEnterInsertMode()
+void InputModeManager::viEnterInsertMode()
 {
     changeViMode(ViMode::InsertMode);
     m_marks->setInsertStopped(KTextEditor::Cursor(m_view->cursorPosition()));
@@ -369,7 +371,7 @@ void KateViInputModeManager::viEnterInsertMode()
     m_viewInternal->update();
 }
 
-void KateViInputModeManager::viEnterVisualMode(ViMode mode)
+void InputModeManager::viEnterVisualMode(ViMode mode)
 {
     changeViMode(mode);
 
@@ -381,34 +383,34 @@ void KateViInputModeManager::viEnterVisualMode(ViMode mode)
     getViVisualMode()->init();
 }
 
-void KateViInputModeManager::viEnterReplaceMode()
+void InputModeManager::viEnterReplaceMode()
 {
-    changeViMode(ReplaceMode);
+    changeViMode(ViMode::ReplaceMode);
     m_inputAdapter->setCaretStyle(KateRenderer::Underline);
     m_viewInternal->update();
 }
 
-KateVi::NormalMode *KateViInputModeManager::getViNormalMode()
+NormalViMode *InputModeManager::getViNormalMode()
 {
     return m_viNormalMode;
 }
 
-KateVi::InsertMode *KateViInputModeManager::getViInsertMode()
+InsertViMode *InputModeManager::getViInsertMode()
 {
     return m_viInsertMode;
 }
 
-KateVi::VisualMode *KateViInputModeManager::getViVisualMode()
+VisualViMode *InputModeManager::getViVisualMode()
 {
     return m_viVisualMode;
 }
 
-KateVi::ReplaceMode *KateViInputModeManager::getViReplaceMode()
+ReplaceViMode *InputModeManager::getViReplaceMode()
 {
     return m_viReplaceMode;
 }
 
-const QString KateViInputModeManager::getVerbatimKeys() const
+const QString InputModeManager::getVerbatimKeys() const
 {
     QString cmd;
 
@@ -430,52 +432,52 @@ const QString KateViInputModeManager::getVerbatimKeys() const
     return cmd;
 }
 
-void KateViInputModeManager::readSessionConfig(const KConfigGroup &config)
+void InputModeManager::readSessionConfig(const KConfigGroup &config)
 {
     m_jumps->readSessionConfig(config);
     m_marks->readSessionConfig(config);
 }
 
-void KateViInputModeManager::writeSessionConfig(KConfigGroup &config)
+void InputModeManager::writeSessionConfig(KConfigGroup &config)
 {
     m_jumps->writeSessionConfig(config);
     m_marks->writeSessionConfig(config);
 }
 
-void KateViInputModeManager::reset()
+void InputModeManager::reset()
 {
     if (m_viVisualMode) {
         m_viVisualMode->reset();
     }
 }
 
-KateViKeyMapper *KateViInputModeManager::keyMapper()
+KeyMapper *InputModeManager::keyMapper()
 {
     return m_keyMapperStack.top().data();
 }
 
-void KateViInputModeManager::updateCursor(const KTextEditor::Cursor &c)
+void InputModeManager::updateCursor(const KTextEditor::Cursor &c)
 {
     m_inputAdapter->updateCursor(c);
 }
 
-KateVi::GlobalState *KateViInputModeManager::globalState() const
+GlobalState *InputModeManager::globalState() const
 {
     return m_inputAdapter->globalState();
 }
 
-KTextEditor::ViewPrivate *KateViInputModeManager::view() const
+KTextEditor::ViewPrivate *InputModeManager::view() const
 {
     return m_view;
 }
 
 
-void KateViInputModeManager::pushKeyMapper(QSharedPointer<KateViKeyMapper> mapper)
+void InputModeManager::pushKeyMapper(QSharedPointer<KeyMapper> mapper)
 {
     m_keyMapperStack.push(mapper);
 }
 
-void KateViInputModeManager::popKeyMapper()
+void InputModeManager::popKeyMapper()
 {
     m_keyMapperStack.pop();
 }

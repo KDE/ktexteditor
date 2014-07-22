@@ -229,23 +229,23 @@ if (BUILD_VIMODE)
     # vi input mode
     vimode/config/configtab.cpp
 
-    vimode/modes/insertmode.cpp
+    vimode/modes/insertvimode.cpp
     vimode/modes/modebase.cpp
-    vimode/modes/normalmode.cpp
-    vimode/modes/replacemode.cpp
-    vimode/modes/visualmode.cpp
+    vimode/modes/normalvimode.cpp
+    vimode/modes/replacevimode.cpp
+    vimode/modes/visualvimode.cpp
 
-    vimode/kateviappcommands.cpp
-    vimode/katevicmds.cpp
-    vimode/kateviinputmodemanager.cpp
-    vimode/katevicommand.cpp
-    vimode/katevimotion.cpp
+    vimode/appcommands.cpp
+    vimode/cmds.cpp
+    vimode/inputmodemanager.cpp
+    vimode/command.cpp
+    vimode/motion.cpp
     vimode/range.cpp
-    vimode/katevikeyparser.cpp
+    vimode/keyparser.cpp
     vimode/globalstate.cpp
-    vimode/kateviemulatedcommandbar.cpp
+    vimode/emulatedcommandbar.cpp
     vimode/commandrangeexpressionparser.cpp
-    vimode/katevikeymapper.cpp
+    vimode/keymapper.cpp
     vimode/marks.cpp
     vimode/jumps.cpp
     vimode/history.cpp

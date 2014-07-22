@@ -19,7 +19,7 @@
  */
 
 #include "completionreplayer.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include "katepartdebug.h"
 #include "kateview.h"
 #include "katedocument.h"
@@ -31,7 +31,7 @@
 
 using namespace KateVi;
 
-CompletionReplayer::CompletionReplayer(KateViInputModeManager *viInputModeManager)
+CompletionReplayer::CompletionReplayer(InputModeManager *viInputModeManager)
     : m_viInputModeManager(viInputModeManager)
 {
 }
@@ -55,7 +55,7 @@ void CompletionReplayer::stop()
 
 void CompletionReplayer::replay()
 {
-    const KateVi::Completion completion = nextCompletion();
+    const Completion completion = nextCompletion();
     KTextEditor::ViewPrivate *m_view = m_viInputModeManager->view();
     KTextEditor::DocumentPrivate *doc = m_view->doc();
 
@@ -81,7 +81,7 @@ void CompletionReplayer::replay()
     // Should we merge opening brackets? Yes, if completion is a function with arguments and after the cursor
     // there is (optional whitespace) followed by an open bracket.
     int offsetFinalCursorPosBy = 0;
-    if (completion.completionType() == KateVi::Completion::FunctionWithArgs) {
+    if (completion.completionType() == Completion::FunctionWithArgs) {
         const int nextMergableBracketAfterCursorPos = findNextMergeableBracketPos(currentWord.end());
         if (nextMergableBracketAfterCursorPos != -1) {
             if (completionText.endsWith(QLatin1String("()"))) {

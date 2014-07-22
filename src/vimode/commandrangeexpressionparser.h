@@ -25,15 +25,14 @@
 
 #include <ktexteditor/range.h>
 
-class KateViInputModeManager;
-
 namespace KateVi
 {
+class InputModeManager;
 
 class CommandRangeExpressionParser
 {
 public:
-    explicit CommandRangeExpressionParser(KateViInputModeManager *vimanager);
+    explicit CommandRangeExpressionParser(InputModeManager *vimanager);
 
     /**
      * Attempt to parse any leading range expression (e.g. "%", "'<,'>", ".,+6" etc) in @c command and
@@ -63,7 +62,7 @@ private:
     bool matchBackwardSearch(const QString &line, QList<int> &values) const;
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
 };
 
 }

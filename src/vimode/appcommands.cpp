@@ -18,23 +18,24 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "kateviappcommands.h"
+#include <QDir>
+#include <QTimer>
 
+#include <KLocalizedString>
 #include <KTextEditor/Application>
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
 #include <KTextEditor/MainWindow>
 #include <KTextEditor/View>
 
-#include <KLocalizedString>
+#include <vimode/appcommands.h>
 
-#include <QDir>
-#include <QTimer>
+using namespace KateVi;
 
-//BEGIN KateViAppCommands
-KateViAppCommands *KateViAppCommands::m_instance = 0;
+//BEGIN AppCommands
+AppCommands *AppCommands::m_instance = 0;
 
-KateViAppCommands::KateViAppCommands()
+AppCommands::AppCommands()
     : KTextEditor::Command(QStringList() << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
           << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
           << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
@@ -53,12 +54,12 @@ KateViAppCommands::KateViAppCommands()
     re_only.setPattern(QLatin1String("on(ly)?"));
 }
 
-KateViAppCommands::~KateViAppCommands()
+AppCommands::~AppCommands()
 {
     m_instance = 0;
 }
 
-bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
+bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
     QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
     QString command(args.takeFirst());
@@ -184,7 +185,7 @@ bool KateViAppCommands::exec(KTextEditor::View *view, const QString &cmd, QStrin
     return true;
 }
 
-bool KateViAppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg)
+bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg)
 {
     Q_UNUSED(view);
 
@@ -260,7 +261,7 @@ bool KateViAppCommands::help(KTextEditor::View *view, const QString &cmd, QStrin
     return false;
 }
 
-KTextEditor::View * KateViAppCommands::findViewInDifferentSplitView(KTextEditor::MainWindow *window,
+KTextEditor::View * AppCommands::findViewInDifferentSplitView(KTextEditor::MainWindow *window,
                                                                     KTextEditor::View *view)
 {
     Q_FOREACH (KTextEditor::View *it, window->views()) {
@@ -271,7 +272,7 @@ KTextEditor::View * KateViAppCommands::findViewInDifferentSplitView(KTextEditor:
     return Q_NULLPTR;
 }
 
-void KateViAppCommands::closeCurrentDocument()
+void AppCommands::closeCurrentDocument()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::Document *doc = app->activeMainWindow()->activeView()->document();
@@ -279,7 +280,7 @@ void KateViAppCommands::closeCurrentDocument()
     qDebug() << "called close";
 }
 
-void KateViAppCommands::closeCurrentView()
+void AppCommands::closeCurrentView()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
@@ -287,14 +288,14 @@ void KateViAppCommands::closeCurrentView()
     qDebug() << "called close view";
 }
 
-void KateViAppCommands::closeCurrentSplitView()
+void AppCommands::closeCurrentSplitView()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
     mw->closeSplitView(mw->activeView());
 }
 
-void KateViAppCommands::closeOtherSplitViews()
+void AppCommands::closeOtherSplitViews()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
@@ -306,17 +307,17 @@ void KateViAppCommands::closeOtherSplitViews()
     }
 }
 
-void KateViAppCommands::quit()
+void AppCommands::quit()
 {
     KTextEditor::Editor::instance()->application()->quit();
 }
 
-//END KateViAppCommands
+//END AppCommands
 
 //BEGIN KateViBufferCommand
-KateViBufferCommands *KateViBufferCommands::m_instance = 0;
+BufferCommands *BufferCommands::m_instance = 0;
 
-KateViBufferCommands::KateViBufferCommands()
+BufferCommands::BufferCommands()
     : KTextEditor::Command(QStringList() << QLatin1String("ls")
            << QLatin1String("b") << QLatin1String("buffer")
            << QLatin1String("bn") << QLatin1String("bnext") << QLatin1String("bp") << QLatin1String("bprevious")
@@ -326,12 +327,12 @@ KateViBufferCommands::KateViBufferCommands()
 {
 }
 
-KateViBufferCommands::~KateViBufferCommands()
+BufferCommands::~BufferCommands()
 {
     m_instance = 0;
 }
 
-bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
+bool BufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     // create list of args
     QStringList args(cmd.split(QLatin1Char(' '), QString::KeepEmptyParts));
@@ -362,7 +363,7 @@ bool KateViBufferCommands::exec(KTextEditor::View *view, const QString &cmd, QSt
     return true;
 }
 
-void KateViBufferCommands::switchDocument(KTextEditor::View *view, const QString &address)
+void BufferCommands::switchDocument(KTextEditor::View *view, const QString &address)
 {
 
     if (address.isEmpty()) {
@@ -394,7 +395,7 @@ void KateViBufferCommands::switchDocument(KTextEditor::View *view, const QString
     }
 }
 
-void KateViBufferCommands::prevBuffer(KTextEditor::View *view)
+void BufferCommands::prevBuffer(KTextEditor::View *view)
 {
     QList<KTextEditor::Document *> docs = documents();
     const int idx = docs.indexOf(view->document());
@@ -406,7 +407,7 @@ void KateViBufferCommands::prevBuffer(KTextEditor::View *view)
     }
 }
 
-void KateViBufferCommands::nextBuffer(KTextEditor::View *view)
+void BufferCommands::nextBuffer(KTextEditor::View *view)
 {
     QList<KTextEditor::Document *> docs = documents();
     const int idx = docs.indexOf(view->document());
@@ -418,49 +419,49 @@ void KateViBufferCommands::nextBuffer(KTextEditor::View *view)
     }
 }
 
-void KateViBufferCommands::firstBuffer(KTextEditor::View *view)
+void BufferCommands::firstBuffer(KTextEditor::View *view)
 {
     activateDocument(view, documents().first());
 }
 
-void KateViBufferCommands::lastBuffer(KTextEditor::View *view)
+void BufferCommands::lastBuffer(KTextEditor::View *view)
 {
     activateDocument(view, documents().last());
 }
 
-void KateViBufferCommands::prevTab(KTextEditor::View *view)
+void BufferCommands::prevTab(KTextEditor::View *view)
 {
     prevBuffer(view); // TODO: implement properly, when interface is added
 }
 
-void KateViBufferCommands::nextTab(KTextEditor::View *view)
+void BufferCommands::nextTab(KTextEditor::View *view)
 {
     nextBuffer(view); // TODO: implement properly, when interface is added
 }
 
-void KateViBufferCommands::firstTab(KTextEditor::View *view)
+void BufferCommands::firstTab(KTextEditor::View *view)
 {
     firstBuffer(view); // TODO: implement properly, when interface is added
 }
 
-void KateViBufferCommands::lastTab(KTextEditor::View *view)
+void BufferCommands::lastTab(KTextEditor::View *view)
 {
     lastBuffer(view); // TODO: implement properly, when interface is added
 }
 
-void KateViBufferCommands::activateDocument(KTextEditor::View *view, KTextEditor::Document *doc)
+void BufferCommands::activateDocument(KTextEditor::View *view, KTextEditor::Document *doc)
 {
     KTextEditor::MainWindow *mainWindow = view->mainWindow();
     mainWindow->activateView(doc);
 }
 
-QList< KTextEditor::Document * > KateViBufferCommands::documents()
+QList< KTextEditor::Document * > BufferCommands::documents()
 {
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     return app->documents();
 }
 
-bool KateViBufferCommands::help(KTextEditor::View * /*view*/, const QString &cmd, QString &msg)
+bool BufferCommands::help(KTextEditor::View * /*view*/, const QString &cmd, QString &msg)
 {
     if (cmd == QLatin1String("b") || cmd == QLatin1String("buffer")) {
         msg = i18n("<p><b>b,buffer &mdash; Edit document N from the document list</b></p>"

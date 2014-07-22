@@ -20,15 +20,15 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <vimode/modes/insertmode.h>
-#include <vimode/kateviinputmodemanager.h>
+#include <vimode/modes/insertvimode.h>
+#include <vimode/inputmodemanager.h>
 #include "kateview.h"
 #include "kateviewinternal.h"
 #include "kateconfig.h"
 #include "katecompletionwidget.h"
 #include "katecompletiontree.h"
 #include "kateglobal.h"
-#include <vimode/katevikeyparser.h>
+#include <vimode/keyparser.h>
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include <vimode/completionrecorder.h>
@@ -41,7 +41,7 @@
 
 using namespace KateVi;
 
-InsertMode::InsertMode(KateViInputModeManager *viInputModeManager,
+InsertViMode::InsertViMode(InputModeManager *viInputModeManager,
                        KTextEditor::ViewPrivate *view,
                        KateViewInternal *viewInternal)
     : ModeBase()
@@ -61,11 +61,11 @@ InsertMode::InsertMode(KateViInputModeManager *viInputModeManager,
             this, SLOT(textInserted(KTextEditor::Document*,KTextEditor::Range)));
 }
 
-InsertMode::~InsertMode()
+InsertViMode::~InsertViMode()
 {
 }
 
-bool InsertMode::commandInsertFromAbove()
+bool InsertViMode::commandInsertFromAbove()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -84,7 +84,7 @@ bool InsertMode::commandInsertFromAbove()
     return doc()->insertText(c, ch);
 }
 
-bool InsertMode::commandInsertFromBelow()
+bool InsertViMode::commandInsertFromBelow()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -103,7 +103,7 @@ bool InsertMode::commandInsertFromBelow()
     return doc()->insertText(c, ch);
 }
 
-bool InsertMode::commandDeleteWord()
+bool InsertViMode::commandDeleteWord()
 {
     KTextEditor::Cursor c1(m_view->cursorPosition());
     KTextEditor::Cursor c2;
@@ -123,7 +123,7 @@ bool InsertMode::commandDeleteWord()
     return deleteRange(r, CharWise, false);
 }
 
-bool InsertMode::commandDeleteLine()
+bool InsertViMode::commandDeleteLine()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     Range r(c.line(), 0, c.line(), c.column(), ExclusiveMotion);
@@ -150,7 +150,7 @@ bool InsertMode::commandDeleteLine()
     return deleteRange(r, CharWise, false);
 }
 
-bool InsertMode::commandDeleteCharBackward()
+bool InsertViMode::commandDeleteCharBackward()
 {
     qCDebug(LOG_PART) << "Char backward!\n";
     KTextEditor::Cursor c(m_view->cursorPosition());
@@ -169,34 +169,34 @@ bool InsertMode::commandDeleteCharBackward()
     return deleteRange(r, CharWise);
 }
 
-bool InsertMode::commandNewLine()
+bool InsertViMode::commandNewLine()
 {
     doc()->newLine(m_view);
     return true;
 }
 
-bool InsertMode::commandIndent()
+bool InsertViMode::commandIndent()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     doc()->indent(KTextEditor::Range(c.line(), 0, c.line(), 0), 1);
     return true;
 }
 
-bool InsertMode::commandUnindent()
+bool InsertViMode::commandUnindent()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     doc()->indent(KTextEditor::Range(c.line(), 0, c.line(), 0), -1);
     return true;
 }
 
-bool InsertMode::commandToFirstCharacterInFile()
+bool InsertViMode::commandToFirstCharacterInFile()
 {
     KTextEditor::Cursor c(0,0);
     updateCursor(c);
     return true;
 }
 
-bool InsertMode::commandToLastCharacterInFile()
+bool InsertViMode::commandToLastCharacterInFile()
 {
     int lines = doc()->lines() - 1;
     KTextEditor::Cursor c(lines, doc()->line(lines).length());
@@ -204,7 +204,7 @@ bool InsertMode::commandToLastCharacterInFile()
     return true;
 }
 
-bool InsertMode::commandMoveOneWordLeft()
+bool InsertViMode::commandMoveOneWordLeft()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findPrevWordStart(c.line(), c.column());
@@ -217,7 +217,7 @@ bool InsertMode::commandMoveOneWordLeft()
     return true;
 }
 
-bool InsertMode::commandMoveOneWordRight()
+bool InsertViMode::commandMoveOneWordRight()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findNextWordStart(c.line(), c.column());
@@ -230,7 +230,7 @@ bool InsertMode::commandMoveOneWordRight()
     return true;
 }
 
-bool InsertMode::commandCompleteNext()
+bool InsertViMode::commandCompleteNext()
 {
     if (m_view->completionWidget()->isCompletionActive()) {
         const QModelIndex oldCompletionItem = m_view->completionWidget()->treeView()->selectionModel()->currentIndex();
@@ -246,7 +246,7 @@ bool InsertMode::commandCompleteNext()
     return true;
 }
 
-bool InsertMode::commandCompletePrevious()
+bool InsertViMode::commandCompletePrevious()
 {
     if (m_view->completionWidget()->isCompletionActive()) {
         const QModelIndex oldCompletionItem = m_view->completionWidget()->treeView()->selectionModel()->currentIndex();
@@ -263,7 +263,7 @@ bool InsertMode::commandCompletePrevious()
     return true;
 }
 
-bool InsertMode::commandInsertContentOfRegister()
+bool InsertViMode::commandInsertContentOfRegister()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     KTextEditor::Cursor cAfter = c;
@@ -296,7 +296,7 @@ bool InsertMode::commandInsertContentOfRegister()
 }
 
 // Start Normal mode just for one command and return to Insert mode
-bool InsertMode::commandSwitchToNormalModeForJustOneCommand()
+bool InsertViMode::commandSwitchToNormalModeForJustOneCommand()
 {
     m_viInputModeManager->setTemporaryNormalMode(true);
     m_viInputModeManager->changeViMode(ViMode::NormalMode);
@@ -315,7 +315,7 @@ bool InsertMode::commandSwitchToNormalModeForJustOneCommand()
  * checks if the key is a valid command
  * @return true if a command was completed and executed, false otherwise
  */
-bool InsertMode::handleKeypress(const QKeyEvent *e)
+bool InsertViMode::handleKeypress(const QKeyEvent *e)
 {
     // backspace should work even if the shift key is down
     if (e->modifiers() != Qt::ControlModifier && e->key() == Qt::Key_Backspace) {
@@ -479,7 +479,7 @@ bool InsertMode::handleKeypress(const QKeyEvent *e)
 
         // Was waiting for register for Ctrl-R
         if (m_keys == QLatin1String("cR")) {
-            QChar key = KateViKeyParser::self()->KeyEventToQChar(*e);
+            QChar key =  KeyParser::self()->KeyEventToQChar(*e);
             key = key.toLower();
 
             // is it register ?
@@ -501,7 +501,7 @@ bool InsertMode::handleKeypress(const QKeyEvent *e)
 // leave insert mode when esc, etc, is pressed. if leaving block
 // prepend/append, the inserted text will be added to all block lines. if
 // ctrl-c is used to exit insert mode this is not done.
-void InsertMode::leaveInsertMode(bool force)
+void InsertViMode::leaveInsertMode(bool force)
 {
     m_view->abortCompletion();
     if (!force) {
@@ -566,7 +566,7 @@ void InsertMode::leaveInsertMode(bool force)
     startNormalMode();
 }
 
-void InsertMode::setBlockPrependMode(Range blockRange)
+void InsertViMode::setBlockPrependMode(Range blockRange)
 {
     // ignore if not more than one line is selected
     if (blockRange.startLine != blockRange.endLine) {
@@ -575,7 +575,7 @@ void InsertMode::setBlockPrependMode(Range blockRange)
     }
 }
 
-void InsertMode::setBlockAppendMode(Range blockRange, BlockInsert b)
+void InsertViMode::setBlockAppendMode(Range blockRange, BlockInsert b)
 {
     Q_ASSERT(b == Append || b == AppendEOL);
 
@@ -591,7 +591,7 @@ void InsertMode::setBlockAppendMode(Range blockRange, BlockInsert b)
     }
 }
 
-void InsertMode::completionFinished()
+void InsertViMode::completionFinished()
 {
     Completion::CompletionType completionType = Completion::PlainText;
     if (m_view->cursorPosition() != m_textInsertedByCompletionEndPos) {
@@ -602,7 +602,7 @@ void InsertMode::completionFinished()
     m_viInputModeManager->completionRecorder()->logCompletionEvent(Completion(m_textInsertedByCompletion, KateViewConfig::global()->wordCompletionRemoveTail(), completionType));
 }
 
-void InsertMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
+void InsertViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
     if (m_isExecutingCompletion) {
         m_textInsertedByCompletion += document->text(range);

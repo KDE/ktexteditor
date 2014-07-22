@@ -35,10 +35,10 @@ class QKeyEvent;
 class QString;
 class QRegExp;
 namespace KTextEditor { class DocumentPrivate; }
-class KateViInputModeManager;
 
 namespace KateVi
 {
+class InputModeManager;
 
 enum Direction {
     Up,
@@ -170,7 +170,7 @@ protected:
 
     KTextEditor::ViewPrivate *m_view;
     KateViewInternal *m_viewInternal;
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
 
     // info message of vi mode
     QPointer<KTextEditor::Message> m_infoMessage;

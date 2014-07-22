@@ -19,13 +19,13 @@
  */
 
 #include "lastchangerecorder.h"
-#include "kateviinputmodemanager.h"
-#include "katevikeyparser.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/keyparser.h>
 #include "completionreplayer.h"
 
 using namespace KateVi;
 
-LastChangeRecorder::LastChangeRecorder(KateViInputModeManager *viInputModeManager)
+LastChangeRecorder::LastChangeRecorder(InputModeManager *viInputModeManager)
     : m_viInputModeManager(viInputModeManager)
     , m_isReplaying(false)
 {
@@ -78,10 +78,10 @@ QString LastChangeRecorder::encodedChanges() const
             keyPress.append((mods & Qt::ControlModifier) ? QLatin1String("c-") : QString());
             keyPress.append((mods & Qt::AltModifier)     ? QLatin1String("a-") : QString());
             keyPress.append((mods & Qt::MetaModifier)    ? QLatin1String("m-") : QString());
-            keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : KateViKeyParser::self()->qt2vi(keyCode));
+            keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : KeyParser::self()->qt2vi(keyCode));
             keyPress.append(QLatin1Char('>'));
 
-            key = KateViKeyParser::self()->encodeKeySequence(keyPress).at(0);
+            key = KeyParser::self()->encodeKeySequence(keyPress).at(0);
         }
 
         result.append(key);

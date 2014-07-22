@@ -25,17 +25,16 @@
 
 #include <QStack>
 
-class KateViInputModeManager;
-
 namespace KTextEditor { class Cursor; }
 
 namespace KateVi
 {
+class InputModeManager;
 
 class CompletionReplayer
 {
 public:
-    explicit CompletionReplayer(KateViInputModeManager *viInputModeManager);
+    explicit CompletionReplayer(InputModeManager *viInputModeManager);
     ~CompletionReplayer();
 
     void start(const CompletionList &completions);
@@ -48,7 +47,7 @@ private:
     int findNextMergeableBracketPos(const KTextEditor::Cursor &startPos) const;
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
 
     QStack<CompletionList> m_CompletionsToReplay;
     QStack<int> m_nextCompletionIndex;

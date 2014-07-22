@@ -25,15 +25,14 @@
 #include <QList>
 #include <QKeyEvent>
 
-class KateViInputModeManager;
-
 namespace KateVi
 {
+class InputModeManager;
 
 class MacroRecorder
 {
 public:
-    explicit MacroRecorder(KateViInputModeManager *viInputModeManager);
+    explicit MacroRecorder(InputModeManager *viInputModeManager);
     ~MacroRecorder();
 
     void start(const QChar &macroRegister);
@@ -48,7 +47,7 @@ public:
     bool isReplaying();
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
 
     bool m_isRecording;
     QChar m_register;

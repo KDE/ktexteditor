@@ -25,8 +25,6 @@
 
 #include <QString>
 
-class KateViInputModeManager;
-
 namespace KTextEditor {
     class Cursor;
     class ViewPrivate;
@@ -35,11 +33,12 @@ namespace KTextEditor {
 
 namespace KateVi
 {
+class InputModeManager;
 
 class Searcher
 {
 public:
-    explicit Searcher(KateViInputModeManager *viInputModeManager);
+    explicit Searcher(InputModeManager *viInputModeManager);
     ~Searcher();
 
     /** Command part **/
@@ -47,9 +46,9 @@ public:
     void findPrevious();
 
     /** Simple searchers **/
-    KateVi::Range motionFindNext(int count = 1);
-    KateVi::Range motionFindPrev(int count = 1);
-    KateVi::Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
+    Range motionFindNext(int count = 1);
+    Range motionFindPrev(int count = 1);
+    Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
 
     /** Extended searcher for ECB **/
     KTextEditor::Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count);
@@ -57,11 +56,11 @@ public:
     const QString getLastSearchPattern() const;
 
 private:
-    KateVi::Range findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
+    Range findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count = 1) const;
     KTextEditor::Range findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const;
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
     KTextEditor::ViewPrivate *m_view;
 
     QString m_lastSearchPattern;

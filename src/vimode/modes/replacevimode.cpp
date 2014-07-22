@@ -20,13 +20,13 @@
 
 
 #include <view/kateviewinternal.h>
-#include <vimode/modes/replacemode.h>
-#include <vimode/kateviinputmodemanager.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/inputmodemanager.h>
 #include <utils/kateconfig.h>
 
 using namespace KateVi;
 
-ReplaceMode::ReplaceMode(KateViInputModeManager *viInputModeManager,
+ReplaceViMode::ReplaceViMode(InputModeManager *viInputModeManager,
                          KTextEditor::ViewPrivate *view,
                          KateViewInternal *viewInternal)
     : ModeBase()
@@ -36,12 +36,12 @@ ReplaceMode::ReplaceMode(KateViInputModeManager *viInputModeManager,
     m_viInputModeManager = viInputModeManager;
 }
 
-ReplaceMode::~ReplaceMode()
+ReplaceViMode::~ReplaceViMode()
 {
     /* There's nothing to do here. */
 }
 
-bool ReplaceMode::commandInsertFromLine(int offset)
+bool ReplaceViMode::commandInsertFromLine(int offset)
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
 
@@ -71,7 +71,7 @@ bool ReplaceMode::commandInsertFromLine(int offset)
     return false;
 }
 
-bool ReplaceMode::commandMoveOneWordLeft()
+bool ReplaceViMode::commandMoveOneWordLeft()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findPrevWordStart(c.line(), c.column());
@@ -84,7 +84,7 @@ bool ReplaceMode::commandMoveOneWordLeft()
     return true;
 }
 
-bool ReplaceMode::commandMoveOneWordRight()
+bool ReplaceViMode::commandMoveOneWordRight()
 {
     KTextEditor::Cursor c(m_view->cursorPosition());
     c = findNextWordStart(c.line(), c.column());
@@ -97,7 +97,7 @@ bool ReplaceMode::commandMoveOneWordRight()
     return true;
 }
 
-bool ReplaceMode::handleKeypress(const QKeyEvent *e)
+bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
 {
     // backspace should work even if the shift key is down
     if (e->modifiers() != Qt::ControlModifier && e->key() == Qt::Key_Backspace) {
@@ -186,7 +186,7 @@ bool ReplaceMode::handleKeypress(const QKeyEvent *e)
     return false;
 }
 
-void ReplaceMode::backspace()
+void ReplaceViMode::backspace()
 {
     KTextEditor::Cursor c1(m_view->cursorPosition());
     KTextEditor::Cursor c2(c1.line(), c1.column() - 1);
@@ -202,7 +202,7 @@ void ReplaceMode::backspace()
     }
 }
 
-void ReplaceMode::commandBackWord()
+void ReplaceViMode::commandBackWord()
 {
     KTextEditor::Cursor current(m_view->cursorPosition());
     KTextEditor::Cursor to(findPrevWordStart(current.line(), current.column()));
@@ -217,7 +217,7 @@ void ReplaceMode::commandBackWord()
     }
 }
 
-void ReplaceMode::commandBackLine()
+void ReplaceViMode::commandBackLine()
 {
     const int column = m_view->cursorPosition().column();
 

@@ -23,15 +23,14 @@
 
 #include "completion.h"
 
-class KateViInputModeManager;
-
 namespace KateVi
 {
+class InputModeManager;
 
 class CompletionRecorder
 {
 public:
-    explicit CompletionRecorder(KateViInputModeManager *viInputModeManager);
+    explicit CompletionRecorder(InputModeManager *viInputModeManager);
     ~CompletionRecorder();
 
     void logCompletionEvent(const Completion &completion);
@@ -43,7 +42,7 @@ public:
     void clearCurrentChangeCompletionsLog();
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
 
     CompletionList m_currentMacroCompletionsLog;
     CompletionList m_currentChangeCompletionsLog;

@@ -25,7 +25,7 @@
 
 #include <utils/kateconfig.h>
 #include <utils/kateglobal.h>
-#include <vimode/katevikeyparser.h>
+#include <vimode/keyparser.h>
 #include <vimode/config/configtab.h>
 #include "ui_configwidget.h"
 
@@ -98,9 +98,9 @@ void ConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mod
 
     int i = 0;
     foreach (const QString &f, l) {
-        QTableWidgetItem *from = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(f));
+        QTableWidgetItem *from = new QTableWidgetItem(KeyParser::self()->decodeKeySequence(f));
         QString s = m_mappings->get(mode, f);
-        QTableWidgetItem *to = new QTableWidgetItem(KateViKeyParser::self()->decodeKeySequence(s));
+        QTableWidgetItem *to = new QTableWidgetItem(KeyParser::self()->decodeKeySequence(s));
         QTableWidgetItem *recursive = new QTableWidgetItem();
         recursive->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
         const bool isRecursive = m_mappings->isRecursive(mode, f);

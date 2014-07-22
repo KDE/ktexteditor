@@ -19,39 +19,39 @@
 #include "kateviinputmode.h"
 #include "kateviewinternal.h"
 #include "kateconfig.h"
-#include "vimode/kateviinputmodemanager.h"
-#include "vimode/kateviemulatedcommandbar.h"
-#include <vimode/modes/replacemode.h>
-#include <vimode/modes/visualmode.h>
-#include "vimode/marks.h"
-#include "vimode/searcher.h"
-#include "vimode/macrorecorder.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/emulatedcommandbar.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/marks.h>
+#include <vimode/searcher.h>
+#include <vimode/macrorecorder.h>
 
 #include <KLocalizedString>
 
 #include <QCoreApplication>
 
 namespace {
-    QString viModeToString(ViMode mode)
+    QString viModeToString(KateVi::ViMode mode)
     {
         QString modeStr;
         switch (mode) {
-            case InsertMode:
+            case KateVi::InsertMode:
                 modeStr = i18n("VI: INSERT MODE");
                 break;
-            case NormalMode:
+            case KateVi::NormalMode:
                 modeStr = i18n("VI: NORMAL MODE");
                 break;
-            case VisualMode:
+            case KateVi::VisualMode:
                 modeStr = i18n("VI: VISUAL");
                 break;
-            case VisualBlockMode:
+            case KateVi::VisualBlockMode:
                 modeStr = i18n("VI: VISUAL BLOCK");
                 break;
-            case VisualLineMode:
+            case KateVi::VisualLineMode:
                 modeStr = i18n("VI: VISUAL LINE");
                 break;
-            case ReplaceMode:
+            case KateVi::ReplaceMode:
                 modeStr = i18n("VI: REPLACE");
                 break;
         }
@@ -68,7 +68,7 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
     , m_activated(false)
 {
     m_relLineNumbers = KateViewConfig::global()->viRelativeLineNumbers();
-    m_viModeManager = new KateViInputModeManager(this, view(), viewInternal);
+    m_viModeManager = new KateVi::InputModeManager(this, view(), viewInternal);
 }
 
 KateViInputMode::~KateViInputMode()
@@ -83,7 +83,7 @@ void KateViInputMode::activate()
     reset(); // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
-        m_viModeManager->changeViMode(VisualMode);
+        m_viModeManager->changeViMode(KateVi::VisualMode);
         view()->setCursorPosition(KTextEditor::Cursor(view()->selectionRange().end().line(), view()->selectionRange().end().column() - 1));
         m_viModeManager->m_viVisualMode->updateSelection();
     }
@@ -109,7 +109,7 @@ void KateViInputMode::reset()
     }
 
     delete m_viModeManager;
-    m_viModeManager = new KateViInputModeManager(this, view(), viewInternal());
+    m_viModeManager = new KateVi::InputModeManager(this, view(), viewInternal());
 
     if (m_viModeEmulatedCommandBar) {
         m_viModeEmulatedCommandBar->setViInputModeManager(m_viModeManager);
@@ -118,7 +118,7 @@ void KateViInputMode::reset()
 
 bool KateViInputMode::overwrite() const
 {
-    return  m_viModeManager->getCurrentViMode() == ReplaceMode;
+    return  m_viModeManager->getCurrentViMode() == KateVi::ViMode::ReplaceMode;
 }
 
 void KateViInputMode::overwrittenChar(const QChar &c)
@@ -134,7 +134,8 @@ void KateViInputMode::clearSelection()
 bool KateViInputMode::stealKey(const QKeyEvent *k) const
 {
     const bool steal = KateViewConfig::global()->viInputModeStealKeys();
-    return steal && (m_viModeManager->getCurrentViMode() != InsertMode || k->modifiers() == Qt::ControlModifier || k->key() == Qt::Key_Insert);
+    return steal && (m_viModeManager->getCurrentViMode() != KateVi::ViMode::InsertMode ||
+                        k->modifiers() == Qt::ControlModifier || k->key() == Qt::Key_Insert);
 }
 
 KTextEditor::View::InputMode KateViInputMode::viewInputMode() const
@@ -210,7 +211,7 @@ void KateViInputMode::readWriteChanged(bool)
 void KateViInputMode::find()
 {
     showViModeEmulatedCommandBar();
-    viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
+    viModeEmulatedCommandBar()->init(KateVi::EmulatedCommandBar::SearchForward);
 }
 
 void KateViInputMode::findSelectedForwards()
@@ -226,7 +227,7 @@ void KateViInputMode::findSelectedBackwards()
 void KateViInputMode::findReplace()
 {
     showViModeEmulatedCommandBar();
-    viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::SearchForward);
+    viModeEmulatedCommandBar()->init(KateVi::EmulatedCommandBar::SearchForward);
 }
 
 void KateViInputMode::findNext()
@@ -242,7 +243,7 @@ void KateViInputMode::findPrevious()
 void KateViInputMode::activateCommandLine()
 {
     showViModeEmulatedCommandBar();
-    viModeEmulatedCommandBar()->init(KateViEmulatedCommandBar::Command);
+    viModeEmulatedCommandBar()->init(KateVi::EmulatedCommandBar::Command);
 }
 
 void KateViInputMode::showViModeEmulatedCommandBar()
@@ -251,10 +252,10 @@ void KateViInputMode::showViModeEmulatedCommandBar()
     view()->bottomViewBar()->showBarWidget(viModeEmulatedCommandBar());
 }
 
-KateViEmulatedCommandBar *KateViInputMode::viModeEmulatedCommandBar()
+KateVi::EmulatedCommandBar *KateViInputMode::viModeEmulatedCommandBar()
 {
     if (!m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar = new KateViEmulatedCommandBar(m_viModeManager, view());
+        m_viModeEmulatedCommandBar = new KateVi::EmulatedCommandBar(m_viModeManager, view());
         m_viModeEmulatedCommandBar->hide();
     }
 
@@ -268,7 +269,9 @@ void KateViInputMode::updateRendererConfig()
 
 bool KateViInputMode::keyPress(QKeyEvent *e)
 {
-    if (m_viModeManager->getCurrentViMode() == InsertMode || m_viModeManager->getCurrentViMode() == ReplaceMode) {
+    if (m_viModeManager->getCurrentViMode() == KateVi::InsertMode ||
+        m_viModeManager->getCurrentViMode() == KateVi::ReplaceMode) {
+
         if (m_viModeManager->handleKeypress(e)) {
             return true;
         } else if (e->modifiers() != Qt::NoModifier && e->modifiers() != Qt::ShiftModifier) {

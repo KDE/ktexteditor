@@ -17,7 +17,7 @@
  */
 
 #include "macros.h"
-#include "katevikeyparser.h"
+#include <vimode/keyparser.h>
 #include "katepartdebug.h"
 
 #include <KConfigGroup>
@@ -40,7 +40,7 @@ void Macros::writeConfig(KConfigGroup &config) const
     }
     QStringList macroContents;
     foreach (const QChar &macroRegister, m_macros.keys()) {
-        macroContents.append(KateViKeyParser::self()->decodeKeySequence(m_macros[macroRegister]));
+        macroContents.append(KeyParser::self()->decodeKeySequence(m_macros[macroRegister]));
     }
     QStringList macroCompletions;
     foreach (const QChar &macroRegister, m_macros.keys()) {
@@ -63,7 +63,7 @@ void Macros::readConfig(const KConfigGroup &config)
     if (macroRegisters.length() == macroContents.length()) {
         for (int macroIndex = 0; macroIndex < macroRegisters.length(); macroIndex++) {
             const QChar macroRegister = macroRegisters[macroIndex].at(0);
-            m_macros[macroRegister] = KateViKeyParser::self()->encodeKeySequence(macroContents[macroIndex]);
+            m_macros[macroRegister] = KeyParser::self()->encodeKeySequence(macroContents[macroIndex]);
             macroCompletionsIndex = readMacroCompletions(macroRegister, macroCompletions, macroCompletionsIndex);
         }
     }
@@ -86,7 +86,7 @@ void Macros::store(const QChar &reg, const QList<QKeyEvent> &macroKeyEventLog, c
     Q_ASSERT(!macroKeyEventLog.isEmpty() && macroKeyEventLog.last().key() == Qt::Key_Q);
     withoutClosingQ.pop_back();
     foreach (const QKeyEvent &keyEvent, withoutClosingQ) {
-        const QChar key = KateViKeyParser::self()->KeyEventToQChar(keyEvent);
+        const QChar key = KeyParser::self()->KeyEventToQChar(keyEvent);
         m_macros[reg].append(key);
     }
     m_completions[reg] = completions;

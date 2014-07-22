@@ -20,13 +20,12 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATEVI_INSERT_MODE_H
-#define KATEVI_INSERT_MODE_H
+#ifndef KATEVI_INSERT_VI_MODE_H
+#define KATEVI_INSERT_VI_MODE_H
 
 #include <vimode/modes/modebase.h>
 #include <ktexteditor_export.h>
 
-class KateViMotion;
 namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
 
@@ -34,6 +33,7 @@ class QKeyEvent;
 
 namespace KateVi
 {
+class Motion;
 
 /**
  * Commands for the vi insert mode
@@ -45,14 +45,15 @@ enum BlockInsert {
     AppendEOL
 };
 
-class KTEXTEDITOR_EXPORT InsertMode : public ModeBase
+class KTEXTEDITOR_EXPORT InsertViMode : public ModeBase
 {
     Q_OBJECT
+
 public:
-    explicit InsertMode(KateViInputModeManager *viInputModeManager,
+    explicit InsertViMode(InputModeManager *viInputModeManager,
                         KTextEditor::ViewPrivate *view,
                         KateViewInternal *viewInternal);
-    virtual ~InsertMode();
+    virtual ~InsertViMode();
 
     virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
@@ -115,4 +116,4 @@ private Q_SLOTS:
 
 }
 
-#endif
+#endif /* KATEVI_INSERT_VI_MODE_H */

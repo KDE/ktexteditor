@@ -19,7 +19,7 @@
  */
 
 #include "completionrecorder.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include "katepartdebug.h"
 #include "macrorecorder.h"
 #include "lastchangerecorder.h"
@@ -34,7 +34,7 @@ namespace {
 
 using namespace KateVi;
 
-CompletionRecorder::CompletionRecorder(KateViInputModeManager *viInputModeManager)
+CompletionRecorder::CompletionRecorder(InputModeManager *viInputModeManager)
     : m_viInputModeManager(viInputModeManager)
 {
 }

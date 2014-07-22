@@ -26,10 +26,10 @@
 #include "kateglobal.h"
 #include "kateviinputmode.h"
 #include <vimode/globalstate.h>
-#include <vimode/modes/visualmode.h>
-#include <vimode/modes/normalmode.h>
-#include <vimode/modes/replacemode.h>
-#include <vimode/kateviinputmodemanager.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/modes/normalvimode.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/inputmodemanager.h>
 #include "katelayoutcache.h"
 #include "kateconfig.h"
 #include "katedocument.h"

@@ -28,10 +28,10 @@
 #include <QVBoxLayout>
 #include <katedocument.h>
 #include <kateview.h>
-#include <kateviinputmodemanager.h>
+#include <inputmodemanager.h>
 
 class QLineEdit;
-class KateViEmulatedCommandBar;
+namespace KateVi { class EmulatedCommandBar; }
 
 /* Syntactic sugar :P */
 #define DoTest(...) DoTest_(__LINE__, __VA_ARGS__)
@@ -102,7 +102,7 @@ protected:
 
     // Emulated command bar.
 
-    KateViEmulatedCommandBar * emulatedCommandBar();
+    KateVi::EmulatedCommandBar * emulatedCommandBar();
     QLineEdit * emulatedCommandBarTextEdit();
 
     // Macros & mappings.
@@ -119,7 +119,7 @@ protected:
     KTextEditor::ViewPrivate *kate_view;
     KateViInputMode *vi_input_mode;
     KateVi::GlobalState *vi_global;
-    KateViInputModeManager *vi_input_mode_manager;
+    KateVi::InputModeManager *vi_input_mode_manager;
 
     bool m_firstBatchOfKeypressesForTest;
 

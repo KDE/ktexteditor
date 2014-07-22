@@ -31,17 +31,16 @@ namespace KTextEditor {
     class MovingCursor;
 }
 
-class KateViInputModeManager;
-
 namespace KateVi
 {
+class InputModeManager;
 
 class Marks : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Marks(KateViInputModeManager *imm);
+    explicit Marks(InputModeManager *imm);
     ~Marks();
 
     /** JBOS == Just a Bunch Of Shortcuts **/
@@ -78,7 +77,7 @@ private Q_SLOTS:
                      KTextEditor::MarkInterface::MarkChangeAction action);
 
 private:
-    KateViInputModeManager *m_inputModeManager;
+    InputModeManager *m_inputModeManager;
     KTextEditor::DocumentPrivate *m_doc;
 
     QMap<QChar, KTextEditor::MovingCursor *> m_marks;

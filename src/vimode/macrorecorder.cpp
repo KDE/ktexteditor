@@ -19,11 +19,11 @@
  */
 
 #include "macrorecorder.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include "completionrecorder.h"
 #include "kateview.h"
 #include "katepartdebug.h"
-#include "katevikeymapper.h"
+#include <vimode/keymapper.h>
 #include "globalstate.h"
 #include "macros.h"
 #include "completionreplayer.h"
@@ -34,7 +34,7 @@ namespace {
 
 using namespace KateVi;
 
-MacroRecorder::MacroRecorder(KateViInputModeManager *viInputModeManager)
+MacroRecorder::MacroRecorder(InputModeManager *viInputModeManager)
     : m_viInputModeManager(viInputModeManager)
     , m_isRecording(false)
     , m_macrosBeingReplayedCount(0)
@@ -61,7 +61,7 @@ void MacroRecorder::stop()
 {
     Q_ASSERT(m_isRecording);
     m_isRecording = false;
-    KateVi::CompletionList completions = m_viInputModeManager->completionRecorder()->stop();
+    CompletionList completions = m_viInputModeManager->completionRecorder()->stop();
     m_viInputModeManager->globalState()->macros()->store(m_register, m_eventsLog, completions);
 }
 
@@ -92,7 +92,7 @@ void MacroRecorder::replay(const QChar &macroRegister)
     const QString macroAsFeedableKeypresses = m_viInputModeManager->globalState()->macros()->get(reg);
     qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
-    QSharedPointer<KateViKeyMapper> mapper(new KateViKeyMapper(m_viInputModeManager, m_viInputModeManager->view()->doc(), m_viInputModeManager->view()));
+    QSharedPointer<KeyMapper> mapper(new KeyMapper(m_viInputModeManager, m_viInputModeManager->view()->doc(), m_viInputModeManager->view()));
     CompletionList completions = m_viInputModeManager->globalState()->macros()->getCompletions(reg);
 
     m_macrosBeingReplayedCount++;

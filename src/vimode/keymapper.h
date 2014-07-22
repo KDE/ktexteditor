@@ -18,30 +18,40 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
-#ifndef KATE_VI_KEYMAPPER_H_INCLUDED
-#define KATE_VI_KEYMAPPER_H_INCLUDED
+
+#ifndef KATEVI_KEY_MAPPER_H
+#define KATEVI_KEY_MAPPER_H
 
 #include <QObject>
 #include <ktexteditor_export.h>
 
-class KateViInputModeManager;
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
-
 class QTimer;
 
-class KTEXTEDITOR_EXPORT KateViKeyMapper : public QObject
+namespace KTextEditor {
+    class DocumentPrivate;
+    class ViewPrivate;
+}
+
+namespace KateVi
+{
+
+class InputModeManager;
+
+class KTEXTEDITOR_EXPORT KeyMapper : public QObject
 {
     Q_OBJECT
+
 public:
-    KateViKeyMapper(KateViInputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
+    KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
     bool handleKeypress(QChar key);
     void setMappingTimeout(int timeoutMS);
     void setDoNotMapNextKeypress();
     bool isExecutingMapping();
     bool isPlayingBackRejectedKeys();
+
 public Q_SLOTS:
     void mappingTimerTimeOut();
+
 private:
     // Will be the mapping used if we decide that no extra mapping characters will be
     // typed, either because we have a mapping that cannot be extended to another
@@ -53,7 +63,7 @@ private:
     QString m_mappingKeys;
     bool m_doNotExpandFurtherMappings;
     QTimer *m_mappingTimer;
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
     KTextEditor::DocumentPrivate *m_doc;
     KTextEditor::ViewPrivate *m_view;
     int m_timeoutlen; // time to wait for the next keypress of a multi-key mapping (default: 1000 ms)
@@ -65,4 +75,6 @@ private:
     void playBackRejectedKeys();
 };
 
-#endif
+}
+
+#endif /* KATEVI_KEY_MAPPER_H */

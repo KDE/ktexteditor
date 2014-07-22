@@ -22,27 +22,27 @@
 
 #include "kateglobal.h"
 #include <vimode/globalstate.h>
-#include <vimode/modes/visualmode.h>
-#include <vimode/katevicommand.h>
-#include <vimode/kateviinputmodemanager.h>
-#include <vimode/katevimotion.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/command.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/motion.h>
 #include <vimode/range.h>
 #include "katedocument.h"
 #include "kateviinputmode.h"
 #include <vimode/marks.h>
 
-#define ADDCMD(STR,FUNC, FLGS) m_commands.push_back( \
-        new KateViCommand( this, QLatin1String(STR), &KateVi::NormalMode::FUNC, FLGS ) );
-
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( new \
-        KateViMotion( this, QLatin1String(STR), &KateVi::NormalMode::FUNC, FLGS ) );
-
 using namespace KateVi;
 
-VisualMode::VisualMode(KateViInputModeManager *viInputModeManager,
+#define ADDCMD(STR,FUNC, FLGS) m_commands.push_back( \
+        new Command( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( new \
+        Motion( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+
+VisualViMode::VisualViMode(InputModeManager *viInputModeManager,
                        KTextEditor::ViewPrivate *view,
                        KateViewInternal *viewInternal)
-    : NormalMode(viInputModeManager, view, viewInternal)
+    : NormalViMode(viInputModeManager, view, viewInternal)
 {
     m_start.setPosition(-1, -1);
 
@@ -52,11 +52,11 @@ VisualMode::VisualMode(KateViInputModeManager *viInputModeManager,
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelection()));
 }
 
-VisualMode::~VisualMode()
+VisualViMode::~VisualViMode()
 {
 }
 
-void VisualMode::SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
+void VisualViMode::SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
 {
     if (c1 >= c2)
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
@@ -66,7 +66,7 @@ void VisualMode::SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
                                    c2.line(), c2.column() + 1));
 }
 
-void VisualMode::SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
+void VisualViMode::SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
 {
     m_view->setBlockSelection(true);
     if (c1.column() >= c2.column())
@@ -77,7 +77,7 @@ void VisualMode::SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Curso
                                    c2.line(), c2.column() + 1));
 }
 
-void VisualMode::SelectLines(KTextEditor::Range range)
+void VisualViMode::SelectLines(KTextEditor::Range range)
 {
     int startline = qMin(range.start().line(), range.end().line());
     int endline   = qMax(range.start().line(), range.end().line());
@@ -85,7 +85,7 @@ void VisualMode::SelectLines(KTextEditor::Range range)
                                KTextEditor::Cursor(endline, m_view->doc()->lineLength(endline) + 1)));
 }
 
-void VisualMode::goToPos(const Range &r)
+void VisualViMode::goToPos(const Range &r)
 {
     KTextEditor::Cursor c = m_view->cursorPosition();
 
@@ -144,7 +144,7 @@ void VisualMode::goToPos(const Range &r)
     SelectInclusive(m_start, c);
 }
 
-void VisualMode::reset()
+void VisualViMode::reset()
 {
     m_mode = ViMode::VisualMode;
 
@@ -189,7 +189,7 @@ void VisualMode::reset()
     m_pendingResetIsDueToExit = false;
 }
 
-void VisualMode::saveRangeMarks()
+void VisualViMode::saveRangeMarks()
 {
     // DO NOT save these marks if the
     // action that exited visual mode deleted the selection
@@ -199,7 +199,7 @@ void VisualMode::saveRangeMarks()
     }
 }
 
-void VisualMode::init()
+void VisualViMode::init()
 {
     // when using "gv" we already have a start position
     if (!m_start.isValid()) {
@@ -215,7 +215,7 @@ void VisualMode::init()
     m_commandRange.startColumn = m_commandRange.endColumn = m_start.column();
 }
 
-void VisualMode::setVisualModeType(ViMode mode)
+void VisualViMode::setVisualModeType(ViMode mode)
 {
     Q_ASSERT(mode == ViMode::VisualMode ||
              mode == ViMode::VisualLineMode ||
@@ -223,7 +223,7 @@ void VisualMode::setVisualModeType(ViMode mode)
     m_mode = mode;
 }
 
-void VisualMode::switchStartEnd()
+void VisualViMode::switchStartEnd()
 {
     KTextEditor::Cursor c = m_start;
     m_start = m_view->cursorPosition();
@@ -233,13 +233,13 @@ void VisualMode::switchStartEnd()
     m_stickyColumn = -1;
 }
 
-void VisualMode::goToPos(const KTextEditor::Cursor &c)
+void VisualViMode::goToPos(const KTextEditor::Cursor &c)
 {
     Range r(c, InclusiveMotion);
     goToPos(r);
 }
 
-void VisualMode::updateSelection()
+void VisualViMode::updateSelection()
 {
     if (!m_viInputModeManager->inputAdapter()->isActive()) {
         return;
@@ -281,13 +281,13 @@ void VisualMode::updateSelection()
     m_commandRange.endColumn = r.end().column() - 1;
 }
 
-void VisualMode::initializeCommands()
+void VisualViMode::initializeCommands()
 {
-    // Remove the commands put in here by KateVi::NormalMode
+    // Remove the commands put in here by NormalMode
     qDeleteAll(m_commands);
     m_commands.clear();
 
-    // Remove the motions put in here by KateVi::NormalMode
+    // Remove the motions put in here by NormalMode
     qDeleteAll(m_motions);
     m_motions.clear();
 

@@ -18,7 +18,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateviemulatedcommandbar.h"
+#include <vimode/emulatedcommandbar.h>
 
 #include "kateconfig.h"
 #include "katedocument.h"
@@ -27,13 +27,13 @@
 #include "commandrangeexpressionparser.h"
 #include "kateview.h"
 #include "globalstate.h"
-#include "katevikeyparser.h"
-#include <vimode/kateviinputmodemanager.h>
-#include <vimode/modes/normalmode.h>
+#include <vimode/keyparser.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/normalvimode.h>
 
-#include "katevicmds.h"
-#include <vimode/modes/visualmode.h>
-#include "kateviappcommands.h"
+#include <vimode/cmds.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/appcommands.h>
 #include "history.h"
 
 #include "katecmds.h"
@@ -297,7 +297,7 @@ QString withSearchConfigRemoved(const QString &originalSearchText, const bool is
 }
 }
 
-KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInputModeManager, QWidget *parent)
+EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWidget *parent)
     : KateViewBarWidget(false, parent)
     , m_viInputModeManager(viInputModeManager)
     , m_isActive(false)
@@ -376,11 +376,10 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInp
     QList<KTextEditor::Command *> cmds;
 
     cmds.push_back(KateCommands::CoreCommands::self());
-    cmds.push_back(KateViCommands::ViCommands::self());
-    cmds.push_back(KateViCommands::AppCommands::self());
-    cmds.push_back(KateViCommands::SedReplace::self());
-    cmds.push_back(KateViAppCommands::self());
-    cmds.push_back(KateViBufferCommands::self());
+    cmds.push_back(Commands::self());
+    cmds.push_back(AppCommands::self());
+    cmds.push_back(SedReplace::self());
+    cmds.push_back(BufferCommands::self());
 
     Q_FOREACH (KTextEditor::Command *cmd, KateScriptManager::self()->commandLineScripts()) {
         cmds.push_back(cmd);
@@ -397,12 +396,12 @@ KateViEmulatedCommandBar::KateViEmulatedCommandBar(KateViInputModeManager *viInp
     }
 }
 
-KateViEmulatedCommandBar::~KateViEmulatedCommandBar()
+EmulatedCommandBar::~EmulatedCommandBar()
 {
     delete m_highlightedMatch;
 }
 
-void KateViEmulatedCommandBar::init(KateViEmulatedCommandBar::Mode mode, const QString &initialText)
+void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &initialText)
 {
     m_currentCompletionType = None;
     m_mode = mode;
@@ -434,17 +433,17 @@ void KateViEmulatedCommandBar::init(KateViEmulatedCommandBar::Mode mode, const Q
     }
 }
 
-bool KateViEmulatedCommandBar::isActive()
+bool EmulatedCommandBar::isActive()
 {
     return m_isActive;
 }
 
-void KateViEmulatedCommandBar::setCommandResponseMessageTimeout(long int commandResponseMessageTimeOutMS)
+void EmulatedCommandBar::setCommandResponseMessageTimeout(long int commandResponseMessageTimeOutMS)
 {
     m_commandResponseMessageTimeOutMS = commandResponseMessageTimeOutMS;
 }
 
-void KateViEmulatedCommandBar::closed()
+void EmulatedCommandBar::closed()
 {
     // Close can be called multiple times between init()'s, so only reset the cursor once!
     if (m_startingCursorPos.isValid()) {
@@ -478,7 +477,7 @@ void KateViEmulatedCommandBar::closed()
     }
 }
 
-void KateViEmulatedCommandBar::updateMatchHighlightAttrib()
+void EmulatedCommandBar::updateMatchHighlightAttrib()
 {
     const QColor &matchColour = m_view->renderer()->config()->searchHighlightColor();
     if (!m_highlightMatchAttribute) {
@@ -490,14 +489,14 @@ void KateViEmulatedCommandBar::updateMatchHighlightAttrib()
     m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
 }
 
-void KateViEmulatedCommandBar::updateMatchHighlight(const KTextEditor::Range &matchRange)
+void EmulatedCommandBar::updateMatchHighlight(const KTextEditor::Range &matchRange)
 {
     // Note that if matchRange is invalid, the highlight will not be shown, so we
     // don't need to check for that explicitly.
     m_highlightedMatch->setRange(matchRange);
 }
 
-void KateViEmulatedCommandBar::setBarBackground(KateViEmulatedCommandBar::BarBackgroundStatus status)
+void EmulatedCommandBar::setBarBackground(EmulatedCommandBar::BarBackgroundStatus status)
 {
     QPalette barBackground(m_edit->palette());
     switch (status) {
@@ -517,7 +516,7 @@ void KateViEmulatedCommandBar::setBarBackground(KateViEmulatedCommandBar::BarBac
     m_edit->setPalette(barBackground);
 }
 
-bool KateViEmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
+bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
 {
     Q_ASSERT(object == m_edit || object == m_completer->popup());
     if (m_suspendEditEventFiltering) {
@@ -532,14 +531,14 @@ bool KateViEmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
     return false;
 }
 
-void KateViEmulatedCommandBar::deleteSpacesToLeftOfCursor()
+void EmulatedCommandBar::deleteSpacesToLeftOfCursor()
 {
     while (m_edit->cursorPosition() != 0 && m_edit->text()[m_edit->cursorPosition() - 1] == QLatin1Char(' ')) {
         m_edit->backspace();
     }
 }
 
-void KateViEmulatedCommandBar::deleteWordCharsToLeftOfCursor()
+void EmulatedCommandBar::deleteWordCharsToLeftOfCursor()
 {
     while (m_edit->cursorPosition() != 0) {
         const QChar charToTheLeftOfCursor = m_edit->text()[m_edit->cursorPosition() - 1];
@@ -551,7 +550,7 @@ void KateViEmulatedCommandBar::deleteWordCharsToLeftOfCursor()
     }
 }
 
-bool KateViEmulatedCommandBar::deleteNonWordCharsToLeftOfCursor()
+bool EmulatedCommandBar::deleteNonWordCharsToLeftOfCursor()
 {
     bool deletionsMade = false;
     while (m_edit->cursorPosition() != 0) {
@@ -566,7 +565,7 @@ bool KateViEmulatedCommandBar::deleteNonWordCharsToLeftOfCursor()
     return deletionsMade;
 }
 
-QString KateViEmulatedCommandBar::wordBeforeCursor()
+QString EmulatedCommandBar::wordBeforeCursor()
 {
     int wordBeforeCursorBegin = m_edit->cursorPosition() - 1;
     while (wordBeforeCursorBegin >= 0 && (m_edit->text()[wordBeforeCursorBegin].isLetterOrNumber() || m_edit->text()[wordBeforeCursorBegin] == QLatin1Char('_'))) {
@@ -576,7 +575,7 @@ QString KateViEmulatedCommandBar::wordBeforeCursor()
     return m_edit->text().mid(wordBeforeCursorBegin, m_edit->cursorPosition() - wordBeforeCursorBegin);
 }
 
-QString KateViEmulatedCommandBar::commandBeforeCursor()
+QString EmulatedCommandBar::commandBeforeCursor()
 {
     const QString textWithoutRangeExpression = withoutRangeExpression();
     const int cursorPositionWithoutRangeExpression = m_edit->cursorPosition() - rangeExpression().length();
@@ -589,7 +588,7 @@ QString KateViEmulatedCommandBar::commandBeforeCursor()
 
 }
 
-void KateViEmulatedCommandBar::replaceWordBeforeCursorWith(const QString &newWord)
+void EmulatedCommandBar::replaceWordBeforeCursorWith(const QString &newWord)
 {
     const int wordBeforeCursorStart = m_edit->cursorPosition() - wordBeforeCursor().length();
     const QString newText = m_edit->text().left(m_edit->cursorPosition() - wordBeforeCursor().length()) +
@@ -599,7 +598,7 @@ void KateViEmulatedCommandBar::replaceWordBeforeCursorWith(const QString &newWor
     m_edit->setCursorPosition(wordBeforeCursorStart + newWord.length());
 }
 
-void KateViEmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &newCommand)
+void EmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &newCommand)
 {
     const QString newText = m_edit->text().left(m_edit->cursorPosition() - commandBeforeCursor().length()) +
                             newCommand +
@@ -607,7 +606,7 @@ void KateViEmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &new
     m_edit->setText(newText);
 }
 
-void KateViEmulatedCommandBar::activateSearchHistoryCompletion()
+void EmulatedCommandBar::activateSearchHistoryCompletion()
 {
     m_currentCompletionType = SearchHistory;
     m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->searchHistory()->items()));
@@ -615,7 +614,7 @@ void KateViEmulatedCommandBar::activateSearchHistoryCompletion()
     m_completer->complete();
 }
 
-void KateViEmulatedCommandBar::activateWordFromDocumentCompletion()
+void EmulatedCommandBar::activateWordFromDocumentCompletion()
 {
     m_currentCompletionType = WordFromDocument;
     QRegExp wordRegEx(QLatin1String("\\w{1,}"));
@@ -639,13 +638,13 @@ void KateViEmulatedCommandBar::activateWordFromDocumentCompletion()
     m_completer->complete();
 }
 
-void KateViEmulatedCommandBar::activateCommandCompletion()
+void EmulatedCommandBar::activateCommandCompletion()
 {
     m_completionModel->setStringList(m_cmdCompletion.items());
     m_currentCompletionType = Commands;
 }
 
-void KateViEmulatedCommandBar::activateCommandHistoryCompletion()
+void EmulatedCommandBar::activateCommandHistoryCompletion()
 {
     m_currentCompletionType = CommandHistory;
     m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->commandHistory()->items()));
@@ -653,7 +652,7 @@ void KateViEmulatedCommandBar::activateCommandHistoryCompletion()
     m_completer->complete();
 }
 
-void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
+void EmulatedCommandBar::activateSedFindHistoryCompletion()
 {
     if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
         m_currentCompletionType = SedFindHistory;
@@ -663,7 +662,7 @@ void KateViEmulatedCommandBar::activateSedFindHistoryCompletion()
     }
 }
 
-void KateViEmulatedCommandBar::activateSedReplaceHistoryCompletion()
+void EmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
     if (!m_viInputModeManager->globalState()->replaceHistory()->isEmpty()) {
         m_currentCompletionType = SedReplaceHistory;
@@ -673,14 +672,14 @@ void KateViEmulatedCommandBar::activateSedReplaceHistoryCompletion()
     }
 }
 
-void KateViEmulatedCommandBar::deactivateCompletion()
+void EmulatedCommandBar::deactivateCompletion()
 {
     qCDebug(LOG_PART) << "Manually dismissing completions";
     m_completer->popup()->hide();
     m_currentCompletionType = None;
 }
 
-void KateViEmulatedCommandBar::abortCompletionAndResetToPreCompletion()
+void EmulatedCommandBar::abortCompletionAndResetToPreCompletion()
 {
     deactivateCompletion();
     m_isNextTextChangeDueToCompletionChange = true;
@@ -689,7 +688,7 @@ void KateViEmulatedCommandBar::abortCompletionAndResetToPreCompletion()
     m_isNextTextChangeDueToCompletionChange = false;
 }
 
-void KateViEmulatedCommandBar::updateCompletionPrefix()
+void EmulatedCommandBar::updateCompletionPrefix()
 {
     // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
     if (m_currentCompletionType == WordFromDocument) {
@@ -707,7 +706,7 @@ void KateViEmulatedCommandBar::updateCompletionPrefix()
     m_completer->complete();
 }
 
-void KateViEmulatedCommandBar::currentCompletionChanged()
+void EmulatedCommandBar::currentCompletionChanged()
 {
     // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
     const QString newCompletion = m_completer->currentCompletion();
@@ -739,7 +738,7 @@ void KateViEmulatedCommandBar::currentCompletionChanged()
     m_isNextTextChangeDueToCompletionChange = false;
 }
 
-void KateViEmulatedCommandBar::setCompletionIndex(int index)
+void EmulatedCommandBar::setCompletionIndex(int index)
 {
     const QModelIndex modelIndex = m_completer->popup()->model()->index(index, 0);
     // Need to set both of these, for some reason.
@@ -751,12 +750,12 @@ void KateViEmulatedCommandBar::setCompletionIndex(int index)
     currentCompletionChanged();
 }
 
-KateViEmulatedCommandBar::ParsedSedExpression KateViEmulatedCommandBar::parseAsSedExpression()
+EmulatedCommandBar::ParsedSedExpression EmulatedCommandBar::parseAsSedExpression()
 {
     const QString commandWithoutRangeExpression = withoutRangeExpression();
     ParsedSedExpression parsedSedExpression;
     QString delimiter;
-    parsedSedExpression.parsedSuccessfully = KateViCommands::SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
+    parsedSedExpression.parsedSuccessfully = SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
     if (parsedSedExpression.parsedSuccessfully) {
         parsedSedExpression.delimiter = delimiter.at(0);
         if (parsedSedExpression.replaceBeginPos == -1) {
@@ -792,7 +791,7 @@ KateViEmulatedCommandBar::ParsedSedExpression KateViEmulatedCommandBar::parseAsS
     return parsedSedExpression;
 }
 
-QString KateViEmulatedCommandBar::withSedFindTermReplacedWith(const QString &newFindTerm)
+QString EmulatedCommandBar::withSedFindTermReplacedWith(const QString &newFindTerm)
 {
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
@@ -803,7 +802,7 @@ QString KateViEmulatedCommandBar::withSedFindTermReplacedWith(const QString &new
 
 }
 
-QString KateViEmulatedCommandBar::withSedReplaceTermReplacedWith(const QString &newReplaceTerm)
+QString EmulatedCommandBar::withSedReplaceTermReplacedWith(const QString &newReplaceTerm)
 {
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
@@ -813,7 +812,7 @@ QString KateViEmulatedCommandBar::withSedReplaceTermReplacedWith(const QString &
            command.mid(parsedSedExpression.replaceEndPos + 1);
 }
 
-QString KateViEmulatedCommandBar::sedFindTerm()
+QString EmulatedCommandBar::sedFindTerm()
 {
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
@@ -821,7 +820,7 @@ QString KateViEmulatedCommandBar::sedFindTerm()
     return command.mid(parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos - parsedSedExpression.findBeginPos + 1);
 }
 
-QString KateViEmulatedCommandBar::sedReplaceTerm()
+QString EmulatedCommandBar::sedReplaceTerm()
 {
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
@@ -829,38 +828,38 @@ QString KateViEmulatedCommandBar::sedReplaceTerm()
     return command.mid(parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos - parsedSedExpression.replaceBeginPos + 1);
 }
 
-QString KateViEmulatedCommandBar::withSedDelimiterEscaped(const QString &text)
+QString EmulatedCommandBar::withSedDelimiterEscaped(const QString &text)
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     QString delimiterEscaped = ensuredCharEscaped(text, parsedSedExpression.delimiter);
     return delimiterEscaped;
 }
 
-bool KateViEmulatedCommandBar::isCursorInFindTermOfSed()
+bool EmulatedCommandBar::isCursorInFindTermOfSed()
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     return parsedSedExpression.parsedSuccessfully && (m_edit->cursorPosition() >= parsedSedExpression.findBeginPos && m_edit->cursorPosition() <= parsedSedExpression.findEndPos + 1);
 }
 
-bool KateViEmulatedCommandBar::isCursorInReplaceTermOfSed()
+bool EmulatedCommandBar::isCursorInReplaceTermOfSed()
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     return parsedSedExpression.parsedSuccessfully && m_edit->cursorPosition() >= parsedSedExpression.replaceBeginPos && m_edit->cursorPosition() <= parsedSedExpression.replaceEndPos + 1;
 }
 
-QString KateViEmulatedCommandBar::withoutRangeExpression()
+QString EmulatedCommandBar::withoutRangeExpression()
 {
     const QString originalCommand = m_edit->text();
     return originalCommand.mid(rangeExpression().length());
 }
 
-QString KateViEmulatedCommandBar::rangeExpression()
+QString EmulatedCommandBar::rangeExpression()
 {
     const QString command = m_edit->text();
     return CommandRangeExpressionParser(m_viInputModeManager).parseRangeString(command);
 }
 
-bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
+bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
 {
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft) && !m_waitingForRegister) {
         if (m_currentCompletionType == None || !m_completer->popup()->isVisible()) {
@@ -954,7 +953,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     }
     if (m_waitingForRegister) {
         if (keyEvent->key() != Qt::Key_Shift && keyEvent->key() != Qt::Key_Control) {
-            const QChar key = KateViKeyParser::self()->KeyEventToQChar(*keyEvent).toLower();
+            const QChar key = KeyParser::self()->KeyEventToQChar(*keyEvent).toLower();
 
             const int oldCursorPosition = m_edit->cursorPosition();
             QString textToInsert;
@@ -1017,7 +1016,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         }
         return false;
     } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
-        if (m_completer->popup()->isVisible() && m_currentCompletionType == KateViEmulatedCommandBar::WordFromDocument) {
+        if (m_completer->popup()->isVisible() && m_currentCompletionType == EmulatedCommandBar::WordFromDocument) {
             deactivateCompletion();
         } else {
             m_wasAborted = false;
@@ -1059,7 +1058,7 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         // changes (as a result of e.g. incremental searches during Visual Mode), and the keypress that causes it
         // is not dispatched from within KateViInputModeHandler::handleKeypress(...)
         // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
-        // in Visual Mode, Visual Line Mode, etc.  See KateViVisualMode::updateSelection( ).
+        // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
         QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
         if (!m_interactiveSedReplaceActive) {
             qApp->notify(m_edit, &keyEventCopy);
@@ -1069,12 +1068,12 @@ bool KateViEmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     return true;
 }
 
-bool KateViEmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
+bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 {
     return m_isSendingSyntheticSearchCompletedKeypress;
 }
 
-void KateViEmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer< KateViCommands::SedReplace::InteractiveSedReplacer > interactiveSedReplace)
+void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     m_interactiveSedReplaceActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
@@ -1094,7 +1093,7 @@ void KateViEmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer< 
     moveCursorTo(interactiveSedReplace->currentMatch().start());
 }
 
-void KateViEmulatedCommandBar::showBarTypeIndicator(KateViEmulatedCommandBar::Mode mode)
+void EmulatedCommandBar::showBarTypeIndicator(EmulatedCommandBar::Mode mode)
 {
     QChar barTypeIndicator = QChar::Null;
     switch (mode) {
@@ -1114,7 +1113,7 @@ void KateViEmulatedCommandBar::showBarTypeIndicator(KateViEmulatedCommandBar::Mo
     m_barTypeIndicator->show();
 }
 
-QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute)
+QString EmulatedCommandBar::executeCommand(const QString &commandToExecute)
 {
     // silently ignore leading space characters and colon characters (for vi-heads)
     uint n = 0;
@@ -1180,7 +1179,7 @@ QString KateViEmulatedCommandBar::executeCommand(const QString &commandToExecute
     return commandResponseMessage;
 }
 
-void KateViEmulatedCommandBar::switchToCommandResponseDisplay(const QString &commandResponseMessage)
+void EmulatedCommandBar::switchToCommandResponseDisplay(const QString &commandResponseMessage)
 {
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
@@ -1192,18 +1191,18 @@ void KateViEmulatedCommandBar::switchToCommandResponseDisplay(const QString &com
     m_commandResponseMessageDisplayHide->start(m_commandResponseMessageTimeOutMS);
 }
 
-void KateViEmulatedCommandBar::updateInteractiveSedReplaceLabelText()
+void EmulatedCommandBar::updateInteractiveSedReplaceLabelText()
 {
     m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
 }
 
-void KateViEmulatedCommandBar::finishInteractiveSedReplace()
+void EmulatedCommandBar::finishInteractiveSedReplace()
 {
     switchToCommandResponseDisplay(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
 
-void KateViEmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
+void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 {
     m_view->setCursorPosition(cursorPos);
     if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode ||
@@ -1213,7 +1212,7 @@ void KateViEmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos
     }
 }
 
-void KateViEmulatedCommandBar::editTextChanged(const QString &newText)
+void EmulatedCommandBar::editTextChanged(const QString &newText)
 {
     Q_ASSERT(!m_interactiveSedReplaceActive);
     qDebug() << "New text: " << newText;
@@ -1292,14 +1291,14 @@ void KateViEmulatedCommandBar::editTextChanged(const QString &newText)
     }
 }
 
-void KateViEmulatedCommandBar::startHideCommandResponseTimer()
+void EmulatedCommandBar::startHideCommandResponseTimer()
 {
     if (m_commandResponseMessageDisplay->isVisible() && !m_commandResponseMessageDisplayHide->isActive()) {
         m_commandResponseMessageDisplayHide->start(m_commandResponseMessageTimeOutMS);
     }
 }
 
-KTextEditor::Command *KateViEmulatedCommandBar::queryCommand(const QString &cmd) const
+KTextEditor::Command *EmulatedCommandBar::queryCommand(const QString &cmd) const
 {
     // a command can be named ".*[\w\-]+" with the constrain that it must
     // contain at least one letter.
@@ -1324,7 +1323,7 @@ KTextEditor::Command *KateViEmulatedCommandBar::queryCommand(const QString &cmd)
     return m_cmdDict.value(cmd.left(f));
 }
 
-void KateViEmulatedCommandBar::setViInputModeManager(KateViInputModeManager *viInputModeManager)
+void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeManager)
 {
     m_viInputModeManager = viInputModeManager;
 }

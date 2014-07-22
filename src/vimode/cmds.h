@@ -20,13 +20,13 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_VI_CMDS_H__
-#define __KATE_VI_CMDS_H__
+#ifndef KATEVI_COMMANDS_H
+#define KATEVI_COMMANDS_H
 
 #include <KTextEditor/Command>
 #include "kateregexpsearch.h"
 #include <katesedcmd.h>
-#include "katevicommandinterface.h"
+#include <vimode/commandinterface.h>
 #include "mappings.h"
 
 #include <QStringList>
@@ -34,30 +34,24 @@
 namespace KTextEditor { class DocumentPrivate; }
 class KCompletion;
 
-/**
- * The KateCommands namespace collects subclasses of KTextEditor::Command
- * for specific use in kate.
- */
-namespace KateViCommands
+namespace KateVi
 {
 
 /**
  * This KTextEditor::Command provides vi 'ex' commands
  */
-class ViCommands
-    : public KTextEditor::Command
-    , public KateViCommandInterface
+class Commands : public KTextEditor::Command, public KateViCommandInterface
 {
-    ViCommands()
+    Commands()
         : KTextEditor::Command (QStringList() << mappingCommands() << QLatin1String("d") << QLatin1String("delete") << QLatin1String("j") << QLatin1String("c") << QLatin1String("change") << QLatin1String("<") << QLatin1String(">") << QLatin1String("y") << QLatin1String("yank") <<
           QLatin1String("ma") << QLatin1String("mark") << QLatin1String("k"))
     {
         
     }
-    static ViCommands *m_instance;
+    static Commands *m_instance;
 
 public:
-    ~ViCommands()
+    ~Commands()
     {
         m_instance = 0;
     }
@@ -87,62 +81,19 @@ public:
      */
     KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
 
-    static ViCommands *self()
+    static Commands *self()
     {
         if (m_instance == 0) {
-            m_instance = new ViCommands();
+            m_instance = new Commands();
         }
         return m_instance;
     }
 private:
     const QStringList &mappingCommands();
-    KateVi::Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
+    Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
     bool isMapCommandRecursive(const QString &mapCommand);
 };
 
-/**
- * This KTextEditor::Command provides vi commands for the application
- */
-class AppCommands : public KTextEditor::Command, public KateViCommandInterface
-{
-    AppCommands();
-    static AppCommands *m_instance;
-
-public:
-    ~AppCommands()
-    {
-        m_instance = 0;
-    }
-
-    /**
-     * execute command
-     * @param view view to use for execution
-     * @param cmd cmd string
-     * @param msg message returned from running the command
-     * @return success
-     */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
-
-    /** Help for AppCommands */
-    bool help(class KTextEditor::View *, const QString &, QString &);
-
-    static AppCommands *self()
-    {
-        if (m_instance == 0) {
-            m_instance = new AppCommands();
-        }
-        return m_instance;
-    }
-
-private:
-    QRegExp re_write;
-    /*QRegExp re_quit;
-    QRegExp re_exit;
-    QRegExp re_changeBuffer;
-    QRegExp re_edit;
-    QRegExp re_new;*/
-};
 /**
  * Support vim/sed style search and replace
  * @author Charles Samuels <charles@kde.org>
@@ -170,6 +121,6 @@ protected:
     virtual bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace);
 };
 
-} // namespace KateViCommands
-#endif
+}
 
+#endif /* KATEVI_COMMANDS_H */

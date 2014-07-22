@@ -22,7 +22,7 @@
 #include <kateconfig.h>
 #include <kateglobal.h>
 #include <kateundomanager.h>
-#include <kateviemulatedcommandbar.h>
+#include <emulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "base.h"
 #include "vimode/macros.h"
@@ -277,9 +277,9 @@ Qt::Key BaseTest::parseCodedSpecialKey(const QString &string, int startPos, int 
     return Qt::Key_unknown;
 }
 
-KateViEmulatedCommandBar * BaseTest::emulatedCommandBar()
+KateVi::EmulatedCommandBar * BaseTest::emulatedCommandBar()
 {
-    KateViEmulatedCommandBar *emulatedCommandBar = vi_input_mode->viModeEmulatedCommandBar();
+    KateVi::EmulatedCommandBar *emulatedCommandBar = vi_input_mode->viModeEmulatedCommandBar();
     Q_ASSERT(emulatedCommandBar);
     return emulatedCommandBar;
 }

@@ -21,9 +21,9 @@
 
 #include <KLocalizedString>
 #include <kateconfig.h>
-#include <katevikeymapper.h>
-#include <katevikeyparser.h>
-#include <kateviemulatedcommandbar.h>
+#include <vimode/keymapper.h>
+#include <vimode/keyparser.h>
+#include <vimode/emulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "keys.h"
 #include "fakecodecompletiontestmodel.h"
@@ -630,7 +630,7 @@ void KeysTest::ParsingTests()
 
     // Test that we can correctly translate finnish key ö
     QKeyEvent *k = new QKeyEvent(QEvent::KeyPress, 214, Qt::NoModifier, 47, 246, 16400, char_o_diaeresis);
-    QCOMPARE(KateViKeyParser::self()->KeyEventToQChar(*k), QChar(246));
+    QCOMPARE(KeyParser::self()->KeyEventToQChar(*k), QChar(246));
 
     // Test that it can be used in mappings
     clearAllMappings();
@@ -638,9 +638,9 @@ void KeysTest::ParsingTests()
     DoTest("hello", QString("ll%1bar").arg(char_o_diaeresis), "hefoobarllo");
 
     // Test that <cr> is parsed like <enter>
-    QCOMPARE(KateViKeyParser::self()->vi2qt("cr"), int(Qt::Key_Enter));
-    const QString &enter = KateViKeyParser::self()->encodeKeySequence(QLatin1String("<cr>"));
-    QCOMPARE(KateViKeyParser::self()->decodeKeySequence(enter), QLatin1String("<cr>"));
+    QCOMPARE(KeyParser::self()->vi2qt("cr"), int(Qt::Key_Enter));
+    const QString &enter = KeyParser::self()->encodeKeySequence(QLatin1String("<cr>"));
+    QCOMPARE(KeyParser::self()->decodeKeySequence(enter), QLatin1String("<cr>"));
 }
 
 void KeysTest::AltGr()

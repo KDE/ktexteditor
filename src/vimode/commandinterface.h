@@ -18,23 +18,25 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef _KATE_VI_COMMAND_INTERFACE_
-#define _KATE_VI_COMMAND_INTERFACE_
+#ifndef KATEVI_COMMAND_INTERFACE_H
+#define KATEVI_COMMAND_INTERFACE_H
 
-namespace KateVi {
+namespace KateVi
+{
 class GlobalState;
-}
+class InputModeManager;
 
-class KateViInputModeManager;
-
-class KateViCommandInterface {
+class KateViCommandInterface
+{
 public:
-    void setViGlobal(KateVi::GlobalState *g)  { m_viGlobal = g; }
-    void setViInputModeManager(KateViInputModeManager *m)  { m_viInputModeManager = m; }
+    void setViGlobal(GlobalState *g)  { m_viGlobal = g; }
+    void setViInputModeManager(InputModeManager *m)  { m_viInputModeManager = m; }
 
 protected:
-    KateVi::GlobalState *m_viGlobal;
-    KateViInputModeManager *m_viInputModeManager;
+    GlobalState *m_viGlobal;
+    InputModeManager *m_viInputModeManager;
 };
 
-#endif
+}
+
+#endif /* KATEVI_COMMAND_INTERFACE_H */

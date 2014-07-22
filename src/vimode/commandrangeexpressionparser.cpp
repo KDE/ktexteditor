@@ -24,7 +24,7 @@
 
 #include "kateview.h"
 #include "katedocument.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include "marks.h"
 
 #include <QStringList>
@@ -65,7 +65,7 @@ namespace
     const QRegularExpression RE_CmdRange = QRegularExpression(QLatin1String("^(") + RE_Position.pattern() + QLatin1String(")((?:,(") + RE_Position.pattern() + QLatin1String("))?)"));
 }
 
-CommandRangeExpressionParser::CommandRangeExpressionParser(KateViInputModeManager *vimanager)
+CommandRangeExpressionParser::CommandRangeExpressionParser(InputModeManager *vimanager)
     : m_viInputModeManager(vimanager)
 {
 }

@@ -19,7 +19,7 @@
  */
 
 #include "searcher.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include <vimode/modes/modebase.h>
 #include "katepartdebug.h"
 #include "kateview.h"
@@ -31,7 +31,7 @@
 
 using namespace KateVi;
 
-Searcher::Searcher(KateViInputModeManager *manager)
+Searcher::Searcher(InputModeManager *manager)
     : m_viInputModeManager(manager)
     , m_view(manager->view())
     , m_lastSearchBackwards(false)

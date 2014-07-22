@@ -17,11 +17,12 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
-#ifndef KATEVIEMULATEDCOMMANDBAR_H
-#define KATEVIEMULATEDCOMMANDBAR_H
+
+#ifndef KATEVI_EMULATED_COMMAND_BAR_H
+#define KATEVI_EMULATED_COMMAND_BAR_H
 
 #include "kateviewhelpers.h"
-#include "katevicmds.h"
+#include <vimode/cmds.h>
 
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
@@ -31,9 +32,13 @@ namespace KTextEditor {
     class ViewPrivate;
     class Command;
 }
+
 class QLabel;
 class QCompleter;
 class QStringListModel;
+
+namespace KateVi
+{
 
 /**
  * A KateViewBarWidget that attempts to emulate some of the features of Vim's own command bar,
@@ -41,13 +46,14 @@ class QStringListModel;
  * ctrl-c and ctrl-[; bi-directional incremental searching, with SmartCase; interactive sed-replace;
  * plus a few extensions such as completion from document and navigable sed search and sed replace history.
  */
-class KTEXTEDITOR_EXPORT KateViEmulatedCommandBar : public KateViewBarWidget
+class KTEXTEDITOR_EXPORT EmulatedCommandBar : public KateViewBarWidget
 {
     Q_OBJECT
+
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
-    explicit KateViEmulatedCommandBar(KateViInputModeManager *viInputModeManager, QWidget *parent = 0);
-    virtual ~KateViEmulatedCommandBar();
+    explicit EmulatedCommandBar(InputModeManager *viInputModeManager, QWidget *parent = 0);
+    virtual ~EmulatedCommandBar();
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
@@ -55,13 +61,13 @@ public:
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();
 
-    void startInteractiveSearchAndReplace(QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+    void startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
     QString executeCommand(const QString &commandToExecute);
 
-    void setViInputModeManager(KateViInputModeManager *viInputModeManager);
+    void setViInputModeManager(InputModeManager *viInputModeManager);
 
 private:
-    KateViInputModeManager *m_viInputModeManager;
+    InputModeManager *m_viInputModeManager;
     bool m_isActive;
     Mode m_mode;
     KTextEditor::ViewPrivate *m_view;
@@ -83,7 +89,7 @@ private:
     QLabel *m_interactiveSedReplaceLabel;
     bool m_interactiveSedReplaceActive;
     void updateInteractiveSedReplaceLabelText();
-    QSharedPointer<KateViCommands::SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+    QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
     void finishInteractiveSedReplace();
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
@@ -167,5 +173,6 @@ private Q_SLOTS:
     void startHideCommandResponseTimer();
 };
 
-#endif
+}
 
+#endif /* KATEVI_EMULATED_COMMAND_BAR_H */

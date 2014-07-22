@@ -19,13 +19,15 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevikeyparser.h"
 #include <QStringList>
 #include <QKeyEvent>
+#include <vimode/keyparser.h>
 
-KateViKeyParser *KateViKeyParser::m_instance = NULL;
+using namespace KateVi;
 
-KateViKeyParser::KateViKeyParser()
+KeyParser *KeyParser::m_instance = NULL;
+
+KeyParser::KeyParser()
 {
     m_qt2katevi = new QHash<int, QString>;
     m_katevi2qt = new QHash<QString, int>;
@@ -35,16 +37,16 @@ KateViKeyParser::KateViKeyParser()
     initKeyTables();
 }
 
-KateViKeyParser *KateViKeyParser::self()
+KeyParser *KeyParser::self()
 {
     if (m_instance == NULL) {
-        m_instance = new KateViKeyParser();
+        m_instance = new KeyParser();
     }
 
     return m_instance;
 }
 
-void KateViKeyParser::initKeyTables()
+void KeyParser::initKeyTables()
 {
     m_qt2katevi->insert(Qt::Key_Escape, QLatin1String("esc"));
     m_qt2katevi->insert(Qt::Key_Tab, QLatin1String("tab"));
@@ -494,19 +496,19 @@ void KateViKeyParser::initKeyTables()
     }
 }
 
-QString KateViKeyParser::qt2vi(int key) const
+QString KeyParser::qt2vi(int key) const
 {
     return (m_qt2katevi->contains(key) ? m_qt2katevi->value(key) : QLatin1String("invalid"));
 }
 
-int KateViKeyParser::vi2qt(const QString &keypress) const
+int KeyParser::vi2qt(const QString &keypress) const
 {
     return (m_katevi2qt->contains(keypress) ? m_katevi2qt->value(keypress) : -1);
 }
 
-int KateViKeyParser::encoded2qt(const QString &keypress) const
+int KeyParser::encoded2qt(const QString &keypress) const
 {
-    QString key = KateViKeyParser::self()->decodeKeySequence(keypress);
+    QString key = KeyParser::self()->decodeKeySequence(keypress);
 
     if (key.length() > 2 && key[0] == QLatin1Char('<') &&
             key[key.length() - 1] == QLatin1Char('>')) {
@@ -516,7 +518,7 @@ int KateViKeyParser::encoded2qt(const QString &keypress) const
     return (m_katevi2qt->contains(key) ? m_katevi2qt->value(key) : -1);
 }
 
-const QString KateViKeyParser::encodeKeySequence(const QString &keys) const
+const QString KeyParser::encodeKeySequence(const QString &keys) const
 {
     QString encodedSequence;
     unsigned int keyCodeTemp = 0;
@@ -622,7 +624,7 @@ const QString KateViKeyParser::encodeKeySequence(const QString &keys) const
     return encodedSequence;
 }
 
-const QString KateViKeyParser::decodeKeySequence(const QString &keys) const
+const QString KeyParser::decodeKeySequence(const QString &keys) const
 {
     QString ret;
 
@@ -664,7 +666,7 @@ const QString KateViKeyParser::decodeKeySequence(const QString &keys) const
     return ret;
 }
 
-const QChar KateViKeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
+const QChar KeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
 {
     const int keyCode = keyEvent.key();
     const QString &text = keyEvent.text();

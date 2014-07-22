@@ -19,10 +19,10 @@
 #include "mappings.h"
 
 #include "katepartdebug.h"
-#include "katevikeyparser.h"
+#include <vimode/keyparser.h>
 #include "kateviinputmode.h"
-#include "kateviinputmodemanager.h"
-#include "kateviemulatedcommandbar.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/emulatedcommandbar.h>
 
 #include <KConfigGroup>
 
@@ -58,7 +58,7 @@ void Mappings::writeMappings(KConfigGroup &config, const QString &mappingModeNam
     QStringList l;
     QList<bool> recursives;
     foreach (const QString &s, getAll(mappingMode)) {
-        l << KateViKeyParser::self()->decodeKeySequence(get(mappingMode, s));
+        l << KeyParser::self()->decodeKeySequence(get(mappingMode, s));
         recursives << isRecursive(mappingMode, s);
     }
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings"), l);
@@ -91,8 +91,8 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
 
 void Mappings::add(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion)
 {
-    const QString encodedMapping = KateViKeyParser::self()->encodeKeySequence(from);
-    const QString encodedTo = KateViKeyParser::self()->encodeKeySequence(to);
+    const QString encodedMapping = KeyParser::self()->encodeKeySequence(from);
+    const QString encodedTo = KeyParser::self()->encodeKeySequence(to);
     const Mapping mapping(encodedTo, recursion == Recursive);
     if (!from.isEmpty()) {
         m_mappings[mode][encodedMapping] = mapping;
@@ -118,7 +118,7 @@ QString Mappings::get(MappingMode mode, const QString &from, bool decode) const
     QString ret = m_mappings[mode][from].first;
 
     if (decode) {
-        return KateViKeyParser::self()->decodeKeySequence(ret);
+        return KeyParser::self()->decodeKeySequence(ret);
     }
 
     return ret;
@@ -131,7 +131,7 @@ QStringList Mappings::getAll(MappingMode mode, bool decode) const
     QStringList mappings;
     foreach (const QString &mapping, mappingsForMode.keys()) {
         if (decode) {
-            mappings << KateViKeyParser::self()->decodeKeySequence(mapping);
+            mappings << KeyParser::self()->decodeKeySequence(mapping);
         } else {
             mappings << mapping;
         }

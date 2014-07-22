@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_VI_KEYPARSER_H_INCLUDED
-#define KATE_VI_KEYPARSER_H_INCLUDED
+#ifndef KATEVI_KEY_PARSER_H
+#define KATEVI_KEY_PARSER_H
 
 #include <QChar>
 #include <QString>
@@ -29,19 +29,21 @@
 
 class QKeyEvent;
 
+namespace KateVi
+{
+
 /**
  * for encoding keypresses w/ modifiers into an internal QChar representation and back again to a
  * descriptive text string
  */
-
-class KTEXTEDITOR_EXPORT KateViKeyParser
+class KTEXTEDITOR_EXPORT KeyParser
 {
 private:
-    KateViKeyParser();
+    KeyParser();
 
 public:
-    static KateViKeyParser *self();
-    ~KateViKeyParser()
+    static KeyParser *self();
+    ~KeyParser()
     {
         m_instance = NULL;
     }
@@ -61,7 +63,9 @@ private:
     QHash<QString, int> *m_nameToKeyCode;
     QHash<int, QString> *m_keyCodeToName;
 
-    static KateViKeyParser *m_instance;
+    static KeyParser *m_instance;
 };
 
-#endif
+}
+
+#endif /* KATEVI_KEY_PARSER_H */

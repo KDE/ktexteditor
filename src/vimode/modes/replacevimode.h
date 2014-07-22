@@ -31,13 +31,13 @@ namespace KateVi
 /**
  * Commands for the vi replace mode
  */
-class ReplaceMode : public ModeBase
+class ReplaceViMode : public ModeBase
 {
 public:
-    explicit ReplaceMode(KateViInputModeManager *viInputModeManager,
-                         KTextEditor::ViewPrivate *view,
-                         KateViewInternal *viewInternal);
-    virtual ~ReplaceMode();
+    explicit ReplaceViMode(InputModeManager *viInputModeManager,
+                           KTextEditor::ViewPrivate *view,
+                           KateViewInternal *viewInternal);
+    virtual ~ReplaceViMode();
 
     /// Update the track of overwritten characters with the \p s character.
     inline void overwrittenChar(const QChar &s)

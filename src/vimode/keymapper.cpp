@@ -18,19 +18,20 @@
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
  */
-#include "katevikeymapper.h"
+
 #include "kateglobal.h"
 #include "globalstate.h"
 #include "mappings.h"
 #include "katepartdebug.h"
 #include "katedocument.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/keymapper.h>
+#include <vimode/inputmodemanager.h>
 
 #include <QTimer>
 
 using namespace KateVi;
 
-KateViKeyMapper::KateViKeyMapper(KateViInputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
+KeyMapper::KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
     : m_viInputModeManager(kateViInputModeManager),
       m_doc(doc),
       m_view(view)
@@ -44,7 +45,7 @@ KateViKeyMapper::KateViKeyMapper(KateViInputModeManager *kateViInputModeManager,
     connect(m_mappingTimer, SIGNAL(timeout()), this, SLOT(mappingTimerTimeOut()));
 }
 
-void KateViKeyMapper::executeMapping()
+void KeyMapper::executeMapping()
 {
     m_mappingKeys.clear();
     m_mappingTimer->stop();
@@ -61,7 +62,7 @@ void KateViKeyMapper::executeMapping()
     m_numMappingsBeingExecuted--;
 }
 
-void KateViKeyMapper::playBackRejectedKeys()
+void KeyMapper::playBackRejectedKeys()
 {
     m_isPlayingBackRejectedKeys = true;
     const QString mappingKeys = m_mappingKeys;
@@ -70,12 +71,12 @@ void KateViKeyMapper::playBackRejectedKeys()
     m_isPlayingBackRejectedKeys = false;
 }
 
-void KateViKeyMapper::setMappingTimeout(int timeoutMS)
+void KeyMapper::setMappingTimeout(int timeoutMS)
 {
     m_timeoutlen = timeoutMS;
 }
 
-void KateViKeyMapper::mappingTimerTimeOut()
+void KeyMapper::mappingTimerTimeOut()
 {
     qCDebug(LOG_PART) << "timeout! key presses: " << m_mappingKeys;
     if (!m_fullMappingMatch.isNull()) {
@@ -86,7 +87,7 @@ void KateViKeyMapper::mappingTimerTimeOut()
     m_mappingKeys.clear();
 }
 
-bool KateViKeyMapper::handleKeypress(QChar key)
+bool KeyMapper::handleKeypress(QChar key)
 {
     if (!m_doNotExpandFurtherMappings && !m_doNotMapNextKeypress && !m_isPlayingBackRejectedKeys) {
         m_mappingKeys.append(key);
@@ -127,17 +128,17 @@ bool KateViKeyMapper::handleKeypress(QChar key)
     return false;
 }
 
-void KateViKeyMapper::setDoNotMapNextKeypress()
+void KeyMapper::setDoNotMapNextKeypress()
 {
     m_doNotMapNextKeypress = true;
 }
 
-bool KateViKeyMapper::isExecutingMapping()
+bool KeyMapper::isExecutingMapping()
 {
     return m_numMappingsBeingExecuted > 0;
 }
 
-bool KateViKeyMapper::isPlayingBackRejectedKeys()
+bool KeyMapper::isPlayingBackRejectedKeys()
 {
     return m_isPlayingBackRejectedKeys;
 }

@@ -30,13 +30,13 @@ namespace KTextEditor {
     class Range;
 }
 
+namespace KateVi
+{
+
 enum MotionType {
     ExclusiveMotion = 0,
     InclusiveMotion
 };
-
-namespace KateVi
-{
 
 class KTEXTEDITOR_EXPORT Range
 {
@@ -72,7 +72,7 @@ public:
     /**
      * @returns an invalid KateViRange allocated on stack.
      */
-    static KateVi::Range invalid();
+    static Range invalid();
 
 public:
     int startLine, startColumn;

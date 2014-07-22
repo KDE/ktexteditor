@@ -20,17 +20,17 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevicmds.h"
+#include <vimode/cmds.h>
 
 #include "katedocument.h"
 #include "kateview.h"
 #include "kateglobal.h"
-#include <vimode/modes/normalmode.h>
-#include "kateviemulatedcommandbar.h"
+#include <vimode/modes/normalvimode.h>
+#include <vimode/emulatedcommandbar.h>
 #include "katecmd.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
-#include "kateviinputmodemanager.h"
+#include <vimode/inputmodemanager.h>
 #include "globalstate.h"
 #include "marks.h"
 
@@ -43,12 +43,10 @@
 using namespace KateVi;
 
 //BEGIN ViCommands
-KateViCommands::ViCommands *KateViCommands::ViCommands::m_instance = 0;
+Commands *Commands::m_instance = 0;
 
-bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
-                                    const QString &_cmd,
-                                    QString &msg,
-                                    const KTextEditor::Range &range)
+bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
+                    QString &msg, const KTextEditor::Range &range)
 {
     Q_UNUSED(range)
     // cast it hardcore, we know that it is really a kateview :)
@@ -93,7 +91,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
         return true;
     }
 
-    KateVi::NormalMode *nm = m_viInputModeManager->getViNormalMode();
+    NormalViMode *nm = m_viInputModeManager->getViNormalMode();
 
     if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") ||
             cmd == QLatin1String("c") || cmd == QLatin1String("change") ||  cmd == QLatin1String("<") || cmd == QLatin1String(">") ||
@@ -182,7 +180,7 @@ bool KateViCommands::ViCommands::exec(KTextEditor::View *view,
     return false;
 }
 
-bool KateViCommands::ViCommands::supportsRange(const QString &range)
+bool Commands::supportsRange(const QString &range)
 {
     static QStringList l;
 
@@ -193,7 +191,7 @@ bool KateViCommands::ViCommands::supportsRange(const QString &range)
     return l.contains(range.split(QLatin1String(" ")).at(0));
 }
 
-KCompletion *KateViCommands::ViCommands::completionObject(KTextEditor::View *view, const QString &cmd)
+KCompletion *Commands::completionObject(KTextEditor::View *view, const QString &cmd)
 {
     Q_UNUSED(view)
 
@@ -210,7 +208,7 @@ KCompletion *KateViCommands::ViCommands::completionObject(KTextEditor::View *vie
     return 0L;
 }
 
-const QStringList &KateViCommands::ViCommands::mappingCommands()
+const QStringList &Commands::mappingCommands()
 {
     static QStringList mappingsCommands;
     if (mappingsCommands.isEmpty()) {
@@ -224,7 +222,7 @@ const QStringList &KateViCommands::ViCommands::mappingCommands()
     return mappingsCommands;
 }
 
-Mappings::MappingMode KateViCommands::ViCommands::modeForMapCommand(const QString &mapCommand)
+Mappings::MappingMode Commands::modeForMapCommand(const QString &mapCommand)
 {
     static QMap<QString, Mappings::MappingMode> modeForMapCommand;
     if (modeForMapCommand.isEmpty()) {
@@ -250,7 +248,7 @@ Mappings::MappingMode KateViCommands::ViCommands::modeForMapCommand(const QStrin
     return modeForMapCommand[mapCommand];
 }
 
-bool KateViCommands::ViCommands::isMapCommandRecursive(const QString &mapCommand)
+bool Commands::isMapCommandRecursive(const QString &mapCommand)
 {
     static QMap<QString, bool> isMapCommandRecursive;
     {
@@ -268,81 +266,12 @@ bool KateViCommands::ViCommands::isMapCommandRecursive(const QString &mapCommand
 
 //END ViCommands
 
-//BEGIN AppCommands
-KateViCommands::AppCommands *KateViCommands::AppCommands::m_instance = 0;
-
-KateViCommands::AppCommands::AppCommands()
-    : KTextEditor::Command(QStringList() << QLatin1String("w"))
-{
-    re_write.setPattern(QLatin1String("w")); // temporarily add :w
-    //re_write.setPattern("w(a)?");
-    //re_quit.setPattern("(w)?q?(a)?");
-    //re_exit.setPattern("x(a)?");
-    //re_changeBuffer.setPattern("b(n|p)");
-    //re_edit.setPattern("e(dit)?");
-    //re_new.setPattern("(v)?new");
-}
-
-// commands that don't need to live in the hosting application should be
-// implemented here. things such as quitting and splitting the view can not be
-// done from the editor part and needs to be implemented in the hosting
-// application.
-bool KateViCommands::AppCommands::exec(KTextEditor::View *view,
-                                     const QString &cmd, QString &msg, const KTextEditor::Range &)
-{
-    QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
-    QString command(args.takeFirst());
-    QString file = args.join(QLatin1Char(' '));
-
-    if (re_write.exactMatch(command)) { // w, wa
-        /*        if (!re_write.cap(1).isEmpty()) { // [a]ll
-            view->document()->saveAll();
-            msg = i18n("All documents written to disk");
-        } else { // w*/
-        // Save file
-        if (file.isEmpty()) {
-            view->document()->documentSave();
-        } else {
-            QUrl base = view->document()->url();
-            if (!base.isValid()) {
-                base = QUrl(QDir::homePath());
-            }
-
-            QUrl url = base.resolved(QUrl(file));
-
-            view->document()->saveAs(url);
-        }
-        msg = i18n("Document written to disk");
-    }
-
-    return true;
-}
-
-bool KateViCommands::AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg)
-{
-    Q_UNUSED(view);
-
-    if (re_write.exactMatch(cmd)) {
-        msg = i18n("<p><b>w/wa &mdash; write document(s) to disk</b></p>"
-                   "<p>Usage: <tt><b>w[a]</b></tt></p>"
-                   "<p>Writes the current document(s) to disk. "
-                   "It can be called in two ways:<br />"
-                   " <tt>w</tt> &mdash; writes the current document to disk<br />"
-                   " <tt>wa</tt> &mdash; writes all document to disk.</p>"
-                   "<p>If no file name is associated with the document, "
-                   "a file dialog will be shown.</p>");
-        return true;
-    }
-    return false;
-}
-//END AppCommands
-
 //BEGIN SedReplace
-KateViCommands::SedReplace *KateViCommands::SedReplace::m_instance = 0;
+SedReplace *SedReplace::m_instance = 0;
 
-bool KateViCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
+bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
 {
-    KateViEmulatedCommandBar *emulatedCommandBar = m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar();
+    EmulatedCommandBar *emulatedCommandBar = m_viInputModeManager->inputAdapter()->viModeEmulatedCommandBar();
     emulatedCommandBar->startInteractiveSearchAndReplace(interactiveSedReplace);
     return true;
 }

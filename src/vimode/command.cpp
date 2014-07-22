@@ -18,30 +18,32 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "katevicommand.h"
-#include "katevikeyparser.h"
+#include <vimode/command.h>
+#include <vimode/keyparser.h>
 
 #include <QRegExp>
 
-KateViCommand::KateViCommand(KateVi::NormalMode *parent, QString pattern,
-                             bool(KateVi::NormalMode::*commandMethod)(), unsigned int flags)
+using namespace KateVi;
+
+Command::Command(NormalViMode *parent, QString pattern,
+                 bool(NormalViMode::*commandMethod)(), unsigned int flags)
 {
     m_parent = parent;
-    m_pattern = KateViKeyParser::self()->encodeKeySequence(pattern);
+    m_pattern = KeyParser::self()->encodeKeySequence(pattern);
     m_flags = flags;
     m_ptr2commandMethod = commandMethod;
 }
 
-KateViCommand::~KateViCommand()
+Command::~Command()
 {
 }
 
-bool KateViCommand::execute() const
+bool Command::execute() const
 {
     return (m_parent->*m_ptr2commandMethod)();
 }
 
-bool KateViCommand::matches(const QString &pattern) const
+bool Command::matches(const QString &pattern) const
 {
     if (!(m_flags & REGEX_PATTERN)) {
         return m_pattern.startsWith(pattern);
@@ -52,7 +54,7 @@ bool KateViCommand::matches(const QString &pattern) const
     }
 }
 
-bool KateViCommand::matchesExact(const QString &pattern) const
+bool Command::matchesExact(const QString &pattern) const
 {
     if (!(m_flags & REGEX_PATTERN)) {
         return (m_pattern == pattern);

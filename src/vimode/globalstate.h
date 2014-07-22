@@ -42,25 +42,25 @@ public:
     void writeConfig(KConfig *config) const;
     void readConfig(const KConfig *config);
 
-    inline KateVi::Macros *macros() const { return m_macros; }
-    inline KateVi::Mappings *mappings() const { return m_mappings; }
-    inline KateVi::Registers *registers() const { return m_registers; }
+    inline Macros *macros() const { return m_macros; }
+    inline Mappings *mappings() const { return m_mappings; }
+    inline Registers *registers() const { return m_registers; }
 
-    inline KateVi::History *searchHistory() const { return m_searchHistory; }
-    inline KateVi::History *commandHistory() const { return m_commandHistory; }
-    inline KateVi::History *replaceHistory() const { return m_replaceHistory; }
+    inline History *searchHistory() const { return m_searchHistory; }
+    inline History *commandHistory() const { return m_commandHistory; }
+    inline History *replaceHistory() const { return m_replaceHistory; }
 
 private:
     KSharedConfigPtr config() const;
 
 private:
-    KateVi::Macros *m_macros;
-    KateVi::Mappings *m_mappings;
-    KateVi::Registers *m_registers;
+    Macros *m_macros;
+    Mappings *m_mappings;
+    Registers *m_registers;
 
-    KateVi::History *m_searchHistory;
-    KateVi::History *m_commandHistory;
-    KateVi::History *m_replaceHistory;
+    History *m_searchHistory;
+    History *m_commandHistory;
+    History *m_replaceHistory;
 };
 }
 

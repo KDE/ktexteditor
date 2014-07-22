@@ -1353,20 +1353,20 @@ void ModesTest::VisualExternalTests()
     BeginTest("");
     TestPressKey("iHello World!\\esc");
     TestPressKey("0wvlldu");
-    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
     QCOMPARE(kate_view->selectionText(), QString(""));
     QCOMPARE(kate_document->text(), QString("Hello World!"));
     TestPressKey("u");
-    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
     QCOMPARE(kate_document->text(), QString(""));
     TestPressKey("\\ctrl-r");
-    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), NormalMode);
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::NormalMode);
     FinishTest("Hello World!");
 
     // Make sure that we don't screw up selection after an undo.
     BeginTest("Hola\nHola\nHello\nHallo\n");
     TestPressKey("jVjduVk");
-    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), VisualLineMode);
+    QCOMPARE(vi_input_mode_manager->getCurrentViMode(), KateVi::VisualLineMode);
     QCOMPARE(kate_view->selectionText(), QString("Hola\nHello"));
     FinishTest("Hola\nHola\nHello\nHallo\n");
 
@@ -1386,7 +1386,7 @@ void ModesTest::VisualExternalTests()
     QVERIFY(kate_view->currentInputMode()->viewInputMode() == View::ViInputMode);
     vi_input_mode = dynamic_cast<KateViInputMode *>(kate_view->currentInputMode());
     vi_input_mode_manager = vi_input_mode->viInputModeManager();
-    QVERIFY(vi_input_mode_manager->getCurrentViMode() == VisualMode);
+    QVERIFY(vi_input_mode_manager->getCurrentViMode() == KateVi::VisualMode);
     TestPressKey("l");
     QCOMPARE(kate_document->text(kate_view->selectionRange()), QString("oo b"));
     TestPressKey("d");
@@ -1396,14 +1396,14 @@ void ModesTest::VisualExternalTests()
     BeginTest("foo bar\nbar baz");
     TestPressKey("i"); // get me into insert mode
     kate_view->setSelection(Range(0, 1, 1, 4));
-    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)VisualMode);
+    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::VisualMode);
     kate_view->setSelection(Range::invalid());
-    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)InsertMode);
+    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::InsertMode);
     TestPressKey("\\esc"); // get me into normal mode
     kate_view->setSelection(Range(0, 1, 1, 4));
-    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)VisualMode);
+    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::VisualMode);
     kate_view->setSelection(Range::invalid());
-    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)NormalMode);
+    QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::NormalMode);
 }
 
 //END: Visual mode.

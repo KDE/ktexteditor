@@ -19,8 +19,8 @@
 #include "marks.h"
 #include "kateview.h"
 #include "katedocument.h"
-#include "kateviinputmodemanager.h"
-#include <vimode/modes/normalmode.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/normalvimode.h>
 
 #include <KLocalizedString>
 
@@ -40,7 +40,7 @@ namespace {
     const QString UserMarks = QLatin1String("abcdefghijklmnopqrstuvwxyz");
 }
 
-Marks::Marks(KateViInputModeManager *imm)
+Marks::Marks(InputModeManager *imm)
     : m_inputModeManager(imm)
     , m_doc(imm->view()->doc())
     , m_settingMark(false)

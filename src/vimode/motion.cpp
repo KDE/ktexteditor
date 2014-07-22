@@ -1,5 +1,6 @@
-/*
- *  This file is part of the KDE libraries
+/*  This file is part of the KDE libraries and the Kate part.
+ *
+ *  Copyright (C) 2008 Erlend Hamberg <ehamberg@gmail.com>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -15,44 +16,20 @@
  *  along with this library; see the file COPYING.LIB.  If not, write to
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
- *
  */
 
-#ifndef KATEVI_LASTCHANGERECORDER_H
-#define KATEVI_LASTCHANGERECORDER_H
+#include <vimode/motion.h>
 
-#include "completion.h"
+using namespace KateVi;
 
-#include <QKeyEvent>
-#include <QList>
-#include <QString>
-
-namespace KateVi
+Motion::Motion(NormalViMode *parent, const QString &pattern,
+               Range(NormalViMode::*commandMethod)(), unsigned int flags)
+    : Command(parent, pattern, 0, flags)
 {
-class InputModeManager;
-
-class LastChangeRecorder
-{
-public:
-    explicit LastChangeRecorder(InputModeManager *viInputModeManager);
-    ~LastChangeRecorder();
-
-    void record(const QKeyEvent &event);
-    void dropLast();
-    void clear();
-
-    QString encodedChanges() const;
-
-    void replay(const QString &commands, const CompletionList &completions);
-    bool isReplaying() const;
-
-private:
-    InputModeManager *m_viInputModeManager;
-
-    QList<QKeyEvent> m_changeLog;
-
-    bool m_isReplaying;
-};
+    m_ptr2commandMethod = commandMethod;
 }
 
-#endif // KATEVI_LASTCHANGERECORDER_H
+Range Motion::execute() const
+{
+    return (m_parent->*m_ptr2commandMethod)();
+}

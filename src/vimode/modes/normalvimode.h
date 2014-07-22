@@ -21,8 +21,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATEVI_NORMAL_MODE_H
-#define KATEVI_NORMAL_MODE_H
+#ifndef KATEVI_NORMAL_VI_MODE_H
+#define KATEVI_NORMAL_VI_MODE_H
 
 #include <vimode/range.h>
 #include <vimode/modes/modebase.h>
@@ -36,27 +36,27 @@
 #include <ktexteditor_export.h>
 
 class QKeyEvent;
-class KateViCommand;
-class KateViMotion;
-class KateViKeyParser;
-class KateViInputModeManager;
 class KateViInputMode;
 
 namespace KateVi
 {
+class Command;
+class Motion;
+class KeyParser;
+class InputModeManager;
 
 /**
  * Commands for the vi normal mode
  */
-class KTEXTEDITOR_EXPORT NormalMode : public ModeBase
+class KTEXTEDITOR_EXPORT NormalViMode : public ModeBase
 {
     Q_OBJECT
 
     friend KateViInputMode;
 
 public:
-    explicit NormalMode(KateViInputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
-    virtual ~NormalMode();
+    explicit NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
+    virtual ~NormalViMode();
 
     virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
@@ -301,7 +301,7 @@ protected:
     void resetParser();
     void initializeCommands();
     QRegExp generateMatchingItemRegex() const;
-    void executeCommand(const KateViCommand *cmd);
+    void executeCommand(const Command *cmd);
     OperationMode getOperationMode() const;
 
     void highlightYank(const Range &range, const OperationMode mode = CharWise);
@@ -337,7 +337,7 @@ protected:
     // The 'current position' is the current cursor position for non-linewise pastes, and the current
     // line for linewise.
     enum PasteLocation { AtCurrentPosition, AfterCurrentPosition };
-    bool paste(NormalMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
+    bool paste(NormalViMode::PasteLocation pasteLocation, bool isgPaste, bool isIndentedPaste);
     KTextEditor::Cursor cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const;
 
 protected:
@@ -348,8 +348,8 @@ protected:
     int m_motionOperatorIndex;
     uint m_scroll_count_limit;
 
-    QVector<KateViCommand *> m_commands;
-    QVector<KateViMotion *> m_motions;
+    QVector<Command *> m_commands;
+    QVector<Motion *> m_motions;
     QVector<int> m_matchingCommands;
     QVector<int> m_matchingMotions;
     QStack<int> m_awaitingMotionOrTextObject;
@@ -371,7 +371,7 @@ protected:
     QHash<QString, QString> m_matchingItems;
     QRegExp m_matchItemRegex;
 
-    KateViKeyParser *m_keyParser;
+    KeyParser *m_keyParser;
 
     KTextEditor::Attribute::Ptr m_highlightYankAttribute;
     QSet<KTextEditor::MovingRange *> m_highlightedYanks;
@@ -393,4 +393,4 @@ private Q_SLOTS:
 
 }
 
-#endif
+#endif /* KATEVI_NORMAL_VI_MODE_H */
