@@ -708,6 +708,10 @@ void ModesTest::NormalMotionsTests()
     DoTest("{a, b, c}", "ci}X", "{X}");
     DoTest("<a, b, c>", "ci<X", "<X>");
     DoTest("<a, b, c>", "ci>X", "<X>");
+
+    // Things like "cn" and "cN" don't crash.
+    DoTest("Hello", "cn", "Hello");
+    DoTest("Hello", "cN", "Hello");
 }
 
 void ModesTest::NormalCommandsTests()

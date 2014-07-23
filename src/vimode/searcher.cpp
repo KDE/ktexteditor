@@ -74,11 +74,13 @@ Range Searcher::motionFindNext(int count)
         m_view->cursorPosition(),
         count);
 
+    if (!match.valid) {
+        return match;
+    }
     if (!m_lastSearchPlacedCursorAtEndOfMatch) {
         return Range(match.startLine, match.startColumn, ExclusiveMotion);
-    } else {
-        return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
     }
+    return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
 }
 
 Range Searcher::motionFindPrev(int count)
@@ -90,17 +92,19 @@ Range Searcher::motionFindPrev(int count)
         m_view->cursorPosition(),
         count);
 
+    if (!match.valid) {
+        return match;
+    }
     if (!m_lastSearchPlacedCursorAtEndOfMatch) {
         return Range(match.startLine, match.startColumn, ExclusiveMotion);
-    } else {
-        return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
     }
+    return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
 }
 
 Range Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
 {
     if (pattern.isEmpty()) {
-        return Range();
+        return Range::invalid();
     }
 
     KTextEditor::Range match = findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
