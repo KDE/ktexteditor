@@ -37,17 +37,14 @@
 // changes compared to orininal vim script:
 // - added handling for labels and 'generic' keyword
 // - recognise keyword 'private' as part of package specification
-// - 'case .. is' expression not required to be on same line
-// - var := first_part with no trailing ';' is recognised as a
-//   continuing statement
 // - handle multi line for/while ... loop
 // - cat open/close paren lines to handle scanning multi-line proc/func dec's
-// - 'return' for function type declaration can be on a new line
+// - recognise various multi line statements
 // - indent once only after case statement
 // - add checkParens() for aligning parameters in multiline arg list
 // - refactoring & optimisations
 
-// TODO: 'protected', 'task', 'select', 'renames' &
+// TODO: 'protected', 'task', 'select' &
 //       possibly other keywords not recognised
 
 "use strict";
@@ -68,7 +65,7 @@ var debugMode = false;
 const AdaComment    = /\s*--.*$/;
 const unfStmt       = /([.=\(]|:=[^;]*)\s*$/;
 const unfLoop       = /^\s*(for|while)\b(?!.*\bloop\b)/i;
-const AdaBlockStart = /^\s*(if\b|while\b|else\b|elsif\b|loop\b|for\b.*\b(loop|use)\b|declare\b|begin\b|type\b.*\bis\b[^;]*$|(type\b.*)?\brecord\b|procedure\b|function\b|accept\b|do\b|task\b|generic\b|package\b|private\b|then\b|when\b|is\b)/i;
+const AdaBlockStart = /^\s*(if\b|while\b|else\b|elsif\b|loop\b|for\b.*\b(loop|use)\b|declare\b|begin\b|type\b.*\bis\b[^;]*$|(type\b.*)?\brecord\b|procedure\b|function\b|with\s+function\b|accept\b|do\b|task\b|generic\b|package\b|private\b|then\b|when\b|is\b)/i;
 const StatementStart = /^\s*(if|when|while|else|elsif|loop|for\b.*\b(loop|use)|begin)\b/i;
 
 function dbg() {
@@ -202,7 +199,7 @@ function checkParens(line, indentWidth, newLine )
     // note: pline is code, and
     // we get here only when we know it exists
     var pline = lastCodeLine(line);
-    var plineStr = document.line(pline);
+    var plineStr = document.line(pline).replace(AdaComment, "");
 
     /**
      * look for the case where the new line starts with ')'
@@ -223,7 +220,7 @@ function checkParens(line, indentWidth, newLine )
         }
 
         // just align parens, not args
-        if( !newLine || !/[,\(]\s*(--.*)?$/.test(plineStr) ) {
+        if( !newLine || !/[,\(]$/.test(plineStr) ) {
             dbg("checkParens: align trailing ')'");
             return parenIndent;
         }
@@ -263,9 +260,9 @@ function checkParens(line, indentWidth, newLine )
 
     var indent = document.firstVirtualColumn(line);
 
-    // look for line ending with unclosed paren like "func(" & comment
+    // look for line ending with unclosed paren like "func("
     // and no args following open paren
-    var bpos = plineStr.search(/\(\s*(--.*)?$/ );
+    var bpos = plineStr.search(/\($/ );
     if( bpos != -1 && document.isCode(pline, bpos) ) {
         // we have something like
         //        func(     <--- pline
@@ -462,8 +459,8 @@ function StatementIndent( current_indent, prev_lnum )
                //dbg("StatementIndent: ind is", ind, ", taking indent of parent", document.line(ref_lnum).trim());
 	       return ind;
            } else {
-           //dbg("StatementIndent: stopped looking at", plineStr.trim());
-	   return current_indent;
+               //dbg("StatementIndent: stopped looking at", plineStr.trim());
+	       return current_indent;
 	   } // if
        } // if
        if( ! unfStmt.test(plineStr) ) {
@@ -483,14 +480,24 @@ function StatementIndent( current_indent, prev_lnum )
 
 //----------------------
 // check what's on the previous line
-// return indent
+// return expected indent for next line
 function checkPreviousLine( pline, indentWidth )
 {
     var kpos;      // temp var to hold char positions in search strings
     var plineStr = document.line(pline).replace(AdaComment, "");
 
-    // test for multi-line statements by concatenating
-    // lines that include open & close parens, so
+    // test for multi-line statements by concatenating them
+    // NOTE: original vim script did not join lines together
+    if( /^\s*(renames|access|new)\b/i.test(plineStr) ) {
+        var l = lastCodeLine(pline);
+        if( l >= 0 ) {
+            pline = l;
+            plineStr = document.line(pline).replace(AdaComment, "") + plineStr;
+            //dbg("checkPreviousLine: combined split statement, pline is", plineStr.trim() );
+        }
+    }
+
+    // now do lines that include open & close parens, so
     //
     //   aaaaaa            <----  new pline, use this to derive indent
     //     ( ....
@@ -501,10 +508,10 @@ function checkPreviousLine( pline, indentWidth )
     //
     //   aaaaaa     ( ....     ) zzzz
     //
-    // NOTE: original vim script did not join lines together
-    if( checkCloseParen(pline, plineStr.length) ) {
-        //dbg("checkPreviousLine: close paren found");
-        var r = document.anchor(pline, 0, ')' );
+    kpos = checkCloseParen(pline, plineStr.length);
+    if( kpos != -1 ) {
+        dbg("checkPreviousLine: unmatched close paren found");
+        var r = document.anchor(pline, kpos, ')' );
         if(r.isValid()) {
             pline = r.line;
             plineStr = document.line(pline).replace(AdaComment, "") + plineStr;
@@ -545,27 +552,26 @@ function checkPreviousLine( pline, indentWidth )
         } // if
     }
     else if( /^\s*return\b/i.test(plineStr) ) {
-        dbg("checkPreviousLine: current line follows return");
         // is it a return statement, or part of a function declaration?
-        // NOTE: original vim script did not allow
+        // NOTE: original vim script did not recognise
         //       'return' on a new line for function declarations
 
         var l = lastCodeLine( pline );
         while( l >= 0 ) {
-            var new_ind = document.firstVirtualColumn(l);
-            if( new_ind < ind ) {
-                lStr = document.line(l);
-                if( StatementStart.test(lStr) ) {
-                    break;
+           lStr = document.line(l);
+            if( StatementStart.test(lStr) ) {
+                dbg("checkPreviousLine: previous line is return statement");
+                break;
+            }
+            if(/^\s*(with\s*)?function\b/i.test(lStr)) {
+                // move indent back to parent 'function'
+                dbg("checkPreviousLine: 'return' is function return type");
+                ind  = document.firstVirtualColumn(l);
+                if( ! /\s*;\s*$/.test(plineStr) ) {
+                    ind +=  indentWidth;
+                    //dbg("checkPreviousLine: continue function body");
                 }
-                if(/^\s*function\b/i.test(lStr)) {
-                    // move indent back to parent 'function'
-                    //dbg("checkPreviousLine: 'return' is function return type");
-                    ind  = new_ind;
-                    if( ! /\s*;\s*$/.test(plineStr) ) {
-                        ind +=  indentWidth;
-                    }
-                }
+                break;
             }
             l = lastCodeLine(l);
         } // while
@@ -601,16 +607,10 @@ function checkPreviousLine( pline, indentWidth )
         ind += indentWidth;
         dbg("checkPreviousLine: ind is", ind, ", previous line is an unfinished while/for loop");
     }
-    else if( /^\s*new\b/i.test(plineStr) ) {
-        // Multiple line generic instantiation ('package blah is\nnew thingy')
-        ind = StatementIndent( ind - indentWidth, pline );
-        dbg("checkPreviousLine: ind is", ind, ", previous line finishes new ....");
-    }
     else if( /^(?!\s*end\b).*;\s*$/i.test(plineStr) ) {
         // end of statement (but not 'end' )
         // start of statement might be on a previous line
         //  - try to find current statement-start indent
-        // ind may be over-ridden with keyword detection below
         ind = StatementIndent( ind, pline )
         dbg("checkPreviousLine: ind is", ind + ", pline follows end of statement");
     } else {
@@ -639,114 +639,114 @@ function indentLine( cline, indentWidth, newLine)
         return 0;
     }
 
-   // Get default indent (from prev. line)
-    var ind = checkPreviousLine(pline, indentWidth);
-
     var plineStr = document.line(pline).replace(AdaComment, "");
-    //dbg("indentLine: ind is", ind, ", plineStr is", plineStr.trim());
-    // TODO: should be no trailing spaces in plineStr
-    //       so can remove spaces before $ in regexps below
+    //dbg("indentLine: plineStr is", plineStr.trim());
 
     var clineStr = document.line(cline).replace(AdaComment, "");
-    //dbg("indentLine: ind is", ind, ", cline is", clineStr.trim() );
+    //dbg("indentLine: cline is", clineStr.trim() );
 
     var n = checkParens( cline, indentWidth, newLine );
     if( n != -1 ) {
-        ind = n;
-        //dbg("indentLine: ind is", ind, ", current line is inside parens - indent handled successfully");
+        //dbg("indentLine: current line aligned inside parens");
+        return n;
     }
-    else if( /^\s*#/.test(clineStr) ) {
+    if( /^\s*#/.test(clineStr) ) {
         dbg( "indentLine: Start of line for ada-pp" );
-        ind = 0;
+        return 0;
     }
-    else if( ((kpos = plineStr.search(/[A-Za-z0-9_.]+(\s+is)?\s*$/)) != -1 )
+    if( ((kpos = plineStr.search(/[A-Za-z0-9_.]+(\s+is)?$/)) != -1 )
              && (/^\s*\(/.test(clineStr)) ) {
         dbg("indentLine: found potential argument list");
-        ind = document.toVirtualColumn(pline,kpos) + indentWidth;
+        return document.toVirtualColumn(pline,kpos) + indentWidth;
     }
-    else if( /^\s*(begin|is)\b/i.test(clineStr) ) {
-        dbg("indentLine: ind is", ind, ", found ", RegExp.$1);
-        ind = MainBlockIndent( ind, pline, /(procedure|function|declare|package|task)\b/i, /begin\b/i )
+
+    // Get default indent from prev. line
+    var pind = checkPreviousLine(pline, indentWidth);
+    //dbg( "indentLine: default indent is", pind );
+
+    if( /^\s*(begin|is)\b/i.test(clineStr) ) {
+        dbg("indentLine: pind is", pind, ", found ", RegExp.$1);
+        return MainBlockIndent( pind, pline, /(procedure|function|declare|package|task)\b/i, /begin\b/i )
     }
-    else if( /^\s*record\b/i.test(clineStr) ) {
+    if( /^\s*record\b/i.test(clineStr) ) {
         dbg("indentLine: line is 'record'");
-        ind = MainBlockIndent( ind, pline, /type\b|for\b.*\buse\b/i, '' ) + indentWidth
+        return MainBlockIndent( pind, pline, /type\b|for\b.*\buse\b/i, '' ) + indentWidth
     }
-    else if( /^\s*(else|elsif)\b/i.test(clineStr) ) {
+    if( /^\s*(else|elsif)\b/i.test(clineStr) ) {
         dbg("indentLine: aligning", RegExp.$1, "with corresponding 'if'");
-        ind = MainBlockIndent( ind, pline, /if\b/, /^\s*begin\b/ )
+        return MainBlockIndent( pind, pline, /if\b/, /^\s*begin\b/ )
     }
-    else if( /^\s*when\b/i.test(clineStr) ) {
+    if( /^\s*when\b/i.test(clineStr) ) {
         // Align 'when' one /in/ from matching block start
         dbg("indentLine: 'when' clause indented from parent");
-        ind = MainBlockIndent( ind, pline, /(case|exception)\b/, /\s*begin\b/ ) + indentWidth;
+        return MainBlockIndent( pind, pline, /(case|exception)\b/, /\s*begin\b/ ) + indentWidth;
     }
-    else if( /^\s*end\b\s*\bif\b/i.test(clineStr) ) {
+    if( /^\s*end\b\s*\bif\b/i.test(clineStr) ) {
         // End of if statements
         dbg("indentLine: 'end if' aligned to corresponding 'if' statement");
-        ind = EndBlockIndent( ind, pline, /if\b/, /end\b\s*\bif\b/ )
+        return EndBlockIndent( pind, pline, /if\b/, /end\b\s*\bif\b/ )
     }
-    else if( /^\s*end\b\s*\bloop\b/i.test(clineStr) ) {
+    if( /^\s*end\b\s*\bloop\b/i.test(clineStr) ) {
         dbg("indentLine: line is end of loop");
         // End of loops
-        ind = EndBlockIndent( ind, pline, /((while|for|loop)\b)/, /end\b\s*\bloop\b/ );
+        return EndBlockIndent( pind, pline, /((while|for|loop)\b)/, /end\b\s*\bloop\b/ );
     }
-    else if( /^\s*end\b\s*\brecord\b/i.test(clineStr) ) {
+    if( /^\s*end\b\s*\brecord\b/i.test(clineStr) ) {
         // End of records
-        ind = EndBlockIndent( ind, pline, /(type\b.*)?\brecord\b/, /end\b\s*\brecord\b/ );
-        dbg("indentLine: ind is", ind, ", 'end record' aligned to corresponding parent");
+        dbg("indentLine: 'end record' aligned to corresponding parent");
+        return EndBlockIndent( pind, pline, /(type\b.*)?\brecord\b/, /end\b\s*\brecord\b/ );
     }
-    else if( /^\s*end\b\s*\bprocedure\b/i.test(clineStr) ) {
+    if( /^\s*end\s+procedure\b/i.test(clineStr) ) {
         dbg("indentLine: 'end procedure' aligned to corresponding parent");
         // End of procedures
         // TODO: when does 'end procedure' occur?
         // TODO: multiline procedure heading
-        ind = EndBlockIndent( ind, pline, /procedure\b.*\bis\b/, /end\b\s*\bprocedure\b/ );
+        return EndBlockIndent( pind, pline, /procedure\b.*\bis\b/, /end\b\s*\bprocedure\b/ );
     }
-    else if( /^\s*end\b\s*\bcase\b/i.test(clineStr) ) {
+    if( /^\s*end\b\s*\bcase\b/i.test(clineStr) ) {
         // NOTE: original vim script required 'is' on same line
-        ind = EndBlockIndent( ind, pline, /case\b[^;]*(\bis\b|$)/i, /end\b\s*\bcase\b/i );
         dbg("indentLine: 'end case' aligned to 'case'");
+        return EndBlockIndent( pind, pline, /case\b[^;]*(\bis\b|$)/i, /end\b\s*\bcase\b/i );
     }
-    else if( /^\s*end\b/i.test( clineStr) ) {
+    if( /^\s*end\b/i.test( clineStr) ) {
         // General case for end
-        ind = MainBlockIndent( ind, pline, /(if|while|for|loop|accept|begin|record|case|exception|package)\b/, '' );
         dbg("indentLine: 'end' aligned to its parent");
+        return MainBlockIndent( pind, pline, /(if|while|for|loop|accept|begin|record|case|exception|package)\b/, '' );
     }
-    else if( /^\s*exception\b/i.test( clineStr) ) {
-        ind = MainBlockIndent( ind, pline, /begin\b/, '' );
+    if( /^\s*exception\b/i.test( clineStr) ) {
         dbg("indentLine: 'exception' aligned to corresponding 'begin'");
+        return MainBlockIndent( pind, pline, /begin\b/, '' );
     }
-    else if( /^\s*private\b/i.test( clineStr) ) {
-        ind = MainBlockIndent( ind, pline, /package\b/, '' );
+    if( /^\s*private\b/i.test( clineStr) ) {
         dbg("indentLine: 'private' aligned to corresponding 'package'");
+        return MainBlockIndent( pind, pline, /package\b/, '' );
     }
-    else if( /^\s*<<\w+>>/.test( clineStr) ) {
+    if( /^\s*<<\w+>>/.test( clineStr) ) {
         // NOTE: original vim script did not consider labels
-        ind = MainBlockIndent( ind, pline, /begin\b/, '' );
         dbg("indentLine: 'label' aligned to corresponding 'begin'");
+        return MainBlockIndent( pind, pline, /begin\b/, '' );
     }
-    else if( /^\s*then\b/i.test( clineStr ) ) {
-        ind = MainBlockIndent( ind, pline, /if\b/, /begin\b/ );
+    if( /^\s*then\b/i.test( clineStr ) ) {
         dbg("indentLine: 'then' aligned to corresponding 'if'");
+        return MainBlockIndent( pind, pline, /if\b/, /begin\b/ );
     }
-    else if( /^\s*loop\b/i.test( clineStr ) ) {
+    if( /^\s*loop\b/i.test( clineStr ) ) {
         // is it a multiline while/for, or loop on its own?
         // search back for while/for without a loop, stop at any statement
-        ind = MainBlockIndent( ind, pline, unfLoop, StatementStart );
         dbg("indentLine: 'loop' aligned either to corresponding 'for/while', or on its own");
-    }  else if( /^\s*(function|procedure|package)\b/i.test( clineStr ) ) {
+        return MainBlockIndent( pind, pline, unfLoop, StatementStart );
+    }
+    if( /^\s*(function|procedure|package)\b/i.test( clineStr ) ) {
         dbg("indentLine:", RegExp.$1, " - checking for corresponding 'generic'");
-        ind = MainBlockIndent( ind, pline, /generic\b/, /^\s*(function|procedure|package)\b/ );
+        return MainBlockIndent( pind, pline, /generic\b/, /^\s*(function|procedure|package)\b/ );
     }
-    else if( /^\s*:=/.test( clineStr ) ) {
+    if( /^\s*:=/.test( clineStr ) ) {
         dbg("indentLine: continuing assignment");
-        ind = ind + indentWidth;
+        return pind + indentWidth;
     }
-    else {
-        dbg("indentLine: current line follows previous line");
-    }
-    return ind
+
+    dbg("indentLine: current line has default indent");
+    return pind
 } // indentLine()
 
 
