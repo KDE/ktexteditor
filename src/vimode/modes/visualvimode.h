@@ -37,8 +37,8 @@ class VisualViMode : public NormalViMode
 
 public:
     explicit VisualViMode(InputModeManager *viInputModeManager,
-                        KTextEditor::ViewPrivate *view,
-                        KateViewInternal *viewInternal);
+                          KTextEditor::ViewPrivate *view,
+                          KateViewInternal *viewInternal);
     virtual ~VisualViMode();
 
     void init();
@@ -55,8 +55,9 @@ public:
 
     void switchStartEnd();
     void reset();
-    void setVisualModeType(ViMode mode);
+    void setVisualModeType(const ViMode mode);
     void saveRangeMarks();
+
     void setStart(const KTextEditor::Cursor &c)
     {
         m_start = c;
@@ -74,19 +75,33 @@ public:
         return m_lastVisualMode;
     }
 
-    KTextEditor::Cursor getStart() const
+    const KTextEditor::Cursor &getStart() const
     {
         return m_start;
     }
 
     // Selects all lines in range;
-    void SelectLines(KTextEditor::Range range);
+    void selectLines(const KTextEditor::Range &range);
 
     // Selects range between c1 and c2, but includes the end cursor position.
-    void SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2);
+    void selectInclusive(const KTextEditor::Cursor &c1,
+                         const KTextEditor::Cursor &c2);
 
     // Select block between c1 and c2.
-    void SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2);
+    void selectBlockInclusive(const KTextEditor::Cursor &c1,
+                              const KTextEditor::Cursor &c2);
+
+protected:
+    /**
+     * Called when a motion/text object is used. Updates the cursor position
+     * and modifies the range. A motion will only modify the end of the range
+     * (i.e. move the cursor) while a text object may modify both the start and
+     * the end. Overriden from the ModeBase class.
+     */
+    virtual void goToPos(const Range &r) Q_DECL_OVERRIDE;
+
+private:
+    void initializeCommands();
 
 public Q_SLOTS:
     /**
@@ -97,18 +112,8 @@ public Q_SLOTS:
     void updateSelection();
 
 private:
-    void initializeCommands();
-
-    /**
-     * Called when a motion/text object is used. Updates the cursor position
-     * and modifies the range. A motion will only modify the end of the range
-     * (i.e. move the cursor) while a text object may modify both the start and
-     * the end.
-     */
-    void goToPos(const Range &r);
-    ViMode m_mode;
     KTextEditor::Cursor m_start;
-    ViMode m_lastVisualMode; // used when reselecting a visual selection
+    ViMode m_mode, m_lastVisualMode;
 };
 
 }

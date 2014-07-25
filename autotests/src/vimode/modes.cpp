@@ -1339,7 +1339,10 @@ void ModesTest::VisualCommandsTests()
     }
 
     // BUG #328277 - make sure kate doesn't crash
-    DoTest("aaa\nbbb", "Vj>u>.", "    aaa\n    bbb", ShouldFail, "Crash is fixed, but correct repeat behaviour in this scenario is yet to be implemented");
+    BeginTest("aaa\nbbb");
+    TestPressKey("Vj>u>.");
+    QCOMPARE(kate_view->renderer()->caretStyle(), KateRenderer::Block);
+    FinishTest("aaa\nbbb");
 }
 
 void ModesTest::VisualExternalTests()

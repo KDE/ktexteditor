@@ -20,15 +20,13 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateglobal.h"
-#include <vimode/globalstate.h>
+#include <document/katedocument.h>
+#include <inputmode/kateviinputmode.h>
+
 #include <vimode/modes/visualvimode.h>
-#include <vimode/command.h>
 #include <vimode/inputmodemanager.h>
-#include <vimode/motion.h>
 #include <vimode/range.h>
-#include "katedocument.h"
-#include "kateviinputmode.h"
+#include <vimode/motion.h>
 #include <vimode/marks.h>
 
 using namespace KateVi;
@@ -40,49 +38,56 @@ using namespace KateVi;
         Motion( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
 
 VisualViMode::VisualViMode(InputModeManager *viInputModeManager,
-                       KTextEditor::ViewPrivate *view,
-                       KateViewInternal *viewInternal)
+                           KTextEditor::ViewPrivate *view,
+                           KateViewInternal *viewInternal)
     : NormalViMode(viInputModeManager, view, viewInternal)
 {
     m_start.setPosition(-1, -1);
-
     m_mode = ViMode::VisualMode;
-
     initializeCommands();
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelection()));
+
+    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)),
+            this, SLOT(updateSelection()));
 }
 
 VisualViMode::~VisualViMode()
 {
 }
 
-void VisualViMode::SelectInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
+void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1,
+                                   const KTextEditor::Cursor &c2)
 {
-    if (c1 >= c2)
+    if (c1 >= c2) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
-                                   c2.line(), c2.column()));
-    else
+                                                c2.line(), c2.column()));
+    } else {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
-                                   c2.line(), c2.column() + 1));
+                                                c2.line(), c2.column() + 1));
+    }
 }
 
-void VisualViMode::SelectBlockInclusive(KTextEditor::Cursor c1, KTextEditor::Cursor c2)
+void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor &c1,
+                                        const KTextEditor::Cursor &c2)
 {
     m_view->setBlockSelection(true);
-    if (c1.column() >= c2.column())
+
+    if (c1.column() >= c2.column()) {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
-                                   c2.line(), c2.column()));
-    else
+                                                c2.line(), c2.column()));
+    } else {
         m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
-                                   c2.line(), c2.column() + 1));
+                                                c2.line(), c2.column() + 1));
+    }
 }
 
-void VisualViMode::SelectLines(KTextEditor::Range range)
+void VisualViMode::selectLines(const KTextEditor::Range &range)
 {
-    int startline = qMin(range.start().line(), range.end().line());
-    int endline   = qMax(range.start().line(), range.end().line());
-    m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(startline, 0),
-                               KTextEditor::Cursor(endline, m_view->doc()->lineLength(endline) + 1)));
+    int sline = qMin(range.start().line(), range.end().line());
+    int eline = qMax(range.start().line(), range.end().line());
+    int ecol = m_view->doc()->lineLength(eline) + 1;
+
+    m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(sline, 0),
+                                            KTextEditor::Cursor(eline, ecol)));
 }
 
 void VisualViMode::goToPos(const Range &r)
@@ -114,21 +119,18 @@ void VisualViMode::goToPos(const Range &r)
     updateCursor(c);
 
     // Setting range for a command
-    m_commandRange.startLine = m_start.line();
-    m_commandRange.startColumn = m_start.column();
-    m_commandRange.endLine = c.line();
-    m_commandRange.endColumn = c.column();
+    m_commandRange = Range(m_start, c, m_commandRange.motionType);
 
     // If visual mode is blockwise
     if (isVisualBlock()) {
-        SelectBlockInclusive(m_start, c);
+        selectBlockInclusive(m_start, c);
 
         // Need to correct command range to make it inclusive.
         if ((c.line() < m_start.line() && c.column() > m_start.column()) ||
-                (c.line() > m_start.line() && c.column() < m_start.column())) {
+            (c.line() > m_start.line() && c.column() < m_start.column())) {
+
             qSwap(m_commandRange.endColumn, m_commandRange.startColumn);
         }
-
         return;
     } else {
         m_view->setBlockSelection(false);
@@ -136,12 +138,12 @@ void VisualViMode::goToPos(const Range &r)
 
     // If visual mode is linewise
     if (isVisualLine()) {
-        SelectLines(KTextEditor::Range(m_start, c));
+        selectLines(KTextEditor::Range(m_start, c));
         return;
     }
 
     // If visual mode is charwise
-    SelectInclusive(m_start, c);
+    selectInclusive(m_start, c);
 }
 
 void VisualViMode::reset()
@@ -151,7 +153,6 @@ void VisualViMode::reset()
     // only switch to normal mode if still in visual mode. commands like c, s, ...
     // can have switched to insert mode
     if (m_viInputModeManager->isAnyVisualMode()) {
-
         saveRangeMarks();
         m_lastVisualMode = m_viInputModeManager->getCurrentViMode();
 
@@ -185,7 +186,6 @@ void VisualViMode::reset()
     }
 
     m_start.setPosition(-1, -1);
-
     m_pendingResetIsDueToExit = false;
 }
 
@@ -208,11 +208,10 @@ void VisualViMode::init()
 
     if (isVisualLine()) {
         KTextEditor::Cursor c = m_view->cursorPosition();
-        SelectLines(KTextEditor::Range(c, c));
+        selectLines(KTextEditor::Range(c, c));
     }
 
-    m_commandRange.startLine = m_commandRange.endLine = m_start.line();
-    m_commandRange.startColumn = m_commandRange.endColumn = m_start.column();
+    m_commandRange = Range(m_start, m_start, m_commandRange.motionType);
 }
 
 void VisualViMode::setVisualModeType(ViMode mode)
@@ -244,7 +243,6 @@ void VisualViMode::updateSelection()
     if (!m_viInputModeManager->inputAdapter()->isActive()) {
         return;
     }
-
     if (m_viInputModeManager->isHandlingKeypress() && !m_isUndo) {
         return;
     }
@@ -252,9 +250,8 @@ void VisualViMode::updateSelection()
     // If we are there it's already not VisualBlock mode.
     m_view->setBlockSelection(false);
 
-    KTextEditor::Range r = m_view->selectionRange();
-
     // If not valid going back to normal mode
+    KTextEditor::Range r = m_view->selectionRange();
     if (!r.isValid()) {
         // Don't screw up the cursor's position. See BUG #337286.
         m_pendingResetIsDueToExit = true;
@@ -267,18 +264,11 @@ void VisualViMode::updateSelection()
         commandEnterVisualMode();
     }
 
-    if (m_view->cursorPosition() == r.start()) {
-        m_start = r.end();
-    } else {
-        m_start = r.start();
-    }
-
     // Set range for commands
-    m_commandRange.startLine = r.start().line();
-    m_commandRange.startColumn = r.start().column();
-    m_commandRange.endLine = r.end().line();
-    // The end of the selectionRange seems to be one space forward of where it should be.
-    m_commandRange.endColumn = r.end().column() - 1;
+    m_start = (m_view->cursorPosition() == r.start()) ? r.end() : r.start();
+    m_commandRange = Range(r.start(), r.end(), m_commandRange.motionType);
+    // The end of the range seems to be one space forward of where it should be.
+    m_commandRange.endColumn--;
 }
 
 void VisualViMode::initializeCommands()
