@@ -181,3 +181,13 @@ void IndentTest::testNormal()
 {
     runTest(ExpectedFailures());
 }
+
+void IndentTest::testReplicode_data()
+{
+    getTestData("replicode");
+}
+
+void IndentTest::testReplicode()
+{
+    runTest(ExpectedFailures());
+}

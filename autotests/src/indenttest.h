@@ -60,6 +60,9 @@ private Q_SLOTS:
 
     void testNormal_data();
     void testNormal();
+
+    void testReplicode_data();
+    void testReplicode();
 };
 
 #endif // INDENTTEST_H
