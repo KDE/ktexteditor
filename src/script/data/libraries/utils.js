@@ -1,6 +1,6 @@
 /*
  * name: Helper Functions (copied from cppstyle.js to be reused by other indenters)
- * license: LGPL v3
+ * license: LGPL v2+
  * author: Alex Turbov <i.zaufi@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,6 +19,12 @@
  */
 
 //BEGIN Utils
+/**
+ * \brief Print or suppress debug output depending on \c debugMode variable.
+ *
+ * The mentioned \c debugMode supposed to be defined by a particular indenter
+ * (external code).
+ */
 function dbg()
 {
     if (debugMode)
@@ -31,7 +37,9 @@ function dbg()
  * \return \c true if attribute at given position is a \e Comment
  *
  * \note C++ highlighter use \em RegionMarker for special comments,
- * soit must be counted as well...
+ * so it must be counted as well...
+ *
+ * \todo Provide an "overload" which accepts a \c Cursor
  */
 function isComment(line, column)
 {
@@ -48,6 +56,8 @@ function isComment(line, column)
 
 /**
  * \return \c true if attribute at given position is a \e String
+ *
+ * \todo Provide an "overload" which accepts a \c Cursor
  */
 function isString(line, column)
 {
@@ -63,6 +73,8 @@ function isString(line, column)
  *
  * \note C++ highlighter use \e RegionMarker for special comments,
  * soit must be counted as well...
+ *
+ * \todo Provide an "overload" which accepts a \c Cursor
  */
 function isStringOrComment(line, column)
 {
@@ -96,24 +108,27 @@ function splitByComment(line)
     var text = document.line(line);
     dbg("splitByComment: text='"+text+"'");
 
-    // NOTE JS have no indexOf() w/ initial position, so
-    // the simplest way is to find a comment char by char... ;-(
+    /// \note Always ask a comment marker for Normal Text attribute
+    /// of the current syntax, but not for a given line, cuz latter
+    /// can be a Doxygen comment, which do not have a comment marker
+    /// defined at all...
+    var comment_marker = document.commentMarker(0);
+    var text = document.line(line);
     var found = false;
-    var seen_slash = false;
-    for (var i = 0; i < text.length; i++)
+    for (
+        var pos = text.indexOf(comment_marker)
+      ; pos != -1
+      ; pos = text.indexOf(comment_marker, pos + 1)
+      )
     {
-        if (text[i] == '/')
+        // Check attribute to be sure...
+        if (isComment(line, pos))
         {
-            // Ok, it looks like a comment...
-            // Check attribute...
-            if (isComment(line, i + 1))
-            {
-                // Got it!
-                before = text.substring(0, i);
-                after = text.substring(i + 2, text.length);
-                found = true;
-                break;
-            }
+            // Got it!
+            before = text.substring(0, pos);
+            after = text.substring(pos + comment_marker.length, text.length);
+            found = true;
+            break;
         }
     }
     // If no comment actually found, then set text before to the original
@@ -139,6 +154,8 @@ function stripComment(line)
  * Set new cursor position to the next one after the current.
  *
  * \return \c true if a desired char was added
+ *
+ * \todo Provide an "overload" which accepts a \c Cursor
  */
 function addCharOrJumpOverIt(line, column, char)
 {
@@ -158,11 +175,17 @@ function addCharOrJumpOverIt(line, column, char)
 /**
  * Check if a character right before cursor is the very first on the line
  * and the same as a given one.
+ *
+ * \todo Provide an "overload" which accepts a \c Cursor
  */
 function justEnteredCharIsFirstOnLine(line, column, char)
 {
     return document.firstChar(line) == char && document.firstColumn(line) == (column - 1);
 }
 //END Utils
+
+/**
+ * \todo Unit tests! How?
+ */
 
 // kate: space-indent on; indent-width 4; replace-tabs on;

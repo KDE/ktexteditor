@@ -5,11 +5,15 @@
  * revision: 30
  * kate-version: 3.4
  * priority: 10
- * indent-languages: C++,ISO C++
+ * indent-languages: C++, C++/Qt4, ISO C++
+ * required-syntax-style: C++
+ *
+ * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
- * License version 2 as published by the Free Software Foundation.
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -316,9 +320,9 @@ function tryToAlignBeforeCloseBrace_ch(line)
     if (ch == '}' || ch == ')' || ch == ']')
     {
         var openBracePos = document.anchor(line, pos, ch);
-        dbg("Found open brace @ "+openBracePos)
+        dbg("Found open brace @", openBracePos);
         if (openBracePos.isValid())
-            result = document.firstColumn(openBracePos.line) + (ch == '}' ? 0 : 2);
+            result = document.firstColumn(openBracePos.line) + (ch == '}' ? 0 : (gIndentWidth / 2));
     }
     else if (ch == '>')
     {
@@ -997,8 +1001,12 @@ function trySameLineComment(cursor)
     var sc = splitByComment(line);
     if (sc.hasComment)                                      // Is there any comment on a line?
     {
-        // Make sure we r not in a comment already
-        if (document.isComment(line, document.firstColumn(line)) && (document.line(line) != '///'))
+        // Make sure we r not in a comment already -- it can be a multiline one...
+        var fc = document.firstColumn(line);
+        var text = document.line(line).ltrim();
+        var nothing_to_do = (fc < (column - 1)) && document.isComment(line, fc);
+        // Also check that line has smth that needs to be "fixed"...
+        if (nothing_to_do && text != "//" && text != "// /" && text != "///" && text != "/// /")
             return;
         // If no text after the comment and it still not aligned
         var text_len = sc.before.rtrim().length;
@@ -1026,6 +1034,11 @@ function trySameLineComment(cursor)
             // Form a Doxygen comment!
             document.removeText(line, column, line, column + sc.after.length);
             document.insertText(line, column, text_len != 0 ? "< " : " ");
+        }
+        else if (sc.after == "/ /")
+        {
+            // Looks like user wants to "draw a fence" w/ '/'s
+            document.removeText(line, column - 2, line, column - 1);
         }
         else if (text_len == 0 && sc.after.length == 0)
         {
@@ -1136,8 +1149,6 @@ function tryTemplate(cursor)
  * \param cursor initial cursor position
  * \param es edit session instance
  * \return new (possible modified) cursor position
- *
- * \attention This function \b never calls \c editEnd() for a given \c es instance!
  */
 function tryJumpOverParenthesis(cursor)
 {
@@ -1268,13 +1279,24 @@ function tryComma(cursor)
     var column = cursor.column;
     // Check is comma a very first character on a line...
     if (justEnteredCharIsFirstOnLine(line, column, ','))
+    {
         result = tryIndentRelativePrevNonCommentLine(line);
+    }
+    else
+    {
+        // Try to stick a comma to a previous non-space char
+        var lastWordPos = document.text(line, 0, line, column - 1).rtrim().length;
+        if (lastWordPos < column)
+        {
+            document.removeText(line, column - 1, line, column);
+            document.insertText(line, lastWordPos, ",");
+            cursor = new Cursor(line, lastWordPos + 1);
+            view.setCursorPosition(cursor);
+        }
+    }
 
     cursor = tryJumpOverParenthesis(cursor);                // Try to jump out of parenthesis
-    if (document.charAt(cursor) != ' ')
-        document.insertText(cursor, " ");                   // Add space only if not present
-    else
-        view.setCursorPosition(line, column + 1);           // Otherwise just move cursor after it
+    addCharOrJumpOverIt(cursor.line, cursor.column, ' ');
     return result;
 }
 
@@ -1595,7 +1617,8 @@ function tryOperator(cursor, ch)
             // Remove just entered (redundant) one
             document.removeText(line, column - 1, line, column);
         }
-        else if (prev[1] == '.' && prev[2] == '.')          // Append one more if only two here
+        // Append one more if only two here and we are in 'Normal Mode'
+        else if (prev[1] == '.' && prev[2] == '.' && document.defStyleNum(line, column) == 0)
         {
             addCharOrJumpOverIt(line, column, '.');
         }                                                   // Otherwise, do nothing...
@@ -2170,7 +2193,7 @@ function tryKeywordsWithBrackets(cursor)
 }
 
 /**
- * Try to add space before, after some equal operators.
+ * Try to add space before and after some equal operators.
  */
 function tryEqualOperator(cursor)
 {
@@ -2186,7 +2209,7 @@ function tryEqualOperator(cursor)
 
     switch (c)
     {
-        // Two chars operators: !=, ==
+        // Two chars operators: !=, ==, ...
         case '*':
         case '%':
         case '/':
@@ -2208,6 +2231,7 @@ function tryEqualOperator(cursor)
         case '}':                                           // It can be a ctor of some proxy object
             // Add a space between closing bracket and just entered '='
             document.insertText(line, column - 1, " ");
+            addCharOrJumpOverIt(line, column + 1, ' ');     // Make sure there is a space after it!
             break;
         case '<':
             // Shortcut: transfrom "some<=|>" -> "some <= |"
@@ -2614,7 +2638,7 @@ function alignInsideBraces(line)
               ;
             var desiredIndent = parentIndent + (
                 mustAddHalfTab
-              ? 2
+              ? (gIndentWidth / 2)
               : (doNotAddAnything ? 0 : gIndentWidth)
               );
             result = desiredIndent;                         // Reassign a result w/ desired value!
@@ -2748,6 +2772,8 @@ function indent(line, indentWidth, ch)
 
 /**
  * \todo Better to use \c defStyleNum() instead of \c attributeName() and string comparison
+ *
+ * \todo Prevent second '//' on a line... ? Fix the current way anyway...
  */
 
 // kate: space-indent on; indent-width 4; replace-tabs on;
