@@ -29,7 +29,8 @@
 
 QTEST_MAIN(WordCompletionTest)
 
-static const int count = 500000;
+// was 500000, but that takes 30 seconds on build.kde.org, removed two 0 ;)
+static const int count = 5000;
 
 using namespace KTextEditor;
 
