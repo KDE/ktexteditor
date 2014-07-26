@@ -782,6 +782,16 @@ void KateHighlighting::release()
 }
 
 /**
+ * Reload the highlighting.
+ */
+
+void KateHighlighting::reload()
+{
+    cleanup();
+    init();
+}
+
+/**
  * Initialize a context for the first time.
  */
 

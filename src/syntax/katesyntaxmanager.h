@@ -96,6 +96,8 @@ public:
 
     // be carefull: all documents hl should be invalidated after having successfully called this method!
     bool resetDynamicCtxs();
+    
+    void reload();
 
 Q_SIGNALS:
     void changed();

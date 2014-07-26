@@ -30,6 +30,7 @@
 #include "katecmd.h"
 #include "katecmds.h"
 #include "katesedcmd.h"
+#include "katehighlightingcmds.h"
 #include "katemodemanager.h"
 #include "kateschema.h"
 #include "kateschemaconfig.h"
@@ -203,6 +204,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_cmds.push_back(KateCommands::Character::self());
     m_cmds.push_back(KateCommands::Date::self());
     m_cmds.push_back(KateCommands::SedReplace::self());
+    m_cmds.push_back(KateCommands::Highlighting::self());
 
     // global word completion model
     m_wordCompletionModel = new KateWordCompletionModel(this);

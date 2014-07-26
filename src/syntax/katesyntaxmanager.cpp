@@ -694,5 +694,20 @@ bool KateHlManager::resetDynamicCtxs()
 
     return true;
 }
+
+void KateHlManager::reload()
+{
+    resetDynamicCtxs();
+
+    for(int i = 0; i < highlights(); i++)
+    {
+        getHl(i)->reload();
+    }
+
+    foreach(KTextEditor::DocumentPrivate* doc, KTextEditor::EditorPrivate::self()->kateDocuments())
+    {
+        doc->makeAttribs();
+    }
+}
 //END
 

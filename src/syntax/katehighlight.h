@@ -212,6 +212,7 @@ public:
     }
     void use();
     void release();
+    void reload();
 
     /**
      * @return true if the character @p c is not a deliminator character
