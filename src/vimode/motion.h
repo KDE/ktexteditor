@@ -23,11 +23,11 @@
 
 #include <vimode/command.h>
 #include <vimode/range.h>
+#include <vimode/modes/normalvimode.h>
 #include <ktexteditor_export.h>
 
 namespace KateVi
 {
-class NormalViMode;
 
 /**
  * combined class for motions and text objects. execute() returns a KateViRange.
