@@ -284,6 +284,7 @@ void KateDocumentTest::testReplaceTabs()
         view->setCursorPosition(Cursor(0, 0));
     };
 
+    doc.setHighlightingMode ("C++");
     doc.config()->setTabWidth(4);
     doc.config()->setIndentationMode("cppstyle");
 
