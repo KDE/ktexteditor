@@ -81,18 +81,13 @@ begin
    Ada.Float_Text_IO.put(                        --  Float literal
                            Item => gamma(i), Fore => 1, Aft => 1, Exp => 0);
    new_line;
-   if e1 then
-      a := 17
-           + 32;
-      return( a+b );
-   elsif e2 then
-      return(
-               a+b );
-   else
-      return
-         ( a
-           +b);
-   end
+   return( a+b );
+   return(
+            a+b );
+   return
+      ( a
+        +b);
+
 end Generic_Swap;
 
 
@@ -130,8 +125,6 @@ function SUBSTRING (DSTR: DYN_STRING;
 
 begin
    put_line("It works!");
-   qwerty
-      ( aa,b);
 
    case long_expression
       + Another_long_expression is
@@ -366,7 +359,11 @@ begin
    end loop;
 end Range_1;
 
-package Day_Of_Month_IO is  -- comment
+-- generic instantiation   -- TODO: wrong, ...
+-- ... statementIndent() scans back to for R in A'Range ... ??? ...
+-- ... because it skips over the ends
+
+package Day_Of_Month_IO is  -- TODO: scans back to beginning of file: generic? should have stopped at 'procedure'
    new Ada.Text_IO.Integer_IO (Day_Of_Month);
 
 procedure f;
@@ -457,13 +454,11 @@ begin
       or some_other_condition
       or yet_another_condition
    then
-      a;
       action( a,
               b+c,
               c + d
               + e +f +g,  -- would be nice if this was indented
             );
-      z;
 
    end if;
 
@@ -624,52 +619,9 @@ package Utilities is
    generic
       type Item is (<>);
       -- A discrete type generic formal parameter
-      with function Is_Equal (Literal_Arg1, Literal_Arg2 : in Atomic_Literal)
-         return Boolean;  -- CHECK: should be indented
    function Prev (Data : Item) return Item;
    -- more generic subprograms as appropriate to your particular project needs
 end Utilities;
-
-function Is_Variable (S_Expr_Arg : in S_Expr)
-   return Boolean is  -- CHECK: indent
-
-begin
-
-   if Is_Null(Rest_Value) then
-      return Create_Non_Atomic_Node (Value_Of_First => First_Value);
-
-      -- If the second argument is atomic, create an additional non-atomic
-      -- node, set its First field to the second argument and create an
-      -- expression from the first argument and newly created non-atomic node.
-
-   elsif Is_Atomic(Rest_Value) then
-      return Create_Non_Atomic_Node (
-                                       Value_Of_First => First_Value,
-                                       Value_Of_Rest => Create_Non_Atomic_Node (
-                                                                                  Value_Of_First => Rest_Value));
-      -- CHECK: indent here
-
-      -- Otherwise, return a non-atomic node with its First and Rest fields
-      -- set to the Value_Of_First and Value_of_Rest, respectively.
-
-   else
-      return Create_Non_Atomic_Node (
-                                       Value_Of_First => First_Value,
-                                       Value_Of_Rest => Rest_Value);
-   end if;
-
-end Is_Variable;
-
-procedure Show (Value : in Float;
-                Fore  : in Field := 1;
-                Aft   : in Field := 2;
-                Exp   : in Field := 0)
-   renames Ada.Float_Text_IO.Put;
-
-procedure Bind (Current_Value : in out Pattern;  New_Value : in Pattern)
-   renames SE.Bind;
-
-procedure Free (Pattern_Arg : in out Pattern) renames SE.Free;       -- CHECK: indent
 
 
 // kate: line-numbers true; indent-width 3; replace-tabs on
