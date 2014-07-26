@@ -339,7 +339,8 @@ void KateAutoIndent::setMode(const QString &name)
             return;
         } else {
             qCWarning(LOG_PART) << "mode" << name <<
-                                "requires a different highlight style: highlighting '" << doc->highlight()->name() << "', style '" << doc->highlight()->style() << "'"
+                                "requires a different highlight style: highlighting '"
+                                << doc->highlight()->name() << "' (" << doc->highlight()->version() << "), style '" << doc->highlight()->style() << "'"
                                 ", but script require '" << script->indentHeader().requiredStyle() << "'"
                                 ;
         }
@@ -356,7 +357,8 @@ void KateAutoIndent::checkRequiredStyle()
     if (m_script) {
         if (!isStyleProvided(m_script, doc->highlight())) {
             qCDebug(LOG_PART) << "mode" << m_mode <<
-                              "requires a different highlight style: highlighting '" << doc->highlight()->name() << "', style '" << doc->highlight()->style() << "'"
+                              "requires a different highlight style: highlighting '"
+                              << doc->highlight()->name() << "' (" << doc->highlight()->version() << "), style '" << doc->highlight()->style() << "'"
                               ", but script require '" << m_script->indentHeader().requiredStyle() << "'"
                               ;
             doc->config()->setIndentationMode(MODE_NORMAL);
