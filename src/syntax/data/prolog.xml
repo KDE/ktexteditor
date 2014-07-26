@@ -130,7 +130,7 @@ All bugs except three by the author. !FOLD THIS AWAY if long comments annoy you.
 BUG - Nobody's perfect - If I knew about the bug you found, it would have been
       fixed already.
  one- Takes a "shebang" at the start of text on other than the 1st line (Kate).
- two- Indentation-based folding is not reliable (Kate; fixed in kdelibs 4.9?).
+ two- Indentation-based folding is not reliable (Kate; fixed in KDE 4.9?).
  three- Folding is sometimes broken (Kate?).  See SOLUTIONS below.
   4 - An optional leading sign is not highlighted as part of the number.
   5 - A float w/o fractional part and exponent is highlighted as an integer.
@@ -196,7 +196,7 @@ AL GUSTO (simple changes):
   The simplified syntax below should highlight 99.999% of ISO-Prolog texts
 correctly, as well as many non-ISO Prolog texts.
   Else modify this file.  Save with new name in your HOME directory to
-.local/share/katepart5/syntax/prolog-xy.xml You may read the NOTE at the end
+.kde/share/apps/katepart/syntax/prolog-xy.xml You may read the NOTE at the end
 of this file.  WARNING: Be careful, though: the highlighting works according to
 it's program code, not neccessarily it's documentation...
 
@@ -1103,7 +1103,7 @@ TODO sorted by priority
 	(don't use a space between the two - [author: dashes/minus]
 	That's just because XML comments don't allow that:-(
 
-    To use your syntax file, copy it to .local/share/katepart5/syntax/ in
+    To use your syntax file, copy it to .kde/share/apps/katepart/syntax/ in
     your home directory. You have to open a new instance of kwrite/kate to use
     the new syntax file.
 -->

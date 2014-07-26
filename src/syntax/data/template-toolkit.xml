@@ -6,7 +6,7 @@
 ]>
 <!--
     Copyright (C) 2007 Красимир Беров <k.berov@gmail.com>
-    Put this file in your ~/.local/share/katepart5/syntax,
+    Put this file in your $KDEDIR/share/apps/katepart/syntax,
     then restart Кate/KDevelop/Quanta... whatever using katepart.
     That's it. You have Template Toolkit Syntax highliting.
     Enjoy!!!
