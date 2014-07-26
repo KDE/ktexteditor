@@ -56,6 +56,7 @@ void noDebugMessageOutput(QtMsgType type, const QMessageLogContext &context, con
 
 void ScriptTestBase::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
     m_msgHandler =  qInstallMessageHandler(noDebugMessageOutput);
     m_toplevel = new QMainWindow();
     m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel);

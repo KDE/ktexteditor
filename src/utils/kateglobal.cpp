@@ -62,6 +62,7 @@ Q_LOGGING_CATEGORY(LOG_PART, "katepart")
 
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
+
 void KTextEditor::EditorPrivate::enableUnitTestMode()
 {
     kateUnitTestMode = true;

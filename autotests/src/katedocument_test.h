@@ -30,6 +30,9 @@ public:
     KateDocumentTest();
     ~KateDocumentTest();
 
+public Q_SLOTS:
+    void initTestCase();
+
 private Q_SLOTS:
     void testWordWrap();
     void testReplaceQStringList();

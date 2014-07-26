@@ -24,6 +24,7 @@
 #include <ktexteditor/movingcursor.h>
 #include <kateconfig.h>
 #include <kateview.h>
+#include <kateglobal.h>
 
 #include <QtTestWidgets>
 #include <QTemporaryFile>
@@ -81,6 +82,11 @@ KateDocumentTest::KateDocumentTest()
 
 KateDocumentTest::~KateDocumentTest()
 {
+}
+
+void KateDocumentTest::initTestCase()
+{
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 // tests:

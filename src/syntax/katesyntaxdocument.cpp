@@ -21,6 +21,7 @@
 #include "katesyntaxdocument.h"
 
 #include "katepartdebug.h"
+#include "kateglobal.h"
 
 #include <qplatformdefs.h>
 
@@ -348,6 +349,10 @@ void KateSyntaxDocument::setupModeList(bool force)
         generalConfig.writeEntry("CachedVersion", generalConfig.readEntry("Version", 0));
         force = true;
     }
+    
+    // unit test mode enforces reload of xml files
+    if (KTextEditor::EditorPrivate::unitTestMode())
+        force = true;
 
     // Let's get a list of all the xml files for hl
     QStringList list;

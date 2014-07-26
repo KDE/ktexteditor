@@ -74,13 +74,14 @@ class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTex
 
     friend class KTextEditor::Editor;
 
-    // unit testing
+    // unit testing support
 public:
     /**
      * Calling this function internally sets a flag such that unitTestMode()
      * returns \p true.
      */
     static void enableUnitTestMode();
+
     /**
      * Returns \p true, if the unit test mode was enabled through a call of
      * enableUnitTestMode(), otherwise \p false.
