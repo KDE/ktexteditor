@@ -78,6 +78,16 @@ void IndentTest::testCppstyle()
     );
 }
 
+void IndentTest::testCMake_data()
+{
+    getTestData( "cmake" );
+}
+
+void IndentTest::testCMake()
+{
+    runTest( ExpectedFailures() );
+}
+
 void IndentTest::testPython_data()
 {
     getTestData("python");
