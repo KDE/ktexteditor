@@ -179,7 +179,5 @@ void IndentTest::testNormal_data()
 
 void IndentTest::testNormal()
 {
-    runTest(ExpectedFailures() << FAILURE("emptyline1", "is that really what we expect?")
-            << FAILURE("emptyline3", "is that really what we expext?")
-           );
+    runTest(ExpectedFailures());
 }

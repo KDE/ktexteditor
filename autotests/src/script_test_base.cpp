@@ -76,13 +76,12 @@ void ScriptTestBase::getTestData(const QString &script)
     // make sure the script files are valid
     if (!m_script_dir.isEmpty()) {
         QFile scriptFile(QLatin1String(JS_DATA_DIR) + m_script_dir + QLatin1Char('/') + script + QLatin1String(".js"));
-        if (!scriptFile.exists()) {
-            QSKIP(qPrintable(QString(scriptFile.fileName() + QLatin1String(" does not exist"))), SkipAll);
-        }
-        QVERIFY(scriptFile.open(QFile::ReadOnly));
-        QScriptValue result = m_env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
-        QVERIFY2(!result.isError(), qPrintable(QString(result.toString() + QLatin1String("\nat ")
+        if (scriptFile.exists()) {
+            QVERIFY(scriptFile.open(QFile::ReadOnly));
+            QScriptValue result = m_env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
+            QVERIFY2(!result.isError(), qPrintable(QString(result.toString() + QLatin1String("\nat ")
                                                + m_env->engine()->uncaughtExceptionBacktrace().join(QLatin1String("\n")))));
+        }
     }
 
     const QString testDir(testDataPath + m_section + QLatin1Char('/') + script + QLatin1Char('/'));
