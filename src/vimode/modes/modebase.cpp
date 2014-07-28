@@ -642,120 +642,93 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
     return innerRange(r, inner);
 }
 
-Range ModeBase::findSurroundingBrackets(const QChar &c1,
-        const QChar &c2,
-        bool inner,
-        const QChar &nested1,
-        const QChar &nested2) const
+Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2,
+                                        bool inner, const QChar &nested1,
+                                        const QChar &nested2) const
 {
-
     KTextEditor::Cursor cursor(m_view->cursorPosition());
-
     Range r(cursor, InclusiveMotion);
+    int line = cursor.line();
+    int column = cursor.column();
+    int catalan;
 
-    // Chars should not differs. For equal chars use findSurroundingQuotes.
+    // Chars should not differ. For equal chars use findSurroundingQuotes.
     Q_ASSERT(c1 != c2);
 
-    QStack<QChar> stack;
-    int column = cursor.column();
-    int line = cursor.line();
-    bool should_break = false;
-
-    // Going through the text and pushing respectively brackets to the stack.
-    // Then pop it out if the stack head is the bracket under cursor.
-
-    if (column < m_view->doc()->line(line).size() && m_view->doc()->line(line).at(column) == c2) {
+    const QString &l = m_view->doc()->line(line);
+    if (column < l.size() && l.at(column) == c2) {
         r.endLine = line;
         r.endColumn = column;
     } else {
-
-        if (column < m_view->doc()->line(line).size() && m_view->doc()->line(line).at(column) == c1) {
+        if (column < l.size() && l.at(column) == c1) {
             column++;
         }
 
-        stack.push(c2);
-        for (; line < m_view->doc()->lines() && !should_break; line++) {
-            for (; column < m_view->doc()->line(line).size(); column++) {
-                QChar next_char = stack.pop();
+        for (catalan = 1; line < m_view->doc()->lines(); line++) {
+            const QString &l = m_view->doc()->line(line);
 
-                if (next_char != m_view->doc()->line(line).at(column)) {
-                    stack.push(next_char);
+            for (; column < l.size(); column++) {
+                const QChar &c = l.at(column);
+
+                if (c == nested1) {
+                    catalan++;
+                } else if (c == nested2) {
+                    catalan--;
                 }
-
-                if (stack.isEmpty()) {
-                    should_break = true;
+                if (!catalan) {
                     break;
                 }
-
-                if (m_view->doc()->line(line).at(column) == nested1) {
-                    stack.push(nested2);
-                }
             }
-            if (should_break) {
+            if (!catalan) {
                 break;
             }
-
             column = 0;
         }
 
-        if (!should_break) {
+        if (catalan != 0) {
             return Range::invalid();
         }
-
-        r.endColumn = column;
         r.endLine = line;
-
+        r.endColumn = column;
     }
 
-    // The same algorythm but going from the left to right.
-
+    // Same algorithm but backwards.
     line = cursor.line();
     column = cursor.column();
 
-    if (column < m_view->doc()->line(line).size() && m_view->doc()->line(line).at(column) == c1) {
+    if (column < l.size() && l.at(column) == c1) {
         r.startLine = line;
         r.startColumn = column;
     } else {
-        if (column < m_view->doc()->line(line).size() && m_view->doc()->line(line).at(column) == c2) {
+        if (column < l.size() && l.at(column) == c2) {
             column--;
         }
 
-        stack.clear();
-        stack.push(c1);
+        for (catalan = 1; line >= 0; line--) {
+            const QString &l = m_view->doc()->line(line);
 
-        should_break = false;
-        for (; line >= 0 && !should_break; line--) {
-            for (; column >= 0 &&  column < m_view->doc()->line(line).size(); column--) {
-                QChar next_char = stack.pop();
+            for (; column >= 0; column--) {
+                const QChar &c = l.at(column);
 
-                if (next_char != m_view->doc()->line(line).at(column)) {
-                    stack.push(next_char);
+                if (c == nested1) {
+                    catalan--;
+                } else if (c == nested2) {
+                    catalan++;
                 }
-
-                if (stack.isEmpty()) {
-                    should_break = true;
+                if (!catalan) {
                     break;
                 }
-
-                if (m_view->doc()->line(line).at(column) == nested2) {
-                    stack.push(nested1);
-                }
             }
-
-            if (should_break) {
+            if (!catalan || !line) {
                 break;
             }
-
             column = m_view->doc()->line(line - 1).size() - 1;
         }
-
-        if (!should_break) {
+        if (catalan != 0) {
             return Range::invalid();
         }
-
         r.startColumn = column;
         r.startLine = line;
-
     }
 
     return innerRange(r, inner);

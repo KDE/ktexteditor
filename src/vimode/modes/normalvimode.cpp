@@ -3404,31 +3404,26 @@ Range NormalViMode::textObjectInnerBackQuote()
 
 Range NormalViMode::textObjectAParen()
 {
-
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false,  QLatin1Char('('), QLatin1Char(')'));
 }
 
 Range NormalViMode::textObjectInnerParen()
 {
-
     return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), true, QLatin1Char('('), QLatin1Char(')'));
 }
 
 Range NormalViMode::textObjectABracket()
 {
-
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false,  QLatin1Char('['), QLatin1Char(']'));
 }
 
 Range NormalViMode::textObjectInnerBracket()
 {
-
     return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), true, QLatin1Char('['), QLatin1Char(']'));
 }
 
 Range NormalViMode::textObjectACurlyBracket()
 {
-
     return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false,  QLatin1Char('{'), QLatin1Char('}'));
 }
 

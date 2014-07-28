@@ -107,7 +107,8 @@ protected:
     KTextEditor::Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
     Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
-                                        const QChar &nested1, const QChar &nested2) const;
+                                  const QChar &nested1, const QChar &nested2) const;
+
     Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
     Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
