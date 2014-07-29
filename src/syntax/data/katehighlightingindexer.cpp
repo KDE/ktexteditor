@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
             << QLatin1String("author") << QLatin1String("license") << QLatin1String("indenter");
     
     // index all given highlightings
-    QVariantList hls;
+    QVariantMap hls;
     for (int i = 2; i < app.arguments().size(); ++i) {
         QFile hlFile (app.arguments().at(i));
         if (!hlFile.open(QIODevice::ReadOnly))
@@ -71,9 +71,6 @@ int main(int argc, char *argv[])
         // map to store hl info
         QVariantMap hl;
         
-        // file name as identifier
-        hl[QLatin1String("identifier")] = QFileInfo(hlFile).fileName();
-        
         // transfer text attributes
         Q_FOREACH (QString attribute, textAttributes) {
             hl[attribute] = root.attribute(attribute);
@@ -84,7 +81,7 @@ int main(int argc, char *argv[])
         hl[QLatin1String("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("TRUE"));
             
         // remember hl
-        hls.append(hl);
+        hls[QFileInfo(hlFile).fileName()] = hl;
     }
     
     // write out json
