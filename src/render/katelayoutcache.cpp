@@ -416,6 +416,10 @@ int KateLayoutCache::viewLine(const KTextEditor::Cursor &realCursor)
 
 int KateLayoutCache::displayViewLine(const KTextEditor::Cursor &virtualCursor, bool limitToVisible)
 {
+    if (!virtualCursor.isValid()) {
+        return -1;
+    }
+
     KTextEditor::Cursor work = viewCacheStart();
 
     // only try this with valid lines!
