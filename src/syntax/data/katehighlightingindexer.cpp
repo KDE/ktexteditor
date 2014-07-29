@@ -20,6 +20,7 @@
 
 #include <QCoreApplication>
 #include <QFile>
+#include <QFileInfo>
 #include <QVariant>
 #include <QDomDocument>
 #include <QJsonDocument>
@@ -69,6 +70,9 @@ int main(int argc, char *argv[])
         
         // map to store hl info
         QVariantMap hl;
+        
+        // file name as identifier
+        hl[QLatin1String("identifier")] = QFileInfo(hlFile).fileName();
         
         // transfer text attributes
         Q_FOREACH (QString attribute, textAttributes) {

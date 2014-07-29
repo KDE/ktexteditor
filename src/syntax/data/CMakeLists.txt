@@ -27,7 +27,7 @@ add_executable(katehighlightingindexer katehighlightingindexer.cpp)
 target_link_libraries(katehighlightingindexer Qt5::Xml)
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/index.json
   COMMAND katehighlightingindexer ${CMAKE_CURRENT_BINARY_DIR}/index.json ${ALL_HIGHLIGHTERS}
-  DEPENDS ${ALL_HIGHLIGHTERS})
+  DEPENDS katehighlightingindexer.cpp ${ALL_HIGHLIGHTERS})
 add_custom_target(GenerateIndexFile ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/index.json)
 
 install(FILES language.dtd syntax.template ${CMAKE_CURRENT_BINARY_DIR}/index.json ${ALL_HIGHLIGHTERS} DESTINATION ${DATA_INSTALL_DIR}/katepart5/syntax)
