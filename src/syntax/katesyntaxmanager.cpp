@@ -63,7 +63,7 @@ KateHlManager::KateHlManager()
     : QObject()
     , m_config(QLatin1String("katesyntaxhighlightingrc"), KConfig::NoGlobals)
     , commonSuffixes(QString::fromLatin1(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';')))
-    , syntax(new KateSyntaxDocument(&m_config))
+    , syntax(new KateSyntaxDocument())
     , dynamicCtxsCount(0)
     , forceNoDCReset(false)
 {

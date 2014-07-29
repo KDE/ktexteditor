@@ -36,7 +36,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "kateschema.h"
-#include "katesyntaxdocument.h"
 #include "katemodeconfigpage.h"
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
@@ -1225,10 +1224,6 @@ void KateHlDownloadDialog::slotInstall()
         KJobWidgets::setWindow(job, this);
         job->exec();
     }
-
-    // update Config !!
-    // this rewrites the cache....
-    KateSyntaxDocument doc(KateHlManager::self()->getKConfig(), true);
 }
 //END KateHlDownloadDialog
 

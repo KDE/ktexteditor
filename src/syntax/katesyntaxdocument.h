@@ -76,10 +76,9 @@ class KateSyntaxDocument : public QDomDocument
 public:
     /**
      * Constructor
-     * Sets the current file to nothing and build the ModeList (katesyntaxhighlightingrc)
-     * @param force fore the update of the hl cache
+     * Sets the current file to nothing and build the ModeList
      */
-    explicit KateSyntaxDocument(KConfig *config, bool force = false);
+    KateSyntaxDocument();
 
     /**
      * Desctructor
@@ -146,9 +145,8 @@ public:
 private:
     /**
      * Generate the list of hl modes, store them in myModeList
-     * @param force if true forces to rebuild the Mode List from the xml files (instead of katesyntax...rc)
      */
-    void setupModeList(bool force);
+    void setupModeList();
 
     /**
      * Used by getConfig and getGroupInfo to traverse the xml nodes and
@@ -170,11 +168,6 @@ private:
      * last found data out of the xml
      */
     QStringList m_data;
-
-    /**
-     * global config, deleted by hlmanager...
-     */
-    KConfig *m_config;
 };
 
 #endif

@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
     }
     
     // write out json
-    outFile.write (QJsonDocument::fromVariant(QVariant(hls)).toJson());
+    outFile.write (QJsonDocument::fromVariant(QVariant(hls)).toBinaryData());
     
     return 0;
 }
