@@ -17,7 +17,7 @@ include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
-set(KF5_VERSION "5.0.0") # handled by release scripts
+set(KF5_VERSION "5.1.0") # handled by release scripts
 set(KF5_DEP_VERSION "5.0.0") # handled by release scripts
 
 ecm_setup_version(
