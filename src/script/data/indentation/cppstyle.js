@@ -4,7 +4,7 @@ var katescript = {
     "license": "LGPL",
     "revision": 30,
     "kate-version": "3.4",
-    "required-syntax-style": "CMake",
+    "required-syntax-style": "C++",
     "indent-languages": ["C++", "C++/Qt4", "ISO C++"],
     "priority": 10
 }; // kate-script-header, must be at the start of the file without comments, pure json
