@@ -42,10 +42,6 @@ KateScriptAction::KateScriptAction(const ScriptActionInfo &info, KTextEditor::Vi
         setIcon(QIcon::fromTheme(info.icon()));
     }
 
-    if (!info.shortcut().isEmpty()) {
-        setShortcut(info.shortcut());
-    }
-
     connect(this, SIGNAL(triggered(bool)), this, SLOT(exec()));
 }
 
@@ -138,6 +134,10 @@ void KateScriptActionMenu::repopulate()
             QAction *a = new KateScriptAction(info, m_view);
             m->addAction(a);
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
+            if (!info.shortcut().isEmpty()) {
+                m_view->actionCollection()->setDefaultShortcut(a, info.shortcut());
+            }
+            
             m_actions.append(a);
         }
     }
