@@ -72,37 +72,6 @@ bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList a
     return true;
 }
 
-ScriptActionInfo KateCommandLineScript::actionInfo(const QString &cmd)
-{
-    clearExceptions();
-    QScriptValue actionFunc = function(QLatin1Literal("action"));
-    if (!actionFunc.isValid()) {
-        qCDebug(LOG_PART) << i18n("Function 'action' not found in script: %1", url());
-        return ScriptActionInfo();
-    }
-
-    // add the arguments that we are going to pass to the function
-    QScriptValueList arguments;
-    arguments << cmd;
-
-    QScriptValue result = actionFunc.call(QScriptValue(), arguments);
-    // error during the calling?
-    if (m_engine->hasUncaughtException()) {
-        displayBacktrace(result, i18n("Error calling action(%1)", cmd));
-        return ScriptActionInfo();
-    }
-
-    ScriptActionInfo info;
-    info.setCommand(cmd);
-    info.setText(result.property(QLatin1String("text")).toString());
-    info.setIcon(result.property(QLatin1String("icon")).toString());
-    info.setCategory(result.property(QLatin1String("category")).toString());
-    info.setInteractive(result.property(QLatin1String("interactive")).toBool());
-    info.setShortcut(result.property(QLatin1String("shortcut")).toString());
-
-    return info;
-}
-
 bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,
                                  const KTextEditor::Range &range)
 {
