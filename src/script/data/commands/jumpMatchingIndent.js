@@ -3,7 +3,19 @@ var katescript = {
     "license": "GPLv2",
     "revision": 1,
     "kate-version": "3.4",
-    "functions": ["jumpIndentUp", "jumpIndentDown"]
+    "functions": ["jumpIndentUp", "jumpIndentDown"],
+    "actions": [
+        {   "function": "jumpIndentUp",
+            "name": "Move cursor to previous matching indent",
+            "shortcut": "Alt+Shift+Up",
+            "category": "Navigation"
+        },
+        {   "function": "jumpIndentDown",
+            "name": "Move cursor to next matching indent",
+            "shortcut": "Alt+Shift+Down",
+            "category": "Navigation"
+        }
+    ]
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 /**
@@ -23,29 +35,9 @@ function jumpIndentDown() {
   return _jumpIndent();
 }
 
-
 function jumpIndentUp() {
   return _jumpIndent( true );
 }
-
-
-function action( cmd ) {
-  var a = new Object();
-  a.icon = "";
-  a.category = i18n("Navigation");
-  a.interactive = false;
-  if ( cmd == 'jumpIndentUp' ) {
-    a.text = i18n("Move cursor to previous matching indent");
-    a.shortcut = 'Alt+Shift+Up';
-  }
-  else if ( cmd == 'jumpIndentDown' ) {
-    a.text = i18n("Move cursor to next matching indent");
-    a.shortcut = 'Alt+Shift+Down';
-  }
-
-  return a;
-}
-
 
 function help( cmd ) {
   if (cmd == 'jumpIndentUp') {

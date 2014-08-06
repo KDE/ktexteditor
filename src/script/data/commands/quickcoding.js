@@ -3,7 +3,14 @@ var katescript = {
     "license": "BSD",
     "revision": 1,
     "kate-version": "3.4",
-    "functions": ["quickCodingExpand"]
+    "functions": ["quickCodingExpand"],
+    "actions": [
+        {   "function": "quickCodingExpand",
+            "name": "Expand Abbreviation",
+            "shortcut": "Ctrl+Alt+#",
+            "category": "Quick Coding"
+        }
+    ]
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 /**
@@ -13,20 +20,6 @@ var katescript = {
 // required katepart js libraries
 require ("range.js");
 require ("underscore.js");
-
-function action (cmd)
-{
-  var a = new Object();
-  a.icon = "";
-  a.category = i18n("Quick Coding");
-  a.interactive = false;
-  if ( cmd == 'quickCodingExpand' ) {
-    a.text = i18n("Expand Abbreviation");
-    a.shortcut = 'Ctrl+Alt+#';
-  }
-
-  return a;
-}
 
 function help (cmd)
 {

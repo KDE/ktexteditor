@@ -5,9 +5,81 @@ var katescript = {
     "kate-version": "3.4",
     "functions": ["emmetExpand", "emmetWrap", "emmetSelectTagPairInwards", "emmetSelectTagPairOutwards", "emmetMatchingPair", "emmetToggleComment ,emmetNext", "emmetPrev", "emmetSelectNext", "emmetSelectPrev", "emmetDelete", "emmetSplitJoinTab", "emmetEvaluateMathExpression", "emmetDecrementNumberBy1", "emmetDecrementNumberBy10", "emmetDecrementNumberBy01", "emmetIncrementNumberBy1", "emmetIncrementNumberBy10", "emmetIncrementNumberBy01"],
     "actions": [
-        {
-            "function": "emmetExpand",
+        {   "function": "emmetExpand",
             "name": "Expand abbreviation",
+            "category": "Emmet"
+        },
+        {   "function": "emmetWrap",
+            "name": "Wrap with tag",
+            "category": "Emmet",
+            "interactive": 1
+        },
+        {   "function": "emmetMatchingPair",
+            "name": "Move cursor to matching tag",
+            "category": "Emmet"
+        },
+        {   "function": "emmetSelectTagPairInwards",
+            "name": "Select HTML/XML tag contents inwards",
+            "category": "Emmet"
+        },
+        {   "function": "emmetSelectTagPairOutwards",
+            "name": "Select HTML/XML tag contents outwards",
+            "category": "Emmet"
+        },
+        {   "function": "emmetToggleComment",
+            "name": "Toggle comment",
+            "category": "Emmet"
+        },
+        {   "function": "emmetNext",
+            "name": "Go to next edit point",
+            "category": "Emmet"
+        },
+        {   "function": "emmetPrev",
+            "name": "Go to previous edit point",
+            "category": "Emmet"
+        },
+        {   "function": "emmetSelectNext",
+            "name": "Select next edit point",
+            "category": "Emmet"
+        },
+        {   "function": "emmetSelectPrev",
+            "name": "Select previous edit point",
+            "category": "Emmet"
+        },
+        {   "function": "emmetDelete",
+            "name": "Delete tag under cursor",
+            "category": "Emmet"
+        },
+        {   "function": "emmetSplitJoinTab",
+            "name": "Split or join a tag",
+            "category": "Emmet"
+        },
+        {   "function": "emmetEvaluateMathExpression",
+            "name": "Evaluate a simple math expression",
+            "category": "Emmet"
+        },
+        {   "function": "emmetDecrementNumberBy1",
+            "name": "Decrement number by 1",
+            "category": "Emmet"
+        },
+        {   "function": "emmetDecrementNumberBy10",
+            "name": "Decrement number by 10",
+            "category": "Emmet"
+        },
+        {   "function": "emmetDecrementNumberBy01",
+            "name": "Decrement number by 0.1",
+            "category": "Emmet"
+        },
+        {   "function": "emmetIncrementNumberBy1",
+            "name": "Increment number by 1",
+            "category": "Emmet"
+        },
+        {   "function": "emmetIncrementNumberBy10",
+            "name": "Increment number by 10",
+            "category": "Emmet"
+        },
+        {   "function": "emmetIncrementNumberBy01",
+            "name": "Increment number by 0.1",
             "category": "Emmet"
         }
     ]
@@ -42,56 +114,6 @@ function help(cmd)
 		"emmetIncrementNumberBy01" : i18n("Increment number under cursor by 0.1")
 	}
 	return cmds[cmd];
-}
-
-function action(cmd)
-{
-		var a = new Object();
-		a.icon = "";
-		a.category = i18n("Emmet");
-		a.shortcut = "";
-		a.interactive = false;
-		if (cmd == "emmetExpand") {
-			a.text = i18n("Expand abbreviation");
-		} else if (cmd == "emmetWrap") {
-			a.text = i18n("Wrap with tag");
-			a.interactive = true;		
-		} else if (cmd == "emmetMatchingPair") {
-			a.text = i18n("Move cursor to matching tag");
-		} else if (cmd == "emmetSelectTagPairInwards") {
-			a.text = i18n("Select HTML/XML tag contents inwards");
-		} else if (cmd == "emmetSelectTagPairOutwards") {
-			a.text = i18n("Select HTML/XML tag contents outwards");
-		} else if (cmd == "emmetToggleComment") {
-			a.text = i18n("Toggle comment"); // FIXME Action w/ that name already exists @ part/view/kateview.cpp:411
-		} else if (cmd == "emmetNext") {
-			a.text = i18n("Go to next edit point");
-		} else if (cmd == "emmetPrev") {
-			a.text = i18n("Go to previous edit point");
-		} else if (cmd == "emmetSelectNext") {
-			a.text = i18n("Select next edit point");
-		} else if (cmd == "emmetSelectPrev") {
-			a.text = i18n("Select previous edit point");
-		} else if (cmd == "emmetDelete") {
-			a.text = i18n("Delete tag under cursor");
-		} else if (cmd == "emmetSplitJoinTab") {
-			a.text = i18n("Split or join a tag");
-		} else if (cmd == "emmetEvaluateMathExpression") {
-			a.text = i18n("Evaluate a simple math expression");
-		} else if (cmd == "emmetDecrementNumberBy1") {
-			a.text = i18n("Decrement number by 1");
-		} else if (cmd == "emmetDecrementNumberBy10") {
-			a.text = i18n("Decrement number by 10");
-		} else if (cmd == "emmetDecrementNumberBy01") {
-			a.text = i18n("Decrement number by 0.1");
-		} else if (cmd == "emmetIncrementNumberBy1") {
-			a.text = i18n("Increment number by 1");
-		} else if (cmd == "emmetIncrementNumberBy10") {
-			a.text = i18n("Increment number by 10");
-		} else if (cmd == "emmetIncrementNumberBy01") {
-			a.text = i18n("Increment number by 0.1");
-		}
-		return a;
 }
 
 //Returns the kate editor interface

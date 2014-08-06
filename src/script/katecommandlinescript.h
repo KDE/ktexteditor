@@ -26,6 +26,8 @@
 
 #include <KTextEditor/Command>
 
+#include <QJsonArray>
+
 class KateCommandLineScriptHeader
 {
 public:
@@ -41,8 +43,18 @@ public:
         return m_functions;
     }
 
+    inline void setActions(const QJsonArray &actions)
+    {
+        m_actions = actions;
+    }
+    inline const QJsonArray &actions() const
+    {
+        return m_actions;
+    }
+
 private:
     QStringList m_functions; ///< the functions the script contains
+    QJsonArray m_actions; ///< the action for this script
 };
 
 class ScriptActionInfo

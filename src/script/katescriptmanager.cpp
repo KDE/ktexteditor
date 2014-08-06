@@ -227,6 +227,7 @@ void KateScriptManager::collect()
             case Kate::CommandLineScript: {
                 KateCommandLineScriptHeader commandHeader;
                 commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QLatin1String("functions"))));
+                commandHeader.setActions(metaInfoObject.value(QLatin1String("actions")).toArray());
                 if (commandHeader.functions().isEmpty()) {
                     qCDebug(LOG_PART) << "Script value error: No functions specified in script meta data: "
                                       << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';

@@ -3,7 +3,41 @@ var katescript = {
     "license": "LGPL",
     "revision": 8,
     "kate-version": "3.4",
-    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"]
+    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"],
+    "actions": [
+        {   "function": "sort",
+            "name": "Sort Selected Text",
+            "category": "Editing"
+        },
+        {   "function": "moveLinesDown",
+            "name": "Move Lines Down",
+            "shortcut": "Ctrl+Shift+Down",
+            "category": "Editing"
+        },
+        {   "function": "moveLinesUp",
+            "name": "Move Lines Up",
+            "shortcut": "Ctrl+Shift+Up",
+            "category": "Editing"
+        },
+        {   "function": "duplicateLinesDown",
+            "name": "Duplicate Selected Lines Down",
+            "shortcut": "Ctrl+Alt+Down",
+            "category": "Editing"
+        },
+        {   "function": "duplicateLinesUp",
+            "name": "Duplicate Selected Lines Up",
+            "shortcut": "Ctrl+Alt+Up",
+            "category": "Editing"
+        },
+        {   "function": "encodeURISelection",
+            "name": "URI-encode Selected Text",
+            "category": "Editing"
+        },
+        {   "function": "decodeURISelection",
+            "name": "URI-decode Selected Text",
+            "category": "Editing"
+        }
+    ]
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
@@ -321,38 +355,6 @@ function encodeURISelection()
 function decodeURISelection()
 {
     _uri_transform_selection(decodeURIComponent);
-}
-
-function action(cmd)
-{
-    var a = new Object();
-    a.icon = "";
-    a.category = i18n("Editing");
-    a.interactive = false;
-    if (cmd == "sort") {
-        a.text = i18n("Sort Selected Text");
-        a.shortcut = "";
-    } else if (cmd == "moveLinesDown") {
-        a.text = i18n("Move Lines Down");
-        a.shortcut = "Ctrl+Shift+Down";
-    } else if (cmd == "moveLinesUp") {
-        a.text = i18n("Move Lines Up");
-        a.shortcut = "Ctrl+Shift+Up";
-    } else if (cmd == "duplicateLinesUp") {
-        a.text = i18n("Duplicate Selected Lines Up");
-        a.shortcut = "Ctrl+Alt+Up";
-    } else if (cmd == "duplicateLinesDown") {
-        a.text = i18n("Duplicate Selected Lines Down");
-        a.shortcut = "Ctrl+Alt+Down";
-    } else if (cmd == "encodeURISelection") {
-        a.text = i18n("URI-encode Selected Text")
-        a.shortcut = "";
-    } else if (cmd == "decodeURISelection") {
-        a.text = i18n("URI-decode Selected Text")
-        a.shortcut = "";
-    }
-
-    return a;
 }
 
 function help(cmd)

@@ -37,7 +37,7 @@ class KateScriptAction : public QAction
     Q_OBJECT
 
 public:
-    KateScriptAction(const ScriptActionInfo &info, KTextEditor::ViewPrivate *view);
+    KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view);
     virtual ~KateScriptAction();
 
 public Q_SLOTS:

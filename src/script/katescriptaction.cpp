@@ -30,16 +30,18 @@
 
 #include <KXMLGUIFactory>
 #include <KActionCollection>
+#include <KLocalizedString>
 
 //BEGIN KateScriptAction
-KateScriptAction::KateScriptAction(const ScriptActionInfo &info, KTextEditor::ViewPrivate *view)
-    : QAction(info.text(), view)
+KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view)
+    : QAction(i18nc("Script action name", action.value(QLatin1String("name")).toString().toUtf8().data()), view)
     , m_view(view)
-    , m_command(info.command())
-    , m_interactive(info.interactive())
+    , m_command(cmd)
+    , m_interactive(action.value(QLatin1String("interactive")).toBool())
 {
-    if (!info.icon().isEmpty()) {
-        setIcon(QIcon::fromTheme(info.icon()));
+    const QString icon = action.value(QLatin1String("icon")).toString();
+    if (!icon.isEmpty()) {
+        setIcon(QIcon::fromTheme(icon));
     }
 
     connect(this, SIGNAL(triggered(bool)), this, SLOT(exec()));
@@ -109,33 +111,41 @@ void KateScriptActionMenu::repopulate()
     QHash<QString, QMenu *> menus;
 
     foreach (KateCommandLineScript *script, scripts) {
-
-        const QStringList &cmds = script->cmds();
-        foreach (const QString &cmd, cmds) {
-
-            ScriptActionInfo info = script->actionInfo(cmd);
-            if (!info.isValid()) {
-                continue;
-            }
-
-            QMenu *m = menu();
-
+        /**
+         * traverse actions
+         */
+        const QJsonArray &actions = script->commandHeader().actions();
+        Q_FOREACH (const QJsonValue value, actions) {
+            /**
+             * action is a value
+             */
+            const QJsonObject action = value.toObject();
+            
+            /**
+             * get command
+             */
+            const QString cmd = action.value(QLatin1String("function")).toString();
+            
             // show in a category submenu?
-            if (!info.category().isEmpty()) {
-                m = menus[info.category()];
+            QMenu *m = menu();
+            QString category = action.value(QLatin1String("category")).toString();
+            if (!category.isEmpty()) {
+                category = i18nc("Script action category", category.toUtf8().data());
+                m = menus[category];
                 if (!m) {
-                    m = menu()->addMenu(info.category());
-                    menus.insert(info.category(), m);
+                    m = menu()->addMenu(category);
+                    menus.insert(category, m);
                     m_menus.append(m);
                 }
             }
 
             // create action + add to menu
-            QAction *a = new KateScriptAction(info, m_view);
+            QAction *a = new KateScriptAction(cmd, action, m_view);
             m->addAction(a);
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
-            if (!info.shortcut().isEmpty()) {
-                m_view->actionCollection()->setDefaultShortcut(a, info.shortcut());
+            const QString shortcut = action.value(QLatin1String("category")).toString();
+            if (!shortcut.isEmpty()) {
+                m_view->actionCollection()->setDefaultShortcut(a, shortcut);
             }
             
             m_actions.append(a);
