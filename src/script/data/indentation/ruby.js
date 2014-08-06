@@ -1,13 +1,14 @@
-/** kate-script
- * name: Ruby
- * license: LGPL
- * author: Robin Pedersen <robinpeder@gmail.com>
- * revision: 1
- * kate-version: 3.4
- * required-syntax-style: ruby
- * indent-languages: ruby
- * priority: 0
- *
+var katescript = {
+    "name": "Ruby",
+    "author": "Robin Pedersen <robinpeder@gmail.com>",
+    "license": "LGPL",
+    "revision": 1,
+    "kate-version": "3.4",
+    "required-syntax-style": "ruby",
+    "indent-languages": ["ruby"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or

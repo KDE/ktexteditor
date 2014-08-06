@@ -1,10 +1,10 @@
-/** kate-script
- * name: Haskell
- * license: LGPL
- * author: Erlend Hamberg <ehamberg@gmail.com>
- * revision: 2
- * kate-version: 3.4
- */
+var katescript = {
+    "name": "Haskell",
+    "author": "Erlend Hamberg <ehamberg@gmail.com>",
+    "license": "LGPL",
+    "revision": 2,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
 require ("range.js");

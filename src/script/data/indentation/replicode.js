@@ -1,13 +1,11 @@
-/* kate-script
- * name: Replicode
- * author: Martin Sandsmark <martin.sandsmark@kde.org>
- * license: BSD
- * revision: 1
- * kate-version: 3.4
- * indent-languages: Replicode
- * priority: 0
- *
- */
+var katescript = {
+    "name": "Replicode",
+    "author": "Martin Sandsmark <martin.sandsmark@kde.org>",
+    "license": "BSD",
+    "revision": 1,
+    "kate-version": "3.4",
+    "indent-languages": ["Replicode"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
 
 function indent(line, indentWidth, ch)
 {

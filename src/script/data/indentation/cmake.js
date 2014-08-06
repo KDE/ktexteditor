@@ -1,12 +1,14 @@
-/* kate-script
- * name: CMake
- * license: LGPL
- * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 1
- * kate-version: 3.4
- * required-syntax-style: CMake
- * indent-languages: CMake
- *
+var katescript = {
+    "name": "CMake",
+    "author": "Alex Turbov <i.zaufi@gmail.com>",
+    "license": "LGPL",
+    "revision": 1,
+    "kate-version": "3.4",
+    "required-syntax-style": "CMake",
+    "indent-languages": ["CMake"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or

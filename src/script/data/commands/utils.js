@@ -1,10 +1,10 @@
-/* kate-script
- * author: Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>
- * license: LGPL
- * revision: 8
- * kate-version: 3.4
- * functions: sort, moveLinesDown, moveLinesUp, natsort, uniq, rtrim, ltrim, trim, join, rmblank, unwrap, each, filter, map, duplicateLinesUp, duplicateLinesDown, rewrap, encodeURISelection, decodeURISelection
- */
+var katescript = {
+    "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>",
+    "license": "LGPL",
+    "revision": 8,
+    "kate-version": "3.4",
+    "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
 require ("range.js");

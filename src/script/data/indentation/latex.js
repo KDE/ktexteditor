@@ -1,10 +1,12 @@
-/** kate-script
- * name: Latex
- * author: Jeroen Vuurens <jbpvuurens@gmail.com>
- * revision: 1
- * kate-version: 3.4
- * type: indentation
- *
+var katescript = {
+    "name": "Latex",
+    "author": "Jeroen Vuurens <jbpvuurens@gmail.com>",
+    "license": "LGPL",
+    "revision": 1,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * Simple indentation for Latex. This script indents sections within
  * \begin{ and \end{ parts, as well as within { and }. Parts after
  * an \ escape character are ignored for proper handling of

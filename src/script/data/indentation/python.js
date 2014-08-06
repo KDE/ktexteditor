@@ -1,11 +1,10 @@
-/** kate-script
- * name: Python
- * license: LGPL
- * author: Paul Giannaros <paul@giannaros.org>, Gerald Senarclens de Grancy <oss@senarclens.eu>
- * revision: 2
- * kate-version: 3.10
- */
-
+var katescript = {
+    "name": "Python",
+    "author": "Paul Giannaros <paul@giannaros.org>, Gerald Senarclens de Grancy <oss@senarclens.eu>",
+    "license": "LGPL",
+    "revision": 2,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
 require ("range.js");

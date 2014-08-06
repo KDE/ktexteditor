@@ -1,13 +1,14 @@
-/** kate-script
- * name: LilyPond
- * license: LGPL
- * author: Wilbert Berendsen <info@wilbertberendsen.nl>
- * revision: 2
- * kate-version: 3.4
- * required-syntax-style: lilypond
- * indent-languages: lilypond
- *
- *
+var katescript = {
+    "name": "LilyPond",
+    "author": "Wilbert Berendsen <info@wilbertberendsen.nl>",
+    "license": "LGPL",
+    "revision": 2,
+    "kate-version": "3.4",
+    "required-syntax-style": "lilypond",
+    "indent-languages": ["lilypond"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * Copyright (c) 2008  Wilbert Berendsen
  *
  * This program is free software; you can redistribute it and/or

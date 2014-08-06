@@ -96,19 +96,9 @@ public:
     //
 public:
     /**
-     * Find all of the scripts matching the wildcard \p directory. The resource file
-     * with the name \p resourceFile is used for caching. If \p force is true, then the
-     * cache will not be used. This populates the internal lists of scripts.
-     * This is automatically called by init so you shouldn't call it yourself unless
-     * you want to refresh the collected list.
+     * Collect all scripts.
      */
-    void collect(bool force = false);
-
-    /**
-     * Extract the meta data from the script at \p url and put in \p pairs.
-     * Returns true if metadata was found and extracted successfuly, false otherwise.
-    */
-    static bool parseMetaInformation(const QString &url, QHash<QString, QString> &pairs);
+    void collect();
 
 public:
     KateIndentScript *indentationScript(const QString &scriptname)

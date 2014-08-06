@@ -1,10 +1,12 @@
-/** kate-script
- * name: Lua
- * license: LGPL
- * author: Jonathan Schmidt-Dominé <devel@the-user.org>
- * revision: 1
- * kate-version: 3.4
- *
+var katescript = {
+    "name": "Lua",
+    "author": "Jonathan Schmidt-Dominé <devel@the-user.org>",
+    "license": "LGPL",
+    "revision": 1,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or

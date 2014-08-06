@@ -1,10 +1,12 @@
-/** kate-script
- * name: XML Style
- * license: LGPL
- * author: Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>
- * revision: 2
- * kate-version: 3.10
- *
+var katescript = {
+    "name": "XML Style",
+    "author": "Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>",
+    "license": "LGPL",
+    "revision": 2,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,7 +23,6 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-
 
 // required katepart js libraries
 require ("range.js");

@@ -29,6 +29,9 @@
 #include <QStringList>
 #include <QMap>
 #include <QUuid>
+#include <QJsonDocument>
+#include <QJsonValue>
+#include <QJsonArray>
 
 #include <KLocalizedString>
 #include <KConfig>
@@ -82,21 +85,24 @@ KateIndentScript *KateScriptManager::indenter(const QString &language)
     return highestPriorityIndenter;
 }
 
-void KateScriptManager::collect(bool force)
+/**
+ * Small helper: QJsonValue to QStringList
+ */
+static QStringList jsonToStringList (const QJsonValue &value)
 {
-    // local information cache
-    KConfig cfgFile(QLatin1String("katescriptingrc"), KConfig::NoGlobals);
+    QStringList list;
 
-    // we might need to enforce reload!
-    {
-        KConfigGroup config(&cfgFile, QLatin1String("General"));
-        // If KatePart version does not match, better force a true reload
-        if (QLatin1String (KTEXTEDITOR_VERSION_STRING) != config.readEntry (QLatin1String("kate-version"))) {
-            config.writeEntry(QLatin1String("kate-version"), QString::fromLatin1 (KTEXTEDITOR_VERSION_STRING));
-            force = true;
+    Q_FOREACH (const QJsonValue &value, value.toArray()) {
+        if (value.isString()) {
+            list.append(value.toString());
         }
     }
+    
+    return list;
+}
 
+void KateScriptManager::collect()
+{
     // clear out the old scripts and reserve enough space
     qDeleteAll(m_indentationScripts);
     qDeleteAll(m_commandLineScripts);
@@ -125,47 +131,39 @@ void KateScriptManager::collect(bool force)
 
         // iterate through the files and read info out of cache or file
         foreach (const QString &fileName, list) {
-            // get abs filename....
-            QFileInfo fi(fileName);
-            const QString absPath = fi.absoluteFilePath();
-            const QString baseName = fi.baseName();
+            /**
+             * get file basename
+             */
+            const QString baseName = QFileInfo(fileName).baseName();
 
-            // each file has a group
-            const QString group(QLatin1String("Cache ") + fileName);
-            KConfigGroup config(&cfgFile, group);
-
-            // stat the file to get the last-modified-time
-            const int lastModified = QFileInfo(fileName).lastModified().toTime_t();
-
-            // check whether file is already cached
-            bool useCache = false;
-            if (!force && cfgFile.hasGroup(group)) {
-                useCache = (lastModified == config.readEntry("last-modified", 0));
-            }
-
-            // read key/value pairs from the cached file if possible
-            // otherwise, parse it and then save the needed information to the cache.
-            QHash<QString, QString> pairs;
-            if (useCache) {
-                const QMap<QString, QString> entries = config.entryMap();
-                for (QMap<QString, QString>::ConstIterator entry = entries.constBegin();
-                        entry != entries.constEnd();
-                        ++entry) {
-                    pairs[entry.key()] = entry.value();
-                }
-            } else if (parseMetaInformation(fileName, pairs)) {
-                config.writeEntry("last-modified", lastModified);
-                // iterate keys and save cache
-                for (QHash<QString, QString>::ConstIterator item = pairs.constBegin();
-                        item != pairs.constEnd();
-                        ++item) {
-                    config.writeEntry(item.key(), item.value());
-                }
-            } else {
-                // parseMetaInformation will have informed the user of the problem
+            /**
+             * open file or skip it
+             */
+            QFile file(fileName);
+            if (!file.open(QIODevice::ReadOnly)) {
+                qCDebug(LOG_PART) << "Script parse error: Cannot open file " << qPrintable(fileName) << '\n';
                 continue;
             }
-
+    
+            /**
+             * search json header or skip this file
+             */
+            QByteArray fileContent = file.readAll();
+            int startOfJson = fileContent.indexOf ('{');
+            if (startOfJson < 0) {
+                qCDebug(LOG_PART) << "Script parse error: Cannot find start of json header at start of file " << qPrintable(fileName) << '\n';
+                continue;
+            }
+        
+            /**
+             * parse json header or skip this file
+             */
+            const QJsonDocument metaInfo (QJsonDocument::fromJson(fileContent.right(fileContent.size()-startOfJson)));
+            if (metaInfo.isNull() || !metaInfo.isObject()) {
+                qCDebug(LOG_PART) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << '\n';
+                continue;
+            }
+    
             /**
              * remember type
              */
@@ -179,17 +177,18 @@ void KateScriptManager::collect(bool force)
                 Q_ASSERT(false);
             }
 
-            generalHeader.setLicense(pairs.take(QLatin1String("license")));
-            generalHeader.setAuthor(pairs.take(QLatin1String("author")));
-            generalHeader.setRevision(pairs.take(QLatin1String("revision")).toInt());
-            generalHeader.setKateVersion(pairs.take(QLatin1String("kate-version")));
-            generalHeader.setCatalog(pairs.take(QLatin1String("i18n-catalog")));
+            const QJsonObject metaInfoObject = metaInfo.object();
+            generalHeader.setLicense(metaInfoObject.value(QLatin1String("license")).toString());
+            generalHeader.setAuthor(metaInfoObject.value(QLatin1String("author")).toString());
+            generalHeader.setRevision(metaInfoObject.value(QLatin1String("revision")).toInt());
+            generalHeader.setKateVersion(metaInfoObject.value(QLatin1String("kate-version")).toString());
+            generalHeader.setCatalog(metaInfoObject.value(QLatin1String("i18n-catalog")).toString());
 
             // now, cast accordingly based on type
             switch (generalHeader.scriptType()) {
             case Kate::IndentationScript: {
                 KateIndentScriptHeader indentHeader;
-                indentHeader.setName(pairs.take(QLatin1String("name")));
+                indentHeader.setName(metaInfoObject.value(QLatin1String("name")).toString());
                 indentHeader.setBaseName(baseName);
                 if (indentHeader.name().isNull()) {
                     qCDebug(LOG_PART) << "Script value error: No name specified in script meta data: "
@@ -198,11 +197,11 @@ void KateScriptManager::collect(bool force)
                 }
 
                 // required style?
-                indentHeader.setRequiredStyle(pairs.take(QLatin1String("required-syntax-style")));
+                indentHeader.setRequiredStyle(metaInfoObject.value(QLatin1String("required-syntax-style")).toString());
                 // which languages does this support?
-                QString indentLanguages = pairs.take(QLatin1String("indent-languages"));
-                if (!indentLanguages.isNull()) {
-                    indentHeader.setIndentLanguages(indentLanguages.split(QLatin1Char(',')));
+                QStringList indentLanguages = jsonToStringList(metaInfoObject.value(QLatin1String("indent-languages")));
+                if (!indentLanguages.isEmpty()) {
+                    indentHeader.setIndentLanguages(indentLanguages);
                 } else {
                     indentHeader.setIndentLanguages(QStringList() << indentHeader.name());
 
@@ -212,18 +211,9 @@ void KateScriptManager::collect(bool force)
                                       << qPrintable(indentHeader.name()) << ")\n";
 #endif
                 }
-                // priority?
-                bool convertedToInt;
-                int priority = pairs.take(QLatin1String("priority")).toInt(&convertedToInt);
+                // priority
+                indentHeader.setPriority(metaInfoObject.value(QLatin1String("priority")).toInt());
 
-#ifdef DEBUG_SCRIPTMANAGER
-                if (!convertedToInt) {
-                    qCDebug(LOG_PART) << "Script value warning: Unexpected or no priority value "
-                                      << "in: " << qPrintable(fileName) << ". Setting priority to 0\n";
-                }
-#endif
-
-                indentHeader.setPriority(convertedToInt ? priority : 0);
                 KateIndentScript *script = new KateIndentScript(fileName, indentHeader);
                 script->setGeneralHeader(generalHeader);
                 foreach (const QString &language, indentHeader.indentLanguages()) {
@@ -236,7 +226,7 @@ void KateScriptManager::collect(bool force)
             }
             case Kate::CommandLineScript: {
                 KateCommandLineScriptHeader commandHeader;
-                commandHeader.setFunctions(pairs.take(QLatin1String("functions")).split(QRegExp(QLatin1String("\\s*,\\s*")), QString::SkipEmptyParts));
+                commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QLatin1String("functions"))));
                 if (commandHeader.functions().isEmpty()) {
                     qCDebug(LOG_PART) << "Script value error: No functions specified in script meta data: "
                                       << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
@@ -270,65 +260,11 @@ void KateScriptManager::collect(bool force)
         qCDebug(LOG_PART) << "LISP: " << qPrintable(indenter("Lisp")->url()) << "\n";
     }
 #endif
-
-    cfgFile.sync();
-}
-
-bool KateScriptManager::parseMetaInformation(const QString &url,
-        QHash<QString, QString> &pairs)
-{
-    // a valid script file -must- have the following format:
-    // The first line must contain the string 'kate-script'.
-    // All following lines have to have the format 'key : value'. So the value
-    // is separated by a colon. Leading non-letter characters are ignored, that
-    // include C and C++ comments for example.
-    // Parsing the header stops at the first line with no ':'.
-
-    QFile file(url);
-    if (!file.open(QIODevice::ReadOnly)) {
-        qCDebug(LOG_PART) << "Script parse error: Cannot open file " << qPrintable(url) << '\n';
-        return false;
-    }
-
-    qCDebug(LOG_PART) << "Update script: " << url;
-    QTextStream ts(&file);
-    ts.setCodec("UTF-8");
-    if (!ts.readLine().contains(QLatin1String("kate-script"))) {
-        qCDebug(LOG_PART) << "Script parse error: No header found in " << qPrintable(url) << '\n';
-        file.close();
-        return false;
-    }
-
-    QString line;
-    while (!(line = ts.readLine()).isNull()) {
-        int colon = line.indexOf(QLatin1Char(':'));
-        if (colon <= 0) {
-            break;    // no colon -> end of header found
-        }
-
-        // if -1 then 0. if >= 0, move after star.
-        int start = 0; // start points to first letter. idea: skip '*' and '//'
-        while (start < line.length() && !line.at(start).isLetter()) {
-            ++start;
-        }
-
-        QString key = line.mid(start, colon - start).trimmed();
-        QString value = line.right(line.length() - (colon + 1)).trimmed();
-        pairs[key] = value;
-
-#ifdef DEBUG_SCRIPTMANAGER
-        qCDebug(LOG_PART) << "KateScriptManager::parseMetaInformation: found pair: "
-                          << "(" << key << " | " << value << ")";
-#endif
-    }
-
-    file.close();
-    return true;
 }
 
 void KateScriptManager::reload()
 {
-    collect(true);
+    collect();
     emit reloaded();
 }
 

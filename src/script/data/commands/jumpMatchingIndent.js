@@ -1,10 +1,12 @@
-/* kate-script
- * author: Alan Prescott
- * license: GPLv2
- * revision: 1
- * kate-version: 3.4
- * functions: jumpIndentUp, jumpIndentDown
- *
+var katescript = {
+    "author": "Alan Prescott",
+    "license": "GPLv2",
+    "revision": 1,
+    "kate-version": "3.4",
+    "functions": ["jumpIndentUp", "jumpIndentDown"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * Move cursor to next/previous line with an equal indent - especially useful
  * for moving around blocks of Python code.
  *

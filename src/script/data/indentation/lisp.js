@@ -1,11 +1,10 @@
-/** kate-script
- * name: LISP
- * license: LGPL
- * author: Matteo Sasso <matteo.sasso@gmail.com>
- * version: 1.1
- * kate-version: 3.0
- *
- */
+var katescript = {
+    "name": "LISP",
+    "author": "Matteo Sasso <matteo.sasso@gmail.com>",
+    "license": "LGPL",
+    "revision": 2,
+    "kate-version": "3.4"
+}; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
 require ("range.js");

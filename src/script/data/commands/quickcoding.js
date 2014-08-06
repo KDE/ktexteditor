@@ -1,10 +1,12 @@
-/* kate-script
- * author: Christoph Cullmann
- * license: BSD
- * revision: 1
- * kate-version: 3.4
- * functions: quickCodingExpand
- *
+var katescript = {
+    "author": "Christoph Cullmann",
+    "license": "BSD",
+    "revision": 1,
+    "kate-version": "3.4",
+    "functions": ["quickCodingExpand"]
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * Like the "Zen Coding" for HTML, this aims to be a variant for C++ and other languages.
  */
 

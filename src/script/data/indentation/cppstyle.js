@@ -1,13 +1,15 @@
-/* kate-script
- * name: C++/boost Style
- * license: LGPL
- * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 30
- * kate-version: 3.4
- * priority: 10
- * indent-languages: C++, C++/Qt4, ISO C++
- * required-syntax-style: C++
- *
+var katescript = {
+    "name": "C++/boost Style",
+    "author": "Alex Turbov <i.zaufi@gmail.com>",
+    "license": "LGPL",
+    "revision": 30,
+    "kate-version": "3.4",
+    "required-syntax-style": "CMake",
+    "indent-languages": ["C++", "C++/Qt4", "ISO C++"],
+    "priority": 10
+}; // kate-script-header, must be at the start of the file without comments, pure json
+
+/**
  * This file is part of the Kate Project.
  *
  * This library is free software; you can redistribute it and/or
