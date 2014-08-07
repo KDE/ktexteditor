@@ -2,8 +2,8 @@ var katescript = {
     "name": "Ruby",
     "author": "Robin Pedersen <robinpeder@gmail.com>",
     "license": "LGPL",
-    "revision": 1,
-    "kate-version": "3.4",
+    "revision": 2,
+    "kate-version": "5.1",
     "required-syntax-style": "ruby",
     "indent-languages": ["ruby"]
 }; // kate-script-header, must be at the start of the file without comments, pure json

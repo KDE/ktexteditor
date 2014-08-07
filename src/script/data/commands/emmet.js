@@ -1,8 +1,8 @@
 var katescript = {
     "author": "Gregor Petrin",
     "license": "BSD",
-    "revision": 1,
-    "kate-version": "3.4",
+    "revision": 2,
+    "kate-version": "5.1",
     "functions": ["emmetExpand", "emmetWrap", "emmetSelectTagPairInwards", "emmetSelectTagPairOutwards", "emmetMatchingPair", "emmetToggleComment ,emmetNext", "emmetPrev", "emmetSelectNext", "emmetSelectPrev", "emmetDelete", "emmetSplitJoinTab", "emmetEvaluateMathExpression", "emmetDecrementNumberBy1", "emmetDecrementNumberBy10", "emmetDecrementNumberBy01", "emmetIncrementNumberBy1", "emmetIncrementNumberBy10", "emmetIncrementNumberBy01"],
     "actions": [
         {   "function": "emmetExpand",

@@ -2,8 +2,8 @@ var katescript = {
     "name": "C Style",
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>",
     "license": "LGPL",
-    "revision": 2,
-    "kate-version": "3.4"
+    "revision": 3,
+    "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 /**

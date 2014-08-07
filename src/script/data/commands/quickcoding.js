@@ -1,8 +1,8 @@
 var katescript = {
     "author": "Christoph Cullmann",
     "license": "BSD",
-    "revision": 1,
-    "kate-version": "3.4",
+    "revision": 2,
+    "kate-version": "5.1",
     "functions": ["quickCodingExpand"],
     "actions": [
         {   "function": "quickCodingExpand",

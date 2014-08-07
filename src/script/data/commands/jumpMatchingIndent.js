@@ -1,8 +1,8 @@
 var katescript = {
     "author": "Alan Prescott",
     "license": "GPLv2",
-    "revision": 1,
-    "kate-version": "3.4",
+    "revision": 2,
+    "kate-version": "5.1",
     "functions": ["jumpIndentUp", "jumpIndentDown"],
     "actions": [
         {   "function": "jumpIndentUp",

@@ -2,8 +2,8 @@ var katescript = {
     "name": "C++/boost Style",
     "author": "Alex Turbov <i.zaufi@gmail.com>",
     "license": "LGPL",
-    "revision": 30,
-    "kate-version": "3.4",
+    "revision": 31,
+    "kate-version": "5.1",
     "required-syntax-style": "C++",
     "indent-languages": ["C++", "C++/Qt4", "ISO C++"],
     "priority": 10

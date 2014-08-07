@@ -2,8 +2,8 @@ var katescript = {
     "name": "Pascal",
     "author": "Trevor Blight <trevor-b@ovi.com>",
     "license": "LGPL",
-    "revision": 1,
-    "kate-version": "3.4"
+    "revision": 2,
+    "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 /**

@@ -2,8 +2,8 @@ var katescript = {
     "name": "LilyPond",
     "author": "Wilbert Berendsen <info@wilbertberendsen.nl>",
     "license": "LGPL",
-    "revision": 2,
-    "kate-version": "3.4",
+    "revision": 3,
+    "kate-version": "5.1",
     "required-syntax-style": "lilypond",
     "indent-languages": ["lilypond"]
 }; // kate-script-header, must be at the start of the file without comments, pure json
