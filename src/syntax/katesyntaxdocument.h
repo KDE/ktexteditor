@@ -25,38 +25,6 @@
 #include <QStringList>
 #include <QDomDocument>
 
-class KConfig;
-
-/**
- * Information about each syntax hl Mode. This is documented in Kate's
- * <a href="http://docs.kde.org/stable/en/kdebase/kate/katehighlight-xml-format.html">user guide</a>
- * and repeated briefly here.
- */
-class KateSyntaxModeListItem
-{
-public:
-    QString name;           ///< Name of the mode (eg. Asm6502)
-    QString nameTranslated; ///< i18n of same, for display purposes
-    QString section;        ///< Submenu section (eg. Assembly)
-    QString mimetype;       ///< Mimetypes this mode applies to
-    QString extension;      ///< Semicolon-separated list of file extensions
-    QString identifier;
-    QString version;
-    QString priority;       /**< Priority (mapped to an integer?) for conflict-
-                                 resolution when the same file extension has
-                                 multiple highlihgting definitions. */
-    QString style;          ///< Default styles provided by the highlighter
-    QString author;         ///< Author's name
-    QString license;        ///< License; for example: "LGPL"
-    QString indenter;       ///< Indenter to use for this highlighting
-    bool hidden;            ///< Hides the mode from Kate's menus
-};
-
-/**
- * List of the KateSyntaxModeListItems holding all the syntax mode list items
- */
-typedef QList<KateSyntaxModeListItem *> KateSyntaxModeList;
-
 /**
  * Class holding the data around the current QDomElement
  */
@@ -76,12 +44,11 @@ class KateSyntaxDocument : public QDomDocument
 public:
     /**
      * Constructor
-     * Sets the current file to nothing and build the ModeList
      */
     KateSyntaxDocument();
 
     /**
-     * Desctructor
+     * Destructor
      */
     ~KateSyntaxDocument();
 
@@ -92,15 +59,6 @@ public:
      * @return success
      */
     bool setIdentifier(const QString &identifier);
-
-    /**
-     * Get the mode list
-     * @return mode list
-     */
-    const KateSyntaxModeList &modeList()
-    {
-        return myModeList;
-    }
 
     /**
      * Jump to the next group, KateSyntaxContextData::currentGroup will point to the next group
@@ -144,20 +102,10 @@ public:
 
 private:
     /**
-     * Generate the list of hl modes, store them in myModeList
-     */
-    void setupModeList();
-
-    /**
      * Used by getConfig and getGroupInfo to traverse the xml nodes and
      * evenually return the found element
      */
     bool getElement(QDomElement &element, const QString &mainGroupName, const QString &config);
-
-    /**
-     * List of mode items
-     */
-    KateSyntaxModeList myModeList;
 
     /**
      * current parsed filename

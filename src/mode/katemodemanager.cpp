@@ -94,7 +94,7 @@ void KateModeManager::update()
     }
 
     // try if the hl stuff is up to date...
-    const KateSyntaxModeList &modes = KateHlManager::self()->syntaxDocument()->modeList();
+    const KateSyntaxModeList &modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
         KateFileType *type = 0;
         bool newType = false;

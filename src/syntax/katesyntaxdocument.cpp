@@ -32,8 +32,6 @@
 
 #include <QApplication>
 #include <QFile>
-#include <QDir>
-#include <QJsonDocument>
 
 // use this to turn on over verbose debug output...
 #undef KSD_OVER_VERBOSE
@@ -41,15 +39,10 @@
 KateSyntaxDocument::KateSyntaxDocument()
     : QDomDocument()
 {
-    // Let's build the Mode List
-    setupModeList();
 }
 
 KateSyntaxDocument::~KateSyntaxDocument()
 {
-    for (int i = 0; i < myModeList.size(); i++) {
-        delete myModeList[i];
-    }
 }
 
 /** If the open hl file is different from the one needed, it opens
@@ -329,153 +322,3 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
 
     return m_data;
 }
-
-// Private
-/** Generate the list of hl modes, store them in myModeList
-    force: if true forces to rebuild the Mode List from the xml files (instead of katesyntax...rc)
-*/
-void KateSyntaxDocument::setupModeList()
-{
-    // If there's something in myModeList the Mode List was already built so, don't do it again
-    if (!myModeList.isEmpty()) {
-        return;
-    }
-
-    // Let's get a list of all the index & xml files for hl
-    QStringList dirsWithIndexFiles;
-    QStringList xmlFiles;
-
-    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/syntax"), QStandardPaths::LocateDirectory);
-    foreach (const QString &dir, dirs) {
-        QDir d(dir);
-
-        // if dir has index json, only take that into account!
-        if (d.exists(QStringLiteral("index.json"))) {
-            dirsWithIndexFiles.append(dir);
-            continue;
-        }
-        
-        // else get all xml files
-        const QStringList fileNames = d.entryList(QStringList() << QStringLiteral("*.xml"));
-        foreach (const QString &file, fileNames) {
-            xmlFiles.append(dir + QLatin1Char('/') + file);
-        }
-    }
-    
-    // only allow each name once!
-    QSet<QString> hlNames;
-    
-    // preference: xml files, to allow users to overwrite system files with index!
-    Q_FOREACH (const QString xmlFile, xmlFiles) {
-        // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
-        QFile f(xmlFile);
-        if (!f.open(QIODevice::ReadOnly))
-            continue;
-        
-        // Ok we opened the file, let's read the contents and close the file
-        /* the return of setContent should be checked because a false return shows a parsing error */
-        QString errMsg;
-        int line, col;
-        if (!setContent(&f, &errMsg, &line, &col))
-            continue;
-
-        QDomElement root = documentElement();
-        if (root.isNull())
-            continue;
-        
-        // If the 'first' tag is language, go on
-        if (root.tagName() != QLatin1String("language"))
-            continue;
-        
-        // get name, only allow hls once!
-        const QString name = root.attribute(QLatin1String("name"));
-        if (hlNames.contains(name))
-            continue;
-        
-        // let's make the mode list item.
-        KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
-
-        mli->name      = name;
-        mli->section   = root.attribute(QLatin1String("section"));
-        mli->mimetype  = root.attribute(QLatin1String("mimetype"));
-        mli->extension = root.attribute(QLatin1String("extensions"));
-        mli->version   = root.attribute(QLatin1String("version"));
-        mli->priority  = root.attribute(QLatin1String("priority"));
-        mli->style     = root.attribute(QLatin1String("style"));
-        mli->author    = root.attribute(QLatin1String("author"));
-        mli->license   = root.attribute(QLatin1String("license"));
-        mli->indenter  = root.attribute(QLatin1String("indenter"));
-
-        QString hidden = root.attribute(QLatin1String("hidden"));
-        mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("TRUE"));
-
-        mli->identifier = xmlFile;
-        
-        // translate section + name
-        mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
-        mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
-
-        // Append the new item to the list.
-        myModeList.append(mli);
-        hlNames.insert(name);
-    }
-    
-    // now: index files
-    Q_FOREACH (const QString dir, dirsWithIndexFiles) {
-        /**
-         * open the file for reading, bail out on error!
-         */
-        QFile file (dir + QStringLiteral("/index.json"));
-        if (!file.open (QFile::ReadOnly))
-            continue;
-
-        /**
-         * parse the whole file, bail out again on error!
-         */
-        const QJsonDocument index (QJsonDocument::fromBinaryData(file.readAll()));
-        if (index.isNull())
-            continue;
-        
-        /**
-         * iterate over all hls in the index
-         */
-        QMapIterator<QString, QVariant> i(index.toVariant().toMap());
-        while (i.hasNext()) {
-            i.next();
-            
-            // get map
-            QVariantMap map = i.value().toMap();
-            
-            // get name, only allow hls once!
-            const QString name = map[QLatin1String("name")].toString();
-            if (hlNames.contains(name))
-                continue;
-            
-            // let's make the mode list item.
-            KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
-
-            mli->name      = name;
-            mli->section   = map[QLatin1String("section")].toString();
-            mli->mimetype  = map[QLatin1String("mimetype")].toString();
-            mli->extension = map[QLatin1String("extensions")].toString();
-            mli->version   = map[QLatin1String("version")].toString();
-            mli->priority  = map[QLatin1String("priority")].toString();
-            mli->style     = map[QLatin1String("style")].toString();
-            mli->author    = map[QLatin1String("author")].toString();
-            mli->license   = map[QLatin1String("license")].toString();
-            mli->indenter  = map[QLatin1String("indenter")].toString();
-            mli->hidden    = map[QLatin1String("hidden")].toBool();
-
-            mli->identifier = dir + QLatin1Char('/') + i.key();
-            
-            // translate section + name
-            mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
-            mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
-
-            // Append the new item to the list.
-            myModeList.append(mli);
-            hlNames.insert(name);
-        }
-    }
-}
-

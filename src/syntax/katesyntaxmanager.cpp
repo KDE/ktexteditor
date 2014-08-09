@@ -45,6 +45,10 @@
 #include <QAction>
 #include <QStringList>
 #include <QTextStream>
+#include <QFile>
+#include <QDir>
+#include <QJsonDocument>
+#include <QXmlStreamReader>
 //END
 
 using namespace KTextEditor;
@@ -67,11 +71,152 @@ KateHlManager::KateHlManager()
     , dynamicCtxsCount(0)
     , forceNoDCReset(false)
 {
-    KateSyntaxModeList modeList = syntax->modeList();
-    hlList.reserve(modeList.size() + 1);
-    hlDict.reserve(modeList.size() + 1);
-    for (int i = 0; i < modeList.count(); i++) {
-        KateHighlighting *hl = new KateHighlighting(modeList[i]);
+    // Let's build the Mode List
+    setupModeList();
+    
+    lastCtxsReset.start();
+}
+
+KateHlManager::~KateHlManager()
+{
+    delete syntax;
+    qDeleteAll(hlList);
+    qDeleteAll(myModeList);
+}
+
+void KateHlManager::setupModeList()
+{
+    // Let's get a list of all the index & xml files for hl
+    QStringList dirsWithIndexFiles;
+    QStringList xmlFiles;
+
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/syntax"), QStandardPaths::LocateDirectory);
+    foreach (const QString &dir, dirs) {
+        QDir d(dir);
+
+        // if dir has index json, only take that into account!
+        if (d.exists(QStringLiteral("index.json"))) {
+            dirsWithIndexFiles.append(dir);
+            continue;
+        }
+        
+        // else get all xml files
+        const QStringList fileNames = d.entryList(QStringList() << QStringLiteral("*.xml"));
+        foreach (const QString &file, fileNames) {
+            xmlFiles.append(dir + QLatin1Char('/') + file);
+        }
+    }
+    
+    // only allow each name once!
+    QSet<QString> hlNames;
+    
+    // preference: xml files, to allow users to overwrite system files with index!
+    Q_FOREACH (const QString xmlFile, xmlFiles) {
+        // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
+        QFile f(xmlFile);
+        if (!f.open(QIODevice::ReadOnly))
+            continue;
+        
+        // read file as stream
+        QXmlStreamReader xml(&f);
+        if (!xml.readNextStartElement() || (xml.name() != QLatin1String("language")))
+            continue;
+
+        // get name, only allow hls once!
+        const QString name = xml.attributes().value(QLatin1String("name")).toString();
+        if (hlNames.contains(name))
+            continue;
+        
+        // let's make the mode list item.
+        KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
+
+        mli->name      = name;
+        mli->section   = xml.attributes().value(QLatin1String("section")).toString();
+        mli->mimetype  = xml.attributes().value(QLatin1String("mimetype")).toString();
+        mli->extension = xml.attributes().value(QLatin1String("extensions")).toString();
+        mli->version   = xml.attributes().value(QLatin1String("version")).toString();
+        mli->priority  = xml.attributes().value(QLatin1String("priority")).toString();
+        mli->style     = xml.attributes().value(QLatin1String("style")).toString();
+        mli->author    = xml.attributes().value(QLatin1String("author")).toString();
+        mli->license   = xml.attributes().value(QLatin1String("license")).toString();
+        mli->indenter  = xml.attributes().value(QLatin1String("indenter")).toString();
+
+        QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
+        mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("TRUE"));
+
+        mli->identifier = xmlFile;
+        
+        // translate section + name
+        mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
+        mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
+
+        // Append the new item to the list.
+        myModeList.append(mli);
+        hlNames.insert(name);
+    }
+    
+    // now: index files
+    Q_FOREACH (const QString dir, dirsWithIndexFiles) {
+        /**
+         * open the file for reading, bail out on error!
+         */
+        QFile file (dir + QStringLiteral("/index.json"));
+        if (!file.open (QFile::ReadOnly))
+            continue;
+
+        /**
+         * parse the whole file, bail out again on error!
+         */
+        const QJsonDocument index (QJsonDocument::fromBinaryData(file.readAll()));
+        if (index.isNull())
+            continue;
+        
+        /**
+         * iterate over all hls in the index
+         */
+        QMapIterator<QString, QVariant> i(index.toVariant().toMap());
+        while (i.hasNext()) {
+            i.next();
+            
+            // get map
+            QVariantMap map = i.value().toMap();
+            
+            // get name, only allow hls once!
+            const QString name = map[QLatin1String("name")].toString();
+            if (hlNames.contains(name))
+                continue;
+            
+            // let's make the mode list item.
+            KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
+
+            mli->name      = name;
+            mli->section   = map[QLatin1String("section")].toString();
+            mli->mimetype  = map[QLatin1String("mimetype")].toString();
+            mli->extension = map[QLatin1String("extensions")].toString();
+            mli->version   = map[QLatin1String("version")].toString();
+            mli->priority  = map[QLatin1String("priority")].toString();
+            mli->style     = map[QLatin1String("style")].toString();
+            mli->author    = map[QLatin1String("author")].toString();
+            mli->license   = map[QLatin1String("license")].toString();
+            mli->indenter  = map[QLatin1String("indenter")].toString();
+            mli->hidden    = map[QLatin1String("hidden")].toBool();
+
+            mli->identifier = dir + QLatin1Char('/') + i.key();
+            
+            // translate section + name
+            mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
+            mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
+
+            // Append the new item to the list.
+            myModeList.append(mli);
+            hlNames.insert(name);
+        }
+    }
+
+    hlList.reserve(myModeList.size() + 1);
+    hlDict.reserve(myModeList.size() + 1);
+    for (int i = 0; i < myModeList.count(); i++) {
+        KateHighlighting *hl = new KateHighlighting(myModeList[i]);
 
         hlList.insert(qLowerBound(hlList.begin(), hlList.end(), hl, compareKateHighlighting), hl);
         hlDict.insert(hl->name(), hl);
@@ -81,14 +226,6 @@ KateHlManager::KateHlManager()
     KateHighlighting *hl = new KateHighlighting(0);
     hlList.prepend(hl);
     hlDict.insert(hl->name(), hl);
-
-    lastCtxsReset.start();
-}
-
-KateHlManager::~KateHlManager()
-{
-    delete syntax;
-    qDeleteAll(hlList);
 }
 
 KateHlManager *KateHlManager::self()
