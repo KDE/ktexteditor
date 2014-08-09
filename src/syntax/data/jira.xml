@@ -10,7 +10,7 @@
   <!ENTITY superscript "(\s|^)\^[^\s]{1}[^\^]+\^(?=\s|\.|,|;|:|\-|\?|$)">
   <!ENTITY url "(http:|https:|ftp:|mailto:)[^]| ]*(?=$|[]|\s])">
 ]>
-<language name="Jira" section="Markup" version="0.2" kateversion="3.10" extensions="*.jira" mimetype="" license="FDL" >
+<language name="Jira" section="Markup" version="0.3" kateversion="3.10" extensions="*.jira" mimetype="" license="FDL" >
   <highlighting>
 
     <!--
@@ -36,24 +36,24 @@
       <context name="Header" attribute="Header" lineEndContext="#pop" />
 
       <!-- Text Effects -->
-      <context name="BlockQuote" lineEndContext="#pop" />
-      <context name="Bold" lineEndContext="#stay">
+      <context name="BlockQuote" lineEndContext="#pop" attribute="Normal"/>
+      <context name="Bold" lineEndContext="#stay" attribute="Normal">
         <DetectChar char="*" attribute="Special Character" context="BoldContent" />
       </context>
       <context name="BoldContent" attribute="Bold" lineEndContext="#stay">
         <DetectChar char="*" attribute="Special Character" context="#pop#pop" />
       </context>
-      <context name="Citation" lineEndContext="#stay">
+      <context name="Citation" lineEndContext="#stay" attribute="Normal">
         <Detect2Chars char="?" char1="?" attribute="Special Character" context="CitationContent" />
       </context>
       <context name="CitationContent" attribute="Italic" lineEndContext="#stay">
         <Detect2Chars char="?" char1="?" attribute="Special Character" context="#pop#pop" />
       </context>
 
-      <context name="Color">
+      <context name="Color" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="{color:" context="ColorTagColor" attribute="Special Character" />
       </context>
-      <context name="ColorTagColor">
+      <context name="ColorTagColor" attribute="Normal" lineEndContext="#stay">
         <!-- Black and White have been skipped on purpose. -->
         <StringDetect String="silver}"  context="ColorSilverTagColor" lookAhead="true" />
         <StringDetect String="gray}"  context="ColorGrayTagColor" lookAhead="true" />
@@ -71,124 +71,124 @@
         <StringDetect String="purple}"  context="ColorPurpleTagColor" lookAhead="true" />
         <DetectChar char="}"  attribute="Special Character" context="UnhighlightedColorContent" />
       </context>
-      <context name="UnhighlightedColorContent">
+      <context name="UnhighlightedColorContent" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="{color}" attribute="Special Character" context="#pop#pop#pop" />
       </context>
-      <context name="HighlightedColorContent">
+      <context name="HighlightedColorContent" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="{color}" attribute="Special Character" context="#pop#pop#pop#pop" />
       </context>
-      <context name="ColorSilverTagColor">
+      <context name="ColorSilverTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="silver" attribute="Silver" />
         <DetectChar char="}" attribute="Special Character" context="SilverContent" />
       </context>
-      <context name="SilverContent" attribute="Silver">
+      <context name="SilverContent" attribute="Silver" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorGrayTagColor">
+      <context name="ColorGrayTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="gray" attribute="Gray" />
         <DetectChar char="}" attribute="Special Character" context="GrayContent" />
       </context>
-      <context name="GrayContent" attribute="Gray">
+      <context name="GrayContent" attribute="Gray" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorRedTagColor">
+      <context name="ColorRedTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="red" attribute="Red" />
         <DetectChar char="}" attribute="Special Character" context="RedContent" />
       </context>
-      <context name="RedContent" attribute="Red">
+      <context name="RedContent" attribute="Red" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorMaroonTagColor">
+      <context name="ColorMaroonTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="maroon" attribute="Maroon" />
         <DetectChar char="}" attribute="Special Character" context="MaroonContent" />
       </context>
-      <context name="MaroonContent" attribute="Maroon">
+      <context name="MaroonContent" attribute="Maroon" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorYellowTagColor">
+      <context name="ColorYellowTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="yellow" attribute="Yellow" />
         <DetectChar char="}" attribute="Special Character" context="YellowContent" />
       </context>
-      <context name="YellowContent" attribute="Yellow">
+      <context name="YellowContent" attribute="Yellow" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorOliveTagColor">
+      <context name="ColorOliveTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="olive" attribute="Olive" />
         <DetectChar char="}" attribute="Special Character" context="OliveContent" />
       </context>
-      <context name="OliveContent" attribute="Olive">
+      <context name="OliveContent" attribute="Olive" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorLimeTagColor">
+      <context name="ColorLimeTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="lime" attribute="Lime" />
         <DetectChar char="}" attribute="Special Character" context="LimeContent" />
       </context>
-      <context name="LimeContent" attribute="Limed">
+      <context name="LimeContent" attribute="Limed" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorGreenTagColor">
+      <context name="ColorGreenTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="green" attribute="Green" />
         <DetectChar char="}" attribute="Special Character" context="GreenContent" />
       </context>
-      <context name="GreenContent" attribute="Green">
+      <context name="GreenContent" attribute="Green" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorAquaTagColor">
+      <context name="ColorAquaTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="aqua" attribute="Aqua" />
         <DetectChar char="}" attribute="Special Character" context="AquaContent" />
       </context>
-      <context name="AquaContent" attribute="Aqua">
+      <context name="AquaContent" attribute="Aqua" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorTealTagColor">
+      <context name="ColorTealTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="teal" attribute="Teal" />
         <DetectChar char="}" attribute="Special Character" context="TealContent" />
       </context>
-      <context name="TealContent" attribute="Teal">
+      <context name="TealContent" attribute="Teal" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorBlueTagColor">
+      <context name="ColorBlueTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="blue" attribute="Blue" />
         <DetectChar char="}" attribute="Special Character" context="BlueContent" />
       </context>
-      <context name="BlueContent" attribute="Blue">
+      <context name="BlueContent" attribute="Blue" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorNavyTagColor">
+      <context name="ColorNavyTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="navy" attribute="Navy" />
         <DetectChar char="}" attribute="Special Character" context="NavyContent" />
       </context>
-      <context name="NavyContent" attribute="Navy">
+      <context name="NavyContent" attribute="Navy" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorFuchsiaTagColor">
+      <context name="ColorFuchsiaTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="fuchsia" attribute="Fuchsia" />
         <DetectChar char="}" attribute="Special Character" context="FuchsiaContent" />
       </context>
-      <context name="FuchsiaContent" attribute="Fuchsia">
+      <context name="FuchsiaContent" attribute="Fuchsia" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
-      <context name="ColorPurpleTagColor">
+      <context name="ColorPurpleTagColor" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="purple" attribute="Purple" />
         <DetectChar char="}" attribute="Special Character" context="PurpleContent" />
       </context>
-      <context name="PurpleContent" attribute="Purple">
+      <context name="PurpleContent" attribute="Purple" lineEndContext="#stay">
         <IncludeRules context="HighlightedColorContent" />
       </context>
 
-      <context name="Deleted" lineEndContext="#stay">
+      <context name="Deleted" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="-" attribute="Special Character" context="DeletedContent" />
       </context>
       <context name="DeletedContent" attribute="Stroked Out" lineEndContext="#stay">
         <DetectChar char="-" attribute="Special Character" context="#pop#pop" />
       </context>
-      <context name="Inserted" lineEndContext="#stay">
+      <context name="Inserted" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="+" attribute="Special Character" context="InsertedContent" />
       </context>
       <context name="InsertedContent" attribute="Underlined" lineEndContext="#stay">
         <DetectChar char="+" attribute="Special Character" context="#pop#pop" />
       </context>
-      <context name="Italic" lineEndContext="#stay">
+      <context name="Italic" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="_" attribute="Special Character" context="ItalicContent" />
       </context>
       <context name="ItalicContent" attribute="Italic" lineEndContext="#stay">
@@ -198,16 +198,16 @@
         <Detect2Chars char="}" char1="}" attribute="Special Character" context="#pop" />
         <Detect2Chars char="{" char1="{" attribute="Special Character" />
       </context>
-      <context name="Quote">
+      <context name="Quote" attribute="Normal" lineEndContext="#stay">
         <StringDetect String="{quote}" context="#pop" attribute="Special Character" />
       </context>
-      <context name="Subscript" lineEndContext="#stay">
+      <context name="Subscript" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="~" attribute="Special Character" context="SubscriptContent" />
       </context>
       <context name="SubscriptContent" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="~" attribute="Special Character" context="#pop#pop" />
       </context>
-      <context name="Superscript" lineEndContext="#stay">
+      <context name="Superscript" attribute="Normal" lineEndContext="#stay">
         <DetectChar char="^" attribute="Special Character" context="SuperscriptContent" />
       </context>
       <context name="SuperscriptContent" attribute="Normal" lineEndContext="#stay">
