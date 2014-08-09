@@ -27,7 +27,7 @@
 #include "katescript.h"
 #include "katepartdebug.h"
 
-#include <ktexteditor/movingcursor.h>
+#include <ktexteditor/documentcursor.h>
 
 #include <QScriptEngine>
 
@@ -252,19 +252,18 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         return KTextEditor::Cursor::invalid();
     }
 
-    QScopedPointer<KTextEditor::MovingCursor> cursor(document()->newMovingCursor(KTextEditor::Cursor(line, column)));
-
     // Move backwards char by char and find the opening character
-    while (cursor->move(-1)) {
-        QChar ch = document()->characterAt(cursor->toCursor());
+    KTextEditor::DocumentCursor cursor(document(), KTextEditor::Cursor(line, column));
+    while (cursor.move(-1, KTextEditor::DocumentCursor::Wrap)) {
+        QChar ch = document()->characterAt(cursor.toCursor());
         if (ch == lc) {
-            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor->line())->attribute(cursor->column())];
+            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor.line())->attribute(cursor.column())];
             const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 --count;
             }
         } else if (ch == rc) {
-            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor->line())->attribute(cursor->column())];
+            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor.line())->attribute(cursor.column())];
             const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 ++count;
@@ -272,7 +271,7 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         }
 
         if (count == 0) {
-            return cursor->toCursor();
+            return cursor.toCursor();
         }
     }
     return KTextEditor::Cursor::invalid();
