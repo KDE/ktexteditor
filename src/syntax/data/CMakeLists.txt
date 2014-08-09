@@ -26,7 +26,7 @@ set (LANGUAGE_XSD "${CMAKE_CURRENT_SOURCE_DIR}/language.xsd")
 
 # tool to create json index of highlightings, will validate all highlightings, too!
 add_executable(katehighlightingindexer katehighlightingindexer.cpp)
-target_link_libraries(katehighlightingindexer Qt5::Xml Qt5::XmlPatterns
+target_link_libraries(katehighlightingindexer Qt5::XmlPatterns
 )
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/index.json
   COMMAND katehighlightingindexer ${CMAKE_CURRENT_BINARY_DIR}/index.json ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS}
