@@ -22,20 +22,34 @@ if (NOT ONLY_GENERATE_XML)
 
 # all hls
 file(GLOB HIGHLIGHTERS "${CMAKE_CURRENT_SOURCE_DIR}/*.xml")
-set (ALL_HIGHLIGHTERS ${HIGHLIGHTERS} ${CMAKE_CURRENT_BINARY_DIR}/html-php.xml ${CMAKE_CURRENT_BINARY_DIR}/css-php.xml ${CMAKE_CURRENT_BINARY_DIR}/javascript-php.xml)
+set(ALL_HIGHLIGHTERS
+    ${HIGHLIGHTERS}
+    ${CMAKE_CURRENT_BINARY_DIR}/html-php.xml
+    ${CMAKE_CURRENT_BINARY_DIR}/css-php.xml
+    ${CMAKE_CURRENT_BINARY_DIR}/javascript-php.xml
+)
+
+set(INDEXFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/index.json.in)
+set(INDEXFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/index.json)
 
 # our xsd
 set (LANGUAGE_XSD "${CMAKE_CURRENT_SOURCE_DIR}/language.xsd")
+
+# write out file containing list of all highlighter files
+file(REMOVE ${INDEXFILE_IN})
+foreach(highlighter ${ALL_HIGHLIGHTERS})
+    file(APPEND ${INDEXFILE_IN} "${highlighter}\n")
+endforeach()
 
 # tool to create json index of highlightings, will validate all highlightings, too!
 add_executable(katehighlightingindexer katehighlightingindexer.cpp)
 target_link_libraries(katehighlightingindexer Qt5::XmlPatterns
 )
-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/index.json
-  COMMAND katehighlightingindexer ${CMAKE_CURRENT_BINARY_DIR}/index.json ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS}
+add_custom_command(OUTPUT ${INDEXFILE_OUT}
+  COMMAND katehighlightingindexer ${INDEXFILE_OUT} ${LANGUAGE_XSD} ${INDEXFILE_IN}
   DEPENDS katehighlightingindexer.cpp ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS})
-add_custom_target(GenerateIndexFile ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/index.json)
+add_custom_target(GenerateIndexFile ALL DEPENDS ${INDEXFILE_OUT})
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/index.json ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS} DESTINATION ${DATA_INSTALL_DIR}/katepart5/syntax)
+install(FILES ${INDEXFILE_OUT} ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS} DESTINATION ${DATA_INSTALL_DIR}/katepart5/syntax)
 
 endif()

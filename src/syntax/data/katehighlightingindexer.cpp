@@ -20,11 +20,32 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QFileInfo>
+#include <QTextStream>
 #include <QVariant>
 #include <QXmlStreamReader>
 #include <QJsonDocument>
 #include <QXmlSchema>
 #include <QXmlSchemaValidator>
+
+namespace {
+
+QStringList readListing(const QString &fileName)
+{
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return QStringList();
+    }
+
+    QStringList listing;
+    QTextStream stream(&file);
+    while (!stream.atEnd()) {
+        const QString line = stream.readLine();
+        listing << line;
+    }
+    return listing;
+}
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -34,12 +55,22 @@ int main(int argc, char *argv[])
     // ensure enough arguments are passed
     if (app.arguments().size() < 3)
         return 1;
-    
+
     // open schema
     QXmlSchema schema;
     if (!schema.load(QUrl::fromLocalFile(app.arguments().at(2))))
         return 2;
-    
+
+    const QString hlFilenamesListing = app.arguments().value(3);
+    if (hlFilenamesListing.isEmpty()) {
+        return 1;
+    }
+
+    QStringList hlFilenames = readListing(hlFilenamesListing);
+    if (hlFilenames.isEmpty()) {
+        return 3;
+    }
+
     // text attributes
     const QStringList textAttributes = QStringList() << QLatin1String("name") << QLatin1String("section") << QLatin1String("mimetype")
             << QLatin1String("extensions") << QLatin1String("version") << QLatin1String("priority") << QLatin1String("style")
@@ -48,8 +79,8 @@ int main(int argc, char *argv[])
     // index all given highlightings
     QVariantMap hls;
     int anyError = 0;
-    for (int i = 3; i < app.arguments().size(); ++i) {
-        QFile hlFile (app.arguments().at(i));
+    foreach (const QString &hlFilename, hlFilenames) {
+        QFile hlFile(hlFilename);
         if (!hlFile.open(QIODevice::ReadOnly)) {
             anyError = 3;
             continue;
