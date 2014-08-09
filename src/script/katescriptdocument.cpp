@@ -187,26 +187,26 @@ KTextEditor::Cursor KateScriptDocument::fromVirtualCursor(const KTextEditor::Cur
 
 KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QString &text, int attribute)
 {
-    QScopedPointer<KTextEditor::MovingCursor> cursor(document()->newMovingCursor(KTextEditor::Cursor(line, column)));
-    const int start = cursor->line();
+    KTextEditor::DocumentCursor cursor(document(), line, column);
+    const int start = cursor.line();
 
     // just use the global default schema, we anyway only want the style number!
     QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
 
     do {
-        Kate::TextLine textLine = m_document->plainKateTextLine(cursor->line());
+        Kate::TextLine textLine = m_document->plainKateTextLine(cursor.line());
         if (!textLine) {
             break;
         }
 
-        if (cursor->line() != start) {
-            cursor->setColumn(textLine->length());
+        if (cursor.line() != start) {
+            cursor.setColumn(textLine->length());
         } else if (column >= textLine->length()) {
-            cursor->setColumn(qMax(textLine->length(), 0));
+            cursor.setColumn(qMax(textLine->length(), 0));
         }
 
         int foundAt;
-        while ((foundAt = textLine->string().left(cursor->column()).lastIndexOf(text, -1, Qt::CaseSensitive)) >= 0) {
+        while ((foundAt = textLine->string().left(cursor.column()).lastIndexOf(text, -1, Qt::CaseSensitive)) >= 0) {
             bool hasStyle = true;
             if (attribute != -1) {
                 KTextEditor::Attribute::Ptr a = attributes[textLine->attribute(foundAt)];
@@ -215,12 +215,12 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
             }
 
             if (hasStyle) {
-                return KTextEditor::Cursor(cursor->line(), foundAt);
+                return KTextEditor::Cursor(cursor.line(), foundAt);
             } else {
-                cursor->setColumn(foundAt);
+                cursor.setColumn(foundAt);
             }
         }
-    } while (cursor->gotoPreviousLine());
+    } while (cursor.gotoPreviousLine());
 
     return KTextEditor::Cursor::invalid();
 }
