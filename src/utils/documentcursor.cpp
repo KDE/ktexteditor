@@ -150,24 +150,26 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
         return false;
     }
 
+    // create temporary cursor to modify
     Cursor c(m_cursor);
 
-    // cache lineLength to minimize calls of KTextEditor::DocumentPrivate::lineLength(), as
-    // results in locating the correct block in the text buffer every time,
-    // which is relatively slow
-    int lineLength = document()->lineLength(c.line());
+    // fowards?
+    if (chars > 0) {
+        // cache lineLength to minimize calls of KTextEditor::DocumentPrivate::lineLength(), as
+        // results in locating the correct block in the text buffer every time,
+        // which is relatively slow
+        int lineLength = document()->lineLength(c.line());
 
-    // special case: cursor position is not in valid text, then the algo does
-    // not work for Wrap mode. Hence, catch this special case by setting
-    // c.column() to the lineLength()
-    if (chars > 0 && wrapBehavior == Wrap && c.column() > lineLength) {
-        c.setColumn(lineLength);
-    }
-
-    while (chars != 0) {
-        if (chars > 0) {
+        // special case: cursor position is not in valid text, then the algo does
+        // not work for Wrap mode. Hence, catch this special case by setting
+        // c.column() to the lineLength()
+        if (wrapBehavior == Wrap && c.column() > lineLength) {
+            c.setColumn(lineLength);
+        }
+        
+        while (chars != 0) {
             if (wrapBehavior == Wrap) {
-                int advance = qMin(lineLength - c.column(), chars);
+                const int advance = qMin(lineLength - c.column(), chars);
 
                 if (chars > advance) {
                     if (c.line() + 1 >= document()->lines()) {
@@ -187,8 +189,13 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
                 c.setColumn(c.column() + chars);
                 chars = 0;
             }
-        } else {
-            int back = qMin(c.column(), -chars);
+        }
+    }    
+
+    // backwards?
+    else {
+        while (chars != 0) {
+            const int back = qMin(c.column(), -chars);
             if (-chars > back) {
                 if (c.line() == 0) {
                     return false;
@@ -196,9 +203,6 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
 
                 c.setPosition(c.line() - 1, document()->lineLength(c.line() - 1));
                 chars += back + 1; // +1 because of wrap-around at start-of-line
-
-                // advanced one line, so cache correct line length again
-                lineLength = document()->lineLength(c.line());
             } else {
                 c.setColumn(c.column() + chars);
                 chars = 0;
