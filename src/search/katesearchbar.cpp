@@ -32,6 +32,7 @@
 #include <KTextEditor/Message>
 #include <KTextEditor/MovingCursor>
 #include <KTextEditor/MovingRange>
+#include <KTextEditor/DocumentCursor>
 
 #include "ui_searchbarincremental.h"
 #include "ui_searchbarpower.h"
@@ -839,23 +840,20 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
             if (highlightRanges.last().end() >= workingRange->end()) {
                 break;
             }
-            KTextEditor::MovingCursor *workingStart =
-                static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingCursor(highlightRanges.last().end());
+            KTextEditor::DocumentCursor workingStart(m_view->doc(), highlightRanges.last().end());
             if (originalMatchEmpty) {
                 // Can happen for regex patterns like "^".
                 // If we don't advance here we will loop forever...
-                workingStart->move(1);
-            } else if (regexMode && !multiLinePattern && workingStart->atEndOfLine()) {
+                workingStart.move(1);
+            } else if (regexMode && !multiLinePattern && workingStart.atEndOfLine()) {
                 // single-line regexps might match the naked line end
                 // therefore we better advance to the next line
-                workingStart->move(1);
+                workingStart.move(1);
             }
-            workingRange->setRange(*workingStart, workingRange->end());
+            workingRange->setRange(workingStart.toCursor(), workingRange->end());
 
-            const bool atEndOfDocument = workingStart->atEndOfDocument();
-            delete workingStart;
             // Are we done?
-            if (!workingRange->toRange().isValid() || atEndOfDocument) {
+            if (!workingRange->toRange().isValid() || workingStart.atEndOfDocument()) {
                 break;
             }
         }
