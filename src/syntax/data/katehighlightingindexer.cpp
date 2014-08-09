@@ -23,6 +23,8 @@
 #include <QVariant>
 #include <QDomDocument>
 #include <QJsonDocument>
+#include <QXmlSchema>
+#include <QXmlSchemaValidator>
 
 int main(int argc, char *argv[])
 {
@@ -30,13 +32,18 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
     
     // ensure enough arguments are passed
-    if (app.arguments().size() < 2)
+    if (app.arguments().size() < 3)
         return 1;
     
     // open output file, or fail
     QFile outFile(app.arguments().at(1));
     if (!outFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
         return 2;
+    
+    // open schema
+    QXmlSchema schema;
+    if (!schema.load(QUrl::fromLocalFile(app.arguments().at(2))))
+        return 3;
     
     // text attributes
     const QStringList textAttributes = QStringList() << QLatin1String("name") << QLatin1String("section") << QLatin1String("mimetype")
@@ -45,27 +52,32 @@ int main(int argc, char *argv[])
     
     // index all given highlightings
     QVariantMap hls;
-    for (int i = 2; i < app.arguments().size(); ++i) {
+    for (int i = 3; i < app.arguments().size(); ++i) {
         QFile hlFile (app.arguments().at(i));
         if (!hlFile.open(QIODevice::ReadOnly))
-            return 3;
+            return 4;
+        
+        // validate against schema
+        QXmlSchemaValidator validator(schema);
+        if (!validator.validate(&hlFile, QUrl::fromLocalFile(hlFile.fileName())))
+            return 5;
         
         // Ok we opened the file, let's read the contents and close the file
-        /* the return of setContent should be checked because a false return shows a parsing error */
         QString errMsg;
         int line, col;
         QDomDocument doc;
+        hlFile.reset();
         if (!doc.setContent(&hlFile, &errMsg, &line, &col))
-            return 4;
+            return 6;
 
         // get the root => else fail
         QDomElement root = doc.documentElement();
         if (root.isNull())
-            return 5;
+            return 7;
             
         // ensure the 'first' tag is language
         if (root.tagName() != QLatin1String("language"))
-            return 6;
+            return 8;
         
         // map to store hl info
         QVariantMap hl;
@@ -84,7 +96,8 @@ int main(int argc, char *argv[])
     }
     
     // write out json
-    outFile.write (QJsonDocument::fromVariant(QVariant(hls)).toBinaryData());
+    outFile.write(QJsonDocument::fromVariant(QVariant(hls)).toBinaryData());
     
+    // be done
     return 0;
 }
