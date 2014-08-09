@@ -30,7 +30,7 @@
 
 KateCommands::Highlighting *KateCommands::Highlighting::m_instance = 0;
 
-bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range)
+bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     if(cmd.startsWith(QLatin1String("reload-highlighting")))
     {
