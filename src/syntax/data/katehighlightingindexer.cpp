@@ -47,24 +47,32 @@ int main(int argc, char *argv[])
     
     // index all given highlightings
     QVariantMap hls;
+    int anyError = 0;
     for (int i = 3; i < app.arguments().size(); ++i) {
         QFile hlFile (app.arguments().at(i));
-        if (!hlFile.open(QIODevice::ReadOnly))
-            return 3;
+        if (!hlFile.open(QIODevice::ReadOnly)) {
+            anyError = 3;
+            continue;
+        }
         
         // validate against schema
         QXmlSchemaValidator validator(schema);
-        if (!validator.validate(&hlFile, QUrl::fromLocalFile(hlFile.fileName())))
-            return 4;
+        if (!validator.validate(&hlFile, QUrl::fromLocalFile(hlFile.fileName()))) {
+            anyError = 4;
+            continue;
+        }
         
         // read the needed attributes from toplevel language tag
         hlFile.reset();
         QXmlStreamReader xml(&hlFile);
         if (xml.readNextStartElement()) {
-            if (xml.name() != QLatin1String("language"))
-                return 5;
+            if (xml.name() != QLatin1String("language")) {
+                anyError = 5;
+                continue;
+            }
         } else {
-            return 6;
+            anyError = 6;
+            continue;
         }
 
         // map to store hl info
@@ -82,6 +90,10 @@ int main(int argc, char *argv[])
         // remember hl
         hls[QFileInfo(hlFile).fileName()] = hl;
     }
+    
+    // bail out if any problem was seen
+    if (anyError)
+        return anyError;
     
     // create outfile, after all has worked!
     QFile outFile(app.arguments().at(1));

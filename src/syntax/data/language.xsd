@@ -47,25 +47,7 @@
   TODO
     - Are there any more such pre-defined entities?
 -->
-<!--
-  Boolean type
-  Attributes that are of type boolean allow the following values:
-  'true', 'TRUE' and '1' all meaning true,
-  'false', FALSE' and '0' all meaning false.
-  
-  It is encouraged to use 'true' and 'false' instead of the alternatives.
--->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-  <xs:simpleType name="boolean">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="true"/>
-      <xs:enumeration value="false"/>
-      <xs:enumeration value="TRUE"/>
-      <xs:enumeration value="FALSE"/>
-      <xs:enumeration value="0"/>
-      <xs:enumeration value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
   <!--
     Default Styles
     Allowed predefined default styles for itemData, available are:
@@ -177,12 +159,12 @@
       <xs:attribute name="kateversion" use="required"/>
       <xs:attribute name="style"/>
       <xs:attribute name="mimetype"/>
-      <xs:attribute name="casesensitive" type="boolean"/>
+      <xs:attribute name="casesensitive" type="xs:boolean"/>
       <xs:attribute name="priority"/>
       <xs:attribute name="author"/>
       <xs:attribute name="license"/>
       <xs:attribute name="indenter"/>
-      <xs:attribute name="hidden" type="boolean"/>
+      <xs:attribute name="hidden" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!-- General options -->
@@ -203,7 +185,7 @@
   -->
   <xs:element name="folding">
     <xs:complexType>
-      <xs:attribute name="indentationsensitive" type="boolean"/>
+      <xs:attribute name="indentationsensitive" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!-- List of comments -->
@@ -259,7 +241,7 @@
   -->
   <xs:element name="keywords">
     <xs:complexType>
-      <xs:attribute name="casesensitive" type="boolean"/>
+      <xs:attribute name="casesensitive" type="xs:boolean"/>
       <xs:attribute name="weakDeliminator"/>
       <xs:attribute name="additionalDeliminator"/>
       <xs:attribute name="wordWrapDeliminator"/>
@@ -299,7 +281,7 @@
   <xs:element name="emptyLine">
     <xs:complexType>
       <xs:attribute name="regexpr" use="required"/>
-      <xs:attribute name="casesensitive" type="boolean"/>
+      <xs:attribute name="casesensitive" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!-- Highlighting specification -->
@@ -383,10 +365,10 @@
       <xs:attribute name="attribute" use="required"/>
       <xs:attribute name="lineEndContext" use="required"/>
       <xs:attribute name="lineEmptyContext"/>
-      <xs:attribute name="fallthrough" type="boolean"/>
+      <xs:attribute name="fallthrough" type="xs:boolean"/>
       <xs:attribute name="fallthroughContext"/>
-      <xs:attribute name="dynamic" type="boolean"/>
-      <xs:attribute name="noIndentationBasedFolding" type="boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
+      <xs:attribute name="noIndentationBasedFolding" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -403,8 +385,8 @@
     <xs:attribute name="context"/>
     <xs:attribute name="beginRegion"/>
     <xs:attribute name="endRegion"/>
-    <xs:attribute name="lookAhead" type="boolean"/>
-    <xs:attribute name="firstNonSpace" type="boolean"/>
+    <xs:attribute name="lookAhead" type="xs:boolean"/>
+    <xs:attribute name="firstNonSpace" type="xs:boolean"/>
     <xs:attribute name="column"/>
   </xs:attributeGroup>
   <!--
@@ -509,7 +491,7 @@
     <xs:complexType>
       <xs:attributeGroup ref="commonAttributes"/>
       <xs:attribute name="char" use="required"/>
-      <xs:attribute name="dynamic" type="boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -524,7 +506,7 @@
       <xs:attributeGroup ref="commonAttributes"/>
       <xs:attribute name="char" use="required"/>
       <xs:attribute name="char1" use="required"/>
-      <xs:attribute name="dynamic" type="boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -555,8 +537,8 @@
     <xs:complexType>
       <xs:attributeGroup ref="commonAttributes"/>
       <xs:attribute name="String" use="required"/>
-      <xs:attribute name="insensitive" type="boolean"/>
-      <xs:attribute name="dynamic" type="boolean"/>
+      <xs:attribute name="insensitive" type="xs:boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -573,8 +555,8 @@
     <xs:complexType>
       <xs:attributeGroup ref="commonAttributes"/>
       <xs:attribute name="String" use="required"/>
-      <xs:attribute name="insensitive" type="boolean"/>
-      <xs:attribute name="dynamic" type="boolean"/>
+      <xs:attribute name="insensitive" type="xs:boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -589,9 +571,9 @@
     <xs:complexType>
       <xs:attributeGroup ref="commonAttributes"/>
       <xs:attribute name="String" use="required"/>
-      <xs:attribute name="insensitive" type="boolean"/>
-      <xs:attribute name="minimal" type="boolean"/>
-      <xs:attribute name="dynamic" type="boolean"/>
+      <xs:attribute name="insensitive" type="xs:boolean"/>
+      <xs:attribute name="minimal" type="xs:boolean"/>
+      <xs:attribute name="dynamic" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -639,7 +621,7 @@
   <xs:element name="IncludeRules">
     <xs:complexType>
       <xs:attribute name="context" use="required"/>
-      <xs:attribute name="includeAttrib" type="boolean"/>
+      <xs:attribute name="includeAttrib" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!-- Detect all following Spaces -->
@@ -682,13 +664,13 @@
       <xs:attribute name="defStyleNum" use="required" type="defStyles"/>
       <xs:attribute name="color"/>
       <xs:attribute name="selColor"/>
-      <xs:attribute name="italic" type="boolean"/>
-      <xs:attribute name="bold" type="boolean"/>
-      <xs:attribute name="underline" type="boolean"/>
-      <xs:attribute name="strikeOut" type="boolean"/>
+      <xs:attribute name="italic" type="xs:boolean"/>
+      <xs:attribute name="bold" type="xs:boolean"/>
+      <xs:attribute name="underline" type="xs:boolean"/>
+      <xs:attribute name="strikeOut" type="xs:boolean"/>
       <xs:attribute name="backgroundColor"/>
       <xs:attribute name="selBackgroundColor"/>
-      <xs:attribute name="spellChecking" type="boolean"/>
+      <xs:attribute name="spellChecking" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -730,7 +712,7 @@
     <xs:complexType>
       <xs:attribute name="string" use="required"/>
       <xs:attribute name="char"/>
-      <xs:attribute name="ignored" type="boolean"/>
+      <xs:attribute name="ignored" type="xs:boolean"/>
     </xs:complexType>
   </xs:element>
   <!--
