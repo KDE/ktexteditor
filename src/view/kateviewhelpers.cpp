@@ -42,7 +42,6 @@
 #include "kateabstractinputmode.h"
 
 #include <KCharsets>
-#include <KColorScheme>
 #include <KColorUtils>
 #include <KLocalizedString>
 #include <KIconLoader>

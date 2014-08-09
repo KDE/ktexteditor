@@ -28,7 +28,6 @@
 #include "katerenderer.h"
 #include "katepartdebug.h"
 
-#include <KColorScheme>
 #include <KConfigGroup>
 //END
 
