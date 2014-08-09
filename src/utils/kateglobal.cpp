@@ -241,8 +241,6 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_cmdManager;
 
     qDeleteAll(m_inputModeFactories);
-    
-    delete m_defaultColors;
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)

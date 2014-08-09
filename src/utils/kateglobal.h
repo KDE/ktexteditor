@@ -39,6 +39,7 @@
 #include <QList>
 #include <QPointer>
 #include <QMap>
+#include <QScopedPointer>
 
 class KateCmd;
 class KateModeManager;
@@ -518,7 +519,7 @@ private:
     /**
      * default colors
      */
-    KateDefaultColors *m_defaultColors;
+    QScopedPointer<KateDefaultColors> m_defaultColors;
 };
 
 }
