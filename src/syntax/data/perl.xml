@@ -39,7 +39,7 @@
 
    Enhance tr/// and y/// support.
 -->
-<language name="Perl" version="1.29" kateversion="2.4" section="Scripts" extensions="*.pl;*.PL;*.pm" mimetype="application/x-perl;text/x-perl" priority="5" author="Anders Lund (anders@alweb.dk)" license="LGPL">
+<language name="Perl" version="1.30" kateversion="2.4" section="Scripts" extensions="*.pl;*.PL;*.pm" mimetype="application/x-perl;text/x-perl" priority="5" author="Anders Lund (anders@alweb.dk)" license="LGPL">
   <highlighting>
     <list name="keywords">
       <item> if </item>
@@ -620,14 +620,14 @@
       </context>
 
       <!-- rules internal stuff wrt regex patterns -->
-      <context name="regex_pattern_internal_rules_1" lineEndContext="#stay">
+      <context name="regex_pattern_internal_rules_1" attribute="Pattern" lineEndContext="#stay">
         <RegExpr attribute="Comment" context="#stay" String="#.*$" firstNonSpace="true" />
         <RegExpr attribute="Pattern Character Class" context="#stay" String="\\[anDdSsWw]" />
         <RegExpr attribute="Pattern Internal Operator" context="#stay" String="\\[ABbEGLlNUuQdQZz]" />
         <RegExpr attribute="Special Variable" context="#stay" String="\\[\d]+" />
         <RegExpr attribute="Pattern" context="#stay" String="\\." />
       </context>
-      <context name="regex_pattern_internal_rules_2" lineEndContext="#stay">
+      <context name="regex_pattern_internal_rules_2" attribute="Pattern" lineEndContext="#stay">
         <Detect2Chars attribute="Pattern Internal Operator" context="pat_ext" char="(" char1="?" />
         <DetectChar attribute="Pattern Internal Operator" context="pat_char_class" char="[" />
         <RegExpr attribute="Pattern Internal Operator" context="#stay" String="[()?^*+|]" />
