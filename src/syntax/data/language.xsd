@@ -387,7 +387,7 @@
     <xs:attribute name="endRegion"/>
     <xs:attribute name="lookAhead" type="xs:boolean"/>
     <xs:attribute name="firstNonSpace" type="xs:boolean"/>
-    <xs:attribute name="column"/>
+    <xs:attribute name="column" type="xs:integer"/>
   </xs:attributeGroup>
   <!--
     Detect members of a keyword list
@@ -407,7 +407,7 @@
   <xs:element name="keyword">
     <xs:complexType>
       <xs:attributeGroup ref="commonAttributes"/>
-      <xs:attribute name="insensitive"/>
+      <xs:attribute name="insensitive" type="xs:boolean"/>
       <xs:attribute name="String" use="required"/>
       <xs:attribute name="weakDelimiter"/>
     </xs:complexType>
