@@ -232,10 +232,6 @@ KTextEditor::Cursor KateScriptDocument::rfind(const KTextEditor::Cursor &cursor,
 
 KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar character)
 {
-    // just use the global default schema, we anyway only want the style number!
-    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
-
-    int count = 1;
     QChar lc;
     QChar rc;
     if (character == QLatin1Char('(') || character == QLatin1Char(')')) {
@@ -252,18 +248,36 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         return KTextEditor::Cursor::invalid();
     }
 
+    // just use the global default schema, we anyway only want the style number!
+    const QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
+
+    // cache line
+    Kate::TextLine currentLine = document()->plainKateTextLine(line);
+    if (!currentLine)
+        return KTextEditor::Cursor::invalid();
+
     // Move backwards char by char and find the opening character
+    int count = 1;
     KTextEditor::DocumentCursor cursor(document(), KTextEditor::Cursor(line, column));
     while (cursor.move(-1, KTextEditor::DocumentCursor::Wrap)) {
-        QChar ch = document()->characterAt(cursor.toCursor());
+        // need to fetch new line?
+        if (line != cursor.line()) {
+            line = cursor.line();
+            currentLine = document()->plainKateTextLine(line);
+            if (!currentLine)
+                return KTextEditor::Cursor::invalid();
+        }
+        
+        // get current char
+        const QChar ch = currentLine->at(cursor.column());
         if (ch == lc) {
-            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor.line())->attribute(cursor.column())];
+            KTextEditor::Attribute::Ptr a = attributes[currentLine->attribute(cursor.column())];
             const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 --count;
             }
         } else if (ch == rc) {
-            KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(cursor.line())->attribute(cursor.column())];
+            KTextEditor::Attribute::Ptr a = attributes[currentLine->attribute(cursor.column())];
             const int ds = a->defaultStyle();
             if (_isCode(ds)) {
                 ++count;
