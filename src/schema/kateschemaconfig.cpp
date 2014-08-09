@@ -76,7 +76,8 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
 {
     QVector<KateColorItem> items;
 
-    KateDefaultColors colors;
+    // use global color instance, creation is expensive!
+    const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
 
     //
     // editor background colors

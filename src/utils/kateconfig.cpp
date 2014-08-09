@@ -2316,7 +2316,8 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
 
     KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(schema);
 
-    KateDefaultColors colors;
+    // use global color instance, creation is expensive!
+    const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
 
     m_backgroundColor = config.readEntry("Color Background", colors.color(Kate::Background));
 

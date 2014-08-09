@@ -857,7 +857,8 @@ void KateHighlighting::addToKateExtendedAttributeList()
     KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
     KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("highlighting"), QLatin1String("itemData"));
 
-    KateDefaultColors colors;
+    // use global color instance, creation is expensive!
+    const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
 
     //begin with the real parsing
     while (KateHlManager::self()->syntax.nextGroup(data)) {
