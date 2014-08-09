@@ -26,6 +26,7 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
+#include "katedefaultcolors.h"
 
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/range.h>
@@ -39,7 +40,6 @@
 #include <KPageWidgetModel>
 #include <KToggleAction>
 #include <KConfigGroup>
-#include <KColorScheme>
 #include <KAboutData>
 
 #include <QRegExp>
@@ -324,7 +324,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
     d->liRange = static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
-    KColorScheme colors(QPalette::Active);
+    const KColorScheme &colors(KTextEditor::EditorPrivate::self()->defaultColors().view());
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
     a->setBackground(colors.background(KColorScheme::ActiveBackground));
     a->setForeground(colors.foreground(KColorScheme::ActiveText));   // ### this does 0

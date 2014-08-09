@@ -41,6 +41,7 @@
 #include "katekeywordcompletion.h"
 #include "spellcheck/spellcheck.h"
 #include "katepartdebug.h"
+#include "katedefaultcolors.h"
 
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
@@ -81,6 +82,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
                   i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
                   i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
     , m_application(Q_NULLPTR)
+    , m_defaultColors(new KateDefaultColors())
 {
     // remember this
     staticInstance = this;
@@ -91,10 +93,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     qRegisterMetaType<KTextEditor::Cursor>("KTextEditor::Cursor");
     qRegisterMetaType<KTextEditor::Document *>("KTextEditor::Document*");
     qRegisterMetaType<KTextEditor::View *>("KTextEditor::View*");
-
-    // load the kate part translation catalog
-    // FIXME: kf5
-    // KLocale::global()->insertCatalog("katepart4");
 
     //
     // fill about data
@@ -145,7 +143,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_aboutData.addCredit(i18n("All people who have contributed and I have forgotten to mention"));
 
     m_aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
-
+    
     //
     // dir watch
     //
@@ -243,6 +241,8 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_cmdManager;
 
     qDeleteAll(m_inputModeFactories);
+    
+    delete m_defaultColors;
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)

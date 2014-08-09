@@ -71,6 +71,26 @@ class KateDefaultColors
 {
 public:
     KateDefaultColors();
+    
+    const KColorScheme &view() const
+    {
+        return m_view;
+    }
+    
+    const KColorScheme &window() const
+    {
+        return m_window;
+    }
+    
+    const KColorScheme &selection() const
+    {
+        return m_selection;
+    }
+    
+    const KColorScheme &inactiveSelection() const
+    {
+        return m_inactiveSelection;
+    }
 
     QColor color(Kate::ColorRole color) const;
     QColor mark(Kate::Mark mark) const;
@@ -83,14 +103,14 @@ public:
     QColor adaptToScheme(const QColor& color, ColorType type) const;
 
 private:
-    KColorScheme m_view;
-    KColorScheme m_window;
-    KColorScheme m_selection;
-    KColorScheme m_inactiveSelection;
-    QColor m_background;
-    QColor m_foreground;
-    qreal m_backgroundLuma;
-    qreal m_foregroundLuma;
+    const KColorScheme m_view;
+    const KColorScheme m_window;
+    const KColorScheme m_selection;
+    const KColorScheme m_inactiveSelection;
+    const QColor m_background;
+    const QColor m_foreground;
+    const qreal m_backgroundLuma;
+    const qreal m_foregroundLuma;
 };
 
 #endif // __KATE_DEFAULTCOLORS_H__

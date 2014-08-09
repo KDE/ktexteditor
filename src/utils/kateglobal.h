@@ -56,6 +56,7 @@ class KateSpellCheckManager;
 class KateWordCompletionModel;
 class KateAbstractInputModeFactory;
 class KateKeywordCompletionModel;
+class KateDefaultColors;
 
 namespace KTextEditor
 {
@@ -391,6 +392,15 @@ public:
      * @return list of available input mode factories
      */
     QList<KateAbstractInputModeFactory *> inputModeFactories();
+    
+    /**
+     * Default colors, once constructed, as expensive
+     * @return default colors
+     */
+    const KateDefaultColors &defaultColors() const
+    {
+        return *m_defaultColors;
+    }
 
 Q_SIGNALS:
     /**
@@ -504,6 +514,11 @@ private:
      * input modes map
      */
     QMap<KTextEditor::View::InputMode, KateAbstractInputModeFactory *> m_inputModeFactories;
+    
+    /**
+     * default colors
+     */
+    KateDefaultColors *m_defaultColors;
 };
 
 }

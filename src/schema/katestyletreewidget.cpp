@@ -23,9 +23,10 @@
 #include "katestyletreewidget.h"
 #include "kateconfig.h"
 #include "kateextendedattribute.h"
+#include "katedefaultcolors.h"
+#include "kateglobal.h"
 
 #include <KLocalizedString>
-#include <KColorScheme>
 #include <KMessageBox>
 
 #include <QPainter>
@@ -147,7 +148,8 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     headerItem()->setIcon(4, QIcon::fromTheme(QLatin1String("format-text-strikethrough")));
 
     // grap the bg color, selected color and default font
-    normalcol = KColorScheme(QPalette::Active, KColorScheme::View).foreground().color();
+    const KColorScheme &colors(KTextEditor::EditorPrivate::self()->defaultColors().view());
+    normalcol = colors.foreground().color();
     bgcol = KateRendererConfig::global()->backgroundColor();
     selcol = KateRendererConfig::global()->selectionColor();
     docfont = KateRendererConfig::global()->font();

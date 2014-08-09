@@ -35,9 +35,9 @@
 #include "kateextendedattribute.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
+#include "katedefaultcolors.h"
 
 #include <KConfigGroup>
-#include <KColorScheme>
 #include <KColorUtils>
 #include <KMessageBox>
 
@@ -440,8 +440,8 @@ int KateHlManager::defaultStyleNameToIndex(const QString &name)
 
 void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, KConfig *cfg)
 {
-    KColorScheme scheme(QPalette::Active, KColorScheme::View);
-    KColorScheme schemeSelected(QPalette::Active, KColorScheme::Selection);
+    const KColorScheme &scheme(KTextEditor::EditorPrivate::self()->defaultColors().view());
+    const KColorScheme &schemeSelected(KTextEditor::EditorPrivate::self()->defaultColors().selection());
 
     ///NOTE: it's important to append in the order of the KTextEditor::DefaultStyle
     ///      enum, to make KTextEditor::DocumentPrivate::defaultStyle() work properly.
