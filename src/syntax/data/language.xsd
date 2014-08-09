@@ -160,7 +160,7 @@
       <xs:attribute name="style"/>
       <xs:attribute name="mimetype"/>
       <xs:attribute name="casesensitive" type="xs:boolean"/>
-      <xs:attribute name="priority"/>
+      <xs:attribute name="priority" type="xs:integer"/>
       <xs:attribute name="author"/>
       <xs:attribute name="license"/>
       <xs:attribute name="indenter"/>
