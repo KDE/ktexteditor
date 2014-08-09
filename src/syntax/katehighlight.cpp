@@ -770,18 +770,6 @@ void KateHighlighting::use()
 }
 
 /**
- * Decrease the usage count, and trigger cleanup if needed.
- */
-void KateHighlighting::release()
-{
-    refCount--;
-
-    if (refCount == 0) {
-        done();
-    }
-}
-
-/**
  * Reload the highlighting.
  */
 
@@ -809,19 +797,6 @@ void KateHighlighting::init()
     if (noHl) { // something went wrong, fill something in
         makeNoneContext();
     }
-}
-
-/**
- * If there is no document using the highlighting style free the complete
- * context structure.
- */
-void KateHighlighting::done()
-{
-    if (noHl) {
-        return;
-    }
-
-    cleanup();
 }
 
 /**

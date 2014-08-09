@@ -64,10 +64,6 @@ KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
  */
 KateBuffer::~KateBuffer()
 {
-    // release HL
-    if (m_highlight) {
-        m_highlight->release();
-    }
 }
 
 void KateBuffer::editStart()
@@ -336,7 +332,6 @@ void KateBuffer::setHighlight(int hlMode)
         bool invalidate = !h->noHighlighting();
 
         if (m_highlight) {
-            m_highlight->release();
             invalidate = true;
         }
 

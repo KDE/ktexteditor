@@ -211,7 +211,6 @@ public:
         return identifier;
     }
     void use();
-    void release();
     void reload();
 
     /**
@@ -331,7 +330,6 @@ private:
 
 private:
     void init();
-    void done();
     void makeContextList();
     int makeDynamicContext(KateHlContext *model, const QStringList *args);
     void handleKateHlIncludeRules();
