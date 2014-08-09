@@ -1,5 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE language SYSTEM "language.dtd" [
+
   <!ENTITY citation "(\s|^)\?\?[^\s]{1}[^?]+\?\?(?=\s|\.|,|;|:|\-|$)">
   <!ENTITY deleted "(\s|^)\-[^\s]{1}[^\-]+\-(?=\s|\.|,|;|:|\?|$)">
   <!ENTITY emphasis "(\s|^)_[^\s]{1}[^_]+_(?=\s|\.|,|;|:|\-|\?|$)">
@@ -8,9 +9,16 @@
   <!ENTITY strong "(\s|^)\*[^\s]{1}[^\*]+\*(?=\s|\.|,|;|:|\-|\?|$)">
   <!ENTITY subscript "(\s|^)~[^\s]{1}[^~]+~(?=\s|\.|,|;|:|\-|\?|$)">
   <!ENTITY superscript "(\s|^)\^[^\s]{1}[^\^]+\^(?=\s|\.|,|;|:|\-|\?|$)">
-  <!ENTITY url "(http:|https:|ftp:|mailto:)[^]| ]*(?=$|[]|\s])">
+
+  <!ENTITY bracketAnchor                "(\s|^)\[#[^]\s]{1}[^]]+\]">
+  <!ENTITY attachment                   "(\s|^)\[\^[^]\s]{1}[^]]+\]">
+  <!ENTITY userTag                      "(\s|^)\[~[^]\s]{1}[^]]+\]">
+  <!ENTITY taggedLink                   "(\s|^)\[[^]\s|]{1}[^]|]+\]">
+  <!ENTITY taggedLinkWithDisplayText    "(\s|^)\[[^]\s|]{1}[^]|]+\|[^]\s|]{1}[^]|]+\]">
+
+  <!ENTITY url "(http:|https:|ftp:|mailto:)[^]|) ]*(?=$|[]|\s|\)])">
 ]>
-<language name="Jira" section="Markup" version="0.3" kateversion="3.10" extensions="*.jira" mimetype="" license="FDL" >
+<language name="Jira" section="Markup" version="0.4" kateversion="3.10" extensions="*.jira" mimetype="" license="FDL" >
   <highlighting>
 
     <!--
@@ -26,6 +34,8 @@
         <IncludeRules context="FindHeader" />
         <IncludeRules context="FindQuote" />
         <IncludeRules context="FindTextBreaks" />
+        <IncludeRules context="FindLinks" />
+        <IncludeRules context="FindListItem" />
         <IncludeRules context="FindTextEffects" />
       </context>
 
@@ -34,6 +44,52 @@
 
       <!-- Headings -->
       <context name="Header" attribute="Header" lineEndContext="#pop" />
+
+      <!-- Links -->
+      <context name="BracketAnchor" lineEndContext="#stay" attribute="Normal">
+        <Detect2Chars char="[" char1="#" attribute="Special Character" context="BracketAnchorContent" />
+      </context>
+      <context name="BracketAnchorContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
+      </context>
+
+      <context name="Attachment" lineEndContext="#stay" attribute="Normal">
+        <Detect2Chars char="[" char1="^" attribute="Special Character" context="AttachmentContent" />
+      </context>
+      <context name="AttachmentContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
+      </context>
+
+      <context name="UserTag" lineEndContext="#stay" attribute="Normal">
+        <Detect2Chars char="[" char1="~" attribute="Special Character" context="UserTagContent" />
+      </context>
+      <context name="UserTagContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
+      </context>
+
+      <context name="TaggedLink" lineEndContext="#stay" attribute="Normal">
+        <DetectChar char="[" attribute="Special Character" context="TaggedLinkContent" />
+      </context>
+      <context name="TaggedLinkContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
+      </context>
+
+      <context name="TaggedLinkWithDisplayText" lineEndContext="#stay" attribute="Normal">
+        <DetectChar char="[" attribute="Special Character" context="TaggedLinkDisplayText" />
+      </context>
+      <context name="TaggedLinkDisplayText" attribute="Normal" lineEndContext="#stay">
+        <DetectChar char="|" attribute="Special Character" context="TaggedLinkUrl" />
+      </context>
+      <context name="TaggedLinkUrl" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="]" attribute="Special Character" context="#pop#pop#pop" />
+      </context>
+
+      <context name="BraceAnchor" lineEndContext="#stay" attribute="Normal">
+        <StringDetect String="{anchor:" attribute="Special Character" context="BraceAnchorContent" />
+      </context>
+      <context name="BraceAnchorContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char="}" attribute="Special Character" context="#pop#pop" />
+      </context>
 
       <!-- Text Effects -->
       <context name="BlockQuote" lineEndContext="#pop" attribute="Normal"/>
@@ -243,6 +299,22 @@
         <StringDetect String="----" attribute="Special Character" />
         <StringDetect String="---" attribute="Special Character" />
         <Detect2Chars char="-" char1="-" attribute="Special Character" />
+      </context>
+
+      <!-- Links -->
+      <context name="FindLinks" attribute="Normal" lineEndContext="#stay" >
+        <RegExpr String="&bracketAnchor;" context="BracketAnchor" lookAhead="true" />
+        <RegExpr String="&attachment;" context="Attachment" lookAhead="true" />
+        <RegExpr String="&userTag;" context="UserTag" lookAhead="true" />
+        <RegExpr String="&taggedLink;" context="TaggedLink" lookAhead="true" />
+        <RegExpr String="&taggedLinkWithDisplayText;" context="TaggedLinkWithDisplayText" lookAhead="true" />
+        <RegExpr String="\{anchor:[^}]+\}" context="BraceAnchor" lookAhead="true" />
+        <RegExpr String="&url;" attribute="Green" />
+      </context>
+
+      <!-- Lists -->
+      <context name="FindListItem" attribute="Normal" lineEndContext="#stay" >
+        <RegExpr String="([*#]*[*#]+|-)" attribute="Special Character" context="#stay" column="0" />
       </context>
 
       <!-- Text Effects -->
