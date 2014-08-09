@@ -854,27 +854,27 @@ void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute:
 void KateHighlighting::addToKateExtendedAttributeList()
 {
     //Tell the syntax document class which file we want to parse and which data group
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("highlighting"), QLatin1String("itemData"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("highlighting"), QLatin1String("itemData"));
 
     KateDefaultColors colors;
 
     //begin with the real parsing
-    while (KateHlManager::self()->syntax->nextGroup(data)) {
+    while (KateHlManager::self()->syntax.nextGroup(data)) {
         // read all attributes
-        const QString color = KateHlManager::self()->syntax->groupData(data, QLatin1String("color"));
-        const QString selColor = KateHlManager::self()->syntax->groupData(data, QLatin1String("selColor"));
-        const QString bold = KateHlManager::self()->syntax->groupData(data, QLatin1String("bold"));
-        const QString italic = KateHlManager::self()->syntax->groupData(data, QLatin1String("italic"));
-        const QString underline = KateHlManager::self()->syntax->groupData(data, QLatin1String("underline"));
-        const QString strikeOut = KateHlManager::self()->syntax->groupData(data, QLatin1String("strikeOut"));
-        const QString bgColor = KateHlManager::self()->syntax->groupData(data, QLatin1String("backgroundColor"));
-        const QString selBgColor = KateHlManager::self()->syntax->groupData(data, QLatin1String("selBackgroundColor"));
-        const QString spellChecking = KateHlManager::self()->syntax->groupData(data, QLatin1String("spellChecking"));
-        const QString fontFamily = KateHlManager::self()->syntax->groupData(data, QLatin1String("fontFamily"));
+        const QString color = KateHlManager::self()->syntax.groupData(data, QLatin1String("color"));
+        const QString selColor = KateHlManager::self()->syntax.groupData(data, QLatin1String("selColor"));
+        const QString bold = KateHlManager::self()->syntax.groupData(data, QLatin1String("bold"));
+        const QString italic = KateHlManager::self()->syntax.groupData(data, QLatin1String("italic"));
+        const QString underline = KateHlManager::self()->syntax.groupData(data, QLatin1String("underline"));
+        const QString strikeOut = KateHlManager::self()->syntax.groupData(data, QLatin1String("strikeOut"));
+        const QString bgColor = KateHlManager::self()->syntax.groupData(data, QLatin1String("backgroundColor"));
+        const QString selBgColor = KateHlManager::self()->syntax.groupData(data, QLatin1String("selBackgroundColor"));
+        const QString spellChecking = KateHlManager::self()->syntax.groupData(data, QLatin1String("spellChecking"));
+        const QString fontFamily = KateHlManager::self()->syntax.groupData(data, QLatin1String("fontFamily"));
 
-        const QString itemDataName = KateHlManager::self()->syntax->groupData(data, QLatin1String("name")).simplified();
-        const QString defStyleName = KateHlManager::self()->syntax->groupData(data, QLatin1String("defStyleNum"));
+        const QString itemDataName = KateHlManager::self()->syntax.groupData(data, QLatin1String("name")).simplified();
+        const QString defStyleName = KateHlManager::self()->syntax.groupData(data, QLatin1String("defStyleNum"));
 
         KTextEditor::Attribute::Ptr newData(new KTextEditor::Attribute(
                                                buildPrefix + itemDataName,
@@ -919,7 +919,7 @@ void KateHighlighting::addToKateExtendedAttributeList()
 
     //clean up
     if (data) {
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 }
 
@@ -972,11 +972,11 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     }
 
     // get the (tagname) itemd type
-    const QString dataname = KateHlManager::self()->syntax->groupItemData(data, QString());
+    const QString dataname = KateHlManager::self()->syntax.groupItemData(data, QString());
 
     // code folding region handling:
-    const QString beginRegionStr = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("beginRegion"));
-    const QString endRegionStr = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("endRegion"));
+    const QString beginRegionStr = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("beginRegion"));
+    const QString endRegionStr = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("endRegion"));
 
     signed char regionId = 0;
     signed char regionId2 = 0;
@@ -1012,7 +1012,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     }
 
     int attr = 0;
-    const QString tmpAttr = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("attribute")).simplified();
+    const QString tmpAttr = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("attribute")).simplified();
     bool onlyConsume = tmpAttr.isEmpty();
 
     // only relevant for non consumer
@@ -1030,42 +1030,42 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     // Info about context switch
     KateHlContextModification context = -1;
     QString unresolvedContext;
-    const QString tmpcontext = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("context"));
+    const QString tmpcontext = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("context"));
     if (!tmpcontext.isEmpty()) {
         context = getContextModificationFromString(ContextNameList, tmpcontext, unresolvedContext);
     }
 
     // Get the char parameter (eg DetectChar)
     QChar chr;
-    if (! KateHlManager::self()->syntax->groupItemData(data, QLatin1String("char")).isEmpty()) {
-        chr = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("char")))[0];
+    if (! KateHlManager::self()->syntax.groupItemData(data, QLatin1String("char")).isEmpty()) {
+        chr = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("char")))[0];
     }
 
     // Get the String parameter (eg. StringDetect)
-    const QString stringdata = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("String"));
+    const QString stringdata = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("String"));
 
     // Get a second char parameter (char1) (eg Detect2Chars)
     QChar chr1;
-    if (! KateHlManager::self()->syntax->groupItemData(data, QLatin1String("char1")).isEmpty()) {
-        chr1 = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("char1")))[0];
+    if (! KateHlManager::self()->syntax.groupItemData(data, QLatin1String("char1")).isEmpty()) {
+        chr1 = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("char1")))[0];
     }
 
     // Will be removed eventually. Atm used for StringDetect, WordDetect, keyword and RegExp
-    const QString &insensitive_str = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("insensitive"));
+    const QString &insensitive_str = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("insensitive"));
     bool insensitive = IS_TRUE(insensitive_str);
 
     // for regexp only
-    bool minimal = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("minimal")));
+    bool minimal = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("minimal")));
 
     // dominik: look ahead and do not change offset. so we can change contexts w/o changing offset1.
-    bool lookAhead = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("lookAhead")));
+    bool lookAhead = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("lookAhead")));
 
-    bool dynamic = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("dynamic")));
+    bool dynamic = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("dynamic")));
 
-    bool firstNonSpace = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("firstNonSpace")));
+    bool firstNonSpace = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("firstNonSpace")));
 
     int column = -1;
-    QString colStr = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("column"));
+    QString colStr = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("column"));
     if (!colStr.isEmpty()) {
         column = colStr.toInt();
     }
@@ -1079,7 +1079,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
                 m_additionalData[ buildIdentifier ]->deliminator);
 
         //Get the entries for the keyword lookup list
-        keyword->addList(KateHlManager::self()->syntax->finddata(QLatin1String("highlighting"), stringdata));
+        keyword->addList(KateHlManager::self()->syntax.finddata(QLatin1String("highlighting"), stringdata));
         tmpItem = keyword;
     } else if (dataname == QLatin1String("Float")) {
         tmpItem = (new KateHlFloat(attr, context, regionId, regionId2));
@@ -1248,30 +1248,30 @@ const QHash<QString, QChar> &KateHighlighting::characterEncodings(int attrib) co
  */
 void KateHighlighting::readCommentConfig()
 {
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("general"), QLatin1String("comment"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("general"), QLatin1String("comment"));
 
     QString cmlStart, cmlEnd, cmlRegion, cslStart;
     CSLPos cslPosition = CSLPosColumn0;
 
     if (data) {
-        while (KateHlManager::self()->syntax->nextGroup(data)) {
-            if (KateHlManager::self()->syntax->groupData(data, QLatin1String("name")) == QLatin1String("singleLine")) {
-                cslStart = KateHlManager::self()->syntax->groupData(data, QLatin1String("start"));
-                QString cslpos = KateHlManager::self()->syntax->groupData(data, QLatin1String("position"));
+        while (KateHlManager::self()->syntax.nextGroup(data)) {
+            if (KateHlManager::self()->syntax.groupData(data, QLatin1String("name")) == QLatin1String("singleLine")) {
+                cslStart = KateHlManager::self()->syntax.groupData(data, QLatin1String("start"));
+                QString cslpos = KateHlManager::self()->syntax.groupData(data, QLatin1String("position"));
                 if (cslpos == QLatin1String("afterwhitespace")) {
                     cslPosition = CSLPosAfterWhitespace;
                 } else {
                     cslPosition = CSLPosColumn0;
                 }
-            } else if (KateHlManager::self()->syntax->groupData(data, QLatin1String("name")) == QLatin1String("multiLine")) {
-                cmlStart = KateHlManager::self()->syntax->groupData(data, QLatin1String("start"));
-                cmlEnd = KateHlManager::self()->syntax->groupData(data, QLatin1String("end"));
-                cmlRegion = KateHlManager::self()->syntax->groupData(data, QLatin1String("region"));
+            } else if (KateHlManager::self()->syntax.groupData(data, QLatin1String("name")) == QLatin1String("multiLine")) {
+                cmlStart = KateHlManager::self()->syntax.groupData(data, QLatin1String("start"));
+                cmlEnd = KateHlManager::self()->syntax.groupData(data, QLatin1String("end"));
+                cmlRegion = KateHlManager::self()->syntax.groupData(data, QLatin1String("region"));
             }
         }
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
     m_additionalData[buildIdentifier]->singleLineCommentMarker = cslStart;
@@ -1283,22 +1283,22 @@ void KateHighlighting::readCommentConfig()
 
 void KateHighlighting::readEmptyLineConfig()
 {
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("general"), QLatin1String("emptyLine"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("general"), QLatin1String("emptyLine"));
 
     QLinkedList<QRegularExpression> exprList;
 
     if (data) {
-        while (KateHlManager::self()->syntax->nextGroup(data)) {
+        while (KateHlManager::self()->syntax.nextGroup(data)) {
 #ifdef HIGHLIGHTING_DEBUG
             qCDebug(LOG_PART) << "creating an empty line regular expression";
 #endif
 
-            QString regexprline = KateHlManager::self()->syntax->groupData(data, QLatin1String("regexpr"));
-            bool regexprcase = (KateHlManager::self()->syntax->groupData(data, QLatin1String("casesensitive")).toUpper().compare(QLatin1String("TRUE")) == 0);
+            QString regexprline = KateHlManager::self()->syntax.groupData(data, QLatin1String("regexpr"));
+            bool regexprcase = (KateHlManager::self()->syntax.groupData(data, QLatin1String("casesensitive")).toUpper().compare(QLatin1String("TRUE")) == 0);
             exprList.append(QRegularExpression(regexprline, !regexprcase ? QRegularExpression::CaseInsensitiveOption : QRegularExpression::NoPatternOption));
         }
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
     m_additionalData[buildIdentifier]->emptyLines = exprList;
@@ -1318,18 +1318,18 @@ void KateHighlighting::readGlobalKeywordConfig()
 #endif
 
     // Tell the syntax document class which file we want to parse
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getConfig(QLatin1String("general"), QLatin1String("keywords"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getConfig(QLatin1String("general"), QLatin1String("keywords"));
 
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
         qCDebug(LOG_PART) << "Found global keyword config";
 #endif
 
-        casesensitive = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("casesensitive")));
+        casesensitive = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("casesensitive")));
 
         //get the weak deliminators
-        weakDeliminator = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("weakDeliminator")));
+        weakDeliminator = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("weakDeliminator")));
 
 #ifdef HIGHLIGHTING_DEBUG
         qCDebug(LOG_PART) << "weak delimiters are: " << weakDeliminator;
@@ -1344,13 +1344,13 @@ void KateHighlighting::readGlobalKeywordConfig()
             }
         }
 
-        QString addDelim = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("additionalDeliminator")));
+        QString addDelim = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("additionalDeliminator")));
 
         if (!addDelim.isEmpty()) {
             deliminator = deliminator + addDelim;
         }
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     } else {
         //Default values
         casesensitive = true;
@@ -1382,8 +1382,8 @@ void KateHighlighting::readWordWrapConfig()
 #endif
 
     // Tell the syntax document class which file we want to parse
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getConfig(QLatin1String("general"), QLatin1String("keywords"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getConfig(QLatin1String("general"), QLatin1String("keywords"));
 
     QString wordWrapDeliminator = stdDeliminator;
     if (data) {
@@ -1391,7 +1391,7 @@ void KateHighlighting::readWordWrapConfig()
         qCDebug(LOG_PART) << "Found global keyword config";
 #endif
 
-        wordWrapDeliminator = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("wordWrapDeliminator")));
+        wordWrapDeliminator = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("wordWrapDeliminator")));
         //when no wordWrapDeliminator is defined use the deliminator list
         if (wordWrapDeliminator.length() == 0) {
             wordWrapDeliminator = deliminator;
@@ -1401,7 +1401,7 @@ void KateHighlighting::readWordWrapConfig()
         qCDebug(LOG_PART) << "word wrap deliminators are " << wordWrapDeliminator;
 #endif
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
 #ifdef HIGHLIGHTING_DEBUG
@@ -1415,13 +1415,13 @@ void KateHighlighting::readIndentationConfig()
 {
     m_indentation = QString();
 
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getConfig(QLatin1String("general"), QLatin1String("indentation"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getConfig(QLatin1String("general"), QLatin1String("indentation"));
 
     if (data) {
-        m_indentation = (KateHlManager::self()->syntax->groupItemData(data, QLatin1String("mode")));
+        m_indentation = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("mode")));
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 }
 
@@ -1432,17 +1432,17 @@ void KateHighlighting::readFoldingConfig()
 #endif
 
     // Tell the syntax document class which file we want to parse
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getConfig(QLatin1String("general"), QLatin1String("folding"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getConfig(QLatin1String("general"), QLatin1String("folding"));
 
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
         qCDebug(LOG_PART) << "Found global keyword config";
 #endif
 
-        m_foldingIndentationSensitive = IS_TRUE(KateHlManager::self()->syntax->groupItemData(data, QLatin1String("indentationsensitive")));
+        m_foldingIndentationSensitive = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("indentationsensitive")));
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     } else {
         //Default values
         m_foldingIndentationSensitive = false;
@@ -1456,14 +1456,14 @@ void KateHighlighting::readFoldingConfig()
 
 void KateHighlighting::readSpellCheckingConfig()
 {
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("spellchecking"), QLatin1String("encoding"));
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("spellchecking"), QLatin1String("encoding"));
 
     if (data) {
-        while (KateHlManager::self()->syntax->nextGroup(data)) {
-            QString encoding = KateHlManager::self()->syntax->groupData(data, QLatin1String("string"));
-            QString character = KateHlManager::self()->syntax->groupData(data, QLatin1String("char"));
-            QString ignored = KateHlManager::self()->syntax->groupData(data, QLatin1String("ignored"));
+        while (KateHlManager::self()->syntax.nextGroup(data)) {
+            QString encoding = KateHlManager::self()->syntax.groupData(data, QLatin1String("string"));
+            QString character = KateHlManager::self()->syntax.groupData(data, QLatin1String("char"));
+            QString ignored = KateHlManager::self()->syntax.groupData(data, QLatin1String("ignored"));
 
             const bool ignoredIsTrue = IS_TRUE(ignored);
             if (encoding.isEmpty() || (character.isEmpty() && !ignoredIsTrue)) {
@@ -1482,12 +1482,12 @@ void KateHighlighting::readSpellCheckingConfig()
             addCharacterEncoding(buildIdentifier, encoding, c);
         }
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
-    data = KateHlManager::self()->syntax->getConfig(QLatin1String("spellchecking"), QLatin1String("configuration"));
+    data = KateHlManager::self()->syntax.getConfig(QLatin1String("spellchecking"), QLatin1String("configuration"));
     if (data) {
-        QString policy = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("encodingReplacementPolicy"));
+        QString policy = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("encodingReplacementPolicy"));
         QString policyLowerCase = policy.toLower();
         int p;
 
@@ -1501,7 +1501,7 @@ void KateHighlighting::readSpellCheckingConfig()
 
         m_additionalData[buildIdentifier]->encodedCharactersInsertionPolicy = p;
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 }
 
@@ -1515,15 +1515,15 @@ void  KateHighlighting::createContextNameList(QStringList *ContextNameList, int 
         ContextNameList->clear();
     }
 
-    KateHlManager::self()->syntax->setIdentifier(buildIdentifier);
+    KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
 
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("highlighting"), QLatin1String("context"));
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("highlighting"), QLatin1String("context"));
 
     int id = ctx0;
 
     if (data) {
-        while (KateHlManager::self()->syntax->nextGroup(data)) {
-            QString tmpAttr = KateHlManager::self()->syntax->groupData(data, QLatin1String("name")).simplified();
+        while (KateHlManager::self()->syntax.nextGroup(data)) {
+            QString tmpAttr = KateHlManager::self()->syntax.groupData(data, QLatin1String("name")).simplified();
             if (tmpAttr.isEmpty()) {
                 tmpAttr = QString::fromLatin1("!KATE_INTERNAL_DUMMY! %1").arg(id);
                 errorsAndWarnings += i18n("<b>%1</b>: Deprecated syntax. Context %2 has no symbolic name<br />", buildIdentifier, id - ctx0);
@@ -1533,7 +1533,7 @@ void  KateHighlighting::createContextNameList(QStringList *ContextNameList, int 
             (*ContextNameList) << tmpAttr;
             id++;
         }
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
 #ifdef HIGHLIGHTING_DEBUG
@@ -1918,7 +1918,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
     QString dummy;
 
     // Let the syntax document class know, which file we'd like to parse
-    if (!KateHlManager::self()->syntax->setIdentifier(ident)) {
+    if (!KateHlManager::self()->syntax.setIdentifier(ident)) {
         noHl = true;
         KMessageBox::information(QApplication::activeWindow(), i18n(
                                      "Since there has been an error parsing the highlighting description, "
@@ -1969,15 +1969,15 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 
     //start the real work
     uint i = buildContext0Offset;
-    KateSyntaxContextData *data = KateHlManager::self()->syntax->getGroupInfo(QLatin1String("highlighting"), QLatin1String("context"));
+    KateSyntaxContextData *data = KateHlManager::self()->syntax.getGroupInfo(QLatin1String("highlighting"), QLatin1String("context"));
     if (data) {
-        while (KateHlManager::self()->syntax->nextGroup(data)) {
+        while (KateHlManager::self()->syntax.nextGroup(data)) {
 #ifdef HIGHLIGHTING_DEBUG
             qCDebug(LOG_PART) << "Found a context in file, building structure now";
 #endif
 
             //BEGIN - Translation of the attribute parameter
-            QString tmpAttr = KateHlManager::self()->syntax->groupData(data, QLatin1String("attribute")).simplified();
+            QString tmpAttr = KateHlManager::self()->syntax.groupData(data, QLatin1String("attribute")).simplified();
             int attr;
             if (QString::fromLatin1("%1").arg(tmpAttr.toInt()) == tmpAttr) {
                 attr = tmpAttr.toInt();
@@ -1986,20 +1986,20 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
             }
             //END - Translation of the attribute parameter
 
-            QString tmpLineEndContext = KateHlManager::self()->syntax->groupData(data, QLatin1String("lineEndContext")).simplified();
+            QString tmpLineEndContext = KateHlManager::self()->syntax.groupData(data, QLatin1String("lineEndContext")).simplified();
             KateHlContextModification context;
 
             context = getContextModificationFromString(&ContextNameList, tmpLineEndContext, dummy);
 
-            QString tmpNIBF = KateHlManager::self()->syntax->groupData(data, QLatin1String("noIndentationBasedFolding"));
+            QString tmpNIBF = KateHlManager::self()->syntax.groupData(data, QLatin1String("noIndentationBasedFolding"));
             bool noIndentationBasedFolding = IS_TRUE(tmpNIBF);
 
             //BEGIN get fallthrough props
             KateHlContextModification ftc = 0; // fallthrough context
-            QString tmpFt = KateHlManager::self()->syntax->groupData(data, QLatin1String("fallthrough"));
+            QString tmpFt = KateHlManager::self()->syntax.groupData(data, QLatin1String("fallthrough"));
             const bool ft = IS_TRUE(tmpFt);
             if (ft) {
-                QString tmpFtc = KateHlManager::self()->syntax->groupData(data, QLatin1String("fallthroughContext"));
+                QString tmpFtc = KateHlManager::self()->syntax.groupData(data, QLatin1String("fallthroughContext"));
 
                 ftc = getContextModificationFromString(&ContextNameList, tmpFtc, dummy);
 
@@ -2015,14 +2015,14 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
             //END falltrhough props
 
             // empty line context
-            QString emptyLineContext = KateHlManager::self()->syntax->groupData(data, QLatin1String("lineEmptyContext"));
+            QString emptyLineContext = KateHlManager::self()->syntax.groupData(data, QLatin1String("lineEmptyContext"));
             KateHlContextModification emptyLineContextModification;
             if (!emptyLineContext.isEmpty()) {
                 emptyLineContextModification = getContextModificationFromString(&ContextNameList, emptyLineContext, dummy);
             }
 
             bool dynamic = false;
-            QString tmpDynamic = KateHlManager::self()->syntax->groupData(data, QLatin1String("dynamic"));
+            QString tmpDynamic = KateHlManager::self()->syntax.groupData(data, QLatin1String("dynamic"));
             if (tmpDynamic.toLower() == QLatin1String("true") ||  tmpDynamic.toInt() == 1) {
                 dynamic = true;
             }
@@ -2041,15 +2041,15 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 #endif
 
             //Let's create all items for the context
-            while (KateHlManager::self()->syntax->nextItem(data)) {
+            while (KateHlManager::self()->syntax.nextItem(data)) {
 //         qCDebug(LOG_PART)<< "In make Contextlist: Item:";
 
                 // KateHlIncludeRules : add a pointer to each item in that context
                 // TODO add a attrib includeAttrib
-                QString tag = KateHlManager::self()->syntax->groupItemData(data, QString());
+                QString tag = KateHlManager::self()->syntax.groupItemData(data, QString());
                 if (tag == QLatin1String("IncludeRules")) { //if the new item is an Include rule, we have to take special care
-                    QString incCtx = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("context"));
-                    QString incAttrib = KateHlManager::self()->syntax->groupItemData(data, QLatin1String("includeAttrib"));
+                    QString incCtx = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("context"));
+                    QString incAttrib = KateHlManager::self()->syntax.groupItemData(data, QLatin1String("includeAttrib"));
                     bool includeAttrib = IS_TRUE(incAttrib);
 
                     // only context refernces of type Name, ##Name, and Subname##Name are allowed
@@ -2091,13 +2091,13 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
                 }
 // TODO -- can we remove the block below??
 #if 0
-                QString tag = KateHlManager::self()->syntax->groupKateExtendedAttribute(data, QString());
+                QString tag = KateHlManager::self()->syntax.groupKateExtendedAttribute(data, QString());
                 if (tag == "IncludeRules") {
                     // attrib context: the index (jowenn, i think using names here
                     // would be a cool feat, goes for mentioning the context in
                     // any item. a map or dict?)
                     int ctxId = getIdFromString(&ContextNameList,
-                                                KateHlManager::self()->syntax->groupKateExtendedAttribute(data, QString("context")), dummy); // the index is *required*
+                                                KateHlManager::self()->syntax.groupKateExtendedAttribute(data, QString("context")), dummy); // the index is *required*
                     if (ctxId > -1) {  // we can even reuse rules of 0 if we want to:)
                         qCDebug(LOG_PART) << "makeContextList[" << i << "]: including all items of context " << ctxId;
                         if (ctxId < (int) i) {   // must be defined
@@ -2117,20 +2117,20 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 
                     // Not supported completely atm and only one level. Subitems.(all have
                     // to be matched to at once)
-                    KateSyntaxContextData *datasub = KateHlManager::self()->syntax->getSubItems(data);
-                    for (bool tmpbool = KateHlManager::self()->syntax->nextItem(datasub);
+                    KateSyntaxContextData *datasub = KateHlManager::self()->syntax.getSubItems(data);
+                    for (bool tmpbool = KateHlManager::self()->syntax.nextItem(datasub);
                             tmpbool;
-                            tmpbool = KateHlManager::self()->syntax->nextItem(datasub)) {
+                            tmpbool = KateHlManager::self()->syntax.nextItem(datasub)) {
                         c->subItems.resize(c->subItems.size() + 1);
                         c->subItems[c->subItems.size() - 1] = createKateHlItem(datasub, iDl, &RegionList, &ContextNameList);
                     }
-                    KateHlManager::self()->syntax->freeGroupInfo(datasub);
+                    KateHlManager::self()->syntax.freeGroupInfo(datasub);
                 }
             }
             i++;
         }
 
-        KateHlManager::self()->syntax->freeGroupInfo(data);
+        KateHlManager::self()->syntax.freeGroupInfo(data);
     } else {
         // error handling: no "context" element at all in the xml file
         noHl = true;

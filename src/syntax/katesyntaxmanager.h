@@ -24,6 +24,7 @@
 
 #include "katetextline.h"
 #include "kateextendedattribute.h"
+#include "katesyntaxdocument.h"
 
 #include <KConfig>
 #include <KActionMenu>
@@ -39,7 +40,6 @@
 #include <QDate>
 #include <QLinkedList>
 
-class KateSyntaxDocument;
 class KateHighlighting;
 
 /**
@@ -84,7 +84,7 @@ public:
 
     KateSyntaxDocument *syntaxDocument()
     {
-        return syntax;
+        return &syntax;
     }
 
     inline KConfig *getKConfig()
@@ -184,7 +184,7 @@ private:
     KConfig m_config;
     QStringList commonSuffixes;
 
-    KateSyntaxDocument *syntax;
+    KateSyntaxDocument syntax;
 
     int dynamicCtxsCount;
     QTime lastCtxsReset;

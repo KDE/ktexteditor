@@ -67,7 +67,6 @@ KateHlManager::KateHlManager()
     : QObject()
     , m_config(QLatin1String("katesyntaxhighlightingrc"), KConfig::NoGlobals)
     , commonSuffixes(QString::fromLatin1(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';')))
-    , syntax(new KateSyntaxDocument())
     , dynamicCtxsCount(0)
     , forceNoDCReset(false)
 {
@@ -79,7 +78,6 @@ KateHlManager::KateHlManager()
 
 KateHlManager::~KateHlManager()
 {
-    delete syntax;
     qDeleteAll(hlList);
     qDeleteAll(myModeList);
 }
@@ -834,6 +832,9 @@ bool KateHlManager::resetDynamicCtxs()
 
 void KateHlManager::reload()
 {
+    // clear syntax document cache
+    syntax.clearCache();
+    
     resetDynamicCtxs();
 
     for(int i = 0; i < highlights(); i++)

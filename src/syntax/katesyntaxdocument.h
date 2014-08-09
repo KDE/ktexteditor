@@ -24,6 +24,7 @@
 #include <QList>
 #include <QStringList>
 #include <QDomDocument>
+#include <QHash>
 
 /**
  * Class holding the data around the current QDomElement
@@ -39,7 +40,7 @@ public:
 /**
  * Store and manage the information about Syntax Highlighting.
  */
-class KateSyntaxDocument : public QDomDocument
+class KateSyntaxDocument
 {
 public:
     /**
@@ -59,6 +60,11 @@ public:
      * @return success
      */
     bool setIdentifier(const QString &identifier);
+    
+    /**
+     * Clear internal QDomDocument cache
+     */
+    void clearCache();
 
     /**
      * Jump to the next group, KateSyntaxContextData::currentGroup will point to the next group
@@ -116,6 +122,11 @@ private:
      * last found data out of the xml
      */
     QStringList m_data;
+    
+    /**
+     * internal cache for domdocuments
+     */
+    QHash<QString, QDomDocument *> m_domDocuments;
 };
 
 #endif

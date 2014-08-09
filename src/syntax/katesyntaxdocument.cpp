@@ -37,12 +37,13 @@
 #undef KSD_OVER_VERBOSE
 
 KateSyntaxDocument::KateSyntaxDocument()
-    : QDomDocument()
 {
 }
 
 KateSyntaxDocument::~KateSyntaxDocument()
 {
+    // cleanup, else we have a memory leak!
+    clearCache();
 }
 
 /** If the open hl file is different from the one needed, it opens
@@ -51,37 +52,43 @@ KateSyntaxDocument::~KateSyntaxDocument()
 */
 bool KateSyntaxDocument::setIdentifier(const QString &identifier)
 {
-    // if the current file is the same as the new one don't do anything.
-    if (currentFile != identifier) {
-        // let's open the new file
-        QFile f(identifier);
-
-        if (f.open(QIODevice::ReadOnly)) {
-            // Let's parse the contets of the xml file
-            /* The result of this function should be check for robustness,
-               a false returned means a parse error */
-            QString errorMsg;
-            int line, col;
-            bool success = setContent(&f, &errorMsg, &line, &col);
-
-            // Ok, now the current file is the pretended one (identifier)
-            currentFile = identifier;
-
-            // Close the file, is not longer needed
-            f.close();
-
-            if (!success) {
-                KMessageBox::error(QApplication::activeWindow(), i18n("<qt>The error <b>%4</b><br /> has been detected in the file %1 at %2/%3</qt>", identifier,
-                                   line, col, i18nc("QXml", errorMsg.toUtf8().data())));
-                return false;
-            }
-        } else {
-            // Oh o, we couldn't open the file.
-            KMessageBox::error(QApplication::activeWindow(), i18n("Unable to open %1", identifier));
-            return false;
-        }
+    // already existing in cache? be done
+    if (m_domDocuments.contains(identifier)) {
+        currentFile = identifier;
+        return true;
     }
+    
+    // else: try to open
+    QFile f(identifier);
+    if (!f.open(QIODevice::ReadOnly)) {
+         // Oh o, we couldn't open the file.
+        KMessageBox::error(QApplication::activeWindow(), i18n("Unable to open %1", identifier));
+        return false;
+    }
+    
+    // try to parse
+    QDomDocument *document = new QDomDocument();
+    QString errorMsg;
+    int line, col;
+    if (!document->setContent(&f, &errorMsg, &line, &col)) {
+        KMessageBox::error(QApplication::activeWindow(), i18n("<qt>The error <b>%4</b><br /> has been detected in the file %1 at %2/%3</qt>", identifier,
+                                   line, col, i18nc("QXml", errorMsg.toUtf8().data())));
+        delete document;
+        return false;
+    }
+   
+    // cache and be done
+    currentFile = identifier;
+    m_domDocuments[currentFile] = document;
     return true;
+}
+
+void KateSyntaxDocument::clearCache()
+{
+    qDeleteAll(m_domDocuments);
+    m_domDocuments.clear();
+    currentFile.clear();
+    m_data.clear();
 }
 
 /**
@@ -202,7 +209,9 @@ bool KateSyntaxDocument::getElement(QDomElement &element, const QString &mainGro
     qCDebug(LOG_PART) << "Looking for \"" << mainGroupName << "\" -> \"" << config << "\".";
 #endif
 
-    QDomNodeList nodes = documentElement().childNodes();
+    QDomNodeList nodes;
+    if (m_domDocuments.contains(currentFile))
+        nodes = m_domDocuments[currentFile]->documentElement().childNodes();
 
     // Loop over all these child nodes looking for mainGroupName
     for (int i = 0; i < nodes.count(); i++) {
@@ -278,8 +287,11 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
     if (clearList) {
         m_data.clear();
     }
+    
+    if (!m_domDocuments.contains(currentFile))
+        return m_data;
 
-    for (QDomNode node = documentElement().firstChild(); !node.isNull(); node = node.nextSibling()) {
+    for (QDomNode node = m_domDocuments[currentFile]->documentElement().firstChild(); !node.isNull(); node = node.nextSibling()) {
         QDomElement elem = node.toElement();
         if (elem.tagName() == mainGroup) {
 #ifdef KSD_OVER_VERBOSE
