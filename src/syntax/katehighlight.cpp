@@ -766,7 +766,7 @@ void KateHighlighting::use()
         init();
     }
 
-    refCount++;
+    refCount = 1;
 }
 
 /**
@@ -797,6 +797,9 @@ void KateHighlighting::init()
     if (noHl) { // something went wrong, fill something in
         makeNoneContext();
     }
+    
+    // clear domdocument cache
+    KateHlManager::self()->syntax.clearCache();
 }
 
 /**
