@@ -30,7 +30,6 @@
 #include "katerenderer.h"
 
 #include <KTextEditor/Message>
-#include <KTextEditor/MovingCursor>
 #include <KTextEditor/MovingRange>
 #include <KTextEditor/DocumentCursor>
 
