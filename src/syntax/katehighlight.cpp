@@ -775,6 +775,11 @@ void KateHighlighting::use()
 
 void KateHighlighting::reload()
 {
+    // nop if not referenced
+    if (refCount == 0) {
+        return;
+    }
+    
     cleanup();
     init();
 }
