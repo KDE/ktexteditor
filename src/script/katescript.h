@@ -88,15 +88,6 @@ public:
         return m_kateVersion;
     }
 
-    inline void setCatalog(const QString &catalog)
-    {
-        m_i18nCatalog = catalog;
-    }
-    inline const QString &catalog() const
-    {
-        return m_i18nCatalog;
-    }
-
     inline void setScriptType(Kate::ScriptType scriptType)
     {
         m_scriptType = scriptType;
@@ -111,7 +102,6 @@ private:
     QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
     int m_revision;           ///< script revision, a simple number, e.g. 1, 2, 3, ...
     QString m_kateVersion;    ///< required katepart version
-    QString m_i18nCatalog;        ///< i18n catalog
     Kate::ScriptType m_scriptType;  ///< the script type
 };
 //END

@@ -86,12 +86,6 @@ KateScript::KateScript(const QString &urlOrScript, enum InputType inputType)
 KateScript::~KateScript()
 {
     if (m_loadSuccessful) {
-        // unload i18n catalog if available + loaded
-        if (!generalHeader().catalog().isEmpty()) {
-            qCDebug(LOG_PART) << "unloading i18n catalog" << generalHeader().catalog();
-            KLocalizedString::removeQtDomain(generalHeader().catalog().toLatin1().constData());
-        }
-
         // remove data...
         delete m_engine;
         delete m_document;
@@ -233,11 +227,6 @@ bool KateScript::load()
     // yip yip!
     m_loadSuccessful = true;
 
-    // load i18n catalog if available
-    if (!generalHeader().catalog().isEmpty()) {
-        qCDebug(LOG_PART) << "loading i18n catalog" << generalHeader().catalog();
-        KLocalizedString::insertQtDomain(generalHeader().catalog().toLatin1().constData());
-    }
     return true;
 }
 

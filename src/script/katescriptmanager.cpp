@@ -182,7 +182,6 @@ void KateScriptManager::collect()
             generalHeader.setAuthor(metaInfoObject.value(QLatin1String("author")).toString());
             generalHeader.setRevision(metaInfoObject.value(QLatin1String("revision")).toInt());
             generalHeader.setKateVersion(metaInfoObject.value(QLatin1String("kate-version")).toString());
-            generalHeader.setCatalog(metaInfoObject.value(QLatin1String("i18n-catalog")).toString());
 
             // now, cast accordingly based on type
             switch (generalHeader.scriptType()) {
