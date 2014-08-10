@@ -210,8 +210,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     // global keyword completion model
     m_keywordCompletionModel = new KateKeywordCompletionModel (this);
 
-    // tap to QApplication object
-    // TODO: recheck the frameworks, if there is a better way of handling the PaletteChange "signal"
+    // tap to QApplication object for color palette changes
     qApp->installEventFilter(this);
 }
 
@@ -425,6 +424,9 @@ void KTextEditor::EditorPrivate::unregisterTemplateScript(KTextEditor::TemplateS
 
 void KTextEditor::EditorPrivate::updateColorPalette()
 {
+    // update default color cache
+    m_defaultColors.reset(new KateDefaultColors());
+
     // reload the global schema (triggers reload for every view as well)
     m_rendererConfig->reloadSchema();
 
