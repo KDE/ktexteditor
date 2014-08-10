@@ -106,54 +106,9 @@ void KateHlManager::setupModeList()
     }
     
     // only allow each name once!
-    QSet<QString> hlNames;
+    QHash<QString, KateSyntaxModeListItem *> hlNames;
     
-    // preference: xml files, to allow users to overwrite system files with index!
-    Q_FOREACH (const QString xmlFile, xmlFiles) {
-        // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
-        QFile f(xmlFile);
-        if (!f.open(QIODevice::ReadOnly))
-            continue;
-        
-        // read file as stream
-        QXmlStreamReader xml(&f);
-        if (!xml.readNextStartElement() || (xml.name() != QLatin1String("language")))
-            continue;
-
-        // get name, only allow hls once!
-        const QString name = xml.attributes().value(QLatin1String("name")).toString();
-        if (hlNames.contains(name))
-            continue;
-        
-        // let's make the mode list item.
-        KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
-
-        mli->name      = name;
-        mli->section   = xml.attributes().value(QLatin1String("section")).toString();
-        mli->mimetype  = xml.attributes().value(QLatin1String("mimetype")).toString();
-        mli->extension = xml.attributes().value(QLatin1String("extensions")).toString();
-        mli->version   = xml.attributes().value(QLatin1String("version")).toString();
-        mli->priority  = xml.attributes().value(QLatin1String("priority")).toString();
-        mli->style     = xml.attributes().value(QLatin1String("style")).toString();
-        mli->author    = xml.attributes().value(QLatin1String("author")).toString();
-        mli->license   = xml.attributes().value(QLatin1String("license")).toString();
-        mli->indenter  = xml.attributes().value(QLatin1String("indenter")).toString();
-
-        QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
-        mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("TRUE"));
-
-        mli->identifier = xmlFile;
-        
-        // translate section + name
-        mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
-        mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
-
-        // Append the new item to the list.
-        myModeList.append(mli);
-        hlNames.insert(name);
-    }
-    
-    // now: index files
+    // first: index files aka shipped HLs
     Q_FOREACH (const QString dir, dirsWithIndexFiles) {
         /**
          * open the file for reading, bail out on error!
@@ -181,9 +136,7 @@ void KateHlManager::setupModeList()
             
             // get name, only allow hls once!
             const QString name = map[QLatin1String("name")].toString();
-            if (hlNames.contains(name))
-                continue;
-            
+
             // let's make the mode list item.
             KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
 
@@ -205,10 +158,73 @@ void KateHlManager::setupModeList()
             mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
             mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
 
+            // check for existance
+            if (hlNames.contains(name)) {
+                // replace old with new version
+                if (hlNames[name]->version.toDouble() < mli->version.toDouble()) {
+                    *hlNames[name] = *mli;
+                }
+                delete mli;
+                continue;
+            }
+            
             // Append the new item to the list.
             myModeList.append(mli);
-            hlNames.insert(name);
+            hlNames[name] = mli;
         }
+    }
+    
+    // xml files, to allow users to overwrite system files with index!
+    Q_FOREACH (const QString xmlFile, xmlFiles) {
+        // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
+        QFile f(xmlFile);
+        if (!f.open(QIODevice::ReadOnly))
+            continue;
+        
+        // read file as stream
+        QXmlStreamReader xml(&f);
+        if (!xml.readNextStartElement() || (xml.name() != QLatin1String("language")))
+            continue;
+
+        // get name, only allow hls once!
+        const QString name = xml.attributes().value(QLatin1String("name")).toString();
+        
+        // let's make the mode list item.
+        KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
+
+        mli->name      = name;
+        mli->section   = xml.attributes().value(QLatin1String("section")).toString();
+        mli->mimetype  = xml.attributes().value(QLatin1String("mimetype")).toString();
+        mli->extension = xml.attributes().value(QLatin1String("extensions")).toString();
+        mli->version   = xml.attributes().value(QLatin1String("version")).toString();
+        mli->priority  = xml.attributes().value(QLatin1String("priority")).toString();
+        mli->style     = xml.attributes().value(QLatin1String("style")).toString();
+        mli->author    = xml.attributes().value(QLatin1String("author")).toString();
+        mli->license   = xml.attributes().value(QLatin1String("license")).toString();
+        mli->indenter  = xml.attributes().value(QLatin1String("indenter")).toString();
+
+        QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
+        mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
+
+        mli->identifier = xmlFile;
+        
+        // translate section + name
+        mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
+        mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
+
+        // check for existance
+        if (hlNames.contains(name)) {
+            // replace old with new version
+            if (hlNames[name]->version.toDouble() < mli->version.toDouble()) {
+                *hlNames[name] = *mli;
+            }
+            delete mli;
+            continue;
+        }
+        
+        // Append the new item to the list.
+        myModeList.append(mli);
+        hlNames[name] = mli;
     }
 
     hlList.reserve(myModeList.size() + 1);

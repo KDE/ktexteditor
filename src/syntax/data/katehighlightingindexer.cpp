@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
         
         // add boolean one
         const QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
-        hl[QLatin1String("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("TRUE"));
+        hl[QLatin1String("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
             
         // remember hl
         hls[QFileInfo(hlFile).fileName()] = hl;
