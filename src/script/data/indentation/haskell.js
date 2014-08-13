@@ -2,8 +2,9 @@ var katescript = {
     "name": "Haskell",
     "author": "Erlend Hamberg <ehamberg@gmail.com>",
     "license": "LGPL",
-    "revision": 3,
-    "kate-version": "5.1"
+    "revision": 4,
+    "kate-version": "5.1",
+    "required-syntax-style": "haskell"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
 // required katepart js libraries
