@@ -61,9 +61,3 @@ Contributions to KTextEditor shall be licensed under LGPLv2+.
 - @ref kte_port_to_5
 - @ref kte_guidelines
 
-## Links
-
-- Home page: <https://projects.kde.org/projects/frameworks/ktexteditor>
-- Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
-- IRC channel: #kde-devel on Freenode
-- Git repository: <https://projects.kde.org/projects/frameworks/ktexteditor/repository>

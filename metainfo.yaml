@@ -7,3 +7,7 @@ platforms:
 portingAid: false
 deprecated: false
 release: true
+libraries:
+ - qmake: KTextEditor
+   cmake: "KF5::TextEditor"
+cmakename: KF5TextEditor
