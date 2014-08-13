@@ -20,6 +20,7 @@
 #include "kte_documentcursor.h"
 
 #include <katedocument.h>
+#include <ktexteditor/view.h>
 #include <ktexteditor/documentcursor.h>
 
 #include <QtTestWidgets>

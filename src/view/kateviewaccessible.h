@@ -24,7 +24,6 @@
 #ifndef QT_NO_ACCESSIBILITY
 
 #include "kateviewinternal.h"
-#include "katetextcursor.h"
 #include "katedocument.h"
 
 #include <QAccessible>

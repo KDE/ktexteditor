@@ -24,6 +24,8 @@
 #include "katedocument.h"
 #include "katetextline.h"
 
+#include <ktexteditor/view.h>
+
 #include <KLocalizedString>
 #include <QString>
 

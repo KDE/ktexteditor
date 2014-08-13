@@ -46,6 +46,7 @@
 #include "katepartdebug.h"
 
 #include <ktexteditor/movingrange.h>
+#include <ktexteditor/documentcursor.h>
 #include <ktexteditor/texthintinterface.h>
 #include <KCursor>
 

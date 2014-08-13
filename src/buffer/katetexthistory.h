@@ -26,7 +26,6 @@
 #include <ktexteditor/range.h>
 
 #include <ktexteditor_export.h>
-#include "katetextcursor.h"
 #include "katetextrange.h"
 
 namespace Kate

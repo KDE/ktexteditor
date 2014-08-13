@@ -40,8 +40,6 @@
 
 #include <ktexteditor_export.h>
 #include "katetextline.h"
-#include "katetextcursor.h"
-#include "katetextrange.h"
 
 namespace KTextEditor
 {
