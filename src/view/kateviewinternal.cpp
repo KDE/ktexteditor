@@ -3234,13 +3234,13 @@ void KateViewInternal::dropEvent(QDropEvent *event)
         // on move: remove selected text; on copy: duplicate text
         doc()->insertText(targetCursor, text, m_view->blockSelection());
 
-        Kate::TextCursor startCursor(doc()->buffer(), targetCursor, KTextEditor::MovingCursor::MoveOnInsert);
+        KTextEditor::DocumentCursor startCursor(doc(), targetCursor);
 
         if (event->dropAction() != Qt::CopyAction) {
             m_view->removeSelectedText();
         }
 
-        Kate::TextCursor endCursor1(doc()->buffer(), startCursor, KTextEditor::MovingCursor::MoveOnInsert);
+        KTextEditor::DocumentCursor endCursor1(doc(), startCursor);
 
         if (!m_view->blockSelection()) {
             endCursor1.move(text.length());
