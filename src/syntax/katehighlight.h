@@ -142,8 +142,6 @@ private:
      */
     void cleanup();
 
-    void makeNoneContext();
-
 public:
     struct ContextChange {
         KateHlContext* toContext;

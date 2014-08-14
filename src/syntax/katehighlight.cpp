@@ -95,21 +95,6 @@ KateHighlighting::~KateHighlighting()
     qDeleteAll(m_additionalData);
 }
 
-void KateHighlighting::makeNoneContext()
-{
-    iHidden = false;
-    m_additionalData.insert(QString::fromLatin1("none"), new HighlightPropertyBag);
-    m_additionalData[QLatin1String("none")]->deliminator = stdDeliminator;
-    m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator;
-    m_hlIndex[0] = QLatin1String("none");
-    m_ctxIndex[0] = QLatin1String("none");
-    
-    // create one dummy context!
-    m_contexts.push_back (new KateHlContext(identifier, 0,
-        KateHlContextModification(), false, KateHlContextModification(),
-        false, false, false, KateHlContextModification()));
-}
-
 void KateHighlighting::cleanup()
 {
     qDeleteAll(m_contexts);
@@ -794,16 +779,25 @@ void KateHighlighting::reload()
 
 void KateHighlighting::init()
 {
-    // clear old contexts
-    qDeleteAll(m_contexts);
-    m_contexts.clear();
-
+    // shall be only called if clean!
+    Q_ASSERT(m_contexts.empty());
+    
     // try to create contexts
     makeContextList();
 
     // something went wrong or no hl, fill something in
     if (noHl) {
-        makeNoneContext();
+        iHidden = false;
+        m_additionalData.insert(QString::fromLatin1("none"), new HighlightPropertyBag);
+        m_additionalData[QLatin1String("none")]->deliminator = stdDeliminator;
+        m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator;
+        m_hlIndex[0] = QLatin1String("none");
+        m_ctxIndex[0] = QLatin1String("none");
+    
+        // create one dummy context!
+        m_contexts.push_back(new KateHlContext(identifier, 0,
+            KateHlContextModification(), false, KateHlContextModification(),
+            false, false, false, KateHlContextModification()));
     }
     
     // clear domdocument cache
