@@ -72,7 +72,6 @@ KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def) : refCount
         iName = QString::fromLatin1("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
-        makeNoneContext();
     } else {
         iName = def->name;
         iNameTranslated = def->nameTranslated;
@@ -104,6 +103,11 @@ void KateHighlighting::makeNoneContext()
     m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator;
     m_hlIndex[0] = QLatin1String("none");
     m_ctxIndex[0] = QLatin1String("none");
+    
+    // create one dummy context!
+    m_contexts.push_back (new KateHlContext(identifier, 0,
+        KateHlContextModification(), false, KateHlContextModification(),
+        false, false, false, KateHlContextModification()));
 }
 
 void KateHighlighting::cleanup()
@@ -790,16 +794,15 @@ void KateHighlighting::reload()
 
 void KateHighlighting::init()
 {
-    if (noHl) {
-        return;
-    }
-
+    // clear old contexts
     qDeleteAll(m_contexts);
     m_contexts.clear();
 
+    // try to create contexts
     makeContextList();
 
-    if (noHl) { // something went wrong, fill something in
+    // something went wrong or no hl, fill something in
+    if (noHl) {
         makeNoneContext();
     }
     
@@ -1996,7 +1999,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
                 qCDebug(LOG_PART) << "Setting fall through context (context " << i << "): " << ftc.newContext;
 #endif
             }
-            //END falltrhough props
+            //END fallthrough props
 
             // empty line context
             QString emptyLineContext = KateHlManager::self()->syntax.groupData(data, QLatin1String("lineEmptyContext"));
