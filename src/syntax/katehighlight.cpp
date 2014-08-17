@@ -784,6 +784,11 @@ void KateHighlighting::init()
     
     // try to create contexts
     makeContextList();
+    
+    // fixup internal id list, if empty
+    if (internalIDList.isEmpty()) {
+        internalIDList.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
+    }
 
     // something went wrong or no hl, fill something in
     if (noHl) {
@@ -793,7 +798,7 @@ void KateHighlighting::init()
         m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator;
         m_hlIndex[0] = QLatin1String("none");
         m_ctxIndex[0] = QLatin1String("none");
-    
+        
         // create one dummy context!
         m_contexts.push_back(new KateHlContext(identifier, 0,
             KateHlContextModification(), false, KateHlContextModification(),
@@ -813,19 +818,12 @@ void KateHighlighting::init()
  */
 void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list)
 {
-    // If the internal list isn't already available read the config file
-    if (!noHl) {
-        if (internalIDList.isEmpty()) {
-            makeContextList();
-        }
-
-        list = internalIDList;
-    }
-
-    // If no highlighting is selected or we have no attributes we need only one default.
-    if (noHl || list.isEmpty()) {
-        list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
-    }
+    // trigger hl load, if needed
+    use();
+    
+    // return internal list, never empty!
+    Q_ASSERT(!internalIDList.empty());
+    list = internalIDList;
 }
 
 /**
@@ -1125,11 +1123,18 @@ int KateHighlighting::attribute(int ctx) const
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 {
-    QList<KTextEditor::Attribute::Ptr> attributeList = attributes(QString());
-    if (attr < attributeList.length() && attributeList[attr]->hasProperty(Spellchecking)) {
-        return !attributeList[attr]->boolProperty(Spellchecking);
+    if (attr >= 0 && attr < internalIDList.size() && internalIDList[attr]->hasProperty(Spellchecking)) {
+        return !internalIDList[attr]->boolProperty(Spellchecking);
     }
     return true;
+}
+
+KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) const
+{
+    if (attr >= 0 && attr < internalIDList.size()) {
+        return internalIDList[attr]->defaultStyle();
+    }
+    return KTextEditor::dsNormal;
 }
 
 QString KateHighlighting::hlKeyForContext(int i) const

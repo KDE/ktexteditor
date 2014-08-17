@@ -5573,27 +5573,8 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
     } else {
         return -1;
     }
-
-    KTextEditor::ViewPrivate* view = static_cast<KTextEditor::ViewPrivate*>(activeView());
-    if (!view) {
-        if (!m_views.isEmpty()) {
-            view = m_views.begin().value();
-        } else {
-            //FIXME: find a way to use this function without any view, or move it to the KateView.
-            return -1;
-        }
-    }
-    QList<KTextEditor::Attribute::Ptr> attributes = highlight()->attributes(
-                view->renderer()->config()->schema()
-            );
-
-    // sanity check for the attribute
-    if (attribute < 0 || attribute >= attributes.size()) {
-        return -1;
-    }
-
-    KTextEditor::Attribute::Ptr a = attributes[attribute];
-    return a->defaultStyle();
+    
+    return highlight()->defaultStyleForAttribute(attribute);
 }
 
 bool KTextEditor::DocumentPrivate::isComment(int line, int column)

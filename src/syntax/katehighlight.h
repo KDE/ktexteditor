@@ -286,7 +286,7 @@ public:
     QString hlKeyForAttrib(int attrib) const;
     QString hlKeyForContext(int attrib) const;
 
-    int defaultStyleForAttribute(int attrib) const;
+    KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 
     void clearAttributeArrays();
 
