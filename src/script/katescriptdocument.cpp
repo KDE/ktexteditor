@@ -190,9 +190,6 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
     KTextEditor::DocumentCursor cursor(document(), line, column);
     const int start = cursor.line();
 
-    // just use the global default schema, we anyway only want the style number!
-    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
-
     do {
         Kate::TextLine textLine = m_document->plainKateTextLine(cursor.line());
         if (!textLine) {
@@ -209,8 +206,7 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
         while ((foundAt = textLine->string().left(cursor.column()).lastIndexOf(text, -1, Qt::CaseSensitive)) >= 0) {
             bool hasStyle = true;
             if (attribute != -1) {
-                KTextEditor::Attribute::Ptr a = attributes[textLine->attribute(foundAt)];
-                const int ds = a->defaultStyle();
+                const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(textLine->attribute(foundAt));
                 hasStyle = (ds == attribute);
             }
 
@@ -248,9 +244,6 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         return KTextEditor::Cursor::invalid();
     }
 
-    // just use the global default schema, we anyway only want the style number!
-    const QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
-
     // cache line
     Kate::TextLine currentLine = document()->plainKateTextLine(line);
     if (!currentLine)
@@ -271,14 +264,12 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         // get current char
         const QChar ch = currentLine->at(cursor.column());
         if (ch == lc) {
-            KTextEditor::Attribute::Ptr a = attributes[currentLine->attribute(cursor.column())];
-            const int ds = a->defaultStyle();
+            const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(currentLine->attribute(cursor.column()));
             if (_isCode(ds)) {
                 --count;
             }
         } else if (ch == rc) {
-            KTextEditor::Attribute::Ptr a = attributes[currentLine->attribute(cursor.column())];
-            const int ds = a->defaultStyle();
+            const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(currentLine->attribute(cursor.column()));
             if (_isCode(ds)) {
                 ++count;
             }

@@ -410,7 +410,7 @@ void KateDocumentTest::testDefStyleNum()
 {
     KTextEditor::DocumentPrivate doc;
     doc.setText("foo\nbar\nasdf");
-    QCOMPARE(doc.defStyleNum(0, 0), -1);
+    QCOMPARE(doc.defStyleNum(0, 0), 0);
 }
 
 #include "katedocument_test.moc"
