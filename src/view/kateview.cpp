@@ -476,6 +476,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = ac->addAction(QLatin1String("set_confdlg"));
     a->setText(i18n("&Configure Editor..."));
+    a->setIcon(QIcon::fromTheme(QLatin1String("preferences-other")));
     a->setWhatsThis(i18n("Configure various aspects of this editor."));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotConfigDialog()));
 
