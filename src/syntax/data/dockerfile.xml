@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <!-- Dockerfile syntaxfile v1.0 by James Turnbull <james@lovedthanlost.net> -->
-<language name="Dockerfile" section="Other" version="1.0" kateversion="2.4" extensions="Dockerfile" author="James Turnbull (james@lovedthanlost.net)" license="LGPLv2+">
+<language name="Dockerfile" section="Other" version="1.1" kateversion="2.4" extensions="Dockerfile" author="James Turnbull (james@lovedthanlost.net)" license="LGPLv2+">
   <highlighting>
     <list name="keywords">
       <item> FROM </item>
@@ -36,13 +36,11 @@
       <context name="string&quot;" attribute="String" lineEndContext="#pop">
         <LineContinue attribute="Operator" context="#stay"/>
         <DetectChar attribute="String" context="#pop" char="&quot;"/>
-        <DetectChar attribute="Operator" context="dollar" char="$"/>
       </context>
 
       <context name="string'" attribute="String" lineEndContext="#pop">
         <LineContinue attribute="String" context="#stay"/>
         <DetectChar attribute="String" context="#pop" char="'"/>
-        <DetectChar attribute="Operator" context="dollar" char="$"/>
       </context>
 
     </contexts>
