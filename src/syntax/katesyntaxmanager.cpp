@@ -120,19 +120,20 @@ void KateHlManager::setupModeList()
         /**
          * parse the whole file, bail out again on error!
          */
-        const QJsonDocument index (QJsonDocument::fromBinaryData(file.readAll()));
-        if (index.isNull())
+        const QJsonDocument indexDoc (QJsonDocument::fromBinaryData(file.readAll()));
+        if (!indexDoc.isObject())
             continue;
         
+        const QJsonObject index = indexDoc.object();
         /**
          * iterate over all hls in the index
          */
-        QMapIterator<QString, QVariant> i(index.toVariant().toMap());
-        while (i.hasNext()) {
-            i.next();
-            
+        for (auto it = index.begin(); it != index.end(); ++it) {
+            if (!it.value().isObject()) {
+                continue;
+            }
             // get map
-            QVariantMap map = i.value().toMap();
+            const QJsonObject map = it.value().toObject();
             
             // get name, only allow hls once!
             const QString name = map[QLatin1String("name")].toString();
@@ -152,7 +153,7 @@ void KateHlManager::setupModeList()
             mli->indenter  = map[QLatin1String("indenter")].toString();
             mli->hidden    = map[QLatin1String("hidden")].toBool();
 
-            mli->identifier = dir + QLatin1Char('/') + i.key();
+            mli->identifier = dir + QLatin1Char('/') + it.key();
             
             // translate section + name
             mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
