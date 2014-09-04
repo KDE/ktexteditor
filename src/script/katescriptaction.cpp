@@ -143,7 +143,7 @@ void KateScriptActionMenu::repopulate()
             QAction *a = new KateScriptAction(cmd, action, m_view);
             m->addAction(a);
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
-            const QString shortcut = action.value(QLatin1String("category")).toString();
+            const QString shortcut = action.value(QLatin1String("shortcut")).toString();
             if (!shortcut.isEmpty()) {
                 m_view->actionCollection()->setDefaultShortcut(a, shortcut);
             }
