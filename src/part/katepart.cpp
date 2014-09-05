@@ -52,17 +52,18 @@ public:
      */
     virtual QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &, const QString &)
     {
-        QByteArray classname (iface);
+        // iface == classname to construct
+        const QByteArray classname (iface);
 
         // default to the kparts::* behavior of having one single widget() if the user don't requested a pure document
-        bool bWantSingleView = (classname != "KTextEditor::Document");
+        const bool bWantSingleView = (classname != "KTextEditor::Document");
 
         // should we be readonly?
-        bool bWantReadOnly = (classname == "KParts::ReadOnlyPart");
+        const bool bWantReadOnly = (classname == "KParts::ReadOnlyPart");
 
+        // construct right part variant
         KParts::ReadWritePart *part = new KTextEditor::DocumentPrivate (bWantSingleView, bWantReadOnly, parentWidget, parent);
         part->setReadWrite(!bWantReadOnly);
-
         return part;
     }
 };
