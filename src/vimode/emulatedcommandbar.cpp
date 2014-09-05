@@ -1025,7 +1025,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                 qCDebug(LOG_PART) << "Executing: " << m_edit->text();
                 QString commandToExecute = m_edit->text();
                 ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-                qDebug() << "text:\n" << m_edit->text() << "\n is sed replace: " << parsedSedExpression.parsedSuccessfully;
+                qCDebug(LOG_PART) << "text:\n" << m_edit->text() << "\n is sed replace: " << parsedSedExpression.parsedSuccessfully;
                 if (parsedSedExpression.parsedSuccessfully) {
                     const QString originalFindTerm = sedFindTerm();
                     const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
@@ -1215,7 +1215,7 @@ void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 void EmulatedCommandBar::editTextChanged(const QString &newText)
 {
     Q_ASSERT(!m_interactiveSedReplaceActive);
-    qDebug() << "New text: " << newText;
+    qCDebug(LOG_PART) << "New text: " << newText;
     if (!m_isNextTextChangeDueToCompletionChange) {
         m_textToRevertToIfCompletionAborted = newText;
         m_cursorPosToRevertToIfCompletionAborted = m_edit->cursorPosition();
@@ -1240,7 +1240,7 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
 
         qtRegexPattern = withCaseSensitivityMarkersStripped(qtRegexPattern);
 
-        qDebug() << "Final regex: " << qtRegexPattern;
+        qCDebug(LOG_PART) << "Final regex: " << qtRegexPattern;
 
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.

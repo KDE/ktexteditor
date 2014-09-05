@@ -30,8 +30,6 @@
 #include <QSizeF>
 #include <QPointF>
 
-#include <QDebug>
-
 KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)
     , m_range(range)

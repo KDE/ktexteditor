@@ -23,7 +23,6 @@
 #include <QWidget>
 #include <QTimeLine>
 #include <QGraphicsOpacityEffect>
-#include <QDebug>
 
 KateFadeEffect::KateFadeEffect(QWidget *widget)
     : QObject(widget)

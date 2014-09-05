@@ -28,6 +28,7 @@
 #include <KTextEditor/MainWindow>
 #include <KTextEditor/View>
 
+#include <utils/katepartdebug.h>
 #include <vimode/appcommands.h>
 
 using namespace KateVi;
@@ -277,7 +278,7 @@ void AppCommands::closeCurrentDocument()
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::Document *doc = app->activeMainWindow()->activeView()->document();
     app->closeDocument(doc);
-    qDebug() << "called close";
+    qCDebug(LOG_PART) << "called close";
 }
 
 void AppCommands::closeCurrentView()
@@ -285,7 +286,7 @@ void AppCommands::closeCurrentView()
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
     mw->closeView(mw->activeView());
-    qDebug() << "called close view";
+    qCDebug(LOG_PART) << "called close view";
 }
 
 void AppCommands::closeCurrentSplitView()
