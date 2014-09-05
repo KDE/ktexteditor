@@ -110,30 +110,28 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_tabsIndent->setFocusProxy(m_view);
 
     m_indentSettingsMenu = new KateStatusBarOpenUpMenu(m_tabsIndent);
-    m_indentSettingsMenu->addSection(i18n("Show Tabs As"));
+    m_indentSettingsMenu->addSection(i18n("Tab Width"));
     addNumberAction(m_tabGroup, m_indentSettingsMenu, -1);
     addNumberAction(m_tabGroup, m_indentSettingsMenu, 8);
     addNumberAction(m_tabGroup, m_indentSettingsMenu, 4);
-    addNumberAction(m_tabGroup, m_indentSettingsMenu, 3);
     addNumberAction(m_tabGroup, m_indentSettingsMenu, 2);
     m_indentSettingsMenu->addSection(i18n("Indentation Width"));
     addNumberAction(m_indentGroup, m_indentSettingsMenu, -1);
     addNumberAction(m_indentGroup, m_indentSettingsMenu, 8);
     addNumberAction(m_indentGroup, m_indentSettingsMenu, 4);
-    addNumberAction(m_indentGroup, m_indentSettingsMenu, 3);
     addNumberAction(m_indentGroup, m_indentSettingsMenu, 2);
 
-    action = m_indentSettingsMenu->addSeparator();
+    m_indentSettingsMenu->addSection(i18n("Indentation Mode"));
     QActionGroup *radioGroup = new QActionGroup(m_indentSettingsMenu);
-    action = m_indentSettingsMenu->addAction(i18n("Mixed Tabs (Spaces + Tabs)"));
+    action = m_indentSettingsMenu->addAction(i18n("Tabulators && Spaces"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
     m_mixedAction = action;
-    action = m_indentSettingsMenu->addAction(i18n("Hard Tabs (Tabs)"));
+    action = m_indentSettingsMenu->addAction(i18n("Tabulators"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
     m_hardAction = action;
-    action = m_indentSettingsMenu->addAction(i18n("Soft Tabs (Spaces)"));
+    action = m_indentSettingsMenu->addAction(i18n("Spaces"));
     action->setCheckable(true);
     action->setActionGroup(radioGroup);
     m_softAction = action;
@@ -299,21 +297,21 @@ void KateStatusBar::documentConfigChanged ()
     
     if (!replaceTabsDyn) {
         if (tabWidth==indentationWidth) {
-            m_tabsIndent->setText(m_tabsOnly.subs(tabWidth,2).toString());
+            m_tabsIndent->setText(m_tabsOnly.subs(tabWidth).toString());
             m_tabGroup->setEnabled(false);
             m_hardAction->setChecked(true);
         } else {
-            m_tabsIndent->setText(m_tabSpacesMixed.subs(indentationWidth,2).subs(tabWidth,2).toString());
+            m_tabsIndent->setText(m_tabSpacesMixed.subs(indentationWidth).subs(tabWidth).toString());
             m_tabGroup->setEnabled(true);
             m_mixedAction->setChecked(true);
         }
     } else {
          if (tabWidth==indentationWidth) {
-             m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth,2).toString());
+             m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth).toString());
              m_tabGroup->setEnabled(true);
              m_softAction->setChecked(true);
          } else {
-              m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth,2).subs(tabWidth,2).toString());
+              m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth).subs(tabWidth).toString());
               m_tabGroup->setEnabled(true);
               m_softAction->setChecked(true);
         }
@@ -366,7 +364,7 @@ void KateStatusBar::slotTabGroup(QAction* a) {
     bool ok;
     KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
     if (val==-1) {
-        val=QInputDialog::getInt(this, i18n("Tab width"), i18n("[1-16]"), config->tabWidth(), 1, 16, 1, &ok);
+        val=QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 16, 1, &ok);
         if (!ok) val=config->tabWidth();
     }
     config->setTabWidth(val);
@@ -377,7 +375,7 @@ void KateStatusBar::slotIndentGroup(QAction* a) {
     bool ok;
     KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
     if (val==-1) {
-        val=QInputDialog::getInt(this, i18n("Indentation width"), i18n("[1-16]"), config->indentationWidth(), 1, 16, 1, &ok);
+        val=QInputDialog::getInt(this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
         if (!ok) val=config->indentationWidth();
     }
     config->configStart();
