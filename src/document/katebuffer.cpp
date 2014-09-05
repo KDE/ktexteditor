@@ -117,13 +117,6 @@ void KateBuffer::editEnd()
     int editTagLineStart = editingMinimalLineChanged();
 
     /**
-     * look one line before, needed nearly 100% only for indentation based folding !
-     */
-    if (editTagLineStart > 0) {
-        --editTagLineStart;
-    }
-
-    /**
      * really update highlighting
      */
     doHighlight(
