@@ -3226,25 +3226,20 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSingleLine(int line, int
 */
 bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSingleLine(int line, int attrib)
 {
-    QString shortStartCommentMark = highlight()->getCommentStart(attrib);
-    QString longStartCommentMark = shortStartCommentMark + QLatin1Char(' ');
-    QString shortStopCommentMark = highlight()->getCommentEnd(attrib);
-    QString longStopCommentMark = QLatin1Char(' ') + shortStopCommentMark;
+    const QString shortStartCommentMark = highlight()->getCommentStart(attrib);
+    const QString longStartCommentMark = shortStartCommentMark + QLatin1Char(' ');
+    const QString shortStopCommentMark = highlight()->getCommentEnd(attrib);
+    const QString longStopCommentMark = QLatin1Char(' ') + shortStopCommentMark;
 
     editStart();
 
-    // TODO "that's a bad idea, can lead to stray endings, FIXME"
-
     // Try to remove the long start comment mark first
-    bool removedStart = (removeStringFromBeginning(line, longStartCommentMark)
+    const bool removedStart = (removeStringFromBeginning(line, longStartCommentMark)
                          || removeStringFromBeginning(line, shortStartCommentMark));
 
-    bool removedStop = false;
-    if (removedStart) {
-        // Try to remove the long stop comment mark first
-        removedStop = (removeStringFromEnd(line, longStopCommentMark)
-                       || removeStringFromEnd(line, shortStopCommentMark));
-    }
+    // Try to remove the long stop comment mark first
+    const bool removedStop = removedStart
+        && (removeStringFromEnd(line, longStopCommentMark) || removeStringFromEnd(line, shortStopCommentMark));
 
     editEnd();
 
