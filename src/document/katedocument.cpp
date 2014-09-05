@@ -74,10 +74,11 @@
 #include <QTextCodec>
 #include <QTextStream>
 #include <QTimer>
-#include <QtDBus>
 #include <QClipboard>
 #include <QApplication>
 #include <QFileDialog>
+#include <QMimeDatabase>
+#include <QTemporaryFile>
 //END  includes
 
 #if 0
@@ -85,8 +86,6 @@
 #else
 #define EDIT_DEBUG if (0) qCDebug(LOG_PART)
 #endif
-
-static int dummy = 0;
 
 inline bool isStartBracket(const QChar &c)
 {
@@ -156,12 +155,6 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
      * we show such stuff inline in the views!
      */
     setProgressInfoEnabled(false);
-
-    QString pathName = QString::fromLatin1("/Kate/Document/%1");
-    pathName = pathName.arg(++dummy);
-
-    // my dbus object
-    QDBusConnection::sessionBus().registerObject(pathName, this, QDBusConnection::ExportAdaptors | QDBusConnection::ExportScriptableSlots);
 
     // register doc at factory
     KTextEditor::EditorPrivate::self()->registerDocument(this);
@@ -312,13 +305,9 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
 
 KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range range, int line) const
 {
-    int col1 = toVirtualColumn(range.start());
-    int col2 = toVirtualColumn(range.end());
-
-    col1 = fromVirtualColumn(line, col1);
-    col2 = fromVirtualColumn(line, col2);
-
-    return KTextEditor::Range(line, col1, line, col2);
+    const int col1 = toVirtualColumn(range.start());
+    const int col2 = toVirtualColumn(range.end());
+    return KTextEditor::Range(line, fromVirtualColumn(line, col1), line, fromVirtualColumn(line, col2));
 }
 
 //BEGIN KTextEditor::EditInterface stuff
