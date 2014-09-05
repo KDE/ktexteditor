@@ -31,7 +31,6 @@
 #include "kateglobal.h"
 #include "katerenderer.h"
 
-#include <QDebug>
 #include <QApplication>
 #include <QComboBox>
 #include <QFrame>

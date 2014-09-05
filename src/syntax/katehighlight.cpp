@@ -360,7 +360,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                  * break out of this loop and issue message
                  */
                 if (infiniteLoopDetectionCounter > (4 * m_contexts.size())) {
-                    qDebug() << "potential infinite loop found during highlighting, hl: " << iName;
+                    qCDebug(LOG_PART) << "potential infinite loop found during highlighting, hl: " << iName;
                     break;
                 }
             }
