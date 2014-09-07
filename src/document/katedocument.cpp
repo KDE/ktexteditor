@@ -4200,7 +4200,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     if (kvLine.indexIn(t) > -1) {
         s = kvLine.cap(1);
 
-        qCDebug(LOG_PART) << "normal variable line kate: matched: " << s;
+        //qCDebug(LOG_PART) << "normal variable line kate: matched: " << s;
     } else if (kvLineWildcard.indexIn(t) > -1) { // regex given
         const QStringList wildcards(kvLineWildcard.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
         const QString nameOfFile = url().fileName();
@@ -4219,7 +4219,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = kvLineWildcard.cap(2);
 
-        qCDebug(LOG_PART) << "guarded variable line kate-wildcard: matched: " << s;
+        //qCDebug(LOG_PART) << "guarded variable line kate-wildcard: matched: " << s;
     } else if (kvLineMime.indexIn(t) > -1) { // mime-type given
         const QStringList types(kvLineMime.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
 
@@ -4230,7 +4230,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = kvLineMime.cap(2);
 
-        qCDebug(LOG_PART) << "guarded variable line kate-mimetype: matched: " << s;
+        //qCDebug(LOG_PART) << "guarded variable line kate-mimetype: matched: " << s;
     } else { // nothing found
         return;
     }
