@@ -144,8 +144,6 @@ QString KateAutoIndent::tabString(int length, int align) const
 
 bool KateAutoIndent::doIndent(int line, int indentDepth, int align)
 {
-    qCDebug(LOG_PART) << "doIndent: line: " << line << " indentDepth: " << indentDepth << " align: " << align;
-
     Kate::TextLine textline = doc->plainKateTextLine(line);
 
     // textline not found, cu
@@ -195,8 +193,6 @@ bool KateAutoIndent::doIndent(int line, int indentDepth, int align)
 
 bool KateAutoIndent::doIndentRelative(int line, int change)
 {
-    qCDebug(LOG_PART) << "doIndentRelative: line: " << line << " change: " << change;
-
     Kate::TextLine textline = doc->plainKateTextLine(line);
 
     // get indent width of current line
@@ -287,13 +283,8 @@ void KateAutoIndent::scriptIndent(KTextEditor::ViewPrivate *view, const KTextEdi
 
     // get align
     else {
-        int align = result.second;
-        if (align > 0) {
-            qCDebug(LOG_PART) << "Align: " << align;
-        }
-
         // we got a positive or zero indent to use...
-        doIndent(position.line(), newIndentInChars, align);
+        doIndent(position.line(), newIndentInChars, result.second);
     }
 
     // end edit in all cases
@@ -334,8 +325,6 @@ void KateAutoIndent::setMode(const QString &name)
         if (isStyleProvided(script, doc->highlight())) {
             m_script = script;
             m_mode = name;
-
-            qCDebug(LOG_PART) << "mode: " << name << "accepted";
             return;
         } else {
             qCWarning(LOG_PART) << "mode" << name <<
