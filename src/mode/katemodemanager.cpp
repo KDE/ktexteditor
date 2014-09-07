@@ -182,7 +182,6 @@ void KateModeManager::save(const QList<KateFileType *> &v)
 
 QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QString &fileToReadFrom)
 {
-    qCDebug(LOG_PART);
     if (!doc) {
         return QString();
     }

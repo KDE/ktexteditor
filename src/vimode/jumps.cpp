@@ -19,6 +19,15 @@
 #include "jumps.h"
 #include "katepartdebug.h"
 
+// verbose debugging or not?
+#if 0
+#define JUMPS_DEBUG qCDebug(LOG_PART)
+#define DO_JUMPS_DEBUG 1
+#else
+#define JUMPS_DEBUG if (0) qCDebug(LOG_PART)
+#define DO_JUMPS_DEBUG 0
+#endif
+
 using namespace KateVi;
 
 Jumps::Jumps()
@@ -92,6 +101,7 @@ KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor &cursor)
 
 void Jumps::printJumpList() const
 {
+#if DO_JUMPS_DEBUG
     qCDebug(LOG_PART) << "Jump List";
     for (QList<Jump>::iterator iter = m_jumps->begin();
             iter != m_jumps->end();
@@ -107,6 +117,7 @@ void Jumps::printJumpList() const
     if (m_current == m_jumps->end()) {
         qCDebug(LOG_PART) << "    << Current Jump";
     }
+#endif
 }
 
 void Jumps::readSessionConfig(const KConfigGroup &config)

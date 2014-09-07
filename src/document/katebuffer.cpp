@@ -216,9 +216,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
 bool KateBuffer::canEncode()
 {
     QTextCodec *codec = m_doc->config()->codec();
-
-    qCDebug(LOG_PART) << QLatin1String("ENC NAME: ") << codec->name();
-
+    
     // hardcode some unicode encodings which can encode all chars
     if ((QString::fromLatin1(codec->name()) == QLatin1String("UTF-8")) || (QString::fromLatin1(codec->name()) == QLatin1String("ISO-10646-UCS-2"))) {
         return true;
@@ -226,6 +224,7 @@ bool KateBuffer::canEncode()
 
     for (int i = 0; i < lines(); i++) {
         if (!codec->canEncode(line(i)->string())) {
+            qCDebug(LOG_PART) << QLatin1String("ENC NAME: ") << codec->name();
             qCDebug(LOG_PART) << QLatin1String("STRING LINE: ") << line(i)->string();
             qCDebug(LOG_PART) << QLatin1String("ENC WORKING: FALSE");
 
