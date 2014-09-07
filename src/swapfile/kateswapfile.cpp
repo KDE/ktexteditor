@@ -26,7 +26,6 @@
 #include "kateswapdiffcreator.h"
 #include "kateundomanager.h"
 #include "katepartdebug.h"
-#include "katepartdebug.h"
 
 #include <ktexteditor/view.h>
 
@@ -155,7 +154,7 @@ bool SwapFile::isValidSwapFile(QDataStream &stream, bool checkDigest) const
     // read md5 checksum
     QByteArray checksum;
     stream >> checksum;
-//   qCDebug(LOG_PART) << "DIGEST:" << checksum << m_document->checksum();
+    //qCDebug(LOG_PART) << "DIGEST:" << checksum << m_document->checksum();
     if (checkDigest && checksum != m_document->checksum()) {
         qCWarning(LOG_PART) << "Can't recover from swap file, checksum of document has changed";
         return false;
@@ -172,7 +171,7 @@ void SwapFile::fileLoaded(const QString &)
     }
 
     if (!m_swapfile.exists()) {
-        qCDebug(LOG_PART) << "No swap file";
+        //qCDebug(LOG_PART) << "No swap file";
         return;
     }
 
