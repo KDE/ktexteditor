@@ -28,7 +28,6 @@
 #include <ktexteditor/editor.h>
 #include "ktexteditor/view.h"
 
-#include <KService>
 #include <KAboutData>
 #include <KSharedConfig>
 

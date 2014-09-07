@@ -28,6 +28,8 @@
 #include "katecmd.h"
 #include "kateabstractinputmode.h"
 
+#include <QJsonObject>
+
 #include <KXMLGUIFactory>
 #include <KActionCollection>
 #include <KLocalizedString>

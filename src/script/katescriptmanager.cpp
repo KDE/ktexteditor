@@ -31,6 +31,7 @@
 #include <QUuid>
 #include <QJsonDocument>
 #include <QJsonValue>
+#include <QJsonObject>
 #include <QJsonArray>
 
 #include <KLocalizedString>

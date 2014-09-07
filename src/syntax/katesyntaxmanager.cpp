@@ -48,6 +48,7 @@
 #include <QFile>
 #include <QDir>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QXmlStreamReader>
 //END
 

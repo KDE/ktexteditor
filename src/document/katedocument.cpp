@@ -66,7 +66,6 @@
 #include <KCodecs>
 #include <KStringHandler>
 #include <KConfigGroup>
-#include <KServiceTypeTrader>
 
 #include <QCryptographicHash>
 #include <QFile>

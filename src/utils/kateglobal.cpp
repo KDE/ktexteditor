@@ -46,7 +46,6 @@
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
 
-#include <KServiceTypeTrader>
 #include <kdirwatch.h>
 #include <KLocalizedString>
 #include <KAboutData>
@@ -97,7 +96,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // fill about data
     //
-    m_aboutData.setProgramIconName(QLatin1String("preferences-plugin"));
     m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QLatin1String("cullmann@kde.org"), QLatin1String("http://www.cullmann.io"));
     m_aboutData.addAuthor(i18n("Dominik Haumann"), i18n("Core Developer"), QLatin1String("dhaumann@kde.org"));
     m_aboutData.addAuthor(i18n("Milian Wolff"), i18n("Core Developer"), QLatin1String("mail@milianw.de"), QLatin1String("http://milianw.de"));
