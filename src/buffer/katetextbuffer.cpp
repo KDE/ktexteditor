@@ -230,7 +230,7 @@ bool TextBuffer::finishEditing()
 void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
 {
     // debug output for REAL low-level debugging
-    EDIT_DEBUG << "wrapLine" << position;
+    BUFFER_DEBUG << "wrapLine" << position;
 
     // only allowed if editing transaction running
     Q_ASSERT(m_editingTransactions > 0);
@@ -273,7 +273,7 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
 void TextBuffer::unwrapLine(int line)
 {
     // debug output for REAL low-level debugging
-    EDIT_DEBUG << "unwrapLine" << line;
+    BUFFER_DEBUG << "unwrapLine" << line;
 
     // only allowed if editing transaction running
     Q_ASSERT(m_editingTransactions > 0);
@@ -327,7 +327,7 @@ void TextBuffer::unwrapLine(int line)
 void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &text)
 {
     // debug output for REAL low-level debugging
-    EDIT_DEBUG << "insertText" << position << text;
+    BUFFER_DEBUG << "insertText" << position << text;
 
     // only allowed if editing transaction running
     Q_ASSERT(m_editingTransactions > 0);
@@ -364,7 +364,7 @@ void TextBuffer::insertText(const KTextEditor::Cursor &position, const QString &
 void TextBuffer::removeText(const KTextEditor::Range &range)
 {
     // debug output for REAL low-level debugging
-    EDIT_DEBUG << "removeText" << range;
+    BUFFER_DEBUG << "removeText" << range;
 
     // only allowed if editing transaction running
     Q_ASSERT(m_editingTransactions > 0);
