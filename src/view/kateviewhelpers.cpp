@@ -1072,7 +1072,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
                 }
             }
         } else { // since cursor is inside the command name, we reconsider it
-            qCDebug(LOG_PART) << "keypress in commandline: \\W -- text is " << text();
+            //qCDebug(LOG_PART) << "keypress in commandline: \\W -- text is " << text();
             m_command = KateCmd::self()->queryCommand(text().trimmed());
             if (m_command) {
                 //qCDebug(LOG_PART)<<"keypress in commandline: We have a command! "<<m_command;
@@ -1813,7 +1813,7 @@ void KateIconBorder::showBlock()
     }
 
     if (newRange.isValid()) {
-        qCDebug(LOG_PART) << "new folding hl-range:" << newRange;
+        //qCDebug(LOG_PART) << "new folding hl-range:" << newRange;
         m_foldingRange = m_doc->newMovingRange(newRange, KTextEditor::MovingRange::ExpandRight);
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
 
@@ -2356,7 +2356,7 @@ KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivat
 void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
 {
     if (hasBarWidget(newBarWidget)) {
-        qCDebug(LOG_PART) << "this bar widget is already added";
+        qCWarning(LOG_PART) << "this bar widget is already added";
         return;
     }
     // add new widget, invisible...
@@ -2364,8 +2364,6 @@ void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
     m_stack->addWidget(newBarWidget);
     newBarWidget->setAssociatedViewBar(this);
     connect(newBarWidget, SIGNAL(hideMe()), SLOT(hideCurrentBarWidget()));
-
-    qCDebug(LOG_PART) << "add barwidget " << newBarWidget;
 }
 
 void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
@@ -2451,7 +2449,6 @@ void KateViewBar::hideCurrentBarWidget()
     }
 
     m_view->setFocus();
-    qCDebug(LOG_PART) << "hide barwidget";
 }
 
 void KateViewBar::setViewBarVisible(bool visible)
