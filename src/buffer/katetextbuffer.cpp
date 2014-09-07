@@ -35,9 +35,9 @@
 #include <QSaveFile>
 
 #if 0
-#define EDIT_DEBUG qCDebug(LOG_PART)
+#define BUFFER_DEBUG qCDebug(LOG_PART)
 #else
-#define EDIT_DEBUG if (0) qCDebug(LOG_PART)
+#define BUFFER_DEBUG if (0) qCDebug(LOG_PART)
 #endif
 
 namespace Kate
@@ -619,8 +619,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
 
             // bail out on encoding error, if not last round!
             if (encodingErrors && i < (enforceTextCodec ? 0 : 3)) {
-                qCDebug(LOG_PART) << "Failed try to load file" << filename << "with codec" <<
-                                  (file.textCodec() ? file.textCodec()->name() : "(null)");
+                BUFFER_DEBUG << "Failed try to load file" << filename << "with codec" << (file.textCodec() ? file.textCodec()->name() : "(null)");
                 break;
             }
 
@@ -716,14 +715,13 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     Q_ASSERT(m_lines > 0);
 
     // report CODEC + ERRORS
-    qCDebug(LOG_PART) << "Loaded file " << filename << "with codec" << m_textCodec->name()
-                      << (encodingErrors ? "with" : "without") << "encoding errors";
+    BUFFER_DEBUG << "Loaded file " << filename << "with codec" << m_textCodec->name() << (encodingErrors ? "with" : "without") << "encoding errors";
 
     // report BOM
-    qCDebug(LOG_PART) << (file.byteOrderMarkFound() ? "Found" : "Didn't find") << "byte order mark";
+    BUFFER_DEBUG << (file.byteOrderMarkFound() ? "Found" : "Didn't find") << "byte order mark";
 
     // report filter device mime-type
-    qCDebug(LOG_PART) << "used filter device for mime-type" << m_mimeTypeForFilterDev;
+    BUFFER_DEBUG << "used filter device for mime-type" << m_mimeTypeForFilterDev;
 
     // emit success
     emit loaded(filename, encodingErrors);
@@ -856,8 +854,7 @@ bool TextBuffer::save(const QString &filename)
     }
 
     // report CODEC + ERRORS
-    qCDebug(LOG_PART) << "Saved file " << filename << "with codec" << m_textCodec->name()
-                      << (ok ? "without" : "with") << "errors";
+    BUFFER_DEBUG << "Saved file " << filename << "with codec" << m_textCodec->name() << (ok ? "without" : "with") << "errors";
 
     if (ok) {
         markModifiedLinesAsSaved();
