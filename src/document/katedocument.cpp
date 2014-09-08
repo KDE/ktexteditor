@@ -203,7 +203,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     if (m_bSingleViewMode && parentWidget) {
         KTextEditor::View *view = (KTextEditor::View *)createView(parentWidget);
         insertChildClient(view);
-        view->show();
+        view->setContextMenu(view->defaultContextMenu());
         setWidget(view);
     }
 
@@ -277,6 +277,7 @@ QWidget *KTextEditor::DocumentPrivate::widget()
     // create and return one...
     KTextEditor::View *view = (KTextEditor::View *)createView(0);
     insertChildClient(view);
+    view->setContextMenu(view->defaultContextMenu());
     setWidget(view);
     return view;
 }
