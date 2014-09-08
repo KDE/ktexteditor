@@ -48,7 +48,7 @@ void TemplateHandlerTest::testUndo()
     
     KTextEditor::ViewPrivate view(&doc, 0);
 
-    view.insertTemplateTextImplementation(Cursor(0, 0), snippet, initialValues, 0);
+    view.insertTemplateText(Cursor(0, 0), snippet, initialValues);
 
     const QString result = "for (int i = ; i < ; ++i)\n"
                            "{\n"

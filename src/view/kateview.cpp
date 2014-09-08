@@ -2341,17 +2341,9 @@ void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const K
     emit textInserted(view, position, text);
 }
 
-bool KTextEditor::ViewPrivate::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
-        const QString &templateString,
-        const QMap<QString, QString> &initialValues)
-{
-    return insertTemplateTextImplementation(c, templateString, initialValues, 0);
-}
-
-bool KTextEditor::ViewPrivate::insertTemplateTextImplementation(const KTextEditor::Cursor &c,
-        const QString &templateString,
-        const QMap<QString, QString> &initialValues,
-        KTextEditor::TemplateScript *templateScript)
+bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor& c,
+                                                      const QString& templateString,
+                                                      const QString& script)
 {
     /**
      * no empty templates
@@ -2368,14 +2360,9 @@ bool KTextEditor::ViewPrivate::insertTemplateTextImplementation(const KTextEdito
     }
 
     /**
-     * get script
-     */
-    KateTemplateScript *kateTemplateScript = KTextEditor::EditorPrivate::self()->scriptManager()->templateScript(templateScript);
-
-    /**
      * the handler will delete itself when necessary
      */
-    new KateTemplateHandler(this, c, templateString, initialValues, m_doc->undoManager(), kateTemplateScript);
+    new KateTemplateHandler(this, c, templateString, script, m_doc->undoManager());
     return true;
 }
 

@@ -26,8 +26,6 @@
 #include <ktexteditor/texthintinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
-#include <draft/templateinterface.h>
-#include <draft/templateinterface2.h>
 #include <ktexteditor/configinterface.h>
 #include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/mainwindow.h>
@@ -80,15 +78,12 @@ namespace KTextEditor
 //
 class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     public KTextEditor::TextHintInterface,
-    public KTextEditor::TemplateInterface2,
     public KTextEditor::CodeCompletionInterface,
     public KTextEditor::ConfigInterface,
     public KTextEditor::AnnotationViewInterface
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
-    Q_INTERFACES(KTextEditor::TemplateInterface)
-    Q_INTERFACES(KTextEditor::TemplateInterface2)
     Q_INTERFACES(KTextEditor::ConfigInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
@@ -691,12 +686,12 @@ private:
     // do we select normal or blockwise ?
     bool blockSelect;
 
-    //
-    // TemplateInterface + TemplateInterface2
-    //
+    // templates
 public:
-    virtual bool insertTemplateTextImplementation(const KTextEditor::Cursor &, const QString &templateString, const QMap<QString, QString> &initialValues);
-    virtual bool insertTemplateTextImplementation(const KTextEditor::Cursor &, const QString &templateString, const QMap<QString, QString> &initialValues, KTextEditor::TemplateScript *templateScript);
+    bool insertTemplateInternal(const KTextEditor::Cursor& insertPosition,
+                                const QString& templateString,
+                                const QString& script = QString());
+
     /**
      * Accessors to the bars...
      */

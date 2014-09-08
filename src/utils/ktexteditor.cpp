@@ -36,7 +36,6 @@
 #include "modificationinterface.h"
 #include "searchinterface.h"
 #include "sessionconfiginterface.h"
-#include "draft/templateinterface.h"
 #include "texthintinterface.h"
 
 #include "annotationinterface.h"
@@ -102,6 +101,13 @@ void View::setStatusBarEnabled(bool enable)
      * else toggle it
      */
     d->toggleStatusBar ();
+}
+
+bool View::insertTemplate(const KTextEditor::Cursor& insertPosition,
+                          const QString& templateString,
+                          const QString& script)
+{
+    return d->insertTemplateInternal(insertPosition, templateString, script);
 }
 
 ConfigPage::ConfigPage(QWidget *parent)
@@ -174,13 +180,6 @@ SessionConfigInterface::SessionConfigInterface()
 {}
 
 SessionConfigInterface::~SessionConfigInterface()
-{}
-
-TemplateInterface::TemplateInterface()
-    : d(Q_NULLPTR)
-{}
-
-TemplateInterface::~TemplateInterface()
 {}
 
 TextHintInterface::TextHintInterface()

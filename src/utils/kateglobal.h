@@ -33,7 +33,6 @@
 
 #include <ktexteditor/application.h>
 #include <KTextEditor/Command>
-#include <draft/templateinterface2.h>
 
 #include <QList>
 #include <QPointer>
@@ -70,10 +69,9 @@ namespace KTextEditor
  * or view stay around, here is the place to put things
  * which are needed and shared by all this objects ;)
  */
-class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor, public KTextEditor::TemplateScriptRegistrar
+class KTEXTEDITOR_EXPORT EditorPrivate : public KTextEditor::Editor
 {
     Q_OBJECT
-    Q_INTERFACES(KTextEditor::TemplateScriptRegistrar)
 
     friend class KTextEditor::Editor;
 
@@ -361,12 +359,6 @@ public:
      * \return commandline strings
      */
     QStringList commandList() const;
-
-    /**
-     *  TemplateScriptRegistrar interface
-     */
-    KTextEditor::TemplateScript *registerTemplateScript(QObject *owner, const QString &script);
-    void unregisterTemplateScript(KTextEditor::TemplateScript *templateScript);
 
     /**
      * Copy text to clipboard an remember it in the history

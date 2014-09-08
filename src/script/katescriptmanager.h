@@ -29,7 +29,6 @@
 #include "katescript.h"
 #include "kateindentscript.h"
 #include "katecommandlinescript.h"
-#include "katetemplatescript.h"
 
 class QString;
 
@@ -135,24 +134,6 @@ private:
 
     /** Map of language to indent scripts */
     QHash<QString, QVector<KateIndentScript *> > m_languageToIndenters;
-
-    //
-    // Template handling
-    //
-public:
-    /** managing of scripts for the template handler. The scripts are given as string content, not as  files*/
-    KTextEditor::TemplateScript *registerTemplateScript(QObject *owner, const QString &script);
-    /** unregister a given script */
-    void unregisterTemplateScript(KTextEditor::TemplateScript *templateScript);
-
-    KateTemplateScript *templateScript(KTextEditor::TemplateScript *templateScript);
-
-public Q_SLOTS:
-    void slotTemplateScriptOwnerDestroyed(QObject *owner);
-
-private:
-    QMultiMap<QObject *, KTextEditor::TemplateScript *> m_ownerScript;
-    QList<KTextEditor::TemplateScript *> m_templateScripts;
 };
 
 #endif

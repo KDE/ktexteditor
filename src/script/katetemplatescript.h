@@ -22,9 +22,9 @@
 
 #include "katescript.h"
 #include "kateview.h"
-#include <draft/templateinterface2.h>
+#include <templateinterface.h>
 
-class KateTemplateScript : public KateScript, public KTextEditor::TemplateScript
+class KateTemplateScript : public KateScript
 {
 public:
     KateTemplateScript(const QString &script);

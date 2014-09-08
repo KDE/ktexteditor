@@ -161,8 +161,6 @@ utils/ktexteditor.cpp
 utils/document.cpp
 utils/range.cpp
 utils/documentcursor.cpp
-utils/templateinterface.cpp
-utils/templateinterface2.cpp
 utils/attribute.cpp
 utils/codecompletioninterface.cpp
 utils/codecompletionmodel.cpp

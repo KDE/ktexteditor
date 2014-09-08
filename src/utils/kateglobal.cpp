@@ -414,16 +414,6 @@ QStringList KTextEditor::EditorPrivate::commandList() const
     return m_cmdManager->commandList();
 }
 
-KTextEditor::TemplateScript *KTextEditor::EditorPrivate::registerTemplateScript(QObject *owner, const QString &script)
-{
-    return scriptManager()->registerTemplateScript(owner, script);
-}
-
-void KTextEditor::EditorPrivate::unregisterTemplateScript(KTextEditor::TemplateScript *templateScript)
-{
-    scriptManager()->unregisterTemplateScript(templateScript);
-}
-
 void KTextEditor::EditorPrivate::updateColorPalette()
 {
     // update default color cache

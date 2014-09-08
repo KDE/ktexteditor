@@ -630,6 +630,28 @@ public:
      */
     virtual bool insertText(const QString &text);
 
+    /**
+     * Insert a template into the document. The template can have editable fields
+     * which can be filled by the user. You can create editable fields
+     * with ${fieldname}; multiple fields with the same name will have their
+     * contents synchronized automatically, and only the first one is editable
+     * in this case.
+     * Fields can have a default value specified by writing ${fieldname=default}.
+     * Note that `default' is a JavaScript expression and strings need to be quoted.
+     * You can also provide a piece of JavaScript for more complex logic.
+     * To create a field which provides text based on a JS function call and the values
+     * of the other, editable fields, use the ${func()} syntax. func() must be a callable
+     * object defined in @p script. You can pass arguments to the function by just
+     * writing any constant expression or a field name.
+     * \param insertPosition where to insert the template
+     * \param templateScript template to insert using the above syntax
+     * \param script script with functions which can be used in @p templateScript
+     * \return true on success, false if insertion failed (e.g. read-only mode)
+     */
+    bool insertTemplate(const KTextEditor::Cursor& insertPosition,
+                        const QString& templateString,
+                        const QString& script = QString());
+
 public:
     /**
      * Print the document. This should result in showing the print dialog.

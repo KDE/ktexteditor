@@ -2,6 +2,7 @@
  *
  *  Copyright (C) 2004,2010 Joseph Wenninger <jowenn@kde.org>
  *  Copyright (C) 2009 Milian Wolff <mail@milianw.de>
+ *  Copyright (C) 2014 Sven Brauch <svenbrauch@gmail.com>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -30,13 +31,13 @@
 #include <QList>
 #include <QRegExp>
 
+#include <katetemplatescript.h>
+
 namespace KTextEditor { class DocumentPrivate; }
 
 namespace KTextEditor { class ViewPrivate; }
 
 class KateUndoManager;
-
-class KateTemplateScript;
 
 namespace KTextEditor
 {
@@ -85,8 +86,8 @@ public:
                         const KTextEditor::Cursor &position,
                         const QString &templateString,
                         const QMap<QString, QString> &initialValues,
-                        KateUndoManager *undoManager,
-                        KateTemplateScript *templateScript);
+                        const QString& script,
+                        KateUndoManager *undoManager);
 
     /**
      * Cancels the template handler and cleans everything up.
@@ -276,7 +277,7 @@ private:
     /// Whether we are currently setting the cursor manually.
     bool m_jumping;
     /// template script pointer for the template script, which might be used by the current template
-    KateTemplateScript *m_templateScript;
+    KateTemplateScript m_templateScript;
 
     QList<KTextEditor::MovingRange *> m_spacersMovingRanges;
 

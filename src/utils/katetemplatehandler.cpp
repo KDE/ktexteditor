@@ -62,8 +62,8 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         const Cursor &position,
         const QString &templateString,
         const QMap<QString, QString> &initialValues,
-        KateUndoManager *undoManager,
-        KateTemplateScript *templateScript)
+        const QString& script,
+        KateUndoManager *undoManager)
     : QObject(view)
     , m_view(view)
     , m_undoManager(undoManager)
@@ -73,7 +73,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     , m_isMirroring(false)
     , m_editWithUndo(false)
     , m_jumping(false)
-    , m_templateScript(templateScript)
+    , m_templateScript(script)
 {
     /**
      * we always need a view
@@ -708,7 +708,7 @@ void KateTemplateHandler::handleTemplateString(const QMap< QString, QString > &i
                     }
 
                 } else if (!functionName.isEmpty()) {
-                    behaviour = MirrorBehaviour(m_templateScript, functionName, this);
+                    behaviour = MirrorBehaviour(&m_templateScript, functionName, this);
                 }
 
                 const QString initialVal = behaviour.getMirrorString(initialValues[key]);
@@ -1105,10 +1105,8 @@ QString KateTemplateHandler::MirrorBehaviour::getMirrorString(const QString &sou
     }
 
     case Scripted: {
-        KateTemplateScript *script = KTextEditor::EditorPrivate::self()->scriptManager()->templateScript(m_templateScript);
-
-        if (script) {
-            QString result = script->invoke(m_handler->view(), m_functionName, source);
+        if (m_templateScript) {
+            QString result = m_templateScript->invoke(m_handler->view(), m_functionName, source);
 
             if (!result.isNull()) {
                 return result;
