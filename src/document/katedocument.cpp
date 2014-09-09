@@ -2189,7 +2189,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
                                             "It is set to read-only mode, as saving might destroy its content.<br />"
-                                            "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the menu to be able to edit it.", this->url().toString(),
+                                            "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toString(),
                                             QString::fromLatin1(m_buffer->textCodec()->name())),
                                        KTextEditor::Message::Warning);
         message->setWordWrap(true);
@@ -2199,7 +2199,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_openingError = true;
         m_openingErrorMessage = i18n("The file %1 was opened with %2 encoding but contained invalid characters."
                                     " It is set to read-only mode, as saving might destroy its content."
-                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the menu to be able to edit it.", this->url().toString(), QString::fromLatin1(m_buffer->textCodec()->name()));
+                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toString(), QString::fromLatin1(m_buffer->textCodec()->name()));
     }
 
     // warn: too long lines
