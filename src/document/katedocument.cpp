@@ -99,6 +99,25 @@ inline bool isBracket(const QChar &c)
     return isStartBracket(c) || isEndBracket(c);
 }
 
+/**
+ * normalize given url
+ * @param url input url
+ * @return normalized url
+ */
+static QUrl normalizeUrl (const QUrl &url)
+{
+    /**
+     * only normalize local urls
+     */
+    if (!url.isLocalFile())
+        return url;
+    
+    /**
+     * else: use canonicalFilePath to normalize
+     */
+    return QUrl::fromLocalFile(QFileInfo(url.toLocalFile()).canonicalFilePath());
+}
+
 //BEGIN d'tor, c'tor
 //
 // KTextEditor::DocumentPrivate Constructor
@@ -2486,7 +2505,7 @@ void KTextEditor::DocumentPrivate::deactivateDirWatch()
 
 bool KTextEditor::DocumentPrivate::openUrl(const QUrl &url)
 {
-    bool res = KTextEditor::Document::openUrl(url);
+    bool res = KTextEditor::Document::openUrl(normalizeUrl(url));
     updateDocName();
     return res;
 }
@@ -5150,7 +5169,7 @@ bool KTextEditor::DocumentPrivate::saveAs(const QUrl &url)
     /**
      * call base implementation for real work
      */
-    return KTextEditor::Document::saveAs(url);
+    return KTextEditor::Document::saveAs(normalizeUrl(url));
 }
 
 QString KTextEditor::DocumentPrivate::defaultDictionary() const
