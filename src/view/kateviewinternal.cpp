@@ -1544,7 +1544,11 @@ void KateViewInternal::cursorDown(bool sel)
         return;
     }
 
+    /**
+     * move cursor to end of line, if we are at last line!
+     */
     if ((m_displayCursor.line() >= m_view->textFolding().visibleLines() - 1) && (!m_view->dynWordWrap() || cache()->viewLine(m_cursor) == cache()->lastViewLine(m_cursor.line()))) {
+        end(sel);
         return;
     }
 
