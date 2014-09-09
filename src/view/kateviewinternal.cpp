@@ -1516,7 +1516,11 @@ void KateViewInternal::cursorUp(bool sel)
         return;
     }
 
+    /**
+     * move cursor to start of line, if we are at first line!
+     */
     if (m_displayCursor.line() == 0 && (!m_view->dynWordWrap() || cache()->viewLine(m_cursor) == 0)) {
+        home(sel);
         return;
     }
 
