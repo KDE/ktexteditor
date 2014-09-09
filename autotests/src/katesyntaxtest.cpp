@@ -81,8 +81,6 @@ void KateSyntaxTest::testSyntaxHighlighting()
      * get current test case
      */
     QFETCH(QString, hlTestCase);
-
-    qDebug() << hlTestCase;
     
     /**
      * create a document with a view to be able to export stuff
