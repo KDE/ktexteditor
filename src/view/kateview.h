@@ -584,6 +584,8 @@ public:
 
 public:
     void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
+    
+    void exportHtmlToFile(const QString &file);
 
 private Q_SLOTS:
     void slotGotFocus();

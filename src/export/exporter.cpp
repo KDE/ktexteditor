@@ -56,20 +56,13 @@ void KateExporter::exportToClipboard()
     QApplication::clipboard()->setMimeData(data);
 }
 
-void KateExporter::exportToFile()
+void KateExporter::exportToFile(const QString &file)
 {
-    //FIXME KF5, crashy
-    
-    QString fileName = QFileDialog::getSaveFileName(m_view, i18n("Export File as HTML"), m_view->document()->documentName());
-    if (fileName.isEmpty()) {
-        return;
-    }
-
-    QSaveFile savefile(fileName);
+    QFile savefile(file);
     if (!savefile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         return;
     }
-
+    
     QTextStream outputStream(&savefile);
     exportData(false, outputStream);
 }
@@ -83,7 +76,6 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
         return;
     }
 
-    //outputStream.setEncoding(QTextStream::UnicodeUTF8);
     output.setCodec(QTextCodec::codecForName("UTF-8"));
 
     ///TODO: add more exporters

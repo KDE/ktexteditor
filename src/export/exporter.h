@@ -33,7 +33,7 @@ public:
     }
 
     void exportToClipboard();
-    void exportToFile();
+    void exportToFile(const QString &file);
 
 private:
     ///TODO: maybe make this scriptable for additional exporters?

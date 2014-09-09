@@ -3174,14 +3174,22 @@ void KTextEditor::ViewPrivate::applyFoldingState()
     m_savedFoldingState.clear();
 }
 
+void KTextEditor::ViewPrivate::exportHtmlToFile(const QString &file)
+{
+    KateExporter(this).exportToFile(file);
+}
+
 void KTextEditor::ViewPrivate::exportHtmlToClipboard ()
 {
-    KateExporter (this).exportToClipboard ();
+    KateExporter(this).exportToClipboard();
 }
 
 void KTextEditor::ViewPrivate::exportHtmlToFile ()
 {
-    KateExporter (this).exportToFile ();
+    const QString file = QFileDialog::getSaveFileName(this, i18n("Export File as HTML"), m_doc->documentName());
+    if (!file.isEmpty()) {
+        KateExporter(this).exportToFile(file);
+    }
 }
 
 void KTextEditor::ViewPrivate::clearHighlights()
