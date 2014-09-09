@@ -38,7 +38,7 @@ AppCommands *AppCommands::m_instance = 0;
 
 AppCommands::AppCommands()
     : KTextEditor::Command(QStringList() << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
-          << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
+          << QLatin1String("w") << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
           << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
           << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
           << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose") << QLatin1String("clo") << QLatin1String("close"))
