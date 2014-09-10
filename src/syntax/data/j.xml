@@ -24,7 +24,7 @@
   Kate is a KDE Advanced Text Editor
   http://kate.kde.org/
 -->
-<language name="J" section="Scripts" version="1.1" kateversion="2.4" extensions="*.ijs;*.IJS" mimetype="text/x-j;text/x-jsrc" author="Igor Zhuravlov (zhuravlov.ip@ya.ru)" indenter="normal" license="GPL">
+<language name="J" section="Scripts" version="1.1" kateversion="3.4" extensions="*.ijs;*.IJS" mimetype="text/x-j;text/x-jsrc" author="Igor Zhuravlov (zhuravlov.ip@ya.ru)" indenter="normal" license="GPL">
   <highlighting>
     <contexts>
       <context attribute="Sentence" lineEndContext="#stay" name="sentence">

@@ -30,7 +30,7 @@
 
 <language name="Doxygen"
           version="1.38"
-          kateversion="2.5"
+          kateversion="2.4"
           section="Markup"
           extensions="*.dox;*.doxygen"
           mimetype="text/x-doxygen"
