@@ -95,11 +95,11 @@ KTextEditor::MovingRange::InsertBehaviors TextRange::insertBehaviors() const
     InsertBehaviors behaviors = DoNotExpand;
 
     if (m_start.insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) {
-        behaviors = behaviors & ExpandLeft;
+        behaviors |= ExpandLeft;
     }
 
     if (m_end.insertBehavior() == KTextEditor::MovingCursor::MoveOnInsert) {
-        behaviors = behaviors & ExpandRight;
+        behaviors |= ExpandRight;
     }
 
     return behaviors;
