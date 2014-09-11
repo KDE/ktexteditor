@@ -25,6 +25,7 @@
 #include <QPointer>
 #include <QStack>
 #include <QMimeType>
+#include <QTimer>
 
 #include <KJob>
 
@@ -981,6 +982,7 @@ private Q_SLOTS:
     void slotModOnHdDirty(const QString &path);
     void slotModOnHdCreated(const QString &path);
     void slotModOnHdDeleted(const QString &path);
+    void slotDelayedHandleModOnHd();
 
 private:
     /**
@@ -1357,6 +1359,12 @@ public:
 
 public Q_SLOTS:
     void openWithLineLengthLimitOverride();
+    
+private:
+    /**
+     * timer for delayed handling of mod on hd
+     */
+    QTimer m_modOnHdTimer;
 };
 
 #endif

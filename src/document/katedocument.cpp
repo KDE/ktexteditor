@@ -208,6 +208,13 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)),
             this, SLOT(slotModOnHdDeleted(QString)));
+    
+    /**
+     * singleshot timer to handle updates of mod on hd state delayed
+     */
+    m_modOnHdTimer.setSingleShot(true);
+    m_modOnHdTimer.setInterval(200);
+    connect(&m_modOnHdTimer, SIGNAL(timeout()), this, SLOT(slotDelayedHandleModOnHd()));
 
     /**
      * load handling
@@ -4477,23 +4484,12 @@ void KTextEditor::DocumentPrivate::setVariable(const QString &name, const QStrin
 void KTextEditor::DocumentPrivate::slotModOnHdDirty(const QString &path)
 {
     if ((path == m_dirWatchFile) && (!m_modOnHd || m_modOnHdReason != OnDiskModified)) {
-        // compare md5 with the one we have (if we have one)
-        if (!checksum().isEmpty()) {
-            QByteArray oldDigest = checksum();
-            if (createDigest() && oldDigest == checksum()) {
-                return;
-            }
-        }
-
         m_modOnHd = true;
         m_modOnHdReason = OnDiskModified;
-
-        // reenable dialog if not running atm
-        if (m_isasking == -1) {
-            m_isasking = false;
+        
+        if (!m_modOnHdTimer.isActive()) {
+            m_modOnHdTimer.start();
         }
-
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 }
 
@@ -4503,12 +4499,9 @@ void KTextEditor::DocumentPrivate::slotModOnHdCreated(const QString &path)
         m_modOnHd = true;
         m_modOnHdReason = OnDiskCreated;
 
-        // reenable dialog if not running atm
-        if (m_isasking == -1) {
-            m_isasking = false;
+        if (!m_modOnHdTimer.isActive()) {
+            m_modOnHdTimer.start();
         }
-
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 }
 
@@ -4517,14 +4510,38 @@ void KTextEditor::DocumentPrivate::slotModOnHdDeleted(const QString &path)
     if ((path == m_dirWatchFile) && (!m_modOnHd || m_modOnHdReason != OnDiskDeleted)) {
         m_modOnHd = true;
         m_modOnHdReason = OnDiskDeleted;
-
-        // reenable dialog if not running atm
-        if (m_isasking == -1) {
-            m_isasking = false;
+        
+        if (!m_modOnHdTimer.isActive()) {
+            m_modOnHdTimer.start();
         }
-
-        emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
+}
+
+void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
+{
+    // compare git hash with the one we have (if we have one)
+    const QByteArray oldDigest = checksum();
+    if (!oldDigest.isEmpty()) {
+        /**
+         * if current checksum == checksum of new file => unmodified
+         */
+        if (createDigest() && oldDigest == checksum()) {
+            m_modOnHd = false;
+            m_modOnHdReason = OnDiskUnmodified;
+        }
+    }
+    
+    /**
+     * reenable dialog if not running atm
+     */
+    if (m_isasking == -1) {
+        m_isasking = false;
+    }
+
+    /**
+     * emit our signal to the outside!
+     */
+    emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
 }
 
 QByteArray KTextEditor::DocumentPrivate::checksum() const
