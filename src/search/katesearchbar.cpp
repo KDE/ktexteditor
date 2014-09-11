@@ -617,6 +617,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
             m_wrappedTopMessage->setPosition(KTextEditor::Message::TopInView);
             m_wrappedTopMessage->setAutoHide(2000);
             m_wrappedTopMessage->setAutoHideMode(KTextEditor::Message::Immediate);
+            m_wrappedTopMessage->setView(m_view);
             m_view->doc()->postMessage(m_wrappedTopMessage);
         } else if (searchDirection == SearchBackward && !m_wrappedBottomMessage) {
             const QString msg = i18n("Continuing search from bottom");
@@ -624,6 +625,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
             m_wrappedBottomMessage->setPosition(KTextEditor::Message::BottomInView);
             m_wrappedBottomMessage->setAutoHide(2000);
             m_wrappedBottomMessage->setAutoHideMode(KTextEditor::Message::Immediate);
+            m_wrappedBottomMessage->setView(m_view);
             m_view->doc()->postMessage(m_wrappedBottomMessage);
         }
 
