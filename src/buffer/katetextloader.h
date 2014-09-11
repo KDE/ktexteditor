@@ -59,16 +59,17 @@ public:
         , m_lastLineStart(0)
         , m_eol(TextBuffer::eolUnknown)  // no eol type detected atm
         , m_buffer(KATE_FILE_LOADER_BS, 0)
-        , m_digest(QCryptographicHash::Md5)
+        , m_digest(QCryptographicHash::Sha1)
         , m_converterState(0)
         , m_bomFound(false)
         , m_firstRead(true)
         , m_proberType(proberType)
+        , m_fileSize(0)
     {
         // try to get mimetype for on the fly decompression, don't rely on filename!
         QFile testMime(filename);
-
         m_mimeType = QMimeDatabase().mimeTypeForFileNameAndData(filename, &testMime).name();
+        m_fileSize = testMime.size();
 
         // construct filter device
         KCompressionDevice::CompressionType compressionType = KFilterDev::compressionTypeForMimeType(m_mimeType);
@@ -103,7 +104,12 @@ public:
         m_converterState = new QTextCodec::ConverterState(QTextCodec::ConvertInvalidToNull);
         m_bomFound = false;
         m_firstRead = true;
-
+        
+        // init the hash with the git header
+        const QString header = QString(QLatin1String("blob %1")).arg(m_fileSize);
+        m_digest.reset();
+        m_digest.addData(header.toLatin1() + '\0');
+        
         // if already opened, close the file...
         if (m_file->isOpen()) {
             m_file->close();
@@ -400,6 +406,7 @@ private:
     bool m_bomFound;
     bool m_firstRead;
     KEncodingProber::ProberType m_proberType;
+    quint64 m_fileSize;
 };
 
 }

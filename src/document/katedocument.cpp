@@ -4534,22 +4534,29 @@ QByteArray KTextEditor::DocumentPrivate::checksum() const
 
 bool KTextEditor::DocumentPrivate::createDigest()
 {
-    QByteArray md5sum;
+    QByteArray digest;
 
     if (url().isLocalFile()) {
         QFile f(url().toLocalFile());
         if (f.open(QIODevice::ReadOnly)) {
-            QCryptographicHash crypto(QCryptographicHash::Md5);
+            // init the hash with the git header
+            QCryptographicHash crypto(QCryptographicHash::Sha1);
+            const QString header = QString(QLatin1String("blob %1")).arg(f.size());
+            crypto.addData(header.toLatin1() + '\0');
+
             while (!f.atEnd()) {
                 crypto.addData(f.read(256 * 1024));
             }
-            md5sum = crypto.result();
+            
+            digest = crypto.result();
         }
     }
 
-    m_buffer->setDigest(md5sum);
-
-    return !md5sum.isEmpty();
+    /**
+     * set new digest
+     */
+    m_buffer->setDigest(digest);
+    return !digest.isEmpty();
 }
 
 QString KTextEditor::DocumentPrivate::reasonedMOHString() const

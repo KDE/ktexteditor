@@ -390,9 +390,9 @@ void KateDocumentTest::testInsertNewline()
 // sure, these two implementations result in the same checksum.
 void KateDocumentTest::testDigest()
 {
-    // md5sum of data/md5checksum.txt: ff6e0fddece03adeb8f902e8c540735a
+    // git hash of data/md5checksum.txt: 95c6f5f5dbb36abf1151b2a8501b37282e268d13
     // QCryptographicHash is used, therefore we need fromHex here
-    const QByteArray fileDigest = QByteArray::fromHex("ff6e0fddece03adeb8f902e8c540735a");
+    const QByteArray fileDigest = QByteArray::fromHex("95c6f5f5dbb36abf1151b2a8501b37282e268d13");
 
     // make sure, Kate::TextBuffer and KTextEditor::DocumentPrivate::createDigest() equal
     KTextEditor::DocumentPrivate doc;

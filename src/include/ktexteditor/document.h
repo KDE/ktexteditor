@@ -242,12 +242,16 @@ public:
     virtual QString mimeType() = 0;
 
     /**
-     * Get the md5 checksum of the Document's contents on disk.
-     * The returned md5sum equals the md5sum of the file written to disk.
+     * Get the git hash of the Document's contents on disk.
+     * The returned hash equals the git hash of the file written to disk.
      * If the document is a remote document, the checksum may not be
      * available. In this case, QByteArray::isNull() returns \e true.
+     * 
+     * git hash is defined as:
+     * 
+     * sha1("blob " + filesize + "\0" + filecontent)
      *
-     * \return the md5 checksum of the document
+     * \return the git hash of the document
      */
     virtual QByteArray checksum() const = 0;
 
