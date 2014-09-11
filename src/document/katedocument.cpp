@@ -4522,7 +4522,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
 {
     // compare git hash with the one we have (if we have one)
     const QByteArray oldDigest = checksum();
-    if (!oldDigest.isEmpty()) {
+    if (!oldDigest.isEmpty() && url().isLocalFile()) {
         /**
          * if current checksum == checksum of new file => unmodified
          */
