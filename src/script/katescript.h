@@ -22,6 +22,8 @@
 #define KATE_SCRIPT_H
 
 #include <QScriptValue>
+#include <QString>
+#include <QMap>
 
 class QScriptEngine;
 
@@ -120,6 +122,8 @@ public:
         InputSCRIPT
     };
 
+    typedef QMap<QString, QScriptValue> FieldMap;
+
     /**
      * Create a new script representation, passing either a file or the script
      * content @p urlOrScript to it.
@@ -169,6 +173,9 @@ public:
 
     /** Returns the backtrace when a script has errored out */
     QString backtrace(const QScriptValue &error, const QString &header = QString());
+
+    /** Execute a piece of code **/
+    QScriptValue evaluate(const QString& program, const FieldMap& env={});
 
     /** Displays the backtrace when a script has errored out */
     void displayBacktrace(const QScriptValue &error, const QString &header = QString());

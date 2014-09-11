@@ -1,5 +1,6 @@
 /* This file is part of the KDE libraries
    Copyright (C) 2010 Bernhard Beschow <bbeschow@cs.tu-berlin.de>
+   Copyright (C) 2014 Sven Brauch <svenbrauch@gmail.com>
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -28,6 +29,28 @@ class TemplateHandlerTest : public QObject
 
 private Q_SLOTS:
     void testUndo();
+
+    void testSimpleMirror();
+    void testSimpleMirror_data();
+
+    void testDefaults();
+    void testDefaults_data();
+
+    void testDefaultMirror();
+
+    void testFunctionMirror();
+
+    void testNotEditableFields();
+    void testNotEditableFields_data();
+
+    void testAdjacentRanges();
+
+    void testTab();
+    void testTab_data();
+
+    void testExitAtCursor();
+
+    void testAutoSelection();
 };
 
 #endif

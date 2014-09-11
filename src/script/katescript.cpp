@@ -34,6 +34,7 @@
 #include <QScriptEngine>
 #include <QScriptValue>
 #include <QScriptContext>
+#include <QMap>
 
 //BEGIN conversion functions for Cursors and Ranges
 /** Converstion function from KTextEditor::Cursor to QtScript cursor */
@@ -228,6 +229,26 @@ bool KateScript::load()
     m_loadSuccessful = true;
 
     return true;
+}
+
+QScriptValue KateScript::evaluate(const QString& program, const FieldMap& env)
+{
+    if ( !load() ) {
+        qWarning() << "load of script failed:" << program;
+        return QScriptValue();
+    }
+
+    // set up stuff in a new context, to not pollute the global stuff
+    auto context = m_engine->pushContext();
+
+    auto obj = context->activationObject();
+    for ( auto it = env.begin(); it != env.end(); it++ ) {
+        obj.setProperty(it.key(), *it);
+    }
+    auto result = m_engine->evaluate(program);
+
+    m_engine->popContext();
+    return result;
 }
 
 bool KateScript::hasException(const QScriptValue &object, const QString &file)
