@@ -280,7 +280,6 @@ PRIVATE
   KF5::GuiAddons
   KF5::IconThemes
   KF5::ItemViews
-  KF5::KIOFileWidgets
   KF5::SonnetCore
 )
 
