@@ -17,7 +17,6 @@
  */
 
 #include "kateconfigpage.h"
-#include "katepartdebug.h"
 
 KateConfigPage::KateConfigPage(QWidget *parent, const char *)
     : KTextEditor::ConfigPage(parent)
@@ -38,5 +37,4 @@ void KateConfigPage::slotChanged()
 void KateConfigPage::somethingHasChanged()
 {
     m_changed = true;
-    qCDebug(LOG_PART) << "TEST: something changed on the config page: " << this;
 }
