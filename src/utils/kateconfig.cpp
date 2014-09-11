@@ -1281,8 +1281,6 @@ KateViewConfig::~KateViewConfig()
 namespace
 {
 const char *const KEY_SEARCH_REPLACE_FLAGS = "Search/Replace Flags";
-const char *const KEY_PATTERN_HISTORY = "Search Pattern History";
-const char *const KEY_REPLACEMENT_HISTORY = "Replacement Text History";
 const char *const KEY_DYN_WORD_WRAP = "Dynamic Word Wrap";
 const char *const KEY_DYN_WORD_WRAP_INDICATORS = "Dynamic Word Wrap Indicators";
 const char *const KEY_DYN_WORD_WRAP_ALIGN_INDENT = "Dynamic Word Wrap Align Indent";
@@ -1368,16 +1366,6 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
     setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
 
-    if (isGlobal()) {
-        // Read search pattern history
-        QStringList patternHistory = config.readEntry(KEY_PATTERN_HISTORY, QStringList());
-        m_patternHistoryModel.setStringList(patternHistory);
-
-        // Read replacement text history
-        QStringList replacementHistory = config.readEntry(KEY_REPLACEMENT_HISTORY, QStringList());
-        m_replacementHistoryModel.setStringList(replacementHistory);
-    }
-
     configEnd();
 }
 
@@ -1432,14 +1420,6 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_INPUT_MODE, static_cast<int>(inputMode()));
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
     config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
-
-    if (isGlobal()) {
-        // Write search pattern history
-        config.writeEntry(KEY_PATTERN_HISTORY, m_patternHistoryModel.stringList());
-
-        // Write replacement text history
-        config.writeEntry(KEY_REPLACEMENT_HISTORY, m_replacementHistoryModel.stringList());
-    }
 }
 
 void KateViewConfig::updateConfig()
@@ -1810,29 +1790,9 @@ void KateViewConfig::setSearchFlags(long flags)
     configEnd();
 }
 
-QStringListModel *KateViewConfig::patternHistoryModel()
-{
-    // always return global history
-    if (isGlobal()) {
-        return &m_patternHistoryModel;
-    }
-
-    return s_global->patternHistoryModel();
-}
-
 int KateViewConfig::maxHistorySize() const
 {
     return m_maxHistorySize;
-}
-
-QStringListModel *KateViewConfig::replacementHistoryModel()
-{
-    // always return global history
-    if (isGlobal()) {
-        return &m_replacementHistoryModel;
-    }
-
-    return s_global->replacementHistoryModel();
 }
 
 uint KateViewConfig::defaultMarkType() const

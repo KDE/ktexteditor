@@ -40,6 +40,8 @@
 #include <QMap>
 #include <QScopedPointer>
 
+class QStringListModel;
+
 class KateCmd;
 class KateModeManager;
 class KateSchemaManager;
@@ -334,10 +336,12 @@ public:
     }
 
     /**
-      * global instance of the language-aware keyword completion model
-      * @return global instance of the keyword completion model
-      */
-     KateKeywordCompletionModel *keywordCompletionModel () { return m_keywordCompletionModel; }
+     * Global instance of the language-aware keyword completion model
+     * @return global instance of the keyword completion model
+     */
+    KateKeywordCompletionModel *keywordCompletionModel () {
+        return m_keywordCompletionModel;
+    }
 
     /**
      * query for command
@@ -401,6 +405,21 @@ public:
     {
         return *m_defaultColors;
     }
+
+    /**
+     * Search pattern history shared among simple/power search instances.
+     */
+    QStringListModel *searchHistoryModel();
+
+    /**
+     * Replace pattern history shared among simple/power search instances.
+     */
+    QStringListModel *replaceHistoryModel();
+
+    /**
+     * Call this function to store the history models to the application config.
+     */
+    void saveSearchReplaceHistoryModels();
 
 Q_SIGNALS:
     /**
@@ -519,6 +538,12 @@ private:
      * default colors
      */
     QScopedPointer<KateDefaultColors> m_defaultColors;
+
+    /**
+     * Shared history models for search & replace.
+     */
+    QStringListModel *m_searchHistoryModel;
+    QStringListModel *m_replaceHistoryModel;
 };
 
 }

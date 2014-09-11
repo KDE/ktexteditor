@@ -31,7 +31,6 @@
 #include <QObject>
 #include <QVector>
 #include <QFontMetricsF>
-#include <QStringListModel>
 
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -504,9 +503,6 @@ public:
 
     int maxHistorySize() const;
 
-    QStringListModel *patternHistoryModel();
-    QStringListModel *replacementHistoryModel();
-
     uint defaultMarkType() const;
     void setDefaultMarkType(uint type);
 
@@ -576,8 +572,6 @@ private:
     int m_autoCenterLines;
     long m_searchFlags;
     int m_maxHistorySize;
-    QStringListModel m_patternHistoryModel;
-    QStringListModel m_replacementHistoryModel;
     uint m_defaultMarkType;
     bool m_persistentSelection;
     KTextEditor::View::InputMode m_inputMode;

@@ -51,6 +51,7 @@
 #include <QApplication>
 #include <QAbstractItemView>
 #include <QWhatsThis>
+#include <QStringListModel>
 
 #include <algorithm>
 

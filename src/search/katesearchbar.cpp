@@ -28,6 +28,7 @@
 #include "kateundomanager.h"
 #include "kateconfig.h"
 #include "katerenderer.h"
+#include "kateglobal.h"
 
 #include <KTextEditor/Message>
 #include <KTextEditor/MovingRange>
@@ -42,9 +43,11 @@
 #include <KLocalizedString>
 
 #include <QVBoxLayout>
-#include <QComboBox>
 #include <QCheckBox>
+#include <QComboBox>
+#include <QCompleter>
 #include <QShortcut>
+#include <QStringListModel>
 
 // Turn debug messages on/off here
 // #define FAST_DEBUG_ENABLE
@@ -708,6 +711,9 @@ void KateSearchBar::addCurrentTextToHistory(QComboBox *combo)
         combo->insertItem(0, text);
         combo->setCurrentIndex(0);
     }
+
+    // sync to application config
+    KTextEditor::EditorPrivate::self()->saveSearchReplaceHistoryModels();
 }
 
 void KateSearchBar::backupConfig(bool ofPower)
@@ -1302,11 +1308,11 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->pattern->setDuplicatesEnabled(false);
         m_powerUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->pattern->setMaxCount(m_config->maxHistorySize());
-        m_powerUi->pattern->setModel(m_config->patternHistoryModel());
+        m_powerUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
         m_powerUi->replacement->setDuplicatesEnabled(false);
         m_powerUi->replacement->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->replacement->setMaxCount(m_config->maxHistorySize());
-        m_powerUi->replacement->setModel(m_config->replacementHistoryModel());
+        m_powerUi->replacement->setModel(KTextEditor::EditorPrivate::self()->replaceHistoryModel());
 
         // Icons
         m_powerUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("arrow-down-double")));
@@ -1460,7 +1466,7 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->pattern->setDuplicatesEnabled(false);
         m_incUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_incUi->pattern->setMaxCount(m_config->maxHistorySize());
-        m_incUi->pattern->setModel(m_config->patternHistoryModel());
+        m_incUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
         m_incUi->pattern->setAutoCompletion(false);
     }
 

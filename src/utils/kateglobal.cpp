@@ -58,6 +58,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QPushButton>
+#include <QStringListModel>
 
 Q_LOGGING_CATEGORY(LOG_PART, "katepart")
 
@@ -82,6 +83,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
                   i18n("(c) 2000-2014 The Kate Authors"), QString(), QLatin1String("http://kate-editor.org"))
     , m_application(Q_NULLPTR)
     , m_defaultColors(new KateDefaultColors())
+    , m_searchHistoryModel(Q_NULLPTR)
+    , m_replaceHistoryModel(Q_NULLPTR)
+
 {
     // remember this
     staticInstance = this;
@@ -475,4 +479,35 @@ bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
 QList< KateAbstractInputModeFactory *> KTextEditor::EditorPrivate::inputModeFactories()
 {
     return m_inputModeFactories.values();
+}
+
+QStringListModel *KTextEditor::EditorPrivate::searchHistoryModel()
+{
+    if (!m_searchHistoryModel) {
+        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+        const QStringList history = cg.readEntry(QStringLiteral("Search History"), QStringList());
+        m_searchHistoryModel = new QStringListModel(history, this);
+    }
+    return m_searchHistoryModel;
+}
+
+QStringListModel *KTextEditor::EditorPrivate::replaceHistoryModel()
+{
+    if (!m_replaceHistoryModel) {
+        KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+        const QStringList history = cg.readEntry(QStringLiteral("Replace History"), QStringList());
+        m_replaceHistoryModel = new QStringListModel(history, this);
+    }
+    return m_replaceHistoryModel;
+}
+
+void KTextEditor::EditorPrivate::saveSearchReplaceHistoryModels()
+{
+    KConfigGroup cg(KSharedConfig::openConfig(), "KTextEditor::Search");
+    if (m_searchHistoryModel) {
+        cg.writeEntry(QStringLiteral("Search History"), m_searchHistoryModel->stringList());
+    }
+    if (m_replaceHistoryModel) {
+        cg.writeEntry(QStringLiteral("Replace History"), m_replaceHistoryModel->stringList());
+    }
 }

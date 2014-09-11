@@ -31,6 +31,7 @@
 #include <KMessageBox>
 
 #include <QtTestWidgets>
+#include <QStringListModel>
 
 QTEST_MAIN(SearchBarTest)
 
@@ -525,7 +526,7 @@ void SearchBarTest::testSearchHistoryIncremental()
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig *const config = view.config();
-    config->patternHistoryModel()->setStringList(QStringList());
+    KTextEditor::EditorPrivate::self()->searchHistoryModel()->setStringList(QStringList());
 
     doc.setText("foo bar");
 
@@ -562,7 +563,7 @@ void SearchBarTest::testSearchHistoryPower()
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate view(&doc, 0);
     KateViewConfig *const config = view.config();
-    config->patternHistoryModel()->setStringList(QStringList());
+    KTextEditor::EditorPrivate::self()->searchHistoryModel()->setStringList(QStringList());
 
     doc.setText("foo bar");
 
