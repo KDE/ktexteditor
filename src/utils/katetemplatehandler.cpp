@@ -393,7 +393,9 @@ void KateTemplateHandler::handleTemplateString()
     }
 
     // place the cursor at the first field and select stuff if necessary
-    jump(1, true);
+    if ( m_fields.count() > 0 ) {
+        jump(1, true);
+    }
 }
 
 KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(const KTextEditor::Range& range) const
