@@ -77,6 +77,7 @@
 #include <QFileDialog>
 #include <QMimeDatabase>
 #include <QTemporaryFile>
+#include <QProcess>
 //END  includes
 
 #if 0
@@ -4528,6 +4529,28 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         if (createDigest() && oldDigest == checksum()) {
             m_modOnHd = false;
             m_modOnHdReason = OnDiskUnmodified;
+        }
+    }
+    
+    /**
+     * if still modified, try to take a look at git
+     * skip that, if document is modified!
+     */
+    if (m_modOnHd && !isModified()) {
+        QProcess git;
+        git.start(QLatin1String("git"), QStringList() << QLatin1String("cat-file") << QLatin1String("-e") << QLatin1String(oldDigest.toHex()));
+        if (git.waitForStarted()) {
+            git.closeWriteChannel();
+            if (git.waitForFinished()) {
+                if (git.exitCode() == 0) {
+                    /**
+                     * this hash exists still in git => just reload
+                     */
+                    m_modOnHd = false;
+                    m_modOnHdReason = OnDiskUnmodified;
+                    documentReload();
+                }
+            }
         }
     }
     
