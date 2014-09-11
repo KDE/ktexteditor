@@ -109,7 +109,7 @@ static QUrl normalizeUrl (const QUrl &url)
     /**
      * only normalize local urls
      */
-    if (!url.isLocalFile())
+    if (url.isEmpty() || !url.isLocalFile())
         return url;
     
     /**
