@@ -69,8 +69,6 @@
 #include <KMessageBox>
 #include <KStandardAction>
 #include <KXMLGUIFactory>
-#include <KXMLGUIClient>
-#include <KEncodingFileDialog>
 #include <KStandardShortcut>
 #include <KToggleAction>
 #include <KSelectAction>
@@ -83,6 +81,7 @@
 #include <QApplication>
 #include <QLayout>
 #include <QClipboard>
+#include <QFileDialog>
 
 //#define VIEW_RANGE_DEBUG
 
