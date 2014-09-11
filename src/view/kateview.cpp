@@ -80,6 +80,7 @@
 #include <QKeyEvent>
 #include <QApplication>
 #include <QLayout>
+#include <QPainter>
 #include <QClipboard>
 #include <QFileDialog>
 
@@ -119,6 +120,10 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_viewInternal(new KateViewInternal(this))
     , m_spell(new KateSpellCheckDialog(this))
     , m_bookmarks(new KateBookmarks(this))
+    , m_topSpacer(new QSpacerItem(0,0))
+    , m_leftSpacer(new QSpacerItem(0,0))
+    , m_rightSpacer(new QSpacerItem(0,0))
+    , m_bottomSpacer(new QSpacerItem(0,0))
     , m_startingUp(true)
     , m_updatingDocumentConfig(false)
     , m_selection(m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
@@ -162,50 +167,19 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     // the left, even for Arabic/Hebrew/Farsi/whatever users.
     setLayoutDirection(Qt::LeftToRight);
 
-    // layouting ;)
-    m_vBox = new QVBoxLayout(this);
-    m_vBox->setMargin(0);
-    m_vBox->setSpacing(0);
-
     m_bottomViewBar->installEventFilter(m_viewInternal);
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
     m_topMessageWidget = new KateMessageWidget(this);
-    m_vBox->addWidget(m_topMessageWidget);
     m_topMessageWidget->hide();
-
-    // add hbox: KateIconBorder | KateViewInternal | KateScrollBar
-    QHBoxLayout *hbox = new QHBoxLayout();
-    m_vBox->addLayout(hbox, 100);
-    hbox->setMargin(0);
-    hbox->setSpacing(0);
-
-    /**
-     * add ICONBORDER | VIEWINTERNAL | LINE-SCROLLBAR
-     */
-    hbox->addWidget(m_viewInternal->m_leftBorder);
-    hbox->addWidget(m_viewInternal);
-    hbox->addWidget(m_viewInternal->m_lineScroll);
-
-    // add hbox: ColumnsScrollBar | Dummy
-    hbox = new QHBoxLayout();
-    m_vBox->addLayout(hbox);
-    hbox->setMargin(0);
-    hbox->setSpacing(0);
-
-    hbox->addWidget(m_viewInternal->m_columnScroll);
-    hbox->addWidget(m_viewInternal->m_dummy);
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
     m_bottomMessageWidget = new KateMessageWidget(this);
-    m_vBox->addWidget(m_bottomMessageWidget);
     m_bottomMessageWidget->hide();
 
     // add bottom viewbar...
     if (bottomBarParent) {
         m_mainWindow->addWidgetToViewBar(this, m_bottomViewBar);
-    } else {
-        m_vBox->addWidget(m_bottomViewBar);
     }
 
     // add layout for floating message widgets to KateViewInternal
@@ -258,6 +232,9 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     
     // clear highlights on reload
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(clearHighlights()));
+
+    // setup layout
+    setupLayout();
 }
 
 KTextEditor::ViewPrivate::~ViewPrivate()
@@ -307,6 +284,145 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
     m_statusBar = new KateStatusBar(this);
     bottomViewBar()->addPermanentBarWidget(m_statusBar);
     emit statusBarEnabledChanged(this, true);
+}
+
+void KTextEditor::ViewPrivate::setupLayout()
+{
+
+    // delete old layout if any
+    if (layout())
+    {
+        delete layout();
+
+        /**
+         *  need to recreate spacers because they are deleted with
+         *  their belonging layout
+         */
+        m_topSpacer = new QSpacerItem(0,0);
+        m_leftSpacer = new QSpacerItem(0,0);
+        m_rightSpacer = new QSpacerItem(0,0);
+        m_bottomSpacer = new QSpacerItem(0,0);
+    }
+
+    // set margins
+    QStyleOptionFrameV3 opt;
+    opt.initFrom(this);
+    opt.frameShape = QFrame::StyledPanel;
+    opt.state |= QStyle::State_Sunken;
+    const int margin = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &opt, this);
+    m_topSpacer->changeSize(0, margin, QSizePolicy::Minimum, QSizePolicy::Fixed);
+    m_leftSpacer->changeSize(margin, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    m_rightSpacer->changeSize(margin, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    m_bottomSpacer->changeSize(0, margin, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+    // define layout
+    QGridLayout *layout=new QGridLayout(this);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+
+    const bool frameAroundContents = style()->styleHint(QStyle::SH_ScrollView_FrameOnlyAroundContents, &opt, this);
+    if (frameAroundContents) {
+
+        // top message widget
+        layout->addWidget(m_topMessageWidget, 0, 0, 1, 5);
+
+        // top spacer
+        layout->addItem(m_topSpacer, 1, 0, 1, 4);
+
+        // left spacer
+        layout->addItem(m_leftSpacer, 2, 0, 1, 1);
+
+        // left border
+        layout->addWidget(m_viewInternal->m_leftBorder, 2, 1, 1, 1);
+
+        // view
+        layout->addWidget(m_viewInternal, 2, 2, 1, 1);
+
+        // right spacer
+        layout->addItem(m_rightSpacer, 2, 3, 1, 1);
+
+        // bottom spacer
+        layout->addItem(m_bottomSpacer, 3, 0, 1, 4);
+
+        // vertical scrollbar
+        layout->addWidget(m_viewInternal->m_lineScroll, 1, 4, 3, 1);
+
+        // horizontal scrollbar
+        layout->addWidget(m_viewInternal->m_columnScroll, 4, 0, 1, 4);
+
+        // dummy
+        layout->addWidget(m_viewInternal->m_dummy, 4, 4, 1, 1);
+
+        // bottom message
+        layout->addWidget(m_bottomMessageWidget, 5, 0, 1, 5);
+
+        // bottom viewbar
+        if (m_bottomViewBar->parentWidget() == this) {
+            layout->addWidget(m_bottomViewBar, 6, 0, 1, 5);
+        }
+
+        // stretch
+        layout->setColumnStretch(2, 1);
+        layout->setRowStretch(2, 1);
+
+        // adjust scrollbar background
+        m_viewInternal->m_lineScroll->setBackgroundRole(QPalette::Window);
+        m_viewInternal->m_lineScroll->setAutoFillBackground(false);
+
+        m_viewInternal->m_columnScroll->setBackgroundRole(QPalette::Window);
+        m_viewInternal->m_columnScroll->setAutoFillBackground(false);
+
+    } else {
+
+        // top message widget
+        layout->addWidget(m_topMessageWidget, 0, 0, 1, 5);
+
+        // top spacer
+        layout->addItem(m_topSpacer, 1, 0, 1, 5);
+
+        // left spacer
+        layout->addItem(m_leftSpacer, 2, 0, 1, 1);
+
+        // left border
+        layout->addWidget(m_viewInternal->m_leftBorder, 2, 1, 1, 1);
+
+        // view
+        layout->addWidget(m_viewInternal, 2, 2, 1, 1);
+
+        // vertical scrollbar
+        layout->addWidget(m_viewInternal->m_lineScroll, 2, 3, 1, 1);
+
+        // right spacer
+        layout->addItem(m_rightSpacer, 2, 4, 1, 1);
+
+        // horizontal scrollbar
+        layout->addWidget(m_viewInternal->m_columnScroll, 3, 1, 1, 2);
+
+        // dummy
+        layout->addWidget(m_viewInternal->m_dummy, 3, 3, 1, 1);
+
+        // bottom spacer
+        layout->addItem(m_bottomSpacer, 4, 0, 1, 5);
+
+        // bottom message
+        layout->addWidget(m_bottomMessageWidget, 5, 0, 1, 5);
+
+        // bottom viewbar
+        if (m_bottomViewBar->parentWidget() == this) {
+            layout->addWidget(m_bottomViewBar, 6, 0, 1, 5);
+        }
+
+        // stretch
+        layout->setColumnStretch(2, 1);
+        layout->setRowStretch(2, 1);
+
+        // adjust scrollbar background
+        m_viewInternal->m_lineScroll->setBackgroundRole(QPalette::Base);
+        m_viewInternal->m_lineScroll->setAutoFillBackground(true);
+
+        m_viewInternal->m_columnScroll->setBackgroundRole(QPalette::Base);
+        m_viewInternal->m_columnScroll->setAutoFillBackground(true);
+    }
 }
 
 void KTextEditor::ViewPrivate::setupConnections()
@@ -1177,6 +1293,21 @@ void KTextEditor::ViewPrivate::slotGotFocus()
 {
     //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotGotFocus";
     currentInputMode()->gotFocus();
+
+    /**
+     *  update current view and scrollbars
+     *  it is needed for styles that implement different frame and scrollbar
+     * rendering when focused
+     */
+    update();
+    if (m_viewInternal->m_lineScroll->isVisible()) {
+        m_viewInternal->m_lineScroll->update();
+    }
+
+    if (m_viewInternal->m_columnScroll->isVisible()) {
+        m_viewInternal->m_columnScroll->update();
+    }
+
     emit focusIn(this);
 }
 
@@ -1184,6 +1315,21 @@ void KTextEditor::ViewPrivate::slotLostFocus()
 {
     //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotLostFocus";
     currentInputMode()->lostFocus();
+
+    /**
+     *  update current view and scrollbars
+     *  it is needed for styles that implement different frame and scrollbar
+     * rendering when focused
+     */
+    update();
+    if (m_viewInternal->m_lineScroll->isVisible()) {
+        m_viewInternal->m_lineScroll->update();
+    }
+
+    if (m_viewInternal->m_columnScroll->isVisible()) {
+        m_viewInternal->m_columnScroll->update();
+    }
+
     emit focusOut(this);
 }
 
@@ -2958,6 +3104,53 @@ KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()
     m_viewInternal->updateView();
     return KTextEditor::Range(m_viewInternal->toRealCursor(m_viewInternal->startPos()),
                               m_viewInternal->toRealCursor(m_viewInternal->endPos()));
+}
+
+bool KTextEditor::ViewPrivate::event(QEvent *e)
+{
+    switch (e->type()) {
+        case QEvent::StyleChange:
+            setupLayout();
+            return true;
+        default:
+            return KTextEditor::View::event(e);
+    }
+}
+
+void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
+{
+    //base class
+    KTextEditor::View::paintEvent(e);
+
+    const QRect contentsRect = m_topSpacer->geometry()|
+        m_bottomSpacer->geometry()|
+        m_leftSpacer->geometry()|
+        m_rightSpacer->geometry();
+
+    if (contentsRect.isValid()) {
+        QStyleOptionFrameV3 opt;
+        opt.initFrom(this);
+        opt.frameShape = QFrame::StyledPanel;
+        opt.state |= QStyle::State_Sunken;
+
+        // clear mouseOver and focus state
+        // update from relevant widgets
+        opt.state &= ~(QStyle::State_HasFocus|QStyle::State_MouseOver);
+        const QList<QWidget *> widgets = {m_viewInternal, m_viewInternal->m_leftBorder, m_viewInternal->m_lineScroll, m_viewInternal->m_columnScroll};
+        foreach (const QWidget *w, widgets) {
+            if (w->hasFocus()) opt.state |= QStyle::State_HasFocus;
+            if (w->underMouse()) opt.state |= QStyle::State_MouseOver;
+        }
+
+        // update rect
+        opt.rect=contentsRect;
+
+        // render
+        QPainter paint(this);
+        paint.setClipRegion(e->region());
+        paint.setRenderHints(QPainter::Antialiasing);
+        style()->drawControl(QStyle::CE_ShapedFrame, &opt, &paint, this);
+    }
 }
 
 void KTextEditor::ViewPrivate::toggleOnTheFlySpellCheck(bool b)

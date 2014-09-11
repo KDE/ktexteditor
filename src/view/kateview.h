@@ -35,6 +35,7 @@
 #include <QPointer>
 #include <QModelIndex>
 #include <QMenu>
+#include <QSpacerItem>
 
 #include "katetextrange.h"
 #include "katetextfolding.h"
@@ -68,6 +69,7 @@ class KToggleAction;
 class KSelectAction;
 
 class QAction;
+class QGridLayout;
 class QVBoxLayout;
 
 namespace KTextEditor
@@ -603,6 +605,7 @@ public Q_SLOTS: // TODO: turn into good interface, see kte5/foldinginterface.h
     void slotExpandLocal();
 
 private:
+    void setupLayout();
     void setupConnections();
     void setupActions();
     void setupEditActions();
@@ -651,7 +654,11 @@ private:
     KateSpellCheckDialog  *m_spell;
     KateBookmarks    *const m_bookmarks;
 
-    QVBoxLayout *m_vBox;
+    //* margins
+    QSpacerItem *m_topSpacer;
+    QSpacerItem *m_leftSpacer;
+    QSpacerItem *m_rightSpacer;
+    QSpacerItem *m_bottomSpacer;
 
 private Q_SLOTS:
     void slotHlChanged();
@@ -722,6 +729,9 @@ Q_SIGNALS:
     void displayRangeChanged(KTextEditor::ViewPrivate *view);
 
 protected:
+    virtual bool event(QEvent *e);
+    virtual void paintEvent(QPaintEvent *e);
+
     KToggleAction               *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;
 
