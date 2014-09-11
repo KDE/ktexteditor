@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="KatePartView" version="69">
+<kpartgui name="KatePartView" version="75">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -53,23 +53,29 @@
 
   <Menu name="view" noMerge="1"><text>&amp;View</text>
     <Action name="switch_to_cmd_line" group="view_operations" />
-    <Action name="switch_to_console" group="view_operations" />
+    <Separator group="view_operations" />
+    <Action name="view_inc_font_sizes" group="view_operations" />
+    <Action name="view_dec_font_sizes" group="view_operations" />
     <Separator group="view_operations" />
     <Action name="view_schemas" group="view_operations" />
     <Separator group="view_operations" />
-    <Action name="view_dynamic_word_wrap" group="view_operations" />
-    <Action name="dynamic_word_wrap_indicators" group="view_operations" />
-    <Action name="view_word_wrap_marker" group="view_operations" />
+    <Menu name="view_menu_word_wrap" group="view_operations"><text>Word Wrap</text>
+      <Action name="view_dynamic_word_wrap" group="view_operations" />
+      <Action name="dynamic_word_wrap_indicators" group="view_operations" />
+      <Action name="view_word_wrap_marker" group="view_operations" />
+    </Menu>
     <Separator group="view_operations" />
-    <Action name="view_border" group="view_operations" />
-    <Action name="view_line_numbers" group="view_operations" />
-    <Action name="view_scrollbar_marks" group="view_operations" />
-    <Action name="view_scrollbar_minimap" group="view_operations" />
-    <Action name="view_scrollbar_minimap_all" group="view_operations" />
+    <Menu name="view_menu_borders" group="view_operations"><text>Borders</text>
+      <Action name="view_border" group="view_operations" />
+      <Action name="view_line_numbers" group="view_operations" />
+      <Action name="view_scrollbar_marks" group="view_operations" />
+      <Action name="view_scrollbar_minimap" group="view_operations" />
+      <Action name="view_scrollbar_minimap_all" group="view_operations" />
+    </Menu>
     <Separator group="view_operations" />
-    <Action name="view_non_printable_spaces" group="view_operations" />
-    <Action name="view_folding_markers" group="view_operations" />
     <Menu name="codefolding" group="view_operations"><text>&amp;Code Folding</text>
+      <Action name="view_folding_markers" group="view_operations" />
+      <Separator group="view_operations" />
       <Action name="folding_collapselocal" group="view_operations" />
       <Action name="folding_expandlocal" group="view_operations" />
       <Action name="folding_expandall" group="view_operations" />
@@ -86,8 +92,7 @@
       <Action name="expand_level_4" group="view_operations" />
     </Menu>
     <Separator group="view_operations" />
-    <Action name="view_inc_font_sizes" group="view_operations" />
-    <Action name="view_dec_font_sizes" group="view_operations" />
+    <Action name="view_non_printable_spaces" group="view_operations" />
   </Menu>
 
   <Action name="bookmarks" />
