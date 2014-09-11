@@ -112,9 +112,17 @@ static QUrl normalizeUrl (const QUrl &url)
         return url;
     
     /**
+     * don't normalize if not existing!
+     * canonicalFilePath won't work!
+     */
+    const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
+    if (normalizedUrl.isEmpty())
+        return url;
+    
+    /**
      * else: use canonicalFilePath to normalize
      */
-    return QUrl::fromLocalFile(QFileInfo(url.toLocalFile()).canonicalFilePath());
+    return QUrl::fromLocalFile(normalizedUrl);
 }
 
 //BEGIN d'tor, c'tor
