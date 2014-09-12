@@ -89,9 +89,6 @@ public:
                         const QString& script,
                         KateUndoManager *undoManager);
 
-    /**
-     * Cancels the template handler and cleans everything up.
-     */
     virtual ~KateTemplateHandler();
 
 protected:
@@ -150,19 +147,6 @@ private:
     /// if initial is set to true, assumes the cursor is before the snippet
     /// and selects the first field
     void jump(int by, bool initial = false);
-
-    /**
-     * Set selection to \p range and move the cursor to its beginning.
-     */
-    void setCurrentRange(KTextEditor::MovingRange *range);
-
-    /**
-     * Syncs the contents of all mirrored ranges for a given variable.
-     *
-     * \param range The range that acts as base. Its contents will be propagated.
-     *              Mirrored ranges can be found as child of a child of \p m_templateRange
-     */
-    void syncMirroredRanges(KTextEditor::MovingRange *range);
 
 private:
     /**
