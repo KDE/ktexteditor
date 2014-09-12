@@ -85,12 +85,12 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         * now there must be a range
         */
         Q_ASSERT(m_wholeTemplateRange);
-    }
 
-    // indent the inserted template properly, this makes it possible
-    // to share snippets e.g. via GHNS without caring about
-    // what indent-style to use.
-    doc()->align(m_view, *m_wholeTemplateRange);
+        // indent the inserted template properly, this makes it possible
+        // to share snippets e.g. via GHNS without caring about
+        // what indent-style to use.
+        doc()->align(m_view, *m_wholeTemplateRange);
+    }
 
     handleTemplateString();
 
@@ -306,7 +306,10 @@ void KateTemplateHandler::parseFields(const QString& templateText)
         const auto offset = match.capturedStart(0);
         const auto left = templateText.left(offset);
         const auto nl = QLatin1Char('\n');
-        auto matchStart = m_wholeTemplateRange->start() + Cursor(left.count(nl), offset - left.lastIndexOf(nl) - 1);
+        const auto rel_lineno = left.count(nl);
+        const auto start = m_wholeTemplateRange->start().toCursor();
+        auto matchStart = Cursor(start.line(), rel_lineno == 0 ? start.column() : 0) +
+                          Cursor(rel_lineno, offset - left.lastIndexOf(nl) - 1);
         return doc()->newMovingRange({matchStart, matchStart + Cursor(0, match.capturedLength(0))},
                                      MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
@@ -334,7 +337,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
             f.kind = TemplateField::FinalCursorPosition;
         }
         Q_FOREACH ( const auto& other, m_fields ) {
-            if ( other.identifier == f.identifier ) {
+            if ( other.range != f.range && other.identifier == f.identifier ) {
                 f.kind = TemplateField::Mirror;
                 break;
             }
