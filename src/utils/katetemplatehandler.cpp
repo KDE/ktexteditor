@@ -58,27 +58,21 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
 
     m_templateScript.setView(m_view);
 
-    connect(doc(), &KTextEditor::Document::aboutToReload,
-            this, &KateTemplateHandler::deleteLater);
-
-    connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
-            this, &KateTemplateHandler::slotTemplateInserted);
     // remember selection, it will be lost when inserting the template
     QScopedPointer<MovingRange> selection(doc()->newMovingRange(m_view->selectionRange(), MovingRange::DoNotExpand));
 
     m_undoManager->setAllowComplexMerge(true);
 
     {
+        connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
+                this, &KateTemplateHandler::slotTemplateInserted);
         KTextEditor::Document::EditingTransaction t(doc());
-        // bail out if we can't insert text
+        // insert the raw template string
         if (!doc()->insertText(position, templateString)) {
             deleteLater();
             return;
         }
-
-        /**
-        * now there must be a range
-        */
+        // now there must be a range, caught by the textInserted slot
         Q_ASSERT(m_wholeTemplateRange);
     }
 
@@ -100,6 +94,8 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
                 this, &KateTemplateHandler::updateDependentFields);
         connect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
                 this, &KateTemplateHandler::updateDependentFields);
+        connect(doc(), &KTextEditor::Document::aboutToReload,
+                this, &KateTemplateHandler::deleteLater);
 
     } else {
         // when no interesting ranges got added, we can terminate directly
