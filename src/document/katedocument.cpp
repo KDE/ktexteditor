@@ -4541,8 +4541,9 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         /**
          * if still modified, try to take a look at git
          * skip that, if document is modified!
+         * only do that, if the file is still there, else reload makes no sense!
          */
-        if (m_modOnHd && !isModified()) {
+        if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
             /**
              * try to discover the git repo of this file
              * libgit2 docs state that UTF-8 is the right encoding, even on windows
