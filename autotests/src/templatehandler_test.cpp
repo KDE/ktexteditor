@@ -80,20 +80,18 @@ void TemplateHandlerTest::testUndo()
     QCOMPARE(doc->text(), result3);
 
     doc->undo();
-    doc->undo();
 
-    QCOMPARE(doc->text(), result2);
+    QCOMPARE(doc->text(), result);
 
-    doc->redo();
     doc->redo();
 
     QCOMPARE(doc->text(), result3);
 
     doc->undo();
-    doc->undo();
-    doc->undo();
-
     QCOMPARE(doc->text(), result);
+
+    doc->undo();
+    QCOMPARE(doc->text(), QString());
 }
 
 void TemplateHandlerTest::testSimpleMirror()

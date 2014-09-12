@@ -73,6 +73,8 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
             this, &KateTemplateHandler::slotTemplateInserted);
 
+    m_undoManager->setAllowComplexMerge(true);
+
     {
         KTextEditor::Document::EditingTransaction t(doc());
         // bail out if we can't insert text
@@ -116,6 +118,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
 
 KateTemplateHandler::~KateTemplateHandler()
 {
+    m_undoManager->setAllowComplexMerge(false);
 }
 
 void KateTemplateHandler::sortFields()
@@ -450,7 +453,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     // mark that the user edited this field
     changedField.touched = true;
 
-    m_undoManager->setAllowComplexMerge(true);
 
     // turn off expanding left/right for all ranges except @p current
     auto dontExpandOthers = [this](const TemplateField& current) {
@@ -495,7 +497,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     }
     m_internalEdit = false;
     updateRangeBehaviours();
-    m_undoManager->setAllowComplexMerge(false);
 }
 
 void KateTemplateHandler::updateRangeBehaviours()
