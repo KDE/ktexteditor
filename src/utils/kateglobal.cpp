@@ -60,6 +60,10 @@
 #include <QPushButton>
 #include <QStringListModel>
 
+#ifdef HAVE_GIT2
+#include <git2.h>
+#endif
+
 Q_LOGGING_CATEGORY(LOG_PART, "katepart")
 
 //BEGIN unit test mode
@@ -89,7 +93,12 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 {
     // remember this
     staticInstance = this;
-
+    
+#ifdef HAVE_GIT2
+    // init libgit2 if used
+    git_threads_init();
+#endif
+    
     /**
      * register some datatypes
      */
@@ -242,6 +251,11 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_cmdManager;
 
     qDeleteAll(m_inputModeFactories);
+    
+#ifdef HAVE_GIT2
+    // shutdown libgit2 if used
+    git_threads_shutdown();
+#endif
 }
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
