@@ -182,12 +182,12 @@ void KateTemplateHandler::jump(int by, bool initial)
                 // found an editable field by walking into the desired direction
                 return wrapped_i;
             }
-            if ( wrapped_i == from_field_index ) {
+            if ( wrapped_i == from_field_index + (from_field_index > 0 ? 0 : m_fields.count()) ) {
                 // nothing found, do nothing (i.e. keep cursor in current field)
-                break;
+                return wrapped_i;
             }
         }
-        return from_field_index;
+        return 0;
     };
 
     // jump
