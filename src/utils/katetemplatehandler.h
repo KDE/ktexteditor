@@ -106,7 +106,7 @@ private:
      * all necessary initializations, such as populating default values
      * and placing the cursor.
      */
-    void doInsertTemplate();
+    void initializeTemplate();
 
     /**
      * Parse @p templateText and populate m_fields.

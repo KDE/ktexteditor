@@ -54,23 +54,17 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     , m_internalEdit(false)
     , m_templateScript(script, KateScript::InputSCRIPT)
 {
-    /**
-     * we always need a view
-     */
     Q_ASSERT(m_view);
 
     m_templateScript.setView(m_view);
-
-    if (m_view->selection()) {
-        position = m_view->selectionRange().start();
-        m_view->removeSelectionText();
-    }
 
     connect(doc(), &KTextEditor::Document::aboutToReload,
             this, &KateTemplateHandler::deleteLater);
 
     connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
             this, &KateTemplateHandler::slotTemplateInserted);
+    // remember selection, it will be lost when inserting the template
+    QScopedPointer<MovingRange> selection(doc()->newMovingRange(m_view->selectionRange(), MovingRange::DoNotExpand));
 
     m_undoManager->setAllowComplexMerge(true);
 
@@ -88,7 +82,11 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         Q_ASSERT(m_wholeTemplateRange);
     }
 
-    doInsertTemplate();
+    // before initialization, restore selection (if any) so user scripts can retrieve it
+    m_view->setSelection(selection->toRange());
+    initializeTemplate();
+    // then delete the selected text (if any); it was replaced by the template
+    doc()->removeText(selection->toRange());
 
     // only do complex stuff when required
     if (!m_fields.isEmpty()) {
@@ -377,7 +375,7 @@ void KateTemplateHandler::setupDefaultValues()
     }
 }
 
-void KateTemplateHandler::doInsertTemplate()
+void KateTemplateHandler::initializeTemplate()
 {
     auto templateString = doc()->text(*m_wholeTemplateRange);
     parseFields(templateString);
