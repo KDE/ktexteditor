@@ -43,7 +43,7 @@ find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
 
 # libgit2 integration
-find_package(GIT2)
+find_package(GIT2 "0.20.0")
 if(GIT2_FOUND)
     add_definitions(-DHAVE_GIT2)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} GIT2::GIT2)

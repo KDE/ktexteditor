@@ -8,6 +8,8 @@
 #
 # ``GIT2_FOUND``
 #     True if (the requested version of) GIT2 is available
+# ``GIT2_VERSION``
+#     The version of libGIT2
 # ``GIT2_LIBRARIES``
 #     This can be passed to target_link_libraries() instead of the ``GIT2::GIT2``
 #     target
@@ -75,8 +77,6 @@ find_path(GIT2_INCLUDE_DIR
         git2.h
     HINTS
         ${PKG_GIT2_INCLUDE_DIRS}
-    PATH_SUFFIXES
-        GIT2
 )
 find_library(GIT2_LIBRARY
     NAMES
@@ -85,6 +85,22 @@ find_library(GIT2_LIBRARY
         ${PKG_GIT2_LIBRARY_DIRS}
 )
 
+# get version from header, should work on windows, too
+if(GIT2_INCLUDE_DIR)
+    file(STRINGS "${GIT2_INCLUDE_DIR}/git2/version.h" GIT2_H REGEX "^#define LIBGIT2_VERSION \"[^\"]*\"$")
+    
+    string(REGEX REPLACE "^.*LIBGIT2_VERSION \"([0-9]+).*$" "\\1" GIT2_VERSION_MAJOR "${GIT2_H}")
+    string(REGEX REPLACE "^.*LIBGIT2_VERSION \"[0-9]+\\.([0-9]+).*$" "\\1" GIT2_VERSION_MINOR  "${GIT2_H}")
+    string(REGEX REPLACE "^.*LIBGIT2_VERSION \"[0-9]+\\.[0-9]+\\.([0-9]+).*$" "\\1" GIT2_VERSION_PATCH "${GIT2_H}")
+    set(GIT2_VERSION "${GIT2_VERSION_MAJOR}.${GIT2_VERSION_MINOR}.${GIT2_VERSION_PATCH}")
+
+    set(GIT2_MAJOR_VERSION "${GIT2_VERSION_MAJOR}")
+    set(GIT2_MINOR_VERSION "${GIT2_VERSION_MINOR}")
+    set(GIT2_PATCH_VERSION "${GIT2_VERSION_PATCH}")
+
+    unset(GIT2_H)
+endif()
+
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GIT2
     FOUND_VAR
@@ -92,6 +108,8 @@ find_package_handle_standard_args(GIT2
     REQUIRED_VARS
         GIT2_LIBRARY
         GIT2_INCLUDE_DIR
+    VERSION_VAR
+        GIT2_VERSION
 )
 
 if(GIT2_FOUND AND NOT TARGET GIT2::GIT2)
@@ -108,6 +126,7 @@ mark_as_advanced(GIT2_LIBRARY GIT2_INCLUDE_DIR)
 # compatibility variables
 set(GIT2_LIBRARIES ${GIT2_LIBRARY})
 set(GIT2_INCLUDE_DIRS ${GIT2_INCLUDE_DIR})
+set(GIT2_VERSION_STRING ${GIT2_VERSION})
 
 include(FeatureSummary)
 set_package_properties(GIT2 PROPERTIES
