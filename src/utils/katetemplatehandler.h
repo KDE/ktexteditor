@@ -27,24 +27,17 @@
 #include <QObject>
 #include <QVector>
 #include <QMap>
-#include <QHash>
 #include <QString>
-#include <QList>
-#include <QRegExp>
 
 #include <katescript.h>
-
-namespace KTextEditor { class DocumentPrivate; }
-
-namespace KTextEditor { class ViewPrivate; }
 
 class KateUndoManager;
 
 namespace KTextEditor
 {
-
+class DocumentPrivate;
+class ViewPrivate;
 class MovingCursor;
-
 class MovingRange;
 }
 
@@ -63,11 +56,9 @@ class MovingRange;
  * \li When a variable occurs more than once in the template, edits to any of the
  *     occurrences will be mirroed to the other ones.
  * \li When ESC is pressed, the template handler closes.
- * \li When ALT + RETURN is pressed and a \c %{cursor} variable
+ * \li When ALT + RETURN is pressed and a \c ${cursor} variable
  *     exists in the template,the cursor will be placed there. Else the cursor will
  *     be placed at the end of the template.
- *
- * \see KTextEditor::DocumentPrivate::insertTemplateTextImplementation(), KTextEditor::TemplateInterface
  *
  * \author Milian Wolff <mail@milianw.de>
  */
@@ -84,7 +75,7 @@ public:
      *       keep track of it.
      */
     KateTemplateHandler(KTextEditor::ViewPrivate *view,
-                        const KTextEditor::Cursor &position,
+                        KTextEditor::Cursor position,
                         const QString &templateString,
                         const QString& script,
                         KateUndoManager *undoManager);
@@ -111,14 +102,29 @@ protected:
 
 private:
     /**
-     * Inserts the @p text at @p position and sets an undo point.
+     * Inserts the @p text template at @p position and performs
+     * all necessary initializations, such as populating default values
+     * and placing the cursor.
      */
+    void doInsertTemplate();
 
-    void handleTemplateString();
-
+    /**
+     * Parse @p templateText and populate m_fields.
+     */
     void parseFields(const QString& templateText);
+
+    /**
+     * Set necessary attributes (esp. background colour) on all moving
+     * ranges for the fields in m_fields.
+     */
     void setupFieldRanges();
-    // evaluate default values
+
+    /**
+     * Evaluate default values for all fields in m_fields and
+     * store them in the fields. This updates the @property defaultValue property
+     * of the @class TemplateField instances in m_fields from the raw, user-entered
+     * default value to its evaluated equivalent (e.g. "func()" -> result of function call)
+     */
     void setupDefaultValues();
 
     /**
@@ -143,21 +149,32 @@ private:
      */
     void jumpToNextRange();
 
-    /// Helper function for jumpTo{Next,Previous}
-    /// if initial is set to true, assumes the cursor is before the snippet
-    /// and selects the first field
+    /**
+     * Helper function for jumpTo{Next,Previous}
+     * if initial is set to true, assumes the cursor is before the snippet
+     * and selects the first field
+     */
     void jump(int by, bool initial = false);
 
-private:
     /**
      * Jumps to the final cursor position. This is either \p m_finalCursorPosition, or
      * if that is not set, the end of \p m_templateRange.
      */
     void jumpToFinalCursorPosition();
-    void updateRangeBehaviours();
-    void sortFields();
 
-    KTextEditor::DocumentPrivate* doc() const;
+    /**
+     * Go through all template fields and decide if their moving ranges expand
+     * when edited at the corners. Expansion is turned off if two fields are
+     * directly adjacent to avoid overlaps when characters are inserted between
+     * them.
+     */
+    void updateRangeBehaviours();
+
+    /**
+     * Sort all template fields in m_fields by tab order, which means,
+     * by range; except for ${cursor} which is always sorted last.
+     */
+    void sortFields();
 
 private Q_SLOTS:
     /**
@@ -179,48 +196,53 @@ private Q_SLOTS:
 
 public:
     KTextEditor::ViewPrivate* view() const;
+    KTextEditor::DocumentPrivate* doc() const;
 
 private:
-    /// The document we operate on.
-    KTextEditor::ViewPrivate *m_view;
+    /// The view we operate on
+    KTextEditor::ViewPrivate* m_view;
     /// The undo manager associated with our document
     KateUndoManager* const m_undoManager;
 
+    // Describes a single template field, e.g. ${foo}.
     struct TemplateField {
+        // up-to-date range for the field
         QSharedPointer<KTextEditor::MovingRange> range;
         // contents of the field, i.e. identifier or function to call
         QString identifier;
         // default value, if applicable; else empty
         QString defaultValue;
         enum Kind {
-            Invalid,
-            Editable,
-            Mirror,
-            FunctionCall,
-            FinalCursorPosition
+            Invalid, // not an actual field
+            Editable, // normal, user-editable field (green by default) [non-dependent field]
+            Mirror, // field mirroring contents of another field [dependent field]
+            FunctionCall, // field containing the up-to-date result of a function call [dependent field]
+            FinalCursorPosition // field marking the final cursor position
         };
         Kind kind = Invalid;
-        // true if this field was edited by the user
+        // true if this field was edited by the user before
         bool touched = false;
         bool operator==(const TemplateField& other) {
             return range == other.range;
         }
     };
+    // List of all template fields in the inserted snippet. @see sortFields()
     QVector<TemplateField> m_fields;
 
+    // Get the template field which contains @p range.
     TemplateField fieldForRange(const KTextEditor::Range& range) const;
+
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
 
     /// A range that occupies the whole range of the inserted template.
-    /// When the cursor moves outside it, the template handler gets closed.
+    /// When the an edit happens outside it, the template handler gets closed.
     QSharedPointer<KTextEditor::MovingRange> m_wholeTemplateRange;
-    /// The last caret position during editing.
-    KTextEditor::Cursor m_lastCaretPosition;
 
-    /// Set to true when we are currently mirroring, to prevent recursion.
+    /// Set to true when currently updating dependent fields, to prevent recursion.
     bool m_internalEdit;
-    /// template script pointer for the template script, which might be used by the current template
+
+    /// template script (i.e. javascript stuff), which can be used by the current template
     KateScript m_templateScript;
 };
 

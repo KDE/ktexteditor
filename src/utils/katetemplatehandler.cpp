@@ -43,7 +43,7 @@ using namespace KTextEditor;
 #define ifDebug(x)
 
 KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
-        const Cursor& position,
+        Cursor position,
         const QString& templateString,
         const QString& script,
         KateUndoManager* undoManager)
@@ -51,7 +51,6 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     , m_view(view)
     , m_undoManager(undoManager)
     , m_wholeTemplateRange(nullptr)
-    , m_lastCaretPosition(position)
     , m_internalEdit(false)
     , m_templateScript(script, KateScript::InputSCRIPT)
 {
@@ -63,7 +62,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     m_templateScript.setView(m_view);
 
     if (m_view->selection()) {
-        m_lastCaretPosition = m_view->selectionRange().start();
+        position = m_view->selectionRange().start();
         m_view->removeSelectionText();
     }
 
@@ -78,7 +77,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     {
         KTextEditor::Document::EditingTransaction t(doc());
         // bail out if we can't insert text
-        if (!doc()->insertText(m_lastCaretPosition, templateString)) {
+        if (!doc()->insertText(position, templateString)) {
             deleteLater();
             return;
         }
@@ -87,14 +86,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         * now there must be a range
         */
         Q_ASSERT(m_wholeTemplateRange);
-
-        // indent the inserted template properly, this makes it possible
-        // to share snippets e.g. via GHNS without caring about
-        // what indent-style to use.
-        doc()->align(m_view, *m_wholeTemplateRange);
     }
 
-    handleTemplateString();
+    doInsertTemplate();
 
     // only do complex stuff when required
     if (!m_fields.isEmpty()) {
@@ -383,7 +377,7 @@ void KateTemplateHandler::setupDefaultValues()
     }
 }
 
-void KateTemplateHandler::handleTemplateString()
+void KateTemplateHandler::doInsertTemplate()
 {
     auto templateString = doc()->text(*m_wholeTemplateRange);
     parseFields(templateString);
@@ -393,6 +387,7 @@ void KateTemplateHandler::handleTemplateString()
     // call update for each field to set up the initial stuff
     for ( int i = 0; i < m_fields.size(); i++ ) {
         auto& field = m_fields[i];
+        ifDebug(qCDebug(LOG_PART) << "update field:" << field.range->toRange();)
         updateDependentFields(doc(), field.range->toRange());
         // remove "user edited field" mark set by the above call since it's not a real edit
         field.touched = false;
@@ -418,13 +413,13 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
 {
     Q_ASSERT(document == doc());
     if ( ! m_undoManager->isActive() ) {
-        // currently undoing stuff; don't sync
+        // currently undoing stuff; don't update fields
         return;
     }
-    // group all the changes into one undo transaction
-    KTextEditor::Document::EditingTransaction t(doc());
 
-    if (m_internalEdit || range.isEmpty()) {
+    if ( m_internalEdit || range.isEmpty() ) {
+        // internal or null edit; for internal edits, don't do anything
+        // to prevent unwanted recursion
         return;
     }
 
@@ -434,29 +429,35 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     bool at_end = m_wholeTemplateRange->toRange().end() == range.end() || m_wholeTemplateRange->toRange().end() == range.start();
     if ( m_wholeTemplateRange->toRange().isEmpty() || (!in_range && !at_end) ) {
         // edit outside template range, abort
-        ifDebug(qCDebug(LOG_PART) << "template range got deleted, exiting";)
+        ifDebug(qCDebug(LOG_PART) << "edit outside template range, exiting";)
         deleteLater();
         return;
     }
 
+    // group all the changes into one undo transaction
+    KTextEditor::Document::EditingTransaction t(doc());
+
+    // find the field which was modified, if any
     sortFields();
     auto changedField = fieldForRange(range);
     if ( changedField.kind == TemplateField::Invalid ) {
-        // edit not within a field
+        // edit not within a field, nothing to do
+        ifDebug(qCDebug(LOG_PART) << "edit not within a field:" << range;)
         return;
     }
     if ( changedField.kind == TemplateField::FinalCursorPosition && doc()->text(changedField.range->toRange()).isEmpty() ) {
         // text changed at final cursor position: the user is done, so exit
-        // this does not happen when the field's range is not empty: then this call
+        // this is not executed when the field's range is not empty: in that case this call
         // is for initial setup and we have to continue below
+        ifDebug(qCDebug(LOG_PART) << "final cursor changed:" << range;)
         deleteLater();
         return;
     }
     // mark that the user edited this field
     changedField.touched = true;
 
-
-    // turn off expanding left/right for all ranges except @p current
+    // turn off expanding left/right for all ranges except @p current;
+    // this prevents ranges from overlapping each other when they are adjacent
     auto dontExpandOthers = [this](const TemplateField& current) {
         for ( int i = 0; i < m_fields.size(); i++ ) {
             if ( current.range != m_fields.at(i).range ) {
@@ -467,6 +468,8 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
             }
         }
     };
+
+    // new contents of the changed template field
     const auto& newText = doc()->text(changedField.range->toRange());
     m_internalEdit = true;
     // go through all fields and update the contents of the dependent ones
@@ -476,22 +479,22 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
             doc()->replaceText(field->range->toRange(), QString());
         }
 
-        // If this is an editable or a mirrored field with the same identifier as the
-        // changed one, sync changes either from the editable to the mirror field if
-        // the editable field was changed, or undo the changes to the non-editable mirror field.
-        if ((field->kind == TemplateField::Mirror || field->kind == TemplateField::Editable) &&
+        // If this is mirrored field with the same identifier as the
+        // changed one and the changed one is editable, mirror changes
+        // edits to non-editable mirror fields are ignored
+        if ( field->kind == TemplateField::Mirror &&
+             changedField.kind == TemplateField::Editable &&
              field->identifier == changedField.identifier &&
              field->range != changedField.range )
         {
-            if ( changedField.kind == TemplateField::Editable ) {
-                // editable field changed, mirror changes
-                dontExpandOthers(*field);
-                doc()->replaceText(field->range->toRange(), newText);
-            }
-        }
-        if ( field->kind == TemplateField::FunctionCall ) {
-            // replace *field by result of function call
+            // editable field changed, mirror changes
             dontExpandOthers(*field);
+            doc()->replaceText(field->range->toRange(), newText);
+        }
+        else if ( field->kind == TemplateField::FunctionCall ) {
+            // replace field by result of function call
+            dontExpandOthers(*field);
+            // build map of objects in the scope to pass to the function
             auto map = fieldMap();
             const auto& callResult = m_templateScript.evaluate(field->identifier, map);
             doc()->replaceText(field->range->toRange(), callResult.toString());
