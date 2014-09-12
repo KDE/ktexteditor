@@ -29,7 +29,17 @@
 #include "katebuffer.h"
 #include "katepartdebug.h"
 
-static bool enableLayoutCache = false;
+namespace {
+
+bool enableLayoutCache = false;
+
+bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs,
+              const KateLineLayoutMap::LineLayoutPair &rhs)
+{
+    return lhs.first < rhs.first;
+}
+
+}
 
 //BEGIN KateLineLayoutMap
 KateLineLayoutMap::KateLineLayoutMap()
@@ -38,12 +48,6 @@ KateLineLayoutMap::KateLineLayoutMap()
 
 KateLineLayoutMap::~KateLineLayoutMap()
 {
-}
-
-bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs,
-              const KateLineLayoutMap::LineLayoutPair &rhs)
-{
-    return lhs.first < rhs.first;
 }
 
 void KateLineLayoutMap::clear()
@@ -587,4 +591,3 @@ void KateLayoutCache::setAcceptDirtyLayouts(bool accept)
 {
     m_acceptDirtyLayouts = accept;
 }
-
