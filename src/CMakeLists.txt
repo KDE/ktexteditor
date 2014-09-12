@@ -278,6 +278,7 @@ PRIVATE
   KF5::IconThemes
   KF5::ItemViews
   KF5::SonnetCore
+  ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 
 set_target_properties(KF5TextEditor

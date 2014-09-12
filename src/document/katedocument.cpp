@@ -77,7 +77,13 @@
 #include <QFileDialog>
 #include <QMimeDatabase>
 #include <QTemporaryFile>
-#include <QProcess>
+
+#ifdef HAVE_GIT2
+#include <git2.h>
+#include <git2/oid.h>
+#include <git2/repository.h>
+#endif
+
 //END  includes
 
 #if 0
@@ -4522,7 +4528,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
 {
     // compare git hash with the one we have (if we have one)
     const QByteArray oldDigest = checksum();
-    if (!oldDigest.isEmpty() && url().isLocalFile()) {
+    if (!oldDigest.isEmpty() && !url().isEmpty() && url().isLocalFile()) {
         /**
          * if current checksum == checksum of new file => unmodified
          */
@@ -4531,17 +4537,29 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             m_modOnHdReason = OnDiskUnmodified;
         }
     
+#ifdef HAVE_GIT2
         /**
          * if still modified, try to take a look at git
          * skip that, if document is modified!
          */
         if (m_modOnHd && !isModified()) {
-            QProcess git;
-            git.start(QLatin1String("git"), QStringList() << QLatin1String("cat-file") << QLatin1String("-e") << QLatin1String(oldDigest.toHex()));
-            if (git.waitForStarted()) {
-                git.closeWriteChannel();
-                if (git.waitForFinished()) {
-                    if (git.exitCode() == 0) {
+            /**
+             * try to discover the git repo of this file
+             * libgit2 docs state that UTF-8 is the right encoding, even on windows
+             * I hope that is correct!
+             */
+            git_repository *repository = Q_NULLPTR;
+            if (git_repository_open_ext(&repository, url().toLocalFile().toUtf8().data(), 0, Q_NULLPTR) == 0) {
+                /**
+                 * if we have repo, convert the git hash to an OID
+                 */
+                git_oid oid;
+                if (git_oid_fromstr(&oid, oldDigest.toHex().data()) == 0) {
+                    /**
+                     * finally: is there a blob for this git hash?
+                     */
+                    git_blob *blob = Q_NULLPTR;
+                    if (git_blob_lookup(&blob, repository, &oid) == 0) {
                         /**
                         * this hash exists still in git => just reload
                         */
@@ -4549,9 +4567,13 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                         m_modOnHdReason = OnDiskUnmodified;
                         documentReload();
                     }
+                    git_blob_free(blob);
                 }
+
             }
+            git_repository_free(repository);
         }
+#endif
     }
     
     /**
