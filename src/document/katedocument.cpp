@@ -49,6 +49,7 @@
 #include "katepartdebug.h"
 #include "printing/kateprinter.h"
 #include "kateabstractinputmode.h"
+#include "katetemplatehandler.h"
 
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
@@ -5646,6 +5647,13 @@ int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
     }
 
     return -1;
+}
+
+void KTextEditor::DocumentPrivate::setActiveTemplateHandler(KateTemplateHandler* handler)
+{
+    // delete any active template handler
+    delete m_activeTemplateHandler.data();
+    m_activeTemplateHandler = handler;
 }
 
 //BEGIN KTextEditor::MessageInterface

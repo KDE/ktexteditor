@@ -42,6 +42,7 @@
 #include <ktexteditor_export.h>
 #include "katetextline.h"
 
+class KateTemplateHandler;
 namespace KTextEditor
 {
 class Plugin;
@@ -1365,6 +1366,15 @@ private:
      * timer for delayed handling of mod on hd
      */
     QTimer m_modOnHdTimer;
+
+private:
+    /**
+     * currently active template handler; there can be only one
+     */
+    QPointer<KateTemplateHandler> m_activeTemplateHandler;
+
+public:
+    void setActiveTemplateHandler(KateTemplateHandler* handler);
 };
 
 #endif

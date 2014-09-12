@@ -2360,9 +2360,11 @@ bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor&
     }
 
     /**
-     * the handler will delete itself when necessary
+     * only one handler maybe active at a time; store it in the document.
+     * Clear it first to make sure at no time two handlers are active at once
      */
-    new KateTemplateHandler(this, c, templateString, script, m_doc->undoManager());
+    doc()->setActiveTemplateHandler(nullptr);
+    doc()->setActiveTemplateHandler(new KateTemplateHandler(this, c, templateString, script, m_doc->undoManager()));
     return true;
 }
 
