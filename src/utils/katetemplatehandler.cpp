@@ -445,8 +445,10 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         // edit not within a field
         return;
     }
-    if ( changedField.kind == TemplateField::FinalCursorPosition ) {
+    if ( changedField.kind == TemplateField::FinalCursorPosition && doc()->text(changedField.range->toRange()).isEmpty() ) {
         // text changed at final cursor position: the user is done, so exit
+        // this does not happen when the field's range is not empty: then this call
+        // is for initial setup and we have to continue below
         deleteLater();
         return;
     }

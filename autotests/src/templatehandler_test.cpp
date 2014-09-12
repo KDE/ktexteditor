@@ -306,6 +306,8 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("func_constant_arg_mirror") << S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << S("HI 3 HI")
                                               << S("function uppercase(x) { return x.toUpperCase(); }");
     QTest::newRow("cursor") << S("${foo} ${cursor}") << S("foo ") << S();
+    QTest::newRow("only_cursor") << S("${cursor}") << S("") << S();
+    QTest::newRow("only_cursor_stuff") << S("fdas ${cursor} asdf") << S("fdas  asdf") << S();
 }
 
 void TemplateHandlerTest::testDefaults()
