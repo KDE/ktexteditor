@@ -323,6 +323,7 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("string") << S("${foo=\"3+5\"}") << S("3+5") << S();
     QTest::newRow("string_mirror") << S("${foo=\"Bar\"} ${foo}") << S("Bar Bar") << S();
     QTest::newRow("func_simple") << S("${foo=myfunc()}") << S("hi") << S("function myfunc() { return 'hi'; }");
+    QTest::newRow("func_fixed") << S("${myfunc()}") << S("hi") << S("function myfunc() { return 'hi'; }");
     QTest::newRow("func_constant_arg") << S("${foo=uppercase(\"Foo\")}") << S("FOO")
                                        << S("function uppercase(x) { return x.toUpperCase(); }");
     QTest::newRow("func_constant_arg_mirror") << S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << S("HI 3 HI")

@@ -468,7 +468,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         if ( *field == changedField ) {
             // mark that the user changed this field
             field->touched = true;
-            continue;
         }
 
         // If this is mirrored field with the same identifier as the
