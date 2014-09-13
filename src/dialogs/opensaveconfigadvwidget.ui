@@ -12,45 +12,6 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="gbConfigFile">
-     <property name="title">
-      <string>Folder Config File</string>
-     </property>
-     <layout class="QVBoxLayout">
-      <item>
-       <layout class="QHBoxLayout">
-        <property name="margin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Search &amp;depth for config file:</string>
-          </property>
-          <property name="buddy">
-           <cstring>sbConfigFileSearchDepth</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>1</width>
-            <height>0</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="QGroupBox" name="gbBackup">
      <property name="whatsThis">
       <string>&lt;p&gt;Backing up on save will cause Kate to copy the disk file to '&amp;lt;prefix&amp;gt;&amp;lt;filename&amp;gt;&amp;lt;suffix&amp;gt;' before saving changes.&lt;p&gt;The suffix defaults to &lt;strong&gt;~&lt;/strong&gt; and prefix is empty by default.</string>
@@ -259,7 +220,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>sbConfigFileSearchDepth</tabstop>
   <tabstop>chkBackupLocalFiles</tabstop>
   <tabstop>chkBackupRemoteFiles</tabstop>
   <tabstop>edtBackupPrefix</tabstop>
