@@ -380,7 +380,7 @@ void KateTemplateHandler::initializeTemplate()
     }
 }
 
-KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(const KTextEditor::Range& range) const
+const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(const KTextEditor::Range& range) const
 {
     Q_FOREACH ( const auto& field, m_fields ) {
         if ( field.range->contains(range.start()) || field.range->end() == range.start() ) {
@@ -420,7 +420,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
 
     // find the field which was modified, if any
     sortFields();
-    auto changedField = fieldForRange(range);
+    const auto changedField = fieldForRange(range);
     if ( changedField.kind == TemplateField::Invalid ) {
         // edit not within a field, nothing to do
         ifDebug(qCDebug(LOG_PART) << "edit not within a field:" << range;)
@@ -434,8 +434,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         deleteLater();
         return;
     }
-    // mark that the user edited this field
-    changedField.touched = true;
 
     // turn off expanding left/right for all ranges except @p current;
     // this prevents ranges from overlapping each other when they are adjacent
@@ -460,13 +458,18 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
             doc()->replaceText(field->range->toRange(), QString());
         }
 
+        if ( *field == changedField ) {
+            // mark that the user changed this field
+            field->touched = true;
+            continue;
+        }
+
         // If this is mirrored field with the same identifier as the
         // changed one and the changed one is editable, mirror changes
         // edits to non-editable mirror fields are ignored
         if ( field->kind == TemplateField::Mirror &&
              changedField.kind == TemplateField::Editable &&
-             field->identifier == changedField.identifier &&
-             field->range != changedField.range )
+             field->identifier == changedField.identifier )
         {
             // editable field changed, mirror changes
             dontExpandOthers(*field);

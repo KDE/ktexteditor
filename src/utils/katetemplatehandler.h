@@ -230,7 +230,7 @@ private:
     QVector<TemplateField> m_fields;
 
     // Get the template field which contains @p range.
-    TemplateField fieldForRange(const KTextEditor::Range& range) const;
+    const TemplateField fieldForRange(const KTextEditor::Range& range) const;
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;

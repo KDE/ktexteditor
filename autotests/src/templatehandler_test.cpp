@@ -261,6 +261,17 @@ void TemplateHandlerTest::testAutoSelection()
 
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QVERIFY(view->selectionRange().isEmpty());
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QCOMPARE(view->selectionText(), QStringLiteral("foo"));
+    QTest::keyClick(view->focusProxy(), Qt::Key_A);
+    QCOMPARE(doc->text(), QStringLiteral("a bar bar  baz"));
+
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
+    QVERIFY(view->selectionRange().isEmpty());
 }
 
 void TemplateHandlerTest::testNotEditableFields()
