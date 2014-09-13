@@ -138,50 +138,37 @@ void KateTemplateHandler::jump(int by, bool initial)
 {
     Q_ASSERT(by == 1 || by == -1);
     sortFields();
-    auto cursor = view()->cursorPosition();
+
     // find (editable) field index of current cursor position
     int pos = -1;
-    Q_FOREACH ( const auto& field, m_fields ) {
-        if ( field.kind != TemplateField::Editable ) {
-            pos++;
-            continue;
-        }
-        const auto& r = field.range->toRange();
-        if ( r.start() <= cursor && r.end() >= cursor ) {
-            // cursor is in this field
-            pos++;
-            break;
-        }
-        if ( r.start() > cursor ) {
-            // cursor is somewhere before this field,
-            // but after the previous editable one;
-            // pos is not incremented, because we want to jump to this field
-            break;
-        }
-        pos++;
+    auto cursor = view()->cursorPosition();
+    // if initial is not set, should start from the beginning (field -1)
+    if ( ! initial ) {
+        pos = m_fields.indexOf(fieldForRange(KTextEditor::Range(cursor, cursor)));
     }
 
-    if ( initial ) {
-        pos = -1;
-    }
+    // modulo field count and make positive
+    auto wrap = [this](int x) -> unsigned int {
+        x %= m_fields.size();
+        return x + (x < 0 ? m_fields.size() : 0);
+    };
 
+    pos = wrap(pos);
     // choose field to jump to, including wrap-around
-    auto choose_next_field = [this, by](int from_field_index) {
+    auto choose_next_field = [this, by, wrap](unsigned int from_field_index) {
         for ( int i = from_field_index + by; ; i += by ) {
-            // wrap around if necessary
-            int wrapped_i = i % m_fields.count();
-            wrapped_i = wrapped_i < 0 ? wrapped_i + m_fields.count() : wrapped_i;
+            auto wrapped_i = wrap(i);
             auto kind = m_fields.at(wrapped_i).kind;
             if ( kind == TemplateField::Editable || kind == TemplateField::FinalCursorPosition ) {
                 // found an editable field by walking into the desired direction
                 return wrapped_i;
             }
-            if ( wrapped_i == from_field_index + (from_field_index > 0 ? 0 : m_fields.count()) ) {
+            if ( wrapped_i == from_field_index ) {
                 // nothing found, do nothing (i.e. keep cursor in current field)
-                return wrapped_i;
+                break;
             }
         }
-        return 0;
+        return from_field_index;
     };
 
     // jump
