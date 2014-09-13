@@ -10,15 +10,21 @@
   <!ENTITY subscript "(\s|^)~[^\s]{1}[^~]+~(?=\s|\.|,|;|:|\-|\?|$)">
   <!ENTITY superscript "(\s|^)\^[^\s]{1}[^\^]+\^(?=\s|\.|,|;|:|\-|\?|$)">
 
-  <!ENTITY bracketAnchor                "(\s|^)\[#[^]\s]{1}[^]]+\]">
-  <!ENTITY attachment                   "(\s|^)\[\^[^]\s]{1}[^]]+\]">
-  <!ENTITY userTag                      "(\s|^)\[~[^]\s]{1}[^]]+\]">
-  <!ENTITY taggedLink                   "(\s|^)\[[^]\s|]{1}[^]|]+\]">
-  <!ENTITY taggedLinkWithDisplayText    "(\s|^)\[[^]\s|]{1}[^]|]+\|[^]\s|]{1}[^]|]+\]">
+  <!ENTITY attachment                       "(\s|^)\[\^[^]\s]{1}[^]]+\]">
+  <!ENTITY bracketAnchor                    "(\s|^)\[#[^]\s]{1}[^]]+\]">
+  <!ENTITY taggedLink                       "(\s|^)\[[^]\s|]{1}[^]|]+\]">
+  <!ENTITY taggedLinkWithDisplayText        "(\s|^)\[[^]\s|]{1}[^]|]+\|[^]\s|]{1}[^]|]+\]">
+  <!ENTITY userTag                          "(\s|^)\[~[^]\s]{1}[^]]+\]">
+
+  <!ENTITY embeddedItem                     "(\s|^)![^!\s]{1}[^!]+!">
+  <!ENTITY embeddedItemAttributeAndValue    "(\s|^)\w+=\w+">
+
+  <!ENTITY panel    "(\s|^)\{panel[^\}]*\}">
+  <!ENTITY panelAttributeAndValue    "(\s|^)\w+=[^\}\|]+">
 
   <!ENTITY url "(http:|https:|ftp:|mailto:)[^]|) ]*(?=$|[]|\s|\)])">
 ]>
-<language name="Jira" section="Markup" version="0.4" kateversion="3.0" extensions="*.jira" mimetype="" license="FDL" >
+<language name="Jira" section="Markup" version="0.5" kateversion="3.0" extensions="*.jira" mimetype="" license="FDL" >
   <highlighting>
 
     <!--
@@ -29,11 +35,15 @@
 
       <!-- Main Context -->
       <context name="Main" attribute="Normal" lineEndContext="#stay" >
+        <IncludeRules context="FindTables" />
         <IncludeRules context="FindBlockQuote" />
         <IncludeRules context="FindColor" />
         <IncludeRules context="FindHeader" />
         <IncludeRules context="FindQuote" />
+        <IncludeRules context="FindNoFormat" />
+        <IncludeRules context="FindPanels" />
         <IncludeRules context="FindTextBreaks" />
+        <IncludeRules context="FindEmbeddedItems" />
         <IncludeRules context="FindLinks" />
         <IncludeRules context="FindListItem" />
         <IncludeRules context="FindTextEffects" />
@@ -53,11 +63,58 @@
         <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
       </context>
 
-      <context name="Attachment" lineEndContext="#stay" attribute="Normal">
-        <Detect2Chars char="[" char1="^" attribute="Special Character" context="AttachmentContent" />
+      <context name="AttachmentLink" lineEndContext="#stay" attribute="Normal">
+        <Detect2Chars char="[" char1="^" attribute="Special Character" context="AttachmentLinkContent" />
       </context>
-      <context name="AttachmentContent" attribute="Green" lineEndContext="#stay">
+      <context name="AttachmentLinkContent" attribute="Green" lineEndContext="#stay">
         <DetectChar char="]" attribute="Special Character" context="#pop#pop" />
+      </context>
+
+      <context name="EmbeddedItem" lineEndContext="#stay" attribute="Normal">
+        <DetectChar char="!" attribute="Special Character" context="EmbeddedItemContent" />
+      </context>
+      <context name="EmbeddedItemContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char=":" attribute="Special Character" context="#stay" />
+        <DetectChar char="^" attribute="Special Character" context="#stay" />
+        <DetectChar char="|" attribute="Special Character" context="EmbeddedItemAttributes" />
+        <DetectChar char="!" attribute="Special Character" context="#pop#pop" />
+      </context>
+      <context name="EmbeddedItemAttributes" attribute="Normal" lineEndContext="#stay">
+        <RegExpr String="&embeddedItemAttributeAndValue;" context="EmbeddedItemAttributeAndValue" lookAhead="true" />
+        <RegExpr String="\w+" attribute="AttributeKeyword" context="#stay" />
+        <DetectChar char="!" attribute="Special Character" context="#pop#pop#pop" />
+      </context>
+      <context name="EmbeddedItemAttributeAndValue" attribute="AttributeKeyword" lineEndContext="#stay">
+        <DetectChar char="=" attribute="AttributeKeyword" context="EmbeddedItemAttributeValue" />
+        <DetectChar char="!" attribute="Special Character" context="#pop#pop#pop#pop" />
+      </context>
+      <context name="EmbeddedItemAttributeValue" attribute="AttributeValue" lineEndContext="#stay">
+        <DetectChar char="," attribute="Normal" context="#pop#pop" />
+        <DetectChar char="!" attribute="Special Character" context="#pop#pop#pop#pop#pop" />
+      </context>
+
+      <context name="Panel" lineEndContext="#stay" attribute="Normal">
+        <StringDetect String="{panel" attribute="Special Character" context="PanelStartTagContent" />
+      </context>
+      <context name="PanelStartTagContent" attribute="Green" lineEndContext="#stay">
+        <DetectChar char=":" attribute="Special Character" context="PanelAttributes" />
+        <DetectChar char="}" attribute="Special Character" context="PanelContent" />
+      </context>
+      <context name="PanelContent" attribute="Normal" lineEndContext="#stay">
+        <IncludeRules context="FindTextEffects" />
+        <StringDetect String="{panel}" attribute="Special Character" context="#pop#pop" />
+      </context>
+      <context name="PanelAttributes" attribute="Normal" lineEndContext="#stay">
+        <RegExpr String="&panelAttributeAndValue;" context="PanelAttributeAndValue" lookAhead="true" />
+        <DetectChar char="}" context="#pop" lookAhead="true" />
+      </context>
+      <context name="PanelAttributeAndValue" attribute="AttributeKeyword" lineEndContext="#stay">
+        <DetectChar char="=" attribute="AttributeKeyword" context="PanelAttributeValue" />
+        <DetectChar char="}" context="#pop#pop" lookAhead="true" />
+      </context>
+      <context name="PanelAttributeValue" attribute="AttributeValue" lineEndContext="#stay">
+        <DetectChar char="|" attribute="Special Character" context="#pop#pop" />
+        <DetectChar char="}" context="#pop#pop#pop" lookAhead="true" />
       </context>
 
       <context name="UserTag" lineEndContext="#stay" attribute="Normal">
@@ -270,6 +327,17 @@
         <DetectChar char="^" attribute="Special Character" context="#pop#pop" />
       </context>
 
+      <context name="TableHeaderRow" attribute="Bold" lineEndContext="#pop">
+        <Detect2Chars char="|" char1="|" attribute="Special Character" context="#stay" />
+      </context>
+      <context name="TableRegularRow" attribute="Normal" lineEndContext="#pop">
+        <DetectChar char="|" attribute="Special Character" context="#stay" />
+      </context>
+
+      <context name="NoFormat" attribute="Normal" lineEndContext="#stay" >
+        <StringDetect String="{noformat}" attribute="Special Character" context="#pop" />
+      </context>
+
 
       <!-- Rules to Include -->
 
@@ -301,10 +369,15 @@
         <Detect2Chars char="-" char1="-" attribute="Special Character" />
       </context>
 
+      <!-- Embedded Items -->
+      <context name="FindEmbeddedItems" attribute="Normal" lineEndContext="#stay" >
+        <RegExpr String="&embeddedItem;" context="EmbeddedItem" lookAhead="true" />
+      </context>
+
       <!-- Links -->
       <context name="FindLinks" attribute="Normal" lineEndContext="#stay" >
         <RegExpr String="&bracketAnchor;" context="BracketAnchor" lookAhead="true" />
-        <RegExpr String="&attachment;" context="Attachment" lookAhead="true" />
+        <RegExpr String="&attachment;" context="AttachmentLink" lookAhead="true" />
         <RegExpr String="&userTag;" context="UserTag" lookAhead="true" />
         <RegExpr String="&taggedLink;" context="TaggedLink" lookAhead="true" />
         <RegExpr String="&taggedLinkWithDisplayText;" context="TaggedLinkWithDisplayText" lookAhead="true" />
@@ -329,6 +402,22 @@
         <RegExpr String="&monospaced;" context="Monospaced" lookAhead="true" />
       </context>
 
+      <!-- Tables -->
+      <context name="FindTables" attribute="Normal" lineEndContext="#stay" >
+        <RegExpr String="^\|\|" context="TableHeaderRow" lookAhead="true" />
+        <RegExpr String="^\|" context="TableRegularRow" lookAhead="true" />
+      </context>
+
+      <!-- No format -->
+      <context name="FindNoFormat" attribute="Normal" lineEndContext="#stay" >
+        <StringDetect String="{noformat}" context="NoFormat" attribute="Special Character" />
+      </context>
+
+      <!-- Panels -->
+      <context name="FindPanels" attribute="Normal" lineEndContext="#stay" >
+        <RegExpr String="&panel;" context="Panel" lookAhead="true" />
+      </context>
+
     </contexts>
     <itemDatas>
       <itemData name="Normal" defStyleNum="dsNormal" /><!-- Must be first. -->
@@ -340,6 +429,8 @@
       <itemData name="Special Character" defStyleNum="dsDecVal" bold="true" />
       <itemData name="Stroked Out" defStyleNum="dsNormal" strikeOut="true" />
       <itemData name="Underlined" defStyleNum="dsNormal" underline="true" />
+      <itemData name="AttributeKeyword" defStyleNum="dsOthers" spellChecking="false" />
+      <itemData name="AttributeValue" defStyleNum="dsString" color="#a00" spellChecking="false" />
 
       <!-- Colors -->
       <itemData name="Silver" defStyleNum="dsNormal" color="silver" />
