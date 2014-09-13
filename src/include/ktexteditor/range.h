@@ -544,11 +544,7 @@ public:
      * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
      */
     inline friend QDebug operator<< (QDebug s, const Range &range) {
-        if (&range) {
-            s << "[" << range.start() << " -> " << range.end() << "]";
-        } else {
-            s << "(null range)";
-        }
+        s << "[" << range.start() << " -> " << range.end() << "]";
         return s;
     }
 
