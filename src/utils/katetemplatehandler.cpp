@@ -82,8 +82,15 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     // then delete the selected text (if any); it was replaced by the template
     doc()->removeText(selection->toRange());
 
+    bool have_editable_field = false;
+    Q_FOREACH ( const auto& field, m_fields ) {
+        if ( field.kind == TemplateField::Editable ) {
+            have_editable_field = true;
+            break;
+        }
+    }
     // only do complex stuff when required
-    if (!m_fields.isEmpty()) {
+    if ( have_editable_field ) {
         foreach (View *view, doc()->views()) {
             setupEventHandler(view);
         }
@@ -120,7 +127,7 @@ void KateTemplateHandler::sortFields()
             return true;
         }
         // sort by range
-        return  l.range->toRange() < r.range->toRange();
+        return l.range->toRange() < r.range->toRange();
     });
 }
 
@@ -405,14 +412,6 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         return;
     }
 
-    if ( m_internalEdit || range.isEmpty() ) {
-        // internal or null edit; for internal edits, don't do anything
-        // to prevent unwanted recursion
-        return;
-    }
-
-    ifDebug(qCDebug(LOG_PART) << "text changed" << document << range;)
-
     bool in_range = m_wholeTemplateRange->toRange().contains(range.start());
     bool at_end = m_wholeTemplateRange->toRange().end() == range.end() || m_wholeTemplateRange->toRange().end() == range.start();
     if ( m_wholeTemplateRange->toRange().isEmpty() || (!in_range && !at_end) ) {
@@ -421,6 +420,14 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         deleteLater();
         return;
     }
+
+    if ( m_internalEdit || range.isEmpty() ) {
+        // internal or null edit; for internal edits, don't do anything
+        // to prevent unwanted recursion
+        return;
+    }
+
+    ifDebug(qCDebug(LOG_PART) << "text changed" << document << range;)
 
     // group all the changes into one undo transaction
     KTextEditor::Document::EditingTransaction t(doc());
