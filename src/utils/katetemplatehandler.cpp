@@ -277,9 +277,12 @@ Attribute::Ptr getAttribute(QColor color, int alpha = 230)
 
 void KateTemplateHandler::parseFields(const QString& templateText)
 {
+    // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
     QRegularExpression field(QStringLiteral("\\${([^}]+)}"));
+    // matches the "foo=expr" form within a match of the above expression
     QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"));
 
+    // create a moving range spanning the given field
     auto createMovingRangeForMatch = [this, &templateText](const QRegularExpressionMatch& match) {
         const auto offset = match.capturedStart(0);
         const auto left = templateText.left(offset);
@@ -315,7 +318,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
             f.kind = TemplateField::FinalCursorPosition;
         }
         Q_FOREACH ( const auto& other, m_fields ) {
-            if ( other.range != f.range && other.identifier == f.identifier ) {
+            if ( ! (f == other) && other.identifier == f.identifier ) {
                 f.kind = TemplateField::Mirror;
                 break;
             }
@@ -336,6 +339,7 @@ void KateTemplateHandler::setupFieldRanges()
     // color the whole template
     m_wholeTemplateRange->setAttribute(getAttribute(config->templateBackgroundColor(), 200));
 
+    // color all the template fields
     Q_FOREACH ( const auto& field, m_fields ) {
         field.range->setAttribute(field.kind == TemplateField::Editable ? editableAttribute : notEditableAttribute);
     }
@@ -349,9 +353,11 @@ void KateTemplateHandler::setupDefaultValues()
         }
         QString value;
         if ( field.defaultValue.isEmpty() ) {
+            // field has no default value specified; use its identifier
             value = field.identifier;
         }
         else {
+            // field has a default value; evaluate it with the JS engine
             value = m_templateScript.evaluate(field.defaultValue).toString();
         }
         doc()->replaceText(field.range->toRange(), value);

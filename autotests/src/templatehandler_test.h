@@ -51,6 +51,8 @@ private Q_SLOTS:
     void testExitAtCursor();
 
     void testAutoSelection();
+
+    void testCanRetrieveSelection();
 };
 
 #endif

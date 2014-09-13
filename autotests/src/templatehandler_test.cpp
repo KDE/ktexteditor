@@ -283,21 +283,30 @@ void TemplateHandlerTest::testNotEditableFields()
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
-    auto expected = doc->text();
     doc->insertText({0, change_offset}, "xxx");
-    QEXPECT_FAIL("", "decided this should actually be okay to do", Continue);
-    QCOMPARE(doc->text(), expected);
+    QTEST(doc->text(), "expected");
 }
 
 void TemplateHandlerTest::testNotEditableFields_data()
 {
     QTest::addColumn<QString>("input");
     QTest::addColumn<int>("change_offset");
+    QTest::addColumn<QString>("expected");
 
     using S = QString;
     QTest::newRow("mirror") << S("${foo} ${foo}") << 6;
 }
 
+void TemplateHandlerTest::testCanRetrieveSelection()
+{
+    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    view->insertText("hi world");
+    view->setSelection(KTextEditor::Range(0, 1, 0, 4));
+    view->insertTemplate({0, 1}, QStringLiteral("xx${foo=sel()}xx"),
+        QStringLiteral("function sel() { return view.selectedText(); }")
+    );
+    QCOMPARE(doc->text(), QStringLiteral("hxxi wxxorld"));
 void TemplateHandlerTest::testDefaults_data()
 {
     QTest::addColumn<QString>("input");
