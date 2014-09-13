@@ -294,7 +294,7 @@ void TemplateHandlerTest::testNotEditableFields_data()
     QTest::addColumn<QString>("expected");
 
     using S = QString;
-    QTest::newRow("mirror") << S("${foo} ${foo}") << 6;
+    QTest::newRow("mirror") << S("${foo} ${foo}") << 6 << "foo foxxxo";
 }
 
 void TemplateHandlerTest::testCanRetrieveSelection()
@@ -307,6 +307,8 @@ void TemplateHandlerTest::testCanRetrieveSelection()
         QStringLiteral("function sel() { return view.selectedText(); }")
     );
     QCOMPARE(doc->text(), QStringLiteral("hxxi wxxorld"));
+}
+
 void TemplateHandlerTest::testDefaults_data()
 {
     QTest::addColumn<QString>("input");
