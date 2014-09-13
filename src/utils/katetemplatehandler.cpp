@@ -260,7 +260,7 @@ bool KateTemplateHandler::eventFilter(QObject *object, QEvent *event)
                 return true;
             }
         } else if (keyEvent->key() == Qt::Key_Tab && !m_view->isCompletionActive()) {
-            if (keyEvent->modifiers() & Qt::Key_Shift) {
+            if (keyEvent->modifiers() & Qt::ShiftModifier) {
                 jumpToPreviousRange();
             } else {
                 jumpToNextRange();
