@@ -393,6 +393,7 @@ const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(cons
 void KateTemplateHandler::updateDependentFields(Document *document, const Range &range)
 {
     Q_ASSERT(document == doc());
+    Q_UNUSED(document);
     if ( ! m_undoManager->isActive() ) {
         // currently undoing stuff; don't update fields
         return;

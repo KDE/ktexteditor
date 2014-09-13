@@ -2393,6 +2393,7 @@ void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
 void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
 {
     Q_ASSERT(m_permanentBarWidget == barWidget);
+    Q_UNUSED(barWidget);
 
     const bool hideBar = m_stack->currentWidget() == m_permanentBarWidget;
 

@@ -81,7 +81,7 @@ static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
 void CompletionTest::init()
 {
     if (!KSycoca::isAvailable()) {
-        QSKIP("ksycoca not available", SkipAll);
+        QSKIP("ksycoca not available");
     }
 
     Editor *editor = KTextEditor::Editor::instance();

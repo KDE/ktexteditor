@@ -201,6 +201,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
 
                 // FIXME FIXME need to calculate past-end-of-line position here...
                 Q_ASSERT(found);
+                Q_UNUSED(found);
             }
         }
     }
