@@ -412,6 +412,9 @@ const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(cons
         if ( field.range->contains(range.start()) || field.range->end() == range.start() ) {
             return field;
         }
+        if ( field.kind == TemplateField::FinalCursorPosition && range.end() == field.range->end().toCursor() ) {
+            return field;
+        }
     }
     return {};
 }

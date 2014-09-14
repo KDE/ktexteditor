@@ -199,26 +199,28 @@ void TemplateHandlerTest::testExitAtCursor()
     auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
-    view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${cursor} ${baz}"));
+    view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${cursor} ${foo}"));
     view->setCursorPosition({0, 0});
 
     // check it jumps to the cursor
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->cursorPosition().column(), 4);
     QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
-    QCOMPARE(view->cursorPosition().column(), 9);
-    QTest::keyClick(view->focusProxy(), Qt::Key_Tab);
     QCOMPARE(view->cursorPosition().column(), 8);
 
     // insert an a at cursor position
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
     // check it was inserted
-    QCOMPARE(doc->text(), QStringLiteral("foo bar a baz"));
+    QCOMPARE(doc->text(), QStringLiteral("foo bar a foo"));
+
+    // required to process the deleteLater() used to exit the template handler
+    QCoreApplication::sendPostedEvents(0, QEvent::DeferredDelete);
+    QApplication::processEvents();
 
     // go to the first field and verify it's not mirrored any more (i.e. the handler exited)
     view->setCursorPosition({0, 0});
     QTest::keyClick(view->focusProxy(), Qt::Key_A);
-    QCOMPARE(doc->text(), QStringLiteral("afoo bar a baz"));
+    QCOMPARE(doc->text(), QStringLiteral("afoo bar a foo"));
 
     delete doc;
 }
