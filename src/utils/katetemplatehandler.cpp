@@ -285,39 +285,55 @@ Attribute::Ptr getAttribute(QColor color, int alpha = 230)
 void KateTemplateHandler::parseFields(const QString& templateText)
 {
     // matches any field, i.e. the three forms ${foo}, ${foo=expr}, ${func()}
-    QRegularExpression field(QStringLiteral("\\${([^}]+)}"));
+    // this also captures escaped fields, i.e. \\${foo} etc.
+    QRegularExpression field(QStringLiteral("\\\\?\\${([^}]+)}"));
     // matches the "foo=expr" form within a match of the above expression
     QRegularExpression defaultField(QStringLiteral("\\w+=([^\\}]*)"));
 
-    // create a moving range spanning the given field
-    auto createMovingRangeForMatch = [this, &templateText](const QRegularExpressionMatch& match) {
+    // compute start cursor of a match
+    auto startOfMatch = [this, &templateText](const QRegularExpressionMatch& match) {
         const auto offset = match.capturedStart(0);
         const auto left = templateText.left(offset);
         const auto nl = QLatin1Char('\n');
         const auto rel_lineno = left.count(nl);
         const auto start = m_wholeTemplateRange->start().toCursor();
-        auto matchStart = Cursor(start.line(), rel_lineno == 0 ? start.column() : 0) +
-                          Cursor(rel_lineno, offset - left.lastIndexOf(nl) - 1);
+        return Cursor(start.line(), rel_lineno == 0 ? start.column() : 0) +
+               Cursor(rel_lineno, offset - left.lastIndexOf(nl) - 1);
+    };
+
+    // create a moving range spanning the given field
+    auto createMovingRangeForMatch = [this, startOfMatch](const QRegularExpressionMatch& match) {
+        auto matchStart = startOfMatch(match);
         return doc()->newMovingRange({matchStart, matchStart + Cursor(0, match.capturedLength(0))},
                                      MovingRange::ExpandLeft | MovingRange::ExpandRight);
     };
 
+    // list of escape backslashes to remove after parsing
+    QVector<KTextEditor::Cursor> stripBackslashes;
     auto fieldMatch = field.globalMatch(templateText);
     while ( fieldMatch.hasNext() ) {
         auto match = fieldMatch.next();
+        if ( match.captured(0).startsWith(QLatin1Char('\\')) ) {
+            // $ is escaped, not a field; mark the backslash for removal
+            // prepend it to the list so the characters are removed starting from the
+            // back and ranges do not move around
+            stripBackslashes.prepend(startOfMatch(match));
+            continue;
+        }
+        // a template field was found, instantiate a field object and populate it
         auto defaultMatch = defaultField.match(match.captured(0));
         auto contents = match.captured(1);
         TemplateField f;
         f.range.reset(createMovingRangeForMatch(match));
         f.identifier = contents;
         f.kind = TemplateField::Editable;
-        // the field has a default value, i.e. ${foo=3}
         if ( defaultMatch.hasMatch() ) {
+            // the field has a default value, i.e. ${foo=3}
             f.defaultValue = defaultMatch.captured(1);
             f.identifier = contents.split(QLatin1Char('=')).at(0).trimmed();
         }
         else if ( f.identifier.contains(QLatin1Char('(')) ) {
-            // treat the field as function call when it contains an opening parenthesis
+            // field is a function call when it contains an opening parenthesis
             f.kind = TemplateField::FunctionCall;
         }
         else if ( f.identifier == QStringLiteral("cursor") ) {
@@ -326,11 +342,17 @@ void KateTemplateHandler::parseFields(const QString& templateText)
         }
         Q_FOREACH ( const auto& other, m_fields ) {
             if ( ! (f == other) && other.identifier == f.identifier ) {
+                // field is a mirror field
                 f.kind = TemplateField::Mirror;
                 break;
             }
         }
         m_fields.append(f);
+    }
+
+    // remove escape characters
+    Q_FOREACH ( const auto& backslash, stripBackslashes ) {
+        doc()->removeText(KTextEditor::Range(backslash, backslash + Cursor(0, 1)));
     }
 }
 

@@ -22,6 +22,7 @@
 #include <katedocument.h>
 #include <kateview.h>
 #include <kateconfig.h>
+#include <katetemplatehandler.h>
 #include <KTextEditor/Cursor>
 
 #include <QtTestWidgets>
@@ -92,6 +93,14 @@ void TemplateHandlerTest::testUndo()
 
     doc->undo();
     QCOMPARE(doc->text(), QString());
+}
+
+void TemplateHandlerTest::testEscapes()
+{
+    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    view->insertTemplate({0, 0}, QStringLiteral("\\${field} ${bar} \\${foo=3} \\\\${baz=7}"));
+    QCOMPARE(doc->text(), QStringLiteral("${field} bar ${foo=3} \\${baz=7}"));
 }
 
 void TemplateHandlerTest::testSimpleMirror()
