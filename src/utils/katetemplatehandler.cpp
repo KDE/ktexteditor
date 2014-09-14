@@ -337,7 +337,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
             f.kind = TemplateField::FinalCursorPosition;
         }
         Q_FOREACH ( const auto& other, m_fields ) {
-            if ( ! (f == other) && other.identifier == f.identifier ) {
+            if ( other.kind == TemplateField::Editable && ! (f == other) && other.identifier == f.identifier ) {
                 // field is a mirror field
                 f.kind = TemplateField::Mirror;
                 break;
