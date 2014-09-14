@@ -242,20 +242,13 @@ bool KateTemplateHandler::eventFilter(QObject *object, QEvent *event)
     if (event->type() == QEvent::ShortcutOverride) {
         QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
 
-        if (keyEvent->key() == Qt::Key_Return && keyEvent->modifiers() & Qt::AltModifier) {
+        if (keyEvent->key() == Qt::Key_Escape || (keyEvent->key() == Qt::Key_Return && keyEvent->modifiers() & Qt::AltModifier)) {
             // terminate
             jumpToFinalCursorPosition();
+            view()->clearSelection();
             deleteLater();
             keyEvent->accept();
             return true;
-        } else if (keyEvent->key() == Qt::Key_Escape) {
-            if (!m_view->selection()) {
-                // terminate
-                jumpToFinalCursorPosition();
-                deleteLater();
-                keyEvent->accept();
-                return true;
-            }
         } else if (keyEvent->key() == Qt::Key_Tab && !m_view->isCompletionActive()) {
             if (keyEvent->modifiers() & Qt::ShiftModifier) {
                 jumpToPreviousRange();
