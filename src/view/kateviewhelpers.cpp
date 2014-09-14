@@ -76,7 +76,7 @@ static const int s_lineWidth = 100;
 static const int s_pixelMargin = 8;
 static const int s_linePixelIncLimit = 6;
 
-unsigned char KateScrollBar::characterOpacity[256] = {
+const unsigned char KateScrollBar::characterOpacity[256] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // <- 15
     0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0,  // <- 31
     0, 125, 41, 221, 138, 195, 218, 21, 142, 142, 137, 137, 97, 87, 87, 140,  // <- 47

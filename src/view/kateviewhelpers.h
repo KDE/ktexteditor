@@ -172,7 +172,7 @@ private:
     QHash<int, int> m_linesAdded;
     int m_linesModified;
 
-    static unsigned char characterOpacity[256];
+    static const unsigned char characterOpacity[256];
 };
 
 class KateIconBorder : public QWidget
