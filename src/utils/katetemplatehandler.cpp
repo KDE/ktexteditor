@@ -118,7 +118,7 @@ KateTemplateHandler::~KateTemplateHandler()
 
 void KateTemplateHandler::sortFields()
 {
-    qSort(m_fields.begin(), m_fields.end(), [](const TemplateField& l, const TemplateField& r) {
+    std::sort(m_fields.begin(), m_fields.end(), [](const TemplateField& l, const TemplateField& r) {
         // always sort the final cursor pos last
         if ( l.kind == TemplateField::FinalCursorPosition ) {
             return false;
