@@ -95,6 +95,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
             setupEventHandler(view);
         }
 
+        // place the cursor at the first field and select stuff
+        jump(1, true);
+
         connect(doc(), &KTextEditor::Document::viewCreated,
                 this, &KateTemplateHandler::slotViewCreated);
         connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
@@ -407,11 +410,6 @@ void KateTemplateHandler::initializeTemplate()
         updateDependentFields(doc(), field.range->toRange());
         // remove "user edited field" mark set by the above call since it's not a real edit
         field.touched = false;
-    }
-
-    // place the cursor at the first field and select stuff if necessary
-    if ( m_fields.count() > 0 ) {
-        jump(1, true);
     }
 }
 
