@@ -34,8 +34,8 @@ class QLineEdit;
 namespace KateVi { class EmulatedCommandBar; }
 
 /* Syntactic sugar :P */
-#define DoTest(...) DoTest_(__LINE__, __VA_ARGS__)
-#define FinishTest(...) FinishTest_( __LINE__, __VA_ARGS__ )
+#define DoTest(...) DoTest_(__LINE__, __FILE__, __VA_ARGS__)
+#define FinishTest(...) FinishTest_( __LINE__, __FILE__, __VA_ARGS__ )
 
 
 /// Helper class that represents a change in a document.
@@ -89,9 +89,9 @@ protected:
 
     void TestPressKey(const QString &str);
     void BeginTest(const QString &original);
-    void FinishTest_(int line, const QString &expected, Expectation expectation = ShouldPass,
+    void FinishTest_(int line, const char *file, const QString &expected, Expectation expectation = ShouldPass,
                     const QString &failureReason = QString());
-    void DoTest_(int line, const QString &original, const QString &command,
+    void DoTest_(int line, const char *file, const QString &original, const QString &command,
                  const QString &expected, Expectation expectation = ShouldPass,
                  const QString &failureReason = QString());
 

@@ -222,29 +222,29 @@ void BaseTest::BeginTest(const QString &original)
     m_firstBatchOfKeypressesForTest = true;
 }
 
-void BaseTest::FinishTest_(int line, const QString &expected,
+void BaseTest::FinishTest_(int line, const char *file, const QString &expected,
                            Expectation expectation,
                            const QString &failureReason)
 {
     if (expectation == ShouldFail) {
-        if (!QTest::qExpectFail("", failureReason.toLocal8Bit().constData(), QTest::Continue, __FILE__, line)) {
+        if (!QTest::qExpectFail("", failureReason.toLocal8Bit().constData(), QTest::Continue, file, line)) {
             return;
         }
         qDebug() << "Actual text:\n\t" << kate_document->text() << "\nShould be (for this test to pass):\n\t" << expected;
     }
-    if (!QTest::qCompare(kate_document->text(), expected, "kate_document->text()", "expected_text", __FILE__, line)) {
+    if (!QTest::qCompare(kate_document->text(), expected, "kate_document->text()", "expected_text", file, line)) {
         return;
     }
     Q_ASSERT(!emulatedCommandBarTextEdit()->isVisible() && "Make sure you close the command bar before the end of a test!");
 }
 
-void BaseTest::DoTest_(int line, const QString &original, const QString &command,
+void BaseTest::DoTest_(int line, const char *file, const QString &original, const QString &command,
                        const QString &expected, Expectation expectation,
                        const QString &failureReason)
 {
     BeginTest(original);
     TestPressKey(command);
-    FinishTest_(line, expected, expectation, failureReason);
+    FinishTest_(line, file, expected, expectation, failureReason);
 }
 
 Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier)
