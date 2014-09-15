@@ -4,7 +4,7 @@ project(KTextEditor)
 
 # ECM setup
 find_package(ECM 1.2.0 REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(FeatureSummary)
 include(ECMSetupVersion)
@@ -43,12 +43,12 @@ find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
 
 # libgit2 integration
-find_package(GIT2 "0.20.0")
-if(GIT2_FOUND)
+find_package(LibGit2 "0.20.0")
+if(LIBGIT2_FOUND)
     add_definitions(-DHAVE_GIT2)
-    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} GIT2::GIT2)
+    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
-    
+
 # vi mode on per default
 option (BUILD_VIMODE "Build vimode in" ON)
 
