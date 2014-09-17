@@ -640,7 +640,7 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo bar", "gUt(", "foo bar");
     DoTest("foo bar", "gUT(", "foo bar");
 
-    // Backward motions don't consume cursor character
+    // Changes using backward motions don't consume cursor character
     DoTest("foo bar", "$dTf", "fr");
     DoTest("foo bar", "$c2Fo", "fr");
 
