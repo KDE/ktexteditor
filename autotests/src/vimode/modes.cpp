@@ -640,6 +640,10 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo bar", "gUt(", "foo bar");
     DoTest("foo bar", "gUT(", "foo bar");
 
+    // Backward motions don't consume cursor character
+    DoTest("foo bar", "$dTf", "fr");
+    DoTest("foo bar", "$c2Fo", "fr");
+
     // Regression test for special-handling of "/" and "?" keys: these shouldn't interfere
     // with character searches.
     DoTest("foo /", "f/rX", "foo X");
@@ -790,7 +794,7 @@ void ModesTest::NormalCommandsTests()
 
     // Testing "g~"
     DoTest("fOo BAr", "lg~fA", "foO bar");
-    DoTest("fOo BAr", "$hg~FO", "foO bar");
+    DoTest("fOo BAr", "$hg~FO", "foO bAr");
     DoTest("fOo BAr", "lf~fZ", "fOo BAr");
     DoTest("{\nfOo BAr\n}", "jg~iB", "{\nFoO baR\n}");
 
