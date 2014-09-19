@@ -35,6 +35,7 @@
 #include <vimode/globalstate.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/insertvimode.h>
+#include <vimode/modes/replacevimode.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
 #include <vimode/motion.h>
@@ -515,7 +516,8 @@ void NormalViMode::executeCommand(const Command *cmd)
 
     // if the command was a change, and it didn't enter insert mode, store the key presses so that
     // they can be repeated with '.'
-    if (m_viInputModeManager->getCurrentViMode() != ViMode::InsertMode) {
+    if (m_viInputModeManager->getCurrentViMode() != ViMode::InsertMode &&
+        m_viInputModeManager->getCurrentViMode() != ViMode::ReplaceMode) {
         if (cmd->isChange() && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
             m_viInputModeManager->storeLastChangeCommand();
         }
@@ -705,6 +707,8 @@ bool NormalViMode::commandToOtherEnd()
 
 bool NormalViMode::commandEnterReplaceMode()
 {
+    m_stickyColumn = -1;
+    m_viInputModeManager->getViReplaceMode()->setCount(getCount());
     return startReplaceMode();
 }
 
@@ -4033,12 +4037,12 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode;
+    const bool isInsertReplaceMode = (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     const bool continuesInsertion = range.start().line() == m_currentChangeEndMarker.line() && range.start().column() == m_currentChangeEndMarker.column();
     const bool beginsWithNewline = doc()->text(range)[0] == QLatin1Char('\n');
     if (!continuesInsertion) {
         KTextEditor::Cursor newBeginMarkerPos = range.start();
-        if (beginsWithNewline && !isInsertMode) {
+        if (beginsWithNewline && !isInsertReplaceMode) {
             // Presumably a linewise paste, in which case we ignore the leading '\n'
             newBeginMarkerPos = KTextEditor::Cursor(newBeginMarkerPos.line() + 1, 0);
         }
@@ -4046,7 +4050,7 @@ void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
     }
     m_viInputModeManager->marks()->setLastChange(range.start());
     KTextEditor::Cursor editEndMarker = range.end();
-    if (!isInsertMode) {
+    if (!isInsertReplaceMode) {
         editEndMarker.setColumn(editEndMarker.column() - 1);
     }
     m_viInputModeManager->marks()->setFinishEditYanked(editEndMarker);
@@ -4067,9 +4071,9 @@ void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
 void NormalViMode::textRemoved(KTextEditor::Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
-    const bool isInsertMode = m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode;
+    const bool isInsertReplaceMode = (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     m_viInputModeManager->marks()->setLastChange(range.start());
-    if (!isInsertMode) {
+    if (!isInsertReplaceMode) {
         // Don't go resetting [ just because we did a Ctrl-h!
         m_viInputModeManager->marks()->setStartEditYanked(range.start());
     } else {

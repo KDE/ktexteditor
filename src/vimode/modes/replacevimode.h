@@ -45,6 +45,8 @@ public:
         m_overwritten += s;
     }
 
+    void setCount(int count) { m_count = count;};
+
 protected:
     /**
      * Checks if the key is a valid command in replace mode.
@@ -74,6 +76,10 @@ private:
     void backspace();
     void commandBackWord();
     void commandBackLine();
+    void leaveReplaceMode();
+
+protected:
+    unsigned int m_count;
 
 private:
     /// Keeps track of the characters that have been overwritten so far.

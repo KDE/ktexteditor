@@ -23,6 +23,7 @@
 #include <vimode/modes/replacevimode.h>
 #include <vimode/inputmodemanager.h>
 #include <utils/kateconfig.h>
+#include <vimode/marks.h>
 
 using namespace KateVi;
 
@@ -34,6 +35,7 @@ ReplaceViMode::ReplaceViMode(InputModeManager *viInputModeManager,
     m_view = view;
     m_viewInternal = viewInternal;
     m_viInputModeManager = viInputModeManager;
+    m_count = 1;
 }
 
 ReplaceViMode::~ReplaceViMode()
@@ -109,7 +111,7 @@ bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
         switch (e->key()) {
         case Qt::Key_Escape:
             m_overwritten.clear();
-            startNormalMode();
+            leaveReplaceMode();
             return true;
         case Qt::Key_Left:
             m_overwritten.clear();
@@ -224,4 +226,23 @@ void ReplaceViMode::commandBackLine()
     for (int i = column; i >= 0 && !m_overwritten.isEmpty(); i--) {
         backspace();
     }
+}
+
+void ReplaceViMode::leaveReplaceMode()
+{
+    // Redo replacement operation <count> times
+    m_view->abortCompletion();
+
+    if (m_count > 1) {
+        // Look at added text so that we can repeat the addition
+        const QString added = doc()->text(KTextEditor::Range(m_viInputModeManager->marks()->getStartEditYanked(), m_view->cursorPosition()));
+        for (unsigned int i = 0; i < m_count - 1; i++) {
+            KTextEditor::Cursor c(m_view->cursorPosition());
+            KTextEditor::Cursor c2(c.line(), c.column() + added.length());
+            doc()->replaceText(KTextEditor::Range(c, c2), added);
+        }
+    }
+
+
+    startNormalMode();
 }

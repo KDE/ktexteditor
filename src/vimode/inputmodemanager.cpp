@@ -335,7 +335,9 @@ void InputModeManager::viEnterNormalMode()
     bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)
                           && m_viewInternal->getCursor().column() > 0;
 
-    if (!m_lastChangeRecorder->isReplaying() && m_currentViMode == ViMode::InsertMode) {
+    if (!m_lastChangeRecorder->isReplaying() &&
+            (m_currentViMode == ViMode::InsertMode ||
+             m_currentViMode == ViMode::ReplaceMode)) {
         // '^ is the insert mark and "^ is the insert register,
         // which holds the last inserted text
         KTextEditor::Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
@@ -386,6 +388,7 @@ void InputModeManager::viEnterVisualMode(ViMode mode)
 void InputModeManager::viEnterReplaceMode()
 {
     changeViMode(ViMode::ReplaceMode);
+    m_marks->setStartEditYanked(KTextEditor::Cursor(m_view->cursorPosition()));
     m_inputAdapter->setCaretStyle(KateRenderer::Underline);
     m_viewInternal->update();
 }

@@ -1534,6 +1534,12 @@ void ModesTest::ReplaceBasicTests()
     // Enter replace mode and go up/down.
     DoTest("foo\nbar\nbaz", "R\\downX", "foo\nXar\nbaz");
     DoTest("foo\nbar\nbaz", "jjR\\upX", "foo\nXar\nbaz");
+
+    // Repeat replacements
+    DoTest("foobaz", "Rbar\\esc.", "babarz");
+    DoTest("foobarbaz", "Rbar\\esc2.", "babarbarz");
+    DoTest("foobarbaz", "Rbar\\esc4.", "babarbarbarbar");
+    DoTest("foobarbaz", "Rbar\\esc2.R\\esc2.", "babarbarz");
 }
 
 void ModesTest::ReplaceUndoTests()
