@@ -74,6 +74,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
         }
         // now there must be a range, caught by the textInserted slot
         Q_ASSERT(m_wholeTemplateRange);
+        doc()->align(m_view, *m_wholeTemplateRange);
     }
 
     // before initialization, restore selection (if any) so user scripts can retrieve it
