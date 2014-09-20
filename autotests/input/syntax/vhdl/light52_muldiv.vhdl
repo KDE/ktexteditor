@@ -126,8 +126,7 @@ begin
 
 -- Control logic ---------------------------------------------------------------
 
-control_counter:
-process(clk)
+control_counter: process(clk)
 begin
     if clk'event and clk='1' then
         if reset='1' then
@@ -154,8 +153,7 @@ ready <= '1' when bit_ctr >= 8 else '0';
 -- 8 cycles to complete. We can get away with this because we deal with unsigned
 -- numbers only.
 
-divider_registers:
-process(clk)
+divider_registers: process(clk)
 begin
     if clk'event and clk='1' then
         -- denominator shift register
@@ -210,11 +208,9 @@ div_ready <= ready;
 ---- Multiplier logic ----------------------------------------------------------
 
 ---- Combinational multiplier -----------------------------
-multiplier_combinational:
-if not SEQUENTIAL_MULTIPLIER generate
+multiplier_combinational: if not SEQUENTIAL_MULTIPLIER generate
 
-registered_combinational_multiplier:
-process(clk)
+registered_combinational_multiplier:process(clk)
 begin
     if clk'event and clk='1' then
         prod_reg <= data_a * data_b; -- t_byte is unsigned
@@ -231,8 +227,7 @@ prod_out <= prod_reg;
 end generate multiplier_combinational;
 
 ---- Sequential multiplier --------------------------------
-multiplier_sequential:
-if SEQUENTIAL_MULTIPLIER generate
+multiplier_sequential: if SEQUENTIAL_MULTIPLIER generate
 
 assert false
 report "Sequential multiplier implementation not done yet."&

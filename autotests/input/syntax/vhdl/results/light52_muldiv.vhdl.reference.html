@@ -136,8 +136,7 @@
 
 <span style='color:#898887;'>-- Control logic ---------------------------------------------------------------</span>
 
-control_counter<span style='color:#006e28;'>:</span>
-<b><span style='color:#0099aa;'>process</span></b>(clk)
+<b><span style='color:#bb6600;'>control_counter</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#0099aa;'>process</span></b>(clk)
 <b><span style='color:#0099aa;'>begin</span></b>
     <b><span style='color:#223388;'>if</span></b> clk<span style='color:#b08000;'>'event</span> <b>and</b> clk<span style='color:#006e28;'>=</span><span style='color:#b08000;'>'1'</span> <b><span style='color:#223388;'>then</span></b>
         <b><span style='color:#223388;'>if</span></b> reset<span style='color:#006e28;'>=</span><span style='color:#b08000;'>'1'</span> <b><span style='color:#223388;'>then</span></b>
@@ -150,7 +149,7 @@ control_counter<span style='color:#006e28;'>:</span>
             <b><span style='color:#223388;'>end if;</span></b>
         <b><span style='color:#223388;'>end if;</span></b>
     <b><span style='color:#223388;'>end if;</span></b>
-<b><span style='color:#0099aa;'>end process </span></b>control_counter;
+<b><span style='color:#0099aa;'>end process control_counter</span></b>;
 
 <span style='color:#898887;'>-- Internal signal ready is asserted after 8 cycles.</span>
 <span style='color:#898887;'>-- The sequential multiplier will use this signal too, IF it takes 8 cycles.</span>
@@ -164,8 +163,7 @@ ready <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'>'1'
 <span style='color:#898887;'>-- 8 cycles to complete. We can get away with this because we deal with unsigned</span>
 <span style='color:#898887;'>-- numbers only.</span>
 
-divider_registers<span style='color:#006e28;'>:</span>
-<b><span style='color:#0099aa;'>process</span></b>(clk)
+<b><span style='color:#bb6600;'>divider_registers</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#0099aa;'>process</span></b>(clk)
 <b><span style='color:#0099aa;'>begin</span></b>
     <b><span style='color:#223388;'>if</span></b> clk<span style='color:#b08000;'>'event</span> <b>and</b> clk<span style='color:#006e28;'>=</span><span style='color:#b08000;'>'1'</span> <b><span style='color:#223388;'>then</span></b>
         <span style='color:#898887;'>-- denominator shift register</span>
@@ -198,7 +196,7 @@ divider_registers<span style='color:#006e28;'>:</span>
         
         load_regs <span style='color:#006e28;'>&lt;=</span> start;
     <b><span style='color:#223388;'>end if;</span></b>
-<b><span style='color:#0099aa;'>end process </span></b>divider_registers;
+<b><span style='color:#0099aa;'>end process divider_registers</span></b>;
 
 denominator <span style='color:#006e28;'>&lt;=</span> b_shift_reg(<span style='color:#b08000;'>7</span> <span style='color:#006e28;'>downto</span> <span style='color:#b08000;'>0</span>);
 
@@ -220,16 +218,14 @@ div_ready <span style='color:#006e28;'>&lt;=</span> ready;
 <span style='color:#898887;'>---- Multiplier logic ----------------------------------------------------------</span>
 
 <span style='color:#898887;'>---- Combinational multiplier -----------------------------</span>
-multiplier_combinational<span style='color:#006e28;'>:</span>
-if <b>not</b> SEQUENTIAL_MULTIPLIER <b>generate</b>
+<b><span style='color:#bb6600;'>multiplier_combinational</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#223388;'>if</span></b> <b>not</b> SEQUENTIAL_MULTIPLIER <b><span style='color:#223388;'>generate</span></b>
 
-registered_combinational_multiplier<span style='color:#006e28;'>:</span>
-<b><span style='color:#0099aa;'>process</span></b>(clk)
+<b><span style='color:#bb6600;'>registered_combinational_multiplier</span></b><span style='color:#006e28;'>:</span><b><span style='color:#0099aa;'>process</span></b>(clk)
 <b><span style='color:#0099aa;'>begin</span></b>
     <b><span style='color:#223388;'>if</span></b> clk<span style='color:#b08000;'>'event</span> <b>and</b> clk<span style='color:#006e28;'>=</span><span style='color:#b08000;'>'1'</span> <b><span style='color:#223388;'>then</span></b>
         prod_reg <span style='color:#006e28;'>&lt;=</span> data_a <span style='color:#006e28;'>*</span> data_b; <span style='color:#898887;'>-- t_byte is unsigned</span>
     <b><span style='color:#223388;'>end if;</span></b>
-<b><span style='color:#0099aa;'>end process </span></b>registered_combinational_multiplier;
+<b><span style='color:#0099aa;'>end process registered_combinational_multiplier</span></b>;
 
 <span style='color:#898887;'>-- The multiplier output is valid in the cycle after the operands are loaded,</span>
 <span style='color:#898887;'>-- so by the time MUL is executed it's already done.</span>
@@ -238,18 +234,17 @@ mul_ready <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'
 mul_ov_out <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'>'1'</span> <b>when</b> prod_reg(<span style='color:#b08000;'>15</span> <span style='color:#006e28;'>downto</span> <span style='color:#b08000;'>8</span>)<span style='color:#006e28;'>/=</span>X<span style='color:#bf0303;'>&quot;00&quot;</span> else <span style='color:#b08000;'>'0'</span>;
 prod_out <span style='color:#006e28;'>&lt;=</span> prod_reg;
 
-<b>end</b> <b>generate</b> multiplier_combinational;
+<b><span style='color:#223388;'>end generate multiplier_combinational</span></b>;
 
 <span style='color:#898887;'>---- Sequential multiplier --------------------------------</span>
-multiplier_sequential<span style='color:#006e28;'>:</span>
-if SEQUENTIAL_MULTIPLIER <b>generate</b>
+<b><span style='color:#bb6600;'>multiplier_sequential</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#223388;'>if</span></b> SEQUENTIAL_MULTIPLIER <b><span style='color:#223388;'>generate</span></b>
 
 <b>assert</b> false
 <b>report</b> <span style='color:#bf0303;'>&quot;Sequential multiplier implementation not done yet.&quot;</span><span style='color:#006e28;'>&amp;</span>
        <span style='color:#bf0303;'>&quot; Use combinational implementation.&quot;</span>
 <b>severity</b> <b>failure</b>;
 
-<b>end</b> <b>generate</b> multiplier_sequential;
+<b><span style='color:#223388;'>end generate multiplier_sequential</span></b>;
 
 <b><span style='color:#223388;'>end sequential;</span></b>
 </pre>

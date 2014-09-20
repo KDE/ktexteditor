@@ -142,28 +142,26 @@
     external_irq <span style='color:#006e28;'>&lt;=</span> p1_out;
 
     <span style='color:#898887;'>---- Master clock: free running clock used as main module clock ------------</span>
-    run_master_clock<span style='color:#006e28;'>:</span>
-    <b><span style='color:#0099aa;'>process</span></b>(done<span style='color:#006e28;'>,</span> clk)
+    <b><span style='color:#bb6600;'>run_master_clock</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#0099aa;'>process</span></b>(done<span style='color:#006e28;'>,</span> clk)
     <b><span style='color:#0099aa;'>begin</span></b>
         <b><span style='color:#223388;'>if</span></b> done <span style='color:#006e28;'>=</span> <span style='color:#b08000;'>'0'</span> <b><span style='color:#223388;'>then</span></b>
             clk <span style='color:#006e28;'>&lt;=</span> <b>not</b> clk <b>after</b> T<span style='color:#006e28;'>/</span><span style='color:#b08000;'>2</span>;
         <b><span style='color:#223388;'>end if;</span></b>
-    <b><span style='color:#0099aa;'>end process </span></b>run_master_clock;
+    <b><span style='color:#0099aa;'>end process run_master_clock</span></b>;
 
 
     <span style='color:#898887;'>---- Main simulation process: reset MCU and wait for fixed period ----------</span>
 
-    drive_uut<span style='color:#006e28;'>:</span>
-    <b><span style='color:#0099aa;'>process</span></b>
+    <b><span style='color:#bb6600;'>drive_uut</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#0099aa;'>process</span></b>
     <b><span style='color:#0099aa;'>begin</span></b>
         <span style='color:#898887;'>-- Leave reset asserted for a few clock cycles...</span>
         reset <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'>'1'</span>;
-        <b>wait</b> for T<span style='color:#006e28;'>*</span><span style='color:#b08000;'>4</span>;
+        <b>wait</b> <b>for</b> T<span style='color:#006e28;'>*</span><span style='color:#b08000;'>4</span>;
         reset <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'>'0'</span>;
         
         <span style='color:#898887;'>-- ...and wait for the test to hit a termination condition (evaluated by</span>
         <span style='color:#898887;'>-- function log_cpu_activity) or to just timeout.</span>
-        <b>wait</b> for T<span style='color:#006e28;'>*</span>SIMULATION_LENGTH;
+        <b>wait</b> <b>for</b> T<span style='color:#006e28;'>*</span>SIMULATION_LENGTH;
 
         <span style='color:#898887;'>-- If we arrive here, the simulation timed out (termination conditions</span>
         <span style='color:#898887;'>-- trigger a failed assertion).</span>
@@ -172,12 +170,11 @@
         done <span style='color:#006e28;'>&lt;=</span> <span style='color:#b08000;'>'1'</span>;
         <b>wait</b>;
         
-    <b><span style='color:#0099aa;'>end process </span></b>drive_uut;
+    <b><span style='color:#0099aa;'>end process drive_uut</span></b>;
 
 
     <span style='color:#898887;'>-- Logging process: launch logger functions --------------------------------</span>
-    log_execution<span style='color:#006e28;'>:</span>
-    <b><span style='color:#0099aa;'>process</span></b>
+    <b><span style='color:#bb6600;'>log_execution</span></b><span style='color:#006e28;'>:</span> <b><span style='color:#0099aa;'>process</span></b>
     <b><span style='color:#0099aa;'>begin</span></b>
         <span style='color:#898887;'>-- Log cpu activity until done='1'.</span>
         log_cpu_activity(clk<span style='color:#006e28;'>,</span> reset<span style='color:#006e28;'>,</span> done<span style='color:#006e28;'>,</span> <span style='color:#bf0303;'>&quot;/uut&quot;</span><span style='color:#006e28;'>,</span>
@@ -188,7 +185,7 @@
         log_flush_console(log_info<span style='color:#006e28;'>,</span> con_file);
         
         <b>wait</b>;
-    <b><span style='color:#0099aa;'>end process </span></b>log_execution;
+    <b><span style='color:#0099aa;'>end process log_execution</span></b>;
 
 <b><span style='color:#223388;'>end architecture testbench;</span></b>
 </pre>

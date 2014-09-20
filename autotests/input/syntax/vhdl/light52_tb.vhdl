@@ -132,8 +132,7 @@ uut: entity work.light52_mcu
     external_irq <= p1_out;
 
     ---- Master clock: free running clock used as main module clock ------------
-    run_master_clock:
-    process(done, clk)
+    run_master_clock: process(done, clk)
     begin
         if done = '0' then
             clk <= not clk after T/2;
@@ -143,8 +142,7 @@ uut: entity work.light52_mcu
 
     ---- Main simulation process: reset MCU and wait for fixed period ----------
 
-    drive_uut:
-    process
+    drive_uut: process
     begin
         -- Leave reset asserted for a few clock cycles...
         reset <= '1';
@@ -166,8 +164,7 @@ uut: entity work.light52_mcu
 
 
     -- Logging process: launch logger functions --------------------------------
-    log_execution:
-    process
+    log_execution: process
     begin
         -- Log cpu activity until done='1'.
         log_cpu_activity(clk, reset, done, "/uut",
