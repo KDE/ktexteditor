@@ -231,6 +231,13 @@ void ConfigTab::importNormalMappingRow()
             recursive->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
             recursive->setCheckState(Qt::Unchecked);
             ui->tblNormalModeMappings->setItem(rows, 2, recursive);
+        } else if (line.size() == 4 && line[0] == QLatin1String("let") &&
+                    line[1] == QLatin1String("mapleader") &&
+                    line[2] == QLatin1String("=")) {
+            const QString &leader = line[3].mid(1, line[3].length() - 2);
+            if (!leader.isEmpty()) {
+                m_mappings->setLeader(leader[0]);
+            }
         }
     }
 }

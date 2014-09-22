@@ -63,6 +63,9 @@ void Mappings::writeMappings(KConfigGroup &config, const QString &mappingModeNam
     }
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings"), l);
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), recursives);
+
+    QChar leader = (m_leader.isNull()) ? QChar::fromLatin1('\\') : m_leader;
+    config.writeEntry(QLatin1String("Map Leader"), QString(leader));
 }
 
 void Mappings::readMappings(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode)
@@ -70,6 +73,9 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
     const QStringList keys = config.readEntry(mappingModeName + QLatin1String(" Mode Mapping Keys"), QStringList());
     const QStringList mappings = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings"), QStringList());
     const QList<bool> isRecursive = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), QList<bool>());
+
+    const QString &mapLeader = config.readEntry(QLatin1String("Map Leader"), QString());
+    m_leader = (mapLeader.isEmpty()) ? QChar::fromLatin1('\\') : mapLeader[0];
 
     // sanity check
     if (keys.length() == mappings.length()) {
@@ -92,10 +98,30 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
 void Mappings::add(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion)
 {
     const QString encodedMapping = KeyParser::self()->encodeKeySequence(from);
+
+    if (from.isEmpty()) {
+        return;
+    }
+
     const QString encodedTo = KeyParser::self()->encodeKeySequence(to);
-    const Mapping mapping(encodedTo, recursion == Recursive);
-    if (!from.isEmpty()) {
-        m_mappings[mode][encodedMapping] = mapping;
+    Mapping mapping = {
+        .encoded = encodedTo,
+        .recursive = (recursion == Recursive),
+        .temporary = false,
+    };
+
+    // Add this mapping as is.
+    m_mappings[mode][encodedMapping] = mapping;
+
+    // In normal mode replace the <leader> with its value.
+    if (mode == NormalModeMapping) {
+        QString other = from;
+        other.replace(QLatin1String("<leader>"), m_leader);
+        other = KeyParser::self()->encodeKeySequence(other);
+        if (other != encodedMapping) {
+            mapping.temporary = true;
+            m_mappings[mode][other] = mapping;
+        }
     }
 }
 
@@ -109,14 +135,18 @@ void Mappings::clear(MappingMode mode)
     m_mappings[mode].clear();
 }
 
-QString Mappings::get(MappingMode mode, const QString &from, bool decode) const
+QString Mappings::get(MappingMode mode, const QString &from, bool decode, bool includeTemporary) const
 {
     if (!m_mappings[mode].contains(from)) {
         return QString();
     }
 
-    QString ret = m_mappings[mode][from].first;
+    const Mapping &mapping = m_mappings[mode][from];
+    if (mapping.temporary && !includeTemporary) {
+        return QString();
+    }
 
+    const QString &ret = mapping.encoded;
     if (decode) {
         return KeyParser::self()->decodeKeySequence(ret);
     }
@@ -124,19 +154,22 @@ QString Mappings::get(MappingMode mode, const QString &from, bool decode) const
     return ret;
 }
 
-QStringList Mappings::getAll(MappingMode mode, bool decode) const
+QStringList Mappings::getAll(MappingMode mode, bool decode, bool includeTemporary) const
 {
-    const QHash <QString, Mapping> mappingsForMode = m_mappings[mode];
-
     QStringList mappings;
-    foreach (const QString &mapping, mappingsForMode.keys()) {
+    const QHash<QString, Mapping> mappingsForMode = m_mappings[mode];
+
+    for (auto i = mappingsForMode.begin(); i != mappingsForMode.end(); i++) {
+        if (!includeTemporary && i.value().temporary) {
+            continue;
+        }
+
         if (decode) {
-            mappings << KeyParser::self()->decodeKeySequence(mapping);
+            mappings << KeyParser::self()->decodeKeySequence(i.key());
         } else {
-            mappings << mapping;
+            mappings << i.key();
         }
     }
-
     return mappings;
 }
 
@@ -146,7 +179,12 @@ bool Mappings::isRecursive(MappingMode mode, const QString &from) const
         return false;
     }
 
-    return m_mappings[mode][from].second;
+    return m_mappings[mode][from].recursive;
+}
+
+void Mappings::setLeader(const QChar &leader)
+{
+    m_leader = leader;
 }
 
 Mappings::MappingMode Mappings::mappingModeForCurrentViMode(KateViInputMode *viInputMode)

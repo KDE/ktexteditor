@@ -71,8 +71,10 @@ private:
     int m_numMappingsBeingExecuted;
     bool m_isPlayingBackRejectedKeys;
 
+private:
     void executeMapping();
     void playBackRejectedKeys();
+    void appendMappingKey(const QChar &key);
 };
 
 }

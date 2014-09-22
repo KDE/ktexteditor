@@ -623,6 +623,49 @@ void KeysTest::MappingTests()
     clearAllMappings();
 }
 
+void KeysTest::LeaderTests()
+{
+    // Clean slate.
+    KateViewConfig::global()->setViInputModeStealKeys(true);
+    clearAllMappings();
+
+    // By default the backslash character is the leader. The default leader
+    // is picked from the config. If we don't want to mess this from other
+    // tests, it's better if we mock the config.
+    const QString viTestKConfigFileName = QStringLiteral("vimodetest-leader-katevimoderc");
+    KConfig viTestKConfig(viTestKConfigFileName);
+    vi_global->mappings()->setLeader(QChar());
+    vi_global->readConfig(&viTestKConfig);
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    DoTest("", "\\\\i", "i");
+
+    // We can change the leader and it will work.
+    clearAllMappings();
+    vi_global->readConfig(&viTestKConfig);
+    vi_global->mappings()->setLeader(QChar::fromLatin1(','));
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    DoTest("", ",i", "i");
+
+    // Mixing up the <leader> with its value.
+    clearAllMappings();
+    vi_global->readConfig(&viTestKConfig);
+    vi_global->mappings()->setLeader(QChar::fromLatin1(','));
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "<leader>,", "ii", Mappings::Recursive);
+    DoTest("", ",,", "i");
+    vi_global->mappings()->add(Mappings::NormalModeMapping, ",<leader>", "ii", Mappings::Recursive);
+    DoTest("", ",,", "i");
+
+    // It doesn't work outside normal mode.
+    clearAllMappings();
+    vi_global->readConfig(&viTestKConfig);
+    vi_global->mappings()->setLeader(QChar::fromLatin1(','));
+    vi_global->mappings()->add(Mappings::InsertModeMapping, "<leader>i", "ii", Mappings::Recursive);
+    DoTest("", "i,ii", ",ii");
+
+    // Clear mappings for subsequent tests.
+    clearAllMappings();
+}
+
 void KeysTest::ParsingTests()
 {
     // BUG #298726

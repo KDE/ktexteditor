@@ -71,6 +71,7 @@ class KeysTest : public BaseTest
 
 private Q_SLOTS:
     void MappingTests();
+    void LeaderTests();
     void ParsingTests();
     void AltGr();
     void MacroTests();

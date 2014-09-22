@@ -489,6 +489,7 @@ void KeyParser::initKeyTables()
     m_nameToKeyCode->insert(QLatin1String("8"), 348);
     m_nameToKeyCode->insert(QLatin1String("9"), 349);
     m_nameToKeyCode->insert(QLatin1String("cr"), 350);
+    m_nameToKeyCode->insert(QLatin1String("leader"), 351);
 
     for (QHash<QString, int>::const_iterator i = m_nameToKeyCode->constBegin();
             i != m_nameToKeyCode->constEnd(); ++i) {
