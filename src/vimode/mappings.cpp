@@ -104,11 +104,7 @@ void Mappings::add(MappingMode mode, const QString &from, const QString &to, Map
     }
 
     const QString encodedTo = KeyParser::self()->encodeKeySequence(to);
-    Mapping mapping = {
-        .encoded = encodedTo,
-        .recursive = (recursion == Recursive),
-        .temporary = false,
-    };
+    Mapping mapping = {encodedTo, (recursion == Recursive), false};
 
     // Add this mapping as is.
     m_mappings[mode][encodedMapping] = mapping;
