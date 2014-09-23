@@ -16,25 +16,14 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "mappings.h"
-
 #include "katepartdebug.h"
-#include <vimode/keyparser.h>
 #include "kateviinputmode.h"
+#include <vimode/mappings.h>
+#include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/emulatedcommandbar.h>
 
-#include <KConfigGroup>
-
 using namespace KateVi;
-
-Mappings::Mappings()
-{
-}
-
-Mappings::~Mappings()
-{
-}
 
 void Mappings::readConfig(const KConfigGroup &config)
 {
@@ -97,7 +86,7 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
 
 void Mappings::add(MappingMode mode, const QString &from, const QString &to, MappingRecursion recursion)
 {
-    const QString encodedMapping = KeyParser::self()->encodeKeySequence(from);
+    const QString &encodedMapping = KeyParser::self()->encodeKeySequence(from);
 
     if (from.isEmpty()) {
         return;

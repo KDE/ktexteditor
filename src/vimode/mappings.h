@@ -20,10 +20,6 @@
 #define KATEVI_MAPPINGS_H
 
 #include <ktexteditor_export.h>
-
-#include <QString>
-#include <QPair>
-#include <QMap>
 #include <QHash>
 
 class KConfigGroup;
@@ -36,13 +32,15 @@ class KTEXTEDITOR_EXPORT Mappings
 {
 public:
     enum MappingRecursion { Recursive, NonRecursive };
-    enum MappingMode { NormalModeMapping, VisualModeMapping, InsertModeMapping, CommandModeMapping };
+
+    enum MappingMode {
+        NormalModeMapping = 0,
+        VisualModeMapping,
+        InsertModeMapping,
+        CommandModeMapping
+    };
 
 public:
-
-    explicit Mappings();
-    ~Mappings();
-
     void writeConfig(KConfigGroup &config) const;
     void readConfig(const KConfigGroup &config);
 
@@ -81,7 +79,7 @@ private:
     } Mapping;
     typedef QHash<QString, Mapping> MappingList;
 
-    QMap<MappingMode, MappingList> m_mappings;
+    MappingList m_mappings[4];
     QChar m_leader;
 };
 
