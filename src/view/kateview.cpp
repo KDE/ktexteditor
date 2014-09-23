@@ -2578,7 +2578,8 @@ void KTextEditor::ViewPrivate::killLine()
         m_doc->removeLine(cursorPosition().line());
     } else {
         m_doc->editStart();
-        for (int line = m_selection.end().line(); line >= m_selection.start().line(); line--) {
+        // cache endline, else that moves and we might delete complete document if last line is selected!
+        for (int line = m_selection.end().line(), endLine = m_selection.start().line(); line >= endLine; line--) {
             m_doc->removeLine(line);
         }
         m_doc->editEnd();
