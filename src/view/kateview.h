@@ -470,7 +470,7 @@ public Q_SLOTS:
 public:
     /**
      * Read session settings from the given \p config.
-     * 
+     *
      * Known flags:
      *  "SkipUrl" => don't save/restore the file
      *  "SkipMode" => don't save/restore the mode
@@ -581,7 +581,7 @@ public:
 
 public:
     void slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
-    
+
     void exportHtmlToFile(const QString &file);
 
 private Q_SLOTS:
@@ -754,16 +754,16 @@ private Q_SLOTS:
     void applyFoldingState();
 
     void clearHighlights();
+    void createHighlights();
 
 private:
     void selectionChangedForHighlights();
-    void createHighlights();
-    
+
     /**
      * saved folding state
      */
     QVariantList m_savedFoldingState;
-    
+
     QString m_currentTextForHighlights;
 
     QList<KTextEditor::MovingRange*> m_rangesForHighlights;

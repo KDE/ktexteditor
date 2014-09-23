@@ -229,7 +229,10 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     // folding restoration on reload
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(saveFoldingState()));
     connect(m_doc, SIGNAL(reloaded(KTextEditor::Document*)), SLOT(applyFoldingState()));
-    
+
+    // update highlights on scrolling and co
+    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(createHighlights()));
+
     // clear highlights on reload
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(clearHighlights()));
 
@@ -257,7 +260,7 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     m_bottomViewBar = 0;
 
     m_doc->removeView(this);
-    
+
     delete m_renderer;
 
     delete m_config;
@@ -1726,7 +1729,7 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     m_cut->setEnabled(selection() || m_config->smartCopyCut());
 
     m_spell->updateActions();
-    
+
     // update highlighting of current selected word
     selectionChangedForHighlights ();
 }
@@ -3394,18 +3397,23 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     // (do not call clearHighlights(), since this also resets the m_currentTextForHighlights
     qDeleteAll(m_rangesForHighlights);
     m_rangesForHighlights.clear();
-  
+
     // do not highlight strings with leading and trailing spaces
     if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length()-1).isSpace()))
-        return; 
+        return;
 
+    // trigger creation of ranges for current view range
     m_currentTextForHighlights = text;
-    if (!m_currentTextForHighlights.isEmpty())
-        createHighlights();
+    createHighlights();
 }
 
 void KTextEditor::ViewPrivate::createHighlights()
 {
+    // do nothing if no text to highlight
+    if (m_currentTextForHighlights.isEmpty()) {
+        return;
+    }
+
     KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
     attr->setBackground(Qt::yellow);
 
@@ -3413,7 +3421,7 @@ void KTextEditor::ViewPrivate::createHighlights()
     QColor color = configValue(QLatin1String("search-highlight-color")).value<QColor>();
     attr->setBackground(color);
 
-    KTextEditor::Cursor start(0, 0);
+    KTextEditor::Cursor start(visibleRange().start());
     KTextEditor::Range searchRange;
 
     /**
@@ -3428,7 +3436,7 @@ void KTextEditor::ViewPrivate::createHighlights()
 
     QVector<KTextEditor::Range> matches;
     do {
-        searchRange.setRange(start, document()->documentEnd());
+        searchRange.setRange(start, visibleRange().end());
 
         matches = m_doc->searchText(searchRange, regex, KTextEditor::Search::Regex);
 
