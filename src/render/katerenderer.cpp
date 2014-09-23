@@ -930,12 +930,13 @@ void KateRenderer::updateConfig()
     // update the attibute list pointer
     updateAttributes();
 
+    // update font height, do this before we update the view!
+    updateFontHeight();
+
+    // trigger view update, if any!
     if (m_view) {
         m_view->updateRendererConfig();
     }
-
-    // update font height
-    updateFontHeight();
 }
 
 void KateRenderer::updateFontHeight()

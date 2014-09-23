@@ -341,13 +341,11 @@ int KateViewInternal::lineToY(int viewLine) const
 void KateViewInternal::slotIncFontSizes()
 {
     renderer()->increaseFontSizes();
-    update();
 }
 
 void KateViewInternal::slotDecFontSizes()
 {
     renderer()->decreaseFontSizes();
-    update();
 }
 
 /**
@@ -3202,7 +3200,7 @@ void KateViewInternal::dropEvent(QDropEvent *event)
         emit dropEventPass(event);
         return;
     }
-    
+
     if (event->mimeData()->hasText() && doc()->isReadWrite()) {
 
         const QString text = event->mimeData()->text();

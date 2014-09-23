@@ -435,7 +435,7 @@ void KateDocumentConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->kateDocuments().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->kateDocuments())[z]->updateConfig();
         }
-        
+
         // write config
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Document");
         writeConfig(cg);
@@ -1433,7 +1433,7 @@ void KateViewConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->views())[z]->updateConfig();
         }
-        
+
         // write config
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "View");
         writeConfig(cg);
@@ -2225,7 +2225,7 @@ void KateRendererConfig::updateConfig()
         for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
             (KTextEditor::EditorPrivate::self()->views())[z]->renderer()->updateConfig();
         }
-        
+
         // write config
         KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Renderer");
         writeConfig(cg);
@@ -2266,6 +2266,11 @@ void KateRendererConfig::reloadSchema()
 
     else if (m_renderer && m_schemaSet) {
         setSchemaInternal(m_schema);
+    }
+
+    // trigger renderer/view update
+    if (m_renderer) {
+        m_renderer->updateConfig();
     }
 }
 
