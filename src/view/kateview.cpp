@@ -3125,7 +3125,7 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
         // clear mouseOver and focus state
         // update from relevant widgets
         opt.state &= ~(QStyle::State_HasFocus|QStyle::State_MouseOver);
-        const QList<QWidget *> widgets = {m_viewInternal, m_viewInternal->m_leftBorder, m_viewInternal->m_lineScroll, m_viewInternal->m_columnScroll};
+        const QList<QWidget *> widgets = QList<QWidget *>() << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
         foreach (const QWidget *w, widgets) {
             if (w->hasFocus()) opt.state |= QStyle::State_HasFocus;
             if (w->underMouse()) opt.state |= QStyle::State_MouseOver;
