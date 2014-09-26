@@ -140,6 +140,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_floatBottomMessageWidget(0)
     , m_mainWindow(mainWindow)
     , m_statusBar(Q_NULLPTR)
+    , m_temporaryAutomaticInvocationDisabled(false)
 {
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
@@ -2443,7 +2444,7 @@ void KTextEditor::ViewPrivate::unregisterCompletionModel(KTextEditor::CodeComple
 
 bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const
 {
-    return m_config->automaticCompletionInvocation();
+    return !m_temporaryAutomaticInvocationDisabled && m_config->automaticCompletionInvocation();
 }
 
 void KTextEditor::ViewPrivate::setAutomaticInvocationEnabled(bool enabled)
@@ -2463,16 +2464,9 @@ void KTextEditor::ViewPrivate::sendCompletionAborted()
 
 void KTextEditor::ViewPrivate::paste(const QString *textToPaste)
 {
-    const bool completionEnabled = isAutomaticInvocationEnabled();
-    if (completionEnabled) {
-        setAutomaticInvocationEnabled(false);
-    }
-
+    m_temporaryAutomaticInvocationDisabled = true;
     m_doc->paste(this, textToPaste ? *textToPaste : QApplication::clipboard()->text(QClipboard::Clipboard));
-
-    if (completionEnabled) {
-        setAutomaticInvocationEnabled(true);
-    }
+    m_temporaryAutomaticInvocationDisabled = false;
 }
 
 bool KTextEditor::ViewPrivate::setCursorPosition(KTextEditor::Cursor position)

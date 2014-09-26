@@ -930,6 +930,11 @@ private:
      */
     KateModeMenu *m_modeAction;
 
+    /**
+     * is automatic invocation of completion disabled temporarily?
+     */
+    bool m_temporaryAutomaticInvocationDisabled;
+
 public:
     /**
      * Returns the attribute for the default style \p defaultStyle.

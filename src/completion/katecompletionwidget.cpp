@@ -1348,7 +1348,7 @@ void KateCompletionWidget::insertText(const KTextEditor::Cursor &position, const
     m_lastInsertionByUser = !m_completionEditRunning;
 
     // no invoke?
-    if (!view()->config()->automaticCompletionInvocation()) {
+    if (!view()->isAutomaticInvocationEnabled()) {
         m_automaticInvocationLine.clear();
         m_automaticInvocationTimer->stop();
         return;
