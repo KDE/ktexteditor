@@ -218,12 +218,18 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
         int wordBegin = 0;
         int offset = 0;
         const int end = text.size();
+        const bool cursorLine = view->cursorPosition().line() == line;
         while (offset < end) {
             const QChar c = text.at(offset);
             // increment offset when at line end, so we take the last character too
             if ((! c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
                 if (offset - wordBegin > minWordSize && (line != range.end().line() || offset != range.end().column())) {
-                    result.insert(text.mid(wordBegin, offset - wordBegin));
+                    /**
+                     * don't add the word we are inside with cursor!
+                     */
+                    if (!cursorLine || (view->cursorPosition().column() < wordBegin || view->cursorPosition().column() > offset)) {
+                        result.insert(text.mid(wordBegin, offset - wordBegin));
+                    }
                 }
                 wordBegin = offset + 1;
             }
