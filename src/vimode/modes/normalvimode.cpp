@@ -2374,7 +2374,7 @@ Range NormalViMode::motionFindCharBackward()
         i--;
     }
 
-    Range r;
+    Range r(cursor, ExclusiveMotion);
 
     if (matchColumn != -1) {
         r.endColumn = matchColumn;
@@ -2433,7 +2433,7 @@ Range NormalViMode::motionToCharBackward()
     unsigned int hits = 0;
     int i = cursor.column() - (m_isRepeatedTFcommand ? 2 : 1);
 
-    Range r;
+    Range r(cursor, ExclusiveMotion);
 
     while (hits != getCount() && i >= 0) {
         if (line.at(i) == m_keys.at(m_keys.size() - 1)) {
