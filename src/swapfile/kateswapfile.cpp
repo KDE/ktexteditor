@@ -42,7 +42,7 @@
 #endif
 
 // swap file version header
-const static char *const swapFileVersionString = "Kate Swap File 2.0";
+const static char swapFileVersionString[] = "Kate Swap File 2.0";
 
 // tokens for swap files
 const static qint8 EA_StartEditing  = 'S';

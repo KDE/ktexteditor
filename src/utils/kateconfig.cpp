@@ -95,8 +95,8 @@ KateGlobalConfig::~KateGlobalConfig()
 
 namespace
 {
-const char *const KEY_PROBER_TYPE = "Encoding Prober Type";
-const char *const KEY_FALLBACK_ENCODING = "Fallback Encoding";
+const char KEY_PROBER_TYPE[] = "Encoding Prober Type";
+const char KEY_FALLBACK_ENCODING[] = "Fallback Encoding";
 }
 
 void KateGlobalConfig::readConfig(const KConfigGroup &config)
@@ -292,36 +292,36 @@ KateDocumentConfig::~KateDocumentConfig()
 
 namespace
 {
-const char *const KEY_TAB_WIDTH = "Tab Width";
-const char *const KEY_INDENTATION_WIDTH = "Indentation Width";
-const char *const KEY_INDENTATION_MODE = "Indentation Mode";
-const char *const KEY_TAB_HANDLING = "Tab Handling";
-const char *const KEY_WORD_WRAP = "Word Wrap";
-const char *const KEY_WORD_WRAP_AT = "Word Wrap Column";
-const char *const KEY_PAGEUP_DOWN_MOVES_CURSOR = "PageUp/PageDown Moves Cursor";
-const char *const KEY_SMART_HOME = "Smart Home";
-const char *const KEY_SHOW_TABS = "Show Tabs";
-const char *const KEY_TAB_INDENTS = "Indent On Tab";
-const char *const KEY_KEEP_EXTRA_SPACES = "Keep Extra Spaces";
-const char *const KEY_INDENT_PASTED_TEXT = "Indent On Text Paste";
-const char *const KEY_BACKSPACE_INDENTS = "Indent On Backspace";
-const char *const KEY_SHOW_SPACES = "Show Spaces";
-const char *const KEY_REPLACE_TABS_DYN = "ReplaceTabsDyn";
-const char *const KEY_REMOVE_SPACES = "Remove Spaces";
-const char *const KEY_NEWLINE_AT_EOF = "Newline At EOF";
-const char *const KEY_OVR = "Overwrite Mode";
-const char *const KEY_ENCODING = "Encoding";
-const char *const KEY_EOL = "End of Line";
-const char *const KEY_ALLOW_EOL_DETECTION = "Allow End of Line Detection";
-const char *const KEY_BOM = "BOM";
-const char *const KEY_BACKUP_FLAGS = "Backup Flags";
-const char *const KEY_BACKUP_PREFIX = "Backup Prefix";
-const char *const KEY_BACKUP_SUFFIX = "Backup Suffix";
-const char *const KEY_SWAP_FILE_MODE = "Swap File Mode";
-const char *const KEY_SWAP_DIRECTORY = "Swap Directory";
-const char *const KEY_SWAP_SYNC_INTERVAL = "Swap Sync Interval";
-const char *const KEY_ON_THE_FLY_SPELLCHECK = "On-The-Fly Spellcheck";
-const char *const KEY_LINE_LENGTH_LIMIT = "Line Length Limit";
+const char KEY_TAB_WIDTH[] = "Tab Width";
+const char KEY_INDENTATION_WIDTH[] = "Indentation Width";
+const char KEY_INDENTATION_MODE[] = "Indentation Mode";
+const char KEY_TAB_HANDLING[] = "Tab Handling";
+const char KEY_WORD_WRAP[] = "Word Wrap";
+const char KEY_WORD_WRAP_AT[] = "Word Wrap Column";
+const char KEY_PAGEUP_DOWN_MOVES_CURSOR[] = "PageUp/PageDown Moves Cursor";
+const char KEY_SMART_HOME[] = "Smart Home";
+const char KEY_SHOW_TABS[] = "Show Tabs";
+const char KEY_TAB_INDENTS[] = "Indent On Tab";
+const char KEY_KEEP_EXTRA_SPACES[] = "Keep Extra Spaces";
+const char KEY_INDENT_PASTED_TEXT[] = "Indent On Text Paste";
+const char KEY_BACKSPACE_INDENTS[] = "Indent On Backspace";
+const char KEY_SHOW_SPACES[] = "Show Spaces";
+const char KEY_REPLACE_TABS_DYN[] = "ReplaceTabsDyn";
+const char KEY_REMOVE_SPACES[] = "Remove Spaces";
+const char KEY_NEWLINE_AT_EOF[] = "Newline At EOF";
+const char KEY_OVR[] = "Overwrite Mode";
+const char KEY_ENCODING[] = "Encoding";
+const char KEY_EOL[] = "End of Line";
+const char KEY_ALLOW_EOL_DETECTION[] = "Allow End of Line Detection";
+const char KEY_BOM[] = "BOM";
+const char KEY_BACKUP_FLAGS[] = "Backup Flags";
+const char KEY_BACKUP_PREFIX[] = "Backup Prefix";
+const char KEY_BACKUP_SUFFIX[] = "Backup Suffix";
+const char KEY_SWAP_FILE_MODE[] = "Swap File Mode";
+const char KEY_SWAP_DIRECTORY[] = "Swap Directory";
+const char KEY_SWAP_SYNC_INTERVAL[] = "Swap Sync Interval";
+const char KEY_ON_THE_FLY_SPELLCHECK[] = "On-The-Fly Spellcheck";
+const char KEY_LINE_LENGTH_LIMIT[] = "Line Length Limit";
 }
 
 void KateDocumentConfig::readConfig(const KConfigGroup &config)
@@ -1280,36 +1280,36 @@ KateViewConfig::~KateViewConfig()
 
 namespace
 {
-const char *const KEY_SEARCH_REPLACE_FLAGS = "Search/Replace Flags";
-const char *const KEY_DYN_WORD_WRAP = "Dynamic Word Wrap";
-const char *const KEY_DYN_WORD_WRAP_INDICATORS = "Dynamic Word Wrap Indicators";
-const char *const KEY_DYN_WORD_WRAP_ALIGN_INDENT = "Dynamic Word Wrap Align Indent";
-const char *const KEY_LINE_NUMBERS = "Line Numbers";
-const char *const KEY_SCROLL_BAR_MARKS = "Scroll Bar Marks";
-const char *const KEY_SCROLL_BAR_MINI_MAP = "Scroll Bar Mini Map";
-const char *const KEY_SCROLL_BAR_MINI_MAP_ALL = "Scroll Bar Mini Map All";
-const char *const KEY_SCROLL_BAR_MINI_MAP_WIDTH = "Scroll Bar Mini Map Width";
-const char *const KEY_SHOW_SCROLLBARS = "Show Scrollbars";
-const char *const KEY_ICON_BAR = "Icon Bar";
-const char *const KEY_FOLDING_BAR = "Folding Bar";
-const char *const KEY_LINE_MODIFICATION = "Line Modification";
-const char *const KEY_BOOKMARK_SORT = "Bookmark Menu Sorting";
-const char *const KEY_AUTO_CENTER_LINES = "Auto Center Lines";
-const char *const KEY_MAX_HISTORY_SIZE = "Maximum Search History Size";
-const char *const KEY_DEFAULT_MARK_TYPE = "Default Mark Type";
-const char *const KEY_ALLOW_MARK_MENU = "Allow Mark Menu";
-const char *const KEY_PERSISTENT_SELECTION = "Persistent Selection";
-const char *const KEY_INPUT_MODE = "Input Mode";
-const char *const KEY_VI_INPUT_MODE_STEAL_KEYS = "Vi Input Mode Steal Keys";
-const char *const KEY_VI_RELATIVE_LINE_NUMBERS = "Vi Relative Line Numbers";
-const char *const KEY_AUTOMATIC_COMPLETION_INVOCATION = "Auto Completion";
-const char *const KEY_WORD_COMPLETION = "Word Completion";
-const char *const KEY_KEYWORD_COMPLETION = "Keyword Completion";
-const char *const KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH = "Word Completion Minimal Word Length";
-const char *const KEY_WORD_COMPLETION_REMOVE_TAIL = "Word Completion Remove Tail";
-const char *const KEY_SMART_COPY_CUT = "Smart Copy Cut";
-const char *const KEY_SCROLL_PAST_END = "Scroll Past End";
-const char *const KEY_FOLD_FIRST_LINE = "Fold First Line";
+const char KEY_SEARCH_REPLACE_FLAGS[] = "Search/Replace Flags";
+const char KEY_DYN_WORD_WRAP[] = "Dynamic Word Wrap";
+const char KEY_DYN_WORD_WRAP_INDICATORS[] = "Dynamic Word Wrap Indicators";
+const char KEY_DYN_WORD_WRAP_ALIGN_INDENT[] = "Dynamic Word Wrap Align Indent";
+const char KEY_LINE_NUMBERS[] = "Line Numbers";
+const char KEY_SCROLL_BAR_MARKS[] = "Scroll Bar Marks";
+const char KEY_SCROLL_BAR_MINI_MAP[] = "Scroll Bar Mini Map";
+const char KEY_SCROLL_BAR_MINI_MAP_ALL[] = "Scroll Bar Mini Map All";
+const char KEY_SCROLL_BAR_MINI_MAP_WIDTH[] = "Scroll Bar Mini Map Width";
+const char KEY_SHOW_SCROLLBARS[] = "Show Scrollbars";
+const char KEY_ICON_BAR[] = "Icon Bar";
+const char KEY_FOLDING_BAR[] = "Folding Bar";
+const char KEY_LINE_MODIFICATION[] = "Line Modification";
+const char KEY_BOOKMARK_SORT[] = "Bookmark Menu Sorting";
+const char KEY_AUTO_CENTER_LINES[] = "Auto Center Lines";
+const char KEY_MAX_HISTORY_SIZE[] = "Maximum Search History Size";
+const char KEY_DEFAULT_MARK_TYPE[] = "Default Mark Type";
+const char KEY_ALLOW_MARK_MENU[] = "Allow Mark Menu";
+const char KEY_PERSISTENT_SELECTION[] = "Persistent Selection";
+const char KEY_INPUT_MODE[] = "Input Mode";
+const char KEY_VI_INPUT_MODE_STEAL_KEYS[] = "Vi Input Mode Steal Keys";
+const char KEY_VI_RELATIVE_LINE_NUMBERS[] = "Vi Relative Line Numbers";
+const char KEY_AUTOMATIC_COMPLETION_INVOCATION[] = "Auto Completion";
+const char KEY_WORD_COMPLETION[] = "Word Completion";
+const char KEY_KEYWORD_COMPLETION[] = "Keyword Completion";
+const char KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH[] = "Word Completion Minimal Word Length";
+const char KEY_WORD_COMPLETION_REMOVE_TAIL[] = "Word Completion Remove Tail";
+const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
+const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
+const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -2176,11 +2176,11 @@ KateRendererConfig::~KateRendererConfig()
 
 namespace
 {
-const char *const KEY_SCHEMA = "Schema";
-const char *const KEY_WORD_WRAP_MARKER = "Word Wrap Marker";
-const char *const KEY_SHOW_INDENTATION_LINES = "Show Indentation Lines";
-const char *const KEY_SHOW_WHOLE_BRACKET_EXPRESSION = "Show Whole Bracket Expression";
-const char *const KEY_ANIMATE_BRACKET_MATCHING = "Animate Bracket Matching";
+const char KEY_SCHEMA[] = "Schema";
+const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
+const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
+const char KEY_SHOW_WHOLE_BRACKET_EXPRESSION[] = "Show Whole Bracket Expression";
+const char KEY_ANIMATE_BRACKET_MATCHING[] = "Animate Bracket Matching";
 }
 
 void KateRendererConfig::readConfig(const KConfigGroup &config)
