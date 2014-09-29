@@ -1309,10 +1309,12 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->pattern->setMaxCount(m_config->maxHistorySize());
         m_powerUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
+        m_powerUi->pattern->setCompleter(0);
         m_powerUi->replacement->setDuplicatesEnabled(false);
         m_powerUi->replacement->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->replacement->setMaxCount(m_config->maxHistorySize());
         m_powerUi->replacement->setModel(KTextEditor::EditorPrivate::self()->replaceHistoryModel());
+        m_powerUi->replacement->setCompleter(0);
 
         // Icons
         m_powerUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("arrow-down-double")));
@@ -1322,10 +1324,6 @@ void KateSearchBar::enterPowerMode()
 
         // Focus proxy
         centralWidget()->setFocusProxy(m_powerUi->pattern);
-
-        // Make completers case-sensitive
-        m_powerUi->pattern->completionObject()->setIgnoreCase(false);
-        m_powerUi->replacement->completionObject()->setIgnoreCase(false);
     }
 
     m_powerUi->selectionOnly->setChecked(selectionOnly);
@@ -1467,7 +1465,7 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_incUi->pattern->setMaxCount(m_config->maxHistorySize());
         m_incUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
-        m_incUi->pattern->setAutoCompletion(false);
+        m_incUi->pattern->setCompleter(0);
     }
 
     // Restore previous settings
