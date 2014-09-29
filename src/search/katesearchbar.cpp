@@ -1309,11 +1309,13 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->pattern->setMaxCount(m_config->maxHistorySize());
         m_powerUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
+        m_powerUi->pattern->lineEdit()->setClearButtonEnabled(true);
         m_powerUi->pattern->setCompleter(0);
         m_powerUi->replacement->setDuplicatesEnabled(false);
         m_powerUi->replacement->setInsertPolicy(QComboBox::InsertAtTop);
         m_powerUi->replacement->setMaxCount(m_config->maxHistorySize());
         m_powerUi->replacement->setModel(KTextEditor::EditorPrivate::self()->replaceHistoryModel());
+        m_powerUi->replacement->lineEdit()->setClearButtonEnabled(true);
         m_powerUi->replacement->setCompleter(0);
 
         // Icons
@@ -1465,6 +1467,7 @@ void KateSearchBar::enterIncrementalMode()
         m_incUi->pattern->setInsertPolicy(QComboBox::InsertAtTop);
         m_incUi->pattern->setMaxCount(m_config->maxHistorySize());
         m_incUi->pattern->setModel(KTextEditor::EditorPrivate::self()->searchHistoryModel());
+        m_incUi->pattern->lineEdit()->setClearButtonEnabled(true);
         m_incUi->pattern->setCompleter(0);
     }
 
