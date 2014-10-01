@@ -58,10 +58,10 @@ public:
 private:
     void initKeyTables();
 
-    QHash<int, QString> *m_qt2katevi;
-    QHash<QString, int> *m_katevi2qt;
-    QHash<QString, int> *m_nameToKeyCode;
-    QHash<int, QString> *m_keyCodeToName;
+    QHash<int, QString> m_qt2katevi;
+    QHash<QString, int> m_katevi2qt;
+    QHash<QString, int> m_nameToKeyCode;
+    QHash<int, QString> m_keyCodeToName;
 
     static KeyParser *m_instance;
 };
