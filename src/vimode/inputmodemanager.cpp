@@ -101,6 +101,7 @@ InputModeManager::~InputModeManager()
     delete m_viReplaceMode;
     delete m_jumps;
     delete m_marks;
+    delete m_searcher;
     delete m_macroRecorder;
     delete m_completionRecorder;
     delete m_completionReplayer;
