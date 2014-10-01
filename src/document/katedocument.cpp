@@ -4352,8 +4352,6 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                 } else {
                     m_config->setRemoveSpaces(0);
                 }
-
-                m_config->setRemoveSpaces(state ? 1 : 0);
             } else if (var == QLatin1String("syntax") || var == QLatin1String("hl")) {
                 setHighlightingMode(val);
             } else if (var == QLatin1String("mode")) {
