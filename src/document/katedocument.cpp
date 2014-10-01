@@ -4444,15 +4444,14 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    QStringList l;
-    l << QLatin1String("1") << QLatin1String("on") << QLatin1String("true");
-    if (l.contains(val)) {
+    static const QStringList trueValues = QStringList() << QStringLiteral("1") << QStringLiteral("on") << QStringLiteral("true");
+    if (trueValues.contains(val)) {
         *result = true;
         return true;
     }
-    l.clear();
-    l << QLatin1String("0") << QLatin1String("off") << QLatin1String("false");
-    if (l.contains(val)) {
+
+    static const QStringList falseValues = QStringList() << QStringLiteral("0") << QStringLiteral("off") << QStringLiteral("false");
+    if (falseValues.contains(val)) {
         *result = false;
         return true;
     }
