@@ -4023,15 +4023,50 @@ QSet<KTextEditor::MovingRange *> &NormalViMode::highlightedYankForDocument()
 
 bool NormalViMode::waitingForRegisterOrCharToSearch()
 {
-    if (m_keys.size() != 1) {
+    // r, q, @ are never preceded by operators. There will always be a keys size of 1 for them.
+    // f, t, F, T can be preceded by a delete/replace/yank/indent operator. size = 2 in that case.
+    // f, t, F, T can be preceded by 'g' case/formatting operators. size = 3 in that case.
+    const int keysSize = m_keys.size();
+    if (keysSize < 1) {
+        // Just being defensive there.
         return false;
     }
+    if (keysSize > 1) {
+        // Multi-letter operation.
+        QChar cPrefix = m_keys[0];
+        if (keysSize == 2) {
+            // delete/replace/yank/indent operator?
+            if (cPrefix != QLatin1Char('c') &&
+                cPrefix != QLatin1Char('d') &&
+                cPrefix != QLatin1Char('y') &&
+                cPrefix != QLatin1Char('=') &&
+                cPrefix != QLatin1Char('>') &&
+                cPrefix != QLatin1Char('<')) {
+                return false;
+            }
+        } else if (keysSize == 3) {
+            // We need to look deeper. Is it a g motion?
+            QChar cNextfix = m_keys[1];
+            if (cPrefix != QLatin1Char('g') || (
+                cNextfix != QLatin1Char('U') &&
+                cNextfix != QLatin1Char('u') &&
+                cNextfix != QLatin1Char('~') &&
+                cNextfix != QLatin1Char('q') &&
+                cNextfix != QLatin1Char('w') &&
+                cNextfix != QLatin1Char('@'))) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-    QChar ch = m_keys[0];
+    QChar ch = m_keys[keysSize - 1];
     return (ch == QLatin1Char('f') || ch == QLatin1Char('t')
             || ch == QLatin1Char('F') || ch == QLatin1Char('T')
-            || ch == QLatin1Char('r')
-            || ch == QLatin1Char('q') || ch == QLatin1Char('@'));
+            // c/d prefix unapplicable for the following cases.
+            || (keysSize == 1 && (ch == QLatin1Char('r')
+            || ch == QLatin1Char('q') || ch == QLatin1Char('@'))));
 }
 
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)

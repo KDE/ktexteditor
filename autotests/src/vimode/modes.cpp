@@ -647,6 +647,54 @@ void ModesTest::NormalMotionsTests()
     // Regression test for special-handling of "/" and "?" keys: these shouldn't interfere
     // with character searches.
     DoTest("foo /", "f/rX", "foo X");
+    // d{f,F}{/,?}
+    DoTest("foo/bar?baz", "df/", "bar?baz");
+    DoTest("foo/bar?baz", "f/df?", "foobaz");
+    DoTest("foo/bar?baz", "df?", "baz");
+    DoTest("foo/bar?baz", "f?dF/", "foo?baz");
+    // d{t,T}{/,?}
+    DoTest("foo/bar?baz", "dt/", "/bar?baz");
+    DoTest("foo/bar?baz", "t/dt?", "fo?baz");
+    DoTest("foo/bar?baz", "dt?", "?baz");
+    DoTest("foo/bar?baz", "t?dT/", "foo/r?baz");
+    // c{f,F}{/,?}
+    DoTest("foo/bar?baz", "cf/qux\\esc", "quxbar?baz");
+    DoTest("foo/bar?baz", "f/cf?qux\\esc", "fooquxbaz");
+    DoTest("foo/bar?baz", "cf?qux\\esc", "quxbaz");
+    DoTest("foo/bar?baz", "f?cF/qux\\esc", "fooqux?baz");
+    // c{t,T}{/,?}
+    DoTest("foo/bar?baz", "ct/qux\\esc", "qux/bar?baz");
+    DoTest("foo/bar?baz", "t/ct?qux\\esc", "foqux?baz");
+    DoTest("foo/bar?baz", "ct?qux\\esc", "qux?baz");
+    DoTest("foo/bar?baz", "t?cT/qux\\esc", "foo/quxr?baz");
+    // y{f,F}{/,?}
+    DoTest("foo/bar?baz", "yf/p", "ffoo/oo/bar?baz");
+    DoTest("foo/bar?baz", "f/yf?p", "foo//bar?bar?baz");
+    DoTest("foo/bar?baz", "yf?p", "ffoo/bar?oo/bar?baz");
+    DoTest("foo/bar?baz", "f?yF/p", "foo/bar?/barbaz");
+    // y{t,T}{/,?}
+    DoTest("foo/bar?baz", "yt/p", "ffoooo/bar?baz");
+    DoTest("foo/bar?baz", "t/yt?p", "fooo/bar/bar?baz");
+    DoTest("foo/bar?baz", "yt?p", "ffoo/baroo/bar?baz");
+    DoTest("foo/bar?baz", "t?yT/p", "foo/barba?baz");
+
+    // gU, gu, g~.
+    DoTest("foo/bar?baz", "gUf/", "FOO/bar?baz");
+    DoTest("FOO/bar?baz", "g~f?", "foo/BAR?baz");
+    DoTest("foo/BAR?baz", "guf?", "foo/bar?baz");
+
+    // Not adding tests for =f/, >t?, <F?, gqT/ :
+    //  Not likely to be used with those motions.
+    // gw and g@ are currently not supported by ktexteditor's vimode
+
+    // Using registers
+    DoTest("foo/bar?baz", "\"2df?", "baz");
+    DoTest("foo/bar?baz", "\"_ct/qux", "qux/bar?baz");
+
+    // counted find on change/deletion != find digit
+    DoTest("foo2barbaz", "df2ax", "bxarbaz");
+    DoTest("foo2barbaz", "d2fax", "");
+
 
     // Motion to lines starting with { or }
     DoTest("{\nfoo\n}", "][x", "{\nfoo\n");
