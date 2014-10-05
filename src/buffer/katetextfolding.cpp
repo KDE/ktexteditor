@@ -22,6 +22,8 @@
 #include "katetextbuffer.h"
 #include "katetextrange.h"
 
+#include <QJsonObject>
+
 namespace Kate
 {
 
@@ -912,14 +914,16 @@ void TextFolding::appendFoldedRanges(TextFolding::FoldingRange::Vector &newFolde
     }
 }
 
-QVariantList TextFolding::exportFoldingRanges() const
+QJsonDocument TextFolding::exportFoldingRanges() const
 {
-    QVariantList folds;
-    exportFoldingRanges(m_foldingRanges, folds);
+    QJsonArray array;
+    exportFoldingRanges(m_foldingRanges, array);
+    QJsonDocument folds;
+    folds.setArray(array);
     return folds;
 }
 
-void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &ranges, QVariantList &folds)
+void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &ranges, QJsonArray &folds)
 {
     /**
      * dump all ranges recursively
@@ -928,7 +932,7 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
         /**
          * construct one range and dump to folds
          */
-        QVariantMap rangeMap;
+        QJsonObject rangeMap;
         rangeMap[QLatin1String("startLine")] = range->start->line();
         rangeMap[QLatin1String("startColumn")] = range->start->column();
         rangeMap[QLatin1String("endLine")] = range->end->line();
@@ -943,16 +947,16 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
     }
 }
 
-void TextFolding::importFoldingRanges(const QVariantList &folds)
+void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
     /**
      * try to create all folding ranges
      */
-    Q_FOREACH (QVariant rangeVariant, folds) {
+    Q_FOREACH (QJsonValue rangeVariant, folds.array()) {
         /**
          * get map
          */
-        QVariantMap rangeMap = rangeVariant.toMap();
+        QJsonObject rangeMap = rangeVariant.toObject();
 
         /**
          * construct range start/end

@@ -388,7 +388,7 @@ void KateTextBufferTest::foldingTest()
     QVERIFY(folding.visibleLines() == (100 - 50));
 
     // save state
-    QVariantList folds = folding.exportFoldingRanges();
+    QJsonDocument folds = folding.exportFoldingRanges();
     QString textDump = folding.debugDump();
 
     // clear folds

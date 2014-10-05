@@ -35,13 +35,8 @@ private Q_SLOTS:
 
     void testLowerCaseBlockSelection();
 
-    void testFolding_data();
-    void testFolding();
-
     void testCoordinatesToCursor();
     void testCursorToCoordinates();
-
-    void testBug287291();
 
     void testSelection();
     void testKillline();

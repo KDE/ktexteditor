@@ -762,7 +762,7 @@ private:
     /**
      * saved folding state
      */
-    QVariantList m_savedFoldingState;
+    QJsonDocument m_savedFoldingState;
 
     QString m_currentTextForHighlights;
 

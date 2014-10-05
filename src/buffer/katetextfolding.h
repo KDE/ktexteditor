@@ -27,6 +27,8 @@
 
 #include <QObject>
 #include <QFlags>
+#include <QJsonDocument>
+#include <QJsonArray>
 
 namespace Kate
 {
@@ -158,16 +160,16 @@ public:
     QVector<QPair<qint64, FoldingRangeFlags> > foldingRangesStartingOnLine(int line) const;
 
     /**
-     * Return the current known folding ranges a QVariantList to store in configs.
+     * Return the current known folding ranges a QJsonDocument to store in configs.
      * @return current folds as variant list
      */
-    QVariantList exportFoldingRanges() const;
+    QJsonDocument exportFoldingRanges() const;
 
     /**
-     * Import the folding ranges given as a QVariantList like read from configs.
+     * Import the folding ranges given as a QJsonDocument like read from configs.
      * @param folds list of folds to import
      */
-    void importFoldingRanges(const QVariantList &folds);
+    void importFoldingRanges(const QJsonDocument &folds);
 
     /**
      * Dump folding state as string, for unit testing and debugging
@@ -259,7 +261,7 @@ private:
      * @param ranges ranges vector to dump
      * @param folds current folds as variant list, will be filled
      */
-    static void exportFoldingRanges(const TextFolding::FoldingRange::Vector &ranges, QVariantList &folds);
+    static void exportFoldingRanges(const TextFolding::FoldingRange::Vector &ranges, QJsonArray &folds);
 
     /**
      * Dump folding state of given vector as string, for unit testing and debugging.

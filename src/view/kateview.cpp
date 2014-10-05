@@ -1489,9 +1489,9 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     // cursor position
     setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
 
-    // TODO: text folding state
-//   m_savedFoldingState = config.readEntry("TextFolding", QVariantList());
-//   applyFoldingState ();
+    // restore text folding
+    m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
+    applyFoldingState();
 
     Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
         mode->readSessionConfig(config);
@@ -1506,10 +1506,10 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     config.writeEntry("CursorLine", m_viewInternal->m_cursor.line());
     config.writeEntry("CursorColumn", m_viewInternal->m_cursor.column());
 
-    // TODO: text folding state
-//   saveFoldingState();
-//   config.writeEntry("TextFolding", m_savedFoldingState);
-//   m_savedFoldingState.clear ();
+    // save text folding state
+    saveFoldingState();
+    config.writeEntry("TextFolding", m_savedFoldingState.toJson(QJsonDocument::Compact));
+    m_savedFoldingState = QJsonDocument();
 
     Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
         mode->writeSessionConfig(config);
@@ -3350,7 +3350,7 @@ void KTextEditor::ViewPrivate::saveFoldingState()
 void KTextEditor::ViewPrivate::applyFoldingState()
 {
     m_textFolding.importFoldingRanges(m_savedFoldingState);
-    m_savedFoldingState.clear();
+    m_savedFoldingState = QJsonDocument();
 }
 
 void KTextEditor::ViewPrivate::exportHtmlToFile(const QString &file)
