@@ -5386,16 +5386,19 @@ void KTextEditor::DocumentPrivate::rangeEmpty(KTextEditor::MovingRange *movingRa
 void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRange *movingRange)
 {
     qCDebug(LOG_PART) << "deleting" << movingRange;
-    for (QList<QPair<KTextEditor::MovingRange *, QString> >::iterator i = m_dictionaryRanges.begin();
-            i != m_dictionaryRanges.end();) {
-        KTextEditor::MovingRange *dictionaryRange = (*i).first;
-        if (dictionaryRange == movingRange) {
-            delete movingRange;
-            i = m_dictionaryRanges.erase(i);
-        } else {
-            ++i;
-        }
+
+    auto finder = [=] (const QPair<KTextEditor::MovingRange *, QString>& item) -> bool {
+        return item.first == movingRange;
+    };
+
+    auto it = std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder);
+
+    if (it != m_dictionaryRanges.end()) {
+        m_dictionaryRanges.erase(it);
+        delete movingRange;
     }
+
+    Q_ASSERT(std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder) == m_dictionaryRanges.end());
 }
 
 bool KTextEditor::DocumentPrivate::containsCharacterEncoding(const KTextEditor::Range &range)
