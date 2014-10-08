@@ -35,6 +35,7 @@
 #include <QDirIterator>
 #include <QMainWindow>
 #include <QScriptEngine>
+#include <QCryptographicHash>
 #include <QTest>
 
 #include "testutils.h"
@@ -133,25 +134,60 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     QScriptValue result = m_env->engine()->evaluate(code, testcase + QLatin1String("/input.js"), 1);
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
-    url.setPath(testcase + QLatin1String("/actual"));
+    const QString fileExpected = testcase + QLatin1String("/expected");
+    const QString fileActual = testcase + QLatin1String("/actual");
+
+    url.setPath(fileActual);
     m_document->saveAs(url);
 
-    // diff actual and expected
-    QProcess diff;
-    QStringList args;
-    args << QLatin1String("-u") << (testcase + QLatin1String("/expected")) << (testcase + QLatin1String("/actual"));
-    diff.start(QLatin1String("diff"), args);
-    diff.waitForFinished();
-    QByteArray out = diff.readAllStandardOutput();
-    QByteArray err = diff.readAllStandardError();
-    if (!err.isEmpty()) {
-        qWarning() << err;
+    const QByteArray actualChecksum = m_document->checksum();
+    const QByteArray expectedChecksum = digestForFile(fileExpected);
+
+    if (actualChecksum != expectedChecksum) {
+        // diff actual and expected
+        QProcess diff;
+        QStringList args(QStringList() << QLatin1String("-u") << fileExpected << fileActual);
+        diff.start(QLatin1String("diff"), args);
+        diff.waitForFinished();
+
+        QByteArray out = diff.readAllStandardOutput();
+        QByteArray err = diff.readAllStandardError();
+
+        if (!err.isEmpty()) {
+            qWarning() << err;
+        }
+
+        if (diff.exitCode() != EXIT_SUCCESS) {
+            QTextStream(stdout) << out << endl;
+        }
+
+        for (const Failure &failure : failures) {
+            QEXPECT_FAIL(failure.first, failure.second, Abort);
+        }
+
+        QCOMPARE(diff.exitCode(), EXIT_SUCCESS);
     }
-    foreach (const Failure &failure, failures) {
-        QEXPECT_FAIL(failure.first, failure.second, Abort);
-    }
-    QCOMPARE(QString::fromLocal8Bit(out), QString());
-    QCOMPARE(diff.exitCode(), EXIT_SUCCESS);
 
     m_document->closeUrl();
+}
+
+QByteArray ScriptTestBase::digestForFile(const QString &file)
+{
+    QByteArray digest;
+
+    QFile f(file);
+    if (f.open(QIODevice::ReadOnly)) {
+        // init the hash with the git header
+        QCryptographicHash crypto(QCryptographicHash::Sha1);
+        const QString header = QString(QLatin1String("blob %1")).arg(f.size());
+        crypto.addData(header.toLatin1() + '\0');
+
+        while (!f.atEnd()) {
+            crypto.addData(f.read(256 * 1024));
+        }
+
+        digest = crypto.result();
+    }
+
+    return digest;
 }
