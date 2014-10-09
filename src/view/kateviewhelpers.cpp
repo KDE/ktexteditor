@@ -1600,19 +1600,26 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
         // line number
         if (m_lineNumbersOn || (m_view->dynWordWrap() && m_dynWrapIndicatorsOn)) {
-            p.setPen(m_view->renderer()->config()->lineNumberColor());
-            p.setBrush(m_view->renderer()->config()->lineNumberColor());
-
             if (realLine > -1) {
+                int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
+                QColor color;
+
+                if (distanceToCurrent == 0) {
+                    color = m_view->renderer()->config()->currentLineNumberColor();
+                } else {
+                    color = m_view->renderer()->config()->lineNumberColor();
+                }
+                p.setPen(color);
+                p.setBrush(color);
+
                 if (m_viewInternal->cache()->viewLine(z).startCol() == 0) {
                     if (m_relLineNumbersOn) {
-                        int diff = abs(realLine - static_cast<int>(currentLine));
-                        if (diff > 0) {
-                            p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                       Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::fromLatin1("%1").arg(diff));
-                        } else {
+                        if (distanceToCurrent == 0) {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
                                        Qt::TextDontClip|Qt::AlignLeft|Qt::AlignVCenter, QString::fromLatin1("%1").arg(realLine + 1));
+                        } else {
+                            p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
+                                       Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::fromLatin1("%1").arg(distanceToCurrent));
                         }
                         if (m_updateRelLineNumbers) {
                             m_updateRelLineNumbers = false;

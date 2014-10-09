@@ -2118,6 +2118,7 @@ KateRendererConfig::KateRendererConfig()
       m_iconBarColorSet(false),
       m_foldingColorSet(false),
       m_lineNumberColorSet(false),
+      m_currentLineNumberColorSet(false),
       m_separatorColorSet(false),
       m_spellingMistakeLineColorSet(false),
       m_templateColorsSet(false),
@@ -2156,6 +2157,7 @@ KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
       m_iconBarColorSet(false),
       m_foldingColorSet(false),
       m_lineNumberColorSet(false),
+      m_currentLineNumberColorSet(false),
       m_separatorColorSet(false),
       m_spellingMistakeLineColorSet(false),
       m_templateColorsSet(false),
@@ -2305,6 +2307,8 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_foldingColorSet = true;
     m_lineNumberColor = config.readEntry("Color Line Number", colors.color(Kate::LineNumber));
     m_lineNumberColorSet = true;
+    m_currentLineNumberColor = config.readEntry("Current Color Line Number", colors.color(Kate::CurrentLineNumber));
+    m_currentLineNumberColorSet = true;
     m_separatorColor = config.readEntry("Color Separator", colors.color(Kate::Separator));
     m_separatorColorSet = true;
     m_spellingMistakeLineColor = config.readEntry("Color Spelling Mistake Line", colors.color(Kate::SpellingMistakeLine));
@@ -2700,6 +2704,29 @@ void KateRendererConfig::setLineNumberColor(const QColor &col)
 
     m_lineNumberColorSet = true;
     m_lineNumberColor = col;
+
+    configEnd();
+}
+
+const QColor &KateRendererConfig::currentLineNumberColor() const
+{
+    if (m_currentLineNumberColorSet || isGlobal()) {
+        return m_currentLineNumberColor;
+    }
+
+    return s_global->currentLineNumberColor();
+}
+
+void KateRendererConfig::setCurrentLineNumberColor(const QColor &col)
+{
+    if (m_currentLineNumberColorSet && m_currentLineNumberColor == col) {
+        return;
+    }
+
+    configStart();
+
+    m_currentLineNumberColorSet = true;
+    m_currentLineNumberColor = col;
 
     configEnd();
 }

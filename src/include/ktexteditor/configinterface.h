@@ -80,6 +80,7 @@ namespace KTextEditor
  *    with the line numbers)
  *  - folding-marker-color [QColor] read/set folding marker colors (in the icon border)
  *  - line-number-color [QColor] read/set line number colors (in the icon border)
+ *  - current-line-number-color [QColor] read/set current line number color (in the icon border)
  *  - modification-markers [bool] read/set whether the modification markers are shown
 
  *

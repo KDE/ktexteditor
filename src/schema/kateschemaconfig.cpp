@@ -132,6 +132,12 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     ci.defaultColor = colors.color(Kate::LineNumber);
     items.append(ci);
 
+    ci.name = i18n("Current Line Number");
+    ci.key = QLatin1String("Current Color Line Number");
+    ci.whatsThis = i18n("<p>This color will be used to draw the number of the current line (if enabled).</p>");
+    ci.defaultColor = colors.color(Kate::CurrentLineNumber);
+    items.append(ci);
+
     ci.name = i18n("Separator");
     ci.key = QLatin1String("Color Separator");
     ci.whatsThis = i18n("<p>This color will be used to draw the line between line numbers and the icon borders, if both are enabled.</p>");

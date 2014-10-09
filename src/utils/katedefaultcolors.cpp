@@ -58,6 +58,7 @@ QColor KateDefaultColors::color(ColorRole role) const
     case CodeFolding:
         return m_inactiveSelection.background().color();
     case LineNumber:
+    case CurrentLineNumber:
         return m_window.foreground().color();
     case Separator:
         return m_view.foreground(KColorScheme::InactiveText).color();

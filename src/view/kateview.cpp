@@ -2948,7 +2948,7 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
            << QLatin1String("background-color")  << QLatin1String("selection-color")
            << QLatin1String("search-highlight-color")  << QLatin1String("replace-highlight-color")
            << QLatin1String("folding-bar") << QLatin1String("icon-border-color") << QLatin1String("folding-marker-color")
-           << QLatin1String("line-number-color") << QLatin1String("modification-markers");
+           << QLatin1String("line-number-color") << QLatin1String("current-line-number-color") << QLatin1String("modification-markers");
 
 }
 
@@ -2980,6 +2980,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return renderer()->config()->foldingColor();
     } else if (key == QLatin1String("line-number-color")) {
         return renderer()->config()->lineNumberColor();
+    } else if (key == QLatin1String("current-line-number-color")) {
+        return renderer()->config()->currentLineNumberColor();
     } else if (key == QLatin1String("modification-markers")) {
         return config()->lineModification();
     }
@@ -3005,6 +3007,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             renderer()->config()->setFoldingColor(value.value<QColor>());
         } else if (key == QLatin1String("line-number-color")) {
             renderer()->config()->setLineNumberColor(value.value<QColor>());
+        } else if (key == QLatin1String("current-line-number-color")) {
+            renderer()->config()->setCurrentLineNumberColor(value.value<QColor>());
         }
 
     } else if (value.type() == QVariant::Bool) {

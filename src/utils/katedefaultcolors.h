@@ -42,6 +42,7 @@ enum ColorRole {
     IconBar,
     CodeFolding,
     LineNumber,
+    CurrentLineNumber,
     Separator,
     ModifiedLine,
     SavedLine,
@@ -71,22 +72,22 @@ class KateDefaultColors
 {
 public:
     KateDefaultColors();
-    
+
     const KColorScheme &view() const
     {
         return m_view;
     }
-    
+
     const KColorScheme &window() const
     {
         return m_window;
     }
-    
+
     const KColorScheme &selection() const
     {
         return m_selection;
     }
-    
+
     const KColorScheme &inactiveSelection() const
     {
         return m_inactiveSelection;
