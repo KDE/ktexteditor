@@ -2,7 +2,7 @@ var katescript = {
     "name": "Haskell",
     "author": "Erlend Hamberg <ehamberg@gmail.com>",
     "license": "LGPL",
-    "revision": 3,
+    "revision": 4,
     "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
@@ -126,10 +126,11 @@ function indent(line, indentWidth, character) {
         // indent line after myFunction = do ...
         // foo = do bar <- baz
         // >>>>>>>>>qzx <- qqx
-        if (lastLine.search(/\s=\sdo\s\S/)!= -1) {
+        if (lastLine.search(/\s=\sdo\s\S/) != -1) {
             dbg('indenting line for “... = do ...”');
-            var doCol = lastLine.search(/do\s/);
-            return document.firstVirtualColumn(line - 1) + doCol + 3;
+            var virtDoCol = document.firstVirtualColumn(line - 1)
+                            + lastLine.stripWhiteSpace().search(/do\s/);
+            return virtDoCol + 3;
         }
 
 
@@ -147,10 +148,11 @@ function indent(line, indentWidth, character) {
     //     >>>>>>bar = 4
     if (lastLine.search(/\s*where\s+[^-]/) != -1) {
         dbg('indenting line for where (0)');
-        return document.firstVirtualColumn(line - 1) + 6;
+        var virtFirst = document.firstVirtualColumn(line - 1);
+        return virtFirst + 6;
     }
 
-    // indent line after 'where' 6 characters for alignment:
+    // indent line after 'where' by indentWidth:
     // ... where -- comment
     //     >>>>foo = 4
     if (lastLine.stripWhiteSpace().startsWith('where')) {
@@ -181,15 +183,15 @@ function indent(line, indentWidth, character) {
     var letCol = lastLine.search(/\blet\b/);
     if (letCol != -1 && !currentLine.stripWhiteSpace().startsWith('in')) {
 
+        var virtFirstInLastLine = document.firstVirtualColumn(line - 1);
         // do a basic test of whether we are in a do block or not
         l = line - 2;
 
         // find the last non-empty line with an indentation level different
         // from the current line ...
-        while (l > 0 && (document.firstVirtualColumn(l) ==
-                    document.firstVirtualColumn(line-1)
-                || document.line(l).search(/^\s*$/) != -1)) {
-            l = l - 1;
+        while (l > 0 && (document.firstVirtualColumn(l) == virtFirstInLastLine
+                         || document.line(l).search(/^\s*$/) != -1)) {
+            l--;
         }
 
         // ... if that line ends with 'do', don't indent
@@ -199,7 +201,9 @@ function indent(line, indentWidth, character) {
         }
 
         dbg('indenting line for let');
-        return letCol + 4;
+        var virtLetCol = virtFirstInLastLine
+                         + lastLine.stripWhiteSpace().search(/\blet\b/);
+        return virtLetCol + 4;
     }
 
     // deindent line starting with 'in' to the level of its corresponding 'let':
@@ -211,9 +215,9 @@ function indent(line, indentWidth, character) {
         var t = line-1;
         var indent = -1;
         while (t >= 0 && line-t < 100) {
-            var letCol = document.line(t).search(/\blet\b/);
+            var letCol = document.line(t).stripWhiteSpace().search(/\blet\b/);
             if (letCol != -1) {
-                indent = letCol;
+                indent = document.firstVirtualColumn(t) + letCol;
                 break;
             }
             t--;
@@ -231,9 +235,10 @@ function indent(line, indentWidth, character) {
         var t = line-1;
         var indent = -1;
         while (t >= 0 && line-t < 100) {
-            var thenCol = document.line(t).search(/\bthen\b/); // \s*\bthen\b
+            var thenCol = document.line(t).stripWhiteSpace().search(/\bthen\b/);
+            // \s*\bthen\b
             if (thenCol != -1) {
-                indent = thenCol;
+                indent = document.firstVirtualColumn(t) + thenCol;
                 break;
             }
             t--;
@@ -255,22 +260,24 @@ function indent(line, indentWidth, character) {
     // case xs of
     // >>>>>[] -> ...
     // >>>>>(y:ys) -> ...
-    var caseCol = lastLine.search(/\bcase\b/);
+    var caseCol = lastLine.stripWhiteSpace().search(/\bcase\b/);
     if (caseCol != -1) {
         dbg('indenting line for case');
-        return caseCol + 5;
+        var virtCaseCol = document.firstVirtualColumn(line - 1) + caseCol;
+        return virtCaseCol + 5;
     }
 
     // indent line after 'if/else' 3 characters for alignment:
     // if foo == bar
     // >>>then baz
     // >>>else vaff
-    var ifCol = lastLine.search(/\bif\b/);
+    var ifCol = lastLine.stripWhiteSpace().search(/\bif\b/);
     var thenCol = lastLine.search(/\bthen\b/);
     var elseCol = lastLine.search(/\belse\b/);
     if (ifCol != -1 && thenCol == -1 && elseCol == -1) {
         dbg('indenting line for if');
-        return ifCol + 3;
+        var virtIfCol = document.firstVirtualColumn(line - 1) + ifCol;
+        return virtIfCol + 3;
     }
 
     // indent line starting with "deriving: ":
@@ -312,16 +319,17 @@ function indent(line, indentWidth, character) {
     // >>>>>>>>>>| False
     if (currentLine.stripWhiteSpace().startsWith("|")) {
         dbg('indenting line for |');
-        var equalsCol = lastLine.search(/=/);
-        var pipeCol = lastLine.search(/\|/);
+        var equalsCol = lastLine.stripWhiteSpace().search(/=/);
+        var pipeCol = lastLine.stripWhiteSpace().search(/\|/);
+        var virtFirstInLastLine = document.firstVirtualColumn(line - 1);
         if (equalsCol != -1 && lastLine.stripWhiteSpace().startsWith('data')) {
-            return equalsCol;
+            return virtFirstInLastLine + equalsCol;
         }
         else if (pipeCol != -1) {
-            return pipeCol;
+            return virtFirstInLastLine + pipeCol;
         }
         else {
-            return document.firstVirtualColumn(line - 1) + indentWidth;
+            return virtFirstInLastLine + indentWidth;
         }
     }
 
