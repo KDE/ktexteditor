@@ -21,6 +21,7 @@
 #include "katetextfolding.h"
 #include "katetextbuffer.h"
 #include "katetextrange.h"
+#include "documentcursor.h"
 
 #include <QJsonObject>
 
@@ -961,13 +962,23 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
         /**
          * construct range start/end
          */
-        KTextEditor::Cursor start(rangeMap[QLatin1String("startLine")].toInt(), rangeMap[QLatin1String("startColumn")].toInt());
-        KTextEditor::Cursor end(rangeMap[QLatin1String("endLine")].toInt(), rangeMap[QLatin1String("endColumn")].toInt());
+        const KTextEditor::Cursor start(rangeMap[QLatin1String("startLine")].toInt(), rangeMap[QLatin1String("startColumn")].toInt());
+        const KTextEditor::Cursor end(rangeMap[QLatin1String("endLine")].toInt(), rangeMap[QLatin1String("endColumn")].toInt());
+
+        /**
+         * check validity (required when loading a possibly broken folding state from disk)
+         */
+        if (start >= end ||
+            !KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() ||
+            !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition())
+        {
+            continue;
+        }
 
         /**
          * get flags
          */
-        int rawFlags = rangeMap[QLatin1String("flags")].toInt();
+        const int rawFlags = rangeMap[QLatin1String("flags")].toInt();
         FoldingRangeFlags flags;
         if (rawFlags & Persistent) {
             flags = Persistent;
