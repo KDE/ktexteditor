@@ -969,8 +969,10 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
          * check validity (required when loading a possibly broken folding state from disk)
          */
         if (start >= end ||
-            !KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() ||
-            !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition())
+            (m_buffer.document() && // <-- unit test katetextbuffertest does not have a KTE::Document assigned
+               (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() ||
+                !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))
+           )
         {
             continue;
         }
