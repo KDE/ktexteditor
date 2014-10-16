@@ -139,6 +139,13 @@ var gIndentWidth = 4;
 // gShift remebers how far the previous line shifted
 var gShift = 0;
 
+// testing if current line is inside parens is expensive,
+// so need to remember if we are inside parens
+// -1 ==> don't know
+//  0 ==> not inside
+//  1 ==> inside parens
+var gInParens = -1;
+
 //END global variables and functions
 
 
@@ -1066,6 +1073,7 @@ function tryParens(line, newLine)
     var pline = lastCodeLine(line);    // note: pline is code
     if (pline < 0) return -1;
     var plineStr = document.line(pline);
+    //dbg("tryParens: gInParens is", gInParens);
  
     /**
      * first, handle the case where the new line starts with ')' or ']'
@@ -1082,7 +1090,7 @@ function tryParens(line, newLine)
     if ( (char == ')' || char == ']')
             &&  document.isCode( line, document.firstColumn(line) ) ) {
         //dbg("tryParens - leading close " + char + " on current line");
-
+        gInParens = -1;
         var openParen = document.anchor(line, 0, char);
         if( !openParen.isValid() ) {
             // nothing found, continue with other cases
@@ -1091,7 +1099,7 @@ function tryParens(line, newLine)
         }
         var indent = document.toVirtualColumn(openParen);
 
-        //dbg("tryParens: found left anchor '" + document.charAt(openParen) + "' at " + openParen.toString() );
+        //dbg("tryParens: found '" + document.charAt(openParen) + "' at " + openParen.toString() );
 
         // look for something like
         //        argn     <--- pline
@@ -1138,15 +1146,15 @@ function tryParens(line, newLine)
          *    )     <--- line
          *
          * in both cases, we need to open a line for the new arg and 
-         * place right anchor in same column as the opening anchor
+         * place right paren in same column as the opening paren
          * we leave cursor on the blank line
          */
         document.insertText(line, document.firstColumn(line), "\n");
         var anchorLine = line+1;
-        // indent closing anchor 
+        // indent closing paren 
         view.setCursorPosition(line, indent);
         document.indent(new Range(anchorLine, 0, anchorLine, 1), indent / gIndentWidth);
-        // make sure we add spaces to align perfectly on left anchor
+        // make sure we add spaces to align perfectly on left paren
         var padding =  indent % gIndentWidth;
         if ( padding > 0 ) {
             document.insertText(anchorLine, 
@@ -1166,6 +1174,7 @@ function tryParens(line, newLine)
         // line contains the first arg in a multi line list
         // other args should be lined up against this
         // if line is not empty, assume user has set it - leave it as it is
+        gInParens = 1;
         var bChar = plineStr[bpos];
         //dbg("tryParens: - trailing open " + char + " on previous line");
         indent = document.firstVirtualColumn(line);
@@ -1187,6 +1196,7 @@ function tryParens(line, newLine)
     if( bpos != -1 ) {
         //dbg( "tryParens: found open paren '" + plineStr[bpos] + "' and trailing arg" );
         bpos = document.nextNonSpaceColumn(pline, bpos+1);
+        gInParens = 1;
         dbg("tryParens: aligning arg to", document.wordAt(pline, bpos), "in", plineStr);
         return document.toVirtualColumn(pline, bpos );
     } // trailing opening arg
@@ -1221,8 +1231,12 @@ function tryParens(line, newLine)
                        || document.anchor(line,0,'[').isValid() ) {
                 dbg("tryParens: aligning to args at next outer paren level");
                 return document.firstVirtualColumn(testLine );
+            } else {
+                //dbg("tryParens: no longer inside parens");
+                gInParens = 0;
             }
         } else {
+            gInParens = -1;
             // line above closes list, can't find open paren!
         }
     } else {
@@ -1232,17 +1246,23 @@ function tryParens(line, newLine)
     // finally, check if inside parens, 
     // if so, align with previous line
     // eliminates a few checks later on
-    openParen = document.anchor(line,0,'(');
-    if( openParen.isValid() && document.isCode(openParen) ) {
-        dbg("tryParens: inside '(...)', aligning with previous line" );
-        return document.firstVirtualColumn(pline );
+    if( gInParens == -1 ) {
+        gInParens = 0;
+        openParen = document.anchor(line,0,'(');
+        if( openParen.isValid() && document.isCode(openParen) ) {
+            dbg("tryParens: inside '(...' at", openParen.line, ", aligning with previous line" );
+            gInParens = 1;
+        }
+
+        openParen = document.anchor(line,0,'[');
+        if( openParen.isValid() && document.isCode(openParen) ) {
+            dbg("tryParens: inside '[...]', aligning with previous line" );
+            gInParens = 1;
+        }
     }
 
-    openParen = document.anchor(line,0,'[');
-    if( openParen.isValid() && document.isCode(openParen) ) {
-        dbg("tryParens: inside '[...]', aligning with previous line" );
+    if( gInParens == 1 )
         return document.firstVirtualColumn(pline );
-    }
 
     return -1;
 
@@ -1461,6 +1481,7 @@ function indent(line, indentWidth, ch)
     var sel = view.selection();
     if( !sel.isValid() || line == 0 || !sel.containsLine(line-1) ) {
         gShift = 0;
+        gInParens=-1;
     }
 
     var filler = tryComment(line, newLine);
