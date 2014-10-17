@@ -64,7 +64,7 @@ Changes:
   <!ENTITY types "int|integer|bool|boolean|float|double|real|string|array|object">
 ]>
 
-<language name="PHP/PHP" indenter="cstyle" version="1.44" kateversion="3.4" section="Scripts" extensions="" priority="5" mimetype="" hidden="true">
+<language name="PHP/PHP" indenter="cstyle" version="1.45" kateversion="3.4" section="Scripts" extensions="" priority="5" mimetype="" hidden="true">
   <highlighting>
     <list name="control structures">
       <item>as</item>
@@ -102,6 +102,7 @@ Changes:
       <item> exception </item>
       <item> extends </item>
       <item> final </item>
+      <item> finally </item>
       <item> function </item>
       <item> global </item>
       <item> implements </item>
@@ -5401,7 +5402,7 @@ Changes:
 
       <!-- Keywords -->
       <item> var </item>
-     
+
       <!-- Constants -->
       <item>OCI_DEFAULT</item>
       <item>OCI_D_FILE</item>
