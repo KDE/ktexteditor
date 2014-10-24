@@ -403,6 +403,16 @@ public Q_SLOTS:
     void killLine();
 
     /**
+     * Sets the cursor to the previous editing position in this document
+     */
+    void goToPreviousEditingPosition();
+
+    /**
+     * Sets the cursor to the next editing position in this document
+     */
+    void goToNextEditingPosition();
+
+    /**
       Uppercases selected text, or an alphabetic character next to the cursor.
     */
     void uppercase();

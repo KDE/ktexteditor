@@ -444,6 +444,21 @@ void KTextEditor::ViewPrivate::setupConnections()
             m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)));
 }
 
+void KTextEditor::ViewPrivate::goToPreviousEditingPosition()
+{
+    auto c = doc()->lastEditingPosition(KTextEditor::DocumentPrivate::Previous, cursorPosition());
+    if(c.isValid()){
+        setCursorPosition(c);
+    }
+}
+
+void KTextEditor::ViewPrivate::goToNextEditingPosition()
+{
+    auto c = doc()->lastEditingPosition(KTextEditor::DocumentPrivate::Next, cursorPosition());
+    if(c.isValid()){
+        setCursorPosition(c);
+    }
+}
 void KTextEditor::ViewPrivate::setupActions()
 {
     KActionCollection *ac = actionCollection();
@@ -501,6 +516,16 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("This command comments out the current line or a selected block of text.<br /><br />"
                              "The characters for single/multiple line comments are defined within the language's highlighting."));
         connect(a, SIGNAL(triggered(bool)), SLOT(comment()));
+
+        a = ac->addAction(QLatin1String("Previous Editing Line"));
+        a->setText(i18n("Go to previous editing line"));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Period));
+        connect(a, SIGNAL(triggered(bool)), SLOT(goToPreviousEditingPosition()));
+
+        a = ac->addAction(QLatin1String("Next Editing Line"));
+        a->setText(i18n("Go to next editing line"));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Period));
+        connect(a, SIGNAL(triggered(bool)), SLOT(goToNextEditingPosition()));
 
         a = ac->addAction(QLatin1String("tools_uncomment"));
         a->setText(i18n("Unco&mment"));

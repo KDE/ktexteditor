@@ -348,11 +348,22 @@ public:
 
     void setUndoMergeAllEdits(bool merge);
 
+    enum EditingPositionKind { Previous, Next };
+
+   /**
+    *Returns the next or previous position cursor in this document from the stack depending on the argument passed.
+    *@return cursor invalid if editingPosStack empty
+    */
+    Cursor lastEditingPosition(EditingPositionKind nextOrPrevious, Cursor);
+
 private:
     int editSessionNumber;
     QStack<int> editStateStack;
     bool editIsRunning;
     bool m_undoMergeAllEdits;
+    QStack<QSharedPointer<KTextEditor::MovingCursor>> editingPosStack;
+    int cursorPos = -1;
+    static constexpr int editingPosStackSizeLimit = 32;
 
     //
     // KTextEditor::UndoInterface stuff
@@ -360,6 +371,16 @@ private:
 public Q_SLOTS:
     void undo();
     void redo();
+   /**
+    *Removes all the elements in editingPosStack of the respective document.
+    */
+    void clearEditingPosStack();
+
+   /**
+    *Saves the editing positions into the stack.
+    *If the consecutive editings happens in the same line, then remove the previous and add the new one with updated column no.
+    */
+    void saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range);
 
 public:
     uint undoCount() const;

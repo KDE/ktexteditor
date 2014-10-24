@@ -256,6 +256,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     connect(this, SIGNAL(sigQueryClose(bool*,bool*)), this, SLOT(slotQueryClose_save(bool*,bool*)));
 
+    connect(this, &KTextEditor::DocumentPrivate::textRemoved, this, &KTextEditor::DocumentPrivate::saveEditingPositions);
+    connect(this, &KTextEditor::DocumentPrivate::textInserted, this, &KTextEditor::DocumentPrivate::saveEditingPositions);
+    connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)), this, SLOT(clearEditingPosStack()));
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
 }
 
@@ -301,6 +304,48 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     KTextEditor::EditorPrivate::self()->deregisterDocument(this);
 }
 //END
+
+void KTextEditor::DocumentPrivate::saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range)
+{
+    if (cursorPos != editingPosStack.size() - 1) {
+            editingPosStack.resize(cursorPos);
+    }
+    KTextEditor::MovingInterface *moving = qobject_cast<KTextEditor::MovingInterface *>(this);
+    const auto c = range.start();
+    QSharedPointer<KTextEditor::MovingCursor> mc (moving->newMovingCursor(c));
+    if (!editingPosStack.isEmpty() && c.line() == editingPosStack.top()->line()) {
+        editingPosStack.pop();
+    }
+    editingPosStack.push(mc);
+    if (editingPosStack.size() > editingPosStackSizeLimit) {
+        editingPosStack.removeFirst();
+    }
+    cursorPos = editingPosStack.size() - 1;
+}
+
+KTextEditor::Cursor KTextEditor::DocumentPrivate::lastEditingPosition(EditingPositionKind nextOrPrev, KTextEditor::Cursor currentCursor)
+{
+    if (editingPosStack.isEmpty()) {
+      return KTextEditor::Cursor::invalid();
+    }
+    auto targetPos = editingPosStack.at(cursorPos)->toCursor();
+    if (targetPos == currentCursor) {
+        if (nextOrPrev == Previous) {
+            cursorPos--;
+        }
+        else {
+            cursorPos++;
+        }
+        cursorPos = qBound(0, cursorPos, editingPosStack.size() - 1);
+    }
+    return editingPosStack.at(cursorPos)->toCursor();
+}
+
+void KTextEditor::DocumentPrivate::clearEditingPosStack()
+{
+    editingPosStack.clear();
+    cursorPos = -1;
+}
 
 // on-demand view creation
 QWidget *KTextEditor::DocumentPrivate::widget()
