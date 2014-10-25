@@ -3750,7 +3750,7 @@ void KateViewInternal::documentTextInserted(KTextEditor::Document *document, con
     }
 }
 
-void  KateViewInternal::documentTextRemoved(KTextEditor::Document */*document*/, const KTextEditor::Range &range, const QString &oldText)
+void  KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/, const KTextEditor::Range &range, const QString &oldText)
 {
     if (QAccessible::isActive()) {
         QAccessibleTextRemoveEvent ev(this,
