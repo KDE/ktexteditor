@@ -352,18 +352,18 @@ public:
 
    /**
     *Returns the next or previous position cursor in this document from the stack depending on the argument passed.
-    *@return cursor invalid if editingPosStack empty
+    *@return cursor invalid if m_editingStack empty
     */
-    Cursor lastEditingPosition(EditingPositionKind nextOrPrevious, Cursor);
+    KTextEditor::Cursor lastEditingPosition(EditingPositionKind nextOrPrevious, KTextEditor::Cursor);
 
 private:
     int editSessionNumber;
     QStack<int> editStateStack;
     bool editIsRunning;
     bool m_undoMergeAllEdits;
-    QStack<QSharedPointer<KTextEditor::MovingCursor>> editingPosStack;
-    int cursorPos = -1;
-    static constexpr int editingPosStackSizeLimit = 32;
+    QStack<QSharedPointer<KTextEditor::MovingCursor>> m_editingStack;
+    int m_editingStackPosition = -1;
+    static const int s_editingStackSizeLimit = 32;
 
     //
     // KTextEditor::UndoInterface stuff
@@ -371,15 +371,17 @@ private:
 public Q_SLOTS:
     void undo();
     void redo();
-   /**
-    *Removes all the elements in editingPosStack of the respective document.
-    */
+
+    /**
+     * Removes all the elements in m_editingStack of the respective document.
+     */
     void clearEditingPosStack();
 
-   /**
-    *Saves the editing positions into the stack.
-    *If the consecutive editings happens in the same line, then remove the previous and add the new one with updated column no.
-    */
+    /**
+     * Saves the editing positions into the stack.
+     * If the consecutive editings happens in the same line, then remove
+     * the previous and add the new one with updated column no.
+     */
     void saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range);
 
 public:

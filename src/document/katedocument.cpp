@@ -307,44 +307,44 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
 
 void KTextEditor::DocumentPrivate::saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range)
 {
-    if (cursorPos != editingPosStack.size() - 1) {
-            editingPosStack.resize(cursorPos);
+    if (m_editingStackPosition != m_editingStack.size() - 1) {
+            m_editingStack.resize(m_editingStackPosition);
     }
     KTextEditor::MovingInterface *moving = qobject_cast<KTextEditor::MovingInterface *>(this);
     const auto c = range.start();
     QSharedPointer<KTextEditor::MovingCursor> mc (moving->newMovingCursor(c));
-    if (!editingPosStack.isEmpty() && c.line() == editingPosStack.top()->line()) {
-        editingPosStack.pop();
+    if (!m_editingStack.isEmpty() && c.line() == m_editingStack.top()->line()) {
+        m_editingStack.pop();
     }
-    editingPosStack.push(mc);
-    if (editingPosStack.size() > editingPosStackSizeLimit) {
-        editingPosStack.removeFirst();
+    m_editingStack.push(mc);
+    if (m_editingStack.size() > s_editingStackSizeLimit) {
+        m_editingStack.removeFirst();
     }
-    cursorPos = editingPosStack.size() - 1;
+    m_editingStackPosition = m_editingStack.size() - 1;
 }
 
 KTextEditor::Cursor KTextEditor::DocumentPrivate::lastEditingPosition(EditingPositionKind nextOrPrev, KTextEditor::Cursor currentCursor)
 {
-    if (editingPosStack.isEmpty()) {
+    if (m_editingStack.isEmpty()) {
       return KTextEditor::Cursor::invalid();
     }
-    auto targetPos = editingPosStack.at(cursorPos)->toCursor();
+    auto targetPos = m_editingStack.at(m_editingStackPosition)->toCursor();
     if (targetPos == currentCursor) {
         if (nextOrPrev == Previous) {
-            cursorPos--;
+            m_editingStackPosition--;
         }
         else {
-            cursorPos++;
+            m_editingStackPosition++;
         }
-        cursorPos = qBound(0, cursorPos, editingPosStack.size() - 1);
+        m_editingStackPosition = qBound(0, m_editingStackPosition, m_editingStack.size() - 1);
     }
-    return editingPosStack.at(cursorPos)->toCursor();
+    return m_editingStack.at(m_editingStackPosition)->toCursor();
 }
 
 void KTextEditor::DocumentPrivate::clearEditingPosStack()
 {
-    editingPosStack.clear();
-    cursorPos = -1;
+    m_editingStack.clear();
+    m_editingStackPosition = -1;
 }
 
 // on-demand view creation
