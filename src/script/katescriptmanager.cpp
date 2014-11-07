@@ -155,13 +155,21 @@ void KateScriptManager::collect()
                 qCDebug(LOG_PART) << "Script parse error: Cannot find start of json header at start of file " << qPrintable(fileName) << '\n';
                 continue;
             }
-        
+
+            int endOfJson = fileContent.indexOf("\n};", startOfJson);
+            if (endOfJson < 0) {
+                qCDebug(LOG_PART) << "Script parse error: Cannot find end of json header at start of file " << qPrintable(fileName) << '\n';
+                continue;
+            }
+            endOfJson += 2; //we want the end including the } but not the ;
+
             /**
              * parse json header or skip this file
              */
-            const QJsonDocument metaInfo (QJsonDocument::fromJson(fileContent.right(fileContent.size()-startOfJson)));
-            if (metaInfo.isNull() || !metaInfo.isObject()) {
-                qCDebug(LOG_PART) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << '\n';
+            QJsonParseError error;
+            const QJsonDocument metaInfo (QJsonDocument::fromJson(fileContent.mid(startOfJson, endOfJson-startOfJson), &error));
+            if (error.error || !metaInfo.isObject()) {
+                qCDebug(LOG_PART) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson << fileContent.mid(endOfJson-25, 25).replace('\n', ' ');
                 continue;
             }
     
