@@ -157,6 +157,9 @@ void KateScriptManager::collect()
             }
 
             int endOfJson = fileContent.indexOf("\n};", startOfJson);
+            if (endOfJson < 0) { // as fallback, check also mac os line ending
+                endOfJson = fileContent.indexOf("\r};", startOfJson);
+            }
             if (endOfJson < 0) {
                 qCDebug(LOG_PART) << "Script parse error: Cannot find end of json header at start of file " << qPrintable(fileName) << '\n';
                 continue;
