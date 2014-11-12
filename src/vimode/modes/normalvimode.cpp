@@ -1225,8 +1225,6 @@ bool NormalViMode::commandSubstituteLine()
 
 bool NormalViMode::commandYank()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
-
     bool r = false;
     QString yankedText;
 
@@ -1453,8 +1451,6 @@ bool NormalViMode::commandReplaceCharacter()
 
 bool NormalViMode::commandSwitchToCmdLine()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
-
     QString initialText;
     if (m_viInputModeManager->isAnyVisualMode()) {
         // if in visual mode, make command range == visual selection
@@ -1562,7 +1558,6 @@ bool NormalViMode::commandUnindentLine()
 
 bool NormalViMode::commandIndentLines()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
     const bool downwards = m_commandRange.startLine < m_commandRange.endLine;
 
     m_commandRange.normalize();
@@ -1582,7 +1577,6 @@ bool NormalViMode::commandIndentLines()
 
 bool NormalViMode::commandUnindentLines()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
     const bool downwards = m_commandRange.startLine < m_commandRange.endLine;
 
     m_commandRange.normalize();
@@ -1772,7 +1766,6 @@ bool NormalViMode::commandAlignLine()
 
 bool NormalViMode::commandAlignLines()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
     m_commandRange.normalize();
 
     KTextEditor::Cursor start(m_commandRange.startLine, 0);
@@ -2085,7 +2078,6 @@ Range NormalViMode::motionPageUp()
 
 Range NormalViMode::motionDownToFirstNonBlank()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
     Range r = goLineDown();
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
@@ -2093,7 +2085,6 @@ Range NormalViMode::motionDownToFirstNonBlank()
 
 Range NormalViMode::motionUpToFirstNonBlank()
 {
-    KTextEditor::Cursor c(m_view->cursorPosition());
     Range r = goLineUp();
     r.endColumn = getFirstNonBlank(r.endLine);
     return r;
@@ -3341,7 +3332,6 @@ Range NormalViMode::textObjectInnerParagraph()
 
 Range NormalViMode::textObjectAParagraph()
 {
-    KTextEditor::Cursor original(m_view->cursorPosition());
     Range r = textObjectInnerParagraph();
     int lines = doc()->lines();
 

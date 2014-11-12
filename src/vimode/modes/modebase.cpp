@@ -252,7 +252,6 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
 
 KTextEditor::Cursor ModeBase::findNextWORDStart(int fromLine, int fromColumn, bool onlyCurrentLine) const
 {
-    KTextEditor::Cursor cursor(m_view->cursorPosition());
     QString line = getLine();
 
     int l = fromLine;
