@@ -95,8 +95,10 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     staticInstance = this;
     
 #ifdef HAVE_GIT2
+#ifdef HAVE_GIT2_THREADS
     // init libgit2 if used
     git_threads_init();
+#endif
 #endif
     
     /**
@@ -253,8 +255,10 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     qDeleteAll(m_inputModeFactories);
     
 #ifdef HAVE_GIT2
+#ifdef HAVE_GIT2_THREADS
     // shutdown libgit2 if used
     git_threads_shutdown();
+#endif
 #endif
 }
 

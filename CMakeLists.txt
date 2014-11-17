@@ -45,6 +45,13 @@ find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
 # libgit2 integration
 find_package(LibGit2 "0.20.0")
 if(LIBGIT2_FOUND)
+    add_executable(test_libgit2_threads src/test_libgit2_threads.c)
+    target_link_libraries(test_libgit2_threads LibGit2::LibGit2)
+    execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/test_libgit2_threads RESULT_VARIABLE _result)
+    if (_result EQUAL 0)
+        add_definitions(-DHAVE_GIT2_THREADS)
+    endif()
+
     add_definitions(-DHAVE_GIT2)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
