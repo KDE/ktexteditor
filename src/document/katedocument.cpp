@@ -2880,7 +2880,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
                                 , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
         view->setSelection(selectionRange);
     } else {
-        chars = eventuallyReplaceTabs(chars);
+        chars = eventuallyReplaceTabs(view->cursorPosition(), chars);
         insertText(view->cursorPosition(), chars);
     }
 
@@ -3227,19 +3227,35 @@ bool KTextEditor::DocumentPrivate::removeStringFromEnd(int line, const QString &
 /*
   Replace tabs by spaces in the given string, if enabled.
  */
-QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(QString str) const
+QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::Cursor &cursorPos, const QString &str) const
 {
     const bool replacetabs = config()->replaceTabsDyn();
     if ( ! replacetabs ) {
         return str;
     }
-    const int tabWidth = config()->tabWidth();
+    const int indentWidth = config()->indentationWidth();
     static const QLatin1Char tabChar('\t');
-    static QString replacement;
-    if ( replacement.size() != tabWidth ) {
-        replacement = QStringLiteral(" ").repeated(tabWidth);
+
+    int column = cursorPos.column();
+
+    // The result will always be at least as long as the input
+    QString result;
+    result.reserve(str.size());
+
+    Q_FOREACH (const QChar ch, str) {
+        if (ch == tabChar) {
+            // Insert only enough spaces to align to the next indentWidth column
+            // This fixes bug #340212
+            int spacesToInsert = indentWidth - (column % indentWidth);
+            result += QStringLiteral(" ").repeated(spacesToInsert);
+            column += spacesToInsert;
+        } else {
+            // Just keep all other typed characters as-is
+            result += ch;
+            ++column;
+        }
     }
-    return str.replace(tabChar, replacement);
+    return result;
 }
 
 /*

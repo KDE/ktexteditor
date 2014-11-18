@@ -840,7 +840,12 @@ private:
     bool removeStringFromBeginning(int line, const QString &str);
     bool removeStringFromEnd(int line, const QString &str);
 
-    QString eventuallyReplaceTabs(QString str) const;
+    /**
+      Expand tabs to spaces in typed text, if enabled.
+      @param cursorPos The current cursor position for the inserted characters.
+      @param str The typed characters to expand.
+    */
+    QString eventuallyReplaceTabs(const KTextEditor::Cursor &cursorPos, const QString &str) const;
 
     /**
       Find the position (line and col) of the next char
