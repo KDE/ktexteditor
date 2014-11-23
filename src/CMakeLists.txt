@@ -1,3 +1,14 @@
+# libgit2 integration
+find_package(LibGit2 "0.20.0")
+if(LIBGIT2_FOUND)
+    SET (CMAKE_REQUIRED_LIBRARIES LibGit2::LibGit2)
+    check_function_exists(git_threads_init HAVE_GIT2_THREADS)
+    check_function_exists(git_libgit2_init HAVE_GIT2_INIT)
+    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
+endif()
+
+configure_file(libgit2_config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/libgit2_config.h)
+
 # handle include files, both normal ones and generated ones
 add_subdirectory(include)
 

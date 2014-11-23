@@ -79,7 +79,9 @@
 #include <QMimeDatabase>
 #include <QTemporaryFile>
 
-#ifdef HAVE_GIT2
+#include <libgit2_config.h>
+
+#ifdef LIBGIT2_FOUND
 #include <git2.h>
 #include <git2/oid.h>
 #include <git2/repository.h>
@@ -4596,7 +4598,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             m_modOnHdReason = OnDiskUnmodified;
         }
     
-#ifdef HAVE_GIT2
+#ifdef LIBGIT2_FOUND
         /**
          * if still modified, try to take a look at git
          * skip that, if document is modified!
