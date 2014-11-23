@@ -56,6 +56,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     , m_view(view)
     , m_modifiedStatus (-1)
     , m_selectionMode (-1)
+    , m_insertModeLabel(Q_NULLPTR)
 {
     KAcceleratorManager::setNoAccel(this);
     setFocusProxy(m_view);
