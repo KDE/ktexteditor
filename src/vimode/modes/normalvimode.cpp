@@ -2076,6 +2076,28 @@ Range NormalViMode::motionPageUp()
     return r;
 }
 
+Range NormalViMode::motionHalfPageDown()
+{
+    if (commandScrollHalfPageDown()) {
+        KTextEditor::Cursor c = m_view->cursorPosition();
+        m_commandRange.endLine = c.line();
+        m_commandRange.endColumn = c.column();
+        return m_commandRange;
+    }
+    return Range::invalid();
+}
+
+Range NormalViMode::motionHalfPageUp()
+{
+    if (commandScrollHalfPageUp()) {
+        KTextEditor::Cursor c = m_view->cursorPosition();
+        m_commandRange.endLine = c.line();
+        m_commandRange.endColumn = c.column();
+        return m_commandRange;
+    }
+    return Range::invalid();
+}
+
 Range NormalViMode::motionDownToFirstNonBlank()
 {
     Range r = goLineDown();

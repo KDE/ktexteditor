@@ -381,6 +381,8 @@ void VisualViMode::initializeCommands()
     ADDMOTION(")", motionToNextSentence, 0);
     ADDMOTION("{", motionToBeforeParagraph, 0);
     ADDMOTION("}", motionToAfterParagraph, 0);
+    ADDMOTION("<c-u>", motionHalfPageUp, 0);
+    ADDMOTION("<c-d>", motionHalfPageDown, 0);
 
     // text objects
     ADDMOTION("iw", textObjectInnerWord, 0);

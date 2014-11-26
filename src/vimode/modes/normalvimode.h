@@ -198,6 +198,8 @@ public:
 
     Range motionPageDown();
     Range motionPageUp();
+    Range motionHalfPageDown();
+    Range motionHalfPageUp();
 
     Range motionUpToFirstNonBlank();
     Range motionDownToFirstNonBlank();
