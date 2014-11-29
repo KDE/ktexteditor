@@ -160,7 +160,12 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_aboutData.addCredit(i18n("All people who have contributed and I have forgotten to mention"));
 
     m_aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
-    
+
+    /**
+     * set the new Kate mascot
+     */
+    m_aboutData.setProgramLogo (QImage(QLatin1String(":/ktexteditor/mascot.png")));
+
     //
     // dir watch
     //

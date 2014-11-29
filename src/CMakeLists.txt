@@ -229,6 +229,8 @@ spellcheck/spellcheckbar.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
+qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc )
+
 if (BUILD_VIMODE)
   ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
   set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS}
