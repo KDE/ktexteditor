@@ -25,18 +25,6 @@
 
 #include <ktexteditor_export.h>
 
-// KF6 (milian, dominik):
-// - change virtual ConfigPage *configPage(int number, QWidget *parent);
-//   to     virtual ConfigPage *configPage(int number);
-// - maybe add
-//   virtual QVector<ConfigPage*> configPages() {
-//       QVector<ConfigPage*> pages;
-//       for (int i = 0; i < configPages(); +i) {
-//           pages.append(configPage(i));
-//       }
-//       return pages;
-//   }
-
 namespace KTextEditor
 {
 

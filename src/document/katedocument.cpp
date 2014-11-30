@@ -310,7 +310,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
 void KTextEditor::DocumentPrivate::saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range)
 {
     if (m_editingStackPosition != m_editingStack.size() - 1) {
-            m_editingStack.resize(m_editingStackPosition);
+        m_editingStack.resize(m_editingStackPosition);
     }
     KTextEditor::MovingInterface *moving = qobject_cast<KTextEditor::MovingInterface *>(this);
     const auto c = range.start();
