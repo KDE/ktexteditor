@@ -330,7 +330,6 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
             case Qt::Key_Escape:
                 leaveInsertMode();
                 return true;
-                break;
             case Qt::Key_Left:
                 m_view->cursorLeft();
                 return true;
@@ -378,7 +377,6 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                 }
             default:
                 return false;
-                break;
             }
         } else if (e->modifiers() == Qt::ControlModifier) {
             switch (e->key()) {
@@ -386,7 +384,6 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
             case Qt::Key_3:
                 leaveInsertMode();
                 return true;
-                break;
             case Qt::Key_Space:
                 // We use Ctrl-space as a special code in macros/ last change, which means: if replaying
                 // a macro/ last change, fetch and execute the next completion for this macro/ last change ...
@@ -398,77 +395,60 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                     m_viInputModeManager->completionReplayer()->replay();
                 }
                 return true;
-                break;
             case Qt::Key_C:
                 leaveInsertMode(true);
                 return true;
-                break;
             case Qt::Key_D:
                 commandUnindent();
                 return true;
-                break;
             case Qt::Key_E:
                 commandInsertFromBelow();
                 return true;
-                break;
             case Qt::Key_N:
                 if (!m_viInputModeManager->macroRecorder()->isReplaying()) {
                     commandCompleteNext();
                 }
                 return true;
-                break;
             case Qt::Key_P:
                 if (!m_viInputModeManager->macroRecorder()->isReplaying()) {
                     commandCompletePrevious();
                 }
                 return true;
-                break;
             case Qt::Key_T:
                 commandIndent();
                 return true;
-                break;
             case Qt::Key_W:
                 commandDeleteWord();
                 return true;
-                break;
             case Qt::Key_U:
                 return commandDeleteLine();
             case Qt::Key_J:
                 commandNewLine();
                 return true;
-                break;
             case Qt::Key_H:
                 commandDeleteCharBackward();
                 return true;
-                break;
             case Qt::Key_Y:
                 commandInsertFromAbove();
                 return true;
-                break;
             case Qt::Key_O:
                 commandSwitchToNormalModeForJustOneCommand();
                 return true;
-                break;
             case Qt::Key_Home:
                 commandToFirstCharacterInFile();
                 return true;
-                break;
             case Qt::Key_R:
                 m_waitingRegister = true;
                 return true;
-                break;
             case Qt::Key_End:
                 commandToLastCharacterInFile();
                 return true;
-                break;
             case Qt::Key_Left:
                 commandMoveOneWordLeft();
                 return true;
-                break;
             case Qt::Key_Right:
                 commandMoveOneWordRight();
                 return true;
-                break;
             default:
                 return false;
             }
