@@ -102,6 +102,7 @@ protected:
     Range m_blockRange;
 
     QString m_keys;
+    bool m_waitingRegister;
 
     unsigned int m_count;
     bool m_countedRepeatsBeginOnNewLine;

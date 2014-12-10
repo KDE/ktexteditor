@@ -50,6 +50,7 @@ InsertViMode::InsertViMode(InputModeManager *viInputModeManager,
     m_viewInternal = viewInternal;
     m_viInputModeManager = viInputModeManager;
 
+    m_waitingRegister = false;
     m_blockInsert = None;
     m_eolPos = 0;
     m_count = 1;
@@ -323,7 +324,7 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
         return true;
     }
 
-    if (m_keys.isEmpty()) {
+    if (m_keys.isEmpty() && !m_waitingRegister) {
         if (e->modifiers() == Qt::NoModifier) {
             switch (e->key()) {
             case Qt::Key_Escape:
@@ -453,8 +454,7 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                 return true;
                 break;
             case Qt::Key_R:
-                m_keys = QLatin1String("cR");
-                // Waiting for register
+                m_waitingRegister = true;
                 return true;
                 break;
             case Qt::Key_End:
@@ -475,25 +475,27 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
         }
 
         return false;
-    } else {
-
-        // Was waiting for register for Ctrl-R
-        if (m_keys == QLatin1String("cR")) {
-            QChar key =  KeyParser::self()->KeyEventToQChar(*e);
-            key = key.toLower();
-
-            // is it register ?
-            if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) ||
-                    key == QLatin1Char('_') || key == QLatin1Char('+') || key == QLatin1Char('*')) {
-                m_register = key;
-            } else {
-                m_keys = QString();
-                return false;
-            }
-            commandInsertContentOfRegister();
-            m_keys = QString();
-            return true;
+    } else if (m_waitingRegister) {
+        // ignore modifier keys alone
+        if (e->key() == Qt::Key_Shift || e->key() == Qt::Key_Control ||
+                e->key() == Qt::Key_Alt || e->key() == Qt::Key_Meta) {
+            return false;
         }
+
+        QChar key =  KeyParser::self()->KeyEventToQChar(*e);
+        key = key.toLower();
+        m_waitingRegister = false;
+
+        // is it register ?
+        // TODO: add registers such as '/'. See :h <c-r>
+        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) ||
+                key == QLatin1Char('_') || key == QLatin1Char('+') || key == QLatin1Char('*') || key == QLatin1Char('"')) {
+            m_register = key;
+        } else {
+            return false;
+        }
+        commandInsertContentOfRegister();
+        return true;
     }
     return false;
 }
