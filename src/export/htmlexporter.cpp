@@ -42,6 +42,10 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
         // for the title, we write the name of the file (/usr/local/emmanuel/myfile.cpp -> myfile.cpp)
         m_output << "<title>" << view->document()->documentName() << "</title>" << endl;
         m_output << "</head>" << endl;
+        
+        // tell in comment which highlighting was used!
+        m_output << "<!-- Highlighting: \"" << view->document()->highlightingMode() << "\" -->" << endl;
+        
         m_output << "<body>" << endl;
     }
 
