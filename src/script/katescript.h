@@ -175,7 +175,7 @@ public:
     QString backtrace(const QScriptValue &error, const QString &header = QString());
 
     /** Execute a piece of code **/
-    QScriptValue evaluate(const QString& program, const FieldMap& env={});
+    QScriptValue evaluate(const QString& program, const FieldMap& env = FieldMap());
 
     /** Displays the backtrace when a script has errored out */
     void displayBacktrace(const QScriptValue &error, const QString &header = QString());
