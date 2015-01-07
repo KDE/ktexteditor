@@ -97,6 +97,8 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_scrollTimer(this)
     , m_cursorTimer(this)
     , m_textHintTimer(this)
+    , m_clearWheelDeltaTimer(this)
+    , m_wheelDelta(0)
     , m_textHintDelay(500)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(0)
@@ -214,6 +216,10 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
     connect(&m_textHintTimer, SIGNAL(timeout()),
             this, SLOT(textHintTimeout()));
+
+    m_clearWheelDeltaTimer.setSingleShot(true);
+    connect(&m_clearWheelDeltaTimer, SIGNAL(timeout()),
+            this, SLOT(clearWheelDelta()));
 
     // selection changed to set anchor
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)),
@@ -3115,6 +3121,11 @@ void KateViewInternal::textHintTimeout()
     }
 }
 
+void KateViewInternal::clearWheelDelta()
+{
+    m_wheelDelta = 0;
+}
+
 void KateViewInternal::focusInEvent(QFocusEvent *)
 {
     if (QApplication::cursorFlashTime() > 0) {
@@ -3298,15 +3309,23 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
     // scroll up/down or left/right, if possible
     if (m_lineScroll->minimum() != m_lineScroll->maximum() && e->orientation() != Qt::Horizontal) {
         // React to this as a vertical event
+        m_wheelDelta += e->delta();
+        m_clearWheelDeltaTimer.start(200);
+
         if (e->modifiers() & Qt::ShiftModifier) {
-            if (e->delta() > 0) {
+            if (m_wheelDelta > 120) {
                 scrollPrevPage();
-            } else {
+                m_wheelDelta -= 120;
+            } else if (m_wheelDelta < -120) {
                 scrollNextPage();
+                m_wheelDelta += 120;
             }
         } else {
-            const int scrollLines = QApplication::wheelScrollLines();
-            scrollViewLines(e->delta() > 0 ? -scrollLines : scrollLines);
+            int scrollLines = QApplication::wheelScrollLines() * m_wheelDelta / 120;
+            if (qAbs(scrollLines) > 0 ) {
+                scrollViewLines(-scrollLines);
+                m_wheelDelta -= scrollLines * 120 / QApplication::wheelScrollLines();
+            }
             e->accept();
             return;
         }
