@@ -5220,6 +5220,12 @@ void KTextEditor::DocumentPrivate::slotAbortLoading()
 
 void KTextEditor::DocumentPrivate::slotUrlChanged(const QUrl &url)
 {
+    if (m_reloading) {
+        // the URL is temporarily unset and then reset to the previous URL during reload
+        // we do not want to notify the outside about this
+        return;
+    }
+
     Q_UNUSED(url);
     updateDocName();
     emit documentUrlChanged(this);
