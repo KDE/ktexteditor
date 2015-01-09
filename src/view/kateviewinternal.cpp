@@ -3313,10 +3313,10 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
         m_clearWheelDeltaTimer.start(200);
 
         if (e->modifiers() & Qt::ShiftModifier) {
-            if (m_wheelDelta > 120) {
+            if (m_wheelDelta >= 120) {
                 scrollPrevPage();
                 m_wheelDelta -= 120;
-            } else if (m_wheelDelta < -120) {
+            } else if (m_wheelDelta <= -120) {
                 scrollNextPage();
                 m_wheelDelta += 120;
             }
