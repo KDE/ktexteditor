@@ -1,5 +1,4 @@
 REVIEWBOARD_URL = "https://git.reviewboard.kde.org"
 REPOSITORY = 'git://anongit.kde.org/ktexteditor'
 BRANCH = 'master'
-TARGET_GROUPS = 'kdeframeworks'
-TARGET_PEOPLE = 'cullmann'
+TARGET_GROUPS = 'kate'
