@@ -50,6 +50,6 @@ add_custom_command(OUTPUT ${INDEXFILE_OUT}
   DEPENDS katehighlightingindexer.cpp ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS} ${INDEXFILE_IN})
 add_custom_target(GenerateIndexFile ALL DEPENDS ${INDEXFILE_OUT})
 
-install(FILES ${INDEXFILE_OUT} ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS} DESTINATION ${DATA_INSTALL_DIR}/katepart5/syntax)
+install(FILES ${INDEXFILE_OUT} ${LANGUAGE_XSD} ${ALL_HIGHLIGHTERS} DESTINATION ${KDE_INSTALL_DATADIR}/katepart5/syntax)
 
 endif()
