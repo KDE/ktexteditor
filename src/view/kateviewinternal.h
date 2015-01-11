@@ -356,6 +356,9 @@ private:
     // are we allowed to scroll columns?
     bool columnScrollingPossible();
 
+    // the same for lines
+    bool lineScrollingPossible();
+
     // returns the maximum X value / col value a cursor can take for a specific line range
     int lineMaxCursorX(const KateTextLayout &line);
     int lineMaxCol(const KateTextLayout &line);
@@ -383,6 +386,12 @@ private:
     int m_wrapChangeViewLine;
     KTextEditor::Cursor m_cachedMaxStartPos;
 
+    // These variables hold remainders of (vertical) scroll deltas reported via QWheelEvent
+    int m_wheelAngleDelta;
+    int m_wheelPixelDelta;
+
+    static const int s_wheelAngleUnitsPerLine = 8 * 15; // 8 units per degree * 15 degrees per line
+
     //
     // implementation details for KTextEditor::FlashTextInterface
     //
@@ -403,11 +412,11 @@ private:
     QTimer m_cursorTimer;
     QTimer m_textHintTimer;
     QTimer m_clearWheelDeltaTimer;
-    int    m_wheelDelta;
 
 
     static const int s_scrollTime = 30;
     static const int s_scrollMargin = 16;
+    static const int s_clearWheelDeltaTime = 200;
 
 private Q_SLOTS:
     void scrollTimeout();
