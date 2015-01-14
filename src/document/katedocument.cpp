@@ -4076,7 +4076,8 @@ bool KTextEditor::DocumentPrivate::documentReload()
 
     // save cursor positions for all views
     QHash<KTextEditor::ViewPrivate *, KTextEditor::Cursor> cursorPositions;
-    foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+    for (auto it = m_views.constBegin(); it != m_views.constEnd(); ++it) {
+        auto v = it.value();
         cursorPositions.insert(v, v->cursorPosition());
     }
 
@@ -4087,7 +4088,8 @@ bool KTextEditor::DocumentPrivate::documentReload()
     m_userSetEncodingForNextReload = false;
 
     // restore cursor positions for all views
-    foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+    for (auto it = m_views.constBegin(); it != m_views.constEnd(); ++it) {
+        auto v = it.value();
         setActiveView(v);
         v->setCursorPositionInternal(cursorPositions.value(v), m_config->tabWidth(), false);
         if (v->isVisible()) {
