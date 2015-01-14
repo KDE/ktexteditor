@@ -255,4 +255,47 @@ void KateViewTest::testKillline()
     QCOMPARE(doc.text(), QLatin1String("foo\nxxx\n"));
 }
 
+void KateViewTest::testFoldFirstLine()
+{
+    QTemporaryFile file("XXXXXX.cpp");
+    file.open();
+    QTextStream stream(&file);
+    stream << "/**\n"
+           << " * foo\n"
+           << " */\n"
+           << "\n"
+           << "int main() {}\n";
+    file.close();
+
+    KTextEditor::DocumentPrivate doc;
+    QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
+    QCOMPARE(doc.highlightingMode(), QString("C++"));
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    view->config()->setFoldFirstLine(false);
+    view->setCursorPosition({4, 0});
+
+    // initially, nothing is folded
+    QVERIFY(view->textFolding().isLineVisible(1));
+
+    // now change the config, and expect the header to be folded
+    view->config()->setFoldFirstLine(true);
+    qint64 foldedRangeId = 0;
+    QVERIFY(!view->textFolding().isLineVisible(1, &foldedRangeId));
+
+    // now unfold the range
+    QVERIFY(view->textFolding().unfoldRange(foldedRangeId));
+    QVERIFY(view->textFolding().isLineVisible(1));
+
+    // and save the file, we do not expect the folding to change then
+    doc.setModified(true);
+    doc.saveFile();
+    QVERIFY(view->textFolding().isLineVisible(1));
+
+    // now reload the document, nothing should change
+    doc.setModified(false);
+    QVERIFY(doc.documentReload());
+    QVERIFY(view->textFolding().isLineVisible(1));
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

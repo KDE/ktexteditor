@@ -950,6 +950,9 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
 
 void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
+    Q_FOREACH (FoldingRange *range, m_foldingRanges) {
+        unfoldRange(range->id);
+    }
     /**
      * try to create all folding ranges
      */

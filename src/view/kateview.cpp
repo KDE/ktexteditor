@@ -141,6 +141,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_mainWindow(mainWindow)
     , m_statusBar(Q_NULLPTR)
     , m_temporaryAutomaticInvocationDisabled(false)
+    , m_autoFoldedFirstLine(false)
 {
     // queued connect to collapse view updates for range changes, INIT THIS EARLY ENOUGH!
     connect(this, SIGNAL(delayedUpdateOfView()), this, SLOT(slotDelayedUpdateOfView()), Qt::QueuedConnection);
@@ -1851,14 +1852,6 @@ void KTextEditor::ViewPrivate::updateConfig()
     tagAll();
     updateView(true);
 
-    if (hasCommentInFirstLine(m_doc)) {
-        if (config()->foldFirstLine()) {
-            foldLine(0);
-        } else {
-            unfoldLine(0);
-        }
-    }
-
     emit configChanged();
 }
 
@@ -1923,6 +1916,18 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
     // folding bar
     m_viewInternal->m_leftBorder->setFoldingMarkersOn(config()->foldingBar());
     m_toggleFoldingMarkers->setChecked(config()->foldingBar());
+
+    if (hasCommentInFirstLine(m_doc)) {
+        if (config()->foldFirstLine() && !m_autoFoldedFirstLine) {
+            foldLine(0);
+            m_autoFoldedFirstLine = true;
+       } else if (!config()->foldFirstLine() && m_autoFoldedFirstLine) {
+            unfoldLine(0);
+            m_autoFoldedFirstLine = false;
+        }
+    } else {
+        m_autoFoldedFirstLine = false;
+    }
 
 #if 0
     // FIXME: FOLDING
