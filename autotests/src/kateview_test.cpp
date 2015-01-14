@@ -100,6 +100,26 @@ void KateViewTest::testReloadMultipleViews()
     QVERIFY(doc.documentReload());
 }
 
+void KateViewTest::testTabCursorOnReload()
+{
+    // testcase for https://bugs.kde.org/show_bug.cgi?id=258480
+    QTemporaryFile file("XXXXXX.cpp");
+    file.open();
+    QTextStream stream(&file);
+    stream << "\tfoo\n";
+    file.close();
+
+    KTextEditor::DocumentPrivate doc;
+    QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    const KTextEditor::Cursor cursor(0, 4);
+    view->setCursorPosition(cursor);
+    QCOMPARE(view->cursorPosition(), cursor);
+    QVERIFY(doc.documentReload());
+    QCOMPARE(view->cursorPosition(), cursor);
+}
+
 void KateViewTest::testLowerCaseBlockSelection()
 {
     // testcase for https://bugs.kde.org/show_bug.cgi?id=258480

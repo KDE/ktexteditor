@@ -4091,7 +4091,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     for (auto it = m_views.constBegin(); it != m_views.constEnd(); ++it) {
         auto v = it.value();
         setActiveView(v);
-        v->setCursorPositionInternal(cursorPositions.value(v), m_config->tabWidth(), false);
+        v->setCursorPosition(cursorPositions.value(v));
         if (v->isVisible()) {
             v->repaintText(false);
         }

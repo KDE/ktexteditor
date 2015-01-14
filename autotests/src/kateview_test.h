@@ -32,6 +32,7 @@ public:
 
 private Q_SLOTS:
     void testReloadMultipleViews();
+    void testTabCursorOnReload();
 
     void testLowerCaseBlockSelection();
 
