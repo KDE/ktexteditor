@@ -4029,88 +4029,88 @@ void KTextEditor::DocumentPrivate::setModifiedOnDiskWarning(bool on)
 
 bool KTextEditor::DocumentPrivate::documentReload()
 {
-    if (!url().isEmpty()) {
-        if (m_modOnHd && m_fileChangedDialogsActivated) {
-            QWidget *parentWidget(dialogParent());
-
-            int i = KMessageBox::warningYesNoCancel
-                    (parentWidget, reasonedMOHString() + QLatin1String("\n\n") + i18n("What do you want to do?"),
-                     i18n("File Was Changed on Disk"),
-                     KGuiItem(i18n("&Reload File"), QLatin1String("view-refresh")),
-                     KGuiItem(i18n("&Ignore Changes"), QLatin1String("dialog-warning")));
-
-            if (i != KMessageBox::Yes) {
-                if (i == KMessageBox::No) {
-                    m_modOnHd = false;
-                    m_modOnHdReason = OnDiskUnmodified;
-                    emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
-                }
-
-                // reset some flags only valid for one reload!
-                m_userSetEncodingForNextReload = false;
-                return false;
-            }
-        }
-
-        emit aboutToReload(this);
-
-        QList<KateDocumentTmpMark> tmp;
-
-        for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
-            KateDocumentTmpMark m;
-
-            m.line = line(i.value()->line);
-            m.mark = *i.value();
-
-            tmp.append(m);
-        }
-
-        const QString oldMode = mode();
-        const bool byUser = m_fileTypeSetByUser;
-        const QString hl_mode = highlightingMode();
-
-        m_storedVariables.clear();
-
-        // save cursor positions for all views
-        QHash<KTextEditor::ViewPrivate *, KTextEditor::Cursor> cursorPositions;
-        foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
-            cursorPositions.insert(v, v->cursorPosition());
-        }
-
-        m_reloading = true;
-        KTextEditor::DocumentPrivate::openUrl(url());
-
-        // reset some flags only valid for one reload!
-        m_userSetEncodingForNextReload = false;
-
-        // restore cursor positions for all views
-        foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
-            setActiveView(v);
-            v->setCursorPositionInternal(cursorPositions.value(v), m_config->tabWidth(), false);
-            if (v->isVisible()) {
-                v->repaintText(false);
-            }
-        }
-
-        for (int z = 0; z < tmp.size(); z++) {
-            if (z < (int)lines()) {
-                if (line(tmp.at(z).mark.line) == tmp.at(z).line) {
-                    setMark(tmp.at(z).mark.line, tmp.at(z).mark.type);
-                }
-            }
-        }
-
-        if (byUser) {
-            setMode(oldMode);
-        }
-        setHighlightingMode(hl_mode);
-
-        emit reloaded(this);
-
-        return true;
+    if (url().isEmpty()) {
+        return false;
     }
 
-    return false;
+    if (m_modOnHd && m_fileChangedDialogsActivated) {
+        QWidget *parentWidget(dialogParent());
+
+        int i = KMessageBox::warningYesNoCancel
+                (parentWidget, reasonedMOHString() + QLatin1String("\n\n") + i18n("What do you want to do?"),
+                    i18n("File Was Changed on Disk"),
+                    KGuiItem(i18n("&Reload File"), QLatin1String("view-refresh")),
+                    KGuiItem(i18n("&Ignore Changes"), QLatin1String("dialog-warning")));
+
+        if (i != KMessageBox::Yes) {
+            if (i == KMessageBox::No) {
+                m_modOnHd = false;
+                m_modOnHdReason = OnDiskUnmodified;
+                emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
+            }
+
+            // reset some flags only valid for one reload!
+            m_userSetEncodingForNextReload = false;
+            return false;
+        }
+    }
+
+    emit aboutToReload(this);
+
+    QList<KateDocumentTmpMark> tmp;
+
+    for (QHash<int, KTextEditor::Mark *>::const_iterator i = m_marks.constBegin(); i != m_marks.constEnd(); ++i) {
+        KateDocumentTmpMark m;
+
+        m.line = line(i.value()->line);
+        m.mark = *i.value();
+
+        tmp.append(m);
+    }
+
+    const QString oldMode = mode();
+    const bool byUser = m_fileTypeSetByUser;
+    const QString hl_mode = highlightingMode();
+
+    m_storedVariables.clear();
+
+    // save cursor positions for all views
+    QHash<KTextEditor::ViewPrivate *, KTextEditor::Cursor> cursorPositions;
+    foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+        cursorPositions.insert(v, v->cursorPosition());
+    }
+
+    m_reloading = true;
+    KTextEditor::DocumentPrivate::openUrl(url());
+
+    // reset some flags only valid for one reload!
+    m_userSetEncodingForNextReload = false;
+
+    // restore cursor positions for all views
+    foreach (KTextEditor::ViewPrivate *v, m_views.values()) {
+        setActiveView(v);
+        v->setCursorPositionInternal(cursorPositions.value(v), m_config->tabWidth(), false);
+        if (v->isVisible()) {
+            v->repaintText(false);
+        }
+    }
+
+    for (int z = 0; z < tmp.size(); z++) {
+        if (z < (int)lines()) {
+            if (line(tmp.at(z).mark.line) == tmp.at(z).line) {
+                setMark(tmp.at(z).mark.line, tmp.at(z).mark.type);
+            }
+        }
+    }
+
+    if (byUser) {
+        setMode(oldMode);
+    }
+    setHighlightingMode(hl_mode);
+
+    emit reloaded(this);
+
+    return true;
 }
 
 bool KTextEditor::DocumentPrivate::documentSave()
