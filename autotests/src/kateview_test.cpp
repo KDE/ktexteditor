@@ -161,9 +161,14 @@ void KateViewTest::testSelection()
     view->resize(100, 100);
     view->show();
 
-    // hackish but works: access to KateViewInternal
-    QObject *internalView = view->childAt(50, 50);
-    QCOMPARE(internalView->metaObject()->className(), "KateViewInternal");
+    QObject *internalView = nullptr;
+    foreach (QObject* child, view->children()) {
+        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
+            internalView = child;
+            break;
+        }
+    }
+    QVERIFY(internalView);
 
     const QPoint afterA = view->cursorToCoordinate(Cursor(0, 1));
     const QPoint afterB = view->cursorToCoordinate(Cursor(1, 1));
