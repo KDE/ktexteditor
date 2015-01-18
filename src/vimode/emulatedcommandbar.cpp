@@ -908,7 +908,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         activateWordFromDocumentCompletion();
         return true;
     }
-    if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) {
+    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
         if (!m_completer->popup()->isVisible()) {
             if (m_mode == Command) {
                 if (isCursorInFindTermOfSed()) {
@@ -934,7 +934,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         }
         return true;
     }
-    if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) {
+    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
         if (!m_completer->popup()->isVisible()) {
             if (m_mode == Command) {
                 activateCommandHistoryCompletion();
