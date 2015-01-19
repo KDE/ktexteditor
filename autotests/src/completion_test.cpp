@@ -490,4 +490,3 @@ void CompletionTest::benchCompletionModel()
     }
 }
 
-#include "completion_test.moc"

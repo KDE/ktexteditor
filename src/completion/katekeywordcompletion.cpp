@@ -207,6 +207,5 @@ KTextEditor::CodeCompletionModelControllerInterface::MatchReaction KateKeywordCo
     return KTextEditor::CodeCompletionModelControllerInterface::None;
 }
 
-#include "katekeywordcompletion.moc"
 
 // kate: indent-width 4; replace-tabs on

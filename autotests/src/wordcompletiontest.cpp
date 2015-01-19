@@ -111,5 +111,4 @@ void WordCompletionTest::benchWordRetrievalDistinct()
     }
 }
 
-#include "wordcompletiontest.moc"
 
