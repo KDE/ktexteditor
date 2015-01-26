@@ -38,11 +38,21 @@
 
 #define ON_THE_FLY_DEBUG qCDebug(LOG_PART)
 
+namespace {
+
+inline const QPair<KTextEditor::MovingRange *, QString>& invalidSpellCheckQueueItem()
+{
+    static const auto item = QPair<KTextEditor::MovingRange *, QString>(nullptr, QString());
+    return item;
+}
+
+}
+
 KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     : QObject(document),
       m_document(document),
       m_backgroundChecker(NULL),
-      m_currentlyCheckedItem(invalidSpellCheckQueueItem),
+      m_currentlyCheckedItem(invalidSpellCheckQueueItem()),
       m_refreshView(NULL)
 {
     ON_THE_FLY_DEBUG << "created";
@@ -109,9 +119,6 @@ void KateOnTheFlyChecker::clearMisspellingForWord(const QString &word)
     }
 }
 
-const KateOnTheFlyChecker::SpellCheckItem KateOnTheFlyChecker::invalidSpellCheckQueueItem =
-    SpellCheckItem(NULL, QString());
-
 void KateOnTheFlyChecker::handleRespellCheckBlock(KTextEditor::DocumentPrivate *kateDocument, int start, int end)
 {
     Q_ASSERT(kateDocument == m_document);
@@ -168,7 +175,7 @@ void KateOnTheFlyChecker::handleInsertedText(const KTextEditor::Range &range)
     KTextEditor::Range consideredRange = range;
     ON_THE_FLY_DEBUG << m_document << range;
 
-    bool spellCheckInProgress = m_currentlyCheckedItem != invalidSpellCheckQueueItem;
+    bool spellCheckInProgress = m_currentlyCheckedItem != invalidSpellCheckQueueItem();
 
     if (spellCheckInProgress) {
         KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.first;
@@ -277,7 +284,7 @@ void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
             ++i;
         }
     }
-    bool spellCheckInProgress = m_currentlyCheckedItem != invalidSpellCheckQueueItem;
+    bool spellCheckInProgress = m_currentlyCheckedItem != invalidSpellCheckQueueItem();
     const bool emptyAtStart = m_spellCheckQueue.isEmpty();
     if (spellCheckInProgress) {
         KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.first;
@@ -343,7 +350,7 @@ void KateOnTheFlyChecker::freeDocument()
         deleteMovingRangeQuickly(movingRange);
         i = m_spellCheckQueue.erase(i);
     }
-    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem) {
+    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem()) {
         KTextEditor::MovingRange *movingRange = m_currentlyCheckedItem.first;
         deleteMovingRangeQuickly(movingRange);
     }
@@ -359,7 +366,7 @@ void KateOnTheFlyChecker::freeDocument()
 
 void KateOnTheFlyChecker::performSpellCheck()
 {
-    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem) {
+    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem()) {
         ON_THE_FLY_DEBUG << "exited as a check is currently in progress";
         return;
     }
@@ -428,7 +435,7 @@ void KateOnTheFlyChecker::removeRangeFromEverything(KTextEditor::MovingRange *mo
 
 bool KateOnTheFlyChecker::removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range)
 {
-    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem
+    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem()
             && m_currentlyCheckedItem.first == range) {
         stopCurrentSpellCheck();
         return true;
@@ -439,7 +446,7 @@ bool KateOnTheFlyChecker::removeRangeFromCurrentSpellCheck(KTextEditor::MovingRa
 void KateOnTheFlyChecker::stopCurrentSpellCheck()
 {
     m_currentDecToEncOffsetList.clear();
-    m_currentlyCheckedItem = invalidSpellCheckQueueItem;
+    m_currentlyCheckedItem = invalidSpellCheckQueueItem();
     if (m_backgroundChecker) {
         m_backgroundChecker->stop();
     }
@@ -580,7 +587,7 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
 
 void KateOnTheFlyChecker::misspelling(const QString &word, int start)
 {
-    if (m_currentlyCheckedItem == invalidSpellCheckQueueItem) {
+    if (m_currentlyCheckedItem == invalidSpellCheckQueueItem()) {
         ON_THE_FLY_DEBUG << "exited as no spell check is taking place";
         return;
     }
@@ -621,7 +628,7 @@ void KateOnTheFlyChecker::misspelling(const QString &word, int start)
 void KateOnTheFlyChecker::spellCheckDone()
 {
     ON_THE_FLY_DEBUG << "on-the-fly spell check done, queue length " << m_spellCheckQueue.size();
-    if (m_currentlyCheckedItem == invalidSpellCheckQueueItem) {
+    if (m_currentlyCheckedItem == invalidSpellCheckQueueItem()) {
         return;
     }
     KTextEditor::MovingRange *movingRange = m_currentlyCheckedItem.first;

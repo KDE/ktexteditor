@@ -30,11 +30,6 @@
 using KTextEditor::Range;
 using KTextEditor::Cursor;
 
-namespace
-{
-CommandRangeExpressionParser rangeExpressionParser;
-}
-
 CommandRangeExpressionParser::CommandRangeExpressionParser()
 {
     m_line.setPattern(QLatin1String("\\d+"));
@@ -68,6 +63,7 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
 
 Range CommandRangeExpressionParser::parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand)
 {
+    CommandRangeExpressionParser rangeExpressionParser;
     return rangeExpressionParser.parseRangeExpression(command, destRangeExpression, destTransformedCommand, view);
 }
 

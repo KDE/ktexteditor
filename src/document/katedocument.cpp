@@ -4229,11 +4229,6 @@ void KTextEditor::DocumentPrivate::updateConfig()
       add interface for plugins/apps to set/get variables
       add view stuff
 */
-QRegExp KTextEditor::DocumentPrivate::kvLine = QRegExp(QLatin1String("kate:(.*)"));
-QRegExp KTextEditor::DocumentPrivate::kvLineWildcard = QRegExp(QLatin1String("kate-wildcard\\((.*)\\):(.*)"));
-QRegExp KTextEditor::DocumentPrivate::kvLineMime = QRegExp(QLatin1String("kate-mimetype\\((.*)\\):(.*)"));
-QRegExp KTextEditor::DocumentPrivate::kvVar = QRegExp(QLatin1String("([\\w\\-]+)\\s+([^;]+)"));
-
 void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 {
     if (!onlyViewAndRenderer) {
@@ -4268,6 +4263,11 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 
 void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndRenderer)
 {
+    static const QRegExp kvLine(QStringLiteral("kate:(.*)"));
+    static const QRegExp kvLineWildcard(QStringLiteral("kate-wildcard\\((.*)\\):(.*)"));
+    static const QRegExp kvLineMime(QStringLiteral("kate-mimetype\\((.*)\\):(.*)"));
+    static const QRegExp kvVar(QStringLiteral("([\\w\\-]+)\\s+([^;]+)"));
+
     // simple check first, no regex
     // no kate inside, no vars, simple...
     if (!t.contains(QLatin1String("kate"))) {

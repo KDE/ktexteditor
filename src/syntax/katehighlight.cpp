@@ -55,7 +55,12 @@
 //END defines
 
 //BEGIN STATICS
-static const QString stdDeliminator = QString::fromLatin1(" \t.():!+,-<=>%&*/;?[]^{|}~\\");
+namespace {
+inline const QString stdDeliminator()
+{
+    return QStringLiteral(" \t.():!+,-<=>%&*/;?[]^{|}~\\");
+}
+}
 //END
 
 //BEGIN KateHighlighting
@@ -84,7 +89,7 @@ KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def) : refCount
         iLicense = def->license;
     }
 
-    deliminator = stdDeliminator;
+    deliminator = stdDeliminator();
 }
 
 KateHighlighting::~KateHighlighting()
@@ -392,7 +397,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                         }
                     } else {
                         if (lastDelimChar == lastChar) {
-                        } else if (stdDeliminator.contains(lastChar)) {
+                        } else if (stdDeliminator().contains(lastChar)) {
                             lastDelimChar = lastChar;
                         } else {
                             continue;
@@ -794,8 +799,8 @@ void KateHighlighting::init()
     if (noHl) {
         iHidden = false;
         m_additionalData.insert(QString::fromLatin1("none"), new HighlightPropertyBag);
-        m_additionalData[QLatin1String("none")]->deliminator = stdDeliminator;
-        m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator;
+        m_additionalData[QLatin1String("none")]->deliminator = stdDeliminator();
+        m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator();
         m_hlIndex[0] = QLatin1String("none");
         m_ctxIndex[0] = QLatin1String("none");
         
@@ -1297,7 +1302,7 @@ void KateHighlighting::readEmptyLineConfig()
  */
 void KateHighlighting::readGlobalKeywordConfig()
 {
-    deliminator = stdDeliminator;
+    deliminator = stdDeliminator();
 
 #ifdef HIGHLIGHTING_DEBUG
     qCDebug(LOG_PART) << "readGlobalKeywordConfig:BEGIN";
@@ -1371,7 +1376,7 @@ void KateHighlighting::readWordWrapConfig()
     KateHlManager::self()->syntax.setIdentifier(buildIdentifier);
     KateSyntaxContextData *data = KateHlManager::self()->syntax.getConfig(QLatin1String("general"), QLatin1String("keywords"));
 
-    QString wordWrapDeliminator = stdDeliminator;
+    QString wordWrapDeliminator = stdDeliminator();
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
         qCDebug(LOG_PART) << "Found global keyword config";

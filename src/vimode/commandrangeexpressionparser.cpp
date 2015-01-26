@@ -32,37 +32,44 @@
 
 using namespace KateVi;
 
-#define RegExp(x) QRegularExpression(QLatin1String(x))
+#define RegExp(name, pattern) inline const QRegularExpression& name() { \
+    static const QRegularExpression regex(QStringLiteral(pattern)); \
+    return regex; }
 
 namespace
 {
-    const QRegularExpression RE_Line = RegExp("\\d+");
-    const QRegularExpression RE_LastLine = RegExp("\\$");
-    const QRegularExpression RE_ThisLine = RegExp("\\.");
-    const QRegularExpression RE_Mark = RegExp("\\'[0-9a-z><\\+\\*\\_]");
-    const QRegularExpression RE_ForwardSearch = RegExp("^/([^/]*)/?$");
-    const QRegularExpression RE_ForwardSearch2 = RegExp("/[^/]*/?"); // no group
-    const QRegularExpression RE_BackwardSearch = RegExp("^\\?([^?]*)\\??$");
-    const QRegularExpression RE_BackwardSearch2 = RegExp("\\?[^?]*\\??"); // no group
-    const QRegularExpression RE_Base = QRegularExpression(QLatin1String("(?:") + RE_Mark.pattern() + QLatin1String(")|(?:") +
-                      RE_Line.pattern() + QLatin1String(")|(?:") +
-                      RE_ThisLine.pattern() + QLatin1String(")|(?:") +
-                      RE_LastLine.pattern() + QLatin1String(")|(?:") +
-                      RE_ForwardSearch2.pattern() + QLatin1String(")|(?:") +
-                      RE_BackwardSearch2.pattern() + QLatin1String(")"));
-    const QRegularExpression RE_Offset = QRegularExpression(QLatin1String("[+-](?:") + RE_Base.pattern() + QLatin1String(")?"));
-
-    // The position regexp contains two groups: the base and the offset.
-    // The offset may be empty.
-    const QRegularExpression RE_Position = QRegularExpression(QLatin1String("(") + RE_Base.pattern() + QLatin1String(")((?:") + RE_Offset.pattern() + QLatin1String(")*)"));
-
+    RegExp(RE_Line, "\\d+")
+    RegExp(RE_LastLine, "\\$")
+    RegExp(RE_ThisLine, "\\.")
+    RegExp(RE_Mark, "\\'[0-9a-z><\\+\\*\\_]")
+    RegExp(RE_ForwardSearch, "^/([^/]*)/?$")
+    RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$")
+    RegExp(RE_CalculatePositionSplit, "[-+](?!([+-]|$))")
     // The range regexp contains seven groups: the first is the start position, the second is
     // the base of the start position, the third is the offset of the start position, the
     // fourth is the end position including a leading comma, the fifth is end position
     // without the comma, the sixth is the base of the end position, and the seventh is the
     // offset of the end position. The third and fourth groups may be empty, and the
     // fifth, sixth and seventh groups are contingent on the fourth group.
-    const QRegularExpression RE_CmdRange = QRegularExpression(QLatin1String("^(") + RE_Position.pattern() + QLatin1String(")((?:,(") + RE_Position.pattern() + QLatin1String("))?)"));
+    inline const QRegularExpression& RE_CmdRange()
+    {
+        static const QRegularExpression regex(([] () -> QString {
+            const auto forwardSearch = QLatin1String("/[^/]*/?"); // no group
+            const auto backwardSearch = QLatin1String("\\?[^?]*\\??"); // no group
+            const auto base = QLatin1String("(?:") + RE_Mark().pattern() + QLatin1String(")|(?:") +
+                      RE_Line().pattern() + QLatin1String(")|(?:") +
+                      RE_ThisLine().pattern() + QLatin1String(")|(?:") +
+                      RE_LastLine().pattern() + QLatin1String(")|(?:") +
+                      forwardSearch + QLatin1String(")|(?:") +
+                      backwardSearch + QLatin1String(")");
+            const auto offset = QLatin1String("[+-](?:") + base + QLatin1String(")?");
+            // The position regexp contains two groups: the base and the offset.
+            // The offset may be empty.
+            const auto position = QLatin1String("(") + base + QLatin1String(")((?:") + offset + QLatin1String(")*)");
+            return QLatin1String("^(") + position + QLatin1String(")((?:,(") + position + QLatin1String("))?)");
+        })());
+        return regex;
+    }
 }
 
 CommandRangeExpressionParser::CommandRangeExpressionParser(InputModeManager *vimanager)
@@ -80,7 +87,7 @@ QString CommandRangeExpressionParser::parseRangeString(const QString &command) c
         return QLatin1String("%");
     }
 
-    QRegularExpressionMatch rangeMatch = RE_CmdRange.match(command);
+    QRegularExpressionMatch rangeMatch = RE_CmdRange().match(command);
 
     return rangeMatch.hasMatch() ? rangeMatch.captured() : QString();
 }
@@ -98,7 +105,7 @@ KTextEditor::Range CommandRangeExpressionParser::parseRange(const QString &comma
         commandTmp.replace(0, 1, QLatin1String("1,$"));
     }
 
-    QRegularExpressionMatch rangeMatch = RE_CmdRange.match(commandTmp);
+    QRegularExpressionMatch rangeMatch = RE_CmdRange().match(commandTmp);
 
     if (!rangeMatch.hasMatch()) {
         return KTextEditor::Range::invalid();
@@ -109,7 +116,7 @@ KTextEditor::Range CommandRangeExpressionParser::parseRange(const QString &comma
     int position1 = calculatePosition(position_string1);
     int position2 = (position_string2.isEmpty()) ? position1 : calculatePosition(rangeMatch.captured(5));
 
-    commandTmp.remove(RE_CmdRange);
+    commandTmp.remove(RE_CmdRange());
 
     // special case: if the command is just a number with an optional +/- prefix, rewrite to "goto"
     if (commandTmp.isEmpty()) {
@@ -125,7 +132,7 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
 {
     int pos = 0;
     QList<bool> operators_list;
-    QStringList split = string.split(RegExp("[-+](?!([+-]|$))"));
+    QStringList split = string.split(RE_CalculatePositionSplit());
     QList<int> values;
 
     Q_FOREACH (const QString &line, split) {
@@ -169,7 +176,7 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
 
 bool CommandRangeExpressionParser::matchLineNumber(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_Line.match(line);
+    QRegularExpressionMatch match = RE_Line().match(line);
 
     if (!match.hasMatch() || match.capturedLength() != line.length()) {
         return false;
@@ -181,7 +188,7 @@ bool CommandRangeExpressionParser::matchLineNumber(const QString &line, QList<in
 
 bool CommandRangeExpressionParser::matchLastLine(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_LastLine.match(line);
+    QRegularExpressionMatch match = RE_LastLine().match(line);
 
     if (!match.hasMatch() || match.capturedLength() != line.length()) {
         return false;
@@ -193,7 +200,7 @@ bool CommandRangeExpressionParser::matchLastLine(const QString &line, QList<int>
 
 bool CommandRangeExpressionParser::matchThisLine(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_ThisLine.match(line);
+    QRegularExpressionMatch match = RE_ThisLine().match(line);
 
     if (!match.hasMatch() || match.capturedLength() != line.length()) {
         return false;
@@ -205,7 +212,7 @@ bool CommandRangeExpressionParser::matchThisLine(const QString &line, QList<int>
 
 bool CommandRangeExpressionParser::matchMark(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_Mark.match(line);
+    QRegularExpressionMatch match = RE_Mark().match(line);
 
     if (!match.hasMatch() || match.capturedLength() != line.length()) {
         return false;
@@ -217,7 +224,7 @@ bool CommandRangeExpressionParser::matchMark(const QString &line, QList<int> &va
 
 bool CommandRangeExpressionParser::matchForwardSearch(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_ForwardSearch.match(line);
+    QRegularExpressionMatch match = RE_ForwardSearch().match(line);
 
     if (!match.hasMatch()) {
         return false;
@@ -239,7 +246,7 @@ bool CommandRangeExpressionParser::matchForwardSearch(const QString &line, QList
 
 bool CommandRangeExpressionParser::matchBackwardSearch(const QString &line, QList<int> &values) const
 {
-    QRegularExpressionMatch match = RE_BackwardSearch.match(line);
+    QRegularExpressionMatch match = RE_BackwardSearch().match(line);
 
     if (!match.hasMatch()) {
         return false;

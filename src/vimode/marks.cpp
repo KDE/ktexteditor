@@ -37,7 +37,13 @@ namespace {
     const QChar LastUserMark = QLatin1Char('z');
     const QChar BeforeJump = QLatin1Char('\'');
     const QChar BeforeJumpAlter = QLatin1Char('`');
-    const QString UserMarks = QLatin1String("abcdefghijklmnopqrstuvwxyz");
+    const QChar UserMarks[] = {QLatin1Char('a'), QLatin1Char('b'), QLatin1Char('c'), QLatin1Char('d'),
+                               QLatin1Char('e'), QLatin1Char('f'), QLatin1Char('g'), QLatin1Char('h'),
+                               QLatin1Char('i'), QLatin1Char('j'), QLatin1Char('k'), QLatin1Char('l'),
+                               QLatin1Char('m'), QLatin1Char('n'), QLatin1Char('o'), QLatin1Char('p'),
+                               QLatin1Char('q'), QLatin1Char('r'), QLatin1Char('s'), QLatin1Char('t'),
+                               QLatin1Char('u'), QLatin1Char('v'), QLatin1Char('w'), QLatin1Char('x'),
+                               QLatin1Char('y'), QLatin1Char('z')};
 }
 
 Marks::Marks(InputModeManager *imm)
@@ -148,7 +154,7 @@ void Marks::markChanged(KTextEditor::Document *doc,
     } else if (action == KTextEditor::MarkInterface::MarkAdded) {
         bool freeMarkerCharFound = false;
 
-        Q_FOREACH(const QChar &markerChar, UserMarks) {
+        for (const QChar markerChar : UserMarks) {
             if (!m_marks.value(markerChar)) {
                 setMark(markerChar, KTextEditor::Cursor(mark.line, 0));
                 freeMarkerCharFound = true;
@@ -184,7 +190,7 @@ void Marks::syncViMarksAndBookmarks()
             continue;
         }
 
-        Q_FOREACH (const QChar &markerChar, UserMarks) {
+        for (const QChar markerChar : UserMarks) {
             if (!m_marks.value(markerChar)) {
                 setMark(markerChar, KTextEditor::Cursor(mark->line, 0));
                 break;

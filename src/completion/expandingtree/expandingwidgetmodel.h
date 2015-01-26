@@ -130,8 +130,8 @@ protected:
     //Makes sure m_expandedIcon and m_collapsedIcon are loaded
     void cacheIcons() const;
 
-    static QIcon m_expandedIcon;
-    static QIcon m_collapsedIcon;
+    mutable QIcon m_expandedIcon;
+    mutable QIcon m_collapsedIcon;
 
     //Does not update the view
     void partiallyUnExpand(const QModelIndex &index);

@@ -76,7 +76,6 @@ protected:
     QList<SpellCheckItem> m_spellCheckQueue;
     Sonnet::BackgroundChecker *m_backgroundChecker;
     SpellCheckItem m_currentlyCheckedItem;
-    static const SpellCheckItem invalidSpellCheckQueueItem;
     MisspelledList m_misspelledList;
     ModificationList m_modificationList;
     KTextEditor::DocumentPrivate::OffsetList m_currentDecToEncOffsetList;

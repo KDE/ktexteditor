@@ -34,8 +34,16 @@
 
 #include <cctype>
 
-const QString MODE_NONE = QLatin1String("none");
-const QString MODE_NORMAL = QLatin1String("normal");
+namespace {
+inline const QString MODE_NONE()
+{
+    return QStringLiteral("none");
+}
+inline const QString MODE_NORMAL()
+{
+    return QStringLiteral("normal");
+}
+}
 
 //BEGIN KateAutoIndent
 
@@ -70,11 +78,11 @@ int KateAutoIndent::modeCount()
 QString KateAutoIndent::modeName(int mode)
 {
     if (mode == 0 || mode >= modeCount()) {
-        return MODE_NONE;
+        return MODE_NONE();
     }
 
     if (mode == 1) {
-        return MODE_NORMAL;
+        return MODE_NORMAL();
     }
 
     return KTextEditor::EditorPrivate::self()->scriptManager()->indentationScriptByIndex(mode - 2)->indentHeader().baseName();
@@ -309,13 +317,13 @@ void KateAutoIndent::setMode(const QString &name)
     m_script = 0;
 
     // first, catch easy stuff... normal mode and none, easy...
-    if (name.isEmpty() || name == MODE_NONE) {
-        m_mode = MODE_NONE;
+    if (name.isEmpty() || name == MODE_NONE()) {
+        m_mode = MODE_NONE();
         return;
     }
 
-    if (name == MODE_NORMAL) {
-        m_mode = MODE_NORMAL;
+    if (name == MODE_NORMAL()) {
+        m_mode = MODE_NORMAL();
         return;
     }
 
@@ -338,7 +346,7 @@ void KateAutoIndent::setMode(const QString &name)
     }
 
     // Fall back to normal
-    m_mode = MODE_NORMAL;
+    m_mode = MODE_NORMAL();
 }
 
 void KateAutoIndent::checkRequiredStyle()
@@ -350,7 +358,7 @@ void KateAutoIndent::checkRequiredStyle()
                               << doc->highlight()->name() << "' (" << doc->highlight()->version() << "), style '" << doc->highlight()->style() << "'"
                               ", but script require '" << m_script->indentHeader().requiredStyle() << "'"
                               ;
-            doc->config()->setIndentationMode(MODE_NORMAL);
+            doc->config()->setIndentationMode(MODE_NORMAL());
         }
     }
 }
@@ -420,7 +428,7 @@ void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, const KTextEditor::R
 void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedChar)
 {
     // normal mode
-    if (m_mode == MODE_NORMAL) {
+    if (m_mode == MODE_NORMAL()) {
         // only indent on new line, per default
         if (typedChar != QLatin1Char('\n')) {
             return;

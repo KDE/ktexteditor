@@ -42,7 +42,6 @@
 static const QChar tabChar(QLatin1Char('\t'));
 static const QChar spaceChar(QLatin1Char(' '));
 static const QChar nbSpaceChar(0xa0); // non-breaking space
-static const QRegularExpression nonPrintableSpacesRegExp(QLatin1String("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
 
 KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view)
     : m_doc(doc)
@@ -734,6 +733,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             if (showNonPrintableSpaces()) {
                 const int y = lineHeight() * i + fm.ascent();
 
+                static const QRegularExpression nonPrintableSpacesRegExp(QStringLiteral("[\\x{2000}-\\x{200F}\\x{2028}-\\x{202F}\\x{205F}-\\x{2064}\\x{206A}-\\x{206F}]"));
                 QRegularExpressionMatchIterator i = nonPrintableSpacesRegExp.globalMatch(text, line.lineLayout().xToCursor(xStart));
 
                 while (i.hasNext()) {

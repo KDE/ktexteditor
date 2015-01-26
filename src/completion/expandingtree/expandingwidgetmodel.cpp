@@ -33,9 +33,6 @@
 #include "expandingdelegate.h"
 #include "katepartdebug.h"
 
-QIcon ExpandingWidgetModel::m_expandedIcon;
-QIcon ExpandingWidgetModel::m_collapsedIcon;
-
 using namespace KTextEditor;
 
 inline QModelIndex firstColumn(const QModelIndex &index)

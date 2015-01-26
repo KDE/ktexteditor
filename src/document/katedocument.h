@@ -1174,14 +1174,6 @@ private:
     */
     static bool checkColorValue(QString value, QColor &col);
 
-    /**
-     * helper regex to capture the document variables
-     */
-    static QRegExp kvLine;
-    static QRegExp kvLineWildcard;
-    static QRegExp kvLineMime;
-    static QRegExp kvVar;
-
     bool m_fileChangedDialogsActivated;
 
     //
