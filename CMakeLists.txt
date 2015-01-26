@@ -42,6 +42,9 @@ find_package(KF5KIO ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
 
+# libgit2 integration
+find_package(LibGit2 "0.22.0")
+
 # vi mode on per default
 option (BUILD_VIMODE "Build vimode in" ON)
 

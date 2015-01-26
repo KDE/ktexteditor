@@ -1,5 +1,3 @@
-# libgit2 integration
-find_package(LibGit2 "0.22.0")
 if(LIBGIT2_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES LibGit2::LibGit2)
     check_function_exists(git_threads_init HAVE_GIT2_THREADS)
