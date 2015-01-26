@@ -4580,7 +4580,7 @@ void KTextEditor::DocumentPrivate::slotModOnHdDeleted(const QString &path)
     if ((path == m_dirWatchFile) && (!m_modOnHd || m_modOnHdReason != OnDiskDeleted)) {
         m_modOnHd = true;
         m_modOnHdReason = OnDiskDeleted;
-        
+
         if (!m_modOnHdTimer.isActive()) {
             m_modOnHdTimer.start();
         }
@@ -4595,11 +4595,11 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         /**
          * if current checksum == checksum of new file => unmodified
          */
-        if (createDigest() && oldDigest == checksum()) {
+        if (m_modOnHdReason != OnDiskDeleted && createDigest() && oldDigest == checksum()) {
             m_modOnHd = false;
             m_modOnHdReason = OnDiskUnmodified;
         }
-    
+
 #ifdef LIBGIT2_FOUND
         /**
          * if still modified, try to take a look at git
