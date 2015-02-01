@@ -92,7 +92,6 @@
 		<item> PtrExt </item>
 		<item> Rand </item>
 		<item> Send </item>
-		<item> Show </item>
 		<item> Sized </item>
 		<item> SliceConcatExt </item>
 		<item> SliceExt </item>
