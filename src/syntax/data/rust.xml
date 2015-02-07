@@ -266,6 +266,7 @@
 			<DetectSpaces/>
 			<DetectChar char="=" attribute="Normal Text" context="#pop"/>
 			<DetectChar char="&lt;" attribute="Normal Text" context="#pop"/>
+			<DetectChar char=";" attribute="Normal Text" context="#pop"/>
 		</context>
                 <!-- Rustc allows strings to extend over multiple lines, and the
                 only thing a backshash at end-of-line does is remove the whitespace. -->
