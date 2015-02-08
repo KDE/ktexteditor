@@ -2830,11 +2830,6 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor &c
 
 bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, const QString &realChars)
 {
-    Kate::TextLine textLine = m_buffer->plainLine(view->cursorPosition().line());
-    if (!textLine) {
-        return false;
-    }
-
     /**
      * filter out non-printable
      */
@@ -2854,26 +2849,38 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         view->removeSelectedText();
     }
 
-    KTextEditor::Cursor oldCur(view->cursorPosition());
+    const KTextEditor::Cursor oldCur(view->cursorPosition());
 
+    const bool multiLineBlockMode = view->blockSelection() && view->selection();
     if (view->currentInputMode()->overwrite()) {
-        KTextEditor::Range r = KTextEditor::Range(view->cursorPosition(), qMin(chars.length(),
-                               textLine->length() - view->cursorPosition().column()));
+        // blockmode multiline selection case: remove chars in every line
+        const KTextEditor::Range selectionRange = view->selectionRange();
+        const int startLine = multiLineBlockMode ? qMax(0, selectionRange.start().line()) : view->cursorPosition().line();
+        const int endLine = multiLineBlockMode ? qMin(selectionRange.end().line(), lastLine()) : startLine;
+        const int virtualColumn = toVirtualColumn(multiLineBlockMode ? selectionRange.end() : view->cursorPosition());
 
-        // replace mode needs to know what was removed so it can be restored with backspace
-        if (oldCur.column() < line(view->cursorPosition().line()).length()) {
-            QChar removed = line(view->cursorPosition().line()).at(r.start().column());
-            view->currentInputMode()->overwrittenChar(removed);
+        for (int line = endLine; line >= startLine; --line) {
+            Kate::TextLine textLine = m_buffer->plainLine(line);
+            Q_ASSERT(textLine);
+            const int column = fromVirtualColumn(line, virtualColumn);
+            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(),
+                textLine->length() - column));
+
+            // replace mode needs to know what was removed so it can be restored with backspace
+            if (oldCur.column() < lineLength(line)) {
+                QChar removed = characterAt(KTextEditor::Cursor(line, column));
+                view->currentInputMode()->overwrittenChar(removed);
+            }
+
+            removeText(r);
         }
-
-        removeText(r);
     }
 
-    if (view->blockSelection() && view->selection()) {
+    if (multiLineBlockMode) {
         KTextEditor::Range selectionRange = view->selectionRange();
-        int startLine = qMax(0, selectionRange.start().line());
-        int endLine = qMin(selectionRange.end().line(), lastLine());
-        int column = toVirtualColumn(selectionRange.end());
+        const int startLine = qMax(0, selectionRange.start().line());
+        const int endLine = qMin(selectionRange.end().line(), lastLine());
+        const int column = toVirtualColumn(selectionRange.end());
         for (int line = endLine; line >= startLine; --line) {
             editInsertText(line, fromVirtualColumn(line, column), chars);
         }
