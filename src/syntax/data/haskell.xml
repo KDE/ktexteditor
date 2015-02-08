@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
-<language name="Haskell" version="2.5" kateversion="3.4" section="Sources" extensions="*.hs;*.chs" mimetype="text/x-haskell" author="Nicolas Wu (zenzike@gmail.com)" license="LGPL" indenter="haskell" style="haskell">
+<language name="Haskell" version="2.6" kateversion="3.4" section="Sources" extensions="*.hs;*.chs" mimetype="text/x-haskell" author="Nicolas Wu (zenzike@gmail.com)" license="LGPL" indenter="haskell" style="haskell">
   <highlighting>
   <list name="keywords">
     <item> case </item>
@@ -322,6 +322,7 @@
   <contexts>
     <context attribute="Normal" lineEndContext="#stay" name="code">
       <RegExpr attribute="Pragma"  context="#stay" String="\{-#.*#-\}"/>
+      <StringDetect attribute="Comment" context="#stay" String="{--}"/>
       <RegExpr attribute="Comment" context="comments" String="\{-[^#]?" />
       <RegExpr attribute="Comment" context="comment"  String="--[^\-!#\$%&amp;\*\+/&lt;=&gt;\?&#92;@\^\|~\.:].*$" />
       <RegExpr attribute="Keyword" context="import"   String="import\s+" />
