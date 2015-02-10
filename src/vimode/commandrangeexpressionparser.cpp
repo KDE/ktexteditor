@@ -38,10 +38,21 @@ using namespace KateVi;
 
 namespace
 {
-    RegExp(RE_Line, "\\d+")
-    RegExp(RE_LastLine, "\\$")
-    RegExp(RE_ThisLine, "\\.")
-    RegExp(RE_Mark, "\\'[0-9a-z><\\+\\*\\_]")
+
+#define RE_MARK "\\'[0-9a-z><\\+\\*\\_]"
+#define RE_THISLINE "\\."
+#define RE_LASTLINE "\\$"
+#define RE_LINE "\\d+"
+#define RE_FORWARDSEARCH "/[^/]*/?"
+#define RE_BACKWARDSEARCH "\\?[^?]*\\??"
+#define RE_BASE "(?:" RE_MARK ")|(?:" RE_LINE ")|(?:" RE_THISLINE ")|(?:" RE_LASTLINE ")|(?:" RE_FORWARDSEARCH ")|(?:" RE_BACKWARDSEARCH ")"
+#define RE_OFFSET "[+-](?:" RE_BASE ")?"
+#define RE_POSITION "("  RE_BASE ")((?:" RE_OFFSET ")*)"
+
+    RegExp(RE_Line, RE_LINE)
+    RegExp(RE_LastLine, RE_LASTLINE)
+    RegExp(RE_ThisLine, RE_THISLINE)
+    RegExp(RE_Mark, RE_MARK)
     RegExp(RE_ForwardSearch, "^/([^/]*)/?$")
     RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$")
     RegExp(RE_CalculatePositionSplit, "[-+](?!([+-]|$))")
@@ -53,21 +64,7 @@ namespace
     // fifth, sixth and seventh groups are contingent on the fourth group.
     inline const QRegularExpression& RE_CmdRange()
     {
-        static const QRegularExpression regex(([] () -> QString {
-            const auto forwardSearch = QLatin1String("/[^/]*/?"); // no group
-            const auto backwardSearch = QLatin1String("\\?[^?]*\\??"); // no group
-            const auto base = QLatin1String("(?:") + RE_Mark().pattern() + QLatin1String(")|(?:") +
-                      RE_Line().pattern() + QLatin1String(")|(?:") +
-                      RE_ThisLine().pattern() + QLatin1String(")|(?:") +
-                      RE_LastLine().pattern() + QLatin1String(")|(?:") +
-                      forwardSearch + QLatin1String(")|(?:") +
-                      backwardSearch + QLatin1String(")");
-            const auto offset = QLatin1String("[+-](?:") + base + QLatin1String(")?");
-            // The position regexp contains two groups: the base and the offset.
-            // The offset may be empty.
-            const auto position = QLatin1String("(") + base + QLatin1String(")((?:") + offset + QLatin1String(")*)");
-            return QLatin1String("^(") + position + QLatin1String(")((?:,(") + position + QLatin1String("))?)");
-        })());
+        static const QRegularExpression regex(QStringLiteral("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
         return regex;
     }
 }
