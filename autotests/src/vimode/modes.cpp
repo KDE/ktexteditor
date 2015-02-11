@@ -1247,6 +1247,7 @@ void ModesTest::VisualCommandsTests()
     DoTest("foo\nbar", "l\\ctrl-vjD", "f\nb");
     DoTest("foo\nbar", "VjkD", "bar");
     DoTest("Test:\n  - One\n  - Two", "jfnVDia", "Test:\n  a- Two");
+    DoTest("Test:\n  - One\n  - Two", "jjfwVDia", "Test:\n  a- One");
 
     // Testing "gU", "U"
     DoTest("foo bar", "vwgU", "FOO Bar");

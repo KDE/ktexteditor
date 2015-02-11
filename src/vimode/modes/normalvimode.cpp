@@ -784,7 +784,8 @@ bool NormalViMode::commandDeleteToEOL()
         break;
     case LineWise:
         c.setLine(m_commandRange.startLine);
-        c.setColumn(getFirstNonBlank(m_commandRange.startLine));
+        c.setColumn(getFirstNonBlank(qMin(doc()->lastLine(),
+                                          m_commandRange.startLine)));
         break;
     case Block:
         c.setLine(m_commandRange.startLine);
