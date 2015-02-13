@@ -110,13 +110,13 @@ public:
      * @param parent parent object
      * @return created KTextEditor::Document
      */
-    KTextEditor::Document *createDocument(QObject *parent);
+    KTextEditor::Document *createDocument(QObject *parent) Q_DECL_OVERRIDE;
 
     /**
      * Returns a list of all documents of this editor.
      * @return list of all existing documents
      */
-    QList<KTextEditor::Document *> documents()
+    QList<KTextEditor::Document *> documents() Q_DECL_OVERRIDE
     {
         return m_documents.keys();
     }
@@ -127,7 +127,7 @@ public:
      * the hosting application.
      * @param application application object
      */
-    void setApplication(KTextEditor::Application *application)
+    void setApplication(KTextEditor::Application *application) Q_DECL_OVERRIDE
     {
         m_application = application;
     }
@@ -136,7 +136,7 @@ public:
      * Current hosting application, if any set.
      * @return current application object or nullptr
      */
-    KTextEditor::Application *application() const
+    KTextEditor::Application *application() const Q_DECL_OVERRIDE
     {
         return m_application;
     }
@@ -149,7 +149,7 @@ public:
      * return the about data
      * @return about data of this editor part
      */
-    const KAboutData &aboutData() const
+    const KAboutData &aboutData() const Q_DECL_OVERRIDE
     {
         return m_aboutData;
     }
@@ -163,7 +163,7 @@ public:
      * to the editor, but not saved anywhere automagically, call
      * writeConfig to save them
     */
-    void configDialog(QWidget *parent);
+    void configDialog(QWidget *parent) Q_DECL_OVERRIDE;
 
     /**
      * Number of available config pages
@@ -171,14 +171,14 @@ public:
      * and the embedding app should use the configDialog () instead
      * @return number of config pages
      */
-    int configPages() const;
+    int configPages() const Q_DECL_OVERRIDE;
 
     /**
      * returns config page with the given number,
      * config pages from 0 to configPages()-1 are available
      * if configPages() > 0
      */
-    KTextEditor::ConfigPage *configPage(int number, QWidget *parent);
+    KTextEditor::ConfigPage *configPage(int number, QWidget *parent) Q_DECL_OVERRIDE;
 
     /**
      * Kate Part Internal stuff ;)
@@ -346,19 +346,19 @@ public:
      * @param cmd name of command to query for
      * @return found command or 0
      */
-    KTextEditor::Command *queryCommand(const QString &cmd) const;
+    KTextEditor::Command *queryCommand(const QString &cmd) const Q_DECL_OVERRIDE;
 
     /**
      * Get a list of all registered commands.
      * \return list of all commands
      */
-    QList<KTextEditor::Command *> commands() const;
+    QList<KTextEditor::Command *> commands() const Q_DECL_OVERRIDE;
 
     /**
      * Get a list of available commandline strings.
      * \return commandline strings
      */
-    QStringList commandList() const;
+    QStringList commandList() const Q_DECL_OVERRIDE;
 
     /**
      * Copy text to clipboard an remember it in the history
@@ -420,7 +420,7 @@ Q_SIGNALS:
     void clipboardHistoryChanged();
 
 protected:
-    bool eventFilter(QObject *, QEvent *);
+    bool eventFilter(QObject *, QEvent *) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void updateColorPalette();

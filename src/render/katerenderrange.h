@@ -48,9 +48,9 @@ public:
 
     void addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute);
 
-    virtual KTextEditor::Cursor nextBoundary() const;
-    virtual bool advanceTo(const KTextEditor::Cursor &pos);
-    virtual KTextEditor::Attribute::Ptr currentAttribute() const;
+    KTextEditor::Cursor nextBoundary() const Q_DECL_OVERRIDE;
+    bool advanceTo(const KTextEditor::Cursor &pos) Q_DECL_OVERRIDE;
+    KTextEditor::Attribute::Ptr currentAttribute() const Q_DECL_OVERRIDE;
 
 private:
     QList<pairRA> m_ranges;

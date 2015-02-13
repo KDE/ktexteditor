@@ -168,27 +168,27 @@ public:
     /**
      * @copydoc KateUndo::isEmpty()
      */
-    bool isEmpty() const;
+    bool isEmpty() const Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::mergeWith(const KateUndo)
      */
-    bool mergeWith(const KateUndo *undo);
+    bool mergeWith(const KateUndo *undo) Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editInsertText;
     }
@@ -217,27 +217,27 @@ public:
     /**
      * @copydoc KateUndo::isEmpty()
      */
-    bool isEmpty() const;
+    bool isEmpty() const Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::mergeWith(const KateUndo)
      */
-    bool mergeWith(const KateUndo *undo);
+    bool mergeWith(const KateUndo *undo) Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editRemoveText;
     }
@@ -270,17 +270,17 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editMarkLineAutoWrapped;
     }
@@ -298,17 +298,17 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editWrapLine;
     }
@@ -334,17 +334,17 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editUnWrapLine;
     }
@@ -370,17 +370,17 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editInsertLine;
     }
@@ -404,17 +404,17 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo();
+    void undo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo();
+    void redo() Q_DECL_OVERRIDE;
 
     /**
      * @copydoc KateUndo::type()
      */
-    KateUndo::UndoType type() const
+    KateUndo::UndoType type() const Q_DECL_OVERRIDE
     {
         return KateUndo::editRemoveLine;
     }

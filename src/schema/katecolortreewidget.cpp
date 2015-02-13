@@ -105,7 +105,7 @@ public:
     {
     }
 
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         QSize sh = QStyledItemDelegate::sizeHint(option, index);
         if (!index.parent().isValid()) {
@@ -150,7 +150,7 @@ public:
         return r;
     }
 
-    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         Q_ASSERT(index.isValid());
         Q_ASSERT(index.column() >= 0 && index.column() <= 2);

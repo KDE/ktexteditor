@@ -98,7 +98,7 @@ protected:
      *               end-cursor.
      *               else just jump to the end of the inserted text.
      */
-    virtual bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     /**

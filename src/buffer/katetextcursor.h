@@ -77,7 +77,7 @@ public:
      * Set insert behavior.
      * @param insertBehavior new insert behavior
      */
-    void setInsertBehavior(InsertBehavior insertBehavior)
+    void setInsertBehavior(InsertBehavior insertBehavior) Q_DECL_OVERRIDE
     {
         m_moveOnInsert = insertBehavior == MoveOnInsert;
     }
@@ -86,7 +86,7 @@ public:
      * Get current insert behavior.
      * @return current insert behavior
      */
-    InsertBehavior insertBehavior() const
+    InsertBehavior insertBehavior() const Q_DECL_OVERRIDE
     {
         return m_moveOnInsert ? MoveOnInsert : StayOnInsert;
     }
@@ -95,7 +95,7 @@ public:
      * Gets the document to which this cursor is bound.
      * \return a pointer to the document
      */
-    KTextEditor::Document *document() const;
+    KTextEditor::Document *document() const Q_DECL_OVERRIDE;
 
     /**
      * Fast way to set the current cursor position to \e position.
@@ -109,7 +109,7 @@ public:
      *
      * \param position new cursor position
      */
-    void setPosition(const KTextEditor::Cursor &position);
+    void setPosition(const KTextEditor::Cursor &position) Q_DECL_OVERRIDE;
 
     /**
      * \overload
@@ -128,7 +128,7 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    int line() const;
+    int line() const Q_DECL_OVERRIDE;
 
     /**
      * Non-virtual version of line(), which is faster.
@@ -150,7 +150,7 @@ public:
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    int column() const
+    int column() const Q_DECL_OVERRIDE
     {
         return m_column;
     }
@@ -168,7 +168,7 @@ public:
      * Get range this cursor belongs to, if any
      * @return range this pointer is part of, else 0
      */
-    KTextEditor::MovingRange *range() const;
+    KTextEditor::MovingRange *range() const Q_DECL_OVERRIDE;
 
     /**
      * Get range this cursor belongs to, if any

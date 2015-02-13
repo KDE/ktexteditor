@@ -38,7 +38,7 @@ public:
     WindowKeepActive(QMainWindow *mainWindow);
 
 public Q_SLOTS:
-    bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     QMainWindow *m_mainWindow;

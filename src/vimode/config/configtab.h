@@ -37,7 +37,7 @@ public:
     explicit ConfigTab(QWidget *parent, Mappings *mappings);
     virtual ~ConfigTab();
 
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 protected:
     Ui::ConfigWidget *ui;
@@ -47,10 +47,10 @@ private:
     void reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);

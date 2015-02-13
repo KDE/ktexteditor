@@ -75,9 +75,9 @@ public:
     // KTextEditor::Command interface
     //
 public:
-    virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
-    virtual bool supportsRange(const QString &cmd);
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
+    bool supportsRange(const QString &cmd) Q_DECL_OVERRIDE;
 
 private:
     KateCommandLineScriptHeader m_commandHeader;

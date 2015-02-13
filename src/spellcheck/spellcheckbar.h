@@ -56,7 +56,7 @@ class SpellCheckBar : public KateViewBarWidget
     QString originalBuffer() const;
     QString buffer() const;
 
-    virtual void closed();
+    void closed() Q_DECL_OVERRIDE;
 
     void show();
     void activeAutoCorrect(bool _active);

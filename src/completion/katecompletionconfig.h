@@ -58,7 +58,7 @@ public Q_SLOTS:
     void apply();
 
 protected:
-    virtual void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void moveColumnUp();

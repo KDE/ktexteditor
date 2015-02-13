@@ -54,7 +54,7 @@ public:
     }
 
     void switchStartEnd();
-    void reset();
+    void reset() Q_DECL_OVERRIDE;
     void setVisualModeType(const ViMode mode);
     void saveRangeMarks();
 

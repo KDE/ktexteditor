@@ -36,7 +36,7 @@ public:
     CustomRangeModel(KTextEditor::View *parent = 0L, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
-    Range completionRange(View *view, const Cursor &position)
+    Range completionRange(View *view, const Cursor &position) Q_DECL_OVERRIDE
     {
         Range range = CodeCompletionModelControllerInterface::completionRange(view, position);
         if (range.start().column() > 0) {
@@ -51,7 +51,7 @@ public:
         return range;
     }
 
-    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion)
+    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
@@ -69,7 +69,7 @@ public:
         : CodeCompletionTestModel(parent, startText)
     {}
 
-    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion)
+    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
@@ -87,7 +87,7 @@ public:
         : CodeCompletionTestModel(parent, startText)
     {}
 
-    QString filterString(View *, const Range &, const Cursor &)
+    QString filterString(View *, const Range &, const Cursor &) Q_DECL_OVERRIDE
     {
         return QString();
     }
@@ -102,7 +102,7 @@ public:
         : CodeCompletionTestModel(parent, startText)
     {}
 
-    Range updateCompletionRange(View *view, const Range &range)
+    Range updateCompletionRange(View *view, const Range &range) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         if (view->document()->text(range) == QString("ab")) {
@@ -110,7 +110,7 @@ public:
         }
         return range;
     }
-    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion)
+    bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
@@ -128,7 +128,7 @@ public:
         : CodeCompletionTestModel(parent, startText)
     {}
 
-    bool shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position)
+    bool shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         Q_UNUSED(userInsertion);
@@ -154,7 +154,7 @@ public:
         : CodeCompletionTestModel(parent, startText)
     {}
 
-    virtual bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
+    bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion) Q_DECL_OVERRIDE
     {
         Q_UNUSED(view);
         Q_UNUSED(range);

@@ -45,7 +45,7 @@ class ReadOnlyStringListModel: public QStringListModel
 {
 public:
     ReadOnlyStringListModel(QObject *parent): QStringListModel(parent) {}
-    Qt::ItemFlags flags(const QModelIndex &index) const
+    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(index);
         return Qt::ItemIsEnabled | Qt::ItemIsSelectable;

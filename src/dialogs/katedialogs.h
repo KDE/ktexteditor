@@ -94,7 +94,7 @@ protected Q_SLOTS:
     void gotoLine();
 
 protected:
-    virtual void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
 
 private:
     KTextEditor::View *const m_view;
@@ -127,16 +127,16 @@ class KateIndentConfigTab : public KateConfigPage
 public:
     KateIndentConfigTab(QWidget *parent);
     ~KateIndentConfigTab();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 protected:
     Ui::IndentationConfigWidget *ui;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE {}
+    void defaults() Q_DECL_OVERRIDE {}
 
 private Q_SLOTS:
     void slotChanged();
@@ -150,16 +150,16 @@ class KateCompletionConfigTab : public KateConfigPage
 public:
     KateCompletionConfigTab(QWidget *parent);
     ~KateCompletionConfigTab();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 protected:
     Ui::CompletionConfigTab *ui;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE {}
+    void defaults() Q_DECL_OVERRIDE {}
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
@@ -172,16 +172,16 @@ class KateEditGeneralConfigTab : public KateConfigPage
 public:
     KateEditGeneralConfigTab(QWidget *parent);
     ~KateEditGeneralConfigTab();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 private:
     Ui::EditConfigWidget *ui;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE {}
+    void defaults() Q_DECL_OVERRIDE {}
 };
 
 class KateNavigationConfigTab : public KateConfigPage
@@ -191,16 +191,16 @@ class KateNavigationConfigTab : public KateConfigPage
 public:
     KateNavigationConfigTab(QWidget *parent);
     ~KateNavigationConfigTab();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 private:
     Ui::NavigationConfigWidget *ui;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE {}
+    void defaults() Q_DECL_OVERRIDE {}
 };
 
 class KateSpellCheckConfigTab : public KateConfigPage
@@ -210,17 +210,17 @@ class KateSpellCheckConfigTab : public KateConfigPage
 public:
     KateSpellCheckConfigTab(QWidget *parent);
     ~KateSpellCheckConfigTab();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 protected:
     Ui::SpellCheckConfigWidget *ui;
     Sonnet::ConfigWidget *m_sonnetConfigWidget;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset() {}
-    void defaults() {}
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE {}
+    void defaults() Q_DECL_OVERRIDE {}
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
@@ -233,15 +233,15 @@ class KateEditConfigTab : public KateConfigPage
 public:
     KateEditConfigTab(QWidget *parent);
     ~KateEditConfigTab();
-    virtual QString name() const;
-    virtual QString fullName() const;
-    virtual QIcon icon() const;
+    QString name() const Q_DECL_OVERRIDE;
+    QString fullName() const Q_DECL_OVERRIDE;
+    QIcon icon() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 private:
     KateEditGeneralConfigTab *editConfigTab;
@@ -259,15 +259,15 @@ class KateViewDefaultsConfig : public KateConfigPage
 public:
     KateViewDefaultsConfig(QWidget *parent);
     ~KateViewDefaultsConfig();
-    virtual QString name() const;
-    virtual QString fullName() const;
-    virtual QIcon icon() const;
+    QString name() const Q_DECL_OVERRIDE;
+    QString fullName() const Q_DECL_OVERRIDE;
+    QIcon icon() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 private:
     Ui::TextareaAppearanceConfigWidget *const textareaUi;
@@ -281,15 +281,15 @@ class KateSaveConfigTab : public KateConfigPage
 public:
     KateSaveConfigTab(QWidget *parent);
     ~KateSaveConfigTab();
-    virtual QString name() const;
-    virtual QString fullName() const;
-    virtual QIcon icon() const;
+    QString name() const Q_DECL_OVERRIDE;
+    QString fullName() const Q_DECL_OVERRIDE;
+    QIcon icon() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
     void swapFileModeChanged(int);
 
 protected:

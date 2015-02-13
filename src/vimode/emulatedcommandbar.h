@@ -57,7 +57,7 @@ public:
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
-    virtual void closed();
+    void closed() Q_DECL_OVERRIDE;
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();
 
@@ -113,7 +113,7 @@ private:
 
     bool m_isSendingSyntheticSearchCompletedKeypress;
 
-    virtual bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
     void deleteSpacesToLeftOfCursor();
     void deleteWordCharsToLeftOfCursor();
     bool deleteNonWordCharsToLeftOfCursor();

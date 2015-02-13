@@ -102,12 +102,12 @@ protected:
     virtual void removeRangeFromEverything(KTextEditor::MovingRange *range);
     bool removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range);
     bool removeRangeFromSpellCheckQueue(KTextEditor::MovingRange *range);
-    virtual void rangeEmpty(KTextEditor::MovingRange *range);
-    virtual void rangeInvalid(KTextEditor::MovingRange *range);
-    virtual void mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view);
-    virtual void mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view);
-    virtual void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view);
-    virtual void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view);
+    void rangeEmpty(KTextEditor::MovingRange *range) Q_DECL_OVERRIDE;
+    void rangeInvalid(KTextEditor::MovingRange *range) Q_DECL_OVERRIDE;
+    void mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
+    void mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
+    void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
+    void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
 
     KTextEditor::Range findWordBoundaries(const KTextEditor::Cursor &begin,
                                           const KTextEditor::Cursor &end);

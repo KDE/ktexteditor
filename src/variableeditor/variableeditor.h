@@ -66,9 +66,9 @@ protected Q_SLOTS:
     void activateItem();
 
 protected:
-    virtual void paintEvent(QPaintEvent *event);
-    virtual void enterEvent(QEvent *event);
-    virtual void leaveEvent(QEvent *event);
+    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void enterEvent(QEvent *event) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     VariableItem *m_item;

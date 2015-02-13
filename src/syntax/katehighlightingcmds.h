@@ -57,10 +57,10 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range::invalid());
+              const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
     
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
 };
 
 }

@@ -31,12 +31,12 @@ public:
     KateViInputModeFactory();
 
     virtual ~KateViInputModeFactory();
-    virtual KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal);
+    KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) Q_DECL_OVERRIDE;
 
-    virtual QString name();
-    virtual KTextEditor::View::InputMode inputMode();
+    QString name() Q_DECL_OVERRIDE;
+    KTextEditor::View::InputMode inputMode() Q_DECL_OVERRIDE;
 
-    virtual KateConfigPage *createConfigPage(QWidget *);
+    KateConfigPage *createConfigPage(QWidget *) Q_DECL_OVERRIDE;
 private:
     KateVi::GlobalState *m_viGlobal;
 };

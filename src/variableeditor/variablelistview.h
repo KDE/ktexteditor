@@ -45,8 +45,8 @@ Q_SIGNALS:
     void changed(); // unused right now
 
 protected:
-    virtual void resizeEvent(QResizeEvent *event);
-    virtual void hideEvent(QHideEvent *event);
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
+    void hideEvent(QHideEvent *event) Q_DECL_OVERRIDE;
 
     void parseVariables(const QString &line);
 

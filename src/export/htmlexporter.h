@@ -30,9 +30,9 @@ public:
     HTMLExporter(KTextEditor::View *view, QTextStream &output, const bool withHeaderFooter = false);
     virtual ~HTMLExporter();
 
-    virtual void openLine();
-    virtual void closeLine(const bool lastLine);
-    virtual void exportText(const QString &text, const KTextEditor::Attribute::Ptr &attrib);
+    void openLine() Q_DECL_OVERRIDE;
+    void closeLine(const bool lastLine) Q_DECL_OVERRIDE;
+    void exportText(const QString &text, const KTextEditor::Attribute::Ptr &attrib) Q_DECL_OVERRIDE;
 };
 
 #endif

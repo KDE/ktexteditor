@@ -39,19 +39,19 @@ class KateKeywordCompletionModel : public KTextEditor::CodeCompletionModel
 
 public:
     KateKeywordCompletionModel(QObject* parent);
-    virtual QVariant data(const QModelIndex& index, int role) const;
-    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex& index) const;
-    virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
+    QVariant data(const QModelIndex& index, int role) const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    QModelIndex parent(const QModelIndex& index) const Q_DECL_OVERRIDE;
+    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
     virtual void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range,
-                                   InvocationType invocationType);
-    virtual KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor& position);
+                                   InvocationType invocationType) Q_DECL_OVERRIDE;
+    KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
     virtual bool shouldAbortCompletion(KTextEditor::View* view, const KTextEditor::Range& range,
-                                       const QString& currentCompletion);
+                                       const QString& currentCompletion) Q_DECL_OVERRIDE;
     virtual bool shouldStartCompletion(KTextEditor::View* view, const QString& insertedText, bool userInsertion,
-                                       const KTextEditor::Cursor& position);
-    virtual MatchReaction matchingItem(const QModelIndex& matched);
-    virtual bool shouldHideItemsWithEqualNames() const;
+                                       const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
+    MatchReaction matchingItem(const QModelIndex& matched) Q_DECL_OVERRIDE;
+    bool shouldHideItemsWithEqualNames() const Q_DECL_OVERRIDE;
 
 private:
     QList<QString> m_items;

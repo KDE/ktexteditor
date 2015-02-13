@@ -129,7 +129,7 @@ public:
     //Returns true if a screen border has been hit
     bool updatePosition(bool force = false);
 
-    virtual bool eventFilter(QObject *watched, QEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
 
     KateArgumentHintTree *argumentHintTree() const;
 
@@ -163,8 +163,8 @@ public Q_SLOTS:
     void resetHadNavigation();
 
 protected:
-    virtual void showEvent(QShowEvent *event);
-    virtual void resizeEvent(QResizeEvent *event);
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
 //    virtual void focusInEvent ( QFocusEvent * event );
 
 private Q_SLOTS:

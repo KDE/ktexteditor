@@ -400,32 +400,32 @@ public:
      * Reimplemented from QAbstractItemModel::columnCount(). The default implementation
      * returns ColumnCount for all indices.
      * */
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     /**
      * Reimplemented from QAbstractItemModel::index(). The default implementation
      * returns a standard QModelIndex as long as the row and column are valid.
      * */
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     /**
      * Reimplemented from QAbstractItemModel::itemData(). The default implementation
      * returns a map with the QAbstractItemModel::data() for all roles that are used
      * by the CodeCompletionInterface. You will need to reimplement either this
      * function or QAbstractItemModel::data() in your CodeCompletionModel.
      * */
-    virtual QMap<int, QVariant> itemData(const QModelIndex &index) const;
+    QMap<int, QVariant> itemData(const QModelIndex &index) const Q_DECL_OVERRIDE;
     /**
      * Reimplemented from QAbstractItemModel::parent(). The default implementation
      * returns an invalid QModelIndex for all items. This is appropriate for
      * non-hierarchical / flat lists of completions.
      * */
-    virtual QModelIndex parent(const QModelIndex &index) const;
+    QModelIndex parent(const QModelIndex &index) const Q_DECL_OVERRIDE;
     /**
      * Reimplemented from QAbstractItemModel::rowCount(). The default implementation
      * returns the value set by setRowCount() for invalid (toplevel) indices, and 0
      * for all other indices. This is appropriate for non-hierarchical / flat lists
      * of completions
      * */
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
 
     /**
      * This function returns true if the model needs grouping, otherwise false.

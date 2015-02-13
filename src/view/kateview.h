@@ -100,17 +100,17 @@ public:
      * Get the view's main window, if any
      * \return the view's main window
      */
-    KTextEditor::MainWindow *mainWindow() const
+    KTextEditor::MainWindow *mainWindow() const Q_DECL_OVERRIDE
     {
         return m_mainWindow;
     }
 
-    KTextEditor::Document *document() const;
+    KTextEditor::Document *document() const Q_DECL_OVERRIDE;
 
-    virtual ViewMode viewMode() const;
-    virtual QString viewModeHuman() const;
-    virtual InputMode viewInputMode() const;
-    virtual QString viewInputModeHuman() const;
+    ViewMode viewMode() const Q_DECL_OVERRIDE;
+    QString viewModeHuman() const Q_DECL_OVERRIDE;
+    InputMode viewInputMode() const Q_DECL_OVERRIDE;
+    QString viewInputModeHuman() const Q_DECL_OVERRIDE;
 
     void setInputMode(InputMode mode);
 
@@ -132,9 +132,9 @@ private Q_SLOTS:
     // KTextEditor::PopupMenuInterface
     //
 public:
-    void setContextMenu(QMenu *menu);
-    QMenu *contextMenu() const;
-    QMenu *defaultContextMenu(QMenu *menu = 0L) const;
+    void setContextMenu(QMenu *menu) Q_DECL_OVERRIDE;
+    QMenu *contextMenu() const Q_DECL_OVERRIDE;
+    QMenu *defaultContextMenu(QMenu *menu = 0L) const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void aboutToShowContextMenu();
@@ -147,17 +147,17 @@ private:
     // KTextEditor::ViewCursorInterface
     //
 public:
-    bool setCursorPosition(KTextEditor::Cursor position);
+    bool setCursorPosition(KTextEditor::Cursor position) Q_DECL_OVERRIDE;
 
-    KTextEditor::Cursor cursorPosition() const;
+    KTextEditor::Cursor cursorPosition() const Q_DECL_OVERRIDE;
 
-    KTextEditor::Cursor cursorPositionVirtual() const;
+    KTextEditor::Cursor cursorPositionVirtual() const Q_DECL_OVERRIDE;
 
-    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const;
+    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const Q_DECL_OVERRIDE;
 
-    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const;
+    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const Q_DECL_OVERRIDE;
 
-    QPoint cursorPositionCoordinates() const;
+    QPoint cursorPositionCoordinates() const Q_DECL_OVERRIDE;
 
     bool setCursorPositionVisual(const KTextEditor::Cursor &position);
 
@@ -168,8 +168,8 @@ public:
      */
     int virtualCursorColumn() const;
 
-    virtual bool mouseTrackingEnabled() const;
-    virtual bool setMouseTrackingEnabled(bool enable);
+    bool mouseTrackingEnabled() const Q_DECL_OVERRIDE;
+    bool setMouseTrackingEnabled(bool enable) Q_DECL_OVERRIDE;
 
 private:
     void notifyMousePositionChanged(const KTextEditor::Cursor &newPosition);
@@ -182,9 +182,9 @@ public:
     // KTextEditor::ConfigInterface
     //
 public:
-    QStringList configKeys() const;
-    QVariant configValue(const QString &key);
-    void setConfigValue(const QString &key, const QVariant &value);
+    QStringList configKeys() const Q_DECL_OVERRIDE;
+    QVariant configValue(const QString &key) Q_DECL_OVERRIDE;
+    void setConfigValue(const QString &key, const QVariant &value) Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void configChanged();
@@ -207,14 +207,14 @@ public:
     // KTextEditor::CodeCompletionInterface2
     //
 public:
-    virtual bool isCompletionActive() const;
-    virtual void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model);
-    virtual void abortCompletion();
-    virtual void forceCompletion();
-    virtual void registerCompletionModel(KTextEditor::CodeCompletionModel *model);
-    virtual void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model);
-    virtual bool isAutomaticInvocationEnabled() const;
-    virtual void setAutomaticInvocationEnabled(bool enabled = true);
+    bool isCompletionActive() const Q_DECL_OVERRIDE;
+    void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
+    void abortCompletion() Q_DECL_OVERRIDE;
+    void forceCompletion() Q_DECL_OVERRIDE;
+    void registerCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
+    void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
+    bool isAutomaticInvocationEnabled() const Q_DECL_OVERRIDE;
+    void setAutomaticInvocationEnabled(bool enabled = true) Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void completionExecuted(KTextEditor::View *view, const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &);
@@ -248,19 +248,19 @@ public:
     // KTextEditor::SelectionInterface stuff
     //
 public Q_SLOTS:
-    virtual bool setSelection(const KTextEditor::Range &selection);
+    bool setSelection(const KTextEditor::Range &selection) Q_DECL_OVERRIDE;
 
-    virtual bool removeSelection()
+    bool removeSelection() Q_DECL_OVERRIDE
     {
         return clearSelection();
     }
 
-    virtual bool removeSelectionText()
+    bool removeSelectionText() Q_DECL_OVERRIDE
     {
         return removeSelectedText();
     }
 
-    virtual bool setBlockSelection(bool on);
+    bool setBlockSelection(bool on) Q_DECL_OVERRIDE;
     bool toggleBlockSelection();
 
     bool clearSelection();
@@ -271,10 +271,10 @@ public Q_SLOTS:
     bool selectAll();
 
 public:
-    virtual bool selection() const;
-    virtual QString selectionText() const;
-    virtual bool blockSelection() const;
-    virtual KTextEditor::Range selectionRange() const;
+    bool selection() const Q_DECL_OVERRIDE;
+    QString selectionText() const Q_DECL_OVERRIDE;
+    bool blockSelection() const Q_DECL_OVERRIDE;
+    KTextEditor::Range selectionRange() const Q_DECL_OVERRIDE;
 
     static void blockFix(KTextEditor::Range &range);
 
@@ -337,15 +337,15 @@ public:
     // KTextEditor::AnnotationView
     //
 public:
-    void setAnnotationModel(KTextEditor::AnnotationModel *model);
-    KTextEditor::AnnotationModel *annotationModel() const;
-    void setAnnotationBorderVisible(bool visible);
-    bool isAnnotationBorderVisible() const;
+    void setAnnotationModel(KTextEditor::AnnotationModel *model) Q_DECL_OVERRIDE;
+    KTextEditor::AnnotationModel *annotationModel() const Q_DECL_OVERRIDE;
+    void setAnnotationBorderVisible(bool visible) Q_DECL_OVERRIDE;
+    bool isAnnotationBorderVisible() const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line);
-    void annotationActivated(KTextEditor::View *view, int line);
-    void annotationBorderVisibilityChanged(View *view, bool visible);
+    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) Q_DECL_OVERRIDE;
+    void annotationActivated(KTextEditor::View *view, int line) Q_DECL_OVERRIDE;
+    void annotationBorderVisibilityChanged(View *view, bool visible) Q_DECL_OVERRIDE;
 
     void navigateLeft();
     void navigateRight();
@@ -491,7 +491,7 @@ public:
      * \param flags additional flags
      * \see writeSessionConfig()
      */
-    virtual void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
+    void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
 
     /**
      * Write session settings to the \p config.
@@ -501,7 +501,7 @@ public:
      * \param flags additional flags
      * \see readSessionConfig()
      */
-    virtual void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>());
+    void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void setEol(int eol);
@@ -734,8 +734,8 @@ Q_SIGNALS:
     void displayRangeChanged(KTextEditor::ViewPrivate *view);
 
 protected:
-    virtual bool event(QEvent *e);
-    virtual void paintEvent(QPaintEvent *e);
+    bool event(QEvent *e) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
 
     KToggleAction               *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;
@@ -891,8 +891,8 @@ private:
     // KTextEditor::PrintInterface
     //
 public Q_SLOTS:
-    virtual bool print();
-    virtual void printPreview();
+    bool print() Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
 
 public:
     /**

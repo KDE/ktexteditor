@@ -60,9 +60,9 @@ private Q_SLOTS:
     void resizeColumnsSlot();
 
 protected:
-    virtual void currentChanged(const QModelIndex &current, const QModelIndex &previous);      ///Not available as a signal in this way
-    virtual void scrollContentsBy(int dx, int dy);
-    virtual QStyleOptionViewItem viewOptions() const;
+    void currentChanged(const QModelIndex &current, const QModelIndex &previous) Q_DECL_OVERRIDE;      ///Not available as a signal in this way
+    void scrollContentsBy(int dx, int dy) Q_DECL_OVERRIDE;
+    QStyleOptionViewItem viewOptions() const Q_DECL_OVERRIDE;
 private:
     bool m_scrollingEnabled;
     QTimer *m_resizeTimer;

@@ -78,25 +78,25 @@ public:
     ///If there is no common prefix, extracts the next useful prefix for the selected index
     QString commonPrefix(QModelIndex selectedIndex) const;
 
-    virtual void rowSelected(const QModelIndex &row);
+    void rowSelected(const QModelIndex &row) Q_DECL_OVERRIDE;
 
-    virtual bool indexIsItem(const QModelIndex &index) const;
+    bool indexIsItem(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual Qt::ItemFlags flags(const QModelIndex &index) const;
-    virtual bool hasChildren(const QModelIndex &parent = QModelIndex()) const;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
+    bool hasChildren(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     virtual bool hasIndex(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
 
     // Disabled in case of bugs, reenable once fully debugged.
     //virtual QMap<int, QVariant> itemData ( const QModelIndex & index ) const;
-    virtual QModelIndex parent(const QModelIndex &index) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QModelIndex parent(const QModelIndex &index) const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
 
     // Disabled in case of bugs, reenable once fully debugged.
     //virtual QModelIndex sibling ( int row, int column, const QModelIndex & index ) const;
-    virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) Q_DECL_OVERRIDE;
 
     ///Maps from this display-model into the appropriate source code-completion model
     virtual QModelIndex mapToSource(const QModelIndex &proxyIndex) const;
@@ -177,7 +177,7 @@ public:
     uint filteredItemCount() const;
 
 protected:
-    virtual int contextMatchQuality(const QModelIndex &index) const;
+    int contextMatchQuality(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void expandIndex(const QModelIndex &index);
@@ -206,7 +206,7 @@ private:
     typedef QPair<KTextEditor::CodeCompletionModel *, QModelIndex> ModelRow;
     virtual int contextMatchQuality(const ModelRow &sourceRow) const;
 
-    QTreeView *treeView() const;
+    QTreeView *treeView() const Q_DECL_OVERRIDE;
 
     friend class KateArgumentHintModel;
     ModelRow modelRowPair(const QModelIndex &index) const;

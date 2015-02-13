@@ -37,7 +37,7 @@ class KateStatusBarOpenUpMenu: public QMenu
 public:
         KateStatusBarOpenUpMenu(QWidget *parent);
         virtual ~KateStatusBarOpenUpMenu();
-        virtual void setVisible(bool);
+        void setVisible(bool) Q_DECL_OVERRIDE;
 };
 
 class KateStatusBar : public KateViewBarWidget

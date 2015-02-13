@@ -127,7 +127,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 public:
     KEncodingProber::ProberType proberType() const
@@ -191,7 +191,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 public:
     int tabWidth() const;
@@ -431,7 +431,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 public:
     bool dynWordWrap() const;
@@ -664,7 +664,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig();
+    void updateConfig() Q_DECL_OVERRIDE;
 
 public:
     const QString &schema() const;

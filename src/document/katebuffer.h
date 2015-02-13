@@ -105,7 +105,7 @@ public:
     /**
      * Clear the buffer.
      */
-    void clear();
+    void clear() Q_DECL_OVERRIDE;
 
     /**
      * Open a file, use the given filename
@@ -189,13 +189,13 @@ public:
      * Unwrap given line.
      * @param line line to unwrap
      */
-    void unwrapLine(int line);
+    void unwrapLine(int line) Q_DECL_OVERRIDE;
 
     /**
      * Wrap line at given cursor position.
      * @param position line/column as cursor where to wrap
      */
-    void wrapLine(const KTextEditor::Cursor &position);
+    void wrapLine(const KTextEditor::Cursor &position) Q_DECL_OVERRIDE;
 
 public:
     inline int tabWidth() const

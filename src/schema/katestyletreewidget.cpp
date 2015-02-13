@@ -43,7 +43,7 @@ class KateStyleTreeDelegate : public QStyledItemDelegate
 public:
     KateStyleTreeDelegate(KateStyleTreeWidget *widget);
 
-    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 
 private:
     QBrush getBrushForColorColumn(const QModelIndex &index, int column) const;
@@ -110,7 +110,7 @@ public:
         return currentStyle;
     }
 
-    virtual QVariant data(int column, int role) const;
+    QVariant data(int column, int role) const Q_DECL_OVERRIDE;
 
     KateStyleTreeWidget *treeWidget() const;
 

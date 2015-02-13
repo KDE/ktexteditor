@@ -66,12 +66,12 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
 
-    bool supportsRange(const QString &range);
+    bool supportsRange(const QString &range) Q_DECL_OVERRIDE;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &)
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE
     {
         return false;
     }
@@ -118,7 +118,7 @@ public:
     }
 
 protected:
-    virtual bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace);
+    bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace) Q_DECL_OVERRIDE;
 };
 
 }

@@ -71,7 +71,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &);
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &) Q_DECL_OVERRIDE;
 
     /**
      * get help for a command
@@ -80,7 +80,7 @@ public:
      * @param msg help message
      * @return help available or not
      */
-    bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
     static KateScriptManager *self()
     {

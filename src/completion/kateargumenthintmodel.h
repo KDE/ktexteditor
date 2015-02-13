@@ -33,15 +33,15 @@ class KateArgumentHintModel : public ExpandingWidgetModel
 public:
     KateArgumentHintModel(KateCompletionWidget *parent);
 
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
 
-    virtual int rowCount(const QModelIndex &parent) const;
+    int rowCount(const QModelIndex &parent) const Q_DECL_OVERRIDE;
 
-    virtual int columnCount(const QModelIndex & /*parent*/) const;
+    int columnCount(const QModelIndex & /*parent*/) const Q_DECL_OVERRIDE;
 
-    virtual QTreeView *treeView() const;
+    QTreeView *treeView() const Q_DECL_OVERRIDE;
 
-    virtual bool indexIsItem(const QModelIndex &index) const;
+    bool indexIsItem(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
     void emitDataChanged(const QModelIndex &start, const QModelIndex &end);
 
@@ -51,7 +51,7 @@ public:
     void buildRows();
     void clear();
 protected:
-    virtual int contextMatchQuality(const QModelIndex &row) const;
+    int contextMatchQuality(const QModelIndex &row) const Q_DECL_OVERRIDE;
 public Q_SLOTS:
     void parentModelReset();
 Q_SIGNALS:

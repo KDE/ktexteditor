@@ -70,25 +70,25 @@ public:
      * Set insert behaviors.
      * @param insertBehaviors new insert behaviors
      */
-    void setInsertBehaviors(InsertBehaviors insertBehaviors);
+    void setInsertBehaviors(InsertBehaviors insertBehaviors) Q_DECL_OVERRIDE;
 
     /**
      * Get current insert behaviors.
      * @return current insert behaviors
      */
-    InsertBehaviors insertBehaviors() const;
+    InsertBehaviors insertBehaviors() const Q_DECL_OVERRIDE;
 
     /**
      * Set if this range will invalidate itself if it becomes empty.
      * @param emptyBehavior behavior on becoming empty
      */
-    void setEmptyBehavior(EmptyBehavior emptyBehavior);
+    void setEmptyBehavior(EmptyBehavior emptyBehavior) Q_DECL_OVERRIDE;
 
     /**
      * Will this range invalidate itself if it becomes empty?
      * @return behavior on becoming empty
      */
-    EmptyBehavior emptyBehavior() const
+    EmptyBehavior emptyBehavior() const Q_DECL_OVERRIDE
     {
         return m_invalidateIfEmpty ? InvalidateIfEmpty : AllowEmpty;
     }
@@ -97,7 +97,7 @@ public:
      * Gets the document to which this range is bound.
      * \return a pointer to the document
      */
-    KTextEditor::Document *document() const;
+    KTextEditor::Document *document() const Q_DECL_OVERRIDE;
 
     /**
      * Set the range of this range.
@@ -105,7 +105,7 @@ public:
      * automatically invalid!
      * @param range new range for this clever range
      */
-    void setRange(const KTextEditor::Range &range);
+    void setRange(const KTextEditor::Range &range) Q_DECL_OVERRIDE;
 
     /**
      * \overload
@@ -124,7 +124,7 @@ public:
      * Retrieve start cursor of this range, read-only.
      * @return start cursor
      */
-    const KTextEditor::MovingCursor &start() const
+    const KTextEditor::MovingCursor &start() const Q_DECL_OVERRIDE
     {
         return m_start;
     }
@@ -142,7 +142,7 @@ public:
      * Retrieve end cursor of this range, read-only.
      * @return end cursor
      */
-    const KTextEditor::MovingCursor &end() const
+    const KTextEditor::MovingCursor &end() const Q_DECL_OVERRIDE
     {
         return m_end;
     }
@@ -179,7 +179,7 @@ public:
      *
      * \return a pointer to the active view
      */
-    KTextEditor::View *view() const
+    KTextEditor::View *view() const Q_DECL_OVERRIDE
     {
         return m_view;
     }
@@ -192,14 +192,14 @@ public:
      * \param attribute View to assign to this range. If null, simply
      *                  removes the previous view.
      */
-    void setView(KTextEditor::View *view);
+    void setView(KTextEditor::View *view) Q_DECL_OVERRIDE;
 
     /**
      * Gets the active Attribute for this range.
      *
      * \return a pointer to the active attribute
      */
-    KTextEditor::Attribute::Ptr attribute() const
+    KTextEditor::Attribute::Ptr attribute() const Q_DECL_OVERRIDE
     {
         return m_attribute;
     }
@@ -220,14 +220,14 @@ public:
      * \param attribute Attribute to assign to this range. If null, simply
      *                  removes the previous Attribute.
      */
-    void setAttribute(KTextEditor::Attribute::Ptr attribute);
+    void setAttribute(KTextEditor::Attribute::Ptr attribute) Q_DECL_OVERRIDE;
 
     /**
      * Gets the active MovingRangeFeedback for this range.
      *
      * \return a pointer to the active MovingRangeFeedback
      */
-    KTextEditor::MovingRangeFeedback *feedback() const
+    KTextEditor::MovingRangeFeedback *feedback() const Q_DECL_OVERRIDE
     {
         return m_feedback;
     }
@@ -239,14 +239,14 @@ public:
      * \param attribute MovingRangeFeedback to assign to this range. If null, simply
      *                  removes the previous MovingRangeFeedback.
      */
-    void setFeedback(KTextEditor::MovingRangeFeedback *feedback);
+    void setFeedback(KTextEditor::MovingRangeFeedback *feedback) Q_DECL_OVERRIDE;
 
     /**
      * Is this range's attribute only visible in views, not for example prints?
      * Default is false.
      * @return range visible only for views
      */
-    bool attributeOnlyForViews() const
+    bool attributeOnlyForViews() const Q_DECL_OVERRIDE
     {
         return m_attributeOnlyForViews;
     }
@@ -255,7 +255,7 @@ public:
      * Set if this range's attribute is only visible in views, not for example prints.
      * @param onlyForViews attribute only valid for views
      */
-    void setAttributeOnlyForViews(bool onlyForViews);
+    void setAttributeOnlyForViews(bool onlyForViews) Q_DECL_OVERRIDE;
 
     /**
      * Gets the current Z-depth of this range.
@@ -264,7 +264,7 @@ public:
      *
      * \return current Z-depth of this range
      */
-    qreal zDepth() const
+    qreal zDepth() const Q_DECL_OVERRIDE
     {
         return m_zDepth;
     }
@@ -278,7 +278,7 @@ public:
      *
      * \param zDepth new Z-depth of this range
      */
-    void setZDepth(qreal zDepth);
+    void setZDepth(qreal zDepth) Q_DECL_OVERRIDE;
 
 private:
     /**

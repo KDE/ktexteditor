@@ -85,12 +85,12 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
 
-    bool supportsRange(const QString &range);
+    bool supportsRange(const QString &range) Q_DECL_OVERRIDE;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
 
     /** override from KTextEditor::Command */
     KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
@@ -135,10 +135,10 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
 
     static Character *self()
     {
@@ -175,10 +175,10 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0));
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &);
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
 
     static Date *self()
     {

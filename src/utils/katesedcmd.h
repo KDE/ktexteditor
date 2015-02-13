@@ -76,15 +76,15 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &r);
+              const KTextEditor::Range &r) Q_DECL_OVERRIDE;
 
-    bool supportsRange(const QString &)
+    bool supportsRange(const QString &) Q_DECL_OVERRIDE
     {
         return true;
     }
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &)
+    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE
     {
         return false;
     }

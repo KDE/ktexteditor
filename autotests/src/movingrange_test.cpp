@@ -40,32 +40,32 @@ public:
         reset();
     }
 
-    virtual void rangeEmpty(MovingRange * /*range*/)
+    void rangeEmpty(MovingRange * /*range*/) Q_DECL_OVERRIDE
     {
         m_rangeEmptyCalled = true;
     }
 
-    virtual void rangeInvalid(MovingRange * /*range*/)
+    void rangeInvalid(MovingRange * /*range*/) Q_DECL_OVERRIDE
     {
         m_rangeInvalidCalled = true;
     }
 
-    virtual void mouseEnteredRange(MovingRange * /*range*/, View * /*view*/)
+    void mouseEnteredRange(MovingRange * /*range*/, View * /*view*/) Q_DECL_OVERRIDE
     {
         m_mouseEnteredRangeCalled = true;
     }
 
-    virtual void mouseExitedRange(MovingRange * /*range*/, View * /*view*/)
+    void mouseExitedRange(MovingRange * /*range*/, View * /*view*/) Q_DECL_OVERRIDE
     {
         m_mouseExitedRangeCalled = true;
     }
 
-    virtual void caretEnteredRange(MovingRange * /*range*/, View * /*view*/)
+    void caretEnteredRange(MovingRange * /*range*/, View * /*view*/) Q_DECL_OVERRIDE
     {
         m_caretEnteredRangeCalled = true;
     }
 
-    virtual void caretExitedRange(MovingRange * /*range*/, View * /*view*/)
+    void caretExitedRange(MovingRange * /*range*/, View * /*view*/) Q_DECL_OVERRIDE
     {
         m_caretExitedRangeCalled = true;
     }

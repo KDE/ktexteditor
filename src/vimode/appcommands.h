@@ -40,8 +40,8 @@ class AppCommands : public KTextEditor::Command
 
 public:
     virtual ~AppCommands();
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
-    virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
     static AppCommands* self() {
         if (m_instance == 0) {
@@ -88,8 +88,8 @@ class BufferCommands : public KTextEditor::Command
 
 public:
     virtual ~BufferCommands();
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid());
-    virtual bool help(KTextEditor::View *view, const QString &cmd, QString &msg);
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
     static BufferCommands* self() {
         if (m_instance == 0) {

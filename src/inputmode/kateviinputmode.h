@@ -36,47 +36,47 @@ class KTEXTEDITOR_EXPORT KateViInputMode : public KateAbstractInputMode
 public:
     virtual ~KateViInputMode();
 
-    virtual KTextEditor::View::ViewMode viewMode() const;
-    virtual QString viewModeHuman() const;
-    virtual KTextEditor::View::InputMode viewInputMode() const;
-    virtual QString viewInputModeHuman() const;
+    KTextEditor::View::ViewMode viewMode() const Q_DECL_OVERRIDE;
+    QString viewModeHuman() const Q_DECL_OVERRIDE;
+    KTextEditor::View::InputMode viewInputMode() const Q_DECL_OVERRIDE;
+    QString viewInputModeHuman() const Q_DECL_OVERRIDE;
 
-    virtual void activate();
-    virtual void deactivate();
-    virtual void reset();
+    void activate() Q_DECL_OVERRIDE;
+    void deactivate() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
 
-    virtual bool overwrite() const;
-    virtual void overwrittenChar(const QChar &);
+    bool overwrite() const Q_DECL_OVERRIDE;
+    void overwrittenChar(const QChar &) Q_DECL_OVERRIDE;
 
-    virtual void clearSelection();
-    virtual bool stealKey(const QKeyEvent *) const;
+    void clearSelection() Q_DECL_OVERRIDE;
+    bool stealKey(const QKeyEvent *) const Q_DECL_OVERRIDE;
 
-    virtual void gotFocus();
-    virtual void lostFocus();
+    void gotFocus() Q_DECL_OVERRIDE;
+    void lostFocus() Q_DECL_OVERRIDE;
 
-    virtual void readSessionConfig(const KConfigGroup &config);
-    virtual void writeSessionConfig(KConfigGroup &config);
-    virtual void updateRendererConfig();
-    virtual void updateConfig();
-    virtual void readWriteChanged(bool rw);
+    void readSessionConfig(const KConfigGroup &config) Q_DECL_OVERRIDE;
+    void writeSessionConfig(KConfigGroup &config) Q_DECL_OVERRIDE;
+    void updateRendererConfig() Q_DECL_OVERRIDE;
+    void updateConfig() Q_DECL_OVERRIDE;
+    void readWriteChanged(bool rw) Q_DECL_OVERRIDE;
 
-    virtual void find();
-    virtual void findSelectedForwards();
-    virtual void findSelectedBackwards();
-    virtual void findReplace();
-    virtual void findNext();
-    virtual void findPrevious();
+    void find() Q_DECL_OVERRIDE;
+    void findSelectedForwards() Q_DECL_OVERRIDE;
+    void findSelectedBackwards() Q_DECL_OVERRIDE;
+    void findReplace() Q_DECL_OVERRIDE;
+    void findNext() Q_DECL_OVERRIDE;
+    void findPrevious() Q_DECL_OVERRIDE;
 
-    virtual void activateCommandLine();
+    void activateCommandLine() Q_DECL_OVERRIDE;
 
-    virtual bool keyPress(QKeyEvent *);
-    virtual bool blinkCaret() const;
-    virtual KateRenderer::caretStyles caretStyle() const;
+    bool keyPress(QKeyEvent *) Q_DECL_OVERRIDE;
+    bool blinkCaret() const Q_DECL_OVERRIDE;
+    KateRenderer::caretStyles caretStyle() const Q_DECL_OVERRIDE;
 
-    virtual void toggleInsert();
-    virtual void launchInteractiveCommand(const QString &command);
+    void toggleInsert() Q_DECL_OVERRIDE;
+    void launchInteractiveCommand(const QString &command) Q_DECL_OVERRIDE;
 
-    virtual QString bookmarkLabel(int line) const;
+    QString bookmarkLabel(int line) const Q_DECL_OVERRIDE;
 
 public:
     void showViModeEmulatedCommandBar();

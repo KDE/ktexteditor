@@ -40,13 +40,13 @@ class ModeConfigPage : public KateConfigPage
 public:
     explicit ModeConfigPage(QWidget *parent);
     ~ModeConfigPage();
-    virtual QString name() const;
+    QString name() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
-    void apply();
-    void reload();
-    void reset();
-    void defaults();
+    void apply() Q_DECL_OVERRIDE;
+    void reload() Q_DECL_OVERRIDE;
+    void reset() Q_DECL_OVERRIDE;
+    void defaults() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void update();

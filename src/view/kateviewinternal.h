@@ -218,27 +218,27 @@ public:
 private:
     void fixDropEvent(QDropEvent *event);
 protected:
-    virtual void hideEvent(QHideEvent *e);
-    virtual void paintEvent(QPaintEvent *e);
-    virtual bool eventFilter(QObject *obj, QEvent *e);
-    virtual void keyPressEvent(QKeyEvent *);
-    virtual void keyReleaseEvent(QKeyEvent *);
-    virtual void resizeEvent(QResizeEvent *);
-    virtual void mousePressEvent(QMouseEvent *);
-    virtual void mouseDoubleClickEvent(QMouseEvent *);
-    virtual void mouseReleaseEvent(QMouseEvent *);
-    virtual void mouseMoveEvent(QMouseEvent *);
-    virtual void leaveEvent(QEvent *);
-    virtual void dragEnterEvent(QDragEnterEvent *);
-    virtual void dragMoveEvent(QDragMoveEvent *);
-    virtual void dropEvent(QDropEvent *);
-    virtual void showEvent(QShowEvent *);
-    virtual void wheelEvent(QWheelEvent *e);
-    virtual void focusInEvent(QFocusEvent *);
-    virtual void focusOutEvent(QFocusEvent *);
-    virtual void inputMethodEvent(QInputMethodEvent *e);
+    void hideEvent(QHideEvent *e) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *e) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent *) Q_DECL_OVERRIDE;
+    void keyReleaseEvent(QKeyEvent *) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent *) Q_DECL_OVERRIDE;
+    void mouseDoubleClickEvent(QMouseEvent *) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent *) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent *) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent *) Q_DECL_OVERRIDE;
+    void dragMoveEvent(QDragMoveEvent *) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent *) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *) Q_DECL_OVERRIDE;
+    void wheelEvent(QWheelEvent *e) Q_DECL_OVERRIDE;
+    void focusInEvent(QFocusEvent *) Q_DECL_OVERRIDE;
+    void focusOutEvent(QFocusEvent *) Q_DECL_OVERRIDE;
+    void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
 
-    void contextMenuEvent(QContextMenuEvent *e);
+    void contextMenuEvent(QContextMenuEvent *e) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void tripleClickTimeout();
@@ -446,7 +446,7 @@ private:
     // IM input stuff
     //
 public:
-    virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
+    QVariant inputMethodQuery(Qt::InputMethodQuery query) const Q_DECL_OVERRIDE;
 
 private:
     KTextEditor::MovingRange *m_imPreeditRange;
