@@ -18,7 +18,7 @@
 	<list name="reserved">
 		<item> abstract </item>
 		<item> alignof </item>
-		<item> be </item>
+		<item> become </item>
 		<item> do </item>
 		<item> final </item>
 		<item> offsetof </item>
