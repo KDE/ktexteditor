@@ -21,7 +21,6 @@
 #include "searcher.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/modebase.h>
-#include "katepartdebug.h"
 #include "kateview.h"
 #include "katedocument.h"
 #include "ktexteditor/range.h"
@@ -176,7 +175,6 @@ KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool back
             KTextEditor::Range bestMatch = KTextEditor::Range::invalid();
             while (true) {
                 QVector<KTextEditor::Range> matchesUnfiltered = m_view->doc()->searchText(KTextEditor::Range(newSearchBegin, m_view->doc()->documentRange().start()), pattern, flags);
-                qCDebug(LOG_PART) << "matchesUnfiltered: " << matchesUnfiltered << " searchBegin: " << newSearchBegin;
 
                 if (matchesUnfiltered.size() == 1 && !matchesUnfiltered.first().isValid()) {
                     break;

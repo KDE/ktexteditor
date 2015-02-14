@@ -18,7 +18,6 @@
 
 #include "macros.h"
 #include <vimode/keyparser.h>
-#include "katepartdebug.h"
 
 #include <KConfigGroup>
 
@@ -149,8 +148,6 @@ Completion Macros::decodeMacroCompletionFromConfig(const QString &encodedMacroCo
     }
     QString completionText = encodedMacroCompletion;
     completionText.replace(QLatin1String("(...)"), QLatin1String("()")).remove(QLatin1String("|"));
-
-    qCDebug(LOG_PART) << "Loaded completion: " << completionText << " , " << removeTail << " , " << completionType;
 
     return Completion(completionText, removeTail, completionType);
 }

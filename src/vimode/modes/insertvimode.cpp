@@ -153,7 +153,6 @@ bool InsertViMode::commandDeleteLine()
 
 bool InsertViMode::commandDeleteCharBackward()
 {
-    qCDebug(LOG_PART) << "Char backward!\n";
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     Range r(c.line(), c.column() - getCount(), c.line(), c.column(), ExclusiveMotion);

@@ -35,7 +35,6 @@
 #include "katedocument.h"
 #include "kateviewinternal.h"
 #include "katerenderer.h"
-#include "katepartdebug.h"
 #include <vimode/marks.h>
 #include <vimode/jumps.h>
 #include <vimode/registers.h>
@@ -1200,9 +1199,6 @@ void ModeBase::addToNumberUnderCursor(int count)
         }
     }
     const int originalNumber = numberAsString.toInt(&parsedNumberSuccessfully, base);
-
-    qCDebug(LOG_PART) << "base: " << base;
-    qCDebug(LOG_PART) << "n: " << originalNumber;
 
     if (!parsedNumberSuccessfully) {
         // conversion to int failed. give up.

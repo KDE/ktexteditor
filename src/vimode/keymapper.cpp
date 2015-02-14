@@ -22,7 +22,6 @@
 #include "kateglobal.h"
 #include "globalstate.h"
 #include "mappings.h"
-#include "katepartdebug.h"
 #include "katedocument.h"
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
@@ -53,7 +52,6 @@ void KeyMapper::executeMapping()
     m_numMappingsBeingExecuted++;
     const QString mappedKeypresses = m_viInputModeManager->globalState()->mappings()->get(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch, false, true);
     if (!m_viInputModeManager->globalState()->mappings()->isRecursive(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), m_fullMappingMatch)) {
-        qCDebug(LOG_PART) << "Non-recursive: " << mappedKeypresses;
         m_doNotExpandFurtherMappings = true;
     }
     m_doc->editBegin();
@@ -79,7 +77,6 @@ void KeyMapper::setMappingTimeout(int timeoutMS)
 
 void KeyMapper::mappingTimerTimeOut()
 {
-    qCDebug(LOG_PART) << "timeout! key presses: " << m_mappingKeys;
     if (!m_fullMappingMatch.isNull()) {
         executeMapping();
     } else {

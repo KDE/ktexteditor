@@ -23,7 +23,6 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katepartdebug.h"
 #include "commandrangeexpressionparser.h"
 #include "kateview.h"
 #include "globalstate.h"
@@ -675,7 +674,6 @@ void EmulatedCommandBar::activateSedReplaceHistoryCompletion()
 
 void EmulatedCommandBar::deactivateCompletion()
 {
-    qCDebug(LOG_PART) << "Manually dismissing completions";
     m_completer->popup()->hide();
     m_currentCompletionType = None;
 }
@@ -1023,10 +1021,8 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             m_wasAborted = false;
             deactivateCompletion();
             if (m_mode == Command) {
-                qCDebug(LOG_PART) << "Executing: " << m_edit->text();
                 QString commandToExecute = m_edit->text();
                 ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-                qCDebug(LOG_PART) << "text:\n" << m_edit->text() << "\n is sed replace: " << parsedSedExpression.parsedSuccessfully;
                 if (parsedSedExpression.parsedSuccessfully) {
                     const QString originalFindTerm = sedFindTerm();
                     const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
@@ -1035,7 +1031,6 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     const QString replaceTerm = sedReplaceTerm();
                     m_viInputModeManager->globalState()->replaceHistory()->append(replaceTerm);
                     commandToExecute = commandWithSedSearchRegexConverted;
-                    qCDebug(LOG_PART) << "Command to execute after replacing search term: " << commandToExecute;
                 }
 
                 const QString commandResponseMessage = executeCommand(commandToExecute);
@@ -1084,7 +1079,6 @@ void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedRepl
         finishInteractiveSedReplace();
         return;
     }
-    qCDebug(LOG_PART) << "Starting incremental search and replace";
     m_commandResponseMessageDisplay->hide();
     m_edit->hide();
     m_barTypeIndicator->hide();
@@ -1216,7 +1210,6 @@ void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 void EmulatedCommandBar::editTextChanged(const QString &newText)
 {
     Q_ASSERT(!m_interactiveSedReplaceActive);
-    qCDebug(LOG_PART) << "New text: " << newText;
     if (!m_isNextTextChangeDueToCompletionChange) {
         m_textToRevertToIfCompletionAborted = newText;
         m_cursorPosToRevertToIfCompletionAborted = m_edit->cursorPosition();
@@ -1240,8 +1233,6 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
         }
 
         qtRegexPattern = withCaseSensitivityMarkersStripped(qtRegexPattern);
-
-        qCDebug(LOG_PART) << "Final regex: " << qtRegexPattern;
 
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.

@@ -22,7 +22,6 @@
 #include <vimode/inputmodemanager.h>
 #include "completionrecorder.h"
 #include "kateview.h"
-#include "katepartdebug.h"
 #include <vimode/keymapper.h>
 #include "globalstate.h"
 #include "macros.h"
@@ -49,7 +48,6 @@ MacroRecorder::~MacroRecorder()
 void MacroRecorder::start(const QChar &macroRegister)
 {
     Q_ASSERT(!m_isRecording);
-    qCDebug(LOG_PART) << "Recording macro: " << macroRegister;
     m_isRecording = true;
     m_register = macroRegister;
     m_viInputModeManager->globalState()->macros()->remove(macroRegister);
@@ -88,9 +86,7 @@ void MacroRecorder::replay(const QChar &macroRegister)
     const QChar reg = (macroRegister == LastPlayedRegister) ?  m_lastPlayedMacroRegister : macroRegister;
 
     m_lastPlayedMacroRegister = reg;
-    qCDebug(LOG_PART) << "Replaying macro: " << reg;
     const QString macroAsFeedableKeypresses = m_viInputModeManager->globalState()->macros()->get(reg);
-    qCDebug(LOG_PART) << "macroAsFeedableKeypresses:  " << macroAsFeedableKeypresses;
 
     QSharedPointer<KeyMapper> mapper(new KeyMapper(m_viInputModeManager, m_viInputModeManager->view()->doc(), m_viInputModeManager->view()));
     CompletionList completions = m_viInputModeManager->globalState()->macros()->getCompletions(reg);
@@ -102,7 +98,6 @@ void MacroRecorder::replay(const QChar &macroRegister)
     m_viInputModeManager->popKeyMapper();
     m_viInputModeManager->completionReplayer()->stop();
     m_macrosBeingReplayedCount--;
-    qCDebug(LOG_PART) << "Finished replaying: " << reg;
 }
 
 bool MacroRecorder::isReplaying()

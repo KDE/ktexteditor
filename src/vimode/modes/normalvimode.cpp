@@ -165,8 +165,6 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         m_count = getCount() * m_countTemp;
         m_countTemp = 0;
         m_iscounted = true;
-
-        qCDebug(LOG_PART) << "count = " << getCount();
     }
 
     m_keys.append(key);
@@ -227,7 +225,6 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
             if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) ||
                     r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') || r == QLatin1Char('^')) {
                 m_register = r;
-                qCDebug(LOG_PART) << "Register set to " << r;
                 m_keys.clear();
                 return true;
             } else {
@@ -244,10 +241,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         // remove commands not matching anymore
         for (int i = n; i >= 0; i--) {
             if (!m_commands.at(m_matchingCommands.at(i))->matches(m_keys)) {
-                //qCDebug(LOG_PART) << "removing " << m_commands.at( m_matchingCommands.at( i ) )->pattern() << ", size before remove is " << m_matchingCommands.size();
                 if (m_commands.at(m_matchingCommands.at(i))->needsMotion()) {
                     // "cache" command needing a motion for later
-                    //qCDebug(LOG_PART) << "m_motionOperatorIndex set to " << m_motionOperatorIndex;
                     m_motionOperatorIndex = m_matchingCommands.at(i);
                 }
                 m_matchingCommands.remove(i);
@@ -286,18 +281,14 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Half);
     }
 
-    //qCDebug(LOG_PART) << "checkFrom: " << checkFrom;
-
     // look for matching motion commands from position 'checkFrom'
     // FIXME: if checkFrom hasn't changed, only motions whose index is in
     // m_matchingMotions should be checked
     bool motionExecuted = false;
     if (checkFrom < m_keys.size()) {
         for (int i = 0; i < m_motions.size(); i++) {
-            //qCDebug(LOG_PART)  << "\tchecking " << m_keys.mid( checkFrom )  << " against " << m_motions.at( i )->pattern();
             if (m_motions.at(i)->matches(m_keys.mid(checkFrom))) {
                 m_lastMotionWasLinewiseInnerBlock = false;
-                //qCDebug(LOG_PART)  << m_keys.mid( checkFrom ) << " matches!";
                 m_matchingMotions.push_back(i);
 
                 // if it matches exact, we have found the motion command to execute
@@ -330,8 +321,6 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                                 r.endColumn = doc()->lineLength(r.endLine) - 1;
                             }
 
-                            qCDebug(LOG_PART) << "No command given, going to position ("
-                                              << r.endLine << "," << r.endColumn << ")";
                             goToPos(r);
 
                             // in the case of VisualMode we need to remember the motion commands as well.
@@ -382,9 +371,6 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         m_commandWithMotion = true;
 
                         if (m_commandRange.valid) {
-                            qCDebug(LOG_PART) << "Run command" << m_commands.at(m_motionOperatorIndex)->pattern()
-                                              << "from (" << m_commandRange.startLine << "," << m_commandRange.startColumn << ")"
-                                              << "to (" << m_commandRange.endLine << "," << m_commandRange.endColumn << ")";
                             executeCommand(m_commands.at(m_motionOperatorIndex));
                         } else {
                             qCDebug(LOG_PART) << "Invalid range: "
@@ -416,16 +402,11 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         return true;
     }
 
-    //qCDebug(LOG_PART) << "'" << m_keys << "' MATCHING COMMANDS: " << m_matchingCommands.size();
-    //qCDebug(LOG_PART) << "'" << m_keys << "' MATCHING MOTIONS: " << m_matchingMotions.size();
-    //qCDebug(LOG_PART) << "'" << m_keys << "' AWAITING MOTION OR TO (INDEX): " << ( m_awaitingMotionOrTextObject.isEmpty() ? 0 : m_awaitingMotionOrTextObject.top() );
-
     // if we have only one match, check if it is a perfect match and if so, execute it
     // if it's not waiting for a motion or a text object
     if (m_matchingCommands.size() == 1) {
         if (m_commands.at(m_matchingCommands.at(0))->matchesExact(m_keys)
                 && !m_commands.at(m_matchingCommands.at(0))->needsMotion()) {
-            //qCDebug(LOG_PART) << "Running command at index " << m_matchingCommands.at( 0 );
 
             if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
                 m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
@@ -458,7 +439,6 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
  */
 void NormalViMode::resetParser()
 {
-//  qCDebug(LOG_PART) << "***RESET***";
     m_keys.clear();
     m_keysVerbatim.clear();
     m_count = 0;
@@ -859,9 +839,7 @@ bool NormalViMode::commandMakeLowercaseLine()
 
 bool NormalViMode::commandMakeUppercase()
 {
-    qCDebug(LOG_PART) << "Heere!";
     if (!m_commandRange.valid) {
-        qCDebug(LOG_PART) << "Here2";
         return false;
     }
     KTextEditor::Cursor c = m_view->cursorPosition();
@@ -1534,7 +1512,6 @@ bool NormalViMode::commandSetMark()
 
     QChar mark = m_keys.at(m_keys.size() - 1);
     m_viInputModeManager->marks()->setUserMark(mark, c);
-    qCDebug(LOG_PART) << "set mark [" << mark << "] at (" << c.line() << "," << c.column() << ")";
 
     return true;
 }

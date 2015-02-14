@@ -97,11 +97,8 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         m_registers.insert(reg, Register(text, flag));
     }
 
-    qCDebug(LOG_PART) << "Register " << reg << " set to " << getContent(reg);
-
     if (reg == ZeroRegister || reg == FirstNumberedRegister || reg == SmallDeleteRegister) {
         m_default = reg;
-        qCDebug(LOG_PART) << "Register " << '"' << " set to point to \"" << reg;
     }
 }
 
@@ -148,9 +145,4 @@ void Registers::setNumberedRegister(const QString &text, OperationMode flag)
 
     // register 0 is used for the last yank command, so insert at position 1
     m_numbered.prepend(Register(text, flag));
-
-    qCDebug(LOG_PART) << "Register 1-9:";
-    for (int i = 0; i < m_numbered.size(); i++) {
-        qCDebug(LOG_PART) << "\t Register " << i + 1 << ": " << m_numbered.at(i);
-    }
 }

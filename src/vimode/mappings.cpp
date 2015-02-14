@@ -77,7 +77,6 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
                 recursion = NonRecursive;
             }
             add(mappingMode, keys.at(i), mappings.at(i), recursion);
-            qCDebug(LOG_PART) <<  + " mapping " << keys.at(i) << " -> " << mappings.at(i);
         }
     } else {
         qCDebug(LOG_PART) << "Error when reading mappings from " << mappingModeName << " config: number of keys != number of values";

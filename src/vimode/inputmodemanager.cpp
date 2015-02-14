@@ -42,7 +42,6 @@
 #include <vimode/keyparser.h>
 #include <vimode/keymapper.h>
 #include <vimode/emulatedcommandbar.h>
-#include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include "marks.h"
 #include "jumps.h"
@@ -169,14 +168,11 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
         mods = Qt::NoModifier;
         text.clear();
 
-        qCDebug(LOG_PART) << "\t" << decoded;
-
         if (decoded.length() > 1) {  // special key
 
             // remove the angle brackets
             decoded.remove(0, 1);
             decoded.remove(decoded.indexOf(QLatin1String(">")), 1);
-            qCDebug(LOG_PART) << QLatin1String("\t Special key:") << decoded;
 
             // check if one or more modifier keys where used
             if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1
@@ -211,9 +207,6 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
                 } else if (decoded.length() == 1) {
                     key = int(decoded.at(0).toUpper().toLatin1());
                     text = decoded.at(0);
-                    qCDebug(LOG_PART) << "###########" << key;
-                } else {
-                    qCWarning(LOG_PART) << "decoded is empty. skipping key press.";
                 }
             } else { // no modifiers
                 key = KeyParser::self()->vi2qt(decoded);
@@ -327,7 +320,6 @@ bool InputModeManager::isAnyVisualMode() const
     case ViMode::ReplaceMode:
         return m_viReplaceMode;
     }
-    qCDebug(LOG_PART) << "WARNING: Unknown Vi mode.";
     return NULL;
 }
 

@@ -17,16 +17,6 @@
  */
 
 #include "jumps.h"
-#include "katepartdebug.h"
-
-// verbose debugging or not?
-#if 0
-#define JUMPS_DEBUG qCDebug(LOG_PART)
-#define DO_JUMPS_DEBUG 1
-#else
-#define JUMPS_DEBUG if (0) qCDebug(LOG_PART)
-#define DO_JUMPS_DEBUG 0
-#endif
 
 using namespace KateVi;
 
@@ -57,8 +47,6 @@ void Jumps::add(const KTextEditor::Cursor &cursor)
     Jump jump = {cursor.line(), cursor.column()};
     m_jumps->push_back(jump);
     m_current = m_jumps->end();
-
-    printJumpList();
 }
 
 KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor &cursor)
@@ -75,8 +63,6 @@ KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor &cursor)
         jump = *(m_current);
     }
 
-    printJumpList();
-
     return KTextEditor::Cursor(jump.line, jump.column);
 }
 
@@ -90,34 +76,10 @@ KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor &cursor)
     if (m_current != m_jumps->begin()) {
         m_current--;
 
-        printJumpList();
         return KTextEditor::Cursor(m_current->line, m_current->column);
     }
 
-    printJumpList();
-
     return cursor;
-}
-
-void Jumps::printJumpList() const
-{
-#if DO_JUMPS_DEBUG
-    qCDebug(LOG_PART) << "Jump List";
-    for (QList<Jump>::iterator iter = m_jumps->begin();
-            iter != m_jumps->end();
-            iter++)
-    {
-        if (iter == m_current) {
-            qCDebug(LOG_PART) << (*iter).line << (*iter).column << "<< Current Jump";
-        } else {
-            qCDebug(LOG_PART) << (*iter).line << (*iter).column;
-        }
-    }
-
-    if (m_current == m_jumps->end()) {
-        qCDebug(LOG_PART) << "    << Current Jump";
-    }
-#endif
 }
 
 void Jumps::readSessionConfig(const KConfigGroup &config)
@@ -132,7 +94,6 @@ void Jumps::readSessionConfig(const KConfigGroup &config)
     }
 
     m_current = m_jumps->end();
-    printJumpList();
 }
 
 void Jumps::writeSessionConfig(KConfigGroup &config) const
