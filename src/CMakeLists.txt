@@ -143,6 +143,7 @@ view/katefadeeffect.cpp
 view/kateanimation.cpp
 view/katetextanimation.cpp
 view/katestatusbar.cpp
+view/wordcounter.cpp
 
 # spell checking
 spellcheck/prefixstore.h
@@ -207,7 +208,7 @@ inputmode/katenormalinputmode.cpp
 inputmode/katenormalinputmodefactory.cpp
 )
 
-ki18n_wrap_ui(ktexteditor_LIB_SRCS 
+ki18n_wrap_ui(ktexteditor_LIB_SRCS
 dialogs/textareaappearanceconfigwidget.ui
 dialogs/bordersappearanceconfigwidget.ui
 dialogs/commandmenuconfigwidget.ui

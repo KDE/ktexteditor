@@ -26,6 +26,7 @@
 #include "katedocument.h"
 #include "kateconfig.h"
 #include "kateabstractinputmode.h"
+#include "wordcounter.h"
 
 #include <KLocalizedString>
 #include <KIconLoader>
@@ -57,6 +58,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     , m_insertModeLabel(Q_NULLPTR)
     , m_modifiedStatus (-1)
     , m_selectionMode (-1)
+    , m_wordCounter(Q_NULLPTR)
 {
     KAcceleratorManager::setNoAccel(this);
     setFocusProxy(m_view);
@@ -82,6 +84,16 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
     m_lineColLabel->setFocusProxy(m_view);
     m_lineColLabel->setWhatsThis(i18n("Current cursor position. Doubleclick to go to specific line."));
+
+    /**
+     * show word count
+     */
+    m_wordCountLabel = new QLabel(this);
+    topLayout->addWidget(m_wordCountLabel, 0);
+    m_wordCountLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+    m_wordCountLabel->setFocusProxy(m_view);
+    m_wordCountLabel->setWhatsThis(i18n("Words and Chars count in document/selection."));
+    m_wordCountLabel->hide();
 
     /**
      * show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
@@ -183,11 +195,13 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*,bool,KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()) );
     connect(m_view->document(), SIGNAL(configChanged()), this, SLOT(documentConfigChanged()));
     connect(m_view->document(), SIGNAL(modeChanged(KTextEditor::Document*)), this, SLOT(modeChanged()));
+    connect(m_view, &KTextEditor::ViewPrivate::configChanged, this, &KateStatusBar::configChanged);
 
     connect(m_tabGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotTabGroup(QAction*)));
     connect(m_indentGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentGroup(QAction*)));
     connect(radioGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentTabMode(QAction*)));
     updateStatus ();
+    wordCountChanged(0, 0, 0, 0);
 }
 
 bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
@@ -404,4 +418,34 @@ void KateStatusBar::slotIndentTabMode(QAction* a) {
         }
         m_tabGroup->setEnabled(false);
     }
+}
+
+void KateStatusBar::toggleWordCount(bool on)
+{
+    if ((m_wordCounter != Q_NULLPTR) == on) {
+        return;
+    }
+
+    if (on) {
+        m_wordCounter = new WordCounter(m_view);
+        connect(m_wordCounter, &WordCounter::changed, this, &KateStatusBar::wordCountChanged);
+    } else {
+        delete m_wordCounter;
+        m_wordCounter = Q_NULLPTR;
+        wordCountChanged(0, 0, 0, 0);
+    }
+
+    m_wordCountLabel->setVisible(on);
+}
+
+void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, int charsInDocument, int charsInSelection)
+{
+    m_wordCountLabel->setText(i18n("Words %1/%2, Chars %3/%4",
+                                   wordsInDocument, wordsInSelection,
+                                   charsInDocument, charsInSelection));
+}
+
+void KateStatusBar::configChanged()
+{
+    toggleWordCount(m_view->config()->showWordCount());
 }

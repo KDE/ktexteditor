@@ -31,6 +31,8 @@
 #include <QPushButton>
 #include <QToolButton>
 
+class WordCounter;
+
 class KateStatusBarOpenUpMenu: public QMenu
 {
         Q_OBJECT
@@ -62,12 +64,19 @@ public Q_SLOTS:
 
     void modeChanged ();
 
+    void wordCountChanged(int, int, int, int);
+
+    void toggleWordCount(bool on);
+
+    void configChanged();
+
 protected:
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
-    
+
 private:
     KTextEditor::ViewPrivate *const m_view;
     QLabel* m_lineColLabel;
+    QLabel* m_wordCountLabel;
     QToolButton* m_modifiedLabel;
     QLabel* m_insertModeLabel;
     QPushButton* m_mode;
@@ -85,9 +94,12 @@ private:
     QAction *m_mixedAction;
     QAction *m_hardAction;
     QAction *m_softAction;
+    WordCounter *m_wordCounter;
+
+private:
     void addNumberAction(QActionGroup *group, QMenu *menu, int data);
     void updateGroup(QActionGroup *group, int w);
-    
+
 public Q_SLOTS:
     void slotTabGroup(QAction*);
     void slotIndentGroup(QAction*);

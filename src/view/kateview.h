@@ -571,6 +571,7 @@ public Q_SLOTS:
     void reloadFile();
     void toggleWWMarker();
     void toggleNPSpaces();
+    void toggleWordCount(bool on);
     void toggleWriteLock();
     void switchToCmdLine();
     void slotReadWriteChanged();
@@ -630,6 +631,7 @@ private:
     KSelectAction         *m_setDynWrapIndicators;
     KToggleAction         *m_toggleWWMarker;
     KToggleAction         *m_toggleNPSpaces;
+    KToggleAction         *m_toggleWordCount;
     QAction               *m_switchCmdLine;
     KToggleAction         *m_viInputModeAction;
 

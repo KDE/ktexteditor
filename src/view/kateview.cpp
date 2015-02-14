@@ -740,6 +740,12 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Show/hide bounding box around non-printable spaces"));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleNPSpaces()));
 
+    a = m_toggleWordCount = new KToggleAction(i18n("Show Word Count"), this);
+    a->setChecked(false);
+    ac->addAction(QLatin1String("view_word_count"), a);
+    a->setWhatsThis(i18n("Show/hide word count in status bar"));
+    connect(a, &QAction::triggered, this, &ViewPrivate::toggleWordCount);
+
     a = m_switchCmdLine = ac->addAction(QLatin1String("switch_to_cmd_line"));
     a->setText(i18n("Switch to Command Line"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F7));
@@ -1646,6 +1652,11 @@ void KTextEditor::ViewPrivate::toggleNPSpaces()
 {
     m_renderer->setShowNonPrintableSpaces(!m_renderer->showNonPrintableSpaces());
     m_viewInternal->update(); // force redraw
+}
+
+void KTextEditor::ViewPrivate::toggleWordCount(bool on)
+{
+    config()->setShowWordCount(on);
 }
 
 void KTextEditor::ViewPrivate::setFoldingMarkersOn(bool enable)

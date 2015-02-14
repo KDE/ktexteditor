@@ -120,7 +120,7 @@ static QUrl normalizeUrl (const QUrl &url)
      */
     if (url.isEmpty() || !url.isLocalFile())
         return url;
-    
+
     /**
      * don't normalize if not existing!
      * canonicalFilePath won't work!
@@ -128,7 +128,7 @@ static QUrl normalizeUrl (const QUrl &url)
     const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
     if (normalizedUrl.isEmpty())
         return url;
-    
+
     /**
      * else: use canonicalFilePath to normalize
      */
@@ -179,7 +179,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
      * no plugins from kparts here
      */
     setPluginLoadingMode (DoNotLoadPlugins);
-    
+
     /**
      * pass on our component data, do this after plugin loading is off
      */
@@ -218,7 +218,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)),
             this, SLOT(slotModOnHdDeleted(QString)));
-    
+
     /**
      * singleshot timer to handle updates of mod on hd state delayed
      */
@@ -2252,6 +2252,7 @@ bool KTextEditor::DocumentPrivate::openFile()
 
     // Inform that the text has changed (required as we're not inside the usual editStart/End stuff)
     emit textChanged(this);
+    emit loaded(this);
 
     //
     // to houston, we are not modified
@@ -4563,7 +4564,7 @@ void KTextEditor::DocumentPrivate::slotModOnHdDirty(const QString &path)
     if ((path == m_dirWatchFile) && (!m_modOnHd || m_modOnHdReason != OnDiskModified)) {
         m_modOnHd = true;
         m_modOnHdReason = OnDiskModified;
-        
+
         if (!m_modOnHdTimer.isActive()) {
             m_modOnHdTimer.start();
         }
@@ -4646,7 +4647,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         }
 #endif
     }
-    
+
     /**
      * reenable dialog if not running atm
      */
@@ -4680,7 +4681,7 @@ bool KTextEditor::DocumentPrivate::createDigest()
             while (!f.atEnd()) {
                 crypto.addData(f.read(256 * 1024));
             }
-            
+
             digest = crypto.result();
         }
     }
@@ -5702,7 +5703,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
     } else {
         return -1;
     }
-    
+
     return highlight()->defaultStyleForAttribute(attribute);
 }
 

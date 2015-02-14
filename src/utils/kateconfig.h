@@ -555,6 +555,9 @@ public:
     bool foldFirstLine() const;
     void setFoldFirstLine(bool on);
 
+    bool showWordCount();
+    void setShowWordCount(bool on);
+
 private:
     bool m_dynWordWrap;
     int m_dynWordWrapIndicators;
@@ -585,6 +588,7 @@ private:
     bool m_smartCopyCut;
     bool m_scrollPastEnd;
     bool m_foldFirstLine;
+    bool m_showWordCount;
 
     bool m_dynWordWrapSet : 1;
     bool m_dynWordWrapIndicatorsSet : 1;

@@ -1199,6 +1199,7 @@ void KateDocumentConfig::setLineLengthLimit(int lineLengthLimit)
 //BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
     :
+    m_showWordCount(false),
     m_dynWordWrapSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
@@ -1241,6 +1242,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     :
     m_searchFlags(PowerModePlainText),
     m_maxHistorySize(100),
+    m_showWordCount(false),
     m_dynWordWrapSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
@@ -1310,6 +1312,7 @@ const char KEY_WORD_COMPLETION_REMOVE_TAIL[] = "Word Completion Remove Tail";
 const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
 const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
 const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
+const char KEY_SHOW_WORD_COUNT[] = "Show Word Count";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -1365,6 +1368,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setSmartCopyCut(config.readEntry(KEY_SMART_COPY_CUT, false));
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
     setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
+    setShowWordCount(config.readEntry(KEY_SHOW_WORD_COUNT, false));
 
     configEnd();
 }
@@ -1420,6 +1424,8 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_INPUT_MODE, static_cast<int>(inputMode()));
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
     config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
+
+    config.writeEntry(KEY_SHOW_WORD_COUNT, showWordCount());
 }
 
 void KateViewConfig::updateConfig()
@@ -2090,6 +2096,22 @@ void KateViewConfig::setFoldFirstLine(bool on)
     m_foldFirstLineSet = true;
     m_foldFirstLine = on;
 
+    configEnd();
+}
+
+bool KateViewConfig::showWordCount()
+{
+    return m_showWordCount;
+}
+
+void KateViewConfig::setShowWordCount(bool on)
+{
+    if (m_showWordCount == on) {
+        return;
+    }
+
+    configStart();
+    m_showWordCount = on;
     configEnd();
 }
 

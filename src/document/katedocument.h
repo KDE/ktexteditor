@@ -139,7 +139,7 @@ private:
     //
 public:
     KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR) Q_DECL_OVERRIDE;
-    
+
     QList<KTextEditor::View *> views() const Q_DECL_OVERRIDE
     {
         return m_views.keys();
@@ -498,7 +498,7 @@ public:
 public:
     /**
      * Read session settings from the given \p config.
-     * 
+     *
      * Known flags:
      *  "SkipUrl" => don't save/restore the file
      *  "SkipMode" => don't save/restore the mode
@@ -1380,7 +1380,7 @@ public:
 
 public Q_SLOTS:
     void openWithLineLengthLimitOverride();
-    
+
 private:
     /**
      * timer for delayed handling of mod on hd
@@ -1395,6 +1395,9 @@ private:
 
 public:
     void setActiveTemplateHandler(KateTemplateHandler* handler);
+
+Q_SIGNALS:
+    void loaded(KTextEditor::DocumentPrivate *document);
 };
 
 #endif
