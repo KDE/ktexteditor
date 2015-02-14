@@ -46,7 +46,7 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
         if (geo.top()<0) geo.moveTop(0);
         setGeometry(geo);
     }
-    
+
     QMenu::setVisible(visibility);
 }
 //END menu
@@ -54,8 +54,8 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
-    , m_modifiedStatus (-1)
     , m_insertModeLabel(Q_NULLPTR)
+    , m_modifiedStatus (-1)
     , m_selectionMode (-1)
 {
     KAcceleratorManager::setNoAccel(this);
@@ -72,7 +72,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add a bit space
      */
     topLayout->addSpacing (4);
-    
+
     /**
      * show Line XXX, Column XXX
      */
@@ -174,7 +174,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add a bit space
      */
     topLayout->addSpacing (4);
-    
+
     // signals for the statusbar
     connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*,KTextEditor::View::ViewMode)), this, SLOT(viewModeChanged()));
@@ -223,7 +223,7 @@ void KateStatusBar::selectionChanged ()
     if (newSelectionMode == m_selectionMode) {
         return;
     }
-    
+
     // remember new mode and update info
     m_selectionMode = newSelectionMode;
     viewModeChanged();
@@ -235,7 +235,7 @@ void KateStatusBar::viewModeChanged ()
     QString text = m_view->viewModeHuman();
     if (m_view->blockSelection())
         text = i18n ("<em>[BLOCK]</em> %1", text);
-    
+
     m_insertModeLabel->setText(text);
 }
 
@@ -287,7 +287,7 @@ void KateStatusBar::modifiedChanged()
             break;
     }
 }
-        
+
 void KateStatusBar::documentConfigChanged ()
 {
     m_encoding->setText( m_view->document()->encoding() );
@@ -295,7 +295,7 @@ void KateStatusBar::documentConfigChanged ()
     int tabWidth=config->tabWidth();
     int indentationWidth=config->indentationWidth();
     bool replaceTabsDyn=config->replaceTabsDyn();
-    
+
     if (!replaceTabsDyn) {
         if (tabWidth==indentationWidth) {
             m_tabsIndent->setText(m_tabsOnly.subs(tabWidth).toString());
@@ -388,7 +388,7 @@ void KateStatusBar::slotIndentGroup(QAction* a) {
 void KateStatusBar::slotIndentTabMode(QAction* a) {
     KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
     if (a==m_softAction) {
-        config->setReplaceTabsDyn(true);   
+        config->setReplaceTabsDyn(true);
     } else if (a==m_mixedAction) {
         if (config->replaceTabsDyn())
             config->setReplaceTabsDyn(false);
