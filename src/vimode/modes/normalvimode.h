@@ -58,7 +58,7 @@ public:
     explicit NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     virtual ~NormalViMode();
 
-    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
+    bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
     bool commandEnterInsertMode();
     bool commandEnterInsertModeAppend();

@@ -55,7 +55,7 @@ public:
                         KateViewInternal *viewInternal);
     virtual ~InsertViMode();
 
-    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
+    bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
     bool commandInsertFromAbove();
     bool commandInsertFromBelow();

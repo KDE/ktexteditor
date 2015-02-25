@@ -180,7 +180,7 @@ public Q_SLOTS:
     }
 
 public:
-    virtual bool isEditingTransactionRunning() const Q_DECL_OVERRIDE;
+    bool isEditingTransactionRunning() const Q_DECL_OVERRIDE;
     QString text(const KTextEditor::Range &range, bool blockwise = false) const Q_DECL_OVERRIDE;
     QStringList textLines(const KTextEditor::Range &range, bool block = false) const Q_DECL_OVERRIDE;
     QString text() const Q_DECL_OVERRIDE;
@@ -190,9 +190,9 @@ public:
     KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const Q_DECL_OVERRIDE;
     bool isValidTextPosition(const KTextEditor::Cursor& cursor) const Q_DECL_OVERRIDE;
     int lines() const Q_DECL_OVERRIDE;
-    virtual bool isLineModified(int line) const Q_DECL_OVERRIDE;
-    virtual bool isLineSaved(int line) const Q_DECL_OVERRIDE;
-    virtual bool isLineTouched(int line) const Q_DECL_OVERRIDE;
+    bool isLineModified(int line) const Q_DECL_OVERRIDE;
+    bool isLineSaved(int line) const Q_DECL_OVERRIDE;
+    bool isLineTouched(int line) const Q_DECL_OVERRIDE;
     KTextEditor::Cursor documentEnd() const Q_DECL_OVERRIDE;
     int totalCharacters() const Q_DECL_OVERRIDE;
     int lineLength(int line) const Q_DECL_OVERRIDE;

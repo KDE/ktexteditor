@@ -39,9 +39,9 @@ public:
 
     int categoryHeight(const QModelIndex &index, const QStyleOption &option) const Q_DECL_OVERRIDE;
 
-    virtual int leftMargin() const Q_DECL_OVERRIDE;
+    int leftMargin() const Q_DECL_OVERRIDE;
 
-    virtual int rightMargin() const Q_DECL_OVERRIDE;
+    int rightMargin() const Q_DECL_OVERRIDE;
 
 };
 

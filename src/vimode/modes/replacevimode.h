@@ -53,7 +53,7 @@ protected:
      *
      * @returns true if a command was completed and executed, false otherwise.
      */
-    virtual bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
+    bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
 
 private:
     /**

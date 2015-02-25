@@ -98,7 +98,7 @@ protected:
      * (i.e. move the cursor) while a text object may modify both the start and
      * the end. Overriden from the ModeBase class.
      */
-    virtual void goToPos(const Range &r) Q_DECL_OVERRIDE;
+    void goToPos(const Range &r) Q_DECL_OVERRIDE;
 
 private:
     void initializeCommands();

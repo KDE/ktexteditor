@@ -958,7 +958,7 @@ public:
      *
      * \return list of AttributeBlocks for given \p line.
      */
-    virtual QList<KTextEditor::AttributeBlock> lineAttributes(int line) Q_DECL_OVERRIDE;
+    QList<KTextEditor::AttributeBlock> lineAttributes(int line) Q_DECL_OVERRIDE;
 
 private:
     // remember folding state to prevent refolding the first line if it was manually unfolded,
