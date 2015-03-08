@@ -98,7 +98,7 @@ static QStringList jsonToStringList (const QJsonValue &value)
             list.append(value.toString());
         }
     }
-    
+
     return list;
 }
 
@@ -130,12 +130,24 @@ void KateScriptManager::collect()
             }
         }
 
-        // iterate through the files and read info out of cache or file
+        // iterate through the files and read info out of cache or file, no double loading of same scripts
+        QSet<QString> unique;
         foreach (const QString &fileName, list) {
             /**
              * get file basename
              */
             const QString baseName = QFileInfo(fileName).baseName();
+
+            /**
+             * only load scripts once, even if multiple installed variants found!
+             */
+            if (unique.contains(baseName))
+                continue;
+
+            /**
+             * remember the script
+             */
+            unique.insert (baseName);
 
             /**
              * open file or skip it
@@ -145,7 +157,7 @@ void KateScriptManager::collect()
                 qCDebug(LOG_PART) << "Script parse error: Cannot open file " << qPrintable(fileName) << '\n';
                 continue;
             }
-    
+
             /**
              * search json header or skip this file
              */
@@ -175,7 +187,7 @@ void KateScriptManager::collect()
                 qCDebug(LOG_PART) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson << fileContent.mid(endOfJson-25, 25).replace('\n', ' ');
                 continue;
             }
-    
+
             /**
              * remember type
              */
