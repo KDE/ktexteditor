@@ -619,6 +619,11 @@ void KeysTest::MappingTests()
     DoTest("", "ihello\\esct", "");
     DoTest("", "ihello\\esctr", "hello");
 
+    // <nop>
+    clearAllMappings();
+    vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "<nop>", Mappings::Recursive);
+    DoTest("Hello", "lrr", "rello");
+
     // Clear mappings for subsequent tests.
     clearAllMappings();
 }
