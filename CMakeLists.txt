@@ -41,6 +41,7 @@ find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5KIO ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
+find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
 
 # libgit2 integration
 find_package(LibGit2 "0.22.0")
