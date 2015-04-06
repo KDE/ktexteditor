@@ -36,7 +36,7 @@
 
 //BEGIN KateScriptAction
 KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view)
-    : QAction(i18nc("Script action name", action.value(QLatin1String("name")).toString().toUtf8().data()), view)
+    : QAction(i18nc("Script command name", action.value(QLatin1String("name")).toString().toUtf8().data()), view)
     , m_view(view)
     , m_command(cmd)
     , m_interactive(action.value(QLatin1String("interactive")).toBool())
@@ -132,7 +132,7 @@ void KateScriptActionMenu::repopulate()
             QMenu *m = menu();
             QString category = action.value(QLatin1String("category")).toString();
             if (!category.isEmpty()) {
-                category = i18nc("Script action category", category.toUtf8().data());
+                category = i18nc("Script command category", category.toUtf8().data());
                 m = menus[category];
                 if (!m) {
                     m = menu()->addMenu(category);
