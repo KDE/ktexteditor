@@ -64,7 +64,7 @@ namespace
     // fifth, sixth and seventh groups are contingent on the fourth group.
     inline const QRegularExpression& RE_CmdRange()
     {
-        static const QRegularExpression regex(QStringLiteral("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
+        static const QRegularExpression regex(QLatin1String("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
         return regex;
     }
 }
