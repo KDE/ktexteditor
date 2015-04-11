@@ -34,6 +34,7 @@
 
 #include <QTextCodec>
 #include <QStringListModel>
+#include <QSettings>
 
 //BEGIN KateConfig
 KateConfig::KateConfig()
@@ -1147,8 +1148,10 @@ bool KateDocumentConfig::onTheFlySpellCheck() const
     if (isGlobal()) {
         // WARNING: this is slightly hackish, but it's currently the only way to
         //          do it, see also the KTextEdit class
-        KConfigGroup configGroup(KSharedConfig::openConfig(), "Spelling");
-        return configGroup.readEntry("checkerEnabledByDefault", false);
+        QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
+        return settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
+        //KConfigGroup configGroup(KSharedConfig::openConfig(), "Spelling");
+        //return configGroup.readEntry("checkerEnabledByDefault", false);
     }
     if (m_onTheFlySpellCheckSet) {
         return m_onTheFlySpellCheck;

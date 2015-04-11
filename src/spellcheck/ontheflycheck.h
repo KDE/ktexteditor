@@ -132,7 +132,7 @@ protected Q_SLOTS:
     void handleModifiedRanges();
     void handleInsertedText(const KTextEditor::Range &range);
     void handleRemovedText(const KTextEditor::Range &range);
-    void handleRespellCheckBlock(KTextEditor::DocumentPrivate *document, int start, int end);
+    void handleRespellCheckBlock(int start, int end);
     bool removeRangeFromModificationList(KTextEditor::MovingRange *range);
     void clearModificationList();
 };

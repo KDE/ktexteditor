@@ -69,8 +69,8 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
             this, SLOT(addView(KTextEditor::Document*,KTextEditor::View*)));
     connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document*)),
             this, SLOT(updateConfig()));
-    connect(&document->buffer(), SIGNAL(respellCheckBlock(KTextEditor::DocumentPrivate*,int,int)),
-            this, SLOT(handleRespellCheckBlock(KTextEditor::DocumentPrivate*,int,int)));
+    connect(&document->buffer(), SIGNAL(respellCheckBlock(int,int)),
+            this, SLOT(handleRespellCheckBlock(int,int)));
 
     // load the settings for the speller
     updateConfig();
@@ -119,11 +119,8 @@ void KateOnTheFlyChecker::clearMisspellingForWord(const QString &word)
     }
 }
 
-void KateOnTheFlyChecker::handleRespellCheckBlock(KTextEditor::DocumentPrivate *kateDocument, int start, int end)
+void KateOnTheFlyChecker::handleRespellCheckBlock(int start, int end)
 {
-    Q_ASSERT(kateDocument == m_document);
-    Q_UNUSED(kateDocument);
-
     ON_THE_FLY_DEBUG << start << end;
     KTextEditor::Range range(start, 0, end, m_document->lineLength(end));
     bool listEmpty = m_modificationList.isEmpty();
@@ -658,7 +655,7 @@ QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(con
 void KateOnTheFlyChecker::updateConfig()
 {
     ON_THE_FLY_DEBUG;
-    m_speller.restore();
+    //m_speller.restore();
 }
 
 void KateOnTheFlyChecker::refreshSpellCheck(const KTextEditor::Range &range)
