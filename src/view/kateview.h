@@ -968,11 +968,5 @@ private:
 
 }
 
-/**
- * metatype register
- */
-Q_DECLARE_METATYPE(KTextEditor::Cursor)
-Q_DECLARE_METATYPE(KTextEditor::Range)
-
 #endif
 

@@ -352,6 +352,7 @@ private:
 }
 
 Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_MOVABLE_TYPE);
+Q_DECLARE_METATYPE(KTextEditor::Cursor)
 
 /**
  * QHash function for KTextEditor::Cursor.

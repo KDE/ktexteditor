@@ -25,8 +25,6 @@
 
 #include <QtTestWidgets>
 
-Q_DECLARE_METATYPE(KTextEditor::Range)
-
 QTEST_MAIN(PlainTextSearchTest)
 
 QtMessageHandler PlainTextSearchTest::s_msgHandler = 0;

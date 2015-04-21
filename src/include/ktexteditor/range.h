@@ -567,6 +567,7 @@ private:
 }
 
 Q_DECLARE_TYPEINFO(KTextEditor::Range, Q_MOVABLE_TYPE);
+Q_DECLARE_METATYPE(KTextEditor::Range)
 
 /**
  * QHash function for KTextEditor::Range.

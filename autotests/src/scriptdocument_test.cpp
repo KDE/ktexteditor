@@ -25,8 +25,6 @@
 
 #include <QtTestWidgets>
 
-Q_DECLARE_METATYPE(KTextEditor::Cursor)
-
 QTEST_MAIN(ScriptDocumentTest)
 
 QtMessageHandler ScriptDocumentTest::s_msgHandler = 0;

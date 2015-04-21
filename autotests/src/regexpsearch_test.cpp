@@ -25,8 +25,6 @@
 
 #include <QtTestWidgets>
 
-Q_DECLARE_METATYPE(KTextEditor::Range)
-
 QTEST_MAIN(RegExpSearchTest)
 
 #define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
