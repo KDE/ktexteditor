@@ -160,7 +160,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
 //
 // KateSearch Constructor
 //
-KateRegExpSearch::KateRegExpSearch(KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity)
+KateRegExpSearch::KateRegExpSearch(const KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity)
     : m_document(document)
     , m_caseSensitivity(caseSensitivity)
 {

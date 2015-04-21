@@ -26,7 +26,7 @@
 #include <ktexteditor_export.h>
 
 #include <ktexteditor/attribute.h>
-#include <searchinterface.h>
+#include <ktexteditor/document.h>
 
 namespace KTextEditor { class ViewPrivate; }
 class KateViewConfig;
@@ -154,7 +154,7 @@ private:
 
     bool isPatternValid() const;
 
-    KTextEditor::Search::SearchOptions searchOptions(SearchDirection searchDirection = SearchForward) const;
+    KTextEditor::SearchOptions searchOptions(SearchDirection searchDirection = SearchForward) const;
 
     void highlightMatch(const KTextEditor::Range &range);
     void highlightReplacement(const KTextEditor::Range &range);

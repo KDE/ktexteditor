@@ -527,7 +527,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
     // clear previous highlights if there are any
     clearHighlights();
 
-    const Search::SearchOptions enabledOptions = searchOptions(searchDirection);
+    const SearchOptions enabledOptions = searchOptions(searchDirection);
 
     // Where to find?
     Range inputRange;
@@ -556,7 +556,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
     FAST_DEBUG("Search range is" << inputRange);
 
     {
-        const bool regexMode = enabledOptions.testFlag(Search::Regex);
+        const bool regexMode = enabledOptions.testFlag(Regex);
         const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
 
         // Single-line pattern workaround
@@ -685,8 +685,8 @@ bool KateSearchBar::isPatternValid() const
         return false;
     }
 
-    return searchOptions().testFlag(Search::WholeWords) ? searchPattern().trimmed() == searchPattern() :
-           searchOptions().testFlag(Search::Regex)      ? QRegExp(searchPattern()).isValid() :
+    return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern() :
+           searchOptions().testFlag(Regex)      ? QRegExp(searchPattern()).isValid() :
            true;
 }
 
@@ -800,9 +800,9 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
     // don't let selectionChanged signal mess around in this routine
     disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
 
-    const Search::SearchOptions enabledOptions = searchOptions(SearchForward);
+    const SearchOptions enabledOptions = searchOptions(SearchForward);
 
-    const bool regexMode = enabledOptions.testFlag(Search::Regex);
+    const bool regexMode = enabledOptions.testFlag(Regex);
     const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
 
     KTextEditor::MovingRange *workingRange = m_view->doc()->newMovingRange(inputRange);
@@ -958,30 +958,30 @@ bool KateSearchBar::selectionOnly() const
            : false;
 }
 
-KTextEditor::Search::SearchOptions KateSearchBar::searchOptions(SearchDirection searchDirection) const
+KTextEditor::SearchOptions KateSearchBar::searchOptions(SearchDirection searchDirection) const
 {
-    Search::SearchOptions enabledOptions = KTextEditor::Search::Default;
+    SearchOptions enabledOptions = KTextEditor::Default;
 
     if (!matchCase()) {
-        enabledOptions |= Search::CaseInsensitive;
+        enabledOptions |= CaseInsensitive;
     }
 
     if (searchDirection == SearchBackward) {
-        enabledOptions |= Search::Backwards;
+        enabledOptions |= Backwards;
     }
 
     if (m_powerUi != NULL) {
         switch (m_powerUi->searchMode->currentIndex()) {
         case MODE_WHOLE_WORDS:
-            enabledOptions |= Search::WholeWords;
+            enabledOptions |= WholeWords;
             break;
 
         case MODE_ESCAPE_SEQUENCES:
-            enabledOptions |= Search::EscapeSequences;
+            enabledOptions |= EscapeSequences;
             break;
 
         case MODE_REGEX:
-            enabledOptions |= Search::Regex;
+            enabledOptions |= Regex;
             break;
 
         case MODE_PLAIN_TEXT: // FALLTHROUGH
@@ -1202,9 +1202,9 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
         const QString pattern = view->selectionText();
 
         // How to find?
-        Search::SearchOptions enabledOptions(KTextEditor::Search::Default);
+        SearchOptions enabledOptions(KTextEditor::Default);
         if (searchDirection == SearchBackward) {
-            enabledOptions |= Search::Backwards;
+            enabledOptions |= Backwards;
         }
 
         // Where to find?

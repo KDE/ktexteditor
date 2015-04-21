@@ -22,14 +22,14 @@
 #ifndef KATE_MATCH_H
 #define KATE_MATCH_H
 
-#include <searchinterface.h>
+#include <ktexteditor/document.h>
 
 namespace KTextEditor { class DocumentPrivate; }
 
 class KateMatch
 {
 public:
-    KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::Search::SearchOptions options);
+    KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::SearchOptions options);
     KTextEditor::Range searchText(const KTextEditor::Range &range, const QString &pattern);
     KTextEditor::Range replace(const QString &replacement, bool blockMode, int replacementCounter = 1);
     bool isValid() const;
@@ -44,7 +44,7 @@ private:
 
 private:
     KTextEditor::DocumentPrivate *const m_document;
-    const KTextEditor::Search::SearchOptions m_options;
+    const KTextEditor::SearchOptions m_options;
     QVector<KTextEditor::Range> m_resultRanges;
 };
 

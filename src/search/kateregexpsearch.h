@@ -41,7 +41,7 @@ class Document;
 class KTEXTEDITOR_EXPORT KateRegExpSearch
 {
 public:
-    explicit KateRegExpSearch(KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity);
+    explicit KateRegExpSearch(const KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity);
     ~KateRegExpSearch();
 
     //
@@ -98,7 +98,7 @@ private:
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter, bool replacementGoodies);
 
 private:
-    KTextEditor::Document *const m_document;
+    const KTextEditor::Document *const m_document;
     Qt::CaseSensitivity m_caseSensitivity;
     class ReplacementStream;
 };

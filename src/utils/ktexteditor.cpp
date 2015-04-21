@@ -34,7 +34,6 @@
 #include "command.h"
 #include "markinterface.h"
 #include "modificationinterface.h"
-#include "searchinterface.h"
 #include "sessionconfiginterface.h"
 #include "texthintinterface.h"
 
@@ -166,13 +165,6 @@ ModificationInterface::ModificationInterface()
 {}
 
 ModificationInterface::~ModificationInterface()
-{}
-
-SearchInterface::SearchInterface()
-    : d(Q_NULLPTR)
-{}
-
-SearchInterface::~SearchInterface()
 {}
 
 SessionConfigInterface::SessionConfigInterface()

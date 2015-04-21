@@ -30,7 +30,6 @@
 #include <KJob>
 
 #include <ktexteditor/document.h>
-#include <searchinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/configinterface.h>
@@ -77,7 +76,6 @@ class KateAutoIndent;
  *          KTextEditor interfaces.
  */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
-    public KTextEditor::SearchInterface,
     public KTextEditor::MarkInterface,
     public KTextEditor::ModificationInterface,
     public KTextEditor::ConfigInterface,
@@ -399,16 +397,11 @@ protected:
 Q_SIGNALS:
     void undoChanged();
 
-    //
-    // KTextEditor::SearchInterface stuff
-    //
 public:
-    virtual QVector<KTextEditor::Range> searchText(
+    QVector<KTextEditor::Range> searchText(
         const KTextEditor::Range &range,
         const QString &pattern,
-        const KTextEditor::Search::SearchOptions options) Q_DECL_OVERRIDE;
-
-    KTextEditor::Search::SearchOptions supportedSearchOptions() const Q_DECL_OVERRIDE;
+        const KTextEditor::SearchOptions options) const;
 
 private:
     /**

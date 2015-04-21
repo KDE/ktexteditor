@@ -3478,7 +3478,7 @@ void KTextEditor::ViewPrivate::createHighlights()
     do {
         searchRange.setRange(start, visibleRange().end());
 
-        matches = m_doc->searchText(searchRange, regex, KTextEditor::Search::Regex);
+        matches = m_doc->searchText(searchRange, regex, KTextEditor::Regex);
 
         if (matches.first().isValid()) {
             KTextEditor::MovingRange* mr = m_doc->newMovingRange(matches.first());

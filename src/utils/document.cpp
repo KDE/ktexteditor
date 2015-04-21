@@ -19,7 +19,6 @@
  */
 
 #include "document.h"
-
 #include "katedocument.h"
 
 using namespace KTextEditor;
@@ -130,3 +129,7 @@ bool Document::isEmpty() const
     return documentEnd() == Cursor::start();
 }
 
+QVector<KTextEditor::Range> Document::searchText(const KTextEditor::Range &range, const QString &pattern, const SearchOptions options) const
+{
+    return d->searchText(range, pattern, options);
+}

@@ -24,7 +24,6 @@
 #include "kateview.h"
 #include "katedocument.h"
 #include "ktexteditor/range.h"
-#include "search/searchinterface.h"
 #include "globalstate.h"
 #include "history.h"
 
@@ -138,13 +137,13 @@ KTextEditor::Range Searcher::findPattern(const QString &pattern, bool backwards,
 KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
 {
     KTextEditor::Cursor searchBegin = startFrom;
-    KTextEditor::Search::SearchOptions flags = KTextEditor::Search::Regex;
+    KTextEditor::SearchOptions flags = KTextEditor::Regex;
 
     if (backwards) {
-        flags |= KTextEditor::Search::Backwards;
+        flags |= KTextEditor::Backwards;
     }
     if (!caseSensitive) {
-        flags |= KTextEditor::Search::CaseInsensitive;
+        flags |= KTextEditor::CaseInsensitive;
     }
     KTextEditor::Range finalMatch;
     for (int i = 0; i < count; i++) {

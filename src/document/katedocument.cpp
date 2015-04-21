@@ -1605,17 +1605,13 @@ void KTextEditor::DocumentPrivate::redo()
 QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(
     const KTextEditor::Range &range,
     const QString &pattern,
-    const KTextEditor::Search::SearchOptions options)
+    const KTextEditor::SearchOptions options) const
 {
-    // TODO
-    // * support BlockInputRange
-    // * support DotMatchesNewline
-
-    const bool escapeSequences =  options.testFlag(KTextEditor::Search::EscapeSequences);
-    const bool regexMode       =  options.testFlag(KTextEditor::Search::Regex);
-    const bool backwards       =  options.testFlag(KTextEditor::Search::Backwards);
-    const bool wholeWords      =  options.testFlag(KTextEditor::Search::WholeWords);
-    const Qt::CaseSensitivity caseSensitivity = options.testFlag(KTextEditor::Search::CaseInsensitive) ? Qt::CaseInsensitive : Qt::CaseSensitive;
+    const bool escapeSequences =  options.testFlag(KTextEditor::EscapeSequences);
+    const bool regexMode       =  options.testFlag(KTextEditor::Regex);
+    const bool backwards       =  options.testFlag(KTextEditor::Backwards);
+    const bool wholeWords      =  options.testFlag(KTextEditor::WholeWords);
+    const Qt::CaseSensitivity caseSensitivity = options.testFlag(KTextEditor::CaseInsensitive) ? Qt::CaseInsensitive : Qt::CaseSensitive;
 
     if (regexMode) {
         // regexp search
@@ -1641,19 +1637,6 @@ QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(
     QVector<KTextEditor::Range> result;
     result.append(match);
     return result;
-}
-
-KTextEditor::Search::SearchOptions KTextEditor::DocumentPrivate::supportedSearchOptions() const
-{
-    KTextEditor::Search::SearchOptions supported(KTextEditor::Search::Default);
-    supported |= KTextEditor::Search::Regex;
-    supported |= KTextEditor::Search::CaseInsensitive;
-    supported |= KTextEditor::Search::Backwards;
-// supported |= KTextEditor::Search::BlockInputRange;
-    supported |= KTextEditor::Search::EscapeSequences;
-    supported |= KTextEditor::Search::WholeWords;
-// supported |= KTextEditor::Search::DotMatchesNewline;
-    return supported;
 }
 //END
 

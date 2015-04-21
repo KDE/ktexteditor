@@ -41,7 +41,7 @@ class Document;
 class KTEXTEDITOR_EXPORT KatePlainTextSearch
 {
 public:
-    explicit KatePlainTextSearch(KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity, bool wholeWords);
+    explicit KatePlainTextSearch(const KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity, bool wholeWords);
     ~KatePlainTextSearch();
 
 public:
@@ -63,7 +63,7 @@ public:
                               const KTextEditor::Range &inputRange, bool backwards = false);
 
 private:
-    KTextEditor::Document *m_document;
+    const KTextEditor::Document *m_document;
     Qt::CaseSensitivity m_caseSensitivity;
     bool m_wholeWords;
 };

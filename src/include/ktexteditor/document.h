@@ -46,6 +46,36 @@ class Message;
 class View;
 
 /**
+ * \brief Search flags for use with searchText.
+ *
+ * Modifies the behavior of searchText.
+ * By default it is searched for a case-sensitive plaintext pattern,
+ * without processing of escape sequences, with "whole words" off,
+ * in forward direction, within a non-block-mode text range.
+ *
+ * \author Sebastian Pipping \<webmaster@hartwork.org\>
+ */
+enum SearchOption {
+    Default             = 0,      ///< Default settings
+
+    // modes
+    Regex               = 1 << 1, ///< Treats the pattern as a regular expression
+
+    // options for all modes
+    CaseInsensitive     = 1 << 4, ///< Ignores cases, e.g. "a" matches "A"
+    Backwards           = 1 << 5, ///< Searches in backward direction
+
+    // options for plaintext
+    EscapeSequences     = 1 << 10, ///< Plaintext mode: Processes escape sequences
+    WholeWords          = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
+
+    Max                 = 1 << 15  ///< Placeholder for binary compatability
+};
+
+Q_DECLARE_FLAGS(SearchOptions, SearchOption)
+Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
+
+/**
  * \brief A KParts derived class representing a text document.
  *
  * Topics:
@@ -795,6 +825,31 @@ public:
      * \see removeText(), clear()
      */
     virtual bool removeLine(int line) = 0;
+
+    /**
+     * \brief Searches the given input range for a text pattern.
+     *
+     * Searches for a text pattern within the given input range.
+     * The kind of search performed depends on the \p options
+     * used. Use this function for plaintext searches as well as
+     * regular expression searches. If no match is found the first
+     * (and only) element in the vector return is the invalid range.
+     * When searching for regular expressions, the first element holds
+     * the range of the full match, the subsequent elements hold
+     * the ranges of the capturing parentheses.
+     *
+     * \param range    Input range to search in
+     * \param pattern  Text pattern to search for
+     * \param options  Combination of search flags
+     * \return         List of ranges (length >=1)
+     *
+     * \author Sebastian Pipping \<webmaster@hartwork.org\>
+     *
+     * \since 5.11
+     */
+    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range,
+                                           const QString &pattern,
+                                           const SearchOptions options = Default) const;
 
     /*
      * SIGNALS

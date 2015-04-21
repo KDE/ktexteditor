@@ -143,13 +143,13 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string, KText
             m_forwardSearch.indexIn(line);
             QString pattern = m_forwardSearch.capturedTexts().at(1);
             int match = view->doc()->searchText(Range(view->cursorPosition(), view->doc()->documentEnd()),
-                                                pattern, KTextEditor::Search::Regex).first().start().line();
+                                                pattern, KTextEditor::Regex).first().start().line();
             values.push_back((match < 0) ? -1 : match + 1);
         } else if (m_backwardSearch.exactMatch(line)) {
             m_backwardSearch.indexIn(line);
             QString pattern = m_backwardSearch.capturedTexts().at(1);
             int match = view->doc()->searchText(Range(Cursor(0, 0), view->cursorPosition()),
-                                                pattern, KTextEditor::Search::Regex).first().start().line();
+                                                pattern, KTextEditor::Regex).first().start().line();
             values.push_back((match < 0) ? -1 : match + 1);
         }
     }

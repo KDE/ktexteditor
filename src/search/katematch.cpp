@@ -24,7 +24,7 @@
 #include "katedocument.h"
 #include <ktexteditor/movingrange.h>
 
-KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::Search::SearchOptions options)
+KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::SearchOptions options)
     : m_document(document)
     , m_options(options)
 {
@@ -41,8 +41,8 @@ KTextEditor::Range KateMatch::searchText(const KTextEditor::Range &range, const 
 KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode, int replacementCounter)
 {
     // Placeholders depending on search mode
-    const bool usePlaceholders = m_options.testFlag(KTextEditor::Search::Regex) ||
-                                 m_options.testFlag(KTextEditor::Search::EscapeSequences);
+    const bool usePlaceholders = m_options.testFlag(KTextEditor::Regex) ||
+                                 m_options.testFlag(KTextEditor::EscapeSequences);
 
     const QString finalReplacement = usePlaceholders ? buildReplacement(replacement, blockMode, replacementCounter)
                                      : replacement;

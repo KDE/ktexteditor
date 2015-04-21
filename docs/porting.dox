@@ -39,9 +39,8 @@ Entirely removed interfaces and classes are:
    This interface was not used by other applications and therefore got removed.
    If required, it can be added again.
  - \p KTextEditor::SearchInterface \n
-   This interface was not used by other applications and therefore got removed.
-   If required, it can be added again (see file
-   ktexteditor/src/search/searchinterface.h).
+   This interface was removed. The function \p searchText() was added to
+   \p KTextEditor::Document.
  - \p KTextEditor::ConfigPageInterface \n
    This interface was removed. The functions \p configPages() and \p configPage()
    were both added to the \p KTextEditor::Editor and the \p KTextEditor::Plugin interface.
