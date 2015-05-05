@@ -2363,10 +2363,11 @@ KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivat
 
 void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
 {
+    // just ignore additional adds for already existing widgets
     if (hasBarWidget(newBarWidget)) {
-        qCWarning(LOG_PART) << "this bar widget is already added";
         return;
     }
+
     // add new widget, invisible...
     newBarWidget->hide();
     m_stack->addWidget(newBarWidget);
@@ -2376,12 +2377,15 @@ void KateViewBar::addBarWidget(KateViewBarWidget *newBarWidget)
 
 void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
 {
-    if (hasBarWidget(barWidget)) {
-        m_stack->removeWidget(barWidget);
-        barWidget->setAssociatedViewBar(0);
-        barWidget->hide();
-        disconnect(barWidget, 0, this, 0);
+    // remove only if there
+    if (!hasBarWidget(barWidget)) {
+        return;
     }
+
+    m_stack->removeWidget(barWidget);
+    barWidget->setAssociatedViewBar(0);
+    barWidget->hide();
+    disconnect(barWidget, 0, this, 0);
 }
 
 void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
