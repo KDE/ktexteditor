@@ -337,9 +337,6 @@ void KateSchemaConfigColorTab::apply()
     QMap<QString, QVector<KateColorItem> >::Iterator it;
     for (it =  m_schemas.begin(); it !=  m_schemas.end(); ++it) {
         KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
-        qCDebug(LOG_PART) << "writing 'Color' tab: scheme =" << it.key()
-                          << "and config group =" << config.name();
-
         foreach (const KateColorItem &item, m_schemas[it.key()]) {
             if (item.useDefault) {
                 config.deleteEntry(item.key);
@@ -686,8 +683,6 @@ bool KateSchemaConfigHighlightTab::loadAllHlsForSchema(const QString &schema)
     progress.setWindowModality(Qt::WindowModal);
     for (int i = 0; i < KateHlManager::self()->highlights(); ++i) {
         if (!m_hlDict[schema].contains(i)) {
-            qCDebug(LOG_PART) << "NEW HL, create list";
-
             QList<KTextEditor::Attribute::Ptr> list;
             KateHlManager::self()->getHl(i)->getKateExtendedAttributeListCopy(schema, list);
             m_hlDict[schema].insert(i, list);
@@ -702,19 +697,13 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
 {
     m_schema = schema;
 
-    qCDebug(LOG_PART) << "NEW SCHEMA: " << m_schema << " NEW HL: " << m_hl;
-
     m_styles->clear();
 
     if (!m_hlDict.contains(m_schema)) {
-        qCDebug(LOG_PART) << "NEW SCHEMA, create dict";
-
         m_hlDict.insert(schema, QHash<int, QList<KTextEditor::Attribute::Ptr> >());
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        qCDebug(LOG_PART) << "NEW HL, create list";
-
         QList<KTextEditor::Attribute::Ptr> list;
         KateHlManager::self()->getHl(m_hl)->getKateExtendedAttributeListCopy(m_schema, list);
         m_hlDict[m_schema].insert(m_hl, list);
@@ -730,8 +719,6 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     while (it != m_hlDict[m_schema][m_hl].constEnd()) {
         const KTextEditor::Attribute::Ptr itemData = *it;
         Q_ASSERT(itemData);
-
-        qCDebug(LOG_PART) << "insert items " << itemData->name();
 
         // All stylenames have their language mode prefixed, e.g. HTML:Comment
         // split them and put them into nice substructures.
@@ -807,10 +794,10 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
                           KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
                           QString::fromLatin1("*.katehlcolor|%1").arg(i18n("Kate color schema")));
 
-        qCDebug(LOG_PART) << "hl file to open " << srcName;
         if (srcName.isEmpty()) {
             return;
         }
+
         cfg = new KConfig(srcName, KConfig::SimpleConfig);
         KConfigGroup grp(cfg, "KateHLColors");
         hlName = grp.readEntry("highlight", QString());
@@ -825,7 +812,6 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
             schemaNameForLoading = QString();
         } else {
             hl = KateHlManager::self()->nameFind(hlName);
-            qCDebug(LOG_PART) << hlName << "--->" << hl;
             if (hl == -1) {
                 //hl not found
                 KMessageBox::information(
@@ -1163,7 +1149,6 @@ void KateSchemaConfigPage::importFullSchema()
 
     // Finally, the correct schema is activated.
     // Next,  start importing.
-    qCDebug(LOG_PART) << "Importing schema: " << schemaName;
 
     //
     // import editor Colors (background, ...)
@@ -1199,9 +1184,6 @@ void KateSchemaConfigPage::importFullSchema()
         if (nameToId.contains(hl)) {
             const int i = nameToId[hl];
             m_highlightTab->importHl(fromSchemaName, schemaName, i, &cfg);
-            qCDebug(LOG_PART) << "hl imported:" << hl;
-        } else {
-            qCDebug(LOG_PART) << "could not import hl, hl unknown:" << hl;
         }
         progress.setValue(++cnt);
     }
@@ -1312,7 +1294,6 @@ void KateSchemaConfigPage::deleteSchema()
 
     if (KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schemaNameToDelete).shippedDefaultSchema) {
         // Default and Printing schema cannot be deleted.
-        qCDebug(LOG_PART) << "default and printing schema cannot be deleted";
         return;
     }
 
