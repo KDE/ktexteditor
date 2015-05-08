@@ -63,6 +63,7 @@
 #include <KStandardAction>
 #include <KXMLGUIFactory>
 #include <kdirwatch.h>
+#include <KEncodingFileDialog>
 #include <KCodecs>
 #include <KStringHandler>
 #include <KConfigGroup>
@@ -3970,14 +3971,21 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
     if (m_modOnHd && !url().isEmpty()) {
         m_isasking = 1;
 
-        KateModOnHdPrompt p(this, m_modOnHdReason, reasonedMOHString(), dialogParent());
+        QWidget *parentWidget(dialogParent());
+
+        KateModOnHdPrompt p(this, m_modOnHdReason, reasonedMOHString(), parentWidget);
         switch (p.exec()) {
         case KateModOnHdPrompt::Save: {
             m_modOnHd = false;
-            const QUrl dst = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
-            if (!dst.isEmpty() && checkOverwrite(dst, dialogParent())) {
-                if (!saveAs(dst)) {
-                    KMessageBox::error(dialogParent(), i18n("Save failed"));
+            KEncodingFileDialog::Result res = KEncodingFileDialog::getSaveUrlAndEncoding(config()->encoding(),
+                                              url(), QString(), parentWidget, i18n("Save File"));
+
+            qCDebug(LOG_PART) << "got " << res.URLs.count() << " URLs";
+            if (! res.URLs.isEmpty() && ! res.URLs.first().isEmpty() && checkOverwrite(res.URLs.first(), parentWidget)) {
+                setEncoding(res.encoding);
+
+                if (! saveAs(res.URLs.first())) {
+                    KMessageBox::error(parentWidget, i18n("Save failed"));
                     m_modOnHd = true;
                 } else {
                     emit modifiedOnDisk(this, false, OnDiskUnmodified);
@@ -4134,33 +4142,51 @@ bool KTextEditor::DocumentPrivate::documentSave()
 
 bool KTextEditor::DocumentPrivate::documentSaveAs()
 {
-    const QUrl dst = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
-    if (dst.isEmpty() || !checkOverwrite(dst, dialogParent())) {
+    QWidget *parentWidget(dialogParent());
+
+    KEncodingFileDialog::Result res = KEncodingFileDialog::getSaveUrlAndEncoding(config()->encoding(),
+                                      url(), QString(), parentWidget, i18n("Save File"));
+
+    if (res.URLs.isEmpty() || !checkOverwrite(res.URLs.first(), parentWidget)) {
         return false;
     }
 
-    return saveAs(dst);
+    setEncoding(res.encoding);
+
+    return saveAs(res.URLs.first());
 }
 
 bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
 {
-    const QUrl dst = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save Copy of File"), url());
-    if (dst.isEmpty() || !checkOverwrite(dst, dialogParent())) {
+    QWidget *parentWidget(dialogParent());
+
+    KEncodingFileDialog::Result res = KEncodingFileDialog::getSaveUrlAndEncoding(config()->encoding(),
+                                      url(), QString(), parentWidget, i18n("Save Copy of File"));
+
+    if (res.URLs.isEmpty() || !checkOverwrite(res.URLs.first(), parentWidget)) {
         return false;
     }
 
     QTemporaryFile file;
+
     if (!file.open()) {
         return false;
     }
 
+    const QString oldEncoding = encoding();
+    setEncoding(res.encoding); // TODO: this would be much cleaner if we could copy the buffer
+
     if (!m_buffer->saveFile(file.fileName())) {
-        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toString()));
+        KMessageBox::error(parentWidget, i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toString()));
+
+        setEncoding(oldEncoding); // restore original encoding
         return false;
     }
 
+    setEncoding(oldEncoding); // restore original encoding
+
     // KIO move
-    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), dst);
+    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), res.URLs.first());
     KJobWidgets::setWindow(job, QApplication::activeWindow());
     return job->exec();
 }
@@ -4822,12 +4848,17 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
     *handled = true;
     *abortClosing = true;
     if (this->url().isEmpty()) {
-        const QUrl dst = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"));
-        if (dst.isEmpty() || !checkOverwrite(dst, dialogParent())) {
+        QWidget *parentWidget(dialogParent());
+
+        KEncodingFileDialog::Result res = KEncodingFileDialog::getSaveUrlAndEncoding(config()->encoding(),
+                                          QUrl(), QString(), parentWidget, i18n("Save File"));
+
+        if (res.URLs.isEmpty() || !checkOverwrite(res.URLs.first(), parentWidget)) {
             *abortClosing = true;
             return;
         }
-        saveAs(dst);
+        setEncoding(res.encoding);
+        saveAs(res.URLs.first());
         *abortClosing = false;
     } else {
         save();
