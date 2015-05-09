@@ -69,7 +69,7 @@ enum SearchOption {
     EscapeSequences     = 1 << 10, ///< Plaintext mode: Processes escape sequences
     WholeWords          = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
 
-    Max                 = 1 << 15  ///< Placeholder for binary compatability
+    Max                 = 1 << 31  ///< Placeholder for binary compatability
 };
 
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
@@ -276,9 +276,9 @@ public:
      * The returned hash equals the git hash of the file written to disk.
      * If the document is a remote document, the checksum may not be
      * available. In this case, QByteArray::isNull() returns \e true.
-     * 
+     *
      * git hash is defined as:
-     * 
+     *
      * sha1("blob " + filesize + "\0" + filecontent)
      *
      * \return the git hash of the document
@@ -917,7 +917,7 @@ Q_SIGNALS:
 
     /**
      * \name Highlighting and Related Information
-     * 
+     *
      * \{
      */
 public:
@@ -1106,7 +1106,7 @@ public:
 public:
     /**
      * Read session settings from the given \p config.
-     * 
+     *
      * Known flags:
      * - \p SkipUrl => do not save/restore the file
      * - \p SkipMode => do not save/restore the mode
