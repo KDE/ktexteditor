@@ -69,7 +69,7 @@ enum SearchOption {
     EscapeSequences     = 1 << 10, ///< Plaintext mode: Processes escape sequences
     WholeWords          = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
 
-    Max                 = 1 << 31  ///< Placeholder for binary compatability
+    MaxSearchOption     = 1 << 31  ///< Placeholder for binary compatability
 };
 
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
