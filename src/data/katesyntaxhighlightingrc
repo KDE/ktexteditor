@@ -86,19 +86,35 @@ String=ffdc322f,ffdc322f,,,,,-,-,,---
 # Solarized (dark), Default Item Styles
 [Default Item Styles - Schema Solarized (dark)]
 Alert=ffd33682,ffd33682,1,,,,-,-,,---
+Annotation=ff268bd2,ff268bd2,,,,,-,-,,---
+Attribute=ff2980b9,ff268bd2,,,,,-,-,,---
 Base-N Integer=ffb58900,ffb58900,,,,,-,-,,---
-Character=ffd33682,ffd33682,,,,,-,-,,---
-Comment=ff93a1a1,ff93a1a1,,,,,-,-,,---
+Built-in=ffeee8d5,ff93a1a1,,,,,-,-,,---
+Character=ffdc322f,ffdc322f,,,,,-,-,,---
+Comment=ff586e75,ff586e75,,,,,-,-,,---
+Comment Variable=ff2aa198,ff2aa198,,,,,-,-,,---
+Constant=fffdf6e3,ff93a1a1,1,,,,-,-,,---
+Control Flow=ff93a1a1,ff93a1a1,1,,,,-,-,,---
 Data Type=ff268bd2,ff268bd2,,,,,-,-,,---
 Decimal/Value=ffb58900,ffb58900,,,,,-,-,,---
-Error=ffdc322f,ffdc322f,,,,,-,-,,---
+Documentation=ffda4453,ffda4453,,,,,-,-,,---
+Extension=ff268bd2,ff268bd2,1,,,,-,-,,---
 Floating Point=ffb58900,ffb58900,,,,,-,-,,---
 Function=ff6c71c4,ff6c71c4,,,,,-,-,,---
-Keyword=ff839496,ff839496,1,,,,-,-,,---
+Import=fffdf6e3,ff93a1a1,,,,,-,-,,---
+Information=fff67400,fff67400,,,,,-,-,,---
+Keyword=ff93a1a1,ff93a1a1,1,,,,-,-,,---
 Normal=ff839496,ff839496,,,,,-,-,,---
+Operator=ff93a1a1,ff93a1a1,,,,,-,-,,---
 Others=ff859900,ff859900,,,,,-,-,,---
+Preprocessor=ff27ae60,ff27ae60,,,,,-,-,,---
 Region Marker=ff268bd2,ff268bd2,,,,,ffeee8d5,-,,---
-String=ffdc322f,ffdc322f,,,,,-,-,,---
+Special Character=ff3daee9,fffcfcfc,,,,,-,-,,---
+Special String=ff859900,ff859900,,,,,-,-,,---
+String=ffcb4b16,ffcb4b16,,,,,-,-,,---
+Variable=ff268bd2,ff268bd2,,,,,-,-,,---
+Verbatim String=ffd33682,ffd33682,,,,,-,-,,---
+Warning=ffda4453,ffda4453,,,,,-,-,,---
 
 # Vim (dark), Default Item Styles
 [Default Item Styles - Schema Vim (dark)]
