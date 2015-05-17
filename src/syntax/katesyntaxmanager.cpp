@@ -73,7 +73,7 @@ KateHlManager::KateHlManager()
 {
     // Let's build the Mode List
     setupModeList();
-    
+
     lastCtxsReset.start();
 }
 
@@ -87,29 +87,28 @@ void KateHlManager::setupModeList()
 {
     // Let's get a list of all the index & xml files for hl
     QStringList dirsWithIndexFiles;
-    QStringList xmlFiles;
-
+    QSet<QString> xmlFiles;
     const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/syntax"), QStandardPaths::LocateDirectory);
     foreach (const QString &dir, dirs) {
         QDir d(dir);
 
-        // if dir has index json, only take that into account!
-        if (d.exists(QStringLiteral("index.json"))) {
+        // if dir has index json, remember it, it will contain fast to read info about files in that dir
+        if (d.exists(QStringLiteral("index.json")))
             dirsWithIndexFiles.append(dir);
-            continue;
-        }
-        
-        // else get all xml files
+
+        // in any case: get all xml files, we could have additional files installed into that directory
         const QStringList fileNames = d.entryList(QStringList() << QStringLiteral("*.xml"));
         foreach (const QString &file, fileNames) {
-            xmlFiles.append(dir + QLatin1Char('/') + file);
+            xmlFiles.insert(dir + QLatin1Char('/') + file);
         }
     }
-    
+
     // only allow each name once!
     QHash<QString, KateSyntaxModeListItem *> hlNames;
-    
-    // first: index files aka shipped HLs
+
+    /**
+     * first: index files aka shipped HLs
+     */
     Q_FOREACH (const QString dir, dirsWithIndexFiles) {
         /**
          * open the file for reading, bail out on error!
@@ -124,7 +123,7 @@ void KateHlManager::setupModeList()
         const QJsonDocument indexDoc (QJsonDocument::fromBinaryData(file.readAll()));
         if (!indexDoc.isObject())
             continue;
-        
+
         const QJsonObject index = indexDoc.object();
         /**
          * iterate over all hls in the index
@@ -135,7 +134,7 @@ void KateHlManager::setupModeList()
             }
             // get map
             const QJsonObject map = it.value().toObject();
-            
+
             // get name, only allow hls once!
             const QString name = map[QLatin1String("name")].toString();
 
@@ -155,7 +154,10 @@ void KateHlManager::setupModeList()
             mli->hidden    = map[QLatin1String("hidden")].toBool();
 
             mli->identifier = dir + QLatin1Char('/') + it.key();
-            
+
+            // purge from files we will take a look at later!
+            xmlFiles.remove(mli->identifier);
+
             // translate section + name
             mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
             mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
@@ -169,20 +171,23 @@ void KateHlManager::setupModeList()
                 delete mli;
                 continue;
             }
-            
+
             // Append the new item to the list.
             myModeList.append(mli);
             hlNames[name] = mli;
         }
     }
-    
-    // xml files, to allow users to overwrite system files with index!
+
+    /**
+     * now: process all xml files that did not occur in any index.json file
+     * e.g. stuff downloaded in the $HOME or additional hl files from 3rdparty apps/plugins
+     */
     Q_FOREACH (const QString xmlFile, xmlFiles) {
         // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
         QFile f(xmlFile);
         if (!f.open(QIODevice::ReadOnly))
             continue;
-        
+
         // read file as stream
         QXmlStreamReader xml(&f);
         if (!xml.readNextStartElement() || (xml.name() != QLatin1String("language")))
@@ -190,7 +195,7 @@ void KateHlManager::setupModeList()
 
         // get name, only allow hls once!
         const QString name = xml.attributes().value(QLatin1String("name")).toString();
-        
+
         // let's make the mode list item.
         KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
 
@@ -209,7 +214,7 @@ void KateHlManager::setupModeList()
         mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
 
         mli->identifier = xmlFile;
-        
+
         // translate section + name
         mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
         mli->nameTranslated = i18nc("Language", mli->name.toUtf8().data());
@@ -223,7 +228,7 @@ void KateHlManager::setupModeList()
             delete mli;
             continue;
         }
-        
+
         // Append the new item to the list.
         myModeList.append(mli);
         hlNames[name] = mli;
@@ -367,7 +372,7 @@ QString KateHlManager::defaultStyleName(int n, bool translateNames)
 int KateHlManager::defaultStyleNameToIndex(const QString &name)
 {
     //
-    // Normal text and source code 
+    // Normal text and source code
     //
     if (name == QLatin1String("dsNormal")) {
         return KTextEditor::dsNormal;
@@ -852,7 +857,7 @@ void KateHlManager::reload()
 {
     // clear syntax document cache
     syntax.clearCache();
-    
+
     resetDynamicCtxs();
 
     for(int i = 0; i < highlights(); i++)
