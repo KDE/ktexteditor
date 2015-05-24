@@ -34,7 +34,7 @@
 	<!ENTITY rustIdent "[a-zA-Z_][a-zA-Z_0-9]*">
 	<!ENTITY rustIntSuf "([iu](8|16|32|64)?)?">
 ]>
-<language name="Rust" version="1.0" kateversion="5.0" section="Sources" extensions="*.rs" mimetype="text/rust" priority="15">
+<language name="Rust" version="1.1" kateversion="5.0" section="Sources" extensions="*.rs" mimetype="text/rust" priority="15">
 <highlighting>
 	<list name="fn">
 		<item> fn </item>
@@ -333,13 +333,13 @@
 	</contexts>
 	<itemDatas>
 		<itemData name="Normal Text"  defStyleNum="dsNormal"/>
-		<itemData name="Keyword"      defStyleNum="dsKeyword"/>
-		<itemData name="Self"         defStyleNum="dsKeyword"/>
-		<itemData name="Type"         defStyleNum="dsDataType"/>
-		<itemData name="Trait"        defStyleNum="dsBuiltIn"/>
-		<itemData name="CType"        defStyleNum="dsDataType"/>
-		<itemData name="Constant"     defStyleNum="dsConstant"/>
-		<itemData name="CConstant"    defStyleNum="dsConstant"/>
+		<itemData name="Keyword"      defStyleNum="dsKeyword" spellChecking="0"/>
+		<itemData name="Self"         defStyleNum="dsKeyword" spellChecking="0"/>
+		<itemData name="Type"         defStyleNum="dsDataType" spellChecking="0"/>
+		<itemData name="Trait"        defStyleNum="dsBuiltIn" spellChecking="0"/>
+		<itemData name="CType"        defStyleNum="dsDataType" spellChecking="0"/>
+		<itemData name="Constant"     defStyleNum="dsConstant" spellChecking="0"/>
+		<itemData name="CConstant"    defStyleNum="dsConstant" spellChecking="0"/>
 		<itemData name="Definition"   defStyleNum="dsNormal"/>
 		<itemData name="Comment"      defStyleNum="dsComment"/>
 		<itemData name="Scope"        defStyleNum="dsNormal"/>
@@ -349,7 +349,7 @@
 		<itemData name="Character"    defStyleNum="dsChar"/>
 		<itemData name="Macro"        defStyleNum="dsPreprocessor"/>
 		<itemData name="Attribute"    defStyleNum="dsAttribute"/>
-		<itemData name="Lifetime"     defStyleNum="dsOthers"/>
+		<itemData name="Lifetime"     defStyleNum="dsOthers" spellChecking="0"/>
 		<itemData name="Error"        defStyleNum="dsError"/>
 	</itemDatas>
 </highlighting>
