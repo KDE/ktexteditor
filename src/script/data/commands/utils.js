@@ -1,6 +1,6 @@
 var katescript = {
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>",
-    "license": "LGPL",
+    "license": "LGPL-2.1+",
     "revision": 9,
     "kate-version": "5.1",
     "functions": ["sort", "moveLinesDown", "moveLinesUp", "natsort", "uniq", "rtrim", "ltrim", "trim", "join", "rmblank", "unwrap", "each", "filter", "map", "duplicateLinesUp", "duplicateLinesDown", "rewrap", "encodeURISelection", "decodeURISelection"],
