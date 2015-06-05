@@ -1315,6 +1315,11 @@ void KateCompletionWidget::unregisterCompletionModel(KTextEditor::CodeCompletion
     abortCompletion();
 }
 
+bool KateCompletionWidget::isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const
+{
+    return m_sourceModels.contains(model);
+}
+
 int KateCompletionWidget::automaticInvocationDelay() const
 {
     return m_automaticInvocationDelay;

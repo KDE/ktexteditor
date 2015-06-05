@@ -213,6 +213,7 @@ public:
     void forceCompletion() Q_DECL_OVERRIDE;
     void registerCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
     void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
+    bool isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const;
     bool isAutomaticInvocationEnabled() const Q_DECL_OVERRIDE;
     void setAutomaticInvocationEnabled(bool enabled = true) Q_DECL_OVERRIDE;
 

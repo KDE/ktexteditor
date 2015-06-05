@@ -336,13 +336,9 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     a->setForeground(colors.foreground(KColorScheme::ActiveText));   // ### this does 0
     d->liRange->setAttribute(a);
 
-    KTextEditor::CodeCompletionInterface *cci = qobject_cast<KTextEditor::CodeCompletionInterface *>(view);
-
     QAction *action;
 
-    if (cci) {
-        cci->registerCompletionModel(m_dWCompletionModel);
-
+    if (qobject_cast<KTextEditor::CodeCompletionInterface *>(view)) {
         action = new QAction(i18n("Shell Completion"), this);
         ac->addAction(QLatin1String("doccomplete_sh"), action);
         connect(action, SIGNAL(triggered()), this, SLOT(shellComplete()));
@@ -361,12 +357,6 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
 KateWordCompletionView::~KateWordCompletionView()
 {
-    KTextEditor::CodeCompletionInterface *cci = qobject_cast<KTextEditor::CodeCompletionInterface *>(m_view);
-
-    if (cci) {
-        cci->unregisterCompletionModel(m_dWCompletionModel);
-    }
-
     delete d;
 }
 

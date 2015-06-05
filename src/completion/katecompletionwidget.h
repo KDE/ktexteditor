@@ -87,6 +87,7 @@ public:
 
     void registerCompletionModel(KTextEditor::CodeCompletionModel *model);
     void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model);
+    bool isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const;
 
     int automaticInvocationDelay() const;
     void setAutomaticInvocationDelay(int delay);

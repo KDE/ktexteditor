@@ -1846,13 +1846,20 @@ void KTextEditor::ViewPrivate::updateConfig()
     reflectOnTheFlySpellCheckStatus(m_doc->isOnTheFlySpellCheckingEnabled());
 
     // register/unregister word completion...
-    unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
-    unregisterCompletionModel (KTextEditor::EditorPrivate::self()->keywordCompletionModel());
-    if (config()->wordCompletion()) {
-        registerCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+    bool wc = config()->wordCompletion();
+    if (wc != isCompletionModelRegistered(KTextEditor::EditorPrivate::self()->wordCompletionModel())) {
+        if (wc)
+            registerCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
+        else
+            unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel());
     }
-    if (config()->keywordCompletion()) {
-        registerCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
+
+    bool kc = config()->keywordCompletion();
+    if (kc != isCompletionModelRegistered(KTextEditor::EditorPrivate::self()->keywordCompletionModel())) {
+        if (kc)
+            registerCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
+        else
+            unregisterCompletionModel (KTextEditor::EditorPrivate::self()->keywordCompletionModel());
     }
 
     m_cut->setEnabled(m_doc->isReadWrite() && (selection() || m_config->smartCopyCut()));
@@ -2481,6 +2488,11 @@ void KTextEditor::ViewPrivate::registerCompletionModel(KTextEditor::CodeCompleti
 void KTextEditor::ViewPrivate::unregisterCompletionModel(KTextEditor::CodeCompletionModel *model)
 {
     completionWidget()->unregisterCompletionModel(model);
+}
+
+bool KTextEditor::ViewPrivate::isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const
+{
+    return completionWidget()->isCompletionModelRegistered(model);
 }
 
 bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const
