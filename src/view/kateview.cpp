@@ -1415,11 +1415,12 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
       << QLatin1String("tools_spelling_from_cursor")
       << QLatin1String("tools_spelling_selection");
 
-    QAction *a = 0;
-    for (int z = 0; z < l.size(); z++)
-        if ((a = actionCollection()->action(l[z]))) {
+    foreach (const QString &action, l) {
+        QAction *a = actionCollection()->action(action);
+        if (a) {
             a->setEnabled(m_doc->isReadWrite());
         }
+    }
     slotUpdateUndo();
 
     currentInputMode()->readWriteChanged(m_doc->isReadWrite());

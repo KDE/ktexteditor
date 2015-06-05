@@ -1439,8 +1439,8 @@ void KateViewConfig::updateConfig()
     }
 
     if (isGlobal()) {
-        for (int z = 0; z < KTextEditor::EditorPrivate::self()->views().size(); ++z) {
-            (KTextEditor::EditorPrivate::self()->views())[z]->updateConfig();
+        foreach (KTextEditor::ViewPrivate* view, KTextEditor::EditorPrivate::self()->views()) {
+            view->updateConfig();
         }
 
         // write config
