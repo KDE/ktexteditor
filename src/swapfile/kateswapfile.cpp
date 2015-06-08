@@ -464,7 +464,8 @@ void SwapFile::finishEditing()
     // write the file to the disk every 15 seconds (default)
     // skip this if we disabled that
     if (m_document->config()->swapSyncInterval() != 0 && !syncTimer()->isActive()) {
-        syncTimer()->start(m_document->config()->swapSyncInterval());
+        // important: we store the interval as seconds, start wants milliseconds!
+        syncTimer()->start(m_document->config()->swapSyncInterval() * 1000);
     }
 
     // format: qint8
