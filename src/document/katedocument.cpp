@@ -2984,10 +2984,17 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
         if (!(config()->backspaceIndents())) {
             // ordinary backspace
             //c.cursor.col--;
-            removeText(KTextEditor::Range(line, col - 1, line, col));
+            KTextEditor::Cursor beginCursor(line, col - 1);
+            KTextEditor::Cursor endCursor(line, col);
+            // move to left of surrogate pair
+            if (!isValidTextPosition(beginCursor)) {
+                Q_ASSERT(col >= 2);
+                beginCursor.setColumn(col - 2);
+            }
+            removeText(KTextEditor::Range(beginCursor, endCursor));
             // in most cases cursor is moved by removeText, but we should do it manually
             // for past-end-of-line cursors in block mode
-            view->setCursorPosition(KTextEditor::Cursor(line, col - 1));
+            view->setCursorPosition(beginCursor);
         } else {
             // backspace indents: erase to next indent position
             Kate::TextLine textLine = m_buffer->plainLine(line);
@@ -3007,10 +3014,17 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
                 // only spaces on left side of cursor
                 indent(KTextEditor::Range(line, 0, line, 0), -1);
             } else {
-                removeText(KTextEditor::Range(line, col - 1, line, col));
+                KTextEditor::Cursor beginCursor(line, col - 1);
+                KTextEditor::Cursor endCursor(line, col);
+                // move to left of surrogate pair
+                if (!isValidTextPosition(beginCursor)) {
+                    Q_ASSERT(col >= 2);
+                    beginCursor.setColumn(col - 2);
+                }
+                removeText(KTextEditor::Range(beginCursor, endCursor));
                 // in most cases cursor is moved by removeText, but we should do it manually
                 // for past-end-of-line cursors in block mode
-                view->setCursorPosition(KTextEditor::Cursor(line, col - 1));
+                view->setCursorPosition(beginCursor);
             }
         }
     } else {
@@ -3047,7 +3061,12 @@ void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTe
     }
 
     if (c.column() < (int) m_buffer->plainLine(c.line())->length()) {
-        removeText(KTextEditor::Range(c, 1));
+        KTextEditor::Cursor endCursor(c.line(), c.column() + 1);
+        // if the cursor is at the start of a surrogate pair then delete both code-points
+        if (!isValidTextPosition(endCursor)) {
+            endCursor.setColumn(c.column() + 2);
+        }
+        removeText(KTextEditor::Range(c, endCursor));
     } else if (c.line() < lastLine()) {
         removeText(KTextEditor::Range(c.line(), c.column(), c.line() + 1, 0));
     }
