@@ -165,9 +165,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         }
     } else if (re_new.exactMatch(command)) {
         if (re_new.cap(1) == QLatin1String("v")) { // vertical split
-            mainWin->splitView(Qt::Vertical);
-        } else {                    // horizontal split
             mainWin->splitView(Qt::Horizontal);
+        } else {                    // horizontal split
+            mainWin->splitView(Qt::Vertical);
         }
         mainWin->openUrl(QUrl());
     } else if (command == QLatin1String("enew")) {
