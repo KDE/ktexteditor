@@ -2200,6 +2200,10 @@ Range NormalViMode::motionToEndOfWord()
         c = findWordEnd(c.line(), c.column());
     }
 
+    if (!c.isValid()) {
+        c = doc()->documentEnd();
+    }
+
     r.endColumn = c.column();
     r.endLine = c.line();
 

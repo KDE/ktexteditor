@@ -101,6 +101,9 @@ void ModesTest::NormalMotionsTests()
 
     // Testing "e"
     DoTest("quux(foo, bar, baz);", "exex2ex10ex", "quu(fo, bar baz)");
+    DoTest("", "ce", "");
+    DoTest(" ", "lceX", "X");
+    DoTest("", "cE", "");
 
     // Testing "E"
     DoTest("quux(foo, bar, baz);", "ExEx10Ex", "quux(foo bar baz)");
