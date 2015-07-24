@@ -29,7 +29,7 @@
 #include "wordcounter.h"
 
 #include <KLocalizedString>
-#include <KIconLoader>
+#include <KIconUtils>
 #include <KAcceleratorManager>
 
 #include <QHBoxLayout>
@@ -280,23 +280,23 @@ void KateStatusBar::modifiedChanged()
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
         case 0x1:
-            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save")));
+            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("document-save")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
             break;
 
         case 0x2:
-            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("dialog-warning")));
+            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("dialog-warning")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
             break;
 
         case 0x3:
-            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("document-save"), 0, KIconLoader::DefaultState,
-                                               QStringList() << QStringLiteral("emblem-important")));
+            m_modifiedLabel->setIcon (QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
+                QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
             m_modifiedLabel->setWhatsThis(QString());
             break;
 
         default:
-            m_modifiedLabel->setIcon (SmallIcon(QStringLiteral("text-plain")));
+            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("text-plain")));
             m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
             break;
     }
