@@ -30,6 +30,10 @@
 
 #ifndef Q_OS_WIN
 #include <unistd.h>
+
+// needed for umask application
+#include <sys/types.h>
+#include <sys/stat.h>
 #endif
 
 #include <QSaveFile>
@@ -759,6 +763,10 @@ bool TextBuffer::save(const QString &filename)
     // codec must be set!
     Q_ASSERT(m_textCodec);
 
+#ifndef Q_OS_WIN
+    const bool newFile = !QFile::exists(filename);
+#endif
+
     /**
      * use QSaveFile for save write + rename
      */
@@ -775,9 +783,6 @@ bool TextBuffer::save(const QString &filename)
     KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     KCompressionDevice file(&saveFile, false, type);
 
-    /**
-     * try to open, if new file
-     */
     if (!file.open(QIODevice::WriteOnly)) {
         return false;
     }
@@ -852,6 +857,16 @@ bool TextBuffer::save(const QString &filename)
     if (ok) {
         m_history.setLastSavedRevision();
     }
+
+#ifndef Q_OS_WIN
+    if (ok && newFile) { // QTemporaryFile sets permissions to 0600, so fixing this
+        const mode_t mask = umask(0);
+        umask(mask);
+
+        const mode_t fileMode = 0666 & ~mask;
+        chmod(filename.toUtf8().constData(), fileMode);
+    }
+#endif
 
     // report CODEC + ERRORS
     BUFFER_DEBUG << "Saved file " << filename << "with codec" << m_textCodec->name() << (ok ? "without" : "with") << "errors";
