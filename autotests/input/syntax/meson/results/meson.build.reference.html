@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>meson.build</title>
+</head>
+<!-- Highlighting: "Meson" -->
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<span style='color:#898887;'># Unit test for Meson syntax highlight. License: LGPL</span>
+<span style='color:#0057ae;'>project</span>(<span style='color:#bf0303;'>'projectname'</span>, <span style='color:#bf0303;'>'cpp'</span>)
+
+
+
+sourcefiles = [<span style='color:#bf0303;'>'a.cpp'</span>, <span style='color:#bf0303;'>'b.cpp'</span>]
+
+<b>foreach</b> sourcefile : sourcefiles
+    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'this is a source file: '</span> + sourcefile)
+<b>endforeach</b>
+
+x=<span style='color:#b08000;'>1</span>
+<b>if</b> x+<span style='color:#b08000;'>1</span> == <span style='color:#b08000;'>2</span> and x-<span style='color:#b08000;'>1</span> == <span style='color:#b08000;'>0</span>
+    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'I can work in this universe!'</span>)
+<b>endif</b>
+
+subprojectresult = <span style='color:#0057ae;'>subproject</span>(<span style='color:#bf0303;'>'mysubprojectdir'</span>)
+
+mysharedlib = <span style='color:#0057ae;'>shared_library</span>(<span style='color:#bf0303;'>'libraryname'</span>, sourcefiles, linkwith: subprojectresult.staticlib)
+
+<span style='color:#0057ae;'>executable</span>(<span style='color:#bf0303;'>'myprogram'</span>, [<span style='color:#bf0303;'>'test.cpp'</span>], linkwith: mysharedlib)
+</pre>
+</body>
+</html>
