@@ -864,7 +864,7 @@ bool TextBuffer::save(const QString &filename)
         umask(mask);
 
         const mode_t fileMode = 0666 & ~mask;
-        chmod(filename.toUtf8().constData(), fileMode);
+        chmod(QFile::encodeName(filename).constData(), fileMode);
     }
 #endif
 
