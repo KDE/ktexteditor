@@ -66,8 +66,8 @@ bool compareKateHighlighting(const KateHighlighting *const left, const KateHighl
 //BEGIN KateHlManager
 KateHlManager::KateHlManager()
     : QObject()
-    , m_config(QLatin1String("katesyntaxhighlightingrc"), KConfig::NoGlobals)
-    , commonSuffixes(QString::fromLatin1(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';')))
+    , m_config(QStringLiteral("katesyntaxhighlightingrc"), KConfig::NoGlobals)
+    , commonSuffixes({QStringLiteral(".orig"), QStringLiteral(".new"), QStringLiteral("~"), QStringLiteral(".bak"), QStringLiteral(".BAK")})
     , dynamicCtxsCount(0)
     , forceNoDCReset(false)
 {
@@ -88,7 +88,7 @@ void KateHlManager::setupModeList()
     // Let's get a list of all the index & xml files for hl
     QStringList dirsWithIndexFiles;
     QSet<QString> xmlFiles;
-    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/syntax"), QStandardPaths::LocateDirectory);
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("katepart5/syntax"), QStandardPaths::LocateDirectory);
     foreach (const QString &dir, dirs) {
         QDir d(dir);
 
@@ -136,22 +136,22 @@ void KateHlManager::setupModeList()
             const QJsonObject map = it.value().toObject();
 
             // get name, only allow hls once!
-            const QString name = map[QLatin1String("name")].toString();
+            const QString name = map[QStringLiteral("name")].toString();
 
             // let's make the mode list item.
             KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
 
             mli->name      = name;
-            mli->section   = map[QLatin1String("section")].toString();
-            mli->mimetype  = map[QLatin1String("mimetype")].toString();
-            mli->extension = map[QLatin1String("extensions")].toString();
-            mli->version   = map[QLatin1String("version")].toString();
-            mli->priority  = map[QLatin1String("priority")].toString();
-            mli->style     = map[QLatin1String("style")].toString();
-            mli->author    = map[QLatin1String("author")].toString();
-            mli->license   = map[QLatin1String("license")].toString();
-            mli->indenter  = map[QLatin1String("indenter")].toString();
-            mli->hidden    = map[QLatin1String("hidden")].toBool();
+            mli->section   = map[QStringLiteral("section")].toString();
+            mli->mimetype  = map[QStringLiteral("mimetype")].toString();
+            mli->extension = map[QStringLiteral("extensions")].toString();
+            mli->version   = map[QStringLiteral("version")].toString();
+            mli->priority  = map[QStringLiteral("priority")].toString();
+            mli->style     = map[QStringLiteral("style")].toString();
+            mli->author    = map[QStringLiteral("author")].toString();
+            mli->license   = map[QStringLiteral("license")].toString();
+            mli->indenter  = map[QStringLiteral("indenter")].toString();
+            mli->hidden    = map[QStringLiteral("hidden")].toBool();
 
             mli->identifier = dir + QLatin1Char('/') + it.key();
 
@@ -194,23 +194,23 @@ void KateHlManager::setupModeList()
             continue;
 
         // get name, only allow hls once!
-        const QString name = xml.attributes().value(QLatin1String("name")).toString();
+        const QString name = xml.attributes().value(QStringLiteral("name")).toString();
 
         // let's make the mode list item.
         KateSyntaxModeListItem *mli = new KateSyntaxModeListItem;
 
         mli->name      = name;
-        mli->section   = xml.attributes().value(QLatin1String("section")).toString();
-        mli->mimetype  = xml.attributes().value(QLatin1String("mimetype")).toString();
-        mli->extension = xml.attributes().value(QLatin1String("extensions")).toString();
-        mli->version   = xml.attributes().value(QLatin1String("version")).toString();
-        mli->priority  = xml.attributes().value(QLatin1String("priority")).toString();
-        mli->style     = xml.attributes().value(QLatin1String("style")).toString();
-        mli->author    = xml.attributes().value(QLatin1String("author")).toString();
-        mli->license   = xml.attributes().value(QLatin1String("license")).toString();
-        mli->indenter  = xml.attributes().value(QLatin1String("indenter")).toString();
+        mli->section   = xml.attributes().value(QStringLiteral("section")).toString();
+        mli->mimetype  = xml.attributes().value(QStringLiteral("mimetype")).toString();
+        mli->extension = xml.attributes().value(QStringLiteral("extensions")).toString();
+        mli->version   = xml.attributes().value(QStringLiteral("version")).toString();
+        mli->priority  = xml.attributes().value(QStringLiteral("priority")).toString();
+        mli->style     = xml.attributes().value(QStringLiteral("style")).toString();
+        mli->author    = xml.attributes().value(QStringLiteral("author")).toString();
+        mli->license   = xml.attributes().value(QStringLiteral("license")).toString();
+        mli->indenter  = xml.attributes().value(QStringLiteral("indenter")).toString();
 
-        QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
+        QString hidden = xml.attributes().value(QStringLiteral("hidden")).toString();
         mli->hidden    = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
 
         mli->identifier = xmlFile;
@@ -285,43 +285,43 @@ QString KateHlManager::defaultStyleName(int n, bool translateNames)
     static QStringList translatedNames;
 
     if (names.isEmpty()) {
-        names << QLatin1String("Normal");
-        names << QLatin1String("Keyword");
-        names << QLatin1String("Function");
-        names << QLatin1String("Variable");
-        names << QLatin1String("Control Flow");
-        names << QLatin1String("Operator");
-        names << QLatin1String("Built-in");
-        names << QLatin1String("Extension");
-        names << QLatin1String("Preprocessor");
-        names << QLatin1String("Attribute");
+        names << QStringLiteral("Normal");
+        names << QStringLiteral("Keyword");
+        names << QStringLiteral("Function");
+        names << QStringLiteral("Variable");
+        names << QStringLiteral("Control Flow");
+        names << QStringLiteral("Operator");
+        names << QStringLiteral("Built-in");
+        names << QStringLiteral("Extension");
+        names << QStringLiteral("Preprocessor");
+        names << QStringLiteral("Attribute");
 
-        names << QLatin1String("Character");
-        names << QLatin1String("Special Character");
-        names << QLatin1String("String");
-        names << QLatin1String("Verbatim String");
-        names << QLatin1String("Special String");
-        names << QLatin1String("Import");
+        names << QStringLiteral("Character");
+        names << QStringLiteral("Special Character");
+        names << QStringLiteral("String");
+        names << QStringLiteral("Verbatim String");
+        names << QStringLiteral("Special String");
+        names << QStringLiteral("Import");
 
-        names << QLatin1String("Data Type");
-        names << QLatin1String("Decimal/Value");
-        names << QLatin1String("Base-N Integer");
-        names << QLatin1String("Floating Point");
-        names << QLatin1String("Constant");
+        names << QStringLiteral("Data Type");
+        names << QStringLiteral("Decimal/Value");
+        names << QStringLiteral("Base-N Integer");
+        names << QStringLiteral("Floating Point");
+        names << QStringLiteral("Constant");
 
-        names << QLatin1String("Comment");
-        names << QLatin1String("Documentation");
-        names << QLatin1String("Annotation");
-        names << QLatin1String("Comment Variable");
+        names << QStringLiteral("Comment");
+        names << QStringLiteral("Documentation");
+        names << QStringLiteral("Annotation");
+        names << QStringLiteral("Comment Variable");
         // this next one is for denoting the beginning/end of a user defined folding region
-        names << QLatin1String("Region Marker");
-        names << QLatin1String("Information");
-        names << QLatin1String("Warning");
-        names << QLatin1String("Alert");
+        names << QStringLiteral("Region Marker");
+        names << QStringLiteral("Information");
+        names << QStringLiteral("Warning");
+        names << QStringLiteral("Alert");
 
-        names << QLatin1String("Others");
+        names << QStringLiteral("Others");
         // this one is for marking invalid input
-        names << QLatin1String("Error");
+        names << QStringLiteral("Error");
 
         translatedNames << i18nc("@item:intable Text context", "Normal");
         translatedNames << i18nc("@item:intable Text context", "Keyword");
@@ -766,20 +766,24 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg,
                         QLatin1String("Default Item Styles - Schema ") + schema);
 
+    const QString zero = QStringLiteral("0");
+    const QString one = QStringLiteral("1");
+    const QString dash = QStringLiteral("-");
+
     for (int z = 0; z < defaultStyleCount(); z++) {
         QStringList settings;
         KTextEditor::Attribute::Ptr p = list.at(z);
 
         settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : QString());
         settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : QString());
-        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QLatin1String("1") : QLatin1String("0")) : QString());
-        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : QString());
-        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : QString());
-        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : QString());
-        settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : QLatin1String("-"));
-        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : QLatin1String("-"));
+        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? one : zero) : QString());
+        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? one : zero) : QString());
+        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? one : zero) : QString());
+        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? one : zero) : QString());
+        settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : dash);
+        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : dash);
         settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : QString());
-        settings << QLatin1String("---");
+        settings << QStringLiteral("---");
 
         config.writeEntry(defaultStyleName(z), settings);
     }
