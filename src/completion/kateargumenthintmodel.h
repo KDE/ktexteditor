@@ -35,9 +35,13 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
 
-    int rowCount(const QModelIndex &parent) const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex &parent = {}) const Q_DECL_OVERRIDE;
 
-    int columnCount(const QModelIndex & /*parent*/) const Q_DECL_OVERRIDE;
+    int columnCount(const QModelIndex & parent = {}) const Q_DECL_OVERRIDE;
+
+    QModelIndex index(int row, int column, const QModelIndex& parent = {}) const Q_DECL_OVERRIDE;
+
+    QModelIndex parent(const QModelIndex& parent) const Q_DECL_OVERRIDE;
 
     QTreeView *treeView() const Q_DECL_OVERRIDE;
 

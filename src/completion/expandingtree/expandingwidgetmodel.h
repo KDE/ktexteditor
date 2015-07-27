@@ -30,7 +30,7 @@ class QTreeView;
 /**
  * Cares about expanding/un-expanding items in a tree-view together with ExpandingDelegate
  */
-class ExpandingWidgetModel : public QAbstractTableModel
+class ExpandingWidgetModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:

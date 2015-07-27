@@ -41,7 +41,7 @@ inline QModelIndex firstColumn(const QModelIndex &index)
 }
 
 ExpandingWidgetModel::ExpandingWidgetModel(QWidget *parent) :
-    QAbstractTableModel(parent)
+    QAbstractItemModel(parent)
 {
 }
 

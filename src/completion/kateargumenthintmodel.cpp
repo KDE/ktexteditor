@@ -252,6 +252,19 @@ KateCompletionModel::Group *KateArgumentHintModel::group() const
     return model()->m_argumentHints;
 }
 
+QModelIndex KateArgumentHintModel::index(int row, int column, const QModelIndex& parent) const
+{
+    if (row < 0 || row > rowCount() || column < 0 || column > columnCount() || parent.isValid()) {
+        return {};
+    }
+    return createIndex(row, column);
+}
+
+QModelIndex KateArgumentHintModel::parent(const QModelIndex& /*parent*/) const
+{
+    return {};
+}
+
 KateCompletionModel *KateArgumentHintModel::model() const
 {
     return m_parent->model();
