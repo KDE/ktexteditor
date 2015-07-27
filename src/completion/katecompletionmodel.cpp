@@ -145,9 +145,9 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     : ExpandingWidgetModel(parent)
     , m_hasGroups(false)
     , m_matchCaseSensitivity(Qt::CaseInsensitive)
-    , m_ungrouped(new Group(this))
-    , m_argumentHints(new Group(this))
-    , m_bestMatches(new Group(this))
+    , m_ungrouped(new Group({}, 0, this))
+    , m_argumentHints(new Group(i18n("Argument-hints"), -1, this))
+    , m_bestMatches(new Group(i18n("Best matches"), BestMatchesProperty, this))
     , m_sortingEnabled(false)
     , m_sortingAlphabetical(false)
     , m_isSortingByInheritance(false)
@@ -164,14 +164,6 @@ KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     , m_columnMergingEnabled(false)
 //   , m_haveExactMatch(false)
 {
-
-    m_ungrouped->attribute = 0;
-    m_argumentHints->attribute = -1;
-    m_bestMatches->attribute = BestMatchesProperty;
-
-    m_argumentHints->title = i18n("Argument-hints");
-    m_bestMatches->title = i18n("Best matches");
-
     m_emptyGroups.append(m_ungrouped);
     m_emptyGroups.append(m_argumentHints);
     m_emptyGroups.append(m_bestMatches);
@@ -293,7 +285,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         switch (role) {
         case Qt::DisplayRole:
             if (!index.column())
-                return QString(QLatin1Char(' ') + g->title);
+                return g->title;
             break;
 
         case Qt::FontRole:
@@ -671,8 +663,7 @@ KateCompletionModel::Group *KateCompletionModel::createItem(const HierarchicalMo
             if (m_customGroupHash.contains(customGroup)) {
                 g = m_customGroupHash[customGroup];
             } else {
-                g = new Group(this);
-                g->title = customGroup;
+                g = new Group(customGroup, 0, this);
                 g->customSortingKey = handler.customGroupingKey();
                 m_emptyGroups.append(g);
                 m_customGroupHash.insert(customGroup, g);
@@ -750,12 +741,9 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
             return m_groupHash.value(groupingAttribute);
         }
     }
-    Group *ret = new Group(this);
-
-    ret->attribute = attribute;
-    ret->scope = scope;
 
     QString st, at, it;
+    QString title;
 
     if (groupingMethod() & ScopeType) {
         if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
@@ -766,15 +754,15 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
             st = QLatin1String("Local");
         }
 
-        ret->title = st;
+        title = st;
     }
 
     if (groupingMethod() & Scope) {
-        if (!ret->title.isEmpty()) {
-            ret->title.append(QLatin1String(" "));
+        if (!title.isEmpty()) {
+            title.append(QLatin1String(" "));
         }
 
-        ret->title.append(scope);
+        title.append(scope);
     }
 
     if (groupingMethod() & AccessType) {
@@ -795,11 +783,11 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
         }
 
         if (!at.isEmpty()) {
-            if (!ret->title.isEmpty()) {
-                ret->title.append(QLatin1String(", "));
+            if (!title.isEmpty()) {
+                title.append(QLatin1String(", "));
             }
 
-            ret->title.append(at);
+            title.append(at);
         }
     }
 
@@ -821,13 +809,16 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
         }
 
         if (!it.isEmpty()) {
-            if (!ret->title.isEmpty()) {
-                ret->title.append(QLatin1String(" "));
+            if (!title.isEmpty()) {
+                title.append(QLatin1String(" "));
             }
 
-            ret->title.append(it);
+            title.append(it);
         }
     }
+
+    Group *ret = new Group(title, attribute, this);
+    ret->scope = scope;
 
     m_emptyGroups.append(ret);
     m_groupHash.insert(groupingAttribute, ret);
@@ -1672,8 +1663,11 @@ bool KateCompletionModel::Group::removeItem(const ModelRow &row)
     return false;
 }
 
-KateCompletionModel::Group::Group(KateCompletionModel *m)
+KateCompletionModel::Group::Group(const QString& title, int attribute, KateCompletionModel *m)
     : model(m)
+    , attribute(attribute)
+    // ugly hack to add some left margin
+    , title(QLatin1Char(' ') + title)
     , isEmpty(true)
     , customSortingKey(-1)
 {

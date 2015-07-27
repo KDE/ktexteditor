@@ -278,7 +278,7 @@ public:
     class Group
     {
     public:
-        explicit Group(KateCompletionModel *model);
+        explicit Group(const QString& title, int attribute, KateCompletionModel *model);
 
         void addItem(Item i, bool notifyModel = false);
         /// Removes the item specified by \a row.  Returns true if a change was made to rows.
