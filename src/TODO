@@ -1,14 +1,4 @@
 #
-# TODO list that needs to be fixed before KDE Framework 5.0
-#
-
-KTE::ModificationInterface
-- merge enum OnDiskModified and OnDiskCreated into OnDiskModified
-- merge entire interface into KTE::Document ?
-- add: bool Document::isModifiedOnDisk()
-- add: ModifiedOnDiskReason Document::modifiedOnDiskReason() const;
-
-#
 # TODO list after KDE Framework 5.0
 #
 
