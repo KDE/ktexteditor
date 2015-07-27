@@ -131,7 +131,7 @@ void KateCompletionTree::resizeColumnsSlot()
  * is not exceeded, then iteration will continue from the next parent sibling.
  */
 static bool measureColumnSizes(const KateCompletionTree* tree, QModelIndex current,
-                               QVector<int>& columnSize, int& currentYPos,
+                               QVarLengthArray<int, 8>& columnSize, int& currentYPos,
                                const int maxHeight, bool recursed = false)
 {
     while (current.isValid() && currentYPos < maxHeight) {
@@ -189,7 +189,10 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 
     ///Step 1: Compute the needed column-sizes for the visible content
     const int numColumns = model()->columnCount();
-    QVector<int> columnSize(numColumns, 5);
+    QVarLengthArray<int, 8> columnSize(numColumns);
+    for (int i = 0; i < numColumns; ++i) {
+        columnSize[i] = 5;
+    }
     QModelIndex current = indexAt(QPoint(1, 1));
     const bool changed = current.isValid();
     int currentYPos = 0;
