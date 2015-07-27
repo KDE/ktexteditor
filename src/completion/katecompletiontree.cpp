@@ -120,6 +120,55 @@ void KateCompletionTree::resizeColumnsSlot()
     }
 }
 
+/**
+ * Measure the width of visible columns.
+ *
+ * This iterates from the start index @p current down until a dead end is hit.
+ * In a tree model, it will recurse into child indices. Iteration is stopped if
+ * no more items are available, or the visited rows exceed the available @p maxHeight.
+ *
+ * If the model is a tree model, and @p current points to a leaf, and the max height
+ * is not exceeded, then iteration will continue from the next parent sibling.
+ */
+static bool measureColumnSizes(const KateCompletionTree* tree, QModelIndex current,
+                               QVector<int>& columnSize, int& currentYPos,
+                               const int maxHeight, bool recursed = false)
+{
+    while (current.isValid() && currentYPos < maxHeight) {
+        currentYPos += tree->sizeHintForIndex(current).height();
+        const int row = current.row();
+        for (int a = 0; a < columnSize.size(); a++) {
+            QSize s = tree->sizeHintForIndex(current.sibling(row, a));
+            if (s.width() > 2000) {
+                qCDebug(LOG_PART) << "got invalid size-hint of width " << s.width();
+            } else if (s.width() > columnSize[a]) {
+                columnSize[a] = s.width();
+            }
+        }
+
+        const int children = current.model()->rowCount(current);
+        if (children > 0) {
+            for (int i = 0; i < children; ++i) {
+                if (measureColumnSizes(tree, current.child(i, 0), columnSize, currentYPos, maxHeight, true)) {
+                    break;
+                }
+            }
+        }
+
+        QModelIndex oldCurrent = current;
+        current = current.sibling(current.row() + 1, 0);
+
+        // Are we at the end of a group? If yes, move up into the next group
+        // only do this when we did not recurse already
+        while (!recursed && !current.isValid() && oldCurrent.parent().isValid()) {
+            oldCurrent = oldCurrent.parent();
+            current = oldCurrent.sibling(oldCurrent.row() + 1, 0);
+        }
+    }
+
+    return currentYPos >= maxHeight;
+}
+
 void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 {
     static bool preventRecursion = false;
@@ -139,50 +188,12 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     int oldIndentWidth = columnViewportPosition(modelIndexOfName);
 
     ///Step 1: Compute the needed column-sizes for the visible content
-
-    int numColumns = model()->columnCount();
-
+    const int numColumns = model()->columnCount();
     QVector<int> columnSize(numColumns, 5);
-
-    int currentYPos = 0;
-
     QModelIndex current = indexAt(QPoint(1, 1));
-    if (current.child(0, 0).isValid()) { //If the index has children, it is a group-label. Then we should start with it's first child.
-        currentYPos += sizeHintForIndex(current).height();
-        current = current.child(0, 0);
-    }
-
-    int num = 0;
-    bool changed = false;
-
-    while (current.isValid() && currentYPos < height()) {
-//     qCDebug(LOG_PART) << current.row() << "out of" << model()->rowCount(current.parent()) << "in" << current.parent().data(Qt::DisplayRole);
-        currentYPos += sizeHintForIndex(current).height();
-//     itemDelegate()->sizeHint(QStyleOptionViewItem(), current).isValid() && itemDelegate()->sizeHint(QStyleOptionViewItem(), current).intersects(visibleViewportRect)
-        changed = true;
-        num++;
-        for (int a = 0; a < numColumns; a++) {
-            QSize s = sizeHintForIndex(current.sibling(current.row(), a));
-//       qCDebug(LOG_PART) << "size-hint for" << current.row() << a << ":" << s << current.sibling(current.row(), a).data(Qt::DisplayRole);
-            if (s.width() > columnSize[a] && s.width() < 2000) {
-                columnSize[a] = s.width();
-            } else if (s.width() > 2000) {
-                qCDebug(LOG_PART) << "got invalid size-hint of width " << s.width();
-            }
-        }
-
-        QModelIndex oldCurrent = current;
-        current = current.sibling(current.row() + 1, 0);
-
-        //Are we at the end of a group? If yes, move on into the next group
-        if (!current.isValid() && oldCurrent.parent().isValid()) {
-            current = oldCurrent.parent().sibling(oldCurrent.parent().row() + 1, 0);
-            if (current.isValid() && current.child(0, 0).isValid()) {
-                currentYPos += sizeHintForIndex(current).height();
-                current = current.child(0, 0);
-            }
-        }
-    }
+    const bool changed = current.isValid();
+    int currentYPos = 0;
+    measureColumnSizes(this, current, columnSize, currentYPos, height());
 
     int totalColumnsWidth = 0, originalViewportWidth = viewport()->width();
 

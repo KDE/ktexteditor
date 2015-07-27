@@ -292,8 +292,8 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
     if (g && (!g->isEmpty)) {
         switch (role) {
         case Qt::DisplayRole:
-            //We return the group-header for all columns, ExpandingDelegate will paint them properly over the whole space
-            return QString(QLatin1Char(' ') + g->title);
+            if (!index.column())
+                return QString(QLatin1Char(' ') + g->title);
             break;
 
         case Qt::FontRole:
@@ -913,6 +913,11 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
             //qCDebug(LOG_PART) << "Returning ungrouped row count for toplevel " << m_ungrouped->filtered.count();
             return m_ungrouped->filtered.count();
         }
+    }
+
+    if (parent.column() > 0) {
+        // only the first column has children
+        return 0;
     }
 
     Group *g = groupForIndex(parent);
