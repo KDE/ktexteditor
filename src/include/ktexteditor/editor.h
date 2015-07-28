@@ -127,12 +127,14 @@ public:
      * This will allow the editor component to access
      * the hosting application.
      * @param application application object
+     *        if the argument is a nullptr, this will reset the application back to a dummy interface
      */
     virtual void setApplication(KTextEditor::Application *application) = 0;
 
     /**
      * Current hosting application, if any set.
-     * @return current application object or nullptr
+     * @return current application object or a dummy interface that allows you to call the functions
+     *         will never return a nullptr
      */
     virtual KTextEditor::Application *application() const = 0;
 

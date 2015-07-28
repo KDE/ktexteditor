@@ -42,7 +42,7 @@ QWidget *MainWindow::window()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -62,7 +62,7 @@ KXMLGUIFactory *MainWindow::guiFactory()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -82,7 +82,7 @@ QList<KTextEditor::View *> MainWindow::views()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return QList<KTextEditor::View *> ();
     }
 
@@ -102,7 +102,7 @@ KTextEditor::View *MainWindow::activeView()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -122,7 +122,7 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -143,7 +143,7 @@ KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -165,7 +165,7 @@ bool MainWindow::closeView(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -186,7 +186,7 @@ void MainWindow::splitView(Qt::Orientation orientation)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return;
     }
 
@@ -204,7 +204,7 @@ bool MainWindow::closeSplitView(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -226,7 +226,7 @@ bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1,
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -248,7 +248,7 @@ QWidget *MainWindow::createViewBar(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -269,7 +269,7 @@ void MainWindow::deleteViewBar(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return;
     }
 
@@ -287,7 +287,7 @@ void MainWindow::addWidgetToViewBar(KTextEditor::View *view, QWidget *bar)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return;
     }
 
@@ -306,7 +306,7 @@ void MainWindow::showViewBar(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return;
     }
 
@@ -324,7 +324,7 @@ void MainWindow::hideViewBar(KTextEditor::View *view)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return;
     }
 
@@ -342,7 +342,7 @@ QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -367,7 +367,7 @@ bool MainWindow::moveToolView(QWidget *widget, KTextEditor::MainWindow::ToolView
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -389,7 +389,7 @@ bool MainWindow::showToolView(QWidget *widget)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -410,7 +410,7 @@ bool MainWindow::hideToolView(QWidget *widget)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -431,7 +431,7 @@ QObject *MainWindow::pluginView(const QString &name)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 

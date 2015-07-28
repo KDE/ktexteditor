@@ -20,7 +20,10 @@
  */
 
 #include <ktexteditor/application.h>
+#include <ktexteditor/mainwindow.h>
 #include <ktexteditor/plugin.h>
+
+#include "kateglobal.h"
 
 namespace KTextEditor
 {
@@ -40,7 +43,7 @@ bool Application::quit()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -61,7 +64,7 @@ QList<KTextEditor::MainWindow *> Application::mainWindows()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return QList<KTextEditor::MainWindow *> ();
     }
 
@@ -79,10 +82,10 @@ QList<KTextEditor::MainWindow *> Application::mainWindows()
 KTextEditor::MainWindow *Application::activeMainWindow()
 {
     /**
-     * null check
+     * null check => return dummy main window to have a usable API
      */
-    if (!this) {
-        return Q_NULLPTR;
+    if (!parent()) {
+        return KTextEditor::EditorPrivate::self()->dummyMainWindow();
     }
 
     /**
@@ -93,7 +96,11 @@ KTextEditor::MainWindow *Application::activeMainWindow()
                               , "activeMainWindow"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(KTextEditor::MainWindow *, window));
-    return window;
+
+    /**
+     * always return some kind of window to not need to check for valid pointer
+     */
+    return window ? window : KTextEditor::EditorPrivate::self()->dummyMainWindow();
 }
 
 QList<KTextEditor::Document *> Application::documents()
@@ -101,7 +108,7 @@ QList<KTextEditor::Document *> Application::documents()
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return QList<KTextEditor::Document *> ();
     }
 
@@ -121,7 +128,7 @@ KTextEditor::Document *Application::findUrl(const QUrl &url)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -142,7 +149,7 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 
@@ -164,7 +171,7 @@ bool Application::closeDocument(KTextEditor::Document *document)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -185,7 +192,7 @@ bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return false;
     }
 
@@ -206,7 +213,7 @@ KTextEditor::Plugin *Application::plugin(const QString &name)
     /**
      * null check
      */
-    if (!this) {
+    if (!parent()) {
         return Q_NULLPTR;
     }
 

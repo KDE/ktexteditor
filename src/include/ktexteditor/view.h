@@ -257,7 +257,7 @@ public:
 
     /**
      * Get the view's main window, if any
-     * \return the view's main window
+     * \return the view's main window, will always return at least some non-nullptr dummy interface
      */
     virtual KTextEditor::MainWindow *mainWindow() const = 0;
 
@@ -675,7 +675,7 @@ public:
     /**
      * Show/hide the status bar of the view.
      * Per default, the status bar is enabled.
-     * 
+     *
      * @param enable should the status bar be enabled?
      */
     void setStatusBarEnabled(bool enable);
@@ -691,7 +691,7 @@ Q_SIGNALS:
 public:
     /**
      * Read session settings from the given \p config.
-     * 
+     *
      * Known flags:
      *  none atm
      *

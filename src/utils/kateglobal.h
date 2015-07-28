@@ -31,7 +31,8 @@
 #include <KAboutData>
 #include <KSharedConfig>
 
-#include <ktexteditor/application.h>
+#include <KTextEditor/Application>
+#include <KTextEditor/MainWindow>
 #include <KTextEditor/Command>
 
 #include <QList>
@@ -129,7 +130,8 @@ public:
      */
     void setApplication(KTextEditor::Application *application) Q_DECL_OVERRIDE
     {
-        m_application = application;
+        // switch back to dummy application?
+        m_application = application ? application : &m_dummyApplication;
     }
 
     /**
@@ -233,7 +235,7 @@ public:
     {
         return m_dirWatch;
     }
-    
+
     /**
      * The global configuration of katepart, e.g. katepartrc
      * @return global shared access to katepartrc config
@@ -385,10 +387,19 @@ public:
     }
 
     /**
+     * Dummy main window to be null safe.
+     * @return dummy main window
+     */
+    KTextEditor::MainWindow *dummyMainWindow()
+    {
+        return &m_dummyMainWindow;
+    }
+
+    /**
      * @return list of available input mode factories
      */
     QList<KateAbstractInputModeFactory *> inputModeFactories();
-    
+
     /**
      * Default colors, once constructed, as expensive
      * @return default colors
@@ -517,15 +528,25 @@ private:
     QStringList m_clipboardHistory;
 
     /**
+     * Dummy application object to be null safe
+     */
+    KTextEditor::Application m_dummyApplication;
+
+    /**
      * access to application
      */
     QPointer<KTextEditor::Application> m_application;
 
     /**
+     * Dummy main window to be null safe
+     */
+    KTextEditor::MainWindow m_dummyMainWindow;
+
+    /**
      * input modes map
      */
     QMap<KTextEditor::View::InputMode, KateAbstractInputModeFactory *> m_inputModeFactories;
-    
+
     /**
      * default colors
      */

@@ -45,8 +45,12 @@ class MainWindow;
  * It must not reimplement this class but construct an instance and pass a pointer to a QObject that
  * has the required slots to receive the requests.
  *
- * The interface functions are nullptr safe, this means, you can call them all even if the instance
- * is a nullptr.
+ * KTextEditor::Editor::instance()->application() will always return a non-nullptr object
+ * to avoid the need for nullptr checks before calling the API.
+ *
+ * The same holds for activeMainWindow(), even if no main window is around, you will get a non-nullptr
+ * interface object that allows to call the functions of the MainWindow without needs for a nullptr
+ * check around it in the client code.
  */
 class KTEXTEDITOR_EXPORT Application : public QObject
 {
@@ -80,13 +84,15 @@ public:
 public:
     /**
      * Get a list of all main windows.
-     * @return all main windows
+     * @return all main windows, might be empty!
      */
     QList<KTextEditor::MainWindow *> mainWindows();
 
     /**
      * Accessor to the active main window.
-     * \return a pointer to the active mainwindow
+     * \return a pointer to the active mainwindow, even if no main window is active you
+     *         will get a non-nullptr dummy interface that allows you to call interface functions
+     *         without the need for null checks
      */
     KTextEditor::MainWindow *activeMainWindow();
 
@@ -97,7 +103,7 @@ public:
     /**
      * Get a list of all documents that are managed by the application.
      * This might contain less documents than the editor has in his documents () list.
-     * @return all documents the application manages
+     * @return all documents the application manages, might be empty!
      */
     QList<KTextEditor::Document *> documents();
 
@@ -105,7 +111,7 @@ public:
      * Get the document with the URL \p url.
      * if multiple documents match the searched url, return the first found one...
      * \param url the document's URL
-     * \return the document with the given \p url or NULL, if none found
+     * \return the document with the given \p url or nullptr, if none found
      */
     KTextEditor::Document *findUrl(const QUrl &url);
 

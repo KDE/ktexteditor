@@ -375,7 +375,9 @@ QWidget *KTextEditor::DocumentPrivate::widget()
 
 KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTextEditor::MainWindow *mainWindow)
 {
-    KTextEditor::ViewPrivate *newView = new KTextEditor::ViewPrivate(this, parent, mainWindow);
+    // construct new view, we use a dummyMainWindow interface if no mainWindow is there
+    KTextEditor::ViewPrivate *newView = new KTextEditor::ViewPrivate(this, parent, mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow());
+
     if (m_fileChangedDialogsActivated) {
         connect(newView, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(slotModifiedOnDisk()));
     }
