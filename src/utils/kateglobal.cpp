@@ -65,7 +65,7 @@
 #include <git2.h>
 #endif
 
-Q_LOGGING_CATEGORY(LOG_PART, "katepart")
+Q_LOGGING_CATEGORY(LOG_PART, "katepart", QtWarningMsg)
 
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
@@ -94,7 +94,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 {
     // remember this
     staticInstance = this;
-    
+
 #ifdef LIBGIT2_FOUND
     // init libgit2 if used
 #ifdef HAVE_GIT2_THREADS
@@ -104,7 +104,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     git_libgit2_init();
 #endif
 #endif
-    
+
     /**
      * register some datatypes
      */
@@ -262,7 +262,7 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_cmdManager;
 
     qDeleteAll(m_inputModeFactories);
-    
+
 #ifdef HAVE_GIT2
     // shutdown libgit2 if used
 #ifdef HAVE_GIT2_THREADS
