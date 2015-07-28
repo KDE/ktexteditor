@@ -78,13 +78,13 @@ public:
 public:
     /**
      * Get the toplevel widget.
-     * \return the real main window widget.
+     * \return the real main window widget, nullptr if not available
      */
     QWidget *window();
 
     /**
      * Accessor to the XMLGUIFactory.
-     * \return the mainwindow's KXMLGUIFactory.
+     * \return the mainwindow's KXMLGUIFactory, nullptr if not available
      */
     KXMLGUIFactory *guiFactory();
 
@@ -104,13 +104,13 @@ Q_SIGNALS:
 public:
     /**
      * Get a list of all views for this main window.
-     * @return all views
+     * @return all views, might be empty!
      */
     QList<KTextEditor::View *> views();
 
     /**
      * Access the active view.
-     * \return active view
+     * \return active view, nullptr if not available
      */
     KTextEditor::View *activeView();
 
@@ -118,7 +118,8 @@ public:
      * Activate the view with the corresponding \p document.
      * If none exist for this document, create one
      * \param document the document
-     * \return activated view of this document
+     * \return activated view of this document,
+     *         return nullptr if not possible
      */
     KTextEditor::View *activateView(KTextEditor::Document *document);
 
@@ -128,7 +129,8 @@ public:
      * \param encoding the preferred encoding. If encoding is QString() the
      *        encoding will be guessed or the default encoding will be used.
      * \return a pointer to the created view for the new document, if a document
-     *         with this url is already existing, its view will be activated
+     *         with this url is already existing, its view will be activated,
+     *         return nullptr if not possible
      */
     KTextEditor::View *openUrl(const QUrl &url, const QString &encoding = QString());
 
