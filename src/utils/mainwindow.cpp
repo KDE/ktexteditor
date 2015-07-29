@@ -40,13 +40,6 @@ MainWindow::~MainWindow()
 QWidget *MainWindow::window()
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
-    /**
      * dispatch to parent
      */
     QWidget *window = Q_NULLPTR;
@@ -59,13 +52,6 @@ QWidget *MainWindow::window()
 
 KXMLGUIFactory *MainWindow::guiFactory()
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -80,13 +66,6 @@ KXMLGUIFactory *MainWindow::guiFactory()
 QList<KTextEditor::View *> MainWindow::views()
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return QList<KTextEditor::View *> ();
-    }
-
-    /**
      * dispatch to parent
      */
     QList<KTextEditor::View *> views;
@@ -99,13 +78,6 @@ QList<KTextEditor::View *> MainWindow::views()
 
 KTextEditor::View *MainWindow::activeView()
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -120,13 +92,6 @@ KTextEditor::View *MainWindow::activeView()
 KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
-    /**
      * dispatch to parent
      */
     KTextEditor::View *view = Q_NULLPTR;
@@ -140,13 +105,6 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
 
 KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -163,13 +121,6 @@ KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
 bool MainWindow::closeView(KTextEditor::View *view)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -184,13 +135,6 @@ bool MainWindow::closeView(KTextEditor::View *view)
 void MainWindow::splitView(Qt::Orientation orientation)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return;
-    }
-
-    /**
      * dispatch to parent
      */
     QMetaObject::invokeMethod(parent()
@@ -201,13 +145,6 @@ void MainWindow::splitView(Qt::Orientation orientation)
 
 bool MainWindow::closeSplitView(KTextEditor::View *view)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
     /**
      * dispatch to parent
      */
@@ -224,13 +161,6 @@ bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1,
                                       KTextEditor::View *view2)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -246,13 +176,6 @@ bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1,
 QWidget *MainWindow::createViewBar(KTextEditor::View *view)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
-    /**
      * dispatch to parent
      */
     QWidget *viewBar = Q_NULLPTR;
@@ -267,13 +190,6 @@ QWidget *MainWindow::createViewBar(KTextEditor::View *view)
 void MainWindow::deleteViewBar(KTextEditor::View *view)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return;
-    }
-
-    /**
      * dispatch to parent
      */
     QMetaObject::invokeMethod(parent()
@@ -284,13 +200,6 @@ void MainWindow::deleteViewBar(KTextEditor::View *view)
 
 void MainWindow::addWidgetToViewBar(KTextEditor::View *view, QWidget *bar)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return;
-    }
-
     /**
      * dispatch to parent
      */
@@ -304,13 +213,6 @@ void MainWindow::addWidgetToViewBar(KTextEditor::View *view, QWidget *bar)
 void MainWindow::showViewBar(KTextEditor::View *view)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return;
-    }
-
-    /**
      * dispatch to parent
      */
     QMetaObject::invokeMethod(parent()
@@ -322,13 +224,6 @@ void MainWindow::showViewBar(KTextEditor::View *view)
 void MainWindow::hideViewBar(KTextEditor::View *view)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return;
-    }
-
-    /**
      * dispatch to parent
      */
     QMetaObject::invokeMethod(parent()
@@ -339,13 +234,6 @@ void MainWindow::hideViewBar(KTextEditor::View *view)
 
 QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -365,13 +253,6 @@ QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &
 bool MainWindow::moveToolView(QWidget *widget, KTextEditor::MainWindow::ToolViewPosition pos)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -387,13 +268,6 @@ bool MainWindow::moveToolView(QWidget *widget, KTextEditor::MainWindow::ToolView
 bool MainWindow::showToolView(QWidget *widget)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -408,13 +282,6 @@ bool MainWindow::showToolView(QWidget *widget)
 bool MainWindow::hideToolView(QWidget *widget)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -428,13 +295,6 @@ bool MainWindow::hideToolView(QWidget *widget)
 
 QObject *MainWindow::pluginView(const QString &name)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
