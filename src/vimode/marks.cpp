@@ -111,7 +111,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos, const bo
 
     // Showing what mark we set:
     if (isShowable(mark)) {
-        if (!marktype & KTextEditor::MarkInterface::markType01) {
+        if (!(marktype & KTextEditor::MarkInterface::markType01)) {
             m_doc->addMark(pos.line(), KTextEditor::MarkInterface::markType01);
         }
 
