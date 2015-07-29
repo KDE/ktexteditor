@@ -161,7 +161,7 @@ KTextEditor::Plugin *Application::plugin(const QString &name)
     QMetaObject::invokeMethod(parent()
                               , "plugin"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(Plugin *, plugin)
+                              , Q_RETURN_ARG(KTextEditor::Plugin *, plugin)
                               , Q_ARG(const QString &, name));
     return plugin;
 }
