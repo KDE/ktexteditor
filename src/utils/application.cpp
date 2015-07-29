@@ -41,13 +41,6 @@ Application::~Application()
 bool Application::quit()
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -62,13 +55,6 @@ bool Application::quit()
 QList<KTextEditor::MainWindow *> Application::mainWindows()
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return QList<KTextEditor::MainWindow *> ();
-    }
-
-    /**
      * dispatch to parent
      */
     QList<KTextEditor::MainWindow *> mainWindow;
@@ -81,13 +67,6 @@ QList<KTextEditor::MainWindow *> Application::mainWindows()
 
 KTextEditor::MainWindow *Application::activeMainWindow()
 {
-    /**
-     * null check => return dummy main window to have a usable API
-     */
-    if (!parent()) {
-        return KTextEditor::EditorPrivate::self()->dummyMainWindow();
-    }
-
     /**
      * dispatch to parent
      */
@@ -106,13 +85,6 @@ KTextEditor::MainWindow *Application::activeMainWindow()
 QList<KTextEditor::Document *> Application::documents()
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return QList<KTextEditor::Document *> ();
-    }
-
-    /**
      * dispatch to parent
      */
     QList<KTextEditor::Document *> documents;
@@ -125,13 +97,6 @@ QList<KTextEditor::Document *> Application::documents()
 
 KTextEditor::Document *Application::findUrl(const QUrl &url)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -146,13 +111,6 @@ KTextEditor::Document *Application::findUrl(const QUrl &url)
 
 KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &encoding)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
@@ -169,13 +127,6 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
 bool Application::closeDocument(KTextEditor::Document *document)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -190,13 +141,6 @@ bool Application::closeDocument(KTextEditor::Document *document)
 bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents)
 {
     /**
-     * null check
-     */
-    if (!parent()) {
-        return false;
-    }
-
-    /**
      * dispatch to parent
      */
     bool success = false;
@@ -210,13 +154,6 @@ bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents
 
 KTextEditor::Plugin *Application::plugin(const QString &name)
 {
-    /**
-     * null check
-     */
-    if (!parent()) {
-        return Q_NULLPTR;
-    }
-
     /**
      * dispatch to parent
      */
