@@ -35,7 +35,6 @@
 #include <KPluginFactory>
 #include <KActionCollection>
 #include <KParts/Part>
-#include <KIconLoader>
 #include <KPageDialog>
 #include <KPageWidgetModel>
 #include <KToggleAction>

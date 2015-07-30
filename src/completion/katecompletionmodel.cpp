@@ -32,7 +32,6 @@
 #include "katepartdebug.h"
 
 #include <KLocalizedString>
-#include <KIconLoader>
 
 #include <QMultiMap>
 #include <QTimer>

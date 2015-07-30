@@ -28,7 +28,6 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include "katepartdebug.h"
-#include <KIconLoader>
 #include <KColorUtils>
 
 #include <QEvent>

@@ -24,9 +24,9 @@
 #include <QModelIndex>
 #include <QBrush>
 #include <QApplication>
+#include <QIcon>
 
 #include <ktexteditor/codecompletionmodel.h>
-#include <KIconLoader>
 #include <KTextEdit>
 #include "kcolorutils.h"
 
@@ -469,11 +469,11 @@ QWidget *ExpandingWidgetModel::expandingWidget(const QModelIndex &idx_) const
 void ExpandingWidgetModel::cacheIcons() const
 {
     if (m_expandedIcon.isNull()) {
-        m_expandedIcon = KIconLoader::global()->loadIcon(QLatin1String("arrow-down"), KIconLoader::Small, 10);
+        m_expandedIcon = QIcon::fromTheme(QLatin1String("arrow-down"));
     }
 
     if (m_collapsedIcon.isNull()) {
-        m_collapsedIcon = KIconLoader::global()->loadIcon(QLatin1String("arrow-right"), KIconLoader::Small, 10);
+        m_collapsedIcon = QIcon::fromTheme(QLatin1String("arrow-right"));
     }
 }
 

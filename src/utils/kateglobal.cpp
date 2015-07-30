@@ -52,7 +52,6 @@
 #include <KAboutData>
 #include <KPageDialog>
 #include <KPageWidgetModel>
-#include <KIconLoader>
 #include <KConfigGroup>
 
 #include <QBoxLayout>

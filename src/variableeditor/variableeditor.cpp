@@ -32,7 +32,6 @@
 #include <QSpinBox>
 #include <QFontComboBox>
 
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <KColorCombo>
 #include <sonnet/dictionarycombobox.h>

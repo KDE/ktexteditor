@@ -44,7 +44,6 @@
 #include <KCharsets>
 #include <KColorUtils>
 #include <KLocalizedString>
-#include <KIconLoader>
 #include <KConfigGroup>
 #include <khelpclient.h>
 

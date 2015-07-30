@@ -30,7 +30,6 @@
 #include "katesyntaxdocument.h"
 #include "katepartdebug.h"
 
-#include <KIconLoader>
 #include <KConfigGroup>
 
 #include <QRegExp>
