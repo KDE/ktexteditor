@@ -283,8 +283,9 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
     if (g && (!g->isEmpty)) {
         switch (role) {
         case Qt::DisplayRole:
-            if (!index.column())
+            if (!index.column()) {
                 return g->title;
+            }
             break;
 
         case Qt::FontRole:
