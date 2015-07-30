@@ -20,6 +20,8 @@
 
 #include "katehelpbutton.h"
 
+#include <QIcon>
+
 #include <KIconLoader>
 #include <khelpclient.h>
 #include <KLocalizedString>
@@ -41,11 +43,11 @@ KateHelpButton::~KateHelpButton()
 void KateHelpButton::setIconState(IconState state)
 {
     if (state == IconGrayscaled) {
-        setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DisabledState));
+        setIcon(QIcon::fromTheme(QLatin1String("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Disabled));
     } else if (state == IconHidden) {
         setIcon(QIcon());
     } else {
-        setIcon(SmallIcon(QLatin1String("help-contents"), 0, KIconLoader::DefaultState));
+        setIcon(QIcon::fromTheme(QLatin1String("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Normal));
     }
 
     update();
