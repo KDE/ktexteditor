@@ -59,9 +59,9 @@
 #include <KCharsets>
 #include <KColorCombo>
 #include <KComboBox>
+#include <KIconLoader>
 #include "katepartdebug.h"
 #include "kateabstractinputmodefactory.h"
-#include <KIconLoader>
 #include <KShortcutsDialog>
 #include <KLineEdit>
 #include <KMessageBox>
@@ -1191,7 +1191,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
                 }
                 if (is_fresh) {
                     entry->treeWidget()->setItemSelected(entry, true);
-                    entry->setIcon(0, SmallIcon((QLatin1String("get-hot-new-stuff"))));
+                    entry->setIcon(0, QIcon::fromTheme((QLatin1String("get-hot-new-stuff"))));
                 }
             }
             list->resizeColumnToContents(1);
@@ -1239,7 +1239,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
 
     QToolButton *btnOK = new QToolButton(centralWidget());
     btnOK->setAutoRaise(true);
-    btnOK->setIcon(SmallIcon(QLatin1String("go-jump")));
+    btnOK->setIcon(QIcon::fromTheme(QLatin1String("go-jump")));
     btnOK->setText(i18n("Go"));
     btnOK->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(btnOK, SIGNAL(clicked()), this, SLOT(gotoLine()));
@@ -1371,7 +1371,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     mainLayout->addWidget(w);
     ui = new Ui::ModOnHdWidget();
     ui->setupUi(w);
-    ui->lblIcon->setPixmap(DesktopIcon(QLatin1String("dialog-warning")));
+    ui->lblIcon->setPixmap(QIcon::fromTheme(QLatin1String("dialog-warning")).pixmap(IconSize(KIconLoader::Desktop), IconSize(KIconLoader::Desktop)));
     ui->lblText->setText(reason + QLatin1String("\n\n") + i18n("What do you want to do?"));
 
     // buttons
