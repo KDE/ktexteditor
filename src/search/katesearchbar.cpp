@@ -697,6 +697,7 @@ void KateSearchBar::givePatternFeedback()
     m_powerUi->findPrev->setEnabled(isPatternValid());
     m_powerUi->replaceNext->setEnabled(isPatternValid());
     m_powerUi->replaceAll->setEnabled(isPatternValid());
+    m_powerUi->findAll->setEnabled(isPatternValid());
 }
 
 void KateSearchBar::addCurrentTextToHistory(QComboBox *combo)
