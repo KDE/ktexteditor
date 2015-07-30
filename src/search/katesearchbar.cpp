@@ -1319,7 +1319,8 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->replacement->setCompleter(0);
 
         // Icons
-        m_powerUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("arrow-down-double")));
+        m_powerUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("games-config-options")));
+        m_powerUi->mutate->setChecked(true);
         m_powerUi->findNext->setIcon(QIcon::fromTheme(QLatin1String("go-down-search")));
         m_powerUi->findPrev->setIcon(QIcon::fromTheme(QLatin1String("go-up-search")));
         m_powerUi->findAll->setIcon(QIcon::fromTheme(QLatin1String("edit-find")));
@@ -1450,9 +1451,10 @@ void KateSearchBar::enterIncrementalMode()
 //             new QShortcut(KStandardShortcut::paste().alternate(), m_incUi->pattern, SLOT(paste()), 0, Qt::WidgetWithChildrenShortcut);
 
         // Icons
-        m_incUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("arrow-up-double")));
+        m_incUi->mutate->setIcon(QIcon::fromTheme(QLatin1String("games-config-options")));
         m_incUi->next->setIcon(QIcon::fromTheme(QLatin1String("go-down-search")));
         m_incUi->prev->setIcon(QIcon::fromTheme(QLatin1String("go-up-search")));
+        m_incUi->matchCase->setIcon(QIcon::fromTheme(QLatin1String("format-text-superscript")));
 
         // Ensure minimum size
         m_incUi->pattern->setMinimumWidth(12 * m_incUi->pattern->fontMetrics().height());

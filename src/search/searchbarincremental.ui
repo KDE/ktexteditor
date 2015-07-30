@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>100</width>
-    <height>31</height>
+    <width>446</width>
+    <height>34</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,12 +18,30 @@
    </sizepolicy>
   </property>
   <layout class="QGridLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item row="0" column="0">
     <layout class="QHBoxLayout">
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -42,7 +60,7 @@
      <item>
       <widget class="QComboBox" name="pattern">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -68,60 +86,61 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="next">
+      <widget class="QToolButton" name="next">
        <property name="toolTip">
         <string>Jump to next match</string>
        </property>
-       <property name="text">
-        <string>&amp;Next</string>
-       </property>
        <property name="icon">
         <iconset>
          <normaloff/>
         </iconset>
        </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="prev">
+      <widget class="QToolButton" name="prev">
        <property name="toolTip">
         <string>Jump to previous match</string>
        </property>
-       <property name="text">
-        <string>&amp;Previous</string>
+       <property name="icon">
+        <iconset>
+         <normaloff/>
+        </iconset>
+       </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="matchCase">
+       <property name="toolTip">
+        <string>Match case sensitive</string>
        </property>
        <property name="icon">
         <iconset>
          <normaloff/>
         </iconset>
        </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>12</width>
-         <height>26</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="matchCase">
-       <property name="text">
-        <string>&amp;Match case</string>
+       <property name="autoRaise">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <widget class="KSqueezedTextLabel" name="status">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -129,7 +148,7 @@
         </size>
        </property>
        <property name="text">
-        <string/>
+        <string>KSqueezedTextLabel</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -153,6 +172,9 @@
         </iconset>
        </property>
        <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+       <property name="checkable">
         <bool>true</bool>
        </property>
       </widget>
