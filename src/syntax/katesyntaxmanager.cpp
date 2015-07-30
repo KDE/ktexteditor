@@ -66,7 +66,8 @@ bool compareKateHighlighting(const KateHighlighting *const left, const KateHighl
 //BEGIN KateHlManager
 KateHlManager::KateHlManager()
     : QObject()
-    , m_config(QStringLiteral("katesyntaxhighlightingrc"), KConfig::NoGlobals)
+    , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() :QStringLiteral("katesyntaxhighlightingrc")
+        , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals)
     , commonSuffixes({QStringLiteral(".orig"), QStringLiteral(".new"), QStringLiteral("~"), QStringLiteral(".bak"), QStringLiteral(".BAK")})
     , dynamicCtxsCount(0)
     , forceNoDCReset(false)
