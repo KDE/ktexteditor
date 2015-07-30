@@ -138,7 +138,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_lineToUpdateMax(-1)
     , m_floatTopMessageWidget(0)
     , m_floatBottomMessageWidget(0)
-    , m_mainWindow(mainWindow)
+    , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
     , m_statusBar(Q_NULLPTR)
     , m_temporaryAutomaticInvocationDisabled(false)
     , m_autoFoldedFirstLine(false)
