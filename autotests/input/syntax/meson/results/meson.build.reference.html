@@ -14,20 +14,20 @@
 
 
 
-sourcefiles = [<span style='color:#bf0303;'>'a.cpp'</span>, <span style='color:#bf0303;'>'b.cpp'</span>]
+sourcefiles <b>=</b> [<span style='color:#bf0303;'>'a.cpp'</span>, <span style='color:#bf0303;'>'b.cpp'</span>]
 
 <b>foreach</b> sourcefile : sourcefiles
-    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'this is a source file: '</span> + sourcefile)
+    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'this is a source file: '</span> <b>+</b> sourcefile)
 <b>endforeach</b>
 
-x=<span style='color:#b08000;'>1</span>
-<b>if</b> x+<span style='color:#b08000;'>1</span> == <span style='color:#b08000;'>2</span> and x-<span style='color:#b08000;'>1</span> == <span style='color:#b08000;'>0</span>
+x<b>=</b><span style='color:#b08000;'>1</span>
+<b>if</b> x<b>+</b><span style='color:#b08000;'>1</span> <b>==</b> <span style='color:#b08000;'>2</span> <b>and</b> x<b>-</b><span style='color:#b08000;'>1</span> <b>==</b> <span style='color:#b08000;'>0</span>
     <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'I can work in this universe!'</span>)
 <b>endif</b>
 
-subprojectresult = <span style='color:#0057ae;'>subproject</span>(<span style='color:#bf0303;'>'mysubprojectdir'</span>)
+subprojectresult <b>=</b> <span style='color:#0057ae;'>subproject</span>(<span style='color:#bf0303;'>'mysubprojectdir'</span>)
 
-mysharedlib = <span style='color:#0057ae;'>shared_library</span>(<span style='color:#bf0303;'>'libraryname'</span>, sourcefiles, linkwith: subprojectresult.staticlib)
+mysharedlib <b>=</b> <span style='color:#0057ae;'>shared_library</span>(<span style='color:#bf0303;'>'libraryname'</span>, sourcefiles, linkwith: subprojectresult.staticlib)
 
 <span style='color:#0057ae;'>executable</span>(<span style='color:#bf0303;'>'myprogram'</span>, [<span style='color:#bf0303;'>'test.cpp'</span>], linkwith: mysharedlib)
 </pre>
