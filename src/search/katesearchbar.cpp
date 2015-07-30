@@ -1324,6 +1324,8 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->findNext->setIcon(QIcon::fromTheme(QLatin1String("go-down-search")));
         m_powerUi->findPrev->setIcon(QIcon::fromTheme(QLatin1String("go-up-search")));
         m_powerUi->findAll->setIcon(QIcon::fromTheme(QLatin1String("edit-find")));
+        m_powerUi->matchCase->setIcon(QIcon::fromTheme(QLatin1String("format-text-superscript")));
+        m_powerUi->selectionOnly->setIcon(QIcon::fromTheme(QLatin1String("edit-select-all")));
 
         // Focus proxy
         centralWidget()->setFocusProxy(m_powerUi->pattern);
