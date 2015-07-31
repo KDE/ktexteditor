@@ -26,13 +26,13 @@
 
 using namespace KTextEditor;
 
-void Range::setRange(const Range &range)
+void Range::setRange(const Range &range) Q_DECL_NOEXCEPT
 {
     m_start = range.start();
     m_end = range.end();
 }
 
-void Range::setRange(const Cursor &start, const Cursor &end)
+void Range::setRange(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT
 {
     if (start > end) {
         setRange(Range(end, start));
@@ -41,7 +41,7 @@ void Range::setRange(const Cursor &start, const Cursor &end)
     }
 }
 
-bool Range::confineToRange(const Range &range)
+bool Range::confineToRange(const Range &range) Q_DECL_NOEXCEPT
 {
     if (start() < range.start())
         if (end() > range.end()) {
@@ -58,7 +58,7 @@ bool Range::confineToRange(const Range &range)
     return true;
 }
 
-bool Range::expandToRange(const Range &range)
+bool Range::expandToRange(const Range &range) Q_DECL_NOEXCEPT
 {
     if (start() > range.start())
         if (end() < range.end()) {
@@ -75,12 +75,12 @@ bool Range::expandToRange(const Range &range)
     return true;
 }
 
-void Range::setBothLines(int line)
+void Range::setBothLines(int line) Q_DECL_NOEXCEPT
 {
     setRange(Range(line, start().column(), line, end().column()));
 }
 
-void KTextEditor::Range::setBothColumns(int column)
+void KTextEditor::Range::setBothColumns(int column) Q_DECL_NOEXCEPT
 {
     setRange(Range(start().line(), column, end().line(), column));
 }
