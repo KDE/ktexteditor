@@ -42,13 +42,13 @@ bool KateCmd::registerCommand(KTextEditor::Command *cmd)
 
     for (int z = 0; z < l.count(); z++)
         if (m_dict.contains(l[z])) {
-            qCDebug(LOG_PART) << "Command already registered: " << l[z] << ". Aborting.";
+            qCDebug(LOG_KTE) << "Command already registered: " << l[z] << ". Aborting.";
             return false;
         }
 
     for (int z = 0; z < l.count(); z++) {
         m_dict.insert(l[z], cmd);
-        //qCDebug(LOG_PART)<<"Inserted command:"<<l[z];
+        //qCDebug(LOG_KTE)<<"Inserted command:"<<l[z];
     }
 
     m_cmds += l;
@@ -72,7 +72,7 @@ bool KateCmd::unregisterCommand(KTextEditor::Command *cmd)
     for (QStringList::Iterator it1 = l.begin(); it1 != l.end(); ++it1) {
         m_dict.remove(*it1);
         m_cmdCompletion.removeItem(*it1);
-        //qCDebug(LOG_PART)<<"Removed command:"<<*it1;
+        //qCDebug(LOG_KTE)<<"Removed command:"<<*it1;
     }
 
     return true;

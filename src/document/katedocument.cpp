@@ -91,9 +91,9 @@
 //END  includes
 
 #if 0
-#define EDIT_DEBUG qCDebug(LOG_PART)
+#define EDIT_DEBUG qCDebug(LOG_KTE)
 #else
-#define EDIT_DEBUG if (0) qCDebug(LOG_PART)
+#define EDIT_DEBUG if (0) qCDebug(LOG_KTE)
 #endif
 
 inline bool isStartBracket(const QChar &c)
@@ -415,7 +415,7 @@ QString KTextEditor::DocumentPrivate::text() const
 QString KTextEditor::DocumentPrivate::text(const KTextEditor::Range &range, bool blockwise) const
 {
     if (!range.isValid()) {
-        qCWarning(LOG_PART) << "Text requested for invalid range" << range;
+        qCWarning(LOG_KTE) << "Text requested for invalid range" << range;
         return QString();
     }
 
@@ -532,7 +532,7 @@ QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &ra
     QStringList ret;
 
     if (!range.isValid()) {
-        qCWarning(LOG_PART) << "Text requested for invalid range" << range;
+        qCWarning(LOG_KTE) << "Text requested for invalid range" << range;
         return ret;
     }
 
@@ -1059,12 +1059,12 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
             break;
         }
 
-        //qCDebug(LOG_PART) << "try wrap line: " << line;
+        //qCDebug(LOG_KTE) << "try wrap line: " << line;
 
         if (l->virtualLength(m_buffer->tabWidth()) > col) {
             Kate::TextLine nextl = kateTextLine(line + 1);
 
-            //qCDebug(LOG_PART) << "do wrap line: " << line;
+            //qCDebug(LOG_KTE) << "do wrap line: " << line;
 
             int eolPosition = l->length() - 1;
 
@@ -2364,8 +2364,8 @@ bool KTextEditor::DocumentPrivate::saveFile()
             u.setPath(u.path() + config()->backupPrefix() + fileName + config()->backupSuffix());
         }
 
-        qCDebug(LOG_PART) << "backup src file name: " << url();
-        qCDebug(LOG_PART) << "backup dst file name: " << u;
+        qCDebug(LOG_KTE) << "backup src file name: " << url();
+        qCDebug(LOG_KTE) << "backup dst file name: " << u;
 
         // handle the backup...
         bool backupSuccess = false;
@@ -3983,7 +3983,7 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
             KEncodingFileDialog::Result res = KEncodingFileDialog::getSaveUrlAndEncoding(config()->encoding(),
                                               url(), QString(), parentWidget, i18n("Save File"));
 
-            qCDebug(LOG_PART) << "got " << res.URLs.count() << " URLs";
+            qCDebug(LOG_KTE) << "got " << res.URLs.count() << " URLs";
             if (! res.URLs.isEmpty() && ! res.URLs.first().isEmpty() && checkOverwrite(res.URLs.first(), parentWidget)) {
                 setEncoding(res.encoding);
 
@@ -4318,7 +4318,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     if (kvLine.indexIn(t) > -1) {
         s = kvLine.cap(1);
 
-        //qCDebug(LOG_PART) << "normal variable line kate: matched: " << s;
+        //qCDebug(LOG_KTE) << "normal variable line kate: matched: " << s;
     } else if (kvLineWildcard.indexIn(t) > -1) { // regex given
         const QStringList wildcards(kvLineWildcard.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
         const QString nameOfFile = url().fileName();
@@ -4337,7 +4337,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = kvLineWildcard.cap(2);
 
-        //qCDebug(LOG_PART) << "guarded variable line kate-wildcard: matched: " << s;
+        //qCDebug(LOG_KTE) << "guarded variable line kate-wildcard: matched: " << s;
     } else if (kvLineMime.indexIn(t) > -1) { // mime-type given
         const QStringList types(kvLineMime.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
 
@@ -4348,7 +4348,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = kvLineMime.cap(2);
 
-        //qCDebug(LOG_PART) << "guarded variable line kate-mimetype: matched: " << s;
+        //qCDebug(LOG_KTE) << "guarded variable line kate-mimetype: matched: " << s;
     } else { // nothing found
         return;
     }
@@ -4395,12 +4395,12 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                 m_config->setReplaceTabsDyn(state);
                 replaceTabsSet = true;  // for backward compatibility; see below
             } else if (var == QLatin1String("remove-trailing-space") && checkBoolValue(val, &state)) {
-                qCWarning(LOG_PART) << i18n("Using deprecated modeline 'remove-trailing-space'. "
+                qCWarning(LOG_KTE) << i18n("Using deprecated modeline 'remove-trailing-space'. "
                                             "Please replace with 'remove-trailing-spaces modified;', see "
                                             "http://docs.kde.org/stable/en/applications/kate/config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 1 : 0);
             } else if (var == QLatin1String("replace-trailing-space-save") && checkBoolValue(val, &state)) {
-                qCWarning(LOG_PART) << i18n("Using deprecated modeline 'replace-trailing-space-save'. "
+                qCWarning(LOG_KTE) << i18n("Using deprecated modeline 'replace-trailing-space-save'. "
                                             "Please replace with 'remove-trailing-spaces all;', see "
                                             "http://docs.kde.org/stable/en/applications/kate/config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 2 : 0);
@@ -5363,22 +5363,22 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     // all ranges is 'm_dictionaryRanges' are assumed to be mutually disjoint
     for (QList<QPair<KTextEditor::MovingRange *, QString> >::iterator i = m_dictionaryRanges.begin();
             i != m_dictionaryRanges.end();) {
-        qCDebug(LOG_PART) << "new iteration" << newDictionaryRange;
+        qCDebug(LOG_KTE) << "new iteration" << newDictionaryRange;
         if (newDictionaryRange.isEmpty()) {
             break;
         }
         QPair<KTextEditor::MovingRange *, QString> pair = *i;
         QString dictionarySet = pair.second;
         KTextEditor::MovingRange *dictionaryRange = pair.first;
-        qCDebug(LOG_PART) << *dictionaryRange << dictionarySet;
+        qCDebug(LOG_KTE) << *dictionaryRange << dictionarySet;
         if (dictionaryRange->contains(newDictionaryRange) && newDictionary == dictionarySet) {
-            qCDebug(LOG_PART) << "dictionaryRange contains newDictionaryRange";
+            qCDebug(LOG_KTE) << "dictionaryRange contains newDictionaryRange";
             return;
         }
         if (newDictionaryRange.contains(*dictionaryRange)) {
             delete dictionaryRange;
             i = m_dictionaryRanges.erase(i);
-            qCDebug(LOG_PART) << "newDictionaryRange contains dictionaryRange";
+            qCDebug(LOG_KTE) << "newDictionaryRange contains dictionaryRange";
             continue;
         }
 
@@ -5390,7 +5390,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
                 Q_ASSERT(remainingRanges.size() == 1);
                 newDictionaryRange = remainingRanges.first();
                 ++i;
-                qCDebug(LOG_PART) << "dictionarySet == newDictionary";
+                qCDebug(LOG_KTE) << "dictionarySet == newDictionary";
                 continue;
             }
             QList<KTextEditor::Range> remainingRanges = KateSpellCheckManager::rangeDifference(*dictionaryRange, intersection);
@@ -5498,7 +5498,7 @@ void KTextEditor::DocumentPrivate::rangeEmpty(KTextEditor::MovingRange *movingRa
 
 void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRange *movingRange)
 {
-    qCDebug(LOG_PART) << "deleting" << movingRange;
+    qCDebug(LOG_KTE) << "deleting" << movingRange;
 
     auto finder = [=] (const QPair<KTextEditor::MovingRange *, QString>& item) -> bool {
         return item.first == movingRange;
@@ -5646,7 +5646,7 @@ KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTex
 
     KTextEditor::ViewPrivate *view = m_views.empty() ? Q_NULLPTR : m_views.begin().value();
     if (!view) {
-        qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
+        qCWarning(LOG_KTE) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;
     }
 
@@ -5670,12 +5670,12 @@ QString KTextEditor::DocumentPrivate::highlightingModeAt(const KTextEditor::Curs
     Kate::TextLine kateLine = kateTextLine(position.line());
 
 //   const QVector< short >& attrs = kateLine->ctxArray();
-//   qCDebug(LOG_PART) << "----------------------------------------------------------------------";
+//   qCDebug(LOG_KTE) << "----------------------------------------------------------------------";
 //   foreach( short a, attrs ) {
-//     qCDebug(LOG_PART) << a;
+//     qCDebug(LOG_KTE) << a;
 //   }
-//   qCDebug(LOG_PART) << "----------------------------------------------------------------------";
-//   qCDebug(LOG_PART) << "col: " << position.column() << " lastchar:" << kateLine->lastChar() << " length:" << kateLine->length() << "global mode:" << highlightingMode();
+//   qCDebug(LOG_KTE) << "----------------------------------------------------------------------";
+//   qCDebug(LOG_KTE) << "col: " << position.column() << " lastchar:" << kateLine->lastChar() << " length:" << kateLine->length() << "global mode:" << highlightingMode();
 
     int len = kateLine->length();
     int pos = position.column();
@@ -5779,7 +5779,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 
     // make sure the desired view belongs to this document
     if (message->view() && message->view()->document() != this) {
-        qCWarning(LOG_PART) << "trying to post a message to a view of another document:" << message->text();
+        qCWarning(LOG_KTE) << "trying to post a message to a view of another document:" << message->text();
         return false;
     }
 

@@ -140,7 +140,7 @@ static bool measureColumnSizes(const KateCompletionTree* tree, QModelIndex curre
         for (int a = 0; a < columnSize.size(); a++) {
             QSize s = tree->sizeHintForIndex(current.sibling(row, a));
             if (s.width() > 2000) {
-                qCDebug(LOG_PART) << "got invalid size-hint of width " << s.width();
+                qCDebug(LOG_KTE) << "got invalid size-hint of width " << s.width();
             } else if (s.width() > columnSize[a]) {
                 columnSize[a] = s.width();
             }
@@ -260,7 +260,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
             for (int n = 0; n < numColumns; n++) {
                 setColumnWidth(n, columnSize[n]);
             }
-//       qCDebug(LOG_PART) << "resizing viewport to" << totalColumnsWidth;
+//       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
             viewport()->resize(totalColumnsWidth, viewport()->height());
         }
     }
@@ -281,21 +281,21 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 
     if (maximumResize > 0 || forceResize || oldIndentWidth != newIndentWidth) {
 
-        //   qCDebug(LOG_PART) << geometry() << "newWidth" << newWidth << "current width" << width() << "target width" << newWidth + scrollBarWidth;
+        //   qCDebug(LOG_KTE) << geometry() << "newWidth" << newWidth << "current width" << width() << "target width" << newWidth + scrollBarWidth;
 
         if ((newWidth + scrollBarWidth) != width() && originalViewportWidth != totalColumnsWidth) {
             widget()->resize(newWidth + scrollBarWidth + 2, widget()->height());
             resize(newWidth + scrollBarWidth, widget()->height() - (2 * widget()->frameWidth()));
         }
 
-        //   qCDebug(LOG_PART) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();
+        //   qCDebug(LOG_KTE) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();
 
         if (viewport()->width() > totalColumnsWidth) { //Set the size of the last column to fill the whole rest of the widget
             setColumnWidth(numColumns - 1, viewport()->width() - columnViewportPosition(numColumns - 1));
         }
 
         /*  for(int a = 0; a < numColumns; ++a)
-            qCDebug(LOG_PART) << "column" << a << columnWidth(a) << "target:" << columnSize[a];*/
+            qCDebug(LOG_KTE) << "column" << a << columnWidth(a) << "target:" << columnSize[a];*/
 
         if (oldIndentWidth != newIndentWidth)
             if (widget()->updatePosition() && !forceResize) {

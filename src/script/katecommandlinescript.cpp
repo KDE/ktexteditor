@@ -77,7 +77,7 @@ bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QS
 {
     if (range.isValid())
         view->setSelection(range);
-    
+
     KShell::Errors errorCode;
     QStringList args(KShell::splitArgs(cmd, KShell::NoOptions, &errorCode));
 
@@ -137,7 +137,7 @@ bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QS
     }
 
     if (result.isUndefined() || !result.isString()) {
-        qCDebug(LOG_PART) << i18n("No help specified for command '%1' in script %2", cmd, url());
+        qCDebug(LOG_KTE) << i18n("No help specified for command '%1' in script %2", cmd, url());
         return false;
     }
     msg = result.toString();

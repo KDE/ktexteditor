@@ -133,7 +133,7 @@ Completion CompletionReplayer::nextCompletion()
     Q_ASSERT(m_viInputModeManager->lastChangeRecorder()->isReplaying() || m_viInputModeManager->macroRecorder()->isReplaying());
 
     if (m_nextCompletionIndex.top() >= m_CompletionsToReplay.top().length()) {
-        qCDebug(LOG_PART) << "Something wrong here: requesting more completions for macro than we actually have.  Returning dummy.";
+        qCDebug(LOG_KTE) << "Something wrong here: requesting more completions for macro than we actually have.  Returning dummy.";
         return Completion(QString(), false, Completion::PlainText);
     }
 

@@ -545,7 +545,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 {
     Q_ASSERT(range->isValid());
 
-//   qCDebug(LOG_PART)<<"KateRenderer::paintTextLine";
+//   qCDebug(LOG_KTE)<<"KateRenderer::paintTextLine";
 
     // font data
     const QFontMetricsF &fm = config()->fontMetrics();

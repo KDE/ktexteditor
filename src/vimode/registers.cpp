@@ -66,7 +66,7 @@ void Registers::writeConfig(KConfigGroup &config) const
             contents << i.value().first;
             flags << int(i.value().second);
         } else {
-            qCDebug(LOG_PART) << "Did not save contents of register " << i.key() << ": contents too long ("
+            qCDebug(LOG_KTE) << "Did not save contents of register " << i.key() << ": contents too long ("
             << i.value().first.length() << " characters)";
         }
     }

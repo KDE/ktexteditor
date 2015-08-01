@@ -117,7 +117,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
 
         for (int line = backwards ? endLine : startLine; (startLine <= line) && (line <= endLine); line += forInc) {
             if ((line < 0) || (m_document->lines() <= line)) {
-                qCWarning(LOG_PART) << "line " << line << " is not within interval [0.." << m_document->lines() << ") ... returning invalid range";
+                qCWarning(LOG_KTE) << "line " << line << " is not within interval [0.." << m_document->lines() << ") ... returning invalid range";
                 return KTextEditor::Range::invalid();
             }
 

@@ -163,7 +163,7 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
 
 void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount, int viewLinesScrolled)
 {
-    //qCDebug(LOG_PART) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
+    //qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
     int oldViewLineCount = m_textLayouts.count();
     if (newViewLineCount == -1) {
@@ -269,7 +269,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
             m_textLayouts.append(l->viewLine(_viewLine));
         }
 
-        //qCDebug(LOG_PART) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() << ")";
+        //qCDebug(LOG_KTE) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() << ")";
         //m_textLayouts[i].debugOutput();
 
         _viewLine++;
@@ -507,13 +507,13 @@ int KateLayoutCache::viewLineCount(int realLine)
 
 void KateLayoutCache::viewCacheDebugOutput() const
 {
-    qCDebug(LOG_PART) << "Printing values for " << m_textLayouts.count() << " lines:";
+    qCDebug(LOG_KTE) << "Printing values for " << m_textLayouts.count() << " lines:";
     if (m_textLayouts.count()) {
         foreach (const KateTextLayout &t, m_textLayouts)
             if (t.isValid()) {
                 t.debugOutput();
             } else {
-                qCDebug(LOG_PART) << "Line Invalid.";
+                qCDebug(LOG_KTE) << "Line Invalid.";
             }
     }
 }
@@ -576,7 +576,7 @@ void KateLayoutCache::setWrap(bool wrap)
 void KateLayoutCache::relayoutLines(int startRealLine, int endRealLine)
 {
     if (startRealLine > endRealLine) {
-        qCWarning(LOG_PART) << "start" << startRealLine << "before end" << endRealLine;
+        qCWarning(LOG_KTE) << "start" << startRealLine << "before end" << endRealLine;
     }
 
     m_lineLayouts.relayoutLines(startRealLine, endRealLine);

@@ -205,7 +205,7 @@ void PrintPainter::paint(QPrinter *printer) const
         }
 
         if (pageStarted) {
-            qCDebug(LOG_PART) << "Starting new page," << lineCount << "lines up to now.";
+            qCDebug(LOG_KTE) << "Starting new page," << lineCount << "lines up to now.";
             paintNewPage(painter, currentPage, y, pl);
             pageStarted = false;
             painter.translate(pl.xstart, y);
@@ -363,7 +363,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
     // it is possible to calculate the total number of pages
     // if needed, that is if any header/footer tag contains "%P".
     if (!pl.headerTagList.filter(QLatin1String("%P")).isEmpty() || !pl.footerTagList.filter(QLatin1String("%P")).isEmpty()) {
-        qCDebug(LOG_PART) << "'%P' found! calculating number of pages...";
+        qCDebug(LOG_KTE) << "'%P' found! calculating number of pages...";
 
         // calculate total layouted lines in the document
         int totalLines = 0;

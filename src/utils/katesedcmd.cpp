@@ -81,9 +81,9 @@ static void exchangeAbbrevs(QString &str)
 bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString &cmd,
                                     QString &msg, const KTextEditor::Range &r)
 {
-    qCDebug(LOG_PART) << "SedReplace::execCmd( " << cmd << " )";
+    qCDebug(LOG_KTE) << "SedReplace::execCmd( " << cmd << " )";
     if (r.isValid()) {
-        qCDebug(LOG_PART) << "Range: " << r;
+        qCDebug(LOG_KTE) << "Range: " << r;
     }
 
     int findBeginPos = -1;
@@ -101,11 +101,11 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
     const bool interactive = searchParamsString.contains(QLatin1Char('c'));
 
     QString find = cmd.mid(findBeginPos, findEndPos - findBeginPos + 1);
-    qCDebug(LOG_PART) << "SedReplace: find =" << find;
+    qCDebug(LOG_KTE) << "SedReplace: find =" << find;
 
     QString replace = cmd.mid(replaceBeginPos, replaceEndPos - replaceBeginPos + 1);
     exchangeAbbrevs(replace);
-    qCDebug(LOG_PART) << "SedReplace: replace =" << replace;
+    qCDebug(LOG_KTE) << "SedReplace: replace =" << replace;
 
     if (find.isEmpty()) {
         // Nothing to do.
@@ -140,7 +140,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
 
 bool KateCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer>)
 {
-    qCDebug(LOG_PART) << "Interactive sedreplace is only currently supported with Vi mode plus Vi emulated command bar.";
+    qCDebug(LOG_KTE) << "Interactive sedreplace is only currently supported with Vi mode plus Vi emulated command bar.";
     return false;
 }
 
@@ -153,7 +153,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     }
 
     QString d = delim.cap(1);
-    qCDebug(LOG_PART) << "SedReplace: delimiter is '" << d << "'";
+    qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
     QRegExp splitter(QString::fromLatin1("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
                      + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));

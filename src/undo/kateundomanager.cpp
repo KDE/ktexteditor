@@ -344,7 +344,7 @@ void KateUndoManager::updateModified()
 
     // This will print out the pattern information
 
-    qCDebug(LOG_PART) << "Pattern:" << static_cast<unsigned int>(currentPattern);
+    qCDebug(LOG_KTE) << "Pattern:" << static_cast<unsigned int>(currentPattern);
 
     for (uint patternIndex = 0; patternIndex < patternCount; ++patternIndex) {
         if (currentPattern == patterns[patternIndex]) {
@@ -353,7 +353,7 @@ void KateUndoManager::updateModified()
             // (dominik) whenever the doc is not modified, succeeding edits
             // should not be merged
             undoSafePoint();
-            qCDebug(LOG_PART) << "setting modified to false!";
+            qCDebug(LOG_KTE) << "setting modified to false!";
             break;
         }
     }

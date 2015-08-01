@@ -52,7 +52,7 @@ bool readFile(const QString &sourceUrl, QString &sourceCode)
 
     QFile file(sourceUrl);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCDebug(LOG_PART) << QString::fromLatin1("Unable to find '%1'").arg(sourceUrl);
+        qCDebug(LOG_KTE) << QString::fromLatin1("Unable to find '%1'").arg(sourceUrl);
         return false;
     } else {
         QTextStream stream(&file);
@@ -206,7 +206,7 @@ QScriptValue i18n(QScriptContext *context, QScriptEngine *engine)
     const int argCount = context->argumentCount();
 
     if (argCount == 0) {
-        qCWarning(LOG_PART) << "wrong usage of i18n:" << context->backtrace().join(QLatin1String("\n\t"));
+        qCWarning(LOG_KTE) << "wrong usage of i18n:" << context->backtrace().join(QLatin1String("\n\t"));
     }
 
     if (argCount > 0) {
@@ -231,7 +231,7 @@ QScriptValue i18nc(QScriptContext *context, QScriptEngine *engine)
     const int argCount = context->argumentCount();
 
     if (argCount < 2) {
-        qCWarning(LOG_PART) << "wrong usage of i18nc:" << context->backtrace().join(QLatin1String("\n\t"));
+        qCWarning(LOG_KTE) << "wrong usage of i18nc:" << context->backtrace().join(QLatin1String("\n\t"));
     }
 
     if (argCount > 0) {
@@ -261,7 +261,7 @@ QScriptValue i18np(QScriptContext *context, QScriptEngine *engine)
     const int argCount = context->argumentCount();
 
     if (argCount < 3) {
-        qCWarning(LOG_PART) << "wrong usage of i18np:" << context->backtrace().join(QLatin1String("\n\t"));
+        qCWarning(LOG_KTE) << "wrong usage of i18np:" << context->backtrace().join(QLatin1String("\n\t"));
     }
 
     if (argCount > 0) {
@@ -296,7 +296,7 @@ QScriptValue i18ncp(QScriptContext *context, QScriptEngine *engine)
     const int argCount = context->argumentCount();
 
     if (argCount < 4) {
-        qCWarning(LOG_PART) << "wrong usage of i18ncp:" << context->backtrace().join(QLatin1String("\n\t"));
+        qCWarning(LOG_KTE) << "wrong usage of i18ncp:" << context->backtrace().join(QLatin1String("\n\t"));
     }
 
     if (argCount > 0) {

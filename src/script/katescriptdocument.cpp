@@ -240,7 +240,7 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
         lc = QLatin1Char('[');
         rc = QLatin1Char(']');
     } else {
-        qCDebug(LOG_PART) << "invalid anchor character:" << character << " allowed are: (){}[]";
+        qCDebug(LOG_KTE) << "invalid anchor character:" << character << " allowed are: (){}[]";
         return KTextEditor::Cursor::invalid();
     }
 
@@ -260,7 +260,7 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
             if (!currentLine)
                 return KTextEditor::Cursor::invalid();
         }
-        
+
         // get current char
         const QChar ch = currentLine->at(cursor.column());
         if (ch == lc) {

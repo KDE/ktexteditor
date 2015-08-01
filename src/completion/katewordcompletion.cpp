@@ -372,7 +372,7 @@ void KateWordCompletionView::completeForwards()
 // Pop up the editors completion list if applicable
 void KateWordCompletionView::popupCompletionList()
 {
-    qCDebug(LOG_PART) << "entered ...";
+    qCDebug(LOG_KTE) << "entered ...";
     KTextEditor::Range r = range();
 
     KTextEditor::CodeCompletionInterface *cci = qobject_cast<KTextEditor::CodeCompletionInterface *>(m_view);
@@ -382,7 +382,7 @@ void KateWordCompletionView::popupCompletionList()
 
     m_dWCompletionModel->saveMatches(m_view, r);
 
-    qCDebug(LOG_PART) << "after save matches ...";
+    qCDebug(LOG_KTE) << "after save matches ...";
 
     if (! m_dWCompletionModel->rowCount(QModelIndex())) {
         return;
@@ -426,7 +426,7 @@ void KateWordCompletionView::complete(bool fw)
     KTextEditor::Document *doc = m_view->document();
 
     if (d->dcRange.isValid()) {
-        //qCDebug(LOG_PART)<<"CONTINUE "<<d->dcRange;
+        //qCDebug(LOG_KTE)<<"CONTINUE "<<d->dcRange;
         // this is a repeted activation
 
         // if we are back to where we started, reset.
@@ -451,7 +451,7 @@ void KateWordCompletionView::complete(bool fw)
 
         d->directionalPos += inc;
     } else { // new completion, reset all
-        //qCDebug(LOG_PART)<<"RESET FOR NEW";
+        //qCDebug(LOG_KTE)<<"RESET FOR NEW";
         d->dcRange = r;
         d->liRange->setRange(KTextEditor::Range::invalid());
         d->dcCursor = r.start();
@@ -468,13 +468,13 @@ void KateWordCompletionView::complete(bool fw)
     QString ln = doc->line(d->dcCursor.line());
 
     while (true) {
-        //qCDebug(LOG_PART)<<"SEARCHING FOR "<<d->re.pattern()<<" "<<ln<<" at "<<d->dcCursor;
+        //qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->re.pattern()<<" "<<ln<<" at "<<d->dcCursor;
         pos = fw ?
               d->re.indexIn(ln, d->dcCursor.column()) :
               d->re.lastIndexIn(ln, d->dcCursor.column());
 
         if (pos > -1) { // we matched a word
-            //qCDebug(LOG_PART)<<"USABLE MATCH";
+            //qCDebug(LOG_KTE)<<"USABLE MATCH";
             QString m = d->re.cap(1);
             if (m != doc->text(*d->liRange) && (d->dcCursor.line() != d->dcRange.start().line() || pos != d->dcRange.start().column())) {
                 // we got good a match! replace text and return.
@@ -494,7 +494,7 @@ void KateWordCompletionView::complete(bool fw)
 
             // equal to last one, continue
             else {
-                //qCDebug(LOG_PART)<<"SKIPPING, EQUAL MATCH";
+                //qCDebug(LOG_KTE)<<"SKIPPING, EQUAL MATCH";
                 d->dcCursor.setColumn(pos);   // for next try
 
                 if (fw) {
@@ -520,7 +520,7 @@ void KateWordCompletionView::complete(bool fw)
         }
 
         else { // no match
-            //qCDebug(LOG_PART)<<"NO MATCH";
+            //qCDebug(LOG_KTE)<<"NO MATCH";
             if ((! fw && d->dcCursor.line() == 0) || (fw && d->dcCursor.line() >= doc->lines())) {
                 return;
             }

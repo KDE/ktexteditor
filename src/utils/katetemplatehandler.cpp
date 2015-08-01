@@ -400,7 +400,7 @@ void KateTemplateHandler::initializeTemplate()
     // call update for each field to set up the initial stuff
     for ( int i = 0; i < m_fields.size(); i++ ) {
         auto& field = m_fields[i];
-        ifDebug(qCDebug(LOG_PART) << "update field:" << field.range->toRange();)
+        ifDebug(qCDebug(LOG_KTE) << "update field:" << field.range->toRange();)
         updateDependentFields(doc(), field.range->toRange());
         // remove "user edited field" mark set by the above call since it's not a real edit
         field.touched = false;
@@ -433,7 +433,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     bool at_end = m_wholeTemplateRange->toRange().end() == range.end() || m_wholeTemplateRange->toRange().end() == range.start();
     if ( m_wholeTemplateRange->toRange().isEmpty() || (!in_range && !at_end) ) {
         // edit outside template range, abort
-        ifDebug(qCDebug(LOG_PART) << "edit outside template range, exiting";)
+        ifDebug(qCDebug(LOG_KTE) << "edit outside template range, exiting";)
         deleteLater();
         return;
     }
@@ -444,7 +444,7 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
         return;
     }
 
-    ifDebug(qCDebug(LOG_PART) << "text changed" << document << range;)
+    ifDebug(qCDebug(LOG_KTE) << "text changed" << document << range;)
 
     // group all the changes into one undo transaction
     KTextEditor::Document::EditingTransaction t(doc());
@@ -454,14 +454,14 @@ void KateTemplateHandler::updateDependentFields(Document *document, const Range 
     const auto changedField = fieldForRange(range);
     if ( changedField.kind == TemplateField::Invalid ) {
         // edit not within a field, nothing to do
-        ifDebug(qCDebug(LOG_PART) << "edit not within a field:" << range;)
+        ifDebug(qCDebug(LOG_KTE) << "edit not within a field:" << range;)
         return;
     }
     if ( changedField.kind == TemplateField::FinalCursorPosition && doc()->text(changedField.range->toRange()).isEmpty() ) {
         // text changed at final cursor position: the user is done, so exit
         // this is not executed when the field's range is not empty: in that case this call
         // is for initial setup and we have to continue below
-        ifDebug(qCDebug(LOG_PART) << "final cursor changed:" << range;)
+        ifDebug(qCDebug(LOG_KTE) << "final cursor changed:" << range;)
         deleteLater();
         return;
     }

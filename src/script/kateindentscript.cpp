@@ -48,7 +48,7 @@ const QString &KateIndentScript::triggerCharacters()
 
     m_triggerCharacters = global(QLatin1String("triggerCharacters")).toString();
 
-    //qCDebug(LOG_PART) << "trigger chars: '" << m_triggerCharacters << "'";
+    //qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
 
     return m_triggerCharacters;
 }

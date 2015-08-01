@@ -79,7 +79,7 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
             add(mappingMode, keys.at(i), mappings.at(i), recursion);
         }
     } else {
-        qCDebug(LOG_PART) << "Error when reading mappings from " << mappingModeName << " config: number of keys != number of values";
+        qCDebug(LOG_KTE) << "Error when reading mappings from " << mappingModeName << " config: number of keys != number of values";
     }
 }
 

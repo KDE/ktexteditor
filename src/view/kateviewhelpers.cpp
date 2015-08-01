@@ -342,8 +342,8 @@ void KateScrollBar::updatePixmap()
 
     int pixmapLineWidth = s_pixelMargin + s_lineWidth / charIncrement;
 
-    //qCDebug(LOG_PART) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
-    //qCDebug(LOG_PART) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
+    //qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
+    //qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
@@ -429,7 +429,7 @@ void KateScrollBar::updatePixmap()
             }
 
         }
-        //qCDebug(LOG_PART) << drawnLines;
+        //qCDebug(LOG_KTE) << drawnLines;
         // Draw line modification marker map.
         // Disable this if the document is really huge,
         // since it requires querying every line.
@@ -448,7 +448,7 @@ void KateScrollBar::updatePixmap()
             }
         }
     }
-    //qCDebug(LOG_PART) << time.elapsed();
+    //qCDebug(LOG_KTE) << time.elapsed();
     // Redraw the scrollbar widget with the updated pixmap.
     update();
 }
@@ -1061,20 +1061,20 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
             if (! c.isLetterOrNumber() && c != QLatin1Char('-') && c != QLatin1Char('_')) {
                 m_command = KateCmd::self()->queryCommand(text().trimmed());
                 if (m_command) {
-                    //qCDebug(LOG_PART)<<"keypress in commandline: We have a command! "<<m_command<<". text is '"<<text()<<"'";
+                    //qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command<<". text is '"<<text()<<"'";
                     // if the typed character is ":",
                     // we try if the command has flag completions
                     m_cmdend = cursorpos;
-                    //qCDebug(LOG_PART)<<"keypress in commandline: Set m_cmdend to "<<m_cmdend;
+                    //qCDebug(LOG_KTE)<<"keypress in commandline: Set m_cmdend to "<<m_cmdend;
                 } else {
                     m_cmdend = 0;
                 }
             }
         } else { // since cursor is inside the command name, we reconsider it
-            //qCDebug(LOG_PART) << "keypress in commandline: \\W -- text is " << text();
+            //qCDebug(LOG_KTE) << "keypress in commandline: \\W -- text is " << text();
             m_command = KateCmd::self()->queryCommand(text().trimmed());
             if (m_command) {
-                //qCDebug(LOG_PART)<<"keypress in commandline: We have a command! "<<m_command;
+                //qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command;
                 QString t = text();
                 m_cmdend = 0;
                 bool b = false;
@@ -1089,7 +1089,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
 
                 if (c == QLatin1Char(':') && cursorpos == m_cmdend) {
                     // check if this command wants to complete flags
-                    //qCDebug(LOG_PART)<<"keypress in commandline: Checking if flag completion is desired!";
+                    //qCDebug(LOG_KTE)<<"keypress in commandline: Checking if flag completion is desired!";
                 }
             } else {
                 // clean up if needed
@@ -1109,7 +1109,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
             if (cmpl) {
                 // We need to prepend the current command name + flag string
                 // when completion is done
-                //qCDebug(LOG_PART)<<"keypress in commandline: Setting completion object!";
+                //qCDebug(LOG_KTE)<<"keypress in commandline: Setting completion object!";
 
                 setCompletionObject(cmpl);
             }
@@ -1820,7 +1820,7 @@ void KateIconBorder::showBlock()
     }
 
     if (newRange.isValid()) {
-        //qCDebug(LOG_PART) << "new folding hl-range:" << newRange;
+        //qCDebug(LOG_KTE) << "new folding hl-range:" << newRange;
         m_foldingRange = m_doc->newMovingRange(newRange, KTextEditor::MovingRange::ExpandRight);
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
 
@@ -2249,7 +2249,7 @@ int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok) const
         return mib;
     }
 
-    qCWarning(LOG_PART) << "Invalid codec name: "  << codecName;
+    qCWarning(LOG_KTE) << "Invalid codec name: "  << codecName;
     return MIB_DEFAULT;
 }
 

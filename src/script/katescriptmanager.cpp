@@ -65,7 +65,7 @@ KateIndentScript *KateScriptManager::indenter(const QString &language)
         // don't overwrite if there is already a result with a higher priority
         if (highestPriorityIndenter && indenter->indentHeader().priority() < highestPriorityIndenter->indentHeader().priority()) {
 #ifdef DEBUG_SCRIPTMANAGER
-            qCDebug(LOG_PART) << "Not overwriting indenter for"
+            qCDebug(LOG_KTE) << "Not overwriting indenter for"
                               << language << "as the priority isn't big enough (" <<
                               indenter->indentHeader().priority() << '<'
                               << highestPriorityIndenter->indentHeader().priority() << ')';
@@ -77,9 +77,9 @@ KateIndentScript *KateScriptManager::indenter(const QString &language)
 
 #ifdef DEBUG_SCRIPTMANAGER
     if (highestPriorityIndenter) {
-        qCDebug(LOG_PART) << "Found indenter" << highestPriorityIndenter->url() << "for" << language;
+        qCDebug(LOG_KTE) << "Found indenter" << highestPriorityIndenter->url() << "for" << language;
     } else {
-        qCDebug(LOG_PART) << "No indenter for" << language;
+        qCDebug(LOG_KTE) << "No indenter for" << language;
     }
 #endif
 
@@ -154,7 +154,7 @@ void KateScriptManager::collect()
              */
             QFile file(fileName);
             if (!file.open(QIODevice::ReadOnly)) {
-                qCDebug(LOG_PART) << "Script parse error: Cannot open file " << qPrintable(fileName) << '\n';
+                qCDebug(LOG_KTE) << "Script parse error: Cannot open file " << qPrintable(fileName) << '\n';
                 continue;
             }
 
@@ -164,7 +164,7 @@ void KateScriptManager::collect()
             QByteArray fileContent = file.readAll();
             int startOfJson = fileContent.indexOf ('{');
             if (startOfJson < 0) {
-                qCDebug(LOG_PART) << "Script parse error: Cannot find start of json header at start of file " << qPrintable(fileName) << '\n';
+                qCDebug(LOG_KTE) << "Script parse error: Cannot find start of json header at start of file " << qPrintable(fileName) << '\n';
                 continue;
             }
 
@@ -173,7 +173,7 @@ void KateScriptManager::collect()
                 endOfJson = fileContent.indexOf("\r};", startOfJson);
             }
             if (endOfJson < 0) {
-                qCDebug(LOG_PART) << "Script parse error: Cannot find end of json header at start of file " << qPrintable(fileName) << '\n';
+                qCDebug(LOG_KTE) << "Script parse error: Cannot find end of json header at start of file " << qPrintable(fileName) << '\n';
                 continue;
             }
             endOfJson += 2; //we want the end including the } but not the ;
@@ -184,7 +184,7 @@ void KateScriptManager::collect()
             QJsonParseError error;
             const QJsonDocument metaInfo (QJsonDocument::fromJson(fileContent.mid(startOfJson, endOfJson-startOfJson), &error));
             if (error.error || !metaInfo.isObject()) {
-                qCDebug(LOG_PART) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson << fileContent.mid(endOfJson-25, 25).replace('\n', ' ');
+                qCDebug(LOG_KTE) << "Script parse error: Cannot parse json header at start of file " << qPrintable(fileName) << error.errorString() << endOfJson << fileContent.mid(endOfJson-25, 25).replace('\n', ' ');
                 continue;
             }
 
@@ -214,7 +214,7 @@ void KateScriptManager::collect()
                 indentHeader.setName(metaInfoObject.value(QLatin1String("name")).toString());
                 indentHeader.setBaseName(baseName);
                 if (indentHeader.name().isNull()) {
-                    qCDebug(LOG_PART) << "Script value error: No name specified in script meta data: "
+                    qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: "
                                       << qPrintable(fileName) << '\n' << "-> skipping indenter" << '\n';
                     continue;
                 }
@@ -229,7 +229,7 @@ void KateScriptManager::collect()
                     indentHeader.setIndentLanguages(QStringList() << indentHeader.name());
 
 #ifdef DEBUG_SCRIPTMANAGER
-                    qCDebug(LOG_PART) << "Script value warning: No indent-languages specified for indent "
+                    qCDebug(LOG_KTE) << "Script value warning: No indent-languages specified for indent "
                                       << "script " << qPrintable(fileName) << ". Using the name ("
                                       << qPrintable(indentHeader.name()) << ")\n";
 #endif
@@ -252,7 +252,7 @@ void KateScriptManager::collect()
                 commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QLatin1String("functions"))));
                 commandHeader.setActions(metaInfoObject.value(QLatin1String("actions")).toArray());
                 if (commandHeader.functions().isEmpty()) {
-                    qCDebug(LOG_PART) << "Script value error: No functions specified in script meta data: "
+                    qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: "
                                       << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
                     continue;
                 }
@@ -263,7 +263,7 @@ void KateScriptManager::collect()
             }
             case Kate::UnknownScript:
             default:
-                qCDebug(LOG_PART) << "Script value warning: Unknown type ('" << qPrintable(type) << "'): "
+                qCDebug(LOG_KTE) << "Script value warning: Unknown type ('" << qPrintable(type) << "'): "
                                   << qPrintable(fileName) << '\n';
             }
         }
@@ -272,16 +272,16 @@ void KateScriptManager::collect()
 #ifdef DEBUG_SCRIPTMANAGER
 // XX Test
     if (indenter("Python")) {
-        qCDebug(LOG_PART) << "Python: " << indenter("Python")->global("triggerCharacters").isValid() << "\n";
-        qCDebug(LOG_PART) << "Python: " << indenter("Python")->function("triggerCharacters").isValid() << "\n";
-        qCDebug(LOG_PART) << "Python: " << indenter("Python")->global("blafldsjfklas").isValid() << "\n";
-        qCDebug(LOG_PART) << "Python: " << indenter("Python")->function("indent").isValid() << "\n";
+        qCDebug(LOG_KTE) << "Python: " << indenter("Python")->global("triggerCharacters").isValid() << "\n";
+        qCDebug(LOG_KTE) << "Python: " << indenter("Python")->function("triggerCharacters").isValid() << "\n";
+        qCDebug(LOG_KTE) << "Python: " << indenter("Python")->global("blafldsjfklas").isValid() << "\n";
+        qCDebug(LOG_KTE) << "Python: " << indenter("Python")->function("indent").isValid() << "\n";
     }
     if (indenter("C")) {
-        qCDebug(LOG_PART) << "C: " << qPrintable(indenter("C")->url()) << "\n";
+        qCDebug(LOG_KTE) << "C: " << qPrintable(indenter("C")->url()) << "\n";
     }
     if (indenter("lisp")) {
-        qCDebug(LOG_PART) << "LISP: " << qPrintable(indenter("Lisp")->url()) << "\n";
+        qCDebug(LOG_KTE) << "LISP: " << qPrintable(indenter("Lisp")->url()) << "\n";
     }
 #endif
 }

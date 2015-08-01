@@ -1136,9 +1136,9 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
     }
 
     listData += QLatin1String(data);
-    qCDebug(LOG_PART) << QLatin1String("CurrentListData: ") << listData;
-    qCDebug(LOG_PART) << QString::fromLatin1("Data length: %1").arg(data.size());
-    qCDebug(LOG_PART) << QString::fromLatin1("listData length: %1").arg(listData.length());
+    qCDebug(LOG_KTE) << QLatin1String("CurrentListData: ") << listData;
+    qCDebug(LOG_KTE) << QString::fromLatin1("Data length: %1").arg(data.size());
+    qCDebug(LOG_KTE) << QString::fromLatin1("listData length: %1").arg(listData.length());
     if (data.size() == 0) {
         if (listData.length() > 0) {
             QString installedVersion;
@@ -1150,14 +1150,14 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
             KateHighlighting *hl = 0;
 
             if (n.isNull()) {
-                qCDebug(LOG_PART) << QLatin1String("There is no usable childnode");
+                qCDebug(LOG_KTE) << QLatin1String("There is no usable childnode");
             }
             while (!n.isNull()) {
                 installedVersion = QLatin1String("    --");
 
                 QDomElement e = n.toElement();
                 if (!e.isNull()) {
-                    qCDebug(LOG_PART) << QLatin1String("NAME: ") << e.tagName() << QLatin1String(" - ") << e.attribute(QLatin1String("name"));
+                    qCDebug(LOG_KTE) << QLatin1String("NAME: ") << e.tagName() << QLatin1String(" - ") << e.attribute(QLatin1String("name"));
                 }
                 n = n.nextSibling();
 

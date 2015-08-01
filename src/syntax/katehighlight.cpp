@@ -197,7 +197,7 @@ int KateHighlighting::makeDynamicContext(KateHlContext *model, const QStringList
         value = dynamicCtxs[key];
     } else {
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "new stuff: " << startctx;
+        qCDebug(LOG_KTE) << "new stuff: " << startctx;
 #endif
 
         KateHlContext *newctx = model->clone(args);
@@ -209,7 +209,7 @@ int KateHighlighting::makeDynamicContext(KateHlContext *model, const QStringList
         KateHlManager::self()->incDynamicCtxs();
     }
 
-    // qCDebug(LOG_PART) << "Dynamic context: using context #" << value << " (for model " << model << " with args " << *args << ")";
+    // qCDebug(LOG_KTE) << "Dynamic context: using context #" << value << " (for model " << model << " with args " << *args << ")";
 
     return value;
 }
@@ -275,12 +275,12 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
             context = generateContextStack(ctx, contextNum(0)->lineEndContext, previousLine); //get stack ID to use
         }
     } else {
-        //qCDebug(LOG_PART) << "\t\tctxNum = " << ctxNum << " contextList[ctxNum] = " << contextList[ctxNum]; // ellis
+        //qCDebug(LOG_KTE) << "\t\tctxNum = " << ctxNum << " contextList[ctxNum] = " << contextList[ctxNum]; // ellis
 
-        //if (lineContinue)   qCDebug(LOG_PART)<<QString("The old context should be %1").arg((int)ctxNum);
+        //if (lineContinue)   qCDebug(LOG_KTE)<<QString("The old context should be %1").arg((int)ctxNum);
         context = contextNum(ctx.last());
 
-        //qCDebug(LOG_PART)<<"test1-2-1-text2";
+        //qCDebug(LOG_KTE)<<"test1-2-1-text2";
 
         previousLine = ctx.size() - 1; //position of the last context ID of th previous line within the stack
 
@@ -291,9 +291,9 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
             context = generateContextStack(ctx, context->lineEndContext, previousLine);    //get stack ID to use
         }
 
-        //qCDebug(LOG_PART)<<"test1-2-1-text4";
+        //qCDebug(LOG_KTE)<<"test1-2-1-text4";
 
-        //if (lineContinue)   qCDebug(LOG_PART)<<QString("The new context is %1").arg((int)ctxNum);
+        //if (lineContinue)   qCDebug(LOG_KTE)<<QString("The new context is %1").arg((int)ctxNum);
     }
 
     // text, for programming convenience :)
@@ -365,7 +365,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                  * break out of this loop and issue message
                  */
                 if (infiniteLoopDetectionCounter > (4 * m_contexts.size())) {
-                    qCDebug(LOG_PART) << "potential infinite loop found during highlighting, hl: " << iName;
+                    qCDebug(LOG_KTE) << "potential infinite loop found during highlighting, hl: " << iName;
                     break;
                 }
             }
@@ -513,7 +513,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                 // set context to context->ftctx.
                 context = generateContextStack(ctx, context->ftctx, previousLine); //regenerate context stack
 
-                //qCDebug(LOG_PART)<<"context num after fallthrough at col "<<z<<": "<<ctxNum;
+                //qCDebug(LOG_KTE)<<"context num after fallthrough at col "<<z<<": "<<ctxNum;
                 // the next is necessary, as otherwise keyword (or anything using the std delimitor check)
                 // immediately after fallthrough fails. Is it bad?
                 // jowenn, can you come up with a nicer way to do this?
@@ -623,7 +623,7 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
 
         QStringList s = config.readEntry(p->name(), QStringList());
 
-//    qCDebug(LOG_PART)<<p->name<<s.count();
+//    qCDebug(LOG_KTE)<<p->name<<s.count();
         if (s.count() > 0) {
 
             while (s.count() < 10) {
@@ -773,7 +773,7 @@ void KateHighlighting::reload()
     if (refCount == 0) {
         return;
     }
-    
+
     cleanup();
     init();
 }
@@ -786,10 +786,10 @@ void KateHighlighting::init()
 {
     // shall be only called if clean!
     Q_ASSERT(m_contexts.empty());
-    
+
     // try to create contexts
     makeContextList();
-    
+
     // fixup internal id list, if empty
     if (internalIDList.isEmpty()) {
         internalIDList.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
@@ -803,13 +803,13 @@ void KateHighlighting::init()
         m_additionalData[QLatin1String("none")]->wordWrapDeliminator = stdDeliminator();
         m_hlIndex[0] = QLatin1String("none");
         m_ctxIndex[0] = QLatin1String("none");
-        
+
         // create one dummy context!
         m_contexts.push_back(new KateHlContext(identifier, 0,
             KateHlContextModification(), false, KateHlContextModification(),
             false, false, false, KateHlContextModification()));
     }
-    
+
     // clear domdocument cache
     KateHlManager::self()->syntax.clearCache();
 }
@@ -825,7 +825,7 @@ void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute:
 {
     // trigger hl load, if needed
     use();
-    
+
     // return internal list, never empty!
     Q_ASSERT(!internalIDList.empty());
     list = internalIDList;
@@ -926,7 +926,7 @@ int  KateHighlighting::lookupAttrName(const QString &name, QList<KTextEditor::At
         }
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "Couldn't resolve itemDataName:" << name;
+    qCDebug(LOG_KTE) << "Couldn't resolve itemDataName:" << name;
 #endif
 
     return 0;
@@ -976,7 +976,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
         regionId++;
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "########### BEG REG: "  << beginRegionStr << " NUM: " << regionId;
+        qCDebug(LOG_KTE) << "########### BEG REG: "  << beginRegionStr << " NUM: " << regionId;
 #endif
     }
 
@@ -991,7 +991,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
         regionId2 = -regionId2 - 1;
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "########### END REG: "  << endRegionStr << " NUM: " << regionId2;
+        qCDebug(LOG_KTE) << "########### END REG: "  << endRegionStr << " NUM: " << regionId2;
 #endif
     }
 
@@ -1188,7 +1188,7 @@ bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 QLinkedList<QRegularExpression> KateHighlighting::emptyLines(int attrib) const
 {
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
+    qCDebug(LOG_KTE) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
 #endif
 
     return m_additionalData[hlKeyForAttrib(attrib)]->emptyLines;
@@ -1282,7 +1282,7 @@ void KateHighlighting::readEmptyLineConfig()
     if (data) {
         while (KateHlManager::self()->syntax.nextGroup(data)) {
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "creating an empty line regular expression";
+            qCDebug(LOG_KTE) << "creating an empty line regular expression";
 #endif
 
             QString regexprline = KateHlManager::self()->syntax.groupData(data, QLatin1String("regexpr"));
@@ -1305,7 +1305,7 @@ void KateHighlighting::readGlobalKeywordConfig()
     deliminator = stdDeliminator();
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readGlobalKeywordConfig:BEGIN";
+    qCDebug(LOG_KTE) << "readGlobalKeywordConfig:BEGIN";
 #endif
 
     // Tell the syntax document class which file we want to parse
@@ -1314,7 +1314,7 @@ void KateHighlighting::readGlobalKeywordConfig()
 
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "Found global keyword config";
+        qCDebug(LOG_KTE) << "Found global keyword config";
 #endif
 
         casesensitive = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("casesensitive")));
@@ -1323,7 +1323,7 @@ void KateHighlighting::readGlobalKeywordConfig()
         weakDeliminator = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("weakDeliminator")));
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "weak delimiters are: " << weakDeliminator;
+        qCDebug(LOG_KTE) << "weak delimiters are: " << weakDeliminator;
 #endif
 
         // remove any weakDelimitars (if any) from the default list and store this list.
@@ -1349,8 +1349,8 @@ void KateHighlighting::readGlobalKeywordConfig()
     }
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readGlobalKeywordConfig:END";
-    qCDebug(LOG_PART) << "delimiterCharacters are: " << deliminator;
+    qCDebug(LOG_KTE) << "readGlobalKeywordConfig:END";
+    qCDebug(LOG_KTE) << "delimiterCharacters are: " << deliminator;
 #endif
 
     m_additionalData[buildIdentifier]->deliminator = deliminator;
@@ -1369,7 +1369,7 @@ void KateHighlighting::readGlobalKeywordConfig()
 void KateHighlighting::readWordWrapConfig()
 {
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readWordWrapConfig:BEGIN";
+    qCDebug(LOG_KTE) << "readWordWrapConfig:BEGIN";
 #endif
 
     // Tell the syntax document class which file we want to parse
@@ -1379,7 +1379,7 @@ void KateHighlighting::readWordWrapConfig()
     QString wordWrapDeliminator = stdDeliminator();
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "Found global keyword config";
+        qCDebug(LOG_KTE) << "Found global keyword config";
 #endif
 
         wordWrapDeliminator = (KateHlManager::self()->syntax.groupItemData(data, QLatin1String("wordWrapDeliminator")));
@@ -1389,14 +1389,14 @@ void KateHighlighting::readWordWrapConfig()
         }
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "word wrap deliminators are " << wordWrapDeliminator;
+        qCDebug(LOG_KTE) << "word wrap deliminators are " << wordWrapDeliminator;
 #endif
 
         KateHlManager::self()->syntax.freeGroupInfo(data);
     }
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readWordWrapConfig:END";
+    qCDebug(LOG_KTE) << "readWordWrapConfig:END";
 #endif
 
     m_additionalData[buildIdentifier]->wordWrapDeliminator = wordWrapDeliminator;
@@ -1419,7 +1419,7 @@ void KateHighlighting::readIndentationConfig()
 void KateHighlighting::readFoldingConfig()
 {
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readfoldignConfig:BEGIN";
+    qCDebug(LOG_KTE) << "readfoldignConfig:BEGIN";
 #endif
 
     // Tell the syntax document class which file we want to parse
@@ -1428,7 +1428,7 @@ void KateHighlighting::readFoldingConfig()
 
     if (data) {
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "Found global keyword config";
+        qCDebug(LOG_KTE) << "Found global keyword config";
 #endif
 
         m_foldingIndentationSensitive = IS_TRUE(KateHlManager::self()->syntax.groupItemData(data, QLatin1String("indentationsensitive")));
@@ -1440,8 +1440,8 @@ void KateHighlighting::readFoldingConfig()
     }
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "readfoldingConfig:END";
-    qCDebug(LOG_PART) << "############################ use indent for fold are: " << m_foldingIndentationSensitive;
+    qCDebug(LOG_KTE) << "readfoldingConfig:END";
+    qCDebug(LOG_KTE) << "############################ use indent for fold are: " << m_foldingIndentationSensitive;
 #endif
 }
 
@@ -1465,7 +1465,7 @@ void KateHighlighting::readSpellCheckingConfig()
                 encoding.replace(newLineRegExp, QLatin1String("<\\n|\\r>"));
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "Encoding" << encoding
+                qCDebug(LOG_KTE) << "Encoding" << encoding
                                   << "contains new-line characters. Ignored.";
 #endif
             }
@@ -1499,7 +1499,7 @@ void KateHighlighting::readSpellCheckingConfig()
 void  KateHighlighting::createContextNameList(QStringList *ContextNameList, int ctx0)
 {
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "creatingContextNameList:BEGIN";
+    qCDebug(LOG_KTE) << "creatingContextNameList:BEGIN";
 #endif
 
     if (ctx0 == 0) {
@@ -1528,7 +1528,7 @@ void  KateHighlighting::createContextNameList(QStringList *ContextNameList, int 
     }
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "creatingContextNameList:END";
+    qCDebug(LOG_KTE) << "creatingContextNameList:END";
 #endif
 }
 
@@ -1589,7 +1589,7 @@ KateHlContextModification KateHighlighting::getContextModificationFromString(QSt
         unres = tmp + QLatin1Char(':') + tmpLineEndContext.left(o);
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "unres = " << unres;
+        qCDebug(LOG_KTE) << "unres = " << unres;
 #endif
 
         context = 0;
@@ -1639,21 +1639,21 @@ void KateHighlighting::makeContextList()
 
     do {
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "**************** Outer loop in make ContextList";
-        qCDebug(LOG_PART) << "**************** Hl List count:" << embeddedHls.count();
+        qCDebug(LOG_KTE) << "**************** Outer loop in make ContextList";
+        qCDebug(LOG_KTE) << "**************** Hl List count:" << embeddedHls.count();
 #endif
 
         something_changed = false; //assume all "embedded" hls have already been loaded
         for (KateEmbeddedHlInfos::iterator it = embeddedHls.begin(); it != embeddedHls.end(); ++it) {
             if (!it.value().loaded) { // we found one, we still have to load
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "**************** Inner loop in make ContextList";
+                qCDebug(LOG_KTE) << "**************** Inner loop in make ContextList";
 #endif
 
                 QString identifierToUse;
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "Trying to open highlighting definition file: " << it.key();
+                qCDebug(LOG_KTE) << "Trying to open highlighting definition file: " << it.key();
 #endif
 
                 if (iName == it.key()) { // the own identifier is known
@@ -1663,18 +1663,18 @@ void KateHighlighting::makeContextList()
                 }
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "Location is:" << identifierToUse;
+                qCDebug(LOG_KTE) << "Location is:" << identifierToUse;
 #endif
 
                 if (identifierToUse.isEmpty()) {
-                    qCWarning(LOG_PART) << "Unknown highlighting description referenced:" << it.key() << "in" << identifier;
+                    qCWarning(LOG_KTE) << "Unknown highlighting description referenced:" << it.key() << "in" << identifier;
                 }
 
                 buildPrefix = it.key() + QLatin1Char(':'); // attribute names get prefixed by the names
                 // of the highlighting definitions they belong to
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "setting (" << it.key() << ") to loaded";
+                qCDebug(LOG_KTE) << "setting (" << it.key() << ") to loaded";
 #endif
 
                 //mark hl as loaded
@@ -1698,7 +1698,7 @@ void KateHighlighting::makeContextList()
 #ifdef HIGHLIGHTING_DEBUG
     // at this point all needed highlighing (sub)definitions are loaded. It's time
     // to resolve cross file  references (if there are any)#
-    qCDebug(LOG_PART) << "Unresolved contexts, which need attention: " << unresolvedContextReferences.count();
+    qCDebug(LOG_KTE) << "Unresolved contexts, which need attention: " << unresolvedContextReferences.count();
 #endif
 
     //optimize this a littlebit
@@ -1708,14 +1708,14 @@ void KateHighlighting::makeContextList()
         QString incCtx = unresIt.value();
 
 #ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_PART) << "Context " << incCtx << " is unresolved";
+        qCDebug(LOG_KTE) << "Context " << incCtx << " is unresolved";
 #endif
 
         // only resolve '##Name' contexts here; handleKateHlIncludeRules() can figure
         // out 'Name##Name'-style inclusions, but we screw it up
         if (incCtx.endsWith(QLatin1Char(':'))) {
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "Looking up context0 for ruleset " << incCtx;
+            qCDebug(LOG_KTE) << "Looking up context0 for ruleset " << incCtx;
 #endif
 
             incCtx = incCtx.left(incCtx.length() - 1);
@@ -1758,7 +1758,7 @@ void KateHighlighting::handleKateHlIncludeRules()
 {
     // if there are noe include rules to take care of, just return
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "KateHlIncludeRules, which need attention: " << includeRules.size();
+    qCDebug(LOG_KTE) << "KateHlIncludeRules, which need attention: " << includeRules.size();
 #endif
 
     if (includeRules.isEmpty()) {
@@ -1790,7 +1790,7 @@ void KateHighlighting::handleKateHlIncludeRules()
                 (*it)->incCtx = getContextModificationFromString(&ContextNameList, (*it)->incCtxN, dummy).newContext;
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "Resolved " << (*it)->incCtxN << " to " << (*it)->incCtx.newContext << " for include rule";
+                qCDebug(LOG_KTE) << "Resolved " << (*it)->incCtxN << " to " << (*it)->incCtx.newContext << " for include rule";
 #endif
 
                 // It would be good to look here somehow, if the result is valid
@@ -1848,7 +1848,7 @@ void KateHighlighting::handleKateHlIncludeRulesRecursive(int index, KateHlInclud
             if (list->at(index2)->ctx == ctx1.newContext) {
                 if (index2 == index1) {
                     // prevent accidental infinite recursion
-                    qCWarning(LOG_PART) << "infinite recursion in IncludeRules in language file for " << iName << "in context" << list->at(index1)->incCtxN;
+                    qCWarning(LOG_KTE) << "infinite recursion in IncludeRules in language file for " << iName << "in context" << list->at(index1)->incCtxN;
                     continue;
                 }
                 //yes it does, so first handle that include rules, since we want to
@@ -1861,7 +1861,7 @@ void KateHighlighting::handleKateHlIncludeRulesRecursive(int index, KateHlInclud
         // if the context we want to include had sub includes, they are already inserted there.
         KateHlContext *dest = m_contexts[ctx];
         KateHlContext *src = m_contexts[ctx1.newContext];
-//     qCDebug(LOG_PART)<<"linking included rules from "<<ctx<<" to "<<ctx1;
+//     qCDebug(LOG_KTE)<<"linking included rules from "<<ctx<<" to "<<ctx1;
 
         // If so desired, change the dest attribute to the one of the src.
         // Required to make commenting work, if text matched by the included context
@@ -1903,7 +1903,7 @@ void KateHighlighting::handleKateHlIncludeRulesRecursive(int index, KateHlInclud
  */
 int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 {
-    //qCDebug(LOG_PART)<<"=== Adding hl with ident '"<<ident<<"' ctx0="<<ctx0;
+    //qCDebug(LOG_KTE)<<"=== Adding hl with ident '"<<ident<<"' ctx0="<<ctx0;
 
     buildIdentifier = ident;
     QString dummy;
@@ -1955,7 +1955,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
     createContextNameList(&ContextNameList, ctx0);
 
 #ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_PART) << "Parsing Context structure";
+    qCDebug(LOG_KTE) << "Parsing Context structure";
 #endif
 
     //start the real work
@@ -1964,7 +1964,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
     if (data) {
         while (KateHlManager::self()->syntax.nextGroup(data)) {
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "Found a context in file, building structure now";
+            qCDebug(LOG_KTE) << "Found a context in file, building structure now";
 #endif
 
             //BEGIN - Translation of the attribute parameter
@@ -2000,7 +2000,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
                 }
 
 #ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_PART) << "Setting fall through context (context " << i << "): " << ftc.newContext;
+                qCDebug(LOG_KTE) << "Setting fall through context (context " << i << "): " << ftc.newContext;
 #endif
             }
             //END fallthrough props
@@ -2028,12 +2028,12 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
             m_contexts.push_back(ctxNew);
 
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "INDEX: " << i << " LENGTH " << m_contexts.size() - 1;
+            qCDebug(LOG_KTE) << "INDEX: " << i << " LENGTH " << m_contexts.size() - 1;
 #endif
 
             //Let's create all items for the context
             while (KateHlManager::self()->syntax.nextItem(data)) {
-//         qCDebug(LOG_PART)<< "In make Contextlist: Item:";
+//         qCDebug(LOG_KTE)<< "In make Contextlist: Item:";
 
                 // KateHlIncludeRules : add a pointer to each item in that context
                 // TODO add a attrib includeAttrib
@@ -2053,7 +2053,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 
                             //a cross highlighting reference
 #ifdef HIGHLIGHTING_DEBUG
-                            qCDebug(LOG_PART) << "Cross highlight reference <IncludeRules>, context " << incCtxN;
+                            qCDebug(LOG_KTE) << "Cross highlight reference <IncludeRules>, context " << incCtxN;
 #endif
 
                             KateHlIncludeRule *ir = new KateHlIncludeRule(i, m_contexts[i]->items.count(), incCtxN, includeAttrib);
@@ -2064,7 +2064,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
                             }
 #ifdef HIGHLIGHTING_DEBUG
                             else {
-                                qCDebug(LOG_PART) << "Skipping embeddedHls.insert for " << incCtxN;
+                                qCDebug(LOG_KTE) << "Skipping embeddedHls.insert for " << incCtxN;
                             }
 #endif
 
@@ -2090,13 +2090,13 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
                     int ctxId = getIdFromString(&ContextNameList,
                                                 KateHlManager::self()->syntax.groupKateExtendedAttribute(data, QString("context")), dummy); // the index is *required*
                     if (ctxId > -1) {  // we can even reuse rules of 0 if we want to:)
-                        qCDebug(LOG_PART) << "makeContextList[" << i << "]: including all items of context " << ctxId;
+                        qCDebug(LOG_KTE) << "makeContextList[" << i << "]: including all items of context " << ctxId;
                         if (ctxId < (int) i) {   // must be defined
                             for (c = m_contexts[ctxId]->items.first(); c; c = m_contexts[ctxId]->items.next()) {
                                 m_contexts[i]->items.append(c);
                             }
                         } else {
-                            qCDebug(LOG_PART) << "Context " << ctxId << "not defined. You can not include the rules of an undefined context";
+                            qCDebug(LOG_KTE) << "Context " << ctxId << "not defined. You can not include the rules of an undefined context";
                         }
                     }
                     continue; // while nextItem
@@ -2125,7 +2125,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
     } else {
         // error handling: no "context" element at all in the xml file
         noHl = true;
-        qCWarning(LOG_PART) << "There is no \"context\" in the highlighting file:" << buildIdentifier;
+        qCWarning(LOG_KTE) << "There is no \"context\" in the highlighting file:" << buildIdentifier;
     }
 
     if (RegionList.count() != 1) {
@@ -2144,13 +2144,13 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
             m_additionalData[ ident ]->multiLineRegion.clear();
 
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "ERROR comment region attribute could not be resolved";
+            qCDebug(LOG_KTE) << "ERROR comment region attribute could not be resolved";
 #endif
         } else {
             m_additionalData[ ident ]->multiLineRegion = QString::number(commentregionid + 1);
 
 #ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_PART) << "comment region resolved to:" << m_additionalData[ ident ]->multiLineRegion;
+            qCDebug(LOG_KTE) << "comment region resolved to:" << m_additionalData[ ident ]->multiLineRegion;
 #endif
         }
     }

@@ -1327,7 +1327,7 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
 
 void KTextEditor::ViewPrivate::slotGotFocus()
 {
-    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotGotFocus";
+    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotGotFocus";
     currentInputMode()->gotFocus();
 
     /**
@@ -1349,7 +1349,7 @@ void KTextEditor::ViewPrivate::slotGotFocus()
 
 void KTextEditor::ViewPrivate::slotLostFocus()
 {
-    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::slotLostFocus";
+    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotLostFocus";
     currentInputMode()->lostFocus();
 
     /**
@@ -2036,7 +2036,7 @@ void KTextEditor::ViewPrivate::repaintText(bool paintOnlyDirty)
 
 void KTextEditor::ViewPrivate::updateView(bool changed)
 {
-    //qCDebug(LOG_PART) << "KTextEditor::ViewPrivate::updateView";
+    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::updateView";
 
     m_viewInternal->updateView(changed);
     m_viewInternal->m_leftBorder->update();
@@ -2936,7 +2936,7 @@ QMenu *KTextEditor::ViewPrivate::contextMenu() const
             client = client->parentClient();
         }
 
-        //qCDebug(LOG_PART) << "looking up all menu containers";
+        //qCDebug(LOG_KTE) << "looking up all menu containers";
         if (client->factory()) {
             QList<QWidget *> conts = client->factory()->containers(QLatin1String("menu"));
             foreach (QWidget *w, conts) {
@@ -3218,7 +3218,7 @@ void KTextEditor::ViewPrivate::notifyAboutRangeChange(int startLine, int endLine
 {
 #ifdef VIEW_RANGE_DEBUG
     // output args
-    qCDebug(LOG_PART) << "trigger attribute changed from" << startLine << "to" << endLine << "rangeWithAttribute" << rangeWithAttribute;
+    qCDebug(LOG_KTE) << "trigger attribute changed from" << startLine << "to" << endLine << "rangeWithAttribute" << rangeWithAttribute;
 #endif
 
     // first call:
@@ -3261,7 +3261,7 @@ void KTextEditor::ViewPrivate::slotDelayedUpdateOfView()
 
 #ifdef VIEW_RANGE_DEBUG
     // output args
-    qCDebug(LOG_PART) << "delayed attribute changed from" << m_lineToUpdateMin << "to" << m_lineToUpdateMax;
+    qCDebug(LOG_KTE) << "delayed attribute changed from" << m_lineToUpdateMin << "to" << m_lineToUpdateMax;
 #endif
 
     // update ranges in
@@ -3347,7 +3347,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
 
 #ifdef VIEW_RANGE_DEBUG
             // found new range for activation
-            qCDebug(LOG_PART) << "activated new range" << range << "by" << activationType;
+            qCDebug(LOG_KTE) << "activated new range" << range << "by" << activationType;
 #endif
         }
     }

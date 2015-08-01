@@ -117,7 +117,7 @@ void HierarchicalModelHandler::takeRole(const QModelIndex &index)
             m_roleValues[(CodeCompletionModel::ExtraItemDataRoles)v.toInt()] = value;
         }
     } else {
-        qCDebug(LOG_PART) << "Did not return valid GroupRole in hierarchical completion-model";
+        qCDebug(LOG_KTE) << "Did not return valid GroupRole in hierarchical completion-model";
     }
 }
 
@@ -447,20 +447,20 @@ QModelIndex KateCompletionModel::index(int row, int column, const QModelIndex &p
         }
 
         if (row >= g->filtered.count()) {
-            //qCWarning(LOG_PART) << "Invalid index requested: row " << row << " beyond indivdual range in group " << g;
+            //qCWarning(LOG_KTE) << "Invalid index requested: row " << row << " beyond indivdual range in group " << g;
             return QModelIndex();
         }
 
-        //qCDebug(LOG_PART) << "Returning index for child " << row << " of group " << g;
+        //qCDebug(LOG_KTE) << "Returning index for child " << row << " of group " << g;
         return createIndex(row, column, g);
     }
 
     if (row >= m_rowTable.count()) {
-        //qCWarning(LOG_PART) << "Invalid index requested: row " << row << " beyond group range.";
+        //qCWarning(LOG_KTE) << "Invalid index requested: row " << row << " beyond group range.";
         return QModelIndex();
     }
 
-    //qCDebug(LOG_PART) << "Returning index for group " << m_rowTable[row];
+    //qCDebug(LOG_KTE) << "Returning index for group " << m_rowTable[row];
     return createIndex(row, column, quintptr(0));
 }
 
@@ -729,7 +729,7 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
     }
 
     int groupingAttribute = groupingAttributes(attribute);
-    //qCDebug(LOG_PART) << attribute << " " << groupingAttribute;
+    //qCDebug(LOG_KTE) << attribute << " " << groupingAttribute;
 
     if (m_groupHash.contains(groupingAttribute)) {
         if (groupingMethod() & Scope) {
@@ -828,8 +828,8 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
 bool KateCompletionModel::hasGroups() const
 {
-    //qCDebug(LOG_PART) << "m_groupHash.size()"<<m_groupHash.size();
-    //qCDebug(LOG_PART) << "m_rowTable.count()"<<m_rowTable.count();
+    //qCDebug(LOG_KTE) << "m_groupHash.size()"<<m_groupHash.size();
+    //qCDebug(LOG_KTE) << "m_rowTable.count()"<<m_rowTable.count();
     // We cannot decide whether there is groups easily. The problem: The code-model can
     // be populated with a delay from within a background-thread.
     // Proper solution: Ask all attached code-models(Through a new interface) whether they want to use grouping,
@@ -884,7 +884,7 @@ QModelIndex KateCompletionModel::parent(const QModelIndex &index) const
         int row = m_rowTable.indexOf(g);
 
         if (row == -1) {
-            qCWarning(LOG_PART) << "Couldn't find parent for index" << index;
+            qCWarning(LOG_KTE) << "Couldn't find parent for index" << index;
             return QModelIndex();
         }
 
@@ -898,10 +898,10 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
         if (hasGroups()) {
-            //qCDebug(LOG_PART) << "Returning row count for toplevel " << m_rowTable.count();
+            //qCDebug(LOG_KTE) << "Returning row count for toplevel " << m_rowTable.count();
             return m_rowTable.count();
         } else {
-            //qCDebug(LOG_PART) << "Returning ungrouped row count for toplevel " << m_ungrouped->filtered.count();
+            //qCDebug(LOG_KTE) << "Returning ungrouped row count for toplevel " << m_ungrouped->filtered.count();
             return m_ungrouped->filtered.count();
         }
     }
@@ -918,7 +918,7 @@ int KateCompletionModel::rowCount(const QModelIndex &parent) const
         return 0;
     }
 
-    //qCDebug(LOG_PART) << "Returning row count for group " << g << " as " << g->filtered.count();
+    //qCDebug(LOG_KTE) << "Returning row count for group " << g << " as " << g->filtered.count();
     return g->filtered.count();
 }
 
@@ -939,7 +939,7 @@ QModelIndex KateCompletionModel::mapToSource(const QModelIndex &proxyIndex) cons
             ModelRow source = g->filtered[proxyIndex.row()].sourceRow();
             return source.second.sibling(source.second.row(), proxyIndex.column());
         } else {
-            qCDebug(LOG_PART) << "Invalid proxy-index";
+            qCDebug(LOG_KTE) << "Invalid proxy-index";
         }
     }
 
@@ -996,7 +996,7 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
         changeType = Narrow;
     }
 
-    //qCDebug(LOG_PART) << model << "Old match: " << m_currentMatch[model] << ", new: " << completion << ", type: " << changeType;
+    //qCDebug(LOG_KTE) << model << "Old match: " << m_currentMatch[model] << ", new: " << completion << ", type: " << changeType;
 
     m_currentMatch[model] = completion;
 
@@ -1190,7 +1190,7 @@ void KateCompletionModel::hideOrShowGroup(Group *g, bool notifyModel)
                 }
                 m_emptyGroups.append(g);
             } else {
-                qCWarning(LOG_PART) << "Group " << g << " not found in row table!!";
+                qCWarning(LOG_KTE) << "Group " << g << " not found in row table!!";
             }
         }
 
@@ -1248,11 +1248,11 @@ void KateCompletionModel::slotModelReset()
 void KateCompletionModel::debugStats()
 {
     if (!hasGroups()) {
-        qCDebug(LOG_PART) << "Model groupless, " << m_ungrouped->filtered.count() << " items.";
+        qCDebug(LOG_KTE) << "Model groupless, " << m_ungrouped->filtered.count() << " items.";
     } else {
-        qCDebug(LOG_PART) << "Model grouped (" << m_rowTable.count() << " groups):";
+        qCDebug(LOG_KTE) << "Model grouped (" << m_rowTable.count() << " groups):";
         foreach (Group *g, m_rowTable) {
-            qCDebug(LOG_PART) << "Group" << g << "count" << g->filtered.count();
+            qCDebug(LOG_KTE) << "Group" << g << "count" << g->filtered.count();
         }
     }
 }
@@ -1362,7 +1362,7 @@ int KateCompletionModel::translateColumn(int sourceColumn) const
       columnMerge += "] ";
     }
 
-    qCDebug(LOG_PART) << k_funcinfo << columnMerge;*/
+    qCDebug(LOG_KTE) << k_funcinfo << columnMerge;*/
 
     int c = 0;
     foreach (const QList<int> &list, m_columnMerges) {
@@ -1382,7 +1382,7 @@ int KateCompletionModel::groupingAttributes(int attribute) const
 
     if (m_groupingMethod & ScopeType) {
         if (countBits(attribute & ScopeTypeMask) > 1) {
-            qCWarning(LOG_PART) << "Invalid completion model metadata: more than one scope type modifier provided.";
+            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one scope type modifier provided.";
         }
 
         if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
@@ -1396,7 +1396,7 @@ int KateCompletionModel::groupingAttributes(int attribute) const
 
     if (m_groupingMethod & AccessType) {
         if (countBits(attribute & AccessTypeMask) > 1) {
-            qCWarning(LOG_PART) << "Invalid completion model metadata: more than one access type modifier provided.";
+            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one access type modifier provided.";
         }
 
         if (attribute & KTextEditor::CodeCompletionModel::Public) {
@@ -1418,7 +1418,7 @@ int KateCompletionModel::groupingAttributes(int attribute) const
 
     if (m_groupingMethod & ItemType) {
         if (countBits(attribute & ItemTypeMask) > 1) {
-            qCWarning(LOG_PART) << "Invalid completion model metadata: more than one item type modifier provided.";
+            qCWarning(LOG_KTE) << "Invalid completion model metadata: more than one item type modifier provided.";
         }
 
         if (attribute & KTextEditor::CodeCompletionModel::Namespace) {
@@ -1558,7 +1558,7 @@ bool KateCompletionModel::Item::operator <(const Item &rhs) const
 {
     int ret = 0;
 
-    //qCDebug(LOG_PART) << c1 << " c/w " << c2 << " -> " << (model->isSortingReverse() ? ret > 0 : ret < 0) << " (" << ret << ")";
+    //qCDebug(LOG_KTE) << c1 << " c/w " << c2 << " -> " << (model->isSortingReverse() ? ret > 0 : ret < 0) << " (" << ret << ")";
 
     const bool isBad = m_sourceRow.second.data(CodeCompletionModel::UnimportantItemRole).toBool();
     const bool otherIsBad = rhs.m_sourceRow.second.data(CodeCompletionModel::UnimportantItemRole).toBool();

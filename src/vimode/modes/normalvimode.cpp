@@ -328,7 +328,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                                 m_viInputModeManager->clearCurrentChangeLog();
                             }
                         } else {
-                            qCDebug(LOG_PART) << "Invalid position: (" << r.endLine << "," << r.endColumn << ")";
+                            qCDebug(LOG_KTE) << "Invalid position: (" << r.endLine << "," << r.endColumn << ")";
                         }
 
                         resetParser();
@@ -373,7 +373,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         if (m_commandRange.valid) {
                             executeCommand(m_commands.at(m_motionOperatorIndex));
                         } else {
-                            qCDebug(LOG_PART) << "Invalid range: "
+                            qCDebug(LOG_KTE) << "Invalid range: "
                                               << "from (" << m_commandRange.startLine << "," << m_commandRange.startColumn << ")"
                                               << "to (" << m_commandRange.endLine << "," << m_commandRange.endColumn << ")";
                         }

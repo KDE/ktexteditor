@@ -39,9 +39,9 @@
 #include <QSaveFile>
 
 #if 0
-#define BUFFER_DEBUG qCDebug(LOG_PART)
+#define BUFFER_DEBUG qCDebug(LOG_KTE)
 #else
-#define BUFFER_DEBUG if (0) qCDebug(LOG_PART)
+#define BUFFER_DEBUG if (0) qCDebug(LOG_KTE)
 #endif
 
 namespace Kate

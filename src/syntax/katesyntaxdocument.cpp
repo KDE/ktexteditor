@@ -57,7 +57,7 @@ bool KateSyntaxDocument::setIdentifier(const QString &identifier)
         currentFile = identifier;
         return true;
     }
-    
+
     // else: try to open
     QFile f(identifier);
     if (!f.open(QIODevice::ReadOnly)) {
@@ -65,7 +65,7 @@ bool KateSyntaxDocument::setIdentifier(const QString &identifier)
         KMessageBox::error(QApplication::activeWindow(), i18n("Unable to open %1", identifier));
         return false;
     }
-    
+
     // try to parse
     QDomDocument *document = new QDomDocument();
     QString errorMsg;
@@ -76,7 +76,7 @@ bool KateSyntaxDocument::setIdentifier(const QString &identifier)
         delete document;
         return false;
     }
-   
+
     // cache and be done
     currentFile = identifier;
     m_domDocuments[currentFile] = document;
@@ -206,7 +206,7 @@ KateSyntaxContextData *KateSyntaxDocument::getSubItems(KateSyntaxContextData *da
 bool KateSyntaxDocument::getElement(QDomElement &element, const QString &mainGroupName, const QString &config)
 {
 #ifdef KSD_OVER_VERBOSE
-    qCDebug(LOG_PART) << "Looking for \"" << mainGroupName << "\" -> \"" << config << "\".";
+    qCDebug(LOG_KTE) << "Looking for \"" << mainGroupName << "\" -> \"" << config << "\".";
 #endif
 
     QDomNodeList nodes;
@@ -231,7 +231,7 @@ bool KateSyntaxDocument::getElement(QDomElement &element, const QString &mainGro
             }
 
 #ifdef KSD_OVER_VERBOSE
-            qCDebug(LOG_PART) << "WARNING: \"" << config << "\" wasn't found!";
+            qCDebug(LOG_KTE) << "WARNING: \"" << config << "\" wasn't found!";
 #endif
 
             return false;
@@ -239,7 +239,7 @@ bool KateSyntaxDocument::getElement(QDomElement &element, const QString &mainGro
     }
 
 #ifdef KSD_OVER_VERBOSE
-    qCDebug(LOG_PART) << "WARNING: \"" << mainGroupName << "\" wasn't found!";
+    qCDebug(LOG_KTE) << "WARNING: \"" << mainGroupName << "\" wasn't found!";
 #endif
 
     return false;
@@ -281,13 +281,13 @@ KateSyntaxContextData *KateSyntaxDocument::getGroupInfo(const QString &mainGroup
 QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QString &type, bool clearList)
 {
 #ifdef KSD_OVER_VERBOSE
-    qCDebug(LOG_PART) << "Create a list of keywords \"" << type << "\" from \"" << mainGroup << "\".";
+    qCDebug(LOG_KTE) << "Create a list of keywords \"" << type << "\" from \"" << mainGroup << "\".";
 #endif
 
     if (clearList) {
         m_data.clear();
     }
-    
+
     if (!m_domDocuments.contains(currentFile))
         return m_data;
 
@@ -295,7 +295,7 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
         QDomElement elem = node.toElement();
         if (elem.tagName() == mainGroup) {
 #ifdef KSD_OVER_VERBOSE
-            qCDebug(LOG_PART) << "\"" << mainGroup << "\" found.";
+            qCDebug(LOG_KTE) << "\"" << mainGroup << "\" found.";
 #endif
 
             QDomNodeList nodelist1 = elem.elementsByTagName(QLatin1String("list"));
@@ -303,7 +303,7 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
             for (int l = 0; l < nodelist1.count(); l++) {
                 if (nodelist1.item(l).toElement().attribute(QLatin1String("name")) == type) {
 #ifdef KSD_OVER_VERBOSE
-                    qCDebug(LOG_PART) << "List with attribute name=\"" << type << "\" found.";
+                    qCDebug(LOG_KTE) << "List with attribute name=\"" << type << "\" found.";
 #endif
 
                     QDomNodeList childlist = nodelist1.item(l).toElement().childNodes();
@@ -316,9 +316,9 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
 
 #ifdef KSD_OVER_VERBOSE
                         if (i < 6) {
-                            qCDebug(LOG_PART) << "\"" << element << "\" added to the list \"" << type << "\"";
+                            qCDebug(LOG_KTE) << "\"" << element << "\" added to the list \"" << type << "\"";
                         } else if (i == 6) {
-                            qCDebug(LOG_PART) << "... The list continues ...";
+                            qCDebug(LOG_KTE) << "... The list continues ...";
                         }
 #endif
 

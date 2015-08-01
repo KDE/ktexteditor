@@ -176,7 +176,7 @@ void KateMessageWidget::setWordWrap(KTextEditor::Message *message)
     // finally enable word wrap, if there is not enough free horizontal space
     const int freeSpace = (parentWidget()->width() - margin) - m_messageWidget->width();
     if (freeSpace < 0) {
-//     qCDebug(LOG_PART) << "force word wrap to avoid breaking the layout" << freeSpace;
+//     qCDebug(LOG_KTE) << "force word wrap to avoid breaking the layout" << freeSpace;
         m_messageWidget->setWordWrap(true);
     }
 }

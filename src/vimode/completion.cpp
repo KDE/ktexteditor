@@ -29,7 +29,7 @@ Completion::Completion(const QString &completedText, bool removeTail, Completion
       m_completionType(completionType)
 {
     if (m_completionType == FunctionWithArgs || m_completionType == FunctionWithoutArgs) {
-        qCDebug(LOG_PART) << "Completing a function while not removing tail currently unsupported; will remove tail instead";
+        qCDebug(LOG_KTE) << "Completing a function while not removing tail currently unsupported; will remove tail instead";
         m_removeTail = true;
     }
 }

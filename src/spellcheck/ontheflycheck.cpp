@@ -36,7 +36,7 @@
 #include "spellingmenu.h"
 #include "katepartdebug.h"
 
-#define ON_THE_FLY_DEBUG qCDebug(LOG_PART)
+#define ON_THE_FLY_DEBUG qCDebug(LOG_KTE)
 
 namespace {
 

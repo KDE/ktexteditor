@@ -53,7 +53,7 @@
 // #define FAST_DEBUG_ENABLE
 
 #ifdef FAST_DEBUG_ENABLE
-# define FAST_DEBUG(x) qCDebug(LOG_PART) << x
+# define FAST_DEBUG(x) qCDebug(LOG_KTE) << x
 #else
 # define FAST_DEBUG(x)
 #endif

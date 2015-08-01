@@ -568,7 +568,7 @@ void InsertViMode::setBlockAppendMode(Range blockRange, BlockInsert b)
             m_eolPos = doc()->lineLength(m_blockRange.startLine);
         }
     } else {
-        qCDebug(LOG_PART) << "cursor moved. ignoring block append/prepend";
+        qCDebug(LOG_KTE) << "cursor moved. ignoring block append/prepend";
     }
 }
 

@@ -627,7 +627,7 @@ int KateHlRegExpr::checkHgl(const QString &text, int offset, int /*len*/)
     if (m_handlesLineStart && (offset > 0)) {
         return 0;
     }
-    
+
     /**
      * perhaps clear cache?
      * that is needed, if we had a match and our current offset is already too large!
@@ -635,7 +635,7 @@ int KateHlRegExpr::checkHgl(const QString &text, int offset, int /*len*/)
     if (haveCache && m_lastMatch.hasMatch() && (offset > m_lastMatch.capturedStart())) {
         haveCache = false;
     }
-    
+
     /**
      * try to match if not already cached
      * store result in member variable for later reuse
@@ -644,7 +644,7 @@ int KateHlRegExpr::checkHgl(const QString &text, int offset, int /*len*/)
         m_lastMatch = m_regularExpression.match(text, offset);
         haveCache = true;
     }
-    
+
     /**
      * no match or we match at wrong position?
      * => bad match
@@ -652,7 +652,7 @@ int KateHlRegExpr::checkHgl(const QString &text, int offset, int /*len*/)
     if (!m_lastMatch.hasMatch() || offset != m_lastMatch.capturedStart()) {
         return 0;
     }
-    
+
     /**
      * else: return current capture end
      */
@@ -682,7 +682,7 @@ KateHlItem *KateHlRegExpr::clone(const QStringList *args)
         return this;
     }
 
-    // qCDebug(LOG_PART) << "clone regexp: " << regexp;
+    // qCDebug(LOG_KTE) << "clone regexp: " << regexp;
 
     KateHlRegExpr *ret = new KateHlRegExpr(attr, ctx, region, region2, regexp
         , m_regularExpression.patternOptions() & QRegularExpression::CaseInsensitiveOption
@@ -847,7 +847,7 @@ KateHlContext::KateHlContext(const QString &_hlId, int attribute, KateHlContextM
     emptyLineContext = _emptyLineContext;
     emptyLineContextModification = _emptyLineContextModification;
     if (_noIndentationBasedFolding) {
-        qCDebug(LOG_PART) << "**********************_noIndentationBasedFolding is TRUE*****************";
+        qCDebug(LOG_KTE) << "**********************_noIndentationBasedFolding is TRUE*****************";
     }
 
 }
