@@ -242,7 +242,10 @@ public:
      */
     static KSharedConfigPtr config()
     {
-        return KSharedConfig::openConfig(QStringLiteral("katepartrc"));
+        // use dummy config for unit tests!
+        return KTextEditor::EditorPrivate::unitTestMode()
+            ? KSharedConfig::openConfig(QStringLiteral("katepartrc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation)
+            : KSharedConfig::openConfig(QStringLiteral("katepartrc"));
     }
 
     /**

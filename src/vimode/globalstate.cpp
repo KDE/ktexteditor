@@ -25,6 +25,7 @@
 #include "macros.h"
 #include "mappings.h"
 #include "registers.h"
+#include "kateglobal.h"
 
 #include <kconfiggroup.h>
 
@@ -76,5 +77,8 @@ void GlobalState::readConfig(const KConfig *configFile)
 
 KSharedConfigPtr GlobalState::config() const
 {
-    return KSharedConfig::openConfig(QStringLiteral("katevirc"));
+    // use dummy config for unit tests!
+    return KTextEditor::EditorPrivate::unitTestMode()
+            ? KSharedConfig::openConfig(QStringLiteral("katevirc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation)
+            : KSharedConfig::openConfig(QStringLiteral("katevirc"));
 }
