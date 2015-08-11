@@ -12,7 +12,7 @@ require ("string.js");
 
 openings = ['(', '[', '{'];
 closings = [')', ']', '}'];  // requires same order as in openings
-unindenters = ['continue', 'pass', 'raise', 'return', 'break'];
+unindenters = /\b(continue|pass|raise|return|break)\b/;
 
 
 // Return the given line without comments and leading or trailing whitespace.
@@ -112,10 +112,9 @@ function calcBracketIndent(lineNr, indentWidth) {
 // Return true if a single unindent should occur.
 function shouldUnindent(LineNr) {
     lastLine = getCode(LineNr - 1);
-    for (var key in unindenters) {
-        if (lastLine.indexOf(unindenters[key]) >= 0)
-            return 1;
-    }
+    if (lastLine.match(unindenters))
+        return 1;
+
     // unindent if the last line was indented b/c of a backslash
     if (LineNr >= 2) {
         secondLastLine = getCode(LineNr - 2);
