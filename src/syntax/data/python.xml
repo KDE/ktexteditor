@@ -13,7 +13,7 @@
 <!-- v2.06 decorator names can (and often do) contain periods -->
 <!-- v2.07 add support for %prog and co, see bug 142832 -->
 <!-- v2.08 add missing overloaders, new Python 3 statements, builtins, and keywords -->
-<language name="Python" version="2.25" style="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript" mimetype="application/x-python;text/x-python" casesensitive="1" author="Michael Bueker" license="">
+<language name="Python" version="2.26" style="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript" mimetype="application/x-python;text/x-python" casesensitive="1" author="Michael Bueker" license="">
 	<highlighting>
 		<list name="import">
 			<item> import </item>
@@ -52,6 +52,8 @@
 			<item> while </item>
 			<item> with </item>
 			<item> yield </item>
+			<item> async </item>
+			<item> await </item>
 		</list>
 		<list name="builtinfuncs">
 			<item> __import__ </item>
@@ -248,6 +250,11 @@
 			<item>__format__</item>
 			<item>__next__</item>
 			<item>__dir__</item>
+			<item>__await__</item>
+			<item>__aiter__</item>
+			<item>__anext__</item>
+			<item>__aenter__</item>
+			<item>__aexit__</item>
 		</list>
 		<list name="exceptions">
 			<!--
@@ -352,7 +359,7 @@
 
 				<IncludeRules context="StringVariants" />
 
-				<AnyChar attribute="Operator" String="+*/%\|=;\!&lt;&gt;!^&amp;~-" context="#stay"/>
+				<AnyChar attribute="Operator" String="+*/%\|=;\!&lt;&gt;!^&amp;~-@" context="#stay"/>
 				<RegExpr attribute="Decorator" String="@[_a-zA-Z][\._a-zA-Z0-9]*" firstNonSpace="true"/>
 			</context>
 
