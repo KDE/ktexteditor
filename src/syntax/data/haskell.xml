@@ -372,6 +372,7 @@
     </context>
     <context attribute="Comment" lineEndContext="#pop" name="comment" />
     <context attribute="Comment" lineEndContext="#stay" name="comments">
+      <Detect2Chars attribute="Comment" context="comment" char="{" char1="-" />
       <Detect2Chars attribute="Comment" context="#pop" char="-" char1="}" />
     </context>
     <context attribute="Char" lineEndContext="#pop" name="char">
