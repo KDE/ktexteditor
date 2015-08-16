@@ -79,8 +79,9 @@ class MovingRangeFeedback;
  * Use setEmptyBehavior() and emptyBehavior() to control the empty behavior.
  *
  * \warning MovingRanges may be set to (-1, -1, -1, -1) at any time, if the
- * user reloads a document (F5)! Use a MovingRangeFeedback to get  notified
- * if you need to catch this case.
+ * user reloads a document (F5)! Use a MovingRangeFeedback to get notified
+ * if you need to catch this case, and/or listen to the signal
+ * MovingInterface::aboutToInvalidateMovingInterfaceContent().
  *
  * \section movingrange_feedback MovingRange Feedback
  *
