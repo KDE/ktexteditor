@@ -115,6 +115,37 @@ class MovingRangeFeedback;
  * specific view. Further, if the additional highlighting should not be
  * printed call setAttributeOnlyForViews() with the parameter true.
  *
+ * \section movingrange_example MovingRange Example
+ *
+ * In the following example, we assume the KTextEditor::Document has the
+ * contents:
+ * \code
+ * void printText(const std::string & text); // this is line 3
+ * \endcode
+ * In order to highlight the function name \e printText with a yellow background
+ * color, the following code is needed:
+ * \code
+ * KTextEditor::View * view = ...;
+ * KTextEditor::Document * doc = view->document();
+ *
+ * auto iface = qobject_cast<KTextEditor::MovingInterface*>(doc);
+ * if (!iface) {
+ *     return;
+ * }
+ *
+ * // range is of type KTextEditor::MovingRange*
+ * auto range = iface->newMovingRange(KTextEditor::Range(3, 5, 3, 14));
+ *
+ * KTextEditor::Attribute::Ptr attrib = new KTextEditor::Attribute();
+ * attrib->setBackground(Qt::yellow);
+ *
+ * range->setAttribute(attrib);
+ * \endcode
+ *
+ * MovingRange%s are deleted automatically when a document is cleared or closed.
+ * Therefore, to avoid dangling pointers, make sure to read the API documentation
+ * about MovingInterface::aboutToDeleteMovingInterfaceContent().
+ *
  * \sa Cursor, MovingCursor, Range, MovingInterface, MovingRangeFeedback
  *
  * \author Christoph Cullmann \<cullmann@kde.org\>

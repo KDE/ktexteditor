@@ -70,7 +70,8 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    virtual MovingCursor *newMovingCursor(const Cursor &position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
+    virtual MovingCursor *newMovingCursor(const Cursor &position,
+                                          MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
 
     /**
      * Create a new moving range for this document.
@@ -79,8 +80,9 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    virtual MovingRange *newMovingRange(const Range &range, MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand
-                                        , MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
+    virtual MovingRange *newMovingRange(const Range &range,
+                                        MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand,
+                                        MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
 
     /**
      * Current revision
@@ -114,7 +116,10 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+    virtual void transformCursor(KTextEditor::Cursor &cursor,
+                                 KTextEditor::MovingCursor::InsertBehavior insertBehavior,
+                                 qint64 fromRevision,
+                                 qint64 toRevision = -1) = 0;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -124,7 +129,11 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+    virtual void transformCursor(int &line,
+                                 int &column,
+                                 KTextEditor::MovingCursor::InsertBehavior insertBehavior,
+                                 qint64 fromRevision,
+                                 qint64 toRevision = -1) = 0;
 
     /**
      * Transform a range from one revision to an other.
@@ -134,22 +143,29 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
+    virtual void transformRange(KTextEditor::Range &range,
+                                KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
+                                MovingRange::EmptyBehavior emptyBehavior,
+                                qint64 fromRevision,
+                                qint64 toRevision = -1) = 0;
 
     //
     // Signals
     //
 public:
     /**
-     * This signal is emitted before the cursors/ranges/revisions of a document are destroyed as the document is deleted.
-     * @param document the document which the interface belongs too which is in the process of being deleted
+     * This signal is emitted before the cursors/ranges/revisions of a document
+     * are destroyed as the document is deleted.
+     * @param document the document which the interface belongs to which is in the process of being deleted
      */
     void aboutToDeleteMovingInterfaceContent(KTextEditor::Document *document);
 
     /**
-     * This signal is emitted before the ranges of a document are invalidated and the revisions are deleted as the document is cleared (for example on load/reload).
-     * While this signal is emitted, still the old document content is around before the clear.
-     * @param document the document which the interface belongs too which will invalidate its data
+     * This signal is emitted before the ranges of a document are invalidated
+     * and the revisions are deleted as the document is cleared (for example on
+     * load/reload). While this signal is emitted, the old document content is
+     * still valid and accessible before the clear.
+     * @param document the document which the interface belongs to which will invalidate its data
      */
     void aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *document);
 
