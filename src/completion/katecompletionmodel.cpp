@@ -1544,6 +1544,7 @@ KateCompletionModel::Item::Item(bool doInitialMatch, KateCompletionModel *m, con
 {
 
     inheritanceDepth = handler.getData(CodeCompletionModel::InheritanceDepth, m_sourceRow.second).toInt();
+    m_unimportant = handler.getData(CodeCompletionModel::UnimportantItemRole, m_sourceRow.second).toBool();
 
     QModelIndex nameSibling = sr.second.sibling(sr.second.row(), CodeCompletionModel::Name);
     m_nameColumn = nameSibling.data(Qt::DisplayRole).toString();
@@ -1560,12 +1561,11 @@ bool KateCompletionModel::Item::operator <(const Item &rhs) const
 
     //qCDebug(LOG_KTE) << c1 << " c/w " << c2 << " -> " << (model->isSortingReverse() ? ret > 0 : ret < 0) << " (" << ret << ")";
 
-    const bool isBad = m_sourceRow.second.data(CodeCompletionModel::UnimportantItemRole).toBool();
-    const bool otherIsBad = rhs.m_sourceRow.second.data(CodeCompletionModel::UnimportantItemRole).toBool();
-    if (isBad && !otherIsBad) {
+    if(m_unimportant && !rhs.m_unimportant){
         return false;
     }
-    if (otherIsBad && !isBad) {
+
+    if(!m_unimportant && rhs.m_unimportant){
         return true;
     }
 
