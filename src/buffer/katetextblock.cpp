@@ -67,7 +67,7 @@ TextLine TextBlock::line(int line) const
 
 void TextBlock::appendLine(const QString &textOfLine)
 {
-    m_lines.append(TextLine(new TextLineData(textOfLine)));
+    m_lines.append(TextLine::create(textOfLine));
 }
 
 void TextBlock::clearLines()
