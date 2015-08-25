@@ -520,12 +520,12 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QLatin1String("Previous Editing Line"));
         a->setText(i18n("Go to previous editing line"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Period));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
         connect(a, SIGNAL(triggered(bool)), SLOT(goToPreviousEditingPosition()));
 
         a = ac->addAction(QLatin1String("Next Editing Line"));
         a->setText(i18n("Go to next editing line"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Period));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_E));
         connect(a, SIGNAL(triggered(bool)), SLOT(goToNextEditingPosition()));
 
         a = ac->addAction(QLatin1String("tools_uncomment"));
