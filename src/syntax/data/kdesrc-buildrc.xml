@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <language name = "kdesrc-buildrc"
-       version = "0.8"
+       version = "0.9"
    kateversion = "3.5"
        section = "Configuration"
     extensions = ".kdesrc-buildrc;kdesrc-buildrc"
@@ -78,6 +78,7 @@
       <item>cxxflags</item>
       <item>dest-dir</item>
       <item>do-not-compile</item>
+      <item>git-user</item>
       <item>kdedir</item>
       <item>libpath</item>
       <item>log-dir</item>
