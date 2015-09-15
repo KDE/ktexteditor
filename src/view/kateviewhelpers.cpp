@@ -510,7 +510,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // calculate colors
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
-    const QColor highlightColor  = palette().highlight().color();
+    const QColor highlightColor  = palette().link().color();
 
     int backgroundLightness = backgroundColor.lightness();
     int foregroundLightness = foregroundColor.lightness();
@@ -562,33 +562,6 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     QRect docPixmapRect(QPoint(s_pixelMargin, docRect.top()), QSize(docRect.width() - s_pixelMargin, docRect.height()));
     painter.drawPixmap(docPixmapRect, m_pixmap, pixmapRect);
 
-    if (!m_showMarks) {
-        return;
-    }
-
-    QHashIterator<int, QColor> it = m_lines;
-    QPen penBg;
-    penBg.setWidth(4);
-    lightShieldColor.setAlpha(180);
-    penBg.setColor(lightShieldColor);
-    painter.setPen(penBg);
-    while (it.hasNext()) {
-        it.next();
-        int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();;
-        painter.drawLine(6, y, width() - 6, y);
-    }
-
-    it = m_lines;
-    QPen pen;
-    pen.setWidth(2);
-    while (it.hasNext()) {
-        it.next();
-        pen.setColor(it.value());
-        painter.setPen(pen);
-        int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();
-        painter.drawLine(6, y, width() - 6, y);
-    }
-
     // delimit the end of the document
     const int y = docPixmapRect.height() + grooveRect.y();
     if (y+2 < grooveRect.y() + grooveRect.height()) {
@@ -625,6 +598,31 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     c.setAlpha(10);
     painter.setPen(QPen(c,1));
     painter.drawLine(0, 0, 0, height());
+
+    if (m_showMarks) {
+        QHashIterator<int, QColor> it = m_lines;
+        QPen penBg;
+        penBg.setWidth(4);
+        lightShieldColor.setAlpha(180);
+        penBg.setColor(lightShieldColor);
+        painter.setPen(penBg);
+        while (it.hasNext()) {
+            it.next();
+            int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();;
+            painter.drawLine(6, y, width() - 6, y);
+        }
+
+        it = m_lines;
+        QPen pen;
+        pen.setWidth(2);
+        while (it.hasNext()) {
+            it.next();
+            pen.setColor(it.value());
+            painter.setPen(pen);
+            int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();
+            painter.drawLine(6, y, width() - 6, y);
+        }
+    }
 
     // slider outline
     QColor sliderColor(highlightColor);
