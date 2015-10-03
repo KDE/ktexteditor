@@ -41,8 +41,12 @@ using namespace KTextEditor;
 
 int countItems(KateCompletionModel *model)
 {
+    const int topLevel = model->rowCount(QModelIndex());
+    if (!model->hasGroups()) {
+        return topLevel;
+    }
     int ret = 0;
-    for (int i = 0; i < model->rowCount(QModelIndex()); ++i) {
+    for (int i = 0; i < topLevel; ++i) {
         ret += model->rowCount(model->index(i, 0));
     }
     return ret;
@@ -80,10 +84,6 @@ static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
 
 void CompletionTest::init()
 {
-    if (!KSycoca::isAvailable()) {
-        QSKIP("ksycoca not available");
-    }
-
     Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 
