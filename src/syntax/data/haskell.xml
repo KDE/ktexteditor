@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
-<language name="Haskell" version="2.9" kateversion="3.4" section="Sources" extensions="*.hs;*.chs" mimetype="text/x-haskell" author="Nicolas Wu (zenzike@gmail.com)" license="LGPL" indenter="haskell" style="haskell">
+<language name="Haskell" version="3.0" kateversion="3.4" section="Sources" extensions="*.hs;*.chs" mimetype="text/x-haskell" author="Nicolas Wu (zenzike@gmail.com)" license="LGPL" indenter="haskell" style="haskell">
   <highlighting>
   <list name="keywords">
     <item> case </item>
@@ -433,9 +433,9 @@
     <!-- C Preprocessor -->
     <context attribute="C Preprocessor" lineEndContext="#pop" name="C Preprocessor">
       <keyword attribute="C Preprocessor Keyword" context="#stay" String="cpp_keywords" />
-      <RegExpr                          context="#stay" String="*.>$" />
+      <RegExpr                          context="#stay" String=".*>$" />
     </context>
-    
+
     <!-- C2Hs -->
     <context attribute="C2HS Directive" lineEndContext="#stay" name="c2hs directive">
       <Detect2Chars attribute="C2HS Directive" context="#pop" char="#" char1="}" />
@@ -495,7 +495,7 @@
 
     <itemData name="Function Infix"   defStyleNum="dsOthers"   spellChecking="false" />
     <itemData name="EnumFromTo"       defStyleNum="dsOthers"   spellChecking="false" />
-    
+
     <itemData name="C Preprocessor"   defStyleNum="dsOthers"   spellChecking="false" />
     <itemData name="C Preprocessor Keyword" defStyleNum="dsOthers"   spellChecking="false" />
 

@@ -26,6 +26,8 @@
 #include <QJsonDocument>
 #include <QXmlSchema>
 #include <QXmlSchemaValidator>
+#include <QRegularExpression>
+#include <QDebug>
 
 namespace {
 
@@ -51,7 +53,7 @@ int main(int argc, char *argv[])
 {
     // get app instance
     QCoreApplication app(argc, argv);
-    
+
     // ensure enough arguments are passed
     if (app.arguments().size() < 3)
         return 1;
@@ -75,7 +77,7 @@ int main(int argc, char *argv[])
     const QStringList textAttributes = QStringList() << QLatin1String("name") << QLatin1String("section") << QLatin1String("mimetype")
             << QLatin1String("extensions") << QLatin1String("version") << QLatin1String("priority") << QLatin1String("style")
             << QLatin1String("author") << QLatin1String("license") << QLatin1String("indenter");
-    
+
     // index all given highlightings
     QVariantMap hls;
     int anyError = 0;
@@ -85,14 +87,14 @@ int main(int argc, char *argv[])
             anyError = 3;
             continue;
         }
-        
+
         // validate against schema
         QXmlSchemaValidator validator(schema);
         if (!validator.validate(&hlFile, QUrl::fromLocalFile(hlFile.fileName()))) {
             anyError = 4;
             continue;
         }
-        
+
         // read the needed attributes from toplevel language tag
         hlFile.reset();
         QXmlStreamReader xml(&hlFile);
@@ -108,24 +110,39 @@ int main(int argc, char *argv[])
 
         // map to store hl info
         QVariantMap hl;
-        
+
         // transfer text attributes
         Q_FOREACH (QString attribute, textAttributes) {
             hl[attribute] = xml.attributes().value(attribute).toString();
         }
-        
+
         // add boolean one
         const QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
         hl[QLatin1String("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
-            
+
         // remember hl
         hls[QFileInfo(hlFile).fileName()] = hl;
+
+        // scan for broken regex
+        while (!xml.atEnd()) {
+            xml.readNext();
+            if (!xml.isStartElement() || xml.name() != QLatin1String("RegExpr")) {
+                continue;
+            }
+
+            const QString string (xml.attributes().value(QLatin1String("String")).toString());
+            const QRegularExpression regexp (string);
+            if (!regexp.isValid()) {
+                qDebug() << hlFilename << "line" << xml.lineNumber() << "broken regex:" << string << "problem:" << regexp.errorString() << "at offset" << regexp.patternErrorOffset();
+                anyError = 7;
+            }
+        }
     }
-    
+
     // bail out if any problem was seen
     if (anyError)
         return anyError;
-    
+
     // create outfile, after all has worked!
     QFile outFile(app.arguments().at(1));
     if (!outFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
@@ -133,7 +150,7 @@ int main(int argc, char *argv[])
 
     // write out json
     outFile.write(QJsonDocument::fromVariant(QVariant(hls)).toBinaryData());
-    
+
     // be done
     return 0;
 }

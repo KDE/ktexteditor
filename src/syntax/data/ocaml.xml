@@ -4,8 +4,8 @@
 <!DOCTYPE language SYSTEM "language.dtd"
 [
 <!-- Regular expresion constants: -->
-<!ENTITY LOWER  "a-z\0300-\0326\0330-\0337">     <!-- Lowercase Latin-1 letters. -->
-<!ENTITY UPPER  "A-Z\0340-\0366\0370-\0377">     <!-- Uppercase Latin-1 letters. -->
+<!ENTITY LOWER  "a-z\300-\326\330-\337">         <!-- Lowercase Latin-1 letters. -->
+<!ENTITY UPPER  "A-Z\340-\366\370-\377">         <!-- Uppercase Latin-1 letters. -->
 <!ENTITY LETTER "&LOWER;&UPPER;">                <!-- All Latin-1 letters. -->
 <!ENTITY LIDENT "[&LOWER;_][&LETTER;0-9_']*">    <!-- Lowercase OCaml identifiers. -->
 <!ENTITY UIDENT "`?[&UPPER;][&LETTER;0-9_']*">   <!-- Uppercase OCaml identifiers. -->
@@ -17,7 +17,7 @@
           extensions="*.ml;*.mli"
           mimetype=""
           section="Sources"
-          version="2.00"
+          version="2.01"
           priority="10"
           kateversion="2.4"
           author="Glyn Webster (glynwebster@orcon.net.nz) and Vincent Hugot (vincent.hugot@gmail.com)"
@@ -410,12 +410,12 @@
 
       <context name="qtest param" lineEndContext="qtest" attribute="qtest param style">
       </context>
-        
+
       <context name="qtest" lineEndContext="#stay" attribute="qtest body style">
         <Detect2Chars char="*" char1=')' context="#pop" attribute="qtest body style" endRegion="comment" />
         <IncludeRules context="Code" includeAttrib="true" />
       </context>
-      
+
       <context name="Comment" lineEndContext="#stay" attribute="Comment">
         <Detect2Chars char="*" char1=")" context="#pop" attribute="Comment" endRegion="comment"  />
         <!-- Support for nested comments: -->
