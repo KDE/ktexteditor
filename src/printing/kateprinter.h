@@ -56,6 +56,6 @@ namespace KatePrinter
      * cannot print only selected portion of document.
      */
     bool printPreview(KTextEditor::DocumentPrivate *doc);
-};
+}
 
 #endif

@@ -1805,6 +1805,9 @@ void KateIconBorder::showBlock()
         return;
     }
     m_currentBlockLine = m_nextHighlightBlock;
+    if (m_currentBlockLine >= m_doc->buffer().lines()) {
+        return;
+    }
 
     /**
      * compute to which folding range we belong
@@ -1923,10 +1926,8 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
 
 void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
 {
-    int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
-
-    if (cursorOnLine == m_lastClickedLine &&
-            cursorOnLine <= m_doc->lastLine()) {
+    const int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
+    if (cursorOnLine == m_lastClickedLine && cursorOnLine >= 0 && cursorOnLine <= m_doc->lastLine()) {
         BorderArea area = positionToArea(e->pos());
         if (area == IconBorder) {
             if (e->button() == Qt::LeftButton) {

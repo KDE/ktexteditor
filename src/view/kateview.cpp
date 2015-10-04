@@ -1238,7 +1238,7 @@ void KTextEditor::ViewPrivate::slotExpandLevel()
 void KTextEditor::ViewPrivate::foldLine(int startLine)
 {
     // only for valid lines
-    if (startLine < 0) {
+    if (startLine < 0 || startLine >= doc()->buffer().lines()) {
         return;
     }
 
@@ -1255,7 +1255,7 @@ void KTextEditor::ViewPrivate::foldLine(int startLine)
 void KTextEditor::ViewPrivate::unfoldLine(int startLine)
 {
     // only for valid lines
-    if (startLine < 0) {
+    if (startLine < 0 || startLine >= doc()->buffer().lines()) {
         return;
     }
 
