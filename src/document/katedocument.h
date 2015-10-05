@@ -1391,6 +1391,12 @@ public:
 
 Q_SIGNALS:
     void loaded(KTextEditor::DocumentPrivate *document);
+
+private Q_SLOTS:
+    /**
+     * trigger a close of this document in the application
+     */
+    void closeDocumentInApplication();
 };
 
 #endif

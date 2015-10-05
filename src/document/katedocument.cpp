@@ -4021,6 +4021,14 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
             save();
             break;
 
+        case KateModOnHdPrompt::Close:
+            m_modOnHd = false;
+            emit modifiedOnDisk(this, false, OnDiskUnmodified);
+            m_isasking = 0;
+            // delay close, else we delete ourself in bad situations
+            QTimer::singleShot(0, this, SLOT(closeDocumentInApplication()));
+            break;
+
         default: // Delay/cancel: ignore next focus event
             m_isasking = -1;
         }
@@ -5825,3 +5833,7 @@ void KTextEditor::DocumentPrivate::messageDestroyed(KTextEditor::Message *messag
 }
 //END KTextEditor::MessageInterface
 
+void KTextEditor::DocumentPrivate::closeDocumentInApplication()
+{
+    KTextEditor::EditorPrivate::self()->application()->closeDocument(this);
+}

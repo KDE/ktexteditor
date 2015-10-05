@@ -340,7 +340,8 @@ public:
         Reload = 1, // 0 is QDialog::Rejected
         Save,
         Overwrite,
-        Ignore
+        Ignore,
+        Close
     };
     KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
                       KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
@@ -359,6 +360,7 @@ private Q_SLOTS:
     void slotOk();
     void slotApply();
     void slotOverwrite();
+    void slotClose();
     void slotDataAvailable(); ///< read data from the process
     void slotPDone(); ///< Runs the diff file when done
 

@@ -1407,6 +1407,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     } else {
         ui->chkIgnoreWhiteSpaces->setVisible(false);
         ui->btnDiff->setVisible(false);
+
+        QPushButton *closeButton = new QPushButton;
+        KGuiItem::assign(closeButton, KStandardGuiItem::close());
+        closeButton->setToolTip(i18n("Close the document."));
+        buttons->addButton(closeButton, QDialogButtonBox::DestructiveRole);
+        connect(closeButton, SIGNAL(clicked()), this, SLOT(slotClose()));
     }
 }
 
@@ -1530,6 +1536,11 @@ void KateModOnHdPrompt::slotApply()
 void KateModOnHdPrompt::slotOverwrite()
 {
     done(Overwrite);
+}
+
+void KateModOnHdPrompt::slotClose()
+{
+    done(Close);
 }
 
 //END KateModOnHdPrompt
