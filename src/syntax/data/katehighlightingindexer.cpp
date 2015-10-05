@@ -126,11 +126,14 @@ int main(int argc, char *argv[])
         // scan for broken regex
         while (!xml.atEnd()) {
             xml.readNext();
-            if (!xml.isStartElement() || xml.name() != QLatin1String("RegExpr")) {
+            if (!xml.isStartElement() || (xml.name() != QLatin1String("RegExpr") && xml.name() != QLatin1String("emptyLine"))) {
                 continue;
             }
 
-            const QString string (xml.attributes().value(QLatin1String("String")).toString());
+            // get right attribute
+            const QString string (xml.attributes().value((xml.name() == QLatin1String("RegExpr")) ? QLatin1String("String") : QLatin1String("regexpr")).toString());
+
+            // validate regexp
             const QRegularExpression regexp (string);
             if (!regexp.isValid()) {
                 qDebug() << hlFilename << "line" << xml.lineNumber() << "broken regex:" << string << "problem:" << regexp.errorString() << "at offset" << regexp.patternErrorOffset();
