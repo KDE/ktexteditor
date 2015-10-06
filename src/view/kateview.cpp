@@ -1522,6 +1522,11 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     // cursor position
     setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
 
+    // restore dyn word wrap if set for this view
+    if (config.hasKey("Dynamic Word Wrap")) {
+        m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", false));
+    }
+
     // restore text folding
     m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
     applyFoldingState();
@@ -1538,6 +1543,11 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     // cursor position
     config.writeEntry("CursorLine", m_viewInternal->m_cursor.line());
     config.writeEntry("CursorColumn", m_viewInternal->m_cursor.column());
+
+    // save dyn word wrap if set for this view
+    if (m_config->dynWordWrapSet()) {
+        config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
+    }
 
     // save text folding state
     saveFoldingState();

@@ -434,6 +434,10 @@ protected:
     void updateConfig() Q_DECL_OVERRIDE;
 
 public:
+    bool dynWordWrapSet() const
+    {
+        return m_dynWordWrapSet;
+    }
     bool dynWordWrap() const;
     void setDynWordWrap(bool wrap);
 
