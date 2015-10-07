@@ -2,7 +2,7 @@ var katescript = {
     "name": "C Style",
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>",
     "license": "LGPL",
-    "revision": 3,
+    "revision": 4,
     "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
@@ -299,7 +299,9 @@ function tryCComment(line)
         }
     } else if (char1 == '*') {
         var commentLine = currentLine;
-        while (commentLine >= 0 && document.firstChar(commentLine) == '*') {
+        while (commentLine >= 0 && document.firstChar(commentLine) == '*'
+            && !document.endsWith(commentLine, "*/", true)
+        ) {
             --commentLine;
         }
         if (commentLine < 0) {
