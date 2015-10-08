@@ -1789,9 +1789,12 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
     if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // restore the hl stuff
         if (kconfig.hasKey("Highlighting")) {
-            int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
+            const int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
             if (mode >= 0) {
                 m_buffer->setHighlight(mode);
+
+                // restore if set by user, too! see bug 332605, otherwise we loose the hl later again on save
+                m_hlSetByUser = kconfig.readEntry("Highlighting Set By User", false);
             }
         }
     }
@@ -1833,6 +1836,9 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
     if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // save hl
         kconfig.writeEntry("Highlighting", highlight()->name());
+
+        // save if set by user, too! see bug 332605, otherwise we loose the hl later again on save
+        kconfig.writeEntry("Highlighting Set By User", m_hlSetByUser);
     }
 
     // indent mode
