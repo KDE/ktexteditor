@@ -616,7 +616,7 @@ void KateViewInternal::doUpdateView(bool changed, int viewLinesScrolled)
         visible_dummy &= visible;
         m_columnScroll->setVisible(visible);
 
-        m_columnScroll->setRange(0, max + (renderer()->spaceWidth() / 2));
+        m_columnScroll->setRange(0, max + (renderer()->spaceWidth() / 2)); // Add some space for the caret at EOL
 
         m_columnScroll->setValue(m_startX);
 
