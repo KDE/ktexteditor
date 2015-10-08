@@ -89,7 +89,7 @@ Click here if you consider the unknown word not to be misspelled, and you want t
 &lt;/qt&gt;</string>
          </property>
          <property name="text">
-          <string>Replace &amp;with:</string>
+          <string>Replace with:</string>
          </property>
         </widget>
        </item>
