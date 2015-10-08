@@ -3300,6 +3300,12 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
 
     // handle horizontal scrolling via the scrollbar
     if (e->orientation() == Qt::Horizontal) {
+        // if we have dyn word wrap, we should ignore the scroll events
+        if (m_view->dynWordWrap()) {
+            e->accept();
+            return;
+        }
+
         QWheelEvent copy = *e;
         QApplication::sendEvent(m_columnScroll, &copy);
         if (copy.isAccepted()) {
