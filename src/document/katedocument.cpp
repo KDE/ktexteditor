@@ -4858,12 +4858,6 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
         setWordWrap(false);
     }
 
-    // get cursor position of active view
-    KTextEditor::Cursor curPos = KTextEditor::Cursor::invalid();
-    if (activeView()) {
-        curPos = activeView()->cursorPosition();
-    }
-
     editStart();
 
     for (int line = 0; line < lines(); ++line) {
@@ -4876,12 +4870,7 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
             const int p = textline->lastChar() + 1;
             const int l = textline->length() - p;
             if (l > 0) {
-                // if the cursor is in the trailing space, only delete behind cursor
-                if (curPos.line() != line || curPos.column() <= p || curPos.column() > p + l) {
-                    editRemoveText(line, p, l);
-                } else {
-                    editRemoveText(line, curPos.column(), l - (curPos.column() - p));
-                }
+                editRemoveText(line, p, l);
             }
         }
     }
