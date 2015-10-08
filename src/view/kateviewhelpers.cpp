@@ -1390,9 +1390,10 @@ int KateIconBorder::lineNumberWidth() const
             int w = 16;// HACK: 16 == style().scrollBarExtent().width() style().scrollBarExtent().width();
             int h = m_view->renderer()->lineHeight();
 
-            QSize newSize(w, h);
+            QSize newSize(w * devicePixelRatio(), h * devicePixelRatio());
             if ((m_arrow.size() != newSize || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) && !newSize.isEmpty()) {
                 m_arrow = QPixmap(newSize);
+                m_arrow.setDevicePixelRatio(devicePixelRatio());
 
                 QPainter p(&m_arrow);
                 p.fillRect(0, 0, w, h, m_view->renderer()->config()->iconBarColor());
@@ -1650,7 +1651,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                                    Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::fromLatin1("%1").arg(realLine + 1));
                     }
                 } else if (m_view->dynWordWrap() && m_dynWrapIndicatorsOn) {
-                    p.drawPixmap(lnX + lnWidth - m_arrow.width() - 2, y, m_arrow);
+                    p.drawPixmap(lnX + lnWidth - (m_arrow.width() / m_arrow.devicePixelRatio()) - 2, y, m_arrow);
                 }
             }
 
