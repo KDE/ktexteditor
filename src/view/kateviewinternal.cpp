@@ -806,7 +806,7 @@ KTextEditor::Cursor KateViewInternal::findMatchingBracket()
 void KateViewInternal::doReturn()
 {
     doc()->newLine(m_view);
-    m_leftBorder->updateRelLineNumbers();
+    m_leftBorder->updateForCursorLineChange();
     updateView();
 }
 
@@ -1957,7 +1957,7 @@ void KateViewInternal::updateCursor(const KTextEditor::Cursor &newCursor, bool f
     }
 
     if (m_cursor.line() != newCursor.line()) {
-        m_leftBorder->updateRelLineNumbers();
+        m_leftBorder->updateForCursorLineChange();
     }
 
     // unfold if required

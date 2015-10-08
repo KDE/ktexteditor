@@ -235,7 +235,7 @@ public:
         return m_annotationBorderOn;
     }
 
-    void updateRelLineNumbers();
+    void updateForCursorLineChange();
 
     enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
     BorderArea positionToArea(const QPoint &) const;

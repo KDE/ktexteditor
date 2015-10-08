@@ -1287,12 +1287,14 @@ void KateIconBorder::setRelLineNumbersOn(bool enable)
     QTimer::singleShot( 0, this, SLOT(update()) );
 }
 
-void KateIconBorder::updateRelLineNumbers()
+void KateIconBorder::updateForCursorLineChange()
 {
     if (m_relLineNumbersOn) {
         m_updateRelLineNumbers = true;
-        update();
     }
+
+    // always do normal update, e.g. for different current line color!
+    update();
 }
 
 void KateIconBorder::setDynWrapIndicators(int state)
