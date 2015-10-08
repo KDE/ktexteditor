@@ -562,6 +562,9 @@ public:
     bool showWordCount();
     void setShowWordCount(bool on);
 
+    bool autoBrackets() const;
+    void setAutoBrackets(bool on);
+
 private:
     bool m_dynWordWrap;
     int m_dynWordWrapIndicators;
@@ -593,6 +596,7 @@ private:
     bool m_scrollPastEnd;
     bool m_foldFirstLine;
     bool m_showWordCount;
+    bool m_autoBrackets;
 
     bool m_dynWordWrapSet : 1;
     bool m_dynWordWrapIndicatorsSet : 1;
@@ -623,6 +627,7 @@ private:
     bool m_allowMarkMenu : 1;
     bool m_wordCompletionRemoveTailSet : 1;
     bool m_foldFirstLineSet : 1;
+    bool m_autoBracketsSet : 1;
 
 private:
     static KateViewConfig *s_global;

@@ -2,10 +2,15 @@
 <ui version="4.0">
  <class>EditConfigWidget</class>
  <widget class="QWidget" name="EditConfigWidget">
-  <layout class="QVBoxLayout">
-   <property name="margin">
-    <number>0</number>
-   </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>275</width>
+    <height>344</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="gbStaticWordWrap">
      <property name="title">
@@ -34,13 +39,22 @@
       </item>
       <item>
        <layout class="QHBoxLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="lblWordWrap">
           <property name="text">
-           <string>W&amp;rap words at:</string>
+           <string>Wra&amp;p words at:</string>
           </property>
           <property name="buddy">
            <cstring>sbWordWrap</cstring>
@@ -84,7 +98,7 @@
    <item>
     <widget class="QGroupBox" name="gbInputMode">
      <property name="title">
-      <string>InputMode</string>
+      <string>Input Mode</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -114,9 +128,25 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="gbMisc">
+    <widget class="QGroupBox" name="gbAutoBrackets">
      <property name="title">
-      <string>Misc</string>
+      <string>Auto Brackets</string>
+     </property>
+     <layout class="QVBoxLayout" name="_2">
+      <item>
+       <widget class="QCheckBox" name="chkAutoBrackets">
+        <property name="text">
+         <string>Enable automatic brackets</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="gbCopyAndPaste">
+     <property name="title">
+      <string>Copy and Paste</string>
      </property>
      <layout class="QVBoxLayout">
       <item>

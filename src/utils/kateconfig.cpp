@@ -1232,6 +1232,7 @@ KateViewConfig::KateViewConfig()
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
+    m_autoBracketsSet(false),
     m_view(0)
 {
     s_global = this;
@@ -1275,6 +1276,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
+    m_autoBracketsSet(false),
     m_view(view)
 {
 }
@@ -1316,6 +1318,7 @@ const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
 const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
 const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
 const char KEY_SHOW_WORD_COUNT[] = "Show Word Count";
+const char KEY_AUTO_BRACKETS[] = "Auto Brackets";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -1372,6 +1375,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
     setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
     setShowWordCount(config.readEntry(KEY_SHOW_WORD_COUNT, false));
+    setAutoBrackets(config.readEntry(KEY_AUTO_BRACKETS, false));
 
     configEnd();
 }
@@ -1429,6 +1433,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
 
     config.writeEntry(KEY_SHOW_WORD_COUNT, showWordCount());
+    config.writeEntry(KEY_AUTO_BRACKETS, autoBrackets());
 }
 
 void KateViewConfig::updateConfig()
@@ -1653,6 +1658,29 @@ void KateViewConfig::setShowScrollbars(int mode)
 
     m_showScrollbarsSet = true;
     m_showScrollbars = qBound(0, mode, 80);
+
+    configEnd();
+}
+
+bool KateViewConfig::autoBrackets() const
+{
+    if (m_autoBracketsSet || isGlobal()) {
+        return m_autoBrackets;
+    }
+
+    return s_global->autoBrackets();
+}
+
+void KateViewConfig::setAutoBrackets(bool on)
+{
+    if (m_autoBracketsSet && m_autoBrackets == on) {
+        return;
+    }
+
+    configStart();
+
+    m_autoBracketsSet = true;
+    m_autoBrackets = on;
 
     configEnd();
 }

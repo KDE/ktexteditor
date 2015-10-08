@@ -461,6 +461,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     connect(ui->chkStaticWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkShowStaticWordWrapMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->sbWordWrap, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
+    connect(ui->chkAutoBrackets, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkSmartCopyCut, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->cmbInputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 
@@ -491,11 +492,13 @@ void KateEditGeneralConfigTab::apply()
 
     KateRendererConfig::global()->setWordWrapMarker(ui->chkShowStaticWordWrapMarker->isChecked());
 
-    KateDocumentConfig::global()->configEnd();
+    KateViewConfig::global()->setAutoBrackets(ui->chkAutoBrackets->isChecked());
     KateViewConfig::global()->setSmartCopyCut(ui->chkSmartCopyCut->isChecked());
-    KateViewConfig::global()->configEnd();
 
     KateViewConfig::global()->setInputModeRaw(ui->cmbInputMode->currentData().toInt());
+
+    KateDocumentConfig::global()->configEnd();
+    KateViewConfig::global()->configEnd();
 }
 
 void KateEditGeneralConfigTab::reload()
@@ -504,6 +507,7 @@ void KateEditGeneralConfigTab::reload()
     ui->chkShowStaticWordWrapMarker->setChecked(KateRendererConfig::global()->wordWrapMarker());
     ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at (value is at 20 or larger)", " character", " characters"));
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
+    ui->chkAutoBrackets->setChecked(KateViewConfig::global()->autoBrackets());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
 
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
