@@ -110,6 +110,22 @@ inline bool isBracket(const QChar &c)
 }
 
 /**
+ * bracket pairs we support for auto brackets per default
+ */
+static QMap<QChar, QChar> &autoBracketPairs()
+{
+    static QMap<QChar, QChar> pairs;
+    if (pairs.isEmpty()) {
+        pairs[QLatin1Char('\'')] = QLatin1Char('\'');
+        pairs[QLatin1Char('\"')] = QLatin1Char('\"');
+        pairs[QLatin1Char('(')] = QLatin1Char(')');
+        pairs[QLatin1Char('[')] = QLatin1Char(']');
+        pairs[QLatin1Char('{')] = QLatin1Char('}');
+    }
+    return pairs;
+}
+
+/**
  * normalize given url
  * @param url input url
  * @return normalized url
@@ -2831,6 +2847,9 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             chars.append(c);
         }
 
+    /**
+     * no printable chars => nothing to insert!
+     */
     if (chars.isEmpty()) {
         return false;
     }
@@ -2885,12 +2904,37 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         insertText(view->cursorPosition(), chars);
     }
 
+    /**
+     * auto bracket handling for newly inserted text
+     */
+    if (view->config()->autoBrackets() && chars.size() == 1) {
+        /**
+         * we inserted a bracket?
+         * => add the matching closing one to the view + input chars
+         * try to preserve the cursor position
+         */
+        const auto bracketIt = autoBracketPairs().find (chars[0]);
+        if (bracketIt != autoBracketPairs().end()) {
+            // add bracket to the view
+            const auto cursorPos(view->cursorPosition());
+            insertText(view->cursorPosition(), QString(bracketIt.value()));
+            view->setCursorPosition(cursorPos);
+
+            // add bracket to chars inserted! needed for correct signals + indent
+            chars.append(bracketIt.value());
+        }
+    }
+
     // end edit session here, to have updated HL in userTypedChar!
     editEnd();
 
+    // trigger indentation
     KTextEditor::Cursor b(view->cursorPosition());
     m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() :  chars.at(chars.length() - 1));
 
+    /**
+     * inform the view about the original inserted chars
+     */
     view->slotTextInserted(view, oldCur, chars);
     return true;
 }
