@@ -116,8 +116,10 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos, const bo
         }
 
         // only show message for active view
-        if (m_doc->activeView() == m_inputModeManager->view()) {
-            m_inputModeManager->getViNormalMode()->message(i18n("Mark set: %1", mark));
+        if ( m_inputModeManager->view()->viewInputMode() == KTextEditor::View::ViInputMode ) {
+            if (m_doc->activeView() == m_inputModeManager->view()) {
+                m_inputModeManager->getViNormalMode()->message(i18n("Mark set: %1", mark));
+            }
         }
     }
 
