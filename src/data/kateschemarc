@@ -3,7 +3,7 @@
 ShippedDefaultSchema=9999
 Color Background=255,255,255
 Color Code Folding=148,202,239
-Color Highlighted Bracket=237,249,255
+Color Highlighted Bracket=255,255,0
 Color Highlighted Line=248,247,246
 Color Icon Bar=214,210,208
 Color Indentation Line=210,210,210
