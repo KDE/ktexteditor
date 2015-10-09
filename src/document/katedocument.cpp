@@ -3016,7 +3016,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
     return true;
 }
 
-void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View* view, const KTextEditor::Cursor& newPos) {
+void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View*, const KTextEditor::Cursor& newPos) {
     if ( m_currentAutobraceRange && ! m_currentAutobraceRange->toRange().contains(newPos) ) {
         m_currentAutobraceRange.clear();
     }
