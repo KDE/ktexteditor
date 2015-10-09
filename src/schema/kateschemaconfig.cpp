@@ -133,7 +133,7 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     items.append(ci);
 
     ci.name = i18n("Current Line Number");
-    ci.key = QLatin1String("Current Color Line Number");
+    ci.key = QLatin1String("Color Current Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the number of the current line (if enabled).</p>");
     ci.defaultColor = colors.color(Kate::CurrentLineNumber);
     items.append(ci);
