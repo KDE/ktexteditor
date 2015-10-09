@@ -29,7 +29,7 @@ class QModelIndex;
 namespace Sonnet
 {
 class BackgroundChecker;
-};
+}
 
 /**
  * @short Spellcheck dialog

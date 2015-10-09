@@ -40,11 +40,11 @@ class QPainter;
 namespace Kate
 {
 class TextFolding;
-};
+}
 namespace KTextEditor
 {
 class Range;
-};
+}
 
 namespace KatePrinter
 {
@@ -168,6 +168,6 @@ private:
     uint m_lineNumberWidth;
 };
 
-};
+}
 
 #endif

@@ -150,6 +150,6 @@ private:
 };
 //END Layout
 
-};
+}
 
 #endif
