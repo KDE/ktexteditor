@@ -5,3 +5,4 @@ v.type("s1;");
 v.enter();
 v.type("label1:");
 v.type(" ");
+v.type("x");
