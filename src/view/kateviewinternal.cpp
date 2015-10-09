@@ -2033,9 +2033,8 @@ void KateViewInternal::updateBracketMarkAttributes()
 void KateViewInternal::updateBracketMarks()
 {
     // add some limit to this, this is really endless on big files without limit
-    int maxLines = 5000;
-    KTextEditor::Range newRange;
-    doc()->newBracketMark(m_cursor, newRange, maxLines);
+    const int maxLines = 5000;
+    const KTextEditor::Range newRange = doc()->findMatchingBracket(m_cursor, maxLines);
 
     // new range valid, then set ranges to it
     if (newRange.isValid()) {

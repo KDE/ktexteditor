@@ -907,8 +907,7 @@ private:
     bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
 
 public:
-    void newBracketMark(const KTextEditor::Cursor &start, KTextEditor::Range &bm, int maxLines = -1);
-    bool findMatchingBracket(KTextEditor::Range &range, int maxLines = -1);
+    KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor & start, int maxLines = -1);
 
 public:
     QString documentName() const Q_DECL_OVERRIDE

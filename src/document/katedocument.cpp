@@ -3910,30 +3910,14 @@ void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
    match it. Otherwise if the character to the right of the cursor is a
    bracket, match it. Otherwise, don't match anything.
 */
-void KTextEditor::DocumentPrivate::newBracketMark(const KTextEditor::Cursor &cursor, KTextEditor::Range &bm, int maxLines)
+KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KTextEditor::Cursor &start, int maxLines)
 {
-    // search from cursor for brackets
-    KTextEditor::Range range(cursor, cursor);
-
-    // if match found, remember the range
-    if (findMatchingBracket(range, maxLines)) {
-        bm = range;
-        return;
-    }
-
-    // else, invalidate, if still valid
-    if (bm.isValid()) {
-        bm = KTextEditor::Range::invalid();
-    }
-}
-
-bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range, int maxLines)
-{
-    Kate::TextLine textLine = m_buffer->plainLine(range.start().line());
+    Kate::TextLine textLine = m_buffer->plainLine(start.line());
     if (!textLine) {
-        return false;
+        return KTextEditor::Range::invalid();
     }
 
+    KTextEditor::Range range(start, start);
     QChar right = textLine->at(range.start().column());
     QChar left  = textLine->at(range.start().column() - 1);
     QChar bracket;
@@ -3942,7 +3926,7 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
         if (isBracket(right)) {
             bracket = right;
         } else {
-            return false;
+            return KTextEditor::Range::invalid();
         }
     } else if (isBracket(left)) {
         range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
@@ -3950,7 +3934,7 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
     } else if (isBracket(right)) {
         bracket = right;
     } else {
-        return false;
+        return KTextEditor::Range::invalid();
     }
 
     QChar opposite;
@@ -3962,14 +3946,14 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
     case ']': opposite = QLatin1Char('['); break;
     case '(': opposite = QLatin1Char(')'); break;
     case ')': opposite = QLatin1Char('('); break;
-    default: return false;
+    default: return KTextEditor::Range::invalid();
     }
 
     const int searchDir = isStartBracket(bracket) ? 1 : -1;
     uint nesting = 0;
 
-    int minLine = qMax(range.start().line() - maxLines, 0);
-    int maxLine = qMin(range.start().line() + maxLines, documentEnd().line());
+    const int minLine = qMax(range.start().line() - maxLines, 0);
+    const int maxLine = qMin(range.start().line() + maxLines, documentEnd().line());
 
     range.setEnd(range.start());
     KTextEditor::DocumentCursor cursor(this);
@@ -3979,7 +3963,7 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
     while (cursor.line() >= minLine && cursor.line() <= maxLine) {
 
         if (!cursor.move(searchDir)) {
-            return false;
+            return KTextEditor::Range::invalid();
         }
 
         Kate::TextLine textLine = kateTextLine(cursor.line());
@@ -3993,7 +3977,7 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
                     } else {
                         range.setStart(cursor.toCursor());
                     }
-                    return true;
+                    return range;
                 }
                 nesting--;
             } else if (c == bracket) {
@@ -4002,7 +3986,7 @@ bool KTextEditor::DocumentPrivate::findMatchingBracket(KTextEditor::Range &range
         }
     }
 
-    return false;
+    return KTextEditor::Range::invalid();
 }
 
 // helper: remove \r and \n from visible document name (bug #170876)
