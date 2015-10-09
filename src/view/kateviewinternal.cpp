@@ -2038,6 +2038,10 @@ void KateViewInternal::updateBracketMarks()
 
     // new range valid, then set ranges to it
     if (newRange.isValid()) {
+        if (m_bm->toRange() == newRange) {
+            return;
+        }
+
         // modify full range
         m_bm->setRange(newRange);
 

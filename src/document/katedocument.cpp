@@ -3932,11 +3932,11 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
         } else {
             return KTextEditor::Range::invalid();
         }
+    } else if (isBracket(right)) {
+        bracket = right;
     } else if (isBracket(left)) {
         range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
         bracket = left;
-    } else if (isBracket(right)) {
-        bracket = right;
     } else {
         return KTextEditor::Range::invalid();
     }
