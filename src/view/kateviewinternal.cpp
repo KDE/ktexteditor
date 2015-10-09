@@ -2261,7 +2261,7 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
                 k->accept();
                 //qCDebug(LOG_KTE) << obj << "shortcut override" << k->key() << "aborting completion";
                 return true;
-            } else if (m_view->bottomViewBar()->isVisible()) {
+            } else if (!m_view->bottomViewBar()->hiddenOrPermanent()) {
                 m_view->bottomViewBar()->hideCurrentBarWidget();
                 k->accept();
                 //qCDebug(LOG_KTE) << obj << "shortcut override" << k->key() << "closing view bar";

@@ -465,6 +465,10 @@ public:
      */
     bool hasPermanentWidget(KateViewBarWidget *barWidget) const;
 
+    /**
+     * @return true if the KateViewBar is hidden or displays a permanentBarWidget */
+    bool hiddenOrPermanent() const;
+
 public Q_SLOTS:
     /**
      * Hides currently shown bar widget

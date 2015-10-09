@@ -2498,6 +2498,15 @@ void KateViewBar::setViewBarVisible(bool visible)
     }
 }
 
+bool KateViewBar::hiddenOrPermanent() const
+{
+    KateViewBarWidget *current = qobject_cast<KateViewBarWidget *>(m_stack->currentWidget());
+    if (!isVisible() || m_permanentBarWidget == current) {
+        return true;
+    }
+    return false;
+}
+
 void KateViewBar::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape) {
