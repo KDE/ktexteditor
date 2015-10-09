@@ -96,33 +96,52 @@
 #define EDIT_DEBUG if (0) qCDebug(LOG_KTE)
 #endif
 
-inline bool isStartBracket(const QChar &c)
+static inline QChar matchingStartBracket(QChar c, bool withQuotes)
 {
-    return c == QLatin1Char('{') || c == QLatin1Char('[') || c == QLatin1Char('(');
-}
-inline bool isEndBracket(const QChar &c)
-{
-    return c == QLatin1Char('}') || c == QLatin1Char(']') || c == QLatin1Char(')');
-}
-inline bool isBracket(const QChar &c)
-{
-    return isStartBracket(c) || isEndBracket(c);
+    switch (c.toLatin1()) {
+        case '}': return QLatin1Char('{');
+        case ']': return QLatin1Char('[');
+        case ')': return QLatin1Char('(');
+        case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
+        case '\"': return withQuotes ? QLatin1Char('\"') : QChar();
+    }
+    return QChar();
 }
 
-/**
- * bracket pairs we support for auto brackets per default
- */
-static QMap<QChar, QChar> &autoBracketPairs()
+static inline QChar matchingEndBracket(QChar c, bool withQuotes)
 {
-    static QMap<QChar, QChar> pairs;
-    if (pairs.isEmpty()) {
-        pairs[QLatin1Char('\'')] = QLatin1Char('\'');
-        pairs[QLatin1Char('\"')] = QLatin1Char('\"');
-        pairs[QLatin1Char('(')] = QLatin1Char(')');
-        pairs[QLatin1Char('[')] = QLatin1Char(']');
-        pairs[QLatin1Char('{')] = QLatin1Char('}');
+    switch (c.toLatin1()) {
+        case '{': return QLatin1Char('}');
+        case '[': return QLatin1Char(']');
+        case '(': return QLatin1Char(')');
+        case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
+        case '\"': return withQuotes ? QLatin1Char('\"') : QChar();
     }
-    return pairs;
+    return QChar();
+}
+
+static inline QChar matchingBracket(QChar c, bool withQuotes)
+{
+    QChar bracket = matchingStartBracket(c, withQuotes);
+    if (bracket.isNull()) {
+        bracket = matchingEndBracket(c, false);
+    }
+    return bracket;
+}
+
+static inline bool isStartBracket(const QChar &c)
+{
+    return ! matchingEndBracket(c, false).isNull();
+}
+
+static inline bool isEndBracket(const QChar &c)
+{
+    return ! matchingStartBracket(c, false).isNull();
+}
+
+static inline bool isBracket(const QChar &c)
+{
+    return isStartBracket(c) || isEndBracket(c);
 }
 
 /**
@@ -2858,24 +2877,19 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
      * auto bracket handling for newly inserted text
      * remember if we should auto add some
      */
-    bool autoAddBrackets = false;
     QChar closingBracket;
     if (view->config()->autoBrackets() && chars.size() == 1) {
         /**
          * we inserted a bracket?
          * => remember the matching closing one
          */
-        const auto bracketIt = autoBracketPairs().find (chars[0]);
-        if (bracketIt != autoBracketPairs().end()) {
-            autoAddBrackets = true;
-            closingBracket = bracketIt.value();
-        }
+        closingBracket = matchingEndBracket(chars[0], true);
     }
 
     /**
      * selection around => special handling if we want to add auto brackets
      */
-    if (view->selection() && autoAddBrackets) {
+    if (view->selection() && !closingBracket.isNull()) {
         /**
          * add bracket at start + end of the selection
          */
@@ -2954,7 +2968,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         * => add the matching closing one to the view + input chars
         * try to preserve the cursor position
         */
-        if (autoAddBrackets) {
+        if (!closingBracket.isNull()) {
             // add bracket to the view
             const auto cursorPos(view->cursorPosition());
             insertText(view->cursorPosition(), QString(closingBracket));
@@ -3922,8 +3936,8 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
     }
 
     KTextEditor::Range range(start, start);
-    QChar right = textLine->at(range.start().column());
-    QChar left  = textLine->at(range.start().column() - 1);
+    const QChar right = textLine->at(range.start().column());
+    const QChar left  = textLine->at(range.start().column() - 1);
     QChar bracket;
 
     if (config()->ovr()) {
@@ -3941,16 +3955,9 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
         return KTextEditor::Range::invalid();
     }
 
-    QChar opposite;
-
-    switch (bracket.toLatin1()) {
-    case '{': opposite = QLatin1Char('}'); break;
-    case '}': opposite = QLatin1Char('{'); break;
-    case '[': opposite = QLatin1Char(']'); break;
-    case ']': opposite = QLatin1Char('['); break;
-    case '(': opposite = QLatin1Char(')'); break;
-    case ')': opposite = QLatin1Char('('); break;
-    default: return KTextEditor::Range::invalid();
+    const QChar opposite = matchingBracket(bracket, false);
+    if (opposite.isNull()) {
+        return KTextEditor::Range::invalid();
     }
 
     const int searchDir = isStartBracket(bracket) ? 1 : -1;
