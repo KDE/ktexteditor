@@ -3179,6 +3179,14 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             }
         }
     }
+    if ( m_currentAutobraceRange ) {
+        const auto r = m_currentAutobraceRange->toRange();
+        if ( r.columnWidth() == 1 && view->cursorPosition() == r.start() ) {
+            // start parenthesis removed and range length is 1, remove end as well
+            del(view, view->cursorPosition());
+            m_currentAutobraceRange.clear();
+        }
+    }
 }
 
 void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
