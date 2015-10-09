@@ -210,7 +210,7 @@ public:
 
                     // if any text is there, append it....
                     if (c > 0) {
-                        // update md5 hash sum
+                        // update hash sum
                         m_digest.addData(m_buffer.data(), c);
                     
                         // detect byte order marks & codec for byte order markers on first read

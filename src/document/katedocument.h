@@ -1008,7 +1008,7 @@ private Q_SLOTS:
 
 private:
     /**
-     * create a MD5 digest of the file, if it is a local file.
+     * Create a git compatible sha1 checksum of the file, if it is a local file.
      * The result can be accessed through KateBuffer::digest().
      *
      * @return wheather the operation was attempted and succeeded.
@@ -1027,8 +1027,8 @@ private:
 
 public:
     /**
-     * md5 digest of this document
-     * @return md5 digest for this document
+     * Returns a git compatible sha1 checksum of this document on disk.
+     * @return checksum for this document on disk
      */
     QByteArray checksum() const Q_DECL_OVERRIDE;
 

@@ -90,7 +90,7 @@ The following interfaces were changed:
    was removed in favor of the Range based KTextEditor::View::setSelection()
  - \p KTextEditor::Document::activeView() \n
    The active view was removed in favor of KTextEditor::MainWindow::activeView().
- - \p KTextEditor::Document::checksum() returns the md5 checksum of the file on disk.
+ - \p KTextEditor::Document::checksum() returns the sha1 checksum (same as git) of the file on disk.
  - \p KTextEditor::Document::wordRangeAt() returns the Range of the word under the given cursor.
  - \p KTextEditor::Document::wordAt() returns the word under the given cursor.
  - \p KTextEditor::Document::character() was renamed to \p KTextEditor::Document::characterAt()

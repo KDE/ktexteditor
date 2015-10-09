@@ -2472,7 +2472,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
         return false;
     }
 
-    // update the md5 digest
+    // update the checksum
     createDigest();
 
     // add m_file again to dirwatch

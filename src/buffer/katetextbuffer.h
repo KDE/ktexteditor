@@ -511,22 +511,22 @@ public:
     void invalidateRanges();
 
     //
-    // md5 checksum handling
+    // checksum handling
     //
 public:
     /**
-     * md5 digest of the document on disk, set either through file loading
+     * Checksum of the document on disk, set either through file loading
      * in openFile() or in KTextEditor::DocumentPrivate::saveFile()
-     * @return md5 digest for this document
+     * @return git compatible sha1 checksum for this document
      */
     const QByteArray &digest() const;
 
     /**
-     * Set the md5sum of this buffer. Make sure this checksum is up-to-date
+     * Set the checksum of this buffer. Make sure this checksum is up-to-date
      * when reading digest().
-     * @param md5sum md5 digest for the document on disk
+     * @param checksum git compatible sha1 digest for the document on disk
      */
-    void setDigest(const QByteArray &md5sum);
+    void setDigest(const QByteArray &checksum);
 
 private:
     QByteArray m_digest;

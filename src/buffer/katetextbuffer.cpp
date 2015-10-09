@@ -699,7 +699,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         }
     }
 
-    // save md5sum of file on disk
+    // save checksum of file on disk
     setDigest(file.digest());
 
     // remember if BOM was found
@@ -739,9 +739,9 @@ const QByteArray &TextBuffer::digest() const
     return m_digest;
 }
 
-void TextBuffer::setDigest(const QByteArray &md5sum)
+void TextBuffer::setDigest(const QByteArray &checksum)
 {
-    m_digest = md5sum;
+    m_digest = checksum;
 }
 
 void TextBuffer::setTextCodec(QTextCodec *codec)

@@ -151,7 +151,7 @@ bool SwapFile::isValidSwapFile(QDataStream &stream, bool checkDigest) const
         return false;
     }
 
-    // read md5 checksum
+    // read checksum
     QByteArray checksum;
     stream >> checksum;
     //qCDebug(LOG_KTE) << "DIGEST:" << checksum << m_document->checksum();
@@ -443,7 +443,7 @@ void SwapFile::startEditing()
         // write file header
         m_stream << QByteArray(swapFileVersionString);
 
-        // write md5 checksum
+        // write checksum
         m_stream << m_document->checksum();
     } else if (m_stream.device() == 0) {
         m_swapfile.open(QIODevice::Append);

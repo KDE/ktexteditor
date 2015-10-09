@@ -124,7 +124,7 @@ static bool isInWord(const KTextEditor::View* view, const KTextEditor::Cursor& p
     KateHighlighting* highlight = document->highlight();
     Kate::TextLine line = document->kateTextLine(position.line());
     return highlight->isInWord(c, line->attribute(position.column()-1));
-};
+}
 
 KTextEditor::Range KateKeywordCompletionModel::completionRange(KTextEditor::View* view,
                                                                const KTextEditor::Cursor& position)

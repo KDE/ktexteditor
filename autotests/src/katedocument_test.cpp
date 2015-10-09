@@ -385,7 +385,7 @@ void KateDocumentTest::testInsertNewline()
     doc.editWrapLine(1, 4);
 }
 
-// we have two different ways of creating the md5 checksum:
+// we have two different ways of creating the checksum:
 // in KateFileLoader and KTextEditor::DocumentPrivate::createDigest. Make
 // sure, these two implementations result in the same checksum.
 void KateDocumentTest::testDigest()
