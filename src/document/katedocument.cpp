@@ -3912,6 +3912,10 @@ void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
 */
 KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KTextEditor::Cursor &start, int maxLines)
 {
+    if (maxLines < 0) {
+        return KTextEditor::Range::invalid();
+    }
+
     Kate::TextLine textLine = m_buffer->plainLine(start.line());
     if (!textLine) {
         return KTextEditor::Range::invalid();
