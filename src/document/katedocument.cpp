@@ -2991,7 +2991,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
                                                          KTextEditor::MovingRange::DoNotExpand));
             connect(view, &View::cursorPositionChanged,
-                    this, &DocumentPrivate::checkCursorForAutobrace);
+                    this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
 
             // add bracket to chars inserted! needed for correct signals + indent
             chars.append(closingBracket);
