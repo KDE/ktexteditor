@@ -2884,6 +2884,20 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
          * => remember the matching closing one
          */
         closingBracket = matchingEndBracket(chars[0], true);
+
+        /**
+         * closing bracket for the autobracket we inserted earlier?
+         */
+        if ( m_currentAutobraceClosingChar == chars[0] && m_currentAutobraceRange ) {
+            // do nothing
+            m_currentAutobraceRange.reset(nullptr);
+            view->cursorRight();
+            return true;
+        }
+
+        if ( ! closingBracket.isNull() ) {
+            m_currentAutobraceClosingChar = closingBracket;
+        }
     }
 
     /**
@@ -2972,7 +2986,12 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             // add bracket to the view
             const auto cursorPos(view->cursorPosition());
             insertText(view->cursorPosition(), QString(closingBracket));
+            const auto insertedAt(view->cursorPosition());
             view->setCursorPosition(cursorPos);
+            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
+                                                         KTextEditor::MovingRange::DoNotExpand));
+            connect(view, &View::cursorPositionChanged,
+                    this, &DocumentPrivate::checkCursorForAutobrace);
 
             // add bracket to chars inserted! needed for correct signals + indent
             chars.append(closingBracket);
@@ -2995,6 +3014,12 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
      * be done
      */
     return true;
+}
+
+void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View* view, const KTextEditor::Cursor& newPos) {
+    if ( m_currentAutobraceRange && ! m_currentAutobraceRange->toRange().contains(newPos) ) {
+        m_currentAutobraceRange.clear();
+    }
 }
 
 void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v)

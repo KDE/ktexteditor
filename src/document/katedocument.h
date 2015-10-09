@@ -1385,6 +1385,19 @@ private:
      */
     QPointer<KateTemplateHandler> m_activeTemplateHandler;
 
+private:
+    /**
+     * current autobrace range
+     */
+    QSharedPointer<KTextEditor::MovingRange> m_currentAutobraceRange;
+    /**
+     * current autobrace closing charater (e.g. ']')
+     */
+    QChar m_currentAutobraceClosingChar;
+
+private Q_SLOTS:
+    void checkCursorForAutobrace(KTextEditor::View* view, const KTextEditor::Cursor& newPos);
+
 public:
     void setActiveTemplateHandler(KateTemplateHandler* handler);
 
