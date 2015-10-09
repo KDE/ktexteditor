@@ -2977,11 +2977,11 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         }
 
         /**
-        * auto bracket handling for newly inserted text
-        * we inserted a bracket?
-        * => add the matching closing one to the view + input chars
-        * try to preserve the cursor position
-        */
+         * auto bracket handling for newly inserted text
+         * we inserted a bracket?
+         * => add the matching closing one to the view + input chars
+         * try to preserve the cursor position
+         */
         if (!closingBracket.isNull()) {
             // add bracket to the view
             const auto cursorPos(view->cursorPosition());
