@@ -2985,16 +2985,19 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         if (!closingBracket.isNull()) {
             // add bracket to the view
             const auto cursorPos(view->cursorPosition());
-            insertText(view->cursorPosition(), QString(closingBracket));
-            const auto insertedAt(view->cursorPosition());
-            view->setCursorPosition(cursorPos);
-            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
-                                                         KTextEditor::MovingRange::DoNotExpand));
-            connect(view, &View::cursorPositionChanged,
-                    this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
+            const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
+            if ( nextChar.isEmpty() || ! nextChar.at(0).isLetterOrNumber() ) {
+                insertText(view->cursorPosition(), QString(closingBracket));
+                const auto insertedAt(view->cursorPosition());
+                view->setCursorPosition(cursorPos);
+                m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
+                                                            KTextEditor::MovingRange::DoNotExpand));
+                connect(view, &View::cursorPositionChanged,
+                        this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
 
-            // add bracket to chars inserted! needed for correct signals + indent
-            chars.append(closingBracket);
+                // add bracket to chars inserted! needed for correct signals + indent
+                chars.append(closingBracket);
+            }
         }
 
         // end edit session here, to have updated HL in userTypedChar!
