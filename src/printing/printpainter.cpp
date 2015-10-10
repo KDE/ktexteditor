@@ -25,9 +25,7 @@
 #include "katetextfolding.h"
 #include "katedocument.h"
 #include "katebuffer.h"
-#include "katerenderer.h"
 #include "kateview.h"
-#include "kateconfig.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katetextlayout.h"
@@ -86,7 +84,6 @@ public:
 PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
     : m_view(view)
     , m_doc(doc)
-    , m_colorScheme()
     , m_printGuide(false)
     , m_printLineNumbers(false)
     , m_useHeader(false)
@@ -109,7 +106,6 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     m_folding = new Kate::TextFolding(m_doc->buffer());
 
     m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
-    m_renderer->config()->setSchema(m_colorScheme);
     m_renderer->setPrinterFriendly(true);
 
     m_fontHeight = m_renderer->fontHeight();
@@ -499,7 +495,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     QString _hlName = m_doc->highlight()->name();
 
     QList<KTextEditor::Attribute::Ptr> _attributes; // list of highlight attributes for the legend
-    m_doc->highlight()->getKateExtendedAttributeList(m_colorScheme, _attributes);
+    m_doc->highlight()->getKateExtendedAttributeList(m_renderer->config()->schema(), _attributes);
 
     KateAttributeList _defaultAttributes;
     KateHlManager::self()->getDefaults(m_renderer->config()->schema(), _defaultAttributes);

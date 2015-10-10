@@ -27,13 +27,15 @@
 #include <QColor>
 #include <QFont>
 
+#include "kateconfig.h"
+#include "katerenderer.h"
+
 namespace KTextEditor
 {
 class DocumentPrivate;
 class ViewPrivate;
 }
 
-class KateRenderer;
 class QPrinter;
 class QPainter;
 
@@ -62,7 +64,8 @@ public:
     // Attributes
     void setColorScheme(const QString &scheme)
     {
-        m_colorScheme = scheme;
+        // directly set that for the renderer
+        m_renderer->config()->setSchema(scheme);
     }
     void setPrintGuide(const bool on)
     {
@@ -136,7 +139,6 @@ private:
     KTextEditor::ViewPrivate     *m_view;
     KTextEditor::DocumentPrivate *m_doc;
 
-    QString m_colorScheme;
     bool m_printGuide;
     bool m_printLineNumbers;
     bool m_useHeader;
