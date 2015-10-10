@@ -1,8 +1,5 @@
+# install the desktop files
+install(FILES ktexteditor.desktop ktexteditorplugin.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
 
-########### install files ###############
-
-
-# install the export file
-install( FILES ktexteditor.desktop ktexteditorplugin.desktop DESTINATION  ${KDE_INSTALL_KSERVICETYPES5DIR} )
-
-install( FILES katemoderc kateschemarc katesyntaxhighlightingrc DESTINATION  ${KDE_INSTALL_CONFDIR} )
+# install the config files
+install(FILES katemoderc kateschemarc katesyntaxhighlightingrc DESTINATION ${KDE_INSTALL_CONFDIR})
