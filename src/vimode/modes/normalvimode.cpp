@@ -1225,7 +1225,7 @@ bool NormalViMode::commandYankLine()
     QString lines;
     int linenum = c.line();
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         lines.append(getLine(linenum + i) + QLatin1Char('\n'));
     }
 
@@ -1576,7 +1576,7 @@ bool NormalViMode::commandScrollPageDown()
 {
     if (getCount() < m_scroll_count_limit) {
 
-        for (uint i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount(); i++) {
             m_view->pageDown();
         }
     }
@@ -1586,7 +1586,7 @@ bool NormalViMode::commandScrollPageDown()
 bool NormalViMode::commandScrollPageUp()
 {
     if (getCount() < m_scroll_count_limit) {
-        for (uint i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount(); i++) {
             m_view->pageUp();
         }
     }
@@ -1597,7 +1597,7 @@ bool NormalViMode::commandScrollPageUp()
 bool NormalViMode::commandScrollHalfPageUp()
 {
     if (getCount() < m_scroll_count_limit) {
-        for (uint i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount(); i++) {
             m_viewInternal->pageUp(false, true);
         }
     }
@@ -1607,7 +1607,7 @@ bool NormalViMode::commandScrollHalfPageUp()
 bool NormalViMode::commandScrollHalfPageDown()
 {
     if (getCount() < m_scroll_count_limit) {
-        for (uint i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount(); i++) {
             m_viewInternal->pageDown(false, true);
         }
     }
@@ -2102,7 +2102,7 @@ Range NormalViMode::motionWordForward()
     if (c.line() == doc()->lines() - 1 && c.column() == doc()->lineLength(c.line()) - 1) {
         r.motionType = InclusiveMotion;
     } else {
-        for (unsigned int i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount(); i++) {
             c = findNextWordStart(c.line(), c.column());
 
             // stop when at the last char in the document
@@ -2131,7 +2131,7 @@ Range NormalViMode::motionWordBackward()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findPrevWordStart(c.line(), c.column());
 
         if (!c.isValid()) {
@@ -2153,7 +2153,7 @@ Range NormalViMode::motionWORDForward()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findNextWORDStart(c.line(), c.column());
 
         // stop when at the last char in the document
@@ -2175,7 +2175,7 @@ Range NormalViMode::motionWORDBackward()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findPrevWORDStart(c.line(), c.column());
 
         if (!c.isValid()) {
@@ -2196,7 +2196,7 @@ Range NormalViMode::motionToEndOfWord()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findWordEnd(c.line(), c.column());
     }
 
@@ -2217,7 +2217,7 @@ Range NormalViMode::motionToEndOfWORD()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findWORDEnd(c.line(), c.column());
     }
 
@@ -2238,7 +2238,7 @@ Range NormalViMode::motionToEndOfPrevWord()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findPrevWordEnd(c.line(), c.column());
 
         if (c.isValid()) {
@@ -2262,7 +2262,7 @@ Range NormalViMode::motionToEndOfPrevWORD()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c = findPrevWORDEnd(c.line(), c.column());
 
         if (c.isValid()) {
@@ -2325,7 +2325,7 @@ Range NormalViMode::motionFindChar()
 
     int matchColumn = cursor.column();
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         matchColumn = line.indexOf(m_keys.right(1), matchColumn + 1);
         if (matchColumn == -1) {
             break;
@@ -2354,7 +2354,7 @@ Range NormalViMode::motionFindCharBackward()
 
     int matchColumn = -1;
 
-    unsigned int hits = 0;
+    int hits = 0;
     int i = cursor.column() - 1;
 
     while (hits != getCount() && i >= 0) {
@@ -2394,7 +2394,7 @@ Range NormalViMode::motionToChar()
 
     int matchColumn = cursor.column() + (m_isRepeatedTFcommand ? 2 : 1);
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         const int lastColumn = matchColumn;
         matchColumn = line.indexOf(m_keys.right(1), matchColumn + ((i > 0) ? 1 : 0));
         if (matchColumn == -1) {
@@ -2425,7 +2425,7 @@ Range NormalViMode::motionToCharBackward()
 
     int matchColumn = originalColumn - 1;
 
-    unsigned int hits = 0;
+    int hits = 0;
     int i = cursor.column() - (m_isRepeatedTFcommand ? 2 : 1);
 
     Range r(cursor, ExclusiveMotion);
@@ -2937,7 +2937,7 @@ Range NormalViMode::motionToBeforeParagraph()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         // advance at least one line, but if there are consecutive blank lines
         // skip them all
         do {
@@ -2965,7 +2965,7 @@ Range NormalViMode::motionToAfterParagraph()
 
     m_stickyColumn = -1;
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         // advance at least one line, but if there are consecutive blank lines
         // skip them all
         do {
@@ -3014,7 +3014,7 @@ Range NormalViMode::textObjectAWord()
         }
     }
     KTextEditor::Cursor c2 = KTextEditor::Cursor(c.line(), c.column() - 1);
-    for (unsigned int i = 1; i <= getCount(); i++) {
+    for (int i = 1; i <= getCount(); i++) {
         c2 = findWordEnd(c2.line(), c2.column());
     }
     if (!c1.isValid() || !c2.isValid()) {
@@ -3062,7 +3062,7 @@ Range NormalViMode::textObjectInnerWord()
     // need to start search in column-1 because it might be a one-character word
     KTextEditor::Cursor c2(c.line(), c.column() - 1);
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c2 = findWordEnd(c2.line(), c2.column(), true);
     }
 
@@ -3093,7 +3093,7 @@ Range NormalViMode::textObjectAWORD()
         }
     }
     KTextEditor::Cursor c2 = KTextEditor::Cursor(c.line(), c.column() - 1);
-    for (unsigned int i = 1; i <= getCount(); i++) {
+    for (int i = 1; i <= getCount(); i++) {
         c2 = findWORDEnd(c2.line(), c2.column());
     }
     if (!c1.isValid() || !c2.isValid()) {
@@ -3140,7 +3140,7 @@ Range NormalViMode::textObjectInnerWORD()
     }
     KTextEditor::Cursor c2(c);
 
-    for (unsigned int i = 0; i < getCount(); i++) {
+    for (int i = 0; i < getCount(); i++) {
         c2 = findWORDEnd(c2.line(), c2.column(), true);
     }
 

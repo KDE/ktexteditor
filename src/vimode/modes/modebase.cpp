@@ -754,11 +754,11 @@ Range ModeBase::findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner
     return r;
 }
 
-int ModeBase::findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward) const
+int ModeBase::findLineStartingWitchChar(const QChar &c, int count, bool forward) const
 {
     int line = m_view->cursorPosition().line();
     int lines = doc()->lines();
-    unsigned int hits = 0;
+    int hits = 0;
 
     if (forward) {
         line++;
@@ -1360,7 +1360,7 @@ void ModeBase::scrollViewLines(int l)
     m_viInputModeManager->inputAdapter()->scrollViewLines(l);
 }
 
-unsigned int ModeBase::getCount() const
+int ModeBase::getCount() const
 {
     if (m_oneTimeCountOverride != -1) {
         return m_oneTimeCountOverride;

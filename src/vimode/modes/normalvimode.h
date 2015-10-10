@@ -348,7 +348,7 @@ protected:
 
     unsigned int m_countTemp;
     int m_motionOperatorIndex;
-    uint m_scroll_count_limit;
+    int m_scroll_count_limit;
 
     QVector<Command *> m_commands;
     QVector<Motion *> m_motions;

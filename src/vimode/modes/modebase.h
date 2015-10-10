@@ -86,7 +86,7 @@ public:
     Range motionFindPrev();
 
     virtual void goToPos(const Range &r);
-    unsigned int getCount() const;
+    int getCount() const;
 
 protected:
     // helper methods
@@ -112,7 +112,7 @@ protected:
     Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
     Range findSurroundingQuotes(const QChar &c, bool inner = false) const;
 
-    int findLineStartingWitchChar(const QChar &c, unsigned int count, bool forward = true) const;
+    int findLineStartingWitchChar(const QChar &c, int count, bool forward = true) const;
     void updateCursor(const KTextEditor::Cursor &c) const;
     const QChar getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidht) const;
 
