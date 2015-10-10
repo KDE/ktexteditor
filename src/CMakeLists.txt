@@ -290,7 +290,6 @@ PRIVATE
   KF5::IconThemes
   KF5::ItemViews
   KF5::SonnetCore
-  KF5::KIOFileWidgets
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 

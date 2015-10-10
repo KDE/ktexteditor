@@ -600,6 +600,10 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(KStandardAction::SaveAs, m_doc, SLOT(documentSaveAs()));
     a->setWhatsThis(i18n("Save the current document to disk, with a name of your choice."));
 
+    a = new KateViewEncodingAction(m_doc, this, i18n("Save As with &Encoding..."), this, true /* special mode for save as */);
+    a->setIcon(QIcon::fromTheme(QLatin1String("document-save-as")));
+    ac->addAction(QLatin1String("file_save_as_with_encoding"), a);
+
     a = ac->addAction(QLatin1String("file_save_copy_as"));
     a->setIcon(QIcon::fromTheme(QLatin1String("document-save-as")));
     a->setText(i18n("Save &Copy As..."));
@@ -780,6 +784,7 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->addAction(QLatin1String("add_bom"), a);
     a->setWhatsThis(i18n("Enable/disable adding of byte order markers for UTF-8/UTF-16 encoded files while saving"));
     connect(m_addBom, SIGNAL(triggered(bool)), this, SLOT(setAddBom(bool)));
+
     // encoding menu
     m_encodingAction = new KateViewEncodingAction(m_doc, this, i18n("E&ncoding"), this);
     ac->addAction(QLatin1String("set_encoding"), m_encodingAction);

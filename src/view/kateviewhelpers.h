@@ -312,7 +312,7 @@ class KateViewEncodingAction: public KSelectAction
     Q_PROPERTY(int codecMib READ currentCodecMib)
 
 public:
-    KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent);
+    KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode = false);
 
     ~KateViewEncodingAction();
 
@@ -357,6 +357,8 @@ private:
 
     Private *const d;
     Q_PRIVATE_SLOT(d, void _k_subActionTriggered(QAction *))
+
+    const bool m_saveAsMode;
 
 private Q_SLOTS:
     void setEncoding(const QString &e);

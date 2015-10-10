@@ -2219,8 +2219,9 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
     }
 }
 
-KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent)
+KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode)
     : KSelectAction(text, parent), doc(_doc), view(_view), d(new Private(this))
+    , m_saveAsMode(saveAsMode)
 {
     d->init();
 
@@ -2240,6 +2241,17 @@ void KateViewEncodingAction::slotAboutToShow()
 
 void KateViewEncodingAction::setEncoding(const QString &e)
 {
+    /**
+     * in save as mode => trigger saveAs
+     */
+    if (m_saveAsMode) {
+        doc->documentSaveAsWithEncoding(e);
+        return;
+    }
+
+    /**
+     * else switch encoding
+     */
     doc->userSetEncodingForNextReload();
     doc->setEncoding(e);
     view->reloadFile();

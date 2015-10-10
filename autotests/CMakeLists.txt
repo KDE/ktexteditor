@@ -10,10 +10,10 @@ set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 include_directories(
   # for config.h
   ${CMAKE_BINARY_DIR}
-  
+
   # for generated ktexteditor headers
   ${CMAKE_BINARY_DIR}/src/include
-  
+
   # for normal sources
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/include
@@ -36,7 +36,6 @@ add_definitions(-DJS_DATA_DIR="${CMAKE_SOURCE_DIR}/src/script/data/")
 
 set (KTEXTEDITOR_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
-  KF5::KIOFileWidgets
   KF5::IconThemes
   KF5::GuiAddons
   Qt5::Script)

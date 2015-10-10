@@ -945,6 +945,7 @@ public Q_SLOTS:
 
     bool documentSave() Q_DECL_OVERRIDE;
     bool documentSaveAs() Q_DECL_OVERRIDE;
+    bool documentSaveAsWithEncoding(const QString &encoding);
     bool documentSaveCopyAs();
 
     bool save() Q_DECL_OVERRIDE;
