@@ -37,6 +37,7 @@
 
 #include <QPoint>
 #include <QTimer>
+#include <QElapsedTimer>
 #include <QTime>
 #include <QDrag>
 #include <QWidget>
@@ -295,7 +296,7 @@ private:
 
     //Whether the current completion-item was expanded while the last press of ALT
     bool m_completionItemExpanded;
-    QTime m_altDownTime;
+    QElapsedTimer m_altDownTime;
 
     // Bracket mark and corresponding decorative ranges
     KTextEditor::MovingRange *m_bm, *m_bmStart, *m_bmEnd;

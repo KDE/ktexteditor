@@ -2368,7 +2368,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
     if (e->key() == Qt::Key_Alt && m_view->completionWidget()->isCompletionActive()) {
         m_completionItemExpanded = m_view->completionWidget()->toggleExpanded(true);
         m_view->completionWidget()->resetHadNavigation();
-        m_altDownTime = QTime::currentTime();
+        m_altDownTime.start();
     }
 
     // Note: AND'ing with <Shift> is a quick hack to fix Key_Enter
@@ -2465,7 +2465,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
 
 void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 {
-    if (e->key() == Qt::Key_Alt && m_view->completionWidget()->isCompletionActive() && ((m_completionItemExpanded && (m_view->completionWidget()->hadNavigation() || m_altDownTime.msecsTo(QTime::currentTime()) > 300)) || (!m_completionItemExpanded && !m_view->completionWidget()->hadNavigation()))) {
+    if (e->key() == Qt::Key_Alt && m_view->completionWidget()->isCompletionActive() && ((m_completionItemExpanded && (m_view->completionWidget()->hadNavigation() || m_altDownTime.elapsed() > 300)) || (!m_completionItemExpanded && !m_view->completionWidget()->hadNavigation()))) {
 
         m_view->completionWidget()->toggleExpanded(false, true);
     }
