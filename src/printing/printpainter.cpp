@@ -676,12 +676,12 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
     if (remainder) {
         proceedLines = qMin((pl.maxHeight - y) / m_fontHeight, remainder);
 
-        painter.translate(0, -(_lines - remainder) * m_fontHeight + 1);
-        painter.setClipRect(0, (_lines - remainder) * m_fontHeight + 1, pl.maxWidth, proceedLines * m_fontHeight); //### drop the crosspatch in printerfriendly mode???
+        painter.translate(0, -(_lines - int(remainder)) * m_fontHeight + 1);
+        painter.setClipRect(0, (_lines - int(remainder)) * m_fontHeight + 1, pl.maxWidth, proceedLines * m_fontHeight); //### drop the crosspatch in printerfriendly mode???
         remainder -= proceedLines;
     } else if (y + m_fontHeight * _lines > pl.maxHeight) {
         remainder = _lines - ((pl.maxHeight - y) / m_fontHeight);
-        painter.setClipRect(0, 0, pl.maxWidth, (_lines - remainder) * m_fontHeight + 1); //### drop the crosspatch in printerfriendly mode???
+        painter.setClipRect(0, 0, pl.maxWidth, (_lines - int(remainder)) * m_fontHeight + 1); //### drop the crosspatch in printerfriendly mode???
     }
 
     m_renderer->paintTextLine(painter, rangeptr, 0, (int)pl.maxWidth);
