@@ -23,7 +23,7 @@ Changelog:
 
 -->
 
-<language name="CSS" version="2.11" kateversion="3.4" section="Markup" extensions="*.css" indenter="cstyle" mimetype="text/css" author="Wilbert Berendsen (wilbert@kde.nl)" license="LGPL">
+<language name="CSS" version="2.12" kateversion="5.0" section="Markup" extensions="*.css" indenter="cstyle" mimetype="text/css" author="Wilbert Berendsen (wilbert@kde.nl)" license="LGPL">
 
 	<highlighting>
 		<list name="properties">
@@ -902,7 +902,7 @@ Changelog:
 				<itemData name="String"  defStyleNum="dsString"/>
 				<itemData name="Value"  defStyleNum="dsDataType" spellChecking="false"/>
 				<itemData name="Important" defStyleNum="dsKeyword" spellChecking="false"/>
-				<itemData name="Selector Attr" defStyleNum="dsChar" spellChecking="false"/>
+				<itemData name="Selector Attr" defStyleNum="dsAttribute" spellChecking="false"/>
 				<itemData name="Selector Id"  defStyleNum="dsFloat" bold="1" spellChecking="false"/>
 				<itemData name="Selector Class"  defStyleNum="dsFloat" spellChecking="false"/>
 				<itemData name="Selector Pseudo"  defStyleNum="dsDecVal" spellChecking="false"/>
