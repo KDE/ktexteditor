@@ -38,15 +38,11 @@ QStringList readListing(const QString &fileName)
         return QStringList();
     }
 
-    QXmlStreamReader xml(&file);
     QStringList listing;
-    while (!xml.atEnd()) {
-        xml.readNext();
-
-        // add only .xml files, no .json or stuff
-        if (xml.isCharacters() && xml.text().toString().contains(QLatin1String(".xml"))) {
-            listing.append(xml.text().toString());
-        }
+    QTextStream stream(&file);
+    while (!stream.atEnd()) {
+        const QString line = stream.readLine();
+        listing << line;
     }
     return listing;
 }
