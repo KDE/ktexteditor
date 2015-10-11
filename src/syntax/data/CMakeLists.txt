@@ -29,7 +29,8 @@ set(ALL_HIGHLIGHTERS
     ${CMAKE_CURRENT_BINARY_DIR}/javascript-php.xml
 )
 
-set(INDEXFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/index.json.in)
+# we create a resource file and an index json
+set(INDEXFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/index.qrc)
 set(INDEXFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/index.json)
 
 # our xsd
@@ -37,9 +38,16 @@ set (LANGUAGE_XSD "${CMAKE_CURRENT_SOURCE_DIR}/language.xsd")
 
 # write out file containing list of all highlighter files
 file(REMOVE ${INDEXFILE_IN})
+file(APPEND ${INDEXFILE_IN} "<!DOCTYPE RCC>\n")
+file(APPEND ${INDEXFILE_IN} "<RCC version=\"1.0\">\n")
+file(APPEND ${INDEXFILE_IN} "<qresource prefix=\"/ktexteditor/syntax\">\n")
+file(APPEND ${INDEXFILE_IN} "<file alias=\"index.json\">${INDEXFILE_OUT}</file>\n")
 foreach(highlighter ${ALL_HIGHLIGHTERS})
-    file(APPEND ${INDEXFILE_IN} "${highlighter}\n")
+    get_filename_component(highlighter_base ${highlighter} NAME)
+    file(APPEND ${INDEXFILE_IN} "<file alias=\"${highlighter_base}\">${highlighter}</file>\n")
 endforeach()
+file(APPEND ${INDEXFILE_IN} "</qresource>\n")
+file(APPEND ${INDEXFILE_IN} "</RCC>\n")
 
 # tool to create json index of highlightings, will validate all highlightings, too!
 add_executable(katehighlightingindexer katehighlightingindexer.cpp)
