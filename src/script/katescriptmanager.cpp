@@ -119,10 +119,12 @@ void KateScriptManager::collect()
     foreach (const QString &type, QStringList() << QLatin1String("indentation") << QLatin1String("commands")) {
         // get a list of all unique .js files for the current type
         const QString basedir = QLatin1String("katepart5/script/") + type;
-        const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, basedir, QStandardPaths::LocateDirectory);
+        QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, basedir, QStandardPaths::LocateDirectory);
+
+        // add resource dir
+        dirs.append(QLatin1String(":/ktexteditor/script/") + type);
 
         QStringList list;
-
         foreach (const QString &dir, dirs) {
             const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.js"));
             foreach (const QString &file, fileNames) {

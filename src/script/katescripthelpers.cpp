@@ -75,10 +75,15 @@ QScriptValue read(QScriptContext *context, QScriptEngine *)
          * skip on errors
          */
         const QString name = context->argument(i).toString();
-        const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+        QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
                                  QLatin1String("katepart5/script/files/") + name);
         if (fullName.isEmpty()) {
-            continue;
+            /**
+             * retry with resource
+             */
+            fullName = QLatin1String(":/ktexteditor/script/files/") + name;
+            if (!QFile::exists(fullName))
+                continue;
         }
 
         /**
@@ -113,10 +118,15 @@ QScriptValue require(QScriptContext *context, QScriptEngine *engine)
          * skip on errors
          */
         const QString name = context->argument(i).toString();
-        const QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+        QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
                                  QLatin1String("katepart5/script/libraries/") + name);
         if (fullName.isEmpty()) {
-            continue;
+            /**
+             * retry with resource
+             */
+            fullName = QLatin1String(":/ktexteditor/script/libraries/") + name;
+            if (!QFile::exists(fullName))
+                continue;
         }
 
         /**

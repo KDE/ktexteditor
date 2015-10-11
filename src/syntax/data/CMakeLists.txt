@@ -39,5 +39,5 @@ endforeach()
 file(APPEND ${INDEXFILE_IN} "</qresource>\n")
 file(APPEND ${INDEXFILE_IN} "</RCC>\n")
 
-# install only README & language XSD, the other stuff is in a resource
-install(FILES README.md  language.xsd DESTINATION ${KDE_INSTALL_DATADIR}/katepart5/syntax)
+# install only README
+install(FILES README.md DESTINATION ${KDE_INSTALL_DATADIR}/katepart5/syntax)
