@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
-<language name="GLSL" section="Sources" extensions="*.glsl;*.vert;*.frag;*.geom;*.tcs;*.tes" mimetype="text/x-glslsrc" version="1.04" kateversion="2.4" author="Oliver Richers (o.richers@tu-bs.de)" license="LGPL">
+<language name="GLSL" section="Sources" extensions="*.glsl;*.vert;*.frag;*.geom;*.tcs;*.tes" mimetype="text/x-glslsrc" version="1.05" kateversion="5.0" author="Oliver Richers (o.richers@tu-bs.de)" license="LGPL">
 	<highlighting>
 		<list name="keywords">
 			<item>break</item>
@@ -1193,8 +1193,8 @@
 			<itemData name="Normal Text"    defStyleNum="dsNormal"/>
 			<itemData name="Keyword"        defStyleNum="dsKeyword"/>
 			<itemData name="Function"       defStyleNum="dsFunction" bold="0"/>
-			<itemData name="StdFunction"    defStyleNum="dsFunction" bold="1"/>
-			<itemData name="StdVariable"    defStyleNum="dsFunction" bold="0"/>
+			<itemData name="StdFunction"    defStyleNum="dsBuiltIn" bold="1"/>
+			<itemData name="StdVariable"    defStyleNum="dsVariable" bold="0"/>
 			<itemData name="Data Type"      defStyleNum="dsDataType"/>
 			<itemData name="Type Qualifier" defStyleNum="dsDataType"/>
 			<itemData name="Decimal"        defStyleNum="dsDecVal"/>
@@ -1202,7 +1202,7 @@
 			<itemData name="Hex"            defStyleNum="dsBaseN"/>
 			<itemData name="Float"          defStyleNum="dsFloat"/>
 			<itemData name="Symbol"         defStyleNum="dsNormal"/>
-			<itemData name="Preprocessor"   defStyleNum="dsOthers"/>
+			<itemData name="Preprocessor"   defStyleNum="dsPreprocessor"/>
 			<itemData name="Comment"        defStyleNum="dsComment"/>
 			<itemData name="Alert"          defStyleNum="dsAlert" />
 		</itemDatas>

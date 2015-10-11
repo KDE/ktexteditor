@@ -1,13 +1,13 @@
 # Normal Schema, Default Item Styles
 [Default Item Styles - Schema Normal]
 Alert=ffbf0303,ff9c0e0e,1,0,,,fff7e6e6,-,,---
-Annotation=ff0095ff,ffffffff,,0,,,-,-,,---
+Annotation=ffca60ca,ffa44ea4,,0,,,-,-,,---
 Attribute=ff0057ae,ff00316e,,0,,,-,-,,---
 Base-N Integer=ffb08000,ff805c00,,,,,-,-,,---
 Built-in=ff644a9b,ff452886,1,0,,,-,-,,---
 Character=ff924c9d,ff6c2477,,0,,,-,-,,---
 Comment=ff898887,ff5e5d5d,,0,,,-,-,,---
-Comment Variable=ffca60ca,ffa44ea4,,0,,,-,-,,---
+Comment Variable=ff0095ff,ffffffff,,0,,,-,-,,---
 Constant=ffaa5500,ff5e2f00,0,0,,,-,-,,---
 Control Flow=ff1f1c1b,ffffffff,1,0,,,-,-,,---
 Data Type=ff0057ae,ff00316e,,,,,-,-,,---
@@ -35,13 +35,13 @@ Warning=ffbf0303,ff9c0e0e,,0,,,-,-,,---
 # Printing Schema, Default Item Styles
 [Default Item Styles - Schema Printing]
 Alert=ffbf0303,ff9c0e0e,1,0,,,fff7e6e6,-,,---
-Annotation=ff0095ff,ffffffff,,0,,,-,-,,---
+Annotation=ffca60ca,ffa44ea4,,0,,,-,-,,---
 Attribute=ff0057ae,ff00316e,,0,,,-,-,,---
 Base-N Integer=ffb08000,ff805c00,,,,,-,-,,---
 Built-in=ff644a9b,ff452886,,0,,,-,-,,---
 Character=ff924c9d,ff6c2477,,0,,,-,-,,---
 Comment=ff898887,ff5e5d5d,,0,,,-,-,,---
-Comment Variable=ffca60ca,ffa44ea4,,0,,,-,-,,---
+Comment Variable=ff0095ff,ffffffff,,0,,,-,-,,---
 Constant=ffaa5500,ff5e2f00,0,0,,,-,-,,---
 Control Flow=ff000000,ffffffff,1,0,,,-,-,,---
 Data Type=ff0057ae,ff00316e,,,,,-,-,,---

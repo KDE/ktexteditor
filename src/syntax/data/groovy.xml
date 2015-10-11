@@ -3,7 +3,7 @@
 <!--
     Based on the java syntax file 1.19 by Alfredo Luiz Foltran Fialho (alfoltran@ig.com.br)
 -->
-<language name="Groovy" version="1.0" kateversion="2.4" section="Sources" extensions="*.groovy" license="LGPL" author="Chris Reeves (chris@ev-soft.net)">
+<language name="Groovy" version="1.1" kateversion="5.0" section="Sources" extensions="*.groovy" license="LGPL" author="Chris Reeves (chris@ev-soft.net)">
 	<highlighting>
 		<list name="java15">
 			<item> ACTIVE </item>
@@ -3858,8 +3858,8 @@
 			<itemData name="Normal Text"  defStyleNum="dsNormal"/>
 			<itemData name="Keyword"      defStyleNum="dsKeyword"/>
 			<itemData name="Function"     defStyleNum="dsFunction"/>
-			<itemData name="StaticImports"      defStyleNum="dsKeyword" color="#800080" selColor="#FFFFFF" bold="0" italic="0"/>
-			<itemData name="Imports"      defStyleNum="dsKeyword" color="#808000" selColor="#FFFFFF" bold="0" italic="0"/>
+			<itemData name="StaticImports" defStyleNum="dsImport"/>
+			<itemData name="Imports"      defStyleNum="dsImport"/>
 			<itemData name="Data Type"    defStyleNum="dsDataType"/>
 			<itemData name="Decimal"      defStyleNum="dsDecVal"/>
 			<itemData name="Octal"        defStyleNum="dsBaseN"/>
@@ -3867,11 +3867,11 @@
 			<itemData name="Float"        defStyleNum="dsFloat"/>
 			<itemData name="Char"         defStyleNum="dsChar"/>
 			<itemData name="String"       defStyleNum="dsString"/>
-			<itemData name="String Char"  defStyleNum="dsChar"/>
+			<itemData name="String Char"  defStyleNum="dsSpecialChar"/>
 			<itemData name="PrintfString" defStyleNum="dsString"/>
 			<itemData name="Comment"      defStyleNum="dsComment"/>
 			<itemData name="Symbol"       defStyleNum="dsNormal"/>
-			<itemData name="Java15"       defStyleNum="dsNormal" color="#0095FF" selColor="#FFFFFF" bold="1" italic="0"/>
+			<itemData name="Java15"       defStyleNum="dsBuiltIn" bold="1" italic="0"/>
 		</itemDatas>
 	</highlighting>
 	<general>
