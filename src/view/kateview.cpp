@@ -673,6 +673,12 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("This command allows switching between the normal (line based) selection mode and the block selection mode."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleBlockSelection()));
 
+    a = ac->addAction(QLatin1String("switch_next_input_mode"));
+    a->setText(i18n("Switch to Next Input Mode"));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_V));
+    a->setWhatsThis(i18n("Switch to the next input mode."));
+    connect(a, SIGNAL(triggered(bool)), SLOT(cycleInputMode()));
+
     a = m_toggleInsert = new KToggleAction(i18n("Overwr&ite Mode"), this);
     ac->addAction(QLatin1String("set_insert"), a);
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Insert));
@@ -3549,6 +3555,13 @@ void KTextEditor::ViewPrivate::toggleInputMode(bool on)
     }
 
     setInputMode(newmode);
+}
+
+void KTextEditor::ViewPrivate::cycleInputMode()
+{
+    InputMode current = currentInputMode()->viewInputMode();
+    InputMode to = (current == KTextEditor::View::NormalInputMode) ? KTextEditor::View::ViInputMode : KTextEditor::View::NormalInputMode;
+    setInputMode(to);
 }
 
 //BEGIN KTextEditor::PrintInterface stuff

@@ -551,6 +551,7 @@ private Q_SLOTS:
     void slotSelectionChanged();
 
     void toggleInputMode(bool);
+    void cycleInputMode();
 
 public:
     /**
