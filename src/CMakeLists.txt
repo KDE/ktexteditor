@@ -1,3 +1,13 @@
+# handle data files, .desktop & .cmake
+add_subdirectory(data)
+
+# syntax highlighting data files
+add_subdirectory( syntax/data )
+
+# jscripts for the part
+add_subdirectory( script/data )
+
+# detect libgit2
 if(LIBGIT2_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES LibGit2::LibGit2)
     check_function_exists(git_threads_init HAVE_GIT2_THREADS)
@@ -5,6 +15,7 @@ if(LIBGIT2_FOUND)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
 
+# write out the info
 configure_file(libgit2_config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/libgit2_config.h)
 
 # handle include files, both normal ones and generated ones
@@ -206,7 +217,19 @@ inputmode/kateabstractinputmode.cpp
 inputmode/kateabstractinputmodefactory.cpp
 inputmode/katenormalinputmode.cpp
 inputmode/katenormalinputmodefactory.cpp
+
+# syntax hl files as resource file
+"${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp"
 )
+
+# tool to create json index of highlightings, will validate all highlightings, too!
+add_executable(katehighlightingindexer syntax/data/katehighlightingindexer.cpp)
+target_link_libraries(katehighlightingindexer Qt5::XmlPatterns)
+
+# generate the hl index resource
+add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp"
+  COMMAND katehighlightingindexer "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.json" "${CMAKE_CURRENT_SOURCE_DIR}/syntax/data/language.xsd" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc"
+  COMMAND ${Qt5Core_RCC_EXECUTABLE} -o "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc")
 
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
 dialogs/textareaappearanceconfigwidget.ui
@@ -229,7 +252,7 @@ dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
 # add the resource files, the one with mascot + ui file and the generated ones
-qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc ${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc)
+qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc)
 
 if (BUILD_VIMODE)
   ki18n_wrap_ui(ktexteditor_LIB_SRCS vimode/config/configwidget.ui)
@@ -311,15 +334,6 @@ install(FILES
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
-
-# handle data files, .desktop & .cmake
-add_subdirectory(data)
-
-# syntax highlighting data files
-add_subdirectory( syntax/data )
-
-# jscripts for the part
-add_subdirectory( script/data )
 
 # add part
 add_subdirectory(part)

@@ -86,49 +86,23 @@ KateHlManager::~KateHlManager()
 
 void KateHlManager::setupModeList()
 {
-    // Let's get a list of all the index & xml files for hl
-    QStringList dirsWithIndexFiles;
-    QSet<QString> xmlFiles;
-    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("katepart5/syntax"), QStandardPaths::LocateDirectory);
-    foreach (const QString &dir, dirs) {
-        QDir d(dir);
-
-        // if dir has index json, remember it, it will contain fast to read info about files in that dir
-        if (d.exists(QStringLiteral("index.json")))
-            dirsWithIndexFiles.append(dir);
-
-        // in any case: get all xml files, we could have additional files installed into that directory
-        const QStringList fileNames = d.entryList(QStringList() << QStringLiteral("*.xml"));
-        foreach (const QString &file, fileNames) {
-            xmlFiles.insert(dir + QLatin1Char('/') + file);
-        }
-    }
-
     // only allow each name once!
     QHash<QString, KateSyntaxModeListItem *> hlNames;
 
     /**
-     * first: index files aka shipped HLs
+     * first: use the index file in the resource
      */
-    Q_FOREACH (const QString dir, dirsWithIndexFiles) {
+    QFile indexJson (QLatin1String(":/ktexteditor/syntax/index.json"));
+    if (indexJson.open(QFile::ReadOnly)) {
         /**
-         * open the file for reading, bail out on error!
+         * parse the whole file
          */
-        QFile file (dir + QStringLiteral("/index.json"));
-        if (!file.open (QFile::ReadOnly))
-            continue;
+        const QJsonDocument indexDoc (QJsonDocument::fromBinaryData(indexJson.readAll()));
 
-        /**
-         * parse the whole file, bail out again on error!
-         */
-        const QJsonDocument indexDoc (QJsonDocument::fromBinaryData(file.readAll()));
-        if (!indexDoc.isObject())
-            continue;
-
-        const QJsonObject index = indexDoc.object();
         /**
          * iterate over all hls in the index
          */
+        const QJsonObject index = indexDoc.object();
         for (auto it = index.begin(); it != index.end(); ++it) {
             if (!it.value().isObject()) {
                 continue;
@@ -154,10 +128,7 @@ void KateHlManager::setupModeList()
             mli->indenter  = map[QStringLiteral("indenter")].toString();
             mli->hidden    = map[QStringLiteral("hidden")].toBool();
 
-            mli->identifier = dir + QLatin1Char('/') + it.key();
-
-            // purge from files we will take a look at later!
-            xmlFiles.remove(mli->identifier);
+            mli->identifier = QLatin1String(":/ktexteditor/syntax/") + it.key();
 
             // translate section + name
             mli->section    = i18nc("Language Section", mli->section.toUtf8().data());
@@ -180,9 +151,17 @@ void KateHlManager::setupModeList()
     }
 
     /**
-     * now: process all xml files that did not occur in any index.json file
+     * now: process all xml files on the filesystem!
      * e.g. stuff downloaded in the $HOME or additional hl files from 3rdparty apps/plugins
      */
+    QSet<QString> xmlFiles;
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("katepart5/syntax"), QStandardPaths::LocateDirectory);
+    foreach (const QString &dir, dirs) {
+        const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.xml"));
+        foreach (const QString &file, fileNames) {
+            xmlFiles.insert(dir + QLatin1Char('/') + file);
+        }
+    }
     Q_FOREACH (const QString xmlFile, xmlFiles) {
         // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
         QFile f(xmlFile);
