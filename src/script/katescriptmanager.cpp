@@ -117,12 +117,24 @@ void KateScriptManager::collect()
      * now, we search all kinds of known scripts
      */
     foreach (const QString &type, QStringList() << QLatin1String("indentation") << QLatin1String("commands")) {
-        // get a list of all unique .js files for the current type
-        const QString basedir = QLatin1String("katepart5/script/") + type;
-        QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, basedir, QStandardPaths::LocateDirectory);
+        // basedir for filesystem lookup
+        const QString basedir = QLatin1String("/katepart5/script/") + type;
 
-        // add resource dir
+        QStringList dirs;
+
+        // first writable locations, e.g. stuff the user has provided
+        foreach (const QString &dir, QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)) {
+            dirs.append(dir + basedir);
+        }
+
+        // then resources, e.g. the stuff we ship with us
         dirs.append(QLatin1String(":/ktexteditor/script/") + type);
+
+        // then all other locations, this includes global stuff installed by other applications
+        // this will not allow global stuff to overwrite the stuff we ship in our resources to allow to install a more up-to-date ktexteditor lib locally!
+        foreach (const QString &dir, QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation)) {
+            dirs.append(dir + basedir);
+        }
 
         QStringList list;
         foreach (const QString &dir, dirs) {
