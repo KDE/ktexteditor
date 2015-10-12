@@ -345,9 +345,6 @@ void KateStyleTreeWidget::addItem(QTreeWidgetItem *parent, const QString &styleN
 //END
 
 //BEGIN KateStyleTreeWidgetItem
-static const int BoxSize = 16;
-static const int ColorBtnWidth = 32;
-
 KateStyleTreeDelegate::KateStyleTreeDelegate(KateStyleTreeWidget *widget)
     : m_widget(widget)
 {

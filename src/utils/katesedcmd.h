@@ -123,7 +123,6 @@ public:
         const QString m_findPattern;
         const QString m_replacePattern;
         bool m_onlyOnePerLine;
-        int m_startLine;
         int m_endLine;
         KTextEditor::DocumentPrivate *m_doc;
         KateRegExpSearch m_regExpSearch;
