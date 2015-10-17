@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
     foreach (const QString &hlFilename, hlFilenames) {
         QFile hlFile(hlFilename);
         if (!hlFile.open(QIODevice::ReadOnly)) {
+            qWarning ("Failed to open %s.", qPrintable(hlFilename));
             anyError = 3;
             continue;
         }
