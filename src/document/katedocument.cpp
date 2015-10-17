@@ -4768,7 +4768,8 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
              * I hope that is correct!
              */
             git_repository *repository = Q_NULLPTR;
-            if (git_repository_open_ext(&repository, url().toLocalFile().toUtf8().data(), 0, Q_NULLPTR) == 0) {
+            const QByteArray utf8Path = url().toLocalFile().toUtf8();
+            if (git_repository_open_ext(&repository, utf8Path.constData(), 0, Q_NULLPTR) == 0) {
                 /**
                  * if we have repo, convert the git hash to an OID
                  */
