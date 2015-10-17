@@ -47,7 +47,7 @@ find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Sonnet ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
 
-# libgit2 integration
+# libgit2 integration, at least 0.22 with proper git_libgit2_init()
 find_package(LibGit2 "0.22.0")
 
 # vi mode on per default

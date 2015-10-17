@@ -7,16 +7,12 @@ add_subdirectory( syntax/data )
 # jscripts for the part
 add_subdirectory( script/data )
 
-# detect libgit2
+# set right defines for libgit2 usage
 if(LIBGIT2_FOUND)
+    add_definitions(-DLIBGIT2_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES LibGit2::LibGit2)
-    check_function_exists(git_threads_init HAVE_GIT2_THREADS)
-    check_function_exists(git_libgit2_init HAVE_GIT2_INIT)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
-
-# write out the info
-configure_file(libgit2_config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/libgit2_config.h)
 
 # handle include files, both normal ones and generated ones
 add_subdirectory(include)

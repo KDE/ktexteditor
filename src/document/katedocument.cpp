@@ -79,8 +79,6 @@
 #include <QMimeDatabase>
 #include <QTemporaryFile>
 
-#include <libgit2_config.h>
-
 #ifdef LIBGIT2_FOUND
 #include <git2.h>
 #include <git2/oid.h>

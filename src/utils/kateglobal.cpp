@@ -23,7 +23,6 @@
 #include "config.h"
 
 #include <ktexteditor_version.h>
-#include <libgit2_config.h>
 
 #include "katedocument.h"
 #include "kateview.h"
@@ -100,14 +99,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     // remember this
     staticInstance = this;
 
+    // init libgit2, we require at least 0.22 which has this function!
 #ifdef LIBGIT2_FOUND
-    // init libgit2 if used
-#ifdef HAVE_GIT2_THREADS
-    git_threads_init();
-#endif
-#ifdef HAVE_GIT2_INIT
     git_libgit2_init();
-#endif
 #endif
 
     /**
@@ -268,14 +262,9 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
     qDeleteAll(m_inputModeFactories);
 
-#ifdef HAVE_GIT2
-    // shutdown libgit2 if used
-#ifdef HAVE_GIT2_THREADS
-    git_threads_shutdown();
-#endif
-#ifdef HAVE_GIT2_INI
+    // shutdown libgit2, we require at least 0.22 which has this function!
+#ifdef LIBGIT2_FOUND
     git_libgit2_shutdown();
-#endif
 #endif
 }
 
