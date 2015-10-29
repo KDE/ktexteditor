@@ -228,7 +228,7 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
     QIcon cl = brushIcon(i->style()->foreground().color());
     QIcon scl = brushIcon(i->style()->selectedForeground().color());
     QIcon bgcl = i->style()->hasProperty(QTextFormat::BackgroundBrush) ? brushIcon(i->style()->background().color()) : emptyColorIcon;
-    QIcon sbgcl = i->style()->hasProperty(SelectedBackground) ? brushIcon(i->style()->selectedBackground().color()) : emptyColorIcon;
+    QIcon sbgcl = i->style()->hasProperty(CustomProperties::SelectedBackground) ? brushIcon(i->style()->selectedBackground().color()) : emptyColorIcon;
 
     m.addSection(i->contextName());
 
@@ -282,7 +282,7 @@ void KateStyleTreeWidget::contextMenuEvent(QContextMenuEvent *event)
         a->setData(3);
     }
 
-    if (style->hasProperty(SelectedBackground)) {
+    if (style->hasProperty(CustomProperties::SelectedBackground)) {
         a = m.addAction(emptyColorIcon, i18n("Unset Selected Background Color"), this, SLOT(unsetColor()));
         a->setData(4);
     }
@@ -555,12 +555,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::FontUnderline);
     }
 
-    if (currentStyle->hasProperty(Outline)) {
+    if (currentStyle->hasProperty(CustomProperties::Outline)) {
         if (currentStyle->outline() != actualStyle->outline()) {
             actualStyle->setOutline(currentStyle->outline());
         }
     } else {
-        actualStyle->clearProperty(Outline);
+        actualStyle->clearProperty(CustomProperties::Outline);
     }
 
     if (currentStyle->hasProperty(QTextFormat::ForegroundBrush)) {
@@ -571,12 +571,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::ForegroundBrush);
     }
 
-    if (currentStyle->hasProperty(SelectedForeground)) {
+    if (currentStyle->hasProperty(CustomProperties::SelectedForeground)) {
         if (currentStyle->selectedForeground() != actualStyle->selectedForeground()) {
             actualStyle->setSelectedForeground(currentStyle->selectedForeground());
         }
     } else {
-        actualStyle->clearProperty(SelectedForeground);
+        actualStyle->clearProperty(CustomProperties::SelectedForeground);
     }
 
     if (currentStyle->hasProperty(QTextFormat::BackgroundBrush)) {
@@ -587,12 +587,12 @@ void KateStyleTreeWidgetItem::updateStyle()
         actualStyle->clearProperty(QTextFormat::BackgroundBrush);
     }
 
-    if (currentStyle->hasProperty(SelectedBackground)) {
+    if (currentStyle->hasProperty(CustomProperties::SelectedBackground)) {
         if (currentStyle->selectedBackground() != actualStyle->selectedBackground()) {
             actualStyle->setSelectedBackground(currentStyle->selectedBackground());
         }
     } else {
-        actualStyle->clearProperty(SelectedBackground);
+        actualStyle->clearProperty(CustomProperties::SelectedBackground);
     }
 }
 
@@ -709,10 +709,10 @@ void KateStyleTreeWidgetItem::unsetColor(int colorId)
         }
         break;
     case 2:
-        if (defaultStyle->hasProperty(SelectedForeground)) {
+        if (defaultStyle->hasProperty(CustomProperties::SelectedForeground)) {
             currentStyle->setSelectedForeground(defaultStyle->selectedForeground());
         } else {
-            currentStyle->clearProperty(SelectedForeground);
+            currentStyle->clearProperty(CustomProperties::SelectedForeground);
         }
         break;
     case 3:
@@ -721,8 +721,8 @@ void KateStyleTreeWidgetItem::unsetColor(int colorId)
         }
         break;
     case 4:
-        if (currentStyle->hasProperty(SelectedBackground)) {
-            currentStyle->clearProperty(SelectedBackground);
+        if (currentStyle->hasProperty(CustomProperties::SelectedBackground)) {
+            currentStyle->clearProperty(CustomProperties::SelectedBackground);
         }
         break;
     }
