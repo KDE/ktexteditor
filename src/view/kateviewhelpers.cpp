@@ -976,41 +976,38 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
             emit hideRequested();
         }
 
-        // we got a range and a valid command, but the command does not inherit the RangeCommand
-        // extension. bail out.
-        if (range.isValid() && !p->supportsRange(cmd)) {
+        if (!p) {
+            setText(i18n("No such command: \"%1\"",  cmd));
+        } else if (range.isValid() && !p->supportsRange(cmd)) {
+            // we got a range and a valid command, but the command does not inherit the RangeCommand
+            // extension. bail out.
             setText(i18n("Error: No range allowed for command \"%1\".",  cmd));
         } else {
+            QString msg;
+            if (p->exec(m_view, cmd, msg, range)) {
 
-            if (p) {
-                QString msg;
-                if (p->exec(m_view, cmd, msg, range)) {
+                // append command along with range (will be empty if none given) to history
+                KateCmd::self()->appendHistory(leadingRangeExpression + cmd);
+                m_histpos = KateCmd::self()->historyLength();
+                m_oldText.clear();
 
-                    // append command along with range (will be empty if none given) to history
-                    KateCmd::self()->appendHistory(leadingRangeExpression + cmd);
-                    m_histpos = KateCmd::self()->historyLength();
-                    m_oldText.clear();
-
-                    if (msg.length() > 0) {
-                        setText(i18n("Success: ") + msg);
-                    } else if (isVisible()) {
-                        // always hide on success without message
-                        emit hideRequested();
-                    }
-                } else {
-                    if (msg.length() > 0) {
-                        if (msg.contains(QLatin1Char('\n'))) {
-                            // multiline error, use widget with more space
-                            QWhatsThis::showText(mapToGlobal(QPoint(0, 0)), msg);
-                        } else {
-                            setText(msg);
-                        }
-                    } else {
-                        setText(i18n("Command \"%1\" failed.",  cmd));
-                    }
+                if (msg.length() > 0) {
+                    setText(i18n("Success: ") + msg);
+                } else if (isVisible()) {
+                    // always hide on success without message
+                    emit hideRequested();
                 }
             } else {
-                setText(i18n("No such command: \"%1\"",  cmd));
+                if (msg.length() > 0) {
+                    if (msg.contains(QLatin1Char('\n'))) {
+                        // multiline error, use widget with more space
+                        QWhatsThis::showText(mapToGlobal(QPoint(0, 0)), msg);
+                    } else {
+                        setText(msg);
+                    }
+                } else {
+                    setText(i18n("Command \"%1\" failed.",  cmd));
+                }
             }
         }
     }
