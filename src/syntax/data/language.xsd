@@ -5,37 +5,29 @@
   	modified (c) 2003 Simon Huerlimann <simon.huerlimann@access.unizh.ch>
   	modified (c) 2005 Dominik Haumann <dhdev@gmx.de>
   	modified (c) 2008 Wilbert Berendsen <info@wilbertberendsen.nl>
-  
+
   	This file describes the XML format used for syntax highlight descriptions
   	for the Kate text editor (http://kate.kde.org), which is part of the KDE
   	desktop environment (http://www.kde.org).
   	You'll find the "Writing a Kate Highlighting XML File HOWTO" at
   	http://kate.kde.org/doc/hlhowto.php
-  
+
   	This format is identified using the SYSTEM identifier
   	SYSTEM "language.dtd"
-  
+
   	Files using this format should include a DOCTYPE declaration like this:
   	<!DOCTYPE language SYSTEM "language.dtd">
-  
-  	You can validate your syntax files using checkXML from the development
-  	package of kdelibs:
-  	 checkXML yourSyntax.xml
-  	If you see any 'validity error' lines, you should fix them. If you get
-  	a lot of 'No template matches' lines, everything's just fine. You've
-  	produced a valid syntax file!
-  
-  	It's also possible to use the (much faster) xmllint which comes with the
-  	GNOME (oops:-) XML Library libxml2:
-  
-  	 xmllint - -dtdvalid language.dtd yourSyntax.xml
-  	 (don't use a space between the two - That's just because XML
-  	 comments don't allow that:-(
-  
+
+  	You can validate your syntax files using "validatehl.sh yourSyntax.xml".
+  	This needs xmllint from the libxml2 XML library.
+
+  	In any case, the katehighlightingindexer will validate all files bundled
+  	with KTextEditor during compile time and fail on errors.
+
   	To use your syntax file, copy it to ~/.local/share/katepart5/syntax/ in
   	your home directory. You have to open a new instance of kwrite/kate to use
   	the new syntax file.
-  
+
   TODO
     - find a more readable way for the - -dtdvalid stuff, it's just annoying
       xml comments don't allow it.
@@ -43,7 +35,7 @@
 <!--
   Entity declarations
     You can use '&per;' instead of '.'. This seems to be useful in <item> elements.
-  
+
   TODO
     - Are there any more such pre-defined entities?
 -->
@@ -61,20 +53,20 @@
       - dsExtension,used for extensions, such as boost, Qt
       - dsPreprocessor, used for preprocessor statements
       - dsAttribute,used for attributes, e.g. @override in java
-    
+
       - dsChar,     used for a character
       - dsSpecialChar, used for escaped characters
       - dsString,   used for strings
       - dsVerbatimString, used for strings such as HERE docs
       - dsSpecialString, used for strings such as regular expressions or LaTeX math mode
       - dsImport,   used for includes, imports and modules
-    
+
       - dsDataType, used for data types
       - dsDecVal,   used for decimal values
       - dsBaseN,    used for values with a base other than 10
       - dsFloat,    used for float values
       - dsConstant, used for language constants
-    
+
       - dsComment,  used for comments
       - dsDocumentation, used for comments that are API documentation
       - dsAnnotation, used for annotation in comments, e.g. @param in doxygen
@@ -83,7 +75,7 @@
       - dsInformation, used for information in comments, e.g. @note in doxygen
       - dsWarning,  used for warnings in comments, e.g. @warning in doxygen
       - dsAlert,    used for warning messages such as TODO, WARNING in comments
-    
+
       - dsOthers,   used for 'other' things
       - dsError,    used for error highlighting.
   -->
@@ -137,13 +129,13 @@
       license:     License for this hl file [optional]
       indenter:    Name of the Indenter to use for this highlighting mode per default, like "cstyle" [optional]
       hidden:      Should it be hidden in menu [boolean, optional, default=false]
-    
+
     TODO
       - Which matches are affected by casesensitive? keyword, RegExpr, StringDetect, WordDetect...?
-    
+
     WARNING: due to helper scripts, the language opening tag must be on a
     *single line* and *cannot* be split in multiple lines.
-    
+
   -->
   <xs:element name="language">
     <xs:complexType>
@@ -237,7 +229,7 @@
     weakDeliminator:      Add weak deliminators [optional, default: ""]
     additionalDeliminator: Add deliminators [optional]
     wordWrapDeliminator:  characters that are used to wrap long lines [optional]
-    
+
   -->
   <xs:element name="keywords">
     <xs:complexType>
@@ -250,7 +242,7 @@
   <!--
     Indentation options
       mode:        indentation mode to use
-    
+
     TODO
       - Explain (weak) deliminators
   -->
@@ -332,7 +324,7 @@
     		    it does not use indentation based folding (e.g. for """ strings). In this case
     		    switch to an own context and set this attribute to true. Then the indentation
     		    based folding will ignore this parts and not change folding markers. [optional]
-    
+
     TODO:
       - Explain fallthrough.
       - Do we need fallthrough at all? It could be true, if fallthroughContext is set, false otherwise.
@@ -395,10 +387,10 @@
       insensitive:      Is this list case-insensitive? [boolean, optional, see note]
       String:           Name of the list
       weakDelimiter:    Use weak deliminator
-    
+
       By default, case sensitivity is determined from <keywords casesensitive> in
       <general> (default=true), but can be overridden per-list with 'insensitive'.
-    
+
     TODO:
       - Should be weakDeliminator
       - Explain deliminator
@@ -457,7 +449,7 @@
   <!--
     Detect C-style character
       commonAttributes: Common attributes
-    
+
     TODO
       - Did I get this right?
   -->
@@ -513,7 +505,7 @@
     Detect any group of characters
       commonAttributes: Common attributes
       String:           A string representing the characters to look for
-    
+
     TODO
       - Description is not descriptive enough, I'm not sure what it exactly does:-(
   -->
@@ -529,7 +521,7 @@
       String:           The string to look for
       insensitive:      Whether the string is matched case INsensitive. [boolean, optional, default=false]
       dynamic:          Uses %0 ... %9 as placeholders for dynamic arguments [boolean, optional, default=false]
-    
+
     TODO
       - What's default of insensitive? I'm not sure...
   -->
@@ -547,7 +539,7 @@
       String:           The string to look for
       insensitive:      Whether the string is matched case INsensitive. [boolean, optional, default=false]
       dynamic:          Uses %0 ... %9 as placeholders for dynamic arguments [boolean, optional, default=false]
-    
+
     TODO
       - What's default of insensitive? I'm not sure...
   -->
@@ -590,7 +582,7 @@
   <!--
     Detect a C-style escaped character
       commonAttributes: Common attributes
-    
+
     TODO:
       - Did I get this right? Only one character, or a string?
   -->
