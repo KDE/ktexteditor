@@ -1992,6 +1992,7 @@ void KTextEditor::DocumentPrivate::removeMark(int line, uint markType)
 
     if (mark->type == 0) {
         m_marks.remove(line);
+        delete mark;
     }
 
     emit marksChanged(this);
