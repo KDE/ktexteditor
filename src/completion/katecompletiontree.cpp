@@ -57,9 +57,11 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
 
     // Provide custom highlighting to completion entries
     setItemDelegate(new KateCompletionDelegate(widget()->model(), widget()));
-
-    ///@todo uncomment this once we're sure it isn't called too often, or maybe use a timer.
-    //connect(widget()->model(), SIGNAL(contentGeometryChanged()), this, SLOT(resizeColumnsSlot()));
+    // make sure we adapt to size changes when the model got reset
+    // this is important for delayed creation of groups, without this
+    // the first column would never get resized to the correct size
+    connect(widget()->model(), &QAbstractItemModel::modelReset,
+            this, &KateCompletionTree::scheduleUpdate);
 
     // Prevent user from expanding / collapsing with the mouse
     setItemsExpandable(false);
