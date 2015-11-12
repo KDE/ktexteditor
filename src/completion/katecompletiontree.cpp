@@ -175,6 +175,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     if (preventRecursion) {
         return;
     }
+    m_resizeTimer->stop();
 
     if (firstShow) {
         forceResize = true;
