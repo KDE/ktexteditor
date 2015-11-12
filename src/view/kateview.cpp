@@ -3034,7 +3034,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("folding-marker-color"),
         QStringLiteral("line-number-color"),
         QStringLiteral("current-line-number-color"),
-        QStringLiteral("modification-markers")
+        QStringLiteral("modification-markers"),
+        QStringLiteral("keyword-completion")
     };
     return keys;
 }
@@ -3071,6 +3072,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return renderer()->config()->currentLineNumberColor();
     } else if (key == QLatin1String("modification-markers")) {
         return config()->lineModification();
+    } else if (key == QLatin1String("keyword-completion")) {
+        return config()->keywordCompletion();
     }
 
     // return invalid variant
@@ -3113,6 +3116,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setFoldingBar(value.toBool());
         } else if (key == QLatin1String("modification-markers")) {
             config()->setLineModification(value.toBool());
+        } else if (key == QLatin1String("keyword-completion")) {
+            config()->setKeywordCompletion(value.toBool());
         }
 
     } else if (value.canConvert(QVariant::UInt)) {
