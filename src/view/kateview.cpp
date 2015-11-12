@@ -3019,12 +3019,24 @@ void KTextEditor::ViewPrivate::aboutToHideContextMenu()
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::ViewPrivate::configKeys() const
 {
-    return QStringList()  << QLatin1String("icon-bar")  << QLatin1String("line-numbers") << QLatin1String("dynamic-word-wrap")
-           << QLatin1String("background-color")  << QLatin1String("selection-color")
-           << QLatin1String("search-highlight-color")  << QLatin1String("replace-highlight-color")
-           << QLatin1String("folding-bar") << QLatin1String("icon-border-color") << QLatin1String("folding-marker-color")
-           << QLatin1String("line-number-color") << QLatin1String("current-line-number-color") << QLatin1String("modification-markers");
-
+    static const QStringList keys = {
+        QStringLiteral("icon-bar"),
+        QStringLiteral("line-numbers"),
+        QStringLiteral("dynamic-word-wrap"),
+        QStringLiteral("background-color"),
+        QStringLiteral("selection-color"),
+        QStringLiteral("search-highlight-color"),
+        QStringLiteral("replace-highlight-color"),
+        QStringLiteral("default-mark-type"),
+        QStringLiteral("allow-mark-menu"),
+        QStringLiteral("folding-bar"),
+        QStringLiteral("icon-border-color"),
+        QStringLiteral("folding-marker-color"),
+        QStringLiteral("line-number-color"),
+        QStringLiteral("current-line-number-color"),
+        QStringLiteral("modification-markers")
+    };
+    return keys;
 }
 
 QVariant KTextEditor::ViewPrivate::configValue(const QString &key)

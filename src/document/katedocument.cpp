@@ -4998,7 +4998,16 @@ bool KTextEditor::DocumentPrivate::checkOverwrite(QUrl u, QWidget *parent)
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::DocumentPrivate::configKeys() const
 {
-    return QStringList() << QLatin1String("tab-width") << QLatin1String("indent-width");
+    static const QStringList keys = {
+        QStringLiteral("backup-on-save-local"),
+        QStringLiteral("backup-on-save-suffix"),
+        QStringLiteral("backup-on-save-prefix"),
+        QStringLiteral("replace-tabs"),
+        QStringLiteral("indent-pasted-text"),
+        QStringLiteral("tab-width"),
+        QStringLiteral("indent-width"),
+    };
+    return keys;
 }
 
 QVariant KTextEditor::DocumentPrivate::configValue(const QString &key)
