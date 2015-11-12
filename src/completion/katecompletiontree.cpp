@@ -84,7 +84,7 @@ void KateCompletionTree::scrollContentsBy(int dx, int dy)
     }
 
     if (isVisible()) {
-        m_resizeTimer->start(300);
+        scheduleUpdate();
     }
 }
 
