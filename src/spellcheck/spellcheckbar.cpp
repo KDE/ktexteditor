@@ -19,6 +19,7 @@
  */
 #include "spellcheckbar.h"
 #include "ui_spellcheckbar.h"
+#include <KLocalizedString>
 
 #include "sonnet/backgroundchecker.h"
 #include "sonnet/speller.h"
@@ -144,7 +145,7 @@ void SpellCheckBar::closed()
     d->deleteProgressDialog(false); // this method can be called in response to
     // pressing 'Cancel' on the dialog
     emit cancel();
-    emit spellCheckStatus(tr("Spell check canceled."));
+    emit spellCheckStatus(i18n("Spell check canceled."));
 }
 
 void SpellCheckBar::initConnections()
@@ -252,8 +253,8 @@ void SpellCheckBar::setProgressDialogVisible(bool b)
             return;
         }
         d->progressDialog = new QProgressDialog(this);
-        d->progressDialog->setLabelText(tr("Spell checking in progress...", "progress label"));
-        d->progressDialog->setWindowTitle(tr("Check Spelling", "@title:window"));
+        d->progressDialog->setLabelText(i18nc("progress label", "Spell checking in progress..."));
+        d->progressDialog->setWindowTitle(i18nc("@title:window", "Check Spelling"));
         d->progressDialog->setModal(true);
         d->progressDialog->setAutoClose(false);
         d->progressDialog->setAutoReset(false);
@@ -438,10 +439,10 @@ void SpellCheckBar::slotDone()
         d->restart = false;
     } else {
         setProgressDialogVisible(false);
-        emit spellCheckStatus(tr("Spell check complete."));
+        emit spellCheckStatus(i18n("Spell check complete."));
         hideMe();
         if (!d->canceled && d->showCompletionMessageBox) {
-            QMessageBox::information(this, tr("Spell check complete."), tr("Check Spelling", "@title:window"));
+            QMessageBox::information(this, i18n("Spell check complete."), i18nc("@title:window", "Check Spelling"));
         }
     }
 }
