@@ -2,7 +2,7 @@
 add_library (katepart MODULE katepart.cpp)
 
 # service => json and install
-kcoreaddons_desktop_to_json (katepart katepart.desktop)
+kcoreaddons_desktop_to_json (katepart katepart.desktop SERVICE_TYPES kpart.desktop)
 install( FILES katepart.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
 
 # link the part, use kate part core + kde stuff
