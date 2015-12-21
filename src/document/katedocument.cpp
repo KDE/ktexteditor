@@ -4643,7 +4643,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
             v->renderer()->config()->setHighlightedBracketColor(c);
         } else if (var == QLatin1String("word-wrap-marker-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setWordWrapMarkerColor(c);
-        } else if (var == QLatin1String("font") || (var == QLatin1String("font-size") && checkIntValue(val, &n))) {
+        } else if (var == QLatin1String("font") || (checkIntValue(val, &n) && var == QLatin1String("font-size"))) {
             QFont _f(v->renderer()->config()->font());
 
             if (var == QLatin1String("font")) {
