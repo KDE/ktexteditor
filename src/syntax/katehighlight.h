@@ -396,7 +396,6 @@ private:
     QString buildIdentifier;
     QString buildPrefix;
     bool building;
-    uint itemData0;
     uint buildContext0Offset;
     KateHlIncludeRules includeRules;
     bool m_foldingIndentationSensitive;
