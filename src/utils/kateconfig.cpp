@@ -350,7 +350,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setShowSpaces(config.readEntry(KEY_SHOW_SPACES, false));
     setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, true));
     setRemoveSpaces(config.readEntry(KEY_REMOVE_SPACES, 0));
-    setNewLineAtEof(config.readEntry(KEY_NEWLINE_AT_EOF, false));
+    setNewLineAtEof(config.readEntry(KEY_NEWLINE_AT_EOF, true));
     setOvr(config.readEntry(KEY_OVR, false));
 
     setEncoding(config.readEntry(KEY_ENCODING, ""));
