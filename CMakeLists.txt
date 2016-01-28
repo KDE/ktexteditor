@@ -17,7 +17,7 @@ include(ECMPackageConfigHelpers)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(KDEInstallDirs)
-include(KDEFrameworkCompilerSettings)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
