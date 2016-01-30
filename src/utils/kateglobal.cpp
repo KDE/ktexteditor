@@ -481,9 +481,8 @@ void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
 
 bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
 {
-    Q_UNUSED(obj);
-
-    if (event->type() == QEvent::ApplicationPaletteChange) {
+    if (obj == qApp && event->type() == QEvent::ApplicationPaletteChange) {
+        // only update the color once for the event that belongs to the qApp
         updateColorPalette();
     }
 
