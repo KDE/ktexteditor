@@ -2251,11 +2251,6 @@ bool KTextEditor::DocumentPrivate::openFile()
 
     bool success = m_buffer->openFile(localFilePath(), (m_reloading && m_userSetEncodingForNextReload));
 
-    // disable view updates
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
-        view->setUpdatesEnabled(false);
-    }
-
     //
     // yeah, success
     // read variables
@@ -2270,7 +2265,6 @@ bool KTextEditor::DocumentPrivate::openFile()
     foreach (KTextEditor::ViewPrivate *view, m_views) {
         // This is needed here because inserting the text moves the view's start position (it is a MovingCursor)
         view->setCursorPosition(KTextEditor::Cursor());
-        view->setUpdatesEnabled(true);
         view->updateView(true);
     }
 
