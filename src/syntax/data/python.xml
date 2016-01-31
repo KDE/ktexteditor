@@ -13,7 +13,7 @@
 <!-- v2.06 decorator names can (and often do) contain periods -->
 <!-- v2.07 add support for %prog and co, see bug 142832 -->
 <!-- v2.08 add missing overloaders, new Python 3 statements, builtins, and keywords -->
-<language name="Python" version="2.27" style="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript" mimetype="application/x-python;text/x-python" casesensitive="1" author="Michael Bueker" license="">
+<language name="Python" version="2.28" style="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript" mimetype="application/x-python;text/x-python" casesensitive="1" author="Michael Bueker" license="">
 	<highlighting>
 		<list name="import">
 			<item> import </item>
@@ -367,7 +367,7 @@
 				<DetectSpaces/>
 				<LineContinue attribute="Normal Text" context="CheckForStringNext"/>
 			</context>
-			
+
 			<context name="CheckForStringNext" attribute="Normal Text" lineEndContext="#pop" fallthrough="true" fallthroughContext="#pop">
 				<DetectSpaces/>
 				<LineContinue attribute="Normal Text" context="CheckForStringNext"/>
@@ -438,14 +438,14 @@
 				<IncludeRules context="StringVariants" />
 				<IncludeRules context="Normal" />
 			</context>
-			
+
 			<context name="List" attribute="Normal Text" lineEndContext="#stay" noIndentationBasedFolding="true">
 				<DetectSpaces/>
 				<DetectChar attribute="Normal Text" char="]" context="#pop" endRegion="List"/>
 				<IncludeRules context="StringVariants" />
 				<IncludeRules context="Normal" />
 			</context>
-			
+
 			<context name="Tuple" attribute="Normal Text" lineEndContext="#stay" noIndentationBasedFolding="true">
 				<DetectSpaces/>
 				<DetectChar attribute="Normal Text" char=")" context="#pop" endRegion="Tuple"/>
@@ -499,21 +499,22 @@
 				-->
 				<RegExpr attribute="String Substitution" String="%((\([a-zA-Z0-9_]+\))?[#0\- +]?([1-9][0-9]*|\*)?(\.([1-9][0-9]*|\*))?[hlL]?[crsdiouxXeEfFgG%]|prog|default)" context="#stay"/>
 				<!-- http://docs.python.org/2/library/string.html#format-string-syntax:
-				     replacement_field ::= "{" field_name ["!" conversion] [":" format_spec] "}"
-				     field_name ::= (identifier | integer) ("." attribute_name | "[" element_index "]")*
-				     attribute_name ::= identifier
-				     element_index ::= integer | index_string
-				     index_string ::= <any source character except "]"> +
-				     conversion ::= "r" | "s"
-				     format_spec ::= [[fill]align][sign][#][0][width][.precision][type]
-				     fill ::= <a character other than '}'>
-				     align ::= "<" | ">" | "=" | "^"
-				     sign ::= "+" | "-" | " "
-				     width ::= integer
-				     precision ::= integer
-				     type ::= "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+				     replacement_field ::=  "{" [field_name] ["!" conversion] [":" format_spec] "}"
+				     field_name        ::=  arg_name ("." attribute_name | "[" element_index "]")*
+				     arg_name          ::=  [identifier | integer]
+				     attribute_name    ::=  identifier
+				     element_index     ::=  integer | index_string
+				     index_string      ::=  <any source character except "]"> +
+				     conversion        ::=  "r" | "s"
+				     format_spec       ::=  [[fill]align][sign][#][0][width][,][.precision][type]
+				     fill              ::=  <any character>
+				     align             ::=  "<" | ">" | "=" | "^"
+				     sign              ::=  "+" | "-" | " "
+				     width             ::=  integer
+				     precision         ::=  integer
+				     type              ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
 				-->
-				<RegExpr attribute="String Substitution" String="\{([a-zA-Z0-9_]+|[0-9]+)(\.[a-zA-Z0-9_]+|\[[^ \]]+\])*(![rs])?(:([^}]?[&lt;&gt;=^])?[ +-]?#?0?[0-9]*(\.[0-9]+)?[bcdeEfFgGnosxX%]?)?\}" context="#stay"/>
+				<RegExpr attribute="String Substitution" String="\{(([a-zA-Z0-9_]+|[0-9]+)(\.[a-zA-Z0-9_]+|\[[^ \]]+\])*)?(![rs])?(:([^}]?[&lt;&gt;=^])?[ +-]?#?0?[0-9]*(\.[0-9]+)?[bcdeEfFgGnosxX%]?)?\}" context="#stay"/>
 				<Detect2Chars attribute="String Substitution" char="{" char1="{" context="#stay" />
 				<Detect2Chars attribute="String Substitution" char="}" char1="}" context="#stay" />
 			</context>
