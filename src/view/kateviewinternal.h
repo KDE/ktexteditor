@@ -256,7 +256,7 @@ private:
     void moveChar(Bias bias, bool sel);
     void moveEdge(Bias bias, bool sel);
     KTextEditor::Cursor maxStartPos(bool changed = false);
-    void scrollPos(KTextEditor::Cursor &c, bool force = false, bool calledExternally = false);
+    void scrollPos(KTextEditor::Cursor &c, bool force = false, bool calledExternally = false, bool emitSignals = true);
     void scrollLines(int lines, bool sel);
 
     int linesDisplayed() const;

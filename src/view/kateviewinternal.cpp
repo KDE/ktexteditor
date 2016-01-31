@@ -434,7 +434,7 @@ KTextEditor::Cursor KateViewInternal::maxStartPos(bool changed)
 }
 
 // c is a virtual cursor
-void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool calledExternally)
+void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool calledExternally, bool emitSignals)
 {
     if (!force && ((!m_view->dynWordWrap() && c.line() == startLine()) || c == startPos())) {
         return;
@@ -491,15 +491,16 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
             m_leftBorder->scroll(0, scrollHeight);
 
             if ((m_view->m_floatTopMessageWidget && m_view->m_floatTopMessageWidget->isVisible())
-                || (m_view->m_bottomMessageWidget && m_view->m_bottomMessageWidget->isVisible()))
-            {
+                || (m_view->m_bottomMessageWidget && m_view->m_bottomMessageWidget->isVisible())) {
                 // NOTE: on some machines we must update if the floating widget is visible
                 //       otherwise strange painting bugs may occur during scrolling...
                 update();
             }
 
-            emit m_view->verticalScrollPositionChanged(m_view, c);
-            emit m_view->displayRangeChanged(m_view);
+            if (emitSignals) {
+                emit m_view->verticalScrollPositionChanged(m_view, c);
+                emit m_view->displayRangeChanged(m_view);
+            }
             return;
         }
     }
@@ -507,8 +508,10 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
     updateView();
     update();
     m_leftBorder->update();
-    emit m_view->verticalScrollPositionChanged(m_view, c);
-    emit m_view->displayRangeChanged(m_view);
+    if (emitSignals) {
+        emit m_view->verticalScrollPositionChanged(m_view, c);
+        emit m_view->displayRangeChanged(m_view);
+    }
 }
 
 void KateViewInternal::scrollColumns(int x)
@@ -696,7 +699,7 @@ void KateViewInternal::slotRegionVisibilityChanged()
     m_cachedMaxStartPos.setLine(-1);
     KTextEditor::Cursor max = maxStartPos();
     if (startPos() > max) {
-        scrollPos(max);
+        scrollPos(max, false, false, false /* don't emit signals! */);
     }
 
     // if text was folded: make sure the cursor is on a visible line
@@ -712,6 +715,9 @@ void KateViewInternal::slotRegionVisibilityChanged()
     updateView();
     update();
     m_leftBorder->update();
+
+    // emit signals here, scrollPos has this disabled, to ensure we do this after all stuff is updated!
+    emit m_view->verticalScrollPositionChanged(m_view, max);
     emit m_view->displayRangeChanged(m_view);
 }
 
