@@ -2911,7 +2911,9 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         /**
          * expand selection
          */
-        view->setSelection(KTextEditor::Range(view->selectionRange().start(), view->cursorPosition()));
+        view->setSelection(KTextEditor::Range(view->selectionRange().start() + Cursor{0, 1},
+                                              view->cursorPosition() - Cursor{0, 1}));
+        view->setCursorPosition(view->selectionRange().start());
     }
 
     /**
