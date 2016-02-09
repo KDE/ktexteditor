@@ -46,6 +46,9 @@ KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEdito
 
     m_timeLine->setCurveShape(QTimeLine::SineCurve);
     m_timeLine->start();
+
+    QObject::connect(view, &KTextEditor::View::destroyed,
+                     m_timeLine, &QTimeLine::stop);
 }
 
 KateTextAnimation::~KateTextAnimation()
