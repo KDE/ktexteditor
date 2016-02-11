@@ -1544,6 +1544,10 @@ void ModesTest::CommandSedTests()
     DoTest("foo\nfoo\nfoo", "\\:2s/foo/bar\\", "foo\nbar\nfoo");
     DoTest("foo\nfoo\nfoo", "2jmagg\\:'as/foo/bar\\", "foo\nfoo\nbar");
     DoTest("foo\nfoo\nfoo", "\\:$s/foo/bar\\", "foo\nfoo\nbar");
+
+    // https://bugs.kde.org/show_bug.cgi?id=235862
+    DoTest("try\n\nalso\nfoo", "\\:/r/,/o/s/^/ha/\\", "hatry\nha\nhaalso\nfoo");
+    DoTest("much\nmuch\nmuch\nmuch", "\\:.,.+2s/much/try/\\", "try\ntry\ntry\nmuch");
 }
 
 void ModesTest::CommandDeleteTests()
