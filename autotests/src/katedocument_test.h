@@ -51,6 +51,8 @@ private Q_SLOTS:
     void testDigest();
     
     void testDefStyleNum();
+
+    void testTypeCharsWithSurrogateAndNewLine();
 };
 
 #endif // KATE_DOCUMENT_TEST_H
