@@ -158,7 +158,7 @@ void KateViewTest::testSelection()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
-    view->resize(100, 100);
+    view->resize(100, 200);
     view->show();
 
     QObject *internalView = nullptr;
