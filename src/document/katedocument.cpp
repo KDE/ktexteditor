@@ -2161,7 +2161,7 @@ QMimeType KTextEditor::DocumentPrivate::mimeTypeForContent()
 void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 {
     QPointer<KTextEditor::Message> message
-        = new KTextEditor::Message(i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toString()),
+        = new KTextEditor::Message(i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile)),
                                    KTextEditor::Message::Error);
     message->setWordWrap(true);
     QAction *tryAgainAction = new QAction(QIcon::fromTheme(QLatin1String("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), 0);
@@ -2179,7 +2179,7 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 
     // remember error
     m_openingError = true;
-    m_openingErrorMessage = i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.", this->url().toString());
+    m_openingErrorMessage = i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile));
 
 }
 //END: error
@@ -2296,7 +2296,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
                                             "It is set to read-only mode, as saving might destroy its content.<br />"
-                                            "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toString(),
+                                            "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toDisplayString(QUrl::PreferLocalFile),
                                             QString::fromLatin1(m_buffer->textCodec()->name())),
                                        KTextEditor::Message::Warning);
         message->setWordWrap(true);
@@ -2306,7 +2306,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_openingError = true;
         m_openingErrorMessage = i18n("The file %1 was opened with %2 encoding but contained invalid characters."
                                     " It is set to read-only mode, as saving might destroy its content."
-                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toString(), QString::fromLatin1(m_buffer->textCodec()->name()));
+                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toDisplayString(QUrl::PreferLocalFile), QString::fromLatin1(m_buffer->textCodec()->name()));
     }
 
     // warn: too long lines
@@ -2318,7 +2318,7 @@ bool KTextEditor::DocumentPrivate::openFile()
             = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
                                             "The longest of those lines was %3 characters long<br/>"
                                             "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
-                                            this->url().toString(), config()->lineLengthLimit(),m_buffer->longestLineLoaded()),
+                                            this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(),m_buffer->longestLineLoaded()),
                                        KTextEditor::Message::Warning);
         QAction *increaseAndReload=new QAction(i18n("Temporarily raise limit and reload file"),message);
         connect(increaseAndReload,SIGNAL(triggered()),this,SLOT(openWithLineLengthLimitOverride()));
@@ -2331,7 +2331,7 @@ bool KTextEditor::DocumentPrivate::openFile()
         m_openingError = true;
         m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br/>"
                                      "The longest of those lines was %3 characters long<br/>"
-                                     "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toString(), config()->lineLengthLimit(),m_buffer->longestLineLoaded());
+                                     "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(),m_buffer->longestLineLoaded());
     }
 
     //
@@ -2437,7 +2437,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
         if (!backupSuccess && (KMessageBox::warningContinueCancel(parentWidget
                                , i18n("For file %1 no backup copy could be created before saving."
                                       " If an error occurs while saving, you might lose the data of this file."
-                                      " A reason could be that the media you write to is full or the directory of the file is read-only for you.", url().toString())
+                                      " A reason could be that the media you write to is full or the directory of the file is read-only for you.", url().toDisplayString(QUrl::PreferLocalFile))
                                , i18n("Failed to create backup copy.")
                                , KGuiItem(i18n("Try to Save Nevertheless"))
                                , KStandardGuiItem::cancel(), QLatin1String("Backup Failed Warning")) != KMessageBox::Continue)) {
@@ -2478,7 +2478,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
         // add m_file again to dirwatch
         activateDirWatch(oldPath);
 
-        KMessageBox::error(parentWidget, i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toString()));
+        KMessageBox::error(parentWidget, i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toDisplayString(QUrl::PreferLocalFile)));
 
         return false;
     }
@@ -4301,7 +4301,7 @@ bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
     }
 
     if (!m_buffer->saveFile(file.fileName())) {
-        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toString()));
+        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toDisplayString(QUrl::PreferLocalFile)));
         return false;
     }
 
@@ -4843,7 +4843,7 @@ bool KTextEditor::DocumentPrivate::createDigest()
 QString KTextEditor::DocumentPrivate::reasonedMOHString() const
 {
     // squeeze path
-    QString str = KStringHandler::csqueeze(url().toString());
+    QString str = KStringHandler::csqueeze(url().toDisplayString(QUrl::PreferLocalFile));
 
     switch (m_modOnHdReason) {
     case OnDiskModified:
@@ -5339,7 +5339,7 @@ void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
      * create message about file loading in progress
      */
     delete m_loadingMessage;
-    m_loadingMessage = new KTextEditor::Message(i18n("The file <a href=\"%1\">%2</a> is still loading.", url().toString(), url().fileName()));
+    m_loadingMessage = new KTextEditor::Message(i18n("The file <a href=\"%1\">%2</a> is still loading.", url().toDisplayString(QUrl::PreferLocalFile), url().fileName()));
     m_loadingMessage->setPosition(KTextEditor::Message::TopInView);
 
     /**
