@@ -64,7 +64,7 @@ namespace
     // fifth, sixth and seventh groups are contingent on the fourth group.
     inline const QRegularExpression& RE_CmdRange()
     {
-        static const QRegularExpression regex(QLatin1String("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
+        static const QRegularExpression regex(QStringLiteral("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
         return regex;
     }
 }
@@ -81,7 +81,7 @@ QString CommandRangeExpressionParser::parseRangeString(const QString &command) c
     }
 
     if (command.at(0) == QLatin1Char('%')) {
-        return QLatin1String("%");
+        return QStringLiteral("%");
     }
 
     QRegularExpressionMatch rangeMatch = RE_CmdRange().match(command);
@@ -99,7 +99,7 @@ KTextEditor::Range CommandRangeExpressionParser::parseRange(const QString &comma
 
     // expand '%' to '1,$' ("all lines") if at the start of the line
     if (commandTmp.at(0) == QLatin1Char('%')) {
-        commandTmp.replace(0, 1, QLatin1String("1,$"));
+        commandTmp.replace(0, 1, QStringLiteral("1,$"));
     }
 
     QRegularExpressionMatch rangeMatch = RE_CmdRange().match(commandTmp);
@@ -117,7 +117,7 @@ KTextEditor::Range CommandRangeExpressionParser::parseRange(const QString &comma
 
     // special case: if the command is just a number with an optional +/- prefix, rewrite to "goto"
     if (commandTmp.isEmpty()) {
-        destTransformedCommand = QString::fromLatin1("goto %1").arg(position1);
+        destTransformedCommand = QStringLiteral("goto %1").arg(position1);
         return KTextEditor::Range::invalid();
     } else {
         destTransformedCommand = commandTmp;

@@ -98,7 +98,7 @@ QVariant KateWordCompletionModel::data(const QModelIndex &index, int role) const
     }
 
     if (index.column() == KTextEditor::CodeCompletionModel::Icon && role == Qt::DecorationRole) {
-        static QIcon icon(QIcon::fromTheme(QLatin1String("insert-text")).pixmap(QSize(16, 16)));
+        static QIcon icon(QIcon::fromTheme(QStringLiteral("insert-text")).pixmap(QSize(16, 16)));
         return icon;
     }
 
@@ -339,17 +339,17 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
     if (qobject_cast<KTextEditor::CodeCompletionInterface *>(view)) {
         action = new QAction(i18n("Shell Completion"), this);
-        ac->addAction(QLatin1String("doccomplete_sh"), action);
+        ac->addAction(QStringLiteral("doccomplete_sh"), action);
         connect(action, SIGNAL(triggered()), this, SLOT(shellComplete()));
     }
 
     action = new QAction(i18n("Reuse Word Above"), this);
-    ac->addAction(QLatin1String("doccomplete_bw"), action);
+    ac->addAction(QStringLiteral("doccomplete_bw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_8);
     connect(action, SIGNAL(triggered()), this, SLOT(completeBackwards()));
 
     action = new QAction(i18n("Reuse Word Below"), this);
-    ac->addAction(QLatin1String("doccomplete_fw"), action);
+    ac->addAction(QStringLiteral("doccomplete_fw"), action);
     ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_9);
     connect(action, SIGNAL(triggered()), this, SLOT(completeForwards()));
 }
@@ -404,7 +404,7 @@ void KateWordCompletionView::shellComplete()
 
     QString partial = findLongestUnique(matches, r.columnWidth());
 
-    if (! partial.length()) {
+    if (partial.isEmpty()) {
         popupCompletionList();
     }
 

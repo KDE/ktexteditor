@@ -58,11 +58,11 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'x':
                     if (input + 5 < inputLen) {
                         // copy "\x????" unmodified
-                        output.append(text.mid(input, 6));
+                        output.append(text.midRef(input, 6));
                         input += 6;
                     } else {
                         // copy "\x" unmodified
-                        output.append(text.mid(input, 2));
+                        output.append(text.midRef(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -71,11 +71,11 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'0':
                     if (input + 4 < inputLen) {
                         // copy "\0???" unmodified
-                        output.append(text.mid(input, 5));
+                        output.append(text.midRef(input, 5));
                         input += 5;
                     } else {
                         // copy "\0" unmodified
-                        output.append(text.mid(input, 2));
+                        output.append(text.midRef(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -94,7 +94,7 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
 
                 default:
                     // copy "\?" unmodified
-                    output.append(text.mid(input, 2));
+                    output.append(text.midRef(input, 2));
                     input += 2;
                 }
                 break;
@@ -120,11 +120,11 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'x':
                     if (input + 5 < inputLen) {
                         // copy "\x????" unmodified
-                        output.append(text.mid(input, 6));
+                        output.append(text.midRef(input, 6));
                         input += 6;
                     } else {
                         // copy "\x" unmodified
-                        output.append(text.mid(input, 2));
+                        output.append(text.midRef(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -133,11 +133,11 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'0':
                     if (input + 4 < inputLen) {
                         // copy "\0???" unmodified
-                        output.append(text.mid(input, 5));
+                        output.append(text.midRef(input, 5));
                         input += 5;
                     } else {
                         // copy "\0" unmodified
-                        output.append(text.mid(input, 2));
+                        output.append(text.midRef(input, 2));
                         input += 2;
                     }
                     stillMultiLine = true;
@@ -156,7 +156,7 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
 
                 default:
                     // copy "\?" unmodified
-                    output.append(text.mid(input, 2));
+                    output.append(text.midRef(input, 2));
                     input += 2;
                 }
                 break;

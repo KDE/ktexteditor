@@ -424,7 +424,7 @@ void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor un
         const KTextEditor::Cursor redoCursor)
 {
     Q_ASSERT(m_editCurrentUndo == 0);
-    if (undoItems.size()) {
+    if (!undoItems.isEmpty()) {
         KateUndoGroup *last = undoItems.last();
         last->setUndoCursor(undoCursor);
         last->setRedoCursor(redoCursor);
@@ -434,7 +434,7 @@ void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor un
 KTextEditor::Cursor KateUndoManager::lastRedoCursor() const
 {
     Q_ASSERT(m_editCurrentUndo == 0);
-    if (undoItems.size()) {
+    if (!undoItems.isEmpty()) {
         KateUndoGroup *last = undoItems.last();
         return last->redoCursor();
     }

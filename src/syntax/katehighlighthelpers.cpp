@@ -278,7 +278,7 @@ KateHlKeyword::KateHlKeyword(int attribute, KateHlContextModification context, s
 {
     alwaysStartEnable = false;
     customStartEnable = true;
-    foreach (const QChar &c, delims) {
+    foreach (QChar c, delims) {
         deliminators << c;
     }
 }
@@ -673,7 +673,7 @@ KateHlItem *KateHlRegExpr::clone(const QStringList *args)
     QStringList escArgs = *args;
 
     for (QStringList::Iterator it = escArgs.begin(); it != escArgs.end(); ++it) {
-        (*it).replace(QRegularExpression(QLatin1String("(\\W)")), QLatin1String("\\\\1"));
+        (*it).replace(QRegularExpression(QStringLiteral("(\\W)")), QStringLiteral("\\\\1"));
     }
 
     dynamicSubstitute(regexp, &escArgs);

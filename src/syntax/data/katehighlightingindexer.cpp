@@ -78,9 +78,9 @@ int main(int argc, char *argv[])
     }
 
     // text attributes
-    const QStringList textAttributes = QStringList() << QLatin1String("name") << QLatin1String("section") << QLatin1String("mimetype")
-            << QLatin1String("extensions") << QLatin1String("version") << QLatin1String("priority") << QLatin1String("style")
-            << QLatin1String("author") << QLatin1String("license") << QLatin1String("indenter");
+    const QStringList textAttributes = QStringList() << QStringLiteral("name") << QStringLiteral("section") << QStringLiteral("mimetype")
+            << QStringLiteral("extensions") << QStringLiteral("version") << QStringLiteral("priority") << QStringLiteral("style")
+            << QStringLiteral("author") << QStringLiteral("license") << QStringLiteral("indenter");
 
     // index all given highlightings
     QVariantMap hls;
@@ -117,13 +117,13 @@ int main(int argc, char *argv[])
         QVariantMap hl;
 
         // transfer text attributes
-        Q_FOREACH (QString attribute, textAttributes) {
+        Q_FOREACH (const QString &attribute, textAttributes) {
             hl[attribute] = xml.attributes().value(attribute).toString();
         }
 
         // add boolean one
         const QString hidden = xml.attributes().value(QLatin1String("hidden")).toString();
-        hl[QLatin1String("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
+        hl[QStringLiteral("hidden")] = (hidden == QLatin1String("true") || hidden == QLatin1String("1"));
 
         // remember hl
         hls[QFileInfo(hlFile).fileName()] = hl;

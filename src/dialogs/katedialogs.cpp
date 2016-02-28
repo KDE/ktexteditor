@@ -95,7 +95,7 @@
 #include <QDomDocument>
 
 // trailing slash is important
-#define HLDOWNLOADPATH QLatin1String("http://kate.kde.org/syntax/")
+#define HLDOWNLOADPATH QStringLiteral("http://kate.kde.org/syntax/")
 
 //END
 
@@ -628,7 +628,7 @@ QString KateEditConfigTab::fullName() const
 
 QIcon KateEditConfigTab::icon() const
 {
-    return QIcon::fromTheme(QLatin1String("accessories-text-editor"));
+    return QIcon::fromTheme(QStringLiteral("accessories-text-editor"));
 }
 
 //END KateEditConfigTab
@@ -776,7 +776,7 @@ QString KateViewDefaultsConfig::fullName() const
 
 QIcon KateViewDefaultsConfig::icon() const
 {
-    return QIcon::fromTheme(QLatin1String("preferences-desktop-theme"));
+    return QIcon::fromTheme(QStringLiteral("preferences-desktop-theme"));
 }
 
 //END KateViewDefaultsConfig
@@ -895,7 +895,7 @@ void KateSaveConfigTab::apply()
             i18n("You did not provide a backup suffix or prefix. Using default suffix: '~'"),
             i18n("No Backup Suffix or Prefix")
         );
-        uiadv->edtBackupSuffix->setText(QLatin1String("~"));
+        uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
     }
 
     const KateDocumentConfig::SwapFileMode swap_mode = static_cast<KateDocumentConfig::SwapFileMode>(uiadv->cmbSwapFileMode->currentIndex());
@@ -1037,7 +1037,7 @@ void KateSaveConfigTab::defaults()
     uiadv->chkBackupLocalFiles->setChecked(true);
     uiadv->chkBackupRemoteFiles->setChecked(false);
     uiadv->edtBackupPrefix->setText(QString());
-    uiadv->edtBackupSuffix->setText(QLatin1String("~"));
+    uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
     uiadv->cmbSwapFileMode->setCurrentIndex(1);
     uiadv->kurlSwapDirectory->setDisabled(true);
     uiadv->lblSwapDirectory->setDisabled(true);
@@ -1056,7 +1056,7 @@ QString KateSaveConfigTab::fullName() const
 
 QIcon KateSaveConfigTab::icon() const
 {
-    return QIcon::fromTheme(QLatin1String("document-save"));
+    return QIcon::fromTheme(QStringLiteral("document-save"));
 }
 
 //END KateSaveConfigTab
@@ -1091,7 +1091,7 @@ KateHlDownloadDialog::KateHlDownloadDialog(QWidget *parent, const char *name, bo
     QDialogButtonBox *buttons = new QDialogButtonBox(this);
     mainLayout->addWidget(buttons);
 
-    m_installButton = new QPushButton(QIcon::fromTheme(QLatin1String("dialog-ok")), i18n("&Install"));
+    m_installButton = new QPushButton(QIcon::fromTheme(QStringLiteral("dialog-ok")), i18n("&Install"));
     m_installButton->setDefault(true);
     buttons->addButton(m_installButton, QDialogButtonBox::AcceptRole);
     connect(m_installButton, SIGNAL(clicked()), this, SLOT(slotInstall()));
@@ -1101,7 +1101,7 @@ KateHlDownloadDialog::KateHlDownloadDialog(QWidget *parent, const char *name, bo
     buttons->addButton(closeButton, QDialogButtonBox::RejectRole);
     connect(closeButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-    transferJob = KIO::get(QUrl(QString::fromLatin1("%1update-%2.%3.xml").arg(HLDOWNLOADPATH).arg(KTEXTEDITOR_VERSION_MAJOR).arg(KTEXTEDITOR_VERSION_MINOR)), KIO::Reload);
+    transferJob = KIO::get(QUrl(QStringLiteral("%1update-%2.%3.xml").arg(HLDOWNLOADPATH).arg(KTEXTEDITOR_VERSION_MAJOR).arg(KTEXTEDITOR_VERSION_MINOR)), KIO::Reload);
     connect(transferJob, SIGNAL(data(KIO::Job*,QByteArray)),
             this, SLOT(listDataReceived(KIO::Job*,QByteArray)));
 //        void data( KIO::Job *, const QByteArray &data);
@@ -1120,7 +1120,7 @@ unsigned KateHlDownloadDialog::parseVersion(const QString &version_string)
 {
     unsigned vn[3] = {0, 0, 0};
     unsigned idx = 0;
-    foreach (const QString &n, version_string.split(QLatin1String("."))) {
+    foreach (const QString &n, version_string.split(QLatin1Char('.'))) {
         vn[idx++] = n.toUInt();
         if (idx == sizeof(vn)) {
             break;
@@ -1140,9 +1140,9 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
     }
 
     listData += QLatin1String(data);
-    qCDebug(LOG_KTE) << QLatin1String("CurrentListData: ") << listData;
-    qCDebug(LOG_KTE) << QString::fromLatin1("Data length: %1").arg(data.size());
-    qCDebug(LOG_KTE) << QString::fromLatin1("listData length: %1").arg(listData.length());
+    qCDebug(LOG_KTE) << QStringLiteral("CurrentListData: ") << listData;
+    qCDebug(LOG_KTE) << QStringLiteral("Data length: %1").arg(data.size());
+    qCDebug(LOG_KTE) << QStringLiteral("listData length: %1").arg(listData.length());
     if (data.size() == 0) {
         if (listData.length() > 0) {
             QString installedVersion;
@@ -1154,18 +1154,18 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
             KateHighlighting *hl = 0;
 
             if (n.isNull()) {
-                qCDebug(LOG_KTE) << QLatin1String("There is no usable childnode");
+                qCDebug(LOG_KTE) << QStringLiteral("There is no usable childnode");
             }
             while (!n.isNull()) {
-                installedVersion = QLatin1String("    --");
+                installedVersion = QStringLiteral("    --");
 
                 QDomElement e = n.toElement();
                 if (!e.isNull()) {
-                    qCDebug(LOG_KTE) << QLatin1String("NAME: ") << e.tagName() << QLatin1String(" - ") << e.attribute(QLatin1String("name"));
+                    qCDebug(LOG_KTE) << QStringLiteral("NAME: ") << e.tagName() << QStringLiteral(" - ") << e.attribute(QStringLiteral("name"));
                 }
                 n = n.nextSibling();
 
-                QString Name = e.attribute(QLatin1String("name"));
+                QString Name = e.attribute(QStringLiteral("name"));
 
                 for (int i = 0; i < hlm->highlights(); i++) {
                     hl = hlm->getHl(i);
@@ -1180,22 +1180,22 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
                 // autoselect entry if new or updated.
                 QTreeWidgetItem *entry = new QTreeWidgetItem(list);
                 entry->setText(0, QString());
-                entry->setText(1, e.attribute(QLatin1String("name")));
+                entry->setText(1, e.attribute(QStringLiteral("name")));
                 entry->setText(2, installedVersion);
-                entry->setText(3, e.attribute(QLatin1String("version")));
-                entry->setText(4, e.attribute(QLatin1String("url")));
+                entry->setText(3, e.attribute(QStringLiteral("version")));
+                entry->setText(4, e.attribute(QStringLiteral("url")));
 
                 bool is_fresh = false;
                 if (hl) {
                     unsigned prev_version = parseVersion(hl->version());
-                    unsigned next_version = parseVersion(e.attribute(QLatin1String("version")));
+                    unsigned next_version = parseVersion(e.attribute(QStringLiteral("version")));
                     is_fresh = prev_version < next_version;
                 } else {
                     is_fresh = true;
                 }
                 if (is_fresh) {
                     entry->treeWidget()->setItemSelected(entry, true);
-                    entry->setIcon(0, QIcon::fromTheme((QLatin1String("get-hot-new-stuff"))));
+                    entry->setIcon(0, QIcon::fromTheme((QStringLiteral("get-hot-new-stuff"))));
                 }
             }
             list->resizeColumnToContents(1);
@@ -1207,7 +1207,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
 void KateHlDownloadDialog::slotInstall()
 {
     const QString destdir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/katepart5/syntax/");
-    QDir(destdir).mkpath(QLatin1String(".")); // make sure the dir is there
+    QDir(destdir).mkpath(QStringLiteral(".")); // make sure the dir is there
 
     foreach (QTreeWidgetItem *it, list->selectedItems()) {
         QUrl src(it->text(4));
@@ -1243,7 +1243,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
 
     QToolButton *btnOK = new QToolButton(centralWidget());
     btnOK->setAutoRaise(true);
-    btnOK->setIcon(QIcon::fromTheme(QLatin1String("go-jump")));
+    btnOK->setIcon(QIcon::fromTheme(QStringLiteral("go-jump")));
     btnOK->setText(i18n("Go"));
     btnOK->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(btnOK, SIGNAL(clicked()), this, SLOT(gotoLine()));
@@ -1356,12 +1356,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     if (modtype == KTextEditor::ModificationInterface::OnDiskDeleted) {
         title = i18n("File Was Deleted on Disk");
         okText = i18n("&Save File As...");
-        okIcon = QLatin1String("document-save-as");
+        okIcon = QStringLiteral("document-save-as");
         okToolTip = i18n("Lets you select a location and save the file again.");
     } else {
         title = i18n("File Changed on Disk");
         okText = i18n("&Reload File");
-        okIcon = QLatin1String("view-refresh");
+        okIcon = QStringLiteral("view-refresh");
         okToolTip = i18n("Reload the file from disk. If you have unsaved changes, "
                          "they will be lost.");
     }
@@ -1375,7 +1375,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     mainLayout->addWidget(w);
     ui = new Ui::ModOnHdWidget();
     ui->setupUi(w);
-    ui->lblIcon->setPixmap(QIcon::fromTheme(QLatin1String("dialog-warning")).pixmap(IconSize(KIconLoader::Desktop), IconSize(KIconLoader::Desktop)));
+    ui->lblIcon->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(IconSize(KIconLoader::Desktop), IconSize(KIconLoader::Desktop)));
     ui->lblText->setText(reason + QLatin1String("\n\n") + i18n("What do you want to do?"));
 
     // buttons
@@ -1387,7 +1387,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     buttons->addButton(okButton, QDialogButtonBox::AcceptRole);
     connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()));
 
-    QPushButton *applyButton = new QPushButton(QIcon::fromTheme(QLatin1String("dialog-warning")), i18n("&Ignore Changes"));
+    QPushButton *applyButton = new QPushButton(QIcon::fromTheme(QStringLiteral("dialog-warning")), i18n("&Ignore Changes"));
     applyButton->setToolTip(i18n("Ignore the changes. You will not be prompted again."));
     buttons->addButton(applyButton, QDialogButtonBox::ApplyRole);
     connect(applyButton, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -1444,8 +1444,8 @@ void KateModOnHdPrompt::slotDiff()
     // Start a KProcess that creates a diff
     m_proc = new KProcess(this);
     m_proc->setOutputChannelMode(KProcess::MergedChannels);
-    *m_proc << QLatin1String("diff") << QString(ui->chkIgnoreWhiteSpaces->isChecked() ? QLatin1String("-ub") : QLatin1String("-u"))
-            << QLatin1String("-") <<  m_doc->url().toLocalFile();
+    *m_proc << QStringLiteral("diff") << QString(ui->chkIgnoreWhiteSpaces->isChecked() ? QLatin1String("-ub") : QLatin1String("-u"))
+            << QStringLiteral("-") <<  m_doc->url().toLocalFile();
     connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
     connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotPDone()));
 
@@ -1512,7 +1512,7 @@ void KateModOnHdPrompt::slotPDone()
     m_diffFile = 0;
 
     // KRun::runUrl should delete the file, once the client exits
-    KRun::runUrl(url, QLatin1String("text/x-patch"), this, true);
+    KRun::runUrl(url, QStringLiteral("text/x-patch"), this, true);
 }
 
 void KateModOnHdPrompt::slotOk()
@@ -1530,7 +1530,7 @@ void KateModOnHdPrompt::slotApply()
                                            i18n("You Are on Your Own"),
                                            KStandardGuiItem::cont(),
                                            KStandardGuiItem::cancel(),
-                                           QLatin1String("kate_ignore_modonhd")) != KMessageBox::Continue) {
+                                           QStringLiteral("kate_ignore_modonhd")) != KMessageBox::Continue) {
         return;
     }
 

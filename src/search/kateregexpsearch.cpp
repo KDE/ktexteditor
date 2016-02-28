@@ -100,7 +100,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
     case upperCaseFirst:
         if (str.length() > 0) {
             m_str.append(str.at(0).toUpper());
-            m_str.append(str.mid(1));
+            m_str.append(str.midRef(1));
             m_caseConversion = keepCase;
         }
         break;
@@ -113,7 +113,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
     case lowerCaseFirst:
         if (str.length() > 0) {
             m_str.append(str.at(0).toLower());
-            m_str.append(str.mid(1));
+            m_str.append(str.midRef(1));
             m_caseConversion = keepCase;
         }
         break;
@@ -132,7 +132,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
 KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operator<<(const counter &c)
 {
     // Zero padded counter value
-    m_str.append(QString::fromLatin1("%1").arg(c.value, c.minWidth, 10, QLatin1Char('0')));
+    m_str.append(QStringLiteral("%1").arg(c.value, c.minWidth, 10, QLatin1Char('0')));
 
     return *this;
 }
@@ -242,12 +242,12 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
         const QString firstLine = m_document->line(firstLineIndex);
 
         const int firstLineLen = firstLine.length() - minColStart;
-        wholeDocument.append(firstLine.right(firstLineLen));
+        wholeDocument.append(firstLine.rightRef(firstLineLen));
         lineLens[0] = firstLineLen;
         FAST_DEBUG("  line" << 0 << "has length" << lineLens[0]);
 
         // second line and after
-        const QString sep = QString::fromLatin1("\n");
+        const QString sep = QStringLiteral("\n");
         for (int i = 1; i < inputLineCount; i++) {
             const int lineNum = firstLineIndex + i;
             if (lineNum < 0 || m_document->lines() <= lineNum) {

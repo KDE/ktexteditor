@@ -61,7 +61,7 @@ bool compareKateFileType(const KateFileType *const left, const KateFileType *con
 //
 void KateModeManager::update()
 {
-    KConfig config(QLatin1String("katemoderc"), KConfig::NoGlobals);
+    KConfig config(QStringLiteral("katemoderc"), KConfig::NoGlobals);
 
     QStringList g(config.groupList());
 
@@ -74,18 +74,18 @@ void KateModeManager::update()
         KateFileType *type = new KateFileType();
         type->number = z;
         type->name = g[z];
-        type->section = cg.readEntry(QLatin1String("Section"));
-        type->wildcards = cg.readXdgListEntry(QLatin1String("Wildcards"));
-        type->mimetypes = cg.readXdgListEntry(QLatin1String("Mimetypes"));
-        type->priority = cg.readEntry(QLatin1String("Priority"), 0);
-        type->varLine = cg.readEntry(QLatin1String("Variables"));
-        type->indenter = cg.readEntry(QLatin1String("Indenter"));
+        type->section = cg.readEntry(QStringLiteral("Section"));
+        type->wildcards = cg.readXdgListEntry(QStringLiteral("Wildcards"));
+        type->mimetypes = cg.readXdgListEntry(QStringLiteral("Mimetypes"));
+        type->priority = cg.readEntry(QStringLiteral("Priority"), 0);
+        type->varLine = cg.readEntry(QStringLiteral("Variables"));
+        type->indenter = cg.readEntry(QStringLiteral("Indenter"));
 
-        type->hl = cg.readEntry(QLatin1String("Highlighting"));
+        type->hl = cg.readEntry(QStringLiteral("Highlighting"));
 
         // only for generated types...
-        type->hlGenerated = cg.readEntry(QLatin1String("Highlighting Generated"), false);
-        type->version = cg.readEntry(QLatin1String("Highlighting Version"));
+        type->hlGenerated = cg.readEntry(QStringLiteral("Highlighting Generated"), false);
+        type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
 
         // insert into the list + hash...
         m_types.append(type);
@@ -128,8 +128,8 @@ void KateModeManager::update()
     KateFileType *t = new KateFileType();
 
     // DO NOT TRANSLATE THIS, DONE LATER, marked by hlGenerated
-    t->name = QLatin1String("Normal");
-    t->hl = QLatin1String("None");
+    t->name = QStringLiteral("Normal");
+    t->hl = QStringLiteral("None");
     t->hlGenerated = true;
 
     m_types.prepend(t);
@@ -140,7 +140,7 @@ void KateModeManager::update()
 //
 void KateModeManager::save(const QList<KateFileType *> &v)
 {
-    KConfig katerc(QLatin1String("katemoderc"), KConfig::NoGlobals);
+    KConfig katerc(QStringLiteral("katemoderc"), KConfig::NoGlobals);
 
     QStringList newg;
     foreach (const KateFileType *type, v) {
@@ -196,7 +196,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
 
     // Try wildcards
     if (! fileName.isEmpty()) {
-        static const QStringList commonSuffixes = QString::fromLatin1(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';'));
+        static const QStringList commonSuffixes = QStringLiteral(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';'));
 
         if (!(result = wildcardsFind(fileName)).isEmpty()) {
             return result;

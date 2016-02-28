@@ -797,7 +797,7 @@ KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *
 
     QToolButton *helpButton = new QToolButton(this);
     helpButton->setAutoRaise(true);
-    helpButton->setIcon(QIcon::fromTheme(QLatin1String("help-contextual")));
+    helpButton->setIcon(QIcon::fromTheme(QStringLiteral("help-contextual")));
     topLayout->addWidget(helpButton);
     connect(helpButton, SIGNAL(clicked()), this, SLOT(showHelpPage()));
 
@@ -806,7 +806,7 @@ KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *
 
 void KateCommandLineBar::showHelpPage()
 {
-    KHelpClient::invokeHelp(QLatin1String("advanced-editing-tools-commandline"), QLatin1String("kate"));
+    KHelpClient::invokeHelp(QStringLiteral("advanced-editing-tools-commandline"), QStringLiteral("kate"));
 }
 
 KateCommandLineBar::~KateCommandLineBar()
@@ -861,9 +861,9 @@ void KateCmdLineEdit::hideEvent(QHideEvent *e)
 
 QString KateCmdLineEdit::helptext(const QPoint &) const
 {
-    QString beg = QString::fromLatin1("<qt background=\"white\"><div><table width=\"100%\"><tr><td bgcolor=\"brown\"><font color=\"white\"><b>Help: <big>");
-    QString mid = QString::fromLatin1("</big></b></font></td></tr><tr><td>");
-    QString end = QString::fromLatin1("</td></tr></table></div><qt>");
+    QString beg = QStringLiteral("<qt background=\"white\"><div><table width=\"100%\"><tr><td bgcolor=\"brown\"><font color=\"white\"><b>Help: <big>");
+    QString mid = QStringLiteral("</big></b></font></td></tr><tr><td>");
+    QString end = QStringLiteral("</td></tr></table></div><qt>");
 
     QString t = text();
     QRegExp re(QLatin1String("\\s*help\\s+(.*)"));
@@ -873,7 +873,7 @@ QString KateCmdLineEdit::helptext(const QPoint &) const
         QString name = re.cap(1);
         if (name == QLatin1String("list")) {
             return beg + i18n("Available Commands") + mid
-                   + KateCmd::self()->commandList().join(QLatin1String(" "))
+                   + KateCmd::self()->commandList().join(QLatin1Char(' '))
                    + i18n("<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></p>")
                    + end;
         } else if (! name.isEmpty()) {
@@ -972,7 +972,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         m_msgMode = true;
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.
-        if (QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1String(" ")).at(0))) {
+        if (QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1Char(' ')).at(0))) {
             emit hideRequested();
         }
 
@@ -1022,7 +1022,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     m_cmdend = 0;
 
     // the following commands change the focus themselves
-    if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1String(" ")).at(0))) {
+    if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1Char(' ')).at(0))) {
         m_view->setFocus();
     }
 
@@ -1069,7 +1069,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
     if (! m_cmdend || cursorpos <= m_cmdend) {
         QChar c;
         if (! ev->text().isEmpty()) {
-            c = ev->text()[0];
+            c = ev->text().at(0);
         }
 
         if (! m_cmdend && ! c.isNull()) { // we have no command, so lets see if we got one
@@ -1201,7 +1201,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
-    m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QLatin1String("bookmarks")).pixmap(16, 16));
+    m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(16, 16));
 
     updateFont();
 
@@ -1634,10 +1634,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                     if (m_relLineNumbersOn) {
                         if (distanceToCurrent == 0) {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                       Qt::TextDontClip|Qt::AlignLeft|Qt::AlignVCenter, QString::fromLatin1("%1").arg(realLine + 1));
+                                       Qt::TextDontClip|Qt::AlignLeft|Qt::AlignVCenter, QString::number(realLine + 1));
                         } else {
                             p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                       Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::fromLatin1("%1").arg(distanceToCurrent));
+                                       Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::number(distanceToCurrent));
                         }
                         if (m_updateRelLineNumbers) {
                             m_updateRelLineNumbers = false;
@@ -1645,7 +1645,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                         }
                     } else if (m_lineNumbersOn) {
                         p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                   Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::fromLatin1("%1").arg(realLine + 1));
+                                   Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
                     }
                 } else if (m_view->dynWordWrap() && m_dynWrapIndicatorsOn) {
                     p.drawPixmap(lnX + lnWidth - (m_arrow.width() / m_arrow.devicePixelRatio()) - 2, y, m_arrow);
@@ -2122,7 +2122,7 @@ void KateIconBorder::showAnnotationMenu(int line, const QPoint &pos)
 {
     QMenu menu;
     QAction a(i18n("Disable Annotation Bar"), &menu);
-    a.setIcon(QIcon::fromTheme(QLatin1String("dialog-close")));
+    a.setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
     menu.addAction(&a);
     emit m_view->annotationContextMenuAboutToShow(m_view, &menu, line);
     if (menu.exec(pos) == &a) {
@@ -2364,7 +2364,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     if (addCloseButton) {
         QToolButton *hideButton = new QToolButton(this);
         hideButton->setAutoRaise(true);
-        hideButton->setIcon(QIcon::fromTheme(QLatin1String("dialog-close")));
+        hideButton->setIcon(QIcon::fromTheme(QStringLiteral("dialog-close")));
         connect(hideButton, SIGNAL(clicked()), SIGNAL(hideMe()));
         layout->addWidget(hideButton);
         layout->setAlignment(hideButton, Qt::AlignLeft | Qt::AlignTop);

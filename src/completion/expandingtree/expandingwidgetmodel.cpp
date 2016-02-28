@@ -315,7 +315,7 @@ bool ExpandingWidgetModel::isExpandable(const QModelIndex &idx_) const
     if (!m_expandState.contains(idx)) {
         m_expandState.insert(idx, NotExpandable);
         QVariant v = data(idx, CodeCompletionModel::IsExpandable);
-        if (v.canConvert<bool>() && v.value<bool>()) {
+        if (v.canConvert<bool>() && v.toBool()) {
             m_expandState[idx] = Expandable;
         }
     }
@@ -356,7 +356,7 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
                 m_expandingWidgets[idx] = v.value<QWidget *>();
             } else if (v.canConvert<QString>()) {
                 //Create a html widget that shows the given string
-                KTextEdit *edit = new KTextEdit(v.value<QString>());
+                KTextEdit *edit = new KTextEdit(v.toString());
                 edit->setReadOnly(true);
                 edit->resize(200, 50); //Make the widget small so it embeds nicely.
                 m_expandingWidgets[idx] = edit;
@@ -469,11 +469,11 @@ QWidget *ExpandingWidgetModel::expandingWidget(const QModelIndex &idx_) const
 void ExpandingWidgetModel::cacheIcons() const
 {
     if (m_expandedIcon.isNull()) {
-        m_expandedIcon = QIcon::fromTheme(QLatin1String("arrow-down"));
+        m_expandedIcon = QIcon::fromTheme(QStringLiteral("arrow-down"));
     }
 
     if (m_collapsedIcon.isNull()) {
-        m_collapsedIcon = QIcon::fromTheme(QLatin1String("arrow-right"));
+        m_collapsedIcon = QIcon::fromTheme(QStringLiteral("arrow-right"));
     }
 }
 

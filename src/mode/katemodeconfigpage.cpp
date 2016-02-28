@@ -75,7 +75,7 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     connect(ui->cmbFiletypes, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
     connect(ui->btnNew, SIGNAL(clicked()), this, SLOT(newType()));
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deleteType()));
-    ui->btnMimeTypes->setIcon(QIcon::fromTheme(QLatin1String("tools-wizard")));
+    ui->btnMimeTypes->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
     connect(ui->btnMimeTypes, SIGNAL(clicked()), this, SLOT(showMTDlg()));
     connect(ui->btnDownload, SIGNAL(clicked()), this, SLOT(hlDownload()));
 
@@ -243,8 +243,8 @@ void ModeConfigPage::typeChanged(int type)
         ui->edtName->setText(t->nameTranslated());
         ui->edtSection->setText(t->sectionTranslated());
         ui->edtVariables->setText(t->varLine);
-        ui->edtFileExtensions->setText(t->wildcards.join(QLatin1String(";")));
-        ui->edtMimeTypes->setText(t->mimetypes.join(QLatin1String(";")));
+        ui->edtFileExtensions->setText(t->wildcards.join(QLatin1Char(';')));
+        ui->edtMimeTypes->setText(t->mimetypes.join(QLatin1Char(';')));
         ui->sbPriority->setValue(t->priority);
 
         ui->cmbHl->setEnabled(!t->hlGenerated);
@@ -287,12 +287,12 @@ void ModeConfigPage::showMTDlg()
 {
     QString text = i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
     QStringList list = ui->edtMimeTypes->text().split(QRegExp(QLatin1String("\\s*;\\s*")), QString::SkipEmptyParts);
-    KMimeTypeChooserDialog d(i18n("Select Mime Types"), text, list, QLatin1String("text"), this);
+    KMimeTypeChooserDialog d(i18n("Select Mime Types"), text, list, QStringLiteral("text"), this);
     if (d.exec() == QDialog::Accepted) {
         // do some checking, warn user if mime types or patterns are removed.
         // if the lists are empty, and the fields not, warn.
-        ui->edtFileExtensions->setText(d.chooser()->patterns().join(QLatin1String(";")));
-        ui->edtMimeTypes->setText(d.chooser()->mimeTypes().join(QLatin1String(";")));
+        ui->edtFileExtensions->setText(d.chooser()->patterns().join(QLatin1Char(';')));
+        ui->edtMimeTypes->setText(d.chooser()->mimeTypes().join(QLatin1Char(';')));
     }
 }
 

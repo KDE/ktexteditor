@@ -142,10 +142,10 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
 
     setHeaderLabels(headers);
 
-    headerItem()->setIcon(1, QIcon::fromTheme(QLatin1String("format-text-bold")));
-    headerItem()->setIcon(2, QIcon::fromTheme(QLatin1String("format-text-italic")));
-    headerItem()->setIcon(3, QIcon::fromTheme(QLatin1String("format-text-underline")));
-    headerItem()->setIcon(4, QIcon::fromTheme(QLatin1String("format-text-strikethrough")));
+    headerItem()->setIcon(1, QIcon::fromTheme(QStringLiteral("format-text-bold")));
+    headerItem()->setIcon(2, QIcon::fromTheme(QStringLiteral("format-text-italic")));
+    headerItem()->setIcon(3, QIcon::fromTheme(QStringLiteral("format-text-underline")));
+    headerItem()->setIcon(4, QIcon::fromTheme(QStringLiteral("format-text-strikethrough")));
 
     // grap the bg color, selected color and default font
     const KColorScheme &colors(KTextEditor::EditorPrivate::self()->defaultColors().view());
@@ -360,7 +360,7 @@ QBrush KateStyleTreeDelegate::getBrushForColorColumn(const QModelIndex &index, i
 void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     static QSet<int> columns;
-    if (!columns.count()) {
+    if (columns.isEmpty()) {
         columns << KateStyleTreeWidgetItem::Foreground << KateStyleTreeWidgetItem::SelectedForeground << KateStyleTreeWidgetItem::Background << KateStyleTreeWidgetItem::SelectedBackground;
     }
 
@@ -635,7 +635,7 @@ void KateStyleTreeWidgetItem::toggleDefStyle()
         KMessageBox::information(treeWidget(),
                                  i18n("\"Use Default Style\" will be automatically unset when you change any style properties."),
                                  i18n("Kate Styles"),
-                                 QLatin1String("Kate hl config use defaults"));
+                                 QStringLiteral("Kate hl config use defaults"));
     } else {
         currentStyle = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*defaultStyle));
         updateStyle();

@@ -208,7 +208,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
     //groupOfParent returns a group when the index is a member of that group, but not the group head/label.
     if (!hasGroups() || groupOfParent(index)) {
         if ( role == Qt::TextAlignmentRole ) {
-            if (isColumnMergingEnabled() && m_columnMerges.count()) {
+            if (isColumnMergingEnabled() && !m_columnMerges.isEmpty()) {
                 int c = 0;
                 foreach (const QList<int> &list, m_columnMerges) {
                     if (index.column() < c + list.size()) {
@@ -229,7 +229,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         }
 
         // Merge text for column merging
-        if (role == Qt::DisplayRole && m_columnMerges.count() && isColumnMergingEnabled()) {
+        if (role == Qt::DisplayRole && !m_columnMerges.isEmpty() && isColumnMergingEnabled()) {
             QString text;
             foreach (int column, m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
@@ -747,11 +747,11 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
     if (groupingMethod() & ScopeType) {
         if (attribute & KTextEditor::CodeCompletionModel::GlobalScope) {
-            st = QLatin1String("Global");
+            st = QStringLiteral("Global");
         } else if (attribute & KTextEditor::CodeCompletionModel::NamespaceScope) {
-            st = QLatin1String("Namespace");
+            st = QStringLiteral("Namespace");
         } else if (attribute & KTextEditor::CodeCompletionModel::LocalScope) {
-            st = QLatin1String("Local");
+            st = QStringLiteral("Local");
         }
 
         title = st;
@@ -767,11 +767,11 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
     if (groupingMethod() & AccessType) {
         if (attribute & KTextEditor::CodeCompletionModel::Public) {
-            at = QLatin1String("Public");
+            at = QStringLiteral("Public");
         } else if (attribute & KTextEditor::CodeCompletionModel::Protected) {
-            at = QLatin1String("Protected");
+            at = QStringLiteral("Protected");
         } else if (attribute & KTextEditor::CodeCompletionModel::Private) {
-            at = QLatin1String("Private");
+            at = QStringLiteral("Private");
         }
 
         if (accessIncludeStatic() && attribute & KTextEditor::CodeCompletionModel::Static) {

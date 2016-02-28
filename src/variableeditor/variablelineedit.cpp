@@ -55,7 +55,7 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
 
     m_lineedit = new QLineEdit(this);
     m_button = new QToolButton(this);
-    m_button->setIcon(QIcon::fromTheme(QLatin1String("tools-wizard")));
+    m_button->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
     m_button->setToolTip(i18n("Show list of valid variables."));
 
     hl->addWidget(m_lineedit);
@@ -131,28 +131,28 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     }
 
     // Add 'auto-center-lines' to list
-    item = new VariableIntItem(QLatin1String("auto-center-lines"), viewConfig->autoCenterLines());
+    item = new VariableIntItem(QStringLiteral("auto-center-lines"), viewConfig->autoCenterLines());
     static_cast<VariableIntItem *>(item)->setRange(1, 100);
     item->setHelpText(i18nc("short translation please", "Set the number of autocenter lines."));
     listview->addItem(item);
 
     // Add 'auto-insert-doxygen' to list
-    item = new VariableBoolItem(QLatin1String("auto-insert-doxygen"), false);
+    item = new VariableBoolItem(QStringLiteral("auto-insert-doxygen"), false);
     item->setHelpText(i18nc("short translation please", "Auto insert asterisk in doxygen comments."));
     listview->addItem(item);
 
     // Add 'background-color' to list
-    item = new VariableColorItem(QLatin1String("background-color"), rendererConfig->backgroundColor());
+    item = new VariableColorItem(QStringLiteral("background-color"), rendererConfig->backgroundColor());
     item->setHelpText(i18nc("short translation please", "Set the document background color."));
     listview->addItem(item);
 
     // Add 'backspace-indents' to list
-    item = new VariableBoolItem(QLatin1String("backspace-indents"), docConfig->backspaceIndents());
+    item = new VariableBoolItem(QStringLiteral("backspace-indents"), docConfig->backspaceIndents());
     item->setHelpText(i18nc("short translation please", "Pressing backspace in leading whitespace unindents."));
     listview->addItem(item);
 
     // Add 'block-selection' to list
-    item = new VariableBoolItem(QLatin1String("block-selection"), false);
+    item = new VariableBoolItem(QStringLiteral("block-selection"), false);
     if (activeView) {
         static_cast<VariableBoolItem *>(item)->setValue(activeView->blockSelection());
     }
@@ -160,49 +160,49 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     listview->addItem(item);
 
     // Add 'byte-order-marker' (bom) to list
-    item = new VariableBoolItem(QLatin1String("byte-order-marker"), docConfig->bom());
+    item = new VariableBoolItem(QStringLiteral("byte-order-marker"), docConfig->bom());
     item->setHelpText(i18nc("short translation please", "Enable the byte order marker when saving unicode files."));
     listview->addItem(item);
 
     // Add 'bracket-highlight-color' to list
-    item = new VariableColorItem(QLatin1String("bracket-highlight-color"), rendererConfig->highlightedBracketColor());
+    item = new VariableColorItem(QStringLiteral("bracket-highlight-color"), rendererConfig->highlightedBracketColor());
     item->setHelpText(i18nc("short translation please", "Set the color for the bracket highlight."));
     listview->addItem(item);
 
     // Add 'current-line-color' to list
-    item = new VariableColorItem(QLatin1String("current-line-color"), rendererConfig->highlightedLineColor());
+    item = new VariableColorItem(QStringLiteral("current-line-color"), rendererConfig->highlightedLineColor());
     item->setHelpText(i18nc("short translation please", "Set the background color for the current line."));
     listview->addItem(item);
 
     // Add 'default-dictionary' to list
     Sonnet::Speller speller;
-    item = new VariableSpellCheckItem(QLatin1String("default-dictionary"), speller.defaultLanguage());
+    item = new VariableSpellCheckItem(QStringLiteral("default-dictionary"), speller.defaultLanguage());
     item->setHelpText(i18nc("short translation please", "Set the default dictionary used for spell checking."));
     listview->addItem(item);
 
     // Add 'dynamic-word-wrap' to list
-    item = new VariableBoolItem(QLatin1String("dynamic-word-wrap"), viewConfig->dynWordWrap());
+    item = new VariableBoolItem(QStringLiteral("dynamic-word-wrap"), viewConfig->dynWordWrap());
     item->setHelpText(i18nc("short translation please", "Enable dynamic word wrap of long lines."));
     listview->addItem(item);
 
     // Add 'end-of-line' (eol) to list
-    item = new VariableStringListItem(QLatin1String("end-of-line"), QStringList() << QLatin1String("unix") << QLatin1String("mac") << QLatin1String("dos"), docConfig->eolString());
+    item = new VariableStringListItem(QStringLiteral("end-of-line"), QStringList() << QStringLiteral("unix") << QStringLiteral("mac") << QStringLiteral("dos"), docConfig->eolString());
     item->setHelpText(i18nc("short translation please", "Sets the end of line mode."));
     listview->addItem(item);
 
     // Add 'folding-markers' to list
-    item = new VariableBoolItem(QLatin1String("folding-markers"), viewConfig->foldingBar());
+    item = new VariableBoolItem(QStringLiteral("folding-markers"), viewConfig->foldingBar());
     item->setHelpText(i18nc("short translation please", "Enable folding markers in the editor border."));
     listview->addItem(item);
 
     // Add 'font-size' to list
-    item = new VariableIntItem(QLatin1String("font-size"), rendererConfig->font().pointSize());
+    item = new VariableIntItem(QStringLiteral("font-size"), rendererConfig->font().pointSize());
     static_cast<VariableIntItem *>(item)->setRange(4, 128);
     item->setHelpText(i18nc("short translation please", "Set the point size of the document font."));
     listview->addItem(item);
 
     // Add 'font' to list
-    item = new VariableFontItem(QLatin1String("font"), rendererConfig->font());
+    item = new VariableFontItem(QStringLiteral("font"), rendererConfig->font());
     item->setHelpText(i18nc("short translation please", "Set the font of the document."));
     listview->addItem(item);
 
@@ -214,7 +214,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
         hl << KateHlManager::self()->hlName(z);
     }
 
-    item = new VariableStringListItem(QLatin1String("syntax"), hl, hl.at(0));
+    item = new VariableStringListItem(QStringLiteral("syntax"), hl, hl.at(0));
     if (activeDoc) {
         static_cast<VariableStringListItem *>(item)->setValue(activeDoc->highlightingMode());
     }
@@ -222,68 +222,68 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     listview->addItem(item);
 
     // Add 'icon-bar-color' to list
-    item = new VariableColorItem(QLatin1String("icon-bar-color"), rendererConfig->iconBarColor());
+    item = new VariableColorItem(QStringLiteral("icon-bar-color"), rendererConfig->iconBarColor());
     item->setHelpText(i18nc("short translation please", "Set the icon bar color."));
     listview->addItem(item);
 
     // Add 'icon-border' to list
-    item = new VariableBoolItem(QLatin1String("icon-border"), viewConfig->iconBar());
+    item = new VariableBoolItem(QStringLiteral("icon-border"), viewConfig->iconBar());
     item->setHelpText(i18nc("short translation please", "Enable the icon border in the editor view."));
     listview->addItem(item);
 
     // Add 'indent-mode' to list
-    item = new VariableStringListItem(QLatin1String("indent-mode"), KateAutoIndent::listIdentifiers(), docConfig->indentationMode());
+    item = new VariableStringListItem(QStringLiteral("indent-mode"), KateAutoIndent::listIdentifiers(), docConfig->indentationMode());
     item->setHelpText(i18nc("short translation please", "Set the auto indentation style."));
     listview->addItem(item);
 
     // Add 'indent-pasted-text' to list
-    item = new VariableBoolItem(QLatin1String("indent-pasted-text"), docConfig->indentPastedText());
+    item = new VariableBoolItem(QStringLiteral("indent-pasted-text"), docConfig->indentPastedText());
     item->setHelpText(i18nc("short translation please", "Adjust indentation of text pasted from the clipboard."));
     listview->addItem(item);
 
     // Add 'indent-width' to list
-    item = new VariableIntItem(QLatin1String("indent-width"), docConfig->indentationWidth());
+    item = new VariableIntItem(QStringLiteral("indent-width"), docConfig->indentationWidth());
     static_cast<VariableIntItem *>(item)->setRange(1, 16);
     item->setHelpText(i18nc("short translation please", "Set the indentation depth for each indent level."));
     listview->addItem(item);
 
     // Add 'keep-extra-spaces' to list
-    item = new VariableBoolItem(QLatin1String("keep-extra-spaces"), docConfig->keepExtraSpaces());
+    item = new VariableBoolItem(QStringLiteral("keep-extra-spaces"), docConfig->keepExtraSpaces());
     item->setHelpText(i18nc("short translation please", "Allow odd indentation level (no multiple of indent width)."));
     listview->addItem(item);
 
     // Add 'line-numbers' to list
-    item = new VariableBoolItem(QLatin1String("line-numbers"), viewConfig->lineNumbers());
+    item = new VariableBoolItem(QStringLiteral("line-numbers"), viewConfig->lineNumbers());
     item->setHelpText(i18nc("short translation please", "Show line numbers."));
     listview->addItem(item);
 
     // Add 'newline-at-eof' to list
-    item = new VariableBoolItem(QLatin1String("newline-at-eof"), docConfig->ovr());
+    item = new VariableBoolItem(QStringLiteral("newline-at-eof"), docConfig->ovr());
     item->setHelpText(i18nc("short translation please", "Insert newline at end of file on save."));
     listview->addItem(item);
 
     // Add 'overwrite-mode' to list
-    item = new VariableBoolItem(QLatin1String("overwrite-mode"), docConfig->ovr());
+    item = new VariableBoolItem(QStringLiteral("overwrite-mode"), docConfig->ovr());
     item->setHelpText(i18nc("short translation please", "Enable overwrite mode in the document."));
     listview->addItem(item);
 
     // Add 'persistent-selection' to list
-    item = new VariableBoolItem(QLatin1String("persistent-selection"), viewConfig->persistentSelection());
+    item = new VariableBoolItem(QStringLiteral("persistent-selection"), viewConfig->persistentSelection());
     item->setHelpText(i18nc("short translation please", "Enable persistent text selection."));
     listview->addItem(item);
 
     // Add 'replace-tabs-save' to list
-    item = new VariableBoolItem(QLatin1String("replace-tabs-save"), false);
+    item = new VariableBoolItem(QStringLiteral("replace-tabs-save"), false);
     item->setHelpText(i18nc("short translation please", "Replace tabs with spaces when saving the document."));
     listview->addItem(item);
 
     // Add 'replace-tabs' to list
-    item = new VariableBoolItem(QLatin1String("replace-tabs"), docConfig->replaceTabsDyn());
+    item = new VariableBoolItem(QStringLiteral("replace-tabs"), docConfig->replaceTabsDyn());
     item->setHelpText(i18nc("short translation please", "Replace tabs with spaces."));
     listview->addItem(item);
 
     // Add 'remove-trailing-spaces' to list
-    item = new VariableRemoveSpacesItem(QLatin1String("remove-trailing-spaces"), docConfig->removeSpaces());
+    item = new VariableRemoveSpacesItem(QStringLiteral("remove-trailing-spaces"), docConfig->removeSpaces());
     item->setHelpText(i18nc("short translation please", "Remove trailing spaces when saving the document."));
     listview->addItem(item);
 
@@ -292,55 +292,55 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     Q_FOREACH (const KateSchema &schema, KTextEditor::EditorPrivate::self()->schemaManager()->list()) {
         schemas.append(schema.rawName);
     }
-    item = new VariableStringListItem(QLatin1String("scheme"), schemas, rendererConfig->schema());
+    item = new VariableStringListItem(QStringLiteral("scheme"), schemas, rendererConfig->schema());
     item->setHelpText(i18nc("short translation please", "Set the color scheme."));
     listview->addItem(item);
 
     // Add 'selection-color' to list
-    item = new VariableColorItem(QLatin1String("selection-color"), rendererConfig->selectionColor());
+    item = new VariableColorItem(QStringLiteral("selection-color"), rendererConfig->selectionColor());
     item->setHelpText(i18nc("short translation please", "Set the text selection color."));
     listview->addItem(item);
 
     // Add 'show-tabs' to list
-    item = new VariableBoolItem(QLatin1String("show-tabs"), docConfig->showTabs());
+    item = new VariableBoolItem(QStringLiteral("show-tabs"), docConfig->showTabs());
     item->setHelpText(i18nc("short translation please", "Visualize tabs and trailing spaces."));
     listview->addItem(item);
 
     // Add 'smart-home' to list
-    item = new VariableBoolItem(QLatin1String("smart-home"), docConfig->smartHome());
+    item = new VariableBoolItem(QStringLiteral("smart-home"), docConfig->smartHome());
     item->setHelpText(i18nc("short translation please", "Enable smart home navigation."));
     listview->addItem(item);
 
     // Add 'tab-indents' to list
-    item = new VariableBoolItem(QLatin1String("tab-indents"), docConfig->tabIndentsEnabled());
+    item = new VariableBoolItem(QStringLiteral("tab-indents"), docConfig->tabIndentsEnabled());
     item->setHelpText(i18nc("short translation please", "Pressing TAB key indents."));
     listview->addItem(item);
 
     // Add 'tab-width' to list
-    item = new VariableIntItem(QLatin1String("tab-width"), docConfig->tabWidth());
+    item = new VariableIntItem(QStringLiteral("tab-width"), docConfig->tabWidth());
     static_cast<VariableIntItem *>(item)->setRange(1, 16);
     item->setHelpText(i18nc("short translation please", "Set the tab display width."));
     listview->addItem(item);
 
     // Add 'undo-steps' to list
-    item = new VariableIntItem(QLatin1String("undo-steps"), 0);
+    item = new VariableIntItem(QStringLiteral("undo-steps"), 0);
     static_cast<VariableIntItem *>(item)->setRange(0, 100);
     item->setHelpText(i18nc("short translation please", "Set the number of undo steps to remember (0 equals infinity)."));
     listview->addItem(item);
 
     // Add 'word-wrap-column' to list
-    item = new VariableIntItem(QLatin1String("word-wrap-column"), docConfig->wordWrapAt());
+    item = new VariableIntItem(QStringLiteral("word-wrap-column"), docConfig->wordWrapAt());
     static_cast<VariableIntItem *>(item)->setRange(20, 200);
     item->setHelpText(i18nc("short translation please", "Set the word wrap column."));
     listview->addItem(item);
 
     // Add 'word-wrap-marker-color' to list
-    item = new VariableColorItem(QLatin1String("word-wrap-marker-color"), rendererConfig->wordWrapMarkerColor());
+    item = new VariableColorItem(QStringLiteral("word-wrap-marker-color"), rendererConfig->wordWrapMarkerColor());
     item->setHelpText(i18nc("short translation please", "Set the word wrap marker color."));
     listview->addItem(item);
 
     // Add 'word-wrap' to list
-    item = new VariableBoolItem(QLatin1String("word-wrap"), docConfig->wordWrap());
+    item = new VariableBoolItem(QStringLiteral("word-wrap"), docConfig->wordWrap());
     item->setHelpText(i18nc("short translation please", "Enable word wrap while typing text."));
     listview->addItem(item);
 }

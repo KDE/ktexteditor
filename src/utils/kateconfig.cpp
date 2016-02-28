@@ -364,7 +364,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 
     setBackupPrefix(config.readEntry(KEY_BACKUP_PREFIX, QString()));
 
-    setBackupSuffix(config.readEntry(KEY_BACKUP_SUFFIX, QString::fromLatin1("~")));
+    setBackupSuffix(config.readEntry(KEY_BACKUP_SUFFIX, QStringLiteral("~")));
 
     setSwapFileMode(config.readEntry(KEY_SWAP_FILE_MODE, (uint)EnableSwapFile));
     setSwapDirectory(config.readEntry(KEY_SWAP_DIRECTORY, QString()));
@@ -930,14 +930,14 @@ int KateDocumentConfig::eol() const
 QString KateDocumentConfig::eolString()
 {
     if (eol() == KateDocumentConfig::eolUnix) {
-        return QString(QLatin1String("\n"));
+        return QStringLiteral("\n");
     } else if (eol() == KateDocumentConfig::eolDos) {
-        return QString(QLatin1String("\r\n"));
+        return QStringLiteral("\r\n");
     } else if (eol() == KateDocumentConfig::eolMac) {
-        return QString(QLatin1String("\r"));
+        return QStringLiteral("\r");
     }
 
-    return QString(QLatin1String("\n"));
+    return QStringLiteral("\n");
 }
 
 void KateDocumentConfig::setEol(int mode)
@@ -2377,7 +2377,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_replaceHighlightColorSet = true;
 
     for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; i++) {
-        QColor col = config.readEntry(QString::fromLatin1("Color MarkType %1").arg(i + 1), colors.mark(i));
+        QColor col = config.readEntry(QStringLiteral("Color MarkType %1").arg(i + 1), colors.mark(i));
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;
     }
@@ -2388,15 +2388,15 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_fontMetrics = QFontMetricsF(m_font);
     m_fontSet = true;
 
-    m_templateBackgroundColor = config.readEntry(QLatin1String("Color Template Background"), colors.color(Kate::TemplateBackground));
+    m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(Kate::TemplateBackground));
 
-    m_templateFocusedEditablePlaceholderColor = config.readEntry(QLatin1String("Color Template Focused Editable Placeholder"),
+    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"),
                                                                  colors.color(Kate::TemplateFocusedEditablePlaceholder));
 
-    m_templateEditablePlaceholderColor = config.readEntry(QLatin1String("Color Template Editable Placeholder"),
+    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"),
                                                           colors.color(Kate::TemplateEditablePlaceholder));
 
-    m_templateNotEditablePlaceholderColor = config.readEntry(QLatin1String("Color Template Not Editable Placeholder"),
+    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"),
                                                              colors.color(Kate::TemplateNotEditablePlaceholder));
 
     m_templateColorsSet = true;

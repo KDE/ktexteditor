@@ -32,14 +32,14 @@ using KTextEditor::Cursor;
 
 CommandRangeExpressionParser::CommandRangeExpressionParser()
 {
-    m_line.setPattern(QLatin1String("\\d+"));
-    m_lastLine.setPattern(QLatin1String("\\$"));
-    m_thisLine.setPattern(QLatin1String("\\."));
+    m_line.setPattern(QStringLiteral("\\d+"));
+    m_lastLine.setPattern(QStringLiteral("\\$"));
+    m_thisLine.setPattern(QStringLiteral("\\."));
 
-    m_forwardSearch.setPattern(QLatin1String("/([^/]*)/?"));
-    m_forwardSearch2.setPattern(QLatin1String("/[^/]*/?")); // no group
-    m_backwardSearch.setPattern(QLatin1String("\\?([^?]*)\\??"));
-    m_backwardSearch2.setPattern(QLatin1String("\\?[^?]*\\??")); // no group
+    m_forwardSearch.setPattern(QStringLiteral("/([^/]*)/?"));
+    m_forwardSearch2.setPattern(QStringLiteral("/[^/]*/?")); // no group
+    m_backwardSearch.setPattern(QStringLiteral("\\?([^?]*)\\??"));
+    m_backwardSearch2.setPattern(QStringLiteral("\\?[^?]*\\??")); // no group
     m_base.setPattern(QLatin1String("(?:") + m_mark.pattern() + QLatin1String(")|(?:") +
                       m_line.pattern() + QLatin1String(")|(?:") +
                       m_thisLine.pattern() + QLatin1String(")|(?:") +
@@ -77,7 +77,7 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
     bool leadingRangeWasPercent = false;
     // expand '%' to '1,$' ("all lines") if at the start of the line
     if (commandTmp.at(0) == QLatin1Char('%')) {
-        commandTmp.replace(0, 1, QLatin1String("1,$"));
+        commandTmp.replace(0, 1, QStringLiteral("1,$"));
         leadingRangeWasPercent = true;
     }
     if (m_cmdRange.indexIn(commandTmp) != -1 && m_cmdRange.matchedLength() > 0) {
@@ -98,12 +98,12 @@ Range CommandRangeExpressionParser::parseRangeExpression(const QString &command,
 
         // special case: if the command is just a number with an optional +/- prefix, rewrite to "goto"
         if (commandTmp.isEmpty()) {
-            commandTmp = QString::fromLatin1("goto %1").arg(position1);
+            commandTmp = QStringLiteral("goto %1").arg(position1);
         } else {
             parsedRange.setRange(KTextEditor::Range(position1 - 1, 0, position2 - 1, 0));
         }
 
-        destRangeExpression = (leadingRangeWasPercent ? QLatin1String("%") : m_cmdRange.cap(0));
+        destRangeExpression = (leadingRangeWasPercent ? QStringLiteral("%") : m_cmdRange.cap(0));
         destTransformedCommand = commandTmp;
     }
 
@@ -118,7 +118,7 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string, KText
     QStringList split = string.split(QRegExp(QLatin1String("[-+](?!([+-]|$))")));
     QList<int> values;
 
-    foreach (QString line, split) {
+    foreach (const QString &line, split) {
         pos += line.size();
 
         if (pos < string.size()) {

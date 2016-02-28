@@ -174,7 +174,7 @@ void VariableBoolItem::setValueByString(const QString &value)
 
 QString VariableBoolItem::valueAsString() const
 {
-    return value() ? QString::fromLatin1("true") : QString::fromLatin1("false");
+    return value() ? QStringLiteral("true") : QStringLiteral("false");
 }
 
 VariableEditor *VariableBoolItem::createEditor(QWidget *parent)
@@ -335,11 +335,11 @@ void VariableRemoveSpacesItem::setValue(int value)
 QString VariableRemoveSpacesItem::valueAsString() const
 {
     if (m_value == 2) {
-        return QString::fromLatin1("all");
+        return QStringLiteral("all");
     } else if (m_value == 1) {
-        return QString::fromLatin1("modified");
+        return QStringLiteral("modified");
     } else {
-        return QString::fromLatin1("none");
+        return QStringLiteral("none");
     }
 }
 

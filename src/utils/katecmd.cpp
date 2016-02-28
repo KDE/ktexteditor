@@ -29,7 +29,7 @@
 
 KateCmd::KateCmd()
 {
-    m_cmdCompletion.addItem(QLatin1String("help"));
+    m_cmdCompletion.addItem(QStringLiteral("help"));
 }
 
 KateCmd::~KateCmd()
@@ -89,7 +89,7 @@ KTextEditor::Command *KateCmd::queryCommand(const QString &cmd) const
     // command is 's' (substitute), it should be considered the delimiter and
     // should not be counted as part of the command name
     if (cmd.length() >= 2 && cmd.at(0) == QLatin1Char('s') && (cmd.at(1) == QLatin1Char('-') || cmd.at(1) == QLatin1Char('_'))) {
-        return m_dict.value(QLatin1String("s"));
+        return m_dict.value(QStringLiteral("s"));
     }
 
     for (; f < cmd.length(); f++) {

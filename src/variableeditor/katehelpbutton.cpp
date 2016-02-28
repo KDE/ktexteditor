@@ -43,11 +43,11 @@ KateHelpButton::~KateHelpButton()
 void KateHelpButton::setIconState(IconState state)
 {
     if (state == IconGrayscaled) {
-        setIcon(QIcon::fromTheme(QLatin1String("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Disabled));
+        setIcon(QIcon::fromTheme(QStringLiteral("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Disabled));
     } else if (state == IconHidden) {
         setIcon(QIcon());
     } else {
-        setIcon(QIcon::fromTheme(QLatin1String("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Normal));
+        setIcon(QIcon::fromTheme(QStringLiteral("help-contents")).pixmap(IconSize(KIconLoader::Small), QIcon::Normal));
     }
 
     update();
@@ -55,7 +55,7 @@ void KateHelpButton::setIconState(IconState state)
 
 void KateHelpButton::invokeHelp()
 {
-    KHelpClient::invokeHelp(m_section, QLatin1String("kate"));
+    KHelpClient::invokeHelp(m_section, QStringLiteral("kate"));
 }
 
 void KateHelpButton::setSection(const QString &section)

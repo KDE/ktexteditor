@@ -111,7 +111,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     m_fontHeight = m_renderer->fontHeight();
 
     // figure out the horiizontal space required
-    QString s = QString::fromLatin1("%1 ").arg(m_doc->lines());
+    QString s = QStringLiteral("%1 ").arg(m_doc->lines());
     s.fill(QLatin1Char('5'), -1); // some non-fixed fonts haven't equally wide numbers
     // FIXME calculate which is actually the widest...
     m_lineNumberWidth = m_renderer->currentFontMetrics().width(s);
@@ -242,7 +242,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
 
     if (m_printLineNumbers) {
         // a small space between the line numbers and the text
-        int _adj = m_renderer->currentFontMetrics().width(QLatin1String("5"));
+        int _adj = m_renderer->currentFontMetrics().width(QStringLiteral("5"));
         // adjust available width and set horizontal start point for data
         pl.maxWidth -= m_lineNumberWidth + _adj;
         pl.xstart += m_lineNumberWidth + _adj;
@@ -257,22 +257,22 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
         QMap<QString, QString> tags;
 
         KUser u(KUser::UseRealUserID);
-        tags[QString::fromLatin1("u")] = u.loginName();
+        tags[QStringLiteral("u")] = u.loginName();
 
-        tags[QString::fromLatin1("d")] =  QLocale().toString(dt, QLocale::ShortFormat);
-        tags[QString::fromLatin1("D")] =  QLocale().toString(dt, QLocale::LongFormat);
-        tags[QString::fromLatin1("h")] =  QLocale().toString(dt.time(), QLocale::ShortFormat);
-        tags[QString::fromLatin1("y")] =  QLocale().toString(dt.date(), QLocale::ShortFormat);
-        tags[QString::fromLatin1("Y")] =  QLocale().toString(dt.date(), QLocale::LongFormat);
-        tags[QString::fromLatin1("f")] =  m_doc->url().fileName();
-        tags[QString::fromLatin1("U")] =  m_doc->url().toString();
+        tags[QStringLiteral("d")] =  QLocale().toString(dt, QLocale::ShortFormat);
+        tags[QStringLiteral("D")] =  QLocale().toString(dt, QLocale::LongFormat);
+        tags[QStringLiteral("h")] =  QLocale().toString(dt.time(), QLocale::ShortFormat);
+        tags[QStringLiteral("y")] =  QLocale().toString(dt.date(), QLocale::ShortFormat);
+        tags[QStringLiteral("Y")] =  QLocale().toString(dt.date(), QLocale::LongFormat);
+        tags[QStringLiteral("f")] =  m_doc->url().fileName();
+        tags[QStringLiteral("U")] =  m_doc->url().toString();
         if (pl.selectionOnly) {
             QString s(i18n("(Selection of) "));
-            tags[QString::fromLatin1("f")].prepend(s);
-            tags[QString::fromLatin1("U")].prepend(s);
+            tags[QStringLiteral("f")].prepend(s);
+            tags[QStringLiteral("U")].prepend(s);
         }
 
-        QRegExp reTags(QLatin1String("%([dDfUhuyY])")); // TODO tjeck for "%%<TAG>"
+        QRegExp reTags(QStringLiteral("%([dDfUhuyY])")); // TODO tjeck for "%%<TAG>"
 
         if (m_useHeader) {
             pl.headerHeight = QFontMetrics(m_fhFont).height();
@@ -358,7 +358,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
     // now that we know the vertical amount of space needed,
     // it is possible to calculate the total number of pages
     // if needed, that is if any header/footer tag contains "%P".
-    if (!pl.headerTagList.filter(QLatin1String("%P")).isEmpty() || !pl.footerTagList.filter(QLatin1String("%P")).isEmpty()) {
+    if (!pl.headerTagList.filter(QStringLiteral("%P")).isEmpty() || !pl.footerTagList.filter(QStringLiteral("%P")).isEmpty()) {
         qCDebug(LOG_KTE) << "'%P' found! calculating number of pages...";
 
         // calculate total layouted lines in the document
@@ -379,7 +379,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
 //           _lt += (guideHeight + (fontHeight /2)) / fontHeight;
 
         // substitute both tag lists
-        QString re(QLatin1String("%P"));
+        QString re(QStringLiteral("%P"));
         QStringList::Iterator it;
 
         for (it = pl.headerTagList.begin(); it != pl.headerTagList.end(); ++it) {

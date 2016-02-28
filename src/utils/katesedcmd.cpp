@@ -155,7 +155,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     QString d = delim.cap(1);
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
-    QRegExp splitter(QString::fromLatin1("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
+    QRegExp splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
                      + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
     if (splitter.indexIn(sedReplaceString) < 0) {
         return false;
@@ -285,7 +285,7 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurr
 {
     const QVector<KTextEditor::Range> captureRanges = fullCurrentMatch();
     QStringList captureTexts;
-    foreach (const KTextEditor::Range &captureRange, captureRanges) {
+    foreach (KTextEditor::Range captureRange, captureRanges) {
         captureTexts << m_doc->text(captureRange);
     }
     const QString replacementText = m_regExpSearch.buildReplacement(m_replacePattern, captureTexts, 0);

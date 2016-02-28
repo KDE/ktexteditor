@@ -298,10 +298,10 @@ QStringList &KateSyntaxDocument::finddata(const QString &mainGroup, const QStrin
             qCDebug(LOG_KTE) << "\"" << mainGroup << "\" found.";
 #endif
 
-            QDomNodeList nodelist1 = elem.elementsByTagName(QLatin1String("list"));
+            QDomNodeList nodelist1 = elem.elementsByTagName(QStringLiteral("list"));
 
             for (int l = 0; l < nodelist1.count(); l++) {
-                if (nodelist1.item(l).toElement().attribute(QLatin1String("name")) == type) {
+                if (nodelist1.item(l).toElement().attribute(QStringLiteral("name")) == type) {
 #ifdef KSD_OVER_VERBOSE
                     qCDebug(LOG_KTE) << "List with attribute name=\"" << type << "\" found.";
 #endif

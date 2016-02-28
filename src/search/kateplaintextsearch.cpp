@@ -53,9 +53,9 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
     // abuse regex for whole word plaintext search
     if (m_wholeWords) {
         // escape dot and friends
-        const QString workPattern = QString::fromLatin1("\\b%1\\b").arg(QRegExp::escape(text));
+        const QString workPattern = QStringLiteral("\\b%1\\b").arg(QRegExp::escape(text));
 
-        return KateRegExpSearch(m_document, m_caseSensitivity).search(workPattern, inputRange, backwards)[0];
+        return KateRegExpSearch(m_document, m_caseSensitivity).search(workPattern, inputRange, backwards).at(0);
     }
 
     if (text.isEmpty() || !inputRange.isValid() || (inputRange.start() == inputRange.end())) {
@@ -63,7 +63,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
     }
 
     // split multi-line needle into single lines
-    const QStringList needleLines = text.split(QLatin1String("\n"));
+    const QStringList needleLines = text.split(QStringLiteral("\n"));
 
     if (needleLines.count() > 1) {
         // multi-line plaintext search (both forwards or backwards)

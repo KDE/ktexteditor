@@ -124,7 +124,7 @@ QString ConfigPage::fullName() const
 
 QIcon ConfigPage::icon() const
 {
-    return QIcon::fromTheme(QLatin1String("document-properties"));
+    return QIcon::fromTheme(QStringLiteral("document-properties"));
 }
 
 View::View (ViewPrivate *impl, QWidget *parent)

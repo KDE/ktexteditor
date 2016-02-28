@@ -218,9 +218,9 @@ void ConfigTab::importNormalMappingRow()
     }
 
     QTextStream stream(&configFile);
-    const QRegularExpression mapleader(QLatin1String("(\\w:)?mapleader"));
+    const QRegularExpression mapleader(QStringLiteral("(\\w:)?mapleader"));
     while (! stream.atEnd()) {
-        QStringList line = stream.readLine().split(QLatin1String(" "));
+        QStringList line = stream.readLine().split(QLatin1Char(' '));
 
         // TODO - allow recursive mappings to be read.
         if (line.size() > 2 && (line[0] == QLatin1String("noremap") || line[0] == QLatin1String("no")

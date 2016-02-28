@@ -162,7 +162,7 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
     Qt::KeyboardModifiers mods;
     QString text;
 
-    foreach (const QChar &c, keyPresses) {
+    foreach (QChar c, keyPresses) {
         QString decoded = KeyParser::self()->decodeKeySequence(QString(c));
         key = -1;
         mods = Qt::NoModifier;
@@ -359,7 +359,7 @@ void InputModeManager::viEnterInsertMode()
     if (getTemporaryNormalMode()) {
         // Ensure the key log contains a request to re-enter Insert mode, else the keystrokes made
         // after returning from temporary normal mode will be treated as commands!
-        m_lastChangeRecorder->record(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QLatin1String("i")));
+        m_lastChangeRecorder->record(QKeyEvent(QEvent::KeyPress, Qt::Key_I, Qt::NoModifier, QStringLiteral("i")));
     }
     m_inputAdapter->setCaretStyle(KateRenderer::Line);
     setTemporaryNormalMode(false);

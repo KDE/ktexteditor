@@ -57,7 +57,7 @@ void KateKeywordCompletionModel::completionInvoked(KTextEditor::View* view, cons
     // From the list of context changes, find the highlighting context which is
     // active at the position where completion was invoked.
     KateHlContext* context = 0;
-    foreach ( const KateHighlighting::ContextChange& change, contextChanges ) {
+    foreach ( KateHighlighting::ContextChange change, contextChanges ) {
         if ( change.pos == 0 || change.pos <= range.end().column() ) {
             context = change.toContext;
         }

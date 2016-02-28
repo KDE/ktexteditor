@@ -33,7 +33,7 @@
 
 //BEGIN KateSchemaManager
 KateSchemaManager::KateSchemaManager()
-    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QLatin1String("kateschemarc")
+    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("kateschemarc")
         , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
 {
 }

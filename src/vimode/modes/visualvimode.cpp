@@ -32,10 +32,10 @@
 using namespace KateVi;
 
 #define ADDCMD(STR,FUNC, FLGS) m_commands.push_back( \
-        new Command( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+        new Command( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
 
 #define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( new \
-        Motion( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+        Motion( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
 
 VisualViMode::VisualViMode(InputModeManager *viInputModeManager,
                            KTextEditor::ViewPrivate *view,

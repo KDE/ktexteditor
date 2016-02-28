@@ -163,10 +163,10 @@ QString KateViInputMode::viewModeHuman() const
 
     QString cmd = m_viModeManager->getVerbatimKeys();
     if (!cmd.isEmpty()) {
-        currentMode.prepend(QString::fromLatin1("<em>%1</em> ").arg(cmd));
+        currentMode.prepend(QStringLiteral("<em>%1</em> ").arg(cmd));
     }
 
-    return QString::fromLatin1("<b>%1</b>").arg(currentMode);
+    return QStringLiteral("<b>%1</b>").arg(currentMode);
 }
 
 void KateViInputMode::gotFocus()

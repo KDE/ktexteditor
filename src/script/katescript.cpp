@@ -40,7 +40,7 @@
 /** Converstion function from KTextEditor::Cursor to QtScript cursor */
 static QScriptValue cursorToScriptValue(QScriptEngine *engine, const KTextEditor::Cursor &cursor)
 {
-    QString code = QString::fromLatin1("new Cursor(%1, %2);").arg(cursor.line())
+    QString code = QStringLiteral("new Cursor(%1, %2);").arg(cursor.line())
                    .arg(cursor.column());
     return engine->evaluate(code);
 }
@@ -48,14 +48,14 @@ static QScriptValue cursorToScriptValue(QScriptEngine *engine, const KTextEditor
 /** Converstion function from QtScript cursor to KTextEditor::Cursor */
 static void cursorFromScriptValue(const QScriptValue &obj, KTextEditor::Cursor &cursor)
 {
-    cursor.setPosition(obj.property(QLatin1String("line")).toInt32(),
-                       obj.property(QLatin1String("column")).toInt32());
+    cursor.setPosition(obj.property(QStringLiteral("line")).toInt32(),
+                       obj.property(QStringLiteral("column")).toInt32());
 }
 
 /** Converstion function from QtScript range to KTextEditor::Range */
 static QScriptValue rangeToScriptValue(QScriptEngine *engine, const KTextEditor::Range &range)
 {
-    QString code = QString::fromLatin1("new Range(%1, %2, %3, %4);").arg(range.start().line())
+    QString code = QStringLiteral("new Range(%1, %2, %3, %4);").arg(range.start().line())
                    .arg(range.start().column())
                    .arg(range.end().line())
                    .arg(range.end().column());
@@ -65,10 +65,10 @@ static QScriptValue rangeToScriptValue(QScriptEngine *engine, const KTextEditor:
 /** Converstion function from QtScript range to KTextEditor::Range */
 static void rangeFromScriptValue(const QScriptValue &obj, KTextEditor::Range &range)
 {
-    range.setRange(KTextEditor::Cursor(obj.property(QLatin1String("start")).property(QLatin1String("line")).toInt32(),
-                                       obj.property(QLatin1String("start")).property(QLatin1String("column")).toInt32()),
-                   KTextEditor::Cursor(obj.property(QLatin1String("end")).property(QLatin1String("line")).toInt32(),
-                                       obj.property(QLatin1String("end")).property(QLatin1String("column")).toInt32()));
+    range.setRange(KTextEditor::Cursor(obj.property(QStringLiteral("start")).property(QStringLiteral("line")).toInt32(),
+                                       obj.property(QStringLiteral("start")).property(QStringLiteral("column")).toInt32()),
+                   KTextEditor::Cursor(obj.property(QStringLiteral("end")).property(QStringLiteral("line")).toInt32(),
+                                       obj.property(QStringLiteral("end")).property(QStringLiteral("column")).toInt32()));
 }
 //END
 
@@ -104,7 +104,7 @@ QString KateScript::backtrace(const QScriptValue &error, const QString &header)
         bt += error.toString() + QLatin1Char('\n');
     }
 
-    bt += m_engine->uncaughtExceptionBacktrace().join(QLatin1String("\n")) + QLatin1Char('\n');
+    bt += m_engine->uncaughtExceptionBacktrace().join(QStringLiteral("\n")) + QLatin1Char('\n');
 
     return bt;
 }
@@ -169,51 +169,51 @@ bool KateScript::load()
     qScriptRegisterMetaType(m_engine, rangeToScriptValue, rangeFromScriptValue);
 
     // export read & require function and add the require guard object
-    m_engine->globalObject().setProperty(QLatin1String("read"), m_engine->newFunction(Kate::Script::read));
-    m_engine->globalObject().setProperty(QLatin1String("require"), m_engine->newFunction(Kate::Script::require));
-    m_engine->globalObject().setProperty(QLatin1String("require_guard"), m_engine->newObject());
+    m_engine->globalObject().setProperty(QStringLiteral("read"), m_engine->newFunction(Kate::Script::read));
+    m_engine->globalObject().setProperty(QStringLiteral("require"), m_engine->newFunction(Kate::Script::require));
+    m_engine->globalObject().setProperty(QStringLiteral("require_guard"), m_engine->newObject());
 
     // export debug function
-    m_engine->globalObject().setProperty(QLatin1String("debug"), m_engine->newFunction(Kate::Script::debug));
+    m_engine->globalObject().setProperty(QStringLiteral("debug"), m_engine->newFunction(Kate::Script::debug));
 
     // export translation functions
-    m_engine->globalObject().setProperty(QLatin1String("i18n"), m_engine->newFunction(Kate::Script::i18n));
-    m_engine->globalObject().setProperty(QLatin1String("i18nc"), m_engine->newFunction(Kate::Script::i18nc));
-    m_engine->globalObject().setProperty(QLatin1String("i18ncp"), m_engine->newFunction(Kate::Script::i18ncp));
-    m_engine->globalObject().setProperty(QLatin1String("i18np"), m_engine->newFunction(Kate::Script::i18np));
+    m_engine->globalObject().setProperty(QStringLiteral("i18n"), m_engine->newFunction(Kate::Script::i18n));
+    m_engine->globalObject().setProperty(QStringLiteral("i18nc"), m_engine->newFunction(Kate::Script::i18nc));
+    m_engine->globalObject().setProperty(QStringLiteral("i18ncp"), m_engine->newFunction(Kate::Script::i18ncp));
+    m_engine->globalObject().setProperty(QStringLiteral("i18np"), m_engine->newFunction(Kate::Script::i18np));
 
     // register default styles as ds* global properties
-    m_engine->globalObject().setProperty(QLatin1String("dsNormal"), KTextEditor::dsNormal);
-    m_engine->globalObject().setProperty(QLatin1String("dsKeyword"), KTextEditor::dsKeyword);
-    m_engine->globalObject().setProperty(QLatin1String("dsFunction"), KTextEditor::dsFunction);
-    m_engine->globalObject().setProperty(QLatin1String("dsVariable"), KTextEditor::dsVariable);
-    m_engine->globalObject().setProperty(QLatin1String("dsControlFlow"), KTextEditor::dsControlFlow);
-    m_engine->globalObject().setProperty(QLatin1String("dsOperator"), KTextEditor::dsOperator);
-    m_engine->globalObject().setProperty(QLatin1String("dsBuiltIn"), KTextEditor::dsBuiltIn);
-    m_engine->globalObject().setProperty(QLatin1String("dsExtension"), KTextEditor::dsExtension);
-    m_engine->globalObject().setProperty(QLatin1String("dsPreprocessor"), KTextEditor::dsPreprocessor);
-    m_engine->globalObject().setProperty(QLatin1String("dsAttribute"), KTextEditor::dsAttribute);
-    m_engine->globalObject().setProperty(QLatin1String("dsChar"), KTextEditor::dsChar);
-    m_engine->globalObject().setProperty(QLatin1String("dsSpecialChar"), KTextEditor::dsSpecialChar);
-    m_engine->globalObject().setProperty(QLatin1String("dsString"), KTextEditor::dsString);
-    m_engine->globalObject().setProperty(QLatin1String("dsVerbatimString"), KTextEditor::dsVerbatimString);
-    m_engine->globalObject().setProperty(QLatin1String("dsSpecialString"), KTextEditor::dsSpecialString);
-    m_engine->globalObject().setProperty(QLatin1String("dsImport"), KTextEditor::dsImport);
-    m_engine->globalObject().setProperty(QLatin1String("dsDataType"), KTextEditor::dsDataType);
-    m_engine->globalObject().setProperty(QLatin1String("dsDecVal"), KTextEditor::dsDecVal);
-    m_engine->globalObject().setProperty(QLatin1String("dsBaseN"), KTextEditor::dsBaseN);
-    m_engine->globalObject().setProperty(QLatin1String("dsFloat"), KTextEditor::dsFloat);
-    m_engine->globalObject().setProperty(QLatin1String("dsConstant"), KTextEditor::dsConstant);
-    m_engine->globalObject().setProperty(QLatin1String("dsComment"), KTextEditor::dsComment);
-    m_engine->globalObject().setProperty(QLatin1String("dsDocumentation"), KTextEditor::dsDocumentation);
-    m_engine->globalObject().setProperty(QLatin1String("dsAnnotation"), KTextEditor::dsAnnotation);
-    m_engine->globalObject().setProperty(QLatin1String("dsCommentVar"), KTextEditor::dsCommentVar);
-    m_engine->globalObject().setProperty(QLatin1String("dsRegionMarker"), KTextEditor::dsRegionMarker);
-    m_engine->globalObject().setProperty(QLatin1String("dsInformation"), KTextEditor::dsInformation);
-    m_engine->globalObject().setProperty(QLatin1String("dsWarning"), KTextEditor::dsWarning);
-    m_engine->globalObject().setProperty(QLatin1String("dsAlert"), KTextEditor::dsAlert);
-    m_engine->globalObject().setProperty(QLatin1String("dsOthers"), KTextEditor::dsOthers);
-    m_engine->globalObject().setProperty(QLatin1String("dsError"), KTextEditor::dsError);
+    m_engine->globalObject().setProperty(QStringLiteral("dsNormal"), KTextEditor::dsNormal);
+    m_engine->globalObject().setProperty(QStringLiteral("dsKeyword"), KTextEditor::dsKeyword);
+    m_engine->globalObject().setProperty(QStringLiteral("dsFunction"), KTextEditor::dsFunction);
+    m_engine->globalObject().setProperty(QStringLiteral("dsVariable"), KTextEditor::dsVariable);
+    m_engine->globalObject().setProperty(QStringLiteral("dsControlFlow"), KTextEditor::dsControlFlow);
+    m_engine->globalObject().setProperty(QStringLiteral("dsOperator"), KTextEditor::dsOperator);
+    m_engine->globalObject().setProperty(QStringLiteral("dsBuiltIn"), KTextEditor::dsBuiltIn);
+    m_engine->globalObject().setProperty(QStringLiteral("dsExtension"), KTextEditor::dsExtension);
+    m_engine->globalObject().setProperty(QStringLiteral("dsPreprocessor"), KTextEditor::dsPreprocessor);
+    m_engine->globalObject().setProperty(QStringLiteral("dsAttribute"), KTextEditor::dsAttribute);
+    m_engine->globalObject().setProperty(QStringLiteral("dsChar"), KTextEditor::dsChar);
+    m_engine->globalObject().setProperty(QStringLiteral("dsSpecialChar"), KTextEditor::dsSpecialChar);
+    m_engine->globalObject().setProperty(QStringLiteral("dsString"), KTextEditor::dsString);
+    m_engine->globalObject().setProperty(QStringLiteral("dsVerbatimString"), KTextEditor::dsVerbatimString);
+    m_engine->globalObject().setProperty(QStringLiteral("dsSpecialString"), KTextEditor::dsSpecialString);
+    m_engine->globalObject().setProperty(QStringLiteral("dsImport"), KTextEditor::dsImport);
+    m_engine->globalObject().setProperty(QStringLiteral("dsDataType"), KTextEditor::dsDataType);
+    m_engine->globalObject().setProperty(QStringLiteral("dsDecVal"), KTextEditor::dsDecVal);
+    m_engine->globalObject().setProperty(QStringLiteral("dsBaseN"), KTextEditor::dsBaseN);
+    m_engine->globalObject().setProperty(QStringLiteral("dsFloat"), KTextEditor::dsFloat);
+    m_engine->globalObject().setProperty(QStringLiteral("dsConstant"), KTextEditor::dsConstant);
+    m_engine->globalObject().setProperty(QStringLiteral("dsComment"), KTextEditor::dsComment);
+    m_engine->globalObject().setProperty(QStringLiteral("dsDocumentation"), KTextEditor::dsDocumentation);
+    m_engine->globalObject().setProperty(QStringLiteral("dsAnnotation"), KTextEditor::dsAnnotation);
+    m_engine->globalObject().setProperty(QStringLiteral("dsCommentVar"), KTextEditor::dsCommentVar);
+    m_engine->globalObject().setProperty(QStringLiteral("dsRegionMarker"), KTextEditor::dsRegionMarker);
+    m_engine->globalObject().setProperty(QStringLiteral("dsInformation"), KTextEditor::dsInformation);
+    m_engine->globalObject().setProperty(QStringLiteral("dsWarning"), KTextEditor::dsWarning);
+    m_engine->globalObject().setProperty(QStringLiteral("dsAlert"), KTextEditor::dsAlert);
+    m_engine->globalObject().setProperty(QStringLiteral("dsOthers"), KTextEditor::dsOthers);
+    m_engine->globalObject().setProperty(QStringLiteral("dsError"), KTextEditor::dsError);
 
     // register scripts itself
     QScriptValue result = m_engine->evaluate(source, m_url);
@@ -222,8 +222,8 @@ bool KateScript::load()
     }
 
     // AFTER SCRIPT: set the view/document objects as necessary
-    m_engine->globalObject().setProperty(QLatin1String("document"), m_engine->newQObject(m_document = new KateScriptDocument()));
-    m_engine->globalObject().setProperty(QLatin1String("view"), m_engine->newQObject(m_view = new KateScriptView()));
+    m_engine->globalObject().setProperty(QStringLiteral("document"), m_engine->newQObject(m_document = new KateScriptDocument()));
+    m_engine->globalObject().setProperty(QStringLiteral("view"), m_engine->newQObject(m_view = new KateScriptView()));
 
     // yip yip!
     m_loadSuccessful = true;

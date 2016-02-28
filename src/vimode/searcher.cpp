@@ -115,8 +115,8 @@ Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTe
     m_lastSearchCaseSensitive = false;
     m_lastSearchPlacedCursorAtEndOfMatch = false;
 
-    m_viInputModeManager->globalState()->searchHistory()->append(QString::fromLatin1("\\<%1\\>").arg(word));
-    QString pattern = QString::fromLatin1("\\b%1\\b").arg(word);
+    m_viInputModeManager->globalState()->searchHistory()->append(QStringLiteral("\\<%1\\>").arg(word));
+    QString pattern = QStringLiteral("\\b%1\\b").arg(word);
     m_lastSearchPattern = pattern;
 
     return findPatternForMotion(pattern, backwards, false, startFrom, count);

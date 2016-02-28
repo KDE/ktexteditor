@@ -35,13 +35,13 @@ QTEST_MAIN(CommandsTest)
 void CommandsTest::initTestCase()
 {
     ScriptTestBase::initTestCase();
-    m_section = QLatin1String("commands");
-    m_script_dir = QLatin1String("commands");
+    m_section = QStringLiteral("commands");
+    m_script_dir = QStringLiteral("commands");
 }
 
 void CommandsTest::utils_data()
 {
-    getTestData(QLatin1String("utils"));
+    getTestData(QStringLiteral("utils"));
 }
 
 void CommandsTest::utils()

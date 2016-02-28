@@ -46,7 +46,7 @@ const QString &KateIndentScript::triggerCharacters()
 
     m_triggerCharactersSet = true;
 
-    m_triggerCharacters = global(QLatin1String("triggerCharacters")).toString();
+    m_triggerCharacters = global(QStringLiteral("triggerCharacters")).toString();
 
     //qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
 
@@ -62,7 +62,7 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
     }
 
     clearExceptions();
-    QScriptValue indentFunction = function(QLatin1String("indent"));
+    QScriptValue indentFunction = function(QStringLiteral("indent"));
     if (!indentFunction.isValid()) {
         return qMakePair(-2, -2);
     }
@@ -75,7 +75,7 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
     QScriptValue result = indentFunction.call(QScriptValue(), arguments);
     // error during the calling?
     if (m_engine->hasUncaughtException()) {
-        displayBacktrace(result, QLatin1String("Error calling indent()"));
+        displayBacktrace(result, QStringLiteral("Error calling indent()"));
         return qMakePair(-2, -2);
     }
     int indentAmount = -2;
@@ -87,7 +87,7 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
         indentAmount = result.toInt32();
     }
     if (m_engine->hasUncaughtException()) {
-        displayBacktrace(QScriptValue(), QLatin1String("Bad return type (must be integer)"));
+        displayBacktrace(QScriptValue(), QStringLiteral("Bad return type (must be integer)"));
         return qMakePair(-2, -2);
     }
     return qMakePair(indentAmount, alignAmount);

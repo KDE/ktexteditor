@@ -36,12 +36,12 @@
 
 //BEGIN KateScriptAction
 KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view)
-    : QAction(i18nc("Script command name", action.value(QLatin1String("name")).toString().toUtf8().data()), view)
+    : QAction(i18nc("Script command name", action.value(QStringLiteral("name")).toString().toUtf8().data()), view)
     , m_view(view)
     , m_command(cmd)
-    , m_interactive(action.value(QLatin1String("interactive")).toBool())
+    , m_interactive(action.value(QStringLiteral("interactive")).toBool())
 {
-    const QString icon = action.value(QLatin1String("icon")).toString();
+    const QString icon = action.value(QStringLiteral("icon")).toString();
     if (!icon.isEmpty()) {
         setIcon(QIcon::fromTheme(icon));
     }
@@ -69,7 +69,7 @@ void KateScriptAction::exec()
 
 //BEGIN KateScriptActionMenu
 KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text)
-    : KActionMenu(QIcon::fromTheme(QLatin1String("code-context")), text, view)
+    : KActionMenu(QIcon::fromTheme(QStringLiteral("code-context")), text, view)
     , m_view(view)
 {
     repopulate();
@@ -126,11 +126,11 @@ void KateScriptActionMenu::repopulate()
             /**
              * get command
              */
-            const QString cmd = action.value(QLatin1String("function")).toString();
+            const QString cmd = action.value(QStringLiteral("function")).toString();
             
             // show in a category submenu?
             QMenu *m = menu();
-            QString category = action.value(QLatin1String("category")).toString();
+            QString category = action.value(QStringLiteral("category")).toString();
             if (!category.isEmpty()) {
                 category = i18nc("Script command category", category.toUtf8().data());
                 m = menus[category];
@@ -145,7 +145,7 @@ void KateScriptActionMenu::repopulate()
             QAction *a = new KateScriptAction(cmd, action, m_view);
             m->addAction(a);
             m_view->actionCollection()->addAction(QLatin1String("tools_scripts_") + cmd, a);
-            const QString shortcut = action.value(QLatin1String("shortcut")).toString();
+            const QString shortcut = action.value(QStringLiteral("shortcut")).toString();
             if (!shortcut.isEmpty()) {
                 m_view->actionCollection()->setDefaultShortcut(a, shortcut);
             }

@@ -194,9 +194,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_userSetEncodingForNextReload(false),
       m_modOnHd(false),
       m_modOnHdReason(OnDiskUnmodified),
-      m_docName(QLatin1String("need init")),
+      m_docName(QStringLiteral("need init")),
       m_docNameNumber(0),
-      m_fileType(QLatin1String("Normal")),
+      m_fileType(QStringLiteral("Normal")),
       m_fileTypeSetByUser(false),
       m_reloading(false),
       m_config(new KateDocumentConfig(this)),
@@ -637,7 +637,7 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
 
     editEnd();
 
-    foreach (const KTextEditor::Mark &mark, msave) {
+    foreach (KTextEditor::Mark mark, msave) {
         setMark(mark.line, mark.type);
     }
 
@@ -666,7 +666,7 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
 
     editEnd();
 
-    foreach (const KTextEditor::Mark &mark, msave) {
+    foreach (KTextEditor::Mark mark, msave) {
         setMark(mark.line, mark.type);
     }
 
@@ -782,7 +782,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
     }
 
     // just reuse normal function
-    return insertText(position, textLines.join(QLatin1String("\n")), block);
+    return insertText(position, textLines.join(QStringLiteral("\n")), block);
 }
 
 bool KTextEditor::DocumentPrivate::removeText(const KTextEditor::Range &_range, bool block)
@@ -1441,7 +1441,7 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
         emit marksChanged(this);
     }
 
-    emit textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QLatin1String("\n"));
+    emit textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QStringLiteral("\n"));
 
     editEnd();
 
@@ -1604,7 +1604,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
+    emit textRemoved(this, rangeRemoved, oldText.join(QStringLiteral("\n")) + QLatin1Char('\n'));
 
     editEnd();
 
@@ -2164,10 +2164,10 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
         = new KTextEditor::Message(i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile)),
                                    KTextEditor::Message::Error);
     message->setWordWrap(true);
-    QAction *tryAgainAction = new QAction(QIcon::fromTheme(QLatin1String("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), 0);
+    QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), 0);
     connect(tryAgainAction, SIGNAL(triggered()), SLOT(documentReload()), Qt::QueuedConnection);
 
-    QAction *closeAction = new QAction(QIcon::fromTheme(QLatin1String("window-close")), i18n("&Close"), 0);
+    QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), 0);
     closeAction->setToolTip(i18n("Close message"));
 
     // add try again and close actions
@@ -2440,7 +2440,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
                                       " A reason could be that the media you write to is full or the directory of the file is read-only for you.", url().toDisplayString(QUrl::PreferLocalFile))
                                , i18n("Failed to create backup copy.")
                                , KGuiItem(i18n("Try to Save Nevertheless"))
-                               , KStandardGuiItem::cancel(), QLatin1String("Backup Failed Warning")) != KMessageBox::Continue)) {
+                               , KStandardGuiItem::cancel(), QStringLiteral("Backup Failed Warning")) != KMessageBox::Continue)) {
             return false;
         }
     }
@@ -2611,7 +2611,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
                         parentWidget,
                         reasonedMOHString() + QLatin1String("\n\n") + i18n("Do you really want to continue to close this file? Data loss may occur."),
                         i18n("Possible Data Loss"), KGuiItem(i18n("Close Nevertheless")), KStandardGuiItem::cancel(),
-                        QString::fromLatin1("kate_close_modonhd_%1").arg(m_modOnHdReason)) == KMessageBox::Continue)) {
+                        QStringLiteral("kate_close_modonhd_%1").arg(m_modOnHdReason)) == KMessageBox::Continue)) {
                 /**
                  * reset reloading
                  */
@@ -2640,7 +2640,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     /**
      * delete all KTE::Messages
      */
-    if (m_messageHash.count()) {
+    if (!m_messageHash.isEmpty()) {
         QList<KTextEditor::Message *> keys = m_messageHash.keys();
         foreach (KTextEditor::Message *message, keys) {
             delete message;
@@ -3323,7 +3323,7 @@ void KTextEditor::DocumentPrivate::insertTab(KTextEditor::ViewPrivate *view, con
     }
 
     c = view->cursorPosition();
-    editInsertText(c.line(), c.column(), QLatin1String("\t"));
+    editInsertText(c.line(), c.column(), QStringLiteral("\t"));
 
     editEnd();
 }
@@ -4182,8 +4182,8 @@ bool KTextEditor::DocumentPrivate::documentReload()
         int i = KMessageBox::warningYesNoCancel
                 (parentWidget, reasonedMOHString() + QLatin1String("\n\n") + i18n("What do you want to do?"),
                     i18n("File Was Changed on Disk"),
-                    KGuiItem(i18n("&Reload File"), QLatin1String("view-refresh")),
-                    KGuiItem(i18n("&Ignore Changes"), QLatin1String("dialog-warning")));
+                    KGuiItem(i18n("&Reload File"), QStringLiteral("view-refresh")),
+                    KGuiItem(i18n("&Ignore Changes"), QStringLiteral("dialog-warning")));
 
         if (i != KMessageBox::Yes) {
             if (i == KMessageBox::No) {
@@ -4471,15 +4471,15 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     }
 
     QStringList vvl; // view variable names
-    vvl << QLatin1String("dynamic-word-wrap") << QLatin1String("dynamic-word-wrap-indicators")
-        << QLatin1String("line-numbers") << QLatin1String("icon-border") << QLatin1String("folding-markers")
-        << QLatin1String("bookmark-sorting") << QLatin1String("auto-center-lines")
-        << QLatin1String("icon-bar-color")
+    vvl << QStringLiteral("dynamic-word-wrap") << QStringLiteral("dynamic-word-wrap-indicators")
+        << QStringLiteral("line-numbers") << QStringLiteral("icon-border") << QStringLiteral("folding-markers")
+        << QStringLiteral("bookmark-sorting") << QStringLiteral("auto-center-lines")
+        << QStringLiteral("icon-bar-color")
         // renderer
-        << QLatin1String("background-color") << QLatin1String("selection-color")
-        << QLatin1String("current-line-color") << QLatin1String("bracket-highlight-color")
-        << QLatin1String("word-wrap-marker-color")
-        << QLatin1String("font") << QLatin1String("font-size") << QLatin1String("scheme");
+        << QStringLiteral("background-color") << QStringLiteral("selection-color")
+        << QStringLiteral("current-line-color") << QStringLiteral("bracket-highlight-color")
+        << QStringLiteral("word-wrap-marker-color")
+        << QStringLiteral("font") << QStringLiteral("font-size") << QStringLiteral("scheme");
     int spaceIndent = -1;  // for backward compatibility; see below
     bool replaceTabsSet = false;
     int p(0);
@@ -4554,7 +4554,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             // STRING SETTINGS
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
                 QStringList l;
-                l << QLatin1String("unix") << QLatin1String("dos") << QLatin1String("mac");
+                l << QStringLiteral("unix") << QStringLiteral("dos") << QStringLiteral("mac");
                 if ((n = l.indexOf(val.toLower())) != -1) {
                     m_config->setEol(n);
                 }
@@ -4696,7 +4696,7 @@ QString KTextEditor::DocumentPrivate::variable(const QString &name) const
 
 void KTextEditor::DocumentPrivate::setVariable(const QString &name, const QString &value)
 {
-    QString s = QLatin1String("kate: ");
+    QString s = QStringLiteral("kate: ");
     s.append(name);
     s.append(QLatin1Char(' '));
     s.append(value);
@@ -4822,7 +4822,7 @@ bool KTextEditor::DocumentPrivate::createDigest()
         if (f.open(QIODevice::ReadOnly)) {
             // init the hash with the git header
             QCryptographicHash crypto(QCryptographicHash::Sha1);
-            const QString header = QString(QLatin1String("blob %1")).arg(f.size());
+            const QString header = QStringLiteral("blob %1").arg(f.size());
             crypto.addData(header.toLatin1() + '\0');
 
             while (!f.atEnd()) {
@@ -5901,7 +5901,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 
     // if there are no actions, add a close action by default if widget does not auto-hide
     if (message->actions().count() == 0 && message->autoHide() < 0) {
-        QAction *closeAction = new QAction(QIcon::fromTheme(QLatin1String("window-close")), i18n("&Close"), 0);
+        QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), 0);
         closeAction->setToolTip(i18n("Close message"));
         message->addAction(closeAction);
     }

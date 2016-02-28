@@ -43,8 +43,8 @@ namespace KateVi
 class Commands : public KTextEditor::Command, public KateViCommandInterface
 {
     Commands()
-        : KTextEditor::Command (QStringList() << mappingCommands() << QLatin1String("d") << QLatin1String("delete") << QLatin1String("j") << QLatin1String("c") << QLatin1String("change") << QLatin1String("<") << QLatin1String(">") << QLatin1String("y") << QLatin1String("yank") <<
-          QLatin1String("ma") << QLatin1String("mark") << QLatin1String("k"))
+        : KTextEditor::Command (QStringList() << mappingCommands() << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") <<
+          QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k"))
     {
         
     }

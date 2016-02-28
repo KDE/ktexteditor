@@ -165,7 +165,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
 {
     //qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
-    int oldViewLineCount = m_textLayouts.count();
+    int oldViewLineCount = !m_textLayouts.isEmpty();
     if (newViewLineCount == -1) {
         newViewLineCount = oldViewLineCount;
     }
@@ -182,7 +182,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
 
     if (wrap()) {
         // TODO check these assumptions are ok... probably they don't give much speedup anyway?
-        if (startPos == m_startPos && m_textLayouts.count()) {
+        if (startPos == m_startPos && !m_textLayouts.isEmpty()) {
             _viewLine = m_textLayouts.first().viewLine();
 
         } else if (viewLinesScrolled > 0 && viewLinesScrolled < m_textLayouts.count()) {
@@ -381,12 +381,12 @@ int KateLayoutCache::viewCacheLineCount() const
 
 KTextEditor::Cursor KateLayoutCache::viewCacheStart() const
 {
-    return m_textLayouts.count() ? m_textLayouts.first().start() : KTextEditor::Cursor();
+    return !m_textLayouts.isEmpty() ? m_textLayouts.first().start() : KTextEditor::Cursor();
 }
 
 KTextEditor::Cursor KateLayoutCache::viewCacheEnd() const
 {
-    return m_textLayouts.count() ? m_textLayouts.last().end() : KTextEditor::Cursor();
+    return !m_textLayouts.isEmpty() ? m_textLayouts.last().end() : KTextEditor::Cursor();
 }
 
 int KateLayoutCache::viewWidth() const
@@ -508,7 +508,7 @@ int KateLayoutCache::viewLineCount(int realLine)
 void KateLayoutCache::viewCacheDebugOutput() const
 {
     qCDebug(LOG_KTE) << "Printing values for " << m_textLayouts.count() << " lines:";
-    if (m_textLayouts.count()) {
+    if (!m_textLayouts.isEmpty()) {
         foreach (const KateTextLayout &t, m_textLayouts)
             if (t.isValid()) {
                 t.debugOutput();

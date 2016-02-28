@@ -75,7 +75,7 @@ KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def) : refCount
 
     if (def == 0) {
         noHl = true;
-        iName = QString::fromLatin1("None"); // not translated internal name (for config and more)
+        iName = QStringLiteral("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
     } else {
@@ -713,10 +713,10 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
         settings << QString::number(p->defaultStyle(), 10);
         settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->foreground().color().rgb(), 16) : QString()));
         settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontBold() ? QLatin1String("1") : QLatin1String("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontItalic() ? QLatin1String("1") : QLatin1String("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QLatin1String("1") : QLatin1String("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QLatin1String("1") : QLatin1String("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
         settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(QTextFormat::BackgroundBrush)) ? QString::number(a->background().color().rgb(), 16) : QString()));
         settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
         settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : (writeDefaultsToo ? a->fontFamily() : QString()));
@@ -799,7 +799,7 @@ void KateHighlighting::init()
     // something went wrong or no hl, fill something in
     if (noHl) {
         iHidden = false;
-        m_additionalData.insert(QString::fromLatin1("none"), new HighlightPropertyBag);
+        m_additionalData.insert(QStringLiteral("none"), new HighlightPropertyBag);
         m_additionalData[QStringLiteral("none")]->deliminator = stdDeliminator();
         m_additionalData[QStringLiteral("none")]->wordWrapDeliminator = stdDeliminator();
         m_hlIndex[0] = QStringLiteral("none");
@@ -1002,7 +1002,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
 
     // only relevant for non consumer
     if (!onlyConsume) {
-        if (QString::fromLatin1("%1").arg(tmpAttr.toInt()) == tmpAttr) {
+        if (QStringLiteral("%1").arg(tmpAttr.toInt()) == tmpAttr) {
             errorsAndWarnings += i18n(
                                      "<b>%1</b>: Deprecated syntax. Attribute (%2) not addressed by symbolic name<br />",
                                      buildIdentifier, tmpAttr);
@@ -1023,7 +1023,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     // Get the char parameter (eg DetectChar)
     QChar chr;
     if (! KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char")).isEmpty()) {
-        chr = (KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char")))[0];
+        chr = (KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char"))).at(0);
     }
 
     // Get the String parameter (eg. StringDetect)
@@ -1032,7 +1032,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
     // Get a second char parameter (char1) (eg Detect2Chars)
     QChar chr1;
     if (! KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char1")).isEmpty()) {
-        chr1 = (KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char1")))[0];
+        chr1 = (KateHlManager::self()->syntax.groupItemData(data, QStringLiteral("char1"))).at(0);
     }
 
     // Will be removed eventually. Atm used for StringDetect, WordDetect, keyword and RegExp
@@ -1517,7 +1517,7 @@ void  KateHighlighting::createContextNameList(QStringList *ContextNameList, int 
         while (KateHlManager::self()->syntax.nextGroup(data)) {
             QString tmpAttr = KateHlManager::self()->syntax.groupData(data, QStringLiteral("name")).simplified();
             if (tmpAttr.isEmpty()) {
-                tmpAttr = QString::fromLatin1("!KATE_INTERNAL_DUMMY! %1").arg(id);
+                tmpAttr = QStringLiteral("!KATE_INTERNAL_DUMMY! %1").arg(id);
                 errorsAndWarnings += i18n("<b>%1</b>: Deprecated syntax. Context %2 has no symbolic name<br />", buildIdentifier, id - ctx0);
             } else {
                 tmpAttr = buildPrefix + tmpAttr;
@@ -1971,7 +1971,7 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
             //BEGIN - Translation of the attribute parameter
             QString tmpAttr = KateHlManager::self()->syntax.groupData(data, QStringLiteral("attribute")).simplified();
             int attr;
-            if (QString::fromLatin1("%1").arg(tmpAttr.toInt()) == tmpAttr) {
+            if (QStringLiteral("%1").arg(tmpAttr.toInt()) == tmpAttr) {
                 attr = tmpAttr.toInt();
             } else {
                 attr = lookupAttrName(tmpAttr, iDl);

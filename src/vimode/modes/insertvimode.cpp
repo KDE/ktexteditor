@@ -525,7 +525,7 @@ void InsertViMode::leaveInsertMode(bool force)
                     }
                     break;
                 default:
-                    error(QLatin1String("not supported"));
+                    error(QStringLiteral("not supported"));
                 }
             }
 

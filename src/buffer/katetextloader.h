@@ -106,7 +106,7 @@ public:
         m_firstRead = true;
         
         // init the hash with the git header
-        const QString header = QString(QLatin1String("blob %1")).arg(m_fileSize);
+        const QString header = QStringLiteral("blob %1").arg(m_fileSize);
         m_digest.reset();
         m_digest.addData(header.toLatin1() + '\0');
         

@@ -36,22 +36,22 @@ using namespace KateVi;
 AppCommands *AppCommands::m_instance = 0;
 
 AppCommands::AppCommands()
-    : KTextEditor::Command(QStringList() << QLatin1String("q") << QLatin1String("qa") << QLatin1String("qall") << QLatin1String("q!") << QLatin1String("qa!") << QLatin1String("qall!")
-          << QLatin1String("w") << QLatin1String("wq") << QLatin1String("wa") << QLatin1String("wqa") << QLatin1String("x") << QLatin1String("xa") << QLatin1String("new")
-          << QLatin1String("vnew") << QLatin1String("e") << QLatin1String("edit") << QLatin1String("enew") << QLatin1String("sp") << QLatin1String("split") << QLatin1String("vs")
-          << QLatin1String("vsplit") << QLatin1String("only") << QLatin1String("tabe") << QLatin1String("tabedit") << QLatin1String("tabnew") << QLatin1String("bd")
-          << QLatin1String("bdelete") << QLatin1String("tabc") << QLatin1String("tabclose") << QLatin1String("clo") << QLatin1String("close"))
+    : KTextEditor::Command(QStringList() << QStringLiteral("q") << QStringLiteral("qa") << QStringLiteral("qall") << QStringLiteral("q!") << QStringLiteral("qa!") << QStringLiteral("qall!")
+          << QStringLiteral("w") << QStringLiteral("wq") << QStringLiteral("wa") << QStringLiteral("wqa") << QStringLiteral("x") << QStringLiteral("xa") << QStringLiteral("new")
+          << QStringLiteral("vnew") << QStringLiteral("e") << QStringLiteral("edit") << QStringLiteral("enew") << QStringLiteral("sp") << QStringLiteral("split") << QStringLiteral("vs")
+          << QStringLiteral("vsplit") << QStringLiteral("only") << QStringLiteral("tabe") << QStringLiteral("tabedit") << QStringLiteral("tabnew") << QStringLiteral("bd")
+          << QStringLiteral("bdelete") << QStringLiteral("tabc") << QStringLiteral("tabclose") << QStringLiteral("clo") << QStringLiteral("close"))
 {
-    re_write.setPattern(QLatin1String("w(a)?"));
-    re_close.setPattern(QLatin1String("bd(elete)?|tabc(lose)?"));
-    re_quit.setPattern(QLatin1String("(w)?q(a|all)?(!)?"));
-    re_exit.setPattern(QLatin1String("x(a)?"));
-    re_edit.setPattern(QLatin1String("e(dit)?|tabe(dit)?|tabnew"));
-    re_new.setPattern(QLatin1String("(v)?new"));
-    re_split.setPattern(QLatin1String("sp(lit)?"));
-    re_vsplit.setPattern(QLatin1String("vs(plit)?"));
-    re_vclose.setPattern(QLatin1String("clo(se)?"));
-    re_only.setPattern(QLatin1String("on(ly)?"));
+    re_write.setPattern(QStringLiteral("w(a)?"));
+    re_close.setPattern(QStringLiteral("bd(elete)?|tabc(lose)?"));
+    re_quit.setPattern(QStringLiteral("(w)?q(a|all)?(!)?"));
+    re_exit.setPattern(QStringLiteral("x(a)?"));
+    re_edit.setPattern(QStringLiteral("e(dit)?|tabe(dit)?|tabnew"));
+    re_new.setPattern(QStringLiteral("(v)?new"));
+    re_split.setPattern(QStringLiteral("sp(lit)?"));
+    re_vsplit.setPattern(QStringLiteral("vs(plit)?"));
+    re_vclose.setPattern(QStringLiteral("clo(se)?"));
+    re_only.setPattern(QStringLiteral("on(ly)?"));
 }
 
 AppCommands::~AppCommands()
@@ -316,12 +316,12 @@ void AppCommands::quit()
 BufferCommands *BufferCommands::m_instance = 0;
 
 BufferCommands::BufferCommands()
-    : KTextEditor::Command(QStringList() << QLatin1String("ls")
-           << QLatin1String("b") << QLatin1String("buffer")
-           << QLatin1String("bn") << QLatin1String("bnext") << QLatin1String("bp") << QLatin1String("bprevious")
-           << QLatin1String("tabn") << QLatin1String("tabnext") << QLatin1String("tabp") << QLatin1String("tabprevious")
-           << QLatin1String("bf") << QLatin1String("bfirst") << QLatin1String("bl") << QLatin1String("blast")
-           << QLatin1String("tabf") << QLatin1String("tabfirst") << QLatin1String("tabl") << QLatin1String("tablast"))
+    : KTextEditor::Command(QStringList() << QStringLiteral("ls")
+           << QStringLiteral("b") << QStringLiteral("buffer")
+           << QStringLiteral("bn") << QStringLiteral("bnext") << QStringLiteral("bp") << QStringLiteral("bprevious")
+           << QStringLiteral("tabn") << QStringLiteral("tabnext") << QStringLiteral("tabp") << QStringLiteral("tabprevious")
+           << QStringLiteral("bf") << QStringLiteral("bfirst") << QStringLiteral("bl") << QStringLiteral("blast")
+           << QStringLiteral("tabf") << QStringLiteral("tabfirst") << QStringLiteral("tabl") << QStringLiteral("tablast"))
 {
 }
 
@@ -335,7 +335,7 @@ bool BufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &
     // create list of args
     QStringList args(cmd.split(QLatin1Char(' '), QString::KeepEmptyParts));
     QString command = args.takeFirst(); // same as cmd if split failed
-    QString argument = args.join(QLatin1String(" "));
+    QString argument = args.join(QLatin1Char(' '));
 
     if (command == QLatin1String("ls")) {
         // TODO: open quickview
@@ -419,7 +419,7 @@ void BufferCommands::nextBuffer(KTextEditor::View *view)
 
 void BufferCommands::firstBuffer(KTextEditor::View *view)
 {
-    activateDocument(view, documents().first());
+    activateDocument(view, documents().at(0));
 }
 
 void BufferCommands::lastBuffer(KTextEditor::View *view)

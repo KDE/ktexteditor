@@ -183,7 +183,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
             continue;
         }
 
-        if (!additionalFormats.count())
+        if (additionalFormats.isEmpty())
             if (i != 0 && m_cachedHighlights[i - 1].start + m_cachedHighlights[i - 1].length > m_currentColumnStart) {
                 QTextLayout::FormatRange before;
                 before.start = 0;

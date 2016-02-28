@@ -217,7 +217,7 @@ public:
         if (index.column() == 2 && !item->useDefaultColor()) {
             // get right pixmap
             const bool enabled = (option.state & QStyle::State_MouseOver || option.state & QStyle::State_HasFocus);
-            const QPixmap p = QIcon::fromTheme(QLatin1String("edit-undo")).pixmap(16, 16, enabled ? QIcon::Normal : QIcon::Disabled);
+            const QPixmap p = QIcon::fromTheme(QStringLiteral("edit-undo")).pixmap(16, 16, enabled ? QIcon::Normal : QIcon::Disabled);
 
             // compute rect with scaled sizes
             const QRect rect(option.rect.left() + 10, option.rect.top() + (option.rect.height() - p.height() / p.devicePixelRatio() + 1) / 2, p.width() / p.devicePixelRatio(), p.height() / p.devicePixelRatio());

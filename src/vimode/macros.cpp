@@ -44,7 +44,7 @@ void Macros::writeConfig(KConfigGroup &config) const
     QStringList macroCompletions;
     foreach (const QChar &macroRegister, m_macros.keys()) {
         macroCompletions.append(QString::number(m_completions[macroRegister].length()));
-        foreach (Completion completionForMacro, m_completions[macroRegister]) {
+        foreach (const Completion &completionForMacro, m_completions[macroRegister]) {
             macroCompletions.append(encodeMacroCompletionForConfig(completionForMacro));
         }
     }
@@ -122,7 +122,7 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
 QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro) const
 {
     const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1String(";"));
-    QString encodedMacroCompletion = completionForMacro.completedText().remove(QLatin1String("()")).remove(QLatin1String(";"));
+    QString encodedMacroCompletion = completionForMacro.completedText().remove(QStringLiteral("()")).remove(QStringLiteral(";"));
     if (completionForMacro.completionType() == Completion::FunctionWithArgs) {
         encodedMacroCompletion += QLatin1String("(...)");
     } else if (completionForMacro.completionType() == Completion::FunctionWithoutArgs) {
@@ -147,7 +147,7 @@ Completion Macros::decodeMacroCompletionFromConfig(const QString &encodedMacroCo
         completionType = Completion::FunctionWithoutArgs;
     }
     QString completionText = encodedMacroCompletion;
-    completionText.replace(QLatin1String("(...)"), QLatin1String("()")).remove(QLatin1String("|"));
+    completionText.replace(QLatin1String("(...)"), QLatin1String("()")).remove(QLatin1Char('|'));
 
     return Completion(completionText, removeTail, completionType);
 }

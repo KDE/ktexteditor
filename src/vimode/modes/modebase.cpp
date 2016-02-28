@@ -189,7 +189,7 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     QString line = getLine(fromLine);
 
     // the start of word pattern need to take m_extraWordCharacters into account if defined
-    QString startOfWordPattern = QString::fromLatin1("\\b(\\w");
+    QString startOfWordPattern = QStringLiteral("\\b(\\w");
     if (m_extraWordCharacters.length() > 0) {
         startOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1Char(']'));
     }
@@ -293,7 +293,7 @@ KTextEditor::Cursor ModeBase::findPrevWordEnd(int fromLine, int fromColumn, bool
 {
     QString line = getLine(fromLine);
 
-    QString endOfWordPattern = QString::fromLatin1("\\S\\s|\\S$|\\w\\W|\\S\\b|^$");
+    QString endOfWordPattern = QStringLiteral("\\S\\s|\\S$|\\w\\W|\\S\\b|^$");
 
     if (m_extraWordCharacters.length() > 0) {
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
@@ -371,7 +371,7 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     QString line = getLine(fromLine);
 
     // the start of word pattern need to take m_extraWordCharacters into account if defined
-    QString startOfWordPattern = QString::fromLatin1("\\b(\\w");
+    QString startOfWordPattern = QStringLiteral("\\b(\\w");
     if (m_extraWordCharacters.length() > 0) {
         startOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1Char(']'));
     }
@@ -486,7 +486,7 @@ KTextEditor::Cursor ModeBase::findWordEnd(int fromLine, int fromColumn, bool onl
 {
     QString line = getLine(fromLine);
 
-    QString endOfWordPattern = QString::fromLatin1("\\S\\s|\\S$|\\w\\W|\\S\\b");
+    QString endOfWordPattern = QStringLiteral("\\S\\s|\\S$|\\w\\W|\\S\\b");
 
     if (m_extraWordCharacters.length() > 0) {
         endOfWordPattern.append(QLatin1String("|[") + m_extraWordCharacters + QLatin1String("][^") + m_extraWordCharacters + QLatin1Char(']'));
@@ -1207,9 +1207,9 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     QString basePrefix;
     if (base == 16) {
-        basePrefix = QLatin1String("0x");
+        basePrefix = QStringLiteral("0x");
     } else if (base == 8) {
-        basePrefix = QLatin1String("0");
+        basePrefix = QStringLiteral("0");
     }
     const QString withoutBase = numberAsString.mid(basePrefix.length());
 
@@ -1218,8 +1218,8 @@ void ModeBase::addToNumberUnderCursor(int count)
     // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
     // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
     const QString newNumberPadded = (base == 10) ?
-                                    QString::fromLatin1("%1").arg(newNumber, 0, base) :
-                                    QString::fromLatin1("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
+                                    QStringLiteral("%1").arg(newNumber, 0, base) :
+                                    QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
     const QString newNumberText = basePrefix + newNumberPadded;
 
     // Replace the old number string with the new.

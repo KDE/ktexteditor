@@ -53,10 +53,10 @@ void BugTest::cleanupTestCase()
 void BugTest::tryCrash()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug313769.cpp"));
+    const QUrl url = QUrl::fromLocalFile(QStringLiteral(TEST_DATA_DIR"bug313769.cpp"));
     doc.openUrl(url);
     doc.discardDataRecovery();
-    doc.setHighlightingMode(QLatin1String("C++"));
+    doc.setHighlightingMode(QStringLiteral("C++"));
     doc.buffer().ensureHighlighted(doc.lines());
 
     // view must be visible...

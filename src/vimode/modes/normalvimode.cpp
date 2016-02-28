@@ -58,10 +58,10 @@
 using namespace KateVi;
 
 #define ADDCMD(STR, FUNC, FLGS) m_commands.push_back( \
-        new Command( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+        new Command( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
 
 #define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( \
-        new Motion( this, QLatin1String(STR), &NormalViMode::FUNC, FLGS ) );
+        new Motion( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
 
 NormalViMode::NormalViMode(InputModeManager *viInputModeManager,
                            KTextEditor::ViewPrivate *view,
@@ -77,8 +77,8 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager,
 
     // FIXME: make configurable
     m_extraWordCharacters = QString();
-    m_matchingItems[QLatin1String("/*")] = QLatin1String("*/");
-    m_matchingItems[QLatin1String("*/")] = QLatin1String("-/*");
+    m_matchingItems[QStringLiteral("/*")] = QStringLiteral("*/");
+    m_matchingItems[QStringLiteral("*/")] = QStringLiteral("-/*");
 
     m_matchItemRegex = generateMatchingItemRegex();
 
@@ -206,12 +206,12 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                                         findWordEnd(currentPosition.line(), currentPosition.column() - 1, true));
 
         if (currentPosition == endOfWordOrWORD) {
-            m_keys = QLatin1String("cl");
+            m_keys = QStringLiteral("cl");
         } else {
             if (isWORD) {
-                m_keys = QLatin1String("cE");
+                m_keys = QStringLiteral("cE");
             } else {
-                m_keys = QLatin1String("ce");
+                m_keys = QStringLiteral("ce");
             }
         }
     }
@@ -659,7 +659,7 @@ bool NormalViMode::commandReselectVisual()
         m_viInputModeManager->getViVisualMode()->goToPos(c2);
         return returnValue;
     } else {
-        error(QLatin1String("No previous visual selection"));
+        error(QStringLiteral("No previous visual selection"));
     }
 
     return false;
@@ -1389,7 +1389,7 @@ bool NormalViMode::commandReplaceCharacter()
         case Qt::Key_Insert: case Qt::Key_Backspace: case Qt::Key_CapsLock:
             return true;
         case Qt::Key_Return: case Qt::Key_Enter:
-            key = QLatin1String("\n");
+            key = QStringLiteral("\n");
     }
 
     bool r;
@@ -1434,7 +1434,7 @@ bool NormalViMode::commandSwitchToCmdLine()
     if (m_viInputModeManager->isAnyVisualMode()) {
         // if in visual mode, make command range == visual selection
         m_viInputModeManager->getViVisualMode()->saveRangeMarks();
-        initialText = QLatin1String("'<,'>");
+        initialText = QStringLiteral("'<,'>");
     } else if (getCount() != 1) {
         // if a count is given, the range [current line] to [current line] +
         // count should be prepended to the command line
@@ -1698,7 +1698,7 @@ bool NormalViMode::commandPrintCharacterCode()
     QChar ch = getCharUnderCursor();
 
     if (ch == QChar::Null) {
-        message(QLatin1String("NUL"));
+        message(QStringLiteral("NUL"));
     } else {
 
         int code = ch.unicode();
@@ -1855,22 +1855,22 @@ bool NormalViMode::commandSwitchToNextView()
 
 bool NormalViMode::commandSplitHoriz()
 {
-    return executeKateCommand(QLatin1String("split"));
+    return executeKateCommand(QStringLiteral("split"));
 }
 
 bool NormalViMode::commandSplitVert()
 {
-    return executeKateCommand(QLatin1String("vsplit"));
+    return executeKateCommand(QStringLiteral("vsplit"));
 }
 
 bool NormalViMode::commandCloseView()
 {
-    return executeKateCommand(QLatin1String("close"));
+    return executeKateCommand(QStringLiteral("close"));
 }
 
 bool NormalViMode::commandSwitchToNextTab()
 {
-    QString command = QString::fromLatin1("bn");
+    QString command = QStringLiteral("bn");
 
     if (m_iscounted) {
         command = command + QLatin1Char(' ') + QString::number(getCount());
@@ -1881,7 +1881,7 @@ bool NormalViMode::commandSwitchToNextTab()
 
 bool NormalViMode::commandSwitchToPrevTab()
 {
-    QString command = QString::fromLatin1("bp");
+    QString command = QStringLiteral("bp");
 
     if (m_iscounted) {
         command = command + QLatin1Char(' ') + QString::number(getCount());
@@ -1940,12 +1940,12 @@ bool NormalViMode::commandReplayMacro()
 
 bool NormalViMode::commandCloseNocheck()
 {
-    return executeKateCommand(QLatin1String("q!"));
+    return executeKateCommand(QStringLiteral("q!"));
 }
 
 bool NormalViMode::commandCloseWrite()
 {
-    return executeKateCommand(QLatin1String("wq"));
+    return executeKateCommand(QStringLiteral("wq"));
 }
 
 bool NormalViMode::commandCollapseLocal()
@@ -2326,7 +2326,7 @@ Range NormalViMode::motionFindChar()
     int matchColumn = cursor.column();
 
     for (int i = 0; i < getCount(); i++) {
-        matchColumn = line.indexOf(m_keys.right(1), matchColumn + 1);
+        matchColumn = line.indexOf(m_keys.rightRef(1), matchColumn + 1);
         if (matchColumn == -1) {
             break;
         }
@@ -2891,7 +2891,7 @@ Range NormalViMode::motionToPreviousSentence()
         }
 
         for (int j = column; j >= 0; j--) {
-            if (skipSpaces || QString::fromLatin1(".?!").indexOf(line.at(j)) != -1) {
+            if (skipSpaces || QStringLiteral(".?!").indexOf(line.at(j)) != -1) {
                 c.setLine(i);
                 c.setColumn(j);
                 updateCursor(c);
@@ -3176,9 +3176,9 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
         for (int j = column; j >= 0; j--) {
             if (line.at(j).isSpace()) {
                 int lastSpace = j--;
-                for (; j >= 0 && QString::fromLatin1("\"')]").indexOf(line.at(j)) != -1; j--);
+                for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--);
 
-                if (j >= 0 && QString::fromLatin1(".!?").indexOf(line.at(j)) != -1) {
+                if (j >= 0 && QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                     return KTextEditor::Cursor(i, prev);
                 }
                 j = lastSpace;
@@ -3206,7 +3206,7 @@ KTextEditor::Cursor NormalViMode::findSentenceEnd()
 
         // Iterating over the line to reach any '.', '!', '?'
         for (j = column; j < line.size(); j++) {
-            if (QString::fromLatin1(".!?").indexOf(line.at(j)) != -1) {
+            if (QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                 prev = j++;
                 // Skip possible closing characters.
                 for (; j < line.size() && QString::fromLatin1("\"')]").indexOf(line.at(j)) != -1; j++);
@@ -3698,20 +3698,20 @@ void NormalViMode::initializeCommands()
 
 QRegExp NormalViMode::generateMatchingItemRegex() const
 {
-    QString pattern(QLatin1String("\\[|\\]|\\{|\\}|\\(|\\)|"));
+    QString pattern(QStringLiteral("\\[|\\]|\\{|\\}|\\(|\\)|"));
     QList<QString> keys = m_matchingItems.keys();
 
     for (int i = 0; i < keys.size(); i++) {
         QString s = m_matchingItems[ keys[ i ] ];
         s = s.replace(QRegExp(QLatin1String("^-")), QChar());
-        s = s.replace(QRegExp(QLatin1String("\\*")), QLatin1String("\\*"));
-        s = s.replace(QRegExp(QLatin1String("\\+")), QLatin1String("\\+"));
-        s = s.replace(QRegExp(QLatin1String("\\[")), QLatin1String("\\["));
-        s = s.replace(QRegExp(QLatin1String("\\]")), QLatin1String("\\]"));
-        s = s.replace(QRegExp(QLatin1String("\\(")), QLatin1String("\\("));
-        s = s.replace(QRegExp(QLatin1String("\\)")), QLatin1String("\\)"));
-        s = s.replace(QRegExp(QLatin1String("\\{")), QLatin1String("\\{"));
-        s = s.replace(QRegExp(QLatin1String("\\}")), QLatin1String("\\}"));
+        s = s.replace(QRegExp(QLatin1String("\\*")), QStringLiteral("\\*"));
+        s = s.replace(QRegExp(QLatin1String("\\+")), QStringLiteral("\\+"));
+        s = s.replace(QRegExp(QLatin1String("\\[")), QStringLiteral("\\["));
+        s = s.replace(QRegExp(QLatin1String("\\]")), QStringLiteral("\\]"));
+        s = s.replace(QRegExp(QLatin1String("\\(")), QStringLiteral("\\("));
+        s = s.replace(QRegExp(QLatin1String("\\)")), QStringLiteral("\\)"));
+        s = s.replace(QRegExp(QLatin1String("\\{")), QStringLiteral("\\{"));
+        s = s.replace(QRegExp(QLatin1String("\\}")), QStringLiteral("\\}"));
 
         pattern.append(s);
 
@@ -3759,7 +3759,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 
     OperationMode m = getRegisterFlag(reg);
     QString textToInsert = getRegisterContent(reg);
-    const bool isTextMultiLine = textToInsert.split(QLatin1String("\n")).count() > 1;
+    const bool isTextMultiLine = textToInsert.split(QStringLiteral("\n")).count() > 1;
 
     // In temporary normal mode, p/P act as gp/gP.
     isgPaste |= m_viInputModeManager->getTemporaryNormalMode();
@@ -3799,7 +3799,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
             cursorAfterPaste.setLine(cursorAfterPaste.line() + 1);
         }
         if (isgPaste) {
-            cursorAfterPaste.setLine(cursorAfterPaste.line() + textToInsert.split(QLatin1String("\n")).length() - 1);
+            cursorAfterPaste.setLine(cursorAfterPaste.line() + textToInsert.split(QStringLiteral("\n")).length() - 1);
         }
     } else {
         if (pasteLocation == AfterCurrentPosition) {
@@ -3838,7 +3838,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
 {
     KTextEditor::Cursor cAfter = pasteLocation;
-    const QStringList textLines = pastedText.split(QLatin1String("\n"));
+    const QStringList textLines = pastedText.split(QStringLiteral("\n"));
     if (textLines.length() == 1) {
         cAfter.setColumn(cAfter.column() + pastedText.length());
     } else {
@@ -4068,7 +4068,7 @@ void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Ra
     Q_UNUSED(document);
     const bool isInsertReplaceMode = (m_viInputModeManager->getCurrentViMode() == ViMode::InsertMode || m_viInputModeManager->getCurrentViMode() == ViMode::ReplaceMode);
     const bool continuesInsertion = range.start().line() == m_currentChangeEndMarker.line() && range.start().column() == m_currentChangeEndMarker.column();
-    const bool beginsWithNewline = doc()->text(range)[0] == QLatin1Char('\n');
+    const bool beginsWithNewline = doc()->text(range).at(0) == QLatin1Char('\n');
     if (!continuesInsertion) {
         KTextEditor::Cursor newBeginMarkerPos = range.start();
         if (beginsWithNewline && !isInsertReplaceMode) {

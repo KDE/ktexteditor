@@ -41,7 +41,7 @@ public:
     {
         QColor defaultBackground;
         if (KTextEditor::ConfigInterface *ciface = qobject_cast< KTextEditor::ConfigInterface * >(m_view)) {
-            QVariant variant = ciface->configValue(QLatin1String("background-color"));
+            QVariant variant = ciface->configValue(QStringLiteral("background-color"));
             if (variant.canConvert<QColor>()) {
                 defaultBackground = variant.value<QColor>();
             }

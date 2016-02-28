@@ -241,15 +241,15 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
 
     // set defaults
     cbEnableHeader->setChecked(true);
-    leHeaderLeft->setText(QLatin1String("%y"));
-    leHeaderCenter->setText(QLatin1String("%f"));
-    leHeaderRight->setText(QLatin1String("%p"));
+    leHeaderLeft->setText(QStringLiteral("%y"));
+    leHeaderCenter->setText(QStringLiteral("%f"));
+    leHeaderRight->setText(QStringLiteral("%p"));
     kcbtnHeaderFg->setColor(Qt::black);
     cbHeaderEnableBgColor->setChecked(false);
     kcbtnHeaderBg->setColor(Qt::lightGray);
 
     cbEnableFooter->setChecked(true);
-    leFooterRight->setText(QLatin1String("%U"));
+    leFooterRight->setText(QStringLiteral("%U"));
     kcbtnFooterFg->setColor(Qt::black);
     cbFooterEnableBgColor->setChecked(false);
     kcbtnFooterBg->setColor(Qt::lightGray);
@@ -370,7 +370,7 @@ void KatePrintHeaderFooter::showContextMenu(const QPoint &pos)
 
     // create original context menu
     QMenu *menu = contextMenu->addMenu(i18n("Add Placeholder..."));
-    menu->setIcon(QIcon::fromTheme(QLatin1String("list-add")));
+    menu->setIcon(QIcon::fromTheme(QStringLiteral("list-add")));
     QAction *a = menu->addAction(i18n("Current User Name") + QLatin1String("\t%u"));
     a->setData(QLatin1String("%u"));
     a = menu->addAction(i18n("Complete Date/Time (short format)") + QLatin1String("\t%d"));
@@ -556,7 +556,7 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     }
 
     // default is printing, MUST BE THERE
-    cmbSchema->setCurrentIndex(cmbSchema->findData(QVariant(QString::fromLatin1("Printing"))));
+    cmbSchema->setCurrentIndex(cmbSchema->findData(QVariant(QStringLiteral("Printing"))));
 
     // whatsthis
     cmbSchema->setWhatsThis(i18n(

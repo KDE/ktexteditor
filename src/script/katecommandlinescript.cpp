@@ -119,7 +119,7 @@ bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QS
     }
 
     clearExceptions();
-    QScriptValue helpFunction = function(QLatin1String("help"));
+    QScriptValue helpFunction = function(QStringLiteral("help"));
     if (!helpFunction.isValid()) {
         return false;
     }

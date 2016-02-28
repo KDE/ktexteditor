@@ -74,10 +74,10 @@ QString LastChangeRecorder::encodedChanges() const
             QString keyPress;
 
             keyPress.append(QLatin1Char('<'));
-            keyPress.append((mods & Qt::ShiftModifier)   ? QLatin1String("s-") : QString());
-            keyPress.append((mods & Qt::ControlModifier) ? QLatin1String("c-") : QString());
-            keyPress.append((mods & Qt::AltModifier)     ? QLatin1String("a-") : QString());
-            keyPress.append((mods & Qt::MetaModifier)    ? QLatin1String("m-") : QString());
+            keyPress.append((mods & Qt::ShiftModifier)   ? QStringLiteral("s-") : QString());
+            keyPress.append((mods & Qt::ControlModifier) ? QStringLiteral("c-") : QString());
+            keyPress.append((mods & Qt::AltModifier)     ? QStringLiteral("a-") : QString());
+            keyPress.append((mods & Qt::MetaModifier)    ? QStringLiteral("m-") : QString());
             keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : KeyParser::self()->qt2vi(keyCode));
             keyPress.append(QLatin1Char('>'));
 

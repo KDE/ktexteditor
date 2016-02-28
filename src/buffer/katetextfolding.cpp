@@ -565,7 +565,7 @@ QString TextFolding::debugDump() const
     /**
      * dump toplevel ranges recursively
      */
-    return QString::fromLatin1("tree %1 - folded %2").arg(debugDump(m_foldingRanges, true)).arg(debugDump(m_foldedFoldingRanges, false));
+    return QStringLiteral("tree %1 - folded %2").arg(debugDump(m_foldingRanges, true), debugDump(m_foldedFoldingRanges, false));
 }
 
 void TextFolding::debugPrint(const QString &title) const
@@ -585,9 +585,9 @@ QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, 
             dump += QLatin1Char(' ');
         }
 
-        const QString persistent = (range->flags & Persistent) ? QLatin1String("p") : QString();
-        const QString folded = (range->flags & Folded) ? QLatin1String("f") : QString();
-        dump += QString::fromLatin1("[%1:%2 %3%4 ").arg(range->start->line()).arg(range->start->column()).arg(persistent).arg(folded);
+        const QString persistent = (range->flags & Persistent) ? QStringLiteral("p") : QString();
+        const QString folded = (range->flags & Folded) ? QStringLiteral("f") : QString();
+        dump += QString::fromLatin1("[%1:%2 %3%4 ").arg(range->start->line()).arg(range->start->column(), persistent).arg(folded);
 
         /**
          * recurse
@@ -934,11 +934,11 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
          * construct one range and dump to folds
          */
         QJsonObject rangeMap;
-        rangeMap[QLatin1String("startLine")] = range->start->line();
-        rangeMap[QLatin1String("startColumn")] = range->start->column();
-        rangeMap[QLatin1String("endLine")] = range->end->line();
-        rangeMap[QLatin1String("endColumn")] = range->end->column();
-        rangeMap[QLatin1String("flags")] = (int)range->flags;
+        rangeMap[QStringLiteral("startLine")] = range->start->line();
+        rangeMap[QStringLiteral("startColumn")] = range->start->column();
+        rangeMap[QStringLiteral("endLine")] = range->end->line();
+        rangeMap[QStringLiteral("endColumn")] = range->end->column();
+        rangeMap[QStringLiteral("flags")] = (int)range->flags;
         folds.append(rangeMap);
 
         /**
@@ -956,7 +956,7 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
     /**
      * try to create all folding ranges
      */
-    Q_FOREACH (QJsonValue rangeVariant, folds.array()) {
+    Q_FOREACH (const QJsonValue &rangeVariant, folds.array()) {
         /**
          * get map
          */
@@ -965,8 +965,8 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
         /**
          * construct range start/end
          */
-        const KTextEditor::Cursor start(rangeMap[QLatin1String("startLine")].toInt(), rangeMap[QLatin1String("startColumn")].toInt());
-        const KTextEditor::Cursor end(rangeMap[QLatin1String("endLine")].toInt(), rangeMap[QLatin1String("endColumn")].toInt());
+        const KTextEditor::Cursor start(rangeMap[QStringLiteral("startLine")].toInt(), rangeMap[QStringLiteral("startColumn")].toInt());
+        const KTextEditor::Cursor end(rangeMap[QStringLiteral("endLine")].toInt(), rangeMap[QStringLiteral("endColumn")].toInt());
 
         /**
          * check validity (required when loading a possibly broken folding state from disk)
@@ -983,7 +983,7 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
         /**
          * get flags
          */
-        const int rawFlags = rangeMap[QLatin1String("flags")].toInt();
+        const int rawFlags = rangeMap[QStringLiteral("flags")].toInt();
         FoldingRangeFlags flags;
         if (rawFlags & Persistent) {
             flags = Persistent;

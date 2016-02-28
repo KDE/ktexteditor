@@ -2435,7 +2435,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
             }
 
             if (tabHandling == KateDocumentConfig::tabInsertsTab) {
-                doc()->typeChars(m_view, QLatin1String("\t"));
+                doc()->typeChars(m_view, QStringLiteral("\t"));
             } else {
                 doc()->indent(m_view->selection() ? m_view->selectionRange() : KTextEditor::Range(m_cursor.line(), 0, m_cursor.line(), 0), 1);
             }

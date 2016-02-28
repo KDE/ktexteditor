@@ -376,7 +376,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
     // Don't compute the highlighting if there isn't going to be any highlighting
     QList<Kate::TextRange *> rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? 0 : m_view, true);
-    if (selectionsOnly || textLine->attributesList().count() || rangesWithAttributes.count()) {
+    if (selectionsOnly || !textLine->attributesList().isEmpty() || !rangesWithAttributes.isEmpty()) {
         RenderRangeList renderRanges;
 
         // Add the inbuilt highlighting to the list

@@ -56,7 +56,7 @@ void VariableListView::parseVariables(const QString &line)
         if (pair.size() > 2) { // e.g. fonts have spaces in the value. Hence, join all value items again
             QString key = pair[0];
             pair.removeAt(0);
-            QString value = pair.join(QLatin1String(" "));
+            QString value = pair.join(QLatin1Char(' '));
             pair.clear();
             pair << key << value;
         }

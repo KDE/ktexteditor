@@ -92,7 +92,7 @@ void KateHlManager::setupModeList()
     /**
      * first: use the index file in the resource
      */
-    QFile indexJson (QLatin1String(":/ktexteditor/syntax/index.json"));
+    QFile indexJson (QStringLiteral(":/ktexteditor/syntax/index.json"));
     if (indexJson.open(QFile::ReadOnly)) {
         /**
          * parse the whole file
@@ -162,7 +162,7 @@ void KateHlManager::setupModeList()
             xmlFiles.insert(dir + QLatin1Char('/') + file);
         }
     }
-    Q_FOREACH (const QString xmlFile, xmlFiles) {
+    Q_FOREACH (const QString &xmlFile, xmlFiles) {
         // We're forced to read the xml files or the mode doesn't exist in the katesyntax...rc
         QFile f(xmlFile);
         if (!f.open(QIODevice::ReadOnly))

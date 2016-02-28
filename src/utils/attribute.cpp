@@ -200,7 +200,7 @@ void Attribute::setFontBold(bool bold)
 
 bool Attribute::hasAnyProperty() const
 {
-    return properties().count();
+    return !properties().isEmpty();
 }
 
 Attribute &KTextEditor::Attribute::operator =(const Attribute &a)

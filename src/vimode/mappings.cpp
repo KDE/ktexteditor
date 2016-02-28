@@ -27,18 +27,18 @@ using namespace KateVi;
 
 void Mappings::readConfig(const KConfigGroup &config)
 {
-    readMappings(config, QLatin1String("Normal"), NormalModeMapping);
-    readMappings(config, QLatin1String("Visual"), VisualModeMapping);
-    readMappings(config, QLatin1String("Insert"), InsertModeMapping);
-    readMappings(config, QLatin1String("Command"), CommandModeMapping);
+    readMappings(config, QStringLiteral("Normal"), NormalModeMapping);
+    readMappings(config, QStringLiteral("Visual"), VisualModeMapping);
+    readMappings(config, QStringLiteral("Insert"), InsertModeMapping);
+    readMappings(config, QStringLiteral("Command"), CommandModeMapping);
 }
 
 void Mappings::writeConfig(KConfigGroup &config) const
 {
-    writeMappings(config, QLatin1String("Normal"), NormalModeMapping);
-    writeMappings(config, QLatin1String("Visual"), VisualModeMapping);
-    writeMappings(config, QLatin1String("Insert"), InsertModeMapping);
-    writeMappings(config, QLatin1String("Command"), CommandModeMapping);
+    writeMappings(config, QStringLiteral("Normal"), NormalModeMapping);
+    writeMappings(config, QStringLiteral("Visual"), VisualModeMapping);
+    writeMappings(config, QStringLiteral("Insert"), InsertModeMapping);
+    writeMappings(config, QStringLiteral("Command"), CommandModeMapping);
 }
 
 void Mappings::writeMappings(KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode) const
@@ -54,7 +54,7 @@ void Mappings::writeMappings(KConfigGroup &config, const QString &mappingModeNam
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), recursives);
 
     QChar leader = (m_leader.isNull()) ? QChar::fromLatin1('\\') : m_leader;
-    config.writeEntry(QLatin1String("Map Leader"), QString(leader));
+    config.writeEntry(QStringLiteral("Map Leader"), QString(leader));
 }
 
 void Mappings::readMappings(const KConfigGroup &config, const QString &mappingModeName, MappingMode mappingMode)
@@ -63,7 +63,7 @@ void Mappings::readMappings(const KConfigGroup &config, const QString &mappingMo
     const QStringList mappings = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings"), QStringList());
     const QList<bool> isRecursive = config.readEntry(mappingModeName + QLatin1String(" Mode Mappings Recursion"), QList<bool>());
 
-    const QString &mapLeader = config.readEntry(QLatin1String("Map Leader"), QString());
+    const QString &mapLeader = config.readEntry(QStringLiteral("Map Leader"), QString());
     m_leader = (mapLeader.isEmpty()) ? QChar::fromLatin1('\\') : mapLeader[0];
 
     // sanity check

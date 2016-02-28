@@ -268,7 +268,7 @@ bool isRepeatLastSearch(const QString &searchText, const bool isSearchBackwards)
 {
     const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
     if (posOfSearchConfigMarker != -1) {
-        if (searchText.left(posOfSearchConfigMarker).isEmpty()) {
+        if (searchText.leftRef(posOfSearchConfigMarker).isEmpty()) {
             return true;
         }
     }
@@ -316,26 +316,26 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     layout->setMargin(0);
     centralWidget()->setLayout(layout);
     m_barTypeIndicator = new QLabel(this);
-    m_barTypeIndicator->setObjectName(QLatin1String("bartypeindicator"));
+    m_barTypeIndicator->setObjectName(QStringLiteral("bartypeindicator"));
     layout->addWidget(m_barTypeIndicator);
 
     m_edit = new QLineEdit(this);
-    m_edit->setObjectName(QLatin1String("commandtext"));
+    m_edit->setObjectName(QStringLiteral("commandtext"));
     layout->addWidget(m_edit);
 
     m_commandResponseMessageDisplay = new QLabel(this);
-    m_commandResponseMessageDisplay->setObjectName(QLatin1String("commandresponsemessage"));
+    m_commandResponseMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
     m_commandResponseMessageDisplay->setAlignment(Qt::AlignLeft);
     layout->addWidget(m_commandResponseMessageDisplay);
 
     m_waitingForRegisterIndicator = new QLabel(this);
-    m_waitingForRegisterIndicator->setObjectName(QLatin1String("waitingforregisterindicator"));
+    m_waitingForRegisterIndicator->setObjectName(QStringLiteral("waitingforregisterindicator"));
     m_waitingForRegisterIndicator->setVisible(false);
-    m_waitingForRegisterIndicator->setText(QLatin1String("\""));
+    m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
     layout->addWidget(m_waitingForRegisterIndicator);
 
     m_interactiveSedReplaceLabel = new QLabel(this);
-    m_interactiveSedReplaceLabel->setObjectName(QLatin1String("interactivesedreplace"));
+    m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
     m_interactiveSedReplaceActive = false;
     layout->addWidget(m_interactiveSedReplaceLabel);
 
@@ -356,7 +356,7 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     // Can't find a way to stop the QCompleter from auto-completing when attached to a QLineEdit,
     // so don't actually set it as the QLineEdit's completer.
     m_completer->setWidget(m_edit);
-    m_completer->setObjectName(QLatin1String("completer"));
+    m_completer->setObjectName(QStringLiteral("completer"));
     m_completionModel = new QStringListModel(this);
     m_completer->setModel(m_completionModel);
     m_completer->setCaseSensitivity(Qt::CaseInsensitive);
@@ -533,7 +533,7 @@ bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
 
 void EmulatedCommandBar::deleteSpacesToLeftOfCursor()
 {
-    while (m_edit->cursorPosition() != 0 && m_edit->text()[m_edit->cursorPosition() - 1] == QLatin1Char(' ')) {
+    while (m_edit->cursorPosition() != 0 && m_edit->text().at(m_edit->cursorPosition() - 1) == QLatin1Char(' ')) {
         m_edit->backspace();
     }
 }
@@ -541,7 +541,7 @@ void EmulatedCommandBar::deleteSpacesToLeftOfCursor()
 void EmulatedCommandBar::deleteWordCharsToLeftOfCursor()
 {
     while (m_edit->cursorPosition() != 0) {
-        const QChar charToTheLeftOfCursor = m_edit->text()[m_edit->cursorPosition() - 1];
+        const QChar charToTheLeftOfCursor = m_edit->text().at(m_edit->cursorPosition() - 1);
         if (!charToTheLeftOfCursor.isLetterOrNumber() && charToTheLeftOfCursor != QLatin1Char('_')) {
             break;
         }
@@ -554,7 +554,7 @@ bool EmulatedCommandBar::deleteNonWordCharsToLeftOfCursor()
 {
     bool deletionsMade = false;
     while (m_edit->cursorPosition() != 0) {
-        const QChar charToTheLeftOfCursor = m_edit->text()[m_edit->cursorPosition() - 1];
+        const QChar charToTheLeftOfCursor = m_edit->text().at(m_edit->cursorPosition() - 1);
         if (charToTheLeftOfCursor.isLetterOrNumber() || charToTheLeftOfCursor == QLatin1Char('_') || charToTheLeftOfCursor == QLatin1Char(' ')) {
             break;
         }
@@ -1301,7 +1301,7 @@ KTextEditor::Command *EmulatedCommandBar::queryCommand(const QString &cmd) const
     // command is 's' (substitute), it should be considered the delimiter and
     // should not be counted as part of the command name
     if (cmd.length() >= 2 && cmd.at(0) == QLatin1Char('s') && (cmd.at(1) == QLatin1Char('-') || cmd.at(1) == QLatin1Char('_'))) {
-        return m_cmdDict.value(QLatin1String("s"));
+        return m_cmdDict.value(QStringLiteral("s"));
     }
 
     for (; f < cmd.length(); f++) {

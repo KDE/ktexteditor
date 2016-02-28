@@ -203,7 +203,7 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
         }
 
         int foundAt;
-        while ((foundAt = textLine->string().left(cursor.column()).lastIndexOf(text, -1, Qt::CaseSensitive)) >= 0) {
+        while ((foundAt = textLine->string().leftRef(cursor.column()).lastIndexOf(text, -1, Qt::CaseSensitive)) >= 0) {
             bool hasStyle = true;
             if (attribute != -1) {
                 const KTextEditor::DefaultStyle ds = m_document->highlight()->defaultStyleForAttribute(textLine->attribute(foundAt));

@@ -297,12 +297,12 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
              cmd == QLatin1String("set-highlight") ||
              cmd == QLatin1String("set-mode")) {
         // need at least one item, otherwise args.first() crashes
-        if (! args.count()) {
+        if (args.isEmpty()) {
             KCC_ERR(i18n("Missing argument. Usage: %1 <value>",  cmd));
         }
 
         if (cmd == QLatin1String("set-indent-mode")) {
-            v->doc()->config()->setIndentationMode(args.join(QLatin1String(" ")));
+            v->doc()->config()->setIndentationMode(args.join(QLatin1Char(' ')));
             v->doc()->rememberUserDidSetIndentationMode();
             return true;
         } else if (cmd == QLatin1String("set-highlight")) {
@@ -326,7 +326,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
              cmd == QLatin1String("set-word-wrap-column") ||
              cmd == QLatin1String("goto")) {
         // find a integer value > 0
-        if (! args.count()) {
+        if (args.isEmpty()) {
             KCC_ERR(i18n("Missing argument. Usage: %1 <value>",  cmd));
         }
         bool ok;
@@ -382,7 +382,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
              cmd == QLatin1String("set-wrap-cursor") ||
              cmd == QLatin1String("set-replace-tabs-save") ||
              cmd == QLatin1String("set-show-indent")) {
-        if (! args.count()) {
+        if (args.isEmpty()) {
             KCC_ERR(i18n("Usage: %1 on|off|1|0|true|false",  cmd));
         }
         bool enable = false;
@@ -437,8 +437,8 @@ bool KateCommands::CoreCommands::supportsRange(const QString &range)
     static QStringList l;
 
     if (l.isEmpty())
-        l << QLatin1String("indent") << QLatin1String("unindent") << QLatin1String("cleanindent")
-          << QLatin1String("comment") << QLatin1String("uncomment") << QLatin1String("kill-line") << QLatin1String("fold") << QLatin1String("tfold");
+        l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent")
+          << QStringLiteral("comment") << QStringLiteral("uncomment") << QStringLiteral("kill-line") << QStringLiteral("fold") << QStringLiteral("tfold");
 
     return l.contains(range);
 }
@@ -459,7 +459,7 @@ KCompletion *KateCommands::CoreCommands::completionObject(KTextEditor::View *vie
         return co;
     } else if (cmd == QLatin1String("set-remove-trailing-spaces")) {
         QStringList l;
-        l << QLatin1String("none") << QLatin1String("modified") << QLatin1String("all");
+        l << QStringLiteral("none") << QStringLiteral("modified") << QStringLiteral("all");
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();
         co->setItems(l);
@@ -583,7 +583,7 @@ bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QStri
     if (QDateTime::currentDateTime().toString(cmd.mid(5, cmd.length() - 5)).length() > 0) {
         view->document()->insertText(view->cursorPosition(), QDateTime::currentDateTime().toString(cmd.mid(5, cmd.length() - 5)));
     } else {
-        view->document()->insertText(view->cursorPosition(), QDateTime::currentDateTime().toString(QLatin1String("yyyy-MM-dd hh:mm:ss")));
+        view->document()->insertText(view->cursorPosition(), QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss")));
     }
 
     return true;

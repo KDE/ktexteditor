@@ -45,7 +45,7 @@
 KateScriptManager *KateScriptManager::m_instance = 0;
 
 KateScriptManager::KateScriptManager()
-    : KTextEditor::Command(QStringList() << QLatin1String("reload-scripts"))
+    : KTextEditor::Command(QStringList() << QStringLiteral("reload-scripts"))
 {
     // use cached info
     collect();
@@ -216,16 +216,16 @@ void KateScriptManager::collect()
             }
 
             const QJsonObject metaInfoObject = metaInfo.object();
-            generalHeader.setLicense(metaInfoObject.value(QLatin1String("license")).toString());
-            generalHeader.setAuthor(metaInfoObject.value(QLatin1String("author")).toString());
-            generalHeader.setRevision(metaInfoObject.value(QLatin1String("revision")).toInt());
-            generalHeader.setKateVersion(metaInfoObject.value(QLatin1String("kate-version")).toString());
+            generalHeader.setLicense(metaInfoObject.value(QStringLiteral("license")).toString());
+            generalHeader.setAuthor(metaInfoObject.value(QStringLiteral("author")).toString());
+            generalHeader.setRevision(metaInfoObject.value(QStringLiteral("revision")).toInt());
+            generalHeader.setKateVersion(metaInfoObject.value(QStringLiteral("kate-version")).toString());
 
             // now, cast accordingly based on type
             switch (generalHeader.scriptType()) {
             case Kate::IndentationScript: {
                 KateIndentScriptHeader indentHeader;
-                indentHeader.setName(metaInfoObject.value(QLatin1String("name")).toString());
+                indentHeader.setName(metaInfoObject.value(QStringLiteral("name")).toString());
                 indentHeader.setBaseName(baseName);
                 if (indentHeader.name().isNull()) {
                     qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: "
@@ -234,9 +234,9 @@ void KateScriptManager::collect()
                 }
 
                 // required style?
-                indentHeader.setRequiredStyle(metaInfoObject.value(QLatin1String("required-syntax-style")).toString());
+                indentHeader.setRequiredStyle(metaInfoObject.value(QStringLiteral("required-syntax-style")).toString());
                 // which languages does this support?
-                QStringList indentLanguages = jsonToStringList(metaInfoObject.value(QLatin1String("indent-languages")));
+                QStringList indentLanguages = jsonToStringList(metaInfoObject.value(QStringLiteral("indent-languages")));
                 if (!indentLanguages.isEmpty()) {
                     indentHeader.setIndentLanguages(indentLanguages);
                 } else {
@@ -249,7 +249,7 @@ void KateScriptManager::collect()
 #endif
                 }
                 // priority
-                indentHeader.setPriority(metaInfoObject.value(QLatin1String("priority")).toInt());
+                indentHeader.setPriority(metaInfoObject.value(QStringLiteral("priority")).toInt());
 
                 KateIndentScript *script = new KateIndentScript(fileName, indentHeader);
                 script->setGeneralHeader(generalHeader);
@@ -263,8 +263,8 @@ void KateScriptManager::collect()
             }
             case Kate::CommandLineScript: {
                 KateCommandLineScriptHeader commandHeader;
-                commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QLatin1String("functions"))));
-                commandHeader.setActions(metaInfoObject.value(QLatin1String("actions")).toArray());
+                commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QStringLiteral("functions"))));
+                commandHeader.setActions(metaInfoObject.value(QStringLiteral("actions")).toArray());
                 if (commandHeader.functions().isEmpty()) {
                     qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: "
                                       << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
