@@ -4843,7 +4843,7 @@ bool KTextEditor::DocumentPrivate::createDigest()
 QString KTextEditor::DocumentPrivate::reasonedMOHString() const
 {
     // squeeze path
-    QString str = KStringHandler::csqueeze(url().toDisplayString(QUrl::PreferLocalFile));
+    const QString str = KStringHandler::csqueeze(url().toDisplayString(QUrl::PreferLocalFile));
 
     switch (m_modOnHdReason) {
     case OnDiskModified:
@@ -4858,6 +4858,7 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
     default:
         return QString();
     }
+    Q_UNREACHABLE();
     return QString();
 }
 
