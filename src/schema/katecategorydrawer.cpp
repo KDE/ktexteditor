@@ -40,7 +40,6 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
     const QRect optRect = option.rect;
     QFont font(QApplication::font());
     font.setBold(true);
-    const QFontMetrics fontMetrics = QFontMetrics(font);
     const int height = categoryHeight(index, option);
     const bool leftToRight = painter->layoutDirection() == Qt::LeftToRight;
 
