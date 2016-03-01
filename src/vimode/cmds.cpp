@@ -245,12 +245,13 @@ Mappings::MappingMode Commands::modeForMapCommand(const QString &mapCommand)
         modeForMapCommand.insert(QStringLiteral("iunmap"), Mappings::InsertModeMapping);
         modeForMapCommand.insert(QStringLiteral("cunmap"), Mappings::CommandModeMapping);
     }
-    return modeForMapCommand[mapCommand];
+    return modeForMapCommand.value(mapCommand);
 }
 
 bool Commands::isMapCommandRecursive(const QString &mapCommand)
 {
     static QMap<QString, bool> isMapCommandRecursive;
+    if (isMapCommandRecursive.isEmpty())
     {
         isMapCommandRecursive.insert(QStringLiteral("nmap"), true);
         isMapCommandRecursive.insert(QStringLiteral("nm"), true);
@@ -261,7 +262,7 @@ bool Commands::isMapCommandRecursive(const QString &mapCommand)
         isMapCommandRecursive.insert(QStringLiteral("cmap"), true);
         isMapCommandRecursive.insert(QStringLiteral("cm"), true);
     }
-    return isMapCommandRecursive[mapCommand];
+    return isMapCommandRecursive.value(mapCommand);
 }
 
 //END ViCommands
