@@ -123,9 +123,7 @@ void KateScriptManager::collect()
         QStringList dirs;
 
         // first writable locations, e.g. stuff the user has provided
-        foreach (const QString &dir, QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)) {
-            dirs.append(dir + basedir);
-        }
+        dirs += QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + basedir;
 
         // then resources, e.g. the stuff we ship with us
         dirs.append(QLatin1String(":/ktexteditor/script/") + type);
