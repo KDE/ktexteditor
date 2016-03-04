@@ -1782,6 +1782,9 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     m_deSelect->setEnabled(selection());
     m_copyHtmlAction->setEnabled (selection());
 
+    // update highlighting of current selected word
+    selectionChangedForHighlights ();
+
     if (m_doc->readOnly()) {
         return;
     }
@@ -1789,9 +1792,6 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     m_cut->setEnabled(selection() || m_config->smartCopyCut());
 
     m_spell->updateActions();
-
-    // update highlighting of current selected word
-    selectionChangedForHighlights ();
 }
 
 void KTextEditor::ViewPrivate::switchToCmdLine()
