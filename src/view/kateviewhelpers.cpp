@@ -347,6 +347,7 @@ void KateScrollBar::updatePixmap()
 
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    const QColor selectionBgColor = m_view->renderer()->config()->selectionColor();
     QColor modifiedLineColor = m_view->renderer()->config()->modifiedLineColor();
     QColor savedLineColor = m_view->renderer()->config()->savedLineColor();
     // move the modified line color away from the background color
@@ -373,9 +374,6 @@ void KateScrollBar::updatePixmap()
             int realLineNumber = m_view->textFolding().visibleLineToLine(virtualLine);
             QString lineText = m_doc->line(realLineNumber);
 
-            // use this to control the offset of the text from the left
-            int pixelX = s_pixelMargin;
-
             if (!simpleMode) {
                 m_doc->buffer().ensureHighlighted(realLineNumber);
             }
@@ -385,13 +383,43 @@ void KateScrollBar::updatePixmap()
             QList< QTextLayout::FormatRange > decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
             int attributeIndex = 0;
 
-            // The color to draw the currently selected text in; change the alpha value to make it
-            // more or less intense
-            QColor selectionColor = palette().color(QPalette::HighlightedText);
-            selectionColor.setAlpha(180);
+            // Draw selection if it is on an empty line
+            if (selection.contains(KTextEditor::Cursor(realLineNumber, 0)) && lineText.size() == 0) {
+                painter.setPen(selectionBgColor);
+                painter.drawLine(s_pixelMargin, pixelY, s_pixelMargin + s_lineWidth - 1, pixelY);
+            }
 
-            painter.setPen(defaultTextColor);
+            // Iterate over the line to draw the background
+            int selStartX = -1;
+            int selEndX = -1;
+            int pixelX = s_pixelMargin; // use this to control the offset of the text from the left
+            for (int x = 0; (x < lineText.size() && x < s_lineWidth); x += charIncrement) {
+                if (pixelX >= s_lineWidth + s_pixelMargin) {
+                    break;
+                }
+                // Query the selection and draw it behind the character
+                if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
+                    if (selStartX == -1) selStartX = pixelX;
+                    selEndX = pixelX;
+                    if (lineText.size() - 1 == x) {
+                        selEndX = s_lineWidth + s_pixelMargin-1;
+                    }
+                }
+
+                if (lineText[x] == QLatin1Char('\t')) {
+                    pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
+                } else {
+                    pixelX++;
+                }
+            }
+
+            if (selStartX != -1) {
+                painter.setPen(selectionBgColor);
+                painter.drawLine(selStartX, pixelY, selEndX, pixelY);
+            }
+
             // Iterate over all the characters in the current line
+            pixelX = s_pixelMargin;
             for (int x = 0; (x < lineText.size() && x < s_lineWidth); x += charIncrement) {
                 if (pixelX >= s_lineWidth + s_pixelMargin) {
                     break;
@@ -411,17 +439,6 @@ void KateScrollBar::updatePixmap()
                     pixelX++;
                 }
 
-                // Query the selection and draw it above the character with an alpha channel
-                if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
-                    painter.setPen(selectionColor);
-                    painter.drawPoint(s_pixelMargin, pixelY);
-                    // fill the line up in case the selection extends beyond it
-                    if (lineText.size() - 1 == x) {
-                        for (int xFill = s_pixelMargin; xFill < s_lineWidth; xFill++) {
-                            painter.drawPoint(xFill, pixelY);
-                        }
-                    }
-                }
             }
             drawnLines++;
             if (((drawnLines) % charIncrement) == 0) {
