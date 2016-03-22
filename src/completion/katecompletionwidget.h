@@ -166,7 +166,8 @@ public Q_SLOTS:
 protected:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
-//    virtual void focusInEvent ( QFocusEvent * event );
+    void focusOutEvent(QFocusEvent * event) Q_DECL_OVERRIDE;
+
 
 private Q_SLOTS:
     void completionModelReset();

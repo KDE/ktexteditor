@@ -184,6 +184,13 @@ KateCompletionWidget::~KateCompletionWidget()
 
 void KateCompletionWidget::viewFocusOut()
 {
+    if (QApplication::focusWidget() != this) {
+        abortCompletion();
+    }
+}
+
+void KateCompletionWidget::focusOutEvent(QFocusEvent *)
+{
     abortCompletion();
 }
 
@@ -790,11 +797,17 @@ void KateCompletionWidget::abortCompletion()
 
     bool wasActive = isCompletionActive();
 
+    if (hasFocus()) {
+        view()->activateWindow();
+        view()->setFocus();
+    }
+
     clear();
 
     if (!isHidden()) {
         hide();
     }
+
     if (!m_argumentHintTree->isHidden()) {
         m_argumentHintTree->hide();
     }
