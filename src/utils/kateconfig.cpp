@@ -2360,7 +2360,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_foldingColorSet = true;
     m_lineNumberColor = config.readEntry("Color Line Number", colors.color(Kate::LineNumber));
     m_lineNumberColorSet = true;
-    m_currentLineNumberColor = config.readEntry("Current Color Line Number", colors.color(Kate::CurrentLineNumber));
+    m_currentLineNumberColor = config.readEntry("Color Current Line Number", colors.color(Kate::CurrentLineNumber));
     m_currentLineNumberColorSet = true;
     m_separatorColor = config.readEntry("Color Separator", colors.color(Kate::Separator));
     m_separatorColorSet = true;
