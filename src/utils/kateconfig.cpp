@@ -168,7 +168,7 @@ bool KateGlobalConfig::setFallbackEncoding(const QString &encoding)
 
 KateDocumentConfig::KateDocumentConfig()
     : m_indentationWidth(2),
-      m_tabWidth(8),
+      m_tabWidth(4),
       m_tabHandling(tabSmart),
       m_configFlags(0),
       m_wordWrapAt(80),
@@ -212,7 +212,7 @@ KateDocumentConfig::KateDocumentConfig()
 
 KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
     : m_indentationWidth(2),
-      m_tabWidth(8),
+      m_tabWidth(4),
       m_tabHandling(tabSmart),
       m_configFlags(0),
       m_wordWrapAt(80),
@@ -329,7 +329,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 {
     configStart();
 
-    setTabWidth(config.readEntry(KEY_TAB_WIDTH, 8));
+    setTabWidth(config.readEntry(KEY_TAB_WIDTH, 4));
 
     setIndentationWidth(config.readEntry(KEY_INDENTATION_WIDTH, 4));
 
