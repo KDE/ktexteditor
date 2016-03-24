@@ -62,11 +62,8 @@ public:
     void paint(QPrinter *printer) const;
 
     // Attributes
-    void setColorScheme(const QString &scheme)
-    {
-        // directly set that for the renderer
-        m_renderer->config()->setSchema(scheme);
-    }
+    void setColorScheme(const QString &scheme);
+
     void setPrintGuide(const bool on)
     {
         m_printGuide = on;
@@ -134,6 +131,8 @@ private:
     void paintHeader(QPainter &painter, const uint currentPage, uint &y, const PageLayout &pl) const;
     void paintFooter(QPainter &painter, const uint currentPage, const PageLayout &pl) const;
     void configure(const QPrinter *printer, PageLayout &layout) const;
+
+    void updateCache();
 
 private:
     KTextEditor::ViewPrivate     *m_view;

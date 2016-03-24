@@ -108,13 +108,7 @@ PrintPainter::PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewP
     m_renderer = new KateRenderer(m_doc, *m_folding, m_view);
     m_renderer->setPrinterFriendly(true);
 
-    m_fontHeight = m_renderer->fontHeight();
-
-    // figure out the horiizontal space required
-    QString s = QStringLiteral("%1 ").arg(m_doc->lines());
-    s.fill(QLatin1Char('5'), -1); // some non-fixed fonts haven't equally wide numbers
-    // FIXME calculate which is actually the widest...
-    m_lineNumberWidth = m_renderer->currentFontMetrics().width(s);
+    updateCache();
 }
 
 PrintPainter::~PrintPainter()
@@ -173,6 +167,26 @@ void PrintPainter::setFooterForeground(const QColor &color)
     if (color.isValid()) {
         m_footerForeground = color;
     }
+}
+
+void PrintPainter::setColorScheme(const QString &scheme)
+{
+    // directly set that for the renderer
+    m_renderer->config()->setSchema(scheme);
+
+    // changed renderer requires cache updates
+    updateCache();
+}
+
+void PrintPainter::updateCache()
+{
+    m_fontHeight = m_renderer->fontHeight();
+
+    // figure out the horiizontal space required
+    QString s = QStringLiteral("%1 ").arg(m_doc->lines());
+    s.fill(QLatin1Char('5'), -1); // some non-fixed fonts haven't equally wide numbers
+    // FIXME calculate which is actually the widest...
+    m_lineNumberWidth = m_renderer->currentFontMetrics().width(s);
 }
 
 void PrintPainter::paint(QPrinter *printer) const
