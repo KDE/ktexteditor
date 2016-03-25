@@ -165,7 +165,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
 {
     //qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
-    int oldViewLineCount = !m_textLayouts.isEmpty();
+    int oldViewLineCount = m_textLayouts.count();
     if (newViewLineCount == -1) {
         newViewLineCount = oldViewLineCount;
     }
