@@ -1110,7 +1110,7 @@
 
         <!-- handle folding for macro endmacro blocks -->
         <WordDetect String="macro" attribute="Commands" context="Command Args" beginRegion="macro" insensitive="true" />
-        <WordDetect String="bendmacro" attribute="Commands" context="Command Args" endRegion="macro" insensitive="true" />
+        <WordDetect String="endmacro" attribute="Commands" context="Command Args" endRegion="macro" insensitive="true" />
 
         <!-- handle folding for foreach endforeach blocks -->
         <WordDetect String="foreach" attribute="Commands" context="Command Args" beginRegion="foreach" insensitive="true" />
