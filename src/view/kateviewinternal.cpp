@@ -2875,7 +2875,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
 
 void KateViewInternal::updateDirty()
 {
-    uint h = renderer()->lineHeight();
+    const int h = renderer()->lineHeight();
 
     int currentRectStart = -1;
     int currentRectEnd = -1;
