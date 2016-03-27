@@ -59,6 +59,7 @@
       <item> uint16_t </item>
       <item> uint32_t </item>
       <item> uint64_t </item>
+      <item> size_t </item>
       <item> wchar_t </item>
       <item> _Imaginary </item>
       <item> _Complex </item>
