@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <language name="C" section="Sources"
-          version="1.48" kateversion="5.0"
+          version="1.49" kateversion="5.0"
           indenter="cstyle"
           extensions="*.c;*.C;*.h"
           mimetype="text/x-csrc;text/x-c++src;text/x-chdr"
@@ -14,26 +14,28 @@
 ##########################################################################
 -->
   <highlighting>
-    <list name="keywords">
+    <list name="controlflow">
       <item> break </item>
       <item> case </item>
       <item> continue </item>
       <item> default </item>
       <item> do </item>
       <item> else </item>
-      <item> enum </item>
-      <item> extern </item>
       <item> for </item>
       <item> goto </item>
       <item> if </item>
-      <item> inline </item>
       <item> return </item>
+      <item> switch </item>
+      <item> while </item>
+    </list>
+    <list name="keywords">
+      <item> enum </item>
+      <item> extern </item>
+      <item> inline </item>
       <item> sizeof </item>
       <item> struct </item>
-      <item> switch </item>
       <item> typedef </item>
       <item> union </item>
-      <item> while </item>
     </list>
     <list name="types">
       <item> auto </item>
@@ -96,6 +98,7 @@
         <DetectChar context="AfterHash" char="#" firstNonSpace="true" lookAhead="true" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//BEGIN" beginRegion="Region1" firstNonSpace="true" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//END" endRegion="Region1" firstNonSpace="true" />
+        <keyword attribute="Control Flow" context="#stay" String="controlflow"/>
         <keyword attribute="Keyword" context="#stay" String="keywords"/>
         <keyword attribute="Data Type" context="#stay" String="types"/>
         <DetectIdentifier />
@@ -209,6 +212,7 @@
     </contexts>
     <itemDatas>
       <itemData name="Normal Text"  defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Control Flow" defStyleNum="dsControlFlow" spellChecking="false"/>
       <itemData name="Keyword"      defStyleNum="dsKeyword" spellChecking="false"/>
       <itemData name="Data Type"    defStyleNum="dsDataType" spellChecking="false"/>
       <itemData name="Decimal"      defStyleNum="dsDecVal" spellChecking="false"/>
