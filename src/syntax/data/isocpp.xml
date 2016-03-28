@@ -11,7 +11,7 @@
 <language
     name="ISO C++"
     section="Sources"
-    version="4.1"
+    version="5"
     kateversion="5.0"
     indenter="cstyle"
     style="C++"
@@ -27,33 +27,40 @@
     http://kde-files.org/content/show.php?content=90660
   -->
   <highlighting>
+    <list name="controlflow">
+      <item> break </item>
+      <item> case </item>
+      <item> catch </item>
+      <item> continue </item>
+      <item> default </item>
+      <item> do </item>
+      <item> else </item>
+      <item> for </item>
+      <item> goto </item>
+      <item> if </item>
+      <item> return </item>
+      <item> switch </item>
+      <item> throw </item>
+      <item> try </item>
+      <item> while </item>
+    </list>
     <list name="keywords">
       <item> alignof </item>
       <item> alignas </item>
       <item> asm </item>
       <item> auto </item>
-      <item> break </item>
-      <item> case </item>
-      <item> catch </item>
       <item> class </item>
       <item> constexpr </item>
       <item> const_cast </item>
-      <item> continue </item>
       <item> decltype </item>
-      <item> default </item>
       <item> delete </item>
-      <item> do </item>
       <item> dynamic_cast</item>
-      <item> else </item>
       <item> enum </item>
       <item> explicit </item>
       <item> export </item> <!-- Unused but reserved for future use -->
       <item> false </item>
       <item> final </item> <!-- According N3272 -->
       <item> friend </item>
-      <item> for </item>
-      <item> goto </item>
-      <item> if </item>
       <item> inline </item>
       <item> namespace </item>
       <item> new </item>
@@ -65,24 +72,19 @@
       <item> protected </item>
       <item> public </item>
       <item> reinterpret_cast </item>
-      <item> return </item>
       <item> sizeof </item>
       <item> static_assert </item>
       <item> static_cast </item>
       <item> struct </item>
-      <item> switch </item>
       <item> template </item>
       <item> this </item>
-      <item> throw </item>
       <item> true </item>
-      <item> try </item>
       <item> typedef </item>
       <item> typeid </item>
       <item> typename </item>
       <item> union </item>
       <item> using </item>
       <item> virtual </item>
-      <item> while </item>
       <!-- Alternative operators (see 2.12) -->
       <item> and </item>
       <item> and_eq </item>
@@ -208,6 +210,7 @@
         <RegExpr attribute="Normal Text" context="UDLOperator" String="operator\s*&quot;&quot; _[_0-9A-Za-z]*\b" lookAhead="true" />
         <RegExpr attribute="Error" context="#stay" String="operator\s*&quot;&quot; [_0-9A-Za-z]*\b" />
         <!-- Match keywords -->
+        <keyword attribute="Control Flow" context="#stay" String="controlflow" />
         <keyword attribute="Keyword" context="#stay" String="keywords" />
         <!-- Detect attributes -->
         <Detect2Chars attribute="Symbol" context="Attribute" char="[" char1="[" />
@@ -469,6 +472,7 @@
 
     <itemDatas>
       <itemData name="Normal Text"        defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Control Flow"       defStyleNum="dsControlFlow" spellChecking="false" />
       <itemData name="Keyword"            defStyleNum="dsKeyword"  spellChecking="false" />
       <itemData name="Data Type"          defStyleNum="dsDataType" spellChecking="false" />
       <itemData name="Type Modifiers"     defStyleNum="dsAttribute" spellChecking="false" />
