@@ -11,7 +11,7 @@
 <language
     name="ISO C++"
     section="Sources"
-    version="4"
+    version="4.1"
     kateversion="5.0"
     indenter="cstyle"
     style="C++"
@@ -134,7 +134,32 @@
       <item> uint16_t </item>
       <item> uint32_t </item>
       <item> uint64_t </item>
+      <item> int_least8_t </item>
+      <item> int_least16_t </item>
+      <item> int_least32_t </item>
+      <item> int_least64_t </item>
+      <item> uint_least8_t </item>
+      <item> uint_least16_t </item>
+      <item> uint_least32_t </item>
+      <item> uint_least64_t </item>
+      <item> int_fast8_t </item>
+      <item> int_fast16_t </item>
+      <item> int_fast32_t </item>
+      <item> int_fast64_t </item>
+      <item> uint_fast8_t </item>
+      <item> uint_fast16_t </item>
+      <item> uint_fast32_t </item>
+      <item> uint_fast64_t </item>
+      <item> size_t </item>
+      <item> ssize_t </item>
       <item> wchar_t </item>
+      <item> intptr_t </item>
+      <item> uintptr_t </item>
+      <item> intmax_t </item>
+      <item> uintmax_t </item>
+      <item> ptrdiff_t </item>
+      <item> sig_atomic_t </item>
+      <item> wint_t </item>
     </list>
     <list name="modifiers">
       <item> const </item>
