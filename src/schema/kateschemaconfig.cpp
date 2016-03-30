@@ -792,7 +792,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
         QString srcName = QFileDialog::getOpenFileName(this,
                           i18n("Importing colors for single highlighting"),
                           KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
-                          QStringLiteral("*.katehlcolor|%1").arg(i18n("Kate color schema")));
+                          QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
 
         if (srcName.isEmpty()) {
             return;
@@ -862,7 +862,7 @@ void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg
         QString destName = QFileDialog::getSaveFileName(this,
                            i18n("Exporting colors for single highlighting: %1", KateHlManager::self()->getHl(hl)->name()),
                            KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
-                           QStringLiteral("*.katehlcolor|%1").arg(i18n("Kate color schema")));
+                           QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
 
         if (destName.isEmpty()) {
             return;
@@ -981,7 +981,7 @@ void KateSchemaConfigPage::exportFullSchema()
     QString destName = QFileDialog::getSaveFileName(this,
                        i18n("Exporting color schema: %1", currentSchemaName),
                        currentSchemaName + QLatin1String(".kateschema"),
-                       QStringLiteral("*.kateschema|%1").arg(i18n("Kate color schema")));
+                       QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
 
     if (destName.isEmpty()) {
         return;
@@ -1112,7 +1112,7 @@ void KateSchemaConfigPage::importFullSchema()
     const QString srcName = QFileDialog::getOpenFileName(this,
                             i18n("Importing Color Schema"),
                             QString(),
-                            QStringLiteral("*.kateschema|%1").arg(i18n("Kate color schema")));
+                            QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
 
     if (srcName.isEmpty()) {
         return;
