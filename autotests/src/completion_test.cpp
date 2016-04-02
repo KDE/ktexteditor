@@ -218,7 +218,7 @@ void CompletionTest::testCustomRangeMultipleModels()
     QCOMPARE(Range(*m_view->completionWidget()->completionRange(testModel1)), Range(Cursor(0, 0), Cursor(0, 2)));
     QCOMPARE(Range(*m_view->completionWidget()->completionRange(testModel2)), Range(Cursor(0, 1), Cursor(0, 2)));
     QCOMPARE(model->currentCompletion(testModel1), QStringLiteral("$"));
-    QCOMPARE(model->currentCompletion(testModel2), QLatin1String(""));
+    QCOMPARE(model->currentCompletion(testModel2), QString());
     QCOMPARE(countItems(model), 80);
 
     m_view->insertText(QStringLiteral("aa"));

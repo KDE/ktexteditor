@@ -53,8 +53,8 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
         m_output << "<pre>" << endl;
     } else {
         m_output << QStringLiteral("<pre style='%1%2%3%4'>")
-                 .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QLatin1String(""))
-                 .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QLatin1String(""))
+                 .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QString())
+                 .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QString())
                  .arg(QLatin1String("color:") + m_defaultAttribute->foreground().color().name() + QLatin1Char(';'))
                  .arg(QLatin1String("background-color:") + m_defaultAttribute->background().color().name() + QLatin1Char(';'))
                  << endl;
