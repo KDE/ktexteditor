@@ -116,7 +116,7 @@
         </item>
         <item>
          <property name="text">
-          <string>Alternative Folder</string>
+          <string>Alternative Directory</string>
          </property>
         </item>
        </widget>
@@ -124,7 +124,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="lblSwapDirectory">
         <property name="text">
-         <string>Folder</string>
+         <string>Directory</string>
         </property>
         <property name="buddy">
          <cstring>kurlSwapDirectory</cstring>
@@ -140,7 +140,7 @@
          <set>KFile::Directory|KFile::LocalOnly</set>
         </property>
         <property name="placeholderText">
-         <string>Folder for swap files</string>
+         <string>Directory for swp files</string>
         </property>
        </widget>
       </item>
