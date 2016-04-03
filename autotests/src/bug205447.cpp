@@ -45,6 +45,7 @@ BugTest::~BugTest()
 
 void BugTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void BugTest::cleanupTestCase()

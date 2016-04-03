@@ -20,6 +20,7 @@
 #include "modificationsystem_test.h"
 #include "moc_modificationsystem_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateundomanager.h>
 
@@ -31,6 +32,7 @@ using namespace KTextEditor;
 
 void ModificationSystemTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void ModificationSystemTest::cleanupTestCase()

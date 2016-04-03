@@ -20,6 +20,7 @@
 
 #include "undomanager_test.h"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <kateundomanager.h>
@@ -29,6 +30,12 @@
 QTEST_MAIN(UndoManagerTest)
 
 using namespace KTextEditor;
+
+UndoManagerTest::UndoManagerTest()
+    : QObject()
+{
+    KTextEditor::EditorPrivate::enableUnitTestMode();
+}
 
 class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
 {

@@ -35,6 +35,7 @@ QTEST_MAIN(KateFoldingTest)
 
 void KateFoldingTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void KateFoldingTest::cleanupTestCase()

@@ -19,6 +19,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+#include <kateglobal.h>
 #include "katetextbuffer.h"
 
 #include <QtCore/QCoreApplication>
@@ -28,6 +29,9 @@ int main(int argc, char *argv[])
 {
     // construct core app
     QCoreApplication app(argc, argv);
+
+    // test mode
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 
     // get arguments
     QString encoding = app.arguments().at(1);

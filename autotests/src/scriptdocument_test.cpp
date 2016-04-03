@@ -19,6 +19,7 @@
 
 #include "scriptdocument_test.h"
 
+#include <kateglobal.h>
 #include <ktexteditor/view.h>
 #include <katedocument.h>
 #include <katescriptdocument.h>
@@ -42,6 +43,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
 void ScriptDocumentTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
     s_msgHandler = qInstallMessageHandler(myMessageOutput);
 }
 

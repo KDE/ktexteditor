@@ -26,6 +26,7 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 
+#include <kateglobal.h>
 #include <kateview.h>
 #include <katecompletionwidget.h>
 #include <katecompletionmodel.h>
@@ -84,6 +85,7 @@ static void invokeCompletionBox(KTextEditor::ViewPrivate *view)
 
 void CompletionTest::init()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
     Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 

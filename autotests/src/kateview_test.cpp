@@ -20,6 +20,7 @@
 #include "kateview_test.h"
 #include "moc_kateview_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <ktexteditor/movingcursor.h>
@@ -36,6 +37,7 @@ QTEST_MAIN(KateViewTest)
 KateViewTest::KateViewTest()
     : QObject()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 KateViewTest::~KateViewTest()

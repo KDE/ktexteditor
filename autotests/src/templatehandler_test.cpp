@@ -19,6 +19,7 @@
 
 #include "templatehandler_test.h"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <kateconfig.h>
@@ -31,6 +32,12 @@
 QTEST_MAIN(TemplateHandlerTest)
 
 using namespace KTextEditor;
+
+TemplateHandlerTest::TemplateHandlerTest()
+    : QObject()
+{
+    KTextEditor::EditorPrivate::enableUnitTestMode();
+}
 
 void TemplateHandlerTest::testUndo()
 {

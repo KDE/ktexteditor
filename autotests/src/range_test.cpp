@@ -21,6 +21,7 @@
 #include "range_test.h"
 #include "moc_range_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <kateconfig.h>
@@ -36,6 +37,7 @@ QTEST_MAIN(RangeTest)
 RangeTest::RangeTest()
     : QObject()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 RangeTest::~RangeTest()

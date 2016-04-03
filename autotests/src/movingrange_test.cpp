@@ -20,6 +20,7 @@
 #include "movingrange_test.h"
 #include "moc_movingrange_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateview.h>
 #include <ktexteditor/movingrange.h>
@@ -131,6 +132,7 @@ private:
 MovingRangeTest::MovingRangeTest()
     : QObject()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 MovingRangeTest::~MovingRangeTest()

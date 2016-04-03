@@ -27,6 +27,9 @@ class TemplateHandlerTest : public QObject
 {
     Q_OBJECT
 
+public:
+    TemplateHandlerTest();
+
 private Q_SLOTS:
     void testUndo();
 

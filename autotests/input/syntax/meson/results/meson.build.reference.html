@@ -8,28 +8,28 @@
 </head>
 <!-- Highlighting: "Meson" -->
 <body>
-<pre style='color:#1f1c1b;background-color:#ffffff;'>
-<span style='color:#898887;'># Unit test for Meson syntax highlight. License: LGPL</span>
-<span style='color:#0057ae;'>project</span>(<span style='color:#bf0303;'>'projectname'</span>, <span style='color:#bf0303;'>'cpp'</span>)
+<pre style='color:#141312;background-color:#ffffff;'>
+<span style='color:#757474;'># Unit test for Meson syntax highlight. License: LGPL</span>
+<span style='color:#00a489;'>project</span>(<span style='color:#bf0303;'>'projectname'</span>, <span style='color:#bf0303;'>'cpp'</span>)
 
 
 
 sourcefiles <b>=</b> [<span style='color:#bf0303;'>'a.cpp'</span>, <span style='color:#bf0303;'>'b.cpp'</span>]
 
 <b>foreach</b> sourcefile : sourcefiles
-    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'this is a source file: '</span> <b>+</b> sourcefile)
+    <span style='color:#00a489;'>message</span>(<span style='color:#bf0303;'>'this is a source file: '</span> <b>+</b> sourcefile)
 <b>endforeach</b>
 
 x<b>=</b><span style='color:#b08000;'>1</span>
 <b>if</b> x<b>+</b><span style='color:#b08000;'>1</span> <b>==</b> <span style='color:#b08000;'>2</span> <b>and</b> x<b>-</b><span style='color:#b08000;'>1</span> <b>==</b> <span style='color:#b08000;'>0</span>
-    <span style='color:#0057ae;'>message</span>(<span style='color:#bf0303;'>'I can work in this universe!'</span>)
+    <span style='color:#00a489;'>message</span>(<span style='color:#bf0303;'>'I can work in this universe!'</span>)
 <b>endif</b>
 
-subprojectresult <b>=</b> <span style='color:#0057ae;'>subproject</span>(<span style='color:#bf0303;'>'mysubprojectdir'</span>)
+subprojectresult <b>=</b> <span style='color:#00a489;'>subproject</span>(<span style='color:#bf0303;'>'mysubprojectdir'</span>)
 
-mysharedlib <b>=</b> <span style='color:#0057ae;'>shared_library</span>(<span style='color:#bf0303;'>'libraryname'</span>, sourcefiles, linkwith: subprojectresult.staticlib)
+mysharedlib <b>=</b> <span style='color:#00a489;'>shared_library</span>(<span style='color:#bf0303;'>'libraryname'</span>, sourcefiles, linkwith: subprojectresult.staticlib)
 
-<span style='color:#0057ae;'>executable</span>(<span style='color:#bf0303;'>'myprogram'</span>, [<span style='color:#bf0303;'>'test.cpp'</span>], linkwith: mysharedlib)
+<span style='color:#00a489;'>executable</span>(<span style='color:#bf0303;'>'myprogram'</span>, [<span style='color:#bf0303;'>'test.cpp'</span>], linkwith: mysharedlib)
 </pre>
 </body>
 </html>

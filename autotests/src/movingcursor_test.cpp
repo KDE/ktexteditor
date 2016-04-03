@@ -20,6 +20,7 @@
 #include "movingcursor_test.h"
 #include "moc_movingcursor_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <ktexteditor/movingcursor.h>
 
@@ -32,6 +33,7 @@ QTEST_MAIN(MovingCursorTest)
 MovingCursorTest::MovingCursorTest()
     : QObject()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 MovingCursorTest::~MovingCursorTest()

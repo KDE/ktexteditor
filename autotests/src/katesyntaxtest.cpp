@@ -36,6 +36,7 @@ QTEST_MAIN(KateSyntaxTest)
 
 void KateSyntaxTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void KateSyntaxTest::cleanupTestCase()
@@ -57,7 +58,7 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
         if (!info.isDir() || hlDir.contains(QLatin1Char('.'))) {
             continue;
         }
-        
+
         /**
          * now: get the tests per hl
          */
@@ -68,8 +69,8 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
             if (!info.isFile()) {
                 continue;
             }
-            
-            QTest::newRow(info.absoluteFilePath().toLocal8Bit().constData()) << info.absoluteFilePath();        
+
+            QTest::newRow(info.absoluteFilePath().toLocal8Bit().constData()) << info.absoluteFilePath();
         }
     }
 }
@@ -81,7 +82,7 @@ void KateSyntaxTest::testSyntaxHighlighting()
      * get current test case
      */
     QFETCH(QString, hlTestCase);
-    
+
     /**
      * create a document with a view to be able to export stuff
      */
@@ -95,7 +96,7 @@ void KateSyntaxTest::testSyntaxHighlighting()
     url.setScheme(QLatin1String("file"));
     url.setPath(hlTestCase);
     QVERIFY(doc.openUrl(url));
-    
+
     /**
      * compute needed dirs
      */
@@ -103,12 +104,12 @@ void KateSyntaxTest::testSyntaxHighlighting()
     const QString resultDir(info.absolutePath() + QLatin1String("/results/"));
     const QString currentResult(resultDir + info.fileName() + QLatin1String(".current.html"));
     const QString referenceResult(resultDir + info.fileName() + QLatin1String(".reference.html"));
-    
+
     /**
      * export the result
      */
     view->exportHtmlToFile(currentResult);
-    
+
     /**
      * verify the result against reference
      */

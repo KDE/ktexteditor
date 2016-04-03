@@ -27,6 +27,9 @@ class UndoManagerTest : public QObject
 {
     Q_OBJECT
 
+public:
+    UndoManagerTest();
+
 private Q_SLOTS:
     void testUndoRedoCount();
     void testSafePoint();

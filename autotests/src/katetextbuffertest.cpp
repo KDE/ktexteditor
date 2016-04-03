@@ -19,6 +19,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+#include <kateglobal.h>
 #include "katetextbuffertest.h"
 #include "katetextbuffer.h"
 #include "katetextcursor.h"
@@ -29,6 +30,7 @@ QTEST_MAIN(KateTextBufferTest)
 KateTextBufferTest::KateTextBufferTest()
     : QObject()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 KateTextBufferTest::~KateTextBufferTest()

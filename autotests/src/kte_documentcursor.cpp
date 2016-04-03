@@ -19,6 +19,7 @@
 
 #include "kte_documentcursor.h"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <ktexteditor/view.h>
 #include <ktexteditor/documentcursor.h>
@@ -40,6 +41,7 @@ DocumentCursorTest::~DocumentCursorTest()
 
 void DocumentCursorTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
 }
 
 void DocumentCursorTest::cleanupTestCase()

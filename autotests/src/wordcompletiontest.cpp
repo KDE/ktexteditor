@@ -20,6 +20,7 @@
 
 #include "wordcompletiontest.h"
 
+#include <kateglobal.h>
 #include <katewordcompletion.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
@@ -36,6 +37,7 @@ using namespace KTextEditor;
 
 void WordCompletionTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
     Editor *editor = KTextEditor::Editor::instance();
     QVERIFY(editor);
 

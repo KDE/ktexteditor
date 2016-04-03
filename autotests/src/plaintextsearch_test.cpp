@@ -20,6 +20,7 @@
 #include "plaintextsearch_test.h"
 #include "moc_plaintextsearch_test.cpp"
 
+#include <kateglobal.h>
 #include <katedocument.h>
 #include <kateplaintextsearch.h>
 
@@ -42,6 +43,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
 void PlainTextSearchTest::initTestCase()
 {
+    KTextEditor::EditorPrivate::enableUnitTestMode();
     s_msgHandler = qInstallMessageHandler(myMessageOutput);
 }
 
