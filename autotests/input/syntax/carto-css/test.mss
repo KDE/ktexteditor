@@ -1,7 +1,9 @@
-﻿/* This file contains some content coming from
+﻿/* kate: hl CartoCSS
+   This file contains some content coming from
    https://github.com/gravitystorm/openstreetmap-carto
    with CC0 license. This file is just for testing
-   katepart’s highlighting engine. */
+   katepart’s highlighting engine.
+   */
 
 #world {
 // this syntax
@@ -16,7 +18,7 @@ polygon-opacity: 0.5;
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
 For each zoomlevel, all borders come from a single attachment, to handle
-overlapping borders correctly. 
+overlapping borders correctly.
 */
 
 #admin-low-zoom[zoom < 11],  // test
