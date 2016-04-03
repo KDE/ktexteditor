@@ -2,7 +2,7 @@
    This file contains some content coming from
    https://github.com/gravitystorm/openstreetmap-carto
    with CC0 license. This file is just for testing
-   katepart’s highlighting engine.
+   katepart highlighting engine.
    */
 
 #world {
