@@ -114,14 +114,18 @@ void KateSyntaxTest::testSyntaxHighlighting()
      * verify the result against reference
      */
     QProcess diff;
+    diff.setProcessChannelMode(QProcess::MergedChannels);
     QStringList args;
     args << QLatin1String("-u") << (referenceResult) << (currentResult);
     diff.start(QLatin1String("diff"), args);
     diff.waitForFinished();
     QByteArray out = diff.readAllStandardOutput();
-    QByteArray err = diff.readAllStandardError();
-    if (!err.isEmpty()) {
-        qWarning() << err;
+    if (!out.isEmpty()) {
+        printf("DIFF:\n");
+        QList<QByteArray> outLines = out.split('\n');
+        Q_FOREACH(const QByteArray &line, outLines) {
+            printf("%s\n", qPrintable(line));
+        }
     }
     QCOMPARE(QString::fromLocal8Bit(out), QString());
     QCOMPARE(diff.exitCode(), EXIT_SUCCESS);
