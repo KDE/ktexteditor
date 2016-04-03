@@ -8,218 +8,218 @@
 </head>
 <!-- Highlighting: "CartoCSS" -->
 <body>
-<pre style='color:#141312;background-color:#ffffff;'>
-<span style='color:#757474;'>/* This file contains some content coming from</span>
-<span style='color:#757474;'>   https://github.com/gravitystorm/openstreetmap-carto</span>
-<span style='color:#757474;'>   with CC0 license. This file is just for testing</span>
-<span style='color:#757474;'>   katepart’s highlighting engine. </span><span style='color:#757474;'>*/</span>
+<pre style='color:#31363b;background-color:#fcfcfc;'>
+<span style='color:#7f8c8d;'>/* This file contains some content coming from</span>
+<span style='color:#7f8c8d;'>   https://github.com/gravitystorm/openstreetmap-carto</span>
+<span style='color:#7f8c8d;'>   with CC0 license. This file is just for testing</span>
+<span style='color:#7f8c8d;'>   katepart’s highlighting engine. </span><span style='color:#7f8c8d;'>*/</span>
 
-<span style='color:#00a489;'>#world</span> <b>{</b>
-<span style='color:#757474;'>// this syntax</span>
-<b>polygon-opacity</b><b>:</b> <span style='color:#b08000;'>50%</span><b>;</b>
+<span style='color:#2980b9;'>#world</span> <b>{</b>
+<span style='color:#7f8c8d;'>// this syntax</span>
+<b>polygon-opacity</b><b>:</b> <span style='color:#f67400;'>50%</span><b>;</b>
 
-<span style='color:#757474;'>// is equivalent to</span>
-<b>polygon-opacity</b><b>:</b> <span style='color:#b08000;'>0.5</span><b>;</b>
+<span style='color:#7f8c8d;'>// is equivalent to</span>
+<b>polygon-opacity</b><b>:</b> <span style='color:#f67400;'>0.5</span><b>;</b>
 <b>}</b>
 
-<span style='color:#00a489;'>@admin-boundaries</span><b>:</b> <span style='color:#00a489;'>#ac46ac</span><b>;</b>
+<span style='color:#2980b9;'>@admin-boundaries</span><b>:</b> <span style='color:#27ae60;'>#ac46ac</span><b>;</b>
 
-<span style='color:#757474;'>/* For performance reasons, the admin border layers are split into three groups</span>
-<span style='color:#757474;'>for low, middle and high zoom levels.</span>
-<span style='color:#757474;'>For each zoomlevel, all borders come from a single attachment, to handle</span>
-<span style='color:#757474;'>overlapping borders correctly. </span>
-<span style='color:#757474;'>*/</span>
+<span style='color:#7f8c8d;'>/* For performance reasons, the admin border layers are split into three groups</span>
+<span style='color:#7f8c8d;'>for low, middle and high zoom levels.</span>
+<span style='color:#7f8c8d;'>For each zoomlevel, all borders come from a single attachment, to handle</span>
+<span style='color:#7f8c8d;'>overlapping borders correctly. </span>
+<span style='color:#7f8c8d;'>*/</span>
 
-<span style='color:#00a489;'>#admin-low-zoom</span><b>[</b>zoom <b>&lt;</b> <span style='color:#b08000;'>11</span><b>],</b>  <span style='color:#757474;'>// test</span>
-<span style='color:#00a489;'>#admin-mid-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>][</b>zoom <b>&lt;</b> <span style='color:#b08000;'>13</span><b>],</b>
-<span style='color:#00a489;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>13</span><b>]</b> <b>{</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'2'</span><b>],</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'3'</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>4</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>0.6</span><b>;</b>
-      <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>0.6</span><b>;</b>
+<span style='color:#2980b9;'>#admin-low-zoom</span><b>[</b>zoom <b>&lt;</b> <span style='color:#f67400;'>11</span><b>],</b>  <span style='color:#7f8c8d;'>// test</span>
+<span style='color:#2980b9;'>#admin-mid-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>][</b>zoom <b>&lt;</b> <span style='color:#f67400;'>13</span><b>],</b>
+<span style='color:#2980b9;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>13</span><b>]</b> <b>{</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'2'</span><b>],</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'3'</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>4</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>0.6</span><b>;</b>
+      <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>0.6</span><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>7</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>7</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>10</span><b>]</b> <b>{</b>
-      <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'2'</span><b>]</b> <b>{</b>
-        background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>6</span><b>;</b>
-        <b>line-width</b><b>:</b> <span style='color:#b08000;'>6</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>10</span><b>]</b> <b>{</b>
+      <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'2'</span><b>]</b> <b>{</b>
+        background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>6</span><b>;</b>
+        <b>line-width</b><b>:</b> <span style='color:#f67400;'>6</span><b>;</b>
       <b>}</b>
-      <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'3'</span><b>]</b> <b>{</b>
-        background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>5</span><b>;</b>
-        <b>line-width</b><b>:</b> <span style='color:#b08000;'>5</span><b>;</b>
-        <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>4</span><b>,</b><span style='color:#b08000;'>2</span><b>;</b>
+      <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'3'</span><b>]</b> <b>{</b>
+        background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>5</span><b>;</b>
+        <b>line-width</b><b>:</b> <span style='color:#f67400;'>5</span><b>;</b>
+        <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>4</span><b>,</b><span style='color:#f67400;'>2</span><b>;</b>
         <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
       <b>}</b>
     <b>}</b>
   <b>}</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'4'</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>4</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>0.6</span><b>;</b>
-      <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>0.6</span><b>;</b>
-      <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>4</span><b>,</b><span style='color:#b08000;'>3</span><b>;</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'4'</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>4</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>0.6</span><b>;</b>
+      <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>0.6</span><b>;</b>
+      <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>4</span><b>,</b><span style='color:#f67400;'>3</span><b>;</b>
       <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>7</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>1</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>1</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>7</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>1</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>1</span><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>3</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>3</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>3</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>3</span><b>;</b>
     <b>}</b>
   <b>}</b>
-  <span style='color:#757474;'>/*</span>
-<span style='color:#757474;'>  The following code prevents admin boundaries from being rendered on top of</span>
-<span style='color:#757474;'>  each other. Comp-op works on the entire attachment, not on the individual</span>
-<span style='color:#757474;'>  border. Therefore, this code generates an attachment containing a set of</span>
-<span style='color:#757474;'>  @admin-boundaries/white dashed lines (of which only the top one is visible),</span>
-<span style='color:#757474;'>  and with `comp-op: darken` the white part is ignored, while the</span>
-<span style='color:#757474;'>  @admin-boundaries colored part is rendered (as long as the background is not</span>
-<span style='color:#757474;'>  darker than @admin-boundaries).</span>
-<span style='color:#757474;'>  The SQL has `ORDER BY admin_level`, so the boundary with the lowest</span>
-<span style='color:#757474;'>  admin_level is rendered on top, and therefore the only visible boundary.</span>
-<span style='color:#757474;'>  </span><span style='color:#757474;'>*/</span>
-  <b>opacity</b><b>:</b> <span style='color:#b08000;'>0.4</span><b>;</b>
+  <span style='color:#7f8c8d;'>/*</span>
+<span style='color:#7f8c8d;'>  The following code prevents admin boundaries from being rendered on top of</span>
+<span style='color:#7f8c8d;'>  each other. Comp-op works on the entire attachment, not on the individual</span>
+<span style='color:#7f8c8d;'>  border. Therefore, this code generates an attachment containing a set of</span>
+<span style='color:#7f8c8d;'>  @admin-boundaries/white dashed lines (of which only the top one is visible),</span>
+<span style='color:#7f8c8d;'>  and with `comp-op: darken` the white part is ignored, while the</span>
+<span style='color:#7f8c8d;'>  @admin-boundaries colored part is rendered (as long as the background is not</span>
+<span style='color:#7f8c8d;'>  darker than @admin-boundaries).</span>
+<span style='color:#7f8c8d;'>  The SQL has `ORDER BY admin_level`, so the boundary with the lowest</span>
+<span style='color:#7f8c8d;'>  admin_level is rendered on top, and therefore the only visible boundary.</span>
+<span style='color:#7f8c8d;'>  </span><span style='color:#7f8c8d;'>*/</span>
+  <b>opacity</b><b>:</b> <span style='color:#f67400;'>0.4</span><b>;</b>
   <b>comp-op</b><b>:</b> darken<b>;</b>
 <b>}</b>
 
-<span style='color:#00a489;'>#admin-mid-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>][</b>zoom <b>&lt;</b> <span style='color:#b08000;'>13</span><b>],</b>
-<span style='color:#00a489;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>13</span><b>]</b> <b>{</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'5'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>]</b> <b>{</b>
-    background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-    background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-    <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-    <b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-    <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>6</span><b>,</b><span style='color:#b08000;'>3</span><b>,</b><span style='color:#b08000;'>2</span><b>,</b><span style='color:#b08000;'>3</span><b>,</b><span style='color:#b08000;'>2</span><b>,</b><span style='color:#b08000;'>3</span><b>;</b>
+<span style='color:#2980b9;'>#admin-mid-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>][</b>zoom <b>&lt;</b> <span style='color:#f67400;'>13</span><b>],</b>
+<span style='color:#2980b9;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>13</span><b>]</b> <b>{</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'5'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>]</b> <b>{</b>
+    background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+    background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+    <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+    <b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+    <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>6</span><b>,</b><span style='color:#f67400;'>3</span><b>,</b><span style='color:#f67400;'>2</span><b>,</b><span style='color:#f67400;'>3</span><b>,</b><span style='color:#f67400;'>2</span><b>,</b><span style='color:#f67400;'>3</span><b>;</b>
     <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
   <b>}</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'6'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>]</b> <b>{</b>
-    background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-    background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-    <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-    <b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-    <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>6</span><b>,</b><span style='color:#b08000;'>3</span><b>,</b><span style='color:#b08000;'>2</span><b>,</b><span style='color:#b08000;'>3</span><b>;</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'6'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>]</b> <b>{</b>
+    background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+    background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+    <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+    <b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+    <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>6</span><b>,</b><span style='color:#f67400;'>3</span><b>,</b><span style='color:#f67400;'>2</span><b>,</b><span style='color:#f67400;'>3</span><b>;</b>
     <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
   <b>}</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'7'</span><b>],</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'8'</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>12</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>1.5</span><b>;</b>
-      <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>1.5</span><b>;</b>
-      <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>5</span><b>,</b><span style='color:#b08000;'>2</span><b>;</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'7'</span><b>],</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'8'</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>12</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>1.5</span><b>;</b>
+      <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>1.5</span><b>;</b>
+      <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>5</span><b>,</b><span style='color:#f67400;'>2</span><b>;</b>
       <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
     <b>}</b>
   <b>}</b>
-  <b>opacity</b><b>:</b> <span style='color:#b08000;'>0.5</span><b>;</b>
+  <b>opacity</b><b>:</b> <span style='color:#f67400;'>0.5</span><b>;</b>
   <b>comp-op</b><b>:</b> darken<b>;</b>
 <b>}</b>
 
-<span style='color:#00a489;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>13</span><b>]</b> <b>{</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'9'</span><b>],</b>
-  <b>[</b>admin_level <b>=</b> <span style='color:#bf0303;'>'10'</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>13</span><b>]</b> <b>{</b>
-      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>white</span><b>;</b>
-      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-      <b>line-color</b><b>:</b> <span style='color:#00a489;'>@admin-boundaries</span><b>;</b>
-      <b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-      <b>line-dasharray</b><b>:</b> <span style='color:#b08000;'>2</span><b>,</b><span style='color:#b08000;'>3</span><b>;</b>
+<span style='color:#2980b9;'>#admin-high-zoom</span><b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>13</span><b>]</b> <b>{</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'9'</span><b>],</b>
+  <b>[</b>admin_level <b>=</b> <span style='color:#da4453;'>'10'</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>13</span><b>]</b> <b>{</b>
+      background<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>white</span><b>;</b>
+      background<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+      <b>line-color</b><b>:</b> <span style='color:#2980b9;'>@admin-boundaries</span><b>;</b>
+      <b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+      <b>line-dasharray</b><b>:</b> <span style='color:#f67400;'>2</span><b>,</b><span style='color:#f67400;'>3</span><b>;</b>
       <b>line-clip</b><b>:</b> <b>false</b><b>;</b>
     <b>}</b>
   <b>}</b>
-  <b>opacity</b><b>:</b> <span style='color:#b08000;'>0.5</span><b>;</b>
+  <b>opacity</b><b>:</b> <span style='color:#f67400;'>0.5</span><b>;</b>
   <b>comp-op</b><b>:</b> darken<b>;</b>
 <b>}</b>
 
 
 
-<span style='color:#00a489;'>#nature-reserve-boundaries</span> <b>{</b>
-  <b>[</b>way_pixels <b>&gt;</b> <span style='color:#b08000;'>100</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>7</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&lt;</b> <span style='color:#b08000;'>10</span><b>]</b> <b>{</b>
+<span style='color:#2980b9;'>#nature-reserve-boundaries</span> <b>{</b>
+  <b>[</b>way_pixels <b>&gt;</b> <span style='color:#f67400;'>100</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>7</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&lt;</b> <span style='color:#f67400;'>10</span><b>]</b> <b>{</b>
       <b>::</b>fill <b>{</b>
-        <b>opacity</b><b>:</b> <span style='color:#b08000;'>0.05</span><b>;</b>
-        <b>polygon-fill</b><b>:</b> <span style='color:#00a489;'>green</span><b>;</b>
+        <b>opacity</b><b>:</b> <span style='color:#f67400;'>0.05</span><b>;</b>
+        <b>polygon-fill</b><b>:</b> <span style='color:#27ae60;'>green</span><b>;</b>
       <b>}</b>
     <b>}</b>
-    a<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>1</span><b>;</b>
-    a<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#b08000;'>0.5</span><b>;</b>
-    a<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>green</span><b>;</b>
-    a<b>/</b><b>line-opacity</b><b>:</b> <span style='color:#b08000;'>0.15</span><b>;</b>
+    a<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>1</span><b>;</b>
+    a<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#f67400;'>0.5</span><b>;</b>
+    a<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>green</span><b>;</b>
+    a<b>/</b><b>line-opacity</b><b>:</b> <span style='color:#f67400;'>0.15</span><b>;</b>
     a<b>/</b><b>line-join</b><b>:</b> round<b>;</b>
     a<b>/</b><b>line-cap</b><b>:</b> round<b>;</b>
-    b<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-    b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#b08000;'>1</span><b>;</b>
-    b<b>/</b><b>line-color</b><b>:</b> <span style='color:#00a489;'>green</span><b>;</b>
-    b<b>/</b><b>line-opacity</b><b>:</b> <span style='color:#b08000;'>0.15</span><b>;</b>
+    b<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+    b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#f67400;'>1</span><b>;</b>
+    b<b>/</b><b>line-color</b><b>:</b> <span style='color:#27ae60;'>green</span><b>;</b>
+    b<b>/</b><b>line-opacity</b><b>:</b> <span style='color:#f67400;'>0.15</span><b>;</b>
     b<b>/</b><b>line-join</b><b>:</b> round<b>;</b>
     b<b>/</b><b>line-cap</b><b>:</b> round<b>;</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>10</span><b>]</b> <b>{</b>
-      a<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b>
-      a<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#b08000;'>1</span><b>;</b>
-      b<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>4</span><b>;</b>
-      b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#b08000;'>2</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>10</span><b>]</b> <b>{</b>
+      a<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b>
+      a<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#f67400;'>1</span><b>;</b>
+      b<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>4</span><b>;</b>
+      b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#f67400;'>2</span><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>14</span><b>]</b> <b>{</b>
-      b<b>/</b><b>line-width</b><b>:</b> <span style='color:#b08000;'>6</span><b>;</b>
-      b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#b08000;'>3</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>14</span><b>]</b> <b>{</b>
+      b<b>/</b><b>line-width</b><b>:</b> <span style='color:#f67400;'>6</span><b>;</b>
+      b<b>/</b><b>line-offset</b><b>:</b> <b>-</b><span style='color:#f67400;'>3</span><b>;</b>
     <b>}</b>
   <b>}</b>
 <b>}</b>
 
-<span style='color:#00a489;'>#building-text</span> <b>{</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>14</span><b>][</b>way_pixels <b>&gt;</b> <span style='color:#b08000;'>3000</span><b>],</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>17</span><b>]</b> <b>{</b>
-<b>text-name</b><b>:</b> <span style='color:#bf0303;'>&quot;[name]&quot;</span><b>;</b>
-<b>text-size</b><b>:</b> <span style='color:#b08000;'>11</span><b>;</b>
-<b>text-fill</b><b>:</b> <span style='color:#00a489;'>#444</span><b>;</b>
-<b>text-face-name</b><b>:</b> <span style='color:#00a489;'>@book-fonts</span><b>;</b>
-<b>text-halo-radius</b><b>:</b> <span style='color:#b08000;'>1</span><b>;</b>
-<b>text-wrap-width</b><b>:</b> <span style='color:#b08000;'>20</span><b>;</b>
-<b>text-halo-fill</b><b>:</b> rgba<b>(</b><span style='color:#b08000;'>255</span><b>,</b><span style='color:#b08000;'>255</span><b>,</b><span style='color:#b08000;'>255</span><b>,</b><span style='color:#b08000;'>0.5</span><b>);</b>
+<span style='color:#2980b9;'>#building-text</span> <b>{</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>14</span><b>][</b>way_pixels <b>&gt;</b> <span style='color:#f67400;'>3000</span><b>],</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>17</span><b>]</b> <b>{</b>
+<b>text-name</b><b>:</b> <span style='color:#da4453;'>&quot;[name]&quot;</span><b>;</b>
+<b>text-size</b><b>:</b> <span style='color:#f67400;'>11</span><b>;</b>
+<b>text-fill</b><b>:</b> <span style='color:#27ae60;'>#444</span><b>;</b>
+<b>text-face-name</b><b>:</b> <span style='color:#2980b9;'>@book-fonts</span><b>;</b>
+<b>text-halo-radius</b><b>:</b> <span style='color:#f67400;'>1</span><b>;</b>
+<b>text-wrap-width</b><b>:</b> <span style='color:#f67400;'>20</span><b>;</b>
+<b>text-halo-fill</b><b>:</b> rgba<b>(</b><span style='color:#f67400;'>255</span><b>,</b><span style='color:#f67400;'>255</span><b>,</b><span style='color:#f67400;'>255</span><b>,</b><span style='color:#f67400;'>0.5</span><b>);</b>
 <b>text-placement</b><b>:</b> interior<b>;</b>
 <b>}</b>
 <b>}</b>
 
-<span style='color:#00a489;'>@marina-text</span><b>:</b> <span style='color:#00a489;'>#576ddf</span><b>;</b> <span style='color:#757474;'>// also swimming_pool</span>
-<span style='color:#00a489;'>@landcover-face-name</span><b>:</b> <span style='color:#00a489;'>@oblique-fonts</span><b>;</b>
-<span style='color:#00a489;'>@standard-wrap-width</span><b>:</b> <span style='color:#b08000;'>30</span><b>;</b>
+<span style='color:#2980b9;'>@marina-text</span><b>:</b> <span style='color:#27ae60;'>#576ddf</span><b>;</b> <span style='color:#7f8c8d;'>// also swimming_pool</span>
+<span style='color:#2980b9;'>@landcover-face-name</span><b>:</b> <span style='color:#2980b9;'>@oblique-fonts</span><b>;</b>
+<span style='color:#2980b9;'>@standard-wrap-width</span><b>:</b> <span style='color:#f67400;'>30</span><b>;</b>
 
-<span style='color:#00a489;'>.points</span> <b>{</b>
-  <b>[</b>feature <b>=</b> <span style='color:#bf0303;'>'tourism_alpine_hut'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>13</span><b>]</b> <b>{</b>
-    <b>point-file</b><b>:</b> url<b>(</b><span style='color:#bf0303;'>'symbols/alpinehut.p.16.png'</span><b>);</b>
+<span style='color:#2980b9;'>.points</span> <b>{</b>
+  <b>[</b>feature <b>=</b> <span style='color:#da4453;'>'tourism_alpine_hut'</span><b>][</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>13</span><b>]</b> <b>{</b>
+    <b>point-file</b><b>:</b> url<b>(</b><span style='color:#da4453;'>'symbols/alpinehut.p.16.png'</span><b>);</b>
     <b>point-placement</b><b>:</b> interior<b>;</b>
   <b>}</b>
   <b>}</b>
 
-  <b>[</b>feature <b>=</b> <span style='color:#bf0303;'>'highway_bus_stop'</span><b>]</b> <b>{</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>16</span><b>]</b> <b>{</b>
-      <b>marker-file</b><b>:</b> url<b>(</b><span style='color:#bf0303;'>'symbols/square.svg'</span><b>);</b>
-      <b>marker-fill</b><b>:</b> <span style='color:#00a489;'>@transportation-icon</span><b>;</b>
+  <b>[</b>feature <b>=</b> <span style='color:#da4453;'>'highway_bus_stop'</span><b>]</b> <b>{</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>16</span><b>]</b> <b>{</b>
+      <b>marker-file</b><b>:</b> url<b>(</b><span style='color:#da4453;'>'symbols/square.svg'</span><b>);</b>
+      <b>marker-fill</b><b>:</b> <span style='color:#2980b9;'>@transportation-icon</span><b>;</b>
       <b>marker-placement</b><b>:</b> interior<b>;</b>
-      <b>marker-width</b><b>:</b> <span style='color:#b08000;'>6</span><b>;</b>
+      <b>marker-width</b><b>:</b> <span style='color:#f67400;'>6</span><b>;</b>
     <b>}</b>
-    <b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>17</span><b>]</b> <b>{</b>
-      <b>marker-file</b><b>:</b> url<b>(</b><span style='color:#bf0303;'>'symbols/bus_stop.p.12.png'</span><b>);</b>
-      <b>marker-width</b><b>:</b> <span style='color:#b08000;'>12</span><b>;</b>
+    <b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>17</span><b>]</b> <b>{</b>
+      <b>marker-file</b><b>:</b> url<b>(</b><span style='color:#da4453;'>'symbols/bus_stop.p.12.png'</span><b>);</b>
+      <b>marker-width</b><b>:</b> <span style='color:#f67400;'>12</span><b>;</b>
     <b>}</b>
   <b>}</b>
 
-<b>[</b>feature <b>=</b> <span style='color:#bf0303;'>'highway_primary'</span><b>]</b> <b>{</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>7</span><b>][</b>zoom <b>&lt;</b> <span style='color:#b08000;'>12</span><b>]</b> <b>{</b>
-<b>line-width</b><b>:</b> <span style='color:#b08000;'>0.5</span><b>;</b>
-<b>line-color</b><b>:</b> <span style='color:#00a489;'>@primary-fill</span><b>;</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>9</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#b08000;'>1.2</span><b>;</b> <b>}</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>10</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#b08000;'>2</span><b>;</b> <b>}</b>
-<b>[</b>zoom <b>&gt;=</b> <span style='color:#b08000;'>11</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#b08000;'>.5</span><b>;</b> <b>}</b>
+<b>[</b>feature <b>=</b> <span style='color:#da4453;'>'highway_primary'</span><b>]</b> <b>{</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>7</span><b>][</b>zoom <b>&lt;</b> <span style='color:#f67400;'>12</span><b>]</b> <b>{</b>
+<b>line-width</b><b>:</b> <span style='color:#f67400;'>0.5</span><b>;</b>
+<b>line-color</b><b>:</b> <span style='color:#2980b9;'>@primary-fill</span><b>;</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>9</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#f67400;'>1.2</span><b>;</b> <b>}</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>10</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#f67400;'>2</span><b>;</b> <b>}</b>
+<b>[</b>zoom <b>&gt;=</b> <span style='color:#f67400;'>11</span><b>]</b> <b>{</b> <b>line-width</b><b>:</b> <span style='color:#f67400;'>.5</span><b>;</b> <b>}</b>
 <b>}</b>
 <b>}</b>
 </pre>

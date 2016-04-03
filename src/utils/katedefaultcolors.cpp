@@ -19,16 +19,32 @@
  */
 
 #include "katedefaultcolors.h"
+#include "kateglobal.h"
 
 #include <KColorUtils>
 
 using namespace Kate;
 
 KateDefaultColors::KateDefaultColors()
-    : m_view(QPalette::Active, KColorScheme::View)
-    , m_window(QPalette::Active, KColorScheme::Window)
-    , m_selection(QPalette::Active, KColorScheme::Selection)
-    , m_inactiveSelection(QPalette::Inactive, KColorScheme::Selection)
+    /**
+     * for unit testing: avoid global configs!
+     */
+    : m_view(QPalette::Active, KColorScheme::View
+        , KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString()
+            , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
+    , m_window(QPalette::Active, KColorScheme::Window
+        , KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString()
+            , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
+    , m_selection(QPalette::Active, KColorScheme::Selection
+        , KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString()
+            , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
+    , m_inactiveSelection(QPalette::Inactive, KColorScheme::Selection
+        , KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString()
+            , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
+
+    /**
+     * init our colors
+     */
     , m_background(m_view.background().color())
     , m_foreground(m_view.foreground().color())
     , m_backgroundLuma(KColorUtils::luma(m_background))

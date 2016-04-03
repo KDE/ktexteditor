@@ -8,12 +8,12 @@
 </head>
 <!-- Highlighting: "Dockerfile" -->
 <body>
-<pre style='color:#141312;background-color:#ffffff;'>
-<span style='color:#757474;'># LGPLv2+ example file</span>
+<pre style='color:#31363b;background-color:#fcfcfc;'>
+<span style='color:#7f8c8d;'># LGPLv2+ example file</span>
 
-<span style='color:#757474;'># This is a comment</span>
+<span style='color:#7f8c8d;'># This is a comment</span>
 <b>FROM</b> ubuntu:14.04
-<b>MAINTAINER</b> James Turnbull &lt;james@example.com&gt; <span style='color:#757474;'># comment</span>
+<b>MAINTAINER</b> James Turnbull &lt;james@example.com&gt; <span style='color:#7f8c8d;'># comment</span>
 <b>ENV</b> REFRESHED_AT 2014-06-01
 
 <b>RUN</b> apt-get -yqq update
@@ -21,9 +21,9 @@
 <b>RUN</b> add-apt-repository ppa:chris-lea/redis-server
 <b>RUN</b> apt-get -yqq update
 <b>RUN</b> apt-get -yqq install redis-server redis-tools
-<b>RUN</b> apt-get -yqq update <span style='color:#757474;'># comment</span>
+<b>RUN</b> apt-get -yqq update <span style='color:#7f8c8d;'># comment</span>
 
-<b>VOLUME</b> [ <span style='color:#bf0303;'>&quot;/var/lib/redis&quot;</span>, <span style='color:#bf0303;'>&quot;/var/log/redis/&quot;</span> ]
+<b>VOLUME</b> [ <span style='color:#da4453;'>&quot;/var/lib/redis&quot;</span>, <span style='color:#da4453;'>&quot;/var/log/redis/&quot;</span> ]
 
 <b>EXPOSE</b> 6379
 
