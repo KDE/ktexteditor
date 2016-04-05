@@ -104,6 +104,10 @@ public:
     /**
      * Returns whether the current position of this cursor is a valid position
      * (line + column must both be >= 0).
+     *
+     * @note If you want to check, whether a cursor position is a valid
+     *       \e text-position, use DocumentCursor::isValidTextPosition(),
+     *       or Document::isValidTextPosition().
      */
     Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT {
         return m_line >= 0 && m_column >= 0;
