@@ -1,4 +1,5 @@
 /* This file is part of the KDE libraries
+   Copyright (C) 2016 Dominik Haumann <dhaumann@kde.org>
    Copyright (C) 2010 Christoph Cullmann <cullmann@kde.org>
    Copyright (C) 2005 Hamish Rodda <rodda@kde.org>
 
@@ -138,4 +139,101 @@ void RangeTest::testCornerCaseInsertion()
     KTextEditor::Range reverseTranslateTest(1, 0, 1, 0);
     doc.transformRange(reverseTranslateTest, KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty, -1, 0);
     QCOMPARE(reverseTranslateTest, KTextEditor::Range(0, 0, 0, 0));
+}
+
+void RangeTest::testCursorStringConversion()
+{
+    using KTextEditor::Cursor;
+
+    KTextEditor::Cursor c;
+    QCOMPARE(c.line(), 0);
+    QCOMPARE(c.column(), 0);
+    QCOMPARE(c.toString(), QStringLiteral("(0, 0)"));
+    c = Cursor::fromString(QStringLiteral("(0, 0)"));
+    QCOMPARE(c.toString(), QStringLiteral("(0, 0)"));
+    c = Cursor::fromString(QStringLiteral("(0,0)"));
+    QCOMPARE(c.toString(), QStringLiteral("(0, 0)"));
+
+    c.setPosition(-1, -1);
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-1, -1)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-1,-1)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+
+    c.setPosition(12, 42);
+    QCOMPARE(c.toString(), QStringLiteral("(12, 42)"));
+    c = Cursor::fromString(QStringLiteral("(12, 42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(12, 42)"));
+    c = Cursor::fromString(QStringLiteral("( 12,42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(12, 42)"));
+
+    c.setPosition(12, 42);
+    QCOMPARE(c.toString(), QStringLiteral("(12, 42)"));
+    c = Cursor::fromString(QStringLiteral("(12, 42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(12, 42)"));
+
+    c.setPosition(-12, 42);
+    QCOMPARE(c.toString(), QStringLiteral("(-12, 42)"));
+    c = Cursor::fromString(QStringLiteral("(-12, 42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-12, 42)"));
+    c = Cursor::fromString(QStringLiteral("(-12, +42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-12, 42)"));
+    c = Cursor::fromString(QStringLiteral("( -12 ,  +42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-12, 42)"));
+    c = Cursor::fromString(QStringLiteral("(-12 , 42 )"));
+    QCOMPARE(c.toString(), QStringLiteral("(-12, 42)"));
+
+    // test invalid input
+    c = Cursor::fromString(QStringLiteral("( - 12 ,  + 42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(, 42)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-, -)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-, -)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-x,y)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+    c = Cursor::fromString(QStringLiteral("(-3,-2y)"));
+    QCOMPARE(c.toString(), QStringLiteral("(-1, -1)"));
+}
+
+void RangeTest::testRangeStringConversion()
+{
+    using KTextEditor::Cursor;
+    using KTextEditor::Range;
+
+    KTextEditor::Range r;
+    QCOMPARE(r.start(), Cursor(0, 0));
+    QCOMPARE(r.end(), Cursor(0, 0));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (0, 0)]"));
+
+    r = Range::fromString(QStringLiteral("[(0, 0), (0, 0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (0, 0)]"));
+    r = Range::fromString(QStringLiteral("[(0,0),(0,0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (0, 0)]"));
+    r = Range::fromString(QStringLiteral("[(-1, -1), (-1, -1)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (-1, -1)]"));
+    r = Range::fromString(QStringLiteral("[(-1, -1), (0, 0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (0, 0)]"));
+    r = Range::fromString(QStringLiteral("[(0, 0), (-1, -1)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (0, 0)]")); // start > end -> swap
+
+    r = Range::fromString(QStringLiteral("[(0, 0), (12, 42)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (12, 42)]"));
+    r = Range::fromString(QStringLiteral("[(12, 42), (0, 0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (12, 42)]")); // start > end -> swap
+    r = Range::fromString(QStringLiteral("[(12,42),(0,0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(0, 0), (12, 42)]")); // start > end -> swap
+    r = Range::fromString(QStringLiteral("[(-12, -42), (0, 0)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-12, -42), (0, 0)]"));
+    r = Range::fromString(QStringLiteral("[(0, 0), (-12, -42)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-12, -42), (0, 0)]")); // start > end -> swap
+
+    // invalid input
+    r = Range::fromString(QStringLiteral("[(0:0)(-12:-42)]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (-1, -1)]"));
+    r = Range::fromString(QStringLiteral("[0,1]"));
+    QCOMPARE(r.toString(), QStringLiteral("[(-1, -1), (-1, -1)]"));
 }

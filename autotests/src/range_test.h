@@ -38,6 +38,8 @@ private Q_SLOTS:
     void testTextRange();
     void testInsertText();
     void testCornerCaseInsertion();
+    void testCursorStringConversion();
+    void testRangeStringConversion();
 
 private:
     void rangeCheck(KTextEditor::Range &valid);

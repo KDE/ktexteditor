@@ -130,6 +130,35 @@ public:
     }
 
     /**
+     * Returns the cursor position as string in the format
+     * "start-line:start-column,endl-line:end-column".
+     * \see fromString()
+     */
+    QString toString() const {
+        return QLatin1Char('[') + m_start.toString()
+             + QStringLiteral(", ") + m_end.toString()
+             + QLatin1Char(']');
+    }
+
+    /**
+     * Returns a Range created from the string \p str containing the format
+     * "[(start-line, start-column), (endl-line:end-column)]".
+     * In case the string cannot be parsed, an Range::invalid() is returned.
+     * \see toString()
+     */
+    static Range fromString(const QString& str) Q_DECL_NOEXCEPT {
+        return fromString(str.leftRef(-1));
+    }
+
+    /**
+     * Returns a Range created from the string \p str containing the format
+     * "[(start-line, start-column), (endl-line:end-column)]".
+     * In case the string cannot be parsed, an Range::invalid() is returned.
+     * \see toString()
+     */
+    static Range fromString(const QStringRef& str) Q_DECL_NOEXCEPT;
+
+    /**
      * \name Position
      *
      * The following functions provide access to, and manipulation of, the range's position.

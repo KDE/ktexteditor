@@ -1,4 +1,5 @@
 /* This file is part of the KDE libraries
+ *  Copyright (C) 2016 Dominik Haumann <dhaumann@kde.org>
  *  Copyright (C) 2007 Mirko Stocker <me@misto.ch>
  *  Copyright (C) 2003-2005 Hamish Rodda <rodda@kde.org>
  *  Copyright (C) 2002 Christian Couder <christian@kdevelop.org>
@@ -25,6 +26,23 @@
 #include "range.h"
 
 using namespace KTextEditor;
+
+Range Range::fromString(const QStringRef& str)
+{
+    const int startIndex = str.indexOf(QLatin1Char('['));
+    const int endIndex = str.indexOf(QLatin1Char(']'));
+    const int closeIndex = str.indexOf(QLatin1Char(')')); // end of first cursor
+
+    if (startIndex < 0 || endIndex < 0 || closeIndex < 0 ||
+        closeIndex < startIndex || endIndex < closeIndex ||
+        endIndex < startIndex)
+    {
+        return invalid();
+    }
+
+    return Range(Cursor::fromString(str.mid(startIndex + 1, closeIndex - startIndex)),
+                 Cursor::fromString(str.mid(closeIndex + 2, endIndex - closeIndex - 2)));
+}
 
 void Range::setRange(const Range &range) Q_DECL_NOEXCEPT
 {
