@@ -91,7 +91,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
         parentWidget = QApplication::activeWindow();
     }
 
-    QScopedPointer<QPrintDialog> printDialog(new QPrintDialog(printer, parentWidget));
+    QPointer<QPrintDialog> printDialog(new QPrintDialog(printer, parentWidget));
     printDialog->setOptionTabs(tabs);
 
     if (m_view && m_view->selection()) {
@@ -102,6 +102,7 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
 
     if (!printDialog->exec()) {
+        delete printDialog;
         return false;
     }
 
@@ -131,6 +132,9 @@ bool KatePrinterPrivate::print(QPrinter *printer)
     m_painter->setFooterFormat(kphf->footerFormat());
 
     m_painter->paint(printer);
+
+    delete printDialog;
+
     return true;
 }
 
