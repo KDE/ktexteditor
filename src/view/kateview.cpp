@@ -3035,7 +3035,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("line-number-color"),
         QStringLiteral("current-line-number-color"),
         QStringLiteral("modification-markers"),
-        QStringLiteral("keyword-completion")
+        QStringLiteral("keyword-completion"),
+        QStringLiteral("word-count")
     };
     return keys;
 }
@@ -3118,6 +3119,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setLineModification(value.toBool());
         } else if (key == QLatin1String("keyword-completion")) {
             config()->setKeywordCompletion(value.toBool());
+        } else if (key == QLatin1String("word-count")) {
+            config()->setShowWordCount(value.toBool());
         }
 
     } else if (value.canConvert(QVariant::UInt)) {

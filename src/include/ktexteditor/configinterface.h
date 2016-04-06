@@ -82,6 +82,7 @@ namespace KTextEditor
  *  - line-number-color [QColor] read/set line number colors (in the icon border)
  *  - current-line-number-color [QColor] read/set current line number color (in the icon border)
  *  - modification-markers [bool] read/set whether the modification markers are shown
+ *  - word-count [bool] enable/disable the counting of words and characters in the statusbar
 
  *
  * KTextEditor::Document has support for the following:
