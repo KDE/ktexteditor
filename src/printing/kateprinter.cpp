@@ -101,7 +101,8 @@ bool KatePrinterPrivate::print(QPrinter *printer)
 
     printDialog->setOption(QAbstractPrintDialog::PrintPageRange, true);
 
-    if (!printDialog->exec()) {
+    const int dlgCode = printDialog->exec();
+    if (dlgCode != QDialog::Accepted || !printDialog) {
         delete printDialog;
         return false;
     }
