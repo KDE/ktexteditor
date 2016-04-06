@@ -3509,8 +3509,10 @@ void KTextEditor::ViewPrivate::createHighlights()
     attr->setBackground(Qt::yellow);
 
     // set correct highlight color from Kate's color schema
-    QColor color = configValue(QStringLiteral("search-highlight-color")).value<QColor>();
-    attr->setBackground(color);
+    QColor fgColor = defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
+    QColor bgColor = renderer()->config()->searchHighlightColor();
+    attr->setForeground(fgColor);
+    attr->setBackground(bgColor);
 
     KTextEditor::Cursor start(visibleRange().start());
     KTextEditor::Range searchRange;

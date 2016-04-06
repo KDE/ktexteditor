@@ -1533,16 +1533,21 @@ bool KateSearchBar::clearHighlights()
 
 void KateSearchBar::updateHighlightColors()
 {
+    const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
     const QColor &searchColor = m_view->renderer()->config()->searchHighlightColor();
     const QColor &replaceColor = m_view->renderer()->config()->replaceHighlightColor();
 
     // init match attribute
+    highlightMatchAttribute->setForeground(foregroundColor);
     highlightMatchAttribute->setBackground(searchColor);
     highlightMatchAttribute->dynamicAttribute(Attribute::ActivateMouseIn)->setBackground(searchColor);
+    highlightMatchAttribute->dynamicAttribute(Attribute::ActivateMouseIn)->setForeground(foregroundColor);
     highlightMatchAttribute->dynamicAttribute(Attribute::ActivateCaretIn)->setBackground(searchColor);
+    highlightMatchAttribute->dynamicAttribute(Attribute::ActivateCaretIn)->setForeground(foregroundColor);
 
     // init replacement attribute
     highlightReplacementAttribute->setBackground(replaceColor);
+    highlightReplacementAttribute->setBackground(foregroundColor);
 }
 
 void KateSearchBar::showEvent(QShowEvent *event)
