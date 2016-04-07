@@ -26,6 +26,7 @@
 #include <vimode/emulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "keys.h"
+#include "emulatedcommandbarsetupandteardown.h"
 #include "fakecodecompletiontestmodel.h"
 #include "vimode/mappings.h"
 #include "vimode/globalstate.h"
@@ -35,64 +36,6 @@ using namespace KTextEditor;
 
 
 QTEST_MAIN(KeysTest)
-
-
-//BEGIN: WindowKeepActive
-
-WindowKeepActive::WindowKeepActive(QMainWindow *mainWindow)
-    : m_mainWindow(mainWindow)
-{
-    /* There's nothing to do here. */
-}
-
-bool WindowKeepActive::eventFilter(QObject *object, QEvent *event)
-{
-    Q_UNUSED(object);
-
-    if (event->type() == QEvent::WindowDeactivate) {
-        // With some combinations of Qt and Xvfb, invoking/ dismissing a popup
-        // will deactiveate the m_mainWindow, preventing it from receiving shortcuts.
-        // If we detect this, set it back to being the active window again.
-        event->ignore();
-        QApplication::setActiveWindow(m_mainWindow);
-        return true;
-    }
-    return false;
-}
-
-//END: WindowKeepActive
-
-//BEGIN: VimStyleCommandBarTestsSetUpAndTearDown
-
-VimStyleCommandBarTestsSetUpAndTearDown::VimStyleCommandBarTestsSetUpAndTearDown(KateViInputMode *inputMode,
-                                                                                 ViewPrivate *view,
-                                                                                 QMainWindow *window)
-    : m_view(view), m_window(window), m_windowKeepActive(window), m_viInputMode(inputMode)
-{
-    m_window->show();
-    m_view->show();
-    QApplication::setActiveWindow(m_window);
-    m_view->setFocus();
-    while (QApplication::hasPendingEvents()) {
-        QApplication::processEvents();
-    }
-    KateViewConfig::global()->setViInputModeStealKeys(true);
-    m_window->installEventFilter(&m_windowKeepActive);
-}
-VimStyleCommandBarTestsSetUpAndTearDown::~VimStyleCommandBarTestsSetUpAndTearDown()
-{
-    m_window->removeEventFilter(&m_windowKeepActive);
-    // Use invokeMethod to avoid having to export KateViewBar for testing.
-    QMetaObject::invokeMethod(m_viInputMode->viModeEmulatedCommandBar(), "hideMe");
-    m_view->hide();
-    m_window->hide();
-    KateViewConfig::global()->setViInputModeStealKeys(false);
-    while (QApplication::hasPendingEvents()) {
-        QApplication::processEvents();
-    }
-}
-
-//END: VimStyleCommandBarTestsSetUpAndTearDown
 
 //BEGIN: KeysTest
 
@@ -428,7 +371,7 @@ void KeysTest::MappingTests()
     }
 
     {
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+        EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Can have mappings in Emulated Command Bar.
         clearAllMappings();
         vi_global->mappings()->add(Mappings::CommandModeMapping, "a", "xyz", Mappings::NonRecursive);
@@ -568,7 +511,7 @@ void KeysTest::MappingTests()
         DoTest("", "\\:iunmap l\\ilm\\esc", "le");
 
         {
-            VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+            EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
             // cmap works in emulated command bar and is recursive.
             // NOTE: need to do the cmap call using the direct execution (i.e. \\:cmap blah blah\\), *not* using
             // the emulated command bar (:cmap blah blah\\enter), as this will be subject to mappings, which
@@ -839,7 +782,7 @@ void KeysTest::MacroTests()
     {
         // Ensure that we can call emulated command bar searches, and that we don't record
         // synthetic keypresses.
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+        EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         clearAllMacros();
         DoTest("foo bar\nblank line", "qa/bar\\enterqgg@arX", "foo Xar\nblank line");
         // More complex searching stuff.
@@ -907,7 +850,7 @@ void KeysTest::MacroTests()
     DoTest("XXXX\nXXXX\nXXXX\nXXXX", "qarOljq3@au", "OXXX\nXXXX\nXXXX\nXXXX");
 
     {
-        VimStyleCommandBarTestsSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+        EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
         // Make sure we can macro-ise an interactive sed replace.
         clearAllMacros();
         DoTest("foo foo foo foo\nfoo foo foo foo", "qa:s/foo/bar/gc\\enteryynyAdone\\escqggj@a", "bar bar foo bardone\nbar bar foo bardone");

@@ -20,12 +20,13 @@
 #ifndef KATEVI_HISTORY_H
 #define KATEVI_HISTORY_H
 
+#include <ktexteditor_export.h>
 #include <QStringList>
 
 namespace KateVi
 {
 
-class History
+class KTEXTEDITOR_EXPORT History
 {
 
 public:
