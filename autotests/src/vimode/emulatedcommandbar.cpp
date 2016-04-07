@@ -50,7 +50,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 {
   // Ensure that some preconditions for these tests are setup, and (more importantly)
   // ensure that they are reverted no matter how these tests end.
-  EmulatedCommandBarSetUpAndTearDown vimStyleCommandBarTestsSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
+  EmulatedCommandBarSetUpAndTearDown emulatedCommandBarSetUpAndTearDown(vi_input_mode, kate_view, mainWindow);
 
 
   // Verify that we can get a non-null pointer to the emulated command bar.
