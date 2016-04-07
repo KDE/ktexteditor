@@ -51,7 +51,7 @@ public:
     Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
 
     /** Extended searcher for ECB **/
-    KTextEditor::Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count);
+    KTextEditor::Range findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
 
     const QString getLastSearchPattern() const;
 

@@ -122,14 +122,16 @@ Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTe
     return findPatternForMotion(pattern, backwards, false, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count)
+KTextEditor::Range Searcher::findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
 {
     m_lastSearchPattern = pattern;
     m_lastSearchBackwards = backwards;
     m_lastSearchCaseSensitive = caseSensitive;
     m_lastSearchPlacedCursorAtEndOfMatch = placedCursorAtEndOfmatch;
 
-    m_viInputModeManager->globalState()->searchHistory()->append(pattern);
+    if (addToSearchHistory) {
+        m_viInputModeManager->globalState()->searchHistory()->append(pattern);
+    }
 
     return findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
 }

@@ -465,6 +465,9 @@ void EmulatedCommandBar::closed()
         m_isSendingSyntheticSearchCompletedKeypress = true;
         QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
         m_isSendingSyntheticSearchCompletedKeypress = false;
+        if (!m_wasAborted) {
+            m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
+        }
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
@@ -1237,7 +1240,7 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.
         int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
-        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c);
+        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
 
         if (match.isValid()) {
             // The returned range ends one past the last character of the match, so adjust.
