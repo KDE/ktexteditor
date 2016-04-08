@@ -67,7 +67,6 @@ public:
     void setViInputModeManager(InputModeManager *viInputModeManager);
 
 private:
-    void closed() Q_DECL_OVERRIDE;
 
     InputModeManager *m_viInputModeManager;
     bool m_isActive;
@@ -83,10 +82,6 @@ private:
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral;
 
-    QTimer *m_commandResponseMessageDisplayHide;
-    QLabel *m_commandResponseMessageDisplay;
-    long m_commandResponseMessageTimeOutMS;
-    void switchToCommandResponseDisplay(const QString &commandResponseMessage);
 
     QLabel *m_interactiveSedReplaceLabel;
     bool m_interactiveSedReplaceActive;
@@ -166,6 +161,11 @@ private:
     QString withoutRangeExpression();
     QString rangeExpression();
 
+    void closed() Q_DECL_OVERRIDE;
+    void closeWithStatusMessage(const QString& exitStatusMessage);
+    QTimer *m_exitStatusMessageDisplayHideTimer;
+    QLabel *m_exitStatusMessageDisplay;
+    long m_exitStatusMessageHideTimeOutMS;
 private:
     KCompletion m_cmdCompletion;
     QHash<QString, KTextEditor::Command *> m_cmdDict;
@@ -174,7 +174,7 @@ private:
 private Q_SLOTS:
     void editTextChanged(const QString &newText);
     void updateMatchHighlightAttrib();
-    void startHideCommandResponseTimer();
+    void startHideExitStatusMessageTimer();
 };
 
 }

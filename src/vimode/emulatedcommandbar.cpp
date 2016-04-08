@@ -307,7 +307,7 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     , m_suspendEditEventFiltering(false)
     , m_waitingForRegister(false)
     , m_insertedTextShouldBeEscapedForSearchingAsLiteral(false)
-    , m_commandResponseMessageTimeOutMS(4000)
+    , m_exitStatusMessageHideTimeOutMS(4000)
     , m_isNextTextChangeDueToCompletionChange(false)
     , m_currentCompletionType(None)
     , m_isSendingSyntheticSearchCompletedKeypress(false)
@@ -323,10 +323,10 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_edit->setObjectName(QStringLiteral("commandtext"));
     layout->addWidget(m_edit);
 
-    m_commandResponseMessageDisplay = new QLabel(this);
-    m_commandResponseMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
-    m_commandResponseMessageDisplay->setAlignment(Qt::AlignLeft);
-    layout->addWidget(m_commandResponseMessageDisplay);
+    m_exitStatusMessageDisplay = new QLabel(this);
+    m_exitStatusMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
+    m_exitStatusMessageDisplay->setAlignment(Qt::AlignLeft);
+    layout->addWidget(m_exitStatusMessageDisplay);
 
     m_waitingForRegisterIndicator = new QLabel(this);
     m_waitingForRegisterIndicator->setObjectName(QStringLiteral("waitingforregisterindicator"));
@@ -362,16 +362,16 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_completer->setCaseSensitivity(Qt::CaseInsensitive);
     m_completer->popup()->installEventFilter(this);
 
-    m_commandResponseMessageDisplayHide = new QTimer(this);
-    m_commandResponseMessageDisplayHide->setSingleShot(true);
-    connect(m_commandResponseMessageDisplayHide, SIGNAL(timeout()),
+    m_exitStatusMessageDisplayHideTimer = new QTimer(this);
+    m_exitStatusMessageDisplayHideTimer->setSingleShot(true);
+    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()),
             this, SIGNAL(hideMe()));
     // Make sure the timer is stopped when the user switches views. If not, focus will be given to the
     // wrong view when KateViewBar::hideCurrentBarWidget() is called as a result of m_commandResponseMessageDisplayHide
     // timing out.
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_commandResponseMessageDisplayHide, SLOT(stop()));
+    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
     // We can restart the timer once the view has focus again, though.
-    connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideCommandResponseTimer()));
+    connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideExitStatusMessageTimer()));
 
     QList<KTextEditor::Command *> cmds;
 
@@ -421,8 +421,8 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
     m_edit->setText(initialText);
     m_edit->show();
 
-    m_commandResponseMessageDisplay->hide();
-    m_commandResponseMessageDisplayHide->stop();
+    m_exitStatusMessageDisplay->hide();
+    m_exitStatusMessageDisplayHideTimer->stop();
 
     // A change in focus will have occurred: make sure we process it now, instead of having it
     // occur later and stop() m_commandResponseMessageDisplayHide.
@@ -440,7 +440,7 @@ bool EmulatedCommandBar::isActive()
 
 void EmulatedCommandBar::setCommandResponseMessageTimeout(long int commandResponseMessageTimeOutMS)
 {
-    m_commandResponseMessageTimeOutMS = commandResponseMessageTimeOutMS;
+    m_exitStatusMessageHideTimeOutMS = commandResponseMessageTimeOutMS;
 }
 
 void EmulatedCommandBar::closed()
@@ -1046,7 +1046,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     if (commandResponseMessage.isEmpty() && !m_interactiveSedReplaceActive) {
                         emit hideMe();
                     } else {
-                        switchToCommandResponseDisplay(commandResponseMessage);
+                        closeWithStatusMessage(commandResponseMessage);
                     }
                 }
                 m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
@@ -1087,7 +1087,7 @@ void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedRepl
         finishInteractiveSedReplace();
         return;
     }
-    m_commandResponseMessageDisplay->hide();
+    m_exitStatusMessageDisplay->hide();
     m_edit->hide();
     m_barTypeIndicator->hide();
     m_interactiveSedReplaceLabel->show();
@@ -1182,16 +1182,16 @@ QString EmulatedCommandBar::executeCommand(const QString &commandToExecute)
     return commandResponseMessage;
 }
 
-void EmulatedCommandBar::switchToCommandResponseDisplay(const QString &commandResponseMessage)
+void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage)
 {
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
     m_edit->hide();
     m_interactiveSedReplaceLabel->hide();
     m_barTypeIndicator->hide();
-    m_commandResponseMessageDisplay->show();
-    m_commandResponseMessageDisplay->setText(commandResponseMessage);
-    m_commandResponseMessageDisplayHide->start(m_commandResponseMessageTimeOutMS);
+    m_exitStatusMessageDisplay->show();
+    m_exitStatusMessageDisplay->setText(exitStatusMessage);
+    m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
 }
 
 void EmulatedCommandBar::updateInteractiveSedReplaceLabelText()
@@ -1201,7 +1201,7 @@ void EmulatedCommandBar::updateInteractiveSedReplaceLabelText()
 
 void EmulatedCommandBar::finishInteractiveSedReplace()
 {
-    switchToCommandResponseDisplay(m_interactiveSedReplacer->finalStatusReportMessage());
+    closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
 
@@ -1296,10 +1296,10 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
     }
 }
 
-void EmulatedCommandBar::startHideCommandResponseTimer()
+void EmulatedCommandBar::startHideExitStatusMessageTimer()
 {
-    if (m_commandResponseMessageDisplay->isVisible() && !m_commandResponseMessageDisplayHide->isActive()) {
-        m_commandResponseMessageDisplayHide->start(m_commandResponseMessageTimeOutMS);
+    if (m_exitStatusMessageDisplay->isVisible() && !m_exitStatusMessageDisplayHideTimer->isActive()) {
+        m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
     }
 }
 
