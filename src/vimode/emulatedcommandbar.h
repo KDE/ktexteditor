@@ -27,6 +27,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
+#include "searcher.h"
 
 namespace KTextEditor {
     class ViewPrivate;
@@ -110,6 +111,8 @@ private:
     void updateMatchHighlight(const KTextEditor::Range &matchRange);
     enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
     void setBarBackground(BarBackgroundStatus status);
+
+    KateVi::Searcher::SearchParams m_currentSearchParams;
 
     bool m_isSendingSyntheticSearchCompletedKeypress;
 

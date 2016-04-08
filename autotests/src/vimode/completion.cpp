@@ -29,8 +29,8 @@
 #include "vimode/mappings.h"
 #include "vimode/globalstate.h"
 
-using namespace KateVi;
 using namespace KTextEditor;
+using KateVi::Mappings;
 
 
 QTEST_MAIN(CompletionTest)

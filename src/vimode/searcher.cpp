@@ -32,9 +32,6 @@ using namespace KateVi;
 Searcher::Searcher(InputModeManager *manager)
     : m_viInputModeManager(manager)
     , m_view(manager->view())
-    , m_lastSearchBackwards(false)
-    , m_lastSearchCaseSensitive(false)
-    , m_lastSearchPlacedCursorAtEndOfMatch(false)
 {
 }
 
@@ -44,7 +41,12 @@ Searcher::~Searcher()
 
 const QString Searcher::getLastSearchPattern() const
 {
-    return m_lastSearchPattern;
+    return m_lastSearchConfig.pattern;
+}
+
+void Searcher::setLastSearchParams(const SearchParams& searchParams)
+{
+    m_lastSearchConfig = searchParams;
 }
 
 void Searcher::findNext()
@@ -66,16 +68,14 @@ void Searcher::findPrevious()
 Range Searcher::motionFindNext(int count)
 {
     Range match = findPatternForMotion(
-        m_lastSearchPattern,
-        m_lastSearchBackwards,
-        m_lastSearchCaseSensitive,
+        m_lastSearchConfig,
         m_view->cursorPosition(),
         count);
 
     if (!match.valid) {
         return match;
     }
-    if (!m_lastSearchPlacedCursorAtEndOfMatch) {
+    if (!m_lastSearchConfig.shouldPlaceCursorAtEndOfMatch) {
         return Range(match.startLine, match.startColumn, ExclusiveMotion);
     }
     return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
@@ -83,73 +83,72 @@ Range Searcher::motionFindNext(int count)
 
 Range Searcher::motionFindPrev(int count)
 {
+    SearchParams lastSearchReversed = m_lastSearchConfig;
+    lastSearchReversed.isBackwards = !lastSearchReversed.isBackwards;
     Range match = findPatternForMotion(
-        m_lastSearchPattern,
-        !m_lastSearchBackwards,
-        m_lastSearchCaseSensitive,
+        lastSearchReversed,
         m_view->cursorPosition(),
         count);
 
     if (!match.valid) {
         return match;
     }
-    if (!m_lastSearchPlacedCursorAtEndOfMatch) {
+    if (!m_lastSearchConfig.shouldPlaceCursorAtEndOfMatch) {
         return Range(match.startLine, match.startColumn, ExclusiveMotion);
     }
     return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
 }
 
-Range Searcher::findPatternForMotion(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
+Range Searcher::findPatternForMotion(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count) const
 {
-    if (pattern.isEmpty()) {
+    if (searchParams.pattern.isEmpty()) {
         return Range::invalid();
     }
 
-    KTextEditor::Range match = findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
+    KTextEditor::Range match = findPatternWorker(searchParams, startFrom, count);
     return Range(match.start(), match.end(), ExclusiveMotion);
 }
 
 Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTextEditor::Cursor &startFrom, int count)
 {
-    m_lastSearchBackwards = backwards;
-    m_lastSearchCaseSensitive = false;
-    m_lastSearchPlacedCursorAtEndOfMatch = false;
+    m_lastSearchConfig.isBackwards = backwards;
+    m_lastSearchConfig.isCaseSensitive = false;
+    m_lastSearchConfig.shouldPlaceCursorAtEndOfMatch = false;
 
     m_viInputModeManager->globalState()->searchHistory()->append(QStringLiteral("\\<%1\\>").arg(word));
     QString pattern = QStringLiteral("\\b%1\\b").arg(word);
-    m_lastSearchPattern = pattern;
+    m_lastSearchConfig.pattern = pattern;
 
-    return findPatternForMotion(pattern, backwards, false, startFrom, count);
+    return findPatternForMotion(m_lastSearchConfig, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPattern(const QString &pattern, bool backwards, bool caseSensitive, bool placedCursorAtEndOfmatch, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
+KTextEditor::Range Searcher::findPattern(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
 {
-    m_lastSearchPattern = pattern;
-    m_lastSearchBackwards = backwards;
-    m_lastSearchCaseSensitive = caseSensitive;
-    m_lastSearchPlacedCursorAtEndOfMatch = placedCursorAtEndOfmatch;
-
     if (addToSearchHistory) {
-        m_viInputModeManager->globalState()->searchHistory()->append(pattern);
+
+        m_viInputModeManager->globalState()->searchHistory()->append(searchParams.pattern);
+        m_lastSearchConfig = searchParams;
     }
 
-    return findPatternWorker(pattern, backwards, caseSensitive, startFrom, count);
+    return findPatternWorker(searchParams, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPatternWorker(const QString &pattern, bool backwards, bool caseSensitive, const KTextEditor::Cursor &startFrom, int count) const
+KTextEditor::Range Searcher::findPatternWorker(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count) const
 {
     KTextEditor::Cursor searchBegin = startFrom;
     KTextEditor::SearchOptions flags = KTextEditor::Regex;
 
-    if (backwards) {
+    const QString& pattern = searchParams.pattern;
+
+    if (searchParams.isBackwards) {
         flags |= KTextEditor::Backwards;
     }
-    if (!caseSensitive) {
+    if (!searchParams.isCaseSensitive) {
         flags |= KTextEditor::CaseInsensitive;
     }
     KTextEditor::Range finalMatch;
     for (int i = 0; i < count; i++) {
-        if (!backwards) {
+        if (!searchParams.isBackwards) {
             const KTextEditor::Range matchRange = m_view->doc()->searchText(KTextEditor::Range(KTextEditor::Cursor(searchBegin.line(), searchBegin.column() + 1), m_view->doc()->documentEnd()), pattern, flags).first();
 
             if (matchRange.isValid()) {

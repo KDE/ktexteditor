@@ -31,8 +31,9 @@
 #include "vimode/mappings.h"
 #include "vimode/globalstate.h"
 
-using namespace KateVi;
 using namespace KTextEditor;
+using KateVi::Mappings;
+using KateVi::KeyParser;
 
 
 QTEST_MAIN(KeysTest)

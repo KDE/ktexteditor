@@ -318,12 +318,12 @@ void BaseTest::clearAllMacros()
     vi_global->macros()->clear();
 }
 
-void BaseTest::textInserted(Document *document, Range range)
+void BaseTest::textInserted(Document *document, KTextEditor::Range range)
 {
     m_docChanges.append(DocChange(DocChange::TextInserted, range, document->text(range)));
 }
 
-void BaseTest::textRemoved(Document *document, Range range)
+void BaseTest::textRemoved(Document *document, KTextEditor::Range range)
 {
     Q_UNUSED(document);
     m_docChanges.append(DocChange(DocChange::TextRemoved, range));

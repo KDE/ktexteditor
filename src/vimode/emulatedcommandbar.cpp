@@ -466,7 +466,11 @@ void EmulatedCommandBar::closed()
         QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
         m_isSendingSyntheticSearchCompletedKeypress = false;
         if (!m_wasAborted) {
+            // Append the raw text of the search to the search history (i.e. without conversion
+            // from Vim-style regex; without case-sensitivity markers stripped; etc.
             m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
+            // Search was actually executed, so store it as the last search.
+            m_viInputModeManager->searcher()->setLastSearchParams(m_currentSearchParams);
         }
     } else {
         if (m_wasAborted) {
@@ -1237,10 +1241,15 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
 
         qtRegexPattern = withCaseSensitivityMarkersStripped(qtRegexPattern);
 
+        m_currentSearchParams.pattern = qtRegexPattern;
+        m_currentSearchParams.isCaseSensitive = caseSensitive;
+        m_currentSearchParams.isBackwards = searchBackwards;
+        m_currentSearchParams.shouldPlaceCursorAtEndOfMatch = placeCursorAtEndOfMatch;
+
         // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
         // the right one to handle the counted search.
         int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
-        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(qtRegexPattern, searchBackwards, caseSensitive, placeCursorAtEndOfMatch, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
+        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
 
         if (match.isValid()) {
             // The returned range ends one past the last character of the match, so adjust.
