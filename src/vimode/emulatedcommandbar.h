@@ -69,18 +69,18 @@ public:
 private:
 
     InputModeManager *m_viInputModeManager;
-    bool m_isActive;
-    Mode m_mode;
+    bool m_isActive = false;
+    Mode m_mode = NoMode;
     KTextEditor::ViewPrivate *m_view;
     QLineEdit *m_edit;
     QLabel *m_barTypeIndicator;
     void showBarTypeIndicator(Mode mode);
     KTextEditor::Cursor m_startingCursorPos;
-    bool m_wasAborted;
-    bool m_suspendEditEventFiltering;
-    bool m_waitingForRegister;
+    bool m_wasAborted = true;
+    bool m_suspendEditEventFiltering = false;
+    bool m_waitingForRegister = false ;
     QLabel *m_waitingForRegisterIndicator;
-    bool m_insertedTextShouldBeEscapedForSearchingAsLiteral;
+    bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
 
 
     QLabel *m_interactiveSedReplaceLabel;
@@ -93,9 +93,9 @@ private:
 
     QCompleter *m_completer;
     QStringListModel *m_completionModel;
-    bool m_isNextTextChangeDueToCompletionChange;
+    bool m_isNextTextChangeDueToCompletionChange = false;
     enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
-    CompletionType m_currentCompletionType;
+    CompletionType m_currentCompletionType = None;
     void updateCompletionPrefix();
     void currentCompletionChanged();
     bool m_completionActive;
@@ -110,7 +110,7 @@ private:
 
     KateVi::Searcher::SearchParams m_currentSearchParams;
 
-    bool m_isSendingSyntheticSearchCompletedKeypress;
+    bool m_isSendingSyntheticSearchCompletedKeypress = false;
 
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
     void deleteSpacesToLeftOfCursor();
@@ -165,7 +165,7 @@ private:
     void closeWithStatusMessage(const QString& exitStatusMessage);
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;
-    long m_exitStatusMessageHideTimeOutMS;
+    long m_exitStatusMessageHideTimeOutMS = 4000;
 private:
     KCompletion m_cmdCompletion;
     QHash<QString, KTextEditor::Command *> m_cmdDict;

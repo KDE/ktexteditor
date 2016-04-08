@@ -300,17 +300,7 @@ QString withSearchConfigRemoved(const QString &originalSearchText, const bool is
 EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWidget *parent)
     : KateViewBarWidget(false, parent)
     , m_viInputModeManager(viInputModeManager)
-    , m_isActive(false)
-    , m_mode(NoMode)
     , m_view(viInputModeManager->view())
-    , m_wasAborted(true)
-    , m_suspendEditEventFiltering(false)
-    , m_waitingForRegister(false)
-    , m_insertedTextShouldBeEscapedForSearchingAsLiteral(false)
-    , m_exitStatusMessageHideTimeOutMS(4000)
-    , m_isNextTextChangeDueToCompletionChange(false)
-    , m_currentCompletionType(None)
-    , m_isSendingSyntheticSearchCompletedKeypress(false)
 {
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setMargin(0);
