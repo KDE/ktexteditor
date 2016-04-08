@@ -1033,7 +1033,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
 
                 const QString commandResponseMessage = executeCommand(commandToExecute);
                 if (!m_interactiveSedReplaceActive) {
-                    if (commandResponseMessage.isEmpty() && !m_interactiveSedReplaceActive) {
+                    if (commandResponseMessage.isEmpty()) {
                         emit hideMe();
                     } else {
                         closeWithStatusMessage(commandResponseMessage);
