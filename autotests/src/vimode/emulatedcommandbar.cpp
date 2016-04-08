@@ -3054,11 +3054,12 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
   {
     // Test the test suite: ensure that shortcuts are still being sent and received correctly.
+    // The test shortcut chosen should be one that does not conflict with built-in Kate ones.
     FailsIfSlotNotCalled failsIfActionNotTriggered;
     QAction *dummyAction = kate_view->actionCollection()->addAction("Woo");
-    dummyAction->setShortcut(QKeySequence("Ctrl+e"));
+    dummyAction->setShortcut(QKeySequence("Ctrl+]"));
     QVERIFY(connect(dummyAction, SIGNAL(triggered()), &failsIfActionNotTriggered, SLOT(slot())));
-    DoTest("foo", "\\ctrl-e", "foo");
+    DoTest("foo", "\\ctrl-]", "foo");
     // Processing shortcuts seems to require events to be processed.
     while (QApplication::hasPendingEvents())
     {
