@@ -58,7 +58,6 @@ public:
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
-    void closed() Q_DECL_OVERRIDE;
     bool handleKeyPress(const QKeyEvent *keyEvent);
     bool isSendingSyntheticSearchCompletedKeypress();
 
@@ -68,6 +67,8 @@ public:
     void setViInputModeManager(InputModeManager *viInputModeManager);
 
 private:
+    void closed() Q_DECL_OVERRIDE;
+
     InputModeManager *m_viInputModeManager;
     bool m_isActive;
     Mode m_mode;
