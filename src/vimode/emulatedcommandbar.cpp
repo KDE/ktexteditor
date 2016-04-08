@@ -1069,14 +1069,9 @@ bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 
 void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
+    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
     m_interactiveSedReplaceActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
-    if (!interactiveSedReplace->currentMatch().isValid()) {
-        // Bit of a hack, but we leave m_incrementalSearchAndReplaceActive true, here, else
-        // the bar would be immediately hidden and the "0 replacements made" message not shown.
-        finishInteractiveSedReplace();
-        return;
-    }
     m_exitStatusMessageDisplay->hide();
     m_edit->hide();
     m_barTypeIndicator->hide();

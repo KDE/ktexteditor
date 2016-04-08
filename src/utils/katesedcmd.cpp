@@ -129,7 +129,15 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
     QSharedPointer<InteractiveSedReplacer> interactiveSedReplacer(new InteractiveSedReplacer(doc, find, replace, !noCase, !repeat, startLine, endLine));
 
     if (interactive) {
-        return interactiveSedReplace(kateView, interactiveSedReplacer);
+        const bool hasInitialMatch = interactiveSedReplacer->currentMatch().isValid();
+        if (!hasInitialMatch)
+        {
+            // Can't start an interactive sed replace if there is no initial match!
+            msg = interactiveSedReplacer->finalStatusReportMessage();
+            return false;
+        }
+        interactiveSedReplace(kateView, interactiveSedReplacer);
+        return true;
     }
 
     interactiveSedReplacer->replaceAllRemaining();
