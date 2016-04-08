@@ -452,7 +452,7 @@ void EmulatedCommandBar::closed()
         }
     }
     m_startingCursorPos = KTextEditor::Cursor::invalid();
-    updateMatchHighlight(KTextEditor::Range());
+    updateMatchHighlight(KTextEditor::Range::invalid());
     m_completer->popup()->hide();
     m_isActive = false;
 
@@ -466,12 +466,13 @@ void EmulatedCommandBar::closed()
         QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
         m_isSendingSyntheticSearchCompletedKeypress = false;
         if (!m_wasAborted) {
-            // Append the raw text of the search to the search history (i.e. without conversion
-            // from Vim-style regex; without case-sensitivity markers stripped; etc.
-            m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
             // Search was actually executed, so store it as the last search.
             m_viInputModeManager->searcher()->setLastSearchParams(m_currentSearchParams);
         }
+        // Append the raw text of the search to the search history (i.e. without conversion
+        // from Vim-style regex; without case-sensitivity markers stripped; etc.
+        // Vim does this even if the search was aborted, so we follow suit.
+        m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
