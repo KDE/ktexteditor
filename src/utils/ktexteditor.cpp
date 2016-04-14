@@ -45,7 +45,7 @@
 
 using namespace KTextEditor;
 
-Cursor Cursor::fromString(const QStringRef& str)
+Cursor Cursor::fromString(const QStringRef& str) Q_DECL_NOEXCEPT
 {
     // parse format "(line, column)"
     const int startIndex = str.indexOf(QLatin1Char('('));
