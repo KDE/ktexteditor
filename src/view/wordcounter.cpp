@@ -126,12 +126,6 @@ void WordCounter::selectionChanged(KTextEditor::View *view)
 
 void WordCounter::recalculateLines()
 {
-    if (m_document->lines() == 0) {
-        m_countByLine.clear();
-        m_wordsInDocument = m_charsInSelection = 0;
-        return;
-    }
-
     if (m_startRecalculationFrom >= m_countByLine.size()) {
         m_startRecalculationFrom = 0;
     }
