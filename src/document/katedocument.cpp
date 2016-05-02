@@ -100,7 +100,7 @@ static inline QChar matchingStartBracket(QChar c, bool withQuotes)
         case ']': return QLatin1Char('[');
         case ')': return QLatin1Char('(');
         case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
-        case '\"': return withQuotes ? QLatin1Char('\"') : QChar();
+        case '"': return withQuotes ? QLatin1Char('"') : QChar();
     }
     return QChar();
 }
@@ -112,7 +112,7 @@ static inline QChar matchingEndBracket(QChar c, bool withQuotes)
         case '[': return QLatin1Char(']');
         case '(': return QLatin1Char(')');
         case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
-        case '\"': return withQuotes ? QLatin1Char('\"') : QChar();
+        case '"': return withQuotes ? QLatin1Char('"') : QChar();
     }
     return QChar();
 }
