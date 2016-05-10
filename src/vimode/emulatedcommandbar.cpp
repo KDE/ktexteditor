@@ -1339,8 +1339,7 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceL
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()
 {
-    m_isActive = false;
-    m_emulatedCommandBar->m_interactiveSedReplaceLabel->hide();
+    deactivate();
     m_emulatedCommandBar->closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
