@@ -96,6 +96,10 @@ private:
     protected:
         // Helper methods.
         void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
+        void moveCursorTo(const KTextEditor::Cursor &cursorPos);
+        void updateMatchHighlight(const KTextEditor::Range &matchRange);
+        void closeWithStatusMessage(const QString& exitStatusMessage);
+    private:
         EmulatedCommandBar *m_emulatedCommandBar;
     };
     friend ActiveMode;
@@ -122,7 +126,7 @@ private:
         bool m_isActive;
         QLabel *m_interactiveSedReplaceLabel;
     };
-    friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
+    //friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);

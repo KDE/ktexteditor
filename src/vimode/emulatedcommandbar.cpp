@@ -1284,6 +1284,21 @@ void EmulatedCommandBar::ActiveMode::hideAllWidgetsExcept(QWidget* widgetToKeepV
     m_emulatedCommandBar->hideAllWidgetsExcept(widgetToKeepVisible);
 }
 
+void EmulatedCommandBar::ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
+{
+    m_emulatedCommandBar->moveCursorTo(cursorPos);
+}
+
+void EmulatedCommandBar::ActiveMode::updateMatchHighlight(const KTextEditor::Range& matchRange)
+{
+    m_emulatedCommandBar->updateMatchHighlight(matchRange);
+}
+
+void EmulatedCommandBar::ActiveMode::closeWithStatusMessage(const QString& exitStatusMessage)
+{
+    m_emulatedCommandBar->closeWithStatusMessage(exitStatusMessage);
+}
+
 EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
     : ActiveMode(emulatedCommandBar), m_isActive(false)
 {
@@ -1298,9 +1313,9 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedR
     m_interactiveSedReplacer = interactiveSedReplace;
     m_interactiveSedReplaceLabel->show();
     hideAllWidgetsExcept(m_interactiveSedReplaceLabel);
-    m_emulatedCommandBar->updateMatchHighlight(interactiveSedReplace->currentMatch());
+    updateMatchHighlight(interactiveSedReplace->currentMatch());
     updateInteractiveSedReplaceLabelText();
-    m_emulatedCommandBar->moveCursorTo(interactiveSedReplace->currentMatch().start());
+    moveCursorTo(interactiveSedReplace->currentMatch().start());
 }
 
 bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
@@ -1316,12 +1331,12 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
         } else {
             m_interactiveSedReplacer->skipCurrentMatch();
         }
-        m_emulatedCommandBar->updateMatchHighlight(m_interactiveSedReplacer->currentMatch());
+        updateMatchHighlight(m_interactiveSedReplacer->currentMatch());
         updateInteractiveSedReplaceLabelText();
-        m_emulatedCommandBar->moveCursorTo(m_interactiveSedReplacer->currentMatch().start());
+        moveCursorTo(m_interactiveSedReplacer->currentMatch().start());
 
         if (!m_interactiveSedReplacer->currentMatch().isValid()) {
-            m_emulatedCommandBar->moveCursorTo(cursorPosIfFinalMatch);
+            moveCursorTo(cursorPosIfFinalMatch);
             finishInteractiveSedReplace();
         }
         return true;
@@ -1359,6 +1374,6 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceL
 void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()
 {
     deactivate();
-    m_emulatedCommandBar->closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
+    closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
