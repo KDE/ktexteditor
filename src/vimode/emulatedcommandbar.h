@@ -92,8 +92,11 @@ private:
         virtual ~ActiveMode() = 0;
         virtual bool handleKeyPress(const QKeyEvent *keyEvent) = 0;
     protected:
+        // Helper methods.
+        void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
         EmulatedCommandBar *m_emulatedCommandBar;
     };
+    friend ActiveMode;
 
     class InteractiveSedReplaceMode : public ActiveMode
     {

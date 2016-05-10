@@ -1269,6 +1269,16 @@ EmulatedCommandBar::ActiveMode::~ActiveMode()
 
 }
 
+void EmulatedCommandBar::ActiveMode::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
+{
+    QList<QWidget*> widgets = m_emulatedCommandBar->centralWidget()->findChildren<QWidget*>();
+    foreach(QWidget* widget, widgets)
+    {
+        if (widget != widgetToKeepVisible)
+            widget->hide();
+    }
+}
+
 EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
     : ActiveMode(emulatedCommandBar), m_isActive(false)
 {
@@ -1281,10 +1291,8 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedR
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
     m_isActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
-    m_emulatedCommandBar->m_exitStatusMessageDisplay->hide();
-    m_emulatedCommandBar->m_edit->hide();
-    m_emulatedCommandBar->m_barTypeIndicator->hide();
     m_interactiveSedReplaceLabel->show();
+    hideAllWidgetsExcept(m_interactiveSedReplaceLabel);
     m_emulatedCommandBar->updateMatchHighlight(interactiveSedReplace->currentMatch());
     updateInteractiveSedReplaceLabelText();
     m_emulatedCommandBar->moveCursorTo(interactiveSedReplace->currentMatch().start());
