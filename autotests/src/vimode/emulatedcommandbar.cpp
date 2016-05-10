@@ -1515,7 +1515,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   // Be a bit vague about the exact message, due to i18n, etc.
   QVERIFY(commandResponseMessageDisplay()->text().contains("commandthatdoesnotexist"));
   waitForEmulatedCommandBarToHide(4 * commandResponseMessageTimeOutMS);
-  QVERIFY(timeJustBeforeCommandExecuted.msecsTo(QDateTime::currentDateTime()) >= commandResponseMessageTimeOutMS);
+  QVERIFY(timeJustBeforeCommandExecuted.msecsTo(QDateTime::currentDateTime()) >= commandResponseMessageTimeOutMS - 500); // "- 500" because coarse timers can fire up to 500ms *prematurely*.
   QVERIFY(!emulatedCommandBar->isVisible());
   // Piggy-back on this test, as the bug we're about to test for would actually make setting
   // up the conditions again in a separate test impossible ;)
