@@ -405,9 +405,6 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
 
     m_startingCursorPos = m_view->cursorPosition();
 
-    m_interactiveSedReplaceActive = false;
-    m_interactiveSedReplaceLabel->hide();
-
     m_edit->setFocus();
     m_edit->setText(initialText);
     m_edit->show();
@@ -446,6 +443,7 @@ void EmulatedCommandBar::closed()
     updateMatchHighlight(KTextEditor::Range::invalid());
     m_completer->popup()->hide();
     m_isActive = false;
+    m_interactiveSedReplaceMode->deactivate();
 
     if (m_mode == SearchForward || m_mode == SearchBackward) {
         // Send a synthetic keypress through the system that signals whether the search was aborted or
@@ -867,7 +865,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         }
         return true;
     }
-    if (m_interactiveSedReplaceActive) {
+    if (m_interactiveSedReplaceMode->isActive()) {
         return m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
     }
     if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
@@ -1002,7 +1000,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                 }
 
                 const QString commandResponseMessage = executeCommand(commandToExecute);
-                if (!m_interactiveSedReplaceActive) {
+                if (!m_interactiveSedReplaceMode->isActive()) {
                     if (commandResponseMessage.isEmpty()) {
                         emit hideMe();
                     } else {
@@ -1024,7 +1022,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
         // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
         QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
-        if (!m_interactiveSedReplaceActive) {
+        if (!m_interactiveSedReplaceMode->isActive()) {
             qApp->notify(m_edit, &keyEventCopy);
         }
         m_suspendEditEventFiltering = false;
@@ -1153,7 +1151,7 @@ void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 
 void EmulatedCommandBar::editTextChanged(const QString &newText)
 {
-    Q_ASSERT(!m_interactiveSedReplaceActive);
+    Q_ASSERT(!m_interactiveSedReplaceMode->isActive());
     if (!m_isNextTextChangeDueToCompletionChange) {
         m_textToRevertToIfCompletionAborted = newText;
         m_cursorPosToRevertToIfCompletionAborted = m_edit->cursorPosition();
@@ -1278,7 +1276,7 @@ EmulatedCommandBar::ActiveMode::~ActiveMode()
 void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
-    m_emulatedCommandBar->m_interactiveSedReplaceActive = true;
+    m_isActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
     m_emulatedCommandBar->m_exitStatusMessageDisplay->hide();
     m_emulatedCommandBar->m_edit->hide();
@@ -1291,6 +1289,7 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedR
 
 bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
 {
+    qDebug() << "InteractiveSedReplaceMode::handleKeypress";
     // TODO - it would be better to use e.g. keyEvent->key() == Qt::Key_Y instead of keyEvent->text() == "y",
     // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
     // with mappings and macros.
@@ -1325,6 +1324,14 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
     return false;
 }
 
+void EmulatedCommandBar::InteractiveSedReplaceMode::deactivate()
+{
+    m_isActive = false;
+    m_emulatedCommandBar->m_interactiveSedReplaceLabel->hide();
+}
+
+
+
 void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceLabelText()
 {
     m_emulatedCommandBar->m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
@@ -1332,6 +1339,8 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceL
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()
 {
+    m_isActive = false;
+    m_emulatedCommandBar->m_interactiveSedReplaceLabel->hide();
     m_emulatedCommandBar->closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }

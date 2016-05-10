@@ -99,18 +99,24 @@ private:
     {
     public:
         InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
-            : ActiveMode(emulatedCommandBar)
+            : ActiveMode(emulatedCommandBar), m_isActive(false)
         {
         }
         virtual ~InteractiveSedReplaceMode()
         {
         };
-         void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+        void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+        bool isActive() const
+        {
+            return m_isActive;
+        }
         virtual bool handleKeyPress(const QKeyEvent* keyEvent);
+        void deactivate();
     private:
         void updateInteractiveSedReplaceLabelText();
         void finishInteractiveSedReplace();
         QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+        bool m_isActive;
     };
     friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
