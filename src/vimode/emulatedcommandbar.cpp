@@ -324,11 +324,8 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
     layout->addWidget(m_waitingForRegisterIndicator);
 
-    m_interactiveSedReplaceLabel = new QLabel(this);
-    m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
-    m_interactiveSedReplaceActive = false;
-    layout->addWidget(m_interactiveSedReplaceLabel);
     m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this));
+    layout->addWidget(m_interactiveSedReplaceMode->label());
 
     updateMatchHighlightAttrib();
     m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
@@ -1132,7 +1129,7 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
     m_edit->hide();
-    m_interactiveSedReplaceLabel->hide();
+    m_interactiveSedReplaceMode->deactivate();
     m_barTypeIndicator->hide();
     m_exitStatusMessageDisplay->show();
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
@@ -1272,6 +1269,12 @@ EmulatedCommandBar::ActiveMode::~ActiveMode()
 
 }
 
+EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
+    : ActiveMode(emulatedCommandBar), m_isActive(false)
+{
+    m_interactiveSedReplaceLabel = new QLabel();
+    m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
+}
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
@@ -1281,7 +1284,7 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedR
     m_emulatedCommandBar->m_exitStatusMessageDisplay->hide();
     m_emulatedCommandBar->m_edit->hide();
     m_emulatedCommandBar->m_barTypeIndicator->hide();
-    m_emulatedCommandBar->m_interactiveSedReplaceLabel->show();
+    m_interactiveSedReplaceLabel->show();
     m_emulatedCommandBar->updateMatchHighlight(interactiveSedReplace->currentMatch());
     updateInteractiveSedReplaceLabelText();
     m_emulatedCommandBar->moveCursorTo(interactiveSedReplace->currentMatch().start());
@@ -1327,14 +1330,17 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
 void EmulatedCommandBar::InteractiveSedReplaceMode::deactivate()
 {
     m_isActive = false;
-    m_emulatedCommandBar->m_interactiveSedReplaceLabel->hide();
+    m_interactiveSedReplaceLabel->hide();
 }
 
-
+QWidget* EmulatedCommandBar::InteractiveSedReplaceMode::label()
+{
+    return m_interactiveSedReplaceLabel;
+}
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceLabelText()
 {
-    m_emulatedCommandBar->m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
+    m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
 }
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()

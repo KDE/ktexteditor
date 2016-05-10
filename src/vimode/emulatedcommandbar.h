@@ -98,10 +98,7 @@ private:
     class InteractiveSedReplaceMode : public ActiveMode
     {
     public:
-        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
-            : ActiveMode(emulatedCommandBar), m_isActive(false)
-        {
-        }
+        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar);
         virtual ~InteractiveSedReplaceMode()
         {
         };
@@ -112,18 +109,16 @@ private:
         }
         virtual bool handleKeyPress(const QKeyEvent* keyEvent);
         void deactivate();
+        QWidget *label();
     private:
         void updateInteractiveSedReplaceLabelText();
         void finishInteractiveSedReplace();
         QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
         bool m_isActive;
+        QLabel *m_interactiveSedReplaceLabel;
     };
     friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
-
-
-    QLabel *m_interactiveSedReplaceLabel; // TODO - try to move this into InteractiveSedReplaceMode.
-    bool m_interactiveSedReplaceActive; // TODO - try to move this into InteractiveSedReplaceMode.
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
