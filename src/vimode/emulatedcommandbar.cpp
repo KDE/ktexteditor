@@ -1309,12 +1309,15 @@ EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(Emulate
 void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
+
     m_isActive = true;
     m_interactiveSedReplacer = interactiveSedReplace;
-    m_interactiveSedReplaceLabel->show();
+
     hideAllWidgetsExcept(m_interactiveSedReplaceLabel);
-    updateMatchHighlight(interactiveSedReplace->currentMatch());
+    m_interactiveSedReplaceLabel->show();
     updateInteractiveSedReplaceLabelText();
+
+    updateMatchHighlight(interactiveSedReplace->currentMatch());
     moveCursorTo(interactiveSedReplace->currentMatch().start());
 }
 
