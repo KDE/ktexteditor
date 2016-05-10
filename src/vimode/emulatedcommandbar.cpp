@@ -1128,11 +1128,10 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
 {
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
-    m_edit->hide();
     m_interactiveSedReplaceMode->deactivate();
-    m_barTypeIndicator->hide();
     m_exitStatusMessageDisplay->show();
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
+    hideAllWidgetsExcept(m_exitStatusMessageDisplay);
     m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
 }
 
@@ -1264,6 +1263,17 @@ void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeMana
     m_viInputModeManager = viInputModeManager;
 }
 
+void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
+{
+    QList<QWidget*> widgets = centralWidget()->findChildren<QWidget*>();
+    foreach(QWidget* widget, widgets)
+    {
+        if (widget != widgetToKeepVisible)
+            widget->hide();
+    }
+
+}
+
 EmulatedCommandBar::ActiveMode::~ActiveMode()
 {
 
@@ -1271,12 +1281,7 @@ EmulatedCommandBar::ActiveMode::~ActiveMode()
 
 void EmulatedCommandBar::ActiveMode::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
 {
-    QList<QWidget*> widgets = m_emulatedCommandBar->centralWidget()->findChildren<QWidget*>();
-    foreach(QWidget* widget, widgets)
-    {
-        if (widget != widgetToKeepVisible)
-            widget->hide();
-    }
+    m_emulatedCommandBar->hideAllWidgetsExcept(widgetToKeepVisible);
 }
 
 EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)

@@ -82,6 +82,8 @@ private:
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
 
+    void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
+
     class ActiveMode
     {
     public:
