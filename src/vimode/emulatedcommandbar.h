@@ -82,12 +82,42 @@ private:
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
 
+    class ActiveMode
+    {
+    public:
+        ActiveMode(EmulatedCommandBar* emulatedCommandBar)
+            : m_emulatedCommandBar(emulatedCommandBar)
+        {
+        }
+        virtual ~ActiveMode() = 0;
+        virtual bool handleKeyPress(const QKeyEvent *keyEvent) = 0;
+    protected:
+        EmulatedCommandBar *m_emulatedCommandBar;
+    };
 
-    QLabel *m_interactiveSedReplaceLabel;
-    bool m_interactiveSedReplaceActive;
-    void updateInteractiveSedReplaceLabelText();
-    QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
-    void finishInteractiveSedReplace();
+    class InteractiveSedReplaceMode : public ActiveMode
+    {
+    public:
+        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
+            : ActiveMode(emulatedCommandBar)
+        {
+        }
+        virtual ~InteractiveSedReplaceMode()
+        {
+        };
+         void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
+        virtual bool handleKeyPress(const QKeyEvent* keyEvent);
+    private:
+        void updateInteractiveSedReplaceLabelText();
+        void finishInteractiveSedReplace();
+        QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
+    };
+    friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
+    QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
+
+
+    QLabel *m_interactiveSedReplaceLabel; // TODO - try to move this into InteractiveSedReplaceMode.
+    bool m_interactiveSedReplaceActive; // TODO - try to move this into InteractiveSedReplaceMode.
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 

@@ -328,6 +328,7 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
     m_interactiveSedReplaceActive = false;
     layout->addWidget(m_interactiveSedReplaceLabel);
+    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this));
 
     updateMatchHighlightAttrib();
     m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
@@ -867,38 +868,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return true;
     }
     if (m_interactiveSedReplaceActive) {
-        // TODO - it would be better to use e.g. keyEvent->key() == Qt::Key_Y instead of keyEvent->text() == "y",
-        // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
-        // with mappings and macros.
-        if (keyEvent->text() == QLatin1String("y") || keyEvent->text() == QLatin1String("n")) {
-            const KTextEditor::Cursor cursorPosIfFinalMatch = m_interactiveSedReplacer->currentMatch().start();
-            if (keyEvent->text() == QLatin1String("y")) {
-                m_interactiveSedReplacer->replaceCurrentMatch();
-            } else {
-                m_interactiveSedReplacer->skipCurrentMatch();
-            }
-            updateMatchHighlight(m_interactiveSedReplacer->currentMatch());
-            updateInteractiveSedReplaceLabelText();
-            moveCursorTo(m_interactiveSedReplacer->currentMatch().start());
-
-            if (!m_interactiveSedReplacer->currentMatch().isValid()) {
-                moveCursorTo(cursorPosIfFinalMatch);
-                finishInteractiveSedReplace();
-            }
-            return true;
-        } else if (keyEvent->text() == QLatin1String("l")) {
-            m_interactiveSedReplacer->replaceCurrentMatch();
-            finishInteractiveSedReplace();
-            return true;
-        } else if (keyEvent->text() == QLatin1String("q")) {
-            finishInteractiveSedReplace();
-            return true;
-        } else if (keyEvent->text() == QLatin1String("a")) {
-            m_interactiveSedReplacer->replaceAllRemaining();
-            finishInteractiveSedReplace();
-            return true;
-        }
-        return false;
+        return m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
     }
     if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
         activateWordFromDocumentCompletion();
@@ -1070,15 +1040,7 @@ bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
-    m_interactiveSedReplaceActive = true;
-    m_interactiveSedReplacer = interactiveSedReplace;
-    m_exitStatusMessageDisplay->hide();
-    m_edit->hide();
-    m_barTypeIndicator->hide();
-    m_interactiveSedReplaceLabel->show();
-    updateMatchHighlight(interactiveSedReplace->currentMatch());
-    updateInteractiveSedReplaceLabelText();
-    moveCursorTo(interactiveSedReplace->currentMatch().start());
+    m_interactiveSedReplaceMode->activate(interactiveSedReplace);
 }
 
 void EmulatedCommandBar::showBarTypeIndicator(EmulatedCommandBar::Mode mode)
@@ -1177,17 +1139,6 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
     m_exitStatusMessageDisplay->show();
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
     m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
-}
-
-void EmulatedCommandBar::updateInteractiveSedReplaceLabelText()
-{
-    m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
-}
-
-void EmulatedCommandBar::finishInteractiveSedReplace()
-{
-    closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
-    m_interactiveSedReplacer.clear();
 }
 
 void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
@@ -1316,4 +1267,71 @@ KTextEditor::Command *EmulatedCommandBar::queryCommand(const QString &cmd) const
 void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeManager)
 {
     m_viInputModeManager = viInputModeManager;
+}
+
+EmulatedCommandBar::ActiveMode::~ActiveMode()
+{
+
+}
+
+
+void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
+{
+    Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
+    m_emulatedCommandBar->m_interactiveSedReplaceActive = true;
+    m_interactiveSedReplacer = interactiveSedReplace;
+    m_emulatedCommandBar->m_exitStatusMessageDisplay->hide();
+    m_emulatedCommandBar->m_edit->hide();
+    m_emulatedCommandBar->m_barTypeIndicator->hide();
+    m_emulatedCommandBar->m_interactiveSedReplaceLabel->show();
+    m_emulatedCommandBar->updateMatchHighlight(interactiveSedReplace->currentMatch());
+    updateInteractiveSedReplaceLabelText();
+    m_emulatedCommandBar->moveCursorTo(interactiveSedReplace->currentMatch().start());
+}
+
+bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
+{
+    // TODO - it would be better to use e.g. keyEvent->key() == Qt::Key_Y instead of keyEvent->text() == "y",
+    // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
+    // with mappings and macros.
+    if (keyEvent->text() == QLatin1String("y") || keyEvent->text() == QLatin1String("n")) {
+        const KTextEditor::Cursor cursorPosIfFinalMatch = m_interactiveSedReplacer->currentMatch().start();
+        if (keyEvent->text() == QLatin1String("y")) {
+            m_interactiveSedReplacer->replaceCurrentMatch();
+        } else {
+            m_interactiveSedReplacer->skipCurrentMatch();
+        }
+        m_emulatedCommandBar->updateMatchHighlight(m_interactiveSedReplacer->currentMatch());
+        updateInteractiveSedReplaceLabelText();
+        m_emulatedCommandBar->moveCursorTo(m_interactiveSedReplacer->currentMatch().start());
+
+        if (!m_interactiveSedReplacer->currentMatch().isValid()) {
+            m_emulatedCommandBar->moveCursorTo(cursorPosIfFinalMatch);
+            finishInteractiveSedReplace();
+        }
+        return true;
+    } else if (keyEvent->text() == QLatin1String("l")) {
+        m_interactiveSedReplacer->replaceCurrentMatch();
+        finishInteractiveSedReplace();
+        return true;
+    } else if (keyEvent->text() == QLatin1String("q")) {
+        finishInteractiveSedReplace();
+        return true;
+    } else if (keyEvent->text() == QLatin1String("a")) {
+        m_interactiveSedReplacer->replaceAllRemaining();
+        finishInteractiveSedReplace();
+        return true;
+    }
+    return false;
+}
+
+void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceLabelText()
+{
+    m_emulatedCommandBar->m_interactiveSedReplaceLabel->setText(m_interactiveSedReplacer->currentMatchReplacementConfirmationMessage() + QLatin1String(" (y/n/a/q/l)"));
+}
+
+void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()
+{
+    m_emulatedCommandBar->closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
+    m_interactiveSedReplacer.clear();
 }
