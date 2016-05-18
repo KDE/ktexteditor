@@ -561,13 +561,20 @@ bool EmulatedCommandBar::deleteNonWordCharsToLeftOfCursor()
 
 QString EmulatedCommandBar::wordBeforeCursor()
 {
+    const int wordBeforeCursorBegin = this->wordBeforeCursorBegin();
+    return m_edit->text().mid(wordBeforeCursorBegin, m_edit->cursorPosition() - wordBeforeCursorBegin);
+}
+
+int EmulatedCommandBar::wordBeforeCursorBegin()
+{
     int wordBeforeCursorBegin = m_edit->cursorPosition() - 1;
     while (wordBeforeCursorBegin >= 0 && (m_edit->text()[wordBeforeCursorBegin].isLetterOrNumber() || m_edit->text()[wordBeforeCursorBegin] == QLatin1Char('_'))) {
         wordBeforeCursorBegin--;
     }
     wordBeforeCursorBegin++;
-    return m_edit->text().mid(wordBeforeCursorBegin, m_edit->cursorPosition() - wordBeforeCursorBegin);
+    return wordBeforeCursorBegin;
 }
+
 
 QString EmulatedCommandBar::commandBeforeCursor()
 {
@@ -610,7 +617,7 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSearchHist
     return completionStartParams;
 }
 
-void EmulatedCommandBar::activateWordFromDocumentCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateWordFromDocumentCompletion()
 {
     m_currentCompletionType = WordFromDocument;
     QRegExp wordRegEx(QLatin1String("\\w{1,}"));
@@ -629,9 +636,11 @@ void EmulatedCommandBar::activateWordFromDocumentCompletion()
     }
     foundWords = QSet<QString>::fromList(foundWords).toList();
     qSort(foundWords.begin(), foundWords.end(), caseInsensitiveLessThan);
-    m_completionModel->setStringList(foundWords);
-    updateCompletionPrefix();
-    m_completer->complete();
+    CompletionStartParams completionStartParams;
+    completionStartParams.shouldStart = true;
+    completionStartParams.completions = foundWords;
+    completionStartParams.wordStartPos = wordBeforeCursorBegin();
+    return completionStartParams;
 }
 
 void EmulatedCommandBar::activateCommandCompletion()
@@ -708,10 +717,13 @@ void EmulatedCommandBar::abortCompletionAndResetToPreCompletion()
 void EmulatedCommandBar::updateCompletionPrefix()
 {
     // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
-    if (m_currentCompletionType == WordFromDocument) {
-        m_completer->setCompletionPrefix(wordBeforeCursor());
-    } else if (m_currentCompletionType == Commands) {
+    if (m_currentCompletionType == Commands) {
         m_completer->setCompletionPrefix(commandBeforeCursor());
+    }
+    else
+    {
+        const QString completionPrefix = m_edit->text().mid(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
+        m_completer->setCompletionPrefix(completionPrefix);
     }
     // Seem to need a call to complete() else the size of the popup box is not altered appropriately.
     m_completer->complete();
@@ -725,9 +737,7 @@ void EmulatedCommandBar::currentCompletionChanged()
         return;
     }
     m_isNextTextChangeDueToCompletionChange = true;
-    if (m_currentCompletionType == WordFromDocument) {
-        replaceWordBeforeCursorWith(newCompletion);
-    } else if (m_currentCompletionType == Commands) {
+    if (m_currentCompletionType == Commands) {
         const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
         replaceCommandBeforeCursorWith(newCompletion);
         m_edit->setCursorPosition(newCursorPosition);
@@ -879,7 +889,8 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
     }
     if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
-        activateWordFromDocumentCompletion();
+        CompletionStartParams completionStartParams = activateWordFromDocumentCompletion();
+        startCompletion(completionStartParams);
         return true;
     }
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {

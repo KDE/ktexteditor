@@ -167,12 +167,13 @@ private:
     void deleteWordCharsToLeftOfCursor();
     bool deleteNonWordCharsToLeftOfCursor();
     QString wordBeforeCursor();
+    int wordBeforeCursorBegin();
     QString commandBeforeCursor();
     void replaceWordBeforeCursorWith(const QString &newWord);
     void replaceCommandBeforeCursorWith(const QString &newCommand);
 
     CompletionStartParams activateSearchHistoryCompletion();
-    void activateWordFromDocumentCompletion();
+    CompletionStartParams activateWordFromDocumentCompletion();
     void activateCommandCompletion();
     CompletionStartParams activateCommandHistoryCompletion();
     CompletionStartParams activateSedFindHistoryCompletion();
