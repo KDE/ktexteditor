@@ -145,8 +145,8 @@ private:
     int m_cursorPosToRevertToIfCompletionAborted;
     struct CompletionStartParams
     {
-        bool shouldStart;
-        int wordStartPos;
+        bool shouldStart = false;
+        int wordStartPos = -1;
         QStringList completions;
         std::function<QString(const QString&)> completionTransform;
     };

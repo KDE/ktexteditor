@@ -651,7 +651,6 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateCommandHis
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHistoryCompletion()
 {
     CompletionStartParams completionStartParams;
-    completionStartParams.shouldStart = false;
     if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
         completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
         completionStartParams.shouldStart = true;
@@ -666,7 +665,6 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHis
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
     CompletionStartParams completionStartParams;
-    completionStartParams.shouldStart = false;
     if (!m_viInputModeManager->globalState()->replaceHistory()->isEmpty()) {
         completionStartParams.completions = reversed(m_viInputModeManager->globalState()->replaceHistory()->items());
         completionStartParams.shouldStart = true;
@@ -881,7 +879,6 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
         if (!m_completer->popup()->isVisible()) {
             CompletionStartParams completionStartParams;
-            completionStartParams.shouldStart = false;
             if (m_mode == Command) {
                 if (isCursorInFindTermOfSed()) {
                     completionStartParams = activateSedFindHistoryCompletion();
@@ -917,7 +914,6 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
         if (!m_completer->popup()->isVisible()) {
             CompletionStartParams completionStartParams;
-            completionStartParams.shouldStart = false;
             if (m_mode == Command) {
                 completionStartParams = activateCommandHistoryCompletion();
             } else {
