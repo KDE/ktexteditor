@@ -174,7 +174,7 @@ private:
     void activateSearchHistoryCompletion();
     void activateWordFromDocumentCompletion();
     void activateCommandCompletion();
-    void activateCommandHistoryCompletion();
+    CompletionStartParams activateCommandHistoryCompletion();
     CompletionStartParams activateSedFindHistoryCompletion();
     CompletionStartParams activateSedReplaceHistoryCompletion();
     void deactivateCompletion();

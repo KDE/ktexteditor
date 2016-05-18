@@ -638,12 +638,14 @@ void EmulatedCommandBar::activateCommandCompletion()
     m_currentCompletionType = Commands;
 }
 
-void EmulatedCommandBar::activateCommandHistoryCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateCommandHistoryCompletion()
 {
+    CompletionStartParams completionStartParams;
+    completionStartParams.completions = reversed(m_viInputModeManager->globalState()->commandHistory()->items());
     m_currentCompletionType = CommandHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->commandHistory()->items()));
-    updateCompletionPrefix();
-    m_completer->complete();
+    completionStartParams.shouldStart = true;
+    completionStartParams.wordStartPos = 0;
+    return completionStartParams;
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHistoryCompletion()
@@ -720,8 +722,6 @@ void EmulatedCommandBar::currentCompletionChanged()
     if (m_currentCompletionType == WordFromDocument) {
         replaceWordBeforeCursorWith(newCompletion);
     } else if (m_currentCompletionType == SearchHistory) {
-        m_edit->setText(newCompletion);
-    } else if (m_currentCompletionType == CommandHistory) {
         m_edit->setText(newCompletion);
     } else if (m_currentCompletionType == Commands) {
         const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
@@ -888,7 +888,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                 } else if (isCursorInReplaceTermOfSed()) {
                     completionStartParams = activateSedReplaceHistoryCompletion();
                 } else {
-                    activateCommandHistoryCompletion();
+                    completionStartParams = activateCommandHistoryCompletion();
                 }
             } else {
                 activateSearchHistoryCompletion();
@@ -916,10 +916,20 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     }
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
         if (!m_completer->popup()->isVisible()) {
+            CompletionStartParams completionStartParams;
+            completionStartParams.shouldStart = false;
             if (m_mode == Command) {
-                activateCommandHistoryCompletion();
+                completionStartParams = activateCommandHistoryCompletion();
             } else {
                 activateSearchHistoryCompletion();
+            }
+            m_currentCompletionStartParams = completionStartParams;
+            if (completionStartParams.shouldStart)
+            {
+                m_completionModel->setStringList(completionStartParams.completions);
+                const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
+                m_completer->setCompletionPrefix(completionPrefix);
+                m_completer->complete();
             }
             setCompletionIndex(m_completer->completionCount() - 1);
         } else {
