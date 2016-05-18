@@ -1235,17 +1235,15 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
 
     // Command completion doesn't need to be manually invoked.
     if (m_mode == Command && m_currentCompletionType == None && !withoutRangeExpression().isEmpty() && !m_isNextTextChangeDueToCompletionChange) {
-        CompletionStartParams completionStartParams = activateCommandCompletion();
-        startCompletion(completionStartParams);
+        // ... However, command completion mode should not be automatically invoked if this is not the current leading
+        // word in the text edit (it gets annoying if completion pops up after ":s/se" etc).
+        const bool commandBeforeCursorIsLeading = (m_edit->cursorPosition() - commandBeforeCursor().length() == rangeExpression().length());
+        if (commandBeforeCursorIsLeading) {
+            CompletionStartParams completionStartParams = activateCommandCompletion();
+            startCompletion(completionStartParams);
+        }
     }
 
-    // Command completion mode should be automatically invoked if we are in Command mode, but
-    // only if this is the leading word in the text edit (it gets annoying if completion pops up
-    // after ":s/se" etc).
-    const bool commandBeforeCursorIsLeading = (m_edit->cursorPosition() - commandBeforeCursor().length() == rangeExpression().length());
-    if (m_mode == Command && !commandBeforeCursorIsLeading && m_currentCompletionType == Commands && !m_isNextTextChangeDueToCompletionChange) {
-        deactivateCompletion();
-    }
 
     // If we edit the text after having selected a completion, this means we implicitly accept it,
     // and so we should dismiss it.
