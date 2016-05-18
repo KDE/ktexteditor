@@ -2211,6 +2211,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   verifyCommandBarCompletionVisible();
   TestPressKey("\\ctrl-c"); // Dismiss completer
   TestPressKey("\\ctrl-c"); // Dismiss bar.
+  QVERIFY(!emulatedCommandBar->isVisible());
   TestPressKey(":'<,'>s/xyz/replace/g\\ctrl-b\\right\\right\\right\\right\\right\\right\\right\\right\\right\\ctrl-p");
   verifyCommandBarCompletionVisible();
   TestPressKey("\\ctrl-c"); // Dismiss completer

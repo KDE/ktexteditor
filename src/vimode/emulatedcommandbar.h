@@ -169,12 +169,13 @@ private:
     QString wordBeforeCursor();
     int wordBeforeCursorBegin();
     QString commandBeforeCursor();
+    int commandBeforeCursorBegin();
     void replaceWordBeforeCursorWith(const QString &newWord);
     void replaceCommandBeforeCursorWith(const QString &newCommand);
 
     CompletionStartParams activateSearchHistoryCompletion();
     CompletionStartParams activateWordFromDocumentCompletion();
-    void activateCommandCompletion();
+    CompletionStartParams activateCommandCompletion();
     CompletionStartParams activateCommandHistoryCompletion();
     CompletionStartParams activateSedFindHistoryCompletion();
     CompletionStartParams activateSedReplaceHistoryCompletion();

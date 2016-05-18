@@ -589,6 +589,19 @@ QString EmulatedCommandBar::commandBeforeCursor()
 
 }
 
+int EmulatedCommandBar::commandBeforeCursorBegin()
+{
+    const QString textWithoutRangeExpression = withoutRangeExpression();
+    const int cursorPositionWithoutRangeExpression = m_edit->cursorPosition() - rangeExpression().length();
+    int commandBeforeCursorBegin = cursorPositionWithoutRangeExpression - 1;
+    while (commandBeforeCursorBegin >= 0 && (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber() || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_') || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
+        commandBeforeCursorBegin--;
+    }
+    commandBeforeCursorBegin++;
+    commandBeforeCursorBegin += rangeExpression().length();
+    return commandBeforeCursorBegin;
+}
+
 void EmulatedCommandBar::replaceWordBeforeCursorWith(const QString &newWord)
 {
     const int wordBeforeCursorStart = m_edit->cursorPosition() - wordBeforeCursor().length();
@@ -643,10 +656,14 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateWordFromDo
     return completionStartParams;
 }
 
-void EmulatedCommandBar::activateCommandCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateCommandCompletion()
 {
-    m_completionModel->setStringList(m_cmdCompletion.items());
     m_currentCompletionType = Commands;
+    CompletionStartParams completionStartParams;
+    completionStartParams.completions = m_cmdCompletion.items();
+    completionStartParams.shouldStart = true;
+    completionStartParams.wordStartPos = commandBeforeCursorBegin();
+    return completionStartParams;
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateCommandHistoryCompletion()
@@ -716,41 +733,27 @@ void EmulatedCommandBar::abortCompletionAndResetToPreCompletion()
 
 void EmulatedCommandBar::updateCompletionPrefix()
 {
-    // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
-    if (m_currentCompletionType == Commands) {
-        m_completer->setCompletionPrefix(commandBeforeCursor());
-    }
-    else
-    {
-        const QString completionPrefix = m_edit->text().mid(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
-        m_completer->setCompletionPrefix(completionPrefix);
-    }
+    const QString completionPrefix = m_edit->text().mid(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
+    m_completer->setCompletionPrefix(completionPrefix);
     // Seem to need a call to complete() else the size of the popup box is not altered appropriately.
     m_completer->complete();
 }
 
 void EmulatedCommandBar::currentCompletionChanged()
 {
-    // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
     const QString newCompletion = m_completer->currentCompletion();
     if (newCompletion.isEmpty()) {
         return;
     }
-    m_isNextTextChangeDueToCompletionChange = true;
-    if (m_currentCompletionType == Commands) {
-        const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
-        replaceCommandBeforeCursorWith(newCompletion);
-        m_edit->setCursorPosition(newCursorPosition);
-    } else {
-        QString transformedCompletion = newCompletion;
-        if (m_currentCompletionStartParams.completionTransform)
-        {
-            transformedCompletion = m_currentCompletionStartParams.completionTransform(newCompletion);
-        }
-        m_edit->setSelection(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
-
-        m_edit->insert(transformedCompletion);
+    QString transformedCompletion = newCompletion;
+    if (m_currentCompletionStartParams.completionTransform)
+    {
+        transformedCompletion = m_currentCompletionStartParams.completionTransform(newCompletion);
     }
+
+    m_isNextTextChangeDueToCompletionChange = true;
+    m_edit->setSelection(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
+    m_edit->insert(transformedCompletion);
     m_isNextTextChangeDueToCompletionChange = false;
 }
 
@@ -1231,8 +1234,9 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
     }
 
     // Command completion doesn't need to be manually invoked.
-    if (m_mode == Command && m_currentCompletionType == None && !withoutRangeExpression().isEmpty()) {
-        activateCommandCompletion();
+    if (m_mode == Command && m_currentCompletionType == None && !withoutRangeExpression().isEmpty() && !m_isNextTextChangeDueToCompletionChange) {
+        CompletionStartParams completionStartParams = activateCommandCompletion();
+        startCompletion(completionStartParams);
     }
 
     // Command completion mode should be automatically invoked if we are in Command mode, but
