@@ -698,14 +698,8 @@ void EmulatedCommandBar::updateCompletionPrefix()
     // TODO - switch on type is not very OO - consider making a polymorphic "completion" class.
     if (m_currentCompletionType == WordFromDocument) {
         m_completer->setCompletionPrefix(wordBeforeCursor());
-    } else if (m_currentCompletionType == SearchHistory) {
-        m_completer->setCompletionPrefix(m_edit->text());
-    } else if (m_currentCompletionType == CommandHistory) {
-        m_completer->setCompletionPrefix(m_edit->text());
     } else if (m_currentCompletionType == Commands) {
         m_completer->setCompletionPrefix(commandBeforeCursor());
-    } else {
-        Q_ASSERT(false && "Unhandled completion type");
     }
     // Seem to need a call to complete() else the size of the popup box is not altered appropriately.
     m_completer->complete();
