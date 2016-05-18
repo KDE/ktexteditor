@@ -141,6 +141,12 @@ private:
     bool m_completionActive;
     QString m_textToRevertToIfCompletionAborted;
     int m_cursorPosToRevertToIfCompletionAborted;
+    struct CompletionStartParams
+    {
+        bool shouldStart;
+        int wordStartPos;
+        QStringList completions;
+    };
 
     KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
     KTextEditor::MovingRange *m_highlightedMatch;

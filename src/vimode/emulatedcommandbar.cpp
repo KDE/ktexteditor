@@ -871,9 +871,18 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     }
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
         if (!m_completer->popup()->isVisible()) {
+            CompletionStartParams completionStartParams;
+            completionStartParams.shouldStart = false;
             if (m_mode == Command) {
                 if (isCursorInFindTermOfSed()) {
-                    activateSedFindHistoryCompletion();
+                    //activateSedFindHistoryCompletion();
+                    if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
+                        completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
+                        completionStartParams.shouldStart = true;
+                        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
+                        completionStartParams.wordStartPos = parsedSedExpression.findBeginPos;
+                        m_currentCompletionType = SedFindHistory;
+                    }
                 } else if (isCursorInReplaceTermOfSed()) {
                     activateSedReplaceHistoryCompletion();
                 } else {
@@ -881,6 +890,13 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                 }
             } else {
                 activateSearchHistoryCompletion();
+            }
+            if (completionStartParams.shouldStart)
+            {
+                m_completionModel->setStringList(completionStartParams.completions);
+                const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
+                m_completer->setCompletionPrefix(completionPrefix);
+                m_completer->complete();
             }
             if (m_currentCompletionType != None) {
                 setCompletionIndex(0);
