@@ -600,12 +600,14 @@ void EmulatedCommandBar::replaceCommandBeforeCursorWith(const QString &newComman
     m_edit->setText(newText);
 }
 
-void EmulatedCommandBar::activateSearchHistoryCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSearchHistoryCompletion()
 {
     m_currentCompletionType = SearchHistory;
-    m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->searchHistory()->items()));
-    updateCompletionPrefix();
-    m_completer->complete();
+    CompletionStartParams completionStartParams;
+    completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
+    completionStartParams.shouldStart = true;
+    completionStartParams.wordStartPos = 0;
+    return completionStartParams;
 }
 
 void EmulatedCommandBar::activateWordFromDocumentCompletion()
@@ -719,8 +721,6 @@ void EmulatedCommandBar::currentCompletionChanged()
     m_isNextTextChangeDueToCompletionChange = true;
     if (m_currentCompletionType == WordFromDocument) {
         replaceWordBeforeCursorWith(newCompletion);
-    } else if (m_currentCompletionType == SearchHistory) {
-        m_edit->setText(newCompletion);
     } else if (m_currentCompletionType == Commands) {
         const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
         replaceCommandBeforeCursorWith(newCompletion);
@@ -888,7 +888,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                     completionStartParams = activateCommandHistoryCompletion();
                 }
             } else {
-                activateSearchHistoryCompletion();
+                completionStartParams = activateSearchHistoryCompletion();
             }
             m_currentCompletionStartParams = completionStartParams;
             if (completionStartParams.shouldStart)
@@ -917,7 +917,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             if (m_mode == Command) {
                 completionStartParams = activateCommandHistoryCompletion();
             } else {
-                activateSearchHistoryCompletion();
+                completionStartParams = activateSearchHistoryCompletion();
             }
             m_currentCompletionStartParams = completionStartParams;
             if (completionStartParams.shouldStart)

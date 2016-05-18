@@ -171,7 +171,7 @@ private:
     void replaceWordBeforeCursorWith(const QString &newWord);
     void replaceCommandBeforeCursorWith(const QString &newCommand);
 
-    void activateSearchHistoryCompletion();
+    CompletionStartParams activateSearchHistoryCompletion();
     void activateWordFromDocumentCompletion();
     void activateCommandCompletion();
     CompletionStartParams activateCommandHistoryCompletion();
