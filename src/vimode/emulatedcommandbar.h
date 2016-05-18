@@ -29,6 +29,8 @@
 #include <ktexteditor/movingrange.h>
 #include "searcher.h"
 
+#include <functional>
+
 namespace KTextEditor {
     class ViewPrivate;
     class Command;
@@ -146,7 +148,9 @@ private:
         bool shouldStart;
         int wordStartPos;
         QStringList completions;
+        std::function<QString(const QString&)> completionTransform;
     };
+    CompletionStartParams m_currentCompletionStartParams;
 
     KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
     KTextEditor::MovingRange *m_highlightedMatch;

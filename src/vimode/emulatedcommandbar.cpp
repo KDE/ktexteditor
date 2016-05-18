@@ -653,6 +653,7 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHis
     if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
         completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
         completionStartParams.shouldStart = true;
+        completionStartParams.completionTransform = [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); };
         ParsedSedExpression parsedSedExpression = parseAsSedExpression();
         completionStartParams.wordStartPos = parsedSedExpression.findBeginPos;
         m_currentCompletionType = SedFindHistory;
@@ -721,16 +722,19 @@ void EmulatedCommandBar::currentCompletionChanged()
         const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
         replaceCommandBeforeCursorWith(newCompletion);
         m_edit->setCursorPosition(newCursorPosition);
-    } else if (m_currentCompletionType == SedFindHistory) {
-        m_edit->setText(withSedFindTermReplacedWith(withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(newCompletion))));
-        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-        m_edit->setCursorPosition(parsedSedExpression.findEndPos + 1);
     } else if (m_currentCompletionType == SedReplaceHistory) {
         m_edit->setText(withSedReplaceTermReplacedWith(withSedDelimiterEscaped(newCompletion)));
         ParsedSedExpression parsedSedExpression = parseAsSedExpression();
         m_edit->setCursorPosition(parsedSedExpression.replaceEndPos + 1);
     } else {
-        Q_ASSERT(false && "Something went wrong, here - completion with unrecognised completion type");
+        QString transformedCompletion = newCompletion;
+        if (m_currentCompletionStartParams.completionTransform)
+        {
+            transformedCompletion = m_currentCompletionStartParams.completionTransform(newCompletion);
+        }
+        m_edit->setSelection(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
+
+        m_edit->insert(transformedCompletion);
     }
     m_isNextTextChangeDueToCompletionChange = false;
 }
@@ -888,6 +892,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             } else {
                 activateSearchHistoryCompletion();
             }
+            m_currentCompletionStartParams = completionStartParams;
             if (completionStartParams.shouldStart)
             {
                 m_completionModel->setStringList(completionStartParams.completions);
