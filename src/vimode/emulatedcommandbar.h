@@ -176,7 +176,7 @@ private:
     void activateCommandCompletion();
     void activateCommandHistoryCompletion();
     CompletionStartParams activateSedFindHistoryCompletion();
-    void activateSedReplaceHistoryCompletion();
+    CompletionStartParams activateSedReplaceHistoryCompletion();
     void deactivateCompletion();
     void abortCompletionAndResetToPreCompletion();
     void setCompletionIndex(int index);

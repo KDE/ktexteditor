@@ -661,14 +661,19 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHis
     return completionStartParams;
 }
 
-void EmulatedCommandBar::activateSedReplaceHistoryCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedReplaceHistoryCompletion()
 {
+    CompletionStartParams completionStartParams;
+    completionStartParams.shouldStart = false;
     if (!m_viInputModeManager->globalState()->replaceHistory()->isEmpty()) {
+        completionStartParams.completions = reversed(m_viInputModeManager->globalState()->replaceHistory()->items());
+        completionStartParams.shouldStart = true;
+        completionStartParams.completionTransform = [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); };
+        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
+        completionStartParams.wordStartPos = parsedSedExpression.replaceBeginPos;
         m_currentCompletionType = SedReplaceHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->replaceHistory()->items()));
-        m_completer->setCompletionPrefix(sedReplaceTerm());
-        m_completer->complete();
     }
+    return completionStartParams;
 }
 
 void EmulatedCommandBar::deactivateCompletion()
@@ -722,10 +727,6 @@ void EmulatedCommandBar::currentCompletionChanged()
         const int newCursorPosition = m_edit->cursorPosition() + (newCompletion.length() - commandBeforeCursor().length());
         replaceCommandBeforeCursorWith(newCompletion);
         m_edit->setCursorPosition(newCursorPosition);
-    } else if (m_currentCompletionType == SedReplaceHistory) {
-        m_edit->setText(withSedReplaceTermReplacedWith(withSedDelimiterEscaped(newCompletion)));
-        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-        m_edit->setCursorPosition(parsedSedExpression.replaceEndPos + 1);
     } else {
         QString transformedCompletion = newCompletion;
         if (m_currentCompletionStartParams.completionTransform)
@@ -885,7 +886,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
                 if (isCursorInFindTermOfSed()) {
                     completionStartParams = activateSedFindHistoryCompletion();
                 } else if (isCursorInReplaceTermOfSed()) {
-                    activateSedReplaceHistoryCompletion();
+                    completionStartParams = activateSedReplaceHistoryCompletion();
                 } else {
                     activateCommandHistoryCompletion();
                 }
