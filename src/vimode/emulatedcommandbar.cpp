@@ -646,14 +646,18 @@ void EmulatedCommandBar::activateCommandHistoryCompletion()
     m_completer->complete();
 }
 
-void EmulatedCommandBar::activateSedFindHistoryCompletion()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedFindHistoryCompletion()
 {
+    CompletionStartParams completionStartParams;
+    completionStartParams.shouldStart = false;
     if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
+        completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
+        completionStartParams.shouldStart = true;
+        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
+        completionStartParams.wordStartPos = parsedSedExpression.findBeginPos;
         m_currentCompletionType = SedFindHistory;
-        m_completionModel->setStringList(reversed(m_viInputModeManager->globalState()->searchHistory()->items()));
-        m_completer->setCompletionPrefix(sedFindTerm());
-        m_completer->complete();
     }
+    return completionStartParams;
 }
 
 void EmulatedCommandBar::activateSedReplaceHistoryCompletion()
@@ -875,14 +879,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             completionStartParams.shouldStart = false;
             if (m_mode == Command) {
                 if (isCursorInFindTermOfSed()) {
-                    //activateSedFindHistoryCompletion();
-                    if (!m_viInputModeManager->globalState()->searchHistory()->isEmpty()) {
-                        completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
-                        completionStartParams.shouldStart = true;
-                        ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-                        completionStartParams.wordStartPos = parsedSedExpression.findBeginPos;
-                        m_currentCompletionType = SedFindHistory;
-                    }
+                    completionStartParams = activateSedFindHistoryCompletion();
                 } else if (isCursorInReplaceTermOfSed()) {
                     activateSedReplaceHistoryCompletion();
                 } else {
