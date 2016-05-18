@@ -678,6 +678,18 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSedReplace
     return completionStartParams;
 }
 
+void EmulatedCommandBar::startCompletion ( const EmulatedCommandBar::CompletionStartParams& completionStartParams )
+{
+    if (completionStartParams.shouldStart)
+    {
+        m_completionModel->setStringList(completionStartParams.completions);
+        const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
+        m_completer->setCompletionPrefix(completionPrefix);
+        m_completer->complete();
+        m_currentCompletionStartParams = completionStartParams;
+    }
+}
+
 void EmulatedCommandBar::deactivateCompletion()
 {
     m_completer->popup()->hide();
@@ -884,14 +896,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             } else {
                 completionStartParams = activateSearchHistoryCompletion();
             }
-            m_currentCompletionStartParams = completionStartParams;
-            if (completionStartParams.shouldStart)
-            {
-                m_completionModel->setStringList(completionStartParams.completions);
-                const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
-                m_completer->setCompletionPrefix(completionPrefix);
-                m_completer->complete();
-            }
+            startCompletion(completionStartParams);
             if (m_currentCompletionType != None) {
                 setCompletionIndex(0);
             }
@@ -913,14 +918,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
             } else {
                 completionStartParams = activateSearchHistoryCompletion();
             }
-            m_currentCompletionStartParams = completionStartParams;
-            if (completionStartParams.shouldStart)
-            {
-                m_completionModel->setStringList(completionStartParams.completions);
-                const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
-                m_completer->setCompletionPrefix(completionPrefix);
-                m_completer->complete();
-            }
+            startCompletion(completionStartParams);
             setCompletionIndex(m_completer->completionCount() - 1);
         } else {
             // Ascend to previous row, wrapping around if necessary.
