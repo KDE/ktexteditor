@@ -335,6 +335,8 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_view, m_edit));
     m_searchMode->setViInputModeManager(viInputModeManager);
 
+    m_commandMode.reset(new CommandMode(this, m_matchHighligher.data()));
+
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
 
@@ -1430,6 +1432,18 @@ void EmulatedCommandBar::SearchMode::setBarBackground ( EmulatedCommandBar::Sear
     }
     }
     m_edit->setPalette(barBackground);
+}
+
+EmulatedCommandBar::CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, EmulatedCommandBar::MatchHighlighter* matchHighlighter )
+    : ActiveMode ( emulatedCommandBar, matchHighlighter )
+{
+
+}
+
+bool EmulatedCommandBar::CommandMode::handleKeyPress ( const QKeyEvent* keyEvent )
+{
+    Q_UNUSED(keyEvent);
+    return false;
 }
 
 EmulatedCommandBar::MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )

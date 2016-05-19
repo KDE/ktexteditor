@@ -173,8 +173,19 @@ private:
         void setBarBackground(BarBackgroundStatus status);
         bool m_isSendingSyntheticSearchCompletedKeypress = false;
     };
+
+    class CommandMode : public ActiveMode
+    {
+    public:
+        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
+        virtual ~CommandMode()
+        {
+        }
+        virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
+    };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
+    QScopedPointer<CommandMode> m_commandMode;
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
