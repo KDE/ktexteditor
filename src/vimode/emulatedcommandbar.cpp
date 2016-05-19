@@ -710,16 +710,6 @@ void EmulatedCommandBar::setCompletionIndex(int index)
     currentCompletionChanged();
 }
 
-QString EmulatedCommandBar::withSedReplaceTermReplacedWith(const QString &newReplaceTerm)
-{
-    const QString command = m_edit->text();
-    CommandMode::ParsedSedExpression parsedSedExpression = m_commandMode->parseAsSedExpression();
-    Q_ASSERT(parsedSedExpression.parsedSuccessfully);
-    return command.mid(0, parsedSedExpression.replaceBeginPos) +
-           newReplaceTerm +
-           command.mid(parsedSedExpression.replaceEndPos + 1);
-}
-
 QString EmulatedCommandBar::withSedDelimiterEscaped(const QString &text)
 {
     CommandMode::ParsedSedExpression parsedSedExpression = m_commandMode->parseAsSedExpression();
@@ -1452,7 +1442,6 @@ QString EmulatedCommandBar::CommandMode::withSedFindTermReplacedWith ( const QSt
            newFindTerm +
            command.mid(parsedSedExpression.findEndPos + 1);
 }
-
 
 EmulatedCommandBar::MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
     : m_view(view)

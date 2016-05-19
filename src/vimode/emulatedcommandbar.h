@@ -257,7 +257,6 @@ private:
     void abortCompletionAndResetToPreCompletion();
     void setCompletionIndex(int index);
 
-    QString withSedReplaceTermReplacedWith(const QString &newReplaceTerm);
     QString withSedDelimiterEscaped(const QString &text);
 
     bool isCursorInFindTermOfSed();
