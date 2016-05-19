@@ -99,6 +99,14 @@ private:
     };
     QScopedPointer<MatchHighlighter> m_matchHighligher;
 
+    enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
+    struct CompletionStartParams
+    {
+        bool shouldStart = false;
+        int wordStartPos = -1;
+        QStringList completions;
+        std::function<QString(const QString&)> completionTransform;
+    };
     class ActiveMode
     {
     public:
@@ -115,8 +123,13 @@ private:
         void moveCursorTo(const KTextEditor::Cursor &cursorPos);
         void updateMatchHighlight(const KTextEditor::Range &matchRange);
         void closeWithStatusMessage(const QString& exitStatusMessage);
-    private:
+        void setCompletionMode(CompletionType completionType)
+        {
+            m_emulatedCommandBar->m_currentCompletionType = completionType;
+        }; // TODO - ultimately remove this - eventually, the upcoming Completion class will store the mode, and it will be one of None, WordUnderCursor, and ModeSpecific.
+        void startCompletion(const CompletionStartParams& completionStartParams);
         EmulatedCommandBar *m_emulatedCommandBar;
+    private:
         MatchHighlighter *m_matchHighligher;
     };
     friend ActiveMode;
@@ -177,12 +190,16 @@ private:
     class CommandMode : public ActiveMode
     {
     public:
-        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, QLineEdit* edit);
+        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode);
         virtual ~CommandMode()
         {
         }
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
+        void editTextChanged(const QString &newText, bool isNextTextChangeDueToCompletionChange);
+        QString executeCommand(const QString &commandToExecute);
+        CompletionStartParams completionInvoked();
+        void completionChosen();
         /**
         * Stuff to do with expressions of the form:
         *
@@ -200,15 +217,30 @@ private:
         * The "range expression" is the (optional) expression before the command that describes
         * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
         */
-        QString withoutRangeExpression(); //  TODO - make private
-        QString rangeExpression(); //  TODO - make private
         CommandMode::ParsedSedExpression parseAsSedExpression(); // TODO - make private
-        QString sedFindTerm(); // TODO - make private
-        QString sedReplaceTerm(); // TODO - make private
-        QString withSedFindTermReplacedWith(const QString &newFindTerm);
+        QString commandBeforeCursor();
+        int commandBeforeCursorBegin();
+        void replaceCommandBeforeCursorWith(const QString &newCommand);
+        CompletionStartParams activateCommandCompletion();
+        CompletionStartParams activateCommandHistoryCompletion();
+        CompletionStartParams activateSedFindHistoryCompletion();
+        CompletionStartParams activateSedReplaceHistoryCompletion();
+        KCompletion m_cmdCompletion;
+        QHash<QString, KTextEditor::Command *> m_cmdDict;
+        KTextEditor::Command *queryCommand(const QString &cmd) const;
     private:
+        QString withoutRangeExpression();
+        QString rangeExpression();
+        QString withSedFindTermReplacedWith(const QString &newFindTerm);
+        QString withSedDelimiterEscaped(const QString &text);
+        bool isCursorInFindTermOfSed();
+        bool isCursorInReplaceTermOfSed();
+        QString sedFindTerm();
+        QString sedReplaceTerm();
         QLineEdit *m_edit;
         InputModeManager *m_viInputModeManager = nullptr;
+        KTextEditor::ViewPrivate *m_view;
+        InteractiveSedReplaceMode *m_interactiveSedReplaceMode;
     };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
@@ -219,20 +251,12 @@ private:
     QCompleter *m_completer;
     QStringListModel *m_completionModel;
     bool m_isNextTextChangeDueToCompletionChange = false;
-    enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
     CompletionType m_currentCompletionType = None;
     void updateCompletionPrefix();
     void currentCompletionChanged();
     bool m_completionActive;
     QString m_textToRevertToIfCompletionAborted;
     int m_cursorPosToRevertToIfCompletionAborted;
-    struct CompletionStartParams
-    {
-        bool shouldStart = false;
-        int wordStartPos = -1;
-        QStringList completions;
-        std::function<QString(const QString&)> completionTransform;
-    };
     CompletionStartParams m_currentCompletionStartParams;
 
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
@@ -241,26 +265,14 @@ private:
     bool deleteNonWordCharsToLeftOfCursor();
     QString wordBeforeCursor();
     int wordBeforeCursorBegin();
-    QString commandBeforeCursor();
-    int commandBeforeCursorBegin();
     void replaceWordBeforeCursorWith(const QString &newWord);
-    void replaceCommandBeforeCursorWith(const QString &newCommand);
 
     CompletionStartParams activateSearchHistoryCompletion();
     CompletionStartParams activateWordFromDocumentCompletion();
-    CompletionStartParams activateCommandCompletion();
-    CompletionStartParams activateCommandHistoryCompletion();
-    CompletionStartParams activateSedFindHistoryCompletion();
-    CompletionStartParams activateSedReplaceHistoryCompletion();
     void startCompletion(const CompletionStartParams& completionStartParams);
     void deactivateCompletion();
     void abortCompletionAndResetToPreCompletion();
     void setCompletionIndex(int index);
-
-    QString withSedDelimiterEscaped(const QString &text);
-
-    bool isCursorInFindTermOfSed();
-    bool isCursorInReplaceTermOfSed();
 
     void closed() Q_DECL_OVERRIDE;
     void closeWithStatusMessage(const QString& exitStatusMessage);
@@ -268,9 +280,6 @@ private:
     QLabel *m_exitStatusMessageDisplay;
     long m_exitStatusMessageHideTimeOutMS = 4000;
 private:
-    KCompletion m_cmdCompletion;
-    QHash<QString, KTextEditor::Command *> m_cmdDict;
-    KTextEditor::Command *queryCommand(const QString &cmd) const;
 
 private Q_SLOTS:
     void editTextChanged(const QString &newText);
