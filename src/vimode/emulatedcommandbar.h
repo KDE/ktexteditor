@@ -260,6 +260,9 @@ private:
     int m_cursorPosToRevertToIfCompletionAborted;
     CompletionStartParams m_currentCompletionStartParams;
 
+    bool completerHandledKeypress(const QKeyEvent* keyEvent);
+    bool barHandledKeypress(const QKeyEvent* keyEvent);
+    void insertRegisterContents(const QKeyEvent *keyEvent);
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
     void deleteSpacesToLeftOfCursor();
     void deleteWordCharsToLeftOfCursor();

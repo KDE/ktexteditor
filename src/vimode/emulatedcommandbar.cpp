@@ -430,6 +430,137 @@ void EmulatedCommandBar::updateMatchHighlightAttrib()
     m_matchHighligher->updateMatchHighlightAttrib();
 }
 
+bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
+{
+    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft))
+    {
+        if (m_currentCompletionType != None && m_completer->popup()->isVisible())
+        {
+            abortCompletionAndResetToPreCompletion();
+            return true;
+        }
+    }
+    if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
+        CompletionStartParams completionStartParams = activateWordFromDocumentCompletion();
+        startCompletion(completionStartParams);
+        return true;
+    }
+    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
+        if (!m_completer->popup()->isVisible()) {
+            CompletionStartParams completionStartParams;
+            if (m_mode == Command) {
+                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::ExtraContext);
+            } else {
+                completionStartParams = activateSearchHistoryCompletion();
+            }
+            startCompletion(completionStartParams);
+            if (m_currentCompletionType != None) {
+                setCompletionIndex(0);
+            }
+        } else {
+            // Descend to next row, wrapping around if necessary.
+            if (m_completer->currentRow() + 1 == m_completer->completionCount()) {
+                setCompletionIndex(0);
+            } else {
+                setCompletionIndex(m_completer->currentRow() + 1);
+            }
+        }
+        return true;
+    }
+    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
+        if (!m_completer->popup()->isVisible()) {
+            CompletionStartParams completionStartParams;
+            if (m_mode == Command) {
+                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::NormalContext);
+            } else {
+                completionStartParams = activateSearchHistoryCompletion();
+            }
+            startCompletion(completionStartParams);
+            setCompletionIndex(m_completer->completionCount() - 1);
+        } else {
+            // Ascend to previous row, wrapping around if necessary.
+            if (m_completer->currentRow() == 0) {
+                setCompletionIndex(m_completer->completionCount() - 1);
+            } else {
+                setCompletionIndex(m_completer->currentRow() - 1);
+            }
+        }
+        return true;
+    }
+    if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+        if (m_completer->popup()->isVisible() && m_currentCompletionType == EmulatedCommandBar::WordFromDocument) {
+            deactivateCompletion();
+        } else {
+            m_wasAborted = false;
+            deactivateCompletion();
+            if (m_mode == Command) {
+                m_commandMode->completionChosen();
+            } else {
+                emit hideMe();
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+bool EmulatedCommandBar::barHandledKeypress ( const QKeyEvent* keyEvent )
+{
+    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
+        if (m_edit->text().isEmpty()) {
+            emit hideMe();
+        }
+        m_edit->backspace();
+        return true;
+    }
+    if (keyEvent->modifiers() != Qt::ControlModifier)
+        return false;
+    if (keyEvent->key() == Qt::Key_B) {
+        m_edit->setCursorPosition(0);
+        return true;
+    } else if (keyEvent->key() == Qt::Key_E) {
+        m_edit->setCursorPosition(m_edit->text().length());
+        return true;
+    } else if (keyEvent->key() == Qt::Key_W) {
+        deleteSpacesToLeftOfCursor();
+        if (!deleteNonWordCharsToLeftOfCursor()) {
+            deleteWordCharsToLeftOfCursor();
+        }
+        return true;
+    } else if (keyEvent->key() == Qt::Key_R || keyEvent->key() == Qt::Key_G) {
+        m_waitingForRegister = true;
+        m_waitingForRegisterIndicator->setVisible(true);
+        if (keyEvent->key() == Qt::Key_G) {
+            m_insertedTextShouldBeEscapedForSearchingAsLiteral = true;
+        }
+        return true;
+    }
+    return false;
+}
+
+void EmulatedCommandBar::insertRegisterContents(const QKeyEvent *keyEvent)
+{
+    if (keyEvent->key() != Qt::Key_Shift && keyEvent->key() != Qt::Key_Control) {
+        const QChar key = KeyParser::self()->KeyEventToQChar(*keyEvent).toLower();
+
+        const int oldCursorPosition = m_edit->cursorPosition();
+        QString textToInsert;
+        if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
+            textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
+        } else {
+            textToInsert = m_viInputModeManager->globalState()->registers()->getContent(key);
+        }
+        if (m_insertedTextShouldBeEscapedForSearchingAsLiteral) {
+            textToInsert = escapedForSearchingAsLiteral(textToInsert);
+            m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
+        }
+        m_edit->setText(m_edit->text().insert(m_edit->cursorPosition(), textToInsert));
+        m_edit->setCursorPosition(oldCursorPosition + textToInsert.length());
+        m_waitingForRegister = false;
+        m_waitingForRegisterIndicator->setVisible(false);
+    }
+}
+
 bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
 {
     Q_ASSERT(object == m_edit || object == m_completer->popup());
@@ -609,7 +740,19 @@ void EmulatedCommandBar::setCompletionIndex(int index)
 
 bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
 {
-    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft) && !m_waitingForRegister) {
+    if (m_waitingForRegister) {
+        insertRegisterContents(keyEvent);
+        return true;
+    }
+    if (m_interactiveSedReplaceMode->isActive()) {
+        const bool handled = m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
+        if (handled)
+            return true;
+    }
+    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
+        const bool handled = completerHandledKeypress(keyEvent);
+        if (handled)
+            return true;
         if (m_currentCompletionType == None || !m_completer->popup()->isVisible()) {
             emit hideMe();
         } else {
@@ -617,147 +760,37 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         }
         return true;
     }
-    if (m_interactiveSedReplaceMode->isActive()) {
-        return m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
+    if (!m_interactiveSedReplaceMode->isActive())
+    {
+        const bool handled = completerHandledKeypress(keyEvent);
+        if (handled)
+            return true;
     }
-    if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_Space) {
-        CompletionStartParams completionStartParams = activateWordFromDocumentCompletion();
-        startCompletion(completionStartParams);
+    // Is this a built-in Emulated Command Bar keypress e.g. insert from register, ctrl-h, etc?
+    const bool barHandled = barHandledKeypress(keyEvent);
+    if (barHandled)
         return true;
-    }
-    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
-        if (!m_completer->popup()->isVisible()) {
-            CompletionStartParams completionStartParams;
-            if (m_mode == Command) {
-                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::ExtraContext);
-            } else {
-                completionStartParams = activateSearchHistoryCompletion();
-            }
-            startCompletion(completionStartParams);
-            if (m_currentCompletionType != None) {
-                setCompletionIndex(0);
-            }
-        } else {
-            // Descend to next row, wrapping around if necessary.
-            if (m_completer->currentRow() + 1 == m_completer->completionCount()) {
-                setCompletionIndex(0);
-            } else {
-                setCompletionIndex(m_completer->currentRow() + 1);
-            }
-        }
-        return true;
-    }
-    if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
-        if (!m_completer->popup()->isVisible()) {
-            CompletionStartParams completionStartParams;
-            if (m_mode == Command) {
-                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::NormalContext);
-            } else {
-                completionStartParams = activateSearchHistoryCompletion();
-            }
-            startCompletion(completionStartParams);
-            setCompletionIndex(m_completer->completionCount() - 1);
-        } else {
-            // Ascend to previous row, wrapping around if necessary.
-            if (m_completer->currentRow() == 0) {
-                setCompletionIndex(m_completer->completionCount() - 1);
-            } else {
-                setCompletionIndex(m_completer->currentRow() - 1);
-            }
-        }
-        return true;
-    }
-    if (m_waitingForRegister) {
-        if (keyEvent->key() != Qt::Key_Shift && keyEvent->key() != Qt::Key_Control) {
-            const QChar key = KeyParser::self()->KeyEventToQChar(*keyEvent).toLower();
 
-            const int oldCursorPosition = m_edit->cursorPosition();
-            QString textToInsert;
-            if (keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_W) {
-                textToInsert = m_view->doc()->wordAt(m_view->cursorPosition());
-            } else {
-                textToInsert = m_viInputModeManager->globalState()->registers()->getContent(key);
-            }
-            if (m_insertedTextShouldBeEscapedForSearchingAsLiteral) {
-                textToInsert = escapedForSearchingAsLiteral(textToInsert);
-                m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
-            }
-            m_edit->setText(m_edit->text().insert(m_edit->cursorPosition(), textToInsert));
-            m_edit->setCursorPosition(oldCursorPosition + textToInsert.length());
-            m_waitingForRegister = false;
-            m_waitingForRegisterIndicator->setVisible(false);
-        }
-    } else if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
-        if (m_edit->text().isEmpty()) {
-            emit hideMe();
-        }
-        m_edit->backspace();
-        return true;
-    } else if (keyEvent->modifiers() == Qt::ControlModifier) {
-        if (keyEvent->key() == Qt::Key_B) {
-            m_edit->setCursorPosition(0);
+    // Can the current mode handle it?
+    if (m_mode == Command) {
+        const bool commandModeHandled = m_commandMode->handleKeyPress(keyEvent);
+        if (commandModeHandled)
             return true;
-        } else if (keyEvent->key() == Qt::Key_E) {
-            m_edit->setCursorPosition(m_edit->text().length());
-            return true;
-        } else if (keyEvent->key() == Qt::Key_W) {
-            deleteSpacesToLeftOfCursor();
-            if (!deleteNonWordCharsToLeftOfCursor()) {
-                deleteWordCharsToLeftOfCursor();
-            }
-            return true;
-        } else if (keyEvent->key() == Qt::Key_R || keyEvent->key() == Qt::Key_G) {
-            m_waitingForRegister = true;
-            m_waitingForRegisterIndicator->setVisible(true);
-            if (keyEvent->key() == Qt::Key_G) {
-                m_insertedTextShouldBeEscapedForSearchingAsLiteral = true;
-            }
-            return true;
-        } else if (keyEvent->key() == Qt::Key_D || keyEvent->key() == Qt::Key_F) {
-            if (m_mode == Command) {
-                CommandMode::ParsedSedExpression parsedSedExpression = m_commandMode->parseAsSedExpression();
-                if (parsedSedExpression.parsedSuccessfully) {
-                    const bool clearFindTerm = (keyEvent->key() == Qt::Key_D);
-                    if (clearFindTerm) {
-                        m_edit->setSelection(parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos - parsedSedExpression.findBeginPos + 1);
-                        m_edit->insert(QString());
-                    } else {
-                        // Clear replace term.
-                        m_edit->setSelection(parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos - parsedSedExpression.replaceBeginPos + 1);
-                        m_edit->insert(QString());
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
-    } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
-        if (m_completer->popup()->isVisible() && m_currentCompletionType == EmulatedCommandBar::WordFromDocument) {
-            deactivateCompletion();
-        } else {
-            m_wasAborted = false;
-            deactivateCompletion();
-            if (m_mode == Command) {
-                m_commandMode->completionChosen();
-            } else {
-                emit hideMe();
-            }
-        }
-        return true;
-    } else {
-        m_suspendEditEventFiltering = true;
-        // Send the keypress back to the QLineEdit.  Ideally, instead of doing this, we would simply return "false"
-        // and let Qt re-dispatch the event itself; however, there is a corner case in that if the selection
-        // changes (as a result of e.g. incremental searches during Visual Mode), and the keypress that causes it
-        // is not dispatched from within KateViInputModeHandler::handleKeypress(...)
-        // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
-        // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
-        QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
-        if (!m_interactiveSedReplaceMode->isActive()) {
-            qApp->notify(m_edit, &keyEventCopy);
-        }
-        m_suspendEditEventFiltering = false;
     }
+
+    // Couldn't handle this key event.
+    // Send the keypress back to the QLineEdit.  Ideally, instead of doing this, we would simply return "false"
+    // and let Qt re-dispatch the event itself; however, there is a corner case in that if the selection
+    // changes (as a result of e.g. incremental searches during Visual Mode), and the keypress that causes it
+    // is not dispatched from within KateViInputModeHandler::handleKeypress(...)
+    // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
+    // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
+    m_suspendEditEventFiltering = true;
+    QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
+    if (!m_interactiveSedReplaceMode->isActive()) {
+        qApp->notify(m_edit, &keyEventCopy);
+    }
+    m_suspendEditEventFiltering = false;
     return true;
 }
 
@@ -947,19 +980,24 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
             moveCursorTo(cursorPosIfFinalMatch);
             finishInteractiveSedReplace();
         }
+        qDebug() << "y/n";
         return true;
     } else if (keyEvent->text() == QLatin1String("l")) {
         m_interactiveSedReplacer->replaceCurrentMatch();
         finishInteractiveSedReplace();
+        qDebug() << "l";
         return true;
     } else if (keyEvent->text() == QLatin1String("q")) {
         finishInteractiveSedReplace();
+        qDebug() << "q";
         return true;
     } else if (keyEvent->text() == QLatin1String("a")) {
         m_interactiveSedReplacer->replaceAllRemaining();
         finishInteractiveSedReplace();
+        qDebug() << "a";
         return true;
     }
+    qDebug() << "Returning false";
     return false;
 }
 
@@ -1148,7 +1186,21 @@ void EmulatedCommandBar::CommandMode::setViInputModeManager ( InputModeManager* 
 
 bool EmulatedCommandBar::CommandMode::handleKeyPress ( const QKeyEvent* keyEvent )
 {
-    Q_UNUSED(keyEvent);
+    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_D || keyEvent->key() == Qt::Key_F)) {
+        CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
+        if (parsedSedExpression.parsedSuccessfully) {
+            const bool clearFindTerm = (keyEvent->key() == Qt::Key_D);
+            if (clearFindTerm) {
+                m_edit->setSelection(parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos - parsedSedExpression.findBeginPos + 1);
+                m_edit->insert(QString());
+            } else {
+                // Clear replace term.
+                m_edit->setSelection(parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos - parsedSedExpression.replaceBeginPos + 1);
+                m_edit->insert(QString());
+            }
+        }
+        return true;
+    }
     return false;
 }
 
