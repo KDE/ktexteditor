@@ -85,11 +85,26 @@ private:
 
     void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
 
+    class MatchHighlighter
+    {
+    public:
+        MatchHighlighter(KTextEditor::ViewPrivate* view);
+        ~MatchHighlighter();
+        void updateMatchHighlight(const KTextEditor::Range &matchRange);
+        void updateMatchHighlightAttrib(); //  TODO - make a private slot.
+    private:
+        KTextEditor::ViewPrivate *m_view;
+        KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
+        KTextEditor::MovingRange *m_highlightedMatch;
+    };
+    QScopedPointer<MatchHighlighter> m_matchHighligher;
+
     class ActiveMode
     {
     public:
-        ActiveMode(EmulatedCommandBar* emulatedCommandBar)
-            : m_emulatedCommandBar(emulatedCommandBar)
+        ActiveMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
+            : m_emulatedCommandBar(emulatedCommandBar),
+              m_matchHighligher(matchHighlighter)
         {
         }
         virtual ~ActiveMode() = 0;
@@ -102,13 +117,14 @@ private:
         void closeWithStatusMessage(const QString& exitStatusMessage);
     private:
         EmulatedCommandBar *m_emulatedCommandBar;
+        MatchHighlighter *m_matchHighligher;
     };
     friend ActiveMode;
 
     class InteractiveSedReplaceMode : public ActiveMode
     {
     public:
-        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar);
+        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
         virtual ~InteractiveSedReplaceMode()
         {
         };
@@ -132,7 +148,7 @@ private:
     class SearchMode : public ActiveMode
     {
     public:
-        SearchMode(EmulatedCommandBar* emulatedCommandBar);
+        SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
         virtual ~SearchMode()
         {
         };
@@ -143,9 +159,7 @@ private:
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
 
-    KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
-    KTextEditor::MovingRange *m_highlightedMatch;
-    void updateMatchHighlight(const KTextEditor::Range &matchRange);
+
     enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
     void setBarBackground(BarBackgroundStatus status);
     KTextEditor::Cursor m_startingCursorPos;

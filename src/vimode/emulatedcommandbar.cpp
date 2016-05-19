@@ -324,20 +324,15 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
     layout->addWidget(m_waitingForRegisterIndicator);
 
-    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this));
-    layout->addWidget(m_interactiveSedReplaceMode->label());
-
-    m_searchMode.reset(new SearchMode(this));
-
-    updateMatchHighlightAttrib();
-    m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
-    m_highlightedMatch->setView(m_view); // Show only in this view.
-    m_highlightedMatch->setAttributeOnlyForViews(true);
-    // Use z depth defined in moving ranges interface.
-    m_highlightedMatch->setZDepth(-10000.0);
-    m_highlightedMatch->setAttribute(m_highlightMatchAttribute);
+    m_matchHighligher.reset(new MatchHighlighter(m_view));
+    //  TODO - ultimately, move this connect into MatchHighlighter.
     connect(m_view, SIGNAL(configChanged()),
             this, SLOT(updateMatchHighlightAttrib()));
+
+    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data()));
+    layout->addWidget(m_interactiveSedReplaceMode->label());
+
+    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data()));
 
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
@@ -388,7 +383,6 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
 
 EmulatedCommandBar::~EmulatedCommandBar()
 {
-    delete m_highlightedMatch;
 }
 
 void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &initialText)
@@ -439,7 +433,7 @@ void EmulatedCommandBar::closed()
         }
     }
     m_startingCursorPos = KTextEditor::Cursor::invalid();
-    updateMatchHighlight(KTextEditor::Range::invalid());
+    m_matchHighligher->updateMatchHighlight(KTextEditor::Range::invalid());
     m_completer->popup()->hide();
     m_isActive = false;
     m_interactiveSedReplaceMode->deactivate();
@@ -475,21 +469,7 @@ void EmulatedCommandBar::closed()
 
 void EmulatedCommandBar::updateMatchHighlightAttrib()
 {
-    const QColor &matchColour = m_view->renderer()->config()->searchHighlightColor();
-    if (!m_highlightMatchAttribute) {
-        m_highlightMatchAttribute = new KTextEditor::Attribute;
-    }
-    m_highlightMatchAttribute->setBackground(matchColour);
-    KTextEditor::Attribute::Ptr mouseInAttribute(new KTextEditor::Attribute());
-    m_highlightMatchAttribute->setDynamicAttribute(KTextEditor::Attribute::ActivateMouseIn, mouseInAttribute);
-    m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
-}
-
-void EmulatedCommandBar::updateMatchHighlight(const KTextEditor::Range &matchRange)
-{
-    // Note that if matchRange is invalid, the highlight will not be shown, so we
-    // don't need to check for that explicitly.
-    m_highlightedMatch->setRange(matchRange);
+    m_matchHighligher->updateMatchHighlightAttrib();
 }
 
 void EmulatedCommandBar::setBarBackground(EmulatedCommandBar::BarBackgroundStatus status)
@@ -1232,7 +1212,7 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
             }
         }
 
-        updateMatchHighlight(match);
+        m_matchHighligher->updateMatchHighlight(match);
     }
 
     // Command completion doesn't need to be manually invoked.
@@ -1323,7 +1303,7 @@ void EmulatedCommandBar::ActiveMode::moveCursorTo(const KTextEditor::Cursor &cur
 
 void EmulatedCommandBar::ActiveMode::updateMatchHighlight(const KTextEditor::Range& matchRange)
 {
-    m_emulatedCommandBar->updateMatchHighlight(matchRange);
+    m_matchHighligher->updateMatchHighlight(matchRange);
 }
 
 void EmulatedCommandBar::ActiveMode::closeWithStatusMessage(const QString& exitStatusMessage)
@@ -1331,8 +1311,9 @@ void EmulatedCommandBar::ActiveMode::closeWithStatusMessage(const QString& exitS
     m_emulatedCommandBar->closeWithStatusMessage(exitStatusMessage);
 }
 
-EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar)
-    : ActiveMode(emulatedCommandBar), m_isActive(false)
+EmulatedCommandBar::InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
+    : ActiveMode(emulatedCommandBar, matchHighlighter),
+      m_isActive(false)
 {
     m_interactiveSedReplaceLabel = new QLabel();
     m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
@@ -1413,15 +1394,51 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace(
     m_interactiveSedReplacer.clear();
 }
 
-EmulatedCommandBar::SearchMode::SearchMode ( EmulatedCommandBar* emulatedCommandBar )
-    : ActiveMode ( emulatedCommandBar ),
+EmulatedCommandBar::SearchMode::SearchMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
+    : ActiveMode ( emulatedCommandBar, matchHighlighter),
       m_emulatedCommandBar(emulatedCommandBar)
 {
 }
 
 bool EmulatedCommandBar::SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )
 {
+    Q_UNUSED(keyEvent);
     return false;
 }
 
+EmulatedCommandBar::MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
+    : m_view(view)
+{
+    updateMatchHighlightAttrib();
+    m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
+    m_highlightedMatch->setView(m_view); // Show only in this view.
+    m_highlightedMatch->setAttributeOnlyForViews(true);
+    // Use z depth defined in moving ranges interface.
+    m_highlightedMatch->setZDepth(-10000.0);
+    m_highlightedMatch->setAttribute(m_highlightMatchAttribute);
+}
+
+EmulatedCommandBar::MatchHighlighter::~MatchHighlighter()
+{
+    delete m_highlightedMatch;
+}
+
+void EmulatedCommandBar::MatchHighlighter::updateMatchHighlight ( const KTextEditor::Range& matchRange )
+{
+    // Note that if matchRange is invalid, the highlight will not be shown, so we
+    // don't need to check for that explicitly.
+    m_highlightedMatch->setRange(matchRange);
+}
+
+void EmulatedCommandBar::MatchHighlighter::updateMatchHighlightAttrib()
+{
+    const QColor &matchColour = m_view->renderer()->config()->searchHighlightColor();
+    if (!m_highlightMatchAttribute) {
+        m_highlightMatchAttribute = new KTextEditor::Attribute;
+    }
+    m_highlightMatchAttribute->setBackground(matchColour);
+    KTextEditor::Attribute::Ptr mouseInAttribute(new KTextEditor::Attribute());
+    m_highlightMatchAttribute->setDynamicAttribute(KTextEditor::Attribute::ActivateMouseIn, mouseInAttribute);
+    m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
+}
 
