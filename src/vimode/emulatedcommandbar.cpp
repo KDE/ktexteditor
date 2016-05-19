@@ -629,7 +629,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         if (!m_completer->popup()->isVisible()) {
             CompletionStartParams completionStartParams;
             if (m_mode == Command) {
-                completionStartParams = m_commandMode->completionInvoked();
+                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::ExtraContext);
             } else {
                 completionStartParams = activateSearchHistoryCompletion();
             }
@@ -651,7 +651,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         if (!m_completer->popup()->isVisible()) {
             CompletionStartParams completionStartParams;
             if (m_mode == Command) {
-                completionStartParams = m_commandMode->activateCommandHistoryCompletion();
+                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::NormalContext);
             } else {
                 completionStartParams = activateSearchHistoryCompletion();
             }
@@ -1167,14 +1167,22 @@ void EmulatedCommandBar::CommandMode::editTextChanged ( const QString& newText, 
     }
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::completionInvoked()
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::completionInvoked(EmulatedCommandBar::CompletionInvocation invocationType)
 {
     CompletionStartParams completionStartParams;
-    if (isCursorInFindTermOfSed()) {
-        completionStartParams = activateSedFindHistoryCompletion();
-    } else if (isCursorInReplaceTermOfSed()) {
-        completionStartParams = activateSedReplaceHistoryCompletion();
-    } else {
+    if (invocationType == EmulatedCommandBar::CompletionInvocation::ExtraContext)
+    {
+        if (isCursorInFindTermOfSed()) {
+            completionStartParams = activateSedFindHistoryCompletion();
+        } else if (isCursorInReplaceTermOfSed()) {
+            completionStartParams = activateSedReplaceHistoryCompletion();
+        } else {
+            completionStartParams = activateCommandHistoryCompletion();
+        }
+    }
+    else
+    {
+        // Normal context, so boring, ordinary History completion.
         completionStartParams = activateCommandHistoryCompletion();
     }
     return completionStartParams;

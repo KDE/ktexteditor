@@ -187,6 +187,8 @@ private:
         bool m_isSendingSyntheticSearchCompletedKeypress = false;
     };
 
+    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
+
     class CommandMode : public ActiveMode
     {
     public:
@@ -198,7 +200,7 @@ private:
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         void editTextChanged(const QString &newText, bool isNextTextChangeDueToCompletionChange);
         QString executeCommand(const QString &commandToExecute);
-        CompletionStartParams completionInvoked();
+        CompletionStartParams completionInvoked(CompletionInvocation invocationType);
         void completionChosen();
         /**
         * Stuff to do with expressions of the form:
@@ -218,16 +220,11 @@ private:
         * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
         */
         CommandMode::ParsedSedExpression parseAsSedExpression(); // TODO - make private
-        int commandBeforeCursorBegin();
-        void replaceCommandBeforeCursorWith(const QString &newCommand);
+    private:
         CompletionStartParams activateCommandCompletion();
         CompletionStartParams activateCommandHistoryCompletion();
         CompletionStartParams activateSedFindHistoryCompletion();
         CompletionStartParams activateSedReplaceHistoryCompletion();
-        KCompletion m_cmdCompletion;
-        QHash<QString, KTextEditor::Command *> m_cmdDict;
-        KTextEditor::Command *queryCommand(const QString &cmd) const;
-    private:
         QString withoutRangeExpression();
         QString rangeExpression();
         QString withSedFindTermReplacedWith(const QString &newFindTerm);
@@ -236,10 +233,15 @@ private:
         bool isCursorInReplaceTermOfSed();
         QString sedFindTerm();
         QString sedReplaceTerm();
+        void replaceCommandBeforeCursorWith(const QString &newCommand);
+        int commandBeforeCursorBegin();
         QLineEdit *m_edit;
         InputModeManager *m_viInputModeManager = nullptr;
         KTextEditor::ViewPrivate *m_view;
         InteractiveSedReplaceMode *m_interactiveSedReplaceMode;
+        KCompletion m_cmdCompletion;
+        QHash<QString, KTextEditor::Command *> m_cmdDict;
+        KTextEditor::Command *queryCommand(const QString &cmd) const;
     };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
