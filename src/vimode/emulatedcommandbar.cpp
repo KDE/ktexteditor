@@ -327,6 +327,8 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this));
     layout->addWidget(m_interactiveSedReplaceMode->label());
 
+    m_searchMode.reset(new SearchMode(this));
+
     updateMatchHighlightAttrib();
     m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
     m_highlightedMatch->setView(m_view); // Show only in this view.
@@ -1410,3 +1412,16 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace(
     closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
+
+EmulatedCommandBar::SearchMode::SearchMode ( EmulatedCommandBar* emulatedCommandBar )
+    : ActiveMode ( emulatedCommandBar ),
+      m_emulatedCommandBar(emulatedCommandBar)
+{
+}
+
+bool EmulatedCommandBar::SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )
+{
+    return false;
+}
+
+

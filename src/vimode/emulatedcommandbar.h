@@ -77,7 +77,6 @@ private:
     QLineEdit *m_edit;
     QLabel *m_barTypeIndicator;
     void showBarTypeIndicator(Mode mode);
-    KTextEditor::Cursor m_startingCursorPos;
     bool m_wasAborted = true;
     bool m_suspendEditEventFiltering = false;
     bool m_waitingForRegister = false ;
@@ -128,8 +127,30 @@ private:
         bool m_isActive;
         QLabel *m_interactiveSedReplaceLabel;
     };
-    //friend InteractiveSedReplaceMode; //  TODO - see if we can ultimately remove this.
+
+
+    class SearchMode : public ActiveMode
+    {
+    public:
+        SearchMode(EmulatedCommandBar* emulatedCommandBar);
+        virtual ~SearchMode()
+        {
+        };
+        virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
+    private:
+        EmulatedCommandBar *m_emulatedCommandBar;
+    };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
+    QScopedPointer<SearchMode> m_searchMode;
+
+    KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
+    KTextEditor::MovingRange *m_highlightedMatch;
+    void updateMatchHighlight(const KTextEditor::Range &matchRange);
+    enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
+    void setBarBackground(BarBackgroundStatus status);
+    KTextEditor::Cursor m_startingCursorPos;
+    KateVi::Searcher::SearchParams m_currentSearchParams;
+    bool m_isSendingSyntheticSearchCompletedKeypress = false;
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
@@ -151,16 +172,6 @@ private:
         std::function<QString(const QString&)> completionTransform;
     };
     CompletionStartParams m_currentCompletionStartParams;
-
-    KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
-    KTextEditor::MovingRange *m_highlightedMatch;
-    void updateMatchHighlight(const KTextEditor::Range &matchRange);
-    enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
-    void setBarBackground(BarBackgroundStatus status);
-
-    KateVi::Searcher::SearchParams m_currentSearchParams;
-
-    bool m_isSendingSyntheticSearchCompletedKeypress = false;
 
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
     void deleteSpacesToLeftOfCursor();
