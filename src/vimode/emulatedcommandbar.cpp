@@ -451,7 +451,7 @@ bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
             if (m_mode == Command) {
                 completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::ExtraContext);
             } else {
-                completionStartParams = activateSearchHistoryCompletion();
+                completionStartParams = m_searchMode->completionInvoked(CompletionInvocation::ExtraContext);
             }
             startCompletion(completionStartParams);
             if (m_currentCompletionType != None) {
@@ -473,7 +473,7 @@ bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
             if (m_mode == Command) {
                 completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::NormalContext);
             } else {
-                completionStartParams = activateSearchHistoryCompletion();
+                completionStartParams = m_searchMode->completionInvoked(CompletionInvocation::NormalContext);
             }
             startCompletion(completionStartParams);
             setCompletionIndex(m_completer->completionCount() - 1);
@@ -635,16 +635,6 @@ void EmulatedCommandBar::replaceWordBeforeCursorWith(const QString &newWord)
                             m_edit->text().mid(m_edit->cursorPosition());
     m_edit->setText(newText);
     m_edit->setCursorPosition(wordBeforeCursorStart + newWord.length());
-}
-
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateSearchHistoryCompletion()
-{
-    m_currentCompletionType = SearchHistory;
-    CompletionStartParams completionStartParams;
-    completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
-    completionStartParams.shouldStart = true;
-    completionStartParams.wordStartPos = 0;
-    return completionStartParams;
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::activateWordFromDocumentCompletion()
@@ -1128,6 +1118,22 @@ void EmulatedCommandBar::SearchMode::deactivate(bool wasAborted)
     m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
 
 
+}
+
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::completionInvoked ( EmulatedCommandBar::CompletionInvocation invocationType )
+{
+    Q_UNUSED(invocationType);
+    return activateSearchHistoryCompletion();
+}
+
+EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::activateSearchHistoryCompletion()
+{
+    setCompletionMode(KateVi::EmulatedCommandBar::SearchHistory);
+    CompletionStartParams completionStartParams;
+    completionStartParams.completions = reversed(m_viInputModeManager->globalState()->searchHistory()->items());
+    completionStartParams.shouldStart = true;
+    completionStartParams.wordStartPos = 0;
+    return completionStartParams;
 }
 
 void EmulatedCommandBar::SearchMode::setBarBackground ( EmulatedCommandBar::SearchMode::BarBackgroundStatus status )

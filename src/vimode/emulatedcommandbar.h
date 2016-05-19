@@ -157,6 +157,8 @@ private:
         QLabel *m_interactiveSedReplaceLabel;
     };
 
+    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
+
     class SearchMode : public ActiveMode
     {
     public:
@@ -169,6 +171,7 @@ private:
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         void editTextChanged(const QString &newText);
+        CompletionStartParams completionInvoked(CompletionInvocation invocationType);
         void deactivate(bool wasAborted);
         bool isSendingSyntheticSearchCompletedKeypress() const
         {
@@ -182,12 +185,11 @@ private:
         SearchDirection m_searchDirection;
         KTextEditor::Cursor m_startingCursorPos;
         KateVi::Searcher::SearchParams m_currentSearchParams;
+        CompletionStartParams activateSearchHistoryCompletion();
         enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
         void setBarBackground(BarBackgroundStatus status);
         bool m_isSendingSyntheticSearchCompletedKeypress = false;
     };
-
-    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
 
     class CommandMode : public ActiveMode
     {
@@ -271,7 +273,6 @@ private:
     int wordBeforeCursorBegin();
     void replaceWordBeforeCursorWith(const QString &newWord);
 
-    CompletionStartParams activateSearchHistoryCompletion();
     CompletionStartParams activateWordFromDocumentCompletion();
     void startCompletion(const CompletionStartParams& completionStartParams);
     void deactivateCompletion();
