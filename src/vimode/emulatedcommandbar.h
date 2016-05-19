@@ -177,10 +177,11 @@ private:
     class CommandMode : public ActiveMode
     {
     public:
-        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
+        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, QLineEdit* edit);
         virtual ~CommandMode()
         {
         }
+        void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         /**
         * Stuff to do with expressions of the form:
@@ -195,6 +196,19 @@ private:
             int replaceEndPos;
             QChar delimiter;
         }; // TODO - make private.
+        /**
+        * The "range expression" is the (optional) expression before the command that describes
+        * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
+        */
+        QString withoutRangeExpression(); //  TODO - make private
+        QString rangeExpression(); //  TODO - make private
+        CommandMode::ParsedSedExpression parseAsSedExpression(); // TODO - make private
+        QString sedFindTerm(); // TODO - make private
+        QString sedReplaceTerm(); // TODO - make private
+        QString withSedFindTermReplacedWith(const QString &newFindTerm);
+    private:
+        QLineEdit *m_edit;
+        InputModeManager *m_viInputModeManager = nullptr;
     };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
@@ -243,22 +257,11 @@ private:
     void abortCompletionAndResetToPreCompletion();
     void setCompletionIndex(int index);
 
-    CommandMode::ParsedSedExpression parseAsSedExpression();
-    QString withSedFindTermReplacedWith(const QString &newFindTerm);
     QString withSedReplaceTermReplacedWith(const QString &newReplaceTerm);
-    QString sedFindTerm();
-    QString sedReplaceTerm();
     QString withSedDelimiterEscaped(const QString &text);
 
     bool isCursorInFindTermOfSed();
     bool isCursorInReplaceTermOfSed();
-
-    /**
-     * The "range expression" is the (optional) expression before the command that describes
-     * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
-     */
-    QString withoutRangeExpression();
-    QString rangeExpression();
 
     void closed() Q_DECL_OVERRIDE;
     void closeWithStatusMessage(const QString& exitStatusMessage);
