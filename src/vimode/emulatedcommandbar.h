@@ -202,24 +202,6 @@ private:
         QString executeCommand(const QString &commandToExecute);
         CompletionStartParams completionInvoked(CompletionInvocation invocationType);
         void completionChosen();
-        /**
-        * Stuff to do with expressions of the form:
-        *
-        *   s/find/replace/<sedflags>
-        */
-        struct ParsedSedExpression {
-            bool parsedSuccessfully;
-            int findBeginPos;
-            int findEndPos;
-            int replaceBeginPos;
-            int replaceEndPos;
-            QChar delimiter;
-        }; // TODO - make private.
-        /**
-        * The "range expression" is the (optional) expression before the command that describes
-        * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
-        */
-        CommandMode::ParsedSedExpression parseAsSedExpression(); // TODO - make private
     private:
         CompletionStartParams activateCommandCompletion();
         CompletionStartParams activateCommandHistoryCompletion();
@@ -233,6 +215,24 @@ private:
         bool isCursorInReplaceTermOfSed();
         QString sedFindTerm();
         QString sedReplaceTerm();
+        /**
+        * Stuff to do with expressions of the form:
+        *
+        *   s/find/replace/<sedflags>
+        */
+        struct ParsedSedExpression {
+            bool parsedSuccessfully;
+            int findBeginPos;
+            int findEndPos;
+            int replaceBeginPos;
+            int replaceEndPos;
+            QChar delimiter;
+        };
+        /**
+        * The "range expression" is the (optional) expression before the command that describes
+        * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
+        */
+        CommandMode::ParsedSedExpression parseAsSedExpression();
         void replaceCommandBeforeCursorWith(const QString &newCommand);
         int commandBeforeCursorBegin();
         QLineEdit *m_edit;
