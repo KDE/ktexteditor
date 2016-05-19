@@ -1159,7 +1159,7 @@ void EmulatedCommandBar::CommandMode::editTextChanged ( const QString& newText, 
     if (!withoutRangeExpression().isEmpty() && !isNextTextChangeDueToCompletionChange) {
         // ... However, command completion mode should not be automatically invoked if this is not the current leading
         // word in the text edit (it gets annoying if completion pops up after ":s/se" etc).
-        const bool commandBeforeCursorIsLeading = (m_edit->cursorPosition() - commandBeforeCursor().length() == rangeExpression().length());
+        const bool commandBeforeCursorIsLeading = (commandBeforeCursorBegin() == rangeExpression().length());
         if (commandBeforeCursorIsLeading) {
             CompletionStartParams completionStartParams = activateCommandCompletion();
             startCompletion(completionStartParams);
@@ -1372,18 +1372,6 @@ bool EmulatedCommandBar::CommandMode::isCursorInReplaceTermOfSed()
     return parsedSedExpression.parsedSuccessfully && m_edit->cursorPosition() >= parsedSedExpression.replaceBeginPos && m_edit->cursorPosition() <= parsedSedExpression.replaceEndPos + 1;
 }
 
-QString EmulatedCommandBar::CommandMode::commandBeforeCursor()
-{
-    const QString textWithoutRangeExpression = withoutRangeExpression();
-    const int cursorPositionWithoutRangeExpression = m_edit->cursorPosition() - rangeExpression().length();
-    int commandBeforeCursorBegin = cursorPositionWithoutRangeExpression - 1;
-    while (commandBeforeCursorBegin >= 0 && (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber() || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_') || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
-        commandBeforeCursorBegin--;
-    }
-    commandBeforeCursorBegin++;
-    return textWithoutRangeExpression.mid(commandBeforeCursorBegin, cursorPositionWithoutRangeExpression - commandBeforeCursorBegin);
-}
-
 int EmulatedCommandBar::CommandMode::commandBeforeCursorBegin()
 {
     const QString textWithoutRangeExpression = withoutRangeExpression();
@@ -1399,7 +1387,7 @@ int EmulatedCommandBar::CommandMode::commandBeforeCursorBegin()
 
 void EmulatedCommandBar::CommandMode::replaceCommandBeforeCursorWith ( const QString& newCommand )
 {
-    const QString newText = m_edit->text().left(m_edit->cursorPosition() - commandBeforeCursor().length()) +
+    const QString newText = m_edit->text().left(commandBeforeCursorBegin()) +
                             newCommand +
                             m_edit->text().mid(m_edit->cursorPosition());
     m_edit->setText(newText);

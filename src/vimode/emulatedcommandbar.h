@@ -218,7 +218,6 @@ private:
         * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
         */
         CommandMode::ParsedSedExpression parseAsSedExpression(); // TODO - make private
-        QString commandBeforeCursor();
         int commandBeforeCursorBegin();
         void replaceCommandBeforeCursorWith(const QString &newCommand);
         CompletionStartParams activateCommandCompletion();
