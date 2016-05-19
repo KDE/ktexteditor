@@ -182,6 +182,19 @@ private:
         {
         }
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
+        /**
+        * Stuff to do with expressions of the form:
+        *
+        *   s/find/replace/<sedflags>
+        */
+        struct ParsedSedExpression {
+            bool parsedSuccessfully;
+            int findBeginPos;
+            int findEndPos;
+            int replaceBeginPos;
+            int replaceEndPos;
+            QChar delimiter;
+        }; // TODO - make private.
     };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
@@ -230,20 +243,7 @@ private:
     void abortCompletionAndResetToPreCompletion();
     void setCompletionIndex(int index);
 
-    /**
-     * Stuff to do with expressions of the form:
-     *
-     *   s/find/replace/<sedflags>
-     */
-    struct ParsedSedExpression {
-        bool parsedSuccessfully;
-        int findBeginPos;
-        int findEndPos;
-        int replaceBeginPos;
-        int replaceEndPos;
-        QChar delimiter;
-    };
-    ParsedSedExpression parseAsSedExpression();
+    CommandMode::ParsedSedExpression parseAsSedExpression();
     QString withSedFindTermReplacedWith(const QString &newFindTerm);
     QString withSedReplaceTermReplacedWith(const QString &newReplaceTerm);
     QString sedFindTerm();
