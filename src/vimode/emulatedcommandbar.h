@@ -144,27 +144,37 @@ private:
         QLabel *m_interactiveSedReplaceLabel;
     };
 
-
     class SearchMode : public ActiveMode
     {
     public:
-        SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
+        SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view, QLineEdit* edit);
         virtual ~SearchMode()
         {
         };
+        enum class SearchDirection { Forward, Backward };
+        void init(SearchDirection);
+        void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
+        void editTextChanged(const QString &newText);
+        void deactivate(bool wasAborted);
+        bool isSendingSyntheticSearchCompletedKeypress() const
+        {
+            return m_isSendingSyntheticSearchCompletedKeypress;
+        }
     private:
-        EmulatedCommandBar *m_emulatedCommandBar;
+        EmulatedCommandBar *m_emulatedCommandBar = nullptr;
+        KTextEditor::ViewPrivate *m_view = nullptr;
+        InputModeManager *m_viInputModeManager = nullptr;
+        QLineEdit *m_edit = nullptr;
+        SearchDirection m_searchDirection;
+        KTextEditor::Cursor m_startingCursorPos;
+        KateVi::Searcher::SearchParams m_currentSearchParams;
+        enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
+        void setBarBackground(BarBackgroundStatus status);
+        bool m_isSendingSyntheticSearchCompletedKeypress = false;
     };
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
-
-
-    enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
-    void setBarBackground(BarBackgroundStatus status);
-    KTextEditor::Cursor m_startingCursorPos;
-    KateVi::Searcher::SearchParams m_currentSearchParams;
-    bool m_isSendingSyntheticSearchCompletedKeypress = false;
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 

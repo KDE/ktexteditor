@@ -332,7 +332,8 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data()));
     layout->addWidget(m_interactiveSedReplaceMode->label());
 
-    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data()));
+    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_view, m_edit));
+    m_searchMode->setViInputModeManager(viInputModeManager);
 
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
@@ -394,9 +395,7 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
 
     showBarTypeIndicator(mode);
 
-    setBarBackground(Normal);
-
-    m_startingCursorPos = m_view->cursorPosition();
+    m_searchMode->init(mode == SearchBackward ? SearchMode::SearchDirection::Backward : SearchMode::SearchDirection::Forward);
 
     m_edit->setFocus();
     m_edit->setText(initialText);
@@ -426,35 +425,13 @@ void EmulatedCommandBar::setCommandResponseMessageTimeout(long int commandRespon
 
 void EmulatedCommandBar::closed()
 {
-    // Close can be called multiple times between init()'s, so only reset the cursor once!
-    if (m_startingCursorPos.isValid()) {
-        if (m_wasAborted) {
-            moveCursorTo(m_startingCursorPos);
-        }
-    }
-    m_startingCursorPos = KTextEditor::Cursor::invalid();
     m_matchHighligher->updateMatchHighlight(KTextEditor::Range::invalid());
     m_completer->popup()->hide();
     m_isActive = false;
     m_interactiveSedReplaceMode->deactivate();
 
     if (m_mode == SearchForward || m_mode == SearchBackward) {
-        // Send a synthetic keypress through the system that signals whether the search was aborted or
-        // not.  If not, the keypress will "complete" the search motion, thus triggering it.
-        // We send to KateViewInternal as it updates the status bar and removes the "?".
-        const Qt::Key syntheticSearchCompletedKey = (m_wasAborted ? static_cast<Qt::Key>(0) : Qt::Key_Enter);
-        QKeyEvent syntheticSearchCompletedKeyPress(QEvent::KeyPress, syntheticSearchCompletedKey, Qt::NoModifier);
-        m_isSendingSyntheticSearchCompletedKeypress = true;
-        QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
-        m_isSendingSyntheticSearchCompletedKeypress = false;
-        if (!m_wasAborted) {
-            // Search was actually executed, so store it as the last search.
-            m_viInputModeManager->searcher()->setLastSearchParams(m_currentSearchParams);
-        }
-        // Append the raw text of the search to the search history (i.e. without conversion
-        // from Vim-style regex; without case-sensitivity markers stripped; etc.
-        // Vim does this even if the search was aborted, so we follow suit.
-        m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
+        m_searchMode->deactivate(m_wasAborted);
     } else {
         if (m_wasAborted) {
             // Appending the command to the history when it is executed is handled elsewhere; we can't
@@ -470,26 +447,6 @@ void EmulatedCommandBar::closed()
 void EmulatedCommandBar::updateMatchHighlightAttrib()
 {
     m_matchHighligher->updateMatchHighlightAttrib();
-}
-
-void EmulatedCommandBar::setBarBackground(EmulatedCommandBar::BarBackgroundStatus status)
-{
-    QPalette barBackground(m_edit->palette());
-    switch (status) {
-    case MatchFound: {
-        KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
-        break;
-    }
-    case NoMatchFound: {
-        KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
-        break;
-    }
-    case Normal: {
-        barBackground = QPalette();
-        break;
-    }
-    }
-    m_edit->setPalette(barBackground);
 }
 
 bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
@@ -1042,7 +999,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
 
 bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 {
-    return m_isSendingSyntheticSearchCompletedKeypress;
+    return m_searchMode->isSendingSyntheticSearchCompletedKeypress();
 }
 
 void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
@@ -1166,53 +1123,7 @@ void EmulatedCommandBar::editTextChanged(const QString &newText)
         m_cursorPosToRevertToIfCompletionAborted = m_edit->cursorPosition();
     }
     if (m_mode == SearchForward || m_mode == SearchBackward) {
-        QString qtRegexPattern = newText;
-        const bool searchBackwards = (m_mode == SearchBackward);
-        const bool placeCursorAtEndOfMatch = shouldPlaceCursorAtEndOfMatch(qtRegexPattern, searchBackwards);
-        if (isRepeatLastSearch(qtRegexPattern, searchBackwards)) {
-            qtRegexPattern = m_viInputModeManager->searcher()->getLastSearchPattern();
-        } else {
-            qtRegexPattern = withSearchConfigRemoved(qtRegexPattern, searchBackwards);
-            qtRegexPattern = vimRegexToQtRegexPattern(qtRegexPattern);
-        }
-
-        // Decide case-sensitivity via SmartCase (note: if the expression contains \C, the "case-sensitive" marker, then
-        // we will be case-sensitive "by coincidence", as it were.).
-        bool caseSensitive = true;
-        if (qtRegexPattern.toLower() == qtRegexPattern) {
-            caseSensitive = false;
-        }
-
-        qtRegexPattern = withCaseSensitivityMarkersStripped(qtRegexPattern);
-
-        m_currentSearchParams.pattern = qtRegexPattern;
-        m_currentSearchParams.isCaseSensitive = caseSensitive;
-        m_currentSearchParams.isBackwards = searchBackwards;
-        m_currentSearchParams.shouldPlaceCursorAtEndOfMatch = placeCursorAtEndOfMatch;
-
-        // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
-        // the right one to handle the counted search.
-        int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
-        KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
-
-        if (match.isValid()) {
-            // The returned range ends one past the last character of the match, so adjust.
-            KTextEditor::Cursor realMatchEnd = KTextEditor::Cursor(match.end().line(), match.end().column() - 1);
-            if (realMatchEnd.column() == -1) {
-                realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, m_view->doc()->lineLength(realMatchEnd.line() - 1));
-            }
-            moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd :  match.start());
-            setBarBackground(MatchFound);
-        } else {
-            moveCursorTo(m_startingCursorPos);
-            if (!m_edit->text().isEmpty()) {
-                setBarBackground(NoMatchFound);
-            } else {
-                setBarBackground(Normal);
-            }
-        }
-
-        m_matchHighligher->updateMatchHighlight(match);
+        m_searchMode->editTextChanged(newText);
     }
 
     // Command completion doesn't need to be manually invoked.
@@ -1273,6 +1184,7 @@ KTextEditor::Command *EmulatedCommandBar::queryCommand(const QString &cmd) const
 void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeManager)
 {
     m_viInputModeManager = viInputModeManager;
+    m_searchMode->setViInputModeManager(viInputModeManager);
 }
 
 void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
@@ -1394,16 +1306,130 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace(
     m_interactiveSedReplacer.clear();
 }
 
-EmulatedCommandBar::SearchMode::SearchMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
+EmulatedCommandBar::SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view, QLineEdit* edit)
     : ActiveMode ( emulatedCommandBar, matchHighlighter),
-      m_emulatedCommandBar(emulatedCommandBar)
+      m_emulatedCommandBar(emulatedCommandBar),
+      m_view(view),
+      m_edit(edit)
 {
+}
+
+void EmulatedCommandBar::SearchMode::init ( EmulatedCommandBar::SearchMode::SearchDirection searchDirection)
+{
+    m_searchDirection = searchDirection;
+    setBarBackground(SearchMode::Normal);
+    m_startingCursorPos = m_view->cursorPosition();
+}
+
+void EmulatedCommandBar::SearchMode::setViInputModeManager ( InputModeManager* viInputModeManager )
+{
+    m_viInputModeManager = viInputModeManager;
 }
 
 bool EmulatedCommandBar::SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )
 {
     Q_UNUSED(keyEvent);
     return false;
+}
+
+void EmulatedCommandBar::SearchMode::editTextChanged ( const QString& newText )
+{
+    QString qtRegexPattern = newText;
+    const bool searchBackwards = (m_searchDirection == SearchDirection::Backward);
+    const bool placeCursorAtEndOfMatch = shouldPlaceCursorAtEndOfMatch(qtRegexPattern, searchBackwards);
+    if (isRepeatLastSearch(qtRegexPattern, searchBackwards)) {
+        qtRegexPattern = m_viInputModeManager->searcher()->getLastSearchPattern();
+    } else {
+        qtRegexPattern = withSearchConfigRemoved(qtRegexPattern, searchBackwards);
+        qtRegexPattern = vimRegexToQtRegexPattern(qtRegexPattern);
+    }
+
+    // Decide case-sensitivity via SmartCase (note: if the expression contains \C, the "case-sensitive" marker, then
+    // we will be case-sensitive "by coincidence", as it were.).
+    bool caseSensitive = true;
+    if (qtRegexPattern.toLower() == qtRegexPattern) {
+        caseSensitive = false;
+    }
+
+    qtRegexPattern = withCaseSensitivityMarkersStripped(qtRegexPattern);
+
+    m_currentSearchParams.pattern = qtRegexPattern;
+    m_currentSearchParams.isCaseSensitive = caseSensitive;
+    m_currentSearchParams.isBackwards = searchBackwards;
+    m_currentSearchParams.shouldPlaceCursorAtEndOfMatch = placeCursorAtEndOfMatch;
+
+    // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
+    // the right one to handle the counted search.
+    int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
+    KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
+
+    if (match.isValid()) {
+        // The returned range ends one past the last character of the match, so adjust.
+        KTextEditor::Cursor realMatchEnd = KTextEditor::Cursor(match.end().line(), match.end().column() - 1);
+        if (realMatchEnd.column() == -1) {
+            realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, m_view->doc()->lineLength(realMatchEnd.line() - 1));
+        }
+        moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd :  match.start());
+        setBarBackground(SearchMode::MatchFound);
+    } else {
+        moveCursorTo(m_startingCursorPos);
+        if (!m_edit->text().isEmpty()) {
+            setBarBackground(SearchMode::NoMatchFound);
+        } else {
+            setBarBackground(SearchMode::Normal);
+        }
+    }
+
+    updateMatchHighlight(match);
+}
+
+void EmulatedCommandBar::SearchMode::deactivate(bool wasAborted)
+{
+    // "Deactivate" can be called multiple times between init()'s, so only reset the cursor once!
+    if (m_startingCursorPos.isValid()) {
+        if (wasAborted) {
+            moveCursorTo(m_startingCursorPos);
+        }
+    }
+    m_startingCursorPos = KTextEditor::Cursor::invalid();
+    // Send a synthetic keypress through the system that signals whether the search was aborted or
+    // not.  If not, the keypress will "complete" the search motion, thus triggering it.
+    // We send to KateViewInternal as it updates the status bar and removes the "?".
+    const Qt::Key syntheticSearchCompletedKey = (wasAborted ? static_cast<Qt::Key>(0) : Qt::Key_Enter);
+    QKeyEvent syntheticSearchCompletedKeyPress(QEvent::KeyPress, syntheticSearchCompletedKey, Qt::NoModifier);
+    m_isSendingSyntheticSearchCompletedKeypress = true;
+    QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
+    m_isSendingSyntheticSearchCompletedKeypress = false;
+    if (!wasAborted) {
+        // Search was actually executed, so store it as the last search.
+        m_viInputModeManager->searcher()->setLastSearchParams(m_currentSearchParams);
+    }
+    // Append the raw text of the search to the search history (i.e. without conversion
+    // from Vim-style regex; without case-sensitivity markers stripped; etc.
+    // Vim does this even if the search was aborted, so we follow suit.
+    m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
+
+
+}
+
+void EmulatedCommandBar::SearchMode::setBarBackground ( EmulatedCommandBar::SearchMode::BarBackgroundStatus status )
+{
+    QPalette barBackground(m_edit->palette());
+    switch (status) {
+    case MatchFound: {
+        KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
+        break;
+    }
+    case NoMatchFound: {
+        KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
+        break;
+    }
+    case Normal: {
+        barBackground = QPalette();
+        break;
+    }
+    }
+    m_edit->setPalette(barBackground);
 }
 
 EmulatedCommandBar::MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
