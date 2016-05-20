@@ -231,6 +231,7 @@ private:
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         void editTextChanged(const QString &newText);
+        void deactivate(bool wasAborted);
         QString executeCommand(const QString &commandToExecute);
         CompletionStartParams completionInvoked(CompletionInvocation invocationType);
         void completionChosen();

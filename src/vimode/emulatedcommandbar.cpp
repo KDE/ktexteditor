@@ -407,14 +407,7 @@ void EmulatedCommandBar::closed()
     if (m_mode == SearchForward || m_mode == SearchBackward) {
         m_searchMode->deactivate(m_wasAborted);
     } else {
-        if (m_wasAborted) {
-            // Appending the command to the history when it is executed is handled elsewhere; we can't
-            // do it inside closed() as we may still be showing the command response display.
-            m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
-            // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
-            // If we switch from Visual to Normal mode, we need to clear the selection.
-            m_view->clearSelection();
-        }
+        m_commandMode->deactivate(m_wasAborted);
     }
 }
 
@@ -1229,6 +1222,19 @@ void EmulatedCommandBar::CommandMode::editTextChanged ( const QString& newText )
             startCompletion(completionStartParams);
         }
     }
+}
+
+void EmulatedCommandBar::CommandMode::deactivate ( bool wasAborted )
+{
+    if (wasAborted) {
+        // Appending the command to the history when it is executed is handled elsewhere; we can't
+        // do it inside closed() as we may still be showing the command response display.
+        m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
+        // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
+        // If we switch from Visual to Normal mode, we need to clear the selection.
+        m_view->clearSelection();
+    }
+
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::completionInvoked(EmulatedCommandBar::CompletionInvocation invocationType)
