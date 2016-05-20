@@ -107,6 +107,37 @@ private:
         QStringList completions;
         std::function<QString(const QString&)> completionTransform;
     };
+    bool completerHandledKeypress(const QKeyEvent* keyEvent);
+    class Completer
+    {
+    public:
+        Completer(EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit);
+        void startCompletion(const CompletionStartParams& completionStartParams);
+        void deactivateCompletion();
+        bool isCompletionActive() const;
+        bool isNextTextChangeDueToCompletionChange() const;
+        void editTextChanged(const QString &newText);
+        void setCompletionIndex(int index);
+        void currentCompletionChanged();
+        void updateCompletionPrefix();
+        CompletionStartParams activateWordFromDocumentCompletion();
+        QString wordBeforeCursor();
+        int wordBeforeCursorBegin();
+        void abortCompletionAndResetToPreCompletion();
+        QCompleter *m_completer;
+        QStringListModel *m_completionModel;
+        QString m_textToRevertToIfCompletionAborted;
+        int m_cursorPosToRevertToIfCompletionAborted;
+        bool m_isNextTextChangeDueToCompletionChange = false;
+        CompletionStartParams m_currentCompletionStartParams;
+        CompletionType m_currentCompletionType = None;
+    private:
+        QLineEdit *m_edit;
+        KTextEditor::ViewPrivate *m_view;
+    };
+    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
+    QScopedPointer<Completer> m_completerTmp;
+
     class ActiveMode
     {
     public:
@@ -125,7 +156,7 @@ private:
         void closeWithStatusMessage(const QString& exitStatusMessage);
         void setCompletionMode(CompletionType completionType)
         {
-            m_emulatedCommandBar->m_currentCompletionType = completionType;
+            m_emulatedCommandBar->m_completerTmp->m_currentCompletionType = completionType;
         }; // TODO - ultimately remove this - eventually, the upcoming Completion class will store the mode, and it will be one of None, WordUnderCursor, and ModeSpecific.
         void startCompletion(const CompletionStartParams& completionStartParams);
         EmulatedCommandBar *m_emulatedCommandBar;
@@ -157,7 +188,6 @@ private:
         QLabel *m_interactiveSedReplaceLabel;
     };
 
-    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
 
     class SearchMode : public ActiveMode
     {
@@ -194,13 +224,13 @@ private:
     class CommandMode : public ActiveMode
     {
     public:
-        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode);
+        CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer);
         virtual ~CommandMode()
         {
         }
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-        void editTextChanged(const QString &newText, bool isNextTextChangeDueToCompletionChange);
+        void editTextChanged(const QString &newText);
         QString executeCommand(const QString &commandToExecute);
         CompletionStartParams completionInvoked(CompletionInvocation invocationType);
         void completionChosen();
@@ -241,6 +271,7 @@ private:
         InputModeManager *m_viInputModeManager = nullptr;
         KTextEditor::ViewPrivate *m_view;
         InteractiveSedReplaceMode *m_interactiveSedReplaceMode;
+        Completer *m_completer;
         KCompletion m_cmdCompletion;
         QHash<QString, KTextEditor::Command *> m_cmdDict;
         KTextEditor::Command *queryCommand(const QString &cmd) const;
@@ -251,33 +282,13 @@ private:
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
-    QCompleter *m_completer;
-    QStringListModel *m_completionModel;
-    bool m_isNextTextChangeDueToCompletionChange = false;
-    CompletionType m_currentCompletionType = None;
-    void updateCompletionPrefix();
-    void currentCompletionChanged();
-    bool m_completionActive;
-    QString m_textToRevertToIfCompletionAborted;
-    int m_cursorPosToRevertToIfCompletionAborted;
-    CompletionStartParams m_currentCompletionStartParams;
-
-    bool completerHandledKeypress(const QKeyEvent* keyEvent);
     bool barHandledKeypress(const QKeyEvent* keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
     void deleteSpacesToLeftOfCursor();
     void deleteWordCharsToLeftOfCursor();
     bool deleteNonWordCharsToLeftOfCursor();
-    QString wordBeforeCursor();
-    int wordBeforeCursorBegin();
-    void replaceWordBeforeCursorWith(const QString &newWord);
 
-    CompletionStartParams activateWordFromDocumentCompletion();
-    void startCompletion(const CompletionStartParams& completionStartParams);
-    void deactivateCompletion();
-    void abortCompletionAndResetToPreCompletion();
-    void setCompletionIndex(int index);
 
     void closed() Q_DECL_OVERRIDE;
     void closeWithStatusMessage(const QString& exitStatusMessage);
