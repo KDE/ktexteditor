@@ -99,10 +99,25 @@ private:
     };
     QScopedPointer<MatchHighlighter> m_matchHighligher;
 
-    enum CompletionType { None, SearchHistory, WordFromDocument, Commands, CommandHistory, SedFindHistory, SedReplaceHistory };
     struct CompletionStartParams
     {
-        bool shouldStart = false;
+        static CompletionStartParams createModeSpecific(const QStringList& completions, int wordStartPos, std::function<QString(const QString&)> completionTransform = std::function<QString(const QString&)>())
+        {
+            CompletionStartParams completionStartParams;
+            completionStartParams.completionType = ModeSpecific;
+            completionStartParams.completions = completions;
+            completionStartParams.wordStartPos = wordStartPos;
+            completionStartParams.completionTransform = completionTransform;
+            return completionStartParams;
+        }
+        static CompletionStartParams invalid()
+        {
+            CompletionStartParams completionStartParams;
+            completionStartParams.completionType = None;
+            return completionStartParams;
+        }
+        enum CompletionType { None, ModeSpecific, WordFromDocument };
+        CompletionType completionType = None;
         int wordStartPos = -1;
         QStringList completions;
         std::function<QString(const QString&)> completionTransform;
@@ -120,7 +135,6 @@ private:
         bool completerHandledKeypress(const QKeyEvent* keyEvent);
         void editTextChanged(const QString &newText);
         void setCurrentMode(ActiveMode* currentMode);
-        CompletionType m_currentCompletionType = None;
     private:
         QLineEdit *m_edit;
         KTextEditor::ViewPrivate *m_view;
@@ -140,6 +154,7 @@ private:
         int m_cursorPosToRevertToIfCompletionAborted;
         bool m_isNextTextChangeDueToCompletionChange = false;
         CompletionStartParams m_currentCompletionStartParams;
+        CompletionStartParams::CompletionType m_currentCompletionType = CompletionStartParams::None;
     };
     QScopedPointer<Completer> m_completer;
 
@@ -173,10 +188,6 @@ private:
         void updateMatchHighlight(const KTextEditor::Range &matchRange);
         void close(bool wasAborted);
         void closeWithStatusMessage(const QString& exitStatusMessage);
-        void setCompletionMode(CompletionType completionType)
-        {
-            m_emulatedCommandBar->m_completer->m_currentCompletionType = completionType;
-        }; // TODO - ultimately remove this - eventually, the upcoming Completion class will store the mode, and it will be one of None, WordUnderCursor, and ModeSpecific.
         void startCompletion(const CompletionStartParams& completionStartParams);
         EmulatedCommandBar *m_emulatedCommandBar;
     private:
