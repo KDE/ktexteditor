@@ -369,7 +369,15 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
 
     showBarTypeIndicator(mode);
 
-    m_searchMode->init(mode == SearchBackward ? SearchMode::SearchDirection::Backward : SearchMode::SearchDirection::Forward);
+    if (mode == KateVi::EmulatedCommandBar::SearchBackward || mode == SearchForward)
+    {
+        switchToMode(m_searchMode.data());
+        m_searchMode->init(mode == SearchBackward ? SearchMode::SearchDirection::Backward : SearchMode::SearchDirection::Forward);
+    }
+    else
+    {
+        switchToMode(m_commandMode.data());
+    }
 
     m_edit->setFocus();
     m_edit->setText(initialText);
@@ -402,13 +410,9 @@ void EmulatedCommandBar::closed()
     m_matchHighligher->updateMatchHighlight(KTextEditor::Range::invalid());
     m_completerTmp->m_completer->popup()->hide();
     m_isActive = false;
-    m_interactiveSedReplaceMode->deactivate();
 
-    if (m_mode == SearchForward || m_mode == SearchBackward) {
-        m_searchMode->deactivate(m_wasAborted);
-    } else {
-        m_commandMode->deactivate(m_wasAborted);
-    }
+    m_currentMode->deactivate(m_wasAborted);
+    m_currentMode = nullptr;
 }
 
 void EmulatedCommandBar::updateMatchHighlightAttrib()
@@ -435,12 +439,7 @@ bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
     }
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_P) || keyEvent->key() == Qt::Key_Down) {
         if (!m_completerTmp->m_completer->popup()->isVisible()) {
-            CompletionStartParams completionStartParams;
-            if (m_mode == Command) {
-                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::ExtraContext);
-            } else {
-                completionStartParams = m_searchMode->completionInvoked(CompletionInvocation::ExtraContext);
-            }
+            const CompletionStartParams completionStartParams = m_currentMode->completionInvoked(CompletionInvocation::ExtraContext);
             m_completerTmp->startCompletion(completionStartParams);
             if (m_completerTmp->m_currentCompletionType != None) {
                 m_completerTmp->setCompletionIndex(0);
@@ -457,12 +456,7 @@ bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
     }
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_N) || keyEvent->key() == Qt::Key_Up) {
         if (!m_completerTmp->m_completer->popup()->isVisible()) {
-            CompletionStartParams completionStartParams;
-            if (m_mode == Command) {
-                completionStartParams = m_commandMode->completionInvoked(CompletionInvocation::NormalContext);
-            } else {
-                completionStartParams = m_searchMode->completionInvoked(CompletionInvocation::NormalContext);
-            }
+            const CompletionStartParams completionStartParams = m_currentMode->completionInvoked(CompletionInvocation::NormalContext);
             m_completerTmp->startCompletion(completionStartParams);
             m_completerTmp->setCompletionIndex(m_completerTmp->m_completer->completionCount() - 1);
         } else {
@@ -476,20 +470,20 @@ bool EmulatedCommandBar::completerHandledKeypress ( const QKeyEvent* keyEvent )
         return true;
     }
     if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
-        if (m_completerTmp->m_completer->popup()->isVisible() && m_completerTmp->m_currentCompletionType == EmulatedCommandBar::WordFromDocument) {
-            m_completerTmp->deactivateCompletion();
-        } else {
-            m_wasAborted = false;
-            m_completerTmp->deactivateCompletion();
-            if (m_mode == Command) {
-                m_commandMode->completionChosen();
-            } else {
-                emit hideMe();
-            }
+        if (!m_completerTmp->m_completer->popup()->isVisible() || m_completerTmp->m_currentCompletionType != EmulatedCommandBar::WordFromDocument) {
+            m_currentMode->completionChosen();
         }
+        m_completerTmp->deactivateCompletion();
         return true;
     }
     return false;
+}
+
+void EmulatedCommandBar::switchToMode ( EmulatedCommandBar::ActiveMode* newMode )
+{
+    if (m_currentMode)
+        m_currentMode->deactivate(false);
+    m_currentMode = newMode;
 }
 
 bool EmulatedCommandBar::barHandledKeypress ( const QKeyEvent* keyEvent )
@@ -604,11 +598,6 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         insertRegisterContents(keyEvent);
         return true;
     }
-    if (m_interactiveSedReplaceMode->isActive()) {
-        const bool handled = m_interactiveSedReplaceMode->handleKeyPress(keyEvent);
-        if (handled)
-            return true;
-    }
     const bool completerHandled = completerHandledKeypress(keyEvent);
     if (completerHandled)
         return true;
@@ -624,11 +613,9 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
         return true;
 
     // Can the current mode handle it?
-    if (m_mode == Command) {
-        const bool commandModeHandled = m_commandMode->handleKeyPress(keyEvent);
-        if (commandModeHandled)
-            return true;
-    }
+    const bool currentModeHandled = m_currentMode->handleKeyPress(keyEvent);
+    if (currentModeHandled)
+        return true;
 
     // Couldn't handle this key event.
     // Send the keypress back to the QLineEdit.  Ideally, instead of doing this, we would simply return "false"
@@ -654,6 +641,7 @@ bool EmulatedCommandBar::isSendingSyntheticSearchCompletedKeypress()
 void EmulatedCommandBar::startInteractiveSearchAndReplace(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace)
 {
     Q_ASSERT_X(interactiveSedReplace->currentMatch().isValid(), "startInteractiveSearchAndReplace", "KateCommands shouldn't initiate an interactive sed replace with no initial match");
+    switchToMode(m_interactiveSedReplaceMode.data());
     m_interactiveSedReplaceMode->activate(interactiveSedReplace);
 }
 
@@ -686,7 +674,6 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
 {
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
-    m_interactiveSedReplaceMode->deactivate();
     m_exitStatusMessageDisplay->show();
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
     hideAllWidgetsExcept(m_exitStatusMessageDisplay);
@@ -706,14 +693,7 @@ void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 void EmulatedCommandBar::editTextChanged(const QString &newText)
 {
     Q_ASSERT(!m_interactiveSedReplaceMode->isActive());
-    if (m_mode == SearchForward || m_mode == SearchBackward) {
-        m_searchMode->editTextChanged(newText);
-    }
-    else
-    {
-        m_commandMode->editTextChanged(newText);
-    }
-
+    m_currentMode->editTextChanged(newText);
     m_completerTmp->editTextChanged(newText);
 }
 
@@ -760,6 +740,12 @@ void EmulatedCommandBar::ActiveMode::moveCursorTo(const KTextEditor::Cursor &cur
 void EmulatedCommandBar::ActiveMode::updateMatchHighlight(const KTextEditor::Range& matchRange)
 {
     m_matchHighligher->updateMatchHighlight(matchRange);
+}
+
+void EmulatedCommandBar::ActiveMode::close( bool wasAborted )
+{
+    m_emulatedCommandBar->m_wasAborted = wasAborted;
+    m_emulatedCommandBar->hideMe();
 }
 
 void EmulatedCommandBar::ActiveMode::closeWithStatusMessage(const QString& exitStatusMessage)
@@ -987,8 +973,9 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
     return false;
 }
 
-void EmulatedCommandBar::InteractiveSedReplaceMode::deactivate()
+void EmulatedCommandBar::InteractiveSedReplaceMode::deactivate( bool wasAborted )
 {
+    Q_UNUSED(wasAborted);
     m_isActive = false;
     m_interactiveSedReplaceLabel->hide();
 }
@@ -1005,7 +992,7 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::updateInteractiveSedReplaceL
 
 void EmulatedCommandBar::InteractiveSedReplaceMode::finishInteractiveSedReplace()
 {
-    deactivate();
+    deactivate(false);
     closeWithStatusMessage(m_interactiveSedReplacer->finalStatusReportMessage());
     m_interactiveSedReplacer.clear();
 }
@@ -1021,7 +1008,6 @@ EmulatedCommandBar::SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBa
 void EmulatedCommandBar::SearchMode::init ( EmulatedCommandBar::SearchMode::SearchDirection searchDirection)
 {
     m_searchDirection = searchDirection;
-    setBarBackground(SearchMode::Normal);
     m_startingCursorPos = m_view->cursorPosition();
 }
 
@@ -1096,6 +1082,7 @@ void EmulatedCommandBar::SearchMode::deactivate(bool wasAborted)
         }
     }
     m_startingCursorPos = KTextEditor::Cursor::invalid();
+    setBarBackground(SearchMode::Normal);
     // Send a synthetic keypress through the system that signals whether the search was aborted or
     // not.  If not, the keypress will "complete" the search motion, thus triggering it.
     // We send to KateViewInternal as it updates the status bar and removes the "?".
@@ -1112,14 +1099,18 @@ void EmulatedCommandBar::SearchMode::deactivate(bool wasAborted)
     // from Vim-style regex; without case-sensitivity markers stripped; etc.
     // Vim does this even if the search was aborted, so we follow suit.
     m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
-
-
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::completionInvoked ( EmulatedCommandBar::CompletionInvocation invocationType )
 {
     Q_UNUSED(invocationType);
     return activateSearchHistoryCompletion();
+}
+
+void EmulatedCommandBar::SearchMode::completionChosen()
+{
+    // Choose completion with Enter/ Return -> close bar (the search will have already taken effect at this point), marking as not aborted .
+    close(false);
 }
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::activateSearchHistoryCompletion()
@@ -1273,6 +1264,7 @@ void EmulatedCommandBar::CommandMode::completionChosen()
     }
 
     const QString commandResponseMessage = executeCommand(commandToExecute);
+    // Don't close the bar if executing the command switched us to Interactive Sed Replace mode.
     if (!m_interactiveSedReplaceMode->isActive()) {
         if (commandResponseMessage.isEmpty()) {
             m_emulatedCommandBar->hideMe();

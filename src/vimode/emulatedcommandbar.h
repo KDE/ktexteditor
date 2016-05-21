@@ -148,11 +148,25 @@ private:
         }
         virtual ~ActiveMode() = 0;
         virtual bool handleKeyPress(const QKeyEvent *keyEvent) = 0;
+        virtual void editTextChanged(const QString &newText)
+        {
+            Q_UNUSED(newText);
+        }
+        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType)
+        {
+            Q_UNUSED(invocationType);
+            return CompletionStartParams();
+        };
+        virtual void completionChosen()
+        {
+        }
+        virtual void deactivate(bool wasAborted) = 0;
     protected:
         // Helper methods.
         void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
         void moveCursorTo(const KTextEditor::Cursor &cursorPos);
         void updateMatchHighlight(const KTextEditor::Range &matchRange);
+        void close(bool wasAborted);
         void closeWithStatusMessage(const QString& exitStatusMessage);
         void setCompletionMode(CompletionType completionType)
         {
@@ -178,7 +192,7 @@ private:
             return m_isActive;
         }
         virtual bool handleKeyPress(const QKeyEvent* keyEvent);
-        void deactivate();
+        virtual void deactivate(bool wasAborted);
         QWidget *label();
     private:
         void updateInteractiveSedReplaceLabelText();
@@ -200,9 +214,10 @@ private:
         void init(SearchDirection);
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-        void editTextChanged(const QString &newText);
-        CompletionStartParams completionInvoked(CompletionInvocation invocationType);
-        void deactivate(bool wasAborted);
+        virtual void editTextChanged(const QString &newText);
+        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType);
+        virtual void completionChosen();
+        virtual void deactivate(bool wasAborted);
         bool isSendingSyntheticSearchCompletedKeypress() const
         {
             return m_isSendingSyntheticSearchCompletedKeypress;
@@ -230,11 +245,11 @@ private:
         }
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-        void editTextChanged(const QString &newText);
+        virtual void editTextChanged(const QString &newText);
+        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType);
+        virtual void completionChosen();
         void deactivate(bool wasAborted);
         QString executeCommand(const QString &commandToExecute);
-        CompletionStartParams completionInvoked(CompletionInvocation invocationType);
-        void completionChosen();
     private:
         CompletionStartParams activateCommandCompletion();
         CompletionStartParams activateCommandHistoryCompletion();
@@ -282,6 +297,9 @@ private:
     QScopedPointer<CommandMode> m_commandMode;
 
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
+
+    void switchToMode(ActiveMode *newMode);
+    ActiveMode *m_currentMode = nullptr;
 
     bool barHandledKeypress(const QKeyEvent* keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
