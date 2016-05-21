@@ -877,7 +877,6 @@ void EmulatedCommandBar::Completer::updateCompletionPrefix()
 
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::Completer::activateWordFromDocumentCompletion()
 {
-    m_currentCompletionType = EmulatedCommandBar::CompletionStartParams::WordFromDocument;
     QRegExp wordRegEx(QLatin1String("\\w{1,}"));
     QStringList foundWords;
     // Narrow the range of lines we search around the cursor so that we don't die on huge files.
