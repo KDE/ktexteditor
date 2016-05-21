@@ -565,12 +565,13 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     // is not dispatched from within KateViInputModeHandler::handleKeypress(...)
     // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
     // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
-    m_suspendEditEventFiltering = true;
-    QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
-    if (!m_interactiveSedReplaceMode->isActive()) {
+    if (m_edit->isVisible())
+    {
+        m_suspendEditEventFiltering = true;
+        QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
         qApp->notify(m_edit, &keyEventCopy);
+        m_suspendEditEventFiltering = false;
     }
-    m_suspendEditEventFiltering = false;
     return true;
 }
 
