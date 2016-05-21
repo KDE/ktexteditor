@@ -107,16 +107,25 @@ private:
         QStringList completions;
         std::function<QString(const QString&)> completionTransform;
     };
-    bool completerHandledKeypress(const QKeyEvent* keyEvent);
+    class ActiveMode;
     class Completer
     {
     public:
+        enum class CompletionInvocation { ExtraContext, NormalContext };
         Completer(EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit);
         void startCompletion(const CompletionStartParams& completionStartParams);
         void deactivateCompletion();
         bool isCompletionActive() const;
         bool isNextTextChangeDueToCompletionChange() const;
+        bool completerHandledKeypress(const QKeyEvent* keyEvent);
         void editTextChanged(const QString &newText);
+        void setCurrentMode(ActiveMode* currentMode);
+        CompletionType m_currentCompletionType = None;
+    private:
+        QLineEdit *m_edit;
+        KTextEditor::ViewPrivate *m_view;
+        ActiveMode *m_currentMode = nullptr;
+
         void setCompletionIndex(int index);
         void currentCompletionChanged();
         void updateCompletionPrefix();
@@ -124,19 +133,15 @@ private:
         QString wordBeforeCursor();
         int wordBeforeCursorBegin();
         void abortCompletionAndResetToPreCompletion();
+
         QCompleter *m_completer;
         QStringListModel *m_completionModel;
         QString m_textToRevertToIfCompletionAborted;
         int m_cursorPosToRevertToIfCompletionAborted;
         bool m_isNextTextChangeDueToCompletionChange = false;
         CompletionStartParams m_currentCompletionStartParams;
-        CompletionType m_currentCompletionType = None;
-    private:
-        QLineEdit *m_edit;
-        KTextEditor::ViewPrivate *m_view;
     };
-    enum class CompletionInvocation { ExtraContext, NormalContext }; // TODO - make member of upcoming Completer class.
-    QScopedPointer<Completer> m_completerTmp;
+    QScopedPointer<Completer> m_completer;
 
     class ActiveMode
     {
@@ -152,7 +157,7 @@ private:
         {
             Q_UNUSED(newText);
         }
-        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType)
+        virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType)
         {
             Q_UNUSED(invocationType);
             return CompletionStartParams();
@@ -170,7 +175,7 @@ private:
         void closeWithStatusMessage(const QString& exitStatusMessage);
         void setCompletionMode(CompletionType completionType)
         {
-            m_emulatedCommandBar->m_completerTmp->m_currentCompletionType = completionType;
+            m_emulatedCommandBar->m_completer->m_currentCompletionType = completionType;
         }; // TODO - ultimately remove this - eventually, the upcoming Completion class will store the mode, and it will be one of None, WordUnderCursor, and ModeSpecific.
         void startCompletion(const CompletionStartParams& completionStartParams);
         EmulatedCommandBar *m_emulatedCommandBar;
@@ -215,7 +220,7 @@ private:
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         virtual void editTextChanged(const QString &newText);
-        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType);
+        virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
         virtual void completionChosen();
         virtual void deactivate(bool wasAborted);
         bool isSendingSyntheticSearchCompletedKeypress() const
@@ -246,7 +251,7 @@ private:
         void setViInputModeManager(InputModeManager *viInputModeManager);
         virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
         virtual void editTextChanged(const QString &newText);
-        virtual CompletionStartParams completionInvoked(CompletionInvocation invocationType);
+        virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
         virtual void completionChosen();
         void deactivate(bool wasAborted);
         QString executeCommand(const QString &commandToExecute);
