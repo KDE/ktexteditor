@@ -942,7 +942,6 @@ void EmulatedCommandBar::InteractiveSedReplaceMode::activate(QSharedPointer<SedR
 
 bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
 {
-    qDebug() << "InteractiveSedReplaceMode::handleKeypress";
     // TODO - it would be better to use e.g. keyEvent->key() == Qt::Key_Y instead of keyEvent->text() == "y",
     // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
     // with mappings and macros.
@@ -961,24 +960,19 @@ bool EmulatedCommandBar::InteractiveSedReplaceMode::handleKeyPress(const QKeyEve
             moveCursorTo(cursorPosIfFinalMatch);
             finishInteractiveSedReplace();
         }
-        qDebug() << "y/n";
         return true;
     } else if (keyEvent->text() == QLatin1String("l")) {
         m_interactiveSedReplacer->replaceCurrentMatch();
         finishInteractiveSedReplace();
-        qDebug() << "l";
         return true;
     } else if (keyEvent->text() == QLatin1String("q")) {
         finishInteractiveSedReplace();
-        qDebug() << "q";
         return true;
     } else if (keyEvent->text() == QLatin1String("a")) {
         m_interactiveSedReplacer->replaceAllRemaining();
         finishInteractiveSedReplace();
-        qDebug() << "a";
         return true;
     }
-    qDebug() << "Returning false";
     return false;
 }
 
