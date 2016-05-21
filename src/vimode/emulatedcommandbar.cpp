@@ -1452,14 +1452,6 @@ int EmulatedCommandBar::CommandMode::commandBeforeCursorBegin()
     return commandBeforeCursorBegin;
 }
 
-void EmulatedCommandBar::CommandMode::replaceCommandBeforeCursorWith ( const QString& newCommand )
-{
-    const QString newText = m_edit->text().left(commandBeforeCursorBegin()) +
-                            newCommand +
-                            m_edit->text().mid(m_edit->cursorPosition());
-    m_edit->setText(newText);
-}
-
 EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activateCommandCompletion()
 {
     return CompletionStartParams::createModeSpecific(m_cmdCompletion.items(), commandBeforeCursorBegin());
