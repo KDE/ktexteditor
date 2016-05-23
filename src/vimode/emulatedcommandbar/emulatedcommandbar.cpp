@@ -324,9 +324,6 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     layout->addWidget(m_waitingForRegisterIndicator);
 
     m_matchHighligher.reset(new MatchHighlighter(m_view));
-    //  TODO - ultimately, move this connect into MatchHighlighter.
-    connect(m_view, SIGNAL(configChanged()),
-            this, SLOT(updateMatchHighlightAttrib()));
 
     m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data()));
     layout->addWidget(m_interactiveSedReplaceMode->label());
@@ -412,11 +409,6 @@ void EmulatedCommandBar::closed()
 
     m_currentMode->deactivate(m_wasAborted);
     m_currentMode = nullptr;
-}
-
-void EmulatedCommandBar::updateMatchHighlightAttrib()
-{
-    m_matchHighligher->updateMatchHighlightAttrib();
 }
 
 void EmulatedCommandBar::switchToMode ( EmulatedCommandBar::ActiveMode* newMode )

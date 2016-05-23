@@ -318,11 +318,8 @@ private:
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;
     long m_exitStatusMessageHideTimeOutMS = 4000;
-private:
-
 private Q_SLOTS:
     void editTextChanged(const QString &newText);
-    void updateMatchHighlightAttrib();
     void startHideExitStatusMessageTimer();
 };
 
