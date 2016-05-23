@@ -279,6 +279,7 @@ if (BUILD_VIMODE)
     vimode/emulatedcommandbar/matchhighlighter.cpp
     vimode/emulatedcommandbar/completer.cpp
     vimode/emulatedcommandbar/activemode.cpp
+    vimode/emulatedcommandbar/interactivesedreplacemode.cpp
     vimode/commandrangeexpressionparser.cpp
     vimode/keymapper.cpp
     vimode/marks.cpp

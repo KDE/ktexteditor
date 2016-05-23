@@ -39,6 +39,7 @@ class QLabel;
 namespace KateVi
 {
 class MatchHighlighter;
+class InteractiveSedReplaceMode;
 
 /**
  * A KateViewBarWidget that attempts to emulate some of the features of Vim's own command bar,
@@ -82,36 +83,9 @@ private:
 
     void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
 
+    friend class ActiveMode;
     QScopedPointer<MatchHighlighter> m_matchHighligher;
-
-    friend class ActiveMode;
     QScopedPointer<Completer> m_completer;
-
-    friend class ActiveMode;
-
-    class InteractiveSedReplaceMode : public ActiveMode
-    {
-    public:
-        InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
-        virtual ~InteractiveSedReplaceMode()
-        {
-        };
-        void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
-        bool isActive() const
-        {
-            return m_isActive;
-        }
-        virtual bool handleKeyPress(const QKeyEvent* keyEvent);
-        virtual void deactivate(bool wasAborted);
-        QWidget *label();
-    private:
-        void updateInteractiveSedReplaceLabelText();
-        void finishInteractiveSedReplace();
-        QSharedPointer<SedReplace::InteractiveSedReplacer> m_interactiveSedReplacer;
-        bool m_isActive;
-        QLabel *m_interactiveSedReplaceLabel;
-    };
-
 
     class SearchMode : public ActiveMode
     {

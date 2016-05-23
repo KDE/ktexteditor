@@ -9,7 +9,7 @@ CompletionStartParams ActiveMode::completionInvoked(Completer::CompletionInvocat
 {
     Q_UNUSED(invocationType);
     return CompletionStartParams();
-};
+}
 
 ActiveMode::~ActiveMode()
 {
