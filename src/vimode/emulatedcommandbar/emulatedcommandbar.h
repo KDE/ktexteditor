@@ -25,7 +25,6 @@
 #include <vimode/cmds.h>
 
 #include <ktexteditor/range.h>
-#include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
 #include "../searcher.h"
 
@@ -42,6 +41,7 @@ class QStringListModel;
 
 namespace KateVi
 {
+class MatchHighlighter;
 
 /**
  * A KateViewBarWidget that attempts to emulate some of the features of Vim's own command bar,
@@ -85,18 +85,6 @@ private:
 
     void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
 
-    class MatchHighlighter
-    {
-    public:
-        MatchHighlighter(KTextEditor::ViewPrivate* view);
-        ~MatchHighlighter();
-        void updateMatchHighlight(const KTextEditor::Range &matchRange);
-        void updateMatchHighlightAttrib(); //  TODO - make a private slot.
-    private:
-        KTextEditor::ViewPrivate *m_view;
-        KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
-        KTextEditor::MovingRange *m_highlightedMatch;
-    };
     QScopedPointer<MatchHighlighter> m_matchHighligher;
 
     struct CompletionStartParams

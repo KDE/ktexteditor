@@ -20,7 +20,6 @@
 
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
-#include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "../commandrangeexpressionparser.h"
@@ -29,6 +28,7 @@
 #include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/normalvimode.h>
+#include "matchhighlighter.h"
 
 #include <vimode/cmds.h>
 #include <vimode/modes/visualvimode.h>
@@ -1140,7 +1140,7 @@ void EmulatedCommandBar::SearchMode::setBarBackground ( EmulatedCommandBar::Sear
     m_edit->setPalette(barBackground);
 }
 
-EmulatedCommandBar::CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, EmulatedCommandBar::MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer)
+EmulatedCommandBar::CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer)
     : ActiveMode ( emulatedCommandBar, matchHighlighter ),
       m_edit(edit),
       m_view(view),
@@ -1511,40 +1511,3 @@ KTextEditor::Command* EmulatedCommandBar::CommandMode::queryCommand ( const QStr
     return m_cmdDict.value(cmd.left(f));
 
 }
-
-EmulatedCommandBar::MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
-    : m_view(view)
-{
-    updateMatchHighlightAttrib();
-    m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
-    m_highlightedMatch->setView(m_view); // Show only in this view.
-    m_highlightedMatch->setAttributeOnlyForViews(true);
-    // Use z depth defined in moving ranges interface.
-    m_highlightedMatch->setZDepth(-10000.0);
-    m_highlightedMatch->setAttribute(m_highlightMatchAttribute);
-}
-
-EmulatedCommandBar::MatchHighlighter::~MatchHighlighter()
-{
-    delete m_highlightedMatch;
-}
-
-void EmulatedCommandBar::MatchHighlighter::updateMatchHighlight ( const KTextEditor::Range& matchRange )
-{
-    // Note that if matchRange is invalid, the highlight will not be shown, so we
-    // don't need to check for that explicitly.
-    m_highlightedMatch->setRange(matchRange);
-}
-
-void EmulatedCommandBar::MatchHighlighter::updateMatchHighlightAttrib()
-{
-    const QColor &matchColour = m_view->renderer()->config()->searchHighlightColor();
-    if (!m_highlightMatchAttribute) {
-        m_highlightMatchAttribute = new KTextEditor::Attribute;
-    }
-    m_highlightMatchAttribute->setBackground(matchColour);
-    KTextEditor::Attribute::Ptr mouseInAttribute(new KTextEditor::Attribute());
-    m_highlightMatchAttribute->setDynamicAttribute(KTextEditor::Attribute::ActivateMouseIn, mouseInAttribute);
-    m_highlightMatchAttribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)->setBackground(matchColour);
-}
-
