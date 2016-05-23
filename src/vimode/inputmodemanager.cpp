@@ -41,7 +41,7 @@
 #include <vimode/modes/replacevimode.h>
 #include <vimode/keyparser.h>
 #include <vimode/keymapper.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include "kateviinputmode.h"
 #include "marks.h"
 #include "jumps.h"

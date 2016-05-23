@@ -27,7 +27,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/movingrange.h>
-#include "searcher.h"
+#include "../searcher.h"
 
 #include <functional>
 

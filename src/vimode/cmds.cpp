@@ -26,7 +26,7 @@
 #include "kateview.h"
 #include "kateglobal.h"
 #include <vimode/modes/normalvimode.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include "katecmd.h"
 #include "katepartdebug.h"
 #include "kateviinputmode.h"

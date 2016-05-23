@@ -18,14 +18,14 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "commandrangeexpressionparser.h"
+#include "../commandrangeexpressionparser.h"
 #include "kateview.h"
-#include "globalstate.h"
+#include "../globalstate.h"
 #include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/normalvimode.h>
@@ -33,12 +33,12 @@
 #include <vimode/cmds.h>
 #include <vimode/modes/visualvimode.h>
 #include <vimode/appcommands.h>
-#include "history.h"
+#include "../history.h"
 
 #include "katecmds.h"
 #include "katescriptmanager.h"
-#include "registers.h"
-#include "searcher.h"
+#include "../registers.h"
+#include "../searcher.h"
 
 #include <KColorScheme>
 #include <KLocalizedString>

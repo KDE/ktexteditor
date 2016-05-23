@@ -21,7 +21,7 @@
 #include <vimode/mappings.h>
 #include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
 using namespace KateVi;
 

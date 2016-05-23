@@ -23,7 +23,7 @@
 #include <kateconfig.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <inputmode/kateviinputmode.h>
 #include "keys.h"
 #include "emulatedcommandbarsetupandteardown.h"

@@ -22,7 +22,7 @@
 #include <katecompletionwidget.h>
 #include <kateconfig.h>
 #include <kateglobal.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <katewordcompletion.h>
 #include "completion.h"
 #include "fakecodecompletiontestmodel.h"

@@ -29,7 +29,7 @@
 #include "katepartdebug.h"
 #include "kateundomanager.h"
 #include <vimode/command.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include "kateviewhelpers.h"
 #include "kateviewinternal.h"
 #include <vimode/globalstate.h>

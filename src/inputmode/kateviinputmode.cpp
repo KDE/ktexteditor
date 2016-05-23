@@ -20,7 +20,7 @@
 #include "kateviewinternal.h"
 #include "kateconfig.h"
 #include <vimode/inputmodemanager.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/modes/replacevimode.h>
 #include <vimode/modes/visualvimode.h>
 #include <vimode/marks.h>

@@ -3,7 +3,7 @@
 #include <kateconfig.h>
 #include <kateview.h>
 #include <inputmode/kateviinputmode.h>
-#include <vimode/emulatedcommandbar.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
 #include <QMainWindow>
 #include <QApplication>
