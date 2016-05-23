@@ -97,8 +97,6 @@ private:
     void switchToMode(ActiveMode *newMode);
     ActiveMode *m_currentMode = nullptr;
 
-    void moveCursorTo(const KTextEditor::Cursor &cursorPos);
-
     bool barHandledKeypress(const QKeyEvent* keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
     bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;

@@ -18,7 +18,7 @@ class MatchHighlighter;
 class InteractiveSedReplaceMode : public ActiveMode
 {
 public:
-    InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter);
+    InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view);
     virtual ~InteractiveSedReplaceMode()
     {
     };

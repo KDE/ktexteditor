@@ -22,11 +22,10 @@ class InputModeManager;
 class CommandMode : public ActiveMode
 {
 public:
-    CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer);
+    CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer);
     virtual ~CommandMode()
     {
     }
-    void setViInputModeManager(InputModeManager *viInputModeManager);
     virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
     virtual void editTextChanged(const QString &newText);
     virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
@@ -67,8 +66,6 @@ private:
     void replaceCommandBeforeCursorWith(const QString &newCommand);
     int commandBeforeCursorBegin();
     QLineEdit *m_edit;
-    InputModeManager *m_viInputModeManager = nullptr;
-    KTextEditor::ViewPrivate *m_view;
     InteractiveSedReplaceMode *m_interactiveSedReplaceMode;
     Completer *m_completer;
     KCompletion m_cmdCompletion;

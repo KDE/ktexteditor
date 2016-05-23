@@ -21,10 +21,9 @@
 
 using namespace KateVi;
 
-CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer)
-    : ActiveMode ( emulatedCommandBar, matchHighlighter ),
+CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit, InteractiveSedReplaceMode* interactiveSedReplaceMode, Completer* completer)
+    : ActiveMode ( emulatedCommandBar, matchHighlighter, viInputModeManager, view),
       m_edit(edit),
-      m_view(view),
       m_interactiveSedReplaceMode(interactiveSedReplaceMode),
       m_completer(completer)
 {
@@ -49,11 +48,6 @@ CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighligh
 
         m_cmdCompletion.insertItems(l);
     }
-}
-
-void CommandMode::setViInputModeManager ( InputModeManager* viInputModeManager )
-{
-    m_viInputModeManager = viInputModeManager;
 }
 
 bool CommandMode::handleKeyPress ( const QKeyEvent* keyEvent )

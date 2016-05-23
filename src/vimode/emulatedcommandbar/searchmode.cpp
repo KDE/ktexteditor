@@ -231,10 +231,9 @@ QStringList KateVi::reversed(const QStringList &originalList)
     return reversedList;
 }
 
-SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view, QLineEdit* edit)
-    : ActiveMode ( emulatedCommandBar, matchHighlighter),
+SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit)
+    : ActiveMode ( emulatedCommandBar, matchHighlighter, viInputModeManager, view),
       m_emulatedCommandBar(emulatedCommandBar),
-      m_view(view),
       m_edit(edit)
 {
 }
@@ -243,11 +242,6 @@ void SearchMode::init ( SearchMode::SearchDirection searchDirection)
 {
     m_searchDirection = searchDirection;
     m_startingCursorPos = m_view->cursorPosition();
-}
-
-void SearchMode::setViInputModeManager ( InputModeManager* viInputModeManager )
-{
-    m_viInputModeManager = viInputModeManager;
 }
 
 bool SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )

@@ -21,13 +21,12 @@ QStringList reversed(const QStringList &originalList);
 class SearchMode : public ActiveMode
 {
 public:
-    SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view, QLineEdit* edit);
+    SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit);
     virtual ~SearchMode()
     {
     };
     enum class SearchDirection { Forward, Backward };
     void init(SearchDirection);
-    void setViInputModeManager(InputModeManager *viInputModeManager);
     virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
     virtual void editTextChanged(const QString &newText);
     virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
@@ -39,8 +38,6 @@ public:
     }
 private:
     EmulatedCommandBar *m_emulatedCommandBar = nullptr;
-    KTextEditor::ViewPrivate *m_view = nullptr;
-    InputModeManager *m_viInputModeManager = nullptr;
     QLineEdit *m_edit = nullptr;
     SearchDirection m_searchDirection;
     KTextEditor::Cursor m_startingCursorPos;

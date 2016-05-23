@@ -3,12 +3,22 @@
 #include "emulatedcommandbar.h"
 #include "matchhighlighter.h"
 
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/visualvimode.h>
+
+#include "kateview.h"
+
 using namespace KateVi;
 
 CompletionStartParams ActiveMode::completionInvoked(Completer::CompletionInvocation invocationType)
 {
     Q_UNUSED(invocationType);
     return CompletionStartParams();
+}
+
+void ActiveMode::setViInputModeManager(InputModeManager* viInputModeManager)
+{
+    m_viInputModeManager = viInputModeManager;
 }
 
 ActiveMode::~ActiveMode()
@@ -19,11 +29,6 @@ ActiveMode::~ActiveMode()
 void ActiveMode::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
 {
     m_emulatedCommandBar->hideAllWidgetsExcept(widgetToKeepVisible);
-}
-
-void ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
-{
-    m_emulatedCommandBar->moveCursorTo(cursorPos);
 }
 
 void ActiveMode::updateMatchHighlight(const KTextEditor::Range& matchRange)
@@ -45,5 +50,15 @@ void ActiveMode::closeWithStatusMessage(const QString& exitStatusMessage)
 void ActiveMode::startCompletion ( const CompletionStartParams& completionStartParams )
 {
     m_emulatedCommandBar->m_completer->startCompletion(completionStartParams);
+}
+
+void ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
+{
+    m_view->setCursorPosition(cursorPos);
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode ||
+        m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
+
+        m_viInputModeManager->getViVisualMode()->goToPos(cursorPos);
+    }
 }
 

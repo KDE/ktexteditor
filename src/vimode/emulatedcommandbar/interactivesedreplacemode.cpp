@@ -5,8 +5,8 @@
 
 using namespace KateVi;
 
-InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
-    : ActiveMode(emulatedCommandBar, matchHighlighter),
+InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view)
+    : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view),
       m_isActive(false)
 {
     m_interactiveSedReplaceLabel = new QLabel();

@@ -33,7 +33,6 @@
 #include "searchmode.h"
 #include "commandmode.h"
 
-#include <vimode/modes/visualvimode.h>
 #include "../history.h"
 
 #include "../registers.h"
@@ -98,16 +97,16 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
 
     m_matchHighligher.reset(new MatchHighlighter(m_view));
 
-    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data()));
+    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view));
     layout->addWidget(m_interactiveSedReplaceMode->label());
 
     m_completer.reset(new Completer(this, m_view, m_edit));
 
-    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_view, m_edit));
+    m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit));
     m_searchMode->setViInputModeManager(viInputModeManager);
 
 
-    m_commandMode.reset(new CommandMode(this, m_matchHighligher.data(), m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
+    m_commandMode.reset(new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
 
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
@@ -385,16 +384,6 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
     hideAllWidgetsExcept(m_exitStatusMessageDisplay);
     m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
-}
-
-void EmulatedCommandBar::moveCursorTo(const KTextEditor::Cursor &cursorPos)
-{
-    m_view->setCursorPosition(cursorPos);
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode ||
-        m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
-
-        m_viInputModeManager->getViVisualMode()->goToPos(cursorPos);
-    }
 }
 
 void EmulatedCommandBar::editTextChanged(const QString &newText)
