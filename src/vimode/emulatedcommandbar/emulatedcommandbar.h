@@ -27,8 +27,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/movingrange.h>
 #include "../searcher.h"
-
-#include <functional>
+#include "completer.h"
 
 namespace KTextEditor {
     class ViewPrivate;
@@ -87,29 +86,6 @@ private:
 
     QScopedPointer<MatchHighlighter> m_matchHighligher;
 
-    struct CompletionStartParams
-    {
-        static CompletionStartParams createModeSpecific(const QStringList& completions, int wordStartPos, std::function<QString(const QString&)> completionTransform = std::function<QString(const QString&)>())
-        {
-            CompletionStartParams completionStartParams;
-            completionStartParams.completionType = ModeSpecific;
-            completionStartParams.completions = completions;
-            completionStartParams.wordStartPos = wordStartPos;
-            completionStartParams.completionTransform = completionTransform;
-            return completionStartParams;
-        }
-        static CompletionStartParams invalid()
-        {
-            CompletionStartParams completionStartParams;
-            completionStartParams.completionType = None;
-            return completionStartParams;
-        }
-        enum CompletionType { None, ModeSpecific, WordFromDocument };
-        CompletionType completionType = None;
-        int wordStartPos = -1;
-        QStringList completions;
-        std::function<QString(const QString&)> completionTransform;
-    };
     class ActiveMode;
     class Completer
     {

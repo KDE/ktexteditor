@@ -687,7 +687,7 @@ void EmulatedCommandBar::ActiveMode::closeWithStatusMessage(const QString& exitS
     m_emulatedCommandBar->closeWithStatusMessage(exitStatusMessage);
 }
 
-void EmulatedCommandBar::ActiveMode::startCompletion ( const EmulatedCommandBar::CompletionStartParams& completionStartParams )
+void EmulatedCommandBar::ActiveMode::startCompletion ( const CompletionStartParams& completionStartParams )
 {
     m_emulatedCommandBar->m_completer->startCompletion(completionStartParams);
 }
@@ -715,9 +715,9 @@ EmulatedCommandBar::Completer::Completer ( EmulatedCommandBar* emulatedCommandBa
     m_completer->popup()->installEventFilter(emulatedCommandBar);
 }
 
-void EmulatedCommandBar::Completer::startCompletion ( const EmulatedCommandBar::CompletionStartParams& completionStartParams )
+void EmulatedCommandBar::Completer::startCompletion ( const CompletionStartParams& completionStartParams )
 {
-    if (completionStartParams.completionType != EmulatedCommandBar::CompletionStartParams::None)
+    if (completionStartParams.completionType != CompletionStartParams::None)
     {
         m_completionModel->setStringList(completionStartParams.completions);
         const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
@@ -731,12 +731,12 @@ void EmulatedCommandBar::Completer::startCompletion ( const EmulatedCommandBar::
 void EmulatedCommandBar::Completer::deactivateCompletion()
 {
     m_completer->popup()->hide();
-    m_currentCompletionType = EmulatedCommandBar::CompletionStartParams::None;
+    m_currentCompletionType = CompletionStartParams::None;
 }
 
 bool EmulatedCommandBar::Completer::isCompletionActive() const
 {
-    return m_currentCompletionType != EmulatedCommandBar::CompletionStartParams::None;
+    return m_currentCompletionType != CompletionStartParams::None;
 }
 
 bool EmulatedCommandBar::Completer::isNextTextChangeDueToCompletionChange() const
@@ -751,7 +751,7 @@ bool EmulatedCommandBar::Completer::completerHandledKeypress ( const QKeyEvent* 
 
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft))
     {
-        if (m_currentCompletionType != EmulatedCommandBar::CompletionStartParams::None && m_completer->popup()->isVisible())
+        if (m_currentCompletionType != CompletionStartParams::None && m_completer->popup()->isVisible())
         {
             abortCompletionAndResetToPreCompletion();
             return true;
@@ -766,7 +766,7 @@ bool EmulatedCommandBar::Completer::completerHandledKeypress ( const QKeyEvent* 
         if (!m_completer->popup()->isVisible()) {
             const CompletionStartParams completionStartParams = m_currentMode->completionInvoked(CompletionInvocation::ExtraContext);
             startCompletion(completionStartParams);
-            if (m_currentCompletionType != EmulatedCommandBar::CompletionStartParams::None) {
+            if (m_currentCompletionType != CompletionStartParams::None) {
                 setCompletionIndex(0);
             }
         } else {
@@ -795,7 +795,7 @@ bool EmulatedCommandBar::Completer::completerHandledKeypress ( const QKeyEvent* 
         return true;
     }
     if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
-        if (!m_completer->popup()->isVisible() || m_currentCompletionType != EmulatedCommandBar::CompletionStartParams::WordFromDocument) {
+        if (!m_completer->popup()->isVisible() || m_currentCompletionType != CompletionStartParams::WordFromDocument) {
             m_currentMode->completionChosen();
         }
         deactivateCompletion();
@@ -817,7 +817,7 @@ void EmulatedCommandBar::Completer::editTextChanged ( const QString& newText )
         deactivateCompletion();
     }
 
-    if (m_currentCompletionType != EmulatedCommandBar::CompletionStartParams::None && !m_isNextTextChangeDueToCompletionChange) {
+    if (m_currentCompletionType != CompletionStartParams::None && !m_isNextTextChangeDueToCompletionChange) {
         updateCompletionPrefix();
     }
 }
@@ -867,7 +867,7 @@ void EmulatedCommandBar::Completer::updateCompletionPrefix()
     m_completer->complete();
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::Completer::activateWordFromDocumentCompletion()
+CompletionStartParams EmulatedCommandBar::Completer::activateWordFromDocumentCompletion()
 {
     QRegExp wordRegEx(QLatin1String("\\w{1,}"));
     QStringList foundWords;
@@ -885,7 +885,7 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::Completer::activat
     foundWords = QSet<QString>::fromList(foundWords).toList();
     qSort(foundWords.begin(), foundWords.end(), caseInsensitiveLessThan);
     CompletionStartParams completionStartParams;
-    completionStartParams.completionType = EmulatedCommandBar::CompletionStartParams::WordFromDocument;
+    completionStartParams.completionType = CompletionStartParams::WordFromDocument;
     completionStartParams.completions = foundWords;
     completionStartParams.wordStartPos = wordBeforeCursorBegin();
     return completionStartParams;
@@ -1095,7 +1095,7 @@ void EmulatedCommandBar::SearchMode::deactivate(bool wasAborted)
     m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::completionInvoked ( EmulatedCommandBar::Completer::CompletionInvocation invocationType )
+CompletionStartParams EmulatedCommandBar::SearchMode::completionInvoked ( EmulatedCommandBar::Completer::CompletionInvocation invocationType )
 {
     Q_UNUSED(invocationType);
     return activateSearchHistoryCompletion();
@@ -1107,7 +1107,7 @@ void EmulatedCommandBar::SearchMode::completionChosen()
     close(false);
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::SearchMode::activateSearchHistoryCompletion()
+CompletionStartParams EmulatedCommandBar::SearchMode::activateSearchHistoryCompletion()
 {
     return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->searchHistory()->items()), 0);
 }
@@ -1217,7 +1217,7 @@ void EmulatedCommandBar::CommandMode::deactivate ( bool wasAborted )
 
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::completionInvoked(EmulatedCommandBar::Completer::CompletionInvocation invocationType)
+CompletionStartParams EmulatedCommandBar::CommandMode::completionInvoked(EmulatedCommandBar::Completer::CompletionInvocation invocationType)
 {
     CompletionStartParams completionStartParams;
     if (invocationType == EmulatedCommandBar::Completer::CompletionInvocation::ExtraContext)
@@ -1444,17 +1444,17 @@ int EmulatedCommandBar::CommandMode::commandBeforeCursorBegin()
     return commandBeforeCursorBegin;
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activateCommandCompletion()
+CompletionStartParams EmulatedCommandBar::CommandMode::activateCommandCompletion()
 {
     return CompletionStartParams::createModeSpecific(m_cmdCompletion.items(), commandBeforeCursorBegin());
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activateCommandHistoryCompletion()
+CompletionStartParams EmulatedCommandBar::CommandMode::activateCommandHistoryCompletion()
 {
     return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->commandHistory()->items()), 0);
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activateSedFindHistoryCompletion()
+CompletionStartParams EmulatedCommandBar::CommandMode::activateSedFindHistoryCompletion()
 {
     if (m_viInputModeManager->globalState()->searchHistory()->isEmpty())
     {
@@ -1466,7 +1466,7 @@ EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activ
                                                      [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); });
 }
 
-EmulatedCommandBar::CompletionStartParams EmulatedCommandBar::CommandMode::activateSedReplaceHistoryCompletion()
+CompletionStartParams EmulatedCommandBar::CommandMode::activateSedReplaceHistoryCompletion()
 {
     if (m_viInputModeManager->globalState()->replaceHistory()->isEmpty())
     {
