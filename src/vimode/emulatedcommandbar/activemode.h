@@ -24,7 +24,7 @@ class ActiveMode
 public:
     ActiveMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
     : m_emulatedCommandBar(emulatedCommandBar),
-    m_matchHighligher(matchHighlighter)
+      m_matchHighligher(matchHighlighter)
     {
     }
     virtual ~ActiveMode() = 0;
@@ -46,9 +46,9 @@ protected:
     void close(bool wasAborted);
     void closeWithStatusMessage(const QString& exitStatusMessage);
     void startCompletion(const CompletionStartParams& completionStartParams);
-    EmulatedCommandBar *m_emulatedCommandBar;
+    EmulatedCommandBar *m_emulatedCommandBar = nullptr;
 private:
-    MatchHighlighter *m_matchHighligher;
+    MatchHighlighter *m_matchHighligher = nullptr;
 };
 }
 #endif

@@ -24,7 +24,7 @@ public:
 private Q_SLOTS:
     void updateMatchHighlightAttrib();
 private:
-    KTextEditor::ViewPrivate *m_view;
+    KTextEditor::ViewPrivate *m_view = nullptr;
     KTextEditor::Attribute::Ptr m_highlightMatchAttribute;
     KTextEditor::MovingRange *m_highlightedMatch;
 };

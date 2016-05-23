@@ -7,7 +7,7 @@
 using namespace KateVi;
 
 MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
-: m_view(view)
+    : m_view(view)
 { updateMatchHighlightAttrib();
     m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
     m_highlightedMatch->setView(m_view); // Show only in this view.

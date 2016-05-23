@@ -73,9 +73,9 @@ private:
     InputModeManager *m_viInputModeManager;
     bool m_isActive = false;
     Mode m_mode = NoMode;
-    KTextEditor::ViewPrivate *m_view;
-    QLineEdit *m_edit;
-    QLabel *m_barTypeIndicator;
+    KTextEditor::ViewPrivate *m_view = nullptr;
+    QLineEdit *m_edit = nullptr;
+    QLabel *m_barTypeIndicator = nullptr;
     void showBarTypeIndicator(Mode mode);
     bool m_wasAborted = true;
     bool m_suspendEditEventFiltering = false;
@@ -87,15 +87,17 @@ private:
 
     friend class ActiveMode;
     QScopedPointer<MatchHighlighter> m_matchHighligher;
+
     QScopedPointer<Completer> m_completer;
+
     QScopedPointer<InteractiveSedReplaceMode> m_interactiveSedReplaceMode;
     QScopedPointer<SearchMode> m_searchMode;
     QScopedPointer<CommandMode> m_commandMode;
 
-    void moveCursorTo(const KTextEditor::Cursor &cursorPos);
-
     void switchToMode(ActiveMode *newMode);
     ActiveMode *m_currentMode = nullptr;
+
+    void moveCursorTo(const KTextEditor::Cursor &cursorPos);
 
     bool barHandledKeypress(const QKeyEvent* keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
@@ -103,7 +105,6 @@ private:
     void deleteSpacesToLeftOfCursor();
     void deleteWordCharsToLeftOfCursor();
     bool deleteNonWordCharsToLeftOfCursor();
-
 
     void closed() Q_DECL_OVERRIDE;
     void closeWithStatusMessage(const QString& exitStatusMessage);
