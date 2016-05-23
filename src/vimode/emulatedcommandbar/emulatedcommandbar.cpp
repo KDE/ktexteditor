@@ -70,10 +70,10 @@ QString escapedForSearchingAsLiteral(const QString &originalQtRegex)
 }
 
 EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWidget *parent)
-    : KateViewBarWidget(false, parent)
-    , m_viInputModeManager(viInputModeManager)
-    , m_view(viInputModeManager->view()){
-
+    : KateViewBarWidget(false, parent),
+      m_viInputModeManager(viInputModeManager),
+      m_view(viInputModeManager->view())
+{
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setMargin(0);
     centralWidget()->setLayout(layout);
@@ -84,24 +84,17 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     createAndInitExitStatusMessageDisplayTimer();
     createAndAddWaitingForRegisterIndicator(layout);
 
-
     m_matchHighligher.reset(new MatchHighlighter(m_view));
-
-    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view));
-    layout->addWidget(m_interactiveSedReplaceMode->label());
 
     m_completer.reset(new Completer(this, m_view, m_edit));
 
+    m_interactiveSedReplaceMode.reset(new InteractiveSedReplaceMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view));
+    layout->addWidget(m_interactiveSedReplaceMode->label());
     m_searchMode.reset(new SearchMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit));
-    m_searchMode->setViInputModeManager(viInputModeManager);
-
-
     m_commandMode.reset(new CommandMode(this, m_matchHighligher.data(), m_viInputModeManager, m_view, m_edit, m_interactiveSedReplaceMode.data(), m_completer.data()));
 
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
-
-
 }
 
 EmulatedCommandBar::~EmulatedCommandBar()
@@ -359,9 +352,11 @@ void EmulatedCommandBar::closeWithStatusMessage(const QString &exitStatusMessage
 {
     // Display the message for a while.  Become inactive, so we don't steal keys in the meantime.
     m_isActive = false;
+
     m_exitStatusMessageDisplay->show();
     m_exitStatusMessageDisplay->setText(exitStatusMessage);
     hideAllWidgetsExcept(m_exitStatusMessageDisplay);
+
     m_exitStatusMessageDisplayHideTimer->start(m_exitStatusMessageHideTimeOutMS);
 }
 
