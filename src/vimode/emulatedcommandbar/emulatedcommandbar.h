@@ -40,6 +40,7 @@ namespace KateVi
 {
 class MatchHighlighter;
 class InteractiveSedReplaceMode;
+class SearchMode;
 
 /**
  * A KateViewBarWidget that attempts to emulate some of the features of Vim's own command bar,
@@ -86,39 +87,6 @@ private:
     friend class ActiveMode;
     QScopedPointer<MatchHighlighter> m_matchHighligher;
     QScopedPointer<Completer> m_completer;
-
-    class SearchMode : public ActiveMode
-    {
-    public:
-        SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, KTextEditor::ViewPrivate* view, QLineEdit* edit);
-        virtual ~SearchMode()
-        {
-        };
-        enum class SearchDirection { Forward, Backward };
-        void init(SearchDirection);
-        void setViInputModeManager(InputModeManager *viInputModeManager);
-        virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-        virtual void editTextChanged(const QString &newText);
-        virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
-        virtual void completionChosen();
-        virtual void deactivate(bool wasAborted);
-        bool isSendingSyntheticSearchCompletedKeypress() const
-        {
-            return m_isSendingSyntheticSearchCompletedKeypress;
-        }
-    private:
-        EmulatedCommandBar *m_emulatedCommandBar = nullptr;
-        KTextEditor::ViewPrivate *m_view = nullptr;
-        InputModeManager *m_viInputModeManager = nullptr;
-        QLineEdit *m_edit = nullptr;
-        SearchDirection m_searchDirection;
-        KTextEditor::Cursor m_startingCursorPos;
-        KateVi::Searcher::SearchParams m_currentSearchParams;
-        CompletionStartParams activateSearchHistoryCompletion();
-        enum BarBackgroundStatus { Normal, MatchFound, NoMatchFound };
-        void setBarBackground(BarBackgroundStatus status);
-        bool m_isSendingSyntheticSearchCompletedKeypress = false;
-    };
 
     class CommandMode : public ActiveMode
     {
