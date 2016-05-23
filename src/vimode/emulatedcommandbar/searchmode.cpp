@@ -241,7 +241,7 @@ SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter*
 void SearchMode::init ( SearchMode::SearchDirection searchDirection)
 {
     m_searchDirection = searchDirection;
-    m_startingCursorPos = m_view->cursorPosition();
+    m_startingCursorPos = view()->cursorPosition();
 }
 
 bool SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )
@@ -256,7 +256,7 @@ void SearchMode::editTextChanged ( const QString& newText )
     const bool searchBackwards = (m_searchDirection == SearchDirection::Backward);
     const bool placeCursorAtEndOfMatch = shouldPlaceCursorAtEndOfMatch(qtRegexPattern, searchBackwards);
     if (isRepeatLastSearch(qtRegexPattern, searchBackwards)) {
-        qtRegexPattern = m_viInputModeManager->searcher()->getLastSearchPattern();
+        qtRegexPattern = viInputModeManager()->searcher()->getLastSearchPattern();
     } else {
         qtRegexPattern = withSearchConfigRemoved(qtRegexPattern, searchBackwards);
         qtRegexPattern = vimRegexToQtRegexPattern(qtRegexPattern);
@@ -278,14 +278,14 @@ void SearchMode::editTextChanged ( const QString& newText )
 
     // The "count" for the current search is not shared between Visual & Normal mode, so we need to pick
     // the right one to handle the counted search.
-    int c = m_viInputModeManager->getCurrentViModeHandler()->getCount();
-    KTextEditor::Range match = m_viInputModeManager->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
+    int c = viInputModeManager()->getCurrentViModeHandler()->getCount();
+    KTextEditor::Range match = viInputModeManager()->searcher()->findPattern(m_currentSearchParams, m_startingCursorPos, c, false /* Don't add incremental searches to search history */);
 
     if (match.isValid()) {
         // The returned range ends one past the last character of the match, so adjust.
         KTextEditor::Cursor realMatchEnd = KTextEditor::Cursor(match.end().line(), match.end().column() - 1);
         if (realMatchEnd.column() == -1) {
-            realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, m_view->doc()->lineLength(realMatchEnd.line() - 1));
+            realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, view()->doc()->lineLength(realMatchEnd.line() - 1));
         }
         moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd :  match.start());
         setBarBackground(SearchMode::MatchFound);
@@ -317,16 +317,16 @@ void SearchMode::deactivate(bool wasAborted)
     const Qt::Key syntheticSearchCompletedKey = (wasAborted ? static_cast<Qt::Key>(0) : Qt::Key_Enter);
     QKeyEvent syntheticSearchCompletedKeyPress(QEvent::KeyPress, syntheticSearchCompletedKey, Qt::NoModifier);
     m_isSendingSyntheticSearchCompletedKeypress = true;
-    QApplication::sendEvent(m_view->focusProxy(), &syntheticSearchCompletedKeyPress);
+    QApplication::sendEvent(view()->focusProxy(), &syntheticSearchCompletedKeyPress);
     m_isSendingSyntheticSearchCompletedKeypress = false;
     if (!wasAborted) {
         // Search was actually executed, so store it as the last search.
-        m_viInputModeManager->searcher()->setLastSearchParams(m_currentSearchParams);
+        viInputModeManager()->searcher()->setLastSearchParams(m_currentSearchParams);
     }
     // Append the raw text of the search to the search history (i.e. without conversion
     // from Vim-style regex; without case-sensitivity markers stripped; etc.
     // Vim does this even if the search was aborted, so we follow suit.
-    m_viInputModeManager->globalState()->searchHistory()->append(m_edit->text());
+    viInputModeManager()->globalState()->searchHistory()->append(m_edit->text());
 }
 
 CompletionStartParams SearchMode::completionInvoked ( Completer::CompletionInvocation invocationType )
@@ -343,7 +343,7 @@ void SearchMode::completionChosen()
 
 CompletionStartParams SearchMode::activateSearchHistoryCompletion()
 {
-    return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->searchHistory()->items()), 0);
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()), 0);
 }
 
 void SearchMode::setBarBackground ( SearchMode::BarBackgroundStatus status )

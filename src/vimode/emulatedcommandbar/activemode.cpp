@@ -62,3 +62,17 @@ void ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
     }
 }
 
+EmulatedCommandBar *ActiveMode::emulatedCommandBar()
+{
+    return m_emulatedCommandBar;
+}
+
+KTextEditor::ViewPrivate* ActiveMode::view()
+{
+    return m_view;
+}
+
+InputModeManager* ActiveMode::viInputModeManager()
+{
+    return m_viInputModeManager;
+}

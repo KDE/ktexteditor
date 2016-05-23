@@ -51,10 +51,13 @@ protected:
     void closeWithStatusMessage(const QString& exitStatusMessage);
     void startCompletion(const CompletionStartParams& completionStartParams);
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
+    EmulatedCommandBar *emulatedCommandBar();
+    KTextEditor::ViewPrivate* view();
+    InputModeManager* viInputModeManager();
+private:
     EmulatedCommandBar *m_emulatedCommandBar = nullptr;
     InputModeManager* m_viInputModeManager = nullptr;
     KTextEditor::ViewPrivate* m_view = nullptr;
-private:
     MatchHighlighter *m_matchHighligher = nullptr;
 };
 }

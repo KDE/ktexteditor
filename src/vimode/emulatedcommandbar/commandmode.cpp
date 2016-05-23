@@ -92,10 +92,10 @@ void CommandMode::deactivate ( bool wasAborted )
     if (wasAborted) {
         // Appending the command to the history when it is executed is handled elsewhere; we can't
         // do it inside closed() as we may still be showing the command response display.
-        m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
+        viInputModeManager()->globalState()->commandHistory()->append(m_edit->text());
         // With Vim, aborting a command returns us to Normal mode, even if we were in Visual Mode.
         // If we switch from Visual to Normal mode, we need to clear the selection.
-        m_view->clearSelection();
+        view()->clearSelection();
     }
 
 }
@@ -129,9 +129,9 @@ void CommandMode::completionChosen()
         const QString originalFindTerm = sedFindTerm();
         const QString convertedFindTerm = vimRegexToQtRegexPattern(originalFindTerm);
         const QString commandWithSedSearchRegexConverted = withSedFindTermReplacedWith(convertedFindTerm);
-        m_viInputModeManager->globalState()->searchHistory()->append(originalFindTerm);
+        viInputModeManager()->globalState()->searchHistory()->append(originalFindTerm);
         const QString replaceTerm = sedReplaceTerm();
-        m_viInputModeManager->globalState()->replaceHistory()->append(replaceTerm);
+        viInputModeManager()->globalState()->replaceHistory()->append(replaceTerm);
         commandToExecute = commandWithSedSearchRegexConverted;
     }
 
@@ -139,12 +139,12 @@ void CommandMode::completionChosen()
     // Don't close the bar if executing the command switched us to Interactive Sed Replace mode.
     if (!m_interactiveSedReplaceMode->isActive()) {
         if (commandResponseMessage.isEmpty()) {
-            m_emulatedCommandBar->hideMe();
+            emulatedCommandBar()->hideMe();
         } else {
             closeWithStatusMessage(commandResponseMessage);
         }
     }
-    m_viInputModeManager->globalState()->commandHistory()->append(m_edit->text());
+    viInputModeManager()->globalState()->commandHistory()->append(m_edit->text());
 
 }
 
@@ -164,15 +164,15 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
     QString commandResponseMessage;
     QString cmd = commandToExecute.mid(n);
 
-    KTextEditor::Range range = CommandRangeExpressionParser(m_viInputModeManager).parseRange(cmd, cmd);
+    KTextEditor::Range range = CommandRangeExpressionParser(viInputModeManager()).parseRange(cmd, cmd);
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
         KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
 
         if (ci) {
-            ci->setViInputModeManager(m_viInputModeManager);
-            ci->setViGlobal(m_viInputModeManager->globalState());
+            ci->setViInputModeManager(viInputModeManager());
+            ci->setViGlobal(viInputModeManager()->globalState());
         }
 
         // The following commands changes the focus themselves, so bar should be hidden before execution.
@@ -183,7 +183,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
             commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
         } else {
             if (p) {
-                if (p->exec(m_view, cmd, commandResponseMessage, range)) {
+                if (p->exec(view(), cmd, commandResponseMessage, range)) {
 
                     if (commandResponseMessage.length() > 0) {
                         commandResponseMessage = i18n("Success: ") + commandResponseMessage;
@@ -192,7 +192,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
                     if (commandResponseMessage.length() > 0) {
                         if (commandResponseMessage.contains(QLatin1Char('\n'))) {
                             // multiline error, use widget with more space
-                            QWhatsThis::showText(m_emulatedCommandBar->mapToGlobal(QPoint(0, 0)), commandResponseMessage);
+                            QWhatsThis::showText(emulatedCommandBar()->mapToGlobal(QPoint(0, 0)), commandResponseMessage);
                         }
                     } else {
                         commandResponseMessage = i18n("Command \"%1\" failed.",  cmd);
@@ -206,10 +206,10 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
 
     // the following commands change the focus themselves
     if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1String(" ")).at(0))) {
-        m_view->setFocus();
+        view()->setFocus();
     }
 
-    m_viInputModeManager->reset();
+    viInputModeManager()->reset();
     return commandResponseMessage;
 
 }
@@ -224,7 +224,7 @@ QString CommandMode::withoutRangeExpression()
 QString CommandMode::rangeExpression()
 {
     const QString command = m_edit->text();
-    return CommandRangeExpressionParser(m_viInputModeManager).parseRangeString(command);
+    return CommandRangeExpressionParser(viInputModeManager()).parseRangeString(command);
 }
 
 CommandMode::ParsedSedExpression CommandMode::parseAsSedExpression()
@@ -334,29 +334,29 @@ CompletionStartParams CommandMode::activateCommandCompletion()
 
 CompletionStartParams CommandMode::activateCommandHistoryCompletion()
 {
-    return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->commandHistory()->items()), 0);
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->commandHistory()->items()), 0);
 }
 
 CompletionStartParams CommandMode::activateSedFindHistoryCompletion()
 {
-    if (m_viInputModeManager->globalState()->searchHistory()->isEmpty())
+    if (viInputModeManager()->globalState()->searchHistory()->isEmpty())
     {
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->searchHistory()->items()),
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()),
                                                      parsedSedExpression.findBeginPos,
                                                      [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); });
 }
 
 CompletionStartParams CommandMode::activateSedReplaceHistoryCompletion()
 {
-    if (m_viInputModeManager->globalState()->replaceHistory()->isEmpty())
+    if (viInputModeManager()->globalState()->replaceHistory()->isEmpty())
     {
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(m_viInputModeManager->globalState()->replaceHistory()->items()),
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->replaceHistory()->items()),
                                                      parsedSedExpression.replaceBeginPos,
                                                      [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); });
 }
