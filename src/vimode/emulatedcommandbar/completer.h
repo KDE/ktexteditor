@@ -3,8 +3,23 @@
 
 #include <functional>
 
+#include <QStringList>
+
+namespace KTextEditor
+{
+    class ViewPrivate;
+}
+
+class QLineEdit;
+class QCompleter;
+class QStringListModel;
+class QKeyEvent;
+
 namespace KateVi
 {
+    class ActiveMode;
+    class EmulatedCommandBar;
+
     struct CompletionStartParams
     {
         static CompletionStartParams createModeSpecific(const QStringList& completions, int wordStartPos, std::function<QString(const QString&)> completionTransform = std::function<QString(const QString&)>())
@@ -27,6 +42,40 @@ namespace KateVi
         int wordStartPos = -1;
         QStringList completions;
         std::function<QString(const QString&)> completionTransform;
+    };
+
+    class Completer
+    {
+    public:
+        enum class CompletionInvocation { ExtraContext, NormalContext };
+        Completer(EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit);
+        void startCompletion(const CompletionStartParams& completionStartParams);
+        void deactivateCompletion();
+        bool isCompletionActive() const;
+        bool isNextTextChangeDueToCompletionChange() const;
+        bool completerHandledKeypress(const QKeyEvent* keyEvent);
+        void editTextChanged(const QString &newText);
+        void setCurrentMode(ActiveMode* currentMode);
+    private:
+        QLineEdit *m_edit;
+        KTextEditor::ViewPrivate *m_view;
+        ActiveMode *m_currentMode = nullptr;
+
+        void setCompletionIndex(int index);
+        void currentCompletionChanged();
+        void updateCompletionPrefix();
+        CompletionStartParams activateWordFromDocumentCompletion();
+        QString wordBeforeCursor();
+        int wordBeforeCursorBegin();
+        void abortCompletionAndResetToPreCompletion();
+
+        QCompleter *m_completer;
+        QStringListModel *m_completionModel;
+        QString m_textToRevertToIfCompletionAborted;
+        int m_cursorPosToRevertToIfCompletionAborted;
+        bool m_isNextTextChangeDueToCompletionChange = false;
+        CompletionStartParams m_currentCompletionStartParams;
+        CompletionStartParams::CompletionType m_currentCompletionType = CompletionStartParams::None;
     };
 }
 #endif

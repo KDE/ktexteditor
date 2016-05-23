@@ -27,7 +27,7 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/movingrange.h>
 #include "../searcher.h"
-#include "completer.h"
+#include "activemode.h"
 
 namespace KTextEditor {
     class ViewPrivate;
@@ -35,8 +35,6 @@ namespace KTextEditor {
 }
 
 class QLabel;
-class QCompleter;
-class QStringListModel;
 
 namespace KateVi
 {
@@ -86,78 +84,10 @@ private:
 
     QScopedPointer<MatchHighlighter> m_matchHighligher;
 
-    class ActiveMode;
-    class Completer
-    {
-    public:
-        enum class CompletionInvocation { ExtraContext, NormalContext };
-        Completer(EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit);
-        void startCompletion(const CompletionStartParams& completionStartParams);
-        void deactivateCompletion();
-        bool isCompletionActive() const;
-        bool isNextTextChangeDueToCompletionChange() const;
-        bool completerHandledKeypress(const QKeyEvent* keyEvent);
-        void editTextChanged(const QString &newText);
-        void setCurrentMode(ActiveMode* currentMode);
-    private:
-        QLineEdit *m_edit;
-        KTextEditor::ViewPrivate *m_view;
-        ActiveMode *m_currentMode = nullptr;
-
-        void setCompletionIndex(int index);
-        void currentCompletionChanged();
-        void updateCompletionPrefix();
-        CompletionStartParams activateWordFromDocumentCompletion();
-        QString wordBeforeCursor();
-        int wordBeforeCursorBegin();
-        void abortCompletionAndResetToPreCompletion();
-
-        QCompleter *m_completer;
-        QStringListModel *m_completionModel;
-        QString m_textToRevertToIfCompletionAborted;
-        int m_cursorPosToRevertToIfCompletionAborted;
-        bool m_isNextTextChangeDueToCompletionChange = false;
-        CompletionStartParams m_currentCompletionStartParams;
-        CompletionStartParams::CompletionType m_currentCompletionType = CompletionStartParams::None;
-    };
+    friend class ActiveMode;
     QScopedPointer<Completer> m_completer;
 
-    class ActiveMode
-    {
-    public:
-        ActiveMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter)
-            : m_emulatedCommandBar(emulatedCommandBar),
-              m_matchHighligher(matchHighlighter)
-        {
-        }
-        virtual ~ActiveMode() = 0;
-        virtual bool handleKeyPress(const QKeyEvent *keyEvent) = 0;
-        virtual void editTextChanged(const QString &newText)
-        {
-            Q_UNUSED(newText);
-        }
-        virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType)
-        {
-            Q_UNUSED(invocationType);
-            return CompletionStartParams();
-        };
-        virtual void completionChosen()
-        {
-        }
-        virtual void deactivate(bool wasAborted) = 0;
-    protected:
-        // Helper methods.
-        void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
-        void moveCursorTo(const KTextEditor::Cursor &cursorPos);
-        void updateMatchHighlight(const KTextEditor::Range &matchRange);
-        void close(bool wasAborted);
-        void closeWithStatusMessage(const QString& exitStatusMessage);
-        void startCompletion(const CompletionStartParams& completionStartParams);
-        EmulatedCommandBar *m_emulatedCommandBar;
-    private:
-        MatchHighlighter *m_matchHighligher;
-    };
-    friend ActiveMode;
+    friend class ActiveMode;
 
     class InteractiveSedReplaceMode : public ActiveMode
     {
