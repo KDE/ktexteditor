@@ -281,6 +281,7 @@ if (BUILD_VIMODE)
     vimode/emulatedcommandbar/activemode.cpp
     vimode/emulatedcommandbar/interactivesedreplacemode.cpp
     vimode/emulatedcommandbar/searchmode.cpp
+    vimode/emulatedcommandbar/commandmode.cpp
     vimode/commandrangeexpressionparser.cpp
     vimode/keymapper.cpp
     vimode/marks.cpp

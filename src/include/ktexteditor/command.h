@@ -24,6 +24,8 @@
 
 #include <ktexteditor_export.h>
 #include <ktexteditor/range.h>
+#include <KCompletion>
+
 #include <QObject>
 
 class QStringList;
@@ -112,7 +114,7 @@ public:
     {
         return m_cmds;
     }
-    
+
     /**
      * Find out if a given command can act on a range. This is used for checking
      * if a command should be called when the user also gave a range or if an
@@ -130,7 +132,7 @@ public:
      * of replaced strings as \p msg, like "16 replacements made." If an error
      * occurred in the usage it would return \e false and set the \p msg to
      * something like "missing argument." or such.
-     * 
+     *
      * If a non-invalid range is given, the command shall be executed on that range.
      * supportsRange() tells if the command supports that.
      *
@@ -198,7 +200,7 @@ private:
      * the command list this command got constructed with
      */
     const QStringList m_cmds;
-    
+
     /**
      * Private d-pointer
      */
