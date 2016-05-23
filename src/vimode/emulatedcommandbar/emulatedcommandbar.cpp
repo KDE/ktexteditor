@@ -73,27 +73,17 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     : KateViewBarWidget(false, parent)
     , m_viInputModeManager(viInputModeManager)
     , m_view(viInputModeManager->view()){
+
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setMargin(0);
     centralWidget()->setLayout(layout);
-    m_barTypeIndicator = new QLabel(this);
-    m_barTypeIndicator->setObjectName(QStringLiteral("bartypeindicator"));
-    layout->addWidget(m_barTypeIndicator);
 
-    m_edit = new QLineEdit(this);
-    m_edit->setObjectName(QStringLiteral("commandtext"));
-    layout->addWidget(m_edit);
+    createAndAddBarTypeIndicator(layout);
+    createAndAddEditWidget(layout);
+    createAndAddExitStatusMessageDisplay(layout);
+    createAndInitExitStatusMessageDisplayTimer();
+    createAndAddWaitingForRegisterIndicator(layout);
 
-    m_exitStatusMessageDisplay = new QLabel(this);
-    m_exitStatusMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
-    m_exitStatusMessageDisplay->setAlignment(Qt::AlignLeft);
-    layout->addWidget(m_exitStatusMessageDisplay);
-
-    m_waitingForRegisterIndicator = new QLabel(this);
-    m_waitingForRegisterIndicator->setObjectName(QStringLiteral("waitingforregisterindicator"));
-    m_waitingForRegisterIndicator->setVisible(false);
-    m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
-    layout->addWidget(m_waitingForRegisterIndicator);
 
     m_matchHighligher.reset(new MatchHighlighter(m_view));
 
@@ -111,17 +101,6 @@ EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWi
     m_edit->installEventFilter(this);
     connect(m_edit, SIGNAL(textChanged(QString)), this, SLOT(editTextChanged(QString)));
 
-
-    m_exitStatusMessageDisplayHideTimer = new QTimer(this);
-    m_exitStatusMessageDisplayHideTimer->setSingleShot(true);
-    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()),
-            this, SIGNAL(hideMe()));
-    // Make sure the timer is stopped when the user switches views. If not, focus will be given to the
-    // wrong view when KateViewBar::hideCurrentBarWidget() is called as a result of m_commandResponseMessageDisplayHide
-    // timing out.
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
-    // We can restart the timer once the view has focus again, though.
-    connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideExitStatusMessageTimer()));
 
 }
 
@@ -418,3 +397,47 @@ void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
 
 }
 
+void EmulatedCommandBar::createAndAddBarTypeIndicator(QLayout* layout)
+{
+    m_barTypeIndicator = new QLabel(this);
+    m_barTypeIndicator->setObjectName(QStringLiteral("bartypeindicator"));
+    layout->addWidget(m_barTypeIndicator);
+}
+
+void EmulatedCommandBar::createAndAddEditWidget(QLayout* layout)
+{
+    m_edit = new QLineEdit(this);
+    m_edit->setObjectName(QStringLiteral("commandtext"));
+    layout->addWidget(m_edit);
+}
+
+void EmulatedCommandBar::createAndAddExitStatusMessageDisplay(QLayout* layout)
+{
+    m_exitStatusMessageDisplay = new QLabel(this);
+    m_exitStatusMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
+    m_exitStatusMessageDisplay->setAlignment(Qt::AlignLeft);
+    layout->addWidget(m_exitStatusMessageDisplay);
+}
+
+void EmulatedCommandBar::createAndInitExitStatusMessageDisplayTimer()
+{
+    m_exitStatusMessageDisplayHideTimer = new QTimer(this);
+    m_exitStatusMessageDisplayHideTimer->setSingleShot(true);
+    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()),
+            this, SIGNAL(hideMe()));
+    // Make sure the timer is stopped when the user switches views. If not, focus will be given to the
+    // wrong view when KateViewBar::hideCurrentBarWidget() is called as a result of m_commandResponseMessageDisplayHide
+    // timing out.
+    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
+    // We can restart the timer once the view has focus again, though.
+    connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideExitStatusMessageTimer()));
+}
+
+void EmulatedCommandBar::createAndAddWaitingForRegisterIndicator(QLayout* layout)
+{
+    m_waitingForRegisterIndicator = new QLabel(this);
+    m_waitingForRegisterIndicator->setObjectName(QStringLiteral("waitingforregisterindicator"));
+    m_waitingForRegisterIndicator->setVisible(false);
+    m_waitingForRegisterIndicator->setText(QStringLiteral("\""));
+    layout->addWidget(m_waitingForRegisterIndicator);
+}

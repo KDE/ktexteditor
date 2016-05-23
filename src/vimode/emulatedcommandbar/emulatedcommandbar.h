@@ -35,6 +35,7 @@ namespace KTextEditor {
 }
 
 class QLabel;
+class QLayout;
 
 namespace KateVi
 {
@@ -72,13 +73,16 @@ private:
 
     InputModeManager *m_viInputModeManager;
     bool m_isActive = false;
+    bool m_wasAborted = true;
     Mode m_mode = NoMode;
     KTextEditor::ViewPrivate *m_view = nullptr;
     QLineEdit *m_edit = nullptr;
+
     QLabel *m_barTypeIndicator = nullptr;
     void showBarTypeIndicator(Mode mode);
-    bool m_wasAborted = true;
+
     bool m_suspendEditEventFiltering = false;
+
     bool m_waitingForRegister = false ;
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
@@ -109,6 +113,13 @@ private:
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;
     long m_exitStatusMessageHideTimeOutMS = 4000;
+
+    void createAndAddBarTypeIndicator(QLayout* layout);
+    void createAndAddEditWidget(QLayout* layout);
+    void createAndAddExitStatusMessageDisplay(QLayout* layout);
+    void createAndInitExitStatusMessageDisplayTimer();
+    void createAndAddWaitingForRegisterIndicator(QLayout* layout);
+
 private Q_SLOTS:
     void editTextChanged(const QString &newText);
     void startHideExitStatusMessageTimer();
