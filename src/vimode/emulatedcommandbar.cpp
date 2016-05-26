@@ -1128,22 +1128,22 @@ QString EmulatedCommandBar::executeCommand(const QString &commandToExecute)
 
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
-        KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
 
-        if (ci) {
-            ci->setViInputModeManager(m_viInputModeManager);
-            ci->setViGlobal(m_viInputModeManager->globalState());
-        }
+        if (p) {
+            KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
+            if (ci) {
+                ci->setViInputModeManager(m_viInputModeManager);
+                ci->setViGlobal(m_viInputModeManager->globalState());
+            }
 
-        // the following commands changes the focus themselves, so bar should be hidden before execution.
+            // the following commands changes the focus themselves, so bar should be hidden before execution.
 
-        // we got a range and a valid command, but the command does not inherit the RangeCommand
-        // extension. bail out.
-        if (range.isValid() && !p->supportsRange(cmd)) {
-            commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
-        } else {
+            // we got a range and a valid command, but the command does not inherit the RangeCommand
+            // extension. bail out.
+            if (range.isValid() && !p->supportsRange(cmd)) {
+                commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
+            } else {
 
-            if (p) {
                 if (p->exec(m_view, cmd, commandResponseMessage, range)) {
 
                     if (commandResponseMessage.length() > 0) {
@@ -1159,9 +1159,9 @@ QString EmulatedCommandBar::executeCommand(const QString &commandToExecute)
                         commandResponseMessage = i18n("Command \"%1\" failed.",  cmd);
                     }
                 }
-            } else {
-                commandResponseMessage = i18n("No such command: \"%1\"",  cmd);
             }
+        } else {
+            commandResponseMessage = i18n("No such command: \"%1\"",  cmd);
         }
     }
 
