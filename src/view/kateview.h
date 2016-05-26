@@ -393,6 +393,9 @@ public:
 
     QString currentTextLine();
 
+    QTextLayout * textLayout(int line) const;
+    QTextLayout * textLayout(const KTextEditor::Cursor &pos) const;
+
 public Q_SLOTS:
     void indent();
     void unIndent();

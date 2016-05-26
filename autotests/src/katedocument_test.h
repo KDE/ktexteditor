@@ -49,10 +49,12 @@ private Q_SLOTS:
     void testReplaceTabs();
 
     void testDigest();
-    
+
     void testDefStyleNum();
 
     void testTypeCharsWithSurrogateAndNewLine();
+
+    void testRemoveComposedCharacters();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

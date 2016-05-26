@@ -2584,6 +2584,20 @@ QString KTextEditor::ViewPrivate::currentTextLine()
     return m_doc->line(cursorPosition().line());
 }
 
+QTextLayout * KTextEditor::ViewPrivate::textLayout(int line) const
+{
+    KateLineLayoutPtr thisLine = m_viewInternal->cache()->line(line);
+
+    return thisLine->isValid() ? thisLine->layout() : nullptr;
+}
+
+QTextLayout * KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor &pos) const
+{
+    KateLineLayoutPtr thisLine = m_viewInternal->cache()->line(pos);
+
+    return thisLine->isValid() ? thisLine->layout() : nullptr;
+}
+
 void KTextEditor::ViewPrivate::indent()
 {
     KTextEditor::Cursor c(cursorPosition().line(), 0);
