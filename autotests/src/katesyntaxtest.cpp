@@ -91,10 +91,12 @@ void KateSyntaxTest::testSyntaxHighlighting()
 
     /**
      * load the test case
+     * enforce UTF-8 to avoid locale problems
      */
     QUrl url;
     url.setScheme(QLatin1String("file"));
     url.setPath(hlTestCase);
+    doc.setEncoding(QStringLiteral("UTF-8"));
     QVERIFY(doc.openUrl(url));
 
     /**
