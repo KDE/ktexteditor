@@ -420,8 +420,8 @@ void KateUndoManager::updateLineModifications()
     }
 }
 
-void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor undoCursor,
-        const KTextEditor::Cursor redoCursor)
+void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &undoCursor,
+                                                    const KTextEditor::Cursor &redoCursor)
 {
     Q_ASSERT(m_editCurrentUndo == 0);
     if (!undoItems.isEmpty()) {

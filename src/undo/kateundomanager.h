@@ -105,8 +105,8 @@ public:
      * @param undoCursor the undo cursor
      * @param redoCursor the redo cursor
      */
-    void setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor undoCursor,
-                                       const KTextEditor::Cursor redoCursor);
+    void setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &undoCursor,
+                                       const KTextEditor::Cursor &redoCursor);
 
     /**
      * Returns the redo cursor of the last undo group.
