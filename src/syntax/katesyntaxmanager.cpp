@@ -256,7 +256,7 @@ int KateHlManager::nameFind(const QString &name)
 
 int KateHlManager::defaultStyleCount()
 {
-    return KTextEditor::dsError;
+    return KTextEditor::dsError + 1;
 }
 
 QString KateHlManager::defaultStyleName(int n, bool translateNames)
