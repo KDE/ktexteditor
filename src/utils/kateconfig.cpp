@@ -880,7 +880,10 @@ QTextCodec *KateDocumentConfig::codec() const
 {
     if (m_encodingSet || isGlobal()) {
         if (m_encoding.isEmpty() && isGlobal()) {
-            return QTextCodec::codecForLocale();
+            // default to UTF-8, this makes sense to have a usable encoding detection
+            // else for people that have by bad luck some encoding like latin1 as default, no encoding detection will work
+            // see e.g. bug 362604 for windows
+            return QTextCodec::codecForName("UTF-8");
         } else if (m_encoding.isEmpty()) {
             return s_global->codec();
         } else {
