@@ -1547,7 +1547,7 @@ void KateSearchBar::updateHighlightColors()
 
     // init replacement attribute
     highlightReplacementAttribute->setBackground(replaceColor);
-    highlightReplacementAttribute->setBackground(foregroundColor);
+    highlightReplacementAttribute->setForeground(foregroundColor);
 }
 
 void KateSearchBar::showEvent(QShowEvent *event)
