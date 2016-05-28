@@ -66,6 +66,40 @@ Variable=ff0057ae,ff00316e,,0,,,-,-,,---
 Verbatim String=ffbf0303,ff9c0e0e,,0,,,-,-,,---
 Warning=ffbf0303,ff9c0e0e,,0,,,-,-,,---
 
+# Breeze Dark, Default Item Styles
+[Default Item Styles - Schema Breeze Dark]
+Alert=ff95da4c,ff95da4c,1,,,,ff4d1f24,-,,---
+Annotation=ff3f8058,ff54aa75,,,,,-,-,,---
+Attribute=ff2980b9,fffdbc4b,,,,,-,-,,---
+Base-N Integer=fff67400,fff67400,,,,,-,-,,---
+Built-in=ff7f8c8d,ffbdc3c7,,,,,-,-,,---
+Character=ff3daee9,ff3daee9,,,,,-,-,,---
+Comment=ff606060,ff808080,,,,,-,-,,---
+Comment Variable=ff7f8c8d,ff94a3a4,,,,,-,-,,---
+Constant=ff27aeae,ff27aeae,1,,,,-,-,,---
+Control Flow=fffdbc4b,fffdbc4b,1,0,,,-,-,,---
+Data Type=ff2980b9,fffdbc4b,,,,,-,-,,---
+Decimal/Value=fff67400,fff67400,,,,,-,-,,---
+Documentation=ffa43340,ffda4453,,,,,-,-,,---
+Error=ffda4453,ffda4453,0,,,,-,-,,---
+Extension=ff0099ff,ffbdc3c7,0,,,,-,-,,---
+Floating Point=fff67400,fff67400,,,,,-,-,,---
+Function=ff8e44ad,ffaf81ff,,,,,-,-,,---
+Import=ff27ae60,ff27ae60,,,,,-,-,,---
+Information=ffc45b00,ffe46700,,,,,-,-,,---
+Keyword=ffcfcfc2,ffcfcfc2,1,,,,-,-,,---
+Normal=ffcfcfc2,ffcfcfc2,,,,,-,-,,---
+Operator=ffcfcfc2,ffcfcfc2,,,,,-,-,,---
+Others=ff27ae60,ff27ae60,,,,,-,-,,---
+Preprocessor=ff27ae60,ff27ae60,,,,,-,-,,---
+Region Marker=ff2980b9,ff3daee9,,,,,ff153042,-,,---
+Special Character=ff3daee9,ff3daee9,,,,,-,-,,---
+Special String=ffda4453,ffda4453,,,,,-,-,,---
+String=fff44f4f,fff44f4f,,,,,-,-,,---
+Variable=ff27aeae,ff27aeae,,,,,-,-,,---
+Verbatim String=ffda4453,ffda4453,,,,,-,-,,---
+Warning=ffda4453,ffda4453,,,,,-,-,,---
+
 # Solarized (light), Default Item Styles
 [Default Item Styles - Schema Solarized (light)]
 Alert=ffd33682,ffd33682,1,,,,-,-,,---

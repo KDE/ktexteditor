@@ -66,6 +66,38 @@ Color Word Wrap Marker=237,237,237
 [KDE]
 ShippedDefaultSchema=9000
 
+# Breeze Dark, mostly uses colors from the Breeze color palette
+[Breeze Dark]
+ShippedDefaultSchema=8500
+Color Background=35,38,41
+Color Code Folding=34,78,101
+Color Current Line Number=165,166,168
+Color Highlighted Bracket=142,68,173
+Color Highlighted Line=49,54,59
+Color Icon Bar=49,54,59
+Color Indentation Line=58,63,68
+Color Line Number=122,124,125
+Color MarkType 1=4,4,191
+Color MarkType 2=139,6,7
+Color MarkType 3=109,110,7
+Color MarkType 4=130,6,131
+Color MarkType 5=77,78,80
+Color MarkType 6=246,116,0
+Color MarkType 7=218,68,83
+Color Modified Lines=192,73,0
+Color Replace Highlight=128,128,33
+Color Saved Lines=28,128,66
+Color Search Highlight=33,128,88
+Color Selection=45,92,118
+Color Separator=122,124,125
+Color Spelling Mistake Line=192,57,43
+Color Tab Marker=77,77,77
+Color Template Background=49,54,59
+Color Template Editable Placeholder=18,55,35
+Color Template Focused Editable Placeholder=18,55,35
+Color Template Not Editable Placeholder=77,31,36
+Color Word Wrap Marker=58,63,68
+
 # Solarized (light), NEEDED
 [Solarized (light)]
 ShippedDefaultSchema=8000
