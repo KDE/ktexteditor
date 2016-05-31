@@ -11,3 +11,7 @@ libraries:
  - qmake: KTextEditor
    cmake: "KF5::TextEditor"
 cmakename: KF5TextEditor
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 3
