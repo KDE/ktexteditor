@@ -38,6 +38,7 @@
 #include <QStack>
 #include <QBrush>
 #include <QRegularExpression>
+#include <QtMath> // qCeil
 
 static const QChar tabChar(QLatin1Char('\t'));
 static const QChar spaceChar(QLatin1Char(' '));
@@ -949,12 +950,12 @@ void KateRenderer::updateFontHeight()
     // both heights (bug #302748)
     QFont italicFont = config()->font();
     italicFont.setItalic(true);
-    m_fontHeight = qMax(m_fontHeight, QFontMetrics(italicFont).height());
+    m_fontHeight = qMax(m_fontHeight, qCeil(QFontMetricsF(italicFont).height()));
 
     // same for bold font
     QFont boldFont = config()->font();
     boldFont.setBold(true);
-    m_fontHeight = qMax(m_fontHeight, QFontMetrics(boldFont).height());
+    m_fontHeight = qMax(m_fontHeight, qCeil(QFontMetricsF(boldFont).height()));
 }
 
 qreal KateRenderer::spaceWidth() const
