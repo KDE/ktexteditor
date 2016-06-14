@@ -1190,8 +1190,6 @@ void KateCmdLineEdit::fromHistory(bool up)
 //BEGIN KateIconBorder
 using namespace KTextEditor;
 
-const int halfIPW = 8;
-
 KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     : QWidget(parent)
     , m_view(internalView->m_view)
