@@ -601,12 +601,10 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
 
     QColor faded(backgroundColor);
     faded.setAlpha(110);
-    painter.setPen(Qt::NoPen);
-    painter.setBrush(faded);
-    painter.drawRect(top);
-    painter.drawRect(bottom);
+    painter.fillRect(top, faded);
+    painter.fillRect(bottom, faded);
 
-    // add a thin line to delimitate the scrollbar
+    // add a thin line to limit the scrollbar
     QColor c(foregroundColor);
     c.setAlpha(10);
     painter.setPen(QPen(c,1));
