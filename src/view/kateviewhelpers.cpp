@@ -499,7 +499,6 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     m_grooveHeight = grooveRect.height();
 
     QRect sliderRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarSlider, this);
-    m_stdSliderRect = sliderRect;
     sliderRect.adjust(docXMargin + 1, 1, -(docXMargin + 1), -1);
 
     //style()->drawControl(QStyle::CE_ScrollBarAddLine, &opt, &painter, this);
