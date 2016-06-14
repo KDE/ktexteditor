@@ -484,7 +484,6 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     opt.singleStep = singleStep();
     opt.pageStep = pageStep();
 
-    int docXMargin = 1;
     QRect grooveRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarGroove, this);
     m_stdGroveRect = grooveRect;
     if (style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarSubLine, this).height() == 0) {
@@ -498,16 +497,17 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     }
     m_grooveHeight = grooveRect.height();
 
+    const int docXMargin = 1;
     QRect sliderRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarSlider, this);
-    sliderRect.adjust(docXMargin + 1, 1, -(docXMargin + 1), -1);
+    sliderRect.adjust(docXMargin, 0, 0, 0);
 
     //style()->drawControl(QStyle::CE_ScrollBarAddLine, &opt, &painter, this);
     //style()->drawControl(QStyle::CE_ScrollBarSubLine, &opt, &painter, this);
 
     // calculate the document size and position
-    int docHeight = qMin(grooveRect.height(), m_pixmap.height() * 2) - 2 * docXMargin;
-    int yoffset = 1; // top-aligned in stead of center-aligned (grooveRect.height() - docHeight) / 2;
-    QRect docRect(QPoint(grooveRect.left() + docXMargin, yoffset + grooveRect.top()), QSize(grooveRect.width() - 2 * docXMargin, docHeight));
+    const int docHeight = qMin(grooveRect.height(), m_pixmap.height() * 2) - 2 * docXMargin;
+    const int yoffset = 1; // top-aligned in stead of center-aligned (grooveRect.height() - docHeight) / 2;
+    const QRect docRect(QPoint(grooveRect.left() + docXMargin, yoffset + grooveRect.top()), QSize(grooveRect.width() - docXMargin, docHeight));
     m_mapGroveRect = docRect;
 
     // calculate the visible area
@@ -524,9 +524,9 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
     const QColor highlightColor  = palette().link().color();
 
-    int backgroundLightness = backgroundColor.lightness();
-    int foregroundLightness = foregroundColor.lightness();
-    int lighnessDiff = (foregroundLightness - backgroundLightness);
+    const int backgroundLightness = backgroundColor.lightness();
+    const int foregroundLightness = foregroundColor.lightness();
+    const int lighnessDiff = (foregroundLightness - backgroundLightness);
 
     // get a color suited for the color theme
     QColor darkShieldColor = palette().color(QPalette::Mid);
@@ -556,7 +556,8 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
         visibleRect.adjust(2, 0, -3, 0);
     } else {
         visibleRect.adjust(1, 0, -1, 2);
-        sliderRect = visibleRect;
+        sliderRect.setTop(visibleRect.top() - 1);
+        sliderRect.setBottom(visibleRect.bottom() + 1);
     }
 
     // Smooth transform only when squeezing
@@ -581,7 +582,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
         fg.setAlpha(30);
         painter.setBrush(Qt::NoBrush);
         painter.setPen(QPen(fg, 1));
-        painter.drawLine(grooveRect.x()+1,y+4,width()-1,y+4);
+        painter.drawLine(grooveRect.x()+1,y+2,width()-1,y+2);
     }
 
     // fade the invisible sections
@@ -639,11 +640,13 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // slider outline
     QColor sliderColor(highlightColor);
     sliderColor.setAlpha(50);
-    painter.setRenderHint(QPainter::Antialiasing);
-    painter.setPen(QPen(highlightColor,1));
-    painter.setBrush(sliderColor);
-    painter.drawRoundedRect(sliderRect, 3, 3);
-    painter.setRenderHint(QPainter::Antialiasing, false);
+    painter.fillRect(sliderRect, sliderColor);
+    painter.setPen(QPen(highlightColor, 0));
+    // rounded rect looks ugly for some reason, so we draw 4 lines.
+    painter.drawLine(sliderRect.left(), sliderRect.top() + 1, sliderRect.left(), sliderRect.bottom() - 1);
+    painter.drawLine(sliderRect.right(), sliderRect.top() + 1, sliderRect.right(), sliderRect.bottom() - 1);
+    painter.drawLine(sliderRect.left() + 1, sliderRect.top(), sliderRect.right() - 1, sliderRect.top());
+    painter.drawLine(sliderRect.left() + 1, sliderRect.bottom(), sliderRect.right() - 1, sliderRect.bottom());
 }
 
 void KateScrollBar::normalPaintEvent(QPaintEvent *e)
