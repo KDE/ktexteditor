@@ -454,14 +454,10 @@ void KateScrollBar::updatePixmap()
             for (int lineno = 0; lineno < docLineCount; lineno++) {
                 int realLineNo = m_view->textFolding().visibleLineToLine(lineno);
                 const Kate::TextLine &line = m_doc->plainKateTextLine(realLineNo);
-                if (line->markedAsModified()) {
-                    painter.setPen(modifiedLineColor);
-                } else if (line->markedAsSavedOnDisk()) {
-                    painter.setPen(savedLineColor);
-                } else {
-                    continue;
+                const QColor & col = line->markedAsModified() ? modifiedLineColor : savedLineColor;
+                if (line->markedAsModified() || line->markedAsSavedOnDisk()) {
+                    painter.fillRect(2, lineno / lineDivisor, 3, 1, col);
                 }
-                painter.drawRect(2, lineno / lineDivisor, 3, 1);
             }
         }
     }
