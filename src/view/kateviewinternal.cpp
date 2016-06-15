@@ -481,7 +481,11 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
 
         Q_ASSERT(lines >= 0);
 
-        if (!calledExternally && qAbs(viewLinesScrolled) < lines) {
+        if (!calledExternally && qAbs(viewLinesScrolled) < lines &&
+            // NOTE: on some machines we must update if the floating widget is visible
+            //       otherwise strange painting bugs may occur during scrolling...
+            !(m_view->m_floatTopMessageWidget || m_view->m_bottomMessageWidget))
+        {
             updateView(false, viewLinesScrolled);
 
             int scrollHeight = -(viewLinesScrolled * (int)renderer()->lineHeight());
@@ -489,13 +493,6 @@ void KateViewInternal::scrollPos(KTextEditor::Cursor &c, bool force, bool called
             // scroll excluding child widgets (floating notifications)
             scroll(0, scrollHeight, rect());
             m_leftBorder->scroll(0, scrollHeight);
-
-            if ((m_view->m_floatTopMessageWidget && m_view->m_floatTopMessageWidget->isVisible())
-                || (m_view->m_bottomMessageWidget && m_view->m_bottomMessageWidget->isVisible())) {
-                // NOTE: on some machines we must update if the floating widget is visible
-                //       otherwise strange painting bugs may occur during scrolling...
-                update();
-            }
 
             if (emitSignals) {
                 emit m_view->verticalScrollPositionChanged(m_view, c);

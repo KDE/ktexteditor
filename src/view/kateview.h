@@ -38,6 +38,7 @@
 #include "katetextrange.h"
 #include "katetextfolding.h"
 #include "katerenderer.h"
+#include "katemessagewidget.h"
 
 namespace KTextEditor
 {
@@ -56,7 +57,6 @@ class KateViewBar;
 class KateGotoBar;
 class KateDictionaryBar;
 class KateSpellingMenu;
-class KateMessageWidget;
 class KateIconBorder;
 class KateStatusBar;
 class KateViewEncodingAction;
@@ -871,13 +871,13 @@ public:
 
 private:
     /** Message widget showing KTextEditor::Messages above the View. */
-    KateMessageWidget *m_topMessageWidget;
+    QPointer<KateMessageWidget> m_topMessageWidget;
     /** Message widget showing KTextEditor::Messages below the View. */
-    KateMessageWidget *m_bottomMessageWidget;
+    QPointer<KateMessageWidget> m_bottomMessageWidget;
     /** Message widget showing KTextEditor::Messages as view overlay in top right corner. */
-    KateMessageWidget *m_floatTopMessageWidget;
+    QPointer<KateMessageWidget> m_floatTopMessageWidget;
     /** Message widget showing KTextEditor::Messages as view overlay in bottom left corner. */
-    KateMessageWidget *m_floatBottomMessageWidget;
+    QPointer<KateMessageWidget> m_floatBottomMessageWidget;
     /** Layout for floating notifications */
     QVBoxLayout *m_notificationLayout;
 
