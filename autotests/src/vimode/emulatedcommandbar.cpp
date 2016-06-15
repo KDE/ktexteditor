@@ -3052,6 +3052,10 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   verifyShowsNumberOfReplacementsAcrossNumberOfLines(6, 1);
   TestPressKey("u");
   FinishTest("bar foo foo foo foo foo");
+#if 0
+    // XXX - as of Qt 5.5, simply replaying the correct QKeyEvents does *not* cause shortcuts
+    // to be triggered, so these tests cannot pass.
+    // It's possible that a solution involving QTestLib will be workable in the future, though.
 
   {
     // Test the test suite: ensure that shortcuts are still being sent and received correctly.
@@ -3096,6 +3100,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     }
     delete dummyAction;
   }
+#endif
 
   // Find the "Print" action for later use.
   QAction *printAction = NULL;
