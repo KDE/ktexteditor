@@ -634,6 +634,12 @@ void KeysTest::MappingTests()
     clearAllMappings();
     vi_global->mappings()->add(Mappings::NormalModeMapping, "l", "<nop>", Mappings::Recursive);
     DoTest("Hello", "lrr", "rello");
+    clearAllMappings();
+    vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "<nop>", Mappings::Recursive);
+    DoTest("Hello", "sl\\esc", "ello");
+    clearAllMappings();
+    vi_global->mappings()->add(Mappings::InsertModeMapping, "l", "<nop>abc", Mappings::Recursive);
+    DoTest("Hello", "sl\\esc", "abcello");
 
     // Clear mappings for subsequent tests.
     clearAllMappings();
