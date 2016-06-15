@@ -111,7 +111,8 @@ void Mappings::add(MappingMode mode, const QString &from, const QString &to, Map
 
 void Mappings::remove(MappingMode mode, const QString &from)
 {
-    m_mappings[mode].remove(from);
+    const QString &encodedMapping = KeyParser::self()->encodeKeySequence(from);
+    m_mappings[mode].remove(encodedMapping);
 }
 
 void Mappings::clear(MappingMode mode)

@@ -500,6 +500,17 @@ void KeysTest::MappingTests()
         vi_global->mappings()->add(Mappings::NormalModeMapping, "b", "ciwxyz<esc>", Mappings::NonRecursive);
         DoTest(" 123 456 789", "\\:nunmap b\\WWwbrX", " 123 Xbc 789");
 
+        // nmap and nunmap whose "from" is a complex encoded expression.
+        clearAllMappings();
+        BeginTest("123");
+        TestPressKey("\\:nmap <c-9> ciwxyz<esc>\\");
+        TestPressKey("\\ctrl-9");
+        FinishTest("xyz");
+        BeginTest("123");
+        TestPressKey("\\:nunmap <c-9>\\");
+        TestPressKey("\\ctrl-9");
+        FinishTest("123");
+
         // vmap works in Visual mode and is recursive.
         clearAllMappings();
         vi_global->mappings()->add(Mappings::VisualModeMapping, "l", "d", Mappings::NonRecursive);
