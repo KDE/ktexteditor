@@ -5,6 +5,7 @@
 
 class QKeyEvent;
 class QString;
+class QWidget;
 
 namespace KTextEditor
 {
