@@ -1488,6 +1488,9 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   // Execute the command on Enter.
   DoTest("d\nb\na\nc", "Vjjj:sort\\enter", "a\nb\nc\nd");
 
+  // Don't crash if we call a non-existent command with a range.
+  DoTest("123", ":42nonexistentcommand\\enter", "123");
+
   // Bar background should always be normal for command bar.
   BeginTest("foo");
   TestPressKey("/foo\\enter:");
