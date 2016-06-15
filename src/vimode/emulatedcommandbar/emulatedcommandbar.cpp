@@ -222,7 +222,7 @@ void EmulatedCommandBar::insertRegisterContents(const QKeyEvent *keyEvent)
 
 bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
 {
-    Q_ASSERT(object == m_edit || object == m_completer->m_completer->popup());
+    // The "object" will be either m_edit or m_completer's popup.
     if (m_suspendEditEventFiltering) {
         return false;
     }
