@@ -379,6 +379,7 @@ void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeMana
     m_viInputModeManager = viInputModeManager;
     m_searchMode->setViInputModeManager(viInputModeManager);
     m_commandMode->setViInputModeManager(viInputModeManager);
+    m_interactiveSedReplaceMode->setViInputModeManager(viInputModeManager);
 }
 
 void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
