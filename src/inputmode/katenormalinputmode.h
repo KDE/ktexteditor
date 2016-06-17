@@ -46,7 +46,7 @@ public:
     void overwrittenChar(const QChar &) Q_DECL_OVERRIDE;
 
     void clearSelection() Q_DECL_OVERRIDE;
-    bool stealKey(const QKeyEvent *) const Q_DECL_OVERRIDE;
+    bool stealKey(QKeyEvent *) Q_DECL_OVERRIDE;
 
     void gotFocus() Q_DECL_OVERRIDE;
     void lostFocus() Q_DECL_OVERRIDE;

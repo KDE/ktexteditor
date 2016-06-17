@@ -26,6 +26,7 @@
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
+#include "macrorecorder.h"
 
 #include <QTimer>
 
@@ -119,8 +120,33 @@ bool KeyMapper::handleKeypress(QChar key)
         // We've been swallowing all the keypresses meant for m_keys for our mapping keys; now that we know
         // this cannot be a mapping, restore them.
         Q_ASSERT(!isPartialMapping && !isFullMapping);
-        playBackRejectedKeys();
-        return true;
+        const bool isUserKeypress = !m_viInputModeManager->macroRecorder()->isReplaying() && !isExecutingMapping();
+        if (isUserKeypress && m_mappingKeys.size() == 1)
+        {
+            // Ugh - unpleasant complication starting with Qt 5.5-ish - it is no
+            // longer possible to replay QKeyEvents in such a way that shortcuts
+            // are triggered, so if we want to correctly handle a shortcut (e.g.
+            // ctrl+s for e.g. Save), we can no longer pop it into m_mappingKeys
+            // then immediately playBackRejectedKeys() (as this will not trigger
+            // the e.g. Save shortcut) - the best we can do is, if e.g. ctrl+s is
+            // not part of any mapping, immediately return false, *not* calling
+            // playBackRejectedKeys() and clearing m_mappingKeys ourselves.
+            // If e.g. ctrl+s *is* part of a mapping, then if the mapping is
+            // rejected, the played back e.g. ctrl+s does not trigger the e.g.
+            // Save shortcut. Likewise, we can no longer have e.g. ctrl+s inside
+            // mappings or macros - the e.g. Save shortcut will not be triggered!
+            // Altogether, a pretty disastrous change from Qt's old behaviour -
+            // either they "fix" it (although it could be argued that being able
+            // to trigger shortcuts from QKeyEvents was never the desired behaviour)
+            // or we try to emulate Shortcut-handling ourselves :(
+            m_mappingKeys.clear();
+            return false;
+        }
+        else
+        {
+            playBackRejectedKeys();
+            return true;
+        }
     }
     m_doNotMapNextKeypress = false;
     return false;

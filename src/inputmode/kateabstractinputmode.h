@@ -53,7 +53,7 @@ public:
     virtual bool overwrite() const = 0;
     virtual void overwrittenChar(const QChar &) = 0;
     virtual void clearSelection() = 0;
-    virtual bool stealKey(const QKeyEvent *) const = 0;
+    virtual bool stealKey(QKeyEvent* k) = 0;
 
     virtual void gotFocus() = 0;
     virtual void lostFocus() = 0;

@@ -49,7 +49,7 @@ public:
     void overwrittenChar(const QChar &) Q_DECL_OVERRIDE;
 
     void clearSelection() Q_DECL_OVERRIDE;
-    bool stealKey(const QKeyEvent *) const Q_DECL_OVERRIDE;
+    bool stealKey(QKeyEvent *) Q_DECL_OVERRIDE;
 
     void gotFocus() Q_DECL_OVERRIDE;
     void lostFocus() Q_DECL_OVERRIDE;
@@ -91,6 +91,8 @@ private:
     KateVi::EmulatedCommandBar *m_viModeEmulatedCommandBar;
     KateVi::GlobalState *m_viGlobal;
     KateRenderer::caretStyles m_caret;
+
+    bool m_nextKeypressIsOverriddenShortCut;
 
     // configs
     bool m_relLineNumbers;

@@ -118,7 +118,7 @@ bool InputModeManager::handleKeypress(const QKeyEvent *e)
     // of a mapping, we don't want to record them when they are played back by m_keyMapper, hence
     // the "!isPlayingBackRejectedKeys()". And obviously, since we're recording keys before they are mapped, we don't
     // want to also record the executed mapping, as when we replayed the macro, we'd get duplication!
-    if (m_macroRecorder->isRecording() && !m_macroRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping() && !keyMapper()->isPlayingBackRejectedKeys()) {
+    if (m_macroRecorder->isRecording() && !m_macroRecorder->isReplaying() && !isSyntheticSearchCompletedKeyPress && !keyMapper()->isExecutingMapping() && !keyMapper()->isPlayingBackRejectedKeys() && !lastChangeRecorder()->isReplaying()) {
         m_macroRecorder->record(*e);
     }
 

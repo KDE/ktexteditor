@@ -27,6 +27,7 @@
 #include "../globalstate.h"
 #include <vimode/keyparser.h>
 #include <vimode/inputmodemanager.h>
+#include <inputmode/kateviinputmode.h>
 #include <vimode/modes/normalvimode.h>
 #include "matchhighlighter.h"
 #include "interactivesedreplacemode.h"
@@ -69,8 +70,9 @@ QString escapedForSearchingAsLiteral(const QString &originalQtRegex)
 }
 }
 
-EmulatedCommandBar::EmulatedCommandBar(InputModeManager *viInputModeManager, QWidget *parent)
+EmulatedCommandBar::EmulatedCommandBar(KateViInputMode* viInputMode, InputModeManager *viInputModeManager, QWidget *parent)
     : KateViewBarWidget(false, parent),
+      m_viInputMode(viInputMode),
       m_viInputModeManager(viInputModeManager),
       m_view(viInputModeManager->view())
 {
@@ -230,7 +232,7 @@ bool EmulatedCommandBar::eventFilter(QObject *object, QEvent *event)
     if (event->type() == QEvent::KeyPress) {
         // Re-route this keypress through Vim's central keypress handling area, so that we can use the keypress in e.g.
         // mappings and macros.
-        return m_viInputModeManager->handleKeypress(static_cast<QKeyEvent *>(event));
+        return m_viInputMode->keyPress(static_cast<QKeyEvent *>(event));
     }
     return false;
 }

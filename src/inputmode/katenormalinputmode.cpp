@@ -67,7 +67,7 @@ void KateNormalInputMode::clearSelection()
     view()->clearSelection();
 }
 
-bool KateNormalInputMode::stealKey(const QKeyEvent *) const
+bool KateNormalInputMode::stealKey( QKeyEvent *)
 {
     return false;
 }

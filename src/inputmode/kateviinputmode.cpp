@@ -65,6 +65,7 @@ KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalS
     , m_viModeEmulatedCommandBar(0)
     , m_viGlobal(global)
     , m_caret(KateRenderer::Block)
+    , m_nextKeypressIsOverriddenShortCut(false)
     , m_activated(false)
 {
     m_relLineNumbers = KateViewConfig::global()->viRelativeLineNumbers();
@@ -131,11 +132,22 @@ void KateViInputMode::clearSelection()
     // do nothing, handled elsewhere
 }
 
-bool KateViInputMode::stealKey(const QKeyEvent *k) const
+bool KateViInputMode::stealKey(QKeyEvent *k)
 {
-    const bool steal = KateViewConfig::global()->viInputModeStealKeys();
-    return steal && (m_viModeManager->getCurrentViMode() != KateVi::ViMode::InsertMode ||
-                        k->modifiers() == Qt::ControlModifier || k->key() == Qt::Key_Insert);
+    if (!KateViewConfig::global()->viInputModeStealKeys())
+    {
+        return false;
+    }
+
+    // Actually see if we can make use of this key - if so, we've stolen it; if not,
+    // let Qt's shortcut handling system deal with it.
+    const bool stolen = keyPress(k);
+    if (stolen)
+    {
+        // Qt will replay this QKeyEvent, next time as an ordinary KeyPress.
+        m_nextKeypressIsOverriddenShortCut = true;
+    }
+    return stolen;
 }
 
 KTextEditor::View::InputMode KateViInputMode::viewInputMode() const
@@ -255,7 +267,7 @@ void KateViInputMode::showViModeEmulatedCommandBar()
 KateVi::EmulatedCommandBar *KateViInputMode::viModeEmulatedCommandBar()
 {
     if (!m_viModeEmulatedCommandBar) {
-        m_viModeEmulatedCommandBar = new KateVi::EmulatedCommandBar(m_viModeManager, view());
+        m_viModeEmulatedCommandBar = new KateVi::EmulatedCommandBar(this, m_viModeManager, view());
         m_viModeEmulatedCommandBar->hide();
     }
 
@@ -269,24 +281,15 @@ void KateViInputMode::updateRendererConfig()
 
 bool KateViInputMode::keyPress(QKeyEvent *e)
 {
-    if (m_viModeManager->getCurrentViMode() == KateVi::InsertMode ||
-        m_viModeManager->getCurrentViMode() == KateVi::ReplaceMode) {
+    if (m_nextKeypressIsOverriddenShortCut)
+    {
+        // This is just the replay of a shortcut that we stole, this time as a QKeyEvent.
+        // Ignore it, as we'll have already handled it via stealKey()!
+        m_nextKeypressIsOverriddenShortCut = false;
+        return true;
+    }
 
-        if (m_viModeManager->handleKeypress(e)) {
-            return true;
-        } else if (e->modifiers() != Qt::NoModifier && e->modifiers() != Qt::ShiftModifier) {
-            // re-post key events not handled if they have a modifier other than shift
-            QEvent *copy = new QKeyEvent(e->type(), e->key(), e->modifiers(), e->text(),
-                                         e->isAutoRepeat(), e->count());
-            QCoreApplication::postEvent(viewInternal()->parent(), copy);
-        }
-    } else { // !InsertMode
-        if (!m_viModeManager->handleKeypress(e)) {
-            // we didn't need that keypress, un-steal it :-)
-            QEvent *copy = new QKeyEvent(e->type(), e->key(), e->modifiers(), e->text(),
-                                            e->isAutoRepeat(), e->count());
-            QCoreApplication::postEvent(viewInternal()->parent(), copy);
-        }
+    if (m_viModeManager->handleKeypress(e)) {
         emit view()->viewModeChanged(view(), viewMode());
         return true;
     }
