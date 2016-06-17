@@ -39,32 +39,10 @@ void KateKeywordCompletionModel::completionInvoked(KTextEditor::View* view, cons
                                                    KTextEditor::CodeCompletionModel::InvocationType /*invocationType*/)
 {
     KTextEditor::DocumentPrivate* doc = static_cast<KTextEditor::DocumentPrivate*>(view->document());
-    if ( ! doc->highlight() || doc->highlight()->noHighlighting() ) {
-        // no highlighting -- nothing to do
+    if ( !doc->highlight() || doc->highlight()->noHighlighting() ) {
         return;
     }
-
-    Kate::TextLine line = doc->kateTextLine(range.end().line());
-    Kate::TextLine previousLine = doc->kateTextLine(range.end().line() - 1);
-    Kate::TextLine nextLine = doc->kateTextLine(range.end().line() + 1);
-    bool contextChanged;
-    QVector<KateHighlighting::ContextChange> contextChanges;
-    // Ask the highlighting engine to re-calcualte the highlighting for the line
-    // where completion was invoked, and store all the context changes in the process.
-    doc->highlight()->doHighlight(previousLine.data(), line.data(), nextLine.data(),
-                                  contextChanged, 0, &contextChanges);
-
-    // From the list of context changes, find the highlighting context which is
-    // active at the position where completion was invoked.
-    KateHlContext* context = 0;
-    foreach ( KateHighlighting::ContextChange change, contextChanges ) {
-        if ( change.pos == 0 || change.pos <= range.end().column() ) {
-            context = change.toContext;
-        }
-        if ( change.pos > range.end().column() ) {
-            break;
-        }
-    }
+    auto context = doc->highlight()->contextForLocation(doc, range.end());
 
     // Find all keyword items which exist for that context,
     // and suggest them as completion items.

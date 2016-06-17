@@ -2257,5 +2257,37 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
     return false;
 }
 
+KateHlContext* KateHighlighting::contextForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
+{
+    if ( noHighlighting() ) {
+        // no highlighting -- nothing to do
+        return nullptr;
+    }
+
+    Kate::TextLine line = doc->kateTextLine(cursor.line());
+    Kate::TextLine previousLine = doc->kateTextLine(cursor.line() - 1);
+    Kate::TextLine nextLine = doc->kateTextLine(cursor.line() + 1);
+    bool contextChanged;
+    QVector<KateHighlighting::ContextChange> contextChanges;
+    // Ask the highlighting engine to re-calcualte the highlighting for the line
+    // where completion was invoked, and store all the context changes in the process.
+    doHighlight(previousLine.data(), line.data(), nextLine.data(),
+                contextChanged, 0, &contextChanges);
+
+    // From the list of context changes, find the highlighting context which is
+    // active at the position where completion was invoked.
+    KateHlContext* context = nullptr;
+    foreach ( KateHighlighting::ContextChange change, contextChanges ) {
+        if ( change.pos == 0 || change.pos <= cursor.column() ) {
+            context = change.toContext;
+        }
+        if ( change.pos > cursor.column() ) {
+            break;
+        }
+    }
+    return context;
+}
+
+
 //END
 

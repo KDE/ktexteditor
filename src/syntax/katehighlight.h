@@ -26,6 +26,7 @@
 #include "kateextendedattribute.h"
 #include "katesyntaxmanager.h"
 #include "spellcheck/prefixstore.h"
+#include "range.h"
 
 #include <QVector>
 #include <QList>
@@ -46,6 +47,9 @@ class KateHlItem;
 class KateHlIncludeRule;
 class KateSyntaxModeListItem;
 class KateSyntaxContextData;
+namespace KTextEditor {
+    class DocumentPrivate;
+}
 
 // same as in kmimemagic, no need to feed more data
 #define KATE_HL_HOWMANY 1024
@@ -285,6 +289,8 @@ public:
      */
     QString hlKeyForAttrib(int attrib) const;
     QString hlKeyForContext(int attrib) const;
+
+    KateHlContext* contextForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
 
     KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 

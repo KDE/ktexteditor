@@ -2888,10 +2888,6 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             view->cursorRight();
             return true;
         }
-
-        if ( ! closingBracket.isNull() ) {
-            m_currentAutobraceClosingChar = closingBracket;
-        }
     }
 
     /**
@@ -2978,7 +2974,13 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
          * => add the matching closing one to the view + input chars
          * try to preserve the cursor position
          */
-        if (!closingBracket.isNull()) {
+        bool skipAutobrace = closingBracket == QLatin1Char('\'');
+        if ( highlight() && skipAutobrace ) {
+            auto context = highlight()->contextForLocation(this, view->cursorPosition());
+            // skip adding ' in spellchecked areas, because those are text
+            skipAutobrace = !context || highlight()->attributeRequiresSpellchecking(context->attr);
+        }
+        if (!closingBracket.isNull() && !skipAutobrace ) {
             // add bracket to the view
             const auto cursorPos(view->cursorPosition());
             const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
@@ -2994,6 +2996,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
                 // add bracket to chars inserted! needed for correct signals + indent
                 chars.append(closingBracket);
             }
+            m_currentAutobraceClosingChar = closingBracket;
         }
 
         // end edit session here, to have updated HL in userTypedChar!
