@@ -26,6 +26,7 @@
 #include "globalstate.h"
 #include "macros.h"
 #include "completionreplayer.h"
+#include "lastchangerecorder.h"
 
 namespace {
     const QChar LastPlayedRegister = QLatin1Char('@');
@@ -70,6 +71,8 @@ bool MacroRecorder::isRecording() const
 
 void MacroRecorder::record(const QKeyEvent &event)
 {
+    if (isRepeatOfLastShortcutOverrideAsKeyPress(event, m_eventsLog))
+        return;
     m_eventsLog.append(event);
 }
 

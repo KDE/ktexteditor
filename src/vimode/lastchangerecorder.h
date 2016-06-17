@@ -31,6 +31,13 @@ namespace KateVi
 {
 class InputModeManager;
 
+/**
+ * In e.g. Insert mode, Qt seems to feed each keypress through twice; once as a ShortcutOverride (even if the key
+ * doesn't actually appear to be a ShortcutOverride) and then, whether the "ShortcutOverride" was accepted or not,
+ * again as a KeyPress.  We don't want to store both, so this helper helps to decide what to do.
+ */
+bool isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent& currentKeyPress, const QList<QKeyEvent>& keyEventLog);
+
 class LastChangeRecorder
 {
 public:
