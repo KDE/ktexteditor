@@ -521,10 +521,10 @@ bool KateCompletionWidget::updatePosition(bool force)
     }
 
     QPoint p = view()->mapToGlobal(cursorPosition);
-    int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 4 - (m_entryList->viewport()->pos().x());
+    int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 7 - (m_entryList->viewport()->pos().x());
     int y = p.y();
 
-    y += view()->renderer()->config()->fontMetrics().height() + 4;
+    y += view()->renderer()->config()->fontMetrics().height() + 2;
 
     bool borderHit = false;
 

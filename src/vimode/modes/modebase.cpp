@@ -1245,8 +1245,10 @@ void ModeBase::switchView(Direction direction)
     int curr_x2 = current_point.x() + m_view->width();
     int curr_y1 = current_point.y();
     int curr_y2 = current_point.y() + m_view->height();
-    int curr_cursor_y = m_view->mapToGlobal(m_view->cursorToCoordinate(m_view->cursorPosition())).y();
-    int curr_cursor_x = m_view->mapToGlobal(m_view->cursorToCoordinate(m_view->cursorPosition())).x();
+    const KTextEditor::Cursor cursorPos = m_view->cursorPosition();
+    const QPoint globalPos = m_view->mapToGlobal(m_view->cursorToCoordinate(cursorPos));
+    int curr_cursor_y = globalPos.y();
+    int curr_cursor_x = globalPos.x();
 
     KTextEditor::ViewPrivate *bestview = NULL;
     int  best_x1 = -1, best_x2 = -1, best_y1 = -1, best_y2 = -1, best_center_y = -1, best_center_x = -1;

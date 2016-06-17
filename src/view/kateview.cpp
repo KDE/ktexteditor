@@ -2560,17 +2560,22 @@ KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPositionVirtual() const
 
 QPoint KTextEditor::ViewPrivate::cursorToCoordinate(const KTextEditor::Cursor &cursor) const
 {
-    return m_viewInternal->cursorToCoordinate(cursor);
+    // map from ViewInternal to View coordinates
+    const QPoint pt = m_viewInternal->cursorToCoordinate(cursor, true, false);
+    return pt == QPoint(-1, -1) ? pt : m_viewInternal->mapToParent(pt);
 }
 
 KTextEditor::Cursor KTextEditor::ViewPrivate::coordinatesToCursor(const QPoint &coords) const
 {
-    return m_viewInternal->coordinatesToCursor(coords);
+    // map from View to ViewInternal coordinates
+    return m_viewInternal->coordinatesToCursor(m_viewInternal->mapFromParent(coords), false);
 }
 
 QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const
 {
-    return m_viewInternal->cursorCoordinates();
+    // map from ViewInternal to View coordinates
+    const QPoint pt = m_viewInternal->cursorCoordinates();
+    return pt == QPoint(-1, -1) ? pt : m_viewInternal->mapToParent(pt);
 }
 
 bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor &position)

@@ -120,9 +120,9 @@ public:
         if (!c.isValid()) {
             return QRect();
         }
-        QPoint p = view()->view()->cursorToCoordinate(c);
+        QPoint p = view()->cursorToCoordinate(c);
         KTextEditor::Cursor endCursor = KTextEditor::Cursor(c.line(), c.column() + 1);
-        QPoint size = view()->view()->cursorToCoordinate(endCursor) - p;
+        QPoint size = view()->cursorToCoordinate(endCursor) - p;
         return QRect(view()->mapToGlobal(p), QSize(size.x(), size.y()));
     }
     int cursorPosition() const Q_DECL_OVERRIDE
