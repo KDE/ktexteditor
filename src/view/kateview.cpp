@@ -3054,7 +3054,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("current-line-number-color"),
         QStringLiteral("modification-markers"),
         QStringLiteral("keyword-completion"),
-        QStringLiteral("word-count")
+        QStringLiteral("word-count"),
+        QStringLiteral("scollbar-minimap")
     };
     return keys;
 }
@@ -3093,7 +3094,10 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->lineModification();
     } else if (key == QLatin1String("keyword-completion")) {
         return config()->keywordCompletion();
+    } else if (key == QLatin1String("scrollbar-minimap")) {
+        return config()->scrollBarMiniMap();
     }
+
 
     // return invalid variant
     return QVariant();
@@ -3139,6 +3143,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setKeywordCompletion(value.toBool());
         } else if (key == QLatin1String("word-count")) {
             config()->setShowWordCount(value.toBool());
+        } else if (key == QLatin1String("scrollbar-minimap")) {
+            config()->setScrollBarMiniMap(value.toBool());
         }
 
     } else if (value.canConvert(QVariant::UInt)) {
