@@ -201,7 +201,8 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     int currentYPos = 0;
     measureColumnSizes(this, current, columnSize, currentYPos, height());
 
-    int totalColumnsWidth = 0, originalViewportWidth = viewport()->width();
+    auto totalColumnsWidth = 0;
+    auto originalViewportWidth = viewport()->width();
 
     int maxWidth = (QApplication::desktop()->screenGeometry(widget()->view()).width() * 3) / 4;
 
