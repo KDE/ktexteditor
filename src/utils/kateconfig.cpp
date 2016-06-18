@@ -1299,7 +1299,7 @@ const char KEY_DYN_WORD_WRAP_ALIGN_INDENT[] = "Dynamic Word Wrap Align Indent";
 const char KEY_LINE_NUMBERS[] = "Line Numbers";
 const char KEY_SCROLL_BAR_MARKS[] = "Scroll Bar Marks";
 const char KEY_SCROLL_BAR_PREVIEW[] = "Scroll Bar Preview";
-const char KEY_SCROLL_BAR_MINI_MAP[] = "Scroll Bar Mini Map";
+const char KEY_SCROLL_BAR_MINI_MAP[] = "Scroll Bar MiniMap";
 const char KEY_SCROLL_BAR_MINI_MAP_ALL[] = "Scroll Bar Mini Map All";
 const char KEY_SCROLL_BAR_MINI_MAP_WIDTH[] = "Scroll Bar Mini Map Width";
 const char KEY_SHOW_SCROLLBARS[] = "Show Scrollbars";
@@ -1336,15 +1336,15 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setDynWordWrapIndicators(config.readEntry(KEY_DYN_WORD_WRAP_INDICATORS, 1));
     setDynWordWrapAlignIndent(config.readEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, 80));
 
-    setLineNumbers(config.readEntry(KEY_LINE_NUMBERS,  false));
+    setLineNumbers(config.readEntry(KEY_LINE_NUMBERS, false));
 
-    setScrollBarMarks(config.readEntry(KEY_SCROLL_BAR_MARKS,  false));
+    setScrollBarMarks(config.readEntry(KEY_SCROLL_BAR_MARKS, false));
 
     setScrollBarPreview(config.readEntry(KEY_SCROLL_BAR_PREVIEW, true));
 
-    setScrollBarMiniMap(config.readEntry(KEY_SCROLL_BAR_MINI_MAP,  false));
+    setScrollBarMiniMap(config.readEntry(KEY_SCROLL_BAR_MINI_MAP, true));
 
-    setScrollBarMiniMapAll(config.readEntry(KEY_SCROLL_BAR_MINI_MAP_ALL,  false));
+    setScrollBarMiniMapAll(config.readEntry(KEY_SCROLL_BAR_MINI_MAP_ALL, false));
 
     setScrollBarMiniMapWidth(config.readEntry(KEY_SCROLL_BAR_MINI_MAP_WIDTH,  60));
 
