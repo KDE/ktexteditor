@@ -82,6 +82,7 @@
 #include <QPainter>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QToolTip>
 
 //#define VIEW_RANGE_DEBUG
 
@@ -3201,6 +3202,10 @@ KTextEditor::AnnotationModel *KTextEditor::ViewPrivate::annotationModel() const
 void KTextEditor::ViewPrivate::setAnnotationBorderVisible(bool visible)
 {
     m_viewInternal->m_leftBorder->setAnnotationBorderOn(visible);
+    if ( !visible ) {
+        // make sure the tooltip is hidden
+        QToolTip::hideText();
+    }
 }
 
 bool KTextEditor::ViewPrivate::isAnnotationBorderVisible() const
