@@ -699,7 +699,7 @@ void KeysTest::AltGr()
 void KeysTest::MacroTests()
 {
     // Update the status on qa.
-    const QString macroIsRecordingStatus = i18n("(recording)");
+    const QString macroIsRecordingStatus = QLatin1String("(") + i18n("recording") + QLatin1String(")");
     clearAllMacros();
     BeginTest("");
     QVERIFY(!kate_view->viewModeHuman().contains(macroIsRecordingStatus));
