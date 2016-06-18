@@ -61,7 +61,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     // this is important for delayed creation of groups, without this
     // the first column would never get resized to the correct size
     connect(widget()->model(), &QAbstractItemModel::modelReset,
-            this, &KateCompletionTree::resizeColumnsSlot, Qt::QueuedConnection);
+            this, &KateCompletionTree::scheduleUpdate, Qt::QueuedConnection);
 
     // Prevent user from expanding / collapsing with the mouse
     setItemsExpandable(false);
@@ -423,7 +423,7 @@ void KateCompletionTree::top()
 
 void KateCompletionTree::scheduleUpdate()
 {
-    m_resizeTimer->start(300);
+    m_resizeTimer->start(0);
 }
 
 void KateCompletionTree::bottom()
