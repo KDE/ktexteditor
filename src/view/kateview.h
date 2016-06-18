@@ -54,6 +54,7 @@ class KateSpellCheckDialog;
 class KateCompletionWidget;
 class KateViewInternal;
 class KateViewBar;
+class KateTextPreview;
 class KateGotoBar;
 class KateDictionaryBar;
 class KateSpellingMenu;
@@ -91,6 +92,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     friend class KTextEditor::View;
     friend class ::KateViewInternal;
     friend class ::KateIconBorder;
+    friend class ::KateTextPreview;
 
 public:
     ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR);

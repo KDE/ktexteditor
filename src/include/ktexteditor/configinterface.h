@@ -84,7 +84,7 @@ namespace KTextEditor
  *  - modification-markers [bool] read/set whether the modification markers are shown
  *  - word-count [bool] enable/disable the counting of words and characters in the statusbar
  *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
-
+ *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
  *
  * KTextEditor::Document has support for the following:
  *  - backup-on-save-local [bool], enable/disable backup when saving local files

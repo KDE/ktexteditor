@@ -149,6 +149,7 @@ view/katemessagewidget.cpp
 view/katefadeeffect.cpp
 view/kateanimation.cpp
 view/katetextanimation.cpp
+view/katetextpreview.cpp
 view/katestatusbar.cpp
 view/wordcounter.cpp
 

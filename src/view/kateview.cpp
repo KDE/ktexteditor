@@ -3056,7 +3056,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("modification-markers"),
         QStringLiteral("keyword-completion"),
         QStringLiteral("word-count"),
-        QStringLiteral("scollbar-minimap")
+        QStringLiteral("scrollbar-minimap"),
+        QStringLiteral("scrollbar-preview")
     };
     return keys;
 }
@@ -3097,8 +3098,9 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->keywordCompletion();
     } else if (key == QLatin1String("scrollbar-minimap")) {
         return config()->scrollBarMiniMap();
+    } else if (key == QLatin1String("scrollbar-preview")) {
+        return config()->scrollBarPreview();
     }
-
 
     // return invalid variant
     return QVariant();
@@ -3146,6 +3148,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setShowWordCount(value.toBool());
         } else if (key == QLatin1String("scrollbar-minimap")) {
             config()->setScrollBarMiniMap(value.toBool());
+        } else if (key == QLatin1String("scrollbar-preview")) {
+            config()->setScrollBarPreview(value.toBool());
         }
 
     } else if (value.canConvert(QVariant::UInt)) {

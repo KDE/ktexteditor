@@ -676,6 +676,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
 
     connect(bordersUi->chkIconBorder, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMarks, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->chkScrollbarPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMiniMap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMiniMapAll, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     bordersUi->chkScrollbarMiniMapAll->hide(); // this is temporary until the feature is done
@@ -713,6 +714,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setLineNumbers(bordersUi->chkLineNumbers->isChecked());
     KateViewConfig::global()->setIconBar(bordersUi->chkIconBorder->isChecked());
     KateViewConfig::global()->setScrollBarMarks(bordersUi->chkScrollbarMarks->isChecked());
+    KateViewConfig::global()->setScrollBarPreview(bordersUi->chkScrollbarPreview->isChecked());
     KateViewConfig::global()->setScrollBarMiniMap(bordersUi->chkScrollbarMiniMap->isChecked());
     KateViewConfig::global()->setScrollBarMiniMapAll(bordersUi->chkScrollbarMiniMapAll->isChecked());
     KateViewConfig::global()->setScrollBarMiniMapWidth(bordersUi->spBoxMiniMapWidth->value());
@@ -740,6 +742,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->chkLineNumbers->setChecked(KateViewConfig::global()->lineNumbers());
     bordersUi->chkIconBorder->setChecked(KateViewConfig::global()->iconBar());
     bordersUi->chkScrollbarMarks->setChecked(KateViewConfig::global()->scrollBarMarks());
+    bordersUi->chkScrollbarPreview->setChecked(KateViewConfig::global()->scrollBarPreview());
     bordersUi->chkScrollbarMiniMap->setChecked(KateViewConfig::global()->scrollBarMiniMap());
     bordersUi->chkScrollbarMiniMapAll->setChecked(KateViewConfig::global()->scrollBarMiniMapAll());
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());

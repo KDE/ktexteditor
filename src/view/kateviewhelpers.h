@@ -26,6 +26,7 @@
 #include <KActionMenu>
 
 #include <QPixmap>
+#include <QPointer>
 #include <QColor>
 #include <QScrollBar>
 #include <QHash>
@@ -45,6 +46,7 @@ class KateViewInternal;
 #define MAXFOLDINGCOLORS 16
 
 class KateLineInfo;
+class KateTextPreview;
 
 namespace KTextEditor
 {
@@ -69,6 +71,7 @@ class KateScrollBar : public QScrollBar
 
 public:
     KateScrollBar(Qt::Orientation orientation, class KateViewInternal *parent);
+    virtual ~KateScrollBar();
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
     inline bool showMarks()
@@ -121,6 +124,8 @@ protected:
     void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
     void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *object, QEvent *event);
     void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
     void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
     void sliderChange(SliderChange change) Q_DECL_OVERRIDE;
@@ -133,6 +138,9 @@ public Q_SLOTS:
     void updatePixmap();
 
 private:
+    void showTextPreview();
+    void hideTextPreview();
+
     void redrawMarks();
     void recomputeMarksPositions();
 
@@ -151,6 +159,7 @@ private:
     KTextEditor::ViewPrivate *m_view;
     KTextEditor::DocumentPrivate *m_doc;
     class KateViewInternal *m_viewInternal;
+    QPointer<KateTextPreview> m_textPreview;
 
     QHash<int, QColor> m_lines;
 

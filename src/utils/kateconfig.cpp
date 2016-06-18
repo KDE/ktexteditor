@@ -1211,6 +1211,7 @@ KateViewConfig::KateViewConfig()
     m_dynWordWrapAlignIndentSet(false),
     m_lineNumbersSet(false),
     m_scrollBarMarksSet(false),
+    m_scrollBarPreviewSet(false),
     m_scrollBarMiniMapSet(false),
     m_scrollBarMiniMapAllSet(false),
     m_scrollBarMiniMapWidthSet(false),
@@ -1255,6 +1256,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_dynWordWrapAlignIndentSet(false),
     m_lineNumbersSet(false),
     m_scrollBarMarksSet(false),
+    m_scrollBarPreviewSet(false),
     m_scrollBarMiniMapSet(false),
     m_scrollBarMiniMapAllSet(false),
     m_scrollBarMiniMapWidthSet(false),
@@ -1296,6 +1298,7 @@ const char KEY_DYN_WORD_WRAP_INDICATORS[] = "Dynamic Word Wrap Indicators";
 const char KEY_DYN_WORD_WRAP_ALIGN_INDENT[] = "Dynamic Word Wrap Align Indent";
 const char KEY_LINE_NUMBERS[] = "Line Numbers";
 const char KEY_SCROLL_BAR_MARKS[] = "Scroll Bar Marks";
+const char KEY_SCROLL_BAR_PREVIEW[] = "Scroll Bar Preview";
 const char KEY_SCROLL_BAR_MINI_MAP[] = "Scroll Bar Mini Map";
 const char KEY_SCROLL_BAR_MINI_MAP_ALL[] = "Scroll Bar Mini Map All";
 const char KEY_SCROLL_BAR_MINI_MAP_WIDTH[] = "Scroll Bar Mini Map Width";
@@ -1336,6 +1339,8 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setLineNumbers(config.readEntry(KEY_LINE_NUMBERS,  false));
 
     setScrollBarMarks(config.readEntry(KEY_SCROLL_BAR_MARKS,  false));
+
+    setScrollBarPreview(config.readEntry(KEY_SCROLL_BAR_PREVIEW, true));
 
     setScrollBarMiniMap(config.readEntry(KEY_SCROLL_BAR_MINI_MAP,  false));
 
@@ -1392,6 +1397,8 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_LINE_NUMBERS, lineNumbers());
 
     config.writeEntry(KEY_SCROLL_BAR_MARKS, scrollBarMarks());
+
+    config.writeEntry(KEY_SCROLL_BAR_PREVIEW, scrollBarPreview());
 
     config.writeEntry(KEY_SCROLL_BAR_MINI_MAP, scrollBarMiniMap());
 
@@ -1569,6 +1576,29 @@ void KateViewConfig::setScrollBarMarks(bool on)
 
     m_scrollBarMarksSet = true;
     m_scrollBarMarks = on;
+
+    configEnd();
+}
+
+bool KateViewConfig::scrollBarPreview() const
+{
+    if (m_scrollBarPreviewSet || isGlobal()) {
+        return m_scrollBarPreview;
+    }
+
+    return s_global->scrollBarPreview();
+}
+
+void KateViewConfig::setScrollBarPreview(bool on)
+{
+    if (m_scrollBarPreviewSet && m_scrollBarPreview == on) {
+        return;
+    }
+
+    configStart();
+
+    m_scrollBarPreviewSet = true;
+    m_scrollBarPreview = on;
 
     configEnd();
 }

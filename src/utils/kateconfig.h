@@ -453,6 +453,9 @@ public:
     bool scrollBarMarks() const;
     void setScrollBarMarks(bool on);
 
+    bool scrollBarPreview() const;
+    void setScrollBarPreview(bool on);
+
     bool scrollBarMiniMap() const;
     void setScrollBarMiniMap(bool on);
 
@@ -571,6 +574,7 @@ private:
     int m_dynWordWrapAlignIndent;
     bool m_lineNumbers;
     bool m_scrollBarMarks;
+    bool m_scrollBarPreview;
     bool m_scrollBarMiniMap;
     bool m_scrollBarMiniMapAll;
     int  m_scrollBarMiniMapWidth;
@@ -603,6 +607,7 @@ private:
     bool m_dynWordWrapAlignIndentSet : 1;
     bool m_lineNumbersSet : 1;
     bool m_scrollBarMarksSet : 1;
+    bool m_scrollBarPreviewSet : 1;
     bool m_scrollBarMiniMapSet : 1;
     bool m_scrollBarMiniMapAllSet : 1;
     bool m_scrollBarMiniMapWidthSet : 1;
