@@ -57,7 +57,6 @@ public:
         return m_isSendingSyntheticSearchCompletedKeypress;
     }
 private:
-    EmulatedCommandBar *m_emulatedCommandBar = nullptr;
     QLineEdit *m_edit = nullptr;
     SearchDirection m_searchDirection;
     KTextEditor::Cursor m_startingCursorPos;

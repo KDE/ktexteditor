@@ -310,7 +310,7 @@ void KTextEditor::ViewPrivate::setupLayout()
     }
 
     // set margins
-    QStyleOptionFrameV3 opt;
+    QStyleOptionFrame opt;
     opt.initFrom(this);
     opt.frameShape = QFrame::StyledPanel;
     opt.state |= QStyle::State_Sunken;
@@ -3247,7 +3247,7 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
         m_rightSpacer->geometry();
 
     if (contentsRect.isValid()) {
-        QStyleOptionFrameV3 opt;
+        QStyleOptionFrame opt;
         opt.initFrom(this);
         opt.frameShape = QFrame::StyledPanel;
         opt.state |= QStyle::State_Sunken;

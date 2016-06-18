@@ -37,7 +37,7 @@ namespace KTextEditor
 namespace KateVi
 {
 class EmulatedCommandBar;
-class CompletionStartParams;
+struct CompletionStartParams;
 class MatchHighlighter;
 class InputModeManager;
 

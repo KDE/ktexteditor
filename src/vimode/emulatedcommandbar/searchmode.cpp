@@ -253,7 +253,6 @@ QStringList KateVi::reversed(const QStringList &originalList)
 
 SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit)
     : ActiveMode ( emulatedCommandBar, matchHighlighter, viInputModeManager, view),
-      m_emulatedCommandBar(emulatedCommandBar),
       m_edit(edit)
 {
 }

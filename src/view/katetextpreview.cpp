@@ -28,6 +28,8 @@
 #include <QDebug>
 #include <QPainter>
 
+#include <cmath>
+
 KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent)
     : QFrame(parent)
     , m_view(view)
