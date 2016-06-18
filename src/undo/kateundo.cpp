@@ -302,7 +302,7 @@ void KateUndoGroup::redo(KTextEditor::View *view)
     m_manager->endUndo();
 }
 
-void KateUndoGroup::editEnd(const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range selectionRange)
+void KateUndoGroup::editEnd(const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range &selectionRange)
 {
     m_redoCursor = cursorPosition;
     m_redoSelection = selectionRange;

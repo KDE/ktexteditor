@@ -458,7 +458,7 @@ public:
      */
     void redo(KTextEditor::View *view);
 
-    void editEnd(const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range selectionRange);
+    void editEnd(const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range &selectionRange);
 
     /**
      * merge this group with an other
