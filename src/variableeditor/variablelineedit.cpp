@@ -287,6 +287,16 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     item->setHelpText(i18nc("short translation please", "Remove trailing spaces when saving the document."));
     listview->addItem(item);
 
+    // Add 'scrollbar-minimap' to list
+    item = new VariableBoolItem(QStringLiteral("scrollbar-minimap"), viewConfig->scrollBarMiniMap());
+    item->setHelpText(i18nc("short translation please", "Show scrollbar minimap."));
+    listview->addItem(item);
+
+    // Add 'scrollbar-preview' to list
+    item = new VariableBoolItem(QStringLiteral("scrollbar-preview"), viewConfig->scrollBarPreview());
+    item->setHelpText(i18nc("short translation please", "Show scrollbar preview."));
+    listview->addItem(item);
+
     // Add 'scheme' to list
     QStringList schemas;
     Q_FOREACH (const KateSchema &schema, KTextEditor::EditorPrivate::self()->schemaManager()->list()) {

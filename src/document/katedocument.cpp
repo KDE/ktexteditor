@@ -4466,6 +4466,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
         << QStringLiteral("line-numbers") << QStringLiteral("icon-border") << QStringLiteral("folding-markers")
         << QStringLiteral("bookmark-sorting") << QStringLiteral("auto-center-lines")
         << QStringLiteral("icon-bar-color")
+        << QStringLiteral("scrollbar-minimap")
+        << QStringLiteral("scrollbar-preview")
         // renderer
         << QStringLiteral("background-color") << QStringLiteral("selection-color")
         << QStringLiteral("current-line-color") << QStringLiteral("bracket-highlight-color")
@@ -4620,6 +4622,10 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
             v->config()->setAutoCenterLines(n);
         } else if (var == QLatin1String("icon-bar-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setIconBarColor(c);
+        } else if (var == QLatin1String("scrollbar-minimap") && checkBoolValue(val, &state)) {
+            v->config()->setScrollBarMiniMap(state);
+        } else if (var == QLatin1String("scrollbar-preview") && checkBoolValue(val, &state)) {
+            v->config()->setScrollBarPreview(state);
         }
         // RENDERER
         else if (var == QLatin1String("background-color") && checkColorValue(val, c)) {
