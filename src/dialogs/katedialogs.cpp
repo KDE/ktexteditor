@@ -684,6 +684,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     connect(bordersUi->chkLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkShowLineModification, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkShowFoldingMarkers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->chkShowFoldingPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->rbSortBookmarksByPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->rbSortBookmarksByCreation, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->cmbShowScrollbars, SIGNAL(activated(int)), this, SLOT(slotChanged()));
@@ -719,6 +720,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setScrollBarMiniMapAll(bordersUi->chkScrollbarMiniMapAll->isChecked());
     KateViewConfig::global()->setScrollBarMiniMapWidth(bordersUi->spBoxMiniMapWidth->value());
     KateViewConfig::global()->setFoldingBar(bordersUi->chkShowFoldingMarkers->isChecked());
+    KateViewConfig::global()->setFoldingPreview(bordersUi->chkShowFoldingPreview->isChecked());
     KateViewConfig::global()->setLineModification(bordersUi->chkShowLineModification->isChecked());
     KateViewConfig::global()->setShowScrollbars(bordersUi->cmbShowScrollbars->currentIndex());
 
@@ -747,6 +749,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->chkScrollbarMiniMapAll->setChecked(KateViewConfig::global()->scrollBarMiniMapAll());
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
     bordersUi->chkShowFoldingMarkers->setChecked(KateViewConfig::global()->foldingBar());
+    bordersUi->chkShowFoldingPreview->setChecked(KateViewConfig::global()->foldingPreview());
     bordersUi->chkShowLineModification->setChecked(KateViewConfig::global()->lineModification());
     bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
     bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);

@@ -1962,7 +1962,7 @@ void KateIconBorder::showBlock()
 
     // show text preview, if a folded region starts here
     bool foldUnderMouse = false;
-    if (m_foldingRange) {
+    if (m_foldingRange && m_view->config()->foldingPreview()) {
         const QPoint globalPos = QCursor::pos();
         const QPoint pos = mapFromGlobal(globalPos);
         const KateTextLayout &t = m_view->m_viewInternal->yToKateTextLayout(pos.y());
