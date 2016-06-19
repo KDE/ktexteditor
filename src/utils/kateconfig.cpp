@@ -1218,6 +1218,7 @@ KateViewConfig::KateViewConfig()
     m_showScrollbarsSet(false),
     m_iconBarSet(false),
     m_foldingBarSet(false),
+    m_foldingPreviewSet(false),
     m_lineModificationSet(false),
     m_bookmarkSortSet(false),
     m_autoCenterLinesSet(false),
@@ -1262,7 +1263,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_scrollBarMiniMapWidthSet(false),
     m_showScrollbarsSet(false),
     m_iconBarSet(false),
-    m_foldingBarSet(false),
+    m_foldingPreviewSet(false),
     m_lineModificationSet(false),
     m_bookmarkSortSet(false),
     m_autoCenterLinesSet(false),
@@ -1305,6 +1306,7 @@ const char KEY_SCROLL_BAR_MINI_MAP_WIDTH[] = "Scroll Bar Mini Map Width";
 const char KEY_SHOW_SCROLLBARS[] = "Show Scrollbars";
 const char KEY_ICON_BAR[] = "Icon Bar";
 const char KEY_FOLDING_BAR[] = "Folding Bar";
+const char KEY_FOLDING_PREVIEW[] = "Folding Preview";
 const char KEY_LINE_MODIFICATION[] = "Line Modification";
 const char KEY_BOOKMARK_SORT[] = "Bookmark Menu Sorting";
 const char KEY_AUTO_CENTER_LINES[] = "Auto Center Lines";
@@ -1353,6 +1355,8 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setIconBar(config.readEntry(KEY_ICON_BAR, false));
 
     setFoldingBar(config.readEntry(KEY_FOLDING_BAR, true));
+
+    setFoldingPreview(config.readEntry(KEY_FOLDING_PREVIEW, true));
 
     setLineModification(config.readEntry(KEY_LINE_MODIFICATION, false));
 
@@ -1411,6 +1415,8 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_ICON_BAR, iconBar());
 
     config.writeEntry(KEY_FOLDING_BAR, foldingBar());
+
+    config.writeEntry(KEY_FOLDING_PREVIEW, foldingPreview());
 
     config.writeEntry(KEY_LINE_MODIFICATION, lineModification());
 
@@ -1760,6 +1766,29 @@ void KateViewConfig::setFoldingBar(bool on)
 
     m_foldingBarSet = true;
     m_foldingBar = on;
+
+    configEnd();
+}
+
+bool KateViewConfig::foldingPreview() const
+{
+    if (m_foldingPreviewSet || isGlobal()) {
+        return m_foldingPreview;
+    }
+
+    return s_global->foldingPreview();
+}
+
+void KateViewConfig::setFoldingPreview(bool on)
+{
+    if (m_foldingPreviewSet && m_foldingPreview == on) {
+        return;
+    }
+
+    configStart();
+
+    m_foldingPreviewSet = true;
+    m_foldingPreview = on;
 
     configEnd();
 }

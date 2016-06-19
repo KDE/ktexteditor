@@ -481,6 +481,9 @@ public:
     bool foldingBar() const;
     void setFoldingBar(bool on);
 
+    bool foldingPreview() const;
+    void setFoldingPreview(bool on);
+
     bool lineModification() const;
     void setLineModification(bool on);
 
@@ -581,6 +584,7 @@ private:
     int  m_showScrollbars;
     bool m_iconBar;
     bool m_foldingBar;
+    bool m_foldingPreview;
     bool m_lineModification;
     int m_bookmarkSort;
     int m_autoCenterLines;
@@ -614,6 +618,7 @@ private:
     bool m_showScrollbarsSet : 1;
     bool m_iconBarSet : 1;
     bool m_foldingBarSet : 1;
+    bool m_foldingPreviewSet : 1;
     bool m_lineModificationSet : 1;
     bool m_bookmarkSortSet : 1;
     bool m_autoCenterLinesSet : 1;
