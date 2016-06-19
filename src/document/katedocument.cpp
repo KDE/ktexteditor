@@ -4464,6 +4464,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     QStringList vvl; // view variable names
     vvl << QStringLiteral("dynamic-word-wrap") << QStringLiteral("dynamic-word-wrap-indicators")
         << QStringLiteral("line-numbers") << QStringLiteral("icon-border") << QStringLiteral("folding-markers")
+        << QStringLiteral("folding-preview")
         << QStringLiteral("bookmark-sorting") << QStringLiteral("auto-center-lines")
         << QStringLiteral("icon-bar-color")
         << QStringLiteral("scrollbar-minimap")
@@ -4618,6 +4619,8 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
             v->config()->setIconBar(state);
         } else if (var == QLatin1String("folding-markers") && checkBoolValue(val, &state)) {
             v->config()->setFoldingBar(state);
+        } else if (var == QLatin1String("folding-preview") && checkBoolValue(val, &state)) {
+            v->config()->setFoldingPreview(state);
         } else if (var == QLatin1String("auto-center-lines") && checkIntValue(val, &n)) {
             v->config()->setAutoCenterLines(n);
         } else if (var == QLatin1String("icon-bar-color") && checkColorValue(val, c)) {

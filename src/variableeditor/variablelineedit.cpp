@@ -195,6 +195,11 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     item->setHelpText(i18nc("short translation please", "Enable folding markers in the editor border."));
     listview->addItem(item);
 
+    // Add 'folding-preview' to list
+    item = new VariableBoolItem(QStringLiteral("folding-preview"), viewConfig->foldingPreview());
+    item->setHelpText(i18nc("short translation please", "Enable folding preview on in the editor border."));
+    listview->addItem(item);
+
     // Add 'font-size' to list
     item = new VariableIntItem(QStringLiteral("font-size"), rendererConfig->font().pointSize());
     static_cast<VariableIntItem *>(item)->setRange(4, 128);

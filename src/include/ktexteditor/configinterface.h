@@ -67,6 +67,8 @@ namespace KTextEditor
  *  - line-numbers [bool], show/hide line numbers
  *  - icon-bar [bool], show/hide icon bar
  *  - folding-bar [bool], show/hide the folding bar
+ *  - folding-preview [bool], enable/disable folding preview when mouse hovers
+ *    on folded region
  *  - dynamic-word-wrap [bool], enable/disable dynamic word wrap
  *  - background-color [QColor], read/set the default background color
  *  - selection-color [QColor], read/set the default color for selections
