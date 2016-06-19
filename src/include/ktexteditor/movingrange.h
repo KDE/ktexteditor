@@ -507,6 +507,16 @@ public:
         return start().line() == end().line();
     }
 
+    /**
+     * Returns the number of lines separating the start() and end() positions.
+     *
+     * \return the number of lines separating the start() and end() positions;
+     *         0 if the start and end lines are the same.
+     */
+    inline int numberOfLines() const Q_DECL_NOEXCEPT {
+        return end().line() - start().line();
+    }
+
     //END comparison functions
 };
 
