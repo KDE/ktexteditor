@@ -1982,7 +1982,13 @@ void KateIconBorder::showBlock()
 //                     qApp->installEventFilter(this);
                 }
 
-                m_foldingPreview->resize(m_view->width() / 2, m_view->height() / 5);
+                // TODO: use KateViewInternal::maxLen() somehow to compute proper width for amount of lines to display
+
+                // try using the end line of the range for proper popup height
+                const int lineCount = qMin(m_foldingRange->numberOfLines() + 1,
+                                           (height() - pos.y()) / m_view->renderer()->lineHeight());
+
+                m_foldingPreview->resize(m_view->width() / 2, lineCount * m_view->renderer()->lineHeight() + 2 * m_foldingPreview->frameWidth());
                 const int xGlobal = mapToGlobal(QPoint(width(), 0)).x();
                 const int yGlobal = m_view->mapToGlobal(m_view->cursorToCoordinate(KTextEditor::Cursor(realLine, 0))).y();
                 m_foldingPreview->move(QPoint(xGlobal, yGlobal) - m_foldingPreview->contentsRect().topLeft());
