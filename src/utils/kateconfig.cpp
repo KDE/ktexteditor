@@ -1263,6 +1263,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_scrollBarMiniMapWidthSet(false),
     m_showScrollbarsSet(false),
     m_iconBarSet(false),
+    m_foldingBarSet(false),
     m_foldingPreviewSet(false),
     m_lineModificationSet(false),
     m_bookmarkSortSet(false),
