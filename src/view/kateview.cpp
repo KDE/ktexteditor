@@ -3049,6 +3049,7 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("default-mark-type"),
         QStringLiteral("allow-mark-menu"),
         QStringLiteral("folding-bar"),
+        QStringLiteral("folding-preview"),
         QStringLiteral("icon-border-color"),
         QStringLiteral("folding-marker-color"),
         QStringLiteral("line-number-color"),
@@ -3084,6 +3085,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->allowMarkMenu();
     } else if (key == QLatin1String("folding-bar")) {
         return config()->foldingBar();
+    } else if (key == QLatin1String("folding-preview")) {
+        return config()->foldingPreview();
     } else if (key == QLatin1String("icon-border-color")) {
         return renderer()->config()->iconBarColor();
     } else if (key == QLatin1String("folding-marker-color")) {
@@ -3140,6 +3143,8 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
             config()->setAllowMarkMenu(value.toBool());
         } else if (key == QLatin1String("folding-bar")) {
             config()->setFoldingBar(value.toBool());
+        } else if (key == QLatin1String("folding-preview")) {
+            config()->setFoldingPreview(value.toBool());
         } else if (key == QLatin1String("modification-markers")) {
             config()->setLineModification(value.toBool());
         } else if (key == QLatin1String("keyword-completion")) {
