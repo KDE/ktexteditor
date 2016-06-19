@@ -34,6 +34,7 @@ KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent
     : QFrame(parent)
     , m_view(view)
     , m_line(0)
+    , m_showFoldedLines(false)
     , m_center(true)
     , m_scale(1.0)
 {
@@ -92,13 +93,26 @@ qreal KateTextPreview::scaleFactor() const
     return m_scale;
 }
 
+void KateTextPreview::setShowFoldedLines(bool on)
+{
+    if (m_showFoldedLines != on) {
+        m_showFoldedLines = on;
+        update();
+    }
+}
+
+bool KateTextPreview::showFoldedLines() const
+{
+    return m_showFoldedLines;
+}
+
 void KateTextPreview::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);
 
     KateRenderer * renderer = view()->renderer();
     KateLayoutCache * cache = view()->m_viewInternal->cache();
-    const int lastVisibleLine = view()->textFolding().visibleLines();
+    const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
 
     const QRect r = contentsRect(); // already substracted QFrame's frame width
     const int xStart = 0;
@@ -107,8 +121,8 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     const int lineCount = ceil(static_cast<qreal>(r.height()) / (lineHeight * m_scale));
     int startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0));
     // at the very end of the document, make sure the preview is filled
-    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1> lastVisibleLine) {
-        m_line = qMax(0.0, lastVisibleLine - static_cast<qreal>(r.height()) / (lineHeight * m_scale) + floor(lineCount / 2.0) - 1);
+    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1> lastLine) {
+        m_line = qMax(0.0, lastLine - static_cast<qreal>(r.height()) / (lineHeight * m_scale) + floor(lineCount / 2.0) - 1);
         startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0) + 1);
     }
     const int endLine = startLine + lineCount;
@@ -127,7 +141,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     }
 
     for (int line = startLine; line <= endLine; ++line) {
-        const int realLine = view()->textFolding().visibleLineToLine(line);
+        const int realLine = showFoldedLines() ? line : view()->textFolding().visibleLineToLine(line);
 
         if (KateLineLayoutPtr thisLine = cache->line(realLine)) {
             renderer->paintTextLine(paint, thisLine, xStart, xEnd, nullptr);

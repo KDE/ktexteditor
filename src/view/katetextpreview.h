@@ -34,6 +34,7 @@ class KateTextPreview : public QFrame
 {
     Q_OBJECT
     Q_PROPERTY(qreal line READ line WRITE setLine)
+    Q_PROPERTY(bool showFoldedLines READ showFoldedLines WRITE setShowFoldedLines)
     Q_PROPERTY(bool centerView READ centerView WRITE setCenterView)
     Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor)
 
@@ -79,12 +80,24 @@ public:
      */
     qreal scaleFactor() const;
 
+    /**
+     * Sets whether folded lines are hidden or not.
+     * By default, folded liens are not visible.
+     */
+    void setShowFoldedLines(bool on);
+
+    /**
+     * Returns whether folded lines are hidden.
+     */
+    bool showFoldedLines() const;
+
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
 private:
     KTextEditor::ViewPrivate *m_view;
     qreal m_line;
+    bool m_showFoldedLines;
     bool m_center;
     qreal m_scale;
 };
