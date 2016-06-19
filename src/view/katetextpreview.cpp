@@ -116,7 +116,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
 
     const QRect r = contentsRect(); // already substracted QFrame's frame width
     const int xStart = 0;
-    const int xEnd = r.width();
+    const int xEnd = r.width() / m_scale;
     const int lineHeight = qMax(1, renderer->lineHeight());
     const int lineCount = ceil(static_cast<qreal>(r.height()) / (lineHeight * m_scale));
     int startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0));
