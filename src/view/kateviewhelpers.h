@@ -296,6 +296,7 @@ private:
     mutable QPixmap m_arrow;
     mutable QColor m_oldBackgroundColor;
 
+    QPointer<KateTextPreview> m_foldingPreview;
     KTextEditor::MovingRange *m_foldingRange;
     int m_nextHighlightBlock;
     int m_currentBlockLine;

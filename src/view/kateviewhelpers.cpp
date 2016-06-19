@@ -1294,7 +1294,8 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_maxCharWidth(0.0)
     , iconPaneWidth(16)
     , m_annotationBorderWidth(6)
-    , m_foldingRange(0)
+    , m_foldingPreview(nullptr)
+    , m_foldingRange(nullptr)
     , m_nextHighlightBlock(-2)
     , m_currentBlockLine(-1)
 {
@@ -1313,8 +1314,8 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
 
 KateIconBorder::~KateIconBorder()
 {
+    delete m_foldingPreview;
     delete m_foldingRange;
-    m_foldingRange = 0;
 }
 
 void KateIconBorder::setIconBorderOn(bool enable)
@@ -1959,6 +1960,45 @@ void KateIconBorder::showBlock()
         m_foldingRange->setAttribute(attr);
     }
 
+    // show text preview, if a folded region starts here
+    bool foldUnderMouse = false;
+    if (m_foldingRange) {
+        const QPoint globalPos = QCursor::pos();
+        const QPoint pos = mapFromGlobal(globalPos);
+        const KateTextLayout &t = m_view->m_viewInternal->yToKateTextLayout(pos.y());
+        if (t.isValid() && positionToArea(pos) == FoldingMarkers) {
+
+            const int realLine = t.line();
+            foldUnderMouse = !m_view->textFolding().isLineVisible(realLine + 1);
+
+            if (foldUnderMouse) {
+                if (!m_foldingPreview) {
+                    m_foldingPreview = new KateTextPreview(m_view);
+                    m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
+                    m_foldingPreview->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint);
+                    m_foldingPreview->setFrameStyle(QFrame::StyledPanel);
+
+                    // event filter to catch application WindowDeactivate event, to hide the preview window
+//                     qApp->installEventFilter(this);
+                }
+
+                m_foldingPreview->resize(m_view->width() / 2, m_view->height() / 5);
+                const int xGlobal = mapToGlobal(QPoint(width(), 0)).x();
+                const int yGlobal = m_view->mapToGlobal(m_view->cursorToCoordinate(KTextEditor::Cursor(realLine, 0))).y();
+                m_foldingPreview->move(QPoint(xGlobal, yGlobal) - m_foldingPreview->contentsRect().topLeft());
+                m_foldingPreview->setLine(realLine);
+                m_foldingPreview->setCenterView(false);
+                m_foldingPreview->setShowFoldedLines(true);
+                m_foldingPreview->raise();
+                m_foldingPreview->show();
+            }
+        }
+    }
+
+    if (!foldUnderMouse) {
+        delete m_foldingPreview;
+    }
+
     /**
      * repaint
      */
@@ -1975,6 +2015,8 @@ void KateIconBorder::hideBlock()
     m_currentBlockLine = -1;
     delete m_foldingRange;
     m_foldingRange = 0;
+
+    delete m_foldingPreview;
 }
 
 void KateIconBorder::leaveEvent(QEvent *event)
@@ -2073,6 +2115,8 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
                 }
                 m_view->textFolding().newFoldingRange(foldingRange, Kate::TextFolding::Folded);
             }
+
+            delete m_foldingPreview;
         }
 
         if (area == AnnotationBorder) {
