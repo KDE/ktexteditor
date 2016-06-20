@@ -315,6 +315,12 @@ void KateScrollBar::showTextPreview()
         grooveRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarGroove, this);
     }
 
+    if (m_view->config()->scrollPastEnd()) {
+        // Adjust the grove size to accommodate the added pageStep at the bottom
+        int adjust = pageStep()*grooveRect.height() / (maximum() + pageStep() - minimum());
+        grooveRect.adjust(0,0,0, -adjust);
+    }
+
     const QPoint cursorPos = mapFromGlobal(QCursor::pos());
     if (grooveRect.contains(cursorPos)) {
 
