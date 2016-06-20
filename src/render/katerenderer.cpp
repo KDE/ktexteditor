@@ -542,7 +542,7 @@ The ultimate line painting function.
 Currently missing features:
 - draw indent lines
 */
-void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor)
+void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
 {
     Q_ASSERT(range->isValid());
 
@@ -841,7 +841,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 
     // Draws the dashed underline at the start of a folded block of text.
-    if (range->startsInvisibleBlock()) {
+    if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock()) {
         const QPainter::RenderHints backupRenderHints = paint.renderHints();
         paint.setRenderHint(QPainter::Antialiasing, false);
         QPen pen(config()->wordWrapMarkerColor());

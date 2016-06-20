@@ -110,8 +110,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);
 
-    KateRenderer * renderer = view()->renderer();
-    KateLayoutCache * cache = view()->m_viewInternal->cache();
+    KateRenderer * const renderer = view()->renderer();
     const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
 
     const QRect r = contentsRect(); // already substracted QFrame's frame width
@@ -141,13 +140,19 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     }
 
     for (int line = startLine; line <= endLine; ++line) {
+        // get real line, skip if invalid!
         const int realLine = showFoldedLines() ? line : view()->textFolding().visibleLineToLine(line);
-
-        if (KateLineLayoutPtr thisLine = cache->line(realLine)) {
-            renderer->paintTextLine(paint, thisLine, xStart, xEnd, nullptr);
-
-            // translate for next line
-            paint.translate(0, lineHeight);
+        if (realLine < 0 || realLine >= renderer->doc()->lines()) {
+            continue;
         }
+
+        // compute layout WITHOUT cache to not poison it + render it
+        KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer));
+        lineLayout->setLine(realLine, -1);
+        renderer->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+        renderer->paintTextLine(paint, lineLayout, xStart, xEnd, nullptr, KateRenderer::SkipDrawFirstInvisibleLineUnderlined);
+
+        // translate for next line
+        paint.translate(0, lineHeight);
     }
 }

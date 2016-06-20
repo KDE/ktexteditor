@@ -31,6 +31,7 @@
 #include <QFontMetricsF>
 #include <QList>
 #include <QTextLine>
+#include <QFlags>
 
 namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
@@ -309,6 +310,17 @@ public:
     bool getSelectionBounds(int line, int lineLength, int &start, int &end) const;
 
     /**
+     * Flags to customize the paintTextLine function behavior
+     */
+    enum PaintTextLineFlag {
+        /**
+         * Skip drawing the dashed underline at the start of a folded block of text?
+         */
+        SkipDrawFirstInvisibleLineUnderlined = 0x1,
+    };
+    Q_DECLARE_FLAGS(PaintTextLineFlags, PaintTextLineFlag)
+
+    /**
      * This is the ultimate function to perform painting of a text line.
      *
      * The text line is painted from the upper limit of (0,0).  To move that,
@@ -319,8 +331,9 @@ public:
      * @param xStart          starting width in pixels.
      * @param xEnd            ending width in pixels.
      * @param cursor          position of the caret, if placed on the current line.
+     * @param flags           flags for customizing the drawing of the line
      */
-    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = 0L);
+    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = 0L, PaintTextLineFlags flags = PaintTextLineFlags());
 
     /**
      * Paint the background of a line
