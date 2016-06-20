@@ -295,19 +295,26 @@ void KateScrollBar::showTextPreview()
         return;
     }
 
-    QStyleOptionSlider opt;
-    opt.init(this);
-    opt.subControls = QStyle::SC_None;
-    opt.activeSubControls = QStyle::SC_None;
-    opt.orientation = orientation();
-    opt.minimum = minimum();
-    opt.maximum = maximum();
-    opt.sliderPosition = sliderPosition();
-    opt.sliderValue = value();
-    opt.singleStep = singleStep();
-    opt.pageStep = pageStep();
+    QRect grooveRect;
+    if (m_showMiniMap) {
+        // If mini-map is shown, the height of the map might not be the whole height
+        grooveRect = m_mapGroveRect;
+    } else {
+        QStyleOptionSlider opt;
+        opt.init(this);
+        opt.subControls = QStyle::SC_None;
+        opt.activeSubControls = QStyle::SC_None;
+        opt.orientation = orientation();
+        opt.minimum = minimum();
+        opt.maximum = maximum();
+        opt.sliderPosition = sliderPosition();
+        opt.sliderValue = value();
+        opt.singleStep = singleStep();
+        opt.pageStep = pageStep();
 
-    QRect grooveRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarGroove, this);
+        grooveRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarGroove, this);
+    }
+
     const QPoint cursorPos = mapFromGlobal(QCursor::pos());
     if (grooveRect.contains(cursorPos)) {
 
