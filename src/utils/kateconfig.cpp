@@ -1357,7 +1357,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 
     setFoldingBar(config.readEntry(KEY_FOLDING_BAR, true));
 
-    setFoldingPreview(config.readEntry(KEY_FOLDING_PREVIEW, false));
+    setFoldingPreview(config.readEntry(KEY_FOLDING_PREVIEW, true));
 
     setLineModification(config.readEntry(KEY_LINE_MODIFICATION, false));
 
