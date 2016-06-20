@@ -47,9 +47,6 @@
         </item>
         <item>
          <widget class="QCheckBox" name="chkShowFoldingPreview">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
           <property name="whatsThis">
            <string>If checked, hovering over a folded region shows a preview of the folded text in a popup.</string>
           </property>
@@ -311,22 +308,6 @@
     <hint type="destinationlabel">
      <x>37</x>
      <y>347</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>chkShowFoldingMarkers</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>chkShowFoldingPreview</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>63</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>82</x>
-     <y>92</y>
     </hint>
    </hints>
   </connection>
