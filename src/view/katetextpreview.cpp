@@ -30,8 +30,8 @@
 
 #include <cmath>
 
-KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent)
-    : QFrame(parent)
+KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view)
+    : QFrame(view, Qt::ToolTip)
     , m_view(view)
     , m_line(0)
     , m_showFoldedLines(false)
