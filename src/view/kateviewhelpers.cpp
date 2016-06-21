@@ -1322,6 +1322,9 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     m_delayFoldingHlTimer.setSingleShot(true);
     m_delayFoldingHlTimer.setInterval(150);
     connect(&m_delayFoldingHlTimer, SIGNAL(timeout()), this, SLOT(showBlock()));
+
+    // user interaction (scrolling) hides e.g. preview
+    connect(m_view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(displayRangeChanged()));
 }
 
 KateIconBorder::~KateIconBorder()
@@ -2327,6 +2330,12 @@ void KateIconBorder::annotationModelChanged(KTextEditor::AnnotationModel *oldmod
         connect(newmodel, SIGNAL(lineChanged(int)), this, SLOT(updateAnnotationLine(int)));
     }
     updateAnnotationBorderWidth();
+}
+
+void KateIconBorder::displayRangeChanged()
+{
+    hideBlock();
+    removeAnnotationHovering();
 }
 
 //END KateIconBorder

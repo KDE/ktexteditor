@@ -220,7 +220,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     slotHlChanged();
     KCursor::setAutoHideCursor(m_viewInternal, true);
 
-    // user interaction (scrollling) starts notification auto-hide timer
+    // user interaction (scrolling) starts notification auto-hide timer
     connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_topMessageWidget, SLOT(startAutoHideTimer()));
     connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_bottomMessageWidget, SLOT(startAutoHideTimer()));
 

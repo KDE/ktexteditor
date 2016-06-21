@@ -252,6 +252,7 @@ public Q_SLOTS:
     void updateAnnotationBorderWidth();
     void updateAnnotationLine(int line);
     void annotationModelChanged(KTextEditor::AnnotationModel *oldmodel, KTextEditor::AnnotationModel *newmodel);
+    void displayRangeChanged();
 
 private:
     void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
