@@ -947,7 +947,7 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->setNewLineAtEof(ui->chkNewLineAtEof->isChecked());
 
     // set both standard and fallback encoding
-    KateDocumentConfig::global()->setEncoding((ui->cmbEncoding->currentIndex() == 0) ? QString() : KCharsets::charsets()->encodingForName(ui->cmbEncoding->currentText()));
+    KateDocumentConfig::global()->setEncoding(KCharsets::charsets()->encodingForName(ui->cmbEncoding->currentText()));
 
     KateGlobalConfig::global()->setProberType((KEncodingProber::ProberType)ui->cmbEncodingDetection->currentIndex());
     KateGlobalConfig::global()->setFallbackEncoding(KCharsets::charsets()->encodingForName(ui->cmbEncodingFallback->currentText()));
@@ -968,11 +968,9 @@ void KateSaveConfigTab::reload()
 
     // encodings
     ui->cmbEncoding->clear();
-    ui->cmbEncoding->addItem(i18n("KDE Default"));
-    ui->cmbEncoding->setCurrentIndex(0);
     ui->cmbEncodingFallback->clear();
     QStringList encodings(KCharsets::charsets()->descriptiveEncodingNames());
-    int insert = 1;
+    int insert = 0;
     for (int i = 0; i < encodings.count(); i++) {
         bool found = false;
         QTextCodec *codecForEnc = KCharsets::charsets()->codecForName(KCharsets::charsets()->encodingForName(encodings[i]), found);
@@ -981,13 +979,13 @@ void KateSaveConfigTab::reload()
             ui->cmbEncoding->addItem(encodings[i]);
             ui->cmbEncodingFallback->addItem(encodings[i]);
 
-            if (codecForEnc->name() == KateDocumentConfig::global()->encoding().toLatin1()) {
+            if (codecForEnc == KateDocumentConfig::global()->codec()) {
                 ui->cmbEncoding->setCurrentIndex(insert);
             }
 
             if (codecForEnc == KateGlobalConfig::global()->fallbackCodec()) {
                 // adjust index for fallback config, has no default!
-                ui->cmbEncodingFallback->setCurrentIndex(insert - 1);
+                ui->cmbEncodingFallback->setCurrentIndex(insert);
             }
 
             insert++;
