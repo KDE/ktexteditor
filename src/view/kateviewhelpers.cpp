@@ -327,7 +327,6 @@ void KateScrollBar::showTextPreview()
         if (!m_textPreview) {
             m_textPreview = new KateTextPreview(m_view);
             m_textPreview->setAttribute(Qt::WA_ShowWithoutActivating);
-            m_textPreview->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint);
             m_textPreview->setFrameStyle(QFrame::StyledPanel);
 
             // event filter to catch application WindowDeactivate event, to hide the preview window
@@ -1988,7 +1987,6 @@ void KateIconBorder::showBlock()
                 if (!m_foldingPreview) {
                     m_foldingPreview = new KateTextPreview(m_view);
                     m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
-                    m_foldingPreview->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint);
                     m_foldingPreview->setFrameStyle(QFrame::StyledPanel);
 
                     // event filter to catch application WindowDeactivate event, to hide the preview window

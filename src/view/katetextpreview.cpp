@@ -31,7 +31,7 @@
 #include <cmath>
 
 KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view)
-    : QFrame(view, Qt::ToolTip)
+    : QFrame(view, Qt::ToolTip | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint)
     , m_view(view)
     , m_line(0)
     , m_showFoldedLines(false)
