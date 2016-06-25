@@ -74,7 +74,7 @@ public:
     virtual ~KateScrollBar();
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    inline bool showMarks()
+    inline bool showMarks() const
     {
         return m_showMarks;
     }
@@ -84,13 +84,13 @@ public:
         update();
     }
 
-    inline bool showMiniMap()
+    inline bool showMiniMap() const
     {
         return m_showMiniMap;
     }
     void setShowMiniMap(bool b);
 
-    inline bool miniMapAll()
+    inline bool miniMapAll() const
     {
         return m_miniMapAll;
     }
@@ -101,7 +101,7 @@ public:
         update();
     }
 
-    inline bool miniMapWidth()
+    inline bool miniMapWidth() const
     {
         return m_miniMapWidth;
     }
