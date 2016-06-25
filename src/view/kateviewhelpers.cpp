@@ -119,6 +119,11 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
 
     // track mouse for text preview widget
     setMouseTracking(orientation == Qt::Vertical);
+
+    // setup text preview timer
+    m_delayTextPreviewTimer.setSingleShot(true);
+    m_delayTextPreviewTimer.setInterval(250);
+    connect(&m_delayTextPreviewTimer, SIGNAL(timeout()), this, SLOT(showTextPreview()));
 }
 
 KateScrollBar::~KateScrollBar()
@@ -255,7 +260,7 @@ void KateScrollBar::mouseMoveEvent(QMouseEvent *e)
         QToolTip::showText(m_toolTipPos, i18nc("from line - to line", "<center>%1<br/>&#x2014;<br/>%2</center>", fromLine, lastLine), this);
     }
 
-    showTextPreview();
+    showTextPreviewDelayed();
 }
 
 void KateScrollBar::leaveEvent(QEvent *event)
@@ -286,6 +291,17 @@ void KateScrollBar::paintEvent(QPaintEvent *e)
         miniMapPaintEvent(e);
     } else {
         normalPaintEvent(e);
+    }
+}
+
+void KateScrollBar::showTextPreviewDelayed()
+{
+    if (!m_textPreview) {
+        if (!m_delayTextPreviewTimer.isActive()) {
+            m_delayTextPreviewTimer.start();
+        }
+    } else {
+        showTextPreview();
     }
 }
 
@@ -353,6 +369,10 @@ void KateScrollBar::showTextPreview()
 
 void KateScrollBar::hideTextPreview()
 {
+    if (m_delayTextPreviewTimer.isActive()) {
+        m_delayTextPreviewTimer.stop();
+    }
+
     qApp->removeEventFilter(this);
     delete m_textPreview;
 }

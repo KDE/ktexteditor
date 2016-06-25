@@ -137,8 +137,10 @@ protected Q_SLOTS:
 public Q_SLOTS:
     void updatePixmap();
 
-private:
+private Q_SLOTS:
     void showTextPreview();
+private:
+    void showTextPreviewDelayed();
     void hideTextPreview();
 
     void redrawMarks();
@@ -160,6 +162,7 @@ private:
     KTextEditor::DocumentPrivate *m_doc;
     class KateViewInternal *m_viewInternal;
     QPointer<KateTextPreview> m_textPreview;
+    QTimer m_delayTextPreviewTimer;
 
     QHash<int, QColor> m_lines;
 
