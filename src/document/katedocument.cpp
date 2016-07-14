@@ -4092,7 +4092,8 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
         switch (p.exec()) {
         case KateModOnHdPrompt::Save: {
             m_modOnHd = false;
-            const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url());
+            const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url(), {}, nullptr,
+                                                         QFileDialog::DontConfirmOverwrite);
             if (!res.isEmpty() && checkOverwrite(res, parentWidget)) {
                 if (! saveAs(res)) {
                     KMessageBox::error(parentWidget, i18n("Save failed"));
@@ -4260,7 +4261,8 @@ bool KTextEditor::DocumentPrivate::documentSave()
 
 bool KTextEditor::DocumentPrivate::documentSaveAs()
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
+    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url(), {}, nullptr,
+                                                     QFileDialog::DontConfirmOverwrite);
     if (saveUrl.isEmpty() || !checkOverwrite(saveUrl, dialogParent())) {
         return false;
     }
@@ -4270,7 +4272,8 @@ bool KTextEditor::DocumentPrivate::documentSaveAs()
 
 bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &encoding)
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url());
+    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save File"), url(), {}, nullptr,
+                                                     QFileDialog::DontConfirmOverwrite);
     if (saveUrl.isEmpty() || !checkOverwrite(saveUrl, dialogParent())) {
         return false;
     }
@@ -4281,7 +4284,8 @@ bool KTextEditor::DocumentPrivate::documentSaveAsWithEncoding(const QString &enc
 
 bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
 {
-    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save Copy of File"), url());
+    const QUrl saveUrl = QFileDialog::getSaveFileUrl(dialogParent(), i18n("Save Copy of File"), url(),  {}, nullptr,
+                                                     QFileDialog::DontConfirmOverwrite);
     if (saveUrl.isEmpty() || !checkOverwrite(saveUrl, dialogParent())) {
         return false;
     }
@@ -4960,7 +4964,8 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
     *abortClosing = true;
     if (this->url().isEmpty()) {
         QWidget *parentWidget(dialogParent());
-        const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"));
+        const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), QUrl(), {}, nullptr,
+                                                     QFileDialog::DontConfirmOverwrite);
         if (res.isEmpty() || !checkOverwrite(res, parentWidget)) {
             *abortClosing = true;
             return;
