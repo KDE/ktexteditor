@@ -1299,7 +1299,8 @@ void KateCompletionWidget::completionModelReset()
 
 void KateCompletionWidget::modelDestroyed(QObject *model)
 {
-    unregisterCompletionModel(static_cast<KTextEditor::CodeCompletionModel *>(model));
+    m_sourceModels.removeAll(static_cast<KTextEditor::CodeCompletionModel *>(model));
+    abortCompletion();
 }
 
 void KateCompletionWidget::registerCompletionModel(KTextEditor::CodeCompletionModel *model)
