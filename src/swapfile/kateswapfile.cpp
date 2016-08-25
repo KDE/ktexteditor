@@ -585,12 +585,12 @@ QString SwapFile::fileName()
 
     if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory) {
         path = KateDocumentConfig::global()->swapDirectory();
-        path.append(QDir::separator());
-        path.append(QString::fromLatin1(m_document->checksum()));
+        path.append(QLatin1Char('/'));
+        path.append(QString::fromLatin1(m_document->checksum().toHex()));
         path.append(QLatin1String(".kate-swp"));
     } else {
         path = url.toLocalFile();
-        int poz = path.lastIndexOf(QDir::separator());
+        int poz = path.lastIndexOf(QLatin1Char('/'));
         path.insert(poz + 1, QLatin1String("."));
         path.append(QLatin1String(".kate-swp"));
     }
