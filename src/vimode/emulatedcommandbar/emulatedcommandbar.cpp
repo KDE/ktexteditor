@@ -305,6 +305,7 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
     if (m_edit->isVisible())
     {
+        if (m_suspendEditEventFiltering) return false;
         m_suspendEditEventFiltering = true;
         QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
         qApp->notify(m_edit, &keyEventCopy);
