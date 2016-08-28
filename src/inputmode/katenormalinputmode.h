@@ -76,8 +76,38 @@ public:
     QString bookmarkLabel(int line) const Q_DECL_OVERRIDE;
 
 private:
-    KateSearchBar *searchBar(bool initHintAsPower = false);
-    bool hasSearchBar() const;
+    /**
+     * Search bar mode:
+     *   - Incremental mode
+     *   - Power mode, aka find & replace
+     *   - Incremental mode, but don't change mode if already there
+     */
+    enum SearchBarMode {
+        IncrementalSearchBar,
+        PowerSearchBar,
+        IncrementalSearchBarOrKeepMode
+    };
+
+    /**
+     * Get search bar, create it on demand. (with right mode)
+     * @param mode wanted search bar mode
+     * @return search bar widget
+     */
+    KateSearchBar *searchBar(const SearchBarMode mode);
+
+    /**
+     * search bar around?
+     * @return search bar around?
+     */
+    bool hasSearchBar() const
+    {
+        return m_searchBar;
+    }
+
+    /**
+     * Get command line bar, create it on demand.
+     * @return command line bar, created if not already there
+     */
     KateCommandLineBar *cmdLineBar();
 
 private:

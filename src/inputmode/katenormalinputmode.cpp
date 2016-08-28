@@ -128,9 +128,7 @@ void KateNormalInputMode::readWriteChanged(bool)
 
 void KateNormalInputMode::find()
 {
-    const bool INIT_HINT_AS_INCREMENTAL = false;
-    KateSearchBar *const bar = searchBar(INIT_HINT_AS_INCREMENTAL);
-    bar->enterIncrementalMode();
+    KateSearchBar *const bar = searchBar(IncrementalSearchBar);
     view()->bottomViewBar()->addBarWidget(bar);
     view()->bottomViewBar()->showBarWidget(bar);
     bar->setFocus();
@@ -148,9 +146,7 @@ void KateNormalInputMode::findSelectedBackwards()
 
 void KateNormalInputMode::findReplace()
 {
-    const bool INIT_HINT_AS_POWER = true;
-    KateSearchBar *const bar = searchBar(INIT_HINT_AS_POWER);
-    bar->enterPowerMode();
+    KateSearchBar *const bar = searchBar(PowerSearchBar);
     view()->bottomViewBar()->addBarWidget(bar);
     view()->bottomViewBar()->showBarWidget(bar);
     bar->setFocus();
@@ -158,12 +154,12 @@ void KateNormalInputMode::findReplace()
 
 void KateNormalInputMode::findNext()
 {
-    searchBar()->findNext();
+    searchBar(IncrementalSearchBarOrKeepMode)->findNext();
 }
 
 void KateNormalInputMode::findPrevious()
 {
-    searchBar()->findPrevious();
+    searchBar(IncrementalSearchBarOrKeepMode)->findPrevious();
 }
 
 void KateNormalInputMode::activateCommandLine()
@@ -180,11 +176,30 @@ void KateNormalInputMode::activateCommandLine()
     cmdLineBar()->setFocus();
 }
 
-KateSearchBar *KateNormalInputMode::searchBar(bool initHintAsPower)
+KateSearchBar *KateNormalInputMode::searchBar(const SearchBarMode mode)
 {
+    /**
+     * power mode wanted?
+     */
+    const bool wantPowerMode = (mode == PowerSearchBar);
+
+    /**
+     * create search bar as not there? use right mode
+     */
     if (!m_searchBar) {
-        m_searchBar = new KateSearchBar(initHintAsPower, view(), KateViewConfig::global());
+        m_searchBar = new KateSearchBar(wantPowerMode, view(), KateViewConfig::global());
     }
+
+    /**
+     * else: switch mode if needed!
+     */
+    else if ((mode != IncrementalSearchBarOrKeepMode) && (wantPowerMode != m_searchBar->isPower())) {
+        if (wantPowerMode)
+            m_searchBar->enterPowerMode();
+        else
+            m_searchBar->enterIncrementalMode();
+    }
+
     return m_searchBar;
 }
 
@@ -196,11 +211,6 @@ KateCommandLineBar *KateNormalInputMode::cmdLineBar()
     }
 
     return m_cmdLine;
-}
-
-bool KateNormalInputMode::hasSearchBar() const
-{
-    return m_searchBar != 0;
 }
 
 void KateNormalInputMode::updateRendererConfig()
