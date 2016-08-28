@@ -758,6 +758,12 @@ private:
 
     QString m_dirWatchFile;
 
+    /**
+     * Make backup copy during saveFile, if configured that way.
+     * @return success? else saveFile should return false and not write the file
+     */
+    bool createBackupFile();
+
 public:
     /**
      * Type chars in a view.
