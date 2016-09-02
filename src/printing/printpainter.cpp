@@ -713,7 +713,7 @@ void PrintPainter::paintLineNumber(QPainter &painter, const uint number, const P
     painter.save();
     painter.setFont(m_renderer->config()->font());
     painter.setPen(m_renderer->config()->lineNumberColor());
-    painter.drawText(left,  0, m_lineNumberWidth, m_fontHeight, Qt::AlignRight, QString::number(number));
+    painter.drawText(left,  0, m_lineNumberWidth, m_fontHeight, Qt::AlignRight, QString::number(number + 1));
     painter.restore();
 }
 
