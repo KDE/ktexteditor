@@ -1375,7 +1375,7 @@ public:
     /**
      * reads the line length limit from config, if it is not overriden
      */
-    int lineLengthLimit();
+    int lineLengthLimit() const;
 
 public Q_SLOTS:
     void openWithLineLengthLimitOverride();

@@ -2188,24 +2188,24 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 
 void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
 {
-    m_lineLengthLimitOverride=m_buffer->longestLineLoaded()+1;
+    m_lineLengthLimitOverride = m_buffer->longestLineLoaded() + 1;
     m_buffer->clear();
     openFile();
     if (!m_openingError) {
         setReadWrite(true);
-        m_readWriteStateBeforeLoading=true;
+        m_readWriteStateBeforeLoading = true;
     }
-    m_lineLengthLimitOverride=0;
+    m_lineLengthLimitOverride = 0;
 
 }
 
-int KTextEditor::DocumentPrivate::lineLengthLimit()
+int KTextEditor::DocumentPrivate::lineLengthLimit() const
 {
     int result;
-    if (m_lineLengthLimitOverride>0) {
-       result=m_lineLengthLimitOverride;
+    if (m_lineLengthLimitOverride > 0) {
+       result = m_lineLengthLimitOverride;
     } else {
-       result=config()->lineLengthLimit();
+       result = config()->lineLengthLimit();
     }
 
     return result;
@@ -2314,17 +2314,17 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_buffer->tooLongLinesWrapped()) {
         // this file can't be saved again without modifications
         setReadWrite(false);
-        m_readWriteStateBeforeLoading=false;
+        m_readWriteStateBeforeLoading = false;
         QPointer<KTextEditor::Message> message
             = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
                                             "The longest of those lines was %3 characters long<br/>"
                                             "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
-                                            this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(),m_buffer->longestLineLoaded()),
+                                            this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(), m_buffer->longestLineLoaded()),
                                        KTextEditor::Message::Warning);
-        QAction *increaseAndReload=new QAction(i18n("Temporarily raise limit and reload file"),message);
-        connect(increaseAndReload,SIGNAL(triggered()),this,SLOT(openWithLineLengthLimitOverride()));
-	message->addAction(increaseAndReload,true);
-	message->addAction(new QAction(i18n("Close"),message),true);
+        QAction *increaseAndReload = new QAction(i18n("Temporarily raise limit and reload file"), message);
+        connect(increaseAndReload, SIGNAL(triggered()), this, SLOT(openWithLineLengthLimitOverride()));
+        message->addAction(increaseAndReload, true);
+        message->addAction(new QAction(i18n("Close"), message), true);
         message->setWordWrap(true);
         postMessage(message);
 
