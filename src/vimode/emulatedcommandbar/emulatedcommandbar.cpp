@@ -153,8 +153,11 @@ void EmulatedCommandBar::closed()
     m_completer->deactivateCompletion();
     m_isActive = false;
 
-    m_currentMode->deactivate(m_wasAborted);
-    m_currentMode = nullptr;
+    if (m_currentMode)
+    {
+        m_currentMode->deactivate(m_wasAborted);
+        m_currentMode = nullptr;
+    }
 }
 
 void EmulatedCommandBar::switchToMode ( ActiveMode* newMode )
