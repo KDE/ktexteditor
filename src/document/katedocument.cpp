@@ -206,8 +206,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_documentState(DocumentIdle),
       m_readWriteStateBeforeLoading(false),
       m_isUntitled(true),
-      m_openingError(false),
-      m_lineLengthLimitOverride(0)
+      m_openingError(false)
 {
     /**
      * no plugins from kparts here
@@ -2188,27 +2187,28 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 
 void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
 {
-    m_lineLengthLimitOverride = m_buffer->longestLineLoaded() + 1;
+    // raise line length limit to the next power of 2
+    const int longestLine = m_buffer->longestLineLoaded();
+    int newLimit = pow(2, ceil(log(longestLine) / log(2))); // TODO: C++11: use log2(x)
+    if (newLimit <= longestLine) {
+        newLimit *= 2;
+    }
+
+    // do the raise
+    config()->setLineLengthLimit(newLimit);
+
+    // just reload
     m_buffer->clear();
     openFile();
     if (!m_openingError) {
         setReadWrite(true);
         m_readWriteStateBeforeLoading = true;
     }
-    m_lineLengthLimitOverride = 0;
-
 }
 
 int KTextEditor::DocumentPrivate::lineLengthLimit() const
 {
-    int result;
-    if (m_lineLengthLimitOverride > 0) {
-       result = m_lineLengthLimitOverride;
-    } else {
-       result = config()->lineLengthLimit();
-    }
-
-    return result;
+    return config()->lineLengthLimit();
 }
 
 //BEGIN KParts::ReadWrite stuff

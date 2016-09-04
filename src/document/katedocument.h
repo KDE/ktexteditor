@@ -1366,11 +1366,6 @@ private:
      */
     QString m_openingErrorMessage;
 
-    /**
-     *
-     */
-    int m_lineLengthLimitOverride;
-
 public:
     /**
      * reads the line length limit from config, if it is not overriden
