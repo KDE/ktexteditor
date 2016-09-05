@@ -758,6 +758,12 @@ private:
 
     QString m_dirWatchFile;
 
+    /**
+     * Make backup copy during saveFile, if configured that way.
+     * @return success? else saveFile should return false and not write the file
+     */
+    bool createBackupFile();
+
 public:
     /**
      * Type chars in a view.
@@ -1360,16 +1366,11 @@ private:
      */
     QString m_openingErrorMessage;
 
-    /**
-     *
-     */
-    int m_lineLengthLimitOverride;
-
 public:
     /**
      * reads the line length limit from config, if it is not overriden
      */
-    int lineLengthLimit();
+    int lineLengthLimit() const;
 
 public Q_SLOTS:
     void openWithLineLengthLimitOverride();
