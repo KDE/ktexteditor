@@ -80,6 +80,8 @@
 #include <QMimeDatabase>
 #include <QTemporaryFile>
 
+#include <cmath>
+
 #ifdef LIBGIT2_FOUND
 #include <git2.h>
 #include <git2/oid.h>
