@@ -904,28 +904,6 @@ void KateSaveConfigTab::apply()
         uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
     }
 
-    const KateDocumentConfig::SwapFileMode swap_mode = static_cast<KateDocumentConfig::SwapFileMode>(uiadv->cmbSwapFileMode->currentIndex());
-    if (swap_mode == KateDocumentConfig::SwapFilePresetDirectory) {
-        const QString dirpath = uiadv->kurlSwapDirectory->url().toLocalFile();
-
-        if (!QDir(dirpath).exists()) {
-            KMessageBox::ButtonCode res = KMessageBox::warningYesNo(this,
-                                          i18n("Selected directory for swap file storage does not exist. Do you want to create it?"),
-                                          i18n("Missing Swap File Directory"));
-
-            if (res == KMessageBox::Yes) {
-                QDir().mkpath(dirpath);
-            } else {
-                // FIXME: what to do here? Return to config?
-            }
-        }
-
-        if (!QFileInfo(dirpath).isDir()) {
-            //FIXME: we are screwed here, revert to  KateDocumentConfig::EnableSwapFile?
-        }
-
-    }
-
     uint f(0);
     if (uiadv->chkBackupLocalFiles->isChecked()) {
         f |= KateDocumentConfig::LocalFiles;

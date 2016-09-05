@@ -432,12 +432,18 @@ void SwapFile::startEditing()
         return;
     }
 
-    //  if swap file doesn't exists, open it in WriteOnly mode
+    // if swap file doesn't exists, open it in WriteOnly mode
     // if it does, append the data to the existing swap file,
     // in case you recover and start editing again
     if (!m_swapfile.exists()) {
-        // TODO set file as read-only
+        // create path if not there
+        if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory
+            && !QDir(KateDocumentConfig::global()->swapDirectory()).exists()) {
+            QDir().mkpath(KateDocumentConfig::global()->swapDirectory());
+        }
+
         m_swapfile.open(QIODevice::WriteOnly);
+        m_swapfile.setPermissions(QFileDevice::ReadOwner|QFileDevice::WriteOwner);
         m_stream.setDevice(&m_swapfile);
 
         // write file header
@@ -447,6 +453,7 @@ void SwapFile::startEditing()
         m_stream << m_document->checksum();
     } else if (m_stream.device() == 0) {
         m_swapfile.open(QIODevice::Append);
+        m_swapfile.setPermissions(QFileDevice::ReadOwner|QFileDevice::WriteOwner);
         m_stream.setDevice(&m_swapfile);
     }
 
@@ -581,15 +588,20 @@ QString SwapFile::fileName()
         return QString();
     }
 
+    const QString fullLocalPath(url.toLocalFile());
     QString path;
-
     if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory) {
         path = KateDocumentConfig::global()->swapDirectory();
         path.append(QLatin1Char('/'));
-        path.append(QString::fromLatin1(m_document->checksum().toHex()));
+
+        // append the sha1 sum of the full path + filename, to avoid "too long" paths created
+        path.append(QString::fromLatin1(QCryptographicHash::hash(fullLocalPath.toUtf8(), QCryptographicHash::Sha1).toHex()));
+        path.append(QLatin1String("-"));
+        path.append(QFileInfo(fullLocalPath).fileName());
+
         path.append(QLatin1String(".kate-swp"));
     } else {
-        path = url.toLocalFile();
+        path = fullLocalPath;
         int poz = path.lastIndexOf(QLatin1Char('/'));
         path.insert(poz + 1, QLatin1String("."));
         path.append(QLatin1String(".kate-swp"));
