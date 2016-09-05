@@ -113,8 +113,16 @@ void KateBuffer::editEnd()
     /**
      * look one line too far, needed for linecontinue stuff
      */
-    int editTagLineEnd = editingMaximalLineChanged() + 1;
+    const int editTagLineEnd = editingMaximalLineChanged() + 1;
+
+    /**
+     * for indentation sensitive folding, we need to redo things
+     * one line up, to e.g. get notified about new folding starts
+     * see bug 351496
+     */
     int editTagLineStart = editingMinimalLineChanged();
+    if ((editTagLineStart > 0) && m_highlight->foldingIndentationSensitive())
+        --editTagLineStart;
 
     /**
      * really update highlighting
