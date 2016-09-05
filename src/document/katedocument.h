@@ -24,7 +24,6 @@
 
 #include <QPointer>
 #include <QStack>
-#include <QMimeType>
 #include <QTimer>
 
 #include <KJob>
@@ -578,20 +577,11 @@ public Q_SLOTS:
     //
 public:
     /**
-     * @return the name of the mimetype for the document.
+     * Tries to detect mime-type based on file name and content of buffer.
      *
-     * This method is using QMimeTypeDatabase::mimeTypeForUrl and if that
-     * fails then calls mimeTypeForContent
+     * @return the name of the mimetype for the document.
      */
     QString mimeType() Q_DECL_OVERRIDE;
-
-    /**
-     * @return QMimeType for this document, found by analyzing the
-     * actual content.
-     *
-     * Note that this method is *not* part of the DocumentInfoInterface.
-     */
-    QMimeType mimeTypeForContent();
 
     //
     // once was KTextEditor::VariableInterface

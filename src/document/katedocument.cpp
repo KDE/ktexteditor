@@ -2119,43 +2119,27 @@ void KTextEditor::DocumentPrivate::printPreview()
 //BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
 QString KTextEditor::DocumentPrivate::mimeType()
 {
-    QMimeType mt;
-
-    if (!this->url().isEmpty()) {
-        mt = QMimeDatabase().mimeTypeForUrl(this->url());
-    } else {
-        mt = mimeTypeForContent();
-    }
-
-    return mt.name();
-}
-
-QMimeType KTextEditor::DocumentPrivate::mimeTypeForContent()
-{
-    QByteArray buf(1024, '\0');
-    uint bufpos = 0;
-
+    /**
+     * collect first 4k of text
+     * only heuristic
+     */
+    const uint limit = 4096;
+    QByteArray buf;
     for (int i = 0; i < lines(); ++i) {
-        QString line = this->line(i);
-        uint len = line.length() + 1;
-
-        if (bufpos + len > 1024) {
-            len = 1024 - bufpos;
-        }
-
-        QString ld(line + QLatin1Char('\n'));
-        buf.replace(bufpos, len, ld.toLatin1()); //memcpy(buf.data() + bufpos, ld.toLatin1().constData(), len);
-
-        bufpos += len;
-
-        if (bufpos >= 1024) {
+        const QString ld(line(i) + QLatin1Char('\n'));
+        buf.append(ld.toUtf8());
+        if (buf.size() >= limit) {
             break;
         }
     }
-    buf.resize(bufpos);
 
-    QMimeDatabase db;
-    return db.mimeTypeForData(buf);
+    // use path of url, too, if set
+    if (!url().path().isEmpty()) {
+        return QMimeDatabase().mimeTypeForFileNameAndData(url().path(), buf).name();
+    }
+
+    // else only use the content
+    return QMimeDatabase().mimeTypeForData(buf).name();
 }
 //END KTextEditor::DocumentInfoInterface
 

@@ -218,20 +218,18 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
         }
     }
 
-    // Try content-based mimetype
-    QMimeType mt;
-    QMimeDatabase db;
 
+    // either read the file passed to this function (pre-load) or use the normal mimeType() KF KTextEditor API
+    QString mtName;
     if (!fileToReadFrom.isEmpty()) {
-        mt = db.mimeTypeForFile(fileToReadFrom);
+        mtName = QMimeDatabase().mimeTypeForFile(fileToReadFrom).name();
     } else {
-        mt = doc->mimeTypeForContent();
+        mtName = doc->mimeType();
     }
 
     QList<KateFileType *> types;
-
     foreach (KateFileType *type, m_types) {
-        if (type->mimetypes.indexOf(mt.name()) > -1) {
+        if (type->mimetypes.indexOf(mtName) > -1) {
             types.append(type);
         }
     }
