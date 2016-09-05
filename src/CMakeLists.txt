@@ -227,7 +227,7 @@ target_link_libraries(katehighlightingindexer Qt5::XmlPatterns)
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp"
   COMMAND katehighlightingindexer "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.json" "${CMAKE_CURRENT_SOURCE_DIR}/syntax/data/language.xsd" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc"
   COMMAND ${Qt5Core_RCC_EXECUTABLE} -o "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc"
-  DEPENDS GeneratePhpXmlFiles
+  DEPENDS GeneratePhpXmlFiles ${ALL_HIGHLIGHTERS_DEPS}
 )
 
 ki18n_wrap_ui(ktexteditor_LIB_SRCS

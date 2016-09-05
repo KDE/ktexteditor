@@ -24,6 +24,12 @@ set(ALL_HIGHLIGHTERS
     ${CMAKE_CURRENT_BINARY_DIR}/javascript-php.xml
 )
 
+# export all hl files as dependencies
+set(ALL_HIGHLIGHTERS_DEPS
+    ${ALL_HIGHLIGHTERS}
+    PARENT_SCOPE
+)
+
 # generate the resource file
 set(INDEXFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/index.qrc)
 file(REMOVE ${INDEXFILE_IN})
