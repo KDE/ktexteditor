@@ -387,12 +387,6 @@ private:
     int m_wrapChangeViewLine;
     KTextEditor::Cursor m_cachedMaxStartPos;
 
-    // These variables hold remainders of (vertical) scroll deltas reported via QWheelEvent
-    int m_wheelAngleDelta;
-    int m_wheelPixelDelta;
-
-    static const int s_wheelAngleUnitsPerLine = 8 * 15; // 8 units per degree * 15 degrees per line
-
     //
     // implementation details for KTextEditor::FlashTextInterface
     //
@@ -412,18 +406,14 @@ private:
     QTimer m_scrollTimer;
     QTimer m_cursorTimer;
     QTimer m_textHintTimer;
-    QTimer m_clearWheelDeltaTimer;
-
 
     static const int s_scrollTime = 30;
     static const int s_scrollMargin = 16;
-    static const int s_clearWheelDeltaTime = 200;
 
 private Q_SLOTS:
     void scrollTimeout();
     void cursorTimeout();
     void textHintTimeout();
-    void clearWheelDelta();
 
     void documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range);
     void documentTextRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);

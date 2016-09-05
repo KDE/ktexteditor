@@ -93,13 +93,10 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_preserveX(false)
     , m_preservedX(0)
     , m_cachedMaxStartPos(-1, -1)
-    , m_wheelAngleDelta(0)
-    , m_wheelPixelDelta(0)
     , m_dragScrollTimer(this)
     , m_scrollTimer(this)
     , m_cursorTimer(this)
     , m_textHintTimer(this)
-    , m_clearWheelDeltaTimer(this)
     , m_textHintDelay(500)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(0)
@@ -147,9 +144,6 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     connect(m_lineScroll, SIGNAL(sliderMoved(int)), SLOT(scrollLines(int)));
     connect(m_lineScroll, SIGNAL(sliderMMBMoved(int)), SLOT(scrollLines(int)));
     connect(m_lineScroll, SIGNAL(valueChanged(int)), SLOT(scrollLines(int)));
-
-    // catch wheel events, completing the hijack
-    m_lineScroll->installEventFilter(this);
 
     //
     // scrollbar for columns
@@ -217,10 +211,6 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
     connect(&m_textHintTimer, SIGNAL(timeout()),
             this, SLOT(textHintTimeout()));
-
-    m_clearWheelDeltaTimer.setSingleShot(true);
-    connect(&m_clearWheelDeltaTimer, SIGNAL(timeout()),
-            this, SLOT(clearWheelDelta()));
 
     // selection changed to set anchor
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)),
@@ -2247,16 +2237,6 @@ bool KateViewInternal::isTargetSelected(const QPoint &p)
 
 bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
 {
-    if (obj == m_lineScroll) {
-        // the second condition is to make sure a scroll on the vertical bar doesn't cause a horizontal scroll ;)
-        if (e->type() == QEvent::Wheel && m_lineScroll->minimum() != m_lineScroll->maximum()) {
-            wheelEvent((QWheelEvent *)e);
-            return true;
-        }
-
-        // continue processing
-        return QWidget::eventFilter(obj, e);
-    }
 
     switch (e->type()) {
     case QEvent::ChildAdded:
@@ -3129,12 +3109,6 @@ void KateViewInternal::textHintTimeout()
     }
 }
 
-void KateViewInternal::clearWheelDelta()
-{
-    m_wheelAngleDelta = 0;
-    m_wheelPixelDelta = 0;
-}
-
 void KateViewInternal::focusInEvent(QFocusEvent *)
 {
     if (QApplication::cursorFlashTime() > 0) {
@@ -3304,103 +3278,42 @@ void KateViewInternal::clear()
 
 void KateViewInternal::wheelEvent(QWheelEvent *e)
 {
-    const QPoint pixelDelta = e->pixelDelta();
-    const QPoint angleDelta = e->angleDelta();
-
+    // ctrl pressed -> change font size (only if angle is reported)
     if (e->modifiers() == Qt::ControlModifier) {
-        // ctrl pressed -> change font size (only if angle is reported)
-        if (angleDelta.y() != 0) {
-            m_wheelPixelDelta = 0;
-            m_wheelAngleDelta += angleDelta.y();
+        if (e->angleDelta().y() > 0) {
+            slotIncFontSizes();
+        } else if (e->angleDelta().y() < 0) {
+            slotDecFontSizes();
+        }
 
-            int fontSizeSteps = m_wheelAngleDelta / s_wheelAngleUnitsPerLine;
-            m_wheelAngleDelta = m_wheelAngleDelta % s_wheelAngleUnitsPerLine;
+        // accept always and be done for zooming
+        e->accept();
+        return;
+    }
 
-            if (fontSizeSteps > 0) {
-                do {
-                    slotIncFontSizes();
-                } while (--fontSizeSteps);
-            } else if (fontSizeSteps < 0) {
-                do {
-                    slotDecFontSizes();
-                } while (++fontSizeSteps);
-            }
-
+    // handle vertical scrolling via the scrollbar
+    if (e->orientation() == Qt::Vertical) {
+        QWheelEvent copy = *e;
+        QApplication::sendEvent(m_lineScroll, &copy);
+        if (copy.isAccepted()) {
             e->accept();
-        }
-    } else {
-        // handle vertical scrolling
-        if (e->modifiers() == Qt::ShiftModifier) {
-            // shift pressed -> scroll by-page (only if angle is reported)
-            if (angleDelta.y() != 0) {
-                m_wheelPixelDelta = 0;
-                m_wheelAngleDelta += angleDelta.y();
-
-                int pageScrolls = m_wheelAngleDelta / s_wheelAngleUnitsPerLine;
-                m_wheelAngleDelta = m_wheelAngleDelta % s_wheelAngleUnitsPerLine;
-
-                if (pageScrolls > 0) {
-                    do {
-                        scrollPrevPage();
-                    } while (--pageScrolls);
-                } else if (pageScrolls < 0) {
-                    do {
-                        scrollNextPage();
-                    } while (++pageScrolls);
-                }
-
-                e->accept();
-            }
-        } else {
-            // no modifiers -> scroll by-line
-            if (pixelDelta.y() != 0) {
-                m_wheelAngleDelta = 0;
-
-                if (lineScrollingPossible()) {
-                    const int lineHeight = renderer()->lineHeight();
-                    m_wheelPixelDelta += pixelDelta.y();
-
-                    int scrollLines = m_wheelPixelDelta / lineHeight;
-                    m_wheelPixelDelta = m_wheelPixelDelta % lineHeight;
-
-                    if (scrollLines != 0) {
-                        scrollViewLines(-scrollLines);
-                    }
-                    e->accept();
-                } else {
-                    m_wheelPixelDelta = 0;
-                }
-            } else if (angleDelta.y() != 0) {
-                m_wheelPixelDelta = 0;
-
-                if (lineScrollingPossible()) {
-                    const int wheelScrollLines = QApplication::wheelScrollLines();
-                    m_wheelAngleDelta += angleDelta.y();
-
-                    int scrollLines = m_wheelAngleDelta * wheelScrollLines / s_wheelAngleUnitsPerLine;
-                    m_wheelAngleDelta -= scrollLines * s_wheelAngleUnitsPerLine / wheelScrollLines;
-
-                    if (scrollLines != 0) {
-                        scrollViewLines(-scrollLines);
-                    }
-                    e->accept();
-                } else {
-                    m_wheelAngleDelta = 0;
-                }
-            }
-        }
-
-        // handle horizontal scrolling via the scrollbar
-        if (e->orientation() == Qt::Horizontal && columnScrollingPossible()) {
-            QWheelEvent copy = *e;
-            QApplication::sendEvent(m_columnScroll, &copy);
-            if (copy.isAccepted()) {
-                e->accept();
-            }
         }
     }
 
-    m_clearWheelDeltaTimer.start(s_clearWheelDeltaTime);
+    // handle horizontal scrolling via the scrollbar
+    if (e->orientation() == Qt::Horizontal) {
+        // if we have dyn word wrap, we should ignore the scroll events
+        if (m_view->dynWordWrap()) {
+            e->accept();
+            return;
+        }
+
+        QWheelEvent copy = *e;
+        QApplication::sendEvent(m_columnScroll, &copy);
+        if (copy.isAccepted()) {
+            e->accept();
+        }
+    }
 }
 
 void KateViewInternal::startDragScroll()
