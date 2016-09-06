@@ -4578,7 +4578,12 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                 QStringList l;
                 l << QStringLiteral("unix") << QStringLiteral("dos") << QStringLiteral("mac");
                 if ((n = l.indexOf(val.toLower())) != -1) {
+                    /**
+                     * set eol + avoid that it is overwritten by auto-detection again!
+                     * this fixes e.g. .kateconfig files with // kate: eol dos; to work, bug 365705
+                     */
                     m_config->setEol(n);
+                    m_config->setAllowEolDetection(false);
                 }
             } else if (var == QLatin1String("bom") || var == QLatin1String("byte-order-marker")) {
                 if (checkBoolValue(val, &state)) {
