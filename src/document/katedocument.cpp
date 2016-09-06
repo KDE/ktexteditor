@@ -2123,14 +2123,10 @@ QString KTextEditor::DocumentPrivate::mimeType()
      * collect first 4k of text
      * only heuristic
      */
-    const uint limit = 4096;
     QByteArray buf;
-    for (int i = 0; i < lines(); ++i) {
-        const QString ld(line(i) + QLatin1Char('\n'));
-        buf.append(ld.toUtf8());
-        if (buf.size() >= limit) {
-            break;
-        }
+    for (int i = 0; (i < lines()) && (buf.size() <= 4096); ++i) {
+        buf.append(line(i).toUtf8());
+        buf.append('\n');
     }
 
     // use path of url, too, if set
