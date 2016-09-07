@@ -1341,10 +1341,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     // If the file isn't deleted, present a diff button
     const bool onDiskDeleted = modtype == KTextEditor::ModificationInterface::OnDiskDeleted;
     if (!onDiskDeleted) {
-        m_diffAction = new QAction(i18n("View &Difference"), this);
-        m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
-        m_message->addAction(m_diffAction, false);
-        connect(m_diffAction, SIGNAL(triggered()), this, SLOT(slotDiff()));
+        if (!QStandardPaths::findExecutable(QStringLiteral("diff")).isEmpty()) {
+            m_diffAction = new QAction(i18n("View &Difference"), this);
+            m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
+            m_message->addAction(m_diffAction, false);
+            connect(m_diffAction, SIGNAL(triggered()), this, SLOT(slotDiff()));
+        }
 
         QAction * aReload = new QAction(i18n("&Reload"), this);
         aReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
