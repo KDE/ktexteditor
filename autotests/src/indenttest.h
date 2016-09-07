@@ -46,8 +46,8 @@ private Q_SLOTS:
     void testHaskell_data();
     void testHaskell();
 
-    void latex_data();
-    void latex();
+    void testLatex_data();
+    void testLatex();
 
     void testPascal_data();
     void testPascal();

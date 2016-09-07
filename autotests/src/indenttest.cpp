@@ -108,12 +108,12 @@ void IndentTest::testHaskell()
     runTest(ExpectedFailures());
 }
 
-void IndentTest::latex_data()
+void IndentTest::testLatex_data()
 {
     getTestData("latex");
 }
 
-void IndentTest::latex()
+void IndentTest::testLatex()
 {
     runTest(ExpectedFailures());
 }

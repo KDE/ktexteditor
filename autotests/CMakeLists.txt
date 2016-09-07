@@ -38,7 +38,8 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
   KF5::IconThemes
   KF5::GuiAddons
-  Qt5::Script)
+  Qt5::Script
+)
 
 include(ECMMarkAsTest)
 
@@ -85,6 +86,31 @@ KTEXTEDITOR_ENCODING_TEST ("utf-8" "koi8-r.txt")
 # one character latin-15 test, segfaulted
 KTEXTEDITOR_ENCODING_TEST ("utf-8" "one-char-latin-15.txt")
 
+# test executable for indentation
+add_executable(kateindenttest src/indenttest.cpp src/script_test_base.cpp src/testutils.cpp)
+target_link_libraries(kateindenttest ${KTEXTEDITOR_TEST_LINK_LIBS}
+    Qt5::Test)
+ecm_mark_as_test(kateindenttest)
+
+# test macro for indentation tests
+MACRO(KTEXTEDITOR_INDENT_TEST _testname)
+  ADD_TEST (NAME kateindenttest_${_testname} COMMAND kateindenttest ${_testname})
+ENDMACRO(KTEXTEDITOR_INDENT_TEST)
+
+# test different indenters sepearately to have smaller test chunks, that takes LONG
+KTEXTEDITOR_INDENT_TEST ("testPython")
+KTEXTEDITOR_INDENT_TEST ("testCstyle")
+KTEXTEDITOR_INDENT_TEST ("testCppstyle")
+KTEXTEDITOR_INDENT_TEST ("testCMake")
+KTEXTEDITOR_INDENT_TEST ("testRuby")
+KTEXTEDITOR_INDENT_TEST ("testHaskell")
+KTEXTEDITOR_INDENT_TEST ("testLatex")
+KTEXTEDITOR_INDENT_TEST ("testPascal")
+KTEXTEDITOR_INDENT_TEST ("testAda")
+KTEXTEDITOR_INDENT_TEST ("testXml")
+KTEXTEDITOR_INDENT_TEST ("testNormal")
+KTEXTEDITOR_INDENT_TEST ("testReplicode")
+
 macro(ktexteditor_unit_test testname)
   ecm_add_test(src/${testname}.cpp ${ARGN}
                TEST_NAME ${testname}
@@ -117,7 +143,6 @@ ecm_add_tests(
 )
 
 ktexteditor_unit_test(completion_test src/codecompletiontestmodel.cpp src/codecompletiontestmodels.cpp)
-ktexteditor_unit_test(indenttest src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(commands_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(scripting_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(bug313759 src/testutils.cpp)
