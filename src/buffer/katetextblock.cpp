@@ -536,7 +536,7 @@ TextBlock *TextBlock::splitBlock(int fromLine)
     m_cursors = oldBlockSet;
 
     // fix ALL ranges!
-    QList<TextRange *> allRanges = m_uncachedRanges.toList() + m_cachedLineForRanges.keys();
+    const QList<TextRange *> allRanges = m_uncachedRanges.toList() + m_cachedLineForRanges.keys();
     foreach (TextRange *range, allRanges) {
         // update both blocks
         updateRange(range);
@@ -565,7 +565,7 @@ void TextBlock::mergeBlock(TextBlock *targetBlock)
     m_lines.clear();
 
     // fix ALL ranges!
-    QList<TextRange *> allRanges = m_uncachedRanges.toList() + m_cachedLineForRanges.keys();
+    const QList<TextRange *> allRanges = m_uncachedRanges.toList() + m_cachedLineForRanges.keys();
     foreach (TextRange *range, allRanges) {
         // update both blocks
         updateRange(range);
