@@ -67,6 +67,7 @@ class KateOnTheFlyChecker;
 class KateDocumentTest;
 
 class KateAutoIndent;
+class KateModOnHdPrompt;
 
 /**
  * @brief Backend of KTextEditor::Document related public KTextEditor interfaces.
@@ -957,12 +958,14 @@ Q_SIGNALS:
      */
     void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) Q_DECL_OVERRIDE;
 
-public:
-    void ignoreModifiedOnDiskOnce();
-
 private:
-    int m_isasking; // don't reenter slotModifiedOnDisk when this is true
-    // -1: ignore once, 0: false, 1: true
+    // helper to handle the embedded notification for externally modified files
+    QPointer<KateModOnHdPrompt> m_modOnHdHandler;
+
+private Q_SLOTS:
+    void onModOnHdSaveAs();
+    void onModOnHdReload();
+    void onModOnHdIgnore();
 
 public:
     bool setEncoding(const QString &e) Q_DECL_OVERRIDE;
@@ -1079,6 +1082,7 @@ private:
 
     bool m_modOnHd;
     ModifiedOnDiskReason m_modOnHdReason;
+    ModifiedOnDiskReason m_prevModOnHdReason;
 
     QString m_docName;
     int m_docNameNumber;

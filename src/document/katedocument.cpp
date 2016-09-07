@@ -188,7 +188,6 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_undoManager(new KateUndoManager(this)),
       m_editableMarks(markType01),
       m_annotationModel(0),
-      m_isasking(0),
       m_buffer(new KateBuffer(this)),
       m_indenter(new KateAutoIndent(this)),
       m_hlSetByUser(false),
@@ -197,6 +196,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_userSetEncodingForNextReload(false),
       m_modOnHd(false),
       m_modOnHdReason(OnDiskUnmodified),
+      m_prevModOnHdReason(OnDiskUnmodified),
       m_docName(QStringLiteral("need init")),
       m_docNameNumber(0),
       m_fileType(QStringLiteral("Normal")),
@@ -304,6 +304,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 //
 KTextEditor::DocumentPrivate::~DocumentPrivate()
 {
+    // delete pending mod-on-hd message, if applicable
+    delete m_modOnHdHandler;
+
     /**
      * we are about to delete cursors/ranges/...
      */
@@ -2261,6 +2264,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_modOnHd) {
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
+        m_prevModOnHdReason = OnDiskUnmodified;
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
@@ -2325,6 +2329,9 @@ bool KTextEditor::DocumentPrivate::openFile()
 
 bool KTextEditor::DocumentPrivate::saveFile()
 {
+    // delete pending mod-on-hd message if applicable.
+    delete m_modOnHdHandler;
+
     // some warnings, if file was changed by the outside!
     if (!url().isEmpty()) {
         if (m_fileChangedDialogsActivated && m_modOnHd) {
@@ -2408,6 +2415,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
     if (m_modOnHd) {
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
+        m_prevModOnHdReason = OnDiskUnmodified;
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
@@ -2625,8 +2633,10 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     //
     if (!m_reloading && !url().isEmpty()) {
         if (m_fileChangedDialogsActivated && m_modOnHd) {
-            QWidget *parentWidget(dialogParent());
+            // make sure to not forget pending mod-on-hd handler
+            delete m_modOnHdHandler;
 
+            QWidget *parentWidget(dialogParent());
             if (!(KMessageBox::warningContinueCancel(
                         parentWidget,
                         reasonedMOHString() + QLatin1String("\n\n") + i18n("Do you really want to continue to close this file? Data loss may occur."),
@@ -2685,6 +2695,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     if (m_modOnHd) {
         m_modOnHd = false;
         m_modOnHdReason = OnDiskUnmodified;
+        m_prevModOnHdReason = OnDiskUnmodified;
         emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
     }
 
@@ -4094,73 +4105,59 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
 void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
 {
-    if (m_isasking < 0) {
-        m_isasking = 0;
+    if (url().isEmpty() || !m_modOnHd) {
         return;
     }
 
-    if (!m_fileChangedDialogsActivated || m_isasking) {
+    if (!m_fileChangedDialogsActivated || m_modOnHdHandler) {
         return;
     }
 
-    if (m_modOnHd && !url().isEmpty()) {
-        m_isasking = 1;
-
-        QWidget *parentWidget(dialogParent());
-
-        KateModOnHdPrompt p(this, m_modOnHdReason, reasonedMOHString(), parentWidget);
-        switch (p.exec()) {
-        case KateModOnHdPrompt::Save: {
-            m_modOnHd = false;
-            const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url(), {}, nullptr,
-                                                         QFileDialog::DontConfirmOverwrite);
-            if (!res.isEmpty() && checkOverwrite(res, parentWidget)) {
-                if (! saveAs(res)) {
-                    KMessageBox::error(parentWidget, i18n("Save failed"));
-                    m_modOnHd = true;
-                } else {
-                    emit modifiedOnDisk(this, false, OnDiskUnmodified);
-                }
-            } else { // the save as dialog was canceled, we are still modified on disk
-                m_modOnHd = true;
-            }
-
-            m_isasking = 0;
-            break;
-        }
-
-        case KateModOnHdPrompt::Reload:
-            m_modOnHd = false;
-            emit modifiedOnDisk(this, false, OnDiskUnmodified);
-            documentReload();
-            m_isasking = 0;
-            break;
-
-        case KateModOnHdPrompt::Ignore:
-            m_modOnHd = false;
-            emit modifiedOnDisk(this, false, OnDiskUnmodified);
-            m_isasking = 0;
-            break;
-
-        case KateModOnHdPrompt::Overwrite:
-            m_modOnHd = false;
-            emit modifiedOnDisk(this, false, OnDiskUnmodified);
-            m_isasking = 0;
-            save();
-            break;
-
-        case KateModOnHdPrompt::Close:
-            m_modOnHd = false;
-            emit modifiedOnDisk(this, false, OnDiskUnmodified);
-            m_isasking = 0;
-            // delay close, else we delete ourself in bad situations
-            QTimer::singleShot(0, this, SLOT(closeDocumentInApplication()));
-            break;
-
-        default: // Delay/cancel: ignore next focus event
-            m_isasking = -1;
-        }
+    // don't ask the user again and again the same thing
+    if (m_modOnHdReason == m_prevModOnHdReason) {
+        return;
     }
+    m_prevModOnHdReason = m_modOnHdReason;
+
+    m_modOnHdHandler = new KateModOnHdPrompt(this, m_modOnHdReason, reasonedMOHString());
+    connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::saveAsTriggered, this, &DocumentPrivate::onModOnHdSaveAs);
+    connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::reloadTriggered, this, &DocumentPrivate::onModOnHdReload);
+    connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::ignoreTriggered, this, &DocumentPrivate::onModOnHdIgnore);
+}
+
+void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
+{
+    m_modOnHd = false;
+    QWidget *parentWidget(dialogParent());
+    const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url(), {}, nullptr,
+                                                 QFileDialog::DontConfirmOverwrite);
+    if (!res.isEmpty() && checkOverwrite(res, parentWidget)) {
+        if (! saveAs(res)) {
+            KMessageBox::error(parentWidget, i18n("Save failed"));
+            m_modOnHd = true;
+        } else {
+            delete m_modOnHdHandler;
+            m_prevModOnHdReason = OnDiskUnmodified;
+            emit modifiedOnDisk(this, false, OnDiskUnmodified);
+        }
+    } else { // the save as dialog was canceled, we are still modified on disk
+        m_modOnHd = true;
+    }
+}
+
+void KTextEditor::DocumentPrivate::onModOnHdReload()
+{
+    m_modOnHd = false;
+    m_prevModOnHdReason = OnDiskUnmodified;
+    emit modifiedOnDisk(this, false, OnDiskUnmodified);
+    documentReload();
+    delete m_modOnHdHandler;
+}
+
+void KTextEditor::DocumentPrivate::onModOnHdIgnore()
+{
+    // ignore as long as m_prevModOnHdReason == m_modOnHdReason
+    delete m_modOnHdHandler;
 }
 
 void KTextEditor::DocumentPrivate::setModifiedOnDisk(ModifiedOnDiskReason reason)
@@ -4188,6 +4185,10 @@ bool KTextEditor::DocumentPrivate::documentReload()
         return false;
     }
 
+    // typically, the message for externally modified files is visible. Since it
+    // does not make sense showing an additional dialog, just hide the message.
+    delete m_modOnHdHandler;
+
     if (m_modOnHd && m_fileChangedDialogsActivated) {
         QWidget *parentWidget(dialogParent());
 
@@ -4201,6 +4202,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
             if (i == KMessageBox::No) {
                 m_modOnHd = false;
                 m_modOnHdReason = OnDiskUnmodified;
+                m_prevModOnHdReason = OnDiskUnmodified;
                 emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
             }
 
@@ -4781,6 +4783,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         if (m_modOnHdReason != OnDiskDeleted && createDigest() && oldDigest == checksum()) {
             m_modOnHd = false;
             m_modOnHdReason = OnDiskUnmodified;
+            m_prevModOnHdReason = OnDiskUnmodified;
         }
 
 #ifdef LIBGIT2_FOUND
@@ -4813,6 +4816,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                         */
                         m_modOnHd = false;
                         m_modOnHdReason = OnDiskUnmodified;
+                        m_prevModOnHdReason = OnDiskUnmodified;
                         documentReload();
                     }
                     git_blob_free(blob);
@@ -4822,13 +4826,6 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             git_repository_free(repository);
         }
 #endif
-    }
-
-    /**
-     * reenable dialog if not running atm
-     */
-    if (m_isasking == -1) {
-        m_isasking = false;
     }
 
     /**
@@ -5120,11 +5117,6 @@ bool KTextEditor::DocumentPrivate::replaceText(const KTextEditor::Range &range, 
     changed |= insertText(range.start(), s, block);
     editEnd();
     return changed;
-}
-
-void KTextEditor::DocumentPrivate::ignoreModifiedOnDiskOnce()
-{
-    m_isasking = -1;
 }
 
 KateHighlighting *KTextEditor::DocumentPrivate::highlight() const

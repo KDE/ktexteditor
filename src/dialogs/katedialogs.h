@@ -2,7 +2,7 @@
    Copyright (C) 2002, 2003 Anders Lund <anders.lund@lund.tdcadsl.dk>
    Copyright (C) 2003 Christoph Cullmann <cullmann@kde.org>
    Copyright (C) 2001 Joseph Wenninger <jowenn@kde.org>
-   Copyright (C) 2006 Dominik Haumann <dhdev@gmx.de>
+   Copyright (C) 2006-2016 Dominik Haumann <dhaumann@kde.org>
    Copyright (C) 2007 Mirko Stocker <me@misto.ch>
    Copyright (C) 2009 Michel Ludwig <michel.ludwig@kdemail.net>
    Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
@@ -46,6 +46,7 @@
 class ModeConfigPage;
 namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor { class Message; }
 
 namespace KIO
 {
@@ -69,7 +70,6 @@ class QTableWidget;
 
 namespace Ui
 {
-class ModOnHdWidget;
 class TextareaAppearanceConfigWidget;
 class BordersAppearanceConfigWidget;
 class NavigationConfigWidget;
@@ -332,7 +332,7 @@ private Q_SLOTS:
  * If the file wasn't deleted, it has a 'diff' button, which will create
  * a diff file (uing diff(1)) and launch that using KRun.
  */
-class KateModOnHdPrompt : public QDialog
+class KateModOnHdPrompt : public QObject
 {
     Q_OBJECT
 public:
@@ -345,31 +345,31 @@ public:
     };
     KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
                       KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
-                      const QString &reason, QWidget *parent);
+                      const QString &reason);
     ~KateModOnHdPrompt();
 
-public Q_SLOTS:
+Q_SIGNALS:
+    void saveAsTriggered();
+    void ignoreTriggered();
+    void reloadTriggered();
+
+private Q_SLOTS:
     /**
      * Show a diff between the document text and the disk file.
-     * This will not close the dialog, since we still need a
-     * decision from the user.
      */
     void slotDiff();
 
 private Q_SLOTS:
-    void slotOk();
-    void slotApply();
-    void slotOverwrite();
-    void slotClose();
     void slotDataAvailable(); ///< read data from the process
     void slotPDone(); ///< Runs the diff file when done
 
 private:
-    Ui::ModOnHdWidget *ui;
     KTextEditor::DocumentPrivate *m_doc;
+    QPointer<KTextEditor::Message> m_message;
     KTextEditor::ModificationInterface::ModifiedOnDiskReason m_modtype;
     KProcess *m_proc;
     QTemporaryFile *m_diffFile;
+    QAction *m_diffAction;
 };
 
 #endif
