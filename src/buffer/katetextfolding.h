@@ -160,6 +160,14 @@ public:
     QVector<QPair<qint64, FoldingRangeFlags> > foldingRangesStartingOnLine(int line) const;
 
     /**
+     * Query child folding ranges for given range id. To query the toplevel
+     * ranges pass id -1
+     * @param parentRangeId id of parent range, pass -1 to query top level ranges
+     * @return vector of id's + flags for child ranges
+     */
+    QVector<QPair<qint64, FoldingRangeFlags> > foldingRangesForParentRange(qint64 parentRangeId = -1) const;
+
+    /**
      * Return the current known folding ranges a QJsonDocument to store in configs.
      * @return current folds as variant list
      */

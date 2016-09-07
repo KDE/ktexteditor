@@ -610,11 +610,10 @@ private Q_SLOTS:
     void exportHtmlToClipboard ();
     void exportHtmlToFile ();
 
-public Q_SLOTS: // TODO: turn into good interface, see kte5/foldinginterface.h
+public Q_SLOTS:
     void slotFoldToplevelNodes();
+    void slotExpandToplevelNodes();
     void slotCollapseLocal();
-    void slotCollapseLevel();
-    void slotExpandLevel();
     void slotExpandLocal();
 
 private:

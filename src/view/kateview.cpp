@@ -1159,9 +1159,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
 void KTextEditor::ViewPrivate::setupCodeFolding()
 {
-    //FIXME: FOLDING
     KActionCollection *ac = this->actionCollection();
-
     QAction *a;
 
     a = ac->addAction(QStringLiteral("folding_toplevel"));
@@ -1169,12 +1167,12 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Minus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotFoldToplevelNodes()));
 
-    /*a = ac->addAction(QLatin1String("folding_expandtoplevel"));
+    a = ac->addAction(QLatin1String("folding_expandtoplevel"));
     a->setText(i18n("Unfold Toplevel Nodes"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL+Qt::SHIFT+Qt::Key_Plus));
-    connect(a, SIGNAL(triggered(bool)), m_doc->foldingTree(), SLOT(expandToplevelNodes()));
+    connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandToplevelNodes()));
 
-    a = ac->addAction(QLatin1String("folding_expandall"));
+    /*a = ac->addAction(QLatin1String("folding_expandall"));
     a->setText(i18n("Unfold All Nodes"));
     connect(a, SIGNAL(triggered(bool)), m_doc->foldingTree(), SLOT(expandAll()));
 
@@ -1193,11 +1191,18 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
 
 void KTextEditor::ViewPrivate::slotFoldToplevelNodes()
 {
-    // FIXME: more performant implementation
     for (int line = 0; line < doc()->lines(); ++line) {
         if (textFolding().isLineVisible(line)) {
             foldLine(line);
         }
+    }
+}
+
+void KTextEditor::ViewPrivate::slotExpandToplevelNodes()
+{
+    const auto topLevelRanges(textFolding().foldingRangesForParentRange());
+    for (const auto &range : topLevelRanges) {
+        textFolding().unfoldRange(range.first);
     }
 }
 
@@ -1209,42 +1214,6 @@ void KTextEditor::ViewPrivate::slotCollapseLocal()
 void KTextEditor::ViewPrivate::slotExpandLocal()
 {
     unfoldLine(cursorPosition().line());
-}
-
-void KTextEditor::ViewPrivate::slotCollapseLevel()
-{
-    //FIXME: FOLDING
-#if 0
-    if (!sender()) {
-        return;
-    }
-    QAction *action = qobject_cast<QAction *>(sender());
-    if (!action) {
-        return;
-    }
-
-    const int level = action->data().toInt();
-    Q_ASSERT(level > 0);
-    m_doc->foldingTree()->collapseLevel(level);
-#endif
-}
-
-void KTextEditor::ViewPrivate::slotExpandLevel()
-{
-    //FIXME: FOLDING
-#if 0
-    if (!sender()) {
-        return;
-    }
-    QAction *action = qobject_cast<QAction *>(sender());
-    if (!action) {
-        return;
-    }
-
-    const int level = action->data().toInt();
-    Q_ASSERT(level > 0);
-    m_doc->foldingTree()->expandLevel(level);
-#endif
 }
 
 void KTextEditor::ViewPrivate::foldLine(int startLine)

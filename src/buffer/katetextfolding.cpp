@@ -560,6 +560,34 @@ void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRange
     }
 }
 
+QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
+{
+    /**
+     * toplevel ranges requested or real parent?
+     */
+    const FoldingRange::Vector *ranges = nullptr;
+    if (parentRangeId == -1) {
+        ranges = &m_foldingRanges;
+    } else if (FoldingRange *range = m_idToFoldingRange.value(parentRangeId)) {
+        ranges = &range->nestedRanges;
+    }
+
+    /**
+     * no ranges => nothing to do
+     */
+    QVector<QPair<qint64, FoldingRangeFlags> > results;
+    if (!ranges)
+        return results;
+
+    /**
+     * else convert ranges to id + flags and pass that back
+     */
+    for (FoldingRange::Vector::const_iterator it = ranges->begin(); it != ranges->end(); ++it) {
+        results.append(qMakePair((*it)->id, (*it)->flags));
+    }
+    return results;
+}
+
 QString TextFolding::debugDump() const
 {
     /**
