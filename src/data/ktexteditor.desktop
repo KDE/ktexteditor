@@ -3,6 +3,7 @@ Type=ServiceType
 X-KDE-ServiceType=KTextEditor/Document
 X-KDE-Derived=KParts/ReadWritePart
 Comment=Embeddable Text Editor Component (with Doc/View Separation)
+Comment[ar]=مكوّن محرّر نصوص يمكن تضمينه (يفصل بين Doc والمناظير)
 Comment[ast]=Componente d'editor de testos incrustáu (con separtación de vista/documentu)
 Comment[bg]=Текстов редактор (с разделение между Doc/View)
 Comment[bs]=Ugradiva komponenta uređivača teksta (s razdvajanjem dokumenta i pogleda)
