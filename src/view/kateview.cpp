@@ -51,6 +51,7 @@
 #include "script/katescriptmanager.h"
 #include "script/katescriptaction.h"
 #include "export/exporter.h"
+#include "katemessagewidget.h"
 #include "katetemplatehandler.h"
 #include "katepartdebug.h"
 #include "printing/kateprinter.h"

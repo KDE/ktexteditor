@@ -66,7 +66,7 @@ void MessageTest::testPostMessage()
     QVERIFY(message != 0);
     delete message;
     QTest::qWait(600); // fadeout animation takes 500 ms
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 
 void MessageTest::testAutoHide()
@@ -98,7 +98,7 @@ void MessageTest::testAutoHide()
 
     // message widget should be hidden after 2 seconds
     QTest::qWait(500);
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 
 void MessageTest::testAutoHideAfterUserInteraction()
@@ -142,7 +142,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 
     // after a total of 3.6 seconds, widget should be hidden
     QTest::qWait(500);
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 
 void MessageTest::testMessageQueue()
@@ -200,7 +200,7 @@ void MessageTest::testMessageQueue()
 
     // after a total of 3.1s, animation is finished and widget is hidden
     QTest::qWait(500);
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 
 void MessageTest::testPriority()
@@ -305,8 +305,8 @@ void MessageTest::testCreateView()
     // delete message, then check after fadeout time 0f 0.5s whether message is gone
     delete m1;
     QTest::qWait(600);
-    QVERIFY(!v1->messageWidget());
-    QVERIFY(!v2->messageWidget());
+    QVERIFY(!v1->messageWidget()->isVisible());
+    QVERIFY(!v2->messageWidget()->isVisible());
 }
 
 void MessageTest::testHideView()
@@ -353,7 +353,7 @@ void MessageTest::testHideView()
     // wait another 0.5s, then message widget should be hidden
     QTest::qWait(500);
     QVERIFY(message.data() == 0);
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 
 void MessageTest::testHideViewAfterUserInteraction()
@@ -414,6 +414,6 @@ void MessageTest::testHideViewAfterUserInteraction()
 
     // another 0.5s, and the message widget should be hidden
     QTest::qWait(600);
-    QVERIFY(!view->messageWidget());
+    QVERIFY(!view->messageWidget()->isVisible());
 }
 

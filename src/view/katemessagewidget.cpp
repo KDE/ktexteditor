@@ -78,7 +78,6 @@ void KateMessageWidget::showNextMessage()
     // if not message to show, just stop
     if (m_messageQueue.size() == 0) {
         hide();
-        deleteLater();
         return;
     }
 
