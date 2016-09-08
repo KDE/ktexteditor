@@ -636,7 +636,7 @@ void SearchBarTest::testReplaceManyCapturesBug365124()
 
     bar.replaceAll();
 
-    QCOMPARE(doc.text(), QString("one::two::three::four::five::six::seven::eight::nine::one0::one1::one2::one3\n"));
+    QCOMPARE(doc.text(), QString("one::two::three::four::five::six::seven::eight::nine::ten::eleven::twelve::thirteen\n"));
 }
 
 #include "moc_searchbar_test.cpp"
