@@ -619,5 +619,25 @@ void SearchBarTest::testReplaceInBlockMode()
     QCOMPARE(doc.text(), QString("121\n121"));
 }
 
+
+void SearchBarTest::testReplaceManyCapturesBug365124()
+{
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate view(&doc, 0);
+    KateViewConfig config(&view);
+
+    doc.setText("one two three four five six seven eight nine ten eleven twelve thirteen\n");
+
+    KateSearchBar bar(true, &view, &config);
+
+    bar.setSearchPattern("^(.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)$");
+    bar.setSearchMode(KateSearchBar::MODE_REGEX);
+    bar.setReplacementPattern("\\1::\\2::\\3::\\4::\\5::\\6::\\7::\\8::\\9::\\10::\\11::\\12::\\13");
+
+    bar.replaceAll();
+
+    QCOMPARE(doc.text(), QString("one::two::three::four::five::six::seven::eight::nine::one0::one1::one2::one3\n"));
+}
+
 #include "moc_searchbar_test.cpp"
 

@@ -71,6 +71,8 @@ private Q_SLOTS:
     void testSearchHistoryPower();
 
     void testReplaceInBlockMode();
+
+    void testReplaceManyCapturesBug365124();
 };
 
 #endif
