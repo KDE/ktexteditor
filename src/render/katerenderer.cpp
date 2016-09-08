@@ -803,9 +803,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 }
             }
 
-            // Clip the caret - Qt's caret has a habit of intruding onto other lines.
             paint.save();
-            paint.setClipRect(0, line.lineNumber() * lineHeight(), xEnd - xStart, lineHeight());
             switch (style) {
             case Line :
                 paint.setPen(QPen(color, caretWidth));
@@ -816,12 +814,10 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 paint.setPen(QPen(color, caretWidth));
                 break;
             case Underline :
-                paint.setClipRect(0, lineHeight() - lineWidth, xEnd - xStart, lineWidth);
                 break;
             case Half :
                 color.setAlpha(128);
                 paint.setPen(QPen(color, caretWidth));
-                paint.setClipRect(0, lineHeight() / 2, xEnd - xStart, lineHeight() / 2);
                 break;
             }
 
@@ -942,26 +938,10 @@ void KateRenderer::updateConfig()
 
 void KateRenderer::updateFontHeight()
 {
-    // first: get normal line spacing
-    qreal height = config()->fontMetrics().lineSpacing();
-
-    // Sometimes the height of italic fonts is larger than for the non-italic
-    // font. Since all our lines are of same/fixed height, use the maximum of
-    // both heights (bug #302748)
-    QFont italicFont = config()->font();
-    italicFont.setItalic(true);
-    height = qMax(height, QFontMetricsF(italicFont).lineSpacing());
-
-    // same for bold font
-    QFont boldFont = config()->font();
-    boldFont.setBold(true);
-    height = qMax(height, QFontMetricsF(boldFont).lineSpacing());
-
-    // hack: add bit more spacing, just to be sure ;=)
-    // bug 335079
-    // this is no proper fix but works around the issues in many cases
-    // line height per line would fix it for real but needs complete rewrite of rendering/scrolling/...
-    m_fontHeight = qMax(1, qCeil(1.1f * height));
+    // use height of font + round down, ensure we have at least one pixel
+    // we round down to avoid artifacts: line height too large vs. qt background rendering of text attributes
+    const qreal height = config()->fontMetrics().height();
+    m_fontHeight = qMax(1, qFloor(height));
 }
 
 qreal KateRenderer::spaceWidth() const
