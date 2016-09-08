@@ -78,9 +78,9 @@ public:
 private:
     /**
      * Search bar mode:
-     *   - Incremental mode
-     *   - Power mode, aka find & replace
-     *   - Incremental mode, but don't change mode if already there
+     *   - Setup Incremental mode, among other things: potential new search pattern
+     *   - Setup Power mode, aka find & replace: Also potential new search pattern
+     *   - Use current mode and current search pattern or if no Search bar exists, launch Incremental mode
      */
     enum SearchBarMode {
         IncrementalSearchBar,
