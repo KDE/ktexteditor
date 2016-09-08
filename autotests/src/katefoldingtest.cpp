@@ -110,3 +110,41 @@ void KateFoldingTest::testBug295632()
     QString line = doc.line(0);
     QCOMPARE(line, QString("oooox----------"));
 }
+
+// This testcase tests the follwing:
+// - the cursor is first set into the word 'hello'
+// - then lines 0-3 are folded.
+// - the real text cursor is still in the word 'hello'
+// - the important issue is: The display cursor must be in the visible line range
+// --> if this test passes, KateViewInternal's m_displayCursor is properly adapted.
+void KateFoldingTest::testCrash367466()
+{
+    KTextEditor::DocumentPrivate doc;
+    QString text = "fold begin\n"
+                   "\n"
+                   "\n"
+                   "fold end\n"
+                   "hello\n"
+                   "world\n";
+    doc.setText(text);
+
+    // view must be visible...
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    view->show();
+    view->resize(400, 300);
+    view->setCursorPosition(KTextEditor::Cursor(5, 2));
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(5, 2));
+    qint64 foldId = view->textFolding().newFoldingRange(KTextEditor::Range(0, 0, 3, 8));
+
+    view->textFolding().foldRange(foldId);
+    QVERIFY(view->textFolding().isLineVisible(0));
+    QVERIFY(!view->textFolding().isLineVisible(1));
+    QVERIFY(!view->textFolding().isLineVisible(2));
+    QVERIFY(!view->textFolding().isLineVisible(3));
+    QVERIFY(view->textFolding().isLineVisible(4));
+    QVERIFY(view->textFolding().isLineVisible(5));
+
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(5, 2));
+    view->up();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(4, 2));
+}

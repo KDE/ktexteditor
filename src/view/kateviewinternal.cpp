@@ -709,6 +709,10 @@ void KateViewInternal::slotRegionVisibilityChanged()
 
         // set cursor to start of folding region
         updateCursor(foldingRange.start(), true);
+    } else {
+        // force an update of the cursor, since otherwise the m_displayCursor
+        // line may be below the total amount of visible lines.
+        updateCursor(m_cursor, true);
     }
 
     updateView();
@@ -1515,6 +1519,9 @@ void KateViewInternal::cursorUp(bool sel)
         m_view->completionWidget()->cursorUp();
         return;
     }
+
+    // assert that the display cursor is in visible lines
+    Q_ASSERT(m_displayCursor.line() < m_view->textFolding().visibleLines());
 
     /**
      * move cursor to start of line, if we are at first line!
