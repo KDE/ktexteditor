@@ -555,7 +555,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
                 }
                 break;
 
-            // single letter captures
+            // single letter captures \x
             case L'1':
             case L'2':
             case L'3':
@@ -564,13 +564,12 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
             case L'6':
             case L'7':
             case L'8':
-            case L'9': {
+            case L'9':
                 out << ReplacementStream::cap(9 - (L'9' - text[input + 1].unicode()));
                 input += 2;
                 break;
-            }
 
-            // multi letter captures
+            // multi letter captures \{xxxx}
             case L'{': {
                 // allow {1212124}.... captures, see bug 365124 + testReplaceManyCapturesBug365124
                 int capture = 0;
