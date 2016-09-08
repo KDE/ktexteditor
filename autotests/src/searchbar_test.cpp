@@ -632,7 +632,7 @@ void SearchBarTest::testReplaceManyCapturesBug365124()
 
     bar.setSearchPattern("^(.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)$");
     bar.setSearchMode(KateSearchBar::MODE_REGEX);
-    bar.setReplacementPattern("\\1::\\2::\\3::\\4::\\5::\\6::\\7::\\8::\\9::\\10::\\11::\\12::\\13");
+    bar.setReplacementPattern("\\{1}::\\2::\\3::\\4::\\5::\\6::\\7::\\8::\\9::\\{10}::\\{11}::\\{12}::\\{13}");
 
     bar.replaceAll();
 
