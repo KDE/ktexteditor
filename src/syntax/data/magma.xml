@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <language name="Magma" section="Scientific"
-          version="1.0" kateversion="2.4"
+          version="2" kateversion="2.4"
           mimetype="text/x-magma"
           indenter="cstyle"
           extensions="*.m;*.mag">

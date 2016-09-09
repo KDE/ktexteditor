@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <language name="Ada"
-          version="1.10"
+          version="2"
           kateversion="5.0"
           section="Sources"
           extensions="*.adb;*.ads;*.ada;*.a"

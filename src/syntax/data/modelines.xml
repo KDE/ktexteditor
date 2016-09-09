@@ -8,7 +8,7 @@
   Copyright (c) 2012-2014 by Alex Turbov (i.zaufi@gmail.com)
   -->
 <language name="Modelines"
-          version="1.4"
+          version="2"
           kateversion="3.4"
           section="Other"
           extensions=""
