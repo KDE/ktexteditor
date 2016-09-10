@@ -21,7 +21,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
-set(KF5_VERSION "5.26.0") # handled by release scripts
+set(KF5_VERSION "5.27.0") # handled by release scripts
 set(KF5_DEP_VERSION "5.26.0") # handled by release scripts
 
 ecm_setup_version(
