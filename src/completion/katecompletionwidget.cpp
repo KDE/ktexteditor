@@ -413,7 +413,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
 
         disconnect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
 
-        m_completionRanges[model] = view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft);
+        m_completionRanges[model] = CompletionRange(view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft));
 
         //In automatic invocation mode, hide the completion widget as soon as the position where the completion was started is passed to the left
         m_completionRanges[model].leftBoundary = view()->cursorPosition();

@@ -167,7 +167,7 @@ private:
      * Construct an empty text history.
      * @param buffer buffer this text history belongs to
      */
-    TextHistory(TextBuffer &buffer);
+    explicit TextHistory(TextBuffer &buffer);
 
     /**
      * Destruct the text history

@@ -39,7 +39,7 @@ class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompl
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    KateWordCompletionModel(QObject *parent);
+    explicit KateWordCompletionModel(QObject *parent);
     ~KateWordCompletionModel();
 
     /**

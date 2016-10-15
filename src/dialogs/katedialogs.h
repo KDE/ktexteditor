@@ -125,7 +125,7 @@ class KateIndentConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateIndentConfigTab(QWidget *parent);
+    explicit KateIndentConfigTab(QWidget *parent);
     ~KateIndentConfigTab();
     QString name() const Q_DECL_OVERRIDE;
 
@@ -148,7 +148,7 @@ class KateCompletionConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateCompletionConfigTab(QWidget *parent);
+    explicit KateCompletionConfigTab(QWidget *parent);
     ~KateCompletionConfigTab();
     QString name() const Q_DECL_OVERRIDE;
 
@@ -170,7 +170,7 @@ class KateEditGeneralConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateEditGeneralConfigTab(QWidget *parent);
+    explicit KateEditGeneralConfigTab(QWidget *parent);
     ~KateEditGeneralConfigTab();
     QString name() const Q_DECL_OVERRIDE;
 
@@ -189,7 +189,7 @@ class KateNavigationConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateNavigationConfigTab(QWidget *parent);
+    explicit KateNavigationConfigTab(QWidget *parent);
     ~KateNavigationConfigTab();
     QString name() const Q_DECL_OVERRIDE;
 
@@ -208,7 +208,7 @@ class KateSpellCheckConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateSpellCheckConfigTab(QWidget *parent);
+    explicit KateSpellCheckConfigTab(QWidget *parent);
     ~KateSpellCheckConfigTab();
     QString name() const Q_DECL_OVERRIDE;
 
@@ -231,7 +231,7 @@ class KateEditConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateEditConfigTab(QWidget *parent);
+    explicit KateEditConfigTab(QWidget *parent);
     ~KateEditConfigTab();
     QString name() const Q_DECL_OVERRIDE;
     QString fullName() const Q_DECL_OVERRIDE;
@@ -257,7 +257,7 @@ class KateViewDefaultsConfig : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateViewDefaultsConfig(QWidget *parent);
+    explicit KateViewDefaultsConfig(QWidget *parent);
     ~KateViewDefaultsConfig();
     QString name() const Q_DECL_OVERRIDE;
     QString fullName() const Q_DECL_OVERRIDE;
@@ -279,7 +279,7 @@ class KateSaveConfigTab : public KateConfigPage
     Q_OBJECT
 
 public:
-    KateSaveConfigTab(QWidget *parent);
+    explicit KateSaveConfigTab(QWidget *parent);
     ~KateSaveConfigTab();
     QString name() const Q_DECL_OVERRIDE;
     QString fullName() const Q_DECL_OVERRIDE;

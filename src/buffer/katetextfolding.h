@@ -51,7 +51,7 @@ public:
      * Create folding object for given buffer.
      * @param buffer text buffer we want to provide folding info for
      */
-    TextFolding(TextBuffer &buffer);
+    explicit TextFolding(TextBuffer &buffer);
 
     /**
      * Cleanup

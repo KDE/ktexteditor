@@ -31,7 +31,7 @@ class KateArgumentHintModel : public ExpandingWidgetModel
 {
     Q_OBJECT
 public:
-    KateArgumentHintModel(KateCompletionWidget *parent);
+    explicit KateArgumentHintModel(KateCompletionWidget *parent);
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
 

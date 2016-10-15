@@ -31,7 +31,7 @@ class KateArgumentHintTree : public ExpandingTree
 {
     Q_OBJECT
 public:
-    KateArgumentHintTree(KateCompletionWidget *parent);
+    explicit KateArgumentHintTree(KateCompletionWidget *parent);
 
     // Navigation
     bool nextCompletion();

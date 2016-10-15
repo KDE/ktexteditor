@@ -96,7 +96,7 @@ public:
         CompletionRange() : range(0)
         {
         }
-        CompletionRange(KTextEditor::MovingRange *r) : range(r)
+        explicit CompletionRange(KTextEditor::MovingRange *r) : range(r)
         {
         }
 

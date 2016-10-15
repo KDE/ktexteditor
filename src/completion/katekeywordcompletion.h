@@ -38,7 +38,7 @@ class KateKeywordCompletionModel : public KTextEditor::CodeCompletionModel
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 
 public:
-    KateKeywordCompletionModel(QObject* parent);
+    explicit KateKeywordCompletionModel(QObject* parent);
     QVariant data(const QModelIndex& index, int role) const Q_DECL_OVERRIDE;
     int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
     QModelIndex parent(const QModelIndex& index) const Q_DECL_OVERRIDE;

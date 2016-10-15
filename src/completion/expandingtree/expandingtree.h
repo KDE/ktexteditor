@@ -28,7 +28,7 @@
 class ExpandingTree : public QTreeView
 {
 public:
-    ExpandingTree(QWidget *parent);
+    explicit ExpandingTree(QWidget *parent);
 protected:
     void drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
     int sizeHintForColumn(int column) const Q_DECL_OVERRIDE;

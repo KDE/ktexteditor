@@ -45,7 +45,7 @@ using namespace KTextEditor;
 class HierarchicalModelHandler
 {
 public:
-    HierarchicalModelHandler(CodeCompletionModel *model);
+    explicit HierarchicalModelHandler(CodeCompletionModel *model);
     void addValue(CodeCompletionModel::ExtraItemDataRoles role, const QVariant &value);
     //Walks the index upwards and collects all defined completion-roles on the way
     void collectRoles(const QModelIndex &index);

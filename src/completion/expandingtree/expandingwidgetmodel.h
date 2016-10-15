@@ -35,7 +35,7 @@ class ExpandingWidgetModel : public QAbstractItemModel
     Q_OBJECT
 public:
 
-    ExpandingWidgetModel(QWidget *parent);
+    explicit ExpandingWidgetModel(QWidget *parent);
     virtual ~ExpandingWidgetModel();
 
     enum ExpandingType {
