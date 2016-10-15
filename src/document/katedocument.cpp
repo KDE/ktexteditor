@@ -714,9 +714,10 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
 
     int currentLine = position.line();
     int currentLineStart = 0;
-    int totalLength = text.length();
+    const int totalLength = text.length();
     int insertColumn = position.column();
 
+    // pad with empty lines, if insert position is after last line
     if (position.line() > lines()) {
         int line = lines();
         while (line != position.line() + totalLength + 1) {
@@ -725,7 +726,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
         }
     }
 
-    int tabWidth = config()->tabWidth();
+    const int tabWidth = config()->tabWidth();
 
     static const QChar newLineChar(QLatin1Char('\n'));
 
@@ -3759,8 +3760,6 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty())
                                     && !(highlight()->getCommentEnd(startAttrib).isEmpty()));
 
-    bool removed = false;
-
     if (change > 0) { // comment
         if (!hassel) {
             if (hasStartLineCommentMark) {
@@ -3789,6 +3788,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
             }
         }
     } else { // uncomment
+        bool removed = false;
         if (!hassel) {
             removed = (hasStartLineCommentMark
                        && removeStartLineCommentFromSingleLine(line, startAttrib))
