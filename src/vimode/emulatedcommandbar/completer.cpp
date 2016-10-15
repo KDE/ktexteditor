@@ -39,8 +39,8 @@ bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
 }
 
 Completer::Completer ( EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit )
-    : m_edit(edit),
-      m_view(view)
+    : m_edit(edit)
+    , m_view(view)
 {
     m_completer = new QCompleter(QStringList(), edit);
     // Can't find a way to stop the QCompleter from auto-completing when attached to a QLineEdit,

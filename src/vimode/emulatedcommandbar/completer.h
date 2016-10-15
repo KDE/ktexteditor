@@ -92,7 +92,7 @@ namespace KateVi
         QCompleter *m_completer;
         QStringListModel *m_completionModel;
         QString m_textToRevertToIfCompletionAborted;
-        int m_cursorPosToRevertToIfCompletionAborted;
+        int m_cursorPosToRevertToIfCompletionAborted = 0;
         bool m_isNextTextChangeDueToCompletionChange = false;
         CompletionStartParams m_currentCompletionStartParams;
         CompletionStartParams::CompletionType m_currentCompletionType = CompletionStartParams::None;

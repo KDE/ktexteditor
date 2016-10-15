@@ -65,7 +65,10 @@ bool isTrue(const QString& x)
 //END
 
 //BEGIN KateHighlighting
-KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def) : refCount(0)
+KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def)
+    : refCount(0)
+    , startctx(0)
+    , base_startctx(0)
 {
     errorsAndWarnings = QString();
     building = false;

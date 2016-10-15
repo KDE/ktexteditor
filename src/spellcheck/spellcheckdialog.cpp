@@ -42,6 +42,7 @@
 KateSpellCheckDialog::KateSpellCheckDialog(KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_view(view)
+    , m_spellcheckSelection(NULL)
     , m_speller(NULL)
     , m_backgroundChecker(NULL)
     , m_sonnetDialog(NULL)
