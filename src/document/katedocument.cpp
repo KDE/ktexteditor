@@ -720,7 +720,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
     // pad with empty lines, if insert position is after last line
     if (position.line() > lines()) {
         int line = lines();
-        while (line != position.line() + totalLength + 1) {
+        while (line <= position.line()) {
             editInsertLine(line, QString());
             line++;
         }

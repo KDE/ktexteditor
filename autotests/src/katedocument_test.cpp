@@ -266,9 +266,9 @@ void KateDocumentTest::testForgivingApiUsage()
     QVERIFY(doc.replaceText(Range(0, 0, 100, 100), "asdf"));
     QCOMPARE(doc.text(), QString("asdf"));
     QCOMPARE(doc.lines(), 1);
-    QVERIFY(doc.replaceText(Range(2, 99, 2, 100), "asdf"));
-    QEXPECT_FAIL("", "replacing text behind the document end will add 5 lines out of nowhere", Continue);
+    QVERIFY(doc.replaceText(Range(2, 5, 2, 100), "asdf"));
     QCOMPARE(doc.lines(), 3);
+    QCOMPARE(doc.text(), QLatin1String("asdf\n\n     asdf"));
 
     QVERIFY(doc.removeText(Range(0, 0, 1000, 1000)));
     QVERIFY(doc.removeText(Range(0, 0, 0, 100)));
@@ -383,6 +383,26 @@ void KateDocumentTest::testInsertNewline()
     SignalHandler handler;
     connect(&doc, SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)), &handler, SLOT(slotNewlineInserted(KTextEditor::Document*,KTextEditor::Range)));
     doc.editWrapLine(1, 4);
+}
+
+void KateDocumentTest::testInsertAfterEOF()
+{
+    KTextEditor::DocumentPrivate doc;
+
+    doc.setText("line0\n"
+                "line1");
+
+    const QString input = QLatin1String("line3\n"
+                                        "line4");
+
+    const QString expected = QLatin1String("line0\n"
+                                           "line1\n"
+                                           "\n"
+                                           "line3\n"
+                                           "line4");
+
+    doc.insertText(KTextEditor::Cursor(3, 0), input);
+    QCOMPARE(doc.text(), expected);
 }
 
 // we have two different ways of creating the checksum:
