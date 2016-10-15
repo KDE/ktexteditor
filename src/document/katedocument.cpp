@@ -4636,7 +4636,9 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
     int n;
     QColor c;
     foreach (v, m_views) {
-        if (var == QLatin1String("dynamic-word-wrap") && checkBoolValue(val, &state)) {
+        if (var == QLatin1String("auto-brackets") && checkBoolValue(val, &state)) {
+            v->config()->setAutoBrackets(state);
+        } else if (var == QLatin1String("dynamic-word-wrap") && checkBoolValue(val, &state)) {
             v->config()->setDynWordWrap(state);
         } else if (var == QLatin1String("persistent-selection") && checkBoolValue(val, &state)) {
             v->config()->setPersistentSelection(state);

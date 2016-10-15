@@ -130,15 +130,15 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
         rendererConfig = activeView->renderer()->config();
     }
 
+    // Add 'auto-brackets' to list
+    item = new VariableBoolItem(QStringLiteral("auto-brackets"), false);
+    item->setHelpText(i18nc("short translation please", "Enable automatic insertion of brackets."));
+    listview->addItem(item);
+
     // Add 'auto-center-lines' to list
     item = new VariableIntItem(QStringLiteral("auto-center-lines"), viewConfig->autoCenterLines());
     static_cast<VariableIntItem *>(item)->setRange(1, 100);
     item->setHelpText(i18nc("short translation please", "Set the number of autocenter lines."));
-    listview->addItem(item);
-
-    // Add 'auto-insert-doxygen' to list
-    item = new VariableBoolItem(QStringLiteral("auto-insert-doxygen"), false);
-    item->setHelpText(i18nc("short translation please", "Auto insert asterisk in doxygen comments."));
     listview->addItem(item);
 
     // Add 'background-color' to list
