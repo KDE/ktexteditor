@@ -1,0 +1,6 @@
+class X
+{
+    void foo()
+    {
+        if (true)
+};

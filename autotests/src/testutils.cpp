@@ -27,6 +27,7 @@
 #include "testutils.h"
 
 #include "kateview.h"
+#include "kateconfig.h"
 #include "katedocument.h"
 #include "katescripthelpers.h"
 
@@ -89,7 +90,7 @@ TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
     m_engine->globalObject().setProperty(QStringLiteral("read"), m_engine->newFunction(Kate::Script::read));
     m_engine->globalObject().setProperty(QStringLiteral("require"), m_engine->newFunction(Kate::Script::require));
     m_engine->globalObject().setProperty(QStringLiteral("require_guard"), m_engine->newObject());
-
+    
     // export debug function
     m_engine->globalObject().setProperty(QStringLiteral("debug"), m_engine->newFunction(Kate::Script::debug));
 
@@ -199,6 +200,12 @@ bool KateViewObject::type(const QString &str)
 {
     return view()->doc()->typeChars(view(), str);
 }
+
+void KateViewObject::setAutoBrackets(bool enable)
+{
+    view()->config()->setAutoBrackets(enable);
+}
+
 
 #define ALIAS(alias, func) \
     void KateViewObject::alias(int cnt) { \

@@ -2,7 +2,7 @@ var katescript = {
     "name": "C++/boost Style",
     "author": "Alex Turbov <i.zaufi@gmail.com>",
     "license": "LGPL",
-    "revision": 31,
+    "revision": 32,
     "kate-version": "5.1",
     "required-syntax-style": "C++",
     "indent-languages": ["C++", "C++/Qt4", "ISO C++"],
@@ -1646,7 +1646,22 @@ function tryCloseBracket(cursor, ch)
     {
         // TODO Make sure a given `ch` in the gBraceMap
         braceCursor = document.anchor(line, column - 1, gBraceMap[ch]);
+
+        // make sure we are actually on the character we are expecting
+        // if that's not the case, a brace was probably inserted behind the cursor by auto brackets
+        realCharacter = document.charAt(line, column - 1);
+        if (realCharacter != ch) {
+            braceCursor = document.anchor(line, column, gBraceMap[ch]);
+        }
         // TODO Otherwise, it seems we have a template parameters list...
+    }
+
+    // unindent when starting new block and previous line has lower indentation level
+    // prevents over-indentation when inserting condition or loop headers with their opening brace in the next line
+    var firstPos     = document.firstColumn(line);
+    var prevFirstPos = document.firstColumn(line - 1);
+    if (firstPos == column - 1 && ch == '}'  && firstPos > prevFirstPos) {
+        result = prevFirstPos;
     }
 
     // Check if a given closing brace is a first char on a line
@@ -1659,7 +1674,8 @@ function tryCloseBracket(cursor, ch)
         dbg("tryCloseBracket: setting result="+result);
     }
 
-    // Check if ';' required after closing '}'
+    // Check if ';' required after closing '}', but make sure it was inserted by the user
+    // and not automatically by auto brackets (behind the cursor)
     if (ch == '}' && braceCursor.isValid())
     {
         var is_check_needed = false;
@@ -1677,7 +1693,7 @@ function tryCloseBracket(cursor, ch)
         }
         else (!is_check_needed && 0 < braceCursor.line)     // Is there any line before?
         {
-            dbg("tryCloseBracket: cheking prev line");
+            dbg("tryCloseBracket: checking prev line");
 
             // Ok, lets check it!
             anchoredString = document.line(braceCursor.line - 1);
@@ -1699,8 +1715,14 @@ function tryCloseBracket(cursor, ch)
               ;
             if (!is_ok)
             {
-                document.insertText(line, column, ';');
-                view.setCursorPosition(line, column + 1);
+                var pos = column;
+                var newCursorPos = pos + 1;
+                if (document.charAt(line, column - 1) != '}' && document.charAt(line, column) == '}') {
+                    ++pos;
+                    --newCursorPos;
+                }
+                document.insertText(line, pos, ';');
+                view.setCursorPosition(line, newCursorPos);
             }
         }
     }
@@ -2345,11 +2367,6 @@ function processChar(line, ch)
     }
 
     document.editBegin();
-    // Check if char under cursor is the same as just entered,
-    // and if so, remove it... to make it behave like "overwrite" mode
-    if (ch != ' ' && document.charAt(cursor) == ch)
-        document.removeText(line, cursor.column, line, cursor.column + 1);
-
     switch (ch)
     {
         case '\n':

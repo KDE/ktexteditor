@@ -2,7 +2,7 @@ var katescript = {
     "name": "C Style",
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>",
     "license": "LGPL",
-    "revision": 4,
+    "revision": 5,
     "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
@@ -753,6 +753,7 @@ function processChar(line, c)
 
     var column = cursor.column;
     var firstPos = document.firstColumn(line);
+    var prevFirstPos = document.firstColumn(line - 1);
     var lastPos = document.lastColumn(line);
 
      dbg("firstPos: " + firstPos);
@@ -771,11 +772,16 @@ function processChar(line, c)
             filler = -2;
 
         return filler;
-    } else if (firstPos == column - 1 && c == '}') {
+    } else if (firstPos == column - 1 && c == '}' && document.charAt(line, column - 1) == '}') {
+        // unindent after closing brace, but not when brace is auto inserted (i.e., behind cursor)
         var indentation = findLeftBrace(line, firstPos);
         if (indentation == -1)
             indentation = -2;
         return indentation;
+    } else if (firstPos == column - 1 && c == '}'  && firstPos > prevFirstPos) {
+        // align indentation to previous line when creating new block with auto brackets enabled
+        // prevents over-indentation for if blocks and loops
+        return prevFirstPos;
     } else if (cfgSnapSlash && c == '/' && lastPos == column - 1) {
         // try to snap the string "* /" to "*/"
         var currentString = document.line(line);
