@@ -46,11 +46,11 @@ public:
     virtual ~CommandMode()
     {
     }
-    virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-    virtual void editTextChanged(const QString &newText);
-    virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
-    virtual void completionChosen();
-    void deactivate(bool wasAborted);
+    bool handleKeyPress ( const QKeyEvent* keyEvent ) Q_DECL_OVERRIDE;
+    void editTextChanged(const QString &newText) Q_DECL_OVERRIDE;
+    CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType) Q_DECL_OVERRIDE;
+    void completionChosen() Q_DECL_OVERRIDE;
+    void deactivate(bool wasAborted) Q_DECL_OVERRIDE;
     QString executeCommand(const QString &commandToExecute);
 private:
     CompletionStartParams activateCommandCompletion();

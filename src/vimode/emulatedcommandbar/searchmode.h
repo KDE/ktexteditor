@@ -47,11 +47,11 @@ public:
     };
     enum class SearchDirection { Forward, Backward };
     void init(SearchDirection);
-    virtual bool handleKeyPress ( const QKeyEvent* keyEvent );
-    virtual void editTextChanged(const QString &newText);
-    virtual CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType);
-    virtual void completionChosen();
-    virtual void deactivate(bool wasAborted);
+    bool handleKeyPress ( const QKeyEvent* keyEvent ) Q_DECL_OVERRIDE;
+    void editTextChanged(const QString &newText) Q_DECL_OVERRIDE;
+    CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType) Q_DECL_OVERRIDE;
+    void completionChosen() Q_DECL_OVERRIDE;
+    void deactivate(bool wasAborted) Q_DECL_OVERRIDE;
     bool isSendingSyntheticSearchCompletedKeypress() const
     {
         return m_isSendingSyntheticSearchCompletedKeypress;

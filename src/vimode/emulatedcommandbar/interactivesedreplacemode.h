@@ -47,8 +47,8 @@ public:
     {
         return m_isActive;
     }
-    virtual bool handleKeyPress(const QKeyEvent* keyEvent);
-    virtual void deactivate(bool wasAborted);
+    bool handleKeyPress(const QKeyEvent* keyEvent) Q_DECL_OVERRIDE;
+    void deactivate(bool wasAborted) Q_DECL_OVERRIDE;
     QWidget *label();
 private:
     void updateInteractiveSedReplaceLabelText();
