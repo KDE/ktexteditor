@@ -65,7 +65,7 @@ bool isTrue(const QString& x)
 //END
 
 //BEGIN KateHighlighting
-KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def)
+KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     : refCount(0)
     , startctx(0)
     , base_startctx(0)
@@ -76,21 +76,21 @@ KateHighlighting::KateHighlighting(const KateSyntaxModeListItem *def)
     m_foldingIndentationSensitive = false;
     folding = false;
 
-    if (def == 0) {
+    if (!def.isValid()) {
         noHl = true;
         iName = QStringLiteral("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
     } else {
-        iName = def->name;
-        iNameTranslated = def->nameTranslated;
-        iSection = def->section;
-        iHidden = def->hidden;
-        identifier = def->identifier;
-        iVersion = def->version;
-        iStyle = def->style;
-        iAuthor = def->author;
-        iLicense = def->license;
+        iName = def.name();
+        iNameTranslated = def.translatedName();
+        iSection = def.translatedSection();
+        iHidden = def.isHidden();
+        identifier = def.filePath();
+        iVersion = QString::number(def.version());
+        iStyle = def.style();
+        iAuthor = def.author();
+        iLicense = def.license();
     }
 
     deliminator = stdDeliminator();

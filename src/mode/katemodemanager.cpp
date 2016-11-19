@@ -37,6 +37,14 @@
 #include <QMimeDatabase>
 //END Includes
 
+static QStringList vectorToList(const QVector<QString> &v)
+{
+    QStringList l;
+    l.reserve(v.size());
+    std::copy(v.begin(), v.end(), std::back_inserter(l));
+    return l;
+}
+
 KateModeManager::KateModeManager()
 {
     update();
@@ -93,32 +101,35 @@ void KateModeManager::update()
     }
 
     // try if the hl stuff is up to date...
-    const KateSyntaxModeList &modes = KateHlManager::self()->modeList();
+    const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
         KateFileType *type = 0;
         bool newType = false;
-        if (m_name2Type.contains(modes[i]->name)) {
-            type = m_name2Type[modes[i]->name];
+        if (m_name2Type.contains(modes[i].name())) {
+            type = m_name2Type[modes[i].name()];
         } else {
             newType = true;
             type = new KateFileType();
-            type->name = modes[i]->name;
+            type->name = modes[i].name();
             type->priority = 0;
             m_types.append(type);
             m_name2Type.insert(type->name, type);
         }
 
-        if (newType || type->version != modes[i]->version) {
-            type->name = modes[i]->name;
-            type->section = modes[i]->section;
-            type->wildcards = modes[i]->extension.split(QLatin1Char(';'), QString::SkipEmptyParts);
-            type->mimetypes = modes[i]->mimetype.split(QLatin1Char(';'), QString::SkipEmptyParts);
-            type->priority = modes[i]->priority.toInt();
-            type->version = modes[i]->version;
-            type->indenter = modes[i]->indenter;
-            type->hl = modes[i]->name;
+        if (newType || type->version != QString::number(modes[i].version())) {
+            type->name = modes[i].name();
+            type->section = modes[i].section();
+            type->wildcards = vectorToList(modes[i].extensions());
+            type->mimetypes = vectorToList(modes[i].mimeTypes());
+            type->priority = modes[i].priority();
+            type->version = QString::number(modes[i].version());
+            type->indenter = modes[i].indenter();
+            type->hl = modes[i].name();
             type->hlGenerated = true;
         }
+
+        type->translatedName = modes[i].translatedName();
+        type->translatedSection = modes[i].translatedSection();
     }
 
     // sort the list...

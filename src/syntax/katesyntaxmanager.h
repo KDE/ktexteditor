@@ -26,6 +26,8 @@
 #include "kateextendedattribute.h"
 #include "katesyntaxdocument.h"
 
+#include <KSyntaxHighlighting/Definition>
+#include <KSyntaxHighlighting/Repository>
 #include <KConfig>
 #include <KActionMenu>
 
@@ -41,36 +43,6 @@
 #include <QLinkedList>
 
 class KateHighlighting;
-
-/**
- * Information about each syntax hl Mode. This is documented in Kate's
- * <a href="http://docs.kde.org/stable/en/kdebase/kate/katehighlight-xml-format.html">user guide</a>
- * and repeated briefly here.
- */
-class KateSyntaxModeListItem
-{
-public:
-    QString name;           ///< Name of the mode (eg. Asm6502)
-    QString nameTranslated; ///< i18n of same, for display purposes
-    QString section;        ///< Submenu section (eg. Assembly)
-    QString mimetype;       ///< Mimetypes this mode applies to
-    QString extension;      ///< Semicolon-separated list of file extensions
-    QString identifier;
-    QString version;
-    QString priority;       /**< Priority (mapped to an integer?) for conflict-
-                                 resolution when the same file extension has
-                                 multiple highlihgting definitions. */
-    QString style;          ///< Default styles provided by the highlighter
-    QString author;         ///< Author's name
-    QString license;        ///< License; for example: "LGPL"
-    QString indenter;       ///< Indenter to use for this highlighting
-    bool hidden;            ///< Hides the mode from Kate's menus
-};
-
-/**
- * List of the KateSyntaxModeListItems holding all the syntax mode list items
- */
-typedef QList<KateSyntaxModeListItem *> KateSyntaxModeList;
 
 class KateHlManager : public QObject
 {
@@ -158,9 +130,9 @@ public:
      * Get the mode list
      * @return mode list
      */
-    const KateSyntaxModeList &modeList()
+    QVector<KSyntaxHighlighting::Definition> modeList() const
     {
-        return myModeList;
+        return m_repository.definitions();
     }
 
 private:
@@ -172,9 +144,9 @@ private:
     void setupModeList();
 
     /**
-     * List of mode items
+     * Syntax highlighting definitions.
      */
-    KateSyntaxModeList myModeList;
+    KSyntaxHighlighting::Repository m_repository;
 
     // This list owns objects it holds, thus they should be deleted when the object is removed
     QList<KateHighlighting *> hlList;

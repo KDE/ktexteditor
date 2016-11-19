@@ -46,20 +46,17 @@ public:
     QString version;
     QString indenter;
 
+    QString translatedName;
+    QString translatedSection;
+
     QString nameTranslated() const
     {
-        // use "Language" as for highlightings, to avoid double work!
-        return hlGenerated ? i18nc("Language", name.toUtf8().data()) : name;
+        return translatedName.isEmpty() ? name : translatedName;
     }
 
     QString sectionTranslated() const
     {
-        // empty string => no section to translate
-        if (section.isEmpty())
-            return QString();
-
-        // use "Language Section" as for highlightings, to avoid double work!
-        return hlGenerated ? i18nc("Language Section", section.toUtf8().data()) : section;
+        return translatedSection.isEmpty() ? section : translatedSection;
     }
 
     KateFileType()

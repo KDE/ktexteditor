@@ -134,7 +134,7 @@ typedef QMap<KateHlContextModification *, QString> KateHlUnresolvedCtxRefs;
 class KateHighlighting
 {
 public:
-    KateHighlighting(const KateSyntaxModeListItem *def);
+    KateHighlighting(const KSyntaxHighlighting::Definition &def);
     ~KateHighlighting();
 
 private:

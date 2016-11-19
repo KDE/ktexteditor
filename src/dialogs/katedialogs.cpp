@@ -1188,7 +1188,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
 
 void KateHlDownloadDialog::slotInstall()
 {
-    const QString destdir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/katepart5/syntax/");
+    const QString destdir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/org.kde.syntax-highlighting/syntax/");
     QDir(destdir).mkpath(QStringLiteral(".")); // make sure the dir is there
 
     foreach (QTreeWidgetItem *it, list->selectedItems()) {

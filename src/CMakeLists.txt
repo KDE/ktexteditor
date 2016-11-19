@@ -1,9 +1,6 @@
 # handle data files, .desktop & .cmake
 add_subdirectory(data)
 
-# syntax highlighting data files
-add_subdirectory( syntax/data )
-
 # jscripts for the part
 add_subdirectory( script/data )
 
@@ -214,20 +211,6 @@ inputmode/kateabstractinputmode.cpp
 inputmode/kateabstractinputmodefactory.cpp
 inputmode/katenormalinputmode.cpp
 inputmode/katenormalinputmodefactory.cpp
-
-# syntax hl files as resource file
-"${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp"
-)
-
-# tool to create json index of highlightings, will validate all highlightings, too!
-add_executable(katehighlightingindexer syntax/data/katehighlightingindexer.cpp)
-target_link_libraries(katehighlightingindexer Qt5::XmlPatterns)
-
-# generate the hl index resource
-add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp"
-  COMMAND katehighlightingindexer "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.json" "${CMAKE_CURRENT_SOURCE_DIR}/syntax/data/language.xsd" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc"
-  COMMAND ${Qt5Core_RCC_EXECUTABLE} -o "${CMAKE_CURRENT_BINARY_DIR}/syntax_resource.cpp" "${CMAKE_CURRENT_BINARY_DIR}/syntax/data/index.qrc"
-  DEPENDS GeneratePhpXmlFiles ${ALL_HIGHLIGHTERS_DEPS}
 )
 
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
@@ -318,6 +301,7 @@ PRIVATE
   KF5::IconThemes
   KF5::ItemViews
   KF5::SonnetCore
+  KF5::SyntaxHighlighting
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 
