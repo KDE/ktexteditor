@@ -2690,10 +2690,7 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
 
         // Move cursor to end (or beginning) of selected word
         if (m_view->selection()) {
-#if defined(Q_OS_OSX)
-            // avoid "Data set on unsupported clipboard mode" warnings.
-            QApplication::clipboard()->setText(m_view->selectionText());
-#else
+#if !defined(Q_OS_OSX)
             QApplication::clipboard()->setText(m_view->selectionText(), QClipboard::Selection);
 #endif
         }
