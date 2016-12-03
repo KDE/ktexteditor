@@ -386,7 +386,7 @@ function help(cmd)
     } else if (cmd == "filter") {
         return i18n("Given a JavaScript function as argument, call that for the list of (selected) lines and remove those where the callback returns false.<br>Example (see also <code>rmblank</code>):<br><code>filter 'function(l){return l.length > 0;}'</code><br>To save you some typing, you can also do this to achieve the same:<br><code>filter 'line.length > 0'</code>");
     } else if (cmd == "map") {
-        return i18n("Given a JavaScript function as argument, call that for the list of (selected) lines and replace the line with the return value of the callback.<br>Example (see also <code>ltrim</code>):<br><code>map 'function(line){return line.replace(/^\s+/, \"\");}'</code><br>To save you some typing, you can also do this to achieve the same:<br><code>map 'line.replace(/^\s+/, \"\")'</code>");
+        return i18n("Given a JavaScript function as argument, call that for the list of (selected) lines and replace the line with the return value of the callback.<br>Example (see also <code>ltrim</code>):<br><code>map 'function(line){return line.replace(/^\\s+/, \"\");}'</code><br>To save you some typing, you can also do this to achieve the same:<br><code>map 'line.replace(/^\\s+/, \"\")'</code>");
     } else if (cmd == "duplicateLinesUp") {
         return i18n("Duplicates the selected lines up.");
     } else if (cmd == "duplicateLinesDown") {
