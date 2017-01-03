@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(KTextEditor)
+set(KF5_VERSION "5.30.0") # handled by release scripts
+set(KF5_DEP_VERSION "5.29.0") # handled by release scripts
+project(KTextEditor VERSION ${KF5_VERSION})
 
 # ECM setup
 include(FeatureSummary)
@@ -21,11 +23,8 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 
-set(KF5_VERSION "5.30.0") # handled by release scripts
-set(KF5_DEP_VERSION "5.29.0") # handled by release scripts
-
 ecm_setup_version(
-  ${KF5_VERSION}
+  PROJECT
   VARIABLE_PREFIX KTEXTEDITOR
   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/ktexteditor_version.h"
   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5TextEditorConfigVersion.cmake"
