@@ -43,6 +43,8 @@ private Q_SLOTS:
     void testKillline();
 
     void testFoldFirstLine();
+
+    void testDragAndDrop();
 };
 
 #endif // KATE_VIEW_TEST_H

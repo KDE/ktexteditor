@@ -3243,22 +3243,26 @@ void KateViewInternal::dropEvent(QDropEvent *event)
         doc()->insertText(targetCursor, text, m_view->blockSelection());
 
         KTextEditor::DocumentCursor startCursor(doc(), targetCursor);
+        KTextEditor::DocumentCursor endCursor1(doc(), targetCursor);
+        const int textLength = text.length();
 
         if (event->dropAction() != Qt::CopyAction) {
             m_view->removeSelectedText();
+            if (m_cursor.toCursor() < startCursor.toCursor()) {
+                startCursor.move(-textLength);
+                endCursor1.move(-textLength);
+            }
         }
 
-        KTextEditor::DocumentCursor endCursor1(doc(), startCursor);
-
         if (!m_view->blockSelection()) {
-            endCursor1.move(text.length());
+            endCursor1.move(textLength);
         } else {
             endCursor1.setColumn(startCursor.column() + selectionWidth);
             endCursor1.setLine(startCursor.line() + selectionHeight);
         }
 
         KTextEditor::Cursor endCursor(endCursor1);
-        qCDebug(LOG_KTE) << startCursor << "---(" << text.length() << ")---" << endCursor;
+        qCDebug(LOG_KTE) << startCursor << "---(" << textLength << ")---" << endCursor;
         setSelection(KTextEditor::Range(startCursor, endCursor));
         editSetCursor(endCursor);
 
