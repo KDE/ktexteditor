@@ -2357,7 +2357,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
     //
     if (!m_buffer->canEncode()
             && (KMessageBox::warningContinueCancel(dialogParent(),
-                    i18n("The selected encoding cannot encode every unicode character in this document. Do you really want to save it? There could be some data lost."), i18n("Possible Data Loss"), KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue)) {
+                    i18n("The selected encoding cannot encode every Unicode character in this document. Do you really want to save it? There could be some data lost."), i18n("Possible Data Loss"), KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue)) {
         return false;
     }
 
@@ -4583,7 +4583,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                     m_config->setEol(n);
                     m_config->setAllowEolDetection(false);
                 }
-            } else if (var == QLatin1String("bom") || var == QLatin1String("byte-order-marker")) {
+            } else if (var == QLatin1String("bom") || var == QLatin1String("byte-order-mark") || var == QLatin1String("byte-order-marker")) {
                 if (checkBoolValue(val, &state)) {
                     m_config->setBom(state);
                 }

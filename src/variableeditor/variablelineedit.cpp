@@ -159,9 +159,9 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     item->setHelpText(i18nc("short translation please", "Enable block selection mode."));
     listview->addItem(item);
 
-    // Add 'byte-order-marker' (bom) to list
-    item = new VariableBoolItem(QStringLiteral("byte-order-marker"), docConfig->bom());
-    item->setHelpText(i18nc("short translation please", "Enable the byte order marker when saving unicode files."));
+    // Add 'byte-order-mark' (bom) to list
+    item = new VariableBoolItem(QStringLiteral("byte-order-mark"), docConfig->bom());
+    item->setHelpText(i18nc("short translation please", "Enable the byte order mark (BOM) when saving Unicode files."));
     listview->addItem(item);
 
     // Add 'bracket-highlight-color' to list

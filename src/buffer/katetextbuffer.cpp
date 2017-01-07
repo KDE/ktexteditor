@@ -572,7 +572,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     /**
      * triple play, maximal three loading rounds
      * 0) use the given encoding, be done, if no encoding errors happen
-     * 1) use BOM to decided if unicode or if that fails, use encoding prober, if no encoding errors happen, be done
+     * 1) use BOM to decided if Unicode or if that fails, use encoding prober, if no encoding errors happen, be done
      * 2) use fallback encoding, be done, if no encoding errors happen
      * 3) use again given encoding, be done in any case
      */
@@ -627,7 +627,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
                 break;
             }
 
-            // get unicode data for this line
+            // get Unicode data for this line
             const QChar *unicodeData = file.unicode() + offset;
 
 

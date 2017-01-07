@@ -156,8 +156,8 @@ public:
     }
 
     /**
-     * internal unicode data array
-     * @return internal unicode data
+     * internal Unicode data array
+     * @return internal Unicode data
      */
     const QChar *unicode() const
     {
@@ -174,8 +174,8 @@ public:
     }
 
     /**
-     * read a line, return length + offset in unicode data
-     * @param offset offset into internal unicode data for read line
+     * read a line, return length + offset in Unicode data
+     * @param offset offset into internal Unicode data for read line
      * @param length length of read line
      * @return true if no encoding errors occurred
      */
@@ -213,7 +213,7 @@ public:
                         // update hash sum
                         m_digest.addData(m_buffer.data(), c);
                     
-                        // detect byte order marks & codec for byte order markers on first read
+                        // detect byte order marks & codec for byte order marks on first read
                         int bomBytes = 0;
                         if (m_firstRead) {
                             // use first 16 bytes max to allow BOM detection of codec
@@ -248,7 +248,7 @@ public:
                                     m_codec = codecForByteOrderMark;
                                 } else {
                                     /**
-                                     * no unicode BOM found, trigger prober
+                                     * no Unicode BOM found, trigger prober
                                      */
                                     
                                     /**
