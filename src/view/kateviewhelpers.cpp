@@ -476,7 +476,8 @@ void KateScrollBar::updatePixmap()
     modifiedLineColor.setHsv(modifiedLineColor.hue(), 255, 255 - backgroundColor.value() / 3);
     savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.value() / 3);
 
-    m_pixmap = QPixmap(pixmapLineWidth, pixmapLineCount);
+    // increase dimensions by ratio
+    m_pixmap = QPixmap(pixmapLineWidth * m_view->devicePixelRatio(), pixmapLineCount * m_view->devicePixelRatio());
     m_pixmap.fill(QColor("transparent"));
 
     // The text currently selected in the document, to be drawn later.
@@ -583,6 +584,10 @@ void KateScrollBar::updatePixmap()
             }
         }
     }
+
+    // set right ratio
+    m_pixmap.setDevicePixelRatio(m_view->devicePixelRatio());
+
     //qCDebug(LOG_KTE) << time.elapsed();
     // Redraw the scrollbar widget with the updated pixmap.
     update();
@@ -627,7 +632,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     //style()->drawControl(QStyle::CE_ScrollBarSubLine, &opt, &painter, this);
 
     // calculate the document size and position
-    const int docHeight = qMin(grooveRect.height(), m_pixmap.height() * 2) - 2 * docXMargin;
+    const int docHeight = qMin(grooveRect.height(), int(m_pixmap.height() / m_pixmap.devicePixelRatio() * 2)) - 2 * docXMargin;
     const int yoffset = 1; // top-aligned in stead of center-aligned (grooveRect.height() - docHeight) / 2;
     const QRect docRect(QPoint(grooveRect.left() + docXMargin, yoffset + grooveRect.top()), QSize(grooveRect.width() - docXMargin, docHeight));
     m_mapGroveRect = docRect;
@@ -683,17 +688,17 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     }
 
     // Smooth transform only when squeezing
-    if (grooveRect.height() < m_pixmap.height()) {
+    if (grooveRect.height() < m_pixmap.height() / m_pixmap.devicePixelRatio()) {
         painter.setRenderHint(QPainter::SmoothPixmapTransform);
     }
 
     // draw the modified lines margin
-    QRect pixmapMarginRect(QPoint(0, 0), QSize(s_pixelMargin, m_pixmap.height()));
+    QRect pixmapMarginRect(QPoint(0, 0), QSize(s_pixelMargin, m_pixmap.height() / m_pixmap.devicePixelRatio()));
     QRect docPixmapMarginRect(QPoint(0, docRect.top()), QSize(s_pixelMargin, docRect.height()));
     painter.drawPixmap(docPixmapMarginRect, m_pixmap, pixmapMarginRect);
 
     // calculate the stretch and draw the stretched lines (scrollbar marks)
-    QRect pixmapRect(QPoint(s_pixelMargin, 0), QSize(m_pixmap.width() - s_pixelMargin, m_pixmap.height()));
+    QRect pixmapRect(QPoint(s_pixelMargin, 0), QSize(m_pixmap.width() / m_pixmap.devicePixelRatio() - s_pixelMargin, m_pixmap.height() / m_pixmap.devicePixelRatio()));
     QRect docPixmapRect(QPoint(s_pixelMargin, docRect.top()), QSize(docRect.width() - s_pixelMargin, docRect.height()));
     painter.drawPixmap(docPixmapRect, m_pixmap, pixmapRect);
 
