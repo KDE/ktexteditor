@@ -50,7 +50,7 @@ void KateViewTest::testCoordinatesToCursor()
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText("Hi World!\nHi\n");
 
-    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(Q_NULLPTR));
+    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(nullptr));
     view1->show();
 
     QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))),
@@ -327,7 +327,7 @@ void KateViewTest::testDragAndDrop()
                 "\n"
                 "line4");
 
-    KTextEditor::View* view = static_cast<KTextEditor::View*>(doc.createView(Q_NULLPTR));
+    KTextEditor::View* view = static_cast<KTextEditor::View*>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
 

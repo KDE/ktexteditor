@@ -29,7 +29,7 @@ namespace KTextEditor
 
 MainWindow::MainWindow(QObject *parent)
     : QObject(parent)
-    , d(Q_NULLPTR)
+    , d(nullptr)
 {
 }
 
@@ -42,7 +42,7 @@ QWidget *MainWindow::window()
     /**
      * dispatch to parent
      */
-    QWidget *window = Q_NULLPTR;
+    QWidget *window = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "window"
                               , Qt::DirectConnection
@@ -55,7 +55,7 @@ KXMLGUIFactory *MainWindow::guiFactory()
     /**
      * dispatch to parent
      */
-    KXMLGUIFactory *guiFactory = Q_NULLPTR;
+    KXMLGUIFactory *guiFactory = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "guiFactory"
                               , Qt::DirectConnection
@@ -81,7 +81,7 @@ KTextEditor::View *MainWindow::activeView()
     /**
      * dispatch to parent
      */
-    KTextEditor::View *view = Q_NULLPTR;
+    KTextEditor::View *view = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "activeView"
                               , Qt::DirectConnection
@@ -94,7 +94,7 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
     /**
      * dispatch to parent
      */
-    KTextEditor::View *view = Q_NULLPTR;
+    KTextEditor::View *view = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "activateView"
                               , Qt::DirectConnection
@@ -108,7 +108,7 @@ KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
     /**
      * dispatch to parent
      */
-    KTextEditor::View *view = Q_NULLPTR;
+    KTextEditor::View *view = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "openUrl"
                               , Qt::DirectConnection
@@ -178,7 +178,7 @@ QWidget *MainWindow::createViewBar(KTextEditor::View *view)
     /**
      * dispatch to parent
      */
-    QWidget *viewBar = Q_NULLPTR;
+    QWidget *viewBar = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "createViewBar"
                               , Qt::DirectConnection
@@ -237,7 +237,7 @@ QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &
     /**
      * dispatch to parent
      */
-    QWidget *toolView = Q_NULLPTR;
+    QWidget *toolView = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "createToolView"
                               , Qt::DirectConnection
@@ -298,7 +298,7 @@ QObject *MainWindow::pluginView(const QString &name)
     /**
      * dispatch to parent
      */
-    QObject *pluginView = Q_NULLPTR;
+    QObject *pluginView = nullptr;
     QMetaObject::invokeMethod(parent()
                               , "pluginView"
                               , Qt::DirectConnection

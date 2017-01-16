@@ -39,7 +39,7 @@ KateAbstractInputMode *KateNormalInputModeFactory::createInputMode(KateViewInter
 
 KateConfigPage *KateNormalInputModeFactory::createConfigPage(QWidget *)
 {
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 KTextEditor::View::InputMode KateNormalInputModeFactory::inputMode()

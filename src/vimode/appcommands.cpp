@@ -269,7 +269,7 @@ KTextEditor::View * AppCommands::findViewInDifferentSplitView(KTextEditor::MainW
             return it;
         }
     }
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 void AppCommands::closeCurrentDocument()
@@ -298,7 +298,7 @@ void AppCommands::closeOtherSplitViews()
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
     KTextEditor::MainWindow *mw = app->activeMainWindow();
     KTextEditor::View *view = mw->activeView();
-    KTextEditor::View *viewToRemove = Q_NULLPTR;
+    KTextEditor::View *viewToRemove = nullptr;
 
     while ((viewToRemove = findViewInDifferentSplitView(mw, view))) {
         mw->closeSplitView(viewToRemove);

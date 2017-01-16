@@ -87,7 +87,7 @@ void KateSyntaxTest::testSyntaxHighlighting()
      * create a document with a view to be able to export stuff
      */
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(Q_NULLPTR));
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
 
     /**
      * load the test case

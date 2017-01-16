@@ -89,12 +89,12 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     , m_aboutData(QStringLiteral("katepart"), i18n("Kate Part"), QStringLiteral(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
                   i18n("(c) 2000-2017 The Kate Authors"), QString(), QStringLiteral("http://kate-editor.org"))
-    , m_dummyApplication(Q_NULLPTR)
+    , m_dummyApplication(nullptr)
     , m_application(&m_dummyApplication)
-    , m_dummyMainWindow(Q_NULLPTR)
+    , m_dummyMainWindow(nullptr)
     , m_defaultColors(new KateDefaultColors())
-    , m_searchHistoryModel(Q_NULLPTR)
-    , m_replaceHistoryModel(Q_NULLPTR)
+    , m_searchHistoryModel(nullptr)
+    , m_replaceHistoryModel(nullptr)
 {
     // remember this
     staticInstance = this;

@@ -140,7 +140,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_floatTopMessageWidget(nullptr)
     , m_floatBottomMessageWidget(nullptr)
     , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
-    , m_statusBar(Q_NULLPTR)
+    , m_statusBar(nullptr)
     , m_temporaryAutomaticInvocationDisabled(false)
     , m_autoFoldedFirstLine(false)
 {
@@ -279,7 +279,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
     if (m_statusBar) {
         bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
-        m_statusBar = Q_NULLPTR;
+        m_statusBar = nullptr;
         emit statusBarEnabledChanged(this, false);
         return;
     }

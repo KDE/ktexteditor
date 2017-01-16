@@ -138,7 +138,7 @@ bool View::insertTemplate(const KTextEditor::Cursor& insertPosition,
 
 ConfigPage::ConfigPage(QWidget *parent)
     : QWidget(parent)
-    , d(Q_NULLPTR)
+    , d(nullptr)
 {}
 
 ConfigPage::~ConfigPage()
@@ -164,7 +164,7 @@ View::~View()
 
 Plugin::Plugin(QObject *parent)
     : QObject(parent)
-    , d(Q_NULLPTR)
+    , d(nullptr)
 {}
 
 Plugin::~Plugin()
@@ -177,39 +177,39 @@ int Plugin::configPages() const
 
 ConfigPage *Plugin::configPage(int, QWidget *)
 {
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 MarkInterface::MarkInterface()
-    : d(Q_NULLPTR)
+    : d(nullptr)
 {}
 
 MarkInterface::~MarkInterface()
 {}
 
 ModificationInterface::ModificationInterface()
-    : d(Q_NULLPTR)
+    : d(nullptr)
 {}
 
 ModificationInterface::~ModificationInterface()
 {}
 
 SessionConfigInterface::SessionConfigInterface()
-    : d(Q_NULLPTR)
+    : d(nullptr)
 {}
 
 SessionConfigInterface::~SessionConfigInterface()
 {}
 
 TextHintInterface::TextHintInterface()
-    : d(Q_NULLPTR)
+    : d(nullptr)
 {}
 
 TextHintInterface::~TextHintInterface()
 {}
 
 TextHintProvider::TextHintProvider()
-    : d(Q_NULLPTR)
+    : d(nullptr)
 {}
 
 TextHintProvider::~TextHintProvider()
@@ -218,7 +218,7 @@ TextHintProvider::~TextHintProvider()
 Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)
     , m_cmds (cmds)
-    , d(Q_NULLPTR)
+    , d(nullptr)
 {
     // register this command
     static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->registerCommand (this);
@@ -238,7 +238,7 @@ bool Command::supportsRange(const QString &)
 
 KCompletion *Command::completionObject(KTextEditor::View *, const QString &)
 {
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 bool Command::wantsToProcessText(const QString &)

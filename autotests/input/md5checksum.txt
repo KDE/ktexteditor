@@ -5467,7 +5467,7 @@ KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTex
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
-    KTextEditor::ViewPrivate *view = m_views.empty() ? Q_NULLPTR : m_views.begin().value();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
     if (!view) {
         qCWarning(LOG_PART) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;

@@ -136,7 +136,7 @@ private:
     // KTextEditor::Document stuff
     //
 public:
-    KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR) Q_DECL_OVERRIDE;
+    KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) Q_DECL_OVERRIDE;
 
     QList<KTextEditor::View *> views() const Q_DECL_OVERRIDE
     {

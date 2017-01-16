@@ -4800,9 +4800,9 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
              * libgit2 docs state that UTF-8 is the right encoding, even on windows
              * I hope that is correct!
              */
-            git_repository *repository = Q_NULLPTR;
+            git_repository *repository = nullptr;
             const QByteArray utf8Path = url().toLocalFile().toUtf8();
-            if (git_repository_open_ext(&repository, utf8Path.constData(), 0, Q_NULLPTR) == 0) {
+            if (git_repository_open_ext(&repository, utf8Path.constData(), 0, nullptr) == 0) {
                 /**
                  * if we have repo, convert the git hash to an OID
                  */
@@ -4811,7 +4811,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                     /**
                      * finally: is there a blob for this git hash?
                      */
-                    git_blob *blob = Q_NULLPTR;
+                    git_blob *blob = nullptr;
                     if (git_blob_lookup(&blob, repository, &oid) == 0) {
                         /**
                         * this hash exists still in git => just reload
@@ -5781,7 +5781,7 @@ KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTex
 {
     KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
 
-    KTextEditor::ViewPrivate *view = m_views.empty() ? Q_NULLPTR : m_views.begin().value();
+    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
     if (!view) {
         qCWarning(LOG_KTE) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
         return attrib;

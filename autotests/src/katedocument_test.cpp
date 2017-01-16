@@ -283,7 +283,7 @@ void KateDocumentTest::testForgivingApiUsage()
 void KateDocumentTest::testReplaceTabs()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(Q_NULLPTR));
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
 
     auto reset = [&]() {
         doc.setText("  Hi!");
@@ -436,7 +436,7 @@ void KateDocumentTest::testDefStyleNum()
 void KateDocumentTest::testTypeCharsWithSurrogateAndNewLine()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(Q_NULLPTR));
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
     const uint surrogateUcs4String[] = { 0x1f346, '\n', 0x1f346, 0 };
     const auto surrogateString = QString::fromUcs4(surrogateUcs4String);
     doc.typeChars(view, surrogateString);
@@ -447,7 +447,7 @@ void KateDocumentTest::testTypeCharsWithSurrogateAndNewLine()
 void KateDocumentTest::testRemoveComposedCharacters()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(Q_NULLPTR));
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
     doc.setText(QString::fromUtf8("व्यक्तियों"));
     doc.del(view, Cursor(0, 0));
 

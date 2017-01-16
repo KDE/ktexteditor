@@ -228,7 +228,7 @@ public:
      * @param mainWindow the main window responsible for this view, if any
      * @return the new view
      */
-    virtual View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = Q_NULLPTR) = 0;
+    virtual View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) = 0;
 
     /**
      * Returns the views pre-casted to KTextEditor::View%s
