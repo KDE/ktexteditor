@@ -31,8 +31,8 @@ TextRange::TextRange(TextBuffer &buffer, const KTextEditor::Range &range, Insert
     : m_buffer(buffer)
     , m_start(buffer, this, range.start(), (insertBehavior &ExpandLeft) ? Kate::TextCursor::StayOnInsert : Kate::TextCursor::MoveOnInsert)
     , m_end(buffer, this, range.end(), (insertBehavior &ExpandRight) ? Kate::TextCursor::MoveOnInsert : Kate::TextCursor::StayOnInsert)
-    , m_view(0)
-    , m_feedback(0)
+    , m_view(nullptr)
+    , m_feedback(nullptr)
     , m_zDepth(0.0)
     , m_attributeOnlyForViews(false)
     , m_invalidateIfEmpty(emptyBehavior == InvalidateIfEmpty)
@@ -49,7 +49,7 @@ TextRange::~TextRange()
     /**
      * reset feedback, don't want feedback during destruction
      */
-    m_feedback = 0;
+    m_feedback = nullptr;
 
     // remove range from m_ranges
     fixLookup(m_start.line(), m_end.line(), -1, -1);
@@ -279,7 +279,7 @@ void TextRange::setView(KTextEditor::View *view)
      * notify all views (can be optimized later)
      */
     if (m_attribute || m_feedback) {
-        m_buffer.notifyAboutRangeChange(0, m_start.line(), m_end.line(), m_attribute);
+        m_buffer.notifyAboutRangeChange(nullptr, m_start.line(), m_end.line(), m_attribute);
     }
 }
 

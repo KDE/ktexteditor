@@ -270,7 +270,7 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
 KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *parent)
 {
-    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(false, false, 0, parent);
+    KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(false, false, nullptr, parent);
 
     emit documentCreated(this, doc);
 
@@ -348,7 +348,7 @@ KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWid
         break;
     }
 
-    return 0;
+    return nullptr;
 }
 
 /**

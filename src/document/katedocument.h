@@ -96,7 +96,7 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
 
 public:
     explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false,
-                          QWidget *parentWidget = 0, QObject * = 0);
+                          QWidget *parentWidget = nullptr, QObject * = nullptr);
     ~DocumentPrivate();
 
     using ReadWritePart::closeUrl;
@@ -295,7 +295,7 @@ public:
      * @param newLineAdded return value is true, if new line was added (may be 0)
      * @return true on success
      */
-    bool editWrapLine(int line, int col, bool newLine = true, bool *newLineAdded = 0);
+    bool editWrapLine(int line, int col, bool newLine = true, bool *newLineAdded = nullptr);
     /**
      * Unwrap @p line. If @p removeLine is true, we force to join the lines. If
      * @p removeLine is true, @p length is ignored (eg not needed).
@@ -933,7 +933,7 @@ public Q_SLOTS:
      * Ask the user what to do, if the file has been modified on disk.
      * Reimplemented from KTextEditor::Document.
      */
-    virtual void slotModifiedOnDisk(KTextEditor::View *v = 0);
+    virtual void slotModifiedOnDisk(KTextEditor::View *v = nullptr);
 
     /**
      * Reloads the current document from disk if possible

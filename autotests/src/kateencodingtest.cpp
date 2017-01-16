@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     QString inFile = app.arguments().at(2);
     QString outFile = app.arguments().at(3);
 
-    Kate::TextBuffer buffer(0);
+    Kate::TextBuffer buffer(nullptr);
 
     // set codec
     buffer.setFallbackTextCodec(QTextCodec::codecForName("ISO 8859-15"));

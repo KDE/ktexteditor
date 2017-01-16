@@ -44,7 +44,7 @@ public:
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
     static AppCommands* self() {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new AppCommands();
         }
         return m_instance;
@@ -92,7 +92,7 @@ public:
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
     static BufferCommands* self() {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new BufferCommands();
         }
         return m_instance;

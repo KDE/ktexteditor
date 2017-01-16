@@ -1516,7 +1516,7 @@ void KeysTest::MacroTests()
 
     kate_view->unregisterCompletionModel(fakeCodeCompletionModel);
     delete fakeCodeCompletionModel;
-    fakeCodeCompletionModel = 0;
+    fakeCodeCompletionModel = nullptr;
     // Hide the kate_view for subsequent tests.
     kate_view->hide();
     mainWindow->hide();

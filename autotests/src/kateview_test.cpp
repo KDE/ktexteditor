@@ -84,7 +84,7 @@ void KateViewTest::testCursorToCoordinates()
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText("int a;");
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->config()->setDynWordWrap(true);
     view->show();
 
@@ -110,8 +110,8 @@ void KateViewTest::testReloadMultipleViews()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, 0);
-    KTextEditor::ViewPrivate *view2 = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, nullptr);
+    KTextEditor::ViewPrivate *view2 = new KTextEditor::ViewPrivate(&doc, nullptr);
     view1->show();
     view2->show();
     QCOMPARE(doc.views().count(), 2);
@@ -131,7 +131,7 @@ void KateViewTest::testTabCursorOnReload()
     KTextEditor::DocumentPrivate doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     const KTextEditor::Cursor cursor(0, 4);
     view->setCursorPosition(cursor);
     QCOMPARE(view->cursorPosition(), cursor);
@@ -145,7 +145,7 @@ void KateViewTest::testLowerCaseBlockSelection()
     KTextEditor::DocumentPrivate doc;
     doc.setText("nY\nnYY\n");
 
-    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view1 = new KTextEditor::ViewPrivate(&doc, nullptr);
     view1->setBlockSelection(true);
     view1->setSelection(Range(0, 1, 1, 3));
     view1->lowercase();
@@ -176,7 +176,7 @@ void KateViewTest::testSelection()
     KTextEditor::DocumentPrivate doc;
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->resize(100, 200);
     view->show();
 
@@ -250,7 +250,7 @@ void KateViewTest::testKillline()
         << "baz"
     );
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
 
     view->setCursorPositionInternal(KTextEditor::Cursor(1, 2));
     view->killLine();
@@ -290,7 +290,7 @@ void KateViewTest::testFoldFirstLine()
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
-    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, 0);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
     view->config()->setFoldFirstLine(false);
     view->setCursorPosition({4, 0});
 

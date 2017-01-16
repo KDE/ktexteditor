@@ -363,7 +363,7 @@ void KatePrintHeaderFooter::showContextMenu(const QPoint &pos)
     }
 
     QMenu *const contextMenu = lineEdit->createStandardContextMenu();
-    if (contextMenu == NULL) {
+    if (contextMenu == nullptr) {
         return;
     }
     contextMenu->addSeparator();

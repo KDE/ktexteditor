@@ -38,12 +38,12 @@ class Highlighting : public KTextEditor::Command
 public:
     ~Highlighting()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
     
     static Highlighting *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new Highlighting();
         }
         return m_instance;

@@ -42,11 +42,11 @@
 KateSpellCheckDialog::KateSpellCheckDialog(KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_view(view)
-    , m_spellcheckSelection(NULL)
-    , m_speller(NULL)
-    , m_backgroundChecker(NULL)
-    , m_sonnetDialog(NULL)
-    , m_globalSpellCheckRange(NULL)
+    , m_spellcheckSelection(nullptr)
+    , m_speller(nullptr)
+    , m_backgroundChecker(nullptr)
+    , m_sonnetDialog(nullptr)
+    , m_globalSpellCheckRange(nullptr)
     , m_spellCheckCancelledByUser(false)
 {
 }
@@ -311,7 +311,7 @@ void KateSpellCheckDialog::spellCheckDone()
 void KateSpellCheckDialog::objectDestroyed(QObject *object)
 {
     Q_UNUSED(object);
-    m_sonnetDialog = NULL;
+    m_sonnetDialog = nullptr;
 }
 
 void KateSpellCheckDialog::languageChanged(const QString &language)

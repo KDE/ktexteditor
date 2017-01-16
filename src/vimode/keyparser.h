@@ -45,7 +45,7 @@ public:
     static KeyParser *self();
     ~KeyParser()
     {
-        m_instance = NULL;
+        m_instance = nullptr;
     }
 
     const QString encodeKeySequence(const QString &keys) const;

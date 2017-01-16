@@ -44,7 +44,7 @@ class KatePrinterPrivate : public QObject
 {
     Q_OBJECT
 public:
-    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = 0);
+    KatePrinterPrivate(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view = nullptr);
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);

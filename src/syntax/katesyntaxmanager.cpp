@@ -556,11 +556,11 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
             QRgb col;
 
             tmp = s[0]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); i->setForeground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); i->setForeground(QColor(col));
             }
 
             tmp = s[1]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); i->setSelectedForeground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); i->setSelectedForeground(QColor(col));
             }
 
             tmp = s[2]; if (!tmp.isEmpty()) {
@@ -581,7 +581,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
 
             tmp = s[6]; if (!tmp.isEmpty()) {
                 if (tmp != QLatin1String("-")) {
-                    col = tmp.toUInt(0, 16);
+                    col = tmp.toUInt(nullptr, 16);
                     i->setBackground(QColor(col));
                 } else {
                     i->clearBackground();
@@ -589,7 +589,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
             }
             tmp = s[7]; if (!tmp.isEmpty()) {
                 if (tmp != QLatin1String("-")) {
-                    col = tmp.toUInt(0, 16);
+                    col = tmp.toUInt(nullptr, 16);
                     i->setSelectedBackground(QColor(col));
                 } else {
                     i->clearProperty(SelectedBackground);

@@ -376,7 +376,7 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
     QList<QTextLayout::FormatRange> newHighlight;
 
     // Don't compute the highlighting if there isn't going to be any highlighting
-    QList<Kate::TextRange *> rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? 0 : m_view, true);
+    QList<Kate::TextRange *> rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? nullptr : m_view, true);
     if (selectionsOnly || !textLine->attributesList().isEmpty() || !rangesWithAttributes.isEmpty()) {
         RenderRangeList renderRanges;
 
@@ -391,8 +391,8 @@ QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::Tex
 
         if (!completionHighlight) {
             // check for dynamic hl stuff
-            const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : 0;
-            const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : 0;
+            const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : nullptr;
+            const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
             bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
 
             // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart rangs behavior ;)

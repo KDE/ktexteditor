@@ -46,7 +46,7 @@ class KTEXTEDITOR_EXPORT KateScriptView : public QObject, protected QScriptable
     Q_OBJECT
 
 public:
-    KateScriptView(QObject *parent = 0);
+    KateScriptView(QObject *parent = nullptr);
     void setView(KTextEditor::ViewPrivate *view);
     KTextEditor::ViewPrivate *view();
 

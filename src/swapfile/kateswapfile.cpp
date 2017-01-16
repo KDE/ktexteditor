@@ -55,7 +55,7 @@ const static qint8 EA_RemoveText    = 'R';
 namespace Kate
 {
 
-QTimer *SwapFile::s_timer = 0;
+QTimer *SwapFile::s_timer = nullptr;
 
 SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
     : QObject(document)
@@ -238,7 +238,7 @@ void SwapFile::recover()
     bool success = recover(m_stream);
 
     // close swap file
-    m_stream.setDevice(0);
+    m_stream.setDevice(nullptr);
     m_swapfile.close();
 
     if (!success) {
@@ -451,7 +451,7 @@ void SwapFile::startEditing()
 
         // write checksum
         m_stream << m_document->checksum();
-    } else if (m_stream.device() == 0) {
+    } else if (m_stream.device() == nullptr) {
         m_swapfile.open(QIODevice::Append);
         m_swapfile.setPermissions(QFileDevice::ReadOwner|QFileDevice::WriteOwner);
         m_stream.setDevice(&m_swapfile);
@@ -542,7 +542,7 @@ bool SwapFile::shouldRecover() const
         return false;
     }
 
-    return !m_swapfile.fileName().isEmpty() && m_swapfile.exists() && m_stream.device() == 0;
+    return !m_swapfile.fileName().isEmpty() && m_swapfile.exists() && m_stream.device() == nullptr;
 }
 
 void SwapFile::discard()
@@ -560,7 +560,7 @@ void SwapFile::discard()
 void SwapFile::removeSwapFile()
 {
     if (!m_swapfile.fileName().isEmpty() && m_swapfile.exists()) {
-        m_stream.setDevice(0);
+        m_stream.setDevice(nullptr);
         m_swapfile.close();
         m_swapfile.remove();
     }
@@ -612,7 +612,7 @@ QString SwapFile::fileName()
 
 QTimer *SwapFile::syncTimer()
 {
-    if (s_timer == 0) {
+    if (s_timer == nullptr) {
         s_timer = new QTimer(QApplication::instance());
         s_timer->setSingleShot(true);
     }
@@ -642,9 +642,9 @@ void SwapFile::showSwapFileMessage()
             KTextEditor::Message::Warning);
     m_swapMessage->setWordWrap(true);
 
-    QAction *diffAction = new QAction(QIcon::fromTheme(QStringLiteral("split")), i18n("View Changes"), 0);
-    QAction *recoverAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-redo")), i18n("Recover Data"), 0);
-    QAction *discardAction = new QAction(KStandardGuiItem::discard().icon(), i18n("Discard"), 0);
+    QAction *diffAction = new QAction(QIcon::fromTheme(QStringLiteral("split")), i18n("View Changes"), nullptr);
+    QAction *recoverAction = new QAction(QIcon::fromTheme(QStringLiteral("edit-redo")), i18n("Recover Data"), nullptr);
+    QAction *discardAction = new QAction(KStandardGuiItem::discard().icon(), i18n("Discard"), nullptr);
 
     m_swapMessage->addAction(diffAction, false);
     m_swapMessage->addAction(recoverAction);

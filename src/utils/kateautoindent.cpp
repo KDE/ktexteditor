@@ -122,7 +122,7 @@ uint KateAutoIndent::modeNumber(const QString &name)
 }
 
 KateAutoIndent::KateAutoIndent(KTextEditor::DocumentPrivate *_doc)
-    : QObject(_doc), doc(_doc), m_script(0)
+    : QObject(_doc), doc(_doc), m_script(nullptr)
 {
     // don't call updateConfig() here, document might is not ready for that....
 
@@ -263,7 +263,7 @@ void KateAutoIndent::keepIndent(int line)
 void KateAutoIndent::reloadScript()
 {
     // small trick to force reload
-    m_script = 0; // prevent dangling pointer
+    m_script = nullptr; // prevent dangling pointer
     QString currentMode = m_mode;
     m_mode = QString();
     setMode(currentMode);
@@ -314,7 +314,7 @@ void KateAutoIndent::setMode(const QString &name)
     }
 
     // cleanup
-    m_script = 0;
+    m_script = nullptr;
 
     // first, catch easy stuff... normal mode and none, easy...
     if (name.isEmpty() || name == MODE_NONE()) {

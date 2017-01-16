@@ -31,7 +31,7 @@ namespace Kate
 TextFolding::FoldingRange::FoldingRange(TextBuffer &buffer, const KTextEditor::Range &range, FoldingRangeFlags _flags)
     : start(new TextCursor(buffer, range.start(), KTextEditor::MovingCursor::MoveOnInsert))
     , end(new TextCursor(buffer, range.end(), KTextEditor::MovingCursor::MoveOnInsert))
-    , parent(0)
+    , parent(nullptr)
     , flags(_flags)
     , id(-1)
 {
@@ -123,7 +123,7 @@ qint64 TextFolding::newFoldingRange(const KTextEditor::Range &range, FoldingRang
      */
     if (!newRange->start->isValid()
             || !newRange->end->isValid()
-            || !insertNewFoldingRange(0 /* no parent here */, m_foldingRanges, newRange)) {
+            || !insertNewFoldingRange(nullptr /* no parent here */, m_foldingRanges, newRange)) {
         /**
          * cleanup and be done
          */

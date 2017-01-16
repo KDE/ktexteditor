@@ -414,7 +414,7 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &stylename,
         KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent),
-      currentStyle(0L),
+      currentStyle(nullptr),
       defaultStyle(defaultAttribute),
       actualStyle(actualAttribute)
 {
@@ -425,7 +425,7 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &stylename,
         KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent),
-      currentStyle(0L),
+      currentStyle(nullptr),
       defaultStyle(defaultAttribute),
       actualStyle(actualAttribute)
 {

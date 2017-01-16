@@ -37,7 +37,7 @@ static const int s_defaultAutoHideTime = 6 * 1000;
 
 KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
     : QWidget(parent)
-    , m_animation(0)
+    , m_animation(nullptr)
     , m_autoHideTimer(new QTimer(this))
     , m_autoHideTime(-1)
 {
@@ -73,7 +73,7 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
 void KateMessageWidget::showNextMessage()
 {
     // at this point, we should not have a currently shown message
-    Q_ASSERT(m_currentMessage == 0);
+    Q_ASSERT(m_currentMessage == nullptr);
 
     // if not message to show, just stop
     if (m_messageQueue.size() == 0) {
@@ -160,7 +160,7 @@ void KateMessageWidget::setWordWrap(KTextEditor::Message *message)
     if (parentWidget()->layout()) {
         // get left/right margin of the layout, since we need to subtract these
         int leftMargin = 0, rightMargin = 0;
-        parentWidget()->layout()->getContentsMargins(&leftMargin, 0, &rightMargin, 0);
+        parentWidget()->layout()->getContentsMargins(&leftMargin, nullptr, &rightMargin, nullptr);
         margin = leftMargin + rightMargin;
     }
 
@@ -208,7 +208,7 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message,
 
             // autoHide timer may be running for currently shown message, therefore
             // simply disconnect autoHide timer to all timeout() receivers
-            disconnect(m_autoHideTimer, SIGNAL(timeout()), 0, 0);
+            disconnect(m_autoHideTimer, SIGNAL(timeout()), nullptr, nullptr);
             m_autoHideTimer->stop();
 
             // if there is a current message, the message queue must contain 2 messages
@@ -221,7 +221,7 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message,
             disconnect(m_currentMessage, SIGNAL(iconChanged(QIcon)),
                        m_messageWidget, SLOT(setIcon(QIcon)));
 
-            m_currentMessage = 0;
+            m_currentMessage = nullptr;
             m_animation->hide();
         } else {
             showNextMessage();
@@ -256,7 +256,7 @@ void KateMessageWidget::messageDestroyed(KTextEditor::Message *message)
 
     // if deleted message is the current message, launch hide animation
     if (message == m_currentMessage) {
-        m_currentMessage = 0;
+        m_currentMessage = nullptr;
         m_animation->hide();
     }
 }

@@ -110,7 +110,7 @@ bool KateUndo::mergeWith(const KateUndo * /*undo*/)
 bool KateEditInsertTextUndo::mergeWith(const KateUndo *undo)
 {
     const KateEditInsertTextUndo *u = dynamic_cast<const KateEditInsertTextUndo *>(undo);
-    if (u != 0
+    if (u != nullptr
             && m_line == u->m_line
             && (m_col + len()) == u->m_col) {
         m_text += u->m_text;
@@ -124,7 +124,7 @@ bool KateEditRemoveTextUndo::mergeWith(const KateUndo *undo)
 {
     const KateEditRemoveTextUndo *u = dynamic_cast<const KateEditRemoveTextUndo *>(undo);
 
-    if (u != 0
+    if (u != nullptr
             && m_line == u->m_line
             && m_col == (u->m_col + u->len())) {
         m_text.prepend(u->m_text);
@@ -260,7 +260,7 @@ void KateUndoGroup::undo(KTextEditor::View *view)
         m_items[i]->undo();
     }
 
-    if (view != 0) {
+    if (view != nullptr) {
         if (m_undoSelection.isValid()) {
             view->setSelection(m_undoSelection);
         } else {
@@ -287,7 +287,7 @@ void KateUndoGroup::redo(KTextEditor::View *view)
         m_items[i]->redo();
     }
 
-    if (view != 0) {
+    if (view != nullptr) {
         if (m_redoSelection.isValid()) {
             view->setSelection(m_redoSelection);
         } else {
@@ -327,10 +327,10 @@ bool KateUndoGroup::merge(KateUndoGroup *newGroup, bool complex)
 
     if (newGroup->isOnlyType(singleType()) || complex) {
         // Take all of its items first -> last
-        KateUndo *u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst();
+        KateUndo *u = newGroup->m_items.isEmpty() ? nullptr : newGroup->m_items.takeFirst();
         while (u) {
             addItem(u);
-            u = newGroup->m_items.isEmpty() ? 0 : newGroup->m_items.takeFirst();
+            u = newGroup->m_items.isEmpty() ? nullptr : newGroup->m_items.takeFirst();
         }
 
         if (newGroup->m_safePoint) {

@@ -46,7 +46,7 @@ class KateColorTreeWidget : public QTreeWidget
     friend class KateColorTreeDelegate;
 
 public:
-    explicit KateColorTreeWidget(QWidget *parent = 0);
+    explicit KateColorTreeWidget(QWidget *parent = nullptr);
 
 public:
     void addColorItem(const KateColorItem &colorItem);

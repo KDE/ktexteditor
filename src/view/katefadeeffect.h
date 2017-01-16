@@ -46,7 +46,7 @@ public:
      * Constructor.
      * By default, the widget is fully opaque (opacity = 1.0).
      */
-    KateFadeEffect(QWidget *widget = 0);
+    KateFadeEffect(QWidget *widget = nullptr);
 
     /**
      * Check whether the hide animation started by calling fadeOut()

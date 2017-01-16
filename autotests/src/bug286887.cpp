@@ -53,7 +53,7 @@ void BugTest::ctrlShiftLeft()
     KTextEditor::DocumentPrivate doc(false, false);
 
     // view must be visible...
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
 

@@ -222,7 +222,7 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
         // We have to be clever about which widget we dispatch to, as we can trigger
         // shortcuts if we're not careful (even if Vim mode is configured to steal shortcuts).
         QKeyEvent k(QEvent::KeyPress, key, mods, text);
-        QWidget *destWidget = NULL;
+        QWidget *destWidget = nullptr;
         if (QApplication::activePopupWidget()) {
             // According to the docs, the activePopupWidget, if present, takes all events.
             destWidget = QApplication::activePopupWidget();
@@ -323,7 +323,7 @@ bool InputModeManager::isAnyVisualMode() const
     case ViMode::ReplaceMode:
         return m_viReplaceMode;
     }
-    return NULL;
+    return nullptr;
 }
 
 void InputModeManager::viEnterNormalMode()

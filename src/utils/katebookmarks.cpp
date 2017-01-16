@@ -44,13 +44,13 @@ class Document;
 KateBookmarks::KateBookmarks(KTextEditor::ViewPrivate *view, Sorting sort)
     : QObject(view)
     , m_view(view)
-    , m_bookmarkClear(0)
+    , m_bookmarkClear(nullptr)
     , m_sorting(sort)
 {
     setObjectName(QStringLiteral("kate bookmarks"));
     connect(view->doc(), SIGNAL(marksChanged(KTextEditor::Document*)), this, SLOT(marksChanged()));
     _tries = 0;
-    m_bookmarksMenu = 0L;
+    m_bookmarksMenu = nullptr;
 }
 
 KateBookmarks::~KateBookmarks()
@@ -159,11 +159,11 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
         bText.replace(re, QStringLiteral("&&")); // kill undesired accellerators!
         bText.replace(QLatin1Char('\t'), QLatin1Char(' ')); // kill tabs, as they are interpreted as shortcuts
 
-        QAction *before = 0;
+        QAction *before = nullptr;
         if (m_sorting == Position) {
             // 3 actions already present
             if (menu.actions().size() <= i + 3) {
-                before = 0;
+                before = nullptr;
             } else {
                 before = menu.actions().at(i + 3);
             }

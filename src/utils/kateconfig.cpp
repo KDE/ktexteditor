@@ -76,10 +76,10 @@ void KateConfig::configEnd()
 //END
 
 //BEGIN KateDocumentConfig
-KateGlobalConfig *KateGlobalConfig::s_global = 0;
-KateDocumentConfig *KateDocumentConfig::s_global = 0;
-KateViewConfig *KateViewConfig::s_global = 0;
-KateRendererConfig *KateRendererConfig::s_global = 0;
+KateGlobalConfig *KateGlobalConfig::s_global = nullptr;
+KateDocumentConfig *KateDocumentConfig::s_global = nullptr;
+KateViewConfig *KateViewConfig::s_global = nullptr;
+KateRendererConfig *KateRendererConfig::s_global = nullptr;
 
 KateGlobalConfig::KateGlobalConfig()
 {
@@ -201,7 +201,7 @@ KateDocumentConfig::KateDocumentConfig()
       m_swapSyncIntervalSet(false),
       m_onTheFlySpellCheckSet(false),
       m_lineLengthLimitSet(false),
-      m_doc(0)
+      m_doc(nullptr)
 {
     s_global = this;
 
@@ -245,7 +245,7 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_swapSyncIntervalSet(false),
       m_onTheFlySpellCheckSet(false),
       m_lineLengthLimitSet(false),
-      m_doc(0)
+      m_doc(nullptr)
 {
     // init with defaults from config or really hardcoded ones
     readConfig(cg);
@@ -1238,7 +1238,7 @@ KateViewConfig::KateViewConfig()
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
     m_autoBracketsSet(false),
-    m_view(0)
+    m_view(nullptr)
 {
     s_global = this;
 
@@ -2243,7 +2243,7 @@ KateRendererConfig::KateRendererConfig()
       m_searchHighlightColorSet(false),
       m_replaceHighlightColorSet(false),
       m_lineMarkerColorSet(m_lineMarkerColor.size()),
-      m_renderer(0)
+      m_renderer(nullptr)
 {
     // init bitarray
     m_lineMarkerColorSet.fill(true);

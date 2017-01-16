@@ -355,7 +355,7 @@ void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu, int data)
 }
 
 void KateStatusBar::updateGroup(QActionGroup *group, int w) {
-    QAction *m1=0;
+    QAction *m1=nullptr;
     bool found=false;
     //linear search should be fast enough here, no additional hash
     Q_FOREACH(QAction *action, group->actions()) {

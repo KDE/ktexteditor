@@ -29,8 +29,8 @@ namespace Kate
 
 TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
-    , m_range(0)
-    , m_block(0)
+    , m_range(nullptr)
+    , m_block(nullptr)
     , m_line(-1)
     , m_column(-1)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
@@ -42,7 +42,7 @@ TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, 
 TextCursor::TextCursor(TextBuffer &buffer, TextRange *range, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_range(range)
-    , m_block(0)
+    , m_block(nullptr)
     , m_line(-1)
     , m_column(-1)
     , m_moveOnInsert(insertBehavior == MoveOnInsert)
@@ -96,7 +96,7 @@ void TextCursor::setPosition(const KTextEditor::Cursor &position, bool init)
         if (!m_range) {
             m_buffer.m_invalidCursors.insert(this);
         }
-        m_block = 0;
+        m_block = nullptr;
         m_line = m_column = -1;
         return;
     }

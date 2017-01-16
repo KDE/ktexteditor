@@ -46,7 +46,7 @@ void TemplateHandlerTest::testUndo()
                             "    ${index}\n"
                             "}";
 
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     // fixed indentation options
@@ -104,7 +104,7 @@ void TemplateHandlerTest::testUndo()
 
 void TemplateHandlerTest::testEscapes()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, QStringLiteral("\\${field} ${bar} \\${foo=3} \\\\${baz=7}"));
     QCOMPARE(doc->text(), QStringLiteral("${field} bar ${foo=3} \\${baz=7}"));
@@ -114,7 +114,7 @@ void TemplateHandlerTest::testSimpleMirror()
 {
     QFETCH(QString, text);
 
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, text);
 
@@ -139,7 +139,7 @@ void TemplateHandlerTest::testSimpleMirror_data()
 
 void TemplateHandlerTest::testAdjacentRanges()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     using S = QString;
@@ -162,7 +162,7 @@ void TemplateHandlerTest::testTab()
     QFETCH(QString, tpl);
     QFETCH(int, cursor);
 
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, tpl);
@@ -203,7 +203,7 @@ void TemplateHandlerTest::testTab_data()
 
 void TemplateHandlerTest::testExitAtCursor()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${cursor} ${foo}"));
@@ -221,7 +221,7 @@ void TemplateHandlerTest::testExitAtCursor()
     QCOMPARE(doc->text(), QStringLiteral("foo bar a foo"));
 
     // required to process the deleteLater() used to exit the template handler
-    QCoreApplication::sendPostedEvents(0, QEvent::DeferredDelete);
+    QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
     QApplication::processEvents();
 
     // go to the first field and verify it's not mirrored any more (i.e. the handler exited)
@@ -234,7 +234,7 @@ void TemplateHandlerTest::testExitAtCursor()
 
 void TemplateHandlerTest::testDefaultMirror()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     using S = QString;
@@ -249,7 +249,7 @@ void TemplateHandlerTest::testDefaultMirror()
 
 void TemplateHandlerTest::testFunctionMirror()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     using S = QString;
@@ -264,7 +264,7 @@ void TemplateHandlerTest::testFunctionMirror()
 
 void TemplateHandlerTest::testAutoSelection()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, "${foo} ${bar} ${bar} ${cursor} ${baz}");
@@ -297,7 +297,7 @@ void TemplateHandlerTest::testNotEditableFields()
     QFETCH(QString, input);
     QFETCH(int, change_offset);
 
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
@@ -317,7 +317,7 @@ void TemplateHandlerTest::testNotEditableFields_data()
 
 void TemplateHandlerTest::testCanRetrieveSelection()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
     view->insertText("hi world");
     view->setSelection(KTextEditor::Range(0, 1, 0, 4));
@@ -353,7 +353,7 @@ void TemplateHandlerTest::testDefaults_data()
 
 void TemplateHandlerTest::testDefaults()
 {
-    auto doc = new KTextEditor::DocumentPrivate(false, false, 0, 0);
+    auto doc = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
 
     QFETCH(QString, input);

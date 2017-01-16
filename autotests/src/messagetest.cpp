@@ -45,7 +45,7 @@ void MessageTest::testPostMessage()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -63,7 +63,7 @@ void MessageTest::testPostMessage()
     QVERIFY(view->messageWidget());
     QVERIFY(view->messageWidget()->isVisible());
 
-    QVERIFY(message != 0);
+    QVERIFY(message != nullptr);
     delete message;
     QTest::qWait(600); // fadeout animation takes 500 ms
     QVERIFY(!view->messageWidget()->isVisible());
@@ -73,7 +73,7 @@ void MessageTest::testAutoHide()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -94,7 +94,7 @@ void MessageTest::testAutoHide()
 
     // should be deleted after 1.5 seconds
     QTest::qWait(1000);
-    QVERIFY(message.data() == 0);
+    QVERIFY(message.data() == nullptr);
 
     // message widget should be hidden after 2 seconds
     QTest::qWait(500);
@@ -105,7 +105,7 @@ void MessageTest::testAutoHideAfterUserInteraction()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -131,13 +131,13 @@ void MessageTest::testAutoHideAfterUserInteraction()
 
     // should still be there after deleted after another 1.9 seconds
     QTest::qWait(1900);
-    QVERIFY(message.data() != 0);
+    QVERIFY(message.data() != nullptr);
     QVERIFY(view->messageWidget()->isVisible());
 
     // another 200ms later: 3.1 seconds are gone, message should be deleted
     // and fade animation should be active
     QTest::qWait(200);
-    QVERIFY(message.data() == 0);
+    QVERIFY(message.data() == nullptr);
     QVERIFY(view->messageWidget()->isVisible());
 
     // after a total of 3.6 seconds, widget should be hidden
@@ -149,7 +149,7 @@ void MessageTest::testMessageQueue()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -176,14 +176,14 @@ void MessageTest::testMessageQueue()
     // after 0.5s, first message should be visible, (timer of m1 triggered)
     QTest::qWait(500);
     QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m1.data() != 0);
-    QVERIFY(m2.data() != 0);
+    QVERIFY(m1.data() != nullptr);
+    QVERIFY(m2.data() != nullptr);
 
     // after 1.2s, first message is deleted, and hide animation is active
     QTest::qWait(700);
     QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m1.data() == 0);
-    QVERIFY(m2.data() != 0);
+    QVERIFY(m1.data() == nullptr);
+    QVERIFY(m2.data() != nullptr);
 
     // timer of m2 triggered after 1.5s, i.e. after hide animation if finished
     QTest::qWait(500);
@@ -191,12 +191,12 @@ void MessageTest::testMessageQueue()
     // after 2.1s, second message should be visible
     QTest::qWait(500);
     QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m2.data() != 0);
+    QVERIFY(m2.data() != nullptr);
 
     // after 2.6s, second message is deleted, and hide animation is active
     QTest::qWait(500);
     QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m2.data() == 0);
+    QVERIFY(m2.data() == nullptr);
 
     // after a total of 3.1s, animation is finished and widget is hidden
     QTest::qWait(500);
@@ -207,7 +207,7 @@ void MessageTest::testPriority()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -239,11 +239,11 @@ void MessageTest::testPriority()
     QTest::qWait(1000);
     QVERIFY(view->messageWidget()->isVisible());
     QCOMPARE(view->messageWidget()->text(), QString("m1"));
-    QVERIFY(m1.data() != 0);
+    QVERIFY(m1.data() != nullptr);
 
     // post m2, m1 should be hidden, and m2 visible
     QVERIFY(doc.postMessage(m2));
-    QVERIFY(m2.data() != 0);
+    QVERIFY(m2.data() != nullptr);
 
     // alter text of m1 when m2 is visible, shouldn't influence m2
     QTest::qWait(600);
@@ -252,13 +252,13 @@ void MessageTest::testPriority()
     // after 0.7 seconds, m2 is visible
     QTest::qWait(100);
     QCOMPARE(view->messageWidget()->text(), QString("m2"));
-    QVERIFY(m2.data() != 0);
+    QVERIFY(m2.data() != nullptr);
 
     // after 1.6 seconds, m2 is hidden again and m1 is visible again
     QTest::qWait(900);
     QVERIFY(view->messageWidget()->isVisible());
-    QVERIFY(m1.data() != 0);
-    QVERIFY(m2.data() == 0);
+    QVERIFY(m1.data() != nullptr);
+    QVERIFY(m2.data() == nullptr);
 
     // finally check m1 agagin
     QTest::qWait(1000);
@@ -285,8 +285,8 @@ void MessageTest::testCreateView()
     QVERIFY(doc.postMessage(m1));
 
     // now create views
-    KTextEditor::ViewPrivate *v1 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
-    KTextEditor::ViewPrivate *v2 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *v1 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    KTextEditor::ViewPrivate *v2 = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     v1->show();
     v2->show();
     v1->resize(400, 300);
@@ -300,7 +300,7 @@ void MessageTest::testCreateView()
     QVERIFY(v2->messageWidget()->isVisible());
     QCOMPARE(v1->messageWidget()->text(), QString("message"));
     QCOMPARE(v2->messageWidget()->text(), QString("message"));
-    QVERIFY(m1.data() != 0);
+    QVERIFY(m1.data() != nullptr);
 
     // delete message, then check after fadeout time 0f 0.5s whether message is gone
     delete m1;
@@ -313,7 +313,7 @@ void MessageTest::testHideView()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -343,7 +343,7 @@ void MessageTest::testHideView()
 
     // wait 1s, message should be null (after total of 2100 ms)
     QTest::qWait(1000);
-    QVERIFY(message.data() == 0);
+    QVERIFY(message.data() == nullptr);
 
     // show view again, message contents should be fading for the lasting 400 ms
     view->show();
@@ -352,7 +352,7 @@ void MessageTest::testHideView()
 
     // wait another 0.5s, then message widget should be hidden
     QTest::qWait(500);
-    QVERIFY(message.data() == 0);
+    QVERIFY(message.data() == nullptr);
     QVERIFY(!view->messageWidget()->isVisible());
 }
 
@@ -360,7 +360,7 @@ void MessageTest::testHideViewAfterUserInteraction()
 {
     KTextEditor::DocumentPrivate doc;
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
     QVERIFY(QTest::qWaitForWindowExposed(view));
@@ -390,7 +390,7 @@ void MessageTest::testHideViewAfterUserInteraction()
 
     // wait 1s, check that message is still valid
     QTest::qWait(1000);
-    QVERIFY(message.data() != 0);
+    QVERIFY(message.data() != nullptr);
 
     //
     // show view again, and trigger user interaction through resize:
@@ -403,13 +403,13 @@ void MessageTest::testHideViewAfterUserInteraction()
 
     // wait 1.5s and check that message is still displayed
     QTest::qWait(1500);
-    QVERIFY(message.data() != 0);
+    QVERIFY(message.data() != nullptr);
     QVERIFY(view->messageWidget()->isVisible());
     QCOMPARE(view->messageWidget()->text(), QString("Message text"));
 
     // wait another 0.8s, then the message is deleted
     QTest::qWait(800);
-    QVERIFY(message.data() == 0);
+    QVERIFY(message.data() == nullptr);
     QVERIFY(view->messageWidget()->isVisible());
 
     // another 0.5s, and the message widget should be hidden

@@ -50,7 +50,7 @@ class KTEXTEDITOR_EXPORT KateCompletionModel : public ExpandingWidgetModel
     Q_OBJECT
 
 public:
-    explicit KateCompletionModel(KateCompletionWidget *parent = 0L);
+    explicit KateCompletionModel(KateCompletionWidget *parent = nullptr);
     ~KateCompletionModel();
 
     QList<KTextEditor::CodeCompletionModel *> completionModels() const;

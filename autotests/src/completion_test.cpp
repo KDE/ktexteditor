@@ -93,7 +93,7 @@ void CompletionTest::init()
     QVERIFY(m_doc);
     m_doc->setText(QStringLiteral("aa bb cc\ndd"));
 
-    KTextEditor::View *v = m_doc->createView(0);
+    KTextEditor::View *v = m_doc->createView(nullptr);
     QApplication::setActiveWindow(v);
     m_view = static_cast<KTextEditor::ViewPrivate *>(v);
     Q_ASSERT(m_view);

@@ -32,7 +32,7 @@
 
 void KateModeMenu::init()
 {
-    m_doc = 0;
+    m_doc = nullptr;
 
     connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
 

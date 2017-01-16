@@ -61,7 +61,7 @@ void BugTest::tryCrash()
     doc.buffer().ensureHighlighted(doc.lines());
 
     // view must be visible...
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->show();
     view->resize(900, 800);
     view->config()->setDynWordWrap(true);

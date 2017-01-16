@@ -76,9 +76,9 @@ KateScript::KateScript(const QString &urlOrScript, enum InputType inputType)
     : m_loaded(false)
     , m_loadSuccessful(false)
     , m_url(inputType == InputURL ? urlOrScript : QString())
-    , m_engine(0)
-    , m_document(0)
-    , m_view(0)
+    , m_engine(nullptr)
+    , m_document(nullptr)
+    , m_view(nullptr)
     , m_inputType(inputType)
     , m_script(inputType == InputSCRIPT ? urlOrScript : QString())
 {
@@ -257,7 +257,7 @@ bool KateScript::hasException(const QScriptValue &object, const QString &file)
         displayBacktrace(object, i18n("Error loading script %1\n", file));
         m_errorMessage = i18n("Error loading script %1", file);
         delete m_engine;
-        m_engine = 0;
+        m_engine = nullptr;
         m_loadSuccessful = false;
         return true;
     }

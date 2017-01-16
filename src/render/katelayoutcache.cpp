@@ -281,7 +281,7 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
             if (realLine < m_renderer->doc()->lines()) {
                 l = line(realLine, virtualLine);
             } else {
-                l = 0;
+                l = nullptr;
             }
         }
     }

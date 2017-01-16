@@ -147,8 +147,8 @@ protected Q_SLOTS:
     void hlChanged(int z);
 
 public Q_SLOTS:
-    void exportHl(QString schema = QString(), int hl = -1, KConfig *cfg = 0);
-    void importHl(const QString &fromSchemaName = QString(), QString schema = QString(), int hl = -1, KConfig *cfg = 0);
+    void exportHl(QString schema = QString(), int hl = -1, KConfig *cfg = nullptr);
+    void importHl(const QString &fromSchemaName = QString(), QString schema = QString(), int hl = -1, KConfig *cfg = nullptr);
 
 protected:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;

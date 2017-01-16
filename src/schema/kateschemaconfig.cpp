@@ -590,7 +590,7 @@ void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
 {
     if (!event->spontaneous() && !m_currentSchema.isEmpty()) {
         KateAttributeList *l = attributeList(m_currentSchema);
-        Q_ASSERT(l != 0);
+        Q_ASSERT(l != nullptr);
         updateColorPalette(l->at(0)->foreground().color());
     }
 
@@ -783,7 +783,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
 {
     QString schemaNameForLoading(fromSchemaName);
     QString hlName;
-    bool doManage = (cfg == 0);
+    bool doManage = (cfg == nullptr);
     if (schema.isEmpty()) {
         schema = m_schema;
     }
@@ -835,7 +835,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
     if (cfg && doManage) {
         apply();
         delete cfg;
-        cfg = 0;
+        cfg = nullptr;
         if ((hl != -1) && (!schemaNameForLoading.isEmpty())) {
             hlChanged(m_hl);
             KMessageBox::information(
@@ -849,7 +849,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
 
 void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg)
 {
-    bool doManage = (cfg == 0);
+    bool doManage = (cfg == nullptr);
     if (schema.isEmpty()) {
         schema = m_schema;
     }
@@ -887,7 +887,7 @@ void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
 {
     if (!event->spontaneous()) {
         KateAttributeList *l = m_defaults->attributeList(m_schema);
-        Q_ASSERT(l != 0);
+        Q_ASSERT(l != nullptr);
         updateColorPalette(l->at(0)->foreground().color());
     }
 

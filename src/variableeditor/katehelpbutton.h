@@ -37,7 +37,7 @@ public:
     void setSection(const QString &section);
 
 public:
-    KateHelpButton(QWidget *parent = 0);
+    KateHelpButton(QWidget *parent = nullptr);
     virtual ~KateHelpButton();
 
 public Q_SLOTS:

@@ -53,7 +53,7 @@ class VariableEditor : public QWidget
     Q_OBJECT
 
 public:
-    VariableEditor(VariableItem *item, QWidget *parent = 0);
+    VariableEditor(VariableItem *item, QWidget *parent = nullptr);
     virtual ~VariableEditor();
 
     VariableItem *item() const;

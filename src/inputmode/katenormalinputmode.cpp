@@ -26,8 +26,8 @@
 
 KateNormalInputMode::KateNormalInputMode(KateViewInternal *viewInternal)
     : KateAbstractInputMode(viewInternal)
-    , m_searchBar(0)
-    , m_cmdLine(0)
+    , m_searchBar(nullptr)
+    , m_cmdLine(nullptr)
 {
 }
 

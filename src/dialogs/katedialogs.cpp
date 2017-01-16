@@ -1133,7 +1133,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
             doc.setContent(listData);
             QDomElement DocElem = doc.documentElement();
             QDomNode n = DocElem.firstChild();
-            KateHighlighting *hl = 0;
+            KateHighlighting *hl = nullptr;
 
             if (n.isNull()) {
                 qCDebug(LOG_KTE) << QStringLiteral("There is no usable childnode");
@@ -1155,7 +1155,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
                         installedVersion = QLatin1String("    ") + hl->version();
                         break;
                     } else {
-                        hl = 0;
+                        hl = nullptr;
                     }
                 }
 
@@ -1214,7 +1214,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
     , m_view(view)
 {
-    Q_ASSERT(m_view != 0);    // this bar widget is pointless w/o a view
+    Q_ASSERT(m_view != nullptr);    // this bar widget is pointless w/o a view
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
@@ -1278,7 +1278,7 @@ KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *pa
     : KateViewBarWidget(true, parent)
     , m_view(view)
 {
-    Q_ASSERT(m_view != 0); // this bar widget is pointless w/o a view
+    Q_ASSERT(m_view != nullptr); // this bar widget is pointless w/o a view
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
@@ -1373,11 +1373,11 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
 KateModOnHdPrompt::~KateModOnHdPrompt()
 {
     delete m_proc;
-    m_proc = 0;
+    m_proc = nullptr;
     if (m_diffFile) {
         m_diffFile->setAutoRemove(true);
         delete m_diffFile;
-        m_diffFile = 0;
+        m_diffFile = nullptr;
     }
     delete m_message;
 }
@@ -1425,7 +1425,7 @@ void KateModOnHdPrompt::slotPDone()
 
     const QProcess::ExitStatus es = m_proc->exitStatus();
     delete m_proc;
-    m_proc = 0;
+    m_proc = nullptr;
 
     if (es != QProcess::NormalExit) {
         KMessageBox::sorry(nullptr,
@@ -1433,7 +1433,7 @@ void KateModOnHdPrompt::slotPDone()
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
         delete m_diffFile;
-        m_diffFile = 0;
+        m_diffFile = nullptr;
         return;
     }
 
@@ -1442,14 +1442,14 @@ void KateModOnHdPrompt::slotPDone()
                                  i18n("The files are identical."),
                                  i18n("Diff Output"));
         delete m_diffFile;
-        m_diffFile = 0;
+        m_diffFile = nullptr;
         return;
     }
 
     m_diffFile->setAutoRemove(false);
     QUrl url = QUrl::fromLocalFile(m_diffFile->fileName());
     delete m_diffFile;
-    m_diffFile = 0;
+    m_diffFile = nullptr;
 
     // KRun::runUrl should delete the file, once the client exits
     KRun::runUrl(url, QStringLiteral("text/x-patch"), nullptr, true);

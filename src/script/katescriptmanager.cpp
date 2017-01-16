@@ -42,7 +42,7 @@
 #include "katecmd.h"
 #include "katepartdebug.h"
 
-KateScriptManager *KateScriptManager::m_instance = 0;
+KateScriptManager *KateScriptManager::m_instance = nullptr;
 
 KateScriptManager::KateScriptManager()
     : KTextEditor::Command(QStringList() << QStringLiteral("reload-scripts"))
@@ -55,12 +55,12 @@ KateScriptManager::~KateScriptManager()
 {
     qDeleteAll(m_indentationScripts);
     qDeleteAll(m_commandLineScripts);
-    m_instance = 0;
+    m_instance = nullptr;
 }
 
 KateIndentScript *KateScriptManager::indenter(const QString &language)
 {
-    KateIndentScript *highestPriorityIndenter = 0;
+    KateIndentScript *highestPriorityIndenter = nullptr;
     foreach (KateIndentScript *indenter, m_languageToIndenters.value(language.toLower())) {
         // don't overwrite if there is already a result with a higher priority
         if (highestPriorityIndenter && indenter->indentHeader().priority() < highestPriorityIndenter->indentHeader().priority()) {

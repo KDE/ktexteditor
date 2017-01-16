@@ -37,7 +37,7 @@ public:
     AbstractExporter(KTextEditor::View *view,
                      QTextStream &output, const bool encapsulate = false)
         : m_view(view), m_output(output), m_encapsulate(encapsulate),
-          m_defaultAttribute(0)
+          m_defaultAttribute(nullptr)
     {
         QColor defaultBackground;
         if (KTextEditor::ConfigInterface *ciface = qobject_cast< KTextEditor::ConfigInterface * >(m_view)) {

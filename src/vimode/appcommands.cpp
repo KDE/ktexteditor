@@ -33,7 +33,7 @@
 using namespace KateVi;
 
 //BEGIN AppCommands
-AppCommands *AppCommands::m_instance = 0;
+AppCommands *AppCommands::m_instance = nullptr;
 
 AppCommands::AppCommands()
     : KTextEditor::Command(QStringList() << QStringLiteral("q") << QStringLiteral("qa") << QStringLiteral("qall") << QStringLiteral("q!") << QStringLiteral("qa!") << QStringLiteral("qall!")
@@ -56,7 +56,7 @@ AppCommands::AppCommands()
 
 AppCommands::~AppCommands()
 {
-    m_instance = 0;
+    m_instance = nullptr;
 }
 
 bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
@@ -313,7 +313,7 @@ void AppCommands::quit()
 //END AppCommands
 
 //BEGIN KateViBufferCommand
-BufferCommands *BufferCommands::m_instance = 0;
+BufferCommands *BufferCommands::m_instance = nullptr;
 
 BufferCommands::BufferCommands()
     : KTextEditor::Command(QStringList() << QStringLiteral("ls")
@@ -327,7 +327,7 @@ BufferCommands::BufferCommands()
 
 BufferCommands::~BufferCommands()
 {
-    m_instance = 0;
+    m_instance = nullptr;
 }
 
 bool BufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
@@ -378,7 +378,7 @@ void BufferCommands::switchDocument(KTextEditor::View *view, const QString &addr
         activateDocument(view, docs.at(idx - 1));
     } else {
         // string argument: switch to the given file
-        KTextEditor::Document *doc = 0;
+        KTextEditor::Document *doc = nullptr;
 
         Q_FOREACH(KTextEditor::Document *it, docs) {
             if (it->documentName() == address) {

@@ -56,7 +56,7 @@ void BugTest::tryCrash()
     // set up document and view
     KMainWindow *toplevel = new KMainWindow();
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate(true, false, toplevel);
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);
     const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug317111.txt"));

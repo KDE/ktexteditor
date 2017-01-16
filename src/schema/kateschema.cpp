@@ -78,8 +78,8 @@ QList<KateSchema> KateSchemaManager::list()
 //BEGIN SCHEMA ACTION -- the 'View->Schema' menu action
 void KateViewSchemaAction::init()
 {
-    m_group = 0;
-    m_view = 0;
+    m_group = nullptr;
+    m_view = nullptr;
     last = 0;
 
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));

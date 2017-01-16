@@ -133,7 +133,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     m_entryList->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
 
-    m_argumentHintTree->setParent(0, Qt::ToolTip);
+    m_argumentHintTree->setParent(nullptr, Qt::ToolTip);
     m_argumentHintTree->setModel(m_argumentHintModel);
 
     // trigger completion on double click on completion list
@@ -925,7 +925,7 @@ KTextEditor::MovingRange *KateCompletionWidget::completionRange(KTextEditor::Cod
 {
     if (!model) {
         if (m_completionRanges.isEmpty()) {
-            return 0;
+            return nullptr;
         }
 
         KTextEditor::MovingRange *ret = m_completionRanges.begin()->range;
@@ -939,7 +939,7 @@ KTextEditor::MovingRange *KateCompletionWidget::completionRange(KTextEditor::Cod
     if (m_completionRanges.contains(model)) {
         return m_completionRanges[model].range;
     } else {
-        return 0;
+        return nullptr;
     }
 }
 
@@ -1136,7 +1136,7 @@ QWidget *KateCompletionWidget::currentEmbeddedWidget()
 {
     QModelIndex index = selectedIndex();
     if (!index.isValid()) {
-        return 0;
+        return nullptr;
     }
     if (qobject_cast<const ExpandingWidgetModel *>(index.model())) {
         const ExpandingWidgetModel *model = static_cast<const ExpandingWidgetModel *>(index.model());
@@ -1144,7 +1144,7 @@ QWidget *KateCompletionWidget::currentEmbeddedWidget()
             return model->expandingWidget(index);
         }
     }
-    return 0;
+    return nullptr;
 }
 
 void KateCompletionWidget::cursorDown()

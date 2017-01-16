@@ -52,7 +52,7 @@ KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
       m_brokenEncoding(false),
       m_tooLongLinesWrapped(false),
       m_longestLineLoaded(0),
-      m_highlight(0),
+      m_highlight(nullptr),
       m_tabWidth(8),
       m_lineHighlighted(0),
       m_maxDynamicContexts(KATE_MAX_DYNAMIC_CONTEXTS)

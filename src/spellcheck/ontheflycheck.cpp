@@ -51,9 +51,9 @@ inline const QPair<KTextEditor::MovingRange *, QString>& invalidSpellCheckQueueI
 KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     : QObject(document),
       m_document(document),
-      m_backgroundChecker(NULL),
+      m_backgroundChecker(nullptr),
       m_currentlyCheckedItem(invalidSpellCheckQueueItem()),
-      m_refreshView(NULL)
+      m_refreshView(nullptr)
 {
     ON_THE_FLY_DEBUG << "created";
 
@@ -515,7 +515,7 @@ void KateOnTheFlyChecker::deleteMovingRange(KTextEditor::MovingRange *range)
     ON_THE_FLY_DEBUG << range;
     // remove it from all our structures
     removeRangeFromEverything(range);
-    range->setFeedback(NULL);
+    range->setFeedback(nullptr);
     foreach (KTextEditor::View *view, m_document->views()) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
@@ -846,7 +846,7 @@ void KateOnTheFlyChecker::viewRefreshTimeout()
     if (m_refreshView) {
         updateInstalledMovingRanges(m_refreshView);
     }
-    m_refreshView = NULL;
+    m_refreshView = nullptr;
 }
 
 void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view)
@@ -860,7 +860,7 @@ void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view
 
 void KateOnTheFlyChecker::deleteMovingRangeQuickly(KTextEditor::MovingRange *range)
 {
-    range->setFeedback(NULL);
+    range->setFeedback(nullptr);
     foreach (KTextEditor::View *view, m_document->views()) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }

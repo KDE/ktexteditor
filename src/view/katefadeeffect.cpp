@@ -27,7 +27,7 @@
 KateFadeEffect::KateFadeEffect(QWidget *widget)
     : QObject(widget)
     , m_widget(widget)
-    , m_effect(0) // effect only exists during fading animation
+    , m_effect(nullptr) // effect only exists during fading animation
 {
     m_timeLine = new QTimeLine(500, this);
     m_timeLine->setUpdateInterval(40);
@@ -92,7 +92,7 @@ void KateFadeEffect::opacityChanged(qreal value)
 void KateFadeEffect::animationFinished()
 {
     // fading finished: remove graphics effect, deletes the effect as well
-    m_widget->setGraphicsEffect(0);
+    m_widget->setGraphicsEffect(nullptr);
     Q_ASSERT(!m_effect);
 
     if (m_timeLine->direction() == QTimeLine::Backward) {

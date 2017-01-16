@@ -25,7 +25,7 @@
 
 using namespace KateVi;
 
-KeyParser *KeyParser::m_instance = NULL;
+KeyParser *KeyParser::m_instance = nullptr;
 
 KeyParser::KeyParser()
 {
@@ -34,7 +34,7 @@ KeyParser::KeyParser()
 
 KeyParser *KeyParser::self()
 {
-    if (m_instance == NULL) {
+    if (m_instance == nullptr) {
         m_instance = new KeyParser();
     }
 

@@ -195,7 +195,7 @@ KateSyntaxContextData *KateSyntaxDocument::getSubItems(KateSyntaxContextData *da
 {
     KateSyntaxContextData *retval = new KateSyntaxContextData;
 
-    if (data != 0) {
+    if (data != nullptr) {
         retval->parent = data->currentGroup;
         retval->currentGroup = data->item;
     }
@@ -257,7 +257,7 @@ KateSyntaxContextData *KateSyntaxDocument::getConfig(const QString &mainGroupNam
         data->item = element;
         return data;
     }
-    return 0;
+    return nullptr;
 }
 
 /**
@@ -272,7 +272,7 @@ KateSyntaxContextData *KateSyntaxDocument::getGroupInfo(const QString &mainGroup
         data->parent = element;
         return data;
     }
-    return 0;
+    return nullptr;
 }
 
 /**

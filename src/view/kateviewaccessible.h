@@ -48,7 +48,7 @@ public:
     {
         if (t == QAccessible::TextInterface)
             return static_cast<QAccessibleTextInterface*>(this);
-        return 0;
+        return nullptr;
     }
 
     virtual ~KateViewAccessible()
@@ -59,7 +59,7 @@ public:
     {
         Q_UNUSED(x);
         Q_UNUSED(y);
-        return 0;
+        return nullptr;
     }
 
     void setText(QAccessible::Text t, const QString &text) Q_DECL_OVERRIDE
@@ -240,7 +240,7 @@ QAccessibleInterface *accessibleInterfaceFactory(const QString &key, QObject *ob
     if (KateViewInternal *view = qobject_cast<KateViewInternal *>(object)) {
         return new KateViewAccessible(view);
     }
-    return 0;
+    return nullptr;
 }
 
 #endif

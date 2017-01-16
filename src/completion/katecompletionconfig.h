@@ -41,7 +41,7 @@ class KateCompletionConfig : public QDialog, public KateConfig
     Q_OBJECT
 
 public:
-    explicit KateCompletionConfig(KateCompletionModel *model, QWidget *parent = 0L);
+    explicit KateCompletionConfig(KateCompletionModel *model, QWidget *parent = nullptr);
     virtual ~KateCompletionConfig();
 
     /**

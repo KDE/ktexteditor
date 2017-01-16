@@ -49,7 +49,7 @@ class KTEXTEDITOR_EXPORT KateScriptDocument : public QObject, protected QScripta
     // Note: we have no Q_PROPERTIES due to consistency: everything is a function.
 
 public:
-    KateScriptDocument(QObject *parent = 0);
+    KateScriptDocument(QObject *parent = nullptr);
     void setDocument(KTextEditor::DocumentPrivate *document);
     KTextEditor::DocumentPrivate *document();
 

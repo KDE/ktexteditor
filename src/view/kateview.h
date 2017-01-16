@@ -120,7 +120,7 @@ public:
     // KTextEditor::ClipboardInterface
     //
 public Q_SLOTS:
-    void paste(const QString *textToPaste = 0);
+    void paste(const QString *textToPaste = nullptr);
     void cut();
     void copy() const;
 
@@ -136,7 +136,7 @@ private Q_SLOTS:
 public:
     void setContextMenu(QMenu *menu) Q_DECL_OVERRIDE;
     QMenu *contextMenu() const Q_DECL_OVERRIDE;
-    QMenu *defaultContextMenu(QMenu *menu = 0L) const Q_DECL_OVERRIDE;
+    QMenu *defaultContextMenu(QMenu *menu = nullptr) const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void aboutToShowContextMenu();

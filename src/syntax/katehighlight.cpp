@@ -261,7 +261,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
         return;
     }
 
-    const bool firstLine = (_prevLine == 0);
+    const bool firstLine = (_prevLine == nullptr);
     const Kate::TextLine dummy = Kate::TextLine(new Kate::TextLineData());
     const Kate::TextLineData *prevLine = firstLine ? dummy.data() : _prevLine;
 
@@ -310,7 +310,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     const int startNonSpace = (firstChar == -1) ? len : firstChar;
 
     // last found item
-    KateHlItem *item = 0;
+    KateHlItem *item = nullptr;
 
     // loop over the line, offset gives current offset
     int offset = 0;
@@ -332,7 +332,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
          * check if the folding begin/ends are balanced!
          * constructed on demand!
          */
-        QHash<short, int> *foldingStartToCount = 0;
+        QHash<short, int> *foldingStartToCount = nullptr;
 
         /**
          * loop over line content!
@@ -509,7 +509,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                 continue;
             }
 
-            item = 0;
+            item = nullptr;
 
             // nothing found: set attribute of one char
             // anders: unless this context does not want that!
@@ -553,7 +553,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
              * kill hash
              */
             delete foldingStartToCount;
-            foldingStartToCount = 0;
+            foldingStartToCount = nullptr;
         }
     }
 
@@ -646,11 +646,11 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
             QRgb col;
 
             tmp = s[1]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); p->setForeground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); p->setForeground(QColor(col));
             }
 
             tmp = s[2]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); p->setSelectedForeground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); p->setSelectedForeground(QColor(col));
             }
 
             tmp = s[3]; if (!tmp.isEmpty()) {
@@ -670,11 +670,11 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
             }
 
             tmp = s[7]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); p->setBackground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); p->setBackground(QColor(col));
             }
 
             tmp = s[8]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(0, 16); p->setSelectedBackground(QColor(col));
+                col = tmp.toUInt(nullptr, 16); p->setSelectedBackground(QColor(col));
             }
 
             tmp = s[9]; if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
@@ -956,7 +956,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
 {
     // No highlighting -> exit
     if (noHl) {
-        return 0;
+        return nullptr;
     }
 
     // get the (tagname) itemd type
@@ -1105,7 +1105,7 @@ KateHlItem *KateHighlighting::createKateHlItem(KateSyntaxContextData *data,
         tmpItem = (new KateHlDetectIdentifier(attr, context, regionId, regionId2));
     } else {
         // oops, unknown type. Perhaps a spelling error in the xml file
-        return 0;
+        return nullptr;
     }
 
     // set lookAhead & dynamic properties
@@ -2230,7 +2230,7 @@ KateHlContext *KateHighlighting::contextNum(int n) const
     }
 
     Q_ASSERT(false);
-    return 0;
+    return nullptr;
 }
 
 QStringList KateHighlighting::getEmbeddedHighlightingModes() const

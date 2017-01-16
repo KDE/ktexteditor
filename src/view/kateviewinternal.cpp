@@ -76,7 +76,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_bmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmLastFlashPos(doc()->newMovingCursor(KTextEditor::Cursor::invalid()))
-    , m_dummy(0)
+    , m_dummy(nullptr)
 
     // stay on cursor will avoid that the view scroll around on press return at beginning
     , m_startPos(doc()->buffer(), KTextEditor::Cursor(0, 0), Kate::TextCursor::StayOnInsert)
@@ -99,7 +99,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_textHintTimer(this)
     , m_textHintDelay(500)
     , m_textHintPos(-1, -1)
-    , m_imPreeditRange(0)
+    , m_imPreeditRange(nullptr)
 {
     QList<KateAbstractInputModeFactory *> factories = KTextEditor::EditorPrivate::self()->inputModeFactories();
     Q_FOREACH(KateAbstractInputModeFactory *factory, factories) {
@@ -3674,7 +3674,7 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
     if (m_imPreeditRange && e->preeditString().isEmpty()) {
         // delete the range and reset the pointer
         delete m_imPreeditRange;
-        m_imPreeditRange = 0L;
+        m_imPreeditRange = nullptr;
         qDeleteAll(m_imPreeditRangeChildren);
         m_imPreeditRangeChildren.clear();
 

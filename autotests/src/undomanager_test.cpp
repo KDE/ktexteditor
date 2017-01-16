@@ -41,7 +41,7 @@ class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
 {
 public:
     TestDocument()
-        : KTextEditor::DocumentPrivate(false, false, 0, 0)
+        : KTextEditor::DocumentPrivate(false, false, nullptr, nullptr)
     {}
 };
 
@@ -147,7 +147,7 @@ void UndoManagerTest::testSafePoint()
 void UndoManagerTest::testCursorPosition()
 {
     TestDocument doc;
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(QLatin1String("aaaa bbbb cccc\n"
                               "dddd  ffff"));
@@ -172,7 +172,7 @@ void UndoManagerTest::testCursorPosition()
 void UndoManagerTest::testSelectionUndo()
 {
     TestDocument doc;
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     doc.setText(QLatin1String("aaaa bbbb cccc\n"
                               "dddd eeee ffff"));
@@ -207,7 +207,7 @@ void UndoManagerTest::testUndoWordWrapBug301367()
     TestDocument doc;
     doc.setWordWrap(true);
     doc.setWordWrapAt(20);
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     QString text = QString::fromLatin1("1234 1234 1234 1234\n"
                                        "1234 1234 1234 1234");

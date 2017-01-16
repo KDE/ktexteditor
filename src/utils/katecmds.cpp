@@ -36,7 +36,7 @@
 #include <QRegExp>
 
 //BEGIN CoreCommands
-KateCommands::CoreCommands *KateCommands::CoreCommands::m_instance = 0;
+KateCommands::CoreCommands *KateCommands::CoreCommands::m_instance = nullptr;
 
 // this returns wheather the string s could be converted to
 // a bool value, one of on|off|1|0|true|false. the argument val is
@@ -473,12 +473,12 @@ KCompletion *KateCommands::CoreCommands::completionObject(KTextEditor::View *vie
         return co;
     }
 
-    return 0L;
+    return nullptr;
 }
 //END CoreCommands
 
 //BEGIN Character
-KateCommands::Character *KateCommands::Character::m_instance = 0;
+KateCommands::Character *KateCommands::Character::m_instance = nullptr;
 
 bool KateCommands::Character::help(class KTextEditor::View *, const QString &cmd, QString &msg)
 {
@@ -540,7 +540,7 @@ bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd,
 //END Character
 
 //BEGIN Date
-KateCommands::Date *KateCommands::Date::m_instance = 0;
+KateCommands::Date *KateCommands::Date::m_instance = nullptr;
 
 bool KateCommands::Date::help(class KTextEditor::View *, const QString &cmd, QString &msg)
 {

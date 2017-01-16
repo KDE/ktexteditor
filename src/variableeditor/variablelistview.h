@@ -32,7 +32,7 @@ class VariableListView : public QScrollArea
     Q_OBJECT
 
 public:
-    VariableListView(const QString &variableLine, QWidget *parent = 0);
+    VariableListView(const QString &variableLine, QWidget *parent = nullptr);
     virtual ~VariableListView();
 
     void addItem(VariableItem *item);

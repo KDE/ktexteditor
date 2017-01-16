@@ -39,7 +39,7 @@
 class KateColorTreeItem : public QTreeWidgetItem
 {
 public:
-    KateColorTreeItem(const KateColorItem &colorItem, QTreeWidgetItem *parent = 0)
+    KateColorTreeItem(const KateColorItem &colorItem, QTreeWidgetItem *parent = nullptr)
         : QTreeWidgetItem(parent)
         , m_colorItem(colorItem)
     {
@@ -209,7 +209,7 @@ public:
             opt.rect.adjust(1, 1, -1, -1);
             painter->fillRect(opt.rect, color);
 
-            qDrawShadePanel(painter, opt.rect, opt.palette, true, 1, NULL);
+            qDrawShadePanel(painter, opt.rect, opt.palette, true, 1, nullptr);
         }
         //END: draw color button
 
@@ -325,7 +325,7 @@ void KateColorTreeWidget::selectDefaults()
 
 void KateColorTreeWidget::addColorItem(const KateColorItem &colorItem)
 {
-    QTreeWidgetItem *categoryItem = 0;
+    QTreeWidgetItem *categoryItem = nullptr;
     for (int i = 0; i < topLevelItemCount(); ++i) {
         if (topLevelItem(i)->text(0) == colorItem.category) {
             categoryItem = topLevelItem(i);

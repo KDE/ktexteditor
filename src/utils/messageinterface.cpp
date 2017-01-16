@@ -49,8 +49,8 @@ Message::Message(const QString &richtext, MessageType type)
     d->autoHide = -1;
     d->autoHideMode = KTextEditor::Message::AfterUserInteraction;
     d->priority = 0;
-    d->view = 0;
-    d->document = 0;
+    d->view = nullptr;
+    d->document = nullptr;
 }
 
 Message::~Message()

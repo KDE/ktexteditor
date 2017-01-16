@@ -365,7 +365,7 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 Qt::ItemFlags KateCompletionModel::flags(const QModelIndex &index) const
 {
     if (!hasCompletionModel() || !index.isValid()) {
-        return 0;
+        return nullptr;
     }
 
     if (!hasGroups() || groupOfParent(index)) {
@@ -843,12 +843,12 @@ KateCompletionModel::Group *KateCompletionModel::groupForIndex(const QModelIndex
         if (!hasGroups()) {
             return m_ungrouped;
         } else {
-            return 0L;
+            return nullptr;
         }
     }
 
     if (groupOfParent(index)) {
-        return 0L;
+        return nullptr;
     }
 
     if (index.row() < 0 || index.row() >= m_rowTable.count()) {
@@ -1857,7 +1857,7 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     // @todo Make this faster
 
     bool doHide = false;
-    CodeCompletionModel *hideModel = 0;
+    CodeCompletionModel *hideModel = nullptr;
 
     foreach (Group *group, m_rowTable)
         foreach (const Item &item, group->filtered)

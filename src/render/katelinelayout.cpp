@@ -31,11 +31,11 @@
 
 KateLineLayout::KateLineLayout(KateRenderer &renderer)
     : m_renderer(renderer)
-    , m_textLine(0L)
+    , m_textLine(nullptr)
     , m_line(-1)
     , m_virtualLine(-1)
     , m_shiftX(0)
-    , m_layout(0L)
+    , m_layout(nullptr)
     , m_layoutDirty(true)
     , m_usePlainTextLine(false)
 {
@@ -54,7 +54,7 @@ void KateLineLayout::clear()
     m_shiftX = 0;
     // not touching dirty
     delete m_layout;
-    m_layout = 0L;
+    m_layout = nullptr;
     // not touching layout dirty
 }
 
@@ -147,7 +147,7 @@ void KateLineLayout::setLayout(QTextLayout *layout)
 
 void KateLineLayout::invalidateLayout()
 {
-    setLayout(0L);
+    setLayout(nullptr);
 }
 
 bool KateLineLayout::isDirty(int viewLine) const

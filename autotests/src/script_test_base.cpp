@@ -44,7 +44,7 @@
 
 const QString testDataPath(QLatin1String(TEST_DATA_DIR));
 
-QtMessageHandler ScriptTestBase::m_msgHandler = 0;
+QtMessageHandler ScriptTestBase::m_msgHandler = nullptr;
 void noDebugMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     switch (type) {

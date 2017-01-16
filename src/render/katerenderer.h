@@ -79,7 +79,7 @@ public:
      * @param folding folding information
      * @param view view which is output (0 for example for rendering to print)
      */
-    explicit KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = 0);
+    explicit KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding &folding, KTextEditor::ViewPrivate *view = nullptr);
 
     /**
      * Destructor
@@ -278,7 +278,7 @@ public:
      * \param range line to return decoration for
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, KateRenderRange *completionHighlight = 0L, bool completionSelected = false) const;
+    QList<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, KateRenderRange *completionHighlight = nullptr, bool completionSelected = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
@@ -333,7 +333,7 @@ public:
      * @param cursor          position of the caret, if placed on the current line.
      * @param flags           flags for customizing the drawing of the line
      */
-    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = 0L, PaintTextLineFlags flags = PaintTextLineFlags());
+    void paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor = nullptr, PaintTextLineFlags flags = PaintTextLineFlags());
 
     /**
      * Paint the background of a line

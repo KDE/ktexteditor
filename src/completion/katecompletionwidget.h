@@ -93,7 +93,7 @@ public:
     void setAutomaticInvocationDelay(int delay);
 
     struct CompletionRange {
-        CompletionRange() : range(0)
+        CompletionRange() : range(nullptr)
         {
         }
         explicit CompletionRange(KTextEditor::MovingRange *r) : range(r)
@@ -110,7 +110,7 @@ public:
         KTextEditor::Cursor leftBoundary;
     };
 
-    KTextEditor::MovingRange *completionRange(KTextEditor::CodeCompletionModel *model = 0) const;
+    KTextEditor::MovingRange *completionRange(KTextEditor::CodeCompletionModel *model = nullptr) const;
     QMap<KTextEditor::CodeCompletionModel *, CompletionRange> completionRanges() const;
 
     // Navigation

@@ -370,7 +370,7 @@ public:
      * \param menu the menu to be populated, or null to create a new menu.
      * \return the menu, whether created or passed initially
      */
-    virtual QMenu *defaultContextMenu(QMenu *menu = 0L) const = 0;
+    virtual QMenu *defaultContextMenu(QMenu *menu = nullptr) const = 0;
 
 Q_SIGNALS:
     /**

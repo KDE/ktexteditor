@@ -298,7 +298,7 @@ void DocumentCursorTest::testValidTextPosition()
     // set to true if you want to see the contents
     const bool showView = false;
     if (showView) {
-        doc.createView(0)->show();
+        doc.createView(nullptr)->show();
         QTest::qWait(5000);
     }
 

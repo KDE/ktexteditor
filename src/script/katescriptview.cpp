@@ -25,7 +25,7 @@
 #include "katescript.h"
 
 KateScriptView::KateScriptView(QObject *parent)
-    : QObject(parent), m_view(0)
+    : QObject(parent), m_view(nullptr)
 {
 }
 

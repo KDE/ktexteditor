@@ -61,8 +61,8 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize)
     , m_editingMinimalLineChanged(-1)
     , m_editingMaximalLineChanged(-1)
     , m_encodingProberType(KEncodingProber::Universal)
-    , m_fallbackTextCodec(0)
-    , m_textCodec(0)
+    , m_fallbackTextCodec(nullptr)
+    , m_textCodec(nullptr)
     , m_generateByteOrderMark(false)
     , m_endOfLineMode(eolUnix)
     , m_newLineAtEof(false)
@@ -78,7 +78,7 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize)
 TextBuffer::~TextBuffer()
 {
     // remove document pointer, this will avoid any notifyAboutRangeChange to have a effect
-    m_document = 0;
+    m_document = nullptr;
 
     // not allowed during editing
     Q_ASSERT(m_editingTransactions == 0);
@@ -297,7 +297,7 @@ void TextBuffer::unwrapLine(int line)
      * the previous one could even end up with zero lines
      * this call will trigger fixStartLines
      */
-    m_blocks.at(blockIndex)->unwrapLine(line, (blockIndex > 0) ? m_blocks.at(blockIndex - 1) : 0, firstLineInBlock ? (blockIndex - 1) : blockIndex);
+    m_blocks.at(blockIndex)->unwrapLine(line, (blockIndex > 0) ? m_blocks.at(blockIndex - 1) : nullptr, firstLineInBlock ? (blockIndex - 1) : blockIndex);
     --m_lines;
 
     // decrement index for later fixup, if we modified the block in front of the found one
@@ -601,7 +601,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
          */
         QTextCodec *codec = m_textCodec;
         if (i == 1) {
-            codec = 0;
+            codec = nullptr;
         } else if (i == 2) {
             codec = m_fallbackTextCodec;
         }

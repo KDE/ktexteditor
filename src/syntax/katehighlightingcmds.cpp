@@ -28,7 +28,7 @@
 
 #include <QUrl>
 
-KateCommands::Highlighting *KateCommands::Highlighting::m_instance = 0;
+KateCommands::Highlighting *KateCommands::Highlighting::m_instance = nullptr;
 
 bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {

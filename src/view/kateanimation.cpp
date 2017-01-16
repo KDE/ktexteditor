@@ -31,9 +31,9 @@
 KateAnimation::KateAnimation(KMessageWidget *widget, EffectType effect)
     : QObject(widget)
     , m_widget(widget)
-    , m_fadeEffect(0)
+    , m_fadeEffect(nullptr)
 {
-    Q_ASSERT(m_widget != 0);
+    Q_ASSERT(m_widget != nullptr);
 
     // create wanted effect
     if (effect == FadeEffect) {
@@ -61,10 +61,10 @@ bool KateAnimation::isShowAnimationRunning() const
 
 void KateAnimation::show()
 {
-    Q_ASSERT(m_widget != 0);
+    Q_ASSERT(m_widget != nullptr);
 
     // show according to effects config
-    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)) {
+    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget)) {
         // launch show effect
         // NOTE: use a singleShot timer to avoid resizing issues when showing the message widget the first time (bug #316666)
         if (m_fadeEffect) {
@@ -80,10 +80,10 @@ void KateAnimation::show()
 
 void KateAnimation::hide()
 {
-    Q_ASSERT(m_widget != 0);
+    Q_ASSERT(m_widget != nullptr);
 
     // hide according to effects config
-    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, 0, m_widget)
+    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget)
             || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
        ) {
         // hide depending on effect

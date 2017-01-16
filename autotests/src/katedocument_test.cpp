@@ -50,7 +50,7 @@ class MovingRangeInvalidator : public QObject
 {
     Q_OBJECT
 public:
-    explicit MovingRangeInvalidator(QObject *parent = 0)
+    explicit MovingRangeInvalidator(QObject *parent = nullptr)
         : QObject(parent)
     {
     }

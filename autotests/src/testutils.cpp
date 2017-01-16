@@ -79,7 +79,7 @@ static void rangeFromScriptValue(const QScriptValue &obj, KTextEditor::Range &ra
 //END
 
 TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
-    : m_engine(0), m_viewObj(0), m_docObj(0), m_output(0)
+    : m_engine(nullptr), m_viewObj(nullptr), m_docObj(nullptr), m_output(nullptr)
 {
     m_engine = new QScriptEngine(this);
 
@@ -126,12 +126,12 @@ TestScriptEnv::~TestScriptEnv()
 {
     // delete explicitly, as the parent is the KTE::Document kpart, which is
     // reused for all tests. Hence, we explicitly have to delete the bindings.
-    delete m_output; m_output = 0;
-    delete m_docObj; m_docObj = 0;
-    delete m_viewObj; m_viewObj = 0;
+    delete m_output; m_output = nullptr;
+    delete m_docObj; m_docObj = nullptr;
+    delete m_viewObj; m_viewObj = nullptr;
 
     // delete this too, although this should also be automagically be freed
-    delete m_engine; m_engine = 0;
+    delete m_engine; m_engine = nullptr;
 
 //   kDebug() << "deleted";
 }

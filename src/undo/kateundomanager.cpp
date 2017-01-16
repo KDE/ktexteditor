@@ -32,9 +32,9 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     , m_document(doc)
     , m_undoComplexMerge(false)
     , m_isActive(true)
-    , m_editCurrentUndo(0)
-    , lastUndoGroupWhenSaved(0)
-    , lastRedoGroupWhenSaved(0)
+    , m_editCurrentUndo(nullptr)
+    , lastUndoGroupWhenSaved(nullptr)
+    , lastRedoGroupWhenSaved(nullptr)
     , docWasSavedWhenUndoWasEmpty(true)
     , docWasSavedWhenRedoWasEmpty(true)
 {
@@ -72,7 +72,7 @@ void KateUndoManager::editStart()
     }
 
     // editStart() and editEnd() must be called in alternating fashion
-    Q_ASSERT(m_editCurrentUndo == 0); // make sure to enter a clean state
+    Q_ASSERT(m_editCurrentUndo == nullptr); // make sure to enter a clean state
 
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
@@ -80,7 +80,7 @@ void KateUndoManager::editStart()
     // new current undo item
     m_editCurrentUndo = new KateUndoGroup(this, cursorPosition, selectionRange);
 
-    Q_ASSERT(m_editCurrentUndo != 0); // a new undo group must be created by this method
+    Q_ASSERT(m_editCurrentUndo != nullptr); // a new undo group must be created by this method
 }
 
 void KateUndoManager::editEnd()
@@ -90,7 +90,7 @@ void KateUndoManager::editEnd()
     }
 
     // editStart() and editEnd() must be called in alternating fashion
-    Q_ASSERT(m_editCurrentUndo != 0); // an undo group must have been created by editStart()
+    Q_ASSERT(m_editCurrentUndo != nullptr); // an undo group must have been created by editStart()
 
     const KTextEditor::Cursor cursorPosition = activeView() ? activeView()->cursorPosition() : KTextEditor::Cursor::invalid();
     const KTextEditor::Range selectionRange = activeView() ? activeView()->selectionRange() : KTextEditor::Range::invalid();
@@ -109,13 +109,13 @@ void KateUndoManager::editEnd()
         changedUndo = true;
     }
 
-    m_editCurrentUndo = 0L;
+    m_editCurrentUndo = nullptr;
 
     if (changedUndo) {
         emit undoChanged();
     }
 
-    Q_ASSERT(m_editCurrentUndo == 0); // must be 0 after calling this method
+    Q_ASSERT(m_editCurrentUndo == nullptr); // must be 0 after calling this method
 }
 
 void KateUndoManager::inputMethodStart()
@@ -144,49 +144,49 @@ void KateUndoManager::endUndo()
 
 void KateUndoManager::slotTextInserted(int line, int col, const QString &s)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedInsertText(m_document, line, col, s));
     }
 }
 
 void KateUndoManager::slotTextRemoved(int line, int col, const QString &s)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedRemoveText(m_document, line, col, s));
     }
 }
 
 void KateUndoManager::slotMarkLineAutoWrapped(int line, bool autowrapped)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateEditMarkLineAutoWrappedUndo(m_document, line, autowrapped));
     }
 }
 
 void KateUndoManager::slotLineWrapped(int line, int col, int length, bool newLine)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedWrapLine(m_document, line, col, length, newLine));
     }
 }
 
 void KateUndoManager::slotLineUnWrapped(int line, int col, int length, bool lineRemoved)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedUnWrapLine(m_document, line, col, length, lineRemoved));
     }
 }
 
 void KateUndoManager::slotLineInserted(int line, const QString &s)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedInsertLine(m_document, line, s));
     }
 }
 
 void KateUndoManager::slotLineRemoved(int line, const QString &s)
 {
-    if (m_editCurrentUndo != 0) { // do we care about notifications?
+    if (m_editCurrentUndo != nullptr) { // do we care about notifications?
         addUndoItem(new KateModifiedRemoveLine(m_document, line, s));
     }
 }
@@ -205,11 +205,11 @@ void KateUndoManager::undoSafePoint()
 {
     KateUndoGroup *undoGroup = m_editCurrentUndo;
 
-    if (undoGroup == 0 && !undoItems.isEmpty()) {
+    if (undoGroup == nullptr && !undoItems.isEmpty()) {
         undoGroup = undoItems.last();
     }
 
-    if (undoGroup == 0) {
+    if (undoGroup == nullptr) {
         return;
     }
 
@@ -218,8 +218,8 @@ void KateUndoManager::undoSafePoint()
 
 void KateUndoManager::addUndoItem(KateUndo *undo)
 {
-    Q_ASSERT(undo != 0); // don't add null pointers to our history
-    Q_ASSERT(m_editCurrentUndo != 0); // make sure there is an undo group for our item
+    Q_ASSERT(undo != nullptr); // don't add null pointers to our history
+    Q_ASSERT(m_editCurrentUndo != nullptr); // make sure there is an undo group for our item
 
     m_editCurrentUndo->addItem(undo);
 
@@ -230,7 +230,7 @@ void KateUndoManager::addUndoItem(KateUndo *undo)
 
 void KateUndoManager::setActive(bool enabled)
 {
-    Q_ASSERT(m_editCurrentUndo == 0); // must not already be in edit mode
+    Q_ASSERT(m_editCurrentUndo == nullptr); // must not already be in edit mode
     Q_ASSERT(m_isActive != enabled);
 
     m_isActive = enabled;
@@ -250,7 +250,7 @@ uint KateUndoManager::redoCount() const
 
 void KateUndoManager::undo()
 {
-    Q_ASSERT(m_editCurrentUndo == 0); // undo is not supported while we care about notifications (call editEnd() first)
+    Q_ASSERT(m_editCurrentUndo == nullptr); // undo is not supported while we care about notifications (call editEnd() first)
 
     if (undoItems.count() > 0) {
         emit undoStart(document());
@@ -266,7 +266,7 @@ void KateUndoManager::undo()
 
 void KateUndoManager::redo()
 {
-    Q_ASSERT(m_editCurrentUndo == 0); // redo is not supported while we care about notifications (call editEnd() first)
+    Q_ASSERT(m_editCurrentUndo == nullptr); // redo is not supported while we care about notifications (call editEnd() first)
 
     if (redoItems.count() > 0) {
         emit redoStart(document());
@@ -308,8 +308,8 @@ void KateUndoManager::updateModified()
     unsigned char currentPattern = 0;
     const unsigned char patterns[] = {5, 16, 21, 24, 26, 88, 90, 93, 133, 144, 149, 154, 165};
     const unsigned char patternCount = sizeof(patterns);
-    KateUndoGroup *undoLast = 0;
-    KateUndoGroup *redoLast = 0;
+    KateUndoGroup *undoLast = nullptr;
+    KateUndoGroup *redoLast = nullptr;
 
     if (undoItems.isEmpty()) {
         currentPattern |= 1;
@@ -364,7 +364,7 @@ void KateUndoManager::clearUndo()
     qDeleteAll(undoItems);
     undoItems.clear();
 
-    lastUndoGroupWhenSaved = 0;
+    lastUndoGroupWhenSaved = nullptr;
     docWasSavedWhenUndoWasEmpty = false;
 
     emit undoChanged();
@@ -375,7 +375,7 @@ void KateUndoManager::clearRedo()
     qDeleteAll(redoItems);
     redoItems.clear();
 
-    lastRedoGroupWhenSaved = 0;
+    lastRedoGroupWhenSaved = nullptr;
     docWasSavedWhenRedoWasEmpty = false;
 
     emit undoChanged();
@@ -423,7 +423,7 @@ void KateUndoManager::updateLineModifications()
 void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &undoCursor,
                                                     const KTextEditor::Cursor &redoCursor)
 {
-    Q_ASSERT(m_editCurrentUndo == 0);
+    Q_ASSERT(m_editCurrentUndo == nullptr);
     if (!undoItems.isEmpty()) {
         KateUndoGroup *last = undoItems.last();
         last->setUndoCursor(undoCursor);
@@ -433,7 +433,7 @@ void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &u
 
 KTextEditor::Cursor KateUndoManager::lastRedoCursor() const
 {
-    Q_ASSERT(m_editCurrentUndo == 0);
+    Q_ASSERT(m_editCurrentUndo == nullptr);
     if (!undoItems.isEmpty()) {
         KateUndoGroup *last = undoItems.last();
         return last->redoCursor();

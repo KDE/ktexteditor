@@ -181,13 +181,13 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     : KTextEditor::Document (this, parent),
       m_bSingleViewMode(bSingleViewMode),
       m_bReadOnly(bReadOnly),
-      m_activeView(0),
+      m_activeView(nullptr),
       editSessionNumber(0),
       editIsRunning(false),
       m_undoMergeAllEdits(false),
       m_undoManager(new KateUndoManager(this)),
       m_editableMarks(markType01),
-      m_annotationModel(0),
+      m_annotationModel(nullptr),
       m_buffer(new KateBuffer(this)),
       m_indenter(new KateAutoIndent(this)),
       m_hlSetByUser(false),
@@ -204,7 +204,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
       m_reloading(false),
       m_config(new KateDocumentConfig(this)),
       m_fileChangedDialogsActivated(false),
-      m_onTheFlyChecker(0),
+      m_onTheFlyChecker(nullptr),
       m_documentState(DocumentIdle),
       m_readWriteStateBeforeLoading(false),
       m_isUntitled(true),
@@ -233,7 +233,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     m_buffer->setHighlight(0);
 
     // swap file
-    m_swapfile = (config()->swapFileMode() == KateDocumentConfig::DisableSwapFile) ? 0L : new Kate::SwapFile(this);
+    m_swapfile = (config()->swapFileMode() == KateDocumentConfig::DisableSwapFile) ? nullptr : new Kate::SwapFile(this);
 
     // important, fill in the config into the indenter we use...
     m_indenter->updateConfig();
@@ -314,7 +314,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
 
     // kill it early, it has ranges!
     delete m_onTheFlyChecker;
-    m_onTheFlyChecker = NULL;
+    m_onTheFlyChecker = nullptr;
 
     clearDictionaryRanges();
 
@@ -392,7 +392,7 @@ QWidget *KTextEditor::DocumentPrivate::widget()
 {
     // no singleViewMode -> no widget()...
     if (!singleViewMode()) {
-        return 0;
+        return nullptr;
     }
 
     // does a widget exist already? use it!
@@ -401,7 +401,7 @@ QWidget *KTextEditor::DocumentPrivate::widget()
     }
 
     // create and return one...
-    KTextEditor::View *view = (KTextEditor::View *)createView(0);
+    KTextEditor::View *view = (KTextEditor::View *)createView(nullptr);
     insertChildClient(view);
     view->setContextMenu(view->defaultContextMenu());
     setWidget(view);
@@ -2150,10 +2150,10 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
         = new KTextEditor::Message(i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile)),
                                    KTextEditor::Message::Error);
     message->setWordWrap(true);
-    QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), 0);
+    QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), nullptr);
     connect(tryAgainAction, SIGNAL(triggered()), SLOT(documentReload()), Qt::QueuedConnection);
 
-    QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), 0);
+    QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);
     closeAction->setToolTip(i18n("Close message"));
 
     // add try again and close actions
@@ -2828,7 +2828,7 @@ void KTextEditor::DocumentPrivate::removeView(KTextEditor::View *view)
     m_views.remove(view);
 
     if (activeView() == view) {
-        setActiveView(0L);
+        setActiveView(nullptr);
     }
 }
 
@@ -5371,7 +5371,7 @@ void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
      * if around job: add cancel action
      */
     if (m_loadingJob) {
-        QAction *cancel = new QAction(i18n("&Abort Loading"), 0);
+        QAction *cancel = new QAction(i18n("&Abort Loading"), nullptr);
         connect(cancel, SIGNAL(triggered()), this, SLOT(slotAbortLoading()));
         m_loadingMessage->addAction(cancel);
     }
@@ -5396,7 +5396,7 @@ void KTextEditor::DocumentPrivate::slotAbortLoading()
      * signal results!
      */
     m_loadingJob->kill(KJob::EmitResult);
-    m_loadingJob = 0;
+    m_loadingJob = nullptr;
 }
 
 void KTextEditor::DocumentPrivate::slotUrlChanged(const QUrl &url)
@@ -5583,11 +5583,11 @@ void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)
     }
 
     if (enable) {
-        Q_ASSERT(m_onTheFlyChecker == 0);
+        Q_ASSERT(m_onTheFlyChecker == nullptr);
         m_onTheFlyChecker = new KateOnTheFlyChecker(this);
     } else {
         delete m_onTheFlyChecker;
-        m_onTheFlyChecker = 0;
+        m_onTheFlyChecker = nullptr;
     }
 
     foreach (KTextEditor::ViewPrivate *view, m_views) {
@@ -5597,7 +5597,7 @@ void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)
 
 bool KTextEditor::DocumentPrivate::isOnTheFlySpellCheckingEnabled() const
 {
-    return m_onTheFlyChecker != 0;
+    return m_onTheFlyChecker != nullptr;
 }
 
 QString KTextEditor::DocumentPrivate::dictionaryForMisspelledRange(const KTextEditor::Range &range) const
@@ -5925,7 +5925,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 
     // if there are no actions, add a close action by default if widget does not auto-hide
     if (message->actions().count() == 0 && message->autoHide() < 0) {
-        QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), 0);
+        QAction *closeAction = new QAction(QIcon::fromTheme(QStringLiteral("window-close")), i18n("&Close"), nullptr);
         closeAction->setToolTip(i18n("Close message"));
         message->addAction(closeAction);
     }
@@ -5935,7 +5935,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 
     // reparent actions, as we want full control over when they are deleted
     foreach (QAction *action, message->actions()) {
-        action->setParent(0);
+        action->setParent(nullptr);
         m_messageHash[message].append(QSharedPointer<QAction>(action));
     }
 

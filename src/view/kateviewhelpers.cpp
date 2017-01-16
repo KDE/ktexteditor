@@ -975,7 +975,7 @@ KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPriva
     , m_msgMode(false)
     , m_histpos(0)
     , m_cmdend(0)
-    , m_command(0L)
+    , m_command(nullptr)
 {
     connect(this, SIGNAL(returnPressed(QString)),
             this, SLOT(slotReturnPressed(QString)));
@@ -1158,7 +1158,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         setCompletionObject(KateCmd::self()->commandCompletionObject());
         delete c;
     }
-    m_command = 0;
+    m_command = nullptr;
     m_cmdend = 0;
 
     // the following commands change the focus themselves
@@ -1979,7 +1979,7 @@ void KateIconBorder::showBlock()
         return;
     } else { // the ranges differ, delete the old, if it exists
         delete m_foldingRange;
-        m_foldingRange = 0;
+        m_foldingRange = nullptr;
     }
 
     if (newRange.isValid()) {
@@ -2059,7 +2059,7 @@ void KateIconBorder::hideBlock()
     m_nextHighlightBlock = -2;
     m_currentBlockLine = -1;
     delete m_foldingRange;
-    m_foldingRange = 0;
+    m_foldingRange = nullptr;
 
     delete m_foldingPreview;
 }
@@ -2165,7 +2165,7 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         }
 
         if (area == AnnotationBorder) {
-            const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, 0, this);
+            const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
             if (e->button() == Qt::LeftButton && singleClick) {
                 emit m_view->annotationActivated(m_view, cursorOnLine);
             } else if (e->button() == Qt::RightButton) {
@@ -2186,7 +2186,7 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
     if (cursorOnLine == m_lastClickedLine &&
             cursorOnLine <= m_doc->lastLine()) {
         BorderArea area = positionToArea(e->pos());
-        const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, 0, this);
+        const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
         if (area == AnnotationBorder && !singleClick) {
             emit m_view->annotationActivated(m_view, cursorOnLine);
         }
@@ -2549,7 +2549,7 @@ bool KateViewEncodingAction::setCurrentCodec(int mib)
 
 KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     : QWidget(parent)
-    , m_viewBar(0)
+    , m_viewBar(nullptr)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
 
@@ -2575,7 +2575,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
 }
 
 KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivate *view)
-    : QWidget(parent), m_external(external), m_view(view), m_permanentBarWidget(0)
+    : QWidget(parent), m_external(external), m_view(view), m_permanentBarWidget(nullptr)
 
 {
     m_layout = new QVBoxLayout(this);
@@ -2609,9 +2609,9 @@ void KateViewBar::removeBarWidget(KateViewBarWidget *barWidget)
     }
 
     m_stack->removeWidget(barWidget);
-    barWidget->setAssociatedViewBar(0);
+    barWidget->setAssociatedViewBar(nullptr);
     barWidget->hide();
-    disconnect(barWidget, 0, this, 0);
+    disconnect(barWidget, nullptr, this, nullptr);
 }
 
 void KateViewBar::addPermanentBarWidget(KateViewBarWidget *barWidget)
@@ -2637,7 +2637,7 @@ void KateViewBar::removePermanentBarWidget(KateViewBarWidget *barWidget)
 
     m_permanentBarWidget->hide();
     m_stack->removeWidget(m_permanentBarWidget);
-    m_permanentBarWidget = 0;
+    m_permanentBarWidget = nullptr;
 
     if (hideBar) {
         m_stack->hide();
@@ -2652,7 +2652,7 @@ bool KateViewBar::hasPermanentWidget(KateViewBarWidget *barWidget) const
 
 void KateViewBar::showBarWidget(KateViewBarWidget *barWidget)
 {
-    Q_ASSERT(barWidget != 0);
+    Q_ASSERT(barWidget != nullptr);
 
     if (barWidget != qobject_cast<KateViewBarWidget *>(m_stack->currentWidget())) {
         hideCurrentBarWidget();

@@ -33,7 +33,7 @@ class VariableLineEdit : public QWidget
     Q_OBJECT
 
 public:
-    VariableLineEdit(QWidget *parent = 0);
+    VariableLineEdit(QWidget *parent = nullptr);
     virtual ~VariableLineEdit();
 
     void addKateItems(VariableListView *listview);

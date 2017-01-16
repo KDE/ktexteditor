@@ -287,7 +287,7 @@ void MovingRangeTest::testFeedbackCaret()
                  "xxxx..");
     doc.setText(text);
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     // create range feedback
     RangeFeedback rf;
@@ -403,7 +403,7 @@ void MovingRangeTest::testFeedbackMouse()
                  "xxxx..");
     doc.setText(text);
 
-    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(0));
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->setCursorPosition(Cursor(1, 6));
     view->show();
     view->resize(200, 100);

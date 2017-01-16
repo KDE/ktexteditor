@@ -117,7 +117,7 @@ public:
      * @param foldedRangeId if the line is not visible and that pointer is not 0, will be filled with id of range hiding the line or -1
      * @return is that line visible?
      */
-    bool isLineVisible(int line, qint64 *foldedRangeId = 0) const;
+    bool isLineVisible(int line, qint64 *foldedRangeId = nullptr) const;
 
     /**
      * Ensure that a given line will be visible.

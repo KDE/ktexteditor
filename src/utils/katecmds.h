@@ -63,7 +63,7 @@ class CoreCommands : public KTextEditor::Command
 public:
     ~CoreCommands()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
 
     /**
@@ -97,7 +97,7 @@ public:
 
     static CoreCommands *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new CoreCommands();
         }
         return m_instance;
@@ -124,7 +124,7 @@ class Character : public KTextEditor::Command
 public:
     ~Character()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
 
     /**
@@ -142,7 +142,7 @@ public:
 
     static Character *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new Character();
         }
         return m_instance;
@@ -164,7 +164,7 @@ class Date : public KTextEditor::Command
 public:
     ~Date()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
 
     /**
@@ -182,7 +182,7 @@ public:
 
     static Date *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new Date();
         }
         return m_instance;

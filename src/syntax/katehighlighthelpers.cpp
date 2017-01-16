@@ -318,7 +318,7 @@ void KateHlKeyword::addList(const QStringList &list)
             dict.resize(len + 1);
 
             for (int m = oldSize; m < dict.size(); ++m) {
-                dict[m] = 0;
+                dict[m] = nullptr;
             }
         }
 

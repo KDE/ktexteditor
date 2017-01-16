@@ -103,7 +103,7 @@ void KateModeManager::update()
     // try if the hl stuff is up to date...
     const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
-        KateFileType *type = 0;
+        KateFileType *type = nullptr;
         bool newType = false;
         if (m_name2Type.contains(modes[i].name())) {
             type = m_name2Type[modes[i].name()];
@@ -264,7 +264,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
 
 QString KateModeManager::wildcardsFind(const QString &fileName)
 {
-    KateFileType *match = NULL;
+    KateFileType *match = nullptr;
     int minPrio = -1;
     foreach (KateFileType *type, m_types) {
         if (type->priority <= minPrio) {
@@ -280,7 +280,7 @@ QString KateModeManager::wildcardsFind(const QString &fileName)
         }
     }
 
-    return (match == NULL) ? QString() : match->name;
+    return (match == nullptr) ? QString() : match->name;
 }
 
 const KateFileType &KateModeManager::fileType(const QString &name) const

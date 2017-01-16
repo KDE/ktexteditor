@@ -149,7 +149,7 @@ private Q_SLOTS:
 
 private:
     // Helpers
-    bool find(SearchDirection searchDirection = SearchForward, const QString *replacement = 0);
+    bool find(SearchDirection searchDirection = SearchForward, const QString *replacement = nullptr);
     int findAll(KTextEditor::Range inputRange, const QString *replacement);
 
     bool isPatternValid() const;

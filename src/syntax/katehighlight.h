@@ -166,7 +166,7 @@ public:
                      const Kate::TextLineData *nextLine,
                      bool &ctxChanged,
                      int tabWidth = 0,
-                     QVector<ContextChange>* contextChanges = 0);
+                     QVector<ContextChange>* contextChanges = nullptr);
     /**
      * Saves the attribute definitions to the config file.
      *
@@ -174,7 +174,7 @@ public:
      * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
      */
     void setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list,
-                                      KConfig *cfg = 0 /*if 0  standard kate config*/, bool writeDefaultsToo = false);
+                                      KConfig *cfg = nullptr /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
     const QString &name() const
     {
@@ -311,8 +311,8 @@ public:
         return m_indentation;
     }
 
-    void getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = 0);
-    void getKateExtendedAttributeListCopy(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = 0);
+    void getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
+    void getKateExtendedAttributeListCopy(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
 
     const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
     const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;

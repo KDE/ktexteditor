@@ -32,7 +32,7 @@
 #include "kateview.h"
 #include <QModelIndex>
 
-KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent) : ExpandingTree(0), m_parent(parent)     //Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
+KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent) : ExpandingTree(nullptr), m_parent(parent)     //Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
 {
 
     setFrameStyle(QFrame::Box | QFrame::Plain);

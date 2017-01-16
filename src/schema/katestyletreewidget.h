@@ -39,7 +39,7 @@ class KateStyleTreeWidget : public QTreeWidget
     friend class KateStyleListItem;
 
 public:
-    explicit KateStyleTreeWidget(QWidget *parent = 0, bool showUseDefaults = false);
+    explicit KateStyleTreeWidget(QWidget *parent = nullptr, bool showUseDefaults = false);
 
     void emitChanged();
 

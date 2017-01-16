@@ -542,7 +542,7 @@ void KateWordCompletionView::slotCursorMoved()
 
     disconnect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
 
-    d->liRange->setView(0);
+    d->liRange->setView(nullptr);
     d->liRange->setRange(KTextEditor::Range::invalid());
 }
 

@@ -24,7 +24,7 @@
 #include <QApplication>
 #include <QStyleOption>
 
-KateCategoryDrawer::KateCategoryDrawer() : KCategoryDrawer(0)
+KateCategoryDrawer::KateCategoryDrawer() : KCategoryDrawer(nullptr)
 {
 }
 

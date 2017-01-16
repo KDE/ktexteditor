@@ -39,7 +39,7 @@ class KateSpellCheckManager : public QObject
     typedef QPair<KTextEditor::Range, QString> RangeDictionaryPair;
 
 public:
-    KateSpellCheckManager(QObject *parent = NULL);
+    KateSpellCheckManager(QObject *parent = nullptr);
     virtual ~KateSpellCheckManager();
 
     QStringList suggestions(const QString &word, const QString &dictionary);

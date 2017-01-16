@@ -28,7 +28,7 @@
 
 QTEST_MAIN(ScriptDocumentTest)
 
-QtMessageHandler ScriptDocumentTest::s_msgHandler = 0;
+QtMessageHandler ScriptDocumentTest::s_msgHandler = nullptr;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -49,14 +49,14 @@ void ScriptDocumentTest::initTestCase()
 
 void ScriptDocumentTest::cleanupTestCase()
 {
-    qInstallMessageHandler(0);
+    qInstallMessageHandler(nullptr);
 }
 
 ScriptDocumentTest::ScriptDocumentTest()
     : QObject()
-    , m_doc(0)
-    , m_view(0)
-    , m_scriptDoc(0)
+    , m_doc(nullptr)
+    , m_view(nullptr)
+    , m_scriptDoc(nullptr)
 {
 }
 
@@ -67,7 +67,7 @@ ScriptDocumentTest::~ScriptDocumentTest()
 void ScriptDocumentTest::init()
 {
     m_doc = new KTextEditor::DocumentPrivate;
-    m_view = m_doc->createView(0);
+    m_view = m_doc->createView(nullptr);
     m_scriptDoc = new KateScriptDocument(this);
     m_scriptDoc->setDocument(m_doc);
 }

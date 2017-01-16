@@ -108,7 +108,7 @@ public:
             } else {
                 progressDialog->deleteLater();
             }
-            progressDialog = NULL;
+            progressDialog = nullptr;
         }
     }
 };
@@ -123,7 +123,7 @@ SpellCheckBar::SpellCheckBar(Sonnet::BackgroundChecker *checker, QWidget *parent
     d->showCompletionMessageBox = false;
     d->spellCheckContinuedAfterReplacement = true;
     d->progressDialogTimeout = -1;
-    d->progressDialog = NULL;
+    d->progressDialog = nullptr;
 
     initGui();
     initConnections();

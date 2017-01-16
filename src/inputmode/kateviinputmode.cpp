@@ -62,7 +62,7 @@ namespace {
 
 KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalState *global)
     : KateAbstractInputMode(viewInternal)
-    , m_viModeEmulatedCommandBar(0)
+    , m_viModeEmulatedCommandBar(nullptr)
     , m_viGlobal(global)
     , m_caret(KateRenderer::Block)
     , m_nextKeypressIsOverriddenShortCut(false)

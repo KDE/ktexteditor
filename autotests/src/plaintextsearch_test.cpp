@@ -28,7 +28,7 @@
 
 QTEST_MAIN(PlainTextSearchTest)
 
-QtMessageHandler PlainTextSearchTest::s_msgHandler = 0;
+QtMessageHandler PlainTextSearchTest::s_msgHandler = nullptr;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -49,13 +49,13 @@ void PlainTextSearchTest::initTestCase()
 
 void PlainTextSearchTest::cleanupTestCase()
 {
-    qInstallMessageHandler(0);
+    qInstallMessageHandler(nullptr);
 }
 
 PlainTextSearchTest::PlainTextSearchTest()
     : QObject()
-    , m_doc(0)
-    , m_search(0)
+    , m_doc(nullptr)
+    , m_search(nullptr)
 {
 }
 
@@ -65,7 +65,7 @@ PlainTextSearchTest::~PlainTextSearchTest()
 
 void PlainTextSearchTest::init()
 {
-    m_doc = new KTextEditor::DocumentPrivate(false, false, 0, this);
+    m_doc = new KTextEditor::DocumentPrivate(false, false, nullptr, this);
     m_search = new KatePlainTextSearch(m_doc, Qt::CaseSensitive, false);
 }
 

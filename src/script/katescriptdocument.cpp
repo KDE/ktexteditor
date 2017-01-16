@@ -32,7 +32,7 @@
 #include <QScriptEngine>
 
 KateScriptDocument::KateScriptDocument(QObject *parent)
-    : QObject(parent), m_document(0)
+    : QObject(parent), m_document(nullptr)
 {
 }
 

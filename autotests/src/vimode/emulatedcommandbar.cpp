@@ -1029,7 +1029,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   clearSearchHistory();
   vi_global->searchHistory()->append("foo");
   vi_global->searchHistory()->append("bar");
-  QVERIFY(emulatedCommandBarCompleter() != NULL);
+  QVERIFY(emulatedCommandBarCompleter() != nullptr);
   BeginTest("foo bar");
   TestPressKey("/\\ctrl-p");
   verifyCommandBarCompletionVisible();
@@ -1065,7 +1065,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   clearSearchHistory();
   vi_global->searchHistory()->append("xyz");
   vi_global->searchHistory()->append("bar");
-  QVERIFY(emulatedCommandBarCompleter() != NULL);
+  QVERIFY(emulatedCommandBarCompleter() != nullptr);
   BeginTest("foo bar");
   TestPressKey("/\\ctrl-p");
   QCOMPARE(emulatedCommandBarCompleter()->currentCompletion(), QString("bar"));
@@ -1076,7 +1076,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   vi_global->searchHistory()->append("xyz");
   vi_global->searchHistory()->append("bar");
   vi_global->searchHistory()->append("foo");
-  QVERIFY(emulatedCommandBarCompleter() != NULL);
+  QVERIFY(emulatedCommandBarCompleter() != nullptr);
   BeginTest("foo bar");
   TestPressKey("/\\ctrl-p");
   QCOMPARE(emulatedCommandBarTextEdit()->text(), QString("foo"));
@@ -1101,7 +1101,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   vi_global->searchHistory()->append("xyz");
   vi_global->searchHistory()->append("bar");
   vi_global->searchHistory()->append("foo");
-  QVERIFY(emulatedCommandBarCompleter() != NULL);
+  QVERIFY(emulatedCommandBarCompleter() != nullptr);
   BeginTest("foo bar");
   TestPressKey("/\\ctrl-n");
   verifyCommandBarCompletionVisible();
@@ -3106,7 +3106,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 #endif
 
   // Find the "Print" action for later use.
-  QAction *printAction = NULL;
+  QAction *printAction = nullptr;
   foreach(QAction* action, kate_view->actionCollection()->actions())
   {
     if (action->shortcut() == QKeySequence("Ctrl+p"))

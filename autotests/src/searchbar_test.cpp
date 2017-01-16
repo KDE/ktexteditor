@@ -63,7 +63,7 @@ void SearchBarTest::testFindNextIncremental()
     KTextEditor::DocumentPrivate doc;
     doc.setText("a a a b b");
 
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     KateSearchBar bar(false, &view, &config);
@@ -96,7 +96,7 @@ void SearchBarTest::testFindNextIncremental()
 void SearchBarTest::testSetMatchCaseIncremental()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a A a");
@@ -130,7 +130,7 @@ void SearchBarTest::testSetMatchCaseIncremental()
 void SearchBarTest::testSetMatchCasePower()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a A a");
@@ -171,7 +171,7 @@ void SearchBarTest::testSetMatchCasePower()
 void SearchBarTest::testSetSelectionOnlyPower()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -220,7 +220,7 @@ void SearchBarTest::testSetSearchPattern()
     QFETCH(int, numMatches2);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -244,7 +244,7 @@ void SearchBarTest::testSetSearchPattern()
 void SearchBarTest::testSetSelectionOnly()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -280,7 +280,7 @@ void SearchBarTest::testFindAll()
     QFETCH(int, numMatches4);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -316,7 +316,7 @@ void SearchBarTest::testFindAll()
 void SearchBarTest::testReplaceAll()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -371,7 +371,7 @@ void SearchBarTest::testFindSelectionForward()
     QFETCH(Range, match);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText(text);
@@ -408,7 +408,7 @@ void SearchBarTest::testRemoveWithSelectionForward()
     QFETCH(Range, match);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -442,7 +442,7 @@ void SearchBarTest::testRemoveInSelectionForward()
     QFETCH(Range, match);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("a a a");
@@ -487,7 +487,7 @@ void SearchBarTest::testReplaceWithDoubleSelecion()
     QFETCH(Range, match);
 
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText(text);
@@ -506,7 +506,7 @@ void SearchBarTest::testReplaceWithDoubleSelecion()
 void SearchBarTest::testReplaceDollar()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("aaa\nbbb\nccc\n\n\naaa\nbbb\nccc\nddd\n");
@@ -525,7 +525,7 @@ void SearchBarTest::testReplaceDollar()
 void SearchBarTest::testSearchHistoryIncremental()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig *const config = view.config();
     KTextEditor::EditorPrivate::self()->searchHistoryModel()->setStringList(QStringList());
 
@@ -545,7 +545,7 @@ void SearchBarTest::testSearchHistoryIncremental()
     QCOMPARE(bar.m_incUi->pattern->findText("foo"), 1);
 
     KTextEditor::DocumentPrivate doc2;
-    KTextEditor::ViewPrivate view2(&doc2, 0);
+    KTextEditor::ViewPrivate view2(&doc2, nullptr);
     KateViewConfig *const config2 = view2.config();
     KateSearchBar bar2(false, &view2, config2);
 
@@ -562,7 +562,7 @@ void SearchBarTest::testSearchHistoryIncremental()
 void SearchBarTest::testSearchHistoryPower()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig *const config = view.config();
     KTextEditor::EditorPrivate::self()->searchHistoryModel()->setStringList(QStringList());
 
@@ -590,7 +590,7 @@ void SearchBarTest::testSearchHistoryPower()
     QCOMPARE(bar.m_powerUi->pattern->count(), 2);
 
     KTextEditor::DocumentPrivate doc2;
-    KTextEditor::ViewPrivate view2(&doc2, 0);
+    KTextEditor::ViewPrivate view2(&doc2, nullptr);
     KateViewConfig *const config2 = view2.config();
     KateSearchBar bar2(true, &view2, config2);
 
@@ -602,7 +602,7 @@ void SearchBarTest::testSearchHistoryPower()
 void SearchBarTest::testReplaceInBlockMode()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     view.setInputMode(View::NormalInputMode);
     KateViewConfig config(&view);
 
@@ -623,7 +623,7 @@ void SearchBarTest::testReplaceInBlockMode()
 void SearchBarTest::testReplaceManyCapturesBug365124()
 {
     KTextEditor::DocumentPrivate doc;
-    KTextEditor::ViewPrivate view(&doc, 0);
+    KTextEditor::ViewPrivate view(&doc, nullptr);
     KateViewConfig config(&view);
 
     doc.setText("one two three four five six seven eight nine ten eleven twelve thirteen\n");

@@ -53,7 +53,7 @@ class Commands : public KTextEditor::Command, public KateViCommandInterface
 public:
     ~Commands()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
 
     /**
@@ -83,7 +83,7 @@ public:
 
     static Commands *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new Commands();
         }
         return m_instance;
@@ -106,12 +106,12 @@ class SedReplace : public KateCommands::SedReplace, public KateViCommandInterfac
 public:
     ~SedReplace()
     {
-        m_instance = 0;
+        m_instance = nullptr;
     }
 
     static SedReplace *self()
     {
-        if (m_instance == 0) {
+        if (m_instance == nullptr) {
             m_instance = new SedReplace();
         }
         return m_instance;

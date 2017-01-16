@@ -83,7 +83,7 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
 
     exporter.reset(new HTMLExporter(m_view, output, !useSelection));
 
-    const KTextEditor::Attribute::Ptr noAttrib(0);
+    const KTextEditor::Attribute::Ptr noAttrib(nullptr);
 
     for (int i = range.start().line(); (i <= range.end().line()) && (i < m_view->document()->lines()); ++i) {
         const QString &line = m_view->document()->line(i);

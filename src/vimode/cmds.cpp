@@ -43,7 +43,7 @@
 using namespace KateVi;
 
 //BEGIN ViCommands
-Commands *Commands::m_instance = 0;
+Commands *Commands::m_instance = nullptr;
 
 bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
                     QString &msg, const KTextEditor::Range &range)
@@ -205,7 +205,7 @@ KCompletion *Commands::completionObject(KTextEditor::View *view, const QString &
         co->setIgnoreCase(false);
         return co;
     }
-    return 0L;
+    return nullptr;
 }
 
 const QStringList &Commands::mappingCommands()
@@ -268,7 +268,7 @@ bool Commands::isMapCommandRecursive(const QString &mapCommand)
 //END ViCommands
 
 //BEGIN SedReplace
-SedReplace *SedReplace::m_instance = 0;
+SedReplace *SedReplace::m_instance = nullptr;
 
 bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
 {

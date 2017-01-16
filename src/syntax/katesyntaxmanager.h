@@ -74,8 +74,8 @@ public:
      */
     QString nameForIdentifier(const QString &);
 
-    void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
-    void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = 0);
+    void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
+    void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
 
     int highlights();
     QString hlName(int n);

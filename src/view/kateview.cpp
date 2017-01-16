@@ -111,8 +111,8 @@ void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
 
 KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
     : KTextEditor::View (this, parent)
-    , m_completionWidget(0)
-    , m_annotationModel(0)
+    , m_completionWidget(nullptr)
+    , m_annotationModel(nullptr)
     , m_hasWrap(false)
     , m_doc(doc)
     , m_textFolding(doc->buffer())
@@ -129,16 +129,16 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_updatingDocumentConfig(false)
     , m_selection(m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
     , blockSelect(false)
-    , m_bottomViewBar(0)
-    , m_gotoBar(0)
-    , m_dictionaryBar(NULL)
+    , m_bottomViewBar(nullptr)
+    , m_gotoBar(nullptr)
+    , m_dictionaryBar(nullptr)
     , m_spellingMenu(new KateSpellingMenu(this))
     , m_userContextMenuSet(false)
     , m_delayedUpdateTriggered(false)
     , m_lineToUpdateMin(-1)
     , m_lineToUpdateMax(-1)
-    , m_floatTopMessageWidget(0)
-    , m_floatBottomMessageWidget(0)
+    , m_floatTopMessageWidget(nullptr)
+    , m_floatBottomMessageWidget(nullptr)
     , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
     , m_statusBar(Q_NULLPTR)
     , m_temporaryAutomaticInvocationDisabled(false)
@@ -162,7 +162,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
      */
     QWidget *bottomBarParent = m_mainWindow->createViewBar(this);
 
-    m_bottomViewBar = new KateViewBar(bottomBarParent != 0, bottomBarParent ? bottomBarParent : this, this);
+    m_bottomViewBar = new KateViewBar(bottomBarParent != nullptr, bottomBarParent ? bottomBarParent : this, this);
 
     // ugly workaround:
     // Force the layout to be left-to-right even on RTL deskstop, as discussed
@@ -260,7 +260,7 @@ KTextEditor::ViewPrivate::~ViewPrivate()
      * remove view bar again, if needed
      */
     m_mainWindow->deleteViewBar(this);
-    m_bottomViewBar = 0;
+    m_bottomViewBar = nullptr;
 
     m_doc->removeView(this);
 
@@ -466,7 +466,7 @@ void KTextEditor::ViewPrivate::setupActions()
     KActionCollection *ac = actionCollection();
     QAction *a;
 
-    m_toggleWriteLock = 0;
+    m_toggleWriteLock = nullptr;
 
     m_cut = a = ac->addAction(KStandardAction::Cut, this, SLOT(cut()));
     a->setWhatsThis(i18n("Cut the selected text and move it to the clipboard"));
@@ -581,8 +581,8 @@ void KTextEditor::ViewPrivate::setupActions()
         m_cut->setEnabled(false);
         m_paste->setEnabled(false);
         m_pasteMenu->setEnabled(false);
-        m_editUndo = 0;
-        m_editRedo = 0;
+        m_editUndo = nullptr;
+        m_editRedo = nullptr;
     }
 
     a = ac->addAction(KStandardAction::Print, this, SLOT(print()));
@@ -2962,7 +2962,7 @@ QMenu *KTextEditor::ViewPrivate::contextMenu() const
             }
         }
     }
-    return 0;
+    return nullptr;
 }
 
 QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const

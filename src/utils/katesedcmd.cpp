@@ -34,7 +34,7 @@
 #include <QRegExp>
 #include <QUrl>
 
-KateCommands::SedReplace *KateCommands::SedReplace::m_instance = 0;
+KateCommands::SedReplace *KateCommands::SedReplace::m_instance = nullptr;
 
 static int backslashString(const QString &haystack, const QString &needle, int index)
 {

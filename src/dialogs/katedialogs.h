@@ -86,7 +86,7 @@ class KateGotoBar : public KateViewBarWidget
     Q_OBJECT
 
 public:
-    explicit KateGotoBar(KTextEditor::View *view, QWidget *parent = 0);
+    explicit KateGotoBar(KTextEditor::View *view, QWidget *parent = nullptr);
 
     void updateData();
 
@@ -106,7 +106,7 @@ class KateDictionaryBar : public KateViewBarWidget
     Q_OBJECT
 
 public:
-    explicit KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent = NULL);
+    explicit KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent = nullptr);
     virtual ~KateDictionaryBar();
 
 public Q_SLOTS:

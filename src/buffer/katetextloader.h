@@ -51,7 +51,7 @@ public:
      * @param proberType prober type
      */
     TextLoader(const QString &filename, KEncodingProber::ProberType proberType)
-        : m_codec(0)
+        : m_codec(nullptr)
         , m_eof(false)  // default to not eof
         , m_lastWasEndOfLine(true)  // at start of file, we had a virtual newline
         , m_lastWasR(false)  // we have not found a \r as last char
@@ -60,7 +60,7 @@ public:
         , m_eol(TextBuffer::eolUnknown)  // no eol type detected atm
         , m_buffer(KATE_FILE_LOADER_BS, 0)
         , m_digest(QCryptographicHash::Sha1)
-        , m_converterState(0)
+        , m_converterState(nullptr)
         , m_bomFound(false)
         , m_firstRead(true)
         , m_proberType(proberType)
@@ -218,7 +218,7 @@ public:
                         if (m_firstRead) {
                             // use first 16 bytes max to allow BOM detection of codec
                             QByteArray bom(m_buffer.data(), qMin(16, c));
-                            QTextCodec *codecForByteOrderMark = QTextCodec::codecForUtfText(bom, 0);
+                            QTextCodec *codecForByteOrderMark = QTextCodec::codecForUtfText(bom, nullptr);
 
                             // if codec != null, we found a BOM!
                             if (codecForByteOrderMark) {
@@ -254,7 +254,7 @@ public:
                                     /**
                                      * first: try to get HTML header encoding
                                      */
-                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml (m_buffer, 0)) {
+                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml (m_buffer, nullptr)) {
                                         m_codec = codecForHtml;
                                     }
                                     

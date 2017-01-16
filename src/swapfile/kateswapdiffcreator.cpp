@@ -34,7 +34,7 @@
 SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
     : QObject(swapFile)
     , m_swapFile(swapFile)
-    , m_proc(0)
+    , m_proc(nullptr)
 {
 }
 
@@ -129,11 +129,11 @@ void SwapDiffCreator::slotDiffFinished()
     // get the exit status to check whether diff command run successfully
     const QProcess::ExitStatus es = m_proc->exitStatus();
     delete m_proc;
-    m_proc = 0;
+    m_proc = nullptr;
 
     // check exit status
     if (es != QProcess::NormalExit) {
-        KMessageBox::sorry(0,
+        KMessageBox::sorry(nullptr,
                            i18n("The diff command failed. Please make sure that "
                                 "diff(1) is installed and in your PATH."),
                            i18n("Error Creating Diff"));
@@ -143,7 +143,7 @@ void SwapDiffCreator::slotDiffFinished()
 
     // sanity check: is there any diff content?
     if (m_diffFile.size() == 0) {
-        KMessageBox::information(0,
+        KMessageBox::information(nullptr,
                                  i18n("The files are identical."),
                                  i18n("Diff Output"));
         deleteLater();
