@@ -51,8 +51,6 @@ public:
      *
      * \param text text to search for
      * \param inputRange Range to search in
-     * \param casesensitive if \e true, the search is performed case
-     *        sensitive, otherwise case insensitive
      * \param backwards if \e true, the search will be backwards
      * \return The valid range of the matched text if \p text was found. If
      *        the \p text was not found, the returned range is not valid

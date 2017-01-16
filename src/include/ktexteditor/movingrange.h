@@ -244,7 +244,7 @@ public:
      * This will trigger update of the relevant view parts, if the view changed.
      * Set view before the attribute, that will avoid not needed redraws.
      *
-     * \param attribute View to assign to this range. If null, simply
+     * \param view View to assign to this range. If null, simply
      *                  removes the previous view.
      */
     virtual void setView(View *view) = 0;
@@ -289,7 +289,7 @@ public:
      * Sets the currently active MovingRangeFeedback for this range.
      * This will trigger evaluation if feedback must be send again (for example if mouse is already inside range).
      *
-     * \param attribute MovingRangeFeedback to assign to this range. If null, simply
+     * \param feedback MovingRangeFeedback to assign to this range. If null, simply
      *                  removes the previous MovingRangeFeedback.
      */
     virtual void setFeedback(MovingRangeFeedback *feedback) = 0;
@@ -379,7 +379,7 @@ public:
     /**
      * qDebug() stream operator. Writes this range to the debug output in a nicely formatted way.
      * @param s debug stream
-     * @param cursor range to print
+     * @param range range to print
      * @return debug stream
      */
     inline friend QDebug operator<< (QDebug s, const MovingRange *range) {

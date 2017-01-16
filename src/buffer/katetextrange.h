@@ -189,7 +189,7 @@ public:
      * This will trigger update of the relevant view parts, if the view changed.
      * Set view before the attribute, that will avoid not needed redraws.
      *
-     * \param attribute View to assign to this range. If null, simply
+     * \param view View to assign to this range. If null, simply
      *                  removes the previous view.
      */
     void setView(KTextEditor::View *view) Q_DECL_OVERRIDE;
@@ -236,7 +236,7 @@ public:
      * Sets the currently active MovingRangeFeedback for this range.
      * This will trigger evaluation if feedback must be send again (for example if mouse is already inside range).
      *
-     * \param attribute MovingRangeFeedback to assign to this range. If null, simply
+     * \param feedback MovingRangeFeedback to assign to this range. If null, simply
      *                  removes the previous MovingRangeFeedback.
      */
     void setFeedback(KTextEditor::MovingRangeFeedback *feedback) Q_DECL_OVERRIDE;

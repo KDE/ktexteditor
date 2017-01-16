@@ -99,7 +99,6 @@ public:
      *    this function should emit ReadOnlyPart::completed
      *
      * \param config read the session settings from this KConfigGroup
-     * \param flags additional flags set
      * \see writeSessionConfig()
      */
     virtual void readSessionConfig(const KConfigGroup &config) = 0;

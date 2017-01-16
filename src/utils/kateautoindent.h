@@ -121,7 +121,7 @@ private:
     /**
      * Set the indent level of the line.
      * \param line line to change indent for
-     * \param change set indentation to given number of spaces
+     * \param indentDepth set indentation to given number of spaces
      * \param align if align is higher than indentDepth, the difference
      * represents a number of spaces to be added after the indent
      */

@@ -238,7 +238,7 @@ private:
      *
      * @param from first line in range
      * @param to last line in range
-     * @param invalidat should the rehighlighted lines be tagged ?
+     * @param invalidate should the rehighlighted lines be tagged?
      */
     void doHighlight(int from, int to, bool invalidate);
 

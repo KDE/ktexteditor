@@ -456,18 +456,18 @@ public:
      */
     bool setHighlightingMode(const QString &name) Q_DECL_OVERRIDE;
     /**
-     * Returns the name of the section for a highlight given its index in the highlight
+     * Returns the name of the section for a highlight given its @p index in the highlight
      * list (as returned by highlightModes()).
      * You can use this function to build a tree of the highlight names, organized in sections.
-     * \param name the name of the highlight for which to find the section name.
+     * \param index in the highlight list for which to find the section name.
      */
     QString highlightingModeSection(int index) const Q_DECL_OVERRIDE;
 
     /**
-     * Returns the name of the section for a mode given its index in the highlight
+     * Returns the name of the section for a mode given its @p index in the highlight
      * list (as returned by modes()).
      * You can use this function to build a tree of the mode names, organized in sections.
-     * \param name the name of the highlight for which to find the section name.
+     * \param index index in the highlight list for which to find the section name.
      */
     QString modeSection(int index) const Q_DECL_OVERRIDE;
 

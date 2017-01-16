@@ -388,7 +388,6 @@ Q_SIGNALS:
      * The \p document emits this signal whenever the \p mark is left-clicked.
      * \param document the document which emitted the signal
      * \param mark mark that was right-clicked
-     * \param pos position where the menu should be started
      * \param handled set this to 'true' if this event was handled externally, and kate should not do own handling of the left click.
      */
     void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);

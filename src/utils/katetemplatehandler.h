@@ -122,8 +122,10 @@ private:
     /**
      * Evaluate default values for all fields in m_fields and
      * store them in the fields. This updates the @property defaultValue property
-     * of the @class TemplateField instances in m_fields from the raw, user-entered
+     * of the TemplateField instances in m_fields from the raw, user-entered
      * default value to its evaluated equivalent (e.g. "func()" -> result of function call)
+     *
+     * @sa TemplateField
      */
     void setupDefaultValues();
 

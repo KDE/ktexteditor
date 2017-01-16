@@ -49,11 +49,11 @@ public:
     //
 public:
     /**
-     * Search for the regular expression \p regexp inside the range
+     * Search for the regular expression \p pattern inside the range
      * \p inputRange. If \p backwards is \e true, the search direction will
      * be reversed.
      *
-     * \param regexp text to search for
+     * \param pattern text to search for
      * \param inputRange Range to search in
      * \param backwards if \e true, the search will be backwards
      * \return Vector of ranges, one for each capture. The first range (index zero)

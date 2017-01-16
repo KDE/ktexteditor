@@ -119,7 +119,7 @@ class SpellCheckBar : public KateViewBarWidget
      * Emitted when the user changes the language used for spellchecking,
      * which is shown in a combobox of this dialog.
      *
-     * @param dictionary the new language the user selected
+     * @param language the new language the user selected
      * @since 4.1
      */
     void languageChanged(const QString &language);

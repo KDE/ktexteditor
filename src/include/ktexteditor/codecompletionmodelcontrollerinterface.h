@@ -169,7 +169,7 @@ public:
 
     /**
      * Called whenever an item in the completion-list perfectly matches the current filter text.
-     * \param The index that is matched
+     * \param matched The index that is matched
      * \return Whether the completion-list should be hidden on this event. The default-implementation always returns HideListIfAutomaticInvocation
      */
     virtual MatchReaction matchingItem(const QModelIndex &matched);

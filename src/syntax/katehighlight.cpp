@@ -1367,8 +1367,6 @@ void KateHighlighting::readGlobalKeywordConfig()
  * standard denominators. In case a keyword tag is defined, but no
  * wordWrapDeliminator attribute is specified, the deliminator list as computed
  * in readGlobalKeywordConfig is used.
- *
- * @return the computed delimiter string.
  */
 void KateHighlighting::readWordWrapConfig()
 {

@@ -80,8 +80,7 @@ public:
      * @param view view to use for execution
      * @param cmd cmd string
      * @param errorMsg error to return if no success
-     * @param rangeStart first line in range
-     * @param rangeEnd last line in range
+     * @param range range to execute command on
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,

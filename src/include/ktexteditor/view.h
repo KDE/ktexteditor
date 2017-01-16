@@ -219,7 +219,7 @@ public:
      * This can be used to detect the view's current mode. For
      * example \NormalInputMode, \ViInputMode or whatever other input modes are
      * supported. \see viewModeHuman() for translated version.
-     * \return
+     * \return current view mode/state
      * \see viewModeChanged()
      */
     virtual ViewMode viewMode() const = 0;
@@ -232,7 +232,7 @@ public:
      * translated (i18n), as this is a user aimed representation of the view
      * state, which should be shown in the GUI, for example in the status bar.
      * This string may be rich-text.
-     * \return
+     * \return Human-readable version of the view mode state
      * \see viewModeChanged()
      */
     virtual QString viewModeHuman() const = 0;
@@ -644,7 +644,7 @@ public:
      * object defined in @p script. You can pass arguments to the function by just
      * writing any constant expression or a field name.
      * \param insertPosition where to insert the template
-     * \param templateScript template to insert using the above syntax
+     * \param templateString template to insert using the above syntax
      * \param script script with functions which can be used in @p templateScript
      * \return true on success, false if insertion failed (e.g. read-only mode)
      */
