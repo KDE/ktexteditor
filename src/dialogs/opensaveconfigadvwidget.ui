@@ -124,7 +124,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="lblSwapDirectory">
         <property name="text">
-         <string>Directory</string>
+         <string>Directory:</string>
         </property>
         <property name="buddy">
          <cstring>kurlSwapDirectory</cstring>

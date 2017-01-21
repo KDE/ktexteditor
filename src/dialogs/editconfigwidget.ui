@@ -107,7 +107,7 @@
       <item>
        <widget class="QLabel" name="lblInputMode">
         <property name="text">
-         <string>Default input mode</string>
+         <string>Default input mode:</string>
         </property>
        </widget>
       </item>
