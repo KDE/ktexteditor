@@ -163,6 +163,8 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 app->openUrl(QUrl())->saveAs(url);
             }
         }
+    // splitView() orientations are reversed from the usual editor convention.
+    // 'vsplit' and 'vnew' use Qt::Horizontal to match vi and the Kate UI actions.
     } else if (re_new.exactMatch(command)) {
         if (re_new.cap(1) == QLatin1String("v")) { // vertical split
             mainWin->splitView(Qt::Horizontal);
@@ -173,9 +175,9 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     } else if (command == QLatin1String("enew")) {
         mainWin->openUrl(QUrl());
     } else if (re_split.exactMatch(command)) {
-        mainWin->splitView(Qt::Horizontal);
+        mainWin->splitView(Qt::Vertical); // see above
     } else if (re_vsplit.exactMatch(command)) {
-        mainWin->splitView(Qt::Vertical);
+        mainWin->splitView(Qt::Horizontal);
     } else if (re_vclose.exactMatch(command)) {
         QTimer::singleShot(0, this, SLOT(closeCurrentSplitView()));
     } else if (re_only.exactMatch(command)) {
