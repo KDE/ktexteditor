@@ -144,7 +144,7 @@ helpful to hide license headers which are commonly placed at the
 beginning of a file.</string>
         </property>
         <property name="text">
-         <string>Fold First Line</string>
+         <string>Fold first line</string>
         </property>
        </widget>
       </item>

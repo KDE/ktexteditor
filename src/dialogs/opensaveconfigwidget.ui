@@ -37,7 +37,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="lblEncodingDetection">
           <property name="text">
-           <string>&amp;Encoding Detection:</string>
+           <string>&amp;Encoding detection:</string>
           </property>
           <property name="buddy">
            <cstring>cmbEncodingDetection</cstring>
@@ -54,7 +54,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="lblEncodingDetection2">
           <property name="text">
-           <string>&amp;Fallback Encoding:</string>
+           <string>&amp;Fallback encoding:</string>
           </property>
           <property name="buddy">
            <cstring>cmbEncodingFallback</cstring>
@@ -122,7 +122,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Line Length Limit:</string>
+         <string>Line length limit:</string>
         </property>
         <property name="buddy">
          <cstring>lineLengthLimit</cstring>
