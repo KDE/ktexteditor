@@ -60,9 +60,9 @@ public:
      */
     enum EndOfLineMode {
         eolUnknown = -1
-                     , eolUnix = 0
-                                 , eolDos = 1
-                                            , eolMac = 2
+      , eolUnix = 0
+      , eolDos = 1
+      , eolMac = 2
     };
 
     /**
