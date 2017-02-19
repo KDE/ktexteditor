@@ -62,6 +62,23 @@ void KateViewTest::testCoordinatesToCursor()
              KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
 
+    // check consistency between cursorToCoordinate(view->cursorPosition() and cursorPositionCoordinates()
+    // random position
+    view1->setCursorPosition(KTextEditor::Cursor(0, 3));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())),
+             KTextEditor::Cursor(0, 3));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 3));
+    // end of line
+    view1->setCursorPosition(KTextEditor::Cursor(0, 9));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))),
+             KTextEditor::Cursor(0, 9));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 9));
+    // empty line
+    view1->setCursorPosition(KTextEditor::Cursor(2, 0));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))),
+             KTextEditor::Cursor(2, 0));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(2, 0));
+
     // same test again, but with message widget on top visible
     KTextEditor::Message *message = new KTextEditor::Message("Jo World!", KTextEditor::Message::Information);
     doc.postMessage(message);

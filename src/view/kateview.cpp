@@ -2545,7 +2545,7 @@ KTextEditor::Cursor KTextEditor::ViewPrivate::coordinatesToCursor(const QPoint &
 QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const
 {
     // map from ViewInternal to View coordinates
-    const QPoint pt = m_viewInternal->cursorCoordinates();
+    const QPoint pt = m_viewInternal->cursorCoordinates(false);
     return pt == QPoint(-1, -1) ? pt : m_viewInternal->mapToParent(pt);
 }
 

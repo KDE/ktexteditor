@@ -765,6 +765,11 @@ QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor &cursor, b
     const int y = (int)viewLine * renderer()->lineHeight();
 
     KateTextLayout layout = cache()->viewLine(viewLine);
+
+    if (cursor.column() > layout.lineLayout().textLength()) {
+        return QPoint(-1, -1);
+    }
+
     int x = 0;
 
     // only set x value if we have a valid layout (bug #171027)
@@ -2789,7 +2794,7 @@ KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, 
         ret = renderer()->xToCursor(thisLine, coord.x(), !m_view->wrapCursor());
     }
 
-    if (ret.column() == view()->document()->lineLength(ret.line())) {
+    if (ret.column() > view()->document()->lineLength(ret.line())) {
         // The cursor is beyond the end of the line; in that case the renderer
         // gives the index of the character behind the last one.
         return KTextEditor::Cursor::invalid();
