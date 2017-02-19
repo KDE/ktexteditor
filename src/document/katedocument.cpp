@@ -51,6 +51,10 @@
 #include "kateabstractinputmode.h"
 #include "katetemplatehandler.h"
 
+#ifdef EDITORCONFIG_FOUND
+#include "editorconfig.h"
+#endif
+
 #include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
 
@@ -2545,7 +2549,7 @@ void KTextEditor::DocumentPrivate::readDirConfig()
     }
 
     /**
-     * search .kateconfig upwards
+     * first search .kateconfig upwards
      * with recursion guard
      */
     QSet<QString> seenDirectories;
@@ -2571,7 +2575,7 @@ void KTextEditor::DocumentPrivate::readDirConfig()
                 linesRead++;
             }
 
-            break;
+            return;
         }
 
         /**
@@ -2581,6 +2585,14 @@ void KTextEditor::DocumentPrivate::readDirConfig()
             break;
         }
     }
+
+#ifdef EDITORCONFIG_FOUND
+    // if there wasn’t any .kateconfig file and KTextEditor was compiled with
+    // EditorConfig support, try to load document config from a .editorconfig
+    // file, if such is provided
+    EditorConfig editorConfig(this);
+    editorConfig.parse();
+#endif
 }
 
 void KTextEditor::DocumentPrivate::activateDirWatch(const QString &useFileName)

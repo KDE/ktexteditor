@@ -11,6 +11,12 @@ if(LIBGIT2_FOUND)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
 
+if(EditorConfig_FOUND)
+    add_definitions(-DEDITORCONFIG_FOUND)
+    SET (CMAKE_REQUIRED_LIBRARIES editorconfig)
+    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} editorconfig)
+endif()
+
 # handle include files, both normal ones and generated ones
 add_subdirectory(include)
 
@@ -212,6 +218,11 @@ inputmode/kateabstractinputmodefactory.cpp
 inputmode/katenormalinputmode.cpp
 inputmode/katenormalinputmodefactory.cpp
 )
+
+# optionally compile with EditorConfig support
+if(EditorConfig_FOUND)
+    set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} document/editorconfig.cpp)
+endif()
 
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
 dialogs/textareaappearanceconfigwidget.ui
