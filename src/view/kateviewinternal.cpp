@@ -766,7 +766,7 @@ QPoint KateViewInternal::cursorToCoordinate(const KTextEditor::Cursor &cursor, b
 
     KateTextLayout layout = cache()->viewLine(viewLine);
 
-    if (cursor.column() > layout.lineLayout().textLength()) {
+    if (cursor.column() > doc()->lineLength(cursor.line())) {
         return QPoint(-1, -1);
     }
 
