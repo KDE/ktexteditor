@@ -3069,6 +3069,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->lineModification();
     } else if (key == QLatin1String("keyword-completion")) {
         return config()->keywordCompletion();
+    } else if (key == QLatin1String("word-count")) {
+        return config()->showWordCount();
     } else if (key == QLatin1String("scrollbar-minimap")) {
         return config()->scrollBarMiniMap();
     } else if (key == QLatin1String("scrollbar-preview")) {
