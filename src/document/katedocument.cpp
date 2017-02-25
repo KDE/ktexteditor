@@ -2632,6 +2632,10 @@ void KTextEditor::DocumentPrivate::deactivateDirWatch()
 
 bool KTextEditor::DocumentPrivate::openUrl(const QUrl &url)
 {
+    if (!m_reloading) {
+        // Reset filetype when opening url
+        m_fileTypeSetByUser = false;
+    }
     bool res = KTextEditor::Document::openUrl(normalizeUrl(url));
     updateDocName();
     return res;
