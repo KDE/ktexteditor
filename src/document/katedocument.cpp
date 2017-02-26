@@ -1825,6 +1825,9 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         // restore the filetype
         if (kconfig.hasKey("Mode")) {
             updateFileType(kconfig.readEntry("Mode", fileType()));
+
+            // restore if set by user, too!
+            m_fileTypeSetByUser = kconfig.readEntry("Mode Set By User", false);
         }
     }
 
@@ -1873,6 +1876,8 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
     if (!flags.contains(QStringLiteral("SkipMode"))) {
         // save file type
         kconfig.writeEntry("Mode", m_fileType);
+        // save if set by user, too!
+        kconfig.writeEntry("Mode Set By User", m_fileTypeSetByUser);
     }
 
     if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
