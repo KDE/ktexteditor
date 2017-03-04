@@ -50,7 +50,7 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     : QObject(view)
     , m_view(view)
     , m_undoManager(undoManager)
-    , m_wholeTemplateRange(nullptr)
+    , m_wholeTemplateRange()
     , m_internalEdit(false)
     , m_templateScript(script, KateScript::InputSCRIPT)
 {

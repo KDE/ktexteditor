@@ -31,7 +31,7 @@
 
 KateLineLayout::KateLineLayout(KateRenderer &renderer)
     : m_renderer(renderer)
-    , m_textLine(nullptr)
+    , m_textLine()
     , m_line(-1)
     , m_virtualLine(-1)
     , m_shiftX(0)
