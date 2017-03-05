@@ -483,7 +483,9 @@ void KateScrollBar::updatePixmap()
     // The text currently selected in the document, to be drawn later.
     const KTextEditor::Range &selection = m_view->selectionRange();
 
+    // init pen once, afterwards, only change it if color changes to avoid a lot of allocation for setPen
     QPainter painter;
+    painter.setPen(selectionBgColor);
     if (painter.begin(&m_pixmap)) {
         // Do not force updates of the highlighting if the document is very large
         bool simpleMode = m_doc->lines() > 7500;
@@ -508,7 +510,9 @@ void KateScrollBar::updatePixmap()
 
             // Draw selection if it is on an empty line
             if (selection.contains(KTextEditor::Cursor(realLineNumber, 0)) && lineText.size() == 0) {
-                painter.setPen(selectionBgColor);
+                if (selectionBgColor != painter.pen().color()) {
+                    painter.setPen(selectionBgColor);
+                }
                 painter.drawLine(s_pixelMargin, pixelY, s_pixelMargin + s_lineWidth - 1, pixelY);
             }
 
@@ -537,7 +541,9 @@ void KateScrollBar::updatePixmap()
             }
 
             if (selStartX != -1) {
-                painter.setPen(selectionBgColor);
+                if (selectionBgColor != painter.pen().color()) {
+                    painter.setPen(selectionBgColor);
+                }
                 painter.drawLine(selStartX, pixelY, selEndX, pixelY);
             }
 
@@ -554,7 +560,10 @@ void KateScrollBar::updatePixmap()
                 } else if (lineText[x] == QLatin1Char('\t')) {
                     pixelX += qMax(4 / charIncrement, 1); // FIXME: tab width...
                 } else {
-                    painter.setPen(charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]));
+                    const QColor newPenColor(charColor(attributes, attributeIndex, decorations, defaultTextColor, x, lineText[x]));
+                    if (newPenColor != painter.pen().color()) {
+                        painter.setPen(newPenColor);
+                    }
 
                     // Actually draw the pixel with the color queried from the renderer.
                     painter.drawPoint(pixelX, pixelY);
