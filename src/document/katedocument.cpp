@@ -5092,16 +5092,15 @@ void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVar
         } else if (key == QLatin1String("backup-on-save-prefix")) {
             m_config->setBackupPrefix(value.toString());
         }
-    } else if (value.canConvert(QVariant::Bool)) {
+    } else if (value.type() == QVariant::Bool) {
         const bool bValue = value.toBool();
-        if (key == QLatin1String("backup-on-save-local") && value.type() == QVariant::String) {
+        if (key == QLatin1String("backup-on-save-local")) {
             uint f = m_config->backupFlags();
             if (bValue) {
                 f |= KateDocumentConfig::LocalFiles;
             } else {
                 f ^= KateDocumentConfig::LocalFiles;
             }
-
             m_config->setBackupFlags(f);
         } else if (key == QLatin1String("backup-on-save-remote")) {
             uint f = m_config->backupFlags();
@@ -5110,7 +5109,6 @@ void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVar
             } else {
                 f ^= KateDocumentConfig::RemoteFiles;
             }
-
             m_config->setBackupFlags(f);
         } else if (key == QLatin1String("replace-tabs")) {
             m_config->setReplaceTabsDyn(bValue);
