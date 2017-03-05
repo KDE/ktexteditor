@@ -127,6 +127,7 @@ ecm_add_tests(
   src/wordcompletiontest.cpp
   src/searchbar_test.cpp
   src/movingcursor_test.cpp
+  src/configinterface_test.cpp
   src/messagetest.cpp
   src/kte_documentcursor.cpp
   src/bug313769.cpp
