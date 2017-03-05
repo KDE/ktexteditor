@@ -87,6 +87,7 @@ namespace KTextEditor
  *  - word-count [bool] enable/disable the counting of words and characters in the statusbar
  *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
  *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
+ *  - font [QFont] change the font
  *
  * KTextEditor::Document has support for the following:
  *  - backup-on-save-local [bool], enable/disable backup when saving local files
@@ -97,6 +98,7 @@ namespace KTextEditor
  *  - indent-pasted-text [bool], whether to indent pasted text
  *  - tab-width [int], read/set the width for tabs
  *  - indent-width [int], read/set the indentation width
+ *  - on-the-fly-spellcheck [bool], enable/disable on the fly spellcheck
  *
  * Either interface should emit the \p configChanged signal when appropriate.
  * TODO: Add to interface in KDE 5.

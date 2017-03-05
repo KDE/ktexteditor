@@ -3028,7 +3028,8 @@ QStringList KTextEditor::ViewPrivate::configKeys() const
         QStringLiteral("keyword-completion"),
         QStringLiteral("word-count"),
         QStringLiteral("scrollbar-minimap"),
-        QStringLiteral("scrollbar-preview")
+        QStringLiteral("scrollbar-preview"),
+        QStringLiteral("font")
     };
     return keys;
 }
@@ -3075,6 +3076,8 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
         return config()->scrollBarMiniMap();
     } else if (key == QLatin1String("scrollbar-preview")) {
         return config()->scrollBarPreview();
+    } else if (key == QLatin1String("font")) {
+        return renderer()->config()->font();
     }
 
     // return invalid variant
@@ -3132,6 +3135,11 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     } else if (value.canConvert(QVariant::UInt)) {
         if (key == QLatin1String("default-mark-type")) {
             config()->setDefaultMarkType(value.toUInt());
+        }
+
+    } else if (value.canConvert(QVariant::Font)) {
+        if (key == QLatin1String("font")) {
+            renderer()->config()->setFont(value.value<QFont>());
         }
     }
 }

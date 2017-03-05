@@ -5053,6 +5053,7 @@ QStringList KTextEditor::DocumentPrivate::configKeys() const
         QStringLiteral("indent-pasted-text"),
         QStringLiteral("tab-width"),
         QStringLiteral("indent-width"),
+        QStringLiteral("on-the-fly-spellcheck"),
     };
     return keys;
 }
@@ -5075,6 +5076,8 @@ QVariant KTextEditor::DocumentPrivate::configValue(const QString &key)
         return m_config->tabWidth();
     } else if (key == QLatin1String("indent-width")) {
         return m_config->indentationWidth();
+    } else if (key == QLatin1String("on-the-fly-spellcheck")) {
+        return isOnTheFlySpellCheckingEnabled();
     }
 
     // return invalid variant
@@ -5113,6 +5116,8 @@ void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVar
             m_config->setReplaceTabsDyn(bValue);
         } else if (key == QLatin1String("indent-pasted-text")) {
             m_config->setIndentPastedText(bValue);
+        } else if (key == QLatin1String("on-the-fly-spellcheck")) {
+            onTheFlySpellCheckingEnabled(bValue);
         }
     } else if (value.canConvert(QVariant::Int)) {
         if (key == QLatin1String("tab-width")) {
