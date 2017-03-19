@@ -2549,6 +2549,48 @@ QPoint KTextEditor::ViewPrivate::cursorPositionCoordinates() const
     return pt == QPoint(-1, -1) ? pt : m_viewInternal->mapToParent(pt);
 }
 
+void KTextEditor::ViewPrivate::setScrollPositionInternal(KTextEditor::Cursor &cursor)
+{
+    m_viewInternal->scrollPos(cursor, false, true, false);
+}
+
+void KTextEditor::ViewPrivate::setHorizontalScrollPositionInternal(int x)
+{
+    m_viewInternal->scrollColumns(x);
+}
+
+KTextEditor::Cursor KTextEditor::ViewPrivate::maxScrollPositionInternal() const
+{
+    return m_viewInternal->maxStartPos(true);
+}
+
+
+int KTextEditor::ViewPrivate::firstDisplayedLineInternal(LineType lineType) const
+{
+    if (lineType == RealLine) {
+        return m_textFolding.visibleLineToLine(m_viewInternal->startLine());
+    } else {
+        return m_viewInternal->startLine();
+    }
+}
+
+int KTextEditor::ViewPrivate::lastDisplayedLineInternal(LineType lineType) const
+{
+    if (lineType == RealLine) {
+        return  m_textFolding.visibleLineToLine(m_viewInternal->endLine());
+    } else {
+        return m_viewInternal->endLine();
+    }
+}
+
+QRect KTextEditor::ViewPrivate::textAreaRectInternal() const
+{
+    const auto sourceRect = m_viewInternal->rect();
+    const auto topLeft = m_viewInternal->mapTo(this, sourceRect.topLeft());
+    const auto bottomRight = m_viewInternal->mapTo(this, sourceRect.bottomRight());
+    return {topLeft, bottomRight};
+}
+
 bool KTextEditor::ViewPrivate::setCursorPositionVisual(const KTextEditor::Cursor &position)
 {
     return setCursorPositionInternal(position, m_doc->config()->tabWidth(), true);

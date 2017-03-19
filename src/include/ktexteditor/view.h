@@ -215,6 +215,13 @@ public:
     };
 
     /**
+     * Possible line types
+     */
+    enum LineType {
+        RealLine = 0,   /** < Real line. */
+        VisibleLine = 1 /** < Visible line. Line that is not folded. */
+    };
+    /**
      * Get the current view mode/state.
      * This can be used to detect the view's current mode. For
      * example \NormalInputMode, \ViInputMode or whatever other input modes are
@@ -651,6 +658,68 @@ public:
     bool insertTemplate(const KTextEditor::Cursor& insertPosition,
                         const QString& templateString,
                         const QString& script = QString());
+
+
+    /**
+    * Scroll view to cursor.
+    *
+    * \param cursor the cursor position to scroll to.
+    */
+    void setScrollPosition(KTextEditor::Cursor &cursor);
+
+    /**
+     * Horizontally scroll view to position.
+     *
+     * \param x the pixel position to scroll to.
+     */
+    void setHorizontalScrollPosition(int x);
+
+    /**
+     * Get the cursor corresponding to the maximum position
+     * the view can vertically scroll to.
+     *
+     * \return cursor position of the maximum vertical scroll position.
+     */
+    KTextEditor::Cursor maxScrollPosition() const;
+
+    /**
+     * Get the first displayed line in the view.
+     *
+     * \param real if REAL (the default), it returns the real line number
+     * accounting for folded regions. In that case it walks over all folded
+     * regions
+     * O(n) for n == number of folded ranges
+     *
+     * \note if code is folded, many hundred lines can be
+     * between firstVisibleLine() and lastVisibleLine().
+     *
+     * \return the first visible line.
+     * \see lastVisibleLine()
+     */
+    int firstDisplayedLine(LineType lineType = RealLine) const;
+
+    /**
+     * Get the last displayed line in the view.
+     *
+     * \param lineType if REAL (the default), it returns the real line number
+     * accounting for folded regions. In that case it walks over all folded
+     * regions
+     * O(n) for n == number of folded ranges
+     *
+     * \note if code is folded, many hundred lines can be
+     * between firstVisibleLine() and lastVisibleLine().
+     *
+     * \return the last visible line.
+     * \see firstVisibleLine()
+     */
+    int lastDisplayedLine(LineType lineType = RealLine) const;
+
+    /**
+     * Get the view's text area rectangle excluding border, scrollbars, etc.
+     *
+     * \return the view's text area rectangle
+     */
+    QRect textAreaRect() const;
 
 public:
     /**

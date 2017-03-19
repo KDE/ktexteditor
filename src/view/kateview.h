@@ -970,6 +970,19 @@ private:
     // remember folding state to prevent refolding the first line if it was manually unfolded,
     // e.g. when saving a file or changing other config vars
     bool m_autoFoldedFirstLine;
+
+public:
+    void setScrollPositionInternal(KTextEditor::Cursor &cursor);
+
+    void setHorizontalScrollPositionInternal(int x);
+
+    KTextEditor::Cursor maxScrollPositionInternal() const;
+
+    int firstDisplayedLineInternal(LineType lineType) const;
+
+    int lastDisplayedLineInternal(LineType lineType) const;
+
+    QRect textAreaRectInternal() const;
 };
 
 }

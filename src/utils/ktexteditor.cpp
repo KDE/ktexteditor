@@ -249,3 +249,33 @@ bool Command::wantsToProcessText(const QString &)
 void Command::processText(KTextEditor::View *, const QString &)
 {
 }
+
+void View::setScrollPosition(KTextEditor::Cursor &cursor)
+{
+    d->setScrollPositionInternal(cursor);
+}
+
+void View::setHorizontalScrollPosition(int x)
+{
+    d->setHorizontalScrollPositionInternal(x);
+}
+
+KTextEditor::Cursor View::maxScrollPosition() const
+{
+    return d->maxScrollPositionInternal();
+}
+
+int View::firstDisplayedLine(LineType lineType) const
+{
+    return d->firstDisplayedLineInternal(lineType);
+}
+
+int View::lastDisplayedLine(LineType lineType) const
+{
+    return d->lastDisplayedLineInternal(lineType);
+}
+
+QRect View::textAreaRect() const
+{
+    return d->textAreaRectInternal();
+}
