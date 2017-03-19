@@ -483,10 +483,11 @@ void KateScrollBar::updatePixmap()
     // The text currently selected in the document, to be drawn later.
     const KTextEditor::Range &selection = m_view->selectionRange();
 
-    // init pen once, afterwards, only change it if color changes to avoid a lot of allocation for setPen
     QPainter painter;
-    painter.setPen(selectionBgColor);
     if (painter.begin(&m_pixmap)) {
+        // init pen once, afterwards, only change it if color changes to avoid a lot of allocation for setPen
+        painter.setPen(selectionBgColor);
+
         // Do not force updates of the highlighting if the document is very large
         bool simpleMode = m_doc->lines() > 7500;
 
@@ -592,6 +593,9 @@ void KateScrollBar::updatePixmap()
                 }
             }
         }
+
+        // end painting
+        painter.end();
     }
 
     // set right ratio
