@@ -40,6 +40,7 @@ private Q_SLOTS:
     void foldingTest();
     void nestedFoldingTest();
     void saveFileInUnwritableFolder();
+    void saveFileWithElevatedPrivileges();
 };
 
 #endif // KATEBUFFERTEST_H

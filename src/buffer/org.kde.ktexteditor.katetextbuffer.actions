@@ -1,0 +1,10 @@
+[Domain]
+Name=Document Actions
+Policy=auth_admin
+Persistence=session
+
+[org.kde.ktexteditor.katetextbuffer.savefile]
+Name=Save Document
+Description=Root privileges are needed to save this document
+Policy=auth_admin
+Persistence=session

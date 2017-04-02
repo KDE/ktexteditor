@@ -19,8 +19,10 @@
  */
 
 #include "config.h"
+#include "kateglobal.h"
 
 #include "katetextbuffer.h"
+#include "katesecuretextbuffer_p.h"
 #include "katetextloader.h"
 
 // this is unfortunate, but needed for performance
@@ -30,13 +32,12 @@
 
 #ifndef Q_OS_WIN
 #include <unistd.h>
-
-// needed for umask application
-#include <sys/types.h>
-#include <sys/stat.h>
 #endif
 
 #include <QSaveFile>
+#include <QTemporaryFile>
+#include <QFileDevice>
+#include <QFileInfo>
 
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
@@ -47,7 +48,7 @@
 namespace Kate
 {
 
-TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize)
+TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool alwaysUseKAuth)
     : QObject(parent)
     , m_document(parent)
     , m_history(*this)
@@ -67,6 +68,7 @@ TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize)
     , m_endOfLineMode(eolUnix)
     , m_newLineAtEof(false)
     , m_lineLengthLimit(4096)
+    , m_alwaysUseKAuthForSave(alwaysUseKAuth)
 {
     // minimal block size must be > 0
     Q_ASSERT(m_blockSize > 0);
@@ -763,25 +765,93 @@ bool TextBuffer::save(const QString &filename)
     // codec must be set!
     Q_ASSERT(m_textCodec);
 
-#ifndef Q_OS_WIN
     const bool newFile = !QFile::exists(filename);
-#endif
+
+    /**
+     * Memorize owner and group. Due to design of QSaveFile we will have to re-set them after save is complete.
+     */
+    uint ownerId = -2;
+    uint groupId = -2;
+    if (!newFile) {
+        QFileInfo fileInfo(filename);
+        ownerId = fileInfo.ownerId();
+        groupId = fileInfo.groupId();
+    }
 
     /**
      * use QSaveFile for save write + rename
      */
-    QSaveFile saveFile(filename);
-    saveFile.setDirectWriteFallback(true);
+    QScopedPointer<QFileDevice> saveFile(new QSaveFile(filename));
+    static_cast<QSaveFile *>(saveFile.data())->setDirectWriteFallback(true);
 
-    if (!saveFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        return false;
+    bool usingTemporaryFile = false;
+    QScopedPointer<QVariantMap> kAuthActionArgs;
+    QScopedPointer<KAuth::Action> kAuthSaveAction;
+
+    // open QSaveFile for write
+    if (m_alwaysUseKAuthForSave || !saveFile->open(QIODevice::WriteOnly)) {
+
+        // if that fails we need more privileges to save this file
+        // -> we write to temporary file and then move it to target location
+
+        usingTemporaryFile = true;
+
+        QString targetFilename(filename);
+
+        kAuthActionArgs.reset(new QVariantMap());
+        kAuthActionArgs->insert(QLatin1String("actionMode"), SecureTextBuffer::ActionMode::Prepare);
+        kAuthActionArgs->insert(QLatin1String("targetFile"), targetFilename);
+        kAuthActionArgs->insert(QLatin1String("ownerId"), getuid());
+
+        // call save with elevated privileges
+        if (KTextEditor::EditorPrivate::unitTestMode()) {
+
+            // unit testing purposes only
+            ActionReply reply = SecureTextBuffer::savefile(*kAuthActionArgs);
+            if (!reply.succeeded()) {
+                return false;
+            }
+            targetFilename = reply.data()[QLatin1String("temporaryFile")].toString();
+
+        } else {
+
+            // call action
+            kAuthSaveAction.reset(new KAuth::Action(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile")));
+            kAuthSaveAction->setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
+            kAuthSaveAction->setArguments(*kAuthActionArgs);
+            KAuth::ExecuteJob *job = kAuthSaveAction->execute();
+            if (!job->exec()) {
+                return false;
+            }
+
+            // get temporary file path from the reply
+            targetFilename = job->data()[QLatin1String("temporaryFile")].toString();
+
+        }
+
+        if (targetFilename.isEmpty()) {
+            return false;
+        }
+
+        // we are now saving to a prepared temporary file
+        saveFile.reset(new QFile(targetFilename));
+
+        // open QTemporaryFile for write
+        if (!saveFile->open(QIODevice::WriteOnly)) {
+            return false;
+        }
+
+        if (!newFile) {
+            // set original file's permissions to temporary file (QSaveFile does this automatically)
+            saveFile->setPermissions(QFile(filename).permissions());
+        }
     }
 
     /**
      * construct correct filter device and try to open
      */
     KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
-    KCompressionDevice file(&saveFile, false, type);
+    KCompressionDevice file(saveFile.data(), false, type);
 
     if (!file.open(QIODevice::WriteOnly)) {
         return false;
@@ -836,37 +906,66 @@ bool TextBuffer::save(const QString &filename)
     file.close();
 
     // flush file
-    if (!saveFile.flush()) {
+    if (!saveFile->flush()) {
         return false;
     }
 
-#ifndef Q_OS_WIN
-    // ensure that the file is written to disk
-#ifdef HAVE_FDATASYNC
-    fdatasync(saveFile.handle());
-#else
-    fsync(saveFile.handle());
-#endif
-#endif
+    if (usingTemporaryFile) {
+        // ensure that the file is written to disk
+        // just for temporary file (QSaveFile does this automatically in commit())
+        SecureTextBuffer::syncToDisk(saveFile->handle());
+    }
 
     // did save work?
     // only finalize if stream status == OK
-    bool ok = (stream.status() == QTextStream::Ok) && saveFile.commit();
+    bool ok = (stream.status() == QTextStream::Ok);
+
+    // commit changes
+    if (ok) {
+
+        if (usingTemporaryFile) {
+
+            // temporary file was used to save the file
+            // -> moving this file to original location with KAuth action
+
+            kAuthActionArgs->insert(QLatin1String("actionMode"), SecureTextBuffer::ActionMode::Move);
+            kAuthActionArgs->insert(QLatin1String("sourceFile"), saveFile->fileName());
+            kAuthActionArgs->insert(QLatin1String("targetFile"), filename);
+            kAuthActionArgs->insert(QLatin1String("ownerId"), ownerId);
+            kAuthActionArgs->insert(QLatin1String("groupId"), groupId);
+
+            // call save with elevated privileges
+            if (KTextEditor::EditorPrivate::unitTestMode()) {
+
+                // unit testing purposes only
+                ok = SecureTextBuffer::savefile(*kAuthActionArgs).succeeded();
+
+            } else {
+
+                kAuthSaveAction->setArguments(*kAuthActionArgs);
+                KAuth::ExecuteJob *job = kAuthSaveAction->execute();
+                ok = job->exec();
+
+            }
+
+        } else {
+
+            // standard save without elevated privileges
+
+            ok = static_cast<QSaveFile *>(saveFile.data())->commit();
+
+            if (ok && !newFile) {
+                // ensure correct owner
+                SecureTextBuffer::setOwner(filename, ownerId, groupId);
+            }
+
+        }
+    }
 
     // remember this revision as last saved if we had success!
     if (ok) {
         m_history.setLastSavedRevision();
     }
-
-#ifndef Q_OS_WIN
-    if (ok && newFile) { // QTemporaryFile sets permissions to 0600, so fixing this
-        const mode_t mask = umask(0);
-        umask(mask);
-
-        const mode_t fileMode = 0666 & ~mask;
-        chmod(QFile::encodeName(filename).constData(), fileMode);
-    }
-#endif
 
     // report CODEC + ERRORS
     BUFFER_DEBUG << "Saved file " << filename << "with codec" << m_textCodec->name() << (ok ? "without" : "with") << "errors";

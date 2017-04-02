@@ -466,3 +466,37 @@ void KateTextBufferTest::saveFileInUnwritableFolder()
     QVERIFY(f.remove());
     QVERIFY(dir.remove());
 }
+
+void KateTextBufferTest::saveFileWithElevatedPrivileges()
+{
+    // create temp dir and get file name inside
+    QTemporaryDir dir;
+    QVERIFY(dir.isValid());
+    const QString file_path = dir.path() + QLatin1String("/foo");
+
+    QFile f(file_path);
+    QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+    f.write("1234567890");
+    QVERIFY(f.flush());
+    f.close();
+
+    Kate::TextBuffer buffer(nullptr, 1, true);
+    buffer.setTextCodec(QTextCodec::codecForName("UTF-8"));
+    buffer.setFallbackTextCodec(QTextCodec::codecForName("UTF-8"));
+    bool a, b;
+    int c;
+    buffer.load(file_path, a, b, c, true);
+    buffer.clear();
+    buffer.startEditing();
+    buffer.insertText(KTextEditor::Cursor(0, 0), QLatin1String("ABC"));
+    buffer.finishEditing();
+    qDebug() << buffer.text();
+    buffer.save(file_path);
+
+    f.open(QIODevice::ReadOnly);
+    QCOMPARE(f.readAll(), QByteArray("ABC"));
+    f.close();
+
+    QVERIFY(f.remove());
+    QVERIFY(dir.remove());
+}
