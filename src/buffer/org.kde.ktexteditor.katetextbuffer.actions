@@ -1,10 +1,28 @@
 [Domain]
 Name=Document Actions
+Name[ca]=Accions de document
+Name[nl]=Documentacties
+Name[pt]=Acções do Documento
+Name[sv]=Dokumentåtgärder
+Name[uk]=Дії над документом
+Name[x-test]=xxDocument Actionsxx
 Policy=auth_admin
 Persistence=session
 
 [org.kde.ktexteditor.katetextbuffer.savefile]
 Name=Save Document
+Name[ca]=Desa el document
+Name[nl]=Document opslaan
+Name[pt]=Gravar o Documento
+Name[sv]=Spara dokument
+Name[uk]=Зберегти документ
+Name[x-test]=xxSave Documentxx
 Description=Root privileges are needed to save this document
+Description[ca]=Es requereixen privilegis d'administrador per desar aquest document
+Description[nl]=Om dit document op te slaan zijn root-rechten nodig
+Description[pt]=São necessários privilégios de 'root' para gravar este documento
+Description[sv]=Systemadministratörsprivilegier krävs för att spara dokumentet
+Description[uk]=Для збереження документа потрібні права доступу користувача root
+Description[x-test]=xxRoot privileges are needed to save this documentxx
 Policy=auth_admin
 Persistence=session
