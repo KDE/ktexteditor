@@ -875,6 +875,17 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
         }
     }
 
+    // Add ScrollBarMarks
+    KTextEditor::MarkInterface* iface = qobject_cast<KTextEditor::MarkInterface*>(m_view->document());
+    if (iface) {
+        iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
+        iface->setMarkPixmap(KTextEditor::MarkInterface::SearchMatch, QIcon().pixmap(0,0));
+        foreach (Range r, highlightRanges) {
+            iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
+        }
+    }
+
+    // Add highlights
     if (replacement == nullptr)
         foreach (Range r, highlightRanges) {
             highlightMatch(r);
@@ -1519,6 +1530,19 @@ void KateSearchBar::enterIncrementalMode()
 
 bool KateSearchBar::clearHighlights()
 {
+    // Remove ScrollBarMarks
+    KTextEditor::MarkInterface* iface = qobject_cast<KTextEditor::MarkInterface*>(m_view->document());
+    if (iface) {
+        const QHash<int, KTextEditor::Mark*> marks = iface->marks();
+        QHashIterator<int, KTextEditor::Mark*> i(marks);
+        while (i.hasNext()) {
+            i.next();
+            if (i.value()->type & KTextEditor::MarkInterface::SearchMatch) {
+                iface->removeMark(i.value()->line, KTextEditor::MarkInterface::SearchMatch);
+            }
+        }
+    }
+
     if (m_infoMessage) {
         delete m_infoMessage;
     }

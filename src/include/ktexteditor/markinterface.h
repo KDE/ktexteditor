@@ -256,7 +256,8 @@ public:
         BreakpointDisabled = markType04,
         Execution = markType05,
         Warning = markType06,
-        Error = markType07
+        Error = markType07,
+        SearchMatch = markType32,
     };
 
     //
