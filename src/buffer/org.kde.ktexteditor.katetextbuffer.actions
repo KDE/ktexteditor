@@ -2,6 +2,7 @@
 Name=Document Actions
 Name[ca]=Accions de document
 Name[ca@valencia]=Accions de document
+Name[de]=Dokument-Aktionen
 Name[es]=Acciones de documento
 Name[ia]=Actiones de documento
 Name[nl]=Documentacties
@@ -24,6 +25,7 @@ Persistence=session
 Name=Save Document
 Name[ca]=Desa el document
 Name[ca@valencia]=Guarda el document
+Name[de]=Dokument speichern
 Name[es]=Guardar documento
 Name[ia]=Salveguarda documento
 Name[nl]=Document opslaan
