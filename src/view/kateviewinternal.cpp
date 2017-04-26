@@ -1417,7 +1417,7 @@ KTextEditor::Cursor KateViewInternal::viewLineOffset(const KTextEditor::Cursor &
         if (offset <= currentOffset) {
             // the answer is on the same line
             KateTextLayout thisLine = cache()->textLayout(realCursor.line(), cursorViewLine + offset);
-            Q_ASSERT(thisLine.virtualLine() == virtualCursor.line());
+            Q_ASSERT(thisLine.virtualLine() == (int) m_view->textFolding().lineToVisibleLine(virtualCursor.line()));
             return KTextEditor::Cursor(virtualCursor.line(), thisLine.startCol());
         }
 
