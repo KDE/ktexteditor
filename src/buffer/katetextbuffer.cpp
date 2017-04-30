@@ -36,8 +36,9 @@
 
 #include <QSaveFile>
 #include <QTemporaryFile>
-#include <QFileDevice>
 #include <QFileInfo>
+#include <QCryptographicHash>
+#include <QBuffer>
 
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
@@ -779,71 +780,27 @@ bool TextBuffer::save(const QString &filename)
     }
 
     /**
-     * use QSaveFile for save write + rename
+     * use QSaveFile for file saving
      */
-    QScopedPointer<QFileDevice> saveFile(new QSaveFile(filename));
+    QScopedPointer<QIODevice> saveFile(new QSaveFile(filename));
     static_cast<QSaveFile *>(saveFile.data())->setDirectWriteFallback(true);
 
-    bool usingTemporaryFile = false;
-    QScopedPointer<QVariantMap> kAuthActionArgs;
-    QScopedPointer<KAuth::Action> kAuthSaveAction;
+    bool usingTemporaryBuffer = false;
 
     // open QSaveFile for write
     if (m_alwaysUseKAuthForSave || !saveFile->open(QIODevice::WriteOnly)) {
 
         // if that fails we need more privileges to save this file
-        // -> we write to temporary file and then move it to target location
+        // -> we write to a temporary file and then send its path to KAuth action for privileged save
 
-        usingTemporaryFile = true;
+        usingTemporaryBuffer = true;
 
-        QString targetFilename(filename);
+        // we are now saving to a temporary buffer
+        saveFile.reset(new QBuffer());
 
-        kAuthActionArgs.reset(new QVariantMap());
-        kAuthActionArgs->insert(QLatin1String("actionMode"), SecureTextBuffer::ActionMode::Prepare);
-        kAuthActionArgs->insert(QLatin1String("targetFile"), targetFilename);
-        kAuthActionArgs->insert(QLatin1String("ownerId"), getuid());
-
-        // call save with elevated privileges
-        if (KTextEditor::EditorPrivate::unitTestMode()) {
-
-            // unit testing purposes only
-            ActionReply reply = SecureTextBuffer::savefile(*kAuthActionArgs);
-            if (!reply.succeeded()) {
-                return false;
-            }
-            targetFilename = reply.data()[QLatin1String("temporaryFile")].toString();
-
-        } else {
-
-            // call action
-            kAuthSaveAction.reset(new KAuth::Action(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile")));
-            kAuthSaveAction->setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
-            kAuthSaveAction->setArguments(*kAuthActionArgs);
-            KAuth::ExecuteJob *job = kAuthSaveAction->execute();
-            if (!job->exec()) {
-                return false;
-            }
-
-            // get temporary file path from the reply
-            targetFilename = job->data()[QLatin1String("temporaryFile")].toString();
-
-        }
-
-        if (targetFilename.isEmpty()) {
+        // open buffer for write and read (read is used for checksum computing and writing to temporary file)
+        if (!saveFile->open(QIODevice::ReadWrite)) {
             return false;
-        }
-
-        // we are now saving to a prepared temporary file
-        saveFile.reset(new QFile(targetFilename));
-
-        // open QTemporaryFile for write
-        if (!saveFile->open(QIODevice::WriteOnly)) {
-            return false;
-        }
-
-        if (!newFile) {
-            // set original file's permissions to temporary file (QSaveFile does this automatically)
-            saveFile->setPermissions(QFile(filename).permissions());
         }
     }
 
@@ -906,14 +863,8 @@ bool TextBuffer::save(const QString &filename)
     file.close();
 
     // flush file
-    if (!saveFile->flush()) {
-        return false;
-    }
-
-    if (usingTemporaryFile) {
-        // ensure that the file is written to disk
-        // just for temporary file (QSaveFile does this automatically in commit())
-        SecureTextBuffer::syncToDisk(saveFile->handle());
+    if (!usingTemporaryBuffer) {
+        static_cast<QSaveFile *>(saveFile.data())->flush();
     }
 
     // did save work?
@@ -923,27 +874,58 @@ bool TextBuffer::save(const QString &filename)
     // commit changes
     if (ok) {
 
-        if (usingTemporaryFile) {
+        if (usingTemporaryBuffer) {
 
-            // temporary file was used to save the file
-            // -> moving this file to original location with KAuth action
+            // temporary buffer was used to save the file
+            // -> computing checksum
+            // -> saving to temporary file
+            // -> copying the temporary file to the original file location with KAuth action
 
-            kAuthActionArgs->insert(QLatin1String("actionMode"), SecureTextBuffer::ActionMode::Move);
-            kAuthActionArgs->insert(QLatin1String("sourceFile"), saveFile->fileName());
-            kAuthActionArgs->insert(QLatin1String("targetFile"), filename);
-            kAuthActionArgs->insert(QLatin1String("ownerId"), ownerId);
-            kAuthActionArgs->insert(QLatin1String("groupId"), groupId);
+            QTemporaryFile tempFile;
+            if (!tempFile.open()) {
+                return false;
+            }
+            QCryptographicHash cryptographicHash(SecureTextBuffer::checksumAlgorithm);
+
+            // go to QBuffer start
+            saveFile->seek(0);
+
+            // read contents of QBuffer and add them to checksum utility as well as to QTemporaryFile
+            char buffer[bufferLength];
+            qint64 read = -1;
+            while ((read = saveFile->read(buffer, bufferLength)) > 0) {
+                cryptographicHash.addData(buffer, read);
+                if (tempFile.write(buffer, read) == -1) {
+                    return false;
+                }
+            }
+            if (!tempFile.flush()) {
+                return false;
+            }
+
+            // compute checksum
+            QByteArray checksum = cryptographicHash.result();
+
+            // prepare data for KAuth action
+            QVariantMap kAuthActionArgs;
+            kAuthActionArgs.insert(QLatin1String("sourceFile"), tempFile.fileName());
+            kAuthActionArgs.insert(QLatin1String("targetFile"), filename);
+            kAuthActionArgs.insert(QLatin1String("checksum"), checksum);
+            kAuthActionArgs.insert(QLatin1String("ownerId"), ownerId);
+            kAuthActionArgs.insert(QLatin1String("groupId"), groupId);
 
             // call save with elevated privileges
             if (KTextEditor::EditorPrivate::unitTestMode()) {
 
                 // unit testing purposes only
-                ok = SecureTextBuffer::savefile(*kAuthActionArgs).succeeded();
+                ok = SecureTextBuffer::savefile(kAuthActionArgs).succeeded();
 
             } else {
 
-                kAuthSaveAction->setArguments(*kAuthActionArgs);
-                KAuth::ExecuteJob *job = kAuthSaveAction->execute();
+                KAuth::Action kAuthSaveAction(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile"));
+                kAuthSaveAction.setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
+                kAuthSaveAction.setArguments(kAuthActionArgs);
+                KAuth::ExecuteJob *job = kAuthSaveAction.execute();
                 ok = job->exec();
 
             }
@@ -952,12 +934,14 @@ bool TextBuffer::save(const QString &filename)
 
             // standard save without elevated privileges
 
-            ok = static_cast<QSaveFile *>(saveFile.data())->commit();
+            QSaveFile *saveFileLocal = static_cast<QSaveFile *>(saveFile.data());
 
-            if (ok && !newFile) {
+            if (!newFile) {
                 // ensure correct owner
-                SecureTextBuffer::setOwner(filename, ownerId, groupId);
+                SecureTextBuffer::setOwner(saveFileLocal->handle(), ownerId, groupId);
             }
+
+            ok = saveFileLocal->commit();
 
         }
     }

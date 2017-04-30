@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QCryptographicHash>
 
 #include <kauth.h>
 
@@ -43,39 +44,29 @@ class SecureTextBuffer : public QObject
 
 public:
 
-    /**
-     * We support Prepare action for temporary file creation
-     * and Move action for moving final file to its destination
-     */
-    enum ActionMode {
-        Prepare = 1,
-        Move = 2
-    };
-
     SecureTextBuffer() {}
 
     ~SecureTextBuffer() {}
 
     /**
-     * Common helper methods
+     * Common helper method
      */
-    static void setOwner(const QString &filename, const uint ownerId, const uint groupId);
-    static void syncToDisk(const int fd);
+    static void setOwner(const int filedes, const uint ownerId, const uint groupId);
+
+    static const QCryptographicHash::Algorithm checksumAlgorithm = QCryptographicHash::Algorithm::Sha512;
 
 private:
     static const qint64 bufferLength = 4096;
 
     /**
-     * Creates temporary file based on given target file path.
-     * Temporary file is set to not be deleted on object destroy
-     * so KTextEditor can save contents in it.
+     * Saves file contents using sets permissions.
      */
-    static QString prepareTempFileInternal(const QString &targetFile, const uint ownerId);
+    static bool saveFileInternal(const QString &sourceFile, const QString &targetFile,
+                                        const QByteArray &checksum, const uint ownerId, const uint groupId);
 
-    /**
-     * Move file to its given destination and set owner.
-     */
-    static bool moveFileInternal(const QString &sourceFile, const QString &targetFile, const uint ownerId, const uint groupId);
+    static bool moveFile(const QString &sourceFile, const QString &targetFile);
+
+    static void syncToDisk(const int fd);
 
 public Q_SLOTS:
     /**

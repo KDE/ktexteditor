@@ -649,6 +649,11 @@ private:
      * For unit-testing purposes only.
      */
     bool m_alwaysUseKAuthForSave;
+
+    /**
+     * For copying QBuffer -> QTemporaryFile while saving document in privileged mode
+     */
+    static const qint64 bufferLength = 4096;
 };
 
 }
