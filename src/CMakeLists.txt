@@ -331,6 +331,33 @@ install(FILES
   COMPONENT Devel
 )
 
+if(BUILD_QCH)
+    ecm_add_qch(
+        KF5TextEditor_QCH
+        NAME KTextEditor
+        BASE_NAME KF5TextEditor
+        VERSION ${KF5_VERSION}
+        ORG_DOMAIN org.kde
+        SOURCES # using only public headers, to cover only public API
+            ${KTEXTEDITOR_PUBLIC_HEADERS}
+             "${CMAKE_SOURCE_DIR}/docs/apidocs-groups.dox"
+             "${CMAKE_SOURCE_DIR}/docs/coding-guidelines.dox"
+             "${CMAKE_SOURCE_DIR}/docs/design.dox"
+             "${CMAKE_SOURCE_DIR}/docs/porting.dox"
+        MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
+        IMAGE_DIRS "${CMAKE_SOURCE_DIR}/docs/pics"
+        LINK_QCHS
+            KF5Parts_QCH
+        BLANK_MACROS
+            KTEXTEDITOR_EXPORT
+            KTEXTEDITOR_DEPRECATED
+            KTEXTEDITOR_DEPRECATED_EXPORT
+        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        COMPONENT Devel
+    )
+endif()
+
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
