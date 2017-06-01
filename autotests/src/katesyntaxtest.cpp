@@ -55,7 +55,7 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
     while (contents.hasNext()) {
         const QString hlDir = contents.next();
         const QFileInfo info(hlDir);
-        if (!info.isDir() || hlDir.contains(QLatin1Char('.'))) {
+        if (!info.isDir() || info.fileName().contains(QLatin1Char('.'))) {
             continue;
         }
 
