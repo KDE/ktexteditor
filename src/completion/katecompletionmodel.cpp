@@ -365,7 +365,7 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 Qt::ItemFlags KateCompletionModel::flags(const QModelIndex &index) const
 {
     if (!hasCompletionModel() || !index.isValid()) {
-        return nullptr;
+        return Qt::NoItemFlags;
     }
 
     if (!hasGroups() || groupOfParent(index)) {

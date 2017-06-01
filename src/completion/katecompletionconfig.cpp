@@ -325,7 +325,7 @@ void KateCompletionConfig::applyInternal()
     m_model->setFilterContextMatchesOnly(ui->filteringContextMatchOnly->isChecked());
     m_model->setFilterByAttribute(ui->filteringHideAttributes->isChecked());
 
-    CodeCompletionModel::CompletionProperties attributes = nullptr;
+    CodeCompletionModel::CompletionProperties attributes = CodeCompletionModel::NoProperty;
     for (int i = 0; i < ui->filteringAttributesList->count(); ++i) {
         QListWidgetItem *item = ui->filteringAttributesList->item(i);
         if (item->checkState() == Qt::Checked) {
@@ -339,7 +339,7 @@ void KateCompletionConfig::applyInternal()
     // Grouping
     m_model->setGroupingEnabled(ui->grouping->isChecked());
 
-    KateCompletionModel::GroupingMethods groupingMethod = nullptr;
+    KateCompletionModel::GroupingMethods groupingMethod = KateCompletionModel::GroupingMethods();
     if (m_groupingScopeType->checkState(0) == Qt::Checked) {
         groupingMethod = KateCompletionModel::ScopeType;
     }
