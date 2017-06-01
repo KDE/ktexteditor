@@ -50,7 +50,7 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
     /**
      * check for directories, one dir == one hl
      */
-    const QString testDir(QLatin1String(TEST_DATA_DIR) + QLatin1String("/syntax/"));
+    const QString testDir(QLatin1String(TEST_DATA_DIR) + QLatin1String("syntax/"));
     QDirIterator contents(testDir);
     while (contents.hasNext()) {
         const QString hlDir = contents.next();
