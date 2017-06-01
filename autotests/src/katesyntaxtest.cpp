@@ -52,9 +52,11 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
      */
     const QString testDir(QLatin1String(TEST_DATA_DIR) + QLatin1String("syntax/"));
     QDirIterator contents(testDir);
+qDebug() << "Searching for syntax data at" << contents.path();
     while (contents.hasNext()) {
         const QString hlDir = contents.next();
         const QFileInfo info(hlDir);
+qDebug() << "Checking entry" << hlDir << "dir?" << info.isDir();
         if (!info.isDir() || hlDir.contains(QLatin1Char('.'))) {
             continue;
         }
@@ -63,9 +65,11 @@ void KateSyntaxTest::testSyntaxHighlighting_data()
          * now: get the tests per hl
          */
         QDirIterator contents(hlDir);
+qDebug() << "Checking dir" << contents.path();
         while (contents.hasNext()) {
             const QString hlTestCase = contents.next();
             const QFileInfo info(hlTestCase);
+qDebug() << "Checking dir entry" << hlTestCase << "file?" << info.isFile();
             if (!info.isFile()) {
                 continue;
             }
