@@ -31,8 +31,8 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/view
 )
 
-add_definitions(-DTEST_DATA_DIR="${CMAKE_SOURCE_DIR}/autotests/input/")
-add_definitions(-DJS_DATA_DIR="${CMAKE_SOURCE_DIR}/src/script/data/")
+add_definitions(-DTEST_DATA_DIR=\"${CMAKE_SOURCE_DIR}/autotests/input/\")
+add_definitions(-DJS_DATA_DIR=\"${CMAKE_SOURCE_DIR}/src/script/data/\")
 
 set (KTEXTEDITOR_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
