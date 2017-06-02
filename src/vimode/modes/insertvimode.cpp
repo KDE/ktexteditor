@@ -374,6 +374,9 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
                     m_isExecutingCompletion = false;
                     return true;
                 }
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
             default:
                 return false;
             }
