@@ -484,7 +484,7 @@ void KateScrollBar::updatePixmap()
     savedLineColor.setHsv(savedLineColor.hue(), 100, 255 - backgroundColor.value() / 3);
 
     // increase dimensions by ratio
-    m_pixmap = QPixmap(pixmapLineWidth * m_view->devicePixelRatio(), pixmapLineCount * m_view->devicePixelRatio());
+    m_pixmap = QPixmap(pixmapLineWidth * m_view->devicePixelRatioF(), pixmapLineCount * m_view->devicePixelRatioF());
     m_pixmap.fill(QColor("transparent"));
 
     // The text currently selected in the document, to be drawn later.
@@ -606,7 +606,7 @@ void KateScrollBar::updatePixmap()
     }
 
     // set right ratio
-    m_pixmap.setDevicePixelRatio(m_view->devicePixelRatio());
+    m_pixmap.setDevicePixelRatio(m_view->devicePixelRatioF());
 
     //qCDebug(LOG_KTE) << time.elapsed();
     // Redraw the scrollbar widget with the updated pixmap.
