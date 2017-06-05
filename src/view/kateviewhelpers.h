@@ -175,7 +175,6 @@ private:
     int     m_grooveHeight;
     QRect   m_stdGroveRect;
     QRect   m_mapGroveRect;
-    QRect   m_mapSliderRect;
     QTimer  m_updateTimer;
     QPoint m_toolTipPos;
 
