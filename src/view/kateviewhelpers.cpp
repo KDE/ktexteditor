@@ -199,19 +199,16 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        // if we show the minimap left-click jumps directly to the selected position
         if (m_leftMouseDown) {
+            // if we show the minimap left-click jumps directly to the selected position
             int newVal = (e->pos().y()-m_mapGroveRect.top()) / (double)m_mapGroveRect.height() * (double)(maximum()+pageStep()) - pageStep()/2;
             newVal = qBound(0, newVal, maximum());
-            // Call the regular event handler before setting the new position to enable dragging the slider
-            QScrollBar::mousePressEvent(e);
             setSliderPosition(newVal);
-        } else {
-            QMouseEvent eMod(QEvent::MouseButtonPress,
-                             QPoint(6, minimapYToStdY(e->pos().y())),
-                             e->button(), e->buttons(), e->modifiers());
-            QScrollBar::mousePressEvent(&eMod);
         }
+        QMouseEvent eMod(QEvent::MouseButtonPress,
+                         QPoint(6, minimapYToStdY(e->pos().y())),
+                         e->button(), e->buttons(), e->modifiers());
+        QScrollBar::mousePressEvent(&eMod);
     } else {
         QScrollBar::mousePressEvent(e);
     }
