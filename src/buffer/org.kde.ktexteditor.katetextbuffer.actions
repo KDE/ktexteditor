@@ -58,6 +58,7 @@ Description=Root privileges are needed to save this document
 Description[ca]=Es requereixen privilegis d'administrador per desar aquest document
 Description[ca@valencia]=Es requereixen privilegis d'administrador per guardar este document
 Description[cs]=K uložení dokumentu je potřeba práva uživatele root
+Description[de]=Rechte als Systemverwalter sind für das Speichern diese Dokuments erforderlich
 Description[en_GB]=Root privileges are needed to save this document
 Description[es]=Se necesitan permisos de «root» para guardar este documento
 Description[fi]=Tämän tiedoston tallentamiseen tarvitaan pääkäyttäjän oikeudet
