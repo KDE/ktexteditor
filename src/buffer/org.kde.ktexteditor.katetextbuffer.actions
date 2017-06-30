@@ -55,6 +55,7 @@ Name[x-test]=xxSave Documentxx
 Name[zh_CN]=保存文档
 Name[zh_TW]=儲存文件
 Description=Root privileges are needed to save this document
+Description[ast]=Precísense privilexos root pa guardar esti documentu
 Description[ca]=Es requereixen privilegis d'administrador per desar aquest document
 Description[ca@valencia]=Es requereixen privilegis d'administrador per guardar este document
 Description[cs]=K uložení dokumentu je potřeba práva uživatele root
