@@ -132,9 +132,7 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
     // occur later and stop() m_commandResponseMessageDisplayHide.
     // This is generally only a problem when feeding a sequence of keys without human intervention,
     // as when we execute a mapping, macro, or test case.
-    while (QApplication::hasPendingEvents()) {
-        QApplication::processEvents();
-    }
+    QApplication::processEvents();
 }
 
 bool EmulatedCommandBar::isActive()
