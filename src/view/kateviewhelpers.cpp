@@ -61,6 +61,7 @@
 #include <QPalette>
 #include <QPen>
 #include <QAction>
+#include <QActionGroup>
 #include <QBoxLayout>
 #include <QMenu>
 #include <QStyle>
@@ -2231,6 +2232,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
 
     QMenu markMenu;
     QMenu selectDefaultMark;
+    auto selectDefaultMarkActionGroup = new QActionGroup(&selectDefaultMark);
 
     QVector<int> vec(33);
     int i = 1;
@@ -2250,6 +2252,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
             mA = markMenu.addAction(i18n("Mark Type %1",  bit + 1));
             dMA = selectDefaultMark.addAction(i18n("Mark Type %1",  bit + 1));
         }
+        selectDefaultMarkActionGroup->addAction(dMA);
         mA->setData(i);
         mA->setCheckable(true);
         dMA->setData(i + 100);
