@@ -2033,27 +2033,26 @@ void KTextEditor::DocumentPrivate::requestMarkTooltip(int line, QPoint position)
 
 bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
 {
+    bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        return false;
+        emit markClicked(this, KTextEditor::Mark{line, 0}, handled);
+    } else {
+        emit markClicked(this, *mark, handled);
     }
-
-    bool handled = false;
-    emit markClicked(this, *mark, handled);
 
     return handled;
 }
 
 bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint position)
 {
+    bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        return false;
+        emit markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
+    } else {
+        emit markContextMenuRequested(this, *mark, position, handled);
     }
-
-    bool handled = false;
-
-    emit markContextMenuRequested(this, *mark, position, handled);
 
     return handled;
 }
