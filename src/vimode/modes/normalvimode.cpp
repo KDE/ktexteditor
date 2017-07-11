@@ -1025,7 +1025,6 @@ bool NormalViMode::commandOpenNewLineUnder()
     startInsertMode();
     m_viInputModeManager->getViInsertMode()->setCount(getCount());
     m_viInputModeManager->getViInsertMode()->setCountedRepeatsBeginOnNewLine(true);
-    m_viewInternal->repaint();
 
     return true;
 }
@@ -1052,7 +1051,6 @@ bool NormalViMode::commandOpenNewLineOver()
     startInsertMode();
     m_viInputModeManager->getViInsertMode()->setCount(getCount());
     m_viInputModeManager->getViInsertMode()->setCountedRepeatsBeginOnNewLine(true);
-    m_viewInternal->repaint();
 
     return true;
 }
