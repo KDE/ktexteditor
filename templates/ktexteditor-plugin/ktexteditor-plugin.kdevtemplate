@@ -1,0 +1,7 @@
+# KDE Config File
+[General]
+Name=C++
+Comment=Generates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.
+Category=KTextEditor/Plugin
+Icon=ktexteditor-plugin.png
+ShowFilesAfterGeneration=%{dest}/README.md
