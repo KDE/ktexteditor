@@ -31,6 +31,7 @@
 #include <ktexteditor/mainwindow.h>
 
 #include <QPointer>
+#include <QScopedPointer>
 #include <QModelIndex>
 #include <QMenu>
 #include <QSpacerItem>
@@ -63,6 +64,7 @@ class KateStatusBar;
 class KateViewEncodingAction;
 class KateModeMenu;
 class KateAbstractInputMode;
+class KateScriptActionMenu;
 
 class KToggleAction;
 class KSelectAction;
@@ -983,6 +985,14 @@ public:
     int lastDisplayedLineInternal(LineType lineType) const;
 
     QRect textAreaRectInternal() const;
+
+private:
+    /**
+     * script action menu, stored in scoped pointer to ensure
+     * destruction before other QObject auto-cleanup as it
+     * manage sub objects on its own that have this view as parent
+     */
+    QScopedPointer<KateScriptActionMenu> m_scriptActionMenu;
 };
 
 }

@@ -491,8 +491,9 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Revert the most recent undo operation"));
 
         // Tools > Scripts
-        KateScriptActionMenu *scriptActionMenu = new KateScriptActionMenu(this, i18n("&Scripts"));
-        ac->addAction(QStringLiteral("tools_scripts"), scriptActionMenu);
+        // stored inside scoped pointer to ensure we destruct it early enough as it does internal cleanups of other child objects
+        m_scriptActionMenu.reset(new KateScriptActionMenu(this, i18n("&Scripts")));
+        ac->addAction(QStringLiteral("tools_scripts"), m_scriptActionMenu.data());
 
         a = ac->addAction(QStringLiteral("tools_apply_wordwrap"));
         a->setText(i18n("Apply &Word Wrap"));
