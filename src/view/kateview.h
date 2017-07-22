@@ -350,6 +350,7 @@ public:
 Q_SIGNALS:
     void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) Q_DECL_OVERRIDE;
     void annotationActivated(KTextEditor::View *view, int line) Q_DECL_OVERRIDE;
+    // KF6: fix View -> KTextEditor::View
     void annotationBorderVisibilityChanged(View *view, bool visible) Q_DECL_OVERRIDE;
 
     void navigateLeft();
