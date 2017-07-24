@@ -4340,8 +4340,8 @@ bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
         return false;
     }
 
-    // KIO move
-    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), saveUrl);
+    // KIO move, important: allow overwrite, we checked above!
+    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), saveUrl, -1, KIO::Overwrite);
     KJobWidgets::setWindow(job, QApplication::activeWindow());
     return job->exec();
 }
