@@ -306,7 +306,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
             v->doc()->rememberUserDidSetIndentationMode();
             return true;
         } else if (cmd == QLatin1String("set-highlight")) {
-            if (v->doc()->setHighlightingMode(args.first())) {
+            if (v->doc()->setHighlightingMode(args.join(QLatin1Char(' ')))) {
                 static_cast<KTextEditor::DocumentPrivate *>(v->doc())->setDontChangeHlOnSave();
                 return true;
             }
