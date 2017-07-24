@@ -9,13 +9,13 @@
 <!-- Highlighting: "SQL (Oracle)" -->
 <body>
 <pre style='color:#31363b;background-color:#fcfcfc;'>
--- kate: hl <b>SQL</b> (Oracle)
--- <b>test</b> <b>case</b> shipped <b>with</b> highlighting <b>in</b> bugzilla, LGPL
+<span style='color:#7f8c8d;'>-- kate: hl SQL (Oracle)</span>
+<span style='color:#7f8c8d;'>-- test case shipped with highlighting in bugzilla, LGPL</span>
 
 <b>begin</b>
 	q'{<span style='color:#da4453;'>adfasdf'sadfasdf j</span>}'{<span style='color:#da4453;'>' hkjhkhkjhkjh khlkhklj'</span>fghdfghdfgh<span style='color:#da4453;'>'hkjh'</span>jkhkh<span style='color:#da4453;'>'a'</span>
 	Q'(<span style='color:#da4453;'>asldflahsl;'dkjfhklsdfh</span>)'
-	q'[<span style='color:#da4453;'>asdasd;'asdasd'a]sd'asd'asasd</span>]';11111111[1<span style='color:#da4453;'>']; asdasdasdasd'</span>errrrrrrrrrrrrrr-p
+	q'[<span style='color:#da4453;'>asdasd;'asdasd'a]sd'asd'asasd</span>]';<span style='color:#f67400;'>11111111</span>[<span style='color:#f67400;'>1</span><span style='color:#da4453;'>']; asdasdasdasd'</span>errrrrrrrrrrrrrr-p
 
 	q'a<span style='color:#da4453;'>gdfgsdfgfhfghjfgh'f'f'sdfg'sdfg'dfg#</span>a' dafdfadasfasdf;
 
@@ -23,16 +23,16 @@
 
 	<b>if</b> sldfjsdj <b>then</b>
 		<b>case</b>
-			<b>when</b> 1=1 <b>then</b>
+			<b>when</b> <span style='color:#f67400;'>1</span>=<span style='color:#f67400;'>1</span> <b>then</b>
 				aslfjsldkfj;
-			<b>when</b> 2=2 <b>then</b>
+			<b>when</b> <span style='color:#f67400;'>2</span>=<span style='color:#f67400;'>2</span> <b>then</b>
 				asdfg;
 			<b>else</b>
-				<b>null</b>;
+				null;
 		<b>end case</b>;
 		
 		<b>if</b> sdfjh <b>then</b>
-			<b>for</b> i <b>in</b> 1 .. 2
+			<b>for</b> i <b>in</b> <span style='color:#f67400;'>1</span> .. <span style='color:#f67400;'>2</span>
 			<b>LOOP</b>
 				dbms_output.put_line(q';<span style='color:#da4453;'>ololo</span>;');
 			<b>END Loop</b>;
@@ -44,7 +44,7 @@
 		<b>end if</b>;
 		ksjfklasjd;
 		fklj;
-	elsif
+	<b>elsif</b>
 		sdklfjsdklfj;
 	<b>else</b>
 		sdfdfsdf;
