@@ -2,7 +2,7 @@ var katescript = {
     "name": "C Style",
     "author": "Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>",
     "license": "LGPL",
-    "revision": 5,
+    "revision": 6,
     "kate-version": "5.1"
 }; // kate-script-header, must be at the start of the file without comments, pure json
 
@@ -27,6 +27,7 @@ var katescript = {
 // required katepart js libraries
 require ("range.js");
 require ("string.js");
+require ("utils.js");
 
 //BEGIN USER CONFIGURATION
 var cfgIndentCase = true;         // indent 'case' and 'default' in a switch?
@@ -286,6 +287,10 @@ function tryCComment(line)
     var char1 = document.charAt(currentLine, firstPos);
     var char2 = document.charAt(currentLine, firstPos + 1);
     var currentString = document.line(currentLine);
+
+    // not in comment, no * copying
+    if (!isComment(currentLine, firstPos))
+        return -1;
 
     if (char1 == '/' && char2 == '*' && !currentString.contains("*/")) {
         indentation = document.firstVirtualColumn(currentLine);

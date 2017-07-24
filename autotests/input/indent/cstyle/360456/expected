@@ -1,0 +1,4 @@
+    int *test;
+    /* Here, we assign a value to the pointee object */
+    *test = 42;
+    test = 0;
