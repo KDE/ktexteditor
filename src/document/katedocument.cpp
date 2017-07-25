@@ -2517,14 +2517,12 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
         // get the right permissions, start with safe default
         KIO::StatJob *statJob = KIO::stat(url(), KIO::StatJob::SourceSide, 2);
         KJobWidgets::setWindow(statJob, QApplication::activeWindow());
-
-        if (!statJob->exec()) {
+        if (statJob->exec()) {
             // do a evil copy which will overwrite target if possible
             KFileItem item(statJob->statResult(), url());
             KIO::FileCopyJob *job = KIO::file_copy(url(), u, item.permissions(), KIO::Overwrite);
             KJobWidgets::setWindow(job, QApplication::activeWindow());
-            job->exec();
-            backupSuccess = !job->error();
+            backupSuccess = job->exec();
         } else {
             backupSuccess = true;
         }
@@ -4340,8 +4338,16 @@ bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
         return false;
     }
 
+    // get the right permissions, start with safe default
+    KIO::StatJob *statJob = KIO::stat(url(), KIO::StatJob::SourceSide, 2);
+    KJobWidgets::setWindow(statJob, QApplication::activeWindow());
+    int permissions = -1;
+    if (statJob->exec()) {
+        permissions = KFileItem(statJob->statResult(), url()).permissions();
+    }
+
     // KIO move, important: allow overwrite, we checked above!
-    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), saveUrl, -1, KIO::Overwrite);
+    KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), saveUrl, permissions, KIO::Overwrite);
     KJobWidgets::setWindow(job, QApplication::activeWindow());
     return job->exec();
 }
