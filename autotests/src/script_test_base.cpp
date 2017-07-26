@@ -34,7 +34,7 @@
 #include <QProcess>
 #include <QDirIterator>
 #include <QMainWindow>
-#include <QScriptEngine>
+#include <QJSEngine>
 #include <QCryptographicHash>
 #include <QTest>
 
@@ -79,9 +79,8 @@ void ScriptTestBase::getTestData(const QString &script)
         QFile scriptFile(QLatin1String(JS_DATA_DIR) + m_script_dir + QLatin1Char('/') + script + QLatin1String(".js"));
         if (scriptFile.exists()) {
             QVERIFY(scriptFile.open(QFile::ReadOnly));
-            QScriptValue result = m_env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
-            QVERIFY2(!result.isError(), qPrintable(QString(result.toString() + QLatin1String("\nat ")
-                                               + m_env->engine()->uncaughtExceptionBacktrace().join(QLatin1String("\n")))));
+            QJSValue result = m_env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
+            QVERIFY2(!result.isError(), (result.toString() + QLatin1String(" in file ") + scriptFile.fileName()).toUtf8().constData());
         }
     }
 
@@ -131,7 +130,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
     sourceFile.close();
 
     // Execute script
-    QScriptValue result = m_env->engine()->evaluate(code, testcase + QLatin1String("/input.js"), 1);
+    QJSValue result = m_env->engine()->evaluate(code, testcase + QLatin1String("/input.js"), 1);
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     const QString fileExpected = testcase + QLatin1String("/expected");

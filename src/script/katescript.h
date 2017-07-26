@@ -21,11 +21,11 @@
 #ifndef KATE_SCRIPT_H
 #define KATE_SCRIPT_H
 
-#include <QScriptValue>
-#include <QString>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtCore/QMap>
+#include <QtQml/QJSValue>
 
-class QScriptEngine;
+class QJSEngine;
 
 namespace KTextEditor { class ViewPrivate; }
 
@@ -122,7 +122,7 @@ public:
         InputSCRIPT
     };
 
-    typedef QMap<QString, QScriptValue> FieldMap;
+    typedef QMap<QString, QJSValue> FieldMap;
 
     /**
      * Create a new script representation, passing either a file or the script
@@ -154,16 +154,16 @@ public:
     bool setView(KTextEditor::ViewPrivate *view);
 
     /**
-     * Get a QScriptValue for a global item in the script given its name, or an
-     * invalid QScriptValue if no such global item exists.
+     * Get a QJSValue for a global item in the script given its name, or an
+     * invalid QJSValue if no such global item exists.
      */
-    QScriptValue global(const QString &name);
+    QJSValue global(const QString &name);
 
     /**
-     * Return a function in the script of the given name, or an invalid QScriptValue
+     * Return a function in the script of the given name, or an invalid QJSValue
      * if no such function exists.
      */
-    QScriptValue function(const QString &name);
+    QJSValue function(const QString &name);
 
     /** Return a context-specific error message */
     const QString &errorMessage()
@@ -172,13 +172,13 @@ public:
     }
 
     /** Returns the backtrace when a script has errored out */
-    QString backtrace(const QScriptValue &error, const QString &header = QString());
+    QString backtrace(const QJSValue &error, const QString &header = QString());
 
     /** Execute a piece of code **/
-    QScriptValue evaluate(const QString& program, const FieldMap& env = FieldMap());
+    QJSValue evaluate(const QString& program, const FieldMap& env = FieldMap());
 
     /** Displays the backtrace when a script has errored out */
-    void displayBacktrace(const QScriptValue &error, const QString &header = QString());
+    void displayBacktrace(const QJSValue &error, const QString &header = QString());
 
     /** Clears any uncaught exceptions in the script engine. */
     void clearExceptions();
@@ -190,7 +190,7 @@ public:
 
 protected:
     /** Checks for exception and gives feedback on the console. */
-    bool hasException(const QScriptValue &object, const QString &file);
+    bool hasException(const QJSValue &object, const QString &file);
 
 private:
     /** Whether or not there has been a call to load */
@@ -207,7 +207,7 @@ private:
 
 protected:
     /** The Qt interpreter for this script */
-    QScriptEngine *m_engine;
+    QJSEngine *m_engine;
 
 private:
     /** general header data */

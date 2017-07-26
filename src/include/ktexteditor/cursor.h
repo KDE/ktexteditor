@@ -381,7 +381,7 @@ private:
     int m_column;
 };
 
-}
+} // namespace KTextEditor
 
 Q_DECLARE_TYPEINFO(KTextEditor::Cursor, Q_MOVABLE_TYPE);
 Q_DECLARE_METATYPE(KTextEditor::Cursor)

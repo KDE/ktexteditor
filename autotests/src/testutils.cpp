@@ -30,92 +30,55 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "katescripthelpers.h"
+#include "ktexteditor/cursor.h"
+#include "ktexteditor/range.h"
 
-#include <QtScript/QScriptEngine>
+#include <QJSEngine>
+#include <QObject>
+#include <QQmlEngine>
 #include <QTest>
 
 //END Includes
 
 //BEGIN TestScriptEnv
 
-//BEGIN conversion functions for Cursors and Ranges
-/** Converstion function from KTextEditor::Cursor to QtScript cursor */
-static QScriptValue cursorToScriptValue(QScriptEngine *engine, const KTextEditor::Cursor &cursor)
-{
-    QString code = QStringLiteral("new Cursor(%1, %2);").arg(cursor.line())
-                   .arg(cursor.column());
-    return engine->evaluate(code);
-}
-
-/** Converstion function from QtScript cursor to KTextEditor::Cursor */
-static void cursorFromScriptValue(const QScriptValue &obj, KTextEditor::Cursor &cursor)
-{
-    cursor.setPosition(obj.property(QStringLiteral("line")).toInt32(),
-                       obj.property(QStringLiteral("column")).toInt32());
-}
-
-/** Converstion function from QtScript range to KTextEditor::Range */
-static QScriptValue rangeToScriptValue(QScriptEngine *engine, const KTextEditor::Range &range)
-{
-    QString code = QStringLiteral("new Range(%1, %2, %3, %4);").arg(range.start().line())
-                   .arg(range.start().column())
-                   .arg(range.end().line())
-                   .arg(range.end().column());
-    return engine->evaluate(code);
-}
-
-/** Converstion function from QtScript range to KTextEditor::Range */
-static void rangeFromScriptValue(const QScriptValue &obj, KTextEditor::Range &range)
-{
-    range.setStart(KTextEditor::Cursor(
-                       obj.property(QStringLiteral("start")).property(QStringLiteral("line")).toInt32(),
-                       obj.property(QStringLiteral("start")).property(QStringLiteral("column")).toInt32()
-                   ));
-    range.setEnd(KTextEditor::Cursor(
-                     obj.property(QStringLiteral("end")).property(QStringLiteral("line")).toInt32(),
-                     obj.property(QStringLiteral("end")).property(QLatin1String("column")).toInt32()
-                 ));
-}
-//END
-
 TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
     : m_engine(nullptr), m_viewObj(nullptr), m_docObj(nullptr), m_output(nullptr)
 {
-    m_engine = new QScriptEngine(this);
-
-    qScriptRegisterMetaType(m_engine, cursorToScriptValue, cursorFromScriptValue);
-    qScriptRegisterMetaType(m_engine, rangeToScriptValue, rangeFromScriptValue);
+    m_engine = new QJSEngine(this);
 
     // export read & require function and add the require guard object
-    m_engine->globalObject().setProperty(QStringLiteral("read"), m_engine->newFunction(Kate::Script::read));
-    m_engine->globalObject().setProperty(QStringLiteral("require"), m_engine->newFunction(Kate::Script::require));
+    QJSValue functions = m_engine->newQObject(new Kate::ScriptHelper(m_engine));
+    m_engine->globalObject().setProperty(QStringLiteral("functions"), functions);
+    m_engine->globalObject().setProperty(QStringLiteral("read"), functions.property(QStringLiteral("read")));
+    m_engine->globalObject().setProperty(QStringLiteral("require"), functions.property(QStringLiteral("require")));
     m_engine->globalObject().setProperty(QStringLiteral("require_guard"), m_engine->newObject());
-    
-    // export debug function
-    m_engine->globalObject().setProperty(QStringLiteral("debug"), m_engine->newFunction(Kate::Script::debug));
+
+   // export debug function
+    m_engine->globalObject().setProperty(QStringLiteral("debug"), functions.property(QStringLiteral("debug")));
 
     // export translation functions
-    m_engine->globalObject().setProperty(QStringLiteral("i18n"), m_engine->newFunction(Kate::Script::i18n));
-    m_engine->globalObject().setProperty(QStringLiteral("i18nc"), m_engine->newFunction(Kate::Script::i18nc));
-    m_engine->globalObject().setProperty(QStringLiteral("i18ncp"), m_engine->newFunction(Kate::Script::i18ncp));
-    m_engine->globalObject().setProperty(QStringLiteral("i18np"), m_engine->newFunction(Kate::Script::i18np));
+    m_engine->globalObject().setProperty(QStringLiteral("i18n"), functions.property(QStringLiteral("_i18n")));
+    m_engine->globalObject().setProperty(QStringLiteral("i18nc"), functions.property(QStringLiteral("_i18nc")));
+    m_engine->globalObject().setProperty(QStringLiteral("i18np"), functions.property(QStringLiteral("_i18np")));
+    m_engine->globalObject().setProperty(QStringLiteral("i18ncp"), functions.property(QStringLiteral("_i18ncp")));
 
     KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(part->widget());
 
-    m_viewObj = new KateViewObject(view);
-    QScriptValue sv = m_engine->newQObject(m_viewObj);
+    m_viewObj = new KateViewObject(m_engine, view);
+    QJSValue sv = m_engine->newQObject(m_viewObj);
 
     m_engine->globalObject().setProperty(QStringLiteral("view"), sv);
     m_engine->globalObject().setProperty(QStringLiteral("v"), sv);
 
-    m_docObj = new KateDocumentObject(view->doc());
-    QScriptValue sd = m_engine->newQObject(m_docObj);
+    m_docObj = new KateDocumentObject(m_engine, view->doc());
+    QJSValue sd = m_engine->newQObject(m_docObj);
 
     m_engine->globalObject().setProperty(QStringLiteral("document"), sd);
     m_engine->globalObject().setProperty(QStringLiteral("d"), sd);
 
     m_output = new OutputObject(view, cflag);
-    QScriptValue so = m_engine->newQObject(m_output);
+    QJSValue so = m_engine->newQObject(m_output);
 
     m_engine->globalObject().setProperty(QStringLiteral("output"), so);
     m_engine->globalObject().setProperty(QStringLiteral("out"), so);
@@ -139,8 +102,8 @@ TestScriptEnv::~TestScriptEnv()
 
 //BEGIN KateViewObject
 
-KateViewObject::KateViewObject(KTextEditor::ViewPrivate *view)
-    : KateScriptView()
+KateViewObject::KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view)
+    : KateScriptView(engine)
 {
     setView(view);
 }
@@ -234,8 +197,8 @@ ALIAS(shiftWordNext, shiftWordRight)
 
 //BEGIN KateDocumentObject
 
-KateDocumentObject::KateDocumentObject(KTextEditor::DocumentPrivate *doc)
-    : KateScriptDocument()
+KateDocumentObject::KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentPrivate *doc)
+    : KateScriptDocument(engine)
 {
     setDocument(doc);
 }
@@ -247,7 +210,6 @@ KateDocumentObject::~KateDocumentObject()
 //END KateDocumentObject
 
 //BEGIN OutputObject
-
 OutputObject::OutputObject(KTextEditor::ViewPrivate *v, bool &cflag)
     : view(v), cflag(cflag)
 {
@@ -261,10 +223,11 @@ OutputObject::~OutputObject()
 void OutputObject::output(bool cp, bool ln)
 {
     QString str;
-    for (int i = 0; i < context()->argumentCount(); ++i) {
-        QScriptValue arg = context()->argument(i);
-        str += arg.toString();
-    }
+//   FIXME: This is not available with QtQml, but not sure if we need it
+//    for (int i = 0; i < context()->argumentCount(); ++i) {
+//        QJSValue arg = context()->argument(i);
+//        str += arg.toString();
+//    }
 
     if (cp) {
         KTextEditor::Cursor c = view->cursorPosition();
@@ -349,5 +312,4 @@ void OutputObject::posLn()
 {
     output(true, true);
 }
-
 //END OutputObject

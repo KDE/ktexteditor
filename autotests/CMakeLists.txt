@@ -38,7 +38,7 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
   KF5::IconThemes
   KF5::GuiAddons
-  Qt5::Script
+  Qt5::Qml
 )
 
 include(ECMMarkAsTest)

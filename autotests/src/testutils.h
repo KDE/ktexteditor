@@ -24,9 +24,9 @@
 #define TESTUTILS_H
 
 #include "katescriptview.h"
-#include "katescriptdocument.h"
 
-#include <QtScript/QScriptable>
+#include "katescriptdocument.h"
+#include <QtQml/QJSEngine>
 
 namespace KTextEditor { class ViewPrivate; }
 class RegressionTest;
@@ -45,7 +45,7 @@ public:
     explicit TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag);
     virtual ~TestScriptEnv();
 
-    QScriptEngine *engine() const
+    QJSEngine *engine() const
     {
         return m_engine;
     }
@@ -57,7 +57,7 @@ public:
     }
 
 private:
-    QScriptEngine *m_engine;
+    QJSEngine *m_engine;
     KateViewObject *m_viewObj;
     KateDocumentObject *m_docObj;
 
@@ -73,7 +73,7 @@ class KateViewObject : public KateScriptView
 
 public:
 
-    explicit KateViewObject(KTextEditor::ViewPrivate *view);
+    explicit KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view);
     virtual ~KateViewObject();
 
     // Edit functions
@@ -155,7 +155,7 @@ class KateDocumentObject : public KateScriptDocument
     Q_OBJECT
 
 public:
-    explicit KateDocumentObject(KTextEditor::DocumentPrivate *doc);
+    explicit KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentPrivate *doc);
     virtual ~KateDocumentObject();
 
 private:
@@ -168,7 +168,7 @@ private:
  * enabling one to check for coordinates and the like.
  * @internal
  */
-class OutputObject : public QObject, protected QScriptable
+class OutputObject : public QObject
 {
     Q_OBJECT
 
@@ -201,5 +201,4 @@ private:
     KTextEditor::ViewPrivate *view;
     bool &cflag;
 };
-
 #endif // TESTUTILS_H

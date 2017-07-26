@@ -24,7 +24,7 @@
 #include <kateview.h>
 #include <kmainwindow.h>
 
-#include <QtScript/QScriptEngine>
+#include <QtQml/QJSEngine>
 #include <QtTestWidgets>
 
 #include "testutils.h"
@@ -66,9 +66,8 @@ void BugTest::tryCrash()
     QFile scriptFile(QLatin1String(JS_DATA_DIR"commands/utils.js"));
     QVERIFY(scriptFile.exists());
     QVERIFY(scriptFile.open(QFile::ReadOnly));
-    QScriptValue result = env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
-    QVERIFY2(!result.isError(), qPrintable(QString(result.toString() + QLatin1String("\nat ")
-                                           + env->engine()->uncaughtExceptionBacktrace().join(QStringLiteral("\n")))));
+    QJSValue result = env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());
+    QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     // view must be visible...
     view->show();

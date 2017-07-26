@@ -549,7 +549,7 @@ KateScript::FieldMap KateTemplateHandler::fieldMap() const
             // only editable fields are of interest to the scripts
             continue;
         }
-        map.insert(field.identifier, QScriptValue(doc()->text(field.range->toRange())));
+        map.insert(field.identifier, QJSValue(doc()->text(field.range->toRange())));
     }
     return map;
 }

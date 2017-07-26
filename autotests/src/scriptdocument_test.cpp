@@ -20,10 +20,12 @@
 #include "scriptdocument_test.h"
 
 #include <kateglobal.h>
+#include "ktexteditor/cursor.h"
 #include <ktexteditor/view.h>
 #include <katedocument.h>
 #include <katescriptdocument.h>
 
+#include <QJSEngine>
 #include <QtTestWidgets>
 
 QTEST_MAIN(ScriptDocumentTest)
@@ -68,7 +70,7 @@ void ScriptDocumentTest::init()
 {
     m_doc = new KTextEditor::DocumentPrivate;
     m_view = m_doc->createView(nullptr);
-    m_scriptDoc = new KateScriptDocument(this);
+    m_scriptDoc = new KateScriptDocument(nullptr, this);
     m_scriptDoc->setDocument(m_doc);
 }
 
@@ -122,7 +124,8 @@ void ScriptDocumentTest::testRfind()
 
     m_scriptDoc->setText("a a a a a a a a a a a a");
 
-    QCOMPARE(m_scriptDoc->rfind(searchStart.line(), searchStart.column(), "a a a"), result);
+    KTextEditor::Cursor cursor = m_scriptDoc->rfind(searchStart, "a a a");
+    QCOMPARE(cursor, result);
 }
 
 #include "moc_scriptdocument_test.cpp"

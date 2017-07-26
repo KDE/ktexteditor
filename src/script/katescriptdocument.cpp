@@ -26,13 +26,14 @@
 #include "katehighlight.h"
 #include "katescript.h"
 #include "katepartdebug.h"
+#include "scriptcursor.h"
+#include "scriptrange.h"
 
 #include <ktexteditor/documentcursor.h>
+#include <QJSEngine>
 
-#include <QScriptEngine>
-
-KateScriptDocument::KateScriptDocument(QObject *parent)
-    : QObject(parent), m_document(nullptr)
+KateScriptDocument::KateScriptDocument(QJSEngine *engine, QObject *parent)
+    : QObject(parent), m_document(nullptr), m_engine(engine)
 {
 }
 
@@ -56,6 +57,11 @@ int KateScriptDocument::defStyleNum(const KTextEditor::Cursor &cursor)
     return defStyleNum(cursor.line(), cursor.column());
 }
 
+int KateScriptDocument::defStyleNum(const QJSValue &jscursor)
+{
+    return defStyleNum(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::isCode(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
@@ -67,6 +73,11 @@ bool KateScriptDocument::isCode(const KTextEditor::Cursor &cursor)
     return isCode(cursor.line(), cursor.column());
 }
 
+bool KateScriptDocument::isCode(const QJSValue &jscursor)
+{
+    return isCode(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::isComment(int line, int column)
 {
     return m_document->isComment(line, column);
@@ -75,6 +86,11 @@ bool KateScriptDocument::isComment(int line, int column)
 bool KateScriptDocument::isComment(const KTextEditor::Cursor &cursor)
 {
     return isComment(cursor.line(), cursor.column());
+}
+
+bool KateScriptDocument::isComment(const QJSValue &jscursor)
+{
+    return isComment(cursorFromScriptValue(jscursor));
 }
 
 bool KateScriptDocument::isString(int line, int column)
@@ -88,6 +104,11 @@ bool KateScriptDocument::isString(const KTextEditor::Cursor &cursor)
     return isString(cursor.line(), cursor.column());
 }
 
+bool KateScriptDocument::isString(const QJSValue &jscursor)
+{
+    return isString(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::isRegionMarker(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
@@ -97,6 +118,11 @@ bool KateScriptDocument::isRegionMarker(int line, int column)
 bool KateScriptDocument::isRegionMarker(const KTextEditor::Cursor &cursor)
 {
     return isRegionMarker(cursor.line(), cursor.column());
+}
+
+bool KateScriptDocument::isRegionMarker(const QJSValue &jscursor)
+{
+    return isRegionMarker(cursorFromScriptValue(jscursor));
 }
 
 bool KateScriptDocument::isChar(int line, int column)
@@ -110,6 +136,11 @@ bool KateScriptDocument::isChar(const KTextEditor::Cursor &cursor)
     return isChar(cursor.line(), cursor.column());
 }
 
+bool KateScriptDocument::isChar(const QJSValue &jscursor)
+{
+    return isChar(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::isOthers(int line, int column)
 {
     const int defaultStyle = defStyleNum(line, column);
@@ -119,6 +150,11 @@ bool KateScriptDocument::isOthers(int line, int column)
 bool KateScriptDocument::isOthers(const KTextEditor::Cursor &cursor)
 {
     return isOthers(cursor.line(), cursor.column());
+}
+
+bool KateScriptDocument::isOthers(const QJSValue &jscursor)
+{
+    return isOthers(cursorFromScriptValue(jscursor));
 }
 
 int KateScriptDocument::firstVirtualColumn(int line)
@@ -158,6 +194,11 @@ int KateScriptDocument::toVirtualColumn(const KTextEditor::Cursor &cursor)
     return toVirtualColumn(cursor.line(), cursor.column());
 }
 
+int KateScriptDocument::toVirtualColumn(const QJSValue &jscursor)
+{
+    return toVirtualColumn(cursorFromScriptValue(jscursor));
+}
+
 KTextEditor::Cursor KateScriptDocument::toVirtualCursor(const KTextEditor::Cursor &cursor)
 {
     return KTextEditor::Cursor(cursor.line(),
@@ -185,7 +226,7 @@ KTextEditor::Cursor KateScriptDocument::fromVirtualCursor(const KTextEditor::Cur
                                fromVirtualColumn(virtualCursor.line(), virtualCursor.column()));
 }
 
-KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QString &text, int attribute)
+KTextEditor::Cursor KateScriptDocument::rfindInternal(int line, int column, const QString &text, int attribute)
 {
     KTextEditor::DocumentCursor cursor(document(), line, column);
     const int start = cursor.line();
@@ -223,10 +264,21 @@ KTextEditor::Cursor KateScriptDocument::rfind(int line, int column, const QStrin
 
 KTextEditor::Cursor KateScriptDocument::rfind(const KTextEditor::Cursor &cursor, const QString &text, int attribute)
 {
-    return rfind(cursor.line(), cursor.column(), text, attribute);
+    return rfindInternal(cursor.line(), cursor.column(), text, attribute);
 }
 
-KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar character)
+QJSValue KateScriptDocument::rfind(int line, int column, const QString &text, int attribute)
+{
+    return cursorToScriptValue(m_engine, rfindInternal(line, column, text, attribute));
+}
+
+QJSValue KateScriptDocument::rfind(const QJSValue &jscursor, const QString &text, int attribute)
+{
+    KTextEditor::Cursor cursor = cursorFromScriptValue(jscursor);
+    return cursorToScriptValue(m_engine, rfind(cursor, text, attribute));
+}
+
+KTextEditor::Cursor KateScriptDocument::anchorInternal(int line, int column, QChar character)
 {
     QChar lc;
     QChar rc;
@@ -284,6 +336,17 @@ KTextEditor::Cursor KateScriptDocument::anchor(int line, int column, QChar chara
 
 KTextEditor::Cursor KateScriptDocument::anchor(const KTextEditor::Cursor &cursor, QChar character)
 {
+    return anchorInternal(cursor.line(), cursor.column(), character);
+}
+
+QJSValue KateScriptDocument::anchor(int line, int column, QChar character)
+{
+    return cursorToScriptValue(m_engine, anchorInternal(line, column, character));
+}
+
+QJSValue KateScriptDocument::anchor(const QJSValue &jscursor, QChar character)
+{
+    KTextEditor::Cursor cursor = cursorFromScriptValue(jscursor);
     return anchor(cursor.line(), cursor.column(), character);
 }
 
@@ -349,9 +412,9 @@ QStringList KateScriptDocument::embeddedHighlightingModes()
     return m_document->embeddedHighlightingModes();
 }
 
-QString KateScriptDocument::highlightingModeAt(const KTextEditor::Cursor &pos)
+QString KateScriptDocument::highlightingModeAt(const QJSValue &jspos)
 {
-    return m_document->highlightingModeAt(pos);
+    return m_document->highlightingModeAt(cursorFromScriptValue(jspos));
 }
 
 bool KateScriptDocument::isModified()
@@ -379,6 +442,11 @@ QString KateScriptDocument::text(const KTextEditor::Range &range)
     return m_document->text(range);
 }
 
+QString KateScriptDocument::text(const QJSValue &jsrange)
+{
+    return text(rangeFromScriptValue(jsrange));
+}
+
 QString KateScriptDocument::line(int line)
 {
     return m_document->line(line);
@@ -386,7 +454,7 @@ QString KateScriptDocument::line(int line)
 
 QString KateScriptDocument::wordAt(int line, int column)
 {
-    return m_document->wordAt(KTextEditor::Cursor(line, column));
+    return wordAt(KTextEditor::Cursor(line, column));
 }
 
 QString KateScriptDocument::wordAt(const KTextEditor::Cursor &cursor)
@@ -394,14 +462,14 @@ QString KateScriptDocument::wordAt(const KTextEditor::Cursor &cursor)
     return m_document->wordAt(cursor);
 }
 
-KTextEditor::Range KateScriptDocument::wordRangeAt(int line, int column)
+QJSValue KateScriptDocument::wordRangeAt(int line, int column)
 {
     return wordRangeAt(KTextEditor::Cursor(line, column));
 }
 
-KTextEditor::Range KateScriptDocument::wordRangeAt(const KTextEditor::Cursor &cursor)
+QJSValue KateScriptDocument::wordRangeAt(const KTextEditor::Cursor &cursor)
 {
-    return m_document->wordRangeAt(cursor);
+    return rangeToScriptValue(m_engine, m_document->wordRangeAt(cursor));
 }
 
 QString KateScriptDocument::charAt(int line, int column)
@@ -413,6 +481,11 @@ QString KateScriptDocument::charAt(const KTextEditor::Cursor &cursor)
 {
     const QChar c = m_document->characterAt(cursor);
     return c.isNull() ? QString() : QString(c);
+}
+
+QString KateScriptDocument::charAt(const QJSValue &jscursor)
+{
+    return charAt(cursorFromScriptValue(jscursor));
 }
 
 QString KateScriptDocument::firstChar(int line)
@@ -447,6 +520,11 @@ bool KateScriptDocument::isSpace(const KTextEditor::Cursor &cursor)
     return m_document->characterAt(cursor).isSpace();
 }
 
+bool KateScriptDocument::isSpace(const QJSValue &jscursor)
+{
+    return isSpace(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::matchesAt(int line, int column, const QString &s)
 {
     Kate::TextLine textLine = m_document->plainKateTextLine(line);
@@ -455,7 +533,15 @@ bool KateScriptDocument::matchesAt(int line, int column, const QString &s)
 
 bool KateScriptDocument::matchesAt(const KTextEditor::Cursor &cursor, const QString &s)
 {
+
     return matchesAt(cursor.line(), cursor.column(), s);
+}
+
+bool KateScriptDocument::matchesAt(const QJSValue &jscursor, const QString &s)
+{
+
+    KTextEditor::Cursor cursor = cursorFromScriptValue(jscursor);
+    return matchesAt(cursor, s);
 }
 
 bool KateScriptDocument::setText(const QString &s)
@@ -484,6 +570,11 @@ bool KateScriptDocument::truncate(const KTextEditor::Cursor &cursor)
     return truncate(cursor.line(), cursor.column());
 }
 
+bool KateScriptDocument::truncate(const QJSValue &cursor)
+{
+    return truncate(cursorFromScriptValue(cursor));
+}
+
 bool KateScriptDocument::insertText(int line, int column, const QString &s)
 {
     return insertText(KTextEditor::Cursor(line, column), s);
@@ -492,6 +583,12 @@ bool KateScriptDocument::insertText(int line, int column, const QString &s)
 bool KateScriptDocument::insertText(const KTextEditor::Cursor &cursor, const QString &s)
 {
     return m_document->insertText(cursor, s);
+}
+
+bool KateScriptDocument::insertText(const QJSValue &jscursor, const QString &s)
+{
+    KTextEditor::Cursor cursor = cursorFromScriptValue(jscursor);
+    return insertText(cursor, s);
 }
 
 bool KateScriptDocument::removeText(int fromLine, int fromColumn, int toLine, int toColumn)
@@ -507,6 +604,12 @@ bool KateScriptDocument::removeText(const KTextEditor::Cursor &from, const KText
 bool KateScriptDocument::removeText(const KTextEditor::Range &range)
 {
     return m_document->removeText(range);
+}
+
+bool KateScriptDocument::removeText(const QJSValue &jsrange)
+{
+    KTextEditor::Range range = rangeFromScriptValue(jsrange);
+    return removeText(range);
 }
 
 bool KateScriptDocument::insertLine(int line, const QString &s)
@@ -527,6 +630,11 @@ bool KateScriptDocument::wrapLine(int line, int column)
 bool KateScriptDocument::wrapLine(const KTextEditor::Cursor &cursor)
 {
     return wrapLine(cursor.line(), cursor.column());
+}
+
+bool KateScriptDocument::wrapLine(const QJSValue &jscursor)
+{
+    return wrapLine(cursorFromScriptValue(jscursor));
 }
 
 void KateScriptDocument::joinLines(int startLine, int endLine)
@@ -589,6 +697,11 @@ bool KateScriptDocument::isValidTextPosition(const KTextEditor::Cursor& cursor)
     return m_document->isValidTextPosition(cursor);
 }
 
+bool KateScriptDocument::isValidTextPosition(const QJSValue& cursor)
+{
+    return m_document->isValidTextPosition(cursorFromScriptValue(cursor));
+}
+
 int KateScriptDocument::firstColumn(int line)
 {
     Kate::TextLine textLine = m_document->plainKateTextLine(line);
@@ -615,6 +728,11 @@ int KateScriptDocument::prevNonSpaceColumn(const KTextEditor::Cursor &cursor)
     return prevNonSpaceColumn(cursor.line(), cursor.column());
 }
 
+int KateScriptDocument::prevNonSpaceColumn(const QJSValue &cursor)
+{
+    return prevNonSpaceColumn(cursorFromScriptValue(cursor));
+}
+
 int KateScriptDocument::nextNonSpaceColumn(int line, int column)
 {
     Kate::TextLine textLine = m_document->plainKateTextLine(line);
@@ -627,6 +745,11 @@ int KateScriptDocument::nextNonSpaceColumn(int line, int column)
 int KateScriptDocument::nextNonSpaceColumn(const KTextEditor::Cursor &cursor)
 {
     return nextNonSpaceColumn(cursor.line(), cursor.column());
+}
+
+int KateScriptDocument::nextNonSpaceColumn(const QJSValue &cursor)
+{
+    return nextNonSpaceColumn(cursorFromScriptValue(cursor));
 }
 
 int KateScriptDocument::prevNonEmptyLine(int line)
@@ -689,14 +812,14 @@ QString KateScriptDocument::commentEnd(int attribute)
     return m_document->highlight()->getCommentEnd(attribute);
 }
 
-KTextEditor::Range KateScriptDocument::documentRange()
+QJSValue KateScriptDocument::documentRange()
 {
-    return m_document->documentRange();
+    return rangeToScriptValue(m_engine, m_document->documentRange());
 }
 
-KTextEditor::Cursor KateScriptDocument::documentEnd()
+QJSValue KateScriptDocument::documentEnd()
 {
-    return m_document->documentEnd();
+    return cursorToScriptValue(m_engine, m_document->documentEnd());
 }
 
 int KateScriptDocument::attribute(int line, int column)
@@ -736,6 +859,11 @@ QString KateScriptDocument::attributeName(const KTextEditor::Cursor &cursor)
     return attributeName(cursor.line(), cursor.column());
 }
 
+QString KateScriptDocument::attributeName(const QJSValue &jscursor)
+{
+    return attributeName(cursorFromScriptValue(jscursor));
+}
+
 bool KateScriptDocument::isAttributeName(int line, int column, const QString &name)
 {
     return name == attributeName(line, column);
@@ -744,6 +872,12 @@ bool KateScriptDocument::isAttributeName(int line, int column, const QString &na
 bool KateScriptDocument::isAttributeName(const KTextEditor::Cursor &cursor, const QString &name)
 {
     return isAttributeName(cursor.line(), cursor.column(), name);
+}
+
+bool KateScriptDocument::isAttributeName(const QJSValue &jscursor, const QString &name)
+{
+    KTextEditor::Cursor cursor = cursorFromScriptValue(jscursor);
+    return isAttributeName(cursor, name);
 }
 
 QString KateScriptDocument::variable(const QString &s)
@@ -770,4 +904,10 @@ bool KateScriptDocument::_isCode(int defaultStyle)
 void KateScriptDocument::indent(KTextEditor::Range range, int change)
 {
     m_document->indent(range, change);
+}
+
+void KateScriptDocument::indent(const QJSValue &jsrange, int change)
+{
+    KTextEditor::Range range = rangeFromScriptValue(jsrange);
+    indent(range, change);
 }

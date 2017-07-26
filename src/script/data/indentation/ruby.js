@@ -27,6 +27,7 @@ var katescript = {
  */
 
 // required katepart js libraries
+require ("cursor.js");
 require ("range.js");
 
 //BEGIN USER CONFIGURATION
@@ -41,6 +42,13 @@ var rxIndent = /^\s*(def|if|unless|for|while|until|class|module|else|elsif|case|
 
 // Unindent lines that match this regexp
 var rxUnindent = /^\s*((end|when|else|elsif|rescue|ensure)\b|[\]\}])(.*)$/;
+
+var debugMode = false;
+function dbg() {
+    if (debugMode) {
+        debug.apply(this, arguments);
+    }
+}
 
 function assert(cond)
 {
@@ -89,10 +97,11 @@ function isLastCodeColumn(line, column)
 function testAtEnd(stmt, rx)
 {
   assert(rx.global);
-
   var cnt = stmt.content();
   var res;
-  while (res = rx.exec(cnt)) {
+  // Work-around QML bug:
+  rx.lastIndex = 0;
+  while ((res = rx.exec(cnt)) !== null) {
     var start = res.index;
     var end = rx.lastIndex;
     if (stmt.isCode(start)) {
@@ -149,7 +158,7 @@ function Statement(start, end)
     while (line < this.end && document.lineLength(line) < offset) {
       offset -= document.lineLength(line++) + 1;
     }
-    return {line: line, column: offset};
+    return new Cursor(line, offset);
   }
 
   // Return document.attribute at the given offset in a statement
@@ -172,7 +181,7 @@ function Statement(start, end)
 
   // Return the indent at the beginning of the statement
   this.indent = function() {
-    return document.firstVirtualColumn(this.start)
+    return document.firstVirtualColumn(this.start);
   }
 
   // Return the content of the statement from the document

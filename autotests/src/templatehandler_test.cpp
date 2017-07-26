@@ -54,7 +54,7 @@ void TemplateHandlerTest::testUndo()
     doc->config()->setIndentationWidth(4);
     doc->config()->setReplaceTabsDyn(true);
 
-    view->insertTemplate({0, 0}, snippet);
+    view->insertTemplate(KTextEditor::Cursor(0, 0), snippet);
 
     const QString result = "for (int i = ; i < ; ++i)\n"
                            "{\n"
@@ -359,7 +359,7 @@ void TemplateHandlerTest::testDefaults()
     QFETCH(QString, input);
     QFETCH(QString, function);
 
-    view->insertTemplate({0, 0}, input, function);
+    view->insertTemplate(KTextEditor::Cursor(0, 0), input, function);
     QTEST(doc->text(), "expected");
 
     view->selectAll();

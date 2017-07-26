@@ -761,8 +761,9 @@ function processChar(line, c)
     var prevFirstPos = document.firstColumn(line - 1);
     var lastPos = document.lastColumn(line);
 
-     dbg("firstPos: " + firstPos);
-     dbg("column..: " + column);
+    dbg("firstPos: " + firstPos);
+    dbg("column..: " + column);
+    dbg("char    : " + c);
 
     if (firstPos == column - 1 && c == '{') {
         // todo: maybe look for if etc.
@@ -790,7 +791,7 @@ function processChar(line, c)
     } else if (cfgSnapSlash && c == '/' && lastPos == column - 1) {
         // try to snap the string "* /" to "*/"
         var currentString = document.line(line);
-        if (currentString.search(/^(\s*)\*\s+\/\s*$/) != -1) {
+        if (/^(\s*)\*\s+\/\s*$/.test(currentString)) {
             currentString = RegExp.$1 + "*/";
             document.editBegin();
             document.removeLine(line);

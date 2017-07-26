@@ -21,7 +21,7 @@
 #define KATE_SCRIPT_VIEW_H
 
 #include <QObject>
-#include <QScriptable>
+#include <QJSValue>
 
 #include <ktexteditor_export.h>
 
@@ -29,51 +29,51 @@
 #include <ktexteditor/range.h>
 
 namespace KTextEditor { class ViewPrivate; }
-
+class QJSEngine;
 /**
  * Thinish wrapping around KTextEditor::ViewPrivate, exposing the methods we want exposed
  * and adding some helper methods.
  *
- * We inherit from QScriptable to have more thight access to the scripting
- * engine.
- *
  * setView _must_ be called before using any other method. This is not checked
  * for the sake of speed.
  */
-class KTEXTEDITOR_EXPORT KateScriptView : public QObject, protected QScriptable
+class KTEXTEDITOR_EXPORT KateScriptView : public QObject
 {
     /// Properties are accessible with a nicer syntax from JavaScript
     Q_OBJECT
 
 public:
-    KateScriptView(QObject *parent = nullptr);
+    KateScriptView(QJSEngine *, QObject *parent = nullptr);
     void setView(KTextEditor::ViewPrivate *view);
     KTextEditor::ViewPrivate *view();
 
-    Q_INVOKABLE KTextEditor::Cursor cursorPosition();
+    Q_INVOKABLE QJSValue cursorPosition();
     /**
      * Set the cursor position in the view.
      * @since 4.4
      */
     Q_INVOKABLE void setCursorPosition(int line, int column);
-    Q_INVOKABLE void setCursorPosition(const KTextEditor::Cursor &cursor);
+     void setCursorPosition(const KTextEditor::Cursor &cursor);
+    Q_INVOKABLE void setCursorPosition(const QJSValue &cursor);
 
-    Q_INVOKABLE KTextEditor::Cursor virtualCursorPosition();
+    Q_INVOKABLE QJSValue virtualCursorPosition();
     Q_INVOKABLE void setVirtualCursorPosition(int line, int column);
-    Q_INVOKABLE void setVirtualCursorPosition(const KTextEditor::Cursor &cursor);
+    void setVirtualCursorPosition(const KTextEditor::Cursor &cursor);
+    Q_INVOKABLE void setVirtualCursorPosition(const QJSValue &cursor);
 
     Q_INVOKABLE QString selectedText();
     Q_INVOKABLE bool hasSelection();
-    Q_INVOKABLE KTextEditor::Range selection();
-    Q_INVOKABLE void setSelection(const KTextEditor::Range &range);
+    Q_INVOKABLE QJSValue selection();
+    Q_INVOKABLE void setSelection(const QJSValue &range);
     Q_INVOKABLE void removeSelectedText();
     Q_INVOKABLE void selectAll();
     Q_INVOKABLE void clearSelection();
 
-    Q_INVOKABLE void align(const KTextEditor::Range &range);
+    Q_INVOKABLE void align(const QJSValue &range);
     
 private:
     KTextEditor::ViewPrivate *m_view;
+    QJSEngine *m_engine;
 };
 
 #endif

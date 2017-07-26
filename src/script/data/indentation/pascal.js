@@ -94,11 +94,8 @@ Fixing them is possible, but would make the indenter too big, slow and clever.
  - procedure/function declarations in 'interface' should be indented
 */
 
-"use strict";
-
 // required katepart js libraries
 require ("range.js");
-require ("cursor.js");
 require ("string.js");
 
 //BEGIN USER CONFIGURATION
@@ -110,13 +107,13 @@ var debugMode = false;            // send debug output to terminal
 //END USER CONFIGURATION
 
 
-const patTrailingSemi = /;\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/;
-const patMatchEnd     = /\b(begin|case|record)\b/i;
-const patDeclaration  = /^\s*(program|module|unit|uses|import|implementation|interface|label|const|type|var|function|procedure|operator)\b/i;
-const patTrailingBegin = /\bbegin\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
-const patTrailingEnd = /\bend;?\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
-const patCaseValue = /^(\s*[^,:;]+\s*(,\s*[^,:;]+\s*)*):(?!=)/;
-const patEndOfStatement = /(;|end)\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
+var patTrailingSemi = /;\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/;
+var patMatchEnd     = /\b(begin|case|record)\b/i;
+var patDeclaration  = /^\s*(program|module|unit|uses|import|implementation|interface|label|const|type|var|function|procedure|operator)\b/i;
+var patTrailingBegin = /\bbegin\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
+var patTrailingEnd = /\bend;?\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
+var patCaseValue = /^(\s*[^,:;]+\s*(,\s*[^,:;]+\s*)*):(?!=)/;
+var patEndOfStatement = /(;|end)\s*(\/\/.*|\{.*\}|\(\*.*\*\))?\s*$/i;
 
 function dbg() {
     if (debugMode) {
@@ -1392,7 +1389,7 @@ function tryStatement(line)
 triggerCharacters = " \t)]}#;";
 
 // possible outdent for lines that match this regexp
-const PascalReIndent = /^\s*((end|const|type|var|begin|until|function|procedure|operator|else|otherwise|\w+\s*:)\s+|[#\)\]\}]|end;)(.*)$/;
+var PascalReIndent = /^\s*((end|const|type|var|begin|until|function|procedure|operator|else|otherwise|\w+\s*:)\s+|[#\)\]\}]|end;)(.*)$/;
 
 // check if the trigger characters are in the right context,
 // otherwise running the indenter might be annoying to the user

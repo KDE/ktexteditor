@@ -20,8 +20,8 @@
 
 #include "katecommandlinescript.h"
 
-#include <QScriptValue>
-#include <QScriptEngine>
+#include <QJSValue>
+#include <QJSEngine>
 
 #include <KLocalizedString>
 #include <KShell>
@@ -50,24 +50,24 @@ const KateCommandLineScriptHeader &KateCommandLineScript::commandHeader()
 bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList args, QString &errorMessage)
 {
     clearExceptions();
-    QScriptValue command = function(cmd);
-    if (!command.isValid()) {
+    QJSValue command = function(cmd);
+    if (!command.isCallable()) {
         errorMessage = i18n("Function '%1' not found in script: %2", cmd, url());
         return false;
     }
 
     // add the arguments that we are going to pass to the function
-    QScriptValueList arguments;
-    foreach (const QString &arg, args) {
-        arguments << QScriptValue(m_engine, arg);
+    QJSValueList arguments;
+    for (const QString &arg : args) {
+        arguments << QJSValue(arg);
     }
 
-    QScriptValue result = command.call(QScriptValue(), arguments);
+    QJSValue result = command.call(arguments);
     // error during the calling?
-    if (m_engine->hasUncaughtException()) {
-        errorMessage = backtrace(result, i18n("Error calling %1", cmd));
-        return false;
-    }
+    if (result.isError()) {
+       errorMessage = backtrace(result, i18n("Error calling %1", cmd));
+       return false;
+   }
 
     return true;
 }
@@ -119,19 +119,19 @@ bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QS
     }
 
     clearExceptions();
-    QScriptValue helpFunction = function(QStringLiteral("help"));
-    if (!helpFunction.isValid()) {
+    QJSValue helpFunction = function(QStringLiteral("help"));
+    if (!helpFunction.isCallable()) {
         return false;
     }
 
     // add the arguments that we are going to pass to the function
-    QScriptValueList arguments;
-    arguments << QScriptValue(m_engine, cmd);
+    QJSValueList arguments;
+    arguments << QJSValue(cmd);
 
-    QScriptValue result = helpFunction.call(QScriptValue(), arguments);
+    QJSValue result = helpFunction.call(arguments);
 
     // error during the calling?
-    if (m_engine->hasUncaughtException()) {
+    if (result.isError()) {
         msg = backtrace(result, i18n("Error calling 'help %1'", cmd));
         return false;
     }

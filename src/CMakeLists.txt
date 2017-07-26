@@ -305,7 +305,7 @@ target_link_libraries(KF5TextEditor
 PUBLIC
   KF5::Parts
 PRIVATE
-  Qt5::Script
+  Qt5::Qml
   Qt5::PrintSupport
   KF5::I18n
   KF5::Archive

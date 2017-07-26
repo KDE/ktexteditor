@@ -49,8 +49,6 @@ var katescript = {
 // TODO: 'protected', 'task', 'select' &
 //       possibly other keywords not recognised
 
-"use strict";
-
 // required katepart js libraries
 require ("range.js");
 require ("cursor.js");
@@ -64,11 +62,11 @@ var debugMode = false;
 
 //END USER CONFIGURATION
 
-const AdaComment    = /\s*--.*$/;
-const unfStmt       = /([.=\(]|:=[^;]*)\s*$/;
-const unfLoop       = /^\s*(for|while)\b(?!.*\bloop\b)/i;
-const AdaBlockStart = /^\s*(if\b|while\b|else\b|elsif\b|loop\b|for\b.*\b(loop|use)\b|declare\b|begin\b|type\b.*\bis\b[^;]*$|(type\b.*)?\brecord\b|procedure\b|function\b|with\s+function\b|accept\b|do\b|task\b|generic\b|package\b|private\b|then\b|when\b|is\b)/i;
-const StatementStart = /^\s*(if|when|while|else|elsif|loop|for\b.*\b(loop|use)|begin)\b/i;
+var AdaComment    = /\s*--.*$/;
+var unfStmt       = /([.=\(]|:=[^;]*)\s*$/;
+var unfLoop       = /^\s*(for|while)\b(?!.*\bloop\b)/i;
+var AdaBlockStart = /^\s*(if\b|while\b|else\b|elsif\b|loop\b|for\b.*\b(loop|use)\b|declare\b|begin\b|type\b.*\bis\b[^;]*$|(type\b.*)?\brecord\b|procedure\b|function\b|with\s+function\b|accept\b|do\b|task\b|generic\b|package\b|private\b|then\b|when\b|is\b)/i;
+var StatementStart = /^\s*(if|when|while|else|elsif|loop|for\b.*\b(loop|use)|begin)\b/i;
 
 function dbg() {
     if (debugMode) {
@@ -85,7 +83,7 @@ function dbg() {
 
 
 // regexp of keywords & patterns that cause reindenting of the current line.
-const AdaReIndent = /^\s*((then|end|elsif|when|exception|begin|is|record|private)\s+|<<\w+>>|end;|[#\)])(.*)$/;
+var AdaReIndent = /^\s*((then|end|elsif|when|exception|begin|is|record|private)\s+|<<\w+>>|end;|[#\)])(.*)$/;
 
 // characters which trigger indent, beside the default '\n'
 var triggerCharacters = " \t)#>;";

@@ -19,8 +19,8 @@
 
 #include "kateindentscript.h"
 
-#include <QScriptValue>
-#include <QScriptEngine>
+#include <QJSValue>
+#include <QJSEngine>
 
 #include "katedocument.h"
 #include "kateview.h"
@@ -62,34 +62,31 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
     }
 
     clearExceptions();
-    QScriptValue indentFunction = function(QStringLiteral("indent"));
-    if (!indentFunction.isValid()) {
+    QJSValue indentFunction = function(QStringLiteral("indent"));
+    if (!indentFunction.isCallable()) {
         return qMakePair(-2, -2);
     }
     // add the arguments that we are going to pass to the function
-    QScriptValueList arguments;
-    arguments << QScriptValue(m_engine, position.line());
-    arguments << QScriptValue(m_engine, indentWidth);
-    arguments << QScriptValue(m_engine, typedCharacter.isNull() ? QString() : QString(typedCharacter));
+    QJSValueList arguments;
+    arguments << QJSValue(position.line());
+    arguments << QJSValue(indentWidth);
+    arguments << (typedCharacter.isNull() ? QJSValue(QString()) : QJSValue(QString(typedCharacter)));
     // get the required indent
-    QScriptValue result = indentFunction.call(QScriptValue(), arguments);
+    QJSValue result = indentFunction.call(arguments);
     // error during the calling?
-    if (m_engine->hasUncaughtException()) {
+    if (result.isError()) {
         displayBacktrace(result, QStringLiteral("Error calling indent()"));
         return qMakePair(-2, -2);
     }
     int indentAmount = -2;
     int alignAmount = -2;
     if (result.isArray()) {
-        indentAmount = result.property(0).toInt32();
-        alignAmount = result.property(1).toInt32();
+        indentAmount = result.property(0).toInt();
+        alignAmount = result.property(1).toInt();
     } else {
-        indentAmount = result.toInt32();
+        indentAmount = result.toInt();
     }
-    if (m_engine->hasUncaughtException()) {
-        displayBacktrace(QScriptValue(), QStringLiteral("Bad return type (must be integer)"));
-        return qMakePair(-2, -2);
-    }
+
     return qMakePair(indentAmount, alignAmount);
 }
 
