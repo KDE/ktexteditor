@@ -335,14 +335,14 @@ int KateViewInternal::lineToY(int viewLine) const
     return (viewLine - startLine()) * renderer()->lineHeight();
 }
 
-void KateViewInternal::slotIncFontSizes()
+void KateViewInternal::slotIncFontSizes(qreal step)
 {
-    renderer()->increaseFontSizes();
+    renderer()->increaseFontSizes(step);
 }
 
-void KateViewInternal::slotDecFontSizes()
+void KateViewInternal::slotDecFontSizes(qreal step)
 {
-    renderer()->decreaseFontSizes();
+    renderer()->decreaseFontSizes(step);
 }
 
 /**
@@ -3298,9 +3298,9 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
     // ctrl pressed -> change font size (only if angle is reported)
     if (e->modifiers() == Qt::ControlModifier) {
         if (e->angleDelta().y() > 0) {
-            slotIncFontSizes();
+            slotIncFontSizes(qreal(e->angleDelta().y()) / QWheelEvent::DefaultDeltasPerStep);
         } else if (e->angleDelta().y() < 0) {
-            slotDecFontSizes();
+            slotDecFontSizes(qreal(-e->angleDelta().y()) / QWheelEvent::DefaultDeltasPerStep);
         }
 
         // accept always and be done for zooming

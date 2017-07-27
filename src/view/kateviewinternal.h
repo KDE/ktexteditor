@@ -149,8 +149,8 @@ public:
     void dynWrapChanged();
 
 public Q_SLOTS:
-    void slotIncFontSizes();
-    void slotDecFontSizes();
+    void slotIncFontSizes(qreal step = 1.0);
+    void slotDecFontSizes(qreal step = 1.0);
 
     void paintCursor();
 

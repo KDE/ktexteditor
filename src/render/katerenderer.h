@@ -237,8 +237,8 @@ public:
     /**
      * Change to a different font (soon to be font set?)
      */
-    void increaseFontSizes();
-    void decreaseFontSizes();
+    void increaseFontSizes(qreal step = 1.0);
+    void decreaseFontSizes(qreal step = 1.0);
     const QFont &currentFont() const;
     const QFontMetricsF &currentFontMetrics() const;
 

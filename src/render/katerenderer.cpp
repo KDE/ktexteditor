@@ -143,20 +143,20 @@ void KateRenderer::setShowSelections(bool showSelections)
     m_showSelections = showSelections;
 }
 
-void KateRenderer::increaseFontSizes()
+void KateRenderer::increaseFontSizes(qreal step)
 {
     QFont f(config()->font());
-    f.setPointSize(f.pointSize() + 1);
+    f.setPointSizeF(f.pointSizeF() + step);
 
     config()->setFont(f);
 }
 
-void KateRenderer::decreaseFontSizes()
+void KateRenderer::decreaseFontSizes(qreal step)
 {
     QFont f(config()->font());
 
-    if ((f.pointSize() - 1) > 0) {
-        f.setPointSize(f.pointSize() - 1);
+    if ((f.pointSizeF() - step) > 0) {
+        f.setPointSizeF(f.pointSizeF() - step);
     }
 
     config()->setFont(f);
