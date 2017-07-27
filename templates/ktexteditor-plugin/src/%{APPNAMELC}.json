@@ -3,12 +3,20 @@
         "Authors": [
             {
                 "Email": "%{EMAIL}",
-                "Name": "%{AUTHOR}"
+                "Name": "%{AUTHOR}",
+                "Name[x-test]": "xx%{AUTHOR}xx"
             }
         ],
         "Description": "A KTextEditor plugin",
+        "Description[ca]": "Un connector del KTextEditor",
+        "Description[nl]": "Een KTextEditor-plug-in",
+        "Description[pt]": "Um 'plugin' do KTextEditor",
+        "Description[sv]": "Ett Ktexteditor-insticksprogram",
+        "Description[uk]": "Додаток до KTextEditor",
+        "Description[x-test]": "xxA KTextEditor pluginxx",
         "Icon": "tool-text",
         "Name": "%{APPNAME}",
+        "Name[x-test]": "xx%{APPNAME}xx",
         "ServiceTypes": [
             "KTextEditor/Plugin"
         ]

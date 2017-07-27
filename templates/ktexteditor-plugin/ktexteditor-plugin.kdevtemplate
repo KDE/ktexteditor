@@ -1,7 +1,19 @@
 # KDE Config File
 [General]
 Name=C++
+Name[ca]=C++
+Name[nl]=C++
+Name[pt]=C++
+Name[sv]=C++
+Name[uk]=C++
+Name[x-test]=xxC++xx
 Comment=Generates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.
+Comment[ca]=Genera un connector en C++ del KTextEditor C++ per portar a terme operacions especials amb el text al KWrite, Kate, KDevelop etc.
+Comment[nl]=Genereert een KTextEditor C++ plug-in om speciale bewerkingen uit te voeren op tekst in KWrite, Kate, KDevelop etc.
+Comment[pt]=Gera um 'plugin' em C++ do KTextEditor para efectuar operações especiais sobre o texto no KWrite, Kate, KDevelop etc.
+Comment[sv]=Skapar en Ktexteditor C++ insticksmodul för att utföra särskilda åtgärder med text i Kwrite, Kate, KDevlop, etc.
+Comment[uk]=Створює додаток C++ до KTextEditor для виконання спеціальних дій над текстом у KWrite, Kate, KDevelop тощо.
+Comment[x-test]=xxGenerates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.xx
 Category=KTextEditor/Plugin
 Icon=ktexteditor-plugin.png
 ShowFilesAfterGeneration=%{dest}/README.md
