@@ -11,6 +11,8 @@
         "Description[ca]": "Un connector del KTextEditor",
         "Description[nl]": "Een KTextEditor-plug-in",
         "Description[pt]": "Um 'plugin' do KTextEditor",
+        "Description[sk]": "KTextEditor plugin",
+        "Description[sl]": "Vstavek za KTextEditor",
         "Description[sv]": "Ett Ktexteditor-insticksprogram",
         "Description[uk]": "Додаток до KTextEditor",
         "Description[x-test]": "xxA KTextEditor pluginxx",
