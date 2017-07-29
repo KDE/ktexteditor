@@ -8,6 +8,7 @@
             }
         ],
         "Description": "A KTextEditor plugin",
+        "Description[ca@valencia]": "Un connector del KTextEditor",
         "Description[ca]": "Un connector del KTextEditor",
         "Description[nl]": "Een KTextEditor-plug-in",
         "Description[pt]": "Um 'plugin' do KTextEditor",
