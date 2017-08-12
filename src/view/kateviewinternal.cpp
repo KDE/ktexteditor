@@ -3756,18 +3756,22 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor &pos, KTextEditor::At
 
 void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)
 {
+#ifndef QT_NO_ACCESSIBILITY
     if (QAccessible::isActive()) {
         QAccessibleTextInsertEvent ev(this,
             KateViewAccessible::positionFromCursor(this, range.start()), document->text(range));
         QAccessible::updateAccessibility(&ev);
     }
+#endif
 }
 
 void  KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/, const KTextEditor::Range &range, const QString &oldText)
 {
+#ifndef QT_NO_ACCESSIBILITY
     if (QAccessible::isActive()) {
         QAccessibleTextRemoveEvent ev(this,
             KateViewAccessible::positionFromCursor(this, range.start()), oldText);
         QAccessible::updateAccessibility(&ev);
     }
+#endif
 }
