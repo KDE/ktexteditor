@@ -471,7 +471,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_cut = a = ac->addAction(KStandardAction::Cut, this, SLOT(cut()));
     a->setWhatsThis(i18n("Cut the selected text and move it to the clipboard"));
 
-    m_paste = a = ac->addAction(KStandardAction::PasteText, this, SLOT(paste()));
+    m_paste = a = ac->addAction(KStandardAction::Paste, this, SLOT(paste()));
     a->setWhatsThis(i18n("Paste previously copied or cut clipboard contents"));
 
     m_copy = a = ac->addAction(KStandardAction::Copy, this, SLOT(copy()));
