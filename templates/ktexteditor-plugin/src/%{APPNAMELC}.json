@@ -29,6 +29,7 @@
         "Description[tr]": "KTextEditor eklentisi",
         "Description[uk]": "Додаток до KTextEditor",
         "Description[x-test]": "xxA KTextEditor pluginxx",
+        "Description[zh_CN]": "KTextEditor 插件",
         "Icon": "tool-text",
         "Name": "%{APPNAME}",
         "Name[x-test]": "xx%{APPNAME}xx",

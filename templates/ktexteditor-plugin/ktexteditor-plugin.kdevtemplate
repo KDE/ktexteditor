@@ -43,6 +43,7 @@ Comment[sr@latin]=Generiše C++ priključak za KTextEditor, za posebne postupke 
 Comment[sv]=Skapar en Ktexteditor C++ insticksmodul för att utföra särskilda åtgärder med text i Kwrite, Kate, KDevlop, etc.
 Comment[uk]=Створює додаток C++ до KTextEditor для виконання спеціальних дій над текстом у KWrite, Kate, KDevelop тощо.
 Comment[x-test]=xxGenerates a KTextEditor C++ plugin to perform special operations on text in KWrite, Kate, KDevelop etc.xx
+Comment[zh_CN]=生成一个 KTextEditor c + + 插件在 KWrite、 Kate、 KDevelop 等应用中执行特殊文本操作的文本。
 Comment[zh_TW]=生成一個 KTextEditor C++ 外掛程式來對 KWrite、Kate 與 KDevelop 中的文字做出特殊操作
 Category=KTextEditor/Plugin
 Icon=ktexteditor-plugin.png
