@@ -6,13 +6,11 @@ add_subdirectory( script/data )
 
 # set right defines for libgit2 usage
 if(LIBGIT2_FOUND)
-    add_definitions(-DLIBGIT2_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES LibGit2::LibGit2)
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} LibGit2::LibGit2)
 endif()
 
 if(EditorConfig_FOUND)
-    add_definitions(-DEDITORCONFIG_FOUND)
     SET (CMAKE_REQUIRED_LIBRARIES ${EditorConfig_LIBRARIES})
     set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} ${EditorConfig_LIBRARIES})
 endif()

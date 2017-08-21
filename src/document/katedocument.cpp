@@ -24,6 +24,7 @@
 */
 
 //BEGIN includes
+#include "config.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katedialogs.h"
@@ -51,7 +52,7 @@
 #include "kateabstractinputmode.h"
 #include "katetemplatehandler.h"
 
-#ifdef EDITORCONFIG_FOUND
+#if EDITORCONFIG_FOUND
 #include "editorconfig.h"
 #endif
 
@@ -86,7 +87,7 @@
 
 #include <cmath>
 
-#ifdef LIBGIT2_FOUND
+#if LIBGIT2_FOUND
 #include <git2.h>
 #include <git2/oid.h>
 #include <git2/repository.h>
@@ -2586,7 +2587,7 @@ void KTextEditor::DocumentPrivate::readDirConfig()
         }
     }
 
-#ifdef EDITORCONFIG_FOUND
+#if EDITORCONFIG_FOUND
     // if there wasn’t any .kateconfig file and KTextEditor was compiled with
     // EditorConfig support, try to load document config from a .editorconfig
     // file, if such is provided
@@ -4812,7 +4813,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
             m_prevModOnHdReason = OnDiskUnmodified;
         }
 
-#ifdef LIBGIT2_FOUND
+#if LIBGIT2_FOUND
         /**
          * if still modified, try to take a look at git
          * skip that, if document is modified!

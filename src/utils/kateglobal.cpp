@@ -59,7 +59,7 @@
 #include <QPushButton>
 #include <QStringListModel>
 
-#ifdef LIBGIT2_FOUND
+#if LIBGIT2_FOUND
 #include <git2.h>
 #endif
 
@@ -100,7 +100,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     staticInstance = this;
 
     // init libgit2, we require at least 0.22 which has this function!
-#ifdef LIBGIT2_FOUND
+#if LIBGIT2_FOUND
     git_libgit2_init();
 #endif
 
@@ -197,7 +197,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     fact = new KateNormalInputModeFactory();
     m_inputModeFactories.insert(KTextEditor::View::NormalInputMode, fact);
 
-#ifdef BUILD_VIMODE
+#if BUILD_VIMODE
     fact = new KateViInputModeFactory();
     m_inputModeFactories.insert(KTextEditor::View::ViInputMode, fact);
 #endif
@@ -263,7 +263,7 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     qDeleteAll(m_inputModeFactories);
 
     // shutdown libgit2, we require at least 0.22 which has this function!
-#ifdef LIBGIT2_FOUND
+#if LIBGIT2_FOUND
     git_libgit2_shutdown();
 #endif
 }

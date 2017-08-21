@@ -20,6 +20,8 @@
 
 #include "katesecuretextbuffer_p.h"
 
+#include "config.h"
+
 #ifndef Q_OS_WIN
 #include <unistd.h>
 #include <errno.h>
@@ -154,7 +156,7 @@ bool SecureTextBuffer::moveFile(const QString &sourceFile, const QString &target
 void SecureTextBuffer::syncToDisk(const int fd)
 {
 #ifndef Q_OS_WIN
-#ifdef HAVE_FDATASYNC
+#if HAVE_FDATASYNC
     fdatasync(fd);
 #else
     fsync(fd);
