@@ -13,8 +13,8 @@ endif()
 
 if(EditorConfig_FOUND)
     add_definitions(-DEDITORCONFIG_FOUND)
-    SET (CMAKE_REQUIRED_LIBRARIES editorconfig)
-    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} editorconfig)
+    SET (CMAKE_REQUIRED_LIBRARIES ${EditorConfig_LIBRARIES})
+    set (KTEXTEDITOR_OPTIONAL_LIBS ${KTEXTEDITOR_OPTIONAL_LIBS} ${EditorConfig_LIBRARIES})
 endif()
 
 # handle include files, both normal ones and generated ones
