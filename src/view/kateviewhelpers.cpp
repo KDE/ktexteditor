@@ -2245,12 +2245,13 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
 
         QAction *mA;
         QAction *dMA;
+        const QPixmap icon = m_doc->markPixmap(markType);
         if (!m_doc->markDescription(markType).isEmpty()) {
-            mA = markMenu.addAction(m_doc->markDescription(markType));
-            dMA = selectDefaultMark.addAction(m_doc->markDescription(markType));
+            mA = markMenu.addAction(icon, m_doc->markDescription(markType));
+            dMA = selectDefaultMark.addAction(icon, m_doc->markDescription(markType));
         } else {
-            mA = markMenu.addAction(i18n("Mark Type %1",  bit + 1));
-            dMA = selectDefaultMark.addAction(i18n("Mark Type %1",  bit + 1));
+            mA = markMenu.addAction(icon, i18n("Mark Type %1",  bit + 1));
+            dMA = selectDefaultMark.addAction(icon, i18n("Mark Type %1",  bit + 1));
         }
         selectDefaultMarkActionGroup->addAction(dMA);
         mA->setData(i);
