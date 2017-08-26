@@ -53,12 +53,10 @@ public:
      * @since 4.4
      */
     Q_INVOKABLE void setCursorPosition(int line, int column);
-     void setCursorPosition(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE void setCursorPosition(const QJSValue &cursor);
 
     Q_INVOKABLE QJSValue virtualCursorPosition();
     Q_INVOKABLE void setVirtualCursorPosition(int line, int column);
-    void setVirtualCursorPosition(const KTextEditor::Cursor &cursor);
     Q_INVOKABLE void setVirtualCursorPosition(const QJSValue &cursor);
 
     Q_INVOKABLE QString selectedText();
@@ -70,7 +68,7 @@ public:
     Q_INVOKABLE void clearSelection();
 
     Q_INVOKABLE void align(const QJSValue &range);
-    
+
 private:
     KTextEditor::ViewPrivate *m_view;
     QJSEngine *m_engine;
