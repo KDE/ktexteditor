@@ -197,7 +197,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'folding-preview' to list
     item = new VariableBoolItem(QStringLiteral("folding-preview"), viewConfig->foldingPreview());
-    item->setHelpText(i18nc("short translation please", "Enable folding preview on in the editor border."));
+    item->setHelpText(i18nc("short translation please", "Enable folding preview in the editor border."));
     listview->addItem(item);
 
     // Add 'font-size' to list
