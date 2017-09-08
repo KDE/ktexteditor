@@ -32,6 +32,7 @@ Persistence=session
 
 [org.kde.ktexteditor.katetextbuffer.savefile]
 Name=Save Document
+Name[ast]=Guardar documentu
 Name[ca]=Desa el document
 Name[ca@valencia]=Guarda el document
 Name[cs]=Uložit dokument
