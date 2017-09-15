@@ -724,7 +724,11 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 if (spaceIndex >= trailingPos) {
                     while (spaceIndex >= line.startCol() && text.at(spaceIndex).isSpace()) {
                         if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
-                            paintTrailingSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
+                            if (range->layout()->textOption().alignment() == Qt::AlignRight) { // Draw on left for RTL lines
+                                paintTrailingSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
+                            } else {
+                                paintTrailingSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
+                            }
                         }
                         --spaceIndex;
                     }
