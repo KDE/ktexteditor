@@ -33,6 +33,7 @@ Comment[ca@valencia]=Genera un connector en C++ del KTextEditor C++ per portar a
 Comment[es]=Genera un complemento de KTextEditor en C++ para realizar operaciones especiales sobre el texto en KWrite, Kate, KDevelop, etc.
 Comment[eu]=KTextEditor C++ plugin bat sortzen du testuan eragiketa bereziak egiteko  KWrite, Kate, KDevelop eta abarretan.
 Comment[fi]=Luo C++-kielisen KTextEditor-liitännäisen, jolla voi käsitellä tekstiä KWritessa, Katessa, KDevelopissa jne.
+Comment[fr]=Génère un module C++ pour KTextEditor pour appliquer des opérations spéciales sur du texte dans KWrite, Kate, KDevelop etc.
 Comment[gl]=Xera un complemento de KTextEditor en C++ para realizar operacións especiais en texto en KWrite, Kate, KDevelop, etc.
 Comment[it]=Genera un'estensione KTextEditor C++ per eseguire particolari operazioni sul testo in KWrite, Kate, KDevelop ecc.
 Comment[nl]=Genereert een KTextEditor C++ plug-in om speciale bewerkingen uit te voeren op tekst in KWrite, Kate, KDevelop etc.
