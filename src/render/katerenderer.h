@@ -181,6 +181,11 @@ public:
      */
     void setShowTrailingSpaces(bool showSpaces);
 
+	/**
+	 * Update marker size shown.
+    */
+	 void updateMarkerSize();
+
     /**
      * @returns whether non-printable spaces should be shown
      */
@@ -403,6 +408,7 @@ private:
     bool m_showSelections;
     bool m_showTabs;
     bool m_showSpaces;
+    float m_markerSize;
     bool m_showNonPrintableSpaces;
     bool m_printerFriendly;
     QColor m_caretOverrideColor;

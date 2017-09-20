@@ -307,6 +307,7 @@ const char KEY_KEEP_EXTRA_SPACES[] = "Keep Extra Spaces";
 const char KEY_INDENT_PASTED_TEXT[] = "Indent On Text Paste";
 const char KEY_BACKSPACE_INDENTS[] = "Indent On Backspace";
 const char KEY_SHOW_SPACES[] = "Show Spaces";
+const char KEY_MARKER_SIZE[] = "Trailing Marker Size";
 const char KEY_REPLACE_TABS_DYN[] = "ReplaceTabsDyn";
 const char KEY_REMOVE_SPACES[] = "Remove Spaces";
 const char KEY_NEWLINE_AT_EOF[] = "Newline at End of File";
@@ -348,6 +349,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setIndentPastedText(config.readEntry(KEY_INDENT_PASTED_TEXT, false));
     setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, true));
     setShowSpaces(config.readEntry(KEY_SHOW_SPACES, false));
+    setMarkerSize(config.readEntry(KEY_MARKER_SIZE, 1));
     setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, true));
     setRemoveSpaces(config.readEntry(KEY_REMOVE_SPACES, 0));
     setNewLineAtEof(config.readEntry(KEY_NEWLINE_AT_EOF, true));
@@ -398,6 +400,7 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_INDENT_PASTED_TEXT, indentPastedText());
     config.writeEntry(KEY_BACKSPACE_INDENTS, backspaceIndents());
     config.writeEntry(KEY_SHOW_SPACES, showSpaces());
+    config.writeEntry(KEY_MARKER_SIZE, markerSize());
     config.writeEntry(KEY_REPLACE_TABS_DYN, replaceTabsDyn());
     config.writeEntry(KEY_REMOVE_SPACES, removeSpaces());
     config.writeEntry(KEY_NEWLINE_AT_EOF, newLineAtEof());
@@ -750,6 +753,28 @@ bool KateDocumentConfig::showSpaces() const
     }
 
     return s_global->showSpaces();
+}
+
+void KateDocumentConfig::setMarkerSize(uint markerSize)
+{
+    if (m_markerSize == markerSize) {
+        return;
+    }
+
+    configStart();
+
+    m_markerSize = markerSize;
+
+    configEnd();
+}
+
+uint KateDocumentConfig::markerSize() const
+{
+    if (isGlobal()) {
+        return m_markerSize;
+    }
+
+    return s_global->markerSize();
 }
 
 void KateDocumentConfig::setReplaceTabsDyn(bool on)

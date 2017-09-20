@@ -239,6 +239,9 @@ public:
     void setShowSpaces(bool on);
     bool showSpaces() const;
 
+	void setMarkerSize(uint markerSize);
+	uint markerSize() const;
+
     void setReplaceTabsDyn(bool on);
     bool replaceTabsDyn() const;
 
@@ -359,6 +362,7 @@ private:
     bool m_showTabs : 1;
     bool m_showSpacesSet : 1;
     bool m_showSpaces : 1;
+    uint m_markerSize;
     bool m_replaceTabsDynSet : 1;
     bool m_replaceTabsDyn : 1;
     bool m_removeSpacesSet : 1;
