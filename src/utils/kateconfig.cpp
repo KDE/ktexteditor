@@ -1263,6 +1263,7 @@ KateViewConfig::KateViewConfig()
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
     m_autoBracketsSet(false),
+    m_backspaceRemoveComposedSet(false),
     m_view(nullptr)
 {
     s_global = this;
@@ -1307,8 +1308,9 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
-    m_foldFirstLineSet (false),
+    m_foldFirstLineSet(false),
     m_autoBracketsSet(false),
+    m_backspaceRemoveComposedSet(false),
     m_view(view)
 {
 }
@@ -1353,6 +1355,7 @@ const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
 const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
 const char KEY_SHOW_WORD_COUNT[] = "Show Word Count";
 const char KEY_AUTO_BRACKETS[] = "Auto Brackets";
+const char KEY_BACKSPACE_REMOVE_COMPOSED[] = "Backspace Remove Composed Characters";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -1415,6 +1418,8 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setShowWordCount(config.readEntry(KEY_SHOW_WORD_COUNT, false));
     setAutoBrackets(config.readEntry(KEY_AUTO_BRACKETS, false));
 
+    setBackspaceRemoveComposed(config.readEntry(KEY_BACKSPACE_REMOVE_COMPOSED, false));
+
     configEnd();
 }
 
@@ -1476,6 +1481,8 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
 
     config.writeEntry(KEY_SHOW_WORD_COUNT, showWordCount());
     config.writeEntry(KEY_AUTO_BRACKETS, autoBrackets());
+
+    config.writeEntry(KEY_BACKSPACE_REMOVE_COMPOSED, backspaceRemoveComposed());
 }
 
 void KateViewConfig::updateConfig()
@@ -2231,6 +2238,29 @@ void KateViewConfig::setShowWordCount(bool on)
 
     configStart();
     m_showWordCount = on;
+    configEnd();
+}
+
+bool KateViewConfig::backspaceRemoveComposed() const
+{
+    if (m_backspaceRemoveComposedSet || isGlobal()) {
+        return m_backspaceRemoveComposed;
+    }
+
+    return s_global->backspaceRemoveComposed();
+}
+
+void KateViewConfig::setBackspaceRemoveComposed(bool on)
+{
+    if (m_backspaceRemoveComposedSet && m_backspaceRemoveComposed == on) {
+        return;
+    }
+
+    configStart();
+
+    m_backspaceRemoveComposedSet = true;
+    m_backspaceRemoveComposed = on;
+
     configEnd();
 }
 

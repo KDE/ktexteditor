@@ -391,6 +391,7 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     connect(ui->chkPagingMovesCursor, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->sbAutoCenterCursor, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(ui->chkScrollPastEnd, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(ui->chkBackspaceRemoveComposed, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
 
     layout->addWidget(newWidget);
     setLayout(layout);
@@ -421,6 +422,8 @@ void KateNavigationConfigTab::apply()
 
     KateViewConfig::global()->setScrollPastEnd(ui->chkScrollPastEnd->isChecked());
 
+    KateViewConfig::global()->setBackspaceRemoveComposed(ui->chkBackspaceRemoveComposed->isChecked());
+
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
 }
@@ -433,6 +436,7 @@ void KateNavigationConfigTab::reload()
     ui->chkPagingMovesCursor->setChecked(KateDocumentConfig::global()->pageUpDownMovesCursor());
     ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
     ui->chkScrollPastEnd->setChecked(KateViewConfig::global()->scrollPastEnd());
+    ui->chkBackspaceRemoveComposed->setChecked(KateViewConfig::global()->backspaceRemoveComposed());
 }
 
 QString KateNavigationConfigTab::name() const

@@ -3167,16 +3167,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     }
 
     if (col > 0) {
-        if (!(config()->backspaceIndents())) {
-            // ordinary backspace
-            KTextEditor::Cursor beginCursor(line, view->textLayout(c)->previousCursorPosition(c.column()));
-            KTextEditor::Cursor endCursor(line, col);
-
-            removeText(KTextEditor::Range(beginCursor, endCursor));
-            // in most cases cursor is moved by removeText, but we should do it manually
-            // for past-end-of-line cursors in block mode
-            view->setCursorPosition(beginCursor);
-        } else {
+        if (config()->backspaceIndents()) {
             // backspace indents: erase to next indent position
             Kate::TextLine textLine = m_buffer->plainLine(line);
 
@@ -3194,15 +3185,25 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             if (pos < 0 || pos >= (int)colX) {
                 // only spaces on left side of cursor
                 indent(KTextEditor::Range(line, 0, line, 0), -1);
-            } else {
-                KTextEditor::Cursor beginCursor(line, view->textLayout(c)->previousCursorPosition(c.column()));
-                KTextEditor::Cursor endCursor(line, col);
-
-                removeText(KTextEditor::Range(beginCursor, endCursor));
-                // in most cases cursor is moved by removeText, but we should do it manually
-                // for past-end-of-line cursors in block mode
-                view->setCursorPosition(beginCursor);
             }
+        }
+        if (!config()->backspaceIndents() || pos) {
+            KTextEditor::Cursor beginCursor(line, 0);
+            KTextEditor::Cursor endCursor(line, col);
+            if (!view->config()->backspaceRemoveComposed()) { // Normal backspace behavior
+                // move to left of surrogate pair
+                if (!isValidTextPosition(beginCursor)) {
+                    Q_ASSERT(col >= 2);
+                    beginCursor.setColumn(col - 2);
+                }
+                beginCursor.setColumn(col - 1);
+            } else {
+                beginCursor.setColumn(view->textLayout(c)->previousCursorPosition(c.column()));
+            }
+            removeText(KTextEditor::Range(beginCursor, endCursor));
+            // in most cases cursor is moved by removeText, but we should do it manually
+            // for past-end-of-line cursors in block mode
+            view->setCursorPosition(beginCursor);
         }
     } else {
         // col == 0: wrap to previous line

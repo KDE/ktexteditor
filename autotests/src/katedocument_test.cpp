@@ -449,6 +449,7 @@ void KateDocumentTest::testRemoveComposedCharacters()
 {
     KTextEditor::DocumentPrivate doc;
     auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    view.config()->setBackspaceRemoveComposed(true);
     doc.setText(QString::fromUtf8("व्यक्तियों"));
     doc.del(view, Cursor(0, 0));
 

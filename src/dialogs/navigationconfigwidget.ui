@@ -132,6 +132,16 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="chkBackspaceRemoveComposed">
+        <property name="whatsThis">
+         <string>When selected, composed characters are removed with their diacritics instead of only removing the base character. This is useful for Indic locales.</string>
+        </property>
+        <property name="text">
+         <string>Backspace key removes character’s base with its diacritics</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
