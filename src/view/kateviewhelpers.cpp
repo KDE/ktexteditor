@@ -2140,11 +2140,15 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
             if (e->button() == Qt::LeftButton) {
                 if (!m_doc->handleMarkClick(cursorOnLine)) {
                     KateViewConfig *config = m_view->config();
-                    if (m_doc->editableMarks() & config->defaultMarkType()) {
-                        if (m_doc->mark(cursorOnLine) & config->defaultMarkType()) {
-                            m_doc->removeMark(cursorOnLine, config->defaultMarkType());
+                    const uint editBits = m_doc->editableMarks();
+                    // is the default or the only editable mark
+                    const uint singleMark = qPopulationCount(editBits) > 1 ?
+                        editBits & config->defaultMarkType() : editBits;
+                    if (singleMark) {
+                        if (m_doc->mark(cursorOnLine) & singleMark) {
+                            m_doc->removeMark(cursorOnLine, singleMark);
                         } else {
-                            m_doc->addMark(cursorOnLine, config->defaultMarkType());
+                            m_doc->addMark(cursorOnLine, singleMark);
                         }
                     } else if (config->allowMarkMenu()) {
                         showMarkMenu(cursorOnLine, QCursor::pos());
