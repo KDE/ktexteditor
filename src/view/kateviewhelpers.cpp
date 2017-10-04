@@ -427,7 +427,7 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
     // than an A or similar.
     // This gives the pixels created a bit of structure, which makes it look more
     // like real text.
-    color.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 1.0);
+    color.setAlpha((ch.unicode() < 256) ? characterOpacity[ch.unicode()] : 222);
 
     return color;
 }
