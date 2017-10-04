@@ -120,8 +120,6 @@ void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTe
         m_sonnetDialog->showSpellCheckCompletionMessage();
         m_sonnetDialog->setSpellCheckContinuedAfterReplacement(false);
 
-        m_view->bottomViewBar()->addBarWidget(m_sonnetDialog);
-
         connect(m_sonnetDialog, SIGNAL(done(QString)), this, SLOT(installNextSpellCheckRange()));
 
         connect(m_sonnetDialog, SIGNAL(replace(QString,int,QString)),
@@ -139,6 +137,8 @@ void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTe
         connect(m_sonnetDialog, SIGNAL(languageChanged(QString)),
                 this, SLOT(languageChanged(QString)));
     }
+
+    m_view->bottomViewBar()->addBarWidget(m_sonnetDialog);
 
     m_userSpellCheckLanguage.clear();
     m_previousGivenSpellCheckLanguage.clear();
