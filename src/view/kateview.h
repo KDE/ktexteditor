@@ -558,7 +558,7 @@ private Q_SLOTS:
      */
     void slotSelectionChanged();
 
-    void toggleInputMode(bool);
+    void toggleInputMode();
     void cycleInputMode();
 
 public:
@@ -654,7 +654,7 @@ private:
     QAction *m_selectAll;
     QAction *m_deSelect;
 
-    QList<QAction *> m_inputModeActions;
+    QActionGroup *m_inputModeActions;
 
     KToggleAction *m_toggleBlockSelection;
     KToggleAction *m_toggleInsert;

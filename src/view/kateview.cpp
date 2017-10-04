@@ -765,15 +765,19 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, SIGNAL(triggered(bool)), SLOT(switchToCmdLine()));
 
     KActionMenu *am = new KActionMenu(i18n("Input Modes"), this);
+    m_inputModeActions = new QActionGroup(am);
     ac->addAction(QStringLiteral("view_input_modes"), am);
 
     Q_FOREACH(KateAbstractInputMode *mode, m_viewInternal->m_inputModes) {
-        a = new KToggleAction(mode->viewInputModeHuman(), this);
+        a = new QAction(mode->viewInputModeHuman(), m_inputModeActions);
         am->addAction(a);
         a->setWhatsThis(i18n("Activate/deactivate %1", mode->viewInputModeHuman()));
-        a->setData(static_cast<int>(mode->viewInputMode()));
-        connect(a, SIGNAL(triggered(bool)), SLOT(toggleInputMode(bool)));
-        m_inputModeActions << a;
+        const InputMode im = mode->viewInputMode();
+        a->setData(static_cast<int>(im));
+        a->setCheckable(true);
+        if (im == m_config->inputMode())
+            a->setChecked(true);
+        connect(a, SIGNAL(triggered()), SLOT(toggleInputMode()));
     }
 
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
@@ -1296,10 +1300,12 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
 
     config()->setInputMode(mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
 
-    /* small duplication, but need to do this; TODO: make it more sane */
-    Q_FOREACH(QAction *action, m_inputModeActions) {
-        bool checked = static_cast<InputMode>(action->data().toInt()) == mode;
-        action->setChecked(checked);
+    /* small duplication, but need to do this if not toggled by action */
+    Q_FOREACH(QAction *action, m_inputModeActions->actions()) {
+        if (static_cast<InputMode>(action->data().toInt()) == mode) {
+            action->setChecked(true);
+            break;
+        }
     }
 
     /* inform the rest of the system about the change */
@@ -3614,30 +3620,11 @@ KateAbstractInputMode *KTextEditor::ViewPrivate::currentInputMode() const
     return m_viewInternal->m_currentInputMode;
 }
 
-void KTextEditor::ViewPrivate::toggleInputMode(bool on)
+void KTextEditor::ViewPrivate::toggleInputMode()
 {
-    QAction *a = dynamic_cast<QAction *>(sender());
-    if (!a) {
-        return;
+    if (QAction *a = dynamic_cast<QAction *>(sender())) {
+        setInputMode(static_cast<KTextEditor::View::InputMode>(a->data().toInt()));
     }
-
-    InputMode newmode = static_cast<KTextEditor::View::InputMode>(a->data().toInt());
-
-    if (currentInputMode()->viewInputMode() == newmode) {
-        if (!on) {
-            a->setChecked(true); // nasty
-        }
-
-        return;
-    }
-
-    Q_FOREACH(QAction *ac, m_inputModeActions) {
-        if (ac != a) {
-            ac->setChecked(false);
-        }
-    }
-
-    setInputMode(newmode);
 }
 
 void KTextEditor::ViewPrivate::cycleInputMode()
