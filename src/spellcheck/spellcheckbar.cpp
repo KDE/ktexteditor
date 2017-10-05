@@ -143,6 +143,7 @@ void SpellCheckBar::closed()
     // called from hideMe, so don't call it again!
     d->canceled = true;
     d->deleteProgressDialog(false); // this method can be called in response to
+    d->replaceAllMap.clear();
     // pressing 'Cancel' on the dialog
     emit cancel();
     emit spellCheckStatus(i18n("Spell check canceled."));
@@ -355,6 +356,7 @@ void SpellCheckBar::slotReplaceWord()
                             replacementText);
         d->checker->continueChecking();
     } else {
+        setProgressDialogVisible(false);
         d->checker->stop();
     }
 }
@@ -406,6 +408,9 @@ void SpellCheckBar::slotChangeLanguage(const QString &lang)
 void SpellCheckBar::fillSuggestions(const QStringList &suggs)
 {
     d->suggestionsModel->setStringList(suggs);
+    if (!suggs.isEmpty()) {
+        d->ui.cmbReplacement->setCurrentIndex(0);
+    }
 }
 
 void SpellCheckBar::slotMisspelling(const QString &word, int start)
