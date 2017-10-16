@@ -1452,7 +1452,7 @@ void KateModOnHdPrompt::slotPDone()
     m_diffFile = nullptr;
 
     // KRun::runUrl should delete the file, once the client exits
-    KRun::runUrl(url, QStringLiteral("text/x-patch"), nullptr, true);
+    KRun::runUrl(url, QStringLiteral("text/x-patch"), nullptr, KRun::RunFlags(KRun::DeleteTemporaryFiles));
 }
 
 //END KateModOnHdPrompt
