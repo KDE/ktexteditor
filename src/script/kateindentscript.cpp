@@ -46,7 +46,10 @@ const QString &KateIndentScript::triggerCharacters()
 
     m_triggerCharactersSet = true;
 
-    m_triggerCharacters = global(QStringLiteral("triggerCharacters")).toString();
+    auto triggerCharacters = global(QStringLiteral("triggerCharacters"));
+    if ( !triggerCharacters.isUndefined() ) {
+        m_triggerCharacters = triggerCharacters.toString();
+    }
 
     //qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
 
