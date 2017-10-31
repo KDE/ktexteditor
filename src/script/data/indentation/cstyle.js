@@ -514,6 +514,8 @@ function tryCondition(line)
                 if (currentString.search(/^\s*(if\b|[}]?\s*else|do\b|while\b|for)[^{]*$/) != -1)
                     indentation = firstPosVirtual;
                 break;
+            } else if (currentLine == 0 || lineDelimiter == 0) {
+                return indentation;
             }
         }
     }
