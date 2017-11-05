@@ -40,7 +40,8 @@ ecm_setup_version(
 set(REQUIRED_QT_VERSION 5.7.0)
 
 # Required Qt5 components to build this framework
-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml PrintSupport Xml XmlPatterns)
+find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
+  Script PrintSupport Xml XmlPatterns)
 
 find_package(KF5Archive ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
