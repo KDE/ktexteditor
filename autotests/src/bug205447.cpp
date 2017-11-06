@@ -25,7 +25,6 @@
 #include <kmainwindow.h>
 #include <ktexteditor/documentcursor.h>
 
-#include <QtScript/QScriptEngine>
 #include <QtTestWidgets>
 
 #include "testutils.h"

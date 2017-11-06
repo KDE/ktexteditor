@@ -48,7 +48,6 @@
 #include <QtCore/QTimer>
 #include <QtCore/QFileInfo>
 
-#include <QtScript/QScriptEngine>
 #include <QtTestWidgets>
 
 #include "script_test_base.h"
