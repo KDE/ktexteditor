@@ -6,6 +6,7 @@
    Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
    Copyright (C) 2011 Svyatoslav Kuzmich <svatoslav1@gmail.com>
    Copyright (C) 2012 Kåre Särs <kare.sars@iki.fi> (Minimap)
+   Copyright 2017-2018 Friedrich W. H. Kossebau <kossebau@kde.org>
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -32,6 +33,7 @@
 #include "katedocument.h"
 #include <katebuffer.h>
 #include "katerenderer.h"
+#include "kateannotationitemdelegate.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
 #include "katelayoutcache.h"
@@ -1436,6 +1438,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_maxCharWidth(0.0)
     , iconPaneWidth(16)
     , m_annotationBorderWidth(6)
+    , m_annotationItemDelegate(new KateAnnotationItemDelegate(m_viewInternal, this))
     , m_foldingPreview(nullptr)
     , m_foldingRange(nullptr)
     , m_nextHighlightBlock(-2)
@@ -1446,6 +1449,9 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     setMouseTracking(true);
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
     m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(32, 32));
+
+    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
+            this, &KateIconBorder::updateAnnotationBorderWidth);
 
     updateFont();
 
@@ -1484,6 +1490,12 @@ void KateIconBorder::setAnnotationBorderOn(bool enable)
 
     m_annotationBorderOn = enable;
 
+    // make sure the tooltip is hidden
+    if (!m_annotationBorderOn && !m_hoveredAnnotationGroupIdentifier.isEmpty()) {
+        m_hoveredAnnotationGroupIdentifier.clear();
+        hideAnnotationTooltip();
+    }
+
     emit m_view->annotationBorderVisibilityChanged(m_view, enable);
 
     updateGeometry();
@@ -1496,7 +1508,6 @@ void KateIconBorder::removeAnnotationHovering()
     // remove hovering if it's still there
     if (m_annotationBorderOn && !m_hoveredAnnotationGroupIdentifier.isEmpty()) {
         m_hoveredAnnotationGroupIdentifier.clear();
-        hideAnnotationTooltip();
         QTimer::singleShot(0, this, SLOT(update()));
     }
 }
@@ -1615,6 +1626,8 @@ void KateIconBorder::updateFont()
     // the icon pane scales with the font...
     iconPaneWidth = fm.height();
 
+    calcAnnotationBorderWidth();
+
     updateGeometry();
 
     QTimer::singleShot(0, this, SLOT(update()));
@@ -1708,6 +1721,215 @@ static void paintTriangle(QPainter &painter, QColor c, int xOffset, int yOffset,
     painter.setRenderHint(QPainter::Antialiasing, false);
 }
 
+/**
+ * Helper class for an identifier which can be an empty or non-empty string or invalid.
+ * Avoids complicated explicit statements in code dealing with the identifier
+ * received as QVariant from a model.
+ */
+class KateAnnotationGroupIdentifier
+{
+public:
+    KateAnnotationGroupIdentifier(const QVariant &identifier)
+        : m_isValid(identifier.isValid() && identifier.canConvert<QString>())
+        , m_id(m_isValid ? identifier.toString() : QString())
+    {
+    }
+    KateAnnotationGroupIdentifier() = default;
+    KateAnnotationGroupIdentifier(const KateAnnotationGroupIdentifier &rhs) = default;
+
+    KateAnnotationGroupIdentifier& operator=(const KateAnnotationGroupIdentifier &rhs)
+    {
+        m_isValid = rhs.m_isValid;
+        m_id = rhs.m_id;
+        return *this;
+    }
+    KateAnnotationGroupIdentifier& operator=(const QVariant &identifier)
+    {
+        m_isValid = (identifier.isValid() && identifier.canConvert<QString>());
+        if (m_isValid) {
+            m_id = identifier.toString();
+        } else {
+            m_id.clear();
+        }
+        return *this;
+    }
+
+    bool operator==(const KateAnnotationGroupIdentifier &rhs) const
+    {
+        return (m_isValid == rhs.m_isValid) && (!m_isValid || (m_id == rhs.m_id));
+    }
+    bool operator!=(const KateAnnotationGroupIdentifier &rhs) const
+    {
+        return (m_isValid != rhs.m_isValid) || (m_isValid && (m_id != rhs.m_id));
+    }
+
+    void clear()
+    {
+        m_isValid = false;
+        m_id.clear();
+    }
+    bool isValid() const { return m_isValid; }
+    const QString& id() const { return m_id; }
+
+private:
+    bool m_isValid = false;
+    QString m_id;
+};
+
+/**
+ * Helper class for iterative calculation of data regarding the position
+ * of a line with regard to annotation item grouping.
+ */
+class KateAnnotationGroupPositionState
+{
+public:
+    /**
+     * @param startz first rendered displayed line
+     * @param isUsed flag whether the KateAnnotationGroupPositionState object will
+     *               be used or is just created due to being on the stack
+     */
+    KateAnnotationGroupPositionState(KateViewInternal *viewInternal,
+                                     const KTextEditor::AnnotationModel *model,
+                                     const QString &hoveredAnnotationGroupIdentifier,
+                                     uint startz,
+                                     bool isUsed);
+    /**
+     * @param styleOption option to fill with data for the given line
+     * @param z rendered displayed line
+     * @param realLine real line which is rendered here (passed to avoid another look-up)
+     */
+    void nextLine(KTextEditor::StyleOptionAnnotationItem &styleOption, uint z, int realLine);
+
+private:
+    KateViewInternal *m_viewInternal;
+    const KTextEditor::AnnotationModel * const m_model;
+    const QString m_hoveredAnnotationGroupIdentifier;
+
+    int m_visibleWrappedLineInAnnotationGroup = -1;
+    KateAnnotationGroupIdentifier m_lastAnnotationGroupIdentifier;
+    KateAnnotationGroupIdentifier m_nextAnnotationGroupIdentifier;
+    bool m_isSameAnnotationGroupsSinceLast = false;
+};
+
+KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInternal *viewInternal,
+                                                                   const KTextEditor::AnnotationModel *model,
+                                                                   const QString &hoveredAnnotationGroupIdentifier,
+                                                                   uint startz,
+                                                                   bool isUsed)
+    : m_viewInternal(viewInternal)
+    , m_model(model)
+    , m_hoveredAnnotationGroupIdentifier(hoveredAnnotationGroupIdentifier)
+{
+    if (!isUsed) {
+        return;
+    }
+
+    if (!m_model || (static_cast<int>(startz) >= m_viewInternal->cache()->viewCacheLineCount())) {
+        return;
+    }
+
+    const auto realLineAtStart = m_viewInternal->cache()->viewLine(startz).line();
+    m_nextAnnotationGroupIdentifier = m_model->data(realLineAtStart,
+                                                    (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
+    if (m_nextAnnotationGroupIdentifier.isValid()) {
+        // estimate state of annotation group before first rendered line
+        if (startz == 0) {
+            if (realLineAtStart > 0) {
+                // TODO: here we would want to scan until the next line that would be displayed,
+                // to see if there are any group changes until then
+                // for now simply taking neighbour line into account, not a grave bug on the first displayed line
+                m_lastAnnotationGroupIdentifier = m_model->data(realLineAtStart - 1,
+                                                                (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
+                m_isSameAnnotationGroupsSinceLast = (m_lastAnnotationGroupIdentifier == m_nextAnnotationGroupIdentifier);
+            }
+        } else {
+            const auto realLineBeforeStart = m_viewInternal->cache()->viewLine(startz-1).line();
+            m_lastAnnotationGroupIdentifier = m_model->data(realLineBeforeStart, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
+            if (m_lastAnnotationGroupIdentifier.isValid()) {
+                if (m_lastAnnotationGroupIdentifier.id() == m_nextAnnotationGroupIdentifier.id()) {
+                    m_isSameAnnotationGroupsSinceLast = true;
+                    // estimate m_visibleWrappedLineInAnnotationGroup from lines before startz
+                    for (uint z = startz; z > 0; --z) {
+                        const auto realLine = m_viewInternal->cache()->viewLine(z-1).line();
+                        const KateAnnotationGroupIdentifier identifier = m_model->data(realLine, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
+                        if (identifier != m_lastAnnotationGroupIdentifier) {
+                            break;
+                        }
+                        ++m_visibleWrappedLineInAnnotationGroup;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotationItem &styleOption,
+                                                uint z, int realLine)
+{
+    styleOption.wrappedLine = m_viewInternal->cache()->viewLine(z).viewLine();
+    styleOption.wrappedLineCount = m_viewInternal->cache()->viewLineCount(realLine);
+
+    // Estimate position in group
+    const KateAnnotationGroupIdentifier annotationGroupIdentifier = m_nextAnnotationGroupIdentifier;
+    bool isSameAnnotationGroupsSinceThis = false;
+    // Calculate next line's group identifier
+    // shortcut: assuming wrapped lines are always displayed together, test is simple
+    if (styleOption.wrappedLine+1 < styleOption.wrappedLineCount) {
+        m_nextAnnotationGroupIdentifier = annotationGroupIdentifier;
+        isSameAnnotationGroupsSinceThis = true;
+    } else {
+        if (static_cast<int>(z+1) < m_viewInternal->cache()->viewCacheLineCount()) {
+            const int realLineAfter = m_viewInternal->cache()->viewLine(z+1).line();
+            // search for any realLine with a different group id, also the non-displayed
+            int rl = realLine + 1;
+            for (; rl <= realLineAfter; ++rl) {
+                m_nextAnnotationGroupIdentifier = m_model->data(rl, (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
+                if (!m_nextAnnotationGroupIdentifier.isValid() ||
+                    (m_nextAnnotationGroupIdentifier.id() != annotationGroupIdentifier.id())) {
+                    break;
+                }
+            }
+            isSameAnnotationGroupsSinceThis = (rl > realLineAfter);
+            if (rl < realLineAfter) {
+                m_nextAnnotationGroupIdentifier = m_model->data(realLineAfter, (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
+            }
+        } else {
+            // TODO: check next line after display end
+            m_nextAnnotationGroupIdentifier.clear();
+            isSameAnnotationGroupsSinceThis = false;
+        }
+    }
+
+    if (annotationGroupIdentifier.isValid()) {
+        if (m_hoveredAnnotationGroupIdentifier == annotationGroupIdentifier.id()) {
+            styleOption.state |= QStyle::State_MouseOver;
+        } else {
+            styleOption.state &= ~QStyle::State_MouseOver;
+        }
+
+        if (m_isSameAnnotationGroupsSinceLast) {
+            ++m_visibleWrappedLineInAnnotationGroup;
+        } else {
+            m_visibleWrappedLineInAnnotationGroup = 0;
+        }
+
+        styleOption.annotationItemGroupingPosition = StyleOptionAnnotationItem::InGroup;
+        if (!m_isSameAnnotationGroupsSinceLast) {
+            styleOption.annotationItemGroupingPosition |= StyleOptionAnnotationItem::GroupBegin;
+        }
+        if (!isSameAnnotationGroupsSinceThis) {
+            styleOption.annotationItemGroupingPosition |= StyleOptionAnnotationItem::GroupEnd;
+        }
+    } else {
+        m_visibleWrappedLineInAnnotationGroup = 0;
+    }
+    styleOption.visibleWrappedLineInGroup = m_visibleWrappedLineInAnnotationGroup;
+
+    m_lastAnnotationGroupIdentifier = m_nextAnnotationGroupIdentifier;
+    m_isSameAnnotationGroupsSinceLast = isSameAnnotationGroupsSinceThis;
+}
+
+
 void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 {
     uint h = m_view->renderer()->lineHeight();
@@ -1746,6 +1968,9 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
     KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
                                           m_view->annotationModel() : m_doc->annotationModel();
+    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model,
+                                                                  m_hoveredAnnotationGroupIdentifier,
+                                                                  startz, m_annotationBorderOn);
 
     for (uint z = startz; z <= endz; z++) {
         int y = h * z;
@@ -1807,60 +2032,20 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             p.setPen(m_view->renderer()->config()->lineNumberColor());
             p.setBrush(m_view->renderer()->config()->lineNumberColor());
 
-            int borderWidth = m_annotationBorderWidth;
-            p.drawLine(lnX + borderWidth + 1, y, lnX + borderWidth + 1, y + h);
+            const qreal borderX = lnX + m_annotationBorderWidth + 0.5;
+            p.drawLine(QPointF(borderX, y+0.5), QPointF(borderX, y + h - 0.5));
 
             if ((realLine > -1) && model) {
-                // Fetch data from the model
-                QVariant text = model->data(realLine, Qt::DisplayRole);
-                QVariant foreground = model->data(realLine, Qt::ForegroundRole);
-                QVariant background = model->data(realLine, Qt::BackgroundRole);
-                // Fill the background
-                if (background.isValid()) {
-                    p.fillRect(lnX, y, borderWidth + 1, h, background.value<QBrush>());
-                }
-                // Set the pen for drawing the foreground
-                if (foreground.isValid()) {
-                    p.setPen(foreground.value<QPen>());
-                }
+                KTextEditor::StyleOptionAnnotationItem styleOption;
+                initStyleOption(&styleOption);
+                styleOption.rect.setRect(lnX, y, m_annotationBorderWidth, h);
+                annotationGroupPositionState.nextLine(styleOption, z, realLine);
 
-                // Draw a border around all adjacent entries that have the same text as the currently hovered one
-                const QVariant identifier = model->data( realLine, (Qt::ItemDataRole) KTextEditor::AnnotationModel::GroupIdentifierRole );
-                if( m_hoveredAnnotationGroupIdentifier == identifier.toString() ) {
-                    p.drawLine(lnX, y, lnX, y + h);
-                    p.drawLine(lnX + borderWidth, y, lnX + borderWidth, y + h);
-
-                    QVariant beforeText = model->data(realLine - 1, Qt::DisplayRole);
-                    QVariant afterText = model->data(realLine + 1, Qt::DisplayRole);
-                    if (((beforeText.isValid() && beforeText.canConvert<QString>()
-                            && text.isValid() && text.canConvert<QString>()
-                            && beforeText.toString() != text.toString()) || realLine == 0)
-                            && m_viewInternal->cache()->viewLine(z).viewLine() == 0) {
-                        p.drawLine(lnX + 1, y, lnX + borderWidth, y);
-                    }
-
-                    if (((afterText.isValid() && afterText.canConvert<QString>()
-                            && text.isValid() && text.canConvert<QString>()
-                            && afterText.toString() != text.toString())
-                            || realLine == m_view->doc()->lines() - 1)
-                            && m_viewInternal->cache()->viewLine(z).viewLine() == m_viewInternal->cache()->viewLineCount(realLine) - 1) {
-                        p.drawLine(lnX + 1, y + h - 1, lnX + borderWidth, y + h - 1);
-                    }
-                }
-                if (foreground.isValid()) {
-                    QPen pen = p.pen();
-                    pen.setWidth(1);
-                    p.setPen(pen);
-                }
-
-                // Now draw the normal text
-                if (text.isValid() && text.canConvert<QString>() && (m_viewInternal->cache()->viewLine(z).startCol() == 0)) {
-                    p.drawText(lnX + 3, y, borderWidth - 3, h, Qt::AlignLeft | Qt::AlignVCenter, text.toString());
-                }
+                m_annotationItemDelegate->paint(&p, styleOption, model, realLine);
             }
 
-            // adjust current X position and reset the pen and brush
-            lnX += borderWidth + 2;
+            // adjust current X position
+            lnX += m_annotationBorderWidth + /* separator line width */1;
         }
 
         // line number
@@ -2201,7 +2386,14 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
             if (model) {
                 m_hoveredAnnotationGroupIdentifier = model->data( t.line(),
                                                                   (Qt::ItemDataRole) KTextEditor::AnnotationModel::GroupIdentifierRole ).toString();
-                showAnnotationTooltip(t.line(), e->globalPos());
+                const QPoint viewRelativePos = m_view->mapFromGlobal(e->globalPos());
+                QHelpEvent helpEvent(QEvent::ToolTip, viewRelativePos, e->globalPos());
+                KTextEditor::StyleOptionAnnotationItem styleOption;
+                initStyleOption(&styleOption);
+                styleOption.rect = annotationLineRectInView(t.line());
+                setStyleOptionLineData(&styleOption, e->y(), t.line(), model, m_hoveredAnnotationGroupIdentifier);
+                m_annotationItemDelegate->helpEvent(&helpEvent, m_view, styleOption, model, t.line());
+
                 QTimer::singleShot(0, this, SLOT(update()));
             }
         } else {
@@ -2210,7 +2402,6 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
             }
 
             m_hoveredAnnotationGroupIdentifier.clear();
-            hideAnnotationTooltip();
             QTimer::singleShot(0, this, SLOT(update()));
         }
         if (positionToArea(e->pos()) != IconBorder) {
@@ -2393,36 +2584,119 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     }
 }
 
-void KateIconBorder::showAnnotationTooltip(int line, const QPoint &pos)
+KTextEditor::AbstractAnnotationItemDelegate* KateIconBorder::annotationItemDelegate() const
 {
-    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                          m_view->annotationModel() : m_doc->annotationModel();
+    return m_annotationItemDelegate;
+}
 
-    if (model) {
-        QVariant data = model->data(line, Qt::ToolTipRole);
-        QString tip = data.toString();
-        if (!tip.isEmpty()) {
-            QToolTip::showText(pos, data.toString(), this);
+void KateIconBorder::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate)
+{
+    if (delegate == m_annotationItemDelegate) {
+        return;
+    }
+
+    // reset to default, but already on that?
+    if (!delegate && m_isDefaultAnnotationItemDelegate) {
+        // nothing to do
+        return;
+    }
+
+    // make sure the tooltip is hidden
+    if (m_annotationBorderOn && !m_hoveredAnnotationGroupIdentifier.isEmpty()) {
+        m_hoveredAnnotationGroupIdentifier.clear();
+        hideAnnotationTooltip();
+    }
+
+    disconnect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
+               this, &KateIconBorder::updateAnnotationBorderWidth);
+    if (!m_isDefaultAnnotationItemDelegate) {
+        disconnect(m_annotationItemDelegate, &QObject::destroyed,
+                   this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
+    }
+
+    if (!delegate) {
+        // reset to a default delegate
+        m_annotationItemDelegate = new KateAnnotationItemDelegate(m_viewInternal, this);
+        m_isDefaultAnnotationItemDelegate = true;
+    } else {
+        // drop any default delegate
+        if (m_isDefaultAnnotationItemDelegate) {
+            delete m_annotationItemDelegate;
+            m_isDefaultAnnotationItemDelegate = false;
         }
+
+        m_annotationItemDelegate = delegate;
+        // catch delegate being destroyed
+        connect(delegate, &QObject::destroyed,
+                this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
+    }
+
+    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
+            this, &KateIconBorder::updateAnnotationBorderWidth);
+
+    if (m_annotationBorderOn) {
+        updateGeometry();
+
+        QTimer::singleShot(0, this, SLOT(update()));
     }
 }
 
-int KateIconBorder::annotationLineWidth(int line)
+void KateIconBorder::handleDestroyedAnnotationItemDelegate()
 {
-    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                          m_view->annotationModel() : m_doc->annotationModel();
+    setAnnotationItemDelegate(nullptr);
+}
 
-    if (model) {
-        QVariant data = model->data(line, Qt::DisplayRole);
-        return data.toString().length() * m_maxCharWidth + 8;
+void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem* styleOption) const
+{
+    styleOption->initFrom(this);
+    styleOption->view = m_view;
+    styleOption->decorationSize = QSize(iconPaneWidth, iconPaneWidth);
+    styleOption->contentFontMetrics = m_view->renderer()->config()->fontMetrics();
+}
+
+void KateIconBorder::setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem* styleOption,
+                                            int y,
+                                            int realLine,
+                                            const KTextEditor::AnnotationModel *model,
+                                            const QString &annotationGroupIdentifier) const
+{
+    // calculate rendered displayed line
+    const uint h = m_view->renderer()->lineHeight();
+    const uint z = (y / h);
+
+    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model,
+                                                                  annotationGroupIdentifier,
+                                                                  z, true);
+    annotationGroupPositionState.nextLine(*styleOption, z, realLine);
+}
+
+
+QRect KateIconBorder::annotationLineRectInView(int line) const
+{
+    int x = 0;
+    if (m_iconBorderOn) {
+        x += iconPaneWidth + 2;
     }
-    return 8;
+    const int y = m_view->m_viewInternal->lineToY(line);
+
+    return QRect(x, y, m_annotationBorderWidth, m_view->renderer()->lineHeight());
 }
 
 void KateIconBorder::updateAnnotationLine(int line)
 {
-    if (annotationLineWidth(line) > m_annotationBorderWidth) {
-        m_annotationBorderWidth = annotationLineWidth(line);
+    // TODO: why has the default value been 8, where is that magic number from?
+    int width = 8;
+    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
+                                          m_view->annotationModel() : m_doc->annotationModel();
+
+    if (model) {
+        KTextEditor::StyleOptionAnnotationItem styleOption;
+        initStyleOption(&styleOption);
+        width = m_annotationItemDelegate->sizeHint(styleOption, model, line).width();
+    }
+
+    if (width > m_annotationBorderWidth) {
+        m_annotationBorderWidth = width;
         updateGeometry();
 
         QTimer::singleShot(0, this, SLOT(update()));
@@ -2443,27 +2717,40 @@ void KateIconBorder::showAnnotationMenu(int line, const QPoint &pos)
 
 void KateIconBorder::hideAnnotationTooltip()
 {
-    QToolTip::hideText();
+    m_annotationItemDelegate->hideTooltip(m_view);
 }
 
 void KateIconBorder::updateAnnotationBorderWidth()
 {
+    calcAnnotationBorderWidth();
+
+    updateGeometry();
+
+    QTimer::singleShot(0, this, SLOT(update()));
+}
+
+void KateIconBorder::calcAnnotationBorderWidth()
+{
+    // TODO: another magic number, not matching the one in updateAnnotationLine()
     m_annotationBorderWidth = 6;
     KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
                                           m_view->annotationModel() : m_doc->annotationModel();
 
     if (model) {
-        for (int i = 0; i < m_view->doc()->lines(); i++) {
-            int curwidth = annotationLineWidth(i);
-            if (curwidth > m_annotationBorderWidth) {
-                m_annotationBorderWidth = curwidth;
+        KTextEditor::StyleOptionAnnotationItem styleOption;
+        initStyleOption(&styleOption);
+
+        const int lineCount = m_view->doc()->lines();
+        if (lineCount > 0) {
+            const int checkedLineCount = m_hasUniformAnnotationItemSizes ? 1 : lineCount;
+            for (int i = 0; i < checkedLineCount; ++i) {
+                const int curwidth = m_annotationItemDelegate->sizeHint(styleOption, model, i).width();
+                if (curwidth > m_annotationBorderWidth) {
+                    m_annotationBorderWidth = curwidth;
+                }
             }
         }
     }
-
-    updateGeometry();
-
-    QTimer::singleShot(0, this, SLOT(update()));
 }
 
 void KateIconBorder::annotationModelChanged(KTextEditor::AnnotationModel *oldmodel, KTextEditor::AnnotationModel *newmodel)

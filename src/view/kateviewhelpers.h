@@ -2,6 +2,7 @@
    Copyright (C) 2002 John Firebaugh <jfirebaugh@kde.org>
    Copyright (C) 2001 Anders Lund <anders@alweb.dk>
    Copyright (C) 2001 Christoph Cullmann <cullmann@kde.org>
+   Copyright 2017-2018 Friedrich W. H. Kossebau <kossebau@kde.org>
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
@@ -44,6 +45,7 @@
 namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
 class KateViewInternal;
+class KateTextLayout;
 
 #define MAXFOLDINGCOLORS 16
 
@@ -55,6 +57,8 @@ namespace KTextEditor
 class Command;
 class AnnotationModel;
 class MovingRange;
+class AbstractAnnotationItemDelegate;
+class StyleOptionAnnotationItem;
 }
 
 class QTimer;
@@ -289,6 +293,17 @@ public:
     enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
     BorderArea positionToArea(const QPoint &) const;
 
+    KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const;
+    void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate);
+    inline bool uniformAnnotationItemSizes() const
+    {
+        return m_hasUniformAnnotationItemSizes;
+    }
+    inline void setAnnotationUniformItemSizes(bool enable)
+    {
+        m_hasUniformAnnotationItemSizes = enable;
+    }
+
 public Q_SLOTS:
     void updateAnnotationBorderWidth();
     void updateAnnotationLine(int line);
@@ -308,12 +323,20 @@ private:
 
     void showMarkMenu(uint line, const QPoint &pos);
 
-    void showAnnotationTooltip(int line, const QPoint &pos);
     void hideAnnotationTooltip();
     void removeAnnotationHovering();
     void showAnnotationMenu(int line, const QPoint &pos);
-    int annotationLineWidth(int line);
+    void calcAnnotationBorderWidth();
 
+    void initStyleOption(KTextEditor::StyleOptionAnnotationItem *styleOption) const;
+    void setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption,
+                                int y,
+                                int realLine,
+                                const KTextEditor::AnnotationModel *model,
+                                const QString &annotationGroupIdentifier) const;
+    QRect annotationLineRectInView(int line) const;
+
+private:
     KTextEditor::ViewPrivate *m_view;
     KTextEditor::DocumentPrivate *m_doc;
     KateViewInternal *m_viewInternal;
@@ -335,6 +358,10 @@ private:
     int iconPaneWidth;
     int m_annotationBorderWidth;
 
+    KTextEditor::AbstractAnnotationItemDelegate *m_annotationItemDelegate;
+    bool m_hasUniformAnnotationItemSizes = false;
+    bool m_isDefaultAnnotationItemDelegate = true;
+
     mutable QPixmap m_arrow;
     mutable QColor m_oldBackgroundColor;
 
@@ -348,6 +375,7 @@ private:
 
 private Q_SLOTS:
     void showBlock();
+    void handleDestroyedAnnotationItemDelegate();
 
 private:
     QString m_hoveredAnnotationGroupIdentifier;

@@ -146,6 +146,7 @@ syntax/katehighlightingcmds.cpp
 view/kateview.cpp
 view/kateviewinternal.cpp
 view/kateviewhelpers.cpp
+view/kateannotationitemdelegate.cpp
 view/katemessagewidget.cpp
 view/katefadeeffect.cpp
 view/kateanimation.cpp

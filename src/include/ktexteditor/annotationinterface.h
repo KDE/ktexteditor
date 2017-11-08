@@ -1,6 +1,7 @@
 /* This file is part of the KDE libraries
  *  Copyright 2008 Andreas Pakulat <apaku@gmx.de>
  *  Copyright 2008-2018 Dominik Haumann <dhaumann@kde.org>
+ *  Copyright 2017-2018 Friedrich W. H. Kossebau <kossebau@kde.org>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -31,6 +32,7 @@ namespace KTextEditor
 {
 
 class View;
+class AbstractAnnotationItemDelegate;
 
 /**
  * \brief An model for providing line annotation information
@@ -60,6 +62,7 @@ public:
     enum {
       GroupIdentifierRole = Qt::UserRole
     };
+    // KF6: add AnnotationModelUserRole = Qt::UserRole + 0x100
 
     /**
      * data() is used to retrieve the information needed to present the
@@ -81,7 +84,7 @@ public:
      *
      * \returns a QVariant that contains the data for the given role.
      */
-    virtual QVariant data(int line, Qt::ItemDataRole role) const = 0;
+    virtual QVariant data(int line, Qt::ItemDataRole role) const = 0; //KF6: use int for role
 
 Q_SIGNALS:
     /**
@@ -270,10 +273,87 @@ public:
 
 };
 
+/**
+ * \brief Annotation interface for the View, version 2
+ *
+ * \ingroup kte_group_view_extensions
+ *
+ * \section annoview_intro Introduction
+ *
+ * The AnnotationViewInterfaceV2 allows to do the same as AnnotationViewInterface
+ * and additionally
+ * - (1) set a custom AbstractAnnotationItemDelegate for the View.
+ *
+ * For a more detailed explanation about whether you want to set a custom
+ * delegate for rendering the annotations, read the detailed documentation about the
+ * AbstractAnnotationItemDelegate.
+ *
+ * \section annoview_access Accessing the AnnotationViewInterfaceV2
+ *
+ * The AnnotationViewInterfaceV2 is an extension interface for a
+ * View, i.e. the View inherits the interface \e provided that the
+ * used KTextEditor library implements the interface. Use qobject_cast to
+ * access the interface:
+ * \code
+ * // view is of type KTextEditor::View*
+ * auto iface = qobject_cast<KTextEditor::AnnotationViewInterfaceV2*>(view);
+ *
+ * if (iface) {
+ *     // the implementation supports the interface
+ *     // do stuff
+ *     iface->setAnnotationItemDelegate(myDelegate);
+ *     iface->setAnnotationUniformItemSizes(true);
+ * } else {
+ *     // the implementation does not support the interface
+ * }
+ * \endcode
+ *
+ * \since 5.53
+ */
+class KTEXTEDITOR_EXPORT AnnotationViewInterfaceV2 : public AnnotationViewInterface
+{
+    // KF6: Merge KTextEditor::AnnotationViewInterfaceV2 into KTextEditor::AnnotationViewInterface (kossebau)
+public:
+    virtual ~AnnotationViewInterfaceV2() {}
+
+    /**
+     * Sets the AbstractAnnotationItemDelegate for this view and the model
+     * to provide custom rendering of annotation information for each line.
+     * Ownership is not transferred.
+     *
+     * \param delegate the new AbstractAnnotationItemDelegate, or \c nullptr to reset to the default delegate
+     */
+    virtual void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate) = 0;
+
+    /**
+     * Returns the currently used AbstractAnnotationItemDelegate
+     *
+     * @returns the current AbstractAnnotationItemDelegate
+     */
+    virtual KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const = 0;
+
+    /**
+     * This function can be used to declare whether it is known that the annotation items
+     * rendered by the set delegate all have the same size.
+     * This enables the view to do some optimizations for performance purposes.
+     *
+     * By default the value of this property is \c false .
+     *
+     * @param uniformItemSizes if \c true the annotation items are considered to all have the same size
+     */
+    virtual void setAnnotationUniformItemSizes(bool uniformItemSizes) = 0;
+
+    /**
+     * Checks whether the annotation items all have the same size.
+     */
+    virtual bool uniformAnnotationItemSizes() const = 0;
+};
+
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::AnnotationInterface, "org.kde.KTextEditor.AnnotationInterface")
 Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterface, "org.kde.KTextEditor.AnnotationViewInterface")
+Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterfaceV2, "org.kde.KTextEditor.AnnotationViewInterfaceV2")
 
 #endif
 

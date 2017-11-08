@@ -3245,15 +3245,31 @@ KTextEditor::AnnotationModel *KTextEditor::ViewPrivate::annotationModel() const
 void KTextEditor::ViewPrivate::setAnnotationBorderVisible(bool visible)
 {
     m_viewInternal->m_leftBorder->setAnnotationBorderOn(visible);
-    if ( !visible ) {
-        // make sure the tooltip is hidden
-        QToolTip::hideText();
-    }
 }
 
 bool KTextEditor::ViewPrivate::isAnnotationBorderVisible() const
 {
     return m_viewInternal->m_leftBorder->annotationBorderOn();
+}
+
+KTextEditor::AbstractAnnotationItemDelegate* KTextEditor::ViewPrivate::annotationItemDelegate() const
+{
+    return m_viewInternal->m_leftBorder->annotationItemDelegate();
+}
+
+void KTextEditor::ViewPrivate::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate)
+{
+    m_viewInternal->m_leftBorder->setAnnotationItemDelegate(delegate);
+}
+
+bool KTextEditor::ViewPrivate::uniformAnnotationItemSizes() const
+{
+    return m_viewInternal->m_leftBorder->uniformAnnotationItemSizes();
+}
+
+void KTextEditor::ViewPrivate::setAnnotationUniformItemSizes(bool enable)
+{
+    m_viewInternal->m_leftBorder->setAnnotationUniformItemSizes(enable);
 }
 
 KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()

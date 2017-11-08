@@ -52,6 +52,8 @@ class TextHintProvider;
 
 class KateIconBorder;
 class KateScrollBar;
+class KateAnnotationItemDelegate;
+class KateAnnotationGroupPositionState;
 class KateTextLayout;
 class KateTextAnimation;
 class KateAbstractInputMode;
@@ -66,6 +68,8 @@ class KateViewInternal : public QWidget
     friend class KTextEditor::ViewPrivate;
     friend class KateIconBorder;
     friend class KateScrollBar;
+    friend class KateAnnotationItemDelegate;
+    friend class KateAnnotationGroupPositionState;
     friend class CalculatingCursor;
     friend class BoundedCursor;
     friend class WrappingCursor;

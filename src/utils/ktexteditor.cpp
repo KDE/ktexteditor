@@ -42,6 +42,7 @@
 #include "texthintinterface.h"
 
 #include "annotationinterface.h"
+#include "abstractannotationitemdelegate.h"
 
 #include "kateglobal.h"
 #include "kateconfig.h"
@@ -375,3 +376,25 @@ QRect View::textAreaRect() const
 {
     return d->textAreaRectInternal();
 }
+
+StyleOptionAnnotationItem::StyleOptionAnnotationItem()
+    : contentFontMetrics(QFont())
+{}
+
+StyleOptionAnnotationItem::StyleOptionAnnotationItem(const StyleOptionAnnotationItem &other)
+    : QStyleOption(Version, Type)
+    , contentFontMetrics(QFont())
+{
+    *this = other;
+}
+
+StyleOptionAnnotationItem::StyleOptionAnnotationItem(int version)
+    : QStyleOption(version, Type)
+    , contentFontMetrics(QFont())
+{}
+
+AbstractAnnotationItemDelegate::AbstractAnnotationItemDelegate(QObject *parent)
+    : QObject(parent)
+{}
+
+AbstractAnnotationItemDelegate::~AbstractAnnotationItemDelegate() = default;

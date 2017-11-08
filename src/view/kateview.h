@@ -88,13 +88,14 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     public KTextEditor::CodeCompletionInterface,
     public KTextEditor::ConfigInterface,
     public KTextEditor::InlineNoteInterface,
-    public KTextEditor::AnnotationViewInterface
+    public KTextEditor::AnnotationViewInterfaceV2
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
+    Q_INTERFACES(KTextEditor::AnnotationViewInterfaceV2)
     Q_INTERFACES(KTextEditor::InlineNoteInterface)
 
     friend class KTextEditor::View;
@@ -369,6 +370,10 @@ public:
     KTextEditor::AnnotationModel *annotationModel() const override;
     void setAnnotationBorderVisible(bool visible) override;
     bool isAnnotationBorderVisible() const override;
+    void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate) override;
+    KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const override;
+    void setAnnotationUniformItemSizes(bool enable) override;
+    bool uniformAnnotationItemSizes() const override;
 
 Q_SIGNALS:
     void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) override;
