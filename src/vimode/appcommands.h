@@ -72,6 +72,7 @@ private:
     QRegExp re_quit;
     QRegExp re_exit;
     QRegExp re_edit;
+    QRegExp re_tabedit;
     QRegExp re_new;
     QRegExp re_split;
     QRegExp re_vsplit;
