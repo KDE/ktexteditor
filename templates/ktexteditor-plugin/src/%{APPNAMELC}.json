@@ -36,6 +36,7 @@
         "Description[uk]": "Додаток до KTextEditor",
         "Description[x-test]": "xxA KTextEditor pluginxx",
         "Description[zh_CN]": "KTextEditor 插件",
+        "Description[zh_TW]": "KTextEditor 外掛程式",
         "Icon": "tool-text",
         "Name": "%{APPNAME}",
         "Name[x-test]": "xx%{APPNAME}xx",
