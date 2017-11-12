@@ -67,7 +67,6 @@ class ZoomEventFilter
 {
 public:
     ZoomEventFilter(KateViewInternal *vi)
-        : m_vi(vi)
     {
     }
 
@@ -112,7 +111,6 @@ public:
     }
 
 protected:
-    KateViewInternal *m_vi;
     QElapsedTimer m_lastWheelEvent;
     bool m_ignoreZoom = false;
     bool m_lastWheelEventUnmodified = false;
