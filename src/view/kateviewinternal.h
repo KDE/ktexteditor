@@ -54,6 +54,7 @@ class KateScrollBar;
 class KateTextLayout;
 class KateTextAnimation;
 class KateAbstractInputMode;
+class ZoomEventFilter;
 
 class QScrollBar;
 
@@ -285,6 +286,8 @@ private:
     int m_mouseY;
     int m_scrollX;
     int m_scrollY;
+
+    ZoomEventFilter *m_zoomEventFilter;
 
     Qt::CursorShape m_mouseCursor;
 
