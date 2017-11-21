@@ -3,43 +3,12 @@
         "Authors": [
             {
                 "Email": "%{EMAIL}",
-                "Name": "%{AUTHOR}",
-                "Name[x-test]": "xx%{AUTHOR}xx"
+                "Name": "%{AUTHOR}"
             }
         ],
         "Description": "A KTextEditor plugin",
-        "Description[ast]": "Un complementu de KTextEditor",
-        "Description[ca@valencia]": "Un connector del KTextEditor",
-        "Description[ca]": "Un connector del KTextEditor",
-        "Description[cs]": "Modul KTextEditor",
-        "Description[da]": "Et KTextEditor-plugin",
-        "Description[es]": "Un complemento para KTextEditor",
-        "Description[eu]": "KTextEditor plugin bat",
-        "Description[fi]": "KTextEditor-liitännäinen",
-        "Description[fr]": "Un module externe KTextEditor",
-        "Description[gl]": "Un complemento de KTextEditor.",
-        "Description[ia]": "Un plugin de KTextEditor",
-        "Description[it]": "Un'estensione di KTextEditor",
-        "Description[nl]": "Een KTextEditor-plug-in",
-        "Description[nn]": "Eit KTextEditor-programtillegg",
-        "Description[pl]": "Wtyczka KTextEditor",
-        "Description[pt]": "Um 'plugin' do KTextEditor",
-        "Description[ru]": "Расширение KTextEditor",
-        "Description[sk]": "KTextEditor plugin",
-        "Description[sl]": "Vstavek za KTextEditor",
-        "Description[sr@ijekavian]": "Прикључак за KTextEditor",
-        "Description[sr@ijekavianlatin]": "Priključak za KTextEditor",
-        "Description[sr@latin]": "Priključak za KTextEditor",
-        "Description[sr]": "Прикључак за KTextEditor",
-        "Description[sv]": "Ett Ktexteditor-insticksprogram",
-        "Description[tr]": "KTextEditor eklentisi",
-        "Description[uk]": "Додаток до KTextEditor",
-        "Description[x-test]": "xxA KTextEditor pluginxx",
-        "Description[zh_CN]": "KTextEditor 插件",
-        "Description[zh_TW]": "KTextEditor 外掛程式",
         "Icon": "tool-text",
         "Name": "%{APPNAME}",
-        "Name[x-test]": "xx%{APPNAME}xx",
         "ServiceTypes": [
             "KTextEditor/Plugin"
         ]
