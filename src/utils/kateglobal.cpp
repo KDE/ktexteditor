@@ -63,12 +63,8 @@
 #include <git2.h>
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
 // logging category for this framework, default: log stuff >= warning
 Q_LOGGING_CATEGORY(LOG_KTE, "org.kde.ktexteditor", QtWarningMsg)
-#else
-Q_LOGGING_CATEGORY(LOG_KTE, "org.kde.ktexteditor")
-#endif
 
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
