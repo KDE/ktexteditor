@@ -37,11 +37,11 @@ KAUTH_HELPER_MAIN("org.kde.ktexteditor.katetextbuffer", SecureTextBuffer)
 
 ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
 {
-    const QString sourceFile = args[QLatin1String("sourceFile")].toString();
-    const QString targetFile = args[QLatin1String("targetFile")].toString();
-    const QByteArray checksum = args[QLatin1String("checksum")].toByteArray();
-    const uint ownerId = (uint) args[QLatin1String("ownerId")].toInt();
-    const uint groupId = (uint) args[QLatin1String("groupId")].toInt();
+    const QString sourceFile = args[QStringLiteral("sourceFile")].toString();
+    const QString targetFile = args[QStringLiteral("targetFile")].toString();
+    const QByteArray checksum = args[QStringLiteral("checksum")].toByteArray();
+    const uint ownerId = (uint) args[QStringLiteral("ownerId")].toInt();
+    const uint groupId = (uint) args[QStringLiteral("groupId")].toInt();
 
     if (saveFileInternal(sourceFile, targetFile, checksum, ownerId, groupId)) {
         return ActionReply::SuccessReply();
