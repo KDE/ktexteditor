@@ -102,7 +102,7 @@ void ViewTest::visualLineUpDownTests()
     const QSize oldSize = kate_view->size();
     kate_view->resize(400, 400); // Default size is too cramped to have interesting text in.
     const QFont oldFont = kate_view->renderer()->config()->font();
-    QFont fixedWidthFont("Monospace");
+    QFont fixedWidthFont("Courier");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up visual line up down tests", "Need a fixed pitch font!");
     kate_view->renderer()->config()->setFont(fixedWidthFont);
