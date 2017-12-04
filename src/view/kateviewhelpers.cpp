@@ -1138,8 +1138,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         if (!p) {
             setText(i18n("No such command: \"%1\"",  cmd));
         } else if (range.isValid() && !p->supportsRange(cmd)) {
-            // we got a range and a valid command, but the command does not inherit the RangeCommand
-            // extension. bail out.
+            // Raise message, when the command does not support ranges.
             setText(i18n("Error: No range allowed for command \"%1\".",  cmd));
         } else {
             QString msg;

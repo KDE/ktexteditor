@@ -197,8 +197,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
 
             // The following commands changes the focus themselves, so bar should be hidden before execution.
 
-            // We got a range and a valid command, but the command does not inherit the RangeCommand
-            // extension. Bail out.
+            // We got a range and a valid command, but the command does not support ranges.
             if (range.isValid() && !p->supportsRange(cmd)) {
                 commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
             } else {

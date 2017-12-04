@@ -76,11 +76,6 @@ class View;
  *
  * A typical example of an interative command would be the incremental search.
  *
- * \section cmd_extension Command Extensions
- *
- * The class RangeCommand enables you to support ranges so that you can apply
- * commands on regions of text.
- *
  * \see KTextEditor::CommandInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
@@ -120,8 +115,8 @@ public:
      * if a command should be called when the user also gave a range or if an
      * error should be raised.
      *
-     * \return \e true if command supports acting on a range of lines, false if
-     * not, default implementation returns false
+     * \return \e true if command supports acting on a range of lines, \e false
+     *          not. The default implementation returns \e false.
      */
     virtual bool supportsRange(const QString &cmd);
 
