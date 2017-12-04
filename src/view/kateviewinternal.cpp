@@ -66,9 +66,7 @@ static const bool debugPainting = false;
 class ZoomEventFilter
 {
 public:
-    ZoomEventFilter(KateViewInternal *vi)
-    {
-    }
+    ZoomEventFilter() = default;
 
     bool detectZoomingEvent(QWheelEvent *e, Qt::KeyboardModifiers modifier = Qt::ControlModifier)
     {
@@ -240,7 +238,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
 
     setAcceptDrops(true);
 
-    m_zoomEventFilter = new ZoomEventFilter(this);
+    m_zoomEventFilter = new ZoomEventFilter();
     // event filter
     installEventFilter(this);
 
