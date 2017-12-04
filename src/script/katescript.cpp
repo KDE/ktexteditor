@@ -36,10 +36,6 @@
 #include <QMap>
 #include <QQmlEngine>
 
-//BEGIN conversion functions for Cursors and Ranges
-
-//END
-
 KateScript::KateScript(const QString &urlOrScript, enum InputType inputType)
     : m_loaded(false)
     , m_loadSuccessful(false)
