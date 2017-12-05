@@ -23,7 +23,6 @@
 #include "katetextbuffer.h"
 
 #include <QtCore/QCoreApplication>
-#include <QtCore/QStringList>
 
 int main(int argc, char *argv[])
 {

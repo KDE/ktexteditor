@@ -27,13 +27,13 @@
 static bool checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const QStringList trueValues = QStringList() << QStringLiteral("1") << QStringLiteral("on") << QStringLiteral("true");
+    static const QStringList trueValues { QStringLiteral("1"), QStringLiteral("on"), QStringLiteral("true") };
     if (trueValues.contains(val)) {
         *result = true;
         return true;
     }
 
-    static const QStringList falseValues = QStringList() << QStringLiteral("0") << QStringLiteral("off") << QStringLiteral("false");
+    static const QStringList falseValues { QStringLiteral("0"), QStringLiteral("off"), QStringLiteral("false") };
     if (falseValues.contains(val)) {
         *result = false;
         return true;

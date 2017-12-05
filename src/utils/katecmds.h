@@ -45,19 +45,38 @@ namespace KateCommands
 class CoreCommands : public KTextEditor::Command
 {
     CoreCommands()
-        : KTextEditor::Command(QStringList() << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent") << QStringLiteral("fold") << QStringLiteral("tfold") << QStringLiteral("unfold")
-          << QStringLiteral("comment") << QStringLiteral("uncomment") << QStringLiteral("goto") << QStringLiteral("kill-line")
-          << QStringLiteral("set-tab-width") << QStringLiteral("set-replace-tabs") << QStringLiteral("set-show-tabs")
-          << QStringLiteral("set-indent-width")
-          << QStringLiteral("set-indent-mode") << QStringLiteral("set-auto-indent")
-          << QStringLiteral("set-line-numbers") << QStringLiteral("set-folding-markers") << QStringLiteral("set-icon-border")
-          << QStringLiteral("set-indent-pasted-text") << QStringLiteral("set-word-wrap") << QStringLiteral("set-word-wrap-column")
-          << QStringLiteral("set-replace-tabs-save") << QStringLiteral("set-remove-trailing-spaces")
-          << QStringLiteral("set-highlight") << QStringLiteral("set-mode") << QStringLiteral("set-show-indent")
-          << QStringLiteral("print"))
+        : KTextEditor::Command({
+              QStringLiteral("indent")
+            , QStringLiteral("unindent")
+            , QStringLiteral("cleanindent")
+            , QStringLiteral("fold")
+            , QStringLiteral("tfold")
+            , QStringLiteral("unfold")
+            , QStringLiteral("comment")
+            , QStringLiteral("uncomment")
+            , QStringLiteral("goto")
+            , QStringLiteral("kill-line")
+            , QStringLiteral("set-tab-width")
+            , QStringLiteral("set-replace-tabs")
+            , QStringLiteral("set-show-tabs")
+            , QStringLiteral("set-indent-width")
+            , QStringLiteral("set-indent-mode")
+            , QStringLiteral("set-auto-indent")
+            , QStringLiteral("set-line-numbers")
+            , QStringLiteral("set-folding-markers")
+            , QStringLiteral("set-icon-border")
+            , QStringLiteral("set-indent-pasted-text")
+            , QStringLiteral("set-word-wrap")
+            , QStringLiteral("set-word-wrap-column")
+            , QStringLiteral("set-replace-tabs-save")
+            , QStringLiteral("set-remove-trailing-spaces")
+            , QStringLiteral("set-highlight")
+            , QStringLiteral("set-mode")
+            , QStringLiteral("set-show-indent")
+            , QStringLiteral("print") })
     {
     }
-    
+
     static CoreCommands *m_instance;
 
 public:
@@ -114,7 +133,7 @@ public:
 class Character : public KTextEditor::Command
 {
     Character()
-        : KTextEditor::Command(QStringList() << QStringLiteral("char"))
+        : KTextEditor::Command({ QStringLiteral("char") })
     {
     }
 
@@ -154,7 +173,7 @@ public:
 class Date : public KTextEditor::Command
 {
     Date()
-        : KTextEditor::Command(QStringList() << QStringLiteral("date"))
+        : KTextEditor::Command({ QStringLiteral("date") })
     {
     }
 

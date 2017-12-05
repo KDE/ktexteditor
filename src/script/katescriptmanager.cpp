@@ -45,7 +45,7 @@
 KateScriptManager *KateScriptManager::m_instance = nullptr;
 
 KateScriptManager::KateScriptManager()
-    : KTextEditor::Command(QStringList() << QStringLiteral("reload-scripts"))
+    : KTextEditor::Command({ QStringLiteral("reload-scripts") })
 {
     // use cached info
     collect();
@@ -116,7 +116,7 @@ void KateScriptManager::collect()
     /**
      * now, we search all kinds of known scripts
      */
-    foreach (const QString &type, QStringList() << QLatin1String("indentation") << QLatin1String("commands")) {
+    for (const QString type : { QLatin1String("indentation"), QLatin1String("commands") }) {
         // basedir for filesystem lookup
         const QString basedir = QLatin1String("/katepart5/script/") + type;
 
@@ -136,7 +136,7 @@ void KateScriptManager::collect()
 
         QStringList list;
         foreach (const QString &dir, dirs) {
-            const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.js"));
+            const QStringList fileNames = QDir(dir).entryList({ QStringLiteral("*.js") });
             foreach (const QString &file, fileNames) {
                 list.append(dir + QLatin1Char('/') + file);
             }

@@ -50,7 +50,7 @@ class SedReplace : public KTextEditor::Command
     static SedReplace *m_instance;
 
 protected:
-    SedReplace() : KTextEditor::Command(QStringList() << QStringLiteral("s") << QStringLiteral("%s") << QStringLiteral("$s"))
+    SedReplace() : KTextEditor::Command({ QStringLiteral("s"), QStringLiteral("%s"), QStringLiteral("$s") })
     {
     }
 

@@ -21,7 +21,6 @@
 #ifndef KATE_MODECONFIGPAGE_H__
 #define KATE_MODECONFIGPAGE_H__
 
-#include <QStringList>
 #include <QPointer>
 #include <QHash>
 

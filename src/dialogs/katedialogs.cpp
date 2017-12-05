@@ -1062,7 +1062,7 @@ KateHlDownloadDialog::KateHlDownloadDialog(QWidget *parent, const char *name, bo
 
     list = new QTreeWidget(this);
     list->setColumnCount(4);
-    list->setHeaderLabels(QStringList() << QString() << i18n("Name") << i18n("Installed") << i18n("Latest"));
+    list->setHeaderLabels({ QString(), i18n("Name"), i18n("Installed"), i18n("Latest") });
     list->setSelectionMode(QAbstractItemView::MultiSelection);
     list->setAllColumnsShowFocus(true);
     list->setRootIsDecorated(false);

@@ -37,7 +37,6 @@
 #include <sonnet/configwidget.h>
 #include <sonnet/dictionarycombobox.h>
 
-#include <QStringList>
 #include <QColor>
 #include <QDialog>
 #include <QTabWidget>

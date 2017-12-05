@@ -699,10 +699,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("Choose when the Dynamic Word Wrap Indicators should be displayed"));
 
     connect(m_setDynWrapIndicators, SIGNAL(triggered(int)), this, SLOT(setDynWrapIndicators(int)));
-    QStringList list2;
-    list2.append(i18n("&Off"));
-    list2.append(i18n("Follow &Line Numbers"));
-    list2.append(i18n("&Always On"));
+    const QStringList list2{ i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On") };
     m_setDynWrapIndicators->setItems(list2);
     m_setDynWrapIndicators->setEnabled(m_toggleDynWrap->isChecked()); // only synced on real change, later
 
@@ -783,10 +780,11 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QStringLiteral("set_eol"), a);
     a->setWhatsThis(i18n("Choose which line endings should be used, when you save the document"));
-    QStringList list;
-    list.append(i18nc("@item:inmenu End of Line", "&UNIX"));
-    list.append(i18nc("@item:inmenu End of Line", "&Windows/DOS"));
-    list.append(i18nc("@item:inmenu End of Line", "&Macintosh"));
+    const QStringList list {
+          i18nc("@item:inmenu End of Line", "&UNIX")
+        , i18nc("@item:inmenu End of Line", "&Windows/DOS")
+        , i18nc("@item:inmenu End of Line", "&Macintosh")
+    };
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(m_doc->config()->eol());
     connect(m_setEndOfLine, SIGNAL(triggered(int)), this, SLOT(setEol(int)));
@@ -1384,24 +1382,24 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     m_setEndOfLine->setEnabled(m_doc->isReadWrite());
 
-    QStringList l;
-
-    l << QStringLiteral("edit_replace")
-      << QStringLiteral("tools_spelling")
-      << QStringLiteral("tools_indent")
-      << QStringLiteral("tools_unindent")
-      << QStringLiteral("tools_cleanIndent")
-      << QStringLiteral("tools_align")
-      << QStringLiteral("tools_comment")
-      << QStringLiteral("tools_uncomment")
-      << QStringLiteral("tools_toggle_comment")
-      << QStringLiteral("tools_uppercase")
-      << QStringLiteral("tools_lowercase")
-      << QStringLiteral("tools_capitalize")
-      << QStringLiteral("tools_join_lines")
-      << QStringLiteral("tools_apply_wordwrap")
-      << QStringLiteral("tools_spelling_from_cursor")
-      << QStringLiteral("tools_spelling_selection");
+    static const QStringList l {
+          QStringLiteral("edit_replace")
+        , QStringLiteral("tools_spelling")
+        , QStringLiteral("tools_indent")
+        , QStringLiteral("tools_unindent")
+        , QStringLiteral("tools_cleanIndent")
+        , QStringLiteral("tools_align")
+        , QStringLiteral("tools_comment")
+        , QStringLiteral("tools_uncomment")
+        , QStringLiteral("tools_toggle_comment")
+        , QStringLiteral("tools_uppercase")
+        , QStringLiteral("tools_lowercase")
+        , QStringLiteral("tools_capitalize")
+        , QStringLiteral("tools_join_lines")
+        , QStringLiteral("tools_apply_wordwrap")
+        , QStringLiteral("tools_spelling_from_cursor")
+        , QStringLiteral("tools_spelling_selection")
+    };
 
     foreach (const QString &action, l) {
         QAction *a = actionCollection()->action(action);
@@ -1948,10 +1946,12 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
 
 #if 0
     // FIXME: FOLDING
-    QStringList l;
-
-    l << "folding_toplevel" << "folding_expandtoplevel"
-      << "folding_collapselocal" << "folding_expandlocal";
+    const QStringList l {
+          QStringLiteral("folding_toplevel")
+        , QStringLiteral("folding_expandtoplevel")
+        , QStringLiteral("folding_collapselocal")
+        , QStringLiteral("folding_expandlocal")
+    };
 
     QAction *a = 0;
     for (int z = 0; z < l.size(); z++)

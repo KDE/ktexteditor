@@ -136,7 +136,7 @@ void KateDocumentTest::testReplaceQStringList()
                               "foo\n"
                               "foo\n"
                               "bar\n"));
-    doc.replaceText(Range(1, 0, 3, 0), QStringList() << "new" << "text" << "", false);
+    doc.replaceText(Range(1, 0, 3, 0), { "new", "text", "" }, false);
     QCOMPARE(doc.text(), QLatin1String("asdf\n"
                                        "new\n"
                                        "text\n"

@@ -261,11 +261,7 @@ void KateViewTest::testSelection()
 void KateViewTest::testKillline()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.insertLines(0, QStringList()
-        << "foo"
-        << "bar"
-        << "baz"
-    );
+    doc.insertLines(0, { "foo", "bar", "baz" });
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
 
@@ -277,12 +273,7 @@ void KateViewTest::testKillline()
     doc.clear();
     QVERIFY(doc.isEmpty());
 
-    doc.insertLines(0, QStringList()
-        << "foo"
-        << "bar"
-        << "baz"
-        << "xxx"
-    );
+    doc.insertLines(0, { "foo", "bar", "baz", "xxx" });
 
     view->setCursorPositionInternal(KTextEditor::Cursor(1, 2));
     view->shiftDown();

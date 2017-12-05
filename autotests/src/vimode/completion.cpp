@@ -109,7 +109,7 @@ void CompletionTest::FakeCodeCompletionTests()
     ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
-    fakeCodeCompletionModel->setCompletions(QStringList() << "completionA" << "completionB" << "completionC");
+    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
     DoTest("", "i\\ctrl-p\\enter", "completionC");
     DoTest("", "i\\ctrl-p\\ctrl-p\\enter", "completionB");
     DoTest("", "i\\ctrl-p\\ctrl-p\\ctrl-p\\enter", "completionA");
@@ -134,7 +134,7 @@ void CompletionTest::FakeCodeCompletionTests()
     QCOMPARE(m_docChanges[1].newText(), QString("completionA"));
     FinishTest("completionA");
     // A "word" is currently alphanumeric, plus underscore.
-    fakeCodeCompletionModel->setCompletions(QStringList() << "w_123completion");
+    fakeCodeCompletionModel->setCompletions({ "w_123completion" });
     BeginTest("(w_123");
     TestPressKey("ea");
     clearTrackedDocumentChanges();
@@ -181,7 +181,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // is added as "function()", and the cursor placed after the closing ")".
     // The addition of "function()" is done in two steps: first "function", then "()".
     BeginTest("object->");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("$a\\ctrl- \\enter");
@@ -199,7 +199,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // The addition of "function()" is done in two steps: first "function", then "()".
     qDebug() << "Fleep";
     BeginTest("object->");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("$a\\ctrl- \\enter");
@@ -219,7 +219,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // in contrast to the case where there is no opening bracket after the cursor.
     // No brackets are added.  No removals occur if there is no word before the cursor.
     BeginTest("object->(");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f(i\\ctrl- \\enter");
@@ -232,7 +232,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // There can't be any non-whitespace between cursor position and opening bracket, though!
     BeginTest("object->|(   (");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -247,7 +247,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // Whitespace before the bracket is fine, though.
     BeginTest("object->    (<-Cursor here!");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -260,7 +260,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // Be careful with positioning the cursor if we delete leading text!
     BeginTest("object->    (<-Cursor here!");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>afunct");
@@ -278,7 +278,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // If we're removing tail on complete, it's whether there is a suitable opening
     // bracket *after* the word (not the cursor) that's important.
     BeginTest("object->function    (<-Cursor here!");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall()");
+    fakeCodeCompletionModel->setCompletions({ "functionCall()" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("12li"); // Start inserting before the "t" in "function"
@@ -298,7 +298,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // Repeat of bracket-merging stuff, this time for functions that take at least one argument.
     BeginTest("object->(");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f(i\\ctrl- \\enter");
@@ -312,7 +312,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // There can't be any non-whitespace between cursor position and opening bracket, though!
     BeginTest("object->|(   (");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -328,7 +328,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // Whitespace before the bracket is fine, though.
     BeginTest("object->    (<-Cursor here!");
     qDebug() << "NooooO";
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>a\\ctrl- \\enter");
@@ -341,7 +341,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // Be careful with positioning the cursor if we delete leading text!
     BeginTest("object->    (<-Cursor here!");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("f>afunct");
@@ -359,7 +359,7 @@ void CompletionTest::FakeCodeCompletionTests()
     // If we're removing tail on complete, it's whether there is a suitable opening
     // bracket *after* the word (not the cursor) that's important.
     BeginTest("object->function    (<-Cursor here!");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...)");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...)" });
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     clearTrackedDocumentChanges();
     TestPressKey("12li"); // Start inserting before the "t" in "function"
@@ -379,7 +379,7 @@ void CompletionTest::FakeCodeCompletionTests()
 
     // Deal with function completions which add a ";".
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall();");
+    fakeCodeCompletionModel->setCompletions({ "functionCall();" });
     clearTrackedDocumentChanges();
     TestPressKey("ifun");
     clearTrackedDocumentChanges();
@@ -396,12 +396,12 @@ void CompletionTest::FakeCodeCompletionTests()
     FinishTest("functionCall();");
 
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall();");
+    fakeCodeCompletionModel->setCompletions({ "functionCall();" });
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall();X");
 
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...);");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...);" });
     clearTrackedDocumentChanges();
     TestPressKey("ifun");
     clearTrackedDocumentChanges();
@@ -418,17 +418,17 @@ void CompletionTest::FakeCodeCompletionTests()
     FinishTest("functionCall();");
 
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...);");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...);" });
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall(X);");
 
     // Completions ending with ";" do not participate in bracket merging.
     BeginTest("(<-old bracket");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall();");
+    fakeCodeCompletionModel->setCompletions({ "functionCall();" });
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall();X(<-old bracket");
     BeginTest("(<-old bracket");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "functionCall(...);");
+    fakeCodeCompletionModel->setCompletions({ "functionCall(...);" });
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall(X);(<-old bracket");
 
@@ -558,7 +558,7 @@ void CompletionTest::CompletionTests()
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
     clearAllMacros();
     BeginTest("funct\nnoa\ncomtail\ncomtail");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "completionA" << "functionwithargs(...)" << "noargfunction()");
+    fakeCodeCompletionModel->setCompletions({ "completionA", "functionwithargs(...)", "noargfunction()" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     // Record 'a'.
     TestPressKey("i\\right\\right\\right\\right\\right\\ctrl- \\enterfirstArg"); // Function with args.
@@ -579,10 +579,10 @@ void CompletionTest::CompletionTests()
 
     // Clear our log of completions for each change.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "completionA");
+    fakeCodeCompletionModel->setCompletions({ "completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("ciw\\ctrl- \\enter\\ctrl-c");
-    fakeCodeCompletionModel->setCompletions(QStringList() << "completionB");
+    fakeCodeCompletionModel->setCompletions({ "completionB" });
     TestPressKey("ciw\\ctrl- \\enter\\ctrl-c");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     TestPressKey(".");

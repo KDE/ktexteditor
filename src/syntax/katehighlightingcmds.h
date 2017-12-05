@@ -29,7 +29,7 @@ namespace KateCommands
 class Highlighting : public KTextEditor::Command
 {
     Highlighting()
-        : KTextEditor::Command(QStringList() << QStringLiteral("reload-highlighting") << QStringLiteral("edit-highlighting"))
+        : KTextEditor::Command({ QStringLiteral("reload-highlighting"), QStringLiteral("edit-highlighting") })
     {
     }
 

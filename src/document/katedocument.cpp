@@ -4514,19 +4514,29 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
         return;
     }
 
-    QStringList vvl; // view variable names
-    vvl << QStringLiteral("dynamic-word-wrap") << QStringLiteral("dynamic-word-wrap-indicators")
-        << QStringLiteral("line-numbers") << QStringLiteral("icon-border") << QStringLiteral("folding-markers")
-        << QStringLiteral("folding-preview")
-        << QStringLiteral("bookmark-sorting") << QStringLiteral("auto-center-lines")
-        << QStringLiteral("icon-bar-color")
-        << QStringLiteral("scrollbar-minimap")
-        << QStringLiteral("scrollbar-preview")
+    // view variable names
+    static const QStringList vvl {
+          QStringLiteral("dynamic-word-wrap")
+        , QStringLiteral("dynamic-word-wrap-indicators")
+        , QStringLiteral("line-numbers")
+        , QStringLiteral("icon-border")
+        , QStringLiteral("folding-markers")
+        , QStringLiteral("folding-preview")
+        , QStringLiteral("bookmark-sorting")
+        , QStringLiteral("auto-center-lines")
+        , QStringLiteral("icon-bar-color")
+        , QStringLiteral("scrollbar-minimap")
+        , QStringLiteral("scrollbar-preview")
         // renderer
-        << QStringLiteral("background-color") << QStringLiteral("selection-color")
-        << QStringLiteral("current-line-color") << QStringLiteral("bracket-highlight-color")
-        << QStringLiteral("word-wrap-marker-color")
-        << QStringLiteral("font") << QStringLiteral("font-size") << QStringLiteral("scheme");
+        , QStringLiteral("background-color")
+        , QStringLiteral("selection-color")
+        , QStringLiteral("current-line-color")
+        , QStringLiteral("bracket-highlight-color")
+        , QStringLiteral("word-wrap-marker-color")
+        , QStringLiteral("font")
+        , QStringLiteral("font-size")
+        , QStringLiteral("scheme")
+    };
     int spaceIndent = -1;  // for backward compatibility; see below
     bool replaceTabsSet = false;
     int startPos(0);
@@ -4600,8 +4610,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
             // STRING SETTINGS
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
-                QStringList l;
-                l << QStringLiteral("unix") << QStringLiteral("dos") << QStringLiteral("mac");
+                const QStringList l{ QStringLiteral("unix"), QStringLiteral("dos"), QStringLiteral("mac") };
                 if ((n = l.indexOf(val.toLower())) != -1) {
                     /**
                      * set eol + avoid that it is overwritten by auto-detection again!
@@ -4721,13 +4730,13 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const QStringList trueValues = QStringList() << QStringLiteral("1") << QStringLiteral("on") << QStringLiteral("true");
+    static const QStringList trueValues{ QStringLiteral("1"), QStringLiteral("on"), QStringLiteral("true") };
     if (trueValues.contains(val)) {
         *result = true;
         return true;
     }
 
-    static const QStringList falseValues = QStringList() << QStringLiteral("0") << QStringLiteral("off") << QStringLiteral("false");
+    static const QStringList falseValues{ QStringLiteral("0"), QStringLiteral("off"), QStringLiteral("false") };
     if (falseValues.contains(val)) {
         *result = false;
         return true;
