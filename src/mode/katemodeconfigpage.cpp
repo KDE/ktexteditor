@@ -34,7 +34,7 @@
 #include <KMimeTypeChooser>
 #include "katepartdebug.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QGroupBox>
@@ -286,7 +286,7 @@ void ModeConfigPage::typeChanged(int type)
 void ModeConfigPage::showMTDlg()
 {
     QString text = i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
-    QStringList list = ui->edtMimeTypes->text().split(QRegExp(QLatin1String("\\s*;\\s*")), QString::SkipEmptyParts);
+    QStringList list = ui->edtMimeTypes->text().split(QRegularExpression(QStringLiteral("\\s*;\\s*")), QString::SkipEmptyParts);
     KMimeTypeChooserDialog d(i18n("Select Mime Types"), text, list, QStringLiteral("text"), this);
     if (d.exec() == QDialog::Accepted) {
         // do some checking, warn user if mime types or patterns are removed.

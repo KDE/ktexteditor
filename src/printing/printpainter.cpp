@@ -286,7 +286,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
             tags[QStringLiteral("U")].prepend(s);
         }
 
-        QRegExp reTags(QStringLiteral("%([dDfUhuyY])")); // TODO tjeck for "%%<TAG>"
+        QRegularExpression reTags(QStringLiteral("%([dDfUhuyY])")); // TODO check for "%%<TAG>"
 
         if (m_useHeader) {
             pl.headerHeight = QFontMetrics(m_fhFont).height();
@@ -300,13 +300,14 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
             QMutableStringListIterator it(pl.headerTagList);
             while (it.hasNext()) {
                 QString tag = it.next();
-                int pos = reTags.indexIn(tag);
+                QRegularExpressionMatch match;
+                int pos = tag.indexOf(reTags, 0, &match);
                 QString rep;
                 while (pos > -1) {
-                    rep = tags[reTags.cap(1)];
+                    rep = tags[match.captured(1)];
                     tag.replace((uint)pos, 2, rep);
                     pos += rep.length();
-                    pos = reTags.indexIn(tag, pos);
+                    pos = tag.indexOf(reTags, pos, &match);
                 }
                 it.setValue(tag);
             }
@@ -324,13 +325,14 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
             QMutableStringListIterator it(pl.footerTagList);
             while (it.hasNext()) {
                 QString tag = it.next();
-                int pos = reTags.indexIn(tag);
+                QRegularExpressionMatch match;
+                int pos = tag.indexOf(reTags, 0, &match);
                 QString rep;
                 while (pos > -1) {
-                    rep = tags[reTags.cap(1)];
+                    rep = tags[match.captured(1)];
                     tag.replace((uint)pos, 2, rep);
                     pos += rep.length();
-                    pos = reTags.indexIn(tag, pos);
+                    pos = tag.indexOf(reTags, pos, &match);
                 }
                 it.setValue(tag);
             }

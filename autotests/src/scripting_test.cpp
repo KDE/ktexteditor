@@ -38,7 +38,6 @@
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QString>
-#include <QtCore/QRegExp>
 #include <QtCore/QTextStream>
 #include <QtCore/QList>
 #include <QtCore/QTimer>

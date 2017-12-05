@@ -84,6 +84,7 @@
 #include <QFileDialog>
 #include <QMimeDatabase>
 #include <QTemporaryFile>
+#include <QRegularExpression>
 
 #include <cmath>
 
@@ -4459,10 +4460,10 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 
 void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndRenderer)
 {
-    static const QRegExp kvLine(QStringLiteral("kate:(.*)"));
-    static const QRegExp kvLineWildcard(QStringLiteral("kate-wildcard\\((.*)\\):(.*)"));
-    static const QRegExp kvLineMime(QStringLiteral("kate-mimetype\\((.*)\\):(.*)"));
-    static const QRegExp kvVar(QStringLiteral("([\\w\\-]+)\\s+([^;]+)"));
+    static const QRegularExpression kvLine(QStringLiteral("kate:(.*)"));
+    static const QRegularExpression kvLineWildcard(QStringLiteral("kate-wildcard\\((.*)\\):(.*)"));
+    static const QRegularExpression kvLineMime(QStringLiteral("kate-mimetype\\((.*)\\):(.*)"));
+    static const QRegularExpression kvVar(QStringLiteral("([\\w\\-]+)\\s+([^;]+)"));
 
     // simple check first, no regex
     // no kate inside, no vars, simple...
@@ -4474,12 +4475,13 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     QString s;
 
     // now, try first the normal ones
-    if (kvLine.indexIn(t) > -1) {
-        s = kvLine.cap(1);
+    auto match = kvLine.match(t);
+    if (match.hasMatch()) {
+        s = match.captured(1);
 
         //qCDebug(LOG_KTE) << "normal variable line kate: matched: " << s;
-    } else if (kvLineWildcard.indexIn(t) > -1) { // regex given
-        const QStringList wildcards(kvLineWildcard.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
+    } else if ((match = kvLineWildcard.match(t)).hasMatch()) { // regex given
+        const QStringList wildcards(match.captured(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
         const QString nameOfFile = url().fileName();
 
         bool found = false;
@@ -4494,18 +4496,18 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             return;
         }
 
-        s = kvLineWildcard.cap(2);
+        s = match.captured(2);
 
         //qCDebug(LOG_KTE) << "guarded variable line kate-wildcard: matched: " << s;
-    } else if (kvLineMime.indexIn(t) > -1) { // mime-type given
-        const QStringList types(kvLineMime.cap(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
+    } else if ((match = kvLineMime.match(t)).hasMatch()) { // mime-type given
+        const QStringList types(match.captured(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
 
         // no matching type found
         if (!types.contains(mimeType())) {
             return;
         }
 
-        s = kvLineMime.cap(2);
+        s = match.captured(2);
 
         //qCDebug(LOG_KTE) << "guarded variable line kate-mimetype: matched: " << s;
     } else { // nothing found
@@ -4527,13 +4529,13 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
         << QStringLiteral("font") << QStringLiteral("font-size") << QStringLiteral("scheme");
     int spaceIndent = -1;  // for backward compatibility; see below
     bool replaceTabsSet = false;
-    int p(0);
+    int startPos(0);
 
     QString  var, val;
-    while ((p = kvVar.indexIn(s, p)) > -1) {
-        p += kvVar.matchedLength();
-        var = kvVar.cap(1);
-        val = kvVar.cap(2).trimmed();
+    while ((match = kvVar.match(s, startPos)).hasMatch()) {
+        startPos = match.capturedEnd(0);
+        var = match.captured(1);
+        val = match.captured(2).trimmed();
         bool state; // store booleans here
         int n; // store ints here
 

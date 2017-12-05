@@ -41,7 +41,7 @@
 #include <KConfigGroup>
 #include <KAboutData>
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QSet>
 #include <QString>
 #include <QAction>
@@ -313,7 +313,7 @@ struct KateWordCompletionViewPrivate {
     KTextEditor::MovingRange *liRange;       // range containing last inserted text
     KTextEditor::Range dcRange;  // current range to be completed by directional completion
     KTextEditor::Cursor dcCursor;     // directional completion search cursor
-    QRegExp re;           // hrm
+    QRegularExpression wordRegEx;
     int directionalPos;   // be able to insert "" at the correct time
     bool isCompleting; // true when the directional completion is doing a completion
 };
@@ -463,19 +463,19 @@ void KateWordCompletionView::complete(bool fw)
 
     }
 
-    d->re.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
+    d->wordRegEx.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
     int pos(0);
     QString ln = doc->line(d->dcCursor.line());
 
     while (true) {
-        //qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->re.pattern()<<" "<<ln<<" at "<<d->dcCursor;
-        pos = fw ?
-              d->re.indexIn(ln, d->dcCursor.column()) :
-              d->re.lastIndexIn(ln, d->dcCursor.column());
+        //qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->wordRegEx.pattern()<<" "<<ln<<" at "<<d->dcCursor;
+        QRegularExpressionMatch match;
+        pos = fw ? ln.indexOf(d->wordRegEx, d->dcCursor.column(), &match)
+                 : ln.lastIndexOf(d->wordRegEx, d->dcCursor.column(), &match);
 
-        if (pos > -1) { // we matched a word
+        if (match.hasMatch()) { // we matched a word
             //qCDebug(LOG_KTE)<<"USABLE MATCH";
-            QString m = d->re.cap(1);
+            const QStringRef m = match.capturedRef(1);
             if (m != doc->text(*d->liRange) && (d->dcCursor.line() != d->dcRange.start().line() || pos != d->dcRange.start().column())) {
                 // we got good a match! replace text and return.
                 d->isCompleting = true;
@@ -483,7 +483,7 @@ void KateWordCompletionView::complete(bool fw)
                 if (!replaceRange.isValid()) {
                     replaceRange.setRange(r.end(), r.end());
                 }
-                doc->replaceText(replaceRange, m);
+                doc->replaceText(replaceRange, m.toString());
                 d->liRange->setRange(KTextEditor::Range(d->dcRange.end(), m.length()));
 
                 d->dcCursor.setColumn(pos);   // for next try

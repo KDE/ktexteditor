@@ -32,8 +32,6 @@
 
 #include <KConfigGroup>
 
-#include <QRegExp>
-
 #include <QMimeDatabase>
 //END Includes
 
@@ -164,7 +162,7 @@ void KateModeManager::save(const QList<KateFileType *> &v)
         config.writeEntry("Indenter", type->indenter);
 
         QString varLine = type->varLine;
-        if (QRegExp(QLatin1String("kate:(.*)")).indexIn(varLine) < 0) {
+        if (!varLine.contains(QStringLiteral("kate:"))) {
             varLine.prepend(QLatin1String("kate: "));
         }
 

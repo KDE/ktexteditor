@@ -33,7 +33,7 @@
 
 #include <KLocalizedString>
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 //BEGIN CoreCommands
 KateCommands::CoreCommands *KateCommands::CoreCommands::m_instance = nullptr;
@@ -204,7 +204,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
     }
 
     //create a list of args
-    QStringList args(_cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
+    QStringList args(_cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
     // ALL commands that takes no arguments.
@@ -499,19 +499,23 @@ bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd,
     QString cmd = _cmd;
 
     // hex, octal, base 9+1
-    QRegExp num(QLatin1String("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
-    if (num.indexIn(cmd) == -1) {
+    QRegularExpression num(QLatin1String("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
+    QRegularExpressionMatch match = num.match(cmd);
+    if (!match.hasMatch()) {
         return false;
     }
 
-    cmd = num.cap(1);
+    cmd = match.captured(1);
 
     // identify the base
 
     unsigned short int number = 0;
     int base = 10;
-    if (cmd[0] == QLatin1Char('x') || cmd.startsWith(QLatin1String("0x"))) {
-        cmd.remove(QRegExp(QLatin1String("^0?x")));
+    if (cmd.startsWith(QLatin1Char('x'))) {
+        cmd.remove(0, 1);
+        base = 16;
+    } else if (cmd.startsWith(QStringLiteral("0x"))) {
+        cmd.remove(0, 2);
         base = 16;
     } else if (cmd[0] == QLatin1Char('0')) {
         base = 8;
