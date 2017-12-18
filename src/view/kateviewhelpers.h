@@ -34,7 +34,9 @@
 #include <QMap>
 #include <QTimer>
 #include <QTextLayout>
+#include <QLayout>
 
+#include <ktexteditor/message.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor_export.h>
 #include "katetextline.h"
@@ -57,6 +59,43 @@ class MovingRange;
 
 class QTimer;
 class QVBoxLayout;
+
+/**
+ * Class to layout KTextEditor::Message%s in KateView. Only the floating
+ * positions TopInView, CenterInView, and BottomInView are supported.
+ * AboveView and BelowView are not supported and ASSERT.
+ */
+class KateMessageLayout : public QLayout
+{
+public:
+    explicit KateMessageLayout (QWidget *parent);
+    ~KateMessageLayout();
+
+    void addWidget(QWidget *widget, KTextEditor::Message::MessagePosition pos);
+    int count() const Q_DECL_OVERRIDE;
+    QLayoutItem *itemAt(int index) const Q_DECL_OVERRIDE;
+    void setGeometry(const QRect &rect) Q_DECL_OVERRIDE;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
+    QLayoutItem *takeAt(int index) Q_DECL_OVERRIDE;
+
+    void add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos);
+
+private:
+    void addItem(QLayoutItem *item) Q_DECL_OVERRIDE; // never called publically
+
+    struct ItemWrapper
+    {
+        ItemWrapper(QLayoutItem *i, KTextEditor::Message::MessagePosition pos)
+            : item(i)
+            , position(pos)
+        {}
+
+        QLayoutItem * item = nullptr;
+        KTextEditor::Message::MessagePosition position;
+    };
+
+    QVector<ItemWrapper *> m_items;
+};
 
 /**
  * This class is required because QScrollBar's sliderMoved() signal is

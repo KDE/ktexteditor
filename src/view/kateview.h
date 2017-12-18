@@ -65,13 +65,12 @@ class KateViewEncodingAction;
 class KateModeMenu;
 class KateAbstractInputMode;
 class KateScriptActionMenu;
+class KateMessageLayout;
 
 class KToggleAction;
 class KSelectAction;
 
 class QAction;
-class QGridLayout;
-class QVBoxLayout;
 
 namespace KTextEditor
 {
@@ -874,23 +873,17 @@ public:
     void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction> > actions);
 
 private:
-    /** Message widget showing KTextEditor::Messages above the View. */
-    KateMessageWidget *m_topMessageWidget;
-    /** Message widget showing KTextEditor::Messages below the View. */
-    KateMessageWidget *m_bottomMessageWidget;
-    /** Message widget showing KTextEditor::Messages as view overlay in top right corner. */
-    KateMessageWidget *m_floatTopMessageWidget;
-    /** Message widget showing KTextEditor::Messages as view overlay in bottom left corner. */
-    KateMessageWidget *m_floatBottomMessageWidget;
+    /**
+     * Message widgets showing KTextEditor::Messages.
+     * The index of the array maps to the enum KTextEditor::Message::MessagePosition.
+     */
+    std::array<KateMessageWidget *, 5> m_messageWidgets{{nullptr}};
     /** Layout for floating notifications */
-    QVBoxLayout *m_notificationLayout;
+    KateMessageLayout *m_notificationLayout = nullptr;
 
     // for unit test 'tests/messagetest.cpp'
 public:
-    KateMessageWidget *messageWidget()
-    {
-        return m_floatTopMessageWidget;
-    }
+    KateMessageWidget *messageWidget();
 
 private:
     /**

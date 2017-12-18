@@ -72,6 +72,88 @@
 
 #include <math.h>
 
+//BEGIN KateMessageLayout
+KateMessageLayout::KateMessageLayout(QWidget *parent)
+    : QLayout(parent)
+{
+}
+
+KateMessageLayout::~KateMessageLayout()
+{
+    while (QLayoutItem *item = takeAt(0))
+        delete item;
+}
+
+void KateMessageLayout::addItem(QLayoutItem *item)
+{
+    Q_ASSERT(false);
+    add(item, KTextEditor::Message::CenterInView);
+}
+
+void KateMessageLayout::addWidget(QWidget *widget, KTextEditor::Message::MessagePosition pos)
+{
+    add(new QWidgetItem(widget), pos);
+}
+
+int KateMessageLayout::count() const
+{
+    return m_items.size();
+}
+
+QLayoutItem *KateMessageLayout::itemAt(int index) const
+{
+    if (index < 0 || index >= m_items.size())
+        return 0;
+
+    return m_items[index]->item;
+}
+
+void KateMessageLayout::setGeometry(const QRect &rect)
+{
+    QLayout::setGeometry(rect);
+    const int s = spacing();
+    const QRect adjustedRect = rect.adjusted(s, s, -s, -s);
+
+    for (auto wrapper : m_items) {
+        QLayoutItem *item = wrapper->item;
+        auto position = wrapper->position;
+
+        if (position == KTextEditor::Message::TopInView) {
+            const QRect r(adjustedRect.width() - item->sizeHint().width(), s, item->sizeHint().width(), item->sizeHint().height());
+            item->setGeometry(r);
+        } else if (position == KTextEditor::Message::BottomInView) {
+            const QRect r(adjustedRect.width() - item->sizeHint().width(), adjustedRect.height() - item->sizeHint().height(), item->sizeHint().width(), item->sizeHint().height());
+            item->setGeometry(r);
+        } else if (position == KTextEditor::Message::CenterInView) {
+            QRect r(0, 0, item->sizeHint().width(), item->sizeHint().height());
+            r.moveCenter(adjustedRect.center());
+            item->setGeometry(r);
+        } else {
+            Q_ASSERT_X(false, "setGeometry", "Only TopInView, CenterInView, and BottomInView are supported.");
+        }
+    }
+}
+
+QSize KateMessageLayout::sizeHint() const
+{
+    return QSize();
+}
+
+QLayoutItem *KateMessageLayout::takeAt(int index)
+{
+    if (index >= 0 && index < m_items.size()) {
+        ItemWrapper *layoutStruct = m_items.takeAt(index);
+        return layoutStruct->item;
+    }
+    return 0;
+}
+
+void KateMessageLayout::add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos)
+{
+    m_items.push_back(new ItemWrapper(item, pos));
+}
+//END KateMessageLayout
+
 //BEGIN KateScrollBar
 static const int s_lineWidth = 100;
 static const int s_pixelMargin = 8;

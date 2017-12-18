@@ -128,10 +128,17 @@ public:
      * KTextEditor::View.
      */
     enum MessagePosition {
-        AboveView = 0, ///< show message above view
-        BelowView,     ///< show message below view
-        TopInView,     ///< show message as view overlay in the top right corner
-        BottomInView   ///< show message as view overlay om the bottom right corner
+        /// show message above view.
+        AboveView = 0,
+        /// show message below view.
+        BelowView,
+        /// show message as view overlay in the top right corner.
+        TopInView,
+        /// show message as view overlay in the bottom right corner.
+        BottomInView,
+        /// show message as view overlay in the center of the view.
+        /// @since 5.42
+        CenterInView
     };
 
     /**

@@ -137,8 +137,6 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_delayedUpdateTriggered(false)
     , m_lineToUpdateMin(-1)
     , m_lineToUpdateMax(-1)
-    , m_floatTopMessageWidget(nullptr)
-    , m_floatBottomMessageWidget(nullptr)
     , m_mainWindow(mainWindow ? mainWindow : KTextEditor::EditorPrivate::self()->dummyMainWindow()) // use dummy window if no window there!
     , m_statusBar(nullptr)
     , m_temporaryAutomaticInvocationDisabled(false)
@@ -173,12 +171,12 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     m_bottomViewBar->installEventFilter(m_viewInternal);
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
-    m_topMessageWidget = new KateMessageWidget(this);
-    m_topMessageWidget->hide();
+    m_messageWidgets[KTextEditor::Message::AboveView] = new KateMessageWidget(this);
+    m_messageWidgets[KTextEditor::Message::AboveView]->hide();
 
     // add KateMessageWidget for KTE::MessageInterface immediately above view
-    m_bottomMessageWidget = new KateMessageWidget(this);
-    m_bottomMessageWidget->hide();
+    m_messageWidgets[KTextEditor::Message::BelowView] = new KateMessageWidget(this);
+    m_messageWidgets[KTextEditor::Message::BelowView]->hide();
 
     // add bottom viewbar...
     if (bottomBarParent) {
@@ -186,7 +184,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     }
 
     // add layout for floating message widgets to KateViewInternal
-    m_notificationLayout = new QVBoxLayout(m_viewInternal);
+    m_notificationLayout = new KateMessageLayout(m_viewInternal);
     m_notificationLayout->setContentsMargins(20, 20, 20, 20);
     m_viewInternal->setLayout(m_notificationLayout);
 
@@ -221,13 +219,15 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     slotHlChanged();
     KCursor::setAutoHideCursor(m_viewInternal, true);
 
-    // user interaction (scrolling) starts notification auto-hide timer
-    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_topMessageWidget, SLOT(startAutoHideTimer()));
-    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_bottomMessageWidget, SLOT(startAutoHideTimer()));
+    for (auto messageWidget : m_messageWidgets) {
+        if (messageWidget) {
+            // user interaction (scrolling) starts notification auto-hide timer
+            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), messageWidget, SLOT(startAutoHideTimer()));
 
-    // user interaction (cursor navigation) starts notification auto-hide timer
-    connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_topMessageWidget, SLOT(startAutoHideTimer()));
-    connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_bottomMessageWidget, SLOT(startAutoHideTimer()));
+            // user interaction (cursor navigation) starts notification auto-hide timer
+            connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
+        }
+    }
 
     // folding restoration on reload
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(saveFoldingState()));
@@ -330,7 +330,7 @@ void KTextEditor::ViewPrivate::setupLayout()
     if (frameAroundContents) {
 
         // top message widget
-        layout->addWidget(m_topMessageWidget, 0, 0, 1, 5);
+        layout->addWidget(m_messageWidgets[KTextEditor::Message::AboveView], 0, 0, 1, 5);
 
         // top spacer
         layout->addItem(m_topSpacer, 1, 0, 1, 4);
@@ -360,7 +360,7 @@ void KTextEditor::ViewPrivate::setupLayout()
         layout->addWidget(m_viewInternal->m_dummy, 4, 4, 1, 1);
 
         // bottom message
-        layout->addWidget(m_bottomMessageWidget, 5, 0, 1, 5);
+        layout->addWidget(m_messageWidgets[KTextEditor::Message::BelowView], 5, 0, 1, 5);
 
         // bottom viewbar
         if (m_bottomViewBar->parentWidget() == this) {
@@ -381,7 +381,7 @@ void KTextEditor::ViewPrivate::setupLayout()
     } else {
 
         // top message widget
-        layout->addWidget(m_topMessageWidget, 0, 0, 1, 5);
+        layout->addWidget(m_messageWidgets[KTextEditor::Message::AboveView], 0, 0, 1, 5);
 
         // top spacer
         layout->addItem(m_topSpacer, 1, 0, 1, 5);
@@ -411,7 +411,7 @@ void KTextEditor::ViewPrivate::setupLayout()
         layout->addItem(m_bottomSpacer, 4, 0, 1, 5);
 
         // bottom message
-        layout->addWidget(m_bottomMessageWidget, 5, 0, 1, 5);
+        layout->addWidget(m_messageWidgets[KTextEditor::Message::BelowView], 5, 0, 1, 5);
 
         // bottom viewbar
         if (m_bottomViewBar->parentWidget() == this) {
@@ -3485,27 +3485,21 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
                            QList<QSharedPointer<QAction> > actions)
 {
     // just forward to KateMessageWidget :-)
-    if (message->position() == KTextEditor::Message::AboveView) {
-        m_topMessageWidget->postMessage(message, actions);
-    } else if (message->position() == KTextEditor::Message::BelowView) {
-        m_bottomMessageWidget->postMessage(message, actions);
-    } else if (message->position() == KTextEditor::Message::TopInView) {
-        if (!m_floatTopMessageWidget) {
-            m_floatTopMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->insertWidget(0, m_floatTopMessageWidget, 0, Qt::Alignment(Qt::AlignTop | Qt::AlignRight));
-            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
-            connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatTopMessageWidget, SLOT(startAutoHideTimer()));
-        }
-        m_floatTopMessageWidget->postMessage(message, actions);
-    } else if (message->position() == KTextEditor::Message::BottomInView) {
-        if (!m_floatBottomMessageWidget) {
-            m_floatBottomMessageWidget = new KateMessageWidget(m_viewInternal, true);
-            m_notificationLayout->addWidget(m_floatBottomMessageWidget, 0, Qt::Alignment(Qt::AlignBottom | Qt::AlignRight));
-            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
-            connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), m_floatBottomMessageWidget, SLOT(startAutoHideTimer()));
-        }
-        m_floatBottomMessageWidget->postMessage(message, actions);
+    auto messageWidget = m_messageWidgets[message->position()];
+    if (!messageWidget) {
+        // this branch is used for: TopInView, CenterInView, and BottomInView
+        messageWidget = new KateMessageWidget(m_viewInternal, true);
+        m_messageWidgets[message->position()] = messageWidget;
+        m_notificationLayout->addWidget(messageWidget, message->position());
+        connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), messageWidget, SLOT(startAutoHideTimer()));
+        connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
     }
+    messageWidget->postMessage(message, actions);
+}
+
+KateMessageWidget *KTextEditor::ViewPrivate::messageWidget()
+{
+    return m_messageWidgets[KTextEditor::Message::TopInView];
 }
 
 void KTextEditor::ViewPrivate::saveFoldingState()
