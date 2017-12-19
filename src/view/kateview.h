@@ -36,6 +36,8 @@
 #include <QMenu>
 #include <QSpacerItem>
 
+#include <array>
+
 #include "katetextrange.h"
 #include "katetextfolding.h"
 #include "katerenderer.h"
