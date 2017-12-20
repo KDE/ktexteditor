@@ -155,7 +155,7 @@ void SwapDiffCreator::slotDiffFinished()
     m_diffFile.setAutoRemove(false);
 
     // KRun::runUrl should delete the file, once the client exits
-    KRun::runUrl(QUrl::fromLocalFile(m_diffFile.fileName()), QStringLiteral("text/x-patch"), m_swapFile->document()->activeView(), true);
+    KRun::runUrl(QUrl::fromLocalFile(m_diffFile.fileName()), QStringLiteral("text/x-patch"), m_swapFile->document()->activeView(), KRun::RunFlags(KRun::DeleteTemporaryFiles));
 
     deleteLater();
 }
