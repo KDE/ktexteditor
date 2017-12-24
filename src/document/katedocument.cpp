@@ -3167,6 +3167,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     }
 
     if (col > 0) {
+        bool useNextBlock = false;
         if (config()->backspaceIndents()) {
             // backspace indents: erase to next indent position
             Kate::TextLine textLine = m_buffer->plainLine(line);
@@ -3186,8 +3187,11 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
                 // only spaces on left side of cursor
                 indent(KTextEditor::Range(line, 0, line, 0), -1);
             }
+            else {
+                useNextBlock = true;
+            }
         }
-        if (!config()->backspaceIndents() || pos) {
+        if (!config()->backspaceIndents() || useNextBlock) {
             KTextEditor::Cursor beginCursor(line, 0);
             KTextEditor::Cursor endCursor(line, col);
             if (!view->config()->backspaceRemoveComposed()) { // Normal backspace behavior
