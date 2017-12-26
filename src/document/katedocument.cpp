@@ -3195,12 +3195,12 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             KTextEditor::Cursor beginCursor(line, 0);
             KTextEditor::Cursor endCursor(line, col);
             if (!view->config()->backspaceRemoveComposed()) { // Normal backspace behavior
+                beginCursor.setColumn(col - 1);
                 // move to left of surrogate pair
                 if (!isValidTextPosition(beginCursor)) {
                     Q_ASSERT(col >= 2);
                     beginCursor.setColumn(col - 2);
                 }
-                beginCursor.setColumn(col - 1);
             } else {
                 beginCursor.setColumn(view->textLayout(c)->previousCursorPosition(c.column()));
             }
