@@ -43,13 +43,13 @@ public:
     int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
     QModelIndex parent(const QModelIndex& index) const Q_DECL_OVERRIDE;
     QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    virtual void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range,
-                                   InvocationType invocationType) Q_DECL_OVERRIDE;
+    void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range,
+                           InvocationType invocationType) Q_DECL_OVERRIDE;
     KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
-    virtual bool shouldAbortCompletion(KTextEditor::View* view, const KTextEditor::Range& range,
-                                       const QString& currentCompletion) Q_DECL_OVERRIDE;
-    virtual bool shouldStartCompletion(KTextEditor::View* view, const QString& insertedText, bool userInsertion,
-                                       const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
+    bool shouldAbortCompletion(KTextEditor::View* view, const KTextEditor::Range& range,
+                               const QString& currentCompletion) Q_DECL_OVERRIDE;
+    bool shouldStartCompletion(KTextEditor::View* view, const QString& insertedText, bool userInsertion,
+                               const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
     MatchReaction matchingItem(const QModelIndex& matched) Q_DECL_OVERRIDE;
     bool shouldHideItemsWithEqualNames() const Q_DECL_OVERRIDE;
 

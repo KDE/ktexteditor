@@ -633,7 +633,7 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    virtual KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand
+    KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand
             , KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) Q_DECL_OVERRIDE;
 
     /**
