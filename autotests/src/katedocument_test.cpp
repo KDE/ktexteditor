@@ -426,6 +426,69 @@ void KateDocumentTest::testDigest()
     QCOMPARE(docDigest, fileDigest);
 }
 
+void KateDocumentTest::testModelines()
+{
+    // honor document variable indent-width
+    {
+        KTextEditor::DocumentPrivate doc;
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate: indent-width 3;"));
+        QCOMPARE(doc.config()->indentationWidth(), 3);
+    }
+
+    // honor document variable indent-width with * wildcard
+    {
+        KTextEditor::DocumentPrivate doc;
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(*): indent-width 3;"));
+        QCOMPARE(doc.config()->indentationWidth(), 3);
+    }
+
+    // ignore document variable indent-width, since the wildcard does not match
+    {
+        KTextEditor::DocumentPrivate doc;
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(*.txt): indent-width 3;"));
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+    }
+
+    // document variable indent-width, since the wildcard does not match
+    {
+        KTextEditor::DocumentPrivate doc;
+        doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"modelines.txt")));
+        QVERIFY(!doc.isEmpty());
+
+        // ignore wrong wildcard
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(*.bar): indent-width 3;"));
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+
+        // read correct wildcard
+        QCOMPARE(doc.config()->indentationWidth(), 4);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(*.txt): indent-width 5;"));
+        QCOMPARE(doc.config()->indentationWidth(), 5);
+
+        // honor correct wildcard
+        QCOMPARE(doc.config()->indentationWidth(), 5);
+        doc.readVariableLine(QStringLiteral("kate-wildcard(*.foo;*.txt;*.bar): indent-width 6;"));
+        QCOMPARE(doc.config()->indentationWidth(), 6);
+
+        // ignore incorrect mimetype
+        QCOMPARE(doc.config()->indentationWidth(), 6);
+        doc.readVariableLine(QStringLiteral("kate-mimetype(text/unknown): indent-width 7;"));
+        QCOMPARE(doc.config()->indentationWidth(), 6);
+
+        // honor correct mimetype
+        QCOMPARE(doc.config()->indentationWidth(), 6);
+        doc.readVariableLine(QStringLiteral("kate-mimetype(text/plain): indent-width 8;"));
+        QCOMPARE(doc.config()->indentationWidth(), 8);
+
+        // honor correct mimetype
+        QCOMPARE(doc.config()->indentationWidth(), 8);
+        doc.readVariableLine(QStringLiteral("kate-mimetype(text/foo;text/plain;text/bar): indent-width 9;"));
+        QCOMPARE(doc.config()->indentationWidth(), 9);
+    }
+}
 
 void KateDocumentTest::testDefStyleNum()
 {

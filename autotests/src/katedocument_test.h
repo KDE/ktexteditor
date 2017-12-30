@@ -50,6 +50,7 @@ private Q_SLOTS:
     void testReplaceTabs();
 
     void testDigest();
+    void testModelines();
 
     void testDefStyleNum();
 
