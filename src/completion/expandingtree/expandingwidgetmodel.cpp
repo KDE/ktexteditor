@@ -410,17 +410,16 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
         return;
     }
 
-    QModelIndex rightMostIndex = idx;
-    QModelIndex tempIndex = idx;
-    while ((tempIndex = rightMostIndex.sibling(rightMostIndex.row(), rightMostIndex.column() + 1)).isValid()) {
-        rightMostIndex = tempIndex;
-    }
-
-    QRect rightMostRect = treeView()->visualRect(rightMostIndex);
-
-    //Find out the basic height of the row
+    //Find out the basic width of the row
     rect.setLeft(rect.left() + 20);
-    rect.setRight(rightMostRect.right() - 5);
+    for (int i = 0, numColumns = idx.model()->columnCount(idx.parent()); i < numColumns; ++i) {
+        QModelIndex rightMostIndex = idx.sibling(idx.row(), i);
+        int right = treeView()->visualRect(rightMostIndex).right();
+        if (right > rect.right()) {
+            rect.setRight(right);
+        }
+    }
+    rect.setRight(rect.right() - 5);
 
     //These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
     rect.setTop(rect.top() + basicRowHeight(idx) + 5);
