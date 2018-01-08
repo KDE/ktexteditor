@@ -393,47 +393,44 @@ int ExpandingWidgetModel::basicRowHeight(const QModelIndex &idx_) const
 void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
 {
     QModelIndex idx(firstColumn(idx_));
-
-    QWidget *w = nullptr;
-    if (m_expandingWidgets.contains(idx)) {
-        w = m_expandingWidgets[idx];
+    if (!idx.isValid() || !isExpanded(idx)) {
+        return;
     }
 
-    if (w && isExpanded(idx)) {
-        if (!idx.isValid()) {
-            return;
-        }
+    QWidget *w = m_expandingWidgets.value(idx);
+    if (!w) {
+        return;
+    }
 
-        QRect rect = treeView()->visualRect(idx);
+    QRect rect = treeView()->visualRect(idx);
 
-        if (!rect.isValid() || rect.bottom() < 0 || rect.top() >= treeView()->height()) {
-            //The item is currently not visible
-            w->hide();
-            return;
-        }
+    if (!rect.isValid() || rect.bottom() < 0 || rect.top() >= treeView()->height()) {
+        //The item is currently not visible
+        w->hide();
+        return;
+    }
 
-        QModelIndex rightMostIndex = idx;
-        QModelIndex tempIndex = idx;
-        while ((tempIndex = rightMostIndex.sibling(rightMostIndex.row(), rightMostIndex.column() + 1)).isValid()) {
-            rightMostIndex = tempIndex;
-        }
+    QModelIndex rightMostIndex = idx;
+    QModelIndex tempIndex = idx;
+    while ((tempIndex = rightMostIndex.sibling(rightMostIndex.row(), rightMostIndex.column() + 1)).isValid()) {
+        rightMostIndex = tempIndex;
+    }
 
-        QRect rightMostRect = treeView()->visualRect(rightMostIndex);
+    QRect rightMostRect = treeView()->visualRect(rightMostIndex);
 
-        //Find out the basic height of the row
-        rect.setLeft(rect.left() + 20);
-        rect.setRight(rightMostRect.right() - 5);
+    //Find out the basic height of the row
+    rect.setLeft(rect.left() + 20);
+    rect.setRight(rightMostRect.right() - 5);
 
-        //These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
-        rect.setTop(rect.top() + basicRowHeight(idx) + 5);
-        rect.setHeight(w->height());
+    //These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
+    rect.setTop(rect.top() + basicRowHeight(idx) + 5);
+    rect.setHeight(w->height());
 
-        if (w->parent() != treeView()->viewport() || w->geometry() != rect || !w->isVisible()) {
-            w->setParent(treeView()->viewport());
+    if (w->parent() != treeView()->viewport() || w->geometry() != rect || !w->isVisible()) {
+        w->setParent(treeView()->viewport());
 
-            w->setGeometry(rect);
-            w->show();
-        }
+        w->setGeometry(rect);
+        w->show();
     }
 }
 
