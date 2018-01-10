@@ -542,8 +542,6 @@ bool KateCompletionWidget::updatePosition(bool force)
 
     updateHeight();
 
-    updateArgumentHintGeometry();
-
 //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry() << borderHit;
 
     return borderHit;
@@ -908,6 +906,21 @@ void KateCompletionWidget::execute()
 void KateCompletionWidget::resizeEvent(QResizeEvent *event)
 {
     QFrame::resizeEvent(event);
+
+    // keep argument hint geometry in sync
+    if (m_argumentHintTree->isVisible()) {
+        updateArgumentHintGeometry();
+    }
+}
+
+void KateCompletionWidget::moveEvent(QMoveEvent *event)
+{
+    QFrame::moveEvent(event);
+
+    // keep argument hint geometry in sync
+    if (m_argumentHintTree->isVisible()) {
+        updateArgumentHintGeometry();
+    }
 }
 
 void KateCompletionWidget::showEvent(QShowEvent *event)

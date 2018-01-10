@@ -166,6 +166,7 @@ public Q_SLOTS:
 protected:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
+    void moveEvent(QMoveEvent *event) Q_DECL_OVERRIDE;
     void focusOutEvent(QFocusEvent * event) Q_DECL_OVERRIDE;
 
 

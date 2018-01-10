@@ -126,7 +126,7 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
     }
 
     int bottom = geom.bottom();
-    int totalWidth = resizeColumns();
+    int totalWidth = std::max(geom.width(), resizeColumns());
     int totalHeight = 0;
     for (int a = 0; a < model()->rowCount(QModelIndex()); ++a) {
         QModelIndex index(model()->index(a, 0));
