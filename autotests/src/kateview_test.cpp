@@ -291,6 +291,39 @@ void KateViewTest::testKillline()
     QCOMPARE(doc.text(), QLatin1String("foo\nxxx\n"));
 }
 
+void KateViewTest::testScrollPastEndOfDocument()
+{
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(QStringLiteral("0000000000\n"
+                               "1111111111\n"
+                               "2222222222\n"
+                               "3333333333\n"
+                               "4444444444"));
+    QCOMPARE(doc.lines(), 5);
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    view->setCursorPosition({ 3, 5 });
+    view->resize(400, 300);
+    view->show();
+
+    // enable "[x] Scroll past end of document"
+    view->config()->setScrollPastEnd(true);
+    QCOMPARE(view->config()->scrollPastEnd(), true);
+
+    // disable dynamic word wrap
+    view->config()->setDynWordWrap(false);
+    QCOMPARE(view->config()->dynWordWrap(), false);
+
+    view->scrollDown();
+    view->scrollDown();
+    view->scrollDown();
+    // at this point, only lines 3333333333 and 4444444444 are visible.
+    view->down();
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(4, 5));
+    // verify, that only lines 3333333333 and 4444444444 are still visible.
+    QCOMPARE(view->firstDisplayedLineInternal(KTextEditor::View::RealLine), 3);
+}
+
 void KateViewTest::testFoldFirstLine()
 {
     QTemporaryFile file("XXXXXX.cpp");

@@ -41,6 +41,7 @@ private Q_SLOTS:
 
     void testSelection();
     void testKillline();
+    void testScrollPastEndOfDocument();
 
     void testFoldFirstLine();
 
