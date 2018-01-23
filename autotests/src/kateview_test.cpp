@@ -171,6 +171,19 @@ void KateViewTest::testLowerCaseBlockSelection()
     QCOMPARE(doc.text(), QString("ny\nnyy\n"));
 }
 
+namespace
+{
+    QWidget *findViewInternal(KTextEditor::View* view)
+    {
+        foreach (QObject* child, view->children()) {
+            if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
+                return qobject_cast<QWidget*>(child);
+            }
+        }
+        return nullptr;
+    }
+}
+
 void KateViewTest::testSelection()
 {
     // see also: https://bugs.kde.org/show_bug.cgi?id=277422
@@ -198,13 +211,8 @@ void KateViewTest::testSelection()
     view->resize(100, 200);
     view->show();
 
-    QObject *internalView = nullptr;
-    foreach (QObject* child, view->children()) {
-        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-            internalView = child;
-            break;
-        }
-    }
+
+    QObject *internalView = findViewInternal(view);
     QVERIFY(internalView);
 
     const QPoint afterA = view->cursorToCoordinate(Cursor(0, 1));
@@ -340,13 +348,7 @@ void KateViewTest::testDragAndDrop()
     view->show();
     view->resize(400, 300);
 
-    QWidget *internalView = nullptr;
-    foreach (QObject* child, view->children()) {
-        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-            internalView = qobject_cast<QWidget *>(child);
-            break;
-        }
-    }
+    QWidget *internalView = findViewInternal(view);
     QVERIFY(internalView);
 
     // select "line1\n"
