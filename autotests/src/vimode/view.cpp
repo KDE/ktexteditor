@@ -99,8 +99,6 @@ void ViewTest::visualLineUpDownTests()
 {
     // Need to ensure we have dynamic wrap, a fixed width font, and a decent size kate_view.
     ensureKateViewVisible();
-    const QSize oldSize = kate_view->size();
-    kate_view->resize(400, 400); // Default size is too cramped to have interesting text in.
     const QFont oldFont = kate_view->renderer()->config()->font();
     QFont fixedWidthFont("Courier");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
@@ -305,7 +303,6 @@ void ViewTest::visualLineUpDownTests()
     }
 
     // Restore back to how we were before.
-    kate_view->resize(oldSize);
     kate_view->renderer()->config()->setFont(oldFont);
     KateViewConfig::global()->setDynWordWrap(oldDynWordWrap);
     kate_document->config()->setReplaceTabsDyn(oldReplaceTabsDyn);
@@ -318,8 +315,6 @@ void ViewTest::ScrollViewTests()
 
     // First of all, we have to initialize some sizes and fonts.
     ensureKateViewVisible();
-    const QSize oldSize = kate_view->size();
-    kate_view->resize(200, 200);
     const QFont oldFont = kate_view->renderer()->config()->font();
     QFont fixedWidthFont("Monospace");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
@@ -385,7 +380,6 @@ void ViewTest::ScrollViewTests()
     FinishTest(text);
 
     // Restore back to how we were before.
-    kate_view->resize(oldSize);
     kate_view->renderer()->config()->setFont(oldFont);
 }
 

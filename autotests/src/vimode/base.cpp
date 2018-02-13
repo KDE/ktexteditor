@@ -41,8 +41,11 @@ BaseTest::BaseTest()
     kate_document = nullptr;
 
     mainWindow = new QMainWindow;
-    mainWindowLayout = new QVBoxLayout(mainWindow);
-    mainWindow->setLayout(mainWindowLayout);
+    auto centralWidget = new QWidget();
+    mainWindowLayout = new QVBoxLayout(centralWidget);
+    centralWidget->setLayout(mainWindowLayout);
+    mainWindow->setCentralWidget(centralWidget);
+    mainWindow->resize(640, 480);
 
     m_codesToModifiers.insert("ctrl", Qt::ControlModifier);
     m_codesToModifiers.insert("alt", Qt::AltModifier);
