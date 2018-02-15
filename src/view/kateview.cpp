@@ -548,6 +548,7 @@ void KTextEditor::ViewPrivate::setupActions()
         ac->addAction(QStringLiteral("tools_toggle_write_lock"), a);
 
         a = ac->addAction(QStringLiteral("tools_uppercase"));
+        a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-uppercase")));
         a->setText(i18n("Uppercase"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_U));
         a->setWhatsThis(i18n("Convert the selection to uppercase, or the character to the "
@@ -555,6 +556,7 @@ void KTextEditor::ViewPrivate::setupActions()
         connect(a, SIGNAL(triggered(bool)), SLOT(uppercase()));
 
         a = ac->addAction(QStringLiteral("tools_lowercase"));
+        a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-lowercase")));
         a->setText(i18n("Lowercase"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_U));
         a->setWhatsThis(i18n("Convert the selection to lowercase, or the character to the "
@@ -562,6 +564,7 @@ void KTextEditor::ViewPrivate::setupActions()
         connect(a, SIGNAL(triggered(bool)), SLOT(lowercase()));
 
         a = ac->addAction(QStringLiteral("tools_capitalize"));
+        a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-capitalize")));
         a->setText(i18n("Capitalize"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_U));
         a->setWhatsThis(i18n("Capitalize the selection, or the word under the "
@@ -851,6 +854,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_copyHtmlAction->setWhatsThis(i18n("Use this command to copy the currently selected text as HTML to the system clipboard."));
 
     a = ac->addAction(QStringLiteral("file_export_html"), this, SLOT(exportHtmlToFile()));
+    a->setIcon(QIcon::fromTheme(QStringLiteral("document-export")));
     a->setText(i18n("E&xport as HTML..."));
     a->setWhatsThis(i18n("This command allows you to export the current document"
                         " with all highlighting information into a HTML document."));
