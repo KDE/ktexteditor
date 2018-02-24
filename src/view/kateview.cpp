@@ -1386,7 +1386,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     m_setEndOfLine->setEnabled(m_doc->isReadWrite());
 
-    static const QStringList l {
+    static const auto l {
           QStringLiteral("edit_replace")
         , QStringLiteral("tools_spelling")
         , QStringLiteral("tools_indent")
@@ -1405,7 +1405,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
         , QStringLiteral("tools_spelling_selection")
     };
 
-    foreach (const QString &action, l) {
+    foreach (const auto &action, l) {
         QAction *a = actionCollection()->action(action);
         if (a) {
             a->setEnabled(m_doc->isReadWrite());

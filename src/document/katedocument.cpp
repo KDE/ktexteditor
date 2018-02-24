@@ -102,6 +102,19 @@
 #define EDIT_DEBUG if (0) qCDebug(LOG_KTE)
 #endif
 
+template<class C, class E>
+static int indexOf(const std::initializer_list<C> & list, const E& entry)
+{
+    auto it = std::find(list.begin(), list.end(), entry);
+    return it == list.end() ? -1 : std::distance(list.begin(), it);
+}
+
+template<class C, class E>
+static bool contains(const std::initializer_list<C> & list, const E& entry)
+{
+    return indexOf(list, entry) >= 0;
+}
+
 static inline QChar matchingStartBracket(QChar c, bool withQuotes)
 {
     switch (c.toLatin1()) {
@@ -4523,27 +4536,27 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     }
 
     // view variable names
-    static const QStringList vvl {
-          QStringLiteral("dynamic-word-wrap")
-        , QStringLiteral("dynamic-word-wrap-indicators")
-        , QStringLiteral("line-numbers")
-        , QStringLiteral("icon-border")
-        , QStringLiteral("folding-markers")
-        , QStringLiteral("folding-preview")
-        , QStringLiteral("bookmark-sorting")
-        , QStringLiteral("auto-center-lines")
-        , QStringLiteral("icon-bar-color")
-        , QStringLiteral("scrollbar-minimap")
-        , QStringLiteral("scrollbar-preview")
+    static const auto vvl = {
+          QLatin1String("dynamic-word-wrap")
+        , QLatin1String("dynamic-word-wrap-indicators")
+        , QLatin1String("line-numbers")
+        , QLatin1String("icon-border")
+        , QLatin1String("folding-markers")
+        , QLatin1String("folding-preview")
+        , QLatin1String("bookmark-sorting")
+        , QLatin1String("auto-center-lines")
+        , QLatin1String("icon-bar-color")
+        , QLatin1String("scrollbar-minimap")
+        , QLatin1String("scrollbar-preview")
         // renderer
-        , QStringLiteral("background-color")
-        , QStringLiteral("selection-color")
-        , QStringLiteral("current-line-color")
-        , QStringLiteral("bracket-highlight-color")
-        , QStringLiteral("word-wrap-marker-color")
-        , QStringLiteral("font")
-        , QStringLiteral("font-size")
-        , QStringLiteral("scheme")
+        , QLatin1String("background-color")
+        , QLatin1String("selection-color")
+        , QLatin1String("current-line-color")
+        , QLatin1String("bracket-highlight-color")
+        , QLatin1String("word-wrap-marker-color")
+        , QLatin1String("font")
+        , QLatin1String("font-size")
+        , QLatin1String("scheme")
     };
     int spaceIndent = -1;  // for backward compatibility; see below
     bool replaceTabsSet = false;
@@ -4559,7 +4572,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         // only apply view & renderer config stuff
         if (onlyViewAndRenderer) {
-            if (vvl.contains(var)) {   // FIXME define above
+            if (contains(vvl, var)) {   // FIXME define above
                 setViewVariable(var, val);
             }
         } else {
@@ -4618,8 +4631,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
             // STRING SETTINGS
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
-                const QStringList l{ QStringLiteral("unix"), QStringLiteral("dos"), QStringLiteral("mac") };
-                if ((n = l.indexOf(val.toLower())) != -1) {
+                const auto l{ QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac") };
+                if ((n = indexOf(l, val.toLower())) != -1) {
                     /**
                      * set eol + avoid that it is overwritten by auto-detection again!
                      * this fixes e.g. .kateconfig files with // kate: eol dos; to work, bug 365705
@@ -4653,7 +4666,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             }
 
             // VIEW SETTINGS
-            else if (vvl.contains(var)) {
+            else if (contains(vvl, var)) {
                 setViewVariable(var, val);
             } else {
                 m_storedVariables.insert(var, val);
@@ -4738,14 +4751,14 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const QStringList trueValues{ QStringLiteral("1"), QStringLiteral("on"), QStringLiteral("true") };
-    if (trueValues.contains(val)) {
+    static const auto trueValues{ QLatin1String("1"), QLatin1String("on"), QLatin1String("true") };
+    if (contains(trueValues, val)) {
         *result = true;
         return true;
     }
 
-    static const QStringList falseValues{ QStringLiteral("0"), QStringLiteral("off"), QStringLiteral("false") };
-    if (falseValues.contains(val)) {
+    static const auto falseValues{ QLatin1String("0"), QLatin1String("off"), QLatin1String("false") };
+    if (contains(falseValues, val)) {
         *result = false;
         return true;
     }
@@ -5071,14 +5084,14 @@ bool KTextEditor::DocumentPrivate::checkOverwrite(QUrl u, QWidget *parent)
 QStringList KTextEditor::DocumentPrivate::configKeys() const
 {
     static const QStringList keys = {
-        QStringLiteral("backup-on-save-local"),
-        QStringLiteral("backup-on-save-suffix"),
-        QStringLiteral("backup-on-save-prefix"),
-        QStringLiteral("replace-tabs"),
-        QStringLiteral("indent-pasted-text"),
-        QStringLiteral("tab-width"),
-        QStringLiteral("indent-width"),
-        QStringLiteral("on-the-fly-spellcheck"),
+        QLatin1String("backup-on-save-local"),
+        QLatin1String("backup-on-save-suffix"),
+        QLatin1String("backup-on-save-prefix"),
+        QLatin1String("replace-tabs"),
+        QLatin1String("indent-pasted-text"),
+        QLatin1String("tab-width"),
+        QLatin1String("indent-width"),
+        QLatin1String("on-the-fly-spellcheck"),
     };
     return keys;
 }

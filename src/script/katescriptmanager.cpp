@@ -116,7 +116,7 @@ void KateScriptManager::collect()
     /**
      * now, we search all kinds of known scripts
      */
-    for (const QString type : { QLatin1String("indentation"), QLatin1String("commands") }) {
+    for (const auto &type : { QLatin1String("indentation"), QLatin1String("commands") }) {
         // basedir for filesystem lookup
         const QString basedir = QLatin1String("/katepart5/script/") + type;
 
