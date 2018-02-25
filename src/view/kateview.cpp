@@ -1386,7 +1386,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     m_pasteMenu->setEnabled(m_doc->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     m_setEndOfLine->setEnabled(m_doc->isReadWrite());
 
-    static const auto l {
+    static const auto l = {
           QStringLiteral("edit_replace")
         , QStringLiteral("tools_spelling")
         , QStringLiteral("tools_indent")
@@ -1950,7 +1950,7 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
 
 #if 0
     // FIXME: FOLDING
-    const QStringList l {
+    const QStringList l = {
           QStringLiteral("folding_toplevel")
         , QStringLiteral("folding_expandtoplevel")
         , QStringLiteral("folding_collapselocal")
