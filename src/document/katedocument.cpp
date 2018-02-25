@@ -4631,7 +4631,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
             // STRING SETTINGS
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
-                const auto l{ QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac") };
+                const auto l = { QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac") };
                 if ((n = indexOf(l, val.toLower())) != -1) {
                     /**
                      * set eol + avoid that it is overwritten by auto-detection again!
@@ -4751,13 +4751,13 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const auto trueValues{ QLatin1String("1"), QLatin1String("on"), QLatin1String("true") };
+    static const auto trueValues = { QLatin1String("1"), QLatin1String("on"), QLatin1String("true") };
     if (contains(trueValues, val)) {
         *result = true;
         return true;
     }
 
-    static const auto falseValues{ QLatin1String("0"), QLatin1String("off"), QLatin1String("false") };
+    static const auto falseValues = { QLatin1String("0"), QLatin1String("off"), QLatin1String("false") };
     if (contains(falseValues, val)) {
         *result = false;
         return true;
