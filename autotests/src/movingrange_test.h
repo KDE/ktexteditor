@@ -20,7 +20,7 @@
 #ifndef KATE_MOVINGRANGE_TEST_H
 #define KATE_MOVINGRANGE_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class MovingRangeTest : public QObject
 {

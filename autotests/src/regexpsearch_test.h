@@ -20,7 +20,7 @@
 #ifndef KATE_REGEXPSEARCH_TEST_H
 #define KATE_REGEXPSEARCH_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class RegExpSearchTest : public QObject
 {

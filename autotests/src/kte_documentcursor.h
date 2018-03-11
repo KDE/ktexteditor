@@ -20,7 +20,7 @@
 #ifndef KTE_DOCUMENTCURSOR_TEST_H
 #define KTE_DOCUMENTCURSOR_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class DocumentCursorTest : public QObject
 {

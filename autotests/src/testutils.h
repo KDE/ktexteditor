@@ -26,7 +26,7 @@
 #include "katescriptview.h"
 
 #include "katescriptdocument.h"
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 namespace KTextEditor { class ViewPrivate; }
 class RegressionTest;

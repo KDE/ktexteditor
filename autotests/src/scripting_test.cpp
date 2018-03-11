@@ -34,18 +34,18 @@
 #include <kconfiggroup.h>
 #include <kio/job.h>
 
-#include <QtCore/QObject>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
-#include <QtCore/QString>
-#include <QtCore/QTextStream>
-#include <QtCore/QList>
-#include <QtCore/QTimer>
-#include <QtCore/QFileInfo>
-#include <QtCore/Q_PID>
-#include <QtCore/QEvent>
-#include <QtCore/QTimer>
-#include <QtCore/QFileInfo>
+#include <QObject>
+#include <QFile>
+#include <QDir>
+#include <QString>
+#include <QTextStream>
+#include <QList>
+#include <QTimer>
+#include <QFileInfo>
+#include <Q_PID>
+#include <QEvent>
+#include <QTimer>
+#include <QFileInfo>
 
 #include <QtTestWidgets>
 

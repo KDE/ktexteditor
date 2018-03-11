@@ -21,8 +21,8 @@
 #ifndef KATE_SCRIPTHELPERS_H
 #define KATE_SCRIPTHELPERS_H
 
-#include <QtCore/QObject>
-#include <QtQml/QJSValue>
+#include <QObject>
+#include <QJSValue>
 #include <ktexteditor_export.h>
 
 class QJSEngine;

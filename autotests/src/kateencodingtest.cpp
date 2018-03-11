@@ -22,7 +22,7 @@
 #include <kateglobal.h>
 #include "katetextbuffer.h"
 
-#include <QtCore/QCoreApplication>
+#include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {

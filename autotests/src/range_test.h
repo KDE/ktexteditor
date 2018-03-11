@@ -21,7 +21,7 @@
 #ifndef KATE_RANGE_TEST_H
 #define KATE_RANGE_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include <ktexteditor/range.h>
 

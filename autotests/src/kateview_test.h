@@ -20,7 +20,7 @@
 #ifndef KATE_VIEW_TEST_H
 #define KATE_VIEW_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KateViewTest : public QObject
 {

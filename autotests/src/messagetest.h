@@ -20,7 +20,7 @@
 #ifndef KTEXTEDITOR_MESSAGE_TEST_H
 #define KTEXTEDITOR_MESSAGE_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class MessageTest : public QObject
 {

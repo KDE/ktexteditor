@@ -20,7 +20,7 @@
 #ifndef KATE_PLAINTEXTSEARCH_TEST_H
 #define KATE_PLAINTEXTSEARCH_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 namespace KTextEditor { class DocumentPrivate; }
 class KatePlainTextSearch;

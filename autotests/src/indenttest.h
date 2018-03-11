@@ -18,7 +18,7 @@
 #ifndef INDENTTEST_H
 #define INDENTTEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "script_test_base.h"
 

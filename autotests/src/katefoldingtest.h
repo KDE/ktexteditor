@@ -20,7 +20,7 @@
 #ifndef KATE_FOLDING_TEST_H
 #define KATE_FOLDING_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KateFoldingTest : public QObject
 {

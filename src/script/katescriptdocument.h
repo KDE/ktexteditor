@@ -25,7 +25,7 @@
 
 #include <ktexteditor_export.h>
 
-#include <QtQml/QJSValue>
+#include <QJSValue>
 
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>

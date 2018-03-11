@@ -21,7 +21,7 @@
 #ifndef KATE_UNDOMANAGER_TEST_H
 #define KATE_UNDOMANAGER_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class TemplateHandlerTest : public QObject
 {

@@ -20,7 +20,7 @@
 #ifndef KATE_MODIFICATION_SYSTEM_TEST_H
 #define KATE_MODIFICATION_SYSTEM_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 /**
  * Test the complete Line Modification System.

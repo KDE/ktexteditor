@@ -20,7 +20,7 @@
 #ifndef KATE_SCRIPTDOCUMENT_TEST_H
 #define KATE_SCRIPTDOCUMENT_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 namespace KTextEditor
 {

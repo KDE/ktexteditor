@@ -36,7 +36,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QLabel>
-#include <QtCore/QTimer>
+#include <QTimer>
 #include <QMessageBox>
 
 //to initially disable sorting in the suggestions listview

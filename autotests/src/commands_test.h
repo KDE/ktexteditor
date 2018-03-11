@@ -18,7 +18,7 @@
 #ifndef COMMANDS_TEST_H
 #define COMMANDS_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "script_test_base.h"
 

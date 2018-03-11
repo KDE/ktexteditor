@@ -20,7 +20,7 @@
 #ifndef KATE_MOVINGCURSOR_TEST_H
 #define KATE_MOVINGCURSOR_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class MovingCursorTest : public QObject
 {

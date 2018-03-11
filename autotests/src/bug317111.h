@@ -20,7 +20,7 @@
 #ifndef KATE_BUG_317111_TEST_H
 #define KATE_BUG_317111_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class BugTest : public QObject
 {

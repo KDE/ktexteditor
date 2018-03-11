@@ -20,7 +20,7 @@
 #ifndef KATE_SEARCHBAR_TEST_H
 #define KATE_SEARCHBAR_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class SearchBarTest : public QObject
 {

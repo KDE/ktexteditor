@@ -20,7 +20,7 @@
 #ifndef KATE_SYNTAX_TEST_H
 #define KATE_SYNTAX_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KateSyntaxTest : public QObject
 {

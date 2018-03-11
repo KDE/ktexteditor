@@ -20,7 +20,7 @@
 #ifndef KATE_CONFIG_INTERFACE_TEST_H
 #define KATE_CONFIG_INTERFACE_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KateConfigInterfaceTest : public QObject
 {

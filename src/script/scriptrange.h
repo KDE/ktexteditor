@@ -20,8 +20,8 @@
 #ifndef KTEXTEDITOR_SCRIPTRANGE_H
 #define KTEXTEDITOR_SCRIPTRANGE_H
 
-#include <QtQml/QJSEngine>
-#include <QtQml/QJSValue>
+#include <QJSEngine>
+#include <QJSValue>
 
 #include "ktexteditor/range.h"
 

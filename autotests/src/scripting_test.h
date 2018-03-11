@@ -18,7 +18,7 @@
 #ifndef SCRIPTINGTEST_H
 #define SCRIPTINGTEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "script_test_base.h"
 

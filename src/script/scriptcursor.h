@@ -20,8 +20,8 @@
 #ifndef KTEXTEDITOR_SCRIPTCURSOR_H
 #define KTEXTEDITOR_SCRIPTCURSOR_H
 
-#include <QtQml/QJSEngine>
-#include <QtQml/QJSValue>
+#include <QJSEngine>
+#include <QJSValue>
 
 #include "ktexteditor/cursor.h"
 

@@ -20,7 +20,7 @@
 #ifndef KATE_REVISION_TEST_H
 #define KATE_REVISION_TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class RevisionTest : public QObject
 {

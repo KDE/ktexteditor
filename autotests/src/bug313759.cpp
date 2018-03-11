@@ -24,7 +24,7 @@
 #include <kateview.h>
 #include <kmainwindow.h>
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 #include <QtTestWidgets>
 
 #include "testutils.h"

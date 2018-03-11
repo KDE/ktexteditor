@@ -18,9 +18,9 @@
 #ifndef SCRIPT_TEST_H
 #define SCRIPT_TEST_H
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
-#include <QtCore/QPair>
+#include <QObject>
+#include <QStringList>
+#include <QPair>
 
 class TestScriptEnv;
 namespace KTextEditor { class DocumentPrivate; }
