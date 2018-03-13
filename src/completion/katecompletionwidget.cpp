@@ -103,7 +103,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     , m_argumentHintTree(new KateArgumentHintTree(this))
     , m_automaticInvocationDelay(100)
     , m_filterInstalled(false)
-    , m_configWidget(new KateCompletionConfig(m_presentationModel, view()))
+    , m_configWidget(nullptr)
     , m_lastInsertionByUser(false)
     , m_inCompletionList(false)
     , m_isSuspended(false)
@@ -1281,6 +1281,10 @@ void KateCompletionWidget::switchList()
 void KateCompletionWidget::showConfig()
 {
     abortCompletion();
+
+    if (!m_configWidget) {
+        m_configWidget = new KateCompletionConfig(m_presentationModel, view());
+    }
 
     m_configWidget->exec();
 }
