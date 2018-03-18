@@ -471,9 +471,10 @@ void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
     QApplication::clipboard()->setText(text, QClipboard::Clipboard);
 
     /**
-     * remember in history
+     * LRU, kill potential duplicated, move new entry to top
      * cut after 10 entries
      */
+    m_clipboardHistory.removeOne(text);
     m_clipboardHistory.prepend(text);
     if (m_clipboardHistory.size() > 10) {
         m_clipboardHistory.removeLast();
