@@ -176,8 +176,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtH
                 int attr = kateTextLine->attribute(i);
                 const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
                 QString prefixFound = prefixStore.findPrefix(kateTextLine, i);
-                unsigned int attribute = kateTextLine->attribute(i);
-                if (!document->highlight()->attributeRequiresSpellchecking(attribute)
+                if (!document->highlight()->attributeRequiresSpellchecking(static_cast<unsigned int>(attr))
                         && prefixFound.isEmpty()) {
                     if (i == start) {
                         ++i;
