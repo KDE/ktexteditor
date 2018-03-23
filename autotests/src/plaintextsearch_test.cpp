@@ -54,8 +54,6 @@ void PlainTextSearchTest::cleanupTestCase()
 
 PlainTextSearchTest::PlainTextSearchTest()
     : QObject()
-    , m_doc(nullptr)
-    , m_search(nullptr)
 {
 }
 

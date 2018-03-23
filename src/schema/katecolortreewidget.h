@@ -26,7 +26,6 @@ class KateColorItem
 {
 public:
     KateColorItem()
-        : useDefault(true)
     {
     }
 
@@ -36,7 +35,7 @@ public:
     QString key;  // untranslated id, used as key to save/load from KConfig
     QColor color; // user visible color
     QColor defaultColor; // used when "Default" is clicked
-    bool useDefault; // flag whether to use the default color
+    bool useDefault = true; // flag whether to use the default color
 };
 
 class KateColorTreeWidget : public QTreeWidget

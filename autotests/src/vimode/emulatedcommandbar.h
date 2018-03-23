@@ -66,7 +66,7 @@ public:
 public Q_SLOTS:
   void slot();
 private:
-  bool m_slotWasCalled;
+  bool m_slotWasCalled = false;
 };
 
 class FailsIfSlotCalled : public QObject

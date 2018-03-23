@@ -86,8 +86,7 @@ public:
      * The default constructor creates a cursor at position (0, 0).
      */
     Q_DECL_CONSTEXPR Cursor() Q_DECL_NOEXCEPT
-        : m_line(0)
-        , m_column(0) {
+    {
     }
 
     /**
@@ -98,7 +97,8 @@ public:
      */
     Q_DECL_CONSTEXPR Cursor(int line, int column) Q_DECL_NOEXCEPT
         : m_line(line)
-        , m_column(column) {
+        , m_column(column)
+    {
     }
 
     /**
@@ -371,14 +371,14 @@ private:
      *
      * Cursor line
      */
-    int m_line;
+    int m_line = 0;
 
     /**
      * \internal
      *
      * Cursor column
      */
-    int m_column;
+    int m_column = 0;
 };
 
 } // namespace KTextEditor

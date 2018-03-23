@@ -181,35 +181,30 @@ ConfigPage *Plugin::configPage(int, QWidget *)
 }
 
 MarkInterface::MarkInterface()
-    : d(nullptr)
 {}
 
 MarkInterface::~MarkInterface()
 {}
 
 ModificationInterface::ModificationInterface()
-    : d(nullptr)
 {}
 
 ModificationInterface::~ModificationInterface()
 {}
 
 SessionConfigInterface::SessionConfigInterface()
-    : d(nullptr)
 {}
 
 SessionConfigInterface::~SessionConfigInterface()
 {}
 
 TextHintInterface::TextHintInterface()
-    : d(nullptr)
 {}
 
 TextHintInterface::~TextHintInterface()
 {}
 
 TextHintProvider::TextHintProvider()
-    : d(nullptr)
 {}
 
 TextHintProvider::~TextHintProvider()

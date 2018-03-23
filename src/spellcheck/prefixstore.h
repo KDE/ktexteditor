@@ -68,7 +68,7 @@ public:
     void dump();
 
 protected:
-    int m_longestPrefixLength;
+    int m_longestPrefixLength = 0;
     QSet<QString> m_prefixSet;
 
     // State x Char -> Nr. of char occurrences in prefixes x State
@@ -77,7 +77,7 @@ protected:
     TransitionFunction m_transitionFunction;
     QSet<unsigned long long> m_acceptingStates;
     QList<unsigned long long> m_stateFreeList;
-    unsigned long long m_lastAssignedState;
+    unsigned long long m_lastAssignedState = 0;
 
     int computeLongestPrefixLength();
     unsigned long long nextFreeState();

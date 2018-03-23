@@ -173,7 +173,7 @@ private:
     /**
      * private d-pointer
      */
-    class MovingInterfacePrivate *const d;
+    class MovingInterfacePrivate *const d = nullptr;
 };
 
 }

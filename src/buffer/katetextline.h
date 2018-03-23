@@ -470,7 +470,7 @@ private:
     /**
      * flags of this line
      */
-    unsigned int m_flags;
+    unsigned int m_flags = 0;
 };
 
 /**

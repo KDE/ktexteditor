@@ -142,26 +142,11 @@ void HierarchicalModelHandler::addValue(CodeCompletionModel::ExtraItemDataRoles 
 
 KateCompletionModel::KateCompletionModel(KateCompletionWidget *parent)
     : ExpandingWidgetModel(parent)
-    , m_hasGroups(false)
-    , m_matchCaseSensitivity(Qt::CaseInsensitive)
     , m_ungrouped(new Group({}, 0, this))
     , m_argumentHints(new Group(i18n("Argument-hints"), -1, this))
     , m_bestMatches(new Group(i18n("Best matches"), BestMatchesProperty, this))
-    , m_sortingEnabled(false)
-    , m_sortingAlphabetical(false)
-    , m_isSortingByInheritance(false)
-    , m_sortingCaseSensitivity(Qt::CaseInsensitive)
-    , m_filteringEnabled(false)
-    , m_filterContextMatchesOnly(false)
-    , m_filterByAttribute(false)
     , m_filterAttributes(KTextEditor::CodeCompletionModel::NoProperty)
-    , m_maximumInheritanceDepth(0)
-    , m_groupingEnabled(false)
-    , m_accessConst(false)
-    , m_accessStatic(false)
-    , m_accesSignalSlot(false)
-    , m_columnMergingEnabled(false)
-//   , m_haveExactMatch(false)
+
 {
     m_emptyGroups.append(m_ungrouped);
     m_emptyGroups.append(m_argumentHints);

@@ -49,7 +49,7 @@ enum ScriptType {
 class KateScriptHeader
 {
 public:
-    KateScriptHeader() : m_revision(0), m_scriptType(Kate::UnknownScript)
+    KateScriptHeader()
     {}
     virtual ~KateScriptHeader()
     {}
@@ -102,9 +102,9 @@ public:
 private:
     QString m_license;        ///< the script's license, e.g. LGPL
     QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
-    int m_revision;           ///< script revision, a simple number, e.g. 1, 2, 3, ...
+    int m_revision = 0;           ///< script revision, a simple number, e.g. 1, 2, 3, ...
     QString m_kateVersion;    ///< required katepart version
-    Kate::ScriptType m_scriptType;  ///< the script type
+    Kate::ScriptType m_scriptType = Kate::UnknownScript;  ///< the script type
 };
 //END
 

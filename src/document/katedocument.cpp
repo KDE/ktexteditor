@@ -200,34 +200,18 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     : KTextEditor::Document (this, parent),
       m_bSingleViewMode(bSingleViewMode),
       m_bReadOnly(bReadOnly),
-      m_activeView(nullptr),
-      editSessionNumber(0),
-      editIsRunning(false),
-      m_undoMergeAllEdits(false),
+
       m_undoManager(new KateUndoManager(this)),
-      m_editableMarks(markType01),
-      m_annotationModel(nullptr),
+
       m_buffer(new KateBuffer(this)),
       m_indenter(new KateAutoIndent(this)),
-      m_hlSetByUser(false),
-      m_bomSetByUser(false),
-      m_indenterSetByUser(false),
-      m_userSetEncodingForNextReload(false),
-      m_modOnHd(false),
-      m_modOnHdReason(OnDiskUnmodified),
-      m_prevModOnHdReason(OnDiskUnmodified),
+
       m_docName(QStringLiteral("need init")),
-      m_docNameNumber(0),
+
       m_fileType(QStringLiteral("Normal")),
-      m_fileTypeSetByUser(false),
-      m_reloading(false),
-      m_config(new KateDocumentConfig(this)),
-      m_fileChangedDialogsActivated(false),
-      m_onTheFlyChecker(nullptr),
-      m_documentState(DocumentIdle),
-      m_readWriteStateBeforeLoading(false),
-      m_isUntitled(true),
-      m_openingError(false)
+
+      m_config(new KateDocumentConfig(this))
+
 {
     /**
      * no plugins from kparts here

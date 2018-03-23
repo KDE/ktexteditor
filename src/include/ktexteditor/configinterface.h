@@ -137,7 +137,7 @@ public:
     virtual void setConfigValue(const QString &key, const QVariant &value) = 0;
 
 private:
-    class ConfigInterfacePrivate *const d;
+    class ConfigInterfacePrivate *const d = nullptr;
 };
 
 }

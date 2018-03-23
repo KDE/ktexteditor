@@ -101,7 +101,7 @@ private:
 
     int m_viewLine;
     mutable int m_startX;
-    bool m_invalidDirty;
+    bool m_invalidDirty = true;
 };
 
 #endif

@@ -361,13 +361,13 @@ private:
 
     static bool matchesAbbreviation(const QString &word, const QString &typed);
 
-    bool m_hasGroups;
+    bool m_hasGroups = false;
 
     // ### Runtime state
     // General
     QList<KTextEditor::CodeCompletionModel *> m_completionModels;
     QMap<KTextEditor::CodeCompletionModel *, QString> m_currentMatch;
-    Qt::CaseSensitivity m_matchCaseSensitivity;
+    Qt::CaseSensitivity m_matchCaseSensitivity = Qt::CaseInsensitive;
 
     // Column merging
     QList< QList<int> > m_columnMerges;
@@ -388,26 +388,26 @@ private:
 
     // ### Configurable state
     // Sorting
-    bool m_sortingEnabled;
-    bool m_sortingAlphabetical;
-    bool m_isSortingByInheritance;
-    Qt::CaseSensitivity m_sortingCaseSensitivity;
+    bool m_sortingEnabled = false;
+    bool m_sortingAlphabetical = false;
+    bool m_isSortingByInheritance = false;
+    Qt::CaseSensitivity m_sortingCaseSensitivity = Qt::CaseInsensitive;
     QHash< int, QList<int> > m_sortingGroupingOrder;
 
     // Filtering
-    bool m_filteringEnabled;
-    bool m_filterContextMatchesOnly;
-    bool m_filterByAttribute;
+    bool m_filteringEnabled = false;
+    bool m_filterContextMatchesOnly = false;
+    bool m_filterByAttribute = false;
     KTextEditor::CodeCompletionModel::CompletionProperties m_filterAttributes;
-    int m_maximumInheritanceDepth;
+    int m_maximumInheritanceDepth = 0;
 
     // Grouping
-    bool m_groupingEnabled;
+    bool m_groupingEnabled = false;
     GroupingMethods m_groupingMethod;
-    bool m_accessConst, m_accessStatic, m_accesSignalSlot;
+    bool m_accessConst = false, m_accessStatic = false, m_accesSignalSlot = false;
 
     // Column merging
-    bool m_columnMergingEnabled/*, m_haveExactMatch*/;
+    bool m_columnMergingEnabled = false/*, m_haveExactMatch*/;
 
     friend class CompletionTest;
 };

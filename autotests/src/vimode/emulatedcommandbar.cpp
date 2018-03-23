@@ -3351,7 +3351,7 @@ void EmulatedCommandBarTest::verifyShowsNumberOfReplacementsAcrossNumberOfLines(
   QCOMPARE(actualAcrossNumLinesAsString, expectedAcrossNumLinesAsString);
 }
 
-FailsIfSlotNotCalled::FailsIfSlotNotCalled(): QObject(), m_slotWasCalled(false)
+FailsIfSlotNotCalled::FailsIfSlotNotCalled(): QObject()
 {
 
 }

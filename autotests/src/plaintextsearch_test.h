@@ -50,8 +50,8 @@ private Q_SLOTS:
     void testMultilineSearch();
 
 private:
-    KTextEditor::DocumentPrivate *m_doc;
-    KatePlainTextSearch *m_search;
+    KTextEditor::DocumentPrivate *m_doc = nullptr;
+    KatePlainTextSearch *m_search = nullptr;
 
 public:
     static QtMessageHandler s_msgHandler;

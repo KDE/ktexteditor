@@ -82,7 +82,6 @@ bool KateRenderRange::isReady() const
 }
 
 NormalRenderRange::NormalRenderRange()
-    : m_currentRange(0)
 {
 }
 

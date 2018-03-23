@@ -128,39 +128,38 @@ private:
          * Default Constructor, invalidates all fields
          */
         Entry()
-            : referenceCounter(0), type(NoChange), line(-1), column(-1), length(-1), oldLineLength(-1)
         {
         }
 
         /**
          * Reference counter, how often ist this entry referenced from the outside?
          */
-        unsigned int referenceCounter;
+        unsigned int referenceCounter = 0;
 
         /**
          * Type of change
          */
-        Type type;
+        Type type = NoChange;
 
         /**
          * line the change occurred
          */
-        int line;
+        int line = -1;
 
         /**
          * column the change occurred
          */
-        int column;
+        int column = -1;
 
         /**
          * length of change (length of insert or removed text)
          */
-        int length;
+        int length = -1;
 
         /**
          * old line length (needed for unwrap and insert)
          */
-        int oldLineLength;
+        int oldLineLength = -1;
     };
 
     /**

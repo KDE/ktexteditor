@@ -127,7 +127,7 @@ public:
                                 KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) = 0;
 
 private:
-    class ModificationInterfacePrivate *const d;
+    class ModificationInterfacePrivate *const d = nullptr;
 };
 
 }

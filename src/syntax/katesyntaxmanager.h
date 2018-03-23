@@ -158,9 +158,9 @@ private:
 
     KateSyntaxDocument syntax;
 
-    int dynamicCtxsCount;
+    int dynamicCtxsCount = 0;
     QTime lastCtxsReset;
-    bool forceNoDCReset;
+    bool forceNoDCReset = false;
 };
 
 #endif

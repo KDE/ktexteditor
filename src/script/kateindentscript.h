@@ -26,7 +26,7 @@
 class KateIndentScriptHeader
 {
 public:
-    KateIndentScriptHeader() : m_priority(0)
+    KateIndentScriptHeader()
     {}
 
     inline void setName(const QString &name)
@@ -94,7 +94,7 @@ private:
     * when an indenter for one of the supported languages is requested and multiple
     * indenters are found
     */
-    int m_priority;
+    int m_priority = 0;
 
     /**
      * basename of script

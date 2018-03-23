@@ -25,8 +25,6 @@
 #include "katetextline.h"
 
 KatePrefixStore::KatePrefixStore()
-    : m_longestPrefixLength(0),
-      m_lastAssignedState(0)
 {
 }
 

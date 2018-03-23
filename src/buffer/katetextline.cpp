@@ -24,7 +24,6 @@ namespace Kate
 {
 
 TextLineData::TextLineData()
-    : m_flags(0)
 {
 }
 

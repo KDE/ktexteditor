@@ -26,7 +26,6 @@
 using namespace KTextEditor;
 
 MovingRangeFeedback::MovingRangeFeedback()
-    : d(nullptr)
 {
 }
 

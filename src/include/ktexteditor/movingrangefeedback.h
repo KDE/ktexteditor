@@ -111,7 +111,7 @@ private:
     /**
      * private d-pointer
      */
-    class MovingRangeFeedbackPrivate *const d;
+    class MovingRangeFeedbackPrivate *const d = nullptr;
 };
 
 }

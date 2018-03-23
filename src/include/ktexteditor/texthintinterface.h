@@ -122,7 +122,7 @@ public:
     virtual int textHintDelay() const = 0;
 
 private:
-    class TextHintInterfacePrivate * const d;
+    class TextHintInterfacePrivate * const d = nullptr;
 };
 
 /**
@@ -174,7 +174,7 @@ public:
                              const KTextEditor::Cursor &position) = 0;
 
 private:
-    class TextHintProviderPrivate * const d;
+    class TextHintProviderPrivate * const d = nullptr;
 };
 
 }

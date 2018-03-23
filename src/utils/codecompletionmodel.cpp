@@ -28,11 +28,10 @@ class KTextEditor::CodeCompletionModelPrivate
 {
 public:
     CodeCompletionModelPrivate()
-        : rowCount(0), hasGroups(false)
     {}
 
-    int rowCount;
-    bool hasGroups;
+    int rowCount = 0;
+    bool hasGroups = false;
 };
 
 CodeCompletionModel::CodeCompletionModel(QObject *parent)

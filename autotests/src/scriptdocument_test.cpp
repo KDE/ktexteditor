@@ -56,9 +56,6 @@ void ScriptDocumentTest::cleanupTestCase()
 
 ScriptDocumentTest::ScriptDocumentTest()
     : QObject()
-    , m_doc(nullptr)
-    , m_view(nullptr)
-    , m_scriptDoc(nullptr)
 {
 }
 

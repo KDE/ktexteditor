@@ -34,15 +34,15 @@ namespace KTextEditor { class DocumentPrivate; }
 class KateFileType
 {
 public:
-    int number;
+    int number = -1;
     QString name;
     QString section;
     QStringList wildcards;
     QStringList mimetypes;
-    int priority;
+    int priority = 0;
     QString varLine;
     QString hl;
-    bool hlGenerated;
+    bool hlGenerated = false;
     QString version;
     QString indenter;
 
@@ -60,7 +60,7 @@ public:
     }
 
     KateFileType()
-        : number(-1), priority(0), hlGenerated(false)
+
     {}
 };
 

@@ -86,12 +86,12 @@ private:
     /**
      * recursion depth
      */
-    uint configSessionNumber;
+    uint configSessionNumber = 0;
 
     /**
      * is a config session running
      */
-    bool configIsRunning;
+    bool configIsRunning = false;
 };
 
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig
@@ -323,11 +323,11 @@ public:
 
 private:
     QString m_indentationMode;
-    int m_indentationWidth;
-    int m_tabWidth;
-    uint m_tabHandling;
-    uint m_configFlags;
-    int m_wordWrapAt;
+    int m_indentationWidth = 2;
+    int m_tabWidth = 4;
+    uint m_tabHandling = tabSmart;
+    uint m_configFlags = 0;
+    int m_wordWrapAt = 80;
     bool m_wordWrap;
     bool m_pageUpDownMovesCursor;
     bool m_allowEolDetection;
@@ -362,7 +362,7 @@ private:
     bool m_showTabs : 1;
     bool m_showSpacesSet : 1;
     bool m_showSpaces : 1;
-    uint m_markerSize;
+    uint m_markerSize = 1;
     bool m_replaceTabsDynSet : 1;
     bool m_replaceTabsDyn : 1;
     bool m_removeSpacesSet : 1;
@@ -389,7 +389,7 @@ private:
 
 private:
     static KateDocumentConfig *s_global;
-    KTextEditor::DocumentPrivate *m_doc;
+    KTextEditor::DocumentPrivate *m_doc = nullptr;
 };
 
 class KTEXTEDITOR_EXPORT KateViewConfig : public KateConfig
@@ -610,7 +610,7 @@ private:
     bool m_smartCopyCut;
     bool m_scrollPastEnd;
     bool m_foldFirstLine;
-    bool m_showWordCount;
+    bool m_showWordCount = false;
     bool m_autoBrackets;
     bool m_backspaceRemoveComposed;
 
@@ -650,7 +650,7 @@ private:
 
 private:
     static KateViewConfig *s_global;
-    KTextEditor::ViewPrivate *m_view;
+    KTextEditor::ViewPrivate *m_view = nullptr;
 };
 
 class KTEXTEDITOR_EXPORT KateRendererConfig : public KateConfig
@@ -819,10 +819,10 @@ private:
     QColor m_searchHighlightColor;
     QColor m_replaceHighlightColor;
 
-    bool m_wordWrapMarker;
-    bool m_showIndentationLines;
-    bool m_showWholeBracketExpression;
-    bool m_animateBracketMatching;
+    bool m_wordWrapMarker = false;
+    bool m_showIndentationLines = false;
+    bool m_showWholeBracketExpression = false;
+    bool m_animateBracketMatching = false;
 
     bool m_schemaSet : 1;
     bool m_fontSet : 1;
@@ -851,7 +851,7 @@ private:
 
 private:
     static KateRendererConfig *s_global;
-    KateRenderer *m_renderer;
+    KateRenderer *m_renderer = nullptr;
 };
 
 #endif

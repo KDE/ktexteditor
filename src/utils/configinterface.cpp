@@ -22,7 +22,6 @@
 using namespace KTextEditor;
 
 ConfigInterface::ConfigInterface()
-    : d(nullptr)
 {
 }
 

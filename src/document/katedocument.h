@@ -150,7 +150,7 @@ public:
 
 private:
     QHash<KTextEditor::View *, KTextEditor::ViewPrivate *> m_views;
-    KTextEditor::View *m_activeView;
+    KTextEditor::View *m_activeView = nullptr;
 
     //
     // KTextEditor::EditInterface stuff
@@ -355,10 +355,10 @@ public:
     KTextEditor::Cursor lastEditingPosition(EditingPositionKind nextOrPrevious, KTextEditor::Cursor);
 
 private:
-    int editSessionNumber;
+    int editSessionNumber = 0;
     QStack<int> editStateStack;
-    bool editIsRunning;
-    bool m_undoMergeAllEdits;
+    bool editIsRunning = false;
+    bool m_undoMergeAllEdits = false;
     QStack<QSharedPointer<KTextEditor::MovingCursor>> m_editingStack;
     int m_editingStackPosition = -1;
     static const int s_editingStackSizeLimit = 32;
@@ -565,7 +565,7 @@ private:
     QHash<int, KTextEditor::Mark *> m_marks;
     QHash<int, QPixmap>           m_markPixmaps;
     QHash<int, QString>           m_markDescriptions;
-    uint                        m_editableMarks;
+    uint                        m_editableMarks = markType01;
 
     // KTextEditor::PrintInterface
     //
@@ -719,7 +719,7 @@ Q_SIGNALS:
     void annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *);
 
 private:
-    KTextEditor::AnnotationModel *m_annotationModel;
+    KTextEditor::AnnotationModel *m_annotationModel = nullptr;
 
     //
     // KParts::ReadWrite stuff
@@ -1075,26 +1075,26 @@ private:
     // indenter
     KateAutoIndent *const m_indenter;
 
-    bool m_hlSetByUser;
-    bool m_bomSetByUser;
-    bool m_indenterSetByUser;
-    bool m_userSetEncodingForNextReload;
+    bool m_hlSetByUser = false;
+    bool m_bomSetByUser = false;
+    bool m_indenterSetByUser = false;
+    bool m_userSetEncodingForNextReload = false;
 
-    bool m_modOnHd;
-    ModifiedOnDiskReason m_modOnHdReason;
-    ModifiedOnDiskReason m_prevModOnHdReason;
+    bool m_modOnHd = false;
+    ModifiedOnDiskReason m_modOnHdReason = OnDiskUnmodified;
+    ModifiedOnDiskReason m_prevModOnHdReason = OnDiskUnmodified;
 
     QString m_docName;
-    int m_docNameNumber;
+    int m_docNameNumber = 0;
 
     // file type !!!
     QString m_fileType;
-    bool m_fileTypeSetByUser;
+    bool m_fileTypeSetByUser = false;
 
     /**
      * document is still reloading a file
      */
-    bool m_reloading;
+    bool m_reloading = false;
 
 public Q_SLOTS:
     void slotQueryClose_save(bool *handled, bool *abortClosing);
@@ -1167,7 +1167,7 @@ private:
     */
     static bool checkColorValue(QString value, QColor &col);
 
-    bool m_fileChangedDialogsActivated;
+    bool m_fileChangedDialogsActivated = false;
 
     //
     // KTextEditor::ConfigInterface
@@ -1246,7 +1246,7 @@ public:
     enum EncodedCharaterInsertionPolicy {EncodeAlways, EncodeWhenPresent, EncodeNever};
 
 protected:
-    KateOnTheFlyChecker *m_onTheFlyChecker;
+    KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;
     QString m_defaultDictionary;
     QList<QPair<KTextEditor::MovingRange *, QString> > m_dictionaryRanges;
 
@@ -1329,17 +1329,17 @@ private:
     /**
      * current state
      */
-    DocumentStates m_documentState;
+    DocumentStates m_documentState = DocumentIdle;
 
     /**
      * read-write state before loading started
      */
-    bool m_readWriteStateBeforeLoading;
+    bool m_readWriteStateBeforeLoading = false;
 
     /**
      * if the document is untitled
      */
-    bool m_isUntitled;
+    bool m_isUntitled = true;
     /**
      * loading job, we want to cancel with cancel in the loading message
      */
@@ -1353,7 +1353,7 @@ private:
     /**
      * Was there any open error on last file loading?
      */
-    bool m_openingError;
+    bool m_openingError = false;
 
     /**
      * Last open file error message

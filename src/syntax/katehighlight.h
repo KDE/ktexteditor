@@ -75,7 +75,7 @@ public:
      * @param _newContext new context to push on stack
      * @param _pops number of contexts to remove from stack in advance
      */
-    KateHlContextModification(int _newContext = -1, int _pops = 0) : type(doNothing), newContext(_newContext), pops(_pops)     //krazy:exclude=explicit
+    KateHlContextModification(int _newContext = -1, int _pops = 0) : newContext(_newContext), pops(_pops)     //krazy:exclude=explicit
     {
         if (newContext >= 0 && pops == 0) {
             type = doPush;
@@ -92,7 +92,7 @@ public:
     /**
      * indicates what this modification does, for speed
      */
-    char type;
+    char type = doNothing;
 
     /**
      * new context to push on the stack

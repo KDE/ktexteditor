@@ -38,7 +38,6 @@
 
 //BEGIN KateConfig
 KateConfig::KateConfig()
-    : configSessionNumber(0), configIsRunning(false)
 {
 }
 
@@ -167,12 +166,7 @@ bool KateGlobalConfig::setFallbackEncoding(const QString &encoding)
 }
 
 KateDocumentConfig::KateDocumentConfig()
-    : m_indentationWidth(2),
-      m_tabWidth(4),
-      m_tabHandling(tabSmart),
-      m_configFlags(0),
-      m_wordWrapAt(80),
-      m_tabWidthSet(false),
+    : m_tabWidthSet(false),
       m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
@@ -184,7 +178,7 @@ KateDocumentConfig::KateDocumentConfig()
       m_smartHomeSet(false),
       m_showTabsSet(false),
       m_showSpacesSet(false),
-      m_markerSize(1),
+
       m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
       m_newLineAtEofSet(false),
@@ -201,8 +195,8 @@ KateDocumentConfig::KateDocumentConfig()
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
       m_onTheFlySpellCheckSet(false),
-      m_lineLengthLimitSet(false),
-      m_doc(nullptr)
+      m_lineLengthLimitSet(false)
+
 {
     s_global = this;
 
@@ -1233,7 +1227,7 @@ void KateDocumentConfig::setLineLengthLimit(int lineLengthLimit)
 //BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
     :
-    m_showWordCount(false),
+
     m_dynWordWrapSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
@@ -1266,8 +1260,8 @@ KateViewConfig::KateViewConfig()
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
     m_autoBracketsSet(false),
-    m_backspaceRemoveComposedSet(false),
-    m_view(nullptr)
+    m_backspaceRemoveComposedSet(false)
+
 {
     s_global = this;
 
@@ -2273,10 +2267,7 @@ void KateViewConfig::setBackspaceRemoveComposed(bool on)
 KateRendererConfig::KateRendererConfig()
     : m_fontMetrics(QFont()),
       m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
-      m_wordWrapMarker(false),
-      m_showIndentationLines(false),
-      m_showWholeBracketExpression(false),
-      m_animateBracketMatching(false),
+
       m_schemaSet(false),
       m_fontSet(false),
       m_wordWrapMarkerSet(false),
@@ -2300,8 +2291,8 @@ KateRendererConfig::KateRendererConfig()
       m_savedLineColorSet(false),
       m_searchHighlightColorSet(false),
       m_replaceHighlightColorSet(false),
-      m_lineMarkerColorSet(m_lineMarkerColor.size()),
-      m_renderer(nullptr)
+      m_lineMarkerColorSet(m_lineMarkerColor.size())
+
 {
     // init bitarray
     m_lineMarkerColorSet.fill(true);

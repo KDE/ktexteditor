@@ -61,7 +61,7 @@ public:
  * @short struct represents word
  */
 struct Word {
-  Word() : start(0), end(true)
+  Word()
   {}
 
   Word(const QString &w, int st, bool e = false)
@@ -73,8 +73,8 @@ struct Word {
   {}
 
   QString word;
-  int    start;
-  bool    end;
+  int start = 0;
+  bool end = true;
 };
 
 class SpellCheckBar::Private

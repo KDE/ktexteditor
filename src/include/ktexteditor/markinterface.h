@@ -394,7 +394,7 @@ Q_SIGNALS:
     void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
 
 private:
-    class MarkInterfacePrivate *const d;
+    class MarkInterfacePrivate *const d = nullptr;
 };
 
 }

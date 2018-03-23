@@ -42,40 +42,28 @@ class KatePrinter::PageLayout
 {
 public:
     PageLayout()
-        : pageWidth(0)
-        , pageHeight(0)
-        , headerWidth(0)
-        , maxWidth(0)
-        , maxHeight(0)
-        , xstart(0)
-        , innerMargin(0)
-        , selectionOnly(false)
-        , firstline(0)
-        , lastline(0)
-        , headerHeight(0)
-        , headerTagList()
-        , footerHeight(0)
+        : headerTagList()
         , footerTagList()
         , selectionRange()
     {}
 
-    uint pageWidth;
-    uint pageHeight;
-    uint headerWidth;
-    uint maxWidth;
-    uint maxHeight;
-    int xstart; // beginning point for painting lines
-    int innerMargin;
+    uint pageWidth = 0;
+    uint pageHeight = 0;
+    uint headerWidth = 0;
+    uint maxWidth = 0;
+    uint maxHeight = 0;
+    int xstart = 0; // beginning point for painting lines
+    int innerMargin = 0;
 
-    bool selectionOnly;
+    bool selectionOnly = false;
 
-    uint firstline;
-    uint lastline;
+    uint firstline = 0;
+    uint lastline = 0;
 
     // Header/Footer Page
-    uint headerHeight;
+    uint headerHeight = 0;
     QStringList headerTagList;
-    uint footerHeight;
+    uint footerHeight = 0;
     QStringList footerTagList;
 
     KTextEditor::Range selectionRange;

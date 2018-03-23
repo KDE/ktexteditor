@@ -43,7 +43,7 @@ private Q_SLOTS:
     void somethingHasChanged();
 
 protected:
-    bool m_changed;
+    bool m_changed = false;
 };
 
 #endif

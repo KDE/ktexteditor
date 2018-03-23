@@ -93,7 +93,7 @@ public:
     void setAutomaticInvocationDelay(int delay);
 
     struct CompletionRange {
-        CompletionRange() : range(nullptr)
+        CompletionRange()
         {
         }
         explicit CompletionRange(KTextEditor::MovingRange *r) : range(r)
@@ -105,7 +105,7 @@ public:
             return range->toRange() == rhs.range->toRange();
         }
 
-        KTextEditor::MovingRange *range;
+        KTextEditor::MovingRange *range = nullptr;
         //Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
         KTextEditor::Cursor leftBoundary;
     };

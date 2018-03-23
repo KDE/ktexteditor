@@ -113,7 +113,7 @@ public:
     virtual void writeSessionConfig(KConfigGroup &config) = 0;
 
 private:
-    class SessionConfigInterfacePrivate *const d;
+    class SessionConfigInterfacePrivate *const d = nullptr;
 };
 
 }

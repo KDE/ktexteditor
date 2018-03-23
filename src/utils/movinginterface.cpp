@@ -26,7 +26,6 @@
 using namespace KTextEditor;
 
 MovingInterface::MovingInterface()
-    : d(nullptr)
 {
 }
 
