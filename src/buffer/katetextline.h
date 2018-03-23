@@ -412,20 +412,7 @@ public:
      * @param pos position of attribute requested
      * @return value of attribute
      */
-    short attribute(int pos) const
-    {
-        for (int i = 0; i < m_attributesList.size(); ++i) {
-            if (pos >= m_attributesList[i].offset && pos < (m_attributesList[i].offset + m_attributesList[i].length)) {
-                return m_attributesList[i].attributeValue;
-            }
-
-            if (pos < m_attributesList[i].offset) {
-                break;
-            }
-        }
-
-        return 0;
-    }
+    short attribute(int pos) const;
 
     /**
      * set hl continue flag
