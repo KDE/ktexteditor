@@ -37,7 +37,7 @@ ecm_setup_version(
 )
 
 # Dependencies
-set(REQUIRED_QT_VERSION 5.7.0)
+set(REQUIRED_QT_VERSION 5.8.0)
 
 # Required Qt5 components to build this framework
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
