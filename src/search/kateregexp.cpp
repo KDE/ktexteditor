@@ -91,9 +91,7 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'n':
                     stillMultiLine = true;
                 // FALLTROUGH
-#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
         Q_FALLTHROUGH();
-#endif
                 default:
                     // copy "\?" unmodified
                     output.append(text.midRef(input, 2));
@@ -155,9 +153,7 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
                 case L'n':
                     stillMultiLine = true;
                 // FALLTROUGH
-#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
         Q_FALLTHROUGH();
-#endif
                 default:
                     // copy "\?" unmodified
                     output.append(text.midRef(input, 2));
