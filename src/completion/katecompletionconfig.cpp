@@ -190,9 +190,15 @@ void KateCompletionConfig::readConfig(const KConfigGroup &config)
     ui->filteringHideAttributes->setChecked(config.readEntry("Hide Completions by Attribute", false));
 
     int attributes = config.readEntry("Filter Attribute Mask", 0);
+
     for (int i = 0; i < ui->filteringAttributesList->count(); ++i) {
         QListWidgetItem *item = ui->filteringAttributesList->item(i);
-        item->setCheckState(((1 << (i - 1)) & attributes) ? Qt::Checked : Qt::Unchecked);
+        if (i == 0) {
+            // Avoid a negative shift. 0xFFFFFFFF80000000 is 1 << -1.
+            item->setCheckState((0xFFFFFFFF80000000 & attributes) ? Qt::Checked : Qt::Unchecked);
+        } else {
+            item->setCheckState(((1 << (i -1)) & attributes) ? Qt::Checked : Qt::Unchecked);
+        }
     }
 
     ui->filteringMaximumInheritanceDepth->setValue(config.readEntry("Filter by Maximum Inheritance Depth", 0));
@@ -241,7 +247,13 @@ void KateCompletionConfig::writeConfig(KConfigGroup &config)
     for (int i = 0; i < ui->filteringAttributesList->count(); ++i) {
         QListWidgetItem *item = ui->filteringAttributesList->item(i);
         if (item->checkState() == Qt::Checked) {
-            attributes |= 1 << (i - 1);
+            if (i == 0) {
+                // Avoid a negative shift. 0xFFFFFFFF80000000 is 1 << -1.
+                attributes |= 0xFFFFFFFF80000000;
+            }
+            else {
+                attributes |= 1 << (i - 1);
+            }
         }
     }
     config.writeEntry("Filter Attribute Mask", attributes);
