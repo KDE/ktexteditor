@@ -139,7 +139,7 @@ void SecureTextBuffer::setOwner(const int filedes, const uint ownerId, const uin
 
 bool SecureTextBuffer::moveFile(const QString &sourceFile, const QString &targetFile)
 {
-#ifndef Q_OS_WIN
+#if !defined(Q_OS_WIN) && !defined(Q_OS_ANDROID)
     const int result = std::rename(QFile::encodeName(sourceFile).constData(), QFile::encodeName(targetFile).constData());
     if (result == 0) {
         syncToDisk(QFile(targetFile).handle());

@@ -2193,6 +2193,13 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 }
 //END: error
 
+#ifdef Q_OS_ANDROID
+int log2(double d) {
+    int result;
+    std::frexp(d, &result);
+    return result-1;
+}
+#endif
 
 void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
 {
