@@ -2494,11 +2494,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
         m_lineMarkerColor[i] = col;
     }
 
-    QFont f(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-
-    m_font = config.readEntry("Font", f);
-    m_fontMetrics = QFontMetricsF(m_font);
-    m_fontSet = true;
+    setFontWithDroppedStyleName(config.readEntry("Font", QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
     m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(Kate::TemplateBackground));
 
@@ -2539,12 +2535,19 @@ void KateRendererConfig::setFont(const QFont &font)
     }
 
     configStart();
-
-    m_fontSet = true;
-    m_font = font;
-    m_fontMetrics = QFontMetricsF(m_font);
-
+    setFontWithDroppedStyleName(font);
     configEnd();
+}
+
+void KateRendererConfig::setFontWithDroppedStyleName(const QFont &font)
+{
+    /**
+     * Drop styleName, otherwise stuff like bold/italic/... won't work as style!
+     */
+    m_font = font;
+    m_font.setStyleName(QString());
+    m_fontMetrics = QFontMetricsF(m_font);
+    m_fontSet = true;
 }
 
 bool KateRendererConfig::wordWrapMarker() const

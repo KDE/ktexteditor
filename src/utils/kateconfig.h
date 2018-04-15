@@ -791,6 +791,12 @@ private:
      */
     void setSchemaInternal(const QString &schema);
 
+    /**
+     * Set the font but drop style name before that.
+     * Otherwise e.g. styles like bold/italic/... will not work
+     */
+    void setFontWithDroppedStyleName(const QFont &font);
+
     QString m_schema;
     QFont m_font;
     QFontMetricsF m_fontMetrics;
