@@ -71,7 +71,7 @@ public:
     /**
      * Destruct the text cursor
      */
-    ~TextCursor();
+    ~TextCursor() Q_DECL_OVERRIDE;
 
     /**
      * Set insert behavior.

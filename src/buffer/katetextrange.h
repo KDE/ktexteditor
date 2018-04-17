@@ -64,7 +64,7 @@ public:
     /**
      * Destruct the text block
      */
-    ~TextRange();
+    ~TextRange() Q_DECL_OVERRIDE;
 
     /**
      * Set insert behaviors.
