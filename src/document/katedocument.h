@@ -97,7 +97,7 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
 public:
     explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false,
                           QWidget *parentWidget = nullptr, QObject * = nullptr);
-    ~DocumentPrivate();
+    ~DocumentPrivate() Q_DECL_OVERRIDE;
 
     using ReadWritePart::closeUrl;
     bool closeUrl() Q_DECL_OVERRIDE;

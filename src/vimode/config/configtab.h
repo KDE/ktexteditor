@@ -35,7 +35,7 @@ class ConfigTab : public KateConfigPage
 
 public:
     explicit ConfigTab(QWidget *parent, Mappings *mappings);
-    virtual ~ConfigTab();
+    ~ConfigTab() Q_DECL_OVERRIDE;
 
     QString name() const Q_DECL_OVERRIDE;
 

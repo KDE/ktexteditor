@@ -68,7 +68,7 @@ class KateStyleTreeWidgetItem : public QTreeWidgetItem
 public:
     KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
-    ~KateStyleTreeWidgetItem() {}
+    ~KateStyleTreeWidgetItem() Q_DECL_OVERRIDE {}
 
     enum columns {
         Context = 0,

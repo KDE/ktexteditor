@@ -99,7 +99,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
 
 public:
     ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
-    ~ViewPrivate ();
+    ~ViewPrivate() Q_DECL_OVERRIDE;
 
     /**
      * Get the view's main window, if any

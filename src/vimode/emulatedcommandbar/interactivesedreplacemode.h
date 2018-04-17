@@ -39,9 +39,9 @@ class InteractiveSedReplaceMode : public ActiveMode
 {
 public:
     InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view);
-    virtual ~InteractiveSedReplaceMode()
+    ~InteractiveSedReplaceMode() Q_DECL_OVERRIDE
     {
-    };
+    }
     void activate(QSharedPointer<SedReplace::InteractiveSedReplacer> interactiveSedReplace);
     bool isActive() const
     {

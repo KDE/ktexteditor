@@ -40,7 +40,7 @@ class KateTextPreview : public QFrame
 
 public:
     KateTextPreview(KTextEditor::ViewPrivate *view);
-    virtual ~KateTextPreview();
+    ~KateTextPreview() Q_DECL_OVERRIDE;
 
     KTextEditor::ViewPrivate *view() const;
 

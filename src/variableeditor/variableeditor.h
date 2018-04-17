@@ -54,7 +54,7 @@ class VariableEditor : public QWidget
 
 public:
     VariableEditor(VariableItem *item, QWidget *parent = nullptr);
-    virtual ~VariableEditor();
+    ~VariableEditor() Q_DECL_OVERRIDE;
 
     VariableItem *item() const;
 

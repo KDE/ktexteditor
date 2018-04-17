@@ -148,7 +148,7 @@ protected:
     inline KTextEditor::DocumentPrivate *doc() const
     {
         return m_view->doc();
-    };
+    }
 
 protected:
     QChar m_register;

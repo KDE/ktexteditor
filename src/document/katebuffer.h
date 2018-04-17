@@ -51,7 +51,7 @@ public:
     /**
      * Goodbye buffer
      */
-    ~KateBuffer();
+    ~KateBuffer() Q_DECL_OVERRIDE;
 
 public:
     /**

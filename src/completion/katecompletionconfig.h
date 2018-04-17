@@ -42,7 +42,7 @@ class KateCompletionConfig : public QDialog, public KateConfig
 
 public:
     explicit KateCompletionConfig(KateCompletionModel *model, QWidget *parent = nullptr);
-    virtual ~KateCompletionConfig();
+    ~KateCompletionConfig() Q_DECL_OVERRIDE;
 
     /**
      * Read config from object

@@ -39,7 +39,7 @@ class AppCommands : public KTextEditor::Command
     static AppCommands* m_instance;
 
 public:
-    virtual ~AppCommands();
+    ~AppCommands() Q_DECL_OVERRIDE;
     bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 
@@ -88,7 +88,7 @@ class BufferCommands : public KTextEditor::Command
     static BufferCommands* m_instance;
 
 public:
-    virtual ~BufferCommands();
+    ~BufferCommands() Q_DECL_OVERRIDE;
     bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
 

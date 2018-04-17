@@ -3090,7 +3090,7 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v)
     // query cursor position
     KTextEditor::Cursor c = v->cursorPosition();
 
-    if (c.line() > (int)lastLine()) {
+    if (c.line() > lastLine()) {
         c.setLine(lastLine());
     }
 
@@ -3098,11 +3098,11 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v)
         c.setLine(0);
     }
 
-    uint ln = c.line();
+    int ln = c.line();
 
     Kate::TextLine textLine = plainKateTextLine(ln);
 
-    if (c.column() > (int)textLine->length()) {
+    if (c.column() > textLine->length()) {
         c.setColumn(textLine->length());
     }
 
@@ -4282,7 +4282,7 @@ bool KTextEditor::DocumentPrivate::documentReload()
     }
 
     for (int z = 0; z < tmp.size(); z++) {
-        if (z < (int)lines()) {
+        if (z < lines()) {
             if (line(tmp.at(z).mark.line) == tmp.at(z).line) {
                 setMark(tmp.at(z).mark.line, tmp.at(z).mark.type);
             }

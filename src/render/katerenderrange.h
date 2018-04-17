@@ -44,7 +44,7 @@ class NormalRenderRange : public KateRenderRange
 {
 public:
     NormalRenderRange();
-    virtual ~NormalRenderRange();
+    ~NormalRenderRange() Q_DECL_OVERRIDE;
 
     void addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute);
 

@@ -34,7 +34,7 @@ class KTEXTEDITOR_EXPORT KateViInputMode : public KateAbstractInputMode
     friend KateViInputModeFactory;
 
 public:
-    virtual ~KateViInputMode();
+    ~KateViInputMode() Q_DECL_OVERRIDE;
 
     KTextEditor::View::ViewMode viewMode() const Q_DECL_OVERRIDE;
     QString viewModeHuman() const Q_DECL_OVERRIDE;

@@ -53,8 +53,8 @@ class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeed
     typedef QList<ModificationItem> ModificationList;
 
 public:
-    KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
-    ~KateOnTheFlyChecker();
+    explicit KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
+    ~KateOnTheFlyChecker() Q_DECL_OVERRIDE;
 
     QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor &cursor) const;
     QString dictionaryForMisspelledRange(const KTextEditor::Range &range) const;

@@ -36,7 +36,7 @@ class Highlighting : public KTextEditor::Command
     static Highlighting* m_instance;
 
 public:
-    ~Highlighting()
+    ~Highlighting() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }

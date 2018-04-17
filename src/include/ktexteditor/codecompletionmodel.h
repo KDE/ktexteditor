@@ -81,8 +81,8 @@ class KTEXTEDITOR_EXPORT CodeCompletionModel : public QAbstractItemModel
     Q_OBJECT
 
 public:
-    CodeCompletionModel(QObject *parent);
-    virtual ~CodeCompletionModel();
+    explicit CodeCompletionModel(QObject *parent);
+    ~CodeCompletionModel() Q_DECL_OVERRIDE;
 
     enum Columns {
         Prefix = 0,

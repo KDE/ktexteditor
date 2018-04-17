@@ -80,7 +80,7 @@ public:
 
 public:
     KateViewInternal(KTextEditor::ViewPrivate *view);
-    ~KateViewInternal();
+    ~KateViewInternal() Q_DECL_OVERRIDE;
     KTextEditor::ViewPrivate *view() const
     {
         return m_view;

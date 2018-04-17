@@ -31,7 +31,7 @@ class KateNormalInputMode : public KateAbstractInputMode
     friend KateNormalInputModeFactory;
 
 public:
-    virtual ~KateNormalInputMode();
+    ~KateNormalInputMode() Q_DECL_OVERRIDE;
 
     KTextEditor::View::ViewMode viewMode() const Q_DECL_OVERRIDE;
     QString viewModeHuman() const Q_DECL_OVERRIDE;

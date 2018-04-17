@@ -40,7 +40,7 @@ class KTEXTEDITOR_EXPORT KateWordCompletionModel : public KTextEditor::CodeCompl
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
     explicit KateWordCompletionModel(QObject *parent);
-    ~KateWordCompletionModel();
+    ~KateWordCompletionModel() Q_DECL_OVERRIDE;
 
     /**
      * This function is responsible to generating / updating the list of current

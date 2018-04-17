@@ -51,7 +51,7 @@ class Commands : public KTextEditor::Command, public KateViCommandInterface
     static Commands *m_instance;
 
 public:
-    ~Commands()
+    ~Commands() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }
@@ -103,7 +103,7 @@ class SedReplace : public KateCommands::SedReplace, public KateViCommandInterfac
     static SedReplace *m_instance;
 
 public:
-    ~SedReplace()
+    ~SedReplace() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }

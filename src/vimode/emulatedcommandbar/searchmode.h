@@ -42,9 +42,9 @@ class SearchMode : public ActiveMode
 {
 public:
     SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit);
-    virtual ~SearchMode()
+    ~SearchMode() Q_DECL_OVERRIDE
     {
-    };
+    }
     enum class SearchDirection { Forward, Backward };
     void init(SearchDirection);
     bool handleKeyPress ( const QKeyEvent* keyEvent ) Q_DECL_OVERRIDE;

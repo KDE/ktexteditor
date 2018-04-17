@@ -69,7 +69,7 @@ class KateMessageLayout : public QLayout
 {
 public:
     explicit KateMessageLayout (QWidget *parent);
-    ~KateMessageLayout();
+    ~KateMessageLayout() Q_DECL_OVERRIDE;
 
     void addWidget(QWidget *widget, KTextEditor::Message::MessagePosition pos);
     int count() const Q_DECL_OVERRIDE;
@@ -110,7 +110,7 @@ class KateScrollBar : public QScrollBar
 
 public:
     KateScrollBar(Qt::Orientation orientation, class KateViewInternal *parent);
-    virtual ~KateScrollBar();
+    ~KateScrollBar() Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
     inline bool showMarks() const
@@ -230,7 +230,7 @@ class KateIconBorder : public QWidget
 
 public:
     KateIconBorder(KateViewInternal *internalView, QWidget *parent);
-    virtual ~KateIconBorder();
+    ~KateIconBorder() Q_DECL_OVERRIDE;
     // VERY IMPORTANT ;)
     QSize sizeHint() const Q_DECL_OVERRIDE;
 

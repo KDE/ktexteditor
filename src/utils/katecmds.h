@@ -80,7 +80,7 @@ class CoreCommands : public KTextEditor::Command
     static CoreCommands *m_instance;
 
 public:
-    ~CoreCommands()
+    ~CoreCommands() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }
@@ -140,7 +140,7 @@ class Character : public KTextEditor::Command
     static Character *m_instance;
 
 public:
-    ~Character()
+    ~Character() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }
@@ -180,7 +180,7 @@ class Date : public KTextEditor::Command
     static Date *m_instance;
 
 public:
-    ~Date()
+    ~Date() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }

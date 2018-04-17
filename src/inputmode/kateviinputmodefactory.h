@@ -30,7 +30,7 @@ class KateViInputModeFactory : public KateAbstractInputModeFactory
 public:
     KateViInputModeFactory();
 
-    virtual ~KateViInputModeFactory();
+    ~KateViInputModeFactory() Q_DECL_OVERRIDE;
     KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) Q_DECL_OVERRIDE;
 
     QString name() Q_DECL_OVERRIDE;

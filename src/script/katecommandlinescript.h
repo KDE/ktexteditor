@@ -65,7 +65,7 @@ class KateCommandLineScript : public KateScript, public KTextEditor::Command
 {
 public:
     KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header);
-    virtual ~KateCommandLineScript();
+    ~KateCommandLineScript() Q_DECL_OVERRIDE;
 
     const KateCommandLineScriptHeader &commandHeader();
 

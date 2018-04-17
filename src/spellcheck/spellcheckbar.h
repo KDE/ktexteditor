@@ -51,7 +51,7 @@ class SpellCheckBar : public KateViewBarWidget
     Q_OBJECT
   public:
     SpellCheckBar(Sonnet::BackgroundChecker *checker, QWidget *parent);
-    ~SpellCheckBar();
+    ~SpellCheckBar() Q_DECL_OVERRIDE;
 
     QString originalBuffer() const;
     QString buffer() const;

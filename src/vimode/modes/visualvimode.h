@@ -39,7 +39,7 @@ public:
     explicit VisualViMode(InputModeManager *viInputModeManager,
                           KTextEditor::ViewPrivate *view,
                           KateViewInternal *viewInternal);
-    virtual ~VisualViMode();
+    ~VisualViMode() Q_DECL_OVERRIDE;
 
     void init();
 

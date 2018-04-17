@@ -51,7 +51,7 @@ public:
         return nullptr;
     }
 
-    virtual ~KateViewAccessible()
+    ~KateViewAccessible() Q_DECL_OVERRIDE
     {
     }
 

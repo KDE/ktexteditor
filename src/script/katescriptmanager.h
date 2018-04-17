@@ -44,7 +44,7 @@ class KateScriptManager : public KTextEditor::Command
     static KateScriptManager *m_instance;
 
 public:
-    virtual ~KateScriptManager();
+    ~KateScriptManager() Q_DECL_OVERRIDE;
 
     /** Get all scripts available in the command line */
     const QVector<KateCommandLineScript *> &commandLineScripts()

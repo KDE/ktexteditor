@@ -107,7 +107,7 @@ private:
     /**
      * Destructor
      */
-    ~KateGlobalConfig();
+    ~KateGlobalConfig() Q_DECL_OVERRIDE;
 
 public:
     static KateGlobalConfig *global()
@@ -167,7 +167,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateDocumentConfig();
+    ~KateDocumentConfig() Q_DECL_OVERRIDE;
 
     inline static KateDocumentConfig *global()
     {
@@ -411,7 +411,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateViewConfig();
+    ~KateViewConfig() Q_DECL_OVERRIDE;
 
     inline static KateViewConfig *global()
     {
@@ -672,7 +672,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateRendererConfig();
+    ~KateRendererConfig() Q_DECL_OVERRIDE;
 
     inline static KateRendererConfig *global()
     {

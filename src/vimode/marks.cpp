@@ -156,7 +156,7 @@ void Marks::markChanged(KTextEditor::Document *doc,
     } else if (action == KTextEditor::MarkInterface::MarkAdded) {
         bool freeMarkerCharFound = false;
 
-        for (const QChar markerChar : UserMarks) {
+        for (const QChar &markerChar : UserMarks) {
             if (!m_marks.value(markerChar)) {
                 setMark(markerChar, KTextEditor::Cursor(mark.line, 0));
                 freeMarkerCharFound = true;
@@ -192,7 +192,7 @@ void Marks::syncViMarksAndBookmarks()
             continue;
         }
 
-        for (const QChar markerChar : UserMarks) {
+        for (const QChar &markerChar : UserMarks) {
             if (!m_marks.value(markerChar)) {
                 setMark(markerChar, KTextEditor::Cursor(mark->line, 0));
                 break;

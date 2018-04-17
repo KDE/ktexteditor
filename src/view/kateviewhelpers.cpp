@@ -103,7 +103,7 @@ int KateMessageLayout::count() const
 QLayoutItem *KateMessageLayout::itemAt(int index) const
 {
     if (index < 0 || index >= m_items.size())
-        return 0;
+        return nullptr;
 
     return m_items[index]->item;
 }

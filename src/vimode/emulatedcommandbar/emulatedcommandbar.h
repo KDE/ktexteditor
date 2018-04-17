@@ -57,7 +57,7 @@ class KTEXTEDITOR_EXPORT EmulatedCommandBar : public KateViewBarWidget
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
     explicit EmulatedCommandBar(KateViInputMode* viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
-    virtual ~EmulatedCommandBar();
+    ~EmulatedCommandBar() Q_DECL_OVERRIDE;
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);

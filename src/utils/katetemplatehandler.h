@@ -80,7 +80,7 @@ public:
                         const QString& script,
                         KateUndoManager *undoManager);
 
-    virtual ~KateTemplateHandler();
+    ~KateTemplateHandler() Q_DECL_OVERRIDE;
 
 protected:
     /**

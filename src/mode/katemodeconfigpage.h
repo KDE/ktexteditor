@@ -38,7 +38,7 @@ class ModeConfigPage : public KateConfigPage
 
 public:
     explicit ModeConfigPage(QWidget *parent);
-    ~ModeConfigPage();
+    ~ModeConfigPage() Q_DECL_OVERRIDE;
     QString name() const Q_DECL_OVERRIDE;
 
 public Q_SLOTS:

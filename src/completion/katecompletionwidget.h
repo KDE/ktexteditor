@@ -59,7 +59,7 @@ class KTEXTEDITOR_EXPORT KateCompletionWidget : public QFrame
 
 public:
     explicit KateCompletionWidget(KTextEditor::ViewPrivate *parent);
-    ~KateCompletionWidget();
+    ~KateCompletionWidget() Q_DECL_OVERRIDE;
 
     KTextEditor::ViewPrivate *view() const;
     KateCompletionTree *treeView() const;

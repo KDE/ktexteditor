@@ -55,7 +55,7 @@ protected:
     }
 
 public:
-    ~SedReplace()
+    ~SedReplace() Q_DECL_OVERRIDE
     {
         m_instance = nullptr;
     }
