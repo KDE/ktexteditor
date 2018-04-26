@@ -2781,6 +2781,12 @@ void KateViewInternal::tripleClickTimeout()
     m_possibleTripleClick = false;
 }
 
+void KateViewInternal::beginSelectLine(const QPoint &pos)
+{
+    placeCursor(pos);
+    m_possibleTripleClick = true; // set so subsequent mousePressEvent will select line
+}
+
 void KateViewInternal::mouseReleaseEvent(QMouseEvent *e)
 {
     switch (e->button()) {

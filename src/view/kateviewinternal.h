@@ -269,6 +269,7 @@ private:
     void moveCursorToSelectionEdge();
     void updateCursor(const KTextEditor::Cursor &newCursor, bool force = false, bool center = false, bool calledExternally = false);
     void updateBracketMarks();
+    void beginSelectLine(const QPoint &pos);
 
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);

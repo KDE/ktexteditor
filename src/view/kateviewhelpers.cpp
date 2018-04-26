@@ -2015,9 +2015,16 @@ void KateIconBorder::mousePressEvent(QMouseEvent *e)
     const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->y());
     if (t.isValid()) {
         m_lastClickedLine = t.line();
-        if (positionToArea(e->pos()) != IconBorder && positionToArea(e->pos()) != AnnotationBorder) {
+        const auto area = positionToArea(e->pos());
+        // IconBorder and AnnotationBorder have their own behavior; don't forward to view
+        if (area != IconBorder && area != AnnotationBorder) {
+            const auto pos = QPoint(0, e->y());
+            if (area == LineNumbers && e->button() == Qt::LeftButton && !(e->modifiers() & Qt::ShiftModifier)) {
+                // setup view so the following mousePressEvent will select the line
+                m_viewInternal->beginSelectLine(pos);
+            }
             QMouseEvent forward(QEvent::MouseButtonPress,
-                                QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
+                                pos, e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mousePressEvent(&forward);
         }
         return e->accept();
