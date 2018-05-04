@@ -140,7 +140,7 @@ public:
 
     QList<KTextEditor::View *> views() const Q_DECL_OVERRIDE
     {
-        return m_views.keys();
+        return m_viewsCache;
     }
 
     virtual KTextEditor::View *activeView() const
@@ -1405,6 +1405,10 @@ private Q_SLOTS:
      * trigger a close of this document in the application
      */
     void closeDocumentInApplication();
+private:
+    // To calculate a QHash.keys() is quite expensive,
+    // better keep a copy of that list updated when a view is added or removed.
+    QList<KTextEditor::View *> m_viewsCache;
 };
 
 #endif

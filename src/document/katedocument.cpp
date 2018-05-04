@@ -2832,6 +2832,7 @@ void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 {
     Q_ASSERT (!m_views.contains(view));
     m_views.insert(view, static_cast<KTextEditor::ViewPrivate *>(view));
+    m_viewsCache.append(view);
 
     // apply the view & renderer vars from the file type
     if (!m_fileType.isEmpty()) {
@@ -2848,6 +2849,7 @@ void KTextEditor::DocumentPrivate::removeView(KTextEditor::View *view)
 {
     Q_ASSERT (m_views.contains(view));
     m_views.remove(view);
+    m_viewsCache.removeAll(view);
 
     if (activeView() == view) {
         setActiveView(nullptr);
