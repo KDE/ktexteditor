@@ -42,6 +42,9 @@ public:
     explicit KateViewAccessible(KateViewInternal *view)
         : QAccessibleWidget(view, QAccessible::EditableText)
     {
+        // to invalidate positionFromCursor cache when the document is changed
+        m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged,
+                         [this](){ m_lastPosition = -1; });
     }
 
     void *interface_cast(QAccessible::InterfaceType t) Q_DECL_OVERRIDE
@@ -53,6 +56,7 @@ public:
 
     ~KateViewAccessible() Q_DECL_OVERRIDE
     {
+        QObject::disconnect(m_conn);
     }
 
     QAccessibleInterface *childAt(int x, int y) const Q_DECL_OVERRIDE
@@ -66,6 +70,7 @@ public:
     {
         if (t == QAccessible::Value && view()->view()->document()) {
             view()->view()->document()->setText(text);
+            m_lastPosition = -1;
         }
     }
 
@@ -181,16 +186,50 @@ public:
         return view()->view()->document()->text().mid(startOffset, endOffset - startOffset);
     }
 
-    static int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor)
+    /**
+     * When possible, using the last returned value m_lastPosition do the count
+     * from the last cursor position m_lastCursor.
+     * @return the number of chars (including one character for new lines)
+     *         from the beggining of the file.
+     */
+    int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor) const
     {
-        int pos = 0;
-        for (int line = 0; line < cursor.line(); ++line) {
-            // length of the line plus newline
-            pos += view->view()->document()->line(line).size() + 1;
-        }
-        pos += cursor.column();
+        int pos = m_lastPosition;
+        const auto *doc = view->view()->document();
 
-        return pos;
+        // m_lastPosition < 0 is invalid, calculate from the beginning of the document
+        if (m_lastPosition < 0 || view != m_lastView) {
+            pos = 0;
+            // Default (worst) case
+            for (int line = 0; line < cursor.line(); ++line) {
+                pos += doc->line(line).size();
+            }
+            // new line for each line
+            pos += cursor.line();
+            m_lastView = view;
+        } else {
+            // if the lines are the same, just add the cursor.column(), otherwise
+            if (cursor.line() != m_lastCursor.line()) {
+                // If the cursor is after the previous cursor
+                if (m_lastCursor.line() < cursor.line()) {
+                    for (int line = m_lastCursor.line(); line < cursor.line(); ++line) {
+                        pos += doc->line(line).size();
+                    }
+                    // add new line character for each line
+                    pos += cursor.line() - m_lastCursor.line();
+                } else {
+                    for (int line = cursor.line(); line < m_lastCursor.line(); ++line) {
+                        pos -= doc->line(line).size();
+                    }
+                    // remove new line character for each line
+                    pos -= m_lastCursor.line() - cursor.line();
+                }
+            }
+        }
+        m_lastCursor = cursor;
+        m_lastPosition = pos;
+
+        return pos + cursor.column();
     }
 
 private:
@@ -227,6 +266,14 @@ private:
         *endOffset = *startOffset + line.length();
         return line;
     }
+private:
+    // Cache data for positionFromCursor
+    mutable KateViewInternal *m_lastView;
+    mutable KTextEditor::Cursor m_lastCursor;
+    // m_lastPosition stores the positionFromCursor, with the cursor always in column 0
+    mutable int m_lastPosition;
+    // to disconnect the signal
+    QMetaObject::Connection m_conn;
 };
 
 /**
