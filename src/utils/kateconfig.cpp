@@ -1259,6 +1259,7 @@ KateViewConfig::KateViewConfig()
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
+    m_showWordCountSet(false),
     m_autoBracketsSet(false),
     m_backspaceRemoveComposedSet(false)
 
@@ -2224,16 +2225,21 @@ void KateViewConfig::setFoldFirstLine(bool on)
 
 bool KateViewConfig::showWordCount()
 {
-    return m_showWordCount;
+    if (m_showWordCountSet || isGlobal()) {
+        return m_showWordCount;
+    }
+
+    return s_global->showWordCount();
 }
 
 void KateViewConfig::setShowWordCount(bool on)
 {
-    if (m_showWordCount == on) {
+    if (m_showWordCountSet && m_showWordCount == on) {
         return;
     }
 
     configStart();
+    m_showWordCountSet = true;
     m_showWordCount = on;
     configEnd();
 }

@@ -645,6 +645,7 @@ private:
     bool m_allowMarkMenu : 1;
     bool m_wordCompletionRemoveTailSet : 1;
     bool m_foldFirstLineSet : 1;
+    bool m_showWordCountSet : 1;
     bool m_autoBracketsSet : 1;
     bool m_backspaceRemoveComposedSet : 1;
 

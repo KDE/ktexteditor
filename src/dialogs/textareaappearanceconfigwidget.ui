@@ -183,6 +183,16 @@ beginning of a file.</string>
                 </property>
               </widget>
             </item>
+            <item>
+              <widget class="QCheckBox" name="chkShowWordCount">
+                <property name="toolTip">
+                  <string>Show/hide word count in status bar</string>
+                </property>
+                <property name="text">
+                  <string>Show Word Count</string>
+                </property>
+              </widget>
+            </item>
           </layout>
         </widget>
       </item>
