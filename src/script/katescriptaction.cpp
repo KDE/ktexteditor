@@ -73,6 +73,7 @@ KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const
     , m_view(view)
 {
     repopulate();
+    setDelayed(false);
 
     // on script-reload signal, repopulate script menu
     connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()),

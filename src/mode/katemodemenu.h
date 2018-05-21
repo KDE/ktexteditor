@@ -39,6 +39,7 @@ public:
         : KActionMenu(text, parent)
     {
         init();
+        setDelayed(false);
     }
 
     ~KateModeMenu();

@@ -87,6 +87,7 @@ public:
         : KActionMenu(text, parent)
     {
         init();
+        setDelayed(false);
     }
 
     void updateMenu(KTextEditor::ViewPrivate *view);

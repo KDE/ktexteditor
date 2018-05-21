@@ -37,6 +37,7 @@ public:
         : KActionMenu(text, parent)
     {
         init();
+        setDelayed(false);
     }
 
     ~KateHighlightingMenu();

@@ -458,6 +458,7 @@ void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEd
 KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivate *_doc, const QString &text, QObject *parent)
     : KActionMenu(text, parent), doc(_doc)
 {
+    setDelayed(false);
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
     actionGroup = new QActionGroup(menu());
 }

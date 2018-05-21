@@ -88,6 +88,7 @@ void KateBookmarks::createActions(KActionCollection *ac)
 
     KActionMenu *actionMenu = new KActionMenu(i18n("&Bookmarks"), this);
     ac->addAction(QStringLiteral("bookmarks"), actionMenu);
+    actionMenu->setDelayed(false);
     m_bookmarksMenu = actionMenu->menu();
 
     connect(m_bookmarksMenu, SIGNAL(aboutToShow()), this, SLOT(bookmarkMenuAboutToShow()));
