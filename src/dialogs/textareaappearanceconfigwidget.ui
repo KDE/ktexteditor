@@ -189,7 +189,7 @@ beginning of a file.</string>
                   <string>Show/hide word count in status bar</string>
                 </property>
                 <property name="text">
-                  <string>Show Word Count</string>
+                  <string>Show word count</string>
                 </property>
               </widget>
             </item>
