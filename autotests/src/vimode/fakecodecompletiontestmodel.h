@@ -77,8 +77,8 @@ public:
      */
     void forceInvocationIfDocTextIs(const QString &desiredDocText);
     void doNotForceInvocation();
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
-    void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
     KTextEditor::CodeCompletionInterface *cc() const;
 
 private:

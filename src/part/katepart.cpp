@@ -50,7 +50,7 @@ public:
      * \param keyword A string that uniquely identifies the plugin. If a KService is used this
      * keyword is read from the X-KDE-PluginKeyword entry in the .desktop file.
      */
-    QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &, const QString &) Q_DECL_OVERRIDE
+    QObject *create(const char *iface, QWidget *parentWidget, QObject *parent, const QVariantList &, const QString &) override
     {
         // iface == classname to construct
         const QByteArray classname (iface);

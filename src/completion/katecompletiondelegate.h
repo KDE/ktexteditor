@@ -36,11 +36,11 @@ public:
     KateCompletionWidget *widget() const;
     KTextEditor::DocumentPrivate *document() const;
 protected:
-    void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const Q_DECL_OVERRIDE;
+    void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const override;
     mutable int m_cachedRow;
     mutable QList<int> m_cachedColumnStarts;
-    void heightChanged() const Q_DECL_OVERRIDE;
-    QList<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const Q_DECL_OVERRIDE;
+    void heightChanged() const override;
+    QList<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
 
 };
 

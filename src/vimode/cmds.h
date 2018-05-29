@@ -51,7 +51,7 @@ class Commands : public KTextEditor::Command, public KateViCommandInterface
     static Commands *m_instance;
 
 public:
-    ~Commands() Q_DECL_OVERRIDE
+    ~Commands() override
     {
         m_instance = nullptr;
     }
@@ -65,12 +65,12 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
-    bool supportsRange(const QString &range) Q_DECL_OVERRIDE;
+    bool supportsRange(const QString &range) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE
+    bool help(class KTextEditor::View *, const QString &, QString &) override
     {
         return false;
     }
@@ -78,7 +78,7 @@ public:
     /**
      * Reimplement from KTextEditor::Command
      */
-    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
+    KCompletion *completionObject(KTextEditor::View *, const QString &) override;
 
     static Commands *self()
     {
@@ -103,7 +103,7 @@ class SedReplace : public KateCommands::SedReplace, public KateViCommandInterfac
     static SedReplace *m_instance;
 
 public:
-    ~SedReplace() Q_DECL_OVERRIDE
+    ~SedReplace() override
     {
         m_instance = nullptr;
     }
@@ -117,7 +117,7 @@ public:
     }
 
 protected:
-    bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace) Q_DECL_OVERRIDE;
+    bool interactiveSedReplace(KTextEditor::ViewPrivate *kateView, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace) override;
 };
 
 }

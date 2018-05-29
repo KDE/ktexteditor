@@ -35,13 +35,13 @@ public:
     virtual void drawCategory(const QModelIndex &index,
                               int sortRole,
                               const QStyleOption &option,
-                              QPainter *painter) const Q_DECL_OVERRIDE;
+                              QPainter *painter) const override;
 
-    int categoryHeight(const QModelIndex &index, const QStyleOption &option) const Q_DECL_OVERRIDE;
+    int categoryHeight(const QModelIndex &index, const QStyleOption &option) const override;
 
-    int leftMargin() const Q_DECL_OVERRIDE;
+    int leftMargin() const override;
 
-    int rightMargin() const Q_DECL_OVERRIDE;
+    int rightMargin() const override;
 
 };
 

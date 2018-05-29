@@ -31,15 +31,15 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateUndoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
-    void updateRedoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
+    void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 class KateModifiedRemoveText : public KateEditRemoveTextUndo
@@ -50,15 +50,15 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateUndoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
-    void updateRedoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
+    void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 class KateModifiedWrapLine : public KateEditWrapLineUndo
@@ -69,15 +69,15 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateUndoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
-    void updateRedoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
+    void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 class KateModifiedUnWrapLine : public KateEditUnWrapLineUndo
@@ -88,15 +88,15 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateUndoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
-    void updateRedoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
+    void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 class KateModifiedInsertLine : public KateEditInsertLineUndo
@@ -107,14 +107,14 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateRedoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateRedoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 class KateModifiedRemoveLine : public KateEditRemoveLineUndo
@@ -125,14 +125,14 @@ public:
     /**
      * @copydoc KateUndo::undo()
      */
-    void undo() Q_DECL_OVERRIDE;
+    void undo() override;
 
     /**
      * @copydoc KateUndo::redo()
      */
-    void redo() Q_DECL_OVERRIDE;
+    void redo() override;
 
-    void updateUndoSavedOnDiskFlag(QBitArray &lines) Q_DECL_OVERRIDE;
+    void updateUndoSavedOnDiskFlag(QBitArray &lines) override;
 };
 
 #endif // KATE_MODIFIED_UNDO_H

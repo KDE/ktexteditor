@@ -97,12 +97,12 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
 public:
     explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false,
                           QWidget *parentWidget = nullptr, QObject * = nullptr);
-    ~DocumentPrivate() Q_DECL_OVERRIDE;
+    ~DocumentPrivate() override;
 
     using ReadWritePart::closeUrl;
-    bool closeUrl() Q_DECL_OVERRIDE;
+    bool closeUrl() override;
 
-    bool openUrl(const QUrl &url) Q_DECL_OVERRIDE;
+    bool openUrl(const QUrl &url) override;
 
     KTextEditor::Range rangeOnLine(KTextEditor::Range range, int line) const;
 
@@ -115,7 +115,7 @@ public:
     /**
      * @return The widget defined by this part, set by setWidget().
      */
-    QWidget *widget() Q_DECL_OVERRIDE;
+    QWidget *widget() override;
 
 public:
     bool readOnly() const
@@ -136,9 +136,9 @@ private:
     // KTextEditor::Document stuff
     //
 public:
-    KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) Q_DECL_OVERRIDE;
+    KTextEditor::View *createView(QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr) override;
 
-    QList<KTextEditor::View *> views() const Q_DECL_OVERRIDE
+    QList<KTextEditor::View *> views() const override
     {
         return m_viewsCache;
     }
@@ -156,44 +156,44 @@ private:
     // KTextEditor::EditInterface stuff
     //
 public Q_SLOTS:
-    bool setText(const QString &) Q_DECL_OVERRIDE;
-    bool setText(const QStringList &text) Q_DECL_OVERRIDE;
-    bool clear() Q_DECL_OVERRIDE;
+    bool setText(const QString &) override;
+    bool setText(const QStringList &text) override;
+    bool clear() override;
 
-    bool insertText(const KTextEditor::Cursor &position, const QString &s, bool block = false) Q_DECL_OVERRIDE;
-    bool insertText(const KTextEditor::Cursor &position, const QStringList &text, bool block = false) Q_DECL_OVERRIDE;
+    bool insertText(const KTextEditor::Cursor &position, const QString &s, bool block = false) override;
+    bool insertText(const KTextEditor::Cursor &position, const QStringList &text, bool block = false) override;
 
-    bool insertLine(int line, const QString &s) Q_DECL_OVERRIDE;
-    bool insertLines(int line, const QStringList &s) Q_DECL_OVERRIDE;
+    bool insertLine(int line, const QString &s) override;
+    bool insertLines(int line, const QStringList &s) override;
 
-    bool removeText(const KTextEditor::Range &range, bool block = false) Q_DECL_OVERRIDE;
-    bool removeLine(int line) Q_DECL_OVERRIDE;
+    bool removeText(const KTextEditor::Range &range, bool block = false) override;
+    bool removeLine(int line) override;
 
-    bool replaceText(const KTextEditor::Range &range, const QString &s, bool block = false) Q_DECL_OVERRIDE;
+    bool replaceText(const KTextEditor::Range &range, const QString &s, bool block = false) override;
 
     // unhide method...
-    bool replaceText(const KTextEditor::Range &r, const QStringList &l, bool b) Q_DECL_OVERRIDE
+    bool replaceText(const KTextEditor::Range &r, const QStringList &l, bool b) override
     {
         return KTextEditor::Document::replaceText(r, l, b);
     }
 
 public:
-    bool isEditingTransactionRunning() const Q_DECL_OVERRIDE;
-    QString text(const KTextEditor::Range &range, bool blockwise = false) const Q_DECL_OVERRIDE;
-    QStringList textLines(const KTextEditor::Range &range, bool block = false) const Q_DECL_OVERRIDE;
-    QString text() const Q_DECL_OVERRIDE;
-    QString line(int line) const Q_DECL_OVERRIDE;
-    QChar characterAt(const KTextEditor::Cursor &position) const Q_DECL_OVERRIDE;
-    QString wordAt(const KTextEditor::Cursor &cursor) const Q_DECL_OVERRIDE;
-    KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const Q_DECL_OVERRIDE;
-    bool isValidTextPosition(const KTextEditor::Cursor& cursor) const Q_DECL_OVERRIDE;
-    int lines() const Q_DECL_OVERRIDE;
-    bool isLineModified(int line) const Q_DECL_OVERRIDE;
-    bool isLineSaved(int line) const Q_DECL_OVERRIDE;
-    bool isLineTouched(int line) const Q_DECL_OVERRIDE;
-    KTextEditor::Cursor documentEnd() const Q_DECL_OVERRIDE;
-    int totalCharacters() const Q_DECL_OVERRIDE;
-    int lineLength(int line) const Q_DECL_OVERRIDE;
+    bool isEditingTransactionRunning() const override;
+    QString text(const KTextEditor::Range &range, bool blockwise = false) const override;
+    QStringList textLines(const KTextEditor::Range &range, bool block = false) const override;
+    QString text() const override;
+    QString line(int line) const override;
+    QChar characterAt(const KTextEditor::Cursor &position) const override;
+    QString wordAt(const KTextEditor::Cursor &cursor) const override;
+    KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const override;
+    bool isValidTextPosition(const KTextEditor::Cursor& cursor) const override;
+    int lines() const override;
+    bool isLineModified(int line) const override;
+    bool isLineSaved(int line) const override;
+    bool isLineTouched(int line) const override;
+    KTextEditor::Cursor documentEnd() const override;
+    int totalCharacters() const override;
+    int lineLength(int line) const override;
 
 Q_SIGNALS:
     void charactersSemiInteractivelyInserted(const KTextEditor::Cursor &position, const QString &text);
@@ -416,52 +416,52 @@ public:
     /**
      * @copydoc KTextEditor::Document::defaultStyleAt()
      */
-    KTextEditor::DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const Q_DECL_OVERRIDE;
+    KTextEditor::DefaultStyle defaultStyleAt(const KTextEditor::Cursor &position) const override;
 
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
      */
-    QString mode() const Q_DECL_OVERRIDE;
+    QString mode() const override;
 
     /**
      * Return the name of the currently used mode
      * \return name of the used mode
      */
-    QString highlightingMode() const Q_DECL_OVERRIDE;
+    QString highlightingMode() const override;
 
     /**
      * Return a list of the names of all possible modes
      * \return list of mode names
      */
-    QStringList modes() const Q_DECL_OVERRIDE;
+    QStringList modes() const override;
 
     /**
      * Return a list of the names of all possible modes
      * \return list of mode names
      */
-    QStringList highlightingModes() const Q_DECL_OVERRIDE;
+    QStringList highlightingModes() const override;
 
     /**
      * Set the current mode of the document by giving its name
      * \param name name of the mode to use for this document
      * \return \e true on success, otherwise \e false
      */
-    bool setMode(const QString &name) Q_DECL_OVERRIDE;
+    bool setMode(const QString &name) override;
 
     /**
      * Set the current mode of the document by giving its name
      * \param name name of the mode to use for this document
      * \return \e true on success, otherwise \e false
      */
-    bool setHighlightingMode(const QString &name) Q_DECL_OVERRIDE;
+    bool setHighlightingMode(const QString &name) override;
     /**
      * Returns the name of the section for a highlight given its @p index in the highlight
      * list (as returned by highlightModes()).
      * You can use this function to build a tree of the highlight names, organized in sections.
      * \param index in the highlight list for which to find the section name.
      */
-    QString highlightingModeSection(int index) const Q_DECL_OVERRIDE;
+    QString highlightingModeSection(int index) const override;
 
     /**
      * Returns the name of the section for a mode given its @p index in the highlight
@@ -469,7 +469,7 @@ public:
      * You can use this function to build a tree of the mode names, organized in sections.
      * \param index index in the highlight list for which to find the section name.
      */
-    QString modeSection(int index) const Q_DECL_OVERRIDE;
+    QString modeSection(int index) const override;
 
     /*
      * Helpers....
@@ -502,7 +502,7 @@ public:
      * \param flags additional flags
      * \see writeSessionConfig()
      */
-    void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
+    void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) override;
 
     /**
      * Write session settings to the \p config.
@@ -512,7 +512,7 @@ public:
      * \param flags additional flags
      * \see readSessionConfig()
      */
-    void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
+    void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) override;
 
 Q_SIGNALS:
     void configChanged();
@@ -521,13 +521,13 @@ Q_SIGNALS:
     // KTextEditor::MarkInterface
     //
 public Q_SLOTS:
-    void setMark(int line, uint markType) Q_DECL_OVERRIDE;
-    void clearMark(int line) Q_DECL_OVERRIDE;
+    void setMark(int line, uint markType) override;
+    void clearMark(int line) override;
 
-    void addMark(int line, uint markType) Q_DECL_OVERRIDE;
-    void removeMark(int line, uint markType) Q_DECL_OVERRIDE;
+    void addMark(int line, uint markType) override;
+    void removeMark(int line, uint markType) override;
 
-    void clearMarks() Q_DECL_OVERRIDE;
+    void clearMarks() override;
 
     void requestMarkTooltip(int line, QPoint position);
 
@@ -537,19 +537,19 @@ public Q_SLOTS:
     ///Returns true if the context-menu event should not further be processed
     bool handleMarkContextMenu(int line, QPoint position);
 
-    void setMarkPixmap(MarkInterface::MarkTypes, const QPixmap &) Q_DECL_OVERRIDE;
+    void setMarkPixmap(MarkInterface::MarkTypes, const QPixmap &) override;
 
-    void setMarkDescription(MarkInterface::MarkTypes, const QString &) Q_DECL_OVERRIDE;
+    void setMarkDescription(MarkInterface::MarkTypes, const QString &) override;
 
-    void setEditableMarks(uint markMask) Q_DECL_OVERRIDE;
+    void setEditableMarks(uint markMask) override;
 
 public:
-    uint mark(int line) Q_DECL_OVERRIDE;
-    const QHash<int, KTextEditor::Mark *> &marks() Q_DECL_OVERRIDE;
-    QPixmap markPixmap(MarkInterface::MarkTypes) const Q_DECL_OVERRIDE;
-    QString markDescription(MarkInterface::MarkTypes) const Q_DECL_OVERRIDE;
+    uint mark(int line) override;
+    const QHash<int, KTextEditor::Mark *> &marks() override;
+    QPixmap markPixmap(MarkInterface::MarkTypes) const override;
+    QString markDescription(MarkInterface::MarkTypes) const override;
     virtual QColor markColor(MarkInterface::MarkTypes) const;
-    uint editableMarks() const Q_DECL_OVERRIDE;
+    uint editableMarks() const override;
 
 Q_SIGNALS:
     void markToolTipRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint position, bool &handled);
@@ -558,8 +558,8 @@ Q_SIGNALS:
 
     void markClicked(KTextEditor::Document *document, KTextEditor::Mark mark, bool &handled);
 
-    void marksChanged(KTextEditor::Document *) Q_DECL_OVERRIDE;
-    void markChanged(KTextEditor::Document *, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction) Q_DECL_OVERRIDE;
+    void marksChanged(KTextEditor::Document *) override;
+    void markChanged(KTextEditor::Document *, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction) override;
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
@@ -570,8 +570,8 @@ private:
     // KTextEditor::PrintInterface
     //
 public Q_SLOTS:
-    bool print() Q_DECL_OVERRIDE;
-    void printPreview() Q_DECL_OVERRIDE;
+    bool print() override;
+    void printPreview() override;
 
     //
     // KTextEditor::DocumentInfoInterface ( ### unfinished )
@@ -582,7 +582,7 @@ public:
      *
      * @return the name of the mimetype for the document.
      */
-    QString mimeType() Q_DECL_OVERRIDE;
+    QString mimeType() override;
 
     //
     // once was KTextEditor::VariableInterface
@@ -624,7 +624,7 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    KTextEditor::MovingCursor *newMovingCursor(const KTextEditor::Cursor &position, KTextEditor::MovingCursor::InsertBehavior insertBehavior = KTextEditor::MovingCursor::MoveOnInsert) Q_DECL_OVERRIDE;
+    KTextEditor::MovingCursor *newMovingCursor(const KTextEditor::Cursor &position, KTextEditor::MovingCursor::InsertBehavior insertBehavior = KTextEditor::MovingCursor::MoveOnInsert) override;
 
     /**
      * Create a new moving range for this document.
@@ -634,32 +634,32 @@ public:
      * @return new moving range for the document
      */
     KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand
-            , KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) Q_DECL_OVERRIDE;
+            , KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) override;
 
     /**
      * Current revision
      * @return current revision
      */
-    qint64 revision() const Q_DECL_OVERRIDE;
+    qint64 revision() const override;
 
     /**
      * Last revision the buffer got successful saved
      * @return last revision buffer got saved, -1 if none
      */
-    qint64 lastSavedRevision() const Q_DECL_OVERRIDE;
+    qint64 lastSavedRevision() const override;
 
     /**
      * Lock a revision, this will keep it around until released again.
      * But all revisions will always be cleared on buffer clear() (and therefor load())
      * @param revision revision to lock
      */
-    void lockRevision(qint64 revision) Q_DECL_OVERRIDE;
+    void lockRevision(qint64 revision) override;
 
     /**
      * Release a revision.
      * @param revision revision to release
      */
-    void unlockRevision(qint64 revision) Q_DECL_OVERRIDE;
+    void unlockRevision(qint64 revision) override;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -668,7 +668,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) Q_DECL_OVERRIDE;
+    void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -678,7 +678,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) Q_DECL_OVERRIDE;
+    void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
 
     /**
      * Transform a range from one revision to an other.
@@ -688,7 +688,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) Q_DECL_OVERRIDE;
+    void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) override;
 
     //
     // MovingInterface Signals
@@ -712,8 +712,8 @@ Q_SIGNALS:
     //
 public:
 
-    void setAnnotationModel(KTextEditor::AnnotationModel *model) Q_DECL_OVERRIDE;
-    KTextEditor::AnnotationModel *annotationModel() const Q_DECL_OVERRIDE;
+    void setAnnotationModel(KTextEditor::AnnotationModel *model) override;
+    KTextEditor::AnnotationModel *annotationModel() const override;
 
 Q_SIGNALS:
     void annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *);
@@ -730,18 +730,18 @@ public:
      * the framework abstracts the loading of remote files
      * @return success
      */
-    bool openFile() Q_DECL_OVERRIDE;
+    bool openFile() override;
 
     /**
      * save the file obtained by the kparts framework
      * the framework abstracts the uploading of remote files
      * @return success
      */
-    bool saveFile() Q_DECL_OVERRIDE;
+    bool saveFile() override;
 
-    void setReadWrite(bool rw = true) Q_DECL_OVERRIDE;
+    void setReadWrite(bool rw = true) override;
 
-    void setModified(bool m) Q_DECL_OVERRIDE;
+    void setModified(bool m) override;
 
 private:
     void activateDirWatch(const QString &useFileName = QString());
@@ -907,7 +907,7 @@ public:
     KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor & start, int maxLines);
 
 public:
-    QString documentName() const Q_DECL_OVERRIDE
+    QString documentName() const override
     {
         return m_docName;
     }
@@ -924,9 +924,9 @@ public:
         return m_modOnHd;
     }
 
-    void setModifiedOnDisk(ModifiedOnDiskReason reason) Q_DECL_OVERRIDE;
+    void setModifiedOnDisk(ModifiedOnDiskReason reason) override;
 
-    void setModifiedOnDiskWarning(bool on) Q_DECL_OVERRIDE;
+    void setModifiedOnDiskWarning(bool on) override;
 
 public Q_SLOTS:
     /**
@@ -938,16 +938,16 @@ public Q_SLOTS:
     /**
      * Reloads the current document from disk if possible
      */
-    bool documentReload() Q_DECL_OVERRIDE;
+    bool documentReload() override;
 
-    bool documentSave() Q_DECL_OVERRIDE;
-    bool documentSaveAs() Q_DECL_OVERRIDE;
+    bool documentSave() override;
+    bool documentSaveAs() override;
     bool documentSaveAsWithEncoding(const QString &encoding);
     bool documentSaveCopyAs();
 
-    bool save() Q_DECL_OVERRIDE;
+    bool save() override;
 public:
-    bool saveAs(const QUrl &url) Q_DECL_OVERRIDE;
+    bool saveAs(const QUrl &url) override;
 
 Q_SIGNALS:
     /**
@@ -956,7 +956,7 @@ Q_SIGNALS:
      * @param isModified indicates the file was modified rather than created or deleted
      * @param reason the reason we are emitting the signal.
      */
-    void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) Q_DECL_OVERRIDE;
+    void modifiedOnDisk(KTextEditor::Document *doc, bool isModified, KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) override;
 
 private:
     // helper to handle the embedded notification for externally modified files
@@ -968,8 +968,8 @@ private Q_SLOTS:
     void onModOnHdIgnore();
 
 public:
-    bool setEncoding(const QString &e) Q_DECL_OVERRIDE;
-    QString encoding() const Q_DECL_OVERRIDE;
+    bool setEncoding(const QString &e) override;
+    QString encoding() const override;
 
 public Q_SLOTS:
     void setWordWrap(bool on);
@@ -1029,7 +1029,7 @@ public:
      * Returns a git compatible sha1 checksum of this document on disk.
      * @return checksum for this document on disk
      */
-    QByteArray checksum() const Q_DECL_OVERRIDE;
+    QByteArray checksum() const override;
 
     void updateFileType(const QString &newType, bool user = false);
 
@@ -1100,7 +1100,7 @@ public Q_SLOTS:
     void slotQueryClose_save(bool *handled, bool *abortClosing);
 
 public:
-    bool queryClose() Q_DECL_OVERRIDE;
+    bool queryClose() override;
 
     void makeAttribs(bool needInvalidate = true);
 
@@ -1173,24 +1173,24 @@ private:
     // KTextEditor::ConfigInterface
     //
 public:
-    QStringList configKeys() const Q_DECL_OVERRIDE;
-    QVariant configValue(const QString &key) Q_DECL_OVERRIDE;
-    void setConfigValue(const QString &key, const QVariant &value) Q_DECL_OVERRIDE;
+    QStringList configKeys() const override;
+    QVariant configValue(const QString &key) override;
+    void setConfigValue(const QString &key, const QVariant &value) override;
 
     //
     // KTextEditor::RecoveryInterface
     //
 public:
-    bool isDataRecoveryAvailable() const Q_DECL_OVERRIDE;
-    void recoverData() Q_DECL_OVERRIDE;
-    void discardDataRecovery() Q_DECL_OVERRIDE;
+    bool isDataRecoveryAvailable() const override;
+    void recoverData() override;
+    void discardDataRecovery() override;
 
     //
     // Highlighting information
     //
 public:
-    QStringList embeddedHighlightingModes() const Q_DECL_OVERRIDE;
-    QString highlightingModeAt(const KTextEditor::Cursor &position) Q_DECL_OVERRIDE;
+    QStringList embeddedHighlightingModes() const override;
+    QString highlightingModeAt(const KTextEditor::Cursor &position) override;
     // TODO KDE5: move to View
     virtual KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor &position);
 
@@ -1198,7 +1198,7 @@ public:
     //BEGIN: KTextEditor::MessageInterface
     //
 public:
-    bool postMessage(KTextEditor::Message *message) Q_DECL_OVERRIDE;
+    bool postMessage(KTextEditor::Message *message) override;
 
 public Q_SLOTS:
     void messageDestroyed(KTextEditor::Message *message);
@@ -1251,8 +1251,8 @@ protected:
     QList<QPair<KTextEditor::MovingRange *, QString> > m_dictionaryRanges;
 
     // from KTextEditor::MovingRangeFeedback
-    void rangeInvalid(KTextEditor::MovingRange *movingRange) Q_DECL_OVERRIDE;
-    void rangeEmpty(KTextEditor::MovingRange *movingRange) Q_DECL_OVERRIDE;
+    void rangeInvalid(KTextEditor::MovingRange *movingRange) override;
+    void rangeEmpty(KTextEditor::MovingRange *movingRange) override;
 
     void deleteDictionaryRange(KTextEditor::MovingRange *movingRange);
 

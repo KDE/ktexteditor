@@ -39,8 +39,8 @@ public:
     KTextEditor::View *view() const;
     KTextEditor::CodeCompletionInterface *cc() const;
 
-    void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType) Q_DECL_OVERRIDE;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType) override;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 private:
     QString m_startText;
@@ -54,7 +54,7 @@ class AbbreviationCodeCompletionTestModel : public CodeCompletionTestModel
 public:
     AbbreviationCodeCompletionTestModel(KTextEditor::View *parent = nullptr, const QString &startText = QString());
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 private:
     QStringList m_items;

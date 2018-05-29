@@ -39,7 +39,7 @@ public:
     explicit VisualViMode(InputModeManager *viInputModeManager,
                           KTextEditor::ViewPrivate *view,
                           KateViewInternal *viewInternal);
-    ~VisualViMode() Q_DECL_OVERRIDE;
+    ~VisualViMode() override;
 
     void init();
 
@@ -54,7 +54,7 @@ public:
     }
 
     void switchStartEnd();
-    void reset() Q_DECL_OVERRIDE;
+    void reset() override;
     void setVisualModeType(const ViMode mode);
     void saveRangeMarks();
 
@@ -98,7 +98,7 @@ protected:
      * (i.e. move the cursor) while a text object may modify both the start and
      * the end. Overriden from the ModeBase class.
      */
-    void goToPos(const Range &r) Q_DECL_OVERRIDE;
+    void goToPos(const Range &r) override;
 
 private:
     void initializeCommands();

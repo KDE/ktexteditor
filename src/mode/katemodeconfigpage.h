@@ -38,14 +38,14 @@ class ModeConfigPage : public KateConfigPage
 
 public:
     explicit ModeConfigPage(QWidget *parent);
-    ~ModeConfigPage() Q_DECL_OVERRIDE;
-    QString name() const Q_DECL_OVERRIDE;
+    ~ModeConfigPage() override;
+    QString name() const override;
 
 public Q_SLOTS:
-    void apply() Q_DECL_OVERRIDE;
-    void reload() Q_DECL_OVERRIDE;
-    void reset() Q_DECL_OVERRIDE;
-    void defaults() Q_DECL_OVERRIDE;
+    void apply() override;
+    void reload() override;
+    void reset() override;
+    void defaults() override;
 
 private Q_SLOTS:
     void update();

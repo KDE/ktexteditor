@@ -47,26 +47,26 @@ public:
                          [this](){ m_lastPosition = -1; });
     }
 
-    void *interface_cast(QAccessible::InterfaceType t) Q_DECL_OVERRIDE
+    void *interface_cast(QAccessible::InterfaceType t) override
     {
         if (t == QAccessible::TextInterface)
             return static_cast<QAccessibleTextInterface*>(this);
         return nullptr;
     }
 
-    ~KateViewAccessible() Q_DECL_OVERRIDE
+    ~KateViewAccessible() override
     {
         QObject::disconnect(m_conn);
     }
 
-    QAccessibleInterface *childAt(int x, int y) const Q_DECL_OVERRIDE
+    QAccessibleInterface *childAt(int x, int y) const override
     {
         Q_UNUSED(x);
         Q_UNUSED(y);
         return nullptr;
     }
 
-    void setText(QAccessible::Text t, const QString &text) Q_DECL_OVERRIDE
+    void setText(QAccessible::Text t, const QString &text) override
     {
         if (t == QAccessible::Value && view()->view()->document()) {
             view()->view()->document()->setText(text);
@@ -74,7 +74,7 @@ public:
         }
     }
 
-    QAccessible::State state() const Q_DECL_OVERRIDE
+    QAccessible::State state() const override
     {
         QAccessible::State s = QAccessibleWidget::state();
         s.focusable = view()->focusPolicy() != Qt::NoFocus;
@@ -85,7 +85,7 @@ public:
         return s;
     }
 
-    QString text(QAccessible::Text t) const Q_DECL_OVERRIDE
+    QString text(QAccessible::Text t) const override
     {
         QString s;
         if (view()->view()->document()) {
@@ -99,12 +99,12 @@ public:
         return s;
     }
 
-    int characterCount() const Q_DECL_OVERRIDE
+    int characterCount() const override
     {
         return view()->view()->document()->text().size();
     }
 
-    void addSelection(int startOffset, int endOffset) Q_DECL_OVERRIDE
+    void addSelection(int startOffset, int endOffset) override
     {
         KTextEditor::Range range;
         range.setRange(cursorFromInt(startOffset), cursorFromInt(endOffset));
@@ -112,14 +112,14 @@ public:
         view()->view()->setCursorPosition(cursorFromInt(endOffset));
     }
 
-    QString attributes(int offset, int *startOffset, int *endOffset) const Q_DECL_OVERRIDE
+    QString attributes(int offset, int *startOffset, int *endOffset) const override
     {
         Q_UNUSED(offset);
         *startOffset = 0;
         *endOffset = characterCount();
         return QString();
     }
-    QRect characterRect(int offset) const Q_DECL_OVERRIDE
+    QRect characterRect(int offset) const override
     {
         KTextEditor::Cursor c = cursorFromInt(offset);
         if (!c.isValid()) {
@@ -130,27 +130,27 @@ public:
         QPoint size = view()->cursorToCoordinate(endCursor) - p;
         return QRect(view()->mapToGlobal(p), QSize(size.x(), size.y()));
     }
-    int cursorPosition() const Q_DECL_OVERRIDE
+    int cursorPosition() const override
     {
         KTextEditor::Cursor c = view()->getCursor();
         return positionFromCursor(view(), c);
     }
-    int offsetAtPoint(const QPoint & /*point*/) const Q_DECL_OVERRIDE
+    int offsetAtPoint(const QPoint & /*point*/) const override
     {
         return 0;
     }
-    void removeSelection(int selectionIndex) Q_DECL_OVERRIDE
+    void removeSelection(int selectionIndex) override
     {
         if (selectionIndex != 0) {
             return;
         }
         view()->view()->clearSelection();
     }
-    void scrollToSubstring(int /*startIndex*/, int /*endIndex*/) Q_DECL_OVERRIDE
+    void scrollToSubstring(int /*startIndex*/, int /*endIndex*/) override
     {
         // FIXME
     }
-    void selection(int selectionIndex, int *startOffset, int *endOffset) const Q_DECL_OVERRIDE
+    void selection(int selectionIndex, int *startOffset, int *endOffset) const override
     {
         if (selectionIndex != 0 || !view()->view()->selection()) {
             *startOffset = 0;
@@ -162,15 +162,15 @@ public:
         *endOffset = positionFromCursor(view(), range.end());
     }
 
-    int selectionCount() const Q_DECL_OVERRIDE
+    int selectionCount() const override
     {
         return view()->view()->selection() ? 1 : 0;
     }
-    void setCursorPosition(int position) Q_DECL_OVERRIDE
+    void setCursorPosition(int position) override
     {
         view()->view()->setCursorPosition(cursorFromInt(position));
     }
-    void setSelection(int selectionIndex, int startOffset, int endOffset) Q_DECL_OVERRIDE
+    void setSelection(int selectionIndex, int startOffset, int endOffset) override
     {
         if (selectionIndex != 0) {
             return;
@@ -178,7 +178,7 @@ public:
         KTextEditor::Range range = KTextEditor::Range(cursorFromInt(startOffset), cursorFromInt(endOffset));
         view()->view()->setSelection(range);
     }
-    QString text(int startOffset, int endOffset) const Q_DECL_OVERRIDE
+    QString text(int startOffset, int endOffset) const override
     {
         if (startOffset > endOffset) {
             return QString();

@@ -33,7 +33,7 @@ class VariableListView : public QScrollArea
 
 public:
     VariableListView(const QString &variableLine, QWidget *parent = nullptr);
-    ~VariableListView() Q_DECL_OVERRIDE;
+    ~VariableListView() override;
 
     void addItem(VariableItem *item);
 
@@ -45,8 +45,8 @@ Q_SIGNALS:
     void changed(); // unused right now
 
 protected:
-    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
-    void hideEvent(QHideEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) override;
+    void hideEvent(QHideEvent *event) override;
 
     void parseVariables(const QString &line);
 

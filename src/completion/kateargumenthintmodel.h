@@ -33,19 +33,19 @@ class KateArgumentHintModel : public ExpandingWidgetModel
 public:
     explicit KateArgumentHintModel(KateCompletionWidget *parent);
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    int rowCount(const QModelIndex &parent = {}) const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex &parent = {}) const override;
 
-    int columnCount(const QModelIndex & parent = {}) const Q_DECL_OVERRIDE;
+    int columnCount(const QModelIndex & parent = {}) const override;
 
-    QModelIndex index(int row, int column, const QModelIndex& parent = {}) const Q_DECL_OVERRIDE;
+    QModelIndex index(int row, int column, const QModelIndex& parent = {}) const override;
 
-    QModelIndex parent(const QModelIndex& parent) const Q_DECL_OVERRIDE;
+    QModelIndex parent(const QModelIndex& parent) const override;
 
-    QTreeView *treeView() const Q_DECL_OVERRIDE;
+    QTreeView *treeView() const override;
 
-    bool indexIsItem(const QModelIndex &index) const Q_DECL_OVERRIDE;
+    bool indexIsItem(const QModelIndex &index) const override;
 
     void emitDataChanged(const QModelIndex &start, const QModelIndex &end);
 
@@ -55,7 +55,7 @@ public:
     void buildRows();
     void clear();
 protected:
-    int contextMatchQuality(const QModelIndex &row) const Q_DECL_OVERRIDE;
+    int contextMatchQuality(const QModelIndex &row) const override;
 public Q_SLOTS:
     void parentModelReset();
 Q_SIGNALS:

@@ -69,19 +69,19 @@ class KateMessageLayout : public QLayout
 {
 public:
     explicit KateMessageLayout (QWidget *parent);
-    ~KateMessageLayout() Q_DECL_OVERRIDE;
+    ~KateMessageLayout() override;
 
     void addWidget(QWidget *widget, KTextEditor::Message::MessagePosition pos);
-    int count() const Q_DECL_OVERRIDE;
-    QLayoutItem *itemAt(int index) const Q_DECL_OVERRIDE;
-    void setGeometry(const QRect &rect) Q_DECL_OVERRIDE;
-    QSize sizeHint() const Q_DECL_OVERRIDE;
-    QLayoutItem *takeAt(int index) Q_DECL_OVERRIDE;
+    int count() const override;
+    QLayoutItem *itemAt(int index) const override;
+    void setGeometry(const QRect &rect) override;
+    QSize sizeHint() const override;
+    QLayoutItem *takeAt(int index) override;
 
     void add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos);
 
 private:
-    void addItem(QLayoutItem *item) Q_DECL_OVERRIDE; // never called publically
+    void addItem(QLayoutItem *item) override; // never called publically
 
     struct ItemWrapper
     {
@@ -110,8 +110,8 @@ class KateScrollBar : public QScrollBar
 
 public:
     KateScrollBar(Qt::Orientation orientation, class KateViewInternal *parent);
-    ~KateScrollBar() Q_DECL_OVERRIDE;
-    QSize sizeHint() const Q_DECL_OVERRIDE;
+    ~KateScrollBar() override;
+    QSize sizeHint() const override;
 
     inline bool showMarks() const
     {
@@ -160,14 +160,14 @@ Q_SIGNALS:
     void sliderMMBMoved(int value);
 
 protected:
-    void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-    void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-    void leaveEvent(QEvent *event) Q_DECL_OVERRIDE;
-    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
-    void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
-    void sliderChange(SliderChange change) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent *e) override;
+    void mouseReleaseEvent(QMouseEvent *e) override;
+    void mouseMoveEvent(QMouseEvent *e) override;
+    void leaveEvent(QEvent *event) override;
+    bool eventFilter(QObject *object, QEvent *event) override;
+    void paintEvent(QPaintEvent *e) override;
+    void resizeEvent(QResizeEvent *) override;
+    void sliderChange(SliderChange change) override;
 
 protected Q_SLOTS:
     void sliderMaybeMoved(int value);
@@ -230,9 +230,9 @@ class KateIconBorder : public QWidget
 
 public:
     KateIconBorder(KateViewInternal *internalView, QWidget *parent);
-    ~KateIconBorder() Q_DECL_OVERRIDE;
+    ~KateIconBorder() override;
     // VERY IMPORTANT ;)
-    QSize sizeHint() const Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
 
     void updateFont();
     int lineNumberWidth() const;
@@ -296,15 +296,15 @@ public Q_SLOTS:
     void displayRangeChanged();
 
 private:
-    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *) override;
     void paintBorder(int x, int y, int width, int height);
 
-    void mousePressEvent(QMouseEvent *) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent *) Q_DECL_OVERRIDE;
-    void mouseReleaseEvent(QMouseEvent *) Q_DECL_OVERRIDE;
-    void mouseDoubleClickEvent(QMouseEvent *) Q_DECL_OVERRIDE;
-    void leaveEvent(QEvent *event) Q_DECL_OVERRIDE;
-    void wheelEvent(QWheelEvent *e) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent *) override;
+    void mouseMoveEvent(QMouseEvent *) override;
+    void mouseReleaseEvent(QMouseEvent *) override;
+    void mouseDoubleClickEvent(QMouseEvent *) override;
+    void leaveEvent(QEvent *event) override;
+    void wheelEvent(QWheelEvent *e) override;
 
     void showMarkMenu(uint line, const QPoint &pos);
 
@@ -529,8 +529,8 @@ public Q_SLOTS:
     void hideCurrentBarWidget();
 
 protected:
-    void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-    void hideEvent(QHideEvent *event) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent *event) override;
+    void hideEvent(QHideEvent *event) override;
 
 private:
     /**
@@ -571,9 +571,9 @@ class KateCmdLineEdit : public KLineEdit
 
 public:
     KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPrivate *view);
-    bool event(QEvent *e) Q_DECL_OVERRIDE;
+    bool event(QEvent *e) override;
 
-    void hideEvent(QHideEvent *e) Q_DECL_OVERRIDE;
+    void hideEvent(QHideEvent *e) override;
 
 Q_SIGNALS:
     void hideRequested();
@@ -585,8 +585,8 @@ private Q_SLOTS:
     void hideLineEdit();
 
 protected:
-    void focusInEvent(QFocusEvent *ev) Q_DECL_OVERRIDE;
-    void keyPressEvent(QKeyEvent *ev) Q_DECL_OVERRIDE;
+    void focusInEvent(QFocusEvent *ev) override;
+    void keyPressEvent(QKeyEvent *ev) override;
 
 private:
     /**

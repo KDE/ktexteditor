@@ -107,7 +107,7 @@ private:
     /**
      * Destructor
      */
-    ~KateGlobalConfig() Q_DECL_OVERRIDE;
+    ~KateGlobalConfig() override;
 
 public:
     static KateGlobalConfig *global()
@@ -127,7 +127,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateConfig() override;
 
 public:
     KEncodingProber::ProberType proberType() const
@@ -167,7 +167,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateDocumentConfig() Q_DECL_OVERRIDE;
+    ~KateDocumentConfig() override;
 
     inline static KateDocumentConfig *global()
     {
@@ -191,7 +191,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateConfig() override;
 
 public:
     int tabWidth() const;
@@ -411,7 +411,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateViewConfig() Q_DECL_OVERRIDE;
+    ~KateViewConfig() override;
 
     inline static KateViewConfig *global()
     {
@@ -435,7 +435,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateConfig() override;
 
 public:
     bool dynWordWrapSet() const
@@ -673,7 +673,7 @@ public:
     /**
      * Cu DocumentConfig
      */
-    ~KateRendererConfig() Q_DECL_OVERRIDE;
+    ~KateRendererConfig() override;
 
     inline static KateRendererConfig *global()
     {
@@ -697,7 +697,7 @@ public:
     void writeConfig(KConfigGroup &config);
 
 protected:
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateConfig() override;
 
 public:
     const QString &schema() const;

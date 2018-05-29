@@ -39,9 +39,9 @@ class AppCommands : public KTextEditor::Command
     static AppCommands* m_instance;
 
 public:
-    ~AppCommands() Q_DECL_OVERRIDE;
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
-    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
+    ~AppCommands() override;
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
 
     static AppCommands* self() {
         if (m_instance == nullptr) {
@@ -88,9 +88,9 @@ class BufferCommands : public KTextEditor::Command
     static BufferCommands* m_instance;
 
 public:
-    ~BufferCommands() Q_DECL_OVERRIDE;
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
-    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
+    ~BufferCommands() override;
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
 
     static BufferCommands* self() {
         if (m_instance == nullptr) {

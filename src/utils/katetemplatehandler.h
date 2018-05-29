@@ -80,7 +80,7 @@ public:
                         const QString& script,
                         KateUndoManager *undoManager);
 
-    ~KateTemplateHandler() Q_DECL_OVERRIDE;
+    ~KateTemplateHandler() override;
 
 protected:
     /**
@@ -98,7 +98,7 @@ protected:
      *               end-cursor.
      *               else just jump to the end of the inserted text.
      */
-    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *object, QEvent *event) override;
 
 private:
     /**

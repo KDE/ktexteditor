@@ -132,8 +132,8 @@ class KateHlCharDetect : public KateHlItem
 public:
     KateHlCharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, QChar);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
-    KateHlItem *clone(const QStringList *args) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
+    KateHlItem *clone(const QStringList *args) override;
 
 private:
     QChar sChar;
@@ -145,8 +145,8 @@ public:
     KateHl2CharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2,  QChar ch1, QChar ch2);
     KateHl2CharDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2,  const QChar *ch);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
-    KateHlItem *clone(const QStringList *args) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
+    KateHlItem *clone(const QStringList *args) override;
 
 private:
     QChar sChar1;
@@ -158,8 +158,8 @@ class KateHlStringDetect : public KateHlItem
 public:
     KateHlStringDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &, bool inSensitive = false);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
-    KateHlItem *clone(const QStringList *args) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
+    KateHlItem *clone(const QStringList *args) override;
 
 protected:
     const QString str;
@@ -172,8 +172,8 @@ class KateHlWordDetect : public KateHlStringDetect
 public:
     KateHlWordDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &, bool inSensitive = false);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
-    KateHlItem *clone(const QStringList *args) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
+    KateHlItem *clone(const QStringList *args) override;
 };
 
 class KateHlRangeDetect : public KateHlItem
@@ -181,7 +181,7 @@ class KateHlRangeDetect : public KateHlItem
 public:
     KateHlRangeDetect(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, QChar ch1, QChar ch2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 
 private:
     QChar sChar1;
@@ -196,7 +196,7 @@ public:
     QSet<QString> allKeywords() const;
 
     void addList(const QStringList &);
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 
 private:
     QVector< QSet<QString>* > dict;
@@ -211,7 +211,7 @@ class KateHlInt : public KateHlItem
 public:
     KateHlInt(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlFloat : public KateHlItem
@@ -220,7 +220,7 @@ public:
     KateHlFloat(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
     virtual ~KateHlFloat() {}
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlCFloat : public KateHlFloat
@@ -228,7 +228,7 @@ class KateHlCFloat : public KateHlFloat
 public:
     KateHlCFloat(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
     int checkIntHgl(const QString &text, int offset, int len);
 };
 
@@ -237,7 +237,7 @@ class KateHlCOct : public KateHlItem
 public:
     KateHlCOct(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlCHex : public KateHlItem
@@ -245,7 +245,7 @@ class KateHlCHex : public KateHlItem
 public:
     KateHlCHex(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlLineContinue : public KateHlItem
@@ -257,8 +257,8 @@ public:
     {
         return c == QLatin1Char('\0');
     }
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
-    bool lineContinue() Q_DECL_OVERRIDE
+    int checkHgl(const QString &text, int offset, int len) override;
+    bool lineContinue() override
     {
         return true;
     }
@@ -271,7 +271,7 @@ class KateHlCStringChar : public KateHlItem
 public:
     KateHlCStringChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlCChar : public KateHlItem
@@ -279,7 +279,7 @@ class KateHlCChar : public KateHlItem
 public:
     KateHlCChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 };
 
 class KateHlAnyChar : public KateHlItem
@@ -287,7 +287,7 @@ class KateHlAnyChar : public KateHlItem
 public:
     KateHlAnyChar(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &charList);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 
 private:
     const QString _charList;
@@ -298,11 +298,11 @@ class KateHlRegExpr : public KateHlItem
 public:
     KateHlRegExpr(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2, const QString &expr, bool insensitive, bool minimal);
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE;
+    int checkHgl(const QString &text, int offset, int len) override;
 
-    void capturedTexts(QStringList &) Q_DECL_OVERRIDE;
+    void capturedTexts(QStringList &) override;
 
-    KateHlItem *clone(const QStringList *args) Q_DECL_OVERRIDE;
+    KateHlItem *clone(const QStringList *args) override;
 
 private:
     /**
@@ -328,7 +328,7 @@ public:
     KateHlDetectSpaces(int attribute, KateHlContextModification context, signed char regionId, signed char regionId2)
         : KateHlItem(attribute, context, regionId, regionId2) {}
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE
+    int checkHgl(const QString &text, int offset, int len) override
     {
         int len2 = offset + len;
         while ((offset < len2) && text[offset].isSpace()) {
@@ -347,7 +347,7 @@ public:
         alwaysStartEnable = false;
     }
 
-    int checkHgl(const QString &text, int offset, int len) Q_DECL_OVERRIDE
+    int checkHgl(const QString &text, int offset, int len) override
     {
         // first char should be a letter or underscore
         if (text[offset].isLetter() || text[offset] == QLatin1Char('_')) {

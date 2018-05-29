@@ -65,9 +65,9 @@ Q_SIGNALS:
     void changed();
 
 protected:
-    void contextMenuEvent(QContextMenuEvent *event) Q_DECL_OVERRIDE;
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
-    bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event) Q_DECL_OVERRIDE;
+    void contextMenuEvent(QContextMenuEvent *event) override;
+    void showEvent(QShowEvent *event) override;
+    bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event) override;
 
 private Q_SLOTS:
     void changeProperty();

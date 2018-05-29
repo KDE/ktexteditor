@@ -1017,7 +1017,7 @@ public:
         ;
     }
 
-    QString makeCompletion(const QString & /*s*/) Q_DECL_OVERRIDE
+    QString makeCompletion(const QString & /*s*/) override
     {
         return QString();
     }

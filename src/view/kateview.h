@@ -99,23 +99,23 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
 
 public:
     ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
-    ~ViewPrivate() Q_DECL_OVERRIDE;
+    ~ViewPrivate() override;
 
     /**
      * Get the view's main window, if any
      * \return the view's main window
      */
-    KTextEditor::MainWindow *mainWindow() const Q_DECL_OVERRIDE
+    KTextEditor::MainWindow *mainWindow() const override
     {
         return m_mainWindow;
     }
 
-    KTextEditor::Document *document() const Q_DECL_OVERRIDE;
+    KTextEditor::Document *document() const override;
 
-    ViewMode viewMode() const Q_DECL_OVERRIDE;
-    QString viewModeHuman() const Q_DECL_OVERRIDE;
-    InputMode viewInputMode() const Q_DECL_OVERRIDE;
-    QString viewInputModeHuman() const Q_DECL_OVERRIDE;
+    ViewMode viewMode() const override;
+    QString viewModeHuman() const override;
+    InputMode viewInputMode() const override;
+    QString viewInputModeHuman() const override;
 
     void setInputMode(InputMode mode);
 
@@ -137,9 +137,9 @@ private Q_SLOTS:
     // KTextEditor::PopupMenuInterface
     //
 public:
-    void setContextMenu(QMenu *menu) Q_DECL_OVERRIDE;
-    QMenu *contextMenu() const Q_DECL_OVERRIDE;
-    QMenu *defaultContextMenu(QMenu *menu = nullptr) const Q_DECL_OVERRIDE;
+    void setContextMenu(QMenu *menu) override;
+    QMenu *contextMenu() const override;
+    QMenu *defaultContextMenu(QMenu *menu = nullptr) const override;
 
 private Q_SLOTS:
     void aboutToShowContextMenu();
@@ -152,17 +152,17 @@ private:
     // KTextEditor::ViewCursorInterface
     //
 public:
-    bool setCursorPosition(KTextEditor::Cursor position) Q_DECL_OVERRIDE;
+    bool setCursorPosition(KTextEditor::Cursor position) override;
 
-    KTextEditor::Cursor cursorPosition() const Q_DECL_OVERRIDE;
+    KTextEditor::Cursor cursorPosition() const override;
 
-    KTextEditor::Cursor cursorPositionVirtual() const Q_DECL_OVERRIDE;
+    KTextEditor::Cursor cursorPositionVirtual() const override;
 
-    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const Q_DECL_OVERRIDE;
+    QPoint cursorToCoordinate(const KTextEditor::Cursor &cursor) const override;
 
-    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const Q_DECL_OVERRIDE;
+    KTextEditor::Cursor coordinatesToCursor(const QPoint &coord) const override;
 
-    QPoint cursorPositionCoordinates() const Q_DECL_OVERRIDE;
+    QPoint cursorPositionCoordinates() const override;
 
     bool setCursorPositionVisual(const KTextEditor::Cursor &position);
 
@@ -173,8 +173,8 @@ public:
      */
     int virtualCursorColumn() const;
 
-    bool mouseTrackingEnabled() const Q_DECL_OVERRIDE;
-    bool setMouseTrackingEnabled(bool enable) Q_DECL_OVERRIDE;
+    bool mouseTrackingEnabled() const override;
+    bool setMouseTrackingEnabled(bool enable) override;
 
 private:
     void notifyMousePositionChanged(const KTextEditor::Cursor &newPosition);
@@ -187,9 +187,9 @@ public:
     // KTextEditor::ConfigInterface
     //
 public:
-    QStringList configKeys() const Q_DECL_OVERRIDE;
-    QVariant configValue(const QString &key) Q_DECL_OVERRIDE;
-    void setConfigValue(const QString &key, const QVariant &value) Q_DECL_OVERRIDE;
+    QStringList configKeys() const override;
+    QVariant configValue(const QString &key) override;
+    void setConfigValue(const QString &key, const QVariant &value) override;
 
 Q_SIGNALS:
     void configChanged();
@@ -212,15 +212,15 @@ public:
     // KTextEditor::CodeCompletionInterface2
     //
 public:
-    bool isCompletionActive() const Q_DECL_OVERRIDE;
-    void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
-    void abortCompletion() Q_DECL_OVERRIDE;
-    void forceCompletion() Q_DECL_OVERRIDE;
-    void registerCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
-    void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) Q_DECL_OVERRIDE;
+    bool isCompletionActive() const override;
+    void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) override;
+    void abortCompletion() override;
+    void forceCompletion() override;
+    void registerCompletionModel(KTextEditor::CodeCompletionModel *model) override;
+    void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) override;
     bool isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const;
-    bool isAutomaticInvocationEnabled() const Q_DECL_OVERRIDE;
-    void setAutomaticInvocationEnabled(bool enabled = true) Q_DECL_OVERRIDE;
+    bool isAutomaticInvocationEnabled() const override;
+    void setAutomaticInvocationEnabled(bool enabled = true) override;
 
 Q_SIGNALS:
     void completionExecuted(KTextEditor::View *view, const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &);
@@ -239,10 +239,10 @@ public:
     // KTextEditor::TextHintInterface
     //
 public:
-    void registerTextHintProvider(KTextEditor::TextHintProvider *provider) Q_DECL_OVERRIDE;
-    void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider) Q_DECL_OVERRIDE;
-    void setTextHintDelay(int delay) Q_DECL_OVERRIDE;
-    int textHintDelay() const Q_DECL_OVERRIDE;
+    void registerTextHintProvider(KTextEditor::TextHintProvider *provider) override;
+    void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider) override;
+    void setTextHintDelay(int delay) override;
+    int textHintDelay() const override;
 
 public:
     bool dynWordWrap() const
@@ -254,19 +254,19 @@ public:
     // KTextEditor::SelectionInterface stuff
     //
 public Q_SLOTS:
-    bool setSelection(const KTextEditor::Range &selection) Q_DECL_OVERRIDE;
+    bool setSelection(const KTextEditor::Range &selection) override;
 
-    bool removeSelection() Q_DECL_OVERRIDE
+    bool removeSelection() override
     {
         return clearSelection();
     }
 
-    bool removeSelectionText() Q_DECL_OVERRIDE
+    bool removeSelectionText() override
     {
         return removeSelectedText();
     }
 
-    bool setBlockSelection(bool on) Q_DECL_OVERRIDE;
+    bool setBlockSelection(bool on) override;
     bool toggleBlockSelection();
 
     bool clearSelection();
@@ -277,10 +277,10 @@ public Q_SLOTS:
     bool selectAll();
 
 public:
-    bool selection() const Q_DECL_OVERRIDE;
-    QString selectionText() const Q_DECL_OVERRIDE;
-    bool blockSelection() const Q_DECL_OVERRIDE;
-    KTextEditor::Range selectionRange() const Q_DECL_OVERRIDE;
+    bool selection() const override;
+    QString selectionText() const override;
+    bool blockSelection() const override;
+    KTextEditor::Range selectionRange() const override;
 
     static void blockFix(KTextEditor::Range &range);
 
@@ -343,16 +343,16 @@ public:
     // KTextEditor::AnnotationView
     //
 public:
-    void setAnnotationModel(KTextEditor::AnnotationModel *model) Q_DECL_OVERRIDE;
-    KTextEditor::AnnotationModel *annotationModel() const Q_DECL_OVERRIDE;
-    void setAnnotationBorderVisible(bool visible) Q_DECL_OVERRIDE;
-    bool isAnnotationBorderVisible() const Q_DECL_OVERRIDE;
+    void setAnnotationModel(KTextEditor::AnnotationModel *model) override;
+    KTextEditor::AnnotationModel *annotationModel() const override;
+    void setAnnotationBorderVisible(bool visible) override;
+    bool isAnnotationBorderVisible() const override;
 
 Q_SIGNALS:
-    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) Q_DECL_OVERRIDE;
-    void annotationActivated(KTextEditor::View *view, int line) Q_DECL_OVERRIDE;
+    void annotationContextMenuAboutToShow(KTextEditor::View *view, QMenu *menu, int line) override;
+    void annotationActivated(KTextEditor::View *view, int line) override;
     // KF6: fix View -> KTextEditor::View
-    void annotationBorderVisibilityChanged(View *view, bool visible) Q_DECL_OVERRIDE;
+    void annotationBorderVisibilityChanged(View *view, bool visible) override;
 
     void navigateLeft();
     void navigateRight();
@@ -501,7 +501,7 @@ public:
      * \param flags additional flags
      * \see writeSessionConfig()
      */
-    void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
+    void readSessionConfig(const KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) override;
 
     /**
      * Write session settings to the \p config.
@@ -511,7 +511,7 @@ public:
      * \param flags additional flags
      * \see readSessionConfig()
      */
-    void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) Q_DECL_OVERRIDE;
+    void writeSessionConfig(KConfigGroup &config, const QSet<QString> &flags = QSet<QString>()) override;
 
 public Q_SLOTS:
     void setEol(int eol);
@@ -746,8 +746,8 @@ Q_SIGNALS:
     void displayRangeChanged(KTextEditor::ViewPrivate *view);
 
 protected:
-    bool event(QEvent *e) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
+    bool event(QEvent *e) override;
+    void paintEvent(QPaintEvent *e) override;
 
     KToggleAction               *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;
@@ -897,8 +897,8 @@ private:
     // KTextEditor::PrintInterface
     //
 public Q_SLOTS:
-    bool print() Q_DECL_OVERRIDE;
-    void printPreview() Q_DECL_OVERRIDE;
+    bool print() override;
+    void printPreview() override;
 
 public:
     /**
@@ -955,14 +955,14 @@ public:
     /**
      * Returns the attribute for the default style \p defaultStyle.
      */
-    Attribute::Ptr defaultStyleAttribute(DefaultStyle defaultStyle) const Q_DECL_OVERRIDE;
+    Attribute::Ptr defaultStyleAttribute(DefaultStyle defaultStyle) const override;
 
     /**
      * Get the list of AttributeBlocks for a given \p line in the document.
      *
      * \return list of AttributeBlocks for given \p line.
      */
-    QList<KTextEditor::AttributeBlock> lineAttributes(int line) Q_DECL_OVERRIDE;
+    QList<KTextEditor::AttributeBlock> lineAttributes(int line) override;
 
 private:
     // remember folding state to prevent refolding the first line if it was manually unfolded,

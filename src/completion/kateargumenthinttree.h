@@ -49,14 +49,14 @@ public Q_SLOTS:
     void updateGeometry();
     void updateGeometry(QRect rect);
 protected:
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void rowsInserted(const QModelIndex &parent, int start, int end) Q_DECL_OVERRIDE;
-    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>()) Q_DECL_OVERRIDE;
-    void currentChanged(const QModelIndex &current, const QModelIndex &previous) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *event) override;
+    void rowsInserted(const QModelIndex &parent, int start, int end) override;
+    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>()) override;
+    void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
 private:
     uint rowHeight(const QModelIndex &index) const;
     KateArgumentHintModel *model() const;
-    int sizeHintForColumn(int column) const Q_DECL_OVERRIDE;
+    int sizeHintForColumn(int column) const override;
 
     KateCompletionWidget *m_parent;
 };

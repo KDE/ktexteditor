@@ -39,19 +39,19 @@ class KateKeywordCompletionModel : public KTextEditor::CodeCompletionModel
 
 public:
     explicit KateKeywordCompletionModel(QObject* parent);
-    QVariant data(const QModelIndex& index, int role) const Q_DECL_OVERRIDE;
-    int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    QModelIndex parent(const QModelIndex& index) const Q_DECL_OVERRIDE;
-    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex& index, int role) const override;
+    int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+    QModelIndex parent(const QModelIndex& index) const override;
+    QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
     void completionInvoked(KTextEditor::View* view, const KTextEditor::Range& range,
-                           InvocationType invocationType) Q_DECL_OVERRIDE;
-    KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
+                           InvocationType invocationType) override;
+    KTextEditor::Range completionRange(KTextEditor::View* view, const KTextEditor::Cursor& position) override;
     bool shouldAbortCompletion(KTextEditor::View* view, const KTextEditor::Range& range,
-                               const QString& currentCompletion) Q_DECL_OVERRIDE;
+                               const QString& currentCompletion) override;
     bool shouldStartCompletion(KTextEditor::View* view, const QString& insertedText, bool userInsertion,
-                               const KTextEditor::Cursor& position) Q_DECL_OVERRIDE;
-    MatchReaction matchingItem(const QModelIndex& matched) Q_DECL_OVERRIDE;
-    bool shouldHideItemsWithEqualNames() const Q_DECL_OVERRIDE;
+                               const KTextEditor::Cursor& position) override;
+    MatchReaction matchingItem(const QModelIndex& matched) override;
+    bool shouldHideItemsWithEqualNames() const override;
 
 private:
     QList<QString> m_items;

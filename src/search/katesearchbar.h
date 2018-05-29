@@ -79,7 +79,7 @@ public:
     explicit KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config);
     ~KateSearchBar();
 
-    void closed() Q_DECL_OVERRIDE;
+    void closed() override;
 
     bool isPower() const;
 
@@ -129,7 +129,7 @@ public Q_SLOTS:
 
 protected:
     // Overridden
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) override;
 
 private Q_SLOTS:
     void onIncPatternChanged(const QString &pattern);

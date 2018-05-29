@@ -78,13 +78,13 @@ public:
      * @param text the text to complete
      * @return the first match, or QString() if not found
      */
-    QString makeCompletion(const QString &text) Q_DECL_OVERRIDE;
+    QString makeCompletion(const QString &text) override;
 
 protected:
     // Called by KCompletion
-    void postProcessMatch(QString *match) const Q_DECL_OVERRIDE;
-    void postProcessMatches(QStringList *matches) const Q_DECL_OVERRIDE;
-    void postProcessMatches(KCompletionMatches *matches) const Q_DECL_OVERRIDE;
+    void postProcessMatch(QString *match) const override;
+    void postProcessMatches(QStringList *matches) const override;
+    void postProcessMatches(KCompletionMatches *matches) const override;
 
 private:
     /**

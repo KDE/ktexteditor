@@ -57,7 +57,7 @@ class KTEXTEDITOR_EXPORT EmulatedCommandBar : public KateViewBarWidget
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
     explicit EmulatedCommandBar(KateViInputMode* viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
-    ~EmulatedCommandBar() Q_DECL_OVERRIDE;
+    ~EmulatedCommandBar() override;
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
     void setCommandResponseMessageTimeout(long commandResponseMessageTimeOutMS);
@@ -104,12 +104,12 @@ private:
 
     bool barHandledKeypress(const QKeyEvent* keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
-    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *object, QEvent *event) override;
     void deleteSpacesToLeftOfCursor();
     void deleteWordCharsToLeftOfCursor();
     bool deleteNonWordCharsToLeftOfCursor();
 
-    void closed() Q_DECL_OVERRIDE;
+    void closed() override;
     void closeWithStatusMessage(const QString& exitStatusMessage);
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;

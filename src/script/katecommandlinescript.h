@@ -65,7 +65,7 @@ class KateCommandLineScript : public KateScript, public KTextEditor::Command
 {
 public:
     KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header);
-    ~KateCommandLineScript() Q_DECL_OVERRIDE;
+    ~KateCommandLineScript() override;
 
     const KateCommandLineScriptHeader &commandHeader();
 
@@ -75,9 +75,9 @@ public:
     // KTextEditor::Command interface
     //
 public:
-    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) Q_DECL_OVERRIDE;
-    bool supportsRange(const QString &cmd) Q_DECL_OVERRIDE;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
+    bool supportsRange(const QString &cmd) override;
 
 private:
     KateCommandLineScriptHeader m_commandHeader;

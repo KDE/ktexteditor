@@ -1077,7 +1077,7 @@ public:
         : CalculatingCursor(vi, c) {}
     BoundedCursor(KateViewInternal *vi, int line, int col)
         : CalculatingCursor(vi, line, col) {}
-    CalculatingCursor &operator+=(int n) Q_DECL_OVERRIDE
+    CalculatingCursor &operator+=(int n) override
     {
         KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
         if (!thisLine->isValid()) {
@@ -1129,7 +1129,7 @@ public:
         Q_ASSERT(valid());
         return *this;
     }
-    CalculatingCursor &operator-=(int n) Q_DECL_OVERRIDE
+    CalculatingCursor &operator-=(int n) override
     {
         return operator+=(-n);
     }
@@ -1145,7 +1145,7 @@ public:
     WrappingCursor(KateViewInternal *vi, int line, int col)
         : CalculatingCursor(vi, line, col) {}
 
-    CalculatingCursor &operator+=(int n) Q_DECL_OVERRIDE
+    CalculatingCursor &operator+=(int n) override
     {
         KateLineLayoutPtr thisLine = m_vi->cache()->line(line());
         if (!thisLine->isValid()) {
@@ -1215,7 +1215,7 @@ public:
         Q_ASSERT(valid());
         return *this;
     }
-    CalculatingCursor &operator-=(int n) Q_DECL_OVERRIDE
+    CalculatingCursor &operator-=(int n) override
     {
         return operator+=(-n);
     }

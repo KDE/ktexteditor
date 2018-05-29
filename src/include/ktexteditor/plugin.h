@@ -58,8 +58,8 @@ class MainWindow;
  *     Q_OBJECT
  * public:
  *     // ...
- *     int configPages() const Q_DECL_OVERRIDE;
- *     ConfigPage *configPage(int number, QWidget *parent) Q_DECL_OVERRIDE;
+ *     int configPages() const override;
+ *     ConfigPage *configPage(int number, QWidget *parent) override;
  * };
  * \endcode
  * The host application will call configPage() for each config page.
@@ -78,8 +78,8 @@ class MainWindow;
  *     Q_INTERFACES(KTextEditor::SessionConfigInterface)
  * public:
  *     // ...
- *     void readSessionConfig (const KConfigGroup& config) Q_DECL_OVERRIDE;
- *     void writeSessionConfig (KConfigGroup& config) Q_DECL_OVERRIDE;
+ *     void readSessionConfig (const KConfigGroup& config) override;
+ *     void writeSessionConfig (KConfigGroup& config) override;
  * };
  * \endcode
  *

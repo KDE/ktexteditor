@@ -37,7 +37,7 @@ public:
     explicit ReplaceViMode(InputModeManager *viInputModeManager,
                            KTextEditor::ViewPrivate *view,
                            KateViewInternal *viewInternal);
-    ~ReplaceViMode() Q_DECL_OVERRIDE;
+    ~ReplaceViMode() override;
 
     /// Update the track of overwritten characters with the \p s character.
     inline void overwrittenChar(const QChar &s)
@@ -53,7 +53,7 @@ protected:
      *
      * @returns true if a command was completed and executed, false otherwise.
      */
-    bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
+    bool handleKeypress(const QKeyEvent *e) override;
 
 private:
     /**

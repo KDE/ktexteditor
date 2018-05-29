@@ -54,7 +54,7 @@ class KateOnTheFlyChecker : public QObject, private KTextEditor::MovingRangeFeed
 
 public:
     explicit KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document);
-    ~KateOnTheFlyChecker() Q_DECL_OVERRIDE;
+    ~KateOnTheFlyChecker() override;
 
     QPair<KTextEditor::Range, QString> getMisspelledItem(const KTextEditor::Cursor &cursor) const;
     QString dictionaryForMisspelledRange(const KTextEditor::Range &range) const;
@@ -102,12 +102,12 @@ protected:
     virtual void removeRangeFromEverything(KTextEditor::MovingRange *range);
     bool removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range);
     bool removeRangeFromSpellCheckQueue(KTextEditor::MovingRange *range);
-    void rangeEmpty(KTextEditor::MovingRange *range) Q_DECL_OVERRIDE;
-    void rangeInvalid(KTextEditor::MovingRange *range) Q_DECL_OVERRIDE;
-    void mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
-    void mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
-    void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
-    void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) Q_DECL_OVERRIDE;
+    void rangeEmpty(KTextEditor::MovingRange *range) override;
+    void rangeInvalid(KTextEditor::MovingRange *range) override;
+    void mouseEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
+    void mouseExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
+    void caretEnteredRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
+    void caretExitedRange(KTextEditor::MovingRange *range, KTextEditor::View *view) override;
 
     KTextEditor::Range findWordBoundaries(const KTextEditor::Cursor &begin,
                                           const KTextEditor::Cursor &end);

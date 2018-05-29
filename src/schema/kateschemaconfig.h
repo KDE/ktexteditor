@@ -118,7 +118,7 @@ public:
     void importSchema(const QString &schemaName, const QString &schema, KConfig *cfg);
 
 protected:
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) override;
     void updateColorPalette(const QColor &textColor);
 
 private:
@@ -151,7 +151,7 @@ public Q_SLOTS:
     void importHl(const QString &fromSchemaName = QString(), QString schema = QString(), int hl = -1, KConfig *cfg = nullptr);
 
 protected:
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) override;
     void updateColorPalette(const QColor &textColor);
 
 private:
@@ -178,15 +178,15 @@ class KateSchemaConfigPage : public KateConfigPage
 public:
     explicit KateSchemaConfigPage(QWidget *parent);
     virtual ~KateSchemaConfigPage();
-    QString name() const Q_DECL_OVERRIDE;
-    QString fullName() const Q_DECL_OVERRIDE;
-    QIcon icon() const Q_DECL_OVERRIDE;
+    QString name() const override;
+    QString fullName() const override;
+    QIcon icon() const override;
 
 public Q_SLOTS:
-    void apply() Q_DECL_OVERRIDE;
-    void reload() Q_DECL_OVERRIDE;
-    void reset() Q_DECL_OVERRIDE;
-    void defaults() Q_DECL_OVERRIDE;
+    void apply() override;
+    void reload() override;
+    void reset() override;
+    void defaults() override;
     void exportFullSchema();
     void importFullSchema();
 

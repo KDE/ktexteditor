@@ -75,9 +75,9 @@ public:
     int maxValue() const;
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;
-    QString valueAsString() const Q_DECL_OVERRIDE;
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;
+    QString valueAsString() const override;
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     int m_value;
@@ -99,9 +99,9 @@ public:
     void setValue(const QString &newValue);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;
-    QString valueAsString() const Q_DECL_OVERRIDE;
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;
+    QString valueAsString() const override;
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QStringList m_list;
@@ -119,9 +119,9 @@ public:
     void setValue(bool enabled);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;
-    QString valueAsString() const Q_DECL_OVERRIDE;
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;
+    QString valueAsString() const override;
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     bool m_value;
@@ -138,9 +138,9 @@ public:
     void setValue(const QColor &color);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;
-    QString valueAsString() const Q_DECL_OVERRIDE;
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;
+    QString valueAsString() const override;
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QColor m_value;
@@ -157,9 +157,9 @@ public:
     void setValue(const QFont &value);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;
-    QString valueAsString() const Q_DECL_OVERRIDE;
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;
+    QString valueAsString() const override;
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QFont m_value;
@@ -176,9 +176,9 @@ public:
     void setValue(const QString &value);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE; // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const Q_DECL_OVERRIDE;               // Same as value() in this case, implemented for uniformity
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
+    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QString m_value;
@@ -196,9 +196,9 @@ public:
     void setValue(const QString &value);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;  // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const Q_DECL_OVERRIDE;                // Same as value() in this case, implemented for uniformity
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;  // Same as setValue() in this case, implemented for uniformity
+    QString valueAsString() const override;                // Same as value() in this case, implemented for uniformity
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QString m_value;
@@ -215,9 +215,9 @@ public:
     void setValue(int value);
 
 public:
-    void setValueByString(const QString &value) Q_DECL_OVERRIDE;  // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const Q_DECL_OVERRIDE;                // Same as value() in this case, implemented for uniformity
-    VariableEditor *createEditor(QWidget *parent) Q_DECL_OVERRIDE;
+    void setValueByString(const QString &value) override;  // Same as setValue() in this case, implemented for uniformity
+    QString valueAsString() const override;                // Same as value() in this case, implemented for uniformity
+    VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     int m_value;

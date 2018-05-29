@@ -109,7 +109,7 @@ public:
     virtual bool indexIsItem(const QModelIndex &index) const = 0;
 
     ///Does not request data from index, this only returns local data like highlighting for expanded rows and similar
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     ///Returns the first row that is currently partially expanded.
     QModelIndex partiallyExpandedRow() const;

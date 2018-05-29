@@ -53,9 +53,9 @@ public:
     explicit InsertViMode(InputModeManager *viInputModeManager,
                         KTextEditor::ViewPrivate *view,
                         KateViewInternal *viewInternal);
-    ~InsertViMode() Q_DECL_OVERRIDE;
+    ~InsertViMode() override;
 
-    bool handleKeypress(const QKeyEvent *e) Q_DECL_OVERRIDE;
+    bool handleKeypress(const QKeyEvent *e) override;
 
     bool commandInsertFromAbove();
     bool commandInsertFromBelow();

@@ -54,7 +54,7 @@ class VariableEditor : public QWidget
 
 public:
     VariableEditor(VariableItem *item, QWidget *parent = nullptr);
-    ~VariableEditor() Q_DECL_OVERRIDE;
+    ~VariableEditor() override;
 
     VariableItem *item() const;
 
@@ -66,9 +66,9 @@ protected Q_SLOTS:
     void activateItem();
 
 protected:
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void enterEvent(QEvent *event) Q_DECL_OVERRIDE;
-    void leaveEvent(QEvent *event) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *event) override;
+    void enterEvent(QEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     VariableItem *m_item;

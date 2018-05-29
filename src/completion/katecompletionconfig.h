@@ -42,7 +42,7 @@ class KateCompletionConfig : public QDialog, public KateConfig
 
 public:
     explicit KateCompletionConfig(KateCompletionModel *model, QWidget *parent = nullptr);
-    ~KateCompletionConfig() Q_DECL_OVERRIDE;
+    ~KateCompletionConfig() override;
 
     /**
      * Read config from object
@@ -58,7 +58,7 @@ public Q_SLOTS:
     void apply();
 
 protected:
-    void updateConfig() Q_DECL_OVERRIDE;
+    void updateConfig() override;
 
 private Q_SLOTS:
     void moveColumnUp();

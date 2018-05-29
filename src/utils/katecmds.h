@@ -80,7 +80,7 @@ class CoreCommands : public KTextEditor::Command
     static CoreCommands *m_instance;
 
 public:
-    ~CoreCommands() Q_DECL_OVERRIDE
+    ~CoreCommands() override
     {
         m_instance = nullptr;
     }
@@ -103,15 +103,15 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
-    bool supportsRange(const QString &range) Q_DECL_OVERRIDE;
+    bool supportsRange(const QString &range) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
+    bool help(class KTextEditor::View *, const QString &, QString &) override;
 
     /** override from KTextEditor::Command */
-    KCompletion *completionObject(KTextEditor::View *, const QString &) Q_DECL_OVERRIDE;
+    KCompletion *completionObject(KTextEditor::View *, const QString &) override;
 
     static CoreCommands *self()
     {
@@ -140,7 +140,7 @@ class Character : public KTextEditor::Command
     static Character *m_instance;
 
 public:
-    ~Character() Q_DECL_OVERRIDE
+    ~Character() override
     {
         m_instance = nullptr;
     }
@@ -153,10 +153,10 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
+    bool help(class KTextEditor::View *, const QString &, QString &) override;
 
     static Character *self()
     {
@@ -180,7 +180,7 @@ class Date : public KTextEditor::Command
     static Date *m_instance;
 
 public:
-    ~Date() Q_DECL_OVERRIDE
+    ~Date() override
     {
         m_instance = nullptr;
     }
@@ -193,10 +193,10 @@ public:
      * @return success
      */
     bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) Q_DECL_OVERRIDE;
+              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
-    bool help(class KTextEditor::View *, const QString &, QString &) Q_DECL_OVERRIDE;
+    bool help(class KTextEditor::View *, const QString &, QString &) override;
 
     static Date *self()
     {

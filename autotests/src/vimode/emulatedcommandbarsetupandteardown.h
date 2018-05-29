@@ -40,7 +40,7 @@ class WindowKeepActive : public QObject
         WindowKeepActive(QMainWindow *mainWindow);
 
         public Q_SLOTS:
-            bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
+            bool eventFilter(QObject *object, QEvent *event) override;
 
     private:
         QMainWindow *m_mainWindow;

@@ -35,9 +35,9 @@ class ConfigTab : public KateConfigPage
 
 public:
     explicit ConfigTab(QWidget *parent, Mappings *mappings);
-    ~ConfigTab() Q_DECL_OVERRIDE;
+    ~ConfigTab() override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
 protected:
     Ui::ConfigWidget *ui;
@@ -47,10 +47,10 @@ private:
     void reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode);
 
 public Q_SLOTS:
-    void apply() Q_DECL_OVERRIDE;
-    void reload() Q_DECL_OVERRIDE;
-    void reset() Q_DECL_OVERRIDE;
-    void defaults() Q_DECL_OVERRIDE;
+    void apply() override;
+    void reload() override;
+    void reset() override;
+    void defaults() override;
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);

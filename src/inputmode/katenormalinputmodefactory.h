@@ -26,13 +26,13 @@ class KateNormalInputModeFactory : public KateAbstractInputModeFactory
 public:
     KateNormalInputModeFactory();
 
-    ~KateNormalInputModeFactory() Q_DECL_OVERRIDE;
-    KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) Q_DECL_OVERRIDE;
+    ~KateNormalInputModeFactory() override;
+    KateAbstractInputMode *createInputMode(KateViewInternal *viewInternal) override;
 
-    QString name() Q_DECL_OVERRIDE;
-    KTextEditor::View::InputMode inputMode() Q_DECL_OVERRIDE;
+    QString name() override;
+    KTextEditor::View::InputMode inputMode() override;
 
-    KateConfigPage *createConfigPage(QWidget *) Q_DECL_OVERRIDE;
+    KateConfigPage *createConfigPage(QWidget *) override;
 };
 
 #endif

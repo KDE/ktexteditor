@@ -43,7 +43,7 @@ class KateStyleTreeDelegate : public QStyledItemDelegate
 public:
     KateStyleTreeDelegate(KateStyleTreeWidget *widget);
 
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
 private:
     QBrush getBrushForColorColumn(const QModelIndex &index, int column) const;
@@ -68,7 +68,7 @@ class KateStyleTreeWidgetItem : public QTreeWidgetItem
 public:
     KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
-    ~KateStyleTreeWidgetItem() Q_DECL_OVERRIDE {}
+    ~KateStyleTreeWidgetItem() override {}
 
     enum columns {
         Context = 0,
@@ -110,7 +110,7 @@ public:
         return currentStyle;
     }
 
-    QVariant data(int column, int role) const Q_DECL_OVERRIDE;
+    QVariant data(int column, int role) const override;
 
     KateStyleTreeWidget *treeWidget() const;
 

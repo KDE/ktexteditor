@@ -38,8 +38,8 @@ class KateStatusBarOpenUpMenu: public QMenu
         Q_OBJECT
 public:
         KateStatusBarOpenUpMenu(QWidget *parent);
-        ~KateStatusBarOpenUpMenu() Q_DECL_OVERRIDE;
-        void setVisible(bool) Q_DECL_OVERRIDE;
+        ~KateStatusBarOpenUpMenu() override;
+        void setVisible(bool) override;
 };
 
 class KateStatusBar : public KateViewBarWidget
@@ -71,7 +71,7 @@ public Q_SLOTS:
     void configChanged();
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
 private:
     KTextEditor::ViewPrivate *const m_view;

@@ -31,49 +31,49 @@ class KateNormalInputMode : public KateAbstractInputMode
     friend KateNormalInputModeFactory;
 
 public:
-    ~KateNormalInputMode() Q_DECL_OVERRIDE;
+    ~KateNormalInputMode() override;
 
-    KTextEditor::View::ViewMode viewMode() const Q_DECL_OVERRIDE;
-    QString viewModeHuman() const Q_DECL_OVERRIDE;
-    KTextEditor::View::InputMode viewInputMode() const Q_DECL_OVERRIDE;
-    QString viewInputModeHuman() const Q_DECL_OVERRIDE;
+    KTextEditor::View::ViewMode viewMode() const override;
+    QString viewModeHuman() const override;
+    KTextEditor::View::InputMode viewInputMode() const override;
+    QString viewInputModeHuman() const override;
 
-    void activate() Q_DECL_OVERRIDE;
-    void deactivate() Q_DECL_OVERRIDE;
-    void reset() Q_DECL_OVERRIDE;
+    void activate() override;
+    void deactivate() override;
+    void reset() override;
 
-    bool overwrite() const Q_DECL_OVERRIDE;
-    void overwrittenChar(const QChar &) Q_DECL_OVERRIDE;
+    bool overwrite() const override;
+    void overwrittenChar(const QChar &) override;
 
-    void clearSelection() Q_DECL_OVERRIDE;
-    bool stealKey(QKeyEvent *) Q_DECL_OVERRIDE;
+    void clearSelection() override;
+    bool stealKey(QKeyEvent *) override;
 
-    void gotFocus() Q_DECL_OVERRIDE;
-    void lostFocus() Q_DECL_OVERRIDE;
+    void gotFocus() override;
+    void lostFocus() override;
 
-    void readSessionConfig(const KConfigGroup &config) Q_DECL_OVERRIDE;
-    void writeSessionConfig(KConfigGroup &config) Q_DECL_OVERRIDE;
-    void updateRendererConfig() Q_DECL_OVERRIDE;
-    void updateConfig() Q_DECL_OVERRIDE;
-    void readWriteChanged(bool rw) Q_DECL_OVERRIDE;
+    void readSessionConfig(const KConfigGroup &config) override;
+    void writeSessionConfig(KConfigGroup &config) override;
+    void updateRendererConfig() override;
+    void updateConfig() override;
+    void readWriteChanged(bool rw) override;
 
-    void find() Q_DECL_OVERRIDE;
-    void findSelectedForwards() Q_DECL_OVERRIDE;
-    void findSelectedBackwards() Q_DECL_OVERRIDE;
-    void findReplace() Q_DECL_OVERRIDE;
-    void findNext() Q_DECL_OVERRIDE;
-    void findPrevious() Q_DECL_OVERRIDE;
+    void find() override;
+    void findSelectedForwards() override;
+    void findSelectedBackwards() override;
+    void findReplace() override;
+    void findNext() override;
+    void findPrevious() override;
 
-    void activateCommandLine() Q_DECL_OVERRIDE;
+    void activateCommandLine() override;
 
-    bool keyPress(QKeyEvent *) Q_DECL_OVERRIDE;
-    bool blinkCaret() const Q_DECL_OVERRIDE;
-    KateRenderer::caretStyles caretStyle() const Q_DECL_OVERRIDE;
+    bool keyPress(QKeyEvent *) override;
+    bool blinkCaret() const override;
+    KateRenderer::caretStyles caretStyle() const override;
 
-    void toggleInsert() Q_DECL_OVERRIDE;
-    void launchInteractiveCommand(const QString &command) Q_DECL_OVERRIDE;
+    void toggleInsert() override;
+    void launchInteractiveCommand(const QString &command) override;
 
-    QString bookmarkLabel(int line) const Q_DECL_OVERRIDE;
+    QString bookmarkLabel(int line) const override;
 
 private:
     /**

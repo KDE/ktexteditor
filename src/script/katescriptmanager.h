@@ -44,7 +44,7 @@ class KateScriptManager : public KTextEditor::Command
     static KateScriptManager *m_instance;
 
 public:
-    ~KateScriptManager() Q_DECL_OVERRIDE;
+    ~KateScriptManager() override;
 
     /** Get all scripts available in the command line */
     const QVector<KateCommandLineScript *> &commandLineScripts()
@@ -71,7 +71,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &) Q_DECL_OVERRIDE;
+    bool exec(KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &) override;
 
     /**
      * get help for a command
@@ -80,7 +80,7 @@ public:
      * @param msg help message
      * @return help available or not
      */
-    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) Q_DECL_OVERRIDE;
+    bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
 
     static KateScriptManager *self()
     {
