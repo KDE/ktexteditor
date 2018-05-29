@@ -28,7 +28,7 @@ class HTMLExporter : public AbstractExporter
 {
 public:
     HTMLExporter(KTextEditor::View *view, QTextStream &output, const bool withHeaderFooter = false);
-    virtual ~HTMLExporter();
+    ~HTMLExporter() override;
 
     void openLine() override;
     void closeLine(const bool lastLine) override;

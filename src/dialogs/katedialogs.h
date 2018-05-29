@@ -125,7 +125,7 @@ class KateIndentConfigTab : public KateConfigPage
 
 public:
     explicit KateIndentConfigTab(QWidget *parent);
-    ~KateIndentConfigTab();
+    ~KateIndentConfigTab() override;
     QString name() const override;
 
 protected:
@@ -148,7 +148,7 @@ class KateCompletionConfigTab : public KateConfigPage
 
 public:
     explicit KateCompletionConfigTab(QWidget *parent);
-    ~KateCompletionConfigTab();
+    ~KateCompletionConfigTab() override;
     QString name() const override;
 
 protected:
@@ -170,7 +170,7 @@ class KateEditGeneralConfigTab : public KateConfigPage
 
 public:
     explicit KateEditGeneralConfigTab(QWidget *parent);
-    ~KateEditGeneralConfigTab();
+    ~KateEditGeneralConfigTab() override;
     QString name() const override;
 
 private:
@@ -189,7 +189,7 @@ class KateNavigationConfigTab : public KateConfigPage
 
 public:
     explicit KateNavigationConfigTab(QWidget *parent);
-    ~KateNavigationConfigTab();
+    ~KateNavigationConfigTab() override;
     QString name() const override;
 
 private:
@@ -208,7 +208,7 @@ class KateSpellCheckConfigTab : public KateConfigPage
 
 public:
     explicit KateSpellCheckConfigTab(QWidget *parent);
-    ~KateSpellCheckConfigTab();
+    ~KateSpellCheckConfigTab() override;
     QString name() const override;
 
 protected:
@@ -231,7 +231,7 @@ class KateEditConfigTab : public KateConfigPage
 
 public:
     explicit KateEditConfigTab(QWidget *parent);
-    ~KateEditConfigTab();
+    ~KateEditConfigTab() override;
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;
@@ -257,7 +257,7 @@ class KateViewDefaultsConfig : public KateConfigPage
 
 public:
     explicit KateViewDefaultsConfig(QWidget *parent);
-    ~KateViewDefaultsConfig();
+    ~KateViewDefaultsConfig() override;
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;
@@ -279,7 +279,7 @@ class KateSaveConfigTab : public KateConfigPage
 
 public:
     explicit KateSaveConfigTab(QWidget *parent);
-    ~KateSaveConfigTab();
+    ~KateSaveConfigTab() override;
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;

@@ -77,7 +77,7 @@ public:
 
 public:
     explicit KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config);
-    ~KateSearchBar();
+    ~KateSearchBar() override;
 
     void closed() override;
 

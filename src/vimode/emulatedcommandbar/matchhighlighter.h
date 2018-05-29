@@ -38,7 +38,7 @@ class MatchHighlighter : public QObject
 {
     Q_OBJECT
 public:
-    MatchHighlighter(KTextEditor::ViewPrivate* view);
+    explicit MatchHighlighter(KTextEditor::ViewPrivate* view);
     ~MatchHighlighter();
     void updateMatchHighlight(const KTextEditor::Range &matchRange);
 private Q_SLOTS:

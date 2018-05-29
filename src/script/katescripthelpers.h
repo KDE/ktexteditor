@@ -42,7 +42,7 @@ class KTEXTEDITOR_EXPORT ScriptHelper : public QObject {
     Q_OBJECT
     QJSEngine *m_engine;
 public:
-    ScriptHelper(QJSEngine *engine) : m_engine(engine) {}
+    explicit ScriptHelper(QJSEngine *engine) : m_engine(engine) {}
     Q_INVOKABLE QString read(const QString &file);
     Q_INVOKABLE void require(const QString &file);
     Q_INVOKABLE void debug(const QString &msg);

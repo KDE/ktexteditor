@@ -103,7 +103,7 @@ class KateSchemaConfigDefaultStylesTab : public QWidget
 
 public:
     KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab);
-    ~KateSchemaConfigDefaultStylesTab();
+    ~KateSchemaConfigDefaultStylesTab() override;
 
 Q_SIGNALS:
     void changed();
@@ -134,7 +134,7 @@ class KateSchemaConfigHighlightTab : public QWidget
 
 public:
     explicit KateSchemaConfigHighlightTab(KateSchemaConfigDefaultStylesTab *page, KateSchemaConfigColorTab *colorTab);
-    ~KateSchemaConfigHighlightTab();
+    ~KateSchemaConfigHighlightTab() override;
 
     void schemaChanged(const QString &schema);
     void reload();
@@ -177,7 +177,7 @@ class KateSchemaConfigPage : public KateConfigPage
 
 public:
     explicit KateSchemaConfigPage(QWidget *parent);
-    virtual ~KateSchemaConfigPage();
+    ~KateSchemaConfigPage() override;
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;

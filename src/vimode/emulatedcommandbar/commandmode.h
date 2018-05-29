@@ -43,7 +43,7 @@ class CommandMode : public ActiveMode
 {
 public:
     CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer);
-    virtual ~CommandMode()
+    ~CommandMode() override
     {
     }
     bool handleKeyPress ( const QKeyEvent* keyEvent ) override;
