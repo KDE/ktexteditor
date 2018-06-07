@@ -56,8 +56,6 @@ public:
     static const QCryptographicHash::Algorithm checksumAlgorithm = QCryptographicHash::Algorithm::Sha512;
 
 private:
-    static const qint64 bufferLength = 4096;
-
     /**
      * Saves file contents using sets permissions.
      */
@@ -65,8 +63,6 @@ private:
                                         const QByteArray &checksum, const uint ownerId, const uint groupId);
 
     static bool moveFile(const QString &sourceFile, const QString &targetFile);
-
-    static void syncToDisk(const int fd);
 
 public Q_SLOTS:
     /**

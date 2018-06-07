@@ -53,39 +53,37 @@ ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
 bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString &targetFile,
                                         const QByteArray &checksum, const uint ownerId, const uint groupId)
 {
-    QFileInfo targetFileInfo(targetFile);
-    if (!QDir::setCurrent(targetFileInfo.dir().path())) {
+    /**
+     * open source file for reading
+     * if not possible, signal error
+     */
+    QFile readFile(sourceFile);
+    if (!readFile.open(QIODevice::ReadOnly)) {
         return false;
     }
 
-    // get information about target file
-    const QString targetFileName = targetFileInfo.fileName();
-    targetFileInfo.setFile(targetFileName);
-    const bool newFile = !targetFileInfo.exists();
+    /**
+     * construct file info for target file
+     * we need to know things like path/exists/permissions
+     */
+    const QFileInfo targetFileInfo(targetFile);
 
-    // open source and target file
-    QFile readFile(sourceFile);
-    //TODO use QSaveFile for saving contents and automatic atomic move on commit() when QSaveFile's security problem
-    // (default temporary file permissions) is fixed
-    //
-    // We will first generate temporary filename and then use it relatively to prevent an attacker
-    // to trick us to write contents to a different file by changing underlying directory.
-    QTemporaryFile tempFile(targetFileName);
+    /**
+     * create temporary file in current directory to be able to later do an atomic rename
+     * we need to pass full path, else QTemporaryFile uses the temporary directory
+     * if not possible, signal error, this catches e.g. a non-existing target directory, too
+     */
+    QTemporaryFile tempFile(targetFileInfo.absolutePath() + QStringLiteral("/secureXXXXXX"));
     if (!tempFile.open()) {
         return false;
     }
-    tempFile.close();
-    QString tempFileName = QFileInfo(tempFile).fileName();
-    tempFile.setFileName(tempFileName);
-    if (!readFile.open(QIODevice::ReadOnly) || !tempFile.open()) {
-        return false;
-    }
-    const int tempFileDescriptor = tempFile.handle();
 
-    // prepare checksum maker
+    /**
+     * copy contents + do checksumming
+     * if not possible, signal error
+     */
     QCryptographicHash cryptographicHash(checksumAlgorithm);
-
-    // copy contents
+    const qint64 bufferLength = 4096;
     char buffer[bufferLength];
     qint64 read = -1;
     while ((read = readFile.read(buffer, bufferLength)) > 0) {
@@ -95,30 +93,43 @@ bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString
         }
     }
 
-    // check that copying was successful and checksum matched
-    QByteArray localChecksum = cryptographicHash.result();
-    if (read == -1 || localChecksum != checksum || !tempFile.flush()) {
+    /**
+     * check that copying was successful and checksum matched
+     * we need to flush the file, as QTemporaryFile keeps the handle open
+     * and we later do things like renaming of the file!
+     * if not possible, signal error
+     */
+    if ((read == -1) || (cryptographicHash.result() != checksum) || !tempFile.flush()) {
         return false;
     }
 
-    tempFile.close();
-
-    if (newFile) {
+    /**
+     * try to preserve the permissions
+     */
+    if (!targetFileInfo.exists()) {
         // ensure new file is readable by anyone
         tempFile.setPermissions(tempFile.permissions() | QFile::Permission::ReadGroup | QFile::Permission::ReadOther);
     } else {
         // ensure the same file permissions
         tempFile.setPermissions(targetFileInfo.permissions());
+
         // ensure file has the same owner and group as before
-        setOwner(tempFileDescriptor, ownerId, groupId);
+        setOwner(tempFile.handle(), ownerId, groupId);
     }
 
-    // rename temporary file to the target file
-    if (moveFile(tempFileName, targetFileName)) {
+    /**
+     * try to (atomic) rename temporary file to the target file
+     */
+    if (moveFile(tempFile.fileName(), targetFileInfo.filePath())) {
         // temporary file was renamed, there is nothing to remove anymore
         tempFile.setAutoRemove(false);
         return true;
     }
+
+    /**
+     * we failed
+     * QTemporaryFile will handle cleanup
+     */
     return false;
 }
 
@@ -141,28 +152,10 @@ bool SecureTextBuffer::moveFile(const QString &sourceFile, const QString &target
 {
 #if !defined(Q_OS_WIN) && !defined(Q_OS_ANDROID)
     const int result = std::rename(QFile::encodeName(sourceFile).constData(), QFile::encodeName(targetFile).constData());
-    if (result == 0) {
-        syncToDisk(QFile(targetFile).handle());
-        return true;
-    }
-    return false;
+    return (result == 0);
 #else
     // use racy fallback for windows
     QFile::remove(targetFile);
     return QFile::rename(sourceFile, targetFile);
 #endif
 }
-
-void SecureTextBuffer::syncToDisk(const int fd)
-{
-#ifndef Q_OS_WIN
-#if HAVE_FDATASYNC
-    fdatasync(fd);
-#else
-    fsync(fd);
-#endif
-#else
-    // no-op for windows
-#endif
-}
-
