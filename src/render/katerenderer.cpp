@@ -812,6 +812,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
 
             paint.save();
+            paint.setRenderHint(QPainter::Antialiasing, false);
             switch (style) {
             case Line :
                 paint.setPen(QPen(color, caretWidth));
