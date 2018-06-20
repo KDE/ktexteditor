@@ -1260,6 +1260,7 @@ KateViewConfig::KateViewConfig()
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet (false),
     m_showWordCountSet(false),
+    m_showLinesCountSet(false),
     m_autoBracketsSet(false),
     m_backspaceRemoveComposedSet(false)
 
@@ -1351,6 +1352,7 @@ const char KEY_WORD_COMPLETION_REMOVE_TAIL[] = "Word Completion Remove Tail";
 const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
 const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
 const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
+const char KEY_SHOW_LINES_COUNT[] = "Show Lines Count";
 const char KEY_SHOW_WORD_COUNT[] = "Show Word Count";
 const char KEY_AUTO_BRACKETS[] = "Auto Brackets";
 const char KEY_BACKSPACE_REMOVE_COMPOSED[] = "Backspace Remove Composed Characters";
@@ -1413,6 +1415,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setSmartCopyCut(config.readEntry(KEY_SMART_COPY_CUT, false));
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
     setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
+    setShowLinesCount(config.readEntry(KEY_SHOW_LINES_COUNT, false));
     setShowWordCount(config.readEntry(KEY_SHOW_WORD_COUNT, false));
     setAutoBrackets(config.readEntry(KEY_AUTO_BRACKETS, false));
 
@@ -1477,6 +1480,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
     config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
 
+    config.writeEntry(KEY_SHOW_LINES_COUNT, showLinesCount());
     config.writeEntry(KEY_SHOW_WORD_COUNT, showWordCount());
     config.writeEntry(KEY_AUTO_BRACKETS, autoBrackets());
 
@@ -2241,6 +2245,27 @@ void KateViewConfig::setShowWordCount(bool on)
     configStart();
     m_showWordCountSet = true;
     m_showWordCount = on;
+    configEnd();
+}
+
+bool KateViewConfig::showLinesCount()
+{
+    if (m_showLinesCountSet || isGlobal()) {
+        return m_showLinesCount;
+    }
+
+    return s_global->showLinesCount();
+}
+
+void KateViewConfig::setShowLinesCount(bool on)
+{
+    if (m_showLinesCountSet && m_showLinesCount == on) {
+        return;
+    }
+
+    configStart();
+    m_showLinesCountSet = true;
+    m_showLinesCount = on;
     configEnd();
 }
 

@@ -679,6 +679,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     connect(textareaUi->chkAnimateBracketMatching, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkFoldFirstLine,  SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowWordCount,  SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkShowLinesCount, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
 
     connect(bordersUi->chkIconBorder, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMarks, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
@@ -737,6 +738,7 @@ void KateViewDefaultsConfig::apply()
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
     KateViewConfig::global()->setFoldFirstLine(textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
+    KateViewConfig::global()->setShowLinesCount(textareaUi->chkShowLinesCount->isChecked());
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -768,6 +770,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
     textareaUi->chkFoldFirstLine->setChecked(KateViewConfig::global()->foldFirstLine());
     textareaUi->chkShowWordCount->setChecked(KateViewConfig::global()->showWordCount());
+    textareaUi->chkShowLinesCount->setChecked(KateViewConfig::global()->showLinesCount());
 }
 
 void KateViewDefaultsConfig::reset()
