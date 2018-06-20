@@ -72,6 +72,7 @@ public Q_SLOTS:
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
+    void contextMenuEvent(QContextMenuEvent *event) override;
 
 private:
     KTextEditor::ViewPrivate *const m_view;
@@ -104,6 +105,8 @@ public Q_SLOTS:
     void slotTabGroup(QAction*);
     void slotIndentGroup(QAction*);
     void slotIndentTabMode(QAction*);
+    void toggleShowLines(bool checked);
+    void toggleShowWords(bool checked);
 };
 
 #endif

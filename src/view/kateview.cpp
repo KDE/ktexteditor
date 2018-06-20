@@ -1864,6 +1864,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_viewInternal->cache()->clear();
     tagAll();
     updateView(true);
+    m_statusBar->updateStatus();
 
     emit configChanged();
 }
