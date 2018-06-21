@@ -1860,11 +1860,15 @@ void KTextEditor::ViewPrivate::updateConfig()
     m_cut->setEnabled(m_doc->isReadWrite() && (selection() || m_config->smartCopyCut()));
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
 
+    // if not disabled, update status bar
+    if (m_statusBar) {
+        m_statusBar->updateStatus();
+    }
+
     // now redraw...
     m_viewInternal->cache()->clear();
     tagAll();
     updateView(true);
-    m_statusBar->updateStatus();
 
     emit configChanged();
 }
