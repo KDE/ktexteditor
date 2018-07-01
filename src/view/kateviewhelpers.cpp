@@ -145,7 +145,7 @@ QLayoutItem *KateMessageLayout::takeAt(int index)
         ItemWrapper *layoutStruct = m_items.takeAt(index);
         return layoutStruct->item;
     }
-    return 0;
+    return nullptr;
 }
 
 void KateMessageLayout::add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos)
