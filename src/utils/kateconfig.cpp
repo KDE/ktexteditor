@@ -2227,7 +2227,7 @@ void KateViewConfig::setFoldFirstLine(bool on)
     configEnd();
 }
 
-bool KateViewConfig::showWordCount()
+bool KateViewConfig::showWordCount() const
 {
     if (m_showWordCountSet || isGlobal()) {
         return m_showWordCount;
@@ -2248,7 +2248,7 @@ void KateViewConfig::setShowWordCount(bool on)
     configEnd();
 }
 
-bool KateViewConfig::showLinesCount()
+bool KateViewConfig::showLinesCount() const
 {
     if (m_showLinesCountSet || isGlobal()) {
         return m_showLinesCount;

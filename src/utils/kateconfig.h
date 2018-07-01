@@ -569,10 +569,10 @@ public:
     bool foldFirstLine() const;
     void setFoldFirstLine(bool on);
 
-    bool showWordCount();
+    bool showWordCount() const;
     void setShowWordCount(bool on);
 
-    bool showLinesCount();
+    bool showLinesCount() const;
     void setShowLinesCount(bool on);
 
     bool autoBrackets() const;
