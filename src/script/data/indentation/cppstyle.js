@@ -2080,7 +2080,8 @@ function tryStringLiteral(cursor, ch)
     var line = cursor.line;
     var column = cursor.column;
 
-    if (isComment(line, column - 2))                        // Do nothing for comments
+    // Do nothing for comments
+    if (isComment(line, column - 2))
         return;
 
     // First of all we have to determinate where we are:
@@ -2089,12 +2090,30 @@ function tryStringLiteral(cursor, ch)
 
     // Check if the '"' is a very first char on a line
     var new_string_just_started;
-    if (column < 2)
+    var raw_string;
+    if (column < 2) {
         // Yes, then we have to look to the last char of the previous line
         new_string_just_started = !(line != 0 && isString(line - 1, document.lastColumn(line - 1)));
-    else
+    } else {
         // Ok, just check attribute of the char right before '"' (special case for R"" raw string literals)
-        new_string_just_started = !isString(line, column - 2) || (ch == '"' && document.charAt(line, column - 2) == 'R');
+        new_string_just_started = !isString(line, column - 2);
+        if (!new_string_just_started && ch == '"') {
+            // we need to scan backwards before R", [uUL]R" or u8R"
+            var stringEnd;
+            if (column >= 4 && document.charAt(line, column - 2) == 'R' && document.charAt(line, column - 3) == '8' && document.charAt(line, column - 4) == 'u') {
+                raw_string = true;
+                stringEnd = 5;
+            } else if (column >= 3 && document.charAt(line, column - 2) == 'R' && (document.charAt(line, column - 3) == 'u' || document.charAt(line, column - 3) == 'U' || document.charAt(line, column - 3) == 'L')) {
+                raw_string = true;
+                stringEnd = 4;
+            } else if (column >= 2 && document.charAt(line, column - 2) == 'R') {
+                raw_string = true;
+                stringEnd = 3;
+            }
+            if (raw_string)
+                new_string_just_started = (column >= stringEnd) ? !isString(line, column - stringEnd) : !(line != 0 && isString(line - 1, document.lastColumn(line - 1)));
+        }
+    }
 
     // TODO Add a space after possible operator right before just
     // started string literal...
@@ -2113,7 +2132,7 @@ function tryStringLiteral(cursor, ch)
         if (need_closing_quote)
         {
             // Check for 'R' right before '"'
-            if (ch == '"' && document.charAt(line, column - 2) == 'R')
+            if (raw_string)
             {
                 // Yeah, looks like a raw string literal
                 /// \todo Make delimiter configurable... HOW?
