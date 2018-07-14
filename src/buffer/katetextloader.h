@@ -104,12 +104,12 @@ public:
         m_converterState = new QTextCodec::ConverterState(QTextCodec::ConvertInvalidToNull);
         m_bomFound = false;
         m_firstRead = true;
-        
+
         // init the hash with the git header
         const QString header = QStringLiteral("blob %1").arg(m_fileSize);
         m_digest.reset();
         m_digest.addData(header.toLatin1() + '\0');
-        
+
         // if already opened, close the file...
         if (m_file->isOpen()) {
             m_file->close();
@@ -204,7 +204,7 @@ public:
                 if (!m_eof) {
                     // kill the old lines...
                     m_text.remove(0, m_lastLineStart);
-                    
+
                     // try to read new data
                     const int c = m_file->read(m_buffer.data(), m_buffer.size());
 
@@ -212,7 +212,7 @@ public:
                     if (c > 0) {
                         // update hash sum
                         m_digest.addData(m_buffer.data(), c);
-                    
+
                         // detect byte order marks & codec for byte order marks on first read
                         int bomBytes = 0;
                         if (m_firstRead) {
@@ -250,14 +250,14 @@ public:
                                     /**
                                      * no Unicode BOM found, trigger prober
                                      */
-                                    
+
                                     /**
                                      * first: try to get HTML header encoding
                                      */
                                     if (QTextCodec *codecForHtml = QTextCodec::codecForHtml (m_buffer, nullptr)) {
                                         m_codec = codecForHtml;
                                     }
-                                    
+
                                     /**
                                      * else: use KEncodingProber
                                      */
@@ -286,7 +286,7 @@ public:
 
                         // detect broken encoding
                         for (int i = 0; i < unicode.size(); ++i) {
-                            if (unicode[i] == 0) {
+                            if (unicode.at(i).isNull()) {
                                 encodingError = true;
                                 break;
                             }
