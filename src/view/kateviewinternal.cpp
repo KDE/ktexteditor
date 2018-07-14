@@ -74,7 +74,7 @@ public:
         if (modState == modifier) {
             if (m_lastWheelEvent.isValid()) {
                 const qint64 deltaT = m_lastWheelEvent.elapsed();
-                // Pressing the specified modifier key within 200ms of the previous "unmodified" 
+                // Pressing the specified modifier key within 200ms of the previous "unmodified"
                 // wheelevent is not allowed to toggle on text zooming
                 if (m_lastWheelEventUnmodified && deltaT < 200) {
                     m_ignoreZoom = true;
@@ -3356,6 +3356,7 @@ void KateViewInternal::clear()
     m_cursor.setPosition(0, 0);
     cache()->clear();
     updateView(true);
+    m_lineScroll->updatePixmap();
 }
 
 void KateViewInternal::wheelEvent(QWheelEvent *e)
