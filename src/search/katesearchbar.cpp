@@ -613,23 +613,20 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
 
     }
     if (wrap) {
-        // show message widget when wrapping (if not already present)
-        if (searchDirection == SearchForward && !m_wrappedTopMessage) {
-            const QString msg = i18n("Continuing search from top");
-            m_wrappedTopMessage = new KTextEditor::Message(msg, KTextEditor::Message::Information);
-            m_wrappedTopMessage->setPosition(KTextEditor::Message::TopInView);
-            m_wrappedTopMessage->setAutoHide(2000);
-            m_wrappedTopMessage->setAutoHideMode(KTextEditor::Message::Immediate);
-            m_wrappedTopMessage->setView(m_view);
-            m_view->doc()->postMessage(m_wrappedTopMessage);
-        } else if (searchDirection == SearchBackward && !m_wrappedBottomMessage) {
-            const QString msg = i18n("Continuing search from bottom");
-            m_wrappedBottomMessage = new KTextEditor::Message(msg, KTextEditor::Message::Information);
-            m_wrappedBottomMessage->setPosition(KTextEditor::Message::BottomInView);
-            m_wrappedBottomMessage->setAutoHide(2000);
-            m_wrappedBottomMessage->setAutoHideMode(KTextEditor::Message::Immediate);
-            m_wrappedBottomMessage->setView(m_view);
-            m_view->doc()->postMessage(m_wrappedBottomMessage);
+        // show message widget when wrapping
+        const QIcon icon = searchDirection == SearchForward
+            ? QIcon::fromTheme(QStringLiteral("go-down-search"))
+            : QIcon::fromTheme(QStringLiteral("go-up-search"));
+
+        if (!m_wrappedMessage || m_lastSearchDirection != searchDirection) {
+            m_lastSearchDirection = searchDirection;
+            m_wrappedMessage = new KTextEditor::Message(i18n("Search wrapped"), KTextEditor::Message::Positive);
+            m_wrappedMessage->setIcon(icon);
+            m_wrappedMessage->setPosition(KTextEditor::Message::CenterInView);
+            m_wrappedMessage->setAutoHide(2000);
+            m_wrappedMessage->setAutoHideMode(KTextEditor::Message::Immediate);
+            m_wrappedMessage->setView(m_view);
+            m_view->doc()->postMessage(m_wrappedMessage);
         }
 
         inputRange = m_view->document()->documentRange();

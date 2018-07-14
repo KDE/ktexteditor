@@ -178,8 +178,8 @@ private:
     KateViewConfig *const m_config;
     QList<KTextEditor::MovingRange *> m_hlRanges;
     QPointer<KTextEditor::Message> m_infoMessage;
-    QPointer<KTextEditor::Message> m_wrappedTopMessage;
-    QPointer<KTextEditor::Message> m_wrappedBottomMessage;
+    QPointer<KTextEditor::Message> m_wrappedMessage;
+    SearchDirection m_lastSearchDirection = SearchForward;
 
     // Shared by both dialogs
     QVBoxLayout *const m_layout;
