@@ -134,7 +134,8 @@ void WordCounter::recalculateLines()
     int calculated = 0;
     int i = m_startRecalculationFrom;
 
-    forever {
+    // stay in bounds, vector might be empty, even 0 is too large then
+    while (i < m_countByLine.size()) {
         if (m_countByLine[i] == -1) {
             m_countByLine[i] = countWords(m_document->line(i));
             if (++calculated > MaximumLinesToRecalculate) {
