@@ -19,6 +19,7 @@
 // Boston, MA 02110-1301, USA.
 
 #include "katescript.h"
+#include "katescripteditor.h"
 #include "katescriptdocument.h"
 #include "katescriptview.h"
 #include "katescripthelpers.h"
@@ -37,12 +38,7 @@
 #include <QQmlEngine>
 
 KateScript::KateScript(const QString &urlOrScript, enum InputType inputType)
-    : m_loaded(false)
-    , m_loadSuccessful(false)
-    , m_url(inputType == InputURL ? urlOrScript : QString())
-    , m_engine(nullptr)
-    , m_document(nullptr)
-    , m_view(nullptr)
+    : m_url(inputType == InputURL ? urlOrScript : QString())
     , m_inputType(inputType)
     , m_script(inputType == InputSCRIPT ? urlOrScript : QString())
 {
@@ -52,6 +48,7 @@ KateScript::~KateScript()
 {
     if (m_loadSuccessful) {
         // remove data...
+        delete m_editor;
         delete m_document;
         delete m_view;
         delete m_engine;
@@ -183,6 +180,7 @@ bool KateScript::load()
     }
 
     // AFTER SCRIPT: set the view/document objects as necessary
+    m_engine->globalObject().setProperty(QStringLiteral("editor"), m_engine->newQObject(m_editor = new KateScriptEditor(m_engine)));
     m_engine->globalObject().setProperty(QStringLiteral("document"), m_engine->newQObject(m_document = new KateScriptDocument(m_engine)));
     m_engine->globalObject().setProperty(QStringLiteral("view"), m_engine->newQObject(m_view = new KateScriptView(m_engine)));
 

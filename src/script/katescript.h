@@ -29,6 +29,7 @@ class QJSEngine;
 
 namespace KTextEditor { class ViewPrivate; }
 
+class KateScriptEditor;
 class KateScriptDocument;
 class KateScriptView;
 
@@ -194,10 +195,10 @@ protected:
 
 private:
     /** Whether or not there has been a call to load */
-    bool m_loaded;
+    bool m_loaded = false;
 
     /** Whether or not the script loaded successfully into memory */
-    bool m_loadSuccessful;
+    bool m_loadSuccessful = false;
 
     /** The script's URL */
     QString m_url;
@@ -207,15 +208,16 @@ private:
 
 protected:
     /** The Qt interpreter for this script */
-    QJSEngine *m_engine;
+    QJSEngine *m_engine = nullptr;
 
 private:
     /** general header data */
     KateScriptHeader m_generalHeader;
 
-    /** document/view wrapper objects */
-    KateScriptDocument *m_document;
-    KateScriptView *m_view;
+    /** wrapper objects */
+    KateScriptEditor *m_editor = nullptr;
+    KateScriptDocument *m_document = nullptr;
+    KateScriptView *m_view = nullptr;
 
 private:
     /** if input is script or url**/

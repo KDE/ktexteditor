@@ -99,6 +99,7 @@ script/katescriptmanager.cpp
 script/katescriptaction.cpp
 
 # scripting wrappers
+script/katescripteditor.cpp
 script/katescriptdocument.cpp
 script/katescriptview.cpp
 script/katescripthelpers.cpp
