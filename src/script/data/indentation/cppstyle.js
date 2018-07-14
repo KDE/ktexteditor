@@ -2093,8 +2093,8 @@ function tryStringLiteral(cursor, ch)
         // Yes, then we have to look to the last char of the previous line
         new_string_just_started = !(line != 0 && isString(line - 1, document.lastColumn(line - 1)));
     else
-        // Ok, just check attribute of the char right before '"'
-        new_string_just_started = !isString(line, column - 2);
+        // Ok, just check attribute of the char right before '"' (special case for R"" raw string literals)
+        new_string_just_started = !isString(line, column - 2) || (ch == '"' && document.charAt(line, column - 2) == 'R');
 
     // TODO Add a space after possible operator right before just
     // started string literal...
