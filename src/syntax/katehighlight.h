@@ -22,6 +22,9 @@
 #ifndef __KATE_HIGHLIGHT_H__
 #define __KATE_HIGHLIGHT_H__
 
+#include <KSyntaxHighlighting/AbstractHighlighter>
+#include <KSyntaxHighlighting/FoldingRegion>
+
 #include "katetextline.h"
 #include "kateextendedattribute.h"
 #include "katesyntaxmanager.h"
@@ -131,11 +134,45 @@ typedef QList<KateHlIncludeRule *> KateHlIncludeRules;
 typedef QMap<QString, KateEmbeddedHlInfo> KateEmbeddedHlInfos;
 typedef QMap<KateHlContextModification *, QString> KateHlUnresolvedCtxRefs;
 
-class KateHighlighting
+class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
 {
 public:
     KateHighlighting(const KSyntaxHighlighting::Definition &def);
     ~KateHighlighting();
+
+protected:
+    /**
+     * Reimplement this to apply formats to your output. The provided @p format
+     * is valid for the interval [@p offset, @p offset + @p length).
+     *
+     * @param offset The start column of the interval for which @p format matches
+     * @param length The length of the matching text
+     * @param format The Format that applies to the range [offset, offset + length)
+     *
+     * @note Make sure to set a valid Definition, otherwise the parameter
+     *       @p format is invalid for the entire line passed to highlightLine()
+     *       (cf. Format::isValid()).
+     *
+     * @see applyFolding(), highlightLine()
+     */
+    virtual void applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format) override;
+
+    /**
+     * Reimplement this to apply folding to your output. The provided
+     * FoldingRegion @p region either stars or ends a code folding region in the
+     * interval [@p offset, @p offset + @p length).
+     *
+     * @param offset The start column of the FoldingRegion
+     * @param length The length of the matching text that starts / ends a
+     *       folding region
+     * @param region The FoldingRegion that applies to the range [offset, offset + length)
+     *
+     * @note The FoldingRegion @p region is @e always either of type
+     *       FoldingRegion::Type::Begin or FoldingRegion::Type::End.
+     *
+     * @see applyFormat(), highlightLine(), FoldingRegion
+     */
+    virtual void applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region) override;
 
 private:
     /**

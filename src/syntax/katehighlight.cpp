@@ -94,6 +94,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 
     deliminator = stdDeliminator();
+
+    /**
+     * tell the AbstractHighlighter the definition it shall use
+     */
+    setDefinition(def);
 }
 
 KateHighlighting::~KateHighlighting()
@@ -2289,6 +2294,13 @@ KateHlContext* KateHighlighting::contextForLocation(KTextEditor::DocumentPrivate
     return context;
 }
 
+void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
+{
+}
+
+void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
+{
+}
 
 //END
 
