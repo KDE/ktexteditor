@@ -270,6 +270,13 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     const Kate::TextLine dummy = Kate::TextLine(new Kate::TextLineData());
     const Kate::TextLineData *prevLine = firstLine ? dummy.data() : _prevLine;
 
+    /**
+     * highlight the given line via the abstract highlighter
+     */
+    const KSyntaxHighlighting::State initialState (firstLine ? KSyntaxHighlighting::State() : _prevLine->highlightingState());
+    KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
+    textLine->setHighlightingState(endOfLineState);
+
     int previousLine = -1;
     KateHlContext *context;
 
@@ -617,6 +624,15 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
         cachingItems[i]->haveCache = false;
     }
     cachingItems.clear();
+}
+
+void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
+{
+    qDebug() << "offset" << offset << "length" << length;
+}
+
+void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
+{
 }
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
@@ -2292,14 +2308,6 @@ KateHlContext* KateHighlighting::contextForLocation(KTextEditor::DocumentPrivate
         }
     }
     return context;
-}
-
-void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
-{
-}
-
-void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
-{
 }
 
 //END

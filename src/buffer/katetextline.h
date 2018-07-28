@@ -27,6 +27,8 @@
 
 #include <ktexteditor_export.h>
 
+#include <KSyntaxHighlighting/State>
+
 namespace Kate
 {
 
@@ -383,6 +385,24 @@ public:
     }
 
     /**
+     * context stack
+     * @return context stack
+     */
+    const KSyntaxHighlighting::State &highlightingState() const
+    {
+        return m_highlightingState;
+    }
+
+    /**
+     * Sets the syntax highlight context number
+     * @param val new context array
+     */
+    void setHighlightingState(const KSyntaxHighlighting::State &val)
+    {
+        m_highlightingState = val;
+    }
+
+    /**
      * Add attribute to this line.
      * @param attribute new attribute to append
      */
@@ -466,6 +486,11 @@ private:
      * context stack of this line
      */
     ContextStack m_contextStack;
+
+    /**
+     * current highlighting state
+     */
+    KSyntaxHighlighting::State m_highlightingState;
 
     /**
      * flags of this line
