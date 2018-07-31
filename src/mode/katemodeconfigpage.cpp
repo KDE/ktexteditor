@@ -27,7 +27,6 @@
 #include "kateglobal.h"
 #include "kateautoindent.h"
 #include "katesyntaxmanager.h"
-#include "katesyntaxdocument.h"
 
 #include "ui_filetypeconfigwidget.h"
 

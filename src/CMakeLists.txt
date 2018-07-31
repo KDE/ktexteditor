@@ -141,7 +141,6 @@ syntax/katesyntaxmanager.cpp
 syntax/katehighlight.cpp
 syntax/katehighlighthelpers.cpp
 syntax/katehighlightmenu.cpp
-syntax/katesyntaxdocument.cpp
 syntax/katehighlightingcmds.cpp
 
 # view stuff (THE view and its helpers)

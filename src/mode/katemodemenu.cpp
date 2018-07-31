@@ -26,7 +26,6 @@
 #include "kateview.h"
 #include "kateglobal.h"
 #include "katesyntaxmanager.h"
-#include "katesyntaxdocument.h"
 #include "katepartdebug.h"
 //END Includes
 
