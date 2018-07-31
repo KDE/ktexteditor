@@ -23,7 +23,9 @@
 #define __KATE_HIGHLIGHT_H__
 
 #include <KSyntaxHighlighting/AbstractHighlighter>
+#include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/FoldingRegion>
+#include <KSyntaxHighlighting/Format>
 
 #include "katetextline.h"
 #include "kateextendedattribute.h"
@@ -42,6 +44,8 @@
 #include <QPointer>
 #include <QDate>
 #include <QLinkedList>
+
+#include <unordered_map>
 
 class KConfig;
 
@@ -491,6 +495,7 @@ private:
      */
     QMap<int, QString> m_hlIndex;
     QMap<int, QString> m_ctxIndex;
+
 public:
     inline bool foldingIndentationSensitive()
     {
@@ -500,6 +505,17 @@ public:
     {
         return folding;
     }
+
+    /**
+     * all formats for the highlighting definition of this highlighting
+     * includes included formats
+     */
+    QVector<KSyntaxHighlighting::Format> m_formats;
+
+    /**
+     * mapping of format id => index into m_formats
+     */
+    std::unordered_map<quint16, int> m_formatsIdToIndex;
 };
 
 #endif

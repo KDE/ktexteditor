@@ -99,6 +99,19 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * tell the AbstractHighlighter the definition it shall use
      */
     setDefinition(def);
+
+    /**
+     * create the format => attributes mapping
+     */
+    if (def.isValid()) {
+        for (const auto & def : definition().includedDefinitions()) {
+            for (const auto & format : def.formats()) {
+                if (m_formatsIdToIndex.insert(std::make_pair(format.id(), m_formats.size())).second) {
+                    m_formats.push_back(format);
+                }
+            }
+        }
+    }
 }
 
 KateHighlighting::~KateHighlighting()
@@ -2180,33 +2193,8 @@ int KateHighlighting::addToContextList(const QString &ident, int ctx0)
 
 void KateHighlighting::clearAttributeArrays()
 {
-    QMutableHashIterator< QString, QList<KTextEditor::Attribute::Ptr> > it = m_attributeArrays;
-    while (it.hasNext()) {
-        it.next();
-
-        // k, schema correct, let create the data
-        KateAttributeList defaultStyleList;
-
-        KateHlManager::self()->getDefaults(it.key(), defaultStyleList);
-
-        QList<KTextEditor::Attribute::Ptr> itemDataList;
-        getKateExtendedAttributeList(it.key(), itemDataList);
-
-        uint nAttribs = itemDataList.count();
-        QList<KTextEditor::Attribute::Ptr> &array = it.value();
-        array.clear();
-
-        for (uint z = 0; z < nAttribs; z++) {
-            KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
-
-            if (itemData && itemData->hasAnyProperty()) {
-                *newAttribute += *itemData;
-            }
-
-            array.append(newAttribute);
-        }
-    }
+    // just clear the hashed attributes, we create them lazy again
+    m_attributeArrays.clear();
 }
 
 QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
@@ -2216,29 +2204,31 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
         return m_attributeArrays[schema];
     }
 
-    // k, schema correct, let create the data
+    /**
+     * create list of all known things
+     */
     QList<KTextEditor::Attribute::Ptr> array;
-    KateAttributeList defaultStyleList;
-
-    KateHlManager::self()->getDefaults(schema, defaultStyleList);
-
-    QList<KTextEditor::Attribute::Ptr> itemDataList;
-    getKateExtendedAttributeList(schema, itemDataList);
-
-    uint nAttribs = itemDataList.count();
-    for (uint z = 0; z < nAttribs; z++) {
-        KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
-
-        if (itemData && itemData->hasAnyProperty()) {
-            *newAttribute += *itemData;
-        }
-
+    if (m_formats.empty()) {
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(QLatin1String("Normal"), KTextEditor::dsNormal));
         array.append(newAttribute);
+    } else {
+        for (const auto &format : m_formats) {
+            /**
+             * convert from KSyntaxHighlighting => KTextEditor type
+             * special handle non-1:1 things
+             */
+            KTextEditor::DefaultStyle defaultStyle = static_cast<KTextEditor::DefaultStyle>(format.textStyle());
+            if (format.textStyle() == KSyntaxHighlighting::Theme::Error)
+                defaultStyle = KTextEditor::dsError;
+            else if (format.textStyle() == KSyntaxHighlighting::Theme::Others)
+                defaultStyle = KTextEditor::dsOthers;
+
+            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(format.name(), defaultStyle));
+
+            array.append(newAttribute);
+        }
     }
-
     m_attributeArrays.insert(schema, array);
-
     return array;
 }
 
