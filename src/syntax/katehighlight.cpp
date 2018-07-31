@@ -100,10 +100,10 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      */
     setDefinition(def);
 
-    /**
-     * create the format => attributes mapping
-     */
     if (def.isValid()) {
+        /**
+         * create the format => attributes mapping
+         */
         for (const auto & def : definition().includedDefinitions()) {
             for (const auto & format : def.formats()) {
                 if (m_formatsIdToIndex.insert(std::make_pair(format.id(), m_formats.size())).second) {
@@ -2214,6 +2214,11 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
     } else {
         for (const auto &format : m_formats) {
             /**
+             * FIXME: atm we just set some theme here for later color generation
+             */
+            setTheme(KateHlManager::self()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
+
+            /**
              * convert from KSyntaxHighlighting => KTextEditor type
              * special handle non-1:1 things
              */
@@ -2224,6 +2229,20 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
                 defaultStyle = KTextEditor::dsOthers;
 
             KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(format.name(), defaultStyle));
+
+            if (format.hasTextColor(theme()))
+                newAttribute->setForeground(format.textColor(theme()));
+            if (format.hasBackgroundColor(theme()))
+                newAttribute->setBackground(format.backgroundColor(theme()));
+
+            if (format.isBold(theme()))
+                newAttribute->setFontWeight(QFont::Bold);
+            if (format.isItalic(theme()))
+                newAttribute->setFontItalic(true);
+            if (format.isUnderline(theme()))
+                newAttribute->setFontUnderline(true);
+            if (format.isStrikeThrough(theme()))
+                newAttribute->setFontStrikeOut(true);
 
             array.append(newAttribute);
         }

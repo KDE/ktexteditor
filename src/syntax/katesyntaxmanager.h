@@ -98,7 +98,7 @@ public:
 
     // be carefull: all documents hl should be invalidated after having successfully called this method!
     bool resetDynamicCtxs();
-    
+
     void reload();
 
 Q_SIGNALS:
@@ -133,6 +133,15 @@ public:
     QVector<KSyntaxHighlighting::Definition> modeList() const
     {
         return m_repository.definitions();
+    }
+
+    /**
+     * Get repository.
+     * @return repository
+     */
+    KSyntaxHighlighting::Repository &repository()
+    {
+        return m_repository;
     }
 
 private:
