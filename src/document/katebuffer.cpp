@@ -371,40 +371,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
     t.start();
     qCDebug(LOG_KTE) << "HIGHLIGHTED START --- NEED HL, LINESTART: " << startLine << " LINEEND: " << endLine;
     qCDebug(LOG_KTE) << "HL UNTIL LINE: " << m_lineHighlighted;
-    qCDebug(LOG_KTE) << "HL DYN COUNT: " << KateHlManager::self()->countDynamicCtxs() << " MAX: " << m_maxDynamicContexts;
 #endif
-
-    // see if there are too many dynamic contexts; if yes, invalidate HL of all documents
-    if (KateHlManager::self()->countDynamicCtxs() >= m_maxDynamicContexts) {
-        {
-            if (KateHlManager::self()->resetDynamicCtxs()) {
-#ifdef BUFFER_DEBUGGING
-                qCDebug(LOG_KTE) << "HL invalidated - too many dynamic contexts ( >= " << m_maxDynamicContexts << ")";
-#endif
-
-                // avoid recursive invalidation
-                KateHlManager::self()->setForceNoDCReset(true);
-
-                foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
-                    doc->makeAttribs();
-                }
-
-                // doHighlight *shall* do his work. After invalidation, some highlight has
-                // been recalculated, but *maybe not* until endLine ! So we shall force it manually...
-                doHighlight(m_lineHighlighted, endLine, false);
-                m_lineHighlighted = endLine;
-
-                KateHlManager::self()->setForceNoDCReset(false);
-                return;
-            } else {
-                m_maxDynamicContexts *= 2;
-
-#ifdef BUFFER_DEBUGGING
-                qCDebug(LOG_KTE) << "New dynamic contexts limit: " << m_maxDynamicContexts;
-#endif
-            }
-        }
-    }
 
     // if possible get previous line, otherwise create 0 line.
     Kate::TextLine prevLine = (startLine >= 1) ? plainLine(startLine - 1) : Kate::TextLine();

@@ -687,10 +687,6 @@ bool KateHlManager::resetDynamicCtxs()
         return false;
     }
 
-    foreach (KateHighlighting *hl, hlList) {
-        hl->dropDynamicContexts();
-    }
-
     dynamicCtxsCount = 0;
     lastCtxsReset.start();
 

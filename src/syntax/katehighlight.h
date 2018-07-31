@@ -344,9 +344,6 @@ public:
         return noHl;
     }
 
-    // be carefull: all documents hl should be invalidated after calling this method!
-    void dropDynamicContexts();
-
     QString indentation()
     {
         return m_indentation;
@@ -375,9 +372,6 @@ private:
 
 private:
     void init();
-    void makeContextList();
-    void handleKateHlIncludeRules();
-    void handleKateHlIncludeRulesRecursive(int index, KateHlIncludeRules *list);
     int addToContextList(const QString &ident, int ctx0);
     void addToKateExtendedAttributeList();
     void createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list);

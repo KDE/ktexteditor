@@ -87,10 +87,6 @@ public:
     {
         ++dynamicCtxsCount;
     }
-    int countDynamicCtxs()
-    {
-        return dynamicCtxsCount;
-    }
     void setForceNoDCReset(bool b)
     {
         forceNoDCReset = b;

@@ -106,8 +106,14 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     if (def.isValid()) {
         /**
          * create the format => attributes mapping
+         * collect embedded highlightings, too
          */
         for (const auto & includedDefinition : definition().includedDefinitions()) {
+            // embeddedHighlightingModes should not contain the base highlighting
+            if (includedDefinition.name() != iName)
+                embeddedHighlightingModes.push_back(includedDefinition.name());
+
+            // collect formats
             for (const auto & format : includedDefinition.formats()) {
                 if (m_formatsIdToIndex.insert(std::make_pair(format.id(), m_formats.size())).second) {
                     m_formats.push_back(format);
@@ -136,27 +142,6 @@ void KateHighlighting::cleanup()
     m_attributeArrays.clear();
 
     internalIDList.clear();
-}
-
-/**
- * Drop all dynamic contexts. Shall be called with extreme care, and shall be immediately
- * followed by a full HL invalidation.
- */
-void KateHighlighting::dropDynamicContexts()
-{
-    if (refCount == 0) { // unused highlighting - nothing to drop
-        return;
-    }
-
-    if (noHl) { // "normal texts" highlighting - no context list
-        return;
-    }
-
-    qDeleteAll(m_contexts.begin() + base_startctx, m_contexts.end()); // delete dynamic contexts (after base_startctx)
-    m_contexts.resize(base_startctx);
-
-    dynamicCtxs.clear();
-    startctx = base_startctx;
 }
 
 void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
@@ -380,28 +365,24 @@ void KateHighlighting::init()
     // shall be only called if clean!
     Q_ASSERT(m_contexts.empty());
 
-    // try to create contexts
-    makeContextList();
-
     // fixup internal id list, if empty
     if (internalIDList.isEmpty()) {
         internalIDList.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
     }
 
     // something went wrong or no hl, fill something in
-    if (noHl) {
-        iHidden = false;
-        m_additionalData.insert(QStringLiteral("none"), new HighlightPropertyBag);
-        m_additionalData[QStringLiteral("none")]->deliminator = stdDeliminator();
-        m_additionalData[QStringLiteral("none")]->wordWrapDeliminator = stdDeliminator();
-        m_hlIndex[0] = QStringLiteral("none");
-        m_ctxIndex[0] = QStringLiteral("none");
+    // FIXME: we do this always ATM
+    iHidden = false;
+    m_additionalData.insert(QStringLiteral("none"), new HighlightPropertyBag);
+    m_additionalData[QStringLiteral("none")]->deliminator = stdDeliminator();
+    m_additionalData[QStringLiteral("none")]->wordWrapDeliminator = stdDeliminator();
+    m_hlIndex[0] = QStringLiteral("none");
+    m_ctxIndex[0] = QStringLiteral("none");
 
-        // create one dummy context!
-        m_contexts.push_back(new KateHlContext(identifier, 0,
-            KateHlContextModification(), false, KateHlContextModification(),
-            false, false, false, KateHlContextModification()));
-    }
+    // create one dummy context!
+    m_contexts.push_back(new KateHlContext(identifier, 0,
+        KateHlContextModification(), false, KateHlContextModification(),
+        false, false, false, KateHlContextModification()));
 
     // clear domdocument cache
     KateHlManager::self()->syntax.clearCache();
@@ -737,32 +718,14 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
 
 QString KateHighlighting::hlKeyForContext(int i) const
 {
-    int k = 0;
-    QMap<int, QString>::const_iterator it = m_ctxIndex.constEnd();
-    while (it != m_ctxIndex.constBegin()) {
-        --it;
-        k = it.key();
-        if (i >= k) {
-            break;
-        }
-    }
-    return it.value();
+    // FIXME
+    return QStringLiteral("none");
 }
 
 QString KateHighlighting::hlKeyForAttrib(int i) const
 {
-    // find entry. This is faster than QMap::find. m_hlIndex always has an entry
-    // for key '0' (it is "none"), so the result is always valid.
-    int k = 0;
-    QMap<int, QString>::const_iterator it = m_hlIndex.constEnd();
-    while (it != m_hlIndex.constBegin()) {
-        --it;
-        k = it.key();
-        if (i >= k) {
-            break;
-        }
-    }
-    return it.value();
+    // FIXME
+    return QStringLiteral("none");
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
@@ -1199,292 +1162,6 @@ KateHlContextModification KateHighlighting::getContextModificationFromString(QSt
     }
 
     return KateHlContextModification(context, pops);
-}
-
-/**
- * The most important initialization function for each highlighting. It's called
- * each time a document gets a highlighting style assigned. parses the xml file
- * and creates a corresponding internal structure
- */
-void KateHighlighting::makeContextList()
-{
-    if (noHl) { // if this a highlighting for "normal texts" only, tere is no need for a context list creation
-        return;
-    }
-
-    embeddedHls.clear();
-    embeddedHighlightingModes.clear();
-    unresolvedContextReferences.clear();
-    RegionList.clear();
-    ContextNameList.clear();
-
-    // prepare list creation. To reuse as much code as possible handle this
-    // highlighting the same way as embedded onces
-    embeddedHls.insert(iName, KateEmbeddedHlInfo());
-
-    bool something_changed;
-    // the context "0" id is 0 for this hl, all embedded context "0"s have offsets
-    startctx = base_startctx = 0;
-    // inform everybody that we are building the highlighting contexts and itemlists
-    building = true;
-
-    do {
-#ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_KTE) << "**************** Outer loop in make ContextList";
-        qCDebug(LOG_KTE) << "**************** Hl List count:" << embeddedHls.count();
-#endif
-
-        something_changed = false; //assume all "embedded" hls have already been loaded
-        for (KateEmbeddedHlInfos::iterator it = embeddedHls.begin(); it != embeddedHls.end(); ++it) {
-            if (!it.value().loaded) { // we found one, we still have to load
-#ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_KTE) << "**************** Inner loop in make ContextList";
-#endif
-
-                QString identifierToUse;
-
-#ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_KTE) << "Trying to open highlighting definition file: " << it.key();
-#endif
-
-                if (iName == it.key()) { // the own identifier is known
-                    identifierToUse = identifier;
-                } else {             // all others have to be looked up
-                    identifierToUse = KateHlManager::self()->identifierForName(it.key());
-                }
-
-#ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_KTE) << "Location is:" << identifierToUse;
-#endif
-
-                if (identifierToUse.isEmpty()) {
-                    qCWarning(LOG_KTE) << "Unknown highlighting description referenced:" << it.key() << "in" << identifier;
-                }
-
-                buildPrefix = it.key() + QLatin1Char(':'); // attribute names get prefixed by the names
-                // of the highlighting definitions they belong to
-
-#ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_KTE) << "setting (" << it.key() << ") to loaded";
-#endif
-
-                //mark hl as loaded
-                it = embeddedHls.insert(it.key(), KateEmbeddedHlInfo(true, startctx));
-                //set class member for context 0 offset, so we don't need to pass it around
-                buildContext0Offset = startctx;
-                //parse one hl definition file
-                startctx = addToContextList(identifierToUse, startctx);
-
-                if (noHl) {
-                    return;    // an error occurred
-                }
-
-                base_startctx = startctx;
-                something_changed = true; // something has been loaded
-            }
-        }
-    } while (something_changed);  // as long as there has been another file parsed
-    // repeat everything, there could be newly added embedded hls.
-
-#ifdef HIGHLIGHTING_DEBUG
-    // at this point all needed highlighing (sub)definitions are loaded. It's time
-    // to resolve cross file  references (if there are any)#
-    qCDebug(LOG_KTE) << "Unresolved contexts, which need attention: " << unresolvedContextReferences.count();
-#endif
-
-    //optimize this a littlebit
-    for (KateHlUnresolvedCtxRefs::iterator unresIt = unresolvedContextReferences.begin();
-            unresIt != unresolvedContextReferences.end();
-            ++unresIt) {
-        QString incCtx = unresIt.value();
-
-#ifdef HIGHLIGHTING_DEBUG
-        qCDebug(LOG_KTE) << "Context " << incCtx << " is unresolved";
-#endif
-
-        // only resolve '##Name' contexts here; handleKateHlIncludeRules() can figure
-        // out 'Name##Name'-style inclusions, but we screw it up
-        if (incCtx.endsWith(QLatin1Char(':'))) {
-#ifdef HIGHLIGHTING_DEBUG
-            qCDebug(LOG_KTE) << "Looking up context0 for ruleset " << incCtx;
-#endif
-
-            incCtx = incCtx.left(incCtx.length() - 1);
-            //try to find the context0 id for a given unresolvedReference
-            KateEmbeddedHlInfos::const_iterator hlIt = embeddedHls.constFind(incCtx);
-            if (hlIt != embeddedHls.constEnd()) {
-                *(unresIt.key()) = hlIt.value().context0;
-            }
-        }
-    }
-
-    // eventually handle KateHlIncludeRules items, if they exist.
-    // This has to be done after the cross file references, because it is allowed
-    // to include the context0 from a different definition, than the one the rule
-    // belongs to
-    handleKateHlIncludeRules();
-
-    embeddedHighlightingModes = embeddedHls.keys();
-    embeddedHighlightingModes.removeOne(iName);
-
-    embeddedHls.clear(); //save some memory.
-    unresolvedContextReferences.clear(); //save some memory
-    RegionList.clear();  // I think you get the idea ;)
-    ContextNameList.clear();
-
-    // if there have been errors show them
-    if (!errorsAndWarnings.isEmpty())
-        KMessageBox::detailedSorry(QApplication::activeWindow(), i18n(
-                                       "There were warning(s) and/or error(s) while parsing the syntax "
-                                       "highlighting configuration."),
-                                   errorsAndWarnings, i18n("Kate Syntax Highlighting Parser"));
-
-    // we have finished
-    building = false;
-
-    Q_ASSERT(m_contexts.size() > 0);
-}
-
-void KateHighlighting::handleKateHlIncludeRules()
-{
-    // if there are noe include rules to take care of, just return
-#ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_KTE) << "KateHlIncludeRules, which need attention: " << includeRules.size();
-#endif
-
-    if (includeRules.isEmpty()) {
-        return;
-    }
-
-    buildPrefix = QString();
-    QString dummy;
-
-    // By now the context0 references are resolved, now more or less only inner
-    // file references are resolved. If we decide that arbitrary inclusion is
-    // needed, this doesn't need to be changed, only the addToContextList
-    // method.
-
-    //resolove context names
-    for (KateHlIncludeRules::iterator it = includeRules.begin(); it != includeRules.end();) {
-        if ((*it)->incCtx.newContext == -1) { // context unresolved ?
-
-            if ((*it)->incCtxN.isEmpty()) {
-                // no context name given, and no valid context id set, so this item is
-                // going to be removed
-                KateHlIncludeRules::iterator it1 = it;
-                ++it1;
-                delete(*it);
-                includeRules.erase(it);
-                it = it1;
-            } else {
-                // resolve name to id
-                (*it)->incCtx = getContextModificationFromString(&ContextNameList, (*it)->incCtxN, dummy).newContext;
-
-#ifdef HIGHLIGHTING_DEBUG
-                qCDebug(LOG_KTE) << "Resolved " << (*it)->incCtxN << " to " << (*it)->incCtx.newContext << " for include rule";
-#endif
-
-                // It would be good to look here somehow, if the result is valid
-            }
-        } else {
-            ++it;    //nothing to do, already resolved (by the cross definition reference resolver)
-        }
-    }
-
-    // now that all KateHlIncludeRule items should be valid and completely resolved,
-    // do the real inclusion of the rules.
-    // recursiveness is needed, because context 0 could include context 1, which
-    // itself includes context 2 and so on.
-    //  In that case we have to handle context 2 first, then 1, 0
-    //TODO: catch circular references: eg 0->1->2->3->1
-    for (int i = 0; i < includeRules.count(); i++) {
-        handleKateHlIncludeRulesRecursive(i, &includeRules);
-    }
-    qDeleteAll(includeRules);
-    includeRules.clear();
-}
-
-void KateHighlighting::handleKateHlIncludeRulesRecursive(int index, KateHlIncludeRules *list)
-{
-    if (index < 0 || index >= list->count()) {
-        return;    //invalid iterator, shouldn't happen, but better have a rule prepared ;)
-    }
-
-    int index1 = index;
-    int ctx = list->at(index1)->ctx;
-
-    if (ctx == -1) {
-        return;    // skip already processed entries
-    }
-
-    // find the last entry for the given context in the KateHlIncludeRules list
-    // this is need if one context includes more than one. This saves us from
-    // updating all insert positions:
-    // eg: context 0:
-    // pos 3 - include context 2
-    // pos 5 - include context 3
-    // During the building of the includeRules list the items are inserted in
-    // ascending order, now we need it descending to make our life easier.
-    while (index < list->count() && list->at(index)->ctx == ctx) {
-        index1 = index;
-        ++index;
-    }
-
-    // iterate over each include rule for the context the function has been called for.
-    while (index1 >= 0 && index1 < list->count() && list->at(index1)->ctx == ctx) {
-        KateHlContextModification ctx1 = list->at(index1)->incCtx;
-
-        //let's see, if the included context includes other contexts
-        for (int index2 = 0; index2 < list->count(); ++index2) {
-            if (list->at(index2)->ctx == ctx1.newContext) {
-                if (index2 == index1) {
-                    // prevent accidental infinite recursion
-                    qCWarning(LOG_KTE) << "infinite recursion in IncludeRules in language file for " << iName << "in context" << list->at(index1)->incCtxN;
-                    continue;
-                }
-                //yes it does, so first handle that include rules, since we want to
-                // include those subincludes too
-                handleKateHlIncludeRulesRecursive(index2, list);
-                break;
-            }
-        }
-
-        // if the context we want to include had sub includes, they are already inserted there.
-        KateHlContext *dest = m_contexts[ctx];
-        KateHlContext *src = m_contexts[ctx1.newContext];
-//     qCDebug(LOG_KTE)<<"linking included rules from "<<ctx<<" to "<<ctx1;
-
-        // If so desired, change the dest attribute to the one of the src.
-        // Required to make commenting work, if text matched by the included context
-        // is a different highlight than the host context.
-        if (list->at(index1)->includeAttrib) {
-            dest->attr = src->attr;
-        }
-
-        // insert the included context's rules starting at position p
-        int p = list->at(index1)->pos;
-
-        // remember some stuff
-        int oldLen = dest->items.size();
-        uint itemsToInsert = src->items.size();
-
-        // resize target
-        dest->items.resize(oldLen + itemsToInsert);
-
-        // move old elements
-        for (int i = oldLen - 1; i >= p; --i) {
-            dest->items[i + itemsToInsert] = dest->items[i];
-        }
-
-        // insert new stuff
-        for (uint i = 0; i < itemsToInsert; ++i) {
-            dest->items[p + i] = src->items[i];
-        }
-
-        index = index1; //backup the iterator
-        --index1;  //move to the next entry, which has to be take care of
-        list->at(index)->ctx = -1;  // set ctx to -1 to mark already processed entries
-    }
 }
 
 /**
