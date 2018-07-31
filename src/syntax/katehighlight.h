@@ -376,7 +376,6 @@ private:
 private:
     void init();
     void makeContextList();
-    int makeDynamicContext(KateHlContext *model, const QStringList *args);
     void handleKateHlIncludeRules();
     void handleKateHlIncludeRulesRecursive(int index, KateHlIncludeRules *list);
     int addToContextList(const QString &ident, int ctx0);
@@ -389,15 +388,6 @@ private:
     void readIndentationConfig();
     void readFoldingConfig();
     void readSpellCheckingConfig();
-
-    /**
-     * update given context stack
-     * @param contextStack context stack to manipulate
-     * @param modification description of the modification of the stack to execute
-     * @param indexLastContextPreviousLine index of the last context from the previous line which still is in the stack
-     * @return current active context, last one of the stack or default context 0 for empty stack
-     */
-    KateHlContext *generateContextStack(Kate::TextLineData::ContextStack &contextStack, KateHlContextModification modification, int &indexLastContextPreviousLine);
 
     KateHlItem *createKateHlItem(KateSyntaxContextData *data, QList<KTextEditor::Attribute::Ptr> &iDl, QStringList *RegionList, QStringList *ContextList);
     int lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl);
