@@ -286,9 +286,13 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     /**
      * highlight the given line via the abstract highlighter
      */
+    m_textLineToHighlight = textLine;
     const KSyntaxHighlighting::State initialState (firstLine ? KSyntaxHighlighting::State() : _prevLine->highlightingState());
     KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
     textLine->setHighlightingState(endOfLineState);
+    m_textLineToHighlight = nullptr;
+
+#if 0
 
     int previousLine = -1;
     KateHlContext *context;
@@ -637,11 +641,13 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
         cachingItems[i]->haveCache = false;
     }
     cachingItems.clear();
+#endif
 }
 
 void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
 {
-    qDebug() << "offset" << offset << "length" << length;
+    Q_ASSERT(m_textLineToHighlight);
+    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, m_formatsIdToIndex[format.id()], 0));
 }
 
 void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)

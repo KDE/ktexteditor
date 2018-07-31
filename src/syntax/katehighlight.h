@@ -515,7 +515,12 @@ public:
     /**
      * mapping of format id => index into m_formats
      */
-    std::unordered_map<quint16, int> m_formatsIdToIndex;
+    std::unordered_map<quint16, short> m_formatsIdToIndex;
+
+    /**
+     * textline to do updates on during doHighlight
+     */
+    Kate::TextLineData *m_textLineToHighlight = nullptr;
 };
 
 #endif
