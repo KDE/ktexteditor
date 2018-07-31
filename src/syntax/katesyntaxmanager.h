@@ -24,7 +24,6 @@
 
 #include "katetextline.h"
 #include "kateextendedattribute.h"
-#include "katesyntaxdocument.h"
 
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/Repository>
@@ -54,11 +53,6 @@ public:
 
     static KateHlManager *self();
 
-    KateSyntaxDocument *syntaxDocument()
-    {
-        return &syntax;
-    }
-
     inline KConfig *getKConfig()
     {
         return &m_config;
@@ -82,18 +76,6 @@ public:
     QString hlNameTranslated(int n);
     QString hlSection(int n);
     bool hlHidden(int n);
-
-    void incDynamicCtxs()
-    {
-        ++dynamicCtxsCount;
-    }
-    void setForceNoDCReset(bool b)
-    {
-        forceNoDCReset = b;
-    }
-
-    // be carefull: all documents hl should be invalidated after having successfully called this method!
-    bool resetDynamicCtxs();
 
     void reload();
 
@@ -160,12 +142,6 @@ private:
 
     KConfig m_config;
     QStringList commonSuffixes;
-
-    KateSyntaxDocument syntax;
-
-    int dynamicCtxsCount = 0;
-    QTime lastCtxsReset;
-    bool forceNoDCReset = false;
 };
 
 #endif

@@ -63,8 +63,6 @@ KateHlManager::KateHlManager()
 {
     // Let's build the Mode List
     setupModeList();
-
-    lastCtxsReset.start();
 }
 
 KateHlManager::~KateHlManager()
@@ -677,29 +675,8 @@ QString KateHlManager::nameForIdentifier(const QString &identifier)
     return QString();
 }
 
-bool KateHlManager::resetDynamicCtxs()
-{
-    if (forceNoDCReset) {
-        return false;
-    }
-
-    if (lastCtxsReset.elapsed() < KATE_DYNAMIC_CONTEXTS_RESET_DELAY) {
-        return false;
-    }
-
-    dynamicCtxsCount = 0;
-    lastCtxsReset.start();
-
-    return true;
-}
-
 void KateHlManager::reload()
 {
-    // clear syntax document cache
-    syntax.clearCache();
-
-    resetDynamicCtxs();
-
     for(int i = 0; i < highlights(); i++)
     {
         getHl(i)->reload();

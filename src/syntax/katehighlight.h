@@ -372,22 +372,9 @@ private:
 
 private:
     void init();
-    int addToContextList(const QString &ident, int ctx0);
-    void addToKateExtendedAttributeList();
     void createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list);
-    void readGlobalKeywordConfig();
-    void readWordWrapConfig();
-    void readCommentConfig();
-    void readEmptyLineConfig();
-    void readIndentationConfig();
-    void readFoldingConfig();
-    void readSpellCheckingConfig();
 
-    KateHlItem *createKateHlItem(KateSyntaxContextData *data, QList<KTextEditor::Attribute::Ptr> &iDl, QStringList *RegionList, QStringList *ContextList);
     int lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl);
-
-    void createContextNameList(QStringList *ContextNameList, int ctx0);
-    KateHlContextModification getContextModificationFromString(QStringList *ContextNameList, QString tmpLineEndContext,/*NO CONST*/ QString &unres);
 
     QList<KTextEditor::Attribute::Ptr> internalIDList;
 
