@@ -67,18 +67,12 @@ bool isTrue(const QString& x)
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     : refCount(0)
 {
-    errorsAndWarnings = QString();
-    building = false;
-    noHl = false;
-    m_foldingIndentationSensitive = false;
-    folding = false;
-
     if (!def.isValid()) {
-        noHl = true;
         iName = QStringLiteral("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
     } else {
+        noHl = false;
         iName = def.name();
         iNameTranslated = def.translatedName();
         iSection = def.translatedSection();
@@ -88,6 +82,10 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         iStyle = def.style();
         iAuthor = def.author();
         iLicense = def.license();
+        m_indentation = def.indenter();
+        // FIXME
+        folding = true;
+        m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
     }
 
     deliminator = stdDeliminator();

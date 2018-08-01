@@ -344,7 +344,11 @@ public:
         return noHl;
     }
 
-    QString indentation()
+    /**
+     * Indentation mode, e.g. c-style, ....
+     * @return indentation mode
+     */
+    const QString &indentation() const
     {
         return m_indentation;
     }
@@ -391,9 +395,8 @@ private:
     QStringList RegionList;
     QStringList ContextNameList;
 
-    bool noHl;
-    bool folding;
-    bool casesensitive;
+    bool noHl = true;
+    bool folding = false;
     QString deliminator;
 
     QString iName;
@@ -405,7 +408,12 @@ private:
     QString iStyle;
     QString iAuthor;
     QString iLicense;
+
+    /**
+     * Indentation mode, e.g. c-style, ....
+     */
     QString m_indentation;
+
     int refCount;
 
     QString errorsAndWarnings;
@@ -414,7 +422,7 @@ private:
     bool building;
     uint buildContext0Offset;
     KateHlIncludeRules includeRules;
-    bool m_foldingIndentationSensitive;
+    bool m_foldingIndentationSensitive = false;
 
     // map schema name to attributes...
     QHash< QString, QList<KTextEditor::Attribute::Ptr> > m_attributeArrays;
