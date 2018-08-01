@@ -463,7 +463,7 @@ private:
      * Highlight properties for each included highlight definition.
      * The key is the identifier
      */
-    QHash<QString, HighlightPropertyBag *> m_additionalData;
+    QHash<QString, HighlightPropertyBag> m_additionalData;
 
     /**
      * Fast lookup of hl properties, based on attribute index

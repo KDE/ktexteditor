@@ -67,27 +67,43 @@ bool isTrue(const QString& x)
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     : refCount(0)
 {
+    /**
+     * handle the "no highlighting" case
+     */
     if (!def.isValid()) {
+        // some default values
         iName = QStringLiteral("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
-    } else {
-        noHl = false;
-        iName = def.name();
-        iNameTranslated = def.translatedName();
-        iSection = def.translatedSection();
-        iHidden = def.isHidden();
-        identifier = def.filePath();
-        iVersion = QString::number(def.version());
-        iStyle = def.style();
-        iAuthor = def.author();
-        iLicense = def.license();
-        m_indentation = def.indenter();
-        // FIXME
-        folding = true;
-        m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
+        deliminator = stdDeliminator();
+
+        // dummy hl info
+        m_additionalData[QStringLiteral("none")].deliminator = stdDeliminator();
+        m_additionalData[QStringLiteral("none")].wordWrapDeliminator = stdDeliminator();
+        m_hlIndex[0] = QStringLiteral("none");
+        m_ctxIndex[0] = QStringLiteral("none");
+
+        // be done, all below is just for the real highlighting variants
+        return;
     }
 
+    /**
+     * handle the real highlighting case
+     */
+    noHl = false;
+    iName = def.name();
+    iNameTranslated = def.translatedName();
+    iSection = def.translatedSection();
+    iHidden = def.isHidden();
+    identifier = def.filePath();
+    iVersion = QString::number(def.version());
+    iStyle = def.style();
+    iAuthor = def.author();
+    iLicense = def.license();
+    m_indentation = def.indenter();
+    // FIXME
+    folding = true;
+    m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
     deliminator = stdDeliminator();
 
     /**
@@ -95,24 +111,28 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      */
     setDefinition(def);
 
-    /**
-     * only create mapping and stuff if the definition is valid
-     */
-    if (def.isValid()) {
-        /**
-         * create the format => attributes mapping
-         * collect embedded highlightings, too
-         */
-        for (const auto & includedDefinition : definition().includedDefinitions()) {
-            // embeddedHighlightingModes should not contain the base highlighting
-            if (includedDefinition.name() != iName)
-                embeddedHighlightingModes.push_back(includedDefinition.name());
+    // FIXME
+    // m_ctxIndex....
 
-            // collect formats
-            for (const auto & format : includedDefinition.formats()) {
-                if (m_formatsIdToIndex.insert(std::make_pair(format.id(), m_formats.size())).second) {
-                    m_formats.push_back(format);
-                }
+    /**
+     * create the format => attributes mapping
+     * collect embedded highlightings, too
+     */
+    for (const auto & includedDefinition : definition().includedDefinitions()) {
+        // embeddedHighlightingModes should not contain the base highlighting
+        if (includedDefinition.name() != iName)
+            embeddedHighlightingModes.push_back(includedDefinition.name());
+
+        // FIXME: right values
+        m_additionalData[includedDefinition.name()].deliminator = stdDeliminator();
+        m_additionalData[includedDefinition.name()].wordWrapDeliminator = stdDeliminator();
+
+        // collect formats
+        for (const auto & format : includedDefinition.formats()) {
+            const auto nextId = m_formats.size();
+            if (m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second) {
+                m_formats.push_back(format);
+                m_hlIndex[nextId] = includedDefinition.name();
             }
         }
     }
@@ -122,8 +142,6 @@ KateHighlighting::~KateHighlighting()
 {
     // cleanup ;)
     cleanup();
-
-    qDeleteAll(m_additionalData);
 }
 
 void KateHighlighting::cleanup()
@@ -299,29 +317,29 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
 
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->characterEncodings;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodings;
 }
 
 const KatePrefixStore &KateHighlighting::getCharacterEncodingsPrefixStore(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->characterEncodingsPrefixStore;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodingsPrefixStore;
 }
 
 const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->reverseCharacterEncodings;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].reverseCharacterEncodings;
 }
 
 int KateHighlighting::getEncodedCharactersInsertionPolicy(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->encodedCharactersInsertionPolicy;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].encodedCharactersInsertionPolicy;
 }
 
 void KateHighlighting::addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c)
 {
-    m_additionalData[ key ]->characterEncodingsPrefixStore.addPrefix(encoding);
-    m_additionalData[ key ]->characterEncodings[ encoding ] = c;
-    m_additionalData[ key ]->reverseCharacterEncodings[ c ] = encoding;
+    m_additionalData[ key ].characterEncodingsPrefixStore.addPrefix(encoding);
+    m_additionalData[ key ].characterEncodings[ encoding ] = c;
+    m_additionalData[ key ].reverseCharacterEncodings[ c ] = encoding;
 }
 
 /**
@@ -368,11 +386,7 @@ void KateHighlighting::init()
     // something went wrong or no hl, fill something in
     // FIXME: we do this always ATM
     iHidden = false;
-    m_additionalData.insert(QStringLiteral("none"), new HighlightPropertyBag);
-    m_additionalData[QStringLiteral("none")]->deliminator = stdDeliminator();
-    m_additionalData[QStringLiteral("none")]->wordWrapDeliminator = stdDeliminator();
-    m_hlIndex[0] = QStringLiteral("none");
-    m_ctxIndex[0] = QStringLiteral("none");
+
 
     // create one dummy context!
     m_contexts.push_back(new KateHlContext(identifier, 0,
@@ -451,13 +465,12 @@ QString KateHighlighting::hlKeyForContext(int i) const
 
 QString KateHighlighting::hlKeyForAttrib(int i) const
 {
-    // FIXME
-    return QStringLiteral("none");
+    return m_hlIndex[i];
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->deliminator.indexOf(c) < 0
+    return m_additionalData[ hlKeyForAttrib(attrib) ].deliminator.indexOf(c) < 0
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
@@ -465,7 +478,7 @@ bool KateHighlighting::isInWord(QChar c, int attrib) const
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 {
     static const QString &sq = QStringLiteral("\"'");
-    return (m_additionalData[ hlKeyForAttrib(attrib) ]->wordWrapDeliminator.indexOf(c) != -1) && (sq.indexOf(c) == -1);
+    return (m_additionalData[ hlKeyForAttrib(attrib) ].wordWrapDeliminator.indexOf(c) != -1) && (sq.indexOf(c) == -1);
 }
 
 QLinkedList<QRegularExpression> KateHighlighting::emptyLines(int attrib) const
@@ -474,12 +487,12 @@ QLinkedList<QRegularExpression> KateHighlighting::emptyLines(int attrib) const
     qCDebug(LOG_KTE) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
 #endif
 
-    return m_additionalData[hlKeyForAttrib(attrib)]->emptyLines;
+    return m_additionalData[hlKeyForAttrib(attrib)].emptyLines;
 }
 
 signed char KateHighlighting::commentRegion(int attr) const
 {
-    QString commentRegion = m_additionalData[ hlKeyForAttrib(attr) ]->multiLineRegion;
+    QString commentRegion = m_additionalData[ hlKeyForAttrib(attr) ].multiLineRegion;
     return (commentRegion.isEmpty() ? 0 : (commentRegion.toShort()));
 }
 
@@ -487,33 +500,33 @@ bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
     QString k = hlKeyForAttrib(startAttrib);
     return (k == hlKeyForAttrib(endAttrib) &&
-            ((!m_additionalData[k]->multiLineCommentStart.isEmpty() && !m_additionalData[k]->multiLineCommentEnd.isEmpty()) ||
-             ! m_additionalData[k]->singleLineCommentMarker.isEmpty()));
+            ((!m_additionalData[k].multiLineCommentStart.isEmpty() && !m_additionalData[k].multiLineCommentEnd.isEmpty()) ||
+             ! m_additionalData[k].singleLineCommentMarker.isEmpty()));
 }
 
 QString KateHighlighting::getCommentStart(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->multiLineCommentStart;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].multiLineCommentStart;
 }
 
 QString KateHighlighting::getCommentEnd(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->multiLineCommentEnd;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].multiLineCommentEnd;
 }
 
 QString KateHighlighting::getCommentSingleLineStart(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->singleLineCommentMarker;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].singleLineCommentMarker;
 }
 
 KateHighlighting::CSLPos KateHighlighting::getCommentSingleLinePosition(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->singleLineCommentPosition;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].singleLineCommentPosition;
 }
 
 const QHash<QString, QChar> &KateHighlighting::characterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ]->characterEncodings;
+    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodings;
 }
 
 void KateHighlighting::clearAttributeArrays()
