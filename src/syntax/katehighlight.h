@@ -394,7 +394,6 @@ private:
     bool noHl;
     bool folding;
     bool casesensitive;
-    QString weakDeliminator;
     QString deliminator;
 
     QString iName;
@@ -408,7 +407,6 @@ private:
     QString iLicense;
     QString m_indentation;
     int refCount;
-    int startctx, base_startctx;
 
     QString errorsAndWarnings;
     QString buildIdentifier;
