@@ -125,6 +125,8 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         // FIXME: right values
         m_additionalData[includedDefinition.name()].deliminator = stdDeliminator();
         m_additionalData[includedDefinition.name()].wordWrapDeliminator = stdDeliminator();
+        for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
+            m_additionalData[includedDefinition.name()].emptyLines.push_back(QRegularExpression(emptyLine));
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
