@@ -378,20 +378,11 @@ private:
     void init();
     void createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list);
 
-    int lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl);
-
     QList<KTextEditor::Attribute::Ptr> internalIDList;
 
     QVector<KateHlContext *> m_contexts;
 
-    QMap< QPair<KateHlContext *, QString>, short> dynamicCtxs;
-
-    // make them pointers perhaps
-    // NOTE: gets cleaned once makeContextList() finishes
-    KateEmbeddedHlInfos embeddedHls;
-    // valid once makeContextList() finishes
     QStringList embeddedHighlightingModes;
-    KateHlUnresolvedCtxRefs unresolvedContextReferences;
     QStringList RegionList;
     QStringList ContextNameList;
 
@@ -414,21 +405,12 @@ private:
      */
     QString m_indentation;
 
-    int refCount;
+    int refCount = 0;
 
-    QString errorsAndWarnings;
-    QString buildIdentifier;
-    QString buildPrefix;
-    bool building;
-    uint buildContext0Offset;
-    KateHlIncludeRules includeRules;
     bool m_foldingIndentationSensitive = false;
 
     // map schema name to attributes...
     QHash< QString, QList<KTextEditor::Attribute::Ptr> > m_attributeArrays;
-
-    // list of all created items to delete them later
-    QList<KateHlItem *> m_hlItemCleanupList;
 
     /**
      * This class holds the additional properties for one highlight

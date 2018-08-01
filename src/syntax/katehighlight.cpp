@@ -65,7 +65,6 @@ bool isTrue(const QString& x)
 
 //BEGIN KateHighlighting
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
-    : refCount(0)
 {
     /**
      * handle the "no highlighting" case
@@ -148,9 +147,6 @@ void KateHighlighting::cleanup()
 {
     qDeleteAll(m_contexts);
     m_contexts.clear();
-
-    qDeleteAll(m_hlItemCleanupList);
-    m_hlItemCleanupList.clear();
 
     m_attributeArrays.clear();
 
@@ -411,30 +407,6 @@ void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute:
     list = internalIDList;
 }
 
-/**
- * KateHighlighting - lookupAttrName
- * This function is  a helper for makeContextList and createKateHlItem. It looks the given
- * attribute name in the itemData list up and returns its index
- *
- * @param name the attribute name to lookup
- * @param iDl the list containing all available attributes
- *
- * @return The index of the attribute, or 0 if the attribute isn't found
- */
-int  KateHighlighting::lookupAttrName(const QString &name, QList<KTextEditor::Attribute::Ptr> &iDl)
-{
-    const QString needle = buildPrefix + name;
-    for (int i = 0; i < iDl.count(); i++)
-        if (iDl.at(i)->name() == needle) {
-            return i;
-        }
-
-#ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_KTE) << "Couldn't resolve itemDataName:" << name;
-#endif
-
-    return 0;
-}
 
 int KateHighlighting::attribute(int ctx) const
 {
