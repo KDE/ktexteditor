@@ -25,7 +25,6 @@
 //BEGIN INCLUDES
 #include "katehighlight.h"
 
-#include "katehighlighthelpers.h"
 #include "katetextline.h"
 #include "katedocument.h"
 #include "katerenderer.h"
@@ -390,13 +389,6 @@ void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute:
     // return internal list, never empty!
     Q_ASSERT(!internalIDList.empty());
     list = internalIDList;
-}
-
-
-int KateHighlighting::attribute(int ctx) const
-{
-    //FIXME-SYNTAX: no m_contexts ATM
-    return 0;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)

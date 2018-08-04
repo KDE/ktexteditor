@@ -32,7 +32,6 @@
 #include "kateview.h"
 #include "kateautoindent.h"
 #include "katetextline.h"
-#include "katehighlighthelpers.h"
 #include "katerenderer.h"
 #include "kateregexp.h"
 #include "kateplaintextsearch.h"
@@ -3780,9 +3779,13 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
 
     if (c < ln->length()) {
         startAttrib = ln->attribute(c);
-    } else if (!ln->contextStack().isEmpty()) {
+    }
+    /**
+     * FIXME-SYNTAX: ATM not possible
+    else if (!ln->contextStack().isEmpty()) {
         startAttrib = highlight()->attribute(ln->contextStack().last());
     }
+    */
 
     bool hasStartLineCommentMark = !(highlight()->getCommentSingleLineStart(startAttrib).isEmpty());
     bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty())

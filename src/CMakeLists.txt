@@ -139,7 +139,6 @@ search/katesearchbar.cpp
 # syntax related stuff (highlighting, xml file parsing, ...)
 syntax/katesyntaxmanager.cpp
 syntax/katehighlight.cpp
-syntax/katehighlighthelpers.cpp
 syntax/katehighlightmenu.cpp
 syntax/katehighlightingcmds.cpp
 

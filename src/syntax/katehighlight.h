@@ -49,94 +49,9 @@
 
 class KConfig;
 
-class KateHlContext;
-class KateHlItem;
-class KateHlIncludeRule;
-class KateSyntaxModeListItem;
-class KateSyntaxContextData;
 namespace KTextEditor {
     class DocumentPrivate;
 }
-
-// same as in kmimemagic, no need to feed more data
-#define KATE_HL_HOWMANY 1024
-
-// min. x seconds between two dynamic contexts reset
-#define KATE_DYNAMIC_CONTEXTS_RESET_DELAY (30 * 1000)
-
-/**
- * describe a modification of the context stack
- */
-class KateHlContextModification
-{
-public:
-    enum modType {
-        doNothing = 0,
-        doPush = 1,
-        doPops = 2,
-        doPopsAndPush = 3
-    };
-
-    /**
-     * Constructor
-     * @param _newContext new context to push on stack
-     * @param _pops number of contexts to remove from stack in advance
-     */
-    KateHlContextModification(int _newContext = -1, int _pops = 0) : newContext(_newContext), pops(_pops)     //krazy:exclude=explicit
-    {
-        if (newContext >= 0 && pops == 0) {
-            type = doPush;
-        } else if (newContext < 0 && pops > 0) {
-            type = doPops;
-        } else if (newContext >= 0 && pops > 0) {
-            type = doPopsAndPush;
-        } else {
-            type = doNothing;
-        }
-    }
-
-public:
-    /**
-     * indicates what this modification does, for speed
-     */
-    char type = doNothing;
-
-    /**
-     * new context to push on the stack
-     * if this is < 0, push nothing on the stack
-     */
-    int newContext;
-
-    /**
-     * number of contexts to pop from the stack
-     * before pushing a new context on it
-     */
-    int pops;
-};
-
-class KateEmbeddedHlInfo
-{
-public:
-    KateEmbeddedHlInfo()
-    {
-        loaded = false;
-        context0 = -1;
-    }
-    KateEmbeddedHlInfo(bool l, int ctx0)
-    {
-        loaded = l;
-        context0 = ctx0;
-    }
-
-public:
-    bool loaded;
-    int context0;
-};
-
-// some typedefs
-typedef QList<KateHlIncludeRule *> KateHlIncludeRules;
-typedef QMap<QString, KateEmbeddedHlInfo> KateEmbeddedHlInfos;
-typedef QMap<KateHlContextModification *, QString> KateHlUnresolvedCtxRefs;
 
 class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
 {
@@ -189,7 +104,8 @@ private:
 
 public:
     struct ContextChange {
-        KateHlContext* toContext;
+        // FIXME-SYNTAX
+        void* toContext;
         int pos;
     };
 
@@ -316,11 +232,6 @@ public:
      * to @p attrib.
      */
     CSLPos getCommentSingleLinePosition(int attrib = 0) const;
-
-    /**
-    * @return the attribute for @p context.
-    */
-    int attribute(int context) const;
 
     bool attributeRequiresSpellchecking(int attr);
 

@@ -20,7 +20,6 @@
 #include "katekeywordcompletion.h"
 
 #include "katehighlight.h"
-#include "katehighlighthelpers.h"
 #include "katedocument.h"
 #include "katetextline.h"
 
