@@ -5921,8 +5921,13 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
     if (column < tl->length()) {
         attribute = tl->attribute(column);
     } else if (column == tl->length()) {
-        KateHlContext *context = tl->contextStack().isEmpty() ? highlight()->contextNum(0) : highlight()->contextNum(tl->contextStack().back());
-        attribute = context->attr;
+        // FIXME-SYNTAX
+        // was lookup of attribute of last active context, now we fallback to attribute of last char, not that good
+        if (tl->length() > 0) {
+            attribute = tl->attribute(tl->length()-1);
+        } else {
+            return -1;
+        }
     } else {
         return -1;
     }
