@@ -112,12 +112,11 @@ public:
      * Flags of TextLineData
      */
     enum Flags {
-        flagHlContinue = 1,
-        flagAutoWrapped = 2,
-        flagFoldingStartAttribute = 4,
-        flagFoldingStartIndentation = 8,
-        flagLineModified = 16,
-        flagLineSavedOnDisk = 32
+        flagAutoWrapped = 1,
+        flagFoldingStartAttribute = 2,
+        flagFoldingStartIndentation = 4,
+        flagLineModified = 8,
+        flagLineSavedOnDisk = 16
     };
 
     /**
@@ -294,16 +293,6 @@ public:
     }
 
     /**
-     * Returns \e true, if the line's hl-continue flag is set, otherwise returns
-     * \e false. The hl-continue flag is set in the hl-definition files.
-     * @return hl-continue flag is set
-     */
-    bool hlLineContinue() const
-    {
-        return m_flags & flagHlContinue;
-    }
-
-    /**
      * Returns \e true, if the line was automagically wrapped, otherwise returns
      * \e false.
      * @return was this line auto-wrapped?
@@ -451,19 +440,6 @@ public:
      * @return value of attribute
      */
     short attribute(int pos) const;
-
-    /**
-     * set hl continue flag
-     * @param cont continue flag?
-     */
-    void setHlLineContinue(bool cont)
-    {
-        if (cont) {
-            m_flags = m_flags | flagHlContinue;
-        } else {
-            m_flags = m_flags & ~ flagHlContinue;
-        }
-    }
 
     /**
      * set auto-wrapped property
