@@ -154,9 +154,12 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
                                    Kate::TextLineData *textLine,
                                    const Kate::TextLineData *nextLine,
                                    bool &ctxChanged,
-                                   int tabWidth,
-                                   QVector<ContextChange>* contextChanges)
+                                   int tabWidth)
 {
+    // default: no context change
+    ctxChanged = false;
+
+    // no text line => nothing to do
     if (!textLine) {
         return;
     }
@@ -179,8 +182,15 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     m_textLineToHighlight = textLine;
     const KSyntaxHighlighting::State initialState (!_prevLine ? KSyntaxHighlighting::State() : _prevLine->highlightingState());
     const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
-    textLine->setHighlightingState(endOfLineState);
     m_textLineToHighlight = nullptr;
+
+    /**
+     * update highlighting state if needed
+     */
+    if (textLine->highlightingState() != endOfLineState) {
+        textLine->setHighlightingState(endOfLineState);
+        ctxChanged = true;
+    }
 
     /**
      * handle folding info computed and cleanup hash again, if there

@@ -103,12 +103,6 @@ private:
     void cleanup();
 
 public:
-    struct ContextChange {
-        // FIXME-SYNTAX
-        void* toContext;
-        int pos;
-    };
-
     /**
      * Parse the text and fill in the context array and folding list array
      *
@@ -122,8 +116,7 @@ public:
                      Kate::TextLineData *textLine,
                      const Kate::TextLineData *nextLine,
                      bool &ctxChanged,
-                     int tabWidth = 0,
-                     QVector<ContextChange>* contextChanges = nullptr);
+                     int tabWidth = 0);
     /**
      * Saves the attribute definitions to the config file.
      *
