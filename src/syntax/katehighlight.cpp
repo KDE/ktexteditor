@@ -49,10 +49,30 @@
 
 //BEGIN STATICS
 namespace {
-inline const QString stdDeliminator()
+
+    inline QString stdDeliminator()
 {
     return QStringLiteral(" \t.():!+,-<=>%&*/;?[]^{|}~\\");
 }
+
+/**
+ * convert from KSyntaxHighlighting => KTextEditor type
+ * special handle non-1:1 things
+ */
+inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighting::Theme::TextStyle textStyle)
+{
+    // handle deviations
+    if (textStyle == KSyntaxHighlighting::Theme::Error) {
+        return KTextEditor::dsError;
+    }
+    if (textStyle == KSyntaxHighlighting::Theme::Others) {
+        return KTextEditor::dsOthers;
+    }
+
+    // else: simple cast
+    return static_cast<KTextEditor::DefaultStyle>(textStyle);
+}
+
 }
 //END
 
@@ -146,8 +166,6 @@ KateHighlighting::~KateHighlighting()
 void KateHighlighting::cleanup()
 {
     m_attributeArrays.clear();
-
-    internalIDList.clear();
 }
 
 void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
@@ -174,6 +192,12 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
     if (noHl) {
         return;
     }
+
+    /**
+     * ensure we arrive in clean state
+     */
+    Q_ASSERT(!m_textLineToHighlight);
+    Q_ASSERT(!m_foldingStartToCount);
 
     /**
      * highlight the given line via the abstract highlighter
@@ -271,116 +295,17 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
 {
-    KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
-                        QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
-
-    list.clear();
-    createKateExtendedAttribute(list);
-
-    foreach (KTextEditor::Attribute::Ptr p, list) {
-        Q_ASSERT(p);
-
-        QStringList s = config.readEntry(p->name(), QStringList());
-
-//    qCDebug(LOG_KTE)<<p->name<<s.count();
-        if (s.count() > 0) {
-
-            while (s.count() < 10) {
-                s << QString();
-            }
-            QString name = p->name();
-            bool spellCheck = !p->skipSpellChecking();
-            p->clear();
-            p->setName(name);
-            p->setSkipSpellChecking(!spellCheck);
-
-            QString tmp = s[0]; if (!tmp.isEmpty()) {
-                p->setDefaultStyle(static_cast<KTextEditor::DefaultStyle> (tmp.toInt()));
-            }
-
-            QRgb col;
-
-            tmp = s[1]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); p->setForeground(QColor(col));
-            }
-
-            tmp = s[2]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); p->setSelectedForeground(QColor(col));
-            }
-
-            tmp = s[3]; if (!tmp.isEmpty()) {
-                p->setFontBold(tmp != QLatin1String("0"));
-            }
-
-            tmp = s[4]; if (!tmp.isEmpty()) {
-                p->setFontItalic(tmp != QLatin1String("0"));
-            }
-
-            tmp = s[5]; if (!tmp.isEmpty()) {
-                p->setFontStrikeOut(tmp != QLatin1String("0"));
-            }
-
-            tmp = s[6]; if (!tmp.isEmpty()) {
-                p->setFontUnderline(tmp != QLatin1String("0"));
-            }
-
-            tmp = s[7]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); p->setBackground(QColor(col));
-            }
-
-            tmp = s[8]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); p->setSelectedBackground(QColor(col));
-            }
-
-            tmp = s[9]; if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
-                p->setFontFamily(tmp);
-            }
-
-        }
-    }
+    // FIXME-SYNTAX
 }
 
 void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QList< KTextEditor::Attribute::Ptr > &list, KConfig *cfg)
 {
-    QList<KTextEditor::Attribute::Ptr> attributes;
-    getKateExtendedAttributeList(schema, attributes, cfg);
-
-    list.clear();
-
-    foreach (const KTextEditor::Attribute::Ptr &attribute, attributes) {
-        list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*attribute.data())));
-    }
+    // FIXME-SYNTAX
 }
 
 void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
 {
-    KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
-                        QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
-
-    QStringList settings;
-
-    KateAttributeList defList;
-    KateHlManager::self()->getDefaults(schema, defList);
-
-    foreach (const KTextEditor::Attribute::Ptr &p, list) {
-        Q_ASSERT(p);
-
-        settings.clear();
-        KTextEditor::DefaultStyle defStyle = p->defaultStyle();
-        KTextEditor::Attribute::Ptr a(defList[defStyle]);
-        settings << QString::number(p->defaultStyle(), 10);
-        settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->foreground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(QTextFormat::BackgroundBrush)) ? QString::number(a->background().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : (writeDefaultsToo ? a->fontFamily() : QString()));
-        settings << QStringLiteral("---");
-        config.writeEntry(p->name(), settings);
-    }
+    // FIXME-SYNTAX
 }
 
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
@@ -443,41 +368,20 @@ void KateHighlighting::reload()
 
 void KateHighlighting::init()
 {
-    // fixup internal id list, if empty
-    if (internalIDList.isEmpty()) {
-        internalIDList.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
-    }
-}
-
-/**
- * KateHighlighting - createKateExtendedAttribute
- * This function reads the itemData entries from the config file, which specifies the
- * default attribute styles for matched items/contexts.
- *
- * @param list A reference to the internal list containing the parsed default config
- */
-void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list)
-{
-    // trigger hl load, if needed
-    use();
-
-    // return internal list, never empty!
-    Q_ASSERT(!internalIDList.empty());
-    list = internalIDList;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 {
-    if (attr >= 0 && attr < internalIDList.size() && internalIDList[attr]->hasProperty(Spellchecking)) {
-        return !internalIDList[attr]->boolProperty(Spellchecking);
+    if (attr >= 0 && attr < m_formats.size()) {
+        return m_formats[attr].spellCheck();
     }
     return true;
 }
 
 KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) const
 {
-    if (attr >= 0 && attr < internalIDList.size()) {
-        return internalIDList[attr]->defaultStyle();
+    if (attr >= 0 && attr < m_formats.size()) {
+        return textStyleToDefaultStyle(m_formats[attr].textStyle());
     }
     return KTextEditor::dsNormal;
 }
@@ -576,30 +480,37 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
             setTheme(KateHlManager::self()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
 
             /**
-             * convert from KSyntaxHighlighting => KTextEditor type
-             * special handle non-1:1 things
+             * create a KTextEditor attribute matching the given format
              */
-            KTextEditor::DefaultStyle defaultStyle = static_cast<KTextEditor::DefaultStyle>(format.textStyle());
-            if (format.textStyle() == KSyntaxHighlighting::Theme::Error)
-                defaultStyle = KTextEditor::dsError;
-            else if (format.textStyle() == KSyntaxHighlighting::Theme::Others)
-                defaultStyle = KTextEditor::dsOthers;
+            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(format.name(), textStyleToDefaultStyle(format.textStyle())));
 
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(format.name(), defaultStyle));
-
-            if (format.hasTextColor(theme()))
+            if (format.hasTextColor(theme())) {
                 newAttribute->setForeground(format.textColor(theme()));
-            if (format.hasBackgroundColor(theme()))
-                newAttribute->setBackground(format.backgroundColor(theme()));
+                newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
+            }
 
-            if (format.isBold(theme()))
-                newAttribute->setFontWeight(QFont::Bold);
-            if (format.isItalic(theme()))
+            if (format.hasBackgroundColor(theme())) {
+                newAttribute->setBackground(format.backgroundColor(theme()));
+                newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
+            }
+
+            if (format.isBold(theme())) {
+                newAttribute->setFontBold(true);
+            }
+
+            if (format.isItalic(theme())) {
                 newAttribute->setFontItalic(true);
-            if (format.isUnderline(theme()))
+            }
+
+            if (format.isUnderline(theme())) {
                 newAttribute->setFontUnderline(true);
-            if (format.isStrikeThrough(theme()))
+            }
+
+            if (format.isStrikeThrough(theme())) {
                 newAttribute->setFontStrikeOut(true);
+            }
+
+            newAttribute->setSkipSpellChecking(format.spellCheck());
 
             array.append(newAttribute);
         }

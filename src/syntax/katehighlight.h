@@ -299,9 +299,6 @@ private:
 
 private:
     void init();
-    void createKateExtendedAttribute(QList<KTextEditor::Attribute::Ptr> &list);
-
-    QList<KTextEditor::Attribute::Ptr> internalIDList;
 
     QStringList embeddedHighlightingModes;
     QStringList RegionList;
@@ -389,7 +386,7 @@ public:
      * all formats for the highlighting definition of this highlighting
      * includes included formats
      */
-    QVector<KSyntaxHighlighting::Format> m_formats;
+    std::vector<KSyntaxHighlighting::Format> m_formats;
 
     /**
      * mapping of format id => index into m_formats
