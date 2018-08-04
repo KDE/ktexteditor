@@ -5856,38 +5856,7 @@ QStringList KTextEditor::DocumentPrivate::embeddedHighlightingModes() const
 
 QString KTextEditor::DocumentPrivate::highlightingModeAt(const KTextEditor::Cursor &position)
 {
-    Kate::TextLine kateLine = kateTextLine(position.line());
-
-//   const QVector< short >& attrs = kateLine->ctxArray();
-//   qCDebug(LOG_KTE) << "----------------------------------------------------------------------";
-//   foreach( short a, attrs ) {
-//     qCDebug(LOG_KTE) << a;
-//   }
-//   qCDebug(LOG_KTE) << "----------------------------------------------------------------------";
-//   qCDebug(LOG_KTE) << "col: " << position.column() << " lastchar:" << kateLine->lastChar() << " length:" << kateLine->length() << "global mode:" << highlightingMode();
-
-    int len = kateLine->length();
-    int pos = position.column();
-    if (pos >= len) {
-        const Kate::TextLineData::ContextStack &ctxs = kateLine->contextStack();
-        int ctxcnt = ctxs.count();
-        if (ctxcnt == 0) {
-            return highlightingMode();
-        }
-        int ctx = ctxs.at(ctxcnt - 1);
-        if (ctx == 0) {
-            return highlightingMode();
-        }
-        return KateHlManager::self()->nameForIdentifier(highlight()->hlKeyForContext(ctx));
-    }
-
-    int attr = kateLine->attribute(pos);
-    if (attr == 0) {
-        return mode();
-    }
-
-    return KateHlManager::self()->nameForIdentifier(highlight()->hlKeyForAttrib(attr));
-
+    return highlight()->higlightingModeForLocation(this, position);
 }
 
 Kate::SwapFile *KTextEditor::DocumentPrivate::swapFile()

@@ -54,12 +54,6 @@ inline const QString stdDeliminator()
 {
     return QStringLiteral(" \t.():!+,-<=>%&*/;?[]^{|}~\\");
 }
-
-// @return true if x is "true" or "1"
-bool isTrue(const QString& x)
-{
-    return (x.compare(QLatin1String("true"), Qt::CaseInsensitive) == 0) || x.toInt() == 1;
-}
 }
 //END
 
@@ -80,7 +74,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         m_additionalData[QStringLiteral("none")].deliminator = stdDeliminator();
         m_additionalData[QStringLiteral("none")].wordWrapDeliminator = stdDeliminator();
         m_hlIndex[0] = QStringLiteral("none");
-        m_ctxIndex[0] = QStringLiteral("none");
 
         // be done, all below is just for the real highlighting variants
         return;
@@ -109,9 +102,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * tell the AbstractHighlighter the definition it shall use
      */
     setDefinition(def);
-
-    // FIXME
-    // m_ctxIndex....
 
     /**
      * get all included definitions, e.g. PHP for HTML highlighting
@@ -156,9 +146,6 @@ KateHighlighting::~KateHighlighting()
 
 void KateHighlighting::cleanup()
 {
-    qDeleteAll(m_contexts);
-    m_contexts.clear();
-
     m_attributeArrays.clear();
 
     internalIDList.clear();
@@ -382,23 +369,10 @@ void KateHighlighting::reload()
 
 void KateHighlighting::init()
 {
-    // shall be only called if clean!
-    Q_ASSERT(m_contexts.empty());
-
     // fixup internal id list, if empty
     if (internalIDList.isEmpty()) {
         internalIDList.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(i18n("Normal Text"), KTextEditor::dsNormal)));
     }
-
-    // something went wrong or no hl, fill something in
-    // FIXME: we do this always ATM
-    iHidden = false;
-
-
-    // create one dummy context!
-    m_contexts.push_back(new KateHlContext(identifier, 0,
-        KateHlContextModification(), false, KateHlContextModification(),
-        false, false, false, KateHlContextModification()));
 }
 
 /**
@@ -421,7 +395,8 @@ void KateHighlighting::createKateExtendedAttribute(QList<KTextEditor::Attribute:
 
 int KateHighlighting::attribute(int ctx) const
 {
-    return m_contexts[ctx]->attr;
+    //FIXME-SYNTAX: no m_contexts ATM
+    return 0;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
@@ -438,12 +413,6 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
         return internalIDList[attr]->defaultStyle();
     }
     return KTextEditor::dsNormal;
-}
-
-QString KateHighlighting::hlKeyForContext(int i) const
-{
-    // FIXME
-    return QStringLiteral("none");
 }
 
 QString KateHighlighting::hlKeyForAttrib(int i) const
@@ -572,16 +541,6 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
     return array;
 }
 
-KateHlContext *KateHighlighting::contextNum(int n) const
-{
-    if (n >= 0 && n < m_contexts.size()) {
-        return m_contexts[n];
-    }
-
-    Q_ASSERT(false);
-    return nullptr;
-}
-
 QStringList KateHighlighting::getEmbeddedHighlightingModes() const
 {
     return embeddedHighlightingModes;
@@ -619,6 +578,12 @@ bool KateHighlighting::spellCheckingRequiredForLocation(KTextEditor::DocumentPri
 {
     //FIXME: implement, formerly done via contextForLocation
     return true;
+}
+
+QString KateHighlighting::higlightingModeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
+{
+    //FIXME: implement, formerly done via contextForLocation
+    return iName;
 }
 
 //END

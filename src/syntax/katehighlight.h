@@ -329,7 +329,6 @@ public:
      * the returned string is used as key for m_additionalData.
      */
     QString hlKeyForAttrib(int attrib) const;
-    QString hlKeyForContext(int attrib) const;
 
     /**
      * Get all keywords valid for the given cursor position.
@@ -346,6 +345,14 @@ public:
      * @return spell checking required?
      */
     bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+
+    /**
+     * Get highlighting mode for the given cursor position.
+     * @param doc document to use
+     * @param cursor cursor position in the given document
+     * @return mode valid at that location
+     */
+    QString higlightingModeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
 
     KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 
@@ -380,8 +387,6 @@ public:
      */
     QStringList getEmbeddedHighlightingModes() const;
 
-    KateHlContext *contextNum(int n) const;
-
 private:
     /**
       * 'encoding' must not contain new line characters, i.e. '\n' or '\r'!
@@ -394,8 +399,6 @@ private:
 
     QList<KTextEditor::Attribute::Ptr> internalIDList;
 
-    QVector<KateHlContext *> m_contexts;
-
     QStringList embeddedHighlightingModes;
     QStringList RegionList;
     QStringList ContextNameList;
@@ -407,7 +410,7 @@ private:
     QString iName;
     QString iNameTranslated;
     QString iSection;
-    bool iHidden;
+    bool iHidden = false;
     QString identifier;
     QString iVersion;
     QString iStyle;
@@ -433,7 +436,7 @@ private:
      * When a highlight is added, a instance of this class is appended to
      * m_additionalData, and the current position in the attrib and context
      * arrays are stored in the indexes for look up. You can then use
-     * hlKeyForAttrib or hlKeyForContext to find the relevant instance of this
+     * hlKeyForAttrib to find the relevant instance of this
      * class from m_additionalData.
      *
      * If you need to add a property to a highlight, add it here.
@@ -467,7 +470,6 @@ private:
      * @see hlKeyForAttrib
      */
     QMap<int, QString> m_hlIndex;
-    QMap<int, QString> m_ctxIndex;
 
 public:
     inline bool foldingIndentationSensitive()

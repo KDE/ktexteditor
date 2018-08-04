@@ -62,11 +62,6 @@ public:
     int nameFind(const QString &name);
 
     QString identifierForName(const QString &);
-    /**
-     * Returns the mode name for a given identifier, as e.g.
-     * returned by KateHighlighting::hlKeyForAttrib().
-     */
-    QString nameForIdentifier(const QString &);
 
     void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
     void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);

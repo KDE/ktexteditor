@@ -662,18 +662,6 @@ QString KateHlManager::identifierForName(const QString &name)
     return QString();
 }
 
-QString KateHlManager::nameForIdentifier(const QString &identifier)
-{
-    for (QHash<QString, KateHighlighting *>::iterator it = hlDict.begin();
-            it != hlDict.end(); ++it) {
-        if ((*it)->getIdentifier() == identifier) {
-            return it.key();
-        }
-    }
-
-    return QString();
-}
-
 void KateHlManager::reload()
 {
     for(int i = 0; i < highlights(); i++)
