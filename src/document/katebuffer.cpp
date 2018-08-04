@@ -565,8 +565,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         /**
          * walk over all attributes of the line and compute the matchings
          */
-        const QVector<Kate::TextLineData::Attribute> &startLineAttributes = startTextLine->attributesList();
-        for (int i = 0; i < startLineAttributes.size(); ++i) {
+        const auto &startLineAttributes = startTextLine->foldings();
+        for (size_t i = 0; i < startLineAttributes.size(); ++i) {
             /**
              * folding close?
              */
@@ -634,8 +634,8 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         /**
          * search for matching end marker
          */
-        const QVector<Kate::TextLineData::Attribute> &lineAttributes = textLine->attributesList();
-        for (int i = 0; i < lineAttributes.size(); ++i) {
+        const auto &lineAttributes = textLine->foldings();
+        for (size_t i = 0; i < lineAttributes.size(); ++i) {
             /**
              * matching folding close?
              */

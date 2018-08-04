@@ -193,10 +193,9 @@ int TextLineData::virtualLength(int tabWidth) const
 
 void TextLineData::addAttribute(const Attribute &attribute)
 {
-    // try to append to previous range, if no folding info + same attribute value
-    if ((attribute.foldingValue == 0) && !m_attributesList.isEmpty() && (m_attributesList.back().foldingValue == 0)
-            && (m_attributesList.back().attributeValue == attribute.attributeValue)
-            && ((m_attributesList.back().offset + m_attributesList.back().length) == attribute.offset)) {
+    // try to append to previous range, if same attribute value
+    if (!m_attributesList.isEmpty() && (m_attributesList.back().attributeValue == attribute.attributeValue)
+        && ((m_attributesList.back().offset + m_attributesList.back().length) == attribute.offset)) {
         m_attributesList.back().length += attribute.length;
         return;
     }

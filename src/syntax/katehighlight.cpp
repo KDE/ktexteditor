@@ -162,7 +162,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     }
 
     // in all cases, remove old hl, or we will grow to infinite ;)
-    textLine->clearAttributes();
+    textLine->clearAttributesAndFoldings();
 
     // reset folding start
     textLine->clearMarkedAsFoldingStart();
@@ -185,13 +185,17 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
 
 void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
 {
+    // WE ATM assume ascending offset order
     Q_ASSERT(m_textLineToHighlight);
-    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, m_formatsIdToIndex[format.id()], 0));
+    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, m_formatsIdToIndex[format.id()]));
 }
 
-void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
+void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::FoldingRegion region)
 {
+    // WE ATM assume ascending offset order and don't care for length
     Q_ASSERT(m_textLineToHighlight);
+    Q_ASSERT(region.isValid());
+    m_textLineToHighlight->addFolding(offset, (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id()));
 }
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)

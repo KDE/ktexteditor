@@ -46,11 +46,6 @@ class KTEXTEDITOR_EXPORT TextLineData
 
 public:
     /**
-     * Context stack
-     */
-    typedef QVector<short> ContextStack;
-
-    /**
      * Attribute storage
      */
     class Attribute
@@ -61,13 +56,11 @@ public:
          * @param _offset offset
          * @param _length length
          * @param _attributeValue attribute value
-         * @param _foldingValue folding value
          */
-        Attribute(int _offset = 0, int _length = 0, short _attributeValue = 0, short _foldingValue = 0)
+        Attribute(int _offset = 0, int _length = 0, short _attributeValue = 0)
             : offset(_offset)
             , length(_length)
             , attributeValue(_attributeValue)
-            , foldingValue(_foldingValue)
         {
         }
 
@@ -85,11 +78,34 @@ public:
          * attribute value (to encode type of this range)
          */
         short attributeValue;
+    };
+
+    /**
+     * Folding storage
+     */
+    class Folding
+    {
+    public:
+        /**
+         * Construct folding.
+         * @param _offset offset of the folding start
+         * @param _foldingValue positive ones start foldings, negative ones end them
+         */
+        Folding(int _offset, int _foldingValue)
+            : offset(_offset)
+            , foldingValue(_foldingValue)
+        {
+        }
 
         /**
-         * folding value (begin/end type)
+         * offset
          */
-        short foldingValue;
+        int offset = 0;
+
+        /**
+         * positive ones start foldings, negative ones end them
+         */
+        int foldingValue = 0;
     };
 
     /**
@@ -370,24 +386,6 @@ public:
      * context stack
      * @return context stack
      */
-    const ContextStack &contextStack() const
-    {
-        return m_contextStack;
-    }
-
-    /**
-     * Sets the syntax highlight context number
-     * @param val new context array
-     */
-    void setContextStack(const ContextStack &val)
-    {
-        m_contextStack = val;
-    }
-
-    /**
-     * context stack
-     * @return context stack
-     */
     const KSyntaxHighlighting::State &highlightingState() const
     {
         return m_highlightingState;
@@ -409,11 +407,12 @@ public:
     void addAttribute(const Attribute &attribute);
 
     /**
-     * Clear attributes of this line
+     * Clear attributes and foldings of this line
      */
-    void clearAttributes()
+    void clearAttributesAndFoldings()
     {
         m_attributesList.clear();
+        m_foldings.clear();
     }
 
     /**
@@ -423,6 +422,25 @@ public:
     const QVector<Attribute> &attributesList() const
     {
         return m_attributesList;
+    }
+
+    /**
+     * Accessor to foldings
+     * @return foldings of this line
+     */
+    const std::vector<Folding> &foldings() const
+    {
+        return m_foldings;
+    }
+
+    /**
+     * Add new folding at end of foldings stored in this line
+     * @param offset offset of folding start
+     * @param folding folding to add, positive to open, negative to close
+     */
+    void addFolding(int offset, int folding)
+    {
+        m_foldings.emplace_back(offset,folding);
     }
 
     /**
@@ -483,9 +501,9 @@ private:
     QVector<Attribute> m_attributesList;
 
     /**
-     * context stack of this line
+     * foldings of this line
      */
-    ContextStack m_contextStack;
+    std::vector<Folding> m_foldings;
 
     /**
      * current highlighting state
