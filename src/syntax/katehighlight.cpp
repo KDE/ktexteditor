@@ -150,7 +150,7 @@ void KateHighlighting::cleanup()
     internalIDList.clear();
 }
 
-void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
+void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
                                    Kate::TextLineData *textLine,
                                    const Kate::TextLineData *nextLine,
                                    bool &ctxChanged,
@@ -180,7 +180,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
      * a bit ugly: we set the line to highlight as member to be able to update its stats in the applyFormat and applyFolding member functions
      */
     m_textLineToHighlight = textLine;
-    const KSyntaxHighlighting::State initialState (!_prevLine ? KSyntaxHighlighting::State() : _prevLine->highlightingState());
+    const KSyntaxHighlighting::State initialState (!prevLine ? KSyntaxHighlighting::State() : prevLine->highlightingState());
     const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
     m_textLineToHighlight = nullptr;
 
@@ -211,6 +211,20 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
         delete m_foldingStartToCount;
         m_foldingStartToCount = nullptr;
     }
+
+    /**
+     * check for indentation based folding
+     */
+    if (m_foldingIndentationSensitive && (tabWidth > 0) && !textLine->markedAsFoldingStartAttribute()) {
+        /**
+         * compute if we increase indentation in next line
+         */
+        if (endOfLineState.indentationBasedFoldingEnabled() && !isEmptyLine(textLine) && !isEmptyLine(nextLine)
+                && (textLine->indentDepth(tabWidth) < nextLine->indentDepth(tabWidth))) {
+            textLine->markAsFoldingStartIndentation();
+        }
+    }
+
 }
 
 void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
