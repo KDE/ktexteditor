@@ -42,21 +42,7 @@ void KateKeywordCompletionModel::completionInvoked(KTextEditor::View* view, cons
     if ( !doc->highlight() || doc->highlight()->noHighlighting() ) {
         return;
     }
-    auto context = doc->highlight()->contextForLocation(doc, range.end());
-
-    // Find all keyword items which exist for that context,
-    // and suggest them as completion items.
-    QSet<QString> items;
-    if ( ! context ) {
-        // default context
-        context = doc->highlight()->contextNum(0);
-    }
-    foreach ( const KateHlItem* item, context->items ) {
-        if ( const KateHlKeyword* kw = dynamic_cast<const KateHlKeyword*>(item) ) {
-            items.unite(kw->allKeywords());
-        }
-    }
-    m_items = items.toList();
+    m_items = doc->highlight()->keywordsForLocation(doc, range.end());
     qSort(m_items);
 }
 

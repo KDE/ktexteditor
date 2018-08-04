@@ -3032,9 +3032,8 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
          */
         bool skipAutobrace = closingBracket == QLatin1Char('\'');
         if ( highlight() && skipAutobrace ) {
-            auto context = highlight()->contextForLocation(this, view->cursorPosition() - Cursor{0, 1});
             // skip adding ' in spellchecked areas, because those are text
-            skipAutobrace = !context || highlight()->attributeRequiresSpellchecking(context->attr);
+            skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
         }
         if (!closingBracket.isNull() && !skipAutobrace ) {
             // add bracket to the view

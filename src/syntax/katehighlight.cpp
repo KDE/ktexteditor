@@ -114,14 +114,23 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     // m_ctxIndex....
 
     /**
+     * get all included definitions, e.g. PHP for HTML highlighting
+     */
+    auto definitions = definition().includedDefinitions();
+
+    /**
+     * first: handle only really included definitions
+     */
+    for (const auto &includedDefinition : definitions)
+        embeddedHighlightingModes.push_back(includedDefinition.name());
+
+    /**
+     * now: handle all, including this definition itself
      * create the format => attributes mapping
      * collect embedded highlightings, too
      */
-    for (const auto & includedDefinition : definition().includedDefinitions()) {
-        // embeddedHighlightingModes should not contain the base highlighting
-        if (includedDefinition.name() != iName)
-            embeddedHighlightingModes.push_back(includedDefinition.name());
-
+    definitions.push_back(definition());
+    for (const auto & includedDefinition : definitions) {
         // FIXME: right values
         m_additionalData[includedDefinition.name()].deliminator = stdDeliminator();
         m_additionalData[includedDefinition.name()].wordWrapDeliminator = stdDeliminator();
@@ -600,35 +609,16 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
     return false;
 }
 
-KateHlContext* KateHighlighting::contextForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
+QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    if ( noHighlighting() ) {
-        // no highlighting -- nothing to do
-        return nullptr;
-    }
+    // FIXME: implement, formerly done via contextForLocation
+    return QStringList();
+}
 
-    Kate::TextLine line = doc->kateTextLine(cursor.line());
-    Kate::TextLine previousLine = doc->kateTextLine(cursor.line() - 1);
-    Kate::TextLine nextLine = doc->kateTextLine(cursor.line() + 1);
-    bool contextChanged;
-    QVector<KateHighlighting::ContextChange> contextChanges;
-    // Ask the highlighting engine to re-calcualte the highlighting for the line
-    // where completion was invoked, and store all the context changes in the process.
-    doHighlight(previousLine.data(), line.data(), nextLine.data(),
-                contextChanged, 0, &contextChanges);
-
-    // From the list of context changes, find the highlighting context which is
-    // active at the position where completion was invoked.
-    KateHlContext* context = nullptr;
-    foreach ( KateHighlighting::ContextChange change, contextChanges ) {
-        if ( change.pos == 0 || change.pos <= cursor.column() ) {
-            context = change.toContext;
-        }
-        if ( change.pos > cursor.column() ) {
-            break;
-        }
-    }
-    return context;
+bool KateHighlighting::spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
+{
+    //FIXME: implement, formerly done via contextForLocation
+    return true;
 }
 
 //END

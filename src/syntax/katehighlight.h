@@ -331,7 +331,21 @@ public:
     QString hlKeyForAttrib(int attrib) const;
     QString hlKeyForContext(int attrib) const;
 
-    KateHlContext* contextForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+    /**
+     * Get all keywords valid for the given cursor position.
+     * @param doc document to use
+     * @param cursor cursor position in the given document
+     * @return all keywords valid at that location
+     */
+    QStringList keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+
+    /**
+     * Is spellchecking required for the tiven cursor position?
+     * @param doc document to use
+     * @param cursor cursor position in the given document
+     * @return spell checking required?
+     */
+    bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
 
     KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 
