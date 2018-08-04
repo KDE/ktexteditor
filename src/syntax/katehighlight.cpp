@@ -181,6 +181,26 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *_prevLine,
     const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
     textLine->setHighlightingState(endOfLineState);
     m_textLineToHighlight = nullptr;
+
+    /**
+     * handle folding info computed and cleanup hash again, if there
+     * check if folding is not balanced and we have more starts then ends
+     * then this line is a possible folding start!
+     */
+    if (m_foldingStartToCount) {
+        /**
+         * possible folding start, if imbalanced, aka hash not empty!
+         */
+        if (!m_foldingStartToCount->isEmpty()) {
+            textLine->markAsFoldingStartAttribute();
+        }
+
+        /**
+         * kill hash
+         */
+        delete m_foldingStartToCount;
+        m_foldingStartToCount = nullptr;
+    }
 }
 
 void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format)
@@ -195,7 +215,36 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
     // WE ATM assume ascending offset order and don't care for length
     Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
-    m_textLineToHighlight->addFolding(offset, (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id()));
+    const int foldingValue = (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id());
+    m_textLineToHighlight->addFolding(offset, foldingValue);
+
+    /**
+     * for each end region, decrement counter for that type, erase if count reaches 0!
+     */
+    if ((foldingValue < 0) && m_foldingStartToCount) {
+        QHash<int, int>::iterator end = m_foldingStartToCount->find(foldingValue);
+        if (end != m_foldingStartToCount->end()) {
+            if (end.value() > 1) {
+                --(end.value());
+            } else {
+                m_foldingStartToCount->erase(end);
+            }
+        }
+    }
+
+    /**
+     * increment counter for each begin region!
+     */
+    if (foldingValue > 0) {
+        // construct on demand!
+        if (!m_foldingStartToCount) {
+            m_foldingStartToCount = new QHash<int, int> ();
+        }
+
+        ++(*m_foldingStartToCount)[foldingValue];
+    }
+
+    // FIXME-SYNTAX: line continue? indentation based folding?
 }
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)

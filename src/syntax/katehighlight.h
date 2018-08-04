@@ -407,6 +407,12 @@ public:
      * textline to do updates on during doHighlight
      */
     Kate::TextLineData *m_textLineToHighlight = nullptr;
+
+    /**
+     * check if the folding begin/ends are balanced!
+     * constructed on demand!
+     */
+    QHash<int, int> *m_foldingStartToCount = nullptr;
 };
 
 #endif
