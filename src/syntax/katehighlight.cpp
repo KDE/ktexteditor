@@ -267,8 +267,6 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
 
         ++(*m_foldingStartToCount)[foldingValue];
     }
-
-    // FIXME-SYNTAX: line continue? indentation based folding?
 }
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
