@@ -144,11 +144,12 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     definitions.push_front(definition());
     for (const auto & includedDefinition : definitions) {
         // FIXME: right values
-        m_additionalData[includedDefinition.name()].definition = includedDefinition;
-        m_additionalData[includedDefinition.name()].deliminator = stdDeliminator();
-        m_additionalData[includedDefinition.name()].wordWrapDeliminator = stdDeliminator();
+        auto &properties = m_additionalData[includedDefinition.name()];
+        properties.definition = includedDefinition;
+        properties.deliminator = stdDeliminator();
+        properties.wordWrapDeliminator = stdDeliminator();
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
-            m_additionalData[includedDefinition.name()].emptyLines.push_back(QRegularExpression(emptyLine));
+            properties.emptyLines.push_back(QRegularExpression(emptyLine));
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
