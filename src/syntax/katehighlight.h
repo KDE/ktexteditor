@@ -240,6 +240,14 @@ public:
     QString nameForAttrib(int attrib) const;
 
     /**
+     * Get attribute for the given cursor position.
+     * @param doc document to use
+     * @param cursor cursor position in the given document
+     * @return attribute valid at that location, default is 0
+     */
+    int attributeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+
+    /**
      * Get all keywords valid for the given cursor position.
      * @param doc document to use
      * @param cursor cursor position in the given document

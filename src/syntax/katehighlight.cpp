@@ -681,22 +681,48 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
     return false;
 }
 
+int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
+{
+     // Validate parameters to prevent out of range access
+    if (cursor.line() < 0 || cursor.line() >= doc->lines() || cursor.column() < 0) {
+        return 0;
+    }
+
+    // get highlighted line
+    Kate::TextLine tl = doc->kateTextLine(cursor.line());
+
+    // make sure the textline is a valid pointer
+    if (!tl) {
+        return 0;
+    }
+
+    /**
+     * either get char attribute or attribute of context still active at end of line
+     */
+    if (cursor.column() < tl->length()) {
+        return tl->attribute(cursor.column());
+    } else if (cursor.column() >= tl->length()) {
+        if (!tl->attributesList().isEmpty()) {
+            return tl->attributesList().back().attributeValue;
+        }
+    }
+    return 0;
+}
+
 QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    // FIXME: implement, formerly done via contextForLocation
-    return QStringList();
+    // FIXME-SYNTAX: was before more precise, aka context level
+    return additionalData(m_hlIndex[attributeForLocation(doc, cursor)]).definition.keywordLists();
 }
 
 bool KateHighlighting::spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    //FIXME: implement, formerly done via contextForLocation
-    return true;
+    return m_formats[attributeForLocation(doc, cursor)].spellCheck();
 }
 
 QString KateHighlighting::higlightingModeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    //FIXME: implement, formerly done via contextForLocation
-    return iName;
+    return m_hlIndex[attributeForLocation(doc, cursor)];
 }
 
 //END
