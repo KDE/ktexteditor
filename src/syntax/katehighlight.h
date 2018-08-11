@@ -345,6 +345,7 @@ private:
     class HighlightPropertyBag
     {
     public:
+        KSyntaxHighlighting::Definition definition;
         QString singleLineCommentMarker;
         QString multiLineCommentStart;
         QString multiLineCommentEnd;

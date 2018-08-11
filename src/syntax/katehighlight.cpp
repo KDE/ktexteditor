@@ -137,10 +137,14 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * now: handle all, including this definition itself
      * create the format => attributes mapping
      * collect embedded highlightings, too
+     *
+     * we start with our definition as we want to have the default format
+     * of the initial definition as attribute with index == 0
      */
-    definitions.push_back(definition());
+    definitions.push_front(definition());
     for (const auto & includedDefinition : definitions) {
         // FIXME: right values
+        m_additionalData[includedDefinition.name()].definition = includedDefinition;
         m_additionalData[includedDefinition.name()].deliminator = stdDeliminator();
         m_additionalData[includedDefinition.name()].wordWrapDeliminator = stdDeliminator();
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
@@ -148,11 +152,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
+            // register format id => internal attributes, we want no clashs
             const auto nextId = m_formats.size();
-            if (m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second) {
-                m_formats.push_back(format);
-                m_hlIndex[nextId] = includedDefinition.name();
-            }
+            Q_ASSERT(m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second);
+            m_formats.push_back(format);
+            m_hlIndex[nextId] = includedDefinition.name();
         }
     }
 }
