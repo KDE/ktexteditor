@@ -1258,7 +1258,7 @@ KateViewConfig::KateViewConfig()
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
-    m_foldFirstLineSet (false),
+    m_foldFirstLineSet(false),
     m_showWordCountSet(false),
     m_showLinesCountSet(false),
     m_autoBracketsSet(false),
@@ -1308,6 +1308,8 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
     m_foldFirstLineSet(false),
+    m_showWordCountSet(false),
+    m_showLinesCountSet(false),
     m_autoBracketsSet(false),
     m_backspaceRemoveComposedSet(false),
     m_view(view)
