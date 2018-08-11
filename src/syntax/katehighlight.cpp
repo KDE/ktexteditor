@@ -256,11 +256,7 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
 {
     // WE ATM assume ascending offset order
     Q_ASSERT(m_textLineToHighlight);
-
-    // skip invalid stuff and zero length entries
-    if (length <= 0 || !format.isValid()) {
-        return;
-    }
+    Q_ASSERT(format.isValid());
 
     // get internal attribute, must exist
     const auto it = m_formatsIdToIndex.find(format.id());
