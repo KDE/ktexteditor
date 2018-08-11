@@ -3779,13 +3779,9 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
 
     if (c < ln->length()) {
         startAttrib = ln->attribute(c);
+    } else if (!ln->attributesList().isEmpty()) {
+        startAttrib = ln->attributesList().back().attributeValue;
     }
-    /**
-     * FIXME-SYNTAX: ATM not possible
-    else if (!ln->contextStack().isEmpty()) {
-        startAttrib = highlight()->attribute(ln->contextStack().last());
-    }
-    */
 
     bool hasStartLineCommentMark = !(highlight()->getCommentSingleLineStart(startAttrib).isEmpty());
     bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty())
@@ -5893,10 +5889,8 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
     if (column < tl->length()) {
         attribute = tl->attribute(column);
     } else if (column == tl->length()) {
-        // FIXME-SYNTAX
-        // was lookup of attribute of last active context, now we fallback to attribute of last char, not that good
-        if (tl->length() > 0) {
-            attribute = tl->attribute(tl->length()-1);
+        if (!tl->attributesList().isEmpty()) {
+            attribute = tl->attributesList().back().attributeValue;
         } else {
             return -1;
         }
