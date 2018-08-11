@@ -570,7 +570,7 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
      */
     QList<KTextEditor::Attribute::Ptr> array;
     if (m_formats.empty()) {
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(QLatin1String("Normal"), KTextEditor::dsNormal));
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(iName + QLatin1Char(':') + QLatin1String("Normal"), KTextEditor::dsNormal));
         array.append(newAttribute);
     } else {
         for (const auto &format : m_formats) {
@@ -582,7 +582,7 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
             /**
              * create a KTextEditor attribute matching the given format
              */
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(format.name(), textStyleToDefaultStyle(format.textStyle())));
+            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(m_hlIndex[m_formatsIdToIndex[format.id()]] + QLatin1Char(':') + format.name(), textStyleToDefaultStyle(format.textStyle())));
 
             if (format.hasTextColor(theme())) {
                 newAttribute->setForeground(format.textColor(theme()));
