@@ -357,7 +357,6 @@ private:
         QString multiLineCommentEnd;
         QString multiLineRegion;
         CSLPos  singleLineCommentPosition;
-        QString deliminator;
         QString wordWrapDeliminator;
         QVector<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
