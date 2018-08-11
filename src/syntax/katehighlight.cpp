@@ -311,17 +311,115 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
 
 void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
 {
-    // FIXME-SYNTAX
+    KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
+                        QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
+
+    list = attributesForDefinition();
+
+    foreach (KTextEditor::Attribute::Ptr p, list) {
+        Q_ASSERT(p);
+
+        QStringList s = config.readEntry(p->name(), QStringList());
+
+//    qCDebug(LOG_KTE)<<p->name<<s.count();
+        if (s.count() > 0) {
+
+            while (s.count() < 10) {
+                s << QString();
+            }
+            QString name = p->name();
+            bool spellCheck = !p->skipSpellChecking();
+            p->clear();
+            p->setName(name);
+            p->setSkipSpellChecking(!spellCheck);
+
+            QString tmp = s[0]; if (!tmp.isEmpty()) {
+                p->setDefaultStyle(static_cast<KTextEditor::DefaultStyle> (tmp.toInt()));
+            }
+
+            QRgb col;
+
+            tmp = s[1]; if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16); p->setForeground(QColor(col));
+            }
+
+            tmp = s[2]; if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16); p->setSelectedForeground(QColor(col));
+            }
+
+            tmp = s[3]; if (!tmp.isEmpty()) {
+                p->setFontBold(tmp != QLatin1String("0"));
+            }
+
+            tmp = s[4]; if (!tmp.isEmpty()) {
+                p->setFontItalic(tmp != QLatin1String("0"));
+            }
+
+            tmp = s[5]; if (!tmp.isEmpty()) {
+                p->setFontStrikeOut(tmp != QLatin1String("0"));
+            }
+
+            tmp = s[6]; if (!tmp.isEmpty()) {
+                p->setFontUnderline(tmp != QLatin1String("0"));
+            }
+
+            tmp = s[7]; if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16); p->setBackground(QColor(col));
+            }
+
+            tmp = s[8]; if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16); p->setSelectedBackground(QColor(col));
+            }
+
+            tmp = s[9]; if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
+                p->setFontFamily(tmp);
+            }
+
+        }
+    }
 }
 
 void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QList< KTextEditor::Attribute::Ptr > &list, KConfig *cfg)
 {
-    // FIXME-SYNTAX
+    QList<KTextEditor::Attribute::Ptr> attributes;
+    getKateExtendedAttributeList(schema, attributes, cfg);
+
+    list.clear();
+
+    foreach (const KTextEditor::Attribute::Ptr &attribute, attributes) {
+        list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*attribute.data())));
+    }
 }
 
 void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
 {
-    // FIXME-SYNTAX
+     KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
+                        QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
+
+    QStringList settings;
+
+    KateAttributeList defList;
+    KateHlManager::self()->getDefaults(schema, defList);
+
+    foreach (const KTextEditor::Attribute::Ptr &p, list) {
+        Q_ASSERT(p);
+
+        settings.clear();
+        KTextEditor::DefaultStyle defStyle = p->defaultStyle();
+        KTextEditor::Attribute::Ptr a(defList[defStyle]);
+        settings << QString::number(p->defaultStyle(), 10);
+        settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->foreground().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
+        settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(QTextFormat::BackgroundBrush)) ? QString::number(a->background().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : ((writeDefaultsToo && a->hasProperty(SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
+        settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : (writeDefaultsToo ? a->fontFamily() : QString()));
+        settings << QStringLiteral("---");
+        config.writeEntry(p->name(), settings);
+    }
 }
 
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
@@ -469,14 +567,9 @@ void KateHighlighting::clearAttributeArrays()
     m_attributeArrays.clear();
 }
 
-QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
+QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
 {
-    // found it, already floating around
-    if (m_attributeArrays.contains(schema)) {
-        return m_attributeArrays[schema];
-    }
-
-    /**
+     /**
      * create list of all known things
      */
     QList<KTextEditor::Attribute::Ptr> array;
@@ -526,7 +619,39 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
             array.append(newAttribute);
         }
     }
+    return array;
+}
+
+QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
+{
+    // found it, already floating around
+    if (m_attributeArrays.contains(schema)) {
+        return m_attributeArrays[schema];
+    }
+
+    // k, schema correct, let create the data
+    QList<KTextEditor::Attribute::Ptr> array;
+    KateAttributeList defaultStyleList;
+
+    KateHlManager::self()->getDefaults(schema, defaultStyleList);
+
+    QList<KTextEditor::Attribute::Ptr> itemDataList;
+    getKateExtendedAttributeList(schema, itemDataList);
+
+    uint nAttribs = itemDataList.count();
+    for (uint z = 0; z < nAttribs; z++) {
+        KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
+
+        if (itemData && itemData->hasAnyProperty()) {
+            *newAttribute += *itemData;
+        }
+
+        array.append(newAttribute);
+    }
+
     m_attributeArrays.insert(schema, array);
+
     return array;
 }
 

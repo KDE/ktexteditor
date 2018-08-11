@@ -296,6 +296,13 @@ private:
       **/
     void addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c);
 
+
+    /**
+     * create list of attributes from internal formats with properties as defined in syntax file
+     * @return attributes list with attributes as defined in syntax file
+     */
+    QList<KTextEditor::Attribute::Ptr> attributesForDefinition();
+
 private:
     void init();
 
