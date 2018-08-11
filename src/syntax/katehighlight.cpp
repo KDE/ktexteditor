@@ -420,7 +420,7 @@ bool KateHighlighting::canBreakAt(QChar c, int attrib) const
     return (m_additionalData[ hlKeyForAttrib(attrib) ].wordWrapDeliminator.indexOf(c) != -1) && (sq.indexOf(c) == -1);
 }
 
-QLinkedList<QRegularExpression> KateHighlighting::emptyLines(int attrib) const
+const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
 #ifdef HIGHLIGHTING_DEBUG
     qCDebug(LOG_KTE) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
@@ -547,7 +547,7 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
         return true;
     }
 
-    const QLinkedList<QRegularExpression> l = emptyLines(textline->attribute(0));
+    const auto &l = emptyLines(textline->attribute(0));
     if (l.isEmpty()) {
         return false;
     }

@@ -39,7 +39,6 @@
 #include <QStringList>
 #include <QPointer>
 #include <QDate>
-#include <QLinkedList>
 
 class KateHighlighting;
 

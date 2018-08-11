@@ -43,7 +43,6 @@
 #include <QStringList>
 #include <QPointer>
 #include <QDate>
-#include <QLinkedList>
 
 #include <unordered_map>
 
@@ -179,7 +178,7 @@ public:
     /**
      *
      */
-    QLinkedList<QRegularExpression> emptyLines(int attribute = 0) const;
+    const QVector<QRegularExpression> &emptyLines(int attribute = 0) const;
 
     bool isEmptyLine(const Kate::TextLineData *textline) const;
 
@@ -353,7 +352,7 @@ private:
         CSLPos  singleLineCommentPosition;
         QString deliminator;
         QString wordWrapDeliminator;
-        QLinkedList<QRegularExpression> emptyLines;
+        QVector<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
         KatePrefixStore characterEncodingsPrefixStore;
         QHash<QChar, QString> reverseCharacterEncodings;
