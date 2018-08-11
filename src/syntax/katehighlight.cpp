@@ -506,7 +506,7 @@ QString KateHighlighting::nameForAttrib(int attrib) const
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return !additionalData(hlKeyForAttrib(attrib)).definition.isDelimiter(c)
+    return !additionalData(hlKeyForAttrib(attrib)).definition.isWordDelimiter(c)
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
