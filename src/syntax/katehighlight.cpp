@@ -151,7 +151,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         for (const auto & format : includedDefinition.formats()) {
             // register format id => internal attributes, we want no clashs
             const auto nextId = m_formats.size();
-            Q_ASSERT(m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second);
+            m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second;
             m_formats.push_back(format);
             m_hlIndex[nextId] = includedDefinition.name();
         }
