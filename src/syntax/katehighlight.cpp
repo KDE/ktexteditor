@@ -421,10 +421,6 @@ bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 
 const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
-#ifdef HIGHLIGHTING_DEBUG
-    qCDebug(LOG_KTE) << "hlKeyForAttrib: " << hlKeyForAttrib(attrib);
-#endif
-
     return m_additionalData[hlKeyForAttrib(attrib)].emptyLines;
 }
 
