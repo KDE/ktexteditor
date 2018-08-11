@@ -255,7 +255,18 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
 {
     // WE ATM assume ascending offset order
     Q_ASSERT(m_textLineToHighlight);
-    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, m_formatsIdToIndex[format.id()]));
+
+    // skip invalid stuff and zero length entries
+    if (length <= 0 || !format.isValid()) {
+        return;
+    }
+
+    // get internal attribute, must exist
+    const auto it = m_formatsIdToIndex.find(format.id());
+    Q_ASSERT(it != m_formatsIdToIndex.end());
+
+    // remember highlighting info in our textline
+    m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, it->second));
 }
 
 void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::FoldingRegion region)
