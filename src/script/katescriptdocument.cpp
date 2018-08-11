@@ -792,7 +792,7 @@ bool KateScriptDocument::isAttribute(const QJSValue &jscursor, int attr)
 QString KateScriptDocument::attributeName(int line, int column)
 {
     // just use the global default schema, we anyway only want the style number!
-    QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
+    const QList<KTextEditor::Attribute::Ptr> attributes = m_document->highlight()->attributes(KateRendererConfig::global()->schema());
     KTextEditor::Attribute::Ptr a = attributes[document()->plainKateTextLine(line)->attribute(column)];
     return a->name();
 }
