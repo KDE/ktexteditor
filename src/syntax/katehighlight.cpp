@@ -89,8 +89,8 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         iSection = QString();
 
         // dummy hl info
-        m_additionalData[QStringLiteral("none")].wordWrapDeliminator = stdDeliminator();
-        m_hlIndex[0] = QStringLiteral("none");
+        m_additionalData[QStringLiteral("None")].wordWrapDeliminator = stdDeliminator();
+        m_hlIndex[0] = QStringLiteral("None");
 
         // be done, all below is just for the real highlighting variants
         return;
@@ -420,22 +420,22 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
 
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodings;
+    return additionalData(hlKeyForAttrib(attrib)).characterEncodings;
 }
 
 const KatePrefixStore &KateHighlighting::getCharacterEncodingsPrefixStore(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodingsPrefixStore;
+    return additionalData(hlKeyForAttrib(attrib)).characterEncodingsPrefixStore;
 }
 
 const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].reverseCharacterEncodings;
+    return additionalData(hlKeyForAttrib(attrib)).reverseCharacterEncodings;
 }
 
 int KateHighlighting::getEncodedCharactersInsertionPolicy(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].encodedCharactersInsertionPolicy;
+    return additionalData(hlKeyForAttrib(attrib)).encodedCharactersInsertionPolicy;
 }
 
 void KateHighlighting::addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c)
@@ -503,24 +503,24 @@ QString KateHighlighting::hlKeyForAttrib(int i) const
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return !m_additionalData[ hlKeyForAttrib(attrib) ].definition.isDelimiter(c)
+    return !additionalData(hlKeyForAttrib(attrib)).definition.isDelimiter(c)
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
 
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 {
-    return (m_additionalData[ hlKeyForAttrib(attrib) ].wordWrapDeliminator.indexOf(c) >= 0) && c != QLatin1Char('"') && c != QLatin1Char('\'');
+    return (additionalData(hlKeyForAttrib(attrib)).wordWrapDeliminator.indexOf(c) >= 0) && c != QLatin1Char('"') && c != QLatin1Char('\'');
 }
 
 const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
-    return m_additionalData[hlKeyForAttrib(attrib)].emptyLines;
+    return additionalData(hlKeyForAttrib(attrib)).emptyLines;
 }
 
 signed char KateHighlighting::commentRegion(int attr) const
 {
-    QString commentRegion = m_additionalData[ hlKeyForAttrib(attr) ].multiLineRegion;
+    QString commentRegion = additionalData(hlKeyForAttrib(attr)).multiLineRegion;
     return (commentRegion.isEmpty() ? 0 : (commentRegion.toShort()));
 }
 
@@ -528,33 +528,33 @@ bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
     QString k = hlKeyForAttrib(startAttrib);
     return (k == hlKeyForAttrib(endAttrib) &&
-            ((!m_additionalData[k].multiLineCommentStart.isEmpty() && !m_additionalData[k].multiLineCommentEnd.isEmpty()) ||
-             ! m_additionalData[k].singleLineCommentMarker.isEmpty()));
+            ((!additionalData(k).multiLineCommentStart.isEmpty() && !additionalData(k).multiLineCommentEnd.isEmpty()) ||
+             !additionalData(k).singleLineCommentMarker.isEmpty()));
 }
 
 QString KateHighlighting::getCommentStart(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].multiLineCommentStart;
+    return additionalData(hlKeyForAttrib(attrib)).multiLineCommentStart;
 }
 
 QString KateHighlighting::getCommentEnd(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].multiLineCommentEnd;
+    return additionalData(hlKeyForAttrib(attrib)).multiLineCommentEnd;
 }
 
 QString KateHighlighting::getCommentSingleLineStart(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].singleLineCommentMarker;
+    return additionalData(hlKeyForAttrib(attrib)).singleLineCommentMarker;
 }
 
 KateHighlighting::CSLPos KateHighlighting::getCommentSingleLinePosition(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].singleLineCommentPosition;
+    return additionalData(hlKeyForAttrib(attrib)).singleLineCommentPosition;
 }
 
 const QHash<QString, QChar> &KateHighlighting::characterEncodings(int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].characterEncodings;
+    return additionalData(hlKeyForAttrib(attrib)).characterEncodings;
 }
 
 void KateHighlighting::clearAttributeArrays()

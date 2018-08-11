@@ -378,6 +378,16 @@ private:
      */
     QMap<int, QString> m_hlIndex;
 
+    const HighlightPropertyBag &additionalData(const QString &name) const
+    {
+        auto it = m_additionalData.constFind(name);
+        if (it == m_additionalData.constEnd())
+            it = m_additionalData.constFind(iName);
+        Q_ASSERT(it != m_additionalData.constEnd());
+        return it.value();
+    }
+
+
 public:
     inline bool foldingIndentationSensitive()
     {
