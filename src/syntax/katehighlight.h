@@ -234,6 +234,12 @@ public:
     QString hlKeyForAttrib(int attrib) const;
 
     /**
+     * map attribute to its name
+     * @return name of the attribute
+     */
+    QString nameForAttrib(int attrib) const;
+
+    /**
      * Get all keywords valid for the given cursor position.
      * @param doc document to use
      * @param cursor cursor position in the given document

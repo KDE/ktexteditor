@@ -498,7 +498,14 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
 
 QString KateHighlighting::hlKeyForAttrib(int i) const
 {
+    Q_ASSERT(i >= 0 && i < m_hlIndex.size());
     return m_hlIndex[i];
+}
+
+QString KateHighlighting::nameForAttrib(int attrib) const
+{
+    Q_ASSERT(attrib >= 0 && attrib < m_formats.size());
+    return hlKeyForAttrib(attrib) + QLatin1Char(':') + m_formats[attrib].name();
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
@@ -582,7 +589,7 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
             /**
              * create a KTextEditor attribute matching the given format
              */
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(m_hlIndex[m_formatsIdToIndex[format.id()]] + QLatin1Char(':') + format.name(), textStyleToDefaultStyle(format.textStyle())));
+            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
             if (format.hasTextColor(theme())) {
                 newAttribute->setForeground(format.textColor(theme()));
