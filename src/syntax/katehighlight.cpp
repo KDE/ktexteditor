@@ -87,10 +87,8 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         iName = QStringLiteral("None"); // not translated internal name (for config and more)
         iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
         iSection = QString();
-        deliminator = stdDeliminator();
 
         // dummy hl info
-        m_additionalData[QStringLiteral("none")].deliminator = stdDeliminator();
         m_additionalData[QStringLiteral("none")].wordWrapDeliminator = stdDeliminator();
         m_hlIndex[0] = QStringLiteral("none");
 
@@ -115,7 +113,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     // FIXME
     folding = true;
     m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
-    deliminator = stdDeliminator();
 
     /**
      * tell the AbstractHighlighter the definition it shall use
@@ -146,7 +143,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         // FIXME: right values
         auto &properties = m_additionalData[includedDefinition.name()];
         properties.definition = includedDefinition;
-        properties.deliminator = stdDeliminator();
         properties.wordWrapDeliminator = stdDeliminator();
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
@@ -409,7 +405,7 @@ QString KateHighlighting::hlKeyForAttrib(int i) const
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return m_additionalData[ hlKeyForAttrib(attrib) ].deliminator.indexOf(c) < 0
+    return !m_additionalData[ hlKeyForAttrib(attrib) ].definition.isDelimiter(c)
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
