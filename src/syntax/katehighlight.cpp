@@ -140,6 +140,13 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         properties.definition = includedDefinition;
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
+        properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
+        properties.singleLineCommentPosition = includedDefinition.singleLineCommentPosition() == KSyntaxHighlighting::CommentPosition::StartOfLine ?
+            CSLPosColumn0 : CSLPosAfterWhitespace;
+        const auto multiLineComment = includedDefinition.multiLineCommentMarker();
+        properties.multiLineCommentStart = multiLineComment.first;
+        properties.multiLineCommentEnd = multiLineComment.second;
+//        properties.multiLineRegion;
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
