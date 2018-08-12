@@ -89,7 +89,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         iSection = QString();
 
         // dummy hl info
-        m_additionalData[QStringLiteral("None")].wordWrapDeliminator = stdDeliminator();
+        m_additionalData[QStringLiteral("None")];
         m_hlIndex[0] = QStringLiteral("None");
 
         // be done, all below is just for the real highlighting variants
@@ -143,7 +143,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         // FIXME: right values
         auto &properties = m_additionalData[includedDefinition.name()];
         properties.definition = includedDefinition;
-        properties.wordWrapDeliminator = stdDeliminator();
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
 
@@ -513,7 +512,7 @@ bool KateHighlighting::isInWord(QChar c, int attrib) const
 
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 {
-    return (additionalData(hlKeyForAttrib(attrib)).wordWrapDeliminator.indexOf(c) >= 0) && c != QLatin1Char('"') && c != QLatin1Char('\'');
+    return additionalData(hlKeyForAttrib(attrib)).definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
 }
 
 const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
