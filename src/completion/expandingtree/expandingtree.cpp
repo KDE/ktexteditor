@@ -22,6 +22,7 @@
 
 #include <QTextLayout>
 #include <QTextDocument>
+#include <QHeaderView>
 #include <QAbstractTextDocumentLayout>
 #include <QPainter>
 #include "katepartdebug.h"
@@ -31,6 +32,7 @@ ExpandingTree::ExpandingTree(QWidget *parent) : QTreeView(parent)
 {
     m_drawText.documentLayout()->setPaintDevice(this);
     setUniformRowHeights(false);
+    header()->setMinimumSectionSize(0);
 }
 
 void ExpandingTree::drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
