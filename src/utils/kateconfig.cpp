@@ -85,7 +85,7 @@ KateGlobalConfig::KateGlobalConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Editor");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
     readConfig(cg);
 }
 
@@ -118,7 +118,7 @@ void KateGlobalConfig::writeConfig(KConfigGroup &config)
 void KateGlobalConfig::updateConfig()
 {
     // write config
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Editor");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
     writeConfig(cg);
     KTextEditor::EditorPrivate::config()->sync();
 }
@@ -201,7 +201,7 @@ KateDocumentConfig::KateDocumentConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Document");
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
     readConfig(cg);
 }
 
@@ -438,7 +438,7 @@ void KateDocumentConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Document");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }
@@ -1268,7 +1268,7 @@ KateViewConfig::KateViewConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KTextEditor::EditorPrivate::config(), "View");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor View");
     readConfig(config);
 }
 
@@ -1502,7 +1502,7 @@ void KateViewConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "View");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor View");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }
@@ -2333,7 +2333,7 @@ KateRendererConfig::KateRendererConfig()
     s_global = this;
 
     // init with defaults from config or really hardcoded ones
-    KConfigGroup config(KTextEditor::EditorPrivate::config(), "Renderer");
+    KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
     readConfig(config);
 }
 
@@ -2427,7 +2427,7 @@ void KateRendererConfig::updateConfig()
         }
 
         // write config
-        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "Renderer");
+        KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }

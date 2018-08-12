@@ -531,3 +531,23 @@ void KTextEditor::EditorPrivate::saveSearchReplaceHistoryModels()
         cg.writeEntry(QStringLiteral("Replace History"), m_replaceHistoryModel->stringList());
     }
 }
+
+KSharedConfigPtr KTextEditor::EditorPrivate::config()
+{
+    // use dummy config for unit tests!
+    if (KTextEditor::EditorPrivate::unitTestMode()) {
+        return KSharedConfig::openConfig(QStringLiteral("katepartrc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation);
+    }
+
+    // else: use application configuration, but try to transfer global settings on first use
+    auto applicationConfig = KSharedConfig::openConfig();
+    if (!KConfigGroup(applicationConfig, QStringLiteral("KTextEditor Editor")).exists()) {
+        auto globalConfig = KSharedConfig::openConfig(QStringLiteral("katepartrc"));
+        for (auto group : {QStringLiteral("Editor"), QStringLiteral("Document"), QStringLiteral("View"), QStringLiteral("Renderer")}) {
+            KConfigGroup origin(globalConfig, group);
+            KConfigGroup destination(applicationConfig, QStringLiteral("KTextEditor ") + group);
+            origin.copyTo(&destination);
+        }
+    }
+    return applicationConfig;
+}

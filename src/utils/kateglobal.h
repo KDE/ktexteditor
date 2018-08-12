@@ -240,13 +240,7 @@ public:
      * The global configuration of katepart, e.g. katepartrc
      * @return global shared access to katepartrc config
      */
-    static KSharedConfigPtr config()
-    {
-        // use dummy config for unit tests!
-        return KTextEditor::EditorPrivate::unitTestMode()
-            ? KSharedConfig::openConfig(QStringLiteral("katepartrc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation)
-            : KSharedConfig::openConfig(QStringLiteral("katepartrc"));
-    }
+    static KSharedConfigPtr config();
 
     /**
      * global mode manager
