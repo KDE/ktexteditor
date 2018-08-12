@@ -3377,11 +3377,24 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
 
     // handle vertical scrolling via the scrollbar
     if (e->orientation() == Qt::Vertical) {
-        QWheelEvent copy = *e;
-        QApplication::sendEvent(m_lineScroll, &copy);
-        if (copy.isAccepted()) {
-            e->accept();
+        // compute distance
+        auto sign = m_lineScroll->invertedControls() ? -1 : 1;
+        auto offset = sign * qreal(e->angleDelta().y()) / 120.0;
+        if ( e->modifiers() & Qt::ShiftModifier ) {
+            const auto pageStep = m_lineScroll->pageStep();
+            offset = qBound(-pageStep, int(offset * pageStep), pageStep);
+        } else {
+            offset *= QApplication::wheelScrollLines();
         }
+
+        // handle accumulation
+        m_accumulatedScroll += offset - int(offset);
+        const auto extraAccumulated = int(m_accumulatedScroll);
+        m_accumulatedScroll -= extraAccumulated;
+
+        // do scroll
+        scrollViewLines(int(offset) + extraAccumulated);
+        e->accept();
     }
 
     // handle horizontal scrolling via the scrollbar
