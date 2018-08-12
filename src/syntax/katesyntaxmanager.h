@@ -135,7 +135,6 @@ private:
     QHash<QString, KateHighlighting *> hlDict;
 
     KConfig m_config;
-    QStringList commonSuffixes;
 };
 
 #endif
