@@ -520,12 +520,6 @@ const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) cons
     return additionalData(hlKeyForAttrib(attrib)).emptyLines;
 }
 
-signed char KateHighlighting::commentRegion(int attr) const
-{
-    QString commentRegion = additionalData(hlKeyForAttrib(attr)).multiLineRegion;
-    return (commentRegion.isEmpty() ? 0 : (commentRegion.toShort()));
-}
-
 bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
     QString k = hlKeyForAttrib(startAttrib);

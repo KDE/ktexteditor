@@ -189,12 +189,6 @@ public:
     bool canComment(int startAttr, int endAttr) const;
 
     /**
-    * @return 0 if highlighting which attr is a member of does not
-    * define a comment region, otherwise the region is returned
-    */
-    signed char commentRegion(int attr) const;
-
-    /**
      * @return the mulitiline comment start marker for the highlight
      * corresponding to @p attrib.
      */
@@ -364,7 +358,6 @@ private:
         QString singleLineCommentMarker;
         QString multiLineCommentStart;
         QString multiLineCommentEnd;
-        QString multiLineRegion;
         KSyntaxHighlighting::CommentPosition singleLineCommentPosition;
         QVector<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
