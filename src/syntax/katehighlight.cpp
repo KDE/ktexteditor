@@ -50,11 +50,6 @@
 //BEGIN STATICS
 namespace {
 
-    inline QString stdDeliminator()
-{
-    return QStringLiteral(" \t.():!+,-<=>%&*/;?[]^{|}~\\");
-}
-
 /**
  * convert from KSyntaxHighlighting => KTextEditor type
  * special handle non-1:1 things
