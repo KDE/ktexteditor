@@ -3470,7 +3470,7 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSingleLine(int line, int
     QString commentLineMark = highlight()->getCommentSingleLineStart(attrib);
     int pos = -1;
 
-    if (highlight()->getCommentSingleLinePosition(attrib) == KateHighlighting::CSLPosColumn0) {
+    if (highlight()->getCommentSingleLinePosition(attrib) == KSyntaxHighlighting::CommentPosition::StartOfLine) {
         pos = 0;
         commentLineMark += QLatin1Char(' ');
     } else {

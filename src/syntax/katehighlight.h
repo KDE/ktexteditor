@@ -189,12 +189,6 @@ public:
     bool canComment(int startAttr, int endAttr) const;
 
     /**
-    * @return 0 if highlighting which attr is a member of does not
-    * define a comment region, otherwise the region is returned
-    */
-    signed char commentRegion(int attr) const;
-
-    /**
      * @return the mulitiline comment start marker for the highlight
      * corresponding to @p attrib.
      */
@@ -215,15 +209,10 @@ public:
     const QHash<QString, QChar> &characterEncodings(int attrib = 0) const;
 
     /**
-     * This enum is used for storing the information where a single line comment marker should be inserted
-     */
-    enum CSLPos { CSLPosColumn0 = 0, CSLPosAfterWhitespace = 1};
-
-    /**
      * @return the single comment marker position for the highlight corresponding
      * to @p attrib.
      */
-    CSLPos getCommentSingleLinePosition(int attrib = 0) const;
+    KSyntaxHighlighting::CommentPosition getCommentSingleLinePosition(int attrib = 0) const;
 
     bool attributeRequiresSpellchecking(int attr);
 
@@ -369,8 +358,7 @@ private:
         QString singleLineCommentMarker;
         QString multiLineCommentStart;
         QString multiLineCommentEnd;
-        QString multiLineRegion;
-        CSLPos  singleLineCommentPosition;
+        KSyntaxHighlighting::CommentPosition singleLineCommentPosition;
         QVector<QRegularExpression> emptyLines;
         QHash<QString, QChar> characterEncodings;
         KatePrefixStore characterEncodingsPrefixStore;

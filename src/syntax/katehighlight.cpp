@@ -140,6 +140,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         properties.definition = includedDefinition;
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
+        properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
+        properties.singleLineCommentPosition = includedDefinition.singleLineCommentPosition();
+        const auto multiLineComment = includedDefinition.multiLineCommentMarker();
+        properties.multiLineCommentStart = multiLineComment.first;
+        properties.multiLineCommentEnd = multiLineComment.second;
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
@@ -515,12 +520,6 @@ const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) cons
     return additionalData(hlKeyForAttrib(attrib)).emptyLines;
 }
 
-signed char KateHighlighting::commentRegion(int attr) const
-{
-    QString commentRegion = additionalData(hlKeyForAttrib(attr)).multiLineRegion;
-    return (commentRegion.isEmpty() ? 0 : (commentRegion.toShort()));
-}
-
 bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
     QString k = hlKeyForAttrib(startAttrib);
@@ -544,7 +543,7 @@ QString KateHighlighting::getCommentSingleLineStart(int attrib) const
     return additionalData(hlKeyForAttrib(attrib)).singleLineCommentMarker;
 }
 
-KateHighlighting::CSLPos KateHighlighting::getCommentSingleLinePosition(int attrib) const
+KSyntaxHighlighting::CommentPosition KateHighlighting::getCommentSingleLinePosition(int attrib) const
 {
     return additionalData(hlKeyForAttrib(attrib)).singleLineCommentPosition;
 }
