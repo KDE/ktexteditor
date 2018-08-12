@@ -712,7 +712,12 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate* doc, co
 QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
     // FIXME-SYNTAX: was before more precise, aka context level
-    return additionalData(m_hlIndex[attributeForLocation(doc, cursor)]).definition.keywordLists();
+    const auto &def = additionalData(m_hlIndex[attributeForLocation(doc, cursor)]).definition;
+    QStringList keywords;
+    for (const auto &keylist : def.keywordLists()) {
+        keywords += def.keywordList(keylist);
+    }
+    return keywords;
 }
 
 bool KateHighlighting::spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
