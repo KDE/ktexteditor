@@ -129,7 +129,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      */
     definitions.push_front(definition());
     for (const auto & includedDefinition : definitions) {
-        // FIXME: right values
         auto &properties = m_additionalData[includedDefinition.name()];
         properties.definition = includedDefinition;
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
@@ -139,6 +138,13 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         const auto multiLineComment = includedDefinition.multiLineCommentMarker();
         properties.multiLineCommentStart = multiLineComment.first;
         properties.multiLineCommentEnd = multiLineComment.second;
+
+        // collect character characters
+        for (const auto &enc : includedDefinition.characterEncodings()) {
+            properties.characterEncodingsPrefixStore.addPrefix(enc.second);
+            properties.characterEncodings[enc.second] = enc.first;
+            properties.reverseCharacterEncodings[enc.first] = enc.second;
+        }
 
         // collect formats
         for (const auto & format : includedDefinition.formats()) {
@@ -413,13 +419,6 @@ const KatePrefixStore &KateHighlighting::getCharacterEncodingsPrefixStore(int at
 const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int attrib) const
 {
     return additionalData(hlKeyForAttrib(attrib)).reverseCharacterEncodings;
-}
-
-void KateHighlighting::addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c)
-{
-    m_additionalData[ key ].characterEncodingsPrefixStore.addPrefix(encoding);
-    m_additionalData[ key ].characterEncodings[ encoding ] = c;
-    m_additionalData[ key ].reverseCharacterEncodings[ c ] = encoding;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
