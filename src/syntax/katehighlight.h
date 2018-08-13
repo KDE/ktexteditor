@@ -281,12 +281,9 @@ private:
 
 private:
     QStringList embeddedHighlightingModes;
-    QStringList RegionList;
-    QStringList ContextNameList;
 
     bool noHl = true;
     bool folding = false;
-    QString deliminator;
 
     QString iName;
     QString iSection;
