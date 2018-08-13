@@ -195,7 +195,7 @@ bool Attribute::fontBold() const
 
 void Attribute::setFontBold(bool bold)
 {
-    setFontWeight(bold ? QFont::Bold : 0);
+    setFontWeight(bold ? QFont::Bold : QFont::Normal);
 }
 
 bool Attribute::hasAnyProperty() const
