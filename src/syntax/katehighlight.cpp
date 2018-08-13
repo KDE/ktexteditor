@@ -75,17 +75,19 @@ inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighti
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 {
     /**
+     * get name and section, always works
+     */
+    iName = def.name();
+    iNameTranslated = def.translatedName();
+    iSection = def.translatedSection();
+
+    /**
      * handle the "no highlighting" case
      */
     if (!def.isValid()) {
-        // some default values
-        iName = QStringLiteral("None"); // not translated internal name (for config and more)
-        iNameTranslated = i18nc("Syntax highlighting", "None"); // user visible name
-        iSection = QString();
-
         // dummy hl info
-        m_additionalData[QStringLiteral("None")];
-        m_hlIndex[0] = QStringLiteral("None");
+        m_additionalData[iName];
+        m_hlIndex[0] = iName;
 
         // be done, all below is just for the real highlighting variants
         return;
@@ -95,9 +97,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * handle the real highlighting case
      */
     noHl = false;
-    iName = def.name();
-    iNameTranslated = def.translatedName();
-    iSection = def.translatedSection();
     iHidden = def.isHidden();
     identifier = def.filePath();
     iVersion = QString::number(def.version());
