@@ -1141,12 +1141,10 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
     if (data.size() == 0) {
         if (listData.length() > 0) {
             QString installedVersion;
-            KateHlManager *hlm = KateHlManager::self();
             QDomDocument doc;
             doc.setContent(listData);
             QDomElement DocElem = doc.documentElement();
             QDomNode n = DocElem.firstChild();
-            KateHighlighting *hl = nullptr;
 
             if (n.isNull()) {
                 qCDebug(LOG_KTE) << QStringLiteral("There is no usable childnode");
@@ -1161,14 +1159,12 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
                 n = n.nextSibling();
 
                 QString Name = e.attribute(QStringLiteral("name"));
-
-                for (int i = 0; i < hlm->modeList().size(); i++) {
-                    hl = hlm->getHl(i);
-                    if (hl && hl->name() == Name) {
-                        installedVersion = QLatin1String("    ") + hl->version();
+                QString version;
+                for (const auto &hl : KateHlManager::self()->modeList()) {
+                    if (hl.name() == Name) {
+                        version = QString::number(hl.version());
+                        installedVersion = QLatin1String("    ") + version;
                         break;
-                    } else {
-                        hl = nullptr;
                     }
                 }
 
@@ -1181,8 +1177,8 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
                 entry->setText(4, e.attribute(QStringLiteral("url")));
 
                 bool is_fresh = false;
-                if (hl) {
-                    unsigned prev_version = parseVersion(hl->version());
+                if (!version.isEmpty()) {
+                    unsigned prev_version = parseVersion(version);
                     unsigned next_version = parseVersion(e.attribute(QStringLiteral("version")));
                     is_fresh = prev_version < next_version;
                 } else {

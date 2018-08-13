@@ -128,10 +128,6 @@ public:
     {
         return iHidden;
     }
-    const QString &version() const
-    {
-        return iVersion;
-    }
     const QString &style() const
     {
         return iStyle;
@@ -296,7 +292,6 @@ private:
     QString iSection;
     bool iHidden = false;
     QString identifier;
-    QString iVersion;
     QString iStyle;
 
     /**

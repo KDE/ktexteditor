@@ -98,7 +98,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     noHl = false;
     iHidden = def.isHidden();
     identifier = def.filePath();
-    iVersion = QString::number(def.version());
     iStyle = def.style();
     m_indentation = def.indenter();
     // FIXME
