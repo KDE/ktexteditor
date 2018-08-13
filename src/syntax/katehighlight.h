@@ -136,14 +136,6 @@ public:
     {
         return iStyle;
     }
-    const QString &author() const
-    {
-        return iAuthor;
-    }
-    const QString &license() const
-    {
-        return iLicense;
-    }
     const QString &getIdentifier() const
     {
         return identifier;
@@ -306,8 +298,6 @@ private:
     QString identifier;
     QString iVersion;
     QString iStyle;
-    QString iAuthor;
-    QString iLicense;
 
     /**
      * Indentation mode, e.g. c-style, ....

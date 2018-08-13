@@ -100,8 +100,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     identifier = def.filePath();
     iVersion = QString::number(def.version());
     iStyle = def.style();
-    iAuthor = def.author();
-    iLicense = def.license();
     m_indentation = def.indenter();
     // FIXME
     folding = true;
