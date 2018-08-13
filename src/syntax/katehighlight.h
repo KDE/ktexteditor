@@ -259,7 +259,6 @@ public:
     const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
     const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;
     const QHash<QChar, QString> &getReverseCharacterEncodings(int attrib) const;
-    int getEncodedCharactersInsertionPolicy(int attrib) const;
 
     /**
      * Returns a list of names of embedded modes.
@@ -325,7 +324,6 @@ private:
         QHash<QString, QChar> characterEncodings;
         KatePrefixStore characterEncodingsPrefixStore;
         QHash<QChar, QString> reverseCharacterEncodings;
-        int encodedCharactersInsertionPolicy;
     };
 
     /**

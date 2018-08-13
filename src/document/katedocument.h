@@ -1243,8 +1243,6 @@ public:
                              KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
     void replaceCharactersByEncoding(const KTextEditor::Range &range);
 
-    enum EncodedCharaterInsertionPolicy {EncodeAlways, EncodeWhenPresent, EncodeNever};
-
 protected:
     KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;
     QString m_defaultDictionary;

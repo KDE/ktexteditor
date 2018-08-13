@@ -416,11 +416,6 @@ const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int 
     return additionalData(hlKeyForAttrib(attrib)).reverseCharacterEncodings;
 }
 
-int KateHighlighting::getEncodedCharactersInsertionPolicy(int attrib) const
-{
-    return additionalData(hlKeyForAttrib(attrib)).encodedCharactersInsertionPolicy;
-}
-
 void KateHighlighting::addCharacterEncoding(const QString &key, const QString &encoding, const QChar &c)
 {
     m_additionalData[ key ].characterEncodingsPrefixStore.addPrefix(encoding);
