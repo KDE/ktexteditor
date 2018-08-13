@@ -425,7 +425,7 @@ void KateHighlighting::addCharacterEncoding(const QString &key, const QString &e
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 {
-    if (attr >= 0 && attr < m_formats.size()) {
+    if (attr >= 0 && attr < static_cast<int>(m_formats.size())) {
         return m_formats[attr].spellCheck();
     }
     return true;
@@ -433,7 +433,7 @@ bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 
 KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) const
 {
-    if (attr >= 0 && attr < m_formats.size()) {
+    if (attr >= 0 && attr < static_cast<int>(m_formats.size())) {
         return textStyleToDefaultStyle(m_formats[attr].textStyle());
     }
     return KTextEditor::dsNormal;
@@ -447,7 +447,7 @@ QString KateHighlighting::hlKeyForAttrib(int i) const
 
 QString KateHighlighting::nameForAttrib(int attrib) const
 {
-    Q_ASSERT(attrib >= 0 && attrib < m_formats.size());
+    Q_ASSERT(attrib >= 0 && attrib < static_cast<int>(m_formats.size()));
     return hlKeyForAttrib(attrib) + QLatin1Char(':') + m_formats[attrib].name();
 }
 
