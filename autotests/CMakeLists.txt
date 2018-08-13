@@ -149,7 +149,6 @@ ktexteditor_unit_test(scripting_test src/script_test_base.cpp src/testutils.cpp)
 ktexteditor_unit_test(bug313759 src/testutils.cpp)
 ktexteditor_unit_test(bug317111 src/testutils.cpp)
 ktexteditor_unit_test(bug205447 src/testutils.cpp)
-ktexteditor_unit_test(katesyntaxtest)
 
 if (BUILD_VIMODE)
   add_subdirectory(src/vimode)
