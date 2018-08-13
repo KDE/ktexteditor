@@ -19,8 +19,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_SYNTAXMANAGER_H__
-#define __KATE_SYNTAXMANAGER_H__
+#pragma once
 
 #include "katetextline.h"
 #include "kateextendedattribute.h"
@@ -109,8 +108,6 @@ public:
     }
 
 private:
-    friend class KateHighlighting;
-
     /**
      * Syntax highlighting definitions.
      */
@@ -121,8 +118,8 @@ private:
      */
     QHash<QString, KateHighlighting *> m_hlDict;
 
+    /**
+     * katesyntaxhighlightingrc config file
+     */
     KConfig m_config;
 };
-
-#endif
-
