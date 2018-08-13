@@ -325,7 +325,6 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
                 it.setValue(tag);
             }
 
-            // adjust maxheight, so we can know when/where to print footer
             pl.maxHeight -= pl.footerHeight;
         }
     } // if ( useHeader || useFooter )
@@ -350,7 +349,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
         pageHeight -= pl.headerHeight + pl.innerMargin;
     }
     if (m_useFooter) {
-        pageHeight -= pl.innerMargin;
+        pageHeight -= pl.footerHeight + pl.innerMargin;
     }
 
     const int linesPerPage = pageHeight / m_fontHeight;
@@ -422,7 +421,7 @@ void PrintPainter::paintNewPage(QPainter &painter, const uint currentPage, uint 
 void PrintPainter::paintHeader(QPainter &painter, const uint currentPage, uint &y, const PageLayout &pl) const
 {
     painter.save();
-    painter.setPen(m_headerForeground);
+    painter.setPen(QPen(m_headerForeground, 0.5));
     painter.setFont(m_fhFont);
 
     if (m_useHeaderBackground) {
@@ -462,13 +461,14 @@ void PrintPainter::paintHeader(QPainter &painter, const uint currentPage, uint &
 void PrintPainter::paintFooter(QPainter &painter, const uint currentPage, const PageLayout &pl) const
 {
     painter.save();
-    painter.setPen(m_footerForeground);
+    painter.setPen(QPen(m_footerForeground, 0.5));
+    painter.setFont(m_fhFont);
 
     if (!(m_useFooterBackground || m_useBox || m_useBackground)) {// draw a 1 px (!?) line to separate footer from contents
-        painter.drawLine(0, pl.maxHeight + pl.innerMargin - 1, pl.headerWidth, pl.maxHeight + pl.innerMargin - 1);
+        painter.drawLine(0, pl.pageHeight - pl.footerHeight - 1, pl.headerWidth, pl.pageHeight - pl.footerHeight - 1);
     }
     if (m_useFooterBackground) {
-        painter.fillRect(0, pl.maxHeight + pl.innerMargin + m_boxWidth, pl.headerWidth, pl.footerHeight, m_footerBackground);
+        painter.fillRect(0, pl.pageHeight - pl.footerHeight, pl.headerWidth, pl.footerHeight, m_footerBackground);
     }
 
     if (pl.footerTagList.count() == 3) {
@@ -484,7 +484,7 @@ void PrintPainter::paintFooter(QPainter &painter, const uint currentPage, const 
             if (s.indexOf(QLatin1String("%p")) != -1) {
                 s.replace(QLatin1String("%p"), QString::number(currentPage));
             }
-            painter.drawText(marg, pl.maxHeight + pl.innerMargin, pl.headerWidth - (marg * 2), pl.footerHeight, align, s);
+            painter.drawText(marg, pl.pageHeight - pl.footerHeight, pl.headerWidth - (marg * 2), pl.footerHeight, align, s);
             align = Qt::AlignVCenter | (i == 0 ? Qt::AlignHCenter : Qt::AlignRight);
         }
     }
