@@ -335,8 +335,6 @@ void KateBuffer::setHighlight(int hlMode)
             invalidate = true;
         }
 
-        h->use();
-
         m_highlight = h;
 
         if (invalidate) {

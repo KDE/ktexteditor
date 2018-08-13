@@ -159,13 +159,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 
 KateHighlighting::~KateHighlighting()
 {
-    // cleanup ;)
-    cleanup();
-}
-
-void KateHighlighting::cleanup()
-{
-    m_attributeArrays.clear();
 }
 
 void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
@@ -438,41 +431,6 @@ void KateHighlighting::addCharacterEncoding(const QString &key, const QString &e
     m_additionalData[ key ].characterEncodingsPrefixStore.addPrefix(encoding);
     m_additionalData[ key ].characterEncodings[ encoding ] = c;
     m_additionalData[ key ].reverseCharacterEncodings[ c ] = encoding;
-}
-
-/**
- * Increase the usage count, and trigger initialization if needed.
- */
-void KateHighlighting::use()
-{
-    if (refCount == 0) {
-        init();
-    }
-
-    refCount = 1;
-}
-
-/**
- * Reload the highlighting.
- */
-
-void KateHighlighting::reload()
-{
-    // nop if not referenced
-    if (refCount == 0) {
-        return;
-    }
-
-    cleanup();
-    init();
-}
-
-/**
- * Initialize a context for the first time.
- */
-
-void KateHighlighting::init()
-{
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)

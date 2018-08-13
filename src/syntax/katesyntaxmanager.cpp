@@ -59,30 +59,12 @@ KateHlManager::KateHlManager()
     , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() :QStringLiteral("katesyntaxhighlightingrc")
     , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
 {
-    // Let's build the Mode List
-    setupModeList();
 }
 
 KateHlManager::~KateHlManager()
 {
-    qDeleteAll(hlList);
-}
-
-void KateHlManager::setupModeList()
-{
-    const auto defs = m_repository.definitions();
-    hlList.reserve(defs.size() + 1);
-    hlDict.reserve(defs.size() + 1);
-    for (int i = 0; i < defs.count(); i++) {
-        KateHighlighting *hl = new KateHighlighting(defs.at(i));
-        hlList.push_back(hl);
-        hlDict.insert(hl->name(), hl);
-    }
-
-    // Normal HL
-    KateHighlighting *hl = new KateHighlighting(KSyntaxHighlighting::Definition());
-    hlList.prepend(hl);
-    hlDict.insert(hl->name(), hl);
+    // delete the loaded highlightings, all other stuff is taken care of by the Repository
+    qDeleteAll(m_hlDict);
 }
 
 KateHlManager *KateHlManager::self()
@@ -92,17 +74,23 @@ KateHlManager *KateHlManager::self()
 
 KateHighlighting *KateHlManager::getHl(int n)
 {
-    if (n < 0 || n >= hlList.count()) {
-        n = 0;
+    // default to "None", must exist
+    if (n < 0 || n >= modeList().count()) {
+        n = nameFind(QStringLiteral("None"));
+        Q_ASSERT(n >= 0);
     }
 
-    return hlList.at(n);
+    // construct it on demand
+    if (m_hlDict.contains(modeList().at(n).name())) {
+        return m_hlDict[modeList().at(n).name()];
+    }
+    return m_hlDict[modeList().at(n).name()] = new KateHighlighting(modeList().at(n));
 }
 
 int KateHlManager::nameFind(const QString &name)
 {
-    for (int i = 0; i < hlList.count(); ++i) {
-        if (hlList.at(i)->name().compare(name, Qt::CaseInsensitive) == 0) {
+    for (int i = 0; i < modeList().count(); ++i) {
+        if (modeList().at(i).name().compare(name, Qt::CaseInsensitive) == 0) {
             return i;
         }
     }
@@ -629,49 +617,60 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
 
 int KateHlManager::highlights()
 {
-    return (int) hlList.count();
+    return modeList().count();
 }
 
 QString KateHlManager::hlName(int n)
 {
-    return hlList.at(n)->name();
+    return modeList().at(n).name();
 }
 
 QString KateHlManager::hlNameTranslated(int n)
 {
-    return hlList.at(n)->nameTranslated();
+    return modeList().at(n).translatedName();
 }
 
 QString KateHlManager::hlSection(int n)
 {
-    return hlList.at(n)->section();
+    return modeList().at(n).section();
 }
 
 bool KateHlManager::hlHidden(int n)
 {
-    return hlList.at(n)->hidden();
-}
-
-QString KateHlManager::identifierForName(const QString &name)
-{
-    if (hlDict.contains(name)) {
-        return hlDict[name]->getIdentifier();
-    }
-
-    return QString();
+    return modeList().at(n).isHidden();
 }
 
 void KateHlManager::reload()
 {
-    for(int i = 0; i < highlights(); i++)
-    {
-        getHl(i)->reload();
+    /**
+     * move current loaded hls from hash to trigger recreation
+     */
+    auto oldHls = m_hlDict;
+    m_hlDict.clear();
+
+    /**
+     * recreate repository
+     * this might even remove highlighting modes known before
+     */
+    m_repository.reload();
+
+    /**
+     * let all documents use the new highlighters
+     * will be created on demand
+     * if old hl not found, use none
+     */
+    for (KTextEditor::DocumentPrivate* doc : KTextEditor::EditorPrivate::self()->kateDocuments()) {
+        auto hlMode = doc->highlightingMode();
+        if (nameFind(hlMode) < 0) {
+            hlMode = QStringLiteral("None");
+        }
+        doc->setHighlightingMode(hlMode);
     }
 
-    foreach(KTextEditor::DocumentPrivate* doc, KTextEditor::EditorPrivate::self()->kateDocuments())
-    {
-        doc->makeAttribs();
-    }
+    /**
+     * delete old highlightings, now no longer referenced
+     */
+    qDeleteAll(oldHls);
 }
 //END
 

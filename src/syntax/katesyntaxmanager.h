@@ -60,8 +60,6 @@ public:
     KateHighlighting *getHl(int n);
     int nameFind(const QString &name);
 
-    QString identifierForName(const QString &);
-
     void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
     void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
 
@@ -120,19 +118,14 @@ private:
     friend class KateHighlighting;
 
     /**
-     * Generate the list of hl modes, store them in myModeList
-     */
-    void setupModeList();
-
-    /**
      * Syntax highlighting definitions.
      */
     KSyntaxHighlighting::Repository m_repository;
 
-    // This list owns objects it holds, thus they should be deleted when the object is removed
-    QList<KateHighlighting *> hlList;
-    // This hash does not own the objects it holds, thus they should not be deleted
-    QHash<QString, KateHighlighting *> hlDict;
+    /**
+     * All loaded highlightings.
+     */
+    QHash<QString, KateHighlighting *> m_hlDict;
 
     KConfig m_config;
 };

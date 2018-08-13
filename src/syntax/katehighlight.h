@@ -92,15 +92,6 @@ protected:
      */
     virtual void applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region) override;
 
-private:
-    /**
-     * this method frees mem ;)
-     * used by the destructor and done(), therefor
-     * not only delete elements but also reset the array
-     * sizes, as we will reuse this object later and refill ;)
-     */
-    void cleanup();
-
 public:
     /**
      * Parse the text and fill in the context array and folding list array
@@ -161,8 +152,6 @@ public:
     {
         return identifier;
     }
-    void use();
-    void reload();
 
     /**
      * @return true if the character @p c is not a deliminator character
@@ -307,8 +296,6 @@ private:
     QList<KTextEditor::Attribute::Ptr> attributesForDefinition();
 
 private:
-    void init();
-
     QStringList embeddedHighlightingModes;
     QStringList RegionList;
     QStringList ContextNameList;
@@ -331,8 +318,6 @@ private:
      * Indentation mode, e.g. c-style, ....
      */
     QString m_indentation;
-
-    int refCount = 0;
 
     bool m_foldingIndentationSensitive = false;
 

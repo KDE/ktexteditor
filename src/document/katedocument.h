@@ -1102,8 +1102,6 @@ public Q_SLOTS:
 public:
     bool queryClose() override;
 
-    void makeAttribs(bool needInvalidate = true);
-
     static bool checkOverwrite(QUrl u, QWidget *parent);
 
     /**
@@ -1122,6 +1120,8 @@ public:
     void updateConfig();
 
 private:
+    void makeAttribs(bool needInvalidate = true);
+
     KateDocumentConfig *const m_config;
 
     /**
