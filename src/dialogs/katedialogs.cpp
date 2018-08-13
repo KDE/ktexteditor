@@ -1162,7 +1162,7 @@ void KateHlDownloadDialog::listDataReceived(KIO::Job *, const QByteArray &data)
 
                 QString Name = e.attribute(QStringLiteral("name"));
 
-                for (int i = 0; i < hlm->highlights(); i++) {
+                for (int i = 0; i < hlm->modeList().size(); i++) {
                     hl = hlm->getHl(i);
                     if (hl && hl->name() == Name) {
                         installedVersion = QLatin1String("    ") + hl->version();

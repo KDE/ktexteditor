@@ -48,11 +48,11 @@ void KateHighlightingMenu::updateMenu(KTextEditor::DocumentPrivate *doc)
 
 void KateHighlightingMenu::slotAboutToShow()
 {
-    for (int z = 0; z < KateHlManager::self()->highlights(); z++) {
-        QString hlName = KateHlManager::self()->hlNameTranslated(z);
-        QString hlSection = KateHlManager::self()->hlSection(z);
+    for (const auto &hl : KateHlManager::self()->modeList()) {
+        QString hlName = hl.translatedName();
+        QString hlSection = hl.section();
 
-        if (!KateHlManager::self()->hlHidden(z)) {
+        if (!hl.isHidden()) {
             if (!hlSection.isEmpty() && !names.contains(hlName)) {
                 if (!subMenusName.contains(hlSection)) {
                     subMenusName << hlSection;
@@ -65,14 +65,14 @@ void KateHighlightingMenu::slotAboutToShow()
                 names << hlName;
                 QAction *a = subMenus.at(m)->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
                 m_actionGroup->addAction(a);
-                a->setData(KateHlManager::self()->hlName(z));
+                a->setData(hl.name());
                 a->setCheckable(true);
                 subActions.append(a);
             } else if (!names.contains(hlName)) {
                 names << hlName;
                 QAction *a = menu()->addAction(QLatin1Char('&') + hlName, this, SLOT(setHl()));
                 m_actionGroup->addAction(a);
-                a->setData(KateHlManager::self()->hlName(z));
+                a->setData(hl.name());
                 a->setCheckable(true);
                 subActions.append(a);
             }

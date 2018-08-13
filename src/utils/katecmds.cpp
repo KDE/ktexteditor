@@ -449,8 +449,8 @@ KCompletion *KateCommands::CoreCommands::completionObject(KTextEditor::View *vie
 
     if (cmd == QLatin1String("set-highlight")) {
         QStringList l;
-        for (int i = 0; i < KateHlManager::self()->highlights(); i++) {
-            l << KateHlManager::self()->hlName(i);
+        for (const auto &hl : KateHlManager::self()->modeList()) {
+            l << hl.name();
         }
 
         KateCmdShellCompletion *co = new KateCmdShellCompletion();

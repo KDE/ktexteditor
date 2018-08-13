@@ -631,11 +631,11 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
 
     headerLayout->addStretch();
 
-    for (int i = 0; i < KateHlManager::self()->highlights(); i++) {
-        if (KateHlManager::self()->hlSection(i).length() > 0) {
-            hlCombo->addItem(KateHlManager::self()->hlSection(i) + QLatin1String("/") + KateHlManager::self()->hlNameTranslated(i));
+    for (const auto &hl : KateHlManager::self()->modeList()) {
+        if (hl.section().length() > 0) {
+            hlCombo->addItem(hl.section() + QLatin1String("/") + hl.translatedName());
         } else {
-            hlCombo->addItem(KateHlManager::self()->hlNameTranslated(i));
+            hlCombo->addItem(hl.translatedName());
         }
     }
     hlCombo->setCurrentIndex(0);
@@ -679,9 +679,9 @@ void KateSchemaConfigHighlightTab::hlChanged(int z)
 
 bool KateSchemaConfigHighlightTab::loadAllHlsForSchema(const QString &schema)
 {
-    QProgressDialog progress(i18n("Loading all highlightings for schema"), QString(), 0, KateHlManager::self()->highlights(), this);
+    QProgressDialog progress(i18n("Loading all highlightings for schema"), QString(), 0, KateHlManager::self()->modeList().size(), this);
     progress.setWindowModality(Qt::WindowModal);
-    for (int i = 0; i < KateHlManager::self()->highlights(); ++i) {
+    for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
         if (!m_hlDict[schema].contains(i)) {
             QList<KTextEditor::Attribute::Ptr> list;
             KateHlManager::self()->getHl(i)->getKateExtendedAttributeListCopy(schema, list);
@@ -689,7 +689,7 @@ bool KateSchemaConfigHighlightTab::loadAllHlsForSchema(const QString &schema)
         }
         progress.setValue(progress.value() + 1);
     }
-    progress.setValue(KateHlManager::self()->highlights());
+    progress.setValue(KateHlManager::self()->modeList().size());
     return true;
 }
 
@@ -1170,10 +1170,10 @@ void KateSchemaConfigPage::importFullSchema()
     // import all Highlighting Text Styles
     //
     // create mapping from highlighting name to internal id
-    const int hlCount = KateHlManager::self()->highlights();
+    const int hlCount = KateHlManager::self()->modeList().size();
     QHash<QString, int> nameToId;
     for (int i = 0; i < hlCount; ++i) {
-        nameToId.insert(KateHlManager::self()->hlName(i), i);
+        nameToId.insert(KateHlManager::self()->modeList().at(i).name(), i);
     }
 
     // may take some time, as we have > 200 highlightings
@@ -1206,7 +1206,7 @@ void KateSchemaConfigPage::apply()
     KTextEditor::EditorPrivate::self()->schemaManager()->config().reparseConfiguration();
 
     // clear all attributes
-    for (int i = 0; i < KateHlManager::self()->highlights(); ++i) {
+    for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
         KateHlManager::self()->getHl(i)->clearAttributeArrays();
     }
 

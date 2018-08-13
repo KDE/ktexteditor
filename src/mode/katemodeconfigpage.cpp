@@ -57,12 +57,11 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     ui->setupUi(newWidget);
 
     ui->cmbHl->addItem(i18n("<Unchanged>"), QVariant(QString()));
-    for (int i = 0; i < KateHlManager::self()->highlights(); i++) {
-        if (KateHlManager::self()->hlSection(i).length() > 0)
-            ui->cmbHl->addItem(KateHlManager::self()->hlSection(i) + QLatin1String("/")
-                               + KateHlManager::self()->hlNameTranslated(i), QVariant(KateHlManager::self()->hlName(i)));
+   for (const auto &hl : KateHlManager::self()->modeList()) {
+        if (hl.section().length() > 0)
+            ui->cmbHl->addItem(hl.section() + QLatin1String("/") + hl.translatedName(), QVariant(hl.name()));
         else {
-            ui->cmbHl->addItem(KateHlManager::self()->hlNameTranslated(i), QVariant(KateHlManager::self()->hlName(i)));
+            ui->cmbHl->addItem(hl.translatedName(), QVariant(hl.name()));
         }
     }
 

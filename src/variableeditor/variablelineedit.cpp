@@ -213,13 +213,12 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'syntax' (hl) to list
     /* Prepare list of highlighting modes */
-    const int count = KateHlManager::self()->highlights();
-    QStringList hl;
-    for (int z = 0; z < count; ++z) {
-        hl << KateHlManager::self()->hlName(z);
+    QStringList hls;
+    for (const auto &hl : KateHlManager::self()->modeList()) {
+        hls << hl.name();
     }
 
-    item = new VariableStringListItem(QStringLiteral("syntax"), hl, hl.at(0));
+    item = new VariableStringListItem(QStringLiteral("syntax"), hls, hls.at(0));
     if (activeDoc) {
         static_cast<VariableStringListItem *>(item)->setValue(activeDoc->highlightingMode());
     }

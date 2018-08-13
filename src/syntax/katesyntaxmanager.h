@@ -63,12 +63,6 @@ public:
     void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
     void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
 
-    int highlights();
-    QString hlName(int n);
-    QString hlNameTranslated(int n);
-    QString hlSection(int n);
-    bool hlHidden(int n);
-
     void reload();
 
 Q_SIGNALS:

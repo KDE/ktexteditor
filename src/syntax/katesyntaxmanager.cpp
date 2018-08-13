@@ -615,31 +615,6 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
     emit changed();
 }
 
-int KateHlManager::highlights()
-{
-    return modeList().count();
-}
-
-QString KateHlManager::hlName(int n)
-{
-    return modeList().at(n).name();
-}
-
-QString KateHlManager::hlNameTranslated(int n)
-{
-    return modeList().at(n).translatedName();
-}
-
-QString KateHlManager::hlSection(int n)
-{
-    return modeList().at(n).section();
-}
-
-bool KateHlManager::hlHidden(int n)
-{
-    return modeList().at(n).isHidden();
-}
-
 void KateHlManager::reload()
 {
     /**
