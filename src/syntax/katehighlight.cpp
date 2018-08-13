@@ -100,8 +100,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     identifier = def.filePath();
     iStyle = def.style();
     m_indentation = def.indenter();
-    // FIXME
-    folding = true;
+    folding = def.foldingEnabled();
     m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
 
     /**
