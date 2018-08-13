@@ -319,6 +319,7 @@ private:
     // line scrollbar + first visible (virtual) line in the current view
     //
     KateScrollBar *m_lineScroll;
+    qreal m_accumulatedScroll = 0.0;
     QWidget *m_dummy;
 
     // These are now cursors to account for word-wrap.
