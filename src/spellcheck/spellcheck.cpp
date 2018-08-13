@@ -237,7 +237,8 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRang
 void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc,
         const KTextEditor::Range &replacementRange)
 {
-    if (doc->containsCharacterEncoding(replacementRange)) {
+    const int attr = doc->kateTextLine(replacementRange.start().line())->attribute(replacementRange.start().column());
+    if (!doc->highlight()->getCharacterEncodings(attr).isEmpty() && doc->containsCharacterEncoding(replacementRange)) {
         doc->replaceText(replacementRange, newWord);
         doc->replaceCharactersByEncoding(KTextEditor::Range(replacementRange.start(),
                                          replacementRange.start() + KTextEditor::Cursor(0, newWord.length())));
