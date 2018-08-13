@@ -78,7 +78,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * get name and section, always works
      */
     iName = def.name();
-    iNameTranslated = def.translatedName();
     iSection = def.translatedSection();
 
     /**

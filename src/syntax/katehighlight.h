@@ -120,10 +120,6 @@ public:
     {
         return iName;
     }
-    const QString &nameTranslated() const
-    {
-        return iNameTranslated;
-    }
     const QString &section() const
     {
         return iSection;
@@ -305,7 +301,6 @@ private:
     QString deliminator;
 
     QString iName;
-    QString iNameTranslated;
     QString iSection;
     bool iHidden = false;
     QString identifier;
