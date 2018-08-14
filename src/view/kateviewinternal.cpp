@@ -47,6 +47,7 @@
 
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/documentcursor.h>
+#include <ktexteditor/inlinenoteprovider.h>
 #include <ktexteditor/texthintinterface.h>
 #include <KCursor>
 
@@ -2587,8 +2588,17 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 
 void KateViewInternal::mousePressEvent(QMouseEvent *e)
 {
+    // was an inline note clicked?
+    auto note = inlineNoteAt(e->pos());
+    if (note.isValid()) {
+        note.provider()->inlineNoteActivated(note, e->button(), toNoteCoordinates(e->pos(), note));
+        return;
+    }
+
+    // no -- continue with normal handling
     switch (e->button()) {
     case Qt::LeftButton:
+
         m_selChangedByUser = false;
 
         if (m_possibleTripleClick) {
@@ -2873,6 +2883,28 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     if (newPosition != m_mouse) {
         m_mouse = newPosition;
         mouseMoved();
+    }
+
+    if (e->buttons() == Qt::NoButton) {
+        auto note = inlineNoteAt(e->pos());
+        if (note.isValid()) {
+            const auto notePos = toNoteCoordinates(e->pos(), note);
+            if (!m_activeInlineNote.isValid()) {
+                // no active note -- focus in
+                note.provider()->inlineNoteFocusInEvent(note, notePos);
+                m_activeInlineNote = note;
+            }
+            else {
+                note.provider()->inlineNoteMouseMoveEvent(note, notePos);
+            }
+            // the note might change its appearance in result to the event
+            tagLines(note.position(), note.position(), true);
+        }
+        else if (m_activeInlineNote.isValid()) {
+            m_activeInlineNote.provider()->inlineNoteFocusOutEvent(m_activeInlineNote);
+            tagLines(m_activeInlineNote.position(), m_activeInlineNote.position(), true);
+            m_activeInlineNote = {};
+        }
     }
 
     if (e->buttons() & Qt::LeftButton) {
@@ -3869,4 +3901,46 @@ void  KateViewInternal::documentTextRemoved(KTextEditor::Document * /*document*/
         QAccessible::updateAccessibility(&ev);
     }
 #endif
+}
+
+QRect KateViewInternal::inlineNoteRect(const KTextEditor::InlineNote& note) const
+{
+    // compute note width and position
+    auto noteWidth = note.width();
+    auto noteCursor = KTextEditor::Cursor(note.position().line(), note.column());
+
+    // The cursor might be outside of the text. In that case, clamp it to the text and
+    // later on add the missing x offset.
+    const auto lineLength = view()->document()->lineLength(noteCursor.line());
+    int extraOffset = 0;
+    if (noteCursor.column() > lineLength) {
+        extraOffset = (noteCursor.column() - lineLength) * renderer()->spaceWidth();
+        noteCursor.setColumn(lineLength);
+    }
+    auto noteStartPos = cursorToCoordinate(noteCursor, true, false);
+
+    // compute the note's rect
+    auto noteRect = QRect(noteStartPos + QPoint{extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
+    return noteRect;
+}
+
+KTextEditor::InlineNote KateViewInternal::inlineNoteAt(const QPoint& pos) const
+{
+    // compute the associated cursor to get the right line
+    auto cursor = m_view->coordinatesToCursor(pos);
+    auto inlineNotes = m_view->inlineNotes(cursor.line());
+    // loop over all notes and check if the point is inside it
+    foreach (const auto& note, inlineNotes) {
+        auto noteRect = inlineNoteRect(note);
+        if (noteRect.contains(pos)) {
+            return note;
+        }
+    }
+    // none found -- return an invalid note
+    return {};
+}
+
+QPoint KateViewInternal::toNoteCoordinates(const QPoint& pos, const KTextEditor::InlineNote& note) const
+{
+    return pos - inlineNoteRect(note).topLeft();
 }

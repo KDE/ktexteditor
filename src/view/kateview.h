@@ -24,6 +24,7 @@
 
 #include <ktexteditor/view.h>
 #include <ktexteditor/texthintinterface.h>
+#include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/markinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/configinterface.h>
@@ -46,6 +47,7 @@ namespace KTextEditor
 {
 class AnnotationModel;
 class Message;
+class InlineNoteProvider;
 }
 
 namespace KTextEditor { class DocumentPrivate; }
@@ -84,6 +86,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     public KTextEditor::TextHintInterface,
     public KTextEditor::CodeCompletionInterface,
     public KTextEditor::ConfigInterface,
+    public KTextEditor::InlineNoteInterface,
     public KTextEditor::AnnotationViewInterface
 {
     Q_OBJECT
@@ -91,6 +94,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     Q_INTERFACES(KTextEditor::ConfigInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
+    Q_INTERFACES(KTextEditor::InlineNoteInterface)
 
     friend class KTextEditor::View;
     friend class ::KateViewInternal;
@@ -249,6 +253,23 @@ public:
     {
         return m_hasWrap;
     }
+
+    //
+    // Inline Notes Interface
+    //
+public:
+    void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
+    void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
+    QRect inlineNoteRect(const KTextEditor::InlineNote& note) const;
+
+    QVarLengthArray<KTextEditor::InlineNote, 8> inlineNotes(int line) const;
+
+private:
+    QVector<KTextEditor::InlineNoteProvider *> m_inlineNoteProviders;
+
+private Q_SLOTS:
+    void inlineNotesReset();
+    void inlineNotesLineChanged(int line);
 
     //
     // KTextEditor::SelectionInterface stuff

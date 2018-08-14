@@ -58,6 +58,7 @@
 #include "katestatusbar.h"
 #include "kateabstractinputmode.h"
 
+#include <ktexteditor/inlinenoteprovider.h>
 #include <KTextEditor/Message>
 
 #include <KParts/Event>
@@ -3643,6 +3644,74 @@ void KTextEditor::ViewPrivate::printPreview()
 }
 
 //END
+
+//BEGIN KTextEditor::InlineNoteInterface
+void KTextEditor::ViewPrivate::registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
+{
+    if (! m_inlineNoteProviders.contains(provider)) {
+        m_inlineNoteProviders.append(provider);
+
+        connect(provider, &KTextEditor::InlineNoteProvider::inlineNotesReset, this, &ViewPrivate::inlineNotesReset);
+        connect(provider, &KTextEditor::InlineNoteProvider::inlineNotesChanged, this, &ViewPrivate::inlineNotesLineChanged);
+
+        inlineNotesReset();
+    }
+}
+
+void KTextEditor::ViewPrivate::unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
+{
+    const int index = m_inlineNoteProviders.indexOf(provider);
+    if (index >= 0) {
+        m_inlineNoteProviders.removeAt(index);
+
+        provider->disconnect(this);
+
+        inlineNotesReset();
+    }
+}
+
+QVarLengthArray<KTextEditor::InlineNote, 8> KTextEditor::ViewPrivate::inlineNotes(int line) const
+{
+    QVarLengthArray<KTextEditor::InlineNote, 8> allInlineNotes;
+    for (KTextEditor::InlineNoteProvider *provider: m_inlineNoteProviders) {
+        int index = 0;
+        for (auto column: provider->inlineNotes(line)) {
+            KTextEditor::InlineNote note = {
+                provider,
+                {line, column},
+                index,
+                this,
+                m_viewInternal->renderer()->currentFont(),
+                m_viewInternal->renderer()->lineHeight(),
+                m_viewInternal->m_activeInlineNote.hasFocus(),
+            };
+            allInlineNotes.append(note);
+            index++;
+        }
+    }
+    return allInlineNotes;
+}
+
+QRect KTextEditor::ViewPrivate::inlineNoteRect(const KTextEditor::InlineNote& note) const
+{
+    return m_viewInternal->inlineNoteRect(note);
+}
+
+void KTextEditor::ViewPrivate::inlineNotesReset()
+{
+    m_viewInternal->m_activeInlineNote = {};
+    tagLines(0, m_doc->lastLine(), true);
+}
+
+void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
+{
+    if ( line == m_viewInternal->m_activeInlineNote.position().line() ) {
+        m_viewInternal->m_activeInlineNote = {};
+    }
+    tagLines(line, line, true);
+}
+
+//END KTextEditor::InlineNoteInterface
 
 KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const
 {

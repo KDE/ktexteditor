@@ -32,6 +32,9 @@
 #include "plugin.h"
 
 #include "command.h"
+#include "inlinenoteinterface.h"
+#include "inlinenote.h"
+#include "inlinenoteprovider.h"
 #include "markinterface.h"
 #include "modificationinterface.h"
 #include "sessionconfiginterface.h"
@@ -209,6 +212,116 @@ TextHintProvider::TextHintProvider()
 
 TextHintProvider::~TextHintProvider()
 {}
+
+InlineNoteInterface::InlineNoteInterface()
+{}
+
+InlineNoteInterface::~InlineNoteInterface()
+{}
+
+InlineNoteProvider::InlineNoteProvider()
+{}
+
+InlineNoteProvider::~InlineNoteProvider()
+{}
+
+InlineNote::InlineNote(InlineNoteProvider* provider, const KTextEditor::Cursor& position, int index,
+                       const KTextEditor::View* view, QFont font, int lineHeight, bool hasFocus)
+    : m_provider(provider)
+    , m_view(view)
+    , m_position(position)
+    , m_index(index)
+    , m_hasFocus(hasFocus)
+    , m_font(font)
+    , m_lineHeight(lineHeight)
+{
+}
+
+InlineNote::InlineNote() = default;
+
+int InlineNote::column() const
+{
+    return m_position.column();
+}
+
+qreal InlineNote::width() const
+{
+    return m_provider->inlineNoteSize(*this).width();
+}
+
+bool KTextEditor::InlineNote::hasFocus() const
+{
+    return m_hasFocus;
+}
+
+void KTextEditor::InlineNoteProvider::inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& pos)
+{
+    Q_UNUSED(note);
+    Q_UNUSED(buttons);
+    Q_UNUSED(pos);
+}
+
+void KTextEditor::InlineNoteProvider::inlineNoteFocusInEvent(const KTextEditor::InlineNote& note, const QPoint& pos)
+{
+    Q_UNUSED(note);
+    Q_UNUSED(pos);
+}
+
+void KTextEditor::InlineNoteProvider::inlineNoteFocusOutEvent(const KTextEditor::InlineNote& note)
+{
+    Q_UNUSED(note);
+}
+
+void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor::InlineNote& note, const QPoint& pos)
+{
+    Q_UNUSED(note);
+    Q_UNUSED(pos);
+}
+
+bool InlineNote::isValid() const
+{
+    return m_provider != nullptr && m_position.isValid();
+}
+
+bool InlineNote::operator==(const InlineNote& other) const {
+    return m_provider == other.m_provider && m_position == other.m_position && m_index == other.m_index;
+}
+
+QPoint InlineNote::mapToGlobal(const QPoint& pos) const
+{
+    auto localPos = static_cast<const ViewPrivate*>(m_view)->inlineNoteRect(*this).topLeft() + pos;
+    return m_view->mapToGlobal(localPos);
+}
+
+KTextEditor::InlineNoteProvider* InlineNote::provider() const
+{
+    return m_provider;
+}
+
+const KTextEditor::View* InlineNote::view() const
+{
+    return m_view;
+}
+
+QFont InlineNote::font() const
+{
+    return m_font;
+}
+
+int InlineNote::index() const
+{
+    return m_index;
+}
+
+int InlineNote::lineHeight() const
+{
+    return m_lineHeight;
+}
+
+KTextEditor::Cursor InlineNote::position() const
+{
+    return m_position;
+}
 
 Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)

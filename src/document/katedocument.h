@@ -36,6 +36,7 @@
 #include <ktexteditor/movinginterface.h>
 #include <ktexteditor/message.h>
 #include <ktexteditor/mainwindow.h>
+#include <ktexteditor/inlinenoteinterface.h>
 
 #include <ktexteditor_export.h>
 #include "katetextline.h"

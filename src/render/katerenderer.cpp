@@ -31,8 +31,12 @@
 #include "katetextlayout.h"
 #include "katebuffer.h"
 
+#include "ktexteditor/inlinenote.h"
+#include "ktexteditor/inlinenoteprovider.h"
+
 #include "katepartdebug.h"
 
+#include <QFont>
 #include <QPainter>
 #include <QTextLine>
 #include <QStack>
@@ -757,6 +761,36 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
         }
 
+        // Draw inline notes
+        const auto inlineNotes = m_view->inlineNotes(range->line());
+        for (const KTextEditor::InlineNote& inlineNote: inlineNotes) {
+            int column = inlineNote.column();
+            int viewLine = range->viewLineForColumn(column);
+
+            // Determine the position where to paint the note.
+	    // We start by getting the x coordinate of cursor placed to the column.
+            qreal x = range->viewLine(viewLine).lineLayout().cursorToX(column) - xStart;
+            int textLength = range->length();
+            if (column == 0 || column < textLength) {
+                // If the note is inside text or at the beginning, then there is a hole in the text where the
+                // note should be painted and the cursor gets placed at the right side of it. So we have to
+		// subtract the width of the note to get to left side of the hole.
+                x -= inlineNote.width();
+            } else {
+                // If the note is outside the text, then the X coordinate is located at the end of the line.
+                // Add appropriate amount of spaces to reach the required column.
+                x += spaceWidth() * (column - textLength);
+            }
+
+            qreal y = lineHeight() * viewLine;
+
+            // Paint the note
+            paint.save();
+            paint.translate(x, y);
+            inlineNote.provider()->paintInlineNote(inlineNote, paint);
+            paint.restore();
+        }
+
         // draw word-wrap-honor-indent filling
         if ((range->viewLineCount() > 1)  && range->shiftX() && (range->shiftX() > xStart)) {
             if (backgroundBrushSet)
@@ -1007,7 +1041,29 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     l->setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
-    l->setFormats(decorationsForLine(textLine, lineLayout->line()));
+    QVector<QTextLayout::FormatRange> decorations = decorationsForLine(textLine, lineLayout->line());
+
+    int firstLineOffset = 0;
+
+    const auto inlineNotes = m_view->inlineNotes(lineLayout->line());
+    for (const KTextEditor::InlineNote& inlineNote: inlineNotes) {
+        int column = inlineNote.column();
+        int width = inlineNote.width();
+
+        // Make space for every inline note.
+        // If it is on column 0 (at the beginning of the line), we must offset the first line.
+        // If it is inside the text, we use absolute letter spacing to create space for it between the two letters.
+        // If it is outside of the text, we don't have to make space for it.
+        if (column == 0) {
+            firstLineOffset = width;
+        } else if (column < l->text().length()) {
+            QTextCharFormat text_char_format;
+            text_char_format.setFontLetterSpacing(width);
+            text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
+            decorations.append(QTextLayout::FormatRange { column - 1, 1, text_char_format });
+        }
+    }
+    l->setFormats(decorations);
 
     // Begin layouting
     l->beginLayout();
@@ -1033,7 +1089,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
         // we include the leading, this must match the ::updateFontHeight code!
         line.setLeadingIncluded(true);
 
-        line.setPosition(QPoint(line.lineNumber() ? shiftX : 0, height));
+        line.setPosition(QPoint(line.lineNumber() ? shiftX : firstLineOffset, height));
 
         if (needShiftX && line.width() > 0)
         {
