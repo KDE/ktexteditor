@@ -75,7 +75,6 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deleteType()));
     ui->btnMimeTypes->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
     connect(ui->btnMimeTypes, SIGNAL(clicked()), this, SLOT(showMTDlg()));
-    connect(ui->btnDownload, SIGNAL(clicked()), this, SLOT(hlDownload()));
 
     reload();
 
@@ -292,12 +291,6 @@ void ModeConfigPage::showMTDlg()
         ui->edtFileExtensions->setText(d.chooser()->patterns().join(QLatin1Char(';')));
         ui->edtMimeTypes->setText(d.chooser()->mimeTypes().join(QLatin1Char(';')));
     }
-}
-
-void ModeConfigPage::hlDownload()
-{
-    KateHlDownloadDialog diag(this, "hlDownload", true);
-    diag.exec();
 }
 
 QString ModeConfigPage::name() const

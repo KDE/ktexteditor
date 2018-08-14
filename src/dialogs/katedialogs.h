@@ -305,26 +305,6 @@ private:
     ModeConfigPage *modeConfigPage;
 };
 
-class KateHlDownloadDialog: public QDialog
-{
-    Q_OBJECT
-
-public:
-    KateHlDownloadDialog(QWidget *parent, const char *name, bool modal);
-    ~KateHlDownloadDialog();
-
-private:
-    static unsigned parseVersion(const QString &);
-    class QTreeWidget  *list;
-    class QString listData;
-    KIO::TransferJob *transferJob;
-    QPushButton *m_installButton;
-
-private Q_SLOTS:
-    void listDataReceived(KIO::Job *, const QByteArray &data);
-    void slotInstall();
-};
-
 /**
  * This dialog will prompt the user for what do with a file that is
  * modified on disk.

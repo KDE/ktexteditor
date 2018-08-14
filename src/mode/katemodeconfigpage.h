@@ -54,7 +54,6 @@ private Q_SLOTS:
     void typeChanged(int type);
     void showMTDlg();
     void save();
-    void hlDownload();
 
 private:
     Ui::FileTypeConfigWidget *ui;
