@@ -38,17 +38,6 @@
 
 #include <KConfigGroup>
 #include <KColorUtils>
-#include <KMessageBox>
-
-#include <QSet>
-#include <QAction>
-#include <QStringList>
-#include <QTextStream>
-#include <QFile>
-#include <QDir>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QXmlStreamReader>
 //END
 
 using namespace KTextEditor;
