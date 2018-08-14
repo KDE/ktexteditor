@@ -639,5 +639,44 @@ void SearchBarTest::testReplaceManyCapturesBug365124()
     QCOMPARE(doc.text(), QString("one::two::three::four::five::six::seven::eight::nine::ten::eleven::twelve::thirteen\n"));
 }
 
-#include "moc_searchbar_test.cpp"
+void SearchBarTest::testReplaceEscapeSequence_data()
+{
+    QTest::addColumn<QString>("textBefore");
+    QTest::addColumn<QString>("textAfter");
+    QTest::addColumn<Cursor>("cursorBefore");
+    QTest::addColumn<Cursor>("cursorAfter");
 
+    testNewRow() << QStringLiteral("a\n") << QStringLiteral("a ") << Cursor(1, 0) << Cursor(0, 2);
+    testNewRow() << QStringLiteral("a\nb\n") << QStringLiteral("a b ") << Cursor(2, 0) << Cursor(0, 4);
+    testNewRow() << QStringLiteral("\n\n\n") << QStringLiteral("   ") << Cursor(3, 0) << Cursor(0, 3);
+}
+
+void SearchBarTest::testReplaceEscapeSequence()
+{
+    QFETCH(QString, textBefore);
+    QFETCH(QString, textAfter);
+    QFETCH(Cursor, cursorBefore);
+    QFETCH(Cursor, cursorAfter);
+
+    // testcase for https://bugs.kde.org/show_bug.cgi?id=381080
+    KTextEditor::DocumentPrivate doc;
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+
+    doc.setText(textBefore);
+    view.setCursorPosition(cursorBefore);
+    QCOMPARE(view.cursorPosition(), cursorBefore);
+
+    KateSearchBar bar(true, &view, &config);
+
+    bar.setSearchMode(KateSearchBar::MODE_ESCAPE_SEQUENCES);
+    bar.setSearchPattern(QStringLiteral("\\n"));
+    bar.setReplacementPattern(QStringLiteral(" "));
+
+    bar.replaceAll();
+
+    QCOMPARE(doc.text(), textAfter);
+    QCOMPARE(view.cursorPosition(), cursorAfter);
+}
+
+#include "moc_searchbar_test.cpp"

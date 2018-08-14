@@ -86,14 +86,19 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
                     if (forMin == j && startCol < inputRange.start().column()) {
                         break;
                     }
-                    if (!hayLine.endsWith(needleLine, m_caseSensitivity)) {
+
+                    // NOTE: QString("")::endsWith("") is false in Qt, therefore we need the additional checks.
+                    const bool endsWith = hayLine.endsWith(needleLine, m_caseSensitivity) || (hayLine.isEmpty() && needleLine.isEmpty());
+                    if (!endsWith) {
                         break;
                     }
                 } else if (k == needleLines.count() - 1) {
                     // last line
                     const int maxRight = (j + k == inputRange.end().line()) ? inputRange.end().column() : hayLine.length();
 
-                    if (hayLine.startsWith(needleLine, m_caseSensitivity) && needleLine.length() <= maxRight) {
+                    // NOTE: QString("")::startsWith("") is false in Qt, therefore we need the additional checks.
+                    const bool startsWith = hayLine.startsWith(needleLine, m_caseSensitivity) || (hayLine.isEmpty() && needleLine.isEmpty());
+                    if (startsWith && needleLine.length() <= maxRight) {
                         return KTextEditor::Range(j, startCol, j + k, needleLine.length());
                     }
                 } else {

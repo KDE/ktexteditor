@@ -73,6 +73,9 @@ private Q_SLOTS:
     void testReplaceInBlockMode();
 
     void testReplaceManyCapturesBug365124();
+
+    void testReplaceEscapeSequence_data();
+    void testReplaceEscapeSequence();
 };
 
 #endif
