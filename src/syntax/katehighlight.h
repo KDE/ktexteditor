@@ -56,7 +56,6 @@ class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
 {
 public:
     KateHighlighting(const KSyntaxHighlighting::Definition &def);
-    ~KateHighlighting();
 
 protected:
     /**

@@ -61,12 +61,6 @@ KateHlManager::KateHlManager()
 {
 }
 
-KateHlManager::~KateHlManager()
-{
-    // delete the loaded highlightings, all other stuff is taken care of by the Repository
-    qDeleteAll(m_hlDict);
-}
-
 KateHlManager *KateHlManager::self()
 {
     return KTextEditor::EditorPrivate::self()->hlManager();
@@ -81,10 +75,10 @@ KateHighlighting *KateHlManager::getHl(int n)
     }
 
     // construct it on demand
-    if (m_hlDict.contains(modeList().at(n).name())) {
-        return m_hlDict[modeList().at(n).name()];
+    if (!m_hlDict.contains(modeList().at(n).name())) {
+        m_hlDict[modeList().at(n).name()] = std::make_shared<KateHighlighting>(modeList().at(n));
     }
-    return m_hlDict[modeList().at(n).name()] = new KateHighlighting(modeList().at(n));
+    return m_hlDict[modeList().at(n).name()].get();
 }
 
 int KateHlManager::nameFind(const QString &name)
@@ -618,7 +612,7 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
 void KateHlManager::reload()
 {
     /**
-     * move current loaded hls from hash to trigger recreation
+     * copy current loaded hls from hash to trigger recreation
      */
     auto oldHls = m_hlDict;
     m_hlDict.clear();
@@ -641,11 +635,6 @@ void KateHlManager::reload()
         }
         doc->setHighlightingMode(hlMode);
     }
-
-    /**
-     * delete old highlightings, now no longer referenced
-     */
-    qDeleteAll(oldHls);
 }
 //END
 

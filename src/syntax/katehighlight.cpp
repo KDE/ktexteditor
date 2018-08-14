@@ -165,10 +165,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     }
 }
 
-KateHighlighting::~KateHighlighting()
-{
-}
-
 void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
                                    Kate::TextLineData *textLine,
                                    const Kate::TextLineData *nextLine,

@@ -39,6 +39,8 @@
 #include <QPointer>
 #include <QDate>
 
+#include <memory>
+
 class KateHighlighting;
 
 class KateHlManager : public QObject
@@ -47,7 +49,6 @@ class KateHlManager : public QObject
 
 public:
     KateHlManager();
-    ~KateHlManager();
 
     static KateHlManager *self();
 
@@ -116,7 +117,7 @@ private:
     /**
      * All loaded highlightings.
      */
-    QHash<QString, KateHighlighting *> m_hlDict;
+    QHash<QString, std::shared_ptr<KateHighlighting>> m_hlDict;
 
     /**
      * katesyntaxhighlightingrc config file
