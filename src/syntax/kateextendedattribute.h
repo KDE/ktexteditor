@@ -48,6 +48,6 @@ enum CustomProperties {
         AttributeUserProperty = 0x110000
 };
 
-typedef QList<KTextEditor::Attribute::Ptr> KateAttributeList;
+typedef QVector<KTextEditor::Attribute::Ptr> KateAttributeList;
 
 #endif

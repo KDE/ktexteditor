@@ -498,7 +498,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     int _ystart = y;
     QString _hlName = m_doc->highlight()->name();
 
-    QList<KTextEditor::Attribute::Ptr> _attributes; // list of highlight attributes for the legend
+    QVector<KTextEditor::Attribute::Ptr> _attributes; // list of highlight attributes for the legend
     m_doc->highlight()->getKateExtendedAttributeList(m_renderer->config()->schema(), _attributes);
 
     KateAttributeList _defaultAttributes;

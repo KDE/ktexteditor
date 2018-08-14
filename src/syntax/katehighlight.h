@@ -112,7 +112,7 @@ public:
      * @param schema The id of the schema group to save
      * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
      */
-    void setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list,
+    void setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list,
                                       KConfig *cfg = nullptr /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
     const QString &name() const
@@ -230,7 +230,7 @@ public:
 
     void clearAttributeArrays();
 
-    QList<KTextEditor::Attribute::Ptr> attributes(const QString &schema);
+    QVector<KTextEditor::Attribute::Ptr> attributes(const QString &schema);
 
     inline bool noHighlighting() const
     {
@@ -246,8 +246,8 @@ public:
         return m_indentation;
     }
 
-    void getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
-    void getKateExtendedAttributeListCopy(const QString &schema, QList<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
+    void getKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
+    void getKateExtendedAttributeListCopy(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
 
     const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
     const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;
@@ -263,7 +263,7 @@ private:
      * create list of attributes from internal formats with properties as defined in syntax file
      * @return attributes list with attributes as defined in syntax file
      */
-    QList<KTextEditor::Attribute::Ptr> attributesForDefinition();
+    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition();
 
     int sanitizeFormatIndex(int attrib) const;
 
@@ -287,7 +287,7 @@ private:
     bool m_foldingIndentationSensitive = false;
 
     // map schema name to attributes...
-    QHash< QString, QList<KTextEditor::Attribute::Ptr> > m_attributeArrays;
+    QHash< QString, QVector<KTextEditor::Attribute::Ptr> > m_attributeArrays;
 
     /**
      * This class holds the additional properties for one highlight

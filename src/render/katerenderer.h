@@ -413,7 +413,7 @@ private:
     bool m_printerFriendly;
     QColor m_caretOverrideColor;
 
-    QList<KTextEditor::Attribute::Ptr> m_attributes;
+    QVector<KTextEditor::Attribute::Ptr> m_attributes;
 
     /**
      * Configuration

@@ -291,7 +291,7 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
     }
 }
 
-void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
+void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
 {
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
@@ -361,9 +361,9 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QList
     }
 }
 
-void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QList< KTextEditor::Attribute::Ptr > &list, KConfig *cfg)
+void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg)
 {
-    QList<KTextEditor::Attribute::Ptr> attributes;
+    QVector<KTextEditor::Attribute::Ptr> attributes;
     getKateExtendedAttributeList(schema, attributes, cfg);
 
     list.clear();
@@ -373,7 +373,7 @@ void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, Q
     }
 }
 
-void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
+void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
 {
      KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
@@ -502,12 +502,12 @@ void KateHighlighting::clearAttributeArrays()
     m_attributeArrays.clear();
 }
 
-QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
+QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
 {
      /**
      * create list of all known things
      */
-    QList<KTextEditor::Attribute::Ptr> array;
+    QVector<KTextEditor::Attribute::Ptr> array;
     for (const auto &format : m_formats) {
         /**
          * FIXME: atm we just set some theme here for later color generation
@@ -552,7 +552,7 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
     return array;
 }
 
-QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
+QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
 {
     // found it, already floating around
     if (m_attributeArrays.contains(schema)) {
@@ -560,12 +560,12 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &s
     }
 
     // k, schema correct, let create the data
-    QList<KTextEditor::Attribute::Ptr> array;
+    QVector<KTextEditor::Attribute::Ptr> array;
     KateAttributeList defaultStyleList;
 
     KateHlManager::self()->getDefaults(schema, defaultStyleList);
 
-    QList<KTextEditor::Attribute::Ptr> itemDataList;
+    QVector<KTextEditor::Attribute::Ptr> itemDataList;
     getKateExtendedAttributeList(schema, itemDataList);
 
     uint nAttribs = itemDataList.count();

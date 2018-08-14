@@ -683,7 +683,7 @@ bool KateSchemaConfigHighlightTab::loadAllHlsForSchema(const QString &schema)
     progress.setWindowModality(Qt::WindowModal);
     for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
         if (!m_hlDict[schema].contains(i)) {
-            QList<KTextEditor::Attribute::Ptr> list;
+            QVector<KTextEditor::Attribute::Ptr> list;
             KateHlManager::self()->getHl(i)->getKateExtendedAttributeListCopy(schema, list);
             m_hlDict[schema].insert(i, list);
         }
@@ -700,11 +700,11 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     m_styles->clear();
 
     if (!m_hlDict.contains(m_schema)) {
-        m_hlDict.insert(schema, QHash<int, QList<KTextEditor::Attribute::Ptr> >());
+        m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr> >());
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        QList<KTextEditor::Attribute::Ptr> list;
+        QVector<KTextEditor::Attribute::Ptr> list;
         KateHlManager::self()->getHl(m_hl)->getKateExtendedAttributeListCopy(m_schema, list);
         m_hlDict[m_schema].insert(m_hl, list);
     }
@@ -715,7 +715,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     updateColorPalette(l->at(0)->foreground().color());
 
     QHash<QString, QTreeWidgetItem *> prefixes;
-    QList<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
+    QVector<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
     while (it != m_hlDict[m_schema][m_hl].constEnd()) {
         const KTextEditor::Attribute::Ptr itemData = *it;
         Q_ASSERT(itemData);
@@ -763,10 +763,10 @@ void KateSchemaConfigHighlightTab::reload()
 
 void KateSchemaConfigHighlightTab::apply()
 {
-    QMutableHashIterator<QString, QHash<int, QList<KTextEditor::Attribute::Ptr> > > it = m_hlDict;
+    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr> > > it = m_hlDict;
     while (it.hasNext()) {
         it.next();
-        QMutableHashIterator<int, QList<KTextEditor::Attribute::Ptr> > it2 = it.value();
+        QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr> > it2 = it.value();
         while (it2.hasNext()) {
             it2.next();
             KateHlManager::self()->getHl(it2.key())->setKateExtendedAttributeList(it.key(), it2.value());
@@ -826,7 +826,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
 
     if ((hl != -1) && (!schemaNameForLoading.isEmpty())) {
 
-        QList<KTextEditor::Attribute::Ptr> list;
+        QVector<KTextEditor::Attribute::Ptr> list;
         KateHlManager::self()->getHl(hl)->getKateExtendedAttributeListCopy(schemaNameForLoading, list, cfg);
         KateHlManager::self()->getHl(hl)->setKateExtendedAttributeList(schema, list);
         m_hlDict[schema].insert(hl, list);
@@ -857,7 +857,7 @@ void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg
         hl = m_hl;
     }
 
-    QList<KTextEditor::Attribute::Ptr> items = m_hlDict[schema][hl];
+    QVector<KTextEditor::Attribute::Ptr> items = m_hlDict[schema][hl];
     if (doManage)  {
         QString destName = QFileDialog::getSaveFileName(this,
                            i18n("Exporting colors for single highlighting: %1", KateHlManager::self()->getHl(hl)->name()),

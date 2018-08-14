@@ -164,7 +164,7 @@ private:
     QString m_schema;
     int m_hl;
 
-    QHash<QString, QHash<int, QList<KTextEditor::Attribute::Ptr> > > m_hlDict;
+    QHash<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr> > > m_hlDict;
 
 public:
     QList<int> hlsForSchema(const QString &schema);
