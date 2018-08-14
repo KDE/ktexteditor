@@ -468,7 +468,7 @@ void KateScrollBar::hideTextPreview()
 
 // This function is optimized for bing called in sequence.
 const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex,
-                                      const QList<QTextLayout::FormatRange> &decorations,
+                                      const QVector<QTextLayout::FormatRange> &decorations,
                                       const QColor &defaultColor, int x, QChar ch)
 {
     QColor color = defaultColor;
@@ -595,7 +595,7 @@ void KateScrollBar::updatePixmap()
             const Kate::TextLine &kateline = m_doc->plainKateTextLine(realLineNumber);
 
             const QVector<Kate::TextLineData::Attribute> &attributes = kateline->attributesList();
-            QList< QTextLayout::FormatRange > decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
+            QVector<QTextLayout::FormatRange> decorations = m_view->renderer()->decorationsForLine(kateline, realLineNumber);
             int attributeIndex = 0;
 
             // Draw selection if it is on an empty line

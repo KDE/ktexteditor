@@ -375,9 +375,9 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return false;
 }
 
-QList<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, KateRenderRange *completionHighlight, bool completionSelected) const
+QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, KateRenderRange *completionHighlight, bool completionSelected) const
 {
-    QList<QTextLayout::FormatRange> newHighlight;
+    QVector<QTextLayout::FormatRange> newHighlight;
 
     // Don't compute the highlighting if there isn't going to be any highlighting
     QList<Kate::TextRange *> rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? nullptr : m_view, true);
@@ -594,8 +594,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             paint.setPen(attribute(KTextEditor::dsNormal)->foreground().color());
             // Draw the text :)
             if (drawSelection) {
-                // FIXME toVector() may be a performance issue
-                additionalFormats = decorationsForLine(range->textLine(), range->line(), true).toVector();
+                additionalFormats = decorationsForLine(range->textLine(), range->line(), true);
                 range->layout()->draw(&paint, QPoint(-xStart, 0), additionalFormats);
 
             } else {
@@ -1008,7 +1007,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     l->setTextOption(opt);
 
     // Syntax highlighting, inbuilt and arbitrary
-    l->setAdditionalFormats(decorationsForLine(textLine, lineLayout->line()));
+    l->setFormats(decorationsForLine(textLine, lineLayout->line()));
 
     // Begin layouting
     l->beginLayout();

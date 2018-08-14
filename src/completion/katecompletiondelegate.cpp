@@ -80,7 +80,7 @@ void KateCompletionDelegate::heightChanged() const
     }
 }
 
-QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
+QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
 {
 
     QVariant highlight = model()->data(index, KTextEditor::CodeCompletionModel::HighlightingMethod);
@@ -97,7 +97,7 @@ QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const
     }
 
 #ifdef DISABLE_INTERNAL_HIGHLIGHTING
-    return QList<QTextLayout::FormatRange>();
+    return QVector<QTextLayout::FormatRange>();
 #endif
 
     if (index.row() == m_cachedRow && highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting) {
@@ -156,10 +156,10 @@ QList<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const
     m_currentColumnStart = m_cachedColumnStarts[index.column()];
 
     NormalRenderRange rr;
-    QList<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, &rr, option.state & QStyle::State_Selected);
+    QVector<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, &rr, option.state & QStyle::State_Selected);
 
     //Remove background-colors
-    for (QList<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it) {
+    for (QVector<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it) {
         (*it).format.clearBackground();
     }
 

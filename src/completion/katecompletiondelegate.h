@@ -40,7 +40,7 @@ protected:
     mutable int m_cachedRow;
     mutable QList<int> m_cachedColumnStarts;
     void heightChanged() const override;
-    QList<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
+    QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
 
 };
 

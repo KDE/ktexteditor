@@ -191,7 +191,7 @@ private:
     int minimapYToStdY(int y);
 
     const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex,
-                           const QList<QTextLayout::FormatRange> &decorations,
+                           const QVector<QTextLayout::FormatRange> &decorations,
                            const QColor &defaultColor, int x, QChar ch);
 
     bool m_middleMouseDown;

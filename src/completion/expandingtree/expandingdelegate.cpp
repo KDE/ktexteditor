@@ -121,11 +121,11 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     }
 }
 
-QList<QTextLayout::FormatRange> ExpandingDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
+QVector<QTextLayout::FormatRange> ExpandingDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
 {
     Q_UNUSED(index);
     Q_UNUSED(option);
-    return QList<QTextLayout::FormatRange>();
+    return QVector<QTextLayout::FormatRange>();
 }
 
 QSize ExpandingDelegate::basicSizeHint(const QModelIndex &index) const
@@ -175,7 +175,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
 
     QTextLayout layout(text, option.font, painter->device());
 
-    QList<QTextLayout::FormatRange> additionalFormats;
+    QVector<QTextLayout::FormatRange> additionalFormats;
 
     int missingFormats = text.length();
 
@@ -257,11 +257,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
         }
     }
 
-//   qCDebug(LOG_KTE) << "Highlights for text [" << text << "] col start " << m_currentColumnStart << ":";
-//   foreach (const QTextLayout::FormatRange& fr, additionalFormats)
-//     qCDebug(LOG_KTE) << fr.start << " len " << fr.length << "foreground" << fr.format.foreground() << "background" << fr.format.background();
-
-    layout.setAdditionalFormats(additionalFormats);
+    layout.setFormats(additionalFormats);
 
     QTextOption to;
 
@@ -329,9 +325,9 @@ bool ExpandingDelegate::editorEvent(QEvent *event, QAbstractItemModel * /*model*
     return false;
 }
 
-QList<QTextLayout::FormatRange> ExpandingDelegate::highlightingFromVariantList(const QList<QVariant> &customHighlights) const
+QVector<QTextLayout::FormatRange> ExpandingDelegate::highlightingFromVariantList(const QList<QVariant> &customHighlights) const
 {
-    QList<QTextLayout::FormatRange> ret;
+    QVector<QTextLayout::FormatRange> ret;
 
     for (int i = 0; i + 2 < customHighlights.count(); i += 3) {
         if (!customHighlights[i].canConvert(QVariant::Int) || !customHighlights[i + 1].canConvert(QVariant::Int) || !customHighlights[i + 2].canConvert<QTextFormat>()) {
