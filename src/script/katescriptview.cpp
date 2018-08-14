@@ -19,12 +19,16 @@
 
 #include "katescriptview.h"
 
+#include "kateglobal.h"
 #include "katedocument.h"
 #include "kateview.h"
 #include "katerenderer.h"
 #include "katescript.h"
 #include "scriptcursor.h"
 #include "scriptrange.h"
+
+#include <KTextEditor/Command>
+#include <KLocalizedString>
 
 #include <QJSEngine>
 
@@ -116,4 +120,27 @@ void KateScriptView::align(const QJSValue &jsrange)
 {
     const auto range = rangeFromScriptValue(jsrange);
     m_view->doc()->align (m_view, range);
+}
+
+QJSValue KateScriptView::executeCommand(const QString &command,
+                                        const QString &args,
+                                        const QJSValue &jsrange)
+{
+    QString message;
+    bool ok = false;
+
+    const auto range = rangeFromScriptValue(jsrange);
+    const auto cmd = KTextEditor::EditorPrivate::self()->queryCommand(command);
+    if (!cmd) {
+        ok = false;
+        message = i18n("Command not found: %1", command);
+    } else {
+        const auto cmdLine = args.isEmpty() ? (command) : (command + QLatin1Char(' ') + args);
+        ok = cmd->exec(m_view, cmdLine, message, range);
+    }
+
+    QJSValue object;
+    object.setProperty(QStringLiteral("ok"), ok);
+    object.setProperty(QStringLiteral("status"), message);
+    return object;
 }
