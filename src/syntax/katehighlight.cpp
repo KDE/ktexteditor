@@ -196,7 +196,7 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
      * ensure we arrive in clean state
      */
     Q_ASSERT(!m_textLineToHighlight);
-    Q_ASSERT(!m_foldingStartToCount);
+    Q_ASSERT(m_foldingStartToCount.isEmpty());
 
     /**
      * highlight the given line via the abstract highlighter
@@ -220,19 +220,16 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine,
      * check if folding is not balanced and we have more starts then ends
      * then this line is a possible folding start!
      */
-    if (m_foldingStartToCount) {
+    if (!m_foldingStartToCount.isEmpty()) {
         /**
          * possible folding start, if imbalanced, aka hash not empty!
          */
-        if (!m_foldingStartToCount->isEmpty()) {
-            textLine->markAsFoldingStartAttribute();
-        }
+        textLine->markAsFoldingStartAttribute();
 
         /**
-         * kill hash
+         * clear hash for next doHighlight
          */
-        delete m_foldingStartToCount;
-        m_foldingStartToCount = nullptr;
+        m_foldingStartToCount.clear();
     }
 
     /**
@@ -275,13 +272,13 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
     /**
      * for each end region, decrement counter for that type, erase if count reaches 0!
      */
-    if ((foldingValue < 0) && m_foldingStartToCount) {
-        QHash<int, int>::iterator end = m_foldingStartToCount->find(foldingValue);
-        if (end != m_foldingStartToCount->end()) {
+    if (foldingValue < 0) {
+        QHash<int, int>::iterator end = m_foldingStartToCount.find(foldingValue);
+        if (end != m_foldingStartToCount.end()) {
             if (end.value() > 1) {
                 --(end.value());
             } else {
-                m_foldingStartToCount->erase(end);
+                m_foldingStartToCount.erase(end);
             }
         }
     }
@@ -290,12 +287,7 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
      * increment counter for each begin region!
      */
     if (foldingValue > 0) {
-        // construct on demand!
-        if (!m_foldingStartToCount) {
-            m_foldingStartToCount = new QHash<int, int> ();
-        }
-
-        ++(*m_foldingStartToCount)[foldingValue];
+        ++m_foldingStartToCount[foldingValue];
     }
 }
 

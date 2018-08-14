@@ -345,9 +345,9 @@ public:
 
     /**
      * check if the folding begin/ends are balanced!
-     * constructed on demand!
+     * updated during doHighlight
      */
-    QHash<int, int> *m_foldingStartToCount = nullptr;
+    QHash<int, int> m_foldingStartToCount;
 };
 
 #endif
