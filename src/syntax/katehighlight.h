@@ -265,6 +265,8 @@ private:
      */
     QList<KTextEditor::Attribute::Ptr> attributesForDefinition();
 
+    int sanitizeFormatIndex(int attrib) const;
+
 private:
     QStringList embeddedHighlightingModes;
 

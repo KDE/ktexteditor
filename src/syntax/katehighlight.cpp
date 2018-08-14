@@ -84,9 +84,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * handle the "no highlighting" case
      */
     if (!def.isValid()) {
-        // dummy properties
+        // dummy properties + formats
         m_properties.resize(1);
         m_propertiesForFormat.push_back(&m_properties[0]);
+        m_formats.resize(1);
+        m_formatsIdToIndex.insert(std::make_pair(m_formats[0].id(), 0));
 
         // be done, all below is just for the real highlighting variants
         return;
@@ -155,7 +157,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         for (const auto & format : includedDefinition.formats()) {
             // register format id => internal attributes, we want no clashs
             const auto nextId = m_formats.size();
-            m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second;
+            m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId));
             m_formats.push_back(format);
             m_propertiesForFormat.push_back(&properties);
         }
@@ -410,63 +412,68 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
     }
 }
 
+int KateHighlighting::sanitizeFormatIndex(int attrib) const
+{
+    // sanitize, e.g. one could have old hl info with now invalid attribs
+    if (attrib < 0 || size_t(attrib) >= m_formats.size()) {
+        return 0;
+    }
+    return attrib;
+
+}
+
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->characterEncodings;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->characterEncodings;
 }
 
 const KatePrefixStore &KateHighlighting::getCharacterEncodingsPrefixStore(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->characterEncodingsPrefixStore;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->characterEncodingsPrefixStore;
 }
 
 const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->reverseCharacterEncodings;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->reverseCharacterEncodings;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
 {
-    if (attr >= 0 && attr < static_cast<int>(m_formats.size())) {
-        return m_formats[attr].spellCheck();
-    }
-    return true;
+    return m_formats[sanitizeFormatIndex(attr)].spellCheck();
 }
 
 KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) const
 {
-    if (attr >= 0 && attr < static_cast<int>(m_formats.size())) {
-        return textStyleToDefaultStyle(m_formats[attr].textStyle());
-    }
-    return KTextEditor::dsNormal;
+    return textStyleToDefaultStyle(m_formats[sanitizeFormatIndex(attr)].textStyle());
 }
 
 QString KateHighlighting::nameForAttrib(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->definition.name() + QLatin1Char(':') + m_formats.at(attrib).name();
+    const auto &format = m_formats.at(sanitizeFormatIndex(attrib));
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.name() + QLatin1Char(':') + QString(format.isValid() ? format.name() : QLatin1String("Normal"));
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return !m_propertiesForFormat.at(attrib)->definition.isWordDelimiter(c)
+    return !m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.isWordDelimiter(c)
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
 
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
 }
 
 const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->emptyLines;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->emptyLines;
 }
 
 bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
-    const auto startProperties = m_propertiesForFormat.at(startAttrib);
-    const auto endProperties = m_propertiesForFormat.at(endAttrib);
+    const auto startProperties = m_propertiesForFormat.at(sanitizeFormatIndex(startAttrib));
+    const auto endProperties = m_propertiesForFormat.at(sanitizeFormatIndex(endAttrib));
     return (startProperties == endProperties &&
             ((!startProperties->multiLineCommentStart.isEmpty() && !startProperties->multiLineCommentEnd.isEmpty()) ||
              !startProperties->singleLineCommentMarker.isEmpty()));
@@ -474,27 +481,27 @@ bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 
 QString KateHighlighting::getCommentStart(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->multiLineCommentStart;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->multiLineCommentStart;
 }
 
 QString KateHighlighting::getCommentEnd(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->multiLineCommentEnd;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->multiLineCommentEnd;
 }
 
 QString KateHighlighting::getCommentSingleLineStart(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->singleLineCommentMarker;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->singleLineCommentMarker;
 }
 
 KSyntaxHighlighting::CommentPosition KateHighlighting::getCommentSingleLinePosition(int attrib) const
 {
-    return m_propertiesForFormat.at(attrib)->singleLineCommentPosition;
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->singleLineCommentPosition;
 }
 
 const QHash<QString, QChar> &KateHighlighting::characterEncodings(int attrib) const
 {
-    return  m_propertiesForFormat.at(attrib)->characterEncodings;
+    return  m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->characterEncodings;
 }
 
 void KateHighlighting::clearAttributeArrays()
@@ -509,51 +516,46 @@ QList<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
      * create list of all known things
      */
     QList<KTextEditor::Attribute::Ptr> array;
-    if (m_formats.empty()) {
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(iName + QLatin1Char(':') + QLatin1String("Normal"), KTextEditor::dsNormal));
-        array.append(newAttribute);
-    } else {
-        for (const auto &format : m_formats) {
-            /**
-             * FIXME: atm we just set some theme here for later color generation
-             */
-            setTheme(KateHlManager::self()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
+    for (const auto &format : m_formats) {
+        /**
+         * FIXME: atm we just set some theme here for later color generation
+         */
+        setTheme(KateHlManager::self()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
 
-            /**
-             * create a KTextEditor attribute matching the given format
-             */
-            KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
+        /**
+         * create a KTextEditor attribute matching the given format
+         */
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
-            if (format.hasTextColor(theme())) {
-                newAttribute->setForeground(format.textColor(theme()));
-                newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
-            }
-
-            if (format.hasBackgroundColor(theme())) {
-                newAttribute->setBackground(format.backgroundColor(theme()));
-                newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
-            }
-
-            if (format.isBold(theme())) {
-                newAttribute->setFontBold(true);
-            }
-
-            if (format.isItalic(theme())) {
-                newAttribute->setFontItalic(true);
-            }
-
-            if (format.isUnderline(theme())) {
-                newAttribute->setFontUnderline(true);
-            }
-
-            if (format.isStrikeThrough(theme())) {
-                newAttribute->setFontStrikeOut(true);
-            }
-
-            newAttribute->setSkipSpellChecking(format.spellCheck());
-
-            array.append(newAttribute);
+        if (format.hasTextColor(theme())) {
+            newAttribute->setForeground(format.textColor(theme()));
+            newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
         }
+
+        if (format.hasBackgroundColor(theme())) {
+            newAttribute->setBackground(format.backgroundColor(theme()));
+            newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
+        }
+
+        if (format.isBold(theme())) {
+            newAttribute->setFontBold(true);
+        }
+
+        if (format.isItalic(theme())) {
+            newAttribute->setFontItalic(true);
+        }
+
+        if (format.isUnderline(theme())) {
+            newAttribute->setFontUnderline(true);
+        }
+
+        if (format.isStrikeThrough(theme())) {
+            newAttribute->setFontStrikeOut(true);
+        }
+
+        newAttribute->setSkipSpellChecking(format.spellCheck());
+
+        array.append(newAttribute);
     }
     return array;
 }
@@ -637,10 +639,10 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate* doc, co
      * either get char attribute or attribute of context still active at end of line
      */
     if (cursor.column() < tl->length()) {
-        return tl->attribute(cursor.column());
+        return sanitizeFormatIndex(tl->attribute(cursor.column()));
     } else if (cursor.column() >= tl->length()) {
         if (!tl->attributesList().isEmpty()) {
-            return tl->attributesList().back().attributeValue;
+            return sanitizeFormatIndex(tl->attributesList().back().attributeValue);
         }
     }
     return 0;
