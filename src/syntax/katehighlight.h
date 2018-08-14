@@ -190,12 +190,6 @@ public:
     bool attributeRequiresSpellchecking(int attr);
 
     /**
-     * map attribute to its highlighting file.
-     * the returned string is used as key for m_additionalData.
-     */
-    QString hlKeyForAttrib(int attrib) const;
-
-    /**
      * map attribute to its name
      * @return name of the attribute
      */
@@ -297,14 +291,6 @@ private:
     /**
      * This class holds the additional properties for one highlight
      * definition, such as comment strings, deliminators etc.
-     *
-     * When a highlight is added, a instance of this class is appended to
-     * m_additionalData, and the current position in the attrib and context
-     * arrays are stored in the indexes for look up. You can then use
-     * hlKeyForAttrib to find the relevant instance of this
-     * class from m_additionalData.
-     *
-     * If you need to add a property to a highlight, add it here.
      */
     class HighlightPropertyBag
     {
@@ -320,29 +306,6 @@ private:
         QHash<QChar, QString> reverseCharacterEncodings;
     };
 
-    /**
-     * Highlight properties for each included highlight definition.
-     * The key is the identifier
-     */
-    QHash<QString, HighlightPropertyBag> m_additionalData;
-
-    /**
-     * Fast lookup of hl properties, based on attribute index
-     * The key is the starting index in the attribute array for each file.
-     * @see hlKeyForAttrib
-     */
-    QMap<int, QString> m_hlIndex;
-
-    const HighlightPropertyBag &additionalData(const QString &name) const
-    {
-        auto it = m_additionalData.constFind(name);
-        if (it == m_additionalData.constEnd())
-            it = m_additionalData.constFind(iName);
-        Q_ASSERT(it != m_additionalData.constEnd());
-        return it.value();
-    }
-
-
 public:
     inline bool foldingIndentationSensitive()
     {
@@ -354,10 +317,20 @@ public:
     }
 
     /**
+     * Highlight properties for this definition and each included highlight definition.
+     */
+    std::vector<HighlightPropertyBag> m_properties;
+
+    /**
      * all formats for the highlighting definition of this highlighting
      * includes included formats
      */
     std::vector<KSyntaxHighlighting::Format> m_formats;
+
+    /**
+     * for each format, pointer to the matching HighlightPropertyBag in m_properties
+     */
+    std::vector<const HighlightPropertyBag *> m_propertiesForFormat;
 
     /**
      * mapping of format id => index into m_formats

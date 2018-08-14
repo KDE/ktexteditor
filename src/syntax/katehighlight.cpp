@@ -84,9 +84,9 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * handle the "no highlighting" case
      */
     if (!def.isValid()) {
-        // dummy hl info
-        m_additionalData[iName];
-        m_hlIndex[0] = iName;
+        // dummy properties
+        m_properties.resize(1);
+        m_propertiesForFormat.push_back(&m_properties[0]);
 
         // be done, all below is just for the real highlighting variants
         return;
@@ -126,10 +126,15 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      *
      * we start with our definition as we want to have the default format
      * of the initial definition as attribute with index == 0
+     *
+     * we collect additional properties in the m_properties and
+     * map the formats to the right properties in m_propertiesForFormat
      */
     definitions.push_front(definition());
+    m_properties.resize(definitions.size());
+    size_t propertiesIndex = 0;
     for (const auto & includedDefinition : definitions) {
-        auto &properties = m_additionalData[includedDefinition.name()];
+        auto &properties = m_properties[propertiesIndex];
         properties.definition = includedDefinition;
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
@@ -152,8 +157,11 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
             const auto nextId = m_formats.size();
             m_formatsIdToIndex.insert(std::make_pair(format.id(), nextId)).second;
             m_formats.push_back(format);
-            m_hlIndex[nextId] = includedDefinition.name();
+            m_propertiesForFormat.push_back(&properties);
         }
+
+        // advance to next properties
+        ++propertiesIndex;
     }
 }
 
@@ -408,17 +416,17 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QList
 
 const QHash<QString, QChar> &KateHighlighting::getCharacterEncodings(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).characterEncodings;
+    return m_propertiesForFormat.at(attrib)->characterEncodings;
 }
 
 const KatePrefixStore &KateHighlighting::getCharacterEncodingsPrefixStore(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).characterEncodingsPrefixStore;
+    return m_propertiesForFormat.at(attrib)->characterEncodingsPrefixStore;
 }
 
 const QHash<QChar, QString> &KateHighlighting::getReverseCharacterEncodings(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).reverseCharacterEncodings;
+    return m_propertiesForFormat.at(attrib)->reverseCharacterEncodings;
 }
 
 bool KateHighlighting::attributeRequiresSpellchecking(int attr)
@@ -437,66 +445,60 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
     return KTextEditor::dsNormal;
 }
 
-QString KateHighlighting::hlKeyForAttrib(int i) const
-{
-    Q_ASSERT(i >= 0 && i < m_hlIndex.size());
-    return m_hlIndex[i];
-}
-
 QString KateHighlighting::nameForAttrib(int attrib) const
 {
-    Q_ASSERT(attrib >= 0 && attrib < static_cast<int>(m_formats.size()));
-    return hlKeyForAttrib(attrib) + QLatin1Char(':') + m_formats[attrib].name();
+    return m_propertiesForFormat.at(attrib)->definition.name() + QLatin1Char(':') + m_formats.at(attrib).name();
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const
 {
-    return !additionalData(hlKeyForAttrib(attrib)).definition.isWordDelimiter(c)
+    return !m_propertiesForFormat.at(attrib)->definition.isWordDelimiter(c)
            && !c.isSpace()
            && c != QLatin1Char('"') && c != QLatin1Char('\'') && c != QLatin1Char('`');
 }
 
 bool KateHighlighting::canBreakAt(QChar c, int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
+    return m_propertiesForFormat.at(attrib)->definition.isWordWrapDelimiter(c) && c != QLatin1Char('"') && c != QLatin1Char('\'');
 }
 
 const QVector<QRegularExpression> &KateHighlighting::emptyLines(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).emptyLines;
+    return m_propertiesForFormat.at(attrib)->emptyLines;
 }
 
 bool KateHighlighting::canComment(int startAttrib, int endAttrib) const
 {
-    QString k = hlKeyForAttrib(startAttrib);
-    return (k == hlKeyForAttrib(endAttrib) &&
-            ((!additionalData(k).multiLineCommentStart.isEmpty() && !additionalData(k).multiLineCommentEnd.isEmpty()) ||
-             !additionalData(k).singleLineCommentMarker.isEmpty()));
+    const auto startProperties = m_propertiesForFormat.at(startAttrib);
+    const auto endProperties = m_propertiesForFormat.at(endAttrib);
+    return (startProperties == endProperties &&
+            ((!startProperties->multiLineCommentStart.isEmpty() && !startProperties->multiLineCommentEnd.isEmpty()) ||
+             !startProperties->singleLineCommentMarker.isEmpty()));
 }
 
 QString KateHighlighting::getCommentStart(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).multiLineCommentStart;
+    return m_propertiesForFormat.at(attrib)->multiLineCommentStart;
 }
 
 QString KateHighlighting::getCommentEnd(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).multiLineCommentEnd;
+    return m_propertiesForFormat.at(attrib)->multiLineCommentEnd;
 }
 
 QString KateHighlighting::getCommentSingleLineStart(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).singleLineCommentMarker;
+    return m_propertiesForFormat.at(attrib)->singleLineCommentMarker;
 }
 
 KSyntaxHighlighting::CommentPosition KateHighlighting::getCommentSingleLinePosition(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).singleLineCommentPosition;
+    return m_propertiesForFormat.at(attrib)->singleLineCommentPosition;
 }
 
 const QHash<QString, QChar> &KateHighlighting::characterEncodings(int attrib) const
 {
-    return additionalData(hlKeyForAttrib(attrib)).characterEncodings;
+    return  m_propertiesForFormat.at(attrib)->characterEncodings;
 }
 
 void KateHighlighting::clearAttributeArrays()
@@ -651,7 +653,7 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate* doc, co
 QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
     // FIXME-SYNTAX: was before more precise, aka context level
-    const auto &def = additionalData(m_hlIndex[attributeForLocation(doc, cursor)]).definition;
+    const auto &def =  m_propertiesForFormat.at(attributeForLocation(doc, cursor))->definition;
     QStringList keywords;
     for (const auto &keylist : def.keywordLists()) {
         keywords += def.keywordList(keylist);
@@ -661,12 +663,12 @@ QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate* 
 
 bool KateHighlighting::spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    return m_formats[attributeForLocation(doc, cursor)].spellCheck();
+    return m_formats.at(attributeForLocation(doc, cursor)).spellCheck();
 }
 
 QString KateHighlighting::higlightingModeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor)
 {
-    return m_hlIndex[attributeForLocation(doc, cursor)];
+    return m_propertiesForFormat.at(attributeForLocation(doc, cursor))->definition.name();
 }
 
 //END
