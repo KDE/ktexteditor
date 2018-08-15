@@ -3032,7 +3032,18 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 cache()->viewLine(z).setDirty(false);
             }
 
+            // set clipping region if we paint the line above us, too
+            paint.setClipRect(QRect(0, 0, unionRect.width(), h));
             paint.fillRect(0, 0, unionRect.width(), h, renderer()->config()->backgroundColor());
+
+            // second: paint previous line elements, that span into our line like _ in last line, bug 335079
+            if (z > 0 && (z-1 < lineRangesSize) && (cache()->viewLine(z-1).line() != -1)) {
+                KateTextLayout &previousLine = cache()->viewLine(z-1);
+                paint.save();
+                paint.translate(QPoint(0, h * - (previousLine.viewLine() + 1)));
+                renderer()->paintTextLine(paint, previousLine.kateLineLayout(), xStart, xEnd, &pos);
+                paint.restore();
+            }
         } else {
             //qCDebug(LOG_KTE)<<"KateViewInternal::paintEvent(QPaintEvent *e):cache()->viewLine"<<z;
             KateTextLayout &thisLine = cache()->viewLine(z);
@@ -3049,6 +3060,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 //qDebug() << "paint text: line: " << thisLine.line() << " viewLine " << thisLine.viewLine() << " x: " << unionRect.x() << " y: " << unionRect.y() << " width: " << xEnd-xStart << " height: " << h << endl;
 
                 // first: paint our line
+                // set clipping region if we paint the line above us, too
                 paint.translate(QPoint(0, h * - thisLine.viewLine()));
                 paint.setClipRect(QRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount()));
                 renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, &pos);
@@ -3057,9 +3069,10 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 // second: paint previous line elements, that span into our line like _, bug 335079
                 if (z > 0) {
                     KateTextLayout &previousLine = cache()->viewLine(z-1);
+                    paint.save();
                     paint.translate(QPoint(0, h * - (previousLine.viewLine() + 1)));
                     renderer()->paintTextLine(paint, previousLine.kateLineLayout(), xStart, xEnd, &pos);
-                    paint.translate(0, h * (previousLine.viewLine() + 1));
+                    paint.restore();
                 }
 
                 /**
