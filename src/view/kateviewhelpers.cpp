@@ -1440,7 +1440,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
-    m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(16, 16));
+    m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(32, 32));
 
     updateFont();
 
@@ -1632,7 +1632,7 @@ int KateIconBorder::lineNumberWidth() const
             QSize newSize(w * devicePixelRatio(), h * devicePixelRatio());
             if ((m_arrow.size() != newSize || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) && !newSize.isEmpty()) {
                 m_arrow = QPixmap(newSize);
-                m_arrow.setDevicePixelRatio(devicePixelRatio());
+                m_arrow.setDevicePixelRatio(devicePixelRatioF());
 
                 QPainter p(&m_arrow);
                 p.fillRect(0, 0, w, h, m_view->renderer()->config()->iconBarColor());
@@ -1769,19 +1769,19 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                         MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
                         if (mrk & markType) {
                             QPixmap px_mark(m_doc->markPixmap(markType));
+                            px_mark.setDevicePixelRatio(devicePixelRatioF());
 
                             if (!px_mark.isNull() && h > 0 && iconPaneWidth > 0) {
-                                if (iconPaneWidth < px_mark.width() || h < (uint)px_mark.height()) {
-                                    px_mark = px_mark.scaled(iconPaneWidth, h, Qt::KeepAspectRatio);
-                                }
+                                // scale up to a usable size
+                                px_mark = px_mark.scaled(iconPaneWidth * devicePixelRatio(), h * devicePixelRatio(), Qt::KeepAspectRatio);
 
                                 // center the mark pixmap
-                                int x_px = (iconPaneWidth - px_mark.width()) / 2;
+                                int x_px = (iconPaneWidth - px_mark.width()/ devicePixelRatio()) / 2;
                                 if (x_px < 0) {
                                     x_px = 0;
                                 }
 
-                                int y_px = (h - px_mark.height()) / 2;
+                                int y_px = (h - px_mark.height() / devicePixelRatio()) / 2;
                                 if (y_px < 0) {
                                     y_px = 0;
                                 }
