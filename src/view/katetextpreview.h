@@ -39,7 +39,7 @@ class KateTextPreview : public QFrame
     Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor)
 
 public:
-    KateTextPreview(KTextEditor::ViewPrivate *view);
+    KateTextPreview(KTextEditor::ViewPrivate *view, QWidget * parent);
     ~KateTextPreview() override;
 
     KTextEditor::ViewPrivate *view() const;

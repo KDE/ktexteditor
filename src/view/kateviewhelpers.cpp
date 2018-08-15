@@ -430,7 +430,7 @@ void KateScrollBar::showTextPreview()
     if (grooveRect.contains(cursorPos)) {
 
         if (!m_textPreview) {
-            m_textPreview = new KateTextPreview(m_view);
+            m_textPreview = new KateTextPreview(m_view, this);
             m_textPreview->setAttribute(Qt::WA_ShowWithoutActivating);
             m_textPreview->setFrameStyle(QFrame::StyledPanel);
 
@@ -2120,7 +2120,7 @@ void KateIconBorder::showBlock()
 
             if (foldUnderMouse) {
                 if (!m_foldingPreview) {
-                    m_foldingPreview = new KateTextPreview(m_view);
+                    m_foldingPreview = new KateTextPreview(m_view, this);
                     m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
                     m_foldingPreview->setFrameStyle(QFrame::StyledPanel);
 
