@@ -1328,12 +1328,15 @@ void KateSearchBar::enterPowerMode()
         m_powerUi->replacement->setCompleter(nullptr);
 
         // Icons
-        m_powerUi->mutate->setIcon(QIcon::fromTheme(QStringLiteral("games-config-options")));
+        // Gnome does not seem to have all icons we want, so we use fall-back icons for those that are missing.
+        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("games-config-options"), QIcon::fromTheme(QStringLiteral("preferences-system")));
+        QIcon matchCaseIcon = QIcon::fromTheme(QStringLiteral("format-text-superscript"), QIcon::fromTheme(QStringLiteral("format-text-bold")));
+        m_powerUi->mutate->setIcon(mutateIcon);
         m_powerUi->mutate->setChecked(true);
         m_powerUi->findNext->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
         m_powerUi->findPrev->setIcon(QIcon::fromTheme(QStringLiteral("go-up-search")));
         m_powerUi->findAll->setIcon(QIcon::fromTheme(QStringLiteral("edit-find")));
-        m_powerUi->matchCase->setIcon(QIcon::fromTheme(QStringLiteral("format-text-superscript")));
+        m_powerUi->matchCase->setIcon(matchCaseIcon);
         m_powerUi->selectionOnly->setIcon(QIcon::fromTheme(QStringLiteral("edit-select-all")));
 
         // Focus proxy
@@ -1462,10 +1465,13 @@ void KateSearchBar::enterIncrementalMode()
 //             new QShortcut(KStandardShortcut::paste().alternate(), m_incUi->pattern, SLOT(paste()), 0, Qt::WidgetWithChildrenShortcut);
 
         // Icons
-        m_incUi->mutate->setIcon(QIcon::fromTheme(QStringLiteral("games-config-options")));
+        // Gnome does not seem to have all icons we want, so we use fall-back icons for those that are missing.
+        QIcon mutateIcon = QIcon::fromTheme(QStringLiteral("games-config-options"), QIcon::fromTheme(QStringLiteral("preferences-system")));
+        QIcon matchCaseIcon = QIcon::fromTheme(QStringLiteral("format-text-superscript"), QIcon::fromTheme(QStringLiteral("format-text-bold")));
+        m_incUi->mutate->setIcon(mutateIcon);
         m_incUi->next->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
         m_incUi->prev->setIcon(QIcon::fromTheme(QStringLiteral("go-up-search")));
-        m_incUi->matchCase->setIcon(QIcon::fromTheme(QStringLiteral("format-text-superscript")));
+        m_incUi->matchCase->setIcon(matchCaseIcon);
 
         // Ensure minimum size
         m_incUi->pattern->setMinimumWidth(12 * m_incUi->pattern->fontMetrics().height());
