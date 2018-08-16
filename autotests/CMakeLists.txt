@@ -38,6 +38,7 @@ set (KTEXTEDITOR_TEST_LINK_LIBS KF5TextEditor
   KF5::I18n
   KF5::IconThemes
   KF5::GuiAddons
+  KF5::SyntaxHighlighting
   Qt5::Qml
 )
 
