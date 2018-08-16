@@ -400,6 +400,11 @@ void KateScrollBar::showTextPreview()
         return;
     }
 
+    // only show when main window is active (#392396)
+    if (window() && !window()->isActiveWindow()) {
+        return;
+    }
+
     QRect grooveRect;
     if (m_showMiniMap) {
         // If mini-map is shown, the height of the map might not be the whole height
@@ -2118,7 +2123,9 @@ void KateIconBorder::showBlock()
             const int realLine = t.line();
             foldUnderMouse = !m_view->textFolding().isLineVisible(realLine + 1);
 
-            if (foldUnderMouse) {
+            // only show when main window is active (#392396)
+            const bool isWindowActive = !window() || window()->isActiveWindow();
+            if (foldUnderMouse && isWindowActive) {
                 if (!m_foldingPreview) {
                     m_foldingPreview = new KateTextPreview(m_view, this);
                     m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
