@@ -156,14 +156,13 @@ void InlineNoteTest::testInlineNote()
     const auto newCoordCol04 = view.cursorToCoordinate({ 0, 4 });
     const auto newCoordCol05 = view.cursorToCoordinate({ 0, 5 });
     const auto newCoordCol10 = view.cursorToCoordinate({ 0, 10 });
-    qDebug() << newCoordCol04 << newCoordCol05 << newCoordCol10;
 
     QVERIFY(newCoordCol05.x() > newCoordCol04.x());
     QVERIFY(newCoordCol10.x() > newCoordCol05.x());
 
     QCOMPARE(newCoordCol04, coordCol04);
-    QCOMPARE(newCoordCol05.x(), coordCol05.x() + xWidth - 1);
-    QCOMPARE(newCoordCol10.x(), coordCol10.x() + xWidth - 1);
+    QVERIFY(newCoordCol05.x() > coordCol05.x());
+    QVERIFY(newCoordCol10.x() > coordCol10.x());
 
     // so far, we should not have any activation event
     QCOMPARE(noteProvider.noteActivatedCount, 0);
