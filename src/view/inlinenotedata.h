@@ -50,7 +50,7 @@ public:
 
     KTextEditor::InlineNoteProvider* m_provider = nullptr;
     const KTextEditor::View* m_view = nullptr;
-    KTextEditor::Cursor m_position;
+    KTextEditor::Cursor m_position = KTextEditor::Cursor::invalid();
     int m_index = -1;
     bool m_underMouse = false;
     QFont m_font;
