@@ -2590,10 +2590,10 @@ void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
 void KateViewInternal::mousePressEvent(QMouseEvent *e)
 {
     // was an inline note clicked?
-    const auto noteData = inlineNoteAt(e->pos());
+    const auto noteData = inlineNoteAt(e->globalPos());
     const KTextEditor::InlineNote note(noteData);
     if (note.position().isValid()) {
-        note.provider()->inlineNoteActivated(noteData, e->button(), toNoteCoordinates(e->pos(), noteData));
+        note.provider()->inlineNoteActivated(noteData, e->button(), e->globalPos());
         return;
     }
 
@@ -2888,18 +2888,16 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() == Qt::NoButton) {
-        const auto noteData = inlineNoteAt(e->pos());
+        const auto noteData = inlineNoteAt(e->globalPos());
         const KTextEditor::InlineNote note(noteData);
         const KTextEditor::InlineNote activeNote(m_activeInlineNote);
         if (note.position().isValid()) {
-            const auto notePos = toNoteCoordinates(e->pos(), noteData);
             if (!activeNote.position().isValid()) {
                 // no active note -- focus in
-                note.provider()->inlineNoteFocusInEvent(note, notePos);
+                note.provider()->inlineNoteFocusInEvent(note, e->globalPos());
                 m_activeInlineNote = noteData;
-            }
-            else {
-                note.provider()->inlineNoteMouseMoveEvent(note, notePos);
+            } else {
+                note.provider()->inlineNoteMouseMoveEvent(note, e->globalPos());
             }
             // the note might change its appearance in result to the event
             tagLines(note.position(), note.position(), true);
@@ -3917,35 +3915,33 @@ QRect KateViewInternal::inlineNoteRect(const KateInlineNoteData& noteData) const
     // The cursor might be outside of the text. In that case, clamp it to the text and
     // later on add the missing x offset.
     const auto lineLength = view()->document()->lineLength(noteCursor.line());
-    int extraOffset = 0;
-    if (noteCursor.column() > lineLength) {
+    int extraOffset = -noteWidth;
+    if (noteCursor.column() == lineLength) {
+        extraOffset = 0;
+    } else if (noteCursor.column() > lineLength) {
         extraOffset = (noteCursor.column() - lineLength) * renderer()->spaceWidth();
         noteCursor.setColumn(lineLength);
     }
-    auto noteStartPos = cursorToCoordinate(noteCursor, true, false);
+    auto noteStartPos = mapToGlobal(cursorToCoordinate(noteCursor, true, false));
 
     // compute the note's rect
-    auto noteRect = QRect(noteStartPos + QPoint{extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
-    return noteRect;
+    auto globalNoteRect = QRect(noteStartPos + QPoint{extraOffset, 0}, QSize(noteWidth, renderer()->lineHeight()));
+
+    return globalNoteRect;
 }
 
-KateInlineNoteData KateViewInternal::inlineNoteAt(const QPoint& pos) const
+KateInlineNoteData KateViewInternal::inlineNoteAt(const QPoint& globalPos) const
 {
     // compute the associated cursor to get the right line
-    auto cursor = m_view->coordinatesToCursor(pos);
-    auto inlineNotes = m_view->inlineNotes(cursor.line());
+    const int line = coordinatesToCursor(mapFromGlobal(globalPos)).line();
+    const auto inlineNotes = m_view->inlineNotes(line);
     // loop over all notes and check if the point is inside it
     foreach (const auto& note, inlineNotes) {
-        auto noteRect = inlineNoteRect(note);
-        if (noteRect.contains(pos)) {
+        auto globalNoteRect = inlineNoteRect(note);
+        if (globalNoteRect.contains(globalPos)) {
             return note;
         }
     }
     // none found -- return an invalid note
     return {};
-}
-
-QPoint KateViewInternal::toNoteCoordinates(const QPoint& pos, const KateInlineNoteData& note) const
-{
-    return pos - inlineNoteRect(note).topLeft();
 }

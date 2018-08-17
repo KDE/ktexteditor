@@ -107,9 +107,9 @@ public:
      *
      * @param note the note which was activated
      * @param buttons the button(s) the note was clicked with
-     * @param pos the point the note was clicked at
+     * @param globalPos the point the note was clicked at in global screen coordinates
      */
-    virtual void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& pos);
+    virtual void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos);
 
     /**
      * Invoked when the mouse cursor moves into the note when it was outside before.
@@ -117,9 +117,9 @@ public:
      * The default implementation does nothing.
      *
      * @param note the note which was activated
-     * @param pos the location of the mouse cursor, in note coordinates
+     * @param pos the location of the mouse cursor in global screen coordinates
      */
-    virtual void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& pos);
+    virtual void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos);
 
     /**
      * Invoked when the mouse cursor leaves the note.
@@ -136,9 +136,9 @@ public:
      * The default implementation does nothing.
      *
      * @param note the note which was hovered
-     * @param pos the location of the mouse cursor, in note coordinates
+     * @param pos the location of the mouse cursor in global screen coordinates
      */
-    virtual void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& pos);
+    virtual void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& globalPos);
 
 Q_SIGNALS:
     /**

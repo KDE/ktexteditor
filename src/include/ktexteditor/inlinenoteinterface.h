@@ -89,7 +89,7 @@ public:
      *
      * Whenever a line is painted, the @p provider will be queried for notes
      * that should be painted in it. When the provider is about to be
-     * destroyed, make sure to call unregisterTextHintProvider() to avoid a
+     * destroyed, make sure to call unregisterInlineNoteProvider() to avoid a
      * dangling pointer.
      *
      * @param provider inline note provider

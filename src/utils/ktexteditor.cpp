@@ -257,17 +257,17 @@ bool KTextEditor::InlineNote::underMouse() const
     return d.m_underMouse;
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& pos)
+void KTextEditor::InlineNoteProvider::inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos)
 {
     Q_UNUSED(note);
     Q_UNUSED(buttons);
-    Q_UNUSED(pos);
+    Q_UNUSED(globalPos);
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteFocusInEvent(const KTextEditor::InlineNote& note, const QPoint& pos)
+void KTextEditor::InlineNoteProvider::inlineNoteFocusInEvent(const KTextEditor::InlineNote& note, const QPoint& globalPos)
 {
     Q_UNUSED(note);
-    Q_UNUSED(pos);
+    Q_UNUSED(globalPos);
 }
 
 void KTextEditor::InlineNoteProvider::inlineNoteFocusOutEvent(const KTextEditor::InlineNote& note)
@@ -275,16 +275,15 @@ void KTextEditor::InlineNoteProvider::inlineNoteFocusOutEvent(const KTextEditor:
     Q_UNUSED(note);
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor::InlineNote& note, const QPoint& pos)
+void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor::InlineNote& note, const QPoint& globalPos)
 {
     Q_UNUSED(note);
-    Q_UNUSED(pos);
+    Q_UNUSED(globalPos);
 }
 
 QPoint InlineNote::mapToGlobal(const QPoint& pos) const
 {
-    auto localPos = static_cast<const ViewPrivate*>(d.m_view)->inlineNoteRect(d).topLeft() + pos;
-    return d.m_view->mapToGlobal(localPos);
+    return  static_cast<const ViewPrivate*>(d.m_view)->inlineNoteRect(d).topLeft() + pos;
 }
 
 KTextEditor::InlineNoteProvider* InlineNote::provider() const

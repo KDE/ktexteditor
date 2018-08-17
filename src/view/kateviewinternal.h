@@ -469,9 +469,8 @@ private:
     KateAbstractInputMode *m_currentInputMode;
 
     KateInlineNoteData m_activeInlineNote;
-    KateInlineNoteData inlineNoteAt(const QPoint& pos) const;
+    KateInlineNoteData inlineNoteAt(const QPoint& globalPos) const;
     QRect inlineNoteRect(const KateInlineNoteData& note) const;
-    QPoint toNoteCoordinates(const QPoint& pos, const KateInlineNoteData& note) const;
 };
 
 #endif
