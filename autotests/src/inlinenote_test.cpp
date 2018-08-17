@@ -200,6 +200,7 @@ void InlineNoteTest::testInlineNote()
 
     // activate
     QTest::mousePress(internalView, Qt::LeftButton, Qt::NoModifier, internalView->mapFromGlobal(view.mapToGlobal(coordCol05 + QPoint(xWidth / 2 + 1, 1))));
+    QTest::mouseRelease(internalView, Qt::LeftButton, Qt::NoModifier, internalView->mapFromGlobal(view.mapToGlobal(coordCol05 + QPoint(xWidth / 2 + 1, 1))));
     QTest::qWait(100);
     QCOMPARE(noteProvider.focusInCount, 1);
     QCOMPARE(noteProvider.focusOutCount, 0);
@@ -208,7 +209,8 @@ void InlineNoteTest::testInlineNote()
 
     // focus out
     QTest::mouseMove(&view, coordCol04 + QPoint(0, 1));
-    QTest::qWait(100);
+    QTest::mouseMove(&view, coordCol04 + QPoint(-1, 1));
+    QTest::qWait(200);
     QCOMPARE(noteProvider.focusInCount, 1);
     QCOMPARE(noteProvider.focusOutCount, 1);
     QCOMPARE(noteProvider.mouseMoveCount, 1);
