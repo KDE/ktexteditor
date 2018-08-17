@@ -32,8 +32,6 @@
 #include <QtTestWidgets>
 #include <QTemporaryFile>
 #include <QPainter>
-#include <QCheckBox>
-#include <QMenu>
 
 using namespace KTextEditor;
 
@@ -54,10 +52,6 @@ namespace
     class NoteProvider : public InlineNoteProvider
     {
     public:
-        NoteProvider()
-        {
-            cb->show();
-        }
         QVector<int> inlineNotes(int line) const override
         {
             if (line == 0) {
@@ -95,21 +89,15 @@ namespace
         void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos) override
         {
             ++noteActivatedCount;
-//             QMenu m;
-//             m.addSeparator();
-//             m.addAction(QStringLiteral("Position: (%1, %2)").arg(note.position().line()).arg(note.position().column()));
-//             m.exec(globalPos);
         }
 
         void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos) override
         {
-            cb->setChecked(true);
             ++focusInCount;
         }
 
         void inlineNoteFocusOutEvent(const InlineNote& note) override
         {
-            cb->setChecked(false);
             ++focusOutCount;
         }
 
@@ -123,7 +111,6 @@ namespace
         int focusInCount = 0;
         int focusOutCount = 0;
         int mouseMoveCount = 0;
-        QCheckBox * cb = new QCheckBox();
     };
 }
 
