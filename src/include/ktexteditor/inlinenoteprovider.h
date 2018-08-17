@@ -32,8 +32,8 @@ namespace KTextEditor {
 /**
  * @brief A source of inline notes for a document.
  *
- * InlineNoteProvider is object that can be queried for inline notes in the
- * document. It emits signals when the notes change and should be queried again.
+ * InlineNoteProvider is a object that can be queried for inline notes in the
+ * view. It emits signals when the notes change and should be queried again.
  *
  * @see InlineNoteInterface
  * @since 5.50
@@ -59,8 +59,11 @@ public:
      * Should return a vector of columns on which the notes are located.
      * 0 means the note is located before the first character of the line.
      * 1 means the note is located after the first character, etc. If the
-     * returned number is bigger than the length of the line, the note will be
+     * returned number is greater than the length of the line, the note will be
      * placed behind the text as if there were additional spaces.
+     *
+     * @note When returning multiple InlineNote%s, use InlineNote::index() to
+     *       map the InlineNote to this QVector's index.
      *
      * @param line Line number
      * @returns vector of columns where inline notes appear in this line
@@ -70,12 +73,20 @@ public:
     /**
      * Width to be reserved for the note in the text.
      *
-     * The method is given the height of the line and the metrics of current
-     * font which it may use for calculating the width.
+     * Typically, a custom width with the current line height can be returned.
+     * If the width depends on the font size, note.font() can be used to obtain
+     * the font metrics.
      *
-     * @param height the height of the line in pixels
+     * Example to reserve a square size for painting:
+     * @code
+     * return QSize(note.lineHeight(), lineHeight());
+     * @endcode
      *
-     * @return the width of the note in pixels
+     * @note Do not return heights that are larger than note.lineHeight(),
+     *       since the painting code clips to the line height anyways.
+     *
+     * @param note the InlineNote for which the size is queried
+     * @return the required size of the InlineNote
      */
     virtual QSize inlineNoteSize(const InlineNote& note) const = 0;
 
@@ -85,11 +96,12 @@ public:
      * The method should use the given painter to render the note into the
      * line. The painter is translated such that coordinates 0x0 mark the top
      * left corner of the note. The method should not paint outside rectangle
-     * given by the height parameter and the width previously returned by the
-     * width method.
+     * given by the size previously returned by inlineNoteSize().
      *
      * The method is given the height of the line, the metrics of current font
      * and the font which it may use during painting.
+     *
+     * If wanted, you can use note.underMouse() to e.g. highlight the
      *
      * @param note note to paint, containing location and index
      * @param painter painter prepared for rendering the note
@@ -112,12 +124,12 @@ public:
     virtual void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos);
 
     /**
-     * Invoked when the mouse cursor moves into the note when it was outside before.
+     * Invoked when the mouse cursor moves into the @p note when it was outside before.
      *
      * The default implementation does nothing.
      *
      * @param note the note which was activated
-     * @param pos the location of the mouse cursor in global screen coordinates
+     * @param globalPos the location of the mouse cursor in global screen coordinates
      */
     virtual void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos);
 
@@ -136,7 +148,7 @@ public:
      * The default implementation does nothing.
      *
      * @param note the note which was hovered
-     * @param pos the location of the mouse cursor in global screen coordinates
+     * @param globalPos the location of the mouse cursor in global screen coordinates
      */
     virtual void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& globalPos);
 
@@ -148,10 +160,13 @@ Q_SIGNALS:
     void inlineNotesReset();
 
     /**
-     * The provider should emit the signal inlineNotesChanged() when any of the
-     * inline notes on the line changed.
+     * The provider should emit the signal inlineNotesChanged() whenever one
+     * or more InlineNote%s on the line changed.
      */
     void inlineNotesChanged(int line);
+
+private:
+    class InlineNoteProviderPrivate * const d = nullptr;
 };
 
 }

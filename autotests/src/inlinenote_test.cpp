@@ -88,21 +88,29 @@ namespace
 
         void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos) override
         {
+            Q_UNUSED(note)
+            Q_UNUSED(buttons)
+            Q_UNUSED(globalPos)
             ++noteActivatedCount;
         }
 
         void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos) override
         {
+            Q_UNUSED(note)
+            Q_UNUSED(globalPos)
             ++focusInCount;
         }
 
         void inlineNoteFocusOutEvent(const InlineNote& note) override
         {
+            Q_UNUSED(note)
             ++focusOutCount;
         }
 
         void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& globalPos) override
         {
+            Q_UNUSED(note)
+            Q_UNUSED(globalPos)
             ++mouseMoveCount;
         }
 
@@ -199,7 +207,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.noteActivatedCount, 1);
 
     // focus out
-    QTest::mouseMove(&view, coordCol04);
+    QTest::mouseMove(&view, coordCol04 + QPoint(0, 1));
     QTest::qWait(100);
     QCOMPARE(noteProvider.focusInCount, 1);
     QCOMPARE(noteProvider.focusOutCount, 1);

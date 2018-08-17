@@ -281,11 +281,6 @@ void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor
     Q_UNUSED(globalPos);
 }
 
-QPoint InlineNote::mapToGlobal(const QPoint& pos) const
-{
-    return  static_cast<const ViewPrivate*>(d.m_view)->inlineNoteRect(d).topLeft() + pos;
-}
-
 KTextEditor::InlineNoteProvider* InlineNote::provider() const
 {
     return d.m_provider;

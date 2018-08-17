@@ -36,13 +36,14 @@ namespace KTextEditor {
 /**
  * Describes an inline note.
  *
- * This structure contains all the information required to deal with
- * a particular inline note. It is instantiated and populated with information
- * internally by KTextEditor based on the list of notes returned by
- * InlineNoteProvider::inlineNotes(), and then passed back to the user of the API.
+ * This class contains all the information required to deal with a particular
+ * inline note. It is instantiated and populated with information internally by
+ * KTextEditor based on the list of notes returned by InlineNoteProvider::inlineNotes(),
+ * and then passed back to the user of the API.
  *
- * Users of the InlineNoteInterface API should never need to modify instances
- * of this structure.
+ * @note Users of the InlineNoteInterface API should never create a InlineNote
+ *       themselves. Maybe it helps to think of a InlineNote as if it were a
+ *       QModelIndex. Only the internal KTextEditor implementation creates them.
  *
  * @since 5.50
  */
@@ -62,25 +63,17 @@ public:
     qreal width() const;
 
     /**
-     * Transforms the given @p pos from note coordinates to global (screen) coordinates.
-     *
-     * Useful for showing a popup; to e.g. show a popup at the bottom left corner
-     * of a note, show it at @c mapToGlobal({0, noteHeight}).
-     */
-    QPoint mapToGlobal(const QPoint& pos) const;
-
-    /**
      * The provider which created this note
      */
     InlineNoteProvider* provider() const;
 
     /**
-     * The view this note is shown in
+     * The View this note is shown in.
      */
     const KTextEditor::View* view() const;
 
     /**
-     * The position of this note
+     * The cursor position of this note.
      */
     KTextEditor::Cursor position() const;
 
@@ -92,12 +85,13 @@ public:
 
     /**
      * Returns whether the mouse cursor is currently over this note.
-     * @note This flag is only valid when in InlineNoteProvider::paintInlineNote().
+     * @note This flag is useful when in InlineNoteProvider::paintInlineNote().
      */
     bool underMouse() const;
 
     /**
-     * The font of the text surrounding this note
+     * The font of the text surrounding this note.
+     * This can be used to obtain the QFontMetrics or similar font information.
      */
     QFont font() const;
 
