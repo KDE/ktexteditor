@@ -35,7 +35,6 @@
 
 namespace KTextEditor { class DocumentPrivate; }
 namespace KTextEditor { class ViewPrivate; }
-namespace KTextEditor { class InlineNote; }
 class KateRendererConfig;
 class KateRenderRange;
 namespace Kate

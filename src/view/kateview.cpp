@@ -57,6 +57,7 @@
 #include "printing/kateprinter.h"
 #include "katestatusbar.h"
 #include "kateabstractinputmode.h"
+#include "inlinenotedata.h"
 
 #include <ktexteditor/inlinenoteprovider.h>
 #include <KTextEditor/Message>
@@ -3670,20 +3671,20 @@ void KTextEditor::ViewPrivate::unregisterInlineNoteProvider(KTextEditor::InlineN
     }
 }
 
-QVarLengthArray<KTextEditor::InlineNote, 8> KTextEditor::ViewPrivate::inlineNotes(int line) const
+QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int line) const
 {
-    QVarLengthArray<KTextEditor::InlineNote, 8> allInlineNotes;
+    QVarLengthArray<KateInlineNoteData, 8> allInlineNotes;
     for (KTextEditor::InlineNoteProvider *provider: m_inlineNoteProviders) {
         int index = 0;
         for (auto column: provider->inlineNotes(line)) {
-            KTextEditor::InlineNote note = {
+            KateInlineNoteData note = {
                 provider,
+                this,
                 {line, column},
                 index,
-                this,
+                m_viewInternal->m_activeInlineNote.m_underMouse,
                 m_viewInternal->renderer()->currentFont(),
-                m_viewInternal->renderer()->lineHeight(),
-                m_viewInternal->m_activeInlineNote.hasFocus(),
+                m_viewInternal->renderer()->lineHeight()
             };
             allInlineNotes.append(note);
             index++;
@@ -3692,7 +3693,7 @@ QVarLengthArray<KTextEditor::InlineNote, 8> KTextEditor::ViewPrivate::inlineNote
     return allInlineNotes;
 }
 
-QRect KTextEditor::ViewPrivate::inlineNoteRect(const KTextEditor::InlineNote& note) const
+QRect KTextEditor::ViewPrivate::inlineNoteRect(const KateInlineNoteData& note) const
 {
     return m_viewInternal->inlineNoteRect(note);
 }
@@ -3705,7 +3706,7 @@ void KTextEditor::ViewPrivate::inlineNotesReset()
 
 void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
 {
-    if ( line == m_viewInternal->m_activeInlineNote.position().line() ) {
+    if ( line == m_viewInternal->m_activeInlineNote.m_position.line() ) {
         m_viewInternal->m_activeInlineNote = {};
     }
     tagLines(line, line, true);

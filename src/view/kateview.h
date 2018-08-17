@@ -70,6 +70,7 @@ class KateModeMenu;
 class KateAbstractInputMode;
 class KateScriptActionMenu;
 class KateMessageLayout;
+class KateInlineNoteData;
 
 class KToggleAction;
 class KSelectAction;
@@ -260,9 +261,9 @@ public:
 public:
     void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
     void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
-    QRect inlineNoteRect(const KTextEditor::InlineNote& note) const;
+    QRect inlineNoteRect(const KateInlineNoteData& note) const;
 
-    QVarLengthArray<KTextEditor::InlineNote, 8> inlineNotes(int line) const;
+    QVarLengthArray<KateInlineNoteData, 8> inlineNotes(int line) const;
 
 private:
     QVector<KTextEditor::InlineNoteProvider *> m_inlineNoteProviders;

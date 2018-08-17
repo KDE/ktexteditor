@@ -28,6 +28,7 @@
 #include <ktexteditor/cursor.h>
 
 class QFont;
+class KateInlineNoteData;
 namespace KTextEditor { class InlineNoteProvider; }
 
 namespace KTextEditor {
@@ -53,33 +54,12 @@ public:
      * notes are created from the columns returned by InlineNoteProvider::inlineNotes(int line),
      * and then passed around as handles grouping useful information.
      */
-    InlineNote(InlineNoteProvider* provider, const KTextEditor::Cursor& position, int index,
-               const KTextEditor::View* view, QFont font, int lineHeight, bool hasFocus);
-
-    /**
-     * Constructs an invalid inline note, i.e. isValid() will return false.
-     */
-    InlineNote();
-
-    /**
-     * Returns the column this note appears in.
-     */
-    int column() const;
+    InlineNote(const KateInlineNoteData & data);
 
     /**
      * Returns the width of this note in pixels.
      */
     qreal width() const;
-
-    /**
-     * Tells whether this note is valid, i.e. whether it has a valid provider and location set.
-     */
-    bool isValid() const;
-
-    /**
-     * Equality of notes. Only checks provider, index, and position.
-     */
-    bool operator==(const InlineNote& other) const;
 
     /**
      * Transforms the given @p pos from note coordinates to global (screen) coordinates.
@@ -111,10 +91,10 @@ public:
     int index() const;
 
     /**
-     * Whether the mouse cursor is currently over this note; only set
-     * when paintInlineNote() is called
+     * Returns whether the mouse cursor is currently over this note.
+     * @note This flag is only valid when in InlineNoteProvider::paintInlineNote().
      */
-    bool hasFocus() const;
+    bool underMouse() const;
 
     /**
      * The font of the text surrounding this note
@@ -127,17 +107,8 @@ public:
     int lineHeight() const;
 
 private:
-    InlineNoteProvider* m_provider = nullptr;
-    const KTextEditor::View* m_view = nullptr;
-    KTextEditor::Cursor m_position;
-    int m_index = -1;
-    bool m_hasFocus = false;
-    QFont m_font;
-    int m_lineHeight = -1;
-
-    // For future use, in case members need to be added.
-    // TODO KF6: remove if it turns out this is unneeded.
-    class InlineNotePrivate* d = nullptr;
+    // Internal implementation data structure.
+    const KateInlineNoteData & d;
 };
 
 }

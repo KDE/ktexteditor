@@ -30,6 +30,7 @@
 #include "katerenderrange.h"
 #include "katetextlayout.h"
 #include "katebuffer.h"
+#include "inlinenotedata.h"
 
 #include "ktexteditor/inlinenote.h"
 #include "ktexteditor/inlinenoteprovider.h"
@@ -763,8 +764,9 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
         // Draw inline notes
         const auto inlineNotes = m_view->inlineNotes(range->line());
-        for (const KTextEditor::InlineNote& inlineNote: inlineNotes) {
-            int column = inlineNote.column();
+        for (const auto& inlineNoteData: inlineNotes) {
+            KTextEditor::InlineNote inlineNote(inlineNoteData);
+            const int column = inlineNote.position().column();
             int viewLine = range->viewLineForColumn(column);
 
             // Determine the position where to paint the note.
@@ -1047,7 +1049,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     const auto inlineNotes = m_view->inlineNotes(lineLayout->line());
     for (const KTextEditor::InlineNote& inlineNote: inlineNotes) {
-        int column = inlineNote.column();
+        const int column = inlineNote.position().column();
         int width = inlineNote.width();
 
         // Make space for every inline note.

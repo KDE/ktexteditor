@@ -27,13 +27,13 @@
 #define _KATE_VIEW_INTERNAL_
 
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/inlinenote.h>
 
 #include "katetextcursor.h"
 #include "katetextline.h"
 #include "katedocument.h"
 #include "kateview.h"
 #include "katerenderer.h"
+#include "inlinenotedata.h"
 
 #include <QPoint>
 #include <QTimer>
@@ -468,10 +468,10 @@ private:
     QMap<KTextEditor::View::InputMode, KateAbstractInputMode *> m_inputModes;
     KateAbstractInputMode *m_currentInputMode;
 
-    KTextEditor::InlineNote m_activeInlineNote;
-    KTextEditor::InlineNote inlineNoteAt(const QPoint& pos) const;
-    QRect inlineNoteRect(const KTextEditor::InlineNote& note) const;
-    QPoint toNoteCoordinates(const QPoint& pos, const KTextEditor::InlineNote& note) const;
+    KateInlineNoteData m_activeInlineNote;
+    KateInlineNoteData inlineNoteAt(const QPoint& pos) const;
+    QRect inlineNoteRect(const KateInlineNoteData& note) const;
+    QPoint toNoteCoordinates(const QPoint& pos, const KateInlineNoteData& note) const;
 };
 
 #endif
