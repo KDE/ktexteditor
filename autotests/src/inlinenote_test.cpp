@@ -199,7 +199,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.noteActivatedCount, 1);
 
     // focus out
-    QTest::mouseMove(&view, QPoint(0, 0));
+    QTest::mouseMove(&view, coordCol04);
     QTest::qWait(100);
     QCOMPARE(noteProvider.focusInCount, 1);
     QCOMPARE(noteProvider.focusOutCount, 1);
