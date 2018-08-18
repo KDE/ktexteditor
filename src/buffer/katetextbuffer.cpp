@@ -771,10 +771,9 @@ bool TextBuffer::save(const QString &filename)
     /**
      * construct correct filter device
      * we try to use the same compression as for opening
-     * for compression none, we just skip the wrapping and directly write to the file
      */
     const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
-    QScopedPointer<QIODevice> saveFile((type == KCompressionDevice::None) ? static_cast<QIODevice*>(new QFile(filename)) : static_cast<QIODevice*>(new KCompressionDevice(filename, type)));
+    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
 
     /**
      * if we want to use kauth anyways or we can open the file write only => use temporary file and try to use authhelper
@@ -821,7 +820,7 @@ bool TextBuffer::save(const QString &filename)
     stream.setGenerateByteOrderMark(generateByteOrderMark());
 
     // our loved eol string ;)
-    QString eol = QStringLiteral("\n"); //m_doc->config()->eolString ();
+    QString eol = QStringLiteral("\n");
     if (endOfLineMode() == eolDos) {
         eol = QStringLiteral("\r\n");
     } else if (endOfLineMode() == eolMac) {
@@ -830,17 +829,21 @@ bool TextBuffer::save(const QString &filename)
 
     // just dump the lines out ;)
     for (int i = 0; i < m_lines; ++i) {
-        // get line to save
-        Kate::TextLine textline = line(i);
-
-        stream << textline->text();
+        // dump current line
+        stream << line(i)->text();
 
         // append correct end of line string
         if ((i + 1) < m_lines) {
             stream << eol;
         }
+
+        // early out on stream errors
+        if (stream.status() != QTextStream::Ok) {
+            return false;
+        }
     }
 
+    // do we need to add a trailing newline char?
     if (m_newLineAtEof) {
         Q_ASSERT(m_lines > 0); // see .h file
         const Kate::TextLine lastLine = line(m_lines - 1);
@@ -853,23 +856,17 @@ bool TextBuffer::save(const QString &filename)
     // flush stream
     stream.flush();
 
-    // close the file, we might want to read from underlying buffer below
-    saveFile->close();
-
-    // did save work? ATM special handling as QIODevice has no error()
-    auto fileError = QFileDevice::NoError;
-    if (auto file = qobject_cast<QFileDevice *>(saveFile.data())) {
-        fileError = file->error();
-    } else if (auto compress = qobject_cast<KCompressionDevice *>(saveFile.data())) {
-        fileError = compress->error();
-    }
-    if (fileError != QFileDevice::NoError) {
-        BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
+    // only finalize if stream status == OK
+    if (stream.status() != QTextStream::Ok) {
         return false;
     }
 
-    // only finalize if stream status == OK
-    if (stream.status() != QTextStream::Ok) {
+    // close the file, we might want to read from underlying buffer below
+    saveFile->close();
+
+    // did save work?
+    if (saveFile->error() != QFileDevice::NoError) {
+        BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
         return false;
     }
 
