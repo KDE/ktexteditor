@@ -26,8 +26,7 @@
 class KateIndentScriptHeader
 {
 public:
-    KateIndentScriptHeader()
-    {}
+    KateIndentScriptHeader() = default;
 
     inline void setName(const QString &name)
     {
@@ -103,13 +102,12 @@ private:
 };
 
 /**
- * A specialized class for scripts that are of type
- * KateScriptInformation::IndentationScript
+ * A specialized class for scripts that are of type ScriptType::Indentation.
  */
 class KateIndentScript : public KateScript
 {
 public:
-    KateIndentScript(const QString &url, const KateIndentScriptHeader &header);
+    explicit KateIndentScript(const QString &url, const KateIndentScriptHeader &header);
 
     const QString &triggerCharacters();
 
@@ -124,7 +122,7 @@ public:
 
 private:
     QString m_triggerCharacters;
-    bool m_triggerCharactersSet;
+    bool m_triggerCharactersSet = false;
     KateIndentScriptHeader m_indentHeader;
 };
 

@@ -35,13 +35,13 @@ class KateScriptView;
 
 namespace Kate
 {
-enum ScriptType {
+enum class ScriptType {
     /** The script is an indenter */
-    IndentationScript,
+    Indentation,
     /** The script contains command line commands */
-    CommandLineScript,
+    CommandLine,
     /** Don't know what kind of script this is */
-    UnknownScript
+    Unknown
 };
 }
 
@@ -103,7 +103,7 @@ private:
     QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
     int m_revision = 0;       ///< script revision, a simple number, e.g. 1, 2, 3, ...
     QString m_kateVersion;    ///< required katepart version
-    Kate::ScriptType m_scriptType = Kate::UnknownScript;  ///< the script type
+    Kate::ScriptType m_scriptType = Kate::ScriptType::Unknown;  ///< the script type
 };
 //END
 

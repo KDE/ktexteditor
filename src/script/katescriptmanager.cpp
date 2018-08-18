@@ -205,9 +205,9 @@ void KateScriptManager::collect()
              */
             KateScriptHeader generalHeader;
             if (type == QLatin1String("indentation")) {
-                generalHeader.setScriptType(Kate::IndentationScript);
+                generalHeader.setScriptType(Kate::ScriptType::Indentation);
             } else if (type == QLatin1String("commands")) {
-                generalHeader.setScriptType(Kate::CommandLineScript);
+                generalHeader.setScriptType(Kate::ScriptType::CommandLine);
             } else {
                 // should never happen, we dictate type by directory
                 Q_ASSERT(false);
@@ -221,7 +221,7 @@ void KateScriptManager::collect()
 
             // now, cast accordingly based on type
             switch (generalHeader.scriptType()) {
-            case Kate::IndentationScript: {
+            case Kate::ScriptType::Indentation: {
                 KateIndentScriptHeader indentHeader;
                 indentHeader.setName(metaInfoObject.value(QStringLiteral("name")).toString());
                 indentHeader.setBaseName(baseName);
@@ -259,7 +259,7 @@ void KateScriptManager::collect()
                 m_indentationScripts.append(script);
                 break;
             }
-            case Kate::CommandLineScript: {
+            case Kate::ScriptType::CommandLine: {
                 KateCommandLineScriptHeader commandHeader;
                 commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QStringLiteral("functions"))));
                 commandHeader.setActions(metaInfoObject.value(QStringLiteral("actions")).toArray());
@@ -273,7 +273,7 @@ void KateScriptManager::collect()
                 m_commandLineScripts.push_back(script);
                 break;
             }
-            case Kate::UnknownScript:
+            case Kate::ScriptType::Unknown:
             default:
                 qCDebug(LOG_KTE) << "Script value warning: Unknown type ('" << qPrintable(type) << "'): "
                                   << qPrintable(fileName) << '\n';

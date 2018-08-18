@@ -27,7 +27,6 @@
 
 KateIndentScript::KateIndentScript(const QString &url, const KateIndentScriptHeader &header)
     : KateScript(url)
-    , m_triggerCharactersSet(false)
     , m_indentHeader(header)
 {
 }

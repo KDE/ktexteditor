@@ -58,8 +58,7 @@ private:
 };
 
 /**
- * A specialized class for scripts that are of type
- * KateScriptInformation::IndentationScript
+ * A specialized class for scripts that are of type ScriptType::Indentation.
  */
 class KateCommandLineScript : public KateScript, public KTextEditor::Command
 {
