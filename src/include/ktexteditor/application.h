@@ -72,7 +72,7 @@ public:
 
     /**
      * Ask app to quit. The app might interact with the user and decide that
-     * quiting is not possible and return false.
+     * quitting is not possible and return false.
      *
      * \return true if the app could quit
      */
@@ -185,7 +185,7 @@ Q_SIGNALS:
     /**
      * This signal is emitted before the documents batch is going to be deleted
      *
-     * note that the batch can be interupted in the middle and only some
+     * note that the batch can be interrupted in the middle and only some
      * of the documents may be actually deleted. See documentsDeleted() signal.
      */
     void aboutToDeleteDocuments(const QList<KTextEditor::Document *> &);

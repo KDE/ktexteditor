@@ -1361,7 +1361,7 @@ private:
 
 public:
     /**
-     * reads the line length limit from config, if it is not overriden
+     * reads the line length limit from config, if it is not overridden
      */
     int lineLengthLimit() const;
 
@@ -1386,7 +1386,7 @@ private:
      */
     QSharedPointer<KTextEditor::MovingRange> m_currentAutobraceRange;
     /**
-     * current autobrace closing charater (e.g. ']')
+     * current autobrace closing character (e.g. ']')
      */
     QChar m_currentAutobraceClosingChar;
 

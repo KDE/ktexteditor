@@ -153,7 +153,7 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
     // create temporary cursor to modify
     Cursor c(m_cursor);
 
-    // fowards?
+    // forwards?
     if (chars > 0) {
         // cache lineLength to minimize calls of KTextEditor::DocumentPrivate::lineLength(), as
         // results in locating the correct block in the text buffer every time,

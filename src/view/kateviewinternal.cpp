@@ -83,7 +83,7 @@ public:
                 }
                 else if (deltaT > 1000) {
                     // the protection is kept active for 1s after the last wheel event
-                    // TODO: this value should be tuned, preferrably by someone using
+                    // TODO: this value should be tuned, preferably by someone using
                     // Ctrl+Wheel zooming frequently.
                     m_ignoreZoom = false;
                 }

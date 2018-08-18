@@ -96,7 +96,7 @@ protected:
      * Called when a motion/text object is used. Updates the cursor position
      * and modifies the range. A motion will only modify the end of the range
      * (i.e. move the cursor) while a text object may modify both the start and
-     * the end. Overriden from the ModeBase class.
+     * the end. Overridden from the ModeBase class.
      */
     void goToPos(const Range &r) override;
 

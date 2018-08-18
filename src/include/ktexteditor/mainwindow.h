@@ -46,7 +46,7 @@ class View;
  *
  * For example the component can get a place to show view bar widgets (e.g. search&replace, goto line, ...).
  * This is useful to e.g. have one place inside the window to show such stuff even if the application allows
- * the user to have multiple split views avaible per window.
+ * the user to have multiple split views available per window.
  *
  * The application must pass a pointer to the MainWindow object to the createView method on view creation
  * and ensure that this main window stays valid for the complete lifetime of the view.

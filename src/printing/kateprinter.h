@@ -45,14 +45,14 @@ namespace KatePrinter
 
     /**
      * Overloaded print function for document
-     * Usefull when there is no view for the document. Consequently this function
+     * Useful when there is no view for the document. Consequently this function
      * cannot print only selected portion of document.
      */
     bool print(KTextEditor::DocumentPrivate *doc);
 
     /**
      * Overloaded print function for document
-     * Usefull when there is no view for the document. Consequently this function
+     * Useful when there is no view for the document. Consequently this function
      * cannot print only selected portion of document.
      */
     bool printPreview(KTextEditor::DocumentPrivate *doc);

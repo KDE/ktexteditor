@@ -69,7 +69,7 @@ enum SearchOption {
     EscapeSequences     = 1 << 10, ///< Plaintext mode: Processes escape sequences
     WholeWords          = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
 
-    MaxSearchOption     = 1 << 31  ///< Placeholder for binary compatability
+    MaxSearchOption     = 1 << 31  ///< Placeholder for binary compatibility
 };
 
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
@@ -393,7 +393,7 @@ public:
     bool openingError() const;
 
     /**
-     * Error message if any problem occured on last load.
+     * Error message if any problem occurred on last load.
      * @return error message what went wrong on loading
      */
     QString openingErrorMessage() const;

@@ -190,7 +190,7 @@ public:
      * When possible, using the last returned value m_lastPosition do the count
      * from the last cursor position m_lastCursor.
      * @return the number of chars (including one character for new lines)
-     *         from the beggining of the file.
+     *         from the beginning of the file.
      */
     int positionFromCursor(KateViewInternal *view, const KTextEditor::Cursor &cursor) const
     {

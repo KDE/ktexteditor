@@ -100,7 +100,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      */
     m_insertModeLabel = new QLabel( this );
     m_insertModeLabel->installEventFilter(this); // register for doubleclick
-    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should strech */ );
+    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should stretch */ );
     m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
     m_insertModeLabel->setFocusProxy(m_view);
     m_insertModeLabel->setWhatsThis(i18n("Insert mode and VI input mode indicator"));

@@ -1991,7 +1991,7 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
     matchCompletion = (m_nameColumn.startsWith(match, model->matchCaseSensitivity()) ? StartsWithMatch : NoMatch);
     if (matchCompletion == NoMatch) {
         // if no match, try for "contains"
-        // Only match when the occurence is at a "word" beginning, marked by
+        // Only match when the occurrence is at a "word" beginning, marked by
         // an underscore or a capital. So Foo matches BarFoo and Bar_Foo, but not barfoo.
         // Starting at 1 saves looking at the beginning of the word, that was already checked above.
         if (containsAtWordBeginning(m_nameColumn, match, model->matchCaseSensitivity())) {

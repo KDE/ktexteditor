@@ -111,7 +111,7 @@ void KateFoldingTest::testBug295632()
     QCOMPARE(line, QString("oooox----------"));
 }
 
-// This testcase tests the follwing:
+// This testcase tests the following:
 // - the cursor is first set into the word 'hello'
 // - then lines 0-3 are folded.
 // - the real text cursor is still in the word 'hello'

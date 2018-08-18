@@ -946,7 +946,7 @@ void ModesTest::NormalCommandsTests()
     // Unindent a pasted indented line if the current line has no indent.
     DoTest("foo\n  \tbar", "jVygg]p", "foo\nbar\n  \tbar");
     // Unindent subsequent lines, too - TODO - this assumes that each subsequent line has
-    // *indentical* trailing whitespace to the first pasted line: Vim seems to be able to
+    // *identical* trailing whitespace to the first pasted line: Vim seems to be able to
     // deal with cases where this does not hold.
     DoTest("foo\n  \tbar\n  \txyz", "jVjygg]p", "foo\nbar\nxyz\n  \tbar\n  \txyz");
     DoTest("foo\n  \tbar\n  \t  xyz", "jVjygg]p", "foo\nbar\n  xyz\n  \tbar\n  \t  xyz");
