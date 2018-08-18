@@ -36,7 +36,6 @@
 #include <QClipboard>
 #include <QTextCodec>
 #include <QFileDialog>
-#include <QSaveFile>
 
 void KateExporter::exportToClipboard()
 {

@@ -2409,7 +2409,7 @@ bool KTextEditor::DocumentPrivate::saveFile()
     if (!m_buffer->saveFile(localFilePath())) {
         // add m_file again to dirwatch
         activateDirWatch(oldPath);
-        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toDisplayString(QUrl::PreferLocalFile)));
+        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\nCheck that you have write access to this file or that enough disk space is available.\nThe original file may be lost or damaged. Don't quit the application until the file is successfully written.", this->url().toDisplayString(QUrl::PreferLocalFile)));
         return false;
     }
 
