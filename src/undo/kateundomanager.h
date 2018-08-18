@@ -54,7 +54,7 @@ public:
      *
      * @param doc the document the KateUndoManager will belong to
      */
-    KateUndoManager(KTextEditor::DocumentPrivate *doc);
+    explicit KateUndoManager(KTextEditor::DocumentPrivate *doc);
 
     ~KateUndoManager();
 
@@ -210,18 +210,18 @@ private:
     KTextEditor::View *activeView();
 
 private:
-    KTextEditor::DocumentPrivate *m_document;
-    bool m_undoComplexMerge;
-    bool m_isActive;
-    KateUndoGroup *m_editCurrentUndo;
+    KTextEditor::DocumentPrivate *m_document = nullptr;
+    bool m_undoComplexMerge = false;
+    bool m_isActive = true;
+    KateUndoGroup *m_editCurrentUndo = nullptr;
     QList<KateUndoGroup *> undoItems;
     QList<KateUndoGroup *> redoItems;
     // these two variables are for resetting the document to
     // non-modified if all changes have been undone...
-    KateUndoGroup *lastUndoGroupWhenSaved;
-    KateUndoGroup *lastRedoGroupWhenSaved;
-    bool docWasSavedWhenUndoWasEmpty;
-    bool docWasSavedWhenRedoWasEmpty;
+    KateUndoGroup *lastUndoGroupWhenSaved = nullptr;
+    KateUndoGroup *lastRedoGroupWhenSaved = nullptr;
+    bool docWasSavedWhenUndoWasEmpty = true;
+    bool docWasSavedWhenRedoWasEmpty = true;
 };
 
 #endif

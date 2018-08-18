@@ -31,7 +31,6 @@
 
 KateUndo::KateUndo(KTextEditor::DocumentPrivate *document)
     : m_document(document)
-    , m_lineModFlags(0x00)
 {
 }
 
@@ -235,7 +234,6 @@ void KateEditMarkLineAutoWrappedUndo::redo()
 
 KateUndoGroup::KateUndoGroup(KateUndoManager *manager, const KTextEditor::Cursor &cursorPosition, const KTextEditor::Range &selectionRange)
     : m_manager(manager)
-    , m_safePoint(false)
     , m_undoSelection(selectionRange)
     , m_redoSelection(-1, -1, -1, -1)
     , m_undoCursor(cursorPosition)

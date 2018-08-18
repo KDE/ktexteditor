@@ -30,13 +30,6 @@
 KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     : QObject(doc)
     , m_document(doc)
-    , m_undoComplexMerge(false)
-    , m_isActive(true)
-    , m_editCurrentUndo(nullptr)
-    , lastUndoGroupWhenSaved(nullptr)
-    , lastRedoGroupWhenSaved(nullptr)
-    , docWasSavedWhenUndoWasEmpty(true)
-    , docWasSavedWhenRedoWasEmpty(true)
 {
     connect(this, SIGNAL(undoEnd(KTextEditor::Document*)), this, SIGNAL(undoChanged()));
     connect(this, SIGNAL(redoEnd(KTextEditor::Document*)), this, SIGNAL(undoChanged()));
