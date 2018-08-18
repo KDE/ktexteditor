@@ -51,9 +51,10 @@ class KTEXTEDITOR_EXPORT InlineNote
 {
 public:
     /**
-     * Constructs an inline note. User code usually does not need to call this,
-     * notes are created from the columns returned by InlineNoteProvider::inlineNotes(int line),
-     * and then passed around as handles grouping useful information.
+     * Constructs an inline note. User code never calls this constructor,
+     * since notes are created internally only from the columns returned by
+     * InlineNoteProvider::inlineNotes(), and then passed around as handles
+     * grouping useful information.
      */
     InlineNote(const KateInlineNoteData & data);
 

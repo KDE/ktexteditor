@@ -46,10 +46,12 @@ class InlineNoteProvider;
  * @section inlinenote_introduction Introduction
  *
  * The inline notes interface provides a way to render arbitrary things in
- * the text. The layout of the line is adapted to create space for the note.
- * Possible applications include showing a name of a function parameter on
- * call side or rendering square with color preview next to CSS color
- * property.
+ * the text. The text layout of the line is adapted to create space for the
+ * note. Possible applications include showing a name of a function parameter
+ * in a function call or rendering a square with a color preview next to CSS
+ * color property.
+ *
+ * \image html inlinenote.png "Inline note showing a CSS color preview"
  *
  * To register as inline note provider, call registerInlineNoteProvider() with
  * an instance that inherits InlineNoteProvider. Finally, make sure you remove
