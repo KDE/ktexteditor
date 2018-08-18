@@ -856,9 +856,14 @@ bool TextBuffer::save(const QString &filename)
     // close the file, we might want to read from underlying buffer below
     saveFile->close();
 
-    // did save work?
-    // FIXME for KCompressionDevice
-    if (qobject_cast<QFileDevice *>(saveFile.data()) && qobject_cast<QFileDevice *>(saveFile.data())->error() != QFileDevice::NoError) {
+    // did save work? ATM special handling as QIODevice has no error()
+    auto fileError = QFileDevice::NoError;
+    if (auto file = qobject_cast<QFileDevice *>(saveFile.data())) {
+        fileError = file->error();
+    } else if (auto compress = qobject_cast<KCompressionDevice *>(saveFile.data())) {
+        fileError = compress->error();
+    }
+    if (fileError != QFileDevice::NoError) {
         BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
         return false;
     }
