@@ -36,7 +36,7 @@ class KateRenderer;
 class KateLineLayout : public QSharedData
 {
 public:
-    KateLineLayout(KateRenderer &renderer);
+    explicit KateLineLayout(KateRenderer &renderer);
     ~KateLineLayout();
 
     KTextEditor::DocumentPrivate *doc() const;

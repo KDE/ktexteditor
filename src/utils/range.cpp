@@ -109,7 +109,7 @@ namespace QTest {
     char *toString(const KTextEditor::Cursor &cursor)
     {
         QByteArray ba = "Cursor[" + QByteArray::number(cursor.line())
-                        + ", " + QByteArray::number(cursor.column()) + "]";
+                        + ", " + QByteArray::number(cursor.column()) + ']';
         return qstrdup(ba.data());
     }
 
@@ -120,7 +120,7 @@ namespace QTest {
         QByteArray ba = "Range[";
         ba += QByteArray::number(range.start().line()) + ", " + QByteArray::number(range.start().column()) + " - ";
         ba += QByteArray::number(range.end().line())   + ", " + QByteArray::number(range.end().column());
-        ba += "]";
+        ba += ']';
         return qstrdup(ba.data());
     }
 }

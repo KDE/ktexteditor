@@ -32,7 +32,7 @@ class VariableEditor;
 class VariableItem
 {
 public:
-    VariableItem(const QString &variable);
+    explicit VariableItem(const QString &variable);
     virtual ~VariableItem();
 
     QString variable() const;
@@ -66,7 +66,7 @@ private:
 class VariableIntItem : public VariableItem
 {
 public:
-    VariableIntItem(const QString &variable, int value);
+    explicit VariableIntItem(const QString &variable, int value);
 
     int value() const;
     void setValue(int newValue);
@@ -91,7 +91,7 @@ private:
 class VariableStringListItem : public VariableItem
 {
 public:
-    VariableStringListItem(const QString &variable, const QStringList &slist, const QString &value);
+    explicit VariableStringListItem(const QString &variable, const QStringList &slist, const QString &value);
 
     QStringList stringList() const;
 
@@ -113,7 +113,7 @@ private:
 class VariableBoolItem : public VariableItem
 {
 public:
-    VariableBoolItem(const QString &variable, bool value);
+    explicit VariableBoolItem(const QString &variable, bool value);
 
     bool value() const;
     void setValue(bool enabled);
@@ -132,7 +132,7 @@ private:
 class VariableColorItem : public VariableItem
 {
 public:
-    VariableColorItem(const QString &variable, const QColor &value);
+    explicit VariableColorItem(const QString &variable, const QColor &value);
 
     QColor value() const;
     void setValue(const QColor &color);
@@ -151,7 +151,7 @@ private:
 class VariableFontItem : public VariableItem
 {
 public:
-    VariableFontItem(const QString &variable, const QFont &value);
+    explicit VariableFontItem(const QString &variable, const QFont &value);
 
     QFont value() const;
     void setValue(const QFont &value);
@@ -170,7 +170,7 @@ private:
 class VariableStringItem : public VariableItem
 {
 public:
-    VariableStringItem(const QString &variable, const QString &value);
+    explicit VariableStringItem(const QString &variable, const QString &value);
 
     QString value() const;
     void setValue(const QString &value);
@@ -190,7 +190,7 @@ private:
 class VariableSpellCheckItem : public VariableItem
 {
 public:
-    VariableSpellCheckItem(const QString &variable, const QString &value);
+    explicit VariableSpellCheckItem(const QString &variable, const QString &value);
 
     QString value() const;
     void setValue(const QString &value);
@@ -209,7 +209,7 @@ private:
 class VariableRemoveSpacesItem : public VariableItem
 {
 public:
-    VariableRemoveSpacesItem(const QString &variable, int value);
+    explicit VariableRemoveSpacesItem(const QString &variable, int value);
 
     int value() const;
     void setValue(int value);

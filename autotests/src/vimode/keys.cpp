@@ -75,10 +75,10 @@ void KeysTest::MappingTests()
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
-            vi_global->mappings()->add(Mappings::NormalModeMapping, "'" + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", Mappings::Recursive);
+            vi_global->mappings()->add(Mappings::NormalModeMapping, '\'' + consectiveDigits, "iMapped from " + consectiveDigits + "<esc>", Mappings::Recursive);
         }
         TestPressKey("'123");
-        QCOMPARE(kate_document->text(), QString("")); // Shouldn't add anything until after the timeout!
+        QCOMPARE(kate_document->text(), QString()); // Shouldn't add anything until after the timeout!
         QTest::qWait(2 * mappingTimeoutMS);
         FinishTest("Mapped from 123");
     }

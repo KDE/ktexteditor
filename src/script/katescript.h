@@ -50,10 +50,8 @@ enum ScriptType {
 class KateScriptHeader
 {
 public:
-    KateScriptHeader()
-    {}
-    virtual ~KateScriptHeader()
-    {}
+    KateScriptHeader() = default;
+    virtual ~KateScriptHeader() = default;
 
     inline void setLicense(const QString &license)
     {
@@ -103,7 +101,7 @@ public:
 private:
     QString m_license;        ///< the script's license, e.g. LGPL
     QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
-    int m_revision = 0;           ///< script revision, a simple number, e.g. 1, 2, 3, ...
+    int m_revision = 0;       ///< script revision, a simple number, e.g. 1, 2, 3, ...
     QString m_kateVersion;    ///< required katepart version
     Kate::ScriptType m_scriptType = Kate::UnknownScript;  ///< the script type
 };
@@ -130,7 +128,7 @@ public:
      * content @p urlOrScript to it.
      * In case of a file, loading of the script will happen lazily.
      */
-    KateScript(const QString &urlOrScript, enum InputType inputType = InputURL);
+    explicit KateScript(const QString &urlOrScript, enum InputType inputType = InputURL);
     virtual ~KateScript();
 
     /** The script's URL */

@@ -261,7 +261,7 @@ void ViewTest::visualLineUpDownTests()
         const int posInWrappedLineToChange = 3;
         QString expectedText = startText;
         expectedText[dummyLineForUseWithK.length() + posInWrappedLineToChange] = '.';
-        DoTest(startText, "j" + QString::number(textWrappingLength + posInWrappedLineToChange) + "lkjgkr.", expectedText);
+        DoTest(startText, 'j' + QString::number(textWrappingLength + posInWrappedLineToChange) + "lkjgkr.", expectedText);
     }
 
     {
