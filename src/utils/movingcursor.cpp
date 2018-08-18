@@ -1,7 +1,7 @@
 /* This file is part of the KDE project
  *
  *  Copyright (C) 2010 Christoph Cullmann <cullmann@kde.org>
- *  Copyright (C) 2010 Dominik Haumann <dhaumann kde org>
+ *  Copyright (C) 2010-2018 Dominik Haumann <dhaumann@kde.org>
  *
  *  Based on code of the SmartCursor/Range by:
  *  Copyright (C) 2003-2005 Hamish Rodda <rodda@kde.org>

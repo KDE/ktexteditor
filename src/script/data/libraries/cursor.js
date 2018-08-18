@@ -1,6 +1,6 @@
 // This file is part of the Kate project within KDE.
-// (C) 2009 Dominik Haumann <dhaumann kde org>
-// License: LGPL v2 or v3
+// Copyright (C) 2009-2018 Dominik Haumann <dhaumann@kde.org>
+// License: MIT
 
 /**
  * Prototype Cursor.

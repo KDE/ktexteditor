@@ -1,7 +1,7 @@
 // This file is part of the KDE libraries
 // Copyright (C) 2005 Christoph Cullmann <cullmann@kde.org>
 // Copyright (C) 2005 Joseph Wenninger <jowenn@kde.org>
-// Copyright (C) 2006, 2009 Dominik Haumann <dhaumann kde org>
+// Copyright (C) 2006-2018 Dominik Haumann <dhaumann@kde.org>
 // Copyright (C) 2008 Paul Giannaros <paul@giannaros.org>
 // Copyright (C) 2010 Joseph Wenninger <jowenn@kde.org>
 //

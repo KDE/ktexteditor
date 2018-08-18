@@ -1,6 +1,6 @@
 // This file is part of the Kate project within KDE.
-// (C) 2013 Dominik Haumann <dhaumann kde org>
-// License: LGPL v2 or v3
+// Copyright (C) 2013-2018 Dominik Haumann <dhaumann@kde.org>
+// License: MIT
 
 require("cursor.js");
 

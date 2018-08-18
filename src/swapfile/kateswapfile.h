@@ -1,6 +1,6 @@
 /*  This file is part of the Kate project.
  *
- *  Copyright (C) 2010 Dominik Haumann <dhaumann kde org>
+ *  Copyright (C) 2010-2018 Dominik Haumann <dhaumann@kde.org>
  *  Copyright (C) 2010 Diana-Victoria Tiriplica <diana.tiriplica@gmail.com>
  *
  *  This library is free software; you can redistribute it and/or

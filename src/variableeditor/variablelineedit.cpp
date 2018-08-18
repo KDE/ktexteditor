@@ -1,6 +1,6 @@
 /* This file is part of the KDE project
 
-   Copyright (C) 2011 Dominik Haumann <dhaumann kde org>
+   Copyright (C) 2011-2018 Dominik Haumann <dhaumann@kde.org>
    Copyright (C) 2013 Gerald Senarclens de Grancy <oss@senarclens.eu>
 
    This library is free software; you can redistribute it and/or
