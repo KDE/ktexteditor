@@ -857,10 +857,10 @@ bool TextBuffer::save(const QString &filename)
     saveFile->close();
 
     // did save work?
-    if (!saveFile->errorString().isEmpty()) {
-        BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
-        return false;
-    }
+    //FIXME if (!saveFile->errorString().isEmpty()) {
+    //    BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
+    //    return false;
+    //}
 
     // only finalize if stream status == OK
     if (stream.status() != QTextStream::Ok) {
