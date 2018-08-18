@@ -8,15 +8,12 @@ Use qobject_cast to cast a Document \e doc into the
 \e DesiredExtensionInterface, example:
 \code
   // doc is of type KTextEditor::Document*
-  KTextEditor::DesiredExtensionInterface *iface =
-      qobject_cast<KTextEditor::DesiredExtensionInterface*>( doc );
+  auto iface = qobject_cast<KTextEditor::DesiredExtensionInterface*>(doc);
 
-  if( iface ) {
+  if (iface) {
       // the implementation supports the interface
       // do stuff
-  }
-  else
-  {
+  } else {
       // the implementation does not support the interface
   }
 \endcode
@@ -62,15 +59,12 @@ Use qobject_cast to cast a View \e view into the
 \e DesiredExtensionInterface, example:
 \code
   // view is of type KTextEditor::View*
-  KTextEditor::DesiredExtensionInterface *iface =
-      qobject_cast<KTextEditor::DesiredExtensionInterface*>( view );
+  auto iface = qobject_cast<KTextEditor::DesiredExtensionInterface*>(view);
 
-  if( iface ) {
+  if (iface) {
       // the implementation supports the interface
       // do stuff
-  }
-  else
-  {
+  } else {
       // the implementation does not support the interface
   }
 \endcode
@@ -95,15 +89,12 @@ Use qobject_cast to cast a Editor \e editor into the
 \e DesiredExtensionInterface, example:
 \code
   // editor is of type KTextEditor::Editor*
-  KTextEditor::DesiredExtensionInterface *iface =
-      qobject_cast<KTextEditor::DesiredExtensionInterface*>( view );
+  auto iface = qobject_cast<KTextEditor::DesiredExtensionInterface*>(view);
 
-  if( iface ) {
+  if (iface) {
       // the implementation supports the interface
       // do stuff
-  }
-  else
-  {
+  } else {
       // the implementation does not support the interface
   }
 \endcode
@@ -127,15 +118,12 @@ Use qobject_cast to cast a Plugin \e plugin into the
 \e DesiredExtensionInterface, example:
 \code
   // plugin is of type KTextEditor::Plugin*
-  KTextEditor::DesiredExtensionInterface *iface =
-      qobject_cast<KTextEditor::DesiredExtensionInterface*>( plugin );
+  auto iface = qobject_cast<KTextEditor::DesiredExtensionInterface*>(plugin);
 
-  if( iface ) {
+  if (iface) {
       // the implementation supports the interface
       // do stuff
-  }
-  else
-  {
+  } else {
       // the implementation does not support the interface
   }
 \endcode
@@ -157,15 +145,12 @@ Use qobject_cast to cast a Command \e cmd into the
 \e DesiredExtensionInterface, example:
 \code
   // cmd is of type KTextEditor::Command*
-  KTextEditor::DesiredExtensionInterface *iface =
-      qobject_cast<KTextEditor::DesiredExtensionInterface*>( cmd );
+  auto iface = qobject_cast<KTextEditor::DesiredExtensionInterface*>(cmd);
 
-  if( iface ) {
+  if (iface) {
       // the implementation supports the interface
       // do stuff
-  }
-  else
-  {
+  } else {
       // the implementation does not support the interface
   }
 \endcode

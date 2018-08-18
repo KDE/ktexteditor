@@ -80,12 +80,13 @@ public:
  * the interface:
  * \code
  * // doc is of type KTextEditor::Document*
- * KTextEditor::MarkInterface *iface =
- *     qobject_cast<KTextEditor::MarkInterface*>( doc );
+ * auto iface = qobject_cast<KTextEditor::MarkInterface*>(doc);
  *
- * if( iface ) {
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *

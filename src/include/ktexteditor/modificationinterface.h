@@ -55,12 +55,13 @@ class View;
  * access the interface:
  * \code
  * // doc is of type KTextEditor::Document*
- * KTextEditor::ModificationInterface *iface =
- *     qobject_cast<KTextEditor::ModificationInterface*>( doc );
+ * auto iface = qobject_cast<KTextEditor::ModificationInterface*>(doc);
  *
- * if( iface ) {
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *

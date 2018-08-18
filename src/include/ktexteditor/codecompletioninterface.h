@@ -54,12 +54,13 @@ class CodeCompletionModel;
  * access the interface:
  * \code
  * // view is of type KTextEditor::View*
- * KTextEditor::CodeCompletionInterface *iface =
- *     qobject_cast<KTextEditor::CodeCompletionInterface*>( view );
+ * auto iface = qobject_cast<KTextEditor::CodeCompletionInterface*>(view);
  *
- * if( iface ) {
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *

@@ -140,12 +140,13 @@ Q_SIGNALS:
  * access the interface:
  * \code
  * // document is of type KTextEditor::Document*
- * KTextEditor::AnnotationInterface *iface =
- *     qobject_cast<KTextEditor::AnnotationInterface*>( document );
+ * auto iface = qobject_cast<KTextEditor::AnnotationInterface*>(document);
  *
- * if( iface ) {
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *
@@ -201,13 +202,14 @@ public:
  * access the interface:
  * \code
  * // view is of type KTextEditor::View*
- * KTextEditor::AnnotationViewInterface *iface =
- *     qobject_cast<KTextEditor::AnnotationViewInterface*>( view );
+ * auto iface = qobject_cast<KTextEditor::AnnotationViewInterface*>(view);
  *
- * if( iface ) {
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
- *     iface->setAnnotationBorderVisible( true );
+ *     iface->setAnnotationBorderVisible(true);
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *

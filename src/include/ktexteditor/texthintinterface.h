@@ -61,13 +61,14 @@ class View;
  * interface:
  * \code
  * // view is of type KTextEditor::View*
- * KTextEditor::TextHintInterface *iface =
- *     qobject_cast<KTextEditor::TextHintInterface*>(view);
+ * auto iface = qobject_cast<KTextEditor::TextHintInterface*>(view);
  *
  * if (iface) {
  *     // the implementation supports the interface
  *     // myProvider inherits KTextEditor::TextHintProvider
  *     iface->registerTextHintProvider(myProvider);
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *

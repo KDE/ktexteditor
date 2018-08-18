@@ -62,13 +62,14 @@ class InlineNoteProvider;
  * interface:
  * @code
  * // view is of type KTextEditor::View*
- * KTextEditor::InlineNoteInterface *iface =
- *     qobject_cast<KTextEditor::InlineNoteInterface*>(view);
+ * auto iface = qobject_cast<KTextEditor::InlineNoteInterface*>(view);
  *
  * if (iface) {
  *     // the implementation supports the interface
  *     // myProvider inherits KTextEditor::InlineNoteProvider
  *     iface->registerInlineNoteProvider(myProvider);
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * @endcode
  *

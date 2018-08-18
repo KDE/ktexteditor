@@ -47,13 +47,13 @@ namespace KTextEditor
  * the interface:
  * \code
  * // ptr is of type KTextEditor::Document* or KTextEditor::View*
- * KTextEditor::ConfigInterface *iface =
- *     qobject_cast<KTextEditor::ConfigInterface*>( ptr );
+ * auto iface = qobject_cast<KTextEditor::ConfigInterface*>(ptr);
  *
- * if( iface ) {
- *
+ * if (iface) {
  *     // the implementation supports the interface
  *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
  * }
  * \endcode
  *
