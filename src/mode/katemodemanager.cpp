@@ -101,8 +101,9 @@ void KateModeManager::update()
     const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
         // filter out None hl, we add that later as "normal" mode
-        if (modes[i].name() == QLatin1String("None"))
+        if (modes[i].name() == QLatin1String("None")) {
             continue;
+        }
 
         KateFileType *type = nullptr;
         bool newType = false;
