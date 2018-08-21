@@ -53,13 +53,13 @@ public:
     KTextEditor::Attribute::Ptr currentAttribute() const override;
 
 private:
-    QList<pairRA> m_ranges;
+    QVector<pairRA> m_ranges;
     KTextEditor::Cursor m_nextBoundary;
     KTextEditor::Attribute::Ptr m_currentAttribute;
     int m_currentRange = 0;
 };
 
-class RenderRangeList : public QList<KateRenderRange *>
+class RenderRangeList : public QVector<KateRenderRange *>
 {
 public:
     ~RenderRangeList();

@@ -87,7 +87,7 @@ NormalRenderRange::NormalRenderRange()
 
 NormalRenderRange::~NormalRenderRange()
 {
-    QListIterator<pairRA> it = m_ranges;
+    QVectorIterator<pairRA> it = m_ranges;
     while (it.hasNext()) {
         delete it.next().first;
     }
