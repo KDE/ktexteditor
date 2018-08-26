@@ -1,5 +1,6 @@
 [Domain]
 Name=Document Actions
+Name[ar]=إجراءات المستندات
 Name[ca]=Accions de document
 Name[ca@valencia]=Accions de document
 Name[cs]=Činnosti dokumentu
@@ -37,6 +38,7 @@ Persistence=session
 
 [org.kde.ktexteditor.katetextbuffer.savefile]
 Name=Save Document
+Name[ar]=احفظ المستند
 Name[ast]=Guardar documentu
 Name[ca]=Desa el document
 Name[ca@valencia]=Guarda el document
@@ -71,6 +73,7 @@ Name[x-test]=xxSave Documentxx
 Name[zh_CN]=保存文档
 Name[zh_TW]=儲存文件
 Description=Root privileges are needed to save this document
+Description[ar]=مزايا الجذر مطلوبة لحفظ هذا المستند
 Description[ast]=Precísense privilexos root pa guardar esti documentu
 Description[ca]=Es requereixen privilegis d'administrador per desar aquest document
 Description[ca@valencia]=Es requereixen privilegis d'administrador per guardar aquest document
