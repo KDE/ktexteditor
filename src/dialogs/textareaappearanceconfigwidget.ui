@@ -194,12 +194,12 @@ beginning of a file.</string>
               </widget>
             </item>
             <item>
-              <widget class="QCheckBox" name="chkShowLinesCount">
+              <widget class="QCheckBox" name="chkShowLineCount">
                 <property name="toolTip">
-                  <string>Show/hide Lines count in status bar</string>
+                  <string>Show/hide line count in status bar</string>
                 </property>
                 <property name="text">
-                  <string>Show Lines Count</string>
+                  <string>Show line count</string>
                 </property>
               </widget>
             </item>

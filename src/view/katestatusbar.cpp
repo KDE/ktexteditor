@@ -224,9 +224,9 @@ bool KateStatusBar::eventFilter(QObject *obj, QEvent *event)
 void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu menu(this);
-    QAction *showLines = menu.addAction(QStringLiteral("Show Lines Count"), this, &KateStatusBar::toggleShowLines);
+    QAction *showLines = menu.addAction(QStringLiteral("Show line count"), this, &KateStatusBar::toggleShowLines);
     showLines->setCheckable(true);
-    showLines->setChecked(KateViewConfig::global()->showLinesCount());
+    showLines->setChecked(KateViewConfig::global()->showLineCount());
     QAction *showWords = menu.addAction(QStringLiteral("Show word count"), this, &KateStatusBar::toggleShowWords);
     showWords->setCheckable(true);
     showWords->setChecked(KateViewConfig::global()->showWordCount());
@@ -235,7 +235,7 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
 
 void KateStatusBar::toggleShowLines(bool checked)
 {
-    KateViewConfig::global()->setShowLinesCount(checked);
+    KateViewConfig::global()->setShowLineCount(checked);
 }
 
 void KateStatusBar::toggleShowWords(bool checked)
@@ -279,7 +279,7 @@ void KateStatusBar::cursorPositionChanged ()
 {
     KTextEditor::Cursor position (m_view->cursorPositionVirtual());
 
-    if( KateViewConfig::global()->showLinesCount() )
+    if( KateViewConfig::global()->showLineCount() )
     m_lineColLabel->setText(
         i18n("Line %1 of %2, Column %3"
             , QLocale().toString(position.line() + 1)

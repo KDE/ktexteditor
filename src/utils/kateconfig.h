@@ -572,8 +572,8 @@ public:
     bool showWordCount() const;
     void setShowWordCount(bool on);
 
-    bool showLinesCount() const;
-    void setShowLinesCount(bool on);
+    bool showLineCount() const;
+    void setShowLineCount(bool on);
 
     bool autoBrackets() const;
     void setAutoBrackets(bool on);
@@ -614,7 +614,7 @@ private:
     bool m_scrollPastEnd;
     bool m_foldFirstLine;
     bool m_showWordCount = false;
-    bool m_showLinesCount = false;
+    bool m_showLineCount = false;
     bool m_autoBrackets;
     bool m_backspaceRemoveComposed;
 
@@ -650,7 +650,7 @@ private:
     bool m_wordCompletionRemoveTailSet : 1;
     bool m_foldFirstLineSet : 1;
     bool m_showWordCountSet : 1;
-    bool m_showLinesCountSet : 1;
+    bool m_showLineCountSet : 1;
     bool m_autoBracketsSet : 1;
     bool m_backspaceRemoveComposedSet : 1;
 
