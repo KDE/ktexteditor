@@ -41,7 +41,7 @@ set(REQUIRED_QT_VERSION 5.8.0)
 
 # Required Qt5 components to build this framework
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
-  PrintSupport Xml XmlPatterns)
+  PrintSupport Xml)
 
 find_package(KF5Archive ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
