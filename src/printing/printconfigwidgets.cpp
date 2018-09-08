@@ -345,13 +345,11 @@ bool KatePrintHeaderFooter::useFooterBackground()
 
 void KatePrintHeaderFooter::setHFFont()
 {
-    bool ok;
-    QFont selectedFont = QFontDialog::getFont(&ok, lFontPreview->font(), this);
-
+    bool ok = false;
+    const QFont selectedFont = QFontDialog::getFont(&ok, lFontPreview->font(), this);
     if (ok) {
         lFontPreview->setFont(selectedFont);
-        QString text = i18n("%1, %2pt");
-        lFontPreview->setText(text.arg(selectedFont.family()).arg(selectedFont.pointSize()));
+        lFontPreview->setText(i18n("%1, %2pt", selectedFont.family(), selectedFont.pointSize()));
     }
 }
 
