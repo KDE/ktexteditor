@@ -1,9 +1,9 @@
 var katescript = {
     "name": "R",
     "author": "Pierre de Villemerereuil <pierre.de.villemereuil@mailoo.org>",
-    "license": "LGPL",
+    "license": "MIT",
     "revision": 1,
-    "kate-version": "5.1",
+    "kate-version": "5.0",
     "indent-languages": ["R", "R Script", "Script R"]
 }; // kate-script-header, must be at the start of the file without comments
 
@@ -266,14 +266,17 @@ function calcOperatorIndent(lineNr, indentWidth, pos, lineLastOp) {
         if (endsWithAny(operators, previousLine)) {
             // Looking for the start of the operator indenting
             for (i = refLine - 1; i>=0; --i) {
-                // If we indented in the past
-                if (document.firstVirtualColumn(i) < currentIndent) {
-                    currentIndent = document.firstVirtualColumn(i);
-                    var previousLine = getCodeWithString(i - 1);
-                    // and doesn't end up with an operator
-                    if (!endsWithAny(operators, previousLine)) {
-                        //return this line indent otherwise
-                        return currentIndent;
+                // If commented line, skip
+                if (getCodeWithString(i) != '') {
+                    // If we indented in the past
+                    if (document.firstVirtualColumn(i) < currentIndent) {
+                        currentIndent = document.firstVirtualColumn(i);
+                        var previousLine = getCodeWithString(i - 1);
+                        // and doesn't end up with an operator
+                        if (!endsWithAny(operators, previousLine)) {
+                            //return this line indent otherwise
+                            return currentIndent;
+                        }
                     }
                 }
             }
@@ -346,6 +349,7 @@ function indent(line, indentWidth, ch) {
     // if empty line, strictly keep indent 
     // (-1 seems to be not strict and "restore" latest indent with text)
     if (!lastLine.length) {
+//         debug("Empty line")
         return countSpaces(line - 1, -1);
     }
              
