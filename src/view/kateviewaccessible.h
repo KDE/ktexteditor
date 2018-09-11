@@ -41,6 +41,7 @@ class KateViewAccessible : public QAccessibleWidget, public QAccessibleTextInter
 public:
     explicit KateViewAccessible(KateViewInternal *view)
         : QAccessibleWidget(view, QAccessible::EditableText)
+        , m_lastPosition(-1)
     {
         // to invalidate positionFromCursor cache when the document is changed
         m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged,
