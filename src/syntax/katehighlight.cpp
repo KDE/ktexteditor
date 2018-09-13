@@ -273,7 +273,7 @@ void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::Foldin
      * for each end region, decrement counter for that type, erase if count reaches 0!
      */
     if (foldingValue < 0) {
-        QHash<int, int>::iterator end = m_foldingStartToCount.find(foldingValue);
+        QHash<int, int>::iterator end = m_foldingStartToCount.find(-foldingValue);
         if (end != m_foldingStartToCount.end()) {
             if (end.value() > 1) {
                 --(end.value());
