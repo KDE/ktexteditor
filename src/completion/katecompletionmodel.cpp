@@ -1600,9 +1600,9 @@ void KateCompletionModel::Group::addItem(Item i, bool notifyModel)
 
     if (model->isSortingEnabled()) {
 
-        prefilter.insert(qUpperBound(prefilter.begin(), prefilter.end(), i), i);
+        prefilter.insert(std::upper_bound(prefilter.begin(), prefilter.end(), i), i);
         if (i.isVisible()) {
-            QList<Item>::iterator it = qUpperBound(filtered.begin(), filtered.end(), i);
+            QList<Item>::iterator it = std::upper_bound(filtered.begin(), filtered.end(), i);
             uint rowNumber = it - filtered.begin();
 
             if (notifyModel) {

@@ -303,7 +303,7 @@ bool TextFolding::isLineVisible(int line, qint64 *foldedRangeId) const
     /**
      * search upper bound, index to item with start line higher than our one
      */
-    FoldingRange::Vector::const_iterator upperBound = qUpperBound(m_foldedFoldingRanges.begin(), m_foldedFoldingRanges.end(), line, compareRangeByStartWithLine);
+    FoldingRange::Vector::const_iterator upperBound = std::upper_bound(m_foldedFoldingRanges.begin(), m_foldedFoldingRanges.end(), line, compareRangeByStartWithLine);
     if (upperBound != m_foldedFoldingRanges.begin()) {
         --upperBound;
     }
@@ -528,12 +528,12 @@ void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRange
     /**
      * first: lower bound of start
      */
-    FoldingRange::Vector::const_iterator lowerBound = qLowerBound(ranges.begin(), ranges.end(), line, compareRangeByLineWithStart);
+    FoldingRange::Vector::const_iterator lowerBound = std::lower_bound(ranges.begin(), ranges.end(), line, compareRangeByLineWithStart);
 
     /**
      * second: upper bound of end
      */
-    FoldingRange::Vector::const_iterator upperBound = qUpperBound(ranges.begin(), ranges.end(), line, compareRangeByStartWithLine);
+    FoldingRange::Vector::const_iterator upperBound = std::upper_bound(ranges.begin(), ranges.end(), line, compareRangeByStartWithLine);
 
     /**
      * we may need to go one to the left, if not already at the begin, as we might overlap with the one in front of us!
@@ -642,12 +642,12 @@ bool TextFolding::insertNewFoldingRange(FoldingRange *parent, FoldingRange::Vect
     /**
      * first: lower bound of start
      */
-    FoldingRange::Vector::iterator lowerBound = qLowerBound(existingRanges.begin(), existingRanges.end(), newRange, compareRangeByStart);
+    FoldingRange::Vector::iterator lowerBound = std::lower_bound(existingRanges.begin(), existingRanges.end(), newRange, compareRangeByStart);
 
     /**
      * second: upper bound of end
      */
-    FoldingRange::Vector::iterator upperBound = qUpperBound(existingRanges.begin(), existingRanges.end(), newRange, compareRangeByEnd);
+    FoldingRange::Vector::iterator upperBound = std::upper_bound(existingRanges.begin(), existingRanges.end(), newRange, compareRangeByEnd);
 
     /**
      * we may need to go one to the left, if not already at the begin, as we might overlap with the one in front of us!
