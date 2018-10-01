@@ -24,6 +24,7 @@ include(KDECMakeSettings)
 include(KDEPackageAppTemplates)
 include(GenerateExportHeader)
 include(ECMAddQch)
+include(ECMQtDeclareLoggingCategory)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
@@ -124,5 +125,7 @@ configure_file (config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 # let our config.h be found first in any case
 include_directories (BEFORE ${CMAKE_CURRENT_BINARY_DIR})
+
+install(FILES ktexteditor.categories DESTINATION ${KDE_INSTALL_CONFDIR})
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

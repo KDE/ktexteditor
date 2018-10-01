@@ -63,9 +63,6 @@
 #include <git2.h>
 #endif
 
-// logging category for this framework, default: log stuff >= warning
-Q_LOGGING_CATEGORY(LOG_KTE, "org.kde.ktexteditor", QtWarningMsg)
-
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
 

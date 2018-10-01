@@ -222,6 +222,9 @@ if(EditorConfig_FOUND)
     set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} document/editorconfig.cpp)
 endif()
 
+ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS HEADER katepartdebug.h IDENTIFIER LOG_KTE CATEGORY_NAME org.kde.ktexteditor)
+
+
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
 dialogs/textareaappearanceconfigwidget.ui
 dialogs/bordersappearanceconfigwidget.ui
