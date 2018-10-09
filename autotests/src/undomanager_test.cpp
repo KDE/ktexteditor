@@ -41,7 +41,7 @@ class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
 {
 public:
     TestDocument()
-        : KTextEditor::DocumentPrivate(false, false, nullptr, nullptr)
+        : KTextEditor::DocumentPrivate()
     {}
 };
 

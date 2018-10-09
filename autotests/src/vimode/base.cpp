@@ -90,7 +90,7 @@ void BaseTest::init()
     delete kate_view;
     delete kate_document;
 
-    kate_document = new KTextEditor::DocumentPrivate(false, false, nullptr, nullptr);
+    kate_document = new KTextEditor::DocumentPrivate();
 
     // fixed indentation options
     kate_document->config()->setTabWidth(8);
