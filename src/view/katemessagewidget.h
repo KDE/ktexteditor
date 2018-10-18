@@ -47,7 +47,7 @@ public:
     /**
      * Constructor. By default, the widget is hidden.
      */
-    KateMessageWidget(QWidget *parent, bool applyFadeEffect = false);
+    explicit KateMessageWidget(QWidget *parent, bool applyFadeEffect = false);
 
     /**
      * Post a new incoming message. Show either directly, or queue

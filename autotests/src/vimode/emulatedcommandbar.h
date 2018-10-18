@@ -73,7 +73,7 @@ class FailsIfSlotCalled : public QObject
 {
   Q_OBJECT
 public:
-  FailsIfSlotCalled(const QString& failureMessage);
+  explicit FailsIfSlotCalled(const QString& failureMessage);
 public Q_SLOTS:
   void slot();
 private:

@@ -40,7 +40,7 @@ class KateSpellingMenu : public QObject
     friend class KateOnTheFlyChecker;
 
 public:
-    KateSpellingMenu(KTextEditor::ViewPrivate *view);
+    explicit KateSpellingMenu(KTextEditor::ViewPrivate *view);
     virtual ~KateSpellingMenu();
 
     bool isEnabled() const;

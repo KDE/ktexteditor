@@ -102,7 +102,7 @@ class KateSchemaConfigDefaultStylesTab : public QWidget
     Q_OBJECT
 
 public:
-    KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab);
+    explicit KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab);
     ~KateSchemaConfigDefaultStylesTab() override;
 
 Q_SIGNALS:

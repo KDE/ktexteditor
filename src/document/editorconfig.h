@@ -38,7 +38,7 @@ namespace KTextEditor { class DocumentPrivate; }
 class EditorConfig
 {
 public:
-    EditorConfig(KTextEditor::DocumentPrivate *document);
+    explicit EditorConfig(KTextEditor::DocumentPrivate *document);
     ~EditorConfig();
     /**
      * Runs EditorConfig parser and sets proper parent DocumentPrivate

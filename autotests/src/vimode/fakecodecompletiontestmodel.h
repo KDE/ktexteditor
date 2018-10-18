@@ -58,7 +58,7 @@ class FakeCodeCompletionTestModel : public KTextEditor::CodeCompletionModel
     Q_OBJECT
 
 public:
-    FakeCodeCompletionTestModel(KTextEditor::View *parent);
+    explicit FakeCodeCompletionTestModel(KTextEditor::View *parent);
     /**
      * List of completions, in sorted order.
      * A string ending with "()" is treated as a call to a function with no arguments.

@@ -71,7 +71,7 @@ public:
      * @param parent parent qobject
      * @param blockSize block size in lines the buffer should try to hold, default 64 lines
      */
-    TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize = 64, bool alwaysUseKAuth = false);
+    explicit TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize = 64, bool alwaysUseKAuth = false);
 
     /**
      * Destruct the text buffer

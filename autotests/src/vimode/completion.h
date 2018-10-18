@@ -34,7 +34,7 @@
 class VimCodeCompletionTestModel : public KTextEditor::CodeCompletionModel
 {
 public:
-    VimCodeCompletionTestModel(KTextEditor::View *parent);
+    explicit VimCodeCompletionTestModel(KTextEditor::View *parent);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     KTextEditor::CodeCompletionInterface *cc() const;
 };
@@ -46,7 +46,7 @@ public:
 class FailTestOnInvocationModel : public KTextEditor::CodeCompletionModel
 {
 public:
-    FailTestOnInvocationModel(KTextEditor::View *parent);
+    explicit FailTestOnInvocationModel(KTextEditor::View *parent);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     void failTest() const;
     KTextEditor::CodeCompletionInterface *cc() const;

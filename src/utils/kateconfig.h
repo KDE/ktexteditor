@@ -157,12 +157,12 @@ private:
     KateDocumentConfig();
 
 public:
-    KateDocumentConfig(const KConfigGroup &cg);
+    explicit KateDocumentConfig(const KConfigGroup &cg);
 
     /**
      * Construct a DocumentConfig
      */
-    KateDocumentConfig(KTextEditor::DocumentPrivate *doc);
+    explicit KateDocumentConfig(KTextEditor::DocumentPrivate *doc);
 
     /**
      * Cu DocumentConfig
@@ -673,7 +673,7 @@ public:
     /**
      * Construct a DocumentConfig
      */
-    KateRendererConfig(KateRenderer *renderer);
+    explicit KateRendererConfig(KateRenderer *renderer);
 
     /**
      * Cu DocumentConfig

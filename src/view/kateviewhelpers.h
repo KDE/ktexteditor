@@ -392,7 +392,7 @@ private:
     class Private
     {
     public:
-        Private(KateViewEncodingAction *parent)
+        explicit Private(KateViewEncodingAction *parent)
             : q(parent),
               currentSubAction(nullptr)
         {

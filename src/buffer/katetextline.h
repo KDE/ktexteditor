@@ -57,7 +57,7 @@ public:
          * @param _length length
          * @param _attributeValue attribute value
          */
-        Attribute(int _offset = 0, int _length = 0, short _attributeValue = 0)
+        explicit Attribute(int _offset = 0, int _length = 0, short _attributeValue = 0)
             : offset(_offset)
             , length(_length)
             , attributeValue(_attributeValue)

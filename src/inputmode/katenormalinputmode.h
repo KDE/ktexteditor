@@ -27,7 +27,7 @@ class KateCommandLineBar;
 
 class KateNormalInputMode : public KateAbstractInputMode
 {
-    KateNormalInputMode(KateViewInternal *viewInternal);
+    explicit KateNormalInputMode(KateViewInternal *viewInternal);
     friend KateNormalInputModeFactory;
 
 public:

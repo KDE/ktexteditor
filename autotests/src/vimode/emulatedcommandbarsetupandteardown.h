@@ -37,7 +37,7 @@ class WindowKeepActive : public QObject
     Q_OBJECT
 
     public:
-        WindowKeepActive(QMainWindow *mainWindow);
+        explicit WindowKeepActive(QMainWindow *mainWindow);
 
         public Q_SLOTS:
             bool eventFilter(QObject *object, QEvent *event) override;

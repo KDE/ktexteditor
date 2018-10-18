@@ -37,7 +37,7 @@ class KTEXTEDITOR_EXPORT KateScriptEditor : public QObject
     Q_OBJECT
 
 public:
-    KateScriptEditor(QJSEngine *engine, QObject *parent = nullptr);
+    explicit KateScriptEditor(QJSEngine *engine, QObject *parent = nullptr);
 
     Q_INVOKABLE QString clipboardText() const;
     Q_INVOKABLE QStringList clipboardHistory() const;

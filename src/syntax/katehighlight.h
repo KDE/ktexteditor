@@ -55,7 +55,7 @@ namespace KTextEditor {
 class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
 {
 public:
-    KateHighlighting(const KSyntaxHighlighting::Definition &def);
+    explicit KateHighlighting(const KSyntaxHighlighting::Definition &def);
 
 protected:
     /**

@@ -28,7 +28,7 @@
 class KateExporter
 {
 public:
-    KateExporter(KTextEditor::View *view)
+    explicit KateExporter(KTextEditor::View *view)
         : m_view(view) {
     }
 

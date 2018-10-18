@@ -33,7 +33,7 @@ class CustomRangeModel : public CodeCompletionTestModel, public CodeCompletionMo
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    CustomRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit CustomRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
     Range completionRange(View *view, const Cursor &position) override
@@ -65,7 +65,7 @@ class CustomAbortModel : public CodeCompletionTestModel, public CodeCompletionMo
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    CustomAbortModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit CustomAbortModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
 
@@ -83,7 +83,7 @@ class EmptyFilterStringModel : public CodeCompletionTestModel, public CodeComple
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    EmptyFilterStringModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit EmptyFilterStringModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
 
@@ -98,7 +98,7 @@ class UpdateCompletionRangeModel : public CodeCompletionTestModel, public CodeCo
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    UpdateCompletionRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit UpdateCompletionRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
 
@@ -124,7 +124,7 @@ class StartCompletionModel : public CodeCompletionTestModel, public CodeCompleti
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    StartCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit StartCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
 
@@ -150,7 +150,7 @@ class ImmideatelyAbortCompletionModel : public CodeCompletionTestModel, public C
     Q_OBJECT
     Q_INTERFACES(KTextEditor::CodeCompletionModelControllerInterface)
 public:
-    ImmideatelyAbortCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
+    explicit ImmideatelyAbortCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
     {}
 
