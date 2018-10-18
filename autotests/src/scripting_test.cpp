@@ -44,8 +44,6 @@
 #include <QFileInfo>
 #include <Q_PID>
 #include <QEvent>
-#include <QTimer>
-#include <QFileInfo>
 
 #include <QtTestWidgets>
 

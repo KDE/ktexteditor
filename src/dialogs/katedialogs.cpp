@@ -40,7 +40,6 @@
 #include "katemodeconfigpage.h"
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
-#include "kateglobal.h"
 
 // auto generated ui files
 #include "ui_textareaappearanceconfigwidget.h"
