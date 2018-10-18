@@ -20,8 +20,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_SED_CMD_H__
-#define __KATE_SED_CMD_H__
+#ifndef KATE_SED_CMD_H
+#define KATE_SED_CMD_H
 
 #include <KTextEditor/Command>
 #include "kateregexpsearch.h"

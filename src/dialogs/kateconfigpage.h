@@ -16,8 +16,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_CONFIG_PAGE_H__
-#define __KATE_CONFIG_PAGE_H__
+#ifndef KATE_CONFIG_PAGE_H
+#define KATE_CONFIG_PAGE_H
 
 #include <ktexteditor/configpage.h>
 

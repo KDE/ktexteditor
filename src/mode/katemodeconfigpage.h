@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_MODECONFIGPAGE_H__
-#define KATE_MODECONFIGPAGE_H__
+#ifndef KATE_MODECONFIGPAGE_H
+#define KATE_MODECONFIGPAGE_H
 
 #include <QPointer>
 #include <QHash>

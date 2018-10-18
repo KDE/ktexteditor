@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_GLOBAL_H__
-#define __KATE_GLOBAL_H__
+#ifndef KATE_GLOBAL_H
+#define KATE_GLOBAL_H
 
 #include <ktexteditor_export.h>
 #include "katescript.h"

@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_VIEW_HELPERS_H__
-#define __KATE_VIEW_HELPERS_H__
+#ifndef KATE_VIEW_HELPERS_H
+#define KATE_VIEW_HELPERS_H
 
 #include <KSelectAction>
 #include <KLineEdit>

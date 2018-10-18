@@ -20,8 +20,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_RENDERER_H__
-#define __KATE_RENDERER_H__
+#ifndef KATE_RENDERER_H
+#define KATE_RENDERER_H
 
 #include <ktexteditor/attribute.h>
 #include "katetextline.h"

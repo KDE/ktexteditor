@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_BOOKMARKS_H__
-#define __KATE_BOOKMARKS_H__
+#ifndef KATE_BOOKMARKS_H
+#define KATE_BOOKMARKS_H
 
 #include <QObject>
 

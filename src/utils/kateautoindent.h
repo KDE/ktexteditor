@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_AUTO_INDENT_H__
-#define __KATE_AUTO_INDENT_H__
+#ifndef KATE_AUTO_INDENT_H
+#define KATE_AUTO_INDENT_H
 
 #include "kateconfig.h"
 

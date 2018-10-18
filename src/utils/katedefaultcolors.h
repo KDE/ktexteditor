@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_DEFAULTCOLORS_H__
-#define __KATE_DEFAULTCOLORS_H__
+#ifndef KATE_DEFAULTCOLORS_H
+#define KATE_DEFAULTCOLORS_H
 
 #include <KColorScheme>
 
@@ -114,4 +114,4 @@ private:
     const qreal m_foregroundLuma;
 };
 
-#endif // __KATE_DEFAULTCOLORS_H__
+#endif // KATE_DEFAULTCOLORS_H

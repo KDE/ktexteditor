@@ -16,8 +16,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_ABSTRACT_INPUT_MODE_FACTORY_H__
-#define __KATE_ABSTRACT_INPUT_MODE_FACTORY_H__
+#ifndef KATE_ABSTRACT_INPUT_MODE_FACTORY_H
+#define KATE_ABSTRACT_INPUT_MODE_FACTORY_H
 
 class KateAbstractInputMode;
 class KateViewInternal;

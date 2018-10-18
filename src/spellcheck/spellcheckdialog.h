@@ -24,8 +24,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_SPELLCHECKDIALOG_H__
-#define __KATE_SPELLCHECKDIALOG_H__
+#ifndef KATE_SPELLCHECKDIALOG_H
+#define KATE_SPELLCHECKDIALOG_H
 
 #include <QObject>
 

@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_SCHEMA_H__
-#define __KATE_SCHEMA_H__
+#ifndef KATE_SCHEMA_H
+#define KATE_SCHEMA_H
 
 #include <KActionMenu>
 #include <KConfig>

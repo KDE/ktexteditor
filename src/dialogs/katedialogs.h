@@ -23,8 +23,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_DIALOGS_H__
-#define __KATE_DIALOGS_H__
+#ifndef KATE_DIALOGS_H
+#define KATE_DIALOGS_H
 
 #include "katehighlight.h"
 #include "kateviewhelpers.h"

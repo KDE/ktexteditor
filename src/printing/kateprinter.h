@@ -20,8 +20,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_PRINTER_H__
-#define __KATE_PRINTER_H__
+#ifndef KATE_PRINTER_H
+#define KATE_PRINTER_H
 
 namespace KTextEditor
 {

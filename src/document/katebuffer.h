@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef __KATE_BUFFER_H__
-#define __KATE_BUFFER_H__
+#ifndef KATE_BUFFER_H
+#define KATE_BUFFER_H
 
 #include "katetextbuffer.h"
 

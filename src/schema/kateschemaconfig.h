@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_SCHEMA_CONFIG_H__
-#define __KATE_SCHEMA_CONFIG_H__
+#ifndef KATE_SCHEMA_CONFIG_H
+#define KATE_SCHEMA_CONFIG_H
 
 #include "katedialogs.h"
 #include "katecolortreewidget.h"

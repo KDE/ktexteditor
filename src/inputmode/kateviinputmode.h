@@ -16,8 +16,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_VI_INPUT_MODE_H__
-#define __KATE_VI_INPUT_MODE_H__
+#ifndef KATE_VI_INPUT_MODE_H
+#define KATE_VI_INPUT_MODE_H
 
 #include "kateabstractinputmode.h"
 

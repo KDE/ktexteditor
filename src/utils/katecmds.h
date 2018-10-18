@@ -20,8 +20,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_CMDS_H__
-#define __KATE_CMDS_H__
+#ifndef KATE_CMDS_H
+#define KATE_CMDS_H
 
 #include <KTextEditor/Command>
 

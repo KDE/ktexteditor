@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef __KATE_HIGHLIGHT_H__
-#define __KATE_HIGHLIGHT_H__
+#ifndef KATE_HIGHLIGHT_H
+#define KATE_HIGHLIGHT_H
 
 #include <KSyntaxHighlighting/AbstractHighlighter>
 #include <KSyntaxHighlighting/Definition>

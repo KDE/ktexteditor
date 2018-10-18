@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_MODEMANAGER_H__
-#define KATE_MODEMANAGER_H__
+#ifndef KATE_MODEMANAGER_H
+#define KATE_MODEMANAGER_H
 
 #include <QStringList>
 #include <QPointer>
