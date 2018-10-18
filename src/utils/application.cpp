@@ -61,7 +61,7 @@ QList<KTextEditor::MainWindow *> Application::mainWindows()
     QMetaObject::invokeMethod(parent()
                               , "mainWindows"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QList<KTextEditor::MainWindow *>, mainWindow));
+                              , Q_RETURN_ARG(QList<KTextEditor::MainWindow*>, mainWindow));
     return mainWindow;
 }
 
@@ -74,7 +74,7 @@ KTextEditor::MainWindow *Application::activeMainWindow()
     QMetaObject::invokeMethod(parent()
                               , "activeMainWindow"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::MainWindow *, window));
+                              , Q_RETURN_ARG(KTextEditor::MainWindow*, window));
 
     /**
      * always return some kind of window to not need to check for valid pointer
@@ -91,7 +91,7 @@ QList<KTextEditor::Document *> Application::documents()
     QMetaObject::invokeMethod(parent()
                               , "documents"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QList<KTextEditor::Document *>, documents));
+                              , Q_RETURN_ARG(QList<KTextEditor::Document*>, documents));
     return documents;
 }
 
@@ -104,8 +104,8 @@ KTextEditor::Document *Application::findUrl(const QUrl &url)
     QMetaObject::invokeMethod(parent()
                               , "findUrl"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::Document *, document)
-                              , Q_ARG(const QUrl &, url));
+                              , Q_RETURN_ARG(KTextEditor::Document*, document)
+                              , Q_ARG(QUrl, url));
     return document;
 }
 
@@ -118,9 +118,9 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
     QMetaObject::invokeMethod(parent()
                               , "openUrl"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::Document *, document)
-                              , Q_ARG(const QUrl &, url)
-                              , Q_ARG(const QString &, encoding));
+                              , Q_RETURN_ARG(KTextEditor::Document*, document)
+                              , Q_ARG(QUrl, url)
+                              , Q_ARG(QString, encoding));
     return document;
 }
 
@@ -134,7 +134,7 @@ bool Application::closeDocument(KTextEditor::Document *document)
                               , "closeDocument"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(KTextEditor::Document *, document));
+                              , Q_ARG(KTextEditor::Document*, document));
     return success;
 }
 
@@ -148,7 +148,7 @@ bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents
                               , "closeDocuments"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(const QList<KTextEditor::Document *> &, documents));
+                              , Q_ARG(QList<KTextEditor::Document*>, documents));
     return success;
 }
 
@@ -161,8 +161,8 @@ KTextEditor::Plugin *Application::plugin(const QString &name)
     QMetaObject::invokeMethod(parent()
                               , "plugin"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::Plugin *, plugin)
-                              , Q_ARG(const QString &, name));
+                              , Q_RETURN_ARG(KTextEditor::Plugin*, plugin)
+                              , Q_ARG(QString, name));
     return plugin;
 }
 

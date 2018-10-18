@@ -46,7 +46,7 @@ QWidget *MainWindow::window()
     QMetaObject::invokeMethod(parent()
                               , "window"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QWidget *, window));
+                              , Q_RETURN_ARG(QWidget*, window));
     return window;
 }
 
@@ -59,7 +59,7 @@ KXMLGUIFactory *MainWindow::guiFactory()
     QMetaObject::invokeMethod(parent()
                               , "guiFactory"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KXMLGUIFactory *, guiFactory));
+                              , Q_RETURN_ARG(KXMLGUIFactory*, guiFactory));
     return guiFactory;
 }
 
@@ -72,7 +72,7 @@ QList<KTextEditor::View *> MainWindow::views()
     QMetaObject::invokeMethod(parent()
                               , "views"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QList<KTextEditor::View *>, views));
+                              , Q_RETURN_ARG(QList<KTextEditor::View*>, views));
     return views;
 }
 
@@ -85,7 +85,7 @@ KTextEditor::View *MainWindow::activeView()
     QMetaObject::invokeMethod(parent()
                               , "activeView"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::View *, view));
+                              , Q_RETURN_ARG(KTextEditor::View*, view));
     return view;
 }
 
@@ -98,8 +98,8 @@ KTextEditor::View *MainWindow::activateView(KTextEditor::Document *document)
     QMetaObject::invokeMethod(parent()
                               , "activateView"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::View *, view)
-                              , Q_ARG(KTextEditor::Document *, document));
+                              , Q_RETURN_ARG(KTextEditor::View*, view)
+                              , Q_ARG(KTextEditor::Document*, document));
     return view;
 }
 
@@ -112,9 +112,9 @@ KTextEditor::View *MainWindow::openUrl(const QUrl &url, const QString &encoding)
     QMetaObject::invokeMethod(parent()
                               , "openUrl"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(KTextEditor::View *, view)
-                              , Q_ARG(const QUrl &, url)
-                              , Q_ARG(const QString &, encoding));
+                              , Q_RETURN_ARG(KTextEditor::View*, view)
+                              , Q_ARG(QUrl, url)
+                              , Q_ARG(QString, encoding));
     return view;
 }
 
@@ -128,7 +128,7 @@ bool MainWindow::closeView(KTextEditor::View *view)
                               , "closeView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_ARG(KTextEditor::View*, view));
     return success;
 }
 
@@ -153,7 +153,7 @@ bool MainWindow::closeSplitView(KTextEditor::View *view)
                               , "closeSplitView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_ARG(KTextEditor::View*, view));
     return success;
 }
 
@@ -168,8 +168,8 @@ bool MainWindow::viewsInSameSplitView(KTextEditor::View *view1,
                               , "viewsInSameSplitView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(KTextEditor::View *, view1)
-                              , Q_ARG(KTextEditor::View *, view2));
+                              , Q_ARG(KTextEditor::View*, view1)
+                              , Q_ARG(KTextEditor::View*, view2));
     return success;
 }
 
@@ -182,8 +182,8 @@ QWidget *MainWindow::createViewBar(KTextEditor::View *view)
     QMetaObject::invokeMethod(parent()
                               , "createViewBar"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QWidget *, viewBar)
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_RETURN_ARG(QWidget*, viewBar)
+                              , Q_ARG(KTextEditor::View*, view));
     return viewBar;
 }
 
@@ -195,7 +195,7 @@ void MainWindow::deleteViewBar(KTextEditor::View *view)
     QMetaObject::invokeMethod(parent()
                               , "deleteViewBar"
                               , Qt::DirectConnection
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_ARG(KTextEditor::View*, view));
 }
 
 void MainWindow::addWidgetToViewBar(KTextEditor::View *view, QWidget *bar)
@@ -206,8 +206,8 @@ void MainWindow::addWidgetToViewBar(KTextEditor::View *view, QWidget *bar)
     QMetaObject::invokeMethod(parent()
                               , "addWidgetToViewBar"
                               , Qt::DirectConnection
-                              , Q_ARG(KTextEditor::View *, view)
-                              , Q_ARG(QWidget *, bar));
+                              , Q_ARG(KTextEditor::View*, view)
+                              , Q_ARG(QWidget*, bar));
 }
 
 void MainWindow::showViewBar(KTextEditor::View *view)
@@ -218,7 +218,7 @@ void MainWindow::showViewBar(KTextEditor::View *view)
     QMetaObject::invokeMethod(parent()
                               , "showViewBar"
                               , Qt::DirectConnection
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_ARG(KTextEditor::View*, view));
 }
 
 void MainWindow::hideViewBar(KTextEditor::View *view)
@@ -229,7 +229,7 @@ void MainWindow::hideViewBar(KTextEditor::View *view)
     QMetaObject::invokeMethod(parent()
                               , "hideViewBar"
                               , Qt::DirectConnection
-                              , Q_ARG(KTextEditor::View *, view));
+                              , Q_ARG(KTextEditor::View*, view));
 }
 
 QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &identifier, KTextEditor::MainWindow::ToolViewPosition pos, const QIcon &icon, const QString &text)
@@ -241,12 +241,12 @@ QWidget *MainWindow::createToolView(KTextEditor::Plugin *plugin, const QString &
     QMetaObject::invokeMethod(parent()
                               , "createToolView"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QWidget *, toolView)
-                              , Q_ARG(KTextEditor::Plugin *, plugin)
-                              , Q_ARG(const QString &, identifier)
+                              , Q_RETURN_ARG(QWidget*, toolView)
+                              , Q_ARG(KTextEditor::Plugin*, plugin)
+                              , Q_ARG(QString, identifier)
                               , Q_ARG(KTextEditor::MainWindow::ToolViewPosition, pos)
-                              , Q_ARG(const QIcon &, icon)
-                              , Q_ARG(const QString &, text));
+                              , Q_ARG(QIcon, icon)
+                              , Q_ARG(QString, text));
     return toolView;
 }
 
@@ -260,7 +260,7 @@ bool MainWindow::moveToolView(QWidget *widget, KTextEditor::MainWindow::ToolView
                               , "moveToolView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(QWidget *, widget)
+                              , Q_ARG(QWidget*, widget)
                               , Q_ARG(KTextEditor::MainWindow::ToolViewPosition, pos));
     return success;
 }
@@ -275,7 +275,7 @@ bool MainWindow::showToolView(QWidget *widget)
                               , "showToolView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(QWidget *, widget));
+                              , Q_ARG(QWidget*, widget));
     return success;
 }
 
@@ -289,7 +289,7 @@ bool MainWindow::hideToolView(QWidget *widget)
                               , "hideToolView"
                               , Qt::DirectConnection
                               , Q_RETURN_ARG(bool, success)
-                              , Q_ARG(QWidget *, widget));
+                              , Q_ARG(QWidget*, widget));
     return success;
 }
 
@@ -302,8 +302,8 @@ QObject *MainWindow::pluginView(const QString &name)
     QMetaObject::invokeMethod(parent()
                               , "pluginView"
                               , Qt::DirectConnection
-                              , Q_RETURN_ARG(QObject *, pluginView)
-                              , Q_ARG(const QString &, name));
+                              , Q_RETURN_ARG(QObject*, pluginView)
+                              , Q_ARG(QString, name));
     return pluginView;
 }
 
