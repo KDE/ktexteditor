@@ -36,6 +36,9 @@ private Q_SLOTS:
     void testSimpleMirror();
     void testSimpleMirror_data();
 
+    void testAlignC();
+    void testAlignC_data();
+
     void testDefaults();
     void testDefaults_data();
 

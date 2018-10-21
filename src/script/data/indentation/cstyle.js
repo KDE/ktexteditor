@@ -288,10 +288,6 @@ function tryCComment(line)
     var char2 = document.charAt(currentLine, firstPos + 1);
     var currentString = document.line(currentLine);
 
-    // not in comment, no * copying
-    if (!isComment(currentLine, firstPos))
-        return -1;
-
     if (char1 == '/' && char2 == '*' && !currentString.contains("*/")) {
         indentation = document.firstVirtualColumn(currentLine);
         if (cfgAutoInsertStar) {
@@ -311,7 +307,7 @@ function tryCComment(line)
         }
         if (commentLine < 0) {
             indentation = document.firstVirtualColumn(currentLine);
-        } else if (document.startsWith(commentLine, "/*", true)) {
+        } else if (document.startsWith(commentLine, "/*", true) && !document.endsWith(commentLine, "*/", true)) {
             // found a /*, and all succeeding lines start with a *, so it's a comment block
             indentation = document.firstVirtualColumn(currentLine);
 

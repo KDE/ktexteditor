@@ -137,6 +137,31 @@ void TemplateHandlerTest::testSimpleMirror_data()
     QTest::newRow("several") << "${foo} ${foo} Foo ${foo}";
 }
 
+void TemplateHandlerTest::testAlignC()
+{
+    QFETCH(QString, input);
+    QFETCH(QString, expected);
+
+    auto doc = new KTextEditor::DocumentPrivate();
+    doc->setHighlightingMode("C");
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    view->insertTemplate({0, 0}, input);
+
+    QCOMPARE(doc->text(), expected);
+
+    delete doc;
+}
+
+void TemplateHandlerTest::testAlignC_data()
+{
+    QTest::addColumn<QString>("input");
+    QTest::addColumn<QString>("expected");
+
+    QTest::newRow("one") << "/* ${foo} */" << "/* foo */";
+    QTest::newRow("simple") << "/**\n* ${foo}\n*/" << "/**\n * foo\n */";
+    QTest::newRow("complex") << "/**\n* @brief: ${...}\n* \n*/" << "/**\n * @brief: ...\n * \n */";
+}
+
 void TemplateHandlerTest::testAdjacentRanges()
 {
     auto doc = new KTextEditor::DocumentPrivate();
