@@ -59,7 +59,7 @@ namespace KTextEditor
  *
  * \section config_data Accessing Data
  *
- * A list of available config variables (or keys) can be optained by calling
+ * A list of available config variables (or keys) can be obtained by calling
  * configKeys(). For all available keys configValue() returns the corresponding
  * value as QVariant. A value for a given key can be set by calling
  * setConfigValue(). Right now, when using KatePart as editor component,

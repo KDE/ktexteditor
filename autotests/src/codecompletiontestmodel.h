@@ -17,8 +17,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef CODECOMPLETIONTEST_H
-#define CODECOMPLETIONTEST_H
+#ifndef CODECOMPLETIONTEST_MODEL_H
+#define CODECOMPLETIONTEST_MODEL_H
 
 #include <ktexteditor/codecompletionmodel.h>
 #include <QStringList>

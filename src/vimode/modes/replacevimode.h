@@ -19,8 +19,8 @@
  */
 
 
-#ifndef KATEVI_REPLACE_MODE_H
-#define KATEVI_REPLACE_MODE_H
+#ifndef KATEVI_REPLACE_VI_MODE_H
+#define KATEVI_REPLACE_VI_MODE_H
 
 
 #include <vimode/modes/modebase.h>
@@ -88,4 +88,4 @@ private:
 
 }
 
-#endif /* KATEVI_REPLACE_MODE_H */
+#endif /* KATEVI_REPLACE_VI_MODE_H */

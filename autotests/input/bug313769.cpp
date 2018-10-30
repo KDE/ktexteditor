@@ -39,7 +39,7 @@ KateView::KateView( KateDocument *doc, QWidget *parent )
   m_topViewBar=new KateViewBar (topBarParent!=0,KTextEditor::ViewBarContainer::TopBar,topBarParent?topBarParent:this,this);
 
   // ugly workaround:
-  // Force the layout to be left-to-right even on RTL deskstop, as discussed
+  // Force the layout to be left-to-right even on RTL desktop, as discussed
   // on the mailing list. This will cause the lines and icons panel to be on
   // the left, even for Arabic/Hebrew/Farsi/whatever users.
   setLayoutDirection ( Qt::LeftToRight );

@@ -346,7 +346,7 @@ public:
          *
          * This role can also be used to define completely custom groups, bypassing the editors builtin grouping:
          *  - Return Qt::DisplayRole when GroupRole is requested
-         *  - Return the lable text of the group when Qt::DisplayRole
+         *  - Return the label text of the group when Qt::DisplayRole
          *   - Optional: Return an integer sorting-value when InheritanceDepth is  requested. This number will
          *               be used to determine the order of the groups. The order of the builtin groups is:
          *               1 = Best Matches, 100 = Local Scope, 200 = Public, 300 = Protected, 400 = Private, 500 = Namespace, 600 = Global

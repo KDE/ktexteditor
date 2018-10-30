@@ -278,7 +278,7 @@ public:
     }
 
     /**
-     * Query the revsion of this buffer before the ongoing editing transactions.
+     * Query the revision of this buffer before the ongoing editing transactions.
      * @return revision of buffer before current editing transaction altered it
      */
     qint64 editingLastRevision() const

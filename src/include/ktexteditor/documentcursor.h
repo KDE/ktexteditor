@@ -37,7 +37,7 @@ namespace KTextEditor
  * \section documentcursor_intro Introduction
  * A DocumentCursor is an extension of the basic Cursor class.
  * The DocumentCursor is bound to a specific Document instance.
- * This way, the cursor povides additional functions like gotoNextLine(),
+ * This way, the cursor provides additional functions like gotoNextLine(),
  * gotoPreviousLine() and move() according to the WrapBehavior.
  *
  * The only difference to a MovingCursor is that the DocumentCursor's
@@ -107,7 +107,7 @@ public:
     DocumentCursor(const DocumentCursor &other);
 
     //
-    // stuff that needs to be implemented by editor part cusors
+    // stuff that needs to be implemented by editor part cursors
     //
 public:
 

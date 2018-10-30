@@ -569,7 +569,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
     if (range->layout()) {
         bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
-        // Draw selection in block selecton mode. We need 2 kinds of selections that QTextLayout::draw can't render:
+        // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
         //   - past-end-of-line selection and
         //   - 0-column-wide selection (used to indicate where text will be typed)
         if (drawSelection && m_view->blockSelection()) {
@@ -970,7 +970,7 @@ bool KateRenderer::getSelectionBounds(int line, int lineLength, int &start, int 
 
 void KateRenderer::updateConfig()
 {
-    // update the attibute list pointer
+    // update the attribute list pointer
     updateAttributes();
 
     // update font height, do this before we update the view!

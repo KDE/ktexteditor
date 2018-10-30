@@ -165,7 +165,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     m_bottomViewBar = new KateViewBar(bottomBarParent != nullptr, bottomBarParent ? bottomBarParent : this, this);
 
     // ugly workaround:
-    // Force the layout to be left-to-right even on RTL deskstop, as discussed
+    // Force the layout to be left-to-right even on RTL desktop, as discussed
     // on the mailing list. This will cause the lines and icons panel to be on
     // the left, even for Arabic/Hebrew/Farsi/whatever users.
     setLayoutDirection(Qt::LeftToRight);
@@ -1003,7 +1003,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
     connect(a, SIGNAL(triggered(bool)), SLOT(cursorRight()));
     m_editActions << a;
 
-    a = ac->addAction(QStringLiteral("move_cusor_left"));
+    a = ac->addAction(QStringLiteral("move_cursor_left"));
     a->setText(i18n("Move Cursor Left"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_Left));
     connect(a, SIGNAL(triggered(bool)), SLOT(cursorLeft()));

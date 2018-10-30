@@ -256,7 +256,7 @@ public:
      * setting for activation via click or double-clcik
      *
      * \param view the view to which the activated border belongs to
-     * \param line the document line that the activated posistion belongs to
+     * \param line the document line that the activated position belongs to
      */
     virtual void annotationActivated(KTextEditor::View *view, int line) = 0;
 

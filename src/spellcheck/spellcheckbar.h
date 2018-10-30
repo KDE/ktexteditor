@@ -18,8 +18,8 @@
  * 02110-1301  USA
  */
 
-#ifndef SONNET_DIALOG_H
-#define SONNET_DIALOG_H
+#ifndef SPELLCHECK_BAR_H
+#define SPELLCHECK_BAR_H
 
 #include "kateviewhelpers.h"
 

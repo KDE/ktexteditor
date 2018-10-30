@@ -414,7 +414,7 @@ function caretPressed(cursor)
       , tryIndentCommandOptions_ch                          // Indent after parameterless command options
       ];
 
-    // Apply all all functions until result gets changed
+    // Apply all functions until result gets changed
     for (
         var i = 0
       ; i < handlers.length && result == -1

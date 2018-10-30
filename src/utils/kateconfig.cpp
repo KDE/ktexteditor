@@ -523,7 +523,7 @@ void KateDocumentConfig::setIndentationMode(const QString &indentationMode)
 
 uint KateDocumentConfig::tabHandling() const
 {
-    // This setting is purly a user preference,
+    // This setting is purely a user preference,
     // hence, there exists only the global setting.
     if (isGlobal()) {
         return m_tabHandling;

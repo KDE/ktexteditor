@@ -87,7 +87,7 @@ public:
 
     /**
      * open file with given codec
-     * @param codec codec to use, if 0, will do some auto-dectect or fallback
+     * @param codec codec to use, if 0, will do some auto-detect or fallback
      * @return success
      */
     bool open(QTextCodec *codec)

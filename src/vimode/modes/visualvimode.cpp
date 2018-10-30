@@ -259,7 +259,7 @@ void VisualViMode::updateSelection()
         return;
     }
 
-    // If alredy not in visual mode, it's time to go there.
+    // If already not in visual mode, it's time to go there.
     if (m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode) {
         commandEnterVisualMode();
     }

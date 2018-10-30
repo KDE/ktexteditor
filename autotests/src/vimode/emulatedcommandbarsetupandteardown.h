@@ -18,6 +18,9 @@
  *  Boston, MA 02110-1301, USA.
  */
 
+#ifndef EMULATEDCOMMANDBARSETUPANDTEARDOWN_H
+#define EMULATEDCOMMANDBARSETUPANDTEARDOWN_H
+
 #include <QObject>
 
 namespace KTextEditor
@@ -66,3 +69,4 @@ class EmulatedCommandBarSetUpAndTearDown
         KateViInputMode *m_viInputMode;
 };
 
+#endif

@@ -474,7 +474,7 @@ Q_SIGNALS:
      * This signal is emitted whenever the \p view's cursor position changed.
      * \param view view which emitted the signal
      * \param newPosition new position of the cursor (Kate will pass the real
-     *        cursor potition, not the virtual)
+     *        cursor position, not the virtual)
      * \see cursorPosition(), cursorPositionVirtual()
      */
     void cursorPositionChanged(KTextEditor::View *view,
@@ -539,7 +539,7 @@ Q_SIGNALS:
                               const KTextEditor::Cursor &newPosition);
 
     /*
-     * Selection methodes.
+     * Selection methods.
      * This deals with text selection and copy&paste
      */
 public:

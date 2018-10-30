@@ -279,7 +279,7 @@ public:
     /**
      * Mark @p line as @p autowrapped. This is necessary if static word warp is
      * enabled, because we have to know whether to insert a new line or add the
-     * wrapped words to the followin line.
+     * wrapped words to the following line.
      * @param line line number
      * @param autowrapped autowrapped?
      * @return true on success
@@ -333,7 +333,7 @@ public:
 
 Q_SIGNALS:
     /**
-     * Emmitted when text from @p line was wrapped at position pos onto line @p nextLine.
+     * Emitted when text from @p line was wrapped at position pos onto line @p nextLine.
      */
     void editLineWrapped(int line, int col, int len);
 
@@ -1011,7 +1011,7 @@ private:
      * Create a git compatible sha1 checksum of the file, if it is a local file.
      * The result can be accessed through KateBuffer::digest().
      *
-     * @return wheather the operation was attempted and succeeded.
+     * @return whether the operation was attempted and succeeded.
      */
     bool createDigest();
 
@@ -1164,7 +1164,7 @@ private:
     static bool checkIntValue(QString value, int *result);
     /**
       Feeds value into @p col using QColor::setNamedColor() and returns
-      wheather the color is valid
+      whether the color is valid
     */
     static bool checkColorValue(QString value, QColor &col);
 

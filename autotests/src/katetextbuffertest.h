@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATEBUFFERTEST_H
-#define KATEBUFFERTEST_H
+#ifndef KATETEXTBUFFERTEST_H
+#define KATETEXTBUFFERTEST_H
 
 #include <QtTest>
 #include <QObject>
@@ -43,4 +43,4 @@ private Q_SLOTS:
     void saveFileWithElevatedPrivileges();
 };
 
-#endif // KATEBUFFERTEST_H
+#endif // KATETEXTBUFFERTEST_H

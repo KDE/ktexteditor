@@ -55,7 +55,7 @@ namespace KTextEditor
  *
  * \section sessionconfig_access Accessing the SessionConfigInterface
  *
- * This secion is for application developers such as Kate, KDevelop, etc that
+ * This section is for application developers such as Kate, KDevelop, etc that
  * what to support session configuration for plugins.
  *
  * The SessionConfigInterface is an extension interface for a Plugin or a

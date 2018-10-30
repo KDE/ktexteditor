@@ -88,7 +88,7 @@ public:
     };
 
     //
-    // stuff that needs to be implemented by editor part cusors
+    // stuff that needs to be implemented by editor part cursors
     //
 public:
     /**

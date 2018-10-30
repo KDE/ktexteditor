@@ -74,7 +74,7 @@ class View;
  * In case the Command needs to interactively process the text of the parameters,
  * override wantsToProcessText() by returning @e true and reimplement processText().
  *
- * A typical example of an interative command would be the incremental search.
+ * A typical example of an iterative command would be the incremental search.
  *
  * \see KTextEditor::CommandInterface
  * \author Christoph Cullmann \<cullmann@kde.org\>

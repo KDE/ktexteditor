@@ -56,7 +56,7 @@ class EditingTransactionPrivate {
 Document::EditingTransaction::EditingTransaction(Document *document)
     : d (new EditingTransactionPrivate())
 {
-    // Alghouth it works in release-mode, we usually want a valid document
+    // Although it works in release-mode, we usually want a valid document
     Q_ASSERT(document != nullptr);
 
     // initialize d-pointer

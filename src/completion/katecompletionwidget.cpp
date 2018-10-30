@@ -704,7 +704,7 @@ void KateCompletionWidget::cursorPositionChanged()
         oldCurrentSourceIndex = m_presentationModel->mapToSource(m_entryList->currentIndex());
     }
 
-    //Check the models and eventuall abort some
+    //Check the models and eventually abort some
     const QList<KTextEditor::CodeCompletionModel *> checkCompletionRanges = m_completionRanges.keys();
     for (QList<KTextEditor::CodeCompletionModel *>::const_iterator it = checkCompletionRanges.begin(); it != checkCompletionRanges.end(); ++it) {
         KTextEditor::CodeCompletionModel *model = *it;

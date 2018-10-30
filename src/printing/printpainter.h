@@ -20,8 +20,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_PRINTER_PAINTER_H
-#define KATE_PRINTER_PAINTER_H
+#ifndef KATE_PRINT_PAINTER_H
+#define KATE_PRINT_PAINTER_H
 
 #include <QString>
 #include <QColor>

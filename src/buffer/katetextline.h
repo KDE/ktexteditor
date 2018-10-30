@@ -34,7 +34,7 @@ namespace Kate
 
 /**
  * Class representing a single text line.
- * For efficience reasons, not only pure text is stored here, but also additional data.
+ * For efficiency reasons, not only pure text is stored here, but also additional data.
  * Will be only accessed over shared pointers.
  */
 class KTEXTEDITOR_EXPORT TextLineData

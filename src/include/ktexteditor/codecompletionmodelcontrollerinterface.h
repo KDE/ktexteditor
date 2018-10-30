@@ -51,7 +51,7 @@ class View;
  * default behaviour is used, which will be correct in many situations.
  *
  *
- * \section ccmodelcontroller_impl Implemeting the Interface
+ * \section ccmodelcontroller_impl Implementing the Interface
  * To use this class implement it in your CodeCompletionModel.
  *
  * \code

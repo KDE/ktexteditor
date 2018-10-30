@@ -20,8 +20,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATEVI_COMMANDS_H
-#define KATEVI_COMMANDS_H
+#ifndef KATEVI_CMDS_H
+#define KATEVI_CMDS_H
 
 #include <KTextEditor/Command>
 #include "kateregexpsearch.h"
@@ -122,4 +122,4 @@ protected:
 
 }
 
-#endif /* KATEVI_COMMANDS_H */
+#endif /* KATEVI_CMDS_H */

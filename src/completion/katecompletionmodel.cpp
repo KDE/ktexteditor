@@ -432,7 +432,7 @@ QModelIndex KateCompletionModel::index(int row, int column, const QModelIndex &p
         }
 
         if (row >= g->filtered.count()) {
-            //qCWarning(LOG_KTE) << "Invalid index requested: row " << row << " beyond indivdual range in group " << g;
+            //qCWarning(LOG_KTE) << "Invalid index requested: row " << row << " beyond individual range in group " << g;
             return QModelIndex();
         }
 
@@ -1940,7 +1940,7 @@ bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString
     // We want to make "KComplM" match "KateCompletionModel"; this means we need
     // to allow parts of the typed text to be not part of the actual abbreviation,
     // which consists only of the uppercased / underscored letters (so "KCM" in this case).
-    // However it might be ambigous whether a letter is part of such a word or part of
+    // However it might be ambiguous whether a letter is part of such a word or part of
     // the following abbreviation, so we need to find all possible word offsets first,
     // then compare.
     for (int i = 0; i < word.size(); i++) {

@@ -1726,7 +1726,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
     if (m_lineNumbersOn || (m_view->dynWordWrap() && m_dynWrapIndicatorsOn)) { // avoid calculating unless needed ;-)
         lnWidth = lineNumberWidth();
         if (lnWidth != m_cachedLNWidth || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) {
-            // we went from n0 ->n9 lines or vice verca
+            // we went from n0 ->n9 lines or vice versa
             // this causes an extra updateGeometry() first time the line numbers
             // are displayed, but sizeHint() is supposed to be const so we can't set
             // the cached value there.
@@ -2487,7 +2487,7 @@ void KateIconBorder::displayRangeChanged()
 //END KateIconBorder
 
 //BEGIN KateViewEncodingAction
-// Acording to http://www.iana.org/assignments/ianacharset-mib
+// According to http://www.iana.org/assignments/ianacharset-mib
 // the default/unknown mib value is 2.
 #define MIB_DEFAULT 2
 

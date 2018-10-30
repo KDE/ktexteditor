@@ -299,7 +299,7 @@ public:
      * Ranges with smaller Z-depth than others will win during rendering.
      * Default is 0.0.
      *
-     * Defined depths for common kind of ranges use in editor components implenting this interface,
+     * Defined depths for common kind of ranges use in editor components implementing this interface,
      * smaller depths are more more in the foreground and will win during rendering:
      * - Selection == -100000.0
      * - Search == -10000.0

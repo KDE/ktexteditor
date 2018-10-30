@@ -46,7 +46,7 @@ public:
     KTextEditor::Range parseRange(const QString &command, QString &destTransformedCommand) const;
 
     /**
-     * Attemps to find range expression for vi command
+     * Attempts to find range expression for vi command
      * @returns range sub string of passed command or empty if not found
      */
     QString parseRangeString(const QString &command) const;

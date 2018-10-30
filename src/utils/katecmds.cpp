@@ -38,7 +38,7 @@
 //BEGIN CoreCommands
 KateCommands::CoreCommands *KateCommands::CoreCommands::m_instance = nullptr;
 
-// this returns wheather the string s could be converted to
+// this returns whether the string s could be converted to
 // a bool value, one of on|off|1|0|true|false. the argument val is
 // set to the extracted value in case of success
 static bool getBoolArg(const QString &t, bool *val)
@@ -352,7 +352,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
             v->doc()->setWordWrapAt(val);
         } else if (cmd == QLatin1String("goto")) {
             if (args.first().at(0) == QLatin1Char('-') || args.first().at(0) == QLatin1Char('+')) {
-                // if the number starts with a minus or plus sign, add/subract the number
+                // if the number starts with a minus or plus sign, add/subtract the number
                 val = v->cursorPosition().line() + val;
             } else {
                 val--; // convert given line number to the internal representation of line numbers

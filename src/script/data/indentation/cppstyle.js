@@ -953,7 +953,7 @@ function caretPressed(cursor)
       , tryToKeepInlineComment_ch                           // NOTE This must be a last checker!
     ];
 
-    // Apply all all functions until result gets changed
+    // Apply all functions until result gets changed
     for (
         var i = 0
       ; i < handlers.length && result == -1

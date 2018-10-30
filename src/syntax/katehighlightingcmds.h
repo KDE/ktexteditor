@@ -18,8 +18,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef KATE_HIGHLIGHT_RELOAD_H
-#define KATE_HIGHLIGHT_RELOAD_H
+#ifndef KATE_HIGHLIGHTING_CMDS_H
+#define KATE_HIGHLIGHTING_CMDS_H
 
 #include <KTextEditor/Command>
 

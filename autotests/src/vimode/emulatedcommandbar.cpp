@@ -950,7 +950,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   // An unescaped ']' not between other square brackets is a literal.
   DoTest("foo xbaba]y", "/x[ab]\\\\+]y\\enterrX", "foo Xbaba]y");
   DoTest("foo xbaba]dcdcy", "/x[ab]\\\\+][cd]\\\\+y\\enterrX", "foo Xbaba]dcdcy");
-  // Be more clever about how we indentify escaping: the presence of a preceding
+  // Be more clever about how we identify escaping: the presence of a preceding
   // backslash is not always sufficient!
   DoTest("foo x\\babay", "/x\\\\\\\\[ab]\\\\+y\\enterrX", "foo X\\babay");
   DoTest("foo x\\[abc]]]]y", "/x\\\\\\\\\\\\[abc]\\\\+y\\enterrX", "foo X\\[abc]]]]y");

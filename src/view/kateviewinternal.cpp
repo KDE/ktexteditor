@@ -630,7 +630,7 @@ void KateViewInternal::doUpdateView(bool changed, int viewLinesScrolled)
 
     /* It was observed that height() could be negative here --
        when the main Kate view has 0 as size (during creation),
-       and there frame arount KateViewInternal.  In which
+       and there frame around KateViewInternal.  In which
        case we'd set the view cache to 0 (or less!) lines, and
        start allocating huge chunks of data, later. */
     int newSize = (qMax(0, height()) / renderer()->lineHeight()) + 1;

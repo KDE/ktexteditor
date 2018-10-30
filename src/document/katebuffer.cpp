@@ -420,7 +420,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
     }
 
     /**
-     * perhaps we need to adjust the maximal highlighed line
+     * perhaps we need to adjust the maximal highlighted line
      */
     int oldHighlighted = m_lineHighlighted;
     if (ctxChanged || current_line > m_lineHighlighted) {

@@ -427,7 +427,7 @@ void KateWordCompletionView::complete(bool fw)
 
     if (d->dcRange.isValid()) {
         //qCDebug(LOG_KTE)<<"CONTINUE "<<d->dcRange;
-        // this is a repeted activation
+        // this is a repeated activation
 
         // if we are back to where we started, reset.
         if ((fw && d->directionalPos == -1) ||

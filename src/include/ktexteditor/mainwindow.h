@@ -41,7 +41,7 @@ class Document;
 class View;
 
 /**
- * This class allows the application that embedds the KTextEditor component to
+ * This class allows the application that embeds the KTextEditor component to
  * allow it to access parts of its main window.
  *
  * For example the component can get a place to show view bar widgets (e.g. search&replace, goto line, ...).

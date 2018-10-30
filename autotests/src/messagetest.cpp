@@ -260,7 +260,7 @@ void MessageTest::testPriority()
     QVERIFY(m1.data() != nullptr);
     QVERIFY(m2.data() == nullptr);
 
-    // finally check m1 agagin
+    // finally check m1 again
     QTest::qWait(1000);
     QCOMPARE(view->messageWidget()->text(), QString("m1 changed"));
 }

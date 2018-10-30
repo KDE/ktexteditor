@@ -86,7 +86,7 @@ public:
     /**
      * Returns the folding range associated with @p id.
      * If @p id is not a valid id, the returned range matches KTextEditor::Range::invalid().
-     * @note This works for either persistend ranges or folded ranges.
+     * @note This works for either persistent ranges or folded ranges.
      *       Note, that the highlighting does not add folds unless text is folded.
      *
      * @return the folding range for @p id

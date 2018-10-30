@@ -255,7 +255,7 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
 
 void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 {
-    // save curent schema
+    // save current schema
     if (!m_currentSchema.isEmpty()) {
         if (m_schemas.contains(m_currentSchema)) {
             m_schemas.remove(m_currentSchema); // clear this color schema

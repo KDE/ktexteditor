@@ -197,7 +197,7 @@ QJSValue KateScript::evaluate(const QString& program, const FieldMap& env)
         return QJSValue();
     }
 
-    // Wrap the arguments in a function to avoid poluting the global object
+    // Wrap the arguments in a function to avoid polluting the global object
     QString programWithContext = QStringLiteral("function(") +
                                      QStringList(env.keys()).join(QLatin1Char(',')) +
                                  QStringLiteral(") { return ") +

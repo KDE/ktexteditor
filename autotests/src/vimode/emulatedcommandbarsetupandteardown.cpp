@@ -43,7 +43,7 @@ bool WindowKeepActive::eventFilter(QObject *object, QEvent *event)
 
     if (event->type() == QEvent::WindowDeactivate) {
         // With some combinations of Qt and Xvfb, invoking/ dismissing a popup
-        // will deactiveate the m_mainWindow, preventing it from receiving shortcuts.
+        // will deactivate the m_mainWindow, preventing it from receiving shortcuts.
         // If we detect this, set it back to being the active window again.
         event->ignore();
         QApplication::setActiveWindow(m_mainWindow);

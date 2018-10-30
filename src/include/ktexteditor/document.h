@@ -123,7 +123,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
  * textChanged() are emitted. Whether an editing transaction is currently active
  * can be checked by calling isEditingTransactionRunning().
  *
- * @note The signal editingFinished() is always emitted when the last istance
+ * @note The signal editingFinished() is always emitted when the last instance
  *       of EditingTransaction is destroyed. Contrary, the signal textChanged()
  *       is emitted only if text changed. Hence, textChanged() is more accurate
  *       with respect to changes in the Document.
@@ -489,7 +489,7 @@ public:
             explicit EditingTransaction(Document *document);
 
             /**
-             * Destructs the object and, if needed, finishs a running editing
+             * Destructs the object and, if needed, finishes a running editing
              * transaction by calling finish().
              *
              * @see finish()

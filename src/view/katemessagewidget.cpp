@@ -273,11 +273,11 @@ void KateMessageWidget::startAutoHideTimer()
         return;
     }
 
-    // safety checks: the message must still still be valid
+    // safety checks: the message must still be valid
     Q_ASSERT(m_messageQueue.size());
     Q_ASSERT(m_currentMessage->autoHide() == m_autoHideTime);
 
-    // start autoHide timer as requrested
+    // start autoHide timer as requested
     m_autoHideTimer->start(m_autoHideTime == 0 ? s_defaultAutoHideTime : m_autoHideTime);
 }
 

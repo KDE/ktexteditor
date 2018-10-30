@@ -67,7 +67,7 @@ SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
     // fixed version of serialisation
     m_stream.setVersion(QDataStream::Qt_4_6);
 
-    // conect the timer
+    // connect the timer
     connect(syncTimer(), SIGNAL(timeout()), this, SLOT(writeFileToDisk()), Qt::DirectConnection);
 
     // connecting the signals
@@ -659,7 +659,7 @@ void SwapFile::showSwapFileMessage()
 
 void SwapFile::showDiff()
 {
-    // the diff creator deletes itself thorugh deleteLater() when it's done
+    // the diff creator deletes itself through deleteLater() when it's done
     SwapDiffCreator *diffCreator = new SwapDiffCreator(this);
     diffCreator->viewDiff();
 }

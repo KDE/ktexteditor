@@ -97,7 +97,7 @@ void KateViInputMode::deactivate()
         m_viModeEmulatedCommandBar->hideMe();
     }
 
-    // make sure to turn off edits mergin when leaving vi input mode
+    // make sure to turn off edits merging when leaving vi input mode
     view()->doc()->setUndoMergeAllEdits(false);
     m_activated = false;
     viewInternal()->iconBorder()->setRelLineNumbersOn(false);

@@ -34,7 +34,7 @@ class Document;
 class MainWindow;
 
 /**
- * This class allows the application that embedds the KTextEditor component to
+ * This class allows the application that embeds the KTextEditor component to
  * allow it access to application wide information and interactions.
  *
  * For example the component can get the current active main window of the application.
@@ -176,7 +176,7 @@ Q_SIGNALS:
     void aboutToCreateDocuments();
 
     /**
-     * This signal is emitted after the batch of ducuments is created.
+     * This signal is emitted after the batch of documents is created.
      *
      * @param documents list of documents that have been created
      */
@@ -191,7 +191,7 @@ Q_SIGNALS:
     void aboutToDeleteDocuments(const QList<KTextEditor::Document *> &);
 
     /**
-     * This singnal is emitted after the documents batch was deleted
+     * This signal is emitted after the documents batch was deleted
      *
      * This is the batch closing signal for aboutToDeleteDocuments
      * @param documents the documents that weren't deleted after all

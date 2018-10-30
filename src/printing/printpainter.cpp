@@ -170,7 +170,7 @@ void PrintPainter::updateCache()
 {
     m_fontHeight = m_renderer->fontHeight();
 
-    // figure out the horiizontal space required
+    // figure out the horizontal space required
     QString s = QStringLiteral("%1 ").arg(m_doc->lines());
     s.fill(QLatin1Char('5'), -1); // some non-fixed fonts haven't equally wide numbers
     // FIXME calculate which is actually the widest...
@@ -252,9 +252,9 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
 
     if (m_useHeader || m_useFooter) {
         // Set up a tag map
-        // This retrieves all tags, ued or not, but
-        // none of theese operations should be expensive,
-        // and searcing each tag in the format strings is avoided.
+        // This retrieves all tags, used or not, but
+        // none of these operations should be expensive,
+        // and searching each tag in the format strings is avoided.
         QDateTime dt = QDateTime::currentDateTime();
         QMap<QString, QString> tags;
 

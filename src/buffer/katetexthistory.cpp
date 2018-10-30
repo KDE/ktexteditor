@@ -191,7 +191,7 @@ void TextHistory::unlockRevision(qint64 revision)
         }
 
         /**
-         * remove unrefed from the list now
+         * remove unreferred from the list now
          */
         if (unreferencedEdits > 0) {
             // remove stuff from history
