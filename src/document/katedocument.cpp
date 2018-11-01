@@ -3587,7 +3587,7 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::V
 */
 void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
-    const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
+    //const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
 
     int sl = view->selectionRange().start().line();
     int el = view->selectionRange().end().line();

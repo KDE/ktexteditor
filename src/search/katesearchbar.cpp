@@ -909,7 +909,6 @@ void KateSearchBar::replaceAll()
     const QString replacement = m_powerUi->replacement->currentText();
 
     // Where to replace?
-    Range selection;
     const bool selected = m_view->selection();
     Range inputRange = (selected && selectionOnly())
                        ? m_view->selectionRange()
