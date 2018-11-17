@@ -3007,8 +3007,13 @@ QMenu *KTextEditor::ViewPrivate::contextMenu() const
                 if (w->objectName() == QLatin1String("ktexteditor_popup")) {
                     //perhaps optimize this block
                     QMenu *menu = (QMenu *)w;
-                    disconnect(menu, SIGNAL(aboutToShow()), this, SLOT(aboutToShowContextMenu()));
-                    disconnect(menu, SIGNAL(aboutToHide()), this, SLOT(aboutToHideContextMenu()));
+                    // menu is a reusable instance shared among all views. Therefore,
+                    // disconnect the current receiver(s) from the menu show/hide signals
+                    // before connecting `this` view. This ensures that only the current
+                    // view gets a signal when the menu is about to be shown or hidden,
+                    // and not also the view(s) that previously had the menu open.
+                    disconnect(menu, SIGNAL(aboutToShow()), nullptr, nullptr);
+                    disconnect(menu, SIGNAL(aboutToHide()), nullptr, nullptr);
                     connect(menu, SIGNAL(aboutToShow()), this, SLOT(aboutToShowContextMenu()));
                     connect(menu, SIGNAL(aboutToHide()), this, SLOT(aboutToHideContextMenu()));
                     return menu;
