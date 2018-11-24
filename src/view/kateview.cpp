@@ -2318,7 +2318,7 @@ void KTextEditor::ViewPrivate::cut()
 
 void KTextEditor::ViewPrivate::copy() const
 {
-    QString text = selectionText();
+    QString text;
 
     if (!selection()) {
         if (!m_config->smartCopyCut()) {
@@ -2326,6 +2326,8 @@ void KTextEditor::ViewPrivate::copy() const
         }
         text = m_doc->line(m_viewInternal->m_cursor.line()) + QLatin1Char('\n');
         m_viewInternal->moveEdge(KateViewInternal::left, false);
+    } else {
+        text = selectionText();
     }
 
     // copy to clipboard and our history!
