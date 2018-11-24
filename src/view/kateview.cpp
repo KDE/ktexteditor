@@ -541,6 +541,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_toggle_comment"));
         a->setText(i18n("Toggle Comment"));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Slash));
         connect(a, SIGNAL(triggered(bool)), SLOT(toggleComment()));
 
         a = m_toggleWriteLock = new KToggleAction(i18n("&Read Only Mode"), this);
