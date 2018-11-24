@@ -100,8 +100,9 @@ void KateModeManager::update()
     // try if the hl stuff is up to date...
     const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
-        // filter out None hl, we add that later as "normal" mode
-        if (modes[i].name() == QLatin1String("None")) {
+        // filter out hidden languages; and
+        // filter out "None" hl, we add that later as "normal" mode
+        if (modes[i].isHidden() || modes[i].name() == QLatin1String("None")) {
             continue;
         }
 
