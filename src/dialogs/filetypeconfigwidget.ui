@@ -206,6 +206,9 @@
         <property name="whatsThis">
          <string>Sets priority for this file type. If more than one file type selects the same file, the one with the highest priority will be used.</string>
         </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
        </widget>
       </item>
      </layout>

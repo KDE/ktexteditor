@@ -41,6 +41,7 @@
 #include <QLayout>
 #include <QPushButton>
 #include <QToolButton>
+#include <QSpinBox>
 //END Includes
 
 ModeConfigPage::ModeConfigPage(QWidget *parent)
@@ -86,6 +87,9 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     connect(ui->sbPriority, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(ui->cmbHl, SIGNAL(activated(int)), this, SLOT(slotChanged()));
     connect(ui->cmbIndenter, SIGNAL(activated(int)), this, SLOT(slotChanged()));
+
+    // make the context help a bit easier to access
+    ui->sbPriority->setToolTip(ui->sbPriority->whatsThis());
 
     layout->addWidget(newWidget);
     setLayout(layout);
