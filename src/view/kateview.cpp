@@ -3315,7 +3315,9 @@ void KTextEditor::ViewPrivate::setAnnotationUniformItemSizes(bool enable)
 KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()
 {
     //ensure that the view is up-to-date, otherwise 'endPos()' might fail!
-    m_viewInternal->updateView();
+    if (!m_viewInternal->endPos().isValid()) {
+        m_viewInternal->updateView();
+    }
     return KTextEditor::Range(m_viewInternal->toRealCursor(m_viewInternal->startPos()),
                               m_viewInternal->toRealCursor(m_viewInternal->endPos()));
 }
