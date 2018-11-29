@@ -127,8 +127,6 @@ private Q_SLOTS:
     void updateView(bool changed = false, int viewLinesScrolled = 0);
 
 private:
-    // Actually performs the updating, but doesn't call update().
-    void doUpdateView(bool changed = false, int viewLinesScrolled = 0);
     void makeVisible(const KTextEditor::Cursor &c, int endCol, bool force = false, bool center = false, bool calledExternally = false);
 
 public:
@@ -172,15 +170,6 @@ private Q_SLOTS:
     void viewSelectionChanged();
 
 public:
-    void doReturn();
-    void doSmartNewline();
-    void doDelete();
-    void doBackspace();
-    void doTabulator();
-    void doTranspose();
-    void doDeletePrevWord();
-    void doDeleteNextWord();
-
     void cursorPrevChar(bool sel = false);
     void cursorNextChar(bool sel = false);
     void wordPrev(bool sel = false);

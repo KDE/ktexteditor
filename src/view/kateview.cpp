@@ -2716,42 +2716,74 @@ void KTextEditor::ViewPrivate::capitalize()
 
 void KTextEditor::ViewPrivate::keyReturn()
 {
-    m_viewInternal->doReturn();
+    doc()->newLine(this);
+    m_viewInternal->iconBorder()->updateForCursorLineChange();
+    m_viewInternal->updateView();
 }
 
 void KTextEditor::ViewPrivate::smartNewline()
 {
-    m_viewInternal->doSmartNewline();
+    const KTextEditor::Cursor cursor = cursorPosition();
+    const int ln = cursor.line();
+    Kate::TextLine line = doc()->kateTextLine(ln);
+    int col = qMin(cursor.column(), line->firstChar());
+    if (col != -1) {
+        while (line->length() > col &&
+                !(line->at(col).isLetterOrNumber() || line->at(col) == QLatin1Char('_')) &&
+                col < cursor.column()) {
+            ++col;
+        }
+    } else {
+        col = line->length(); // stay indented
+    }
+    doc()->editStart();
+    doc()->editWrapLine(ln, cursor.column());
+    doc()->insertText(KTextEditor::Cursor(ln + 1, 0), line->string(0, col));
+    doc()->editEnd();
+
+    m_viewInternal->updateView();
 }
 
 void KTextEditor::ViewPrivate::backspace()
 {
-    m_viewInternal->doBackspace();
+    doc()->backspace(this, cursorPosition());
 }
 
 void KTextEditor::ViewPrivate::insertTab()
 {
-    m_viewInternal->doTabulator();
+    doc()->insertTab(this, cursorPosition());
 }
 
 void KTextEditor::ViewPrivate::deleteWordLeft()
 {
-    m_viewInternal->doDeletePrevWord();
+    doc()->editStart();
+    m_viewInternal->wordPrev(true);
+    KTextEditor::Range selection = selectionRange();
+    removeSelectedText();
+    doc()->editEnd();
+    m_viewInternal->tagRange(selection, true);
+    m_viewInternal->updateDirty();
 }
 
 void KTextEditor::ViewPrivate::keyDelete()
 {
-    m_viewInternal->doDelete();
+    doc()->del(this, cursorPosition());
 }
 
 void KTextEditor::ViewPrivate::deleteWordRight()
 {
-    m_viewInternal->doDeleteNextWord();
+    doc()->editStart();
+    m_viewInternal->wordNext(true);
+    KTextEditor::Range selection = selectionRange();
+    removeSelectedText();
+    doc()->editEnd();
+    m_viewInternal->tagRange(selection, true);
+    m_viewInternal->updateDirty();
 }
 
 void KTextEditor::ViewPrivate::transpose()
 {
-    m_viewInternal->doTranspose();
+    doc()->transpose(cursorPosition());
 }
 
 void KTextEditor::ViewPrivate::cursorLeft()

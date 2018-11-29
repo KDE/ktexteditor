@@ -445,35 +445,80 @@ public Q_SLOTS:
     void goToPreviousEditingPosition();
 
     /**
-     * Sets the cursor to the next editing position in this document
+     * Sets the cursor to the next editing position in this document.
      */
     void goToNextEditingPosition();
 
     /**
-      Uppercases selected text, or an alphabetic character next to the cursor.
-    */
+     * Uppercases selected text, or an alphabetic character next to the cursor.
+     */
     void uppercase();
+
     /**
-      Lowercases selected text, or an alphabetic character next to the cursor.
-    */
+     * Lowercases selected text, or an alphabetic character next to the cursor.
+     */
     void lowercase();
+
     /**
-      Capitalizes the selection (makes each word start with an uppercase) or
-      the word under the cursor.
-    */
+     * Capitalizes the selection (makes each word start with an uppercase) or
+     * the word under the cursor.
+     */
     void capitalize();
+
     /**
-      Joins lines touched by the selection
-    */
+     * Joins lines touched by the selection.
+     */
     void joinLines();
 
-    // Note - the following functions simply forward to KateViewInternal
+    /**
+     * Performs a line break (insert a new line char) at current cursor position
+     * and indent the new line.
+     *
+     * Most work is done by @c KTextEditor::DocumentPrivate::newLine and
+     * @c KateAutoIndent::userTypedChar
+     * @see KTextEditor::DocumentPrivate::newLine, KateAutoIndent
+     */
     void keyReturn();
+
+    /**
+     * Performs a line break (insert a new line char) at current cursor position
+     * but keep all leading non word char as indent for the new line.
+     */
     void smartNewline();
+
+    /**
+     * Insert a tabulator char at current cursor position.
+     */
     void backspace();
+
+    /**
+     * Remove the word left from the current cursor position including all leading
+     * space.
+     * @see KateViewInternal::wordPrev
+     */
     void deleteWordLeft();
+
+    /**
+     * Remove the current selection. When nothing is selected the char right
+     * from the current cursor position is removed.
+     * @see KTextEditor::DocumentPrivate::del
+     */
     void keyDelete();
+
+    /**
+     * When the char right from the current cursor position is a space is all
+     * space to the right removed. Otherwise is the word to the right including
+     * all trialling space removed.
+     * @see KateViewInternal::wordNext
+     */
     void deleteWordRight();
+
+    /**
+     * Transpose the characters left and right from the current cursor position
+     * and move the cursor one position to the right. If the char right to the
+     * current cursor position is a new line char, nothing is done.
+     * @see KTextEditor::DocumentPrivate::transpose
+     */
     void transpose();
     void cursorLeft();
     void shiftCursorLeft();
@@ -509,6 +554,9 @@ public Q_SLOTS:
     void shiftToMatchingBracket();
     void toPrevModifiedLine();
     void toNextModifiedLine();
+    /**
+     * Insert a tabulator char at current cursor position.
+     */
     void insertTab();
 
     void gotoLine();

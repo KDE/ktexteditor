@@ -608,15 +608,6 @@ void KateViewInternal::scrollColumns(int x)
 // If changed is true, the lines that have been set dirty have been updated.
 void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
 {
-    doUpdateView(changed, viewLinesScrolled);
-
-    if (changed) {
-        updateDirty();
-    }
-}
-
-void KateViewInternal::doUpdateView(bool changed, int viewLinesScrolled)
-{
     if (!isVisible() && !viewLinesScrolled && !changed) {
         return;    //When this view is not visible, don't do anything
     }
@@ -692,6 +683,10 @@ void KateViewInternal::doUpdateView(bool changed, int viewLinesScrolled)
     }
 
     m_dummy->setVisible(visible_dummy);
+
+    if (changed) {
+        updateDirty();
+    }
 }
 
 /**
@@ -877,76 +872,6 @@ KTextEditor::Cursor KateViewInternal::findMatchingBracket()
     return c;
 }
 
-void KateViewInternal::doReturn()
-{
-    doc()->newLine(m_view);
-    m_leftBorder->updateForCursorLineChange();
-    updateView();
-}
-
-void KateViewInternal::doSmartNewline()
-{
-    int ln = m_cursor.line();
-    Kate::TextLine line = doc()->kateTextLine(ln);
-    int col = qMin(m_cursor.column(), line->firstChar());
-    if (col != -1) {
-        while (line->length() > col &&
-                !(line->at(col).isLetterOrNumber() || line->at(col) == QLatin1Char('_')) &&
-                col < m_cursor.column()) {
-            ++col;
-        }
-    } else {
-        col = line->length(); // stay indented
-    }
-    doc()->editStart();
-    doc()->editWrapLine(ln, m_cursor.column());
-    doc()->insertText(KTextEditor::Cursor(ln + 1, 0), line->string(0, col));
-    doc()->editEnd();
-
-    updateView();
-}
-
-void KateViewInternal::doDelete()
-{
-    doc()->del(m_view, m_cursor);
-}
-
-void KateViewInternal::doBackspace()
-{
-    doc()->backspace(m_view, m_cursor);
-}
-
-void KateViewInternal::doTabulator()
-{
-    doc()->insertTab(m_view, m_cursor);
-}
-
-void KateViewInternal::doTranspose()
-{
-    doc()->transpose(m_cursor);
-}
-
-void KateViewInternal::doDeletePrevWord()
-{
-    doc()->editStart();
-    wordPrev(true);
-    KTextEditor::Range selection = m_view->selectionRange();
-    m_view->removeSelectedText();
-    doc()->editEnd();
-    tagRange(selection, true);
-    updateDirty();
-}
-
-void KateViewInternal::doDeleteNextWord()
-{
-    doc()->editStart();
-    wordNext(true);
-    KTextEditor::Range selection = m_view->selectionRange();
-    m_view->removeSelectedText();
-    doc()->editEnd();
-    tagRange(selection, true);
-    updateDirty();
-}
 
 class CalculatingCursor
 {
@@ -2460,7 +2385,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
     }
 
     if ((key == Qt::Key_Return) || (key == Qt::Key_Enter) || (key == Qt::SHIFT + Qt::Key_Return) || (key == Qt::SHIFT + Qt::Key_Enter)) {
-        doReturn();
+        m_view->keyReturn();
         e->accept();
         return;
     }
