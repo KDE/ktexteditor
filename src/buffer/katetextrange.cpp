@@ -182,6 +182,11 @@ void TextRange::setRange(const KTextEditor::Range &range)
 void TextRange::checkValidity(int oldStartLine, int oldEndLine, bool notifyAboutChange)
 {
     /**
+     * in any case: reset the flag, to avoid multiple runs
+     */
+    m_isCheckValidityRequired = false;
+
+    /**
      * check if any cursor is invalid or the range is zero size and it should be invalidated then
      */
     if (!m_start.isValid() || !m_end.isValid() || (m_invalidateIfEmpty && m_end <= m_start)) {

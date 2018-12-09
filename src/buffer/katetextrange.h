@@ -284,12 +284,12 @@ private:
     /**
      * no copy constructor, don't allow this to be copied.
      */
-    TextRange(const TextRange &);
+    TextRange(const TextRange &) = delete;
 
     /**
      * no assignment operator, no copying around.
      */
-    TextRange &operator= (const TextRange &);
+    TextRange &operator= (const TextRange &) = delete;
 
     /**
      * Check if range is valid, used by constructor and setRange.
@@ -312,6 +312,23 @@ private:
      * @param endLine end line of this range
      */
     void fixLookup(int oldStartLine, int oldEndLine, int startLine, int endLine);
+
+    /**
+     * Mark this range for later validity checking.
+     */
+    void setValidityCheckRequired()
+    {
+        m_isCheckValidityRequired = true;
+    }
+
+    /**
+     * Does this range need validity checking?
+     * @return is checking required?
+     */
+    bool isValidityCheckRequired() const
+    {
+        return m_isCheckValidityRequired;
+    }
 
 private:
     /**
@@ -359,6 +376,13 @@ private:
      * Will this range invalidate itself if it becomes empty?
      */
     bool m_invalidateIfEmpty;
+
+    /**
+     * Should this range be validated?
+     * Used by KateTextBlock to avoid multiple updates without costly hashing.
+     * Reset by checkValidity().
+     */
+    bool m_isCheckValidityRequired = false;
 };
 
 }
