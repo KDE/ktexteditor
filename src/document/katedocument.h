@@ -360,9 +360,9 @@ private:
     QStack<int> editStateStack;
     bool editIsRunning = false;
     bool m_undoMergeAllEdits = false;
+    KTextEditor::Cursor m_editLastChangeStartCursor = KTextEditor::Cursor::invalid();
     QStack<QSharedPointer<KTextEditor::MovingCursor>> m_editingStack;
     int m_editingStackPosition = -1;
-    static const int s_editingStackSizeLimit = 32;
 
     //
     // KTextEditor::UndoInterface stuff
@@ -381,7 +381,7 @@ public Q_SLOTS:
      * If the consecutive editings happens in the same line, then remove
      * the previous and add the new one with updated column no.
      */
-    void saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range);
+    void saveEditingPositions(const KTextEditor::Cursor &cursor);
 
 public:
     uint undoCount() const;

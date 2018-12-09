@@ -80,6 +80,7 @@ public:
     /**
      * merge an undo item
      * Saves a bit of memory and potentially many calls when undo/redoing.
+     * Only called for equal types of this object and the passed one.
      * @param undo undo item to merge
      * @return success
      */

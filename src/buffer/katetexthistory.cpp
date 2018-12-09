@@ -118,7 +118,7 @@ void TextHistory::addEntry(const Entry &entry)
      * simple efficient check: if we only have one entry, and the entry is not referenced
      * just replace it with the new one and adjust the revision
      */
-    if ((m_historyEntries.size() == 1) && !m_historyEntries.first().referenceCounter) {
+    if ((m_historyEntries.size() == 1) && !m_historyEntries.front().referenceCounter) {
         /**
          * remember new revision for first element, it is the revision we get after this change
          */
@@ -127,7 +127,7 @@ void TextHistory::addEntry(const Entry &entry)
         /**
          * remember edit
          */
-        m_historyEntries.first() = entry;
+        m_historyEntries.front() = entry;
 
         /**
          * be done...
@@ -148,7 +148,7 @@ void TextHistory::lockRevision(qint64 revision)
      */
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(revision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(revision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(revision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
     /**
      * increment revision reference counter
@@ -164,7 +164,7 @@ void TextHistory::unlockRevision(qint64 revision)
      */
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(revision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(revision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(revision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
     /**
      * decrement revision reference counter
@@ -180,9 +180,9 @@ void TextHistory::unlockRevision(qint64 revision)
         /**
          * search for now unused stuff
          */
-        int unreferencedEdits = 0;
-        for (int i = 0; i + 1 < m_historyEntries.size(); ++i) {
-            if (m_historyEntries.at(i).referenceCounter) {
+        qint64 unreferencedEdits = 0;
+        for (qint64 i = 0; i + 1 < qint64(m_historyEntries.size()); ++i) {
+            if (m_historyEntries[i].referenceCounter) {
                 break;
             }
 
@@ -481,9 +481,9 @@ void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCur
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(fromRevision != toRevision);
     Q_ASSERT(fromRevision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(fromRevision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(fromRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
     Q_ASSERT(toRevision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
     /**
      * transform cursor
@@ -541,9 +541,9 @@ void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingR
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(fromRevision != toRevision);
     Q_ASSERT(fromRevision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(fromRevision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(fromRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
     Q_ASSERT(toRevision >= m_firstHistoryEntryRevision);
-    Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + m_historyEntries.size()));
+    Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
     /**
      * transform cursors

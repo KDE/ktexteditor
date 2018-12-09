@@ -79,44 +79,50 @@ void Marks::writeSessionConfig(KConfigGroup &config) const
     config.writeEntry("ViMarks", l);
 }
 
-void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos, const bool moveoninsert)
+void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos)
 {
+    // move on insert is type based, this allows to reuse cursors!
+    // reuse is important for editing intensive things like replace-all
+    const bool moveoninsert = _mark != BeginEditYanked;
+
     m_settingMark = true;
-    uint marktype = m_doc->mark(pos.line());
 
     // ` and ' is the same register (position before jump)
     const QChar mark = (_mark == BeforeJumpAlter) ? BeforeJump : _mark;
 
-    // delete old cursor if any
+    // if we have already a cursor for this type: adjust it
+    bool needToAdjustVisibleMark = true;
     if (KTextEditor::MovingCursor *oldCursor = m_marks.value(mark)) {
-
-        int  number_of_marks = 0;
-
-        foreach (QChar c, m_marks.keys()) {
-            if (m_marks.value(c)->line() ==  oldCursor->line()) {
-                number_of_marks++;
+        // cleanup mark display only if line changes
+        needToAdjustVisibleMark = oldCursor->line() != pos.line();
+        if (needToAdjustVisibleMark) {
+            int number_of_marks = 0;
+            foreach (QChar c, m_marks.keys()) {
+                if (m_marks.value(c)->line() ==  oldCursor->line()) {
+                    number_of_marks++;
+                }
+            }
+            if (number_of_marks == 1) {
+                m_doc->removeMark(oldCursor->line(), KTextEditor::MarkInterface::markType01);
             }
         }
 
-        if (number_of_marks == 1 && pos.line() != oldCursor->line()) {
-            m_doc->removeMark(oldCursor->line(), KTextEditor::MarkInterface::markType01);
-        }
-
-        delete oldCursor;
+        // adjust position
+        oldCursor->setPosition(pos);
+    } else {
+        // if no old mark of that type, create new one
+        const KTextEditor::MovingCursor::InsertBehavior behavior = moveoninsert ? KTextEditor::MovingCursor::MoveOnInsert : KTextEditor::MovingCursor::StayOnInsert;
+        m_marks.insert(mark, m_doc->newMovingCursor(pos, behavior));
     }
 
-    KTextEditor::MovingCursor::InsertBehavior behavior = moveoninsert ? KTextEditor::MovingCursor::MoveOnInsert : KTextEditor::MovingCursor::StayOnInsert;
-    // create and remember new one
-    m_marks.insert(mark, m_doc->newMovingCursor(pos, behavior));
-
-    // Showing what mark we set:
+    // Showing what mark we set, can be skipped if we did not change the line
     if (isShowable(mark)) {
-        if (!(marktype & KTextEditor::MarkInterface::markType01)) {
+        if (needToAdjustVisibleMark && !(m_doc->mark(pos.line()) & KTextEditor::MarkInterface::markType01)) {
             m_doc->addMark(pos.line(), KTextEditor::MarkInterface::markType01);
         }
 
         // only show message for active view
-        if ( m_inputModeManager->view()->viewInputMode() == KTextEditor::View::ViInputMode ) {
+        if (m_inputModeManager->view()->viewInputMode() == KTextEditor::View::ViInputMode) {
             if (m_doc->activeView() == m_inputModeManager->view()) {
                 m_inputModeManager->getViNormalMode()->message(i18n("Mark set: %1", mark));
             }
@@ -244,7 +250,7 @@ bool Marks::isShowable(const QChar &mark)
 
 void Marks::setStartEditYanked(const KTextEditor::Cursor &pos)
 {
-    setMark(BeginEditYanked, pos, false);
+    setMark(BeginEditYanked, pos);
 }
 
 void Marks::setFinishEditYanked(const KTextEditor::Cursor &pos)

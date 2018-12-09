@@ -295,6 +295,9 @@ private:
      * Check if range is valid, used by constructor and setRange.
      * If at least one cursor is invalid, both will set to invalid.
      * Same if range itself is invalid (start >= end).
+     *
+     * IMPORTANT: Notifications might need to deletion of this range!
+     *
      * @param oldStartLine old start line of this range before changing of cursors, needed to add/remove range from m_ranges in blocks
      * @param oldEndLine old end line of this range
      * @param notifyAboutChange should feedback be emitted or not?

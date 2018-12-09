@@ -69,7 +69,7 @@ private:
     void syncViMarksAndBookmarks();
     bool isShowable(const QChar &mark);
 
-    void setMark(const QChar &mark, const KTextEditor::Cursor &pos, const bool moveoninsert = true);
+    void setMark(const QChar &mark, const KTextEditor::Cursor &pos);
 
 private Q_SLOTS:
     void markChanged(KTextEditor::Document *doc,

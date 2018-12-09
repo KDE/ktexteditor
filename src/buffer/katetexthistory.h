@@ -21,7 +21,7 @@
 #ifndef KATE_TEXTHISTORY_H
 #define KATE_TEXTHISTORY_H
 
-#include <QList>
+#include <vector>
 
 #include <ktexteditor/range.h>
 
@@ -230,8 +230,9 @@ private:
 
     /**
      * history of edits
+     * needs no sharing, small entries
      */
-    QList<Entry> m_historyEntries;
+    std::vector<Entry> m_historyEntries;
 
     /**
      * offset for the first entry in m_history, to which revision it really belongs?

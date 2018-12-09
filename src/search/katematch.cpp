@@ -22,7 +22,6 @@
 
 #include "kateregexpsearch.h"
 #include "katedocument.h"
-#include <ktexteditor/movingrange.h>
 
 KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::SearchOptions options)
     : m_document(document)
@@ -41,22 +40,24 @@ KTextEditor::Range KateMatch::searchText(const KTextEditor::Range &range, const 
 KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode, int replacementCounter)
 {
     // Placeholders depending on search mode
-    const bool usePlaceholders = m_options.testFlag(KTextEditor::Regex) ||
-                                 m_options.testFlag(KTextEditor::EscapeSequences);
+    // skip place-holder stuff if we have no \ at all inside the replacement, the buildReplacement is expensive
+    const bool usePlaceholders = (m_options.testFlag(KTextEditor::Regex) ||
+                                 m_options.testFlag(KTextEditor::EscapeSequences))
+                                 && replacement.contains(QLatin1Char('\\'));
 
     const QString finalReplacement = usePlaceholders ? buildReplacement(replacement, blockMode, replacementCounter)
                                      : replacement;
 
-    // Track replacement operation
-    KTextEditor::MovingRange *const afterReplace = m_document->newMovingRange(range(), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+    // Track replacement operation, reuse range if already there
+    if (m_afterReplaceRange) {
+        m_afterReplaceRange->setRange(range());
+    } else {
+        m_afterReplaceRange.reset(m_document->newMovingRange(range(), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight));
+    }
 
-    blockMode = blockMode && !range().onSingleLine();
-    m_document->replaceText(range(), finalReplacement, blockMode);
-
-    const KTextEditor::Range result = *afterReplace;
-    delete afterReplace;
-
-    return result;
+    // replace and return results range
+    m_document->replaceText(range(), finalReplacement, blockMode && !range().onSingleLine());
+    return m_afterReplaceRange->toRange();
 }
 
 KTextEditor::Range KateMatch::range() const

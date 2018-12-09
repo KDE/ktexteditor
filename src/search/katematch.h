@@ -22,7 +22,10 @@
 #ifndef KATE_MATCH_H
 #define KATE_MATCH_H
 
+#include <memory>
+
 #include <ktexteditor/document.h>
+#include <ktexteditor/movingrange.h>
 
 namespace KTextEditor { class DocumentPrivate; }
 
@@ -46,6 +49,12 @@ private:
     KTextEditor::DocumentPrivate *const m_document;
     const KTextEditor::SearchOptions m_options;
     QVector<KTextEditor::Range> m_resultRanges;
+
+    /**
+     * moving range to track replace changes
+     * kept for later reuse
+     */
+    std::unique_ptr<KTextEditor::MovingRange> m_afterReplaceRange;
 };
 
 #endif // KATE_MATCH_H

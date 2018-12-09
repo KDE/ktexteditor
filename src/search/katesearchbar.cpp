@@ -49,6 +49,9 @@
 #include <QShortcut>
 #include <QStringListModel>
 
+#include <memory>
+#include <vector>
+
 // Turn debug messages on/off here
 // #define FAST_DEBUG_ENABLE
 
@@ -803,19 +806,25 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
     const bool regexMode = enabledOptions.testFlag(Regex);
     const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
 
-    KTextEditor::MovingRange *workingRange = m_view->doc()->newMovingRange(inputRange);
-    QList<Range> highlightRanges;
+    std::unique_ptr<KTextEditor::MovingRange> workingRange(m_view->doc()->newMovingRange(inputRange));
     int matchCounter = 0;
+
+    // we highlight all ranges of a replace, up to some hard limit
+    // e.g. if you replace 100000 things, rendering will break down otherwise ;=)
+    const int maxHighlightings = 65536;
+    std::vector<Range> highlightRanges;
+
+    // reuse match object to avoid massive moving range creation
+    KateMatch match(m_view->doc(), enabledOptions);
 
     bool block = m_view->selection() && m_view->blockSelection();
     int line = inputRange.start().line();
     do {
         if (block) {
-            workingRange = m_view->doc()->newMovingRange(m_view->doc()->rangeOnLine(inputRange, line));
+            workingRange.reset(m_view->doc()->newMovingRange(m_view->doc()->rangeOnLine(inputRange, line)));
         }
 
         for (;;) {
-            KateMatch match(m_view->doc(), enabledOptions);
             match.searchText(*workingRange, searchPattern());
             if (!match.isValid()) {
                 break;
@@ -823,29 +832,32 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
             bool const originalMatchEmpty = match.isEmpty();
 
             // Work with the match
+            Range lastRange;
             if (replacement != nullptr) {
                 if (matchCounter == 0) {
                     static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->startEditing();
                 }
 
                 // Replace
-                const Range afterReplace = match.replace(*replacement, false, ++matchCounter);
-
-                // Highlight and continue after adjusted match
-                //highlightReplacement(*afterReplace);
-                highlightRanges << afterReplace;
+                lastRange = match.replace(*replacement, false, ++matchCounter);
             } else {
-                // Highlight and continue after original match
-                //highlightMatch(match);
-                highlightRanges << match.range();
-                matchCounter++;
+                lastRange = match.range();
+                ++matchCounter;
+            }
+
+            // remember ranges if limit not reached
+            if (matchCounter < maxHighlightings) {
+                highlightRanges.push_back(lastRange);
+            } else {
+                highlightRanges.clear();
             }
 
             // Continue after match
-            if (highlightRanges.last().end() >= workingRange->end()) {
+            if (lastRange.end() >= workingRange->end()) {
                 break;
             }
-            KTextEditor::DocumentCursor workingStart(m_view->doc(), highlightRanges.last().end());
+
+            KTextEditor::DocumentCursor workingStart(m_view->doc(), lastRange.end());
             if (originalMatchEmpty) {
                 // Can happen for regex patterns like "^".
                 // If we don't advance here we will loop forever...
@@ -873,26 +885,27 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
     }
 
     // Add ScrollBarMarks
-    KTextEditor::MarkInterface* iface = qobject_cast<KTextEditor::MarkInterface*>(m_view->document());
-    if (iface) {
-        iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
-        iface->setMarkPixmap(KTextEditor::MarkInterface::SearchMatch, QIcon().pixmap(0,0));
-        foreach (Range r, highlightRanges) {
-            iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
+    if (!highlightRanges.empty()) {
+        KTextEditor::MarkInterface* iface = qobject_cast<KTextEditor::MarkInterface*>(m_view->document());
+        if (iface) {
+            iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
+            iface->setMarkPixmap(KTextEditor::MarkInterface::SearchMatch, QIcon().pixmap(0,0));
+            for (const Range &r : highlightRanges) {
+                iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
+            }
         }
     }
 
     // Add highlights
-    if (replacement == nullptr)
-        foreach (Range r, highlightRanges) {
+    if (replacement == nullptr) {
+        for (const Range &r : highlightRanges) {
             highlightMatch(r);
         }
-    else
-        foreach (Range r, highlightRanges) {
+    } else {
+        for (const Range &r : highlightRanges) {
             highlightReplacement(r);
         }
-
-    delete workingRange;
+    }
 
     // restore connection
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));

@@ -295,8 +295,6 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     connect(this, SIGNAL(sigQueryClose(bool*,bool*)), this, SLOT(slotQueryClose_save(bool*,bool*)));
 
-    connect(this, &KTextEditor::DocumentPrivate::textRemoved, this, &KTextEditor::DocumentPrivate::saveEditingPositions);
-    connect(this, &KTextEditor::DocumentPrivate::textInserted, this, &KTextEditor::DocumentPrivate::saveEditingPositions);
     connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)), this, SLOT(clearEditingPosStack()));
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
 }
@@ -347,21 +345,40 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
 }
 //END
 
-void KTextEditor::DocumentPrivate::saveEditingPositions(KTextEditor::Document *, const KTextEditor::Range &range)
+void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Cursor &cursor)
 {
     if (m_editingStackPosition != m_editingStack.size() - 1) {
         m_editingStack.resize(m_editingStackPosition);
     }
-    KTextEditor::MovingInterface *moving = qobject_cast<KTextEditor::MovingInterface *>(this);
-    const auto c = range.start();
-    QSharedPointer<KTextEditor::MovingCursor> mc (moving->newMovingCursor(c));
-    if (!m_editingStack.isEmpty() && c.line() == m_editingStack.top()->line()) {
-        m_editingStack.pop();
+
+    // try to be clever: reuse existing cursors if possible
+    QSharedPointer<KTextEditor::MovingCursor> mc;
+
+    // we might pop last one: reuse that
+    if (!m_editingStack.isEmpty() && cursor.line() == m_editingStack.top()->line()) {
+        mc = m_editingStack.pop();
     }
+
+    // we might expire oldest one, reuse that one, if not already one there
+    // we prefer the other one for reuse, as already on the right line aka in the right block!
+    const int editingStackSizeLimit = 32;
+    if (m_editingStack.size() >= editingStackSizeLimit) {
+        if (mc) {
+            m_editingStack.removeFirst();
+        } else {
+            mc = m_editingStack.takeFirst();
+        }
+    }
+
+    // new cursor needed? or adjust existing one?
+    if (mc) {
+        mc->setPosition(cursor);
+    } else {
+        mc = QSharedPointer<KTextEditor::MovingCursor> (newMovingCursor(cursor));
+    }
+
+    // add new one as top of stack
     m_editingStack.push(mc);
-    if (m_editingStack.size() > s_editingStackSizeLimit) {
-        m_editingStack.removeFirst();
-    }
     m_editingStackPosition = m_editingStack.size() - 1;
 }
 
@@ -728,22 +745,20 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
         }
     }
 
+    // compute expanded column for block mode
+    int positionColumnExpanded = insertColumn;
     const int tabWidth = config()->tabWidth();
-
-    static const QChar newLineChar(QLatin1Char('\n'));
-
-    int insertColumnExpanded = insertColumn;
-    Kate::TextLine l = plainKateTextLine(currentLine);
-    if (l) {
-        insertColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
+    if (block) {
+        if (auto l = plainKateTextLine(currentLine)) {
+            positionColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
+        }
     }
-    int positionColumnExpanded = insertColumnExpanded;
 
     int pos = 0;
     for (; pos < totalLength; pos++) {
         const QChar &ch = text.at(pos);
 
-        if (ch == newLineChar) {
+        if (ch == QLatin1Char('\n')) {
             // Only perform the text insert if there is text to insert
             if (currentLineStart < pos) {
                 editInsertText(currentLine, insertColumn, text.mid(currentLineStart, pos - currentLineStart));
@@ -755,9 +770,9 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
             }
 
             currentLine++;
-            l = plainKateTextLine(currentLine);
 
             if (block) {
+                auto l = plainKateTextLine(currentLine);
                 if (currentLine == lastLine() + 1) {
                     editInsertLine(currentLine, QString());
                 }
@@ -768,9 +783,6 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
             }
 
             currentLineStart = pos + 1;
-            if (l) {
-                insertColumnExpanded = l->toVirtualColumn(insertColumn, tabWidth);
-            }
         }
     }
 
@@ -990,6 +1002,9 @@ bool KTextEditor::DocumentPrivate::editStart()
 
     editIsRunning = true;
 
+    // no last change cursor at start
+    m_editLastChangeStartCursor = KTextEditor::Cursor::invalid();
+
     m_undoManager->editStart();
 
     foreach (KTextEditor::ViewPrivate *view, m_views) {
@@ -1037,6 +1052,12 @@ bool KTextEditor::DocumentPrivate::editEnd()
         setModified(true);
         emit textChanged(this);
     }
+
+    // remember last change position in the stack, if any
+    // this avoid costly updates for longer editing transactions
+    // before we did that on textInsert/Removed
+    if (m_editLastChangeStartCursor.isValid())
+        saveEditingPositions(m_editLastChangeStartCursor);
 
     editIsRunning = false;
     return true;
@@ -1228,8 +1249,11 @@ bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QStri
 
     m_undoManager->slotTextInserted(line, col2, s2);
 
+    // remember last change cursor
+    m_editLastChangeStartCursor = KTextEditor::Cursor(line, col2);
+
     // insert text into line
-    m_buffer->insertText(KTextEditor::Cursor(line, col2), s2);
+    m_buffer->insertText(m_editLastChangeStartCursor, s2);
 
     emit textInserted(this, KTextEditor::Range(line, col2, line, col2 + s2.length()));
 
@@ -1276,8 +1300,11 @@ bool KTextEditor::DocumentPrivate::editRemoveText(int line, int col, int len)
 
     m_undoManager->slotTextRemoved(line, col, oldText);
 
+    // remember last change cursor
+    m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
+
     // remove text from line
-    m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, col), KTextEditor::Cursor(line, col + len)));
+    m_buffer->removeText(KTextEditor::Range(m_editLastChangeStartCursor, KTextEditor::Cursor(line, col + len)));
 
     emit textRemoved(this, KTextEditor::Range(line, col, line, col + len), oldText);
 
@@ -1381,6 +1408,9 @@ bool KTextEditor::DocumentPrivate::editWrapLine(int line, int col, bool newLine,
         }
     }
 
+    // remember last change cursor
+    m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
+
     emit textInserted(this, KTextEditor::Range(line, col, line + 1, 0));
 
     editEnd();
@@ -1448,6 +1478,9 @@ bool KTextEditor::DocumentPrivate::editUnWrapLine(int line, bool removeLine, int
     if (!list.isEmpty()) {
         emit marksChanged(this);
     }
+
+    // remember last change cursor
+    m_editLastChangeStartCursor = KTextEditor::Cursor(line, col);
 
     emit textRemoved(this, KTextEditor::Range(line, col, line + 1, 0), QStringLiteral("\n"));
 
@@ -1518,6 +1551,9 @@ bool KTextEditor::DocumentPrivate::editInsertLine(int line, const QString &s)
     } else {
         rangeInserted.setEnd(KTextEditor::Cursor(line + 1, 0));
     }
+
+    // remember last change cursor
+    m_editLastChangeStartCursor = rangeInserted.start();
 
     emit textInserted(this, rangeInserted);
 
@@ -1611,6 +1647,9 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
             rangeRemoved.setStart(KTextEditor::Cursor(from - 1, prevLine->length()));
         }
     }
+
+    // remember last change cursor
+    m_editLastChangeStartCursor = rangeRemoved.start();
 
     emit textRemoved(this, rangeRemoved, oldText.join(QStringLiteral("\n")) + QLatin1Char('\n'));
 
