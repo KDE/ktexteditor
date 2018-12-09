@@ -190,11 +190,22 @@ public:
     void top_home(bool sel = false);
     void bottom_end(bool sel = false);
 
-    KTextEditor::Cursor getCursor() const
+    /**
+     * Accessor to the current caret position
+     * @return position of the caret as @c KTextEditor::Cursor
+     * @see KTextEditor::Cursor
+     */
+    KTextEditor::Cursor cursorPosition() const
     {
         return m_cursor;
     }
-    KTextEditor::Cursor getMouse() const
+
+    /**
+     * Accessor to the current mouse position
+     * @return position of the mouse as @c KTextEditor::Cursor
+     * @see KTextEditor::Cursor
+     */
+    KTextEditor::Cursor mousePosition() const
     {
         return m_mouse;
     }

@@ -1969,7 +1969,7 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
 
 void KTextEditor::ViewPrivate::ensureCursorColumnValid()
 {
-    KTextEditor::Cursor c = m_viewInternal->getCursor();
+    KTextEditor::Cursor c = m_viewInternal->cursorPosition();
 
     // make sure the cursor is valid:
     // - in block selection mode or if wrap cursor is off, the column is arbitrary
@@ -2071,7 +2071,7 @@ void KTextEditor::ViewPrivate::slotHlChanged()
 
 int KTextEditor::ViewPrivate::virtualCursorColumn() const
 {
-    return doc()->toVirtualColumn(m_viewInternal->getCursor());
+    return doc()->toVirtualColumn(m_viewInternal->cursorPosition());
 }
 
 void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cursor &newPosition)
@@ -2536,12 +2536,12 @@ bool KTextEditor::ViewPrivate::setCursorPosition(KTextEditor::Cursor position)
 
 KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPosition() const
 {
-    return m_viewInternal->getCursor();
+    return m_viewInternal->cursorPosition();
 }
 
 KTextEditor::Cursor KTextEditor::ViewPrivate::cursorPositionVirtual() const
 {
-    return KTextEditor::Cursor(m_viewInternal->getCursor().line(), virtualCursorColumn());
+    return KTextEditor::Cursor(m_viewInternal->cursorPosition().line(), virtualCursorColumn());
 }
 
 QPoint KTextEditor::ViewPrivate::cursorToCoordinate(const KTextEditor::Cursor &cursor) const
@@ -3460,7 +3460,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     QSet<Kate::TextRange *> &oldSet = (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_rangesMouseIn : m_rangesCaretIn;
 
     // which cursor position to honor?
-    KTextEditor::Cursor currentCursor = (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_viewInternal->getMouse() : m_viewInternal->getCursor();
+    KTextEditor::Cursor currentCursor = (activationType == KTextEditor::Attribute::ActivateMouseIn) ? m_viewInternal->mousePosition() : m_viewInternal->cursorPosition();
 
     // first: validate the remembered ranges
     QSet<Kate::TextRange *> validRanges;

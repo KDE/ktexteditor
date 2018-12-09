@@ -133,7 +133,7 @@ public:
     }
     int cursorPosition() const override
     {
-        KTextEditor::Cursor c = view()->getCursor();
+        KTextEditor::Cursor c = view()->cursorPosition();
         return positionFromCursor(view(), c);
     }
     int offsetAtPoint(const QPoint & /*point*/) const override
