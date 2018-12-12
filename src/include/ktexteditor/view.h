@@ -246,6 +246,15 @@ public:
     virtual QString viewModeHuman() const = 0;
 
     /**
+     * Set the view's new input mode.
+     * \param inputMode new InputMode value
+     * \see viewInputMode()
+     * @since 5.54
+     * KF6: make virtual
+     */
+    void setViewInputMode(InputMode inputMode);
+
+    /**
      * Get the view's current input mode.
      * The current mode can be \NormalInputMode and \ViInputMode.
      * For human translated version \see viewInputModeHuman.

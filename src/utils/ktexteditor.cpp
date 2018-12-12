@@ -141,6 +141,11 @@ bool View::insertTemplate(const KTextEditor::Cursor& insertPosition,
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
 
+void View::setViewInputMode(InputMode inputMode)
+{
+    d->setInputMode(inputMode);
+}
+
 ConfigPage::ConfigPage(QWidget *parent)
     : QWidget(parent)
     , d(nullptr)
@@ -173,7 +178,7 @@ Plugin::Plugin(QObject *parent)
 {}
 
 Plugin::~Plugin()
-{}    
+{}
 
 int Plugin::configPages() const
 {
