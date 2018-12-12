@@ -21,6 +21,8 @@
 #ifndef KATE_TEXTBLOCK_H
 #define KATE_TEXTBLOCK_H
 
+#include <unordered_set>
+
 #include <QVector>
 #include <QSet>
 
@@ -206,7 +208,7 @@ public:
      */
     void removeCursor(Kate::TextCursor *cursor)
     {
-        m_cursors.remove(cursor);
+        m_cursors.erase(cursor);
     }
 
     /**
@@ -246,8 +248,9 @@ private:
 
     /**
      * Lines contained in this buffer. These are shared pointers.
+     * We need no sharing, use STL.
      */
-    QVector<Kate::TextLine> m_lines;
+    std::vector<Kate::TextLine> m_lines;
 
     /**
      * Startline of this block
@@ -256,8 +259,9 @@ private:
 
     /**
      * Set of cursors for this block.
+     * We need no sharing, use STL.
      */
-    QSet<TextCursor *> m_cursors;
+    std::unordered_set<TextCursor *> m_cursors;
 
     /**
      * Contains for each line-offset the ranges that were cached into it.
