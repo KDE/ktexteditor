@@ -28,29 +28,22 @@ class MessagePrivate
 public:
     QList<QAction *> actions;
     Message::MessageType messageType;
-    Message::MessagePosition position;
+    Message::MessagePosition position = Message::AboveView;
     QString text;
     QIcon icon;
-    bool wordWrap;
-    int autoHideDelay;
-    KTextEditor::Message::AutoHideMode autoHideMode;
-    int priority;
-    KTextEditor::View *view;
-    KTextEditor::Document *document;
+    bool wordWrap = false;
+    int autoHideDelay = -1;
+    KTextEditor::Message::AutoHideMode autoHideMode = KTextEditor::Message::AfterUserInteraction;
+    int priority = 0;
+    KTextEditor::View *view = nullptr;
+    KTextEditor::Document *document = nullptr;
 };
 
 Message::Message(const QString &richtext, MessageType type)
     : d(new MessagePrivate())
 {
     d->messageType = type;
-    d->position = Message::AboveView;
     d->text = richtext;
-    d->wordWrap = false;
-    d->autoHideDelay = -1;
-    d->autoHideMode = KTextEditor::Message::AfterUserInteraction;
-    d->priority = 0;
-    d->view = nullptr;
-    d->document = nullptr;
 }
 
 Message::~Message()
