@@ -32,7 +32,7 @@ public:
     QString text;
     QIcon icon;
     bool wordWrap;
-    int autoHide;
+    int autoHideDelay;
     KTextEditor::Message::AutoHideMode autoHideMode;
     int priority;
     KTextEditor::View *view;
@@ -46,7 +46,7 @@ Message::Message(const QString &richtext, MessageType type)
     d->position = Message::AboveView;
     d->text = richtext;
     d->wordWrap = false;
-    d->autoHide = -1;
+    d->autoHideDelay = -1;
     d->autoHideMode = KTextEditor::Message::AfterUserInteraction;
     d->priority = 0;
     d->view = nullptr;
@@ -106,14 +106,14 @@ QList<QAction *> Message::actions() const
     return d->actions;
 }
 
-void Message::setAutoHide(int autoHideTimer)
+void Message::setAutoHide(int delay)
 {
-    d->autoHide = autoHideTimer;
+    d->autoHideDelay = delay;
 }
 
 int Message::autoHide() const
 {
-    return d->autoHide;
+    return d->autoHideDelay;
 }
 
 void Message::setAutoHideMode(KTextEditor::Message::AutoHideMode mode)
@@ -176,5 +176,5 @@ Message::MessagePosition Message::position() const
     return d->position;
 }
 
-}
+} // namespace KTextEditor
 

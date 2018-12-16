@@ -171,6 +171,7 @@ public:
     /**
      * Returns the icon of this message.
      * If the message has no icon set, a null icon is returned.
+     * @see setIcon()
      */
     QIcon icon() const;
 
@@ -190,34 +191,35 @@ public:
      *
      * To connect to an action, use the following code:
      * @code
-     * connect(action, SIGNAL(triggered()), receiver, SLOT(slotActionTriggered()));
+     * connect(action, &QAction::triggered, receiver, &ReceiverType::slotActionTriggered);
      * @endcode
      *
      * @param action action to be added
      * @param closeOnTrigger when triggered, the message widget is closed
      *
      * @warning The added actions are deleted automatically.
-     *          So do \em not delete the added actions yourself.
+     *          So do @em not delete the added actions yourself.
      */
     void addAction(QAction *action, bool closeOnTrigger = true);
 
     /**
      * Accessor to all actions, mainly used in the internal implementation
      * to add the actions into the gui.
+     * @see addAction()
      */
     QList<QAction *> actions() const;
 
     /**
-     * Set the auto hide timer to @p autoHideTimer milliseconds.
-     * If @p autoHideTimer < 0, auto hide is disabled.
-     * If @p autoHideTimer = 0, auto hide is enabled and set to a sane default
+     * Set the auto hide time to @p delay milliseconds.
+     * If @p delay < 0, auto hide is disabled.
+     * If @p delay = 0, auto hide is enabled and set to a sane default
      * value of several seconds.
      *
      * By default, auto hide is disabled.
      *
      * @see autoHide(), setAutoHideMode()
      */
-    void setAutoHide(int autoHideTimer = 0);
+    void setAutoHide(int delay = 0);
 
     /**
      * Returns the auto hide time in milliseconds.
@@ -228,15 +230,15 @@ public:
     int autoHide() const;
 
     /**
-     * Sets the autoHide mode to @p mode.
+     * Sets the auto hide mode to @p mode.
      * The default mode is set to AutoHideMode::AfterUserInteraction.
-     * @param mode autoHide mode
+     * @param mode auto hide mode
      * @see autoHideMode(), setAutoHide()
      */
     void setAutoHideMode(KTextEditor::Message::AutoHideMode mode);
 
     /**
-     * Get the Message's autoHide mode.
+     * Get the Message's auto hide mode.
      * The default mode is set to AutoHideMode::AfterUserInteraction.
      * @see setAutoHideMode(), autoHide()
      */
@@ -270,7 +272,7 @@ public:
     void setPriority(int priority);
 
     /**
-     * Returns the priority of the message. Default is 0.
+     * Returns the priority of the message.
      *
      * @see setPriority()
      */
@@ -306,20 +308,21 @@ public:
     KTextEditor::Document *document() const;
 
     /**
-     * Sets the @p position either to AboveView or BelowView.
+     * Sets the position of the message to @p position.
      * By default, the position is set to MessagePosition::AboveView.
      * @see MessagePosition
      */
     void setPosition(MessagePosition position);
 
     /**
-     * Returns the desired message position of this message.
+     * Returns the message position of this message.
+     * @see setPosition(), MessagePosition
      */
     MessagePosition position() const;
 
 public Q_SLOTS:
     /**
-     * Sets the notification contents to @p text.
+     * Sets the notification contents to @p richtext.
      * If the message was already sent through Document::postMessage(),
      * the displayed text changes on the fly.
      * @note Change text on the fly with care, since changing the text may
@@ -331,45 +334,39 @@ public Q_SLOTS:
     void setText(const QString &richtext);
 
     /**
-     * Optionally set an icon for this notification.
-     * The icon is shown next to the message text.
+     * Add an optional @p icon for this notification which will be shown next to
+     * the message text. If the message was already sent through Document::postMessage(),
+     * the displayed icon changes on the fly.
+     * @note Change the icon on the fly with care, since changing the text may
+     *       resize the notification widget, which may result in a distracting
+     *       user experience.
      * @param icon the icon to be displayed
+     * @see iconChanged()
      */
     void setIcon(const QIcon &icon);
 
 Q_SIGNALS:
     /**
-     * This signal is emitted before the message is deleted. Afterwards, this
+     * This signal is emitted before the @p message is deleted. Afterwards, this
      * pointer is invalid.
      *
      * Use the function document() to access the associated Document.
      *
-     * @param message closed/processed message
+     * @param message the closed/processed message
      */
     void closed(KTextEditor::Message *message);
 
     /**
-     * This signal is emitted whenever setText() is called.
-     * If the message was already sent through Document::postMessage(),
-     * the displayed text changes on the fly.
-     * @note Change text on the fly with care, since changing the text may
-     *       resize the notification widget, which may result in a distracting
-     *       user experience.
+     * This signal is emitted whenever setText() was called.
      *
-     * @param text new notification text (rich text supported)
+     * @param text the new notification text (rich text supported)
      * @see setText()
      */
     void textChanged(const QString &text);
 
     /**
-     * This signal is emitted whenever setIcon() is called.
-     * If the message was already sent through Document::postMessage(),
-     * the displayed icon changes on the fly.
-     * @note Change the icon on the fly with care, since changing the text may
-     *       resize the notification widget, which may result in a distracting
-     *       user experience.
-     *
-     * @param icon new notification icon
+     * This signal is emitted whenever setIcon() was called.
+     * @param icon the new notification icon
      * @see setIcon()
      */
     void iconChanged(const QIcon &icon);
