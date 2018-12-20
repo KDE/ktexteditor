@@ -4245,29 +4245,6 @@ bool KTextEditor::DocumentPrivate::documentReload()
     // does not make sense showing an additional dialog, just hide the message.
     delete m_modOnHdHandler;
 
-    if (m_modOnHd && m_fileChangedDialogsActivated) {
-        QWidget *parentWidget(dialogParent());
-
-        int i = KMessageBox::warningYesNoCancel
-                (parentWidget, reasonedMOHString() + QLatin1String("\n\n") + i18n("What do you want to do?"),
-                    i18n("File Was Changed on Disk"),
-                    KGuiItem(i18n("&Reload File"), QStringLiteral("view-refresh")),
-                    KGuiItem(i18n("&Ignore Changes"), QStringLiteral("dialog-warning")));
-
-        if (i != KMessageBox::Yes) {
-            if (i == KMessageBox::No) {
-                m_modOnHd = false;
-                m_modOnHdReason = OnDiskUnmodified;
-                m_prevModOnHdReason = OnDiskUnmodified;
-                emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
-            }
-
-            // reset some flags only valid for one reload!
-            m_userSetEncodingForNextReload = false;
-            return false;
-        }
-    }
-
     emit aboutToReload(this);
 
     QList<KateDocumentTmpMark> tmp;
