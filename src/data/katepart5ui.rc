@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="79" translationDomain="ktexteditor5">
+<gui name="KatePartView" version="80" translationDomain="ktexteditor5">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
@@ -63,6 +63,7 @@
     <Menu name="view_menu_word_wrap" group="view_operations"><text>Word Wrap</text>
       <Action name="view_dynamic_word_wrap" group="view_operations" />
       <Action name="dynamic_word_wrap_indicators" group="view_operations" />
+      <Action name="view_static_word_wrap" group="view_operations" />
       <Action name="view_word_wrap_marker" group="view_operations" />
     </Menu>
     <Separator group="view_operations" />

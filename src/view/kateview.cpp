@@ -703,11 +703,21 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setDynWrapIndicators = new KSelectAction(i18n("Dynamic Word Wrap Indicators"), this);
     ac->addAction(QStringLiteral("dynamic_word_wrap_indicators"), a);
     a->setWhatsThis(i18n("Choose when the Dynamic Word Wrap Indicators should be displayed"));
-
     connect(m_setDynWrapIndicators, SIGNAL(triggered(int)), this, SLOT(setDynWrapIndicators(int)));
     const QStringList list2{ i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On") };
     m_setDynWrapIndicators->setItems(list2);
     m_setDynWrapIndicators->setEnabled(m_toggleDynWrap->isChecked()); // only synced on real change, later
+
+    a = toggleAction = new KToggleAction(i18n("Static Word Wrap"), this);
+    ac->addAction(QStringLiteral("view_static_word_wrap"), a);
+    a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the column defined in the editing properties."));
+    connect(a, &KToggleAction::triggered, [=] { if (m_doc) { m_doc->setWordWrap(!m_doc->wordWrap()); }});
+
+    a = toggleAction = m_toggleWWMarker = new KToggleAction(i18n("Show Static &Word Wrap Marker"), this);
+    ac->addAction(QStringLiteral("view_word_wrap_marker"), a);
+    a->setWhatsThis(i18n("Show/hide the Word Wrap Marker, a vertical line drawn at the word "
+                         "wrap column as defined in the editing properties"));
+    connect(a, SIGNAL(triggered(bool)), SLOT(toggleWWMarker()));
 
     a = toggleAction = m_toggleFoldingMarkers = new KToggleAction(i18n("Show Folding &Markers"), this);
     ac->addAction(QStringLiteral("view_folding_markers"), a);
@@ -742,13 +752,6 @@ void KTextEditor::ViewPrivate::setupActions()
 //   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the mini-map."));
 //   connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll()));
 //   connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)), m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
-
-    a = toggleAction = m_toggleWWMarker = new KToggleAction(i18n("Show Static &Word Wrap Marker"), this);
-    ac->addAction(QStringLiteral("view_word_wrap_marker"), a);
-    a->setWhatsThis(i18n(
-                        "Show/hide the Word Wrap Marker, a vertical line drawn at the word "
-                        "wrap column as defined in the editing properties"));
-    connect(a, SIGNAL(triggered(bool)), SLOT(toggleWWMarker()));
 
     a = m_toggleNPSpaces = new KToggleAction(i18n("Show Non-Printable Spaces"), this);
     ac->addAction(QStringLiteral("view_non_printable_spaces"), a);
