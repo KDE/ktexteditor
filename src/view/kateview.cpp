@@ -840,10 +840,10 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = ac->addAction(QStringLiteral("tools_clear_dictionary_ranges"));
     a->setText(i18n("Clear Dictionary Ranges"));
-    a->setVisible(false);
+    a->setEnabled(false);
     a->setWhatsThis(i18n("Remove all the separate dictionary ranges that were set for spell checking."));
     connect(a, SIGNAL(triggered()), m_doc, SLOT(clearDictionaryRanges()));
-    connect(m_doc, SIGNAL(dictionaryRangesPresent(bool)), a, SLOT(setVisible(bool)));
+    connect(m_doc, SIGNAL(dictionaryRangesPresent(bool)), a, SLOT(setEnabled(bool)));
 
     m_copyHtmlAction = ac->addAction(QStringLiteral("edit_copy_html"), this, SLOT(exportHtmlToClipboard()));
     m_copyHtmlAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
