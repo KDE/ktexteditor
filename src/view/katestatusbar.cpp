@@ -37,14 +37,15 @@
 
 //BEGIN menu
 KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent) : QMenu(parent) {}
-KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu(){}
+KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu() {}
 
-void KateStatusBarOpenUpMenu::setVisible(bool visibility) {
+void KateStatusBarOpenUpMenu::setVisible(bool visibility)
+{
     if (visibility) {
-        QRect geo=geometry();
-        QPoint pos=((QPushButton*)parent())->mapToGlobal(QPoint(0,0));
-        geo.moveTopLeft(QPoint(pos.x(),pos.y()-geo.height()));
-        if (geo.top()<0) geo.moveTop(0);
+        QRect geo = geometry();
+        QPoint pos = ((QPushButton *)parent())->mapToGlobal(QPoint(0, 0));
+        geo.moveTopLeft(QPoint(pos.x(), pos.y() - geo.height()));
+        if (geo.top() < 0) geo.moveTop(0);
         setGeometry(geo);
     }
 
@@ -56,8 +57,8 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
     , m_view(view)
     , m_insertModeLabel(nullptr)
-    , m_modifiedStatus (-1)
-    , m_selectionMode (-1)
+    , m_modifiedStatus(-1)
+    , m_selectionMode(-1)
     , m_wordCounter(nullptr)
 {
     KAcceleratorManager::setNoAccel(this);
@@ -73,15 +74,15 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     /**
      * add a bit space
      */
-    topLayout->addSpacing (4);
+    topLayout->addSpacing(4);
 
     /**
      * show Line XXX, Column XXX
      */
-    m_lineColLabel = new QLabel( this );
+    m_lineColLabel = new QLabel(this);
     m_lineColLabel->installEventFilter(this); // register for doubleclick
-    topLayout->addWidget( m_lineColLabel, 0 );
-    m_lineColLabel->setAlignment( Qt::AlignVCenter | Qt::AlignLeft );
+    topLayout->addWidget(m_lineColLabel, 0);
+    m_lineColLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
     m_lineColLabel->setFocusProxy(m_view);
     m_lineColLabel->setWhatsThis(i18n("Current cursor position. Doubleclick to go to specific line."));
 
@@ -98,10 +99,10 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     /**
      * show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
      */
-    m_insertModeLabel = new QLabel( this );
+    m_insertModeLabel = new QLabel(this);
     m_insertModeLabel->installEventFilter(this); // register for doubleclick
-    topLayout->addWidget( m_insertModeLabel, 1000 /* this one should stretch */ );
-    m_insertModeLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
+    topLayout->addWidget(m_insertModeLabel, 1000 /* this one should stretch */);
+    m_insertModeLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
     m_insertModeLabel->setFocusProxy(m_view);
     m_insertModeLabel->setWhatsThis(i18n("Insert mode and VI input mode indicator"));
 
@@ -155,9 +156,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add encoding button which allows user to switch encoding of document
      * this will reuse the encoding action menu of the view
      */
-    m_encoding = new QPushButton( QString(), this );
+    m_encoding = new QPushButton(QString(), this);
     m_encoding->setFlat(true);
-    topLayout->addWidget( m_encoding, 0 );
+    topLayout->addWidget(m_encoding, 0);
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setFocusProxy(m_view);
     m_encoding->setWhatsThis(i18n("Encoding"));
@@ -166,9 +167,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * add mode button which allows user to switch mode of document
      * this will reuse the mode action menu of the view
      */
-    m_mode = new QPushButton( QString(), this );
+    m_mode = new QPushButton(QString(), this);
     m_mode->setFlat(true);
-    topLayout->addWidget( m_mode, 0 );
+    topLayout->addWidget(m_mode, 0);
     m_mode->setMenu(m_view->modeAction()->menu());
     m_mode->setFocusProxy(m_view);
     m_mode->setWhatsThis(i18n("Syntax highlighting"));
@@ -176,31 +177,31 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     /**
      * show modification state of the document
      */
-    m_modifiedLabel = new QToolButton( this );
+    m_modifiedLabel = new QToolButton(this);
     m_modifiedLabel->setAutoRaise(true);
     m_modifiedLabel->setEnabled(false);
-    topLayout->addWidget( m_modifiedLabel, 0 );
+    topLayout->addWidget(m_modifiedLabel, 0);
     m_modifiedLabel->setFocusProxy(m_view);
 
     /**
      * add a bit space
      */
-    topLayout->addSpacing (4);
+    topLayout->addSpacing(4);
 
     // signals for the statusbar
-    connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
-    connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*,KTextEditor::View::ViewMode)), this, SLOT(viewModeChanged()));
+    connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*, KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
+    connect(m_view, SIGNAL(viewModeChanged(KTextEditor::View*, KTextEditor::View::ViewMode)), this, SLOT(viewModeChanged()));
     connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(selectionChanged()));
     connect(m_view->document(), SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
-    connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*,bool,KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()) );
+    connect(m_view->document(), SIGNAL(modifiedOnDisk(KTextEditor::Document*, bool, KTextEditor::ModificationInterface::ModifiedOnDiskReason)), this, SLOT(modifiedChanged()));
     connect(m_view->document(), SIGNAL(configChanged()), this, SLOT(documentConfigChanged()));
     connect(m_view->document(), SIGNAL(modeChanged(KTextEditor::Document*)), this, SLOT(modeChanged()));
     connect(m_view, &KTextEditor::ViewPrivate::configChanged, this, &KateStatusBar::configChanged);
 
-    connect(m_tabGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotTabGroup(QAction*)));
-    connect(m_indentGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentGroup(QAction*)));
-    connect(radioGroup,SIGNAL(triggered(QAction*)),this,SLOT(slotIndentTabMode(QAction*)));
-    updateStatus ();
+    connect(m_tabGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotTabGroup(QAction*)));
+    connect(m_indentGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotIndentGroup(QAction*)));
+    connect(radioGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotIndentTabMode(QAction*)));
+    updateStatus();
     wordCountChanged(0, 0, 0, 0);
 }
 
@@ -243,17 +244,17 @@ void KateStatusBar::toggleShowWords(bool checked)
     KateViewConfig::global()->setShowWordCount(checked);
 }
 
-void KateStatusBar::updateStatus ()
+void KateStatusBar::updateStatus()
 {
-    selectionChanged ();
-    viewModeChanged ();
-    cursorPositionChanged ();
-    modifiedChanged ();
+    selectionChanged();
+    viewModeChanged();
+    cursorPositionChanged();
+    modifiedChanged();
     documentConfigChanged();
     modeChanged();
 }
 
-void KateStatusBar::selectionChanged ()
+void KateStatusBar::selectionChanged()
 {
     const unsigned int newSelectionMode = m_view->blockSelection();
     if (newSelectionMode == m_selectionMode) {
@@ -265,35 +266,35 @@ void KateStatusBar::selectionChanged ()
     viewModeChanged();
 }
 
-void KateStatusBar::viewModeChanged ()
+void KateStatusBar::viewModeChanged()
 {
     // prepend BLOCK for block selection mode
     QString text = m_view->viewModeHuman();
     if (m_view->blockSelection())
-        text = i18n ("<em>[BLOCK]</em> %1", text);
+        text = i18n("<em>[BLOCK]</em> %1", text);
 
     m_insertModeLabel->setText(text);
 }
 
-void KateStatusBar::cursorPositionChanged ()
+void KateStatusBar::cursorPositionChanged()
 {
-    KTextEditor::Cursor position (m_view->cursorPositionVirtual());
+    KTextEditor::Cursor position(m_view->cursorPositionVirtual());
 
-    if( KateViewConfig::global()->showLineCount() )
-    m_lineColLabel->setText(
-        i18n("Line %1 of %2, Column %3"
-            , QLocale().toString(position.line() + 1)
-            , QLocale().toString(m_view->doc()->lines())
-            , QLocale().toString(position.column() + 1)
-            )
+    if (KateViewConfig::global()->showLineCount())
+        m_lineColLabel->setText(
+            i18n("Line %1 of %2, Column %3"
+                 , QLocale().toString(position.line() + 1)
+                 , QLocale().toString(m_view->doc()->lines())
+                 , QLocale().toString(position.column() + 1)
+                )
         );
 
     else
         m_lineColLabel->setText(
-        i18n("Line %1, Column %2"
-            , QLocale().toString(position.line() + 1)
-            , QLocale().toString(position.column() + 1)
-            )
+            i18n("Line %1, Column %2"
+                 , QLocale().toString(position.line() + 1)
+                 , QLocale().toString(position.column() + 1)
+                )
         );
 }
 
@@ -311,39 +312,39 @@ void KateStatusBar::modifiedChanged()
 
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
-        case 0x1:
-            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("document-save")));
-            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
-            break;
+    case 0x1:
+        m_modifiedLabel->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
+        m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
+        break;
 
-        case 0x2:
-            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("dialog-warning")));
-            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
-            break;
+    case 0x2:
+        m_modifiedLabel->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
+        m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
+        break;
 
-        case 0x3:
-            m_modifiedLabel->setIcon (QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
-                QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
-            m_modifiedLabel->setWhatsThis(QString());
-            break;
+    case 0x3:
+        m_modifiedLabel->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
+                                       QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
+        m_modifiedLabel->setWhatsThis(QString());
+        break;
 
-        default:
-            m_modifiedLabel->setIcon (QIcon::fromTheme(QStringLiteral("text-plain")));
-            m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
-            break;
+    default:
+        m_modifiedLabel->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
+        m_modifiedLabel->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
+        break;
     }
 }
 
-void KateStatusBar::documentConfigChanged ()
+void KateStatusBar::documentConfigChanged()
 {
-    m_encoding->setText( m_view->document()->encoding() );
-    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
-    int tabWidth=config->tabWidth();
-    int indentationWidth=config->indentationWidth();
-    bool replaceTabsDyn=config->replaceTabsDyn();
+    m_encoding->setText(m_view->document()->encoding());
+    KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
+    int tabWidth = config->tabWidth();
+    int indentationWidth = config->indentationWidth();
+    bool replaceTabsDyn = config->replaceTabsDyn();
 
     if (!replaceTabsDyn) {
-        if (tabWidth==indentationWidth) {
+        if (tabWidth == indentationWidth) {
             m_tabsIndent->setText(m_tabsOnly.subs(tabWidth).toString());
             m_tabGroup->setEnabled(false);
             m_hardAction->setChecked(true);
@@ -353,24 +354,24 @@ void KateStatusBar::documentConfigChanged ()
             m_mixedAction->setChecked(true);
         }
     } else {
-         if (tabWidth==indentationWidth) {
-             m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth).toString());
-             m_tabGroup->setEnabled(true);
-             m_softAction->setChecked(true);
-         } else {
-              m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth).subs(tabWidth).toString());
-              m_tabGroup->setEnabled(true);
-              m_softAction->setChecked(true);
+        if (tabWidth == indentationWidth) {
+            m_tabsIndent->setText(m_spacesOnly.subs(indentationWidth).toString());
+            m_tabGroup->setEnabled(true);
+            m_softAction->setChecked(true);
+        } else {
+            m_tabsIndent->setText(m_spacesOnlyShowTabs.subs(indentationWidth).subs(tabWidth).toString());
+            m_tabGroup->setEnabled(true);
+            m_softAction->setChecked(true);
         }
     }
 
-    updateGroup(m_tabGroup,tabWidth);
-    updateGroup(m_indentGroup,indentationWidth);
+    updateGroup(m_tabGroup, tabWidth);
+    updateGroup(m_indentGroup, indentationWidth);
 }
 
-void KateStatusBar::modeChanged ()
+void KateStatusBar::modeChanged()
 {
-    m_mode->setText( KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_view->document()->mode()).nameTranslated() );
+    m_mode->setText(KTextEditor::EditorPrivate::self()->modeManager()->fileType(m_view->document()->mode()).nameTranslated());
 }
 
 void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu, int data)
@@ -386,15 +387,16 @@ void KateStatusBar::addNumberAction(QActionGroup *group, QMenu *menu, int data)
     a->setActionGroup(group);
 }
 
-void KateStatusBar::updateGroup(QActionGroup *group, int w) {
-    QAction *m1=nullptr;
-    bool found=false;
+void KateStatusBar::updateGroup(QActionGroup *group, int w)
+{
+    QAction *m1 = nullptr;
+    bool found = false;
     //linear search should be fast enough here, no additional hash
-    Q_FOREACH(QAction *action, group->actions()) {
-        int val=action->data().toInt();
-        if (val==-1) m1=action;
-        if (val==w) {
-            found=true;
+    Q_FOREACH (QAction *action, group->actions()) {
+        int val = action->data().toInt();
+        if (val == -1) m1 = action;
+        if (val == w) {
+            found = true;
             action->setChecked(true);
         }
     }
@@ -406,24 +408,26 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w) {
     }
 }
 
-void KateStatusBar::slotTabGroup(QAction* a) {
-    int val=a->data().toInt();
+void KateStatusBar::slotTabGroup(QAction *a)
+{
+    int val = a->data().toInt();
     bool ok;
-    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
-    if (val==-1) {
-        val=QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 16, 1, &ok);
-        if (!ok) val=config->tabWidth();
+    KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
+    if (val == -1) {
+        val = QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 16, 1, &ok);
+        if (!ok) val = config->tabWidth();
     }
     config->setTabWidth(val);
 }
 
-void KateStatusBar::slotIndentGroup(QAction* a) {
-    int val=a->data().toInt();
+void KateStatusBar::slotIndentGroup(QAction *a)
+{
+    int val = a->data().toInt();
     bool ok;
-    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
-    if (val==-1) {
-        val=QInputDialog::getInt(this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
-        if (!ok) val=config->indentationWidth();
+    KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
+    if (val == -1) {
+        val = QInputDialog::getInt(this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
+        if (!ok) val = config->indentationWidth();
     }
     config->configStart();
     config->setIndentationWidth(val);
@@ -431,15 +435,16 @@ void KateStatusBar::slotIndentGroup(QAction* a) {
     config->configEnd();
 }
 
-void KateStatusBar::slotIndentTabMode(QAction* a) {
-    KateDocumentConfig *config=((KTextEditor::DocumentPrivate*)m_view->document())->config();
-    if (a==m_softAction) {
+void KateStatusBar::slotIndentTabMode(QAction *a)
+{
+    KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
+    if (a == m_softAction) {
         config->setReplaceTabsDyn(true);
-    } else if (a==m_mixedAction) {
+    } else if (a == m_mixedAction) {
         if (config->replaceTabsDyn())
             config->setReplaceTabsDyn(false);
         m_tabGroup->setEnabled(true);
-    } else if (a==m_hardAction) {
+    } else if (a == m_hardAction) {
         if (config->replaceTabsDyn()) {
             config->configStart();
             config->setReplaceTabsDyn(false);

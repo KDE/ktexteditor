@@ -35,11 +35,11 @@ class WordCounter;
 
 class KateStatusBarOpenUpMenu: public QMenu
 {
-        Q_OBJECT
+    Q_OBJECT
 public:
-        explicit KateStatusBarOpenUpMenu(QWidget *parent);
-        ~KateStatusBarOpenUpMenu() override;
-        void setVisible(bool) override;
+    explicit KateStatusBarOpenUpMenu(QWidget *parent);
+    ~KateStatusBarOpenUpMenu() override;
+    void setVisible(bool) override;
 };
 
 class KateStatusBar : public KateViewBarWidget
@@ -50,19 +50,19 @@ public:
     explicit KateStatusBar(KTextEditor::ViewPrivate *view);
 
 public Q_SLOTS:
-    void updateStatus ();
+    void updateStatus();
 
-    void viewModeChanged ();
+    void viewModeChanged();
 
-    void cursorPositionChanged ();
+    void cursorPositionChanged();
 
-    void selectionChanged ();
+    void selectionChanged();
 
     void modifiedChanged();
 
-    void documentConfigChanged ();
+    void documentConfigChanged();
 
-    void modeChanged ();
+    void modeChanged();
 
     void wordCountChanged(int, int, int, int);
 
@@ -76,13 +76,13 @@ protected:
 
 private:
     KTextEditor::ViewPrivate *const m_view;
-    QLabel* m_lineColLabel;
-    QLabel* m_wordCountLabel;
-    QToolButton* m_modifiedLabel;
-    QLabel* m_insertModeLabel;
-    QPushButton* m_mode;
-    QPushButton* m_encoding;
-    QPushButton* m_tabsIndent;
+    QLabel *m_lineColLabel;
+    QLabel *m_wordCountLabel;
+    QToolButton *m_modifiedLabel;
+    QLabel *m_insertModeLabel;
+    QPushButton *m_mode;
+    QPushButton *m_encoding;
+    QPushButton *m_tabsIndent;
     KLocalizedString m_spacesOnly;
     KLocalizedString m_tabsOnly;
     KLocalizedString m_tabSpacesMixed;
@@ -102,9 +102,9 @@ private:
     void updateGroup(QActionGroup *group, int w);
 
 public Q_SLOTS:
-    void slotTabGroup(QAction*);
-    void slotIndentGroup(QAction*);
-    void slotIndentTabMode(QAction*);
+    void slotTabGroup(QAction *);
+    void slotIndentGroup(QAction *);
+    void slotIndentTabMode(QAction *);
     void toggleShowLines(bool checked);
     void toggleShowWords(bool checked);
 };
