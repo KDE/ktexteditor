@@ -56,6 +56,7 @@ void KateSpellCheckManager::ignoreWord(const QString &word, const QString &dicti
     Sonnet::Speller speller;
     speller.setLanguage(dictionary);
     speller.addToSession(word);
+    emit wordIgnored(word);
 }
 
 void KateSpellCheckManager::addToDictionary(const QString &word, const QString &dictionary)
@@ -63,6 +64,7 @@ void KateSpellCheckManager::addToDictionary(const QString &word, const QString &
     Sonnet::Speller speller;
     speller.setLanguage(dictionary);
     speller.addToPersonal(word);
+    emit wordAddedToDictionary(word);
 }
 
 QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(const KTextEditor::Range &r1,

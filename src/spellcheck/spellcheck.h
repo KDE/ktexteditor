@@ -52,6 +52,14 @@ public:
      **/
     static QList<KTextEditor::Range> rangeDifference(const KTextEditor::Range &r1, const KTextEditor::Range &r2);
 
+Q_SIGNALS:
+    /**
+     * These signals are used to propagate the dictionary changes to the
+     * BackgroundChecker instance in other components (e.g. onTheFlyChecker).
+     */
+    void wordAddedToDictionary(const QString &word);
+    void wordIgnored(const QString &word);
+
 public:
     QList<QPair<KTextEditor::Range, QString> > spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range);
 

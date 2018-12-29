@@ -119,6 +119,8 @@ protected:
 
 protected Q_SLOTS:
     void performSpellCheck();
+    void addToDictionary(const QString &word);
+    void addToSession(const QString &word);
     void misspelling(const QString &word, int start);
     void spellCheckDone();
 

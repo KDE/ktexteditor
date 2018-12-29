@@ -401,10 +401,31 @@ void KateOnTheFlyChecker::performSpellCheck()
                 this,
                 SLOT(misspelling(QString,int)));
         connect(m_backgroundChecker, SIGNAL(done()), this, SLOT(spellCheckDone()));
+
+        KateSpellCheckManager *m_spellCheckManager = KTextEditor::EditorPrivate::self()->spellCheckManager();
+        connect(m_spellCheckManager, &KateSpellCheckManager::wordAddedToDictionary,
+                this, &KateOnTheFlyChecker::addToDictionary);
+        connect(m_spellCheckManager, &KateSpellCheckManager::wordIgnored,
+                this, &KateOnTheFlyChecker::addToSession);
     }
     m_backgroundChecker->setSpeller(m_speller);
     m_backgroundChecker->setText(text); // don't call 'start()' after this!
 }
+
+void KateOnTheFlyChecker::addToDictionary(const QString &word)
+{
+    if (m_backgroundChecker) {
+        m_backgroundChecker->addWordToPersonal(word);
+    }
+}
+
+void KateOnTheFlyChecker::addToSession(const QString &word)
+{
+    if (m_backgroundChecker) {
+        m_backgroundChecker->addWordToSession(word);
+    }
+}
+
 
 void KateOnTheFlyChecker::removeRangeFromEverything(KTextEditor::MovingRange *movingRange)
 {
