@@ -665,6 +665,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     //
 
     connect(textareaUi->gbWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkDynWrapAtStaticMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->cmbDynamicWordWrapIndicator, SIGNAL(activated(int)), this, SLOT(slotChanged()));
     connect(textareaUi->sbDynamicWordWrapDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
@@ -711,6 +712,7 @@ void KateViewDefaultsConfig::apply()
     KateRendererConfig::global()->configStart();
 
     KateViewConfig::global()->setDynWordWrap(textareaUi->gbWordWrap->isChecked());
+    KateViewConfig::global()->setDynWrapAtStaticMarker(textareaUi->chkDynWrapAtStaticMarker->isChecked());
     KateViewConfig::global()->setDynWordWrapIndicators(textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
     KateViewConfig::global()->setDynWordWrapAlignIndent(textareaUi->sbDynamicWordWrapDepth->value());
     KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
@@ -743,6 +745,7 @@ void KateViewDefaultsConfig::apply()
 void KateViewDefaultsConfig::reload()
 {
     textareaUi->gbWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
+    textareaUi->chkDynWrapAtStaticMarker->setChecked(KateViewConfig::global()->dynWrapAtStaticMarker());
     textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
     textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
     textareaUi->chkShowTabs->setChecked(KateDocumentConfig::global()->showTabs());

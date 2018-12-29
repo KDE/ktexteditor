@@ -445,6 +445,9 @@ public:
     bool dynWordWrap() const;
     void setDynWordWrap(bool wrap);
 
+    bool dynWrapAtStaticMarker() const;
+    void setDynWrapAtStaticMarker(bool on);
+
     int dynWordWrapIndicators() const;
     void setDynWordWrapIndicators(int mode);
 
@@ -583,6 +586,7 @@ public:
 
 private:
     bool m_dynWordWrap;
+    bool m_dynWrapAtStaticMarker;
     int m_dynWordWrapIndicators;
     int m_dynWordWrapAlignIndent;
     bool m_lineNumbers;
@@ -619,6 +623,7 @@ private:
     bool m_backspaceRemoveComposed;
 
     bool m_dynWordWrapSet : 1;
+    bool m_dynWrapAtStaticMarkerSet : 1;
     bool m_dynWordWrapIndicatorsSet : 1;
     bool m_dynWordWrapAlignIndentSet : 1;
     bool m_lineNumbersSet : 1;

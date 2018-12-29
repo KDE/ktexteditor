@@ -614,8 +614,15 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
 
     bool blocked = m_lineScroll->blockSignals(true);
 
-    if (width() != cache()->viewWidth()) {
-        cache()->setViewWidth(width());
+    int wrapWidth = width();
+    if (view()->config()->dynWrapAtStaticMarker() && view()->config()->dynWordWrap()) {
+        // We need to transform char count to a pixel width, stolen from PrintPainter::updateCache()
+        QString s; s.fill(QLatin1Char('5'), view()->doc()->config()->wordWrapAt());
+        wrapWidth = qMin(width(), static_cast<int>(renderer()->currentFontMetrics().width(s)));
+    }
+
+    if (wrapWidth != cache()->viewWidth()) {
+        cache()->setViewWidth(wrapWidth);
         changed = true;
     }
 

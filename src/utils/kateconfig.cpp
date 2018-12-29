@@ -1229,6 +1229,7 @@ KateViewConfig::KateViewConfig()
     :
 
     m_dynWordWrapSet(false),
+    m_dynWrapAtStaticMarkerSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
     m_lineNumbersSet(false),
@@ -1278,6 +1279,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_maxHistorySize(100),
     m_showWordCount(false),
     m_dynWordWrapSet(false),
+    m_dynWrapAtStaticMarkerSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
     m_lineNumbersSet(false),
@@ -1324,6 +1326,7 @@ namespace
 {
 const char KEY_SEARCH_REPLACE_FLAGS[] = "Search/Replace Flags";
 const char KEY_DYN_WORD_WRAP[] = "Dynamic Word Wrap";
+const char KEY_DYN_WORD_WRAP_AT_STATIC_MARKER[] = "Dynamic Word Wrap At Static Marker";
 const char KEY_DYN_WORD_WRAP_INDICATORS[] = "Dynamic Word Wrap Indicators";
 const char KEY_DYN_WORD_WRAP_ALIGN_INDENT[] = "Dynamic Word Wrap Align Indent";
 const char KEY_LINE_NUMBERS[] = "Line Numbers";
@@ -1366,6 +1369,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 
     // default on
     setDynWordWrap(config.readEntry(KEY_DYN_WORD_WRAP, true));
+    setDynWrapAtStaticMarker(config.readEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, false));
     setDynWordWrapIndicators(config.readEntry(KEY_DYN_WORD_WRAP_INDICATORS, 1));
     setDynWordWrapAlignIndent(config.readEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, 80));
 
@@ -1429,6 +1433,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 void KateViewConfig::writeConfig(KConfigGroup &config)
 {
     config.writeEntry(KEY_DYN_WORD_WRAP, dynWordWrap());
+    config.writeEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, dynWrapAtStaticMarker());
     config.writeEntry(KEY_DYN_WORD_WRAP_INDICATORS, dynWordWrapIndicators());
     config.writeEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, dynWordWrapAlignIndent());
 
@@ -1527,6 +1532,29 @@ void KateViewConfig::setDynWordWrap(bool wrap)
 
     m_dynWordWrapSet = true;
     m_dynWordWrap = wrap;
+
+    configEnd();
+}
+
+bool KateViewConfig::dynWrapAtStaticMarker() const
+{
+    if (m_dynWrapAtStaticMarkerSet || isGlobal()) {
+        return m_dynWrapAtStaticMarker;
+    }
+
+    return s_global->dynWrapAtStaticMarker();
+}
+
+void KateViewConfig::setDynWrapAtStaticMarker(bool on)
+{
+    if (m_dynWrapAtStaticMarkerSet && m_dynWrapAtStaticMarker == on) {
+        return;
+    }
+
+    configStart();
+
+    m_dynWrapAtStaticMarkerSet = true;
+    m_dynWrapAtStaticMarker = on;
 
     configEnd();
 }
