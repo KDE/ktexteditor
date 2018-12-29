@@ -261,13 +261,13 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
     m_textLineToHighlight->addAttribute(Kate::TextLineData::Attribute(offset, length, it->second));
 }
 
-void KateHighlighting::applyFolding(int offset, int, KSyntaxHighlighting::FoldingRegion region)
+void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region)
 {
-    // WE ATM assume ascending offset order and don't care for length
+    // WE ATM assume ascending offset order, we add the length to the offset for the folding ends to have ranges spanning the full folding region
     Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
     const int foldingValue = (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id());
-    m_textLineToHighlight->addFolding(offset, foldingValue);
+    m_textLineToHighlight->addFolding(offset + (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length, foldingValue);
 
     /**
      * for each end region, decrement counter for that type, erase if count reaches 0!
