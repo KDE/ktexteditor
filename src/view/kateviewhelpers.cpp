@@ -2285,11 +2285,10 @@ void KateIconBorder::showBlock()
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
 
         /**
-         * create highlighting color with alpha for the range!
+         * create highlighting color
+         * we avoid alpha as overpainting leads to ugly lines (https://bugreports.qt.io/browse/QTBUG-66036)
          */
-        QColor result = m_view->renderer()->config()->foldingColor();
-        result.setAlphaF(0.5);
-        attr->setBackground(QBrush(result));
+        attr->setBackground(QBrush(m_view->renderer()->config()->foldingColor()));
 
         m_foldingRange->setView(m_view);
         // use z depth defined in moving ranges interface
