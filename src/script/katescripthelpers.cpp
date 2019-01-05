@@ -157,8 +157,10 @@ void ScriptHelper::require(const QString &file)
          * eval in current script engine
          */
         QJSValue val = m_engine->evaluate(code, fullName);
-        if (val.isError())
-            qWarning() << "error evaluating" << fullName << val.toString();
+        if (val.isError()) {
+            qWarning() << "error evaluating" << fullName << val.toString() << ", at line" << val.property(QStringLiteral("lineNumber")).toInt();
+        }
+
 
         /**
          * set include guard
