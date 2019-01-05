@@ -198,11 +198,11 @@ QJSValue KateScript::evaluate(const QString& program, const FieldMap& env)
     }
 
     // Wrap the arguments in a function to avoid polluting the global object
-    QString programWithContext = QStringLiteral("function(") +
+    QString programWithContext = QStringLiteral("(function(") +
                                      QStringList(env.keys()).join(QLatin1Char(',')) +
                                  QStringLiteral(") { return ") +
                                      program +
-                                 QStringLiteral("}");
+                                 QStringLiteral("})");
     QJSValue programFunction = m_engine->evaluate(programWithContext);
     Q_ASSERT(programFunction.isCallable());
 
