@@ -27,7 +27,7 @@
 #include <KPluginFactory>
 #include <KLocalizedString>
 
-K_PLUGIN_FACTORY_WITH_JSON(%{APPNAME}PluginFactory, "%{APPNAMELC}.json", registerPlugin<%{APPNAME}Plugin>();)
+K_PLUGIN_CLASS_WITH_JSON(%{APPNAME}Plugin, "%{APPNAMELC}.json")
 
 
 %{APPNAME}Plugin::%{APPNAME}Plugin(QObject* parent, const QVariantList& /*args*/)
@@ -45,5 +45,5 @@ QObject* %{APPNAME}Plugin::createView(KTextEditor::MainWindow* mainwindow)
 }
 
 
-// needed for K_PLUGIN_FACTORY_WITH_JSON
+// needed for K_PLUGIN_CLASS_WITH_JSON
 #include <%{APPNAMELC}plugin.moc>
