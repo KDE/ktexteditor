@@ -566,6 +566,9 @@ public:
     bool smartCopyCut() const;
     void setSmartCopyCut(bool on);
 
+    bool mousePasteAtCursorPosition() const;
+    void setMousePasteAtCursorPosition(bool on);
+
     bool scrollPastEnd() const;
     void setScrollPastEnd(bool on);
 
@@ -615,6 +618,7 @@ private:
     int m_wordCompletionMinimalWordLength;
     bool m_wordCompletionRemoveTail;
     bool m_smartCopyCut;
+    bool m_mousePasteAtCursorPosition = false;
     bool m_scrollPastEnd;
     bool m_foldFirstLine;
     bool m_showWordCount = false;
@@ -650,6 +654,7 @@ private:
     bool m_keywordCompletionSet : 1;
     bool m_wordCompletionMinimalWordLengthSet : 1;
     bool m_smartCopyCutSet : 1;
+    bool m_mousePasteAtCursorPositionSet : 1;
     bool m_scrollPastEndSet : 1;
     bool m_allowMarkMenu : 1;
     bool m_wordCompletionRemoveTailSet : 1;

@@ -1256,6 +1256,7 @@ KateViewConfig::KateViewConfig()
     m_keywordCompletionSet(false),
     m_wordCompletionMinimalWordLengthSet(false),
     m_smartCopyCutSet(false),
+    m_mousePasteAtCursorPositionSet(false),
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
@@ -1306,6 +1307,7 @@ KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
     m_keywordCompletionSet(false),
     m_wordCompletionMinimalWordLengthSet(false),
     m_smartCopyCutSet(false),
+    m_mousePasteAtCursorPositionSet(false),
     m_scrollPastEndSet(false),
     m_allowMarkMenu(true),
     m_wordCompletionRemoveTailSet(false),
@@ -1355,6 +1357,7 @@ const char KEY_KEYWORD_COMPLETION[] = "Keyword Completion";
 const char KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH[] = "Word Completion Minimal Word Length";
 const char KEY_WORD_COMPLETION_REMOVE_TAIL[] = "Word Completion Remove Tail";
 const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
+const char KEY_MOUSE_PASTE_AT_CURSOR_POSITION[] = "Mouse Paste At Cursor Position";
 const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
 const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
 const char KEY_SHOW_LINE_COUNT[] = "Show Line Count";
@@ -1419,6 +1422,7 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     setWordCompletionMinimalWordLength(config.readEntry(KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH, 3));
     setWordCompletionRemoveTail(config.readEntry(KEY_WORD_COMPLETION_REMOVE_TAIL, true));
     setSmartCopyCut(config.readEntry(KEY_SMART_COPY_CUT, false));
+    setMousePasteAtCursorPosition(config.readEntry(KEY_MOUSE_PASTE_AT_CURSOR_POSITION, false));
     setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
     setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
     setShowLineCount(config.readEntry(KEY_SHOW_LINE_COUNT, false));
@@ -1480,6 +1484,7 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_WORD_COMPLETION_REMOVE_TAIL, wordCompletionRemoveTail());
 
     config.writeEntry(KEY_SMART_COPY_CUT, smartCopyCut());
+    config.writeEntry(KEY_MOUSE_PASTE_AT_CURSOR_POSITION, mousePasteAtCursorPosition());
     config.writeEntry(KEY_SCROLL_PAST_END, scrollPastEnd());
     config.writeEntry(KEY_FOLD_FIRST_LINE, foldFirstLine());
 
@@ -2207,6 +2212,29 @@ void KateViewConfig::setSmartCopyCut(bool on)
 
     m_smartCopyCutSet = true;
     m_smartCopyCut = on;
+
+    configEnd();
+}
+
+bool KateViewConfig::mousePasteAtCursorPosition() const
+{
+    if (m_mousePasteAtCursorPositionSet|| isGlobal()) {
+        return m_mousePasteAtCursorPosition;
+    }
+
+    return s_global->mousePasteAtCursorPosition();
+}
+
+void KateViewConfig::setMousePasteAtCursorPosition(bool on)
+{
+    if (m_mousePasteAtCursorPositionSet && m_mousePasteAtCursorPosition == on) {
+        return;
+    }
+
+    configStart();
+
+    m_mousePasteAtCursorPositionSet = true;
+    m_mousePasteAtCursorPosition = on;
 
     configEnd();
 }

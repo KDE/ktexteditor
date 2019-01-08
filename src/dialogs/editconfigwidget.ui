@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>275</width>
-    <height>344</height>
+    <width>459</width>
+    <height>458</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -156,6 +165,13 @@
        <widget class="QCheckBox" name="chkSmartCopyCut">
         <property name="text">
          <string>Copy/Cut the current line if no selection</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="chkMousePasteAtCursorPosition">
+        <property name="text">
+         <string>Paste by mouse at cursor position</string>
         </property>
        </widget>
       </item>

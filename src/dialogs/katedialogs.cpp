@@ -463,6 +463,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     connect(ui->sbWordWrap, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(ui->chkAutoBrackets, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkSmartCopyCut, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(ui->chkMousePasteAtCursorPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->cmbInputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 
     // "What's this?" help is in the ui-file
@@ -494,6 +495,7 @@ void KateEditGeneralConfigTab::apply()
 
     KateViewConfig::global()->setAutoBrackets(ui->chkAutoBrackets->isChecked());
     KateViewConfig::global()->setSmartCopyCut(ui->chkSmartCopyCut->isChecked());
+    KateViewConfig::global()->setMousePasteAtCursorPosition(ui->chkMousePasteAtCursorPosition->isChecked());
 
     KateViewConfig::global()->setInputModeRaw(ui->cmbInputMode->currentData().toInt());
 
@@ -509,6 +511,7 @@ void KateEditGeneralConfigTab::reload()
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
     ui->chkAutoBrackets->setChecked(KateViewConfig::global()->autoBrackets());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
+    ui->chkMousePasteAtCursorPosition->setChecked(KateViewConfig::global()->mousePasteAtCursorPosition());
 
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
