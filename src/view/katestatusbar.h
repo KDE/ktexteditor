@@ -42,9 +42,23 @@ public:
     void setVisible(bool) override;
 };
 
+/**
+ * For convenience an own button class to ensure a unified look&feel.
+ * Should someone dislike the QPushButton at all could he change it
+ * to a e.g. QLabel subclass
+ */
+class StatusBarButton: public QPushButton
+{
+    Q_OBJECT
+public:
+    explicit StatusBarButton(KateStatusBar *parent, const QString &text = QString());
+    ~StatusBarButton() override;
+};
+
 class KateStatusBar : public KateViewBarWidget
 {
     Q_OBJECT
+    friend class StatusBarButton;
 
 public:
     explicit KateStatusBar(KTextEditor::ViewPrivate *view);
@@ -76,17 +90,13 @@ protected:
 
 private:
     KTextEditor::ViewPrivate *const m_view;
-    QLabel *m_lineColLabel;
-    QLabel *m_wordCountLabel;
-    QToolButton *m_modifiedLabel;
-    QLabel *m_insertModeLabel;
-    QPushButton *m_mode;
-    QPushButton *m_encoding;
-    QPushButton *m_tabsIndent;
-    KLocalizedString m_spacesOnly;
-    KLocalizedString m_tabsOnly;
-    KLocalizedString m_tabSpacesMixed;
-    KLocalizedString m_spacesOnlyShowTabs;
+    StatusBarButton *m_cursorPosition = nullptr;
+    QString m_wordCount;
+    StatusBarButton *m_modified = nullptr;
+    StatusBarButton *m_inputMode = nullptr;
+    StatusBarButton *m_mode = nullptr;
+    StatusBarButton *m_encoding = nullptr;
+    StatusBarButton *m_tabsIndent = nullptr;
     QMenu *m_indentSettingsMenu;
     unsigned int m_modifiedStatus;
     unsigned int m_selectionMode;
