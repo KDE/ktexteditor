@@ -81,7 +81,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     : KTextEditor::Editor (this)
     , m_aboutData(QStringLiteral("katepart"), i18n("Kate Part"), QStringLiteral(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
-                  i18n("(c) 2000-2017 The Kate Authors"), QString(), QStringLiteral("http://kate-editor.org"))
+                  i18n("(c) 2000-2017 The Kate Authors"), QString(), QStringLiteral("https://kate-editor.org"))
     , m_dummyApplication(nullptr)
     , m_application(&m_dummyApplication)
     , m_dummyMainWindow(nullptr)
@@ -107,13 +107,13 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     // fill about data
     //
-    m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QStringLiteral("cullmann@kde.org"), QStringLiteral("http://www.cullmann.io"));
+    m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QStringLiteral("cullmann@kde.org"), QStringLiteral("https://cullmann.io"));
     m_aboutData.addAuthor(i18n("Dominik Haumann"), i18n("Core Developer"), QStringLiteral("dhaumann@kde.org"));
     m_aboutData.addAuthor(i18n("Milian Wolff"), i18n("Core Developer"), QStringLiteral("mail@milianw.de"), QStringLiteral("http://milianw.de"));
     m_aboutData.addAuthor(i18n("Joseph Wenninger"), i18n("Core Developer"), QStringLiteral("jowenn@kde.org"), QStringLiteral("http://stud3.tuwien.ac.at/~e9925371"));
-    m_aboutData.addAuthor(i18n("Erlend Hamberg"), i18n("Vi Input Mode"), QStringLiteral("ehamberg@gmail.com"), QStringLiteral("http://hamberg.no/erlend"));
+    m_aboutData.addAuthor(i18n("Erlend Hamberg"), i18n("Vi Input Mode"), QStringLiteral("ehamberg@gmail.com"), QStringLiteral("https://hamberg.no/erlend"));
     m_aboutData.addAuthor(i18n("Bernhard Beschow"), i18n("Developer"), QStringLiteral("bbeschow@cs.tu-berlin.de"), QStringLiteral("https://user.cs.tu-berlin.de/~bbeschow"));
-    m_aboutData.addAuthor(i18n("Anders Lund"), i18n("Core Developer"), QStringLiteral("anders@alweb.dk"), QStringLiteral("http://www.alweb.dk"));
+    m_aboutData.addAuthor(i18n("Anders Lund"), i18n("Core Developer"), QStringLiteral("anders@alweb.dk"), QStringLiteral("https://alweb.dk"));
     m_aboutData.addAuthor(i18n("Michel Ludwig"), i18n("On-the-fly spell checking"), QStringLiteral("michel.ludwig@kdemail.net"));
     m_aboutData.addAuthor(i18n("Pascal Létourneau"), i18n("Large scale bug fixing"), QStringLiteral("pascal.letourneau@gmail.com"));
     m_aboutData.addAuthor(i18n("Hamish Rodda"), i18n("Core Developer"), QStringLiteral("rodda@kde.org"));
@@ -129,9 +129,9 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_aboutData.addAuthor(i18n("Scott Manson"), i18n("KWrite XML Syntax highlighting support"), QStringLiteral("sdmanson@alltel.net"));
     m_aboutData.addAuthor(i18n("John Firebaugh"), i18n("Patches and more"), QStringLiteral("jfirebaugh@kde.org"));
     m_aboutData.addAuthor(i18n("Andreas Kling"), i18n("Developer"), QStringLiteral("kling@impul.se"));
-    m_aboutData.addAuthor(i18n("Mirko Stocker"), i18n("Various bugfixes"), QStringLiteral("me@misto.ch"), QStringLiteral("http://misto.ch/"));
+    m_aboutData.addAuthor(i18n("Mirko Stocker"), i18n("Various bugfixes"), QStringLiteral("me@misto.ch"), QStringLiteral("https://misto.ch/"));
     m_aboutData.addAuthor(i18n("Matthew Woehlke"), i18n("Selection, KColorScheme integration"), QStringLiteral("mw_triad@users.sourceforge.net"));
-    m_aboutData.addAuthor(i18n("Sebastian Pipping"), i18n("Search bar back- and front-end"), QStringLiteral("webmaster@hartwork.org"), QStringLiteral("http://www.hartwork.org/"));
+    m_aboutData.addAuthor(i18n("Sebastian Pipping"), i18n("Search bar back- and front-end"), QStringLiteral("webmaster@hartwork.org"), QStringLiteral("https://hartwork.org/"));
     m_aboutData.addAuthor(i18n("Jochen Wilhelmy"), i18n("Original KWrite Author"), QStringLiteral("digisnap@cs.tu-berlin.de"));
     m_aboutData.addAuthor(i18n("Gerald Senarclens de Grancy"), i18n("QA and Scripting"), QStringLiteral("oss@senarclens.eu"), QStringLiteral("http://find-santa.eu/"));
 
