@@ -73,6 +73,8 @@ public:
                      KTextEditor::ViewPrivate *view,
                      KateViewInternal *viewInternal);
     ~InputModeManager();
+    InputModeManager(const InputModeManager &) = delete;
+    InputModeManager& operator=(const InputModeManager &) = delete;
 
     /**
      * feed key the given key press to the command parser

@@ -47,6 +47,8 @@ public:
     {
         m_instance = nullptr;
     }
+    KeyParser(const KeyParser &) = delete;
+    KeyParser& operator=(const KeyParser &) = delete;
 
     const QString encodeKeySequence(const QString &keys) const;
     const QString decodeKeySequence(const QString &keys) const;

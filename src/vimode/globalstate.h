@@ -38,6 +38,8 @@ class KTEXTEDITOR_EXPORT GlobalState
 public:
     explicit GlobalState();
     ~GlobalState();
+    GlobalState(const GlobalState &) = delete;
+    GlobalState& operator=(const GlobalState &) = delete;
 
     void writeConfig(KConfig *config) const;
     void readConfig(const KConfig *config);
