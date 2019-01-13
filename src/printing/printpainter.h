@@ -59,6 +59,9 @@ public:
     PrintPainter(KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view);
     ~PrintPainter();
 
+    PrintPainter(const PrintPainter &) = delete;
+    PrintPainter& operator=(const PrintPainter &) = delete;
+
     void paint(QPrinter *printer) const;
 
     // Attributes

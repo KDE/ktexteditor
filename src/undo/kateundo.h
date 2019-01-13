@@ -448,6 +448,9 @@ public:
      */
     ~KateUndoGroup();
 
+    KateUndoGroup(const KateUndoGroup &) = delete;
+    KateUndoGroup& operator=(const KateUndoGroup &) = delete;
+
 public:
     /**
      * Undo the contained undo items

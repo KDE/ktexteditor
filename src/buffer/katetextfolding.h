@@ -224,6 +224,9 @@ private:
          */
         ~FoldingRange();
 
+        FoldingRange(const FoldingRange &) = delete;
+        FoldingRange& operator=(const FoldingRange &) = delete;
+
         /**
          * Vector of range pointers
          */

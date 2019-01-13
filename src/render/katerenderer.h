@@ -86,6 +86,9 @@ public:
      */
     ~KateRenderer();
 
+    KateRenderer(const KateRenderer &) = delete;
+    KateRenderer& operator=(const KateRenderer &) = delete;
+
     /**
      * Returns the document to which this renderer is bound
      */

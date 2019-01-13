@@ -70,6 +70,9 @@ public:
     KateModeManager();
     ~KateModeManager();
 
+    KateModeManager(const KateModeManager &) = delete;
+    KateModeManager& operator=(const KateModeManager &) = delete;
+
     /**
      * File Type Config changed, update all docs (which will take care of views/renderers)
      */
