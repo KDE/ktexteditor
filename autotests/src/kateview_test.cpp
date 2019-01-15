@@ -430,4 +430,41 @@ void KateViewTest::testDragAndDrop()
     QCOMPARE(view->selectionRange(), Range(2, 0, 3, 0));
 }
 
+// test for bug https://bugs.kde.org/402594
+void KateViewTest::testGotoMatchingBracket()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText("foo(bar)baz");
+    //           0123456789
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    const KTextEditor::Cursor cursor1(0, 3); // Starting point on open (
+    const KTextEditor::Cursor cursor2(0, 8); // Insert Mode differ slightly from...
+    const KTextEditor::Cursor cursor3(0, 7); // Overwrite Mode
+
+    doc.config()->setOvr(false); // Insert Mode
+
+    view->setCursorPosition(cursor1);
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor2);
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor1);
+
+    // Currently has it in Insert Mode also to work when the cursor is placed inside the parentheses
+    view->setCursorPosition(cursor1 + KTextEditor::Cursor(0, 1));
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor2);
+    view->setCursorPosition(cursor2 + KTextEditor::Cursor(0, -1));
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor1);
+
+    doc.config()->setOvr(true);// Overwrite Mode
+
+    view->setCursorPosition(cursor1);
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor3);
+    view->toMatchingBracket();
+    QCOMPARE(view->cursorPosition(), cursor1);
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

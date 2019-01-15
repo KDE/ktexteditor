@@ -868,6 +868,10 @@ KTextEditor::Cursor KateViewInternal::findMatchingBracket()
 
     if (m_bmStart->toRange().contains(m_cursor) || m_bmStart->end() == m_cursor.toCursor()) {
         c = m_bmEnd->end();
+        // We need to adjust the cursor positon in case of override mode, BUG-402594
+        if (doc()->config()->ovr()) {
+            c.setColumn(c.column() - 1);
+        }
     } else if (m_bmEnd->toRange().contains(m_cursor) || m_bmEnd->end() == m_cursor.toCursor()) {
         c = m_bmStart->start();
     } else {
