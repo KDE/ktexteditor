@@ -70,6 +70,7 @@
 #include <KActionCollection>
 
 #include <QFile>
+#include <QClipboard>
 #include <QMap>
 #include <QStringList>
 #include <QTextCodec>
@@ -1067,36 +1068,118 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setMargin(0);
-    gotoRange = new QSpinBox(centralWidget());
 
-    QLabel *label = new QLabel(i18n("&Go to line:"), centralWidget());
-    label->setBuddy(gotoRange);
+    QToolButton *btn = new QToolButton(this);
+    btn->setAutoRaise(true);
+    btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
+    btn->setText(i18n("&Line:"));
+    btn->setToolTip(i18n("Go to line number from clipboard"));
+    connect(btn, &QToolButton::clicked, this, &KateGotoBar::gotoClipboard);
+    topLayout->addWidget(btn);
 
-    QToolButton *btnOK = new QToolButton(centralWidget());
-    btnOK->setAutoRaise(true);
-    btnOK->setIcon(QIcon::fromTheme(QStringLiteral("go-jump")));
-    btnOK->setText(i18n("Go"));
-    btnOK->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    connect(btnOK, SIGNAL(clicked()), this, SLOT(gotoLine()));
+    m_gotoRange = new QSpinBox(this);
+    m_gotoRange->setMinimum(1);
+    topLayout->addWidget(m_gotoRange, 1);
+    topLayout->setStretchFactor(m_gotoRange, 0);
 
-    topLayout->addWidget(label);
-    topLayout->addWidget(gotoRange, 1);
-    topLayout->setStretchFactor(gotoRange, 0);
-    topLayout->addWidget(btnOK);
+    btn = new QToolButton(this);
+    btn->setAutoRaise(true);
+    btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
+    btn->setText(i18n("Go to"));
+    btn->setIcon(QIcon::fromTheme(QStringLiteral("go-jump")));
+    btn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    connect(btn, &QToolButton::clicked, this, &KateGotoBar::gotoLine);
+    topLayout->addWidget(btn);
+
+    btn = m_modifiedUp = new QToolButton(this);
+    btn->setAutoRaise(true);
+    btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
+    btn->setDefaultAction(m_view->action("modified_line_up"));
+    btn->setIcon(QIcon::fromTheme(QStringLiteral("go-up-search")));
+    btn->setText(QString());
+    btn->installEventFilter(this);
+    topLayout->addWidget(btn);
+
+    btn = m_modifiedDown = new QToolButton(this);
+    btn->setAutoRaise(true);
+    btn->setMinimumSize(QSize(1, btn->minimumSizeHint().height()));
+    btn->setDefaultAction(m_view->action("modified_line_down"));
+    btn->setIcon(QIcon::fromTheme(QStringLiteral("go-down-search")));
+    btn->setText(QString());
+    btn->installEventFilter(this);
+    topLayout->addWidget(btn);
+
     topLayout->addStretch();
 
-    setFocusProxy(gotoRange);
+    setFocusProxy(m_gotoRange);
+}
+
+void KateGotoBar::showEvent(QShowEvent *event)
+{
+    Q_UNUSED(event)
+    // Catch rare cases where the bar is visible while document is edited
+    connect(m_view->document(), &KTextEditor::Document::textChanged, this, &KateGotoBar::updateData);
+}
+
+void KateGotoBar::closed()
+{
+    disconnect(m_view->document(), &KTextEditor::Document::textChanged, this, &KateGotoBar::updateData);
+}
+
+bool KateGotoBar::eventFilter(QObject *object, QEvent *event)
+{
+    if (object == m_modifiedUp || object == m_modifiedDown) {
+        if (event->type() != QEvent::Wheel) {
+            return false;
+        }
+
+        int delta = static_cast<QWheelEvent *>(event)->delta();
+        // Reset m_wheelDelta when scroll direction change
+        if (m_wheelDelta != 0 && (m_wheelDelta < 0) != (delta < 0)) {
+            m_wheelDelta = 0;
+        }
+
+        m_wheelDelta += delta;
+
+        if (m_wheelDelta >= 120) {
+            m_wheelDelta = 0;
+            m_modifiedUp->click();
+        } else if (m_wheelDelta <= -120) {
+            m_wheelDelta = 0;
+            m_modifiedDown->click();
+        }
+    }
+
+    return false;
+}
+
+void KateGotoBar::gotoClipboard()
+{
+    QRegularExpression rx(QStringLiteral("\\d+"));
+    int lineNo = rx.match(QApplication::clipboard()->text(QClipboard::Selection)).captured().toInt();
+    if (lineNo <= m_gotoRange->maximum() && lineNo >= 1) {
+        m_gotoRange->setValue(lineNo);
+        gotoLine();
+    } else {
+        QPointer<KTextEditor::Message> message = new KTextEditor::Message(
+            i18n("No valid line number found in clipboard"));
+        message->setWordWrap(true);
+        message->setAutoHide(2000);
+        message->setPosition(KTextEditor::Message::BottomInView);
+        message->setView(m_view),
+        m_view->document()->postMessage(message);
+    }
 }
 
 void KateGotoBar::updateData()
 {
-    gotoRange->setMaximum(m_view->document()->lines());
+    m_gotoRange->setMaximum(m_view->document()->lines());
     if (!isVisible()) {
-        gotoRange->setValue(m_view->cursorPosition().line() + 1);
-        gotoRange->adjustSize(); // ### does not respect the range :-(
+        m_gotoRange->setValue(m_view->cursorPosition().line() + 1);
+        m_gotoRange->adjustSize(); // ### does not respect the range :-(
     }
-    gotoRange->setFocus(Qt::OtherFocusReason);
-    gotoRange->selectAll();
+
+    m_gotoRange->selectAll();
 }
 
 void KateGotoBar::keyPressEvent(QKeyEvent *event)
@@ -1116,7 +1199,7 @@ void KateGotoBar::gotoLine()
         kv->clearSelection();
     }
 
-    m_view->setCursorPosition(KTextEditor::Cursor(gotoRange->value() - 1, 0));
+    m_view->setCursorPosition(KTextEditor::Cursor(m_gotoRange->value() - 1, 0));
     m_view->setFocus();
     emit hideMe();
 }

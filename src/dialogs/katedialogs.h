@@ -87,17 +87,26 @@ class KateGotoBar : public KateViewBarWidget
 public:
     explicit KateGotoBar(KTextEditor::View *view, QWidget *parent = nullptr);
 
+    void closed() override;
+
+public Q_SLOTS:
     void updateData();
 
 protected Q_SLOTS:
     void gotoLine();
+    void gotoClipboard();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    bool eventFilter(QObject *, QEvent *) override;
+    void showEvent(QShowEvent *event) override;
 
 private:
     KTextEditor::View *const m_view;
-    QSpinBox *gotoRange;
+    QSpinBox *m_gotoRange = nullptr;
+    QToolButton *m_modifiedUp = nullptr;
+    QToolButton *m_modifiedDown = nullptr;
+    int m_wheelDelta = 0; // To accumulate "wheel-deltas" to become e.g. a touch-pad usable
 };
 
 class KateDictionaryBar : public KateViewBarWidget
