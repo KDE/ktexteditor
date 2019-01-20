@@ -48,8 +48,8 @@
 #include <QCompleter>
 #include <QShortcut>
 #include <QStringListModel>
+#include <QTime>
 
-#include <memory>
 #include <vector>
 
 // Turn debug messages on/off here
@@ -159,8 +159,9 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
       m_powerMode(0)
 {
 
-    connect(view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)),
-            this, SLOT(updateIncInitCursor()));
+    connect(view, &KTextEditor::View::cursorPositionChanged, this, &KateSearchBar::updateIncInitCursor);
+    connect(view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
+    connect(this, &KateSearchBar::findOrReplaceAllFinished, this, &KateSearchBar::endFindOrReplaceAll);
 
     // init match attribute
     Attribute::Ptr mouseInAttribute(new Attribute());
@@ -205,12 +206,15 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     }
 
     updateSelectionOnly();
-    connect(view, SIGNAL(selectionChanged(KTextEditor::View*)),
-            this, SLOT(updateSelectionOnly()));
 }
 
 KateSearchBar::~KateSearchBar()
 {
+    if (!m_cancelFindOrReplace) {
+        // Finish/Cancel the still running job to avoid a crash
+        endFindOrReplaceAll();
+    }
+
     clearHighlights();
     delete m_layout;
     delete m_widget;
@@ -279,16 +283,25 @@ void KateSearchBar::findPrevious()
     }
 }
 
-void KateSearchBar::showInfoMessage(const QString &text)
+void KateSearchBar::showResultMessage()
 {
-    delete m_infoMessage;
+    QString text;
 
-    m_infoMessage = new KTextEditor::Message(text, KTextEditor::Message::Positive);
-    m_infoMessage->setPosition(KTextEditor::Message::BottomInView);
-    m_infoMessage->setAutoHide(3000); // 3 seconds
-    m_infoMessage->setView(m_view);
+    if (m_replaceMode) {
+        text = i18ncp("short translation", "1 replacement made", "%1 replacements made", m_matchCounter);
+    } else {
+        text = i18ncp("short translation", "1 match found", "%1 matches found", m_matchCounter);
+    }
 
-    m_view->doc()->postMessage(m_infoMessage);
+    if (m_infoMessage) {
+        m_infoMessage->setText(text);
+    } else {
+        m_infoMessage = new KTextEditor::Message(text, KTextEditor::Message::Positive);
+        m_infoMessage->setPosition(KTextEditor::Message::BottomInView);
+        m_infoMessage->setAutoHide(3000); // 3 seconds
+        m_infoMessage->setView(m_view);
+        m_view->doc()->postMessage(m_infoMessage);
+    }
 }
 
 void KateSearchBar::highlightMatch(const Range &range)
@@ -379,9 +392,9 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
 
 void KateSearchBar::selectRange2(const KTextEditor::Range &range)
 {
-    disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    disconnect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
     selectRange(m_view, range);
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    connect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
 }
 
 void KateSearchBar::onIncPatternChanged(const QString &pattern)
@@ -421,11 +434,9 @@ void KateSearchBar::onIncPatternChanged(const QString &pattern)
                                  Range::invalid();
 
     // don't update m_incInitCursor when we move the cursor
-    disconnect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)),
-               this, SLOT(updateIncInitCursor()));
+    disconnect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateSearchBar::updateIncInitCursor);
     selectRange2(selectionRange);
-    connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)),
-            this, SLOT(updateIncInitCursor()));
+    connect(m_view, &KTextEditor::View::cursorPositionChanged, this, &KateSearchBar::updateIncInitCursor);
 
     indicateMatch(matchResult);
 }
@@ -517,7 +528,7 @@ void KateSearchBar::onReturnPressed()
     }
 }
 
-bool KateSearchBar::find(SearchDirection searchDirection, const QString *replacement)
+bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString *replacement)
 {
     // What to find?
     if (searchPattern().isEmpty()) {
@@ -525,7 +536,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
     }
 
     // don't let selectionChanged signal mess around in this routine
-    disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    disconnect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
 
     // clear previous highlights if there are any
     clearHighlights();
@@ -652,7 +663,7 @@ bool KateSearchBar::find(SearchDirection searchDirection, const QString *replace
     }
 
     // restore connection
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    connect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
 
     return true; // == No pattern error
 }
@@ -665,12 +676,8 @@ void KateSearchBar::findAll()
     Range inputRange = (m_view->selection() && selectionOnly())
                        ? m_view->selectionRange()
                        : m_view->document()->documentRange();
-    const int occurrences = findAll(inputRange, nullptr);
 
-    // send passive notification to view
-    showInfoMessage(i18ncp("short translation", "1 match found", "%1 matches found", occurrences));
-
-    indicateMatch(occurrences > 0 ? MatchFound : MatchMismatch);
+    beginFindAll(inputRange);
 }
 
 void KateSearchBar::onPowerPatternChanged(const QString & /*pattern*/)
@@ -782,7 +789,7 @@ void KateSearchBar::replaceNext()
 {
     const QString replacement = m_powerUi->replacement->currentText();
 
-    if (find(SearchForward, &replacement)) {
+    if (findOrReplace(SearchForward, &replacement)) {
         // Never merge replace actions with other replace actions/user actions
         m_view->doc()->undoManager()->undoSafePoint();
 
@@ -794,70 +801,100 @@ void KateSearchBar::replaceNext()
     }
 }
 
-// replacement == NULL --> Highlight all matches
+// replacement == NULL --> Only highlight all matches
 // replacement != NULL --> Replace and highlight all matches
-int KateSearchBar::findAll(Range inputRange, const QString *replacement)
+void KateSearchBar::beginFindOrReplaceAll(Range inputRange, const QString &replacement, bool replaceMode/* = true*/)
 {
     // don't let selectionChanged signal mess around in this routine
-    disconnect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    disconnect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
+    // Cancel job when user close the document to avoid crash
+    connect(m_view->doc(), &KTextEditor::Document::aboutToClose, this, &KateSearchBar::endFindOrReplaceAll);
 
+    if (m_powerUi) {
+    // Offer Cancel button and disable not useful buttons
+    m_powerUi->searchCancelStacked->setCurrentIndex(m_powerUi->searchCancelStacked->indexOf(m_powerUi->cancelPage));
+    m_powerUi->findNext->setEnabled(false);
+    m_powerUi->findPrev->setEnabled(false);
+    m_powerUi->replaceNext->setEnabled(false);
+    }
+
+    m_highlightRanges.clear();
+    m_inputRange = inputRange;
+    m_workingRange = m_view->doc()->newMovingRange(m_inputRange);
+    m_replacement = replacement;
+    m_replaceMode = replaceMode;
+    m_matchCounter = 0;
+    m_cancelFindOrReplace = false; // Ensure we have a GO!
+
+    findOrReplaceAll();
+}
+
+void KateSearchBar::findOrReplaceAll()
+{
     const SearchOptions enabledOptions = searchOptions(SearchForward);
 
     const bool regexMode = enabledOptions.testFlag(Regex);
     const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
 
-    std::unique_ptr<KTextEditor::MovingRange> workingRange(m_view->doc()->newMovingRange(inputRange));
-    int matchCounter = 0;
-
     // we highlight all ranges of a replace, up to some hard limit
     // e.g. if you replace 100000 things, rendering will break down otherwise ;=)
     const int maxHighlightings = 65536;
-    std::vector<Range> highlightRanges;
 
     // reuse match object to avoid massive moving range creation
     KateMatch match(m_view->doc(), enabledOptions);
 
     bool block = m_view->selection() && m_view->blockSelection();
-    int line = inputRange.start().line();
+
+    int line = m_inputRange.start().line();
+
+    QTime rolex; // Watchog to suspend the work after some time
+    rolex.start();
+    bool timeOut = false;
+    bool done = false;
     do {
         if (block) {
-            workingRange.reset(m_view->doc()->newMovingRange(m_view->doc()->rangeOnLine(inputRange, line)));
+            delete m_workingRange; // Never forget that!
+            m_workingRange = m_view->doc()->newMovingRange(m_view->doc()->rangeOnLine(m_inputRange, line));
         }
 
-        for (;;) {
-            match.searchText(*workingRange, searchPattern());
+        do {
+            match.searchText(*m_workingRange, searchPattern());
             if (!match.isValid()) {
+                done = true;
                 break;
             }
             bool const originalMatchEmpty = match.isEmpty();
 
             // Work with the match
             Range lastRange;
-            if (replacement != nullptr) {
-                if (matchCounter == 0) {
+            if (m_replaceMode) {
+                if (m_matchCounter == 0) {
                     static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->startEditing();
                 }
 
                 // Replace
-                lastRange = match.replace(*replacement, false, ++matchCounter);
+                lastRange = match.replace(m_replacement, false, ++m_matchCounter);
             } else {
                 lastRange = match.range();
-                ++matchCounter;
+                ++m_matchCounter;
             }
 
             // remember ranges if limit not reached
-            if (matchCounter < maxHighlightings) {
-                highlightRanges.push_back(lastRange);
+            if (m_matchCounter < maxHighlightings) {
+                m_highlightRanges.push_back(lastRange);
             } else {
-                highlightRanges.clear();
+                m_highlightRanges.clear();
+                // TODO Info user that highlighting is disabled
             }
 
             // Continue after match
-            if (lastRange.end() >= workingRange->end()) {
+            if (lastRange.end() >= m_workingRange->end()) {
+                done = true;
                 break;
             }
 
             KTextEditor::DocumentCursor workingStart(m_view->doc(), lastRange.end());
+
             if (originalMatchEmpty) {
                 // Can happen for regex patterns like "^".
                 // If we don't advance here we will loop forever...
@@ -867,50 +904,89 @@ int KateSearchBar::findAll(Range inputRange, const QString *replacement)
                 // therefore we better advance to the next line
                 workingStart.move(1);
             }
-            workingRange->setRange(workingStart.toCursor(), workingRange->end());
+            m_workingRange->setRange(workingStart.toCursor(), m_workingRange->end());
 
             // Are we done?
-            if (!workingRange->toRange().isValid() || workingStart.atEndOfDocument()) {
+            if (!m_workingRange->toRange().isValid() || workingStart.atEndOfDocument()) {
+                done = true;
                 break;
             }
-        }
 
-    } while (block && ++line <= inputRange.end().line());
+            timeOut = rolex.elapsed() > 150;
+
+        } while (!m_cancelFindOrReplace && !timeOut);
+
+    } while (!m_cancelFindOrReplace && !timeOut && block && ++line <= m_inputRange.end().line());
+
+    if (done || m_cancelFindOrReplace) {
+        emit findOrReplaceAllFinished();
+    } else if (timeOut) {
+        QTimer::singleShot(0, this, &KateSearchBar::findOrReplaceAll);
+    }
+
+    showResultMessage();
+}
+
+void KateSearchBar::endFindOrReplaceAll()
+{
+    // Don't forget to remove our "crash protector"
+    disconnect(m_view->doc(), &KTextEditor::Document::aboutToClose, this, &KateSearchBar::endFindOrReplaceAll);
 
     // After last match
-    if (matchCounter > 0) {
-        if (replacement != nullptr) {
+    if (m_matchCounter > 0) {
+        if (m_replaceMode) {
             static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->finishEditing();
         }
     }
 
     // Add ScrollBarMarks
-    if (!highlightRanges.empty()) {
+    if (!m_highlightRanges.empty()) {
         KTextEditor::MarkInterface* iface = qobject_cast<KTextEditor::MarkInterface*>(m_view->document());
         if (iface) {
             iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
             iface->setMarkPixmap(KTextEditor::MarkInterface::SearchMatch, QIcon().pixmap(0,0));
-            for (const Range &r : highlightRanges) {
+            for (const Range &r : m_highlightRanges) {
                 iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
             }
         }
     }
 
     // Add highlights
-    if (replacement == nullptr) {
-        for (const Range &r : highlightRanges) {
-            highlightMatch(r);
-        }
-    } else {
-        for (const Range &r : highlightRanges) {
+    if (m_replaceMode) {
+        for (const Range &r : qAsConst(m_highlightRanges)) {
             highlightReplacement(r);
         }
+        // Never merge replace actions with other replace actions/user actions
+        m_view->doc()->undoManager()->undoSafePoint();
+
+    } else {
+        for (const Range &r : qAsConst(m_highlightRanges)) {
+            highlightMatch(r);
+        }
+//         indicateMatch(m_matchCounter > 0 ? MatchFound : MatchMismatch); TODO
     }
 
-    // restore connection
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(updateSelectionOnly()));
+    // Clean-Up the still hold MovingRange
+    delete m_workingRange;
 
-    return matchCounter;
+    // restore connection
+    connect(m_view, &KTextEditor::View::selectionChanged, this, &KateSearchBar::updateSelectionOnly);
+
+    if (m_powerUi) {
+    // Offer Find and Replace buttons and enable again useful buttons
+    m_powerUi->searchCancelStacked->setCurrentIndex(m_powerUi->searchCancelStacked->indexOf(m_powerUi->searchPage));
+    m_powerUi->findNext->setEnabled(true);
+    m_powerUi->findPrev->setEnabled(true);
+    m_powerUi->replaceNext->setEnabled(true);
+
+    // Add to search history
+    addCurrentTextToHistory(m_powerUi->pattern);
+
+    // Add to replace history
+    addCurrentTextToHistory(m_powerUi->replacement);
+    }
+
+    m_cancelFindOrReplace = true; // Indicate we are not running
 }
 
 void KateSearchBar::replaceAll()
@@ -927,20 +1003,7 @@ void KateSearchBar::replaceAll()
                        ? m_view->selectionRange()
                        : m_view->document()->documentRange();
 
-    // Pass on the hard work
-    int replacementsDone = findAll(inputRange, &replacement);
-
-    // send passive notification to view
-    showInfoMessage(i18ncp("short translation", "1 replacement made", "%1 replacements made", replacementsDone));
-
-    // Never merge replace actions with other replace actions/user actions
-    m_view->doc()->undoManager()->undoSafePoint();
-
-    // Add to search history
-    addCurrentTextToHistory(m_powerUi->pattern);
-
-    // Add to replace history
-    addCurrentTextToHistory(m_powerUi->replacement);
+    beginFindOrReplaceAll(inputRange, replacement);
 }
 
 void KateSearchBar::setSearchPattern(const QString &searchPattern)
@@ -1393,6 +1456,7 @@ void KateSearchBar::enterPowerMode()
         connect(m_powerUi->searchMode, SIGNAL(currentIndexChanged(int)), this, SLOT(onPowerModeChanged(int)));
         connect(m_powerUi->matchCase, SIGNAL(toggled(bool)), this, SLOT(onMatchCaseToggled(bool)));
         connect(m_powerUi->findAll, SIGNAL(clicked()), this, SLOT(findAll()));
+        connect(m_powerUi->cancel, &QPushButton::clicked, this, &KateSearchBar::onPowerCancelFindOrReplace);
 
         // Make [return] in pattern line edit trigger <find next> action
         connect(patternLineEdit, SIGNAL(returnPressed()), this, SLOT(onReturnPressed()));
@@ -1646,6 +1710,11 @@ void KateSearchBar::onPowerReplacmentContextMenuRequest(const QPoint &pos)
 void KateSearchBar::onPowerReplacmentContextMenuRequest()
 {
     onPowerReplacmentContextMenuRequest(m_powerUi->replacement->mapFromGlobal(QCursor::pos()));
+}
+
+void KateSearchBar::onPowerCancelFindOrReplace()
+{
+    m_cancelFindOrReplace = true;
 }
 
 bool KateSearchBar::isPower() const

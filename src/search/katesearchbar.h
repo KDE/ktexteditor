@@ -109,11 +109,12 @@ public Q_SLOTS:
     void setSelectionOnly(bool selectionOnly);
     void setMatchCase(bool matchCase);
 
-    // Called for <F3> and <Shift>+<F3>
+    // Called by buttons and typically <F3>/<Shift>+<F3> shortcuts
     void findNext();
     void findPrevious();
-    void findAll();
 
+    // PowerMode stuff
+    void findAll();
     void replaceNext();
     void replaceAll();
 
@@ -140,17 +141,44 @@ private Q_SLOTS:
     void updateIncInitCursor();
 
     void onPowerPatternChanged(const QString &pattern);
-
     void onPowerModeChanged(int index);
     void onPowerPatternContextMenuRequest();
     void onPowerPatternContextMenuRequest(const QPoint &);
     void onPowerReplacmentContextMenuRequest();
     void onPowerReplacmentContextMenuRequest(const QPoint &);
+    void onPowerCancelFindOrReplace();
+
+    /**
+     * This function do the hard search & replace work in time slice steps.
+     * When all is done @ref m_matchCounter is set and the signal
+     * @ref findOrReplaceAllFinished() is emitted.
+     */
+    void findOrReplaceAll();
+
+
+    /**
+     * Restore needed settings when signal @ref findOrReplaceAllFinished()
+     * was received.
+     */
+    void endFindOrReplaceAll();
+
+Q_SIGNALS:
+    /**
+     * Will emitted by @ref findOrReplaceAll() when all is done.
+     */
+    void findOrReplaceAllFinished();
 
 private:
     // Helpers
-    bool find(SearchDirection searchDirection = SearchForward, const QString *replacement = nullptr);
-    int findAll(KTextEditor::Range inputRange, const QString *replacement);
+    bool find(SearchDirection searchDirection = SearchForward) { return findOrReplace(searchDirection, nullptr); };
+    bool findOrReplace(SearchDirection searchDirection, const QString *replacement);
+
+    /**
+     * The entry point to start a search & replace task.
+     * Set needed member variables and call @ref findOrReplaceAll() to do the work.
+     */
+    void beginFindOrReplaceAll(KTextEditor::Range inputRange, const QString &replacement, bool replaceMode = true);
+    void beginFindAll(KTextEditor::Range inputRange) { beginFindOrReplaceAll(inputRange, QString(), false); };
 
     bool isPatternValid() const;
 
@@ -171,7 +199,7 @@ private:
     void sendConfig();
     void fixForSingleLine(KTextEditor::Range &range, SearchDirection searchDirection);
 
-    void showInfoMessage(const QString &text);
+    void showResultMessage();
 
 private:
     KTextEditor::ViewPrivate *const m_view;
@@ -190,7 +218,14 @@ private:
     KTextEditor::Cursor m_incInitCursor;
 
     // Power search related
-    Ui::PowerSearchBar *m_powerUi;
+    Ui::PowerSearchBar *m_powerUi = nullptr;
+    KTextEditor::MovingRange *m_workingRange = nullptr;
+    KTextEditor::Range m_inputRange;
+    QString m_replacement;
+    uint m_matchCounter = 0;
+    bool m_replaceMode = false;
+    bool m_cancelFindOrReplace = true;
+    std::vector<KTextEditor::Range> m_highlightRanges;
 
     // attribute to highlight matches with
     KTextEditor::Attribute::Ptr highlightMatchAttribute;
