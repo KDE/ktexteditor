@@ -11,7 +11,7 @@ set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Mod
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # add own modules to search path, too
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
