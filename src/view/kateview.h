@@ -260,8 +260,8 @@ public:
     // Inline Notes Interface
     //
 public:
-    void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
-    void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) Q_DECL_OVERRIDE;
+    void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) override;
+    void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) override;
     QRect inlineNoteRect(const KateInlineNoteData& note) const;
 
     QVarLengthArray<KateInlineNoteData, 8> inlineNotes(int line) const;
