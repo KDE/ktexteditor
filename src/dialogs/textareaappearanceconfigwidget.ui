@@ -185,10 +185,10 @@
             <string>Size of the visible highlight marker.</string>
            </property>
            <property name="minimum">
-            <number>-1</number>
+            <number>1</number>
            </property>
            <property name="maximum">
-            <number>-1</number>
+            <number>5</number>
            </property>
            <property name="singleStep">
             <number>1</number>
@@ -301,6 +301,21 @@ beginning of a file.</string>
    <header>kcombobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>gbWordWrap</tabstop>
+  <tabstop>chkDynWrapAtStaticMarker</tabstop>
+  <tabstop>cmbDynamicWordWrapIndicator</tabstop>
+  <tabstop>sbDynamicWordWrapDepth</tabstop>
+  <tabstop>chkShowTabs</tabstop>
+  <tabstop>chkShowSpaces</tabstop>
+  <tabstop>sliSetMarkerSize</tabstop>
+  <tabstop>chkShowIndentationLines</tabstop>
+  <tabstop>chkShowWholeBracketExpression</tabstop>
+  <tabstop>chkAnimateBracketMatching</tabstop>
+  <tabstop>chkFoldFirstLine</tabstop>
+  <tabstop>chkShowWordCount</tabstop>
+  <tabstop>chkShowLineCount</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -314,8 +329,8 @@ beginning of a file.</string>
      <y>7</y>
     </hint>
     <hint type="destinationlabel">
-     <x>340</x>
-     <y>44</y>
+     <x>559</x>
+     <y>117</y>
     </hint>
    </hints>
   </connection>
@@ -330,8 +345,8 @@ beginning of a file.</string>
      <y>6</y>
     </hint>
     <hint type="destinationlabel">
-     <x>385</x>
-     <y>72</y>
+     <x>559</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
