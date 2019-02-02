@@ -42,7 +42,6 @@
 KateSpellCheckDialog::KateSpellCheckDialog(KTextEditor::ViewPrivate *view)
     : QObject(view)
     , m_view(view)
-    , m_spellcheckSelection(nullptr)
     , m_speller(nullptr)
     , m_backgroundChecker(nullptr)
     , m_sonnetDialog(nullptr)
@@ -68,22 +67,15 @@ void KateSpellCheckDialog::createActions(KActionCollection *ac)
     a->setIcon(QIcon::fromTheme(QStringLiteral("tools-check-spelling")));
     a->setWhatsThis(i18n("Check the document's spelling from the cursor and forward"));
     connect(a, SIGNAL(triggered()), this, SLOT(spellcheckFromCursor()));
-
-    m_spellcheckSelection = new QAction(i18n("Spellcheck Selection..."), this);
-    ac->addAction(QStringLiteral("tools_spelling_selection"), m_spellcheckSelection);
-    m_spellcheckSelection->setIcon(QIcon::fromTheme(QStringLiteral("tools-check-spelling")));
-    m_spellcheckSelection->setWhatsThis(i18n("Check spelling of the selected text"));
-    connect(m_spellcheckSelection, SIGNAL(triggered()), this, SLOT(spellcheckSelection()));
-}
-
-void KateSpellCheckDialog::updateActions()
-{
-    m_spellcheckSelection->setEnabled(m_view->selection());
 }
 
 void KateSpellCheckDialog::spellcheckFromCursor()
 {
-    spellcheck(m_view->cursorPosition());
+    if (m_view->selection()) {
+        spellcheckSelection();
+    } else {
+        spellcheck(m_view->cursorPosition());
+    }
 }
 
 void KateSpellCheckDialog::spellcheckSelection()
@@ -93,7 +85,11 @@ void KateSpellCheckDialog::spellcheckSelection()
 
 void KateSpellCheckDialog::spellcheck()
 {
-    spellcheck(KTextEditor::Cursor(0, 0));
+    if (m_view->selection()) {
+        spellcheckSelection();
+    } else {
+        spellcheck(KTextEditor::Cursor(0, 0));
+    }
 }
 
 void KateSpellCheckDialog::spellcheck(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to)

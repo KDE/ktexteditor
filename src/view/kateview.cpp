@@ -1769,8 +1769,6 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
     }
 
     m_cut->setEnabled(selection() || m_config->smartCopyCut());
-
-    m_spell->updateActions();
 }
 
 void KTextEditor::ViewPrivate::switchToCmdLine()

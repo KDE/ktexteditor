@@ -58,8 +58,6 @@ public:
 
     void createActions(KActionCollection *);
 
-    void updateActions();
-
     // spellcheck from cursor, selection
 private Q_SLOTS:
     void spellcheckFromCursor();
@@ -93,7 +91,6 @@ private:
     KTextEditor::Cursor locatePosition(int pos);
 
     KTextEditor::ViewPrivate *m_view;
-    QAction *m_spellcheckSelection;
 
     Sonnet::Speller *m_speller;
     Sonnet::BackgroundChecker *m_backgroundChecker;
