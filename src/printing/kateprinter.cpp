@@ -48,6 +48,7 @@ public:
     ~KatePrinterPrivate();
 
     bool print(QPrinter *printer);
+    void setColorScheme(const QString &scheme);
 
 public Q_SLOTS:
     void paint(QPrinter *printer);
@@ -143,6 +144,12 @@ void KatePrinterPrivate::paint(QPrinter *printer)
 {
     m_painter->paint(printer);
 }
+
+void KatePrinterPrivate::setColorScheme(const QString &scheme)
+{
+    m_painter->setColorScheme(scheme);
+}
+
 //END KatePrinterPrivate
 
 //BEGIN KatePrinter
@@ -158,6 +165,7 @@ bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
 {
     QPrinter printer;
     KatePrinterPrivate p(view->doc(), view);
+    p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
     QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
     return preview.exec();
@@ -174,6 +182,7 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
 {
     QPrinter printer;
     KatePrinterPrivate p(doc);
+    p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
     QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
     return preview.exec();
