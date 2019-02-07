@@ -2643,8 +2643,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
 
 void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
 {
-    switch (e->button()) {
-    case Qt::LeftButton:
+    if (e->button() == Qt::LeftButton) {
         m_selectionMode = Word;
 
         if (e->modifiers() & Qt::ShiftModifier) {
@@ -2700,11 +2699,11 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
         }
 
         // Move cursor to end (or beginning) of selected word
+#ifndef Q_OS_MACOS
         if (view()->selection()) {
-#if !defined(Q_OS_OSX)
             QApplication::clipboard()->setText(view()->selectionText(), QClipboard::Selection);
-#endif
         }
+#endif
 
         moveCursorToSelectionEdge();
         m_possibleTripleClick = true;
@@ -2714,13 +2713,10 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
         m_scrollY = 0;
 
         m_scrollTimer.start(50);
-
+        
         e->accept();
-        break;
-
-    default:
+    } else {
         e->ignore();
-        break;
     }
 }
 
