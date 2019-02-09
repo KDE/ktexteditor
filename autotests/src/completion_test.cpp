@@ -370,37 +370,42 @@ void CompletionTest::testJumpToListBottomAfterCursorUpWhileAtTop()
 
 void CompletionTest::testAbbreviationEngine()
 {
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fb")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("foob")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fbar")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fba")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("foba")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarBazBang"), QStringLiteral("fbbb")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("foo_bar_cat"), QStringLiteral("fbc")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("foo_bar_cat"), QStringLiteral("fb")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fba")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbara")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaar")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fb")));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fb"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("foob"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fbar"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fba"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("foba"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarBazBang"), QStringLiteral("fbbb"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("foo_bar_cat"), QStringLiteral("fbc"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("foo_bar_cat"), QStringLiteral("fb"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fba"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbara"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaar"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fb"), Qt::CaseInsensitive));
 
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qid")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qualid")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qualidentifier")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qi")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kc")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcomplmodel")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacomplmodel")));
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacom")));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qid"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qualid"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qualidentifier"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("qi"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kc"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcomplmodel"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacomplmodel"), Qt::CaseInsensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacom"), Qt::CaseInsensitive));
 
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("identifier")));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaara")));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbac")));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kamodel")));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("identifier"), Qt::CaseInsensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaara"), Qt::CaseInsensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbac"), Qt::CaseInsensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kamodel"), Qt::CaseInsensitive));
 
-    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("AbcdefBcdefCdefDefEfFzZ")));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("ABCDEFX")));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA")));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), Qt::CaseInsensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
+    
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fb"), Qt::CaseSensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("FB"), Qt::CaseSensitive));
+    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel"), Qt::CaseSensitive));
+    QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("KCModel"), Qt::CaseSensitive));
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()
@@ -408,7 +413,7 @@ void CompletionTest::benchAbbreviationEngineGoodCase()
     QBENCHMARK {
         for (int i = 0; i < 10000; i++)
         {
-            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA")));
+            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
         }
     }
 }
@@ -418,7 +423,7 @@ void CompletionTest::benchAbbreviationEngineNormalCase()
     QBENCHMARK {
         for (int i = 0; i < 10000; i++)
         {
-            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("ABCDEFX")));
+            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
         }
     }
 }
@@ -430,7 +435,7 @@ void CompletionTest::benchAbbreviationEngineWorstCase()
         {
             // This case is quite horrible, because it requires a branch at every letter.
             // The current code will at some point drop out and just return false.
-            KateCompletionModel::matchesAbbreviation(QStringLiteral("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox"), QStringLiteral("XbbbbbbbbbbbbbbbbbbbbFx"));
+            KateCompletionModel::matchesAbbreviation(QStringLiteral("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox"), QStringLiteral("XbbbbbbbbbbbbbbbbbbbbFx"), Qt::CaseInsensitive);
         }
     }
 }

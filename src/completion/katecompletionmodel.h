@@ -67,7 +67,9 @@ public:
     void setCurrentCompletion(KTextEditor::CodeCompletionModel *model, const QString &completion);
 
     Qt::CaseSensitivity matchCaseSensitivity() const;
-    void setMatchCaseSensitivity(Qt::CaseSensitivity cs);
+    Qt::CaseSensitivity exactMatchCaseSensitivity() const;
+    void setMatchCaseSensitivity(Qt::CaseSensitivity match_cs);
+    void setMatchCaseSensitivity(Qt::CaseSensitivity match_cs, Qt::CaseSensitivity exact_match_cs);
 
     static QString columnName(int column);
     int translateColumn(int sourceColumn) const;
@@ -359,7 +361,7 @@ private:
     void resort();
     void refilter();
 
-    static bool matchesAbbreviation(const QString &word, const QString &typed);
+    static bool matchesAbbreviation(const QString &word, const QString &typed, Qt::CaseSensitivity caseSensitive);
 
     bool m_hasGroups = false;
 
@@ -367,7 +369,6 @@ private:
     // General
     QList<KTextEditor::CodeCompletionModel *> m_completionModels;
     QMap<KTextEditor::CodeCompletionModel *, QString> m_currentMatch;
-    Qt::CaseSensitivity m_matchCaseSensitivity = Qt::CaseInsensitive;
 
     // Column merging
     QList< QList<int> > m_columnMerges;
@@ -387,6 +388,10 @@ private:
     QHash<QString, Group *> m_customGroupHash;
 
     // ### Configurable state
+    // Matching
+    Qt::CaseSensitivity m_matchCaseSensitivity = Qt::CaseInsensitive;
+    Qt::CaseSensitivity m_exactMatchCaseSensitivity = Qt::CaseInsensitive;  // Must be equal to or stricter than m_matchCaseSensitivity.
+    
     // Sorting
     bool m_sortingEnabled = false;
     bool m_sortingAlphabetical = false;
