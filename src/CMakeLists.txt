@@ -315,6 +315,7 @@ PRIVATE
   KF5::ItemViews
   KF5::SonnetCore
   KF5::SyntaxHighlighting
+  KF5::AuthCore
   ${KTEXTEDITOR_OPTIONAL_LIBS}
 )
 
