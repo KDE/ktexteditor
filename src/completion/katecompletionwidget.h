@@ -42,11 +42,6 @@ class KateCompletionTree;
 class KateArgumentHintTree;
 class KateArgumentHintModel;
 
-namespace KTextEditor
-{
-class EmbeddedWidgetInterface;
-}
-
 /**
  * This is the code completion's main widget, and also contains the
  * core interface logic.
