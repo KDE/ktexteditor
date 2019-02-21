@@ -32,6 +32,11 @@
 
 #ifndef Q_OS_WIN
 #include <unistd.h>
+#include <errno.h>
+// sadly there seems to be no possibility in Qt to determine detailed error
+// codes about e.g. file open errors, so we need to resort to evaluating
+// errno directly on platforms that support this
+#define CAN_USE_ERRNO
 #endif
 
 #include <QFile>
@@ -768,49 +773,38 @@ bool TextBuffer::save(const QString &filename)
      */
     Q_ASSERT(m_textCodec);
 
-    /**
-     * construct correct filter device
-     * we try to use the same compression as for opening
-     */
-    const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
-    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
+    SaveResult saveRes = saveBufferUnprivileged(filename);
 
-    /**
-     * if we want to use kauth anyways or we can open the file write only => use temporary file and try to use authhelper
-     */
-    uint ownerId = -2;
-    uint groupId = -2;
-    QScopedPointer<QIODevice> temporaryBuffer;
-    if (m_alwaysUseKAuthForSave || !saveFile->open(QIODevice::WriteOnly)) {
+    if (saveRes == SaveResult::Failed) {
+        return false;
+    }
+    else if (saveRes == SaveResult::MissingPermissions) {
         /**
-         * Memorize owner and group.
+         * either unit-test mode or we're missing permissions to write to the
+         * file => use temporary file and try to use authhelper
          */
-        const QFileInfo fileInfo(filename);
-        if (fileInfo.exists()) {
-            ownerId = fileInfo.ownerId();
-            groupId = fileInfo.groupId();
-        }
-
-        // if that fails we need more privileges to save this file
-        // -> we write to a temporary file and then send its path to KAuth action for privileged save
-        temporaryBuffer.reset(new QBuffer());
-
-        // open buffer for write and read (read is used for checksum computing and writing to temporary file)
-        if (!temporaryBuffer->open(QIODevice::ReadWrite)) {
-            return false;
-        }
-
-        // we are now saving to a temporary buffer with potential compression proxy
-        saveFile.reset(new KCompressionDevice(temporaryBuffer.data(), false, type));
-        if (!saveFile->open(QIODevice::WriteOnly)) {
+        if (!saveBufferEscalated(filename)) {
             return false;
         }
     }
 
+    // remember this revision as last saved
+    m_history.setLastSavedRevision();
+
+    // inform that we have saved the state
+    markModifiedLinesAsSaved();
+
+    // emit that file was saved and be done
+    emit saved(filename);
+    return true;
+}
+
+bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFile)
+{
     /**
      * construct stream + disable Unicode headers
      */
-    QTextStream stream(saveFile.data());
+    QTextStream stream(&saveFile);
     stream.setCodec(QTextCodec::codecForName("UTF-16"));
 
     // set the correct codec
@@ -862,77 +856,138 @@ bool TextBuffer::save(const QString &filename)
     }
 
     // close the file, we might want to read from underlying buffer below
-    saveFile->close();
+    saveFile.close();
 
     // did save work?
-    if (saveFile->error() != QFileDevice::NoError) {
-        BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile->errorString();
+    if (saveFile.error() != QFileDevice::NoError) {
+        BUFFER_DEBUG << "Saving file " << filename << "failed with error" << saveFile.errorString();
         return false;
     }
 
+    return true;
+}
+
+
+TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filename)
+{
+    if (m_alwaysUseKAuthForSave) {
+        // unit-testing mode, simulate we need privileges
+        return SaveResult::MissingPermissions;
+    }
+
     /**
-     * if we used a QBuffer for kauth, try to move that to the real location with the helper
+     * construct correct filter device
+     * we try to use the same compression as for opening
      */
-    if (temporaryBuffer) {
-        // temporary buffer was used to save the file
-        // -> computing checksum
-        // -> saving to temporary file
-        // -> copying the temporary file to the original file location with KAuth action
-        QTemporaryFile tempFile;
-        if (!tempFile.open()) {
+    const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
+    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
+
+    if (!saveFile->open(QIODevice::WriteOnly)) {
+#ifdef CAN_USE_ERRNO
+        if (errno != EACCES) {
+            return SaveResult::Failed;
+        }
+#endif
+        return SaveResult::MissingPermissions;
+    }
+
+    if (!saveBuffer(filename, *saveFile)) {
+        return SaveResult::Failed;
+    }
+
+    return SaveResult::Success;
+}
+
+bool TextBuffer::saveBufferEscalated(const QString &filename)
+{
+    /**
+     * construct correct filter device
+     * we try to use the same compression as for opening
+     */
+    const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
+    QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
+    uint ownerId = -2;
+    uint groupId = -2;
+    QScopedPointer<QIODevice> temporaryBuffer;
+
+    /**
+     * Memorize owner and group.
+     */
+    const QFileInfo fileInfo(filename);
+    if (fileInfo.exists()) {
+        ownerId = fileInfo.ownerId();
+        groupId = fileInfo.groupId();
+    }
+
+    // if that fails we need more privileges to save this file
+    // -> we write to a temporary file and then send its path to KAuth action for privileged save
+    temporaryBuffer.reset(new QBuffer());
+
+    // open buffer for write and read (read is used for checksum computing and writing to temporary file)
+    if (!temporaryBuffer->open(QIODevice::ReadWrite)) {
+        return false;
+    }
+
+    // we are now saving to a temporary buffer with potential compression proxy
+    saveFile.reset(new KCompressionDevice(temporaryBuffer.data(), false, type));
+    if (!saveFile->open(QIODevice::WriteOnly)) {
+        return false;
+    }
+
+    if( !saveBuffer(filename, *saveFile) ) {
+        return false;
+    }
+
+    // temporary buffer was used to save the file
+    // -> computing checksum
+    // -> saving to temporary file
+    // -> copying the temporary file to the original file location with KAuth action
+    QTemporaryFile tempFile;
+    if (!tempFile.open()) {
+        return false;
+    }
+
+    // go to QBuffer start
+    temporaryBuffer->seek(0);
+
+    // read contents of QBuffer and add them to checksum utility as well as to QTemporaryFile
+    char buffer[bufferLength];
+    qint64 read = -1;
+    QCryptographicHash cryptographicHash(SecureTextBuffer::checksumAlgorithm);
+    while ((read = temporaryBuffer->read(buffer, bufferLength)) > 0) {
+        cryptographicHash.addData(buffer, read);
+        if (tempFile.write(buffer, read) == -1) {
             return false;
         }
+    }
+    if (!tempFile.flush()) {
+        return false;
+    }
 
-        // go to QBuffer start
-        temporaryBuffer->seek(0);
+    // prepare data for KAuth action
+    QVariantMap kAuthActionArgs;
+    kAuthActionArgs.insert(QLatin1String("sourceFile"), tempFile.fileName());
+    kAuthActionArgs.insert(QLatin1String("targetFile"), filename);
+    kAuthActionArgs.insert(QLatin1String("checksum"), cryptographicHash.result());
+    kAuthActionArgs.insert(QLatin1String("ownerId"), ownerId);
+    kAuthActionArgs.insert(QLatin1String("groupId"), groupId);
 
-        // read contents of QBuffer and add them to checksum utility as well as to QTemporaryFile
-        char buffer[bufferLength];
-        qint64 read = -1;
-        QCryptographicHash cryptographicHash(SecureTextBuffer::checksumAlgorithm);
-        while ((read = temporaryBuffer->read(buffer, bufferLength)) > 0) {
-            cryptographicHash.addData(buffer, read);
-            if (tempFile.write(buffer, read) == -1) {
-                return false;
-            }
-        }
-        if (!tempFile.flush()) {
+    // call save with elevated privileges
+    if (KTextEditor::EditorPrivate::unitTestMode()) {
+        // unit testing purposes only
+        if (!SecureTextBuffer::savefile(kAuthActionArgs).succeeded()) {
             return false;
         }
-
-        // prepare data for KAuth action
-        QVariantMap kAuthActionArgs;
-        kAuthActionArgs.insert(QLatin1String("sourceFile"), tempFile.fileName());
-        kAuthActionArgs.insert(QLatin1String("targetFile"), filename);
-        kAuthActionArgs.insert(QLatin1String("checksum"), cryptographicHash.result());
-        kAuthActionArgs.insert(QLatin1String("ownerId"), ownerId);
-        kAuthActionArgs.insert(QLatin1String("groupId"), groupId);
-
-        // call save with elevated privileges
-        if (KTextEditor::EditorPrivate::unitTestMode()) {
-            // unit testing purposes only
-            if (!SecureTextBuffer::savefile(kAuthActionArgs).succeeded()) {
-                return false;
-            }
-        } else {
-            KAuth::Action kAuthSaveAction(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile"));
-            kAuthSaveAction.setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
-            kAuthSaveAction.setArguments(kAuthActionArgs);
-            KAuth::ExecuteJob *job = kAuthSaveAction.execute();
-            if (!job->exec()) {
-                return false;
-            }
+    } else {
+        KAuth::Action kAuthSaveAction(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile"));
+        kAuthSaveAction.setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
+        kAuthSaveAction.setArguments(kAuthActionArgs);
+        KAuth::ExecuteJob *job = kAuthSaveAction.execute();
+        if (!job->exec()) {
+            return false;
         }
     }
 
-    // remember this revision as last saved
-    m_history.setLastSavedRevision();
-
-    // inform that we have saved the state
-    markModifiedLinesAsSaved();
-
-    // emit that file was saved and be done
-    emit saved(filename);
     return true;
 }
 

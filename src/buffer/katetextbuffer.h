@@ -39,6 +39,8 @@
 // encoding prober
 #include <KEncodingProber>
 
+class KCompressionDevice;
+
 namespace Kate
 {
 
@@ -70,6 +72,7 @@ public:
      * Empty means one empty line in one block.
      * @param parent parent qobject
      * @param blockSize block size in lines the buffer should try to hold, default 64 lines
+     * @param alwaysUseKAuth only set this for unit testing purposes
      */
     explicit TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize = 64, bool alwaysUseKAuth = false);
 
@@ -428,6 +431,17 @@ Q_SIGNALS:
     void textRemoved(const KTextEditor::Range &range, const QString &text);
 
 private:
+
+    /**
+     * Save result which indicates an abstract reason why the operation has
+     * failed
+     */
+    enum class SaveResult {
+        Failed = 0,
+        MissingPermissions,
+        Success
+    };
+
     /**
      * Find block containing given line.
      * @param line we want to find block for this line
@@ -470,6 +484,26 @@ private:
      * Mark all modified lines as lines saved on disk (modified line system).
      */
     void markModifiedLinesAsSaved();
+
+    /**
+     * Save the current buffer content to the given already opened device
+     *
+     * @param filename path name for display/debugging purposes
+     * @param saveFile open device to write the buffer to
+     */
+    bool saveBuffer(const QString &filename, KCompressionDevice &saveFile);
+
+    /**
+     * Attempt to save the buffer content in the given filename location using
+     * current privileges.
+     */
+    SaveResult saveBufferUnprivileged(const QString &filename);
+
+    /**
+     * Attempt to save the buffer content in the given filename location using
+     * escalated privileges.
+     */
+    bool saveBufferEscalated(const QString &filename);
 
 public:
     /**
