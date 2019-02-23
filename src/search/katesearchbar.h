@@ -89,8 +89,7 @@ public:
     bool selectionOnly() const;
     bool matchCase() const;
 
-    // Only used by KTextEditor::ViewPrivate
-    static void nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection);
+    void nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection);
 
 public Q_SLOTS:
     /**
@@ -200,6 +199,7 @@ private:
     void fixForSingleLine(KTextEditor::Range &range, SearchDirection searchDirection);
 
     void showResultMessage();
+    void showSearchWrappedHint(SearchDirection searchDirection);
 
 private:
     KTextEditor::ViewPrivate *const m_view;

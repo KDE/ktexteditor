@@ -304,6 +304,25 @@ void KateSearchBar::showResultMessage()
     }
 }
 
+void KateSearchBar::showSearchWrappedHint(SearchDirection searchDirection)
+{
+    // show message widget when wrapping
+    const QIcon icon = (searchDirection == SearchForward)
+        ? QIcon::fromTheme(QStringLiteral("go-down-search"))
+        : QIcon::fromTheme(QStringLiteral("go-up-search"));
+
+    if (!m_wrappedMessage || m_lastSearchDirection != searchDirection) {
+        m_lastSearchDirection = searchDirection;
+        m_wrappedMessage = new KTextEditor::Message(i18n("Search wrapped"), KTextEditor::Message::Positive);
+        m_wrappedMessage->setIcon(icon);
+        m_wrappedMessage->setPosition(KTextEditor::Message::CenterInView);
+        m_wrappedMessage->setAutoHide(2000);
+        m_wrappedMessage->setAutoHideMode(KTextEditor::Message::Immediate);
+        m_wrappedMessage->setView(m_view);
+        m_view->doc()->postMessage(m_wrappedMessage);
+    }
+}
+
 void KateSearchBar::highlightMatch(const Range &range)
 {
     KTextEditor::MovingRange *const highlight = m_view->doc()->newMovingRange(range, Kate::TextRange::DoNotExpand);
@@ -627,22 +646,7 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
 
     }
     if (wrap) {
-        // show message widget when wrapping
-        const QIcon icon = searchDirection == SearchForward
-            ? QIcon::fromTheme(QStringLiteral("go-down-search"))
-            : QIcon::fromTheme(QStringLiteral("go-up-search"));
-
-        if (!m_wrappedMessage || m_lastSearchDirection != searchDirection) {
-            m_lastSearchDirection = searchDirection;
-            m_wrappedMessage = new KTextEditor::Message(i18n("Search wrapped"), KTextEditor::Message::Positive);
-            m_wrappedMessage->setIcon(icon);
-            m_wrappedMessage->setPosition(KTextEditor::Message::CenterInView);
-            m_wrappedMessage->setAutoHide(2000);
-            m_wrappedMessage->setAutoHideMode(KTextEditor::Message::Immediate);
-            m_wrappedMessage->setView(m_view);
-            m_view->doc()->postMessage(m_wrappedMessage);
-        }
-
+        showSearchWrappedHint(searchDirection);
         inputRange = m_view->document()->documentRange();
         match.searchText(inputRange, searchPattern());
     }
@@ -1279,7 +1283,7 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
     givePatternFeedback();
 }
 
-/*static*/ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection)
+void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection)
 {
     const bool selected = view->selection();
     if (selected) {
@@ -1308,6 +1312,7 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
             selectRange(view, match.range());
         } else {
             // Find, second try
+            showSearchWrappedHint(searchDirection);
             if (searchDirection == SearchForward) {
                 inputRange.setRange(Cursor(0, 0), selRange.start());
             } else {

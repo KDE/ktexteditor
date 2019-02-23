@@ -136,12 +136,12 @@ void KateNormalInputMode::find()
 
 void KateNormalInputMode::findSelectedForwards()
 {
-    KateSearchBar::nextMatchForSelection(view(), KateSearchBar::SearchForward);
+    searchBar(IncrementalSearchBarOrKeepMode)->nextMatchForSelection(view(), KateSearchBar::SearchForward);
 }
 
 void KateNormalInputMode::findSelectedBackwards()
 {
-    KateSearchBar::nextMatchForSelection(view(), KateSearchBar::SearchBackward);
+    searchBar(IncrementalSearchBarOrKeepMode)->nextMatchForSelection(view(), KateSearchBar::SearchBackward);
 }
 
 void KateNormalInputMode::findReplace()
