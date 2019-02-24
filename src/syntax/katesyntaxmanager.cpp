@@ -586,7 +586,7 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
         settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? one : zero) : QString());
         settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? one : zero) : QString());
         settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? one : zero) : QString());
-        settings << (p->hasProperty(QTextFormat::FontUnderline) ? (p->fontUnderline() ? one : zero) : QString());
+        settings << (p->hasProperty(QTextFormat::TextUnderlineStyle) ? (p->fontUnderline() ? one : zero) : QString());
         settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16) : dash);
         settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16) : dash);
         settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : QString());
