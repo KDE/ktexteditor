@@ -26,6 +26,7 @@
 #include <ktexteditor/attribute.h>
 #include "katetextline.h"
 #include "katelinelayout.h"
+#include "kateconfig.h"
 
 #include <QFont>
 #include <QFontMetricsF>
@@ -172,17 +173,17 @@ public:
     void setShowTabs(bool showTabs);
 
     /**
-     * @returns whether trailing spaces should be shown.
+     * Set which spaces should be rendered
      */
-    inline bool showTrailingSpaces() const
+    void setShowSpaces(KateDocumentConfig::WhitespaceRendering showSpaces);
+
+    /**
+     * @returns whether which spaces should be rendered
+     */
+    inline KateDocumentConfig::WhitespaceRendering showSpaces() const
     {
         return m_showSpaces;
     }
-
-    /**
-     * Set whether a mark should be painted for trailing spaces.
-     */
-    void setShowTrailingSpaces(bool showSpaces);
 
 	/**
 	 * Update marker size shown.
@@ -372,7 +373,7 @@ private:
     /**
      * Paint a trailing space on position (x, y).
      */
-    void paintTrailingSpace(QPainter &paint, qreal x, qreal y);
+    void paintSpace(QPainter &paint, qreal x, qreal y);
     /**
      * Paint a tab stop marker on position (x, y).
      */
@@ -410,7 +411,7 @@ private:
     bool m_drawCaret;
     bool m_showSelections;
     bool m_showTabs;
-    bool m_showSpaces;
+    KateDocumentConfig::WhitespaceRendering m_showSpaces = KateDocumentConfig::None;
     float m_markerSize;
     bool m_showNonPrintableSpaces;
     bool m_printerFriendly;

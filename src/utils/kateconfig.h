@@ -209,6 +209,12 @@ public:
         tabSmart = 2      //!< indents in leading space, otherwise inserts tab
     };
 
+    enum WhitespaceRendering {
+        None,
+        Trailing,
+        All
+    };
+
     uint tabHandling() const;
     void setTabHandling(uint tabHandling);
 
@@ -236,8 +242,8 @@ public:
     void setShowTabs(bool on);
     bool showTabs() const;
 
-    void setShowSpaces(bool on);
-    bool showSpaces() const;
+    void setShowSpaces(WhitespaceRendering on);
+    WhitespaceRendering showSpaces() const;
 
 	void setMarkerSize(uint markerSize);
 	uint markerSize() const;
@@ -361,7 +367,7 @@ private:
     bool m_showTabsSet : 1;
     bool m_showTabs : 1;
     bool m_showSpacesSet : 1;
-    bool m_showSpaces : 1;
+    WhitespaceRendering m_showSpaces : 2;
     uint m_markerSize = 1;
     bool m_replaceTabsDynSet : 1;
     bool m_replaceTabsDyn : 1;

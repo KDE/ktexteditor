@@ -4605,7 +4605,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             } else if (var == QLatin1String("show-tabs") && checkBoolValue(val, &state)) {
                 m_config->setShowTabs(state);
             } else if (var == QLatin1String("show-trailing-spaces") && checkBoolValue(val, &state)) {
-                m_config->setShowSpaces(state);
+                m_config->setShowSpaces(state ? KateDocumentConfig::Trailing : KateDocumentConfig::None);
             } else if (var == QLatin1String("space-indent") && checkBoolValue(val, &state)) {
                 // this is for backward compatibility; see below
                 spaceIndent = state;

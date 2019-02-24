@@ -106,7 +106,7 @@ void BaseTest::init()
     Q_ASSERT(vi_input_mode_manager);
     vi_global = vi_input_mode->globalState();
     Q_ASSERT(vi_global);
-    kate_document->config()->setShowSpaces(true); // Flush out some issues in the KateRenderer when rendering spaces.
+    kate_document->config()->setShowSpaces(KateDocumentConfig::Trailing); // Flush out some issues in the KateRenderer when rendering spaces.
     kate_view->config()->setScrollBarMiniMap(false);
     kate_view->config()->setScrollBarPreview(false);
 

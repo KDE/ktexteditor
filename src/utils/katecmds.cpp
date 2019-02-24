@@ -403,7 +403,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
             } else if (cmd == QLatin1String("set-show-tabs")) {
                 config->setShowTabs(enable);
             } else if (cmd == QLatin1String("set-show-trailing-spaces")) {
-                config->setShowSpaces(enable);
+                config->setShowSpaces(enable ? KateDocumentConfig::Trailing : KateDocumentConfig::None);
             } else if (cmd == QLatin1String("set-word-wrap")) {
                 v->doc()->setWordWrap(enable);
             }

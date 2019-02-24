@@ -673,7 +673,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     connect(textareaUi->cmbDynamicWordWrapIndicator, SIGNAL(activated(int)), this, SLOT(slotChanged()));
     connect(textareaUi->sbDynamicWordWrapDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowSpaces, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->spacesComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateViewDefaultsConfig::slotChanged);
     connect(textareaUi->chkShowIndentationLines, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->sliSetMarkerSize, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowWholeBracketExpression, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
@@ -720,7 +720,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setDynWordWrapIndicators(textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
     KateViewConfig::global()->setDynWordWrapAlignIndent(textareaUi->sbDynamicWordWrapDepth->value());
     KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
-    KateDocumentConfig::global()->setShowSpaces(textareaUi->chkShowSpaces->isChecked());
+    KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
     KateDocumentConfig::global()->setMarkerSize(textareaUi->sliSetMarkerSize->value());
     KateViewConfig::global()->setLineNumbers(bordersUi->chkLineNumbers->isChecked());
     KateViewConfig::global()->setIconBar(bordersUi->chkIconBorder->isChecked());
@@ -753,7 +753,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
     textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
     textareaUi->chkShowTabs->setChecked(KateDocumentConfig::global()->showTabs());
-    textareaUi->chkShowSpaces->setChecked(KateDocumentConfig::global()->showSpaces());
+    textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
     textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
     bordersUi->chkLineNumbers->setChecked(KateViewConfig::global()->lineNumbers());
     bordersUi->chkIconBorder->setChecked(KateViewConfig::global()->iconBar());

@@ -148,25 +148,27 @@
      <property name="title">
       <string>Whitespace Highlighting</string>
      </property>
-     <layout class="QVBoxLayout" name="_2">
-      <item>
-       <widget class="QCheckBox" name="chkShowTabs">
-        <property name="whatsThis">
-         <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
-        </property>
-        <property name="text">
-         <string>&amp;Highlight tabulators</string>
-        </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="2" column="1">
+       <widget class="QComboBox" name="spacesComboBox">
+        <item>
+         <property name="text">
+          <string>None</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Trailing</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>All</string>
+         </property>
+        </item>
        </widget>
       </item>
-      <item>
-       <widget class="QCheckBox" name="chkShowSpaces">
-        <property name="text">
-         <string>Highlight trailing &amp;spaces</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+      <item row="4" column="0">
        <widget class="QGroupBox" name="gbMarker">
         <property name="flat">
          <bool>true</bool>
@@ -179,26 +181,50 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QSlider" name="sliSetMarkerSize">
-           <property name="whatsThis">
-            <string>Size of the visible highlight marker.</string>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>5</number>
-           </property>
-           <property name="singleStep">
-            <number>1</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
         </layout>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSlider" name="sliSetMarkerSize">
+        <property name="whatsThis">
+         <string>Size of the visible highlight marker.</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Whitepaces</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="chkShowTabs">
+        <property name="whatsThis">
+         <string>The editor will display a symbol to indicate the presence of a tab in the text.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Highlight tabulators</string>
+        </property>
        </widget>
       </item>
      </layout>
@@ -306,8 +332,8 @@ beginning of a file.</string>
   <tabstop>chkDynWrapAtStaticMarker</tabstop>
   <tabstop>cmbDynamicWordWrapIndicator</tabstop>
   <tabstop>sbDynamicWordWrapDepth</tabstop>
+  <tabstop>spacesComboBox</tabstop>
   <tabstop>chkShowTabs</tabstop>
-  <tabstop>chkShowSpaces</tabstop>
   <tabstop>sliSetMarkerSize</tabstop>
   <tabstop>chkShowIndentationLines</tabstop>
   <tabstop>chkShowWholeBracketExpression</tabstop>

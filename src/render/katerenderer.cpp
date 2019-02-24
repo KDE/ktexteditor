@@ -59,7 +59,7 @@ KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding 
     , m_drawCaret(true)
     , m_showSelections(true)
     , m_showTabs(true)
-    , m_showSpaces(true)
+    , m_showSpaces(KateDocumentConfig::Trailing)
     , m_showNonPrintableSpaces(false)
     , m_printerFriendly(false)
     , m_config(new KateRendererConfig(this))
@@ -116,7 +116,7 @@ void KateRenderer::setShowTabs(bool showTabs)
     m_showTabs = showTabs;
 }
 
-void KateRenderer::setShowTrailingSpaces(bool showSpaces)
+void KateRenderer::setShowSpaces(KateDocumentConfig::WhitespaceRendering showSpaces)
 {
     m_showSpaces = showSpaces;
 }
@@ -179,7 +179,7 @@ void KateRenderer::setPrinterFriendly(bool printerFriendly)
 {
     m_printerFriendly = printerFriendly;
     setShowTabs(false);
-    setShowTrailingSpaces(false);
+    setShowSpaces(KateDocumentConfig::None);
     setShowSelections(false);
     setDrawCaret(false);
 }
@@ -271,7 +271,7 @@ void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y)
     paint.setPen(penBackup);
 }
 
-void KateRenderer::paintTrailingSpace(QPainter &paint, qreal x, qreal y)
+void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y)
 {
     QPen penBackup(paint.pen());
     QPen pen(config()->tabMarkerColor());
@@ -719,22 +719,26 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
 
             // draw trailing spaces
-            if (showTrailingSpaces()) {
+            if (showSpaces() != KateDocumentConfig::None) {
                 int spaceIndex = line.endCol() - 1;
-                int trailingPos = range->textLine()->lastChar();
-                if (trailingPos < 0) {
-                    trailingPos = 0;
-                }
+                const int trailingPos = showSpaces() == KateDocumentConfig::All ? 0 : qMax(range->textLine()->lastChar(), 0);
+
                 if (spaceIndex >= trailingPos) {
-                    while (spaceIndex >= line.startCol() && text.at(spaceIndex).isSpace()) {
+                    for (; spaceIndex >= line.startCol(); --spaceIndex) {
+                        if (!text.at(spaceIndex).isSpace()) {
+                            if (showSpaces() == KateDocumentConfig::Trailing)
+                                break;
+                            else
+                                continue;
+                        }
+
                         if (text.at(spaceIndex) != QLatin1Char('\t') || !showTabs()) {
                             if (range->layout()->textOption().alignment() == Qt::AlignRight) { // Draw on left for RTL lines
-                                paintTrailingSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
+                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart - spaceWidth() / 2.0, y);
                             } else {
-                                paintTrailingSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
+                                paintSpace(paint, line.lineLayout().cursorToX(spaceIndex) - xStart + spaceWidth() / 2.0, y);
                             }
                         }
-                        --spaceIndex;
                     }
                 }
             }

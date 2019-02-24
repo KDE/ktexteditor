@@ -178,7 +178,7 @@ KateDocumentConfig::KateDocumentConfig()
       m_smartHomeSet(false),
       m_showTabsSet(false),
       m_showSpacesSet(false),
-
+      m_showSpaces(None),
       m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
       m_newLineAtEofSet(false),
@@ -223,6 +223,7 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_smartHomeSet(false),
       m_showTabsSet(false),
       m_showSpacesSet(false),
+      m_showSpaces(None),
       m_markerSize(1),
       m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
@@ -262,6 +263,7 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
       m_smartHomeSet(false),
       m_showTabsSet(false),
       m_showSpacesSet(false),
+      m_showSpaces(None),
       m_markerSize(1),
       m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
@@ -345,7 +347,7 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setKeepExtraSpaces(config.readEntry(KEY_KEEP_EXTRA_SPACES, false));
     setIndentPastedText(config.readEntry(KEY_INDENT_PASTED_TEXT, false));
     setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, true));
-    setShowSpaces(config.readEntry(KEY_SHOW_SPACES, false));
+    setShowSpaces(KateDocumentConfig::WhitespaceRendering(config.readEntry(KEY_SHOW_SPACES, int(KateDocumentConfig::None))));
     setMarkerSize(config.readEntry(KEY_MARKER_SIZE, 1));
     setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, true));
     setRemoveSpaces(config.readEntry(KEY_REMOVE_SPACES, 0));
@@ -396,7 +398,7 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_KEEP_EXTRA_SPACES, keepExtraSpaces());
     config.writeEntry(KEY_INDENT_PASTED_TEXT, indentPastedText());
     config.writeEntry(KEY_BACKSPACE_INDENTS, backspaceIndents());
-    config.writeEntry(KEY_SHOW_SPACES, showSpaces());
+    config.writeEntry(KEY_SHOW_SPACES, int(showSpaces()));
     config.writeEntry(KEY_MARKER_SIZE, markerSize());
     config.writeEntry(KEY_REPLACE_TABS_DYN, replaceTabsDyn());
     config.writeEntry(KEY_REMOVE_SPACES, removeSpaces());
@@ -729,7 +731,7 @@ bool KateDocumentConfig::showTabs() const
     return s_global->showTabs();
 }
 
-void KateDocumentConfig::setShowSpaces(bool on)
+void KateDocumentConfig::setShowSpaces(WhitespaceRendering on)
 {
     if (m_showSpacesSet && m_showSpaces == on) {
         return;
@@ -743,7 +745,7 @@ void KateDocumentConfig::setShowSpaces(bool on)
     configEnd();
 }
 
-bool KateDocumentConfig::showSpaces() const
+KateDocumentConfig::WhitespaceRendering KateDocumentConfig::showSpaces() const
 {
     if (m_showSpacesSet || isGlobal()) {
         return m_showSpaces;

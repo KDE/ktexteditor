@@ -2986,7 +2986,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     renderer()->setCaretStyle(m_currentInputMode->caretStyle());
     renderer()->setShowTabs(doc()->config()->showTabs());
-    renderer()->setShowTrailingSpaces(doc()->config()->showSpaces());
+    renderer()->setShowSpaces(doc()->config()->showSpaces());
     renderer()->updateMarkerSize();
 
     int sy = startz * h;
