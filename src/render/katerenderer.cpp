@@ -546,11 +546,6 @@ void KateRenderer::assignSelectionBrushesFromAttribute(QTextLayout::FormatRange 
     }
 }
 
-/*
-The ultimate line painting function.
-Currently missing features:
-- draw indent lines
-*/
 void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int xStart, int xEnd, const KTextEditor::Cursor *cursor, PaintTextLineFlags flags)
 {
     Q_ASSERT(range->isValid());
@@ -684,14 +679,15 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                         paint.fillRect(area, drawBrush);
                     }
                 }
-            }
-            // Draw indent lines
-            if (showIndentLines() && i == 0) {
-                const qreal w = spaceWidth();
-                const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
 
-                for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
-                    paintIndentMarker(paint, x * w + 1 - xStart, range->line());
+                // Draw indent lines
+                if (showIndentLines() && i == 0) {
+                    const qreal w = spaceWidth();
+                    const int lastIndentColumn = range->textLine()->indentDepth(m_tabWidth);
+
+                    for (int x = m_indentWidth; x < lastIndentColumn; x += m_indentWidth) {
+                        paintIndentMarker(paint, x * w + 1 - xStart, range->line());
+                    }
                 }
             }
 
