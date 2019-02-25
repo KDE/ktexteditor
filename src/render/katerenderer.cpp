@@ -984,9 +984,21 @@ void KateRenderer::updateConfig()
 
 void KateRenderer::updateFontHeight()
 {
-    // ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
-    // use font line spacing, this includes the leading
-    m_fontHeight = qMax(1, qCeil(config()->fontMetrics().lineSpacing()));
+    /**
+     * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
+     *
+     * use a line spacing that matches the code in qt to layout/paint text
+     *
+     * see bug 403868
+     * https://github.com/qt/qtbase/blob/5.12/src/gui/text/qtextlayout.cpp (line 2270 at the moment) where the text height is set as:
+     *
+     * qreal height = maxY + fontHeight - minY;
+     *
+     * with fontHeight:
+     *
+     * qreal fontHeight = font.ascent() + font.descent();
+     */
+    m_fontHeight = qMax(1, qCeil(config()->fontMetrics().ascent() + config()->fontMetrics().descent()));
 }
 
 void KateRenderer::updateMarkerSize()

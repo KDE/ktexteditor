@@ -2713,7 +2713,7 @@ void KateViewInternal::mouseDoubleClickEvent(QMouseEvent *e)
         m_scrollY = 0;
 
         m_scrollTimer.start(50);
-        
+
         e->accept();
     } else {
         e->ignore();
@@ -2989,59 +2989,48 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
     renderer()->setShowSpaces(doc()->config()->showSpaces());
     renderer()->updateMarkerSize();
 
-    int sy = startz * h;
+    /**
+     * paint line by line
+     * this includes parts that span areas without real lines
+     * translate to first line to paint
+     */
     paint.translate(unionRect.x(), startz * h);
-
     for (uint z = startz; z <= endz; z++) {
-        paint.save();
-
+        /**
+         * paint regions without lines mapped to
+         */
         if ((z >= lineRangesSize) || (cache()->viewLine(z).line() == -1)) {
             if (!(z >= lineRangesSize)) {
                 cache()->viewLine(z).setDirty(false);
             }
-
-            // set clipping region if we paint the line above us, too
-            paint.setClipRect(QRect(0, 0, unionRect.width(), h));
             paint.fillRect(0, 0, unionRect.width(), h, renderer()->config()->backgroundColor());
+        }
 
-            // second: paint previous line elements, that span into our line like _ in last line, bug 335079
-            if (z > 0 && (z-1 < lineRangesSize) && (cache()->viewLine(z-1).line() != -1)) {
-                KateTextLayout &previousLine = cache()->viewLine(z-1);
-                paint.save();
-                paint.translate(QPoint(0, h * - (previousLine.viewLine() + 1)));
-                renderer()->paintTextLine(paint, previousLine.kateLineLayout(), xStart, xEnd, &pos);
-                paint.restore();
-            }
-        } else {
-            //qCDebug(LOG_KTE)<<"KateViewInternal::paintEvent(QPaintEvent *e):cache()->viewLine"<<z;
-            KateTextLayout &thisLine = cache()->viewLine(z);
-
-            /* If viewLine() returns non-zero, then a document line was split
-               in several visual lines, and we're trying to paint visual line
-               that is not the first.  In that case, this line was already
-               painted previously, since KateRenderer::paintTextLine paints
-               all visual lines.
-               Except if we're at the start of the region that needs to
-               be painted -- when no previous calls to paintTextLine were made.
+        /**
+         * paint text lines
+         */
+        else {
+            /**
+             * If viewLine() returns non-zero, then a document line was split
+             * in several visual lines, and we're trying to paint visual line
+             * that is not the first.  In that case, this line was already
+             * painted previously, since KateRenderer::paintTextLine paints
+             * all visual lines.
+             *
+             * Except if we're at the start of the region that needs to
+             * be painted -- when no previous calls to paintTextLine were made.
             */
+            KateTextLayout &thisLine = cache()->viewLine(z);
             if (!thisLine.viewLine() || z == startz) {
-                //qDebug() << "paint text: line: " << thisLine.line() << " viewLine " << thisLine.viewLine() << " x: " << unionRect.x() << " y: " << unionRect.y() << " width: " << xEnd-xStart << " height: " << h << endl;
-
-                // first: paint our line
-                // set clipping region if we paint the line above us, too
+                /**
+                 * paint our line
+                 * set clipping region to only paint the relevant parts
+                 */
+                paint.save();
                 paint.translate(QPoint(0, h * - thisLine.viewLine()));
                 paint.setClipRect(QRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount()));
                 renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, &pos);
-                paint.translate(0, h * thisLine.viewLine());
-
-                // second: paint previous line elements, that span into our line like _, bug 335079
-                if (z > 0) {
-                    KateTextLayout &previousLine = cache()->viewLine(z-1);
-                    paint.save();
-                    paint.translate(QPoint(0, h * - (previousLine.viewLine() + 1)));
-                    renderer()->paintTextLine(paint, previousLine.kateLineLayout(), xStart, xEnd, &pos);
-                    paint.restore();
-                }
+                paint.restore();
 
                 /**
                  * line painted, reset and state + mark line as non-dirty
@@ -3050,12 +3039,14 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
             }
         }
 
-        paint.restore();
+        /**
+         * translate to next line
+         */
         paint.translate(0, h);
-        sy += h;
     }
 
     paint.restore();
+
     if (m_textAnimation) {
         m_textAnimation->draw(paint);
     }
