@@ -72,7 +72,7 @@ protected:
      *
      * @see applyFolding(), highlightLine()
      */
-    virtual void applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format) override;
+    void applyFormat(int offset, int length, const KSyntaxHighlighting::Format &format) override;
 
     /**
      * Reimplement this to apply folding to your output. The provided
@@ -89,7 +89,7 @@ protected:
      *
      * @see applyFormat(), highlightLine(), FoldingRegion
      */
-    virtual void applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region) override;
+    void applyFolding(int offset, int length, KSyntaxHighlighting::FoldingRegion region) override;
 
 public:
     /**
