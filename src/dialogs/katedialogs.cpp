@@ -535,7 +535,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     , spellCheckConfigTab(new KateSpellCheckConfigTab(this))
 {
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
 
     // add all tabs
@@ -646,7 +646,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     QLayout *layout = new QVBoxLayout(this);
     QTabWidget *tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
 
     QWidget *textareaTab = new QWidget(tabWidget);
     textareaUi->setupUi(textareaTab);
@@ -812,7 +812,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     // since it is another tab itself on the config dialog. This means we should
     // initialize, add and work with as we do with modeConfigPage (ereslibre)
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
 
     QWidget *tmpWidget = new QWidget(tabWidget);
@@ -1067,7 +1067,7 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     Q_ASSERT(m_view != nullptr);    // this bar widget is pointless w/o a view
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
 
     QToolButton *btn = new QToolButton(this);
     btn->setAutoRaise(true);
@@ -1213,7 +1213,7 @@ KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *pa
     Q_ASSERT(m_view != nullptr); // this bar widget is pointless w/o a view
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
     //topLayout->setSpacing(spacingHint());
     m_dictionaryComboBox = new Sonnet::DictionaryComboBox(centralWidget());
     connect(m_dictionaryComboBox, SIGNAL(dictionaryChanged(QString)),

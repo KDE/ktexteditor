@@ -1038,7 +1038,7 @@ KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *
 {
     QHBoxLayout *topLayout = new QHBoxLayout();
     centralWidget()->setLayout(topLayout);
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
     m_lineEdit = new KateCmdLineEdit(this, view);
     connect(m_lineEdit, SIGNAL(hideRequested()), SIGNAL(hideMe()));
     topLayout->addWidget(m_lineEdit);
@@ -2961,7 +2961,7 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(this);
 
     // NOTE: Here be cosmetics.
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
 
     // hide button
     if (addCloseButton) {
@@ -2988,7 +2988,7 @@ KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivat
     m_layout = new QVBoxLayout(this);
     m_stack = new QStackedWidget(this);
     m_layout->addWidget(m_stack);
-    m_layout->setMargin(0);
+    m_layout->setContentsMargins(0, 0, 0, 0);
 
     m_stack->hide();
     hide();

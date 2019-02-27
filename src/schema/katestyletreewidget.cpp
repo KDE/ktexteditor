@@ -155,7 +155,7 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     docfont = KateRendererConfig::global()->font();
 
     QPalette pal = viewport()->palette();
-    pal.setColor(QPalette::Background, bgcol);
+    pal.setColor(QPalette::Window, bgcol);
     viewport()->setPalette(pal);
 }
 

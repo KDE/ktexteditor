@@ -291,7 +291,7 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
         item->setIcon(cp->icon());
 
         QVBoxLayout *topLayout = new QVBoxLayout(page);
-        topLayout->setMargin(0);
+        topLayout->setContentsMargins(0, 0, 0, 0);
 
         connect(kd->button(QDialogButtonBox::Apply), SIGNAL(clicked()), cp, SLOT(apply()));
         topLayout->addWidget(cp);

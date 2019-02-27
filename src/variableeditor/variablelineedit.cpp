@@ -49,7 +49,7 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     m_listview = nullptr;
 
     QHBoxLayout *hl = new QHBoxLayout();
-    hl->setMargin(0);
+    hl->setContentsMargins(0, 0, 0, 0);
     hl->setSpacing(QApplication::style()->pixelMetric(QStyle::PM_DefaultLayoutSpacing));
     setLayout(hl);
 
@@ -65,7 +65,7 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     m_popup->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
     QVBoxLayout *l = new QVBoxLayout(m_popup);
     l->setSpacing(0);
-    l->setMargin(0);
+    l->setContentsMargins(0, 0, 0, 0);
     m_popup->setLayout(l);
 
     // forward text changed signal

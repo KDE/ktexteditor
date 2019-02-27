@@ -325,7 +325,7 @@ void KTextEditor::ViewPrivate::setupLayout()
 
     // define layout
     QGridLayout *layout=new QGridLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
 
     const bool frameAroundContents = style()->styleHint(QStyle::SH_ScrollView_FrameOnlyAroundContents, &opt, this);

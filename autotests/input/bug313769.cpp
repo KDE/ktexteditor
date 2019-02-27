@@ -46,7 +46,7 @@ KateView::KateView( KateDocument *doc, QWidget *parent )
 
   // layouting ;)
   m_vBox = new QVBoxLayout (this);
-  m_vBox->setMargin (0);
+  m_vBox->setContentsMargins(0, 0, 0, 0);
   m_vBox->setSpacing (0);
 
   // add top viewbar...
@@ -65,7 +65,7 @@ KateView::KateView( KateDocument *doc, QWidget *parent )
   // add hbox: KateIconBorder | KateViewInternal | KateScrollBar
   QHBoxLayout *hbox = new QHBoxLayout ();
   m_vBox->addLayout (hbox, 100);
-  hbox->setMargin (0);
+  hbox->setContentsMargins(0, 0, 0, 0);
   hbox->setSpacing (0);
 
   QStyleOption option;

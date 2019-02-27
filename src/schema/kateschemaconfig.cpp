@@ -901,7 +901,7 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
       m_currentSchema(-1)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
 
     // header
     QHBoxLayout *headerLayout = new QHBoxLayout;

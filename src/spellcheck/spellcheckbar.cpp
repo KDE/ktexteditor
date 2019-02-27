@@ -185,7 +185,7 @@ void SpellCheckBar::initConnections()
 void SpellCheckBar::initGui()
 {
     QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     centralWidget()->setLayout(layout);
 
     d->wdg = new QWidget(this);

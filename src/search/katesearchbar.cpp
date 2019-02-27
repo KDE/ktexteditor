@@ -177,7 +177,7 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     // Modify parent
     QWidget *const widget = centralWidget();
     widget->setLayout(m_layout);
-    m_layout->setMargin(0);
+    m_layout->setContentsMargins(0, 0, 0, 0);
 
     // allow to have small size, for e.g. Kile
     setMinimumWidth(100);

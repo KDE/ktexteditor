@@ -81,7 +81,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * just add our status bar to central widget, full sized
      */
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
-    topLayout->setMargin(0);
+    topLayout->setContentsMargins(0, 0, 0, 0);
     topLayout->setSpacing(4);
 
     /**

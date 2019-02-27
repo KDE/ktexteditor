@@ -42,7 +42,7 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
     , m_autoHideTime(-1)
 {
     QVBoxLayout *l = new QVBoxLayout();
-    l->setMargin(0);
+    l->setContentsMargins(0, 0, 0, 0);
 
     m_messageWidget = new KMessageWidget(this);
     m_messageWidget->setCloseButtonVisible(false);
