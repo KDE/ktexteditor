@@ -72,7 +72,7 @@ void WordCounter::textRemoved(KTextEditor::Document *, const KTextEditor::Range 
         m_countByLine.remove(startLine, removedLines);
     }
 
-    if (m_countByLine.size() > 0) {
+    if (!m_countByLine.isEmpty()) {
         m_countByLine[startLine] = -1;
         m_timer.start();
     } else {

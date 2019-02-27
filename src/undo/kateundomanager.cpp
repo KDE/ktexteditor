@@ -245,7 +245,7 @@ void KateUndoManager::undo()
 {
     Q_ASSERT(m_editCurrentUndo == nullptr); // undo is not supported while we care about notifications (call editEnd() first)
 
-    if (undoItems.count() > 0) {
+    if (!undoItems.isEmpty()) {
         emit undoStart(document());
 
         undoItems.last()->undo(activeView());
@@ -261,7 +261,7 @@ void KateUndoManager::redo()
 {
     Q_ASSERT(m_editCurrentUndo == nullptr); // redo is not supported while we care about notifications (call editEnd() first)
 
-    if (redoItems.count() > 0) {
+    if (!redoItems.isEmpty()) {
         emit redoStart(document());
 
         redoItems.last()->redo(activeView());

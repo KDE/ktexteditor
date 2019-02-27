@@ -235,7 +235,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     }
 
     // if we have any matching commands so far, check which ones still match
-    if (m_matchingCommands.size() > 0) {
+    if (!m_matchingCommands.isEmpty()) {
         int n = m_matchingCommands.size() - 1;
 
         // remove commands not matching anymore
@@ -2889,7 +2889,7 @@ Range NormalViMode::motionToPreviousSentence()
             return Range(i, 0, InclusiveMotion);
         }
 
-        if (column < 0 && line.size() > 0) {
+        if (column < 0 && !line.isEmpty()) {
             column = line.size() - 1;
         }
 

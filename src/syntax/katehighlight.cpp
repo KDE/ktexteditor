@@ -304,7 +304,7 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QVect
         QStringList s = config.readEntry(p->name(), QStringList());
 
 //    qCDebug(LOG_KTE)<<p->name<<s.count();
-        if (s.count() > 0) {
+        if (!s.isEmpty()) {
 
             while (s.count() < 10) {
                 s << QString();

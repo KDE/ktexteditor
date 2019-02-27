@@ -62,7 +62,7 @@ KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode
 
 KTextEditor::Range KateMatch::range() const
 {
-    if (m_resultRanges.size() > 0) {
+    if (!m_resultRanges.isEmpty()) {
         return m_resultRanges[0];
     }
 
