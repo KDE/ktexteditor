@@ -886,6 +886,12 @@ Q_SIGNALS:
      */
     void delayedUpdateOfView();
 
+    /**
+     * Emitted whenever the caret enter or leave a range.
+     * ATM only used by KateStatusBar to update the dict button
+     */
+    void caretChangedRange(KTextEditor::View *);
+
 public:
     /**
      * set of ranges which had the mouse inside last time, used for rendering

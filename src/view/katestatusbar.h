@@ -70,6 +70,8 @@ public Q_SLOTS:
 
     void cursorPositionChanged();
 
+    void updateDictionary();
+
     void selectionChanged();
 
     void modifiedChanged();
@@ -84,6 +86,8 @@ public Q_SLOTS:
 
     void configChanged();
 
+    void changeDictionary(QAction *action);
+
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
     void contextMenuEvent(QContextMenuEvent *event) override;
@@ -97,6 +101,9 @@ private:
     StatusBarButton *m_mode = nullptr;
     StatusBarButton *m_encoding = nullptr;
     StatusBarButton *m_tabsIndent = nullptr;
+    StatusBarButton *m_dictionary = nullptr;
+    QActionGroup *m_dictionaryGroup = nullptr;
+    KateStatusBarOpenUpMenu *m_dictionaryMenu = nullptr;
     QMenu *m_indentSettingsMenu;
     unsigned int m_modifiedStatus;
     unsigned int m_selectionMode;

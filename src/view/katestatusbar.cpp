@@ -31,6 +31,7 @@
 #include <KLocalizedString>
 #include <KIconUtils>
 #include <KAcceleratorManager>
+#include <Sonnet/Speller>
 
 #include <QHBoxLayout>
 #include <QInputDialog>
@@ -113,9 +114,34 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_inputMode, &StatusBarButton::clicked, [=] { m_view->currentInputMode()->toggleInsert(); });
 
     /**
+     * Add dictionary button which allows user to switch dictionary of the document
+     */
+    m_dictionary = new StatusBarButton(this);
+    topLayout->addWidget(m_dictionary, 0);
+    m_dictionary->setWhatsThis(i18n("Change dictionary"));
+    m_dictionaryMenu = new KateStatusBarOpenUpMenu(m_dictionary);
+    m_dictionaryMenu->addAction(m_view->action("tools_change_dictionary"));
+    m_dictionaryMenu->addAction(m_view->action("tools_clear_dictionary_ranges"));
+    m_dictionaryMenu->addAction(m_view->action("tools_toggle_automatic_spell_checking"));
+    m_dictionaryMenu->addAction(m_view->action("tools_spelling_from_cursor"));
+    m_dictionaryMenu->addAction(m_view->action("tools_spelling"));
+    m_dictionaryMenu->addSeparator();
+    m_dictionaryGroup = new QActionGroup(m_dictionaryMenu);
+    QMapIterator<QString, QString> i(Sonnet::Speller().preferredDictionaries());
+    while (i.hasNext()) {
+        i.next();
+        QAction *action = m_dictionaryGroup->addAction(i.key());
+        action->setData(i.value());
+        action->setToolTip(i.key());
+        action->setCheckable(true);
+        m_dictionaryMenu->addAction(action);
+    }
+    m_dictionary->setMenu(m_dictionaryMenu);
+    connect(m_dictionaryGroup, &QActionGroup::triggered, this, &KateStatusBar::changeDictionary);
+
+    /**
      * allow to change indentation configuration
      */
-
     m_tabsIndent = new StatusBarButton(this);
     topLayout->addWidget(m_tabsIndent);
 
@@ -178,6 +204,9 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     connect(m_view->doc(), &KTextEditor::DocumentPrivate::configChanged, this, &KateStatusBar::documentConfigChanged);
     connect(m_view->document(), &KTextEditor::DocumentPrivate::modeChanged, this, &KateStatusBar::modeChanged);
     connect(m_view, &KTextEditor::ViewPrivate::configChanged, this, &KateStatusBar::configChanged);
+    connect(m_view->doc(), &KTextEditor::DocumentPrivate::defaultDictionaryChanged, this, &KateStatusBar::updateDictionary);
+    connect(m_view->doc(), &KTextEditor::DocumentPrivate::dictionaryRangesPresent, this, &KateStatusBar::updateDictionary);
+    connect(m_view, &KTextEditor::ViewPrivate::caretChangedRange, this, &KateStatusBar::updateDictionary);
 
     updateStatus();
     toggleWordCount(KateViewConfig::global()->showWordCount());
@@ -220,6 +249,7 @@ void KateStatusBar::updateStatus()
     modifiedChanged();
     documentConfigChanged();
     modeChanged();
+    updateDictionary();
 }
 
 void KateStatusBar::selectionChanged()
@@ -248,8 +278,8 @@ void KateStatusBar::cursorPositionChanged()
 {
     KTextEditor::Cursor position(m_view->cursorPositionVirtual());
 
+    // Update line/column label
     QString text;
-
     if (KateViewConfig::global()->showLineCount()) {
         text = i18n("Line %1 of %2, Column %3", QLocale().toString(position.line() + 1)
                                               , QLocale().toString(m_view->doc()->lines())
@@ -260,12 +290,57 @@ void KateStatusBar::cursorPositionChanged()
                                         , QLocale().toString(position.column() + 1)
                    );
     }
-
     if (m_wordCounter) {
         text.append(QStringLiteral(", ") + m_wordCount);
     }
-
     m_cursorPosition->setText(text);
+}
+
+void KateStatusBar::updateDictionary()
+{
+    QString newDict;
+    // Check if at the current cursor position is a special dictionary in use
+    KTextEditor::Cursor position(m_view->cursorPositionVirtual());
+    const QList<QPair<KTextEditor::MovingRange *, QString>> dictRanges = m_view->doc()->dictionaryRanges();
+    for (auto rangeDictPair : dictRanges) {
+        const KTextEditor::MovingRange *range = rangeDictPair.first;
+        if (range->contains(position) || range->end() == position) {
+            newDict = rangeDictPair.second;
+            break;
+        }
+    }
+    // Check if the default dictionary is in use
+    if (newDict.isEmpty()) {
+        newDict = m_view->doc()->defaultDictionary();
+        if (newDict.isEmpty()) {
+            newDict = Sonnet::Speller().defaultLanguage();
+        }
+    }
+    // Update button and menu only on a changed dictionary
+    if (!m_dictionaryGroup->checkedAction() || (m_dictionaryGroup->checkedAction()->data().toString() != newDict) || m_dictionary->text().isEmpty()) {
+        bool found = false;
+        // Remove "-w_accents -variant_0" and such from dict-code to keep it small and clean
+        m_dictionary->setText(newDict.section(QLatin1Char('-'), 0, 0));
+        // For maximum user clearness, change the checked menu option
+        m_dictionaryGroup->blockSignals(true);
+        for (auto a : m_dictionaryGroup->actions()) {
+            if (a->data().toString() == newDict) {
+                a->setChecked(true);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            // User has chose some other dictionary from combo box, we need to add that
+            QString dictName = Sonnet::Speller().availableDictionaries().key(newDict);
+            QAction *action = m_dictionaryGroup->addAction(dictName);
+            action->setData(newDict);
+            action->setCheckable(true);
+            action->setChecked(true);
+            m_dictionaryMenu->addAction(action);
+        }
+        m_dictionaryGroup->blockSignals(false);
+    }
 }
 
 void KateStatusBar::modifiedChanged()
@@ -463,4 +538,17 @@ void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, 
 void KateStatusBar::configChanged()
 {
     toggleWordCount(m_view->config()->showWordCount());
+}
+
+void KateStatusBar::changeDictionary(QAction *action)
+{
+    const QString dictionary = action->data().toString();
+    m_dictionary->setText(dictionary);
+    // Code stolen from KateDictionaryBar::dictionaryChanged
+    KTextEditor::Range selection = m_view->selectionRange();
+    if (selection.isValid() && !selection.isEmpty()) {
+        m_view->doc()->setDictionary(dictionary, selection);
+    } else {
+        m_view->doc()->setDefaultDictionary(dictionary);
+    }
 }

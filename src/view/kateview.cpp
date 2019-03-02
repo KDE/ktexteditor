@@ -3514,6 +3514,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
                     range->feedback()->mouseEnteredRange(range, this);
                 } else {
                     range->feedback()->caretEnteredRange(range, this);
+                    emit caretChangedRange(this);
                 }
             }
 
@@ -3537,6 +3538,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
                 range->feedback()->mouseExitedRange(range, this);
             } else {
                 range->feedback()->caretExitedRange(range, this);
+                emit caretChangedRange(this);
             }
         }
     }
