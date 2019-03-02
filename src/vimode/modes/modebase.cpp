@@ -1342,6 +1342,10 @@ void ModeBase::goToPos(const Range &r)
     c.setLine(r.endLine);
     c.setColumn(r.endColumn);
 
+    if (!c.isValid()) {
+        return;
+    }
+
     if (r.jump) {
         m_viInputModeManager->jumps()->add(m_view->cursorPosition());
     }
