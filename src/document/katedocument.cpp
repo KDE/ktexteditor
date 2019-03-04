@@ -3131,6 +3131,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             if ( nextChar.isEmpty() || ! nextChar.at(0).isLetterOrNumber() ) {
                 insertText(view->cursorPosition(), QString(closingBracket));
                 const auto insertedAt(view->cursorPosition());
+                view->setCursorPosition(cursorPos);
                 m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
                                                             KTextEditor::MovingRange::DoNotExpand));
                 connect(view, &View::cursorPositionChanged,
