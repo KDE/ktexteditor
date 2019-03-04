@@ -35,6 +35,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void testWordWrap();
+    void testWrapParagraph();
     void testReplaceQStringList();
     void testMovingInterfaceSignals();
 

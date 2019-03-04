@@ -267,6 +267,7 @@ public:
      * @return true on success
      */
     bool editInsertText(int line, int col, const QString &s);
+
     /**
      * Remove a string in the given line/column
      * @param line line number
@@ -297,6 +298,7 @@ public:
      * @return true on success
      */
     bool editWrapLine(int line, int col, bool newLine = true, bool *newLineAdded = nullptr);
+
     /**
      * Unwrap @p line. If @p removeLine is true, we force to join the lines. If
      * @p removeLine is true, @p length is ignored (eg not needed).
@@ -313,6 +315,7 @@ public:
      * @return true on success
      */
     bool editInsertLine(int line, const QString &s);
+
     /**
      * Remove a line
      * @param line line number
@@ -323,12 +326,25 @@ public:
     bool editRemoveLines(int from, int to);
 
     /**
-     * Remove a line
+     * Warp a line
      * @param startLine line to begin wrapping
      * @param endLine line to stop wrapping
      * @return true on success
      */
     bool wrapText(int startLine, int endLine);
+
+    /**
+     * Wrap lines touched by the selection with respect of existing paragraphs.
+     * To do so will the paragraph prior to the wrap joined as one single line
+     * which cause an almost perfect wrapped paragraph as long as there are no
+     * unneeded spaces exist or some formatting like this comment block.
+     * Without any selection the current line is wrapped.
+     * Empty lines around each paragraph are untouched.
+     * @param first line to begin wrapping
+     * @param last line to stop wrapping
+     * @return true on success
+     */
+    bool wrapParagraph(int first, int last);
 //END LINE BASED INSERT/REMOVE STUFF
 
 Q_SIGNALS:

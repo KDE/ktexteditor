@@ -499,9 +499,9 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_apply_wordwrap"));
         a->setText(i18n("Apply &Word Wrap"));
-        a->setWhatsThis(i18n("Use this command to wrap all lines of the current document which are longer than the width of the"
-                             " current view, to fit into this view.<br /><br /> This is a static word wrap, meaning it is not updated"
-                             " when the view is resized."));
+        a->setWhatsThis(i18n("Use this to wrap the current line, or to reformat the selected lines as paragraph, "
+                             "to fit the 'Wrap words at' setting in the configuration dialog.<br /><br />"
+                             "This is a static word wrap, meaning the document is changed."));
         connect(a, SIGNAL(triggered(bool)), SLOT(applyWordWrap()));
 
         a = ac->addAction(QStringLiteral("tools_cleanIndent"));
@@ -697,7 +697,8 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F10));
-    a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the view border on the screen."));
+    a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the view border on the screen.<br /><br />"
+                         "This is only a view option, meaning the document will not changed."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleDynWordWrap()));
 
     a = m_setDynWrapIndicators = new KSelectAction(i18n("Dynamic Word Wrap Indicators"), this);
@@ -2338,11 +2339,16 @@ void KTextEditor::ViewPrivate::copy() const
 
 void KTextEditor::ViewPrivate::applyWordWrap()
 {
-    if (selection()) {
-        doc()->wrapText(selectionRange().start().line(), selectionRange().end().line());
-    } else {
-        doc()->wrapText(0, doc()->lastLine());
+    int first = selectionRange().start().line();
+    int last  = selectionRange().end().line();
+
+    if (first == last) {
+        // Either no selection or only one line selected, wrap only the current line
+        first = cursorPosition().line();
+        last  = first;
     }
+
+    doc()->wrapParagraph(first, last);
 }
 
 //END

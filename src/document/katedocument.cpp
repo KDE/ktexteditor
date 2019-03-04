@@ -1214,6 +1214,67 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
     return true;
 }
 
+bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
+{
+    if (first == last) {
+        return wrapText(first, last);
+    }
+
+    if (first < 0 || last < first) {
+        return false;
+    }
+
+    if (last >= lines() || first > last) {
+        return false;
+    }
+
+    if (!isReadWrite()) {
+        return false;
+    }
+
+    editStart();
+
+    // Because we shrink and expand lines, we need to track the working set by powerful "MovingStuff"
+    std::unique_ptr<KTextEditor::MovingRange> range(newMovingRange(KTextEditor::Range(first, 0, last, 0)));
+    std::unique_ptr<KTextEditor::MovingCursor> curr(newMovingCursor(KTextEditor::Cursor(range->start())));
+
+    // Scan the selected range for paragraphs, whereas each empty line trigger a new paragraph
+    for (int line = first; line <= range->end().line(); ++line) {
+        // Is our first line a somehow filled line?
+        if(plainKateTextLine(first)->firstChar() < 0) {
+            // Fast forward to first non empty line
+            ++first;
+            curr->setPosition(curr->line() + 1, 0);
+            continue;
+        }
+
+        // Is our current line a somehow filled line? If not, wrap the paragraph
+        if (plainKateTextLine(line)->firstChar() < 0) {
+            curr->setPosition(line, 0); // Set on empty line
+            joinLines(first, line - 1);
+            // Don't wrap twice! That may cause a bad result
+            if (!wordWrap()) {
+                wrapText(first, first);
+            }
+            first = curr->line() + 1;
+            line = first;
+        }
+    }
+
+    // If there was no paragraph, we need to wrap now
+    bool needWrap = (curr->line() != range->end().line());
+    if (needWrap && plainKateTextLine(first)->firstChar() != -1) {
+        joinLines(first, range->end().line());
+        // Don't wrap twice! That may cause a bad result
+        if (!wordWrap()) {
+            wrapText(first, first);
+        }
+    }
+
+    editEnd();
+    return true;
+}
+
 bool KTextEditor::DocumentPrivate::editInsertText(int line, int col, const QString &s)
 {
     // verbose debug

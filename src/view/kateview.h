@@ -135,7 +135,8 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     /**
-     * internal use, apply word wrap
+     * Wrap lines touched by the selection with respect of existing paragraphs.
+     * Work is done by KTextEditor::DocumentPrivate::wrapParagraph
      */
     void applyWordWrap();
 
