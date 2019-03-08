@@ -147,7 +147,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     }
 
     if (m_sorting == Position) {
-        qSort(bookmarkLineArray.begin(), bookmarkLineArray.end());
+        std::sort(bookmarkLineArray.begin(), bookmarkLineArray.end());
     }
 
     QAction *firstNewAction = menu.addSeparator();

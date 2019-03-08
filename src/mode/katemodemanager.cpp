@@ -136,7 +136,7 @@ void KateModeManager::update()
     }
 
     // sort the list...
-    qSort(m_types.begin(), m_types.end(), compareKateFileType);
+    std::sort(m_types.begin(), m_types.end(), compareKateFileType);
 
     // add the none type...
     KateFileType *t = new KateFileType();

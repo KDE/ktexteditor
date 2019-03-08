@@ -405,7 +405,7 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
             bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
 
             // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart rangs behavior ;)
-            qSort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
+            std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
 
             // loop over all ranges
             for (int i = 0; i < rangesWithAttributes.size(); ++i) {

@@ -1684,7 +1684,7 @@ void KateCompletionModel::setSortingAlphabetical(bool alphabetical)
 
 void KateCompletionModel::Group::resort()
 {
-    qStableSort(filtered.begin(), filtered.end());
+    std::stable_sort(filtered.begin(), filtered.end());
     model->hideOrShowGroup(this);
 }
 

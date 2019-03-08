@@ -42,7 +42,7 @@ void KateKeywordCompletionModel::completionInvoked(KTextEditor::View* view, cons
         return;
     }
     m_items = doc->highlight()->keywordsForLocation(doc, range.end());
-    qSort(m_items);
+    std::sort(m_items.begin(), m_items.end());
 }
 
 QModelIndex KateKeywordCompletionModel::parent(const QModelIndex& index) const

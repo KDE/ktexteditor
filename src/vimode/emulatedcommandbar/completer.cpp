@@ -221,7 +221,7 @@ CompletionStartParams Completer::activateWordFromDocumentCompletion()
         }
     }
     foundWords = QSet<QString>::fromList(foundWords).toList();
-    qSort(foundWords.begin(), foundWords.end(), caseInsensitiveLessThan);
+    std::sort(foundWords.begin(), foundWords.end(), caseInsensitiveLessThan);
     CompletionStartParams completionStartParams;
     completionStartParams.completionType = CompletionStartParams::WordFromDocument;
     completionStartParams.completions = foundWords;

@@ -69,7 +69,7 @@ QList<KateSchema> KateSchemaManager::list()
     }
 
     // sort: prio given by default schema and name
-    qSort(schemas.begin(), schemas.end(), schemasCompare);
+    std::sort(schemas.begin(), schemas.end(), schemasCompare);
 
     return schemas;
 }

@@ -49,7 +49,7 @@ FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *pare
 void FakeCodeCompletionTestModel::setCompletions(const QStringList &completions)
 {
     QStringList sortedCompletions = completions;
-    qSort(sortedCompletions);
+    std::sort(sortedCompletions.begin(), sortedCompletions.end());
     Q_ASSERT(completions == sortedCompletions && "QCompleter seems to sort the items, so it's best to provide them pre-sorted so it's easier to predict the order");
     setRowCount(sortedCompletions.length());
     m_completions = completions;

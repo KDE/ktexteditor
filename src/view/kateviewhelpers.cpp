@@ -2799,7 +2799,7 @@ void KateViewEncodingAction::Private::init()
         //tmp->setCheckable(true);
         actions << tmp;
     }
-    qSort(actions.begin(), actions.end(), lessThanAction);
+    std::sort(actions.begin(), actions.end(), lessThanAction);
     foreach (KSelectAction *action, actions) {
         q->addAction(action);
     }

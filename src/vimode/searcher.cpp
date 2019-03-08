@@ -181,7 +181,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams& searchParams,
                 }
 
                 // After sorting, the last element in matchesUnfiltered is the last match position.
-                qSort(matchesUnfiltered);
+                std::sort(matchesUnfiltered.begin(), matchesUnfiltered.end());
 
                 QVector<KTextEditor::Range> filteredMatches;
                 foreach (KTextEditor::Range unfilteredMatch, matchesUnfiltered) {
