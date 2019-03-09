@@ -166,10 +166,10 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
 
     //Resize and move so it fits the screen vertically
     bool resized = false;
-    if (geom.top() < QApplication::desktop()->screenGeometry(this).top()) {
-        int offset = QApplication::desktop()->screenGeometry(this).top() - geom.top();
+    if (geom.top() < QApplication::desktop()->screenGeometry(m_parent->view()).top()) {
+        int offset = QApplication::desktop()->screenGeometry(m_parent->view()).top() - geom.top();
         geom.setBottom(geom.bottom() - offset);
-        geom.moveTo(geom.left(), QApplication::desktop()->screenGeometry(this).top());
+        geom.moveTo(geom.left(), QApplication::desktop()->screenGeometry(m_parent->view()).top());
         resized = true;
     }
 
