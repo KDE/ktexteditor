@@ -2795,16 +2795,27 @@ void KTextEditor::ViewPrivate::transpose()
 
 void KTextEditor::ViewPrivate::cursorLeft()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
-        m_viewInternal->cursorNextChar();
+    if (selection() && !config()->persistentSelection()) {
+        if (currentTextLine().isRightToLeft()) {
+            m_viewInternal->updateCursor(selectionRange().end());
+            setSelection(KTextEditor::Range::invalid());
+        } else {
+            m_viewInternal->updateCursor(selectionRange().start());
+            setSelection(KTextEditor::Range::invalid());
+        }
+
     } else {
-        m_viewInternal->cursorPrevChar();
+        if (currentTextLine().isRightToLeft()) {
+            m_viewInternal->cursorNextChar();
+        } else {
+            m_viewInternal->cursorPrevChar();
+        }
     }
 }
 
 void KTextEditor::ViewPrivate::shiftCursorLeft()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorNextChar(true);
     } else {
         m_viewInternal->cursorPrevChar(true);
@@ -2813,16 +2824,27 @@ void KTextEditor::ViewPrivate::shiftCursorLeft()
 
 void KTextEditor::ViewPrivate::cursorRight()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
-        m_viewInternal->cursorPrevChar();
+    if (selection() && !config()->persistentSelection()) {
+        if (currentTextLine().isRightToLeft()) {
+            m_viewInternal->updateCursor(selectionRange().start());
+            setSelection(KTextEditor::Range::invalid());
+        } else {
+            m_viewInternal->updateCursor(selectionRange().end());
+            setSelection(KTextEditor::Range::invalid());
+        }
+
     } else {
-        m_viewInternal->cursorNextChar();
+        if (currentTextLine().isRightToLeft()) {
+            m_viewInternal->cursorPrevChar();
+        } else {
+            m_viewInternal->cursorNextChar();
+        }
     }
 }
 
 void KTextEditor::ViewPrivate::shiftCursorRight()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->cursorPrevChar(true);
     } else {
         m_viewInternal->cursorNextChar(true);
@@ -2831,7 +2853,7 @@ void KTextEditor::ViewPrivate::shiftCursorRight()
 
 void KTextEditor::ViewPrivate::wordLeft()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->wordNext();
     } else {
         m_viewInternal->wordPrev();
@@ -2840,7 +2862,7 @@ void KTextEditor::ViewPrivate::wordLeft()
 
 void KTextEditor::ViewPrivate::shiftWordLeft()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->wordNext(true);
     } else {
         m_viewInternal->wordPrev(true);
@@ -2849,7 +2871,7 @@ void KTextEditor::ViewPrivate::shiftWordLeft()
 
 void KTextEditor::ViewPrivate::wordRight()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->wordPrev();
     } else {
         m_viewInternal->wordNext();
@@ -2858,7 +2880,7 @@ void KTextEditor::ViewPrivate::wordRight()
 
 void KTextEditor::ViewPrivate::shiftWordRight()
 {
-    if (m_viewInternal->m_view->currentTextLine().isRightToLeft()) {
+    if (currentTextLine().isRightToLeft()) {
         m_viewInternal->wordPrev(true);
     } else {
         m_viewInternal->wordNext(true);

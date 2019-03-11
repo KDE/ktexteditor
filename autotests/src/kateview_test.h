@@ -33,18 +33,15 @@ public:
 private Q_SLOTS:
     void testReloadMultipleViews();
     void testTabCursorOnReload();
-
     void testLowerCaseBlockSelection();
-
     void testCoordinatesToCursor();
     void testCursorToCoordinates();
-
     void testSelection();
+    void testDeselectByArrowKeys_data();
+    void testDeselectByArrowKeys();
     void testKillline();
     void testScrollPastEndOfDocument();
-
     void testFoldFirstLine();
-
     void testDragAndDrop();
     void testGotoMatchingBracket();
 };

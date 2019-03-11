@@ -31,6 +31,8 @@
 #include <QtTestWidgets>
 #include <QTemporaryFile>
 
+#define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
+
 using namespace KTextEditor;
 
 QTEST_MAIN(KateViewTest)
@@ -265,6 +267,65 @@ void KateViewTest::testSelection()
 
     QCOMPARE(view->cursorPosition(), Cursor(1, 1));
     QCOMPARE(view->selectionRange(), Range(1, 1, 2, 1));
+}
+
+void KateViewTest::testDeselectByArrowKeys_data()
+{
+    QTest::addColumn<QString>("text");
+
+    testNewRow() << "foobarhaz";
+    testNewRow() << "كلسشمن يتبكسب"; // We all win, translates Google
+}
+
+void KateViewTest::testDeselectByArrowKeys()
+{
+    QFETCH(QString, text);
+
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(text);
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    KTextEditor::Cursor cur1(0, 3); // Start of bar: foo|barhaz
+    KTextEditor::Cursor cur2(0, 6); //   End of bar: foobar|haz
+    KTextEditor::Cursor curDelta(0, 1);
+    Range range(cur1, cur2); // Select "bar"
+
+    // RTL drives me nuts!
+    KTextEditor::Cursor help;
+    if (text.isRightToLeft()) {
+        help = cur1;
+        cur1 = cur2;
+        cur2 = help;
+    }
+
+    view->setSelection(range);
+    view->setCursorPositionInternal(cur1);
+    view->cursorLeft();
+    QCOMPARE(view->cursorPosition(), cur1); // Be at begin: foo|barhaz
+    QCOMPARE(view->selection(), false);
+
+    view->setSelection(range);
+    view->setCursorPositionInternal(cur1);
+    view->cursorRight();
+    QCOMPARE(view->cursorPosition(), cur2);  // Be at end: foobar|haz
+    QCOMPARE(view->selection(), false);
+
+    view->config()->setPersistentSelection(true);
+
+    view->setSelection(range);
+    view->setCursorPositionInternal(cur1);
+    view->cursorLeft();
+    // RTL drives me nuts!
+    help = text.isRightToLeft() ? (cur1 + curDelta): (cur1 - curDelta);
+    QCOMPARE(view->cursorPosition(), help); // Be one left: fo|obarhaz
+    QCOMPARE(view->selection(), true);
+
+    view->setSelection(range);
+    view->setCursorPositionInternal(cur1);
+    view->cursorRight();
+    // RTL drives me nuts!
+    help = text.isRightToLeft() ? (cur1 - curDelta): (cur1 + curDelta);
+    QCOMPARE(view->cursorPosition(), help); // Be one right: foob|arhaz
+    QCOMPARE(view->selection(), true);
 }
 
 void KateViewTest::testKillline()
