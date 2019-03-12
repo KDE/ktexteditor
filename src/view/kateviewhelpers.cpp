@@ -1444,6 +1444,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_nextHighlightBlock(-2)
     , m_currentBlockLine(-1)
 {
+    setAcceptDrops(true);
     setAttribute(Qt::WA_StaticContents);
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
@@ -1676,6 +1677,22 @@ int KateIconBorder::lineNumberWidth() const
     }
 
     return width;
+}
+
+void KateIconBorder::dragMoveEvent(QDragMoveEvent *event)
+{
+    // FIXME Just calling m_view->m_viewInternal->dragMoveEvent(e) don't work
+    // as intended, we need to set the cursor at column 1
+    // Is there a way to change the pos of the event?
+    QPoint pos(0, event->pos().y());
+    // Code copy of KateViewInternal::dragMoveEvent
+    m_view->m_viewInternal->placeCursor(pos, true, false);
+    m_view->m_viewInternal->fixDropEvent(event);
+}
+
+void KateIconBorder::dropEvent(QDropEvent *event)
+{
+    m_view->m_viewInternal->dropEvent(event);
 }
 
 void KateIconBorder::paintEvent(QPaintEvent *e)

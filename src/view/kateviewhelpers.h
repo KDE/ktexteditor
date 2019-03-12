@@ -311,6 +311,8 @@ public Q_SLOTS:
     void displayRangeChanged();
 
 private:
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event)  override;
     void paintEvent(QPaintEvent *) override;
     void paintBorder(int x, int y, int width, int height);
 
