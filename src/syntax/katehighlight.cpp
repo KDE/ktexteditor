@@ -81,9 +81,15 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     iSection = def.translatedSection();
 
     /**
-     * handle the "no highlighting" case
+     * get all included definitions, e.g. PHP for HTML highlighting
      */
-    if (!def.isValid()) {
+    auto definitions = def.includedDefinitions();
+
+    /**
+     * handle the "no highlighting" case
+     * it's possible to not have any defintions with malformed file
+     */
+    if (!def.isValid() || (definitions.isEmpty() && def.formats().isEmpty())) {
         // dummy properties + formats
         m_properties.resize(1);
         m_propertiesForFormat.push_back(&m_properties[0]);
@@ -109,11 +115,6 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
      * tell the AbstractHighlighter the definition it shall use
      */
     setDefinition(def);
-
-    /**
-     * get all included definitions, e.g. PHP for HTML highlighting
-     */
-    auto definitions = definition().includedDefinitions();
 
     /**
      * first: handle only really included definitions
@@ -251,7 +252,9 @@ void KateHighlighting::applyFormat(int offset, int length, const KSyntaxHighligh
 {
     // WE ATM assume ascending offset order
     Q_ASSERT(m_textLineToHighlight);
-    Q_ASSERT(format.isValid());
+    if (!format.isValid()) {
+        return;
+    }
 
     // get internal attribute, must exist
     const auto it = m_formatsIdToIndex.find(format.id());
