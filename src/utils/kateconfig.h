@@ -55,6 +55,46 @@ class KTEXTEDITOR_EXPORT KateConfig
 {
 public:
     /**
+     * start some config changes
+     * this method is needed to init some kind of transaction
+     * for config changes, update will only be done once, at
+     * configEnd() call
+     */
+    void configStart();
+
+    /**
+     * end a config change transaction, update the concerned
+     * documents/views/renderers
+     */
+    void configEnd();
+
+    /**
+     * global config?
+     * @return global config object?
+     */
+    bool isGlobal() const
+    {
+        return !m_parent;
+    }
+
+    /**
+     * Get a config value.
+     * @param key config key, aka enum from KateConfig* classes
+     * @return value for the wanted key, will assert if key is not valid
+     */
+    QVariant value(const int key) const;
+
+    /**
+     * Set a config value.
+     * Will assert if key is invalid.
+     * Might not alter the value if given value fails validation.
+     * @param key config key, aka enum from KateConfig* classes
+     * @param value value to set
+     */
+    void setValue(const int key, const QVariant &value);
+
+protected:
+    /**
      * Construct a KateConfig.
      * @param parent parent config object, if any
      */
@@ -65,7 +105,6 @@ public:
      */
     virtual ~KateConfig();
 
-protected:
     /**
      * One config entry.
      */
@@ -124,15 +163,6 @@ protected:
     };
 
     /**
-     * Get full map of config entries, aka the m_configEntries of the top config object
-     * @return full map with all config entries
-     */
-    const std::map<int, ConfigEntry> &fullConfigEntries () const
-    {
-        return m_parent ? m_parent->fullConfigEntries() : m_configEntries;
-    }
-
-    /**
      * Read all config entries from given config group
      * @param config config group to read from
      */
@@ -160,42 +190,20 @@ protected:
      */
     void finalizeConfigEntries();
 
-public:
-    /**
-     * start some config changes
-     * this method is needed to init some kind of transaction
-     * for config changes, update will only be done once, at
-     * configEnd() call
-     */
-    void configStart();
-
-    /**
-     * end a config change transaction, update the concerned
-     * documents/views/renderers
-     */
-    void configEnd();
-
-    /**
-     * Get a config value.
-     * @param key config key, aka enum from KateConfig* classes
-     * @return value for the wanted key, will assert if key is not valid
-     */
-    QVariant value(const int key) const;
-
-    /**
-     * Set a config value.
-     * Will assert if key is invalid.
-     * Might not alter the value if given value fails validation.
-     * @param key config key, aka enum from KateConfig* classes
-     * @param value value to set
-     */
-    void setValue(const int key, const QVariant &value);
-
-protected:
     /**
      * do the real update
      */
     virtual void updateConfig() = 0;
+
+private:
+    /**
+     * Get full map of config entries, aka the m_configEntries of the top config object
+     * @return full map with all config entries
+     */
+    const std::map<int, ConfigEntry> &fullConfigEntries () const
+    {
+        return m_parent ? m_parent->fullConfigEntries() : m_configEntries;
+    }
 
 private:
     /**
@@ -303,11 +311,6 @@ public:
         return s_global;
     }
 
-    inline bool isGlobal() const
-    {
-        return (this == global());
-    }
-
     /**
      * Known config entries
      */
@@ -315,7 +318,22 @@ public:
         /**
          * Tabulator width
          */
-        TabWidth
+        TabWidth,
+
+        /**
+         * Indentation width
+         */
+        IndentationWidth,
+
+        /**
+         * On-the-fly spellcheck enabled?
+         */
+        OnTheFlySpellCheck,
+
+        /**
+         * Indent pasted text?
+         */
+        IndentOnTextPaste
     };
 
 public:
@@ -343,8 +361,35 @@ public:
         setValue(TabWidth, QVariant(tabWidth));
     }
 
-    int indentationWidth() const;
-    void setIndentationWidth(int indentationWidth);
+    int indentationWidth() const
+    {
+        return value(IndentationWidth).toInt();
+    }
+
+    void setIndentationWidth(int indentationWidth)
+    {
+        setValue(IndentationWidth, QVariant(indentationWidth));
+    }
+
+    bool onTheFlySpellCheck() const
+    {
+        return value(OnTheFlySpellCheck).toBool();
+    }
+
+    void setOnTheFlySpellCheck(bool on)
+    {
+        setValue(OnTheFlySpellCheck, QVariant(on));
+    }
+
+    bool indentPastedText() const
+    {
+        return value(IndentOnTextPaste).toBool();
+    }
+
+    void setIndentPastedText(bool on)
+    {
+        setValue(IndentOnTextPaste, QVariant(on));
+    }
 
     const QString &indentationMode() const;
     void setIndentationMode(const QString &identationMode);
@@ -376,9 +421,6 @@ public:
     void setKeepExtraSpaces(bool on);
     bool keepExtraSpaces() const;
 
-    void setIndentPastedText(bool on);
-    bool indentPastedText() const;
-
     void setBackspaceIndents(bool on);
     bool backspaceIndents() const;
 
@@ -391,8 +433,8 @@ public:
     void setShowSpaces(WhitespaceRendering on);
     WhitespaceRendering showSpaces() const;
 
-	void setMarkerSize(uint markerSize);
-	uint markerSize() const;
+    void setMarkerSize(uint markerSize);
+    uint markerSize() const;
 
     void setReplaceTabsDyn(bool on);
     bool replaceTabsDyn() const;
@@ -467,15 +509,11 @@ public:
     uint swapSyncInterval() const;
     void setSwapSyncInterval(uint interval);
 
-    bool onTheFlySpellCheck() const;
-    void setOnTheFlySpellCheck(bool on);
-
     int lineLengthLimit() const;
     void setLineLengthLimit(int limit);
 
 private:
     QString m_indentationMode;
-    int m_indentationWidth = 2;
     uint m_tabHandling = tabSmart;
     uint m_configFlags = 0;
     int m_wordWrapAt = 80;
@@ -491,10 +529,8 @@ private:
     uint m_swapFileMode;
     QString m_swapDirectory;
     uint m_swapSyncInterval;
-    bool m_onTheFlySpellCheck;
     int m_lineLengthLimit;
 
-    bool m_indentationWidthSet : 1;
     bool m_indentationModeSet : 1;
     bool m_wordWrapSet : 1;
     bool m_wordWrapAtSet : 1;
@@ -534,7 +570,6 @@ private:
     bool m_swapFileModeSet : 1;
     bool m_swapDirectorySet : 1;
     bool m_swapSyncIntervalSet : 1;
-    bool m_onTheFlySpellCheckSet : 1;
     bool m_lineLengthLimitSet : 1;
 
 private:
@@ -566,11 +601,6 @@ public:
     inline static KateViewConfig *global()
     {
         return s_global;
-    }
-
-    inline bool isGlobal() const
-    {
-        return (this == global());
     }
 
 public:
@@ -843,11 +873,6 @@ public:
     inline static KateRendererConfig *global()
     {
         return s_global;
-    }
-
-    inline bool isGlobal() const
-    {
-        return (this == global());
     }
 
 public:

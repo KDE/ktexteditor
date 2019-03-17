@@ -34,7 +34,6 @@
 
 #include <QTextCodec>
 #include <QStringListModel>
-#include <QSettings>
 
 //BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)
@@ -243,13 +242,11 @@ bool KateGlobalConfig::setFallbackEncoding(const QString &encoding)
 }
 
 KateDocumentConfig::KateDocumentConfig()
-    : m_indentationWidthSet(false),
-      m_indentationModeSet(false),
+    : m_indentationModeSet(false),
       m_wordWrapSet(false),
       m_wordWrapAtSet(false),
       m_pageUpDownMovesCursorSet(false),
       m_keepExtraSpacesSet(false),
-      m_indentPastedTextSet(false),
       m_backspaceIndentsSet(false),
       m_smartHomeSet(false),
       m_showTabsSet(false),
@@ -270,7 +267,6 @@ KateDocumentConfig::KateDocumentConfig()
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
-      m_onTheFlySpellCheckSet(false),
       m_lineLengthLimitSet(false)
 
 {
@@ -280,6 +276,9 @@ KateDocumentConfig::KateDocumentConfig()
      * init all known config entries
      */
     addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
+    addConfigEntry(ConfigEntry(IndentationWidth, "Indentation Width", QStringLiteral("indent-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
+    addConfigEntry(ConfigEntry(OnTheFlySpellCheck, "On-The-Fly Spellcheck", QStringLiteral("on-the-fly-spellcheck"), false));
+    addConfigEntry(ConfigEntry(IndentOnTextPaste, "Indent On Text Paste", QStringLiteral("indent-pasted-text"), false));
 
     /**
      * finalize the entries, e.g. hashs them
@@ -293,17 +292,14 @@ KateDocumentConfig::KateDocumentConfig()
 
 KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
     : KateConfig(s_global),
-      m_indentationWidth(2),
       m_tabHandling(tabSmart),
       m_configFlags(0),
       m_wordWrapAt(80),
-      m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
       m_wordWrapAtSet(false),
       m_pageUpDownMovesCursorSet(false),
       m_keepExtraSpacesSet(false),
-      m_indentPastedTextSet(false),
       m_backspaceIndentsSet(false),
       m_smartHomeSet(false),
       m_showTabsSet(false),
@@ -325,7 +321,6 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
-      m_onTheFlySpellCheckSet(false),
       m_lineLengthLimitSet(false),
       m_doc(nullptr)
 {
@@ -337,13 +332,11 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
     : KateConfig(s_global),
       m_tabHandling(tabSmart),
       m_configFlags(0),
-      m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
       m_wordWrapAtSet(false),
       m_pageUpDownMovesCursorSet(false),
       m_keepExtraSpacesSet(false),
-      m_indentPastedTextSet(false),
       m_backspaceIndentsSet(false),
       m_smartHomeSet(false),
       m_showTabsSet(false),
@@ -365,7 +358,6 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
-      m_onTheFlySpellCheckSet(false),
       m_lineLengthLimitSet(false),
       m_doc(doc)
 {
@@ -377,7 +369,6 @@ KateDocumentConfig::~KateDocumentConfig()
 
 namespace
 {
-const char KEY_INDENTATION_WIDTH[] = "Indentation Width";
 const char KEY_INDENTATION_MODE[] = "Indentation Mode";
 const char KEY_TAB_HANDLING[] = "Tab Handling";
 const char KEY_WORD_WRAP[] = "Word Wrap";
@@ -387,7 +378,6 @@ const char KEY_SMART_HOME[] = "Smart Home";
 const char KEY_SHOW_TABS[] = "Show Tabs";
 const char KEY_TAB_INDENTS[] = "Indent On Tab";
 const char KEY_KEEP_EXTRA_SPACES[] = "Keep Extra Spaces";
-const char KEY_INDENT_PASTED_TEXT[] = "Indent On Text Paste";
 const char KEY_BACKSPACE_INDENTS[] = "Indent On Backspace";
 const char KEY_SHOW_SPACES[] = "Show Spaces";
 const char KEY_MARKER_SIZE[] = "Trailing Marker Size";
@@ -405,7 +395,6 @@ const char KEY_BACKUP_SUFFIX[] = "Backup Suffix";
 const char KEY_SWAP_FILE_MODE[] = "Swap File Mode";
 const char KEY_SWAP_DIRECTORY[] = "Swap Directory";
 const char KEY_SWAP_SYNC_INTERVAL[] = "Swap Sync Interval";
-const char KEY_ON_THE_FLY_SPELLCHECK[] = "On-The-Fly Spellcheck";
 const char KEY_LINE_LENGTH_LIMIT[] = "Line Length Limit";
 }
 
@@ -415,8 +404,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 
     // read generic entries
     readConfigEntries(config);
-
-    setIndentationWidth(config.readEntry(KEY_INDENTATION_WIDTH, 4));
 
     setIndentationMode(config.readEntry(KEY_INDENTATION_MODE, "normal"));
 
@@ -430,7 +417,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setShowTabs(config.readEntry(KEY_SHOW_TABS, true));
     setTabIndents(config.readEntry(KEY_TAB_INDENTS, true));
     setKeepExtraSpaces(config.readEntry(KEY_KEEP_EXTRA_SPACES, false));
-    setIndentPastedText(config.readEntry(KEY_INDENT_PASTED_TEXT, false));
     setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, true));
     setShowSpaces(KateDocumentConfig::WhitespaceRendering(config.readEntry(KEY_SHOW_SPACES, int(KateDocumentConfig::None))));
     setMarkerSize(config.readEntry(KEY_MARKER_SIZE, 1));
@@ -456,8 +442,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setSwapDirectory(config.readEntry(KEY_SWAP_DIRECTORY, QString()));
     setSwapSyncInterval(config.readEntry(KEY_SWAP_SYNC_INTERVAL, 15));
 
-    setOnTheFlySpellCheck(config.readEntry(KEY_ON_THE_FLY_SPELLCHECK, false));
-
     setLineLengthLimit(config.readEntry(KEY_LINE_LENGTH_LIMIT, 4096));
 
     configEnd();
@@ -468,7 +452,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     // write generic entries
     writeConfigEntries(config);
 
-    config.writeEntry(KEY_INDENTATION_WIDTH, indentationWidth());
     config.writeEntry(KEY_INDENTATION_MODE, indentationMode());
 
     config.writeEntry(KEY_TAB_HANDLING, tabHandling());
@@ -482,7 +465,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_SHOW_TABS, showTabs());
     config.writeEntry(KEY_TAB_INDENTS, tabIndentsEnabled());
     config.writeEntry(KEY_KEEP_EXTRA_SPACES, keepExtraSpaces());
-    config.writeEntry(KEY_INDENT_PASTED_TEXT, indentPastedText());
     config.writeEntry(KEY_BACKSPACE_INDENTS, backspaceIndents());
     config.writeEntry(KEY_SHOW_SPACES, int(showSpaces()));
     config.writeEntry(KEY_MARKER_SIZE, markerSize());
@@ -508,8 +490,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_SWAP_DIRECTORY, swapDirectory());
     config.writeEntry(KEY_SWAP_SYNC_INTERVAL, swapSyncInterval());
 
-    config.writeEntry(KEY_ON_THE_FLY_SPELLCHECK, onTheFlySpellCheck());
-
     config.writeEntry(KEY_LINE_LENGTH_LIMIT, lineLengthLimit());
 }
 
@@ -530,33 +510,6 @@ void KateDocumentConfig::updateConfig()
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }
-}
-
-int KateDocumentConfig::indentationWidth() const
-{
-    if (m_indentationWidthSet || isGlobal()) {
-        return m_indentationWidth;
-    }
-
-    return s_global->indentationWidth();
-}
-
-void KateDocumentConfig::setIndentationWidth(int indentationWidth)
-{
-    if (indentationWidth < 1) {
-        return;
-    }
-
-    if (m_indentationWidthSet && m_indentationWidth == indentationWidth) {
-        return;
-    }
-
-    configStart();
-
-    m_indentationWidthSet = true;
-    m_indentationWidth = indentationWidth;
-
-    configEnd();
 }
 
 const QString &KateDocumentConfig::indentationMode() const
@@ -696,29 +649,6 @@ bool KateDocumentConfig::keepExtraSpaces() const
     }
 
     return s_global->keepExtraSpaces();
-}
-
-void KateDocumentConfig::setIndentPastedText(bool on)
-{
-    if (m_indentPastedTextSet && m_indentPastedText == on) {
-        return;
-    }
-
-    configStart();
-
-    m_indentPastedTextSet = true;
-    m_indentPastedText = on;
-
-    configEnd();
-}
-
-bool KateDocumentConfig::indentPastedText() const
-{
-    if (m_indentPastedTextSet || isGlobal()) {
-        return m_indentPastedText;
-    }
-
-    return s_global->indentPastedText();
 }
 
 void KateDocumentConfig::setBackspaceIndents(bool on)
@@ -1225,37 +1155,6 @@ void KateDocumentConfig::setSwapDirectory(const QString &directory)
 
     m_swapDirectorySet = true;
     m_swapDirectory = directory;
-
-    configEnd();
-}
-
-bool KateDocumentConfig::onTheFlySpellCheck() const
-{
-    if (isGlobal()) {
-        // WARNING: this is slightly hackish, but it's currently the only way to
-        //          do it, see also the KTextEdit class
-        QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
-        return settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
-        //KConfigGroup configGroup(KSharedConfig::openConfig(), "Spelling");
-        //return configGroup.readEntry("checkerEnabledByDefault", false);
-    }
-    if (m_onTheFlySpellCheckSet) {
-        return m_onTheFlySpellCheck;
-    }
-
-    return s_global->onTheFlySpellCheck();
-}
-
-void KateDocumentConfig::setOnTheFlySpellCheck(bool on)
-{
-    if (m_onTheFlySpellCheckSet && m_onTheFlySpellCheck == on) {
-        return;
-    }
-
-    configStart();
-
-    m_onTheFlySpellCheckSet = true;
-    m_onTheFlySpellCheck = on;
 
     configEnd();
 }
