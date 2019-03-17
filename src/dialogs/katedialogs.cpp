@@ -86,6 +86,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QRadioButton>
+#include <QSettings>
 #include <QSlider>
 #include <QSpinBox>
 #include <QTabBar>
@@ -343,9 +344,14 @@ void KateSpellCheckConfigTab::apply()
     }
     m_changed = false;
 
+    // WARNING: this is slightly hackish, but it's currently the only way to
+    //          do it, see also the KTextEdit class
     KateDocumentConfig::global()->configStart();
     m_sonnetConfigWidget->save();
+    QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
+    KateDocumentConfig::global()->setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
     KateDocumentConfig::global()->configEnd();
+
     foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
         doc->refreshOnTheFlyCheck();
     }
