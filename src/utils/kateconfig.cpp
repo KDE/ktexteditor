@@ -354,40 +354,6 @@ KateDocumentConfig::KateDocumentConfig()
     readConfig(cg);
 }
 
-KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
-    : KateConfig(s_global),
-      m_tabHandling(tabSmart),
-      m_configFlags(0),
-      m_wordWrapAt(80),
-      m_indentationModeSet(false),
-      m_wordWrapSet(false),
-      m_wordWrapAtSet(false),
-      m_pageUpDownMovesCursorSet(false),
-      m_keepExtraSpacesSet(false),
-      m_backspaceIndentsSet(false),
-      m_smartHomeSet(false),
-      m_showTabsSet(false),
-      m_showSpacesSet(false),
-      m_showSpaces(None),
-      m_markerSize(1),
-      m_removeSpacesSet(false),
-      m_newLineAtEofSet(false),
-      m_overwiteModeSet(false),
-      m_tabIndentsSet(false),
-      m_encodingSet(false),
-      m_eolSet(false),
-      m_bomSet(false),
-      m_allowEolDetectionSet(false),
-      m_swapFileModeSet(false),
-      m_swapDirectorySet(false),
-      m_swapSyncIntervalSet(false),
-      m_lineLengthLimitSet(false),
-      m_doc(nullptr)
-{
-    // init with defaults from config or really hardcoded ones
-    readConfig(cg);
-}
-
 KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
     : KateConfig(s_global),
       m_tabHandling(tabSmart),

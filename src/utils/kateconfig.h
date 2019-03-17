@@ -336,8 +336,6 @@ private:
     KateDocumentConfig();
 
 public:
-    explicit KateDocumentConfig(const KConfigGroup &cg);
-
     /**
      * Construct a DocumentConfig
      */
