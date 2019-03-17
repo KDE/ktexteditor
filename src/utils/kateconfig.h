@@ -206,10 +206,7 @@ protected:
      * Used by the sub classes to register all there known ones.
      * @param entry new entry to add
      */
-    void addConfigEntry(const ConfigEntry &&entry)
-    {
-        m_configEntries.emplace(entry.enumKey, entry);
-    }
+    void addConfigEntry(ConfigEntry &&entry);
 
     /**
      * Finalize the config entries.

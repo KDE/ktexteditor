@@ -47,6 +47,20 @@ KateConfig::~KateConfig()
 {
 }
 
+void KateConfig::addConfigEntry(ConfigEntry &&entry)
+{
+    /**
+     * there shall be no gaps in the entries
+     * we might later want to use a vector
+     */
+    Q_ASSERT(m_configEntries.size() == entry.enumKey);
+
+    /**
+     * add new element
+     */
+    m_configEntries.emplace(entry.enumKey, entry);
+}
+
 void KateConfig::finalizeConfigEntries()
 {
     /**
