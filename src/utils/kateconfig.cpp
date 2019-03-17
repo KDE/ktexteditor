@@ -461,15 +461,16 @@ QTextCodec *KateDocumentConfig::codec() const
 
 QString KateDocumentConfig::eolString()
 {
-    if (eol() == KateDocumentConfig::eolUnix) {
-        return QStringLiteral("\n");
-    } else if (eol() == KateDocumentConfig::eolDos) {
-        return QStringLiteral("\r\n");
-    } else if (eol() == KateDocumentConfig::eolMac) {
-        return QStringLiteral("\r");
-    }
+    switch(eol()) {
+        case KateDocumentConfig::eolDos:
+            return QStringLiteral("\r\n");
 
-    return QStringLiteral("\n");
+        case KateDocumentConfig::eolMac:
+            return QStringLiteral("\r");
+
+        default:
+            return QStringLiteral("\n");
+    }
 }
 //END
 
