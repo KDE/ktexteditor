@@ -51,6 +51,11 @@ KateConfig::~KateConfig()
 void KateConfig::addConfigEntry(ConfigEntry &&entry)
 {
     /**
+     * shall only be called for toplevel config
+     */
+    Q_ASSERT(isGlobal());
+
+    /**
      * there shall be no gaps in the entries
      * we might later want to use a vector
      */
