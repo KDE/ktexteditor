@@ -1013,7 +1013,7 @@ void KateSaveConfigTab::reload()
     uiadv->chkBackupRemoteFiles->setChecked(KateDocumentConfig::global()->backupOnSaveRemote());
     uiadv->edtBackupPrefix->setText(KateDocumentConfig::global()->backupPrefix());
     uiadv->edtBackupSuffix->setText(KateDocumentConfig::global()->backupSuffix());
-    uiadv->cmbSwapFileMode->setCurrentIndex(KateDocumentConfig::global()->swapFileModeRaw());
+    uiadv->cmbSwapFileMode->setCurrentIndex(KateDocumentConfig::global()->swapFileMode());
     uiadv->kurlSwapDirectory->setUrl(QUrl::fromLocalFile(KateDocumentConfig::global()->swapDirectory()));
     uiadv->spbSwapFileSync->setValue(KateDocumentConfig::global()->swapSyncInterval());
     swapFileModeChanged(KateDocumentConfig::global()->swapFileMode());

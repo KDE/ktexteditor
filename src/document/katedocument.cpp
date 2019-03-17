@@ -5160,7 +5160,7 @@ void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVar
     /**
      * just dispatch to internal key + value set
      */
-    return m_config->setValue(key, value);
+    m_config->setValue(key, value);
 }
 
 //END KTextEditor::ConfigInterface

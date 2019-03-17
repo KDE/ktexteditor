@@ -101,8 +101,9 @@ public:
      * Might not alter the value if given value fails validation.
      * @param key config key, aka enum from KateConfig* classes
      * @param value value to set
+     * @return value set?
      */
-    void setValue(const int key, const QVariant &value);
+    bool setValue(const int key, const QVariant &value);
 
     /**
      * Get a config value for the string key.
@@ -117,8 +118,9 @@ public:
      * Might not alter the value if given value fails validation.
      * @param key config key, aka commandName from KateConfig* classes
      * @param value value to set
+     * @return value set?
      */
-    void setValue(const QString &key, const QVariant &value);
+    bool setValue(const QString &key, const QVariant &value);
 
 protected:
     /**
@@ -341,11 +343,6 @@ public:
      */
     explicit KateDocumentConfig(KTextEditor::DocumentPrivate *doc);
 
-    /**
-     * Cu DocumentConfig
-     */
-    ~KateDocumentConfig() override;
-
     inline static KateDocumentConfig *global()
     {
         return s_global;
@@ -398,7 +395,122 @@ public:
         /**
          * Suffix for backup files
          */
-        BackupOnSaveSuffix
+        BackupOnSaveSuffix,
+
+        /**
+         * Indentation mode, like "normal"
+         */
+        IndentationMode,
+
+        /**
+         * Tab handling, like indent, insert tab, smart
+         */
+        TabHandlingMode,
+
+        /**
+         * Static word wrap?
+         */
+        StaticWordWrap,
+
+        /**
+         * Static word wrap column
+         */
+        StaticWordWrapColumn,
+
+        /**
+         * PageUp/Down moves cursor?
+         */
+        PageUpDownMovesCursor,
+
+        /**
+         * Smart Home key?
+         */
+        SmartHome,
+
+        /**
+         * Show Tabs?
+         */
+        ShowTabs,
+
+        /**
+         * Indent on tab?
+         */
+        IndentOnTab,
+
+        /**
+         * Keep extra space?
+         */
+        KeepExtraSpaces,
+
+        /**
+         * Backspace key indents?
+         */
+        BackspaceIndents,
+
+        /**
+         * Show spaces mode like none, all, ...
+         */
+        ShowSpacesMode,
+
+        /**
+         * Trailing Marker Size
+         */
+        TrailingMarkerSize,
+
+        /**
+         * Remove spaces mode
+         */
+        RemoveSpacesMode,
+
+        /**
+         * Ensure newline at end of file
+         */
+        NewlineAtEOF,
+
+        /**
+         * Overwrite mode?
+         */
+        OverwriteMode,
+
+        /**
+         * Encoding
+         */
+        Encoding,
+
+        /**
+         * End of line mode: dos, mac, unix
+         */
+        EndOfLine,
+
+        /**
+         * Allow EOL detection
+         */
+        AllowEndOfLineDetection,
+
+        /**
+         * Use Byte Order Mark
+         */
+        ByteOrderMark,
+
+        /**
+         * Swap file mode
+         */
+        SwapFile,
+
+        /**
+         * Swap file directory
+         */
+        SwapFileDirectory,
+
+        /**
+         * Swap file sync interval
+         */
+        SwapFileSyncInterval,
+
+        /**
+         * Line length limit
+         */
+        LineLengthLimit
     };
 
 public:
@@ -506,8 +618,15 @@ public:
         setValue(BackupOnSaveSuffix, QVariant(suffix));
     }
 
-    const QString &indentationMode() const;
-    void setIndentationMode(const QString &identationMode);
+    QString indentationMode() const
+    {
+        return value(IndentationMode).toString();
+    }
+
+    void setIndentationMode(const QString &identationMode)
+    {
+        setValue(IndentationMode, identationMode);
+    }
 
     enum TabHandling {
         tabInsertsTab = 0,
@@ -521,35 +640,105 @@ public:
         All
     };
 
-    uint tabHandling() const;
-    void setTabHandling(uint tabHandling);
+    int tabHandling() const
+    {
+        return value(TabHandlingMode).toInt();
+    }
 
-    bool wordWrap() const;
-    void setWordWrap(bool on);
+    void setTabHandling(int tabHandling)
+    {
+        setValue(TabHandlingMode, tabHandling);
+    }
 
-    int wordWrapAt() const;
-    void setWordWrapAt(int col);
+    bool wordWrap() const
+    {
+        return value(StaticWordWrap).toBool();
+    }
 
-    bool pageUpDownMovesCursor() const;
-    void setPageUpDownMovesCursor(bool on);
+    void setWordWrap(bool on)
+    {
+        setValue(StaticWordWrap, on);
+    }
 
-    void setKeepExtraSpaces(bool on);
-    bool keepExtraSpaces() const;
+    int wordWrapAt() const
+    {
+        return value(StaticWordWrapColumn).toInt();
+    }
 
-    void setBackspaceIndents(bool on);
-    bool backspaceIndents() const;
+    void setWordWrapAt(int col)
+    {
+        setValue(StaticWordWrapColumn, col);
+    }
 
-    void setSmartHome(bool on);
-    bool smartHome() const;
+    bool pageUpDownMovesCursor() const
+    {
+        return value(PageUpDownMovesCursor).toBool();
+    }
 
-    void setShowTabs(bool on);
-    bool showTabs() const;
+    void setPageUpDownMovesCursor(bool on)
+    {
+        setValue(PageUpDownMovesCursor, on);
+    }
 
-    void setShowSpaces(WhitespaceRendering on);
-    WhitespaceRendering showSpaces() const;
+    void setKeepExtraSpaces(bool on)
+    {
+        setValue(KeepExtraSpaces, on);
+    }
 
-    void setMarkerSize(uint markerSize);
-    uint markerSize() const;
+    bool keepExtraSpaces() const
+    {
+        return value(KeepExtraSpaces).toBool();
+    }
+
+    void setBackspaceIndents(bool on)
+    {
+        setValue(BackspaceIndents, on);
+    }
+
+    bool backspaceIndents() const
+    {
+        return value(BackspaceIndents).toBool();
+    }
+
+    void setSmartHome(bool on)
+    {
+        setValue(SmartHome, on);
+    }
+
+    bool smartHome() const
+    {
+        return value(SmartHome).toBool();
+    }
+
+    void setShowTabs(bool on)
+    {
+        setValue(ShowTabs, on);
+    }
+
+    bool showTabs() const
+    {
+        return value(ShowTabs).toBool();
+    }
+
+    void setShowSpaces(WhitespaceRendering mode)
+    {
+        setValue(ShowSpacesMode, mode);
+    }
+
+    WhitespaceRendering showSpaces() const
+    {
+        return WhitespaceRendering(value(ShowSpacesMode).toInt());
+    }
+
+    void setMarkerSize(int markerSize)
+    {
+        setValue(TrailingMarkerSize, markerSize);
+    }
+
+    int markerSize() const
+    {
+        return value(TrailingMarkerSize).toInt();
+    }
 
     /**
      * Remove trailing spaces on save.
@@ -557,22 +746,62 @@ public:
      * triState = 1: remove trailing spaces of modified lines (line modification system)
      * triState = 2: remove trailing spaces in entire document
      */
-    void setRemoveSpaces(int triState);
-    int removeSpaces() const;
+    void setRemoveSpaces(int triState)
+    {
+        setValue(RemoveSpacesMode, triState);
+    }
 
-    void setNewLineAtEof(bool on);
-    bool newLineAtEof() const;
+    int removeSpaces() const
+    {
+        return value(RemoveSpacesMode).toInt();
+    }
 
-    void setOvr(bool on);
-    bool ovr() const;
+    void setNewLineAtEof(bool on)
+    {
+        setValue(NewlineAtEOF, on);
+    }
 
-    void setTabIndents(bool on);
-    bool tabIndentsEnabled() const;
+    bool newLineAtEof() const
+    {
+        return value(NewlineAtEOF).toBool();
+    }
 
+    void setOvr(bool on)
+    {
+        setValue(OverwriteMode, on);
+    }
+
+    bool ovr() const
+    {
+        return value(OverwriteMode).toBool();
+    }
+
+    void setTabIndents(bool on)
+    {
+        setValue(IndentOnTab, on);
+    }
+
+    bool tabIndentsEnabled() const
+    {
+        return value(IndentOnTab).toBool();
+    }
+
+    /**
+     * Get current text codec.
+     * Based on current set encoding
+     * @return current text codec.
+     */
     QTextCodec *codec() const;
-    const QString &encoding() const;
-    bool setEncoding(const QString &encoding);
-    bool isSetEncoding() const;
+
+    QString encoding() const
+    {
+        return value(Encoding).toString();
+    }
+
+    bool setEncoding(const QString &encoding)
+    {
+        return setValue(Encoding, encoding);
+    }
 
     enum Eol {
         eolUnix = 0,
@@ -580,19 +809,52 @@ public:
         eolMac = 2
     };
 
-    int eol() const;
+    int eol() const
+    {
+        return value(EndOfLine).toInt();
+    }
+
+    /**
+     * Get current end of line string.
+     * Based on current set eol mode.
+     * @return current end of line string
+     */
     QString eolString();
 
-    void setEol(int mode);
+    void setEol(int mode)
+    {
+        setValue(EndOfLine, mode);
+    }
 
-    bool bom() const;
-    void setBom(bool bom);
+    bool bom() const
+    {
+        return value(ByteOrderMark).toBool();
+    }
 
-    bool allowEolDetection() const;
-    void setAllowEolDetection(bool on);
+    void setBom(bool bom)
+    {
+        setValue(ByteOrderMark, bom);
+    }
 
-    const QString &swapDirectory() const;
-    void setSwapDirectory(const QString &directory);
+    bool allowEolDetection() const
+    {
+        return value(AllowEndOfLineDetection).toBool();
+    }
+
+    void setAllowEolDetection(bool on)
+    {
+        setValue(AllowEndOfLineDetection, on);
+    }
+
+    QString swapDirectory() const
+    {
+        return value(SwapFileDirectory).toString();
+    }
+
+    void setSwapDirectory(const QString &directory)
+    {
+        setValue(SwapFileDirectory, directory);
+    }
 
     enum SwapFileMode {
         DisableSwapFile = 0,
@@ -600,67 +862,35 @@ public:
         SwapFilePresetDirectory
     };
 
-    uint swapFileModeRaw() const;
-    SwapFileMode swapFileMode() const;
-    void setSwapFileMode(uint mode);
+    SwapFileMode swapFileMode() const
+    {
+        return SwapFileMode(value(SwapFile).toInt());
+    }
 
-    uint swapSyncInterval() const;
-    void setSwapSyncInterval(uint interval);
+    void setSwapFileMode(int mode)
+    {
+        setValue(SwapFile, mode);
+    }
 
-    int lineLengthLimit() const;
-    void setLineLengthLimit(int limit);
+    int swapSyncInterval() const
+    {
+        return value(SwapFileSyncInterval).toInt();
+    }
 
-private:
-    QString m_indentationMode;
-    uint m_tabHandling = tabSmart;
-    uint m_configFlags = 0;
-    int m_wordWrapAt = 80;
-    bool m_wordWrap;
-    bool m_pageUpDownMovesCursor;
-    bool m_allowEolDetection;
-    int m_eol;
-    bool m_bom;
-    QString m_encoding;
-    uint m_swapFileMode;
-    QString m_swapDirectory;
-    uint m_swapSyncInterval;
-    int m_lineLengthLimit;
+    void setSwapSyncInterval(int interval)
+    {
+        setValue(SwapFileSyncInterval, interval);
+    }
 
-    bool m_indentationModeSet : 1;
-    bool m_wordWrapSet : 1;
-    bool m_wordWrapAtSet : 1;
-    bool m_pageUpDownMovesCursorSet : 1;
+    int lineLengthLimit() const
+    {
+        return value(LineLengthLimit).toInt();
+    }
 
-    bool m_keepExtraSpacesSet : 1;
-    bool m_keepExtraSpaces : 1;
-    bool m_indentPastedTextSet : 1;
-    bool m_indentPastedText : 1;
-    bool m_backspaceIndentsSet : 1;
-    bool m_backspaceIndents : 1;
-    bool m_smartHomeSet : 1;
-    bool m_smartHome : 1;
-    bool m_showTabsSet : 1;
-    bool m_showTabs : 1;
-    bool m_showSpacesSet : 1;
-    WhitespaceRendering m_showSpaces : 2;
-    uint m_markerSize = 1;
-    bool m_removeSpacesSet : 1;
-    uint m_removeSpaces : 2;
-    bool m_newLineAtEofSet : 1;
-    bool m_newLineAtEof : 1;
-    bool m_overwiteModeSet : 1;
-    bool m_overwiteMode : 1;
-    bool m_tabIndentsSet : 1;
-    bool m_tabIndents : 1;
-
-    bool m_encodingSet : 1;
-    bool m_eolSet : 1;
-    bool m_bomSet : 1;
-    bool m_allowEolDetectionSet : 1;
-    bool m_swapFileModeSet : 1;
-    bool m_swapDirectorySet : 1;
-    bool m_swapSyncIntervalSet : 1;
-    bool m_lineLengthLimitSet : 1;
+    void setLineLengthLimit(int limit)
+    {
+        setValue(LineLengthLimit, limit);
+    }
 
 private:
     static KateDocumentConfig *s_global;
