@@ -285,16 +285,26 @@ private:
      */
     KateGlobalConfig();
 
-    /**
-     * Destructor
-     */
-    ~KateGlobalConfig() override;
-
 public:
     static KateGlobalConfig *global()
     {
         return s_global;
     }
+
+    /**
+     * Known config entries
+     */
+    enum ConfigEntryTypes {
+        /**
+         * Encoding prober
+         */
+        EncodingProberType,
+
+        /**
+         * Fallback encoding
+         */
+        FallbackEncoding
+    };
 
 public:
     /**
@@ -313,18 +323,30 @@ protected:
 public:
     KEncodingProber::ProberType proberType() const
     {
-        return m_proberType;
+        return KEncodingProber::ProberType(value(EncodingProberType).toInt());
     }
 
-    void setProberType(KEncodingProber::ProberType proberType);
+    bool setProberType(KEncodingProber::ProberType type)
+    {
+        return setValue(EncodingProberType, type);
+    }
 
+    /**
+     * Fallback codec.
+     * Based on fallback encoding.
+     * @return fallback codec
+     */
     QTextCodec *fallbackCodec() const;
-    const QString &fallbackEncoding() const;
-    bool setFallbackEncoding(const QString &encoding);
 
-private:
-    KEncodingProber::ProberType m_proberType;
-    QString m_fallbackEncoding;
+    QString fallbackEncoding() const
+    {
+        return value(FallbackEncoding).toString();
+    }
+
+    bool setFallbackEncoding(const QString &encoding)
+    {
+        return setValue(FallbackEncoding, encoding);
+    }
 
 private:
     static KateGlobalConfig *s_global;

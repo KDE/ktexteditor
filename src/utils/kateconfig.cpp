@@ -226,91 +226,6 @@ KateDocumentConfig *KateDocumentConfig::s_global = nullptr;
 KateViewConfig *KateViewConfig::s_global = nullptr;
 KateRendererConfig *KateRendererConfig::s_global = nullptr;
 
-KateGlobalConfig::KateGlobalConfig()
-{
-    s_global = this;
-
-    // init with defaults from config or really hardcoded ones
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
-    readConfig(cg);
-}
-
-KateGlobalConfig::~KateGlobalConfig()
-{
-}
-
-namespace
-{
-const char KEY_PROBER_TYPE[] = "Encoding Prober Type";
-const char KEY_FALLBACK_ENCODING[] = "Fallback Encoding";
-}
-
-void KateGlobalConfig::readConfig(const KConfigGroup &config)
-{
-    configStart();
-
-    setProberType((KEncodingProber::ProberType)config.readEntry(KEY_PROBER_TYPE, (int)KEncodingProber::Universal));
-    setFallbackEncoding(config.readEntry(KEY_FALLBACK_ENCODING, ""));
-
-    configEnd();
-}
-
-void KateGlobalConfig::writeConfig(KConfigGroup &config)
-{
-    config.writeEntry(KEY_PROBER_TYPE, (int)proberType());
-    config.writeEntry(KEY_FALLBACK_ENCODING, fallbackEncoding());
-}
-
-void KateGlobalConfig::updateConfig()
-{
-    // write config
-    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
-    writeConfig(cg);
-    KTextEditor::EditorPrivate::config()->sync();
-}
-
-void KateGlobalConfig::setProberType(KEncodingProber::ProberType proberType)
-{
-    configStart();
-    m_proberType = proberType;
-    configEnd();
-}
-
-const QString &KateGlobalConfig::fallbackEncoding() const
-{
-    return m_fallbackEncoding;
-}
-
-QTextCodec *KateGlobalConfig::fallbackCodec() const
-{
-    if (m_fallbackEncoding.isEmpty()) {
-        return QTextCodec::codecForName("ISO 8859-15");
-    }
-
-    return KCharsets::charsets()->codecForName(m_fallbackEncoding);
-}
-
-bool KateGlobalConfig::setFallbackEncoding(const QString &encoding)
-{
-    QTextCodec *codec;
-    bool found = false;
-    if (encoding.isEmpty()) {
-        codec = s_global->fallbackCodec();
-        found = true;
-    } else {
-        codec = KCharsets::charsets()->codecForName(encoding, found);
-    }
-
-    if (!found || !codec) {
-        return false;
-    }
-
-    configStart();
-    m_fallbackEncoding = QString::fromLatin1(codec->name());
-    configEnd();
-    return true;
-}
-
 /**
  * validate if an encoding is ok
  * @param name encoding name
@@ -321,6 +236,82 @@ static bool isEncodingOk(const QString &name)
     bool found = false;
     auto codec = KCharsets::charsets()->codecForName(name, found);
     return found && codec;
+}
+
+KateGlobalConfig::KateGlobalConfig()
+{
+    /**
+     * register this as our global instance
+     */
+    Q_ASSERT(isGlobal());
+    s_global = this;
+
+    /**
+     * init all known config entries
+     */
+    addConfigEntry(ConfigEntry(EncodingProberType, "Encoding Prober Type", QString(), KEncodingProber::Universal));
+    addConfigEntry(ConfigEntry(FallbackEncoding, "Fallback Encoding", QString(), QStringLiteral("ISO 8859-15"), [](const QVariant &value) { return isEncodingOk(value.toString()); }));
+
+    /**
+     * finalize the entries, e.g. hashs them
+     */
+    finalizeConfigEntries();
+
+    /**
+     * init with defaults from config or really hardcoded ones
+     */
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
+    readConfig(cg);
+}
+
+void KateGlobalConfig::readConfig(const KConfigGroup &config)
+{
+    /**
+     * start config update group
+     */
+    configStart();
+
+    /**
+     * read generic entries
+     */
+    readConfigEntries(config);
+
+    /**
+     * end config update group, might trigger updateConfig()
+     */
+    configEnd();
+}
+
+void KateGlobalConfig::writeConfig(KConfigGroup &config)
+{
+    /**
+     * write generic entries
+     */
+    writeConfigEntries(config);
+}
+
+void KateGlobalConfig::updateConfig()
+{
+    // write config
+    KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
+    writeConfig(cg);
+    KTextEditor::EditorPrivate::config()->sync();
+}
+
+QTextCodec *KateGlobalConfig::fallbackCodec() const
+{
+    /**
+     * query stored encoding, always fallback to ISO 8859-15 if nothing valid set
+     */
+    const auto encoding = value(FallbackEncoding).toString();
+    if (encoding.isEmpty()) {
+        return QTextCodec::codecForName("ISO 8859-15");
+    }
+
+    /**
+     * use configured encoding
+     */
+    return KCharsets::charsets()->codecForName(encoding);
 }
 
 KateDocumentConfig::KateDocumentConfig()
