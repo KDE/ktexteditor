@@ -37,12 +37,37 @@
 #include <QSettings>
 
 //BEGIN KateConfig
-KateConfig::KateConfig()
+KateConfig::KateConfig(const KateConfig *parent)
+    : m_parent(parent)
 {
 }
 
 KateConfig::~KateConfig()
 {
+}
+
+void KateConfig::finalizeConfigEntries()
+{
+}
+
+void KateConfig::readConfigEntries(const KConfigGroup &config)
+{
+    configStart();
+
+    // read all config entries, even the ones ATM not set in this config object but known in the toplevel one
+    for (const auto &entry : fullConfigEntries()) {
+        setValue(entry.second.enumKey, config.readEntry(entry.second.configKey, entry.second.defaultValue));
+    }
+
+    configEnd();
+}
+
+void KateConfig::writeConfigEntries(KConfigGroup &config) const
+{
+    // write all config entries, even the ones ATM not set in this config object but known in the toplevel one
+    for (const auto &entry : fullConfigEntries()) {
+        config.writeEntry(entry.second.configKey, value(entry.second.enumKey));
+    }
 }
 
 void KateConfig::configStart()
@@ -71,6 +96,58 @@ void KateConfig::configEnd()
     configIsRunning = false;
 
     updateConfig();
+}
+
+QVariant KateConfig::value(const int key) const
+{
+    // first: local lookup
+    const auto it = m_configEntries.find(key);
+    if (it != m_configEntries.end()) {
+        return it->second.value;
+    }
+
+    // else: fallback to parent config, if any
+    if (m_parent) {
+        return m_parent->value(key);
+    }
+
+    // if we arrive here, the key was invalid!
+    Q_ASSERT(false);
+    return QVariant();
+}
+
+void KateConfig::setValue(const int key, const QVariant &value)
+{
+    // check: is this key known at all? => if not, programming error
+    const auto &knownEntries = fullConfigEntries();
+    const auto knownIt = knownEntries.find(key);
+    Q_ASSERT(knownIt != knownEntries.end());
+
+    // validator set? use it, if not accepting, abort setting
+    if (knownIt->second.validator && !knownIt->second.validator(value)) {
+        return;
+    }
+
+    // check if value already there for this config
+    auto valueIt = m_configEntries.find(key);
+    if (valueIt != m_configEntries.end()) {
+        // skip any work if value is equal
+        if (valueIt->second.value == value) {
+            return;
+        }
+
+        // else: alter value and be done
+        configStart();
+        valueIt->second.value = value;
+        configEnd();
+        return;
+    }
+
+    // if not in this hash, we must copy the known entry and adjust the value
+    configStart();
+    auto res = m_configEntries.emplace(key, knownIt->second);
+    res.first->second.value = value;
+    configEnd();
 }
 //END
 
@@ -166,8 +243,7 @@ bool KateGlobalConfig::setFallbackEncoding(const QString &encoding)
 }
 
 KateDocumentConfig::KateDocumentConfig()
-    : m_tabWidthSet(false),
-      m_indentationWidthSet(false),
+    : m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
       m_wordWrapAtSet(false),
@@ -200,18 +276,27 @@ KateDocumentConfig::KateDocumentConfig()
 {
     s_global = this;
 
+    /**
+     * init all known config entries
+     */
+    addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
+
+    /**
+     * finalize the entries, e.g. hashs them
+     */
+    finalizeConfigEntries();
+
     // init with defaults from config or really hardcoded ones
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
     readConfig(cg);
 }
 
 KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
-    : m_indentationWidth(2),
-      m_tabWidth(4),
+    : KateConfig(s_global),
+      m_indentationWidth(2),
       m_tabHandling(tabSmart),
       m_configFlags(0),
       m_wordWrapAt(80),
-      m_tabWidthSet(false),
       m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
@@ -249,9 +334,9 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
 }
 
 KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
-    : m_tabHandling(tabSmart),
+    : KateConfig(s_global),
+      m_tabHandling(tabSmart),
       m_configFlags(0),
-      m_tabWidthSet(false),
       m_indentationWidthSet(false),
       m_indentationModeSet(false),
       m_wordWrapSet(false),
@@ -292,7 +377,6 @@ KateDocumentConfig::~KateDocumentConfig()
 
 namespace
 {
-const char KEY_TAB_WIDTH[] = "Tab Width";
 const char KEY_INDENTATION_WIDTH[] = "Indentation Width";
 const char KEY_INDENTATION_MODE[] = "Indentation Mode";
 const char KEY_TAB_HANDLING[] = "Tab Handling";
@@ -329,7 +413,8 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 {
     configStart();
 
-    setTabWidth(config.readEntry(KEY_TAB_WIDTH, 4));
+    // read generic entries
+    readConfigEntries(config);
 
     setIndentationWidth(config.readEntry(KEY_INDENTATION_WIDTH, 4));
 
@@ -380,7 +465,8 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 
 void KateDocumentConfig::writeConfig(KConfigGroup &config)
 {
-    config.writeEntry(KEY_TAB_WIDTH, tabWidth());
+    // write generic entries
+    writeConfigEntries(config);
 
     config.writeEntry(KEY_INDENTATION_WIDTH, indentationWidth());
     config.writeEntry(KEY_INDENTATION_MODE, indentationMode());
@@ -444,33 +530,6 @@ void KateDocumentConfig::updateConfig()
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }
-}
-
-int KateDocumentConfig::tabWidth() const
-{
-    if (m_tabWidthSet || isGlobal()) {
-        return m_tabWidth;
-    }
-
-    return s_global->tabWidth();
-}
-
-void KateDocumentConfig::setTabWidth(int tabWidth)
-{
-    if (tabWidth < 1) {
-        return;
-    }
-
-    if (m_tabWidthSet && m_tabWidth == tabWidth) {
-        return;
-    }
-
-    configStart();
-
-    m_tabWidthSet = true;
-    m_tabWidth = tabWidth;
-
-    configEnd();
 }
 
 int KateDocumentConfig::indentationWidth() const
@@ -1228,9 +1287,7 @@ void KateDocumentConfig::setLineLengthLimit(int lineLengthLimit)
 
 //BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
-    :
-
-    m_dynWordWrapSet(false),
+    : m_dynWordWrapSet(false),
     m_dynWrapAtStaticMarkerSet(false),
     m_dynWordWrapIndicatorsSet(false),
     m_dynWordWrapAlignIndentSet(false),
@@ -1277,7 +1334,7 @@ KateViewConfig::KateViewConfig()
 }
 
 KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
-    :
+    : KateConfig(s_global),
     m_searchFlags(PowerModePlainText),
     m_maxHistorySize(100),
     m_showWordCount(false),
@@ -1372,6 +1429,9 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 {
     configStart();
 
+    // read generic entries
+    readConfigEntries(config);
+
     // default on
     setDynWordWrap(config.readEntry(KEY_DYN_WORD_WRAP, true));
     setDynWrapAtStaticMarker(config.readEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, false));
@@ -1438,6 +1498,9 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
 
 void KateViewConfig::writeConfig(KConfigGroup &config)
 {
+    // write generic entries
+    writeConfigEntries(config);
+
     config.writeEntry(KEY_DYN_WORD_WRAP, dynWordWrap());
     config.writeEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, dynWrapAtStaticMarker());
     config.writeEntry(KEY_DYN_WORD_WRAP_INDICATORS, dynWordWrapIndicators());
@@ -2396,7 +2459,8 @@ KateRendererConfig::KateRendererConfig()
 }
 
 KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
-    : m_fontMetrics(QFont()),
+    : KateConfig(s_global),
+      m_fontMetrics(QFont()),
       m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
       m_schemaSet(false),
       m_fontSet(false),
@@ -2445,6 +2509,9 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 {
     configStart();
 
+    // read generic entries
+    readConfigEntries(config);
+
     // "Normal" Schema MUST BE THERE, see global kateschemarc
     setSchema(config.readEntry(KEY_SCHEMA, "Normal"));
 
@@ -2461,6 +2528,9 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 
 void KateRendererConfig::writeConfig(KConfigGroup &config)
 {
+    // write generic entries
+    writeConfigEntries(config);
+
     config.writeEntry(KEY_SCHEMA, schema());
 
     config.writeEntry(KEY_WORD_WRAP_MARKER, wordWrapMarker());

@@ -26,6 +26,9 @@
 #include "ktexteditor/view.h"
 #include <KEncodingProber>
 
+#include <functional>
+#include <map>
+
 #include <QBitRef>
 #include <QColor>
 #include <QObject>
@@ -48,18 +51,114 @@ class QTextCodec;
 /**
  * Base Class for the Kate Config Classes
  */
-class KateConfig
+class KTEXTEDITOR_EXPORT KateConfig
 {
 public:
     /**
-     * Default Constructor
+     * Construct a KateConfig.
+     * @param parent parent config object, if any
      */
-    KateConfig();
+    KateConfig(const KateConfig *parent = nullptr);
 
     /**
      * Virtual Destructor
      */
     virtual ~KateConfig();
+
+protected:
+    /**
+     * One config entry.
+     */
+    class ConfigEntry {
+    public:
+        /**
+         * Construct one config entry.
+         * @param enumId value of the enum for this config entry
+         * @param configId value of the key for the KConfig file for this config entry
+         * @param command command name
+         * @param defaultVal default value
+         * @param valid validator function, default none
+         */
+        ConfigEntry(int enumId, const char *configId, QString command, QVariant defaultVal, std::function<bool(const QVariant &)> valid = nullptr)
+            : enumKey(enumId)
+            , configKey(configId)
+            , commandName(command)
+            , defaultValue(defaultVal)
+            , value(defaultVal)
+            , validator(valid)
+        {
+        }
+
+        /**
+         * Enum key for this config entry, shall be unique
+         */
+        const int enumKey;
+
+        /**
+         * KConfig entry key for this config entry, shall be unique in its group
+         * e.g. "Tab Width"
+         */
+         const char * const configKey;
+
+         /**
+          * Command name as used in e.g. ConfigInterface or modeline/command line
+          * e.g. tab-width
+          */
+         const QString commandName;
+
+        /**
+         * Default value if nothing configured
+         */
+        const QVariant defaultValue;
+
+        /**
+         * concrete value, per default == defaultValue
+         */
+        QVariant value;
+
+        /**
+         * a validator function, only if this returns true we accept a value for the entry
+         * is ignored if not set
+         */
+        std::function<bool(const QVariant &)> validator;
+    };
+
+    /**
+     * Get full map of config entries, aka the m_configEntries of the top config object
+     * @return full map with all config entries
+     */
+    const std::map<int, ConfigEntry> &fullConfigEntries () const
+    {
+        return m_parent ? m_parent->fullConfigEntries() : m_configEntries;
+    }
+
+    /**
+     * Read all config entries from given config group
+     * @param config config group to read from
+     */
+    void readConfigEntries(const KConfigGroup &config);
+
+    /**
+     * Write all config entries to given config group
+     * @param config config group to write to
+     */
+    void writeConfigEntries(KConfigGroup &config) const;
+
+    /**
+     * Register a new config entry.
+     * Used by the sub classes to register all there known ones.
+     * @param entry new entry to add
+     */
+    void addConfigEntry(const ConfigEntry &&entry)
+    {
+        m_configEntries.emplace(entry.enumKey, entry);
+    }
+
+    /**
+     * Finalize the config entries.
+     * Called by the sub classes after all entries are registered
+     */
+    void finalizeConfigEntries();
 
 public:
     /**
@@ -76,6 +175,22 @@ public:
      */
     void configEnd();
 
+    /**
+     * Get a config value.
+     * @param key config key, aka enum from KateConfig* classes
+     * @return value for the wanted key, will assert if key is not valid
+     */
+    QVariant value(const int key) const;
+
+    /**
+     * Set a config value.
+     * Will assert if key is invalid.
+     * Might not alter the value if given value fails validation.
+     * @param key config key, aka enum from KateConfig* classes
+     * @param value value to set
+     */
+    void setValue(const int key, const QVariant &value);
+
 protected:
     /**
      * do the real update
@@ -83,6 +198,11 @@ protected:
     virtual void updateConfig() = 0;
 
 private:
+    /**
+     * parent config object, if any
+     */
+    const KateConfig *m_parent = nullptr;
+
     /**
      * recursion depth
      */
@@ -92,6 +212,15 @@ private:
      * is a config session running
      */
     bool configIsRunning = false;
+
+    /**
+     * two cases:
+     *   - we have m_parent == nullptr => this contains all known config entries
+     *   - we have m_parent != nullptr => this contains all set config entries for this level of configuration
+     *
+     * uses a map ATM for deterministic iteration e.g. for read/writeConfig
+     */
+    std::map<int, ConfigEntry> m_configEntries;
 };
 
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig
@@ -179,6 +308,16 @@ public:
         return (this == global());
     }
 
+    /**
+     * Known config entries
+     */
+    enum ConfigEntryTypes {
+        /**
+         * Tabulator width
+         */
+        TabWidth
+    };
+
 public:
     /**
      * Read config from object
@@ -194,8 +333,15 @@ protected:
     void updateConfig() override;
 
 public:
-    int tabWidth() const;
-    void setTabWidth(int tabWidth);
+    int tabWidth() const
+    {
+        return value(TabWidth).toInt();
+    }
+
+    void setTabWidth(int tabWidth)
+    {
+        setValue(TabWidth, QVariant(tabWidth));
+    }
 
     int indentationWidth() const;
     void setIndentationWidth(int indentationWidth);
@@ -330,7 +476,6 @@ public:
 private:
     QString m_indentationMode;
     int m_indentationWidth = 2;
-    int m_tabWidth = 4;
     uint m_tabHandling = tabSmart;
     uint m_configFlags = 0;
     int m_wordWrapAt = 80;
@@ -349,7 +494,6 @@ private:
     bool m_onTheFlySpellCheck;
     int m_lineLengthLimit;
 
-    bool m_tabWidthSet : 1;
     bool m_indentationWidthSet : 1;
     bool m_indentationModeSet : 1;
     bool m_wordWrapSet : 1;
