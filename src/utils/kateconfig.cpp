@@ -59,7 +59,7 @@ void KateConfig::addConfigEntry(ConfigEntry &&entry)
      * there shall be no gaps in the entries
      * we might later want to use a vector
      */
-    Q_ASSERT(m_configEntries.size() == entry.enumKey);
+    Q_ASSERT(m_configEntries.size() == static_cast<size_t>(entry.enumKey));
 
     /**
      * add new element
@@ -407,6 +407,15 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     }
 
     /**
+     * backwards compatibility mappings
+     * convert stuff, old entries deleted in writeConfig
+     */
+    if (const int backupFlags = config.readEntry("Backup Flags", 0)) {
+        setBackupOnSaveLocal(backupFlags & 0x1);
+        setBackupOnSaveRemote(backupFlags & 0x2);
+    }
+
+    /**
      * end config update group, might trigger updateConfig()
      */
     configEnd();
@@ -418,6 +427,12 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
      * write generic entries
      */
     writeConfigEntries(config);
+
+    /**
+     * backwards compatibility mappings
+     * here we remove old entries we converted on readConfig
+     */
+    config.deleteEntry("Backup Flags");
 }
 
 void KateDocumentConfig::updateConfig()
