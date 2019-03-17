@@ -920,15 +920,8 @@ void KateSaveConfigTab::apply()
         uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
     }
 
-    uint f(0);
-    if (uiadv->chkBackupLocalFiles->isChecked()) {
-        f |= KateDocumentConfig::LocalFiles;
-    }
-    if (uiadv->chkBackupRemoteFiles->isChecked()) {
-        f |= KateDocumentConfig::RemoteFiles;
-    }
-
-    KateDocumentConfig::global()->setBackupFlags(f);
+    KateDocumentConfig::global()->setBackupOnSaveLocal(uiadv->chkBackupLocalFiles->isChecked());
+    KateDocumentConfig::global()->setBackupOnSaveRemote(uiadv->chkBackupRemoteFiles->isChecked());
     KateDocumentConfig::global()->setBackupPrefix(uiadv->edtBackupPrefix->text());
     KateDocumentConfig::global()->setBackupSuffix(uiadv->edtBackupSuffix->text());
 
@@ -1010,9 +1003,8 @@ void KateSaveConfigTab::reload()
     ui->chkNewLineAtEof->setChecked(KateDocumentConfig::global()->newLineAtEof());
 
     // other stuff
-    uint f(KateDocumentConfig::global()->backupFlags());
-    uiadv->chkBackupLocalFiles->setChecked(f & KateDocumentConfig::LocalFiles);
-    uiadv->chkBackupRemoteFiles->setChecked(f & KateDocumentConfig::RemoteFiles);
+    uiadv->chkBackupLocalFiles->setChecked(KateDocumentConfig::global()->backupOnSaveLocal());
+    uiadv->chkBackupRemoteFiles->setChecked(KateDocumentConfig::global()->backupOnSaveRemote());
     uiadv->edtBackupPrefix->setText(KateDocumentConfig::global()->backupPrefix());
     uiadv->edtBackupSuffix->setText(KateDocumentConfig::global()->backupSuffix());
     uiadv->cmbSwapFileMode->setCurrentIndex(KateDocumentConfig::global()->swapFileModeRaw());

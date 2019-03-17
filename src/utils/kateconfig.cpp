@@ -38,6 +38,8 @@
 //BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)
     : m_parent(parent)
+    , m_configKeys(m_parent ? nullptr : new QStringList())
+    , m_configKeyToEntry(m_parent ? nullptr : new QHash<QString, const ConfigEntry *>())
 {
 }
 
@@ -47,6 +49,18 @@ KateConfig::~KateConfig()
 
 void KateConfig::finalizeConfigEntries()
 {
+    /**
+     * shall only be called for toplevel config
+     */
+    Q_ASSERT(isGlobal());
+
+    /**
+     * compute list of all config keys + register map from key => config entry
+     */
+    for (const auto &entry : m_configEntries) {
+        m_configKeys->append(entry.second.commandName);
+        m_configKeyToEntry->insert(entry.second.commandName, &entry.second);
+    }
 }
 
 void KateConfig::readConfigEntries(const KConfigGroup &config)
@@ -148,6 +162,41 @@ void KateConfig::setValue(const int key, const QVariant &value)
     res.first->second.value = value;
     configEnd();
 }
+
+QVariant KateConfig::value(const QString &key) const
+{
+    /**
+     * check if we know this key, if not, return invalid variant
+     */
+    const auto &knownEntries = fullConfigKeyToEntry();
+    const auto it = knownEntries.find(key);
+    if (it == knownEntries.end()) {
+        return QVariant();
+    }
+
+    /**
+     * key known, dispatch to normal value() function with enum
+     */
+    return value(it.value()->enumKey);
+}
+
+void KateConfig::setValue(const QString &key, const QVariant &value)
+{
+    /**
+     * check if we know this key, if not, ignore the set
+     */
+    const auto &knownEntries = fullConfigKeyToEntry();
+    const auto it = knownEntries.find(key);
+    if (it == knownEntries.end()) {
+        return;
+    }
+
+    /**
+     * key known, dispatch to normal setValue() function with enum
+     */
+    return setValue(it.value()->enumKey, value);
+}
+
 //END
 
 //BEGIN KateDocumentConfig
@@ -252,7 +301,6 @@ KateDocumentConfig::KateDocumentConfig()
       m_showTabsSet(false),
       m_showSpacesSet(false),
       m_showSpaces(None),
-      m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
       m_newLineAtEofSet(false),
       m_overwiteModeSet(false),
@@ -261,9 +309,6 @@ KateDocumentConfig::KateDocumentConfig()
       m_eolSet(false),
       m_bomSet(false),
       m_allowEolDetectionSet(false),
-      m_backupFlagsSet(false),
-      m_backupPrefixSet(false),
-      m_backupSuffixSet(false),
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
@@ -279,6 +324,11 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(IndentationWidth, "Indentation Width", QStringLiteral("indent-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
     addConfigEntry(ConfigEntry(OnTheFlySpellCheck, "On-The-Fly Spellcheck", QStringLiteral("on-the-fly-spellcheck"), false));
     addConfigEntry(ConfigEntry(IndentOnTextPaste, "Indent On Text Paste", QStringLiteral("indent-pasted-text"), false));
+    addConfigEntry(ConfigEntry(ReplaceTabsWithSpaces, "ReplaceTabsDyn", QStringLiteral("replace-tabs"), true));
+    addConfigEntry(ConfigEntry(BackupOnSaveLocal, "Backup Local", QStringLiteral("backup-on-save-local"), false));
+    addConfigEntry(ConfigEntry(BackupOnSaveRemote, "Backup Remote", QStringLiteral("backup-on-save-remote"), false));
+    addConfigEntry(ConfigEntry(BackupOnSavePrefix, "Backup Prefix", QStringLiteral("backup-on-save-prefix"), QString()));
+    addConfigEntry(ConfigEntry(BackupOnSaveSuffix, "Backup Suffix", QStringLiteral("backup-on-save-suffix"), QStringLiteral("~")));
 
     /**
      * finalize the entries, e.g. hashs them
@@ -306,7 +356,6 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_showSpacesSet(false),
       m_showSpaces(None),
       m_markerSize(1),
-      m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
       m_newLineAtEofSet(false),
       m_overwiteModeSet(false),
@@ -315,9 +364,6 @@ KateDocumentConfig::KateDocumentConfig(const KConfigGroup &cg)
       m_eolSet(false),
       m_bomSet(false),
       m_allowEolDetectionSet(false),
-      m_backupFlagsSet(false),
-      m_backupPrefixSet(false),
-      m_backupSuffixSet(false),
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
@@ -343,7 +389,6 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
       m_showSpacesSet(false),
       m_showSpaces(None),
       m_markerSize(1),
-      m_replaceTabsDynSet(false),
       m_removeSpacesSet(false),
       m_newLineAtEofSet(false),
       m_overwiteModeSet(false),
@@ -352,9 +397,6 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
       m_eolSet(false),
       m_bomSet(false),
       m_allowEolDetectionSet(false),
-      m_backupFlagsSet(false),
-      m_backupPrefixSet(false),
-      m_backupSuffixSet(false),
       m_swapFileModeSet(false),
       m_swapDirectorySet(false),
       m_swapSyncIntervalSet(false),
@@ -381,7 +423,6 @@ const char KEY_KEEP_EXTRA_SPACES[] = "Keep Extra Spaces";
 const char KEY_BACKSPACE_INDENTS[] = "Indent On Backspace";
 const char KEY_SHOW_SPACES[] = "Show Spaces";
 const char KEY_MARKER_SIZE[] = "Trailing Marker Size";
-const char KEY_REPLACE_TABS_DYN[] = "ReplaceTabsDyn";
 const char KEY_REMOVE_SPACES[] = "Remove Spaces";
 const char KEY_NEWLINE_AT_EOF[] = "Newline at End of File";
 const char KEY_OVR[] = "Overwrite Mode";
@@ -389,9 +430,6 @@ const char KEY_ENCODING[] = "Encoding";
 const char KEY_EOL[] = "End of Line";
 const char KEY_ALLOW_EOL_DETECTION[] = "Allow End of Line Detection";
 const char KEY_BOM[] = "BOM";
-const char KEY_BACKUP_FLAGS[] = "Backup Flags";
-const char KEY_BACKUP_PREFIX[] = "Backup Prefix";
-const char KEY_BACKUP_SUFFIX[] = "Backup Suffix";
 const char KEY_SWAP_FILE_MODE[] = "Swap File Mode";
 const char KEY_SWAP_DIRECTORY[] = "Swap Directory";
 const char KEY_SWAP_SYNC_INTERVAL[] = "Swap Sync Interval";
@@ -420,7 +458,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setBackspaceIndents(config.readEntry(KEY_BACKSPACE_INDENTS, true));
     setShowSpaces(KateDocumentConfig::WhitespaceRendering(config.readEntry(KEY_SHOW_SPACES, int(KateDocumentConfig::None))));
     setMarkerSize(config.readEntry(KEY_MARKER_SIZE, 1));
-    setReplaceTabsDyn(config.readEntry(KEY_REPLACE_TABS_DYN, true));
     setRemoveSpaces(config.readEntry(KEY_REMOVE_SPACES, 0));
     setNewLineAtEof(config.readEntry(KEY_NEWLINE_AT_EOF, true));
     setOvr(config.readEntry(KEY_OVR, false));
@@ -431,12 +468,6 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     setAllowEolDetection(config.readEntry(KEY_ALLOW_EOL_DETECTION, true));
 
     setBom(config.readEntry(KEY_BOM, false));
-
-    setBackupFlags(config.readEntry(KEY_BACKUP_FLAGS, 0));
-
-    setBackupPrefix(config.readEntry(KEY_BACKUP_PREFIX, QString()));
-
-    setBackupSuffix(config.readEntry(KEY_BACKUP_SUFFIX, QStringLiteral("~")));
 
     setSwapFileMode(config.readEntry(KEY_SWAP_FILE_MODE, (uint)EnableSwapFile));
     setSwapDirectory(config.readEntry(KEY_SWAP_DIRECTORY, QString()));
@@ -468,7 +499,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_BACKSPACE_INDENTS, backspaceIndents());
     config.writeEntry(KEY_SHOW_SPACES, int(showSpaces()));
     config.writeEntry(KEY_MARKER_SIZE, markerSize());
-    config.writeEntry(KEY_REPLACE_TABS_DYN, replaceTabsDyn());
     config.writeEntry(KEY_REMOVE_SPACES, removeSpaces());
     config.writeEntry(KEY_NEWLINE_AT_EOF, newLineAtEof());
     config.writeEntry(KEY_OVR, ovr());
@@ -479,12 +509,6 @@ void KateDocumentConfig::writeConfig(KConfigGroup &config)
     config.writeEntry(KEY_ALLOW_EOL_DETECTION, allowEolDetection());
 
     config.writeEntry(KEY_BOM, bom());
-
-    config.writeEntry(KEY_BACKUP_FLAGS, backupFlags());
-
-    config.writeEntry(KEY_BACKUP_PREFIX, backupPrefix());
-
-    config.writeEntry(KEY_BACKUP_SUFFIX, backupSuffix());
 
     config.writeEntry(KEY_SWAP_FILE_MODE, swapFileModeRaw());
     config.writeEntry(KEY_SWAP_DIRECTORY, swapDirectory());
@@ -765,29 +789,6 @@ uint KateDocumentConfig::markerSize() const
     return s_global->markerSize();
 }
 
-void KateDocumentConfig::setReplaceTabsDyn(bool on)
-{
-    if (m_replaceTabsDynSet && m_replaceTabsDyn == on) {
-        return;
-    }
-
-    configStart();
-
-    m_replaceTabsDynSet = true;
-    m_replaceTabsDyn = on;
-
-    configEnd();
-}
-
-bool KateDocumentConfig::replaceTabsDyn() const
-{
-    if (m_replaceTabsDynSet || isGlobal()) {
-        return m_replaceTabsDyn;
-    }
-
-    return s_global->replaceTabsDyn();
-}
-
 void KateDocumentConfig::setRemoveSpaces(int triState)
 {
     if (m_removeSpacesSet && m_removeSpaces == triState) {
@@ -1012,75 +1013,6 @@ void KateDocumentConfig::setAllowEolDetection(bool on)
 
     m_allowEolDetectionSet = true;
     m_allowEolDetection = on;
-
-    configEnd();
-}
-
-uint KateDocumentConfig::backupFlags() const
-{
-    if (m_backupFlagsSet || isGlobal()) {
-        return m_backupFlags;
-    }
-
-    return s_global->backupFlags();
-}
-
-void KateDocumentConfig::setBackupFlags(uint flags)
-{
-    if (m_backupFlagsSet && m_backupFlags == flags) {
-        return;
-    }
-
-    configStart();
-
-    m_backupFlagsSet = true;
-    m_backupFlags = flags;
-
-    configEnd();
-}
-
-const QString &KateDocumentConfig::backupPrefix() const
-{
-    if (m_backupPrefixSet || isGlobal()) {
-        return m_backupPrefix;
-    }
-
-    return s_global->backupPrefix();
-}
-
-const QString &KateDocumentConfig::backupSuffix() const
-{
-    if (m_backupSuffixSet || isGlobal()) {
-        return m_backupSuffix;
-    }
-
-    return s_global->backupSuffix();
-}
-
-void KateDocumentConfig::setBackupPrefix(const QString &prefix)
-{
-    if (m_backupPrefixSet && m_backupPrefix == prefix) {
-        return;
-    }
-
-    configStart();
-
-    m_backupPrefixSet = true;
-    m_backupPrefix = prefix;
-
-    configEnd();
-}
-
-void KateDocumentConfig::setBackupSuffix(const QString &suffix)
-{
-    if (m_backupSuffixSet && m_backupSuffix == suffix) {
-        return;
-    }
-
-    configStart();
-
-    m_backupSuffixSet = true;
-    m_backupSuffix = suffix;
 
     configEnd();
 }

@@ -2537,8 +2537,8 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
     /**
      * backup for local or remote files wanted?
      */
-    const bool backupLocalFiles = (config()->backupFlags() & KateDocumentConfig::LocalFiles);
-    const bool backupRemoteFiles = (config()->backupFlags() & KateDocumentConfig::RemoteFiles);
+    const bool backupLocalFiles = config()->backupOnSaveLocal();
+    const bool backupRemoteFiles = config()->backupOnSaveRemote();
 
     /**
      * early out, before mount check: backup wanted at all?
@@ -5141,85 +5141,26 @@ bool KTextEditor::DocumentPrivate::checkOverwrite(QUrl u, QWidget *parent)
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::DocumentPrivate::configKeys() const
 {
-    static const QStringList keys = {
-        QLatin1String("backup-on-save-local"),
-        QLatin1String("backup-on-save-suffix"),
-        QLatin1String("backup-on-save-prefix"),
-        QLatin1String("replace-tabs"),
-        QLatin1String("indent-pasted-text"),
-        QLatin1String("tab-width"),
-        QLatin1String("indent-width"),
-        QLatin1String("on-the-fly-spellcheck"),
-    };
-    return keys;
+    /**
+     * expose all internally registered keys of the KateDocumentConfig
+     */
+    return m_config->configKeys();
 }
 
 QVariant KTextEditor::DocumentPrivate::configValue(const QString &key)
 {
-    if (key == QLatin1String("backup-on-save-local")) {
-        return m_config->backupFlags() & KateDocumentConfig::LocalFiles;
-    } else if (key == QLatin1String("backup-on-save-remote")) {
-        return m_config->backupFlags() & KateDocumentConfig::RemoteFiles;
-    } else if (key == QLatin1String("backup-on-save-suffix")) {
-        return m_config->backupSuffix();
-    } else if (key == QLatin1String("backup-on-save-prefix")) {
-        return m_config->backupPrefix();
-    } else if (key == QLatin1String("replace-tabs")) {
-        return m_config->replaceTabsDyn();
-    } else if (key == QLatin1String("indent-pasted-text")) {
-        return m_config->indentPastedText();
-    } else if (key == QLatin1String("tab-width")) {
-        return m_config->tabWidth();
-    } else if (key == QLatin1String("indent-width")) {
-        return m_config->indentationWidth();
-    } else if (key == QLatin1String("on-the-fly-spellcheck")) {
-        return isOnTheFlySpellCheckingEnabled();
-    }
-
-    // return invalid variant
-    return QVariant();
+    /**
+     * just dispatch to internal key => value lookup
+     */
+    return m_config->value(key);
 }
 
 void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVariant &value)
 {
-    if (value.type() == QVariant::String) {
-        if (key == QLatin1String("backup-on-save-suffix")) {
-            m_config->setBackupSuffix(value.toString());
-        } else if (key == QLatin1String("backup-on-save-prefix")) {
-            m_config->setBackupPrefix(value.toString());
-        }
-    } else if (value.type() == QVariant::Bool) {
-        const bool bValue = value.toBool();
-        if (key == QLatin1String("backup-on-save-local")) {
-            uint f = m_config->backupFlags();
-            if (bValue) {
-                f |= KateDocumentConfig::LocalFiles;
-            } else {
-                f ^= KateDocumentConfig::LocalFiles;
-            }
-            m_config->setBackupFlags(f);
-        } else if (key == QLatin1String("backup-on-save-remote")) {
-            uint f = m_config->backupFlags();
-            if (bValue) {
-                f |= KateDocumentConfig::RemoteFiles;
-            } else {
-                f ^= KateDocumentConfig::RemoteFiles;
-            }
-            m_config->setBackupFlags(f);
-        } else if (key == QLatin1String("replace-tabs")) {
-            m_config->setReplaceTabsDyn(bValue);
-        } else if (key == QLatin1String("indent-pasted-text")) {
-            m_config->setIndentPastedText(bValue);
-        } else if (key == QLatin1String("on-the-fly-spellcheck")) {
-            onTheFlySpellCheckingEnabled(bValue);
-        }
-    } else if (value.canConvert(QVariant::Int)) {
-        if (key == QLatin1String("tab-width")) {
-            config()->setTabWidth(value.toInt());
-        } else if (key == QLatin1String("indent-width")) {
-            config()->setIndentationWidth(value.toInt());
-        }
-    }
+    /**
+     * just dispatch to internal key + value set
+     */
+    return m_config->setValue(key, value);
 }
 
 //END KTextEditor::ConfigInterface

@@ -28,6 +28,7 @@
 
 #include <functional>
 #include <map>
+#include <memory>
 
 #include <QBitRef>
 #include <QColor>
@@ -78,6 +79,16 @@ public:
     }
 
     /**
+     * All known config keys.
+     * This will use the knowledge about all registered keys of the global object.
+     * @return all known config keys
+     */
+    QStringList configKeys() const
+    {
+        return m_parent ? m_parent->configKeys() : *m_configKeys.get();
+    }
+
+    /**
      * Get a config value.
      * @param key config key, aka enum from KateConfig* classes
      * @return value for the wanted key, will assert if key is not valid
@@ -92,6 +103,22 @@ public:
      * @param value value to set
      */
     void setValue(const int key, const QVariant &value);
+
+    /**
+     * Get a config value for the string key.
+     * @param key config key, aka commandName from KateConfig* classes
+     * @return value for the wanted key, will return invalid variant if key invalid
+     */
+    QVariant value(const QString &key) const;
+
+    /**
+     * Set a config value.
+     * Will ignore set if key not valid
+     * Might not alter the value if given value fails validation.
+     * @param key config key, aka commandName from KateConfig* classes
+     * @param value value to set
+     */
+    void setValue(const QString &key, const QVariant &value);
 
 protected:
     /**
@@ -204,12 +231,20 @@ private:
     {
         return m_parent ? m_parent->fullConfigEntries() : m_configEntries;
     }
+    /**
+     * Get hash of config entries, aka the m_configKeyToEntry of the top config object
+     * @return full hash with all config entries
+     */
+    const QHash<QString, const ConfigEntry *> &fullConfigKeyToEntry () const
+    {
+        return m_parent ? m_parent->fullConfigKeyToEntry() : *m_configKeyToEntry.get();
+    }
 
 private:
     /**
      * parent config object, if any
      */
-    const KateConfig *m_parent = nullptr;
+    const KateConfig * const m_parent = nullptr;
 
     /**
      * recursion depth
@@ -229,6 +264,16 @@ private:
      * uses a map ATM for deterministic iteration e.g. for read/writeConfig
      */
     std::map<int, ConfigEntry> m_configEntries;
+
+    /**
+     * All known config keys, filled only for the object with m_parent == nullptr
+     */
+    std::unique_ptr<QStringList> m_configKeys;
+
+    /**
+     * Hash of config keys => config entry, filled only for the object with m_parent == nullptr
+     */
+    std::unique_ptr<QHash<QString, const ConfigEntry *>> m_configKeyToEntry;
 };
 
 class KTEXTEDITOR_EXPORT KateGlobalConfig : public KateConfig
@@ -333,7 +378,32 @@ public:
         /**
          * Indent pasted text?
          */
-        IndentOnTextPaste
+        IndentOnTextPaste,
+
+        /**
+         * Replace tabs with spaces?
+         */
+        ReplaceTabsWithSpaces,
+
+        /**
+         * Backup files for local files?
+         */
+        BackupOnSaveLocal,
+
+        /**
+         * Backup files for remote files?
+         */
+        BackupOnSaveRemote,
+
+        /**
+         * Prefix for backup files
+         */
+        BackupOnSavePrefix,
+
+        /**
+         * Suffix for backup files
+         */
+        BackupOnSaveSuffix
     };
 
 public:
@@ -391,6 +461,56 @@ public:
         setValue(IndentOnTextPaste, QVariant(on));
     }
 
+    bool replaceTabsDyn() const
+    {
+        return value(ReplaceTabsWithSpaces).toBool();
+    }
+
+    void setReplaceTabsDyn(bool on)
+    {
+        setValue(ReplaceTabsWithSpaces, QVariant(on));
+    }
+
+    bool backupOnSaveLocal() const
+    {
+        return value(BackupOnSaveLocal).toBool();
+    }
+
+    void setBackupOnSaveLocal(bool on)
+    {
+        setValue(BackupOnSaveLocal, QVariant(on));
+    }
+
+    bool backupOnSaveRemote() const
+    {
+        return value(BackupOnSaveRemote).toBool();
+    }
+
+    void setBackupOnSaveRemote(bool on)
+    {
+        setValue(BackupOnSaveRemote, QVariant(on));
+    }
+
+    QString backupPrefix() const
+    {
+        return value(BackupOnSavePrefix).toString();
+    }
+
+    void setBackupPrefix(const QString &prefix)
+    {
+        setValue(BackupOnSavePrefix, QVariant(prefix));
+    }
+
+    QString backupSuffix() const
+    {
+        return value(BackupOnSaveSuffix).toString();
+    }
+
+    void setBackupSuffix(const QString &suffix)
+    {
+        setValue(BackupOnSaveSuffix, QVariant(suffix));
+    }
+
     const QString &indentationMode() const;
     void setIndentationMode(const QString &identationMode);
 
@@ -436,9 +556,6 @@ public:
     void setMarkerSize(uint markerSize);
     uint markerSize() const;
 
-    void setReplaceTabsDyn(bool on);
-    bool replaceTabsDyn() const;
-
     /**
      * Remove trailing spaces on save.
      * triState = 0: never remove trailing spaces
@@ -479,20 +596,6 @@ public:
     bool allowEolDetection() const;
     void setAllowEolDetection(bool on);
 
-    enum BackupFlags {
-        LocalFiles = 1,
-        RemoteFiles = 2
-    };
-
-    uint backupFlags() const;
-    void setBackupFlags(uint flags);
-
-    const QString &backupPrefix() const;
-    void setBackupPrefix(const QString &prefix);
-
-    const QString &backupSuffix() const;
-    void setBackupSuffix(const QString &suffix);
-
     const QString &swapDirectory() const;
     void setSwapDirectory(const QString &directory);
 
@@ -522,10 +625,7 @@ private:
     bool m_allowEolDetection;
     int m_eol;
     bool m_bom;
-    uint m_backupFlags;
     QString m_encoding;
-    QString m_backupPrefix;
-    QString m_backupSuffix;
     uint m_swapFileMode;
     QString m_swapDirectory;
     uint m_swapSyncInterval;
@@ -549,8 +649,6 @@ private:
     bool m_showSpacesSet : 1;
     WhitespaceRendering m_showSpaces : 2;
     uint m_markerSize = 1;
-    bool m_replaceTabsDynSet : 1;
-    bool m_replaceTabsDyn : 1;
     bool m_removeSpacesSet : 1;
     uint m_removeSpaces : 2;
     bool m_newLineAtEofSet : 1;
@@ -564,9 +662,6 @@ private:
     bool m_eolSet : 1;
     bool m_bomSet : 1;
     bool m_allowEolDetectionSet : 1;
-    bool m_backupFlagsSet : 1;
-    bool m_backupPrefixSet : 1;
-    bool m_backupSuffixSet : 1;
     bool m_swapFileModeSet : 1;
     bool m_swapDirectorySet : 1;
     bool m_swapSyncIntervalSet : 1;
