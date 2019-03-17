@@ -32,6 +32,7 @@
 #include <KConfigGroup>
 #include <KCharsets>
 
+#include <QSettings>
 #include <QTextCodec>
 #include <QStringListModel>
 
@@ -422,6 +423,14 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
 
     // read generic entries
     readConfigEntries(config);
+
+    // fixup sonnet config, see KateSpellCheckConfigTab::apply(), too
+    // WARNING: this is slightly hackish, but it's currently the only way to
+    //          do it, see also the KTextEdit class
+    if (isGlobal()) {
+        const QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
+        setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
+    }
 
     setIndentationMode(config.readEntry(KEY_INDENTATION_MODE, "normal"));
 
