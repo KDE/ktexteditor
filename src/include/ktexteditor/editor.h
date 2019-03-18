@@ -41,8 +41,10 @@ namespace KTextEditor
 class Application;
 class Command;
 class Document;
+class View;
 class EditorPrivate;
 class ConfigPage;
+
 
 /**
  * \brief Accessor interface for the KTextEditor framework.
@@ -245,6 +247,79 @@ public:
      * \see commands()
      */
     virtual QStringList commandList() const = 0;
+
+public:
+    /**
+     * Function that is called to expand a variable in @p text.
+     */
+    using ExpandFunction = QString (*)(const QStringView& text, KTextEditor::View* view);
+
+    /**
+     * Registers a variable called @p name for exact matches.
+     * For instance, a variable called "CurrentDocument:Path" could be
+     * registered which then expands to the path the current document.
+     *
+     * @return true on success, false if the variable could not be registered,
+     *         e.g. because it already was registered previously.
+     *
+     * @since 5.57
+     */
+    bool registerVariableMatch(const QString& name, const QString& description, ExpandFunction expansionFunc);
+
+    /**
+     * Registers a variable for arbitrary text that matches the specified
+     * prefix. For instance, a variable called "ENV:" could be registered
+     * which then expands arbitrary environment variables, e.g. ENV:HOME
+     * would expand to the user's home directory.
+     *
+     * @note A colon ':' is used as separator for the prefix and the text
+     *       after the colon that should be evaluated.
+     *
+     * @return true on success, false if a prefix could not be registered,
+     *         e.g. because it already was registered previously.
+     *
+     * @since 5.57
+     */
+    bool registerVariablePrefix(const QString& prefix, const QString& description, ExpandFunction expansionFunc);
+
+    /**
+     * Unregisters a variable that was previously registered with
+     * registerVariableMatch().
+     *
+     * @return true if the variable was successfully unregistered, and
+     *         false if the variable did not exist.
+     *
+     * @since 5.57
+     */
+    bool unregisterVariableMatch(const QString& variable);
+
+    /**
+     * Unregisters a prefix of variable that was previously registered with
+     * registerVariableMatch().
+     *
+     * @return true if the variable was successfully unregistered, and
+     *         false if the variable did not exist.
+     *
+     * @since 5.57
+     */
+    bool unregisterVariablePrefix(const QString& variable);
+
+    /**
+     * Expands a single @p variable, writing the expanded value to @p output.
+     *
+     * @return true on success, otherwise false.
+     *
+     * @since 5.57
+     */
+    bool expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const;
+
+    /**
+     * Expands arbitrary @p text that may contain arbitrary many variables.
+     * On success, the expanded text is written to @p output.
+     *
+     * @since 5.57
+     */
+    void expandText(const QString& text, KTextEditor::View* view, QString& output) const;
 
 private:
     /**

@@ -143,6 +143,7 @@ ecm_add_tests(
   src/revision_test.cpp
   src/modificationsystem_test.cpp
   src/inlinenote_test.cpp
+  src/variable_test.cpp
   src/templatehandler_test.cpp
   src/katefoldingtest.cpp
   src/bug286887.cpp

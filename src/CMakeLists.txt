@@ -195,6 +195,8 @@ utils/mainwindow.cpp
 utils/katedefaultcolors.cpp
 utils/katecommandrangeexpressionparser.cpp
 utils/katesedcmd.cpp
+utils/katemacroexpander.cpp
+utils/variable.cpp
 
 # schema
 schema/kateschema.cpp

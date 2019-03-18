@@ -24,6 +24,7 @@
 
 #include <ktexteditor_export.h>
 #include "katescript.h"
+#include "variable.h"
 
 #include <ktexteditor/editor.h>
 #include "ktexteditor/view.h"
@@ -554,6 +555,16 @@ private:
      */
     QStringListModel *m_searchHistoryModel;
     QStringListModel *m_replaceHistoryModel;
+
+    /**
+     * Contains a lookup from the variable to the Variable instance.
+     */
+    QHash<QString, KTextEditor::Variable> m_variableExactMatches;
+
+    /**
+     * Contains a lookup from the variable prefix to the Variable instance.
+     */
+    QHash<QString, KTextEditor::Variable> m_variablePrefixMatches;
 };
 
 }
