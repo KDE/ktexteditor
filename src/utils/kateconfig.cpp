@@ -149,17 +149,23 @@ QVariant KateConfig::value(const int key) const
         return m_parent->value(key);
     }
 
-    // if we arrive here, the key was invalid!
+    // if we arrive here, the key was invalid! => programming error
+    // for release builds, we just return invalid variant
     Q_ASSERT(false);
     return QVariant();
 }
 
 bool KateConfig::setValue(const int key, const QVariant &value)
 {
-    // check: is this key known at all? => if not, programming error
+    // check: is this key known at all?
     const auto &knownEntries = fullConfigEntries();
     const auto knownIt = knownEntries.find(key);
-    Q_ASSERT(knownIt != knownEntries.end());
+    if (knownIt == knownEntries.end()) {
+        // if we arrive here, the key was invalid! => programming error
+        // for release builds, we just fail to set the value
+        Q_ASSERT(false);
+        return false;
+    }
 
     // validator set? use it, if not accepting, abort setting
     if (knownIt->second.validator && !knownIt->second.validator(value)) {
