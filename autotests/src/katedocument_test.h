@@ -48,6 +48,8 @@ private Q_SLOTS:
     void testInsertNewline();
     void testInsertAfterEOF();
 
+    void testAutoBrackets();
+
     void testReplaceTabs();
 
     void testDigest();

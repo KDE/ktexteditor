@@ -300,6 +300,66 @@ void KateDocumentTest::testForgivingApiUsage()
     QVERIFY(doc.removeText(Range(0, 0, 0, 1000)));
 }
 
+void KateDocumentTest::testAutoBrackets()
+{
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+
+    auto reset = [&]() {
+        doc.setText("");
+        view->setCursorPosition(Cursor(0, 0));
+    };
+
+    auto typeText = [&](const QString &text) {
+        for (int i = 0; i < text.size(); ++i) {
+            doc.typeChars(view, text.at(i));
+        }
+    };
+
+    doc.setHighlightingMode ("Normal"); // Just to be sure
+    view->config()->setAutoBrackets(true);
+
+    QString testInput;
+
+    testInput = ("(");
+    typeText(testInput);
+    QCOMPARE(doc.text(), "()");
+
+    reset();
+    testInput = ("\"");
+    typeText(testInput);
+    QCOMPARE(doc.text(), "\"\"");
+
+    reset();
+    testInput = ("'");
+    typeText(testInput);
+    QCOMPARE(doc.text(), "'"); // In Normal mode there is only one quote to expect
+
+    //
+    // Switch over to some other mode
+    //
+    doc.setHighlightingMode ("C++");
+
+    reset();
+    typeText(testInput);
+    QCOMPARE(doc.text(), "''"); // Now it must be two
+
+    reset();
+    testInput = "('')";
+    typeText(testInput);
+    // Known bad behaviour in case of nested brackets
+    QCOMPARE(doc.text(), "(''))"); // FIXME/TODO should be "('')" like testInput
+
+    reset();
+    testInput = ("foo \"bar\" haz");
+    typeText(testInput);
+    QCOMPARE(doc.text(), testInput);
+    // Simulate afterwards to add quotes, bug 405089
+    doc.setText("foo \"bar");
+    typeText("\" haz");
+    QCOMPARE(doc.text(), testInput);
+}
+
 void KateDocumentTest::testReplaceTabs()
 {
     KTextEditor::DocumentPrivate doc;

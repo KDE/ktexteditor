@@ -114,19 +114,17 @@ static bool contains(const std::initializer_list<C> & list, const E& entry)
     return indexOf(list, entry) >= 0;
 }
 
-static inline QChar matchingStartBracket(QChar c, bool withQuotes)
+static inline QChar matchingStartBracket(const QChar c)
 {
     switch (c.toLatin1()) {
         case '}': return QLatin1Char('{');
         case ']': return QLatin1Char('[');
         case ')': return QLatin1Char('(');
-        case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
-        case '"': return withQuotes ? QLatin1Char('"') : QChar();
     }
     return QChar();
 }
 
-static inline QChar matchingEndBracket(QChar c, bool withQuotes)
+static inline QChar matchingEndBracket(const QChar c, bool withQuotes = true)
 {
     switch (c.toLatin1()) {
         case '{': return QLatin1Char('}');
@@ -138,26 +136,26 @@ static inline QChar matchingEndBracket(QChar c, bool withQuotes)
     return QChar();
 }
 
-static inline QChar matchingBracket(QChar c, bool withQuotes)
+static inline QChar matchingBracket(const QChar c)
 {
-    QChar bracket = matchingStartBracket(c, withQuotes);
+    QChar bracket = matchingStartBracket(c);
     if (bracket.isNull()) {
-        bracket = matchingEndBracket(c, false);
+        bracket = matchingEndBracket(c, /*withQuotes=*/false);
     }
     return bracket;
 }
 
-static inline bool isStartBracket(const QChar &c)
+static inline bool isStartBracket(const QChar c)
 {
-    return ! matchingEndBracket(c, false).isNull();
+    return ! matchingEndBracket(c, /*withQuotes=*/false).isNull();
 }
 
-static inline bool isEndBracket(const QChar &c)
+static inline bool isEndBracket(const QChar c)
 {
-    return ! matchingStartBracket(c, false).isNull();
+    return ! matchingStartBracket(c).isNull();
 }
 
-static inline bool isBracket(const QChar &c)
+static inline bool isBracket(const QChar c)
 {
     return isStartBracket(c) || isEndBracket(c);
 }
@@ -3018,16 +3016,17 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
      */
     QChar closingBracket;
     if (view->config()->autoBrackets() && chars.size() == 1) {
+        const QChar typedChar = chars.at(0);
         /**
          * we inserted a bracket?
          * => remember the matching closing one
          */
-        closingBracket = matchingEndBracket(chars[0], true);
+        closingBracket = matchingEndBracket(typedChar);
 
         /**
          * closing bracket for the autobracket we inserted earlier?
          */
-        if ( m_currentAutobraceClosingChar == chars[0] && m_currentAutobraceRange ) {
+        if (m_currentAutobraceClosingChar == typedChar && m_currentAutobraceRange) {
             // do nothing
             m_currentAutobraceRange.reset(nullptr);
             view->cursorRight();
@@ -3120,15 +3119,30 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
          * try to preserve the cursor position
          */
         bool skipAutobrace = closingBracket == QLatin1Char('\'');
-        if ( highlight() && skipAutobrace ) {
+        if (highlight() && skipAutobrace) {
             // skip adding ' in spellchecked areas, because those are text
             skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
         }
-        if (!closingBracket.isNull() && !skipAutobrace ) {
+
+        const auto cursorPos(view->cursorPosition());
+        if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
+            // skip auto quotes when these looks already balanced, bug 405089
+            Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
+            // RegEx match quote, but not excaped quote, thanks to https://stackoverflow.com/a/11819111
+            const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'")));
+            skipAutobrace = (count % 2 == 0) ? true : false;
+        }
+        if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
+            // ...same trick for double quotes
+            Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
+            const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\"")));
+            skipAutobrace = (count % 2 == 0) ? true : false;
+        }
+
+        if (!closingBracket.isNull() && !skipAutobrace) {
             // add bracket to the view
-            const auto cursorPos(view->cursorPosition());
             const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
-            if ( nextChar.isEmpty() || ! nextChar.at(0).isLetterOrNumber() ) {
+            if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
                 insertText(view->cursorPosition(), QString(closingBracket));
                 const auto insertedAt(view->cursorPosition());
                 view->setCursorPosition(cursorPos);
@@ -4126,7 +4140,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
         return KTextEditor::Range::invalid();
     }
 
-    const QChar opposite = matchingBracket(bracket, false);
+    const QChar opposite = matchingBracket(bracket);
     if (opposite.isNull()) {
         return KTextEditor::Range::invalid();
     }
