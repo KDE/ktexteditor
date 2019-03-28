@@ -261,9 +261,10 @@ public:
 private:
     /**
      * create list of attributes from internal formats with properties as defined in syntax file
+     * @param schema The id of the chosen schema
      * @return attributes list with attributes as defined in syntax file
      */
-    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition();
+    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema);
 
     int sanitizeFormatIndex(int attrib) const;
 

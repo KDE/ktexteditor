@@ -68,6 +68,22 @@ inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighti
     return static_cast<KTextEditor::DefaultStyle>(textStyle);
 }
 
+/**
+ * convert the theme/schema name from KTextEditor => KSyntaxHighlighting.
+ * NOTE: some themes of KTextEditor don't exist in KSyntaxHighlighting
+ */
+inline QString convertThemeName(const QString &schema)
+{
+    if (schema == QLatin1String("Normal")) {
+        return QStringLiteral("Default");
+    } else if (schema == QLatin1String("Solarized (light)")) {
+        return QStringLiteral("Solarized Light");
+    } else if (schema == QLatin1String("Solarized (dark)")) {
+        return QStringLiteral("Solarized Dark");
+    }
+    return schema;
+}
+
 }
 //END
 
@@ -299,7 +315,7 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QVect
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
 
-    list = attributesForDefinition();
+    list = attributesForDefinition(schema);
 
     foreach (KTextEditor::Attribute::Ptr p, list) {
         Q_ASSERT(p);
@@ -505,23 +521,34 @@ void KateHighlighting::clearAttributeArrays()
     m_attributeArrays.clear();
 }
 
-QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition()
+QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema)
 {
-     /**
+    /**
+     * get the KSyntaxHighlighting theme from the chosen schema.
+     * NOTE: if the theme isn't valid for KSyntaxHighlighting, an empty/invalid theme will be used.
+     * For example, the "KDE" and "Vim (dark)" themes don't exist in KSyntaxHighlighting.
+     */
+    KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(convertThemeName(schema));
+
+    /**
      * create list of all known things
      */
     QVector<KTextEditor::Attribute::Ptr> array;
     for (const auto &format : m_formats) {
         /**
-         * FIXME: atm we just set some theme here for later color generation
+         * atm we just set the current chosen theme here for later color generation
          */
-        setTheme(KateHlManager::self()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
+        setTheme(currentTheme);
 
         /**
          * create a KTextEditor attribute matching the given format
          */
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
+        /**
+         * NOTE: if "theme()" returns an empty theme, only the
+         * attribute styles set in the XML files will be applied here
+         */
         if (format.hasTextColor(theme())) {
             newAttribute->setForeground(format.textColor(theme()));
             newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
