@@ -1235,12 +1235,10 @@ public:
 public Q_SLOTS:
     void clearDictionaryRanges();
     void setDictionary(const QString &dict, const KTextEditor::Range &range, bool blockmode);
+    void setDictionary(const QString &dict, const KTextEditor::Range &range);
     void setDefaultDictionary(const QString &dict);
     void onTheFlySpellCheckingEnabled(bool enable);
     void refreshOnTheFlyCheck(const KTextEditor::Range &range = KTextEditor::Range::invalid());
-
-private:
-    void setDictionary(const QString &dict, const KTextEditor::Range &range);
 
 Q_SIGNALS:
     void dictionaryRangesPresent(bool yesNo);
