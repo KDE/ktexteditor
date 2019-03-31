@@ -1243,9 +1243,10 @@ void KateDictionaryBar::updateData()
 
 void KateDictionaryBar::dictionaryChanged(const QString &dictionary)
 {
-    KTextEditor::Range selection = m_view->selectionRange();
+    const KTextEditor::Range selection = m_view->selectionRange();
     if (selection.isValid() && !selection.isEmpty()) {
-        m_view->doc()->setDictionary(dictionary, selection);
+        const bool blockmode = m_view->blockSelection();
+        m_view->doc()->setDictionary(dictionary, selection, blockmode);
     } else {
         m_view->doc()->setDefaultDictionary(dictionary);
     }

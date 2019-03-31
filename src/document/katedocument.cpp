@@ -5563,6 +5563,19 @@ void KTextEditor::DocumentPrivate::clearDictionaryRanges()
     emit dictionaryRangesPresent(false);
 }
 
+void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range, bool blockmode)
+{
+    if (blockmode) {
+        for (int i = range.start().line(); i <= range.end().line(); ++i) {
+            setDictionary(newDictionary, rangeOnLine(range, i));
+        }
+    } else {
+        setDictionary(newDictionary, range);
+    }
+
+    emit dictionaryRangesPresent(!m_dictionaryRanges.isEmpty());
+}
+
 void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, const KTextEditor::Range &range)
 {
     KTextEditor::Range newDictionaryRange = range;
@@ -5626,12 +5639,6 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     if (m_onTheFlyChecker && !newDictionaryRange.isEmpty()) {
         m_onTheFlyChecker->refreshSpellCheck(newDictionaryRange);
     }
-    emit dictionaryRangesPresent(!m_dictionaryRanges.isEmpty());
-}
-
-void KTextEditor::DocumentPrivate::revertToDefaultDictionary(const KTextEditor::Range &range)
-{
-    setDictionary(QString(), range);
 }
 
 void KTextEditor::DocumentPrivate::setDefaultDictionary(const QString &dict)
