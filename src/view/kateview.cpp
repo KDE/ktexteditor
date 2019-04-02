@@ -235,6 +235,9 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(saveFoldingState()));
     connect(m_doc, SIGNAL(reloaded(KTextEditor::Document*)), SLOT(applyFoldingState()));
 
+    connect(m_doc, &KTextEditor::DocumentPrivate::reloaded, this, &KTextEditor::ViewPrivate::slotDocumentReloaded);
+    connect(m_doc, &KTextEditor::DocumentPrivate::aboutToReload, this, &KTextEditor::ViewPrivate::slotDocumentAboutToReload);
+
     // update highlights on scrolling and co
     connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(createHighlights()));
 
@@ -747,6 +750,9 @@ void KTextEditor::ViewPrivate::setupActions()
     ac->addAction(QStringLiteral("view_scrollbar_minimap"), a);
     a->setWhatsThis(i18n("Show/hide the mini-map on the vertical scrollbar.<br /><br />The mini-map shows an overview of the whole document."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMap()));
+
+    a = m_doc->autoReloadToggleAction();
+    ac->addAction(QStringLiteral("view_auto_reload"), a);
 
 //   a = m_toggleScrollBarMiniMapAll = toggleAction = new KToggleAction(i18n("Show the whole document in the Mini-Map"), this);
 //   ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
@@ -1314,6 +1320,30 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     /* inform the rest of the system about the change */
     emit viewInputModeChanged(this, mode);
     emit viewModeChanged(this, viewMode());
+}
+
+void KTextEditor::ViewPrivate::slotDocumentAboutToReload()
+{
+    if (doc()->isAutoReload()) {
+        const int lastVisibleLine = m_viewInternal->endLine();
+        const int currentLine = cursorPosition().line();
+        m_gotoBottomAfterReload = (lastVisibleLine == currentLine) && (currentLine == doc()->lastLine());
+        if (!m_gotoBottomAfterReload) {
+            // Ensure the view jumps not back when user scrolls around
+            const int firstVisibleLine = 1 + lastVisibleLine - m_viewInternal->linesDisplayed();
+            const int newLine = qBound(firstVisibleLine, currentLine, lastVisibleLine);
+            setCursorPositionVisual(KTextEditor::Cursor(newLine, cursorPosition().column()));
+        }
+    } else {
+        m_gotoBottomAfterReload = false;
+    }
+}
+
+void KTextEditor::ViewPrivate::slotDocumentReloaded()
+{
+    if (m_gotoBottomAfterReload) {
+        bottom();
+    }
 }
 
 void KTextEditor::ViewPrivate::slotGotFocus()

@@ -612,6 +612,7 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
         return;    //When this view is not visible, don't do anything
     }
 
+    view()->doc()->delayAutoReload(); // Don't reload while user scrolls around
     bool blocked = m_lineScroll->blockSignals(true);
 
     int wrapWidth = width();

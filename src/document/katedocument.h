@@ -69,6 +69,7 @@ class KateDocumentTest;
 
 class KateAutoIndent;
 class KateModOnHdPrompt;
+class KToggleAction;
 
 /**
  * @brief Backend of KTextEditor::Document related public KTextEditor interfaces.
@@ -760,6 +761,13 @@ public:
 
     void setModified(bool m) override;
 
+    bool isAutoReload();
+    KToggleAction* autoReloadToggleAction() { return m_autoReloadMode; };
+    void delayAutoReload();
+
+private Q_SLOTS:
+    void autoReloadToggled(bool b);
+
 private:
     void activateDirWatch(const QString &useFileName = QString());
     void deactivateDirWatch();
@@ -982,6 +990,7 @@ private:
 private Q_SLOTS:
     void onModOnHdSaveAs();
     void onModOnHdReload();
+    void onModOnHdAutoReload();
     void onModOnHdIgnore();
 
 public:
@@ -1098,6 +1107,8 @@ private:
     bool m_userSetEncodingForNextReload = false;
 
     bool m_modOnHd = false;
+    KToggleAction* m_autoReloadMode;
+    QTimer m_autoReloadThrottle;
     ModifiedOnDiskReason m_modOnHdReason = OnDiskUnmodified;
     ModifiedOnDiskReason m_prevModOnHdReason = OnDiskUnmodified;
 

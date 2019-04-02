@@ -1272,6 +1272,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     // If the file isn't deleted, present a diff button
     const bool onDiskDeleted = modtype == KTextEditor::ModificationInterface::OnDiskDeleted;
     if (!onDiskDeleted) {
+        QAction * aAutoReload = new QAction(i18n("Enable Auto Reload"), this);
+        aAutoReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
+        aAutoReload->setToolTip(i18n("Will never again warn about on disk changes but always reload."));
+        m_message->addAction(aAutoReload, false);
+        connect(aAutoReload, &QAction::triggered, this, &KateModOnHdPrompt::autoReloadTriggered);
+
         if (!QStandardPaths::findExecutable(QStringLiteral("diff")).isEmpty()) {
             m_diffAction = new QAction(i18n("View &Difference"), this);
             m_diffAction->setToolTip(i18n("Shows a diff of the changes"));

@@ -683,12 +683,14 @@ public:
     void exportHtmlToFile(const QString &file);
 
 private Q_SLOTS:
+    void slotDocumentReloaded();
+    void slotDocumentAboutToReload();
     void slotGotFocus();
     void slotLostFocus();
     void slotSaveCanceled(const QString &error);
     void slotConfigDialog();
-    void exportHtmlToClipboard ();
-    void exportHtmlToFile ();
+    void exportHtmlToClipboard();
+    void exportHtmlToFile();
 
 public Q_SLOTS:
     void slotFoldToplevelNodes();
@@ -703,10 +705,11 @@ private:
     void setupEditActions();
     void setupCodeFolding();
 
-    QList<QAction *>        m_editActions;
+    QList<QAction *>       m_editActions;
     QAction               *m_editUndo;
     QAction               *m_editRedo;
     QAction               *m_pasteMenu;
+    bool                   m_gotoBottomAfterReload;
     KToggleAction         *m_toggleFoldingMarkers;
     KToggleAction         *m_toggleIconBar;
     KToggleAction         *m_toggleLineNumbers;

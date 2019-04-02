@@ -69,6 +69,7 @@
 #include <kdirwatch.h>
 #include <KCodecs>
 #include <KStringHandler>
+#include <KToggleAction>
 #include <KConfigGroup>
 #include <KMountPoint>
 
@@ -260,6 +261,15 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     m_modOnHdTimer.setSingleShot(true);
     m_modOnHdTimer.setInterval(200);
     connect(&m_modOnHdTimer, SIGNAL(timeout()), this, SLOT(slotDelayedHandleModOnHd()));
+
+    // Setup auto reload stuff
+    m_autoReloadMode = new KToggleAction(i18n("Auto Reload Document"), this);
+    m_autoReloadMode->setWhatsThis(i18n("Automatic reload the docuemnt when it was changed on disk"));
+    connect(m_autoReloadMode, &KToggleAction::triggered, this, &DocumentPrivate::autoReloadToggled);
+    // Prepare some reload amok protector
+    m_autoReloadThrottle.setSingleShot(true);
+    m_autoReloadThrottle.setInterval(3000);
+    connect(&m_autoReloadThrottle, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
 
     /**
      * load handling
@@ -4240,6 +4250,11 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
         return;
     }
 
+    if (!isModified() && isAutoReload()) {
+        onModOnHdAutoReload();
+        return;
+    }
+
     if (!m_fileChangedDialogsActivated || m_modOnHdHandler) {
         return;
     }
@@ -4253,6 +4268,7 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
     m_modOnHdHandler = new KateModOnHdPrompt(this, m_modOnHdReason, reasonedMOHString());
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::saveAsTriggered, this, &DocumentPrivate::onModOnHdSaveAs);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::reloadTriggered, this, &DocumentPrivate::onModOnHdReload);
+    connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::autoReloadTriggered, this, &DocumentPrivate::onModOnHdAutoReload);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::ignoreTriggered, this, &DocumentPrivate::onModOnHdIgnore);
 }
 
@@ -4283,6 +4299,48 @@ void KTextEditor::DocumentPrivate::onModOnHdReload()
     emit modifiedOnDisk(this, false, OnDiskUnmodified);
     documentReload();
     delete m_modOnHdHandler;
+}
+
+void KTextEditor::DocumentPrivate::autoReloadToggled(bool b)
+{
+    m_autoReloadMode->setChecked(b);
+    if (b) {
+        connect(&m_modOnHdTimer, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
+    } else {
+        disconnect(&m_modOnHdTimer, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
+    }
+}
+
+bool KTextEditor::DocumentPrivate::isAutoReload()
+{
+    return m_autoReloadMode->isChecked();
+}
+
+void KTextEditor::DocumentPrivate::delayAutoReload()
+{
+    if (isAutoReload()) {
+        m_autoReloadThrottle.start();
+    }
+}
+
+void KTextEditor::DocumentPrivate::onModOnHdAutoReload()
+{
+    if (m_modOnHdHandler) {
+        delete m_modOnHdHandler;
+        autoReloadToggled(true);
+    }
+
+    if (!isAutoReload()) {
+        return;
+    }
+
+    if (m_modOnHd && !m_reloading && !m_autoReloadThrottle.isActive()) {
+        m_modOnHd = false;
+        m_prevModOnHdReason = OnDiskUnmodified;
+        emit modifiedOnDisk(this, false, OnDiskUnmodified);
+        documentReload();
+        m_autoReloadThrottle.start();
+    }
 }
 
 void KTextEditor::DocumentPrivate::onModOnHdIgnore()
