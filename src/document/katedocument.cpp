@@ -264,7 +264,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     // Setup auto reload stuff
     m_autoReloadMode = new KToggleAction(i18n("Auto Reload Document"), this);
-    m_autoReloadMode->setWhatsThis(i18n("Automatic reload the docuemnt when it was changed on disk"));
+    m_autoReloadMode->setWhatsThis(i18n("Automatic reload the document when it was changed on disk"));
     connect(m_autoReloadMode, &KToggleAction::triggered, this, &DocumentPrivate::autoReloadToggled);
     // Prepare some reload amok protector
     m_autoReloadThrottle.setSingleShot(true);
