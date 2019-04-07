@@ -358,6 +358,37 @@ void KateDocumentTest::testAutoBrackets()
     doc.setText("foo \"bar");
     typeText("\" haz");
     QCOMPARE(doc.text(), testInput);
+
+    // Let's check to add brackets to a selection...
+    view->setBlockSelection(false);
+    doc.setText("012xxx678");
+    view->setSelection(Range(0, 3, 0, 6));
+    typeText("[");
+    QCOMPARE(doc.text(), "012[xxx]678");
+    QCOMPARE(view->selectionRange(), Range(0, 4, 0, 7));
+
+    // ...over multiple lines..
+    doc.setText("012xxx678\n012xxx678");
+    view->setSelection(Range(0, 3, 1, 6));
+    typeText("[");
+    QCOMPARE(doc.text(), "012[xxx678\n012xxx]678");
+    QCOMPARE(view->selectionRange(), Range(0, 4, 1, 6));
+
+    // ..once again in in block mode with increased complexity..
+    view->setBlockSelection(true);
+    doc.setText("012xxx678\n012xxx678");
+    view->setSelection(Range(0, 3, 1, 6));
+    typeText("[(");
+    QCOMPARE(doc.text(), "012[(xxx)]678\n012[(xxx)]678");
+    QCOMPARE(view->selectionRange(), Range(0, 5, 1, 8));
+
+    // ..and the same with right->left selection
+    view->setBlockSelection(true);
+    doc.setText("012xxx678\n012xxx678");
+    view->setSelection(Range(0, 6, 1, 3));
+    typeText("[(");
+    QCOMPARE(doc.text(), "012[(xxx)]678\n012[(xxx)]678");
+    QCOMPARE(view->selectionRange(), Range(0, 8, 1, 5));
 }
 
 void KateDocumentTest::testReplaceTabs()

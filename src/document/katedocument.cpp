@@ -3044,145 +3044,158 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         }
     }
 
+    editStart();
+
     /**
-     * selection around => special handling if we want to add auto brackets
+     * special handling if we want to add auto brackets to a selection
      */
     if (view->selection() && !closingBracket.isNull()) {
-        /**
-         * add bracket at start + end of the selection
-         */
-        KTextEditor::Cursor oldCur = view->cursorPosition();
-        insertText(view->selectionRange().start(), chars);
-        view->slotTextInserted(view, oldCur, chars);
-
-        view->setCursorPosition(view->selectionRange().end());
-        oldCur = view->cursorPosition();
-        insertText(view->selectionRange().end(), QString(closingBracket));
-        view->slotTextInserted(view, oldCur, QString(closingBracket));
-
-        /**
-         * expand selection
-         */
-        view->setSelection(KTextEditor::Range(view->selectionRange().start() + Cursor{0, 1},
-                                              view->cursorPosition() - Cursor{0, 1}));
-        view->setCursorPosition(view->selectionRange().start());
-    }
-
-    /**
-     * else normal handling
-     */
-    else {
-        editStart();
-
-        if (!view->config()->persistentSelection() && view->selection()) {
-            view->removeSelectedText();
-        }
-
-        const KTextEditor::Cursor oldCur(view->cursorPosition());
-
-        const bool multiLineBlockMode = view->blockSelection() && view->selection();
-        if (view->currentInputMode()->overwrite()) {
-            // blockmode multiline selection case: remove chars in every line
-            const KTextEditor::Range selectionRange = view->selectionRange();
-            const int startLine = multiLineBlockMode ? qMax(0, selectionRange.start().line()) : view->cursorPosition().line();
-            const int endLine = multiLineBlockMode ? qMin(selectionRange.end().line(), lastLine()) : startLine;
-            const int virtualColumn = toVirtualColumn(multiLineBlockMode ? selectionRange.end() : view->cursorPosition());
-
-            for (int line = endLine; line >= startLine; --line) {
-                Kate::TextLine textLine = m_buffer->plainLine(line);
-                Q_ASSERT(textLine);
-                const int column = fromVirtualColumn(line, virtualColumn);
-                KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(),
-                    textLine->length() - column));
-
-                // replace mode needs to know what was removed so it can be restored with backspace
-                if (oldCur.column() < lineLength(line)) {
-                    QChar removed = characterAt(KTextEditor::Cursor(line, column));
-                    view->currentInputMode()->overwrittenChar(removed);
-                }
-
-                removeText(r);
+        std::unique_ptr<KTextEditor::MovingRange> selectionRange(newMovingRange(view->selectionRange()));
+        const int startLine = qMax(0, selectionRange->start().line());
+        const int endLine = qMin(selectionRange->end().line(), lastLine());
+        const bool blockMode = view->blockSelection() && (startLine != endLine);
+        if (blockMode) {
+            if (selectionRange->start().column() > selectionRange->end().column()) {
+                // Selection was done from right->left, requires special setting to ensure the new
+                // added brackets will not be part of the selection
+                selectionRange->setInsertBehaviors(MovingRange::ExpandLeft | MovingRange::ExpandRight);
             }
-        }
-
-        if (multiLineBlockMode) {
-            KTextEditor::Range selectionRange = view->selectionRange();
-            const int startLine = qMax(0, selectionRange.start().line());
-            const int endLine = qMin(selectionRange.end().line(), lastLine());
-            const int column = toVirtualColumn(selectionRange.end());
-            for (int line = endLine; line >= startLine; --line) {
-                editInsertText(line, fromVirtualColumn(line, column), chars);
+            // Add brackets to each line of the block
+            const int startColumn = qMin(selectionRange->start().column(), selectionRange->end().column());
+            const int endColumn = qMax(selectionRange->start().column(), selectionRange->end().column());
+            const KTextEditor::Range workingRange(startLine, startColumn, endLine, endColumn);
+            for (int line = startLine; line <= endLine; ++line) {
+                const KTextEditor::Range r(rangeOnLine(workingRange, line));
+                insertText(r.end(), QString(closingBracket));
+                view->slotTextInserted(view, r.end(), QString(closingBracket));
+                insertText(r.start(), chars);
+                view->slotTextInserted(view, r.start(), chars);
             }
-            int newSelectionColumn = toVirtualColumn(view->cursorPosition());
-            selectionRange.setRange(KTextEditor::Cursor(selectionRange.start().line(), fromVirtualColumn(selectionRange.start().line(), newSelectionColumn))
-                                    , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
-            view->setSelection(selectionRange);
+
         } else {
-            chars = eventuallyReplaceTabs(view->cursorPosition(), chars);
-            insertText(view->cursorPosition(), chars);
+            // No block, just add to start & end of selection
+            insertText(selectionRange->end(), QString(closingBracket));
+            view->slotTextInserted(view, selectionRange->end(), QString(closingBracket));
+            insertText(selectionRange->start(), chars);
+            view->slotTextInserted(view, selectionRange->start(), chars);
         }
 
-        /**
-         * auto bracket handling for newly inserted text
-         * we inserted a bracket?
-         * => add the matching closing one to the view + input chars
-         * try to preserve the cursor position
-         */
-        bool skipAutobrace = closingBracket == QLatin1Char('\'');
-        if (highlight() && skipAutobrace) {
-            // skip adding ' in spellchecked areas, because those are text
-            skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
-        }
+        // Refesh selection
+        view->setSelection(selectionRange->toRange());
+        view->setCursorPosition(selectionRange->end());
 
-        const auto cursorPos(view->cursorPosition());
-        if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
-            // skip auto quotes when these looks already balanced, bug 405089
-            Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-            // RegEx match quote, but not excaped quote, thanks to https://stackoverflow.com/a/11819111
-            const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'")));
-            skipAutobrace = (count % 2 == 0) ? true : false;
-        }
-        if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
-            // ...same trick for double quotes
-            Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
-            const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\"")));
-            skipAutobrace = (count % 2 == 0) ? true : false;
-        }
-
-        if (!closingBracket.isNull() && !skipAutobrace) {
-            // add bracket to the view
-            const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
-            if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
-                insertText(view->cursorPosition(), QString(closingBracket));
-                const auto insertedAt(view->cursorPosition());
-                view->setCursorPosition(cursorPos);
-                m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
-                                                            KTextEditor::MovingRange::DoNotExpand));
-                connect(view, &View::cursorPositionChanged,
-                        this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
-
-                // add bracket to chars inserted! needed for correct signals + indent
-                chars.append(closingBracket);
-            }
-            m_currentAutobraceClosingChar = closingBracket;
-        }
-
-        // end edit session here, to have updated HL in userTypedChar!
         editEnd();
-
-        // trigger indentation
-        KTextEditor::Cursor b(view->cursorPosition());
-        m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() :  chars.at(chars.length() - 1));
-
-        /**
-         * inform the view about the original inserted chars
-         */
-        view->slotTextInserted(view, oldCur, chars);
+        return true;
     }
 
     /**
-     * be done
+     * normal handling
      */
+    if (!view->config()->persistentSelection() && view->selection()) {
+        view->removeSelectedText();
+    }
+
+    const KTextEditor::Cursor oldCur(view->cursorPosition());
+
+    const bool multiLineBlockMode = view->blockSelection() && view->selection();
+    if (view->currentInputMode()->overwrite()) {
+        // blockmode multiline selection case: remove chars in every line
+        const KTextEditor::Range selectionRange = view->selectionRange();
+        const int startLine = multiLineBlockMode ? qMax(0, selectionRange.start().line()) : view->cursorPosition().line();
+        const int endLine = multiLineBlockMode ? qMin(selectionRange.end().line(), lastLine()) : startLine;
+        const int virtualColumn = toVirtualColumn(multiLineBlockMode ? selectionRange.end() : view->cursorPosition());
+
+        for (int line = endLine; line >= startLine; --line) {
+            Kate::TextLine textLine = m_buffer->plainLine(line);
+            Q_ASSERT(textLine);
+            const int column = fromVirtualColumn(line, virtualColumn);
+            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(),
+                textLine->length() - column));
+
+            // replace mode needs to know what was removed so it can be restored with backspace
+            if (oldCur.column() < lineLength(line)) {
+                QChar removed = characterAt(KTextEditor::Cursor(line, column));
+                view->currentInputMode()->overwrittenChar(removed);
+            }
+
+            removeText(r);
+        }
+    }
+
+    if (multiLineBlockMode) {
+        KTextEditor::Range selectionRange = view->selectionRange();
+        const int startLine = qMax(0, selectionRange.start().line());
+        const int endLine = qMin(selectionRange.end().line(), lastLine());
+        const int column = toVirtualColumn(selectionRange.end());
+        for (int line = endLine; line >= startLine; --line) {
+            editInsertText(line, fromVirtualColumn(line, column), chars);
+        }
+        int newSelectionColumn = toVirtualColumn(view->cursorPosition());
+        selectionRange.setRange(KTextEditor::Cursor(selectionRange.start().line(), fromVirtualColumn(selectionRange.start().line(), newSelectionColumn))
+                                , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
+        view->setSelection(selectionRange);
+    } else {
+        chars = eventuallyReplaceTabs(view->cursorPosition(), chars);
+        insertText(view->cursorPosition(), chars);
+    }
+
+    /**
+     * auto bracket handling for newly inserted text
+     * we inserted a bracket?
+     * => add the matching closing one to the view + input chars
+     * try to preserve the cursor position
+     */
+    bool skipAutobrace = closingBracket == QLatin1Char('\'');
+    if (highlight() && skipAutobrace) {
+        // skip adding ' in spellchecked areas, because those are text
+        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
+    }
+
+    const auto cursorPos(view->cursorPosition());
+    if (!skipAutobrace && (closingBracket == QLatin1Char('\''))) {
+        // skip auto quotes when these looks already balanced, bug 405089
+        Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
+        // RegEx match quote, but not excaped quote, thanks to https://stackoverflow.com/a/11819111
+        const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\'")));
+        skipAutobrace = (count % 2 == 0) ? true : false;
+    }
+    if (!skipAutobrace && (closingBracket == QLatin1Char('\"'))) {
+        // ...same trick for double quotes
+        Kate::TextLine textLine = m_buffer->plainLine(cursorPos.line());
+        const int count = textLine->text().left(cursorPos.column()).count(QRegularExpression(QStringLiteral("(?<!\\\\)(?:\\\\\\\\)*\\\"")));
+        skipAutobrace = (count % 2 == 0) ? true : false;
+    }
+
+    if (!closingBracket.isNull() && !skipAutobrace ) {
+        // add bracket to the view
+        const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
+        if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
+            insertText(view->cursorPosition(), QString(closingBracket));
+            const auto insertedAt(view->cursorPosition());
+            view->setCursorPosition(cursorPos);
+            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
+                                                        KTextEditor::MovingRange::DoNotExpand));
+            connect(view, &View::cursorPositionChanged,
+                    this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
+
+            // add bracket to chars inserted! needed for correct signals + indent
+            chars.append(closingBracket);
+        }
+        m_currentAutobraceClosingChar = closingBracket;
+    }
+
+    // end edit session here, to have updated HL in userTypedChar!
+    editEnd();
+
+    // trigger indentation
+    KTextEditor::Cursor b(view->cursorPosition());
+    m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() :  chars.at(chars.length() - 1));
+
+    /**
+     * inform the view about the original inserted chars
+     */
+    view->slotTextInserted(view, oldCur, chars);
+
     return true;
 }
 
