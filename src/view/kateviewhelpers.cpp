@@ -1593,7 +1593,7 @@ QSize KateIconBorder::sizeHint() const
         w += m_annotationBorderWidth + 2;
     }
 
-    if (m_lineNumbersOn || (m_view->dynWordWrap() && m_dynWrapIndicatorsOn)) {
+    if (m_lineNumbersOn || (m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap())) {
         w += lineNumberWidth() + 2;
     }
 
@@ -1641,7 +1641,7 @@ int KateIconBorder::lineNumberWidth() const
     const int digits = (int) ceil(log10((double)(m_view->doc()->lines() + 1)));
     int width = m_lineNumbersOn ? (int)ceil((digits + 1) * m_maxCharWidth) : 0;
 
-    if (m_view->dynWordWrap() && m_dynWrapIndicatorsOn) {
+    if (m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap()) {
         // HACK: 16 == style().scrollBarExtent().width()
         width = qMax(16 + 4, width);
 
@@ -1963,7 +1963,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
     }
 
     int lnWidth(0);
-    if (m_lineNumbersOn || (m_view->dynWordWrap() && m_dynWrapIndicatorsOn)) { // avoid calculating unless needed ;-)
+    if (m_lineNumbersOn || m_dynWrapIndicatorsOn) { // avoid calculating unless needed ;-)
         lnWidth = lineNumberWidth();
         if (lnWidth != m_cachedLNWidth || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) {
             // we went from n0 ->n9 lines or vice versa
@@ -2067,7 +2067,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         }
 
         // line number
-        if (m_lineNumbersOn || (m_view->dynWordWrap() && m_dynWrapIndicatorsOn)) {
+        if (m_lineNumbersOn || m_dynWrapIndicatorsOn) {
             if (realLine > -1) {
                 int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
                 QColor color;
@@ -2097,7 +2097,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                         p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
                                    Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
                     }
-                } else if (m_view->dynWordWrap() && m_dynWrapIndicatorsOn) {
+                } else if (m_dynWrapIndicatorsOn) {
                     p.drawPixmap(lnX + lnWidth - (m_arrow.width() / m_arrow.devicePixelRatio()) - 2, y, m_arrow);
                 }
             }
