@@ -1625,6 +1625,11 @@ void KateIconBorder::updateFont()
         m_maxCharWidth = qMax(m_maxCharWidth, charWidth);
     }
 
+    // NOTE/TODO(or not) Take size of m_dynWrapIndicatorChar into account.
+    // It's a multi-char and it's reported size is, even with a mono-space font,
+    // bigger than each digit, e.g. 10 vs 12. Currently it seems to work even with
+    // "Line Numbers Off" but all these width calculating looks slightly hacky
+
     // the icon pane scales with the font...
     iconPaneWidth = fm.height();
 
@@ -1640,41 +1645,10 @@ int KateIconBorder::lineNumberWidth() const
     // width = (number of digits + 1) * char width
     const int digits = (int) ceil(log10((double)(m_view->doc()->lines() + 1)));
     int width = m_lineNumbersOn ? (int)ceil((digits + 1) * m_maxCharWidth) : 0;
-
-    if (m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap()) {
-        // HACK: 16 == style().scrollBarExtent().width()
-        width = qMax(16 + 4, width);
-
-        if (m_cachedLNWidth != width || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) {
-            int w = 16;// HACK: 16 == style().scrollBarExtent().width() style().scrollBarExtent().width();
-            int h = m_view->renderer()->lineHeight();
-
-            QSize newSize(w * devicePixelRatio(), h * devicePixelRatio());
-            if ((m_arrow.size() != newSize || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) && !newSize.isEmpty()) {
-                // (Re)Build Arrow of Dyn Wrap Indicator
-                m_arrow = QPixmap(newSize);
-                m_arrow.setDevicePixelRatio(devicePixelRatioF());
-
-                QPainter p(&m_arrow);
-                p.fillRect(0, 0, w, h, m_view->renderer()->config()->iconBarColor());
-                p.setPen(m_view->renderer()->config()->lineNumberColor());
-
-                QPainterPath path;
-                h = m_view->renderer()->config()->fontMetrics().ascent();
-                path.moveTo(w / 2, h / 2);
-                path.lineTo(w / 2, 0);
-                path.lineTo(w / 4, h / 4);
-                path.lineTo(0, 0);
-                path.lineTo(0, h / 2);
-                path.lineTo(w / 2, h - 1);
-                path.lineTo(w * 3 / 4, h - 1);
-                path.lineTo(w - 1, h * 3 / 4);
-                path.lineTo(w * 3 / 4, h / 2);
-                path.lineTo(0, h / 2);
-
-                p.drawPath(path);
-            }
-        }
+    if ((width < 1) && m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap()) {
+        // FIXME Why 2x? because of above (number of digits + 1)
+        // -> looks to me like a hint for bad calculation elsewhere
+        width = 2 * m_maxCharWidth;
     }
 
     return width;
@@ -2098,7 +2072,8 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                                    Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
                     }
                 } else if (m_dynWrapIndicatorsOn) {
-                    p.drawPixmap(lnX + lnWidth - (m_arrow.width() / m_arrow.devicePixelRatio()) - 2, y, m_arrow);
+                    p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
+                                Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
                 }
             }
 

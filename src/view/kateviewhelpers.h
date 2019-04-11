@@ -351,6 +351,7 @@ private:
     bool m_dynWrapIndicatorsOn: 1;
     bool m_annotationBorderOn: 1;
 
+    const QChar m_dynWrapIndicatorChar = QChar(0x21AA);
     int m_dynWrapIndicators;
     int m_lastClickedLine;
     int m_cachedLNWidth;
@@ -362,7 +363,6 @@ private:
     bool m_hasUniformAnnotationItemSizes = false;
     bool m_isDefaultAnnotationItemDelegate = true;
 
-    mutable QPixmap m_arrow; // Dyn Wrap Indicator Arrow
     mutable QColor m_oldBackgroundColor;
 
     QPointer<KateTextPreview> m_foldingPreview;
