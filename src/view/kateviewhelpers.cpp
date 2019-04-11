@@ -1651,17 +1651,16 @@ int KateIconBorder::lineNumberWidth() const
 
             QSize newSize(w * devicePixelRatio(), h * devicePixelRatio());
             if ((m_arrow.size() != newSize || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) && !newSize.isEmpty()) {
+                // (Re)Build Arrow of Dyn Wrap Indicator
                 m_arrow = QPixmap(newSize);
                 m_arrow.setDevicePixelRatio(devicePixelRatioF());
 
                 QPainter p(&m_arrow);
                 p.fillRect(0, 0, w, h, m_view->renderer()->config()->iconBarColor());
-
-                h = m_view->renderer()->config()->fontMetrics().ascent();
-
                 p.setPen(m_view->renderer()->config()->lineNumberColor());
 
                 QPainterPath path;
+                h = m_view->renderer()->config()->fontMetrics().ascent();
                 path.moveTo(w / 2, h / 2);
                 path.lineTo(w / 2, 0);
                 path.lineTo(w / 4, h / 4);
@@ -1672,6 +1671,7 @@ int KateIconBorder::lineNumberWidth() const
                 path.lineTo(w - 1, h * 3 / 4);
                 path.lineTo(w * 3 / 4, h / 2);
                 path.lineTo(0, h / 2);
+
                 p.drawPath(path);
             }
         }
@@ -2162,8 +2162,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         }
 
         // modified line system
-        if (m_view->config()->lineModification() &&
-                realLine > -1 && !m_doc->url().isEmpty()) {
+        if (m_view->config()->lineModification() && realLine > -1 && !m_doc->url().isEmpty()) {
             // one pixel space
             ++lnX;
 
@@ -2392,12 +2391,13 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
 {
     const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->y());
     if (t.isValid()) {
-        if (positionToArea(e->pos()) == FoldingMarkers) {
+        const BorderArea area = positionToArea(e->pos());
+        if (area == FoldingMarkers) {
             showDelayedBlock(t.line());
         } else {
             hideBlock();
         }
-        if (positionToArea(e->pos()) == AnnotationBorder) {
+        if (area == AnnotationBorder) {
             KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
                                                   m_view->annotationModel() : m_doc->annotationModel();
             if (model) {
@@ -2414,14 +2414,14 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
                 QTimer::singleShot(0, this, SLOT(update()));
             }
         } else {
-            if (positionToArea(e->pos()) == IconBorder) {
+            if (area == IconBorder) {
                 m_doc->requestMarkTooltip(t.line(), e->globalPos());
             }
 
             m_hoveredAnnotationGroupIdentifier.clear();
             QTimer::singleShot(0, this, SLOT(update()));
         }
-        if (positionToArea(e->pos()) != IconBorder) {
+        if (area != IconBorder) {
             QPoint p = m_viewInternal->mapFromGlobal(e->globalPos());
             QMouseEvent forward(QEvent::MouseMove, p, e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mouseMoveEvent(&forward);
@@ -2438,7 +2438,7 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
 {
     const int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
     if (cursorOnLine == m_lastClickedLine && cursorOnLine >= 0 && cursorOnLine <= m_doc->lastLine()) {
-        BorderArea area = positionToArea(e->pos());
+        const BorderArea area = positionToArea(e->pos());
         if (area == IconBorder) {
             if (e->button() == Qt::LeftButton) {
                 if (!m_doc->handleMarkClick(cursorOnLine)) {
@@ -2511,7 +2511,7 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
 
     if (cursorOnLine == m_lastClickedLine &&
             cursorOnLine <= m_doc->lastLine()) {
-        BorderArea area = positionToArea(e->pos());
+        const BorderArea area = positionToArea(e->pos());
         const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
         if (area == AnnotationBorder && !singleClick) {
             emit m_view->annotationActivated(m_view, cursorOnLine);

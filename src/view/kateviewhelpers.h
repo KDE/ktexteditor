@@ -350,12 +350,10 @@ private:
     bool m_foldingMarkersOn: 1;
     bool m_dynWrapIndicatorsOn: 1;
     bool m_annotationBorderOn: 1;
+
     int m_dynWrapIndicators;
-
     int m_lastClickedLine;
-
     int m_cachedLNWidth;
-
     qreal m_maxCharWidth;
     int iconPaneWidth;
     int m_annotationBorderWidth;
@@ -364,7 +362,7 @@ private:
     bool m_hasUniformAnnotationItemSizes = false;
     bool m_isDefaultAnnotationItemDelegate = true;
 
-    mutable QPixmap m_arrow;
+    mutable QPixmap m_arrow; // Dyn Wrap Indicator Arrow
     mutable QColor m_oldBackgroundColor;
 
     QPointer<KateTextPreview> m_foldingPreview;
