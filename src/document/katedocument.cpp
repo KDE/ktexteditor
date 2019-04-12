@@ -4280,6 +4280,7 @@ void KTextEditor::DocumentPrivate::slotModifiedOnDisk(KTextEditor::View * /*v*/)
 
     m_modOnHdHandler = new KateModOnHdPrompt(this, m_modOnHdReason, reasonedMOHString());
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::saveAsTriggered, this, &DocumentPrivate::onModOnHdSaveAs);
+    connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::closeTriggered, this, &DocumentPrivate::onModOnHdClose);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::reloadTriggered, this, &DocumentPrivate::onModOnHdReload);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::autoReloadTriggered, this, &DocumentPrivate::onModOnHdAutoReload);
     connect(m_modOnHdHandler.data(), &KateModOnHdPrompt::ignoreTriggered, this, &DocumentPrivate::onModOnHdIgnore);
@@ -4303,6 +4304,18 @@ void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
     } else { // the save as dialog was canceled, we are still modified on disk
         m_modOnHd = true;
     }
+}
+
+void KTextEditor::DocumentPrivate::onModOnHdClose()
+{
+    // avoid prompt in closeUrl()
+    m_fileChangedDialogsActivated = false;
+
+    // close the file without prompt confirmation
+    closeUrl();
+
+    // Useful for kate only
+    closeDocumentInApplication();
 }
 
 void KTextEditor::DocumentPrivate::onModOnHdReload()

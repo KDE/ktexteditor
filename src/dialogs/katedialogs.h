@@ -341,6 +341,7 @@ Q_SIGNALS:
     void ignoreTriggered();
     void reloadTriggered();
     void autoReloadTriggered();
+    void closeTriggered();
 
 private Q_SLOTS:
     /**

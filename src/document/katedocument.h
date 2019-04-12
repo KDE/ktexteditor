@@ -989,6 +989,7 @@ private:
 
 private Q_SLOTS:
     void onModOnHdSaveAs();
+    void onModOnHdClose();
     void onModOnHdReload();
     void onModOnHdAutoReload();
     void onModOnHdIgnore();

@@ -1291,6 +1291,12 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
         m_message->addAction(aReload);
         connect(aReload, SIGNAL(triggered()), this, SIGNAL(reloadTriggered()));
     } else {
+        QAction * closeFile = new QAction(i18n("&Close"), this);
+        closeFile->setIcon(QIcon::fromTheme(QStringLiteral("document-close")));
+        closeFile->setToolTip(i18n("Close the file, discarding its content."));
+        m_message->addAction(closeFile, false);
+        connect(closeFile, &QAction::triggered, this, &KateModOnHdPrompt::closeTriggered);
+
         QAction * aSaveAs = new QAction(i18n("&Save As..."), this);
         aSaveAs->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
         aSaveAs->setToolTip(i18n("Lets you select a location and save the file again."));
