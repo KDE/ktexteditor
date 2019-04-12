@@ -3249,32 +3249,22 @@ void KateViewInternal::dropEvent(QDropEvent *event)
     if (event->mimeData()->hasText() && doc()->isReadWrite()) {
 
         const QString text = event->mimeData()->text();
-
-        // is the source our own document?
-        bool priv = false;
-        if (KateViewInternal *vi = qobject_cast<KateViewInternal *>(event->source())) {
-            priv = doc()->ownedView(vi->m_view);
-        }
-
-        // dropped on a text selection area?
-        bool selected = view()->cursorSelected(m_cursor);
+        const bool blockMode = view()->blockSelection();
 
         fixDropEvent(event);
 
-        if (priv && selected && event->dropAction() != Qt::CopyAction) {
-            // this is a drag that we started and dropped on our selection
-            // ignore this case
-            return;
-        }
+        // Remember where to paste/move...
+        KTextEditor::Cursor targetCursor(m_cursor);
+        // Use powerful MovingCursor to track our changes we may do
+        std::unique_ptr<KTextEditor::MovingCursor> targetCursor2(doc()->newMovingCursor(m_cursor));
 
-        // fix the cursor position before editStart(), so that it is correctly
-        // stored for the undo action
-        KTextEditor::Cursor targetCursor(m_cursor); // backup current cursor
-        int selectionWidth = view()->selectionRange().columnWidth(); // for block selection
-        int selectionHeight = view()->selectionRange().numberOfLines(); // for block selection
+        // As always need the BlockMode some special treatment
+        const KTextEditor::Range selRange(view()->selectionRange());
+        const KTextEditor::Cursor blockAdjust(selRange.numberOfLines(), selRange.columnWidth());
 
+        // Restore the cursor position before editStart(), so that it is correctly stored for the undo action
         if (event->dropAction() != Qt::CopyAction) {
-            editSetCursor(view()->selectionRange().end());
+            editSetCursor(selRange.end());
         } else {
             view()->clearSelection();
         }
@@ -3282,32 +3272,25 @@ void KateViewInternal::dropEvent(QDropEvent *event)
         // use one transaction
         doc()->editStart();
 
-        // on move: remove selected text; on copy: duplicate text
-        doc()->insertText(targetCursor, text, view()->blockSelection());
-
-        KTextEditor::DocumentCursor startCursor(doc(), targetCursor);
-        KTextEditor::DocumentCursor endCursor1(doc(), targetCursor);
-        const int textLength = text.length();
-
         if (event->dropAction() != Qt::CopyAction) {
             view()->removeSelectedText();
-            if (m_cursor.toCursor() < startCursor.toCursor()) {
-                startCursor.move(-textLength);
-                endCursor1.move(-textLength);
+            if (targetCursor2->toCursor() != targetCursor) {
+                // Hm, multi line selection moved down, we need to adjust our dumb cursor
+                targetCursor = targetCursor2->toCursor();
             }
-        }
+            doc()->insertText(targetCursor2->toCursor(), text, blockMode);
 
-        if (!view()->blockSelection()) {
-            endCursor1.move(textLength);
         } else {
-            endCursor1.setColumn(startCursor.column() + selectionWidth);
-            endCursor1.setLine(startCursor.line() + selectionHeight);
+            doc()->insertText(targetCursor, text, blockMode);
         }
 
-        KTextEditor::Cursor endCursor(endCursor1);
-        qCDebug(LOG_KTE) << startCursor << "---(" << textLength << ")---" << endCursor;
-        setSelection(KTextEditor::Range(startCursor, endCursor));
-        editSetCursor(endCursor);
+        if (blockMode) {
+            setSelection(KTextEditor::Range(targetCursor, targetCursor + blockAdjust));
+            editSetCursor(targetCursor + blockAdjust);
+        } else {
+            setSelection(KTextEditor::Range(targetCursor, targetCursor2->toCursor()));
+            editSetCursor(targetCursor2->toCursor()); // Just to satisfy autotest
+        }
 
         doc()->editEnd();
 
