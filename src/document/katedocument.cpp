@@ -3020,6 +3020,18 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         return false;
     }
 
+    // Check if entered closing bracket is already balanced
+    const QChar typedChar = chars.at(0);
+    const QChar openBracket = matchingStartBracket(typedChar);
+    if (!openBracket.isNull()) {
+        KTextEditor::Cursor curPos = view->cursorPosition();
+        if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123/*Which value may best?*/).isValid()) {
+            // Do nothing
+            view->cursorRight();
+            return true;
+        }
+    }
+
     /**
      * auto bracket handling for newly inserted text
      * remember if we should auto add some
