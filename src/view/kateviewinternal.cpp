@@ -708,14 +708,17 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, boo
     //if ( doc()->foldingTree()->findNodeForLine( c.line )->visible )
     //  qCDebug(LOG_KTE)<<"line ("<<c.line<<") should be visible";
 
+    const int lnDisp = linesDisplayed();
+    const bool curBelowScreen = (cache()->displayViewLine(c, true) < 0 && cache()->displayViewLine(c, false) > 0);
+
     if (force) {
         KTextEditor::Cursor scroll = c;
         scrollPos(scroll, force, calledExternally);
     } else if (center && (c < startPos() || c > endPos())) {
-        KTextEditor::Cursor scroll = viewLineOffset(c, -int(linesDisplayed()) / 2);
+        KTextEditor::Cursor scroll = viewLineOffset(c, -int(lnDisp) / 2);
         scrollPos(scroll, false, calledExternally);
-    } else if (c > viewLineOffset(startPos(), linesDisplayed() - m_minLinesVisible - 1)) {
-        KTextEditor::Cursor scroll = viewLineOffset(c, -(linesDisplayed() - m_minLinesVisible - 1));
+    } else if ((cache()->displayViewLine(c, true) >= (lnDisp - m_minLinesVisible)) || (curBelowScreen)) {
+        KTextEditor::Cursor scroll = viewLineOffset(c, -(lnDisp - m_minLinesVisible - 1));
         scrollPos(scroll, false, calledExternally);
     } else if (c < viewLineOffset(startPos(), m_minLinesVisible)) {
         KTextEditor::Cursor scroll = viewLineOffset(c, -m_minLinesVisible);
