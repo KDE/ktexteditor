@@ -348,7 +348,7 @@ void KateDocumentTest::testAutoBrackets()
     testInput = "('')";
     typeText(testInput);
     // Known bad behaviour in case of nested brackets
-    QCOMPARE(doc.text(), "(''))"); // FIXME/TODO should be "('')" like testInput
+    QCOMPARE(doc.text(), testInput);
 
     reset();
     testInput = ("foo \"bar\" haz");
