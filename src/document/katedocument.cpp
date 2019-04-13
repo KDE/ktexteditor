@@ -3134,6 +3134,8 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         }
     }
 
+    chars = eventuallyReplaceTabs(view->cursorPosition(), chars);
+
     if (multiLineBlockMode) {
         KTextEditor::Range selectionRange = view->selectionRange();
         const int startLine = qMax(0, selectionRange.start().line());
@@ -3147,7 +3149,6 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
                                 , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
         view->setSelection(selectionRange);
     } else {
-        chars = eventuallyReplaceTabs(view->cursorPosition(), chars);
         insertText(view->cursorPosition(), chars);
     }
 
