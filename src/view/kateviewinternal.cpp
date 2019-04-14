@@ -759,7 +759,14 @@ void KateViewInternal::makeVisible(const KTextEditor::Cursor &c, int endCol, boo
 void KateViewInternal::slotRegionVisibilityChanged()
 {
     qCDebug(LOG_KTE);
+
+    /**
+     * ensure the layout cache is ok for the updateCursor calls below
+     * without the updateView() the view will jump to the bottom on hiding blocks after
+     * change cfb0af25bdfac0d8f86b42db0b34a6bc9f9a361e
+     */
     cache()->clear();
+    updateView();
 
     m_cachedMaxStartPos.setLine(-1);
     KTextEditor::Cursor max = maxStartPos();
