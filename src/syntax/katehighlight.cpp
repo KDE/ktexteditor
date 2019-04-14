@@ -286,7 +286,7 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
     Q_ASSERT(m_textLineToHighlight);
     Q_ASSERT(region.isValid());
     const int foldingValue = (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id());
-    m_textLineToHighlight->addFolding(offset + (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length, foldingValue);
+    m_textLineToHighlight->addFolding(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), foldingValue);
 
     /**
      * for each end region, decrement counter for that type, erase if count reaches 0!
