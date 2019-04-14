@@ -1291,7 +1291,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
         m_message->addAction(aReload);
         connect(aReload, SIGNAL(triggered()), this, SIGNAL(reloadTriggered()));
     } else {
-        QAction * closeFile = new QAction(i18n("&Close"), this);
+        QAction * closeFile = new QAction(i18nc("@action:button closes the opened file", "&Close File"), this);
         closeFile->setIcon(QIcon::fromTheme(QStringLiteral("document-close")));
         closeFile->setToolTip(i18n("Close the file, discarding its content."));
         m_message->addAction(closeFile, false);
