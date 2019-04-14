@@ -81,7 +81,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     : KTextEditor::Editor (this)
     , m_aboutData(QStringLiteral("katepart"), i18n("Kate Part"), QStringLiteral(KTEXTEDITOR_VERSION_STRING),
                   i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
-                  i18n("(c) 2000-2017 The Kate Authors"), QString(), QStringLiteral("https://kate-editor.org"))
+                  i18n("(c) 2000-2019 The Kate Authors"), QString(), QStringLiteral("https://kate-editor.org"))
     , m_dummyApplication(nullptr)
     , m_application(&m_dummyApplication)
     , m_dummyMainWindow(nullptr)
