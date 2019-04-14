@@ -1046,13 +1046,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("move_top_of_view"));
     a->setText(i18n("Move to Top of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_PageUp));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(topOfView()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_top_of_view"));
     a->setText(i18n("Select to Top of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT +  Qt::Key_PageUp));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftTopOfView()));
     m_editActions << a;
 
@@ -1070,13 +1070,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("move_bottom_of_view"));
     a->setText(i18n("Move to Bottom of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_PageDown));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(bottomOfView()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_bottom_of_view"));
     a->setText(i18n("Select to Bottom of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_PageDown));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftBottomOfView()));
     m_editActions << a;
 
