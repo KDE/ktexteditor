@@ -2646,6 +2646,14 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
         e->accept();
         break;
 
+    case Qt::RightButton:
+        if (e->pos().x() == 0) {
+            // Special handling for folding by right click
+            placeCursor(e->pos());
+            e->accept();
+        }
+        break;
+
     default:
         e->ignore();
         break;

@@ -1194,13 +1194,13 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
     a->setText(i18n("Fold Multiline Comments"));
     connect(a, SIGNAL(triggered(bool)), doc()->foldingTree(), SLOT(collapseAll_dsComments()));
     */
-    a = ac->addAction(QStringLiteral("folding_collapselocal"));
-    a->setText(i18n("Fold Current Node"));
-    connect(a, SIGNAL(triggered(bool)), SLOT(slotCollapseLocal()));
+    a = ac->addAction(QStringLiteral("folding_toggle_current"));
+    a->setText(i18n("Toggle Current Node"));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotToggleFolding);
 
-    a = ac->addAction(QStringLiteral("folding_expandlocal"));
-    a->setText(i18n("Unfold Current Node"));
-    connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandLocal()));
+    a = ac->addAction(QStringLiteral("folding_toggle_in_current"));
+    a->setText(i18n("Toggle Contained Nodes"));
+    connect(a, &QAction::triggered, this, &KTextEditor::ViewPrivate::slotToggleFoldingsInRange);
 }
 
 void KTextEditor::ViewPrivate::slotFoldToplevelNodes()
@@ -1220,45 +1220,113 @@ void KTextEditor::ViewPrivate::slotExpandToplevelNodes()
     }
 }
 
-void KTextEditor::ViewPrivate::slotCollapseLocal()
+void KTextEditor::ViewPrivate::slotToggleFolding()
 {
-    foldLine(cursorPosition().line());
+    int line = cursorPosition().line();
+    bool actionDone = false;
+    while (!actionDone && (line > -1)) {
+        actionDone = unfoldLine(line);
+        if (!actionDone) {
+            actionDone = foldLine(line--).isValid();
+        }
+    }
 }
 
-void KTextEditor::ViewPrivate::slotExpandLocal()
+void KTextEditor::ViewPrivate::slotToggleFoldingsInRange()
 {
-    unfoldLine(cursorPosition().line());
+    int line = cursorPosition().line();
+    while (!toggleFoldingsInRange(line) && (line > -1)) {
+        --line;
+    }
 }
 
-void KTextEditor::ViewPrivate::foldLine(int startLine)
+KTextEditor::Range KTextEditor::ViewPrivate::foldLine(int line)
 {
-    // only for valid lines
-    if (startLine < 0 || startLine >= doc()->buffer().lines()) {
-        return;
+    KTextEditor::Range foldingRange = doc()->buffer().computeFoldingRangeForStartLine(line);
+    if (!foldingRange.isValid()) {
+        return foldingRange;
     }
 
-    // try to fold all known ranges
-    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = textFolding().foldingRangesStartingOnLine(startLine);
+    // Ensure not to fold the end marker to avoid a deceptive look, but only on token based folding
+    Kate::TextLine startTextLine = doc()->buffer().plainLine(line);
+    if (!startTextLine->markedAsFoldingStartIndentation()) {
+        const int adjustedLine = foldingRange.end().line() - 1;
+        foldingRange.setEnd(KTextEditor::Cursor(adjustedLine, doc()->buffer().plainLine(adjustedLine)->length()));
+    }
+
+    // Don't try to fold a single line, which can happens due to adjustment above
+    // FIXME Avoid to offer such a folding marker
+    if (!foldingRange.onSingleLine()) {
+        textFolding().newFoldingRange(foldingRange, Kate::TextFolding::Folded);
+    }
+
+    return foldingRange;
+}
+
+bool KTextEditor::ViewPrivate::unfoldLine(int line)
+{
+    bool actionDone = false;
+
+    // ask the folding info for this line, if any folds are around!
+    // auto = QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>>
+    auto startingRanges = textFolding().foldingRangesStartingOnLine(line);
     for (int i = 0; i < startingRanges.size(); ++i) {
-        textFolding().foldRange(startingRanges[i].first);
+        actionDone |= textFolding().unfoldRange(startingRanges[i].first);
     }
 
-    // try if the highlighting can help us and create a fold
-    textFolding().newFoldingRange(doc()->buffer().computeFoldingRangeForStartLine(startLine), Kate::TextFolding::Folded);
+    return actionDone;
 }
 
-void KTextEditor::ViewPrivate::unfoldLine(int startLine)
+bool KTextEditor::ViewPrivate::toggleFoldingOfLine(int line)
 {
-    // only for valid lines
-    if (startLine < 0 || startLine >= doc()->buffer().lines()) {
-        return;
+    bool actionDone = unfoldLine(line);
+    if (!actionDone) {
+        actionDone = foldLine(line).isValid();
     }
 
-    // try to unfold all known ranges
-    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = textFolding().foldingRangesStartingOnLine(startLine);
-    for (int i = 0; i < startingRanges.size(); ++i) {
-        textFolding().unfoldRange(startingRanges[i].first);
+    return actionDone;
+}
+
+bool KTextEditor::ViewPrivate::toggleFoldingsInRange(int line)
+{
+    KTextEditor::Range foldingRange = doc()->buffer().computeFoldingRangeForStartLine(line);
+    if (!foldingRange.isValid()) {
+        // Either line is not valid or there is no start range
+        return false;
     }
+
+    bool actionDone = false; // Track success
+
+    // Don't be too eager but obliging! Only toggle containing ranges which are
+    // visible -> Be done when the range is folded
+    actionDone |= unfoldLine(line);
+
+    if (!actionDone) {
+        // Unfold all in range, but not the range itself
+        for (int ln = foldingRange.start().line() + 1; ln < foldingRange.end().line(); ++ln) {
+            actionDone |= unfoldLine(ln);
+        }
+    }
+
+    if (!actionDone) {
+        // Fold all in range, but not the range itself
+        for (int ln = foldingRange.start().line() + 1; ln < foldingRange.end().line(); ++ln) {
+            KTextEditor::Range fr = foldLine(ln);
+            if (fr.isValid()) {
+                ln = fr.end().line() - 1;
+                actionDone = true;
+            }
+        }
+    }
+
+    if (!actionDone) {
+        // At this point was an unfolded range clicked which contains no "childs"
+        // We assume the user want to fold it by the wrong button, be obliging!
+        actionDone |= foldLine(line).isValid();
+    }
+
+    // At this point we should be always true
+    return actionDone;
 }
 
 KTextEditor::View::ViewMode KTextEditor::ViewPrivate::viewMode() const
@@ -1987,8 +2055,8 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
     const QStringList l = {
           QStringLiteral("folding_toplevel")
         , QStringLiteral("folding_expandtoplevel")
-        , QStringLiteral("folding_collapselocal")
-        , QStringLiteral("folding_expandlocal")
+        , QStringLiteral("folding_toggle_current")
+        , QStringLiteral("folding_toggle_in_current")
     };
 
     QAction *a = 0;

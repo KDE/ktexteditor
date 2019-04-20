@@ -203,17 +203,32 @@ Q_SIGNALS:
 
 public:
     /**
-     * Try to fold starting at the given line.
-     * This will both try to fold existing folding ranges of this line and to query the highlighting what to fold.
-     * @param startLine start line to fold at
+     * Try to fold an unfolded range starting at @p line
+     * @return the new folded range on success, otherwise an unvalid range
      */
-    void foldLine(int startLine);
+    KTextEditor::Range foldLine(int line);
 
     /**
-    * Try to unfold all foldings starting at the given line.
-    * @param startLine start line to unfold at
-    */
-    void unfoldLine(int startLine);
+     * Try to unfold a folded range starting at @p line
+     * @return true when a range was unfolded, otherwise false
+     */
+    bool unfoldLine(int line);
+
+    /**
+     * Try to toggle the folding state of a range starting at line @p line
+     * @return true when the line was toggled, false when not
+     */
+    bool toggleFoldingOfLine(int line);
+
+    /**
+     * Try to change all the foldings inside a folding range starting at @p line
+     * but not the range itself starting there.
+     * However, should the range itself be folded, will only the range unfolded
+     * and the containing ranges kept untouched.
+     * Should the range not contain other ranges will the range itself folded,
+     * @return true when any range was folded or unfolded, otherwise false
+     */
+    bool toggleFoldingsInRange(int line);
 
     //
     // KTextEditor::CodeCompletionInterface2
@@ -695,8 +710,8 @@ private Q_SLOTS:
 public Q_SLOTS:
     void slotFoldToplevelNodes();
     void slotExpandToplevelNodes();
-    void slotCollapseLocal();
-    void slotExpandLocal();
+    void slotToggleFolding();
+    void slotToggleFoldingsInRange();
 
 private:
     void setupLayout();

@@ -228,7 +228,8 @@ public:
      * For a given line, compute the folding range that starts there
      * to be used to fold e.g. from the icon border
      * @param startLine start line
-     * @return folding range starting at the given line or invalid range
+     * @return folding range starting at the given line or invalid range when
+     *         there is no folding start or @p startLine is not valid
      */
     KTextEditor::Range computeFoldingRangeForStartLine(int startLine);
 

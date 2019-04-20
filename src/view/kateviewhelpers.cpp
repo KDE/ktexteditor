@@ -2440,28 +2440,12 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         }
 
         if (area == FoldingMarkers) {
-            // ask the folding info for this line, if any folds are around!
-            QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = m_view->textFolding().foldingRangesStartingOnLine(cursorOnLine);
-            bool anyFolded = false;
-            for (int i = 0; i < startingRanges.size(); ++i)
-                if (startingRanges[i].second & Kate::TextFolding::Folded) {
-                    anyFolded = true;
-                }
-
-            // fold or unfold all ranges, remember if any action happened!
-            bool actionDone = false;
-            for (int i = 0; i < startingRanges.size(); ++i) {
-                actionDone = (anyFolded ? m_view->textFolding().unfoldRange(startingRanges[i].first) : m_view->textFolding().foldRange(startingRanges[i].first)) || actionDone;
-            }
-
-            // if no action done, try to fold it, create non-persistent folded range, if possible!
-            if (!actionDone) {
-                // either use the fold for this line or the range that is highlighted ATM if any!
-                KTextEditor::Range foldingRange = m_view->doc()->buffer().computeFoldingRangeForStartLine(cursorOnLine);
-                if (!foldingRange.isValid() && m_foldingRange) {
-                    foldingRange = m_foldingRange->toRange();
-                }
-                m_view->textFolding().newFoldingRange(foldingRange, Kate::TextFolding::Folded);
+            // Prefer the highlighted range over the exact clicked line
+            const int lineToToggle = m_foldingRange ? m_foldingRange->toRange().start().line() : cursorOnLine;
+            if (e->button() == Qt::LeftButton) {
+                m_view->toggleFoldingOfLine(lineToToggle);
+            } else if (e->button() == Qt::RightButton) {
+                m_view->toggleFoldingsInRange(lineToToggle);
             }
 
             delete m_foldingPreview;

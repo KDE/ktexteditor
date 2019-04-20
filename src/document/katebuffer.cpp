@@ -454,8 +454,9 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
     /**
      * ensure valid input
      */
-    Q_ASSERT(startLine >= 0);
-    Q_ASSERT(startLine < lines());
+    if (startLine < 0 || startLine >= lines()) {
+        return KTextEditor::Range::invalid();
+    }
 
     /**
      * no highlighting, no folding, ATM
