@@ -38,28 +38,20 @@ private Q_SLOTS:
     void testWrapParagraph();
     void testReplaceQStringList();
     void testMovingInterfaceSignals();
-
     void testSetTextPerformance();
     void testRemoveTextPerformance();
-
     void testForgivingApiUsage();
-
     void testRemoveMultipleLines();
     void testInsertNewline();
     void testInsertAfterEOF();
-
     void testAutoBrackets();
-
     void testReplaceTabs();
-
     void testDigest();
     void testModelines();
-
     void testDefStyleNum();
-
     void testTypeCharsWithSurrogateAndNewLine();
-
     void testRemoveComposedCharacters();
+    void testAutoReload();
 };
 
 #endif // KATE_DOCUMENT_TEST_H

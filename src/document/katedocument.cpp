@@ -266,9 +266,10 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     m_autoReloadMode = new KToggleAction(i18n("Auto Reload Document"), this);
     m_autoReloadMode->setWhatsThis(i18n("Automatic reload the document when it was changed on disk"));
     connect(m_autoReloadMode, &KToggleAction::triggered, this, &DocumentPrivate::autoReloadToggled);
-    // Prepare some reload amok protector
+    // Prepare some reload amok protector...
     m_autoReloadThrottle.setSingleShot(true);
-    m_autoReloadThrottle.setInterval(3000);
+    //...but keep the value small in unit tests
+    m_autoReloadThrottle.setInterval(KTextEditor::EditorPrivate::self()->unitTestMode() ? 50 : 3000);
     connect(&m_autoReloadThrottle, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
 
     /**

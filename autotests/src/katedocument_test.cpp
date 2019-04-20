@@ -634,4 +634,50 @@ void KateDocumentTest::testRemoveComposedCharacters()
     QCOMPARE(doc.text(), QString::fromUtf8(("क्ति")));
 }
 
+void KateDocumentTest::testAutoReload()
+{
+    QTemporaryFile file("AutoReloadTestFile");
+    file.open();
+    QTextStream stream(&file);
+    stream << "Hello";
+    stream.flush();
+
+    KTextEditor::DocumentPrivate doc;
+    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
+    QCOMPARE(doc.text(), "Hello");
+    // The cursor should be and stay in the last line...
+    QCOMPARE(view->cursorPosition().line(), doc.documentEnd().line());
+
+    doc.autoReloadToggled(true);
+
+    // Some magic value. You can wait as long as you like after write to file,
+    // without to wait before it doesn't work here. It mostly fails with 500,
+    // it tend to work with 600, but is not guarantied to work even with 800
+    QTest::qWait(1000);
+
+    stream << "\nTest";
+    stream.flush();
+
+     // Hardcoded delay m_modOnHdTimer in DocumentPrivate
+    // + min val with which it looks working reliable here
+    QTest::qWait(200 + 800);
+    QCOMPARE(doc.text(), "Hello\nTest");
+    // ...stay in the last line after reload!
+    QCOMPARE(view->cursorPosition().line(), doc.documentEnd().line());
+
+    // Now we have more then one line, set the cursor to some line != last line...
+    Cursor c(0, 3);
+    view->setCursorPosition(c);
+
+    stream << "\nWorld!";
+    stream.flush();
+    file.close();
+
+    QTest::qWait(200 + 800);
+    QCOMPARE(doc.text(), "Hello\nTest\nWorld!");
+    // ...and ensure we have not move around
+    QCOMPARE(view->cursorPosition(), c);
+}
+
 #include "katedocument_test.moc"
