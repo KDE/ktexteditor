@@ -562,6 +562,20 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
     paintTextLineBackground(paint, range, currentViewLine, xStart, xEnd);
 
+    // Draws the dashed underline at the start of a folded block of text.
+    if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock()) {
+        const QPainter::RenderHints backupRenderHints = paint.renderHints();
+        paint.setRenderHint(QPainter::Antialiasing, false);
+        QPen pen(config()->foldingColor());
+        pen.setCosmetic(true);
+        pen.setStyle(Qt::DashLine);
+        pen.setDashOffset(xStart);
+        pen.setWidth(2);
+        paint.setPen(pen);
+        paint.drawLine(0, (lineHeight() * range->viewLineCount()) - 2, xEnd - xStart, (lineHeight() * range->viewLineCount()) - 2);
+        paint.setRenderHints(backupRenderHints);
+    }
+
     if (range->layout()) {
         bool drawSelection = m_view && m_view->selection() && showSelections() && m_view->selectionRange().overlapsLine(range->line());
         // Draw selection in block selection mode. We need 2 kinds of selections that QTextLayout::draw can't render:
@@ -880,19 +894,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
             paint.restore();
         }
-    }
-
-    // Draws the dashed underline at the start of a folded block of text.
-    if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock()) {
-        const QPainter::RenderHints backupRenderHints = paint.renderHints();
-        paint.setRenderHint(QPainter::Antialiasing, false);
-        QPen pen(config()->wordWrapMarkerColor());
-        pen.setCosmetic(true);
-        pen.setStyle(Qt::DashLine);
-        pen.setDashOffset(xStart);
-        paint.setPen(pen);
-        paint.drawLine(0, (lineHeight() * range->viewLineCount()) - 1, xEnd - xStart, (lineHeight() * range->viewLineCount()) - 1);
-        paint.setRenderHints(backupRenderHints);
     }
 
     // show word wrap marker if desirable
