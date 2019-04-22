@@ -731,7 +731,6 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = m_toggleIconBar = toggleAction = new KToggleAction(i18n("Show &Icon Border"), this);
     ac->addAction(QStringLiteral("view_border"), a);
-    ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F6));
     a->setWhatsThis(i18n("Show/hide the icon border.<br /><br />The icon border shows bookmark symbols, for instance."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleIconBorder()));
 
