@@ -1433,12 +1433,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_foldingMarkersOn(false)
     , m_dynWrapIndicatorsOn(false)
     , m_annotationBorderOn(false)
-    , m_dynWrapIndicators(0)
-    , m_lastClickedLine(-1)
-    , m_cachedLNWidth(0)
-    , m_maxCharWidth(0.0)
-    , iconPaneWidth(16)
-    , m_annotationBorderWidth(6)
+    , m_updatePositionToArea(true)
     , m_annotationItemDelegate(new KateAnnotationItemDelegate(m_viewInternal, this))
     , m_foldingPreview(nullptr)
     , m_foldingRange(nullptr)
@@ -1479,7 +1474,7 @@ void KateIconBorder::setIconBorderOn(bool enable)
 
     m_iconBorderOn = enable;
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -1500,7 +1495,7 @@ void KateIconBorder::setAnnotationBorderOn(bool enable)
 
     emit m_view->annotationBorderVisibilityChanged(m_view, enable);
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -1523,7 +1518,7 @@ void KateIconBorder::setLineNumbersOn(bool enable)
     m_lineNumbersOn = enable;
     m_dynWrapIndicatorsOn = (m_dynWrapIndicators == 1) ? enable : m_dynWrapIndicators;
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -1539,7 +1534,7 @@ void KateIconBorder::setRelLineNumbersOn(bool enable)
      * We don't have to touch the m_dynWrapIndicatorsOn because
      * we already got it right from the m_lineNumbersOn
      */
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot( 0, this, SLOT(update()) );
 }
@@ -1563,7 +1558,7 @@ void KateIconBorder::setDynWrapIndicators(int state)
     m_dynWrapIndicators = state;
     m_dynWrapIndicatorsOn = (state == 1) ? m_lineNumbersOn : state;
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -1576,38 +1571,19 @@ void KateIconBorder::setFoldingMarkersOn(bool enable)
 
     m_foldingMarkersOn = enable;
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
 
 QSize KateIconBorder::sizeHint() const
 {
-    int w = 0;
+    int w = 1; // Must be any value != 0 or we will never painted!
 
-    if (m_iconBorderOn) {
-        w += iconPaneWidth + 2;
+    const int i = m_positionToArea.size();
+    if (i > 0) {
+        w = m_positionToArea.at(i - 1).first;
     }
-
-    if (m_annotationBorderOn) {
-        w += m_annotationBorderWidth + 2;
-    }
-
-    if (m_lineNumbersOn || (m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap())) {
-        w += lineNumberWidth() + 2;
-    }
-
-    if (m_foldingMarkersOn) {
-        w += iconPaneWidth;
-    }
-
-    // space for the line modification system border
-    if (m_view->config()->lineModification()) {
-        w += 3;
-    }
-
-    // two pixel space
-    w += 2;
 
     return QSize(w, 0);
 }
@@ -1631,11 +1607,14 @@ void KateIconBorder::updateFont()
     // "Line Numbers Off" but all these width calculating looks slightly hacky
 
     // the icon pane scales with the font...
-    iconPaneWidth = fm.height();
+    m_iconAreaWidth = fm.height();
+
+    // Only for now, later may that become an own value
+    m_foldingAreaWidth = m_iconAreaWidth;
 
     calcAnnotationBorderWidth();
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -1681,10 +1660,21 @@ static void paintTriangle(QPainter &painter, QColor c, int xOffset, int yOffset,
 
     qreal size = qMin(width, height);
 
-    if (KColorUtils::luma(c) > 0.25) {
-        c = KColorUtils::darken(c);
+    if (open) {
+        // Paint unfolded icon less pushy
+        if (KColorUtils::luma(c) < 0.25) {
+            c = KColorUtils::darken(c);
+        } else {
+            c = KColorUtils::shade(c, 0.1);
+        }
+
     } else {
-        c = KColorUtils::shade(c, 0.1);
+        // Paint folded icon in contrast to popup highlighting
+        if (KColorUtils::luma(c) > 0.25) {
+            c = KColorUtils::darken(c);
+        } else {
+            c = KColorUtils::shade(c, 0.1);
+        }
     }
 
     QPen pen;
@@ -1692,7 +1682,6 @@ static void paintTriangle(QPainter &painter, QColor c, int xOffset, int yOffset,
     pen.setColor(c);
     pen.setWidthF(1.5);
     painter.setPen(pen);
-
     painter.setBrush(c);
 
     // let some border, if possible
@@ -1924,11 +1913,10 @@ void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotati
 
 void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 {
-    uint h = m_view->renderer()->lineHeight();
-    uint startz = (y / h);
-    uint endz = startz + 1 + (height / h);
-    uint lineRangesSize = m_viewInternal->cache()->viewCacheLineCount();
-    uint currentLine = m_view->cursorPosition().line();
+    const uint h = m_view->renderer()->lineHeight();
+    const uint startz = (y / h);
+    const uint endz = qMin(startz + 1 + (height / h), static_cast<uint>(m_viewInternal->cache()->viewCacheLineCount()));
+    const uint currentLine = m_view->cursorPosition().line();
 
     // center the folding boxes
     int m_px = (h - 11) / 2;
@@ -1936,23 +1924,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         m_px = 0;
     }
 
-    int lnWidth(0);
-    if (m_lineNumbersOn || m_dynWrapIndicatorsOn) { // avoid calculating unless needed ;-)
-        lnWidth = lineNumberWidth();
-        if (lnWidth != m_cachedLNWidth || m_oldBackgroundColor != m_view->renderer()->config()->iconBarColor()) {
-            // we went from n0 ->n9 lines or vice versa
-            // this causes an extra updateGeometry() first time the line numbers
-            // are displayed, but sizeHint() is supposed to be const so we can't set
-            // the cached value there.
-            m_cachedLNWidth = lnWidth;
-            m_oldBackgroundColor = m_view->renderer()->config()->iconBarColor();
-            updateGeometry();
-            update();
-            return;
-        }
+    if (m_updatePositionToArea) {
+        m_lineNumberAreaWidth = lineNumberWidth();
+        m_positionToArea.clear();
     }
-
-    int w(this->width());                       // sane value/calc only once
 
     QPainter p(this);
     p.setRenderHints(QPainter::TextAntialiasing);
@@ -1964,231 +1939,201 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                                                                   m_hoveredAnnotationGroupIdentifier,
                                                                   startz, m_annotationBorderOn);
 
-    for (uint z = startz; z <= endz; z++) {
-        int y = h * z;
-        int realLine = -1;
+    // Fetch often used data only once, improve readability
+    const int w = width();
+    const QColor iconBarColor = m_view->renderer()->config()->iconBarColor(); // Effective our background
+    const QColor lineNumberColor = m_view->renderer()->config()->lineNumberColor();
+    const QColor backgroundColor = m_view->renderer()->config()->backgroundColor(); // Of the edit area
 
-        if (z < lineRangesSize) {
-            realLine = m_viewInternal->cache()->viewLine(z).line();
+    // Paint the border in chunks line by line
+    for (uint z = startz; z < endz; z++) {
+        // Painting coordinates, lineHeight * lineNumber
+        const uint y = h * z;
+        // Paint the border in chunks left->right, remember used width
+        uint lnX = 0;
+
+        // Paint background over full width...
+        p.fillRect(lnX, y, w, h, iconBarColor);
+        // ...and overpaint again the end to simulate some margin to the edit area,
+        // so that the text not looks like stuck to the border
+        p.fillRect(w - m_separatorWidth, y, w, h, backgroundColor);
+
+        const KateTextLayout lineLayout = m_viewInternal->cache()->viewLine(z);
+        int realLine = lineLayout.line();
+        if (realLine < 0) {
+            // We have reached the end of the document, just paint background
+            continue;
         }
-
-        int lnX = 0;
-
-        p.fillRect(0, y, w - 5, h, m_view->renderer()->config()->iconBarColor());
-        p.fillRect(w - 5, y, 5, h, m_view->renderer()->config()->backgroundColor());
 
         // icon pane
         if (m_iconBorderOn) {
             p.setPen(m_view->renderer()->config()->separatorColor());
             p.setBrush(m_view->renderer()->config()->separatorColor());
-            p.drawLine(lnX + iconPaneWidth + 1, y, lnX + iconPaneWidth + 1, y + h);
+            p.drawLine(lnX + m_iconAreaWidth, y, lnX + m_iconAreaWidth, y + h);
 
-            if ((realLine > -1) && (m_viewInternal->cache()->viewLine(z).startCol() == 0)) {
-                uint mrk(m_doc->mark(realLine));      // call only once
+            const uint mrk(m_doc->mark(realLine));      // call only once
+            if (mrk && lineLayout.startCol() == 0) {
+                for (uint bit = 0; bit < 32; bit++) {
+                    MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
+                    if (mrk & markType) {
+                        QPixmap px_mark(m_doc->markPixmap(markType));
+                        px_mark.setDevicePixelRatio(devicePixelRatioF());
 
-                if (mrk) {
-                    for (uint bit = 0; bit < 32; bit++) {
-                        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
-                        if (mrk & markType) {
-                            QPixmap px_mark(m_doc->markPixmap(markType));
-                            px_mark.setDevicePixelRatio(devicePixelRatioF());
+                        if (!px_mark.isNull() && h > 0 && m_iconAreaWidth > 0) {
+                            // scale up to a usable size
+                            px_mark = px_mark.scaled(m_iconAreaWidth * devicePixelRatioF(), h * devicePixelRatioF(), Qt::KeepAspectRatio);
 
-                            if (!px_mark.isNull() && h > 0 && iconPaneWidth > 0) {
-                                // scale up to a usable size
-                                px_mark = px_mark.scaled(iconPaneWidth * devicePixelRatio(), h * devicePixelRatio(), Qt::KeepAspectRatio);
+                            // center the mark pixmap
+                            int x_px = 0.5 * qMax(m_iconAreaWidth - (px_mark.width() / devicePixelRatioF()), 0.0);
+                            int y_px = 0.5 * qMax(h - (px_mark.height() / devicePixelRatioF()), 0.0);
 
-                                // center the mark pixmap
-                                int x_px = (iconPaneWidth - px_mark.width()/ devicePixelRatio()) / 2;
-                                if (x_px < 0) {
-                                    x_px = 0;
-                                }
-
-                                int y_px = (h - px_mark.height() / devicePixelRatio()) / 2;
-                                if (y_px < 0) {
-                                    y_px = 0;
-                                }
-
-                                p.drawPixmap(lnX + x_px, y + y_px, px_mark);
-                            }
+                            p.drawPixmap(lnX + x_px, y + y_px, px_mark);
                         }
                     }
                 }
             }
 
-            lnX += iconPaneWidth + 2;
+            lnX += m_iconAreaWidth + m_separatorWidth;
+            if (m_updatePositionToArea) {
+                m_positionToArea.append(AreaPosition(lnX, IconBorder));
+            }
         }
 
         // annotation information
         if (m_annotationBorderOn) {
             // Draw a border line between annotations and the line numbers
-            p.setPen(m_view->renderer()->config()->lineNumberColor());
-            p.setBrush(m_view->renderer()->config()->lineNumberColor());
+            p.setPen(lineNumberColor);
+            p.setBrush(lineNumberColor);
 
-            const qreal borderX = lnX + m_annotationBorderWidth + 0.5;
+            const qreal borderX = lnX + m_annotationAreaWidth + 0.5;
             p.drawLine(QPointF(borderX, y+0.5), QPointF(borderX, y + h - 0.5));
 
-            if ((realLine > -1) && model) {
+            if (model) {
                 KTextEditor::StyleOptionAnnotationItem styleOption;
                 initStyleOption(&styleOption);
-                styleOption.rect.setRect(lnX, y, m_annotationBorderWidth, h);
+                styleOption.rect.setRect(lnX, y, m_annotationAreaWidth, h);
                 annotationGroupPositionState.nextLine(styleOption, z, realLine);
 
                 m_annotationItemDelegate->paint(&p, styleOption, model, realLine);
             }
 
-            // adjust current X position
-            lnX += m_annotationBorderWidth + /* separator line width */1;
+            lnX += m_annotationAreaWidth + m_separatorWidth;
+            if (m_updatePositionToArea) {
+                m_positionToArea.append(AreaPosition(lnX, AnnotationBorder));
+            }
         }
 
         // line number
         if (m_lineNumbersOn || m_dynWrapIndicatorsOn) {
-            if (realLine > -1) {
-                int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
-                QColor color;
+            QColor usedLineNumberColor;
+            const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
+            if (distanceToCurrent == 0) {
+                usedLineNumberColor = m_view->renderer()->config()->currentLineNumberColor();
+            } else {
+                usedLineNumberColor = lineNumberColor;
+            }
+            p.setPen(usedLineNumberColor);
+            p.setBrush(usedLineNumberColor);
 
-                if (distanceToCurrent == 0) {
-                    color = m_view->renderer()->config()->currentLineNumberColor();
-                } else {
-                    color = m_view->renderer()->config()->lineNumberColor();
-                }
-                p.setPen(color);
-                p.setBrush(color);
-
-                if (m_viewInternal->cache()->viewLine(z).startCol() == 0) {
-                    if (m_relLineNumbersOn) {
-                        if (distanceToCurrent == 0) {
-                            p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                       Qt::TextDontClip|Qt::AlignLeft|Qt::AlignVCenter, QString::number(realLine + 1));
-                        } else {
-                            p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                       Qt::TextDontClip|Qt::AlignRight|Qt::AlignVCenter, QString::number(distanceToCurrent));
-                        }
-                        if (m_updateRelLineNumbers) {
-                            m_updateRelLineNumbers = false;
-                            update();
-                        }
-                    } else if (m_lineNumbersOn) {
-                        p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                   Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
+            if (lineLayout.startCol() == 0) {
+                if (m_relLineNumbersOn) {
+                    if (distanceToCurrent == 0) {
+                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
+                                    Qt::TextDontClip | Qt::AlignLeft | Qt::AlignVCenter, QString::number(realLine + 1));
+                    } else {
+                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
+                                    Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(distanceToCurrent));
                     }
-                } else if (m_dynWrapIndicatorsOn) {
-                    p.drawText(lnX + m_maxCharWidth / 2, y, lnWidth - m_maxCharWidth, h,
-                                Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
+                    if (m_updateRelLineNumbers) {
+                        m_updateRelLineNumbers = false;
+                        update();
+                    }
+                } else if (m_lineNumbersOn) {
+                    p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
+                                Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
                 }
+            } else if (m_dynWrapIndicatorsOn) {
+                p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
+                            Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
             }
 
-            lnX += lnWidth + 2;
+            lnX += m_lineNumberAreaWidth + m_separatorWidth;
+            if (m_updatePositionToArea) {
+                m_positionToArea.append(AreaPosition(lnX, LineNumbers));
+            }
+        }
+
+        // modified line system
+        if (m_view->config()->lineModification() && !m_doc->url().isEmpty()) {
+            const Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
+            if (tl->markedAsModified()) {
+                p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->modifiedLineColor());
+            } else if (tl->markedAsSavedOnDisk()) {
+                p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->savedLineColor());
+            } else {
+                p.fillRect(lnX, y, m_modAreaWidth, h, iconBarColor);
+            }
+
+            lnX += m_modAreaWidth; // No m_separatorWidth
+            if (m_updatePositionToArea) {
+                m_positionToArea.append(AreaPosition(lnX, None));
+            }
         }
 
         // folding markers
         if (m_foldingMarkersOn) {
-            // first icon border background
-            p.fillRect(lnX, y, iconPaneWidth, h, m_view->renderer()->config()->iconBarColor());
-
+            const QColor foldingColor(m_view->renderer()->config()->foldingColor());
             // possible additional folding highlighting
-            if ((realLine >= 0) && m_foldingRange && m_foldingRange->overlapsLine(realLine)) {
-                p.save();
-
-                // use linear gradient as brush
-                QLinearGradient g(lnX, y, lnX + iconPaneWidth, y);
-                const QColor foldingColor(m_view->renderer()->config()->foldingColor());
-                g.setColorAt(0, foldingColor);
-                g.setColorAt(0.3, foldingColor.lighter(110));
-                g.setColorAt(1, foldingColor);
-                p.setBrush(g);
-                p.setPen(foldingColor);
-
-                p.setClipRect(lnX, y, iconPaneWidth, h);
-                p.setRenderHint(QPainter::Antialiasing);
-
-                const qreal r = 4.0;
-                if (m_foldingRange->start().line() == realLine &&
-                        m_viewInternal->cache()->viewLine(z).viewLine() == 0) {
-                    p.drawRect(lnX, y, iconPaneWidth, h + r);
-                } else if (m_foldingRange->end().line() == realLine &&
-                           m_viewInternal->cache()->viewLine(z).viewLine() == m_viewInternal->cache()->viewLineCount(realLine) - 1) {
-                    p.drawRect(lnX, y - r, iconPaneWidth, h + r);
-                } else {
-                    p.drawRect(lnX, y - r, iconPaneWidth, h + 2 * r);
-                }
-                p.restore();
+            if (m_foldingRange && m_foldingRange->overlapsLine(realLine)) {
+                p.fillRect(lnX, y, m_foldingAreaWidth, h, foldingColor);
             }
 
-            if ((realLine >= 0) && (m_viewInternal->cache()->viewLine(z).startCol() == 0)) {
+            if (lineLayout.startCol() == 0) {
                 QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
                 bool anyFolded = false;
-                for (int i = 0; i < startingRanges.size(); ++i)
+                for (int i = 0; i < startingRanges.size(); ++i) {
                     if (startingRanges[i].second & Kate::TextFolding::Folded) {
                         anyFolded = true;
                     }
-
-                Kate::TextLine tl = m_doc->kateTextLine(realLine);
-
+                }
+                const Kate::TextLine tl = m_doc->kateTextLine(realLine);
                 if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
                     if (anyFolded) {
-                        paintTriangle(p, m_view->renderer()->config()->foldingColor(), lnX, y, iconPaneWidth, h, false);
+                        paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
                     } else {
-                        paintTriangle(p, m_view->renderer()->config()->foldingColor(), lnX, y, iconPaneWidth, h, true);
+                        // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
+                        paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
                     }
                 }
             }
 
-            lnX += iconPaneWidth;
+            lnX += m_foldingAreaWidth;
+            if (m_updatePositionToArea) {
+                m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
+            }
         }
 
-        // modified line system
-        if (m_view->config()->lineModification() && realLine > -1 && !m_doc->url().isEmpty()) {
-            // one pixel space
-            ++lnX;
-
-            Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
-            if (tl->markedAsModified()) {
-                p.fillRect(lnX, y, 3, h, m_view->renderer()->config()->modifiedLineColor());
-            }
-            if (tl->markedAsSavedOnDisk()) {
-                p.fillRect(lnX, y, 3, h, m_view->renderer()->config()->savedLineColor());
-            }
+        if (m_updatePositionToArea) {
+            m_updatePositionToArea = false;
+            // Don't forget our "text-stuck-to-border" protector
+            lnX += m_separatorWidth;
+            m_positionToArea.append(AreaPosition(lnX, None));
+            // Now that we know our needed space, ensure we are painted properly
+            updateGeometry();
+            update();
+            return;
         }
     }
 }
 
 KateIconBorder::BorderArea KateIconBorder::positionToArea(const QPoint &p) const
 {
-    // see KateIconBorder::sizeHint() for pixel spacings
-    int x = 0;
-    if (m_iconBorderOn) {
-        x += iconPaneWidth;
-        if (p.x() <= x) {
-            return IconBorder;
-        }
-        x += 2;
-    }
-    if (this->m_annotationBorderOn) {
-        x += m_annotationBorderWidth;
-        if (p.x() <= x) {
-            return AnnotationBorder;
-        }
-        x += 2;
-    }
-    if (m_lineNumbersOn || m_dynWrapIndicators) {
-        x += lineNumberWidth();
-        if (p.x() <= x) {
-            return LineNumbers;
-        }
-        x += 2;
-    }
-    if (m_foldingMarkersOn) {
-        x += iconPaneWidth;
-        if (p.x() <= x) {
-            return FoldingMarkers;
+    for (int i = 0; i < m_positionToArea.size(); ++i) {
+        if (p.x() <= m_positionToArea.at(i).first) {
+            return m_positionToArea.at(i).second;
         }
     }
-    if (m_view->config()->lineModification()) {
-        x += 3 + 2;
-        if (p.x() <= x) {
-            return ModificationBorder;
-        }
-    }
+
     return None;
 }
 
@@ -2628,7 +2573,7 @@ void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem* sty
 {
     styleOption->initFrom(this);
     styleOption->view = m_view;
-    styleOption->decorationSize = QSize(iconPaneWidth, iconPaneWidth);
+    styleOption->decorationSize = QSize(m_iconAreaWidth, m_iconAreaWidth);
     styleOption->contentFontMetrics = m_view->renderer()->config()->fontMetrics();
 }
 
@@ -2653,11 +2598,11 @@ QRect KateIconBorder::annotationLineRectInView(int line) const
 {
     int x = 0;
     if (m_iconBorderOn) {
-        x += iconPaneWidth + 2;
+        x += m_iconAreaWidth + 2;
     }
     const int y = m_view->m_viewInternal->lineToY(line);
 
-    return QRect(x, y, m_annotationBorderWidth, m_view->renderer()->lineHeight());
+    return QRect(x, y, m_annotationAreaWidth, m_view->renderer()->lineHeight());
 }
 
 void KateIconBorder::updateAnnotationLine(int line)
@@ -2673,9 +2618,9 @@ void KateIconBorder::updateAnnotationLine(int line)
         width = m_annotationItemDelegate->sizeHint(styleOption, model, line).width();
     }
 
-    if (width > m_annotationBorderWidth) {
-        m_annotationBorderWidth = width;
-        updateGeometry();
+    if (width > m_annotationAreaWidth) {
+        m_annotationAreaWidth = width;
+        m_updatePositionToArea = true;
 
         QTimer::singleShot(0, this, SLOT(update()));
     }
@@ -2702,7 +2647,7 @@ void KateIconBorder::updateAnnotationBorderWidth()
 {
     calcAnnotationBorderWidth();
 
-    updateGeometry();
+    m_updatePositionToArea = true;
 
     QTimer::singleShot(0, this, SLOT(update()));
 }
@@ -2710,7 +2655,7 @@ void KateIconBorder::updateAnnotationBorderWidth()
 void KateIconBorder::calcAnnotationBorderWidth()
 {
     // TODO: another magic number, not matching the one in updateAnnotationLine()
-    m_annotationBorderWidth = 6;
+    m_annotationAreaWidth = 6;
     KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
                                           m_view->annotationModel() : m_doc->annotationModel();
 
@@ -2723,8 +2668,8 @@ void KateIconBorder::calcAnnotationBorderWidth()
             const int checkedLineCount = m_hasUniformAnnotationItemSizes ? 1 : lineCount;
             for (int i = 0; i < checkedLineCount; ++i) {
                 const int curwidth = m_annotationItemDelegate->sizeHint(styleOption, model, i).width();
-                if (curwidth > m_annotationBorderWidth) {
-                    m_annotationBorderWidth = curwidth;
+                if (curwidth > m_annotationAreaWidth) {
+                    m_annotationAreaWidth = curwidth;
                 }
             }
         }

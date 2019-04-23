@@ -350,20 +350,25 @@ private:
     bool m_foldingMarkersOn: 1;
     bool m_dynWrapIndicatorsOn: 1;
     bool m_annotationBorderOn: 1;
+    bool m_updatePositionToArea: 1;
 
+    typedef QPair<int, KateIconBorder::BorderArea> AreaPosition;
+    QVector<AreaPosition> m_positionToArea;
+
+    const int m_separatorWidth = 2;
+    const int m_modAreaWidth = 3;
+    qreal m_maxCharWidth = 0.0;
+    int m_lineNumberAreaWidth = 0;
+    int m_iconAreaWidth = 0;
+    int m_foldingAreaWidth = 0;
+    int m_annotationAreaWidth = 0;
     const QChar m_dynWrapIndicatorChar = QChar(0x21AA);
-    int m_dynWrapIndicators;
-    int m_lastClickedLine;
-    int m_cachedLNWidth;
-    qreal m_maxCharWidth;
-    int iconPaneWidth;
-    int m_annotationBorderWidth;
+    int m_dynWrapIndicators = 0;
+    int m_lastClickedLine = -1;
 
     KTextEditor::AbstractAnnotationItemDelegate *m_annotationItemDelegate;
     bool m_hasUniformAnnotationItemSizes = false;
     bool m_isDefaultAnnotationItemDelegate = true;
-
-    mutable QColor m_oldBackgroundColor;
 
     QPointer<KateTextPreview> m_foldingPreview;
     KTextEditor::MovingRange *m_foldingRange;
