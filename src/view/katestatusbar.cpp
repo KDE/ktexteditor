@@ -28,6 +28,7 @@
 #include "kateabstractinputmode.h"
 #include "wordcounter.h"
 
+#include <KActionCollection>
 #include <KLocalizedString>
 #include <KIconUtils>
 #include <KAcceleratorManager>
@@ -222,6 +223,19 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
 {
     // TODO Add option "Show Statusbar" and options to show/hide buttons of the status bar
     QMenu menu(this);
+
+    if (childAt(event->pos()) == m_inputMode) {
+        if (QAction *inputModesAction = m_view->actionCollection()->action(QStringLiteral("view_input_modes"))) {
+            if (QMenu *inputModesMenu = inputModesAction->menu()) {
+                const auto actions = inputModesMenu->actions();
+                for (int i = 0; i < actions.count(); ++i) {
+                    menu.addAction(actions.at(i));
+                }
+                menu.addSeparator();
+            }
+        }
+    }
+
     QAction *showLines = menu.addAction(QStringLiteral("Show line count"), this, &KateStatusBar::toggleShowLines);
     showLines->setCheckable(true);
     showLines->setChecked(KateViewConfig::global()->showLineCount());
