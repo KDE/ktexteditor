@@ -1435,10 +1435,6 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     , m_annotationBorderOn(false)
     , m_updatePositionToArea(true)
     , m_annotationItemDelegate(new KateAnnotationItemDelegate(m_viewInternal, this))
-    , m_foldingPreview(nullptr)
-    , m_foldingRange(nullptr)
-    , m_nextHighlightBlock(-2)
-    , m_currentBlockLine(-1)
 {
     setAcceptDrops(true);
     setAttribute(Qt::WA_StaticContents);
@@ -1452,9 +1448,9 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
 
     updateFont();
 
-    m_delayFoldingHlTimer.setSingleShot(true);
-    m_delayFoldingHlTimer.setInterval(150);
-    connect(&m_delayFoldingHlTimer, SIGNAL(timeout()), this, SLOT(showBlock()));
+    m_antiFlickerTimer.setSingleShot(true);
+    m_antiFlickerTimer.setInterval(300);
+    connect(&m_antiFlickerTimer, &QTimer::timeout, this, &KateIconBorder::highlightFolding);
 
     // user interaction (scrolling) hides e.g. preview
     connect(m_view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(displayRangeChanged()));
@@ -2160,37 +2156,31 @@ void KateIconBorder::mousePressEvent(QMouseEvent *e)
     QWidget::mousePressEvent(e);
 }
 
-void KateIconBorder::showDelayedBlock(int line)
+void KateIconBorder::highlightFoldingDelayed(int line)
 {
-    // save the line over which the mouse hovers
-    // either we start the timer for delay, or we show the block immediately
-    // if the moving range already exists
-    m_nextHighlightBlock = line;
-    if (!m_foldingRange) {
-        if (!m_delayFoldingHlTimer.isActive()) {
-            m_delayFoldingHlTimer.start();
-        }
-    } else {
-        showBlock();
+    if ((line == m_currentLine) || (line >= m_doc->buffer().lines())) {
+        return;
+    }
+
+    m_currentLine = line;
+
+    if (m_foldingRange) {
+        // We are for a while in the folding area, no need for delay
+        highlightFolding();
+
+    } else if (!m_antiFlickerTimer.isActive()) {
+            m_antiFlickerTimer.start();
     }
 }
 
-void KateIconBorder::showBlock()
+void KateIconBorder::highlightFolding()
 {
-    if (m_nextHighlightBlock == m_currentBlockLine) {
-        return;
-    }
-    m_currentBlockLine = m_nextHighlightBlock;
-    if (m_currentBlockLine >= m_doc->buffer().lines()) {
-        return;
-    }
-
     /**
      * compute to which folding range we belong
      * FIXME: optimize + perhaps have some better threshold or use timers!
      */
     KTextEditor::Range newRange = KTextEditor::Range::invalid();
-    for (int line = m_currentBlockLine; line >= qMax(0, m_currentBlockLine - 1024); --line) {
+    for (int line = m_currentLine; line >= qMax(0, m_currentLine - 1024); --line) {
         /**
          * try if we have folding range from that line, should be fast per call
          */
@@ -2202,7 +2192,7 @@ void KateIconBorder::showBlock()
         /**
          * does the range reach us?
          */
-        if (foldingRange.overlapsLine(m_currentBlockLine)) {
+        if (foldingRange.overlapsLine(m_currentLine)) {
             newRange = foldingRange;
             break;
         }
@@ -2211,12 +2201,20 @@ void KateIconBorder::showBlock()
     if (newRange.isValid() && m_foldingRange && *m_foldingRange == newRange) {
         // new range equals the old one, nothing to do.
         return;
-    } else { // the ranges differ, delete the old, if it exists
-        delete m_foldingRange;
-        m_foldingRange = nullptr;
     }
 
+    // the ranges differ, delete the old, if it exists
+    delete m_foldingRange;
+    m_foldingRange = nullptr;
+    // New range, new preview!
+    delete m_foldingPreview;
+
+    bool showPreview = false;
+
     if (newRange.isValid()) {
+        // When next line is not visible we have a folded range, only then we want a preview!
+        showPreview = !m_view->textFolding().isLineVisible(newRange.start().line() + 1);
+
         //qCDebug(LOG_KTE) << "new folding hl-range:" << newRange;
         m_foldingRange = m_doc->newMovingRange(newRange, KTextEditor::MovingRange::ExpandRight);
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
@@ -2233,68 +2231,44 @@ void KateIconBorder::showBlock()
         m_foldingRange->setAttribute(attr);
     }
 
-    // show text preview, if a folded region starts here
-    bool foldUnderMouse = false;
-    if (m_foldingRange && m_view->config()->foldingPreview()) {
-        const QPoint globalPos = QCursor::pos();
-        const QPoint pos = mapFromGlobal(globalPos);
-        const KateTextLayout &t = m_view->m_viewInternal->yToKateTextLayout(pos.y());
-        if (t.isValid() && positionToArea(pos) == FoldingMarkers) {
+    // show text preview, if a folded region starts here...
+    // ...but only when main window is active (#392396)
+    const bool isWindowActive = !window() || window()->isActiveWindow();
+    if (showPreview && m_view->config()->foldingPreview() && isWindowActive) {
+        m_foldingPreview = new KateTextPreview(m_view, this);
+        m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
+        m_foldingPreview->setFrameStyle(QFrame::StyledPanel);
 
-            const int realLine = t.line();
-            foldUnderMouse = !m_view->textFolding().isLineVisible(realLine + 1);
+        // Calc how many lines can be displayed in the popup
+        const int lineHeight = m_view->renderer()->lineHeight();
+        const int foldingStartLine = m_foldingRange->start().line();
+        // FIXME Is there really no easier way to find lineInDisplay?
+        const QPoint pos = m_viewInternal->mapFrom(m_view, m_view->cursorToCoordinate(KTextEditor::Cursor(foldingStartLine, 0)));
+        const int lineInDisplay = pos.y() / lineHeight;
+        // Allow slightly overpainting of the view bottom to proper cover all lines
+        const int extra = (m_viewInternal->height() % lineHeight) > (lineHeight * 0.6) ? 1 : 0;
+        const int lineCount = qMin(m_foldingRange->numberOfLines() + 1,
+                                    m_viewInternal->linesDisplayed() - lineInDisplay + extra);
 
-            // only show when main window is active (#392396)
-            const bool isWindowActive = !window() || window()->isActiveWindow();
-            if (foldUnderMouse && isWindowActive) {
-                if (!m_foldingPreview) {
-                    m_foldingPreview = new KateTextPreview(m_view, this);
-                    m_foldingPreview->setAttribute(Qt::WA_ShowWithoutActivating);
-                    m_foldingPreview->setFrameStyle(QFrame::StyledPanel);
-
-                    // event filter to catch application WindowDeactivate event, to hide the preview window
-//                     qApp->installEventFilter(this);
-                }
-
-                // Calc how many lines can be displayed in popup
-                const int lineHeight = m_view->renderer()->lineHeight();
-                const int lineInDisplay = pos.y() / lineHeight;
-                // Allow slightly overpainting of the view bottom to proper cover all lines
-                const int extra = (m_viewInternal->height() % lineHeight) > (lineHeight * 0.6) ? 1 : 0;
-                const int lineCount = qMin(m_foldingRange->numberOfLines() + 1,
-                                           m_viewInternal->linesDisplayed() - lineInDisplay + extra);
-
-                m_foldingPreview->resize(m_viewInternal->width(), lineCount * lineHeight + 2 * m_foldingPreview->frameWidth());
-                const int xGlobal = mapToGlobal(QPoint(width(), 0)).x();
-                const int yGlobal = m_view->mapToGlobal(m_view->cursorToCoordinate(KTextEditor::Cursor(realLine, 0))).y();
-                m_foldingPreview->move(QPoint(xGlobal, yGlobal) - m_foldingPreview->contentsRect().topLeft());
-                m_foldingPreview->setLine(realLine);
-                m_foldingPreview->setCenterView(false);
-                m_foldingPreview->setShowFoldedLines(true);
-                m_foldingPreview->raise();
-                m_foldingPreview->show();
-            }
-        }
+        m_foldingPreview->resize(m_viewInternal->width(), lineCount * lineHeight + 2 * m_foldingPreview->frameWidth());
+        const int xGlobal = mapToGlobal(QPoint(width(), 0)).x();
+        const int yGlobal = m_view->mapToGlobal(m_view->cursorToCoordinate(KTextEditor::Cursor(foldingStartLine, 0))).y();
+        m_foldingPreview->move(QPoint(xGlobal, yGlobal) - m_foldingPreview->contentsRect().topLeft());
+        m_foldingPreview->setLine(foldingStartLine);
+        m_foldingPreview->setCenterView(false);
+        m_foldingPreview->setShowFoldedLines(true);
+        m_foldingPreview->raise();
+        m_foldingPreview->show();
     }
-
-    if (!foldUnderMouse) {
-        delete m_foldingPreview;
-    }
-
-    /**
-     * repaint
-     */
-    repaint();
 }
 
-void KateIconBorder::hideBlock()
+void KateIconBorder::hideFolding()
 {
-    if (m_delayFoldingHlTimer.isActive()) {
-        m_delayFoldingHlTimer.stop();
+    if (m_antiFlickerTimer.isActive()) {
+        m_antiFlickerTimer.stop();
     }
 
-    m_nextHighlightBlock = -2;
-    m_currentBlockLine = -1;
+    m_currentLine = -1;
     delete m_foldingRange;
     m_foldingRange = nullptr;
 
@@ -2303,7 +2277,7 @@ void KateIconBorder::hideBlock()
 
 void KateIconBorder::leaveEvent(QEvent *event)
 {
-    hideBlock();
+    hideFolding();
     removeAnnotationHovering();
 
     QWidget::leaveEvent(event);
@@ -2312,12 +2286,17 @@ void KateIconBorder::leaveEvent(QEvent *event)
 void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
 {
     const KateTextLayout &t = m_viewInternal->yToKateTextLayout(e->y());
-    if (t.isValid()) {
+    if (!t.isValid()) {
+        // Cleanup everything which may be shown
+        removeAnnotationHovering();
+        hideFolding();
+
+    } else {
         const BorderArea area = positionToArea(e->pos());
         if (area == FoldingMarkers) {
-            showDelayedBlock(t.line());
+            highlightFoldingDelayed(t.line());
         } else {
-            hideBlock();
+            hideFolding();
         }
         if (area == AnnotationBorder) {
             KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
@@ -2348,9 +2327,6 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
             QMouseEvent forward(QEvent::MouseMove, p, e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mouseMoveEvent(&forward);
         }
-    } else {
-        // remove hovering if it's still there
-        removeAnnotationHovering();
     }
 
     QWidget::mouseMoveEvent(e);
@@ -2690,7 +2666,7 @@ void KateIconBorder::annotationModelChanged(KTextEditor::AnnotationModel *oldmod
 
 void KateIconBorder::displayRangeChanged()
 {
-    hideBlock();
+    hideFolding();
     removeAnnotationHovering();
 }
 

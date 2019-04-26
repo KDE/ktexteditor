@@ -371,15 +371,14 @@ private:
     bool m_isDefaultAnnotationItemDelegate = true;
 
     QPointer<KateTextPreview> m_foldingPreview;
-    KTextEditor::MovingRange *m_foldingRange;
-    int m_nextHighlightBlock;
-    int m_currentBlockLine;
-    QTimer m_delayFoldingHlTimer;
-    void showDelayedBlock(int line);
-    void hideBlock();
+    KTextEditor::MovingRange *m_foldingRange = nullptr;
+    int m_currentLine = -1;
+    QTimer m_antiFlickerTimer;
+    void highlightFoldingDelayed(int line);
+    void hideFolding();
 
 private Q_SLOTS:
-    void showBlock();
+    void highlightFolding();
     void handleDestroyedAnnotationItemDelegate();
 
 private:
