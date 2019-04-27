@@ -656,11 +656,14 @@ void KeysTest::AltGr()
 {
     QKeyEvent *altGrDown;
     QKeyEvent *altGrUp;
-
     // Test Alt-gr still works - this isn't quite how things work in "real-life": in real-life, something like
     // Alt-gr+7 would be a "{", but I don't think this can be reproduced without sending raw X11
     // keypresses to Qt, so just duplicate the keypress events we would receive if we pressed
     // Alt-gr+7 (that is: Alt-gr down; "{"; Alt-gr up).
+
+    // Ensure we have auto brackets off, or the test will fail
+    kate_view->config()->setAutoBrackets(false);
+
     BeginTest("");
     TestPressKey("i");
     altGrDown = new QKeyEvent(QEvent::KeyPress, Qt::Key_AltGr, Qt::NoModifier);
