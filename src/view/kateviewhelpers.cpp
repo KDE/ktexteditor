@@ -1617,9 +1617,14 @@ void KateIconBorder::updateFont()
 
 int KateIconBorder::lineNumberWidth() const
 {
-    // width = (number of digits + 1) * char width
-    const int digits = (int) ceil(log10((double)(m_view->doc()->lines() + 1)));
-    int width = m_lineNumbersOn ? (int)ceil((digits + 1) * m_maxCharWidth) : 0;
+    int width = 0;
+    // Avoid unneeded expensive calculations ;-)
+    if (m_lineNumbersOn) {
+        // width = (number of digits + 1) * char width
+        const int digits = (int) ceil(log10((double)(m_view->doc()->lines() + 1)));
+        width = (int)ceil((digits + 1) * m_maxCharWidth);
+    }
+
     if ((width < 1) && m_dynWrapIndicatorsOn && m_view->config()->dynWordWrap()) {
         // FIXME Why 2x? because of above (number of digits + 1)
         // -> looks to me like a hint for bad calculation elsewhere
@@ -1920,8 +1925,12 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
         m_px = 0;
     }
 
-    if (m_updatePositionToArea) {
-        m_lineNumberAreaWidth = lineNumberWidth();
+    // Ensure we miss no change of the count of line number digits
+    const int newNeededWidth = lineNumberWidth();
+
+    if (m_updatePositionToArea || (newNeededWidth != m_lineNumberAreaWidth)) {
+        m_lineNumberAreaWidth = newNeededWidth;
+        m_updatePositionToArea = true;
         m_positionToArea.clear();
     }
 
