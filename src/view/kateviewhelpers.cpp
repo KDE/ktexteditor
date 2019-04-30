@@ -1986,11 +1986,12 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
                         if (!px_mark.isNull() && h > 0 && m_iconAreaWidth > 0) {
                             // scale up to a usable size
-                            px_mark = px_mark.scaled(m_iconAreaWidth * devicePixelRatioF(), h * devicePixelRatioF(), Qt::KeepAspectRatio);
+                            const int s = qMin(m_iconAreaWidth * devicePixelRatioF(), h * devicePixelRatioF()) - 2;
+                            px_mark = px_mark.scaled(s, s, Qt::KeepAspectRatio);
 
                             // center the mark pixmap
-                            int x_px = 0.5 * qMax(m_iconAreaWidth - (px_mark.width() / devicePixelRatioF()), 0.0);
-                            int y_px = 0.5 * qMax(h - (px_mark.height() / devicePixelRatioF()), 0.0);
+                            int x_px = 0.5 * qMax(m_iconAreaWidth - (s / devicePixelRatioF()), 0.0);
+                            int y_px = 0.5 * qMax(h - (s / devicePixelRatioF()), 0.0);
 
                             p.drawPixmap(lnX + x_px, y + y_px, px_mark);
                         }
