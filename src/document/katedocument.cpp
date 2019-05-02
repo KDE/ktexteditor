@@ -5157,7 +5157,8 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
 
             m_config->configStart();
 
-            if (!m_hlSetByUser && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
+            // change the syntax highlighting, regardless of the value of "m_hlSetByUser"
+            if (!KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
                 int hl(KateHlManager::self()->nameFind(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl));
 
                 if (hl >= 0) {
@@ -5168,6 +5169,7 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
             /**
              * set the indentation mode, if any in the mode...
              * and user did not set it before!
+             * NOTE: KateBuffer::setHighlight() also sets the indentation.
              */
             if (!m_indenterSetByUser && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter.isEmpty()) {
                 config()->setIndentationMode(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter);
