@@ -105,7 +105,7 @@ void CompletionTest::FakeCodeCompletionTests()
 {
     // Test that FakeCodeCompletionTestModel behaves similar to the code-completion in e.g. KDevelop.
     const bool oldStealKeys = KateViewConfig::global()->viInputModeStealKeys();
-    KateViewConfig::global()->setViInputModeStealKeys(true); // For Ctrl-P, Ctrl-N etc
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For Ctrl-P, Ctrl-N etc
     ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
@@ -432,7 +432,7 @@ void CompletionTest::FakeCodeCompletionTests()
     TestPressKey("ifun\\ctrl- \\enterX");
     FinishTest("functionCall(X);(<-old bracket");
 
-    KateViewConfig::global()->setViInputModeStealKeys(oldStealKeys);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, oldStealKeys);
     kate_view->hide();
     mainWindow->hide();
     kate_view->unregisterCompletionModel(fakeCodeCompletionModel);
@@ -443,9 +443,9 @@ void CompletionTest::CompletionTests()
 {
     const bool oldRemoveTailOnCompletion = KateViewConfig::global()->wordCompletionRemoveTail();
     // For these tests, assume we don't swallow the tail on completion.
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
 
-    KateViewConfig::global()->setViInputModeStealKeys(true); // For Ctrl-P, Ctrl-N etc
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For Ctrl-P, Ctrl-N etc
     ensureKateViewVisible(); // KTextEditor::ViewPrivate needs to be visible for the completion widget.
     VimCodeCompletionTestModel *testModel = new VimCodeCompletionTestModel(kate_view);
 
@@ -554,7 +554,7 @@ void CompletionTest::CompletionTests()
     // i.e. fairly intelligently :)
     FakeCodeCompletionTestModel *fakeCodeCompletionModel = new FakeCodeCompletionTestModel(kate_view);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     kate_view->registerCompletionModel(fakeCodeCompletionModel);
     clearAllMacros();
     BeginTest("funct\nnoa\ncomtail\ncomtail");
@@ -564,13 +564,13 @@ void CompletionTest::CompletionTests()
     TestPressKey("i\\right\\right\\right\\right\\right\\ctrl- \\enterfirstArg"); // Function with args.
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter");            // Function no args.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter");   // Cut off tail.
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("\\home\\down\\right\\right\\right\\ctrl- \\enter\\ctrl-c");   // Don't cut off tail.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     // Replay.
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     kate_document->setText("funct\nnoa\ncomtail\ncomtail");
@@ -590,7 +590,7 @@ void CompletionTest::CompletionTests()
 
     kate_view->unregisterCompletionModel(fakeCodeCompletionModel);
     delete fakeCodeCompletionModel;
-    KateViewConfig::global()->setWordCompletionRemoveTail(oldRemoveTailOnCompletion);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, oldRemoveTailOnCompletion);
 
     // Hide the kate_view for subsequent tests.
     kate_view->hide();

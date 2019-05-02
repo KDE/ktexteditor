@@ -111,7 +111,7 @@ void ViewTest::visualLineUpDownTests()
     const int oldTabWidth = kate_document->config()->tabWidth();
     const int tabWidth = 5;
     kate_document->config()->setTabWidth(tabWidth);
-    KateViewConfig::global()->setShowScrollbars(0);
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollbars, KateViewConfig::ScrollbarMode::AlwaysOn);
 
     // Compute the maximum width of text before line-wrapping sets it.
     int textWrappingLength = 1;

@@ -82,6 +82,7 @@ void KateConfig::finalizeConfigEntries()
      */
     for (const auto &entry : m_configEntries) {
         if (!entry.second.commandName.isEmpty()) {
+            Q_ASSERT_X(!m_configKeys->contains(entry.second.commandName), "finalizeConfigEntries", (QLatin1String("KEY NOT UNIQUE: ") + entry.second.commandName).toLocal8Bit().constData());
             m_configKeys->append(entry.second.commandName);
             m_configKeyToEntry->insert(entry.second.commandName, &entry.second);
         }
@@ -231,7 +232,7 @@ bool KateConfig::setValue(const QString &key, const QVariant &value)
 
 //END
 
-//BEGIN KateDocumentConfig
+//BEGIN HelperFunctions
 KateGlobalConfig *KateGlobalConfig::s_global = nullptr;
 KateDocumentConfig *KateDocumentConfig::s_global = nullptr;
 KateViewConfig *KateViewConfig::s_global = nullptr;
@@ -249,6 +250,21 @@ static bool isEncodingOk(const QString &name)
     return found && codec;
 }
 
+static bool inBounds(const int min, const QVariant &value, const int max)
+{
+    const int val = value.toInt();
+    return (val >= min) && (val <= max);
+}
+
+static bool isPositive(const QVariant &value)
+{
+    bool ok;
+    value.toUInt(&ok);
+    return ok;
+}
+//END
+
+//BEGIN KateGlobalConfig
 KateGlobalConfig::KateGlobalConfig()
 {
     /**
@@ -324,7 +340,9 @@ QTextCodec *KateGlobalConfig::fallbackCodec() const
      */
     return KCharsets::charsets()->codecForName(encoding);
 }
+//END
 
+//BEGIN KateDocumentConfig
 KateDocumentConfig::KateDocumentConfig()
 {
     /**
@@ -493,46 +511,54 @@ QString KateDocumentConfig::eolString()
 
 //BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
-    : m_dynWordWrapSet(false),
-    m_dynWrapAtStaticMarkerSet(false),
-    m_dynWordWrapIndicatorsSet(false),
-    m_dynWordWrapAlignIndentSet(false),
-    m_lineNumbersSet(false),
-    m_scrollBarMarksSet(false),
-    m_scrollBarPreviewSet(false),
-    m_scrollBarMiniMapSet(false),
-    m_scrollBarMiniMapAllSet(false),
-    m_scrollBarMiniMapWidthSet(false),
-    m_showScrollbarsSet(false),
-    m_iconBarSet(false),
-    m_foldingBarSet(false),
-    m_foldingPreviewSet(false),
-    m_lineModificationSet(false),
-    m_bookmarkSortSet(false),
-    m_autoCenterLinesSet(false),
-    m_searchFlagsSet(false),
-    m_defaultMarkTypeSet(false),
-    m_persistentSelectionSet(false),
-    m_inputModeSet(false),
-    m_viInputModeStealKeysSet(false),
-    m_viRelativeLineNumbersSet(false),
-    m_automaticCompletionInvocationSet(false),
-    m_wordCompletionSet(false),
-    m_keywordCompletionSet(false),
-    m_wordCompletionMinimalWordLengthSet(false),
-    m_smartCopyCutSet(false),
-    m_mousePasteAtCursorPositionSet(false),
-    m_scrollPastEndSet(false),
-    m_allowMarkMenu(true),
-    m_wordCompletionRemoveTailSet(false),
-    m_foldFirstLineSet(false),
-    m_showWordCountSet(false),
-    m_showLineCountSet(false),
-    m_autoBracketsSet(false),
-    m_backspaceRemoveComposedSet(false)
-
 {
     s_global = this;
+
+    // Init all known config entries
+    // NOTE: Ensure to keep the same order as listed in enum ConfigEntryTypes or it will later assert!
+    // addConfigEntry(ConfigEntry(<EnumKey>, <ConfigKey>, <CommandName>, <DefaultValue>,  [<ValidatorFunction>]))
+    addConfigEntry(ConfigEntry(AllowMarkMenu, "Allow Mark Menu", QStringLiteral("allow-mark-menu"), true));
+    addConfigEntry(ConfigEntry(AutoBrackets, "Auto Brackets", QStringLiteral("auto-brackets"), false));
+    addConfigEntry(ConfigEntry(AutoCenterLines, "Auto Center Lines", QStringLiteral("auto-center-lines"), 0));
+    addConfigEntry(ConfigEntry(AutomaticCompletionInvocation, "Auto Completion", QString(), true));
+    addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
+    addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
+    addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QString(), QString()));
+    addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) { return isPositive(value); }));
+    addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) { return inBounds(1, value, 100); }));
+    addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) { return inBounds(1, value, 3); }));
+    addConfigEntry(ConfigEntry(DynWrapAtStaticMarker, "Dynamic Word Wrap At Static Marker", QString(), false));
+    addConfigEntry(ConfigEntry(DynamicWordWrap, "Dynamic Word Wrap", QStringLiteral("dynamic-word-wrap"), true));
+    addConfigEntry(ConfigEntry(FoldFirstLine, "Fold First Line", QString(), false));
+    addConfigEntry(ConfigEntry(InputMode, "Input Mode", QString(), 0, [](const QVariant &value) { return isPositive(value); }));
+    addConfigEntry(ConfigEntry(KeywordCompletion, "Keyword Completion", QStringLiteral("keyword-completion"), true));
+    addConfigEntry(ConfigEntry(MaxHistorySize, "Maximum Search History Size", QString(), 100, [](const QVariant &value) { return inBounds(0, value, 999); }));
+    addConfigEntry(ConfigEntry(MousePasteAtCursorPosition, "Mouse Paste At Cursor Position", QString(), false));
+    addConfigEntry(ConfigEntry(PersistentSelection, "Persistent Selection", QStringLiteral("persistent-selectionq"), false));
+    addConfigEntry(ConfigEntry(ScrollBarMiniMapWidth, "Scroll Bar Mini Map Width", QString(), 60, [](const QVariant &value) { return inBounds(0, value, 999); }));
+    addConfigEntry(ConfigEntry(ScrollPastEnd, "Scroll Past End", QString(), false));
+    addConfigEntry(ConfigEntry(SearchFlags, "Search/Replace Flags", QString(), IncFromCursor | PowerMatchCase | PowerModePlainText));
+    addConfigEntry(ConfigEntry(ShowFoldingBar, "Folding Bar", QStringLiteral("folding-bar"), true));
+    addConfigEntry(ConfigEntry(ShowFoldingPreview, "Folding Preview", QStringLiteral("folding-preview"), true));
+    addConfigEntry(ConfigEntry(ShowIconBar, "Icon Bar", QStringLiteral("icon-bar"), false));
+    addConfigEntry(ConfigEntry(ShowLineCount, "Show Line Count", QString(), false));
+    addConfigEntry(ConfigEntry(ShowLineModification, "Line Modification", QStringLiteral("modification-markers"), false));
+    addConfigEntry(ConfigEntry(ShowLineNumbers, "Line Numbers", QStringLiteral("line-numbers"), false));
+    addConfigEntry(ConfigEntry(ShowScrollBarMarks, "Scroll Bar Marks", QString(), false));
+    addConfigEntry(ConfigEntry(ShowScrollBarMiniMap, "Scroll Bar MiniMap", QStringLiteral("scrollbar-minimap"), true));
+    addConfigEntry(ConfigEntry(ShowScrollBarMiniMapAll, "Scroll Bar Mini Map All", QString(), true));
+    addConfigEntry(ConfigEntry(ShowScrollBarPreview, "Scroll Bar Preview", QStringLiteral("scrollbar-preview"), true));
+    addConfigEntry(ConfigEntry(ShowScrollbars, "Show Scrollbars", QString(), AlwaysOn, [](const QVariant &value) { return inBounds(0, value, 2); }));
+    addConfigEntry(ConfigEntry(ShowWordCount, "Show Word Count", QString(), false));
+    addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), false));
+    addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
+    addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));
+    addConfigEntry(ConfigEntry(WordCompletion, "Word Completion", QString(), true));
+    addConfigEntry(ConfigEntry(WordCompletionMinimalWordLength, "Word Completion Minimal Word Length", QString(), 3, [](const QVariant &value) { return inBounds(0, value, 99); }));
+    addConfigEntry(ConfigEntry(WordCompletionRemoveTail, "Word Completion Remove Tail", QString(), true));
+
+    // Never forget to finalize or the <CommandName> becomes not available
+    finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
     KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor View");
@@ -540,95 +566,13 @@ KateViewConfig::KateViewConfig()
 }
 
 KateViewConfig::KateViewConfig(KTextEditor::ViewPrivate *view)
-    : KateConfig(s_global),
-    m_searchFlags(PowerModePlainText),
-    m_maxHistorySize(100),
-    m_showWordCount(false),
-    m_dynWordWrapSet(false),
-    m_dynWrapAtStaticMarkerSet(false),
-    m_dynWordWrapIndicatorsSet(false),
-    m_dynWordWrapAlignIndentSet(false),
-    m_lineNumbersSet(false),
-    m_scrollBarMarksSet(false),
-    m_scrollBarPreviewSet(false),
-    m_scrollBarMiniMapSet(false),
-    m_scrollBarMiniMapAllSet(false),
-    m_scrollBarMiniMapWidthSet(false),
-    m_showScrollbarsSet(false),
-    m_iconBarSet(false),
-    m_foldingBarSet(false),
-    m_foldingPreviewSet(false),
-    m_lineModificationSet(false),
-    m_bookmarkSortSet(false),
-    m_autoCenterLinesSet(false),
-    m_searchFlagsSet(false),
-    m_defaultMarkTypeSet(false),
-    m_persistentSelectionSet(false),
-    m_inputModeSet(false),
-    m_viInputModeStealKeysSet(false),
-    m_viRelativeLineNumbersSet(false),
-    m_automaticCompletionInvocationSet(false),
-    m_wordCompletionSet(false),
-    m_keywordCompletionSet(false),
-    m_wordCompletionMinimalWordLengthSet(false),
-    m_smartCopyCutSet(false),
-    m_mousePasteAtCursorPositionSet(false),
-    m_scrollPastEndSet(false),
-    m_allowMarkMenu(true),
-    m_wordCompletionRemoveTailSet(false),
-    m_foldFirstLineSet(false),
-    m_showWordCountSet(false),
-    m_showLineCountSet(false),
-    m_autoBracketsSet(false),
-    m_backspaceRemoveComposedSet(false),
-    m_view(view)
+    : KateConfig(s_global)
+    , m_view(view)
 {
 }
 
 KateViewConfig::~KateViewConfig()
 {
-}
-
-namespace
-{
-const char KEY_SEARCH_REPLACE_FLAGS[] = "Search/Replace Flags";
-const char KEY_DYN_WORD_WRAP[] = "Dynamic Word Wrap";
-const char KEY_DYN_WORD_WRAP_AT_STATIC_MARKER[] = "Dynamic Word Wrap At Static Marker";
-const char KEY_DYN_WORD_WRAP_INDICATORS[] = "Dynamic Word Wrap Indicators";
-const char KEY_DYN_WORD_WRAP_ALIGN_INDENT[] = "Dynamic Word Wrap Align Indent";
-const char KEY_LINE_NUMBERS[] = "Line Numbers";
-const char KEY_SCROLL_BAR_MARKS[] = "Scroll Bar Marks";
-const char KEY_SCROLL_BAR_PREVIEW[] = "Scroll Bar Preview";
-const char KEY_SCROLL_BAR_MINI_MAP[] = "Scroll Bar MiniMap";
-const char KEY_SCROLL_BAR_MINI_MAP_ALL[] = "Scroll Bar Mini Map All";
-const char KEY_SCROLL_BAR_MINI_MAP_WIDTH[] = "Scroll Bar Mini Map Width";
-const char KEY_SHOW_SCROLLBARS[] = "Show Scrollbars";
-const char KEY_ICON_BAR[] = "Icon Bar";
-const char KEY_FOLDING_BAR[] = "Folding Bar";
-const char KEY_FOLDING_PREVIEW[] = "Folding Preview";
-const char KEY_LINE_MODIFICATION[] = "Line Modification";
-const char KEY_BOOKMARK_SORT[] = "Bookmark Menu Sorting";
-const char KEY_AUTO_CENTER_LINES[] = "Auto Center Lines";
-const char KEY_MAX_HISTORY_SIZE[] = "Maximum Search History Size";
-const char KEY_DEFAULT_MARK_TYPE[] = "Default Mark Type";
-const char KEY_ALLOW_MARK_MENU[] = "Allow Mark Menu";
-const char KEY_PERSISTENT_SELECTION[] = "Persistent Selection";
-const char KEY_INPUT_MODE[] = "Input Mode";
-const char KEY_VI_INPUT_MODE_STEAL_KEYS[] = "Vi Input Mode Steal Keys";
-const char KEY_VI_RELATIVE_LINE_NUMBERS[] = "Vi Relative Line Numbers";
-const char KEY_AUTOMATIC_COMPLETION_INVOCATION[] = "Auto Completion";
-const char KEY_WORD_COMPLETION[] = "Word Completion";
-const char KEY_KEYWORD_COMPLETION[] = "Keyword Completion";
-const char KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH[] = "Word Completion Minimal Word Length";
-const char KEY_WORD_COMPLETION_REMOVE_TAIL[] = "Word Completion Remove Tail";
-const char KEY_SMART_COPY_CUT[] = "Smart Copy Cut";
-const char KEY_MOUSE_PASTE_AT_CURSOR_POSITION[] = "Mouse Paste At Cursor Position";
-const char KEY_SCROLL_PAST_END[] = "Scroll Past End";
-const char KEY_FOLD_FIRST_LINE[] = "Fold First Line";
-const char KEY_SHOW_LINE_COUNT[] = "Show Line Count";
-const char KEY_SHOW_WORD_COUNT[] = "Show Word Count";
-const char KEY_AUTO_BRACKETS[] = "Auto Brackets";
-const char KEY_BACKSPACE_REMOVE_COMPOSED[] = "Backspace Remove Composed Characters";
 }
 
 void KateViewConfig::readConfig(const KConfigGroup &config)
@@ -638,67 +582,6 @@ void KateViewConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // default on
-    setDynWordWrap(config.readEntry(KEY_DYN_WORD_WRAP, true));
-    setDynWrapAtStaticMarker(config.readEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, false));
-    setDynWordWrapIndicators(config.readEntry(KEY_DYN_WORD_WRAP_INDICATORS, 1));
-    setDynWordWrapAlignIndent(config.readEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, 80));
-
-    setLineNumbers(config.readEntry(KEY_LINE_NUMBERS, false));
-
-    setScrollBarMarks(config.readEntry(KEY_SCROLL_BAR_MARKS, false));
-
-    setScrollBarPreview(config.readEntry(KEY_SCROLL_BAR_PREVIEW, true));
-
-    setScrollBarMiniMap(config.readEntry(KEY_SCROLL_BAR_MINI_MAP, true));
-
-    setScrollBarMiniMapAll(config.readEntry(KEY_SCROLL_BAR_MINI_MAP_ALL, false));
-
-    setScrollBarMiniMapWidth(config.readEntry(KEY_SCROLL_BAR_MINI_MAP_WIDTH,  60));
-
-    setShowScrollbars(config.readEntry(KEY_SHOW_SCROLLBARS, static_cast<int>(AlwaysOn)));
-
-    setIconBar(config.readEntry(KEY_ICON_BAR, false));
-
-    setFoldingBar(config.readEntry(KEY_FOLDING_BAR, true));
-
-    setFoldingPreview(config.readEntry(KEY_FOLDING_PREVIEW, true));
-
-    setLineModification(config.readEntry(KEY_LINE_MODIFICATION, false));
-
-    setBookmarkSort(config.readEntry(KEY_BOOKMARK_SORT, 0));
-
-    setAutoCenterLines(config.readEntry(KEY_AUTO_CENTER_LINES, 0));
-
-    setSearchFlags(config.readEntry(KEY_SEARCH_REPLACE_FLAGS,
-                                    IncFromCursor | PowerMatchCase | PowerModePlainText));
-
-    m_maxHistorySize = config.readEntry(KEY_MAX_HISTORY_SIZE, 100);
-
-    setDefaultMarkType(config.readEntry(KEY_DEFAULT_MARK_TYPE, int(KTextEditor::MarkInterface::markType01)));
-    setAllowMarkMenu(config.readEntry(KEY_ALLOW_MARK_MENU, true));
-
-    setPersistentSelection(config.readEntry(KEY_PERSISTENT_SELECTION, false));
-
-    setInputModeRaw(config.readEntry(KEY_INPUT_MODE, 0));
-    setViInputModeStealKeys(config.readEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, false));
-    setViRelativeLineNumbers(config.readEntry(KEY_VI_RELATIVE_LINE_NUMBERS, false));
-
-    setAutomaticCompletionInvocation(config.readEntry(KEY_AUTOMATIC_COMPLETION_INVOCATION, true));
-    setWordCompletion(config.readEntry(KEY_WORD_COMPLETION, true));
-    setKeywordCompletion(config.readEntry(KEY_KEYWORD_COMPLETION, true));
-    setWordCompletionMinimalWordLength(config.readEntry(KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH, 3));
-    setWordCompletionRemoveTail(config.readEntry(KEY_WORD_COMPLETION_REMOVE_TAIL, true));
-    setSmartCopyCut(config.readEntry(KEY_SMART_COPY_CUT, false));
-    setMousePasteAtCursorPosition(config.readEntry(KEY_MOUSE_PASTE_AT_CURSOR_POSITION, false));
-    setScrollPastEnd(config.readEntry(KEY_SCROLL_PAST_END, false));
-    setFoldFirstLine(config.readEntry(KEY_FOLD_FIRST_LINE, false));
-    setShowLineCount(config.readEntry(KEY_SHOW_LINE_COUNT, false));
-    setShowWordCount(config.readEntry(KEY_SHOW_WORD_COUNT, false));
-    setAutoBrackets(config.readEntry(KEY_AUTO_BRACKETS, false));
-
-    setBackspaceRemoveComposed(config.readEntry(KEY_BACKSPACE_REMOVE_COMPOSED, false));
-
     configEnd();
 }
 
@@ -706,68 +589,6 @@ void KateViewConfig::writeConfig(KConfigGroup &config)
 {
     // write generic entries
     writeConfigEntries(config);
-
-    config.writeEntry(KEY_DYN_WORD_WRAP, dynWordWrap());
-    config.writeEntry(KEY_DYN_WORD_WRAP_AT_STATIC_MARKER, dynWrapAtStaticMarker());
-    config.writeEntry(KEY_DYN_WORD_WRAP_INDICATORS, dynWordWrapIndicators());
-    config.writeEntry(KEY_DYN_WORD_WRAP_ALIGN_INDENT, dynWordWrapAlignIndent());
-
-    config.writeEntry(KEY_LINE_NUMBERS, lineNumbers());
-
-    config.writeEntry(KEY_SCROLL_BAR_MARKS, scrollBarMarks());
-
-    config.writeEntry(KEY_SCROLL_BAR_PREVIEW, scrollBarPreview());
-
-    config.writeEntry(KEY_SCROLL_BAR_MINI_MAP, scrollBarMiniMap());
-
-    config.writeEntry(KEY_SCROLL_BAR_MINI_MAP_ALL, scrollBarMiniMapAll());
-
-    config.writeEntry(KEY_SCROLL_BAR_MINI_MAP_WIDTH, scrollBarMiniMapWidth());
-
-    config.writeEntry(KEY_SHOW_SCROLLBARS, showScrollbars());
-
-    config.writeEntry(KEY_ICON_BAR, iconBar());
-
-    config.writeEntry(KEY_FOLDING_BAR, foldingBar());
-
-    config.writeEntry(KEY_FOLDING_PREVIEW, foldingPreview());
-
-    config.writeEntry(KEY_LINE_MODIFICATION, lineModification());
-
-    config.writeEntry(KEY_BOOKMARK_SORT, bookmarkSort());
-
-    config.writeEntry(KEY_AUTO_CENTER_LINES, autoCenterLines());
-
-    config.writeEntry(KEY_SEARCH_REPLACE_FLAGS, int(searchFlags()));
-
-    config.writeEntry(KEY_MAX_HISTORY_SIZE, m_maxHistorySize);
-
-    config.writeEntry(KEY_DEFAULT_MARK_TYPE, defaultMarkType());
-
-    config.writeEntry(KEY_ALLOW_MARK_MENU, allowMarkMenu());
-
-    config.writeEntry(KEY_PERSISTENT_SELECTION, persistentSelection());
-
-    config.writeEntry(KEY_AUTOMATIC_COMPLETION_INVOCATION, automaticCompletionInvocation());
-    config.writeEntry(KEY_WORD_COMPLETION, wordCompletion());
-    config.writeEntry(KEY_KEYWORD_COMPLETION, keywordCompletion());
-    config.writeEntry(KEY_WORD_COMPLETION_MINIMAL_WORD_LENGTH, wordCompletionMinimalWordLength());
-    config.writeEntry(KEY_WORD_COMPLETION_REMOVE_TAIL, wordCompletionRemoveTail());
-
-    config.writeEntry(KEY_SMART_COPY_CUT, smartCopyCut());
-    config.writeEntry(KEY_MOUSE_PASTE_AT_CURSOR_POSITION, mousePasteAtCursorPosition());
-    config.writeEntry(KEY_SCROLL_PAST_END, scrollPastEnd());
-    config.writeEntry(KEY_FOLD_FIRST_LINE, foldFirstLine());
-
-    config.writeEntry(KEY_INPUT_MODE, static_cast<int>(inputMode()));
-    config.writeEntry(KEY_VI_INPUT_MODE_STEAL_KEYS, viInputModeStealKeys());
-    config.writeEntry(KEY_VI_RELATIVE_LINE_NUMBERS, viRelativeLineNumbers());
-
-    config.writeEntry(KEY_SHOW_LINE_COUNT, showLineCount());
-    config.writeEntry(KEY_SHOW_WORD_COUNT, showWordCount());
-    config.writeEntry(KEY_AUTO_BRACKETS, autoBrackets());
-
-    config.writeEntry(KEY_BACKSPACE_REMOVE_COMPOSED, backspaceRemoveComposed());
 }
 
 void KateViewConfig::updateConfig()
@@ -787,838 +608,6 @@ void KateViewConfig::updateConfig()
         writeConfig(cg);
         KTextEditor::EditorPrivate::config()->sync();
     }
-}
-
-bool KateViewConfig::dynWordWrap() const
-{
-    if (m_dynWordWrapSet || isGlobal()) {
-        return m_dynWordWrap;
-    }
-
-    return s_global->dynWordWrap();
-}
-
-void KateViewConfig::setDynWordWrap(bool wrap)
-{
-    if (m_dynWordWrapSet && m_dynWordWrap == wrap) {
-        return;
-    }
-
-    configStart();
-
-    m_dynWordWrapSet = true;
-    m_dynWordWrap = wrap;
-
-    configEnd();
-}
-
-bool KateViewConfig::dynWrapAtStaticMarker() const
-{
-    if (m_dynWrapAtStaticMarkerSet || isGlobal()) {
-        return m_dynWrapAtStaticMarker;
-    }
-
-    return s_global->dynWrapAtStaticMarker();
-}
-
-void KateViewConfig::setDynWrapAtStaticMarker(bool on)
-{
-    if (m_dynWrapAtStaticMarkerSet && m_dynWrapAtStaticMarker == on) {
-        return;
-    }
-
-    configStart();
-
-    m_dynWrapAtStaticMarkerSet = true;
-    m_dynWrapAtStaticMarker = on;
-
-    configEnd();
-}
-
-int KateViewConfig::dynWordWrapIndicators() const
-{
-    if (m_dynWordWrapIndicatorsSet || isGlobal()) {
-        return m_dynWordWrapIndicators;
-    }
-
-    return s_global->dynWordWrapIndicators();
-}
-
-void KateViewConfig::setDynWordWrapIndicators(int mode)
-{
-    if (m_dynWordWrapIndicatorsSet && m_dynWordWrapIndicators == mode) {
-        return;
-    }
-
-    configStart();
-
-    m_dynWordWrapIndicatorsSet = true;
-    m_dynWordWrapIndicators = qBound(0, mode, 80);
-
-    configEnd();
-}
-
-int KateViewConfig::dynWordWrapAlignIndent() const
-{
-    if (m_dynWordWrapAlignIndentSet || isGlobal()) {
-        return m_dynWordWrapAlignIndent;
-    }
-
-    return s_global->dynWordWrapAlignIndent();
-}
-
-void KateViewConfig::setDynWordWrapAlignIndent(int indent)
-{
-    if (m_dynWordWrapAlignIndentSet && m_dynWordWrapAlignIndent == indent) {
-        return;
-    }
-
-    configStart();
-
-    m_dynWordWrapAlignIndentSet = true;
-    m_dynWordWrapAlignIndent = indent;
-
-    configEnd();
-}
-
-bool KateViewConfig::lineNumbers() const
-{
-    if (m_lineNumbersSet || isGlobal()) {
-        return m_lineNumbers;
-    }
-
-    return s_global->lineNumbers();
-}
-
-void KateViewConfig::setLineNumbers(bool on)
-{
-    if (m_lineNumbersSet && m_lineNumbers == on) {
-        return;
-    }
-
-    configStart();
-
-    m_lineNumbersSet = true;
-    m_lineNumbers = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::scrollBarMarks() const
-{
-    if (m_scrollBarMarksSet || isGlobal()) {
-        return m_scrollBarMarks;
-    }
-
-    return s_global->scrollBarMarks();
-}
-
-void KateViewConfig::setScrollBarMarks(bool on)
-{
-    if (m_scrollBarMarksSet && m_scrollBarMarks == on) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollBarMarksSet = true;
-    m_scrollBarMarks = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::scrollBarPreview() const
-{
-    if (m_scrollBarPreviewSet || isGlobal()) {
-        return m_scrollBarPreview;
-    }
-
-    return s_global->scrollBarPreview();
-}
-
-void KateViewConfig::setScrollBarPreview(bool on)
-{
-    if (m_scrollBarPreviewSet && m_scrollBarPreview == on) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollBarPreviewSet = true;
-    m_scrollBarPreview = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::scrollBarMiniMap() const
-{
-    if (m_scrollBarMiniMapSet || isGlobal()) {
-        return m_scrollBarMiniMap;
-    }
-
-    return s_global->scrollBarMiniMap();
-}
-
-void KateViewConfig::setScrollBarMiniMap(bool on)
-{
-    if (m_scrollBarMiniMapSet && m_scrollBarMiniMap == on) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollBarMiniMapSet = true;
-    m_scrollBarMiniMap = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::scrollBarMiniMapAll() const
-{
-    if (m_scrollBarMiniMapAllSet || isGlobal()) {
-        return m_scrollBarMiniMapAll;
-    }
-
-    return s_global->scrollBarMiniMapAll();
-}
-
-void KateViewConfig::setScrollBarMiniMapAll(bool on)
-{
-    if (m_scrollBarMiniMapAllSet && m_scrollBarMiniMapAll == on) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollBarMiniMapAllSet = true;
-    m_scrollBarMiniMapAll = on;
-
-    configEnd();
-}
-
-int KateViewConfig::scrollBarMiniMapWidth() const
-{
-    if (m_scrollBarMiniMapWidthSet || isGlobal()) {
-        return m_scrollBarMiniMapWidth;
-    }
-
-    return s_global->scrollBarMiniMapWidth();
-}
-
-void KateViewConfig::setScrollBarMiniMapWidth(int width)
-{
-    if (m_scrollBarMiniMapWidthSet && m_scrollBarMiniMapWidth == width) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollBarMiniMapWidthSet = true;
-    m_scrollBarMiniMapWidth = width;
-
-    configEnd();
-}
-
-int KateViewConfig::showScrollbars() const
-{
-    if (m_showScrollbarsSet || isGlobal()) {
-        return m_showScrollbars;
-    }
-
-    return s_global->showScrollbars();
-}
-
-void KateViewConfig::setShowScrollbars(int mode)
-{
-    if (m_showScrollbarsSet && m_showScrollbars == mode) {
-        return;
-    }
-
-    configStart();
-
-    m_showScrollbarsSet = true;
-    m_showScrollbars = qBound(0, mode, 80);
-
-    configEnd();
-}
-
-bool KateViewConfig::autoBrackets() const
-{
-    if (m_autoBracketsSet || isGlobal()) {
-        return m_autoBrackets;
-    }
-
-    return s_global->autoBrackets();
-}
-
-void KateViewConfig::setAutoBrackets(bool on)
-{
-    if (m_autoBracketsSet && m_autoBrackets == on) {
-        return;
-    }
-
-    configStart();
-
-    m_autoBracketsSet = true;
-    m_autoBrackets = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::iconBar() const
-{
-    if (m_iconBarSet || isGlobal()) {
-        return m_iconBar;
-    }
-
-    return s_global->iconBar();
-}
-
-void KateViewConfig::setIconBar(bool on)
-{
-    if (m_iconBarSet && m_iconBar == on) {
-        return;
-    }
-
-    configStart();
-
-    m_iconBarSet = true;
-    m_iconBar = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::foldingBar() const
-{
-    if (m_foldingBarSet || isGlobal()) {
-        return m_foldingBar;
-    }
-
-    return s_global->foldingBar();
-}
-
-void KateViewConfig::setFoldingBar(bool on)
-{
-    if (m_foldingBarSet && m_foldingBar == on) {
-        return;
-    }
-
-    configStart();
-
-    m_foldingBarSet = true;
-    m_foldingBar = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::foldingPreview() const
-{
-    if (m_foldingPreviewSet || isGlobal()) {
-        return m_foldingPreview;
-    }
-
-    return s_global->foldingPreview();
-}
-
-void KateViewConfig::setFoldingPreview(bool on)
-{
-    if (m_foldingPreviewSet && m_foldingPreview == on) {
-        return;
-    }
-
-    configStart();
-
-    m_foldingPreviewSet = true;
-    m_foldingPreview = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::lineModification() const
-{
-    if (m_lineModificationSet || isGlobal()) {
-        return m_lineModification;
-    }
-
-    return s_global->lineModification();
-}
-
-void KateViewConfig::setLineModification(bool on)
-{
-    if (m_lineModificationSet && m_lineModification == on) {
-        return;
-    }
-
-    configStart();
-
-    m_lineModificationSet = true;
-    m_lineModification = on;
-
-    configEnd();
-}
-
-int KateViewConfig::bookmarkSort() const
-{
-    if (m_bookmarkSortSet || isGlobal()) {
-        return m_bookmarkSort;
-    }
-
-    return s_global->bookmarkSort();
-}
-
-void KateViewConfig::setBookmarkSort(int mode)
-{
-    if (m_bookmarkSortSet && m_bookmarkSort == mode) {
-        return;
-    }
-
-    configStart();
-
-    m_bookmarkSortSet = true;
-    m_bookmarkSort = mode;
-
-    configEnd();
-}
-
-int KateViewConfig::autoCenterLines() const
-{
-    if (m_autoCenterLinesSet || isGlobal()) {
-        return m_autoCenterLines;
-    }
-
-    return s_global->autoCenterLines();
-}
-
-void KateViewConfig::setAutoCenterLines(int lines)
-{
-    if (lines < 0) {
-        return;
-    }
-
-    if (m_autoCenterLinesSet && m_autoCenterLines == lines) {
-        return;
-    }
-
-    configStart();
-
-    m_autoCenterLinesSet = true;
-    m_autoCenterLines = lines;
-
-    configEnd();
-}
-
-long KateViewConfig::searchFlags() const
-{
-    if (m_searchFlagsSet || isGlobal()) {
-        return m_searchFlags;
-    }
-
-    return s_global->searchFlags();
-}
-
-void KateViewConfig::setSearchFlags(long flags)
-{
-    if (m_searchFlagsSet && m_searchFlags == flags) {
-        return;
-    }
-
-    configStart();
-
-    m_searchFlagsSet = true;
-    m_searchFlags = flags;
-
-    configEnd();
-}
-
-int KateViewConfig::maxHistorySize() const
-{
-    return m_maxHistorySize;
-}
-
-uint KateViewConfig::defaultMarkType() const
-{
-    if (m_defaultMarkTypeSet || isGlobal()) {
-        return m_defaultMarkType;
-    }
-
-    return s_global->defaultMarkType();
-}
-
-void KateViewConfig::setDefaultMarkType(uint type)
-{
-    if (m_defaultMarkTypeSet && m_defaultMarkType == type) {
-        return;
-    }
-
-    configStart();
-
-    m_defaultMarkTypeSet = true;
-    m_defaultMarkType = type;
-
-    configEnd();
-}
-
-bool KateViewConfig::allowMarkMenu() const
-{
-    return m_allowMarkMenu;
-}
-
-void KateViewConfig::setAllowMarkMenu(bool allow)
-{
-    m_allowMarkMenu = allow;
-}
-
-bool KateViewConfig::persistentSelection() const
-{
-    if (m_persistentSelectionSet || isGlobal()) {
-        return m_persistentSelection;
-    }
-
-    return s_global->persistentSelection();
-}
-
-void KateViewConfig::setPersistentSelection(bool on)
-{
-    if (m_persistentSelectionSet && m_persistentSelection == on) {
-        return;
-    }
-
-    configStart();
-
-    m_persistentSelectionSet = true;
-    m_persistentSelection = on;
-
-    configEnd();
-}
-
-KTextEditor::View::InputMode KateViewConfig::inputMode() const
-{
-    if (m_inputModeSet || isGlobal()) {
-        return m_inputMode;
-    }
-
-    return s_global->inputMode();
-}
-
-void KateViewConfig::setInputMode(KTextEditor::View::InputMode mode)
-{
-    if (m_inputModeSet && m_inputMode == mode) {
-        return;
-    }
-
-    configStart();
-
-    m_inputModeSet = true;
-    m_inputMode = mode;
-
-    configEnd();
-}
-
-void KateViewConfig::setInputModeRaw(int rawmode)
-{
-    setInputMode(static_cast<KTextEditor::View::InputMode>(rawmode));
-}
-
-bool KateViewConfig::viInputModeStealKeys() const
-{
-    if (m_viInputModeStealKeysSet || isGlobal()) {
-        return m_viInputModeStealKeys;
-    }
-
-    return s_global->viInputModeStealKeys();
-}
-
-void KateViewConfig::setViInputModeStealKeys(bool on)
-{
-    if (m_viInputModeStealKeysSet && m_viInputModeStealKeys == on) {
-        return;
-    }
-
-    configStart();
-    m_viInputModeStealKeysSet = true;
-    m_viInputModeStealKeys = on;
-    configEnd();
-}
-
-bool KateViewConfig::viRelativeLineNumbers() const
-{
-    if (m_viRelativeLineNumbersSet  || isGlobal()) {
-        return m_viRelativeLineNumbers;
-    }
-
-    return s_global->viRelativeLineNumbers();
-}
-
-void KateViewConfig::setViRelativeLineNumbers(bool on)
-{
-    if (m_viRelativeLineNumbersSet && m_viRelativeLineNumbers ==  on) {
-        return;
-    }
-
-    configStart();
-    m_viRelativeLineNumbersSet = true;
-    m_viRelativeLineNumbers = on;
-    configEnd();
-}
-
-bool KateViewConfig::automaticCompletionInvocation() const
-{
-    if (m_automaticCompletionInvocationSet || isGlobal()) {
-        return m_automaticCompletionInvocation;
-    }
-
-    return s_global->automaticCompletionInvocation();
-}
-
-void KateViewConfig::setAutomaticCompletionInvocation(bool on)
-{
-    if (m_automaticCompletionInvocationSet && m_automaticCompletionInvocation == on) {
-        return;
-    }
-
-    configStart();
-    m_automaticCompletionInvocationSet = true;
-    m_automaticCompletionInvocation = on;
-    configEnd();
-}
-
-bool KateViewConfig::wordCompletion() const
-{
-    if (m_wordCompletionSet || isGlobal()) {
-        return m_wordCompletion;
-    }
-
-    return s_global->wordCompletion();
-}
-
-void KateViewConfig::setWordCompletion(bool on)
-{
-    if (m_wordCompletionSet && m_wordCompletion == on) {
-        return;
-    }
-
-    configStart();
-    m_wordCompletionSet = true;
-    m_wordCompletion = on;
-    configEnd();
-}
-
-bool KateViewConfig::keywordCompletion() const
-{
-    if (m_keywordCompletionSet || isGlobal())
-        return m_keywordCompletion;
-    return s_global->keywordCompletion();
-}
-
-void KateViewConfig::setKeywordCompletion(bool on)
-{
-    if (m_keywordCompletionSet && m_keywordCompletion == on)
-        return;
-    configStart();
-    m_keywordCompletionSet = true;
-    m_keywordCompletion = on;
-    configEnd();
-}
-
-int KateViewConfig::wordCompletionMinimalWordLength() const
-{
-    if (m_wordCompletionMinimalWordLengthSet || isGlobal()) {
-        return m_wordCompletionMinimalWordLength;
-    }
-
-    return s_global->wordCompletionMinimalWordLength();
-}
-
-void KateViewConfig::setWordCompletionMinimalWordLength(int length)
-{
-    if (m_wordCompletionMinimalWordLengthSet && m_wordCompletionMinimalWordLength == length) {
-        return;
-    }
-
-    configStart();
-
-    m_wordCompletionMinimalWordLengthSet = true;
-    m_wordCompletionMinimalWordLength = length;
-
-    configEnd();
-}
-
-bool KateViewConfig::wordCompletionRemoveTail() const
-{
-    if (m_wordCompletionRemoveTailSet || isGlobal()) {
-        return m_wordCompletionRemoveTail;
-    }
-
-    return s_global->wordCompletionRemoveTail();
-}
-
-void KateViewConfig::setWordCompletionRemoveTail(bool on)
-{
-    if (m_wordCompletionRemoveTailSet && m_wordCompletionRemoveTail == on) {
-        return;
-    }
-
-    configStart();
-    m_wordCompletionRemoveTailSet = true;
-    m_wordCompletionRemoveTail = on;
-    configEnd();
-}
-
-bool KateViewConfig::smartCopyCut() const
-{
-    if (m_smartCopyCutSet || isGlobal()) {
-        return m_smartCopyCut;
-    }
-
-    return s_global->smartCopyCut();
-}
-
-void KateViewConfig::setSmartCopyCut(bool on)
-{
-    if (m_smartCopyCutSet && m_smartCopyCut == on) {
-        return;
-    }
-
-    configStart();
-
-    m_smartCopyCutSet = true;
-    m_smartCopyCut = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::mousePasteAtCursorPosition() const
-{
-    if (m_mousePasteAtCursorPositionSet|| isGlobal()) {
-        return m_mousePasteAtCursorPosition;
-    }
-
-    return s_global->mousePasteAtCursorPosition();
-}
-
-void KateViewConfig::setMousePasteAtCursorPosition(bool on)
-{
-    if (m_mousePasteAtCursorPositionSet && m_mousePasteAtCursorPosition == on) {
-        return;
-    }
-
-    configStart();
-
-    m_mousePasteAtCursorPositionSet = true;
-    m_mousePasteAtCursorPosition = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::scrollPastEnd() const
-{
-    if (m_scrollPastEndSet || isGlobal()) {
-        return m_scrollPastEnd;
-    }
-
-    return s_global->scrollPastEnd();
-}
-
-void KateViewConfig::setScrollPastEnd(bool on)
-{
-    if (m_scrollPastEndSet && m_scrollPastEnd == on) {
-        return;
-    }
-
-    configStart();
-
-    m_scrollPastEndSet = true;
-    m_scrollPastEnd = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::foldFirstLine() const
-{
-    if (m_foldFirstLineSet || isGlobal()) {
-        return m_foldFirstLine;
-    }
-
-    return s_global->foldFirstLine();
-}
-
-void KateViewConfig::setFoldFirstLine(bool on)
-{
-    if (m_foldFirstLineSet && m_foldFirstLine == on) {
-        return;
-    }
-
-    configStart();
-
-    m_foldFirstLineSet = true;
-    m_foldFirstLine = on;
-
-    configEnd();
-}
-
-bool KateViewConfig::showWordCount() const
-{
-    if (m_showWordCountSet || isGlobal()) {
-        return m_showWordCount;
-    }
-
-    return s_global->showWordCount();
-}
-
-void KateViewConfig::setShowWordCount(bool on)
-{
-    if (m_showWordCountSet && m_showWordCount == on) {
-        return;
-    }
-
-    configStart();
-    m_showWordCountSet = true;
-    m_showWordCount = on;
-    configEnd();
-}
-
-bool KateViewConfig::showLineCount() const
-{
-    if (m_showLineCountSet || isGlobal()) {
-        return m_showLineCount;
-    }
-
-    return s_global->showLineCount();
-}
-
-void KateViewConfig::setShowLineCount(bool on)
-{
-    if (m_showLineCountSet && m_showLineCount == on) {
-        return;
-    }
-
-    configStart();
-    m_showLineCountSet = true;
-    m_showLineCount = on;
-    configEnd();
-}
-
-bool KateViewConfig::backspaceRemoveComposed() const
-{
-    if (m_backspaceRemoveComposedSet || isGlobal()) {
-        return m_backspaceRemoveComposed;
-    }
-
-    return s_global->backspaceRemoveComposed();
-}
-
-void KateViewConfig::setBackspaceRemoveComposed(bool on)
-{
-    if (m_backspaceRemoveComposedSet && m_backspaceRemoveComposed == on) {
-        return;
-    }
-
-    configStart();
-
-    m_backspaceRemoveComposedSet = true;
-    m_backspaceRemoveComposed = on;
-
-    configEnd();
 }
 
 //END

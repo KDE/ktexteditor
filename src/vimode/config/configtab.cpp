@@ -125,8 +125,8 @@ void ConfigTab::apply()
     KateViewConfig::global()->configStart();
 
     // General options.
-    KateViewConfig::global()->setViRelativeLineNumbers(ui->chkViRelLineNumbers->isChecked());
-    KateViewConfig::global()->setViInputModeStealKeys(ui->chkViCommandsOverride->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ViRelativeLineNumbers, ui->chkViRelLineNumbers->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, ui->chkViCommandsOverride->isChecked());
 
     // Mappings.
     applyTab(ui->tblNormalModeMappings, Mappings::NormalModeMapping);

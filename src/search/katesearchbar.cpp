@@ -183,7 +183,7 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     setMinimumWidth(100);
 
     // Copy global to local config backup
-    const long searchFlags = m_config->searchFlags();
+    const auto searchFlags = m_config->searchFlags();
     m_incHighlightAll = (searchFlags & KateViewConfig::IncHighlightAll) != 0;
     m_incFromCursor = (searchFlags & KateViewConfig::IncFromCursor) != 0;
     m_incMatchCase = (searchFlags & KateViewConfig::IncMatchCase) != 0;
@@ -740,15 +740,15 @@ void KateSearchBar::backupConfig(bool ofPower)
 
 void KateSearchBar::sendConfig()
 {
-    const long pastFlags = m_config->searchFlags();
-    long futureFlags = pastFlags;
+    const auto pastFlags = m_config->searchFlags();
+    auto futureFlags = pastFlags;
 
     if (m_powerUi != nullptr) {
         const bool OF_POWER = true;
         backupConfig(OF_POWER);
 
         // Update power search flags only
-        const long incFlagsOnly = pastFlags
+        const auto incFlagsOnly = pastFlags
                                   & (KateViewConfig::IncHighlightAll
                                      | KateViewConfig::IncFromCursor
                                      | KateViewConfig::IncMatchCase);
@@ -770,7 +770,7 @@ void KateSearchBar::sendConfig()
         backupConfig(OF_INCREMENTAL);
 
         // Update incremental search flags only
-        const long powerFlagsOnly = pastFlags
+        const auto powerFlagsOnly = pastFlags
                                     & (KateViewConfig::PowerMatchCase
                                        | KateViewConfig::PowerFromCursor
                                        | KateViewConfig::PowerHighlightAll

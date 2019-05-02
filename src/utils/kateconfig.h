@@ -51,27 +51,27 @@ class QTextCodec;
 
 /**
  * Base Class for the Kate Config Classes
+ * Current childs are KateDocumentConfig/KateDocumentConfig/KateDocumentConfig
  */
 class KTEXTEDITOR_EXPORT KateConfig
 {
 public:
     /**
-     * start some config changes
-     * this method is needed to init some kind of transaction
-     * for config changes, update will only be done once, at
-     * configEnd() call
+     * Start some config changes.
+     * This method is needed to init some kind of transaction for config changes,
+     * update will only be done once, at configEnd() call.
      */
     void configStart();
 
     /**
-     * end a config change transaction, update the concerned
-     * documents/views/renderers
+     * End a config change transaction, update the concerned
+     * KateDocumentConfig/KateDocumentConfig/KateDocumentConfig
      */
     void configEnd();
 
     /**
-     * global config?
-     * @return global config object?
+     * Is this a global config object?
+     * @return true when this is a global config object
      */
     bool isGlobal() const
     {
@@ -101,24 +101,23 @@ public:
      * Might not alter the value if given value fails validation.
      * @param key config key, aka enum from KateConfig* classes
      * @param value value to set
-     * @return value set?
+     * @return true on success
      */
     bool setValue(const int key, const QVariant &value);
 
     /**
      * Get a config value for the string key.
      * @param key config key, aka commandName from KateConfig* classes
-     * @return value for the wanted key, will return invalid variant if key invalid
+     * @return value for the wanted key, will return invalid variant if key is not known
      */
     QVariant value(const QString &key) const;
 
     /**
      * Set a config value.
-     * Will ignore set if key not valid
-     * Might not alter the value if given value fails validation.
+     * Will do nothing if key is not known or the given value fails validation.
      * @param key config key, aka commandName from KateConfig* classes
      * @param value value to set
-     * @return value set?
+     * @return true on success
      */
     bool setValue(const QString &key, const QVariant &value);
 
@@ -175,30 +174,31 @@ protected:
          const QString commandName;
 
         /**
-         * Default value if nothing configured
+         * Default value if nothing special was configured
          */
         const QVariant defaultValue;
 
         /**
-         * concrete value, per default == defaultValue
+         * The concrete value, per default == defaultValue
          */
         QVariant value;
 
         /**
-         * a validator function, only if this returns true we accept a value for the entry
-         * is ignored if not set
+         * An optional validator function, only when these returns true
+         * we accept a given new value.
+         * Is no validator set, we accept any value.
          */
         std::function<bool(const QVariant &)> validator;
     };
 
     /**
-     * Read all config entries from given config group
+     * Read all config entries from given config group.
      * @param config config group to read from
      */
     void readConfigEntries(const KConfigGroup &config);
 
     /**
-     * Write all config entries to given config group
+     * Write all config entries to given config group.
      * @param config config group to write to
      */
     void writeConfigEntries(KConfigGroup &config) const;
@@ -931,12 +931,12 @@ private:
 
 public:
     /**
-     * Construct a DocumentConfig
+     * Construct a ViewConfig
      */
     explicit KateViewConfig(KTextEditor::ViewPrivate *view);
 
     /**
-     * Cu DocumentConfig
+     * Cu ViewConfig
      */
     ~KateViewConfig() override;
 
@@ -944,6 +944,52 @@ public:
     {
         return s_global;
     }
+
+    /**
+     * All known config keys
+     * Keep them sorted alphabetic for our convenience
+     */
+    enum ConfigEntryTypes {
+        AllowMarkMenu,
+        AutoBrackets,
+        AutoCenterLines,
+        AutomaticCompletionInvocation,
+        BackspaceRemoveComposedCharacters,
+        BookmarkSorting,
+        CharsToEncloseSelection,
+        DefaultMarkType,
+        DynWordWrapAlignIndent,
+        DynWordWrapIndicators,
+        DynWrapAtStaticMarker,
+        DynamicWordWrap,
+        FoldFirstLine,
+        InputMode,
+        KeywordCompletion,
+        MaxHistorySize,
+        MousePasteAtCursorPosition,
+        PersistentSelection,
+        ScrollBarMiniMapWidth,
+        ScrollPastEnd,
+        SearchFlags,
+        ShowFoldingBar,
+        ShowFoldingPreview,
+        ShowIconBar,
+        ShowLineCount,
+        ShowLineModification,
+        ShowLineNumbers,
+        ShowScrollBarMarks,
+        ShowScrollBarMiniMap,
+        ShowScrollBarMiniMapAll,
+        ShowScrollBarPreview,
+        ShowScrollbars,
+        ShowWordCount,
+        SmartCopyCut,
+        ViInputModeStealKeys,
+        ViRelativeLineNumbers,
+        WordCompletion,
+        WordCompletionMinimalWordLength,
+        WordCompletionRemoveTail,
+    };
 
 public:
     /**
@@ -960,39 +1006,59 @@ protected:
     void updateConfig() override;
 
 public:
-    bool dynWordWrapSet() const
+    bool dynWordWrap() const
     {
-        return m_dynWordWrapSet;
+        return value(DynamicWordWrap).toBool();
     }
-    bool dynWordWrap() const;
-    void setDynWordWrap(bool wrap);
+    void setDynWordWrap(bool on)
+    {
+        setValue(DynamicWordWrap, on);
+    }
 
-    bool dynWrapAtStaticMarker() const;
-    void setDynWrapAtStaticMarker(bool on);
+    bool dynWrapAtStaticMarker() const
+    {
+        return value(DynWrapAtStaticMarker).toBool();
+    }
 
-    int dynWordWrapIndicators() const;
-    void setDynWordWrapIndicators(int mode);
+    int dynWordWrapIndicators() const
+    {
+        return value(DynWordWrapIndicators).toInt();
+    }
 
-    int dynWordWrapAlignIndent() const;
-    void setDynWordWrapAlignIndent(int indent);
+    int dynWordWrapAlignIndent() const
+    {
+        return value(DynWordWrapAlignIndent).toInt();
+    }
 
-    bool lineNumbers() const;
-    void setLineNumbers(bool on);
+    bool lineNumbers() const
+    {
+        return value(ShowLineNumbers).toBool();
+    }
 
-    bool scrollBarMarks() const;
-    void setScrollBarMarks(bool on);
+    bool scrollBarMarks() const
+    {
+        return value(ShowScrollBarMarks).toBool();
+    }
 
-    bool scrollBarPreview() const;
-    void setScrollBarPreview(bool on);
+    bool scrollBarPreview() const
+    {
+        return value(ShowScrollBarPreview).toBool();
+    }
 
-    bool scrollBarMiniMap() const;
-    void setScrollBarMiniMap(bool on);
+    bool scrollBarMiniMap() const
+    {
+        return value(ShowScrollBarMiniMap).toBool();
+    }
 
-    bool scrollBarMiniMapAll() const;
-    void setScrollBarMiniMapAll(bool on);
+    bool scrollBarMiniMapAll() const
+    {
+        return value(ShowScrollBarMiniMapAll).toBool();
+    }
 
-    int scrollBarMiniMapWidth() const;
-    void setScrollBarMiniMapWidth(int width);
+    int scrollBarMiniMapWidth() const
+    {
+        return value(ScrollBarMiniMapWidth).toInt();
+    }
 
     /* Whether to show scrollbars */
     enum ScrollbarMode {
@@ -1001,26 +1067,40 @@ public:
         AlwaysOff
     };
 
-    int showScrollbars() const;
-    void setShowScrollbars(int mode);
+    int showScrollbars() const
+    {
+        return value(ShowScrollbars).toInt();
+    }
 
-    bool iconBar() const;
-    void setIconBar(bool on);
+    bool iconBar() const
+    {
+        return value(ShowIconBar).toBool();
+    }
 
-    bool foldingBar() const;
-    void setFoldingBar(bool on);
+    bool foldingBar() const
+    {
+        return value(ShowFoldingBar).toBool();
+    }
 
-    bool foldingPreview() const;
-    void setFoldingPreview(bool on);
+    bool foldingPreview() const
+    {
+        return value(ShowFoldingPreview).toBool();
+    }
 
-    bool lineModification() const;
-    void setLineModification(bool on);
+    bool lineModification() const
+    {
+        return value(ShowLineModification).toBool();
+    }
 
-    int bookmarkSort() const;
-    void setBookmarkSort(int mode);
+    int bookmarkSort() const
+    {
+        return value(BookmarkSorting).toInt();
+    }
 
-    int autoCenterLines() const;
-    void setAutoCenterLines(int lines);
+    int autoCenterLines() const
+    {
+        return value(AutoCenterLines).toInt();
+    }
 
     enum SearchFlags {
         IncMatchCase = 1 << 0,
@@ -1037,29 +1117,49 @@ public:
         PowerUsePlaceholders = 1 << 11
     };
 
-    long searchFlags() const;
-    void setSearchFlags(long flags);
+    uint searchFlags() const
+    {
+        return value(SearchFlags).toUInt();
+    }
+    void setSearchFlags(uint flags)
+    {
+        setValue(SearchFlags, flags);
+    }
 
-    int maxHistorySize() const;
+    int maxHistorySize() const
+    {
+        return value(MaxHistorySize).toInt();
+    }
 
-    uint defaultMarkType() const;
-    void setDefaultMarkType(uint type);
+    uint defaultMarkType() const
+    {
+        return value(DefaultMarkType).toUInt();
+    }
 
-    bool allowMarkMenu() const;
-    void setAllowMarkMenu(bool allow);
+    bool allowMarkMenu() const
+    {
+        return value(AllowMarkMenu).toBool();
+    }
 
-    bool persistentSelection() const;
-    void setPersistentSelection(bool on);
+    bool persistentSelection() const
+    {
+        return value(PersistentSelection).toBool();
+    }
 
-    KTextEditor::View::InputMode inputMode() const;
-    void setInputMode(KTextEditor::View::InputMode mode);
-    void setInputModeRaw(int rawmode);
+    KTextEditor::View::InputMode inputMode() const
+    {
+        return static_cast<KTextEditor::View::InputMode>(value(InputMode).toUInt());
+    }
 
-    bool viInputModeStealKeys() const;
-    void setViInputModeStealKeys(bool on);
+    bool viInputModeStealKeys() const
+    {
+        return value(ViInputModeStealKeys).toBool();
+    }
 
-    bool viRelativeLineNumbers() const;
-    void setViRelativeLineNumbers(bool on);
+    bool viRelativeLineNumbers() const
+    {
+        return value(ViRelativeLineNumbers).toBool();
+    }
 
     // Do we still need the enum and related functions below?
     enum TextToSearch {
@@ -1070,121 +1170,74 @@ public:
         WordSelection = 4
     };
 
-    bool automaticCompletionInvocation() const;
-    void setAutomaticCompletionInvocation(bool on);
+    bool automaticCompletionInvocation() const
+    {
+        return value(AutomaticCompletionInvocation).toBool();
+    }
 
-    bool wordCompletion() const;
-    void setWordCompletion(bool on);
+    bool wordCompletion() const
+    {
+        return value(WordCompletion).toBool();
+    }
 
-    bool keywordCompletion () const;
-    void setKeywordCompletion (bool on);
+    bool keywordCompletion () const
+    {
+         return value(KeywordCompletion).toBool();
+    }
 
-    int wordCompletionMinimalWordLength() const;
-    void setWordCompletionMinimalWordLength(int length);
+    int wordCompletionMinimalWordLength() const
+    {
+        return value(WordCompletionMinimalWordLength).toInt();
+    }
 
-    bool wordCompletionRemoveTail() const;
-    void setWordCompletionRemoveTail(bool on);
+    bool wordCompletionRemoveTail() const
+    {
+        return value(WordCompletionRemoveTail).toBool();
+    }
 
-    bool smartCopyCut() const;
-    void setSmartCopyCut(bool on);
+    bool smartCopyCut() const
+    {
+        return value(SmartCopyCut).toBool();
+    }
 
-    bool mousePasteAtCursorPosition() const;
-    void setMousePasteAtCursorPosition(bool on);
+    bool mousePasteAtCursorPosition() const
+    {
+        return value(MousePasteAtCursorPosition).toBool();
+    }
 
-    bool scrollPastEnd() const;
-    void setScrollPastEnd(bool on);
+    bool scrollPastEnd() const
+    {
+        return value(ScrollPastEnd).toBool();
+    }
 
-    bool foldFirstLine() const;
-    void setFoldFirstLine(bool on);
+    bool foldFirstLine() const
+    {
+        return value(FoldFirstLine).toBool();
+    }
 
-    bool showWordCount() const;
-    void setShowWordCount(bool on);
+    bool showWordCount() const
+    {
+        return value(ShowWordCount).toBool();
+    }
+    void setShowWordCount(bool on)
+    {
+        setValue(ShowWordCount, on);
+    }
 
-    bool showLineCount() const;
-    void setShowLineCount(bool on);
+    bool showLineCount() const
+    {
+        return value(ShowLineCount).toBool();
+    }
 
-    bool autoBrackets() const;
-    void setAutoBrackets(bool on);
+    bool autoBrackets() const
+    {
+        return value(AutoBrackets).toBool();
+    }
 
-    bool backspaceRemoveComposed() const;
-    void setBackspaceRemoveComposed(bool on);
-
-private:
-    bool m_dynWordWrap;
-    bool m_dynWrapAtStaticMarker;
-    int m_dynWordWrapIndicators;
-    int m_dynWordWrapAlignIndent;
-    bool m_lineNumbers;
-    bool m_scrollBarMarks;
-    bool m_scrollBarPreview;
-    bool m_scrollBarMiniMap;
-    bool m_scrollBarMiniMapAll;
-    int  m_scrollBarMiniMapWidth;
-    int  m_showScrollbars;
-    bool m_iconBar;
-    bool m_foldingBar;
-    bool m_foldingPreview;
-    bool m_lineModification;
-    int m_bookmarkSort;
-    int m_autoCenterLines;
-    long m_searchFlags;
-    int m_maxHistorySize;
-    uint m_defaultMarkType;
-    bool m_persistentSelection;
-    KTextEditor::View::InputMode m_inputMode;
-    bool m_viInputModeStealKeys;
-    bool m_viRelativeLineNumbers;
-    bool m_automaticCompletionInvocation;
-    bool m_wordCompletion;
-    bool m_keywordCompletion;
-    int m_wordCompletionMinimalWordLength;
-    bool m_wordCompletionRemoveTail;
-    bool m_smartCopyCut;
-    bool m_mousePasteAtCursorPosition = false;
-    bool m_scrollPastEnd;
-    bool m_foldFirstLine;
-    bool m_showWordCount = false;
-    bool m_showLineCount = false;
-    bool m_autoBrackets;
-    bool m_backspaceRemoveComposed;
-
-    bool m_dynWordWrapSet : 1;
-    bool m_dynWrapAtStaticMarkerSet : 1;
-    bool m_dynWordWrapIndicatorsSet : 1;
-    bool m_dynWordWrapAlignIndentSet : 1;
-    bool m_lineNumbersSet : 1;
-    bool m_scrollBarMarksSet : 1;
-    bool m_scrollBarPreviewSet : 1;
-    bool m_scrollBarMiniMapSet : 1;
-    bool m_scrollBarMiniMapAllSet : 1;
-    bool m_scrollBarMiniMapWidthSet : 1;
-    bool m_showScrollbarsSet : 1;
-    bool m_iconBarSet : 1;
-    bool m_foldingBarSet : 1;
-    bool m_foldingPreviewSet : 1;
-    bool m_lineModificationSet : 1;
-    bool m_bookmarkSortSet : 1;
-    bool m_autoCenterLinesSet : 1;
-    bool m_searchFlagsSet : 1;
-    bool m_defaultMarkTypeSet : 1;
-    bool m_persistentSelectionSet : 1;
-    bool m_inputModeSet : 1;
-    bool m_viInputModeStealKeysSet : 1;
-    bool m_viRelativeLineNumbersSet : 1;
-    bool m_automaticCompletionInvocationSet : 1;
-    bool m_wordCompletionSet : 1;
-    bool m_keywordCompletionSet : 1;
-    bool m_wordCompletionMinimalWordLengthSet : 1;
-    bool m_smartCopyCutSet : 1;
-    bool m_mousePasteAtCursorPositionSet : 1;
-    bool m_scrollPastEndSet : 1;
-    bool m_allowMarkMenu : 1;
-    bool m_wordCompletionRemoveTailSet : 1;
-    bool m_foldFirstLineSet : 1;
-    bool m_showWordCountSet : 1;
-    bool m_showLineCountSet : 1;
-    bool m_autoBracketsSet : 1;
-    bool m_backspaceRemoveComposedSet : 1;
+    bool backspaceRemoveComposed() const
+    {
+        return value(BackspaceRemoveComposedCharacters).toBool();
+    }
 
 private:
     static KateViewConfig *s_global;
@@ -1203,12 +1256,12 @@ private:
 
 public:
     /**
-     * Construct a DocumentConfig
+     * Construct a RendererConfig
      */
     explicit KateRendererConfig(KateRenderer *renderer);
 
     /**
-     * Cu DocumentConfig
+     * Cu RendererConfig
      */
     ~KateRendererConfig() override;
 

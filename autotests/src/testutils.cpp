@@ -166,7 +166,7 @@ bool KateViewObject::type(const QString &str)
 
 void KateViewObject::setAutoBrackets(bool enable)
 {
-    view()->config()->setAutoBrackets(enable);
+    view()->config()->setValue(KateViewConfig::AutoBrackets, enable);
 }
 
 

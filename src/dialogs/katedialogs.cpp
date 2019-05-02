@@ -276,11 +276,13 @@ void KateCompletionConfigTab::apply()
     m_changed = false;
 
     KateViewConfig::global()->configStart();
-    KateViewConfig::global()->setAutomaticCompletionInvocation(ui->chkAutoCompletionEnabled->isChecked());
-    KateViewConfig::global()->setWordCompletion(ui->gbWordCompletion->isChecked());
-    KateViewConfig::global()->setWordCompletionMinimalWordLength(ui->minimalWordLength->value());
-    KateViewConfig::global()->setWordCompletionRemoveTail(ui->removeTail->isChecked());
-    KateViewConfig::global()->setKeywordCompletion(ui->gbKeywordCompletion->isChecked());
+
+    KateViewConfig::global()->setValue(KateViewConfig::AutomaticCompletionInvocation, ui->chkAutoCompletionEnabled->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::KeywordCompletion, ui->gbKeywordCompletion->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletion, ui->gbWordCompletion->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionMinimalWordLength, ui->minimalWordLength->value());
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, ui->removeTail->isChecked());
+
     KateViewConfig::global()->configEnd();
 }
 
@@ -416,16 +418,13 @@ void KateNavigationConfigTab::apply()
     KateViewConfig::global()->configStart();
     KateDocumentConfig::global()->configStart();
 
+    KateDocumentConfig::global()->setPageUpDownMovesCursor(ui->chkPagingMovesCursor->isChecked());
     KateDocumentConfig::global()->setSmartHome(ui->chkSmartHome->isChecked());
 
-    KateViewConfig::global()->setAutoCenterLines(qMax(0, ui->sbAutoCenterCursor->value()));
-    KateDocumentConfig::global()->setPageUpDownMovesCursor(ui->chkPagingMovesCursor->isChecked());
-
-    KateViewConfig::global()->setPersistentSelection(ui->cbTextSelectionMode->currentIndex() == 1);
-
-    KateViewConfig::global()->setScrollPastEnd(ui->chkScrollPastEnd->isChecked());
-
-    KateViewConfig::global()->setBackspaceRemoveComposed(ui->chkBackspaceRemoveComposed->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::AutoCenterLines, ui->sbAutoCenterCursor->value());
+    KateViewConfig::global()->setValue(KateViewConfig::BackspaceRemoveComposedCharacters, ui->chkBackspaceRemoveComposed->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::PersistentSelection, ui->cbTextSelectionMode->currentIndex() == 1);
+    KateViewConfig::global()->setValue(KateViewConfig::ScrollPastEnd, ui->chkScrollPastEnd->isChecked());
 
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -500,11 +499,10 @@ void KateEditGeneralConfigTab::apply()
 
     KateRendererConfig::global()->setWordWrapMarker(ui->chkShowStaticWordWrapMarker->isChecked());
 
-    KateViewConfig::global()->setAutoBrackets(ui->chkAutoBrackets->isChecked());
-    KateViewConfig::global()->setSmartCopyCut(ui->chkSmartCopyCut->isChecked());
-    KateViewConfig::global()->setMousePasteAtCursorPosition(ui->chkMousePasteAtCursorPosition->isChecked());
-
-    KateViewConfig::global()->setInputModeRaw(ui->cmbInputMode->currentData().toInt());
+    KateViewConfig::global()->setValue(KateViewConfig::AutoBrackets, ui->chkAutoBrackets->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::InputMode, ui->cmbInputMode->currentData().toInt());
+    KateViewConfig::global()->setValue(KateViewConfig::MousePasteAtCursorPosition, ui->chkMousePasteAtCursorPosition->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::SmartCopyCut, ui->chkSmartCopyCut->isChecked());
 
     KateDocumentConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -722,31 +720,30 @@ void KateViewDefaultsConfig::apply()
     KateRendererConfig::global()->configStart();
 
     KateViewConfig::global()->setDynWordWrap(textareaUi->gbWordWrap->isChecked());
-    KateViewConfig::global()->setDynWrapAtStaticMarker(textareaUi->chkDynWrapAtStaticMarker->isChecked());
-    KateViewConfig::global()->setDynWordWrapIndicators(textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
-    KateViewConfig::global()->setDynWordWrapAlignIndent(textareaUi->sbDynamicWordWrapDepth->value());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapIndicators, textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
     KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
     KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
     KateDocumentConfig::global()->setMarkerSize(textareaUi->sliSetMarkerSize->value());
-    KateViewConfig::global()->setLineNumbers(bordersUi->chkLineNumbers->isChecked());
-    KateViewConfig::global()->setIconBar(bordersUi->chkIconBorder->isChecked());
-    KateViewConfig::global()->setScrollBarMarks(bordersUi->chkScrollbarMarks->isChecked());
-    KateViewConfig::global()->setScrollBarPreview(bordersUi->chkScrollbarPreview->isChecked());
-    KateViewConfig::global()->setScrollBarMiniMap(bordersUi->chkScrollbarMiniMap->isChecked());
-    KateViewConfig::global()->setScrollBarMiniMapAll(bordersUi->chkScrollbarMiniMapAll->isChecked());
-    KateViewConfig::global()->setScrollBarMiniMapWidth(bordersUi->spBoxMiniMapWidth->value());
-    KateViewConfig::global()->setFoldingBar(bordersUi->chkShowFoldingMarkers->isChecked());
-    KateViewConfig::global()->setFoldingPreview(bordersUi->chkShowFoldingPreview->isChecked());
-    KateViewConfig::global()->setLineModification(bordersUi->chkShowLineModification->isChecked());
-    KateViewConfig::global()->setShowScrollbars(bordersUi->cmbShowScrollbars->currentIndex());
-
-    KateViewConfig::global()->setBookmarkSort(bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineNumbers, bordersUi->chkLineNumbers->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowIconBar, bordersUi->chkIconBorder->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMarks, bordersUi->chkScrollbarMarks->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarPreview, bordersUi->chkScrollbarPreview->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMap, bordersUi->chkScrollbarMiniMap->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, bordersUi->chkScrollbarMiniMapAll->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ScrollBarMiniMapWidth, bordersUi->spBoxMiniMapWidth->value());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingBar, bordersUi->chkShowFoldingMarkers->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingPreview, bordersUi->chkShowFoldingPreview->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineModification, bordersUi->chkShowLineModification->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollbars, bordersUi->cmbShowScrollbars->currentIndex());
+    KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
     KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
     KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
-    KateViewConfig::global()->setFoldFirstLine(textareaUi->chkFoldFirstLine->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
-    KateViewConfig::global()->setShowLineCount(textareaUi->chkShowLineCount->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineCount, textareaUi->chkShowLineCount->isChecked());
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();

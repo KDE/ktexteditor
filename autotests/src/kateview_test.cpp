@@ -309,7 +309,7 @@ void KateViewTest::testDeselectByArrowKeys()
     QCOMPARE(view->cursorPosition(), cur2);  // Be at end: foobar|haz
     QCOMPARE(view->selection(), false);
 
-    view->config()->setPersistentSelection(true);
+    view->config()->setValue(KateViewConfig::PersistentSelection, true);
 
     view->setSelection(range);
     view->setCursorPositionInternal(cur1);
@@ -369,7 +369,7 @@ void KateViewTest::testScrollPastEndOfDocument()
     view->show();
 
     // enable "[x] Scroll past end of document"
-    view->config()->setScrollPastEnd(true);
+    view->config()->setValue(KateViewConfig::ScrollPastEnd, true);
     QCOMPARE(view->config()->scrollPastEnd(), true);
 
     // disable dynamic word wrap
@@ -403,14 +403,14 @@ void KateViewTest::testFoldFirstLine()
     QCOMPARE(doc.highlightingMode(), QString("C++"));
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
-    view->config()->setFoldFirstLine(false);
+    view->config()->setValue(KateViewConfig::FoldFirstLine, false);
     view->setCursorPosition({4, 0});
 
     // initially, nothing is folded
     QVERIFY(view->textFolding().isLineVisible(1));
 
     // now change the config, and expect the header to be folded
-    view->config()->setFoldFirstLine(true);
+    view->config()->setValue(KateViewConfig::FoldFirstLine, true);
     qint64 foldedRangeId = 0;
     QVERIFY(!view->textFolding().isLineVisible(1, &foldedRangeId));
 

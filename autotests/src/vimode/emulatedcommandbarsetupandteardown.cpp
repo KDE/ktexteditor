@@ -68,7 +68,7 @@ EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInp
     while (QApplication::hasPendingEvents()) {
         QApplication::processEvents();
     }
-    KateViewConfig::global()->setViInputModeStealKeys(true);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);
     m_window->installEventFilter(&m_windowKeepActive);
 }
 EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
@@ -78,7 +78,7 @@ EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
     QMetaObject::invokeMethod(m_viInputMode->viModeEmulatedCommandBar(), "hideMe");
     m_view->hide();
     m_window->hide();
-    KateViewConfig::global()->setViInputModeStealKeys(false);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, false);
     while (QApplication::hasPendingEvents()) {
         QApplication::processEvents();
     }

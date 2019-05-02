@@ -4863,32 +4863,23 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
     int n;
     QColor c;
     foreach (v, m_views) {
-        if (var == QLatin1String("auto-brackets") && checkBoolValue(val, &state)) {
-            v->config()->setAutoBrackets(state);
+        // First, try the new config interface
+        QVariant help(val); // Special treatment to catch "on"/"off"
+        if (checkBoolValue(val, &state)) {
+            help = state;
+        }
+        if (v->config()->setValue(var, help)) {
+        } else if (v->renderer()->config()->setValue(var, help)) {
+
+        // No success? Go the old way
         } else if (var == QLatin1String("dynamic-word-wrap") && checkBoolValue(val, &state)) {
             v->config()->setDynWordWrap(state);
-        } else if (var == QLatin1String("persistent-selection") && checkBoolValue(val, &state)) {
-            v->config()->setPersistentSelection(state);
         } else if (var == QLatin1String("block-selection")  && checkBoolValue(val, &state)) {
             v->setBlockSelection(state);
-        }
+
         //else if ( var = "dynamic-word-wrap-indicators" )
-        else if (var == QLatin1String("line-numbers") && checkBoolValue(val, &state)) {
-            v->config()->setLineNumbers(state);
-        } else if (var == QLatin1String("icon-border") && checkBoolValue(val, &state)) {
-            v->config()->setIconBar(state);
-        } else if (var == QLatin1String("folding-markers") && checkBoolValue(val, &state)) {
-            v->config()->setFoldingBar(state);
-        } else if (var == QLatin1String("folding-preview") && checkBoolValue(val, &state)) {
-            v->config()->setFoldingPreview(state);
-        } else if (var == QLatin1String("auto-center-lines") && checkIntValue(val, &n)) {
-            v->config()->setAutoCenterLines(n);
         } else if (var == QLatin1String("icon-bar-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setIconBarColor(c);
-        } else if (var == QLatin1String("scrollbar-minimap") && checkBoolValue(val, &state)) {
-            v->config()->setScrollBarMiniMap(state);
-        } else if (var == QLatin1String("scrollbar-preview") && checkBoolValue(val, &state)) {
-            v->config()->setScrollBarPreview(state);
         }
         // RENDERER
         else if (var == QLatin1String("background-color") && checkColorValue(val, c)) {

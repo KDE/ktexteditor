@@ -248,7 +248,7 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
 
 void KateStatusBar::toggleShowLines(bool checked)
 {
-    KateViewConfig::global()->setShowLineCount(checked);
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineCount, checked);
 }
 
 void KateStatusBar::toggleShowWords(bool checked)

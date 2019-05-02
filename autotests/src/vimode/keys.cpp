@@ -45,7 +45,7 @@ void KeysTest::MappingTests()
 //     QVERIFY(false);
     const int mappingTimeoutMSOverride = QString::fromLocal8Bit(qgetenv("KATE_VIMODE_TEST_MAPPINGTIMEOUTMS")).toInt();
     const int mappingTimeoutMS = (mappingTimeoutMSOverride > 0) ? mappingTimeoutMSOverride : 2000;
-    KateViewConfig::global()->setViInputModeStealKeys(true); // For tests involving e.g. <c-a>
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For tests involving e.g. <c-a>
     {
         // Check storage and retrieval of mapping recursion.
         clearAllMappings();
@@ -592,7 +592,7 @@ void KeysTest::MappingTests()
 void KeysTest::LeaderTests()
 {
     // Clean slate.
-    KateViewConfig::global()->setViInputModeStealKeys(true);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);
     clearAllMappings();
 
     // By default the backslash character is the leader. The default leader
@@ -662,7 +662,7 @@ void KeysTest::AltGr()
     // Alt-gr+7 (that is: Alt-gr down; "{"; Alt-gr up).
 
     // Ensure we have auto brackets off, or the test will fail
-    kate_view->config()->setAutoBrackets(false);
+    kate_view->config()->setValue(KateViewConfig::AutoBrackets, false);
 
     BeginTest("");
     TestPressKey("i");
@@ -946,7 +946,7 @@ void KeysTest::MacroTests()
     ensureKateViewVisible();
     // Want Vim mode to intercept ctrl-p, ctrl-n shortcuts, etc.
     const bool oldStealKeys = KateViewConfig::global()->viInputModeStealKeys();
-    KateViewConfig::global()->setViInputModeStealKeys(true);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true);
 
     // Don't invoke completion via ctrl-space when replaying a macro.
     clearAllMacros();
@@ -1095,7 +1095,7 @@ void KeysTest::MacroTests()
     // Note that there is no way (in general) to determine if a completion was
     // non-tail-removing, so we explicitly set the config to false.
     const bool oldRemoveTailOnCompletion = KateViewConfig::global()->wordCompletionRemoveTail();
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     const bool oldReplaceTabsDyn = kate_document->config()->replaceTabsDyn();
     kate_document->config()->setReplaceTabsDyn(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
@@ -1121,7 +1121,7 @@ void KeysTest::MacroTests()
     FinishTest("(123_completionATail");
 
     // Correctly remove word if we are set to remove tail.
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     clearAllMacros();
     BeginTest("(123_compTail)");
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
@@ -1152,10 +1152,10 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     kate_document->setText("(123_compTail_456)");
     TestPressKey("gg@q");
     FinishTest("(123_completionA)");
@@ -1164,10 +1164,10 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     kate_document->setText("(123_compTail_456)");
     TestPressKey("gg@q");
     FinishTest("(123_completionATail_456)");
@@ -1178,10 +1178,10 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-c");
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("j^fTi\\ctrl- \\enter\\ctrl-cq");
     kate_document->setText("(123_compTail_456)\n(123_compTail_456)");
     TestPressKey("gg@q");
@@ -1203,7 +1203,7 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
     kate_document->setText("oldwordshouldbeuntouched");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1216,7 +1216,7 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setCompletions({ "123_completionA" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
     kate_document->setText("oldwordshouldbedeleted");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1226,7 +1226,7 @@ void KeysTest::MacroTests()
     // Completion of functions.
     // Currently, not removing the tail on function completion is not supported.
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     // A completed, no argument function "function()" is repeated correctly.
     BeginTest("");
     fakeCodeCompletionModel->setCompletions({ "function()" });
@@ -1365,7 +1365,7 @@ void KeysTest::MacroTests()
     BeginTest("funct");
     fakeCodeCompletionModel->setCompletions({ "function(...)" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq");
     kate_document->setText("functxyz");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1374,13 +1374,13 @@ void KeysTest::MacroTests()
     BeginTest("funct");
     fakeCodeCompletionModel->setCompletions({ "function()" });
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    KateViewConfig::global()->setWordCompletionRemoveTail(false);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqfta\\ctrl- \\enter\\ctrl-cq");
     kate_document->setText("functxyz");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     TestPressKey("gg@q");
     FinishTest("function()");
-    KateViewConfig::global()->setWordCompletionRemoveTail(true);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
 
     // Deal with cases where completion ends with ";".
     BeginTest("");
@@ -1455,13 +1455,13 @@ void KeysTest::MacroTests()
         TestPressKey("qafta\\ctrl- \\enterfirstArg\\ctrl-c"); // Function with args.
         TestPressKey("\\enterea\\ctrl- \\enter\\ctrl-c");     // Function no args.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-        KateViewConfig::global()->setWordCompletionRemoveTail(true);
+        KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
         TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-c");   // Cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(false);
-        KateViewConfig::global()->setWordCompletionRemoveTail(false);
+        KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
         TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-cq");   // Don't cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
-        KateViewConfig::global()->setWordCompletionRemoveTail(true);
+        KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
         // Record 'b'.
         fakeCodeCompletionModel->setCompletions({ "completionB", "semicolonfunctionnoargs();", "semicolonfunctionwithargs(...);" });
         TestPressKey("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq");
@@ -1516,7 +1516,7 @@ void KeysTest::MacroTests()
     FinishTest("completionMacro completionRepeatLastChange completionRepeatLastChange");
     }
 
-    KateViewConfig::global()->setWordCompletionRemoveTail(oldRemoveTailOnCompletion);
+    KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, oldRemoveTailOnCompletion);
     kate_document->config()->setReplaceTabsDyn(oldReplaceTabsDyn);
 
     kate_view->unregisterCompletionModel(fakeCodeCompletionModel);
@@ -1525,7 +1525,7 @@ void KeysTest::MacroTests()
     // Hide the kate_view for subsequent tests.
     kate_view->hide();
     mainWindow->hide();
-    KateViewConfig::global()->setViInputModeStealKeys(oldStealKeys);
+    KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, oldStealKeys);
 }
 
 void KeysTest::MarkTests()

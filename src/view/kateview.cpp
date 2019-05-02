@@ -1374,7 +1374,7 @@ void KTextEditor::ViewPrivate::setInputMode(KTextEditor::View::InputMode mode)
     m_viewInternal->m_currentInputMode = m_viewInternal->m_inputModes[mode];
     m_viewInternal->m_currentInputMode->activate();
 
-    config()->setInputMode(mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
+    config()->setValue(KateViewConfig::InputMode, mode); // TODO: this could be called from read config procedure, so it's not a good idea to set a specific view mode here
 
     /* small duplication, but need to do this if not toggled by action */
     Q_FOREACH(QAction *action, m_inputModeActions->actions()) {
@@ -1459,7 +1459,7 @@ void KTextEditor::ViewPrivate::slotLostFocus()
 
 void KTextEditor::ViewPrivate::setDynWrapIndicators(int mode)
 {
-    config()->setDynWordWrapIndicators(mode);
+    config()->setValue(KateViewConfig::DynWordWrapIndicators, mode);
 }
 
 bool KTextEditor::ViewPrivate::isOverwriteMode() const
@@ -1610,10 +1610,7 @@ void KTextEditor::ViewPrivate::readSessionConfig(const KConfigGroup &config, con
     // cursor position
     setCursorPositionInternal(KTextEditor::Cursor(config.readEntry("CursorLine", 0), config.readEntry("CursorColumn", 0)));
 
-    // restore dyn word wrap if set for this view
-    if (config.hasKey("Dynamic Word Wrap")) {
-        m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", false));
-    }
+    m_config->setDynWordWrap(config.readEntry("Dynamic Word Wrap", false));
 
     // restore text folding
     m_savedFoldingState = QJsonDocument::fromJson(config.readEntry("TextFolding", QByteArray()));
@@ -1632,10 +1629,7 @@ void KTextEditor::ViewPrivate::writeSessionConfig(KConfigGroup &config, const QS
     config.writeEntry("CursorLine", cursorPosition().line());
     config.writeEntry("CursorColumn", cursorPosition().column());
 
-    // save dyn word wrap if set for this view
-    if (m_config->dynWordWrapSet()) {
-        config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
-    }
+    config.writeEntry("Dynamic Word Wrap", m_config->dynWordWrap());
 
     // save text folding state
     saveFoldingState();
@@ -1684,57 +1678,57 @@ void KTextEditor::ViewPrivate::setAddBom(bool enabled)
 
 void KTextEditor::ViewPrivate::setIconBorder(bool enable)
 {
-    config()->setIconBar(enable);
+    config()->setValue(KateViewConfig::ShowIconBar, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleIconBorder()
 {
-    config()->setIconBar(!config()->iconBar());
+    config()->setValue(KateViewConfig::ShowIconBar, config()->iconBar());
 }
 
 void KTextEditor::ViewPrivate::setLineNumbersOn(bool enable)
 {
-    config()->setLineNumbers(enable);
+    config()->setValue(KateViewConfig::ShowLineNumbers, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleLineNumbersOn()
 {
-    config()->setLineNumbers(!config()->lineNumbers());
+    config()->setValue(KateViewConfig::ShowLineNumbers, !config()->lineNumbers());
 }
 
 void KTextEditor::ViewPrivate::setScrollBarMarks(bool enable)
 {
-    config()->setScrollBarMarks(enable);
+    config()->setValue(KateViewConfig::ShowScrollBarMarks, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleScrollBarMarks()
 {
-    config()->setScrollBarMarks(!config()->scrollBarMarks());
+    config()->setValue(KateViewConfig::ShowScrollBarMarks, !config()->scrollBarMarks());
 }
 
 void KTextEditor::ViewPrivate::setScrollBarMiniMap(bool enable)
 {
-    config()->setScrollBarMiniMap(enable);
+    config()->setValue(KateViewConfig::ShowScrollBarMiniMap, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleScrollBarMiniMap()
 {
-    config()->setScrollBarMiniMap(!config()->scrollBarMiniMap());
+    config()->setValue(KateViewConfig::ShowScrollBarMiniMap, !config()->scrollBarMiniMap());
 }
 
 void KTextEditor::ViewPrivate::setScrollBarMiniMapAll(bool enable)
 {
-    config()->setScrollBarMiniMapAll(enable);
+    config()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleScrollBarMiniMapAll()
 {
-    config()->setScrollBarMiniMapAll(!config()->scrollBarMiniMapAll());
+    config()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, !config()->scrollBarMiniMapAll());
 }
 
 void KTextEditor::ViewPrivate::setScrollBarMiniMapWidth(int width)
 {
-    config()->setScrollBarMiniMapWidth(width);
+    config()->setValue(KateViewConfig::ScrollBarMiniMapWidth, width);
 }
 
 void KTextEditor::ViewPrivate::toggleDynWordWrap()
@@ -1760,12 +1754,12 @@ void KTextEditor::ViewPrivate::toggleWordCount(bool on)
 
 void KTextEditor::ViewPrivate::setFoldingMarkersOn(bool enable)
 {
-    config()->setFoldingBar(enable);
+    config()->setValue(KateViewConfig::ShowFoldingBar, enable);
 }
 
 void KTextEditor::ViewPrivate::toggleFoldingMarkers()
 {
-    config()->setFoldingBar(!config()->foldingBar());
+    config()->setValue(KateViewConfig::ShowFoldingBar, !config()->foldingBar());
 }
 
 bool KTextEditor::ViewPrivate::iconBorder()
@@ -2613,7 +2607,7 @@ bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const
 
 void KTextEditor::ViewPrivate::setAutomaticInvocationEnabled(bool enabled)
 {
-    config()->setAutomaticCompletionInvocation(enabled);
+    config()->setValue(KateViewConfig::AutomaticCompletionInvocation, enabled);
 }
 
 void KTextEditor::ViewPrivate::sendCompletionExecuted(const KTextEditor::Cursor &position, KTextEditor::CodeCompletionModel *model, const QModelIndex &index)
@@ -3306,6 +3300,15 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
 
 void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant &value)
 {
+    // First, try the new config interface
+    if (config()->setValue(key, value)) {
+        return;
+
+    } else if (renderer()->config()->setValue(key, value)) {
+        return;
+    }
+
+    // No success? Go the old way
     if (value.canConvert(QVariant::Color)) {
         if (key == QLatin1String("background-color")) {
             renderer()->config()->setBackgroundColor(value.value<QColor>());
@@ -3328,33 +3331,10 @@ void KTextEditor::ViewPrivate::setConfigValue(const QString &key, const QVariant
     } else if (value.type() == QVariant::Bool) {
         // Note explicit type check above. If we used canConvert, then
         // values of type UInt will be trapped here.
-        if (key == QLatin1String("icon-bar")) {
-            config()->setIconBar(value.toBool());
-        } else if (key == QLatin1String("line-numbers")) {
-            config()->setLineNumbers(value.toBool());
-        } else if (key == QLatin1String("dynamic-word-wrap")) {
+        if (key == QLatin1String("dynamic-word-wrap")) {
             config()->setDynWordWrap(value.toBool());
-        } else if (key == QLatin1String("allow-mark-menu")) {
-            config()->setAllowMarkMenu(value.toBool());
-        } else if (key == QLatin1String("folding-bar")) {
-            config()->setFoldingBar(value.toBool());
-        } else if (key == QLatin1String("folding-preview")) {
-            config()->setFoldingPreview(value.toBool());
-        } else if (key == QLatin1String("modification-markers")) {
-            config()->setLineModification(value.toBool());
-        } else if (key == QLatin1String("keyword-completion")) {
-            config()->setKeywordCompletion(value.toBool());
         } else if (key == QLatin1String("word-count")) {
             config()->setShowWordCount(value.toBool());
-        } else if (key == QLatin1String("scrollbar-minimap")) {
-            config()->setScrollBarMiniMap(value.toBool());
-        } else if (key == QLatin1String("scrollbar-preview")) {
-            config()->setScrollBarPreview(value.toBool());
-        }
-
-    } else if (value.canConvert(QVariant::UInt)) {
-        if (key == QLatin1String("default-mark-type")) {
-            config()->setDefaultMarkType(value.toUInt());
         }
 
     } else if (value.canConvert(QVariant::Font)) {
