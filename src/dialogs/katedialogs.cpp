@@ -172,13 +172,13 @@ void KateIndentConfigTab::apply()
 
     KateDocumentConfig::global()->configStart();
 
-    KateDocumentConfig::global()->setKeepExtraSpaces(ui->chkKeepExtraSpaces->isChecked());
     KateDocumentConfig::global()->setBackspaceIndents(ui->chkBackspaceUnindents->isChecked());
     KateDocumentConfig::global()->setIndentPastedText(ui->chkIndentPaste->isChecked());
-    KateDocumentConfig::global()->setIndentationWidth(ui->sbIndentWidth->value());
     KateDocumentConfig::global()->setIndentationMode(KateAutoIndent::modeName(ui->cmbMode->currentIndex()));
-    KateDocumentConfig::global()->setTabWidth(ui->sbTabWidth->value());
+    KateDocumentConfig::global()->setIndentationWidth(ui->sbIndentWidth->value());
+    KateDocumentConfig::global()->setKeepExtraSpaces(ui->chkKeepExtraSpaces->isChecked());
     KateDocumentConfig::global()->setReplaceTabsDyn(ui->rbIndentWithSpaces->isChecked());
+    KateDocumentConfig::global()->setTabWidth(ui->sbTabWidth->value());
 
     if (ui->rbTabAdvances->isChecked()) {
         KateDocumentConfig::global()->setTabHandling(KateDocumentConfig::tabInsertsTab);
@@ -193,13 +193,14 @@ void KateIndentConfigTab::apply()
 
 void KateIndentConfigTab::reload()
 {
-    ui->sbTabWidth->setSuffix(ki18np(" character", " characters"));
-    ui->sbTabWidth->setValue(KateDocumentConfig::global()->tabWidth());
+    ui->chkBackspaceUnindents->setChecked(KateDocumentConfig::global()->backspaceIndents());
+    ui->chkIndentPaste->setChecked(KateDocumentConfig::global()->indentPastedText());
+    ui->chkKeepExtraSpaces->setChecked(KateDocumentConfig::global()->keepExtraSpaces());
+
     ui->sbIndentWidth->setSuffix(ki18np(" character", " characters"));
     ui->sbIndentWidth->setValue(KateDocumentConfig::global()->indentationWidth());
-    ui->chkKeepExtraSpaces->setChecked(KateDocumentConfig::global()->keepExtraSpaces());
-    ui->chkIndentPaste->setChecked(KateDocumentConfig::global()->indentPastedText());
-    ui->chkBackspaceUnindents->setChecked(KateDocumentConfig::global()->backspaceIndents());
+    ui->sbTabWidth->setSuffix(ki18np(" character", " characters"));
+    ui->sbTabWidth->setValue(KateDocumentConfig::global()->tabWidth());
 
     ui->rbTabAdvances->setChecked(KateDocumentConfig::global()->tabHandling() == KateDocumentConfig::tabInsertsTab);
     ui->rbTabIndents->setChecked(KateDocumentConfig::global()->tabHandling() == KateDocumentConfig::tabIndents);
@@ -289,9 +290,11 @@ void KateCompletionConfigTab::apply()
 void KateCompletionConfigTab::reload()
 {
     ui->chkAutoCompletionEnabled->setChecked(KateViewConfig::global()->automaticCompletionInvocation());
-    ui->gbWordCompletion->setChecked(KateViewConfig::global()->wordCompletion());
-    ui->minimalWordLength->setValue(KateViewConfig::global()->wordCompletionMinimalWordLength());
+
     ui->gbKeywordCompletion->setChecked(KateViewConfig::global()->keywordCompletion());
+    ui->gbWordCompletion->setChecked(KateViewConfig::global()->wordCompletion());
+
+    ui->minimalWordLength->setValue(KateViewConfig::global()->wordCompletionMinimalWordLength());
     ui->removeTail->setChecked(KateViewConfig::global()->wordCompletionRemoveTail());
 }
 
@@ -434,11 +437,12 @@ void KateNavigationConfigTab::reload()
 {
     ui->cbTextSelectionMode->setCurrentIndex(KateViewConfig::global()->persistentSelection() ? 1 : 0);
 
-    ui->chkSmartHome->setChecked(KateDocumentConfig::global()->smartHome());
-    ui->chkPagingMovesCursor->setChecked(KateDocumentConfig::global()->pageUpDownMovesCursor());
-    ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
-    ui->chkScrollPastEnd->setChecked(KateViewConfig::global()->scrollPastEnd());
     ui->chkBackspaceRemoveComposed->setChecked(KateViewConfig::global()->backspaceRemoveComposed());
+    ui->chkPagingMovesCursor->setChecked(KateDocumentConfig::global()->pageUpDownMovesCursor());
+    ui->chkScrollPastEnd->setChecked(KateViewConfig::global()->scrollPastEnd());
+    ui->chkSmartHome->setChecked(KateDocumentConfig::global()->smartHome());
+
+    ui->sbAutoCenterCursor->setValue(KateViewConfig::global()->autoCenterLines());
 }
 
 QString KateNavigationConfigTab::name() const
@@ -494,8 +498,8 @@ void KateEditGeneralConfigTab::apply()
     KateViewConfig::global()->configStart();
     KateDocumentConfig::global()->configStart();
 
-    KateDocumentConfig::global()->setWordWrapAt(ui->sbWordWrap->value());
     KateDocumentConfig::global()->setWordWrap(ui->chkStaticWordWrap->isChecked());
+    KateDocumentConfig::global()->setWordWrapAt(ui->sbWordWrap->value());
 
     KateRendererConfig::global()->setWordWrapMarker(ui->chkShowStaticWordWrapMarker->isChecked());
 
@@ -510,13 +514,14 @@ void KateEditGeneralConfigTab::apply()
 
 void KateEditGeneralConfigTab::reload()
 {
-    ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
+    ui->chkAutoBrackets->setChecked(KateViewConfig::global()->autoBrackets());
+    ui->chkMousePasteAtCursorPosition->setChecked(KateViewConfig::global()->mousePasteAtCursorPosition());
     ui->chkShowStaticWordWrapMarker->setChecked(KateRendererConfig::global()->wordWrapMarker());
+    ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
+    ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
+
     ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at (value is at 20 or larger)", " character", " characters"));
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
-    ui->chkAutoBrackets->setChecked(KateViewConfig::global()->autoBrackets());
-    ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
-    ui->chkMousePasteAtCursorPosition->setChecked(KateViewConfig::global()->mousePasteAtCursorPosition());
 
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
@@ -672,34 +677,34 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     // after initial reload, connect the stuff for the changed () signal
     //
 
-    connect(textareaUi->gbWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkDynWrapAtStaticMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->cmbDynamicWordWrapIndicator, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->sbDynamicWordWrapDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->spacesComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateViewDefaultsConfig::slotChanged);
-    connect(textareaUi->chkShowIndentationLines, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->sliSetMarkerSize, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowWholeBracketExpression, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkAnimateBracketMatching, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkFoldFirstLine,  SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowWordCount,  SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkDynWrapAtStaticMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkFoldFirstLine, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkShowIndentationLines, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(textareaUi->chkShowLineCount, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkShowTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkShowWholeBracketExpression, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->chkShowWordCount, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->cmbDynamicWordWrapIndicator, SIGNAL(activated(int)), this, SLOT(slotChanged()));
+    connect(textareaUi->gbWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(textareaUi->sbDynamicWordWrapDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
+    connect(textareaUi->sliSetMarkerSize, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
+    connect(textareaUi->spacesComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateViewDefaultsConfig::slotChanged);
 
     connect(bordersUi->chkIconBorder, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->chkLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMarks, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkScrollbarPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMiniMap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkScrollbarMiniMapAll, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     bordersUi->chkScrollbarMiniMapAll->hide(); // this is temporary until the feature is done
-    connect(bordersUi->spBoxMiniMapWidth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkShowLineModification, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->chkScrollbarPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkShowFoldingMarkers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->chkShowFoldingPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->rbSortBookmarksByPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->rbSortBookmarksByCreation, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->chkShowLineModification, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(bordersUi->cmbShowScrollbars, SIGNAL(activated(int)), this, SLOT(slotChanged()));
+    connect(bordersUi->rbSortBookmarksByCreation, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->rbSortBookmarksByPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    connect(bordersUi->spBoxMiniMapWidth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
 }
 
 KateViewDefaultsConfig::~KateViewDefaultsConfig()
@@ -719,31 +724,33 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->configStart();
     KateRendererConfig::global()->configStart();
 
-    KateViewConfig::global()->setDynWordWrap(textareaUi->gbWordWrap->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapIndicators, textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
-    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
-    KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
-    KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
     KateDocumentConfig::global()->setMarkerSize(textareaUi->sliSetMarkerSize->value());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowLineNumbers, bordersUi->chkLineNumbers->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowIconBar, bordersUi->chkIconBorder->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMarks, bordersUi->chkScrollbarMarks->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarPreview, bordersUi->chkScrollbarPreview->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMap, bordersUi->chkScrollbarMiniMap->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, bordersUi->chkScrollbarMiniMapAll->isChecked());
+    KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
+    KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
+
+    KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
+    KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
+    KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
+
+    KateViewConfig::global()->setDynWordWrap(textareaUi->gbWordWrap->isChecked());
+    KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
+    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapIndicators, textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ScrollBarMiniMapWidth, bordersUi->spBoxMiniMapWidth->value());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingBar, bordersUi->chkShowFoldingMarkers->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingPreview, bordersUi->chkShowFoldingPreview->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowLineModification, bordersUi->chkShowLineModification->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollbars, bordersUi->cmbShowScrollbars->currentIndex());
-    KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
-    KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
-    KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
-    KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
-    KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
-    KateViewConfig::global()->setShowWordCount(textareaUi->chkShowWordCount->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowIconBar, bordersUi->chkIconBorder->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowLineCount, textareaUi->chkShowLineCount->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineModification, bordersUi->chkShowLineModification->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowLineNumbers, bordersUi->chkLineNumbers->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMarks, bordersUi->chkScrollbarMarks->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMap, bordersUi->chkScrollbarMiniMap->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarMiniMapAll, bordersUi->chkScrollbarMiniMapAll->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollBarPreview, bordersUi->chkScrollbarPreview->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowScrollbars, bordersUi->cmbShowScrollbars->currentIndex());
 
     KateRendererConfig::global()->configEnd();
     KateViewConfig::global()->configEnd();
@@ -751,32 +758,33 @@ void KateViewDefaultsConfig::apply()
 
 void KateViewDefaultsConfig::reload()
 {
-    textareaUi->gbWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
-    textareaUi->chkDynWrapAtStaticMarker->setChecked(KateViewConfig::global()->dynWrapAtStaticMarker());
-    textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
-    textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
-    textareaUi->chkShowTabs->setChecked(KateDocumentConfig::global()->showTabs());
-    textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
-    textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
-    bordersUi->chkLineNumbers->setChecked(KateViewConfig::global()->lineNumbers());
     bordersUi->chkIconBorder->setChecked(KateViewConfig::global()->iconBar());
+    bordersUi->chkLineNumbers->setChecked(KateViewConfig::global()->lineNumbers());
     bordersUi->chkScrollbarMarks->setChecked(KateViewConfig::global()->scrollBarMarks());
-    bordersUi->chkScrollbarPreview->setChecked(KateViewConfig::global()->scrollBarPreview());
     bordersUi->chkScrollbarMiniMap->setChecked(KateViewConfig::global()->scrollBarMiniMap());
     bordersUi->chkScrollbarMiniMapAll->setChecked(KateViewConfig::global()->scrollBarMiniMapAll());
-    bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
+    bordersUi->chkScrollbarPreview->setChecked(KateViewConfig::global()->scrollBarPreview());
     bordersUi->chkShowFoldingMarkers->setChecked(KateViewConfig::global()->foldingBar());
     bordersUi->chkShowFoldingPreview->setChecked(KateViewConfig::global()->foldingPreview());
     bordersUi->chkShowLineModification->setChecked(KateViewConfig::global()->lineModification());
-    bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
-    bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);
     bordersUi->cmbShowScrollbars->setCurrentIndex(KateViewConfig::global()->showScrollbars());
-    textareaUi->chkShowIndentationLines->setChecked(KateRendererConfig::global()->showIndentationLines());
-    textareaUi->chkShowWholeBracketExpression->setChecked(KateRendererConfig::global()->showWholeBracketExpression());
+    bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);
+    bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
+    bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
+
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
+    textareaUi->chkDynWrapAtStaticMarker->setChecked(KateViewConfig::global()->dynWrapAtStaticMarker());
     textareaUi->chkFoldFirstLine->setChecked(KateViewConfig::global()->foldFirstLine());
-    textareaUi->chkShowWordCount->setChecked(KateViewConfig::global()->showWordCount());
+    textareaUi->chkShowIndentationLines->setChecked(KateRendererConfig::global()->showIndentationLines());
     textareaUi->chkShowLineCount->setChecked(KateViewConfig::global()->showLineCount());
+    textareaUi->chkShowTabs->setChecked(KateDocumentConfig::global()->showTabs());
+    textareaUi->chkShowWholeBracketExpression->setChecked(KateRendererConfig::global()->showWholeBracketExpression());
+    textareaUi->chkShowWordCount->setChecked(KateViewConfig::global()->showWordCount());
+    textareaUi->cmbDynamicWordWrapIndicator->setCurrentIndex(KateViewConfig::global()->dynWordWrapIndicators());
+    textareaUi->gbWordWrap->setChecked(KateViewConfig::global()->dynWordWrap());
+    textareaUi->sbDynamicWordWrapDepth->setValue(KateViewConfig::global()->dynWordWrapAlignIndent());
+    textareaUi->sliSetMarkerSize->setValue(KateDocumentConfig::global()->markerSize());
+    textareaUi->spacesComboBox->setCurrentIndex(KateDocumentConfig::global()->showSpaces());
 }
 
 void KateViewDefaultsConfig::reset()
@@ -1010,6 +1018,7 @@ void KateSaveConfigTab::reload()
     uiadv->chkBackupRemoteFiles->setChecked(KateDocumentConfig::global()->backupOnSaveRemote());
     uiadv->edtBackupPrefix->setText(KateDocumentConfig::global()->backupPrefix());
     uiadv->edtBackupSuffix->setText(KateDocumentConfig::global()->backupSuffix());
+
     uiadv->cmbSwapFileMode->setCurrentIndex(KateDocumentConfig::global()->swapFileMode());
     uiadv->kurlSwapDirectory->setUrl(QUrl::fromLocalFile(KateDocumentConfig::global()->swapDirectory()));
     uiadv->spbSwapFileSync->setValue(KateDocumentConfig::global()->swapSyncInterval());
@@ -1031,6 +1040,7 @@ void KateSaveConfigTab::defaults()
     uiadv->chkBackupRemoteFiles->setChecked(false);
     uiadv->edtBackupPrefix->setText(QString());
     uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
+
     uiadv->cmbSwapFileMode->setCurrentIndex(1);
     uiadv->kurlSwapDirectory->setDisabled(true);
     uiadv->lblSwapDirectory->setDisabled(true);
