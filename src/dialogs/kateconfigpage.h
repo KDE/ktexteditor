@@ -21,6 +21,14 @@
 
 #include <ktexteditor/configpage.h>
 
+class KUrlRequester;
+class QAbstractButton;
+class QAbstractSlider;
+class QAbstractSpinBox;
+class QComboBox;
+class QGroupBox;
+class QLineEdit;
+
 class KateConfigPage : public KTextEditor::ConfigPage
 {
     Q_OBJECT
@@ -35,6 +43,15 @@ public:
     {
         return m_changed;
     }
+
+    void observeChanges(KateConfigPage *page);
+    void observeChanges(KUrlRequester *requester);
+    void observeChanges(QAbstractButton *button);
+    void observeChanges(QAbstractSlider *slider);
+    void observeChanges(QAbstractSpinBox *spinBox);
+    void observeChanges(QComboBox *comboBox);
+    void observeChanges(QGroupBox *groupBox);
+    void observeChanges(QLineEdit *lineEdit);
 
 protected Q_SLOTS:
     void slotChanged();

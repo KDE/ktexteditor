@@ -111,33 +111,28 @@ KateIndentConfigTab::KateIndentConfigTab(QWidget *parent)
 
     ui->cmbMode->addItems(KateAutoIndent::listModes());
 
+    // FIXME Give ui->label a more descriptive name, it's these "More..." info about tab key action
     ui->label->setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard);
-    connect(ui->label, SIGNAL(linkActivated(QString)), this, SLOT(showWhatsThis(QString)));
+    connect(ui->label, &QLabel::linkActivated, this, &KateIndentConfigTab::showWhatsThis);
 
-    // What's This? help can be found in the ui file
+    // "What's This?" help can be found in the ui file
 
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-    //
-
-    connect(ui->cmbMode, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(ui->rbIndentWithTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->rbIndentWithSpaces, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->rbIndentMixed, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->rbIndentWithTabs, SIGNAL(toggled(bool)), ui->sbIndentWidth, SLOT(setDisabled(bool)));
-
-    connect(ui->chkKeepExtraSpaces, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkIndentPaste, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkBackspaceUnindents, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-
-    connect(ui->sbTabWidth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->sbIndentWidth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-
-    connect(ui->rbTabAdvances, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->rbTabIndents, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->rbTabSmart, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    observeChanges(ui->chkBackspaceUnindents);
+    observeChanges(ui->chkIndentPaste);
+    observeChanges(ui->chkKeepExtraSpaces);
+    observeChanges(ui->cmbMode);
+    observeChanges(ui->rbIndentMixed);
+    observeChanges(ui->rbIndentWithSpaces);
+    observeChanges(ui->rbIndentWithTabs);
+    connect(ui->rbIndentWithTabs, &QAbstractButton::toggled, ui->sbIndentWidth, &QWidget::setDisabled);
+    connect(ui->rbIndentWithTabs, &QAbstractButton::toggled, this, &KateIndentConfigTab::slotChanged); // FIXME See slot below
+    observeChanges(ui->rbTabAdvances);
+    observeChanges(ui->rbTabIndents);
+    observeChanges(ui->rbTabSmart);
+    observeChanges(ui->sbIndentWidth);
+    observeChanges(ui->sbTabWidth);
 
     layout->addWidget(newWidget);
     setLayout(layout);
@@ -150,13 +145,15 @@ KateIndentConfigTab::~KateIndentConfigTab()
 
 void KateIndentConfigTab::slotChanged()
 {
+    // FIXME Make it working without this quirk
+    // When the value is not copied it will silently set back to "Tabs & Spaces"
     if (ui->rbIndentWithTabs->isChecked()) {
         ui->sbIndentWidth->setValue(ui->sbTabWidth->value());
     }
-
-    KateConfigPage::slotChanged();
 }
 
+// NOTE Should we have more use of such info stuff, consider to make it part
+// of KateConfigPage and add a similar function like observeChanges(..)
 void KateIndentConfigTab::showWhatsThis(const QString &text)
 {
     QWhatsThis::showText(QCursor::pos(), text);
@@ -240,19 +237,15 @@ KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
     ui = new Ui::CompletionConfigTab();
     ui->setupUi(newWidget);
 
-    // What's This? help can be found in the ui file
+    // "What's This?" help can be found in the ui file
 
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-    //
-
-    connect(ui->chkAutoCompletionEnabled, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->gbWordCompletion, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->gbKeywordCompletion, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->minimalWordLength, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->removeTail, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    observeChanges(ui->chkAutoCompletionEnabled);
+    observeChanges(ui->gbKeywordCompletion);
+    observeChanges(ui->gbWordCompletion);
+    observeChanges(ui->minimalWordLength);
+    observeChanges(ui->removeTail);
 
     layout->addWidget(newWidget);
     setLayout(layout);
@@ -263,7 +256,7 @@ KateCompletionConfigTab::~KateCompletionConfigTab()
     delete ui;
 }
 
-void KateCompletionConfigTab::showWhatsThis(const QString &text)
+void KateCompletionConfigTab::showWhatsThis(const QString &text) // NOTE Not used atm, remove? See also KateIndentConfigTab::showWhatsThis
 {
     QWhatsThis::showText(QCursor::pos(), text);
 }
@@ -317,14 +310,12 @@ KateSpellCheckConfigTab::KateSpellCheckConfigTab(QWidget *parent)
     ui = new Ui::SpellCheckConfigWidget();
     ui->setupUi(newWidget);
 
-    // What's This? help can be found in the ui file
+    // "What's This?" help can be found in the ui file
+
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-
     m_sonnetConfigWidget = new Sonnet::ConfigWidget(this);
-    connect(m_sonnetConfigWidget, SIGNAL(configChanged()), this, SLOT(slotChanged()));
+    connect(m_sonnetConfigWidget, &Sonnet::ConfigWidget::configChanged, this, &KateSpellCheckConfigTab::slotChanged);
     layout->addWidget(m_sonnetConfigWidget);
 
     layout->addWidget(newWidget);
@@ -336,7 +327,7 @@ KateSpellCheckConfigTab::~KateSpellCheckConfigTab()
     delete ui;
 }
 
-void KateSpellCheckConfigTab::showWhatsThis(const QString &text)
+void KateSpellCheckConfigTab::showWhatsThis(const QString &text) // NOTE Not used atm, remove? See also KateIndentConfigTab::showWhatsThis
 {
     QWhatsThis::showText(QCursor::pos(), text);
 }
@@ -386,20 +377,16 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     ui = new Ui::NavigationConfigWidget();
     ui->setupUi(newWidget);
 
-    // What's This? Help is in the ui-files
+    // "What's This?" help can be found in the ui file
 
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-    //
-
-    connect(ui->cbTextSelectionMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->chkSmartHome, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkPagingMovesCursor, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->sbAutoCenterCursor, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->chkScrollPastEnd, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkBackspaceRemoveComposed, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    observeChanges(ui->cbTextSelectionMode);
+    observeChanges(ui->chkBackspaceRemoveComposed);
+    observeChanges(ui->chkPagingMovesCursor);
+    observeChanges(ui->chkScrollPastEnd);
+    observeChanges(ui->chkSmartHome);
+    observeChanges(ui->sbAutoCenterCursor);
 
     layout->addWidget(newWidget);
     setLayout(layout);
@@ -466,17 +453,17 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
         ui->cmbInputMode->addItem(fact->name(), static_cast<int>(fact->inputMode()));
     }
 
+    // "What's This?" Help is in the ui-files
+
     reload();
 
-    connect(ui->chkStaticWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkShowStaticWordWrapMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->sbWordWrap, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->chkAutoBrackets, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkSmartCopyCut, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkMousePasteAtCursorPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->cmbInputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
-
-    // "What's this?" help is in the ui-file
+    observeChanges(ui->chkAutoBrackets);
+    observeChanges(ui->chkMousePasteAtCursorPosition);
+    observeChanges(ui->chkShowStaticWordWrapMarker);
+    observeChanges(ui->chkSmartCopyCut);
+    observeChanges(ui->chkStaticWordWrap);
+    observeChanges(ui->cmbInputMode);
+    observeChanges(ui->sbWordWrap);
 
     layout->addWidget(newWidget);
     setLayout(layout);
@@ -554,11 +541,11 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     tabWidget->insertTab(3, completionConfigTab, completionConfigTab->name());
     tabWidget->insertTab(4, spellCheckConfigTab, spellCheckConfigTab->name());
 
-    connect(editConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
-    connect(navigationConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
-    connect(indentConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
-    connect(completionConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
-    connect(spellCheckConfigTab, SIGNAL(changed()), this, SLOT(slotChanged()));
+    observeChanges(editConfigTab);
+    observeChanges(navigationConfigTab);
+    observeChanges(indentConfigTab);
+    observeChanges(completionConfigTab);
+    observeChanges(spellCheckConfigTab);
 
     int i = tabWidget->count();
     Q_FOREACH(KateAbstractInputModeFactory *factory, KTextEditor::EditorPrivate::self()->inputModeFactories()) {
@@ -566,7 +553,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
         if (tab) {
             m_inputModeConfigTabs << tab;
             tabWidget->insertTab(i, tab, tab->name());
-            connect(tab, SIGNAL(changed()), this, SLOT(slotChanged()));
+            observeChanges(tab);
             i++;
         }
     }
@@ -669,42 +656,38 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     textareaUi->cmbDynamicWordWrapIndicator->addItem(i18n("Follow Line Numbers"));
     textareaUi->cmbDynamicWordWrapIndicator->addItem(i18n("Always On"));
 
-    // What's This? help is in the ui-file
+    // "What's This?" help is in the ui-file
 
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-    //
+    observeChanges(textareaUi->chkAnimateBracketMatching);
+    observeChanges(textareaUi->chkDynWrapAtStaticMarker);
+    observeChanges(textareaUi->chkFoldFirstLine);
+    observeChanges(textareaUi->chkShowIndentationLines);
+    observeChanges(textareaUi->chkShowLineCount);
+    observeChanges(textareaUi->chkShowTabs);
+    observeChanges(textareaUi->chkShowWholeBracketExpression);
+    observeChanges(textareaUi->chkShowWordCount);
+    observeChanges(textareaUi->cmbDynamicWordWrapIndicator);
+    observeChanges(textareaUi->gbWordWrap);
+    observeChanges(textareaUi->sbDynamicWordWrapDepth);
+    observeChanges(textareaUi->sliSetMarkerSize);
+    observeChanges(textareaUi->spacesComboBox);
 
-    connect(textareaUi->chkAnimateBracketMatching, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkDynWrapAtStaticMarker, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkFoldFirstLine, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowIndentationLines, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowLineCount, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowTabs, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowWholeBracketExpression, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->chkShowWordCount, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->cmbDynamicWordWrapIndicator, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->gbWordWrap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(textareaUi->sbDynamicWordWrapDepth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->sliSetMarkerSize, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(textareaUi->spacesComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateViewDefaultsConfig::slotChanged);
-
-    connect(bordersUi->chkIconBorder, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkScrollbarMarks, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkScrollbarMiniMap, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkScrollbarMiniMapAll, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
+    observeChanges(bordersUi->chkIconBorder);
+    observeChanges(bordersUi->chkLineNumbers);
+    observeChanges(bordersUi->chkScrollbarMarks);
+    observeChanges(bordersUi->chkScrollbarMiniMap);
+    observeChanges(bordersUi->chkScrollbarMiniMapAll);
     bordersUi->chkScrollbarMiniMapAll->hide(); // this is temporary until the feature is done
-    connect(bordersUi->chkScrollbarPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkShowFoldingMarkers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkShowFoldingPreview, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->chkShowLineModification, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->cmbShowScrollbars, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(bordersUi->rbSortBookmarksByCreation, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->rbSortBookmarksByPosition, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(bordersUi->spBoxMiniMapWidth, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
+    observeChanges(bordersUi->chkScrollbarPreview);
+    observeChanges(bordersUi->chkShowFoldingMarkers);
+    observeChanges(bordersUi->chkShowFoldingPreview);
+    observeChanges(bordersUi->chkShowLineModification);
+    observeChanges(bordersUi->cmbShowScrollbars);
+    observeChanges(bordersUi->rbSortBookmarksByCreation);
+    observeChanges(bordersUi->rbSortBookmarksByPosition);
+    observeChanges(bordersUi->spBoxMiniMapWidth);
 }
 
 KateViewDefaultsConfig::~KateViewDefaultsConfig()
@@ -838,30 +821,28 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     uiadv = new Ui::OpenSaveConfigAdvWidget();
     uiadv->setupUi(newWidget2);
 
-    // What's this help is added in ui/opensaveconfigwidget.ui
+    // "What's This?" help can be found in the ui file
+
     reload();
 
-    //
-    // after initial reload, connect the stuff for the changed () signal
-    //
+    observeChanges(ui->cbRemoveTrailingSpaces);
+    observeChanges(ui->chkDetectEOL);
+    observeChanges(ui->chkEnableBOM);
+    observeChanges(ui->chkNewLineAtEof);
+    observeChanges(ui->cmbEOL);
+    observeChanges(ui->cmbEncoding);
+    observeChanges(ui->cmbEncodingDetection);
+    observeChanges(ui->cmbEncodingFallback);
+    observeChanges(ui->lineLengthLimit);
 
-    connect(ui->cmbEncoding, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(ui->cmbEncodingDetection, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(ui->cmbEncodingFallback, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(ui->cmbEOL, SIGNAL(activated(int)), this, SLOT(slotChanged()));
-    connect(ui->chkDetectEOL, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->chkEnableBOM, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->lineLengthLimit, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->cbRemoveTrailingSpaces, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
-    connect(ui->chkNewLineAtEof, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(uiadv->chkBackupLocalFiles, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(uiadv->chkBackupRemoteFiles, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(uiadv->edtBackupPrefix, SIGNAL(textChanged(QString)), this, SLOT(slotChanged()));
-    connect(uiadv->edtBackupSuffix, SIGNAL(textChanged(QString)), this, SLOT(slotChanged()));
-    connect(uiadv->cmbSwapFileMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
-    connect(uiadv->cmbSwapFileMode, SIGNAL(currentIndexChanged(int)), this, SLOT(swapFileModeChanged(int)));
-    connect(uiadv->kurlSwapDirectory, SIGNAL(textChanged(QString)), this, SLOT(slotChanged()));
-    connect(uiadv->spbSwapFileSync, SIGNAL(valueChanged(int)), this, SLOT(slotChanged()));
+    observeChanges(uiadv->chkBackupLocalFiles);
+    observeChanges(uiadv->chkBackupRemoteFiles);
+    observeChanges(uiadv->cmbSwapFileMode);
+    connect(uiadv->cmbSwapFileMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSaveConfigTab::swapFileModeChanged);
+    observeChanges(uiadv->edtBackupPrefix);
+    observeChanges(uiadv->edtBackupSuffix);
+    observeChanges(uiadv->kurlSwapDirectory);
+    observeChanges(uiadv->spbSwapFileSync);
 
     internalLayout->addWidget(newWidget);
     tmpWidget->setLayout(internalLayout);
@@ -873,7 +854,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     tabWidget->insertTab(1, tmpWidget2, i18n("Advanced"));
     tabWidget->insertTab(2, modeConfigPage, modeConfigPage->name());
 
-    connect(modeConfigPage, SIGNAL(changed()), this, SLOT(slotChanged()));
+    observeChanges(modeConfigPage);
 
     layout->addWidget(tabWidget);
     setLayout(layout);
