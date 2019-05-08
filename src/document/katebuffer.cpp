@@ -656,6 +656,11 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                         endCursor = KTextEditor::Cursor(endCursor.line() - 1, plainLine(lines() - 1)->length());
                     }
 
+                    // Don't return a valid range without content!
+                    if (endCursor.line() - startLine == 1) {
+                        return KTextEditor::Range::invalid();
+                    }
+
                     /**
                      * return computed range
                      */

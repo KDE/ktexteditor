@@ -1312,7 +1312,8 @@ bool KTextEditor::ViewPrivate::toggleFoldingsInRange(int line)
         for (int ln = foldingRange.start().line() + 1; ln < foldingRange.end().line(); ++ln) {
             KTextEditor::Range fr = foldLine(ln);
             if (fr.isValid()) {
-                ln = fr.end().line() - 1;
+                // qMax to avoid infinite loop in case of range without content
+                ln = qMax(ln, fr.end().line() - 1);
                 actionDone = true;
             }
         }
