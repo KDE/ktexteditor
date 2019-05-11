@@ -113,7 +113,7 @@ void KateModeMenu::slotAboutToShow()
     } else {
         if (!doc->fileType().isEmpty()) {
             const KateFileType &t = KTextEditor::EditorPrivate::self()->modeManager()->fileType(doc->fileType());
-            int i = subMenusName.indexOf(t.section);
+            int i = subMenusName.indexOf(t.sectionTranslated());
             if (i >= 0 && subMenus.at(i)) {
                 QList<QAction *> actions = subMenus.at(i)->actions();
                 for (int j = 0; j < actions.count(); ++j) {

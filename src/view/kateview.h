@@ -1042,7 +1042,7 @@ private:
     KateViewEncodingAction *m_encodingAction;
 
     /**
-     * the mode selection menu, used by view + status bar
+     * the mode selection menu, used by view
      */
     KateModeMenu *m_modeAction;
 

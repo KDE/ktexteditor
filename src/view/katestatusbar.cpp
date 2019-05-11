@@ -20,7 +20,7 @@
 
 #include "katestatusbar.h"
 
-#include "katemodemenu.h"
+#include "katemodemenulist.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
 #include "katedocument.h"
@@ -188,12 +188,20 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_encoding->setWhatsThis(i18n("Encoding"));
 
     /**
+     * load the mode menu, which contains a scrollable list + search bar.
+     * This is an alternative menu to the mode action menu of the view.
+     */
+    KateModeMenuList *modeMenuList = new KateModeMenuList(i18n("Mode"), this);
+    modeMenuList->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
+    modeMenuList->updateMenu(m_view->doc());
+    /**
      * add mode button which allows user to switch mode of document
      * this will reuse the mode action menu of the view
      */
     m_mode = new StatusBarButton(this);
     topLayout->addWidget(m_mode);
-    m_mode->setMenu(m_view->modeAction()->menu());
+    modeMenuList->setButton(m_mode, false, KateModeMenuList::Inverse);
+    m_mode->setMenu(modeMenuList);
     m_mode->setWhatsThis(i18n("Syntax highlighting"));
 
     // signals for the statusbar

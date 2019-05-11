@@ -54,9 +54,9 @@ KateModeManager::~KateModeManager()
 
 bool compareKateFileType(const KateFileType *const left, const KateFileType *const right)
 {
-    int comparison = left->section.compare(right->section, Qt::CaseInsensitive);
+    int comparison = left->translatedSection.compare(right->translatedSection, Qt::CaseInsensitive);
     if (comparison == 0) {
-        comparison = left->name.compare(right->name, Qt::CaseInsensitive);
+        comparison = left->translatedName.compare(right->translatedName, Qt::CaseInsensitive);
     }
     return comparison < 0;
 }
@@ -141,8 +141,9 @@ void KateModeManager::update()
     // add the none type...
     KateFileType *t = new KateFileType();
 
-    // DO NOT TRANSLATE THIS, DONE LATER, marked by hlGenerated
+    // marked by hlGenerated
     t->name = QStringLiteral("Normal");
+    t->translatedName = i18n("Normal");
     t->hl = QStringLiteral("None");
     t->hlGenerated = true;
 

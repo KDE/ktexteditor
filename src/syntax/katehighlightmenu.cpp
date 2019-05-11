@@ -26,6 +26,7 @@
 #include "kateglobal.h"
 #include "katesyntaxmanager.h"
 #include "katepartdebug.h"
+#include <KLocalizedString>
 //END Includes
 
 KateHighlightingMenu::~KateHighlightingMenu()
@@ -50,7 +51,9 @@ void KateHighlightingMenu::slotAboutToShow()
 {
     for (const auto &hl : KateHlManager::self()->modeList()) {
         QString hlName = hl.translatedName();
-        QString hlSection = hl.section();
+        QString hlSection = hl.translatedSection();
+        if (hlName == QLatin1String("None"))
+            hlName = i18n("None");
 
         if (!hl.isHidden()) {
             if (!hlSection.isEmpty() && !names.contains(hlName)) {
