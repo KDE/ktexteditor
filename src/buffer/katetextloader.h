@@ -101,7 +101,7 @@ public:
         m_eol = TextBuffer::eolUnknown;
         m_text.clear();
         delete m_converterState;
-        m_converterState = new QTextCodec::ConverterState(QTextCodec::ConvertInvalidToNull);
+        m_converterState = new QTextCodec::ConverterState(QTextCodec::DefaultConversion);
         m_bomFound = false;
         m_firstRead = true;
 
@@ -281,17 +281,11 @@ public:
                             m_firstRead = false;
                         }
 
+                        // detect broken encoding, we did before use QTextCodec::ConvertInvalidToNull and check for 0 chars
+                        // this lead to issues with files containing 0 chars, therefore use the invalidChars field of the state
                         Q_ASSERT(m_codec);
                         QString unicode = m_codec->toUnicode(m_buffer.constData() + bomBytes, c - bomBytes, m_converterState);
-
-                        // detect broken encoding
-                        for (int i = 0; i < unicode.size(); ++i) {
-                            if (unicode.at(i).isNull()) {
-                                encodingError = true;
-                                break;
-                            }
-                        }
-
+                        encodingError = encodingError || m_converterState->invalidChars;
                         m_text.append(unicode);
                     }
 
