@@ -3013,47 +3013,42 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             ucs4Chars.append(c);
         }
 
-    QString chars = QString::fromUcs4(ucs4Chars.data(), ucs4Chars.size());
     /**
      * no printable chars => nothing to insert!
      */
+    QString chars = QString::fromUcs4(ucs4Chars.data(), ucs4Chars.size());
     if (chars.isEmpty()) {
         return false;
     }
 
-    // Check if entered closing bracket is already balanced
-    const QChar typedChar = chars.at(0);
-    const QChar openBracket = matchingStartBracket(typedChar);
-    if (!openBracket.isNull()) {
-        KTextEditor::Cursor curPos = view->cursorPosition();
-        if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123/*Which value may best?*/).isValid()) {
-            // Do nothing
-            view->cursorRight();
-            return true;
-        }
-    }
-
-    /**
-     * auto bracket handling for newly inserted text
-     * remember if we should auto add some
-     */
+    // auto bracket handling
     QChar closingBracket;
-    if (view->config()->autoBrackets() && chars.size() == 1) {
+    if (view->config()->autoBrackets()) {
+        // Check if entered closing bracket is already balanced
         const QChar typedChar = chars.at(0);
-        /**
-         * we inserted a bracket?
-         * => remember the matching closing one
-         */
-        closingBracket = matchingEndBracket(typedChar);
+        const QChar openBracket = matchingStartBracket(typedChar);
+        if (!openBracket.isNull()) {
+            KTextEditor::Cursor curPos = view->cursorPosition();
+            if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123/*Which value may best?*/).isValid()) {
+                // Do nothing
+                view->cursorRight();
+                return true;
+            }
+        }
 
-        /**
-         * closing bracket for the autobracket we inserted earlier?
-         */
-        if (m_currentAutobraceClosingChar == typedChar && m_currentAutobraceRange) {
-            // do nothing
-            m_currentAutobraceRange.reset(nullptr);
-            view->cursorRight();
-            return true;
+        // for newly inserted text: remember if we should auto add some bracket
+        if (chars.size() == 1) {
+            const QChar typedChar = chars.at(0);
+            // we inserted a bracket? => remember the matching closing one
+            closingBracket = matchingEndBracket(typedChar);
+
+            // closing bracket for the autobracket we inserted earlier?
+            if (m_currentAutobraceClosingChar == typedChar && m_currentAutobraceRange) {
+                // do nothing
+                m_currentAutobraceRange.reset(nullptr);
+                view->cursorRight();
+                return true;
+            }
         }
     }
 
