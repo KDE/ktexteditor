@@ -3038,7 +3038,6 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
 
         // for newly inserted text: remember if we should auto add some bracket
         if (chars.size() == 1) {
-            const QChar typedChar = chars.at(0);
             // we inserted a bracket? => remember the matching closing one
             closingBracket = matchingEndBracket(typedChar);
 
