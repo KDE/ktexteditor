@@ -236,9 +236,6 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     // swap file
     m_swapfile = (config()->swapFileMode() == KateDocumentConfig::DisableSwapFile) ? nullptr : new Kate::SwapFile(this);
 
-    // important, fill in the config into the indenter we use...
-    m_indenter->updateConfig();
-
     // some nice signals from the buffer
     connect(m_buffer, SIGNAL(tagLines(int,int)), this, SLOT(tagLines(int,int)));
 
@@ -306,6 +303,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
 
     connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)), this, SLOT(clearEditingPosStack()));
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
+
+    // make sure correct defaults are set (indenter, ...)
+    updateConfig();
 }
 
 //
