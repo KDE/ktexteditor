@@ -375,28 +375,28 @@ void KateAutoIndent::updateConfig()
 
 bool KateAutoIndent::changeIndent(const KTextEditor::Range &range, int change)
 {
-    QList<int> skippedLines;
+    std::vector<int> skippedLines;
 
     // loop over all lines given...
     for (int line = range.start().line() < 0 ? 0 : range.start().line();
             line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
         // don't indent empty lines
         if (doc->line(line).isEmpty()) {
-            skippedLines.append(line);
+            skippedLines.push_back(line);
             continue;
         }
         // don't indent the last line when the cursor is on the first column
         if (line == range.end().line() && range.end().column() == 0) {
-            skippedLines.append(line);
+            skippedLines.push_back(line);
             continue;
         }
 
         doIndentRelative(line, change * indentWidth);
     }
 
-    if (skippedLines.count() > range.numberOfLines()) {
+    if (static_cast<int>(skippedLines.size()) > range.numberOfLines()) {
         // all lines were empty, so indent them nevertheless
-        foreach (int line, skippedLines) {
+        for (int line : skippedLines) {
             doIndentRelative(line, change * indentWidth);
         }
     }
@@ -465,7 +465,7 @@ KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivat
 
 void KateViewIndentationAction::slotAboutToShow()
 {
-    QStringList modes = KateAutoIndent::listModes();
+    const QStringList modes = KateAutoIndent::listModes();
 
     menu()->clear();
     foreach (QAction *action, actionGroup->actions()) {
