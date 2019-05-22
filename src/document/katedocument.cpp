@@ -5151,8 +5151,10 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
 
             m_config->configStart();
 
-            // change the syntax highlighting, regardless of the value of "m_hlSetByUser"
-            if (!KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
+            // NOTE: if the user changes the Mode, the Highlighting also changes.
+            // m_hlSetByUser avoids resetting the highlight when saving the document, if
+            // the current hl isn't stored (eg, in sftp:// or fish:// files) (see bug #407763)
+            if ((user || !m_hlSetByUser) && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
                 int hl(KateHlManager::self()->nameFind(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl));
 
                 if (hl >= 0) {
