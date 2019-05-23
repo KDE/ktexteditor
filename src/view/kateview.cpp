@@ -1265,12 +1265,21 @@ KTextEditor::Range KTextEditor::ViewPrivate::foldLine(int line)
 bool KTextEditor::ViewPrivate::unfoldLine(int line)
 {
     bool actionDone = false;
+    const KTextEditor::Cursor currentCursor = cursorPosition();
 
     // ask the folding info for this line, if any folds are around!
     // auto = QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>>
     auto startingRanges = textFolding().foldingRangesStartingOnLine(line);
-    for (int i = 0; i < startingRanges.size(); ++i) {
+    for (int i = 0; i < startingRanges.size() && !actionDone; ++i) {
+        // Avoid jumping view in case of a big unfold and ensure nice highlight of folding marker
+        setCursorPosition(textFolding().foldingRange(startingRanges[i].first).start());
+
         actionDone |= textFolding().unfoldRange(startingRanges[i].first);
+    }
+
+    if (!actionDone) {
+        // Nothing unfolded? Restore old cursor position!
+        setCursorPosition(currentCursor);
     }
 
     return actionDone;
@@ -1295,6 +1304,7 @@ bool KTextEditor::ViewPrivate::toggleFoldingsInRange(int line)
     }
 
     bool actionDone = false; // Track success
+    const KTextEditor::Cursor currentCursor = cursorPosition();
 
     // Don't be too eager but obliging! Only toggle containing ranges which are
     // visible -> Be done when the range is folded
@@ -1304,6 +1314,11 @@ bool KTextEditor::ViewPrivate::toggleFoldingsInRange(int line)
         // Unfold all in range, but not the range itself
         for (int ln = foldingRange.start().line() + 1; ln < foldingRange.end().line(); ++ln) {
             actionDone |= unfoldLine(ln);
+        }
+
+        if (actionDone) {
+            // In most cases we want now a not moved cursor
+            setCursorPosition(currentCursor);
         }
     }
 
