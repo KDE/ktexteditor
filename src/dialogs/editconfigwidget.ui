@@ -42,10 +42,10 @@
       <item>
        <widget class="QCheckBox" name="chkShowStaticWordWrapMarker">
         <property name="whatsThis">
-         <string>&lt;p&gt;If this option is checked, a vertical line will be drawn at the word wrap column as defined in the &lt;strong&gt;Editing&lt;/strong&gt; properties.&lt;/p&gt;&lt;p&gt;Note that the word wrap marker is only drawn if you use a fixed pitch font.&lt;/p&gt;</string>
+         <string>&lt;p&gt;If this option is checked, a vertical line will be drawn at the word wrap column as defined in the &lt;strong&gt;Editing&lt;/strong&gt; properties.&lt;/p&gt;</string>
         </property>
         <property name="text">
-         <string>Show static word wra&amp;p marker (if applicable)</string>
+         <string>Show static word wra&amp;p marker</string>
         </property>
        </widget>
       </item>

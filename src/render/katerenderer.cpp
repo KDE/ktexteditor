@@ -897,7 +897,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 
     // show word wrap marker if desirable
-    if ((!isPrinterFriendly()) && config()->wordWrapMarker() && QFontInfo(config()->font()).fixedPitch()) {
+    if ((!isPrinterFriendly()) && config()->wordWrapMarker()) {
         const QPainter::RenderHints backupRenderHints = paint.renderHints();
         paint.setRenderHint(QPainter::Antialiasing, false);
         paint.setPen(config()->wordWrapMarkerColor());
