@@ -3288,20 +3288,28 @@ void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)
 void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
-        if (view->blockSelection() && view->selection() && toVirtualColumn(view->selectionRange().start()) == toVirtualColumn(view->selectionRange().end())) {
-            // Remove one character after selection line
-            KTextEditor::Range range = view->selectionRange();
+        KTextEditor::Range range = view->selectionRange();
+        editStart(); // Avoid bad selection in case of undo
+        if (view->blockSelection() && view->selection() && range.start().column() > 0
+            && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
+            // Remove one character before vertical selection line by expanding the selection
             range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
             view->setSelection(range);
         }
         view->removeSelectedText();
+        editEnd();
         return;
     }
 
     uint col = qMax(c.column(), 0);
     uint line = qMax(c.line(), 0);
-
     if ((col == 0) && (line == 0)) {
+        return;
+    }
+
+    const Kate::TextLine textLine = m_buffer->plainLine(line);
+    // don't forget this check!!!! really!!!!
+    if (!textLine) {
         return;
     }
 
@@ -3309,24 +3317,15 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
         bool useNextBlock = false;
         if (config()->backspaceIndents()) {
             // backspace indents: erase to next indent position
-            Kate::TextLine textLine = m_buffer->plainLine(line);
-
-            // don't forget this check!!!! really!!!!
-            if (!textLine) {
-                return;
-            }
-
             int colX = textLine->toVirtualColumn(col, config()->tabWidth());
             int pos = textLine->firstChar();
             if (pos > 0) {
                 pos = textLine->toVirtualColumn(pos, config()->tabWidth());
             }
-
             if (pos < 0 || pos >= (int)colX) {
                 // only spaces on left side of cursor
                 indent(KTextEditor::Range(line, 0, line, 0), -1);
-            }
-            else {
+            } else {
                 useNextBlock = true;
             }
         }
@@ -3348,16 +3347,10 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             // for past-end-of-line cursors in block mode
             view->setCursorPosition(beginCursor);
         }
+
     } else {
         // col == 0: wrap to previous line
-        if (line >= 1) {
-            Kate::TextLine textLine = m_buffer->plainLine(line - 1);
-
-            // don't forget this check!!!! really!!!!
-            if (!textLine) {
-                return;
-            }
-
+        if (line > 0) {
             if (config()->wordWrap() && textLine->endsWith(QLatin1String(" "))) {
                 // gg: in hard wordwrap mode, backspace must also eat the trailing space
                 removeText(KTextEditor::Range(line - 1, textLine->length() - 1, line, 0));
@@ -3366,9 +3359,10 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
             }
         }
     }
-    if ( m_currentAutobraceRange ) {
+
+    if (m_currentAutobraceRange) {
         const auto r = m_currentAutobraceRange->toRange();
-        if ( r.columnWidth() == 1 && view->cursorPosition() == r.start() ) {
+        if (r.columnWidth() == 1 && view->cursorPosition() == r.start()) {
             // start parenthesis removed and range length is 1, remove end as well
             del(view, view->cursorPosition());
             m_currentAutobraceRange.clear();
@@ -3379,19 +3373,20 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
 void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &c)
 {
     if (!view->config()->persistentSelection() && view->selection()) {
-        if (view->blockSelection() && view->selection() && toVirtualColumn(view->selectionRange().start()) == toVirtualColumn(view->selectionRange().end())) {
-            // Remove one character after selection line
-            KTextEditor::Range range = view->selectionRange();
+        KTextEditor::Range range = view->selectionRange();
+        editStart(); // Avoid bad selection in case of undo
+        if (view->blockSelection() && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
+            // Remove one character after vertical selection line by expanding the selection
             range.setEnd(KTextEditor::Cursor(range.end().line(), range.end().column() + 1));
             view->setSelection(range);
         }
         view->removeSelectedText();
+        editEnd();
         return;
     }
 
     if (c.column() < (int) m_buffer->plainLine(c.line())->length()) {
         KTextEditor::Cursor endCursor(c.line(), view->textLayout(c)->nextCursorPosition(c.column()));
-
         removeText(KTextEditor::Range(c, endCursor));
     } else if (c.line() < lastLine()) {
         removeText(KTextEditor::Range(c.line(), c.column(), c.line() + 1, 0));
