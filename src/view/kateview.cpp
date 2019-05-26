@@ -678,6 +678,13 @@ void KTextEditor::ViewPrivate::setupActions()
     a->setWhatsThis(i18n("This decreases the display font size."));
     connect(a, SIGNAL(triggered(bool)), m_viewInternal, SLOT(slotDecFontSizes()));
 
+    a = ac->addAction(QStringLiteral("view_reset_font_sizes"));
+    a->setIcon(QIcon::fromTheme(QStringLiteral("zoom-original")));
+    a->setText(i18n("Reset Font Size"));
+    ac->setDefaultShortcuts(a, KStandardShortcut::shortcut(KStandardShortcut::ActualSize));
+    a->setWhatsThis(i18n("This resets the display font size."));
+    connect(a, SIGNAL(triggered(bool)), m_viewInternal, SLOT(slotResetFontSizes()));
+
     a = m_toggleBlockSelection = new KToggleAction(i18n("Bl&ock Selection Mode"), this);
     ac->addAction(QStringLiteral("set_verticalSelect"), a);
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_B));

@@ -401,6 +401,11 @@ void KateViewInternal::slotDecFontSizes(qreal step)
     renderer()->decreaseFontSizes(step);
 }
 
+void KateViewInternal::slotResetFontSizes()
+{
+    renderer()->resetFontSizes();
+}
+
 /**
  * Line is the real line number to scroll to.
  */

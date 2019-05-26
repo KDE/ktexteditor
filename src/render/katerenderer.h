@@ -248,6 +248,7 @@ public:
      */
     void increaseFontSizes(qreal step = 1.0);
     void decreaseFontSizes(qreal step = 1.0);
+    void resetFontSizes();
     const QFont &currentFont() const;
     const QFontMetricsF &currentFontMetrics() const;
 

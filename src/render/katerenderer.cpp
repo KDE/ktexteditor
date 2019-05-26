@@ -159,6 +159,12 @@ void KateRenderer::increaseFontSizes(qreal step)
     config()->setFont(f);
 }
 
+void KateRenderer::resetFontSizes()
+{
+    QFont f(KateRendererConfig::global()->font());
+    config()->setFont(f);
+}
+
 void KateRenderer::decreaseFontSizes(qreal step)
 {
     QFont f(config()->font());

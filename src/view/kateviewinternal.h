@@ -155,6 +155,7 @@ public:
 public Q_SLOTS:
     void slotIncFontSizes(qreal step = 1.0);
     void slotDecFontSizes(qreal step = 1.0);
+    void slotResetFontSizes();
 
     void paintCursor();
 
