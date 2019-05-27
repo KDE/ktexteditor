@@ -1131,8 +1131,6 @@ public Q_SLOTS:
 public:
     bool queryClose() override;
 
-    static bool checkOverwrite(QUrl u, QWidget *parent);
-
     /**
      * Configuration
      */
