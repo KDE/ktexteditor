@@ -3350,7 +3350,9 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
 
     } else {
         // col == 0: wrap to previous line
-        if (line > 0) {
+        const Kate::TextLine textLine = m_buffer->plainLine(line - 1);
+
+        if (line > 0 && textLine) {
             if (config()->wordWrap() && textLine->endsWith(QLatin1String(" "))) {
                 // gg: in hard wordwrap mode, backspace must also eat the trailing space
                 removeText(KTextEditor::Range(line - 1, textLine->length() - 1, line, 0));
