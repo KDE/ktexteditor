@@ -1,4 +1,4 @@
-/*  This file is part of the KDE libraries and the Kate part.
+/*  This file is part of the KDE libraries and the KTextEditor project.
  *
  *  Copyright (C) 2019 Nibaldo González S. <nibgonz@gmail.com>
  *
@@ -32,6 +32,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QFrame>
+#include <QAbstractItemView>
+#include <QApplication>
 //END Includes
 
 
@@ -53,13 +55,14 @@ static bool isDelimiter(const ushort c)
 
 void KateModeMenuList::init(const SearchBarPosition searchBarPos)
 {
+    m_list = new KateModeMenuListData::ListView(this);
+    m_searchBar = new KateModeMenuListData::SearchLine(this);
+
     /*
      * Load list widget, scroll bar and items.
      */
-    m_list = new ModeListWidget(this);
     m_scroll = new QScrollBar(Qt::Vertical, this);
     m_list->setVerticalScrollBar(m_scroll);
-
     // The vertical scroll bar will be added in another layout
     m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -68,7 +71,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     // Initial size of the list widget, this can be modified later
     m_list->setSizeList(428);
 
-    loadHighlightingList();
+    loadHighlightingModel(); // Data model (items)
 
     // Add scroll bar and set margin
     QHBoxLayout *layoutScrollBar = new QHBoxLayout();
@@ -78,9 +81,9 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     /*
      * Search bar widget.
      */
-    m_searchBar = new ModeLineEdit(this, m_list);
-    m_searchBar->setCaseSensitivity(Qt::CaseInsensitive);
     m_searchBar->setPlaceholderText(i18nc("Placeholder in search bar", "Search..."));
+    m_searchBar->setToolTip(i18nc("ToolTip of the search bar of modes of syntax highlighting", "Search for syntax highlighting modes by language name or file extension (for example, C++ or .cpp)"));
+    m_searchBar->setMaxLength(200);
 
     m_list->setFocusProxy(m_searchBar);
 
@@ -92,7 +95,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     m_layoutList = new QGridLayout();
     QHBoxLayout *layoutSearchBar = new QHBoxLayout();
 
-    // Ooverlap scroll bar above the list widget
+    // Overlap scroll bar above the list widget
     m_layoutList->addWidget(m_list, 0, 0, Qt::AlignLeft);
     m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
 
@@ -109,19 +112,20 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
 
     QWidgetAction *widAct = new QWidgetAction(this);
     widAct->setDefaultWidget(container);
-    this->addAction(widAct);
+    addAction(widAct);
 
     // Detect selected item with one click.
     // This also applies to double-clicks.
-    connect(m_list, &KateModeMenuList::ModeListWidget::itemClicked,
+    connect(m_list, &KateModeMenuListData::ListView::clicked,
             this, &KateModeMenuList::selectHighlighting);
-
-    return;
 }
 
 
-void KateModeMenuList::loadHighlightingList()
+void KateModeMenuList::loadHighlightingModel()
 {
+    m_model = new QStandardItemModel(0, 0);
+    m_list->setModel(m_model);
+
     QString *prevHlSection = nullptr;
     /*
      * The width of the text container in the item, in pixels. This is used to make
@@ -146,21 +150,21 @@ void KateModeMenuList::loadHighlightingList()
             /*
              * Add a separator to the list.
              */
-            ModeListWidgetItem *separator = new ModeListWidgetItem();
+            KateModeMenuListData::ListItem *separator = new KateModeMenuListData::ListItem();
             separator->setFlags(Qt::NoItemFlags);
-            separator->setSizeHint(QSize(separator->sizeHint().width() - 4, 4));
+            separator->setSizeHint(QSize(separator->sizeHint().width() - 2, 4));
             separator->setBackground(QBrush(transparent));
 
             QFrame *line = new QFrame();
             line->setFrameStyle(QFrame::HLine);
 
-            m_list->addItem(separator);
-            m_list->setItemWidget(separator, line);
+            m_model->appendRow(separator);
+            m_list->setIndexWidget( m_model->index(separator->row(), 0), line );
 
             /*
              * Add the section name to the list.
              */
-            ModeListWidgetItem *section = new ModeListWidgetItem();
+            KateModeMenuListData::ListItem *section = new KateModeMenuListData::ListItem();
             section->setFlags(Qt::NoItemFlags);
 
             QLabel *label = new QLabel(hl->sectionTranslated());
@@ -177,24 +181,29 @@ void KateModeMenuList::loadHighlightingList()
             label->setFont(font);
 
             section->setBackground(QBrush(transparent));
-            m_list->addItem(section);
-            m_list->setItemWidget(section, label);
 
-            m_list->addItem(section);
+            m_model->appendRow(section);
+            m_list->setIndexWidget( m_model->index(section->row(), 0), label );
         }
         prevHlSection = hl->translatedSection.isNull() ? nullptr : &hl->translatedSection;
 
         /*
          * Create item in the list with the language name.
          */
-        ModeListWidgetItem *item = new ModeListWidgetItem();
+        KateModeMenuListData::ListItem *item = new KateModeMenuListData::ListItem();
         item->setText(setWordWrap( hl->nameTranslated(), maxWidthText, m_list->fontMetrics() ));
         item->setMode(hl);
-        //item->generateSearchName( item->getMode()->translatedName.isEmpty() ? &item->getMode()->name : &item->getMode()->translatedName );
+        // NOTE: Search names generated in: KateModeMenuListData::SearchLine::updateSearch()
+        // item->generateSearchName( hl->translatedName.isEmpty() ? &hl->name : &hl->translatedName );
 
-        m_list->addDefaultItem(item);
+        // Set empty icon
+        QPixmap emptyIcon(m_iconSize, m_iconSize);
+        emptyIcon.fill(Qt::transparent);
+        item->setIcon(QIcon(emptyIcon));
+        item->setEditable(false);
+        // Add item
+        m_model->appendRow(item);
     }
-    return;
 }
 
 
@@ -214,7 +223,24 @@ void KateModeMenuList::setButton(QPushButton* button, const bool bAutoUpdateText
 
     m_pushButton = button;
     m_bAutoUpdateTextButton = bAutoUpdateTextButton;
-    return;
+}
+
+
+void KateModeMenuList::setSizeList(const int height, const int width)
+{
+    m_list->setSizeList(height, width);
+}
+
+
+void KateModeMenuList::autoScroll()
+{
+    if (m_autoScroll == ScrollToSelectedItem) {
+        m_list->setCurrentItem(m_selectedItem->row());
+        m_list->scrollToItem(m_selectedItem->row(), QAbstractItemView::PositionAtCenter);
+    } else {
+        m_list->setCurrentItem(0);
+        m_list->scrollToTop();
+    }
 }
 
 
@@ -222,6 +248,7 @@ void KateModeMenuList::showEvent(QShowEvent* event)
 {
     Q_UNUSED(event);
 
+    // TODO: Put the menu in the center of the window if the status bar is hidden.
     // Set the menu position
     if (m_pushButton && m_pushButton->isVisible()) {
         if (m_position == Right) {
@@ -242,10 +269,6 @@ void KateModeMenuList::showEvent(QShowEvent* event)
         }
     }
 
-    /* TODO: Add keyboard shortcut to show the menu. Put the menu
-     *       in the center of the window if the status bar is hidden.
-     */
-
     // Select text from the search bar
     if (!m_searchBar->text().isEmpty()) {
         if (m_searchBar->text().simplified().isEmpty()) {
@@ -259,30 +282,18 @@ void KateModeMenuList::showEvent(QShowEvent* event)
     m_list->setFocus(Qt::ActiveWindowFocusReason);
 
     KTextEditor::DocumentPrivate *doc = m_doc;
+    if (!doc) {
+        return;
+    }
 
-    // First show
-    if (!m_selectedItem) {
-        /*
-         * Generate search names in items.
-         * This could be in "loadHighlightingList()".
-         */
-        for (int i = 0; i < m_list->count(); ++i) {
-            ModeListWidgetItem *item = static_cast<ModeListWidgetItem *>(m_list->item(i));
-            if (item->hasMode() && !item->getSearchName()) {
-                item->generateSearchName( item->getMode()->translatedName.isEmpty() ? &item->getMode()->name : &item->getMode()->translatedName );
-            }
-        }
-        if (doc) {
-            selectHighlightingFromExternal(doc->fileType());
-        }
-    } else if ( doc && m_selectedItem->hasMode() && m_selectedItem->getMode()->name != doc->fileType() ) {
+    // First show or if an external changed the current syntax highlighting.
+    if (!m_selectedItem || ( m_selectedItem->hasMode() && m_selectedItem->getMode()->name != doc->fileType() )) {
         selectHighlightingFromExternal(doc->fileType());
     }
-    return;
 }
 
 
-void KateModeMenuList::updateSelectedItem(ModeListWidgetItem *item)
+void KateModeMenuList::updateSelectedItem(KateModeMenuListData::ListItem *item)
 {
     // Change the previously selected item to empty icon
     if (m_selectedItem) {
@@ -294,25 +305,23 @@ void KateModeMenuList::updateSelectedItem(ModeListWidgetItem *item)
     // Update the selected item
     item->setIcon(m_checkIcon);
     m_selectedItem = item;
-    m_list->setCurrentItem(item, QItemSelectionModel::ClearAndSelect);
+    m_list->setCurrentItem(item->row());
 
     // Change text of the trigger button
     if (m_bAutoUpdateTextButton && m_pushButton && item->hasMode()) {
         m_pushButton->setText(item->getMode()->nameTranslated());
     }
-    return;
 }
 
 
-void KateModeMenuList::selectHighlightingSetVisibility(QListWidgetItem *pItem, const bool bHideMenu)
+void KateModeMenuList::selectHighlightingSetVisibility(QStandardItem *pItem, const bool bHideMenu)
 {
-    ModeListWidgetItem *item = static_cast<ModeListWidgetItem *>(pItem);
+    KateModeMenuListData::ListItem *item = static_cast<KateModeMenuListData::ListItem *>(pItem);
 
     updateSelectedItem(item);
 
-    // Hide menu
     if (bHideMenu) {
-        this->hide();
+        hide();
     }
 
     // Apply syntax highlighting
@@ -320,23 +329,21 @@ void KateModeMenuList::selectHighlightingSetVisibility(QListWidgetItem *pItem, c
     if (doc && item->hasMode()) {
         doc->updateFileType(item->getMode()->name, true);
     }
-    return;
 }
 
 
-void KateModeMenuList::selectHighlighting(QListWidgetItem *pItem)
+void KateModeMenuList::selectHighlighting(const QModelIndex &index)
 {
-    selectHighlightingSetVisibility(pItem, true);
-    return;
+    selectHighlightingSetVisibility(m_model->item(index.row(), 0), true);
 }
 
 
 void KateModeMenuList::selectHighlightingFromExternal(const QString &nameMode)
 {
-    for (int i = 0; i < m_list->count(); ++i) {
-        ModeListWidgetItem *item = static_cast<ModeListWidgetItem *>( m_list->item(i) );
+    for (int i = 0; i < m_model->rowCount(); ++i) {
+        KateModeMenuListData::ListItem *item = static_cast<KateModeMenuListData::ListItem *>( m_model->item(i, 0) );
 
-        if (!item->hasMode() || m_list->item(i)->text().isEmpty()) {
+        if (!item->hasMode() || m_model->item(i, 0)->text().isEmpty()) {
             continue;
         }
         if (item->getMode()->name == nameMode || ( nameMode.isEmpty() && item->getMode()->name == QLatin1String("Normal") )) {
@@ -349,15 +356,18 @@ void KateModeMenuList::selectHighlightingFromExternal(const QString &nameMode)
                     m_emptyListMsg->hide();
                 }
 
-                // NOTE: This calls updateSearch(), it's scrolled to the selected item
+                // NOTE: This calls updateSearch(), it's scrolled to the selected item or the first item.
                 m_searchBar->clear();
+            } else if (m_autoScroll == ScrollToSelectedItem) {
+                m_list->scrollToItem(i);
             } else {
-                m_list->scrollToItem(item, QAbstractItemView::PositionAtCenter);
+                // autoScroll()
+                m_list->setCurrentItem(0);
+                m_list->scrollToTop();
             }
             return;
         }
     }
-    return;
 }
 
 
@@ -367,7 +377,6 @@ void KateModeMenuList::selectHighlightingFromExternal()
     if (doc) {
         selectHighlightingFromExternal(doc->fileType());
     }
-    return;
 }
 
 
@@ -382,7 +391,6 @@ void KateModeMenuList::loadEmptyMsg()
 
     m_emptyListMsg->setAlignment(Qt::AlignCenter);
     m_layoutList->addWidget(m_emptyListMsg, 0, 0, Qt::AlignCenter);
-    return;
 }
 
 
@@ -439,56 +447,154 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
 }
 
 
-void KateModeMenuList::ModeListWidget::addDefaultItem(QListWidgetItem *item)
+void KateModeMenuListData::ListView::setSizeList(const int height, const int width)
 {
-    // Set empty icon
-    QPixmap emptyIcon(m_parentMenu->m_iconSize, m_parentMenu->m_iconSize);
-    emptyIcon.fill(Qt::transparent);
-    item->setIcon(QIcon(emptyIcon));
-    // Add item
-    this->addItem(item);
-    return;
+    setMinimumWidth(width);
+    setMaximumWidth(width);
+    setMinimumHeight(height);
+    setMaximumHeight(height);
 }
 
 
-void KateModeMenuList::ModeListWidget::setSizeList(const int height, const int width)
+bool KateModeMenuListData::ListItem::generateSearchName(const QString *itemName)
 {
-    this->setMinimumWidth(width);
-    this->setMaximumWidth(width);
-    this->setMinimumHeight(height);
-    this->setMaximumHeight(height);
-    return;
+    QString searchName = QString(*itemName);
+    bool bNewName = false;
+
+    // Replace word delimiters with spaces
+    for (int i = searchName.length() - 1; i >= 0; --i) {
+        if (isDelimiter( searchName[i].unicode() )) {
+            searchName.replace(i, 1, QLatin1Char(' '));
+            if (!bNewName) {
+                bNewName = true;
+            }
+        }
+        // Avoid duplicate delimiters/spaces
+        if (bNewName && i < searchName.length() - 1 && searchName[i].isSpace() && searchName[i + 1].isSpace()) {
+            searchName.remove(i + 1, 1);
+        }
+    }
+
+    if (bNewName) {
+        if (searchName[searchName.length() - 1].isSpace()) {
+            searchName.remove(searchName.length() - 1, 1);
+        }
+        if (searchName[0].isSpace()) {
+            searchName.remove(0, 1);
+        }
+        m_searchName = new QString(searchName);
+        return true;
+    } else {
+        m_searchName = itemName;
+    }
+    return false;
 }
 
 
-void KateModeMenuList::ModeListWidget::keyPressEvent(QKeyEvent *event)
+bool KateModeMenuListData::ListItem::matchExtension(const QString &text) const
 {
-    // Ctrl/Alt/Shift/Meta + Return selects an item, but without hiding the menu
+    if (!hasMode() || m_type->wildcards.count() == 0) {
+        return false;
+    }
+
+    /*
+     * Only file extensions and full names are matched. Files like "Kconfig*"
+     * aren't considered. It's also assumed that "text" doesn't contain '*'.
+     */
+    for (const auto &ext : m_type->wildcards) {
+        // File extension
+        if (ext.startsWith(QLatin1String("*."))) {
+            if (text.length() == ext.length() - 2 && text.compare(ext.mid(2), Qt::CaseInsensitive) == 0) {
+                return true;
+            }
+        } else if (text.length() != ext.length() || ext.endsWith(QLatin1Char('*'))) {
+            continue;
+        // Full name
+        } else if (text.compare(&ext, Qt::CaseInsensitive) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+void KateModeMenuListData::ListView::keyPressEvent(QKeyEvent *event)
+{
+    // Ctrl/Alt/Shift/Meta + Return/Enter selects an item, but without hiding the menu
     if (( event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return ) &&
         ( event->modifiers().testFlag(Qt::ControlModifier) || event->modifiers().testFlag(Qt::AltModifier) ||
           event->modifiers().testFlag(Qt::ShiftModifier) || event->modifiers().testFlag(Qt::MetaModifier) )) {
-        m_parentMenu->selectHighlightingSetVisibility(currentItem(), false);
+        m_parentMenu->selectHighlightingSetVisibility(m_parentMenu->m_list->currentItem(), false);
     }
     // Return/Enter selects an item and hide the menu
     else if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
-        m_parentMenu->selectHighlightingSetVisibility(currentItem(), true);
+        m_parentMenu->selectHighlightingSetVisibility(m_parentMenu->m_list->currentItem(), true);
     } else {
-        QListWidget::keyPressEvent(event);
+        QListView::keyPressEvent(event);
     }
-    return;
 }
 
 
-void KateModeMenuList::ModeLineEdit::clear()
+void KateModeMenuListData::SearchLine::keyPressEvent(QKeyEvent *event)
 {
-    m_bSearchStateClear = false;
-    m_bSearchStateAutoScroll = ( text().trimmed().isEmpty() ) ? false : true;
-    KListWidgetSearchLine::clear();
-    return;
+    if (m_parentMenu->m_list &&
+        ( event->matches(QKeySequence::MoveToNextLine) || event->matches(QKeySequence::SelectNextLine) ||
+          event->matches(QKeySequence::MoveToPreviousLine) || event->matches(QKeySequence::SelectPreviousLine) ||
+          event->matches(QKeySequence::MoveToNextPage) || event->matches(QKeySequence::SelectNextPage) ||
+          event->matches(QKeySequence::MoveToPreviousPage) || event->matches(QKeySequence::SelectPreviousPage) ||
+          event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter )) {
+        QApplication::sendEvent(m_parentMenu->m_list, event);
+    } else {
+        QLineEdit::keyPressEvent(event);
+    }
 }
 
 
-inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
+void KateModeMenuListData::SearchLine::init()
+{
+    connect(this, &KateModeMenuListData::SearchLine::textChanged,
+            this, &KateModeMenuListData::SearchLine::_k_queueSearch);
+
+    setEnabled(true);
+    setClearButtonEnabled(true);
+}
+
+
+void KateModeMenuListData::SearchLine::clear()
+{
+    m_queuedSearches = 0;
+    m_bSearchStateAutoScroll = (text().trimmed().isEmpty()) ? false : true;
+    // NOTE: This calls "SearchLine::_k_queueSearch()" with an empty string.
+    // The search clearing should be done without delays.
+    QLineEdit::clear();
+}
+
+
+void KateModeMenuListData::SearchLine::_k_queueSearch(const QString &s)
+{
+    m_queuedSearches++;
+    m_search = s;
+
+    if (m_search.isEmpty()) {
+        _k_activateSearch(); // Clear search without delay
+    } else {
+        QTimer::singleShot(m_searchDelay, this, &KateModeMenuListData::SearchLine::_k_activateSearch);
+    }
+}
+
+
+void KateModeMenuListData::SearchLine::_k_activateSearch()
+{
+    m_queuedSearches--;
+
+    if (m_queuedSearches <= 0) {
+        updateSearch(m_search);
+        m_queuedSearches = 0;
+    }
+}
+
+
+void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
 {
     if (m_parentMenu->m_emptyListMsg) {
         m_parentMenu->m_emptyListMsg->hide();
@@ -497,31 +603,26 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
         m_parentMenu->m_scroll->show();
     }
 
-    KateModeMenuList::ModeListWidget *listWidget = m_parentMenu->m_list;
+    KateModeMenuListData::ListView *listView = m_parentMenu->m_list;
+    QStandardItemModel *listModel = m_parentMenu->m_model;
 
     const QString searchText = (s.isNull() ? text() : s).simplified();
 
     /*
      * Empty search bar.
-     * Show all items and scroll to the selected item.
+     * Show all items and scroll to the selected item or to the first item.
      */
     if ( searchText.isEmpty() || (searchText.size() == 1 && searchText[0].isSpace()) ) {
-        // This indicates that the search has already been cleared by clear() and
-        // that all the items are already visible. Also see: KListWidgetSearchLine::clear()
-        if (m_bSearchStateClear) {
-            for (int i = 0; i < listWidget->count(); ++i) {
-                if (listWidget->item(i)->isHidden()) {
-                    listWidget->item(i)->setHidden(false);
-                }
+        for (int i = 0; i < listModel->rowCount(); ++i) {
+            if (listView->isRowHidden(i)) {
+                listView->setRowHidden(i, false);
             }
         }
 
         // Don't auto-scroll if the search is already clear
         if (m_bSearchStateAutoScroll) {
-            listWidget->setCurrentItem(m_parentMenu->m_selectedItem);
-            listWidget->scrollToItem(m_parentMenu->m_selectedItem, QAbstractItemView::PositionAtCenter);
+            m_parentMenu->autoScroll();
         }
-        m_bSearchStateClear = true;
         m_bSearchStateAutoScroll = false;
         return;
     }
@@ -573,31 +674,39 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
      * Don't search in extensions if it contains the '*' character.
      */
     else {
-        for (const auto &cc : searchText) {
-            const ushort c = cc.unicode();
-            if (c == 42) {
+        QString::const_iterator srcText = searchText.constBegin();
+        QString::const_iterator endText = searchText.constEnd();
+
+        for (int it = 0; it < searchText.length() / 2 + searchText.length() % 2; ++it) {
+            --endText;
+            const ushort ucsrc = srcText->unicode();
+            const ushort ucend = endText->unicode();
+
+            // If searchText contains "*"
+            if (ucsrc == 42 || ucend == 42) {
                 bSearchExtensions = false;
                 bExactMatch = true;
                 break;
             }
-            if (!bExactMatch && isDelimiter(c)) {
+            if (!bExactMatch && ( isDelimiter(ucsrc) || (ucsrc != ucend && isDelimiter(ucend)) )) {
                 bExactMatch = true;
             }
+            ++srcText;
         }
     }
 
     /*
      * Filter items.
      */
-    for (int i = 0; i < listWidget->count(); ++i) {
-        QString itemName = listWidget->item(i)->text();
+    for (int i = 0; i < listModel->rowCount(); ++i) {
+        QString itemName = listModel->item(i, 0)->text();
 
         /*
          * Hide/show the name of the section. If the text of the item
          * is empty, then it corresponds to the name of the section.
          */
         if (itemName.isEmpty()) {
-            listWidget->item(i)->setHidden(false);
+            listView->setRowHidden(i, false);
 
             if (bSectionSeparator) {
                 bSectionName = true;
@@ -610,8 +719,8 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
              * (and the separator) if this section has no items.
              */
             if (bSectionName && bEmptySection && lastSection > 0) {
-                listWidget->item(lastSection)->setHidden(true);
-                listWidget->item(lastSection - 1)->setHidden(true);
+                listView->setRowHidden(lastSection, true);
+                listView->setRowHidden(lastSection - 1, true);
             }
 
             // Find the section name
@@ -627,36 +736,44 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
         /*
          * Start filtering items.
          */
-        ModeListWidgetItem *item = static_cast<ModeListWidgetItem *>(listWidget->item(i));
+        KateModeMenuListData::ListItem *item = static_cast<KateModeMenuListData::ListItem *>( listModel->item(i, 0) );
+
+        if (!item->hasMode()) {
+            listView->setRowHidden(i, true);
+            continue;
+        }
+        if (!item->getSearchName()) {
+            item->generateSearchName( item->getMode()->translatedName.isEmpty() ? &item->getMode()->name : &item->getMode()->translatedName );
+        }
 
         // Only a character is written in the search bar
         if (searchText.length() == 1) {
             if (bIsAlphaOrPointExt) {
                 // CASE 1: All the items that start with that character will be displayed.
-                if (item->getSearchName()->startsWith(searchText, Qt::CaseInsensitive) ) {
+                if (item->getSearchName()->startsWith(searchText, m_caseSensitivity) ) {
                     setSearchResult(i, bEmptySection, lastSection, lastItem);
                     continue;
                 }
 
                 // CASE 2: Matches considering delimiters. For example, when writing "c",
                 //         "Objective-C" will be displayed in the results, but not "Yacc/Bison".
-                if (QString( QLatin1Char(' ') + *(item->getSearchName()) + QLatin1Char(' ') ).contains( QLatin1Char(' ') + searchText + QLatin1Char(' '), Qt::CaseInsensitive )) {
+                if (QString( QLatin1Char(' ') + *(item->getSearchName()) + QLatin1Char(' ') ).contains( QLatin1Char(' ') + searchText + QLatin1Char(' '), m_caseSensitivity )) {
                     setSearchResult(i, bEmptySection, lastSection, lastItem);
                     continue;
                 }
             }
             // CASE 3: The character isn't a letter or number, do an exact search.
-            else if ( item->getMode()->nameTranslated().contains(searchText[0], Qt::CaseInsensitive) ) {
+            else if ( item->getMode()->nameTranslated().contains(searchText[0], m_caseSensitivity) ) {
                 setSearchResult(i, bEmptySection, lastSection, lastItem);
                 continue;
             }
         }
         // CASE 4: Search text, using the search name or the normal name.
-        else if (!bExactMatch && item->getSearchName()->contains(searchText, Qt::CaseInsensitive)) {
+        else if (!bExactMatch && item->getSearchName()->contains(searchText, m_caseSensitivity)) {
             setSearchResult(i, bEmptySection, lastSection, lastItem);
             continue;
         }
-        else if (bExactMatch && item->getMode()->nameTranslated().contains(searchText, Qt::CaseInsensitive)) {
+        else if (bExactMatch && item->getMode()->nameTranslated().contains(searchText, m_caseSensitivity)) {
             setSearchResult(i, bEmptySection, lastSection, lastItem);
             continue;
         }
@@ -674,16 +791,16 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
         }
 
         // Item not found, hide
-        listWidget->item(i)->setHidden(true);
+        listView->setRowHidden(i, true);
     }
 
     // Remove last section name, if it's empty.
-    if ( bEmptySection && lastSection > 0 && !listWidget->item( listWidget->count() - 1 )->text().isEmpty() ) {
-        listWidget->item(lastSection)->setHidden(true);
-        listWidget->item(lastSection - 1)->setHidden(true);
+    if ( bEmptySection && lastSection > 0 && !listModel->item( listModel->rowCount() - 1, 0 )->text().isEmpty() ) {
+        listView->setRowHidden(lastSection, true);
+        listView->setRowHidden(lastSection - 1, true);
     }
 
-    listWidget->scrollToTop();
+    listView->scrollToTop();
 
     // Show message of empty list
     if (lastItem == -1) {
@@ -694,17 +811,15 @@ inline void KateModeMenuList::ModeLineEdit::updateSearch(const QString &s)
         m_parentMenu->m_emptyListMsg->show();
     }
     // Hide scroll bar if it isn't necessary
-    else if ( listWidget->visualItemRect( listWidget->item(lastItem) ).bottom() <= listWidget->geometry().height() ) {
+    else if ( listView->visualRect( listModel->index(lastItem, 0) ).bottom() <= listView->geometry().height() ) {
         m_parentMenu->m_scroll->hide();
     }
 
-    m_bSearchStateClear = true;
     m_bSearchStateAutoScroll = true;
-    return;
 }
 
 
-void KateModeMenuList::ModeLineEdit::setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &lastItem)
+void KateModeMenuListData::SearchLine::setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &lastItem)
 {
     if (lastItem == -1) {
         /*
@@ -712,13 +827,13 @@ void KateModeMenuList::ModeLineEdit::setSearchResult(const int rowItem, bool &bE
          * This allows you to scroll through the list using
          * the Up/Down keys after entering a search.
          */
-        m_parentMenu->m_list->setCurrentItem( m_parentMenu->m_list->item(rowItem) );
+        m_parentMenu->m_list->setCurrentItem(rowItem);
         /*
          * This avoids showing the separator line in the name
          * of the first section, in the search results.
          */
         if (lastSection > 0) {
-            m_parentMenu->m_list->item(lastSection - 1)->setHidden(true);
+            m_parentMenu->m_list->setRowHidden(lastSection - 1, true);
         }
     }
     if (bEmptySection) {
@@ -726,72 +841,9 @@ void KateModeMenuList::ModeLineEdit::setSearchResult(const int rowItem, bool &bE
     }
 
     lastItem = rowItem;
-    if ( m_parentMenu->m_list->item(rowItem)->isHidden() ) {
-        m_parentMenu->m_list->item(rowItem)->setHidden(false);
+    if ( m_parentMenu->m_list->isRowHidden(rowItem) ) {
+        m_parentMenu->m_list->setRowHidden(rowItem, false);
     }
-    return;
-}
-
-
-bool KateModeMenuList::ModeListWidgetItem::generateSearchName(const QString *itemName)
-{
-    QString searchName = QString(*itemName);
-    bool bNewName = false;
-
-    // Replace word delimiters with spaces
-    for (int i = searchName.length() - 1; i >= 0; --i) {
-        if (isDelimiter( searchName[i].unicode() )) {
-            searchName.replace(i, 1, QLatin1Char(' '));
-            if (!bNewName) {
-                bNewName = true;
-            }
-        }
-        // Avoid duplicate delimiters/spaces
-        if (bNewName && i < searchName.length() - 1 && searchName[i].isSpace() && searchName[i + 1].isSpace()) {
-            searchName.remove(i + 1, 1);
-        }
-    }
-
-    if (bNewName) {
-        if (searchName[searchName.length() - 1].isSpace()) {
-            searchName.remove(searchName.length() - 1, 1);
-        }
-        if (searchName[0].isSpace()) {
-            searchName.remove(0, 1);
-        }
-        m_searchName = new QString(searchName);
-        return true;
-    } else {
-        m_searchName = itemName;
-    }
-    return false;
-}
-
-
-bool KateModeMenuList::ModeListWidgetItem::matchExtension(const QString &text)
-{
-    if (!hasMode() || m_type->wildcards.count() == 0) {
-        return false;
-    }
-
-    /*
-     * Only file extensions and full names are matched. Files like "Kconfig*"
-     * aren't considered. It's also assumed that "text" doesn't contain '*'.
-     */
-    for (auto &ext : m_type->wildcards) {
-        // File extension
-        if (ext.startsWith(QLatin1String("*."))) {
-            if (text.length() == ext.length() - 2 && text.compare(ext.mid(2), Qt::CaseInsensitive) == 0) {
-                return true;
-            }
-        } else if (text.length() != ext.length() || ext.endsWith(QLatin1Char('*'))) {
-            continue;
-        // Full name
-        } else if (text.compare(&ext, Qt::CaseInsensitive) == 0) {
-            return true;
-        }
-    }
-    return false;
 }
 
 

@@ -1,4 +1,4 @@
-/*  This file is part of the KDE libraries and the Kate part.
+/*  This file is part of the KDE libraries and the KTextEditor project.
  *
  *  Copyright (C) 2019 Nibaldo González S. <nibgonz@gmail.com>
  *
@@ -16,26 +16,38 @@
  *  along with this library; see the file COPYING.LIB.  If not, write to
  *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  *  Boston, MA 02110-1301, USA.
+ *
+ * ---------------------------------------------------------------------
+ *  NOTE: The KateModeMenuListData::SearchLine class is based on
+ *  KListWidgetSearchLine, by Scott Wheeler <wheeler@kde.org> and
+ *  Gustavo Sverzut Barbieri <gsbarbieri@users.sourceforge.net>.
+ *  See: https://api.kde.org/frameworks/kitemviews/html/classKListWidgetSearchLine.html
+ *
+ *  TODO: Add keyboard shortcut to show the menu. Put the menu in
+ *  the center of the window if the status bar is hidden.
+ *  See: KateModeMenuList::showEvent()
  */
 
 #ifndef KATEMODEMENULIST_H
 #define KATEMODEMENULIST_H
 
 #include <QMenu>
-#include <QPushButton>
-#include <QListWidget>
+#include <QListView>
+#include <QStandardItemModel>
+#include <QLineEdit>
 #include <QScrollBar>
+#include <QPushButton>
 #include <QGridLayout>
 #include <QString>
 #include <QLabel>
 #include <QIcon>
 #include <QKeyEvent>
 
-#include <KListWidgetSearchLine>
-
 #include "katemodemanager.h"
 
 namespace KTextEditor { class DocumentPrivate; }
+
+namespace KateModeMenuListData { class ListView; class ListItem; class SearchLine; }
 
 /**
  * Class of menu to select the
@@ -55,8 +67,8 @@ public:
      * Alignment with respect to the trigger button.
      * "Default" is the normal alignment (left alignment in Left-to-right layouts).
      * "Inverse" uses right alignment in Left-to-right layouts and left
-     *  alignment in Right-to-left layouts (used in some languages).
-     * "Left" or "Right" forces the alignment.
+     * alignment in Right-to-left layouts (used in some languages).
+     * "Left" and "Right" forces the alignment.
      * @see setButton(), QWidget::layoutDirection(), Qt::LayoutDirection
      */
     enum AlignmentButton {
@@ -71,6 +83,14 @@ public:
     enum SearchBarPosition {
         Top,
         Bottom
+    };
+    /**
+     * Defines where the list will scroll after clearing the search or changing the view.
+     * @see setAutoScroll(), autoScroll()
+     */
+    enum AutoScroll {
+        ScrollToSelectedItem,
+        ScrollToTop
     };
 
     /**
@@ -129,9 +149,16 @@ public:
     /**
      * Define the size of the list widget, in pixels.
      */
-    inline void setSizeList(const int height, const int width = 260)
+    inline void setSizeList(const int height, const int width = 260);
+
+    /**
+     * Define the scroll when cleaning the search or changing the view.
+     * The default value is AutoScroll::ScrollToSelectedItem.
+     * @see AutoScroll
+     */
+    void setAutoScroll(AutoScroll scroll)
     {
-        m_list->setSizeList(height, width);
+        m_autoScroll = scroll;
     }
 
     /**
@@ -141,62 +168,173 @@ public:
     void updateMenu(KTextEditor::Document *doc);
 
 protected:
+    friend KateModeMenuListData::ListView;
+    friend KateModeMenuListData::ListItem;
+    friend KateModeMenuListData::SearchLine;
 
+    /**
+     * Action when displaying the menu.
+     * Override from QWidget.
+     */
+    void showEvent(QShowEvent *event) override;
+
+private:
+    void init(const SearchBarPosition searchBarPos);
+
+    /**
+     * Load the data model with the syntax highlighting definitions to show in the list.
+     */
+    void loadHighlightingModel();
+
+    /**
+     * Scroll the list, according to AutoScroll.
+     * @see AutoScroll
+     */
+    void autoScroll();
+
+    /**
+     * Set a custom word wrap on a text line, according to a maximum width (in pixels).
+     * @param text Line of text
+     * @param maxWidth Width of the text container, in pixels.
+     * @param fontMetrics Font metrics. See QWidget::fontMetrics()
+     */
+    QString setWordWrap(const QString &text, const int maxWidth, const QFontMetrics &fontMetrics) const;
+
+    /**
+     * Update the selected item in the list, with the active syntax highlighting.
+     * This method only changes the selected item, doesn't apply
+     * syntax highlighting in the document, or hides the menu.
+     * @see selectHighlighting(), selectHighlightingFromExternal(), selectHighlightingSetVisibility()
+     */
+    void updateSelectedItem(KateModeMenuListData::ListItem *item);
+
+    /**
+     * Select an item from the list and apply the syntax highlighting in the document.
+     * This is equivalent to KateModeMenuList::selectHighlighting().
+     * @param bHideMenu If the menu should be hidden after applying the highlight.
+     * @see selectHighlighting()
+     */
+    void selectHighlightingSetVisibility(QStandardItem *pItem, const bool bHideMenu);
+
+    /**
+     * Load message when the list is empty in the search.
+     */
+    inline void loadEmptyMsg();
+
+    AutoScroll m_autoScroll = ScrollToSelectedItem;
+    AlignmentButton m_position;
+    bool m_bAutoUpdateTextButton;
+
+    QPushButton *m_pushButton = nullptr;
+    QLabel *m_emptyListMsg = nullptr;
+    QGridLayout *m_layoutList = nullptr;
+    QScrollBar *m_scroll = nullptr;
+
+    KateModeMenuListData::SearchLine *m_searchBar = nullptr;
+    KateModeMenuListData::ListView *m_list = nullptr;
+    QStandardItemModel *m_model = nullptr;
+
+    /**
+     * Item with active syntax highlighting.
+     */
+    KateModeMenuListData::ListItem *m_selectedItem = nullptr;
+
+    /**
+     * Icon for selected/active item (checkbox).
+     * NOTE: Selected and inactive items show an icon with incorrect color,
+     * however, this isn't a problem, since the list widget is never inactive.
+     */
+    const QIcon m_checkIcon = QIcon::fromTheme(QStringLiteral("checkbox"));
+    static const int m_iconSize = 16;
+
+    QPointer<KTextEditor::DocumentPrivate> m_doc;
+
+private Q_SLOTS:
+    /**
+     * Action when selecting a item in the list. This also applies
+     * the syntax highlighting in the document and hides the menu.
+     * This is equivalent to KateModeMenuList::selectHighlightingSetVisibility().
+     * @see selectHighlightingSetVisibility(), updateSelectedItem()
+     */
+    void selectHighlighting(const QModelIndex &index);
+};
+
+
+namespace KateModeMenuListData
+{
     /**
      * Class of List Widget.
      */
-    class ModeListWidget : public QListWidget
+    class ListView : public QListView
     {
-    public:
-        ModeListWidget(KateModeMenuList *menu) : QListWidget(menu)
+        Q_OBJECT
+
+    private:
+        ListView(KateModeMenuList *menu) : QListView(menu)
         {
             m_parentMenu = menu;
         }
 
-        /**
-         * Add item, setting the default properties.
-         */
-        void addDefaultItem(QListWidgetItem *item);
-
+    public:
         /**
          * Define the size of the widget list.
          * @p height and @p width are values in pixels.
          */
         void setSizeList(const int height, const int width = 260);
 
+        inline void setCurrentItem(const int rowItem)
+        {
+            selectionModel()->setCurrentIndex(m_parentMenu->m_model->index(rowItem, 0), QItemSelectionModel::ClearAndSelect);
+        }
+        inline QStandardItem* currentItem() const
+        {
+            return m_parentMenu->m_model->item(currentIndex().row(), 0);
+        }
+
+        inline void scrollToItem(const int rowItem, QAbstractItemView::ScrollHint hint = QAbstractItemView::PositionAtCenter)
+        {
+            scrollTo(m_parentMenu->m_model->index(rowItem, 0), hint);
+        }
+
     protected:
         /**
-         * Override from QListWidget.
+         * Override from QListView.
          */
         void keyPressEvent(QKeyEvent *event) override;
 
     private:
         KateModeMenuList *m_parentMenu = nullptr;
+        friend KateModeMenuList;
     };
 
 
     /**
-     * Class of an Item of the List Widget.
-     * @see ModeListWidget, KateFileType
+     * Class of an Item of the Data Model of the List.
+     * @see KateModeMenuListData::ListView, KateFileType, QStandardItemModel
      */
-    class ModeListWidgetItem : public QListWidgetItem
+    class ListItem : public QStandardItem
     {
-    public:
-        ModeListWidgetItem() : QListWidgetItem() { }
+    private:
+        ListItem() : QStandardItem() { }
 
+        const KateFileType *m_type = nullptr;
+        const QString *m_searchName = nullptr;
+
+        friend KateModeMenuList;
+
+    public:
         /**
          * Associate this item with a KateFileType object.
          */
         inline void setMode(KateFileType *type)
         {
             m_type = type;
-            return;
         }
-        inline const KateFileType* getMode()
+        const KateFileType* getMode() const
         {
             return m_type;
         }
-        inline bool hasMode() const
+        bool hasMode() const
         {
             return m_type;
         }
@@ -214,128 +352,68 @@ protected:
          *             a common extension, it corresponds to the text after "*."
          * @return True if a match is found, false if not.
          */
-        bool matchExtension(const QString &text);
+        bool matchExtension(const QString &text) const;
 
-        inline const QString* getSearchName()
+        const QString* getSearchName() const
         {
             return m_searchName;
         }
-
-    private:
-        const KateFileType *m_type = nullptr;
-        const QString *m_searchName = nullptr;
     };
 
 
     /**
-     * Class of Search Bar Widget.
+     * Class of Search Bar.
+     * Based on the KListWidgetSearchLine class.
      */
-    class ModeLineEdit : public KListWidgetSearchLine
+    class SearchLine : public QLineEdit
     {
-    public:
-        ModeLineEdit(KateModeMenuList *menu, QListWidget *listWidget) : KListWidgetSearchLine(menu, listWidget)
-        {
-            m_parentMenu = menu;
-        }
-        ~ModeLineEdit() { };
-
-        /**
-         * Override from KListWidgetSearchLine.
-         */
-        void updateSearch(const QString &s = QString()) override;
-        void clear();
+        Q_OBJECT
 
     private:
+        SearchLine(KateModeMenuList *menu) : QLineEdit(menu)
+        {
+            m_parentMenu = menu;
+            init();
+        }
+        ~SearchLine() { };
+
+        void init();
+
         /**
          * Select result of the items search.
-         * Used only by ModeLineEdit::updateSearch().
+         * Used only by KateModeMenuListData::SearchLine::updateSearch().
          */
         void setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &lastItem);
 
-        KateModeMenuList *m_parentMenu = nullptr;
+        /**
+         * Delay in search results after typing, in milliseconds.
+         * Default value: 200
+         */
+        static const int m_searchDelay = 170;
 
-        bool m_bSearchStateClear = true;
         bool m_bSearchStateAutoScroll = false;
+        QString m_search = QString();
+        int m_queuedSearches = 0;
+        Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;
+
+        KateModeMenuList *m_parentMenu = nullptr;
+        friend KateModeMenuList;
+
+    protected:
+        /**
+         * Override from QLineEdit. This allows you to navigate through
+         * the menu and write in the search bar simultaneously with the keyboard.
+         */
+        void keyPressEvent(QKeyEvent *event) override;
+
+    public Q_SLOTS:
+        virtual void clear();
+        virtual void updateSearch(const QString &s = QString());
+
+    private Q_SLOTS:
+        void _k_queueSearch(const QString &s);
+        void _k_activateSearch();
     };
-
-
-    /**
-     * Action when displaying the menu.
-     * Override from QWidget.
-     */
-    void showEvent(QShowEvent *event) override;
-
-private:
-    void init(const SearchBarPosition searchBarPos);
-
-    /**
-     * Load the syntax highlighting definitions in the widget of list of items.
-     */
-    void loadHighlightingList();
-
-    /**
-     * Set a custom word wrap on a text line, according to a maximum width (in pixels).
-     * @param text Line of text
-     * @param maxWidth Width of the text container, in pixels.
-     * @param fontMetrics Font metrics. See QWidget::fontMetrics()
-     */
-    QString setWordWrap(const QString &text, const int maxWidth, const QFontMetrics &fontMetrics) const;
-
-    /**
-     * Update the selected item in the list widget.
-     * This method only changes the selected item, doesn't apply
-     * syntax highlighting in the document, or hides the menu.
-     * @see selectHighlighting(), selectHighlightingFromExternal(), selectHighlightingSetVisibility()
-     */
-    void updateSelectedItem(ModeListWidgetItem *item);
-
-    /**
-     * Select an item from the list and apply the syntax highlighting in the document.
-     * This is equivalent to KateModeMenuList::selectHighlighting().
-     * @param bHideMenu If the menu should be hidden after applying the highlight.
-     * @see selectHighlighting()
-     */
-    void selectHighlightingSetVisibility(QListWidgetItem *pItem, const bool bHideMenu);
-
-    /**
-     * Load message when the list is empty in the search.
-     */
-    inline void loadEmptyMsg();
-
-    QPushButton *m_pushButton = nullptr;
-    AlignmentButton m_position;
-    bool m_bAutoUpdateTextButton;
-
-    QGridLayout *m_layoutList = nullptr;
-    QLabel *m_emptyListMsg = nullptr;
-
-    ModeLineEdit *m_searchBar = nullptr;
-    ModeListWidget *m_list = nullptr;
-    QScrollBar *m_scroll = nullptr;
-
-    /**
-     * Item with active syntax highlighting.
-     */
-    ModeListWidgetItem *m_selectedItem = nullptr;
-
-    /**
-     * Icon for selected item (checkbox).
-     * NOTE: Selected and inactive items show an icon with incorrect color,
-     * however, this isn't a problem, since the list widget is never inactive.
-     */
-    const QIcon m_checkIcon = QIcon::fromTheme(QStringLiteral("checkbox"));
-    static const int m_iconSize = 16;
-
-    QPointer<KTextEditor::DocumentPrivate> m_doc;
-
-private Q_SLOTS:
-    /**
-     * Action when selecting a item in the list. This also applies
-     * the syntax highlighting in the document and hides the menu.
-     * This is equivalent to KateModeMenuList::selectHighlightingSetVisibility().
-     * @see selectHighlightingSetVisibility(), updateSelectedItem()
-     */
-    void selectHighlighting(QListWidgetItem *pItem);
-};
+}
 
 #endif // KATEMODEMENULIST_H
