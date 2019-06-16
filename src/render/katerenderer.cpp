@@ -386,157 +386,152 @@ static bool rangeLessThanForRenderer(const Kate::TextRange *a, const Kate::TextR
     return false;
 }
 
-QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, KateRenderRange *completionHighlight, bool completionSelected) const
+QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly, bool completionHighlight, bool completionSelected) const
 {
-    QVector<QTextLayout::FormatRange> newHighlight;
+    // limit number of attributes we can highlight in reasonable time
+    const int limitOfRanges = 1024;
+    auto rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? nullptr : m_view, true);
+    if (rangesWithAttributes.size() > limitOfRanges) {
+        rangesWithAttributes.clear();
+    }
+    const auto &al = (textLine->attributesList().size() > limitOfRanges) ? QVector<Kate::TextLineData::Attribute>() : textLine->attributesList();
 
     // Don't compute the highlighting if there isn't going to be any highlighting
-    QList<Kate::TextRange *> rangesWithAttributes = m_doc->buffer().rangesForLine(line, m_printerFriendly ? nullptr : m_view, true);
-    if (selectionsOnly || !textLine->attributesList().isEmpty() || !rangesWithAttributes.isEmpty()) {
-        RenderRangeList renderRanges;
+    if (!(selectionsOnly || !al.isEmpty() || !rangesWithAttributes.isEmpty())) {
+        return QVector<QTextLayout::FormatRange>();
+    }
 
-        // Add the inbuilt highlighting to the list
-        NormalRenderRange *inbuiltHighlight = new NormalRenderRange();
-        const QVector<Kate::TextLineData::Attribute> &al = textLine->attributesList();
+    // Add the inbuilt highlighting to the list
+    RenderRangeVector renderRanges;
+    if (!al.isEmpty()) {
+        auto &currentRange = renderRanges.pushNewRange();
         for (int i = 0; i < al.count(); ++i)
             if (al[i].length > 0 && al[i].attributeValue > 0) {
-                inbuiltHighlight->addRange(new KTextEditor::Range(KTextEditor::Cursor(line, al[i].offset), al[i].length), specificAttribute(al[i].attributeValue));
+                currentRange.addRange(KTextEditor::Range(KTextEditor::Cursor(line, al[i].offset), al[i].length), specificAttribute(al[i].attributeValue));
             }
-        renderRanges.append(inbuiltHighlight);
+    }
 
-        if (!completionHighlight) {
-            // check for dynamic hl stuff
-            const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : nullptr;
-            const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
-            bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
+    if (!completionHighlight) {
+        // check for dynamic hl stuff
+        const QSet<Kate::TextRange *> *rangesMouseIn = m_view ? m_view->rangesMouseIn() : nullptr;
+        const QSet<Kate::TextRange *> *rangesCaretIn = m_view ? m_view->rangesCaretIn() : nullptr;
+        bool anyDynamicHlsActive = m_view && (!rangesMouseIn->empty() || !rangesCaretIn->empty());
 
-            // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart rangs behavior ;)
-            std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
+        // sort all ranges, we want that the most specific ranges win during rendering, multiple equal ranges are kind of random, still better than old smart rangs behavior ;)
+        std::sort(rangesWithAttributes.begin(), rangesWithAttributes.end(), rangeLessThanForRenderer);
 
-            // loop over all ranges
-            for (int i = 0; i < rangesWithAttributes.size(); ++i) {
-                // real range
-                Kate::TextRange *kateRange = rangesWithAttributes[i];
+        // loop over all ranges
+        for (int i = 0; i < rangesWithAttributes.size(); ++i) {
+            // real range
+            Kate::TextRange *kateRange = rangesWithAttributes[i];
 
-                // calculate attribute, default: normal attribute
-                KTextEditor::Attribute::Ptr attribute = kateRange->attribute();
-                if (anyDynamicHlsActive) {
-                    // check mouse in
-                    if (KTextEditor::Attribute::Ptr attributeMouseIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)) {
-                        if (rangesMouseIn->contains(kateRange)) {
-                            attribute = attributeMouseIn;
-                        }
-                    }
-
-                    // check caret in
-                    if (KTextEditor::Attribute::Ptr attributeCaretIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn)) {
-                        if (rangesCaretIn->contains(kateRange)) {
-                            attribute = attributeCaretIn;
-                        }
+            // calculate attribute, default: normal attribute
+            KTextEditor::Attribute::Ptr attribute = kateRange->attribute();
+            if (anyDynamicHlsActive) {
+                // check mouse in
+                if (KTextEditor::Attribute::Ptr attributeMouseIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateMouseIn)) {
+                    if (rangesMouseIn->contains(kateRange)) {
+                        attribute = attributeMouseIn;
                     }
                 }
 
-                // span range
-                NormalRenderRange *additionaHl = new NormalRenderRange();
-                additionaHl->addRange(new KTextEditor::Range(*kateRange), attribute);
-                renderRanges.append(additionaHl);
-            }
-        } else {
-            // Add the code completion arbitrary highlight to the list
-            renderRanges.append(completionHighlight);
-        }
-
-        // Add selection highlighting if we're creating the selection decorations
-        if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected) || (m_view && m_view->blockSelection())) {
-            NormalRenderRange *selectionHighlight = new NormalRenderRange();
-
-            // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
-            static KTextEditor::Attribute::Ptr backgroundAttribute;
-            if (!backgroundAttribute) {
-                backgroundAttribute = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-            }
-
-            backgroundAttribute->setBackground(config()->selectionColor());
-            backgroundAttribute->setForeground(attribute(KTextEditor::dsNormal)->selectedForeground().color());
-
-            // Create a range for the current selection
-            if (completionHighlight && completionSelected) {
-                selectionHighlight->addRange(new KTextEditor::Range(line, 0, line + 1, 0), backgroundAttribute);
-            } else if (m_view->blockSelection() && m_view->selectionRange().overlapsLine(line)) {
-                selectionHighlight->addRange(new KTextEditor::Range(m_doc->rangeOnLine(m_view->selectionRange(), line)), backgroundAttribute);
-            } else {
-                selectionHighlight->addRange(new KTextEditor::Range(m_view->selectionRange()), backgroundAttribute);
-            }
-
-            renderRanges.append(selectionHighlight);
-            // highlighting for the vi visual modes
-        }
-
-        KTextEditor::Cursor currentPosition, endPosition;
-
-        // Calculate the range which we need to iterate in order to get the highlighting for just this line
-        if (m_view && selectionsOnly) {
-            if (m_view->blockSelection()) {
-                KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
-                currentPosition = subRange.start();
-                endPosition = subRange.end();
-            } else {
-                KTextEditor::Range rangeNeeded = m_view->selectionRange() & KTextEditor::Range(line, 0, line + 1, 0);
-
-                currentPosition = qMax(KTextEditor::Cursor(line, 0), rangeNeeded.start());
-                endPosition = qMin(KTextEditor::Cursor(line + 1, 0), rangeNeeded.end());
-            }
-        } else {
-            currentPosition = KTextEditor::Cursor(line, 0);
-            endPosition = KTextEditor::Cursor(line + 1, 0);
-        }
-
-        // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
-        // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
-        while (currentPosition < endPosition) {
-            renderRanges.advanceTo(currentPosition);
-
-            if (!renderRanges.hasAttribute()) {
-                // No attribute, don't need to create a FormatRange for this text range
-                currentPosition = renderRanges.nextBoundary();
-                continue;
-            }
-
-            KTextEditor::Cursor nextPosition = renderRanges.nextBoundary();
-
-            // Create the format range and populate with the correct start, length and format info
-            QTextLayout::FormatRange fr;
-            fr.start = currentPosition.column();
-
-            if (nextPosition < endPosition || endPosition.line() <= line) {
-                fr.length = nextPosition.column() - currentPosition.column();
-
-            } else {
-                // +1 to force background drawing at the end of the line when it's warranted
-                fr.length = textLine->length() - currentPosition.column() + 1;
-            }
-
-            KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
-            if (a) {
-                fr.format = *a;
-
-                if (selectionsOnly) {
-                    assignSelectionBrushesFromAttribute(fr, *a);
+                // check caret in
+                if (KTextEditor::Attribute::Ptr attributeCaretIn = attribute->dynamicAttribute(KTextEditor::Attribute::ActivateCaretIn)) {
+                    if (rangesCaretIn->contains(kateRange)) {
+                        attribute = attributeCaretIn;
+                    }
                 }
             }
 
-            newHighlight.append(fr);
+            // span range
+            renderRanges.pushNewRange().addRange(*kateRange, attribute);
+        }
+    }
 
-            currentPosition = nextPosition;
+    // Add selection highlighting if we're creating the selection decorations
+    if ((m_view && selectionsOnly && showSelections() && m_view->selection()) || (completionHighlight && completionSelected) || (m_view && m_view->blockSelection())) {
+        auto &currentRange = renderRanges.pushNewRange();
+
+        // Set up the selection background attribute TODO: move this elsewhere, eg. into the config?
+        static KTextEditor::Attribute::Ptr backgroundAttribute;
+        if (!backgroundAttribute) {
+            backgroundAttribute = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
         }
 
-        if (completionHighlight)
-            // Don't delete external completion render range
-        {
-            renderRanges.removeAll(completionHighlight);
+        backgroundAttribute->setBackground(config()->selectionColor());
+        backgroundAttribute->setForeground(attribute(KTextEditor::dsNormal)->selectedForeground().color());
+
+        // Create a range for the current selection
+        if (completionHighlight && completionSelected) {
+            currentRange.addRange(KTextEditor::Range(line, 0, line + 1, 0), backgroundAttribute);
+        } else if (m_view->blockSelection() && m_view->selectionRange().overlapsLine(line)) {
+            currentRange.addRange(m_doc->rangeOnLine(m_view->selectionRange(), line), backgroundAttribute);
+        } else {
+            currentRange.addRange(m_view->selectionRange(), backgroundAttribute);
+        }
+    }
+
+    // no render ranges, nothing to do, else we loop below endless!
+    if (renderRanges.isEmpty()) {
+        return QVector<QTextLayout::FormatRange>();
+    }
+
+    // Calculate the range which we need to iterate in order to get the highlighting for just this line
+    KTextEditor::Cursor currentPosition, endPosition;
+    if (m_view && selectionsOnly) {
+        if (m_view->blockSelection()) {
+            KTextEditor::Range subRange = m_doc->rangeOnLine(m_view->selectionRange(), line);
+            currentPosition = subRange.start();
+            endPosition = subRange.end();
+        } else {
+            KTextEditor::Range rangeNeeded = m_view->selectionRange() & KTextEditor::Range(line, 0, line + 1, 0);
+
+            currentPosition = qMax(KTextEditor::Cursor(line, 0), rangeNeeded.start());
+            endPosition = qMin(KTextEditor::Cursor(line + 1, 0), rangeNeeded.end());
+        }
+    } else {
+        currentPosition = KTextEditor::Cursor(line, 0);
+        endPosition = KTextEditor::Cursor(line + 1, 0);
+    }
+
+    // Main iterative loop.  This walks through each set of highlighting ranges, and stops each
+    // time the highlighting changes.  It then creates the corresponding QTextLayout::FormatRanges.
+    QVector<QTextLayout::FormatRange> newHighlight;
+    while (currentPosition < endPosition) {
+        renderRanges.advanceTo(currentPosition);
+
+        if (!renderRanges.hasAttribute()) {
+            // No attribute, don't need to create a FormatRange for this text range
+            currentPosition = renderRanges.nextBoundary();
+            continue;
         }
 
-        qDeleteAll(renderRanges);
+        KTextEditor::Cursor nextPosition = renderRanges.nextBoundary();
+
+        // Create the format range and populate with the correct start, length and format info
+        QTextLayout::FormatRange fr;
+        fr.start = currentPosition.column();
+
+        if (nextPosition < endPosition || endPosition.line() <= line) {
+            fr.length = nextPosition.column() - currentPosition.column();
+
+        } else {
+            // +1 to force background drawing at the end of the line when it's warranted
+            fr.length = textLine->length() - currentPosition.column() + 1;
+        }
+
+        KTextEditor::Attribute::Ptr a = renderRanges.generateAttribute();
+        if (a) {
+            fr.format = *a;
+
+            if (selectionsOnly) {
+                assignSelectionBrushesFromAttribute(fr, *a);
+            }
+        }
+
+        newHighlight.append(fr);
+
+        currentPosition = nextPosition;
     }
 
     return newHighlight;

@@ -25,50 +25,42 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 
-#include <QList>
-#include <QPair>
+#include <utility>
+#include <vector>
 
-class KateRenderRange
-{
-public:
-    virtual ~KateRenderRange() {}
-    virtual KTextEditor::Cursor nextBoundary() const = 0;
-    virtual bool advanceTo(const KTextEditor::Cursor &pos) = 0;
-    virtual KTextEditor::Attribute::Ptr currentAttribute() const = 0;
-    virtual bool isReady() const;
-};
-
-typedef QPair<KTextEditor::Range *, KTextEditor::Attribute::Ptr> pairRA;
-
-class NormalRenderRange : public KateRenderRange
+class NormalRenderRange
 {
 public:
     NormalRenderRange();
-    ~NormalRenderRange() override;
 
-    void addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute);
+    void addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute);
 
-    KTextEditor::Cursor nextBoundary() const override;
-    bool advanceTo(const KTextEditor::Cursor &pos) override;
-    KTextEditor::Attribute::Ptr currentAttribute() const override;
+    KTextEditor::Cursor nextBoundary() const;
+    bool advanceTo(const KTextEditor::Cursor &pos);
+    KTextEditor::Attribute::Ptr currentAttribute() const;
 
 private:
-    QVector<pairRA> m_ranges;
+    std::vector<std::pair<KTextEditor::Range, KTextEditor::Attribute::Ptr>> m_ranges;
     KTextEditor::Cursor m_nextBoundary;
     KTextEditor::Attribute::Ptr m_currentAttribute;
-    int m_currentRange = 0;
+    size_t m_currentRange = 0;
 };
 
-class RenderRangeList : public QVector<KateRenderRange *>
+class RenderRangeVector
 {
 public:
-    ~RenderRangeList();
     KTextEditor::Cursor nextBoundary() const;
     void advanceTo(const KTextEditor::Cursor &pos);
     bool hasAttribute() const;
     KTextEditor::Attribute::Ptr generateAttribute() const;
+    NormalRenderRange &pushNewRange();
+    bool isEmpty() const
+    {
+        return m_ranges.empty();
+    }
 
 private:
+    std::vector<NormalRenderRange> m_ranges;
     KTextEditor::Cursor m_currentPos;
 };
 

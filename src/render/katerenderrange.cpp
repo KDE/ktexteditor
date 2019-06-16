@@ -76,26 +76,13 @@ void mergeAttributes(KTextEditor::Attribute::Ptr base, KTextEditor::Attribute::P
     }
 }
 
-bool KateRenderRange::isReady() const
-{
-    return false;
-}
-
 NormalRenderRange::NormalRenderRange()
 {
 }
 
-NormalRenderRange::~NormalRenderRange()
+void NormalRenderRange::addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute)
 {
-    QVectorIterator<pairRA> it = m_ranges;
-    while (it.hasNext()) {
-        delete it.next().first;
-    }
-}
-
-void NormalRenderRange::addRange(KTextEditor::Range *range, KTextEditor::Attribute::Ptr attribute)
-{
-    m_ranges.append(pairRA(range, attribute));
+    m_ranges.push_back(std::make_pair(range, attribute));
 }
 
 KTextEditor::Cursor NormalRenderRange::nextBoundary() const
@@ -105,22 +92,22 @@ KTextEditor::Cursor NormalRenderRange::nextBoundary() const
 
 bool NormalRenderRange::advanceTo(const KTextEditor::Cursor &pos)
 {
-    int index = m_currentRange;
-    while (index < m_ranges.count()) {
-        const pairRA &p = m_ranges.at(index);
-        KTextEditor::Range *r = p.first;
-        if (r->end() <= pos) {
+    size_t index = m_currentRange;
+    while (index < m_ranges.size()) {
+        const auto &p = m_ranges[index];
+        const auto &r = p.first;
+        if (r.end() <= pos) {
             ++index;
         } else {
             bool ret = index != m_currentRange;
             m_currentRange = index;
 
-            if (r->start() > pos) {
-                m_nextBoundary = r->start();
+            if (r.start() > pos) {
+                m_nextBoundary = r.start();
             } else {
-                m_nextBoundary = r->end();
+                m_nextBoundary = r.end();
             }
-            if (r->contains(pos)) {
+            if (r.contains(pos)) {
                 m_currentAttribute = p.second;
             } else {
                 m_currentAttribute.reset();
@@ -140,17 +127,17 @@ KTextEditor::Attribute::Ptr NormalRenderRange::currentAttribute() const
     return m_currentAttribute;
 }
 
-KTextEditor::Cursor RenderRangeList::nextBoundary() const
+KTextEditor::Cursor RenderRangeVector::nextBoundary() const
 {
     KTextEditor::Cursor ret = m_currentPos;
     bool first = true;
-    foreach (KateRenderRange *r, *this) {
+    for (auto &r : m_ranges) {
         if (first) {
-            ret = r->nextBoundary();
+            ret = r.nextBoundary();
             first = false;
 
         } else {
-            KTextEditor::Cursor nb = r->nextBoundary();
+            KTextEditor::Cursor nb = r.nextBoundary();
             if (ret > nb) {
                 ret = nb;
             }
@@ -159,43 +146,37 @@ KTextEditor::Cursor RenderRangeList::nextBoundary() const
     return ret;
 }
 
-RenderRangeList::~RenderRangeList()
+NormalRenderRange &RenderRangeVector::pushNewRange()
 {
+    m_ranges.push_back(NormalRenderRange());
+    return m_ranges.back();
 }
 
-void RenderRangeList::advanceTo(const KTextEditor::Cursor &pos)
+void RenderRangeVector::advanceTo(const KTextEditor::Cursor &pos)
 {
-    foreach (KateRenderRange *r, *this) {
-        r->advanceTo(pos);
-    }
-
-    //Delete lists that are ready, else the list may get too large due to temporaries
-    for (int a = size() - 1; a >= 0; --a) {
-        KateRenderRange *r = at(a);
-        if (r->isReady()) {
-            delete r;
-            removeAt(a);
-        }
+    for (auto &r : m_ranges) {
+        r.advanceTo(pos);
     }
 }
 
-bool RenderRangeList::hasAttribute() const
+bool RenderRangeVector::hasAttribute() const
 {
-    foreach (KateRenderRange *r, *this)
-        if (r->currentAttribute()) {
+    for (auto &r : m_ranges) {
+        if (r.currentAttribute()) {
             return true;
         }
+    }
 
     return false;
 }
 
-KTextEditor::Attribute::Ptr RenderRangeList::generateAttribute() const
+KTextEditor::Attribute::Ptr RenderRangeVector::generateAttribute() const
 {
     KTextEditor::Attribute::Ptr a;
     bool ownsAttribute = false;
 
-    foreach (KateRenderRange *r, *this) {
-        if (KTextEditor::Attribute::Ptr a2 = r->currentAttribute()) {
+    for (auto &r : m_ranges) {
+        if (KTextEditor::Attribute::Ptr a2 = r.currentAttribute()) {
             if (!a) {
                 a = a2;
             } else {

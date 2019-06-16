@@ -155,8 +155,7 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 
     m_currentColumnStart = m_cachedColumnStarts[index.column()];
 
-    NormalRenderRange rr;
-    QVector<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, &rr, option.state & QStyle::State_Selected);
+    QVector<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, true, option.state & QStyle::State_Selected);
 
     //Remove background-colors
     for (QVector<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it) {

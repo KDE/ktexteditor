@@ -287,7 +287,7 @@ public:
      *
      * \param selectionsOnly return decorations for selections and/or dynamic highlighting.
      */
-    QVector<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, KateRenderRange *completionHighlight = nullptr, bool completionSelected = false) const;
+    QVector<QTextLayout::FormatRange> decorationsForLine(const Kate::TextLine &textLine, int line, bool selectionsOnly = false, bool completionHighlight = false, bool completionSelected = false) const;
 
     // Width calculators
     qreal spaceWidth() const;
