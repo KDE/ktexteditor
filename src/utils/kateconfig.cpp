@@ -385,7 +385,7 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(SwapFile, "Swap File Mode", QString(), KateDocumentConfig::EnableSwapFile));
     addConfigEntry(ConfigEntry(SwapFileDirectory, "Swap Directory", QString(), QString()));
     addConfigEntry(ConfigEntry(SwapFileSyncInterval, "Swap Sync Interval", QString(), 15));
-    addConfigEntry(ConfigEntry(LineLengthLimit, "Line Length Limit", QString(), 4096));
+    addConfigEntry(ConfigEntry(LineLengthLimit, "Line Length Limit", QString(), 10000));
 
     /**
      * finalize the entries, e.g. hashs them
