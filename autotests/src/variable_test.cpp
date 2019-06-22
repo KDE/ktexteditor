@@ -26,6 +26,7 @@
 #include <ktexteditor/view.h>
 
 #include <QtTest>
+#include <QUuid>
 
 using namespace KTextEditor;
 
@@ -159,6 +160,133 @@ void VariableTest::testRecursiveMatch()
 
     QVERIFY(editor->unregisterVariableMatch(name));
     delete doc;
+}
+
+void VariableTest::testBuiltins()
+{
+    auto editor = KTextEditor::Editor::instance();
+    auto doc = editor->createDocument(nullptr);
+    doc->openUrl(QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/kate-v5.tar.gz")));
+    doc->setText(QStringLiteral("get an edge in editing\n:-)"));
+    auto view = doc->createView(nullptr);
+    view->setCursorPosition(KTextEditor::Cursor(1, 2));
+    view->show();
+
+    QString out;
+
+    // Document:FileBaseName
+    editor->expandText(QStringLiteral("%{Document:FileBaseName}"), view, out);
+    QCOMPARE(out, QStringLiteral("kate-v5"));
+
+    // Document:FileExtension
+    editor->expandText(QStringLiteral("%{Document:FileExtension}"), view, out);
+    QCOMPARE(out, QStringLiteral("tar.gz"));
+
+    // Document:FileName
+    editor->expandText(QStringLiteral("%{Document:FileName}"), view, out);
+    QCOMPARE(out, QStringLiteral("kate-v5.tar.gz"));
+
+    // Document:FilePath
+    editor->expandText(QStringLiteral("%{Document:FilePath}"), view, out);
+    QCOMPARE(out, QFileInfo(view->document()->url().toLocalFile()).absoluteFilePath());
+
+    // Document:Text
+    editor->expandText(QStringLiteral("%{Document:Text}"), view, out);
+    QCOMPARE(out, QStringLiteral("get an edge in editing\n:-)"));
+
+    // Document:Path
+    editor->expandText(QStringLiteral("%{Document:Path}"), view, out);
+    QCOMPARE(out, QFileInfo(doc->url().toLocalFile()).absolutePath());
+
+    // Document:NativeFilePath
+    editor->expandText(QStringLiteral("%{Document:NativeFilePath}"), view, out);
+    QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absoluteFilePath()));
+
+    // Document:NativePath
+    editor->expandText(QStringLiteral("%{Document:NativePath}"), view, out);
+    QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absolutePath()));
+
+    // Document:NativePath
+    editor->expandText(QStringLiteral("%{Document:NativePath}"), view, out);
+    QCOMPARE(out, QDir::toNativeSeparators(QFileInfo(doc->url().toLocalFile()).absolutePath()));
+
+    // Document:Cursor:Line
+    editor->expandText(QStringLiteral("%{Document:Cursor:Line}"), view, out);
+    QCOMPARE(out, QStringLiteral("1"));
+
+    // Document:Cursor:Column
+    editor->expandText(QStringLiteral("%{Document:Cursor:Column}"), view, out);
+    QCOMPARE(out, QStringLiteral("2"));
+
+    // Document:Cursor:XPos
+    editor->expandText(QStringLiteral("%{Document:Cursor:XPos}"), view, out);
+    QVERIFY(out.toInt() > 0);
+
+    // Document:Cursor:YPos
+    editor->expandText(QStringLiteral("%{Document:Cursor:YPos}"), view, out);
+    QVERIFY(out.toInt() > 0);
+
+
+    view->setSelection(KTextEditor::Range(1, 0, 1, 3));
+    // Document:Selection:Text
+    editor->expandText(QStringLiteral("%{Document:Selection:Text}"), view, out);
+    QCOMPARE(out, QStringLiteral(":-)"));
+
+    // Document:Selection:StartLine
+    editor->expandText(QStringLiteral("%{Document:Selection:StartLine}"), view, out);
+    QCOMPARE(out, QStringLiteral("1"));
+
+    // Document:Selection:StartColumn
+    editor->expandText(QStringLiteral("%{Document:Selection:StartColumn}"), view, out);
+    QCOMPARE(out, QStringLiteral("0"));
+
+    // Document:Selection:EndLine
+    editor->expandText(QStringLiteral("%{Document:Selection:EndLine}"), view, out);
+    QCOMPARE(out, QStringLiteral("1"));
+
+    // Document:Selection:EndColumn
+    editor->expandText(QStringLiteral("%{Document:Selection:EndColumn}"), view, out);
+    QCOMPARE(out, QStringLiteral("3"));
+
+    // Document:RowCount
+    editor->expandText(QStringLiteral("%{Document:RowCount}"), view, out);
+    QCOMPARE(out, QStringLiteral("2"));
+
+    // Date:Locale
+    editor->expandText(QStringLiteral("%{Date:Locale}"), view, out);
+    QVERIFY(!out.isEmpty());
+
+    // Date:ISO
+    editor->expandText(QStringLiteral("%{Date:ISO}"), view, out);
+    QVERIFY(!out.isEmpty());
+
+    // Date:yyyy-MM-dd
+    editor->expandText(QStringLiteral("%{Date:yyyy-MM-dd}"), view, out);
+    QVERIFY(QDate::fromString(out, QStringLiteral("yyyy-MM-dd")).isValid());
+
+    // Time:Locale
+    editor->expandText(QStringLiteral("%{Time:Locale}"), view, out);
+    QVERIFY(!out.isEmpty());
+
+    // Time:ISO
+    editor->expandText(QStringLiteral("%{Time:ISO}"), view, out);
+    QVERIFY(!out.isEmpty());
+
+    // Time:hh-mm-ss
+    editor->expandText(QStringLiteral("%{Time:hh-mm-ss}"), view, out);
+    QVERIFY(QTime::fromString(out, QStringLiteral("hh-mm-ss")).isValid());
+
+    // ENV:HOME
+    editor->expandText(QStringLiteral("%{ENV:HOME}"), view, out);
+    QCOMPARE(out, QDir::homePath());
+
+    // JS:<code>
+    editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view, out);
+    QCOMPARE(out, QStringLiteral("6"));
+
+    // UUID
+    editor->expandText(QStringLiteral("%{UUID}"), view, out);
+    QCOMPARE(out.count(QLatin1Char('-')), 4);
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;

@@ -36,6 +36,7 @@ private Q_SLOTS:
     void testExactMatch();
     void testPrefixMatch();
     void testRecursiveMatch();
+    void testBuiltins();
 };
 
 #endif // KTEXTEDITOR_VARIABLE_TEST_H
