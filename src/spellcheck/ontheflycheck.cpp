@@ -72,6 +72,11 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     connect(&document->buffer(), SIGNAL(respellCheckBlock(int,int)),
             this, SLOT(handleRespellCheckBlock(int,int)));
 
+    connect(document, &KTextEditor::Document::reloaded,
+            this, [this](KTextEditor::Document *doc) {
+                        refreshSpellCheck();
+            });
+
     // load the settings for the speller
     updateConfig();
 
