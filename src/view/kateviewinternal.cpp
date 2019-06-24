@@ -2910,7 +2910,9 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
             m_scrollY = d;
         }
 
-        placeCursor(QPoint(m_mouseX, m_mouseY), true);
+        if (!m_scrollY) {
+            placeCursor(QPoint(m_mouseX, m_mouseY), true);
+        }
 
     } else {
         if (isTargetSelected(e->pos())) {
@@ -3142,8 +3144,9 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
 void KateViewInternal::scrollTimeout()
 {
     if (m_scrollX || m_scrollY) {
-        scrollLines(startLine() + (m_scrollY / (int) renderer()->lineHeight()));
+        const int scrollTo = startPos().line() + (m_scrollY / (int) renderer()->lineHeight());
         placeCursor(QPoint(m_mouseX, m_mouseY), true);
+        scrollLines (scrollTo);
     }
 }
 
