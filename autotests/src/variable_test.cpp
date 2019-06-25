@@ -25,7 +25,6 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
-#include <QFileInfo>
 #include <QtTest>
 #include <QUuid>
 
