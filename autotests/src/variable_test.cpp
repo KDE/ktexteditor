@@ -277,9 +277,10 @@ void VariableTest::testBuiltins()
     editor->expandText(QStringLiteral("%{Time:hh-mm-ss}"), view, out);
     QVERIFY(QTime::fromString(out, QStringLiteral("hh-mm-ss")).isValid());
 
-    // ENV:HOME
-    editor->expandText(QStringLiteral("%{ENV:HOME}"), view, out);
-    QCOMPARE(QFileInfo(out).canonicalFilePath(), QFileInfo(QDir::homePath()).canonicalFilePath());
+    // ENV:KTE_ENV_VAR_TEST
+    qputenv("KTE_ENV_VAR_TEST", "KTE_ENV_VAR_TEST_VALUE");
+    editor->expandText(QStringLiteral("%{ENV:KTE_ENV_VAR_TEST}"), view, out);
+    QCOMPARE(out, QStringLiteral("KTE_ENV_VAR_TEST_VALUE"));
 
     // JS:<code>
     editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view, out);
