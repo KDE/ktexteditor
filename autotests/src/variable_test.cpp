@@ -25,6 +25,7 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
+#include <QFileInfo>
 #include <QtTest>
 #include <QUuid>
 
@@ -278,7 +279,7 @@ void VariableTest::testBuiltins()
 
     // ENV:HOME
     editor->expandText(QStringLiteral("%{ENV:HOME}"), view, out);
-    QCOMPARE(out, QDir::homePath());
+    QCOMPARE(QFileInfo(out).canonicalFilePath(), QFileInfo(QDir::homePath()).canonicalFilePath());
 
     // JS:<code>
     editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view, out);
