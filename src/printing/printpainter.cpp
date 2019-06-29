@@ -188,6 +188,7 @@ void PrintPainter::paint(QPrinter *printer) const
     uint y = 0;
     uint currentPage = (printer->fromPage() == 0) ? 1 : printer->fromPage();
     bool pageStarted = true;
+    uint remainder = 0;
 
     // On to draw something :-)
     while (lineCount <= pl.lastline) {
@@ -213,7 +214,6 @@ void PrintPainter::paint(QPrinter *printer) const
             paintLineNumber(painter, lineCount, pl);
         }
 
-        uint remainder = 0;
         paintLine(painter, lineCount, y, remainder, pl);
 
         if (!remainder) {
@@ -686,6 +686,9 @@ void PrintPainter::paintLine(QPainter &painter, const uint line, uint &y, uint &
     } else if (y + m_fontHeight * _lines > pl.maxHeight) {
         remainder = _lines - ((pl.maxHeight - y) / m_fontHeight);
         painter.setClipRect(0, 0, pl.maxWidth, (_lines - int(remainder)) * m_fontHeight + 1); //### drop the crosspatch in printerfriendly mode???
+    } else if (!pl.selectionOnly) {
+        painter.setClipRegion(QRegion());
+        painter.setClipping(false);
     }
 
     m_renderer->paintTextLine(painter, rangeptr, 0, (int)pl.maxWidth);
