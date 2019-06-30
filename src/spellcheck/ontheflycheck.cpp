@@ -73,7 +73,7 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
             this, SLOT(handleRespellCheckBlock(int,int)));
 
     connect(document, &KTextEditor::Document::reloaded,
-            this, [this](KTextEditor::Document *doc) {
+            this, [this](KTextEditor::Document *) {
                         refreshSpellCheck();
             });
 
