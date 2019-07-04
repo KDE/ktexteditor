@@ -164,17 +164,7 @@ void registerVariables(KTextEditor::Editor * editor)
     });
 
     editor->registerVariableMatch(QStringLiteral("UUID"), i18n("Generate a new UUID."), [](const QStringView&, KTextEditor::View*) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
         return QUuid::createUuid().toString(QUuid::WithoutBraces);
-#else
-        // LEGACY
-        QString uuid = QUuid::createUuid().toString();
-        if (uuid.startsWith(QLatin1Char('{')))
-            uuid.remove(0, 1);
-        if (uuid.endsWith(QLatin1Char('}')))
-            uuid.chop(1);
-        return uuid;
-#endif
     });
 }
 }
