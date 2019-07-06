@@ -1706,7 +1706,7 @@ void KTextEditor::ViewPrivate::setIconBorder(bool enable)
 
 void KTextEditor::ViewPrivate::toggleIconBorder()
 {
-    config()->setValue(KateViewConfig::ShowIconBar, config()->iconBar());
+    config()->setValue(KateViewConfig::ShowIconBar, !config()->iconBar());
 }
 
 void KTextEditor::ViewPrivate::setLineNumbersOn(bool enable)
