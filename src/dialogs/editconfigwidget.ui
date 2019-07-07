@@ -162,6 +162,13 @@
      </property>
      <layout class="QVBoxLayout">
       <item>
+       <widget class="QCheckBox" name="chkTextDragAndDrop">
+        <property name="text">
+         <string>Move selected text by drag and drop</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="chkSmartCopyCut">
         <property name="text">
          <string>Copy/Cut the current line if no selection</string>

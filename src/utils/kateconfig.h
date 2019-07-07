@@ -983,6 +983,7 @@ public:
         ShowScrollBarPreview,
         ShowScrollbars,
         ShowWordCount,
+        TextDragAndDrop,
         SmartCopyCut,
         ViInputModeStealKeys,
         ViRelativeLineNumbers,
@@ -1193,6 +1194,11 @@ public:
     bool wordCompletionRemoveTail() const
     {
         return value(WordCompletionRemoveTail).toBool();
+    }
+
+    bool textDragAndDrop() const
+    {
+        return value(TextDragAndDrop).toBool();
     }
 
     bool smartCopyCut() const

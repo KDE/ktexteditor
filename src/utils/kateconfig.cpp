@@ -550,6 +550,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowScrollBarPreview, "Scroll Bar Preview", QStringLiteral("scrollbar-preview"), true));
     addConfigEntry(ConfigEntry(ShowScrollbars, "Show Scrollbars", QString(), AlwaysOn, [](const QVariant &value) { return inBounds(0, value, 2); }));
     addConfigEntry(ConfigEntry(ShowWordCount, "Show Word Count", QString(), false));
+    addConfigEntry(ConfigEntry(TextDragAndDrop, "Text Drag And Drop", QString(), true));
     addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), false));
     addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
     addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));

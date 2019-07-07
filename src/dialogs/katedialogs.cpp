@@ -460,6 +460,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->chkAutoBrackets);
     observeChanges(ui->chkMousePasteAtCursorPosition);
     observeChanges(ui->chkShowStaticWordWrapMarker);
+    observeChanges(ui->chkTextDragAndDrop);
     observeChanges(ui->chkSmartCopyCut);
     observeChanges(ui->chkStaticWordWrap);
     observeChanges(ui->cmbInputMode);
@@ -493,6 +494,7 @@ void KateEditGeneralConfigTab::apply()
     KateViewConfig::global()->setValue(KateViewConfig::AutoBrackets, ui->chkAutoBrackets->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::InputMode, ui->cmbInputMode->currentData().toInt());
     KateViewConfig::global()->setValue(KateViewConfig::MousePasteAtCursorPosition, ui->chkMousePasteAtCursorPosition->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::TextDragAndDrop, ui->chkTextDragAndDrop->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::SmartCopyCut, ui->chkSmartCopyCut->isChecked());
 
     KateDocumentConfig::global()->configEnd();
@@ -504,6 +506,7 @@ void KateEditGeneralConfigTab::reload()
     ui->chkAutoBrackets->setChecked(KateViewConfig::global()->autoBrackets());
     ui->chkMousePasteAtCursorPosition->setChecked(KateViewConfig::global()->mousePasteAtCursorPosition());
     ui->chkShowStaticWordWrapMarker->setChecked(KateRendererConfig::global()->wordWrapMarker());
+    ui->chkTextDragAndDrop->setChecked(KateViewConfig::global()->textDragAndDrop());
     ui->chkSmartCopyCut->setChecked(KateViewConfig::global()->smartCopyCut());
     ui->chkStaticWordWrap->setChecked(KateDocumentConfig::global()->wordWrap());
 

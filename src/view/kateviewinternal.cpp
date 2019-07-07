@@ -2622,7 +2622,7 @@ void KateViewInternal::mousePressEvent(QMouseEvent *e)
             m_selectionCached = KTextEditor::Range::invalid();
         }
 
-        if (!(e->modifiers() & Qt::ShiftModifier) && isTargetSelected(e->pos())) {
+        if (view()->config()->textDragAndDrop() && !(e->modifiers() & Qt::ShiftModifier) && isTargetSelected(e->pos())) {
             m_dragInfo.state = diPending;
             m_dragInfo.start = e->pos();
         } else {
@@ -2915,7 +2915,7 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
         }
 
     } else {
-        if (isTargetSelected(e->pos())) {
+        if (view()->config()->textDragAndDrop() && isTargetSelected(e->pos())) {
             // mouse is over selected text. indicate that the text is draggable by setting
             // the arrow cursor as other Qt text editing widgets do
             if (m_mouseCursor != Qt::ArrowCursor) {
