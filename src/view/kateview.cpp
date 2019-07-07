@@ -1581,7 +1581,7 @@ bool KTextEditor::ViewPrivate::setCursorPositionInternal(const KTextEditor::Curs
             x += position.column() - z;
         }
 
-    m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x), false, false, calledExternally);
+    m_viewInternal->updateCursor(KTextEditor::Cursor(position.line(), x), false, calledExternally /* force center for external calls, see bug 408418 */, calledExternally);
 
     return true;
 }
