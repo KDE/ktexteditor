@@ -1154,6 +1154,16 @@ void KTextEditor::ViewPrivate::setupEditActions()
         connect(a, SIGNAL(triggered(bool)), SLOT(smartNewline()));
         m_editActions << a;
 
+        a = ac->addAction(QStringLiteral("no_indent_newline"));
+        a->setText(i18n("Insert a non-indented Newline"));
+        a->setWhatsThis(i18n("Insert a new line without indentation, regardless of indentation settings."));
+        scuts.clear();
+        scuts << QKeySequence(Qt::CTRL + Qt::Key_Return)
+              << QKeySequence(Qt::CTRL + Qt::Key_Enter);
+        ac->setDefaultShortcuts(a, scuts);
+        connect(a, SIGNAL(triggered(bool)), SLOT(noIndentNewline()));
+        m_editActions << a;
+
         a = ac->addAction(QStringLiteral("tools_indent"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-indent-more")));
         a->setText(i18n("&Indent"));
@@ -2862,6 +2872,13 @@ void KTextEditor::ViewPrivate::smartNewline()
     doc()->insertText(KTextEditor::Cursor(ln + 1, 0), line->string(0, col));
     doc()->editEnd();
 
+    m_viewInternal->updateView();
+}
+
+void KTextEditor::ViewPrivate::noIndentNewline()
+{
+    doc()->newLine(this, KTextEditor::DocumentPrivate::NoIndent);
+    m_viewInternal->iconBorder()->updateForCursorLineChange();
     m_viewInternal->updateView();
 }
 

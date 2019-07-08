@@ -824,7 +824,9 @@ public:
     int fromVirtualColumn(int line, int column) const;
     int fromVirtualColumn(const KTextEditor::Cursor &) const;
 
-    void newLine(KTextEditor::ViewPrivate *view);  // Changes input
+    enum NewLineIndent { Indent, NoIndent };
+
+    void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent);  // Changes input
     void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void transpose(const KTextEditor::Cursor &);

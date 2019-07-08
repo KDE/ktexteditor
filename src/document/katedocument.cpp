@@ -3213,7 +3213,8 @@ void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View*, c
     }
 }
 
-void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v)
+void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v,
+                                           KTextEditor::DocumentPrivate::NewLineIndent indent)
 {
     editStart();
 
@@ -3247,8 +3248,10 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v)
     // end edit session here, to have updated HL in userTypedChar!
     editEnd();
 
-    // second: indent the new line, if needed...
-    m_indenter->userTypedChar(v, v->cursorPosition(), QLatin1Char('\n'));
+    // second: if "indent" is true, indent the new line, if needed...
+    if (indent == KTextEditor::DocumentPrivate::Indent) {
+        m_indenter->userTypedChar(v, v->cursorPosition(), QLatin1Char('\n'));
+    }
 }
 
 void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)

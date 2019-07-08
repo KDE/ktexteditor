@@ -503,6 +503,14 @@ public Q_SLOTS:
     void smartNewline();
 
     /**
+     * Inserts a new line character at the current cursor position, with
+     * the newly inserted line having no indentation regardless of indentation
+     * settings. Useful e.g. for inserting a new, empty, line to separate
+     * blocks of code inside a function.
+     */
+    void noIndentNewline();
+
+    /**
      * Insert a tabulator char at current cursor position.
      */
     void backspace();
