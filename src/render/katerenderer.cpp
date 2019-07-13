@@ -394,21 +394,22 @@ QVector<QTextLayout::FormatRange> KateRenderer::decorationsForLine(const Kate::T
     if (rangesWithAttributes.size() > limitOfRanges) {
         rangesWithAttributes.clear();
     }
-    const auto &al = (textLine->attributesList().size() > limitOfRanges) ? QVector<Kate::TextLineData::Attribute>() : textLine->attributesList();
 
     // Don't compute the highlighting if there isn't going to be any highlighting
+    const auto &al = textLine->attributesList();
     if (!(selectionsOnly || !al.isEmpty() || !rangesWithAttributes.isEmpty())) {
         return QVector<QTextLayout::FormatRange>();
     }
 
-    // Add the inbuilt highlighting to the list
+    // Add the inbuilt highlighting to the list, limit with limitOfRanges
     RenderRangeVector renderRanges;
     if (!al.isEmpty()) {
         auto &currentRange = renderRanges.pushNewRange();
-        for (int i = 0; i < al.count(); ++i)
+        for (int i = 0; i < std::min(al.count(), limitOfRanges); ++i) {
             if (al[i].length > 0 && al[i].attributeValue > 0) {
                 currentRange.addRange(KTextEditor::Range(KTextEditor::Cursor(line, al[i].offset), al[i].length), specificAttribute(al[i].attributeValue));
             }
+        }
     }
 
     if (!completionHighlight) {
