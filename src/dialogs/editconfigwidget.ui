@@ -6,23 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>458</height>
+    <width>545</width>
+    <height>566</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QGroupBox" name="gbStaticWordWrap">
      <property name="title">
@@ -144,13 +132,59 @@
      <property name="title">
       <string>Auto Brackets</string>
      </property>
-     <layout class="QVBoxLayout" name="_2">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QCheckBox" name="chkAutoBrackets">
         <property name="text">
          <string>Enable automatic brackets</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="lbEncloseSelection">
+          <property name="cursor">
+           <cursorShape>WhatsThisCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="whatsThis">
+           <string>When there is some text selected will theses chars add in a way &quot;Auto Bracket&quot; do</string>
+          </property>
+          <property name="text">
+           <string>Chars to enclose a selection:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbEncloseSelection">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -192,7 +226,7 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
+       <width>8</width>
        <height>1</height>
       </size>
      </property>

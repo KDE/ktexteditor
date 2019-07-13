@@ -523,7 +523,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(AutomaticCompletionInvocation, "Auto Completion", QString(), true));
     addConfigEntry(ConfigEntry(BackspaceRemoveComposedCharacters, "Backspace Remove Composed Characters", QString(), false));
     addConfigEntry(ConfigEntry(BookmarkSorting, "Bookmark Menu Sorting", QString(), 0));
-    addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QString(), QString()));
+    addConfigEntry(ConfigEntry(CharsToEncloseSelection, "Chars To Enclose Selection", QStringLiteral("enclose-selection"), QString()));
     addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) { return isPositive(value); }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) { return inBounds(1, value, 100); }));
     addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) { return inBounds(1, value, 3); }));
@@ -552,6 +552,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ShowWordCount, "Show Word Count", QString(), false));
     addConfigEntry(ConfigEntry(TextDragAndDrop, "Text Drag And Drop", QString(), true));
     addConfigEntry(ConfigEntry(SmartCopyCut, "Smart Copy Cut", QString(), false));
+    addConfigEntry(ConfigEntry(UserSetsOfCharsToEncloseSelection, "User Sets Of Chars To Enclose Selection", QString(), QStringList()));
     addConfigEntry(ConfigEntry(ViInputModeStealKeys, "Vi Input Mode Steal Keys", QString(), false));
     addConfigEntry(ConfigEntry(ViRelativeLineNumbers, "Vi Relative Line Numbers", QString(), false));
     addConfigEntry(ConfigEntry(WordCompletion, "Word Completion", QString(), true));
@@ -610,7 +611,6 @@ void KateViewConfig::updateConfig()
         KTextEditor::EditorPrivate::config()->sync();
     }
 }
-
 //END
 
 //BEGIN KateRendererConfig

@@ -463,6 +463,22 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->chkTextDragAndDrop);
     observeChanges(ui->chkSmartCopyCut);
     observeChanges(ui->chkStaticWordWrap);
+    observeChanges(ui->cmbEncloseSelection);
+    connect(ui->cmbEncloseSelection->lineEdit(), &QLineEdit::editingFinished, [=] {
+        const int index = ui->cmbEncloseSelection->currentIndex();
+        const QString text = ui->cmbEncloseSelection->currentText();
+        // Text removed? Remove item, but don't remove default data!
+        if (index >= KateViewConfig::UserData && text.isEmpty()) {
+            ui->cmbEncloseSelection->removeItem(index);
+            slotChanged();
+
+        // Not already there? Add new item! For what ever reason isn't it's done automatically
+        } else if (ui->cmbEncloseSelection->findText(text) < 0) {
+            ui->cmbEncloseSelection->addItem(text);
+            slotChanged();
+        }
+        ui->cmbEncloseSelection->setCurrentIndex(ui->cmbEncloseSelection->findText(text));
+    });
     observeChanges(ui->cmbInputMode);
     observeChanges(ui->sbWordWrap);
 
@@ -492,6 +508,11 @@ void KateEditGeneralConfigTab::apply()
     KateRendererConfig::global()->setWordWrapMarker(ui->chkShowStaticWordWrapMarker->isChecked());
 
     KateViewConfig::global()->setValue(KateViewConfig::AutoBrackets, ui->chkAutoBrackets->isChecked());
+    KateViewConfig::global()->setValue(KateViewConfig::CharsToEncloseSelection, ui->cmbEncloseSelection->currentText());
+    QStringList userLetters; for (int i = KateViewConfig::UserData; i < ui->cmbEncloseSelection->count(); ++i) {
+        userLetters.append(ui->cmbEncloseSelection->itemText(i));
+    }
+    KateViewConfig::global()->setValue(KateViewConfig::UserSetsOfCharsToEncloseSelection, userLetters);
     KateViewConfig::global()->setValue(KateViewConfig::InputMode, ui->cmbInputMode->currentData().toInt());
     KateViewConfig::global()->setValue(KateViewConfig::MousePasteAtCursorPosition, ui->chkMousePasteAtCursorPosition->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::TextDragAndDrop, ui->chkTextDragAndDrop->isChecked());
@@ -513,8 +534,26 @@ void KateEditGeneralConfigTab::reload()
     ui->sbWordWrap->setSuffix(ki18ncp("Wrap words at (value is at 20 or larger)", " character", " characters"));
     ui->sbWordWrap->setValue(KateDocumentConfig::global()->wordWrapAt());
 
+    ui->cmbEncloseSelection->clear();
+    ui->cmbEncloseSelection->lineEdit()->setClearButtonEnabled(true);
+    ui->cmbEncloseSelection->lineEdit()->setPlaceholderText(QStringLiteral("Feature is not active"));
+    ui->cmbEncloseSelection->addItem(QString(), KateViewConfig::None);
+    ui->cmbEncloseSelection->setItemData(0, i18n("Disable Feature"), Qt::ToolTipRole);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), KateViewConfig::MarkDown);
+    ui->cmbEncloseSelection->setItemData(1, i18n("May handy with Markdown"), Qt::ToolTipRole);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]"), KateViewConfig::MirrorChar);
+    ui->cmbEncloseSelection->setItemData(2, i18n("Mirror characters, similar but not exact like auto brackets"), Qt::ToolTipRole);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("´`_.:|#@~*!?$%/=,;-+^°§&"), KateViewConfig::NonLetters);
+    ui->cmbEncloseSelection->setItemData(3, i18n("Non letter character"), Qt::ToolTipRole);
+    const QStringList userLetters = KateViewConfig::global()->value(KateViewConfig::UserSetsOfCharsToEncloseSelection).toStringList();
+    for (int i = 0; i < userLetters.size(); ++i) {
+        ui->cmbEncloseSelection->addItem(userLetters.at(i), KateViewConfig::UserData + i);
+    }
+    ui->cmbEncloseSelection->setCurrentIndex(ui->cmbEncloseSelection->findText(KateViewConfig::global()->charsToEncloseSelection()));
+
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
+
 }
 
 QString KateEditGeneralConfigTab::name() const

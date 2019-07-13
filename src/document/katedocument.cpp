@@ -3051,6 +3051,15 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         }
     }
 
+    // Treat some char also as "auto bracket" only when we have a selection
+    if (view->selection() && closingBracket.isNull() && view->config()->encloseSelectionInChars()) {
+        const QChar typedChar = chars.at(0);
+        if (view->config()->charsToEncloseSelection().contains(typedChar)) {
+            // Always the mirrored cause no harm, but allow funny brackets
+            closingBracket = typedChar.mirroredChar();
+        }
+    }
+
     editStart();
 
     /**
