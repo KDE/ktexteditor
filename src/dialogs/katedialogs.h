@@ -185,6 +185,14 @@ public:
 private:
     Ui::EditConfigWidget *ui;
 
+    enum SetOfCharsToEncloseSelection {
+        None,
+        MarkDown,
+        NonLetters,
+        MirrorChar,
+        UserData    // Ensure to keep it at bottom of this list
+    };
+
 public Q_SLOTS:
     void apply() override;
     void reload() override;

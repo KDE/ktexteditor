@@ -468,7 +468,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
         const int index = ui->cmbEncloseSelection->currentIndex();
         const QString text = ui->cmbEncloseSelection->currentText();
         // Text removed? Remove item, but don't remove default data!
-        if (index >= KateViewConfig::UserData && text.isEmpty()) {
+        if (index >= UserData && text.isEmpty()) {
             ui->cmbEncloseSelection->removeItem(index);
             slotChanged();
 
@@ -509,7 +509,7 @@ void KateEditGeneralConfigTab::apply()
 
     KateViewConfig::global()->setValue(KateViewConfig::AutoBrackets, ui->chkAutoBrackets->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::CharsToEncloseSelection, ui->cmbEncloseSelection->currentText());
-    QStringList userLetters; for (int i = KateViewConfig::UserData; i < ui->cmbEncloseSelection->count(); ++i) {
+    QStringList userLetters; for (int i = UserData; i < ui->cmbEncloseSelection->count(); ++i) {
         userLetters.append(ui->cmbEncloseSelection->itemText(i));
     }
     KateViewConfig::global()->setValue(KateViewConfig::UserSetsOfCharsToEncloseSelection, userLetters);
@@ -537,17 +537,17 @@ void KateEditGeneralConfigTab::reload()
     ui->cmbEncloseSelection->clear();
     ui->cmbEncloseSelection->lineEdit()->setClearButtonEnabled(true);
     ui->cmbEncloseSelection->lineEdit()->setPlaceholderText(QStringLiteral("Feature is not active"));
-    ui->cmbEncloseSelection->addItem(QString(), KateViewConfig::None);
+    ui->cmbEncloseSelection->addItem(QString(), None);
     ui->cmbEncloseSelection->setItemData(0, i18n("Disable Feature"), Qt::ToolTipRole);
-    ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), KateViewConfig::MarkDown);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), MarkDown);
     ui->cmbEncloseSelection->setItemData(1, i18n("May handy with Markdown"), Qt::ToolTipRole);
-    ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]"), KateViewConfig::MirrorChar);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]"), MirrorChar);
     ui->cmbEncloseSelection->setItemData(2, i18n("Mirror characters, similar but not exact like auto brackets"), Qt::ToolTipRole);
-    ui->cmbEncloseSelection->addItem(QStringLiteral("´`_.:|#@~*!?$%/=,;-+^°§&"), KateViewConfig::NonLetters);
+    ui->cmbEncloseSelection->addItem(QStringLiteral("´`_.:|#@~*!?$%/=,;-+^°§&"), NonLetters);
     ui->cmbEncloseSelection->setItemData(3, i18n("Non letter character"), Qt::ToolTipRole);
     const QStringList userLetters = KateViewConfig::global()->value(KateViewConfig::UserSetsOfCharsToEncloseSelection).toStringList();
     for (int i = 0; i < userLetters.size(); ++i) {
-        ui->cmbEncloseSelection->addItem(userLetters.at(i), KateViewConfig::UserData + i);
+        ui->cmbEncloseSelection->addItem(userLetters.at(i), UserData + i);
     }
     ui->cmbEncloseSelection->setCurrentIndex(ui->cmbEncloseSelection->findText(KateViewConfig::global()->charsToEncloseSelection()));
 

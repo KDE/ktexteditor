@@ -1241,14 +1241,6 @@ public:
         return value(AutoBrackets).toBool();
     }
 
-    enum SetOfCharsToEncloseSelection {
-        None,
-        MarkDown,
-        NonLetters,
-        MirrorChar,
-        UserData    // Ensure to keep it at bottom of this list
-    };
-
     bool encloseSelectionInChars() const
     {
         return !value(CharsToEncloseSelection).toString().isEmpty();
