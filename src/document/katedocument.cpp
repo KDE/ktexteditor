@@ -3055,7 +3055,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
     if (view->selection() && closingBracket.isNull() && view->config()->encloseSelectionInChars()) {
         const QChar typedChar = chars.at(0);
         if (view->config()->charsToEncloseSelection().contains(typedChar)) {
-            // Always the mirrored cause no harm, but allow funny brackets
+            // The unconditional mirroring cause no harm, but allows funny brackets
             closingBracket = typedChar.mirroredChar();
         }
     }

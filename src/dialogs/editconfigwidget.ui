@@ -151,10 +151,10 @@
            <string/>
           </property>
           <property name="whatsThis">
-           <string>When there is some text selected will theses chars add in a way &quot;Auto Bracket&quot; do</string>
+           <string>When some text is selected these chars will be added on both its sides in a way &quot;Auto Bracket&quot; do</string>
           </property>
           <property name="text">
-           <string>Chars to enclose a selection:</string>
+           <string>Chars to enclose selection:</string>
           </property>
          </widget>
         </item>

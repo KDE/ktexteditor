@@ -472,7 +472,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
             ui->cmbEncloseSelection->removeItem(index);
             slotChanged();
 
-        // Not already there? Add new item! For what ever reason isn't it's done automatically
+        // Not already there? Add new item! For whatever reason it isn't done automatically
         } else if (ui->cmbEncloseSelection->findText(text) < 0) {
             ui->cmbEncloseSelection->addItem(text);
             slotChanged();
@@ -540,9 +540,9 @@ void KateEditGeneralConfigTab::reload()
     ui->cmbEncloseSelection->addItem(QString(), None);
     ui->cmbEncloseSelection->setItemData(0, i18n("Disable Feature"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), MarkDown);
-    ui->cmbEncloseSelection->setItemData(1, i18n("May handy with Markdown"), Qt::ToolTipRole);
+    ui->cmbEncloseSelection->setItemData(1, i18n("May be handy with Markdown"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("<>(){}[]"), MirrorChar);
-    ui->cmbEncloseSelection->setItemData(2, i18n("Mirror characters, similar but not exact like auto brackets"), Qt::ToolTipRole);
+    ui->cmbEncloseSelection->setItemData(2, i18n("Mirror characters, similar but not exactly like auto brackets"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("´`_.:|#@~*!?$%/=,;-+^°§&"), NonLetters);
     ui->cmbEncloseSelection->setItemData(3, i18n("Non letter character"), Qt::ToolTipRole);
     const QStringList userLetters = KateViewConfig::global()->value(KateViewConfig::UserSetsOfCharsToEncloseSelection).toStringList();
