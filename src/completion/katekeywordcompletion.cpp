@@ -167,7 +167,7 @@ QVariant KateKeywordCompletionModel::data(const QModelIndex& index, int role) co
 KTextEditor::CodeCompletionModelControllerInterface::MatchReaction KateKeywordCompletionModel::matchingItem(
     const QModelIndex& /*matched*/)
 {
-    return KTextEditor::CodeCompletionModelControllerInterface::None;
+    return KTextEditor::CodeCompletionModelControllerInterface::HideListIfAutomaticInvocation;
 }
 
 
