@@ -284,7 +284,10 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        if (m_leftMouseDown) {
+        if (m_leftMouseDown &&
+            e->pos().y() > m_mapGroveRect.top() &&
+            e->pos().y() < m_mapGroveRect.bottom())
+        {
             // if we show the minimap left-click jumps directly to the selected position
             int newVal = (e->pos().y()-m_mapGroveRect.top()) / (double)m_mapGroveRect.height() * (double)(maximum()+pageStep()) - pageStep()/2;
             newVal = qBound(0, newVal, maximum());
