@@ -693,7 +693,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = ac->addAction(QStringLiteral("switch_next_input_mode"));
     a->setText(i18n("Switch to Next Input Mode"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_V));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_V));
     a->setWhatsThis(i18n("Switch to the next input mode."));
     connect(a, SIGNAL(triggered(bool)), SLOT(cycleInputMode()));
 
