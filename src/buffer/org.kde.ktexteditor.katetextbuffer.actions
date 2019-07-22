@@ -36,7 +36,6 @@ Name[x-test]=xxDocument Actionsxx
 Name[zh_CN]=文档动作
 Name[zh_TW]=文件動作
 Policy=auth_admin
-Persistence=session
 
 [org.kde.ktexteditor.katetextbuffer.savefile]
 Name=Save Document
@@ -112,4 +111,5 @@ Description[x-test]=xxRoot privileges are needed to save this documentxx
 Description[zh_CN]=保存文档需要超级用户权限
 Description[zh_TW]=需要 root 權限以儲存此文件
 Policy=auth_admin
-Persistence=session
+# No persistence
+#Persistence=
