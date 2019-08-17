@@ -115,6 +115,11 @@ KTextEditor::Range CommandRangeExpressionParser::parseRange(const QString &comma
 
     commandTmp.remove(RE_CmdRange());
 
+    // Vi indexes lines starting from 1; however, it does accept 0 as a valid line index
+    // and treats it as 1
+    position1 = (position1 == 0) ? 1 : position1;
+    position2 = (position2 == 0) ? 1 : position2;
+
     // special case: if the command is just a number with an optional +/- prefix, rewrite to "goto"
     if (commandTmp.isEmpty()) {
         destTransformedCommand = QStringLiteral("goto %1").arg(position1);

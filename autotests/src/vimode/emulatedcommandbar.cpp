@@ -1943,6 +1943,12 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
   DoTest("foo\nbar\nxyz", ":%delete\\enter", "");
   DoTest("foo\nbar\nxyz\nbaz", "jVj:delete\\enter", "foo\nbaz");
   DoTest("foo\nbar\nxyz\nbaz", "j2:delete\\enter", "foo\nbaz");
+
+  // Test that 0 is accepted as a line index (and treated as 1) in a range specifier
+  DoTest("bar\nbar\nbar", ":0,$s/bar/foo/g\\enter", "foo\nfoo\nfoo");
+  DoTest("bar\nbar\nbar", ":1,$s/bar/foo/g\\enter", "foo\nfoo\nfoo");
+  DoTest("bar\nbar\nbar", ":0,2$s/bar/foo/g\\enter", "foo\nfoo\nbar");
+
   // On ctrl-d, delete the "search" term in a s/search/replace/xx
   BeginTest("foo bar");
   TestPressKey(":s/x\\\\\\\\\\\\/yz/rep\\\\\\\\\\\\/lace/g\\ctrl-d");
