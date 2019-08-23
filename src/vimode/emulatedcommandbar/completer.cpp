@@ -29,6 +29,7 @@ using namespace KateVi;
 #include <QLineEdit>
 #include <QStringListModel>
 #include <QAbstractItemView>
+#include <QRegularExpression>
 
 namespace
 {
@@ -207,17 +208,20 @@ void Completer::updateCompletionPrefix()
 
 CompletionStartParams Completer::activateWordFromDocumentCompletion()
 {
-    QRegExp wordRegEx(QLatin1String("\\w{1,}"));
+    static const QRegularExpression wordRegEx(QLatin1String("\\w{1,}"));
+    QRegularExpressionMatch match;
+
     QStringList foundWords;
     // Narrow the range of lines we search around the cursor so that we don't die on huge files.
     const int startLine = qMax(0, m_view->cursorPosition().line() - 4096);
     const int endLine = qMin(m_view->document()->lines(), m_view->cursorPosition().line() + 4096);
     for (int lineNum = startLine; lineNum < endLine; lineNum++) {
-        const QString line = m_view->document()->line(lineNum); int wordSearchBeginPos = 0;
-        while (wordRegEx.indexIn(line, wordSearchBeginPos) != -1) {
-            const QString foundWord = wordRegEx.cap(0);
+        const QString line = m_view->document()->line(lineNum);
+        int wordSearchBeginPos = 0;
+        while ((match = wordRegEx.match(line, wordSearchBeginPos)).hasMatch()) {
+            const QString foundWord = match.captured();
             foundWords << foundWord;
-            wordSearchBeginPos = wordRegEx.indexIn(line, wordSearchBeginPos) + wordRegEx.matchedLength();
+            wordSearchBeginPos = match.capturedEnd();
         }
     }
     foundWords = QSet<QString>::fromList(foundWords).toList();

@@ -37,7 +37,7 @@
 #include <KLocalizedString>
 
 #include <QDir>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QUrl>
 
 using namespace KateVi;
@@ -58,7 +58,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
     }
 
     //create a list of args
-    QStringList args(_cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
+    QStringList args(_cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
     // ALL commands that takes no arguments.
@@ -106,10 +106,11 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
                                  range.end().line()), 0));
         }
 
-        QRegExp number(QLatin1String("^(\\d+)$"));
+        static const QRegularExpression number(QLatin1String("^(\\d+)$"));
         for (int i = 0; i < args.count(); i++) {
-            if (number.indexIn(args.at(i)) != -1) {
-                count += number.cap().toInt() - 1;
+            auto match = number.match(args.at(i));
+            if (match.hasMatch()) {
+                count += match.captured(0).toInt() - 1;
             }
 
             QChar r = args.at(i).at(0);

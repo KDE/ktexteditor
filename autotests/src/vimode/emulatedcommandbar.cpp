@@ -3349,10 +3349,11 @@ void EmulatedCommandBarTest::verifyShowsNumberOfReplacementsAcrossNumberOfLines(
   // Be a bit vague about the actual contents due to e.g. localization.
   // TODO - see if we can insist that en_US is available on the Kate Jenkins server and
   // insist that we use it ... ?
-  QRegExp numReplacementsMessageRegex("^.*(\\d+).*(\\d+).*$");
-  QVERIFY(numReplacementsMessageRegex.exactMatch(commandMessageResponseText));
-  const QString actualNumReplacementsAsString = numReplacementsMessageRegex.cap(1);
-  const QString actualAcrossNumLinesAsString = numReplacementsMessageRegex.cap(2);
+  static const QRegularExpression numReplacementsMessageRegex("^.*(\\d+).*(\\d+).*$");
+  const auto match = numReplacementsMessageRegex.match(commandMessageResponseText);
+  QVERIFY(match.hasMatch());
+  const QString actualNumReplacementsAsString = match.captured(1);
+  const QString actualAcrossNumLinesAsString = match.captured(2);
   QCOMPARE(actualNumReplacementsAsString, expectedNumReplacementsAsString);
   QCOMPARE(actualAcrossNumLinesAsString, expectedAcrossNumLinesAsString);
 }

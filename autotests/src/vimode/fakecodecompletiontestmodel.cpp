@@ -24,6 +24,7 @@
 #include <katewordcompletion.h>
 #include "base.h"
 #include "fakecodecompletiontestmodel.h"
+#include <QRegularExpression>
 
 using namespace KTextEditor;
 
@@ -120,10 +121,11 @@ void FakeCodeCompletionTestModel::executeCompletionItem (KTextEditor::View *view
         // The code for a function call to a function taking no arguments.
         const QString justFunctionName = textToInsert.left(textToInsert.indexOf("("));
 
-        QRegExp whitespaceThenOpeningBracket("^\\s*(\\()");
+        static const QRegularExpression whitespaceThenOpeningBracket("^\\s*(\\()");
+        const QRegularExpressionMatch match = whitespaceThenOpeningBracket.match(textAfterCursor);
         int openingBracketPos = -1;
-        if (textAfterCursor.contains(whitespaceThenOpeningBracket)) {
-            openingBracketPos = whitespaceThenOpeningBracket.pos(1) + word.start().column() + justFunctionName.length() + 1 + lengthStillToRemove;
+        if (match.hasMatch()) {
+            openingBracketPos = match.capturedStart(1) + word.start().column() + justFunctionName.length() + 1 + lengthStillToRemove;
         }
         const bool mergeOpenBracketWithExisting = (openingBracketPos != -1) && !endedWithSemiColon;
         // Add the function name, for now: we don't yet know if we'll be adding the "()", too.

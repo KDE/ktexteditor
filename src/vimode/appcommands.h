@@ -23,6 +23,7 @@
 
 #include <KTextEditor/Command>
 #include <QObject>
+#include <QRegularExpression>
 
 namespace KTextEditor {
     class MainWindow;
@@ -67,17 +68,17 @@ private Q_SLOTS:
     void quit();
 
 private:
-    QRegExp re_write;
-    QRegExp re_close;
-    QRegExp re_quit;
-    QRegExp re_exit;
-    QRegExp re_edit;
-    QRegExp re_tabedit;
-    QRegExp re_new;
-    QRegExp re_split;
-    QRegExp re_vsplit;
-    QRegExp re_vclose;
-    QRegExp re_only;
+    const QRegularExpression re_write;
+    const QRegularExpression re_close;
+    const QRegularExpression re_quit;
+    const QRegularExpression re_exit;
+    const QRegularExpression re_edit;
+    const QRegularExpression re_tabedit;
+    const QRegularExpression re_new;
+    const QRegularExpression re_split;
+    const QRegularExpression re_vsplit;
+    const QRegularExpression re_vclose;
+    const QRegularExpression re_only;
 };
 
 class BufferCommands : public KTextEditor::Command

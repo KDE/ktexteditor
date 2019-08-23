@@ -26,6 +26,8 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
 
+#include <QRegularExpression>
+
 using namespace KTextEditor;
 
 class CustomRangeModel : public CodeCompletionTestModel, public CodeCompletionModelControllerInterface
@@ -55,8 +57,8 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegExp allowedText("^\\$?(\\w*)");
-        return !allowedText.exactMatch(currentCompletion);
+        static const QRegularExpression allowedText("^\\$?(\\w*)$");
+        return !allowedText.match(currentCompletion).hasMatch();
     }
 };
 
@@ -73,8 +75,8 @@ public:
     {
         Q_UNUSED(view);
         Q_UNUSED(range);
-        static const QRegExp allowedText("^([\\w-]*)");
-        return !allowedText.exactMatch(currentCompletion);
+        static const QRegularExpression allowedText("^([\\w-]*)");
+        return !allowedText.match(currentCompletion).hasMatch();
     }
 };
 

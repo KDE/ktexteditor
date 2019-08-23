@@ -19,6 +19,7 @@
 */
 
 #include <QDir>
+#include <QRegularExpression>
 #include <QTimer>
 
 #include <KLocalizedString>
@@ -41,18 +42,18 @@ AppCommands::AppCommands()
          , QStringLiteral("vnew"), QStringLiteral("e"), QStringLiteral("edit"), QStringLiteral("enew"), QStringLiteral("sp"), QStringLiteral("split"), QStringLiteral("vs")
          , QStringLiteral("vsplit"), QStringLiteral("only"), QStringLiteral("tabe"), QStringLiteral("tabedit"), QStringLiteral("tabnew"), QStringLiteral("bd")
          , QStringLiteral("bdelete"), QStringLiteral("tabc"), QStringLiteral("tabclose"), QStringLiteral("clo"), QStringLiteral("close") })
+    , re_write(QStringLiteral("^w(a)?$"))
+    , re_close(QStringLiteral("^bd(elete)?|tabc(lose)?$"))
+    , re_quit(QStringLiteral("^(w)?q(a|all)?(!)?$"))
+    , re_exit(QStringLiteral("^x(a)?$"))
+    , re_edit(QStringLiteral("^e(dit)?|tabe(dit)?|tabnew$"))
+    , re_tabedit(QStringLiteral("^tabe(dit)?|tabnew$"))
+    , re_new(QStringLiteral("^(v)?new$"))
+    , re_split(QStringLiteral("^sp(lit)?$"))
+    , re_vsplit(QStringLiteral("^vs(plit)?$"))
+    , re_vclose(QStringLiteral("^clo(se)?$"))
+    , re_only(QStringLiteral("^on(ly)?$"))
 {
-    re_write.setPattern(QStringLiteral("w(a)?"));
-    re_close.setPattern(QStringLiteral("bd(elete)?|tabc(lose)?"));
-    re_quit.setPattern(QStringLiteral("(w)?q(a|all)?(!)?"));
-    re_exit.setPattern(QStringLiteral("x(a)?"));
-    re_edit.setPattern(QStringLiteral("e(dit)?|tabe(dit)?|tabnew"));
-    re_tabedit.setPattern(QStringLiteral("tabe(dit)?|tabnew"));
-    re_new.setPattern(QStringLiteral("(v)?new"));
-    re_split.setPattern(QStringLiteral("sp(lit)?"));
-    re_vsplit.setPattern(QStringLiteral("vs(plit)?"));
-    re_vclose.setPattern(QStringLiteral("clo(se)?"));
-    re_only.setPattern(QStringLiteral("on(ly)?"));
 }
 
 AppCommands::~AppCommands()
@@ -62,14 +63,15 @@ AppCommands::~AppCommands()
 
 bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
-    QStringList args(cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
+    QStringList args(cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
     QString command(args.takeFirst());
 
     KTextEditor::MainWindow *mainWin = view->mainWindow();
     KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
 
-    if (re_write.exactMatch(command)) {  //TODO: handle writing to specific file
-        if (!re_write.cap(1).isEmpty()) { // [a]ll
+    QRegularExpressionMatch match;
+    if ((match = re_write.match(command)).hasMatch()) {  //TODO: handle writing to specific file
+        if (!match.captured(1).isEmpty()) { // [a]ll
             Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                 doc->save();
             }
@@ -80,12 +82,12 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         }
     }
     // Other buffer commands are implemented by the KateFileTree plugin
-    else if (re_close.exactMatch(command)) {
+    else if ((match = re_close.match(command)).hasMatch()) {
         QTimer::singleShot(0, [app, view](){ app->closeDocument(view->document()); });
-    } else if (re_quit.exactMatch(command)) {
-        const bool save = !re_quit.cap(1).isEmpty(); // :[w]q
-        const bool allDocuments = !re_quit.cap(2).isEmpty(); // :q[all]
-        const bool doNotPromptForSave = !re_quit.cap(3).isEmpty(); // :q[!]
+    } else if ((match = re_quit.match(command)).hasMatch()) {
+        const bool save = !match.captured(1).isEmpty(); // :[w]q
+        const bool allDocuments = !match.captured(2).isEmpty(); // :q[all]
+        const bool doNotPromptForSave = !match.captured(3).isEmpty(); // :q[!]
 
         if (allDocuments) {
             if (save) {
@@ -122,8 +124,8 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 }
             }
         }
-    } else if (re_exit.exactMatch(command)) {
-        if (!re_exit.cap(1).isEmpty()) { // a[ll]
+    } else if ((match = re_exit.match(command)).hasMatch()) {
+        if (!match.captured(1).isEmpty()) { // a[ll]
             Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
                 doc->save();
             }
@@ -139,10 +141,10 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
                 QTimer::singleShot(0, this, SLOT(quit()));
             }
         }
-    } else if (re_edit.exactMatch(command)) {
+    } else if ((match = re_edit.match(command)).hasMatch()) {
         QString argument = args.join(QLatin1Char(' '));
         if (argument.isEmpty() || argument == QLatin1String("!")) {
-            if (re_tabedit.exactMatch(command)) {
+            if ((match = re_tabedit.match(command)).hasMatch()) {
                 if (auto doc = app->openUrl(QUrl())) {
                     QTimer::singleShot(0, [mainWin, doc](){ mainWin->activateView(doc); });
                 }
@@ -177,8 +179,8 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         }
     // splitView() orientations are reversed from the usual editor convention.
     // 'vsplit' and 'vnew' use Qt::Horizontal to match vi and the Kate UI actions.
-    } else if (re_new.exactMatch(command)) {
-        if (re_new.cap(1) == QLatin1String("v")) { // vertical split
+    } else if ((match = re_new.match(command)).hasMatch()) {
+        if (match.captured(1) == QLatin1String("v")) { // vertical split
             mainWin->splitView(Qt::Horizontal);
         } else {                    // horizontal split
             mainWin->splitView(Qt::Vertical);
@@ -186,13 +188,13 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         mainWin->openUrl(QUrl());
     } else if (command == QLatin1String("enew")) {
         mainWin->openUrl(QUrl());
-    } else if (re_split.exactMatch(command)) {
+    } else if ((match = re_split.match(command)).hasMatch()) {
         mainWin->splitView(Qt::Vertical); // see above
-    } else if (re_vsplit.exactMatch(command)) {
+    } else if ((match = re_vsplit.match(command)).hasMatch()) {
         mainWin->splitView(Qt::Horizontal);
-    } else if (re_vclose.exactMatch(command)) {
+    } else if ((match = re_vclose.match(command)).hasMatch()) {
         QTimer::singleShot(0, this, SLOT(closeCurrentSplitView()));
-    } else if (re_only.exactMatch(command)) {
+    } else if ((match = re_only.match(command)).hasMatch()) {
         QTimer::singleShot(0, this, SLOT(closeOtherSplitViews()));
     }
 
@@ -203,7 +205,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
 {
     Q_UNUSED(view);
 
-    if (re_write.exactMatch(cmd)) {
+    if (re_write.match(cmd).hasMatch()) {
         msg = i18n("<p><b>w/wa &mdash; write document(s) to disk</b></p>"
                    "<p>Usage: <tt><b>w[a]</b></tt></p>"
                    "<p>Writes the current document(s) to disk. "
@@ -213,7 +215,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
                    "<p>If no file name is associated with the document, "
                    "a file dialog will be shown.</p>");
         return true;
-    } else if (re_quit.exactMatch(cmd)) {
+    } else if (re_quit.match(cmd).hasMatch()) {
         msg = i18n("<p><b>q/qa/wq/wqa &mdash; [write and] quit</b></p>"
                    "<p>Usage: <tt><b>[w]q[a]</b></tt></p>"
                    "<p>Quits the application. If <tt>w</tt> is prepended, it also writes"
@@ -227,7 +229,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
                    "If no file name is associated with the document and it should be written to disk, "
                    "a file dialog will be shown.</p>");
         return true;
-    } else if (re_exit.exactMatch(cmd)) {
+    } else if (re_exit.match(cmd).hasMatch()) {
         msg = i18n("<p><b>x/xa &mdash; write and quit</b></p>"
                    "<p>Usage: <tt><b>x[a]</b></tt></p>"
                    "<p>Saves document(s) and quits (e<b>x</b>its). This command "
@@ -240,22 +242,22 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
                    "<p>Unlike the 'w' commands, this command only writes the document if it is modified."
                    "</p>");
         return true;
-    } else if (re_split.exactMatch(cmd)) {
+    } else if (re_split.match(cmd).hasMatch()) {
         msg = i18n("<p><b>sp,split&mdash; Split horizontally the current view into two</b></p>"
                    "<p>Usage: <tt><b>sp[lit]</b></tt></p>"
                    "<p>The result is two views on the same document.</p>");
         return true;
-    } else if (re_vsplit.exactMatch(cmd)) {
+    } else if (re_vsplit.match(cmd).hasMatch()) {
         msg = i18n("<p><b>vs,vsplit&mdash; Split vertically the current view into two</b></p>"
                    "<p>Usage: <tt><b>vs[plit]</b></tt></p>"
                    "<p>The result is two views on the same document.</p>");
         return true;
-    } else if (re_vclose.exactMatch(cmd)) {
+    } else if (re_vclose.match(cmd).hasMatch()) {
         msg = i18n("<p><b>clo[se]&mdash; Close the current view</b></p>"
                    "<p>Usage: <tt><b>clo[se]</b></tt></p>"
                    "<p>After executing it, the current view will be closed.</p>");
         return true;
-    } else if (re_new.exactMatch(cmd)) {
+    } else if (re_new.match(cmd).hasMatch()) {
         msg = i18n("<p><b>[v]new &mdash; split view and create new document</b></p>"
                    "<p>Usage: <tt><b>[v]new</b></tt></p>"
                    "<p>Splits the current view and opens a new document in the new view."
@@ -264,7 +266,7 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
                    " <tt>vnew</tt> &mdash; splits the view vertically and opens a new document.<br />"
                    "</p>");
         return true;
-    } else if (re_edit.exactMatch(cmd)) {
+    } else if (re_edit.match(cmd).hasMatch()) {
         msg = i18n("<p><b>e[dit] &mdash; reload current document</b></p>"
                    "<p>Usage: <tt><b>e[dit]</b></tt></p>"
                    "<p>Starts <b>e</b>diting the current document again. This is useful to re-edit"

@@ -33,6 +33,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QRegularExpression>
 
 #include <KLocalizedString>
 #include <KConfig>
@@ -308,22 +309,17 @@ void KateScriptManager::reload()
 
 bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QString &errorMsg, const KTextEditor::Range &)
 {
-    QStringList args(_cmd.split(QRegExp(QLatin1String("\\s+")), QString::SkipEmptyParts));
-    QString cmd(args.first());
-    args.removeFirst();
+    Q_UNUSED(view)
 
-    if (!view) {
-        errorMsg = i18n("Could not access view");
-        return false;
-    }
+    QVector<QStringRef> args = _cmd.splitRef(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts);
+    const QString cmd = args.first().toString();
 
     if (cmd == QLatin1String("reload-scripts")) {
         reload();
         return true;
-    } else {
-        errorMsg = i18n("Command not found: %1", cmd);
-        return false;
     }
+
+    return false;
 }
 
 bool KateScriptManager::help(KTextEditor::View *view, const QString &cmd, QString &msg)
@@ -333,9 +329,8 @@ bool KateScriptManager::help(KTextEditor::View *view, const QString &cmd, QStrin
     if (cmd == QLatin1String("reload-scripts")) {
         msg = i18n("Reload all JavaScript files (indenters, command line scripts, etc).");
         return true;
-    } else {
-        msg = i18n("Command not found: %1", cmd);
-        return false;
     }
+
+    return false;
 }
 

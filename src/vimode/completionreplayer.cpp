@@ -28,6 +28,7 @@
 #include "lastchangerecorder.h"
 
 #include <QKeyEvent>
+#include <QRegularExpression>
 
 using namespace KateVi;
 
@@ -144,10 +145,11 @@ int CompletionReplayer::findNextMergeableBracketPos(const KTextEditor::Cursor &s
 {
     KTextEditor::DocumentPrivate *doc = m_viInputModeManager->view()->doc();
     const QString lineAfterCursor = doc->text(KTextEditor::Range(startPos, KTextEditor::Cursor(startPos.line(), doc->lineLength(startPos.line()))));
-    QRegExp whitespaceThenOpeningBracket(QLatin1String("^\\s*(\\()"));
+    static const QRegularExpression whitespaceThenOpeningBracket(QLatin1String("^\\s*(\\()"));
+    QRegularExpressionMatch match = whitespaceThenOpeningBracket.match(lineAfterCursor);
     int nextMergableBracketAfterCursorPos = -1;
-    if (lineAfterCursor.contains(whitespaceThenOpeningBracket)) {
-        nextMergableBracketAfterCursorPos =  whitespaceThenOpeningBracket.pos(1);
+    if (match.hasMatch()) {
+        nextMergableBracketAfterCursorPos = match.capturedStart(1);
     }
     return nextMergableBracketAfterCursorPos;
 }

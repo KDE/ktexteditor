@@ -37,6 +37,7 @@
 #include <KLocalizedString>
 
 #include <QLineEdit>
+#include <QRegularExpression>
 #include <QWhatsThis>
 
 using namespace KateVi;
@@ -223,7 +224,8 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
     }
 
     // the following commands change the focus themselves
-    if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew")).exactMatch(cmd.split(QLatin1Char(' ')).at(0))) {
+    static const QRegularExpression reCmds(QLatin1String("^(buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
+    if (!reCmds.match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
         view()->setFocus();
     }
 

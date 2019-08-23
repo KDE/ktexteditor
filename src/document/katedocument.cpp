@@ -4673,9 +4673,9 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         bool found = false;
         foreach (const QString &pattern, wildcards) {
-            QRegExp wildcard(pattern, Qt::CaseSensitive, QRegExp::Wildcard);
+            QRegularExpression wildcard(QLatin1Char('^') + QRegularExpression::wildcardToRegularExpression(pattern) + QLatin1Char('$'));
 
-            found = wildcard.exactMatch(nameOfFile);
+            found = wildcard.match(nameOfFile).hasMatch();
             if (found) {
                 break;
             }

@@ -50,7 +50,7 @@
 #include <KConfigGroup>
 #include <khelpclient.h>
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QTextCodec>
 #include <QTimer>
 #include <QVariant>
@@ -1113,16 +1113,17 @@ void KateCmdLineEdit::hideEvent(QHideEvent *e)
 
 QString KateCmdLineEdit::helptext(const QPoint &) const
 {
-    QString beg = QStringLiteral("<qt background=\"white\"><div><table width=\"100%\"><tr><td bgcolor=\"brown\"><font color=\"white\"><b>Help: <big>");
-    QString mid = QStringLiteral("</big></b></font></td></tr><tr><td>");
-    QString end = QStringLiteral("</td></tr></table></div><qt>");
+    const QString beg = QStringLiteral("<qt background=\"white\"><div><table width=\"100%\"><tr><td bgcolor=\"brown\"><font color=\"white\"><b>Help: <big>");
+    const QString mid = QStringLiteral("</big></b></font></td></tr><tr><td>");
+    const QString end = QStringLiteral("</td></tr></table></div><qt>");
 
-    QString t = text();
-    QRegExp re(QLatin1String("\\s*help\\s+(.*)"));
-    if (re.indexIn(t) > -1) {
+    const QString t = text();
+    static const QRegularExpression re(QLatin1String("\\s*help\\s+(.*)"));
+    auto match = re.match(t);
+    if (match.hasMatch()) {
         QString s;
         // get help for command
-        QString name = re.cap(1);
+        const QString name = match.captured(1);
         if (name == QLatin1String("list")) {
             return beg + i18n("Available Commands") + mid
                    + KateCmd::self()->commandList().join(QLatin1Char(' '))
@@ -1224,7 +1225,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         m_msgMode = true;
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.
-        if (QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1Char(' ')).at(0))) {
+        if (QRegularExpression(QLatin1String("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
             emit hideRequested();
         }
 
@@ -1273,7 +1274,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     m_cmdend = 0;
 
     // the following commands change the focus themselves
-    if (!QRegExp(QLatin1String("buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e")).exactMatch(cmd.split(QLatin1Char(' ')).at(0))) {
+    if (!QRegularExpression(QLatin1String("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
         m_view->setFocus();
     }
 
@@ -1413,9 +1414,10 @@ void KateCmdLineEdit::fromHistory(bool up)
     if (! s.isEmpty()) {
         // Select the argument part of the command, so that it is easy to overwrite
         setText(s);
-        static QRegExp reCmd = QRegExp(QLatin1String(".*[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
-        if (reCmd.indexIn(text()) == 0) {
-            setSelection(text().length() - reCmd.cap(1).length(), reCmd.cap(1).length());
+        static const QRegularExpression reCmd(QLatin1String("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
+        const auto match = reCmd.match(text());
+        if (match.hasMatch()) {
+            setSelection(text().length() - match.capturedLength(1), match.capturedLength(1));
         }
     }
 }
