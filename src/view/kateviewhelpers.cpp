@@ -1441,6 +1441,13 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
 {
     setAcceptDrops(true);
     setAttribute(Qt::WA_StaticContents);
+
+    // See: https://doc.qt.io/qt-5/qwidget.html#update. As this widget does not
+    // have a background, there's no need for Qt to erase the widget's area
+    // before repainting. Enabling this prevents flickering when the widget is
+    // repainted.
+    setAttribute(Qt::WA_OpaquePaintEvent);
+
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
