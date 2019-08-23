@@ -27,6 +27,8 @@
 #include <ktexteditor/document.h>
 
 #include "katepartdebug.h"
+
+#include <QRegularExpression>
 //END  includes
 
 //BEGIN d'tor, c'tor
@@ -53,7 +55,7 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
     // abuse regex for whole word plaintext search
     if (m_wholeWords) {
         // escape dot and friends
-        const QString workPattern = QStringLiteral("\\b%1\\b").arg(QRegExp::escape(text));
+        const QString workPattern = QStringLiteral("\\b%1\\b").arg(QRegularExpression::escape(text));
 
         return KateRegExpSearch(m_document, m_caseSensitivity).search(workPattern, inputRange, backwards).at(0);
     }

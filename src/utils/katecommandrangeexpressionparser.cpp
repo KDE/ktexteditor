@@ -25,6 +25,7 @@
 #include "kateview.h"
 #include "katedocument.h"
 
+#include <QRegularExpression>
 #include <QStringList>
 
 using KTextEditor::Range;
@@ -115,10 +116,10 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string, KText
 
     int pos = 0;
     QList<bool> operators_list;
-    QStringList split = string.split(QRegExp(QLatin1String("[-+](?!([+-]|$))")));
+    const QStringList split = string.split(QRegularExpression(QStringLiteral("[-+](?!([+-]|$))")));
     QList<int> values;
 
-    foreach (const QString &line, split) {
+    for (const QString &line : split) {
         pos += line.size();
 
         if (pos < string.size()) {

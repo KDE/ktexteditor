@@ -22,6 +22,7 @@
 #include "variablelistview.h"
 #include "variableitem.h"
 
+#include <QRegularExpression>
 #include <QResizeEvent>
 
 VariableListView::VariableListView(const QString &variableLine, QWidget *parent)
@@ -47,7 +48,7 @@ void VariableListView::parseVariables(const QString &line)
 
     QStringList variables = tmp.split(QLatin1Char(';'), QString::SkipEmptyParts);
 
-    QRegExp sep(QLatin1String("\\s+"));
+    const QRegularExpression sep(QStringLiteral("\\s+"));
     for (int i = 0; i < variables.size(); ++i) {
         QStringList pair = variables[i].split(sep, QString::SkipEmptyParts);
         if (pair.size() < 2) {

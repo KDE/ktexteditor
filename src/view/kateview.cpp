@@ -86,6 +86,7 @@
 #include <QClipboard>
 #include <QFileDialog>
 #include <QToolTip>
+#include <QRegularExpression>
 
 //#define VIEW_RANGE_DEBUG
 
@@ -3798,10 +3799,9 @@ void KTextEditor::ViewPrivate::createHighlights()
      */
     QString regex = QRegExp::escape (m_currentTextForHighlights);
     if (QRegExp (QStringLiteral("\\b%1").arg(regex)).indexIn (QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-        regex = QStringLiteral("\\b%1").arg(regex);
+         regex = QStringLiteral("\\b%1").arg(regex);
     if (QRegExp (QStringLiteral("%1\\b").arg(regex)).indexIn (QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-        regex = QStringLiteral("%1\\b").arg(regex);
-
+         regex = QStringLiteral("%1\\b").arg(regex);
     QVector<KTextEditor::Range> matches;
     do {
         searchRange.setRange(start, visibleRange().end());

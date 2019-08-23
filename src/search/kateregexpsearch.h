@@ -59,7 +59,7 @@ public:
      * \return Vector of ranges, one for each capture. The first range (index zero)
      *        spans the full match. If the pattern does not match the vector
      *        has length 1 and holds the invalid range (see Range::isValid()).
-     * \see KTextEditor::Range, QRegExp
+     * \see KTextEditor::Range, QRegularExpression
      */
     QVector<KTextEditor::Range> search(const QString &pattern,
                                        const KTextEditor::Range &inputRange, bool backwards = false);

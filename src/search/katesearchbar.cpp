@@ -46,6 +46,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QCompleter>
+#include <QRegularExpression>
 #include <QShortcut>
 #include <QStringListModel>
 #include <QTime>
@@ -697,7 +698,7 @@ bool KateSearchBar::isPatternValid() const
     }
 
     return searchOptions().testFlag(WholeWords) ? searchPattern().trimmed() == searchPattern() :
-           searchOptions().testFlag(Regex)      ? QRegExp(searchPattern()).isValid() :
+           searchOptions().testFlag(Regex)      ? QRegularExpression(searchPattern()).isValid() :
            true;
 }
 

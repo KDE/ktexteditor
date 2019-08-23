@@ -32,7 +32,7 @@
 #include <KActionMenu>
 #include <KLocalizedString>
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QEvent>
 #include <QVector>
 
@@ -127,8 +127,8 @@ void KateBookmarks::clearBookmarks()
 
 void KateBookmarks::insertBookmarks(QMenu &menu)
 {
-    int line = m_view->cursorPosition().line();
-    const QRegExp re(QLatin1String("&(?!&)"));
+    const int line = m_view->cursorPosition().line();
+    const QRegularExpression re(QStringLiteral("&(?!&)"));
     int next = -1; // -1 means next bookmark doesn't exist
     int prev = -1; // -1 means previous bookmark doesn't exist
 

@@ -31,7 +31,7 @@
 #include <KLocalizedString>
 
 #include <QDir>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QUrl>
 
 KateCommands::SedReplace *KateCommands::SedReplace::m_instance = nullptr;
@@ -155,28 +155,30 @@ bool KateCommands::SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *,
 bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &destDelim, int &destFindBeginPos, int &destFindEndPos, int &destReplaceBeginPos, int &destReplaceEndPos)
 {
     // valid delimiters are all non-word, non-space characters plus '_'
-    QRegExp delim(QLatin1String("^s\\s*([^\\w\\s]|_)"));
-    if (delim.indexIn(sedReplaceString) < 0) {
+    QRegularExpression delim(QLatin1String("^s\\s*([^\\w\\s]|_)"));
+    auto match = delim.match(sedReplaceString);
+    if (!match.hasMatch()) {
         return false;
     }
 
-    QString d = delim.cap(1);
+    const QString d = match.captured(1);
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
-    QRegExp splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
+    QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
                      + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
-    if (splitter.indexIn(sedReplaceString) < 0) {
+    match = splitter.match(sedReplaceString);
+    if (!match.hasMatch()) {
         return false;
     }
 
-    const QString find = splitter.cap(1);
-    const QString replace = splitter.cap(2);
+    const QString find = match.captured(1);
+    const QString replace = match.captured(2);
 
     destDelim = d;
-    destFindBeginPos = splitter.pos(1);
-    destFindEndPos = splitter.pos(1) + find.length() - 1;
-    destReplaceBeginPos = splitter.pos(2);
-    destReplaceEndPos = splitter.pos(2) + replace.length() - 1;
+    destFindBeginPos = match.capturedStart(1);
+    destFindEndPos = match.capturedStart(1) + find.length() - 1;
+    destReplaceBeginPos = match.capturedStart(2);
+    destReplaceEndPos = match.capturedStart(2) + replace.length() - 1;
 
     return true;
 }

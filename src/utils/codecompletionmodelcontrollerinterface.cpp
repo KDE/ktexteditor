@@ -20,6 +20,7 @@
 #include "codecompletionmodelcontrollerinterface.h"
 
 #include <QModelIndex>
+#include <QRegularExpression>
 
 #include <ktexteditor/view.h>
 #include <ktexteditor/document.h>
@@ -57,17 +58,20 @@ Range CodeCompletionModelControllerInterface::completionRange(View *view, const 
 
     QString text = view->document()->line(end.line());
 
-    static QRegExp findWordStart(QLatin1String("\\b([_\\w]+)$"));
-    static QRegExp findWordEnd(QLatin1String("^([_\\w]*)\\b"));
+    static const QRegularExpression findWordStart(QStringLiteral("\\b[_\\w]+$"));
+    static const QRegularExpression findWordEnd(QStringLiteral("^[_\\w]*\\b"));
 
     Cursor start = end;
 
-    if (findWordStart.lastIndexIn(text.left(end.column())) >= 0) {
-        start.setColumn(findWordStart.pos(1));
+    int pos = text.left(end.column()).lastIndexOf(findWordStart);
+    if (pos >= 0) {
+        start.setColumn(pos);
     }
 
-    if (findWordEnd.indexIn(text.mid(end.column())) >= 0) {
-        end.setColumn(end.column() + findWordEnd.cap(1).length());
+    QRegularExpressionMatch match;
+    pos = text.mid(end.column()).indexOf(findWordEnd, 0, &match);
+    if (pos >= 0) {
+        end.setColumn(end.column() + match.capturedLength());
     }
 
     return Range(start, end);
@@ -97,8 +101,8 @@ bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View *view, c
     }
     //Do not abort completions when the text has been empty already before and a newline has been entered
 
-    static const QRegExp allowedText(QLatin1String("^(\\w*)"));
-    return !allowedText.exactMatch(currentCompletion);
+    static const QRegularExpression allowedText(QLatin1String("^\\w*$"));
+    return !allowedText.match(currentCompletion).hasMatch();
 }
 
 void CodeCompletionModelControllerInterface::aborted(KTextEditor::View *view)
