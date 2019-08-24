@@ -23,9 +23,8 @@
 
 #include <QByteArray>
 #include <QAction>
+#include <QProcess>
 #include <QTemporaryFile>
-
-class KProcess;
 
 namespace Kate
 {
@@ -44,14 +43,14 @@ public Q_SLOTS:
     void viewDiff();
 
 private:
-    Kate::SwapFile *m_swapFile;
+    Kate::SwapFile * const m_swapFile;
 
 protected Q_SLOTS:
     void slotDataAvailable();
     void slotDiffFinished();
 
 private:
-    KProcess *m_proc;
+    QProcess m_proc;
     QTemporaryFile m_originalFile;
     QTemporaryFile m_recoveredFile;
     QTemporaryFile m_diffFile;

@@ -23,7 +23,6 @@
 #include "katedocument.h"
 #include "katepartdebug.h"
 
-#include <KProcess>
 #include <KMessageBox>
 #include <KRun>
 #include <KLocalizedString>
@@ -34,7 +33,6 @@
 SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
     : QObject(swapFile)
     , m_swapFile(swapFile)
-    , m_proc(nullptr)
 {
 }
 
@@ -94,42 +92,46 @@ void SwapDiffCreator::viewDiff()
     }
     m_recoveredFile.close();
 
-    // create a KProcess proc for diff
-    m_proc = new KProcess(this);
-    m_proc->setOutputChannelMode(KProcess::MergedChannels);
-    *m_proc << QStringLiteral("diff") << QStringLiteral("-u") <<  m_originalFile.fileName() << m_recoveredFile.fileName();
+    // create a process for diff
+    m_proc.setProcessChannelMode(QProcess::MergedChannels);
 
-    connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
-    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotDiffFinished()));
+    connect(&m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()), Qt::UniqueConnection);
+    connect(&m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotDiffFinished()), Qt::UniqueConnection);
 
-//   setCursor(Qt::WaitCursor);
+    // try to start diff process, if we can't be started be done with error
+    m_proc.start(QStringLiteral("diff"), QStringList() << QStringLiteral("-u") <<  m_originalFile.fileName() << m_recoveredFile.fileName());
+    if (!m_proc.waitForStarted()) {
+        KMessageBox::sorry(nullptr,
+                           i18n("The diff command could not be started. Please make sure that "
+                                "diff(1) is installed and in your PATH."),
+                           i18n("Error Creating Diff"));
+        deleteLater();
+        return;
+    }
 
-    m_proc->start();
-
-    QTextStream ts(m_proc);
+    // process is up and running, we can write data to it
+    QTextStream ts(&m_proc);
     int lineCount = recoverDoc.lines();
     for (int line = 0; line < lineCount; ++line) {
         ts << recoverDoc.line(line) << '\n';
     }
     ts.flush();
-    m_proc->closeWriteChannel();
+    m_proc.closeWriteChannel();
 }
 
 void SwapDiffCreator::slotDataAvailable()
 {
     // collect diff output
-    m_diffFile.write(m_proc->readAll());
+    m_diffFile.write(m_proc.readAll());
 }
 
 void SwapDiffCreator::slotDiffFinished()
 {
     // collect last diff output, if any
-    m_diffFile.write(m_proc->readAll());
+    m_diffFile.write(m_proc.readAll());
 
     // get the exit status to check whether diff command run successfully
-    const QProcess::ExitStatus es = m_proc->exitStatus();
-    delete m_proc;
-    m_proc = nullptr;
+    const QProcess::ExitStatus es = m_proc.exitStatus();
 
     // check exit status
     if (es != QProcess::NormalExit) {
