@@ -547,7 +547,11 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
 
         /**
          * NOTE: if "theme()" returns an empty theme, only the
-         * attribute styles set in the XML files will be applied here
+         * attribute styles set in the XML files will be applied here.
+         * FIXME: if the theme is invalid/empty, the attributes turned off in the
+         * XML file don't work. This is so, because there the theme isn't applied by
+         * KSyntaxHighlighting and the methods "Format::isBold(...)", "Format::isItalic(...)",
+         * etc., return the combination between the syntax definition and the theme.
          */
         if (format.hasTextColor(theme())) {
             newAttribute->setForeground(format.textColor(theme()));
@@ -559,20 +563,46 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
         }
 
-        if (format.isBold(theme())) {
-            newAttribute->setFontBold(true);
-        }
+        if (theme().isValid()) {
+            if (format.isBold(theme())) {
+                newAttribute->setFontBold(true);
+            } else {
+                newAttribute->setFontBold(false);
+            }
 
-        if (format.isItalic(theme())) {
-            newAttribute->setFontItalic(true);
-        }
+            if (format.isItalic(theme())) {
+                newAttribute->setFontItalic(true);
+            } else {
+                newAttribute->setFontItalic(false);
+            }
 
-        if (format.isUnderline(theme())) {
-            newAttribute->setFontUnderline(true);
-        }
+            if (format.isUnderline(theme())) {
+                newAttribute->setFontUnderline(true);
+            } else {
+                newAttribute->setFontUnderline(false);
+            }
 
-        if (format.isStrikeThrough(theme())) {
-            newAttribute->setFontStrikeOut(true);
+            if (format.isStrikeThrough(theme())) {
+                newAttribute->setFontStrikeOut(true);
+            } else {
+                newAttribute->setFontStrikeOut(false);
+            }
+        } else {
+            if (format.isBold(theme())) {
+                newAttribute->setFontBold(true);
+            }
+
+            if (format.isItalic(theme())) {
+                newAttribute->setFontItalic(true);
+            }
+
+            if (format.isUnderline(theme())) {
+                newAttribute->setFontUnderline(true);
+            }
+
+            if (format.isStrikeThrough(theme())) {
+                newAttribute->setFontStrikeOut(true);
+            }
         }
 
         newAttribute->setSkipSpellChecking(format.spellCheck());
