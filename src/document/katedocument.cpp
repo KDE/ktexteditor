@@ -3409,14 +3409,17 @@ void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTe
 
 void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const QString &text)
 {
-    static const QChar newLineChar(QLatin1Char('\n'));
-    QString s = text;
-
-    if (s.isEmpty()) {
+    // nop if nothing to paste
+    if (text.isEmpty()) {
         return;
     }
 
-    int lines = s.count(newLineChar);
+    // normalize line endings, to e.g. catch issues with \r\n in paste buffer
+    // see bug 410951
+    QString s = text;
+    s.replace(QRegularExpression(QStringLiteral("(\r\n|\r|\n)")), QStringLiteral("\n"));
+
+    int lines = s.count(QLatin1Char('\n'));
 
     m_undoManager->undoSafePoint();
 
@@ -3428,7 +3431,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
         if (view->blockSelection()) {
             pos = rangeOnLine(view->selectionRange(), pos.line()).start();
             if (lines == 0) {
-                s += newLineChar;
+                s += QLatin1Char('\n');
                 s = s.repeated(view->selectionRange().numberOfLines() + 1);
                 s.chop(1);
             }
@@ -3437,7 +3440,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     }
 
     if (config()->ovr()) {
-        QStringList pasteLines = s.split(newLineChar);
+        QStringList pasteLines = s.split(QLatin1Char('\n'));
 
         if (!view->blockSelection()) {
             int endColumn = (pasteLines.count() == 1 ? pos.column() : 0) + pasteLines.last().length();
