@@ -784,8 +784,11 @@ public:
     /**
      * Type chars in a view.
      * Characters are filtered in KateViewInternal::isAcceptableInput() before calling typeChars.
+     *
+     * @param view view that received the input
+     * @param chars characters to type
      */
-    bool typeChars(KTextEditor::ViewPrivate *type, const QString &realChars);
+    void typeChars(KTextEditor::ViewPrivate *view, QString chars);
 
     /**
      * gets the last line number (lines() - 1)

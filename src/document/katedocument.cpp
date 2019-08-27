@@ -3001,10 +3001,8 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor &c
     return fromVirtualColumn(cursor.line(), cursor.column());
 }
 
-bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, const QString &realChars)
+void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QString chars)
 {
-    QString chars = realChars;
-
     // auto bracket handling
     QChar closingBracket;
     if (view->config()->autoBrackets()) {
@@ -3016,7 +3014,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
             if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123/*Which value may best?*/).isValid()) {
                 // Do nothing
                 view->cursorRight();
-                return true;
+                return;
             }
         }
 
@@ -3030,7 +3028,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
                 // do nothing
                 m_currentAutobraceRange.reset(nullptr);
                 view->cursorRight();
-                return true;
+                return;
             }
         }
     }
@@ -3085,7 +3083,7 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
         view->setCursorPosition(selectionRange->end());
 
         editEnd();
-        return true;
+        return;
     }
 
     /**
@@ -3196,8 +3194,6 @@ bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, con
      * inform the view about the original inserted chars
      */
     view->slotTextInserted(view, oldCur, chars);
-
-    return true;
 }
 
 void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View*, const KTextEditor::Cursor& newPos) {

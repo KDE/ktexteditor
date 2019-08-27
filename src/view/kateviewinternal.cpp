@@ -2455,10 +2455,9 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
                 }
             }
 
+            // either we just insert a tab or we convert that into an indent action
             if (tabHandling == KateDocumentConfig::tabInsertsTab) {
-                if (isAcceptableInput(e)) {
-                    doc()->typeChars(m_view, QStringLiteral("\t"));
-                }
+                doc()->typeChars(m_view, QStringLiteral("\t"));
             } else {
                 doc()->indent(view()->selection() ? view()->selectionRange() : KTextEditor::Range(m_cursor.line(), 0, m_cursor.line(), 0), 1);
             }
@@ -2475,9 +2474,9 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
         }
     }
 
-    if (isAcceptableInput(e) && doc()->typeChars(m_view, e->text())) {
+    if (isAcceptableInput(e)) {
+        doc()->typeChars(m_view, e->text());
         e->accept();
-
         return;
     }
 

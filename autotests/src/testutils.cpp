@@ -159,9 +159,9 @@ REP_CALL(toMatchingBracket)
 REP_CALL(shiftToMatchingBracket)
 #undef REP_CALL
 
-bool KateViewObject::type(const QString &str)
+void KateViewObject::type(const QString &str)
 {
-    return view()->doc()->typeChars(view(), str);
+    view()->doc()->typeChars(view(), str);
 }
 
 void KateViewObject::setAutoBrackets(bool enable)
