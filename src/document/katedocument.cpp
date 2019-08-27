@@ -3003,23 +3003,7 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor &c
 
 bool KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, const QString &realChars)
 {
-    /**
-     * filter out non-printable chars (convert to utf-32 to support surrogate pairs)
-     */
-    const auto realUcs4Chars = realChars.toUcs4();
-    QVector<uint> ucs4Chars;
-    Q_FOREACH (auto c, realUcs4Chars)
-        if (QChar::isPrint(c) || c == QChar::fromLatin1('\t') || c == QChar::fromLatin1('\n') || c == QChar::fromLatin1('\r')) {
-            ucs4Chars.append(c);
-        }
-
-    /**
-     * no printable chars => nothing to insert!
-     */
-    QString chars = QString::fromUcs4(ucs4Chars.data(), ucs4Chars.size());
-    if (chars.isEmpty()) {
-        return false;
-    }
+    QString chars = realChars;
 
     // auto bracket handling
     QChar closingBracket;

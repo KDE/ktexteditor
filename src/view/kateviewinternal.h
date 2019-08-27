@@ -225,6 +225,11 @@ public:
     // EVENT HANDLING STUFF - IMPORTANT
 private:
     void fixDropEvent(QDropEvent *event);
+
+    bool isAcceptableInput(const QKeyEvent *e) const;
+    // overloaded to check just the "text" part, mainly for KateViewInternal::inputMethodEvent()
+    bool isAcceptableInputText(const QString &text) const;
+
 protected:
     void hideEvent(QHideEvent *e) override;
     void paintEvent(QPaintEvent *e) override;

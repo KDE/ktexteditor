@@ -783,7 +783,7 @@ private:
 public:
     /**
      * Type chars in a view.
-     * Will filter out non-printable chars from the realChars array before inserting.
+     * Characters are filtered in KateViewInternal::isAcceptableInput() before calling typeChars.
      */
     bool typeChars(KTextEditor::ViewPrivate *type, const QString &realChars);
 

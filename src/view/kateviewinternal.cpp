@@ -2456,7 +2456,9 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
             }
 
             if (tabHandling == KateDocumentConfig::tabInsertsTab) {
-                doc()->typeChars(m_view, QStringLiteral("\t"));
+                if (isAcceptableInput(e)) {
+                    doc()->typeChars(m_view, QStringLiteral("\t"));
+                }
             } else {
                 doc()->indent(view()->selection() ? view()->selectionRange() : KTextEditor::Range(m_cursor.line(), 0, m_cursor.line(), 0), 1);
             }
@@ -2473,15 +2475,7 @@ void KateViewInternal::keyPressEvent(QKeyEvent *e)
         }
     }
 
-    if (!(e->modifiers() & Qt::ControlModifier) && !e->text().isEmpty() && doc()->typeChars(m_view, e->text())) {
-        e->accept();
-
-        return;
-    }
-
-    // allow composition of AltGr + (q|2|3) on windows
-    static const int altGR = Qt::ControlModifier | Qt::AltModifier;
-    if ((e->modifiers() & altGR) == altGR && !e->text().isEmpty() && doc()->typeChars(m_view, e->text())) {
+    if (isAcceptableInput(e) && doc()->typeChars(m_view, e->text())) {
         e->accept();
 
         return;
@@ -2515,6 +2509,83 @@ void KateViewInternal::keyReleaseEvent(QKeyEvent *e)
 
     e->ignore();
     return;
+}
+
+bool KateViewInternal::isAcceptableInput(const QKeyEvent *e) const
+{
+    // reimplemented from QInputControl::isAcceptableInput()
+
+    const QString text = e->text();
+    if (text.isEmpty()) {
+        return false;
+    }
+
+    const QChar c = text.at(0);
+
+    // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
+    // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
+    // Includes soft-hyphen.
+    if (c.category() == QChar::Other_Format) {
+        return true;
+    }
+
+    // allow composition of AltGr + (q|2|3) on windows
+    if (e->modifiers() == (Qt::ControlModifier | Qt::AltModifier)) {
+        return true;
+    }
+
+    // QTBUG-35734: ignore Ctrl/Ctrl+Shift; accept only AltGr (Alt+Ctrl) on German keyboards
+    if (e->modifiers() == Qt::ControlModifier ||
+        e->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier)) {
+        return false;
+    }
+
+    if (c.isPrint()) {
+        return true;
+    }
+
+    if (c.category() == QChar::Other_PrivateUse) {
+        return true;
+    }
+
+    if (c == QLatin1Char('\t') || c == QChar::fromLatin1('\n') ||
+        c == QChar::fromLatin1('\r')) {
+        return true;
+    }
+
+    return false;
+}
+
+bool KateViewInternal::isAcceptableInputText(const QString &text) const
+{
+
+    if (text.isEmpty()) {
+        return false;
+    }
+
+    const QChar c = text.at(0);
+
+    // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
+    // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
+    // Includes soft-hyphen.
+    if (c.category() == QChar::Other_Format) {
+        return true;
+    }
+
+    if (c.isPrint()) {
+        return true;
+    }
+
+    if (c.category() == QChar::Other_PrivateUse) {
+        return true;
+    }
+
+    if (c == QLatin1Char('\t') || c == QChar::fromLatin1('\n') ||
+        c == QChar::fromLatin1('\r')) {
+        return true;
+    }
+
+    return false;
 }
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
@@ -3721,10 +3792,12 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
         if (start != removeEnd) {
             doc()->removeText(KTextEditor::Range(start, removeEnd));
         }
-        if (!e->commitString().isEmpty()) {
+
+        const QString commitStr = e->commitString();
+        if (isAcceptableInputText(commitStr)) {
             // if the input method event is text that should be inserted, call KTextEditor::DocumentPrivate::typeChars()
             // with the text. that method will handle the input and take care of overwrite mode, etc.
-            doc()->typeChars(m_view, e->commitString());
+            doc()->typeChars(m_view, commitStr);
         }
         doc()->editEnd();
 
