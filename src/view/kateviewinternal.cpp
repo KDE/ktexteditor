@@ -2523,68 +2523,19 @@ bool KateViewInternal::isAcceptableInput(const QKeyEvent *e) const
 
     // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
     // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
-    // Includes soft-hyphen.
+    // see bug 389796 (typing formatting characters such as ZWNJ)
+    // and bug 396764 (typing soft-hyphens)
     if (c.category() == QChar::Other_Format) {
-        return true;
-    }
-
-    // allow composition of AltGr + (q|2|3) on windows
-    if (e->modifiers() == (Qt::ControlModifier | Qt::AltModifier)) {
         return true;
     }
 
     // QTBUG-35734: ignore Ctrl/Ctrl+Shift; accept only AltGr (Alt+Ctrl) on German keyboards
-    if (e->modifiers() == Qt::ControlModifier ||
-        e->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier)) {
+    if ((e->modifiers() == Qt::ControlModifier) || (e->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier))) {
         return false;
     }
 
-    if (c.isPrint()) {
-        return true;
-    }
-
-    if (c.category() == QChar::Other_PrivateUse) {
-        return true;
-    }
-
-    if (c == QLatin1Char('\t') || c == QChar::fromLatin1('\n') ||
-        c == QChar::fromLatin1('\r')) {
-        return true;
-    }
-
-    return false;
-}
-
-bool KateViewInternal::isAcceptableInputText(const QString &text) const
-{
-
-    if (text.isEmpty()) {
-        return false;
-    }
-
-    const QChar c = text.at(0);
-
-    // Formatting characters such as ZWNJ, ZWJ, RLM, etc. This needs to go before the
-    // next test, since CTRL+SHIFT is sometimes used to input it on Windows.
-    // Includes soft-hyphen.
-    if (c.category() == QChar::Other_Format) {
-        return true;
-    }
-
-    if (c.isPrint()) {
-        return true;
-    }
-
-    if (c.category() == QChar::Other_PrivateUse) {
-        return true;
-    }
-
-    if (c == QLatin1Char('\t') || c == QChar::fromLatin1('\n') ||
-        c == QChar::fromLatin1('\r')) {
-        return true;
-    }
-
-    return false;
+    // printable or private use is good, see e.g. bug 366424 (typing "private use" unicode characters)
+    return c.isPrint() || (c.category() == QChar::Other_PrivateUse);
 }
 
 void KateViewInternal::contextMenuEvent(QContextMenuEvent *e)
@@ -3792,12 +3743,10 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
             doc()->removeText(KTextEditor::Range(start, removeEnd));
         }
 
-        const QString commitStr = e->commitString();
-        if (isAcceptableInputText(commitStr)) {
-            // if the input method event is text that should be inserted, call KTextEditor::DocumentPrivate::typeChars()
-            // with the text. that method will handle the input and take care of overwrite mode, etc.
-            doc()->typeChars(m_view, commitStr);
-        }
+        // if the input method event is text that should be inserted, call KTextEditor::DocumentPrivate::typeChars()
+        // with the text. that method will handle the input and take care of overwrite mode, etc.
+        doc()->typeChars(m_view, e->commitString());
+
         doc()->editEnd();
 
         // Revert to the same range as above

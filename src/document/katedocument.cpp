@@ -3003,6 +3003,11 @@ int KTextEditor::DocumentPrivate::fromVirtualColumn(const KTextEditor::Cursor &c
 
 void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QString chars)
 {
+    // nop for empty chars
+    if (chars.isEmpty()) {
+        return;
+    }
+
     // auto bracket handling
     QChar closingBracket;
     if (view->config()->autoBrackets()) {
