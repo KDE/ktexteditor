@@ -212,8 +212,8 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
         qtRegexPattern = qtRegexPatternNonMatchingSquaresMadeLiteral;
     }
 
-    qtRegexPattern = qtRegexPattern.replace(QLatin1String("\\>"), QLatin1String("\\b"));
-    qtRegexPattern = qtRegexPattern.replace(QLatin1String("\\<"), QLatin1String("\\b"));
+    qtRegexPattern.replace(QLatin1String("\\>"), QLatin1String("\\b"));
+    qtRegexPattern.replace(QLatin1String("\\<"), QLatin1String("\\b"));
 
     return qtRegexPattern;
 }
@@ -236,7 +236,7 @@ QString KateVi::withCaseSensitivityMarkersStripped(const QString &originalSearch
     QString caseSensitivityMarkersStripped = originalSearchTerm;
     while (pos < caseSensitivityMarkersStripped.length()) {
         if (caseSensitivityMarkersStripped.at(pos) == QLatin1Char('C') && isCharEscaped(caseSensitivityMarkersStripped, pos)) {
-            caseSensitivityMarkersStripped.replace(pos - 1, 2, QString());
+            caseSensitivityMarkersStripped.remove(pos - 1, 2);
             pos--;
         }
         pos++;

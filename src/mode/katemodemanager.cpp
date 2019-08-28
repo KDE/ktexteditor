@@ -168,7 +168,7 @@ void KateModeManager::save(const QList<KateFileType *> &v)
         config.writeEntry("Indenter", type->indenter);
 
         QString varLine = type->varLine;
-        if (!varLine.contains(QStringLiteral("kate:"))) {
+        if (!varLine.contains(QLatin1String("kate:"))) {
             varLine.prepend(QLatin1String("kate: "));
         }
 

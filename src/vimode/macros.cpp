@@ -121,7 +121,7 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
 
 QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro) const
 {
-    const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1String(";"));
+    const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1Char(';'));
     QString encodedMacroCompletion = completionForMacro.completedText().remove(QStringLiteral("()")).remove(QStringLiteral(";"));
     if (completionForMacro.completionType() == Completion::FunctionWithArgs) {
         encodedMacroCompletion += QLatin1String("(...)");

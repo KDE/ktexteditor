@@ -3706,15 +3706,15 @@ QRegExp NormalViMode::generateMatchingItemRegex() const
 
     for (int i = 0; i < keys.size(); i++) {
         QString s = m_matchingItems[ keys[ i ] ];
-        s = s.replace(QRegExp(QLatin1String("^-")), QChar());
-        s = s.replace(QRegExp(QLatin1String("\\*")), QStringLiteral("\\*"));
-        s = s.replace(QRegExp(QLatin1String("\\+")), QStringLiteral("\\+"));
-        s = s.replace(QRegExp(QLatin1String("\\[")), QStringLiteral("\\["));
-        s = s.replace(QRegExp(QLatin1String("\\]")), QStringLiteral("\\]"));
-        s = s.replace(QRegExp(QLatin1String("\\(")), QStringLiteral("\\("));
-        s = s.replace(QRegExp(QLatin1String("\\)")), QStringLiteral("\\)"));
-        s = s.replace(QRegExp(QLatin1String("\\{")), QStringLiteral("\\{"));
-        s = s.replace(QRegExp(QLatin1String("\\}")), QStringLiteral("\\}"));
+        s.replace(QRegExp(QLatin1String("^-")), QChar());
+        s.replace(QRegExp(QLatin1String("\\*")), QStringLiteral("\\*"));
+        s.replace(QRegExp(QLatin1String("\\+")), QStringLiteral("\\+"));
+        s.replace(QRegExp(QLatin1String("\\[")), QStringLiteral("\\["));
+        s.replace(QRegExp(QLatin1String("\\]")), QStringLiteral("\\]"));
+        s.replace(QRegExp(QLatin1String("\\(")), QStringLiteral("\\("));
+        s.replace(QRegExp(QLatin1String("\\)")), QStringLiteral("\\)"));
+        s.replace(QRegExp(QLatin1String("\\{")), QStringLiteral("\\{"));
+        s.replace(QRegExp(QLatin1String("\\}")), QStringLiteral("\\}"));
 
         pattern.append(s);
 

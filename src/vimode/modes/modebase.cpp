@@ -1190,7 +1190,7 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     bool parsedNumberSuccessfully = false;
     int base = numberRegex.cap(1).isEmpty() ? 10 : 16;
-    if (base != 16 && numberAsString.startsWith(QLatin1String("0")) && numberAsString.length() > 1) {
+    if (base != 16 && numberAsString.startsWith(QLatin1Char('0')) && numberAsString.length() > 1) {
         // If a non-hex number with a leading 0 can be parsed as octal, then assume
         // it is octal.
         numberAsString.toInt(&parsedNumberSuccessfully, 8);

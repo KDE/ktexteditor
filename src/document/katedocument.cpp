@@ -811,7 +811,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
     }
 
     // just reuse normal function
-    return insertText(position, textLines.join(QStringLiteral("\n")), block);
+    return insertText(position, textLines.join(QLatin1String("\n")), block);
 }
 
 bool KTextEditor::DocumentPrivate::removeText(const KTextEditor::Range &_range, bool block)
@@ -1721,7 +1721,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeRemoved.start();
 
-    emit textRemoved(this, rangeRemoved, oldText.join(QStringLiteral("\n")) + QLatin1Char('\n'));
+    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
 
     editEnd();
 
@@ -1904,7 +1904,7 @@ void KTextEditor::DocumentPrivate::bomSetByUser()
 //BEGIN KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
 void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig, const QSet<QString> &flags)
 {
-    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
+    if (!flags.contains(QLatin1String("SkipEncoding"))) {
         // get the encoding
         QString tmpenc = kconfig.readEntry("Encoding");
         if (!tmpenc.isEmpty() && (tmpenc != encoding())) {
@@ -1912,7 +1912,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         }
     }
 
-    if (!flags.contains(QStringLiteral("SkipUrl"))) {
+    if (!flags.contains(QLatin1String("SkipUrl"))) {
         // restore the url
         QUrl url(kconfig.readEntry("URL"));
 
@@ -1926,7 +1926,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         completed(); //perhaps this should be emitted at the end of this function
     }
 
-    if (!flags.contains(QStringLiteral("SkipMode"))) {
+    if (!flags.contains(QLatin1String("SkipMode"))) {
         // restore the filetype
         if (kconfig.hasKey("Mode")) {
             updateFileType(kconfig.readEntry("Mode", fileType()));
@@ -1936,7 +1936,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         }
     }
 
-    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
+    if (!flags.contains(QLatin1String("SkipHighlighting"))) {
         // restore the hl stuff
         if (kconfig.hasKey("Highlighting")) {
             const int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
@@ -1968,24 +1968,24 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         }
     }
 
-    if (!flags.contains(QStringLiteral("SkipUrl"))) {
+    if (!flags.contains(QLatin1String("SkipUrl"))) {
         // save url
         kconfig.writeEntry("URL", this->url().toString());
     }
 
-    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
+    if (!flags.contains(QLatin1String("SkipEncoding"))) {
         // save encoding
         kconfig.writeEntry("Encoding", encoding());
     }
 
-    if (!flags.contains(QStringLiteral("SkipMode"))) {
+    if (!flags.contains(QLatin1String("SkipMode"))) {
         // save file type
         kconfig.writeEntry("Mode", m_fileType);
         // save if set by user, too!
         kconfig.writeEntry("Mode Set By User", m_fileTypeSetByUser);
     }
 
-    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
+    if (!flags.contains(QLatin1String("SkipHighlighting"))) {
         // save hl
         kconfig.writeEntry("Highlighting", highlight()->name());
 

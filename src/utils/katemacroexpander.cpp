@@ -50,7 +50,7 @@ QString KateMacroExpander::expandMacro(const QString& input, KTextEditor::View* 
     QString oldStr;
     do {
         oldStr = output;
-        const int startIndex = output.indexOf(QStringLiteral("%{"));
+        const int startIndex = output.indexOf(QLatin1String("%{"));
         if (startIndex < 0) {
             break;
         }

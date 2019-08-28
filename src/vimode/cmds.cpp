@@ -189,7 +189,7 @@ bool Commands::supportsRange(const QString &range)
         l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") <<
           QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
 
-    return l.contains(range.split(QLatin1String(" ")).at(0));
+    return l.contains(range.split(QLatin1Char(' ')).at(0));
 }
 
 KCompletion *Commands::completionObject(KTextEditor::View *view, const QString &cmd)

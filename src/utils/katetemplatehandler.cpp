@@ -333,7 +333,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
             // field is a function call when it contains an opening parenthesis
             f.kind = TemplateField::FunctionCall;
         }
-        else if ( f.identifier == QStringLiteral("cursor") ) {
+        else if ( f.identifier == QLatin1String("cursor") ) {
             // field marks the final cursor position
             f.kind = TemplateField::FinalCursorPosition;
         }
