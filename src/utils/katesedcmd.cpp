@@ -47,7 +47,7 @@ static int backslashString(const QString &haystack, const QString &needle, int i
         } else {
             // isn't a slash
             if (!evenCount) {
-                if (haystack.mid(index, searchlen) == needle) {
+                if (haystack.midRef(index, searchlen) == needle) {
                     return index - 1;
                 }
             }
@@ -95,7 +95,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
         return false;
     }
 
-    const QString searchParamsString = cmd.mid(cmd.lastIndexOf(delimiter));
+    const QStringRef searchParamsString = cmd.midRef(cmd.lastIndexOf(delimiter));
     const bool noCase = searchParamsString.contains(QLatin1Char('i'));
     const bool repeat = searchParamsString.contains(QLatin1Char('g'));
     const bool interactive = searchParamsString.contains(QLatin1Char('c'));

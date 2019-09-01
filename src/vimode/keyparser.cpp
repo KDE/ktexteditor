@@ -601,7 +601,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
             if (c == QLatin1Char('<')) {
                 // If there's no closing '>', or if there is an opening '<' before the next '>', interpret as a literal '<'
                 // If we are <space>, encode as a literal " ".
-                QString rest = keys.mid(i);
+                const QStringRef rest = keys.midRef(i);
                 if (rest.indexOf(QLatin1Char('>'), 1) != -1 && rest.mid(1, rest.indexOf(QLatin1Char('>'), 1) - 1) == QLatin1String("space")) {
                     encodedSequence.append(QLatin1Char(' '));
                     i += rest.indexOf(QLatin1Char('>'), 1);

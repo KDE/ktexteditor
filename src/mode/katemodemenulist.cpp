@@ -504,7 +504,7 @@ bool KateModeMenuListData::ListItem::matchExtension(const QString &text) const
     for (const auto &ext : m_type->wildcards) {
         // File extension
         if (ext.startsWith(QLatin1String("*."))) {
-            if (text.length() == ext.length() - 2 && text.compare(ext.mid(2), Qt::CaseInsensitive) == 0) {
+            if (text.length() == ext.length() - 2 && text.compare(ext.midRef(2), Qt::CaseInsensitive) == 0) {
                 return true;
             }
         } else if (text.length() != ext.length() || ext.endsWith(QLatin1Char('*'))) {

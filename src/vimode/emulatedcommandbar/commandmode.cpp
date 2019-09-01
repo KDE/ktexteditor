@@ -310,9 +310,9 @@ QString CommandMode::withSedFindTermReplacedWith ( const QString& newFindTerm )
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     Q_ASSERT(parsedSedExpression.parsedSuccessfully);
-    return command.mid(0, parsedSedExpression.findBeginPos) +
+    return command.midRef(0, parsedSedExpression.findBeginPos) +
     newFindTerm +
-    command.mid(parsedSedExpression.findEndPos + 1);
+    command.midRef(parsedSedExpression.findEndPos + 1);
 }
 
 QString CommandMode::withSedDelimiterEscaped ( const QString& text )

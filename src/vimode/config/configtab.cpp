@@ -236,7 +236,7 @@ void ConfigTab::importNormalMappingRow()
         } else if (line.size() == 4 && line[0] == QLatin1String("let") &&
                     line[2] == QLatin1String("=") &&
                     mapleader.match(line[1]).hasMatch()) {
-            const QString &leader = line[3].mid(1, line[3].length() - 2);
+            const QStringRef leader = line[3].midRef(1, line[3].length() - 2);
             if (!leader.isEmpty()) {
                 m_mappings->setLeader(leader[0]);
             }

@@ -1211,7 +1211,7 @@ void ModeBase::addToNumberUnderCursor(int count)
     } else if (base == 8) {
         basePrefix = QStringLiteral("0");
     }
-    const QString withoutBase = numberAsString.mid(basePrefix.length());
+    const QStringRef withoutBase = numberAsString.midRef(basePrefix.length());
 
     const int newNumber = originalNumber + count;
 
