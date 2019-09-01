@@ -314,7 +314,7 @@ void KateStatusBar::cursorPositionChanged()
                    );
     }
     if (m_wordCounter) {
-        text.append(QStringLiteral(", ") + m_wordCount);
+        text.append(QLatin1String(", ") + m_wordCount);
     }
     m_cursorPosition->setText(text);
 }

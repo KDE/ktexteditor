@@ -136,7 +136,7 @@ public:
      */
     QString toString() const {
         return QLatin1Char('[') + m_start.toString()
-             + QStringLiteral(", ") + m_end.toString()
+             + QLatin1String(", ") + m_end.toString()
              + QLatin1Char(']');
     }
 

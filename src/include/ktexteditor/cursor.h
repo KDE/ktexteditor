@@ -135,7 +135,7 @@ public:
      */
     QString toString() const {
         return QLatin1Char('(') + QString::number(m_line)
-             + QStringLiteral(", ") + QString::number(m_column)
+             + QLatin1String(", ") + QString::number(m_column)
              + QLatin1Char(')');
     }
 

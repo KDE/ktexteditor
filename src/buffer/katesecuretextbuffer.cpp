@@ -73,7 +73,7 @@ bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString
      * we need to pass full path, else QTemporaryFile uses the temporary directory
      * if not possible, signal error, this catches e.g. a non-existing target directory, too
      */
-    QTemporaryFile tempFile(targetFileInfo.absolutePath() + QStringLiteral("/secureXXXXXX"));
+    QTemporaryFile tempFile(targetFileInfo.absolutePath() + QLatin1String("/secureXXXXXX"));
     if (!tempFile.open()) {
         return false;
     }
