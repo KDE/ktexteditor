@@ -140,7 +140,7 @@ void registerVariables(KTextEditor::Editor * editor)
         return QDate::currentDate().toString(Qt::ISODate);
     });
     editor->registerVariablePrefix(QStringLiteral("Date:"), i18n("The current date (QDate formatstring)."), [](const QStringView& str, KTextEditor::View*) {
-        return QDate::currentDate().toString(str.right(str.length() - 5));
+        return QDate::currentDate().toString(str.mid(5));
     });
 
     editor->registerVariableMatch(QStringLiteral("Time:Locale"), i18n("The current time in current locale format."), [](const QStringView&, KTextEditor::View*) {
@@ -150,11 +150,11 @@ void registerVariables(KTextEditor::Editor * editor)
         return QTime::currentTime().toString(Qt::ISODate);
     });
     editor->registerVariablePrefix(QStringLiteral("Time:"), i18n("The current time (QTime formatstring)."), [](const QStringView& str, KTextEditor::View*) {
-        return QTime::currentTime().toString(str.right(str.length() - 5));
+        return QTime::currentTime().toString(str.mid(5));
     });
 
     editor->registerVariablePrefix(QStringLiteral("ENV:"), i18n("Access to environment variables."), [](const QStringView& str, KTextEditor::View*) {
-        return QString::fromLocal8Bit(qgetenv(str.right(str.size() - 4).toLocal8Bit().constData()));
+        return QString::fromLocal8Bit(qgetenv(str.mid(4).toLocal8Bit().constData()));
     });
 
     editor->registerVariablePrefix(QStringLiteral("JS:"), i18n("Evaluate simple JavaScript statements."), [](const QStringView& str, KTextEditor::View*) {
