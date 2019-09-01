@@ -290,7 +290,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
     // compute start cursor of a match
     auto startOfMatch = [this, &templateText](const QRegularExpressionMatch& match) {
         const auto offset = match.capturedStart(0);
-        const auto left = templateText.left(offset);
+        const auto left = templateText.leftRef(offset);
         const auto nl = QLatin1Char('\n');
         const auto rel_lineno = left.count(nl);
         const auto start = m_wholeTemplateRange->start().toCursor();
