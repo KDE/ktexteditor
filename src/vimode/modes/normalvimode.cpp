@@ -805,7 +805,7 @@ bool NormalViMode::commandMakeLowercase()
     OperationMode m = getOperationMode();
     QString text = getRange(m_commandRange, m);
     if (m == LineWise) {
-        text = text.left(text.size() - 1);    // don't need '\n' at the end;
+        text.chop(1);    // don't need '\n' at the end;
     }
     QString lowerCase = text.toLower();
 
@@ -851,7 +851,7 @@ bool NormalViMode::commandMakeUppercase()
     OperationMode m = getOperationMode();
     QString text = getRange(m_commandRange, m);
     if (m == LineWise) {
-        text = text.left(text.size() - 1);    // don't need '\n' at the end;
+        text.chop(1);    // don't need '\n' at the end;
     }
     QString upperCase = text.toUpper();
 
@@ -966,7 +966,7 @@ bool NormalViMode::commandChangeCaseRange()
     OperationMode m = getOperationMode();
     QString changedCase = getRange(m_commandRange, m);
     if (m == LineWise) {
-        changedCase = changedCase.left(changedCase.size() - 1);    // don't need '\n' at the end;
+        changedCase.chop(1);    // don't need '\n' at the end;
     }
     KTextEditor::Range range = KTextEditor::Range(m_commandRange.startLine, m_commandRange.startColumn, m_commandRange.endLine, m_commandRange.endColumn);
     // get the text the command should operate on
@@ -1402,7 +1402,7 @@ bool NormalViMode::commandReplaceCharacter()
         QString text = getRange(m_commandRange, m);
 
         if (m == LineWise) {
-            text = text.left(text.size() - 1);    // don't need '\n' at the end;
+            text.chop(1);    // don't need '\n' at the end;
         }
 
         text.replace(QRegExp(QLatin1String("[^\n]")), key);

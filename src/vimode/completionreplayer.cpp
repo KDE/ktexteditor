@@ -87,10 +87,10 @@ void CompletionReplayer::replay()
         if (nextMergableBracketAfterCursorPos != -1) {
             if (completionText.endsWith(QLatin1String("()"))) {
                 // Strip "()".
-                completionText = completionText.left(completionText.length() - 2);
+                completionText.chop(2);
             } else if (completionText.endsWith(QLatin1String("();"))) {
                 // Strip "();".
-                completionText = completionText.left(completionText.length() - 3);
+                completionText.chop(3);
             }
             // Ensure cursor ends up after the merged open bracket.
             offsetFinalCursorPosBy = nextMergableBracketAfterCursorPos + 1;
