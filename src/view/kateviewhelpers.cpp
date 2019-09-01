@@ -1188,6 +1188,8 @@ bool KateCmdLineEdit::event(QEvent *e)
 
 void KateCmdLineEdit::slotReturnPressed(const QString &text)
 {
+    static const QRegularExpression focusChangingCommands(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$"));
+
     if (text.isEmpty()) {
         return;
     }
@@ -1224,8 +1226,8 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         m_oldText = leadingRangeExpression + cmd;
         m_msgMode = true;
 
-        // the following commands changes the focus themselves, so bar should be hidden before execution.
-        if (QRegularExpression(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
+        // if the command changes the focus itself, the bar should be hidden before execution.
+        if (focusChangingCommands.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
             emit hideRequested();
         }
 
@@ -1273,8 +1275,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     m_command = nullptr;
     m_cmdend = 0;
 
-    // the following commands change the focus themselves
-    if (!QRegularExpression(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
+    if (!focusChangingCommands.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         m_view->setFocus();
     }
 

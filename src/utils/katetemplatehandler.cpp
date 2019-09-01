@@ -327,7 +327,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
         if ( defaultMatch.hasMatch() ) {
             // the field has a default value, i.e. ${foo=3}
             f.defaultValue = defaultMatch.captured(1);
-            f.identifier = contents.split(QLatin1Char('=')).at(0).trimmed();
+            f.identifier = contents.leftRef(contents.indexOf(QLatin1Char('='))).trimmed().toString();
         }
         else if ( f.identifier.contains(QLatin1Char('(')) ) {
             // field is a function call when it contains an opening parenthesis

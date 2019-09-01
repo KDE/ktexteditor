@@ -225,7 +225,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
 
     // the following commands change the focus themselves
     static const QRegularExpression reCmds(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|tabp|tabprev|bn|bnext|tabn|tabnext|bf|bfirst|tabf|tabfirst|bl|blast|tabl|tablast|e|edit|tabe|tabedit|tabnew)$"));
-    if (!reCmds.match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
+    if (!reCmds.match(cmd.leftRef(cmd.indexOf(QLatin1Char(' ')))).hasMatch()) {
         view()->setFocus();
     }
 
