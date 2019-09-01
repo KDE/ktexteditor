@@ -27,8 +27,11 @@
 #include <kateglobal.h>
 
 #include <QtTestWidgets>
+#include <QRegularExpression>
 #include <QTemporaryFile>
 #include <QSignalSpy>
+
+#include <stdio.h>
 
 ///TODO: is there a FindValgrind cmake command we could use to
 ///      define this automatically?
@@ -678,6 +681,58 @@ void KateDocumentTest::testAutoReload()
     QCOMPARE(doc.text(), "Hello\nTest\nWorld!");
     // ...and ensure we have not move around
     QCOMPARE(view->cursorPosition(), c);
+}
+
+void KateDocumentTest::testSearch()
+{
+    /**
+     * this is the start of some new implementation of searchText that can handle multi-line regex stuff
+     * just naturally and without always concatenating the full document.
+     */
+
+    KTextEditor::DocumentPrivate doc;
+    doc.setText("foo\nbar\nzonk");
+
+    const QRegularExpression pattern(QStringLiteral("ar\nzonk$"), QRegularExpression::MultilineOption);
+    int startLine = 0;
+    int endLine = 2;
+    QString textToMatch;
+    int partialMatchLine = -1;
+    for (int currentLine = startLine; currentLine <= endLine; ++currentLine) {
+        // if we had a partial match before, we need to keep the old text and append our new line
+        int matchStartLine = currentLine;
+        if (partialMatchLine >= 0) {
+            textToMatch += doc.line(currentLine);
+            textToMatch += QLatin1Char('\n');
+            matchStartLine = partialMatchLine;
+        } else {
+            textToMatch = doc.line(currentLine);
+            textToMatch += QLatin1Char('\n');
+        }
+
+        auto result = pattern.match(textToMatch, 0, QRegularExpression::PartialPreferFirstMatch);
+        printf ("lala %d %d %d %d\n", result.hasMatch(), result.hasPartialMatch(), result.capturedStart(), result.capturedLength());
+
+
+        if (result.hasMatch()) {
+            printf ("found stuff starting in line %d\n", matchStartLine);
+            break;
+        }
+
+        // else: remember if we need to keep text!
+        if (result.hasPartialMatch()) {
+            // if we had already a partial match before, keep the line!
+            if (partialMatchLine >= 0) {
+            } else {
+                partialMatchLine = currentLine;
+            }
+        } else {
+            // we can forget the old text
+            partialMatchLine = -1;
+        }
+    }
+
+
 }
 
 #include "katedocument_test.moc"

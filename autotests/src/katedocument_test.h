@@ -52,6 +52,7 @@ private Q_SLOTS:
     void testTypeCharsWithSurrogateAndNewLine();
     void testRemoveComposedCharacters();
     void testAutoReload();
+    void testSearch();
 };
 
 #endif // KATE_DOCUMENT_TEST_H
