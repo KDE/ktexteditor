@@ -46,12 +46,12 @@ CommandRangeExpressionParser::CommandRangeExpressionParser()
                       m_thisLine.pattern() + QLatin1String(")|(?:") +
                       m_lastLine.pattern() + QLatin1String(")|(?:") +
                       m_forwardSearch2.pattern() + QLatin1String(")|(?:") +
-                      m_backwardSearch2.pattern() + QLatin1String(")"));
+                      m_backwardSearch2.pattern() + QLatin1Char(')'));
     m_offset.setPattern(QLatin1String("[+-](?:") + m_base.pattern() + QLatin1String(")?"));
 
     // The position regexp contains two groups: the base and the offset.
     // The offset may be empty.
-    m_position.setPattern(QLatin1String("(") + m_base.pattern() + QLatin1String(")((?:") + m_offset.pattern() + QLatin1String(")*)"));
+    m_position.setPattern(QLatin1Char('(') + m_base.pattern() + QLatin1String(")((?:") + m_offset.pattern() + QLatin1String(")*)"));
 
     // The range regexp contains seven groups: the first is the start position, the second is
     // the base of the start position, the third is the offset of the start position, the

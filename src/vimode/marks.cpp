@@ -236,7 +236,7 @@ QString Marks::getMarksOnTheLine(int line) const
 
     Q_FOREACH (QChar markerChar, m_marks.keys()) {
         if (m_marks.value(markerChar)->line() == line) {
-            res += markerChar + QLatin1String(":") + QString::number(m_marks.value(markerChar)->column()) + QLatin1String(" ");
+            res += markerChar + QLatin1Char(':') + QString::number(m_marks.value(markerChar)->column()) + QLatin1Char(' ');
         }
     }
 

@@ -603,7 +603,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                 // If we are <space>, encode as a literal " ".
                 QString rest = keys.mid(i);
                 if (rest.indexOf(QLatin1Char('>'), 1) != -1 && rest.mid(1, rest.indexOf(QLatin1Char('>'), 1) - 1) == QLatin1String("space")) {
-                    encodedSequence.append(QLatin1String(" "));
+                    encodedSequence.append(QLatin1Char(' '));
                     i += rest.indexOf(QLatin1Char('>'), 1);
                     continue;
                 } else if (rest.indexOf(QLatin1Char('>'), 1) == -1 || (rest.indexOf(QLatin1Char('<'), 1) < rest.indexOf(QLatin1Char('>'), 1) && rest.indexOf(QLatin1Char('<'), 1) != -1)) {

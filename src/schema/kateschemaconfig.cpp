@@ -633,7 +633,7 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
 
     for (const auto &hl : KateHlManager::self()->modeList()) {
         if (hl.section().length() > 0) {
-            hlCombo->addItem(hl.section() + QLatin1String("/") + hl.translatedName());
+            hlCombo->addItem(hl.section() + QLatin1Char('/') + hl.translatedName());
         } else {
             hlCombo->addItem(hl.translatedName());
         }

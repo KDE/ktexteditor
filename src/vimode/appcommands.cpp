@@ -158,7 +158,7 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
             if (base.isValid()) { // first try to use the same path as the current open document has
                 url = QUrl(base.resolved(arg2path));  //resolved handles the case where the args is a relative path, and is the same as using QUrl(args) elsewise
             } else { // else use the cwd
-                url = QUrl(QUrl(QDir::currentPath() + QLatin1String("/")).resolved(arg2path)); // + "/" is needed because of http://lists.qt.nokia.com/public/qt-interest/2011-May/033913.html
+                url = QUrl(QUrl(QDir::currentPath() + QLatin1Char('/')).resolved(arg2path)); // + "/" is needed because of http://lists.qt.nokia.com/public/qt-interest/2011-May/033913.html
             }
             QFileInfo file(url.toLocalFile());
 

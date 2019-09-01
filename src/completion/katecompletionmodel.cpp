@@ -752,7 +752,7 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
     if (groupingMethod() & Scope) {
         if (!title.isEmpty()) {
-            title.append(QLatin1String(" "));
+            title.append(QLatin1Char(' '));
         }
 
         title.append(scope);
@@ -803,7 +803,7 @@ KateCompletionModel::Group *KateCompletionModel::fetchGroup(int attribute, const
 
         if (!it.isEmpty()) {
             if (!title.isEmpty()) {
-                title.append(QLatin1String(" "));
+                title.append(QLatin1Char(' '));
             }
 
             title.append(it);
@@ -1350,7 +1350,7 @@ int KateCompletionModel::translateColumn(int sourceColumn) const
     foreach (const QList<int>& list, m_columnMerges) {
       columnMerge += '[';
       foreach (int column, list) {
-        columnMerge += QString::number(column) + " ";
+        columnMerge += QString::number(column) + QLatin1Char(' ');
       }
       columnMerge += "] ";
     }

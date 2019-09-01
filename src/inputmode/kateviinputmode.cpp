@@ -170,7 +170,7 @@ QString KateViInputMode::viewModeHuman() const
     QString currentMode = viModeToString(m_viModeManager->getCurrentViMode());
 
     if (m_viModeManager->macroRecorder()->isRecording()) {
-        currentMode.prepend(QLatin1String("(") + i18n("recording") + QLatin1String(") "));
+        currentMode.prepend(QLatin1Char('(') + i18n("recording") + QLatin1String(") "));
     }
 
     QString cmd = m_viModeManager->getVerbatimKeys();

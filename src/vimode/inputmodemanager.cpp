@@ -172,7 +172,7 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
 
             // remove the angle brackets
             decoded.remove(0, 1);
-            decoded.remove(decoded.indexOf(QLatin1String(">")), 1);
+            decoded.remove(decoded.indexOf(QLatin1Char('>')), 1);
 
             // check if one or more modifier keys where used
             if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1

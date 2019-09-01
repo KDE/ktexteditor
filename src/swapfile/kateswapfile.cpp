@@ -596,14 +596,14 @@ QString SwapFile::fileName()
 
         // append the sha1 sum of the full path + filename, to avoid "too long" paths created
         path.append(QString::fromLatin1(QCryptographicHash::hash(fullLocalPath.toUtf8(), QCryptographicHash::Sha1).toHex()));
-        path.append(QLatin1String("-"));
+        path.append(QLatin1Char('-'));
         path.append(QFileInfo(fullLocalPath).fileName());
 
         path.append(QLatin1String(".kate-swp"));
     } else {
         path = fullLocalPath;
         int poz = path.lastIndexOf(QLatin1Char('/'));
-        path.insert(poz + 1, QLatin1String("."));
+        path.insert(poz + 1, QLatin1Char('.'));
         path.append(QLatin1String(".kate-swp"));
     }
 

@@ -3080,7 +3080,7 @@ void KatePasteMenu::slotAboutToShow()
          * get text for the menu ;)
          */
         QString leftPart = (text.size() > 48) ? (text.left(48) + QLatin1String("...")) : text;
-        QAction *a = menu()->addAction(leftPart.replace(QLatin1String("\n"), QLatin1String(" ")), this, SLOT(paste()));
+        QAction *a = menu()->addAction(leftPart.replace(QLatin1Char('\n'), QLatin1Char(' ')), this, SLOT(paste()));
         a->setData(i++);
     }
 }

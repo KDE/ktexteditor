@@ -122,7 +122,7 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
 QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMacro) const
 {
     const bool endedWithSemiColon = completionForMacro.completedText().endsWith(QLatin1Char(';'));
-    QString encodedMacroCompletion = completionForMacro.completedText().remove(QStringLiteral("()")).remove(QStringLiteral(";"));
+    QString encodedMacroCompletion = completionForMacro.completedText().remove(QStringLiteral("()")).remove(QLatin1Char(';'));
     if (completionForMacro.completionType() == Completion::FunctionWithArgs) {
         encodedMacroCompletion += QLatin1String("(...)");
     } else if (completionForMacro.completionType() == Completion::FunctionWithoutArgs) {
@@ -139,7 +139,7 @@ QString Macros::encodeMacroCompletionForConfig(const Completion &completionForMa
 
 Completion Macros::decodeMacroCompletionFromConfig(const QString &encodedMacroCompletion)
 {
-    const bool removeTail = encodedMacroCompletion.endsWith(QLatin1String("|"));
+    const bool removeTail = encodedMacroCompletion.endsWith(QLatin1Char('|'));
     Completion::CompletionType completionType = Completion::PlainText;
     if (encodedMacroCompletion.contains(QLatin1String("(...)"))) {
         completionType = Completion::FunctionWithArgs;

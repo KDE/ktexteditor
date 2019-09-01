@@ -2631,7 +2631,7 @@ Range NormalViMode::motionToMatchingItem()
         int column = n2 - item.length();
         bool reverse = false;
 
-        if (matchingItem.left(1) == QLatin1String("-")) {
+        if (matchingItem.startsWith(QLatin1Char('-'))) {
             matchingItem.remove(0, 1);   // remove the '-'
             reverse = true;
         }

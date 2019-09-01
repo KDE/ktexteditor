@@ -129,7 +129,7 @@ QString VariableListView::variableLine()
     QMap<QString, QString>::const_iterator it = m_variables.constBegin();
     while (it != m_variables.constEnd()) {
         if (!line.isEmpty()) {
-            line += QLatin1String(" ");
+            line += QLatin1Char(' ');
         }
         line += it.key() + QLatin1Char(' ') + it.value() + QLatin1Char(';');
 

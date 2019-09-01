@@ -811,7 +811,7 @@ bool KTextEditor::DocumentPrivate::insertText(const KTextEditor::Cursor &positio
     }
 
     // just reuse normal function
-    return insertText(position, textLines.join(QLatin1String("\n")), block);
+    return insertText(position, textLines.join(QLatin1Char('\n')), block);
 }
 
 bool KTextEditor::DocumentPrivate::removeText(const KTextEditor::Range &_range, bool block)
@@ -1721,7 +1721,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     // remember last change cursor
     m_editLastChangeStartCursor = rangeRemoved.start();
 
-    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1String("\n")) + QLatin1Char('\n'));
+    emit textRemoved(this, rangeRemoved, oldText.join(QLatin1Char('\n')) + QLatin1Char('\n'));
 
     editEnd();
 

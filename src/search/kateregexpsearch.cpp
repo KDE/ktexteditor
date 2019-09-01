@@ -247,7 +247,6 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
         FAST_DEBUG("  line" << 0 << "has length" << lineLens[0]);
 
         // second line and after
-        const QString sep = QStringLiteral("\n");
         for (int i = 1; i < inputLineCount; i++) {
             const int lineNum = firstLineIndex + i;
             if (lineNum < 0 || m_document->lines() <= lineNum) {
@@ -258,7 +257,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
             const QString text = m_document->line(lineNum);
 
             lineLens[i] = text.length();
-            wholeDocument.append(sep);
+            wholeDocument.append(QLatin1Char('\n'));
             wholeDocument.append(text);
             FAST_DEBUG("  line" << i << "has length" << lineLens[i]);
         }

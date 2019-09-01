@@ -60,7 +60,7 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     ui->cmbHl->addItem(i18n("<Unchanged>"), QVariant(QString()));
    for (const auto &hl : KateHlManager::self()->modeList()) {
         if (hl.section().length() > 0)
-            ui->cmbHl->addItem(hl.section() + QLatin1String("/") + hl.translatedName(), QVariant(hl.name()));
+            ui->cmbHl->addItem(hl.section() + QLatin1Char('/') + hl.translatedName(), QVariant(hl.name()));
         else {
             ui->cmbHl->addItem(hl.translatedName(), QVariant(hl.name()));
         }
@@ -145,7 +145,7 @@ void ModeConfigPage::update()
 
     foreach (KateFileType *type, m_types) {
         if (!type->sectionTranslated().isEmpty()) {
-            ui->cmbFiletypes->addItem(type->sectionTranslated() + QLatin1String("/") + type->nameTranslated());
+            ui->cmbFiletypes->addItem(type->sectionTranslated() + QLatin1Char('/') + type->nameTranslated());
         } else {
             ui->cmbFiletypes->addItem(type->nameTranslated());
         }
