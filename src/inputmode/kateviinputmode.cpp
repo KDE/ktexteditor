@@ -178,7 +178,7 @@ QString KateViInputMode::viewModeHuman() const
         currentMode.prepend(QStringLiteral("%1 ").arg(cmd));
     }
 
-    return QStringLiteral("%1").arg(currentMode);
+    return currentMode;
 }
 
 void KateViInputMode::gotFocus()
