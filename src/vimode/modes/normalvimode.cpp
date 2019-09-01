@@ -3841,7 +3841,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
 {
     KTextEditor::Cursor cAfter = pasteLocation;
-    const QStringList textLines = pastedText.split(QLatin1Char('\n'));
+    const auto textLines = pastedText.splitRef(QLatin1Char('\n'));
     if (textLines.length() == 1) {
         cAfter.setColumn(cAfter.column() + pastedText.length());
     } else {
