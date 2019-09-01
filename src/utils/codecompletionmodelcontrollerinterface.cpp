@@ -101,7 +101,7 @@ bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View *view, c
     }
     //Do not abort completions when the text has been empty already before and a newline has been entered
 
-    static const QRegularExpression allowedText(QLatin1String("^\\w*$"));
+    static const QRegularExpression allowedText(QStringLiteral("^\\w*$"));
     return !allowedText.match(currentCompletion).hasMatch();
 }
 

@@ -461,7 +461,7 @@ KTextEditor::DefaultStyle KateHighlighting::defaultStyleForAttribute(int attr) c
 QString KateHighlighting::nameForAttrib(int attrib) const
 {
     const auto &format = m_formats.at(sanitizeFormatIndex(attrib));
-    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.name() + QLatin1Char(':') + QString(format.isValid() ? format.name() : QLatin1String("Normal"));
+    return m_propertiesForFormat.at(sanitizeFormatIndex(attrib))->definition.name() + QLatin1Char(':') + QString(format.isValid() ? format.name() : QStringLiteral("Normal"));
 }
 
 bool KateHighlighting::isInWord(QChar c, int attrib) const

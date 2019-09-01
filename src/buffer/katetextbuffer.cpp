@@ -966,11 +966,11 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 
     // prepare data for KAuth action
     QVariantMap kAuthActionArgs;
-    kAuthActionArgs.insert(QLatin1String("sourceFile"), tempFile.fileName());
-    kAuthActionArgs.insert(QLatin1String("targetFile"), filename);
-    kAuthActionArgs.insert(QLatin1String("checksum"), cryptographicHash.result());
-    kAuthActionArgs.insert(QLatin1String("ownerId"), ownerId);
-    kAuthActionArgs.insert(QLatin1String("groupId"), groupId);
+    kAuthActionArgs.insert(QStringLiteral("sourceFile"), tempFile.fileName());
+    kAuthActionArgs.insert(QStringLiteral("targetFile"), filename);
+    kAuthActionArgs.insert(QStringLiteral("checksum"), cryptographicHash.result());
+    kAuthActionArgs.insert(QStringLiteral("ownerId"), ownerId);
+    kAuthActionArgs.insert(QStringLiteral("groupId"), groupId);
 
     // call save with elevated privileges
     if (KTextEditor::EditorPrivate::unitTestMode()) {
@@ -979,8 +979,8 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
             return false;
         }
     } else {
-        KAuth::Action kAuthSaveAction(QLatin1String("org.kde.ktexteditor.katetextbuffer.savefile"));
-        kAuthSaveAction.setHelperId(QLatin1String("org.kde.ktexteditor.katetextbuffer"));
+        KAuth::Action kAuthSaveAction(QStringLiteral("org.kde.ktexteditor.katetextbuffer.savefile"));
+        kAuthSaveAction.setHelperId(QStringLiteral("org.kde.ktexteditor.katetextbuffer"));
         kAuthSaveAction.setArguments(kAuthActionArgs);
         KAuth::ExecuteJob *job = kAuthSaveAction.execute();
         if (!job->exec()) {

@@ -145,7 +145,7 @@ int CompletionReplayer::findNextMergeableBracketPos(const KTextEditor::Cursor &s
 {
     KTextEditor::DocumentPrivate *doc = m_viInputModeManager->view()->doc();
     const QString lineAfterCursor = doc->text(KTextEditor::Range(startPos, KTextEditor::Cursor(startPos.line(), doc->lineLength(startPos.line()))));
-    static const QRegularExpression whitespaceThenOpeningBracket(QLatin1String("^\\s*(\\()"));
+    static const QRegularExpression whitespaceThenOpeningBracket(QStringLiteral("^\\s*(\\()"));
     QRegularExpressionMatch match = whitespaceThenOpeningBracket.match(lineAfterCursor);
     int nextMergableBracketAfterCursorPos = -1;
     if (match.hasMatch()) {

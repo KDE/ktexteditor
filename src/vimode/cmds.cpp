@@ -58,7 +58,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
     }
 
     //create a list of args
-    QStringList args(_cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts));
+    QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
     // ALL commands that takes no arguments.
@@ -106,7 +106,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
                                  range.end().line()), 0));
         }
 
-        static const QRegularExpression number(QLatin1String("^(\\d+)$"));
+        static const QRegularExpression number(QStringLiteral("^(\\d+)$"));
         for (int i = 0; i < args.count(); i++) {
             auto match = number.match(args.at(i));
             if (match.hasMatch()) {

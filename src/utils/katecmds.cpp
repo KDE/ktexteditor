@@ -204,7 +204,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
     }
 
     //create a list of args
-    QStringList args(_cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts));
+    QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
     // ALL commands that takes no arguments.
@@ -499,7 +499,7 @@ bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd,
     QString cmd = _cmd;
 
     // hex, octal, base 9+1
-    QRegularExpression num(QLatin1String("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
+    QRegularExpression num(QStringLiteral("^char *(0?x[0-9A-Fa-f]{1,4}|0[0-7]{1,6}|[0-9]{1,5})$"));
     QRegularExpressionMatch match = num.match(cmd);
     if (!match.hasMatch()) {
         return false;

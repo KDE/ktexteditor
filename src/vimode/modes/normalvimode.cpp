@@ -1091,7 +1091,7 @@ bool NormalViMode::commandJoinLines()
 
     if (nonEmptyLineFound && leftTrimmedLastLine.isEmpty()) {
         // joinLines won't have added a trailing " ", whereas Vim does - follow suit.
-        doc()->insertText(KTextEditor::Cursor(from, doc()->lineLength(from)), QLatin1String(" "));
+        doc()->insertText(KTextEditor::Cursor(from, doc()->lineLength(from)), QStringLiteral(" "));
     }
 
     // Position cursor just before first non-whitesspace character of what was the last line joined.
@@ -3212,7 +3212,7 @@ KTextEditor::Cursor NormalViMode::findSentenceEnd()
             if (QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                 prev = j++;
                 // Skip possible closing characters.
-                for (; j < line.size() && QString::fromLatin1("\"')]").indexOf(line.at(j)) != -1; j++);
+                for (; j < line.size() && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j++);
 
                 if (j >= line.size()) {
                     return KTextEditor::Cursor(i, j - 1);

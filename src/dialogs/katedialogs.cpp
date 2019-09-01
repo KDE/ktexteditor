@@ -1367,7 +1367,7 @@ void KateModOnHdPrompt::slotDiff()
     // Start a KProcess that creates a diff
     m_proc = new KProcess(this);
     m_proc->setOutputChannelMode(KProcess::MergedChannels);
-    *m_proc << QStringLiteral("diff") << QLatin1String("-u")
+    *m_proc << QStringLiteral("diff") << QStringLiteral("-u")
             << QStringLiteral("-") <<  m_doc->url().toLocalFile();
     connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
     connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotPDone()));

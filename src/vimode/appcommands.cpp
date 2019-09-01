@@ -63,7 +63,7 @@ AppCommands::~AppCommands()
 
 bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
-    QStringList args(cmd.split(QRegularExpression(QLatin1String("\\s+")), QString::SkipEmptyParts)) ;
+    QStringList args(cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts)) ;
     QString command(args.takeFirst());
 
     KTextEditor::MainWindow *mainWin = view->mainWindow();

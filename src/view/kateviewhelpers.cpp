@@ -1118,7 +1118,7 @@ QString KateCmdLineEdit::helptext(const QPoint &) const
     const QString end = QStringLiteral("</td></tr></table></div><qt>");
 
     const QString t = text();
-    static const QRegularExpression re(QLatin1String("\\s*help\\s+(.*)"));
+    static const QRegularExpression re(QStringLiteral("\\s*help\\s+(.*)"));
     auto match = re.match(t);
     if (match.hasMatch()) {
         QString s;
@@ -1225,7 +1225,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         m_msgMode = true;
 
         // the following commands changes the focus themselves, so bar should be hidden before execution.
-        if (QRegularExpression(QLatin1String("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
+        if (QRegularExpression(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
             emit hideRequested();
         }
 
@@ -1274,7 +1274,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     m_cmdend = 0;
 
     // the following commands change the focus themselves
-    if (!QRegularExpression(QLatin1String("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
+    if (!QRegularExpression(QStringLiteral("^(buffer|b|new|vnew|bp|bprev|bn|bnext|bf|bfirst|bl|blast|edit|e)$")).match(cmd.split(QLatin1Char(' ')).at(0)).hasMatch()) {
         m_view->setFocus();
     }
 
@@ -1414,7 +1414,7 @@ void KateCmdLineEdit::fromHistory(bool up)
     if (! s.isEmpty()) {
         // Select the argument part of the command, so that it is easy to overwrite
         setText(s);
-        static const QRegularExpression reCmd(QLatin1String("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
+        static const QRegularExpression reCmd(QStringLiteral("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
         const auto match = reCmd.match(text());
         if (match.hasMatch()) {
             setSelection(text().length() - match.capturedLength(1), match.capturedLength(1));

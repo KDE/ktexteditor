@@ -1198,7 +1198,7 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Minus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotFoldToplevelNodes()));
 
-    a = ac->addAction(QLatin1String("folding_expandtoplevel"));
+    a = ac->addAction(QStringLiteral("folding_expandtoplevel"));
     a->setText(i18n("Unfold Toplevel Nodes"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL+Qt::SHIFT+Qt::Key_Plus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandToplevelNodes()));

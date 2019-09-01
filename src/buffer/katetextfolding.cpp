@@ -615,7 +615,7 @@ QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, 
 
         const QString persistent = (range->flags & Persistent) ? QStringLiteral("p") : QString();
         const QString folded = (range->flags & Folded) ? QStringLiteral("f") : QString();
-        dump += QString::fromLatin1("[%1:%2 %3%4 ").arg(range->start->line()).arg(range->start->column()).arg(persistent, folded);
+        dump += QStringLiteral("[%1:%2 %3%4 ").arg(range->start->line()).arg(range->start->column()).arg(persistent, folded);
 
         /**
          * recurse
@@ -627,7 +627,7 @@ QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, 
             }
         }
 
-        dump += QString::fromLatin1("%1:%2]").arg(range->end->line()).arg(range->end->column());
+        dump += QStringLiteral("%1:%2]").arg(range->end->line()).arg(range->end->column());
     }
     return dump;
 }

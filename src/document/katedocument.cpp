@@ -1205,7 +1205,7 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
                 endLine++;
             } else {
                 if (nextl && (nextl->length() > 0) && !nextl->at(0).isSpace() && ((l->length() < 1) || !l->at(l->length() - 1).isSpace())) {
-                    editInsertText(line + 1, 0, QLatin1String(" "));
+                    editInsertText(line + 1, 0, QStringLiteral(" "));
                 }
 
                 bool newLineAdded = false;
@@ -1904,7 +1904,7 @@ void KTextEditor::DocumentPrivate::bomSetByUser()
 //BEGIN KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
 void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig, const QSet<QString> &flags)
 {
-    if (!flags.contains(QLatin1String("SkipEncoding"))) {
+    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
         // get the encoding
         QString tmpenc = kconfig.readEntry("Encoding");
         if (!tmpenc.isEmpty() && (tmpenc != encoding())) {
@@ -1912,7 +1912,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         }
     }
 
-    if (!flags.contains(QLatin1String("SkipUrl"))) {
+    if (!flags.contains(QStringLiteral("SkipUrl"))) {
         // restore the url
         QUrl url(kconfig.readEntry("URL"));
 
@@ -1926,7 +1926,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         completed(); //perhaps this should be emitted at the end of this function
     }
 
-    if (!flags.contains(QLatin1String("SkipMode"))) {
+    if (!flags.contains(QStringLiteral("SkipMode"))) {
         // restore the filetype
         if (kconfig.hasKey("Mode")) {
             updateFileType(kconfig.readEntry("Mode", fileType()));
@@ -1936,7 +1936,7 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         }
     }
 
-    if (!flags.contains(QLatin1String("SkipHighlighting"))) {
+    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // restore the hl stuff
         if (kconfig.hasKey("Highlighting")) {
             const int mode = KateHlManager::self()->nameFind(kconfig.readEntry("Highlighting"));
@@ -1968,24 +1968,24 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
         }
     }
 
-    if (!flags.contains(QLatin1String("SkipUrl"))) {
+    if (!flags.contains(QStringLiteral("SkipUrl"))) {
         // save url
         kconfig.writeEntry("URL", this->url().toString());
     }
 
-    if (!flags.contains(QLatin1String("SkipEncoding"))) {
+    if (!flags.contains(QStringLiteral("SkipEncoding"))) {
         // save encoding
         kconfig.writeEntry("Encoding", encoding());
     }
 
-    if (!flags.contains(QLatin1String("SkipMode"))) {
+    if (!flags.contains(QStringLiteral("SkipMode"))) {
         // save file type
         kconfig.writeEntry("Mode", m_fileType);
         // save if set by user, too!
         kconfig.writeEntry("Mode Set By User", m_fileTypeSetByUser);
     }
 
-    if (!flags.contains(QLatin1String("SkipHighlighting"))) {
+    if (!flags.contains(QStringLiteral("SkipHighlighting"))) {
         // save hl
         kconfig.writeEntry("Highlighting", highlight()->name());
 
@@ -3350,7 +3350,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
         const Kate::TextLine textLine = m_buffer->plainLine(line - 1);
 
         if (line > 0 && textLine) {
-            if (config()->wordWrap() && textLine->endsWith(QLatin1String(" "))) {
+            if (config()->wordWrap() && textLine->endsWith(QStringLiteral(" "))) {
                 // gg: in hard wordwrap mode, backspace must also eat the trailing space
                 removeText(KTextEditor::Range(line - 1, textLine->length() - 1, line, 0));
             } else {
@@ -4103,7 +4103,7 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
                 editRemoveText(line + 1, 0, pos);
             }
             if (!(l->length() == 0 || l->at(l->length() - 1).isSpace())) {
-                editInsertText(line + 1, 0, QLatin1String(" "));
+                editInsertText(line + 1, 0, QStringLiteral(" "));
             }
         } else {
             // Just remove the whitespace and let Kate handle the rest

@@ -109,7 +109,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
             bool first = true;
             foreach (int column, list) {
                 QTreeWidgetItem *item = new QTreeWidgetItem(ui->columnMergeTree, column);
-                item->setText(0, KateCompletionModel::columnName(column) + QString::fromLatin1(" %1").arg(column));
+                item->setText(0, KateCompletionModel::columnName(column) + QStringLiteral(" %1").arg(column));
                 item->setCheckState(1, first ? Qt::Unchecked : Qt::Checked);
 
                 if (column == KTextEditor::CodeCompletionModel::Name) {
@@ -126,7 +126,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
         for (int column = 0; column < KTextEditor::CodeCompletionModel::ColumnCount; ++column) {
             if (!mergedColumns.contains(column)) {
                 QTreeWidgetItem *item = new QTreeWidgetItem(ui->columnMergeTree, column);
-                item->setText(0, KateCompletionModel::columnName(column) + QString::fromLatin1(" %1").arg(column));
+                item->setText(0, KateCompletionModel::columnName(column) + QStringLiteral(" %1").arg(column));
                 item->setCheckState(1, Qt::Unchecked);
 
                 Q_ASSERT(column != KTextEditor::CodeCompletionModel::Name);
@@ -138,7 +138,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     } else {
         for (int column = 0; column < KTextEditor::CodeCompletionModel::ColumnCount; ++column) {
             QTreeWidgetItem *item = new QTreeWidgetItem(ui->columnMergeTree, column);
-            item->setText(0, KateCompletionModel::columnName(column) + QString::fromLatin1(" %1").arg(column));
+            item->setText(0, KateCompletionModel::columnName(column) + QStringLiteral(" %1").arg(column));
             item->setCheckState(1, Qt::Unchecked);
 
             if (column == KTextEditor::CodeCompletionModel::Name) {
