@@ -1049,11 +1049,11 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
                     commonPrefix = QString();    // isEmpty() = true, isNull() = false
                 }
             } else {
-                commonPrefix = commonPrefix.left(candidate.length());
+                commonPrefix.truncate(candidate.length());
 
                 for (int a = 0; a < commonPrefix.length(); ++a) {
                     if (commonPrefix[a] != candidate[a]) {
-                        commonPrefix = commonPrefix.left(a);
+                        commonPrefix.truncate(a);
                         break;
                     }
                 }
