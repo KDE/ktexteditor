@@ -3583,7 +3583,7 @@ QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::C
             // Insert only enough spaces to align to the next indentWidth column
             // This fixes bug #340212
             int spacesToInsert = indentWidth - (column % indentWidth);
-            result += QStringLiteral(" ").repeated(spacesToInsert);
+            result += QString(spacesToInsert, QLatin1Char(' '));
             column += spacesToInsert;
         } else {
             // Just keep all other typed characters as-is
