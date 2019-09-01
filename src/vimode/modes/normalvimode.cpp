@@ -3762,7 +3762,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 
     OperationMode m = getRegisterFlag(reg);
     QString textToInsert = getRegisterContent(reg);
-    const bool isTextMultiLine = textToInsert.split(QStringLiteral("\n")).count() > 1;
+    const bool isTextMultiLine = textToInsert.count(QLatin1Char('\n')) > 0;
 
     // In temporary normal mode, p/P act as gp/gP.
     isgPaste |= m_viInputModeManager->getTemporaryNormalMode();
@@ -3802,7 +3802,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
             cursorAfterPaste.setLine(cursorAfterPaste.line() + 1);
         }
         if (isgPaste) {
-            cursorAfterPaste.setLine(cursorAfterPaste.line() + textToInsert.split(QStringLiteral("\n")).length() - 1);
+            cursorAfterPaste.setLine(cursorAfterPaste.line() + textToInsert.count(QLatin1Char('\n')));
         }
     } else {
         if (pasteLocation == AfterCurrentPosition) {
@@ -3841,7 +3841,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
 {
     KTextEditor::Cursor cAfter = pasteLocation;
-    const QStringList textLines = pastedText.split(QStringLiteral("\n"));
+    const QStringList textLines = pastedText.split(QLatin1Char('\n'));
     if (textLines.length() == 1) {
         cAfter.setColumn(cAfter.column() + pastedText.length());
     } else {
