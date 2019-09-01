@@ -546,12 +546,8 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
         /**
-         * NOTE: if "theme()" returns an empty theme, only the
+         * NOTE: if "theme()" returns an empty/invalid theme, only the
          * attribute styles set in the XML files will be applied here.
-         * FIXME: if the theme is invalid/empty, the attributes turned off in the
-         * XML file don't work. This is so, because there the theme isn't applied by
-         * KSyntaxHighlighting and the methods "Format::isBold(...)", "Format::isItalic(...)",
-         * etc., return the combination between the syntax definition and the theme.
          */
         if (format.hasTextColor(theme())) {
             newAttribute->setForeground(format.textColor(theme()));
@@ -563,45 +559,46 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
         }
 
-        if (theme().isValid()) {
+        /**
+         * Two cases:
+         * - Valid theme: "isBold(...)", "isItalic(...)", etc. returns the combination
+         *   between the attributes set in the syntax definition files and the theme.
+         * - Invalid/empty theme: the theme doesn't exist in KSyntaxHighlighting and is
+         *   already applied. Then it's checked if the bold, italic, underline & strikeout
+         *   attributes are specifically set in the syntax definition XML file to be applied.
+         *
+         * In both cases, it's allowed to turn off the bold, italic, underline and strikeout
+         * attributes in the XML files (see bug #143399).
+         */
+        if (theme().isValid() || format.hasBoldOverride()) {
             if (format.isBold(theme())) {
                 newAttribute->setFontBold(true);
             } else {
                 newAttribute->setFontBold(false);
             }
+        }
 
+        if (theme().isValid() || format.hasItalicOverride()) {
             if (format.isItalic(theme())) {
                 newAttribute->setFontItalic(true);
             } else {
                 newAttribute->setFontItalic(false);
             }
+        }
 
+        if (theme().isValid() || format.hasUnderlineOverride()) {
             if (format.isUnderline(theme())) {
                 newAttribute->setFontUnderline(true);
             } else {
                 newAttribute->setFontUnderline(false);
             }
+        }
 
+        if (theme().isValid() || format.hasStrikeThroughOverride()) {
             if (format.isStrikeThrough(theme())) {
                 newAttribute->setFontStrikeOut(true);
             } else {
                 newAttribute->setFontStrikeOut(false);
-            }
-        } else {
-            if (format.isBold(theme())) {
-                newAttribute->setFontBold(true);
-            }
-
-            if (format.isItalic(theme())) {
-                newAttribute->setFontItalic(true);
-            }
-
-            if (format.isUnderline(theme())) {
-                newAttribute->setFontUnderline(true);
-            }
-
-            if (format.isStrikeThrough(theme())) {
-                newAttribute->setFontStrikeOut(true);
             }
         }
 
