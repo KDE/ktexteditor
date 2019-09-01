@@ -211,7 +211,13 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
 
     // Try wildcards
     if (! fileName.isEmpty()) {
-        static const QStringList commonSuffixes = QStringLiteral(".orig;.new;~;.bak;.BAK").split(QLatin1Char(';'));
+        static const QLatin1String commonSuffixes[] = {
+            QLatin1String(".orig"),
+            QLatin1String(".new"),
+            QLatin1String("~"),
+            QLatin1String(".bak"),
+            QLatin1String(".BAK"),
+        };
 
         if (!(result = wildcardsFind(fileName)).isEmpty()) {
             return result;
@@ -224,9 +230,9 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
             }
         }
 
-        for (QStringList::ConstIterator it = commonSuffixes.begin(); it != commonSuffixes.end(); ++it) {
-            if (*it != backupSuffix && fileName.endsWith(*it)) {
-                if (!(result = wildcardsFind(fileName.left(length - (*it).length()))).isEmpty()) {
+        for (auto& commonSuffix : commonSuffixes) {
+            if (commonSuffix != backupSuffix && fileName.endsWith(commonSuffix)) {
+                if (!(result = wildcardsFind(fileName.left(length - commonSuffix.size()))).isEmpty()) {
                     return result;
                 }
             }
