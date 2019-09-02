@@ -184,7 +184,7 @@ KTextEditor::Range Searcher::findPatternWorker(const SearchParams& searchParams,
                 std::sort(matchesUnfiltered.begin(), matchesUnfiltered.end());
 
                 QVector<KTextEditor::Range> filteredMatches;
-                foreach (KTextEditor::Range unfilteredMatch, matchesUnfiltered) {
+                for (KTextEditor::Range unfilteredMatch : qAsConst(matchesUnfiltered)) {
                     if (unfilteredMatch.start() < searchBegin) {
                         filteredMatches.append(unfilteredMatch);
                     }

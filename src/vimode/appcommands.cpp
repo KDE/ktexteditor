@@ -396,7 +396,7 @@ void BufferCommands::switchDocument(KTextEditor::View *view, const QString &addr
         // string argument: switch to the given file
         KTextEditor::Document *doc = nullptr;
 
-        Q_FOREACH(KTextEditor::Document *it, docs) {
+        for (KTextEditor::Document *it : docs) {
             if (it->documentName() == address) {
                 doc = it;
                 break;
@@ -411,7 +411,7 @@ void BufferCommands::switchDocument(KTextEditor::View *view, const QString &addr
 
 void BufferCommands::prevBuffer(KTextEditor::View *view)
 {
-    QList<KTextEditor::Document *> docs = documents();
+    const QList<KTextEditor::Document *> docs = documents();
     const int idx = docs.indexOf(view->document());
 
     if (idx > 0) {

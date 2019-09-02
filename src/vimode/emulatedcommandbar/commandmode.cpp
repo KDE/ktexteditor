@@ -60,7 +60,7 @@ CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighligh
         cmds.push_back(cmd);
     }
 
-    Q_FOREACH (KTextEditor::Command *cmd, cmds) {
+    for (KTextEditor::Command *cmd : qAsConst(cmds)) {
         QStringList l = cmd->cmds();
 
         for (int z = 0; z < l.count(); z++) {

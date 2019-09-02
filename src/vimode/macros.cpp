@@ -84,7 +84,7 @@ void Macros::store(const QChar &reg, const QList<QKeyEvent> &macroKeyEventLog, c
     QList<QKeyEvent> withoutClosingQ = macroKeyEventLog;
     Q_ASSERT(!macroKeyEventLog.isEmpty() && macroKeyEventLog.last().key() == Qt::Key_Q);
     withoutClosingQ.pop_back();
-    foreach (const QKeyEvent &keyEvent, withoutClosingQ) {
+    for (const QKeyEvent &keyEvent : qAsConst(withoutClosingQ)) {
         const QChar key = KeyParser::self()->KeyEventToQChar(keyEvent);
         m_macros[reg].append(key);
     }

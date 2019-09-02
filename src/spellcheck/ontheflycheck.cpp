@@ -115,8 +115,8 @@ QString KateOnTheFlyChecker::dictionaryForMisspelledRange(const KTextEditor::Ran
 
 void KateOnTheFlyChecker::clearMisspellingForWord(const QString &word)
 {
-    MisspelledList misspelledList = m_misspelledList; // make a copy
-    foreach (const MisspelledItem &item, misspelledList) {
+    const MisspelledList misspelledList = m_misspelledList; // make a copy
+    for (const MisspelledItem &item : misspelledList) {
         KTextEditor::MovingRange *movingRange = item.first;
         if (m_document->text(*movingRange) == word) {
             deleteMovingRange(movingRange);
@@ -358,8 +358,8 @@ void KateOnTheFlyChecker::freeDocument()
     }
     stopCurrentSpellCheck();
 
-    MisspelledList misspelledList = m_misspelledList; // make a copy!
-    foreach (const MisspelledItem &i, misspelledList) {
+    const MisspelledList misspelledList = m_misspelledList; // make a copy!
+    for (const MisspelledItem &i : misspelledList) {
         deleteMovingRange(i.first);
     }
     m_misspelledList.clear();

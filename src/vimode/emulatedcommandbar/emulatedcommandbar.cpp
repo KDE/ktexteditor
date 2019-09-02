@@ -388,13 +388,11 @@ void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeMana
 
 void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
 {
-    QList<QWidget*> widgets = centralWidget()->findChildren<QWidget*>();
-    foreach(QWidget* widget, widgets)
-    {
+    const QList<QWidget*> widgets = centralWidget()->findChildren<QWidget*>();
+    for (QWidget *widget : widgets) {
         if (widget != widgetToKeepVisible)
             widget->hide();
     }
-
 }
 
 void EmulatedCommandBar::createAndAddBarTypeIndicator(QLayout* layout)

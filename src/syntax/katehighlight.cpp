@@ -387,7 +387,7 @@ void KateHighlighting::getKateExtendedAttributeListCopy(const QString &schema, Q
 
     list.clear();
 
-    foreach (const KTextEditor::Attribute::Ptr &attribute, attributes) {
+    for (const KTextEditor::Attribute::Ptr &attribute : qAsConst(attributes)) {
         list.append(KTextEditor::Attribute::Ptr(new KTextEditor::Attribute(*attribute.data())));
     }
 }

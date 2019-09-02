@@ -707,7 +707,7 @@ void KateCompletionModel::slotRowsRemoved(const QModelIndex &parent, int start, 
         affectedGroups += deleteItems(index);
     }
 
-    foreach (Group *g, affectedGroups) {
+    for (Group *g : qAsConst(affectedGroups)) {
         hideOrShowGroup(g, true);
     }
 }
@@ -1032,7 +1032,7 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
     QList< Group * > groups = m_rowTable;
     groups += m_ungrouped;
 
-    foreach (Group *g, groups) {
+    for (Group *g : qAsConst(groups)) {
         foreach (const Item &item, g->filtered) {
             uint startPos = m_currentMatch[item.sourceRow().first].length();
             const QString candidate = item.name().mid(startPos);

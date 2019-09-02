@@ -3213,12 +3213,11 @@ void EmulatedCommandBarTest::verifyCommandBarCompletionVisible()
     qDebug() << "Emulated command bar completer not visible.";
     QStringListModel *completionModel = qobject_cast<QStringListModel*>(emulatedCommandBarCompleter()->model());
     Q_ASSERT(completionModel);
-    QStringList allAvailableCompletions = completionModel->stringList();
+    const QStringList allAvailableCompletions = completionModel->stringList();
     qDebug() << " Completion list: " << allAvailableCompletions;
     qDebug() << " Completion prefix: " << emulatedCommandBarCompleter()->completionPrefix();
     bool candidateCompletionFound = false;
-    foreach (const QString& availableCompletion, allAvailableCompletions)
-    {
+    for (const QString &availableCompletion : allAvailableCompletions) {
       if (availableCompletion.startsWith(emulatedCommandBarCompleter()->completionPrefix()))
       {
         candidateCompletionFound = true;
@@ -3261,8 +3260,7 @@ void EmulatedCommandBarTest::verifyCommandBarCompletionContains(const QStringLis
     actualCompletionList << emulatedCommandBarCompleter()->currentCompletion();
   }
 
-  foreach(const QString& expectedCompletion, expectedCompletionList)
-  {
+  for (const QString &expectedCompletion : expectedCompletionList) {
     if (!actualCompletionList.contains(expectedCompletion))
     {
       qDebug() << "Whoops: " << actualCompletionList << " does not contain " << expectedCompletion;

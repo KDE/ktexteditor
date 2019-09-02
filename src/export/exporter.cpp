@@ -87,7 +87,7 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
     for (int i = range.start().line(); (i <= range.end().line()) && (i < m_view->document()->lines()); ++i) {
         const QString &line = m_view->document()->line(i);
 
-        QList<KTextEditor::AttributeBlock> attribs = m_view->lineAttributes(i);
+        const QList<KTextEditor::AttributeBlock> attribs = m_view->lineAttributes(i);
 
         int lineStart = 0;
         int remainingChars = line.length();
@@ -102,7 +102,7 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
 
         int handledUntil = lineStart;
 
-        foreach (const KTextEditor::AttributeBlock & block, attribs) {
+        for (const KTextEditor::AttributeBlock &block : attribs) {
             // honor (block-) selections
             if (block.start + block.length <= lineStart) {
                 continue;

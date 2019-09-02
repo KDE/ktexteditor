@@ -295,7 +295,7 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurr
 {
     const QVector<KTextEditor::Range> captureRanges = fullCurrentMatch();
     QStringList captureTexts;
-    foreach (KTextEditor::Range captureRange, captureRanges) {
+    for (KTextEditor::Range captureRange : captureRanges) {
         captureTexts << m_doc->text(captureRange);
     }
     const QString replacementText = m_regExpSearch.buildReplacement(m_replacePattern, captureTexts, 0);

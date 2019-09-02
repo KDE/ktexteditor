@@ -375,7 +375,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
         deleteCompletionRanges();
     }
 
-    foreach (KTextEditor::CodeCompletionModel *model, models) {
+    for (KTextEditor::CodeCompletionModel *model : qAsConst(models)) {
         KTextEditor::Range range;
         if (word.isValid()) {
             range = word;

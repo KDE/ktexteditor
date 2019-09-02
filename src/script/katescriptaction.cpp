@@ -108,12 +108,12 @@ void KateScriptActionMenu::repopulate()
     cleanup();
 
     // now add all command line script commands
-    QVector<KateCommandLineScript *> scripts =
+    const QVector<KateCommandLineScript *> scripts =
         KTextEditor::EditorPrivate::self()->scriptManager()->commandLineScripts();
 
     QHash<QString, QMenu *> menus;
 
-    foreach (KateCommandLineScript *script, scripts) {
+    for (KateCommandLineScript *script : scripts) {
         /**
          * traverse actions
          */

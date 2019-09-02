@@ -93,11 +93,11 @@ void ConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode
 
 void ConfigTab::reloadTab(QTableWidget *mappingsTable, Mappings::MappingMode mode)
 {
-    const QStringList &l = m_mappings->getAll(mode);
+    const QStringList l = m_mappings->getAll(mode);
     mappingsTable->setRowCount(l.size());
 
     int i = 0;
-    foreach (const QString &f, l) {
+    for (const QString &f : l) {
         QTableWidgetItem *from = new QTableWidgetItem(KeyParser::self()->decodeKeySequence(f));
         QString s = m_mappings->get(mode, f);
         QTableWidgetItem *to = new QTableWidgetItem(KeyParser::self()->decodeKeySequence(s));
@@ -195,8 +195,8 @@ void ConfigTab::removeSelectedMappingRows()
     }
 
     // And remove the selected rows.
-    QList<QTableWidgetSelectionRange> l = mappingsTable->selectedRanges();
-    foreach (const QTableWidgetSelectionRange &range, l) {
+    const QList<QTableWidgetSelectionRange> l = mappingsTable->selectedRanges();
+    for (const QTableWidgetSelectionRange &range : l) {
         for (int i = 0; i < range.bottomRow() - range.topRow() + 1; i++) {
             mappingsTable->removeRow(range.topRow());
         }

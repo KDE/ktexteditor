@@ -535,7 +535,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     y += 1 + pl.innerMargin;
 
     int _widest(0);
-    foreach (const KTextEditor::Attribute::Ptr &attribute, _attributes) {
+    for (const KTextEditor::Attribute::Ptr &attribute : qAsConst(_attributes)) {
         _widest = qMax(QFontMetrics(attribute->font()).width(attribute->name().section(QLatin1Char(':'), 1, 1)), _widest);
     }
 
@@ -547,7 +547,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
 
     _titleFont.setUnderline(true);
     QString _currentHlName;
-    foreach (const KTextEditor::Attribute::Ptr &attribute, _attributes) {
+    for (const KTextEditor::Attribute::Ptr &attribute : qAsConst(_attributes)) {
         QString _hl = attribute->name().section(QLatin1Char(':'), 0, 0);
         QString _name = attribute->name().section(QLatin1Char(':'), 1, 1);
         if (_hl != _hlName && _hl != _currentHlName) {

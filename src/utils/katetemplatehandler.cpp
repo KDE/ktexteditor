@@ -348,7 +348,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
     }
 
     // remove escape characters
-    Q_FOREACH ( const auto& backslash, stripBackslashes ) {
+    for (const auto& backslash : stripBackslashes) {
         doc()->removeText(KTextEditor::Range(backslash, backslash + Cursor(0, 1)));
     }
 }

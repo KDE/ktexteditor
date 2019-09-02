@@ -154,8 +154,8 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_textHintPos(-1, -1)
     , m_imPreeditRange(nullptr)
 {
-    QList<KateAbstractInputModeFactory *> factories = KTextEditor::EditorPrivate::self()->inputModeFactories();
-    Q_FOREACH(KateAbstractInputModeFactory *factory, factories) {
+    const QList<KateAbstractInputModeFactory *> factories = KTextEditor::EditorPrivate::self()->inputModeFactories();
+    for (KateAbstractInputModeFactory *factory : factories) {
         KateAbstractInputMode *m = factory->createInputMode(this);
         m_inputModes.insert(m->viewInputMode(), m);
     }
@@ -3199,7 +3199,7 @@ void KateViewInternal::textHintTimeout()
     if (!textHints.isEmpty()) {
         qCDebug(LOG_KTE) << "Hint text: " << textHints;
         QString hint;
-        foreach(const QString & str, textHints) {
+        for (const QString &str : qAsConst(textHints)) {
             hint += QStringLiteral("<p>%1</p>").arg(str);
         }
         QPoint pos(startX() + m_textHintPos.x(), m_textHintPos.y());
@@ -3892,7 +3892,7 @@ KateInlineNoteData KateViewInternal::inlineNoteAt(const QPoint& globalPos) const
     const int line = coordinatesToCursor(mapFromGlobal(globalPos)).line();
     const auto inlineNotes = view()->inlineNotes(line);
     // loop over all notes and check if the point is inside it
-    foreach (const auto& note, inlineNotes) {
+    for (const auto& note : inlineNotes) {
         auto globalNoteRect = inlineNoteRect(note);
         if (globalNoteRect.contains(globalPos)) {
             return note;

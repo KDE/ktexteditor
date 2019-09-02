@@ -670,7 +670,7 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
 
     editEnd();
 
-    foreach (KTextEditor::Mark mark, msave) {
+    for (KTextEditor::Mark mark : qAsConst(msave)) {
         setMark(mark.line, mark.type);
     }
 
@@ -699,7 +699,7 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
 
     editEnd();
 
-    foreach (KTextEditor::Mark mark, msave) {
+    for (KTextEditor::Mark mark : qAsConst(msave)) {
         setMark(mark.line, mark.type);
     }
 
@@ -1694,11 +1694,11 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         }
     }
 
-    foreach (int line, rmark) {
+    for (int line : qAsConst(rmark)) {
         delete m_marks.take(line);
     }
 
-    foreach (int line, list) {
+    for (int line : qAsConst(list)) {
         KTextEditor::Mark *mark = m_marks.take(line);
         mark->line -= to - from + 1;
         m_marks.insert(mark->line, mark);
@@ -4660,7 +4660,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
         const QString nameOfFile = url().fileName();
 
         bool found = false;
-        foreach (const QString &pattern, wildcards) {
+        for (const QString &pattern : wildcards) {
             QRegExp wildcard(pattern, Qt::CaseSensitive, QRegExp::Wildcard);
             found = wildcard.exactMatch(nameOfFile);
 

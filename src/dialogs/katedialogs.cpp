@@ -448,8 +448,8 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     ui = new Ui::EditConfigWidget();
     ui->setupUi(newWidget);
 
-    QList<KateAbstractInputModeFactory *> inputModes = KTextEditor::EditorPrivate::self()->inputModeFactories();
-    Q_FOREACH(KateAbstractInputModeFactory *fact, inputModes) {
+    const QList<KateAbstractInputModeFactory *> inputModes = KTextEditor::EditorPrivate::self()->inputModeFactories();
+    for (KateAbstractInputModeFactory *fact : inputModes) {
         ui->cmbInputMode->addItem(fact->name(), static_cast<int>(fact->inputMode()));
     }
 

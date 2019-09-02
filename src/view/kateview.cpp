@@ -1537,7 +1537,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
         , QStringLiteral("tools_spelling_selection")
     };
 
-    foreach (const auto &action, l) {
+    for (const auto &action : l) {
         QAction *a = actionCollection()->action(action);
         if (a) {
             a->setEnabled(doc()->isReadWrite());
@@ -3198,8 +3198,8 @@ QMenu *KTextEditor::ViewPrivate::contextMenu() const
 
         //qCDebug(LOG_KTE) << "looking up all menu containers";
         if (client->factory()) {
-            QList<QWidget *> conts = client->factory()->containers(QStringLiteral("menu"));
-            foreach (QWidget *w, conts) {
+            const QList<QWidget *> menuContainers = client->factory()->containers(QStringLiteral("menu"));
+            for (QWidget *w : menuContainers) {
                 if (w->objectName() == QLatin1String("ktexteditor_popup")) {
                     //perhaps optimize this block
                     QMenu *menu = (QMenu *)w;
@@ -3500,7 +3500,7 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
         // update from relevant widgets
         opt.state &= ~(QStyle::State_HasFocus|QStyle::State_MouseOver);
         const QList<QWidget *> widgets = QList<QWidget *>() << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
-        foreach (const QWidget *w, widgets) {
+        for (const QWidget *w : widgets) {
             if (w->hasFocus()) opt.state |= QStyle::State_HasFocus;
             if (w->underMouse()) opt.state |= QStyle::State_MouseOver;
         }
@@ -3619,10 +3619,10 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     // cursor valid? else no new ranges can be found
     if (currentCursor.isValid() && currentCursor.line() < doc()->buffer().lines()) {
         // now: get current ranges for the line of cursor with an attribute
-        QList<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
+        const QList<Kate::TextRange *> rangesForCurrentCursor = doc()->buffer().rangesForLine(currentCursor.line(), this, false);
 
         // match which ranges really fit the given cursor
-        foreach (Kate::TextRange *range, rangesForCurrentCursor) {
+        for (Kate::TextRange *range : rangesForCurrentCursor) {
             // range has no dynamic attribute of right type and no feedback object
             if ((!range->attribute() || !range->attribute()->dynamicAttribute(activationType)) && !range->feedback()) {
                 continue;
@@ -3672,7 +3672,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     }
 
     // now: notify for left ranges!
-    foreach (Kate::TextRange *range, validRanges) {
+    for (Kate::TextRange *range : qAsConst(validRanges)) {
         // range valid + right dynamic attribute, trigger update
         if (range->toRange().isValid() && range->attribute() && range->attribute()->dynamicAttribute(activationType)) {
             notifyAboutRangeChange(range->start().line(), range->end().line(), true);

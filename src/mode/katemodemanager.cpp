@@ -259,7 +259,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
         int pri = -1;
         QString name;
 
-        foreach (KateFileType *type, types) {
+        for (KateFileType *type : qAsConst(types)) {
             if (type->priority > pri) {
                 pri = type->priority;
                 name = type->name;

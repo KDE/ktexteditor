@@ -226,8 +226,7 @@ void KateDocumentTest::testSetTextPerformance()
     QBENCHMARK {
         // init
         doc.setText(text);
-        foreach (const Range &range, ranges)
-        {
+        for (const Range &range : qAsConst(ranges)) {
             invalidator.addRange(doc.newMovingRange(range));
         }
         QCOMPARE(invalidator.ranges().size(), ranges.size());

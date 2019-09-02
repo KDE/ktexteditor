@@ -324,8 +324,8 @@ void KateSchemaConfigColorTab::importSchema(KConfigGroup &config)
 
 void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
 {
-    QVector<KateColorItem> items = ui->colorItems();
-    foreach (const KateColorItem &item, items) {
+    const QVector<KateColorItem> items = ui->colorItems();
+    for (const KateColorItem &item : items) {
         QColor c = item.useDefault ? item.defaultColor : item.color;
         config.writeEntry(item.key, c);
     }
@@ -1008,12 +1008,12 @@ void KateSchemaConfigPage::exportFullSchema()
     QStringList hlList;
     m_highlightTab->loadAllHlsForSchema(m_currentSchema);
 
-    QList<int> hls = m_highlightTab->hlsForSchema(m_currentSchema);
+    const QList<int> hls = m_highlightTab->hlsForSchema(m_currentSchema);
 
     int cnt = 0;
     QProgressDialog progress(i18n("Exporting schema"), QString(), 0, hls.count(), this);
     progress.setWindowModality(Qt::WindowModal);
-    foreach (int hl, hls) {
+    for (int hl : hls) {
         hlList << KateHlManager::self()->getHl(hl)->name();
         m_highlightTab->exportHl(m_currentSchema, hl, &cfg);
         progress.setValue(++cnt);
@@ -1180,7 +1180,7 @@ void KateSchemaConfigPage::importFullSchema()
     int cnt = 0;
     QProgressDialog progress(i18n("Importing schema"), QString(), 0, highlightings.count(), this);
     progress.setWindowModality(Qt::WindowModal);
-    foreach (const QString &hl, highlightings) {
+    for (const QString &hl : highlightings) {
         if (nameToId.contains(hl)) {
             const int i = nameToId[hl];
             m_highlightTab->importHl(fromSchemaName, schemaName, i, &cfg);
@@ -1250,8 +1250,8 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
     // reinitialize combo boxes
     schemaCombo->clear();
     defaultSchemaCombo->clear();
-    QList<KateSchema> schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
-    foreach (const KateSchema &s, schemaList) {
+    const QList<KateSchema> schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
+    for (const KateSchema &s : schemaList) {
         schemaCombo->addItem(s.translatedName(), s.rawName);
         defaultSchemaCombo->addItem(s.translatedName(), s.rawName);
     }

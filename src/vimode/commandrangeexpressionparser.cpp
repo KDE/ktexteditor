@@ -134,10 +134,10 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
 {
     int pos = 0;
     QList<bool> operators_list;
-    QStringList split = string.split(RE_CalculatePositionSplit());
+    const QStringList split = string.split(RE_CalculatePositionSplit());
     QList<int> values;
 
-    Q_FOREACH (const QString &line, split) {
+    for (const QString &line : split) {
         pos += line.size();
 
         if (pos < string.size()) {

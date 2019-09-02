@@ -2723,7 +2723,7 @@ void KateViewEncodingAction::Private::init()
         actions << tmp;
     }
     std::sort(actions.begin(), actions.end(), lessThanAction);
-    foreach (KSelectAction *action, actions) {
+    for (KSelectAction *action : qAsConst(actions)) {
         q->addAction(action);
     }
 }

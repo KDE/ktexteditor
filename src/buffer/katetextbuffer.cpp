@@ -115,8 +115,8 @@ TextBuffer::~TextBuffer()
 void TextBuffer::invalidateRanges()
 {
     // invalidate all ranges, work on copy, they might delete themself...
-    QSet<TextRange *> copyRanges = m_ranges;
-    foreach (TextRange *range, copyRanges) {
+    const QSet<TextRange *> copyRanges = m_ranges;
+    for (TextRange *range : copyRanges) {
         range->setRange(KTextEditor::Cursor::invalid(), KTextEditor::Cursor::invalid());
     }
 }
@@ -1004,8 +1004,8 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, 
      * update all views, this IS ugly and could be a signal, but I profiled and a signal is TOO slow, really
      * just create 20k ranges in a go and you wait seconds on a decent machine
      */
-    const QList<KTextEditor::View *> &views = m_document->views();
-    foreach (KTextEditor::View *curView, views) {
+    const QList<KTextEditor::View *> views = m_document->views();
+    for (KTextEditor::View *curView : views) {
         // filter wrong views
         if (view && view != curView) {
             continue;
@@ -1030,8 +1030,9 @@ QList<TextRange *> TextBuffer::rangesForLine(int line, KTextEditor::View *view, 
 
     // get the ranges of the right block
     QList<TextRange *> rightRanges;
-    foreach (const QSet<TextRange *> &ranges, m_blocks.at(blockIndex)->rangesForLine(line)) {
-        foreach (TextRange *const range, ranges) {
+    const auto blockRanges = m_blocks.at(blockIndex)->rangesForLine(line);
+    for (const QSet<TextRange*> &ranges : blockRanges) {
+        for (TextRange *const range : ranges) {
             /**
             * we want only ranges with attributes, but this one has none
             */

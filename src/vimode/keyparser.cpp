@@ -550,7 +550,7 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                     }
                     tokens << untilClosing.mid(currentPos);
 
-                    foreach (const QString &str, tokens) {
+                    for (const QString &str : qAsConst(tokens)) {
                         if (str == QLatin1String("s-") && (keyCodeTemp & 0x01) != 0x1) {
                             keyCodeTemp += 0x1;
                         } else if (str == QLatin1String("c-") && (keyCodeTemp & 0x02) != 0x2) {
