@@ -3841,12 +3841,13 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
 KTextEditor::Cursor NormalViMode::cursorPosAtEndOfPaste(const KTextEditor::Cursor &pasteLocation, const QString &pastedText) const
 {
     KTextEditor::Cursor cAfter = pasteLocation;
-    const auto textLines = pastedText.splitRef(QLatin1Char('\n'));
-    if (textLines.length() == 1) {
+    const int lineCount = pastedText.count(QLatin1Char('\n')) + 1;
+    if (lineCount == 1) {
         cAfter.setColumn(cAfter.column() + pastedText.length());
     } else {
-        cAfter.setColumn(textLines.last().length() - 0);
-        cAfter.setLine(cAfter.line() + textLines.length() - 1);
+        const int lastLineLength = pastedText.size() - (pastedText.lastIndexOf(QLatin1Char('\n')) + 1);
+        cAfter.setColumn(lastLineLength);
+        cAfter.setLine(cAfter.line() + lineCount - 1);
     }
     return cAfter;
 }
