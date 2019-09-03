@@ -3189,7 +3189,7 @@ void KateViewInternal::textHintTimeout()
     }
 
     QStringList textHints;
-    foreach(KTextEditor::TextHintProvider * const p, m_textHintProviders) {
+    for (KTextEditor::TextHintProvider * const p : qAsConst(m_textHintProviders)) {
         const QString hint = p->textHint(m_view, c);
         if (!hint.isEmpty()) {
             textHints.append(hint);

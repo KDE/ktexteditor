@@ -3613,10 +3613,11 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
 
     // first: validate the remembered ranges
     QSet<Kate::TextRange *> validRanges;
-    foreach (Kate::TextRange *range, oldSet)
+    for (Kate::TextRange *range : qAsConst(oldSet)) {
         if (doc()->buffer().rangePointerValid(range)) {
             validRanges.insert(range);
         }
+    }
 
     // cursor valid? else no new ranges can be found
     if (currentCursor.isValid() && currentCursor.line() < doc()->buffer().lines()) {
