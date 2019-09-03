@@ -254,7 +254,8 @@ void BaseTest::DoTest_(int line, const char *file, const QString &original, cons
 
 Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int startPos, int *destEndOfCodedModifier)
 {
-    foreach (const QString &modifierCode, m_codesToModifiers.keys()) {
+    for (auto it = m_codesToModifiers.constBegin(), end = m_codesToModifiers.constEnd(); it != end; ++it) {
+        const QString &modifierCode = it.key();
         // The "+2" is from the leading '\' and the trailing '-'
         if (string.mid(startPos, modifierCode.length() + 2) == QString("\\") + modifierCode + "-") {
             if (destEndOfCodedModifier) {
@@ -262,7 +263,7 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
                 *destEndOfCodedModifier = startPos + modifierCode.length() + 1;
                 Q_ASSERT(string[*destEndOfCodedModifier] == '-');
             }
-            return m_codesToModifiers.value(modifierCode);
+            return it.value();
         }
     }
     return Qt::NoModifier;
@@ -270,13 +271,14 @@ Qt::KeyboardModifier BaseTest::parseCodedModifier(const QString &string, int sta
 
 Qt::Key BaseTest::parseCodedSpecialKey(const QString &string, int startPos, int *destEndOfCodedKey)
 {
-    foreach (const QString &specialKeyCode, m_codesToSpecialKeys.keys()) {
+    for (auto it = m_codesToSpecialKeys.constBegin(), end = m_codesToSpecialKeys.constEnd(); it != end; ++it) {
+        const QString &specialKeyCode = it.key();
         // "+1" is for the leading '\'.
         if (string.mid(startPos, specialKeyCode.length() + 1) == QString("\\") + specialKeyCode) {
             if (destEndOfCodedKey) {
                 *destEndOfCodedKey = startPos + specialKeyCode.length();
             }
-            return m_codesToSpecialKeys.value(specialKeyCode);
+            return it.value();
         }
     }
     return Qt::Key_unknown;

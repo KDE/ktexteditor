@@ -41,7 +41,7 @@ namespace
 {
     QWidget *findViewInternal(KTextEditor::View* view)
     {
-        foreach (QObject* child, view->children()) {
+        for (QObject* child : view->children()) {
             if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
                 return qobject_cast<QWidget*>(child);
             }
