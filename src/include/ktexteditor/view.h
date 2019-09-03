@@ -373,8 +373,8 @@ public:
      * }
      *
      * if (client->factory()) {
-     *   QList<QWidget*> conts = client->factory()->containers("menu");
-     *   foreach (QWidget *w, conts) {
+     *   const QList<QWidget*> menuContainers = client->factory()->containers("menu");
+     *   for (QWidget *w : menuContainers) {
      *     if (w->objectName() == "ktexteditor_popup") {
      *       // do something with the menu (ie adding an onshow handler)
      *       break;
