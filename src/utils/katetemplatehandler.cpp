@@ -83,13 +83,9 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     // then delete the selected text (if any); it was replaced by the template
     doc()->removeText(selection->toRange());
 
-    bool have_editable_field = false;
-    Q_FOREACH ( const auto& field, m_fields ) {
-        if ( field.kind == TemplateField::Editable ) {
-            have_editable_field = true;
-            break;
-        }
-    }
+    const bool have_editable_field = std::any_of(m_fields.constBegin(), m_fields.constEnd(), [](const TemplateField  &field) {
+        return (field.kind == TemplateField::Editable);
+    });
     // only do complex stuff when required
     if ( have_editable_field ) {
         const auto views = doc()->views();
@@ -338,7 +334,7 @@ void KateTemplateHandler::parseFields(const QString& templateText)
             // field marks the final cursor position
             f.kind = TemplateField::FinalCursorPosition;
         }
-        Q_FOREACH ( const auto& other, m_fields ) {
+        for (const auto &other : qAsConst(m_fields)) {
             if ( other.kind == TemplateField::Editable && ! (f == other) && other.identifier == f.identifier ) {
                 // field is a mirror field
                 f.kind = TemplateField::Mirror;
@@ -410,7 +406,7 @@ void KateTemplateHandler::initializeTemplate()
 
 const KateTemplateHandler::TemplateField KateTemplateHandler::fieldForRange(const KTextEditor::Range& range) const
 {
-    Q_FOREACH ( const auto& field, m_fields ) {
+    for (const auto &field : m_fields) {
         if ( field.range->contains(range.start()) || field.range->end() == range.start() ) {
             return field;
         }
@@ -545,7 +541,7 @@ void KateTemplateHandler::updateRangeBehaviours()
 KateScript::FieldMap KateTemplateHandler::fieldMap() const
 {
     KateScript::FieldMap map;
-    Q_FOREACH ( const auto& field, m_fields ) {
+    for (const auto &field : m_fields) {
         if ( field.kind != TemplateField::Editable ) {
             // only editable fields are of interest to the scripts
             continue;
