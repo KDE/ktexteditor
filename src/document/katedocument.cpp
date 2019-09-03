@@ -656,7 +656,8 @@ bool KTextEditor::DocumentPrivate::setText(const QString &s)
 
     QList<KTextEditor::Mark> msave;
 
-    foreach (KTextEditor::Mark *mark, m_marks) {
+    msave.reserve(m_marks.size());
+    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
         msave.append(*mark);
     }
 
@@ -685,7 +686,8 @@ bool KTextEditor::DocumentPrivate::setText(const QStringList &text)
 
     QList<KTextEditor::Mark> msave;
 
-    foreach (KTextEditor::Mark *mark, m_marks) {
+    msave.reserve(m_marks.size());
+    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
         msave.append(*mark);
     }
 
@@ -1685,7 +1687,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     QList<int> rmark;
     QList<int> list;
 
-    foreach (KTextEditor::Mark *mark, m_marks) {
+    for (KTextEditor::Mark *mark : qAsConst(m_marks)) {
         int line = mark->line;
         if (line > to) {
             list << line;
@@ -1838,7 +1840,8 @@ QStringList KTextEditor::DocumentPrivate::modes() const
     QStringList m;
 
     const QList<KateFileType *> &modeList = KTextEditor::EditorPrivate::self()->modeManager()->list();
-    foreach (KateFileType *type, modeList) {
+    m.reserve(modeList.size());
+    for (KateFileType *type : modeList) {
         m << type->name;
     }
 
@@ -3578,7 +3581,7 @@ QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::C
     QString result;
     result.reserve(str.size());
 
-    Q_FOREACH (const QChar ch, str) {
+    for (const QChar ch : str) {
         if (ch == tabChar) {
             // Insert only enough spaces to align to the next indentWidth column
             // This fixes bug #340212
