@@ -236,12 +236,12 @@ bool TextFolding::unfoldRange(qint64 id, bool remove)
          */
         FoldingRange::Vector &parentVector = range->parent ? range->parent->nestedRanges : m_foldingRanges;
         FoldingRange::Vector newParentVector;
-        Q_FOREACH (FoldingRange *curRange, parentVector) {
+        for (FoldingRange *curRange : qAsConst(parentVector)) {
             /**
              * insert our nested ranges and reparent them
              */
             if (curRange == range) {
-                Q_FOREACH (FoldingRange *newRange, range->nestedRanges) {
+                for (FoldingRange *newRange : qAsConst(range->nestedRanges)) {
                     newRange->parent = range->parent;
                     newParentVector.push_back(newRange);
                 }
@@ -371,7 +371,7 @@ int TextFolding::visibleLines() const
     /**
      * count all folded lines and subtract them from visible lines
      */
-    Q_FOREACH (FoldingRange *range, m_foldedFoldingRanges) {
+    for (FoldingRange *range : m_foldedFoldingRanges) {
         visibleLines -= (range->end->line() - range->start->line());
     }
 
@@ -407,7 +407,7 @@ int TextFolding::lineToVisibleLine(int line) const
      */
     int seenVisibleLines = 0;
     int lastLine = 0;
-    Q_FOREACH (FoldingRange *range, m_foldedFoldingRanges) {
+    for (FoldingRange *range : m_foldedFoldingRanges) {
         /**
          * abort if we reach our line!
          */
@@ -466,7 +466,7 @@ int TextFolding::visibleLineToLine(int visibleLine) const
     int seenVisibleLines = 0;
     int lastLine = 0;
     int lastLineVisibleLines = 0;
-    Q_FOREACH (FoldingRange *range, m_foldedFoldingRanges) {
+    for (FoldingRange *range : m_foldedFoldingRanges) {
         /**
          * else compute visible lines and move last seen
          */
@@ -608,7 +608,7 @@ QString TextFolding::debugDump(const TextFolding::FoldingRange::Vector &ranges, 
      * dump all ranges recursively
      */
     QString dump;
-    Q_FOREACH (FoldingRange *range, ranges) {
+    for (FoldingRange *range : ranges) {
         if (!dump.isEmpty()) {
             dump += QLatin1Char(' ');
         }
@@ -748,7 +748,7 @@ bool TextFolding::insertNewFoldingRange(FoldingRange *parent, FoldingRange::Vect
      * correct parent mapping!
      */
     newRange->parent = parent;
-    Q_FOREACH (FoldingRange *range, newRange->nestedRanges) {
+    for (FoldingRange *range : qAsConst(newRange->nestedRanges)) {
         range->parent = newRange;
     }
 
