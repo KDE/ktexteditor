@@ -553,7 +553,7 @@ QString KateWordCompletionView::findLongestUnique(const QStringList &matches, in
 {
     QString partial = matches.first();
 
-    foreach (const QString &current, matches) {
+    for (const QString &current : matches) {
         if (!current.startsWith(partial)) {
             while (partial.length() > lead) {
                 partial.remove(partial.length() - 1, 1);

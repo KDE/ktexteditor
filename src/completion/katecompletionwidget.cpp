@@ -355,10 +355,12 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
 
     QList<KTextEditor::CodeCompletionModel *> models = (modelsToStart.isEmpty() ? m_sourceModels : modelsToStart);
 
-    foreach (KTextEditor::CodeCompletionModel *model, m_completionRanges.keys())
+    for (auto it = m_completionRanges.keyBegin(), end = m_completionRanges.keyEnd(); it != end; ++it) {
+        KTextEditor::CodeCompletionModel *model = *it;
         if (!models.contains(model)) {
             models << model;
         }
+    }
 
     if (!m_filterInstalled) {
         if (!QApplication::activeWindow()) {
@@ -944,10 +946,11 @@ KTextEditor::MovingRange *KateCompletionWidget::completionRange(KTextEditor::Cod
 
         KTextEditor::MovingRange *ret = m_completionRanges.begin()->range;
 
-        foreach (const CompletionRange &range, m_completionRanges)
+        for (const CompletionRange &range : m_completionRanges) {
             if (range.range->start() > ret->start()) {
                 ret = range.range;
             }
+        }
         return ret;
     }
     if (m_completionRanges.contains(model)) {

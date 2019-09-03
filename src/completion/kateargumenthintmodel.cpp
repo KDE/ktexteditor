@@ -83,7 +83,7 @@ void KateArgumentHintModel::buildRows()
     }
 
     for (QMap<int, QList<int> >::const_iterator it = m_depths.constBegin(); it != m_depths.constEnd(); ++it) {
-        foreach (int row, *it) {
+        for (int row : *it) {
             m_rows.push_front(row);    //Insert filtered in reversed order
         }
         m_rows.push_front(-it.key());

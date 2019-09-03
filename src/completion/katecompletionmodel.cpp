@@ -195,7 +195,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         if ( role == Qt::TextAlignmentRole ) {
             if (isColumnMergingEnabled() && !m_columnMerges.isEmpty()) {
                 int c = 0;
-                foreach (const QList<int> &list, m_columnMerges) {
+                for (const QList<int> &list : qAsConst(m_columnMerges)) {
                     if (index.column() < c + list.size()) {
                         c += list.size();
                         continue;
@@ -216,7 +216,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
         // Merge text for column merging
         if (role == Qt::DisplayRole && !m_columnMerges.isEmpty() && isColumnMergingEnabled()) {
             QString text;
-            foreach (int column, m_columnMerges[index.column()]) {
+            for (int column : m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
                 text.append(sourceIndex.data(role).toString());
             }
@@ -226,7 +226,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
 
         if (role == CodeCompletionModel::HighlightingMethod) {
             //Return that we are doing custom-highlighting of one of the sub-strings does it. Unfortunately internal highlighting does not work for the other substrings.
-            foreach (int column, m_columnMerges[index.column()]) {
+            for (int column : m_columnMerges[index.column()]) {
                 QModelIndex sourceIndex = mapToSource(createIndex(index.row(), column, index.internalPointer()));
                 QVariant method = sourceIndex.data(CodeCompletionModel::HighlightingMethod);
                 if (method.type() == QVariant::Int && method.toInt() ==  CodeCompletionModel::CustomHighlighting) {
@@ -240,14 +240,17 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
             QStringList strings;
 
             //Collect strings
-            foreach (int column, m_columnMerges[index.column()]) {
+            const auto& columns = m_columnMerges[index.column()];
+            strings.reserve(columns.size());
+            for (int column : columns) {
                 strings << mapToSource(createIndex(index.row(), column, index.internalPointer())).data(Qt::DisplayRole).toString();
             }
 
             QList<QVariantList> highlights;
 
             //Collect custom-highlightings
-            foreach (int column, m_columnMerges[index.column()]) {
+            highlights.reserve(columns.size());
+            for (int column : columns) {
                 highlights << mapToSource(createIndex(index.row(), column, index.internalPointer())).data(CodeCompletionModel::CustomHighlight).toList();
             }
 
@@ -1033,7 +1036,7 @@ QString KateCompletionModel::commonPrefixInternal(const QString &forcePrefix) co
     groups += m_ungrouped;
 
     for (Group *g : qAsConst(groups)) {
-        foreach (const Item &item, g->filtered) {
+        for (const Item &item : qAsConst(g->filtered)) {
             uint startPos = m_currentMatch[item.sourceRow().first].length();
             const QString candidate = item.name().mid(startPos);
 
@@ -1244,7 +1247,7 @@ void KateCompletionModel::debugStats()
         qCDebug(LOG_KTE) << "Model groupless, " << m_ungrouped->filtered.count() << " items.";
     } else {
         qCDebug(LOG_KTE) << "Model grouped (" << m_rowTable.count() << " groups):";
-        foreach (Group *g, m_rowTable) {
+        for (Group *g : qAsConst(m_rowTable)) {
             qCDebug(LOG_KTE) << "Group" << g << "count" << g->filtered.count();
         }
     }
@@ -1347,9 +1350,9 @@ int KateCompletionModel::translateColumn(int sourceColumn) const
     /* Debugging - dump column merge list
 
     QString columnMerge;
-    foreach (const QList<int>& list, m_columnMerges) {
+    for (const QList<int> &list : m_columnMerges) {
       columnMerge += '[';
-      foreach (int column, list) {
+      for (int column : list) {
         columnMerge += QString::number(column) + QLatin1Char(' ');
       }
       columnMerge += "] ";
@@ -1358,8 +1361,8 @@ int KateCompletionModel::translateColumn(int sourceColumn) const
     qCDebug(LOG_KTE) << k_funcinfo << columnMerge;*/
 
     int c = 0;
-    foreach (const QList<int> &list, m_columnMerges) {
-        foreach (int column, list) {
+    for (const QList<int> &list : m_columnMerges) {
+        for (int column : list) {
             if (column == sourceColumn) {
                 return c;
             }
@@ -1800,10 +1803,11 @@ void KateCompletionModel::refilter()
 void KateCompletionModel::Group::refilter()
 {
     filtered.clear();
-    foreach (const Item &i, prefilter)
+    for (const Item &i : qAsConst(prefilter)) {
         if (!i.isFiltered()) {
             filtered.append(i);
         }
+    }
 }
 
 bool KateCompletionModel::Item::filter()
@@ -1842,7 +1846,7 @@ bool KateCompletionModel::Item::filter()
 uint KateCompletionModel::filteredItemCount() const
 {
     uint ret = 0;
-    foreach (Group *group, m_rowTable) {
+    for (Group *group : m_rowTable) {
         ret += group->filtered.size();
     }
 
@@ -1857,8 +1861,8 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     bool doHide = false;
     CodeCompletionModel *hideModel = nullptr;
 
-    foreach (Group *group, m_rowTable)
-        foreach (const Item &item, group->filtered)
+    for (Group *group : qAsConst(m_rowTable)) {
+        for (const Item &item : qAsConst(group->filtered)) {
             if (item.haveExactMatch()) {
                 KTextEditor::CodeCompletionModelControllerInterface *iface3 = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(item.sourceRow().first);
                 bool hide = false;
@@ -1873,14 +1877,18 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
                     hideModel = item.sourceRow().first;
                 }
             }
+        }
+    }
 
     if (doHide) {
         // Check if all other visible items are from the same model
-        foreach (Group *group, m_rowTable)
-            foreach (const Item &item, group->filtered)
+        for (Group *group : qAsConst(m_rowTable)) {
+            for (const Item &item : qAsConst(group->filtered)) {
                 if (item.sourceRow().first != hideModel) {
                     return false;
                 }
+            }
+        }
     }
 
     return doHide;
@@ -1944,7 +1952,7 @@ bool KateCompletionModel::matchesAbbreviation(const QString &word, const QString
 
     // First, check if all letters are contained in the word in the right order.
     int atLetter = 0;
-    foreach (const QChar c, typed) {
+    for (const QChar c : typed) {
         while (toLowerIfInsensitive(c, caseSensitive) != toLowerIfInsensitive(word.at(atLetter), caseSensitive)) {
             atLetter += 1;
             if (atLetter >= word.size()) {
@@ -2177,7 +2185,7 @@ void KateCompletionModel::setCompletionModels(const QList<KTextEditor::CodeCompl
 
     m_completionModels = models;
 
-    foreach (KTextEditor::CodeCompletionModel *model, models) {
+    for (KTextEditor::CodeCompletionModel *model : models) {
         connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(slotRowsInserted(QModelIndex,int,int)));
         connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), SLOT(slotRowsRemoved(QModelIndex,int,int)));
         connect(model, SIGNAL(modelReset()), SLOT(slotModelReset()));
@@ -2228,7 +2236,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
         void filter(QList<Item> &items)
         {
             QList<Item> temp;
-            foreach (const Item &item, items) {
+            for (const Item &item : qAsConst(items)) {
                 QHash<QString, CodeCompletionModel *>::const_iterator it = had.constFind(item.name());
                 if (it != had.constEnd() && *it != item.sourceRow().first && m_needShadowing.contains(item.sourceRow().first)) {
                     continue;

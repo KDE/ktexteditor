@@ -105,9 +105,9 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
 
     QList<int> mergedColumns;
     if (!m_model->columnMerges().isEmpty()) {
-        foreach (const QList<int> &list, m_model->columnMerges()) {
+        for (const QList<int> &list : m_model->columnMerges()) {
             bool first = true;
-            foreach (int column, list) {
+            for (int column : list) {
                 QTreeWidgetItem *item = new QTreeWidgetItem(ui->columnMergeTree, column);
                 item->setText(0, KateCompletionModel::columnName(column) + QStringLiteral(" %1").arg(column));
                 item->setCheckState(1, first ? Qt::Unchecked : Qt::Checked);
