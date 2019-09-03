@@ -303,7 +303,9 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
 
     // Add 'scheme' to list
     QStringList schemas;
-    Q_FOREACH (const KateSchema &schema, KTextEditor::EditorPrivate::self()->schemaManager()->list()) {
+    const auto schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
+    schemas.reserve(schemaList.size());
+    for (const KateSchema &schema : schemaList) {
         schemas.append(schema.rawName);
     }
     item = new VariableStringListItem(QStringLiteral("scheme"), schemas, rendererConfig->schema());

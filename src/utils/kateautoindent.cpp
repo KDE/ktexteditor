@@ -468,7 +468,8 @@ void KateViewIndentationAction::slotAboutToShow()
     const QStringList modes = KateAutoIndent::listModes();
 
     menu()->clear();
-    foreach (QAction *action, actionGroup->actions()) {
+    const auto actions = actionGroup->actions();
+    for (QAction *action : actions) {
         actionGroup->removeAction(action);
     }
     for (int z = 0; z < modes.size(); ++z) {

@@ -848,7 +848,8 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 color = m_caretOverrideColor;
             } else {
                 // search for the FormatRange that includes the cursor
-                foreach (const QTextLayout::FormatRange &r, range->layout()->additionalFormats()) {
+                const auto formatRanges = range->layout()->additionalFormats();
+                for (const QTextLayout::FormatRange &r : formatRanges) {
                     if ((r.start <= cursor->column()) && ((r.start + r.length)  > cursor->column())) {
                         // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
                         QBrush foregroundBrush = r.format.foreground();

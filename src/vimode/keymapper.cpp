@@ -94,7 +94,9 @@ bool KeyMapper::handleKeypress(QChar key)
         bool isPartialMapping = false;
         bool isFullMapping = false;
         m_fullMappingMatch.clear();
-        foreach (const QString &mapping, m_viInputModeManager->globalState()->mappings()->getAll(Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter()), false, true)) {
+        const auto mappingMode = Mappings::mappingModeForCurrentViMode(m_viInputModeManager->inputAdapter());
+        const auto mappings = m_viInputModeManager->globalState()->mappings()->getAll(mappingMode, false, true);
+        for (const QString &mapping : mappings) {
             if (mapping.startsWith(m_mappingKeys)) {
                 if (mapping == m_mappingKeys) {
                     isFullMapping = true;

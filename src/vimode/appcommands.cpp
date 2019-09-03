@@ -72,7 +72,8 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
     QRegularExpressionMatch match;
     if ((match = re_write.match(command)).hasMatch()) {  //TODO: handle writing to specific file
         if (!match.captured(1).isEmpty()) { // [a]ll
-            Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
+            const auto docs = app->documents();
+            for (KTextEditor::Document *doc : docs) {
                 doc->save();
             }
             msg = i18n("All documents written to disk");
@@ -91,13 +92,15 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
 
         if (allDocuments) {
             if (save) {
-                Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
+                const auto docs = app->documents();
+                for (KTextEditor::Document *doc : docs) {
                     doc->save();
                 }
             }
 
             if (doNotPromptForSave) {
-                Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
+                const auto docs = app->documents();
+                for (KTextEditor::Document *doc : docs) {
                     if (doc->isModified()) {
                         doc->setModified(false);
                     }
@@ -126,7 +129,8 @@ bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg
         }
     } else if ((match = re_exit.match(command)).hasMatch()) {
         if (!match.captured(1).isEmpty()) { // a[ll]
-            Q_FOREACH(KTextEditor::Document *doc, app->documents()) {
+            const auto docs = app->documents();
+            for (KTextEditor::Document *doc : docs) {
                 doc->save();
             }
             QTimer::singleShot(0, this, SLOT(quit()));
@@ -280,7 +284,8 @@ bool AppCommands::help(KTextEditor::View *view, const QString &cmd, QString &msg
 KTextEditor::View * AppCommands::findViewInDifferentSplitView(KTextEditor::MainWindow *window,
                                                                     KTextEditor::View *view)
 {
-    Q_FOREACH (KTextEditor::View *it, window->views()) {
+    const auto views = window->views();
+    for (KTextEditor::View *it : views) {
         if (!window->viewsInSameSplitView(it, view)) {
             return it;
         }

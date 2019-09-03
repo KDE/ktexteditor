@@ -80,7 +80,8 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     // load the settings for the speller
     updateConfig();
 
-    foreach (KTextEditor::View *view, document->views()) {
+    const auto views = document->views();
+    for (KTextEditor::View *view : views) {
         addView(document, view);
     }
     refreshSpellCheck();
@@ -155,7 +156,8 @@ void KateOnTheFlyChecker::textInserted(KTextEditor::Document *document, const KT
         return;
     }
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
-    foreach (KTextEditor::View *i, m_document->views()) {
+    const auto views = m_document->views();
+    for (KTextEditor::View *i : views) {
         KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(i);
         KTextEditor::Range visibleIntersection = documentIntersection.intersect(view->visibleRange());
         if (visibleIntersection.isValid()) { // allow empty intersections
@@ -245,7 +247,8 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTe
     }
 
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
-    foreach (KTextEditor::View *i, m_document->views()) {
+    const auto views = m_document->views();
+    for (KTextEditor::View *i : views) {
         KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(i);
         KTextEditor::Range visibleIntersection = documentIntersection.intersect(view->visibleRange());
         if (visibleIntersection.isValid()) { // see above
@@ -542,7 +545,8 @@ void KateOnTheFlyChecker::deleteMovingRange(KTextEditor::MovingRange *range)
     // remove it from all our structures
     removeRangeFromEverything(range);
     range->setFeedback(nullptr);
-    foreach (KTextEditor::View *view, m_document->views()) {
+    const auto views = m_document->views();
+    for (KTextEditor::View *view : views) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
     delete(range);
@@ -731,7 +735,8 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *
         KTextEditor::MovingRange *movingRange = item.first;
         if (!movingRange->overlaps(newDisplayRange)) {
             bool stillVisible = false;
-            foreach (KTextEditor::View *it2, m_document->views()) {
+            const auto views = m_document->views();
+            for (KTextEditor::View *it2 : views) {
                 KTextEditor::ViewPrivate *view2 = static_cast<KTextEditor::ViewPrivate *>(it2);
                 if (view != view2 && movingRange->overlaps(view2->visibleRange())) {
                     stillVisible = true;
@@ -750,7 +755,8 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *
         for (int line = newDisplayRange.end().line(); line >= newDisplayRange.start().line(); --line) {
             if (!oldDisplayRange.containsLine(line)) {
                 bool visible = false;
-                foreach (KTextEditor::View *it2, m_document->views()) {
+                const auto views = m_document->views();
+                for (KTextEditor::View *it2 : views) {
                     KTextEditor::ViewPrivate *view2 = static_cast<KTextEditor::ViewPrivate *>(it2);
                     if (view != view2 && view2->visibleRange().containsLine(line)) {
                         visible = true;
@@ -887,7 +893,8 @@ void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view
 void KateOnTheFlyChecker::deleteMovingRangeQuickly(KTextEditor::MovingRange *range)
 {
     range->setFeedback(nullptr);
-    foreach (KTextEditor::View *view, m_document->views()) {
+    const auto views = m_document->views();
+    for (KTextEditor::View *view : views) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
     delete(range);

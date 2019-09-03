@@ -1232,9 +1232,9 @@ void ModeBase::addToNumberUnderCursor(int count)
 
 void ModeBase::switchView(Direction direction)
 {
-
     QList<KTextEditor::ViewPrivate *> visible_views;
-    foreach (KTextEditor::ViewPrivate *view,  KTextEditor::EditorPrivate::self()->views()) {
+    const auto views = KTextEditor::EditorPrivate::self()->views();
+    for (KTextEditor::ViewPrivate *view : views) {
         if (view->isVisible()) {
             visible_views.push_back(view);
         }

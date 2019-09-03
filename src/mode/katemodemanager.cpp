@@ -183,7 +183,8 @@ void KateModeManager::save(const QList<KateFileType *> &v)
         newg << type->name;
     }
 
-    foreach (const QString &groupName, katerc.groupList()) {
+    const auto groupNames = katerc.groupList();
+    for (const QString &groupName : groupNames) {
         if (newg.indexOf(groupName) == -1) {
             katerc.deleteGroup(groupName);
         }

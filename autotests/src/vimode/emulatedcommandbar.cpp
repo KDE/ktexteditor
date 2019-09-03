@@ -3113,8 +3113,8 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
 
   // Find the "Print" action for later use.
   QAction *printAction = nullptr;
-  foreach(QAction* action, kate_view->actionCollection()->actions())
-  {
+  const auto viewActions = kate_view->actionCollection()->actions();
+  for (QAction* action : viewActions) {
     if (action->shortcut() == QKeySequence("Ctrl+p"))
     {
       printAction = action;

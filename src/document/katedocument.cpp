@@ -4233,7 +4233,8 @@ void KTextEditor::DocumentPrivate::updateDocName()
 
     int count = -1;
 
-    foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
+    const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
+    for (KTextEditor::DocumentPrivate *doc : docs) {
         if ((doc != this) && (doc->url().fileName() == url().fileName()))
             if (doc->m_docNameNumber > count) {
                 count = doc->m_docNameNumber;
@@ -6051,7 +6052,8 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     m_messageHash[message] = QList<QSharedPointer<QAction> >();
 
     // reparent actions, as we want full control over when they are deleted
-    foreach (QAction *action, message->actions()) {
+    const auto messageActions = message->actions();
+    for (QAction *action : messageActions) {
         action->setParent(nullptr);
         m_messageHash[message].append(QSharedPointer<QAction>(action));
     }

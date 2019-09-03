@@ -114,12 +114,14 @@ void KateMessageWidget::showNextMessage()
     }
 
     // remove all actions from the message widget
-    foreach (QAction *a, m_messageWidget->actions()) {
+    const auto messageWidgetActions = m_messageWidget->actions();
+    for (QAction *a : messageWidgetActions) {
         m_messageWidget->removeAction(a);
     }
 
     // add new actions to the message widget
-    foreach (QAction *a, m_currentMessage->actions()) {
+    const auto m_currentMessageActions = m_currentMessage->actions();
+    for (QAction *a : m_currentMessageActions) {
         m_messageWidget->addAction(a);
     }
 

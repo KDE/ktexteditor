@@ -214,7 +214,8 @@ void KateCompletionWidget::modelContentChanged()
     }
 
     int realItemCount = 0;
-    foreach (KTextEditor::CodeCompletionModel *model, m_presentationModel->completionModels()) {
+    const auto completionModels = m_presentationModel->completionModels();
+    for (KTextEditor::CodeCompletionModel *model : completionModels) {
         realItemCount += model->rowCount();
     }
     if (!m_isSuspended && ((isHidden() && m_argumentHintTree->isHidden()) || m_needShow) && realItemCount != 0) {

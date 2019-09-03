@@ -46,7 +46,10 @@ void Mappings::writeMappings(KConfigGroup &config, const QString &mappingModeNam
     config.writeEntry(mappingModeName + QLatin1String(" Mode Mapping Keys"), getAll(mappingMode, true));
     QStringList l;
     QList<bool> recursives;
-    foreach (const QString &s, getAll(mappingMode)) {
+    const auto all = getAll(mappingMode);
+    l.reserve(all.size());
+    recursives.reserve(all.size());
+    for (const QString &s : all) {
         l << KeyParser::self()->decodeKeySequence(get(mappingMode, s));
         recursives << isRecursive(mappingMode, s);
     }

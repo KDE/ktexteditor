@@ -2712,7 +2712,8 @@ void KateViewEncodingAction::Private::init()
     q->setToolBarMode(MenuMode);
 
     int i;
-    foreach (const QStringList &encodingsForScript, KCharsets::charsets()->encodingsByScript()) {
+    const auto encodingsByScript = KCharsets::charsets()->encodingsByScript();
+    for (const QStringList &encodingsForScript : encodingsByScript) {
         KSelectAction *tmp = new KSelectAction(encodingsForScript.at(0), q);
 
         for (i = 1; i < encodingsForScript.size(); ++i) {

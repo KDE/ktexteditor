@@ -348,7 +348,8 @@ void KateSpellCheckConfigTab::apply()
     KateDocumentConfig::global()->setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
     KateDocumentConfig::global()->configEnd();
 
-    foreach (KTextEditor::DocumentPrivate *doc, KTextEditor::EditorPrivate::self()->kateDocuments()) {
+    const auto docs = KTextEditor::EditorPrivate::self()->kateDocuments();
+    for (KTextEditor::DocumentPrivate *doc : docs) {
         doc->refreshOnTheFlyCheck();
     }
 }
@@ -590,7 +591,8 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     observeChanges(spellCheckConfigTab);
 
     int i = tabWidget->count();
-    Q_FOREACH(KateAbstractInputModeFactory *factory, KTextEditor::EditorPrivate::self()->inputModeFactories()) {
+    const auto inputModeFactories = KTextEditor::EditorPrivate::self()->inputModeFactories();
+    for (KateAbstractInputModeFactory *factory : inputModeFactories) {
         KateConfigPage *tab = factory->createConfigPage(this);
         if (tab) {
             m_inputModeConfigTabs << tab;

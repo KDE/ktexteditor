@@ -92,7 +92,8 @@ KateTemplateHandler::KateTemplateHandler(KTextEditor::ViewPrivate *view,
     }
     // only do complex stuff when required
     if ( have_editable_field ) {
-        foreach (View *view, doc()->views()) {
+        const auto views = doc()->views();
+        for (View *view : views) {
             setupEventHandler(view);
         }
 

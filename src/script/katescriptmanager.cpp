@@ -94,7 +94,8 @@ static QStringList jsonToStringList (const QJsonValue &value)
 {
     QStringList list;
 
-    Q_FOREACH (const QJsonValue &value, value.toArray()) {
+    const auto array = value.toArray();
+    for (const QJsonValue &value : array) {
         if (value.isString()) {
             list.append(value.toString());
         }
@@ -131,7 +132,8 @@ void KateScriptManager::collect()
 
         // then all other locations, this includes global stuff installed by other applications
         // this will not allow global stuff to overwrite the stuff we ship in our resources to allow to install a more up-to-date ktexteditor lib locally!
-        foreach (const QString &dir, QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation)) {
+        const auto genericDataDirs = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+        for (const QString &dir : genericDataDirs) {
             dirs.append(dir + basedir);
         }
 

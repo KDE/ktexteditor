@@ -64,7 +64,8 @@ static bool schemasCompare(const KateSchema &s1, const KateSchema &s2)
 QList<KateSchema> KateSchemaManager::list()
 {
     QList<KateSchema> schemas;
-    Q_FOREACH (QString s, m_config.groupList()) {
+    const auto names = m_config.groupList();
+    for (const QString &s : names) {
         schemas.append(schemaData(s));
     }
 
@@ -119,7 +120,8 @@ void KateViewSchemaAction::slotAboutToShow()
     }
 
     QString id = view->renderer()->config()->schema();
-    foreach (QAction *a, menu()->actions()) {
+    const auto menuActions = menu()->actions();
+    for (QAction *a : menuActions) {
         a->setChecked(a->data().toString() == id);
 
     }

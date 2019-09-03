@@ -549,7 +549,8 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     sbBoxMargin->setValue(6);
     gbBoxProps->setEnabled(false);
 
-    Q_FOREACH (const KateSchema &schema, KTextEditor::EditorPrivate::self()->schemaManager()->list()) {
+    const auto schemas = KTextEditor::EditorPrivate::self()->schemaManager()->list();
+    for (const KateSchema &schema : schemas) {
         cmbSchema->addItem(schema.translatedName(), QVariant(schema.rawName));
     }
 
