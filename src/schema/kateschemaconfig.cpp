@@ -334,10 +334,9 @@ void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
 void KateSchemaConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
-    QMap<QString, QVector<KateColorItem> >::Iterator it;
-    for (it =  m_schemas.begin(); it !=  m_schemas.end(); ++it) {
+    for (auto it =  m_schemas.constBegin(); it !=  m_schemas.constEnd(); ++it) {
         KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
-        foreach (const KateColorItem &item, m_schemas[it.key()]) {
+        for (const KateColorItem &item : it.value()) {
             if (item.useDefault) {
                 config.deleteEntry(item.key);
             } else {

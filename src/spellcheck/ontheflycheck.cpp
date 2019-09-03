@@ -94,7 +94,7 @@ KateOnTheFlyChecker::~KateOnTheFlyChecker()
 
 QPair<KTextEditor::Range, QString> KateOnTheFlyChecker::getMisspelledItem(const KTextEditor::Cursor &cursor) const
 {
-    foreach (const MisspelledItem &item, m_misspelledList) {
+    for (const MisspelledItem &item : m_misspelledList) {
         KTextEditor::MovingRange *movingRange = item.first;
         if (movingRange->contains(cursor)) {
             return QPair<KTextEditor::Range, QString>(*movingRange, item.second);
@@ -105,7 +105,7 @@ QPair<KTextEditor::Range, QString> KateOnTheFlyChecker::getMisspelledItem(const 
 
 QString KateOnTheFlyChecker::dictionaryForMisspelledRange(const KTextEditor::Range &range) const
 {
-    foreach (const MisspelledItem &item, m_misspelledList) {
+    for (const MisspelledItem &item : m_misspelledList) {
         KTextEditor::MovingRange *movingRange = item.first;
         if (*movingRange == range) {
             return item.second;

@@ -89,7 +89,7 @@ void VariableListView::resizeEvent(QResizeEvent *event)
 
     // calculate sum of all editor heights
     int listHeight = 0;
-    foreach (QWidget *w, m_editors) {
+    for (QWidget *w : qAsConst(m_editors)) {
         listHeight += w->sizeHint().height();
     }
 

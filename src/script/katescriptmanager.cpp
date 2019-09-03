@@ -254,7 +254,7 @@ void KateScriptManager::collect()
 
                 KateIndentScript *script = new KateIndentScript(fileName, indentHeader);
                 script->setGeneralHeader(generalHeader);
-                foreach (const QString &language, indentHeader.indentLanguages()) {
+                for (const QString &language : indentHeader.indentLanguages()) {
                     m_languageToIndenters[language.toLower()].push_back(script);
                 }
 

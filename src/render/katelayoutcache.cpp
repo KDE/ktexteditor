@@ -508,13 +508,12 @@ int KateLayoutCache::viewLineCount(int realLine)
 void KateLayoutCache::viewCacheDebugOutput() const
 {
     qCDebug(LOG_KTE) << "Printing values for " << m_textLayouts.count() << " lines:";
-    if (!m_textLayouts.isEmpty()) {
-        foreach (const KateTextLayout &t, m_textLayouts)
-            if (t.isValid()) {
-                t.debugOutput();
-            } else {
-                qCDebug(LOG_KTE) << "Line Invalid.";
-            }
+    for (const KateTextLayout &t : m_textLayouts) {
+        if (t.isValid()) {
+            t.debugOutput();
+        } else {
+            qCDebug(LOG_KTE) << "Line Invalid.";
+        }
     }
 }
 
