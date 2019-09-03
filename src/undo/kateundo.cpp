@@ -405,7 +405,7 @@ KateUndo::UndoType KateUndoGroup::singleType() const
 {
     KateUndo::UndoType ret = KateUndo::editInvalid;
 
-    Q_FOREACH (const KateUndo *item, m_items) {
+    for (const KateUndo *item : m_items) {
         if (ret == KateUndo::editInvalid) {
             ret = item->type();
         } else if (ret != item->type()) {
@@ -422,11 +422,8 @@ bool KateUndoGroup::isOnlyType(KateUndo::UndoType type) const
         return false;
     }
 
-    Q_FOREACH (const KateUndo *item, m_items)
-        if (item->type() != type) {
-            return false;
-        }
-
-    return true;
+    return std::all_of(m_items.begin(), m_items.end(), [type](const KateUndo *item) {
+        return (item->type() == type);
+    });
 }
 
