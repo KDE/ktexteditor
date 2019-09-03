@@ -158,7 +158,8 @@ void KateModeManager::save(const QList<KateFileType *> &v)
     KConfig katerc(QStringLiteral("katemoderc"), KConfig::NoGlobals);
 
     QStringList newg;
-    foreach (const KateFileType *type, v) {
+    newg.reserve(v.size());
+    for (const KateFileType *type : v) {
         KConfigGroup config(&katerc, type->name);
 
         config.writeEntry("Section", type->section);
@@ -250,7 +251,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
     }
 
     QList<KateFileType *> types;
-    foreach (KateFileType *type, m_types) {
+    for (KateFileType *type : qAsConst(m_types)) {
         if (type->mimetypes.indexOf(mtName) > -1) {
             types.append(type);
         }
@@ -277,12 +278,12 @@ QString KateModeManager::wildcardsFind(const QString &fileName)
 {
     KateFileType *match = nullptr;
     int minPrio = -1;
-    foreach (KateFileType *type, m_types) {
+    for (KateFileType *type : qAsConst(m_types)) {
         if (type->priority <= minPrio) {
             continue;
         }
 
-        foreach (const QString &wildcard, type->wildcards) {
+        for (const QString &wildcard : qAsConst(type->wildcards)) {
             if (KateWildcardMatcher::exactMatch(fileName, wildcard)) {
                 match = type;
                 minPrio = type->priority;

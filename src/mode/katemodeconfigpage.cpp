@@ -118,7 +118,9 @@ void ModeConfigPage::reload()
     m_types.clear();
 
     // deep copy...
-    foreach (KateFileType *type, KTextEditor::EditorPrivate::self()->modeManager()->list()) {
+    const QList<KateFileType *> &modeList = KTextEditor::EditorPrivate::self()->modeManager()->list();
+    m_types.reserve(modeList.size());
+    for (KateFileType *type : modeList) {
         KateFileType *t = new KateFileType();
         *t = *type;
         m_types.append(t);
@@ -143,7 +145,7 @@ void ModeConfigPage::update()
 
     ui->cmbFiletypes->clear();
 
-    foreach (KateFileType *type, m_types) {
+    for (KateFileType *type : qAsConst(m_types)) {
         if (!type->sectionTranslated().isEmpty()) {
             ui->cmbFiletypes->addItem(type->sectionTranslated() + QLatin1Char('/') + type->nameTranslated());
         } else {
