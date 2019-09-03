@@ -560,17 +560,13 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         }
 
         /**
-         * Two cases:
-         * - Valid theme: "isBold(...)", "isItalic(...)", etc. returns the combination
-         *   between the attributes set in the syntax definition files and the theme.
-         * - Invalid/empty theme: the theme doesn't exist in KSyntaxHighlighting and is
-         *   already applied. Then it's checked if the bold, italic, underline & strikeout
-         *   attributes are specifically set in the syntax definition XML file to be applied.
+         * Apply attributes set in the syntax definition XML files.
+         * This overwrites the default theme and the theme customized by the user.
          *
-         * In both cases, it's allowed to turn off the bold, italic, underline and strikeout
+         * It's allowed to turn off the bold, italic, underline and strikeout
          * attributes in the XML files (see bug #143399).
          */
-        if (theme().isValid() || format.hasBoldOverride()) {
+        if (format.hasBoldOverride()) {
             if (format.isBold(theme())) {
                 newAttribute->setFontBold(true);
             } else {
@@ -578,7 +574,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             }
         }
 
-        if (theme().isValid() || format.hasItalicOverride()) {
+        if (format.hasItalicOverride()) {
             if (format.isItalic(theme())) {
                 newAttribute->setFontItalic(true);
             } else {
@@ -586,7 +582,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             }
         }
 
-        if (theme().isValid() || format.hasUnderlineOverride()) {
+        if (format.hasUnderlineOverride()) {
             if (format.isUnderline(theme())) {
                 newAttribute->setFontUnderline(true);
             } else {
@@ -594,7 +590,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             }
         }
 
-        if (theme().isValid() || format.hasStrikeThroughOverride()) {
+        if (format.hasStrikeThroughOverride()) {
             if (format.isStrikeThrough(theme())) {
                 newAttribute->setFontStrikeOut(true);
             } else {
