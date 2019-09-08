@@ -48,15 +48,14 @@ CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighligh
       m_interactiveSedReplaceMode(interactiveSedReplaceMode),
       m_completer(completer)
 {
-    QList<KTextEditor::Command *> cmds;
-
+    QVector<KTextEditor::Command *> cmds;
     cmds.push_back(KateCommands::CoreCommands::self());
     cmds.push_back(Commands::self());
     cmds.push_back(AppCommands::self());
     cmds.push_back(SedReplace::self());
     cmds.push_back(BufferCommands::self());
 
-    Q_FOREACH (KTextEditor::Command *cmd, KateScriptManager::self()->commandLineScripts()) {
+    for (KTextEditor::Command *cmd : KateScriptManager::self()->commandLineScripts()) {
         cmds.push_back(cmd);
     }
 
