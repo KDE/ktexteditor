@@ -108,21 +108,18 @@ void KateScriptActionMenu::repopulate()
     cleanup();
 
     // now add all command line script commands
-    const QVector<KateCommandLineScript *> scripts =
-        KTextEditor::EditorPrivate::self()->scriptManager()->commandLineScripts();
-
     QHash<QString, QMenu *> menus;
-
+    const auto scripts = KTextEditor::EditorPrivate::self()->scriptManager()->commandLineScripts();
     for (KateCommandLineScript *script : scripts) {
         /**
          * traverse actions
          */
-        const QJsonArray &actions = script->commandHeader().actions();
-        Q_FOREACH (const QJsonValue value, actions) {
+        const auto &actions = script->commandHeader().actions();
+        for (const auto &value : actions) {
             /**
              * action is a value
              */
-            const QJsonObject action = value.toObject();
+            const auto action = value.toObject();
             
             /**
              * get command
