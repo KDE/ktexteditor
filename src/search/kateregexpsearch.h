@@ -92,7 +92,7 @@ private:
      * \param text text containing escape sequences and possibly references and counters
      * \param capturedTexts list of substitutes for references
      * \param replacementCounter value for replacement counter (only used when replacementGoodies == true)
-     * \param replacementGoodies <code>true</code> for buildReplacement(), <code>false</code> for escapePlainText()
+     * \param replacementGoodies @c true for buildReplacement(), @c false for escapePlainText()
      * \return resolved text
      */
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter, bool replacementGoodies);
