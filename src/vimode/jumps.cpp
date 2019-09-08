@@ -100,7 +100,7 @@ void Jumps::writeSessionConfig(KConfigGroup &config) const
 {
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     QStringList l;
-    Q_FOREACH(const Jump &jump, *m_jumps) {
+    for(const Jump &jump : *m_jumps) {
         l << QString::number(jump.line) << QString::number(jump.column);
     }
     config.writeEntry("JumpList", l);

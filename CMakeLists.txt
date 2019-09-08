@@ -65,6 +65,9 @@ find_package(EditorConfig)
 # vi mode on per default
 option (BUILD_VIMODE "Build vimode in" ON)
 
+# forbid some old things
+#add_definitions(-DQT_NO_FOREACH)
+
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
