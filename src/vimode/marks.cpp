@@ -187,7 +187,7 @@ void Marks::syncViMarksAndBookmarks()
         }
 
         bool thereIsViMarkForThisLine = false;
-        Q_FOREACH (const KTextEditor::MovingCursor *cursor, m_marks) {
+        for (auto cursor : qAsConst(m_marks)) {
             if (cursor->line() == mark->line) {
                 thereIsViMarkForThisLine = true;
                 break;
