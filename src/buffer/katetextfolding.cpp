@@ -812,7 +812,7 @@ bool TextFolding::updateFoldedRangesForNewRange(TextFolding::FoldingRange *newRa
      */
     FoldingRange::Vector newFoldedFoldingRanges;
     bool newRangeInserted = false;
-    Q_FOREACH (FoldingRange *range, m_foldedFoldingRanges) {
+    for (FoldingRange *range : qAsConst(m_foldedFoldingRanges)) {
         /**
          * contained? kill
          */
@@ -891,7 +891,7 @@ bool TextFolding::updateFoldedRangesForRemovedRange(TextFolding::FoldingRange *o
     * TODO: OPTIMIZE
     */
     FoldingRange::Vector newFoldedFoldingRanges;
-    Q_FOREACH (FoldingRange *range, m_foldedFoldingRanges) {
+    for (FoldingRange *range : qAsConst(m_foldedFoldingRanges)) {
         /**
          * right range? insert folded nested ranges
          */
@@ -927,7 +927,7 @@ void TextFolding::appendFoldedRanges(TextFolding::FoldingRange::Vector &newFolde
     /**
      * search for folded ranges and append them
      */
-    Q_FOREACH (FoldingRange *range, ranges) {
+    for (FoldingRange *range : ranges) {
         /**
          * itself folded? append
          */
@@ -957,7 +957,7 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
     /**
      * dump all ranges recursively
      */
-    Q_FOREACH (FoldingRange *range, ranges) {
+    for (FoldingRange *range : ranges) {
         /**
          * construct one range and dump to folds
          */
@@ -978,17 +978,19 @@ void TextFolding::exportFoldingRanges(const TextFolding::FoldingRange::Vector &r
 
 void TextFolding::importFoldingRanges(const QJsonDocument &folds)
 {
-    Q_FOREACH (FoldingRange *range, m_foldingRanges) {
+    for (FoldingRange *range : qAsConst(m_foldingRanges)) {
         unfoldRange(range->id);
     }
+
     /**
      * try to create all folding ranges
      */
-    Q_FOREACH (const QJsonValue &rangeVariant, folds.array()) {
+    const auto jsonRanges = folds.array();
+    for (const auto &rangeVariant : jsonRanges) {
         /**
          * get map
          */
-        QJsonObject rangeMap = rangeVariant.toObject();
+        const auto rangeMap = rangeVariant.toObject();
 
         /**
          * construct range start/end
