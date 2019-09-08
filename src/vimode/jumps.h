@@ -23,15 +23,15 @@
 
 #include <KConfigGroup>
 
-#include <QList>
+#include <QVector>
 
 namespace KateVi {
 
 class Jumps
 {
 public:
-    explicit Jumps();
-    ~Jumps();
+    explicit Jumps() = default;
+    ~Jumps() = default;
 
     Jumps(const Jumps &) = delete;
     Jumps& operator=(const Jumps &) = delete;
@@ -47,13 +47,8 @@ private:
     void printJumpList() const;
 
 private:
-    struct Jump {
-        int line;
-        int column;
-    };
-
-    QList<Jump> *m_jumps;
-    QList<Jump>::iterator m_current;
+    QVector<KTextEditor::Cursor> m_jumps;
+    QVector<KTextEditor::Cursor>::iterator m_current = m_jumps.begin();
 };
 
 }

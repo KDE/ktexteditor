@@ -20,63 +20,49 @@
 
 using namespace KateVi;
 
-Jumps::Jumps()
-{
-    m_jumps = new QList<Jump>;
-    m_current = m_jumps->begin();
-}
-
-Jumps::~Jumps()
-{
-    delete m_jumps;
-}
-
 void Jumps::add(const KTextEditor::Cursor &cursor)
 {
-    for (QList<Jump>::iterator iterator = m_jumps->begin();
-            iterator != m_jumps->end();
+    for (auto iterator = m_jumps.begin();
+            iterator != m_jumps.end();
             iterator++
         )
     {
-        if ((*iterator).line == cursor.line()) {
-            m_jumps->erase(iterator);
+        if ((*iterator).line() == cursor.line()) {
+            m_jumps.erase(iterator);
             break;
         }
     }
 
-    Jump jump = {cursor.line(), cursor.column()};
-    m_jumps->push_back(jump);
-    m_current = m_jumps->end();
+    m_jumps.push_back(cursor);
+    m_current = m_jumps.end();
 }
 
 KTextEditor::Cursor Jumps::next(const KTextEditor::Cursor &cursor)
 {
-    if (m_current == m_jumps->end()) {
+    if (m_current == m_jumps.end()) {
         return cursor;
     }
 
-    Jump jump;
-
-    if (m_current + 1 != m_jumps->end()) {
+    KTextEditor::Cursor jump;
+    if (m_current + 1 != m_jumps.end()) {
         jump = *(++m_current);
     } else {
         jump = *(m_current);
     }
 
-    return KTextEditor::Cursor(jump.line, jump.column);
+    return jump;
 }
 
 KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor &cursor)
 {
-    if (m_current == m_jumps->end()) {
+    if (m_current == m_jumps.end()) {
         add(cursor);
         m_current--;
     }
 
-    if (m_current != m_jumps->begin()) {
+    if (m_current != m_jumps.begin()) {
         m_current--;
-
-        return KTextEditor::Cursor(m_current->line, m_current->column);
+        return *m_current;
     }
 
     return cursor;
@@ -85,23 +71,23 @@ KTextEditor::Cursor Jumps::prev(const KTextEditor::Cursor &cursor)
 void Jumps::readSessionConfig(const KConfigGroup &config)
 {
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
-    m_jumps->clear();
+    m_jumps.clear();
     QStringList jumps = config.readEntry("JumpList", QStringList());
 
     for (int i = 0; i + 1 < jumps.size(); i += 2) {
-        Jump jump = {jumps.at(i).toInt(), jumps.at(i + 1).toInt()};
-        m_jumps->push_back(jump);
+        KTextEditor::Cursor jump = {jumps.at(i).toInt(), jumps.at(i + 1).toInt()};
+        m_jumps.push_back(jump);
     }
 
-    m_current = m_jumps->end();
+    m_current = m_jumps.end();
 }
 
 void Jumps::writeSessionConfig(KConfigGroup &config) const
 {
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     QStringList l;
-    for(const Jump &jump : *m_jumps) {
-        l << QString::number(jump.line) << QString::number(jump.column);
+    for(const auto &jump : m_jumps) {
+        l << QString::number(jump.line()) << QString::number(jump.column());
     }
     config.writeEntry("JumpList", l);
 }
