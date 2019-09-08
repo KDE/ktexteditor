@@ -349,22 +349,11 @@ KateLineLayoutPtr KateLayoutCache::line(const KTextEditor::Cursor &realCursor)
 
 KateTextLayout KateLayoutCache::textLayout(const KTextEditor::Cursor &realCursor)
 {
-    /*if (realCursor >= viewCacheStart() && (realCursor < viewCacheEnd() || realCursor == viewCacheEnd() && !m_textLayouts.last().wrap()))
-      foreach (const KateTextLayout& l, m_textLayouts)
-        if (l.line() == realCursor.line() && (l.endCol() < realCursor.column() || !l.wrap()))
-          return l;*/
-
     return line(realCursor.line())->viewLine(viewLine(realCursor));
 }
 
 KateTextLayout KateLayoutCache::textLayout(uint realLine, int _viewLine)
 {
-    /*if (m_textLayouts.count() && (realLine >= m_textLayouts.first().line() && _viewLine >= m_textLayouts.first().viewLine()) &&
-        (realLine <= m_textLayouts.last().line() && _viewLine <= m_textLayouts.first().viewLine()))
-      foreach (const KateTextLayout& l, m_textLayouts)
-        if (l.line() == realLine && l.viewLine() == _viewLine)
-          return const_cast<KateTextLayout&>(l);*/
-
     return line(realLine)->viewLine(_viewLine);
 }
 
