@@ -190,7 +190,7 @@ void KateTemplateHandler::jump(int by, bool initial)
 
 void KateTemplateHandler::jumpToFinalCursorPosition()
 {
-    Q_FOREACH ( const auto& field, m_fields ) {
+    for (const auto &field : qAsConst(m_fields)) {
         if ( field.kind == TemplateField::FinalCursorPosition ) {
             view()->setCursorPosition(field.range->toRange().start());
             return;
@@ -363,14 +363,14 @@ void KateTemplateHandler::setupFieldRanges()
     m_wholeTemplateRange->setAttribute(getAttribute(config->templateBackgroundColor(), 200));
 
     // color all the template fields
-    Q_FOREACH ( const auto& field, m_fields ) {
+    for (const auto &field : qAsConst(m_fields)) {
         field.range->setAttribute(field.kind == TemplateField::Editable ? editableAttribute : notEditableAttribute);
     }
 }
 
 void KateTemplateHandler::setupDefaultValues()
 {
-    Q_FOREACH ( const auto& field, m_fields ) {
+    for (const auto &field : qAsConst(m_fields)) {
         if ( field.kind != TemplateField::Editable ) {
             continue;
         }
