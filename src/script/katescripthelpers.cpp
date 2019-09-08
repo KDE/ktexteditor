@@ -112,61 +112,52 @@ QString ScriptHelper::read(const QString &file)
     return fullContent;
 }
 
-void ScriptHelper::require(const QString &file)
+void ScriptHelper::require(const QString &name)
 {
-    QStringList files;
-    files << file;
     /**
-     * just search for all given scripts and eval them
+     * get full name of file
+     * skip on errors
      */
-    for (int i = 0; i < files.count(); ++i) {
+    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                QLatin1String("katepart5/script/libraries/") + name);
+    if (fullName.isEmpty()) {
         /**
-         * get full name of file
-         * skip on errors
+         * retry with resource
          */
-        const QString name = files[i];
-        QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                 QLatin1String("katepart5/script/libraries/") + name);
-        if (fullName.isEmpty()) {
-            /**
-             * retry with resource
-             */
-            fullName = QLatin1String(":/ktexteditor/script/libraries/") + name;
-            if (!QFile::exists(fullName))
-                continue;
-        }
-
-        /**
-         * check include guard
-         */
-        QJSValue require_guard = m_engine->globalObject().property(QStringLiteral("require_guard"));
-        if (require_guard.property(fullName).toBool()) {
-            continue;
-        }
-
-        /**
-         * try to read complete file
-         * skip non-existing files
-         */
-        QString code;
-        if (!Script::readFile(fullName, code)) {
-            continue;
-        }
-
-        /**
-         * eval in current script engine
-         */
-        QJSValue val = m_engine->evaluate(code, fullName);
-        if (val.isError()) {
-            qWarning() << "error evaluating" << fullName << val.toString() << ", at line" << val.property(QStringLiteral("lineNumber")).toInt();
-        }
-
-
-        /**
-         * set include guard
-         */
-        require_guard.setProperty(fullName, QJSValue(true));
+        fullName = QLatin1String(":/ktexteditor/script/libraries/") + name;
+        if (!QFile::exists(fullName))
+            return;
     }
+
+    /**
+     * check include guard
+     */
+    QJSValue require_guard = m_engine->globalObject().property(QStringLiteral("require_guard"));
+    if (require_guard.property(fullName).toBool()) {
+        return;
+    }
+
+    /**
+     * try to read complete file
+     * skip non-existing files
+     */
+    QString code;
+    if (!Script::readFile(fullName, code)) {
+        return;
+    }
+
+    /**
+     * eval in current script engine
+     */
+    const QJSValue val = m_engine->evaluate(code, fullName);
+    if (val.isError()) {
+        qWarning() << "error evaluating" << fullName << val.toString() << ", at line" << val.property(QStringLiteral("lineNumber")).toInt();
+    }
+
+    /**
+     * set include guard
+     */
+    require_guard.setProperty(fullName, QJSValue(true));
 }
 
 void ScriptHelper::debug(const QString &message)
