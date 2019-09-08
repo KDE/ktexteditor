@@ -3077,7 +3077,7 @@ void KatePasteMenu::slotAboutToShow()
      * insert complete paste history
      */
     int i = 0;
-    Q_FOREACH (const QString &text, KTextEditor::EditorPrivate::self()->clipboardHistory()) {
+    for (const QString &text : KTextEditor::EditorPrivate::self()->clipboardHistory()) {
         /**
          * get text for the menu ;)
          */
