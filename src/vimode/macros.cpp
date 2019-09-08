@@ -33,18 +33,19 @@ Macros::~Macros()
 
 void Macros::writeConfig(KConfigGroup &config) const
 {
+    const auto macroKeys = m_macros.keys();
     QStringList macroRegisters;
-    foreach (const QChar &macroRegister, m_macros.keys()) {
+    for (const QChar macroRegister : macroKeys) {
         macroRegisters.append(macroRegister);
     }
     QStringList macroContents;
-    foreach (const QChar &macroRegister, m_macros.keys()) {
+    for (const QChar macroRegister : macroKeys) {
         macroContents.append(KeyParser::self()->decodeKeySequence(m_macros[macroRegister]));
     }
     QStringList macroCompletions;
-    foreach (const QChar &macroRegister, m_macros.keys()) {
+    for (const QChar macroRegister : macroKeys) {
         macroCompletions.append(QString::number(m_completions[macroRegister].length()));
-        foreach (const Completion &completionForMacro, m_completions[macroRegister]) {
+        for (const Completion &completionForMacro : m_completions[macroRegister]) {
             macroCompletions.append(encodeMacroCompletionForConfig(completionForMacro));
         }
     }
