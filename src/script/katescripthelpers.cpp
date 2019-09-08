@@ -66,50 +66,30 @@ bool readFile(const QString &sourceUrl, QString &sourceCode)
 
 } // namespace Script
 
-QString ScriptHelper::read(const QString &file)
+QString ScriptHelper::read(const QString &name)
 {
-    QList<QString> files;
-    files << file;
     /**
-     * just search for all given files and read them all
+     * get full name of file
+     * skip on errors
      */
-    QString fullContent;
-    for (int i = 0; i < files.count(); ++i) {
+    QString content;
+    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                QLatin1String("katepart5/script/files/") + name);
+    if (fullName.isEmpty()) {
         /**
-         * get full name of file
-         * skip on errors
+         * retry with resource
          */
-        const QString name = files[i];
-        QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                 QLatin1String("katepart5/script/files/") + name);
-        if (fullName.isEmpty()) {
-            /**
-             * retry with resource
-             */
-            fullName = QLatin1String(":/ktexteditor/script/files/") + name;
-            if (!QFile::exists(fullName))
-                continue;
-        }
-
-        /**
-         * try to read complete file
-         * skip non-existing files
-         */
-        QString content;
-        if (!Script::readFile(fullName, content)) {
-            continue;
-        }
-
-        /**
-         * concat to full content
-         */
-        fullContent += content;
+        fullName = QLatin1String(":/ktexteditor/script/files/") + name;
+        if (!QFile::exists(fullName))
+            return content;
     }
 
     /**
-     * return full content
+     * try to read complete file
+     * skip non-existing files
      */
-    return fullContent;
+    Script::readFile(fullName, content);
+    return content;
 }
 
 void ScriptHelper::require(const QString &name)
