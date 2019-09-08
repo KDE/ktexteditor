@@ -619,7 +619,7 @@ void KateEditConfigTab::apply()
     indentConfigTab->apply();
     completionConfigTab->apply();
     spellCheckConfigTab->apply();
-    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+    for (KateConfigPage *tab : qAsConst(m_inputModeConfigTabs)) {
         tab->apply();
     }
 }
@@ -631,7 +631,7 @@ void KateEditConfigTab::reload()
     indentConfigTab->reload();
     completionConfigTab->reload();
     spellCheckConfigTab->reload();
-    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+    for (KateConfigPage *tab : qAsConst(m_inputModeConfigTabs)) {
         tab->reload();
     }
 }
@@ -643,7 +643,7 @@ void KateEditConfigTab::reset()
     indentConfigTab->reset();
     completionConfigTab->reset();
     spellCheckConfigTab->reset();
-    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+    for (KateConfigPage *tab : qAsConst(m_inputModeConfigTabs)) {
         tab->reset();
     }
 }
@@ -655,7 +655,7 @@ void KateEditConfigTab::defaults()
     indentConfigTab->defaults();
     completionConfigTab->defaults();
     spellCheckConfigTab->defaults();
-    Q_FOREACH(KateConfigPage *tab, m_inputModeConfigTabs) {
+    for (KateConfigPage *tab : qAsConst(m_inputModeConfigTabs)) {
         tab->defaults();
     }
 }
