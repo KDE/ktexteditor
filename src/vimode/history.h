@@ -30,8 +30,8 @@ class KTEXTEDITOR_EXPORT History
 {
 
 public:
-    explicit History();
-    ~History();
+    explicit History() = default;
+    ~History() = default;
 
     void append(const QString &historyItem);
     inline const QStringList &items() const { return m_items; }

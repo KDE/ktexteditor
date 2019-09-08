@@ -25,14 +25,6 @@ namespace {
     const int HISTORY_SIZE_LIMIT = 100;
 }
 
-History::History()
-{
-}
-
-History::~History()
-{
-}
-
 void History::append(const QString &historyItem)
 {
     if (historyItem.isEmpty()) {
