@@ -30,7 +30,6 @@
 
 #include <QFont>
 #include <QFontMetricsF>
-#include <QList>
 #include <QTextLine>
 #include <QFlags>
 

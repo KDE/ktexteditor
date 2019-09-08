@@ -622,7 +622,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         bool backgroundBrushSet = false;
 
         // Loop each individual line for additional text decoration etc.
-        QListIterator<QTextLayout::FormatRange> it = range->layout()->additionalFormats();
+        QVectorIterator<QTextLayout::FormatRange> it = range->layout()->formats();
         QVectorIterator<QTextLayout::FormatRange> it2 = additionalFormats;
         for (int i = 0; i < range->viewLineCount(); ++i) {
             KateTextLayout line = range->viewLine(i);
@@ -848,7 +848,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 color = m_caretOverrideColor;
             } else {
                 // search for the FormatRange that includes the cursor
-                const auto formatRanges = range->layout()->additionalFormats();
+                const auto formatRanges = range->layout()->formats();
                 for (const QTextLayout::FormatRange &r : formatRanges) {
                     if ((r.start <= cursor->column()) && ((r.start + r.length)  > cursor->column())) {
                         // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
