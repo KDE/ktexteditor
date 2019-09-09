@@ -1163,7 +1163,7 @@ bool KateGotoBar::eventFilter(QObject *object, QEvent *event)
             return false;
         }
 
-        int delta = static_cast<QWheelEvent *>(event)->delta();
+        int delta = static_cast<QWheelEvent *>(event)->angleDelta().y();
         // Reset m_wheelDelta when scroll direction change
         if (m_wheelDelta != 0 && (m_wheelDelta < 0) != (delta < 0)) {
             m_wheelDelta = 0;
