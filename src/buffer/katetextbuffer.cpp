@@ -97,7 +97,7 @@ TextBuffer::~TextBuffer()
     Q_ASSERT(m_ranges.empty());
 
     // clean out all cursors and lines, only cursors belonging to range will survive
-    foreach (TextBlock *block, m_blocks) {
+    for (TextBlock *block : qAsConst(m_blocks)) {
         block->deleteBlockContent();
     }
 
@@ -133,7 +133,7 @@ void TextBuffer::clear()
     newBlock->appendLine(QString());
 
     // clean out all cursors and lines, either move them to newBlock or invalidate them, if belonging to a range
-    foreach (TextBlock *block, m_blocks) {
+    for (TextBlock *block : qAsConst(m_blocks)) {
         block->clearBlockContent(newBlock);
     }
 
@@ -178,7 +178,7 @@ QString TextBuffer::text() const
     QString text;
 
     // combine all blocks
-    foreach (TextBlock *block, m_blocks) {
+    for (TextBlock *block : qAsConst(m_blocks)) {
         block->text(text);
     }
 
@@ -1018,7 +1018,7 @@ void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, 
 
 void TextBuffer::markModifiedLinesAsSaved()
 {
-    foreach (TextBlock *block, m_blocks) {
+    for (TextBlock *block : qAsConst(m_blocks)) {
         block->markModifiedLinesAsSaved();
     }
 }
