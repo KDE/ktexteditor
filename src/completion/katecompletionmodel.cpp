@@ -313,7 +313,7 @@ int KateCompletionModel::contextMatchQuality(const ModelRow &source) const
 
     int bestMatch = -1;
     //Iterate through all argument-hints and find the best match-quality
-    foreach (const Item &item, m_argumentHints->filtered) {
+    for (const Item &item : qAsConst(m_argumentHints->filtered)) {
         const ModelRow &row(item.sourceRow());
         if (realIndex.model() != row.first) {
             continue;    //We can only match within the same source-model
@@ -615,7 +615,7 @@ void KateCompletionModel::createGroups()
     clearGroups();
 
     bool has_groups = false;
-    foreach (CodeCompletionModel *sourceModel, m_completionModels) {
+    for (CodeCompletionModel *sourceModel : qAsConst(m_completionModels)) {
         has_groups |= sourceModel->hasGroups();
         for (int i = 0; i < sourceModel->rowCount(); ++i) {
             createItems(HierarchicalModelHandler(sourceModel), sourceModel->index(i, 0));
@@ -625,11 +625,11 @@ void KateCompletionModel::createGroups()
 
     //debugStats();
 
-    foreach (Group *g, m_rowTable) {
+    for (Group *g : qAsConst(m_rowTable)) {
         hideOrShowGroup(g);
     }
 
-    foreach (Group *g, m_emptyGroups) {
+    for (Group *g : qAsConst(m_emptyGroups)) {
         hideOrShowGroup(g);
     }
 
@@ -693,7 +693,7 @@ void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start,
         affectedGroups += createItems(handler, parent.isValid() ? parent.child(i, 0) :  handler.model()->index(i, 0), true);
     }
 
-    foreach (Group *g, affectedGroups) {
+    for (Group *g : qAsConst(affectedGroups)) {
         hideOrShowGroup(g, true);
     }
 }
@@ -952,7 +952,7 @@ QModelIndex KateCompletionModel::mapFromSource(const QModelIndex &sourceIndex) c
         return index(m_ungrouped->rowOf(modelRowPair(sourceIndex)), sourceIndex.column(), QModelIndex());
     }
 
-    foreach (Group *g, m_rowTable) {
+    for (Group *g : qAsConst(m_rowTable)) {
         int row = g->rowOf(modelRowPair(sourceIndex));
         if (row != -1) {
             return index(row, sourceIndex.column(), indexForGroup(g));
@@ -960,7 +960,7 @@ QModelIndex KateCompletionModel::mapFromSource(const QModelIndex &sourceIndex) c
     }
 
     // Copied from above
-    foreach (Group *g, m_emptyGroups) {
+    for (Group *g : qAsConst(m_emptyGroups)) {
         int row = g->rowOf(modelRowPair(sourceIndex));
         if (row != -1) {
             return index(row, sourceIndex.column(), indexForGroup(g));
@@ -1004,12 +1004,12 @@ void KateCompletionModel::setCurrentCompletion(KTextEditor::CodeCompletionModel 
     if (!hasGroups()) {
         changeCompletions(m_ungrouped, changeType, !resetModel);
     } else {
-        foreach (Group *g, m_rowTable) {
+        for (Group *g : qAsConst(m_rowTable)) {
             if (g != m_argumentHints) {
                 changeCompletions(g, changeType, !resetModel);
             }
         }
-        foreach (Group *g, m_emptyGroups) {
+        for (Group *g : qAsConst(m_emptyGroups)) {
             if (g != m_argumentHints) {
                 changeCompletions(g, changeType, !resetModel);
             }
@@ -1703,11 +1703,11 @@ void KateCompletionModel::setSortingCaseSensitivity(Qt::CaseSensitivity cs)
 
 void KateCompletionModel::resort()
 {
-    foreach (Group *g, m_rowTable) {
+    for (Group *g : qAsConst(m_rowTable)) {
         g->resort();
     }
 
-    foreach (Group *g, m_emptyGroups) {
+    for (Group *g : qAsConst(m_emptyGroups)) {
         g->resort();
     }
 
@@ -1784,15 +1784,17 @@ void KateCompletionModel::refilter()
     beginResetModel();
     m_ungrouped->refilter();
 
-    foreach (Group *g, m_rowTable)
+    for (Group *g : qAsConst(m_rowTable)) {
         if (g != m_argumentHints) {
             g->refilter();
         }
+    }
 
-    foreach (Group *g, m_emptyGroups)
+    for (Group *g : qAsConst(m_emptyGroups)) {
         if (g != m_argumentHints) {
             g->refilter();
         }
+    }
 
     updateBestMatches();
 
@@ -2271,8 +2273,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
     };
 
     QVector<KTextEditor::CodeCompletionModel *> needShadowing;
-
-    foreach (KTextEditor::CodeCompletionModel *model, m_completionModels) {
+    for (KTextEditor::CodeCompletionModel *model : qAsConst(m_completionModels)) {
         KTextEditor::CodeCompletionModelControllerInterface *v4 = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);
         if (v4 && v4->shouldHideItemsWithEqualNames()) {
             needShadowing.push_back(model);
@@ -2287,7 +2288,7 @@ void KateCompletionModel::makeGroupItemsUnique(bool onlyFiltered)
 
     filter.filter(m_ungrouped, onlyFiltered);
 
-    foreach (Group *group, m_rowTable) {
+    for (Group *group : qAsConst(m_rowTable)) {
         filter.filter(group, onlyFiltered);
     }
 }
@@ -2307,7 +2308,7 @@ void KateCompletionModel::updateBestMatches()
         QMultiMap<int, int> rowsForQuality;
 
         int row = 0;
-        foreach (const Item &item, m_ungrouped->filtered) {
+        for (const Item &item : qAsConst(m_ungrouped->filtered)) {
             ModelRow source = item.sourceRow();
 
             QVariant v = source.second.data(CodeCompletionModel::BestMatchesCount);
@@ -2348,7 +2349,7 @@ void KateCompletionModel::updateBestMatches()
     }
 
     ///@todo Cache the CodeCompletionModel::BestMatchesCount
-    foreach (Group *g, m_rowTable) {
+    for (Group *g : qAsConst(m_rowTable)) {
         if (g == m_bestMatches) {
             continue;
         }
@@ -2427,7 +2428,7 @@ void KateCompletionModel::clearCompletionModels()
     }
 
     beginResetModel();
-    foreach (CodeCompletionModel *model, m_completionModels) {
+    for (CodeCompletionModel *model : qAsConst(m_completionModels)) {
         model->disconnect(this);
     }
 

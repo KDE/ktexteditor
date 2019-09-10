@@ -66,7 +66,7 @@ find_package(EditorConfig)
 option (BUILD_VIMODE "Build vimode in" ON)
 
 # forbid some old things
-#add_definitions(-DQT_NO_FOREACH)
+add_definitions(-DQT_NO_FOREACH)
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
