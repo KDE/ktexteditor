@@ -109,7 +109,7 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     }
 
     /*qCDebug(LOG_KTE) << "Highlights for line:";
-    foreach (const QTextLayout::FormatRange& fr, m_cachedHighlights)
+    for (const QTextLayout::FormatRange& fr : m_cachedHighlights)
       qCDebug(LOG_KTE) << fr.start << " len " << fr.length << " format ";*/
 
     QItemDelegate::paint(painter, option, index);

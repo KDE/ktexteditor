@@ -131,18 +131,20 @@ void ExpandingWidgetModel::clearExpanding()
 
     clearMatchQualities();
     QMap<QModelIndex, ExpandingWidgetModel::ExpandingType> oldExpandState = m_expandState;
-    foreach (const QPointer<QWidget> &widget, m_expandingWidgets)
+    for (auto &widget : qAsConst(m_expandingWidgets)) {
         if (widget) {
             widget->deleteLater();    // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
         }
+    }
     m_expandingWidgets.clear();
     m_expandState.clear();
     m_partiallyExpanded.clear();
 
-    for (QMap<QModelIndex, ExpandingWidgetModel::ExpandingType>::const_iterator it = oldExpandState.constBegin(); it != oldExpandState.constEnd(); ++it)
+    for (auto it = oldExpandState.constBegin(); it != oldExpandState.constEnd(); ++it) {
         if (it.value() == Expanded) {
             emit dataChanged(it.key(), it.key());
         }
+    }
 }
 
 ExpandingWidgetModel::ExpansionType ExpandingWidgetModel::isPartiallyExpanded(const QModelIndex &index) const
