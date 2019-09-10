@@ -99,7 +99,7 @@ void VariableListView::resizeEvent(QResizeEvent *event)
 
     // set client geometries correctly
     int h = 0;
-    foreach (QWidget *w, m_editors) {
+    for (QWidget *w : qAsConst(m_editors)) {
         w->setGeometry(0, h, top->width(), w->sizeHint().height());
         h += w->sizeHint().height();
     }

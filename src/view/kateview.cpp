@@ -2568,14 +2568,14 @@ bool KTextEditor::ViewPrivate::tagLines(KTextEditor::Range range, bool realRange
 
 void KTextEditor::ViewPrivate::deactivateEditActions()
 {
-    foreach (QAction *action, m_editActions) {
+    for (QAction *action : qAsConst(m_editActions)) {
         action->setEnabled(false);
     }
 }
 
 void KTextEditor::ViewPrivate::activateEditActions()
 {
-    foreach (QAction *action, m_editActions) {
+    for (QAction *action : qAsConst(m_editActions)) {
         action->setEnabled(true);
     }
 }

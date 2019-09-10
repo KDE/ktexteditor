@@ -316,10 +316,7 @@ void KateHighlighting::getKateExtendedAttributeList(const QString &schema, QVect
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
 
     list = attributesForDefinition(schema);
-
-    foreach (KTextEditor::Attribute::Ptr p, list) {
-        Q_ASSERT(p);
-
+    for (auto &p : qAsConst(list)) {
         QStringList s = config.readEntry(p->name(), QStringList());
 
 //    qCDebug(LOG_KTE)<<p->name<<s.count();
@@ -397,15 +394,10 @@ void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QVect
      KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(),
                         QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
 
-    QStringList settings;
-
     KateAttributeList defList;
     KateHlManager::self()->getDefaults(schema, defList);
-
-    foreach (const KTextEditor::Attribute::Ptr &p, list) {
-        Q_ASSERT(p);
-
-        settings.clear();
+    for (auto &p : qAsConst(list)) {
+        QStringList settings;
         KTextEditor::DefaultStyle defStyle = p->defaultStyle();
         KTextEditor::Attribute::Ptr a(defList[defStyle]);
         settings << QString::number(p->defaultStyle(), 10);
@@ -655,7 +647,7 @@ bool KateHighlighting::isEmptyLine(const Kate::TextLineData *textline) const
         return false;
     }
 
-    foreach (const QRegularExpression &re, l) {
+    for (const QRegularExpression &re : l) {
         const QRegularExpressionMatch match = re.match (txt, 0, QRegularExpression::NormalMatch, QRegularExpression::AnchoredMatchOption);
         if (match.hasMatch() && match.capturedLength() == txt.length()) {
             return true;
