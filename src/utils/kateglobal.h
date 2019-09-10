@@ -60,6 +60,7 @@ class KateWordCompletionModel;
 class KateAbstractInputModeFactory;
 class KateKeywordCompletionModel;
 class KateDefaultColors;
+class KateVariableExpansionManager;
 
 namespace KTextEditor
 {
@@ -422,6 +423,11 @@ public:
      */
     void saveSearchReplaceHistoryModels();
 
+    /**
+     * Returns the variable expansion manager.
+     */
+    KateVariableExpansionManager *variableExpansionManager();
+
 Q_SIGNALS:
     /**
      * Emitted if the history of clipboard changes via copyToClipboard
@@ -506,6 +512,11 @@ private:
     KateCmd *m_cmdManager;
 
     /**
+     * variable expansion manager
+     */
+    KateVariableExpansionManager *m_variableExpansionManager;
+
+    /**
      * spell check manager
      */
     KateSpellCheckManager *m_spellCheckManager;
@@ -555,16 +566,6 @@ private:
      */
     QStringListModel *m_searchHistoryModel;
     QStringListModel *m_replaceHistoryModel;
-
-    /**
-     * Contains a lookup from the variable to the Variable instance.
-     */
-    QHash<QString, KTextEditor::Variable> m_variableExactMatches;
-
-    /**
-     * Contains a lookup from the variable prefix to the Variable instance.
-     */
-    QHash<QString, KTextEditor::Variable> m_variablePrefixMatches;
 };
 
 }

@@ -21,15 +21,21 @@
 namespace KTextEditor
 {
 
-Variable::Variable(const QString& name, const QString& description, Variable::ExpandFunction func)
+Variable::Variable(const QString& name, const QString& description, Variable::ExpandFunction func, bool isPrefixMatch)
     : m_name(name)
     , m_description(description)
     , m_function(func)
+    , m_isPrefixMatch(isPrefixMatch)
 {}
 
 bool Variable::isValid() const
 {
     return (!m_name.isEmpty()) && (m_function != nullptr);
+}
+
+bool Variable::isPrefixMatch() const
+{
+    return m_isPrefixMatch;
 }
 
 QString Variable::name() const

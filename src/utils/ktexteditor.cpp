@@ -41,6 +41,7 @@
 #include "sessionconfiginterface.h"
 #include "texthintinterface.h"
 #include "variable.h"
+#include "katevariableexpansionmanager.h"
 
 #include "annotationinterface.h"
 #include "abstractannotationitemdelegate.h"
@@ -48,7 +49,6 @@
 #include "kateglobal.h"
 #include "kateconfig.h"
 #include "katecmd.h"
-#include "katemacroexpander.h"
 
 using namespace KTextEditor;
 
@@ -107,76 +107,39 @@ QString Editor::defaultEncoding () const
 
 bool Editor::registerVariableMatch(const QString& name, const QString& description, ExpandFunction expansionFunc)
 {
-    if (name.isEmpty() || expansionFunc == nullptr)
-        return false;
-
-    if (d->m_variableExactMatches.contains(name))
-        return false;
-
-    d->m_variableExactMatches.insert(name, Variable(name, description, expansionFunc));
-    return true;
+    const auto var = Variable(name, description, expansionFunc, false);
+    return d->variableExpansionManager()->addVariable(var);
 }
 
 bool Editor::registerVariablePrefix(const QString& prefix, const QString& description, ExpandFunction expansionFunc)
 {
-    if (prefix.isEmpty() || expansionFunc == nullptr)
-        return false;
-
-    if (d->m_variablePrefixMatches.contains(prefix))
-        return false;
-
-    if (!prefix.contains(QLatin1Char(':')))
-        return false;
-
-    d->m_variablePrefixMatches.insert(prefix, Variable(prefix, description, expansionFunc));
-    return true;
+    const auto var = Variable(prefix, description, expansionFunc, true);
+    return d->variableExpansionManager()->addVariable(var);
 }
 
 bool Editor::unregisterVariableMatch(const QString& variable)
 {
-    auto it = d->m_variableExactMatches.find(variable);
-    if (it != d->m_variableExactMatches.end()) {
-        d->m_variableExactMatches.erase(it);
-        return true;
-    }
-    return false;
+    return d->variableExpansionManager()->removeVariable(variable);
 }
 
 bool Editor::unregisterVariablePrefix(const QString& variable)
 {
-    auto it = d->m_variablePrefixMatches.find(variable);
-    if (it != d->m_variablePrefixMatches.end()) {
-        d->m_variablePrefixMatches.erase(it);
-        return true;
-    }
-    return false;
+    return d->variableExpansionManager()->removeVariable(variable);
 }
 
 bool Editor::expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const
 {
-    // first try exact matches
-    const auto it = d->m_variableExactMatches.find(variable);
-    if (it != d->m_variableExactMatches.end()) {
-        output = it->evaluate(variable, view);
-        return true;
-    }
-
-    // try prefix matching
-    const int colonIndex = variable.indexOf(QLatin1Char(':'));
-    if (colonIndex >= 0) {
-        const QString prefix = variable.left(colonIndex + 1);
-        const auto itPrefix = d->m_variablePrefixMatches.find(prefix);
-        if (itPrefix != d->m_variablePrefixMatches.end()) {
-            output = itPrefix->evaluate(variable, view);
-            return true;
-        }
-    }
-    return false;
+    return d->variableExpansionManager()->expandVariable(variable, view, output);
 }
 
 void Editor::expandText(const QString& text, KTextEditor::View* view, QString& output) const
 {
-    output = KateMacroExpander::expandMacro(text, view);
+    d->variableExpansionManager()->expandText(text, view, output);
+}
+
+void Editor::addVariableExpansion(const QVector<QWidget*>& widgets, const QStringList& variables) const
+{
+    d->variableExpansionManager()->showDialog(widgets, variables);
 }
 
 bool View::insertText(const QString &text)

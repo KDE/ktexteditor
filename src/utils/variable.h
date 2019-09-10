@@ -54,19 +54,41 @@ public:
     using ExpandFunction = QString (*)(const QStringView& text, KTextEditor::View* view);
 
     /**
+     * Constructs an invalid Variable, see isValid().
+     */
+    Variable() = default;
+
+    /**
      * Constructor defining a Variable by its @p name, its @p description, and
      * its function @p expansionFunc to expand a variable to its corresponding
-     * value.
+     * value. The parameter @p isPrefixMatch indicates whether this Variable
+     * represents an exact match (false) or a prefix match (true).
      *
      * @note The @p name should @e not be translated.
      */
-    Variable(const QString& name, const QString& description, ExpandFunction expansionFunc);
+    Variable(const QString& name, const QString& description, ExpandFunction expansionFunc, bool isPrefixMatch);
+
+    /**
+     * Copy constructor.
+     */
+    Variable(const Variable & copy) = default;
+
+    /**
+     * Assignment operator.
+     */
+    Variable & operator=(const Variable & copy) = default;
 
     /**
      * Returns true, if the name is non-empty and the function provided in the
      * constructor is not a nullptr.
      */
     bool isValid() const;
+
+    /**
+     * Returns whether this Variable represents an exact match (false) or a
+     * prefix match (true).
+     */
+    bool isPrefixMatch() const;
 
     /**
      * Returns the @p name that was provided in the constructor.
@@ -100,6 +122,7 @@ private:
     QString m_name;
     QString m_description;
     ExpandFunction m_function;
+    bool m_isPrefixMatch = false;
 };
 
 }

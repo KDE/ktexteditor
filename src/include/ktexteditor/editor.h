@@ -23,6 +23,7 @@
 #include <ktexteditor_export.h>
 
 #include <QObject>
+#include <QVector>
 
 class KAboutData;
 class KConfig;
@@ -293,6 +294,8 @@ public:
      */
     bool unregisterVariableMatch(const QString& variable);
 
+    // TODO KF6: merge "unregisterVariableMatch()" and "unregisterVariablePrefix()" into
+    //           a single function "unregisterVariable(const QString& name)".
     /**
      * Unregisters a prefix of variable that was previously registered with
      * registerVariableMatch().
@@ -313,6 +316,7 @@ public:
      */
     bool expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const;
 
+    // TODO KF6: turn expandText into: QString expandText(text, view) to avoid output argument
     /**
      * Expands arbitrary @p text that may contain arbitrary many variables.
      * On success, the expanded text is written to @p output.
@@ -320,6 +324,21 @@ public:
      * @since 5.57
      */
     void expandText(const QString& text, KTextEditor::View* view, QString& output) const;
+
+    /**
+     * Adds a QAction to the widget in @p widgets that whenever focus is
+     * gained. When the action is invoked, a non-modal dialog is shown that
+     * lists all @p variables. If @p variables is non-empty, then only the
+     * variables in @p variables are listed.
+     *
+     * The supported QWidgets in the @p widgets argument currently are:
+     * - QLineEdit
+     * - QTextEdit
+     *
+     * @since 5.63
+     */
+    void addVariableExpansion(const QVector<QWidget*>& widgets,
+                              const QStringList& variables = QStringList()) const;
 
 private:
     /**

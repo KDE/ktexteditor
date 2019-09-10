@@ -42,6 +42,7 @@
 #include "spellcheck/spellcheck.h"
 #include "katepartdebug.h"
 #include "katedefaultcolors.h"
+#include "katevariableexpansionmanager.h"
 
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
@@ -56,118 +57,12 @@
 #include <QBoxLayout>
 #include <QApplication>
 #include <QClipboard>
-#include <QDir>
-#include <QFileInfo>
-#include <QJSEngine>
 #include <QPushButton>
 #include <QStringListModel>
-#include <QUuid>
 
 #if LIBGIT2_FOUND
 #include <git2.h>
 #endif
-
-namespace {
-
-void registerVariables(KTextEditor::Editor * editor)
-{
-    editor->registerVariableMatch(QStringLiteral("Document:FileBaseName"), i18n("File base name without path and suffix of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return QFileInfo(url).baseName();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:FileExtension"), i18n("File extension of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return QFileInfo(url).completeSuffix();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:FileName"), i18n("File name without path of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return QFileInfo(url).fileName();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:FilePath"), i18n("Full path of the current document including the file name."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return QFileInfo(url).absoluteFilePath();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Text"), i18n("Contents of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? view->document()->text() : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Path"), i18n("Full path of the current document excluding the file name."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return QFileInfo(url).absolutePath();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:NativeFilePath"), i18n("Full document path including file name, with native path separator (backslash on Windows)."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return url.isEmpty() ? QString() : QDir::toNativeSeparators(QFileInfo(url).absoluteFilePath());
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:NativePath"), i18n("Full document path excluding file name, with native path separator (backslash on Windows)."), [](const QStringView&, KTextEditor::View* view) {
-        const auto url = view ? view->document()->url().toLocalFile() : QString();
-        return url.isEmpty() ? QString() : QDir::toNativeSeparators(QFileInfo(url).absolutePath());
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Cursor:Line"), i18n("Line number of the text cursor position in current document (starts with 0)."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? QString::number(view->cursorPosition().line()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Cursor:Column"), i18n("Column number of the text cursor position in current document (starts with 0)."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? QString::number(view->cursorPosition().column()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Cursor:XPos"), i18n("X component in global screen coordinates of the cursor position."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).x()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Cursor:YPos"), i18n("Y component in global screen coordinates of the cursor position."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? QString::number(view->mapToGlobal(view->cursorPositionCoordinates()).y()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Selection:Text"), i18n("Text selection of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return (view && view->selection()) ? view->selectionText() : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Selection:StartLine"), i18n("Start line of selected text of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return (view && view->selection()) ? QString::number(view->selectionRange().start().line()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Selection:StartColumn"), i18n("Start column of selected text of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return (view && view->selection()) ? QString::number(view->selectionRange().start().column()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Selection:EndLine"), i18n("End line of selected text of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return (view && view->selection()) ? QString::number(view->selectionRange().end().line()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:Selection:EndColumn"), i18n("End column of selected text of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return (view && view->selection()) ? QString::number(view->selectionRange().end().column()) : QString();
-    });
-    editor->registerVariableMatch(QStringLiteral("Document:RowCount"), i18n("Number of rows of the current document."), [](const QStringView&, KTextEditor::View* view) {
-        return view ? QString::number(view->document()->lines()) : QString();
-    });
-
-    editor->registerVariableMatch(QStringLiteral("Date:Locale"), i18n("The current date in current locale format."), [](const QStringView&, KTextEditor::View*) {
-        return QDate::currentDate().toString(Qt::DefaultLocaleShortDate);
-    });
-    editor->registerVariableMatch(QStringLiteral("Date:ISO"), i18n("The current date (ISO)."), [](const QStringView&, KTextEditor::View*) {
-        return QDate::currentDate().toString(Qt::ISODate);
-    });
-    editor->registerVariablePrefix(QStringLiteral("Date:"), i18n("The current date (QDate formatstring)."), [](const QStringView& str, KTextEditor::View*) {
-        return QDate::currentDate().toString(str.mid(5));
-    });
-
-    editor->registerVariableMatch(QStringLiteral("Time:Locale"), i18n("The current time in current locale format."), [](const QStringView&, KTextEditor::View*) {
-        return QTime::currentTime().toString(Qt::DefaultLocaleShortDate);
-    });
-    editor->registerVariableMatch(QStringLiteral("Time:ISO"), i18n("The current time (ISO)."), [](const QStringView&, KTextEditor::View*) {
-        return QTime::currentTime().toString(Qt::ISODate);
-    });
-    editor->registerVariablePrefix(QStringLiteral("Time:"), i18n("The current time (QTime formatstring)."), [](const QStringView& str, KTextEditor::View*) {
-        return QTime::currentTime().toString(str.mid(5));
-    });
-
-    editor->registerVariablePrefix(QStringLiteral("ENV:"), i18n("Access to environment variables."), [](const QStringView& str, KTextEditor::View*) {
-        return QString::fromLocal8Bit(qgetenv(str.mid(4).toLocal8Bit().constData()));
-    });
-
-    editor->registerVariablePrefix(QStringLiteral("JS:"), i18n("Evaluate simple JavaScript statements."), [](const QStringView& str, KTextEditor::View*) {
-        QJSEngine jsEngine;
-        const QJSValue out = jsEngine.evaluate(str.toString());
-        return out.toString();
-    });
-
-    editor->registerVariableMatch(QStringLiteral("UUID"), i18n("Generate a new UUID."), [](const QStringView&, KTextEditor::View*) {
-        return QUuid::createUuid().toString(QUuid::WithoutBraces);
-    });
-}
-}
 
 //BEGIN unit test mode
 static bool kateUnitTestMode = false;
@@ -275,6 +170,11 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_cmdManager = new KateCmd();
 
     //
+    // variable expansion manager
+    //
+    m_variableExpansionManager = new KateVariableExpansionManager(this);
+
+    //
     // hl manager
     //
     m_hlManager = new KateHlManager();
@@ -332,9 +232,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     // tap to QApplication object for color palette changes
     qApp->installEventFilter(this);
-
-    // register default variables for expansion
-    registerVariables(this);
 }
 
 KTextEditor::EditorPrivate::~EditorPrivate()
@@ -357,6 +254,10 @@ KTextEditor::EditorPrivate::~EditorPrivate()
 
     // cu model
     delete m_wordCompletionModel;
+
+    // delete variable expansion manager
+    delete m_variableExpansionManager;
+    m_variableExpansionManager = nullptr;
 
     // delete the commands before we delete the cmd manager
     qDeleteAll(m_cmds);
@@ -538,6 +439,11 @@ QList<KTextEditor::Command *> KTextEditor::EditorPrivate::commands() const
 QStringList KTextEditor::EditorPrivate::commandList() const
 {
     return m_cmdManager->commandList();
+}
+
+KateVariableExpansionManager *KTextEditor::EditorPrivate::variableExpansionManager()
+{
+    return m_variableExpansionManager;
 }
 
 void KTextEditor::EditorPrivate::updateColorPalette()
