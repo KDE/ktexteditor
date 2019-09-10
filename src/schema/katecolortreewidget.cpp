@@ -347,7 +347,7 @@ void KateColorTreeWidget::addColorItem(const KateColorItem &colorItem)
 
 void KateColorTreeWidget::addColorItems(const QVector<KateColorItem> &colorItems)
 {
-    foreach (const KateColorItem &item, colorItems) {
+    for (const KateColorItem &item : colorItems) {
         addColorItem(item);
     }
 }

@@ -113,7 +113,7 @@ bool KateKeywordCompletionModel::shouldAbortCompletion(KTextEditor::View* view, 
       return true; // Always abort when the completion-range has been left
     // Do not abort completions when the text has been empty already before and a newline has been entered
 
-    foreach ( QChar c, currentCompletion ) {
+    for (QChar c : currentCompletion) {
         if ( ! isInWord(view, range.start(), c) ) {
             return true;
         }

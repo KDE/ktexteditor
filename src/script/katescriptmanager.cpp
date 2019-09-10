@@ -62,7 +62,8 @@ KateScriptManager::~KateScriptManager()
 KateIndentScript *KateScriptManager::indenter(const QString &language)
 {
     KateIndentScript *highestPriorityIndenter = nullptr;
-    foreach (KateIndentScript *indenter, m_languageToIndenters.value(language.toLower())) {
+    const auto indenters = m_languageToIndenters.value(language.toLower());
+    for (KateIndentScript *indenter : indenters) {
         // don't overwrite if there is already a result with a higher priority
         if (highestPriorityIndenter && indenter->indentHeader().priority() < highestPriorityIndenter->indentHeader().priority()) {
 #ifdef DEBUG_SCRIPTMANAGER
