@@ -170,7 +170,8 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     setFocusPolicy(Qt::ClickFocus);
     m_argumentHintTree->setFocusPolicy(Qt::ClickFocus);
 
-    foreach (QWidget *childWidget, findChildren<QWidget *>()) {
+    const auto children = findChildren<QWidget *>();
+    for (QWidget *childWidget : children) {
         childWidget->setFocusPolicy(Qt::NoFocus);
     }
 
@@ -315,8 +316,7 @@ void KateCompletionWidget::startCompletion(KTextEditor::CodeCompletionModel::Inv
 
 void KateCompletionWidget::deleteCompletionRanges()
 {
-    ////qCDebug(LOG_KTE);
-    foreach (const CompletionRange &r, m_completionRanges) {
+    for (const CompletionRange &r : qAsConst(m_completionRanges)) {
         delete r.range;
     }
     m_completionRanges.clear();
@@ -823,7 +823,8 @@ void KateCompletionWidget::clear()
     m_argumentHintTree->clearCompletion();
     m_argumentHintModel->clear();
 
-    foreach (KTextEditor::CodeCompletionModel *model, m_completionRanges.keys()) {
+    const auto keys = m_completionRanges.keys();
+    for (KTextEditor::CodeCompletionModel *model : keys) {
         _aborted(model, view());
     }
 
@@ -1427,7 +1428,7 @@ void KateCompletionWidget::automaticInvocation()
     QList<KTextEditor::CodeCompletionModel *> models;
 
     //qCDebug(LOG_KTE)<<"checking models";
-    foreach (KTextEditor::CodeCompletionModel *model, m_sourceModels) {
+    for (KTextEditor::CodeCompletionModel *model : qAsConst(m_sourceModels)) {
         //qCDebug(LOG_KTE)<<"m_completionRanges contains model?:"<<m_completionRanges.contains(model);
         if (m_completionRanges.contains(model)) {
             continue;
