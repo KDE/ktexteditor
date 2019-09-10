@@ -72,7 +72,8 @@ void Marks::readSessionConfig(const KConfigGroup &config)
 void Marks::writeSessionConfig(KConfigGroup &config) const
 {
     QStringList l;
-    Q_FOREACH (QChar key, m_marks.keys()) {
+    const auto keys = m_marks.keys();
+    for (QChar key : keys) {
         l << key << QString::number(m_marks.value(key)->line())
         << QString::number(m_marks.value(key)->column());
     }
@@ -97,7 +98,8 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos)
         needToAdjustVisibleMark = oldCursor->line() != pos.line();
         if (needToAdjustVisibleMark) {
             int number_of_marks = 0;
-            foreach (QChar c, m_marks.keys()) {
+            const auto keys = m_marks.keys();
+            for (QChar c : keys) {
                 if (m_marks.value(c)->line() ==  oldCursor->line()) {
                     number_of_marks++;
                 }
@@ -154,7 +156,8 @@ void Marks::markChanged(KTextEditor::Document *doc,
     }
 
     if (action == KTextEditor::MarkInterface::MarkRemoved) {
-        foreach (QChar markerChar, m_marks.keys()) {
+        const auto keys = m_marks.keys();
+        for (QChar markerChar : keys) {
             if (m_marks.value(markerChar)->line() == mark.line) {
                 m_marks.remove(markerChar);
             }
@@ -207,7 +210,8 @@ void Marks::syncViMarksAndBookmarks()
     }
 
     // For showable vi mark a line should be bookmarked.
-    Q_FOREACH (const QChar &markChar, m_marks.keys()) {
+    const auto keys = m_marks.keys();
+    for (QChar markChar : keys) {
         if (!isShowable(markChar)) {
             continue;
         }
@@ -233,8 +237,8 @@ void Marks::syncViMarksAndBookmarks()
 QString Marks::getMarksOnTheLine(int line) const
 {
     QString res;
-
-    Q_FOREACH (QChar markerChar, m_marks.keys()) {
+    const auto keys = m_marks.keys();
+    for (QChar markerChar : keys) {
         if (m_marks.value(markerChar)->line() == line) {
             res += markerChar + QLatin1Char(':') + QString::number(m_marks.value(markerChar)->column()) + QLatin1Char(' ');
         }
