@@ -2276,14 +2276,9 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
         QChildEvent *c = static_cast<QChildEvent *>(e);
         if (c->added()) {
             c->child()->installEventFilter(this);
-            /*foreach (QWidget* child, c->child()->findChildren<QWidget*>())
-              child->installEventFilter(this);*/
 
         } else if (c->removed()) {
             c->child()->removeEventFilter(this);
-
-            /*foreach (QWidget* child, c->child()->findChildren<QWidget*>())
-              child->removeEventFilter(this);*/
         }
     } break;
 
@@ -3786,7 +3781,8 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
         m_imPreeditRangeChildren.clear();
 
         int decorationColumn = 0;
-        foreach (const QInputMethodEvent::Attribute &a, e->attributes()) {
+        const auto attributes = e->attributes();
+        for (auto &a : attributes) {
             if (a.type == QInputMethodEvent::Cursor) {
                 newCursor = m_imPreeditRange->start() + KTextEditor::Cursor(0, a.start);
                 hideCursor = !a.length;
