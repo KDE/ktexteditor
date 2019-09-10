@@ -4613,7 +4613,6 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     }
 
     // views!
-    KTextEditor::ViewPrivate *v;
     for (auto v : qAsConst(m_views)) {
         v->config()->configStart();
         v->renderer()->config()->configStart();
@@ -4854,7 +4853,6 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
 void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 {
-    KTextEditor::ViewPrivate *v;
     bool state;
     int n;
     QColor c;
@@ -5174,7 +5172,6 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
             }
 
             // views!
-            KTextEditor::ViewPrivate *v;
             for (auto v : qAsConst(m_views)) {
                 v->config()->configStart();
                 v->renderer()->config()->configStart();
