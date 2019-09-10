@@ -449,7 +449,8 @@ KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTe
     emit viewCreated(this, newView);
 
     // post existing messages to the new view, if no specific view is given
-    foreach (KTextEditor::Message *message, m_messageHash.keys()) {
+    const auto keys = m_messageHash.keys();
+    for (KTextEditor::Message *message : keys) {
         if (!message->view()) {
             newView->postMessage(message, m_messageHash[message]);
         }
@@ -714,7 +715,7 @@ bool KTextEditor::DocumentPrivate::clear()
         return false;
     }
 
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->clear();
         view->tagAll();
         view->update();
@@ -907,7 +908,7 @@ bool KTextEditor::DocumentPrivate::insertLines(int line, const QStringList &text
     }
 
     bool success = true;
-    foreach (const QString &string, text) {
+    for (const QString &string : text) {
         success &= editInsertLine(line++, string);
     }
 
@@ -1018,7 +1019,7 @@ bool KTextEditor::DocumentPrivate::editStart()
 
     m_undoManager->editStart();
 
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->editStart();
     }
 
@@ -1055,7 +1056,7 @@ bool KTextEditor::DocumentPrivate::editEnd()
     m_undoManager->editEnd();
 
     // edit end for all views !!!!!!!!!
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->editEnd(m_buffer->editTagStart(), m_buffer->editTagEnd(), m_buffer->editTagFrom());
     }
 
@@ -2364,7 +2365,7 @@ bool KTextEditor::DocumentPrivate::openFile()
     //
     // update views
     //
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         // This is needed here because inserting the text moves the view's start position (it is a MovingCursor)
         view->setCursorPosition(KTextEditor::Cursor());
         view->updateView(true);
@@ -2795,8 +2796,8 @@ bool KTextEditor::DocumentPrivate::closeUrl()
      * delete all KTE::Messages
      */
     if (!m_messageHash.isEmpty()) {
-        QList<KTextEditor::Message *> keys = m_messageHash.keys();
-        foreach (KTextEditor::Message *message, keys) {
+        const auto keys = m_messageHash.keys();
+        for (KTextEditor::Message *message : keys) {
             delete message;
         }
     }
@@ -2840,7 +2841,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     m_buffer->setHighlight(0);
 
     // update all our views
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->clearSelection(); // fix bug #118588
         view->clear();
     }
@@ -2881,7 +2882,7 @@ void KTextEditor::DocumentPrivate::setReadWrite(bool rw)
 
     KParts::ReadWritePart::setReadWrite(rw);
 
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->slotUpdateUndo();
         view->slotReadWriteChanged();
     }
@@ -2894,7 +2895,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
     if (isModified() != m) {
         KParts::ReadWritePart::setModified(m);
 
-        foreach (KTextEditor::ViewPrivate *view, m_views) {
+        for (auto view : qAsConst(m_views)) {
             view->slotUpdateUndo();
         }
 
@@ -2909,7 +2910,7 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
 
 void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
 {
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->renderer()->updateAttributes();
     }
 
@@ -2917,7 +2918,7 @@ void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
         m_buffer->invalidateHighlighting();
     }
 
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->tagAll();
         view->updateView(true);
     }
@@ -4121,14 +4122,14 @@ void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
 
 void KTextEditor::DocumentPrivate::tagLines(int start, int end)
 {
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->tagLines(start, end, true);
     }
 }
 
 void KTextEditor::DocumentPrivate::repaintViews(bool paintOnlyDirty)
 {
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->repaintText(paintOnlyDirty);
     }
 }
@@ -4586,7 +4587,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
     m_buffer->setTabWidth(config()->tabWidth());
 
     // update all views, does tagAll and updateView...
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->updateDocumentConfig();
     }
 
@@ -4613,7 +4614,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
 
     // views!
     KTextEditor::ViewPrivate *v;
-    foreach (v, m_views) {
+    for (auto v : qAsConst(m_views)) {
         v->config()->configStart();
         v->renderer()->config()->configStart();
     }
@@ -4631,7 +4632,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
         m_config->configEnd();
     }
 
-    foreach (v, m_views) {
+    for (auto v : qAsConst(m_views)) {
         v->config()->configEnd();
         v->renderer()->config()->configEnd();
     }
@@ -4857,7 +4858,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
     bool state;
     int n;
     QColor c;
-    foreach (v, m_views) {
+    for (auto v : qAsConst(m_views)) {
         // First, try the new config interface
         QVariant help(val); // Special treatment to catch "on"/"off"
         if (checkBoolValue(val, &state)) {
@@ -5174,7 +5175,7 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
 
             // views!
             KTextEditor::ViewPrivate *v;
-            foreach (v, m_views) {
+            for (auto v : qAsConst(m_views)) {
                 v->config()->configStart();
                 v->renderer()->config()->configStart();
             }
@@ -5188,7 +5189,7 @@ void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
                 m_config->setBom(bom_settings);
             }
             m_config->configEnd();
-            foreach (v, m_views) {
+            for (auto v : qAsConst(m_views)) {
                 v->config()->configEnd();
                 v->renderer()->config()->configEnd();
             }
@@ -5739,7 +5740,7 @@ void KTextEditor::DocumentPrivate::onTheFlySpellCheckingEnabled(bool enable)
         m_onTheFlyChecker = nullptr;
     }
 
-    foreach (KTextEditor::ViewPrivate *view, m_views) {
+    for (auto view : qAsConst(m_views)) {
         view->reflectOnTheFlySpellCheckStatus(enable);
     }
 }
@@ -6065,7 +6066,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     if (KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(message->view())) {
         view->postMessage(message, m_messageHash[message]);
     } else {
-        foreach (KTextEditor::ViewPrivate *view, m_views) {
+        for (auto view : qAsConst(m_views)) {
             view->postMessage(message, m_messageHash[message]);
         }
     }
