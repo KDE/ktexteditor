@@ -554,7 +554,7 @@ void KateOnTheFlyChecker::deleteMovingRange(KTextEditor::MovingRange *range)
 
 void KateOnTheFlyChecker::deleteMovingRanges(const QList<KTextEditor::MovingRange *> &list)
 {
-    foreach (KTextEditor::MovingRange *r, list) {
+    for (KTextEditor::MovingRange *r : list) {
         deleteMovingRange(r);
     }
 }
@@ -731,7 +731,7 @@ void KateOnTheFlyChecker::updateInstalledMovingRanges(KTextEditor::ViewPrivate *
     ON_THE_FLY_DEBUG << "new range: " << newDisplayRange;
     ON_THE_FLY_DEBUG << "old range: " << oldDisplayRange;
     QList<KTextEditor::MovingRange *> toDelete;
-    foreach (const MisspelledItem &item, m_misspelledList) {
+    for (const MisspelledItem &item : qAsConst(m_misspelledList)) {
         KTextEditor::MovingRange *movingRange = item.first;
         if (!movingRange->overlaps(newDisplayRange)) {
             bool stillVisible = false;
@@ -902,7 +902,7 @@ void KateOnTheFlyChecker::deleteMovingRangeQuickly(KTextEditor::MovingRange *ran
 
 void KateOnTheFlyChecker::handleModifiedRanges()
 {
-    foreach (const ModificationItem &item, m_modificationList) {
+    for (const ModificationItem &item : qAsConst(m_modificationList)) {
         KTextEditor::MovingRange *movingRange = item.second;
         KTextEditor::Range range = *movingRange;
         deleteMovingRangeQuickly(movingRange);
@@ -933,7 +933,7 @@ bool KateOnTheFlyChecker::removeRangeFromModificationList(KTextEditor::MovingRan
 
 void KateOnTheFlyChecker::clearModificationList()
 {
-    foreach (const ModificationItem &item, m_modificationList) {
+    for (const ModificationItem &item : qAsConst(m_modificationList)) {
         KTextEditor::MovingRange *movingRange = item.second;
         deleteMovingRangeQuickly(movingRange);
     }
