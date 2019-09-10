@@ -213,9 +213,9 @@ bool KateVariableExpansionManager::expandVariable(const QString& name, KTextEdit
     return false;
 }
 
-void KateVariableExpansionManager::expandText(const QString& text, KTextEditor::View* view, QString& output) const
+QString KateVariableExpansionManager::expandText(const QString& text, KTextEditor::View* view) const
 {
-    output = KateMacroExpander::expandMacro(text, view);
+    return KateMacroExpander::expandMacro(text, view);
 }
 
 void KateVariableExpansionManager::showDialog(const QVector<QWidget*>& widgets, const QStringList& names) const

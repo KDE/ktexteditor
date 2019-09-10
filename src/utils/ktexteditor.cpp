@@ -134,7 +134,7 @@ bool Editor::expandVariable(const QString& variable, KTextEditor::View* view, QS
 
 void Editor::expandText(const QString& text, KTextEditor::View* view, QString& output) const
 {
-    d->variableExpansionManager()->expandText(text, view, output);
+    output = d->variableExpansionManager()->expandText(text, view);
 }
 
 void Editor::addVariableExpansion(const QVector<QWidget*>& widgets, const QStringList& variables) const
