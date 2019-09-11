@@ -50,6 +50,7 @@
 #include "printing/kateprinter.h"
 #include "kateabstractinputmode.h"
 #include "katetemplatehandler.h"
+#include "katevariableexpansionmanager.h"
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
@@ -2588,18 +2589,25 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
     /**
      * else: try to backup
      */
-    if (config()->backupPrefix().contains(QDir::separator())) {
+    const auto backupPrefix = KTextEditor::EditorPrivate::self()->variableExpansionManager()->expandText(config()->backupPrefix(), nullptr);
+    const auto backupSuffix = KTextEditor::EditorPrivate::self()->variableExpansionManager()->expandText(config()->backupSuffix(), nullptr);
+    if (backupPrefix.isEmpty() && backupSuffix.isEmpty()) {
+        // no sane backup possible
+        return true;
+    }
+
+    if (backupPrefix.contains(QDir::separator())) {
         /**
          * replace complete path, as prefix is a path!
          */
-        u.setPath(config()->backupPrefix() + u.fileName() + config()->backupSuffix());
+        u.setPath(backupPrefix + u.fileName() + backupSuffix);
     } else {
         /**
          * replace filename in url
          */
         const QString fileName = u.fileName();
         u = u.adjusted(QUrl::RemoveFilename);
-        u.setPath(u.path() + config()->backupPrefix() + fileName + config()->backupSuffix());
+        u.setPath(u.path() + backupPrefix + fileName + backupSuffix);
     }
 
     qCDebug(LOG_KTE) << "backup src file name: " << url();

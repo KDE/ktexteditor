@@ -902,6 +902,22 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
 
     layout->addWidget(tabWidget);
     setLayout(layout);
+
+    // support variable expansion in backup prefix/suffix
+    KTextEditor::Editor::instance()->addVariableExpansion(
+        { uiadv->edtBackupPrefix, uiadv->edtBackupSuffix },
+        {
+            QStringLiteral("Date:Locale"),
+            QStringLiteral("Date:ISO"),
+            QStringLiteral("Date:"),
+            QStringLiteral("Time:Locale"),
+            QStringLiteral("Time:ISO"),
+            QStringLiteral("Time:"),
+            QStringLiteral("ENV:"),
+            QStringLiteral("JS:"),
+            QStringLiteral("UUID")
+        }
+    );
 }
 
 KateSaveConfigTab::~KateSaveConfigTab()
