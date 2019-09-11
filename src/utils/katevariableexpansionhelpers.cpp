@@ -195,9 +195,9 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     vbox->addWidget(lblCurrentValue);
 
     // react to selection changes
-    connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
-        if (index.isValid()) {
-            const auto & var = m_variables[m_filterModel->mapToSource(index).row()];
+    connect(m_listView->selectionModel(), &QItemSelectionModel::currentRowChanged, [this, lblDescription, lblCurrentValue](const QModelIndex &current, const QModelIndex &) {
+        if (current.isValid()) {
+            const auto & var = m_variables[m_filterModel->mapToSource(current).row()];
             lblDescription->setText(var.description());
             if (var.isPrefixMatch()) {
                 lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
@@ -213,7 +213,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     });
 
     // insert text on activation
-    connect(m_listView, &QAbstractItemView::doubleClicked, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
+    connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
         if (index.isValid()) {
             const auto & var = m_variables[m_filterModel->mapToSource(index).row()];
             const auto name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
@@ -234,6 +234,8 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
         show();
         activateWindow();
     });
+
+    resize(400, 550);
 }
 
 void KateVariableExpansionDialog::addVariable(const KTextEditor::Variable& variable)
