@@ -25,6 +25,7 @@
 #include "kateglobal.h"
 #include <KLocalizedString>
 
+#include <QCoreApplication>
 #include <QAbstractItemModel>
 #include <QAction>
 #include <QEvent>
@@ -32,6 +33,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
+#include <QSortFilterProxyModel>
 #include <QTextEdit>
 #include <QToolTip>
 #include <QVBoxLayout>
@@ -166,9 +168,25 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     setWindowTitle(i18n("Variables"));
 
     auto vbox = new QVBoxLayout(this);
+    m_filterEdit = new QLineEdit(this);
+    m_filterEdit->setPlaceholderText(i18n("Filter"));
+    m_filterEdit->setFocus();
+    m_filterEdit->installEventFilter(this);
+    vbox->addWidget(m_filterEdit);
     vbox->addWidget(m_listView);
-    m_listView->setModel(m_variableModel);
     m_listView->setUniformItemSizes(true);
+
+    m_filterModel = new QSortFilterProxyModel(this);
+    m_filterModel->setFilterRole(Qt::DisplayRole);
+    m_filterModel->setSortRole(Qt::DisplayRole);
+    m_filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    m_filterModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    m_filterModel->setFilterKeyColumn(0);
+
+    m_filterModel->setSourceModel(m_variableModel);
+    m_listView->setModel(m_filterModel);
+
+    connect(m_filterEdit, &QLineEdit::textChanged, m_filterModel, &QSortFilterProxyModel::setFilterWildcard);
 
     auto lblDescription = new QLabel(i18n("Please select a variable."), this);
     auto lblCurrentValue = new QLabel(this);
@@ -179,7 +197,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     // react to selection changes
     connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
         if (index.isValid()) {
-            const auto & var = m_variables[index.row()];
+            const auto & var = m_variables[m_filterModel->mapToSource(index).row()];
             lblDescription->setText(var.description());
             if (var.isPrefixMatch()) {
                 lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
@@ -197,7 +215,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     // insert text on activation
     connect(m_listView, &QAbstractItemView::doubleClicked, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
         if (index.isValid()) {
-            const auto & var = m_variables[index.row()];
+            const auto & var = m_variables[m_filterModel->mapToSource(index).row()];
             const auto name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
 
             if (parentWidget() && parentWidget()->window()) {
@@ -249,6 +267,25 @@ void KateVariableExpansionDialog::onObjectDeleted(QObject* object)
 
 bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
 {
+    // filter line edit
+    if (watched == m_filterEdit) {
+        if (event->type() == QEvent::KeyPress) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            const bool forward2list = (keyEvent->key() == Qt::Key_Up)
+                                   || (keyEvent->key() == Qt::Key_Down)
+                                   || (keyEvent->key() == Qt::Key_PageUp)
+                                   || (keyEvent->key() == Qt::Key_PageDown)
+                                   || (keyEvent->key() == Qt::Key_Enter)
+                                   || (keyEvent->key() == Qt::Key_Return);
+            if (forward2list) {
+                QCoreApplication::sendEvent(m_listView, event);
+                return true;
+            }
+        }
+        return QDialog::eventFilter(watched, event);
+    }
+
+    // tracked widgets (tooltips, adding/removing the showAction)
     switch (event->type()) {
         case QEvent::FocusIn: {
             if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
@@ -284,6 +321,7 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
         default: break;
     }
 
+    // auto-hide on focus change
     auto parentWindow = parentWidget()->window();
     const bool keepVisible = isActiveWindow() || m_widgets.contains(parentWindow->focusWidget());
     if (!keepVisible) {

@@ -28,6 +28,8 @@
 #include "variable.h"
 
 class QListView;
+class QLineEdit;
+class QSortFilterProxyModel;
 class VariableItemModel;
 
 namespace KTextEditor
@@ -93,7 +95,9 @@ private:
     QVector<QObject*> m_widgets;
     QVector<KTextEditor::Variable> m_variables;
     VariableItemModel * m_variableModel;
+    QSortFilterProxyModel *m_filterModel;
     QListView *m_listView;
+    QLineEdit *m_filterEdit;
 };
 
 #endif // KTEXTEDITOR_VARIABLE_EXPANSION_HELPERS_H
