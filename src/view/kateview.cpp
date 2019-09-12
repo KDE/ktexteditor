@@ -693,7 +693,7 @@ void KTextEditor::ViewPrivate::setupActions()
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleBlockSelection()));
 
     a = ac->addAction(QStringLiteral("switch_next_input_mode"));
-    a->setText(i18n("Switch to Next Input Mode"));
+    a->setText(i18n("Switch to next Input Mode"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_V));
     a->setWhatsThis(i18n("Switch to the next input mode."));
     connect(a, SIGNAL(triggered(bool)), SLOT(cycleInputMode()));
@@ -781,7 +781,9 @@ void KTextEditor::ViewPrivate::setupActions()
     KActionMenu *am = new KActionMenu(i18n("Input Modes"), this);
     m_inputModeActions = new QActionGroup(am);
     ac->addAction(QStringLiteral("view_input_modes"), am);
-
+    auto switchInputModeAction = ac->action(QStringLiteral("switch_next_input_mode"));
+    am->addAction(switchInputModeAction);
+    am->addSeparator();
     for (KateAbstractInputMode *mode : qAsConst(m_viewInternal->m_inputModes)) {
         a = new QAction(mode->viewInputModeHuman(), m_inputModeActions);
         am->addAction(a);
