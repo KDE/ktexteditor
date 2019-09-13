@@ -31,6 +31,7 @@ class QListView;
 class QLineEdit;
 class QSortFilterProxyModel;
 class VariableItemModel;
+class TextEditButton;
 
 namespace KTextEditor
 {
@@ -59,6 +60,7 @@ class KateVariableExpansionDialog : public QDialog
 {
 public:
     KateVariableExpansionDialog(QWidget *parent);
+    ~KateVariableExpansionDialog();
 
     /**
      * Adds @p variable to the expansion list view.
@@ -92,6 +94,7 @@ protected:
 
 private:
     QAction *m_showAction;
+    QHash<QWidget*, QPointer<TextEditButton>> m_textEditButtons;
     QVector<QObject*> m_widgets;
     QVector<KTextEditor::Variable> m_variables;
     VariableItemModel * m_variableModel;

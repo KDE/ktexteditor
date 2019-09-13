@@ -33,8 +33,11 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
+#include <QStyleOptionToolButton>
+#include <QStylePainter>
 #include <QSortFilterProxyModel>
 #include <QTextEdit>
+#include <QToolButton>
 #include <QToolTip>
 #include <QVBoxLayout>
 
@@ -159,6 +162,66 @@ private:
     QVector<KTextEditor::Variable> m_variables;
 };
 
+class TextEditButton : public QToolButton
+{
+public:
+    TextEditButton(QAction *showAction, QTextEdit *parent)
+        : QToolButton(parent)
+    {
+        setAutoRaise(true);
+        setDefaultAction(showAction);
+        m_watched = parent->viewport();
+        m_watched->installEventFilter(this);
+        show();
+        adjustPosition(m_watched->size());
+    }
+
+protected:
+    void paintEvent(QPaintEvent *) override
+    {
+        // reimplement to have same behavior as actions in QLineEdits
+        QStylePainter p(this);
+        QStyleOptionToolButton opt;
+        initStyleOption(&opt);
+        opt.state = opt.state & ~QStyle::State_Raised;
+        opt.state = opt.state & ~QStyle::State_MouseOver;
+        opt.state = opt.state & ~QStyle::State_Sunken;
+        p.drawComplexControl(QStyle::CC_ToolButton, opt);
+    }
+
+public:
+    bool eventFilter(QObject *watched, QEvent *event) override
+    {
+        if (watched == m_watched) {
+            switch(event->type()) {
+                case QEvent::Resize: {
+                    auto resizeEvent = static_cast<QResizeEvent*>(event);
+                    adjustPosition(resizeEvent->size());
+                }
+                default: break;
+            }
+        }
+        return QToolButton::eventFilter(watched, event);
+    }
+
+private:
+    void adjustPosition(const QSize &parentSize)
+    {
+        QStyleOption sopt;
+        sopt.initFrom(parentWidget());
+        const int topMargin = 0;//style()->pixelMetric(QStyle::PM_LayoutTopMargin, &sopt, parentWidget());
+        const int rightMargin = 0;//style()->pixelMetric(QStyle::PM_LayoutRightMargin, &sopt, parentWidget());
+        if (isLeftToRight()) {
+            move(parentSize.width() - width() - rightMargin, topMargin);
+        } else {
+            move(0, 0);
+        }
+    }
+
+private:
+    QWidget *m_watched;
+};
+
 KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     : QDialog(parent, Qt::Tool)
     , m_showAction(new QAction(QIcon::fromTheme(QStringLiteral("code-context")), i18n("Insert variable"), this))
@@ -238,6 +301,16 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     resize(400, 550);
 }
 
+KateVariableExpansionDialog::~KateVariableExpansionDialog()
+{
+    for (auto it = m_textEditButtons.begin(); it != m_textEditButtons.end(); ++it) {
+        if (it.value()) {
+            delete it.value();
+        }
+    }
+    m_textEditButtons.clear();
+}
+
 void KateVariableExpansionDialog::addVariable(const KTextEditor::Variable& variable)
 {
     Q_ASSERT(variable.isValid());
@@ -292,12 +365,23 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
         case QEvent::FocusIn: {
             if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
                 lineEdit->addAction(m_showAction, QLineEdit::TrailingPosition);
+            } else if (auto textEdit = qobject_cast<QTextEdit*>(watched)) {
+                if (!m_textEditButtons.contains(textEdit)) {
+                    m_textEditButtons[textEdit] = new TextEditButton(m_showAction, textEdit);
+                }
+                m_textEditButtons[textEdit]->raise();
+                m_textEditButtons[textEdit]->show();
             }
             break;
         }
         case QEvent::FocusOut: {
             if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
                 lineEdit->removeAction(m_showAction);
+            } else if (auto textEdit = qobject_cast<QTextEdit*>(watched)) {
+                if (m_textEditButtons.contains(textEdit)) {
+                    delete m_textEditButtons[textEdit];
+                    m_textEditButtons.remove(textEdit);
+                }
             }
             break;
         }
