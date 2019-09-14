@@ -923,7 +923,7 @@ private:
 
     /**
      * Removes comment markers relevant to the language providing
-     * the attribuge @p attrib from each line in the selection.
+     * the attribute @p attrib from each line in the selection.
      *
      * @return whether the operation succeeded.
      */

@@ -3095,7 +3095,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
             view->slotTextInserted(view, selectionRange->start(), chars);
         }
 
-        // Refesh selection
+        // Refresh selection
         view->setSelection(selectionRange->toRange());
         view->setCursorPosition(selectionRange->end());
 

@@ -47,7 +47,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     setFrameStyle(QFrame::NoFrame);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
-    //We need ScrollPerItem, because ScrollPerPixel is too slow with a very large competion-list(see KDevelop).
+    //We need ScrollPerItem, because ScrollPerPixel is too slow with a very large completion-list(see KDevelop).
     setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
 
     m_resizeTimer = new QTimer(this);

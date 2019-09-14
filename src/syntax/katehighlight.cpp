@@ -103,7 +103,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 
     /**
      * handle the "no highlighting" case
-     * it's possible to not have any defintions with malformed file
+     * it's possible to not have any definitions with malformed file
      */
     if (!def.isValid() || (definitions.isEmpty() && def.formats().isEmpty())) {
         // dummy properties + formats

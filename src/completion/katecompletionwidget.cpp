@@ -411,7 +411,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
 
         connect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
 
-        //qCDebug(LOG_KTE)<<"Before completin invoke: range:"<<range;
+        //qCDebug(LOG_KTE)<<"Before completion invoke: range:"<<range;
         model->completionInvoked(view(), range, invocationType);
 
         disconnect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
@@ -478,7 +478,7 @@ void KateCompletionWidget::updateAndShow()
 
     //We do both actions twice here so they are stable, because they influence each other:
     //updatePosition updates the height, resizeColumns needs the correct height to decide over
-    //how many rows it computs the column-width
+    //how many rows it computes the column-width
     updatePosition(true);
     m_entryList->resizeColumns(true, true);
     updatePosition(true);

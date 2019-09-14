@@ -884,7 +884,7 @@ KTextEditor::Cursor KateViewInternal::findMatchingBracket()
 
     if (m_bmStart->toRange().contains(m_cursor) || m_bmStart->end() == m_cursor.toCursor()) {
         c = m_bmEnd->end();
-        // We need to adjust the cursor positon in case of override mode, BUG-402594
+        // We need to adjust the cursor position in case of override mode, BUG-402594
         if (doc()->config()->ovr()) {
             c.setColumn(c.column() - 1);
         }
@@ -904,7 +904,7 @@ class CalculatingCursor
 {
 public:
     // These constructors constrain their arguments to valid positions
-    // before only the third one did, but that leads to crashs
+    // before only the third one did, but that leads to crashes
     // see bug 227449
     CalculatingCursor(KateViewInternal *vi)
         : m_vi(vi)

@@ -27,7 +27,7 @@ KateRegExp::KateRegExp(const QString &pattern, Qt::CaseSensitivity cs,
 {
 }
 
-// these things can besides '.' and '\s' make apptern multi-line:
+// these things can besides '.' and '\s' make pattern multi-line:
 // \n, \x000A, \x????-\x????, \0012, \0???-\0???
 // a multi-line pattern must not pass as single-line, the other
 // way around will just result in slower searches and is therefore
