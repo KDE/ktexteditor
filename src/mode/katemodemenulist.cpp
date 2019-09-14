@@ -172,7 +172,7 @@ void KateModeMenuList::loadHighlightingModel()
 
     // The first item on the list is the "Best Search Matches" section,
     // which will remain hidden and will only be shown when necessary.
-    createSectionList(QStringLiteral(""), false);
+    createSectionList(QString(), false);
     m_list->setRowHidden(0, true);
 
     /*
