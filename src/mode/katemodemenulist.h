@@ -23,8 +23,7 @@
  *  Gustavo Sverzut Barbieri <gsbarbieri@users.sourceforge.net>.
  *  See: https://api.kde.org/frameworks/kitemviews/html/classKListWidgetSearchLine.html
  *
- *  TODO: Add keyboard shortcut to show the menu. Put the menu in
- *  the center of the window if the status bar is hidden.
+ *  TODO: Add keyboard shortcut to show the menu.
  *  See: KateModeMenuList::showEvent()
  */
 
@@ -202,19 +201,30 @@ private:
 
     /**
      * Update the selected item in the list, with the active syntax highlighting.
-     * This method only changes the selected item, doesn't apply
-     * syntax highlighting in the document, or hides the menu.
+     * This method only changes the selected item, with the checkbox icon, doesn't apply
+     * syntax highlighting in the document or hides the menu.
      * @see selectHighlighting(), selectHighlightingFromExternal(), selectHighlightingSetVisibility()
      */
     void updateSelectedItem(KateModeMenuListData::ListItem *item);
 
     /**
      * Select an item from the list and apply the syntax highlighting in the document.
-     * This is equivalent to KateModeMenuList::selectHighlighting().
+     * This is equivalent to the slot: KateModeMenuList::selectHighlighting().
      * @param bHideMenu If the menu should be hidden after applying the highlight.
      * @see selectHighlighting()
      */
     void selectHighlightingSetVisibility(QStandardItem *pItem, const bool bHideMenu);
+
+    /**
+     * Create a new section in the list of items and add it to the model.
+     * It corresponds to a separator line and a title.
+     * @param sectionName Section title.
+     * @param bSeparator True if a separation line will also be created before the section title.
+     * @param modelPosition Position in the model where to insert the new section. If the value is
+     *                      less than zero, the section is added to the end of the list/model.
+     * @return A pointer to the item created with the section title.
+     */
+    KateModeMenuListData::ListItem* createSectionList(const QString &sectionName, bool bSeparator = true, int modelPosition = -1);
 
     /**
      * Load message when the list is empty in the search.
@@ -383,7 +393,7 @@ namespace KateModeMenuListData
          * Select result of the items search.
          * Used only by KateModeMenuListData::SearchLine::updateSearch().
          */
-        void setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &lastItem);
+        void setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &firstSection, int &lastItem);
 
         /**
          * Delay in search results after typing, in milliseconds.
@@ -395,6 +405,13 @@ namespace KateModeMenuListData
         QString m_search = QString();
         int m_queuedSearches = 0;
         Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;
+
+        /**
+         * List of items to display in the "Best Search Matches" section. The integer value
+         * corresponds to the original position of the item in the model. The purpose of this
+         * is to restore the position of the items when starting or cleaning a search.
+         */
+        QList<QPair<ListItem *, int>> m_bestResults;
 
         KateModeMenuList *m_parentMenu = nullptr;
         friend KateModeMenuList;
