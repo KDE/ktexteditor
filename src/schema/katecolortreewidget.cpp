@@ -140,7 +140,7 @@ public:
         // adapt height
         if (item->isExpanded() && item->childCount() > 0) {
             const int childCount = item->childCount();
-            const int h = sizeHint(option, index.child(0, 0)).height();
+            const int h = sizeHint(option, index.model()->index(0, 0, index)).height();
             r.setHeight(r.height() + childCount * h);
         }
 

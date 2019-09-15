@@ -573,15 +573,16 @@ QSet<KateCompletionModel::Group *> KateCompletionModel::createItems(const Hierar
 {
     HierarchicalModelHandler handler(_handler);
     QSet<Group *> ret;
+    QAbstractItemModel *model = handler.model();
 
-    if (handler.model()->rowCount(i) == 0) {
+    if (model->rowCount(i) == 0) {
         //Leaf node, create an item
         ret.insert(createItem(handler, i, notifyModel));
     } else {
         //Non-leaf node, take the role from the node, and recurse to the sub-nodes
         handler.takeRole(i);
-        for (int a = 0; a < handler.model()->rowCount(i); a++) {
-            ret += createItems(handler, i.child(a, 0), notifyModel);
+        for (int a = 0; a < model->rowCount(i); a++) {
+            ret += createItems(handler, model->index(a, 0, i), notifyModel);
         }
     }
 
@@ -600,7 +601,7 @@ QSet<KateCompletionModel::Group *> KateCompletionModel::deleteItems(const QModel
     } else {
         //Non-leaf node
         for (int a = 0; a < i.model()->rowCount(i); a++) {
-            ret += deleteItems(i.child(a, 0));
+            ret += deleteItems(i.model()->index(a, 0, i));
         }
     }
 
@@ -690,7 +691,7 @@ void KateCompletionModel::slotRowsInserted(const QModelIndex &parent, int start,
     }
 
     for (int i = start; i <= end; ++i) {
-        affectedGroups += createItems(handler, parent.isValid() ? parent.child(i, 0) :  handler.model()->index(i, 0), true);
+        affectedGroups += createItems(handler, handler.model()->index(i, 0, parent), true);
     }
 
     for (Group *g : qAsConst(affectedGroups)) {
@@ -705,7 +706,7 @@ void KateCompletionModel::slotRowsRemoved(const QModelIndex &parent, int start, 
     QSet<Group *> affectedGroups;
 
     for (int i = start; i <= end; ++i) {
-        QModelIndex index = parent.isValid() ? parent.child(i, 0) :  source->index(i, 0);
+        QModelIndex index = source->index(i, 0, parent);
 
         affectedGroups += deleteItems(index);
     }

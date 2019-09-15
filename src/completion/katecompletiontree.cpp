@@ -98,7 +98,7 @@ int KateCompletionTree::columnTextViewportPosition(int column) const
 
     //If it's just a group header, use the first child
     if (base.isValid() && model()->rowCount(base)) {
-        i = base.child(0, column);
+        i = model()->index(0, column, base);
     }
 
     if (i.isValid()) {
@@ -148,10 +148,11 @@ static bool measureColumnSizes(const KateCompletionTree* tree, QModelIndex curre
             }
         }
 
-        const int children = current.model()->rowCount(current);
+        const QAbstractItemModel *model = current.model();
+        const int children = model->rowCount(current);
         if (children > 0) {
             for (int i = 0; i < children; ++i) {
-                if (measureColumnSizes(tree, current.child(i, 0), columnSize, currentYPos, maxHeight, true)) {
+                if (measureColumnSizes(tree, model->index(i, 0, current), columnSize, currentYPos, maxHeight, true)) {
                     break;
                 }
             }

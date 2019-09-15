@@ -604,7 +604,8 @@ void KateCompletionWidget::updateHeight()
                 for (int row2 = 0; row2 < m_presentationModel->rowCount(index); ++row2) {
                     int h = 0;
                     for (int a = 0; a < m_presentationModel->columnCount(index); ++a) {
-                        int localHeight = treeView()->sizeHintForIndex(index.child(row2, a)).height();
+                        const QModelIndex child = m_presentationModel->index(row2, a, index);
+                        int localHeight = treeView()->sizeHintForIndex(child).height();
                         if (localHeight > h) {
                             h = localHeight;
                         }

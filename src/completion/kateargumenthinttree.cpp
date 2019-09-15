@@ -132,7 +132,7 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
         QModelIndex index(model()->index(a, 0));
         totalHeight += rowHeight(index);
         for (int b = 0; b < model()->rowCount(index); ++b) {
-            QModelIndex childIndex = index.child(b, 0);
+            QModelIndex childIndex = model()->index(b, 0, index);
             totalHeight += rowHeight(childIndex);
         }
     }
