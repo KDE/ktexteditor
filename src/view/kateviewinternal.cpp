@@ -624,7 +624,7 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
     if (view()->config()->dynWrapAtStaticMarker() && view()->config()->dynWordWrap()) {
         // We need to transform char count to a pixel width, stolen from PrintPainter::updateCache()
         QString s; s.fill(QLatin1Char('5'), view()->doc()->config()->wordWrapAt());
-        wrapWidth = qMin(width(), static_cast<int>(renderer()->currentFontMetrics().width(s)));
+        wrapWidth = qMin(width(), static_cast<int>(renderer()->currentFontMetrics().boundingRect(s).width()));
     }
 
     if (wrapWidth != cache()->viewWidth()) {
@@ -687,7 +687,7 @@ void KateViewInternal::updateView(bool changed, int viewLinesScrolled)
         m_columnScroll->setValue(startX());
 
         // Approximate linescroll
-        m_columnScroll->setSingleStep(renderer()->config()->fontMetrics().width(QLatin1Char('a')));
+        m_columnScroll->setSingleStep(renderer()->config()->fontMetrics().horizontalAdvance(QLatin1Char('a')));
         m_columnScroll->setPageStep(width());
 
         m_columnScroll->blockSignals(blocked);
@@ -1513,7 +1513,7 @@ int KateViewInternal::lineMaxCursorX(const KateTextLayout &range)
 
     if (maxX && range.wrap()) {
         QChar lastCharInLine = doc()->kateTextLine(range.line())->at(range.endCol() - 1);
-        maxX -= renderer()->config()->fontMetrics().width(lastCharInLine);
+        maxX -= renderer()->config()->fontMetrics().horizontalAdvance(lastCharInLine);
     }
 
     return maxX;

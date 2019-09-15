@@ -322,7 +322,7 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
     paint.setRenderHint(QPainter::Antialiasing, false);
 
     const int height = fontHeight();
-    const int width = config()->fontMetrics().width(chr);
+    const int width = config()->fontMetrics().boundingRect(chr).width();
     const int offset = spaceWidth() * 0.1;
 
     QPoint points[8];
@@ -904,7 +904,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         const QPainter::RenderHints backupRenderHints = paint.renderHints();
         paint.setRenderHint(QPainter::Antialiasing, false);
         paint.setPen(config()->wordWrapMarkerColor());
-        int _x = qreal(m_doc->config()->wordWrapAt()) * fm.width(QLatin1Char('x')) - xStart;
+        int _x = qreal(m_doc->config()->wordWrapAt()) * fm.horizontalAdvance(QLatin1Char('x')) - xStart;
         paint.drawLine(_x, 0, _x, lineHeight());
         paint.setRenderHints(backupRenderHints);
     }
@@ -1015,7 +1015,7 @@ void KateRenderer::updateMarkerSize()
 
 qreal KateRenderer::spaceWidth() const
 {
-    return config()->fontMetrics().width(spaceChar);
+    return config()->fontMetrics().horizontalAdvance(spaceChar);
 }
 
 void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool cacheLayout) const
@@ -1040,7 +1040,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     // Tab width
     QTextOption opt;
     opt.setFlags(QTextOption::IncludeTrailingSpaces);
-    opt.setTabStop(m_tabWidth * config()->fontMetrics().width(spaceChar));
+    opt.setTabStopDistance(m_tabWidth * config()->fontMetrics().horizontalAdvance(spaceChar));
     opt.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
 
     // Find the first strong character in the string.

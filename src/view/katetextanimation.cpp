@@ -70,7 +70,7 @@ QRectF KateTextAnimation::rectForText()
         return QRectF();
     } else {
         QRectF rect(pixelPos.x(), pixelPos.y(),
-                    fm.width(m_view->view()->doc()->text(m_range)), lineHeight);
+                    fm.boundingRect(m_view->view()->doc()->text(m_range)).width(), lineHeight);
         const QPointF center = rect.center();
         const qreal factor = 1.0 + 0.5 * m_value;
         rect.setWidth(rect.width() * factor);

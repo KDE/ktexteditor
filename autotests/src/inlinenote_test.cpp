@@ -64,7 +64,7 @@ namespace
         QSize inlineNoteSize(const InlineNote& note) const override
         {
             if (note.position().column() == 5) {
-                const auto xWidth = QFontMetrics(note.font()).width(QStringLiteral("x"));
+                const auto xWidth = QFontMetrics(note.font()).boundingRect(QStringLiteral("x")).width();
                 return QSize(xWidth, note.lineHeight());
             } else if (note.position().column() == 10) {
                 return QSize(note.lineHeight(), note.lineHeight());

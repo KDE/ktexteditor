@@ -174,7 +174,7 @@ void PrintPainter::updateCache()
     QString s = QStringLiteral("%1 ").arg(m_doc->lines());
     s.fill(QLatin1Char('5'), -1); // some non-fixed fonts haven't equally wide numbers
     // FIXME calculate which is actually the widest...
-    m_lineNumberWidth = m_renderer->currentFontMetrics().width(s);
+    m_lineNumberWidth = m_renderer->currentFontMetrics().boundingRect(s).width();
 }
 
 void PrintPainter::paint(QPrinter *printer) const
@@ -244,7 +244,7 @@ void PrintPainter::configure(const QPrinter *printer, PageLayout &pl) const
 
     if (m_printLineNumbers) {
         // a small space between the line numbers and the text
-        int _adj = m_renderer->currentFontMetrics().width(QStringLiteral("5"));
+        int _adj = m_renderer->currentFontMetrics().horizontalAdvance(QStringLiteral("5"));
         // adjust available width and set horizontal start point for data
         pl.maxWidth -= m_lineNumberWidth + _adj;
         pl.xstart += m_lineNumberWidth + _adj;
@@ -536,7 +536,8 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
 
     int _widest(0);
     for (const KTextEditor::Attribute::Ptr &attribute : qAsConst(_attributes)) {
-        _widest = qMax(QFontMetrics(attribute->font()).width(attribute->name().section(QLatin1Char(':'), 1, 1)), _widest);
+        const QString _name = attribute->name().section(QLatin1Char(':'), 1, 1);
+        _widest = qMax(QFontMetrics(attribute->font()).boundingRect(_name).width(), _widest);
     }
 
     const int _guideCols = _w / (_widest + pl.innerMargin);
