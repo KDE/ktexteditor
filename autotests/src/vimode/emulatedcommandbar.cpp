@@ -1584,11 +1584,8 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     qDebug()<< " NOTE: this test is weirdly fragile, so if it starts failing, comment it out and e-mail me:  it may well be more trouble that it's worth.";
     BeginTest("");
     TestPressKey(":commandthatdoesnotexist\\enter");
-    while (QApplication::hasPendingEvents())
-    {
-      // Wait for any focus changes to take effect.
-      QApplication::processEvents();
-    }
+    // Wait for any focus changes to take effect.
+    QApplication::processEvents();
     const QDateTime waitStartedTime = QDateTime::currentDateTime();
     QLineEdit *dummyToFocus = new QLineEdit(QString("Sausage"), mainWindow);
     // Take focus away from kate_view by giving it to dummyToFocus.
@@ -3134,10 +3131,7 @@ void EmulatedCommandBarTest::EmulatedCommandBarTests()
     connect(printAction, SIGNAL(triggered(bool)), &failsIfActionTriggered, SLOT(slot()));
     DoTest("foo bar foo bar", "/bar\\enterggd/\\ctrl-p\\enter.", "bar");
     // Processing shortcuts seems to require events to be processed.
-    while (QApplication::hasPendingEvents())
-    {
-      QApplication::processEvents();
-    }
+    QApplication::processEvents();
   }
 
   // Test that the interactive search replace does not handle general keypresses like ctrl-p ("invoke
