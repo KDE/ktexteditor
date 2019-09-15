@@ -57,16 +57,14 @@ void KateLineLayoutMap::clear()
 
 bool KateLineLayoutMap::contains(int i) const
 {
-    LineLayoutMap::const_iterator it =
-        qBinaryFind(m_lineLayouts.constBegin(), m_lineLayouts.constEnd(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
-    return (it != m_lineLayouts.constEnd());
+    return std::binary_search(m_lineLayouts.constBegin(), m_lineLayouts.constEnd(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
 }
 
 void KateLineLayoutMap::insert(int realLine, const KateLineLayoutPtr &lineLayoutPtr)
 {
     LineLayoutMap::iterator it =
-        qBinaryFind(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, KateLineLayoutPtr()), lessThan);
-    if (it != m_lineLayouts.end()) {
+        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, KateLineLayoutPtr()), lessThan);
+    if (it != m_lineLayouts.end() && (*it) == LineLayoutPair(realLine, KateLineLayoutPtr())) {
         (*it).second = lineLayoutPtr;
     } else {
         it = std::upper_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, KateLineLayoutPtr()), lessThan);
@@ -136,8 +134,9 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount)
 
 KateLineLayoutPtr &KateLineLayoutMap::operator[](int i)
 {
-    LineLayoutMap::iterator it =
-        qBinaryFind(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
+    const LineLayoutMap::iterator it =
+        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
+    Q_ASSERT(it != m_lineLayouts.end());
     return (*it).second;
 }
 //END KateLineLayoutMap
