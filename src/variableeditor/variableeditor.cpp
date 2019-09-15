@@ -45,7 +45,7 @@ VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
 
     setAutoFillBackground(true);
     QGridLayout *l = new QGridLayout(this);
-    l->setMargin(10);
+    l->setContentsMargins(10, 10, 10, 10);
 
     m_checkBox = new QCheckBox(this);
     m_variable = new QLabel(item->variable(), this);

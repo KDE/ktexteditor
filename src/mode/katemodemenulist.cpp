@@ -116,7 +116,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     if (overlapScrollBar()) {
         QHBoxLayout *layoutScrollBar = new QHBoxLayout();
         layoutScrollBar->addWidget(m_scroll);
-        layoutScrollBar->setMargin(2);
+        layoutScrollBar->setContentsMargins(2, 2, 2, 2);
         m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
     }
 

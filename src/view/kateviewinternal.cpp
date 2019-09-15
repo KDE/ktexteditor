@@ -3237,7 +3237,7 @@ void KateViewInternal::doDrag()
     QMimeData *mimeData = new QMimeData();
     mimeData->setText(view()->selectionText());
     m_dragInfo.dragObject->setMimeData(mimeData);
-    m_dragInfo.dragObject->start(Qt::MoveAction);
+    m_dragInfo.dragObject->exec(Qt::MoveAction);
 }
 
 void KateViewInternal::dragEnterEvent(QDragEnterEvent *event)
@@ -3374,7 +3374,7 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
     }
 
     // handle vertical scrolling via the scrollbar
-    if (e->orientation() == Qt::Vertical) {
+    if (e->angleDelta().y() != 0) {
         // compute distance
         auto sign = m_lineScroll->invertedControls() ? -1 : 1;
         auto offset = sign * qreal(e->angleDelta().y()) / 120.0;
@@ -3396,7 +3396,7 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
     }
 
     // handle horizontal scrolling via the scrollbar
-    if (e->orientation() == Qt::Horizontal) {
+    if (e->angleDelta().x() != 0) {
         // if we have dyn word wrap, we should ignore the scroll events
         if (view()->dynWordWrap()) {
             e->accept();

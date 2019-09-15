@@ -49,7 +49,7 @@
 #include <QRegularExpression>
 #include <QShortcut>
 #include <QStringListModel>
-#include <QTime>
+#include <QElapsedTimer>
 
 #include <vector>
 
@@ -852,7 +852,7 @@ void KateSearchBar::findOrReplaceAll()
 
     int line = m_inputRange.start().line();
 
-    QTime rolex; // Watchog to suspend the work after some time
+    QElapsedTimer rolex; // Watchog to suspend the work after some time
     rolex.start();
     bool timeOut = false;
     bool done = false;
