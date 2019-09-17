@@ -131,11 +131,11 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     }
     // In the Windows OS, decrease menu margins.
 #ifdef Q_OS_WIN
-    layoutContainer->setMargin(3);
+    layoutContainer->setContentsMargins(3, 3, 3, 3);
     layoutContainer->setSpacing(0);
-    layoutSearchBar->setMargin(2);
+    layoutSearchBar->setContentsMargins(2, 2, 2, 2);
     layoutSearchBar->setSpacing(0);
-    m_layoutList->setMargin(2);
+    m_layoutList->setContentsMargins(2, 2, 2, 2);
     m_layoutList->setSpacing(0);
 #endif
 
