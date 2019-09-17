@@ -22,7 +22,6 @@
 #define SPELLINGMENU_H
 
 #include <QObject>
-#include <QSignalMapper>
 
 #include <KActionCollection>
 #include <KActionMenu>
@@ -68,7 +67,6 @@ protected:
     KTextEditor::MovingRange *m_currentCaretMisspelledRange;
     bool m_useMouseForMisspelledRange;
     QStringList m_currentSuggestions;
-    QSignalMapper *m_suggestionsSignalMapper;
 
     // These methods are called from KateOnTheFlyChecker to inform about events involving
     // moving ranges.

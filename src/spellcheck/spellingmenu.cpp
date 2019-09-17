@@ -39,13 +39,11 @@ KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
       // as QSignalMapper doesn't work with pairs of objects;
       // it just points to the object pointed to by either
       // 'm_currentMouseMisspelledRange' or 'm_currentCaretMisspelledRange'
+      // TODO: pass the range into the lambda instead
       m_currentMouseMisspelledRange(nullptr),
       m_currentCaretMisspelledRange(nullptr),
-      m_useMouseForMisspelledRange(false),
-      m_suggestionsSignalMapper(new QSignalMapper(this))
+      m_useMouseForMisspelledRange(false)
 {
-    connect(m_suggestionsSignalMapper, SIGNAL(mapped(QString)),
-            this, SLOT(replaceWordBySuggestion(QString)));
 }
 
 KateSpellingMenu::~KateSpellingMenu()
@@ -188,8 +186,7 @@ void KateSpellingMenu::populateSuggestionsMenu()
     for (QStringList::iterator i = m_currentSuggestions.begin(); i != m_currentSuggestions.end() && counter < 10; ++i) {
         const QString &suggestion = *i;
         QAction *action = new QAction(suggestion, m_spellingMenu);
-        connect(action, SIGNAL(triggered()), m_suggestionsSignalMapper, SLOT(map()));
-        m_suggestionsSignalMapper->setMapping(action, suggestion);
+        connect(action, &QAction::triggered, this, [suggestion, this]() { replaceWordBySuggestion(suggestion); });
         m_spellingMenu->addAction(action);
         ++counter;
     }
