@@ -273,6 +273,15 @@ public:
     //
 public:
     /**
+     * Shows the @p plugin's config page. The @p page specifies which
+     * config page will be shown, see KTextEditor::Plugin::configPages().
+     *
+     * \return \e true on success, otherwise \e false
+     * \since 5.63
+     */
+    bool showPluginConfigPage(KTextEditor::Plugin *plugin, int page);
+
+    /**
      * Get a plugin view for the plugin with with identifier \p name.
      * \param name the plugin's name
      * \return pointer to the plugin view if a plugin with \p name is loaded and has a view for this mainwindow,

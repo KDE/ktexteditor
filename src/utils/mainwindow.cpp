@@ -293,6 +293,21 @@ bool MainWindow::hideToolView(QWidget *widget)
     return success;
 }
 
+bool MainWindow::showPluginConfigPage(KTextEditor::Plugin *plugin, int page)
+{
+    /**
+     * dispatch to parent
+     */
+    bool success = false;
+    QMetaObject::invokeMethod(parent()
+                              , "showPluginConfigPage"
+                              , Qt::DirectConnection
+                              , Q_RETURN_ARG(bool, success)
+                              , Q_ARG(KTextEditor::Plugin*, plugin)
+                              , Q_ARG(int, page));
+    return success;
+}
+
 QObject *MainWindow::pluginView(const QString &name)
 {
     /**
