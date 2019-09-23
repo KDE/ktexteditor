@@ -175,6 +175,11 @@ void KateModeMenuList::loadHighlightingModel()
     createSectionList(QString(), false);
     m_list->setRowHidden(0, true);
 
+    // Set empty icon
+    QPixmap emptyIconPixmap(m_iconSize, m_iconSize);
+    emptyIconPixmap.fill(Qt::transparent);
+    const QIcon emptyIcon(emptyIconPixmap);
+
     /*
      * Get list of modes from KateModeManager::list().
      * We assume that the modes are arranged according to sections, alphabetically;
@@ -197,10 +202,7 @@ void KateModeMenuList::loadHighlightingModel()
         item->setMode(hl);
         // NOTE: Search names generated in: KateModeMenuListData::SearchLine::updateSearch()
 
-        // Set empty icon
-        QPixmap emptyIcon(m_iconSize, m_iconSize);
-        emptyIcon.fill(Qt::transparent);
-        item->setIcon(QIcon(emptyIcon));
+        item->setIcon(emptyIcon);
         item->setEditable(false);
         // Add item
         m_model->appendRow(item);
