@@ -154,7 +154,8 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
 
 void KateModeMenuList::loadHighlightingModel()
 {
-    m_model = new QStandardItemModel(0, 0);
+    // couple model to view to let it be deleted with the view
+    m_model = new QStandardItemModel(0, 0, m_list);
     m_list->setModel(m_model);
 
     QString *prevHlSection = nullptr;
