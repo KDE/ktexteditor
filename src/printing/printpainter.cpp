@@ -521,7 +521,7 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     }
 
     // draw a title string
-    QFont _titleFont = m_renderer->config()->font();
+    QFont _titleFont = m_renderer->currentFont();
     _titleFont.setBold(true);
     painter.setFont(_titleFont);
     QRect _r;
@@ -705,7 +705,7 @@ void PrintPainter::paintLineNumber(QPainter &painter, const uint number, const P
     const int left = ((m_useBox || m_useBackground) ? pl.innerMargin : 0) - pl.xstart;
 
     painter.save();
-    painter.setFont(m_renderer->config()->font());
+    painter.setFont(m_renderer->currentFont());
     painter.setPen(m_renderer->config()->lineNumberColor());
     painter.drawText(left,  0, m_lineNumberWidth, m_fontHeight, Qt::AlignRight, QString::number(number + 1));
     painter.restore();

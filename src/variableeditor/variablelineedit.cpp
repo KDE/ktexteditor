@@ -201,13 +201,13 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     listview->addItem(item);
 
     // Add 'font-size' to list
-    item = new VariableIntItem(QStringLiteral("font-size"), rendererConfig->font().pointSize());
+    item = new VariableIntItem(QStringLiteral("font-size"), rendererConfig->baseFont().pointSize());
     static_cast<VariableIntItem *>(item)->setRange(4, 128);
     item->setHelpText(i18nc("short translation please", "Set the point size of the document font."));
     listview->addItem(item);
 
     // Add 'font' to list
-    item = new VariableFontItem(QStringLiteral("font"), rendererConfig->font());
+    item = new VariableFontItem(QStringLiteral("font"), rendererConfig->baseFont());
     item->setHelpText(i18nc("short translation please", "Set the font of the document."));
     listview->addItem(item);
 

@@ -152,7 +152,7 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     normalcol = colors.foreground().color();
     bgcol = KateRendererConfig::global()->backgroundColor();
     selcol = KateRendererConfig::global()->selectionColor();
-    docfont = KateRendererConfig::global()->font();
+    docfont = KateRendererConfig::global()->baseFont();
 
     QPalette pal = viewport()->palette();
     pal.setColor(QPalette::Window, bgcol);

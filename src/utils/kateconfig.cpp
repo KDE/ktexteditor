@@ -867,13 +867,13 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_templateColorsSet = true;
 }
 
-const QFont &KateRendererConfig::font() const
+const QFont &KateRendererConfig::baseFont() const
 {
     if (m_fontSet || isGlobal()) {
         return m_font;
     }
 
-    return s_global->font();
+    return s_global->baseFont();
 }
 
 void KateRendererConfig::setFont(const QFont &font)

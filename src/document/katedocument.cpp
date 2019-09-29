@@ -4895,7 +4895,7 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
         } else if (var == QLatin1String("word-wrap-marker-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setWordWrapMarkerColor(c);
         } else if (var == QLatin1String("font") || (checkIntValue(val, &n) && var == QLatin1String("font-size"))) {
-            QFont _f(v->renderer()->config()->font());
+            QFont _f(v->renderer()->currentFont());
 
             if (var == QLatin1String("font")) {
                 _f.setFamily(val);

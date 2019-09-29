@@ -278,7 +278,7 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
 
         case Qt::FontRole:
             if (!index.column()) {
-                QFont f = view()->renderer()->config()->font();
+                QFont f = view()->renderer()->currentFont();
                 f.setBold(true);
                 return f;
             }
@@ -1578,7 +1578,7 @@ bool KateCompletionModel::Item::operator <(const Item &rhs) const
         const QString& filter = rhs.model->currentCompletion(rhs.m_sourceRow.first);
         bool thisStartWithFilter = m_nameColumn.startsWith(filter, Qt::CaseSensitive);
         bool rhsStartsWithFilter = rhs.m_nameColumn.startsWith(filter, Qt::CaseSensitive);
-        
+
         if( thisStartWithFilter && !rhsStartsWithFilter ) {
             return true;
         }
@@ -1897,7 +1897,7 @@ bool KateCompletionModel::shouldMatchHideCompletionList() const
     return doHide;
 }
 
-static inline QChar toLowerIfInsensitive(QChar c, Qt::CaseSensitivity caseSensitive) 
+static inline QChar toLowerIfInsensitive(QChar c, Qt::CaseSensitivity caseSensitive)
 {
     return (caseSensitive == Qt::CaseInsensitive) ? c.toLower() : c;
 }

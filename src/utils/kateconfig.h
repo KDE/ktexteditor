@@ -1311,7 +1311,13 @@ public:
      */
     void reloadSchema();
 
-    const QFont &font() const;
+    /**
+     * Base font to use for the views and co.
+     * Will be adjusted there to avoid rendering artifacts for HiDPI stuff.
+     * @return base font to use
+     */
+    const QFont &baseFont() const;
+
     void setFont(const QFont &font);
 
     bool wordWrapMarker() const;

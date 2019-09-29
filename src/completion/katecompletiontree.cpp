@@ -317,9 +317,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 QStyleOptionViewItem KateCompletionTree::viewOptions() const
 {
     QStyleOptionViewItem opt = QTreeView::viewOptions();
-
-    opt.font = widget()->view()->renderer()->config()->font();
-
+    opt.font = widget()->view()->renderer()->currentFont();
     return opt;
 }
 

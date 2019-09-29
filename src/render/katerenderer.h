@@ -248,7 +248,15 @@ public:
     void increaseFontSizes(qreal step = 1.0);
     void decreaseFontSizes(qreal step = 1.0);
     void resetFontSizes();
-    const QFont &currentFont() const;
+
+    /**
+     * Access currently used font.
+     * @return current font
+     */
+    const QFont &currentFont() const
+    {
+        return m_font;
+    }
 
     /**
      * Access currently used font metrics.
@@ -440,6 +448,11 @@ public:
 
 private:
     KateRendererConfig *const m_config;
+
+    /**
+     * cached font, was perhaps adjusted for current DPIs
+     */
+    QFont m_font;
 
     /**
      * cached font metrics

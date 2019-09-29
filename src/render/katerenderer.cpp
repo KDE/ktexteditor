@@ -63,7 +63,8 @@ KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding 
     , m_showNonPrintableSpaces(false)
     , m_printerFriendly(false)
     , m_config(new KateRendererConfig(this))
-    , m_fontMetrics(m_config->font())
+    , m_font(m_config->baseFont())
+    , m_fontMetrics(m_font)
 {
     updateAttributes();
 
@@ -154,26 +155,23 @@ void KateRenderer::setShowSelections(bool showSelections)
 
 void KateRenderer::increaseFontSizes(qreal step)
 {
-    QFont f(config()->font());
+    QFont f(config()->baseFont());
     f.setPointSizeF(f.pointSizeF() + step);
-
     config()->setFont(f);
 }
 
 void KateRenderer::resetFontSizes()
 {
-    QFont f(KateRendererConfig::global()->font());
+    QFont f(KateRendererConfig::global()->baseFont());
     config()->setFont(f);
 }
 
 void KateRenderer::decreaseFontSizes(qreal step)
 {
-    QFont f(config()->font());
-
+    QFont f(config()->baseFont());
     if ((f.pointSizeF() - step) > 0) {
         f.setPointSizeF(f.pointSizeF() - step);
     }
-
     config()->setFont(f);
 }
 
@@ -911,11 +909,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     }
 }
 
-const QFont &KateRenderer::currentFont() const
-{
-    return config()->font();
-}
-
 uint KateRenderer::fontHeight() const
 {
     return m_fontHeight;
@@ -985,9 +978,10 @@ void KateRenderer::updateConfig()
 void KateRenderer::updateFontHeight()
 {
     /**
-     * cache font metrics
+     * cache font + metrics
      */
-    m_fontMetrics = QFontMetricsF(config()->font());
+    m_font = config()->baseFont();
+    m_fontMetrics = QFontMetricsF(m_font);
 
     /**
      * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
@@ -1028,10 +1022,10 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     QTextLayout *l = lineLayout->layout();
     if (!l) {
-        l = new QTextLayout(textLine->string(), config()->font());
+        l = new QTextLayout(textLine->string(), m_font);
     } else {
         l->setText(textLine->string());
-        l->setFont(config()->font());
+        l->setFont(m_font);
     }
 
     l->setCacheEnabled(cacheLayout);

@@ -3336,7 +3336,7 @@ QVariant KTextEditor::ViewPrivate::configValue(const QString &key)
     } else if (key == QLatin1String("scrollbar-preview")) {
         return config()->scrollBarPreview();
     } else if (key == QLatin1String("font")) {
-        return renderer()->config()->font();
+        return renderer()->config()->baseFont();
     }
 
     // return invalid variant
