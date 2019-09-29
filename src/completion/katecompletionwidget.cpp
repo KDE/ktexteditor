@@ -527,7 +527,7 @@ bool KateCompletionWidget::updatePosition(bool force)
     int x = p.x() - m_entryList->columnTextViewportPosition(m_presentationModel->translateColumn(KTextEditor::CodeCompletionModel::Name)) - 7 - (m_entryList->viewport()->pos().x());
     int y = p.y();
 
-    y += view()->renderer()->config()->fontMetrics().height() + 2;
+    y += view()->renderer()->currentFontMetrics().height() + 2;
 
     bool borderHit = false;
 
@@ -557,7 +557,7 @@ void KateCompletionWidget::updateArgumentHintGeometry()
         QRect geom = m_argumentHintTree->geometry();
         geom.moveTo(pos());
         geom.setWidth(width());
-        geom.moveBottom(pos().y() - view()->renderer()->config()->fontMetrics().height() * 2);
+        geom.moveBottom(pos().y() - view()->renderer()->currentFontMetrics().height() * 2);
         m_argumentHintTree->updateGeometry(geom);
     }
 }

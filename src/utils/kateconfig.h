@@ -34,7 +34,6 @@
 #include <QColor>
 #include <QObject>
 #include <QVector>
-#include <QFontMetricsF>
 
 class KConfigGroup;
 namespace KTextEditor { class ViewPrivate; }
@@ -1313,7 +1312,6 @@ public:
     void reloadSchema();
 
     const QFont &font() const;
-    const QFontMetricsF &fontMetrics() const;
     void setFont(const QFont &font);
 
     bool wordWrapMarker() const;
@@ -1402,7 +1400,6 @@ private:
 
     QString m_schema;
     QFont m_font;
-    QFontMetricsF m_fontMetrics;
     QColor m_backgroundColor;
     QColor m_selectionColor;
     QColor m_highlightedLineColor;

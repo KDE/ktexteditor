@@ -249,7 +249,15 @@ public:
     void decreaseFontSizes(qreal step = 1.0);
     void resetFontSizes();
     const QFont &currentFont() const;
-    const QFontMetricsF &currentFontMetrics() const;
+
+    /**
+     * Access currently used font metrics.
+     * @return current font metrics
+     */
+    const QFontMetricsF &currentFontMetrics() const
+    {
+        return m_fontMetrics;
+    }
 
     /**
      * @return whether the renderer is configured to paint in a
@@ -432,6 +440,11 @@ public:
 
 private:
     KateRendererConfig *const m_config;
+
+    /**
+     * cached font metrics
+     */
+    QFontMetricsF m_fontMetrics;
 };
 
 #endif

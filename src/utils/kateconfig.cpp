@@ -616,8 +616,7 @@ void KateViewConfig::updateConfig()
 
 //BEGIN KateRendererConfig
 KateRendererConfig::KateRendererConfig()
-    : m_fontMetrics(QFont()),
-      m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
+    : m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
 
       m_schemaSet(false),
       m_fontSet(false),
@@ -657,7 +656,6 @@ KateRendererConfig::KateRendererConfig()
 
 KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
     : KateConfig(s_global),
-      m_fontMetrics(QFont()),
       m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
       m_schemaSet(false),
       m_fontSet(false),
@@ -878,15 +876,6 @@ const QFont &KateRendererConfig::font() const
     return s_global->font();
 }
 
-const QFontMetricsF &KateRendererConfig::fontMetrics() const
-{
-    if (m_fontSet || isGlobal()) {
-        return m_fontMetrics;
-    }
-
-    return s_global->fontMetrics();
-}
-
 void KateRendererConfig::setFont(const QFont &font)
 {
     if (m_fontSet && m_font == font) {
@@ -905,7 +894,6 @@ void KateRendererConfig::setFontWithDroppedStyleName(const QFont &font)
      */
     m_font = font;
     m_font.setStyleName(QString());
-    m_fontMetrics = QFontMetricsF(m_font);
     m_fontSet = true;
 }
 

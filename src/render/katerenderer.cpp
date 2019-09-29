@@ -63,6 +63,7 @@ KateRenderer::KateRenderer(KTextEditor::DocumentPrivate *doc, Kate::TextFolding 
     , m_showNonPrintableSpaces(false)
     , m_printerFriendly(false)
     , m_config(new KateRendererConfig(this))
+    , m_fontMetrics(m_config->font())
 {
     updateAttributes();
 
@@ -322,7 +323,7 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
     paint.setRenderHint(QPainter::Antialiasing, false);
 
     const int height = fontHeight();
-    const int width = config()->fontMetrics().boundingRect(chr).width();
+    const int width = m_fontMetrics.boundingRect(chr).width();
     const int offset = spaceWidth() * 0.1;
 
     QPoint points[8];
@@ -555,7 +556,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 //   qCDebug(LOG_KTE)<<"KateRenderer::paintTextLine";
 
     // font data
-    const QFontMetricsF &fm = config()->fontMetrics();
+    const QFontMetricsF &fm = m_fontMetrics;
 
     int currentViewLine = -1;
     if (cursor && cursor->line() == range->line()) {
@@ -915,11 +916,6 @@ const QFont &KateRenderer::currentFont() const
     return config()->font();
 }
 
-const QFontMetricsF &KateRenderer::currentFontMetrics() const
-{
-    return config()->fontMetrics();
-}
-
 uint KateRenderer::fontHeight() const
 {
     return m_fontHeight;
@@ -989,6 +985,11 @@ void KateRenderer::updateConfig()
 void KateRenderer::updateFontHeight()
 {
     /**
+     * cache font metrics
+     */
+    m_fontMetrics = QFontMetricsF(config()->font());
+
+    /**
      * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
      *
      * use a line spacing that matches the code in qt to layout/paint text
@@ -1002,7 +1003,7 @@ void KateRenderer::updateFontHeight()
      *
      * qreal fontHeight = font.ascent() + font.descent();
      */
-    m_fontHeight = qMax(1, qCeil(config()->fontMetrics().ascent() + config()->fontMetrics().descent()));
+    m_fontHeight = qMax(1, qCeil(m_fontMetrics.ascent() + m_fontMetrics.descent()));
 }
 
 void KateRenderer::updateMarkerSize()
@@ -1015,7 +1016,7 @@ void KateRenderer::updateMarkerSize()
 
 qreal KateRenderer::spaceWidth() const
 {
-    return config()->fontMetrics().horizontalAdvance(spaceChar);
+    return m_fontMetrics.horizontalAdvance(spaceChar);
 }
 
 void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool cacheLayout) const
@@ -1040,7 +1041,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     // Tab width
     QTextOption opt;
     opt.setFlags(QTextOption::IncludeTrailingSpaces);
-    opt.setTabStopDistance(m_tabWidth * config()->fontMetrics().horizontalAdvance(spaceChar));
+    opt.setTabStopDistance(m_tabWidth * m_fontMetrics.horizontalAdvance(spaceChar));
     opt.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
 
     // Find the first strong character in the string.
