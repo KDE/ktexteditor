@@ -975,14 +975,9 @@ void KateRenderer::updateConfig()
     }
 }
 
-void KateRenderer::updateFontHeight()
+// compute font height for given metrics
+static int fontHeightComputation(const QFontMetricsF &metrics)
 {
-    /**
-     * cache font + metrics
-     */
-    m_font = config()->baseFont();
-    m_fontMetrics = QFontMetricsF(m_font);
-
     /**
      * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
      *
@@ -997,7 +992,66 @@ void KateRenderer::updateFontHeight()
      *
      * qreal fontHeight = font.ascent() + font.descent();
      */
-    m_fontHeight = qMax(1, qCeil(m_fontMetrics.ascent() + m_fontMetrics.descent()));
+    return qMax(1, qCeil(metrics.ascent() + metrics.descent()));
+}
+
+void KateRenderer::updateFontHeight()
+{
+    /**
+     * cache font + metrics
+     */
+    m_font = config()->baseFont();
+    m_fontMetrics = QFontMetricsF(m_font);
+    m_fontHeight = fontHeightComputation(m_fontMetrics);
+
+    /**
+     * try to avoid strange fractional line heights on HiDPI screens
+     * these lead to evil drawing artifacts
+     */
+    if (m_view && !qFuzzyCompare(m_fontHeight * m_view->devicePixelRatioF(), qRound(m_fontHeight * m_view->devicePixelRatioF()))) {
+        /**
+         * search a font that has no artifacts
+         */
+        QFont newFont(m_font);
+        bool foundGoodFont = false;
+        for (int i = 2; i <= 8 + int(m_font.pointSizeF() / 4); ++i) {
+            /**
+             * we scan up and down, to prefer the minimal size change!
+             */
+            int step = i / 2;
+            if ((i % 2) == 0) {
+                step = -(i / 2);
+            }
+
+            /**
+             * skip too small stuff
+             */
+            const qreal newSize = m_font.pointSizeF() + (step * 0.25);
+            if (newSize <= 1)
+                continue;
+
+            /**
+             * update size and check if we now have no strange pixel heights
+             */
+            newFont.setPointSizeF(newSize);
+            const QFontMetricsF newFontMetrics(newFont);
+            const int fontHeight = fontHeightComputation(newFontMetrics);
+            if (qFuzzyCompare(fontHeight * m_view->devicePixelRatioF(), qRound(fontHeight * m_view->devicePixelRatioF()))) {
+                foundGoodFont = true;
+                break;
+            }
+        }
+
+        /**
+         * if we have a good font, use that one instead of the shitty one
+         */
+        if (foundGoodFont) {
+            m_font = newFont;
+            m_fontMetrics = QFontMetricsF(newFont);
+            m_fontHeight = fontHeightComputation(m_fontMetrics);
+        }
+    }
+
 }
 
 void KateRenderer::updateMarkerSize()
