@@ -25,7 +25,7 @@
  *
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "indenttest.h"
 
 #include <QtTestWidgets>
@@ -35,7 +35,7 @@
 
 QTEST_MAIN(IndentTest)
 
-#define FAILURE( test, comment ) qMakePair<const char*, const char*>( (test), (comment) )
+#define FAILURE(test, comment) qMakePair<const char *, const char *>((test), (comment))
 
 void IndentTest::initTestCase()
 {
@@ -51,17 +51,15 @@ void IndentTest::testCstyle_data()
 
 void IndentTest::testCstyle()
 {
-    runTest(ExpectedFailures() << FAILURE("using1", "this is insane, those who write such code can cope with it :P")
-            << FAILURE("using2", "this is insane, those who write such code can cope with it :P")
-            << FAILURE("plist14", "in function signatures it might be wanted to use the indentation of the\n"
-                       "opening paren instead of just increasing the indentation level like in function calls")
-            << FAILURE("switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface")
-            << FAILURE("switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface")
-            << FAILURE("visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
-            << FAILURE("visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
-            << FAILURE("plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards")
-            << FAILURE("switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code")
-           );
+    runTest(ExpectedFailures() << FAILURE("using1", "this is insane, those who write such code can cope with it :P") << FAILURE("using2", "this is insane, those who write such code can cope with it :P")
+                               << FAILURE("plist14",
+                                          "in function signatures it might be wanted to use the indentation of the\n"
+                                          "opening paren instead of just increasing the indentation level like in function calls")
+                               << FAILURE("switch10", "test for case where cfgSwitchIndent = false; needs proper config-interface") << FAILURE("switch11", "test for case where cfgSwitchIndent = false; needs proper config-interface")
+                               << FAILURE("visib2", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+                               << FAILURE("visib3", "test for access modifier where cfgAccessModifiers = 1;needs proper config interface")
+                               << FAILURE("plist10", "low low prio, maybe wontfix: if the user wants to add a arg, he should do so and press enter afterwards")
+                               << FAILURE("switch13", "pure insanity, whoever wrote this test and expects that to be indented properly should stop writing code"));
 }
 
 void IndentTest::testCppstyle_data()
@@ -71,21 +69,19 @@ void IndentTest::testCppstyle_data()
 
 void IndentTest::testCppstyle()
 {
-    runTest(
-        ExpectedFailures()
-        /// \todo Fix (smth) to make failed test cases really work!
-        << FAILURE("parens1", "dunno why it failed in test! in manual mode everything works fine...")
-    );
+    runTest(ExpectedFailures()
+            /// \todo Fix (smth) to make failed test cases really work!
+            << FAILURE("parens1", "dunno why it failed in test! in manual mode everything works fine..."));
 }
 
 void IndentTest::testCMake_data()
 {
-    getTestData( "cmake" );
+    getTestData("cmake");
 }
 
 void IndentTest::testCMake()
 {
-    runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
 
 void IndentTest::testPython_data()
@@ -130,12 +126,12 @@ void IndentTest::testPascal()
 
 void IndentTest::testAda_data()
 {
-  getTestData("ada");
+    getTestData("ada");
 }
 
 void IndentTest::testAda()
 {
-  runTest( ExpectedFailures() );
+    runTest(ExpectedFailures());
 }
 
 void IndentTest::testRuby_data()
@@ -145,21 +141,11 @@ void IndentTest::testRuby_data()
 
 void IndentTest::testRuby()
 {
-    runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported")
-            << FAILURE("block02", "Multiline blocks using {} is not supported")
-            << FAILURE("singleline01", "Single line defs are not supported")
-            << FAILURE("singleline02", "Single line defs are not supported")
-            << FAILURE("wordlist01", "multiline word list is not supported")
-            << FAILURE("wordlist02", "multiline word list is not supported")
-            << FAILURE("wordlist11", "multiline word list is not supported")
-            << FAILURE("wordlist12", "multiline word list is not supported")
-            << FAILURE("wordlist21", "multiline word list is not supported")
-            << FAILURE("wordlist22", "multiline word list is not supported")
-            << FAILURE("if20", "multi line if assignment is not supported")
-            << FAILURE("if21", "multi line if assignment is not supported")
-            << FAILURE("if30", "single line if is not supported")
-            << FAILURE("if31", "single line if is not supported")
-           );
+    runTest(ExpectedFailures() << FAILURE("block01", "Multiline blocks using {} is not supported") << FAILURE("block02", "Multiline blocks using {} is not supported") << FAILURE("singleline01", "Single line defs are not supported")
+                               << FAILURE("singleline02", "Single line defs are not supported") << FAILURE("wordlist01", "multiline word list is not supported") << FAILURE("wordlist02", "multiline word list is not supported")
+                               << FAILURE("wordlist11", "multiline word list is not supported") << FAILURE("wordlist12", "multiline word list is not supported") << FAILURE("wordlist21", "multiline word list is not supported")
+                               << FAILURE("wordlist22", "multiline word list is not supported") << FAILURE("if20", "multi line if assignment is not supported") << FAILURE("if21", "multi line if assignment is not supported")
+                               << FAILURE("if30", "single line if is not supported") << FAILURE("if31", "single line if is not supported"));
 }
 
 void IndentTest::testXml_data()

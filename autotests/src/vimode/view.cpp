@@ -18,7 +18,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include <QClipboard>
 #include <katebuffer.h>
 #include <kateconfig.h>
@@ -27,9 +26,7 @@
 
 using namespace KTextEditor;
 
-
 QTEST_MAIN(ViewTest)
-
 
 void ViewTest::yankHighlightingTests()
 {
@@ -168,7 +165,7 @@ void ViewTest::visualLineUpDownTests()
 
     {
         // Jump down a few lines all in one go, where we have some variable length lines to navigate.
-        const int numVisualLinesOnLine[] = { 3, 5, 2, 3 };
+        const int numVisualLinesOnLine[] = {3, 5, 2, 3};
         const int numLines = sizeof(numVisualLinesOnLine) / sizeof(int);
         const int startVisualLine = 2;
         const int numberLinesToGoDownInOneGo = 10;
@@ -216,8 +213,8 @@ void ViewTest::visualLineUpDownTests()
         // Deal with dynamic wrapping and indented blocks - continuations of a line are "invisibly" idented by
         // the same amount as the beginning of the line, and we have to subtract this indentation.
         const QString unindentedFirstLine = "stickyhelper\n";
-        const int  numIndentationSpaces = 5;
-        Q_ASSERT(textWrappingLength >  numIndentationSpaces * 2 /* keep some wriggle room */);
+        const int numIndentationSpaces = 5;
+        Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
         const QString indentedFillsLineEndsOnSpace = QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
         DoTest(unindentedFirstLine + indentedFillsLineEndsOnSpace + "LINE3", QString("l").repeated(numIndentationSpaces) + "jgjr.", unindentedFirstLine + indentedFillsLineEndsOnSpace + ".INE3");
 
@@ -229,8 +226,8 @@ void ViewTest::visualLineUpDownTests()
 
     {
         // Take into account any invisible indentation when setting the sticky column.
-        const int  numIndentationSpaces = 5;
-        Q_ASSERT(textWrappingLength >  numIndentationSpaces * 2 /* keep some wriggle room */);
+        const int numIndentationSpaces = 5;
+        Q_ASSERT(textWrappingLength > numIndentationSpaces * 2 /* keep some wriggle room */);
         const QString indentedFillsLineEndsOnSpace = QString(" ").repeated(numIndentationSpaces) + QString("X").repeated(textWrappingLength - 1 - numIndentationSpaces) + ' ';
         const int posInSecondWrappedLineToChange = 3;
         QString expectedText = indentedFillsLineEndsOnSpace + fillsLineAndEndsOnSpace;
@@ -297,9 +294,7 @@ void ViewTest::visualLineUpDownTests()
         const int posOnSecondLineToChange = 2;
         QString expectedSecondLine = beginsWithTabFillsLineEndsOnSpace;
         expectedSecondLine[posOnSecondLineToChange + 1 /* "+1" as we're not counting the leading tab as a pos */] = '.';
-        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace,
-               QString("l").repeated(tabWidth + posOnSecondLineToChange) + "gjgjgkr.",
-               unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace);
+        DoTest(unindentedFirstLine + beginsWithTabFillsLineEndsOnSpace + fillsLineAndEndsOnSpace, QString("l").repeated(tabWidth + posOnSecondLineToChange) + "gjgjgkr.", unindentedFirstLine + expectedSecondLine + fillsLineAndEndsOnSpace);
     }
 
     // Restore back to how we were before.
@@ -319,8 +314,7 @@ void ViewTest::ScrollViewTests()
     QFont fixedWidthFont("Monospace");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     fixedWidthFont.setPixelSize(14);
-    Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(),
-               "setting up ScrollViewTests", "Need a fixed pitch font!");
+    Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up ScrollViewTests", "Need a fixed pitch font!");
     kate_view->renderer()->config()->setFont(fixedWidthFont);
 
     // Generating our text here.
@@ -389,13 +383,24 @@ void ViewTest::clipboardTests_data()
     QTest::addColumn<QString>("commands");
     QTest::addColumn<QString>("clipboard");
 
-    QTest::newRow("yank") << "yyfoo\nbar" << "yy" << "yyfoo\n";
-    QTest::newRow("delete") << "ddfoo\nbar" << "dd" << "ddfoo\n";
-    QTest::newRow("yank empty line") << "\nbar" << "yy" << QString();
-    QTest::newRow("delete word") << "word foo" << "dw" << "word ";
-    QTest::newRow("delete onechar word") << "w foo" << "dw" << "w ";
-    QTest::newRow("delete onechar") << "word foo" << "dc" << QString();
-    QTest::newRow("delete empty lines") << " \t\n\n  \nfoo" << "d3d" << QString();
+    QTest::newRow("yank") << "yyfoo\nbar"
+                          << "yy"
+                          << "yyfoo\n";
+    QTest::newRow("delete") << "ddfoo\nbar"
+                            << "dd"
+                            << "ddfoo\n";
+    QTest::newRow("yank empty line") << "\nbar"
+                                     << "yy" << QString();
+    QTest::newRow("delete word") << "word foo"
+                                 << "dw"
+                                 << "word ";
+    QTest::newRow("delete onechar word") << "w foo"
+                                         << "dw"
+                                         << "w ";
+    QTest::newRow("delete onechar") << "word foo"
+                                    << "dc" << QString();
+    QTest::newRow("delete empty lines") << " \t\n\n  \nfoo"
+                                        << "d3d" << QString();
 }
 
 void ViewTest::clipboardTests()

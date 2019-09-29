@@ -98,7 +98,7 @@ void CompletionTest::init()
     m_view = static_cast<KTextEditor::ViewPrivate *>(v);
     Q_ASSERT(m_view);
 
-    //view needs to be shown as completion won't work if the cursor is off screen
+    // view needs to be shown as completion won't work if the cursor is off screen
     m_view->show();
 }
 
@@ -393,46 +393,46 @@ void CompletionTest::testAbbreviationEngine()
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacomplmodel"), Qt::CaseInsensitive));
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kacom"), Qt::CaseInsensitive));
 
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("identifier"), Qt::CaseInsensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaara"), Qt::CaseInsensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbac"), Qt::CaseInsensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kamodel"), Qt::CaseInsensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("QualifiedIdentifier"), QStringLiteral("identifier"), Qt::CaseInsensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fobaara"), Qt::CaseInsensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBarArr"), QStringLiteral("fbac"), Qt::CaseInsensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kamodel"), Qt::CaseInsensitive));
 
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), Qt::CaseInsensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
-    
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fb"), Qt::CaseSensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AbcdefBcdefCdefDefEfFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
+
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("fb"), Qt::CaseSensitive));
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("FooBar"), QStringLiteral("FB"), Qt::CaseSensitive));
-    QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel"), Qt::CaseSensitive));
+    QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("kcmodel"), Qt::CaseSensitive));
     QVERIFY(KateCompletionModel::matchesAbbreviation(QStringLiteral("KateCompletionModel"), QStringLiteral("KCModel"), Qt::CaseSensitive));
 }
 
 void CompletionTest::benchAbbreviationEngineGoodCase()
 {
-    QBENCHMARK {
-        for (int i = 0; i < 10000; i++)
-        {
-            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
+    QBENCHMARK
+    {
+        for (int i = 0; i < 10000; i++) {
+            QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
         }
     }
 }
 
 void CompletionTest::benchAbbreviationEngineNormalCase()
 {
-    QBENCHMARK {
-        for (int i = 0; i < 10000; i++)
-        {
-            QVERIFY(! KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
+    QBENCHMARK
+    {
+        for (int i = 0; i < 10000; i++) {
+            QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
         }
     }
 }
 
 void CompletionTest::benchAbbreviationEngineWorstCase()
 {
-    QBENCHMARK {
-        for (int i = 0; i < 10000; i++)
-        {
+    QBENCHMARK
+    {
+        for (int i = 0; i < 10000; i++) {
             // This case is quite horrible, because it requires a branch at every letter.
             // The current code will at some point drop out and just return false.
             KateCompletionModel::matchesAbbreviation(QStringLiteral("XxBbbbbbBbbbbbBbbbbBbbbBbbbbbbBbbbbbBbbbbbBbbbFox"), QStringLiteral("XbbbbbbbbbbbbbbbbbbbbFx"), Qt::CaseInsensitive);
@@ -448,32 +448,32 @@ void CompletionTest::testAbbrevAndContainsMatching()
 
     m_view->document()->setText(QStringLiteral("SCA"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 6);
+    QCOMPARE(model->filteredItemCount(), (uint)6);
 
     m_view->document()->setText(QStringLiteral("SC"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 6);
+    QCOMPARE(model->filteredItemCount(), (uint)6);
 
     m_view->document()->setText(QStringLiteral("sca"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 6);
+    QCOMPARE(model->filteredItemCount(), (uint)6);
 
     m_view->document()->setText(QStringLiteral("contains"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 2);
+    QCOMPARE(model->filteredItemCount(), (uint)2);
 
     m_view->document()->setText(QStringLiteral("CONTAINS"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 2);
+    QCOMPARE(model->filteredItemCount(), (uint)2);
 
     m_view->document()->setText(QStringLiteral("containssome"));
     invokeCompletionBox(m_view);
-    QCOMPARE(model->filteredItemCount(), (uint) 1);
+    QCOMPARE(model->filteredItemCount(), (uint)1);
 
     m_view->document()->setText(QStringLiteral("matched"));
     m_view->userInvokedCompletion();
     QApplication::processEvents();
-    QCOMPARE(model->filteredItemCount(), (uint) 0);
+    QCOMPARE(model->filteredItemCount(), (uint)0);
 }
 
 void CompletionTest::benchCompletionModel()
@@ -488,12 +488,11 @@ void CompletionTest::benchCompletionModel()
     testModel3->setRowCount(500);
     CodeCompletionTestModel *testModel4 = new CodeCompletionTestModel(m_view, QStringLiteral("abcd"));
     testModel4->setRowCount(5000);
-    QBENCHMARK_ONCE {
-        for (int i = 0; i < text.size(); ++i)
-        {
+    QBENCHMARK_ONCE
+    {
+        for (int i = 0; i < text.size(); ++i) {
             m_view->setCursorPosition(Cursor(0, i));
             invokeCompletionBox(m_view);
         }
     }
 }
-

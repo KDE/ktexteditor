@@ -25,8 +25,8 @@
 
 #include <QVector>
 
-namespace KateVi {
-
+namespace KateVi
+{
 class Jumps
 {
 public:
@@ -34,7 +34,7 @@ public:
     ~Jumps() = default;
 
     Jumps(const Jumps &) = delete;
-    Jumps& operator=(const Jumps &) = delete;
+    Jumps &operator=(const Jumps &) = delete;
 
     void add(const KTextEditor::Cursor &cursor);
     KTextEditor::Cursor next(const KTextEditor::Cursor &cursor);

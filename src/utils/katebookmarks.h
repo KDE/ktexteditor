@@ -23,7 +23,10 @@
 
 #include <QObject>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class KToggleAction;
 class KActionCollection;
@@ -68,17 +71,16 @@ private Q_SLOTS:
     void marksChanged();
 
 private:
-    KTextEditor::ViewPrivate                    *m_view;
-    KToggleAction               *m_bookmarkToggle;
-    QAction                     *m_bookmarkClear;
-    QAction                     *m_goNext;
-    QAction                     *m_goPrevious;
+    KTextEditor::ViewPrivate *m_view;
+    KToggleAction *m_bookmarkToggle;
+    QAction *m_bookmarkClear;
+    QAction *m_goNext;
+    QAction *m_goPrevious;
 
-    Sorting                      m_sorting;
-    QMenu                       *m_bookmarksMenu;
+    Sorting m_sorting;
+    QMenu *m_bookmarksMenu;
 
     uint _tries;
 };
 
 #endif
-

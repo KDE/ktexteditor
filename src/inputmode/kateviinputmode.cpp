@@ -31,33 +31,34 @@
 
 #include <QCoreApplication>
 
-namespace {
-    QString viModeToString(KateVi::ViMode mode)
-    {
-        QString modeStr;
-        switch (mode) {
-            case KateVi::InsertMode:
-                modeStr = i18n("VI: INSERT MODE");
-                break;
-            case KateVi::NormalMode:
-                modeStr = i18n("VI: NORMAL MODE");
-                break;
-            case KateVi::VisualMode:
-                modeStr = i18n("VI: VISUAL");
-                break;
-            case KateVi::VisualBlockMode:
-                modeStr = i18n("VI: VISUAL BLOCK");
-                break;
-            case KateVi::VisualLineMode:
-                modeStr = i18n("VI: VISUAL LINE");
-                break;
-            case KateVi::ReplaceMode:
-                modeStr = i18n("VI: REPLACE");
-                break;
-        }
-
-        return modeStr;
+namespace
+{
+QString viModeToString(KateVi::ViMode mode)
+{
+    QString modeStr;
+    switch (mode) {
+        case KateVi::InsertMode:
+            modeStr = i18n("VI: INSERT MODE");
+            break;
+        case KateVi::NormalMode:
+            modeStr = i18n("VI: NORMAL MODE");
+            break;
+        case KateVi::VisualMode:
+            modeStr = i18n("VI: VISUAL");
+            break;
+        case KateVi::VisualBlockMode:
+            modeStr = i18n("VI: VISUAL BLOCK");
+            break;
+        case KateVi::VisualLineMode:
+            modeStr = i18n("VI: VISUAL LINE");
+            break;
+        case KateVi::ReplaceMode:
+            modeStr = i18n("VI: REPLACE");
+            break;
     }
+
+    return modeStr;
+}
 }
 
 KateViInputMode::KateViInputMode(KateViewInternal *viewInternal, KateVi::GlobalState *global)
@@ -81,7 +82,7 @@ void KateViInputMode::activate()
 {
     m_activated = true;
     setCaretStyle(KateRenderer::Block); // TODO: can we end up in insert mode?
-    reset(); // TODO: is this necessary? (well, not anymore I guess)
+    reset();                            // TODO: is this necessary? (well, not anymore I guess)
 
     if (view()->selection()) {
         m_viModeManager->changeViMode(KateVi::VisualMode);
@@ -119,7 +120,7 @@ void KateViInputMode::reset()
 
 bool KateViInputMode::overwrite() const
 {
-    return  m_viModeManager->getCurrentViMode() == KateVi::ViMode::ReplaceMode;
+    return m_viModeManager->getCurrentViMode() == KateVi::ViMode::ReplaceMode;
 }
 
 void KateViInputMode::overwrittenChar(const QChar &c)
@@ -134,16 +135,14 @@ void KateViInputMode::clearSelection()
 
 bool KateViInputMode::stealKey(QKeyEvent *k)
 {
-    if (!KateViewConfig::global()->viInputModeStealKeys())
-    {
+    if (!KateViewConfig::global()->viInputModeStealKeys()) {
         return false;
     }
 
     // Actually see if we can make use of this key - if so, we've stolen it; if not,
     // let Qt's shortcut handling system deal with it.
     const bool stolen = keyPress(k);
-    if (stolen)
-    {
+    if (stolen) {
         // Qt will replay this QKeyEvent, next time as an ordinary KeyPress.
         m_nextKeypressIsOverriddenShortCut = true;
     }
@@ -281,8 +280,7 @@ void KateViInputMode::updateRendererConfig()
 
 bool KateViInputMode::keyPress(QKeyEvent *e)
 {
-    if (m_nextKeypressIsOverriddenShortCut)
-    {
+    if (m_nextKeypressIsOverriddenShortCut) {
         // This is just the replay of a shortcut that we stole, this time as a QKeyEvent.
         // Ignore it, as we'll have already handled it via stealKey()!
         m_nextKeypressIsOverriddenShortCut = false;

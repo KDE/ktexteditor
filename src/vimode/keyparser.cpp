@@ -225,8 +225,7 @@ void KeyParser::initKeyTables()
     m_qt2katevi.insert(Qt::Key_Zoom, QStringLiteral("zoom"));
     m_qt2katevi.insert(Qt::Key_Cancel, QStringLiteral("cancel"));
 
-    for (QHash<int, QString>::const_iterator i = m_qt2katevi.constBegin();
-            i != m_qt2katevi.constEnd(); ++i) {
+    for (QHash<int, QString>::const_iterator i = m_qt2katevi.constBegin(); i != m_qt2katevi.constEnd(); ++i) {
         m_katevi2qt.insert(i.value(), i.key());
     }
     m_katevi2qt.insert(QStringLiteral("cr"), Qt::Key_Enter);
@@ -468,11 +467,11 @@ void KeyParser::initKeyTables()
     m_nameToKeyCode.insert(QStringLiteral("|"), 333);
     m_nameToKeyCode.insert(QStringLiteral(","), 334);
     m_nameToKeyCode.insert(QStringLiteral("."), 335);
-    //m_nameToKeyCode.insert( QLatin1String( ">" ), 336 );
+    // m_nameToKeyCode.insert( QLatin1String( ">" ), 336 );
     m_nameToKeyCode.insert(QStringLiteral("/"), 337);
     m_nameToKeyCode.insert(QStringLiteral("?"), 338);
     m_nameToKeyCode.insert(QStringLiteral(" "), 339);
-    //m_nameToKeyCode.insert( QLatin1String( "<" ), 341 );
+    // m_nameToKeyCode.insert( QLatin1String( "<" ), 341 );
     m_nameToKeyCode.insert(QStringLiteral("0"), 340);
     m_nameToKeyCode.insert(QStringLiteral("1"), 341);
     m_nameToKeyCode.insert(QStringLiteral("2"), 342);
@@ -487,8 +486,7 @@ void KeyParser::initKeyTables()
     m_nameToKeyCode.insert(QStringLiteral("leader"), 351);
     m_nameToKeyCode.insert(QStringLiteral("nop"), 352);
 
-    for (QHash<QString, int>::const_iterator i = m_nameToKeyCode.constBegin();
-            i != m_nameToKeyCode.constEnd(); ++i) {
+    for (QHash<QString, int>::const_iterator i = m_nameToKeyCode.constBegin(); i != m_nameToKeyCode.constEnd(); ++i) {
         m_keyCodeToName.insert(i.value(), i.key());
     }
 }
@@ -507,9 +505,7 @@ int KeyParser::encoded2qt(const QString &keypress) const
 {
     QString key = KeyParser::self()->decodeKeySequence(keypress);
 
-    if (key.length() > 2 && key[0] == QLatin1Char('<') &&
-            key[key.length() - 1] == QLatin1Char('>')) {
-
+    if (key.length() > 2 && key[0] == QLatin1Char('<') && key[key.length() - 1] == QLatin1Char('>')) {
         key = key.mid(1, key.length() - 2);
     }
     return (m_katevi2qt.contains(key) ? m_katevi2qt.value(key) : -1);
@@ -593,7 +589,6 @@ const QString KeyParser::encodeKeySequence(const QString &keys) const
                         encodedSequence.clear();
                         keyCodeTemp = m_nameToKeyCode.value(QStringLiteral("invalid")) * 0x10;
                     }
-
                 }
                 i += keys.midRef(i, keys.midRef(i).indexOf(QLatin1Char('>'))).length() - 1;
             }
@@ -636,19 +631,19 @@ const QString KeyParser::decodeKeySequence(const QString &keys) const
 
             if ((keycode & 0x1) == 0x1) {
                 ret.append(QLatin1String("s-"));
-                //keycode -= 0x1;
+                // keycode -= 0x1;
             }
             if ((keycode & 0x2) == 0x2) {
                 ret.append(QLatin1String("c-"));
-                //keycode -= 0x2;
+                // keycode -= 0x2;
             }
             if ((keycode & 0x4) == 0x4) {
                 ret.append(QLatin1String("a-"));
-                //keycode -= 0x4;
+                // keycode -= 0x4;
             }
             if ((keycode & 0x8) == 0x8) {
                 ret.append(QLatin1String("m-"));
-                //keycode -= 0x8;
+                // keycode -= 0x8;
             }
 
             if ((keycode & 0xE000) == 0xE000) {
@@ -675,15 +670,14 @@ const QChar KeyParser::KeyEventToQChar(const QKeyEvent &keyEvent)
         return (!text.isEmpty()) ? text.at(0) : QChar();
     }
 
-    if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || keyCode == Qt::Key_Delete
-            || (mods != Qt::NoModifier && mods != Qt::ShiftModifier && mods != Qt::KeypadModifier)) {
+    if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || keyCode == Qt::Key_Delete || (mods != Qt::NoModifier && mods != Qt::ShiftModifier && mods != Qt::KeypadModifier)) {
         QString keyPress;
 
         keyPress.append(QLatin1Char('<'));
-        keyPress.append((mods & Qt::ShiftModifier)   ? QStringLiteral("s-") : QString());
+        keyPress.append((mods & Qt::ShiftModifier) ? QStringLiteral("s-") : QString());
         keyPress.append((mods & Qt::ControlModifier) ? QStringLiteral("c-") : QString());
-        keyPress.append((mods & Qt::AltModifier)     ? QStringLiteral("a-") : QString());
-        keyPress.append((mods & Qt::MetaModifier)    ? QStringLiteral("m-") : QString());
+        keyPress.append((mods & Qt::AltModifier) ? QStringLiteral("a-") : QString());
+        keyPress.append((mods & Qt::MetaModifier) ? QStringLiteral("m-") : QString());
         keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : qt2vi(keyCode));
         keyPress.append(QLatin1Char('>'));
 

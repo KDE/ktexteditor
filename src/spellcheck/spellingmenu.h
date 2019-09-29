@@ -30,7 +30,10 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/view.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateOnTheFlyChecker;
 
 class KateSpellingMenu : public QObject
@@ -85,4 +88,3 @@ protected Q_SLOTS:
 };
 
 #endif
-

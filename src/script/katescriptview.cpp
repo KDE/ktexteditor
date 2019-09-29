@@ -33,7 +33,9 @@
 #include <QJSEngine>
 
 KateScriptView::KateScriptView(QJSEngine *engine, QObject *parent)
-    : QObject(parent), m_view(nullptr), m_engine(engine)
+    : QObject(parent)
+    , m_view(nullptr)
+    , m_engine(engine)
 {
 }
 
@@ -119,12 +121,10 @@ void KateScriptView::clearSelection()
 void KateScriptView::align(const QJSValue &jsrange)
 {
     const auto range = rangeFromScriptValue(jsrange);
-    m_view->doc()->align (m_view, range);
+    m_view->doc()->align(m_view, range);
 }
 
-QJSValue KateScriptView::executeCommand(const QString &command,
-                                        const QString &args,
-                                        const QJSValue &jsrange)
+QJSValue KateScriptView::executeCommand(const QString &command, const QString &args, const QJSValue &jsrange)
 {
     QString message;
     bool ok = false;

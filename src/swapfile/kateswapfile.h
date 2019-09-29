@@ -34,11 +34,13 @@
 
 #include <KTextEditor/Message>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 namespace Kate
 {
-
 /**
  * Class for tracking editing actions.
  * In case Kate crashes, this can be used to replay all edit actions to
@@ -111,4 +113,3 @@ private:
 }
 
 #endif // KATE_SWAPFILE_H
-

@@ -25,7 +25,7 @@
  *
  */
 
-//BEGIN Includes
+// BEGIN Includes
 
 #include "kateview.h"
 #include "katedocument.h"
@@ -48,17 +48,17 @@ QtMessageHandler ScriptTestBase::m_msgHandler = nullptr;
 void noDebugMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     switch (type) {
-    case QtDebugMsg:
-        break;
-    default:
-        ScriptTestBase::m_msgHandler(type, context, msg);
+        case QtDebugMsg:
+            break;
+        default:
+            ScriptTestBase::m_msgHandler(type, context, msg);
     }
 }
 
 void ScriptTestBase::initTestCase()
 {
     KTextEditor::EditorPrivate::enableUnitTestMode();
-    m_msgHandler =  qInstallMessageHandler(noDebugMessageOutput);
+    m_msgHandler = qInstallMessageHandler(noDebugMessageOutput);
     m_toplevel = new QMainWindow();
     m_document = new KTextEditor::DocumentPrivate(true, false, m_toplevel);
     m_view = static_cast<KTextEditor::ViewPrivate *>(m_document->widget());
@@ -110,7 +110,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
 
     QFETCH(QString, testcase);
 
-    m_toplevel->resize(800, 600);  // restore size
+    m_toplevel->resize(800, 600); // restore size
 
     // load page
     QUrl url;

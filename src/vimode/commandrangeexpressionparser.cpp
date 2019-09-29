@@ -32,13 +32,15 @@
 
 using namespace KateVi;
 
-#define RegExp(name, pattern) inline const QRegularExpression& name() { \
-    static const QRegularExpression regex(QStringLiteral(pattern)); \
-    return regex; }
+#define RegExp(name, pattern)                                                                                                                                                                                                                  \
+    inline const QRegularExpression &name()                                                                                                                                                                                                    \
+    {                                                                                                                                                                                                                                          \
+        static const QRegularExpression regex(QStringLiteral(pattern));                                                                                                                                                                        \
+        return regex;                                                                                                                                                                                                                          \
+    }
 
 namespace
 {
-
 #define RE_MARK "\\'[0-9a-z><\\+\\*\\_]"
 #define RE_THISLINE "\\."
 #define RE_LASTLINE "\\$"
@@ -47,14 +49,9 @@ namespace
 #define RE_BACKWARDSEARCH "\\?[^?]*\\??"
 #define RE_BASE "(?:" RE_MARK ")|(?:" RE_LINE ")|(?:" RE_THISLINE ")|(?:" RE_LASTLINE ")|(?:" RE_FORWARDSEARCH ")|(?:" RE_BACKWARDSEARCH ")"
 #define RE_OFFSET "[+-](?:" RE_BASE ")?"
-#define RE_POSITION "("  RE_BASE ")((?:" RE_OFFSET ")*)"
+#define RE_POSITION "(" RE_BASE ")((?:" RE_OFFSET ")*)"
 
-    RegExp(RE_Line, RE_LINE)
-    RegExp(RE_LastLine, RE_LASTLINE)
-    RegExp(RE_ThisLine, RE_THISLINE)
-    RegExp(RE_Mark, RE_MARK)
-    RegExp(RE_ForwardSearch, "^/([^/]*)/?$")
-    RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$")
+RegExp(RE_Line, RE_LINE) RegExp(RE_LastLine, RE_LASTLINE) RegExp(RE_ThisLine, RE_THISLINE) RegExp(RE_Mark, RE_MARK) RegExp(RE_ForwardSearch, "^/([^/]*)/?$") RegExp(RE_BackwardSearch, "^\\?([^?]*)\\??$")
     RegExp(RE_CalculatePositionSplit, "[-+](?!([+-]|$))")
     // The range regexp contains seven groups: the first is the start position, the second is
     // the base of the start position, the third is the offset of the start position, the
@@ -62,11 +59,11 @@ namespace
     // without the comma, the sixth is the base of the end position, and the seventh is the
     // offset of the end position. The third and fourth groups may be empty, and the
     // fifth, sixth and seventh groups are contingent on the fourth group.
-    inline const QRegularExpression& RE_CmdRange()
-    {
-        static const QRegularExpression regex(QStringLiteral("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
-        return regex;
-    }
+    inline const QRegularExpression &RE_CmdRange()
+{
+    static const QRegularExpression regex(QStringLiteral("^(" RE_POSITION ")((?:,(" RE_POSITION "))?)"));
+    return regex;
+}
 }
 
 CommandRangeExpressionParser::CommandRangeExpressionParser(InputModeManager *vimanager)
@@ -152,12 +149,7 @@ int CommandRangeExpressionParser::calculatePosition(const QString &string) const
 
         ++pos;
 
-        matchLineNumber(line, values) ||
-        matchLastLine(line, values) ||
-        matchThisLine(line, values) ||
-        matchMark(line, values) ||
-        matchForwardSearch(line, values) ||
-        matchBackwardSearch(line, values);
+        matchLineNumber(line, values) || matchLastLine(line, values) || matchThisLine(line, values) || matchMark(line, values) || matchForwardSearch(line, values) || matchBackwardSearch(line, values);
     }
 
     if (values.isEmpty()) {
@@ -255,7 +247,7 @@ bool CommandRangeExpressionParser::matchBackwardSearch(const QString &line, QLis
     }
 
     QString pattern = match.captured(1);
-    KTextEditor::Range range(KTextEditor::Cursor(0,0), m_viInputModeManager->view()->cursorPosition());
+    KTextEditor::Range range(KTextEditor::Cursor(0, 0), m_viInputModeManager->view()->cursorPosition());
     QVector<KTextEditor::Range> matchingLines = m_viInputModeManager->view()->doc()->searchText(range, pattern, KTextEditor::Regex);
 
     if (matchingLines.isEmpty()) {

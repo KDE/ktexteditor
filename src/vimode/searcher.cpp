@@ -44,7 +44,7 @@ const QString Searcher::getLastSearchPattern() const
     return m_lastSearchConfig.pattern;
 }
 
-void Searcher::setLastSearchParams(const SearchParams& searchParams)
+void Searcher::setLastSearchParams(const SearchParams &searchParams)
 {
     m_lastSearchConfig = searchParams;
 }
@@ -67,10 +67,7 @@ void Searcher::findPrevious()
 
 Range Searcher::motionFindNext(int count)
 {
-    Range match = findPatternForMotion(
-        m_lastSearchConfig,
-        m_view->cursorPosition(),
-        count);
+    Range match = findPatternForMotion(m_lastSearchConfig, m_view->cursorPosition(), count);
 
     if (!match.valid) {
         return match;
@@ -85,10 +82,7 @@ Range Searcher::motionFindPrev(int count)
 {
     SearchParams lastSearchReversed = m_lastSearchConfig;
     lastSearchReversed.isBackwards = !lastSearchReversed.isBackwards;
-    Range match = findPatternForMotion(
-        lastSearchReversed,
-        m_view->cursorPosition(),
-        count);
+    Range match = findPatternForMotion(lastSearchReversed, m_view->cursorPosition(), count);
 
     if (!match.valid) {
         return match;
@@ -99,7 +93,7 @@ Range Searcher::motionFindPrev(int count)
     return Range(match.endLine, match.endColumn - 1, ExclusiveMotion);
 }
 
-Range Searcher::findPatternForMotion(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count) const
+Range Searcher::findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count) const
 {
     if (searchParams.pattern.isEmpty()) {
         return Range::invalid();
@@ -122,10 +116,9 @@ Range Searcher::findWordForMotion(const QString &word, bool backwards, const KTe
     return findPatternForMotion(m_lastSearchConfig, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPattern(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
+KTextEditor::Range Searcher::findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory)
 {
     if (addToSearchHistory) {
-
         m_viInputModeManager->globalState()->searchHistory()->append(searchParams.pattern);
         m_lastSearchConfig = searchParams;
     }
@@ -133,12 +126,12 @@ KTextEditor::Range Searcher::findPattern(const SearchParams& searchParams, const
     return findPatternWorker(searchParams, startFrom, count);
 }
 
-KTextEditor::Range Searcher::findPatternWorker(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count) const
+KTextEditor::Range Searcher::findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count) const
 {
     KTextEditor::Cursor searchBegin = startFrom;
     KTextEditor::SearchOptions flags = KTextEditor::Regex;
 
-    const QString& pattern = searchParams.pattern;
+    const QString &pattern = searchParams.pattern;
 
     if (searchParams.isBackwards) {
         flags |= KTextEditor::Backwards;

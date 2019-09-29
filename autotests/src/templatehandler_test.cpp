@@ -41,13 +41,14 @@ TemplateHandlerTest::TemplateHandlerTest()
 
 void TemplateHandlerTest::testUndo()
 {
-    const QString snippet = "for (${type=\"int\"} ${index=\"i\"} = ; ${index} < ; ++${index})\n"
-                            "{\n"
-                            "    ${index}\n"
-                            "}";
+    const QString snippet =
+        "for (${type=\"int\"} ${index=\"i\"} = ; ${index} < ; ++${index})\n"
+        "{\n"
+        "    ${index}\n"
+        "}";
 
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     // fixed indentation options
     doc->config()->setTabWidth(8);
@@ -56,18 +57,20 @@ void TemplateHandlerTest::testUndo()
 
     view->insertTemplate(KTextEditor::Cursor(0, 0), snippet);
 
-    const QString result = "for (int i = ; i < ; ++i)\n"
-                           "{\n"
-                           "    i\n"
-                           "}";
+    const QString result =
+        "for (int i = ; i < ; ++i)\n"
+        "{\n"
+        "    i\n"
+        "}";
     QCOMPARE(doc->text(), result);
 
     doc->replaceText(Range(0, 9, 0, 10), "j");
 
-    const QString result2 = "for (int j = ; j < ; ++j)\n"
-                            "{\n"
-                            "    j\n"
-                            "}";
+    const QString result2 =
+        "for (int j = ; j < ; ++j)\n"
+        "{\n"
+        "    j\n"
+        "}";
     QCOMPARE(doc->text(), result2);
 
     doc->undo();
@@ -81,10 +84,11 @@ void TemplateHandlerTest::testUndo()
     doc->insertText(Cursor(0, 10), "j");
     doc->insertText(Cursor(0, 11), "j");
 
-    const QString result3 = "for (int jjj = ; jjj < ; ++jjj)\n"
-                            "{\n"
-                            "    jjj\n"
-                            "}";
+    const QString result3 =
+        "for (int jjj = ; jjj < ; ++jjj)\n"
+        "{\n"
+        "    jjj\n"
+        "}";
     QCOMPARE(doc->text(), result3);
 
     doc->undo();
@@ -105,7 +109,7 @@ void TemplateHandlerTest::testUndo()
 void TemplateHandlerTest::testEscapes()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, QStringLiteral("\\${field} ${bar} \\${foo=3} \\\\${baz=7}"));
     QCOMPARE(doc->text(), QStringLiteral("${field} bar ${foo=3} \\${baz=7}"));
 }
@@ -115,7 +119,7 @@ void TemplateHandlerTest::testSimpleMirror()
     QFETCH(QString, text);
 
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, text);
 
     QCOMPARE(doc->text(), QString(text).replace("${foo}", "foo"));
@@ -144,7 +148,7 @@ void TemplateHandlerTest::testAlignC()
 
     auto doc = new KTextEditor::DocumentPrivate();
     doc->setHighlightingMode("C");
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
     QCOMPARE(doc->text(), expected);
@@ -157,15 +161,18 @@ void TemplateHandlerTest::testAlignC_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expected");
 
-    QTest::newRow("one") << "/* ${foo} */" << "/* foo */";
-    QTest::newRow("simple") << "/**\n* ${foo}\n*/" << "/**\n * foo\n */";
-    QTest::newRow("complex") << "/**\n* @brief: ${...}\n* \n*/" << "/**\n * @brief: ...\n * \n */";
+    QTest::newRow("one") << "/* ${foo} */"
+                         << "/* foo */";
+    QTest::newRow("simple") << "/**\n* ${foo}\n*/"
+                            << "/**\n * foo\n */";
+    QTest::newRow("complex") << "/**\n* @brief: ${...}\n* \n*/"
+                             << "/**\n * @brief: ...\n * \n */";
 }
 
 void TemplateHandlerTest::testAdjacentRanges()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     using S = QString;
     view->insertTemplate({0, 0}, S("${foo} ${foo}"));
@@ -188,7 +195,7 @@ void TemplateHandlerTest::testTab()
     QFETCH(int, cursor);
 
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, tpl);
     view->setCursorPosition({0, cursor});
@@ -229,7 +236,7 @@ void TemplateHandlerTest::testTab_data()
 void TemplateHandlerTest::testExitAtCursor()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, QStringLiteral("${foo} ${bar} ${cursor} ${foo}"));
     view->setCursorPosition({0, 0});
@@ -260,11 +267,10 @@ void TemplateHandlerTest::testExitAtCursor()
 void TemplateHandlerTest::testDefaultMirror()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     using S = QString;
-    view->insertTemplate({0, 0}, S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}"),
-                             S("function uppercase(x) { return x.toUpperCase(); }"));
+    view->insertTemplate({0, 0}, S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}"), S("function uppercase(x) { return x.toUpperCase(); }"));
     QCOMPARE(doc->text(), S("HI 3 HI"));
     doc->insertText({0, 0}, "xy@");
     QCOMPARE(doc->text(), S("xy@HI 3 xy@HI"));
@@ -275,11 +281,10 @@ void TemplateHandlerTest::testDefaultMirror()
 void TemplateHandlerTest::testFunctionMirror()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     using S = QString;
-    view->insertTemplate({0, 0}, S("${foo} hi ${uppercase(foo)}"),
-                            S("function uppercase(x) { return x.toUpperCase(); }"));
+    view->insertTemplate({0, 0}, S("${foo} hi ${uppercase(foo)}"), S("function uppercase(x) { return x.toUpperCase(); }"));
     QCOMPARE(doc->text(), S("foo hi FOO"));
     doc->insertText({0, 0}, "xy@");
     QCOMPARE(doc->text(), S("xy@foo hi XY@FOO"));
@@ -290,7 +295,7 @@ void TemplateHandlerTest::testFunctionMirror()
 void TemplateHandlerTest::testAutoSelection()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     view->insertTemplate({0, 0}, "${foo} ${bar} ${bar} ${cursor} ${baz}");
     QCOMPARE(doc->text(), QStringLiteral("foo bar bar  baz"));
@@ -323,7 +328,7 @@ void TemplateHandlerTest::testNotEditableFields()
     QFETCH(int, change_offset);
 
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     view->insertTemplate({0, 0}, input);
 
     doc->insertText({0, change_offset}, "xxx");
@@ -343,12 +348,10 @@ void TemplateHandlerTest::testNotEditableFields_data()
 void TemplateHandlerTest::testCanRetrieveSelection()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     view->insertText("hi world");
     view->setSelection(KTextEditor::Range(0, 1, 0, 4));
-    view->insertTemplate({0, 1}, QStringLiteral("xx${foo=sel()}xx"),
-        QStringLiteral("function sel() { return view.selectedText(); }")
-    );
+    view->insertTemplate({0, 1}, QStringLiteral("xx${foo=sel()}xx"), QStringLiteral("function sel() { return view.selectedText(); }"));
     QCOMPARE(doc->text(), QStringLiteral("hxxi wxxorld"));
 }
 
@@ -367,10 +370,8 @@ void TemplateHandlerTest::testDefaults_data()
     QTest::newRow("string_mirror") << S("${foo=\"Bar\"} ${foo}") << S("Bar Bar") << S();
     QTest::newRow("func_simple") << S("${foo=myfunc()}") << S("hi") << S("function myfunc() { return 'hi'; }");
     QTest::newRow("func_fixed") << S("${myfunc()}") << S("hi") << S("function myfunc() { return 'hi'; }");
-    QTest::newRow("func_constant_arg") << S("${foo=uppercase(\"Foo\")}") << S("FOO")
-                                       << S("function uppercase(x) { return x.toUpperCase(); }");
-    QTest::newRow("func_constant_arg_mirror") << S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << S("HI 3 HI")
-                                              << S("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("func_constant_arg") << S("${foo=uppercase(\"Foo\")}") << S("FOO") << S("function uppercase(x) { return x.toUpperCase(); }");
+    QTest::newRow("func_constant_arg_mirror") << S("${foo=uppercase(\"hi\")} ${bar=3} ${foo}") << S("HI 3 HI") << S("function uppercase(x) { return x.toUpperCase(); }");
     QTest::newRow("cursor") << S("${foo} ${cursor}") << S("foo ") << S();
     QTest::newRow("only_cursor") << S("${cursor}") << S("") << S();
     QTest::newRow("only_cursor_stuff") << S("fdas ${cursor} asdf") << S("fdas  asdf") << S();
@@ -379,7 +380,7 @@ void TemplateHandlerTest::testDefaults_data()
 void TemplateHandlerTest::testDefaults()
 {
     auto doc = new KTextEditor::DocumentPrivate();
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc->createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
 
     QFETCH(QString, input);
     QFETCH(QString, function);

@@ -18,10 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef KEYS_TEST_H
 #define KEYS_TEST_H
-
 
 #include "base.h"
 
@@ -37,6 +35,5 @@ private Q_SLOTS:
     void MacroTests();
     void MarkTests();
 };
-
 
 #endif /* KEYS_TEST_H */

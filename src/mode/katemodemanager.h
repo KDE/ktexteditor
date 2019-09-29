@@ -29,7 +29,10 @@
 
 #include "katedialogs.h"
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 class KateFileType
 {
@@ -61,7 +64,8 @@ public:
 
     KateFileType()
 
-    {}
+    {
+    }
 };
 
 class KateModeManager
@@ -71,7 +75,7 @@ public:
     ~KateModeManager();
 
     KateModeManager(const KateModeManager &) = delete;
-    KateModeManager& operator=(const KateModeManager &) = delete;
+    KateModeManager &operator=(const KateModeManager &) = delete;
 
     /**
      * File Type Config changed, update all docs (which will take care of views/renderers)
@@ -105,8 +109,6 @@ private:
 private:
     QList<KateFileType *> m_types;
     QHash<QString, KateFileType *> m_name2Type;
-
 };
 
 #endif
-

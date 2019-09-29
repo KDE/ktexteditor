@@ -20,10 +20,8 @@
 
 KateAbstractInputModeFactory::KateAbstractInputModeFactory()
 {
-
 }
 
 KateAbstractInputModeFactory::~KateAbstractInputModeFactory()
 {
-
 }

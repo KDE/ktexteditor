@@ -18,7 +18,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include <KLocalizedString>
 #include <kateconfig.h>
 #include <vimode/keymapper.h>
@@ -32,17 +31,16 @@
 #include "vimode/globalstate.h"
 
 using namespace KTextEditor;
-using KateVi::Mappings;
 using KateVi::KeyParser;
-
+using KateVi::Mappings;
 
 QTEST_MAIN(KeysTest)
 
-//BEGIN: KeysTest
+// BEGIN: KeysTest
 
 void KeysTest::MappingTests()
 {
-//     QVERIFY(false);
+    //     QVERIFY(false);
     const int mappingTimeoutMSOverride = QString::fromLocal8Bit(qgetenv("KATE_VIMODE_TEST_MAPPINGTIMEOUTMS")).toInt();
     const int mappingTimeoutMS = (mappingTimeoutMSOverride > 0) ? mappingTimeoutMSOverride : 2000;
     KateViewConfig::global()->setValue(KateViewConfig::ViInputModeStealKeys, true); // For tests involving e.g. <c-a>
@@ -71,7 +69,8 @@ void KeysTest::MappingTests()
         // extend it (e.g. '1234, '12345, etc) and which it itself extends ('1, '12, etc).
         clearAllMappings();
         BeginTest("");
-        vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
+        vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
+        ;
         QString consectiveDigits;
         for (int i = 1; i < 9; i++) {
             consectiveDigits += QString::number(i);
@@ -106,7 +105,8 @@ void KeysTest::MappingTests()
     vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmapping", "ljrO", Mappings::Recursive);
     vi_global->mappings()->add(Mappings::NormalModeMapping, "'testmappingdummy", "dummy", Mappings::Recursive);
     BeginTest("XXXX\nXXXX\nXXXX\nXXXX");
-    vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
+    vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
+    ;
     TestPressKey("3'testmapping");
     QTest::qWait(2 * mappingTimeoutMS);
     FinishTest("XXXX\nXXXO\nXXXX\nXXXX");
@@ -130,7 +130,8 @@ void KeysTest::MappingTests()
     clearAllMappings();
     vi_global->mappings()->add(Mappings::NormalModeMapping, "gpa", "idummy", Mappings::Recursive);
     BeginTest("hello");
-    vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);;
+    vi_input_mode_manager->keyMapper()->setMappingTimeout(mappingTimeoutMS);
+    ;
     TestPressKey("yiwgp");
     QTest::qWait(2 * mappingTimeoutMS);
     TestPressKey("x");
@@ -157,7 +158,9 @@ void KeysTest::MappingTests()
     // Firstly: work out the expected result of gj (this might be fragile as default settings
     // change, etc.).  We use BeginTest & FinishTest for the setup and teardown etc, but this is
     // not an actual test - it's just computing the expected result of the real test!
-    const QString multiVirtualLineText = "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo";
+    const QString multiVirtualLineText =
+        "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo "
+        "foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo foo";
     ensureKateViewVisible(); // Needs to be visible in order for virtual lines to make sense.
     KateViewConfig::global()->setDynWordWrap(true);
     BeginTest(multiVirtualLineText);
@@ -772,7 +775,8 @@ void KeysTest::MacroTests()
     DoTest("foo bar", "qa~qvlll@a", "FOO Bar");
     // Invoking a macro in Visual Mode does not exit Visual Mode.
     clearAllMacros();
-    DoTest("foo bar", "qallqggv@a~", "FOO bar");;
+    DoTest("foo bar", "qallqggv@a~", "FOO bar");
+    ;
     // Can record & macros in Visual Mode for playback in Normal Mode.
     clearAllMacros();
     DoTest("foo bar", "vqblq\\ctrl-c@b~", "foO bar");
@@ -835,10 +839,12 @@ void KeysTest::MacroTests()
     clearAllMacros();
     // More stringent test that macros called from another macro aren't repeated - requires more nesting
     // of macros ('a' calls 'b' calls 'c').
-    DoTest("", "qciC\\ctrl-cq"
+    DoTest("",
+           "qciC\\ctrl-cq"
            "qb@ciB\\ctrl-cq"
            "qa@biA\\ctrl-cq"
-           "dd@a", "ABC");
+           "dd@a",
+           "ABC");
     // Don't crash if we invoke a non-existent macro.
     clearAllMacros();
     DoTest("", "@x", "");
@@ -950,7 +956,7 @@ void KeysTest::MacroTests()
 
     // Don't invoke completion via ctrl-space when replaying a macro.
     clearAllMacros();
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     BeginTest("");
     TestPressKey("qqico\\ctrl- \\ctrl-cq");
@@ -960,7 +966,7 @@ void KeysTest::MacroTests()
 
     // Don't invoke completion via ctrl-p when replaying a macro.
     clearAllMacros();
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     BeginTest("");
     TestPressKey("qqico\\ctrl-p\\ctrl-cq");
@@ -970,7 +976,7 @@ void KeysTest::MacroTests()
 
     // Don't invoke completion via ctrl-n when replaying a macro.
     clearAllMacros();
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     BeginTest("");
     TestPressKey("qqico\\ctrl-n\\ctrl-cq");
@@ -988,7 +994,7 @@ void KeysTest::MacroTests()
     BeginTest("");
     TestPressKey("qqicompl\\enterX\\ctrl-cqdddd");
     QVERIFY(!fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->forceInvocationIfDocTextIs("compl");
     fakeCodeCompletionModel->clearWasInvoked();
     TestPressKey("@q");
@@ -1003,7 +1009,7 @@ void KeysTest::MacroTests()
     BeginTest("");
     TestPressKey("qqicompl\\returnX\\ctrl-cqdddd");
     QVERIFY(!fakeCodeCompletionModel->wasInvoked()); // Error in test setup!
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->forceInvocationIfDocTextIs("compl");
     fakeCodeCompletionModel->clearWasInvoked();
     TestPressKey("@q");
@@ -1014,7 +1020,7 @@ void KeysTest::MacroTests()
     // If we do a plain-text completion in a macro, this should be repeated when we replay it.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqicompl\\ctrl- \\enter\\ctrl-cq");
     kate_document->clear();
@@ -1025,7 +1031,7 @@ void KeysTest::MacroTests()
     // Should replace only the current word when we repeat the completion.
     clearAllMacros();
     BeginTest("compl");
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqfla\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1036,7 +1042,7 @@ void KeysTest::MacroTests()
     // Tail-clearing completions should be undoable with one undo.
     clearAllMacros();
     BeginTest("compl");
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqfla\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1047,7 +1053,7 @@ void KeysTest::MacroTests()
     // Should be able to store multiple completions.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqicom\\ctrl-p\\enter com\\ctrl-p\\ctrl-p\\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1057,10 +1063,10 @@ void KeysTest::MacroTests()
     // Clear the completions for a macro when we start recording.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionOrig" });
+    fakeCodeCompletionModel->setCompletions({"completionOrig"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqicom\\ctrl- \\enter\\ctrl-cq");
-    fakeCodeCompletionModel->setCompletions({ "completionSecond" });
+    fakeCodeCompletionModel->setCompletions({"completionSecond"});
     TestPressKey("ddqqicom\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     TestPressKey("dd@q");
@@ -1069,10 +1075,10 @@ void KeysTest::MacroTests()
     // Completions are per macro.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA" });
+    fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qaicom\\ctrl- \\enter\\ctrl-cq");
-    fakeCodeCompletionModel->setCompletions({ "completionB" });
+    fakeCodeCompletionModel->setCompletions({"completionB"});
     TestPressKey("ddqbicom\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
     TestPressKey("dd@aA\\enter\\ctrl-c@b");
@@ -1081,12 +1087,12 @@ void KeysTest::MacroTests()
     // Make sure completions work with recursive macros.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA1", "completionA2" });
+    fakeCodeCompletionModel->setCompletions({"completionA1", "completionA2"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     // Record 'a', which calls the (non-yet-existent) macro 'b'.
     TestPressKey("qaicom\\ctrl- \\enter\\ctrl-cA\\enter\\ctrl-c@bA\\enter\\ctrl-cicom\\ctrl- \\ctrl-p\\enter\\ctrl-cq");
     // Clear document and record 'b'.
-    fakeCodeCompletionModel->setCompletions({ "completionB" });
+    fakeCodeCompletionModel->setCompletions({"completionB"});
     TestPressKey("ggdGqbicom\\ctrl- \\enter\\ctrl-cq");
     TestPressKey("dd@a");
     FinishTest("completionA1\ncompletionB\ncompletionA2");
@@ -1101,7 +1107,7 @@ void KeysTest::MacroTests()
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     clearAllMacros();
     BeginTest("compTail");
-    fakeCodeCompletionModel->setCompletions({ "completionA", "completionB", "completionC" });
+    fakeCodeCompletionModel->setCompletions({"completionA", "completionB", "completionC"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1112,7 +1118,7 @@ void KeysTest::MacroTests()
     // A "word" consists of letters & numbers, plus "_".
     clearAllMacros();
     BeginTest("(123_compTail");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1124,7 +1130,7 @@ void KeysTest::MacroTests()
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     clearAllMacros();
     BeginTest("(123_compTail)");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
@@ -1136,7 +1142,7 @@ void KeysTest::MacroTests()
     // Again, a "word" consists of letters & numbers & underscores.
     clearAllMacros();
     BeginTest("(123_compTail_456)");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     TestPressKey("qqfTi\\ctrl- \\enter\\ctrl-cq");
@@ -1149,7 +1155,7 @@ void KeysTest::MacroTests()
     // completion occurred, not when we replay it.
     clearAllMacros();
     BeginTest("(123_compTail_456)");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
@@ -1161,7 +1167,7 @@ void KeysTest::MacroTests()
     FinishTest("(123_completionA)");
     clearAllMacros();
     BeginTest("(123_compTail_456)");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
@@ -1175,7 +1181,7 @@ void KeysTest::MacroTests()
     // Can have remove-tail *and* non-remove-tail completions in one macro.
     clearAllMacros();
     BeginTest("(123_compTail_456)\n(123_compTail_456)");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
@@ -1190,7 +1196,7 @@ void KeysTest::MacroTests()
     // Can repeat plain-text completions when there is no word to the left of the cursor.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqi\\ctrl- \\enter\\ctrl-cq");
     kate_document->clear();
@@ -1200,7 +1206,7 @@ void KeysTest::MacroTests()
     // Shouldn't swallow the letter under the cursor if we're not swallowing tails.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
@@ -1213,7 +1219,7 @@ void KeysTest::MacroTests()
     // ... but do if we are swallowing tails.
     clearAllMacros();
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "123_completionA" });
+    fakeCodeCompletionModel->setCompletions({"123_completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     fakeCodeCompletionModel->setRemoveTailOnComplete(true);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
@@ -1229,7 +1235,7 @@ void KeysTest::MacroTests()
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
     // A completed, no argument function "function()" is repeated correctly.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function()" });
+    fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1238,7 +1244,7 @@ void KeysTest::MacroTests()
 
     // Cursor is placed after the closing bracket when completion a no-arg function.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function()" });
+    fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enter.something();\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1248,7 +1254,7 @@ void KeysTest::MacroTests()
     // A function taking some arguments, repeated where there is no opening bracket to
     // merge with, is repeated as "function()").
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enter\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1258,7 +1264,7 @@ void KeysTest::MacroTests()
     // A function taking some arguments, repeated where there is no opening bracket to
     // merge with, places the cursor after the opening bracket.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1269,7 +1275,7 @@ void KeysTest::MacroTests()
     // with but repeated where there is no such bracket, is repeated as "function()" and the
     // cursor placed appropriately.
     BeginTest("(<-Mergeable opening bracket)");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1280,7 +1286,7 @@ void KeysTest::MacroTests()
     // with but repeated where there is such a bracket, is repeated as "function" and the
     // cursor moved to after the merged opening bracket.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1292,7 +1298,7 @@ void KeysTest::MacroTests()
     // with and repeated where there is also such a bracket, is repeated as "function" and the
     // cursor moved to after the merged opening bracket.
     BeginTest("(<-mergeablebracket)");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1303,7 +1309,7 @@ void KeysTest::MacroTests()
     // The mergeable bracket can be separated by whitespace; the cursor is still placed after the
     // opening bracket.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1313,7 +1319,7 @@ void KeysTest::MacroTests()
 
     // Whitespace only, though!
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1325,7 +1331,7 @@ void KeysTest::MacroTests()
     // Note that this wouldn't be the case if we weren't swallowing tails when completion functions,
     // but this is not currently supported.
     BeginTest("function");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1336,14 +1342,14 @@ void KeysTest::MacroTests()
     // Regression test for weird issue with replaying completions when the character to the left of the cursor
     // is not a word char.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA" });
+    fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqciw\\ctrl- \\enter\\ctrl-cq");
     TestPressKey("ddi.xyz\\enter123\\enter456\\ctrl-cggl"); // Position cursor just after the "."
     TestPressKey("@q");
     FinishTest(".completionA\n123\n456");
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionA" });
+    fakeCodeCompletionModel->setCompletions({"completionA"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqciw\\ctrl- \\enter\\ctrl-cq");
     TestPressKey("ddi.xyz.abc\\enter123\\enter456\\ctrl-cggl"); // Position cursor just after the "."
@@ -1352,7 +1358,7 @@ void KeysTest::MacroTests()
 
     // Functions taking no arguments are never bracket-merged.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function()" });
+    fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifunc\\ctrl- \\enter.something();\\ctrl-cq");
     fakeCodeCompletionModel->setFailTestOnInvocation(true);
@@ -1363,7 +1369,7 @@ void KeysTest::MacroTests()
     // Not-removing-tail when completing functions is not currently supported,
     // so ignore the "do-not-remove-tail" settings when we try this.
     BeginTest("funct");
-    fakeCodeCompletionModel->setCompletions({ "function(...)" });
+    fakeCodeCompletionModel->setCompletions({"function(...)"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqfta\\ctrl- \\enterfirstArg\\ctrl-cq");
@@ -1372,7 +1378,7 @@ void KeysTest::MacroTests()
     TestPressKey("gg@q");
     FinishTest("function(firstArg)");
     BeginTest("funct");
-    fakeCodeCompletionModel->setCompletions({ "function()" });
+    fakeCodeCompletionModel->setCompletions({"function()"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
     TestPressKey("qqfta\\ctrl- \\enter\\ctrl-cq");
@@ -1384,7 +1390,7 @@ void KeysTest::MacroTests()
 
     // Deal with cases where completion ends with ";".
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function();" });
+    fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
     kate_document->clear();
@@ -1392,7 +1398,7 @@ void KeysTest::MacroTests()
     TestPressKey("gg@q");
     FinishTest("function();");
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function();" });
+    fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
     kate_document->clear();
@@ -1400,7 +1406,7 @@ void KeysTest::MacroTests()
     TestPressKey("gg@q");
     FinishTest("function();X");
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...);" });
+    fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
     kate_document->clear();
@@ -1408,7 +1414,7 @@ void KeysTest::MacroTests()
     TestPressKey("gg@q");
     FinishTest("function();");
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...);" });
+    fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
     kate_document->clear();
@@ -1418,7 +1424,7 @@ void KeysTest::MacroTests()
     // Tests for completions ending in ";" where bracket merging should happen on replay.
     // NB: bracket merging when recording is impossible with completions that end in ";".
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...);" });
+    fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enter\\ctrl-cq");
     kate_document->setText("(<-mergeable bracket");
@@ -1426,7 +1432,7 @@ void KeysTest::MacroTests()
     TestPressKey("gg@q");
     FinishTest("function(<-mergeable bracket");
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function(...);" });
+    fakeCodeCompletionModel->setCompletions({"function(...);"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
     kate_document->setText("(<-mergeable bracket");
@@ -1435,7 +1441,7 @@ void KeysTest::MacroTests()
     FinishTest("function(X<-mergeable bracket");
     // Don't merge no arg functions.
     BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "function();" });
+    fakeCodeCompletionModel->setCompletions({"function();"});
     fakeCodeCompletionModel->setFailTestOnInvocation(false);
     TestPressKey("qqifun\\ctrl- \\enterX\\ctrl-cq");
     kate_document->setText("(<-mergeable bracket");
@@ -1449,27 +1455,27 @@ void KeysTest::MacroTests()
         // Test loading and saving of macro completions.
         clearAllMacros();
         BeginTest("funct\nnoa\ncomtail\ncomtail\ncom");
-        fakeCodeCompletionModel->setCompletions({ "completionA", "functionwithargs(...)", "noargfunction()" });
+        fakeCodeCompletionModel->setCompletions({"completionA", "functionwithargs(...)", "noargfunction()"});
         fakeCodeCompletionModel->setFailTestOnInvocation(false);
         // Record 'a'.
         TestPressKey("qafta\\ctrl- \\enterfirstArg\\ctrl-c"); // Function with args.
         TestPressKey("\\enterea\\ctrl- \\enter\\ctrl-c");     // Function no args.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
-        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-c");   // Cut off tail.
+        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-c"); // Cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(false);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, false);
-        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-cq");   // Don't cut off tail.
+        TestPressKey("\\enterfti\\ctrl- \\enter\\ctrl-cq"); // Don't cut off tail.
         fakeCodeCompletionModel->setRemoveTailOnComplete(true);
         KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, true);
         // Record 'b'.
-        fakeCodeCompletionModel->setCompletions({ "completionB", "semicolonfunctionnoargs();", "semicolonfunctionwithargs(...);" });
+        fakeCodeCompletionModel->setCompletions({"completionB", "semicolonfunctionnoargs();", "semicolonfunctionwithargs(...);"});
         TestPressKey("\\enterqbea\\ctrl- \\enter\\ctrl-cosemicolonfunctionw\\ctrl- \\enterX\\ctrl-cosemicolonfunctionn\\ctrl- \\enterX\\ctrl-cq");
         // Save.
         vi_global->writeConfig(&viTestKConfig);
         viTestKConfig.sync();
         // Overwrite 'a' and 'b' and their completions.
-        fakeCodeCompletionModel->setCompletions({ "blah1" });
+        fakeCodeCompletionModel->setCompletions({"blah1"});
         kate_document->setText("");
         TestPressKey("ggqaiblah\\ctrl- \\enter\\ctrl-cq");
         TestPressKey("ddqbiblah\\ctrl- \\enter\\ctrl-cq");
@@ -1503,17 +1509,17 @@ void KeysTest::MacroTests()
     // event from the last change completions log, rather than the macro completions log.
     // Ensure that the last change completions log is kept up to date even while we're replaying the macro.
     if (false) { // FIXME: test currently fails in newer Qt >= 5.11, but works with Qt 5.10
-    clearAllMacros();
-    BeginTest("");
-    fakeCodeCompletionModel->setCompletions({ "completionMacro", "completionRepeatLastChange" });
-    fakeCodeCompletionModel->setFailTestOnInvocation(false);
-    TestPressKey("qqicompletionM\\ctrl- \\enter\\ctrl-c");
-    TestPressKey("a completionRep\\ctrl- \\enter\\ctrl-c");
-    TestPressKey(".q");
-    qDebug() << "text: " << kate_document->text();
-    kate_document->clear();
-    TestPressKey("gg@q");
-    FinishTest("completionMacro completionRepeatLastChange completionRepeatLastChange");
+        clearAllMacros();
+        BeginTest("");
+        fakeCodeCompletionModel->setCompletions({"completionMacro", "completionRepeatLastChange"});
+        fakeCodeCompletionModel->setFailTestOnInvocation(false);
+        TestPressKey("qqicompletionM\\ctrl- \\enter\\ctrl-c");
+        TestPressKey("a completionRep\\ctrl- \\enter\\ctrl-c");
+        TestPressKey(".q");
+        qDebug() << "text: " << kate_document->text();
+        kate_document->clear();
+        TestPressKey("gg@q");
+        FinishTest("completionMacro completionRepeatLastChange completionRepeatLastChange");
     }
 
     KateViewConfig::global()->setValue(KateViewConfig::WordCompletionRemoveTail, oldRemoveTailOnCompletion);
@@ -1583,4 +1589,4 @@ void KeysTest::MarkTests()
     DoTest("foo\nbar\nxyz\n123", "jVj~u\\esc`[r[", "foo\n[ar\nxyz\n123", ShouldFail, "Vim is weird.");
 }
 
-//END: KeysTest
+// END: KeysTest

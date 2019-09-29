@@ -28,9 +28,10 @@
 #include <ktexteditor/cursor.h>
 #include <QFont>
 
-namespace KTextEditor {
-    class InlineNoteProvider;
-    class View;
+namespace KTextEditor
+{
+class InlineNoteProvider;
+class View;
 }
 
 /**
@@ -40,16 +41,10 @@ class KateInlineNoteData
 {
 public:
     KateInlineNoteData() = default;
-    KateInlineNoteData(KTextEditor::InlineNoteProvider* provider,
-                       const KTextEditor::View* view,
-                       const KTextEditor::Cursor& position,
-                       int index,
-                       bool underMouse,
-                       const QFont& font,
-                       int lineHeight);
+    KateInlineNoteData(KTextEditor::InlineNoteProvider *provider, const KTextEditor::View *view, const KTextEditor::Cursor &position, int index, bool underMouse, const QFont &font, int lineHeight);
 
-    KTextEditor::InlineNoteProvider* m_provider = nullptr;
-    const KTextEditor::View* m_view = nullptr;
+    KTextEditor::InlineNoteProvider *m_provider = nullptr;
+    const KTextEditor::View *m_view = nullptr;
     KTextEditor::Cursor m_position = KTextEditor::Cursor::invalid();
     int m_index = -1;
     bool m_underMouse = false;

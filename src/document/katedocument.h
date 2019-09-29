@@ -60,7 +60,10 @@ class SwapFile;
 }
 
 class KateBuffer;
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateDocumentConfig;
 class KateHighlighting;
 class KateUndoManager;
@@ -78,12 +81,12 @@ class KToggleAction;
  *          KTextEditor interfaces.
  */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
-    public KTextEditor::MarkInterface,
-    public KTextEditor::ModificationInterface,
-    public KTextEditor::ConfigInterface,
-    public KTextEditor::AnnotationInterface,
-    public KTextEditor::MovingInterface,
-    private KTextEditor::MovingRangeFeedback
+                                                        public KTextEditor::MarkInterface,
+                                                        public KTextEditor::ModificationInterface,
+                                                        public KTextEditor::ConfigInterface,
+                                                        public KTextEditor::AnnotationInterface,
+                                                        public KTextEditor::MovingInterface,
+                                                        private KTextEditor::MovingRangeFeedback
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::MarkInterface)
@@ -97,8 +100,7 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
     friend class ::KateBuffer;
 
 public:
-    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false,
-                          QWidget *parentWidget = nullptr, QObject * = nullptr);
+    explicit DocumentPrivate(bool bSingleViewMode = false, bool bReadOnly = false, QWidget *parentWidget = nullptr, QObject * = nullptr);
     ~DocumentPrivate() override;
 
     using ReadWritePart::closeUrl;
@@ -188,7 +190,7 @@ public:
     QChar characterAt(const KTextEditor::Cursor &position) const override;
     QString wordAt(const KTextEditor::Cursor &cursor) const override;
     KTextEditor::Range wordRangeAt(const KTextEditor::Cursor &cursor) const override;
-    bool isValidTextPosition(const KTextEditor::Cursor& cursor) const override;
+    bool isValidTextPosition(const KTextEditor::Cursor &cursor) const override;
     int lines() const override;
     bool isLineModified(int line) const override;
     bool isLineSaved(int line) const override;
@@ -221,7 +223,7 @@ Q_SIGNALS:
     void textRemoved(KTextEditor::Document *document, const KTextEditor::Range &range, const QString &oldText);
 
 public:
-//BEGIN editStart/editEnd (start, end, undo, cursor update, view update)
+    // BEGIN editStart/editEnd (start, end, undo, cursor update, view update)
     /**
      * Enclose editor actions with @p editStart() and @p editEnd() to group
      * them.
@@ -254,12 +256,12 @@ public:
         return editEnd();
     }
 
-//END editStart/editEnd
+    // END editStart/editEnd
 
     void inputMethodStart();
     void inputMethodEnd();
 
-//BEGIN LINE BASED INSERT/REMOVE STUFF (editStart() and editEnd() included)
+    // BEGIN LINE BASED INSERT/REMOVE STUFF (editStart() and editEnd() included)
     /**
      * Add a string in the given line/column
      * @param line line number
@@ -346,7 +348,7 @@ public:
      * @return true on success
      */
     bool wrapParagraph(int first, int last);
-//END LINE BASED INSERT/REMOVE STUFF
+    // END LINE BASED INSERT/REMOVE STUFF
 
 Q_SIGNALS:
     /**
@@ -366,10 +368,10 @@ public:
 
     enum EditingPositionKind { Previous, Next };
 
-   /**
-    *Returns the next or previous position cursor in this document from the stack depending on the argument passed.
-    *@return cursor invalid if m_editingStack empty
-    */
+    /**
+     *Returns the next or previous position cursor in this document from the stack depending on the argument passed.
+     *@return cursor invalid if m_editingStack empty
+     */
     KTextEditor::Cursor lastEditingPosition(EditingPositionKind nextOrPrevious, KTextEditor::Cursor);
 
 private:
@@ -416,10 +418,7 @@ Q_SIGNALS:
     void undoChanged();
 
 public:
-    QVector<KTextEditor::Range> searchText(
-        const KTextEditor::Range &range,
-        const QString &pattern,
-        const KTextEditor::SearchOptions options) const;
+    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range, const QString &pattern, const KTextEditor::SearchOptions options) const;
 
 private:
     /**
@@ -549,10 +548,10 @@ public Q_SLOTS:
 
     void requestMarkTooltip(int line, QPoint position);
 
-    ///Returns true if the click on the mark should not be further processed
+    /// Returns true if the click on the mark should not be further processed
     bool handleMarkClick(int line);
 
-    ///Returns true if the context-menu event should not further be processed
+    /// Returns true if the context-menu event should not further be processed
     bool handleMarkContextMenu(int line, QPoint position);
 
     void setMarkPixmap(MarkInterface::MarkTypes, const QPixmap &) override;
@@ -581,9 +580,9 @@ Q_SIGNALS:
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
-    QHash<int, QPixmap>           m_markPixmaps;
-    QHash<int, QString>           m_markDescriptions;
-    uint                        m_editableMarks = markType01;
+    QHash<int, QPixmap> m_markPixmaps;
+    QHash<int, QString> m_markDescriptions;
+    uint m_editableMarks = markType01;
 
     // KTextEditor::PrintInterface
     //
@@ -651,8 +650,9 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand
-            , KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) override;
+    KTextEditor::MovingRange *newMovingRange(const KTextEditor::Range &range,
+                                             KTextEditor::MovingRange::InsertBehaviors insertBehaviors = KTextEditor::MovingRange::DoNotExpand,
+                                             KTextEditor::MovingRange::EmptyBehavior emptyBehavior = KTextEditor::MovingRange::AllowEmpty) override;
 
     /**
      * Current revision
@@ -729,7 +729,6 @@ Q_SIGNALS:
     // Annotation Interface
     //
 public:
-
     void setAnnotationModel(KTextEditor::AnnotationModel *model) override;
     KTextEditor::AnnotationModel *annotationModel() const override;
 
@@ -762,7 +761,10 @@ public:
     void setModified(bool m) override;
 
     bool isAutoReload();
-    KToggleAction* autoReloadToggleAction() { return m_autoReloadMode; };
+    KToggleAction *autoReloadToggleAction()
+    {
+        return m_autoReloadMode;
+    };
     void delayAutoReload();
 
 private Q_SLOTS:
@@ -829,7 +831,7 @@ public:
 
     enum NewLineIndent { Indent, NoIndent };
 
-    void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent);  // Changes input
+    void newLine(KTextEditor::ViewPrivate *view, NewLineIndent indent = NewLineIndent::Indent); // Changes input
     void backspace(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void del(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &);
     void transpose(const KTextEditor::Cursor &);
@@ -888,27 +890,27 @@ private:
     bool previousNonSpaceCharPos(int &line, int &col);
 
     /**
-    * Sets a comment marker as defined by the language providing the attribute
-    * @p attrib on the line @p line
-    */
+     * Sets a comment marker as defined by the language providing the attribute
+     * @p attrib on the line @p line
+     */
     void addStartLineCommentToSingleLine(int line, int attrib = 0);
     /**
-    * Removes a comment marker as defined by the language providing the attribute
-    * @p attrib on the line @p line
-    */
+     * Removes a comment marker as defined by the language providing the attribute
+     * @p attrib on the line @p line
+     */
     bool removeStartLineCommentFromSingleLine(int line, int attrib = 0);
 
     /**
-    * @see addStartLineCommentToSingleLine.
-    */
+     * @see addStartLineCommentToSingleLine.
+     */
     void addStartStopCommentToSingleLine(int line, int attrib = 0);
     /**
-    *@see removeStartLineCommentFromSingleLine.
-    */
+     *@see removeStartLineCommentFromSingleLine.
+     */
     bool removeStartStopCommentFromSingleLine(int line, int attrib = 0);
     /**
-    *@see removeStartLineCommentFromSingleLine.
-    */
+     *@see removeStartLineCommentFromSingleLine.
+     */
     bool removeStartStopCommentFromRegion(const KTextEditor::Cursor &start, const KTextEditor::Cursor &end, int attrib = 0);
 
     /**
@@ -934,7 +936,7 @@ private:
     bool removeStartLineCommentFromSelection(KTextEditor::ViewPrivate *view, int attrib = 0);
 
 public:
-    KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor & start, int maxLines);
+    KTextEditor::Range findMatchingBracket(const KTextEditor::Cursor &start, int maxLines);
 
 public:
     QString documentName() const override
@@ -976,6 +978,7 @@ public Q_SLOTS:
     bool documentSaveCopyAs();
 
     bool save() override;
+
 public:
     bool saveAs(const QUrl &url) override;
 
@@ -1113,7 +1116,7 @@ private:
     bool m_userSetEncodingForNextReload = false;
 
     bool m_modOnHd = false;
-    KToggleAction* m_autoReloadMode;
+    KToggleAction *m_autoReloadMode;
     QTimer m_autoReloadThrottle;
     ModifiedOnDiskReason m_modOnHdReason = OnDiskUnmodified;
     ModifiedOnDiskReason m_prevModOnHdReason = OnDiskUnmodified;
@@ -1227,7 +1230,7 @@ public:
     virtual KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor &position);
 
     //
-    //BEGIN: KTextEditor::MessageInterface
+    // BEGIN: KTextEditor::MessageInterface
     //
 public:
     bool postMessage(KTextEditor::Message *message) override;
@@ -1236,12 +1239,12 @@ public Q_SLOTS:
     void messageDestroyed(KTextEditor::Message *message);
 
 private:
-    QHash<KTextEditor::Message *, QList<QSharedPointer<QAction> > > m_messageHash;
-    //END KTextEditor::MessageInterface
+    QHash<KTextEditor::Message *, QList<QSharedPointer<QAction>>> m_messageHash;
+    // END KTextEditor::MessageInterface
 
 public:
     QString defaultDictionary() const;
-    QList<QPair<KTextEditor::MovingRange *, QString> > dictionaryRanges() const;
+    QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges() const;
     bool isOnTheFlySpellCheckingEnabled() const;
 
     QString dictionaryForMisspelledRange(const KTextEditor::Range &range) const;
@@ -1262,7 +1265,7 @@ Q_SIGNALS:
 public:
     bool containsCharacterEncoding(const KTextEditor::Range &range);
 
-    typedef QList<QPair<int, int> > OffsetList;
+    typedef QList<QPair<int, int>> OffsetList;
 
     int computePositionWrtOffsets(const OffsetList &offsetList, int pos);
 
@@ -1270,15 +1273,13 @@ public:
      * The first OffsetList is from decoded to encoded, and the second OffsetList from
      * encoded to decoded.
      **/
-    QString decodeCharacters(const KTextEditor::Range &range,
-                             KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
-                             KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
+    QString decodeCharacters(const KTextEditor::Range &range, KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList, KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList);
     void replaceCharactersByEncoding(const KTextEditor::Range &range);
 
 protected:
     KateOnTheFlyChecker *m_onTheFlyChecker = nullptr;
     QString m_defaultDictionary;
-    QList<QPair<KTextEditor::MovingRange *, QString> > m_dictionaryRanges;
+    QList<QPair<KTextEditor::MovingRange *, QString>> m_dictionaryRanges;
 
     // from KTextEditor::MovingRangeFeedback
     void rangeInvalid(KTextEditor::MovingRange *movingRange) override;
@@ -1292,7 +1293,7 @@ private:
 public:
     Kate::SwapFile *swapFile();
 
-    //helpers for scripting and codefolding
+    // helpers for scripting and codefolding
     int defStyleNum(int line, int column);
     bool isComment(int line, int column);
 
@@ -1422,10 +1423,10 @@ private:
     QChar m_currentAutobraceClosingChar;
 
 private Q_SLOTS:
-    void checkCursorForAutobrace(KTextEditor::View* view, const KTextEditor::Cursor& newPos);
+    void checkCursorForAutobrace(KTextEditor::View *view, const KTextEditor::Cursor &newPos);
 
 public:
-    void setActiveTemplateHandler(KateTemplateHandler* handler);
+    void setActiveTemplateHandler(KateTemplateHandler *handler);
 
 Q_SIGNALS:
     void loaded(KTextEditor::DocumentPrivate *document);
@@ -1435,6 +1436,7 @@ private Q_SLOTS:
      * trigger a close of this document in the application
      */
     void closeDocumentInApplication();
+
 private:
     // To calculate a QHash.keys() is quite expensive,
     // better keep a copy of that list updated when a view is added or removed.

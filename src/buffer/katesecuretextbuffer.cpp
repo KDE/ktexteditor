@@ -40,8 +40,8 @@ ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
     const QString sourceFile = args[QStringLiteral("sourceFile")].toString();
     const QString targetFile = args[QStringLiteral("targetFile")].toString();
     const QByteArray checksum = args[QStringLiteral("checksum")].toByteArray();
-    const uint ownerId = (uint) args[QStringLiteral("ownerId")].toInt();
-    const uint groupId = (uint) args[QStringLiteral("groupId")].toInt();
+    const uint ownerId = (uint)args[QStringLiteral("ownerId")].toInt();
+    const uint groupId = (uint)args[QStringLiteral("groupId")].toInt();
 
     if (saveFileInternal(sourceFile, targetFile, checksum, ownerId, groupId)) {
         return ActionReply::SuccessReply();
@@ -50,8 +50,7 @@ ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
     return ActionReply::HelperErrorReply();
 }
 
-bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString &targetFile,
-                                        const QByteArray &checksum, const uint ownerId, const uint groupId)
+bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString &targetFile, const QByteArray &checksum, const uint ownerId, const uint groupId)
 {
     /**
      * open source file for reading

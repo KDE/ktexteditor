@@ -61,7 +61,7 @@ void KateExporter::exportToFile(const QString &file)
     if (!savefile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         return;
     }
-    
+
     QTextStream outputStream(&savefile);
     exportData(false, outputStream);
 }
@@ -77,7 +77,7 @@ void KateExporter::exportData(const bool useSelection, QTextStream &output)
 
     output.setCodec(QTextCodec::codecForName("UTF-8"));
 
-    ///TODO: add more exporters
+    /// TODO: add more exporters
     QScopedPointer<AbstractExporter> exporter;
 
     exporter.reset(new HTMLExporter(m_view, output, !useSelection));

@@ -56,7 +56,7 @@ void BugTest::deleteSurrogates()
     // set up document and view and open test file
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug205447.txt"));
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug205447.txt"));
     doc.setEncoding(QStringLiteral("UTF-8"));
     QVERIFY(doc.openUrl(url));
 
@@ -85,7 +85,7 @@ void BugTest::backspaceSurrogates()
     // set up document and view and open test file
     KTextEditor::DocumentPrivate doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug205447.txt"));
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug205447.txt"));
     doc.setEncoding(QStringLiteral("UTF-8"));
     QVERIFY(doc.openUrl(url));
 
@@ -100,7 +100,7 @@ void BugTest::backspaceSurrogates()
         // get the current line, after `i` delete presses, and convert it to utf32
         // then ensure it's the expected substring of the original line
         QVector<uint> current = doc.line(0).toUcs4();
-        QCOMPARE(current, line.mid(0, line.size()-i));
+        QCOMPARE(current, line.mid(0, line.size() - i));
 
         // press the backspace key and verify that the new text position isn't invalid
         view->backspace();

@@ -25,15 +25,12 @@
 
 using namespace KateVi;
 
-bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent& currentKeyPress, const QList<QKeyEvent>& keyEventLog)
+bool KateVi::isRepeatOfLastShortcutOverrideAsKeyPress(const QKeyEvent &currentKeyPress, const QList<QKeyEvent> &keyEventLog)
 {
     if (keyEventLog.empty())
         return false;
-    const QKeyEvent& lastKeyPress = keyEventLog.last();
-    if (lastKeyPress.type() == QEvent::ShortcutOverride && currentKeyPress.type() == QEvent::KeyPress &&
-        lastKeyPress.key() == currentKeyPress.key() &&
-        lastKeyPress.modifiers() == currentKeyPress.modifiers())
-    {
+    const QKeyEvent &lastKeyPress = keyEventLog.last();
+    if (lastKeyPress.type() == QEvent::ShortcutOverride && currentKeyPress.type() == QEvent::KeyPress && lastKeyPress.key() == currentKeyPress.key() && lastKeyPress.modifiers() == currentKeyPress.modifiers()) {
         return true;
     }
     return false;
@@ -86,15 +83,14 @@ QString LastChangeRecorder::encodedChanges() const
             key = text.at(0);
         }
 
-        if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20)
-                || (mods != Qt::NoModifier && mods != Qt::ShiftModifier)) {
+        if (text.isEmpty() || (text.length() == 1 && text.at(0) < 0x20) || (mods != Qt::NoModifier && mods != Qt::ShiftModifier)) {
             QString keyPress;
 
             keyPress.append(QLatin1Char('<'));
-            keyPress.append((mods & Qt::ShiftModifier)   ? QStringLiteral("s-") : QString());
+            keyPress.append((mods & Qt::ShiftModifier) ? QStringLiteral("s-") : QString());
             keyPress.append((mods & Qt::ControlModifier) ? QStringLiteral("c-") : QString());
-            keyPress.append((mods & Qt::AltModifier)     ? QStringLiteral("a-") : QString());
-            keyPress.append((mods & Qt::MetaModifier)    ? QStringLiteral("m-") : QString());
+            keyPress.append((mods & Qt::AltModifier) ? QStringLiteral("a-") : QString());
+            keyPress.append((mods & Qt::MetaModifier) ? QStringLiteral("m-") : QString());
             keyPress.append(keyCode <= 0xFF ? QChar(keyCode) : KeyParser::self()->qt2vi(keyCode));
             keyPress.append(QLatin1Char('>'));
 

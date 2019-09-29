@@ -28,7 +28,6 @@
 
 namespace KTextEditor
 {
-
 class Plugin;
 class Document;
 class MainWindow;

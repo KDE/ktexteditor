@@ -22,7 +22,6 @@
 
 namespace KTextEditor
 {
-
 class MessagePrivate
 {
 public:
@@ -170,4 +169,3 @@ Message::MessagePosition Message::position() const
 }
 
 } // namespace KTextEditor
-

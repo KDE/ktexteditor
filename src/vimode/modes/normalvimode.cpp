@@ -57,15 +57,11 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR, FUNC, FLGS) m_commands.push_back( \
-        new Command( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
+#define ADDCMD(STR, FUNC, FLGS) m_commands.push_back(new Command(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( \
-        new Motion( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back(new Motion(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
 
-NormalViMode::NormalViMode(InputModeManager *viInputModeManager,
-                           KTextEditor::ViewPrivate *view,
-                           KateViewInternal *viewInternal)
+NormalViMode::NormalViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : ModeBase()
 {
     m_view = view;
@@ -92,18 +88,13 @@ NormalViMode::NormalViMode(InputModeManager *viInputModeManager,
     resetParser(); // initialise with start configuration
 
     m_isUndo = false;
-    connect(doc()->undoManager(), SIGNAL(undoStart(KTextEditor::Document*)),
-            this, SLOT(undoBeginning()));
-    connect(doc()->undoManager(), SIGNAL(undoEnd(KTextEditor::Document*)),
-            this, SLOT(undoEnded()));
+    connect(doc()->undoManager(), SIGNAL(undoStart(KTextEditor::Document *)), this, SLOT(undoBeginning()));
+    connect(doc()->undoManager(), SIGNAL(undoEnd(KTextEditor::Document *)), this, SLOT(undoEnded()));
 
     updateYankHighlightAttrib();
-    connect(view, SIGNAL(configChanged()),
-            this, SLOT(updateYankHighlightAttrib()));
-    connect(doc(), SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)),
-            this, SLOT(clearYankHighlight()));
-    connect(doc(), SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document*)),
-            this, SLOT(aboutToDeleteMovingInterfaceContent()));
+    connect(view, SIGNAL(configChanged()), this, SLOT(updateYankHighlightAttrib()));
+    connect(doc(), SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(clearYankHighlight()));
+    connect(doc(), SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(aboutToDeleteMovingInterfaceContent()));
 }
 
 NormalViMode::~NormalViMode()
@@ -122,8 +113,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     const int keyCode = e->key();
 
     // ignore modifier keys alone
-    if (keyCode == Qt::Key_Shift || keyCode == Qt::Key_Control
-            || keyCode == Qt::Key_Alt || keyCode == Qt::Key_Meta) {
+    if (keyCode == Qt::Key_Shift || keyCode == Qt::Key_Control || keyCode == Qt::Key_Alt || keyCode == Qt::Key_Meta) {
         return false;
     }
 
@@ -142,7 +132,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     const QChar key = KeyParser::self()->KeyEventToQChar(*e);
 
-    const QChar lastChar = m_keys.isEmpty() ?  QChar::Null : m_keys.at(m_keys.size() - 1);
+    const QChar lastChar = m_keys.isEmpty() ? QChar::Null : m_keys.at(m_keys.size() - 1);
     const bool waitingForRegisterOrCharToSearch = this->waitingForRegisterOrCharToSearch();
 
     // Use replace caret when reading a character for "r"
@@ -152,11 +142,10 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
     m_keysVerbatim.append(KeyParser::self()->decodeKeySequence(key));
 
-    if ((keyCode >= Qt::Key_0 && keyCode <= Qt::Key_9 && lastChar != QLatin1Char('"'))          // key 0-9
-            && (m_countTemp != 0 || keyCode != Qt::Key_0)                       // first digit can't be 0
-            && (!waitingForRegisterOrCharToSearch) // Not in the middle of "find char" motions or replacing char.
-            && e->modifiers() == Qt::NoModifier) {
-
+    if ((keyCode >= Qt::Key_0 && keyCode <= Qt::Key_9 && lastChar != QLatin1Char('"')) // key 0-9
+        && (m_countTemp != 0 || keyCode != Qt::Key_0)                                  // first digit can't be 0
+        && (!waitingForRegisterOrCharToSearch)                                         // Not in the middle of "find char" motions or replacing char.
+        && e->modifiers() == Qt::NoModifier) {
         m_countTemp *= 10;
         m_countTemp += keyCode - Qt::Key_0;
 
@@ -202,8 +191,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         // If the cursor is at the end of the current word rewrite to "cl"
         const bool isWORD = (m_keys.at(1) == QLatin1Char('W'));
         const KTextEditor::Cursor currentPosition(m_view->cursorPosition());
-        const KTextEditor::Cursor endOfWordOrWORD = (isWORD ? findWORDEnd(currentPosition.line(), currentPosition.column() - 1, true) :
-                                        findWordEnd(currentPosition.line(), currentPosition.column() - 1, true));
+        const KTextEditor::Cursor endOfWordOrWORD = (isWORD ? findWORDEnd(currentPosition.line(), currentPosition.column() - 1, true) : findWordEnd(currentPosition.line(), currentPosition.column() - 1, true));
 
         if (currentPosition == endOfWordOrWORD) {
             m_keys = QStringLiteral("cl");
@@ -216,14 +204,14 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         }
     }
 
-    if (m_keys[ 0 ] == Qt::Key_QuoteDbl) {
+    if (m_keys[0] == Qt::Key_QuoteDbl) {
         if (m_keys.size() < 2) {
             return true; // waiting for a register
         } else {
-            QChar r = m_keys[ 1 ].toLower();
+            QChar r = m_keys[1].toLower();
 
-            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) ||
-                    r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') || r == QLatin1Char('^')) {
+            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') ||
+                r == QLatin1Char('^')) {
                 m_register = r;
                 m_keys.clear();
                 return true;
@@ -276,8 +264,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     // Use operator-pending caret when reading a motion for an operator
     // in normal mode. We need to check that we are indeed in normal mode
     // since visual mode inherits from it.
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode &&
-            !m_awaitingMotionOrTextObject.isEmpty()) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode && !m_awaitingMotionOrTextObject.isEmpty()) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Half);
     }
 
@@ -312,12 +299,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
 
                         // make sure the position is valid before moving the cursor there
                         // TODO: can this be simplified? :/
-                        if (r.valid
-                                && r.endLine >= 0
-                                && (r.endLine == 0 || r.endLine <= doc()->lines() - 1)
-                                && r.endColumn >= 0) {
-                            if (r.endColumn >= doc()->lineLength(r.endLine)
-                                    && doc()->lineLength(r.endLine) > 0) {
+                        if (r.valid && r.endLine >= 0 && (r.endLine == 0 || r.endLine <= doc()->lines() - 1) && r.endColumn >= 0) {
+                            if (r.endColumn >= doc()->lineLength(r.endLine) && doc()->lineLength(r.endLine) > 0) {
                                 r.endColumn = doc()->lineLength(r.endLine) - 1;
                             }
 
@@ -361,8 +344,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                         // the last word moved over is at the end of a line, the end of that word
                         // becomes the end of the operated text, not the first word in the next line.
                         if (m_motions.at(i)->pattern() == QLatin1String("w") || m_motions.at(i)->pattern() == QLatin1String("W")) {
-                            if (m_commandRange.endLine != m_commandRange.startLine &&
-                                    m_commandRange.endColumn == getFirstNonBlank(m_commandRange.endLine)) {
+                            if (m_commandRange.endLine != m_commandRange.startLine && m_commandRange.endColumn == getFirstNonBlank(m_commandRange.endLine)) {
                                 m_commandRange.endLine--;
                                 m_commandRange.endColumn = doc()->lineLength(m_commandRange.endLine);
                             }
@@ -374,8 +356,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
                             executeCommand(m_commands.at(m_motionOperatorIndex));
                         } else {
                             qCDebug(LOG_KTE) << "Invalid range: "
-                                              << "from (" << m_commandRange.startLine << "," << m_commandRange.startColumn << ")"
-                                              << "to (" << m_commandRange.endLine << "," << m_commandRange.endColumn << ")";
+                                             << "from (" << m_commandRange.startLine << "," << m_commandRange.startColumn << ")"
+                                             << "to (" << m_commandRange.endLine << "," << m_commandRange.endColumn << ")";
                         }
 
                         if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
@@ -405,9 +387,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
     // if we have only one match, check if it is a perfect match and if so, execute it
     // if it's not waiting for a motion or a text object
     if (m_matchingCommands.size() == 1) {
-        if (m_commands.at(m_matchingCommands.at(0))->matchesExact(m_keys)
-                && !m_commands.at(m_matchingCommands.at(0))->needsMotion()) {
-
+        if (m_commands.at(m_matchingCommands.at(0))->matchesExact(m_keys) && !m_commands.at(m_matchingCommands.at(0))->needsMotion()) {
             if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
                 m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
             }
@@ -465,7 +445,7 @@ void NormalViMode::resetParser()
 
     m_currentChangeEndMarker = KTextEditor::Cursor::invalid();
 
-    if(m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::NormalMode) {
         m_viInputModeManager->inputAdapter()->setCaretStyle(KateRenderer::Block);
     }
 }
@@ -480,10 +460,8 @@ void NormalViMode::reset()
 
 void NormalViMode::beginMonitoringDocumentChanges()
 {
-    connect(doc(), &KTextEditor::DocumentPrivate::textInserted,
-            this, &NormalViMode::textInserted);
-    connect(doc(), &KTextEditor::DocumentPrivate::textRemoved,
-            this, &NormalViMode::textRemoved);
+    connect(doc(), &KTextEditor::DocumentPrivate::textInserted, this, &NormalViMode::textInserted);
+    connect(doc(), &KTextEditor::DocumentPrivate::textRemoved, this, &NormalViMode::textRemoved);
 }
 
 void NormalViMode::executeCommand(const Command *cmd)
@@ -501,8 +479,7 @@ void NormalViMode::executeCommand(const Command *cmd)
 
     // if the command was a change, and it didn't enter insert mode, store the key presses so that
     // they can be repeated with '.'
-    if (m_viInputModeManager->getCurrentViMode() != ViMode::InsertMode &&
-        m_viInputModeManager->getCurrentViMode() != ViMode::ReplaceMode) {
+    if (m_viInputModeManager->getCurrentViMode() != ViMode::InsertMode && m_viInputModeManager->getCurrentViMode() != ViMode::ReplaceMode) {
         if (cmd->isChange() && !m_viInputModeManager->lastChangeRecorder()->isReplaying()) {
             m_viInputModeManager->storeLastChangeCommand();
         }
@@ -649,17 +626,17 @@ bool NormalViMode::commandReselectVisual()
         bool returnValue = false;
 
         switch (m_viInputModeManager->getViVisualMode()->getLastVisualMode()) {
-        case ViMode::VisualMode:
-            returnValue = commandEnterVisualMode();
-            break;
-        case ViMode::VisualLineMode:
-            returnValue = commandEnterVisualLineMode();
-            break;
-        case ViMode::VisualBlockMode:
-            returnValue = commandEnterVisualBlockMode();
-            break;
-        default:
-            Q_ASSERT("invalid visual mode");
+            case ViMode::VisualMode:
+                returnValue = commandEnterVisualMode();
+                break;
+            case ViMode::VisualLineMode:
+                returnValue = commandEnterVisualLineMode();
+                break;
+            case ViMode::VisualBlockMode:
+                returnValue = commandEnterVisualBlockMode();
+                break;
+            default:
+                Q_ASSERT("invalid visual mode");
         }
         m_viInputModeManager->getViVisualMode()->goToPos(c2);
         return returnValue;
@@ -743,39 +720,38 @@ bool NormalViMode::commandDeleteToEOL()
 
     m_commandRange.endColumn = KateVi::EOL;
     switch (m_viInputModeManager->getCurrentViMode()) {
-    case ViMode::NormalMode:
-        m_commandRange.startLine = c.line();
-        m_commandRange.startColumn = c.column();
-        m_commandRange.endLine = c.line() + getCount() - 1;
-        break;
-    case ViMode::VisualMode:
-    case ViMode::VisualLineMode:
-        m = LineWise;
-        break;
-    case ViMode::VisualBlockMode:
-        m_commandRange.normalize();
-        m = Block;
-        break;
-    default:
-        /* InsertMode and ReplaceMode will never call this method. */
-        Q_ASSERT(false);
+        case ViMode::NormalMode:
+            m_commandRange.startLine = c.line();
+            m_commandRange.startColumn = c.column();
+            m_commandRange.endLine = c.line() + getCount() - 1;
+            break;
+        case ViMode::VisualMode:
+        case ViMode::VisualLineMode:
+            m = LineWise;
+            break;
+        case ViMode::VisualBlockMode:
+            m_commandRange.normalize();
+            m = Block;
+            break;
+        default:
+            /* InsertMode and ReplaceMode will never call this method. */
+            Q_ASSERT(false);
     }
 
     bool r = deleteRange(m_commandRange, m);
 
     switch (m) {
-    case CharWise:
-        c.setColumn(doc()->lineLength(c.line()) - 1);
-        break;
-    case LineWise:
-        c.setLine(m_commandRange.startLine);
-        c.setColumn(getFirstNonBlank(qMin(doc()->lastLine(),
-                                          m_commandRange.startLine)));
-        break;
-    case Block:
-        c.setLine(m_commandRange.startLine);
-        c.setColumn(m_commandRange.startColumn - 1);
-        break;
+        case CharWise:
+            c.setColumn(doc()->lineLength(c.line()) - 1);
+            break;
+        case LineWise:
+            c.setLine(m_commandRange.startLine);
+            c.setColumn(getFirstNonBlank(qMin(doc()->lastLine(), m_commandRange.startLine)));
+            break;
+        case Block:
+            c.setLine(m_commandRange.startLine);
+            c.setColumn(m_commandRange.startColumn - 1);
+            break;
     }
 
     // make sure cursor position is valid after deletion
@@ -805,7 +781,7 @@ bool NormalViMode::commandMakeLowercase()
     OperationMode m = getOperationMode();
     QString text = getRange(m_commandRange, m);
     if (m == LineWise) {
-        text.chop(1);    // don't need '\n' at the end;
+        text.chop(1); // don't need '\n' at the end;
     }
     QString lowerCase = text.toLower();
 
@@ -851,7 +827,7 @@ bool NormalViMode::commandMakeUppercase()
     OperationMode m = getOperationMode();
     QString text = getRange(m_commandRange, m);
     if (m == LineWise) {
-        text.chop(1);    // don't need '\n' at the end;
+        text.chop(1); // don't need '\n' at the end;
     }
     QString upperCase = text.toUpper();
 
@@ -895,8 +871,7 @@ bool NormalViMode::commandChangeCase()
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     // in visual mode, the range is from start position to end position...
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode
-            || m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode || m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
         KTextEditor::Cursor c2 = m_viInputModeManager->getViVisualMode()->getStart();
 
         if (c2 > c) {
@@ -966,7 +941,7 @@ bool NormalViMode::commandChangeCaseRange()
     OperationMode m = getOperationMode();
     QString changedCase = getRange(m_commandRange, m);
     if (m == LineWise) {
-        changedCase.chop(1);    // don't need '\n' at the end;
+        changedCase.chop(1); // don't need '\n' at the end;
     }
     KTextEditor::Range range = KTextEditor::Range(m_commandRange.startLine, m_commandRange.startColumn, m_commandRange.endLine, m_commandRange.endColumn);
     // get the text the command should operate on
@@ -1007,7 +982,6 @@ bool NormalViMode::commandChangeCaseLine()
         updateCursor(start);
     }
     return true;
-
 }
 
 bool NormalViMode::commandOpenNewLineUnder()
@@ -1171,8 +1145,7 @@ bool NormalViMode::commandChangeLine()
     }
 
     // ... then delete the _contents_ of the last line, but keep the line
-    Range r(c.line(), c.column(), c.line(), doc()->lineLength(c.line()) - 1,
-                  InclusiveMotion);
+    Range r(c.line(), c.column(), c.line(), doc()->lineLength(c.line()) - 1, InclusiveMotion);
     deleteRange(r, CharWise, true);
 
     // ... then enter insert mode
@@ -1215,7 +1188,7 @@ bool NormalViMode::commandYank()
 
     highlightYank(m_commandRange, m);
 
-    QChar  chosen_register =  getChosenRegister(ZeroRegister);
+    QChar chosen_register = getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, yankedText, m);
     yankToClipBoard(chosen_register, yankedText);
 
@@ -1235,7 +1208,7 @@ bool NormalViMode::commandYankLine()
     Range yankRange(linenum, 0, linenum + getCount() - 1, getLine(linenum + getCount() - 1).length(), InclusiveMotion);
     highlightYank(yankRange);
 
-    QChar  chosen_register =  getChosenRegister(ZeroRegister);
+    QChar chosen_register = getChosenRegister(ZeroRegister);
     fillRegister(chosen_register, lines, LineWise);
     yankToClipBoard(chosen_register, lines);
 
@@ -1253,32 +1226,32 @@ bool NormalViMode::commandYankToEOL()
     m_commandRange.motionType = InclusiveMotion;
 
     switch (m_viInputModeManager->getCurrentViMode()) {
-    case ViMode::NormalMode:
-        m_commandRange.startLine = c.line();
-        m_commandRange.startColumn = c.column();
-        break;
-    case ViMode::VisualMode:
-    case ViMode::VisualLineMode:
-        m = LineWise;
-        {
-            VisualViMode *visual = static_cast<VisualViMode *>(this);
-            visual->setStart(KTextEditor::Cursor(visual->getStart().line(), 0));
-        }
-        break;
-    case ViMode::VisualBlockMode:
-        m = Block;
-        break;
-    default:
-        /* InsertMode and ReplaceMode will never call this method. */
-        Q_ASSERT(false);
+        case ViMode::NormalMode:
+            m_commandRange.startLine = c.line();
+            m_commandRange.startColumn = c.column();
+            break;
+        case ViMode::VisualMode:
+        case ViMode::VisualLineMode:
+            m = LineWise;
+            {
+                VisualViMode *visual = static_cast<VisualViMode *>(this);
+                visual->setStart(KTextEditor::Cursor(visual->getStart().line(), 0));
+            }
+            break;
+        case ViMode::VisualBlockMode:
+            m = Block;
+            break;
+        default:
+            /* InsertMode and ReplaceMode will never call this method. */
+            Q_ASSERT(false);
     }
 
     const QString &yankedText = getRange(m_commandRange, m);
     m_commandRange.motionType = motion;
     highlightYank(m_commandRange);
 
-    QChar chosen_register =  getChosenRegister(ZeroRegister);
-    fillRegister(chosen_register,  yankedText, m);
+    QChar chosen_register = getChosenRegister(ZeroRegister);
+    fillRegister(chosen_register, yankedText, m);
     yankToClipBoard(chosen_register, yankedText);
 
     return true;
@@ -1386,23 +1359,31 @@ bool NormalViMode::commandReplaceCharacter()
     // Filter out some special keys.
     const int keyCode = KeyParser::self()->encoded2qt(m_keys.right(1));
     switch (keyCode) {
-        case Qt::Key_Left: case Qt::Key_Right: case Qt::Key_Up:
-        case Qt::Key_Down: case Qt::Key_Home: case Qt::Key_End:
-        case Qt::Key_PageUp: case Qt::Key_PageDown: case Qt::Key_Delete:
-        case Qt::Key_Insert: case Qt::Key_Backspace: case Qt::Key_CapsLock:
+        case Qt::Key_Left:
+        case Qt::Key_Right:
+        case Qt::Key_Up:
+        case Qt::Key_Down:
+        case Qt::Key_Home:
+        case Qt::Key_End:
+        case Qt::Key_PageUp:
+        case Qt::Key_PageDown:
+        case Qt::Key_Delete:
+        case Qt::Key_Insert:
+        case Qt::Key_Backspace:
+        case Qt::Key_CapsLock:
             return true;
-        case Qt::Key_Return: case Qt::Key_Enter:
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
             key = QStringLiteral("\n");
     }
 
     bool r;
     if (m_viInputModeManager->isAnyVisualMode()) {
-
         OperationMode m = getOperationMode();
         QString text = getRange(m_commandRange, m);
 
         if (m == LineWise) {
-            text.chop(1);    // don't need '\n' at the end;
+            text.chop(1); // don't need '\n' at the end;
         }
 
         text.replace(QRegExp(QLatin1String("[^\n]")), key);
@@ -1426,7 +1407,6 @@ bool NormalViMode::commandReplaceCharacter()
 
         r = doc()->replaceText(KTextEditor::Range(c1, c2), key.repeated(getCount()));
         updateCursor(c1);
-
     }
     return r;
 }
@@ -1578,7 +1558,6 @@ bool NormalViMode::commandUnindentLines()
 bool NormalViMode::commandScrollPageDown()
 {
     if (getCount() < m_scroll_count_limit) {
-
         for (int i = 0; i < getCount(); i++) {
             m_view->pageDown();
         }
@@ -1594,7 +1573,6 @@ bool NormalViMode::commandScrollPageUp()
         }
     }
     return true;
-
 }
 
 bool NormalViMode::commandScrollHalfPageUp()
@@ -1703,7 +1681,6 @@ bool NormalViMode::commandPrintCharacterCode()
     if (ch == QChar::Null) {
         message(QStringLiteral("NUL"));
     } else {
-
         int code = ch.unicode();
 
         QString dec = QString::number(code);
@@ -1791,7 +1768,7 @@ bool NormalViMode::commandAppendToBlock()
     KTextEditor::Cursor c(m_view->cursorPosition());
 
     m_commandRange.normalize();
-    if (m_stickyColumn == (unsigned int)KateVi::EOL) {   // append to EOL
+    if (m_stickyColumn == (unsigned int)KateVi::EOL) { // append to EOL
         // move cursor to end of first line
         c.setLine(m_commandRange.startLine);
         c.setColumn(doc()->lineLength(c.line()));
@@ -2252,7 +2229,6 @@ Range NormalViMode::motionToEndOfPrevWord()
             r.endLine = 0;
             break;
         }
-
     }
 
     return r;
@@ -2624,7 +2600,7 @@ Range NormalViMode::motionToMatchingItem()
         // text item we want to find a matching item for
         int n2 = l.indexOf(QRegExp(QLatin1String("\\b|\\s|$")), n1);
         QString item = l.mid(n1, n2 - n1);
-        QString matchingItem = m_matchingItems[ item ];
+        QString matchingItem = m_matchingItems[item];
 
         int toFind = 1;
         int line = c.line();
@@ -2632,7 +2608,7 @@ Range NormalViMode::motionToMatchingItem()
         bool reverse = false;
 
         if (matchingItem.startsWith(QLatin1Char('-'))) {
-            matchingItem.remove(0, 1);   // remove the '-'
+            matchingItem.remove(0, 1); // remove the '-'
             reverse = true;
         }
 
@@ -2669,7 +2645,7 @@ Range NormalViMode::motionToMatchingItem()
                 }
             }
 
-            if (matchItemIdx != -1) {   // match on current line
+            if (matchItemIdx != -1) { // match on current line
                 if (matchItemIdx == column) {
                     --toFind;
                     c.setLine(line);
@@ -2818,10 +2794,10 @@ Range NormalViMode::motionToPrevOccurrence()
 Range NormalViMode::motionToFirstLineOfWindow()
 {
     int lines_to_go;
-    if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
+    if (linesDisplayed() <= (unsigned int)m_viewInternal->endLine()) {
         lines_to_go = m_viewInternal->endLine() - linesDisplayed() - m_view->cursorPosition().line() + 1;
     } else {
-        lines_to_go = - m_view->cursorPosition().line();
+        lines_to_go = -m_view->cursorPosition().line();
     }
 
     Range r = goLineUpDown(lines_to_go);
@@ -2832,7 +2808,7 @@ Range NormalViMode::motionToFirstLineOfWindow()
 Range NormalViMode::motionToMiddleLineOfWindow()
 {
     int lines_to_go;
-    if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
+    if (linesDisplayed() <= (unsigned int)m_viewInternal->endLine()) {
         lines_to_go = m_viewInternal->endLine() - linesDisplayed() / 2 - m_view->cursorPosition().line();
     } else {
         lines_to_go = m_viewInternal->endLine() / 2 - m_view->cursorPosition().line();
@@ -2846,7 +2822,7 @@ Range NormalViMode::motionToMiddleLineOfWindow()
 Range NormalViMode::motionToLastLineOfWindow()
 {
     int lines_to_go;
-    if (linesDisplayed() <= (unsigned int) m_viewInternal->endLine()) {
+    if (linesDisplayed() <= (unsigned int)m_viewInternal->endLine()) {
         lines_to_go = m_viewInternal->endLine() - m_view->cursorPosition().line();
     } else {
         lines_to_go = m_viewInternal->endLine() - m_view->cursorPosition().line();
@@ -2991,10 +2967,7 @@ Range NormalViMode::motionToAfterParagraph()
 
 Range NormalViMode::motionToIncrementalSearchMatch()
 {
-    return Range(m_positionWhenIncrementalSearchBegan.line(),
-                       m_positionWhenIncrementalSearchBegan.column(),
-                       m_view->cursorPosition().line(),
-                       m_view->cursorPosition().column(), ExclusiveMotion);
+    return Range(m_positionWhenIncrementalSearchBegan.line(), m_positionWhenIncrementalSearchBegan.column(), m_view->cursorPosition().line(), m_view->cursorPosition().column(), ExclusiveMotion);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3179,7 +3152,8 @@ KTextEditor::Cursor NormalViMode::findSentenceStart()
         for (int j = column; j >= 0; j--) {
             if (line.at(j).isSpace()) {
                 int lastSpace = j--;
-                for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--);
+                for (; j >= 0 && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j--)
+                    ;
 
                 if (j >= 0 && QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                     return KTextEditor::Cursor(i, prev);
@@ -3212,7 +3186,8 @@ KTextEditor::Cursor NormalViMode::findSentenceEnd()
             if (QStringLiteral(".!?").indexOf(line.at(j)) != -1) {
                 prev = j++;
                 // Skip possible closing characters.
-                for (; j < line.size() && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j++);
+                for (; j < line.size() && QStringLiteral("\"')]").indexOf(line.at(j)) != -1; j++)
+                    ;
 
                 if (j >= line.size()) {
                     return KTextEditor::Cursor(i, j - 1);
@@ -3248,7 +3223,8 @@ KTextEditor::Cursor NormalViMode::findParagraphStart()
             /* Skip consecutive empty lines. */
             if (firstBlank) {
                 i--;
-                for (; i >= 0 && doc()->line(i).isEmpty(); i--, prev--);
+                for (; i >= 0 && doc()->line(i).isEmpty(); i--, prev--)
+                    ;
             }
             return KTextEditor::Cursor(prev, 0);
         }
@@ -3271,7 +3247,8 @@ KTextEditor::Cursor NormalViMode::findParagraphEnd()
             /* Skip consecutive empty lines. */
             if (firstBlank) {
                 i++;
-                for (; i < lines && doc()->line(i).isEmpty(); i++, prev++);
+                for (; i < lines && doc()->line(i).isEmpty(); i++, prev++)
+                    ;
             }
             int length = doc()->lineLength(prev);
             return KTextEditor::Cursor(prev, (length <= 0) ? 0 : length - 1);
@@ -3405,7 +3382,7 @@ Range NormalViMode::textObjectInnerBackQuote()
 
 Range NormalViMode::textObjectAParen()
 {
-    return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false,  QLatin1Char('('), QLatin1Char(')'));
+    return findSurroundingBrackets(QLatin1Char('('), QLatin1Char(')'), false, QLatin1Char('('), QLatin1Char(')'));
 }
 
 Range NormalViMode::textObjectInnerParen()
@@ -3415,7 +3392,7 @@ Range NormalViMode::textObjectInnerParen()
 
 Range NormalViMode::textObjectABracket()
 {
-    return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false,  QLatin1Char('['), QLatin1Char(']'));
+    return findSurroundingBrackets(QLatin1Char('['), QLatin1Char(']'), false, QLatin1Char('['), QLatin1Char(']'));
 }
 
 Range NormalViMode::textObjectInnerBracket()
@@ -3425,7 +3402,7 @@ Range NormalViMode::textObjectInnerBracket()
 
 Range NormalViMode::textObjectACurlyBracket()
 {
-    return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false,  QLatin1Char('{'), QLatin1Char('}'));
+    return findSurroundingBrackets(QLatin1Char('{'), QLatin1Char('}'), false, QLatin1Char('{'), QLatin1Char('}'));
 }
 
 Range NormalViMode::textObjectInnerCurlyBracket()
@@ -3437,8 +3414,7 @@ Range NormalViMode::textObjectInnerCurlyBracket()
 
     if (innerCurlyBracket.startLine != innerCurlyBracket.endLine) {
         const bool openingBraceIsLastCharOnLine = innerCurlyBracket.startColumn == doc()->line(innerCurlyBracket.startLine).length();
-        const bool stuffToDeleteIsAllOnEndLine = openingBraceIsLastCharOnLine &&
-                innerCurlyBracket.endLine == innerCurlyBracket.startLine + 1;
+        const bool stuffToDeleteIsAllOnEndLine = openingBraceIsLastCharOnLine && innerCurlyBracket.endLine == innerCurlyBracket.startLine + 1;
         const QString textLeadingClosingBracket = doc()->line(innerCurlyBracket.endLine).mid(0, innerCurlyBracket.endColumn + 1);
         const bool closingBracketHasLeadingNonWhitespace = !textLeadingClosingBracket.trimmed().isEmpty();
         if (stuffToDeleteIsAllOnEndLine) {
@@ -3467,20 +3443,17 @@ Range NormalViMode::textObjectInnerCurlyBracket()
                 }
             }
         }
-
     }
     return innerCurlyBracket;
 }
 
 Range NormalViMode::textObjectAInequalitySign()
 {
-
-    return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), false,  QLatin1Char('<'), QLatin1Char('>'));
+    return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), false, QLatin1Char('<'), QLatin1Char('>'));
 }
 
 Range NormalViMode::textObjectInnerInequalitySign()
 {
-
     return findSurroundingBrackets(QLatin1Char('<'), QLatin1Char('>'), true, QLatin1Char('<'), QLatin1Char('>'));
 }
 
@@ -3664,8 +3637,8 @@ void NormalViMode::initializeCommands()
     ADDMOTION("L", motionToLastLineOfWindow, 0);
     ADDMOTION("gj", motionToNextVisualLine, 0);
     ADDMOTION("gk", motionToPrevVisualLine, 0);
-    ADDMOTION("(", motionToPreviousSentence, 0 );
-    ADDMOTION(")", motionToNextSentence, 0 );
+    ADDMOTION("(", motionToPreviousSentence, 0);
+    ADDMOTION(")", motionToNextSentence, 0);
     ADDMOTION("{", motionToBeforeParagraph, 0);
     ADDMOTION("}", motionToAfterParagraph, 0);
 
@@ -3674,10 +3647,10 @@ void NormalViMode::initializeCommands()
     ADDMOTION("aw", textObjectAWord, IS_NOT_LINEWISE);
     ADDMOTION("iW", textObjectInnerWORD, 0);
     ADDMOTION("aW", textObjectAWORD, IS_NOT_LINEWISE);
-    ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE );
-    ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE );
-    ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE );
-    ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE );
+    ADDMOTION("is", textObjectInnerSentence, IS_NOT_LINEWISE);
+    ADDMOTION("as", textObjectASentence, IS_NOT_LINEWISE);
+    ADDMOTION("ip", textObjectInnerParagraph, IS_NOT_LINEWISE);
+    ADDMOTION("ap", textObjectAParagraph, IS_NOT_LINEWISE);
     ADDMOTION("i\"", textObjectInnerQuoteDouble, IS_NOT_LINEWISE);
     ADDMOTION("a\"", textObjectAQuoteDouble, IS_NOT_LINEWISE);
     ADDMOTION("i'", textObjectInnerQuoteSingle, IS_NOT_LINEWISE);
@@ -3691,7 +3664,7 @@ void NormalViMode::initializeCommands()
     ADDMOTION("i[><]", textObjectInnerInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE);
     ADDMOTION("a[><]", textObjectAInequalitySign, REGEX_PATTERN | IS_NOT_LINEWISE);
     ADDMOTION("i[\\[\\]]", textObjectInnerBracket, REGEX_PATTERN | IS_NOT_LINEWISE);
-    ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN  | IS_NOT_LINEWISE);
+    ADDMOTION("a[\\[\\]]", textObjectABracket, REGEX_PATTERN | IS_NOT_LINEWISE);
     ADDMOTION("i,", textObjectInnerComma, IS_NOT_LINEWISE);
     ADDMOTION("a,", textObjectAComma, IS_NOT_LINEWISE);
 
@@ -3705,7 +3678,7 @@ QRegExp NormalViMode::generateMatchingItemRegex() const
     QList<QString> keys = m_matchingItems.keys();
 
     for (int i = 0; i < keys.size(); i++) {
-        QString s = m_matchingItems[ keys[ i ] ];
+        QString s = m_matchingItems[keys[i]];
         s.replace(QRegExp(QLatin1String("^-")), QChar());
         s.replace(QRegExp(QLatin1String("\\*")), QStringLiteral("\\*"));
         s.replace(QRegExp(QLatin1String("\\+")), QStringLiteral("\\+"));
@@ -3737,9 +3710,7 @@ OperationMode NormalViMode::getOperationMode() const
 
     if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualBlockMode) {
         m = Block;
-    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode
-               || (m_commandRange.startLine != m_commandRange.endLine
-                   && m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode)) {
+    } else if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode || (m_commandRange.startLine != m_commandRange.endLine && m_viInputModeManager->getCurrentViMode() != ViMode::VisualMode)) {
         m = LineWise;
     }
 
@@ -3773,7 +3744,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     }
 
     if (getCount() > 1) {
-        textToInsert = textToInsert.repeated(getCount());   // FIXME: does this make sense for blocks?
+        textToInsert = textToInsert.repeated(getCount()); // FIXME: does this make sense for blocks?
     }
 
     if (m == LineWise) {
@@ -3795,9 +3766,9 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
             textToInsert.append(QLatin1Char('\n')); // Re-add the temporarily removed last '\n'.
         }
         if (pasteLocation == AfterCurrentPosition) {
-            textToInsert.chop(1);   // remove the last \n
-            pasteAt.setColumn(doc()->lineLength(pasteAt.line()));     // paste after the current line and ...
-            textToInsert.prepend(QLatin1Char('\n'));     // ... prepend a \n, so the text starts on a new line
+            textToInsert.chop(1);                                 // remove the last \n
+            pasteAt.setColumn(doc()->lineLength(pasteAt.line())); // paste after the current line and ...
+            textToInsert.prepend(QLatin1Char('\n'));              // ... prepend a \n, so the text starts on a new line
 
             cursorAfterPaste.setLine(cursorAfterPaste.line() + 1);
         }
@@ -4034,24 +4005,13 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
         QChar cPrefix = m_keys[0];
         if (keysSize == 2) {
             // delete/replace/yank/indent operator?
-            if (cPrefix != QLatin1Char('c') &&
-                cPrefix != QLatin1Char('d') &&
-                cPrefix != QLatin1Char('y') &&
-                cPrefix != QLatin1Char('=') &&
-                cPrefix != QLatin1Char('>') &&
-                cPrefix != QLatin1Char('<')) {
+            if (cPrefix != QLatin1Char('c') && cPrefix != QLatin1Char('d') && cPrefix != QLatin1Char('y') && cPrefix != QLatin1Char('=') && cPrefix != QLatin1Char('>') && cPrefix != QLatin1Char('<')) {
                 return false;
             }
         } else if (keysSize == 3) {
             // We need to look deeper. Is it a g motion?
             QChar cNextfix = m_keys[1];
-            if (cPrefix != QLatin1Char('g') || (
-                cNextfix != QLatin1Char('U') &&
-                cNextfix != QLatin1Char('u') &&
-                cNextfix != QLatin1Char('~') &&
-                cNextfix != QLatin1Char('q') &&
-                cNextfix != QLatin1Char('w') &&
-                cNextfix != QLatin1Char('@'))) {
+            if (cPrefix != QLatin1Char('g') || (cNextfix != QLatin1Char('U') && cNextfix != QLatin1Char('u') && cNextfix != QLatin1Char('~') && cNextfix != QLatin1Char('q') && cNextfix != QLatin1Char('w') && cNextfix != QLatin1Char('@'))) {
                 return false;
             }
         } else {
@@ -4060,11 +4020,10 @@ bool NormalViMode::waitingForRegisterOrCharToSearch()
     }
 
     QChar ch = m_keys[keysSize - 1];
-    return (ch == QLatin1Char('f') || ch == QLatin1Char('t')
-            || ch == QLatin1Char('F') || ch == QLatin1Char('T')
+    return (ch == QLatin1Char('f') || ch == QLatin1Char('t') || ch == QLatin1Char('F') ||
+            ch == QLatin1Char('T')
             // c/d prefix unapplicable for the following cases.
-            || (keysSize == 1 && (ch == QLatin1Char('r')
-            || ch == QLatin1Char('q') || ch == QLatin1Char('@'))));
+            || (keysSize == 1 && (ch == QLatin1Char('r') || ch == QLatin1Char('q') || ch == QLatin1Char('@'))));
 }
 
 void NormalViMode::textInserted(KTextEditor::Document *document, KTextEditor::Range range)

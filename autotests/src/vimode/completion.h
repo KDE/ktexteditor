@@ -18,14 +18,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef COMPLETION_TEST_H
 #define COMPLETION_TEST_H
 
-
 #include "base.h"
 #include "fakecodecompletiontestmodel.h"
-
 
 /**
  * This class handles implements a completion model for the completion
@@ -52,7 +49,6 @@ public:
     KTextEditor::CodeCompletionInterface *cc() const;
 };
 
-
 class CompletionTest : public BaseTest
 {
     Q_OBJECT
@@ -65,6 +61,5 @@ private:
     void waitForCompletionWidgetToActivate();
     void clearTrackedDocumentChanges();
 };
-
 
 #endif /* COMPLETION_TEST_H */

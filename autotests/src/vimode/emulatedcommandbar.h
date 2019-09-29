@@ -29,59 +29,59 @@ class QColor;
 
 class EmulatedCommandBarTest : public BaseTest
 {
-  Q_OBJECT
+    Q_OBJECT
 
 private Q_SLOTS:
-  void EmulatedCommandBarTests();
+    void EmulatedCommandBarTests();
 
 private:
-  QCompleter *emulatedCommandBarCompleter();
+    QCompleter *emulatedCommandBarCompleter();
 
-  void verifyCommandBarCompletionVisible();
-  void verifyCommandBarCompletionsMatches(const QStringList& expectedCompletionList);
-  void verifyCommandBarCompletionContains(const QStringList& expectedCompletionList);
-  QLabel *emulatedCommandTypeIndicator();
-  void verifyCursorAt(const KTextEditor::Cursor& expectedCursorPos);
+    void verifyCommandBarCompletionVisible();
+    void verifyCommandBarCompletionsMatches(const QStringList &expectedCompletionList);
+    void verifyCommandBarCompletionContains(const QStringList &expectedCompletionList);
+    QLabel *emulatedCommandTypeIndicator();
+    void verifyCursorAt(const KTextEditor::Cursor &expectedCursorPos);
 
-  void clearSearchHistory();
-  QStringList searchHistory();
-  void clearCommandHistory();
-  QStringList commandHistory();
-  void clearReplaceHistory();
-  QStringList replaceHistory();
+    void clearSearchHistory();
+    QStringList searchHistory();
+    void clearCommandHistory();
+    QStringList commandHistory();
+    void clearReplaceHistory();
+    QStringList replaceHistory();
 
-  QList<Kate::TextRange *> rangesOnFirstLine();
-  void verifyTextEditBackgroundColour(const QColor& expectedBackgroundColour);
-  QLabel* commandResponseMessageDisplay();
-  void waitForEmulatedCommandBarToHide(long int timeout);
-  void verifyShowsNumberOfReplacementsAcrossNumberOfLines(int numReplacements, int acrossNumLines);
+    QList<Kate::TextRange *> rangesOnFirstLine();
+    void verifyTextEditBackgroundColour(const QColor &expectedBackgroundColour);
+    QLabel *commandResponseMessageDisplay();
+    void waitForEmulatedCommandBarToHide(long int timeout);
+    void verifyShowsNumberOfReplacementsAcrossNumberOfLines(int numReplacements, int acrossNumLines);
 };
 
 class FailsIfSlotNotCalled : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  FailsIfSlotNotCalled();
-  ~FailsIfSlotNotCalled();
+    FailsIfSlotNotCalled();
+    ~FailsIfSlotNotCalled();
 public Q_SLOTS:
-  void slot();
+    void slot();
+
 private:
-  bool m_slotWasCalled = false;
+    bool m_slotWasCalled = false;
 };
 
 class FailsIfSlotCalled : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit FailsIfSlotCalled(const QString& failureMessage);
+    explicit FailsIfSlotCalled(const QString &failureMessage);
 public Q_SLOTS:
-  void slot();
+    void slot();
+
 private:
-  const QString m_failureMessage;
+    const QString m_failureMessage;
 };
 
 #endif
 
 // kate: space-indent on; indent-width 2; replace-tabs on;
-
-

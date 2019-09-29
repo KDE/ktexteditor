@@ -38,12 +38,11 @@ ExpandingDelegate::ExpandingDelegate(ExpandingWidgetModel *model, QObject *paren
 {
 }
 
-//Gets the background-color in the way QItemDelegate does it
+// Gets the background-color in the way QItemDelegate does it
 static QColor getUsedBackgroundColor(const QStyleOptionViewItem &option, const QModelIndex &index)
 {
     if (option.showDecorationSelected && (option.state & QStyle::State_Selected)) {
-        QPalette::ColorGroup cg = (option.state & QStyle::State_Enabled)
-                                  ? QPalette::Normal : QPalette::Disabled;
+        QPalette::ColorGroup cg = (option.state & QStyle::State_Enabled) ? QPalette::Normal : QPalette::Disabled;
         if (cg == QPalette::Normal && !(option.state & QStyle::State_Active)) {
             cg = QPalette::Inactive;
         }
@@ -61,14 +60,14 @@ static QColor getUsedBackgroundColor(const QStyleOptionViewItem &option, const Q
 
 static void dampColors(QColor &col)
 {
-    //Reduce the colors that are less visible to the eye, because they are closer to black when it comes to contrast
-    //The most significant color to the eye is green. Then comes red, and then blue, with blue _much_ less significant.
+    // Reduce the colors that are less visible to the eye, because they are closer to black when it comes to contrast
+    // The most significant color to the eye is green. Then comes red, and then blue, with blue _much_ less significant.
 
     col.setBlue(0);
     col.setRed(col.red() / 2);
 }
 
-//A hack to compute more eye-focused contrast values
+// A hack to compute more eye-focused contrast values
 static double readabilityContrast(QColor foreground, QColor background)
 {
     dampColors(foreground);
@@ -88,7 +87,7 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
         model()->placeExpandingWidget(index);
     }
 
-    //Make sure the decorations are painted at the top, because the center of expanded items will be filled with the embedded widget.
+    // Make sure the decorations are painted at the top, because the center of expanded items will be filled with the embedded widget.
     if (model()->isPartiallyExpanded(index) == ExpandingWidgetModel::ExpandUpwards) {
         m_cachedAlignment = Qt::AlignBottom;
     } else {
@@ -98,7 +97,8 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     option.decorationAlignment = m_cachedAlignment;
     option.displayAlignment = m_cachedAlignment;
 
-    //qCDebug(LOG_KTE) << "Painting row " << index.row() << ", column " << index.column() << ", internal " << index.internalPointer() << ", drawselected " << option.showDecorationSelected << ", selected " << (option.state & QStyle::State_Selected);
+    // qCDebug(LOG_KTE) << "Painting row " << index.row() << ", column " << index.column() << ", internal " << index.internalPointer() << ", drawselected " << option.showDecorationSelected << ", selected " << (option.state &
+    // QStyle::State_Selected);
 
     m_cachedHighlights.clear();
     m_backgroundColor = getUsedBackgroundColor(option, index);
@@ -114,7 +114,7 @@ void ExpandingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 
     QItemDelegate::paint(painter, option, index);
 
-    ///This is a bug workaround for the Qt raster paint engine: It paints over widgets embedded into the viewport when updating due to mouse events
+    /// This is a bug workaround for the Qt raster paint engine: It paints over widgets embedded into the viewport when updating due to mouse events
     ///@todo report to Qt Software
     if (model()->isExpanded(index) && model()->expandingWidget(index)) {
         model()->expandingWidget(index)->update();
@@ -140,7 +140,7 @@ QSize ExpandingDelegate::sizeHint(const QStyleOptionViewItem &option, const QMod
         QWidget *widget = model()->expandingWidget(index);
         QSize widgetSize = widget->size();
 
-        s.setHeight(widgetSize.height() + s.height() + 10);   //10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
+        s.setHeight(widgetSize.height() + s.height() + 10); // 10 is the sum that must match exactly the offsets used in ExpandingWidgetModel::placeExpandingWidgets
     } else if (model()->isPartiallyExpanded(index)) {
         s.setHeight(s.height() + 30 + 10);
     }
@@ -156,7 +156,6 @@ void ExpandingDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewIt
 void ExpandingDelegate::adjustRect(QRect &rect) const
 {
     if (!model()->indexIsItem(m_currentIndex) /*&& m_currentIndex.column() == 0*/) {
-
         rect.setLeft(model()->treeView()->columnViewportPosition(0));
         int columnCount = model()->columnCount(m_currentIndex.parent());
 
@@ -216,8 +215,8 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
 
     if (m_backgroundColor.isValid()) {
         QColor background = m_backgroundColor;
-//     qCDebug(LOG_KTE) << text << "background:" << background.name();
-        //Now go through the formats, and make sure the contrast background/foreground is readable
+        //     qCDebug(LOG_KTE) << text << "background:" << background.name();
+        // Now go through the formats, and make sure the contrast background/foreground is readable
         for (int a = 0; a < additionalFormats.size(); ++a) {
             QColor currentBackground = background;
             if (additionalFormats[a].format.hasProperty(QTextFormat::BackgroundBrush)) {
@@ -230,10 +229,10 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
             QColor invertedColor(0xffffffff - additionalFormats[a].format.foreground().color().rgb());
             double invertedContrast = readabilityContrast(invertedColor, currentBackground);
 
-//       qCDebug(LOG_KTE) << "values:" << invertedContrast << currentContrast << invertedColor.name() << currentColor.name();
+            //       qCDebug(LOG_KTE) << "values:" << invertedContrast << currentContrast << invertedColor.name() << currentColor.name();
 
             if (invertedContrast > currentContrast) {
-//         qCDebug(LOG_KTE) << text << additionalFormats[a].length << "switching from" << currentColor.name() << "to" << invertedColor.name();
+                //         qCDebug(LOG_KTE) << text << additionalFormats[a].length << "switching from" << currentColor.name() << "to" << invertedColor.name();
                 QBrush b(additionalFormats[a].format.foreground());
                 b.setColor(invertedColor);
                 additionalFormats[a].format.setForeground(b);
@@ -245,7 +244,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
         if (additionalFormats[a].length == 0) {
             additionalFormats.removeAt(a);
         } else {
-            ///For some reason the text-formats seem to be invalid in some way, sometimes
+            /// For some reason the text-formats seem to be invalid in some way, sometimes
             ///@todo Fix this properly, it sucks not copying everything over
             QTextCharFormat fm;
             fm.setForeground(QBrush(additionalFormats[a].format.foreground().color()));
@@ -261,7 +260,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
 
     QTextOption to;
 
-    to.setAlignment( static_cast<Qt::Alignment>(m_cachedAlignment | option.displayAlignment) );
+    to.setAlignment(static_cast<Qt::Alignment>(m_cachedAlignment | option.displayAlignment));
 
     to.setWrapMode(QTextOption::WrapAnywhere);
     layout.setTextOption(to);
@@ -272,7 +271,7 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
     line.setLineWidth(rect.width() - (option.displayAlignment == Qt::AlignRight ? 8 : 0));
     layout.endLayout();
 
-    //We need to do some hand layouting here
+    // We need to do some hand layouting here
     if (to.alignment() & Qt::AlignBottom) {
         layout.draw(painter, QPoint(rect.left(), rect.bottom() - (int)line.height()));
     } else {
@@ -281,9 +280,9 @@ void ExpandingDelegate::drawDisplay(QPainter *painter, const QStyleOptionViewIte
 
     return;
 
-    //if (painter->fontMetrics().width(text) > textRect.width() && !text.contains(QLatin1Char('\n')))
-    //str = elidedText(option.fontMetrics, textRect.width(), option.textElideMode, text);
-    //qt_format_text(option.font, textRect, option.displayAlignment, str, 0, 0, 0, 0, painter);
+    // if (painter->fontMetrics().width(text) > textRect.width() && !text.contains(QLatin1Char('\n')))
+    // str = elidedText(option.fontMetrics, textRect.width(), option.textElideMode, text);
+    // qt_format_text(option.font, textRect, option.displayAlignment, str, 0, 0, 0, 0, painter);
 }
 
 void ExpandingDelegate::drawDecoration(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, const QPixmap &pixmap) const
@@ -296,7 +295,7 @@ void ExpandingDelegate::drawDecoration(QPainter *painter, const QStyleOptionView
 void ExpandingDelegate::drawBackground(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_UNUSED(index)
-    //Problem: This isn't called at all, because drawBrackground is not virtual :-/
+    // Problem: This isn't called at all, because drawBrackground is not virtual :-/
     QStyle *style = model()->treeView()->style() ? model()->treeView()->style() : QApplication::style();
     style->drawControl(QStyle::CE_ItemViewItem, &option, painter);
 }

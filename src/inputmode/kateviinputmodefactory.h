@@ -21,12 +21,16 @@
 
 #include "kateabstractinputmodefactory.h"
 
-namespace KateVi { class GlobalState; }
+namespace KateVi
+{
+class GlobalState;
+}
 class KateViInputMode;
 
 class KateViInputModeFactory : public KateAbstractInputModeFactory
 {
     friend KateViInputMode;
+
 public:
     KateViInputModeFactory();
 
@@ -37,6 +41,7 @@ public:
     KTextEditor::View::InputMode inputMode() override;
 
     KateConfigPage *createConfigPage(QWidget *) override;
+
 private:
     KateVi::GlobalState *m_viGlobal;
 };

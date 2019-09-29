@@ -35,7 +35,6 @@ class KCompletion;
  */
 namespace KateCommands
 {
-
 /**
  * This KTextEditor::Command provides access to a lot of the core functionality
  * of kate part, settings, utilities, navigation etc.
@@ -45,35 +44,34 @@ namespace KateCommands
 class CoreCommands : public KTextEditor::Command
 {
     CoreCommands()
-        : KTextEditor::Command({
-              QStringLiteral("indent")
-            , QStringLiteral("unindent")
-            , QStringLiteral("cleanindent")
-            , QStringLiteral("fold")
-            , QStringLiteral("tfold")
-            , QStringLiteral("unfold")
-            , QStringLiteral("comment")
-            , QStringLiteral("uncomment")
-            , QStringLiteral("goto")
-            , QStringLiteral("kill-line")
-            , QStringLiteral("set-tab-width")
-            , QStringLiteral("set-replace-tabs")
-            , QStringLiteral("set-show-tabs")
-            , QStringLiteral("set-indent-width")
-            , QStringLiteral("set-indent-mode")
-            , QStringLiteral("set-auto-indent")
-            , QStringLiteral("set-line-numbers")
-            , QStringLiteral("set-folding-markers")
-            , QStringLiteral("set-icon-border")
-            , QStringLiteral("set-indent-pasted-text")
-            , QStringLiteral("set-word-wrap")
-            , QStringLiteral("set-word-wrap-column")
-            , QStringLiteral("set-replace-tabs-save")
-            , QStringLiteral("set-remove-trailing-spaces")
-            , QStringLiteral("set-highlight")
-            , QStringLiteral("set-mode")
-            , QStringLiteral("set-show-indent")
-            , QStringLiteral("print") })
+        : KTextEditor::Command({QStringLiteral("indent"),
+                                QStringLiteral("unindent"),
+                                QStringLiteral("cleanindent"),
+                                QStringLiteral("fold"),
+                                QStringLiteral("tfold"),
+                                QStringLiteral("unfold"),
+                                QStringLiteral("comment"),
+                                QStringLiteral("uncomment"),
+                                QStringLiteral("goto"),
+                                QStringLiteral("kill-line"),
+                                QStringLiteral("set-tab-width"),
+                                QStringLiteral("set-replace-tabs"),
+                                QStringLiteral("set-show-tabs"),
+                                QStringLiteral("set-indent-width"),
+                                QStringLiteral("set-indent-mode"),
+                                QStringLiteral("set-auto-indent"),
+                                QStringLiteral("set-line-numbers"),
+                                QStringLiteral("set-folding-markers"),
+                                QStringLiteral("set-icon-border"),
+                                QStringLiteral("set-indent-pasted-text"),
+                                QStringLiteral("set-word-wrap"),
+                                QStringLiteral("set-word-wrap-column"),
+                                QStringLiteral("set-replace-tabs-save"),
+                                QStringLiteral("set-remove-trailing-spaces"),
+                                QStringLiteral("set-highlight"),
+                                QStringLiteral("set-mode"),
+                                QStringLiteral("set-show-indent"),
+                                QStringLiteral("print")})
     {
     }
 
@@ -102,8 +100,7 @@ public:
      * @param range range to execute command on
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     bool supportsRange(const QString &range) override;
 
@@ -133,7 +130,7 @@ public:
 class Character : public KTextEditor::Command
 {
     Character()
-        : KTextEditor::Command({ QStringLiteral("char") })
+        : KTextEditor::Command({QStringLiteral("char")})
     {
     }
 
@@ -152,8 +149,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &) override;
@@ -173,7 +169,7 @@ public:
 class Date : public KTextEditor::Command
 {
     Date()
-        : KTextEditor::Command({ QStringLiteral("date") })
+        : KTextEditor::Command({QStringLiteral("date")})
     {
     }
 
@@ -192,8 +188,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &) override;
@@ -209,4 +204,3 @@ public:
 
 } // namespace KateCommands
 #endif
-

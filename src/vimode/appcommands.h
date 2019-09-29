@@ -25,26 +25,27 @@
 #include <QObject>
 #include <QRegularExpression>
 
-namespace KTextEditor {
-    class MainWindow;
+namespace KTextEditor
+{
+class MainWindow;
 }
 
 namespace KateVi
 {
-
 class AppCommands : public KTextEditor::Command
 {
     Q_OBJECT
 
     AppCommands();
-    static AppCommands* m_instance;
+    static AppCommands *m_instance;
 
 public:
     ~AppCommands() override;
     bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
 
-    static AppCommands* self() {
+    static AppCommands *self()
+    {
         if (m_instance == nullptr) {
             m_instance = new AppCommands();
         }
@@ -57,8 +58,7 @@ private:
      * view with the given \p view. If such view could not be found, then
      * nullptr is returned.
      */
-    KTextEditor::View * findViewInDifferentSplitView(KTextEditor::MainWindow *window,
-                                                     KTextEditor::View *view);
+    KTextEditor::View *findViewInDifferentSplitView(KTextEditor::MainWindow *window, KTextEditor::View *view);
 
 private Q_SLOTS:
     void closeCurrentDocument();
@@ -86,14 +86,15 @@ class BufferCommands : public KTextEditor::Command
     Q_OBJECT
 
     BufferCommands();
-    static BufferCommands* m_instance;
+    static BufferCommands *m_instance;
 
 public:
     ~BufferCommands() override;
     bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
     bool help(KTextEditor::View *view, const QString &cmd, QString &msg) override;
 
-    static BufferCommands* self() {
+    static BufferCommands *self()
+    {
         if (m_instance == nullptr) {
             m_instance = new BufferCommands();
         }

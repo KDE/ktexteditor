@@ -36,7 +36,10 @@ class QPushButton;
 class QLabel;
 class QTimer;
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateCompletionModel;
 class KateCompletionTree;
 class KateArgumentHintTree;
@@ -62,11 +65,13 @@ public:
     bool isCompletionActive() const;
     void startCompletion(KTextEditor::CodeCompletionModel::InvocationType invocationType, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>());
     void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model, KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
-    void startCompletion(const KTextEditor::Range &word, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(), KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
+    void startCompletion(const KTextEditor::Range &word,
+                         const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(),
+                         KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation);
     void userInvokedCompletion();
 
 public Q_SLOTS:
-    //Executed when return is pressed while completion is active.
+    // Executed when return is pressed while completion is active.
     void execute();
     void cursorDown();
     void cursorUp();
@@ -74,7 +79,7 @@ public Q_SLOTS:
 public:
     void tab(bool shift);
 
-    ///Returns whether the current item was expanded/unexpanded
+    /// Returns whether the current item was expanded/unexpanded
     bool toggleExpanded(bool forceExpand = false, bool forceUnExpand = false);
 
     const KateCompletionModel *model() const;
@@ -91,7 +96,8 @@ public:
         CompletionRange()
         {
         }
-        explicit CompletionRange(KTextEditor::MovingRange *r) : range(r)
+        explicit CompletionRange(KTextEditor::MovingRange *r)
+            : range(r)
         {
         }
 
@@ -101,7 +107,7 @@ public:
         }
 
         KTextEditor::MovingRange *range = nullptr;
-        //Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
+        // Whenever the cursor goes before this position, the completion is stopped, unless it is invalid.
         KTextEditor::Cursor leftBoundary;
     };
 
@@ -122,7 +128,7 @@ public:
 
     void setCurrentItemExpanded(bool);
 
-    //Returns true if a screen border has been hit
+    // Returns true if a screen border has been hit
     bool updatePosition(bool force = false);
 
     bool eventFilter(QObject *watched, QEvent *event) override;
@@ -131,7 +137,7 @@ public:
 
     KateArgumentHintModel *argumentHintModel() const;
 
-    ///Called by KateViewInternal, because we need the specific information from the event.
+    /// Called by KateViewInternal, because we need the specific information from the event.
 
     void updateHeight();
 
@@ -162,8 +168,7 @@ protected:
     void showEvent(QShowEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
     void moveEvent(QMoveEvent *event) override;
-    void focusOutEvent(QFocusEvent * event) override;
-
+    void focusOutEvent(QFocusEvent *event) override;
 
 private Q_SLOTS:
     void completionModelReset();
@@ -185,7 +190,7 @@ private:
     QModelIndex selectedIndex() const;
 
     void clear();
-    //Switch cursor between argument-hint list / completion-list
+    // Switch cursor between argument-hint list / completion-list
     void switchList();
     KTextEditor::Range determineRange() const;
     void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
@@ -205,7 +210,7 @@ private:
     KateArgumentHintTree *m_argumentHintTree;
 
     QTimer *m_automaticInvocationTimer;
-    //QTimer* m_updateFocusTimer;
+    // QTimer* m_updateFocusTimer;
     QWidget *m_statusBar;
     QToolButton *m_sortButton;
     QLabel *m_sortText;
@@ -220,9 +225,9 @@ private:
 
     class KateCompletionConfig *m_configWidget;
     bool m_lastInsertionByUser;
-    bool m_inCompletionList; //Are we in the completion-list? If not, we're in the argument-hint list
+    bool m_inCompletionList; // Are we in the completion-list? If not, we're in the argument-hint list
     bool m_isSuspended;
-    bool m_dontShowArgumentHints; //Used temporarily to prevent flashing
+    bool m_dontShowArgumentHints; // Used temporarily to prevent flashing
     bool m_needShow;
 
     bool m_hadCompletionNavigation;

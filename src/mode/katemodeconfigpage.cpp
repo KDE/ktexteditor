@@ -18,7 +18,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "katemodeconfigpage.h"
 
 #include "katedocument.h"
@@ -42,7 +42,7 @@
 #include <QPushButton>
 #include <QToolButton>
 #include <QSpinBox>
-//END Includes
+// END Includes
 
 ModeConfigPage::ModeConfigPage(QWidget *parent)
     : KateConfigPage(parent)
@@ -58,7 +58,7 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     ui->setupUi(newWidget);
 
     ui->cmbHl->addItem(i18n("<Unchanged>"), QVariant(QString()));
-   for (const auto &hl : KateHlManager::self()->modeList()) {
+    for (const auto &hl : KateHlManager::self()->modeList()) {
         if (hl.section().length() > 0)
             ui->cmbHl->addItem(hl.section() + QLatin1Char('/') + hl.translatedName(), QVariant(hl.name()));
         else {
@@ -238,7 +238,7 @@ void ModeConfigPage::typeChanged(int type)
     if (type > -1 && type < m_types.count()) {
         KateFileType *t = m_types.at(type);
 
-        ui->gbProperties->setTitle(i18n("Properties of %1",  ui->cmbFiletypes->currentText()));
+        ui->gbProperties->setTitle(i18n("Properties of %1", ui->cmbFiletypes->currentText()));
 
         ui->gbProperties->setEnabled(true);
         ui->btnDelete->setEnabled(true);

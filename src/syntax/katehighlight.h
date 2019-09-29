@@ -48,8 +48,9 @@
 
 class KConfig;
 
-namespace KTextEditor {
-    class DocumentPrivate;
+namespace KTextEditor
+{
+class DocumentPrivate;
 }
 
 class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter
@@ -101,19 +102,14 @@ public:
      * @param ctxChanged will be set to reflect if the context changed
      * @param tabWidth tab width for indentation based folding, if wanted, else 0
      */
-    void doHighlight(const Kate::TextLineData *prevLine,
-                     Kate::TextLineData *textLine,
-                     const Kate::TextLineData *nextLine,
-                     bool &ctxChanged,
-                     int tabWidth = 0);
+    void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *nextLine, bool &ctxChanged, int tabWidth = 0);
     /**
      * Saves the attribute definitions to the config file.
      *
      * @param schema The id of the schema group to save
      * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
      */
-    void setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list,
-                                      KConfig *cfg = nullptr /*if 0  standard kate config*/, bool writeDefaultsToo = false);
+    void setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg = nullptr /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
     const QString &name() const
     {
@@ -155,9 +151,9 @@ public:
     bool isEmptyLine(const Kate::TextLineData *textline) const;
 
     /**
-    * @return true if @p beginAttr and @p endAttr are members of the same
-    * highlight, and there are comment markers of either type in that.
-    */
+     * @return true if @p beginAttr and @p endAttr are members of the same
+     * highlight, and there are comment markers of either type in that.
+     */
     bool canComment(int startAttr, int endAttr) const;
 
     /**
@@ -200,7 +196,7 @@ public:
      * @param cursor cursor position in the given document
      * @return attribute valid at that location, default is 0
      */
-    int attributeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+    int attributeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
 
     /**
      * Get all keywords valid for the given cursor position.
@@ -208,7 +204,7 @@ public:
      * @param cursor cursor position in the given document
      * @return all keywords valid at that location
      */
-    QStringList keywordsForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+    QStringList keywordsForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
 
     /**
      * Is spellchecking required for the tiven cursor position?
@@ -216,7 +212,7 @@ public:
      * @param cursor cursor position in the given document
      * @return spell checking required?
      */
-    bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+    bool spellCheckingRequiredForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
 
     /**
      * Get highlighting mode for the given cursor position.
@@ -224,7 +220,7 @@ public:
      * @param cursor cursor position in the given document
      * @return mode valid at that location
      */
-    QString higlightingModeForLocation(KTextEditor::DocumentPrivate* doc, const KTextEditor::Cursor& cursor);
+    QString higlightingModeForLocation(KTextEditor::DocumentPrivate *doc, const KTextEditor::Cursor &cursor);
 
     KTextEditor::DefaultStyle defaultStyleForAttribute(int attr) const;
 
@@ -288,7 +284,7 @@ private:
     bool m_foldingIndentationSensitive = false;
 
     // map schema name to attributes...
-    QHash< QString, QVector<KTextEditor::Attribute::Ptr> > m_attributeArrays;
+    QHash<QString, QVector<KTextEditor::Attribute::Ptr>> m_attributeArrays;
 
     /**
      * This class holds the additional properties for one highlight
@@ -352,4 +348,3 @@ public:
 };
 
 #endif
-

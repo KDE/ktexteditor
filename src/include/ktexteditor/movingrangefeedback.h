@@ -28,7 +28,6 @@
 
 namespace KTextEditor
 {
-
 class View;
 class MovingRange;
 
@@ -117,4 +116,3 @@ private:
 }
 
 #endif
-

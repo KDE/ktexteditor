@@ -38,7 +38,6 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
-
 class Document;
 class MainWindow;
 class ViewPrivate;
@@ -150,7 +149,7 @@ class ViewPrivate;
  *      KXMLGUIClient
  * \author Christoph Cullmann \<cullmann@kde.org\>
  */
-class KTEXTEDITOR_EXPORT View :  public QWidget, public KXMLGUIClient
+class KTEXTEDITOR_EXPORT View : public QWidget, public KXMLGUIClient
 {
     Q_OBJECT
 
@@ -190,9 +189,9 @@ public:
      */
 public:
     /**
-    * Possible input modes.
-    * These correspond to various modes the text editor might be in.
-    */
+     * Possible input modes.
+     * These correspond to various modes the text editor might be in.
+     */
     enum InputMode {
         NormalInputMode = 0, /**< Normal Mode. */
         ViInputMode = 1      /**< Vi mode. The view will behave like the editor vi(m) */
@@ -321,9 +320,7 @@ Q_SIGNALS:
      * \param text the text the user has typed into the editor
      * \see insertText()
      */
-    void textInserted(KTextEditor::View *view,
-                      const KTextEditor::Cursor &position,
-                      const QString &text);
+    void textInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text);
 
     /*
      * Context menu handling
@@ -486,8 +483,7 @@ Q_SIGNALS:
      *        cursor position, not the virtual)
      * \see cursorPosition(), cursorPositionVirtual()
      */
-    void cursorPositionChanged(KTextEditor::View *view,
-                               const KTextEditor::Cursor &newPosition);
+    void cursorPositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPosition);
 
     /**
      * This signal should be emitted whenever the \p view is scrolled vertically.
@@ -544,8 +540,7 @@ Q_SIGNALS:
      *        mouse moved out of the \p view.
      * \see mouseTrackingEnabled()
      */
-    void mousePositionChanged(KTextEditor::View *view,
-                              const KTextEditor::Cursor &newPosition);
+    void mousePositionChanged(KTextEditor::View *view, const KTextEditor::Cursor &newPosition);
 
     /*
      * Selection methods.
@@ -665,10 +660,7 @@ public:
      * \param script script with functions which can be used in @p templateScript
      * \return true on success, false if insertion failed (e.g. read-only mode)
      */
-    bool insertTemplate(const KTextEditor::Cursor& insertPosition,
-                        const QString& templateString,
-                        const QString& script = QString());
-
+    bool insertTemplate(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script = QString());
 
     /**
      * Scroll view to cursor.
@@ -825,4 +817,3 @@ private:
 }
 
 #endif
-

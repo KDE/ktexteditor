@@ -25,7 +25,7 @@
 
 namespace KTextEditor
 {
-    class View;
+class View;
 
 /**
  * @brief Variable for variable expansion.
@@ -51,7 +51,7 @@ public:
      * Function that is called to expand a variable in @p text.
      * @param text
      */
-    using ExpandFunction = QString (*)(const QStringView& text, KTextEditor::View* view);
+    using ExpandFunction = QString (*)(const QStringView &text, KTextEditor::View *view);
 
     /**
      * Constructs an invalid Variable, see isValid().
@@ -66,17 +66,17 @@ public:
      *
      * @note The @p name should @e not be translated.
      */
-    Variable(const QString& name, const QString& description, ExpandFunction expansionFunc, bool isPrefixMatch);
+    Variable(const QString &name, const QString &description, ExpandFunction expansionFunc, bool isPrefixMatch);
 
     /**
      * Copy constructor.
      */
-    Variable(const Variable & copy) = default;
+    Variable(const Variable &copy) = default;
 
     /**
      * Assignment operator.
      */
-    Variable & operator=(const Variable & copy) = default;
+    Variable &operator=(const Variable &copy) = default;
 
     /**
      * Returns true, if the name is non-empty and the function provided in the
@@ -116,7 +116,7 @@ public:
      *
      * @return the expanded variable.
      */
-    QString evaluate(const QStringView& prefix, KTextEditor::View * view) const;
+    QString evaluate(const QStringView &prefix, KTextEditor::View *view) const;
 
 private:
     QString m_name;

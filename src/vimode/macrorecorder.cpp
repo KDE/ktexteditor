@@ -28,8 +28,9 @@
 #include "completionreplayer.h"
 #include "lastchangerecorder.h"
 
-namespace {
-    const QChar LastPlayedRegister = QLatin1Char('@');
+namespace
+{
+const QChar LastPlayedRegister = QLatin1Char('@');
 }
 
 using namespace KateVi;
@@ -86,7 +87,7 @@ void MacroRecorder::dropLast()
 
 void MacroRecorder::replay(const QChar &macroRegister)
 {
-    const QChar reg = (macroRegister == LastPlayedRegister) ?  m_lastPlayedMacroRegister : macroRegister;
+    const QChar reg = (macroRegister == LastPlayedRegister) ? m_lastPlayedMacroRegister : macroRegister;
 
     m_lastPlayedMacroRegister = reg;
     const QString macroAsFeedableKeypresses = m_viInputModeManager->globalState()->macros()->get(reg);

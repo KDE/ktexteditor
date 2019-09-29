@@ -105,7 +105,7 @@ void Attribute::setName(const QString &name)
 
 DefaultStyle Attribute::defaultStyle() const
 {
-    return static_cast<DefaultStyle> (intProperty(AttributeDefaultStyleIndex));
+    return static_cast<DefaultStyle>(intProperty(AttributeDefaultStyleIndex));
 }
 
 void Attribute::setDefaultStyle(DefaultStyle style)
@@ -203,7 +203,7 @@ bool Attribute::hasAnyProperty() const
     return !properties().isEmpty();
 }
 
-Attribute &KTextEditor::Attribute::operator =(const Attribute &a)
+Attribute &KTextEditor::Attribute::operator=(const Attribute &a)
 {
     QTextCharFormat::operator=(a);
     Q_ASSERT(static_cast<QTextCharFormat>(*this) == a);
@@ -212,4 +212,3 @@ Attribute &KTextEditor::Attribute::operator =(const Attribute &a)
 
     return *this;
 }
-

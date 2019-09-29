@@ -27,7 +27,10 @@ namespace KTextEditor
 class View;
 }
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateScriptDocument;
 
 class ScriptDocumentTest : public QObject

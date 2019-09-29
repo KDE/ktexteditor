@@ -31,13 +31,12 @@
 
 namespace Kate
 {
-
 /**
  * loader block size, load 256 kb at once per default
  * if file size is smaller, fall back to file size
  * must be a multiple of 2
  */
-static const qint64 KATE_FILE_LOADER_BS  = 256 * 1024;
+static const qint64 KATE_FILE_LOADER_BS = 256 * 1024;
 
 /**
  * File Loader, will handle reading of files + detecting encoding
@@ -52,12 +51,12 @@ public:
      */
     TextLoader(const QString &filename, KEncodingProber::ProberType proberType)
         : m_codec(nullptr)
-        , m_eof(false)  // default to not eof
-        , m_lastWasEndOfLine(true)  // at start of file, we had a virtual newline
-        , m_lastWasR(false)  // we have not found a \r as last char
+        , m_eof(false)             // default to not eof
+        , m_lastWasEndOfLine(true) // at start of file, we had a virtual newline
+        , m_lastWasR(false)        // we have not found a \r as last char
         , m_position(0)
         , m_lastLineStart(0)
-        , m_eol(TextBuffer::eolUnknown)  // no eol type detected atm
+        , m_eol(TextBuffer::eolUnknown) // no eol type detected atm
         , m_buffer(KATE_FILE_LOADER_BS, 0)
         , m_digest(QCryptographicHash::Sha1)
         , m_converterState(nullptr)
@@ -254,7 +253,7 @@ public:
                                     /**
                                      * first: try to get HTML header encoding
                                      */
-                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml (m_buffer, nullptr)) {
+                                    if (QTextCodec *codecForHtml = QTextCodec::codecForHtml(m_buffer, nullptr)) {
                                         m_codec = codecForHtml;
                                     }
 

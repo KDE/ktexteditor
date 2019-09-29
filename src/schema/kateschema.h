@@ -28,7 +28,10 @@
 #include <QStringList>
 #include <QPointer>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class QActionGroup;
 
 class KateSchema
@@ -100,7 +103,7 @@ private:
     QActionGroup *m_group;
     int last;
 
-public  Q_SLOTS:
+public Q_SLOTS:
     void slotAboutToShow();
 
 private Q_SLOTS:
@@ -108,4 +111,3 @@ private Q_SLOTS:
 };
 
 #endif
-

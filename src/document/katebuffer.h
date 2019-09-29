@@ -28,7 +28,10 @@
 #include <QObject>
 
 class KateLineInfo;
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateHighlighting;
 
 /**
@@ -292,4 +295,3 @@ private:
 };
 
 #endif
-

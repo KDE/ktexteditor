@@ -46,7 +46,6 @@ namespace Kate
 {
 namespace Script
 {
-
 bool readFile(const QString &sourceUrl, QString &sourceCode)
 {
     sourceCode = QString();
@@ -73,8 +72,7 @@ QString ScriptHelper::read(const QString &name)
      * skip on errors
      */
     QString content;
-    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                QLatin1String("katepart5/script/files/") + name);
+    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/script/files/") + name);
     if (fullName.isEmpty()) {
         /**
          * retry with resource
@@ -98,8 +96,7 @@ void ScriptHelper::require(const QString &name)
      * get full name of file
      * skip on errors
      */
-    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                QLatin1String("katepart5/script/libraries/") + name);
+    QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/script/libraries/") + name);
     if (fullName.isEmpty()) {
         /**
          * retry with resource
@@ -146,9 +143,9 @@ void ScriptHelper::debug(const QString &message)
     std::cerr << "\033[31m" << qPrintable(message) << "\033[0m\n";
 }
 
-//BEGIN code adapted from kdelibs/kross/modules/translation.cpp
+// BEGIN code adapted from kdelibs/kross/modules/translation.cpp
 /// helper function to do the substitution from QtScript > QVariant > real values
-//KLocalizedString substituteArguments(const KLocalizedString &kls, const QVariantList &arguments, int max = 99)
+// KLocalizedString substituteArguments(const KLocalizedString &kls, const QVariantList &arguments, int max = 99)
 //{
 //    KLocalizedString ls = kls;
 //    int cnt = qMin(arguments.count(), max);   // QString supports max 99
@@ -170,33 +167,30 @@ void ScriptHelper::debug(const QString &message)
 QString ScriptHelper::_i18n(const QString &text)
 {
     KLocalizedString ls = ki18n(text.toUtf8().constData());
-    return ls.toString(); //substituteArguments(ls, args).toString();
+    return ls.toString(); // substituteArguments(ls, args).toString();
 }
 
 /// i18nc("context", "text", arguments [optional])
 QString ScriptHelper::_i18nc(const QString &textContext, const QString &text)
 {
     KLocalizedString ls = ki18nc(textContext.toUtf8().constData(), text.toUtf8().constData());
-    return ls.toString(); //substituteArguments(ls, args).toString();
+    return ls.toString(); // substituteArguments(ls, args).toString();
 }
 
 /// i18np("singular", "plural", number, arguments [optional])
 QString ScriptHelper::_i18np(const QString &trSingular, const QString &trPlural, int number)
 {
     KLocalizedString ls = ki18np(trSingular.toUtf8().constData(), trPlural.toUtf8().constData()).subs(number);
-    return ls.toString(); //substituteArguments(ls, args, 98).toString();
+    return ls.toString(); // substituteArguments(ls, args, 98).toString();
 }
 
 /// i18ncp("context", "singular", "plural", number, arguments [optional])
-QString ScriptHelper::_i18ncp(
-        const QString &trContext, const QString &trSingular,
-        const QString &trPlural, int number)
+QString ScriptHelper::_i18ncp(const QString &trContext, const QString &trSingular, const QString &trPlural, int number)
 {
     KLocalizedString ls = ki18ncp(trContext.toUtf8().data(), trSingular.toUtf8().data(), trPlural.toUtf8().data()).subs(number);
     return ls.toString(); // substituteArguments(ls, args, 98).toString();
 }
 
-//END code adapted from kdelibs/kross/modules/translation.cpp
+// END code adapted from kdelibs/kross/modules/translation.cpp
 
 } // namespace kate
-

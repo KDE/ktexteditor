@@ -41,18 +41,20 @@ public:
     void top();
     void bottom();
 
-    //Returns the total size of all columns
+    // Returns the total size of all columns
     int resizeColumns();
 
-    void  clearCompletion();
+    void clearCompletion();
 public Q_SLOTS:
     void updateGeometry();
     void updateGeometry(QRect rect);
+
 protected:
     void paintEvent(QPaintEvent *event) override;
     void rowsInserted(const QModelIndex &parent, int start, int end) override;
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>()) override;
     void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
+
 private:
     uint rowHeight(const QModelIndex &index) const;
     KateArgumentHintModel *model() const;

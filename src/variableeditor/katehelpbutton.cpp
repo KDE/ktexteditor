@@ -62,4 +62,3 @@ void KateHelpButton::setSection(const QString &section)
 {
     m_section = section;
 }
-

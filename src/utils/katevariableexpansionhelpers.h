@@ -35,8 +35,8 @@ class TextEditButton;
 
 namespace KTextEditor
 {
-    class View;
-    class Variable;
+class View;
+class Variable;
 }
 
 /**
@@ -44,11 +44,11 @@ namespace KTextEditor
  */
 namespace KateMacroExpander
 {
-    /**
-     * Expands the @p input text based on the @p view.
-     * @return the expanded text.
-     */
-    QString expandMacro(const QString& input, KTextEditor::View* view);
+/**
+ * Expands the @p input text based on the @p view.
+ * @return the expanded text.
+ */
+QString expandMacro(const QString &input, KTextEditor::View *view);
 }
 
 /**
@@ -65,7 +65,7 @@ public:
     /**
      * Adds @p variable to the expansion list view.
      */
-    void addVariable(const KTextEditor::Variable& variable);
+    void addVariable(const KTextEditor::Variable &variable);
 
     /**
      * Returns true if no variables were added at all to the dialog.
@@ -90,14 +90,14 @@ protected:
      * Called whenever a widget was deleted. If all widgets are deleted,
      * this dialog deletes itself via deleteLater().
      */
-    void onObjectDeleted(QObject* object);
+    void onObjectDeleted(QObject *object);
 
 private:
     QAction *m_showAction;
-    QHash<QWidget*, QPointer<TextEditButton>> m_textEditButtons;
-    QVector<QObject*> m_widgets;
+    QHash<QWidget *, QPointer<TextEditButton>> m_textEditButtons;
+    QVector<QObject *> m_widgets;
     QVector<KTextEditor::Variable> m_variables;
-    VariableItemModel * m_variableModel;
+    VariableItemModel *m_variableModel;
     QSortFilterProxyModel *m_filterModel;
     QListView *m_listView;
     QLineEdit *m_filterEdit;

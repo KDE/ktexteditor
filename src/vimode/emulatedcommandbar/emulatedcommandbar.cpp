@@ -70,11 +70,11 @@ QString escapedForSearchingAsLiteral(const QString &originalQtRegex)
 }
 }
 
-EmulatedCommandBar::EmulatedCommandBar(KateViInputMode* viInputMode, InputModeManager *viInputModeManager, QWidget *parent)
-    : KateViewBarWidget(false, parent),
-      m_viInputMode(viInputMode),
-      m_viInputModeManager(viInputModeManager),
-      m_view(viInputModeManager->view())
+EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeManager *viInputModeManager, QWidget *parent)
+    : KateViewBarWidget(false, parent)
+    , m_viInputMode(viInputMode)
+    , m_viInputModeManager(viInputModeManager)
+    , m_view(viInputModeManager->view())
 {
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setContentsMargins(0, 0, 0, 0);
@@ -111,13 +111,10 @@ void EmulatedCommandBar::init(EmulatedCommandBar::Mode mode, const QString &init
 
     showBarTypeIndicator(mode);
 
-    if (mode == KateVi::EmulatedCommandBar::SearchBackward || mode == SearchForward)
-    {
+    if (mode == KateVi::EmulatedCommandBar::SearchBackward || mode == SearchForward) {
         switchToMode(m_searchMode.data());
         m_searchMode->init(mode == SearchBackward ? SearchMode::SearchDirection::Backward : SearchMode::SearchDirection::Forward);
-    }
-    else
-    {
+    } else {
         switchToMode(m_commandMode.data());
     }
 
@@ -151,14 +148,13 @@ void EmulatedCommandBar::closed()
     m_completer->deactivateCompletion();
     m_isActive = false;
 
-    if (m_currentMode)
-    {
+    if (m_currentMode) {
         m_currentMode->deactivate(m_wasAborted);
         m_currentMode = nullptr;
     }
 }
 
-void EmulatedCommandBar::switchToMode ( ActiveMode* newMode )
+void EmulatedCommandBar::switchToMode(ActiveMode *newMode)
 {
     if (m_currentMode)
         m_currentMode->deactivate(false);
@@ -166,7 +162,7 @@ void EmulatedCommandBar::switchToMode ( ActiveMode* newMode )
     m_completer->setCurrentMode(newMode);
 }
 
-bool EmulatedCommandBar::barHandledKeypress ( const QKeyEvent* keyEvent )
+bool EmulatedCommandBar::barHandledKeypress(const QKeyEvent *keyEvent)
 {
     if ((keyEvent->modifiers() == Qt::ControlModifier && keyEvent->key() == Qt::Key_H) || keyEvent->key() == Qt::Key_Backspace) {
         if (m_edit->text().isEmpty()) {
@@ -304,9 +300,9 @@ bool EmulatedCommandBar::handleKeyPress(const QKeyEvent *keyEvent)
     // is not dispatched from within KateViInputModeHandler::handleKeypress(...)
     // (so KateViInputModeManager::isHandlingKeypress() returns false), we lose information about whether we are
     // in Visual Mode, Visual Line Mode, etc.  See VisualViMode::updateSelection( ).
-    if (m_edit->isVisible())
-    {
-        if (m_suspendEditEventFiltering) return false;
+    if (m_edit->isVisible()) {
+        if (m_suspendEditEventFiltering)
+            return false;
         m_suspendEditEventFiltering = true;
         QKeyEvent keyEventCopy(keyEvent->type(), keyEvent->key(), keyEvent->modifiers(), keyEvent->text(), keyEvent->isAutoRepeat(), keyEvent->count());
         qApp->notify(m_edit, &keyEventCopy);
@@ -331,17 +327,17 @@ void EmulatedCommandBar::showBarTypeIndicator(EmulatedCommandBar::Mode mode)
 {
     QChar barTypeIndicator = QChar::Null;
     switch (mode) {
-    case SearchForward:
-        barTypeIndicator = QLatin1Char('/');
-        break;
-    case SearchBackward:
-        barTypeIndicator = QLatin1Char('?');
-        break;
-    case Command:
-        barTypeIndicator = QLatin1Char(':');
-        break;
-    default:
-        Q_ASSERT(false && "Unknown mode!");
+        case SearchForward:
+            barTypeIndicator = QLatin1Char('/');
+            break;
+        case SearchBackward:
+            barTypeIndicator = QLatin1Char('?');
+            break;
+        case Command:
+            barTypeIndicator = QLatin1Char(':');
+            break;
+        default:
+            Q_ASSERT(false && "Unknown mode!");
     }
     m_barTypeIndicator->setText(barTypeIndicator);
     m_barTypeIndicator->show();
@@ -386,30 +382,30 @@ void EmulatedCommandBar::setViInputModeManager(InputModeManager *viInputModeMana
     m_interactiveSedReplaceMode->setViInputModeManager(viInputModeManager);
 }
 
-void EmulatedCommandBar::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
+void EmulatedCommandBar::hideAllWidgetsExcept(QWidget *widgetToKeepVisible)
 {
-    const QList<QWidget*> widgets = centralWidget()->findChildren<QWidget*>();
+    const QList<QWidget *> widgets = centralWidget()->findChildren<QWidget *>();
     for (QWidget *widget : widgets) {
         if (widget != widgetToKeepVisible)
             widget->hide();
     }
 }
 
-void EmulatedCommandBar::createAndAddBarTypeIndicator(QLayout* layout)
+void EmulatedCommandBar::createAndAddBarTypeIndicator(QLayout *layout)
 {
     m_barTypeIndicator = new QLabel(this);
     m_barTypeIndicator->setObjectName(QStringLiteral("bartypeindicator"));
     layout->addWidget(m_barTypeIndicator);
 }
 
-void EmulatedCommandBar::createAndAddEditWidget(QLayout* layout)
+void EmulatedCommandBar::createAndAddEditWidget(QLayout *layout)
 {
     m_edit = new QLineEdit(this);
     m_edit->setObjectName(QStringLiteral("commandtext"));
     layout->addWidget(m_edit);
 }
 
-void EmulatedCommandBar::createAndAddExitStatusMessageDisplay(QLayout* layout)
+void EmulatedCommandBar::createAndAddExitStatusMessageDisplay(QLayout *layout)
 {
     m_exitStatusMessageDisplay = new QLabel(this);
     m_exitStatusMessageDisplay->setObjectName(QStringLiteral("commandresponsemessage"));
@@ -421,17 +417,16 @@ void EmulatedCommandBar::createAndInitExitStatusMessageDisplayTimer()
 {
     m_exitStatusMessageDisplayHideTimer = new QTimer(this);
     m_exitStatusMessageDisplayHideTimer->setSingleShot(true);
-    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()),
-            this, SIGNAL(hideMe()));
+    connect(m_exitStatusMessageDisplayHideTimer, SIGNAL(timeout()), this, SIGNAL(hideMe()));
     // Make sure the timer is stopped when the user switches views. If not, focus will be given to the
     // wrong view when KateViewBar::hideCurrentBarWidget() is called as a result of m_commandResponseMessageDisplayHide
     // timing out.
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
+    connect(m_view, SIGNAL(focusOut(KTextEditor::View *)), m_exitStatusMessageDisplayHideTimer, SLOT(stop()));
     // We can restart the timer once the view has focus again, though.
-    connect(m_view, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(startHideExitStatusMessageTimer()));
+    connect(m_view, SIGNAL(focusIn(KTextEditor::View *)), this, SLOT(startHideExitStatusMessageTimer()));
 }
 
-void EmulatedCommandBar::createAndAddWaitingForRegisterIndicator(QLayout* layout)
+void EmulatedCommandBar::createAndAddWaitingForRegisterIndicator(QLayout *layout)
 {
     m_waitingForRegisterIndicator = new QLabel(this);
     m_waitingForRegisterIndicator->setObjectName(QStringLiteral("waitingforregisterindicator"));

@@ -31,22 +31,23 @@
 
 #include <QStringList>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KCompletion;
 
 namespace KateVi
 {
-
 /**
  * This KTextEditor::Command provides vi 'ex' commands
  */
 class Commands : public KTextEditor::Command, public KateViCommandInterface
 {
     Commands()
-        : KTextEditor::Command (QStringList() << mappingCommands() << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") <<
-          QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k"))
+        : KTextEditor::Command(QStringList() << mappingCommands() << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") << QStringLiteral(">")
+                                             << QStringLiteral("y") << QStringLiteral("yank") << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k"))
     {
-        
     }
     static Commands *m_instance;
 
@@ -64,8 +65,7 @@ public:
      * @param range range to execute command on
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg,
-              const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range(-1, -0, -1, 0)) override;
 
     bool supportsRange(const QString &range) override;
 
@@ -87,6 +87,7 @@ public:
         }
         return m_instance;
     }
+
 private:
     const QStringList &mappingCommands();
     Mappings::MappingMode modeForMapCommand(const QString &mapCommand);
@@ -99,7 +100,9 @@ private:
  **/
 class SedReplace : public KateCommands::SedReplace, public KateViCommandInterface
 {
-    SedReplace() { }
+    SedReplace()
+    {
+    }
     static SedReplace *m_instance;
 
 public:

@@ -32,13 +32,14 @@
 #include "kateview.h"
 #include <QModelIndex>
 
-KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent) : ExpandingTree(nullptr), m_parent(parent)     //Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
+KateArgumentHintTree::KateArgumentHintTree(KateCompletionWidget *parent)
+    : ExpandingTree(nullptr)
+    , m_parent(parent) // Do not use the completion-widget as widget-parent, because the argument-hint-tree will be rendered separately
 {
-
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setLineWidth(1);
 
-    connect(parent, SIGNAL(destroyed(QObject*)), this, SLOT(deleteLater()));
+    connect(parent, SIGNAL(destroyed(QObject *)), this, SLOT(deleteLater()));
     setFrameStyle(QFrame::NoFrame);
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setFocusPolicy(Qt::NoFocus);
@@ -69,11 +70,11 @@ void KateArgumentHintTree::paintEvent(QPaintEvent *event)
     updateGeometry(); ///@todo delay this. It is needed here, because visualRect(...) returns an invalid rect in updateGeometry before the content is painted
 }
 
-void KateArgumentHintTree::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector< int > &roles)
+void KateArgumentHintTree::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
 {
     Q_UNUSED(roles)
     QTreeView::dataChanged(topLeft, bottomRight);
-    //updateGeometry();
+    // updateGeometry();
 }
 
 void KateArgumentHintTree::currentChanged(const QModelIndex &current, const QModelIndex &previous)
@@ -110,7 +111,7 @@ unsigned int KateArgumentHintTree::rowHeight(const QModelIndex &index) const
 
 void KateArgumentHintTree::updateGeometry(QRect geom)
 {
-    //Avoid recursive calls of updateGeometry
+    // Avoid recursive calls of updateGeometry
     static bool updatingGeometry = false;
     if (updatingGeometry) {
         return;
@@ -142,12 +143,12 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
     geom.setHeight(totalHeight);
 
     geom.moveBottom(bottom);
-//   if( totalWidth > geom.width() )
+    //   if( totalWidth > geom.width() )
     geom.setWidth(totalWidth);
 
     bool enableScrollBars = false;
 
-    //Resize and move so it fits the screen horizontally
+    // Resize and move so it fits the screen horizontally
     int maxWidth = (QApplication::desktop()->screenGeometry(m_parent->view()).width() * 3) / 4;
     if (geom.width() > maxWidth) {
         geom.setWidth(maxWidth);
@@ -164,7 +165,7 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
         geom.moveLeft(QApplication::desktop()->screenGeometry(m_parent->view()).left());
     }
 
-    //Resize and move so it fits the screen vertically
+    // Resize and move so it fits the screen vertically
     bool resized = false;
     if (geom.top() < QApplication::desktop()->screenGeometry(m_parent->view()).top()) {
         int offset = QApplication::desktop()->screenGeometry(m_parent->view()).top() - geom.top();
@@ -195,7 +196,7 @@ void KateArgumentHintTree::updateGeometry(QRect geom)
 int KateArgumentHintTree::resizeColumns()
 {
     int totalSize = 0;
-    for (int a  = 0; a < header()->count(); a++) {
+    for (int a = 0; a < header()->count(); a++) {
         int columnSize = sizeHintForColumn(a);
         setColumnWidth(a, columnSize);
         totalSize += columnSize;

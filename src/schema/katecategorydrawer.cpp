@@ -24,14 +24,12 @@
 #include <QApplication>
 #include <QStyleOption>
 
-KateCategoryDrawer::KateCategoryDrawer() : KCategoryDrawer(nullptr)
+KateCategoryDrawer::KateCategoryDrawer()
+    : KCategoryDrawer(nullptr)
 {
 }
 
-void KateCategoryDrawer::drawCategory(const QModelIndex &index,
-                                      int sortRole,
-                                      const QStyleOption &option,
-                                      QPainter *painter) const
+void KateCategoryDrawer::drawCategory(const QModelIndex &index, int sortRole, const QStyleOption &option, QPainter *painter) const
 {
     Q_UNUSED(sortRole)
 
@@ -43,7 +41,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
     const int height = categoryHeight(index, option);
     const bool leftToRight = painter->layoutDirection() == Qt::LeftToRight;
 
-    //BEGIN: decoration gradient
+    // BEGIN: decoration gradient
     {
         QPainterPath path(optRect.bottomLeft());
 
@@ -85,7 +83,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
         painter->fillPath(path, decoGradient1);
         painter->fillPath(path, decoGradient2);
     }
-    //END: decoration gradient
+    // END: decoration gradient
 
     {
         QRect newOptRect(optRect);
@@ -96,7 +94,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
             newOptRect.translate(-1, 1);
         }
 
-        //BEGIN: inner top left corner
+        // BEGIN: inner top left corner
         {
             painter->save();
             painter->setPen(option.palette.base().color());
@@ -115,9 +113,9 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
             }
             painter->restore();
         }
-        //END: inner top left corner
+        // END: inner top left corner
 
-        //BEGIN: inner left vertical line
+        // BEGIN: inner left vertical line
         {
             QPoint start;
             QPoint verticalGradBottom;
@@ -135,9 +133,9 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
             gradient.setColorAt(1, Qt::transparent);
             painter->fillRect(QRect(start, QSize(1, newOptRect.height() - 3)), gradient);
         }
-        //END: inner left vertical line
+        // END: inner left vertical line
 
-        //BEGIN: inner horizontal line
+        // BEGIN: inner horizontal line
         {
             QPoint start;
             QPoint horizontalGradTop;
@@ -163,13 +161,13 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
             }
             painter->fillRect(QRect(start, rectSize), gradient);
         }
-        //END: inner horizontal line
+        // END: inner horizontal line
     }
 
     QColor outlineColor = option.palette.text().color();
     outlineColor.setAlphaF(0.35);
 
-    //BEGIN: top left corner
+    // BEGIN: top left corner
     {
         painter->save();
         painter->setPen(outlineColor);
@@ -188,9 +186,9 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
         }
         painter->restore();
     }
-    //END: top left corner
+    // END: top left corner
 
-    //BEGIN: left vertical line
+    // BEGIN: left vertical line
     {
         QPoint start;
         QPoint verticalGradBottom;
@@ -208,9 +206,9 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
         gradient.setColorAt(1, option.palette.base().color());
         painter->fillRect(QRect(start, QSize(1, optRect.height() - 3)), gradient);
     }
-    //END: left vertical line
+    // END: left vertical line
 
-    //BEGIN: horizontal line
+    // BEGIN: horizontal line
     {
         QPoint start;
         QPoint horizontalGradTop;
@@ -236,9 +234,9 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
         }
         painter->fillRect(QRect(start, rectSize), gradient);
     }
-    //END: horizontal line
+    // END: horizontal line
 
-    //BEGIN: draw text
+    // BEGIN: draw text
     {
         const QString category = index.model()->data(index, Qt::DisplayRole).toString(); // KCategorizedSortFilterProxyModel::CategoryDisplayRole).toString();
         QRect textRect = QRect(option.rect.topLeft(), QSize(option.rect.width() - 2 - 3 - 3, height));
@@ -252,7 +250,7 @@ void KateCategoryDrawer::drawCategory(const QModelIndex &index,
         painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop, category);
         painter->restore();
     }
-    //END: draw text
+    // END: draw text
 }
 
 int KateCategoryDrawer::categoryHeight(const QModelIndex &index, const QStyleOption &option) const

@@ -28,7 +28,8 @@ class KTextEditor::CodeCompletionModelPrivate
 {
 public:
     CodeCompletionModelPrivate()
-    {}
+    {
+    }
 
     int rowCount = 0;
     bool hasGroups = false;
@@ -40,7 +41,7 @@ CodeCompletionModel::CodeCompletionModel(QObject *parent)
 {
 }
 
-CodeCompletionModel::~ CodeCompletionModel()
+CodeCompletionModel::~CodeCompletionModel()
 {
     delete d;
 }
@@ -59,7 +60,7 @@ QModelIndex CodeCompletionModel::index(int row, int column, const QModelIndex &p
     return createIndex(row, column, (void *)nullptr);
 }
 
-QMap< int, QVariant > CodeCompletionModel::itemData(const QModelIndex &index) const
+QMap<int, QVariant> CodeCompletionModel::itemData(const QModelIndex &index) const
 {
     QMap<int, QVariant> ret = QAbstractItemModel::itemData(index);
 
@@ -99,7 +100,7 @@ void CodeCompletionModel::completionInvoked(KTextEditor::View *view, const Range
     Q_UNUSED(invocationType)
 }
 
-void CodeCompletionModel::executeCompletionItem (KTextEditor::View *view, const Range &word, const QModelIndex &index) const
+void CodeCompletionModel::executeCompletionItem(KTextEditor::View *view, const Range &word, const QModelIndex &index) const
 {
     view->document()->replaceText(word, data(index.sibling(index.row(), Name)).toString());
 }

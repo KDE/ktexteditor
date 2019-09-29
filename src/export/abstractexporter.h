@@ -34,13 +34,14 @@ class AbstractExporter
 public:
     /// If \p m_encapsulate is set, you should add some kind of header in the ctor
     /// to \p m_output.
-    AbstractExporter(KTextEditor::View *view,
-                     QTextStream &output, const bool encapsulate = false)
-        : m_view(view), m_output(output), m_encapsulate(encapsulate),
-          m_defaultAttribute(nullptr)
+    AbstractExporter(KTextEditor::View *view, QTextStream &output, const bool encapsulate = false)
+        : m_view(view)
+        , m_output(output)
+        , m_encapsulate(encapsulate)
+        , m_defaultAttribute(nullptr)
     {
         QColor defaultBackground;
-        if (KTextEditor::ConfigInterface *ciface = qobject_cast< KTextEditor::ConfigInterface * >(m_view)) {
+        if (KTextEditor::ConfigInterface *ciface = qobject_cast<KTextEditor::ConfigInterface *>(m_view)) {
             QVariant variant = ciface->configValue(QStringLiteral("background-color"));
             if (variant.canConvert<QColor>()) {
                 defaultBackground = variant.value<QColor>();
@@ -54,7 +55,8 @@ public:
     /// Gets called after everything got exported.
     /// Hence, if \p m_encapsulate is set, you should probably add some kind of footer here.
     virtual ~AbstractExporter()
-    {}
+    {
+    }
 
     /// Begin a new line.
     virtual void openLine() = 0;

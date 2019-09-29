@@ -37,9 +37,14 @@
 #include <QHBoxLayout>
 #include <QInputDialog>
 
-//BEGIN menu
-KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent) : QMenu(parent) {}
-KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu() {}
+// BEGIN menu
+KateStatusBarOpenUpMenu::KateStatusBarOpenUpMenu(QWidget *parent)
+    : QMenu(parent)
+{
+}
+KateStatusBarOpenUpMenu::~KateStatusBarOpenUpMenu()
+{
+}
 
 void KateStatusBarOpenUpMenu::setVisible(bool visibility)
 {
@@ -47,15 +52,16 @@ void KateStatusBarOpenUpMenu::setVisible(bool visibility)
         QRect geo = geometry();
         QPoint pos = parentWidget()->mapToGlobal(QPoint(0, 0));
         geo.moveTopLeft(QPoint(pos.x(), pos.y() - geo.height()));
-        if (geo.top() < 0) geo.moveTop(0);
+        if (geo.top() < 0)
+            geo.moveTop(0);
         setGeometry(geo);
     }
 
     QMenu::setVisible(visibility);
 }
-//END menu
+// END menu
 
-//BEGIN StatusBarButton
+// BEGIN StatusBarButton
 StatusBarButton::StatusBarButton(KateStatusBar *parent, const QString &text /*= QString()*/)
     : QPushButton(text, parent)
 {
@@ -67,7 +73,7 @@ StatusBarButton::StatusBarButton(KateStatusBar *parent, const QString &text /*= 
 StatusBarButton::~StatusBarButton()
 {
 }
-//END StatusBarButton
+// END StatusBarButton
 
 KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     : KateViewBarWidget(false)
@@ -251,7 +257,6 @@ void KateStatusBar::contextMenuEvent(QContextMenuEvent *event)
     showWords->setCheckable(true);
     showWords->setChecked(KateViewConfig::global()->showWordCount());
     menu.exec(event->globalPos());
-
 }
 
 void KateStatusBar::toggleShowLines(bool checked)
@@ -304,14 +309,9 @@ void KateStatusBar::cursorPositionChanged()
     // Update line/column label
     QString text;
     if (KateViewConfig::global()->showLineCount()) {
-        text = i18n("Line %1 of %2, Column %3", QLocale().toString(position.line() + 1)
-                                              , QLocale().toString(m_view->doc()->lines())
-                                              , QLocale().toString(position.column() + 1)
-                   );
+        text = i18n("Line %1 of %2, Column %3", QLocale().toString(position.line() + 1), QLocale().toString(m_view->doc()->lines()), QLocale().toString(position.column() + 1));
     } else {
-        text = i18n("Line %1, Column %2", QLocale().toString(position.line() + 1)
-                                        , QLocale().toString(position.column() + 1)
-                   );
+        text = i18n("Line %1, Column %2", QLocale().toString(position.line() + 1), QLocale().toString(position.column() + 1));
     }
     if (m_wordCounter) {
         text.append(QLatin1String(", ") + m_wordCount);
@@ -381,34 +381,33 @@ void KateStatusBar::modifiedChanged()
 
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
-    case 0x0:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
-        break;
+        case 0x0:
+            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
+            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
+            break;
 
-    case 0x1:
-    case 0x5:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
-        break;
+        case 0x1:
+        case 0x5:
+            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
+            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
+            break;
 
-    case 0x2:
-    case 0x6:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
-        break;
+        case 0x2:
+        case 0x6:
+            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
+            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
+            break;
 
-    case 0x3:
-    case 0x7:
-        m_modified->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")),
-                                       QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
-        m_modified->setWhatsThis(QString());
-        break;
+        case 0x3:
+        case 0x7:
+            m_modified->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
+            m_modified->setWhatsThis(QString());
+            break;
 
-    default:
-        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("lock")));
-        m_modified->setWhatsThis(i18n("Meaning of current icon: Document is in read-only mode"));
-        break;
+        default:
+            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("lock")));
+            m_modified->setWhatsThis(i18n("Meaning of current icon: Document is in read-only mode"));
+            break;
     }
 }
 
@@ -473,10 +472,11 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w)
 {
     QAction *m1 = nullptr;
     bool found = false;
-    //linear search should be fast enough here, no additional hash
+    // linear search should be fast enough here, no additional hash
     for (QAction *action : group->actions()) {
         int val = action->data().toInt();
-        if (val == -1) m1 = action;
+        if (val == -1)
+            m1 = action;
         if (val == w) {
             found = true;
             action->setChecked(true);
@@ -497,7 +497,8 @@ void KateStatusBar::slotTabGroup(QAction *a)
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
         val = QInputDialog::getInt(this, i18n("Tab Width"), i18n("Please specify the wanted tab width:"), config->tabWidth(), 1, 16, 1, &ok);
-        if (!ok) val = config->tabWidth();
+        if (!ok)
+            val = config->tabWidth();
     }
     config->setTabWidth(val);
 }
@@ -509,11 +510,13 @@ void KateStatusBar::slotIndentGroup(QAction *a)
     KateDocumentConfig *config = ((KTextEditor::DocumentPrivate *)m_view->document())->config();
     if (val == -1) {
         val = QInputDialog::getInt(this, i18n("Indentation Width"), i18n("Please specify the wanted indentation width:"), config->indentationWidth(), 1, 16, 1, &ok);
-        if (!ok) val = config->indentationWidth();
+        if (!ok)
+            val = config->indentationWidth();
     }
     config->configStart();
     config->setIndentationWidth(val);
-    if (m_hardAction->isChecked()) config->setTabWidth(val);
+    if (m_hardAction->isChecked())
+        config->setTabWidth(val);
     config->configEnd();
 }
 
@@ -559,11 +562,7 @@ void KateStatusBar::toggleWordCount(bool on)
 void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, int charsInDocument, int charsInSelection)
 {
     if (m_wordCounter) {
-        m_wordCount = i18nc(
-            "%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.",
-            "Words %1/%2, Chars %3/%4",
-            wordsInSelection, wordsInDocument, charsInSelection, charsInDocument
-        );
+        m_wordCount = i18nc("%1 and %3 are the selected words/chars count, %2 and %4 are the total words/chars count.", "Words %1/%2, Chars %3/%4", wordsInSelection, wordsInDocument, charsInSelection, charsInDocument);
     } else {
         m_wordCount.clear();
     }

@@ -32,7 +32,6 @@ class QMenu;
 
 namespace KTextEditor
 {
-
 class Document;
 
 /**
@@ -199,7 +198,8 @@ public:
      *              supports the new size!
      * \return number of reserved marker types
      */
-    static int reservedMarkersCount() {
+    static int reservedMarkersCount()
+    {
         return 7;
     }
 
@@ -359,8 +359,7 @@ public:
      * \param action action, either removed or added
      * \see marksChanged()
      */
-    virtual void markChanged(KTextEditor::Document *document, KTextEditor::Mark mark,
-                             KTextEditor::MarkInterface::MarkChangeAction action) = 0;
+    virtual void markChanged(KTextEditor::Document *document, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action) = 0;
 
 Q_SIGNALS:
 
@@ -372,8 +371,7 @@ Q_SIGNALS:
      * \param position mouse position during the hovering
      * \param handled set this to 'true' if this event was handled externally
      */
-    void markToolTipRequested(KTextEditor::Document *document, KTextEditor::Mark mark,
-                              QPoint position, bool &handled);
+    void markToolTipRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint position, bool &handled);
 
     /**
      * The \p document emits this signal whenever the \p mark is right-clicked to show a context menu.
@@ -383,8 +381,7 @@ Q_SIGNALS:
      * \param pos position where the menu should be started
      * \param handled set this to 'true' if this event was handled externally, and kate should not create an own context menu.
      */
-    void markContextMenuRequested(KTextEditor::Document *document, KTextEditor::Mark mark,
-                                  QPoint pos, bool &handled);
+    void markContextMenuRequested(KTextEditor::Document *document, KTextEditor::Mark mark, QPoint pos, bool &handled);
 
     /**
      * The \p document emits this signal whenever the \p mark is left-clicked.
@@ -403,4 +400,3 @@ private:
 Q_DECLARE_INTERFACE(KTextEditor::MarkInterface, "org.kde.KTextEditor.MarkInterface")
 
 #endif
-

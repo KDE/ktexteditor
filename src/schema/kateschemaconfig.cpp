@@ -20,7 +20,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "kateschemaconfig.h"
 
 #include "katedocument.h"
@@ -47,9 +47,9 @@
 #include <QProgressDialog>
 #include <QTabWidget>
 
-//END
+// END
 
-//BEGIN KateSchemaConfigColorTab -- 'Colors' tab
+// BEGIN KateSchemaConfigColorTab -- 'Colors' tab
 KateSchemaConfigColorTab::KateSchemaConfigColorTab()
 {
     QGridLayout *l = new QGridLayout(this);
@@ -146,7 +146,9 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
 
     ci.name = i18n("Word Wrap Marker");
     ci.key = QStringLiteral("Color Word Wrap Marker");
-    ci.whatsThis = i18n("<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of visually-wrapped lines</dd></dl>");
+    ci.whatsThis = i18n(
+        "<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
+        "visually-wrapped lines</dd></dl>");
     ci.defaultColor = colors.color(Kate::WordWrapMarker);
     items.append(ci);
 
@@ -202,15 +204,7 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList() const
     //
     ci.category = i18n("Marker Colors");
 
-    const QString markerNames[Kate::LAST_MARK + 1] = {
-        i18n("Bookmark"),
-        i18n("Active Breakpoint"),
-        i18n("Reached Breakpoint"),
-        i18n("Disabled Breakpoint"),
-        i18n("Execution"),
-        i18n("Warning"),
-        i18n("Error")
-    };
+    const QString markerNames[Kate::LAST_MARK + 1] = {i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
 
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
     for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; ++i) {
@@ -273,11 +267,11 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
     m_currentSchema = newSchema;
 
     // If we havent this schema, read in from config file
-    if (! m_schemas.contains(newSchema)) {
+    if (!m_schemas.contains(newSchema)) {
         KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(newSchema);
         QVector<KateColorItem> items = readConfig(config);
 
-        m_schemas[ newSchema ] = items;
+        m_schemas[newSchema] = items;
     }
 
     // first block signals otherwise setColor emits changed
@@ -334,7 +328,7 @@ void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
 void KateSchemaConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
-    for (auto it =  m_schemas.constBegin(); it !=  m_schemas.constEnd(); ++it) {
+    for (auto it = m_schemas.constBegin(); it != m_schemas.constEnd(); ++it) {
         KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
         for (const KateColorItem &item : it.value()) {
             if (item.useDefault) {
@@ -380,9 +374,9 @@ QColor KateSchemaConfigColorTab::selectionColor() const
 {
     return ui->findColor(QStringLiteral("Color Selection"));
 }
-//END KateSchemaConfigColorTab
+// END KateSchemaConfigColorTab
 
-//BEGIN FontConfig -- 'Fonts' tab
+// BEGIN FontConfig -- 'Fonts' tab
 KateSchemaConfigFontTab::KateSchemaConfigFontTab()
 {
     QGridLayout *grid = new QGridLayout(this);
@@ -451,9 +445,9 @@ void KateSchemaConfigFontTab::exportSchema(KConfigGroup &config)
 {
     config.writeEntry("Font", m_fontchooser->font());
 }
-//END FontConfig
+// END FontConfig
 
-//BEGIN FontColorConfig -- 'Normal Text Styles' tab
+// BEGIN FontColorConfig -- 'Normal Text Styles' tab
 KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab)
 {
     m_colorTab = colorTab;
@@ -465,13 +459,13 @@ KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaCon
     connect(m_defaultStyles, SIGNAL(changed()), this, SIGNAL(changed()));
     grid->addWidget(m_defaultStyles, 0, 0);
 
-    m_defaultStyles->setWhatsThis(i18n(
-                                      "<p>This list displays the default styles for the current schema and "
-                                      "offers the means to edit them. The style name reflects the current "
-                                      "style settings.</p>"
-                                      "<p>To edit the colors, click the colored squares, or select the color "
-                                      "to edit from the popup menu.</p><p>You can unset the Background and Selected "
-                                      "Background colors from the popup menu when appropriate.</p>"));
+    m_defaultStyles->setWhatsThis(
+        i18n("<p>This list displays the default styles for the current schema and "
+             "offers the means to edit them. The style name reflects the current "
+             "style settings.</p>"
+             "<p>To edit the colors, click the colored squares, or select the color "
+             "to edit from the popup menu.</p><p>You can unset the Background and Selected "
+             "Background colors from the popup menu when appropriate.</p>"));
 }
 
 KateSchemaConfigDefaultStylesTab::~KateSchemaConfigDefaultStylesTab()
@@ -503,45 +497,35 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     // normal text and source code
     QTreeWidgetItem *parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Normal Text & Source Code"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsNormal;
-         i <= (int)KTextEditor::dsAttribute; ++i)
-    {
+    for (int i = (int)KTextEditor::dsNormal; i <= (int)KTextEditor::dsAttribute; ++i) {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 
     // Number, Types & Constants
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Numbers, Types & Constants"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsDataType;
-         i <= (int)KTextEditor::dsConstant; ++i)
-    {
+    for (int i = (int)KTextEditor::dsDataType; i <= (int)KTextEditor::dsConstant; ++i) {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 
     // strings & characters
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Strings & Characters"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsChar;
-         i <= (int)KTextEditor::dsImport; ++i)
-    {
+    for (int i = (int)KTextEditor::dsChar; i <= (int)KTextEditor::dsImport; ++i) {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 
     // comments & documentation
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Comments & Documentation"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsComment;
-         i <= (int)KTextEditor::dsAlert; ++i)
-    {
+    for (int i = (int)KTextEditor::dsComment; i <= (int)KTextEditor::dsAlert; ++i) {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 
     // Misc
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Miscellaneous"));
     parent->setFirstColumnSpanned(true);
-    for (int i = (int)KTextEditor::dsOthers;
-         i <= (int)KTextEditor::dsError; ++i)
-    {
+    for (int i = (int)KTextEditor::dsOthers; i <= (int)KTextEditor::dsError; ++i) {
         m_defaultStyles->addItem(parent, KateHlManager::self()->defaultStyleName(i, true), l->at(i));
     }
 
@@ -595,9 +579,9 @@ void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
 
     QWidget::showEvent(event);
 }
-//END FontColorConfig
+// END FontColorConfig
 
-//BEGIN KateSchemaConfigHighlightTab -- 'Highlighting Text Styles' tab
+// BEGIN KateSchemaConfigHighlightTab -- 'Highlighting Text Styles' tab
 KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefaultStylesTab *page, KateSchemaConfigColorTab *colorTab)
 {
     m_defaults = page;
@@ -656,14 +640,14 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
     hlCombo->setCurrentIndex(hl);
     hlChanged(hl);
 
-    m_styles->setWhatsThis(i18n(
-                               "<p>This list displays the contexts of the current syntax highlight mode and "
-                               "offers the means to edit them. The context name reflects the current "
-                               "style settings.</p><p>To edit using the keyboard, press "
-                               "<strong>&lt;SPACE&gt;</strong> and choose a property from the popup menu.</p>"
-                               "<p>To edit the colors, click the colored squares, or select the color "
-                               "to edit from the popup menu.</p><p>You can unset the Background and Selected "
-                               "Background colors from the context menu when appropriate.</p>"));
+    m_styles->setWhatsThis(
+        i18n("<p>This list displays the contexts of the current syntax highlight mode and "
+             "offers the means to edit them. The context name reflects the current "
+             "style settings.</p><p>To edit using the keyboard, press "
+             "<strong>&lt;SPACE&gt;</strong> and choose a property from the popup menu.</p>"
+             "<p>To edit the colors, click the colored squares, or select the color "
+             "to edit from the popup menu.</p><p>You can unset the Background and Selected "
+             "Background colors from the context menu when appropriate.</p>"));
 }
 
 KateSchemaConfigHighlightTab::~KateSchemaConfigHighlightTab()
@@ -699,7 +683,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     m_styles->clear();
 
     if (!m_hlDict.contains(m_schema)) {
-        m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr> >());
+        m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr>>());
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
@@ -724,10 +708,10 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
         int c = itemData->name().indexOf(QLatin1Char(':'));
         if (c > 0) {
             QString prefix = itemData->name().left(c);
-            QString name   = itemData->name().mid(c + 1);
+            QString name = itemData->name().mid(c + 1);
 
             QTreeWidgetItem *parent = prefixes[prefix];
-            if (! parent) {
+            if (!parent) {
                 parent = new QTreeWidgetItem(m_styles, QStringList() << prefix);
                 m_styles->expandItem(parent);
                 prefixes.insert(prefix, parent);
@@ -762,10 +746,10 @@ void KateSchemaConfigHighlightTab::reload()
 
 void KateSchemaConfigHighlightTab::apply()
 {
-    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr> > > it = m_hlDict;
+    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> it = m_hlDict;
     while (it.hasNext()) {
         it.next();
-        QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr> > it2 = it.value();
+        QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr>> it2 = it.value();
         while (it2.hasNext()) {
             it2.next();
             KateHlManager::self()->getHl(it2.key())->setKateExtendedAttributeList(it.key(), it2.value());
@@ -788,10 +772,8 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
     }
 
     if (doManage) {
-        QString srcName = QFileDialog::getOpenFileName(this,
-                          i18n("Importing colors for single highlighting"),
-                          KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
-                          QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
+        QString srcName =
+            QFileDialog::getOpenFileName(this, i18n("Importing colors for single highlighting"), KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"), QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
 
         if (srcName.isEmpty()) {
             return;
@@ -802,21 +784,15 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
         hlName = grp.readEntry("highlight", QString());
         schemaNameForLoading = grp.readEntry("schema", QString());
         if ((grp.readEntry("full schema", "true").toUpper() != QLatin1String("FALSE")) || hlName.isEmpty() || schemaNameForLoading.isEmpty()) {
-            //ERROR - file format
-            KMessageBox::information(
-                this,
-                i18n("File is not a single highlighting color file"),
-                i18n("Fileformat error"));
+            // ERROR - file format
+            KMessageBox::information(this, i18n("File is not a single highlighting color file"), i18n("Fileformat error"));
             hl = -1;
             schemaNameForLoading = QString();
         } else {
             hl = KateHlManager::self()->nameFind(hlName);
             if (hl == -1) {
-                //hl not found
-                KMessageBox::information(
-                    this,
-                    i18n("The selected file contains colors for a non existing highlighting:%1", hlName),
-                    i18n("Import failure"));
+                // hl not found
+                KMessageBox::information(this, i18n("The selected file contains colors for a non existing highlighting:%1", hlName), i18n("Import failure"));
                 hl = -1;
                 schemaNameForLoading = QString();
             }
@@ -824,7 +800,6 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
     }
 
     if ((hl != -1) && (!schemaNameForLoading.isEmpty())) {
-
         QVector<KTextEditor::Attribute::Ptr> list;
         KateHlManager::self()->getHl(hl)->getKateExtendedAttributeListCopy(schemaNameForLoading, list, cfg);
         KateHlManager::self()->getHl(hl)->setKateExtendedAttributeList(schema, list);
@@ -837,13 +812,9 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
         cfg = nullptr;
         if ((hl != -1) && (!schemaNameForLoading.isEmpty())) {
             hlChanged(m_hl);
-            KMessageBox::information(
-                this,
-                i18n("Colors have been imported for highlighting: %1", hlName),
-                i18n("Import has finished"));
+            KMessageBox::information(this, i18n("Colors have been imported for highlighting: %1", hlName), i18n("Import has finished"));
         }
     }
-
 }
 
 void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg)
@@ -857,11 +828,11 @@ void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg
     }
 
     QVector<KTextEditor::Attribute::Ptr> items = m_hlDict[schema][hl];
-    if (doManage)  {
+    if (doManage) {
         QString destName = QFileDialog::getSaveFileName(this,
-                           i18n("Exporting colors for single highlighting: %1", KateHlManager::self()->getHl(hl)->name()),
-                           KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
-                           QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
+                                                        i18n("Exporting colors for single highlighting: %1", KateHlManager::self()->getHl(hl)->name()),
+                                                        KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"),
+                                                        QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
 
         if (destName.isEmpty()) {
             return;
@@ -879,7 +850,6 @@ void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg
         cfg->sync();
         delete cfg;
     }
-
 }
 
 void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
@@ -892,12 +862,12 @@ void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
 
     QWidget::showEvent(event);
 }
-//END KateSchemaConfigHighlightTab
+// END KateSchemaConfigHighlightTab
 
-//BEGIN KateSchemaConfigPage -- Main dialog page
+// BEGIN KateSchemaConfigPage -- Main dialog page
 KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
-    : KateConfigPage(parent),
-      m_currentSchema(-1)
+    : KateConfigPage(parent)
+    , m_currentSchema(-1)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
@@ -977,10 +947,7 @@ void KateSchemaConfigPage::exportFullSchema()
 {
     // get save destination
     const QString currentSchemaName = m_currentSchema;
-    QString destName = QFileDialog::getSaveFileName(this,
-                       i18n("Exporting color schema: %1", currentSchemaName),
-                       currentSchemaName + QLatin1String(".kateschema"),
-                       QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
+    QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color schema: %1", currentSchemaName), currentSchemaName + QLatin1String(".kateschema"), QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
 
     if (destName.isEmpty()) {
         return;
@@ -1108,10 +1075,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
 
 void KateSchemaConfigPage::importFullSchema()
 {
-    const QString srcName = QFileDialog::getOpenFileName(this,
-                            i18n("Importing Color Schema"),
-                            QString(),
-                            QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
+    const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Schema"), QString(), QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
 
     if (srcName.isEmpty()) {
         return;
@@ -1121,8 +1085,7 @@ void KateSchemaConfigPage::importFullSchema()
     KConfig cfg(srcName, KConfig::SimpleConfig);
     KConfigGroup schemaGroup(&cfg, "KateSchema");
     if (schemaGroup.readEntry("full schema", "false").toUpper() != QLatin1String("TRUE")) {
-        KMessageBox::sorry(this, i18n("The file does not contain a full color schema."),
-                           i18n("Fileformat error"));
+        KMessageBox::sorry(this, i18n("The file does not contain a full color schema."), i18n("Fileformat error"));
         return;
     }
 
@@ -1375,5 +1338,4 @@ QIcon KateSchemaConfigPage::icon() const
     return QIcon::fromTheme(QStringLiteral("preferences-desktop-color"));
 }
 
-//END KateSchemaConfigPage
-
+// END KateSchemaConfigPage

@@ -23,8 +23,8 @@
 
 #include <KColorScheme>
 
-namespace Kate {
-
+namespace Kate
+{
 enum ColorRole {
     // editor backgrounds
     Background,
@@ -97,11 +97,8 @@ public:
     QColor mark(Kate::Mark mark) const;
     QColor mark(int mark) const;
 
-    enum ColorType {
-        ForegroundColor,
-        BackgroundColor
-    };
-    QColor adaptToScheme(const QColor& color, ColorType type) const;
+    enum ColorType { ForegroundColor, BackgroundColor };
+    QColor adaptToScheme(const QColor &color, ColorType type) const;
 
 private:
     const KColorScheme m_view;

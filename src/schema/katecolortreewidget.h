@@ -29,12 +29,12 @@ public:
     {
     }
 
-    QString name; // translated name
-    QString category; // translated category for tree view hierarchy
-    QString whatsThis; // what's this info
-    QString key;  // untranslated id, used as key to save/load from KConfig
-    QColor color; // user visible color
-    QColor defaultColor; // used when "Default" is clicked
+    QString name;           // translated name
+    QString category;       // translated category for tree view hierarchy
+    QString whatsThis;      // what's this info
+    QString key;            // untranslated id, used as key to save/load from KConfig
+    QColor color;           // user visible color
+    QColor defaultColor;    // used when "Default" is clicked
     bool useDefault = true; // flag whether to use the default color
 };
 
@@ -67,4 +67,3 @@ protected:
 };
 
 #endif
-

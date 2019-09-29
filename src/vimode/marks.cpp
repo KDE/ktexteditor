@@ -26,24 +26,21 @@
 
 using namespace KateVi;
 
-namespace {
-    const QChar BeginEditYanked = QLatin1Char('[');
-    const QChar EndEditYanked = QLatin1Char(']');
-    const QChar LastChange = QLatin1Char('.');
-    const QChar InsertStopped = QLatin1Char('^');
-    const QChar SelectionBegin = QLatin1Char('<');
-    const QChar SelectionEnd = QLatin1Char('>');
-    const QChar FirstUserMark = QLatin1Char('a');
-    const QChar LastUserMark = QLatin1Char('z');
-    const QChar BeforeJump = QLatin1Char('\'');
-    const QChar BeforeJumpAlter = QLatin1Char('`');
-    const QChar UserMarks[] = {QLatin1Char('a'), QLatin1Char('b'), QLatin1Char('c'), QLatin1Char('d'),
-                               QLatin1Char('e'), QLatin1Char('f'), QLatin1Char('g'), QLatin1Char('h'),
-                               QLatin1Char('i'), QLatin1Char('j'), QLatin1Char('k'), QLatin1Char('l'),
-                               QLatin1Char('m'), QLatin1Char('n'), QLatin1Char('o'), QLatin1Char('p'),
-                               QLatin1Char('q'), QLatin1Char('r'), QLatin1Char('s'), QLatin1Char('t'),
-                               QLatin1Char('u'), QLatin1Char('v'), QLatin1Char('w'), QLatin1Char('x'),
-                               QLatin1Char('y'), QLatin1Char('z')};
+namespace
+{
+const QChar BeginEditYanked = QLatin1Char('[');
+const QChar EndEditYanked = QLatin1Char(']');
+const QChar LastChange = QLatin1Char('.');
+const QChar InsertStopped = QLatin1Char('^');
+const QChar SelectionBegin = QLatin1Char('<');
+const QChar SelectionEnd = QLatin1Char('>');
+const QChar FirstUserMark = QLatin1Char('a');
+const QChar LastUserMark = QLatin1Char('z');
+const QChar BeforeJump = QLatin1Char('\'');
+const QChar BeforeJumpAlter = QLatin1Char('`');
+const QChar UserMarks[] = {QLatin1Char('a'), QLatin1Char('b'), QLatin1Char('c'), QLatin1Char('d'), QLatin1Char('e'), QLatin1Char('f'), QLatin1Char('g'), QLatin1Char('h'), QLatin1Char('i'),
+                           QLatin1Char('j'), QLatin1Char('k'), QLatin1Char('l'), QLatin1Char('m'), QLatin1Char('n'), QLatin1Char('o'), QLatin1Char('p'), QLatin1Char('q'), QLatin1Char('r'),
+                           QLatin1Char('s'), QLatin1Char('t'), QLatin1Char('u'), QLatin1Char('v'), QLatin1Char('w'), QLatin1Char('x'), QLatin1Char('y'), QLatin1Char('z')};
 }
 
 Marks::Marks(InputModeManager *imm)
@@ -74,8 +71,7 @@ void Marks::writeSessionConfig(KConfigGroup &config) const
     QStringList l;
     const auto keys = m_marks.keys();
     for (QChar key : keys) {
-        l << key << QString::number(m_marks.value(key)->line())
-        << QString::number(m_marks.value(key)->column());
+        l << key << QString::number(m_marks.value(key)->line()) << QString::number(m_marks.value(key)->column());
     }
     config.writeEntry("ViMarks", l);
 }
@@ -100,7 +96,7 @@ void Marks::setMark(const QChar &_mark, const KTextEditor::Cursor &pos)
             int number_of_marks = 0;
             const auto keys = m_marks.keys();
             for (QChar c : keys) {
-                if (m_marks.value(c)->line() ==  oldCursor->line()) {
+                if (m_marks.value(c)->line() == oldCursor->line()) {
                     number_of_marks++;
                 }
             }
@@ -144,11 +140,8 @@ KTextEditor::Cursor Marks::getMarkPosition(const QChar &mark) const
     return KTextEditor::Cursor::invalid();
 }
 
-void Marks::markChanged(KTextEditor::Document *doc,
-                        KTextEditor::Mark mark,
-                        KTextEditor::MarkInterface::MarkChangeAction action)
+void Marks::markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action)
 {
-
     Q_UNUSED(doc)
 
     if (mark.type != KTextEditor::MarkInterface::Bookmark || m_settingMark) {

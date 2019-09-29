@@ -67,7 +67,7 @@ void KateNormalInputMode::clearSelection()
     view()->clearSelection();
 }
 
-bool KateNormalInputMode::stealKey( QKeyEvent *)
+bool KateNormalInputMode::stealKey(QKeyEvent *)
 {
     return false;
 }
@@ -125,7 +125,6 @@ void KateNormalInputMode::readWriteChanged(bool)
     }
 }
 
-
 void KateNormalInputMode::find()
 {
     KateSearchBar *const bar = searchBar(IncrementalSearchBar);
@@ -169,8 +168,7 @@ void KateNormalInputMode::activateCommandLine()
     // if the user has selected text, insert the selection's range (start line to end line) in the
     // command line when opened
     if (selection.start().line() != -1 && selection.end().line() != -1) {
-        cmdLineBar()->setText(QString::number(selection.start().line() + 1) + QLatin1Char(',')
-        + QString::number(selection.end().line() + 1));
+        cmdLineBar()->setText(QString::number(selection.start().line() + 1) + QLatin1Char(',') + QString::number(selection.end().line() + 1));
     }
     view()->bottomViewBar()->showBarWidget(cmdLineBar());
     cmdLineBar()->setFocus();

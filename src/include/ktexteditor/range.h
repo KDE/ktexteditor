@@ -32,7 +32,6 @@
 
 namespace KTextEditor
 {
-
 /**
  * \short An object representing a section of text, from one Cursor to another.
  *
@@ -59,7 +58,8 @@ public:
      * Default constructor. Creates a valid range from position (0, 0) to
      * position (0, 0).
      */
-    Q_DECL_CONSTEXPR Range() Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR Range() Q_DECL_NOEXCEPT
+    {
     }
 
     /**
@@ -69,9 +69,7 @@ public:
      * \param start start position
      * \param end end position
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT
-        : m_start(qMin(start, end))
-        , m_end(qMax(start, end))
+    Q_DECL_CONSTEXPR Range(const Cursor &start, const Cursor &end) Q_DECL_NOEXCEPT : m_start(qMin(start, end)), m_end(qMax(start, end))
     {
     }
 
@@ -82,9 +80,7 @@ public:
      * \param start start position
      * \param width width of this range in columns along the same line
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int width) Q_DECL_NOEXCEPT
-        : m_start(qMin(start, Cursor(start.line(), start.column() + width)))
-        , m_end(qMax(start, Cursor(start.line(), start.column() + width)))
+    Q_DECL_CONSTEXPR Range(const Cursor &start, int width) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(start.line(), start.column() + width))), m_end(qMax(start, Cursor(start.line(), start.column() + width)))
     {
     }
 
@@ -95,9 +91,7 @@ public:
      * \param endLine end line
      * \param endColumn end column
      */
-    Q_DECL_CONSTEXPR Range(const Cursor &start, int endLine, int endColumn) Q_DECL_NOEXCEPT
-        : m_start(qMin(start, Cursor(endLine, endColumn)))
-        , m_end(qMax(start, Cursor(endLine, endColumn)))
+    Q_DECL_CONSTEXPR Range(const Cursor &start, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(start, Cursor(endLine, endColumn))), m_end(qMax(start, Cursor(endLine, endColumn)))
     {
     }
 
@@ -109,23 +103,24 @@ public:
      * \param endLine end line
      * \param endColumn end column
      */
-    Q_DECL_CONSTEXPR Range(int startLine, int startColumn, int endLine, int endColumn) Q_DECL_NOEXCEPT
-        : m_start(qMin(Cursor(startLine, startColumn), Cursor(endLine, endColumn)))
-        , m_end(qMax(Cursor(startLine, startColumn), Cursor(endLine, endColumn)))
+    Q_DECL_CONSTEXPR Range(int startLine, int startColumn, int endLine, int endColumn) Q_DECL_NOEXCEPT : m_start(qMin(Cursor(startLine, startColumn), Cursor(endLine, endColumn))),
+                                                                                                         m_end(qMax(Cursor(startLine, startColumn), Cursor(endLine, endColumn)))
     {
     }
 
     /**
      * Validity check.  In the base class, returns true unless the range starts before (0,0).
      */
-    Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT
+    {
         return start().isValid() && end().isValid();
     }
 
     /**
      * Returns an invalid range.
      */
-    Q_DECL_CONSTEXPR static Range invalid() Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR static Range invalid() Q_DECL_NOEXCEPT
+    {
         return Range(Cursor::invalid(), Cursor::invalid());
     }
 
@@ -134,10 +129,9 @@ public:
      * "start-line:start-column,endl-line:end-column".
      * \see fromString()
      */
-    QString toString() const {
-        return QLatin1Char('[') + m_start.toString()
-             + QLatin1String(", ") + m_end.toString()
-             + QLatin1Char(']');
+    QString toString() const
+    {
+        return QLatin1Char('[') + m_start.toString() + QLatin1String(", ") + m_end.toString() + QLatin1Char(']');
     }
 
     /**
@@ -146,7 +140,8 @@ public:
      * In case the string cannot be parsed, an Range::invalid() is returned.
      * \see toString()
      */
-    static Range fromString(const QString& str) Q_DECL_NOEXCEPT {
+    static Range fromString(const QString &str) Q_DECL_NOEXCEPT
+    {
         return fromString(str.leftRef(-1));
     }
 
@@ -156,7 +151,7 @@ public:
      * In case the string cannot be parsed, an Range::invalid() is returned.
      * \see toString()
      */
-    static Range fromString(const QStringRef& str) Q_DECL_NOEXCEPT;
+    static Range fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
 
     /**
      * \name Position
@@ -170,7 +165,8 @@ public:
      *
      * \returns const reference to the start position of this range.
      */
-    Q_DECL_CONSTEXPR inline Cursor start() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline Cursor start() const Q_DECL_NOEXCEPT
+    {
         return m_start;
     }
 
@@ -179,7 +175,8 @@ public:
      *
      * \returns const reference to the end position of this range.
      */
-    Q_DECL_CONSTEXPR inline Cursor end() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline Cursor end() const Q_DECL_NOEXCEPT
+    {
         return m_end;
     }
 
@@ -223,7 +220,8 @@ public:
      *
      * \param start new start cursor
      */
-    inline void setStart(const Cursor &start) Q_DECL_NOEXCEPT {
+    inline void setStart(const Cursor &start) Q_DECL_NOEXCEPT
+    {
         if (start > end()) {
             setRange(start, start);
         } else {
@@ -238,7 +236,8 @@ public:
      *
      * \param end new end cursor
      */
-    inline void setEnd(const Cursor &end) Q_DECL_NOEXCEPT {
+    inline void setEnd(const Cursor &end) Q_DECL_NOEXCEPT
+    {
         if (end < start()) {
             setRange(end, end);
         } else {
@@ -271,7 +270,8 @@ public:
      * \return \e true if both the start and end positions are on the same
      *         line, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool onSingleLine() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool onSingleLine() const Q_DECL_NOEXCEPT
+    {
         return start().line() == end().line();
     }
 
@@ -281,7 +281,8 @@ public:
      * \return the number of lines separating the start() and end() positions;
      *         0 if the start and end lines are the same.
      */
-    Q_DECL_CONSTEXPR inline int numberOfLines() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline int numberOfLines() const Q_DECL_NOEXCEPT
+    {
         return end().line() - start().line();
     }
 
@@ -291,7 +292,8 @@ public:
      * \return the number of columns separating the start() and end() positions;
      *         0 if the start and end columns are the same.
      */
-    Q_DECL_CONSTEXPR inline int columnWidth() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline int columnWidth() const Q_DECL_NOEXCEPT
+    {
         return end().column() - start().column();
     }
 
@@ -301,11 +303,12 @@ public:
      *
      * \returns \e true if the range contains no characters, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool isEmpty() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool isEmpty() const Q_DECL_NOEXCEPT
+    {
         return start() == end();
     }
 
-    //BEGIN comparison functions
+    // BEGIN comparison functions
     /**
      * \}
      *
@@ -322,7 +325,8 @@ public:
      *
      * \return \e true, if this range contains \e range, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool contains(const Range &range) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool contains(const Range &range) const Q_DECL_NOEXCEPT
+    {
         return range.start() >= start() && range.end() <= end();
     }
 
@@ -333,7 +337,8 @@ public:
      *
      * \return \e true if the cursor is contained within this range, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool contains(const Cursor &cursor) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool contains(const Cursor &cursor) const Q_DECL_NOEXCEPT
+    {
         return cursor >= start() && cursor < end();
     }
 
@@ -344,10 +349,9 @@ public:
      *
      * \return \e true if the line is wholly encompassed by this range, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool containsLine(int line) const Q_DECL_NOEXCEPT {
-        return (line > start().line()
-                || (line == start().line() && !start().column()))
-            && line < end().line();
+    Q_DECL_CONSTEXPR inline bool containsLine(int line) const Q_DECL_NOEXCEPT
+    {
+        return (line > start().line() || (line == start().line() && !start().column())) && line < end().line();
     }
 
     /**
@@ -357,7 +361,8 @@ public:
      *
      * \return \e true if the range contains \e column, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool containsColumn(int column) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool containsColumn(int column) const Q_DECL_NOEXCEPT
+    {
         return column >= start().column() && column < end().column();
     }
 
@@ -368,10 +373,9 @@ public:
      *
      * \return \e true, if this range overlaps with \e range, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool overlaps(const Range &range) const Q_DECL_NOEXCEPT {
-        return (range.start() <= start()) ? (range.end() > start())
-            : (range.end() >= end()) ? (range.start() < end())
-            : contains(range);
+    Q_DECL_CONSTEXPR inline bool overlaps(const Range &range) const Q_DECL_NOEXCEPT
+    {
+        return (range.start() <= start()) ? (range.end() > start()) : (range.end() >= end()) ? (range.start() < end()) : contains(range);
     }
 
     /**
@@ -381,7 +385,8 @@ public:
      *
      * \return \e true, if the range overlaps at least part of \e line, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline bool overlapsLine(int line) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool overlapsLine(int line) const Q_DECL_NOEXCEPT
+    {
         return line >= start().line() && line <= end().line();
     }
 
@@ -395,7 +400,8 @@ public:
      * \return \e true if the column is between the range's starting and ending
      *         columns, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool overlapsColumn(int column) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool overlapsColumn(int column) const Q_DECL_NOEXCEPT
+    {
         return start().column() <= column && end().column() > column;
     }
 
@@ -408,11 +414,12 @@ public:
      * \return \e true if the cursor is equal to \p start() or \p end(),
      *         otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline bool boundaryAtCursor(const Cursor &cursor) const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool boundaryAtCursor(const Cursor &cursor) const Q_DECL_NOEXCEPT
+    {
         return cursor == start() || cursor == end();
     }
     //!\}
-    //END
+    // END
 
     /**
      * Intersects this range with another, returning the shared area of
@@ -422,10 +429,9 @@ public:
      *
      * \return the intersection of this range and the supplied \a range.
      */
-    Q_DECL_CONSTEXPR inline Range intersect(const Range &range) const Q_DECL_NOEXCEPT {
-        return ((!isValid() || !range.isValid() || *this > range || *this < range))
-            ? invalid()
-            : Range(qMax(start(), range.start()), qMin(end(), range.end()));
+    Q_DECL_CONSTEXPR inline Range intersect(const Range &range) const Q_DECL_NOEXCEPT
+    {
+        return ((!isValid() || !range.isValid() || *this > range || *this < range)) ? invalid() : Range(qMax(start(), range.start()), qMin(end(), range.end()));
     }
 
     /**
@@ -436,11 +442,9 @@ public:
      *
      * \return the smallest range which contains this range and the supplied \a range.
      */
-    Q_DECL_CONSTEXPR inline Range encompass(const Range &range) const Q_DECL_NOEXCEPT {
-        return (!isValid())
-            ? (range.isValid() ? range : invalid())
-            : (!range.isValid()) ? (*this)
-            : Range(qMin(start(), range.start()), qMax(end(), range.end()));
+    Q_DECL_CONSTEXPR inline Range encompass(const Range &range) const Q_DECL_NOEXCEPT
+    {
+        return (!isValid()) ? (range.isValid() ? range : invalid()) : (!range.isValid()) ? (*this) : Range(qMin(start(), range.start()), qMax(end(), range.end()));
     }
 
     /**
@@ -451,7 +455,8 @@ public:
      *
      * \return a the summation of the two input ranges
      */
-    Q_DECL_CONSTEXPR inline friend Range operator+(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend Range operator+(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return Range(r1.start() + r2.start(), r1.end() + r2.end());
     }
 
@@ -463,7 +468,8 @@ public:
      *
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Range &operator+=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    inline friend Range &operator+=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         r1.setRange(r1.start() + r2.start(), r1.end() + r2.end());
         return r1;
     }
@@ -477,7 +483,8 @@ public:
      *
      * \return a range representing the subtraction of \p r2 from \p r1
      */
-    Q_DECL_CONSTEXPR inline friend Range operator-(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend Range operator-(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return Range(r1.start() - r2.start(), r1.end() - r2.end());
     }
 
@@ -489,7 +496,8 @@ public:
      *
      * \return a reference to the range which has just been subtracted from
      */
-    inline friend Range &operator-=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    inline friend Range &operator-=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         r1.setRange(r1.start() - r2.start(), r1.end() - r2.end());
         return r1;
     }
@@ -502,7 +510,8 @@ public:
      *
      * \return the intersected range, invalid() if there is no overlap
      */
-    Q_DECL_CONSTEXPR inline friend Range operator&(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend Range operator&(const Range &r1, const Range &r2)Q_DECL_NOEXCEPT
+    {
         return r1.intersect(r2);
     }
 
@@ -514,7 +523,8 @@ public:
      *
      * \return a reference to this range, after the intersection has taken place
      */
-    inline friend Range &operator&=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    inline friend Range &operator&=(Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         r1.setRange(r1.intersect(r2));
         return r1;
     }
@@ -527,7 +537,8 @@ public:
      *
      * \return \e true if \e r1 and \e r2 equal, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator==(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator==(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return r1.start() == r2.start() && r1.end() == r2.end();
     }
 
@@ -539,7 +550,8 @@ public:
      *
      * \return \e true if \e r1 and \e r2 do \e not equal, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator!=(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator!=(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return r1.start() != r2.start() || r1.end() != r2.end();
     }
 
@@ -552,7 +564,8 @@ public:
      *
      * \return \e true if \e r1 starts after where \e r2 ends, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator>(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return r1.start() > r2.end();
     }
 
@@ -565,14 +578,16 @@ public:
      *
      * \return \e true if \e r1 ends before \e r2 begins, otherwise \e false
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator<(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
+    {
         return r1.end() < r2.start();
     }
 
     /**
      * qDebug() stream operator.  Writes this range to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Range &range) {
+    inline friend QDebug operator<<(QDebug s, const Range &range)
+    {
         s << "[" << range.start() << " -> " << range.end() << "]";
         return s;
     }
@@ -602,21 +617,20 @@ Q_DECLARE_METATYPE(KTextEditor::Range)
  * QHash function for KTextEditor::Range.
  * Returns the hash value for @p range.
  */
-inline uint qHash(const KTextEditor::Range& range, uint seed = 0) Q_DECL_NOTHROW
+inline uint qHash(const KTextEditor::Range &range, uint seed = 0) Q_DECL_NOTHROW
 {
     return qHash(qMakePair(qHash(range.start()), qHash(range.end())), seed);
 }
 
 namespace QTest
 {
-    // forward declaration of template in qtestcase.h
-    template<typename T> char* toString(const T&);
+// forward declaration of template in qtestcase.h
+template <typename T> char *toString(const T &);
 
-    /**
-     * QTestLib integration to have nice output in e.g. QCOMPARE failures.
-     */
-    template<>
-    KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
+/**
+ * QTestLib integration to have nice output in e.g. QCOMPARE failures.
+ */
+template <> KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
 }
 
 #endif

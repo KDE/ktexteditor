@@ -66,8 +66,7 @@ void Registers::writeConfig(KConfigGroup &config) const
             contents << i.value().first;
             flags << int(i.value().second);
         } else {
-            qCDebug(LOG_KTE) << "Did not save contents of register " << i.key() << ": contents too long ("
-            << i.value().first.length() << " characters)";
+            qCDebug(LOG_KTE) << "Did not save contents of register " << i.key() << ": contents too long (" << i.value().first.length() << " characters)";
         }
     }
 
@@ -87,10 +86,10 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         return;
     }
 
-    if (reg >= FirstNumberedRegister && reg <= LastNumberedRegister) {   // "kill ring" registers
+    if (reg >= FirstNumberedRegister && reg <= LastNumberedRegister) { // "kill ring" registers
         setNumberedRegister(text);
     } else if (reg == SystemClipboardRegister) {
-        QApplication::clipboard()->setText(text,  QClipboard::Clipboard);
+        QApplication::clipboard()->setText(text, QClipboard::Clipboard);
     } else if (reg == SystemSelectionRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Selection);
     } else {

@@ -29,9 +29,9 @@ class QWidget;
 
 namespace KTextEditor
 {
-    class Cursor;
-    class Range;
-    class ViewPrivate;
+class Cursor;
+class Range;
+class ViewPrivate;
 }
 
 namespace KateVi
@@ -44,11 +44,11 @@ class InputModeManager;
 class ActiveMode
 {
 public:
-    ActiveMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view)
-    : m_emulatedCommandBar(emulatedCommandBar),
-      m_viInputModeManager(viInputModeManager),
-      m_view(view),
-      m_matchHighligher(matchHighlighter)
+    ActiveMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view)
+        : m_emulatedCommandBar(emulatedCommandBar)
+        , m_viInputModeManager(viInputModeManager)
+        , m_view(view)
+        , m_matchHighligher(matchHighlighter)
     {
     }
     virtual ~ActiveMode() = 0;
@@ -63,21 +63,23 @@ public:
     }
     virtual void deactivate(bool wasAborted) = 0;
     void setViInputModeManager(InputModeManager *viInputModeManager);
+
 protected:
     // Helper methods.
-    void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
+    void hideAllWidgetsExcept(QWidget *widgetToKeepVisible);
     void updateMatchHighlight(const KTextEditor::Range &matchRange);
     void close(bool wasAborted);
-    void closeWithStatusMessage(const QString& exitStatusMessage);
-    void startCompletion(const CompletionStartParams& completionStartParams);
+    void closeWithStatusMessage(const QString &exitStatusMessage);
+    void startCompletion(const CompletionStartParams &completionStartParams);
     void moveCursorTo(const KTextEditor::Cursor &cursorPos);
     EmulatedCommandBar *emulatedCommandBar();
-    KTextEditor::ViewPrivate* view();
-    InputModeManager* viInputModeManager();
+    KTextEditor::ViewPrivate *view();
+    InputModeManager *viInputModeManager();
+
 private:
     EmulatedCommandBar *m_emulatedCommandBar = nullptr;
-    InputModeManager* m_viInputModeManager = nullptr;
-    KTextEditor::ViewPrivate* m_view = nullptr;
+    InputModeManager *m_viInputModeManager = nullptr;
+    KTextEditor::ViewPrivate *m_view = nullptr;
     MatchHighlighter *m_matchHighligher = nullptr;
 };
 }

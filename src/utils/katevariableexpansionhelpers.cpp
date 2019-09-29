@@ -66,8 +66,7 @@ static int findClosing(QStringView str, int pos = 0)
 
 namespace KateMacroExpander
 {
-
-QString expandMacro(const QString& input, KTextEditor::View* view)
+QString expandMacro(const QString &input, KTextEditor::View *view)
 {
     QString output = input;
     QString oldStr;
@@ -105,10 +104,7 @@ public:
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override
     {
-        if (parent.isValid() ||
-            row < 0 ||
-            row >= m_variables.size())
-        {
+        if (parent.isValid() || row < 0 || row >= m_variables.size()) {
             return {};
         }
 
@@ -139,13 +135,14 @@ public:
             return {};
         }
 
-        const auto & var = m_variables[index.row()];
+        const auto &var = m_variables[index.row()];
         switch (role) {
             case Qt::DisplayRole: {
                 const QString suffix = var.isPrefixMatch() ? i18n("<value>") : QString();
                 return QString(var.name() + suffix);
             }
-            case Qt::ToolTipRole: return var.description();
+            case Qt::ToolTipRole:
+                return var.description();
         }
 
         return {};
@@ -193,12 +190,13 @@ public:
     bool eventFilter(QObject *watched, QEvent *event) override
     {
         if (watched == m_watched) {
-            switch(event->type()) {
+            switch (event->type()) {
                 case QEvent::Resize: {
-                    auto resizeEvent = static_cast<QResizeEvent*>(event);
+                    auto resizeEvent = static_cast<QResizeEvent *>(event);
                     adjustPosition(resizeEvent->size());
                 }
-                default: break;
+                default:
+                    break;
             }
         }
         return QToolButton::eventFilter(watched, event);
@@ -209,8 +207,8 @@ private:
     {
         QStyleOption sopt;
         sopt.initFrom(parentWidget());
-        const int topMargin = 0;//style()->pixelMetric(QStyle::PM_LayoutTopMargin, &sopt, parentWidget());
-        const int rightMargin = 0;//style()->pixelMetric(QStyle::PM_LayoutRightMargin, &sopt, parentWidget());
+        const int topMargin = 0;   // style()->pixelMetric(QStyle::PM_LayoutTopMargin, &sopt, parentWidget());
+        const int rightMargin = 0; // style()->pixelMetric(QStyle::PM_LayoutRightMargin, &sopt, parentWidget());
         if (isLeftToRight()) {
             move(parentSize.width() - width() - rightMargin, topMargin);
         } else {
@@ -260,7 +258,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     // react to selection changes
     connect(m_listView->selectionModel(), &QItemSelectionModel::currentRowChanged, [this, lblDescription, lblCurrentValue](const QModelIndex &current, const QModelIndex &) {
         if (current.isValid()) {
-            const auto & var = m_variables[m_filterModel->mapToSource(current).row()];
+            const auto &var = m_variables[m_filterModel->mapToSource(current).row()];
             lblDescription->setText(var.description());
             if (var.isPrefixMatch()) {
                 lblCurrentValue->setText(i18n("Current value: %1<value>", var.name()));
@@ -278,14 +276,14 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     // insert text on activation
     connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
         if (index.isValid()) {
-            const auto & var = m_variables[m_filterModel->mapToSource(index).row()];
+            const auto &var = m_variables[m_filterModel->mapToSource(index).row()];
             const auto name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
 
             if (parentWidget() && parentWidget()->window()) {
                 auto currentWidget = parentWidget()->window()->focusWidget();
-                if (auto lineEdit = qobject_cast<QLineEdit*>(currentWidget)) {
+                if (auto lineEdit = qobject_cast<QLineEdit *>(currentWidget)) {
                     lineEdit->insert(name);
-                } else if (auto textEdit = qobject_cast<QTextEdit*>(currentWidget)) {
+                } else if (auto textEdit = qobject_cast<QTextEdit *>(currentWidget)) {
                     textEdit->insertPlainText(name);
                 }
             }
@@ -293,7 +291,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     });
 
     // show dialog whenever the action is clicked
-    connect(m_showAction, &QAction::triggered, [this](){
+    connect(m_showAction, &QAction::triggered, [this]() {
         show();
         activateWindow();
     });
@@ -311,7 +309,7 @@ KateVariableExpansionDialog::~KateVariableExpansionDialog()
     m_textEditButtons.clear();
 }
 
-void KateVariableExpansionDialog::addVariable(const KTextEditor::Variable& variable)
+void KateVariableExpansionDialog::addVariable(const KTextEditor::Variable &variable)
 {
     Q_ASSERT(variable.isValid());
     m_variables.push_back(variable);
@@ -332,7 +330,7 @@ void KateVariableExpansionDialog::addWidget(QWidget *widget)
     connect(widget, &QObject::destroyed, this, &KateVariableExpansionDialog::onObjectDeleted);
 }
 
-void KateVariableExpansionDialog::onObjectDeleted(QObject* object)
+void KateVariableExpansionDialog::onObjectDeleted(QObject *object)
 {
     m_widgets.removeAll(object);
     if (m_widgets.isEmpty()) {
@@ -346,12 +344,8 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
     if (watched == m_filterEdit) {
         if (event->type() == QEvent::KeyPress) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-            const bool forward2list = (keyEvent->key() == Qt::Key_Up)
-                                   || (keyEvent->key() == Qt::Key_Down)
-                                   || (keyEvent->key() == Qt::Key_PageUp)
-                                   || (keyEvent->key() == Qt::Key_PageDown)
-                                   || (keyEvent->key() == Qt::Key_Enter)
-                                   || (keyEvent->key() == Qt::Key_Return);
+            const bool forward2list = (keyEvent->key() == Qt::Key_Up) || (keyEvent->key() == Qt::Key_Down) || (keyEvent->key() == Qt::Key_PageUp) || (keyEvent->key() == Qt::Key_PageDown) || (keyEvent->key() == Qt::Key_Enter) ||
+                (keyEvent->key() == Qt::Key_Return);
             if (forward2list) {
                 QCoreApplication::sendEvent(m_listView, event);
                 return true;
@@ -363,9 +357,9 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
     // tracked widgets (tooltips, adding/removing the showAction)
     switch (event->type()) {
         case QEvent::FocusIn: {
-            if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
+            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
                 lineEdit->addAction(m_showAction, QLineEdit::TrailingPosition);
-            } else if (auto textEdit = qobject_cast<QTextEdit*>(watched)) {
+            } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
                 if (!m_textEditButtons.contains(textEdit)) {
                     m_textEditButtons[textEdit] = new TextEditButton(m_showAction, textEdit);
                 }
@@ -375,9 +369,9 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
             break;
         }
         case QEvent::FocusOut: {
-            if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
+            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
                 lineEdit->removeAction(m_showAction);
-            } else if (auto textEdit = qobject_cast<QTextEdit*>(watched)) {
+            } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
                 if (m_textEditButtons.contains(textEdit)) {
                     delete m_textEditButtons[textEdit];
                     m_textEditButtons.remove(textEdit);
@@ -387,7 +381,7 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
         }
         case QEvent::ToolTip: {
             QString inputText;
-            if (auto lineEdit = qobject_cast<QLineEdit*>(watched)) {
+            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
                 inputText = lineEdit->text();
             }
             QString toolTip;
@@ -397,14 +391,15 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
             }
 
             if (!toolTip.isEmpty()) {
-                auto helpEvent = static_cast<QHelpEvent*>(event);
-                QToolTip::showText(helpEvent->globalPos(), toolTip, qobject_cast<QWidget*>(watched));
+                auto helpEvent = static_cast<QHelpEvent *>(event);
+                QToolTip::showText(helpEvent->globalPos(), toolTip, qobject_cast<QWidget *>(watched));
                 event->accept();
                 return true;
             }
             break;
         }
-        default: break;
+        default:
+            break;
     }
 
     // auto-hide on focus change

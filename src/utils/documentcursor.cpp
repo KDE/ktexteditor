@@ -23,7 +23,6 @@
 
 namespace KTextEditor
 {
-
 DocumentCursor::DocumentCursor(KTextEditor::Document *document)
     : m_document(document)
     , m_cursor(KTextEditor::Cursor::invalid())
@@ -220,4 +219,3 @@ bool DocumentCursor::move(int chars, WrapBehavior wrapBehavior)
 }
 
 }
-

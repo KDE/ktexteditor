@@ -54,4 +54,3 @@ QString KateViInputModeFactory::name()
 {
     return i18n("Vi Input Mode");
 }
-

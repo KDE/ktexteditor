@@ -27,14 +27,14 @@
 
 class QTimer;
 
-namespace KTextEditor {
-    class DocumentPrivate;
-    class ViewPrivate;
+namespace KTextEditor
+{
+class DocumentPrivate;
+class ViewPrivate;
 }
 
 namespace KateVi
 {
-
 class InputModeManager;
 
 class KTEXTEDITOR_EXPORT KeyMapper : public QObject

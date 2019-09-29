@@ -220,17 +220,13 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
                 }
             }
         } // for
-    } // Marks
+    }     // Marks
 
     if (markCount) {
         markRed /= markCount;
         markGreen /= markCount;
         markBlue /= markCount;
-        backgroundColor.setRgb(
-            int((backgroundColor.red() * 0.9) + (markRed * 0.1)),
-            int((backgroundColor.green() * 0.9) + (markGreen * 0.1)),
-            int((backgroundColor.blue() * 0.9) + (markBlue * 0.1))
-        );
+        backgroundColor.setRgb(int((backgroundColor.red() * 0.9) + (markRed * 0.1)), int((backgroundColor.green() * 0.9) + (markGreen * 0.1)), int((backgroundColor.blue() * 0.9) + (markBlue * 0.1)));
     }
 
     // Draw line background
@@ -242,11 +238,7 @@ void KateRenderer::paintTextLineBackground(QPainter &paint, KateLineLayoutPtr la
             markRed /= markCount;
             markGreen /= markCount;
             markBlue /= markCount;
-            currentLineColor.setRgb(
-                int((currentLineColor.red() * 0.9) + (markRed * 0.1)),
-                int((currentLineColor.green() * 0.9) + (markGreen * 0.1)),
-                int((currentLineColor.blue() * 0.9) + (markBlue * 0.1))
-            );
+            currentLineColor.setRgb(int((currentLineColor.red() * 0.9) + (markRed * 0.1)), int((currentLineColor.green() * 0.9) + (markGreen * 0.1)), int((currentLineColor.blue() * 0.9) + (markBlue * 0.1)));
         }
 
         paint.fillRect(0, lineHeight() * currentViewLine, xEnd - xStart, lineHeight(), currentLineColor);
@@ -551,7 +543,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 {
     Q_ASSERT(range->isValid());
 
-//   qCDebug(LOG_KTE)<<"KateRenderer::paintTextLine";
+    //   qCDebug(LOG_KTE)<<"KateRenderer::paintTextLine";
 
     // font data
     const QFontMetricsF &fm = m_fontMetrics;
@@ -584,7 +576,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         //   - 0-column-wide selection (used to indicate where text will be typed)
         if (drawSelection && m_view->blockSelection()) {
             int selectionStartColumn = m_doc->fromVirtualColumn(range->line(), m_doc->toVirtualColumn(m_view->selectionRange().start()));
-            int selectionEndColumn   = m_doc->fromVirtualColumn(range->line(), m_doc->toVirtualColumn(m_view->selectionRange().end()));
+            int selectionEndColumn = m_doc->fromVirtualColumn(range->line(), m_doc->toVirtualColumn(m_view->selectionRange().end()));
             QBrush selectionBrush = config()->selectionColor();
             if (selectionStartColumn != selectionEndColumn) {
                 KateTextLayout lastLine = range->viewLine(range->viewLineCount() - 1);
@@ -780,7 +772,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         // Draw inline notes
         if (!isPrinterFriendly()) {
             const auto inlineNotes = m_view->inlineNotes(range->line());
-            for (const auto& inlineNoteData: inlineNotes) {
+            for (const auto &inlineNoteData : inlineNotes) {
                 KTextEditor::InlineNote inlineNote(inlineNoteData);
                 const int column = inlineNote.position().column();
                 int viewLine = range->viewLineForColumn(column);
@@ -811,12 +803,10 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         }
 
         // draw word-wrap-honor-indent filling
-        if ((range->viewLineCount() > 1)  && range->shiftX() && (range->shiftX() > xStart)) {
+        if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
             if (backgroundBrushSet)
-                paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1),
-                               backgroundBrush);
-            paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1),
-                           QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
+                paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1), backgroundBrush);
+            paint.fillRect(0, lineHeight(), range->shiftX() - xStart, lineHeight() * (range->viewLineCount() - 1), QBrush(config()->wordWrapMarkerColor(), Qt::Dense4Pattern));
         }
 
         // Draw caret
@@ -849,7 +839,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 // search for the FormatRange that includes the cursor
                 const auto formatRanges = range->layout()->formats();
                 for (const QTextLayout::FormatRange &r : formatRanges) {
-                    if ((r.start <= cursor->column()) && ((r.start + r.length)  > cursor->column())) {
+                    if ((r.start <= cursor->column()) && ((r.start + r.length) > cursor->column())) {
                         // check for Qt::NoBrush, as the returned color is black() and no invalid QColor
                         QBrush foregroundBrush = r.format.foreground();
                         if (foregroundBrush != Qt::NoBrush) {
@@ -867,20 +857,20 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             paint.save();
             paint.setRenderHint(QPainter::Antialiasing, false);
             switch (style) {
-            case Line :
-                paint.setPen(QPen(color, caretWidth));
-                break;
-            case Block :
-                // use a gray caret so it's possible to see the character
-                color.setAlpha(128);
-                paint.setPen(QPen(color, caretWidth));
-                break;
-            case Underline :
-                break;
-            case Half :
-                color.setAlpha(128);
-                paint.setPen(QPen(color, caretWidth));
-                break;
+                case Line:
+                    paint.setPen(QPen(color, caretWidth));
+                    break;
+                case Block:
+                    // use a gray caret so it's possible to see the character
+                    color.setAlpha(128);
+                    paint.setPen(QPen(color, caretWidth));
+                    break;
+                case Underline:
+                    break;
+                case Half:
+                    color.setAlpha(128);
+                    paint.setPen(QPen(color, caretWidth));
+                    break;
             }
 
             if (cursor->column() <= range->length()) {
@@ -1051,7 +1041,6 @@ void KateRenderer::updateFontHeight()
             m_fontHeight = fontHeightComputation(m_fontMetrics);
         }
     }
-
 }
 
 void KateRenderer::updateMarkerSize()
@@ -1116,7 +1105,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     if (!isPrinterFriendly()) {
         const auto inlineNotes = m_view->inlineNotes(lineLayout->line());
-        for (const KTextEditor::InlineNote& inlineNote: inlineNotes) {
+        for (const KTextEditor::InlineNote &inlineNote : inlineNotes) {
             const int column = inlineNote.position().column();
             int width = inlineNote.width();
 
@@ -1130,7 +1119,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
                 QTextCharFormat text_char_format;
                 text_char_format.setFontLetterSpacing(width);
                 text_char_format.setFontLetterSpacingType(QFont::AbsoluteSpacing);
-                decorations.append(QTextLayout::FormatRange { column - 1, 1, text_char_format });
+                decorations.append(QTextLayout::FormatRange {column - 1, 1, text_char_format});
             }
         }
     }
@@ -1142,18 +1131,16 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     int height = 0;
     int shiftX = 0;
 
-    bool needShiftX = (maxwidth != -1)
-                      && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
+    bool needShiftX = (maxwidth != -1) && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
 
-    forever {
+    forever
+    {
         QTextLine line = l->createLine();
-        if (!line.isValid())
-        {
+        if (!line.isValid()) {
             break;
         }
 
-        if (maxwidth > 0)
-        {
+        if (maxwidth > 0) {
             line.setLineWidth(maxwidth);
         }
 
@@ -1162,8 +1149,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
         line.setPosition(QPoint(line.lineNumber() ? shiftX : firstLineOffset, height));
 
-        if (needShiftX && line.width() > 0)
-        {
+        if (needShiftX && line.width() > 0) {
             needShiftX = false;
             // Determine x offset for subsequent-lines-of-paragraph indenting
             int pos = textLine->nextNonSpaceChar(0);
@@ -1206,21 +1192,21 @@ bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout) const
         QChar c = s.at(i);
 
         switch (c.direction()) {
-        case QChar::DirL:
-        case QChar::DirLRO:
-        case QChar::DirLRE:
-            return false;
+            case QChar::DirL:
+            case QChar::DirLRO:
+            case QChar::DirLRE:
+                return false;
 
-        case QChar::DirR:
-        case QChar::DirAL:
-        case QChar::DirRLO:
-        case QChar::DirRLE:
-            return true;
+            case QChar::DirR:
+            case QChar::DirAL:
+            case QChar::DirRLO:
+            case QChar::DirRLE:
+                return true;
 
-        default:
-            break;
+            default:
+                break;
         }
-        i ++;
+        i++;
     }
 
     return false;
@@ -1275,4 +1261,3 @@ void KateRenderer::setCaretOverrideColor(const QColor &color)
 {
     m_caretOverrideColor = color;
 }
-

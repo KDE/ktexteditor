@@ -61,8 +61,7 @@ public:
      *        has length 1 and holds the invalid range (see Range::isValid()).
      * \see KTextEditor::Range, QRegularExpression
      */
-    QVector<KTextEditor::Range> search(const QString &pattern,
-                                       const KTextEditor::Range &inputRange, bool backwards = false);
+    QVector<KTextEditor::Range> search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards = false);
 
     /**
      * Returns a modified version of text where escape sequences are resolved, e.g. "\\n" to "\n".
@@ -104,4 +103,3 @@ private:
 };
 
 #endif
-

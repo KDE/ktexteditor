@@ -39,18 +39,36 @@ public:
     explicit GlobalState();
     ~GlobalState();
     GlobalState(const GlobalState &) = delete;
-    GlobalState& operator=(const GlobalState &) = delete;
+    GlobalState &operator=(const GlobalState &) = delete;
 
     void writeConfig(KConfig *config) const;
     void readConfig(const KConfig *config);
 
-    inline Macros *macros() const { return m_macros; }
-    inline Mappings *mappings() const { return m_mappings; }
-    inline Registers *registers() const { return m_registers; }
+    inline Macros *macros() const
+    {
+        return m_macros;
+    }
+    inline Mappings *mappings() const
+    {
+        return m_mappings;
+    }
+    inline Registers *registers() const
+    {
+        return m_registers;
+    }
 
-    inline History *searchHistory() const { return m_searchHistory; }
-    inline History *commandHistory() const { return m_commandHistory; }
-    inline History *replaceHistory() const { return m_replaceHistory; }
+    inline History *searchHistory() const
+    {
+        return m_searchHistory;
+    }
+    inline History *commandHistory() const
+    {
+        return m_commandHistory;
+    }
+    inline History *replaceHistory() const
+    {
+        return m_replaceHistory;
+    }
 
 private:
     KSharedConfigPtr config() const;

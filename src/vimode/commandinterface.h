@@ -29,8 +29,14 @@ class InputModeManager;
 class KateViCommandInterface
 {
 public:
-    void setViGlobal(GlobalState *g)  { m_viGlobal = g; }
-    void setViInputModeManager(InputModeManager *m)  { m_viInputModeManager = m; }
+    void setViGlobal(GlobalState *g)
+    {
+        m_viGlobal = g;
+    }
+    void setViInputModeManager(InputModeManager *m)
+    {
+        m_viInputModeManager = m;
+    }
 
 protected:
     GlobalState *m_viGlobal;

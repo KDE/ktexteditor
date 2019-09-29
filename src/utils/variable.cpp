@@ -20,13 +20,13 @@
 
 namespace KTextEditor
 {
-
-Variable::Variable(const QString& name, const QString& description, Variable::ExpandFunction func, bool isPrefixMatch)
+Variable::Variable(const QString &name, const QString &description, Variable::ExpandFunction func, bool isPrefixMatch)
     : m_name(name)
     , m_description(description)
     , m_function(func)
     , m_isPrefixMatch(isPrefixMatch)
-{}
+{
+}
 
 bool Variable::isValid() const
 {
@@ -48,7 +48,7 @@ QString Variable::description() const
     return m_description;
 }
 
-QString Variable::evaluate(const QStringView& prefix, KTextEditor::View * view) const
+QString Variable::evaluate(const QStringView &prefix, KTextEditor::View *view) const
 {
     return isValid() ? m_function(prefix, view) : QString();
 }

@@ -30,8 +30,13 @@ Range::Range()
 }
 
 Range::Range(int slin, int scol, int elin, int ecol, MotionType inc)
-    : startLine(slin), startColumn(scol), endLine(elin), endColumn(ecol)
-    , motionType(inc), valid(true), jump(false)
+    : startLine(slin)
+    , startColumn(scol)
+    , endLine(elin)
+    , endColumn(ecol)
+    , motionType(inc)
+    , valid(true)
+    , jump(false)
 {
 }
 
@@ -40,12 +45,12 @@ Range::Range(int elin, int ecol, MotionType inc)
 {
 }
 
-Range::Range(const KTextEditor::Cursor& c, MotionType mt)
+Range::Range(const KTextEditor::Cursor &c, MotionType mt)
     : Range(-1, -1, c.line(), c.column(), mt)
 {
 }
 
-Range::Range(const KTextEditor::Cursor& c1, const KTextEditor::Cursor c2, MotionType mt)
+Range::Range(const KTextEditor::Cursor &c1, const KTextEditor::Cursor c2, MotionType mt)
     : Range(c1.line(), c1.column(), c2.line(), c2.column(), mt)
 {
 }
@@ -86,9 +91,11 @@ Range Range::invalid()
 
 QDebug operator<<(QDebug s, const Range &range)
 {
-    s   << "[" << " (" << range.startLine << ", " << range.startColumn << ")"
-        << " -> " << " (" << range.endLine << ", " << range.endColumn << ")"
-        << "]" << " (" << (range.motionType == InclusiveMotion ? "Inclusive" : "Exclusive")
-        << ") (jump: " << (range.jump ? "true" : "false") << ")";
+    s << "["
+      << " (" << range.startLine << ", " << range.startColumn << ")"
+      << " -> "
+      << " (" << range.endLine << ", " << range.endColumn << ")"
+      << "]"
+      << " (" << (range.motionType == InclusiveMotion ? "Inclusive" : "Exclusive") << ") (jump: " << (range.jump ? "true" : "false") << ")";
     return s;
 }

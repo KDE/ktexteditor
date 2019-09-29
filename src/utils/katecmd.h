@@ -102,8 +102,6 @@ private:
 
     QString m_text_start;
     QString m_text_compl;
-
 };
 
 #endif
-

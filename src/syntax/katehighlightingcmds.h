@@ -25,22 +25,21 @@
 
 namespace KateCommands
 {
-
 class Highlighting : public KTextEditor::Command
 {
     Highlighting()
-        : KTextEditor::Command({ QStringLiteral("reload-highlighting"), QStringLiteral("edit-highlighting") })
+        : KTextEditor::Command({QStringLiteral("reload-highlighting"), QStringLiteral("edit-highlighting")})
     {
     }
 
-    static Highlighting* m_instance;
+    static Highlighting *m_instance;
 
 public:
     ~Highlighting() override
     {
         m_instance = nullptr;
     }
-    
+
     static Highlighting *self()
     {
         if (m_instance == nullptr) {
@@ -48,7 +47,7 @@ public:
         }
         return m_instance;
     }
-    
+
     /**
      * execute command
      * @param view view to use for execution
@@ -56,9 +55,8 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
-    
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) override;
+
     /** This command does not have help. @see KTextEditor::Command::help */
     bool help(class KTextEditor::View *, const QString &, QString &) override;
 };

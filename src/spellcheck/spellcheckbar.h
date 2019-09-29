@@ -49,7 +49,7 @@ class BackgroundChecker;
 class SpellCheckBar : public KateViewBarWidget
 {
     Q_OBJECT
-  public:
+public:
     SpellCheckBar(Sonnet::BackgroundChecker *checker, QWidget *parent);
     ~SpellCheckBar() override;
 
@@ -91,10 +91,10 @@ class SpellCheckBar : public KateViewBarWidget
      */
     void setSpellCheckContinuedAfterReplacement(bool b);
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void setBuffer(const QString &);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * The dialog won't be closed if you setBuffer() in slot connected to this signal
      *
@@ -102,8 +102,7 @@ class SpellCheckBar : public KateViewBarWidget
      */
     void done(const QString &newBuffer);
     void misspelling(const QString &word, int start);
-    void replace(const QString &oldWord, int start,
-                 const QString &newWord);
+    void replace(const QString &oldWord, int start, const QString &newWord);
 
     void stop();
     void cancel();
@@ -124,7 +123,7 @@ class SpellCheckBar : public KateViewBarWidget
      */
     void languageChanged(const QString &language);
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotMisspelling(const QString &word, int start);
     void slotDone();
 
@@ -142,7 +141,7 @@ class SpellCheckBar : public KateViewBarWidget
     void setGuiEnabled(bool b);
     void setProgressDialogVisible(bool b);
 
-  private:
+private:
     void updateDialog(const QString &word);
     void fillDictionaryComboBox();
     void updateDictionaryComboBox();
@@ -151,7 +150,7 @@ class SpellCheckBar : public KateViewBarWidget
     void initGui();
     void continueChecking();
 
-  private:
+private:
     class Private;
     Private *const d;
     Q_DISABLE_COPY(SpellCheckBar)

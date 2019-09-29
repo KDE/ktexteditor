@@ -25,10 +25,11 @@
 
 #include <QString>
 
-namespace KTextEditor {
-    class Cursor;
-    class ViewPrivate;
-    class Range;
+namespace KTextEditor
+{
+class Cursor;
+class ViewPrivate;
+class Range;
 }
 
 namespace KateVi
@@ -51,21 +52,20 @@ public:
     Range findWordForMotion(const QString &pattern, bool backwards, const KTextEditor::Cursor &startFrom, int count);
 
     /** Extended searcher for Emulated Command Bar. **/
-    struct SearchParams
-    {
+    struct SearchParams {
         QString pattern;
         bool isBackwards = false;
         bool isCaseSensitive = false;
         bool shouldPlaceCursorAtEndOfMatch = false;
     };
-    KTextEditor::Range findPattern(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
+    KTextEditor::Range findPattern(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count, bool addToSearchHistory = true);
 
     const QString getLastSearchPattern() const;
-    void setLastSearchParams(const SearchParams& searchParams);
+    void setLastSearchParams(const SearchParams &searchParams);
 
 private:
-    Range findPatternForMotion(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count = 1) const;
-    KTextEditor::Range findPatternWorker(const SearchParams& searchParams, const KTextEditor::Cursor &startFrom, int count) const;
+    Range findPatternForMotion(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count = 1) const;
+    KTextEditor::Range findPatternWorker(const SearchParams &searchParams, const KTextEditor::Cursor &startFrom, int count) const;
 
 private:
     InputModeManager *m_viInputModeManager;

@@ -36,7 +36,8 @@ QTEST_MAIN(MovingRangeTest)
 class RangeFeedback : public MovingRangeFeedback
 {
 public:
-    RangeFeedback() : MovingRangeFeedback()
+    RangeFeedback()
+        : MovingRangeFeedback()
     {
         reset();
     }
@@ -145,17 +146,16 @@ void MovingRangeTest::testFeedbackEmptyRange()
 {
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
-    QString text("..xxxx\n"
-                 "xxxx..");
+    QString text(
+        "..xxxx\n"
+        "xxxx..");
     doc.setText(text);
 
     // create range feedback
     RangeFeedback rf;
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::DoNotExpand,
-                                            KTextEditor::MovingRange::AllowEmpty);
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::AllowEmpty);
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -213,17 +213,16 @@ void MovingRangeTest::testFeedbackInvalidRange()
 {
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
-    QString text("..xxxx\n"
-                 "xxxx..");
+    QString text(
+        "..xxxx\n"
+        "xxxx..");
     doc.setText(text);
 
     // create range feedback
     RangeFeedback rf;
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::DoNotExpand,
-                                            KTextEditor::MovingRange::InvalidateIfEmpty);
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
     range->setFeedback(&rf);
     rf.verifyReset();
 
@@ -283,8 +282,9 @@ void MovingRangeTest::testFeedbackCaret()
 {
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
-    QString text("..xxxx\n"
-                 "xxxx..");
+    QString text(
+        "..xxxx\n"
+        "xxxx..");
     doc.setText(text);
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -296,10 +296,7 @@ void MovingRangeTest::testFeedbackCaret()
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                                KTextEditor::MovingRange::ExpandLeft |
-                                                KTextEditor::MovingRange::ExpandRight,
-                                                KTextEditor::MovingRange::InvalidateIfEmpty);
+        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight, KTextEditor::MovingRange::InvalidateIfEmpty);
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -346,9 +343,7 @@ void MovingRangeTest::testFeedbackCaret()
     {
         view->setCursorPosition(Cursor(1, 6));
 
-        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                                KTextEditor::MovingRange::DoNotExpand,
-                                                KTextEditor::MovingRange::InvalidateIfEmpty);
+        MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::DoNotExpand, KTextEditor::MovingRange::InvalidateIfEmpty);
         rf.reset();
         range->setFeedback(&rf);
         rf.verifyReset();
@@ -399,8 +394,9 @@ void MovingRangeTest::testFeedbackMouse()
 {
     KTextEditor::DocumentPrivate doc;
     // the range created below will span the 'x' characters
-    QString text("..xxxx\n"
-                 "xxxx..");
+    QString text(
+        "..xxxx\n"
+        "xxxx..");
     doc.setText(text);
 
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
@@ -414,10 +410,7 @@ void MovingRangeTest::testFeedbackMouse()
     QVERIFY(!rf.mouseExitedRangeCalled());
 
     // allow empty
-    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)),
-                                            KTextEditor::MovingRange::ExpandLeft |
-                                            KTextEditor::MovingRange::ExpandRight,
-                                            KTextEditor::MovingRange::InvalidateIfEmpty);
+    MovingRange *range = doc.newMovingRange(Range(Cursor(0, 2), Cursor(1, 4)), KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight, KTextEditor::MovingRange::InvalidateIfEmpty);
     range->setFeedback(&rf);
     rf.verifyReset();
 

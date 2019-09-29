@@ -50,7 +50,6 @@ class Range;
 
 namespace KatePrinter
 {
-
 class PageLayout;
 
 class PrintPainter
@@ -60,7 +59,7 @@ public:
     ~PrintPainter();
 
     PrintPainter(const PrintPainter &) = delete;
-    PrintPainter& operator=(const PrintPainter &) = delete;
+    PrintPainter &operator=(const PrintPainter &) = delete;
 
     void paint(QPrinter *printer) const;
 
@@ -138,7 +137,7 @@ private:
     void updateCache();
 
 private:
-    KTextEditor::ViewPrivate     *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KTextEditor::DocumentPrivate *m_doc;
 
     bool m_printGuide;

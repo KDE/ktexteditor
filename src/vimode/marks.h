@@ -25,10 +25,11 @@
 
 #include <QMap>
 
-namespace KTextEditor {
-    class DocumentPrivate;
-    class Cursor;
-    class MovingCursor;
+namespace KTextEditor
+{
+class DocumentPrivate;
+class Cursor;
+class MovingCursor;
 }
 
 namespace KateVi
@@ -72,9 +73,7 @@ private:
     void setMark(const QChar &mark, const KTextEditor::Cursor &pos);
 
 private Q_SLOTS:
-    void markChanged(KTextEditor::Document *doc,
-                     KTextEditor::Mark mark,
-                     KTextEditor::MarkInterface::MarkChangeAction action);
+    void markChanged(KTextEditor::Document *doc, KTextEditor::Mark mark, KTextEditor::MarkInterface::MarkChangeAction action);
 
 private:
     InputModeManager *m_inputModeManager;

@@ -28,7 +28,10 @@
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/document.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateViewConfig;
 class QVBoxLayout;
 class QComboBox;
@@ -61,19 +64,9 @@ public:
         MODE_REGEX = 3
     };
 
-    enum MatchResult {
-        MatchFound,
-        MatchWrappedForward,
-        MatchWrappedBackward,
-        MatchMismatch,
-        MatchNothing,
-        MatchNeutral
-    };
+    enum MatchResult { MatchFound, MatchWrappedForward, MatchWrappedBackward, MatchMismatch, MatchNothing, MatchNeutral };
 
-    enum SearchDirection {
-        SearchForward,
-        SearchBackward
-    };
+    enum SearchDirection { SearchForward, SearchBackward };
 
 public:
     explicit KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, KateViewConfig *config);
@@ -154,7 +147,6 @@ private Q_SLOTS:
      */
     void findOrReplaceAll();
 
-
     /**
      * Restore needed settings when signal @ref findOrReplaceAllFinished()
      * was received.
@@ -169,7 +161,10 @@ Q_SIGNALS:
 
 private:
     // Helpers
-    bool find(SearchDirection searchDirection = SearchForward) { return findOrReplace(searchDirection, nullptr); };
+    bool find(SearchDirection searchDirection = SearchForward)
+    {
+        return findOrReplace(searchDirection, nullptr);
+    };
     bool findOrReplace(SearchDirection searchDirection, const QString *replacement);
 
     /**
@@ -177,7 +172,10 @@ private:
      * Set needed member variables and call @ref findOrReplaceAll() to do the work.
      */
     void beginFindOrReplaceAll(KTextEditor::Range inputRange, const QString &replacement, bool replaceMode = true);
-    void beginFindAll(KTextEditor::Range inputRange) { beginFindOrReplaceAll(inputRange, QString(), false); };
+    void beginFindAll(KTextEditor::Range inputRange)
+    {
+        beginFindOrReplaceAll(inputRange, QString(), false);
+    };
 
     bool isPatternValid() const;
 
@@ -242,4 +240,3 @@ private:
 };
 
 #endif // KATE_SEARCH_BAR_H
-

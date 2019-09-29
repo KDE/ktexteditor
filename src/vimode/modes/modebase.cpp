@@ -59,11 +59,9 @@ using namespace KateVi;
 
 void ModeBase::yankToClipBoard(QChar chosen_register, QString text)
 {
-    //only yank to the clipboard if no register was specified,
+    // only yank to the clipboard if no register was specified,
     // textlength > 1 and there is something else then whitespace
-    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-'))
-        && text.length() > 1 && !text.trimmed().isEmpty())
-    {
+    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-')) && text.length() > 1 && !text.trimmed().isEmpty()) {
         KTextEditor::EditorPrivate::self()->copyToClipboard(text);
     }
 }
@@ -90,7 +88,7 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
             chosenRegister = getChosenRegister(SmallDeleteRegister);
             fillRegister(chosenRegister, removedText, mode);
         } else {
-            fillRegister(chosenRegister,  removedText, mode);
+            fillRegister(chosenRegister, removedText, mode);
         }
     }
     yankToClipBoard(chosenRegister, removedText);
@@ -145,7 +143,6 @@ const QChar ModeBase::getCharUnderCursor() const
 
 const QString ModeBase::getWordUnderCursor() const
 {
-
     return doc()->text(getWordRangeUnderCursor());
 }
 
@@ -156,9 +153,7 @@ const KTextEditor::Range ModeBase::getWordRangeUnderCursor() const
     // find first character that is a “word letter” and start the search there
     QChar ch = doc()->characterAt(c);
     int i = 0;
-    while (!ch.isLetterOrNumber() && ! ch.isMark() && ch != QLatin1Char('_')
-            && m_extraWordCharacters.indexOf(ch) == -1) {
-
+    while (!ch.isLetterOrNumber() && !ch.isMark() && ch != QLatin1Char('_') && m_extraWordCharacters.indexOf(ch) == -1) {
         // advance cursor one position
         c.setColumn(c.column() + 1);
         if (c.column() > doc()->lineLength(c.line())) {
@@ -195,9 +190,9 @@ KTextEditor::Cursor ModeBase::findNextWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern);      // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));       // non-space right after space
-    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W"));  // word-boundary followed by a non-word which is not a space
+    QRegExp startOfWord(startOfWordPattern);                  // start of a word
+    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));      // non-space right after space
+    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
 
     int l = fromLine;
     int c = fromColumn;
@@ -377,10 +372,10 @@ KTextEditor::Cursor ModeBase::findPrevWordStart(int fromLine, int fromColumn, bo
     }
     startOfWordPattern.append(QLatin1Char(')'));
 
-    QRegExp startOfWord(startOfWordPattern);      // start of a word
-    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));       // non-space right after space
-    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W"));  // word-boundary followed by a non-word which is not a space
-    QRegExp startOfLine(QLatin1String("^\\S"));                // non-space at start of line
+    QRegExp startOfWord(startOfWordPattern);                  // start of a word
+    QRegExp nonSpaceAfterSpace(QLatin1String("\\s\\S"));      // non-space right after space
+    QRegExp nonWordAfterWord(QLatin1String("\\b(?!\\s)\\W")); // word-boundary followed by a non-word which is not a space
+    QRegExp startOfLine(QLatin1String("^\\S"));               // non-space at start of line
 
     int l = fromLine;
     int c = fromColumn;
@@ -586,12 +581,10 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
 
     // If cursor on the quote we should choose the best direction.
     if (line.at(cursor.column()) == c) {
-
         int attribute = m_view->doc()->kateTextLine(cursor.line())->attribute(cursor.column());
 
         //  If at the beginning of the line - then we might search the end.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) == attribute &&
-                doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) != attribute) {
+        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) == attribute && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) != attribute) {
             r.startColumn = cursor.column();
             r.endColumn = line.indexOf(c, cursor.column() + 1);
 
@@ -599,14 +592,11 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
         }
 
         //  If at the end of the line - then we might search the beginning.
-        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) != attribute &&
-                doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) == attribute) {
-
+        if (doc()->kateTextLine(cursor.line())->attribute(cursor.column() + 1) != attribute && doc()->kateTextLine(cursor.line())->attribute(cursor.column() - 1) == attribute) {
             r.startColumn = line.lastIndexOf(c, cursor.column() - 1);
             r.endColumn = cursor.column();
 
             return innerRange(r, inner);
-
         }
         // Try to search the quote to right
         int c1 = line.indexOf(c, cursor.column() + 1);
@@ -621,7 +611,7 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
         int c2 = line.lastIndexOf(c, cursor.column() - 1);
         if (c2 != -1) {
             r.startColumn = c2;
-            r.endColumn =  cursor.column();
+            r.endColumn = cursor.column();
 
             return innerRange(r, inner);
         }
@@ -640,9 +630,7 @@ Range ModeBase::findSurroundingQuotes(const QChar &c, bool inner) const
     return innerRange(r, inner);
 }
 
-Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2,
-                                        bool inner, const QChar &nested1,
-                                        const QChar &nested2) const
+Range ModeBase::findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner, const QChar &nested1, const QChar &nested2) const
 {
     KTextEditor::Cursor cursor(m_view->cursorPosition());
     Range r(cursor, InclusiveMotion);
@@ -969,7 +957,7 @@ Range ModeBase::goVisualLineUpDown(int lines)
 
         const int realLineStartColumn = cache->textLayout(startRealLine, startVisualLine).startCol();
         const int lineStartVirtualColumn = startLine->toVirtualColumn(realLineStartColumn, tabstop);
-        const int visualColumnNoInvisibleIndent  = startLine->toVirtualColumn(c.column(), tabstop) - lineStartVirtualColumn;
+        const int visualColumnNoInvisibleIndent = startLine->toVirtualColumn(c.column(), tabstop) - lineStartVirtualColumn;
         m_stickyColumn = visualColumnNoInvisibleIndent + numInvisibleIndentChars;
         Q_ASSERT(m_stickyColumn >= 0);
     }
@@ -1114,8 +1102,7 @@ QString ModeBase::getVerbatimKeys() const
     return m_keysVerbatim;
 }
 
-const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn,
-        int tabWidth) const
+const QChar ModeBase::getCharAtVirtualColumn(const QString &line, int virtualColumn, int tabWidth) const
 {
     int column = 0;
     int tempCol = 0;
@@ -1217,9 +1204,7 @@ void ModeBase::addToNumberUnderCursor(int count)
 
     // Create the new text string to be inserted. Prepend with “0x” if in base 16, and "0" if base 8.
     // For non-decimal numbers, try to keep the length of the number the same (including leading 0's).
-    const QString newNumberPadded = (base == 10) ?
-                                    QStringLiteral("%1").arg(newNumber, 0, base) :
-                                    QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
+    const QString newNumberPadded = (base == 10) ? QStringLiteral("%1").arg(newNumber, 0, base) : QStringLiteral("%1").arg(newNumber, withoutBase.length(), base, QLatin1Char('0'));
     const QString newNumberText = basePrefix + newNumberPadded;
 
     // Replace the old number string with the new.
@@ -1251,7 +1236,7 @@ void ModeBase::switchView(Direction direction)
     int curr_cursor_x = globalPos.x();
 
     KTextEditor::ViewPrivate *bestview = nullptr;
-    int  best_x1 = -1, best_x2 = -1, best_y1 = -1, best_y2 = -1, best_center_y = -1, best_center_x = -1;
+    int best_x1 = -1, best_x2 = -1, best_y1 = -1, best_y2 = -1, best_center_y = -1, best_center_x = -1;
 
     if (direction == Next && visible_views.count() != 1) {
         for (int i = 0; i < visible_views.count(); i++) {
@@ -1270,54 +1255,41 @@ void ModeBase::switchView(Direction direction)
             int x2 = point.x() + view->width();
             int y1 = point.y();
             int y2 = point.y() + m_view->height();
-            int  center_y = (y1 + y2) / 2;
-            int  center_x = (x1 + x2) / 2;
+            int center_y = (y1 + y2) / 2;
+            int center_x = (x1 + x2) / 2;
 
             switch (direction) {
-            case Left:
-                if (view != m_view && x2 <= curr_x1 &&
-                        (x2 > best_x2 ||
-                         (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) ||
-                         bestview == nullptr)) {
-                    bestview = view;
-                    best_x2 = x2;
-                    best_center_y = center_y;
-                }
-                break;
-            case Right:
-                if (view != m_view && x1 >= curr_x2 &&
-                        (x1 < best_x1 ||
-                         (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) ||
-                         bestview == nullptr)) {
-                    bestview = view;
-                    best_x1 = x1;
-                    best_center_y = center_y;
-                }
-                break;
-            case Down:
-                if (view != m_view && y1 >= curr_y2 &&
-                        (y1 < best_y1 ||
-                         (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) ||
-                         bestview == nullptr)) {
-                    bestview = view;
-                    best_y1 = y1;
-                    best_center_x = center_x;
-                }
-                break;
-            case Up:
-                if (view != m_view && y2 <= curr_y1 &&
-                        (y2 > best_y2 ||
-                         (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) ||
-                         bestview == nullptr)) {
-                    bestview = view;
-                    best_y2 = y2;
-                    best_center_x = center_x;
-                }
-                break;
-            default:
-                return;
+                case Left:
+                    if (view != m_view && x2 <= curr_x1 && (x2 > best_x2 || (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                        bestview = view;
+                        best_x2 = x2;
+                        best_center_y = center_y;
+                    }
+                    break;
+                case Right:
+                    if (view != m_view && x1 >= curr_x2 && (x1 < best_x1 || (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                        bestview = view;
+                        best_x1 = x1;
+                        best_center_y = center_y;
+                    }
+                    break;
+                case Down:
+                    if (view != m_view && y1 >= curr_y2 && (y1 < best_y1 || (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                        bestview = view;
+                        best_y1 = y1;
+                        best_center_x = center_x;
+                    }
+                    break;
+                case Up:
+                    if (view != m_view && y2 <= curr_y1 && (y2 > best_y2 || (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                        bestview = view;
+                        best_y2 = y2;
+                        best_center_x = center_x;
+                    }
+                    break;
+                default:
+                    return;
             }
-
         }
     }
     if (bestview != nullptr) {

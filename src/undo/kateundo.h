@@ -30,7 +30,10 @@
 #include <QBitArray>
 
 class KateUndoManager;
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 namespace KTextEditor
 {
@@ -58,16 +61,7 @@ public:
     /**
      * Types for undo items
      */
-    enum UndoType {
-        editInsertText,
-        editRemoveText,
-        editWrapLine,
-        editUnWrapLine,
-        editInsertLine,
-        editRemoveLine,
-        editMarkLineAutoWrapped,
-        editInvalid
-    };
+    enum UndoType { editInsertText, editRemoveText, editWrapLine, editUnWrapLine, editInsertLine, editRemoveLine, editMarkLineAutoWrapped, editInvalid };
 
 public:
     /**
@@ -122,16 +116,7 @@ private:
     // Line modification system
     //
 public:
-    enum ModificationFlag {
-        UndoLine1Modified = 1,
-        UndoLine2Modified = 2,
-        UndoLine1Saved = 4,
-        UndoLine2Saved = 8,
-        RedoLine1Modified = 16,
-        RedoLine2Modified = 32,
-        RedoLine1Saved = 64,
-        RedoLine2Saved = 128
-    };
+    enum ModificationFlag { UndoLine1Modified = 1, UndoLine2Modified = 2, UndoLine1Saved = 4, UndoLine2Saved = 8, RedoLine1Modified = 16, RedoLine2Modified = 32, RedoLine1Saved = 64, RedoLine2Saved = 128 };
 
     inline void setFlag(ModificationFlag flag)
     {
@@ -266,7 +251,8 @@ public:
         : KateUndo(document)
         , m_line(line)
         , m_autowrapped(autowrapped)
-    {}
+    {
+    }
 
     /**
      * @copydoc KateUndo::undo()
@@ -449,7 +435,7 @@ public:
     ~KateUndoGroup();
 
     KateUndoGroup(const KateUndoGroup &) = delete;
-    KateUndoGroup& operator=(const KateUndoGroup &) = delete;
+    KateUndoGroup &operator=(const KateUndoGroup &) = delete;
 
 public:
     /**
@@ -572,4 +558,3 @@ private:
 };
 
 #endif
-

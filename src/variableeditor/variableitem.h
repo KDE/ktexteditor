@@ -28,7 +28,7 @@
 
 class VariableEditor;
 
-//BEGIN class VariableItem
+// BEGIN class VariableItem
 class VariableItem
 {
 public:
@@ -56,13 +56,13 @@ private:
     QString m_helpText;
     bool m_active;
 };
-//END class VariableItem
+// END class VariableItem
 
 //
 // DERIVE A CLASS FOR EACH TYPE
 //
 
-//BEGIN class VariableIntItem
+// BEGIN class VariableIntItem
 class VariableIntItem : public VariableItem
 {
 public:
@@ -83,11 +83,10 @@ private:
     int m_value;
     int m_minValue;
     int m_maxValue;
-
 };
-//END class VariableIntItem
+// END class VariableIntItem
 
-//BEGIN class VariableStringListItem
+// BEGIN class VariableStringListItem
 class VariableStringListItem : public VariableItem
 {
 public:
@@ -107,9 +106,9 @@ private:
     QStringList m_list;
     QString m_value;
 };
-//END class VariableStringListItem
+// END class VariableStringListItem
 
-//BEGIN class VariableBoolItem
+// BEGIN class VariableBoolItem
 class VariableBoolItem : public VariableItem
 {
 public:
@@ -126,9 +125,9 @@ public:
 private:
     bool m_value;
 };
-//END class VariableBoolItem
+// END class VariableBoolItem
 
-//BEGIN class VariableColorItem
+// BEGIN class VariableColorItem
 class VariableColorItem : public VariableItem
 {
 public:
@@ -145,9 +144,9 @@ public:
 private:
     QColor m_value;
 };
-//END class VariableColorItem
+// END class VariableColorItem
 
-//BEGIN class VariableFontItem
+// BEGIN class VariableFontItem
 class VariableFontItem : public VariableItem
 {
 public:
@@ -164,9 +163,9 @@ public:
 private:
     QFont m_value;
 };
-//END class VariableFontItem
+// END class VariableFontItem
 
-//BEGIN class VariableStringItem
+// BEGIN class VariableStringItem
 class VariableStringItem : public VariableItem
 {
 public:
@@ -184,9 +183,9 @@ private:
     QString m_value;
 };
 
-//END class VariableStringItem
+// END class VariableStringItem
 
-//BEGIN class VariableSpellCheckItem
+// BEGIN class VariableSpellCheckItem
 class VariableSpellCheckItem : public VariableItem
 {
 public:
@@ -196,16 +195,16 @@ public:
     void setValue(const QString &value);
 
 public:
-    void setValueByString(const QString &value) override;  // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const override;                // Same as value() in this case, implemented for uniformity
+    void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
+    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     QString m_value;
 };
-//END class VariableSpellCheckItem
+// END class VariableSpellCheckItem
 
-//BEGIN class VariableRemoveSpacesItem
+// BEGIN class VariableRemoveSpacesItem
 class VariableRemoveSpacesItem : public VariableItem
 {
 public:
@@ -215,14 +214,13 @@ public:
     void setValue(int value);
 
 public:
-    void setValueByString(const QString &value) override;  // Same as setValue() in this case, implemented for uniformity
-    QString valueAsString() const override;                // Same as value() in this case, implemented for uniformity
+    void setValueByString(const QString &value) override; // Same as setValue() in this case, implemented for uniformity
+    QString valueAsString() const override;               // Same as value() in this case, implemented for uniformity
     VariableEditor *createEditor(QWidget *parent) override;
 
 private:
     int m_value;
 };
-//END class VariableRemoveSpacesItem
+// END class VariableRemoveSpacesItem
 
 #endif
-

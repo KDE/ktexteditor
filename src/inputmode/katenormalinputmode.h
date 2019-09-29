@@ -82,11 +82,7 @@ private:
      *   - Setup Power mode, aka find & replace: Also potential new search pattern
      *   - Use current mode and current search pattern or if no Search bar exists, launch Incremental mode
      */
-    enum SearchBarMode {
-        IncrementalSearchBar,
-        PowerSearchBar,
-        IncrementalSearchBarOrKeepMode
-    };
+    enum SearchBarMode { IncrementalSearchBar, PowerSearchBar, IncrementalSearchBarOrKeepMode };
 
     /**
      * Get search bar, create it on demand. (with right mode)

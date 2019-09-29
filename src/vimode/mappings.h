@@ -27,18 +27,12 @@ class KateViInputMode;
 
 namespace KateVi
 {
-
 class KTEXTEDITOR_EXPORT Mappings
 {
 public:
     enum MappingRecursion { Recursive, NonRecursive };
 
-    enum MappingMode {
-        NormalModeMapping = 0,
-        VisualModeMapping,
-        InsertModeMapping,
-        CommandModeMapping
-    };
+    enum MappingMode { NormalModeMapping = 0, VisualModeMapping, InsertModeMapping, CommandModeMapping };
 
 public:
     void writeConfig(KConfigGroup &config) const;

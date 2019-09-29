@@ -51,7 +51,6 @@ void CompletionReplayer::stop()
 {
     m_CompletionsToReplay.pop();
     m_nextCompletionIndex.pop();
-
 }
 
 void CompletionReplayer::replay()
@@ -104,8 +103,7 @@ void CompletionReplayer::replay()
             offsetFinalCursorPosBy = completionText.endsWith(QLatin1Char(';')) ? -2 : -1;
         }
     }
-    KTextEditor::Cursor deleteEnd =  completion.removeTail() ? currentWord.end() :
-                        KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
+    KTextEditor::Cursor deleteEnd = completion.removeTail() ? currentWord.end() : KTextEditor::Cursor(m_view->cursorPosition().line(), m_view->cursorPosition().column() + 0);
 
     if (currentWord.isValid()) {
         doc->removeText(KTextEditor::Range(currentWord.start(), deleteEnd));

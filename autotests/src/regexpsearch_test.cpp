@@ -47,28 +47,44 @@ void RegExpSearchTest::testReplaceEscapeSequences_data()
     QTest::addColumn<QString>("pattern");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "\\"       << "\\";
-    testNewRow() << "\\0"      << "0";
-    testNewRow() << "\\00"     << "00";
-    testNewRow() << "\\000"    << "000";
-    testNewRow() << "\\0000"   << QString(QChar(0));
-    testNewRow() << "\\0377"   << QString(QChar(0377));
-    testNewRow() << "\\0378"   << "0378";
-    testNewRow() << "\\a"      << "\a";
-    testNewRow() << "\\f"      << "\f";
-    testNewRow() << "\\n"      << "\n";
-    testNewRow() << "\\r"      << "\r";
-    testNewRow() << "\\t"      << "\t";
-    testNewRow() << "\\v"      << "\v";
-    testNewRow() << "\\x"      << "x";
-    testNewRow() << "\\x0"     << "x0";
-    testNewRow() << "\\x00"    << "x00";
-    testNewRow() << "\\x000"   << "x000";
-    testNewRow() << "\\x0000"  << QString(QChar(0x0000));
+    testNewRow() << "\\"
+                 << "\\";
+    testNewRow() << "\\0"
+                 << "0";
+    testNewRow() << "\\00"
+                 << "00";
+    testNewRow() << "\\000"
+                 << "000";
+    testNewRow() << "\\0000" << QString(QChar(0));
+    testNewRow() << "\\0377" << QString(QChar(0377));
+    testNewRow() << "\\0378"
+                 << "0378";
+    testNewRow() << "\\a"
+                 << "\a";
+    testNewRow() << "\\f"
+                 << "\f";
+    testNewRow() << "\\n"
+                 << "\n";
+    testNewRow() << "\\r"
+                 << "\r";
+    testNewRow() << "\\t"
+                 << "\t";
+    testNewRow() << "\\v"
+                 << "\v";
+    testNewRow() << "\\x"
+                 << "x";
+    testNewRow() << "\\x0"
+                 << "x0";
+    testNewRow() << "\\x00"
+                 << "x00";
+    testNewRow() << "\\x000"
+                 << "x000";
+    testNewRow() << "\\x0000" << QString(QChar(0x0000));
     testNewRow() << "\\x00000" << QString(QChar(0x0000) + '0');
-    testNewRow() << "\\xaaaa"  << QString(QChar(0xaaaa));
-    testNewRow() << "\\xFFFF"  << QString(QChar(0xFFFF));
-    testNewRow() << "\\xFFFg"  << "xFFFg";
+    testNewRow() << "\\xaaaa" << QString(QChar(0xaaaa));
+    testNewRow() << "\\xFFFF" << QString(QChar(0xFFFF));
+    testNewRow() << "\\xFFFg"
+                 << "xFFFg";
 }
 
 void RegExpSearchTest::testReplaceEscapeSequences()
@@ -89,13 +105,23 @@ void RegExpSearchTest::testReplacementReferences_data()
     QTest::addColumn<QString>("expected");
     QTest::addColumn<QStringList>("capturedTexts");
 
-    testNewRow() << "\\0"    << "b"               << (QStringList() << "b");
-    testNewRow() << "\\00"   << "b0"              << (QStringList() << "b");
-    testNewRow() << "\\000"  << "b00"             << (QStringList() << "b");
+    testNewRow() << "\\0"
+                 << "b" << (QStringList() << "b");
+    testNewRow() << "\\00"
+                 << "b0" << (QStringList() << "b");
+    testNewRow() << "\\000"
+                 << "b00" << (QStringList() << "b");
     testNewRow() << "\\0000" << QString(QChar(0)) << (QStringList() << "b");
-    testNewRow() << "\\1"    << "1"               << (QStringList() << "b");
-    testNewRow() << "\\0"    << "b"               << (QStringList() << "b" << "c");
-    testNewRow() << "\\1"    << "c"               << (QStringList() << "b" << "c");
+    testNewRow() << "\\1"
+                 << "1" << (QStringList() << "b");
+    testNewRow() << "\\0"
+                 << "b"
+                 << (QStringList() << "b"
+                                   << "c");
+    testNewRow() << "\\1"
+                 << "c"
+                 << (QStringList() << "b"
+                                   << "c");
 }
 
 void RegExpSearchTest::testReplacementReferences()
@@ -114,24 +140,38 @@ void RegExpSearchTest::testReplacementCaseConversion_data()
     QTest::addColumn<QString>("pattern");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "a\\Uaa" << "aAA";
-    testNewRow() << "a\\UAa" << "aAA";
-    testNewRow() << "a\\UaA" << "aAA";
+    testNewRow() << "a\\Uaa"
+                 << "aAA";
+    testNewRow() << "a\\UAa"
+                 << "aAA";
+    testNewRow() << "a\\UaA"
+                 << "aAA";
 
-    testNewRow() << "a\\uaa" << "aAa";
-    testNewRow() << "a\\uAa" << "aAa";
-    testNewRow() << "a\\uaA" << "aAA";
+    testNewRow() << "a\\uaa"
+                 << "aAa";
+    testNewRow() << "a\\uAa"
+                 << "aAa";
+    testNewRow() << "a\\uaA"
+                 << "aAA";
 
-    testNewRow() << "A\\LAA" << "Aaa";
-    testNewRow() << "A\\LaA" << "Aaa";
-    testNewRow() << "A\\LAa" << "Aaa";
+    testNewRow() << "A\\LAA"
+                 << "Aaa";
+    testNewRow() << "A\\LaA"
+                 << "Aaa";
+    testNewRow() << "A\\LAa"
+                 << "Aaa";
 
-    testNewRow() << "A\\lAA" << "AaA";
-    testNewRow() << "A\\lAa" << "Aaa";
-    testNewRow() << "A\\laA" << "AaA";
+    testNewRow() << "A\\lAA"
+                 << "AaA";
+    testNewRow() << "A\\lAa"
+                 << "Aaa";
+    testNewRow() << "A\\laA"
+                 << "AaA";
 
-    testNewRow() << "a\\EaA" << "aaA";
-    testNewRow() << "A\\EAa" << "AAa";
+    testNewRow() << "a\\EaA"
+                 << "aaA";
+    testNewRow() << "A\\EAa"
+                 << "AAa";
 }
 
 void RegExpSearchTest::testReplacementCaseConversion()
@@ -150,9 +190,9 @@ void RegExpSearchTest::testReplacementCounter_data()
     QTest::addColumn<int>("counter");
     QTest::addColumn<QString>("expected");
 
-    testNewRow() << "a\\#b"     <<  1 << "a1b";
-    testNewRow() << "a\\#b"     << 10 << "a10b";
-    testNewRow() << "a\\#####b" <<  1 << "a00001b";
+    testNewRow() << "a\\#b" << 1 << "a1b";
+    testNewRow() << "a\\#b" << 10 << "a10b";
+    testNewRow() << "a\\#####b" << 1 << "a00001b";
 }
 
 void RegExpSearchTest::testReplacementCounter()
@@ -188,11 +228,11 @@ void RegExpSearchTest::testAnchoredRegexp_data()
     testNewRow() << "fe$" << Range(0, 0, 0, 8) << false << Range(0, 6, 0, 8);
     testNewRow() << "fe$" << Range(0, 7, 0, 8) << false << Range::invalid();
     testNewRow() << "fe$" << Range(0, 6, 0, 8) << false << Range(0, 6, 0, 8);
-//  testNewRow() << "fe$" << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
+    //  testNewRow() << "fe$" << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
     testNewRow() << "fe$" << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
     testNewRow() << "fe$" << Range(0, 7, 0, 8) << true << Range::invalid();
     testNewRow() << "fe$" << Range(0, 6, 0, 8) << true << Range(0, 6, 0, 8);
-//  testNewRow() << "fe$" << Range(0, 0, 0, 5) << true << Range::invalid();  // fails due to $-shortcoming in QRegExp
+    //  testNewRow() << "fe$" << Range(0, 0, 0, 5) << true << Range::invalid();  // fails due to $-shortcoming in QRegExp
 
     testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
     testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 8) << false << Range::invalid();
@@ -204,24 +244,24 @@ void RegExpSearchTest::testAnchoredRegexp_data()
     testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 5) << true << Range::invalid();
 
     testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*"  << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() <<  "fe( fe)*$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
-    testNewRow() <<  "fe( fe)*"  << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << "fe( fe)*$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
+    testNewRow() << "fe( fe)*" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
     testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << false << Range::invalid();
-    testNewRow() <<  "fe( fe)*$" << Range(0, 3, 0, 8) << false << Range(0, 3, 0, 8);
-//  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << false << Range::invalid();  // fails due to $-shortcoming in QRegExp
-    testNewRow() << "^fe( fe)*"  << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 5);
+    testNewRow() << "fe( fe)*$" << Range(0, 3, 0, 8) << false << Range(0, 3, 0, 8);
+    //  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << false << Range::invalid();  // fails due to $-shortcoming in QRegExp
+    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 5);
     testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    testNewRow() << "^fe( fe)*"  << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-//  testNewRow() <<  "fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
-//  testNewRow() <<  "fe( fe)*"  << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
+    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    //  testNewRow() <<  "fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
+    //  testNewRow() <<  "fe( fe)*"  << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
     testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << true << Range::invalid();
-//  testNewRow() <<  "fe( fe)*$" << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);  // fails, shouldn't matching be greedy?
-//  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << true << Range::invalid();   // fails due to $-shortcoming in QRegExp
+    //  testNewRow() <<  "fe( fe)*$" << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);  // fails, shouldn't matching be greedy?
+    //  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << true << Range::invalid();   // fails due to $-shortcoming in QRegExp
 
     testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 2);
     testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << false << Range(0, 6, 0, 8);
-//  testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);  // fails due to $-shortcoming in QRegExp
+    //  testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);  // fails due to $-shortcoming in QRegExp
     testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << true << Range(0, 6, 0, 8);
 }
 
@@ -284,4 +324,3 @@ void RegExpSearchTest::test()
     QCOMPARE(doc.text(result[0]), QString("\\piReductionO"));
     QCOMPARE(doc.text(result[1]), QString("O"));
 }
-

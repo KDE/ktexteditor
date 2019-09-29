@@ -38,14 +38,12 @@ class KConfig;
  */
 namespace KTextEditor
 {
-
 class Application;
 class Command;
 class Document;
 class View;
 class EditorPrivate;
 class ConfigPage;
-
 
 /**
  * \brief Accessor interface for the KTextEditor framework.
@@ -171,8 +169,7 @@ Q_SIGNALS:
      * \param document the newly created document instance
      * \see createDocument()
      */
-    void documentCreated(KTextEditor::Editor *editor,
-                         KTextEditor::Document *document);
+    void documentCreated(KTextEditor::Editor *editor, KTextEditor::Document *document);
 
     /*
      * General Information about this editor.
@@ -253,7 +250,7 @@ public:
     /**
      * Function that is called to expand a variable in @p text.
      */
-    using ExpandFunction = QString (*)(const QStringView& text, KTextEditor::View* view);
+    using ExpandFunction = QString (*)(const QStringView &text, KTextEditor::View *view);
 
     /**
      * Registers a variable called @p name for exact matches.
@@ -265,7 +262,7 @@ public:
      *
      * @since 5.57
      */
-    bool registerVariableMatch(const QString& name, const QString& description, ExpandFunction expansionFunc);
+    bool registerVariableMatch(const QString &name, const QString &description, ExpandFunction expansionFunc);
 
     /**
      * Registers a variable for arbitrary text that matches the specified
@@ -281,7 +278,7 @@ public:
      *
      * @since 5.57
      */
-    bool registerVariablePrefix(const QString& prefix, const QString& description, ExpandFunction expansionFunc);
+    bool registerVariablePrefix(const QString &prefix, const QString &description, ExpandFunction expansionFunc);
 
     /**
      * Unregisters a variable that was previously registered with
@@ -292,7 +289,7 @@ public:
      *
      * @since 5.57
      */
-    bool unregisterVariableMatch(const QString& variable);
+    bool unregisterVariableMatch(const QString &variable);
 
     // TODO KF6: merge "unregisterVariableMatch()" and "unregisterVariablePrefix()" into
     //           a single function "unregisterVariable(const QString& name)".
@@ -305,7 +302,7 @@ public:
      *
      * @since 5.57
      */
-    bool unregisterVariablePrefix(const QString& variable);
+    bool unregisterVariablePrefix(const QString &variable);
 
     /**
      * Expands a single @p variable, writing the expanded value to @p output.
@@ -314,7 +311,7 @@ public:
      *
      * @since 5.57
      */
-    bool expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const;
+    bool expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const;
 
     // TODO KF6: turn expandText into: QString expandText(text, view) to avoid output argument
     /**
@@ -323,7 +320,7 @@ public:
      *
      * @since 5.57
      */
-    void expandText(const QString& text, KTextEditor::View* view, QString& output) const;
+    void expandText(const QString &text, KTextEditor::View *view, QString &output) const;
 
     /**
      * Adds a QAction to the widget in @p widgets that whenever focus is
@@ -337,8 +334,7 @@ public:
      *
      * @since 5.63
      */
-    void addVariableExpansion(const QVector<QWidget*>& widgets,
-                              const QStringList& variables = QStringList()) const;
+    void addVariableExpansion(const QVector<QWidget *> &widgets, const QStringList &variables = QStringList()) const;
 
 private:
     /**

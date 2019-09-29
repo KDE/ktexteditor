@@ -28,7 +28,10 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class QJSEngine;
 /**
  * Thinish wrapping around KTextEditor::ViewPrivate, exposing the methods we want exposed
@@ -69,9 +72,7 @@ public:
 
     Q_INVOKABLE void align(const QJSValue &range);
 
-    Q_INVOKABLE QJSValue executeCommand(const QString &command,
-                                        const QString &args = QString(),
-                                        const QJSValue &jsrange = QJSValue());
+    Q_INVOKABLE QJSValue executeCommand(const QString &command, const QString &args = QString(), const QJSValue &jsrange = QJSValue());
 
 private:
     KTextEditor::ViewPrivate *m_view;
@@ -79,4 +80,3 @@ private:
 };
 
 #endif
-

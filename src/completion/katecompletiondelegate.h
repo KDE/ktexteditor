@@ -24,7 +24,10 @@
 #include "expandingtree/expandingdelegate.h"
 
 class KateRenderer;
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateCompletionWidget;
 
 class KateCompletionDelegate : public ExpandingDelegate
@@ -35,13 +38,13 @@ public:
     KateRenderer *renderer() const;
     KateCompletionWidget *widget() const;
     KTextEditor::DocumentPrivate *document() const;
+
 protected:
     void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const override;
     mutable int m_cachedRow;
     mutable QList<int> m_cachedColumnStarts;
     void heightChanged() const override;
     QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const override;
-
 };
 
 #endif

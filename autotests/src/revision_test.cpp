@@ -55,13 +55,13 @@ void RevisionTest::testTransformCursor()
     QVERIFY(doc.lastSavedRevision() == -1);
 
     // initial revision is always 0
-    QCOMPARE(doc.revision(), (qint64) 0);
+    QCOMPARE(doc.revision(), (qint64)0);
 
     // one edit action -> revision now 1, last saved still -1
     doc.insertText(Cursor(0, 0), "0000");
 
     qint64 rev = doc.revision();
-    QCOMPARE(rev, (qint64) 1);
+    QCOMPARE(rev, (qint64)1);
 
     // now lock current revision 1
     doc.lockRevision(rev);
@@ -106,10 +106,11 @@ void RevisionTest::testTransformRange()
 {
     KTextEditor::DocumentPrivate doc;
 
-    QCOMPARE(doc.revision(), (qint64) 0);
+    QCOMPARE(doc.revision(), (qint64)0);
 
-    doc.setText("00\n"
-                "11");
+    doc.setText(
+        "00\n"
+        "11");
 
     // now lock current revision
     qint64 rev = doc.revision();
@@ -122,12 +123,9 @@ void RevisionTest::testTransformRange()
     // remove text
     doc.removeText(Range(Cursor(0, 0), Cursor(1, 2)));
 
-    doc.transformRange(r1, MovingRange::ExpandLeft | MovingRange::ExpandRight,
-                       MovingRange::AllowEmpty, rev, -1);
-    doc.transformRange(r2, MovingRange::ExpandLeft | MovingRange::ExpandRight,
-                       MovingRange::AllowEmpty, rev, -1);
-    doc.transformRange(invalidOnEmpty, MovingRange::ExpandLeft | MovingRange::ExpandRight,
-                       MovingRange::InvalidateIfEmpty, rev, -1);
+    doc.transformRange(r1, MovingRange::ExpandLeft | MovingRange::ExpandRight, MovingRange::AllowEmpty, rev, -1);
+    doc.transformRange(r2, MovingRange::ExpandLeft | MovingRange::ExpandRight, MovingRange::AllowEmpty, rev, -1);
+    doc.transformRange(invalidOnEmpty, MovingRange::ExpandLeft | MovingRange::ExpandRight, MovingRange::InvalidateIfEmpty, rev, -1);
 
     QCOMPARE(r1, Range(Cursor(0, 0), Cursor(0, 0)));
     QCOMPARE(r2, Range(Cursor(0, 0), Cursor(0, 0)));
@@ -144,12 +142,9 @@ void RevisionTest::testTransformRange()
     // r1 should span the entire document
     // r2 should be empty at end of document
     // invalidOnEmpty should stay invalid
-    doc.transformRange(r1, MovingRange::ExpandLeft | MovingRange::ExpandRight,
-                       MovingRange::AllowEmpty, rev, -1);
-    doc.transformRange(r2, MovingRange::ExpandRight,
-                       MovingRange::AllowEmpty, rev, -1);
-    doc.transformRange(invalidOnEmpty, MovingRange::ExpandLeft | MovingRange::ExpandRight,
-                       MovingRange::AllowEmpty, rev, -1);
+    doc.transformRange(r1, MovingRange::ExpandLeft | MovingRange::ExpandRight, MovingRange::AllowEmpty, rev, -1);
+    doc.transformRange(r2, MovingRange::ExpandRight, MovingRange::AllowEmpty, rev, -1);
+    doc.transformRange(invalidOnEmpty, MovingRange::ExpandLeft | MovingRange::ExpandRight, MovingRange::AllowEmpty, rev, -1);
 
     QCOMPARE(r1, Range(Cursor(0, 0), Cursor(1, 2)));
     QCOMPARE(r2, Range(Cursor(1, 2), Cursor(1, 2)));

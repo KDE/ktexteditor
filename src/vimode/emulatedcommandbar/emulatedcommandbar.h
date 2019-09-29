@@ -29,9 +29,10 @@
 #include "../searcher.h"
 #include "activemode.h"
 
-namespace KTextEditor {
-    class ViewPrivate;
-    class Command;
+namespace KTextEditor
+{
+class ViewPrivate;
+class Command;
 }
 
 class QLabel;
@@ -56,7 +57,7 @@ class KTEXTEDITOR_EXPORT EmulatedCommandBar : public KateViewBarWidget
 
 public:
     enum Mode { NoMode, SearchForward, SearchBackward, Command };
-    explicit EmulatedCommandBar(KateViInputMode* viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
+    explicit EmulatedCommandBar(KateViInputMode *viInputMode, InputModeManager *viInputModeManager, QWidget *parent = nullptr);
     ~EmulatedCommandBar() override;
     void init(Mode mode, const QString &initialText = QString());
     bool isActive();
@@ -70,7 +71,6 @@ public:
     void setViInputModeManager(InputModeManager *viInputModeManager);
 
 private:
-
     KateViInputMode *m_viInputMode;
     InputModeManager *m_viInputModeManager;
     bool m_isActive = false;
@@ -84,11 +84,11 @@ private:
 
     bool m_suspendEditEventFiltering = false;
 
-    bool m_waitingForRegister = false ;
+    bool m_waitingForRegister = false;
     QLabel *m_waitingForRegisterIndicator;
     bool m_insertedTextShouldBeEscapedForSearchingAsLiteral = false;
 
-    void hideAllWidgetsExcept(QWidget* widgetToKeepVisible);
+    void hideAllWidgetsExcept(QWidget *widgetToKeepVisible);
 
     friend class ActiveMode;
     QScopedPointer<MatchHighlighter> m_matchHighligher;
@@ -102,7 +102,7 @@ private:
     void switchToMode(ActiveMode *newMode);
     ActiveMode *m_currentMode = nullptr;
 
-    bool barHandledKeypress(const QKeyEvent* keyEvent);
+    bool barHandledKeypress(const QKeyEvent *keyEvent);
     void insertRegisterContents(const QKeyEvent *keyEvent);
     bool eventFilter(QObject *object, QEvent *event) override;
     void deleteSpacesToLeftOfCursor();
@@ -110,16 +110,16 @@ private:
     bool deleteNonWordCharsToLeftOfCursor();
 
     void closed() override;
-    void closeWithStatusMessage(const QString& exitStatusMessage);
+    void closeWithStatusMessage(const QString &exitStatusMessage);
     QTimer *m_exitStatusMessageDisplayHideTimer;
     QLabel *m_exitStatusMessageDisplay;
     long m_exitStatusMessageHideTimeOutMS = 4000;
 
-    void createAndAddBarTypeIndicator(QLayout* layout);
-    void createAndAddEditWidget(QLayout* layout);
-    void createAndAddExitStatusMessageDisplay(QLayout* layout);
+    void createAndAddBarTypeIndicator(QLayout *layout);
+    void createAndAddEditWidget(QLayout *layout);
+    void createAndAddExitStatusMessageDisplay(QLayout *layout);
     void createAndInitExitStatusMessageDisplayTimer();
-    void createAndAddWaitingForRegisterIndicator(QLayout* layout);
+    void createAndAddWaitingForRegisterIndicator(QLayout *layout);
 
 private Q_SLOTS:
     void editTextChanged(const QString &newText);

@@ -28,7 +28,8 @@
 
 #include <ktexteditor/inlinenote.h>
 
-namespace KTextEditor {
+namespace KTextEditor
+{
 /**
  * @brief A source of inline notes for a document.
  *
@@ -88,7 +89,7 @@ public:
      * @param note the InlineNote for which the size is queried
      * @return the required size of the InlineNote
      */
-    virtual QSize inlineNoteSize(const InlineNote& note) const = 0;
+    virtual QSize inlineNoteSize(const InlineNote &note) const = 0;
 
     /**
      * Paint the note into the line.
@@ -106,7 +107,7 @@ public:
      * @param note note to paint, containing location and index
      * @param painter painter prepared for rendering the note
      */
-    virtual void paintInlineNote(const InlineNote& note, QPainter& painter) const = 0;
+    virtual void paintInlineNote(const InlineNote &note, QPainter &painter) const = 0;
 
     /**
      * Invoked when a note is activated by the user.
@@ -121,7 +122,7 @@ public:
      * @param buttons the button(s) the note was clicked with
      * @param globalPos the point the note was clicked at in global screen coordinates
      */
-    virtual void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos);
+    virtual void inlineNoteActivated(const InlineNote &note, Qt::MouseButtons buttons, const QPoint &globalPos);
 
     /**
      * Invoked when the mouse cursor moves into the @p note when it was outside before.
@@ -131,7 +132,7 @@ public:
      * @param note the note which was activated
      * @param globalPos the location of the mouse cursor in global screen coordinates
      */
-    virtual void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos);
+    virtual void inlineNoteFocusInEvent(const InlineNote &note, const QPoint &globalPos);
 
     /**
      * Invoked when the mouse cursor leaves the note.
@@ -140,7 +141,7 @@ public:
      *
      * @param note the note which was deactivated
      */
-    virtual void inlineNoteFocusOutEvent(const InlineNote& note);
+    virtual void inlineNoteFocusOutEvent(const InlineNote &note);
 
     /**
      * Invoked when the mouse cursor moves inside the note.
@@ -150,7 +151,7 @@ public:
      * @param note the note which was hovered
      * @param globalPos the location of the mouse cursor in global screen coordinates
      */
-    virtual void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& globalPos);
+    virtual void inlineNoteMouseMoveEvent(const InlineNote &note, const QPoint &globalPos);
 
 Q_SIGNALS:
     /**
@@ -166,7 +167,7 @@ Q_SIGNALS:
     void inlineNotesChanged(int line);
 
 private:
-    class InlineNoteProviderPrivate * const d = nullptr;
+    class InlineNoteProviderPrivate *const d = nullptr;
 };
 
 }

@@ -28,7 +28,10 @@
 #include "katedialogs.h"
 #include "katemodemanager.h"
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 class KateModeMenu : public KActionMenu
 {
@@ -55,7 +58,7 @@ private:
     QList<QMenu *> subMenus;
     QActionGroup *m_actionGroup;
 
-public  Q_SLOTS:
+public Q_SLOTS:
     void slotAboutToShow();
 
 private Q_SLOTS:
@@ -63,4 +66,3 @@ private Q_SLOTS:
 };
 
 #endif
-

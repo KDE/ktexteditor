@@ -37,12 +37,12 @@ void mergeAttributes(KTextEditor::Attribute::Ptr base, KTextEditor::Attribute::P
     bool hasFg = add->hasProperty(KTextEditor::Attribute::ForegroundBrush);
 
     if (((!hadBg || !hasBg) && (!hadFg || !hasFg))) {
-        //Nothing to blend
+        // Nothing to blend
         *base += *add;
         return;
     }
 
-    //We eventually have to blend
+    // We eventually have to blend
 
     QBrush baseBgBrush, baseFgBrush;
 
@@ -181,7 +181,7 @@ KTextEditor::Attribute::Ptr RenderRangeVector::generateAttribute() const
                 a = a2;
             } else {
                 if (!ownsAttribute) {
-                    //Make an own copy of the attribute..
+                    // Make an own copy of the attribute..
                     ownsAttribute = true;
                     a = new KTextEditor::Attribute(*a);
                 }
@@ -192,4 +192,3 @@ KTextEditor::Attribute::Ptr RenderRangeVector::generateAttribute() const
 
     return a;
 }
-

@@ -28,11 +28,7 @@ class KateHelpButton : public QToolButton
     Q_OBJECT
 
 public:
-    enum IconState {
-        IconColored = 0,
-        IconGrayscaled,
-        IconHidden
-    };
+    enum IconState { IconColored = 0, IconGrayscaled, IconHidden };
 
     void setSection(const QString &section);
 
@@ -49,4 +45,3 @@ private:
 };
 
 #endif
-

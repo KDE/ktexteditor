@@ -52,17 +52,14 @@
 
 using namespace KTextEditor;
 
-Cursor Cursor::fromString(const QStringRef& str) Q_DECL_NOEXCEPT
+Cursor Cursor::fromString(const QStringRef &str) Q_DECL_NOEXCEPT
 {
     // parse format "(line, column)"
     const int startIndex = str.indexOf(QLatin1Char('('));
     const int endIndex = str.indexOf(QLatin1Char(')'));
     const int commaIndex = str.indexOf(QLatin1Char(','));
 
-    if (startIndex < 0 || endIndex < 0 || commaIndex < 0 ||
-        commaIndex < startIndex || endIndex < commaIndex ||
-        endIndex < startIndex)
-    {
+    if (startIndex < 0 || endIndex < 0 || commaIndex < 0 || commaIndex < startIndex || endIndex < commaIndex || endIndex < startIndex) {
         return invalid();
     }
 
@@ -80,8 +77,8 @@ Cursor Cursor::fromString(const QStringRef& str) Q_DECL_NOEXCEPT
 }
 
 Editor::Editor(EditorPrivate *impl)
-    : QObject ()
-    , d (impl)
+    : QObject()
+    , d(impl)
 {
 }
 
@@ -97,47 +94,47 @@ Editor *KTextEditor::Editor::instance()
     return KTextEditor::EditorPrivate::self();
 }
 
-QString Editor::defaultEncoding () const
+QString Editor::defaultEncoding() const
 {
     /**
      * return default encoding in global config object
      */
-    return d->documentConfig()->encoding ();
+    return d->documentConfig()->encoding();
 }
 
-bool Editor::registerVariableMatch(const QString& name, const QString& description, ExpandFunction expansionFunc)
+bool Editor::registerVariableMatch(const QString &name, const QString &description, ExpandFunction expansionFunc)
 {
     const auto var = Variable(name, description, expansionFunc, false);
     return d->variableExpansionManager()->addVariable(var);
 }
 
-bool Editor::registerVariablePrefix(const QString& prefix, const QString& description, ExpandFunction expansionFunc)
+bool Editor::registerVariablePrefix(const QString &prefix, const QString &description, ExpandFunction expansionFunc)
 {
     const auto var = Variable(prefix, description, expansionFunc, true);
     return d->variableExpansionManager()->addVariable(var);
 }
 
-bool Editor::unregisterVariableMatch(const QString& variable)
+bool Editor::unregisterVariableMatch(const QString &variable)
 {
     return d->variableExpansionManager()->removeVariable(variable);
 }
 
-bool Editor::unregisterVariablePrefix(const QString& variable)
+bool Editor::unregisterVariablePrefix(const QString &variable)
 {
     return d->variableExpansionManager()->removeVariable(variable);
 }
 
-bool Editor::expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const
+bool Editor::expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const
 {
     return d->variableExpansionManager()->expandVariable(variable, view, output);
 }
 
-void Editor::expandText(const QString& text, KTextEditor::View* view, QString& output) const
+void Editor::expandText(const QString &text, KTextEditor::View *view, QString &output) const
 {
     output = d->variableExpansionManager()->expandText(text, view);
 }
 
-void Editor::addVariableExpansion(const QVector<QWidget*>& widgets, const QStringList& variables) const
+void Editor::addVariableExpansion(const QVector<QWidget *> &widgets, const QStringList &variables) const
 {
     d->variableExpansionManager()->showDialog(widgets, variables);
 }
@@ -170,12 +167,10 @@ void View::setStatusBarEnabled(bool enable)
     /**
      * else toggle it
      */
-    d->toggleStatusBar ();
+    d->toggleStatusBar();
 }
 
-bool View::insertTemplate(const KTextEditor::Cursor& insertPosition,
-                          const QString& templateString,
-                          const QString& script)
+bool View::insertTemplate(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script)
 {
     return d->insertTemplateInternal(insertPosition, templateString, script);
 }
@@ -188,10 +183,12 @@ void View::setViewInputMode(InputMode inputMode)
 ConfigPage::ConfigPage(QWidget *parent)
     : QWidget(parent)
     , d(nullptr)
-{}
+{
+}
 
 ConfigPage::~ConfigPage()
-{}
+{
+}
 
 QString ConfigPage::fullName() const
 {
@@ -203,21 +200,26 @@ QIcon ConfigPage::icon() const
     return QIcon::fromTheme(QStringLiteral("document-properties"));
 }
 
-View::View (ViewPrivate *impl, QWidget *parent)
-    : QWidget (parent), KXMLGUIClient()
+View::View(ViewPrivate *impl, QWidget *parent)
+    : QWidget(parent)
+    , KXMLGUIClient()
     , d(impl)
-{}
+{
+}
 
 View::~View()
-{}
+{
+}
 
 Plugin::Plugin(QObject *parent)
     : QObject(parent)
     , d(nullptr)
-{}
+{
+}
 
 Plugin::~Plugin()
-{}
+{
+}
 
 int Plugin::configPages() const
 {
@@ -230,54 +232,62 @@ ConfigPage *Plugin::configPage(int, QWidget *)
 }
 
 MarkInterface::MarkInterface()
-{}
+{
+}
 
 MarkInterface::~MarkInterface()
-{}
+{
+}
 
 ModificationInterface::ModificationInterface()
-{}
+{
+}
 
 ModificationInterface::~ModificationInterface()
-{}
+{
+}
 
 SessionConfigInterface::SessionConfigInterface()
-{}
+{
+}
 
 SessionConfigInterface::~SessionConfigInterface()
-{}
+{
+}
 
 TextHintInterface::TextHintInterface()
-{}
+{
+}
 
 TextHintInterface::~TextHintInterface()
-{}
+{
+}
 
 TextHintProvider::TextHintProvider()
-{}
+{
+}
 
 TextHintProvider::~TextHintProvider()
-{}
+{
+}
 
 InlineNoteInterface::InlineNoteInterface()
-{}
+{
+}
 
 InlineNoteInterface::~InlineNoteInterface()
-{}
+{
+}
 
 InlineNoteProvider::InlineNoteProvider()
-{}
+{
+}
 
 InlineNoteProvider::~InlineNoteProvider()
-{}
+{
+}
 
-KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider* provider,
-                                       const KTextEditor::View* view,
-                                       const KTextEditor::Cursor& position,
-                                       int index,
-                                       bool underMouse,
-                                       const QFont& font,
-                                       int lineHeight)
+KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider *provider, const KTextEditor::View *view, const KTextEditor::Cursor &position, int index, bool underMouse, const QFont &font, int lineHeight)
     : m_provider(provider)
     , m_view(view)
     , m_position(position)
@@ -285,9 +295,10 @@ KateInlineNoteData::KateInlineNoteData(KTextEditor::InlineNoteProvider* provider
     , m_underMouse(underMouse)
     , m_font(font)
     , m_lineHeight(lineHeight)
-{}
+{
+}
 
-InlineNote::InlineNote(const KateInlineNoteData& data)
+InlineNote::InlineNote(const KateInlineNoteData &data)
     : d(data)
 {
 }
@@ -302,36 +313,36 @@ bool KTextEditor::InlineNote::underMouse() const
     return d.m_underMouse;
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos)
+void KTextEditor::InlineNoteProvider::inlineNoteActivated(const InlineNote &note, Qt::MouseButtons buttons, const QPoint &globalPos)
 {
     Q_UNUSED(note);
     Q_UNUSED(buttons);
     Q_UNUSED(globalPos);
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteFocusInEvent(const KTextEditor::InlineNote& note, const QPoint& globalPos)
+void KTextEditor::InlineNoteProvider::inlineNoteFocusInEvent(const KTextEditor::InlineNote &note, const QPoint &globalPos)
 {
     Q_UNUSED(note);
     Q_UNUSED(globalPos);
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteFocusOutEvent(const KTextEditor::InlineNote& note)
+void KTextEditor::InlineNoteProvider::inlineNoteFocusOutEvent(const KTextEditor::InlineNote &note)
 {
     Q_UNUSED(note);
 }
 
-void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor::InlineNote& note, const QPoint& globalPos)
+void KTextEditor::InlineNoteProvider::inlineNoteMouseMoveEvent(const KTextEditor::InlineNote &note, const QPoint &globalPos)
 {
     Q_UNUSED(note);
     Q_UNUSED(globalPos);
 }
 
-KTextEditor::InlineNoteProvider* InlineNote::provider() const
+KTextEditor::InlineNoteProvider *InlineNote::provider() const
 {
     return d.m_provider;
 }
 
-const KTextEditor::View* InlineNote::view() const
+const KTextEditor::View *InlineNote::view() const
 {
     return d.m_view;
 }
@@ -358,18 +369,18 @@ KTextEditor::Cursor InlineNote::position() const
 
 Command::Command(const QStringList &cmds, QObject *parent)
     : QObject(parent)
-    , m_cmds (cmds)
+    , m_cmds(cmds)
     , d(nullptr)
 {
     // register this command
-    static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->registerCommand (this);
+    static_cast<KTextEditor::EditorPrivate *>(KTextEditor::Editor::instance())->cmdManager()->registerCommand(this);
 }
 
 Command::~Command()
 {
     // unregister this command, if instance is still there!
     if (KTextEditor::Editor::instance())
-        static_cast<KTextEditor::EditorPrivate *> (KTextEditor::Editor::instance())->cmdManager()->unregisterCommand (this);
+        static_cast<KTextEditor::EditorPrivate *>(KTextEditor::Editor::instance())->cmdManager()->unregisterCommand(this);
 }
 
 bool Command::supportsRange(const QString &)
@@ -423,7 +434,8 @@ QRect View::textAreaRect() const
 
 StyleOptionAnnotationItem::StyleOptionAnnotationItem()
     : contentFontMetrics(QFont())
-{}
+{
+}
 
 StyleOptionAnnotationItem::StyleOptionAnnotationItem(const StyleOptionAnnotationItem &other)
     : QStyleOption(Version, Type)
@@ -435,10 +447,12 @@ StyleOptionAnnotationItem::StyleOptionAnnotationItem(const StyleOptionAnnotation
 StyleOptionAnnotationItem::StyleOptionAnnotationItem(int version)
     : QStyleOption(version, Type)
     , contentFontMetrics(QFont())
-{}
+{
+}
 
 AbstractAnnotationItemDelegate::AbstractAnnotationItemDelegate(QObject *parent)
     : QObject(parent)
-{}
+{
+}
 
 AbstractAnnotationItemDelegate::~AbstractAnnotationItemDelegate() = default;

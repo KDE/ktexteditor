@@ -27,7 +27,6 @@
 
 namespace KTextEditor
 {
-
 class ConfigPage;
 class MainWindow;
 

@@ -23,7 +23,7 @@
  *
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "testutils.h"
 
 #include "kateview.h"
@@ -38,12 +38,15 @@
 #include <QQmlEngine>
 #include <QTest>
 
-//END Includes
+// END Includes
 
-//BEGIN TestScriptEnv
+// BEGIN TestScriptEnv
 
 TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
-    : m_engine(nullptr), m_viewObj(nullptr), m_docObj(nullptr), m_output(nullptr)
+    : m_engine(nullptr)
+    , m_viewObj(nullptr)
+    , m_docObj(nullptr)
+    , m_output(nullptr)
 {
     m_engine = new QJSEngine(this);
 
@@ -54,7 +57,7 @@ TestScriptEnv::TestScriptEnv(KTextEditor::DocumentPrivate *part, bool &cflag)
     m_engine->globalObject().setProperty(QStringLiteral("require"), functions.property(QStringLiteral("require")));
     m_engine->globalObject().setProperty(QStringLiteral("require_guard"), m_engine->newObject());
 
-   // export debug function
+    // export debug function
     m_engine->globalObject().setProperty(QStringLiteral("debug"), functions.property(QStringLiteral("debug")));
 
     // export translation functions
@@ -89,18 +92,22 @@ TestScriptEnv::~TestScriptEnv()
 {
     // delete explicitly, as the parent is the KTE::Document kpart, which is
     // reused for all tests. Hence, we explicitly have to delete the bindings.
-    delete m_output; m_output = nullptr;
-    delete m_docObj; m_docObj = nullptr;
-    delete m_viewObj; m_viewObj = nullptr;
+    delete m_output;
+    m_output = nullptr;
+    delete m_docObj;
+    m_docObj = nullptr;
+    delete m_viewObj;
+    m_viewObj = nullptr;
 
     // delete this too, although this should also be automagically be freed
-    delete m_engine; m_engine = nullptr;
+    delete m_engine;
+    m_engine = nullptr;
 
-//   kDebug() << "deleted";
+    //   kDebug() << "deleted";
 }
-//END TestScriptEnv
+// END TestScriptEnv
 
-//BEGIN KateViewObject
+// BEGIN KateViewObject
 
 KateViewObject::KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view)
     : KateScriptView(engine)
@@ -110,14 +117,17 @@ KateViewObject::KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view
 
 KateViewObject::~KateViewObject()
 {
-//   kDebug() << "deleted";
+    //   kDebug() << "deleted";
 }
 
 // Implements a function that calls an edit function repeatedly as specified by
 // its first parameter (once if not specified).
-#define REP_CALL(func) \
-    void KateViewObject::func(int cnt) {  \
-        while (cnt--) { view()->func(); }   \
+#define REP_CALL(func)                                                                                                                                                                                                                         \
+    void KateViewObject::func(int cnt)                                                                                                                                                                                                         \
+    {                                                                                                                                                                                                                                          \
+        while (cnt--) {                                                                                                                                                                                                                        \
+            view()->func();                                                                                                                                                                                                                    \
+        }                                                                                                                                                                                                                                      \
     }
 REP_CALL(keyReturn)
 REP_CALL(backspace)
@@ -169,10 +179,10 @@ void KateViewObject::setAutoBrackets(bool enable)
     view()->config()->setValue(KateViewConfig::AutoBrackets, enable);
 }
 
-
-#define ALIAS(alias, func) \
-    void KateViewObject::alias(int cnt) { \
-        func(cnt);                          \
+#define ALIAS(alias, func)                                                                                                                                                                                                                     \
+    void KateViewObject::alias(int cnt)                                                                                                                                                                                                        \
+    {                                                                                                                                                                                                                                          \
+        func(cnt);                                                                                                                                                                                                                             \
     }
 ALIAS(enter, keyReturn)
 ALIAS(cursorPrev, cursorLeft)
@@ -193,9 +203,9 @@ ALIAS(wordNext, wordRight)
 ALIAS(shiftWordNext, shiftWordRight)
 #undef ALIAS
 
-//END KateViewObject
+// END KateViewObject
 
-//BEGIN KateDocumentObject
+// BEGIN KateDocumentObject
 
 KateDocumentObject::KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentPrivate *doc)
     : KateScriptDocument(engine)
@@ -205,29 +215,30 @@ KateDocumentObject::KateDocumentObject(QJSEngine *engine, KTextEditor::DocumentP
 
 KateDocumentObject::~KateDocumentObject()
 {
-//   kDebug() << "deleted";
+    //   kDebug() << "deleted";
 }
-//END KateDocumentObject
+// END KateDocumentObject
 
-//BEGIN OutputObject
+// BEGIN OutputObject
 OutputObject::OutputObject(KTextEditor::ViewPrivate *v, bool &cflag)
-    : view(v), cflag(cflag)
+    : view(v)
+    , cflag(cflag)
 {
 }
 
 OutputObject::~OutputObject()
 {
-//   kDebug() << "deleted";
+    //   kDebug() << "deleted";
 }
 
 void OutputObject::output(bool cp, bool ln)
 {
     QString str;
-//   FIXME: This is not available with QtQml, but not sure if we need it
-//    for (int i = 0; i < context()->argumentCount(); ++i) {
-//        QJSValue arg = context()->argument(i);
-//        str += arg.toString();
-//    }
+    //   FIXME: This is not available with QtQml, but not sure if we need it
+    //    for (int i = 0; i < context()->argumentCount(); ++i) {
+    //        QJSValue arg = context()->argument(i);
+    //        str += arg.toString();
+    //    }
 
     if (cp) {
         KTextEditor::Cursor c = view->cursorPosition();
@@ -312,4 +323,4 @@ void OutputObject::posLn()
 {
     output(true, true);
 }
-//END OutputObject
+// END OutputObject

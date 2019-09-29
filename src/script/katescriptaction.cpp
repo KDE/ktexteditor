@@ -34,7 +34,7 @@
 #include <KActionCollection>
 #include <KLocalizedString>
 
-//BEGIN KateScriptAction
+// BEGIN KateScriptAction
 KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view)
     : QAction(i18nc("Script command name", action.value(QStringLiteral("name")).toString().toUtf8().data()), view)
     , m_view(view)
@@ -65,9 +65,9 @@ void KateScriptAction::exec()
         }
     }
 }
-//END KateScriptAction
+// END KateScriptAction
 
-//BEGIN KateScriptActionMenu
+// BEGIN KateScriptActionMenu
 KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const QString &text)
     : KActionMenu(QIcon::fromTheme(QStringLiteral("code-context")), text, view)
     , m_view(view)
@@ -76,8 +76,7 @@ KateScriptActionMenu::KateScriptActionMenu(KTextEditor::ViewPrivate *view, const
     setDelayed(false);
 
     // on script-reload signal, repopulate script menu
-    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()),
-            this, SLOT(repopulate()));
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()), this, SLOT(repopulate()));
 }
 
 KateScriptActionMenu::~KateScriptActionMenu()
@@ -120,12 +119,12 @@ void KateScriptActionMenu::repopulate()
              * action is a value
              */
             const auto action = value.toObject();
-            
+
             /**
              * get command
              */
             const QString cmd = action.value(QStringLiteral("function")).toString();
-            
+
             // show in a category submenu?
             QMenu *m = menu();
             QString category = action.value(QStringLiteral("category")).toString();
@@ -147,7 +146,7 @@ void KateScriptActionMenu::repopulate()
             if (!shortcut.isEmpty()) {
                 m_view->actionCollection()->setDefaultShortcut(a, shortcut);
             }
-            
+
             m_actions.append(a);
         }
     }
@@ -158,5 +157,4 @@ void KateScriptActionMenu::repopulate()
     }
 }
 
-//END KateScriptActionMenu
-
+// END KateScriptActionMenu

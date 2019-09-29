@@ -19,20 +19,20 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN includes
+// BEGIN includes
 #include "kateregexpsearch.h"
 #include "kateregexp.h"
 
 #include <ktexteditor/document.h>
-//END  includes
+// END  includes
 
 // Turn debug messages on/off here
 // #define FAST_DEBUG_ENABLE
 
 #ifdef FAST_DEBUG_ENABLE
-# define FAST_DEBUG(x) qCDebug(LOG_KTE) << x
+#define FAST_DEBUG(x) qCDebug(LOG_KTE) << x
 #else
-# define FAST_DEBUG(x)
+#define FAST_DEBUG(x)
 #endif
 
 class KateRegExpSearch::ReplacementStream
@@ -42,7 +42,8 @@ public:
         counter(int value, int minWidth)
             : value(value)
             , minWidth(minWidth)
-        {}
+        {
+        }
 
         const int value;
         const int minWidth;
@@ -51,7 +52,8 @@ public:
     struct cap {
         cap(int n)
             : n(n)
-        {}
+        {
+        }
 
         const int n;
     };
@@ -92,38 +94,37 @@ KateRegExpSearch::ReplacementStream::ReplacementStream(const QStringList &captur
 KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operator<<(const QString &str)
 {
     switch (m_caseConversion) {
-    case upperCase:
-        // Copy as uppercase
-        m_str.append(str.toUpper());
-        break;
+        case upperCase:
+            // Copy as uppercase
+            m_str.append(str.toUpper());
+            break;
 
-    case upperCaseFirst:
-        if (str.length() > 0) {
-            m_str.append(str.at(0).toUpper());
-            m_str.append(str.midRef(1));
-            m_caseConversion = keepCase;
-        }
-        break;
+        case upperCaseFirst:
+            if (str.length() > 0) {
+                m_str.append(str.at(0).toUpper());
+                m_str.append(str.midRef(1));
+                m_caseConversion = keepCase;
+            }
+            break;
 
-    case lowerCase:
-        // Copy as lowercase
-        m_str.append(str.toLower());
-        break;
+        case lowerCase:
+            // Copy as lowercase
+            m_str.append(str.toLower());
+            break;
 
-    case lowerCaseFirst:
-        if (str.length() > 0) {
-            m_str.append(str.at(0).toLower());
-            m_str.append(str.midRef(1));
-            m_caseConversion = keepCase;
-        }
-        break;
+        case lowerCaseFirst:
+            if (str.length() > 0) {
+                m_str.append(str.at(0).toLower());
+                m_str.append(str.midRef(1));
+                m_caseConversion = keepCase;
+            }
+            break;
 
-    case keepCase: // FALLTHROUGH
-    default:
-        // Copy unmodified
-        m_str.append(str);
-        break;
-
+        case keepCase: // FALLTHROUGH
+        default:
+            // Copy unmodified
+            m_str.append(str);
+            break;
     }
 
     return *this;
@@ -156,7 +157,7 @@ KateRegExpSearch::ReplacementStream &KateRegExpSearch::ReplacementStream::operat
     return *this;
 }
 
-//BEGIN d'tor, c'tor
+// BEGIN d'tor, c'tor
 //
 // KateSearch Constructor
 //
@@ -190,10 +191,7 @@ struct IndexPair {
     int closeIndex;
 };
 
-QVector<KTextEditor::Range> KateRegExpSearch::search(
-    const QString &pattern,
-    const KTextEditor::Range &inputRange,
-    bool backwards)
+QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards)
 {
     // regex search
     KateRegExp regexp(pattern, m_caseSensitivity);
@@ -216,7 +214,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
 
     const int firstLineIndex = inputRange.start().line();
     const int minColStart = inputRange.start().column();
-//  const int maxColEnd = inputRange.end().column();
+    //  const int maxColEnd = inputRange.end().column();
     if (isMultiLine) {
         // multi-line regex search (both forward and backward mode)
         QString wholeDocument;
@@ -262,9 +260,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
             FAST_DEBUG("  line" << i << "has length" << lineLens[i]);
         }
 
-        const int pos = backwards
-                        ? regexp.lastIndexIn(wholeDocument, 0, wholeDocument.length())
-                        : regexp.indexIn(wholeDocument, 0, wholeDocument.length());
+        const int pos = backwards ? regexp.lastIndexIn(wholeDocument, 0, wholeDocument.length()) : regexp.indexIn(wholeDocument, 0, wholeDocument.length());
         if (pos == -1) {
             // no match
             FAST_DEBUG("not found");
@@ -326,8 +322,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
             FAST_DEBUG("resolving position" << index);
             TwoViewCursor &twoViewCursor = *(*iter);
             while (curRelIndex <= index) {
-                FAST_DEBUG("walk pos (" << curRelLine << "," << curRelCol << ") = "
-                           << curRelIndex << "relative, steps more to go" << index - curRelIndex);
+                FAST_DEBUG("walk pos (" << curRelLine << "," << curRelCol << ") = " << curRelIndex << "relative, steps more to go" << index - curRelIndex);
                 const int curRelLineLen = lineLens[curRelLine];
                 const int curLineRemainder = curRelLineLen - curRelCol;
                 const int lineFeedIndex = curRelIndex + curLineRemainder;
@@ -336,12 +331,8 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
                         // on this line _on_ line feed
                         FAST_DEBUG("  on line feed");
                         const int absLine = curRelLine + firstLineIndex;
-                        twoViewCursor.openLine
-                            = twoViewCursor.closeLine
-                              = absLine;
-                        twoViewCursor.openCol
-                            = twoViewCursor.closeCol
-                              = ((curRelLine == 0) ? minColStart : 0) + curRelLineLen;
+                        twoViewCursor.openLine = twoViewCursor.closeLine = absLine;
+                        twoViewCursor.openCol = twoViewCursor.closeCol = ((curRelLine == 0) ? minColStart : 0) + curRelLineLen;
 
                         // advance to next line
                         const int advance = (index - curRelIndex) + 1;
@@ -354,20 +345,15 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
                         const int diff = (index - curRelIndex);
                         const int absLine = curRelLine + firstLineIndex;
                         const int absCol = ((curRelLine == 0) ? minColStart : 0) + curRelCol + diff;
-                        twoViewCursor.openLine
-                            = twoViewCursor.closeLine
-                              = absLine;
-                        twoViewCursor.openCol
-                            = twoViewCursor.closeCol
-                              = absCol;
+                        twoViewCursor.openLine = twoViewCursor.closeLine = absLine;
+                        twoViewCursor.openCol = twoViewCursor.closeCol = absCol;
 
                         // advance on same line
                         const int advance = diff + 1;
                         curRelCol += advance;
                         curRelIndex += advance;
                     }
-                    FAST_DEBUG("open(" << twoViewCursor.openLine << "," << twoViewCursor.openCol
-                               << ")  close(" << twoViewCursor.closeLine << "," << twoViewCursor.closeCol << ")");
+                    FAST_DEBUG("open(" << twoViewCursor.openLine << "," << twoViewCursor.openCol << ")  close(" << twoViewCursor.closeLine << "," << twoViewCursor.closeCol << ")");
                 } else { // if (index > lineFeedIndex)
                     // not on this line
                     // advance to next line
@@ -410,14 +396,13 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
         return result;
     } else {
         // single-line regex search (both forward of backward mode)
-        const int minLeft  = inputRange.start().column();
+        const int minLeft = inputRange.start().column();
         const uint maxRight = inputRange.end().column(); // first not included
-        const int forMin   = inputRange.start().line();
-        const int forMax   = inputRange.end().line();
-        const int forInit  = backwards ? forMax : forMin;
-        const int forInc   = backwards ? -1 : +1;
-        FAST_DEBUG("single line " << (backwards ? forMax : forMin) << ".."
-                   << (backwards ? forMin : forMax));
+        const int forMin = inputRange.start().line();
+        const int forMax = inputRange.end().line();
+        const int forInit = backwards ? forMax : forMin;
+        const int forInc = backwards ? -1 : +1;
+        FAST_DEBUG("single line " << (backwards ? forMax : forMin) << ".." << (backwards ? forMin : forMax));
         for (int j = forInit; (forMin <= j) && (j <= forMax); j += forInc) {
             if (j < 0 || m_document->lines() <= j) {
                 FAST_DEBUG("searchText | line " << j << ": no");
@@ -430,8 +415,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
             // Find (and don't match ^ in between...)
             const int first = (j == forMin) ? minLeft : 0;
             const int last = (j == forMax) ? maxRight : textLine.length();
-            const int foundAt = (backwards ? regexp.lastIndexIn(textLine, first, last)
-                                 : regexp.indexIn(textLine, first, last));
+            const int foundAt = (backwards ? regexp.lastIndexIn(textLine, first, last) : regexp.indexIn(textLine, first, last));
             const bool found = (foundAt != -1);
 
             /*
@@ -458,8 +442,7 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
                 const int numCaptures = regexp.numCaptures();
                 QVector<KTextEditor::Range> result(1 + numCaptures);
                 result[0] = KTextEditor::Range(j, foundAt, j, foundAt + regexp.matchedLength());
-                FAST_DEBUG("result range " << 0 << ": (" << j << ", " << foundAt << ")..(" << j << ", " <<
-                           foundAt + regexp.matchedLength() << ")");
+                FAST_DEBUG("result range " << 0 << ": (" << j << ", " << foundAt << ")..(" << j << ", " << foundAt + regexp.matchedLength() << ")");
                 for (int y = 1; y <= numCaptures; y++) {
                     const int openIndex = regexp.pos(y);
                     if (openIndex == -1) {
@@ -504,246 +487,235 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
 
     while (input < inputLen) {
         switch (text[input].unicode()) {
-        case L'\n':
-            out << text[input];
-            input++;
-            break;
-
-        case L'\\':
-            if (input + 1 >= inputLen) {
-                // copy backslash
+            case L'\n':
                 out << text[input];
                 input++;
                 break;
-            }
 
-            switch (text[input + 1].unicode()) {
-            case L'0': // "\0000".."\0377"
-                if (input + 4 >= inputLen) {
-                    out << ReplacementStream::cap(0);
-                    input += 2;
-                } else {
-                    bool stripAndSkip = false;
-                    const ushort text_2 = text[input + 2].unicode();
-                    if ((text_2 >= L'0') && (text_2 <= L'3')) {
-                        const ushort text_3 = text[input + 3].unicode();
-                        if ((text_3 >= L'0') && (text_3 <= L'7')) {
-                            const ushort text_4 = text[input + 4].unicode();
-                            if ((text_4 >= L'0') && (text_4 <= L'7')) {
-                                int digits[3];
-                                for (int i = 0; i < 3; i++) {
-                                    digits[i] = 7 - (L'7' - text[input + 2 + i].unicode());
-                                }
-                                const int ch = 64 * digits[0] + 8 * digits[1] + digits[2];
-                                out << QChar(ch);
-                                input += 5;
-                            } else {
-                                stripAndSkip = true;
-                            }
-                        } else {
-                            stripAndSkip = true;
-                        }
-                    } else {
-                        stripAndSkip = true;
-                    }
-
-                    if (stripAndSkip) {
-                        out << ReplacementStream::cap(0);
-                        input += 2;
-                    }
-                }
-                break;
-
-            // single letter captures \x
-            case L'1':
-            case L'2':
-            case L'3':
-            case L'4':
-            case L'5':
-            case L'6':
-            case L'7':
-            case L'8':
-            case L'9':
-                out << ReplacementStream::cap(9 - (L'9' - text[input + 1].unicode()));
-                input += 2;
-                break;
-
-            // multi letter captures \{xxxx}
-            case L'{': {
-                // allow {1212124}.... captures, see bug 365124 + testReplaceManyCapturesBug365124
-                int capture = 0;
-                int captureSize = 2;
-                while ((input + captureSize) < inputLen) {
-                    const ushort nextDigit = text[input + captureSize].unicode();
-                    if ((nextDigit >= L'0') && (nextDigit <= L'9')) {
-                        capture = (10 * capture) + (9 - (L'9' - nextDigit));
-                        ++captureSize;
-                        continue;
-                    }
-                    if (nextDigit == L'}') {
-                        ++captureSize;
-                        break;
-                    }
+            case L'\\':
+                if (input + 1 >= inputLen) {
+                    // copy backslash
+                    out << text[input];
+                    input++;
                     break;
                 }
-                out << ReplacementStream::cap(capture);
-                input += captureSize;
-                break;
-            }
 
-            case L'E': // FALLTHROUGH
-            case L'L': // FALLTHROUGH
-            case L'l': // FALLTHROUGH
-            case L'U': // FALLTHROUGH
-            case L'u':
-                if (!replacementGoodies) {
-                    // strip backslash ("\?" -> "?")
-                    out << text[input + 1];
-                } else {
-                    // handle case switcher
-                    switch (text[input + 1].unicode()) {
-                    case L'L':
-                        out << ReplacementStream::lowerCase;
-                        break;
-
-                    case L'l':
-                        out << ReplacementStream::lowerCaseFirst;
-                        break;
-
-                    case L'U':
-                        out << ReplacementStream::upperCase;
-                        break;
-
-                    case L'u':
-                        out << ReplacementStream::upperCaseFirst;
-                        break;
-
-                    case L'E': // FALLTHROUGH
-                    default:
-                        out << ReplacementStream::keepCase;
-
-                    }
-                }
-                input += 2;
-                break;
-
-            case L'#':
-                if (!replacementGoodies) {
-                    // strip backslash ("\?" -> "?")
-                    out << text[input + 1];
-                    input += 2;
-                } else {
-                    // handle replacement counter
-                    // eat and count all following hash marks
-                    // each hash stands for a leading zero: \### will produces 001, 002, ...
-                    int minWidth = 1;
-                    while ((input + minWidth + 1 < inputLen) && (text[input + minWidth + 1].unicode() == L'#')) {
-                        minWidth++;
-                    }
-                    out << ReplacementStream::counter(replacementCounter, minWidth);
-                    input += 1 + minWidth;
-                }
-                break;
-
-            case L'a':
-                out << QChar(0x07);
-                input += 2;
-                break;
-
-            case L'f':
-                out << QChar(0x0c);
-                input += 2;
-                break;
-
-            case L'n':
-                out << QChar(0x0a);
-                input += 2;
-                break;
-
-            case L'r':
-                out << QChar(0x0d);
-                input += 2;
-                break;
-
-            case L't':
-                out << QChar(0x09);
-                input += 2;
-                break;
-
-            case L'v':
-                out << QChar(0x0b);
-                input += 2;
-                break;
-
-            case L'x': // "\x0000".."\xffff"
-                if (input + 5 >= inputLen) {
-                    // strip backslash ("\x" -> "x")
-                    out << text[input + 1];
-                    input += 2;
-                } else {
-                    bool stripAndSkip = false;
-                    const ushort text_2 = text[input + 2].unicode();
-                    if (((text_2 >= L'0') && (text_2 <= L'9'))
-                            || ((text_2 >= L'a') && (text_2 <= L'f'))
-                            || ((text_2 >= L'A') && (text_2 <= L'F'))) {
-                        const ushort text_3 = text[input + 3].unicode();
-                        if (((text_3 >= L'0') && (text_3 <= L'9'))
-                                || ((text_3 >= L'a') && (text_3 <= L'f'))
-                                || ((text_3 >= L'A') && (text_3 <= L'F'))) {
-                            const ushort text_4 = text[input + 4].unicode();
-                            if (((text_4 >= L'0') && (text_4 <= L'9'))
-                                    || ((text_4 >= L'a') && (text_4 <= L'f'))
-                                    || ((text_4 >= L'A') && (text_4 <= L'F'))) {
-                                const ushort text_5 = text[input + 5].unicode();
-                                if (((text_5 >= L'0') && (text_5 <= L'9'))
-                                        || ((text_5 >= L'a') && (text_5 <= L'f'))
-                                        || ((text_5 >= L'A') && (text_5 <= L'F'))) {
-                                    int digits[4];
-                                    for (int i = 0; i < 4; i++) {
-                                        const ushort cur = text[input + 2 + i].unicode();
-                                        if ((cur >= L'0') && (cur <= L'9')) {
-                                            digits[i] = 9 - (L'9' - cur);
-                                        } else if ((cur >= L'a') && (cur <= L'f')) {
-                                            digits[i] = 15 - (L'f' - cur);
-                                        } else { // if ((cur >= L'A') && (cur <= L'F')))
-                                            digits[i] = 15 - (L'F' - cur);
+                switch (text[input + 1].unicode()) {
+                    case L'0': // "\0000".."\0377"
+                        if (input + 4 >= inputLen) {
+                            out << ReplacementStream::cap(0);
+                            input += 2;
+                        } else {
+                            bool stripAndSkip = false;
+                            const ushort text_2 = text[input + 2].unicode();
+                            if ((text_2 >= L'0') && (text_2 <= L'3')) {
+                                const ushort text_3 = text[input + 3].unicode();
+                                if ((text_3 >= L'0') && (text_3 <= L'7')) {
+                                    const ushort text_4 = text[input + 4].unicode();
+                                    if ((text_4 >= L'0') && (text_4 <= L'7')) {
+                                        int digits[3];
+                                        for (int i = 0; i < 3; i++) {
+                                            digits[i] = 7 - (L'7' - text[input + 2 + i].unicode());
                                         }
+                                        const int ch = 64 * digits[0] + 8 * digits[1] + digits[2];
+                                        out << QChar(ch);
+                                        input += 5;
+                                    } else {
+                                        stripAndSkip = true;
                                     }
-
-                                    const int ch = 4096 * digits[0] + 256 * digits[1] + 16 * digits[2] + digits[3];
-                                    out << QChar(ch);
-                                    input += 6;
                                 } else {
                                     stripAndSkip = true;
                                 }
                             } else {
                                 stripAndSkip = true;
                             }
-                        } else {
-                            stripAndSkip = true;
+
+                            if (stripAndSkip) {
+                                out << ReplacementStream::cap(0);
+                                input += 2;
+                            }
                         }
+                        break;
+
+                    // single letter captures \x
+                    case L'1':
+                    case L'2':
+                    case L'3':
+                    case L'4':
+                    case L'5':
+                    case L'6':
+                    case L'7':
+                    case L'8':
+                    case L'9':
+                        out << ReplacementStream::cap(9 - (L'9' - text[input + 1].unicode()));
+                        input += 2;
+                        break;
+
+                    // multi letter captures \{xxxx}
+                    case L'{': {
+                        // allow {1212124}.... captures, see bug 365124 + testReplaceManyCapturesBug365124
+                        int capture = 0;
+                        int captureSize = 2;
+                        while ((input + captureSize) < inputLen) {
+                            const ushort nextDigit = text[input + captureSize].unicode();
+                            if ((nextDigit >= L'0') && (nextDigit <= L'9')) {
+                                capture = (10 * capture) + (9 - (L'9' - nextDigit));
+                                ++captureSize;
+                                continue;
+                            }
+                            if (nextDigit == L'}') {
+                                ++captureSize;
+                                break;
+                            }
+                            break;
+                        }
+                        out << ReplacementStream::cap(capture);
+                        input += captureSize;
+                        break;
                     }
 
-                    if (stripAndSkip) {
-                        // strip backslash ("\x" -> "x")
+                    case L'E': // FALLTHROUGH
+                    case L'L': // FALLTHROUGH
+                    case L'l': // FALLTHROUGH
+                    case L'U': // FALLTHROUGH
+                    case L'u':
+                        if (!replacementGoodies) {
+                            // strip backslash ("\?" -> "?")
+                            out << text[input + 1];
+                        } else {
+                            // handle case switcher
+                            switch (text[input + 1].unicode()) {
+                                case L'L':
+                                    out << ReplacementStream::lowerCase;
+                                    break;
+
+                                case L'l':
+                                    out << ReplacementStream::lowerCaseFirst;
+                                    break;
+
+                                case L'U':
+                                    out << ReplacementStream::upperCase;
+                                    break;
+
+                                case L'u':
+                                    out << ReplacementStream::upperCaseFirst;
+                                    break;
+
+                                case L'E': // FALLTHROUGH
+                                default:
+                                    out << ReplacementStream::keepCase;
+                            }
+                        }
+                        input += 2;
+                        break;
+
+                    case L'#':
+                        if (!replacementGoodies) {
+                            // strip backslash ("\?" -> "?")
+                            out << text[input + 1];
+                            input += 2;
+                        } else {
+                            // handle replacement counter
+                            // eat and count all following hash marks
+                            // each hash stands for a leading zero: \### will produces 001, 002, ...
+                            int minWidth = 1;
+                            while ((input + minWidth + 1 < inputLen) && (text[input + minWidth + 1].unicode() == L'#')) {
+                                minWidth++;
+                            }
+                            out << ReplacementStream::counter(replacementCounter, minWidth);
+                            input += 1 + minWidth;
+                        }
+                        break;
+
+                    case L'a':
+                        out << QChar(0x07);
+                        input += 2;
+                        break;
+
+                    case L'f':
+                        out << QChar(0x0c);
+                        input += 2;
+                        break;
+
+                    case L'n':
+                        out << QChar(0x0a);
+                        input += 2;
+                        break;
+
+                    case L'r':
+                        out << QChar(0x0d);
+                        input += 2;
+                        break;
+
+                    case L't':
+                        out << QChar(0x09);
+                        input += 2;
+                        break;
+
+                    case L'v':
+                        out << QChar(0x0b);
+                        input += 2;
+                        break;
+
+                    case L'x': // "\x0000".."\xffff"
+                        if (input + 5 >= inputLen) {
+                            // strip backslash ("\x" -> "x")
+                            out << text[input + 1];
+                            input += 2;
+                        } else {
+                            bool stripAndSkip = false;
+                            const ushort text_2 = text[input + 2].unicode();
+                            if (((text_2 >= L'0') && (text_2 <= L'9')) || ((text_2 >= L'a') && (text_2 <= L'f')) || ((text_2 >= L'A') && (text_2 <= L'F'))) {
+                                const ushort text_3 = text[input + 3].unicode();
+                                if (((text_3 >= L'0') && (text_3 <= L'9')) || ((text_3 >= L'a') && (text_3 <= L'f')) || ((text_3 >= L'A') && (text_3 <= L'F'))) {
+                                    const ushort text_4 = text[input + 4].unicode();
+                                    if (((text_4 >= L'0') && (text_4 <= L'9')) || ((text_4 >= L'a') && (text_4 <= L'f')) || ((text_4 >= L'A') && (text_4 <= L'F'))) {
+                                        const ushort text_5 = text[input + 5].unicode();
+                                        if (((text_5 >= L'0') && (text_5 <= L'9')) || ((text_5 >= L'a') && (text_5 <= L'f')) || ((text_5 >= L'A') && (text_5 <= L'F'))) {
+                                            int digits[4];
+                                            for (int i = 0; i < 4; i++) {
+                                                const ushort cur = text[input + 2 + i].unicode();
+                                                if ((cur >= L'0') && (cur <= L'9')) {
+                                                    digits[i] = 9 - (L'9' - cur);
+                                                } else if ((cur >= L'a') && (cur <= L'f')) {
+                                                    digits[i] = 15 - (L'f' - cur);
+                                                } else { // if ((cur >= L'A') && (cur <= L'F')))
+                                                    digits[i] = 15 - (L'F' - cur);
+                                                }
+                                            }
+
+                                            const int ch = 4096 * digits[0] + 256 * digits[1] + 16 * digits[2] + digits[3];
+                                            out << QChar(ch);
+                                            input += 6;
+                                        } else {
+                                            stripAndSkip = true;
+                                        }
+                                    } else {
+                                        stripAndSkip = true;
+                                    }
+                                } else {
+                                    stripAndSkip = true;
+                                }
+                            }
+
+                            if (stripAndSkip) {
+                                // strip backslash ("\x" -> "x")
+                                out << text[input + 1];
+                                input += 2;
+                            }
+                        }
+                        break;
+
+                    default:
+                        // strip backslash ("\?" -> "?")
                         out << text[input + 1];
                         input += 2;
-                    }
                 }
                 break;
 
             default:
-                // strip backslash ("\?" -> "?")
-                out << text[input + 1];
-                input += 2;
-
-            }
-            break;
-
-        default:
-            out << text[input];
-            input++;
-
+                out << text[input];
+                input++;
         }
     }
 
@@ -752,7 +724,6 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(
 
 // Kill our helpers again
 #ifdef FAST_DEBUG_ENABLE
-# undef FAST_DEBUG_ENABLE
+#undef FAST_DEBUG_ENABLE
 #endif
 #undef FAST_DEBUG
-

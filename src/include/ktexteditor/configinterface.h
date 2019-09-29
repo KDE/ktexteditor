@@ -145,4 +145,3 @@ private:
 Q_DECLARE_INTERFACE(KTextEditor::ConfigInterface, "org.kde.KTextEditor.ConfigInterface")
 
 #endif
-

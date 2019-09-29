@@ -39,11 +39,11 @@ class QString;
 
 namespace KTextEditor
 {
-    class ViewPrivate;
-    class DocumentPrivate;
-    class MovingCursor;
-    class Mark;
-    class MarkInterface;
+class ViewPrivate;
+class DocumentPrivate;
+class MovingCursor;
+class Mark;
+class MarkInterface;
 }
 
 namespace KateVi
@@ -69,12 +69,10 @@ class KTEXTEDITOR_EXPORT InputModeManager
     friend KateViInputMode;
 
 public:
-    InputModeManager(KateViInputMode *inputAdapter,
-                     KTextEditor::ViewPrivate *view,
-                     KateViewInternal *viewInternal);
+    InputModeManager(KateViInputMode *inputAdapter, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~InputModeManager();
     InputModeManager(const InputModeManager &) = delete;
-    InputModeManager& operator=(const InputModeManager &) = delete;
+    InputModeManager &operator=(const InputModeManager &) = delete;
 
     /**
      * feed key the given key press to the command parser
@@ -199,17 +197,38 @@ public:
 
     void reset();
 
-    inline Marks *marks() { return m_marks; }
-    inline Jumps *jumps() { return m_jumps; }
+    inline Marks *marks()
+    {
+        return m_marks;
+    }
+    inline Jumps *jumps()
+    {
+        return m_jumps;
+    }
 
-    inline Searcher *searcher() { return m_searcher; }
+    inline Searcher *searcher()
+    {
+        return m_searcher;
+    }
 
-    CompletionRecorder *completionRecorder() { return m_completionRecorder; }
-    CompletionReplayer *completionReplayer() { return m_completionReplayer; }
+    CompletionRecorder *completionRecorder()
+    {
+        return m_completionRecorder;
+    }
+    CompletionReplayer *completionReplayer()
+    {
+        return m_completionReplayer;
+    }
 
-    MacroRecorder *macroRecorder() { return m_macroRecorder; }
+    MacroRecorder *macroRecorder()
+    {
+        return m_macroRecorder;
+    }
 
-    LastChangeRecorder *lastChangeRecorder() { return m_lastChangeRecorder; }
+    LastChangeRecorder *lastChangeRecorder()
+    {
+        return m_lastChangeRecorder;
+    }
 
     // session stuff
     void readSessionConfig(const KConfigGroup &config);
@@ -219,7 +238,10 @@ public:
     GlobalState *globalState() const;
     KTextEditor::ViewPrivate *view() const;
 
-    KateViInputMode *inputAdapter() { return m_inputAdapter; }
+    KateViInputMode *inputAdapter()
+    {
+        return m_inputAdapter;
+    }
 
     void updateCursor(const KTextEditor::Cursor &c);
 
@@ -242,7 +264,7 @@ private:
 
     // Create a new keymapper for each macro event, to simplify expansion of mappings in macros
     // where the macro itself was triggered by expanding a mapping!
-    QStack<QSharedPointer<KeyMapper> > m_keyMapperStack;
+    QStack<QSharedPointer<KeyMapper>> m_keyMapperStack;
 
     int m_insideHandlingKeyPressCount;
 

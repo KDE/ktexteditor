@@ -18,7 +18,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "katemodemanager.h"
 #include "katewildcardmatcher.h"
 
@@ -32,7 +32,7 @@
 #include <KConfigGroup>
 
 #include <QMimeDatabase>
-//END Includes
+// END Includes
 
 static QStringList vectorToList(const QVector<QString> &v)
 {
@@ -212,7 +212,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
     QString result;
 
     // Try wildcards
-    if (! fileName.isEmpty()) {
+    if (!fileName.isEmpty()) {
         static const QLatin1String commonSuffixes[] = {
             QLatin1String(".orig"),
             QLatin1String(".new"),
@@ -232,7 +232,7 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
             }
         }
 
-        for (auto& commonSuffix : commonSuffixes) {
+        for (auto &commonSuffix : commonSuffixes) {
             if (commonSuffix != backupSuffix && fileName.endsWith(commonSuffix)) {
                 if (!(result = wildcardsFind(fileName.left(length - commonSuffix.size()))).isEmpty()) {
                     return result;
@@ -240,7 +240,6 @@ QString KateModeManager::fileType(KTextEditor::DocumentPrivate *doc, const QStri
             }
         }
     }
-
 
     // either read the file passed to this function (pre-load) or use the normal mimeType() KF KTextEditor API
     QString mtName;
@@ -305,4 +304,3 @@ const KateFileType &KateModeManager::fileType(const QString &name) const
     static KateFileType notype;
     return notype;
 }
-

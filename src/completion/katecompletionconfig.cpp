@@ -169,7 +169,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
-KateCompletionConfig::~ KateCompletionConfig()
+KateCompletionConfig::~KateCompletionConfig()
 {
     delete ui;
 }
@@ -197,7 +197,7 @@ void KateCompletionConfig::readConfig(const KConfigGroup &config)
             // Avoid a negative shift. 0xFFFFFFFF80000000 is 1 << -1.
             item->setCheckState((0xFFFFFFFF80000000 & attributes) ? Qt::Checked : Qt::Unchecked);
         } else {
-            item->setCheckState(((1 << (i -1)) & attributes) ? Qt::Checked : Qt::Unchecked);
+            item->setCheckState(((1 << (i - 1)) & attributes) ? Qt::Checked : Qt::Unchecked);
         }
     }
 
@@ -220,7 +220,7 @@ void KateCompletionConfig::readConfig(const KConfigGroup &config)
 
     for (int i = 0; i < ui->columnMergeTree->topLevelItemCount(); ++i) {
         QTreeWidgetItem *item = ui->columnMergeTree->topLevelItem(i);
-        ///Initialize a standard column-merging: Merge Scope, Name, Arguments and Postfix
+        /// Initialize a standard column-merging: Merge Scope, Name, Arguments and Postfix
         item->setCheckState(1, config.readEntry(QStringLiteral("Column %1 Merge").arg(i), (i == CodeCompletionModel::Scope || i == CodeCompletionModel::Name || i == CodeCompletionModel::Arguments)) ? Qt::Checked : Qt::Unchecked);
         item->setCheckState(2, config.readEntry(QStringLiteral("Column %1 Show").arg(i), true) ? Qt::Checked : Qt::Unchecked);
     }
@@ -250,8 +250,7 @@ void KateCompletionConfig::writeConfig(KConfigGroup &config)
             if (i == 0) {
                 // Avoid a negative shift. 0xFFFFFFFF80000000 is 1 << -1.
                 attributes |= 0xFFFFFFFF80000000;
-            }
-            else {
+            } else {
                 attributes |= 1 << (i - 1);
             }
         }
@@ -373,7 +372,7 @@ void KateCompletionConfig::applyInternal()
     // Column merging
     m_model->setColumnMergingEnabled(ui->columnMerging->isChecked());
 
-    QList< QList<int> > mergedColumns;
+    QList<QList<int>> mergedColumns;
     QList<int> oneMerge;
     for (int i = 0; i < ui->columnMergeTree->topLevelItemCount(); ++i) {
         QTreeWidgetItem *item = ui->columnMergeTree->topLevelItem(i);

@@ -21,8 +21,7 @@
 
 #include "kateregexp.h"
 
-KateRegExp::KateRegExp(const QString &pattern, Qt::CaseSensitivity cs,
-                       QRegExp::PatternSyntax syntax)
+KateRegExp::KateRegExp(const QString &pattern, Qt::CaseSensitivity cs, QRegExp::PatternSyntax syntax)
     : m_regExp(pattern, cs, syntax)
 {
 }
@@ -34,7 +33,7 @@ KateRegExp::KateRegExp(const QString &pattern, Qt::CaseSensitivity cs,
 // not as critical
 int KateRegExp::repairPattern(bool &stillMultiLine)
 {
-    const QString &text = pattern();  // read-only input for parsing
+    const QString &text = pattern(); // read-only input for parsing
 
     // get input
     const int inputLen = text.length();
@@ -53,133 +52,131 @@ int KateRegExp::repairPattern(bool &stillMultiLine)
         if (insideClass) {
             // wait for closing, unescaped ']'
             switch (text[input].unicode()) {
-            case L'\\':
-                switch (text[input + 1].unicode()) {
-                case L'x':
-                    if (input + 5 < inputLen) {
-                        // copy "\x????" unmodified
-                        output.append(text.midRef(input, 6));
-                        input += 6;
-                    } else {
-                        // copy "\x" unmodified
-                        output.append(text.midRef(input, 2));
-                        input += 2;
+                case L'\\':
+                    switch (text[input + 1].unicode()) {
+                        case L'x':
+                            if (input + 5 < inputLen) {
+                                // copy "\x????" unmodified
+                                output.append(text.midRef(input, 6));
+                                input += 6;
+                            } else {
+                                // copy "\x" unmodified
+                                output.append(text.midRef(input, 2));
+                                input += 2;
+                            }
+                            stillMultiLine = true;
+                            break;
+
+                        case L'0':
+                            if (input + 4 < inputLen) {
+                                // copy "\0???" unmodified
+                                output.append(text.midRef(input, 5));
+                                input += 5;
+                            } else {
+                                // copy "\0" unmodified
+                                output.append(text.midRef(input, 2));
+                                input += 2;
+                            }
+                            stillMultiLine = true;
+                            break;
+
+                        case L's':
+                            // replace "\s" with "[ \t]"
+                            output.append(QLatin1String(" \\t"));
+                            input += 2;
+                            replaceCount++;
+                            break;
+
+                        case L'n':
+                            stillMultiLine = true;
+                            // FALLTROUGH
+                            Q_FALLTHROUGH();
+                        default:
+                            // copy "\?" unmodified
+                            output.append(text.midRef(input, 2));
+                            input += 2;
                     }
-                    stillMultiLine = true;
                     break;
 
-                case L'0':
-                    if (input + 4 < inputLen) {
-                        // copy "\0???" unmodified
-                        output.append(text.midRef(input, 5));
-                        input += 5;
-                    } else {
-                        // copy "\0" unmodified
-                        output.append(text.midRef(input, 2));
-                        input += 2;
-                    }
-                    stillMultiLine = true;
+                case L']':
+                    // copy "]" unmodified
+                    insideClass = false;
+                    output.append(text[input]);
+                    input++;
                     break;
 
-                case L's':
-                    // replace "\s" with "[ \t]"
-                    output.append(QLatin1String(" \\t"));
-                    input += 2;
-                    replaceCount++;
-                    break;
-
-                case L'n':
-                    stillMultiLine = true;
-                // FALLTROUGH
-        Q_FALLTHROUGH();
                 default:
-                    // copy "\?" unmodified
-                    output.append(text.midRef(input, 2));
-                    input += 2;
-                }
-                break;
-
-            case L']':
-                // copy "]" unmodified
-                insideClass = false;
-                output.append(text[input]);
-                input++;
-                break;
-
-            default:
-                // copy "?" unmodified
-                output.append(text[input]);
-                input++;
-
+                    // copy "?" unmodified
+                    output.append(text[input]);
+                    input++;
             }
         } else {
             // search for real dots and \S
             switch (text[input].unicode()) {
-            case L'\\':
-                switch (text[input + 1].unicode()) {
-                case L'x':
-                    if (input + 5 < inputLen) {
-                        // copy "\x????" unmodified
-                        output.append(text.midRef(input, 6));
-                        input += 6;
-                    } else {
-                        // copy "\x" unmodified
-                        output.append(text.midRef(input, 2));
-                        input += 2;
+                case L'\\':
+                    switch (text[input + 1].unicode()) {
+                        case L'x':
+                            if (input + 5 < inputLen) {
+                                // copy "\x????" unmodified
+                                output.append(text.midRef(input, 6));
+                                input += 6;
+                            } else {
+                                // copy "\x" unmodified
+                                output.append(text.midRef(input, 2));
+                                input += 2;
+                            }
+                            stillMultiLine = true;
+                            break;
+
+                        case L'0':
+                            if (input + 4 < inputLen) {
+                                // copy "\0???" unmodified
+                                output.append(text.midRef(input, 5));
+                                input += 5;
+                            } else {
+                                // copy "\0" unmodified
+                                output.append(text.midRef(input, 2));
+                                input += 2;
+                            }
+                            stillMultiLine = true;
+                            break;
+
+                        case L's':
+                            // replace "\s" with "[ \t]"
+                            output.append(QLatin1String("[ \\t]"));
+                            input += 2;
+                            replaceCount++;
+                            break;
+
+                        case L'n':
+                            stillMultiLine = true;
+                            // FALLTROUGH
+                            Q_FALLTHROUGH();
+                        default:
+                            // copy "\?" unmodified
+                            output.append(text.midRef(input, 2));
+                            input += 2;
                     }
-                    stillMultiLine = true;
                     break;
 
-                case L'0':
-                    if (input + 4 < inputLen) {
-                        // copy "\0???" unmodified
-                        output.append(text.midRef(input, 5));
-                        input += 5;
-                    } else {
-                        // copy "\0" unmodified
-                        output.append(text.midRef(input, 2));
-                        input += 2;
-                    }
-                    stillMultiLine = true;
-                    break;
-
-                case L's':
-                    // replace "\s" with "[ \t]"
-                    output.append(QLatin1String("[ \\t]"));
-                    input += 2;
+                case L'.':
+                    // replace " with "[^\n]"
+                    output.append(QLatin1String("[^\\n]"));
+                    input++;
                     replaceCount++;
                     break;
 
-                case L'n':
-                    stillMultiLine = true;
-                // FALLTROUGH
-        Q_FALLTHROUGH();
+                case L'[':
+                    // copy "]" unmodified
+                    insideClass = true;
+                    output.append(text[input]);
+                    input++;
+                    break;
+
                 default:
-                    // copy "\?" unmodified
-                    output.append(text.midRef(input, 2));
-                    input += 2;
-                }
-                break;
-
-            case L'.':
-                // replace " with "[^\n]"
-                output.append(QLatin1String("[^\\n]"));
-                input++;
-                replaceCount++;
-                break;
-
-            case L'[':
-                // copy "]" unmodified
-                insideClass = true;
-                output.append(text[input]);
-                input++;
-                break;
-
-            default:
-                // copy "?" unmodified
-                output.append(text[input]);
-                input++;
-
+                    // copy "?" unmodified
+                    output.append(text[input]);
+                    input++;
             }
         }
     }
@@ -200,80 +197,78 @@ bool KateRegExp::isMultiLine() const
         if (insideClass) {
             // wait for closing, unescaped ']'
             switch (text[input].unicode()) {
-            case L'\\':
-                switch (text[input + 1].unicode()) {
-                case L'x':
-                    return true;
+                case L'\\':
+                    switch (text[input + 1].unicode()) {
+                        case L'x':
+                            return true;
 
-                case L'0':
-                    return true;
+                        case L'0':
+                            return true;
 
-                case L's':
-                    // replace "\s" with "[ \t]"
-                    input += 2;
+                        case L's':
+                            // replace "\s" with "[ \t]"
+                            input += 2;
+                            break;
+
+                        case L'n':
+                            return true;
+                            // FALLTROUGH
+
+                        default:
+                            // copy "\?" unmodified
+                            input += 2;
+                    }
                     break;
 
-                case L'n':
-                    return true;
-                // FALLTROUGH
+                case L']':
+                    // copy "]" unmodified
+                    insideClass = false;
+                    input++;
+                    break;
 
                 default:
-                    // copy "\?" unmodified
-                    input += 2;
-                }
-                break;
-
-            case L']':
-                // copy "]" unmodified
-                insideClass = false;
-                input++;
-                break;
-
-            default:
-                // copy "?" unmodified
-                input++;
-
+                    // copy "?" unmodified
+                    input++;
             }
         } else {
             // search for real dots and \S
             switch (text[input].unicode()) {
-            case L'\\':
-                switch (text[input + 1].unicode()) {
-                case L'x':
-                    return true;
+                case L'\\':
+                    switch (text[input + 1].unicode()) {
+                        case L'x':
+                            return true;
 
-                case L'0':
-                    return true;
+                        case L'0':
+                            return true;
 
-                case L's':
-                    // replace "\s" with "[ \t]"
-                    input += 2;
+                        case L's':
+                            // replace "\s" with "[ \t]"
+                            input += 2;
+                            break;
+
+                        case L'n':
+                            return true;
+
+                        default:
+                            // copy "\?" unmodified
+                            input += 2;
+                    }
                     break;
 
-                case L'n':
-                    return true;
+                case L'.':
+                    // replace " with "[^\n]"
+                    input++;
+                    break;
+
+                case L'[':
+                    // copy "]" unmodified
+                    insideClass = true;
+                    input++;
+                    break;
 
                 default:
-                    // copy "\?" unmodified
-                    input += 2;
-                }
-                break;
-
-            case L'.':
-                // replace " with "[^\n]"
-                input++;
-                break;
-
-            case L'[':
-                // copy "]" unmodified
-                insideClass = true;
-                input++;
-                break;
-
-            default:
-                // copy "?" unmodified
-                input++;
-
+                    // copy "?" unmodified
+                    input++;
             }
         }
     }
@@ -298,4 +293,3 @@ int KateRegExp::lastIndexIn(const QString &str, int start, int end) const
 
     return index2;
 }
-

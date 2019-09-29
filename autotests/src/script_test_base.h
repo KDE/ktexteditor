@@ -23,8 +23,14 @@
 #include <QPair>
 
 class TestScriptEnv;
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class QMainWindow;
 
 class ScriptTestBase : public QObject
@@ -46,8 +52,8 @@ protected:
     bool m_outputWasCustomised;
     QStringList m_commands;
     KTextEditor::ViewPrivate *m_view;
-    QString m_section;  // dir name in testdata/
-    QString m_script_dir;  // dir name in part/script/data/
+    QString m_section;    // dir name in testdata/
+    QString m_script_dir; // dir name in part/script/data/
 
 public:
     static QtMessageHandler m_msgHandler;

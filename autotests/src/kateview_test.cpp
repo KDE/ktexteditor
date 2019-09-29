@@ -52,34 +52,28 @@ void KateViewTest::testCoordinatesToCursor()
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setText("Hi World!\nHi\n");
 
-    KTextEditor::View* view1 = static_cast<KTextEditor::View*>(doc.createView(nullptr));
+    KTextEditor::View *view1 = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     view1->resize(400, 300);
     view1->show();
 
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))),
-             KTextEditor::Cursor(0, 2));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))),
-             KTextEditor::Cursor(1, 1));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
     // behind end of line should give an invalid cursor
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))),
-             KTextEditor::Cursor::invalid());
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
 
     // check consistency between cursorToCoordinate(view->cursorPosition() and cursorPositionCoordinates()
     // random position
     view1->setCursorPosition(KTextEditor::Cursor(0, 3));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())),
-             KTextEditor::Cursor(0, 3));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(view1->cursorPosition())), KTextEditor::Cursor(0, 3));
     QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 3));
     // end of line
     view1->setCursorPosition(KTextEditor::Cursor(0, 9));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))),
-             KTextEditor::Cursor(0, 9));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 9))), KTextEditor::Cursor(0, 9));
     QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(0, 9));
     // empty line
     view1->setCursorPosition(KTextEditor::Cursor(2, 0));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))),
-             KTextEditor::Cursor(2, 0));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(2, 0))), KTextEditor::Cursor(2, 0));
     QCOMPARE(view1->coordinatesToCursor(view1->cursorPositionCoordinates()), KTextEditor::Cursor(2, 0));
 
     // same test again, but with message widget on top visible
@@ -89,13 +83,10 @@ void KateViewTest::testCoordinatesToCursor()
     // wait 500ms until show animation is finished, so the message widget is visible
     QTest::qWait(500);
 
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))),
-             KTextEditor::Cursor(0, 2));
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))),
-             KTextEditor::Cursor(1, 1));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(0, 2))), KTextEditor::Cursor(0, 2));
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 1))), KTextEditor::Cursor(1, 1));
     // behind end of line should give an invalid cursor
-    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))),
-             KTextEditor::Cursor::invalid());
+    QCOMPARE(view1->coordinatesToCursor(view1->cursorToCoordinate(KTextEditor::Cursor(1, 5))), KTextEditor::Cursor::invalid());
     QCOMPARE(view1->cursorToCoordinate(KTextEditor::Cursor(3, 1)), QPoint(-1, -1));
 }
 
@@ -175,15 +166,15 @@ void KateViewTest::testLowerCaseBlockSelection()
 
 namespace
 {
-    QWidget *findViewInternal(KTextEditor::View* view)
-    {
-        for (QObject* child : view->children()) {
-            if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-                return qobject_cast<QWidget*>(child);
-            }
+QWidget *findViewInternal(KTextEditor::View *view)
+{
+    for (QObject *child : view->children()) {
+        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
+            return qobject_cast<QWidget *>(child);
         }
-        return nullptr;
     }
+    return nullptr;
+}
 }
 
 void KateViewTest::testSelection()
@@ -213,7 +204,6 @@ void KateViewTest::testSelection()
     view->resize(100, 200);
     view->show();
 
-
     QObject *internalView = findViewInternal(view);
     QVERIFY(internalView);
 
@@ -222,48 +212,30 @@ void KateViewTest::testSelection()
     const QPoint afterC = view->cursorToCoordinate(Cursor(2, 1));
 
     // click after A
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     // drag to right
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterA, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0),
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseMove, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0),
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterA + QPoint(50, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(0, 1));
     QVERIFY(!view->selection());
 
     // click after C
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterC,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterC,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::NoModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterC, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(2, 1));
     // shift+click after B
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterB,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::ShiftModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonPress, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier));
 
-    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterB,
-                                Qt::LeftButton, Qt::LeftButton,
-                                Qt::ShiftModifier));
+    QCoreApplication::sendEvent(internalView, new QMouseEvent(QEvent::MouseButtonRelease, afterB, Qt::LeftButton, Qt::LeftButton, Qt::ShiftModifier));
 
     QCOMPARE(view->cursorPosition(), Cursor(1, 1));
     QCOMPARE(view->selectionRange(), Range(1, 1, 2, 1));
@@ -306,7 +278,7 @@ void KateViewTest::testDeselectByArrowKeys()
     view->setSelection(range);
     view->setCursorPositionInternal(cur1);
     view->cursorRight();
-    QCOMPARE(view->cursorPosition(), cur2);  // Be at end: foobar|haz
+    QCOMPARE(view->cursorPosition(), cur2); // Be at end: foobar|haz
     QCOMPARE(view->selection(), false);
 
     view->config()->setValue(KateViewConfig::PersistentSelection, true);
@@ -315,7 +287,7 @@ void KateViewTest::testDeselectByArrowKeys()
     view->setCursorPositionInternal(cur1);
     view->cursorLeft();
     // RTL drives me nuts!
-    help = text.isRightToLeft() ? (cur1 + curDelta): (cur1 - curDelta);
+    help = text.isRightToLeft() ? (cur1 + curDelta) : (cur1 - curDelta);
     QCOMPARE(view->cursorPosition(), help); // Be one left: fo|obarhaz
     QCOMPARE(view->selection(), true);
 
@@ -323,7 +295,7 @@ void KateViewTest::testDeselectByArrowKeys()
     view->setCursorPositionInternal(cur1);
     view->cursorRight();
     // RTL drives me nuts!
-    help = text.isRightToLeft() ? (cur1 - curDelta): (cur1 + curDelta);
+    help = text.isRightToLeft() ? (cur1 - curDelta) : (cur1 + curDelta);
     QCOMPARE(view->cursorPosition(), help); // Be one right: foob|arhaz
     QCOMPARE(view->selection(), true);
 }
@@ -331,7 +303,7 @@ void KateViewTest::testDeselectByArrowKeys()
 void KateViewTest::testKillline()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.insertLines(0, { "foo", "bar", "baz" });
+    doc.insertLines(0, {"foo", "bar", "baz"});
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
 
@@ -343,7 +315,7 @@ void KateViewTest::testKillline()
     doc.clear();
     QVERIFY(doc.isEmpty());
 
-    doc.insertLines(0, { "foo", "bar", "baz", "xxx" });
+    doc.insertLines(0, {"foo", "bar", "baz", "xxx"});
 
     view->setCursorPositionInternal(KTextEditor::Cursor(1, 2));
     view->shiftDown();
@@ -356,15 +328,16 @@ void KateViewTest::testScrollPastEndOfDocument()
 {
     // bug 306745
     KTextEditor::DocumentPrivate doc;
-    doc.setText(QStringLiteral("0000000000\n"
-                               "1111111111\n"
-                               "2222222222\n"
-                               "3333333333\n"
-                               "4444444444"));
+    doc.setText(
+        QStringLiteral("0000000000\n"
+                       "1111111111\n"
+                       "2222222222\n"
+                       "3333333333\n"
+                       "4444444444"));
     QCOMPARE(doc.lines(), 5);
 
     KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
-    view->setCursorPosition({ 3, 5 });
+    view->setCursorPosition({3, 5});
     view->resize(400, 300);
     view->show();
 
@@ -433,13 +406,14 @@ void KateViewTest::testFoldFirstLine()
 void KateViewTest::testDragAndDrop()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    doc.setText("line0\n"
-                "line1\n"
-                "line2\n"
-                "\n"
-                "line4");
+    doc.setText(
+        "line0\n"
+        "line1\n"
+        "line2\n"
+        "\n"
+        "line4");
 
-    KTextEditor::View* view = static_cast<KTextEditor::View*>(doc.createView(nullptr));
+    KTextEditor::View *view = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     view->show();
     view->resize(400, 300);
 
@@ -459,34 +433,31 @@ void KateViewTest::testDragAndDrop()
     const QPoint gEndDragPos = internalView->mapToGlobal(endDragPos);
 
     // now drag and drop selected text to Cursor(3, 0)
-    QMouseEvent pressEvent(QEvent::MouseButtonPress, startDragPos, gStartDragPos,
-                                Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent pressEvent(QEvent::MouseButtonPress, startDragPos, gStartDragPos, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QCoreApplication::sendEvent(internalView, &pressEvent);
 
     // ugly workaround: Drag & Drop has own blocking event queue. Therefore, we need a single-shot timer to
     // break out of the blocking event queue, see (*)
-    QTimer::singleShot(50, [&](){
-        QMouseEvent moveEvent(QEvent::MouseMove, endDragPos + QPoint(5, 0), gEndDragPos + QPoint(5, 0),
-                            Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-        QMouseEvent releaseEvent(QEvent::MouseButtonRelease, endDragPos, gEndDragPos,
-                            Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+    QTimer::singleShot(50, [&]() {
+        QMouseEvent moveEvent(QEvent::MouseMove, endDragPos + QPoint(5, 0), gEndDragPos + QPoint(5, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QMouseEvent releaseEvent(QEvent::MouseButtonRelease, endDragPos, gEndDragPos, Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
         QCoreApplication::sendEvent(internalView, &moveEvent);
         QCoreApplication::sendEvent(internalView, &releaseEvent);
     });
 
     // (*) this somehow blocks...
-    QMouseEvent moveEvent1(QEvent::MouseMove, endDragPos + QPoint(10, 0), gEndDragPos + QPoint(10, 0),
-                           Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent moveEvent1(QEvent::MouseMove, endDragPos + QPoint(10, 0), gEndDragPos + QPoint(10, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QCoreApplication::sendEvent(internalView, &moveEvent1);
 
     QTest::qWait(100);
 
     // final tests of dragged text
-    QCOMPARE(doc.text(), QString("line0\n"
-                                 "line2\n"
-                                 "line1\n"
-                                 "\n"
-                                 "line4"));
+    QCOMPARE(doc.text(),
+             QString("line0\n"
+                     "line2\n"
+                     "line1\n"
+                     "\n"
+                     "line4"));
 
     QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(3, 0));
     QCOMPARE(view->selectionRange(), Range(2, 0, 3, 0));
@@ -520,7 +491,7 @@ void KateViewTest::testGotoMatchingBracket()
     view->toMatchingBracket();
     QCOMPARE(view->cursorPosition(), cursor1);
 
-    doc.config()->setOvr(true);// Overwrite Mode
+    doc.config()->setOvr(true); // Overwrite Mode
 
     view->setCursorPosition(cursor1);
     view->toMatchingBracket();

@@ -50,7 +50,10 @@ class Message;
 class InlineNoteProvider;
 }
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateBookmarks;
 class KateViewConfig;
 class KateRenderer;
@@ -79,16 +82,15 @@ class QAction;
 
 namespace KTextEditor
 {
-
 //
 // Kate KTextEditor::View class ;)
 //
 class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
-    public KTextEditor::TextHintInterface,
-    public KTextEditor::CodeCompletionInterface,
-    public KTextEditor::ConfigInterface,
-    public KTextEditor::InlineNoteInterface,
-    public KTextEditor::AnnotationViewInterfaceV2
+                                       public KTextEditor::TextHintInterface,
+                                       public KTextEditor::CodeCompletionInterface,
+                                       public KTextEditor::ConfigInterface,
+                                       public KTextEditor::InlineNoteInterface,
+                                       public KTextEditor::AnnotationViewInterfaceV2
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::TextHintInterface)
@@ -104,7 +106,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     friend class ::KateTextPreview;
 
 public:
-    ViewPrivate (KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
+    ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow = nullptr);
     ~ViewPrivate() override;
 
     /**
@@ -278,7 +280,7 @@ public:
 public:
     void registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) override;
     void unregisterInlineNoteProvider(KTextEditor::InlineNoteProvider *provider) override;
-    QRect inlineNoteRect(const KateInlineNoteData& note) const;
+    QRect inlineNoteRect(const KateInlineNoteData &note) const;
 
     QVarLengthArray<KateInlineNoteData, 8> inlineNotes(int line) const;
 
@@ -352,15 +354,15 @@ public:
     void selectWord(const KTextEditor::Cursor &cursor);
     void selectLine(const KTextEditor::Cursor &cursor);
 
-    //BEGIN EDIT STUFF
+    // BEGIN EDIT STUFF
 public:
     void editStart();
     void editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom);
 
     void editSetCursor(const KTextEditor::Cursor &cursor);
-    //END
+    // END
 
-    //BEGIN TAG & CLEAR
+    // BEGIN TAG & CLEAR
 public:
     bool tagLine(const KTextEditor::Cursor &virtualCursor);
 
@@ -376,7 +378,7 @@ public:
     void repaintText(bool paintOnlyDirty = false);
 
     void updateView(bool changed = false);
-    //END
+    // END
 
     //
     // KTextEditor::AnnotationView
@@ -387,7 +389,7 @@ public:
     void setAnnotationBorderVisible(bool visible) override;
     bool isAnnotationBorderVisible() const override;
     void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate) override;
-    KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const override;
+    KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const override;
     void setAnnotationUniformItemSizes(bool enable) override;
     bool uniformAnnotationItemSizes() const override;
 
@@ -442,8 +444,8 @@ public:
 
     QString currentTextLine();
 
-    QTextLayout * textLayout(int line) const;
-    QTextLayout * textLayout(const KTextEditor::Cursor &pos) const;
+    QTextLayout *textLayout(int line) const;
+    QTextLayout *textLayout(const KTextEditor::Cursor &pos) const;
 
 public Q_SLOTS:
     void indent();
@@ -622,7 +624,7 @@ public Q_SLOTS:
     void findNext();
     void findPrevious();
 
-    void setFoldingMarkersOn(bool enable);   // Not in KTextEditor::View, but should be
+    void setFoldingMarkersOn(bool enable); // Not in KTextEditor::View, but should be
     void setIconBorder(bool enable);
     void setLineNumbersOn(bool enable);
     void setScrollBarMarks(bool enable);
@@ -666,11 +668,11 @@ public:
      * accessor to katedocument pointer
      * @return pointer to document
      */
-    KTextEditor::DocumentPrivate  *doc()
+    KTextEditor::DocumentPrivate *doc()
     {
         return m_doc;
     }
-    const KTextEditor::DocumentPrivate  *doc() const
+    const KTextEditor::DocumentPrivate *doc() const
     {
         return m_doc;
     }
@@ -728,27 +730,27 @@ private:
     void setupEditActions();
     void setupCodeFolding();
 
-    QList<QAction *>       m_editActions;
-    QAction               *m_editUndo;
-    QAction               *m_editRedo;
-    QAction               *m_pasteMenu;
-    bool                   m_gotoBottomAfterReload;
-    KToggleAction         *m_toggleFoldingMarkers;
-    KToggleAction         *m_toggleIconBar;
-    KToggleAction         *m_toggleLineNumbers;
-    KToggleAction         *m_toggleScrollBarMarks;
-    KToggleAction         *m_toggleScrollBarMiniMap;
-    KToggleAction         *m_toggleScrollBarMiniMapAll;
-    KToggleAction         *m_toggleDynWrap;
-    KSelectAction         *m_setDynWrapIndicators;
-    KToggleAction         *m_toggleWWMarker;
-    KToggleAction         *m_toggleNPSpaces;
-    KToggleAction         *m_toggleWordCount;
-    QAction               *m_switchCmdLine;
-    KToggleAction         *m_viInputModeAction;
+    QList<QAction *> m_editActions;
+    QAction *m_editUndo;
+    QAction *m_editRedo;
+    QAction *m_pasteMenu;
+    bool m_gotoBottomAfterReload;
+    KToggleAction *m_toggleFoldingMarkers;
+    KToggleAction *m_toggleIconBar;
+    KToggleAction *m_toggleLineNumbers;
+    KToggleAction *m_toggleScrollBarMarks;
+    KToggleAction *m_toggleScrollBarMiniMap;
+    KToggleAction *m_toggleScrollBarMiniMapAll;
+    KToggleAction *m_toggleDynWrap;
+    KSelectAction *m_setDynWrapIndicators;
+    KToggleAction *m_toggleWWMarker;
+    KToggleAction *m_toggleNPSpaces;
+    KToggleAction *m_toggleWordCount;
+    QAction *m_switchCmdLine;
+    KToggleAction *m_viInputModeAction;
 
-    KSelectAction         *m_setEndOfLine;
-    KToggleAction         *m_addBom;
+    KSelectAction *m_setEndOfLine;
+    KToggleAction *m_addBom;
 
     QAction *m_cut;
     QAction *m_copy;
@@ -765,13 +767,13 @@ private:
 
     bool m_hasWrap;
 
-    KTextEditor::DocumentPrivate     *const m_doc;
+    KTextEditor::DocumentPrivate *const m_doc;
     Kate::TextFolding m_textFolding;
-    KateViewConfig   *const m_config;
-    KateRenderer     *const m_renderer;
+    KateViewConfig *const m_config;
+    KateRenderer *const m_renderer;
     KateViewInternal *const m_viewInternal;
-    KateSpellCheckDialog  *m_spell;
-    KateBookmarks    *const m_bookmarks;
+    KateSpellCheckDialog *m_spell;
+    KateBookmarks *const m_bookmarks;
 
     //* margins
     QSpacerItem *m_topSpacer;
@@ -812,9 +814,7 @@ private:
 
     // templates
 public:
-    bool insertTemplateInternal(const KTextEditor::Cursor& insertPosition,
-                                const QString& templateString,
-                                const QString& script = QString());
+    bool insertTemplateInternal(const KTextEditor::Cursor &insertPosition, const QString &templateString, const QString &script = QString());
 
     /**
      * Accessors to the bars...
@@ -841,6 +841,7 @@ private:
     // input modes
 public:
     KateAbstractInputMode *currentInputMode() const;
+
 public:
     KTextEditor::Range visibleRange();
 
@@ -851,7 +852,7 @@ protected:
     bool event(QEvent *e) override;
     void paintEvent(QPaintEvent *e) override;
 
-    KToggleAction               *m_toggleOnTheFlySpellCheck;
+    KToggleAction *m_toggleOnTheFlySpellCheck;
     KateSpellingMenu *m_spellingMenu;
 
 protected Q_SLOTS:
@@ -863,6 +864,7 @@ public Q_SLOTS:
 
 public:
     KateSpellingMenu *spellingMenu();
+
 private:
     bool m_userContextMenuSet;
 
@@ -890,7 +892,7 @@ private:
 
     QString m_currentTextForHighlights;
 
-    QList<KTextEditor::MovingRange*> m_rangesForHighlights;
+    QList<KTextEditor::MovingRange *> m_rangesForHighlights;
 
 public:
     /**
@@ -980,14 +982,14 @@ public:
     /**
      * Used by Document::postMessage().
      */
-    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction> > actions);
+    void postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions);
 
 private:
     /**
      * Message widgets showing KTextEditor::Messages.
      * The index of the array maps to the enum KTextEditor::Message::MessagePosition.
      */
-    std::array<KateMessageWidget *, 5> m_messageWidgets{{nullptr}};
+    std::array<KateMessageWidget *, 5> m_messageWidgets {{nullptr}};
     /** Layout for floating notifications */
     KateMessageLayout *m_notificationLayout = nullptr;
 
@@ -1013,20 +1015,22 @@ public:
      * Get the view status bar
      * @return status bar, in enabled
      */
-    KateStatusBar *statusBar () const {
+    KateStatusBar *statusBar() const
+    {
         return m_statusBar;
     }
 
     /**
      * Toogle status bar, e.g. create or remove it
      */
-    void toggleStatusBar ();
+    void toggleStatusBar();
 
     /**
      * Get the encoding menu
      * @return the encoding menu
      */
-    KateViewEncodingAction *encodingAction () const {
+    KateViewEncodingAction *encodingAction() const
+    {
         return m_encodingAction;
     }
 
@@ -1034,7 +1038,8 @@ public:
      * Get the mode menu
      * @return the mode menu
      */
-    KateModeMenu *modeAction () const {
+    KateModeMenu *modeAction() const
+    {
         return m_modeAction;
     }
 
@@ -1102,4 +1107,3 @@ private:
 }
 
 #endif
-

@@ -34,7 +34,8 @@
 
 #include <cctype>
 
-namespace {
+namespace
+{
 inline const QString MODE_NONE()
 {
     return QStringLiteral("none");
@@ -45,7 +46,7 @@ inline const QString MODE_NORMAL()
 }
 }
 
-//BEGIN KateAutoIndent
+// BEGIN KateAutoIndent
 
 QStringList KateAutoIndent::listModes()
 {
@@ -122,13 +123,14 @@ uint KateAutoIndent::modeNumber(const QString &name)
 }
 
 KateAutoIndent::KateAutoIndent(KTextEditor::DocumentPrivate *_doc)
-    : QObject(_doc), doc(_doc), m_script(nullptr)
+    : QObject(_doc)
+    , doc(_doc)
+    , m_script(nullptr)
 {
     // don't call updateConfig() here, document might is not ready for that....
 
     // on script reload, the script pointer is invalid -> force reload
-    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()),
-            this, SLOT(reloadScript()));
+    connect(KTextEditor::EditorPrivate::self()->scriptManager(), SIGNAL(reloaded()), this, SLOT(reloadScript()));
 }
 
 KateAutoIndent::~KateAutoIndent()
@@ -138,7 +140,7 @@ KateAutoIndent::~KateAutoIndent()
 QString KateAutoIndent::tabString(int length, int align) const
 {
     QString s;
-    length = qMin(length, 256);  // sanity check for large values of pos
+    length = qMin(length, 256); // sanity check for large values of pos
     int spaces = qBound(0, align - length, 256);
 
     if (!useSpaces) {
@@ -239,7 +241,7 @@ void KateAutoIndent::keepIndent(int line)
         --nonEmptyLine;
     }
     Kate::TextLine prevTextLine = doc->plainKateTextLine(nonEmptyLine);
-    Kate::TextLine textLine     = doc->plainKateTextLine(line);
+    Kate::TextLine textLine = doc->plainKateTextLine(line);
 
     // textline not found, cu
     if (!prevTextLine || !textLine) {
@@ -335,11 +337,10 @@ void KateAutoIndent::setMode(const QString &name)
             m_mode = name;
             return;
         } else {
-            qCWarning(LOG_KTE) << "mode" << name <<
-                                "requires a different highlight style: highlighting '"
-                                << doc->highlight()->name() << "', style '" << doc->highlight()->style() << "'"
-                                ", but script require '" << script->indentHeader().requiredStyle() << "'"
-                                ;
+            qCWarning(LOG_KTE) << "mode" << name << "requires a different highlight style: highlighting '" << doc->highlight()->name() << "', style '" << doc->highlight()->style()
+                               << "'"
+                                  ", but script require '"
+                               << script->indentHeader().requiredStyle() << "'";
         }
     } else {
         qCWarning(LOG_KTE) << "mode" << name << "does not exist";
@@ -353,11 +354,10 @@ void KateAutoIndent::checkRequiredStyle()
 {
     if (m_script) {
         if (!isStyleProvided(m_script, doc->highlight())) {
-            qCDebug(LOG_KTE) << "mode" << m_mode <<
-                              "requires a different highlight style: highlighting '"
-                              << doc->highlight()->name() << "', style '" << doc->highlight()->style() << "'"
-                              ", but script require '" << m_script->indentHeader().requiredStyle() << "'"
-                              ;
+            qCDebug(LOG_KTE) << "mode" << m_mode << "requires a different highlight style: highlighting '" << doc->highlight()->name() << "', style '" << doc->highlight()->style()
+                             << "'"
+                                ", but script require '"
+                             << m_script->indentHeader().requiredStyle() << "'";
             doc->config()->setIndentationMode(MODE_NORMAL());
         }
     }
@@ -367,9 +367,9 @@ void KateAutoIndent::updateConfig()
 {
     KateDocumentConfig *config = doc->config();
 
-    useSpaces   = config->replaceTabsDyn();
-    keepExtra   = config->keepExtraSpaces();
-    tabWidth    = config->tabWidth();
+    useSpaces = config->replaceTabsDyn();
+    keepExtra = config->keepExtraSpaces();
+    tabWidth = config->tabWidth();
     indentWidth = config->indentationWidth();
 }
 
@@ -378,8 +378,7 @@ bool KateAutoIndent::changeIndent(const KTextEditor::Range &range, int change)
     std::vector<int> skippedLines;
 
     // loop over all lines given...
-    for (int line = range.start().line() < 0 ? 0 : range.start().line();
-            line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
+    for (int line = range.start().line() < 0 ? 0 : range.start().line(); line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
         // don't indent empty lines
         if (doc->line(line).isEmpty()) {
             skippedLines.push_back(line);
@@ -415,8 +414,7 @@ void KateAutoIndent::indent(KTextEditor::ViewPrivate *view, const KTextEditor::R
     doc->setUndoMergeAllEdits(true);
 
     // loop over all lines given...
-    for (int line = range.start().line() < 0 ? 0 : range.start().line();
-            line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
+    for (int line = range.start().line() < 0 ? 0 : range.start().line(); line <= qMin(range.end().line(), doc->lines() - 1); ++line) {
         // let the script indent for us...
         scriptIndent(view, KTextEditor::Cursor(line, 0), QChar());
     }
@@ -452,11 +450,12 @@ void KateAutoIndent::userTypedChar(KTextEditor::ViewPrivate *view, const KTextEd
     // let the script indent for us...
     scriptIndent(view, position, typedChar);
 }
-//END KateAutoIndent
+// END KateAutoIndent
 
-//BEGIN KateViewIndentAction
+// BEGIN KateViewIndentAction
 KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivate *_doc, const QString &text, QObject *parent)
-    : KActionMenu(text, parent), doc(_doc)
+    : KActionMenu(text, parent)
+    , doc(_doc)
 {
     setDelayed(false);
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
@@ -486,8 +485,8 @@ void KateViewIndentationAction::slotAboutToShow()
         }
     }
 
-    disconnect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setMode(QAction*)));
-    connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setMode(QAction*)));
+    disconnect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setMode(QAction *)));
+    connect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setMode(QAction *)));
 }
 
 void KateViewIndentationAction::setMode(QAction *action)
@@ -496,5 +495,4 @@ void KateViewIndentationAction::setMode(QAction *action)
     doc->config()->setIndentationMode(KateAutoIndent::modeName(action->data().toInt()));
     doc->rememberUserDidSetIndentationMode();
 }
-//END KateViewIndentationAction
-
+// END KateViewIndentationAction

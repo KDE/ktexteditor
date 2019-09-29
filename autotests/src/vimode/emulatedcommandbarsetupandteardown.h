@@ -25,7 +25,7 @@
 
 namespace KTextEditor
 {
-    class ViewPrivate;
+class ViewPrivate;
 }
 
 class KateViInputMode;
@@ -39,14 +39,14 @@ class WindowKeepActive : public QObject
 {
     Q_OBJECT
 
-    public:
-        explicit WindowKeepActive(QMainWindow *mainWindow);
+public:
+    explicit WindowKeepActive(QMainWindow *mainWindow);
 
-        public Q_SLOTS:
-            bool eventFilter(QObject *object, QEvent *event) override;
+public Q_SLOTS:
+    bool eventFilter(QObject *object, QEvent *event) override;
 
-    private:
-        QMainWindow *m_mainWindow;
+private:
+    QMainWindow *m_mainWindow;
 };
 
 /**
@@ -55,18 +55,16 @@ class WindowKeepActive : public QObject
  */
 class EmulatedCommandBarSetUpAndTearDown
 {
-    public:
-        EmulatedCommandBarSetUpAndTearDown(KateViInputMode *inputMode,
-                KTextEditor::ViewPrivate *view,
-                QMainWindow *window);
+public:
+    EmulatedCommandBarSetUpAndTearDown(KateViInputMode *inputMode, KTextEditor::ViewPrivate *view, QMainWindow *window);
 
-        ~EmulatedCommandBarSetUpAndTearDown();
+    ~EmulatedCommandBarSetUpAndTearDown();
 
-    private:
-        KTextEditor::ViewPrivate *m_view;
-        QMainWindow *m_window;
-        WindowKeepActive m_windowKeepActive;
-        KateViInputMode *m_viInputMode;
+private:
+    KTextEditor::ViewPrivate *m_view;
+    QMainWindow *m_window;
+    WindowKeepActive m_windowKeepActive;
+    KateViInputMode *m_viInputMode;
 };
 
 #endif

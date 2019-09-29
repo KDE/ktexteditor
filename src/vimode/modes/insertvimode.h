@@ -26,7 +26,10 @@
 #include <vimode/modes/modebase.h>
 #include <ktexteditor_export.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateViewInternal;
 
 class QKeyEvent;
@@ -38,21 +41,14 @@ class Motion;
 /**
  * Commands for the vi insert mode
  */
-enum BlockInsert {
-    None,
-    Prepend,
-    Append,
-    AppendEOL
-};
+enum BlockInsert { None, Prepend, Append, AppendEOL };
 
 class KTEXTEDITOR_EXPORT InsertViMode : public ModeBase
 {
     Q_OBJECT
 
 public:
-    explicit InsertViMode(InputModeManager *viInputModeManager,
-                        KTextEditor::ViewPrivate *view,
-                        KateViewInternal *viewInternal);
+    explicit InsertViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~InsertViMode() override;
 
     bool handleKeypress(const QKeyEvent *e) override;

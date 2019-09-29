@@ -133,8 +133,7 @@ private:
     QHash<QString, KateIndentScript *> m_indentationScriptMap;
 
     /** Map of language to indent scripts */
-    QHash<QString, QVector<KateIndentScript *> > m_languageToIndenters;
+    QHash<QString, QVector<KateIndentScript *>> m_languageToIndenters;
 };
 
 #endif
-

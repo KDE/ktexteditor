@@ -26,7 +26,10 @@
 
 #include <QAction>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 /**
  * KateScriptAction is an action that executes a commandline-script
@@ -74,4 +77,3 @@ private:
 };
 
 #endif
-

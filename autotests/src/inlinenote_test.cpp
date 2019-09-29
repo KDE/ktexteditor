@@ -39,87 +39,87 @@ QTEST_MAIN(InlineNoteTest)
 
 namespace
 {
-    QWidget *findViewInternal(KTextEditor::View* view)
-    {
-        for (QObject* child : view->children()) {
-            if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
-                return qobject_cast<QWidget*>(child);
-            }
+QWidget *findViewInternal(KTextEditor::View *view)
+{
+    for (QObject *child : view->children()) {
+        if (child->metaObject()->className() == QByteArrayLiteral("KateViewInternal")) {
+            return qobject_cast<QWidget *>(child);
         }
-        return nullptr;
+    }
+    return nullptr;
+}
+
+class NoteProvider : public InlineNoteProvider
+{
+public:
+    QVector<int> inlineNotes(int line) const override
+    {
+        if (line == 0) {
+            return {5, 10};
+        }
+
+        return {};
     }
 
-    class NoteProvider : public InlineNoteProvider
+    QSize inlineNoteSize(const InlineNote &note) const override
     {
-    public:
-        QVector<int> inlineNotes(int line) const override
-        {
-            if (line == 0) {
-                return { 5, 10 };
-            }
-
-            return {};
+        if (note.position().column() == 5) {
+            const auto xWidth = QFontMetrics(note.font()).boundingRect(QStringLiteral("x")).width();
+            return QSize(xWidth, note.lineHeight());
+        } else if (note.position().column() == 10) {
+            return QSize(note.lineHeight(), note.lineHeight());
         }
 
-        QSize inlineNoteSize(const InlineNote& note) const override
-        {
-            if (note.position().column() == 5) {
-                const auto xWidth = QFontMetrics(note.font()).boundingRect(QStringLiteral("x")).width();
-                return QSize(xWidth, note.lineHeight());
-            } else if (note.position().column() == 10) {
-                return QSize(note.lineHeight(), note.lineHeight());
-            }
+        return QSize();
+    }
 
-            return QSize();
+    void paintInlineNote(const InlineNote &note, QPainter &painter) const override
+    {
+        if (note.position().column() == 5) {
+            painter.setPen(Qt::darkGreen);
+            painter.setBrush(Qt::green);
+            painter.drawEllipse(1, 1, note.width() - 2, note.lineHeight() - 2);
+        } else if (note.position().column() == 10) {
+            painter.setPen(Qt::darkRed);
+            painter.setBrush(Qt::red);
+            painter.drawRoundedRect(1, 1, note.width() - 2, note.lineHeight() - 2, 2, 2);
         }
+    }
 
-        void paintInlineNote(const InlineNote& note, QPainter& painter) const override
-        {
-            if (note.position().column() == 5) {
-                painter.setPen(Qt::darkGreen);
-                painter.setBrush(Qt::green);
-                painter.drawEllipse(1, 1, note.width() - 2, note.lineHeight() - 2);
-            } else if (note.position().column() == 10) {
-                painter.setPen(Qt::darkRed);
-                painter.setBrush(Qt::red);
-                painter.drawRoundedRect(1, 1, note.width() - 2, note.lineHeight() - 2, 2, 2);
-            }
-        }
+    void inlineNoteActivated(const InlineNote &note, Qt::MouseButtons buttons, const QPoint &globalPos) override
+    {
+        Q_UNUSED(note)
+        Q_UNUSED(buttons)
+        Q_UNUSED(globalPos)
+        ++noteActivatedCount;
+    }
 
-        void inlineNoteActivated(const InlineNote& note, Qt::MouseButtons buttons, const QPoint& globalPos) override
-        {
-            Q_UNUSED(note)
-            Q_UNUSED(buttons)
-            Q_UNUSED(globalPos)
-            ++noteActivatedCount;
-        }
+    void inlineNoteFocusInEvent(const InlineNote &note, const QPoint &globalPos) override
+    {
+        Q_UNUSED(note)
+        Q_UNUSED(globalPos)
+        ++focusInCount;
+    }
 
-        void inlineNoteFocusInEvent(const InlineNote& note, const QPoint& globalPos) override
-        {
-            Q_UNUSED(note)
-            Q_UNUSED(globalPos)
-            ++focusInCount;
-        }
+    void inlineNoteFocusOutEvent(const InlineNote &note) override
+    {
+        Q_UNUSED(note)
+        ++focusOutCount;
+    }
 
-        void inlineNoteFocusOutEvent(const InlineNote& note) override
-        {
-            Q_UNUSED(note)
-            ++focusOutCount;
-        }
+    void inlineNoteMouseMoveEvent(const InlineNote &note, const QPoint &globalPos) override
+    {
+        Q_UNUSED(note)
+        Q_UNUSED(globalPos)
+        ++mouseMoveCount;
+    }
 
-        void inlineNoteMouseMoveEvent(const InlineNote& note, const QPoint& globalPos) override
-        {
-            Q_UNUSED(note)
-            Q_UNUSED(globalPos)
-            ++mouseMoveCount;
-        }
-
-    public:
-        int noteActivatedCount = 0;
-        int focusInCount = 0;
-        int focusOutCount = 0;
-        int mouseMoveCount = 0;
-    };
+public:
+    int noteActivatedCount = 0;
+    int focusInCount = 0;
+    int focusOutCount = 0;
+    int mouseMoveCount = 0;
+};
 }
 
 InlineNoteTest::InlineNoteTest()
@@ -142,31 +142,31 @@ void InlineNoteTest::testInlineNote()
 
     QTest::qWait(100);
 
-    view.setCursorPosition({ 0, 5 });
+    view.setCursorPosition({0, 5});
     QCOMPARE(view.cursorPosition(), Cursor(0, 5));
 
-    const auto coordCol04 = view.cursorToCoordinate({ 0, 4 });
-    const auto coordCol05 = view.cursorToCoordinate({ 0, 5 });
-    const auto coordCol10 = view.cursorToCoordinate({ 0, 10 });
+    const auto coordCol04 = view.cursorToCoordinate({0, 4});
+    const auto coordCol05 = view.cursorToCoordinate({0, 5});
+    const auto coordCol10 = view.cursorToCoordinate({0, 10});
     QVERIFY(coordCol05.x() > coordCol04.x());
     QVERIFY(coordCol10.x() > coordCol05.x());
 
     const auto xWidth = coordCol05.x() - coordCol04.x();
 
-    auto iface = qobject_cast<KTextEditor::InlineNoteInterface*>(&view);
+    auto iface = qobject_cast<KTextEditor::InlineNoteInterface *>(&view);
     QVERIFY(iface != nullptr);
 
     NoteProvider noteProvider;
-    const QVector<int> expectedColumns = { 5, 10 };
+    const QVector<int> expectedColumns = {5, 10};
     QCOMPARE(noteProvider.inlineNotes(0), expectedColumns);
     QCOMPARE(noteProvider.inlineNotes(1), QVector<int>());
     iface->registerInlineNoteProvider(&noteProvider);
 
     QTest::qWait(100);
 
-    const auto newCoordCol04 = view.cursorToCoordinate({ 0, 4 });
-    const auto newCoordCol05 = view.cursorToCoordinate({ 0, 5 });
-    const auto newCoordCol10 = view.cursorToCoordinate({ 0, 10 });
+    const auto newCoordCol04 = view.cursorToCoordinate({0, 4});
+    const auto newCoordCol05 = view.cursorToCoordinate({0, 5});
+    const auto newCoordCol10 = view.cursorToCoordinate({0, 10});
 
     QVERIFY(newCoordCol05.x() > newCoordCol04.x());
     QVERIFY(newCoordCol10.x() > newCoordCol05.x());

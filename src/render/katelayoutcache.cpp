@@ -29,19 +29,18 @@
 #include "katebuffer.h"
 #include "katepartdebug.h"
 
-namespace {
-
+namespace
+{
 bool enableLayoutCache = false;
 
-bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs,
-              const KateLineLayoutMap::LineLayoutPair &rhs)
+bool lessThan(const KateLineLayoutMap::LineLayoutPair &lhs, const KateLineLayoutMap::LineLayoutPair &rhs)
 {
     return lhs.first < rhs.first;
 }
 
 }
 
-//BEGIN KateLineLayoutMap
+// BEGIN KateLineLayoutMap
 KateLineLayoutMap::KateLineLayoutMap()
 {
 }
@@ -62,8 +61,7 @@ bool KateLineLayoutMap::contains(int i) const
 
 void KateLineLayoutMap::insert(int realLine, const KateLineLayoutPtr &lineLayoutPtr)
 {
-    LineLayoutMap::iterator it =
-        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, KateLineLayoutPtr()), lessThan);
+    LineLayoutMap::iterator it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(realLine, KateLineLayoutPtr()), lessThan);
     if (it != m_lineLayouts.end() && (*it) == LineLayoutPair(realLine, KateLineLayoutPtr())) {
         (*it).second = lineLayoutPtr;
     } else {
@@ -86,8 +84,7 @@ void KateLineLayoutMap::viewWidthDecreased(int newWidth)
 {
     LineLayoutMap::iterator it = m_lineLayouts.begin();
     for (; it != m_lineLayouts.end(); ++it) {
-        if ((*it).second->isValid()
-                && ((*it).second->viewLineCount() > 1 || (*it).second->width() > newWidth)) {
+        if ((*it).second->isValid() && ((*it).second->viewLineCount() > 1 || (*it).second->width() > newWidth)) {
             (*it).second->invalidateLayout();
         }
     }
@@ -95,10 +92,8 @@ void KateLineLayoutMap::viewWidthDecreased(int newWidth)
 
 void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 {
-    LineLayoutMap::iterator start =
-        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, KateLineLayoutPtr()), lessThan);
-    LineLayoutMap::iterator end =
-        std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, KateLineLayoutPtr()), lessThan);
+    LineLayoutMap::iterator start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(startRealLine, KateLineLayoutPtr()), lessThan);
+    LineLayoutMap::iterator end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(endRealLine, KateLineLayoutPtr()), lessThan);
 
     while (start != end) {
         (*start).second->setLayoutDirty();
@@ -108,10 +103,8 @@ void KateLineLayoutMap::relayoutLines(int startRealLine, int endRealLine)
 
 void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount)
 {
-    LineLayoutMap::iterator start =
-        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, KateLineLayoutPtr()), lessThan);
-    LineLayoutMap::iterator end =
-        std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, KateLineLayoutPtr()), lessThan);
+    LineLayoutMap::iterator start = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(fromLine, KateLineLayoutPtr()), lessThan);
+    LineLayoutMap::iterator end = std::upper_bound(start, m_lineLayouts.end(), LineLayoutPair(toLine, KateLineLayoutPtr()), lessThan);
     LineLayoutMap::iterator it;
 
     if (shiftAmount != 0) {
@@ -134,12 +127,11 @@ void KateLineLayoutMap::slotEditDone(int fromLine, int toLine, int shiftAmount)
 
 KateLineLayoutPtr &KateLineLayoutMap::operator[](int i)
 {
-    const LineLayoutMap::iterator it =
-        std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
+    const LineLayoutMap::iterator it = std::lower_bound(m_lineLayouts.begin(), m_lineLayouts.end(), LineLayoutPair(i, KateLineLayoutPtr()), lessThan);
     Q_ASSERT(it != m_lineLayouts.end());
     return (*it).second;
 }
-//END KateLineLayoutMap
+// END KateLineLayoutMap
 
 KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
     : QObject(parent)
@@ -156,13 +148,13 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
      */
     connect(&m_renderer->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
     connect(&m_renderer->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-    connect(&m_renderer->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor,QString)), this, SLOT(insertText(KTextEditor::Cursor,QString)));
-    connect(&m_renderer->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range,QString)), this, SLOT(removeText(KTextEditor::Range)));
+    connect(&m_renderer->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
+    connect(&m_renderer->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
 }
 
 void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int newViewLineCount, int viewLinesScrolled)
 {
-    //qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
+    // qCDebug(LOG_KTE) << startPos << " nvlc " << newViewLineCount << " vls " << viewLinesScrolled;
 
     int oldViewLineCount = m_textLayouts.count();
     if (newViewLineCount == -1) {
@@ -268,8 +260,8 @@ void KateLayoutCache::updateViewCache(const KTextEditor::Cursor &startPos, int n
             m_textLayouts.append(l->viewLine(_viewLine));
         }
 
-        //qCDebug(LOG_KTE) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() << ")";
-        //m_textLayouts[i].debugOutput();
+        // qCDebug(LOG_KTE) << "Laid out line " << realLine << " (" << l << "), viewLine " << _viewLine << " (" << m_textLayouts[i].kateLineLayout().data() << ")";
+        // m_textLayouts[i].debugOutput();
 
         _viewLine++;
 

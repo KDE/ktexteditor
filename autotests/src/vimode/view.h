@@ -18,13 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef VIEW_TEST_H
 #define VIEW_TEST_H
 
-
 #include "base.h"
-
 
 class ViewTest : public BaseTest
 {
@@ -40,6 +37,5 @@ private Q_SLOTS:
 private:
     QList<Kate::TextRange *> rangesOnFirstLine();
 };
-
 
 #endif /* VIEW_TEST_H */

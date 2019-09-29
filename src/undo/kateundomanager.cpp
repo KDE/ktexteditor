@@ -31,10 +31,10 @@ KateUndoManager::KateUndoManager(KTextEditor::DocumentPrivate *doc)
     : QObject(doc)
     , m_document(doc)
 {
-    connect(this, SIGNAL(undoEnd(KTextEditor::Document*)), this, SIGNAL(undoChanged()));
-    connect(this, SIGNAL(redoEnd(KTextEditor::Document*)), this, SIGNAL(undoChanged()));
+    connect(this, SIGNAL(undoEnd(KTextEditor::Document *)), this, SIGNAL(undoChanged()));
+    connect(this, SIGNAL(redoEnd(KTextEditor::Document *)), this, SIGNAL(undoChanged()));
 
-    connect(doc, SIGNAL(viewCreated(KTextEditor::Document*,KTextEditor::View*)), SLOT(viewCreated(KTextEditor::Document*,KTextEditor::View*)));
+    connect(doc, SIGNAL(viewCreated(KTextEditor::Document *, KTextEditor::View *)), SLOT(viewCreated(KTextEditor::Document *, KTextEditor::View *)));
 }
 
 KateUndoManager::~KateUndoManager()
@@ -55,7 +55,7 @@ KTextEditor::Document *KateUndoManager::document()
 
 void KateUndoManager::viewCreated(KTextEditor::Document *, KTextEditor::View *newView)
 {
-    connect(newView, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), SLOT(undoCancel()));
+    connect(newView, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), SLOT(undoCancel()));
 }
 
 void KateUndoManager::editStart()
@@ -94,8 +94,7 @@ void KateUndoManager::editEnd()
 
     if (m_editCurrentUndo->isEmpty()) {
         delete m_editCurrentUndo;
-    } else if (!undoItems.isEmpty()
-               && undoItems.last()->merge(m_editCurrentUndo, m_undoComplexMerge)) {
+    } else if (!undoItems.isEmpty() && undoItems.last()->merge(m_editCurrentUndo, m_undoComplexMerge)) {
         delete m_editCurrentUndo;
     } else {
         undoItems.append(m_editCurrentUndo);
@@ -211,7 +210,7 @@ void KateUndoManager::undoSafePoint()
 
 void KateUndoManager::addUndoItem(KateUndo *undo)
 {
-    Q_ASSERT(undo != nullptr); // don't add null pointers to our history
+    Q_ASSERT(undo != nullptr);              // don't add null pointers to our history
     Q_ASSERT(m_editCurrentUndo != nullptr); // make sure there is an undo group for our item
 
     m_editCurrentUndo->addItem(undo);
@@ -377,11 +376,11 @@ void KateUndoManager::clearRedo()
 void KateUndoManager::setModified(bool modified)
 {
     if (!modified) {
-        if (! undoItems.isEmpty()) {
+        if (!undoItems.isEmpty()) {
             lastUndoGroupWhenSaved = undoItems.last();
         }
 
-        if (! redoItems.isEmpty()) {
+        if (!redoItems.isEmpty()) {
             lastRedoGroupWhenSaved = redoItems.last();
         }
 
@@ -413,8 +412,7 @@ void KateUndoManager::updateLineModifications()
     }
 }
 
-void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &undoCursor,
-                                                    const KTextEditor::Cursor &redoCursor)
+void KateUndoManager::setUndoRedoCursorsOfLastGroup(const KTextEditor::Cursor &undoCursor, const KTextEditor::Cursor &redoCursor)
 {
     Q_ASSERT(m_editCurrentUndo == nullptr);
     if (!undoItems.isEmpty()) {
@@ -448,4 +446,3 @@ KTextEditor::View *KateUndoManager::activeView()
 {
     return m_document->activeView();
 }
-

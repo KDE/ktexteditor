@@ -29,23 +29,23 @@
  * Internally used
  */
 enum CustomProperties {
-        /// Draws an outline around the text
-        Outline = QTextFormat::UserProperty,
-        /// Changes the brush used to paint the text when it is selected
-        SelectedForeground,
-        /// Changes the brush used to paint the background when it is selected
-        SelectedBackground,
-        /// Determines whether background color is drawn over whitespace. Defaults to true.
-        BackgroundFillWhitespace,
-        /// Defined to allow storage of dynamic effect information
-        AttributeDynamicEffect = 0x10A00,
-        /// Defined for internal usage of KTextEditor implementations
-        AttributeInternalProperty = 0x10E00,
-        AttributeName = AttributeInternalProperty,
-        AttributeDefaultStyleIndex,
-        Spellchecking,
-        /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
-        AttributeUserProperty = 0x110000
+    /// Draws an outline around the text
+    Outline = QTextFormat::UserProperty,
+    /// Changes the brush used to paint the text when it is selected
+    SelectedForeground,
+    /// Changes the brush used to paint the background when it is selected
+    SelectedBackground,
+    /// Determines whether background color is drawn over whitespace. Defaults to true.
+    BackgroundFillWhitespace,
+    /// Defined to allow storage of dynamic effect information
+    AttributeDynamicEffect = 0x10A00,
+    /// Defined for internal usage of KTextEditor implementations
+    AttributeInternalProperty = 0x10E00,
+    AttributeName = AttributeInternalProperty,
+    AttributeDefaultStyleIndex,
+    Spellchecking,
+    /// Defined to allow 3rd party code to create their own custom attributes - you may use values at or above this property.
+    AttributeUserProperty = 0x110000
 };
 
 typedef QVector<KTextEditor::Attribute::Ptr> KateAttributeList;

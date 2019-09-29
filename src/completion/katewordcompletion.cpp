@@ -19,7 +19,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN includes
+// BEGIN includes
 #include "katewordcompletion.h"
 #include "kateview.h"
 #include "kateconfig.h"
@@ -51,14 +51,14 @@
 #include <QLayout>
 #include <QSpinBox>
 
-//END
+// END
 
 /// Amount of characters the document may have to enable automatic invocation (1MB)
 static const int autoInvocationMaxFilesize = 1000000;
 
-//BEGIN KateWordCompletionModel
+// BEGIN KateWordCompletionModel
 KateWordCompletionModel::KateWordCompletionModel(QObject *parent)
-    : CodeCompletionModel (parent)
+    : CodeCompletionModel(parent)
     , m_automatic(false)
 {
     setHasGroups(false);
@@ -68,8 +68,7 @@ KateWordCompletionModel::~KateWordCompletionModel()
 {
 }
 
-void KateWordCompletionModel::saveMatches(KTextEditor::View *view,
-        const KTextEditor::Range &range)
+void KateWordCompletionModel::saveMatches(KTextEditor::View *view, const KTextEditor::Range &range)
 {
     m_matches = allMatches(view, range);
     m_matches.sort();
@@ -85,12 +84,12 @@ QVariant KateWordCompletionModel::data(const QModelIndex &index, int role) const
     }
 
     if (!index.parent().isValid()) {
-        //It is the group header
+        // It is the group header
         switch (role) {
-        case Qt::DisplayRole:
-            return i18n("Auto Word Completion");
-        case GroupRole:
-            return Qt::DisplayRole;
+            case Qt::DisplayRole:
+                return i18n("Auto Word Completion");
+            case GroupRole:
+                return Qt::DisplayRole;
         }
     }
 
@@ -138,9 +137,9 @@ QModelIndex KateWordCompletionModel::index(int row, int column, const QModelInde
 int KateWordCompletionModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid() && !m_matches.isEmpty()) {
-        return 1;    //One root node to define the custom group
+        return 1; // One root node to define the custom group
     } else if (parent.parent().isValid()) {
-        return 0;    //Completion-items have no children
+        return 0; // Completion-items have no children
     } else {
         return m_matches.count();
     }
@@ -155,7 +154,7 @@ bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view, con
         return false;
     }
 
-    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
+    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
 
     if (view->document()->totalCharacters() > autoInvocationMaxFilesize) {
         // Disable automatic invocation for files larger than 1MB (see benchmarks)
@@ -186,9 +185,8 @@ bool KateWordCompletionModel::shouldStartCompletion(KTextEditor::View *view, con
 
 bool KateWordCompletionModel::shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
 {
-
     if (m_automatic) {
-        KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
+        KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
         if (currentCompletion.length() < v->config()->wordCompletionMinimalWordLength()) {
             return true;
         }
@@ -243,12 +241,9 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     return result.values();
 }
 
-void KateWordCompletionModel::executeCompletionItem (KTextEditor::View *view
-    , const KTextEditor::Range &word
-    , const QModelIndex &index
-) const
+void KateWordCompletionModel::executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
 {
-    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *> (view);
+    KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
     KateHighlighting *h = v->doc()->highlight();
     if (v->config()->wordCompletionRemoveTail()) {
         int tailStart = word.end().column();
@@ -308,23 +303,23 @@ KTextEditor::Range KateWordCompletionModel::completionRange(KTextEditor::View *v
 
     return KTextEditor::Range(KTextEditor::Cursor(line, col), position);
 }
-//END KateWordCompletionModel
+// END KateWordCompletionModel
 
-//BEGIN KateWordCompletionView
+// BEGIN KateWordCompletionView
 struct KateWordCompletionViewPrivate {
-    KTextEditor::MovingRange *liRange;       // range containing last inserted text
-    KTextEditor::Range dcRange;  // current range to be completed by directional completion
-    KTextEditor::Cursor dcCursor;     // directional completion search cursor
+    KTextEditor::MovingRange *liRange; // range containing last inserted text
+    KTextEditor::Range dcRange;        // current range to be completed by directional completion
+    KTextEditor::Cursor dcCursor;      // directional completion search cursor
     QRegularExpression wordRegEx;
-    int directionalPos;   // be able to insert "" at the correct time
-    bool isCompleting; // true when the directional completion is doing a completion
+    int directionalPos; // be able to insert "" at the correct time
+    bool isCompleting;  // true when the directional completion is doing a completion
 };
 
 KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionCollection *ac)
-    : QObject(view),
-      m_view(view),
-      m_dWCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()),
-      d(new KateWordCompletionViewPrivate)
+    : QObject(view)
+    , m_view(view)
+    , m_dWCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel())
+    , d(new KateWordCompletionViewPrivate)
 {
     d->isCompleting = false;
     d->dcRange = KTextEditor::Range::invalid();
@@ -334,7 +329,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     const KColorScheme &colors(KTextEditor::EditorPrivate::self()->defaultColors().view());
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
     a->setBackground(colors.background(KColorScheme::ActiveBackground));
-    a->setForeground(colors.foreground(KColorScheme::ActiveText));   // ### this does 0
+    a->setForeground(colors.foreground(KColorScheme::ActiveText)); // ### this does 0
     d->liRange->setAttribute(a);
 
     QAction *action;
@@ -386,7 +381,7 @@ void KateWordCompletionView::popupCompletionList()
 
     qCDebug(LOG_KTE) << "after save matches ...";
 
-    if (! m_dWCompletionModel->rowCount(QModelIndex())) {
+    if (!m_dWCompletionModel->rowCount(QModelIndex())) {
         return;
     }
 
@@ -414,7 +409,7 @@ void KateWordCompletionView::shellComplete()
         m_view->document()->insertText(r.end(), partial.mid(r.columnWidth()));
         d->liRange->setView(m_view);
         d->liRange->setRange(KTextEditor::Range(r.end(), partial.length() - r.columnWidth()));
-        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
+        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
     }
 }
 
@@ -428,12 +423,11 @@ void KateWordCompletionView::complete(bool fw)
     KTextEditor::Document *doc = m_view->document();
 
     if (d->dcRange.isValid()) {
-        //qCDebug(LOG_KTE)<<"CONTINUE "<<d->dcRange;
+        // qCDebug(LOG_KTE)<<"CONTINUE "<<d->dcRange;
         // this is a repeated activation
 
         // if we are back to where we started, reset.
-        if ((fw && d->directionalPos == -1) ||
-                (!fw && d->directionalPos == 1)) {
+        if ((fw && d->directionalPos == -1) || (!fw && d->directionalPos == 1)) {
             const int spansColumns = d->liRange->end().column() - d->liRange->start().column();
             if (spansColumns > 0) {
                 doc->removeText(*d->liRange);
@@ -453,7 +447,7 @@ void KateWordCompletionView::complete(bool fw)
 
         d->directionalPos += inc;
     } else { // new completion, reset all
-        //qCDebug(LOG_KTE)<<"RESET FOR NEW";
+        // qCDebug(LOG_KTE)<<"RESET FOR NEW";
         d->dcRange = r;
         d->liRange->setRange(KTextEditor::Range::invalid());
         d->dcCursor = r.start();
@@ -461,8 +455,7 @@ void KateWordCompletionView::complete(bool fw)
 
         d->liRange->setView(m_view);
 
-        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
-
+        connect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
     }
 
     d->wordRegEx.setPattern(QLatin1String("\\b") + doc->text(d->dcRange) + QLatin1String("(\\w+)"));
@@ -470,13 +463,12 @@ void KateWordCompletionView::complete(bool fw)
     QString ln = doc->line(d->dcCursor.line());
 
     while (true) {
-        //qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->wordRegEx.pattern()<<" "<<ln<<" at "<<d->dcCursor;
+        // qCDebug(LOG_KTE)<<"SEARCHING FOR "<<d->wordRegEx.pattern()<<" "<<ln<<" at "<<d->dcCursor;
         QRegularExpressionMatch match;
-        pos = fw ? ln.indexOf(d->wordRegEx, d->dcCursor.column(), &match)
-                 : ln.lastIndexOf(d->wordRegEx, d->dcCursor.column(), &match);
+        pos = fw ? ln.indexOf(d->wordRegEx, d->dcCursor.column(), &match) : ln.lastIndexOf(d->wordRegEx, d->dcCursor.column(), &match);
 
         if (match.hasMatch()) { // we matched a word
-            //qCDebug(LOG_KTE)<<"USABLE MATCH";
+            // qCDebug(LOG_KTE)<<"USABLE MATCH";
             const QStringRef m = match.capturedRef(1);
             if (m != doc->text(*d->liRange) && (d->dcCursor.line() != d->dcRange.start().line() || pos != d->dcRange.start().column())) {
                 // we got good a match! replace text and return.
@@ -488,7 +480,7 @@ void KateWordCompletionView::complete(bool fw)
                 doc->replaceText(replaceRange, m.toString());
                 d->liRange->setRange(KTextEditor::Range(d->dcRange.end(), m.length()));
 
-                d->dcCursor.setColumn(pos);   // for next try
+                d->dcCursor.setColumn(pos); // for next try
 
                 d->isCompleting = false;
                 return;
@@ -496,8 +488,8 @@ void KateWordCompletionView::complete(bool fw)
 
             // equal to last one, continue
             else {
-                //qCDebug(LOG_KTE)<<"SKIPPING, EQUAL MATCH";
-                d->dcCursor.setColumn(pos);   // for next try
+                // qCDebug(LOG_KTE)<<"SKIPPING, EQUAL MATCH";
+                d->dcCursor.setColumn(pos); // for next try
 
                 if (fw) {
                     d->dcCursor.setColumn(pos + m.length());
@@ -522,8 +514,8 @@ void KateWordCompletionView::complete(bool fw)
         }
 
         else { // no match
-            //qCDebug(LOG_KTE)<<"NO MATCH";
-            if ((! fw && d->dcCursor.line() == 0) || (fw && d->dcCursor.line() >= doc->lines())) {
+            // qCDebug(LOG_KTE)<<"NO MATCH";
+            if ((!fw && d->dcCursor.line() == 0) || (fw && d->dcCursor.line() >= doc->lines())) {
                 return;
             }
 
@@ -542,7 +534,7 @@ void KateWordCompletionView::slotCursorMoved()
 
     d->dcRange = KTextEditor::Range::invalid();
 
-    disconnect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
+    disconnect(m_view, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(slotCursorMoved()));
 
     d->liRange->setView(nullptr);
     d->liRange->setRange(KTextEditor::Range::invalid());
@@ -582,4 +574,4 @@ KTextEditor::Range KateWordCompletionView::range() const
 {
     return m_dWCompletionModel->completionRange(m_view, m_view->cursorPosition());
 }
-//END
+// END

@@ -29,7 +29,10 @@
 #include <ktexteditor/cursor.h>
 
 class QTextLayout;
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateTextLayout;
 class KateRenderer;
 
@@ -50,10 +53,10 @@ public:
 
     bool includesCursor(const KTextEditor::Cursor &realCursor) const;
 
-    friend bool operator> (const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator>= (const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator< (const KateLineLayout &r, const KTextEditor::Cursor &c);
-    friend bool operator<= (const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator>(const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator>=(const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator<(const KateLineLayout &r, const KTextEditor::Cursor &c);
+    friend bool operator<=(const KateLineLayout &r, const KTextEditor::Cursor &c);
 
     const Kate::TextLine &textLine(bool forceReload = false) const;
     int length() const;

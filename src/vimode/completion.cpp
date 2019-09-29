@@ -24,9 +24,9 @@
 using namespace KateVi;
 
 Completion::Completion(const QString &completedText, bool removeTail, CompletionType completionType)
-    : m_completedText(completedText),
-      m_removeTail(removeTail),
-      m_completionType(completionType)
+    : m_completedText(completedText)
+    , m_removeTail(removeTail)
+    , m_completionType(completionType)
 {
     if (m_completionType == FunctionWithArgs || m_completionType == FunctionWithoutArgs) {
         qCDebug(LOG_KTE) << "Completing a function while not removing tail currently unsupported; will remove tail instead";

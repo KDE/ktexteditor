@@ -20,7 +20,7 @@
  *
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "scripting_test.h"
 
 #include "kateview.h"
@@ -52,7 +52,7 @@
 
 QTEST_MAIN(ScriptingTest)
 
-#define FAILURE( test, comment ) qMakePair<const char*, const char*>( (test), (comment) )
+#define FAILURE(test, comment) qMakePair<const char *, const char *>((test), (comment))
 
 void ScriptingTest::initTestCase()
 {

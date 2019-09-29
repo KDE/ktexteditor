@@ -29,9 +29,10 @@
 #include <QStringList>
 #include <QSharedPointer>
 
-namespace KTextEditor {
-    class DocumentPrivate;
-    class ViewPrivate;
+namespace KTextEditor
+{
+class DocumentPrivate;
+class ViewPrivate;
 }
 
 /**
@@ -40,7 +41,6 @@ namespace KTextEditor {
  */
 namespace KateCommands
 {
-
 /**
  * Support vim/sed style search and replace
  * @author Charles Samuels <charles@kde.org>
@@ -50,7 +50,8 @@ class SedReplace : public KTextEditor::Command
     static SedReplace *m_instance;
 
 protected:
-    SedReplace() : KTextEditor::Command({ QStringLiteral("s"), QStringLiteral("%s"), QStringLiteral("$s") })
+    SedReplace()
+        : KTextEditor::Command({QStringLiteral("s"), QStringLiteral("%s"), QStringLiteral("$s")})
     {
     }
 
@@ -75,8 +76,7 @@ public:
      * @param errorMsg error to return if no success
      * @return success
      */
-    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg,
-              const KTextEditor::Range &r) override;
+    bool exec(class KTextEditor::View *view, const QString &cmd, QString &errorMsg, const KTextEditor::Range &r) override;
 
     bool supportsRange(const QString &) override
     {
@@ -119,6 +119,7 @@ public:
         void replaceAllRemaining();
         QString currentMatchReplacementConfirmationMessage();
         QString finalStatusReportMessage();
+
     private:
         const QString m_findPattern;
         const QString m_replacePattern;
@@ -142,4 +143,3 @@ protected:
 
 } // namespace KateCommands
 #endif
-

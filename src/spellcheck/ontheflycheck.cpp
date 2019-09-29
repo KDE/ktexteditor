@@ -38,9 +38,9 @@
 
 #define ON_THE_FLY_DEBUG qCDebug(LOG_KTE)
 
-namespace {
-
-inline const QPair<KTextEditor::MovingRange *, QString>& invalidSpellCheckQueueItem()
+namespace
+{
+inline const QPair<KTextEditor::MovingRange *, QString> &invalidSpellCheckQueueItem()
 {
     static const auto item = QPair<KTextEditor::MovingRange *, QString>(nullptr, QString());
     return item;
@@ -49,11 +49,11 @@ inline const QPair<KTextEditor::MovingRange *, QString>& invalidSpellCheckQueueI
 }
 
 KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
-    : QObject(document),
-      m_document(document),
-      m_backgroundChecker(nullptr),
-      m_currentlyCheckedItem(invalidSpellCheckQueueItem()),
-      m_refreshView(nullptr)
+    : QObject(document)
+    , m_document(document)
+    , m_backgroundChecker(nullptr)
+    , m_currentlyCheckedItem(invalidSpellCheckQueueItem())
+    , m_refreshView(nullptr)
 {
     ON_THE_FLY_DEBUG << "created";
 
@@ -61,21 +61,13 @@ KateOnTheFlyChecker::KateOnTheFlyChecker(KTextEditor::DocumentPrivate *document)
     m_viewRefreshTimer->setSingleShot(true);
     connect(m_viewRefreshTimer, SIGNAL(timeout()), this, SLOT(viewRefreshTimeout()));
 
-    connect(document, &KTextEditor::DocumentPrivate::textInserted,
-            this, &KateOnTheFlyChecker::textInserted);
-    connect(document, &KTextEditor::DocumentPrivate::textRemoved,
-            this, &KateOnTheFlyChecker::textRemoved);
-    connect(document, SIGNAL(viewCreated(KTextEditor::Document*,KTextEditor::View*)),
-            this, SLOT(addView(KTextEditor::Document*,KTextEditor::View*)));
-    connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document*)),
-            this, SLOT(updateConfig()));
-    connect(&document->buffer(), SIGNAL(respellCheckBlock(int,int)),
-            this, SLOT(handleRespellCheckBlock(int,int)));
+    connect(document, &KTextEditor::DocumentPrivate::textInserted, this, &KateOnTheFlyChecker::textInserted);
+    connect(document, &KTextEditor::DocumentPrivate::textRemoved, this, &KateOnTheFlyChecker::textRemoved);
+    connect(document, SIGNAL(viewCreated(KTextEditor::Document *, KTextEditor::View *)), this, SLOT(addView(KTextEditor::Document *, KTextEditor::View *)));
+    connect(document, SIGNAL(highlightingModeChanged(KTextEditor::Document *)), this, SLOT(updateConfig()));
+    connect(&document->buffer(), SIGNAL(respellCheckBlock(int, int)), this, SLOT(handleRespellCheckBlock(int, int)));
 
-    connect(document, &KTextEditor::Document::reloaded,
-            this, [this](KTextEditor::Document *) {
-                        refreshSpellCheck();
-            });
+    connect(document, &KTextEditor::Document::reloaded, this, [this](KTextEditor::Document *) { refreshSpellCheck(); });
 
     // load the settings for the speller
     updateConfig();
@@ -198,8 +190,7 @@ void KateOnTheFlyChecker::handleInsertedText(const KTextEditor::Range &range)
             spellCheckInProgress = false;
         }
     }
-    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin();
-            i != m_spellCheckQueue.end();) {
+    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin(); i != m_spellCheckQueue.end();) {
         KTextEditor::MovingRange *spellCheckRange = (*i).first;
         if (spellCheckRange->contains(consideredRange)) {
             consideredRange = *spellCheckRange;
@@ -219,8 +210,7 @@ void KateOnTheFlyChecker::handleInsertedText(const KTextEditor::Range &range)
             ++i;
         }
     }
-    KTextEditor::Range spellCheckRange = findWordBoundaries(consideredRange.start(),
-                                         consideredRange.end());
+    KTextEditor::Range spellCheckRange = findWordBoundaries(consideredRange.start(), consideredRange.end());
     const bool emptyAtStart = m_spellCheckQueue.isEmpty();
 
     queueSpellCheckVisibleRange(spellCheckRange);
@@ -243,7 +233,7 @@ void KateOnTheFlyChecker::textRemoved(KTextEditor::Document *document, const KTe
     // don't consider a range that is behind the end of the document
     const KTextEditor::Range documentIntersection = m_document->documentRange().intersect(range);
     if (!documentIntersection.isValid()) { // the intersection might however be empty if the last
-        return;                             // word has been removed, for example
+        return;                            // word has been removed, for example
     }
 
     // for performance reasons we only want to schedule spellchecks for ranges that are visible
@@ -271,12 +261,10 @@ inline bool rangesAdjacent(const KTextEditor::Range &r1, const KTextEditor::Rang
 
 void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
 {
-
     ON_THE_FLY_DEBUG << range;
 
     QList<KTextEditor::Range> rangesToReCheck;
-    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin();
-            i != m_spellCheckQueue.end();) {
+    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin(); i != m_spellCheckQueue.end();) {
         KTextEditor::MovingRange *spellCheckRange = (*i).first;
         if (rangesAdjacent(*spellCheckRange, range) || spellCheckRange->contains(range)) {
             ON_THE_FLY_DEBUG << "erasing range " << *i;
@@ -294,9 +282,7 @@ void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
     if (spellCheckInProgress) {
         KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.first;
         ON_THE_FLY_DEBUG << *spellCheckRange;
-        if (m_document->documentRange().contains(*spellCheckRange)
-                && (rangesAdjacent(*spellCheckRange, range) || spellCheckRange->contains(range))
-                && !spellCheckRange->isEmpty()) {
+        if (m_document->documentRange().contains(*spellCheckRange) && (rangesAdjacent(*spellCheckRange, range) || spellCheckRange->contains(range)) && !spellCheckRange->isEmpty()) {
             rangesToReCheck.push_back(*spellCheckRange);
             ON_THE_FLY_DEBUG << "added the range " << *spellCheckRange;
             stopCurrentSpellCheck();
@@ -318,7 +304,7 @@ void KateOnTheFlyChecker::handleRemovedText(const KTextEditor::Range &range)
     queueSpellCheckVisibleRange(spellCheckRange);
 
     if (range.numberOfLines() > 0) {
-        //FIXME: there is no currently no way of doing this better as we only get notifications for removals of
+        // FIXME: there is no currently no way of doing this better as we only get notifications for removals of
         //       of single lines, i.e. we don't know here how many lines have been removed in total
         KTextEditor::Cursor nextLineStart(spellCheckEnd.line() + 1, 0);
         const KTextEditor::Cursor documentEnd = m_document->documentEnd();
@@ -348,8 +334,7 @@ void KateOnTheFlyChecker::freeDocument()
     ON_THE_FLY_DEBUG;
 
     // empty the spell check queue
-    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin();
-            i != m_spellCheckQueue.end();) {
+    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin(); i != m_spellCheckQueue.end();) {
         ON_THE_FLY_DEBUG << "erasing range " << *i;
         KTextEditor::MovingRange *movingRange = (*i).first;
         deleteMovingRangeQuickly(movingRange);
@@ -391,12 +376,10 @@ void KateOnTheFlyChecker::performSpellCheck()
 
     m_currentDecToEncOffsetList.clear();
     KTextEditor::DocumentPrivate::OffsetList encToDecOffsetList;
-    QString text = m_document->decodeCharacters(*spellCheckRange,
-                   m_currentDecToEncOffsetList,
-                   encToDecOffsetList);
+    QString text = m_document->decodeCharacters(*spellCheckRange, m_currentDecToEncOffsetList, encToDecOffsetList);
     ON_THE_FLY_DEBUG << "next spell checking" << text;
     if (text.isEmpty()) { // passing an empty string to Sonnet can lead to a bad allocation exception
-        spellCheckDone();  // (bug 225867)
+        spellCheckDone(); // (bug 225867)
         return;
     }
     if (m_speller.language() != language) {
@@ -404,17 +387,12 @@ void KateOnTheFlyChecker::performSpellCheck()
     }
     if (!m_backgroundChecker) {
         m_backgroundChecker = new Sonnet::BackgroundChecker(m_speller, this);
-        connect(m_backgroundChecker,
-                SIGNAL(misspelling(QString,int)),
-                this,
-                SLOT(misspelling(QString,int)));
+        connect(m_backgroundChecker, SIGNAL(misspelling(QString, int)), this, SLOT(misspelling(QString, int)));
         connect(m_backgroundChecker, SIGNAL(done()), this, SLOT(spellCheckDone()));
 
         KateSpellCheckManager *m_spellCheckManager = KTextEditor::EditorPrivate::self()->spellCheckManager();
-        connect(m_spellCheckManager, &KateSpellCheckManager::wordAddedToDictionary,
-                this, &KateOnTheFlyChecker::addToDictionary);
-        connect(m_spellCheckManager, &KateSpellCheckManager::wordIgnored,
-                this, &KateOnTheFlyChecker::addToSession);
+        connect(m_spellCheckManager, &KateSpellCheckManager::wordAddedToDictionary, this, &KateOnTheFlyChecker::addToDictionary);
+        connect(m_spellCheckManager, &KateSpellCheckManager::wordIgnored, this, &KateOnTheFlyChecker::addToSession);
     }
     m_backgroundChecker->setSpeller(m_speller);
     m_backgroundChecker->setText(text); // don't call 'start()' after this!
@@ -433,7 +411,6 @@ void KateOnTheFlyChecker::addToSession(const QString &word)
         m_backgroundChecker->addWordToSession(word);
     }
 }
-
 
 void KateOnTheFlyChecker::removeRangeFromEverything(KTextEditor::MovingRange *movingRange)
 {
@@ -461,8 +438,7 @@ void KateOnTheFlyChecker::removeRangeFromEverything(KTextEditor::MovingRange *mo
 
 bool KateOnTheFlyChecker::removeRangeFromCurrentSpellCheck(KTextEditor::MovingRange *range)
 {
-    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem()
-            && m_currentlyCheckedItem.first == range) {
+    if (m_currentlyCheckedItem != invalidSpellCheckQueueItem() && m_currentlyCheckedItem.first == range) {
         stopCurrentSpellCheck();
         return true;
     }
@@ -487,8 +463,7 @@ bool KateOnTheFlyChecker::removeRangeFromSpellCheckQueue(KTextEditor::MovingRang
         return true;
     }
     bool found = false;
-    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin();
-            i != m_spellCheckQueue.end();) {
+    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin(); i != m_spellCheckQueue.end();) {
         if ((*i).first == range) {
             i = m_spellCheckQueue.erase(i);
             found = true;
@@ -549,7 +524,7 @@ void KateOnTheFlyChecker::deleteMovingRange(KTextEditor::MovingRange *range)
     for (KTextEditor::View *view : views) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
-    delete(range);
+    delete (range);
 }
 
 void KateOnTheFlyChecker::deleteMovingRanges(const QList<KTextEditor::MovingRange *> &list)
@@ -559,13 +534,12 @@ void KateOnTheFlyChecker::deleteMovingRanges(const QList<KTextEditor::MovingRang
     }
 }
 
-KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cursor &begin,
-        const KTextEditor::Cursor &end)
+KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cursor &begin, const KTextEditor::Cursor &end)
 {
     // FIXME: QTextBoundaryFinder should be ideally used for this, but it is currently
     //        still broken in Qt
     const QRegExp boundaryRegExp(QLatin1String("\\b"));
-    const QRegExp boundaryQuoteRegExp(QLatin1String("\\b\\w+'\\w*$"));  // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
+    const QRegExp boundaryQuoteRegExp(QLatin1String("\\b\\w+'\\w*$")); // handle spell checking of QLatin1String("isn't"), QLatin1String("doesn't"), etc.
     const QRegExp extendedBoundaryRegExp(QLatin1String("(\\W|$)"));
     const QRegExp extendedBoundaryQuoteRegExp(QLatin1String("^\\w*'\\w+\\b")); // see above
     KTextEditor::DocumentPrivate::OffsetList decToEncOffsetList, encToDecOffsetList;
@@ -574,11 +548,8 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     KTextEditor::Cursor boundaryStart, boundaryEnd;
     // first we take care of the start position
     const KTextEditor::Range startLineRange(startLine, 0, startLine, m_document->lineLength(startLine));
-    QString decodedLineText = m_document->decodeCharacters(startLineRange,
-                              decToEncOffsetList,
-                              encToDecOffsetList);
-    int translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList,
-                           startColumn);
+    QString decodedLineText = m_document->decodeCharacters(startLineRange, decToEncOffsetList, encToDecOffsetList);
+    int translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList, startColumn);
     QString text = decodedLineText.mid(0, translatedColumn);
     boundaryStart.setLine(startLine);
     int match = text.lastIndexOf(boundaryQuoteRegExp);
@@ -593,12 +564,9 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
         decToEncOffsetList.clear();
         encToDecOffsetList.clear();
         const KTextEditor::Range endLineRange(endLine, 0, endLine, m_document->lineLength(endLine));
-        decodedLineText = m_document->decodeCharacters(endLineRange,
-                          decToEncOffsetList,
-                          encToDecOffsetList);
+        decodedLineText = m_document->decodeCharacters(endLineRange, decToEncOffsetList, encToDecOffsetList);
     }
-    translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList,
-                       endColumn);
+    translatedColumn = m_document->computePositionWrtOffsets(encToDecOffsetList, endColumn);
     text = decodedLineText.mid(translatedColumn);
     boundaryEnd.setLine(endLine);
     match = extendedBoundaryQuoteRegExp.indexIn(text);
@@ -607,8 +575,7 @@ KTextEditor::Range KateOnTheFlyChecker::findWordBoundaries(const KTextEditor::Cu
     } else {
         match = extendedBoundaryRegExp.indexIn(text);
     }
-    boundaryEnd.setColumn(m_document->computePositionWrtOffsets(decToEncOffsetList,
-                          translatedColumn + qMax(0, match)));
+    boundaryEnd.setColumn(m_document->computePositionWrtOffsets(decToEncOffsetList, translatedColumn + qMax(0, match)));
     return KTextEditor::Range(boundaryStart, boundaryEnd);
 }
 
@@ -618,24 +585,18 @@ void KateOnTheFlyChecker::misspelling(const QString &word, int start)
         ON_THE_FLY_DEBUG << "exited as no spell check is taking place";
         return;
     }
-    int translatedStart = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList,
-                          start);
-//   ON_THE_FLY_DEBUG << "misspelled " << word
-//                                     << " at line "
-//                                     << *m_currentlyCheckedItem.first
-//                                     << " column " << start;
+    int translatedStart = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList, start);
+    //   ON_THE_FLY_DEBUG << "misspelled " << word
+    //                                     << " at line "
+    //                                     << *m_currentlyCheckedItem.first
+    //                                     << " column " << start;
 
     KTextEditor::MovingRange *spellCheckRange = m_currentlyCheckedItem.first;
     int line = spellCheckRange->start().line();
     int rangeStart = spellCheckRange->start().column();
-    int translatedEnd = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList,
-                        start + word.length());
+    int translatedEnd = m_document->computePositionWrtOffsets(m_currentDecToEncOffsetList, start + word.length());
 
-    KTextEditor::MovingRange *movingRange =
-        m_document->newMovingRange(KTextEditor::Range(line,
-                                   rangeStart + translatedStart,
-                                   line,
-                                   rangeStart + translatedEnd));
+    KTextEditor::MovingRange *movingRange = m_document->newMovingRange(KTextEditor::Range(line, rangeStart + translatedStart, line, rangeStart + translatedEnd));
     movingRange->setFeedback(this);
     KTextEditor::Attribute *attribute = new KTextEditor::Attribute();
     attribute->setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
@@ -672,8 +633,7 @@ QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(con
     ON_THE_FLY_DEBUG << range;
     MovingRangeList toReturn;
 
-    for (QList<SpellCheckItem>::iterator i = m_misspelledList.begin();
-            i != m_misspelledList.end(); ++i) {
+    for (QList<SpellCheckItem>::iterator i = m_misspelledList.begin(); i != m_misspelledList.end(); ++i) {
         KTextEditor::MovingRange *movingRange = (*i).first;
         if (movingRange->overlaps(range)) {
             toReturn.push_back(movingRange);
@@ -685,7 +645,7 @@ QList<KTextEditor::MovingRange *> KateOnTheFlyChecker::installedMovingRanges(con
 void KateOnTheFlyChecker::updateConfig()
 {
     ON_THE_FLY_DEBUG;
-    //m_speller.restore();
+    // m_speller.restore();
 }
 
 void KateOnTheFlyChecker::refreshSpellCheck(const KTextEditor::Range &range)
@@ -703,8 +663,8 @@ void KateOnTheFlyChecker::addView(KTextEditor::Document *document, KTextEditor::
     Q_ASSERT(document == m_document);
     Q_UNUSED(document);
     ON_THE_FLY_DEBUG;
-    connect(view, SIGNAL(destroyed(QObject*)), this, SLOT(viewDestroyed(QObject*)));
-    connect(view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(restartViewRefreshTimer(KTextEditor::ViewPrivate*)));
+    connect(view, SIGNAL(destroyed(QObject *)), this, SLOT(viewDestroyed(QObject *)));
+    connect(view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), this, SLOT(restartViewRefreshTimer(KTextEditor::ViewPrivate *)));
     updateInstalledMovingRanges(static_cast<KTextEditor::ViewPrivate *>(view));
 }
 
@@ -796,12 +756,9 @@ void KateOnTheFlyChecker::queueSpellCheckVisibleRange(KTextEditor::ViewPrivate *
     const MovingRangeList highlightsList = installedMovingRanges(intersection);
     deleteMovingRanges(highlightsList);
 
-    QList<QPair<KTextEditor::Range, QString> > spellCheckRanges
-        = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(m_document,
-                intersection,
-                true);
-    //we queue them up in reverse
-    QListIterator<QPair<KTextEditor::Range, QString> > i(spellCheckRanges);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(m_document, intersection, true);
+    // we queue them up in reverse
+    QListIterator<QPair<KTextEditor::Range, QString>> i(spellCheckRanges);
     i.toBack();
     while (i.hasPrevious()) {
         QPair<KTextEditor::Range, QString> p = i.previous();
@@ -818,12 +775,9 @@ void KateOnTheFlyChecker::queueLineSpellCheck(KTextEditor::DocumentPrivate *kate
     const MovingRangeList highlightsList = installedMovingRanges(range);
     deleteMovingRanges(highlightsList);
 
-    QList<QPair<KTextEditor::Range, QString> > spellCheckRanges
-        = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(kateDocument,
-                range,
-                true);
-    //we queue them up in reverse
-    QListIterator<QPair<KTextEditor::Range, QString> > i(spellCheckRanges);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges = KTextEditor::EditorPrivate::self()->spellCheckManager()->spellCheckRanges(kateDocument, range, true);
+    // we queue them up in reverse
+    QListIterator<QPair<KTextEditor::Range, QString>> i(spellCheckRanges);
     i.toBack();
     while (i.hasPrevious()) {
         QPair<KTextEditor::Range, QString> p = i.previous();
@@ -856,8 +810,7 @@ void KateOnTheFlyChecker::addToSpellCheckQueue(KTextEditor::MovingRange *range, 
     range->setFeedback(this);
 
     // if the queue contains a subrange of 'range', we remove that one
-    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin();
-            i != m_spellCheckQueue.end();) {
+    for (QList<SpellCheckItem>::iterator i = m_spellCheckQueue.begin(); i != m_spellCheckQueue.end();) {
         KTextEditor::MovingRange *spellCheckRange = (*i).first;
         if (range->contains(*spellCheckRange)) {
             deleteMovingRangeQuickly(spellCheckRange);
@@ -868,9 +821,7 @@ void KateOnTheFlyChecker::addToSpellCheckQueue(KTextEditor::MovingRange *range, 
     }
     // leave 'push_front' here as it is a LIFO queue, i.e. a stack
     m_spellCheckQueue.push_front(SpellCheckItem(range, dictionary));
-    ON_THE_FLY_DEBUG << "added"
-                     << *range << dictionary
-                     << "to the queue, which has a length of" << m_spellCheckQueue.size();
+    ON_THE_FLY_DEBUG << "added" << *range << dictionary << "to the queue, which has a length of" << m_spellCheckQueue.size();
 }
 
 void KateOnTheFlyChecker::viewRefreshTimeout()
@@ -883,7 +834,7 @@ void KateOnTheFlyChecker::viewRefreshTimeout()
 
 void KateOnTheFlyChecker::restartViewRefreshTimer(KTextEditor::ViewPrivate *view)
 {
-    if (m_refreshView && view != m_refreshView) { // a new view should be refreshed
+    if (m_refreshView && view != m_refreshView) {   // a new view should be refreshed
         updateInstalledMovingRanges(m_refreshView); // so refresh the old one first
     }
     m_refreshView = view;
@@ -897,7 +848,7 @@ void KateOnTheFlyChecker::deleteMovingRangeQuickly(KTextEditor::MovingRange *ran
     for (KTextEditor::View *view : views) {
         static_cast<KTextEditor::ViewPrivate *>(view)->spellingMenu()->rangeDeleted(range);
     }
-    delete(range);
+    delete (range);
 }
 
 void KateOnTheFlyChecker::handleModifiedRanges()

@@ -26,8 +26,10 @@ class QTableWidget;
 
 namespace KateVi
 {
-
-namespace Ui { class ConfigWidget; }
+namespace Ui
+{
+class ConfigWidget;
+}
 
 class ConfigTab : public KateConfigPage
 {

@@ -27,7 +27,7 @@
 
 namespace KTextEditor
 {
-    class View;
+class View;
 }
 
 /**
@@ -44,7 +44,7 @@ public:
     /**
      * Adds @p variable to the expansion list view.
      */
-    bool addVariable(const KTextEditor::Variable& variable);
+    bool addVariable(const KTextEditor::Variable &variable);
 
     /**
      * Removes variable @p name.
@@ -61,11 +61,11 @@ public:
      */
     const QVector<KTextEditor::Variable> &variables() const;
 
-    bool expandVariable(const QString& variable, KTextEditor::View* view, QString& output) const;
+    bool expandVariable(const QString &variable, KTextEditor::View *view, QString &output) const;
 
-    QString expandText(const QString& text, KTextEditor::View* view) const;
+    QString expandText(const QString &text, KTextEditor::View *view) const;
 
-    void showDialog(const QVector<QWidget*>& widgets, const QStringList& names) const;
+    void showDialog(const QVector<QWidget *> &widgets, const QStringList &names) const;
 
 private:
     QVector<KTextEditor::Variable> m_variables;

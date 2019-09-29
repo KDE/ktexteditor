@@ -18,7 +18,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include "modes.h"
 #include <katebuffer.h>
 #include <kateconfig.h>
@@ -26,10 +25,9 @@
 
 using namespace KTextEditor;
 
-
 QTEST_MAIN(ModesTest)
 
-//BEGIN: Normal mode.
+// BEGIN: Normal mode.
 
 void ModesTest::NormalMotionsTests()
 {
@@ -37,7 +35,7 @@ void ModesTest::NormalMotionsTests()
     DoTest("", "jkhl", "");
     DoTest("", "ggG$0", "");
 
-    //Testing "l"
+    // Testing "l"
     DoTest("bar", "lx", "br");
     DoTest("bar", "2lx", "ba");
     DoTest("0123456789012345", "13lx", "012345678901245");
@@ -53,16 +51,12 @@ void ModesTest::NormalMotionsTests()
     DoTest("bar\nbar", "jx", "bar\nar");
     DoTest("bar\nbar", "10jx", "bar\nar");
     DoTest("bar\nbara", "lljx", "bar\nbaa");
-    DoTest("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n",
-           "13jx",
-           "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n\n4\n5\n");
+    DoTest("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n", "13jx", "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n\n4\n5\n");
 
     // Testing "k"
     DoTest("bar\nbar", "jx", "bar\nar");
     DoTest("bar\nbar\nbar", "jj100kx", "ar\nbar\nbar");
-    DoTest("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n",
-           "13j10kx",
-           "0\n1\n2\n\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n");
+    DoTest("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n", "13j10kx", "0\n1\n2\n\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n");
 
     // Testing "w"
     DoTest("bar", "wx", "ba");
@@ -119,12 +113,12 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo bar foo bar", "#xlll#x", "foo ar oo bar");
     DoTest("(foo (bar (foo( bar))))", "#xll#x", "(foo (ar (oo( bar))))");
     DoTest("(foo (bar (foo( bar))))", "*x", "(foo (bar (oo( bar))))");
-    DoTest("foo bar foobar foo", "*rX", "foo bar foobar Xoo"); // Whole word only.
+    DoTest("foo bar foobar foo", "*rX", "foo bar foobar Xoo");  // Whole word only.
     DoTest("foo bar foobar foo", "$#rX", "Xoo bar foobar foo"); // Whole word only.
-    DoTest("fOo foo fOo", "*rX", "fOo Xoo fOo"); // Case insensitive.
-    DoTest("fOo foo fOo", "$#rX", "fOo Xoo fOo"); // Case insensitive.
-    DoTest("fOo foo fOo", "*ggnrX", "fOo Xoo fOo"); // Flag that the search to repeat is case insensitive.
-    DoTest("fOo foo fOo", "$#ggNrX", "fOo Xoo fOo"); // Flag that the search to repeat is case insensitive.
+    DoTest("fOo foo fOo", "*rX", "fOo Xoo fOo");                // Case insensitive.
+    DoTest("fOo foo fOo", "$#rX", "fOo Xoo fOo");               // Case insensitive.
+    DoTest("fOo foo fOo", "*ggnrX", "fOo Xoo fOo");             // Flag that the search to repeat is case insensitive.
+    DoTest("fOo foo fOo", "$#ggNrX", "fOo Xoo fOo");            // Flag that the search to repeat is case insensitive.
     DoTest("bar foo", "$*rX", "bar Xoo");
     DoTest("bar foo", "$#rX", "bar Xoo");
     // Test that calling # on the last, blank line of a document does not go into an infinite loop.
@@ -175,21 +169,13 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo(bar)", "y%P", "foo(bar)foo(bar)");
 
     // Testing percentage "<N>%"
-    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%",
-           "20%dd",
-           "10%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");
+    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%", "20%dd", "10%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");
 
-    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%",
-           "50%dd",
-           "10%\n20%\n30%\n40%\n60%\n70%\n80%\n90%\n100%");
+    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%", "50%dd", "10%\n20%\n30%\n40%\n60%\n70%\n80%\n90%\n100%");
 
-    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70\n80%\n90%\n100%",
-           "65%dd",
-           "10%\n20%\n30%\n40%\n50%\n60%\n80%\n90%\n100%");
+    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70\n80%\n90%\n100%", "65%dd", "10%\n20%\n30%\n40%\n50%\n60%\n80%\n90%\n100%");
 
-    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%",
-           "5j10%dd",
-           "20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");
+    DoTest("10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%", "5j10%dd", "20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%");
 
     // ctrl-left and ctrl-right.
     DoTest("foo bar xyz", "\\ctrl-\\rightrX", "foo Xar xyz");
@@ -200,68 +186,36 @@ void ModesTest::NormalMotionsTests()
     DoTest("foo\n\t \t bar", "\\returnr.", "foo\n\t \t .ar");
 
     // TEXT OBJECTS
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lci'",
-           "foo \"bar baz ('first', '' or 'third')\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lci'", "foo \"bar baz ('first', '' or 'third')\"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lca'",
-           "foo \"bar baz ('first',  or 'third')\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lca'", "foo \"bar baz ('first',  or 'third')\"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lci(",
-           "foo \"bar baz ()\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lci(", "foo \"bar baz ()\"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lci(",
-           "foo \"bar baz ()\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lci(", "foo \"bar baz ()\"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lcib",
-           "foo \"bar baz ()\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lcib", "foo \"bar baz ()\"");
     // Quick test that bracket object works in visual mode.
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lvibd",
-           "foo \"bar baz ()\"");
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lvabd",
-           "foo \"bar baz \"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lvibd", "foo \"bar baz ()\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lvabd", "foo \"bar baz \"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lca)",
-           "foo \"bar baz \"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lca)", "foo \"bar baz \"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lci\"",
-           "foo \"\"");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lci\"", "foo \"\"");
 
-    DoTest("foo \"bar baz ('first', 'second' or 'third')\"",
-           "8w2lda\"",
-           "foo ");
+    DoTest("foo \"bar baz ('first', 'second' or 'third')\"", "8w2lda\"", "foo ");
 
-    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"",
-           "9w2lci[",
-           "foo \"bar []\"");
+    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"", "9w2lci[", "foo \"bar []\"");
 
-    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"",
-           "9w2lci]",
-           "foo \"bar []\"");
+    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"", "9w2lci]", "foo \"bar []\"");
 
-    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"",
-           "9w2lca[",
-           "foo \"bar \"");
+    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"", "9w2lca[", "foo \"bar \"");
 
-    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"",
-           "9w2lci{",
-           "foo \"bar [baz ({} or 'third')]\"");
+    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"", "9w2lci{", "foo \"bar [baz ({} or 'third')]\"");
 
-    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"",
-           "7w2lca}",
-           "foo \"bar [baz ( or 'third')]\"");
+    DoTest("foo \"bar [baz ({'first', 'second'} or 'third')]\"", "7w2lca}", "foo \"bar [baz ( or 'third')]\"");
 
-    DoTest("{foo { bar { (baz) \"asd\" }} {1} {2} {3} {4} {5} }",
-           "ldiB",
-           "{}");
+    DoTest("{foo { bar { (baz) \"asd\" }} {1} {2} {3} {4} {5} }", "ldiB", "{}");
 
     // Inner/ A Word.
     DoTest("", "diw", "");
@@ -557,15 +511,11 @@ void ModesTest::NormalMotionsTests()
     DoTest("{\nfoo\n}", "jciBbaz xyz\\escdiw", "{\nbaz \n}");
     DoTest("{\nfoo\nbar\n}", "jviBbd", "{\nar\n}");
 
-    DoTest("int main() {\n  printf( \"HelloWorld!\\n\" );\n  return 0;\n} ",
-           "jda}xr;",
-           "int main();");
+    DoTest("int main() {\n  printf( \"HelloWorld!\\n\" );\n  return 0;\n} ", "jda}xr;", "int main();");
 
     DoTest("QList<QString>", "wwldi>", "QList<>");
     DoTest("QList<QString>", "wwlda<", "QList");
-    DoTest("<>\n<title>Title</title>\n</head>",
-           "di<jci>\\ctrl-c",
-           "<>\n<>Title</title>\n</head>");
+    DoTest("<>\n<title>Title</title>\n</head>", "di<jci>\\ctrl-c", "<>\n<>Title</title>\n</head>");
 
     DoTest("foo bar baz", "wldiw", "foo  baz");
 
@@ -697,7 +647,6 @@ void ModesTest::NormalMotionsTests()
     // counted find on change/deletion != find digit
     DoTest("foo2barbaz", "df2ax", "bxarbaz");
     DoTest("foo2barbaz", "d2fax", "");
-
 
     // Motion to lines starting with { or }
     DoTest("{\nfoo\n}", "][x", "{\nfoo\n");
@@ -869,12 +818,8 @@ void ModesTest::NormalCommandsTests()
     // Testing "Ctrl-o" and "Ctrl-i"
     DoTest("abc\ndef\nghi", "Gx\\ctrl-ox", "bc\ndef\nhi");
     DoTest("{\n}", "%\\ctrl-ox", "\n}");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.",
-           "lmajlmb`a`b\\ctrl-ox",
-           "Fo foo.\nBar bar.\nBaz baz.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.",
-           "lmajlmb`a`bj\\ctrl-o\\ctrl-ix",
-           "Foo foo.\nBar bar.\nBa baz.");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "lmajlmb`a`b\\ctrl-ox", "Fo foo.\nBar bar.\nBaz baz.");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "lmajlmb`a`bj\\ctrl-o\\ctrl-ix", "Foo foo.\nBar bar.\nBa baz.");
 
     // Testing "gq" (reformat) text
     DoTest("foo\nbar", "gqq", "foo\nbar");
@@ -928,7 +873,7 @@ void ModesTest::NormalCommandsTests()
     // [p behaves as ordinary Paste (P) if not linewise, and on unindented line.
     DoTest("foo bar", "wyiwgg[p", "barfoo bar");
     // [p behaves as ordinary Paste (P) if not linewise, even on indented line.
-    DoTest("  foo bar", "wwyiw0w[p",   "  barfoo bar");
+    DoTest("  foo bar", "wwyiw0w[p", "  barfoo bar");
     // Prepend the spaces from the current line to the beginning of a single, pasted line.
     DoTest("  foo bar\nxyz", "jVygg]p", "  foo bar\n  xyz\nxyz");
     // Prepend the spaces from the current line to the beginning of each pasted line.
@@ -1032,15 +977,15 @@ void ModesTest::NormalNotYetImplementedFeaturesTests()
     QSKIP("This tests never worked :(", SkipAll);
 
     // Testing "))"
-    DoTest("Foo foo. Bar bar.","))\\ctrl-ox","Foo foo. ar bar.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.",")))\\ctrl-ox\\ctrl-ox", "Foo foo.\nar bar.\nBaz baz.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.","))\\ctrl-ox\\ctrl-ix","Foo foo.\nBar bar.\naz baz.");
-    DoTest("Foo foo.\nBar bar.\nBaz baz.","))\\ctrl-ox\\ctrl-ix","Foo foo.\nBar bar.\naz baz.");
+    DoTest("Foo foo. Bar bar.", "))\\ctrl-ox", "Foo foo. ar bar.");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", ")))\\ctrl-ox\\ctrl-ox", "Foo foo.\nar bar.\nBaz baz.");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.");
+    DoTest("Foo foo.\nBar bar.\nBaz baz.", "))\\ctrl-ox\\ctrl-ix", "Foo foo.\nBar bar.\naz baz.");
 }
 
-//END: Normal mode.
+// END: Normal mode.
 
-//BEGIN: Insert mode.
+// BEGIN: Insert mode.
 
 void ModesTest::InsertTests()
 {
@@ -1168,9 +1113,9 @@ void ModesTest::InsertKeysTests()
     DoTest("foo bar", "i\\home\\delete", "oo bar");
 }
 
-//END: Insert mode.
+// END: Insert mode.
 
-//BEGIN: Visual mode.
+// BEGIN: Visual mode.
 
 void ModesTest::VisualMotionsTests()
 {
@@ -1434,7 +1379,6 @@ void ModesTest::VisualExternalTests()
     QCOMPARE(kate_view->selectionText(), QString("Hola\nHello"));
     FinishTest("Hola\nHola\nHello\nHallo\n");
 
-
     // Test that, if kate_view has a selection before the Vi mode stuff is loaded, then we
     // end up in Visual Mode: this mimics what happens if we click on a Find result in
     // KDevelop's "grepview" plugin.
@@ -1470,9 +1414,9 @@ void ModesTest::VisualExternalTests()
     QCOMPARE((int)vi_input_mode_manager->getCurrentViMode(), (int)KateVi::NormalMode);
 }
 
-//END: Visual mode.
+// END: Visual mode.
 
-//BEGIN: Command mode.
+// BEGIN: Command mode.
 
 void ModesTest::CommandTests()
 {
@@ -1509,17 +1453,17 @@ void ModesTest::CommandTests()
     TestPressKey("\\:$c\\"); // Work around ambiguity in the code that parses commands to execute.
     TestPressKey("\\:$change\\");
     FinishTest("foo\nbar\n");
-    DoTest("foo\nbar\nbaz","ma\\:2,'achange\\","\nbaz");
+    DoTest("foo\nbar\nbaz", "ma\\:2,'achange\\", "\nbaz");
     DoTest("foo\nbar\nbaz", "\\:2,3c\\", "foo\n");
 
     // Testing ":j"
     DoTest("1\n2\n3\n4\n5", "\\:2,4j\\", "1\n2 3 4\n5");
 
-    DoTest("1\n2\n3\n4","jvj\\ctrl-c\\:'<,'>d\\enter","1\n4");
+    DoTest("1\n2\n3\n4", "jvj\\ctrl-c\\:'<,'>d\\enter", "1\n4");
     DoTest("1\n2\n3\n4", "\\:1+1+1+1d\\", "1\n2\n3");
-    DoTest("1\n2\n3\n4","2j\\:.,.-1d\\","1\n4");
+    DoTest("1\n2\n3\n4", "2j\\:.,.-1d\\", "1\n4");
     DoTest("1\n2\n3\n4", "\\:.+200-100-100+20-5-5-5-5+.-.,$-1+1-2+2-3+3-4+4-5+5-6+6-7+7-1000+1000+0-0-$+$-.+.-1d\\", "4");
-    DoTest("1\n2\n3\n4","majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\","");
+    DoTest("1\n2\n3\n4", "majmbjmcjmdgg\\:'a+'b+'d-'c,.d\\", "");
 }
 
 void ModesTest::CommandSedTests()
@@ -1536,7 +1480,7 @@ void ModesTest::CommandSedTests()
     DoTest("foo", "\\:s/$/x/g\\", "foox");
     DoTest("foo", "\\:s/.*/x/g\\", "x");
     DoTest("abc", "\\:s/\\\\s*/x/g\\", "xaxbxc");
-    //DoTest("abc\n123", "\\:s/\\\\s*/x/g\\", "xaxbxc\nx1x2x3"); // currently not working properly
+    // DoTest("abc\n123", "\\:s/\\\\s*/x/g\\", "xaxbxc\nx1x2x3"); // currently not working properly
 
     DoTest("foo/bar", "\\:s-/--\\", "foobar");
     DoTest("foo/bar", "\\:s_/__\\", "foobar");
@@ -1567,9 +1511,9 @@ void ModesTest::CommandDeleteTests()
     DoTest("foo\nbar\nbaz", "\\:3d a\\k\"ap", "foo\nbaz\nbar");
 }
 
-//END: Command mode.
+// END: Command mode.
 
-//BEGIN: Replace mode.
+// BEGIN: Replace mode.
 
 void ModesTest::ReplaceCharacter()
 {
@@ -1642,4 +1586,4 @@ void ModesTest::ReplaceInsertFromLineTests()
     DoTest("\tb\n", "jR\\ctrl-y\\ctrl-y", "\tb\n\tb");
 }
 
-//END: Replace mode.
+// END: Replace mode.

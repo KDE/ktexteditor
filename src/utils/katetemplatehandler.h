@@ -63,7 +63,7 @@ class MovingRange;
  * \author Milian Wolff <mail@milianw.de>
  */
 
-class KateTemplateHandler: public QObject
+class KateTemplateHandler : public QObject
 {
     Q_OBJECT
 
@@ -74,11 +74,7 @@ public:
      * NOTE: The handler deletes itself when required, you do not need to
      *       keep track of it.
      */
-    KateTemplateHandler(KTextEditor::ViewPrivate *view,
-                        KTextEditor::Cursor position,
-                        const QString &templateString,
-                        const QString& script,
-                        KateUndoManager *undoManager);
+    KateTemplateHandler(KTextEditor::ViewPrivate *view, KTextEditor::Cursor position, const QString &templateString, const QString &script, KateUndoManager *undoManager);
 
     ~KateTemplateHandler() override;
 
@@ -111,7 +107,7 @@ private:
     /**
      * Parse @p templateText and populate m_fields.
      */
-    void parseFields(const QString& templateText);
+    void parseFields(const QString &templateText);
 
     /**
      * Set necessary attributes (esp. background colour) on all moving
@@ -197,14 +193,14 @@ private Q_SLOTS:
     void updateDependentFields(KTextEditor::Document *document, const KTextEditor::Range &oldRange);
 
 public:
-    KTextEditor::ViewPrivate* view() const;
-    KTextEditor::DocumentPrivate* doc() const;
+    KTextEditor::ViewPrivate *view() const;
+    KTextEditor::DocumentPrivate *doc() const;
 
 private:
     /// The view we operate on
-    KTextEditor::ViewPrivate* m_view;
+    KTextEditor::ViewPrivate *m_view;
     /// The undo manager associated with our document
-    KateUndoManager* const m_undoManager;
+    KateUndoManager *const m_undoManager;
 
     // Describes a single template field, e.g. ${foo}.
     struct TemplateField {
@@ -215,16 +211,17 @@ private:
         // default value, if applicable; else empty
         QString defaultValue;
         enum Kind {
-            Invalid, // not an actual field
-            Editable, // normal, user-editable field (green by default) [non-dependent field]
-            Mirror, // field mirroring contents of another field [dependent field]
-            FunctionCall, // field containing the up-to-date result of a function call [dependent field]
+            Invalid,            // not an actual field
+            Editable,           // normal, user-editable field (green by default) [non-dependent field]
+            Mirror,             // field mirroring contents of another field [dependent field]
+            FunctionCall,       // field containing the up-to-date result of a function call [dependent field]
             FinalCursorPosition // field marking the final cursor position
         };
         Kind kind = Invalid;
         // true if this field was edited by the user before
         bool touched = false;
-        bool operator==(const TemplateField& other) {
+        bool operator==(const TemplateField &other)
+        {
             return range == other.range;
         }
     };
@@ -232,7 +229,7 @@ private:
     QVector<TemplateField> m_fields;
 
     // Get the template field which contains @p range.
-    const TemplateField fieldForRange(const KTextEditor::Range& range) const;
+    const TemplateField fieldForRange(const KTextEditor::Range &range) const;
 
     /// Construct a map of master fields and their current value, for use in scripts.
     KateScript::FieldMap fieldMap() const;
@@ -249,4 +246,3 @@ private:
 };
 
 #endif
-

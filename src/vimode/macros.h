@@ -28,7 +28,6 @@ class KConfigGroup;
 
 namespace KateVi
 {
-
 class KTEXTEDITOR_EXPORT Macros
 {
 public:

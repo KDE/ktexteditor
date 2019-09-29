@@ -67,8 +67,7 @@ void KateSpellCheckManager::addToDictionary(const QString &word, const QString &
     emit wordAddedToDictionary(word);
 }
 
-QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(const KTextEditor::Range &r1,
-        const KTextEditor::Range &r2)
+QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(const KTextEditor::Range &r1, const KTextEditor::Range &r2)
 {
     Q_ASSERT(r1.contains(r2));
     QList<KTextEditor::Range> toReturn;
@@ -85,19 +84,17 @@ QList<KTextEditor::Range> KateSpellCheckManager::rangeDifference(const KTextEdit
 
 namespace
 {
-bool lessThanRangeDictionaryPair(const QPair<KTextEditor::Range, QString> &s1,
-                                 const QPair<KTextEditor::Range, QString> &s2)
+bool lessThanRangeDictionaryPair(const QPair<KTextEditor::Range, QString> &s1, const QPair<KTextEditor::Range, QString> &s2)
 {
     return s1.first.end() <= s2.first.start();
 }
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc,
-        const KTextEditor::Range &range)
+QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range)
 {
     QString defaultDict = doc->defaultDictionary();
     QList<RangeDictionaryPair> toReturn;
-    QList<QPair<KTextEditor::MovingRange *, QString> > dictionaryRanges = doc->dictionaryRanges();
+    QList<QPair<KTextEditor::MovingRange *, QString>> dictionaryRanges = doc->dictionaryRanges();
     if (dictionaryRanges.isEmpty()) {
         toReturn.push_back(RangeDictionaryPair(range, defaultDict));
         return toReturn;
@@ -107,8 +104,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLang
     while (!splitQueue.isEmpty()) {
         bool handled = false;
         KTextEditor::Range consideredRange = splitQueue.takeFirst();
-        for (QList<QPair<KTextEditor::MovingRange *, QString> >::iterator i = dictionaryRanges.begin();
-                i != dictionaryRanges.end(); ++i) {
+        for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = dictionaryRanges.begin(); i != dictionaryRanges.end(); ++i) {
             KTextEditor::Range languageRange = *((*i).first);
             KTextEditor::Range intersection = languageRange.intersect(consideredRange);
             if (intersection.isEmpty()) {
@@ -129,13 +125,9 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckLang
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document,
-        const KTextEditor::Range &range,
-        const QString &dictionary,
-        bool singleLine,
-        bool returnSingleRange)
+QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *document, const KTextEditor::Range &range, const QString &dictionary, bool singleLine, bool returnSingleRange)
 {
-    QList<QPair<KTextEditor::Range, QString> > toReturn;
+    QList<QPair<KTextEditor::Range, QString>> toReturn;
     if (range.isEmpty()) {
         return toReturn;
     }
@@ -170,7 +162,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtH
         for (int line = startLine; line <= endLine; ++line) {
             Kate::TextLine kateTextLine = document->kateTextLine(line);
             if (!kateTextLine) {
-                continue;    // bug #303496
+                continue; // bug #303496
             }
             const int start = (line == startLine) ? startColumn : 0;
             const int end = (line == endLine) ? endColumn : kateTextLine->length();
@@ -178,8 +170,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtH
                 int attr = kateTextLine->attribute(i);
                 const KatePrefixStore &prefixStore = highlighting->getCharacterEncodingsPrefixStore(attr);
                 QString prefixFound = prefixStore.findPrefix(kateTextLine, i);
-                if (!document->highlight()->attributeRequiresSpellchecking(static_cast<unsigned int>(attr))
-                        && prefixFound.isEmpty()) {
+                if (!document->highlight()->attributeRequiresSpellchecking(static_cast<unsigned int>(attr)) && prefixFound.isEmpty()) {
                     if (i == start) {
                         ++i;
                         continue;
@@ -223,9 +214,7 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckWrtH
     return toReturn;
 }
 
-QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc,
-        const KTextEditor::Range &range,
-        bool singleLine)
+QList<QPair<KTextEditor::Range, QString>> KateSpellCheckManager::spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, bool singleLine)
 {
     QList<RangeDictionaryPair> toReturn;
     QList<RangeDictionaryPair> languageRangeList = spellCheckLanguageRanges(doc, range);
@@ -236,14 +225,12 @@ QList<QPair<KTextEditor::Range, QString> > KateSpellCheckManager::spellCheckRang
     return toReturn;
 }
 
-void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc,
-        const KTextEditor::Range &replacementRange)
+void KateSpellCheckManager::replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &replacementRange)
 {
     const int attr = doc->kateTextLine(replacementRange.start().line())->attribute(replacementRange.start().column());
     if (!doc->highlight()->getCharacterEncodings(attr).isEmpty() && doc->containsCharacterEncoding(replacementRange)) {
         doc->replaceText(replacementRange, newWord);
-        doc->replaceCharactersByEncoding(KTextEditor::Range(replacementRange.start(),
-                                         replacementRange.start() + KTextEditor::Cursor(0, newWord.length())));
+        doc->replaceCharactersByEncoding(KTextEditor::Range(replacementRange.start(), replacementRange.start() + KTextEditor::Cursor(0, newWord.length())));
     } else {
         doc->replaceText(replacementRange, newWord);
     }
@@ -256,8 +243,7 @@ void KateSpellCheckManager::trimRange(KTextEditor::DocumentPrivate *doc, KTextEd
     }
     KTextEditor::Cursor cursor = r.start();
     while (cursor < r.end()) {
-        if (doc->lineLength(cursor.line()) > 0
-                && !doc->characterAt(cursor).isSpace() && doc->characterAt(cursor).category() != QChar::Other_Control) {
+        if (doc->lineLength(cursor.line()) > 0 && !doc->characterAt(cursor).isSpace() && doc->characterAt(cursor).category() != QChar::Other_Control) {
             break;
         }
         cursor.setColumn(cursor.column() + 1);
@@ -280,8 +266,7 @@ void KateSpellCheckManager::trimRange(KTextEditor::DocumentPrivate *doc, KTextEd
         } else {
             cursor.setColumn(cursor.column() - 1);
         }
-        if (cursor.column() < doc->lineLength(cursor.line())
-                && !doc->characterAt(cursor).isSpace() && doc->characterAt(cursor).category() != QChar::Other_Control) {
+        if (cursor.column() < doc->lineLength(cursor.line()) && !doc->characterAt(cursor).isSpace() && doc->characterAt(cursor).category() != QChar::Other_Control) {
             break;
         }
     } while (cursor > r.start());

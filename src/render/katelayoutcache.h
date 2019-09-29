@@ -52,6 +52,7 @@ public:
     KateLineLayoutPtr &operator[](int i);
 
     typedef QPair<int, KateLineLayoutPtr> LineLayoutPair;
+
 private:
     typedef QVector<LineLayoutPair> LineLayoutMap;
     LineLayoutMap m_lineLayouts;
@@ -166,4 +167,3 @@ private:
 };
 
 #endif
-

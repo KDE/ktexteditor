@@ -38,7 +38,7 @@ class MatchHighlighter;
 class InteractiveSedReplaceMode : public ActiveMode
 {
 public:
-    InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view);
+    InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view);
     ~InteractiveSedReplaceMode() override
     {
     }
@@ -47,9 +47,10 @@ public:
     {
         return m_isActive;
     }
-    bool handleKeyPress(const QKeyEvent* keyEvent) override;
+    bool handleKeyPress(const QKeyEvent *keyEvent) override;
     void deactivate(bool wasAborted) override;
     QWidget *label();
+
 private:
     void updateInteractiveSedReplaceLabelText();
     void finishInteractiveSedReplace();

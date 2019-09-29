@@ -26,15 +26,22 @@ namespace KTextEditor
 {
 class Document;
 }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class CompletionTest : public QObject
 {
     Q_OBJECT
 
 public:
-    CompletionTest() {}
-    virtual ~CompletionTest() {}
+    CompletionTest()
+    {
+    }
+    virtual ~CompletionTest()
+    {
+    }
 
 private Q_SLOTS:
     void init();

@@ -18,7 +18,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include <kateconfig.h>
 #include <kateglobal.h>
 #include <kateundomanager.h>
@@ -32,8 +31,7 @@
 using namespace KateVi;
 using namespace KTextEditor;
 
-
-//BEGIN: BaseTest
+// BEGIN: BaseTest
 
 BaseTest::BaseTest()
 {
@@ -110,10 +108,8 @@ void BaseTest::init()
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarMiniMap, false);
     kate_view->config()->setValue(KateViewConfig::ShowScrollBarPreview, false);
 
-    connect(kate_document, &KTextEditor::DocumentPrivate::textInserted,
-            this, &BaseTest::textInserted);
-    connect(kate_document, &KTextEditor::DocumentPrivate::textRemoved,
-            this, &BaseTest::textRemoved);
+    connect(kate_document, &KTextEditor::DocumentPrivate::textInserted, this, &BaseTest::textInserted);
+    connect(kate_document, &KTextEditor::DocumentPrivate::textRemoved, this, &BaseTest::textRemoved);
 }
 
 void BaseTest::TestPressKey(const QString &str)
@@ -175,7 +171,7 @@ void BaseTest::TestPressKey(const QString &str)
                 keyCode = Qt::Key_Backslash;
                 i++;
             } else {
-                Q_ASSERT(false); //Do not use "\" in tests except for modifiers, command mode (\\:) and literal backslashes "\\\\")
+                Q_ASSERT(false); // Do not use "\" in tests except for modifiers, command mode (\\:) and literal backslashes "\\\\")
             }
         }
 
@@ -227,9 +223,7 @@ void BaseTest::BeginTest(const QString &original)
     m_firstBatchOfKeypressesForTest = true;
 }
 
-void BaseTest::FinishTest_(int line, const char *file, const QString &expected,
-                           Expectation expectation,
-                           const QString &failureReason)
+void BaseTest::FinishTest_(int line, const char *file, const QString &expected, Expectation expectation, const QString &failureReason)
 {
     if (expectation == ShouldFail) {
         if (!QTest::qExpectFail("", failureReason.toLocal8Bit().constData(), QTest::Continue, file, line)) {
@@ -243,9 +237,7 @@ void BaseTest::FinishTest_(int line, const char *file, const QString &expected,
     Q_ASSERT(!emulatedCommandBarTextEdit()->isVisible() && "Make sure you close the command bar before the end of a test!");
 }
 
-void BaseTest::DoTest_(int line, const char *file, const QString &original, const QString &command,
-                       const QString &expected, Expectation expectation,
-                       const QString &failureReason)
+void BaseTest::DoTest_(int line, const char *file, const QString &original, const QString &command, const QString &expected, Expectation expectation, const QString &failureReason)
 {
     BeginTest(original);
     TestPressKey(command);
@@ -284,14 +276,14 @@ Qt::Key BaseTest::parseCodedSpecialKey(const QString &string, int startPos, int 
     return Qt::Key_unknown;
 }
 
-KateVi::EmulatedCommandBar * BaseTest::emulatedCommandBar()
+KateVi::EmulatedCommandBar *BaseTest::emulatedCommandBar()
 {
     KateVi::EmulatedCommandBar *emulatedCommandBar = vi_input_mode->viModeEmulatedCommandBar();
     Q_ASSERT(emulatedCommandBar);
     return emulatedCommandBar;
 }
 
-QLineEdit * BaseTest::emulatedCommandBarTextEdit()
+QLineEdit *BaseTest::emulatedCommandBarTextEdit()
 {
     QLineEdit *emulatedCommandBarText = emulatedCommandBar()->findChild<QLineEdit *>("commandtext");
     Q_ASSERT(emulatedCommandBarText);
@@ -336,4 +328,4 @@ void BaseTest::textRemoved(Document *document, KTextEditor::Range range)
     m_docChanges.append(DocChange(DocChange::TextRemoved, range));
 }
 
-//END: BaseTest
+// END: BaseTest

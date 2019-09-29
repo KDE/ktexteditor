@@ -42,11 +42,17 @@
 
 using namespace KateVi;
 
-CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit, InteractiveSedReplaceMode* interactiveSedReplaceMode, Completer* completer)
-    : ActiveMode ( emulatedCommandBar, matchHighlighter, viInputModeManager, view),
-      m_edit(edit),
-      m_interactiveSedReplaceMode(interactiveSedReplaceMode),
-      m_completer(completer)
+CommandMode::CommandMode(EmulatedCommandBar *emulatedCommandBar,
+                         MatchHighlighter *matchHighlighter,
+                         InputModeManager *viInputModeManager,
+                         KTextEditor::ViewPrivate *view,
+                         QLineEdit *edit,
+                         InteractiveSedReplaceMode *interactiveSedReplaceMode,
+                         Completer *completer)
+    : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view)
+    , m_edit(edit)
+    , m_interactiveSedReplaceMode(interactiveSedReplaceMode)
+    , m_completer(completer)
 {
     QVector<KTextEditor::Command *> cmds;
     cmds.push_back(KateCommands::CoreCommands::self());
@@ -70,7 +76,7 @@ CommandMode::CommandMode ( EmulatedCommandBar* emulatedCommandBar, MatchHighligh
     }
 }
 
-bool CommandMode::handleKeyPress ( const QKeyEvent* keyEvent )
+bool CommandMode::handleKeyPress(const QKeyEvent *keyEvent)
 {
     if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_D || keyEvent->key() == Qt::Key_F)) {
         CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
@@ -90,7 +96,7 @@ bool CommandMode::handleKeyPress ( const QKeyEvent* keyEvent )
     return false;
 }
 
-void CommandMode::editTextChanged ( const QString& newText )
+void CommandMode::editTextChanged(const QString &newText)
 {
     Q_UNUSED(newText); // We read the current text from m_edit.
     if (m_completer->isCompletionActive())
@@ -107,7 +113,7 @@ void CommandMode::editTextChanged ( const QString& newText )
     }
 }
 
-void CommandMode::deactivate ( bool wasAborted )
+void CommandMode::deactivate(bool wasAborted)
 {
     if (wasAborted) {
         // Appending the command to the history when it is executed is handled elsewhere; we can't
@@ -117,14 +123,12 @@ void CommandMode::deactivate ( bool wasAborted )
         // If we switch from Visual to Normal mode, we need to clear the selection.
         view()->clearSelection();
     }
-
 }
 
 CompletionStartParams CommandMode::completionInvoked(Completer::CompletionInvocation invocationType)
 {
     CompletionStartParams completionStartParams;
-    if (invocationType == Completer::CompletionInvocation::ExtraContext)
-    {
+    if (invocationType == Completer::CompletionInvocation::ExtraContext) {
         if (isCursorInFindTermOfSed()) {
             completionStartParams = activateSedFindHistoryCompletion();
         } else if (isCursorInReplaceTermOfSed()) {
@@ -132,9 +136,7 @@ CompletionStartParams CommandMode::completionInvoked(Completer::CompletionInvoca
         } else {
             completionStartParams = activateCommandHistoryCompletion();
         }
-    }
-    else
-    {
+    } else {
         // Normal context, so boring, ordinary History completion.
         completionStartParams = activateCommandHistoryCompletion();
     }
@@ -165,10 +167,9 @@ void CommandMode::completionChosen()
         }
     }
     viInputModeManager()->globalState()->commandHistory()->append(m_edit->text());
-
 }
 
-QString CommandMode::executeCommand ( const QString& commandToExecute )
+QString CommandMode::executeCommand(const QString &commandToExecute)
 {
     // Silently ignore leading space characters and colon characters (for vi-heads).
     uint n = 0;
@@ -189,7 +190,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
     if (cmd.length() > 0) {
         KTextEditor::Command *p = queryCommand(cmd);
         if (p) {
-            KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface*>(p);
+            KateViCommandInterface *ci = dynamic_cast<KateViCommandInterface *>(p);
             if (ci) {
                 ci->setViInputModeManager(viInputModeManager());
                 ci->setViGlobal(viInputModeManager()->globalState());
@@ -199,10 +200,9 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
 
             // We got a range and a valid command, but the command does not support ranges.
             if (range.isValid() && !p->supportsRange(cmd)) {
-                commandResponseMessage = i18n("Error: No range allowed for command \"%1\".",  cmd);
+                commandResponseMessage = i18n("Error: No range allowed for command \"%1\".", cmd);
             } else {
                 if (p->exec(view(), cmd, commandResponseMessage, range)) {
-
                     if (commandResponseMessage.length() > 0) {
                         commandResponseMessage = i18n("Success: ") + commandResponseMessage;
                     }
@@ -213,12 +213,12 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
                             QWhatsThis::showText(emulatedCommandBar()->mapToGlobal(QPoint(0, 0)), commandResponseMessage);
                         }
                     } else {
-                        commandResponseMessage = i18n("Command \"%1\" failed.",  cmd);
+                        commandResponseMessage = i18n("Command \"%1\" failed.", cmd);
                     }
                 }
             }
         } else {
-            commandResponseMessage = i18n("No such command: \"%1\"",  cmd);
+            commandResponseMessage = i18n("No such command: \"%1\"", cmd);
         }
     }
 
@@ -230,9 +230,7 @@ QString CommandMode::executeCommand ( const QString& commandToExecute )
 
     viInputModeManager()->reset();
     return commandResponseMessage;
-
 }
-
 
 QString CommandMode::withoutRangeExpression()
 {
@@ -251,7 +249,8 @@ CommandMode::ParsedSedExpression CommandMode::parseAsSedExpression()
     const QString commandWithoutRangeExpression = withoutRangeExpression();
     ParsedSedExpression parsedSedExpression;
     QString delimiter;
-    parsedSedExpression.parsedSuccessfully = SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
+    parsedSedExpression.parsedSuccessfully =
+        SedReplace::parse(commandWithoutRangeExpression, delimiter, parsedSedExpression.findBeginPos, parsedSedExpression.findEndPos, parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos);
     if (parsedSedExpression.parsedSuccessfully) {
         parsedSedExpression.delimiter = delimiter.at(0);
         if (parsedSedExpression.replaceBeginPos == -1) {
@@ -275,7 +274,6 @@ CommandMode::ParsedSedExpression CommandMode::parseAsSedExpression()
             parsedSedExpression.findBeginPos = commandWithoutRangeExpression.indexOf(delimiter) + 1;
             parsedSedExpression.findEndPos = parsedSedExpression.findBeginPos - 1;
         }
-
     }
 
     if (parsedSedExpression.parsedSuccessfully) {
@@ -285,7 +283,6 @@ CommandMode::ParsedSedExpression CommandMode::parseAsSedExpression()
         parsedSedExpression.replaceEndPos += rangeExpression().length();
     }
     return parsedSedExpression;
-
 }
 
 QString CommandMode::sedFindTerm()
@@ -304,17 +301,15 @@ QString CommandMode::sedReplaceTerm()
     return command.mid(parsedSedExpression.replaceBeginPos, parsedSedExpression.replaceEndPos - parsedSedExpression.replaceBeginPos + 1);
 }
 
-QString CommandMode::withSedFindTermReplacedWith ( const QString& newFindTerm )
+QString CommandMode::withSedFindTermReplacedWith(const QString &newFindTerm)
 {
     const QString command = m_edit->text();
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     Q_ASSERT(parsedSedExpression.parsedSuccessfully);
-    return command.midRef(0, parsedSedExpression.findBeginPos) +
-    newFindTerm +
-    command.midRef(parsedSedExpression.findEndPos + 1);
+    return command.midRef(0, parsedSedExpression.findBeginPos) + newFindTerm + command.midRef(parsedSedExpression.findEndPos + 1);
 }
 
-QString CommandMode::withSedDelimiterEscaped ( const QString& text )
+QString CommandMode::withSedDelimiterEscaped(const QString &text)
 {
     ParsedSedExpression parsedSedExpression = parseAsSedExpression();
     QString delimiterEscaped = ensuredCharEscaped(text, parsedSedExpression.delimiter);
@@ -338,7 +333,8 @@ int CommandMode::commandBeforeCursorBegin()
     const QString textWithoutRangeExpression = withoutRangeExpression();
     const int cursorPositionWithoutRangeExpression = m_edit->cursorPosition() - rangeExpression().length();
     int commandBeforeCursorBegin = cursorPositionWithoutRangeExpression - 1;
-    while (commandBeforeCursorBegin >= 0 && (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber() || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_') || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
+    while (commandBeforeCursorBegin >= 0 &&
+           (textWithoutRangeExpression[commandBeforeCursorBegin].isLetterOrNumber() || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('_') || textWithoutRangeExpression[commandBeforeCursorBegin] == QLatin1Char('-'))) {
         commandBeforeCursorBegin--;
     }
     commandBeforeCursorBegin++;
@@ -358,29 +354,27 @@ CompletionStartParams CommandMode::activateCommandHistoryCompletion()
 
 CompletionStartParams CommandMode::activateSedFindHistoryCompletion()
 {
-    if (viInputModeManager()->globalState()->searchHistory()->isEmpty())
-    {
+    if (viInputModeManager()->globalState()->searchHistory()->isEmpty()) {
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()),
-                                                     parsedSedExpression.findBeginPos,
-                                                     [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); });
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()), parsedSedExpression.findBeginPos, [this](const QString &completion) -> QString {
+        return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
+    });
 }
 
 CompletionStartParams CommandMode::activateSedReplaceHistoryCompletion()
 {
-    if (viInputModeManager()->globalState()->replaceHistory()->isEmpty())
-    {
+    if (viInputModeManager()->globalState()->replaceHistory()->isEmpty()) {
         return CompletionStartParams::invalid();
     }
     CommandMode::ParsedSedExpression parsedSedExpression = parseAsSedExpression();
-    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->replaceHistory()->items()),
-                                                     parsedSedExpression.replaceBeginPos,
-                                                     [this] (const  QString& completion) -> QString { return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion)); });
+    return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->replaceHistory()->items()), parsedSedExpression.replaceBeginPos, [this](const QString &completion) -> QString {
+        return withCaseSensitivityMarkersStripped(withSedDelimiterEscaped(completion));
+    });
 }
 
-KTextEditor::Command* CommandMode::queryCommand ( const QString& cmd ) const
+KTextEditor::Command *CommandMode::queryCommand(const QString &cmd) const
 {
     // a command can be named ".*[\w\-]+" with the constrain that it must
     // contain at least one letter.
@@ -398,10 +392,9 @@ KTextEditor::Command* CommandMode::queryCommand ( const QString& cmd ) const
         if (cmd[f].isLetter()) {
             b = true;
         }
-        if (b && (! cmd[f].isLetterOrNumber() && cmd[f] != QLatin1Char('-') && cmd[f] != QLatin1Char('_'))) {
+        if (b && (!cmd[f].isLetterOrNumber() && cmd[f] != QLatin1Char('-') && cmd[f] != QLatin1Char('_'))) {
             break;
         }
     }
     return m_cmdDict.value(cmd.left(f));
-
 }

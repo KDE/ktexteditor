@@ -36,12 +36,19 @@
 #include <QVector>
 
 class KConfigGroup;
-namespace KTextEditor { class ViewPrivate; }
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateRenderer;
 
-namespace KTextEditor {
-    class EditorPrivate;
+namespace KTextEditor
+{
+class EditorPrivate;
 }
 
 class KConfig;
@@ -135,7 +142,8 @@ protected:
     /**
      * One config entry.
      */
-    class ConfigEntry {
+    class ConfigEntry
+    {
     public:
         /**
          * Construct one config entry.
@@ -164,13 +172,13 @@ protected:
          * KConfig entry key for this config entry, shall be unique in its group
          * e.g. "Tab Width"
          */
-         const char * const configKey;
+        const char *const configKey;
 
-         /**
-          * Command name as used in e.g. ConfigInterface or modeline/command line
-          * e.g. tab-width
-          */
-         const QString commandName;
+        /**
+         * Command name as used in e.g. ConfigInterface or modeline/command line
+         * e.g. tab-width
+         */
+        const QString commandName;
 
         /**
          * Default value if nothing special was configured
@@ -225,7 +233,7 @@ private:
      * Get full map of config entries, aka the m_configEntries of the top config object
      * @return full map with all config entries
      */
-    const std::map<int, ConfigEntry> &fullConfigEntries () const
+    const std::map<int, ConfigEntry> &fullConfigEntries() const
     {
         return m_parent ? m_parent->fullConfigEntries() : m_configEntries;
     }
@@ -233,7 +241,7 @@ private:
      * Get hash of config entries, aka the m_configKeyToEntry of the top config object
      * @return full hash with all config entries
      */
-    const QHash<QString, const ConfigEntry *> &fullConfigKeyToEntry () const
+    const QHash<QString, const ConfigEntry *> &fullConfigKeyToEntry() const
     {
         return m_parent ? m_parent->fullConfigKeyToEntry() : *m_configKeyToEntry.get();
     }
@@ -242,7 +250,7 @@ private:
     /**
      * parent config object, if any
      */
-    const KateConfig * const m_parent = nullptr;
+    const KateConfig *const m_parent = nullptr;
 
     /**
      * recursion depth
@@ -652,14 +660,10 @@ public:
     enum TabHandling {
         tabInsertsTab = 0,
         tabIndents = 1,
-        tabSmart = 2      //!< indents in leading space, otherwise inserts tab
+        tabSmart = 2 //!< indents in leading space, otherwise inserts tab
     };
 
-    enum WhitespaceRendering {
-        None,
-        Trailing,
-        All
-    };
+    enum WhitespaceRendering { None, Trailing, All };
 
     int tabHandling() const
     {
@@ -824,11 +828,7 @@ public:
         return setValue(Encoding, encoding);
     }
 
-    enum Eol {
-        eolUnix = 0,
-        eolDos = 1,
-        eolMac = 2
-    };
+    enum Eol { eolUnix = 0, eolDos = 1, eolMac = 2 };
 
     int eol() const
     {
@@ -877,11 +877,7 @@ public:
         setValue(SwapFileDirectory, directory);
     }
 
-    enum SwapFileMode {
-        DisableSwapFile = 0,
-        EnableSwapFile,
-        SwapFilePresetDirectory
-    };
+    enum SwapFileMode { DisableSwapFile = 0, EnableSwapFile, SwapFilePresetDirectory };
 
     SwapFileMode swapFileMode() const
     {
@@ -1062,11 +1058,7 @@ public:
     }
 
     /* Whether to show scrollbars */
-    enum ScrollbarMode {
-        AlwaysOn = 0,
-        ShowWhenNeeded,
-        AlwaysOff
-    };
+    enum ScrollbarMode { AlwaysOn = 0, ShowWhenNeeded, AlwaysOff };
 
     int showScrollbars() const
     {
@@ -1163,13 +1155,7 @@ public:
     }
 
     // Do we still need the enum and related functions below?
-    enum TextToSearch {
-        Nowhere = 0,
-        SelectionOnly = 1,
-        SelectionWord = 2,
-        WordOnly = 3,
-        WordSelection = 4
-    };
+    enum TextToSearch { Nowhere = 0, SelectionOnly = 1, SelectionWord = 2, WordOnly = 3, WordSelection = 4 };
 
     bool automaticCompletionInvocation() const
     {
@@ -1181,9 +1167,9 @@ public:
         return value(WordCompletion).toBool();
     }
 
-    bool keywordCompletion () const
+    bool keywordCompletion() const
     {
-         return value(KeywordCompletion).toBool();
+        return value(KeywordCompletion).toBool();
     }
 
     int wordCompletionMinimalWordLength() const
@@ -1467,4 +1453,3 @@ private:
 };
 
 #endif
-

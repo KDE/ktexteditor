@@ -256,4 +256,3 @@ bool KateLineLayout::isRightToLeft() const
 
     return m_layout->textOption().textDirection() == Qt::RightToLeft;
 }
-

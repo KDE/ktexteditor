@@ -28,7 +28,10 @@
 #include "katescriptdocument.h"
 #include <QJSEngine>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class RegressionTest;
 class KCmdLineArgs;
 class OutputObject;
@@ -72,7 +75,6 @@ class KateViewObject : public KateScriptView
     Q_OBJECT
 
 public:
-
     explicit KateViewObject(QJSEngine *engine, KTextEditor::ViewPrivate *view);
     virtual ~KateViewObject();
 
@@ -125,23 +127,23 @@ public:
     Q_INVOKABLE void setAutoBrackets(bool enable = true);
 
     // Aliases
-    Q_INVOKABLE void enter(int cnt = 1);            // KeyReturn
-    Q_INVOKABLE void cursorPrev(int cnt = 1);       // CursorLeft
-    Q_INVOKABLE void left(int cnt = 1);             // CursorLeft
-    Q_INVOKABLE void prev(int cnt = 1);             // CursorLeft
-    Q_INVOKABLE void shiftCursorPrev(int cnt = 1);  // ShiftCursorLeft
-    Q_INVOKABLE void shiftLeft(int cnt = 1);        // ShiftCursorLeft
-    Q_INVOKABLE void shiftPrev(int cnt = 1);        // ShiftCursorLeft
-    Q_INVOKABLE void cursorNext(int cnt = 1);       // CursorRight
-    Q_INVOKABLE void right(int cnt = 1);            // CursorRight
-    Q_INVOKABLE void next(int cnt = 1);             // CursorRight
-    Q_INVOKABLE void shiftCursorNext(int cnt = 1);  // ShiftCursorRight
-    Q_INVOKABLE void shiftRight(int cnt = 1);       // ShiftCursorRight
-    Q_INVOKABLE void shiftNext(int cnt = 1);        // ShiftCursorRight
-    Q_INVOKABLE void wordPrev(int cnt = 1);         // WordLeft
-    Q_INVOKABLE void shiftWordPrev(int cnt = 1);    // ShiftWordLeft
-    Q_INVOKABLE void wordNext(int cnt = 1);         // WordRight
-    Q_INVOKABLE void shiftWordNext(int cnt = 1);    // ShiftWordRight
+    Q_INVOKABLE void enter(int cnt = 1);           // KeyReturn
+    Q_INVOKABLE void cursorPrev(int cnt = 1);      // CursorLeft
+    Q_INVOKABLE void left(int cnt = 1);            // CursorLeft
+    Q_INVOKABLE void prev(int cnt = 1);            // CursorLeft
+    Q_INVOKABLE void shiftCursorPrev(int cnt = 1); // ShiftCursorLeft
+    Q_INVOKABLE void shiftLeft(int cnt = 1);       // ShiftCursorLeft
+    Q_INVOKABLE void shiftPrev(int cnt = 1);       // ShiftCursorLeft
+    Q_INVOKABLE void cursorNext(int cnt = 1);      // CursorRight
+    Q_INVOKABLE void right(int cnt = 1);           // CursorRight
+    Q_INVOKABLE void next(int cnt = 1);            // CursorRight
+    Q_INVOKABLE void shiftCursorNext(int cnt = 1); // ShiftCursorRight
+    Q_INVOKABLE void shiftRight(int cnt = 1);      // ShiftCursorRight
+    Q_INVOKABLE void shiftNext(int cnt = 1);       // ShiftCursorRight
+    Q_INVOKABLE void wordPrev(int cnt = 1);        // WordLeft
+    Q_INVOKABLE void shiftWordPrev(int cnt = 1);   // ShiftWordLeft
+    Q_INVOKABLE void wordNext(int cnt = 1);        // WordRight
+    Q_INVOKABLE void shiftWordNext(int cnt = 1);   // ShiftWordRight
 
 private:
     Q_DISABLE_COPY(KateViewObject)

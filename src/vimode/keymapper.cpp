@@ -33,9 +33,9 @@
 using namespace KateVi;
 
 KeyMapper::KeyMapper(InputModeManager *kateViInputModeManager, KTextEditor::DocumentPrivate *doc, KTextEditor::ViewPrivate *view)
-    : m_viInputModeManager(kateViInputModeManager),
-      m_doc(doc),
-      m_view(view)
+    : m_viInputModeManager(kateViInputModeManager)
+    , m_doc(doc)
+    , m_view(view)
 {
     m_mappingTimer = new QTimer(this);
     m_doNotExpandFurtherMappings = false;
@@ -123,8 +123,7 @@ bool KeyMapper::handleKeypress(QChar key)
         // this cannot be a mapping, restore them.
         Q_ASSERT(!isPartialMapping && !isFullMapping);
         const bool isUserKeypress = !m_viInputModeManager->macroRecorder()->isReplaying() && !isExecutingMapping();
-        if (isUserKeypress && m_mappingKeys.size() == 1)
-        {
+        if (isUserKeypress && m_mappingKeys.size() == 1) {
             // Ugh - unpleasant complication starting with Qt 5.5-ish - it is no
             // longer possible to replay QKeyEvents in such a way that shortcuts
             // are triggered, so if we want to correctly handle a shortcut (e.g.
@@ -143,9 +142,7 @@ bool KeyMapper::handleKeypress(QChar key)
             // or we try to emulate Shortcut-handling ourselves :(
             m_mappingKeys.clear();
             return false;
-        }
-        else
-        {
+        } else {
             playBackRejectedKeys();
             return true;
         }
@@ -168,4 +165,3 @@ bool KeyMapper::isPlayingBackRejectedKeys()
 {
     return m_isPlayingBackRejectedKeys;
 }
-

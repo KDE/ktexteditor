@@ -36,7 +36,7 @@
 #include <QTextCodec>
 #include <QStringListModel>
 
-//BEGIN KateConfig
+// BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)
     : m_parent(parent)
     , m_configKeys(m_parent ? nullptr : new QStringList())
@@ -230,9 +230,9 @@ bool KateConfig::setValue(const QString &key, const QVariant &value)
     return setValue(it.value()->enumKey, value);
 }
 
-//END
+// END
 
-//BEGIN HelperFunctions
+// BEGIN HelperFunctions
 KateGlobalConfig *KateGlobalConfig::s_global = nullptr;
 KateDocumentConfig *KateDocumentConfig::s_global = nullptr;
 KateViewConfig *KateViewConfig::s_global = nullptr;
@@ -262,9 +262,9 @@ static bool isPositive(const QVariant &value)
     value.toUInt(&ok);
     return ok;
 }
-//END
+// END
 
-//BEGIN KateGlobalConfig
+// BEGIN KateGlobalConfig
 KateGlobalConfig::KateGlobalConfig()
 {
     /**
@@ -340,9 +340,9 @@ QTextCodec *KateGlobalConfig::fallbackCodec() const
      */
     return KCharsets::charsets()->codecForName(encoding);
 }
-//END
+// END
 
-//BEGIN KateDocumentConfig
+// BEGIN KateDocumentConfig
 KateDocumentConfig::KateDocumentConfig()
 {
     /**
@@ -400,8 +400,8 @@ KateDocumentConfig::KateDocumentConfig()
 }
 
 KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
-    : KateConfig(s_global),
-      m_doc(doc)
+    : KateConfig(s_global)
+    , m_doc(doc)
 {
     /**
      * per document config doesn't read stuff per default
@@ -496,7 +496,7 @@ QTextCodec *KateDocumentConfig::codec() const
 
 QString KateDocumentConfig::eolString()
 {
-    switch(eol()) {
+    switch (eol()) {
         case KateDocumentConfig::eolDos:
             return QStringLiteral("\r\n");
 
@@ -507,9 +507,9 @@ QString KateDocumentConfig::eolString()
             return QStringLiteral("\n");
     }
 }
-//END
+// END
 
-//BEGIN KateViewConfig
+// BEGIN KateViewConfig
 KateViewConfig::KateViewConfig()
 {
     s_global = this;
@@ -602,7 +602,7 @@ void KateViewConfig::updateConfig()
 
     if (isGlobal()) {
         const auto allViews = KTextEditor::EditorPrivate::self()->views();
-        for (KTextEditor::ViewPrivate* view : allViews) {
+        for (KTextEditor::ViewPrivate *view : allViews) {
             view->updateConfig();
         }
 
@@ -612,36 +612,37 @@ void KateViewConfig::updateConfig()
         KTextEditor::EditorPrivate::config()->sync();
     }
 }
-//END
+// END
 
-//BEGIN KateRendererConfig
+// BEGIN KateRendererConfig
 KateRendererConfig::KateRendererConfig()
-    : m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
+    : m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount())
+    ,
 
-      m_schemaSet(false),
-      m_fontSet(false),
-      m_wordWrapMarkerSet(false),
-      m_showIndentationLinesSet(false),
-      m_showWholeBracketExpressionSet(false),
-      m_backgroundColorSet(false),
-      m_selectionColorSet(false),
-      m_highlightedLineColorSet(false),
-      m_highlightedBracketColorSet(false),
-      m_wordWrapMarkerColorSet(false),
-      m_tabMarkerColorSet(false),
-      m_indentationLineColorSet(false),
-      m_iconBarColorSet(false),
-      m_foldingColorSet(false),
-      m_lineNumberColorSet(false),
-      m_currentLineNumberColorSet(false),
-      m_separatorColorSet(false),
-      m_spellingMistakeLineColorSet(false),
-      m_templateColorsSet(false),
-      m_modifiedLineColorSet(false),
-      m_savedLineColorSet(false),
-      m_searchHighlightColorSet(false),
-      m_replaceHighlightColorSet(false),
-      m_lineMarkerColorSet(m_lineMarkerColor.size())
+    m_schemaSet(false)
+    , m_fontSet(false)
+    , m_wordWrapMarkerSet(false)
+    , m_showIndentationLinesSet(false)
+    , m_showWholeBracketExpressionSet(false)
+    , m_backgroundColorSet(false)
+    , m_selectionColorSet(false)
+    , m_highlightedLineColorSet(false)
+    , m_highlightedBracketColorSet(false)
+    , m_wordWrapMarkerColorSet(false)
+    , m_tabMarkerColorSet(false)
+    , m_indentationLineColorSet(false)
+    , m_iconBarColorSet(false)
+    , m_foldingColorSet(false)
+    , m_lineNumberColorSet(false)
+    , m_currentLineNumberColorSet(false)
+    , m_separatorColorSet(false)
+    , m_spellingMistakeLineColorSet(false)
+    , m_templateColorsSet(false)
+    , m_modifiedLineColorSet(false)
+    , m_savedLineColorSet(false)
+    , m_searchHighlightColorSet(false)
+    , m_replaceHighlightColorSet(false)
+    , m_lineMarkerColorSet(m_lineMarkerColor.size())
 
 {
     // init bitarray
@@ -655,33 +656,33 @@ KateRendererConfig::KateRendererConfig()
 }
 
 KateRendererConfig::KateRendererConfig(KateRenderer *renderer)
-    : KateConfig(s_global),
-      m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount()),
-      m_schemaSet(false),
-      m_fontSet(false),
-      m_wordWrapMarkerSet(false),
-      m_showIndentationLinesSet(false),
-      m_showWholeBracketExpressionSet(false),
-      m_backgroundColorSet(false),
-      m_selectionColorSet(false),
-      m_highlightedLineColorSet(false),
-      m_highlightedBracketColorSet(false),
-      m_wordWrapMarkerColorSet(false),
-      m_tabMarkerColorSet(false),
-      m_indentationLineColorSet(false),
-      m_iconBarColorSet(false),
-      m_foldingColorSet(false),
-      m_lineNumberColorSet(false),
-      m_currentLineNumberColorSet(false),
-      m_separatorColorSet(false),
-      m_spellingMistakeLineColorSet(false),
-      m_templateColorsSet(false),
-      m_modifiedLineColorSet(false),
-      m_savedLineColorSet(false),
-      m_searchHighlightColorSet(false),
-      m_replaceHighlightColorSet(false),
-      m_lineMarkerColorSet(m_lineMarkerColor.size()),
-      m_renderer(renderer)
+    : KateConfig(s_global)
+    , m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount())
+    , m_schemaSet(false)
+    , m_fontSet(false)
+    , m_wordWrapMarkerSet(false)
+    , m_showIndentationLinesSet(false)
+    , m_showWholeBracketExpressionSet(false)
+    , m_backgroundColorSet(false)
+    , m_selectionColorSet(false)
+    , m_highlightedLineColorSet(false)
+    , m_highlightedBracketColorSet(false)
+    , m_wordWrapMarkerColorSet(false)
+    , m_tabMarkerColorSet(false)
+    , m_indentationLineColorSet(false)
+    , m_iconBarColorSet(false)
+    , m_foldingColorSet(false)
+    , m_lineNumberColorSet(false)
+    , m_currentLineNumberColorSet(false)
+    , m_separatorColorSet(false)
+    , m_spellingMistakeLineColorSet(false)
+    , m_templateColorsSet(false)
+    , m_modifiedLineColorSet(false)
+    , m_savedLineColorSet(false)
+    , m_searchHighlightColorSet(false)
+    , m_replaceHighlightColorSet(false)
+    , m_lineMarkerColorSet(m_lineMarkerColor.size())
+    , m_renderer(renderer)
 {
     // init bitarray
     m_lineMarkerColorSet.fill(false);
@@ -813,7 +814,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_backgroundColorSet = true;
     m_selectionColor = config.readEntry("Color Selection", colors.color(Kate::SelectionBackground));
     m_selectionColorSet = true;
-    m_highlightedLineColor  = config.readEntry("Color Highlighted Line", colors.color(Kate::HighlightedLineBackground));
+    m_highlightedLineColor = config.readEntry("Color Highlighted Line", colors.color(Kate::HighlightedLineBackground));
     m_highlightedLineColorSet = true;
     m_highlightedBracketColor = config.readEntry("Color Highlighted Bracket", colors.color(Kate::HighlightedBracket));
     m_highlightedBracketColorSet = true;
@@ -823,9 +824,9 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_tabMarkerColorSet = true;
     m_indentationLineColor = config.readEntry("Color Indentation Line", colors.color(Kate::IndentationLine));
     m_indentationLineColorSet = true;
-    m_iconBarColor  = config.readEntry("Color Icon Bar", colors.color(Kate::IconBar));
+    m_iconBarColor = config.readEntry("Color Icon Bar", colors.color(Kate::IconBar));
     m_iconBarColorSet = true;
-    m_foldingColor  = config.readEntry("Color Code Folding", colors.color(Kate::CodeFolding));
+    m_foldingColor = config.readEntry("Color Code Folding", colors.color(Kate::CodeFolding));
     m_foldingColorSet = true;
     m_lineNumberColor = config.readEntry("Color Line Number", colors.color(Kate::LineNumber));
     m_lineNumberColorSet = true;
@@ -855,14 +856,11 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
 
     m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(Kate::TemplateBackground));
 
-    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"),
-                                                                 colors.color(Kate::TemplateFocusedEditablePlaceholder));
+    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"), colors.color(Kate::TemplateFocusedEditablePlaceholder));
 
-    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"),
-                                                          colors.color(Kate::TemplateEditablePlaceholder));
+    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"), colors.color(Kate::TemplateEditablePlaceholder));
 
-    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"),
-                                                             colors.color(Kate::TemplateNotEditablePlaceholder));
+    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"), colors.color(Kate::TemplateNotEditablePlaceholder));
 
     m_templateColorsSet = true;
 }
@@ -993,7 +991,8 @@ const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::MarkInterface::Ma
 {
     int index = 0;
     if (type > 0) {
-        while ((type >> index++) ^ 1) {}
+        while ((type >> index++) ^ 1) {
+        }
     }
     index -= 1;
 
@@ -1446,5 +1445,4 @@ void KateRendererConfig::setAnimateBracketMatching(bool on)
     }
 }
 
-//END
-
+// END

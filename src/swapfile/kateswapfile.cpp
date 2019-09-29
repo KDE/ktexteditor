@@ -45,16 +45,15 @@
 const static char swapFileVersionString[] = "Kate Swap File 2.0";
 
 // tokens for swap files
-const static qint8 EA_StartEditing  = 'S';
+const static qint8 EA_StartEditing = 'S';
 const static qint8 EA_FinishEditing = 'E';
-const static qint8 EA_WrapLine      = 'W';
-const static qint8 EA_UnwrapLine    = 'U';
-const static qint8 EA_InsertText    = 'I';
-const static qint8 EA_RemoveText    = 'R';
+const static qint8 EA_WrapLine = 'W';
+const static qint8 EA_UnwrapLine = 'U';
+const static qint8 EA_InsertText = 'I';
+const static qint8 EA_RemoveText = 'R';
 
 namespace Kate
 {
-
 QTimer *SwapFile::s_timer = nullptr;
 
 SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
@@ -72,7 +71,7 @@ SwapFile::SwapFile(KTextEditor::DocumentPrivate *document)
 
     // connecting the signals
     connect(&m_document->buffer(), SIGNAL(saved(QString)), this, SLOT(fileSaved(QString)));
-    connect(&m_document->buffer(), SIGNAL(loaded(QString,bool)), this, SLOT(fileLoaded(QString)));
+    connect(&m_document->buffer(), SIGNAL(loaded(QString, bool)), this, SLOT(fileLoaded(QString)));
     connect(m_document, SIGNAL(configChanged()), this, SLOT(configChanged()));
 
     // tracking on!
@@ -104,21 +103,21 @@ void SwapFile::setTrackingEnabled(bool enable)
     if (m_trackingEnabled) {
         connect(&buffer, SIGNAL(editingStarted()), this, SLOT(startEditing()));
         connect(&buffer, SIGNAL(editingFinished()), this, SLOT(finishEditing()));
-        connect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
+        connect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document *)), this, SLOT(modifiedChanged()));
 
         connect(&buffer, SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
         connect(&buffer, SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-        connect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor,QString)), this, SLOT(insertText(KTextEditor::Cursor,QString)));
-        connect(&buffer, SIGNAL(textRemoved(KTextEditor::Range,QString)), this, SLOT(removeText(KTextEditor::Range)));
+        connect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
+        connect(&buffer, SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
     } else {
         disconnect(&buffer, SIGNAL(editingStarted()), this, SLOT(startEditing()));
         disconnect(&buffer, SIGNAL(editingFinished()), this, SLOT(finishEditing()));
-        disconnect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document*)), this, SLOT(modifiedChanged()));
+        disconnect(m_document, SIGNAL(modifiedChanged(KTextEditor::Document *)), this, SLOT(modifiedChanged()));
 
         disconnect(&buffer, SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
         disconnect(&buffer, SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-        disconnect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor,QString)), this, SLOT(insertText(KTextEditor::Cursor,QString)));
-        disconnect(&buffer, SIGNAL(textRemoved(KTextEditor::Range,QString)), this, SLOT(removeText(KTextEditor::Range)));
+        disconnect(&buffer, SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
+        disconnect(&buffer, SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
     }
 }
 
@@ -154,7 +153,7 @@ bool SwapFile::isValidSwapFile(QDataStream &stream, bool checkDigest) const
     // read checksum
     QByteArray checksum;
     stream >> checksum;
-    //qCDebug(LOG_KTE) << "DIGEST:" << checksum << m_document->checksum();
+    // qCDebug(LOG_KTE) << "DIGEST:" << checksum << m_document->checksum();
     if (checkDigest && checksum != m_document->checksum()) {
         qCWarning(LOG_KTE) << "Can't recover from swap file, checksum of document has changed";
         return false;
@@ -171,7 +170,7 @@ void SwapFile::fileLoaded(const QString &)
     }
 
     if (!m_swapfile.exists()) {
-        //qCDebug(LOG_KTE) << "No swap file";
+        // qCDebug(LOG_KTE) << "No swap file";
         return;
     }
 
@@ -277,116 +276,116 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
         qint8 type;
         stream >> type;
         switch (type) {
-        case EA_StartEditing: {
-            m_document->editStart();
-            editRunning = true;
-            firstEditInGroup = true;
-            undoCursor = KTextEditor::Cursor::invalid();
-            redoCursor = KTextEditor::Cursor::invalid();
-            break;
-        }
-        case EA_FinishEditing: {
-            m_document->editEnd();
-
-            // empty editStart() / editEnd() groups exist: only set cursor if required
-            if (!firstEditInGroup) {
-                // set undo/redo cursor of last KateUndoGroup of the undo manager
-                m_document->undoManager()->setUndoRedoCursorsOfLastGroup(undoCursor, redoCursor);
-                m_document->undoManager()->undoSafePoint();
-            }
-            firstEditInGroup = false;
-            editRunning = false;
-            break;
-        }
-        case EA_WrapLine: {
-            if (!editRunning) {
-                brokenSwapFile = true;
+            case EA_StartEditing: {
+                m_document->editStart();
+                editRunning = true;
+                firstEditInGroup = true;
+                undoCursor = KTextEditor::Cursor::invalid();
+                redoCursor = KTextEditor::Cursor::invalid();
                 break;
             }
+            case EA_FinishEditing: {
+                m_document->editEnd();
 
-            int line = 0, column = 0;
-            stream >> line >> column;
-
-            // emulate buffer unwrapLine with document
-            m_document->editWrapLine(line, column, true);
-
-            // track undo/redo cursor
-            if (firstEditInGroup) {
+                // empty editStart() / editEnd() groups exist: only set cursor if required
+                if (!firstEditInGroup) {
+                    // set undo/redo cursor of last KateUndoGroup of the undo manager
+                    m_document->undoManager()->setUndoRedoCursorsOfLastGroup(undoCursor, redoCursor);
+                    m_document->undoManager()->undoSafePoint();
+                }
                 firstEditInGroup = false;
-                undoCursor = KTextEditor::Cursor(line, column);
-            }
-            redoCursor = KTextEditor::Cursor(line + 1, 0);
-
-            break;
-        }
-        case EA_UnwrapLine: {
-            if (!editRunning) {
-                brokenSwapFile = true;
+                editRunning = false;
                 break;
             }
+            case EA_WrapLine: {
+                if (!editRunning) {
+                    brokenSwapFile = true;
+                    break;
+                }
 
-            int line = 0;
-            stream >> line;
+                int line = 0, column = 0;
+                stream >> line >> column;
 
-            // assert valid line
-            Q_ASSERT(line > 0);
+                // emulate buffer unwrapLine with document
+                m_document->editWrapLine(line, column, true);
 
-            const int undoColumn = m_document->lineLength(line - 1);
+                // track undo/redo cursor
+                if (firstEditInGroup) {
+                    firstEditInGroup = false;
+                    undoCursor = KTextEditor::Cursor(line, column);
+                }
+                redoCursor = KTextEditor::Cursor(line + 1, 0);
 
-            // emulate buffer unwrapLine with document
-            m_document->editUnWrapLine(line - 1, true, 0);
-
-            // track undo/redo cursor
-            if (firstEditInGroup) {
-                firstEditInGroup = false;
-                undoCursor = KTextEditor::Cursor(line, 0);
-            }
-            redoCursor = KTextEditor::Cursor(line - 1, undoColumn);
-
-            break;
-        }
-        case EA_InsertText: {
-            if (!editRunning) {
-                brokenSwapFile = true;
                 break;
             }
+            case EA_UnwrapLine: {
+                if (!editRunning) {
+                    brokenSwapFile = true;
+                    break;
+                }
 
-            int line, column;
-            QByteArray text;
-            stream >> line >> column >> text;
-            m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
+                int line = 0;
+                stream >> line;
 
-            // track undo/redo cursor
-            if (firstEditInGroup) {
-                firstEditInGroup = false;
-                undoCursor = KTextEditor::Cursor(line, column);
-            }
-            redoCursor = KTextEditor::Cursor(line, column + text.size());
+                // assert valid line
+                Q_ASSERT(line > 0);
 
-            break;
-        }
-        case EA_RemoveText: {
-            if (!editRunning) {
-                brokenSwapFile = true;
+                const int undoColumn = m_document->lineLength(line - 1);
+
+                // emulate buffer unwrapLine with document
+                m_document->editUnWrapLine(line - 1, true, 0);
+
+                // track undo/redo cursor
+                if (firstEditInGroup) {
+                    firstEditInGroup = false;
+                    undoCursor = KTextEditor::Cursor(line, 0);
+                }
+                redoCursor = KTextEditor::Cursor(line - 1, undoColumn);
+
                 break;
             }
+            case EA_InsertText: {
+                if (!editRunning) {
+                    brokenSwapFile = true;
+                    break;
+                }
 
-            int line, startColumn, endColumn;
-            stream >> line >> startColumn >> endColumn;
-            m_document->removeText(KTextEditor::Range(KTextEditor::Cursor(line, startColumn), KTextEditor::Cursor(line, endColumn)));
+                int line, column;
+                QByteArray text;
+                stream >> line >> column >> text;
+                m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
 
-            // track undo/redo cursor
-            if (firstEditInGroup) {
-                firstEditInGroup = false;
-                undoCursor = KTextEditor::Cursor(line, endColumn);
+                // track undo/redo cursor
+                if (firstEditInGroup) {
+                    firstEditInGroup = false;
+                    undoCursor = KTextEditor::Cursor(line, column);
+                }
+                redoCursor = KTextEditor::Cursor(line, column + text.size());
+
+                break;
             }
-            redoCursor = KTextEditor::Cursor(line, startColumn);
+            case EA_RemoveText: {
+                if (!editRunning) {
+                    brokenSwapFile = true;
+                    break;
+                }
 
-            break;
-        }
-        default: {
-            qCWarning(LOG_KTE) << "Unknown type:" << type;
-        }
+                int line, startColumn, endColumn;
+                stream >> line >> startColumn >> endColumn;
+                m_document->removeText(KTextEditor::Range(KTextEditor::Cursor(line, startColumn), KTextEditor::Cursor(line, endColumn)));
+
+                // track undo/redo cursor
+                if (firstEditInGroup) {
+                    firstEditInGroup = false;
+                    undoCursor = KTextEditor::Cursor(line, endColumn);
+                }
+                redoCursor = KTextEditor::Cursor(line, startColumn);
+
+                break;
+            }
+            default: {
+                qCWarning(LOG_KTE) << "Unknown type:" << type;
+            }
         }
     }
 
@@ -437,13 +436,12 @@ void SwapFile::startEditing()
     // in case you recover and start editing again
     if (!m_swapfile.exists()) {
         // create path if not there
-        if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory
-            && !QDir(KateDocumentConfig::global()->swapDirectory()).exists()) {
+        if (KateDocumentConfig::global()->swapFileMode() == KateDocumentConfig::SwapFilePresetDirectory && !QDir(KateDocumentConfig::global()->swapDirectory()).exists()) {
             QDir().mkpath(KateDocumentConfig::global()->swapDirectory());
         }
 
         m_swapfile.open(QIODevice::WriteOnly);
-        m_swapfile.setPermissions(QFileDevice::ReadOwner|QFileDevice::WriteOwner);
+        m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
         m_stream.setDevice(&m_swapfile);
 
         // write file header
@@ -453,7 +451,7 @@ void SwapFile::startEditing()
         m_stream << m_document->checksum();
     } else if (m_stream.device() == nullptr) {
         m_swapfile.open(QIODevice::Append);
-        m_swapfile.setPermissions(QFileDevice::ReadOwner|QFileDevice::WriteOwner);
+        m_swapfile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
         m_stream.setDevice(&m_swapfile);
     }
 
@@ -528,9 +526,7 @@ void SwapFile::removeText(const KTextEditor::Range &range)
 
     // format: qint8, int, int, int
     Q_ASSERT(range.start().line() == range.end().line());
-    m_stream << EA_RemoveText
-             << range.start().line() << range.start().column()
-             << range.end().column();
+    m_stream << EA_RemoveText << range.start().line() << range.start().column() << range.end().column();
 
     m_needSync = true;
 }
@@ -638,8 +634,7 @@ void SwapFile::writeFileToDisk()
 
 void SwapFile::showSwapFileMessage()
 {
-    m_swapMessage = new KTextEditor::Message(i18n("The file was not closed properly."),
-            KTextEditor::Message::Warning);
+    m_swapMessage = new KTextEditor::Message(i18n("The file was not closed properly."), KTextEditor::Message::Warning);
     m_swapMessage->setWordWrap(true);
 
     QAction *diffAction = new QAction(QIcon::fromTheme(QStringLiteral("split")), i18n("View Changes"), nullptr);
@@ -665,4 +660,3 @@ void SwapFile::showDiff()
 }
 
 }
-

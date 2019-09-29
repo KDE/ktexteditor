@@ -19,7 +19,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "kateschema.h"
 
 #include "kateconfig.h"
@@ -29,12 +29,11 @@
 #include "katepartdebug.h"
 
 #include <KConfigGroup>
-//END
+// END
 
-//BEGIN KateSchemaManager
+// BEGIN KateSchemaManager
 KateSchemaManager::KateSchemaManager()
-    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("kateschemarc")
-        , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
+    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("kateschemarc"), KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
 {
 }
 
@@ -74,9 +73,9 @@ QList<KateSchema> KateSchemaManager::list()
 
     return schemas;
 }
-//END
+// END
 
-//BEGIN SCHEMA ACTION -- the 'View->Schema' menu action
+// BEGIN SCHEMA ACTION -- the 'View->Schema' menu action
 void KateViewSchemaAction::init()
 {
     m_group = nullptr;
@@ -100,7 +99,6 @@ void KateViewSchemaAction::slotAboutToShow()
     if (!m_group) {
         m_group = new QActionGroup(menu());
         m_group->setExclusive(true);
-
     }
 
     for (int z = 0; z < schemas.count(); z++) {
@@ -123,7 +121,6 @@ void KateViewSchemaAction::slotAboutToShow()
     const auto menuActions = menu()->actions();
     for (QAction *a : menuActions) {
         a->setChecked(a->data().toString() == id);
-
     }
 }
 
@@ -142,5 +139,4 @@ void KateViewSchemaAction::setSchema()
         view->renderer()->config()->setSchema(mode);
     }
 }
-//END SCHEMA ACTION
-
+// END SCHEMA ACTION

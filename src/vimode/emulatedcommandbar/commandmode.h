@@ -27,8 +27,9 @@
 
 #include <QHash>
 
-namespace KTextEditor {
-    class ViewPrivate;
+namespace KTextEditor
+{
+class ViewPrivate;
 }
 
 namespace KateVi
@@ -42,16 +43,23 @@ class InputModeManager;
 class CommandMode : public ActiveMode
 {
 public:
-    CommandMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view,  QLineEdit* edit, InteractiveSedReplaceMode *interactiveSedReplaceMode, Completer* completer);
+    CommandMode(EmulatedCommandBar *emulatedCommandBar,
+                MatchHighlighter *matchHighlighter,
+                InputModeManager *viInputModeManager,
+                KTextEditor::ViewPrivate *view,
+                QLineEdit *edit,
+                InteractiveSedReplaceMode *interactiveSedReplaceMode,
+                Completer *completer);
     ~CommandMode() override
     {
     }
-    bool handleKeyPress ( const QKeyEvent* keyEvent ) override;
+    bool handleKeyPress(const QKeyEvent *keyEvent) override;
     void editTextChanged(const QString &newText) override;
     CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType) override;
     void completionChosen() override;
     void deactivate(bool wasAborted) override;
     QString executeCommand(const QString &commandToExecute);
+
 private:
     CompletionStartParams activateCommandCompletion();
     CompletionStartParams activateCommandHistoryCompletion();
@@ -66,10 +74,10 @@ private:
     QString sedFindTerm();
     QString sedReplaceTerm();
     /**
-        * Stuff to do with expressions of the form:
-        *
-        *   s/find/replace/<sedflags>
-        */
+     * Stuff to do with expressions of the form:
+     *
+     *   s/find/replace/<sedflags>
+     */
     struct ParsedSedExpression {
         bool parsedSuccessfully;
         int findBeginPos;
@@ -79,9 +87,9 @@ private:
         QChar delimiter;
     };
     /**
-        * The "range expression" is the (optional) expression before the command that describes
-        * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
-        */
+     * The "range expression" is the (optional) expression before the command that describes
+     * the range over which the command should be run e.g. '<,'>.  @see CommandRangeExpressionParser
+     */
     CommandMode::ParsedSedExpression parseAsSedExpression();
     void replaceCommandBeforeCursorWith(const QString &newCommand);
     int commandBeforeCursorBegin();

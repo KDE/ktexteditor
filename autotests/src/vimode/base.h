@@ -18,10 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef BASE_TEST_H
 #define BASE_TEST_H
-
 
 #include <QMainWindow>
 #include <QtTestWidgets>
@@ -31,12 +29,14 @@
 #include <inputmodemanager.h>
 
 class QLineEdit;
-namespace KateVi { class EmulatedCommandBar; }
+namespace KateVi
+{
+class EmulatedCommandBar;
+}
 
 /* Syntactic sugar :P */
 #define DoTest(...) DoTest_(__LINE__, __FILE__, __VA_ARGS__)
-#define FinishTest(...) FinishTest_( __LINE__, __FILE__, __VA_ARGS__ )
-
+#define FinishTest(...) FinishTest_(__LINE__, __FILE__, __VA_ARGS__)
 
 /// Helper class that represents a change in a document.
 class DocChange
@@ -45,7 +45,9 @@ public:
     enum ChangeType { TextRemoved, TextInserted };
 
     DocChange(ChangeType changeType, KTextEditor::Range changeRange, QString newText = QString())
-        : m_changeType(changeType), m_changeRange(changeRange), m_newText(newText)
+        : m_changeType(changeType)
+        , m_changeRange(changeRange)
+        , m_newText(newText)
     {
         /* There's nothing to do here. */
     }
@@ -71,7 +73,6 @@ private:
     QString m_newText;
 };
 
-
 class BaseTest : public QObject
 {
     Q_OBJECT
@@ -89,11 +90,8 @@ protected:
 
     void TestPressKey(const QString &str);
     void BeginTest(const QString &original);
-    void FinishTest_(int line, const char *file, const QString &expected, Expectation expectation = ShouldPass,
-                    const QString &failureReason = QString());
-    void DoTest_(int line, const char *file, const QString &original, const QString &command,
-                 const QString &expected, Expectation expectation = ShouldPass,
-                 const QString &failureReason = QString());
+    void FinishTest_(int line, const char *file, const QString &expected, Expectation expectation = ShouldPass, const QString &failureReason = QString());
+    void DoTest_(int line, const char *file, const QString &original, const QString &command, const QString &expected, Expectation expectation = ShouldPass, const QString &failureReason = QString());
 
     // Parsing keys.
 
@@ -102,8 +100,8 @@ protected:
 
     // Emulated command bar.
 
-    KateVi::EmulatedCommandBar * emulatedCommandBar();
-    QLineEdit * emulatedCommandBarTextEdit();
+    KateVi::EmulatedCommandBar *emulatedCommandBar();
+    QLineEdit *emulatedCommandBarTextEdit();
 
     // Macros & mappings.
 
@@ -138,6 +136,5 @@ private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void textRemoved(KTextEditor::Document *document, KTextEditor::Range range);
 };
-
 
 #endif /* BASE_TEST_H */

@@ -56,4 +56,3 @@ void MovingRangeFeedback::caretEnteredRange(MovingRange *, View *)
 void MovingRangeFeedback::caretExitedRange(MovingRange *, View *)
 {
 }
-

@@ -17,7 +17,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "katehighlightmenu.h"
 
 #include "katedocument.h"
@@ -27,7 +27,7 @@
 #include "katesyntaxmanager.h"
 #include "katepartdebug.h"
 #include <KLocalizedString>
-//END Includes
+// END Includes
 
 KateHighlightingMenu::~KateHighlightingMenu()
 {
@@ -106,4 +106,3 @@ void KateHighlightingMenu::setHl()
     // use change, honor this
     m_doc->setDontChangeHlOnSave();
 }
-

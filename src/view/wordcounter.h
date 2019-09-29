@@ -23,12 +23,13 @@
 #include <QString>
 #include <QTimer>
 
-namespace KTextEditor {
-    class Document;
-    class DocumentPrivate;
-    class View;
-    class ViewPrivate;
-    class Range;
+namespace KTextEditor
+{
+class Document;
+class DocumentPrivate;
+class View;
+class ViewPrivate;
+class Range;
 }
 
 class WordCounter : public QObject

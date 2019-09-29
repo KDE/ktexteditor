@@ -35,7 +35,7 @@
 
 #include <QRegularExpression>
 
-//BEGIN CoreCommands
+// BEGIN CoreCommands
 KateCommands::CoreCommands *KateCommands::CoreCommands::m_instance = nullptr;
 
 // this returns whether the string s could be converted to
@@ -62,127 +62,150 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
 {
     QString realcmd = cmd.trimmed();
     if (realcmd == QLatin1String("indent")) {
-        msg = i18n("<p>indent</p>"
-                   "<p>Indents the selected lines or the current line</p>");
+        msg = i18n(
+            "<p>indent</p>"
+            "<p>Indents the selected lines or the current line</p>");
         return true;
-    } else   if (realcmd == QLatin1String("unindent")) {
-        msg = i18n("<p>unindent</p>"
-                   "<p>Unindents the selected lines or current line.</p>");
+    } else if (realcmd == QLatin1String("unindent")) {
+        msg = i18n(
+            "<p>unindent</p>"
+            "<p>Unindents the selected lines or current line.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("cleanindent")) {
-        msg = i18n("<p>cleanindent</p>"
-                   "<p>Cleans up the indentation of the selected lines or current line according to the indentation settings in the document. </p>");
+    } else if (realcmd == QLatin1String("cleanindent")) {
+        msg = i18n(
+            "<p>cleanindent</p>"
+            "<p>Cleans up the indentation of the selected lines or current line according to the indentation settings in the document. </p>");
         return true;
-    } else   if (realcmd == QLatin1String("comment")) {
-        msg = i18n("<p>comment</p>"
-                   "<p>Inserts comment markers to make the selection or selected lines or current line a comment according to the text format as defined by the syntax highlight definition for the document.</p>");
+    } else if (realcmd == QLatin1String("comment")) {
+        msg = i18n(
+            "<p>comment</p>"
+            "<p>Inserts comment markers to make the selection or selected lines or current line a comment according to the text format as defined by the syntax highlight definition for the document.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("uncomment")) {
-        msg = i18n("<p>uncomment</p>"
-                   "<p>Removes comment markers from the selection or selected lines or current line according to the text format as defined by the syntax highlight definition for the document.</p>");
+    } else if (realcmd == QLatin1String("uncomment")) {
+        msg = i18n(
+            "<p>uncomment</p>"
+            "<p>Removes comment markers from the selection or selected lines or current line according to the text format as defined by the syntax highlight definition for the document.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("goto")) {
-        msg = i18n("<p>goto <b>line number</b></p>"
-                   "<p>This command navigates to the specified line number.</p>");
+    } else if (realcmd == QLatin1String("goto")) {
+        msg = i18n(
+            "<p>goto <b>line number</b></p>"
+            "<p>This command navigates to the specified line number.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-indent-pasted-text")) {
-        msg = i18n("<p>set-indent-pasted-text <b>enable</b></p>"
-                   "<p>If enabled, indentation of text pasted from the clipboard is adjusted using the current indenter.</p>"
-                   "<p>Possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-indent-pasted-text")) {
+        msg = i18n(
+            "<p>set-indent-pasted-text <b>enable</b></p>"
+            "<p>If enabled, indentation of text pasted from the clipboard is adjusted using the current indenter.</p>"
+            "<p>Possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("kill-line")) {
+    } else if (realcmd == QLatin1String("kill-line")) {
         msg = i18n("Deletes the current line.");
         return true;
-    } else   if (realcmd == QLatin1String("set-tab-width")) {
-        msg = i18n("<p>set-tab-width <b>width</b></p>"
-                   "<p>Sets the tab width to the number <b>width</b></p>");
+    } else if (realcmd == QLatin1String("set-tab-width")) {
+        msg = i18n(
+            "<p>set-tab-width <b>width</b></p>"
+            "<p>Sets the tab width to the number <b>width</b></p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-replace-tab")) {
-        msg = i18n("<p>set-replace-tab <b>enable</b></p>"
-                   "<p>If enabled, tabs are replaced with spaces as you type.</p>"
-                   "<p>Possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-replace-tab")) {
+        msg = i18n(
+            "<p>set-replace-tab <b>enable</b></p>"
+            "<p>If enabled, tabs are replaced with spaces as you type.</p>"
+            "<p>Possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-show-tabs")) {
-        msg = i18n("<p>set-show-tabs <b>enable</b></p>"
-                   "<p>If enabled, TAB characters and trailing whitespace will be visualized by a small dot.</p>"
-                   "<p>Possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-show-tabs")) {
+        msg = i18n(
+            "<p>set-show-tabs <b>enable</b></p>"
+            "<p>If enabled, TAB characters and trailing whitespace will be visualized by a small dot.</p>"
+            "<p>Possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-remove-trailing-spaces")) {
-        msg = i18n("<p>set-remove-trailing-spaces <b>mode</b></p>"
-                   "<p>Removes the trailing spaces in the document depending on the <b>mode</b>.</p>"
-                   "<p>Possible values:"
-                   "<ul>"
-                   "<li><b>none</b>: never remove trailing spaces.</li>"
-                   "<li><b>modified</b>: remove trailing spaces only of modified lines.</li>"
-                   "<li><b>all</b>: remove trailing spaces in the entire document.</li>"
-                   "</ul></p>");
+    } else if (realcmd == QLatin1String("set-remove-trailing-spaces")) {
+        msg = i18n(
+            "<p>set-remove-trailing-spaces <b>mode</b></p>"
+            "<p>Removes the trailing spaces in the document depending on the <b>mode</b>.</p>"
+            "<p>Possible values:"
+            "<ul>"
+            "<li><b>none</b>: never remove trailing spaces.</li>"
+            "<li><b>modified</b>: remove trailing spaces only of modified lines.</li>"
+            "<li><b>all</b>: remove trailing spaces in the entire document.</li>"
+            "</ul></p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-indent-width")) {
-        msg = i18n("<p>set-indent-width <b>width</b></p>"
-                   "<p>Sets the indentation width to the number <b>width</b>. Used only if you are indenting with spaces.</p>");
+    } else if (realcmd == QLatin1String("set-indent-width")) {
+        msg = i18n(
+            "<p>set-indent-width <b>width</b></p>"
+            "<p>Sets the indentation width to the number <b>width</b>. Used only if you are indenting with spaces.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-indent-mode")) {
-        msg = i18n("<p>set-indent-mode <b>mode</b></p>"
-                   "<p>The mode parameter is a value as seen in the Tools - Indentation menu</p>");
+    } else if (realcmd == QLatin1String("set-indent-mode")) {
+        msg = i18n(
+            "<p>set-indent-mode <b>mode</b></p>"
+            "<p>The mode parameter is a value as seen in the Tools - Indentation menu</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-auto-indent")) {
-        msg = i18n("<p>set-auto-indent <b>enable</b></p>"
-                   "<p>Enable or disable autoindentation.</p>"
-                   "<p>possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-auto-indent")) {
+        msg = i18n(
+            "<p>set-auto-indent <b>enable</b></p>"
+            "<p>Enable or disable autoindentation.</p>"
+            "<p>possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-line-numbers")) {
-        msg = i18n("<p>set-line-numbers <b>enable</b></p>"
-                   "<p>Sets the visibility of the line numbers pane.</p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-line-numbers")) {
+        msg = i18n(
+            "<p>set-line-numbers <b>enable</b></p>"
+            "<p>Sets the visibility of the line numbers pane.</p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-folding-markers")) {
-        msg = i18n("<p>set-folding-markers <b>enable</b></p>"
-                   "<p>Sets the visibility of the folding markers pane.</p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-folding-markers")) {
+        msg = i18n(
+            "<p>set-folding-markers <b>enable</b></p>"
+            "<p>Sets the visibility of the folding markers pane.</p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-icon-border")) {
-        msg = i18n("<p>set-icon-border <b>enable</b></p>"
-                   "<p>Sets the visibility of the icon border.</p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-icon-border")) {
+        msg = i18n(
+            "<p>set-icon-border <b>enable</b></p>"
+            "<p>Sets the visibility of the icon border.</p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-word-wrap")) {
-        msg = i18n("<p>set-word-wrap <b>enable</b></p>"
-                   "<p>Enables dynamic word wrap according to <b>enable</b></p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-word-wrap")) {
+        msg = i18n(
+            "<p>set-word-wrap <b>enable</b></p>"
+            "<p>Enables dynamic word wrap according to <b>enable</b></p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-word-wrap-column")) {
-        msg = i18n("<p>set-word-wrap-column <b>width</b></p>"
-                   "<p>Sets the line width for hard wrapping to <b>width</b>. This is used if you are having your text wrapped automatically.</p>");
+    } else if (realcmd == QLatin1String("set-word-wrap-column")) {
+        msg = i18n(
+            "<p>set-word-wrap-column <b>width</b></p>"
+            "<p>Sets the line width for hard wrapping to <b>width</b>. This is used if you are having your text wrapped automatically.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-replace-tabs-save")) {
-        msg = i18n("<p>set-replace-tabs-save <b>enable</b></p>"
-                   "<p>When enabled, tabs will be replaced with whitespace whenever the document is saved.</p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-replace-tabs-save")) {
+        msg = i18n(
+            "<p>set-replace-tabs-save <b>enable</b></p>"
+            "<p>When enabled, tabs will be replaced with whitespace whenever the document is saved.</p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-highlight")) {
-        msg = i18n("<p>set-highlight <b>highlight</b></p>"
-                   "<p>Sets the syntax highlighting system for the document. The argument must be a valid highlight name, as seen in the Tools → Highlighting menu. This command provides an autocompletion list for its argument.</p>");
+    } else if (realcmd == QLatin1String("set-highlight")) {
+        msg = i18n(
+            "<p>set-highlight <b>highlight</b></p>"
+            "<p>Sets the syntax highlighting system for the document. The argument must be a valid highlight name, as seen in the Tools → Highlighting menu. This command provides an autocompletion list for its argument.</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-mode")) {
-        msg = i18n("<p>set-mode <b>mode</b></p>"
-                   "<p>Sets the mode as seen in Tools - Mode</p>");
+    } else if (realcmd == QLatin1String("set-mode")) {
+        msg = i18n(
+            "<p>set-mode <b>mode</b></p>"
+            "<p>Sets the mode as seen in Tools - Mode</p>");
         return true;
-    } else   if (realcmd == QLatin1String("set-show-indent")) {
-        msg = i18n("<p>set-show-indent <b>enable</b></p>"
-                   "<p>If enabled, indentation will be visualized by a vertical dotted line.</p>"
-                   "<p> possible true values: 1 on true<br/>"
-                   "possible false values: 0 off false</p>");
+    } else if (realcmd == QLatin1String("set-show-indent")) {
+        msg = i18n(
+            "<p>set-show-indent <b>enable</b></p>"
+            "<p>If enabled, indentation will be visualized by a vertical dotted line.</p>"
+            "<p> possible true values: 1 on true<br/>"
+            "possible false values: 0 off false</p>");
         return true;
-    } else   if (realcmd == QLatin1String("print")) {
+    } else if (realcmd == QLatin1String("print")) {
         msg = i18n("<p>Open the Print dialog to print the current document.</p>");
         return true;
     } else {
@@ -190,20 +213,21 @@ bool KateCommands::CoreCommands::help(KTextEditor::View *, const QString &cmd, Q
     }
 }
 
-bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
-                                      const QString &_cmd,
-                                      QString &errorMsg,
-                                      const KTextEditor::Range &range)
+bool KateCommands::CoreCommands::exec(KTextEditor::View *view, const QString &_cmd, QString &errorMsg, const KTextEditor::Range &range)
 {
-#define KCC_ERR(s) { errorMsg=s; return false; }
+#define KCC_ERR(s)                                                                                                                                                                                                                             \
+    {                                                                                                                                                                                                                                          \
+        errorMsg = s;                                                                                                                                                                                                                          \
+        return false;                                                                                                                                                                                                                          \
+    }
     // cast it hardcore, we know that it is really a kateview :)
     KTextEditor::ViewPrivate *v = static_cast<KTextEditor::ViewPrivate *>(view);
 
-    if (! v) {
+    if (!v) {
         KCC_ERR(i18n("Could not access view"));
     }
 
-    //create a list of args
+    // create a list of args
     QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
@@ -246,7 +270,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
     } else if (cmd == QLatin1String("tfold")) {
         return (v->textFolding().newFoldingRange(range.isValid() ? range : v->selectionRange(), Kate::TextFolding::Folded) != -1);
     } else if (cmd == QLatin1String("unfold")) {
-        QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = v->textFolding().foldingRangesStartingOnLine(v->cursorPosition().line());
+        QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = v->textFolding().foldingRangesStartingOnLine(v->cursorPosition().line());
         bool unfolded = false;
         for (int i = 0; i < startingRanges.size(); ++i) {
             if (startingRanges[i].second & Kate::TextFolding::Folded) {
@@ -293,12 +317,10 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
     }
 
     // ALL commands that take a string argument
-    else if (cmd == QLatin1String("set-indent-mode") ||
-             cmd == QLatin1String("set-highlight") ||
-             cmd == QLatin1String("set-mode")) {
+    else if (cmd == QLatin1String("set-indent-mode") || cmd == QLatin1String("set-highlight") || cmd == QLatin1String("set-mode")) {
         // need at least one item, otherwise args.first() crashes
         if (args.isEmpty()) {
-            KCC_ERR(i18n("Missing argument. Usage: %1 <value>",  cmd));
+            KCC_ERR(i18n("Missing argument. Usage: %1 <value>", cmd));
         }
 
         if (cmd == QLatin1String("set-indent-mode")) {
@@ -311,29 +333,25 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
                 return true;
             }
 
-            KCC_ERR(i18n("No such highlighting '%1'",  args.first()));
+            KCC_ERR(i18n("No such highlighting '%1'", args.first()));
         } else if (cmd == QLatin1String("set-mode")) {
             if (v->doc()->setMode(args.first())) {
                 return true;
             }
 
-            KCC_ERR(i18n("No such mode '%1'",  args.first()));
+            KCC_ERR(i18n("No such mode '%1'", args.first()));
         }
     }
     // ALL commands that takes exactly one integer argument.
-    else if (cmd == QLatin1String("set-tab-width") ||
-             cmd == QLatin1String("set-indent-width") ||
-             cmd == QLatin1String("set-word-wrap-column") ||
-             cmd == QLatin1String("goto")) {
+    else if (cmd == QLatin1String("set-tab-width") || cmd == QLatin1String("set-indent-width") || cmd == QLatin1String("set-word-wrap-column") || cmd == QLatin1String("goto")) {
         // find a integer value > 0
         if (args.isEmpty()) {
-            KCC_ERR(i18n("Missing argument. Usage: %1 <value>",  cmd));
+            KCC_ERR(i18n("Missing argument. Usage: %1 <value>", cmd));
         }
         bool ok;
-        int val(args.first().toInt(&ok, 10));      // use base 10 even if the string starts with '0'
+        int val(args.first().toInt(&ok, 10)); // use base 10 even if the string starts with '0'
         if (!ok)
-            KCC_ERR(i18n("Failed to convert argument '%1' to integer.",
-                         args.first()));
+            KCC_ERR(i18n("Failed to convert argument '%1' to integer.", args.first()));
 
         if (cmd == QLatin1String("set-tab-width")) {
             if (val < 1) {
@@ -372,18 +390,10 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
     }
 
     // ALL commands that takes 1 boolean argument.
-    else if (cmd == QLatin1String("set-icon-border") ||
-             cmd == QLatin1String("set-folding-markers") ||
-             cmd == QLatin1String("set-indent-pasted-text") ||
-             cmd == QLatin1String("set-line-numbers") ||
-             cmd == QLatin1String("set-replace-tabs") ||
-             cmd == QLatin1String("set-show-tabs") ||
-             cmd == QLatin1String("set-word-wrap") ||
-             cmd == QLatin1String("set-wrap-cursor") ||
-             cmd == QLatin1String("set-replace-tabs-save") ||
-             cmd == QLatin1String("set-show-indent")) {
+    else if (cmd == QLatin1String("set-icon-border") || cmd == QLatin1String("set-folding-markers") || cmd == QLatin1String("set-indent-pasted-text") || cmd == QLatin1String("set-line-numbers") || cmd == QLatin1String("set-replace-tabs") ||
+             cmd == QLatin1String("set-show-tabs") || cmd == QLatin1String("set-word-wrap") || cmd == QLatin1String("set-wrap-cursor") || cmd == QLatin1String("set-replace-tabs-save") || cmd == QLatin1String("set-show-indent")) {
         if (args.isEmpty()) {
-            KCC_ERR(i18n("Usage: %1 on|off|1|0|true|false",  cmd));
+            KCC_ERR(i18n("Usage: %1 on|off|1|0|true|false", cmd));
         }
         bool enable = false;
         KateDocumentConfig *const config = v->doc()->config();
@@ -410,8 +420,7 @@ bool KateCommands::CoreCommands::exec(KTextEditor::View *view,
 
             return true;
         } else
-            KCC_ERR(i18n("Bad argument '%1'. Usage: %2 on|off|1|0|true|false",
-                         args.first(),  cmd));
+            KCC_ERR(i18n("Bad argument '%1'. Usage: %2 on|off|1|0|true|false", args.first(), cmd));
     } else if (cmd == QLatin1String("set-remove-trailing-spaces")) {
         // need at least one item, otherwise args.first() crashes
         if (args.count() != 1) {
@@ -437,8 +446,8 @@ bool KateCommands::CoreCommands::supportsRange(const QString &range)
     static QStringList l;
 
     if (l.isEmpty())
-        l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent")
-          << QStringLiteral("comment") << QStringLiteral("uncomment") << QStringLiteral("kill-line") << QStringLiteral("fold") << QStringLiteral("tfold");
+        l << QStringLiteral("indent") << QStringLiteral("unindent") << QStringLiteral("cleanindent") << QStringLiteral("comment") << QStringLiteral("uncomment") << QStringLiteral("kill-line") << QStringLiteral("fold")
+          << QStringLiteral("tfold");
 
     return l.contains(range);
 }
@@ -475,20 +484,21 @@ KCompletion *KateCommands::CoreCommands::completionObject(KTextEditor::View *vie
 
     return nullptr;
 }
-//END CoreCommands
+// END CoreCommands
 
-//BEGIN Character
+// BEGIN Character
 KateCommands::Character *KateCommands::Character::m_instance = nullptr;
 
 bool KateCommands::Character::help(class KTextEditor::View *, const QString &cmd, QString &msg)
 {
     if (cmd.trimmed() == QLatin1String("char")) {
-        msg = i18n("<p> char <b>identifier</b> </p>"
-                   "<p>This command allows you to insert literal characters by their numerical identifier, in decimal, octal or hexadecimal form.</p>"
-                   "<p>Examples:<ul>"
-                   "<li>char <b>234</b></li>"
-                   "<li>char <b>0x1234</b></li>"
-                   "</ul></p>");
+        msg = i18n(
+            "<p> char <b>identifier</b> </p>"
+            "<p>This command allows you to insert literal characters by their numerical identifier, in decimal, octal or hexadecimal form.</p>"
+            "<p>Examples:<ul>"
+            "<li>char <b>234</b></li>"
+            "<li>char <b>0x1234</b></li>"
+            "</ul></p>");
         return true;
     }
     return false;
@@ -541,38 +551,39 @@ bool KateCommands::Character::exec(KTextEditor::View *view, const QString &_cmd,
     return true;
 }
 
-//END Character
+// END Character
 
-//BEGIN Date
+// BEGIN Date
 KateCommands::Date *KateCommands::Date::m_instance = nullptr;
 
 bool KateCommands::Date::help(class KTextEditor::View *, const QString &cmd, QString &msg)
 {
     if (cmd.trimmed() == QLatin1String("date")) {
-        msg = i18n("<p>date or date <b>format</b></p>"
-                   "<p>Inserts a date/time string as defined by the specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified.</p>"
-                   "<p>Possible format specifiers are:"
-                   "<table>"
-                   "<tr><td>d</td><td>The day as number without a leading zero (1-31).</td></tr>"
-                   "<tr><td>dd</td><td>The day as number with a leading zero (01-31).</td></tr>"
-                   "<tr><td>ddd</td><td>The abbreviated localized day name (e.g. 'Mon'..'Sun').</td></tr>"
-                   "<tr><td>dddd</td><td>The long localized day name (e.g. 'Monday'..'Sunday').</td></tr>"
-                   "<tr><td>M</td><td>The month as number without a leading zero (1-12).</td></tr>"
-                   "<tr><td>MM</td><td>The month as number with a leading zero (01-12).</td></tr>"
-                   "<tr><td>MMM</td><td>The abbreviated localized month name (e.g. 'Jan'..'Dec').</td></tr>"
-                   "<tr><td>yy</td><td>The year as two digit number (00-99).</td></tr>"
-                   "<tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></tr>"
-                   "<tr><td>h</td><td>The hour without a leading zero (0..23 or 1..12 if AM/PM display).</td></tr>"
-                   "<tr><td>hh</td><td>The hour with a leading zero (00..23 or 01..12 if AM/PM display).</td></tr>"
-                   "<tr><td>m</td><td>The minute without a leading zero (0..59).</td></tr>"
-                   "<tr><td>mm</td><td>The minute with a leading zero (00..59).</td></tr>"
-                   "<tr><td>s</td><td>The second without a leading zero (0..59).</td></tr>"
-                   "<tr><td>ss</td><td>The second with a leading zero (00..59).</td></tr>"
-                   "<tr><td>z</td><td>The milliseconds without leading zeroes (0..999).</td></tr>"
-                   "<tr><td>zzz</td><td>The milliseconds with leading zeroes (000..999).</td></tr>"
-                   "<tr><td>AP</td><td>Use AM/PM display. AP will be replaced by either \"AM\" or \"PM\".</td></tr>"
-                   "<tr><td>ap</td><td>Use am/pm display. ap will be replaced by either \"am\" or \"pm\".</td></tr>"
-                   "</table></p>");
+        msg = i18n(
+            "<p>date or date <b>format</b></p>"
+            "<p>Inserts a date/time string as defined by the specified format, or the format yyyy-MM-dd hh:mm:ss if none is specified.</p>"
+            "<p>Possible format specifiers are:"
+            "<table>"
+            "<tr><td>d</td><td>The day as number without a leading zero (1-31).</td></tr>"
+            "<tr><td>dd</td><td>The day as number with a leading zero (01-31).</td></tr>"
+            "<tr><td>ddd</td><td>The abbreviated localized day name (e.g. 'Mon'..'Sun').</td></tr>"
+            "<tr><td>dddd</td><td>The long localized day name (e.g. 'Monday'..'Sunday').</td></tr>"
+            "<tr><td>M</td><td>The month as number without a leading zero (1-12).</td></tr>"
+            "<tr><td>MM</td><td>The month as number with a leading zero (01-12).</td></tr>"
+            "<tr><td>MMM</td><td>The abbreviated localized month name (e.g. 'Jan'..'Dec').</td></tr>"
+            "<tr><td>yy</td><td>The year as two digit number (00-99).</td></tr>"
+            "<tr><td>yyyy</td><td>The year as four digit number (1752-8000).</td></tr>"
+            "<tr><td>h</td><td>The hour without a leading zero (0..23 or 1..12 if AM/PM display).</td></tr>"
+            "<tr><td>hh</td><td>The hour with a leading zero (00..23 or 01..12 if AM/PM display).</td></tr>"
+            "<tr><td>m</td><td>The minute without a leading zero (0..59).</td></tr>"
+            "<tr><td>mm</td><td>The minute with a leading zero (00..59).</td></tr>"
+            "<tr><td>s</td><td>The second without a leading zero (0..59).</td></tr>"
+            "<tr><td>ss</td><td>The second with a leading zero (00..59).</td></tr>"
+            "<tr><td>z</td><td>The milliseconds without leading zeroes (0..999).</td></tr>"
+            "<tr><td>zzz</td><td>The milliseconds with leading zeroes (000..999).</td></tr>"
+            "<tr><td>AP</td><td>Use AM/PM display. AP will be replaced by either \"AM\" or \"PM\".</td></tr>"
+            "<tr><td>ap</td><td>Use am/pm display. ap will be replaced by either \"am\" or \"pm\".</td></tr>"
+            "</table></p>");
         return true;
     }
     return false;
@@ -593,5 +604,4 @@ bool KateCommands::Date::exec(KTextEditor::View *view, const QString &cmd, QStri
     return true;
 }
 
-//END Date
-
+// END Date

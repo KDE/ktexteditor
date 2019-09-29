@@ -33,7 +33,9 @@
 #include <QJSEngine>
 
 KateScriptDocument::KateScriptDocument(QJSEngine *engine, QObject *parent)
-    : QObject(parent), m_document(nullptr), m_engine(engine)
+    : QObject(parent)
+    , m_document(nullptr)
+    , m_engine(engine)
 {
 }
 
@@ -646,7 +648,7 @@ bool KateScriptDocument::isValidTextPosition(int line, int column)
     return m_document->isValidTextPosition(KTextEditor::Cursor(line, column));
 }
 
-bool KateScriptDocument::isValidTextPosition(const QJSValue& cursor)
+bool KateScriptDocument::isValidTextPosition(const QJSValue &cursor)
 {
     return m_document->isValidTextPosition(cursorFromScriptValue(cursor));
 }
@@ -823,12 +825,8 @@ void KateScriptDocument::setVariable(const QString &s, const QString &v)
 
 bool KateScriptDocument::_isCode(int defaultStyle)
 {
-    return (defaultStyle != KTextEditor::dsComment
-            && defaultStyle != KTextEditor::dsAlert
-            && defaultStyle != KTextEditor::dsString
-            && defaultStyle != KTextEditor::dsRegionMarker
-            && defaultStyle != KTextEditor::dsChar
-            && defaultStyle != KTextEditor::dsOthers);
+    return (defaultStyle != KTextEditor::dsComment && defaultStyle != KTextEditor::dsAlert && defaultStyle != KTextEditor::dsString && defaultStyle != KTextEditor::dsRegionMarker && defaultStyle != KTextEditor::dsChar &&
+            defaultStyle != KTextEditor::dsOthers);
 }
 
 void KateScriptDocument::indent(const QJSValue &jsrange, int change)

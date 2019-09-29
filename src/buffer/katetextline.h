@@ -31,7 +31,6 @@
 
 namespace Kate
 {
-
 /**
  * Class representing a single text line.
  * For efficiency reasons, not only pure text is stored here, but also additional data.
@@ -111,13 +110,7 @@ public:
     /**
      * Flags of TextLineData
      */
-    enum Flags {
-        flagAutoWrapped = 1,
-        flagFoldingStartAttribute = 2,
-        flagFoldingStartIndentation = 4,
-        flagLineModified = 8,
-        flagLineSavedOnDisk = 16
-    };
+    enum Flags { flagAutoWrapped = 1, flagFoldingStartAttribute = 2, flagFoldingStartIndentation = 4, flagLineModified = 8, flagLineSavedOnDisk = 16 };
 
     /**
      * Construct an empty text line.
@@ -429,7 +422,7 @@ public:
      */
     void addFolding(int offset, int folding)
     {
-        m_foldings.emplace_back(offset,folding);
+        m_foldings.emplace_back(offset, folding);
     }
 
     /**
@@ -450,7 +443,7 @@ public:
         if (wrapped) {
             m_flags = m_flags | flagAutoWrapped;
         } else {
-            m_flags = m_flags & ~ flagAutoWrapped;
+            m_flags = m_flags & ~flagAutoWrapped;
         }
     }
 

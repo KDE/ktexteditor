@@ -36,7 +36,7 @@
 #include <KColorCombo>
 #include <sonnet/dictionarycombobox.h>
 
-//BEGIN VariableEditor
+// BEGIN VariableEditor
 VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
     : QWidget(parent)
     , m_item(item)
@@ -152,13 +152,13 @@ VariableItem *VariableEditor::item() const
 {
     return m_item;
 }
-//END VariableEditor
+// END VariableEditor
 
-//BEGIN VariableUintEditor
+// BEGIN VariableUintEditor
 VariableIntEditor::VariableIntEditor(VariableIntItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_spinBox = new QSpinBox(this);
     m_spinBox->setValue(item->value());
@@ -176,13 +176,13 @@ void VariableIntEditor::setItemValue(int newValue)
 {
     static_cast<VariableIntItem *>(item())->setValue(newValue);
 }
-//END VariableUintEditor
+// END VariableUintEditor
 
-//BEGIN VariableBoolEditor
+// BEGIN VariableBoolEditor
 VariableBoolEditor::VariableBoolEditor(VariableBoolItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_comboBox = new QComboBox(this);
     m_comboBox->addItem(i18n("true"));
@@ -199,13 +199,13 @@ void VariableBoolEditor::setItemValue(int enabled)
 {
     static_cast<VariableBoolItem *>(item())->setValue(enabled == 0);
 }
-//END VariableBoolEditor
+// END VariableBoolEditor
 
-//BEGIN VariableStringListEditor
+// BEGIN VariableStringListEditor
 VariableStringListEditor::VariableStringListEditor(VariableStringListItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_comboBox = new QComboBox(this);
     m_comboBox->addItems(item->stringList());
@@ -228,13 +228,13 @@ void VariableStringListEditor::setItemValue(const QString &newValue)
 {
     static_cast<VariableStringListItem *>(item())->setValue(newValue);
 }
-//END VariableStringListEditor
+// END VariableStringListEditor
 
-//BEGIN VariableColorEditor
+// BEGIN VariableColorEditor
 VariableColorEditor::VariableColorEditor(VariableColorItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_comboBox = new KColorCombo(this);
     m_comboBox->setColor(item->value());
@@ -249,13 +249,13 @@ void VariableColorEditor::setItemValue(const QColor &newValue)
 {
     static_cast<VariableColorItem *>(item())->setValue(newValue);
 }
-//END VariableColorEditor
+// END VariableColorEditor
 
-//BEGIN VariableFontEditor
+// BEGIN VariableFontEditor
 VariableFontEditor::VariableFontEditor(VariableFontItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_comboBox = new QFontComboBox(this);
     m_comboBox->setCurrentFont(item->value());
@@ -270,13 +270,13 @@ void VariableFontEditor::setItemValue(const QFont &newValue)
 {
     static_cast<VariableFontItem *>(item())->setValue(newValue);
 }
-//END VariableFontEditor
+// END VariableFontEditor
 
-//BEGIN VariableStringEditor
+// BEGIN VariableStringEditor
 VariableStringEditor::VariableStringEditor(VariableStringItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_lineEdit = new QLineEdit(this);
     m_lineEdit->setText(item->value());
@@ -289,15 +289,15 @@ VariableStringEditor::VariableStringEditor(VariableStringItem *item, QWidget *pa
 
 void VariableStringEditor::setItemValue(const QString &newValue)
 {
-    static_cast <VariableStringItem *>(item())->setValue(newValue);
+    static_cast<VariableStringItem *>(item())->setValue(newValue);
 }
-//END VariableStringEditor
+// END VariableStringEditor
 
-//BEGIN VariableSpellCheckEditor
+// BEGIN VariableSpellCheckEditor
 VariableSpellCheckEditor::VariableSpellCheckEditor(VariableSpellCheckItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_dictionaryCombo = new Sonnet::DictionaryComboBox(this);
     m_dictionaryCombo->setCurrentByDictionary(item->value());
@@ -310,16 +310,16 @@ VariableSpellCheckEditor::VariableSpellCheckEditor(VariableSpellCheckItem *item,
 
 void VariableSpellCheckEditor::setItemValue(const QString &newValue)
 {
-    static_cast <VariableSpellCheckItem *>(item())->setValue(newValue);
+    static_cast<VariableSpellCheckItem *>(item())->setValue(newValue);
 }
 
-//END VariableSpellCheckEditor
+// END VariableSpellCheckEditor
 
-//BEGIN VariableRemoveSpacesEditor
+// BEGIN VariableRemoveSpacesEditor
 VariableRemoveSpacesEditor::VariableRemoveSpacesEditor(VariableRemoveSpacesItem *item, QWidget *parent)
     : VariableEditor(item, parent)
 {
-    QGridLayout *l = (QGridLayout *) layout();
+    QGridLayout *l = (QGridLayout *)layout();
 
     m_comboBox = new QComboBox(this);
     m_comboBox->addItem(i18nc("value for variable remove-trailing-spaces", "none"));
@@ -337,5 +337,4 @@ void VariableRemoveSpacesEditor::setItemValue(int enabled)
 {
     static_cast<VariableRemoveSpacesItem *>(item())->setValue(enabled == 0);
 }
-//END VariableRemoveSpacesEditor
-
+// END VariableRemoveSpacesEditor

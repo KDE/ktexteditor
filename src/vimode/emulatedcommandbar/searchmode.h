@@ -24,8 +24,9 @@
 #include "activemode.h"
 #include "../searcher.h"
 
-namespace KTextEditor {
-    class ViewPrivate;
+namespace KTextEditor
+{
+class ViewPrivate;
 }
 
 #include <KTextEditor/Cursor>
@@ -41,13 +42,13 @@ QStringList reversed(const QStringList &originalList);
 class SearchMode : public ActiveMode
 {
 public:
-    SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit);
+    SearchMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, QLineEdit *edit);
     ~SearchMode() override
     {
     }
     enum class SearchDirection { Forward, Backward };
     void init(SearchDirection);
-    bool handleKeyPress ( const QKeyEvent* keyEvent ) override;
+    bool handleKeyPress(const QKeyEvent *keyEvent) override;
     void editTextChanged(const QString &newText) override;
     CompletionStartParams completionInvoked(Completer::CompletionInvocation invocationType) override;
     void completionChosen() override;
@@ -56,6 +57,7 @@ public:
     {
         return m_isSendingSyntheticSearchCompletedKeypress;
     }
+
 private:
     QLineEdit *m_edit = nullptr;
     SearchDirection m_searchDirection;

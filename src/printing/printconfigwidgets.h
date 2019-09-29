@@ -35,8 +35,7 @@ class QGroupBox;
 
 namespace KatePrinter
 {
-
-//BEGIN Text settings
+// BEGIN Text settings
 /*
  *  Text settings page:
  *  - Print Line Numbers
@@ -59,9 +58,9 @@ private:
     QCheckBox *cbLineNumbers;
     QCheckBox *cbGuide;
 };
-//END Text Settings
+// END Text Settings
 
-//BEGIN Header/Footer
+// BEGIN Header/Footer
 /*
  *  Header & Footer page:
  *  - enable header/footer
@@ -110,9 +109,9 @@ private:
     QCheckBox *cbFooterEnableBgColor;
 };
 
-//END Header/Footer
+// END Header/Footer
 
-//BEGIN Layout
+// BEGIN Layout
 /*
  *  Layout page:
  *  - Color scheme
@@ -148,7 +147,7 @@ private:
     QSpinBox *sbBoxMargin;
     KColorButton *kcbtnBoxColor;
 };
-//END Layout
+// END Layout
 
 }
 

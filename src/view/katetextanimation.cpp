@@ -47,8 +47,7 @@ KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEdito
     m_timeLine->setCurveShape(QTimeLine::SineCurve);
     m_timeLine->start();
 
-    QObject::connect(view, &KTextEditor::View::destroyed,
-                     m_timeLine, &QTimeLine::stop);
+    QObject::connect(view, &KTextEditor::View::destroyed, m_timeLine, &QTimeLine::stop);
 }
 
 KateTextAnimation::~KateTextAnimation()
@@ -69,8 +68,7 @@ QRectF KateTextAnimation::rectForText()
     if (pixelPos.x() == -1 || pixelPos.y() == -1) {
         return QRectF();
     } else {
-        QRectF rect(pixelPos.x(), pixelPos.y(),
-                    fm.boundingRect(m_view->view()->doc()->text(m_range)).width(), lineHeight);
+        QRectF rect(pixelPos.x(), pixelPos.y(), fm.boundingRect(m_view->view()->doc()->text(m_range)).width(), lineHeight);
         const QPointF center = rect.center();
         const qreal factor = 1.0 + 0.5 * m_value;
         rect.setWidth(rect.width() * factor);
@@ -119,4 +117,3 @@ void KateTextAnimation::nextFrame(qreal value)
     // request repaint
     m_view->update(updateRect);
 }
-

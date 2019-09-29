@@ -32,20 +32,16 @@ KateCommands::Highlighting *KateCommands::Highlighting::m_instance = nullptr;
 
 bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
-    if(cmd.startsWith(QLatin1String("reload-highlighting")))
-    {
+    if (cmd.startsWith(QLatin1String("reload-highlighting"))) {
         KateHlManager *manager = KTextEditor::EditorPrivate::self()->hlManager();
         manager->reload();
 
         return true;
-    }
-    else if(cmd.startsWith(QLatin1String("edit-highlighting")))
-    {
-        KTextEditor::DocumentPrivate* document = static_cast<KTextEditor::DocumentPrivate*>(view->document());
+    } else if (cmd.startsWith(QLatin1String("edit-highlighting"))) {
+        KTextEditor::DocumentPrivate *document = static_cast<KTextEditor::DocumentPrivate *>(view->document());
         KateHighlighting *highlighting = document->highlight();
 
-        if(!highlighting->noHighlighting())
-        {
+        if (!highlighting->noHighlighting()) {
             QUrl url = QUrl::fromLocalFile(highlighting->getIdentifier());
             KTextEditor::Application *app = KTextEditor::Editor::instance()->application();
             app->openUrl(url);
@@ -53,11 +49,11 @@ bool KateCommands::Highlighting::exec(KTextEditor::View *view, const QString &cm
 
         return true;
     }
-    
+
     return true;
 }
 
-bool KateCommands::Highlighting::help(KTextEditor::View*, const QString&, QString&)
+bool KateCommands::Highlighting::help(KTextEditor::View *, const QString &, QString &)
 {
     return false;
 }

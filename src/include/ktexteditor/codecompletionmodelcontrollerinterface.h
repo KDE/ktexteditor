@@ -28,7 +28,6 @@ class QModelIndex;
 
 namespace KTextEditor
 {
-
 class View;
 
 /**

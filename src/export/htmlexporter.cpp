@@ -42,10 +42,10 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
         // for the title, we write the name of the file (/usr/local/emmanuel/myfile.cpp -> myfile.cpp)
         m_output << "<title>" << view->document()->documentName() << "</title>" << endl;
         m_output << "</head>" << endl;
-        
+
         // tell in comment which highlighting was used!
         m_output << "<!-- Highlighting: \"" << view->document()->highlightingMode() << "\" -->" << endl;
-        
+
         m_output << "<body>" << endl;
     }
 
@@ -53,10 +53,10 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
         m_output << "<pre>" << endl;
     } else {
         m_output << QStringLiteral("<pre style='%1%2%3%4'>")
-                 .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QString())
-                 .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QString())
-                 .arg(QLatin1String("color:") + m_defaultAttribute->foreground().color().name() + QLatin1Char(';'))
-                 .arg(QLatin1String("background-color:") + m_defaultAttribute->background().color().name() + QLatin1Char(';'))
+                        .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QString())
+                        .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QString())
+                        .arg(QLatin1String("color:") + m_defaultAttribute->foreground().color().name() + QLatin1Char(';'))
+                        .arg(QLatin1String("background-color:") + m_defaultAttribute->background().color().name() + QLatin1Char(';'))
                  << endl;
     }
 }
@@ -78,7 +78,7 @@ void HTMLExporter::openLine()
 void HTMLExporter::closeLine(const bool lastLine)
 {
     if (!lastLine) {
-        //we are inside a <pre>, so a \n is a new line
+        // we are inside a <pre>, so a \n is a new line
         m_output << "\n";
     }
 }
@@ -97,15 +97,13 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
         m_output << "<i>";
     }
 
-    bool writeForeground = attrib->hasProperty(QTextCharFormat::ForegroundBrush)
-                           && (!m_defaultAttribute || attrib->foreground().color() != m_defaultAttribute->foreground().color());
-    bool writeBackground = attrib->hasProperty(QTextCharFormat::BackgroundBrush)
-                           && (!m_defaultAttribute || attrib->background().color() != m_defaultAttribute->background().color());
+    bool writeForeground = attrib->hasProperty(QTextCharFormat::ForegroundBrush) && (!m_defaultAttribute || attrib->foreground().color() != m_defaultAttribute->foreground().color());
+    bool writeBackground = attrib->hasProperty(QTextCharFormat::BackgroundBrush) && (!m_defaultAttribute || attrib->background().color() != m_defaultAttribute->background().color());
 
     if (writeForeground || writeBackground) {
         m_output << QStringLiteral("<span style='%1%2'>")
-                 .arg(writeForeground ? QString(QLatin1String("color:") + attrib->foreground().color().name() + QLatin1Char(';')) : QString())
-                 .arg(writeBackground ? QString(QLatin1String("background:") + attrib->background().color().name() + QLatin1Char(';')) : QString());
+                        .arg(writeForeground ? QString(QLatin1String("color:") + attrib->foreground().color().name() + QLatin1Char(';')) : QString())
+                        .arg(writeBackground ? QString(QLatin1String("background:") + attrib->background().color().name() + QLatin1Char(';')) : QString());
     }
 
     m_output << text.toHtmlEscaped();

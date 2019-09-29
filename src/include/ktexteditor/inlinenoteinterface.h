@@ -35,7 +35,6 @@ class QPainter;
 
 namespace KTextEditor
 {
-
 class InlineNoteProvider;
 
 /**

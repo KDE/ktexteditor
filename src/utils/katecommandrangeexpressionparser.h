@@ -27,7 +27,10 @@
 
 #include <QRegExp>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class CommandRangeExpressionParser
 {
@@ -44,6 +47,7 @@ public:
      * An invalid Range is returned if no leading range expression could be found.
      */
     static KTextEditor::Range parseRangeExpression(const QString &command, KTextEditor::ViewPrivate *view, QString &destRangeExpression, QString &destTransformedCommand);
+
 private:
     KTextEditor::Range parseRangeExpression(const QString &command, QString &destRangeExpression, QString &destTransformedCommand, KTextEditor::ViewPrivate *view);
     int calculatePosition(const QString &string, KTextEditor::ViewPrivate *view);

@@ -71,7 +71,7 @@ KateModifiedWrapLine::KateModifiedWrapLine(KTextEditor::DocumentPrivate *documen
 
     if (tl->markedAsModified()) {
         setFlag(UndoLine1Modified);
-    } else if ((len > 0  && col > 0) || tl->markedAsSavedOnDisk()) {
+    } else if ((len > 0 && col > 0) || tl->markedAsSavedOnDisk()) {
         setFlag(UndoLine1Saved);
     }
 }
@@ -456,4 +456,3 @@ void KateModifiedRemoveLine::updateUndoSavedOnDiskFlag(QBitArray &lines)
         setFlag(UndoLine1Saved);
     }
 }
-

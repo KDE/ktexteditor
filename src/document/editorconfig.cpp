@@ -27,13 +27,13 @@
 static bool checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const QStringList trueValues { QStringLiteral("1"), QStringLiteral("on"), QStringLiteral("true") };
+    static const QStringList trueValues {QStringLiteral("1"), QStringLiteral("on"), QStringLiteral("true")};
     if (trueValues.contains(val)) {
         *result = true;
         return true;
     }
 
-    static const QStringList falseValues { QStringLiteral("0"), QStringLiteral("off"), QStringLiteral("false") };
+    static const QStringList falseValues {QStringLiteral("0"), QStringLiteral("off"), QStringLiteral("false")};
     if (falseValues.contains(val)) {
         *result = false;
         return true;
@@ -92,7 +92,7 @@ int EditorConfig::parse()
     // the following only applies if indent_size=tab and there isn’t tab_width
     int tabWidth = m_document->config()->tabWidth();
 
-    for (unsigned int i = 0; i < count; ++ i) {
+    for (unsigned int i = 0; i < count; ++i) {
         // raw values from EditorConfig library
         const char *rawKey = nullptr;
         const char *rawValue = nullptr;
@@ -158,7 +158,7 @@ int EditorConfig::parse()
 
     if (setIndentSizeAsTabWidth) {
         m_document->config()->setIndentationWidth(tabWidth);
-    } else if (! tabWidthSet && indentSizeSet) {
+    } else if (!tabWidthSet && indentSizeSet) {
         m_document->config()->setTabWidth(m_document->config()->indentationWidth());
     }
 

@@ -110,4 +110,3 @@ bool MovingCursor::move(int chars, WrapBehavior wrapBehavior)
 
     return success;
 }
-

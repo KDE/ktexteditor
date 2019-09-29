@@ -23,7 +23,7 @@
    Boston, MA 02111-13020, USA.
 */
 
-//BEGIN includes
+// BEGIN includes
 #include "config.h"
 #include "katedocument.h"
 #include "kateglobal.h"
@@ -95,23 +95,23 @@
 #include <git2/repository.h>
 #endif
 
-//END  includes
+// END  includes
 
 #if 0
 #define EDIT_DEBUG qCDebug(LOG_KTE)
 #else
-#define EDIT_DEBUG if (0) qCDebug(LOG_KTE)
+#define EDIT_DEBUG                                                                                                                                                                                                                             \
+    if (0)                                                                                                                                                                                                                                     \
+    qCDebug(LOG_KTE)
 #endif
 
-template<class C, class E>
-static int indexOf(const std::initializer_list<C> & list, const E& entry)
+template <class C, class E> static int indexOf(const std::initializer_list<C> &list, const E &entry)
 {
     auto it = std::find(list.begin(), list.end(), entry);
     return it == list.end() ? -1 : std::distance(list.begin(), it);
 }
 
-template<class C, class E>
-static bool contains(const std::initializer_list<C> & list, const E& entry)
+template <class C, class E> static bool contains(const std::initializer_list<C> &list, const E &entry)
 {
     return indexOf(list, entry) >= 0;
 }
@@ -119,9 +119,12 @@ static bool contains(const std::initializer_list<C> & list, const E& entry)
 static inline QChar matchingStartBracket(const QChar c)
 {
     switch (c.toLatin1()) {
-        case '}': return QLatin1Char('{');
-        case ']': return QLatin1Char('[');
-        case ')': return QLatin1Char('(');
+        case '}':
+            return QLatin1Char('{');
+        case ']':
+            return QLatin1Char('[');
+        case ')':
+            return QLatin1Char('(');
     }
     return QChar();
 }
@@ -129,11 +132,16 @@ static inline QChar matchingStartBracket(const QChar c)
 static inline QChar matchingEndBracket(const QChar c, bool withQuotes = true)
 {
     switch (c.toLatin1()) {
-        case '{': return QLatin1Char('}');
-        case '[': return QLatin1Char(']');
-        case '(': return QLatin1Char(')');
-        case '\'': return withQuotes ? QLatin1Char('\'') : QChar();
-        case '"': return withQuotes ? QLatin1Char('"') : QChar();
+        case '{':
+            return QLatin1Char('}');
+        case '[':
+            return QLatin1Char(']');
+        case '(':
+            return QLatin1Char(')');
+        case '\'':
+            return withQuotes ? QLatin1Char('\'') : QChar();
+        case '"':
+            return withQuotes ? QLatin1Char('"') : QChar();
     }
     return QChar();
 }
@@ -149,12 +157,12 @@ static inline QChar matchingBracket(const QChar c)
 
 static inline bool isStartBracket(const QChar c)
 {
-    return ! matchingEndBracket(c, /*withQuotes=*/false).isNull();
+    return !matchingEndBracket(c, /*withQuotes=*/false).isNull();
 }
 
 static inline bool isEndBracket(const QChar c)
 {
-    return ! matchingStartBracket(c).isNull();
+    return !matchingStartBracket(c).isNull();
 }
 
 static inline bool isBracket(const QChar c)
@@ -167,7 +175,7 @@ static inline bool isBracket(const QChar c)
  * @param url input url
  * @return normalized url
  */
-static QUrl normalizeUrl (const QUrl &url)
+static QUrl normalizeUrl(const QUrl &url)
 {
     /**
      * only normalize local urls
@@ -189,33 +197,36 @@ static QUrl normalizeUrl (const QUrl &url)
     return QUrl::fromLocalFile(normalizedUrl);
 }
 
-//BEGIN d'tor, c'tor
+// BEGIN d'tor, c'tor
 //
 // KTextEditor::DocumentPrivate Constructor
 //
-KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
-                           bool bReadOnly, QWidget *parentWidget,
-                           QObject *parent)
-    : KTextEditor::Document (this, parent),
-      m_bSingleViewMode(bSingleViewMode),
-      m_bReadOnly(bReadOnly),
+KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOnly, QWidget *parentWidget, QObject *parent)
+    : KTextEditor::Document(this, parent)
+    , m_bSingleViewMode(bSingleViewMode)
+    , m_bReadOnly(bReadOnly)
+    ,
 
-      m_undoManager(new KateUndoManager(this)),
+    m_undoManager(new KateUndoManager(this))
+    ,
 
-      m_buffer(new KateBuffer(this)),
-      m_indenter(new KateAutoIndent(this)),
+    m_buffer(new KateBuffer(this))
+    , m_indenter(new KateAutoIndent(this))
+    ,
 
-      m_docName(QStringLiteral("need init")),
+    m_docName(QStringLiteral("need init"))
+    ,
 
-      m_fileType(QStringLiteral("Normal")),
+    m_fileType(QStringLiteral("Normal"))
+    ,
 
-      m_config(new KateDocumentConfig(this))
+    m_config(new KateDocumentConfig(this))
 
 {
     /**
      * no plugins from kparts here
      */
-    setPluginLoadingMode (DoNotLoadPlugins);
+    setPluginLoadingMode(DoNotLoadPlugins);
 
     /**
      * pass on our component data, do this after plugin loading is off
@@ -238,20 +249,17 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     m_swapfile = (config()->swapFileMode() == KateDocumentConfig::DisableSwapFile) ? nullptr : new Kate::SwapFile(this);
 
     // some nice signals from the buffer
-    connect(m_buffer, SIGNAL(tagLines(int,int)), this, SLOT(tagLines(int,int)));
+    connect(m_buffer, SIGNAL(tagLines(int, int)), this, SLOT(tagLines(int, int)));
 
     // if the user changes the highlight with the dialog, notify the doc
     connect(KateHlManager::self(), SIGNAL(changed()), SLOT(internalHlChanged()));
 
     // signals for mod on hd
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(dirty(QString)),
-            this, SLOT(slotModOnHdDirty(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(dirty(QString)), this, SLOT(slotModOnHdDirty(QString)));
 
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(created(QString)),
-            this, SLOT(slotModOnHdCreated(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(created(QString)), this, SLOT(slotModOnHdCreated(QString)));
 
-    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)),
-            this, SLOT(slotModOnHdDeleted(QString)));
+    connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)), this, SLOT(slotModOnHdDeleted(QString)));
 
     /**
      * singleshot timer to handle updates of mod on hd state delayed
@@ -275,7 +283,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
      * this is needed to ensure we signal the user if a file ist still loading
      * and to disallow him to edit in that time
      */
-    connect(this, SIGNAL(started(KIO::Job*)), this, SLOT(slotStarted(KIO::Job*)));
+    connect(this, SIGNAL(started(KIO::Job *)), this, SLOT(slotStarted(KIO::Job *)));
     connect(this, SIGNAL(completed()), this, SLOT(slotCompleted()));
     connect(this, SIGNAL(canceled(QString)), this, SLOT(slotCanceled()));
 
@@ -295,14 +303,14 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode,
     }
 
     connect(m_undoManager, SIGNAL(undoChanged()), this, SIGNAL(undoChanged()));
-    connect(m_undoManager, SIGNAL(undoStart(KTextEditor::Document*)),   this, SIGNAL(editingStarted(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(undoEnd(KTextEditor::Document*)),     this, SIGNAL(editingFinished(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(redoStart(KTextEditor::Document*)),   this, SIGNAL(editingStarted(KTextEditor::Document*)));
-    connect(m_undoManager, SIGNAL(redoEnd(KTextEditor::Document*)),     this, SIGNAL(editingFinished(KTextEditor::Document*)));
+    connect(m_undoManager, SIGNAL(undoStart(KTextEditor::Document *)), this, SIGNAL(editingStarted(KTextEditor::Document *)));
+    connect(m_undoManager, SIGNAL(undoEnd(KTextEditor::Document *)), this, SIGNAL(editingFinished(KTextEditor::Document *)));
+    connect(m_undoManager, SIGNAL(redoStart(KTextEditor::Document *)), this, SIGNAL(editingStarted(KTextEditor::Document *)));
+    connect(m_undoManager, SIGNAL(redoEnd(KTextEditor::Document *)), this, SIGNAL(editingFinished(KTextEditor::Document *)));
 
-    connect(this, SIGNAL(sigQueryClose(bool*,bool*)), this, SLOT(slotQueryClose_save(bool*,bool*)));
+    connect(this, SIGNAL(sigQueryClose(bool *, bool *)), this, SLOT(slotQueryClose_save(bool *, bool *)));
 
-    connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)), this, SLOT(clearEditingPosStack()));
+    connect(this, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), this, SLOT(clearEditingPosStack()));
     onTheFlySpellCheckingEnabled(config()->onTheFlySpellCheck());
 
     // make sure correct defaults are set (indenter, ...)
@@ -341,7 +349,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     setAutoDeletePart(false);
 
     // clean up remaining views
-    qDeleteAll (m_views.keys());
+    qDeleteAll(m_views.keys());
     m_views.clear();
 
     // cu marks
@@ -353,7 +361,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     delete m_config;
     KTextEditor::EditorPrivate::self()->deregisterDocument(this);
 }
-//END
+// END
 
 void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Cursor &cursor)
 {
@@ -384,7 +392,7 @@ void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Curso
     if (mc) {
         mc->setPosition(cursor);
     } else {
-        mc = QSharedPointer<KTextEditor::MovingCursor> (newMovingCursor(cursor));
+        mc = QSharedPointer<KTextEditor::MovingCursor>(newMovingCursor(cursor));
     }
 
     // add new one as top of stack
@@ -395,14 +403,13 @@ void KTextEditor::DocumentPrivate::saveEditingPositions(const KTextEditor::Curso
 KTextEditor::Cursor KTextEditor::DocumentPrivate::lastEditingPosition(EditingPositionKind nextOrPrev, KTextEditor::Cursor currentCursor)
 {
     if (m_editingStack.isEmpty()) {
-      return KTextEditor::Cursor::invalid();
+        return KTextEditor::Cursor::invalid();
     }
     auto targetPos = m_editingStack.at(m_editingStackPosition)->toCursor();
     if (targetPos == currentCursor) {
         if (nextOrPrev == Previous) {
             m_editingStackPosition--;
-        }
-        else {
+        } else {
             m_editingStackPosition++;
         }
         m_editingStackPosition = qBound(0, m_editingStackPosition, m_editingStack.size() - 1);
@@ -437,14 +444,14 @@ QWidget *KTextEditor::DocumentPrivate::widget()
     return view;
 }
 
-//BEGIN KTextEditor::Document stuff
+// BEGIN KTextEditor::Document stuff
 
 KTextEditor::View *KTextEditor::DocumentPrivate::createView(QWidget *parent, KTextEditor::MainWindow *mainWindow)
 {
     KTextEditor::ViewPrivate *newView = new KTextEditor::ViewPrivate(this, parent, mainWindow);
 
     if (m_fileChangedDialogsActivated) {
-        connect(newView, SIGNAL(focusIn(KTextEditor::View*)), this, SLOT(slotModifiedOnDisk()));
+        connect(newView, SIGNAL(focusIn(KTextEditor::View *)), this, SLOT(slotModifiedOnDisk()));
     }
 
     emit viewCreated(this, newView);
@@ -467,7 +474,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::rangeOnLine(KTextEditor::Range 
     return KTextEditor::Range(line, fromVirtualColumn(line, col1), line, fromVirtualColumn(line, col2));
 }
 
-//BEGIN KTextEditor::EditInterface stuff
+// BEGIN KTextEditor::EditInterface stuff
 
 bool KTextEditor::DocumentPrivate::isEditingTransactionRunning() const
 {
@@ -501,7 +508,6 @@ QString KTextEditor::DocumentPrivate::text(const KTextEditor::Range &range, bool
 
         return textLine->string(range.start().column(), range.end().column() - range.start().column());
     } else {
-
         for (int i = range.start().line(); (i <= range.end().line()) && (i < m_buffer->count()); ++i) {
             Kate::TextLine textLine = m_buffer->plainLine(i);
 
@@ -571,7 +577,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::wordRangeAt(const KTextEditor::
     return KTextEditor::Range(line, start, line, end);
 }
 
-bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor& cursor) const
+bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor &cursor) const
 {
     const int ln = cursor.line();
     const int col = cursor.column();
@@ -590,8 +596,7 @@ bool KTextEditor::DocumentPrivate::isValidTextPosition(const KTextEditor::Cursor
     }
 
     // cursor in the middle of a valid utf32-surrogate?
-    return (! str.at(col).isLowSurrogate())
-        || (! str.at(col-1).isHighSurrogate());
+    return (!str.at(col).isLowSurrogate()) || (!str.at(col - 1).isHighSurrogate());
 }
 
 QStringList KTextEditor::DocumentPrivate::textLines(const KTextEditor::Range &range, bool blockwise) const
@@ -999,9 +1004,9 @@ bool KTextEditor::DocumentPrivate::isLineTouched(int line) const
 
     return l->markedAsModified() || l->markedAsSavedOnDisk();
 }
-//END
+// END
 
-//BEGIN KTextEditor::EditInterface internal stuff
+// BEGIN KTextEditor::EditInterface internal stuff
 //
 // Starts an edit session with (or without) undo, update of view disabled during session
 //
@@ -1133,12 +1138,12 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
             break;
         }
 
-        //qCDebug(LOG_KTE) << "try wrap line: " << line;
+        // qCDebug(LOG_KTE) << "try wrap line: " << line;
 
         if (l->virtualLength(m_buffer->tabWidth()) > col) {
             Kate::TextLine nextl = kateTextLine(line + 1);
 
-            //qCDebug(LOG_KTE) << "do wrap line: " << line;
+            // qCDebug(LOG_KTE) << "do wrap line: " << line;
 
             int eolPosition = l->length() - 1;
 
@@ -1197,7 +1202,7 @@ bool KTextEditor::DocumentPrivate::wrapText(int startLine, int endLine)
                 // found, or at the wrapcolumn ( that needs be configurable )
                 // Don't try and add any white space for the break
                 if ((nw >= 0) && nw < colInChars) {
-                    nw++;    // break on the right side of the character
+                    nw++; // break on the right side of the character
                 }
                 z = (nw >= 0) ? nw : colInChars;
             }
@@ -1254,7 +1259,7 @@ bool KTextEditor::DocumentPrivate::wrapParagraph(int first, int last)
     // Scan the selected range for paragraphs, whereas each empty line trigger a new paragraph
     for (int line = first; line <= range->end().line(); ++line) {
         // Is our first line a somehow filled line?
-        if(plainKateTextLine(first)->firstChar() < 0) {
+        if (plainKateTextLine(first)->firstChar() < 0) {
             // Fast forward to first non empty line
             ++first;
             curr->setPosition(curr->line() + 1, 0);
@@ -1731,9 +1736,9 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
 
     return true;
 }
-//END
+// END
 
-//BEGIN KTextEditor::UndoInterface stuff
+// BEGIN KTextEditor::UndoInterface stuff
 uint KTextEditor::DocumentPrivate::undoCount() const
 {
     return m_undoManager->undoCount();
@@ -1753,18 +1758,15 @@ void KTextEditor::DocumentPrivate::redo()
 {
     m_undoManager->redo();
 }
-//END
+// END
 
-//BEGIN KTextEditor::SearchInterface stuff
-QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(
-    const KTextEditor::Range &range,
-    const QString &pattern,
-    const KTextEditor::SearchOptions options) const
+// BEGIN KTextEditor::SearchInterface stuff
+QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(const KTextEditor::Range &range, const QString &pattern, const KTextEditor::SearchOptions options) const
 {
-    const bool escapeSequences =  options.testFlag(KTextEditor::EscapeSequences);
-    const bool regexMode       =  options.testFlag(KTextEditor::Regex);
-    const bool backwards       =  options.testFlag(KTextEditor::Backwards);
-    const bool wholeWords      =  options.testFlag(KTextEditor::WholeWords);
+    const bool escapeSequences = options.testFlag(KTextEditor::EscapeSequences);
+    const bool regexMode = options.testFlag(KTextEditor::Regex);
+    const bool backwards = options.testFlag(KTextEditor::Backwards);
+    const bool wholeWords = options.testFlag(KTextEditor::WholeWords);
     const Qt::CaseSensitivity caseSensitivity = options.testFlag(KTextEditor::CaseInsensitive) ? Qt::CaseInsensitive : Qt::CaseSensitive;
 
     if (regexMode) {
@@ -1792,7 +1794,7 @@ QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(
     result.append(match);
     return result;
 }
-//END
+// END
 
 QWidget *KTextEditor::DocumentPrivate::dialogParent()
 {
@@ -1809,7 +1811,7 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
     return w;
 }
 
-//BEGIN KTextEditor::HighlightingInterface stuff
+// BEGIN KTextEditor::HighlightingInterface stuff
 bool KTextEditor::DocumentPrivate::setMode(const QString &name)
 {
     updateFileType(name);
@@ -1819,12 +1821,11 @@ bool KTextEditor::DocumentPrivate::setMode(const QString &name)
 KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(const KTextEditor::Cursor &position) const
 {
     // TODO, FIXME KDE5: in surrogate, use 2 bytes before
-    if (! isValidTextPosition(position)) {
+    if (!isValidTextPosition(position)) {
         return dsNormal;
     }
 
-    int ds = const_cast<KTextEditor::DocumentPrivate*>(this)->
-        defStyleNum(position.line(), position.column());
+    int ds = const_cast<KTextEditor::DocumentPrivate *>(this)->defStyleNum(position.line(), position.column());
     if (ds < 0 || ds > static_cast<int>(dsError)) {
         return dsNormal;
     }
@@ -1904,9 +1905,9 @@ void KTextEditor::DocumentPrivate::bomSetByUser()
 {
     m_bomSetByUser = true;
 }
-//END
+// END
 
-//BEGIN KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
+// BEGIN KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
 void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig, const QSet<QString> &flags)
 {
     if (!flags.contains(QStringLiteral("SkipEncoding"))) {
@@ -1925,10 +1926,10 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
         if (!url.isEmpty() && url.isValid()) {
             openUrl(url);
         } else {
-            completed();    //perhaps this should be emitted at the end of this function
+            completed(); // perhaps this should be emitted at the end of this function
         }
     } else {
-        completed(); //perhaps this should be emitted at the end of this function
+        completed(); // perhaps this should be emitted at the end of this function
     }
 
     if (!flags.contains(QStringLiteral("SkipMode"))) {
@@ -2011,7 +2012,7 @@ void KTextEditor::DocumentPrivate::writeSessionConfig(KConfigGroup &kconfig, con
     kconfig.writeEntry("Bookmarks", marks);
 }
 
-//END KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
+// END KTextEditor::SessionConfigInterface and KTextEditor::ParameterizedSessionConfigInterface stuff
 
 uint KTextEditor::DocumentPrivate::mark(int line)
 {
@@ -2146,7 +2147,7 @@ bool KTextEditor::DocumentPrivate::handleMarkClick(int line)
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markClicked(this, KTextEditor::Mark{line, 0}, handled);
+        emit markClicked(this, KTextEditor::Mark {line, 0}, handled);
     } else {
         emit markClicked(this, *mark, handled);
     }
@@ -2159,7 +2160,7 @@ bool KTextEditor::DocumentPrivate::handleMarkContextMenu(int line, QPoint positi
     bool handled = false;
     KTextEditor::Mark *mark = m_marks.value(line);
     if (!mark) {
-        emit markContextMenuRequested(this, KTextEditor::Mark{line, 0}, position, handled);
+        emit markContextMenuRequested(this, KTextEditor::Mark {line, 0}, position, handled);
     } else {
         emit markContextMenuRequested(this, *mark, position, handled);
     }
@@ -2224,9 +2225,9 @@ uint KTextEditor::DocumentPrivate::editableMarks() const
 {
     return m_editableMarks;
 }
-//END
+// END
 
-//BEGIN KTextEditor::PrintInterface stuff
+// BEGIN KTextEditor::PrintInterface stuff
 bool KTextEditor::DocumentPrivate::print()
 {
     return KatePrinter::print(this);
@@ -2236,9 +2237,9 @@ void KTextEditor::DocumentPrivate::printPreview()
 {
     KatePrinter::printPreview(this);
 }
-//END KTextEditor::PrintInterface stuff
+// END KTextEditor::PrintInterface stuff
 
-//BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
+// BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
 QString KTextEditor::DocumentPrivate::mimeType()
 {
     /**
@@ -2259,14 +2260,13 @@ QString KTextEditor::DocumentPrivate::mimeType()
     // else only use the content
     return QMimeDatabase().mimeTypeForData(buf).name();
 }
-//END KTextEditor::DocumentInfoInterface
+// END KTextEditor::DocumentInfoInterface
 
-//BEGIN: error
+// BEGIN: error
 void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
 {
-    QPointer<KTextEditor::Message> message
-        = new KTextEditor::Message(i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile)),
-                                   KTextEditor::Message::Error);
+    QPointer<KTextEditor::Message> message = new KTextEditor::Message(
+        i18n("The file %1 could not be loaded, as it was not possible to read from it.<br />Check if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile)), KTextEditor::Message::Error);
     message->setWordWrap(true);
     QAction *tryAgainAction = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18nc("translators: you can also translate 'Try Again' with 'Reload'", "Try Again"), nullptr);
     connect(tryAgainAction, SIGNAL(triggered()), SLOT(documentReload()), Qt::QueuedConnection);
@@ -2284,9 +2284,8 @@ void KTextEditor::DocumentPrivate::showAndSetOpeningErrorAccess()
     // remember error
     m_openingError = true;
     m_openingErrorMessage = i18n("The file %1 could not be loaded, as it was not possible to read from it.\n\nCheck if you have read access to this file.", this->url().toDisplayString(QUrl::PreferLocalFile));
-
 }
-//END: error
+// END: error
 
 void KTextEditor::DocumentPrivate::openWithLineLengthLimitOverride()
 {
@@ -2314,7 +2313,7 @@ int KTextEditor::DocumentPrivate::lineLengthLimit() const
     return config()->lineLengthLimit();
 }
 
-//BEGIN KParts::ReadWrite stuff
+// BEGIN KParts::ReadWrite stuff
 bool KTextEditor::DocumentPrivate::openFile()
 {
     /**
@@ -2324,7 +2323,7 @@ bool KTextEditor::DocumentPrivate::openFile()
 
     // no open errors until now...
     m_openingError = false;
-    m_openingErrorMessage.clear ();
+    m_openingErrorMessage.clear();
 
     // add new m_file to dirwatch
     activateDirWatch();
@@ -2397,21 +2396,24 @@ bool KTextEditor::DocumentPrivate::openFile()
     if (m_buffer->brokenEncoding()) {
         // this file can't be saved again without killing it
         setReadWrite(false);
-        m_readWriteStateBeforeLoading=false;
-        QPointer<KTextEditor::Message> message
-            = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
-                                            "It is set to read-only mode, as saving might destroy its content.<br />"
-                                            "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toDisplayString(QUrl::PreferLocalFile),
-                                            QString::fromLatin1(m_buffer->textCodec()->name())),
-                                       KTextEditor::Message::Warning);
+        m_readWriteStateBeforeLoading = false;
+        QPointer<KTextEditor::Message> message = new KTextEditor::Message(i18n("The file %1 was opened with %2 encoding but contained invalid characters.<br />"
+                                                                               "It is set to read-only mode, as saving might destroy its content.<br />"
+                                                                               "Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.",
+                                                                               this->url().toDisplayString(QUrl::PreferLocalFile),
+                                                                               QString::fromLatin1(m_buffer->textCodec()->name())),
+                                                                          KTextEditor::Message::Warning);
         message->setWordWrap(true);
         postMessage(message);
 
         // remember error
         m_openingError = true;
-        m_openingErrorMessage = i18n("The file %1 was opened with %2 encoding but contained invalid characters."
-                                    " It is set to read-only mode, as saving might destroy its content."
-                                    " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.", this->url().toDisplayString(QUrl::PreferLocalFile), QString::fromLatin1(m_buffer->textCodec()->name()));
+        m_openingErrorMessage = i18n(
+            "The file %1 was opened with %2 encoding but contained invalid characters."
+            " It is set to read-only mode, as saving might destroy its content."
+            " Either reopen the file with the correct encoding chosen or enable the read-write mode again in the tools menu to be able to edit it.",
+            this->url().toDisplayString(QUrl::PreferLocalFile),
+            QString::fromLatin1(m_buffer->textCodec()->name()));
     }
 
     // warn: too long lines
@@ -2419,12 +2421,13 @@ bool KTextEditor::DocumentPrivate::openFile()
         // this file can't be saved again without modifications
         setReadWrite(false);
         m_readWriteStateBeforeLoading = false;
-        QPointer<KTextEditor::Message> message
-            = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
-                                            "The longest of those lines was %3 characters long<br/>"
-                                            "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
-                                            this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(), m_buffer->longestLineLoaded()),
-                                       KTextEditor::Message::Warning);
+        QPointer<KTextEditor::Message> message = new KTextEditor::Message(i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br />"
+                                                                               "The longest of those lines was %3 characters long<br/>"
+                                                                               "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
+                                                                               this->url().toDisplayString(QUrl::PreferLocalFile),
+                                                                               config()->lineLengthLimit(),
+                                                                               m_buffer->longestLineLoaded()),
+                                                                          KTextEditor::Message::Warning);
         QAction *increaseAndReload = new QAction(i18n("Temporarily raise limit and reload file"), message);
         connect(increaseAndReload, SIGNAL(triggered()), this, SLOT(openWithLineLengthLimitOverride()));
         message->addAction(increaseAndReload, true);
@@ -2434,9 +2437,13 @@ bool KTextEditor::DocumentPrivate::openFile()
 
         // remember error
         m_openingError = true;
-        m_openingErrorMessage = i18n("The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br/>"
-                                     "The longest of those lines was %3 characters long<br/>"
-                                     "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.", this->url().toDisplayString(QUrl::PreferLocalFile), config()->lineLengthLimit(),m_buffer->longestLineLoaded());
+        m_openingErrorMessage = i18n(
+            "The file %1 was opened and contained lines longer than the configured Line Length Limit (%2 characters).<br/>"
+            "The longest of those lines was %3 characters long<br/>"
+            "Those lines were wrapped and the document is set to read-only mode, as saving will modify its content.",
+            this->url().toDisplayString(QUrl::PreferLocalFile),
+            config()->lineLengthLimit(),
+            m_buffer->longestLineLoaded());
     }
 
     //
@@ -2456,13 +2463,16 @@ bool KTextEditor::DocumentPrivate::saveFile()
             QString str = reasonedMOHString() + QLatin1String("\n\n");
 
             if (!isModified()) {
-                if (KMessageBox::warningContinueCancel(dialogParent(),
-                                                       str + i18n("Do you really want to save this unmodified file? You could overwrite changed data in the file on disk."), i18n("Trying to Save Unmodified File"), KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue) {
+                if (KMessageBox::warningContinueCancel(
+                        dialogParent(), str + i18n("Do you really want to save this unmodified file? You could overwrite changed data in the file on disk."), i18n("Trying to Save Unmodified File"), KGuiItem(i18n("Save Nevertheless"))) !=
+                    KMessageBox::Continue) {
                     return false;
                 }
             } else {
                 if (KMessageBox::warningContinueCancel(dialogParent(),
-                                                       str + i18n("Do you really want to save this file? Both your open file and the file on disk were changed. There could be some data lost."), i18n("Possible Data Loss"), KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue) {
+                                                       str + i18n("Do you really want to save this file? Both your open file and the file on disk were changed. There could be some data lost."),
+                                                       i18n("Possible Data Loss"),
+                                                       KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue) {
                     return false;
                 }
             }
@@ -2472,9 +2482,11 @@ bool KTextEditor::DocumentPrivate::saveFile()
     //
     // can we encode it if we want to save it ?
     //
-    if (!m_buffer->canEncode()
-            && (KMessageBox::warningContinueCancel(dialogParent(),
-                    i18n("The selected encoding cannot encode every Unicode character in this document. Do you really want to save it? There could be some data lost."), i18n("Possible Data Loss"), KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue)) {
+    if (!m_buffer->canEncode() &&
+        (KMessageBox::warningContinueCancel(dialogParent(),
+                                            i18n("The selected encoding cannot encode every Unicode character in this document. Do you really want to save it? There could be some data lost."),
+                                            i18n("Possible Data Loss"),
+                                            KGuiItem(i18n("Save Nevertheless"))) != KMessageBox::Continue)) {
         return false;
     }
 
@@ -2515,7 +2527,10 @@ bool KTextEditor::DocumentPrivate::saveFile()
     if (!m_buffer->saveFile(localFilePath())) {
         // add m_file again to dirwatch
         activateDirWatch(oldPath);
-        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\nCheck that you have write access to this file or that enough disk space is available.\nThe original file may be lost or damaged. Don't quit the application until the file is successfully written.", this->url().toDisplayString(QUrl::PreferLocalFile)));
+        KMessageBox::error(dialogParent(),
+                           i18n("The document could not be saved, as it was not possible to write to %1.\nCheck that you have write access to this file or that enough disk space is available.\nThe original file may be lost or damaged. "
+                                "Don't quit the application until the file is successfully written.",
+                                this->url().toDisplayString(QUrl::PreferLocalFile)));
         return false;
     }
 
@@ -2645,13 +2660,16 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
     }
 
     // backup has failed, ask user how to proceed
-    if (!backupSuccess && (KMessageBox::warningContinueCancel(dialogParent()
-                            , i18n("For file %1 no backup copy could be created before saving."
-                                    " If an error occurs while saving, you might lose the data of this file."
-                                    " A reason could be that the media you write to is full or the directory of the file is read-only for you.", url().toDisplayString(QUrl::PreferLocalFile))
-                            , i18n("Failed to create backup copy.")
-                            , KGuiItem(i18n("Try to Save Nevertheless"))
-                            , KStandardGuiItem::cancel(), QStringLiteral("Backup Failed Warning")) != KMessageBox::Continue)) {
+    if (!backupSuccess &&
+        (KMessageBox::warningContinueCancel(dialogParent(),
+                                            i18n("For file %1 no backup copy could be created before saving."
+                                                 " If an error occurs while saving, you might lose the data of this file."
+                                                 " A reason could be that the media you write to is full or the directory of the file is read-only for you.",
+                                                 url().toDisplayString(QUrl::PreferLocalFile)),
+                                            i18n("Failed to create backup copy."),
+                                            KGuiItem(i18n("Try to Save Nevertheless")),
+                                            KStandardGuiItem::cancel(),
+                                            QStringLiteral("Backup Failed Warning")) != KMessageBox::Continue)) {
         return false;
     }
 
@@ -2669,15 +2687,15 @@ void KTextEditor::DocumentPrivate::readDirConfig()
      * with recursion guard
      */
     QSet<QString> seenDirectories;
-    QDir dir (QFileInfo(localFilePath()).absolutePath());
-    while (!seenDirectories.contains (dir.absolutePath ())) {
+    QDir dir(QFileInfo(localFilePath()).absolutePath());
+    while (!seenDirectories.contains(dir.absolutePath())) {
         /**
          * fill recursion guard
          */
-        seenDirectories.insert (dir.absolutePath ());
+        seenDirectories.insert(dir.absolutePath());
 
         // try to open config file in this dir
-        QFile f(dir.absolutePath () + QLatin1String("/.kateconfig"));
+        QFile f(dir.absolutePath() + QLatin1String("/.kateconfig"));
         if (f.open(QIODevice::ReadOnly)) {
             QTextStream stream(&f);
 
@@ -2770,11 +2788,12 @@ bool KTextEditor::DocumentPrivate::closeUrl()
             delete m_modOnHdHandler;
 
             QWidget *parentWidget(dialogParent());
-            if (!(KMessageBox::warningContinueCancel(
-                        parentWidget,
-                        reasonedMOHString() + QLatin1String("\n\n") + i18n("Do you really want to continue to close this file? Data loss may occur."),
-                        i18n("Possible Data Loss"), KGuiItem(i18n("Close Nevertheless")), KStandardGuiItem::cancel(),
-                        QStringLiteral("kate_close_modonhd_%1").arg(m_modOnHdReason)) == KMessageBox::Continue)) {
+            if (!(KMessageBox::warningContinueCancel(parentWidget,
+                                                     reasonedMOHString() + QLatin1String("\n\n") + i18n("Do you really want to continue to close this file? Data loss may occur."),
+                                                     i18n("Possible Data Loss"),
+                                                     KGuiItem(i18n("Close Nevertheless")),
+                                                     KStandardGuiItem::cancel(),
+                                                     QStringLiteral("kate_close_modonhd_%1").arg(m_modOnHdReason)) == KMessageBox::Continue)) {
                 /**
                  * reset reloading
                  */
@@ -2912,9 +2931,9 @@ void KTextEditor::DocumentPrivate::setModified(bool m)
 
     m_undoManager->setModified(m);
 }
-//END
+// END
 
-//BEGIN Kate specific stuff ;)
+// BEGIN Kate specific stuff ;)
 
 void KTextEditor::DocumentPrivate::makeAttribs(bool needInvalidate)
 {
@@ -2940,7 +2959,7 @@ void KTextEditor::DocumentPrivate::internalHlChanged()
 
 void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 {
-    Q_ASSERT (!m_views.contains(view));
+    Q_ASSERT(!m_views.contains(view));
     m_views.insert(view, static_cast<KTextEditor::ViewPrivate *>(view));
     m_viewsCache.append(view);
 
@@ -2957,7 +2976,7 @@ void KTextEditor::DocumentPrivate::addView(KTextEditor::View *view)
 
 void KTextEditor::DocumentPrivate::removeView(KTextEditor::View *view)
 {
-    Q_ASSERT (m_views.contains(view));
+    Q_ASSERT(m_views.contains(view));
     m_views.remove(view);
     m_viewsCache.removeAll(view);
 
@@ -3028,7 +3047,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         const QChar openBracket = matchingStartBracket(typedChar);
         if (!openBracket.isNull()) {
             KTextEditor::Cursor curPos = view->cursorPosition();
-            if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123/*Which value may best?*/).isValid()) {
+            if ((characterAt(curPos) == typedChar) && findMatchingBracket(curPos, 123 /*Which value may best?*/).isValid()) {
                 // Do nothing
                 view->cursorRight();
                 return;
@@ -3124,8 +3143,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
             Kate::TextLine textLine = m_buffer->plainLine(line);
             Q_ASSERT(textLine);
             const int column = fromVirtualColumn(line, virtualColumn);
-            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(),
-                textLine->length() - column));
+            KTextEditor::Range r = KTextEditor::Range(KTextEditor::Cursor(line, column), qMin(chars.length(), textLine->length() - column));
 
             // replace mode needs to know what was removed so it can be restored with backspace
             if (oldCur.column() < lineLength(line)) {
@@ -3148,8 +3166,8 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
             editInsertText(line, fromVirtualColumn(line, column), chars);
         }
         int newSelectionColumn = toVirtualColumn(view->cursorPosition());
-        selectionRange.setRange(KTextEditor::Cursor(selectionRange.start().line(), fromVirtualColumn(selectionRange.start().line(), newSelectionColumn))
-                                , KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
+        selectionRange.setRange(KTextEditor::Cursor(selectionRange.start().line(), fromVirtualColumn(selectionRange.start().line(), newSelectionColumn)),
+                                KTextEditor::Cursor(selectionRange.end().line(), fromVirtualColumn(selectionRange.end().line(), newSelectionColumn)));
         view->setSelection(selectionRange);
     } else {
         insertText(view->cursorPosition(), chars);
@@ -3164,7 +3182,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     bool skipAutobrace = closingBracket == QLatin1Char('\'');
     if (highlight() && skipAutobrace) {
         // skip adding ' in spellchecked areas, because those are text
-        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor{0, 1});
+        skipAutobrace = highlight()->spellCheckingRequiredForLocation(this, view->cursorPosition() - Cursor {0, 1});
     }
 
     const auto cursorPos(view->cursorPosition());
@@ -3182,17 +3200,15 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         skipAutobrace = (count % 2 == 0) ? true : false;
     }
 
-    if (!closingBracket.isNull() && !skipAutobrace ) {
+    if (!closingBracket.isNull() && !skipAutobrace) {
         // add bracket to the view
-        const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor{0, 1}}).trimmed();
+        const auto nextChar = view->document()->text({cursorPos, cursorPos + Cursor {0, 1}}).trimmed();
         if (nextChar.isEmpty() || !nextChar.at(0).isLetterOrNumber()) {
             insertText(view->cursorPosition(), QString(closingBracket));
             const auto insertedAt(view->cursorPosition());
             view->setCursorPosition(cursorPos);
-            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor{0, 1}, insertedAt},
-                                                        KTextEditor::MovingRange::DoNotExpand));
-            connect(view, &View::cursorPositionChanged,
-                    this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
+            m_currentAutobraceRange.reset(newMovingRange({cursorPos - Cursor {0, 1}, insertedAt}, KTextEditor::MovingRange::DoNotExpand));
+            connect(view, &View::cursorPositionChanged, this, &DocumentPrivate::checkCursorForAutobrace, Qt::UniqueConnection);
 
             // add bracket to chars inserted! needed for correct signals + indent
             chars.append(closingBracket);
@@ -3205,7 +3221,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
 
     // trigger indentation
     KTextEditor::Cursor b(view->cursorPosition());
-    m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() :  chars.at(chars.length() - 1));
+    m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
 
     /**
      * inform the view about the original inserted chars
@@ -3213,14 +3229,14 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     view->slotTextInserted(view, oldCur, chars);
 }
 
-void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View*, const KTextEditor::Cursor& newPos) {
-    if ( m_currentAutobraceRange && ! m_currentAutobraceRange->toRange().contains(newPos) ) {
+void KTextEditor::DocumentPrivate::checkCursorForAutobrace(KTextEditor::View *, const KTextEditor::Cursor &newPos)
+{
+    if (m_currentAutobraceRange && !m_currentAutobraceRange->toRange().contains(newPos)) {
         m_currentAutobraceRange.clear();
     }
 }
 
-void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v,
-                                           KTextEditor::DocumentPrivate::NewLineIndent indent)
+void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEditor::DocumentPrivate::NewLineIndent indent)
 {
     editStart();
 
@@ -3281,11 +3297,11 @@ void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)
     uint line = cursor.line();
     QString s;
 
-    //clever swap code if first character on the line swap right&left
-    //otherwise left & right
+    // clever swap code if first character on the line swap right&left
+    // otherwise left & right
     s.append(textLine->at(col + 1));
     s.append(textLine->at(col));
-    //do the swap
+    // do the swap
 
     // do it right, never ever manipulate a textline
     editStart();
@@ -3299,8 +3315,7 @@ void KTextEditor::DocumentPrivate::backspace(KTextEditor::ViewPrivate *view, con
     if (!view->config()->persistentSelection() && view->selection()) {
         KTextEditor::Range range = view->selectionRange();
         editStart(); // Avoid bad selection in case of undo
-        if (view->blockSelection() && view->selection() && range.start().column() > 0
-            && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
+        if (view->blockSelection() && view->selection() && range.start().column() > 0 && toVirtualColumn(range.start()) == toVirtualColumn(range.end())) {
             // Remove one character before vertical selection line by expanding the selection
             range.setStart(KTextEditor::Cursor(range.start().line(), range.start().column() - 1));
             view->setSelection(range);
@@ -3396,7 +3411,7 @@ void KTextEditor::DocumentPrivate::del(KTextEditor::ViewPrivate *view, const KTe
         return;
     }
 
-    if (c.column() < (int) m_buffer->plainLine(c.line())->length()) {
+    if (c.column() < (int)m_buffer->plainLine(c.line())->length()) {
         KTextEditor::Cursor endCursor(c.line(), view->textLayout(c)->nextCursorPosition(c.column()));
         removeText(KTextEditor::Range(c, endCursor));
     } else if (c.line() < lastLine()) {
@@ -3441,15 +3456,13 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
 
         if (!view->blockSelection()) {
             int endColumn = (pasteLines.count() == 1 ? pos.column() : 0) + pasteLines.last().length();
-            removeText(KTextEditor::Range(pos,
-                                          pos.line() + pasteLines.count() - 1, endColumn));
+            removeText(KTextEditor::Range(pos, pos.line() + pasteLines.count() - 1, endColumn));
         } else {
             int maxi = qMin(pos.line() + pasteLines.count(), this->lines());
 
             for (int i = pos.line(); i < maxi; ++i) {
                 int pasteLength = pasteLines.at(i - pos.line()).length();
-                removeText(KTextEditor::Range(i, pos.column(),
-                                              i, qMin(pasteLength + pos.column(), lineLength(i))));
+                removeText(KTextEditor::Range(i, pos.column(), i, qMin(pasteLength + pos.column(), lineLength(i))));
             }
         }
     }
@@ -3466,8 +3479,7 @@ void KTextEditor::DocumentPrivate::paste(KTextEditor::ViewPrivate *view, const Q
     }
 
     if (config()->indentPastedText()) {
-        KTextEditor::Range range = KTextEditor::Range(KTextEditor::Cursor(pos.line(), 0),
-                                   KTextEditor::Cursor(pos.line() + lines, 0));
+        KTextEditor::Range range = KTextEditor::Range(KTextEditor::Cursor(pos.line(), 0), KTextEditor::Cursor(pos.line() + lines, 0));
 
         m_indenter->indent(view, range);
     }
@@ -3578,7 +3590,7 @@ bool KTextEditor::DocumentPrivate::removeStringFromEnd(int line, const QString &
 QString KTextEditor::DocumentPrivate::eventuallyReplaceTabs(const KTextEditor::Cursor &cursorPos, const QString &str) const
 {
     const bool replacetabs = config()->replaceTabsDyn();
-    if ( ! replacetabs ) {
+    if (!replacetabs) {
         return str;
     }
     const int indentWidth = config()->indentationWidth();
@@ -3639,8 +3651,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSingleLine(int line
     editStart();
 
     // Try to remove the long comment mark first
-    bool removed = (removeStringFromBeginning(line, longCommentMark)
-                    || removeStringFromBeginning(line, shortCommentMark));
+    bool removed = (removeStringFromBeginning(line, longCommentMark) || removeStringFromBeginning(line, shortCommentMark));
 
     editEnd();
 
@@ -3684,12 +3695,10 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSingleLine(int line
     editStart();
 
     // Try to remove the long start comment mark first
-    const bool removedStart = (removeStringFromBeginning(line, longStartCommentMark)
-                         || removeStringFromBeginning(line, shortStartCommentMark));
+    const bool removedStart = (removeStringFromBeginning(line, longStartCommentMark) || removeStringFromBeginning(line, shortStartCommentMark));
 
     // Try to remove the long stop comment mark first
-    const bool removedStop = removedStart
-        && (removeStringFromEnd(line, longStopCommentMark) || removeStringFromEnd(line, shortStopCommentMark));
+    const bool removedStop = removedStart && (removeStringFromEnd(line, longStopCommentMark) || removeStringFromEnd(line, shortStopCommentMark));
 
     editEnd();
 
@@ -3733,7 +3742,7 @@ void KTextEditor::DocumentPrivate::addStartStopCommentToSelection(KTextEditor::V
 */
 void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::ViewPrivate *view, int attrib)
 {
-    //const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
+    // const QString commentLineMark = highlight()->getCommentSingleLineStart(attrib) + QLatin1Char(' ');
 
     int sl = view->selectionRange().start().line();
     int el = view->selectionRange().end().line();
@@ -3747,7 +3756,7 @@ void KTextEditor::DocumentPrivate::addStartLineCommentToSelection(KTextEditor::V
 
     // For each line of the selection
     for (int z = el; z >= sl; z--) {
-        //insertText (z, 0, commentLineMark);
+        // insertText (z, 0, commentLineMark);
         addStartLineCommentToSingleLine(z, attrib);
     }
 
@@ -3766,7 +3775,7 @@ bool KTextEditor::DocumentPrivate::nextNonSpaceCharPos(int &line, int &col)
 
         col = textLine->nextNonSpaceChar(col);
         if (col != -1) {
-            return true;    // Next non-space char found
+            return true; // Next non-space char found
         }
         col = 0;
     }
@@ -3810,8 +3819,8 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEdit
     const QString startComment = highlight()->getCommentStart(attrib);
     const QString endComment = highlight()->getCommentEnd(attrib);
 
-    int sl = qMax<int> (0, view->selectionRange().start().line());
-    int el = qMin<int> (view->selectionRange().end().line(), lastLine());
+    int sl = qMax<int>(0, view->selectionRange().start().line());
+    int el = qMin<int>(view->selectionRange().end().line(), lastLine());
     int sc = view->selectionRange().start().column();
     int ec = view->selectionRange().end().column();
 
@@ -3828,11 +3837,8 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromSelection(KTextEdit
 
     // had this been perl or sed: s/^\s*$startComment(.+?)$endComment\s*/$2/
 
-    bool remove = nextNonSpaceCharPos(sl, sc)
-                  && m_buffer->plainLine(sl)->matchesAt(sc, startComment)
-                  && previousNonSpaceCharPos(el, ec)
-                  && ((ec - endCommentLen + 1) >= 0)
-                  && m_buffer->plainLine(el)->matchesAt(ec - endCommentLen + 1, endComment);
+    bool remove =
+        nextNonSpaceCharPos(sl, sc) && m_buffer->plainLine(sl)->matchesAt(sc, startComment) && previousNonSpaceCharPos(el, ec) && ((ec - endCommentLen + 1) >= 0) && m_buffer->plainLine(el)->matchesAt(ec - endCommentLen + 1, endComment);
 
     if (remove) {
         editStart();
@@ -3854,8 +3860,7 @@ bool KTextEditor::DocumentPrivate::removeStartStopCommentFromRegion(const KTextE
     const int startCommentLen = startComment.length();
     const int endCommentLen = endComment.length();
 
-    const bool remove = m_buffer->plainLine(start.line())->matchesAt(start.column(), startComment)
-                        && m_buffer->plainLine(end.line())->matchesAt(end.column() - endCommentLen, endComment);
+    const bool remove = m_buffer->plainLine(start.line())->matchesAt(start.column(), startComment) && m_buffer->plainLine(end.line())->matchesAt(end.column() - endCommentLen, endComment);
     if (remove) {
         editStart();
         removeText(KTextEditor::Range(end.line(), end.column() - endCommentLen, end.line(), end.column()));
@@ -3888,9 +3893,7 @@ bool KTextEditor::DocumentPrivate::removeStartLineCommentFromSelection(KTextEdit
     // For each line of the selection
     for (int z = el; z >= sl; z--) {
         // Try to remove the long comment mark first
-        removed = (removeStringFromBeginning(z, longCommentMark)
-                   || removeStringFromBeginning(z, shortCommentMark)
-                   || removed);
+        removed = (removeStringFromBeginning(z, longCommentMark) || removeStringFromBeginning(z, shortCommentMark) || removed);
     }
 
     editEnd();
@@ -3928,8 +3931,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     }
 
     bool hasStartLineCommentMark = !(highlight()->getCommentSingleLineStart(startAttrib).isEmpty());
-    bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty())
-                                    && !(highlight()->getCommentEnd(startAttrib).isEmpty()));
+    bool hasStartStopCommentMark = (!(highlight()->getCommentStart(startAttrib).isEmpty()) && !(highlight()->getCommentEnd(startAttrib).isEmpty()));
 
     if (change > 0) { // comment
         if (!hassel) {
@@ -3948,11 +3950,7 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
             // line ignored
             const KTextEditor::Range sel = v->selectionRange();
             if (hasStartStopCommentMark &&
-                    (!hasStartLineCommentMark || (
-                         (sel.start().column() > m_buffer->plainLine(sel.start().line())->firstChar()) ||
-                         (sel.end().column() > 0 &&
-                          sel.end().column() < (m_buffer->plainLine(sel.end().line())->length()))
-                     ))) {
+                (!hasStartLineCommentMark || ((sel.start().column() > m_buffer->plainLine(sel.start().line())->firstChar()) || (sel.end().column() > 0 && sel.end().column() < (m_buffer->plainLine(sel.end().line())->length()))))) {
                 addStartStopCommentToSelection(v, startAttrib);
             } else if (hasStartLineCommentMark) {
                 addStartLineCommentToSelection(v, startAttrib);
@@ -3961,16 +3959,10 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     } else { // uncomment
         bool removed = false;
         if (!hassel) {
-            removed = (hasStartLineCommentMark
-                       && removeStartLineCommentFromSingleLine(line, startAttrib))
-                      || (hasStartStopCommentMark
-                          && removeStartStopCommentFromSingleLine(line, startAttrib));
+            removed = (hasStartLineCommentMark && removeStartLineCommentFromSingleLine(line, startAttrib)) || (hasStartStopCommentMark && removeStartStopCommentFromSingleLine(line, startAttrib));
         } else {
             // anders: this seems like it will work with above changes :)
-            removed = (hasStartStopCommentMark
-                       && removeStartStopCommentFromSelection(v, startAttrib))
-                      || (hasStartLineCommentMark
-                          && removeStartLineCommentFromSelection(v, startAttrib));
+            removed = (hasStartStopCommentMark && removeStartStopCommentFromSelection(v, startAttrib)) || (hasStartLineCommentMark && removeStartLineCommentFromSelection(v, startAttrib));
         }
 
         // recursive call for toggle comment
@@ -3980,12 +3972,11 @@ void KTextEditor::DocumentPrivate::comment(KTextEditor::ViewPrivate *v, uint lin
     }
 
     if (skipWordWrap) {
-        setWordWrap(true);    // see begin of function ::comment (bug #105373)
+        setWordWrap(true); // see begin of function ::comment (bug #105373)
     }
 }
 
-void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor &c,
-                             KTextEditor::DocumentPrivate::TextTransform t)
+void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const KTextEditor::Cursor &c, KTextEditor::DocumentPrivate::TextTransform t)
 {
     if (v->selection()) {
         editStart();
@@ -4012,7 +4003,7 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
                 end = swapCol;
             }
             range.setStart(KTextEditor::Cursor(range.start().line(), start));
-            range.setEnd(KTextEditor::Cursor(range.end().line(),  end));
+            range.setEnd(KTextEditor::Cursor(range.end().line(), end));
 
             QString s = text(range);
             QString old = s;
@@ -4029,11 +4020,8 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
                     // 1. if both start and p is 0, upper char.
                     // 2. if blockselect or first line, and p == 0 and start-1 is not in a word, upper
                     // 3. if p-1 is not in a word, upper.
-                    if ((! range.start().column() && ! p) ||
-                            ((range.start().line() == selection.start().line() || v->blockSelection()) &&
-                             ! p && ! highlight()->isInWord(l->at(range.start().column() - 1))) ||
-                            (p && ! highlight()->isInWord(s.at(p - 1)))
-                       ) {
+                    if ((!range.start().column() && !p) || ((range.start().line() == selection.start().line() || v->blockSelection()) && !p && !highlight()->isInWord(l->at(range.start().column() - 1))) ||
+                        (p && !highlight()->isInWord(s.at(p - 1)))) {
                         s[p] = s.at(p).toUpper();
                     }
                     p++;
@@ -4054,7 +4042,7 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         v->setSelection(selection);
         v->setCursorPosition(c);
 
-    } else {  // no selection
+    } else { // no selection
         editStart();
 
         // get cursor
@@ -4063,23 +4051,22 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         QString old = text(KTextEditor::Range(cursor, 1));
         QString s;
         switch (t) {
-        case Uppercase:
-            s = old.toUpper();
-            break;
-        case Lowercase:
-            s = old.toLower();
-            break;
-        case Capitalize: {
-            Kate::TextLine l = m_buffer->plainLine(cursor.line());
-            while (cursor.column() > 0 && highlight()->isInWord(l->at(cursor.column() - 1), l->attribute(cursor.column() - 1))) {
-                cursor.setColumn(cursor.column() - 1);
-            }
-            old = text(KTextEditor::Range(cursor, 1));
-            s = old.toUpper();
-        }
-        break;
-        default:
-            break;
+            case Uppercase:
+                s = old.toUpper();
+                break;
+            case Lowercase:
+                s = old.toLower();
+                break;
+            case Capitalize: {
+                Kate::TextLine l = m_buffer->plainLine(cursor.line());
+                while (cursor.column() > 0 && highlight()->isInWord(l->at(cursor.column() - 1), l->attribute(cursor.column() - 1))) {
+                    cursor.setColumn(cursor.column() - 1);
+                }
+                old = text(KTextEditor::Range(cursor, 1));
+                s = old.toUpper();
+            } break;
+            default:
+                break;
         }
 
         removeText(KTextEditor::Range(cursor, 1));
@@ -4087,12 +4074,11 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
 
         editEnd();
     }
-
 }
 
 void KTextEditor::DocumentPrivate::joinLines(uint first, uint last)
 {
-//   if ( first == last ) last += 1;
+    //   if ( first == last ) last += 1;
     editStart();
     int line(first);
     while (first < last) {
@@ -4162,7 +4148,7 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
 
     KTextEditor::Range range(start, start);
     const QChar right = textLine->at(range.start().column());
-    const QChar left  = textLine->at(range.start().column() - 1);
+    const QChar left = textLine->at(range.start().column() - 1);
     QChar bracket;
 
     if (config()->ovr()) {
@@ -4197,7 +4183,6 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
     int validAttr = kateTextLine(cursor.line())->attribute(cursor.column());
 
     while (cursor.line() >= minLine && cursor.line() <= maxLine) {
-
         if (!cursor.move(searchDir)) {
             return KTextEditor::Range::invalid();
         }
@@ -4229,17 +4214,13 @@ KTextEditor::Range KTextEditor::DocumentPrivate::findMatchingBracket(const KText
 inline static QString removeNewLines(const QString &str)
 {
     QString tmp(str);
-    return tmp.replace(QLatin1String("\r\n"), QLatin1String(" "))
-           .replace(QLatin1Char('\r'), QLatin1Char(' '))
-           .replace(QLatin1Char('\n'), QLatin1Char(' '));
+    return tmp.replace(QLatin1String("\r\n"), QLatin1String(" ")).replace(QLatin1Char('\r'), QLatin1Char(' ')).replace(QLatin1Char('\n'), QLatin1Char(' '));
 }
 
 void KTextEditor::DocumentPrivate::updateDocName()
 {
     // if the name is set, and starts with FILENAME, it should not be changed!
-    if (! url().isEmpty()
-            && (m_docName == removeNewLines(url().fileName()) ||
-                m_docName.startsWith(removeNewLines(url().fileName()) + QLatin1String(" (")))) {
+    if (!url().isEmpty() && (m_docName == removeNewLines(url().fileName()) || m_docName.startsWith(removeNewLines(url().fileName()) + QLatin1String(" (")))) {
         return;
     }
 
@@ -4310,7 +4291,7 @@ void KTextEditor::DocumentPrivate::onModOnHdSaveAs()
     QWidget *parentWidget(dialogParent());
     const QUrl res = QFileDialog::getSaveFileUrl(parentWidget, i18n("Save File"), url());
     if (!res.isEmpty()) {
-        if (! saveAs(res)) {
+        if (!saveAs(res)) {
             KMessageBox::error(parentWidget, i18n("Save failed"));
             m_modOnHd = true;
         } else {
@@ -4524,7 +4505,9 @@ bool KTextEditor::DocumentPrivate::documentSaveCopyAs()
     }
 
     if (!m_buffer->saveFile(file.fileName())) {
-        KMessageBox::error(dialogParent(), i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toDisplayString(QUrl::PreferLocalFile)));
+        KMessageBox::error(
+            dialogParent(),
+            i18n("The document could not be saved, as it was not possible to write to %1.\n\nCheck that you have write access to this file or that enough disk space is available.", this->url().toDisplayString(QUrl::PreferLocalFile)));
         return false;
     }
 
@@ -4571,7 +4554,7 @@ bool KTextEditor::DocumentPrivate::pageUpDownMovesCursor() const
 {
     return config()->pageUpDownMovesCursor();
 }
-//END
+// END
 
 bool KTextEditor::DocumentPrivate::setEncoding(const QString &e)
 {
@@ -4607,7 +4590,7 @@ void KTextEditor::DocumentPrivate::updateConfig()
     emit configChanged();
 }
 
-//BEGIN Variable reader
+// BEGIN Variable reader
 // "local variable" feature by anders, 2003
 /* TODO
       add config options (how many lines to read, on/off)
@@ -4666,7 +4649,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     if (match.hasMatch()) {
         s = match.captured(1);
 
-        //qCDebug(LOG_KTE) << "normal variable line kate: matched: " << s;
+        // qCDebug(LOG_KTE) << "normal variable line kate: matched: " << s;
     } else if ((match = kvLineWildcard.match(t)).hasMatch()) { // regex given
         const QStringList wildcards(match.captured(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
         const QString nameOfFile = url().fileName();
@@ -4677,8 +4660,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             found = wildcard.exactMatch(nameOfFile);
 
             // Qt 5.12, no ifdef, more to test
-            //QRegularExpression wildcard(QLatin1Char('^') + QRegularExpression::wildcardToRegularExpression(pattern) + QLatin1Char('$'));
-            //found = wildcard.match(nameOfFile).hasMatch();
+            // QRegularExpression wildcard(QLatin1Char('^') + QRegularExpression::wildcardToRegularExpression(pattern) + QLatin1Char('$'));
+            // found = wildcard.match(nameOfFile).hasMatch();
 
             if (found) {
                 break;
@@ -4692,7 +4675,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = match.captured(2);
 
-        //qCDebug(LOG_KTE) << "guarded variable line kate-wildcard: matched: " << s;
+        // qCDebug(LOG_KTE) << "guarded variable line kate-wildcard: matched: " << s;
     } else if ((match = kvLineMime.match(t)).hasMatch()) { // mime-type given
         const QStringList types(match.captured(1).split(QLatin1Char(';'), QString::SkipEmptyParts));
 
@@ -4703,55 +4686,54 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
         s = match.captured(2);
 
-        //qCDebug(LOG_KTE) << "guarded variable line kate-mimetype: matched: " << s;
+        // qCDebug(LOG_KTE) << "guarded variable line kate-mimetype: matched: " << s;
     } else { // nothing found
         return;
     }
 
     // view variable names
-    static const auto vvl = {
-          QLatin1String("dynamic-word-wrap")
-        , QLatin1String("dynamic-word-wrap-indicators")
-        , QLatin1String("line-numbers")
-        , QLatin1String("icon-border")
-        , QLatin1String("folding-markers")
-        , QLatin1String("folding-preview")
-        , QLatin1String("bookmark-sorting")
-        , QLatin1String("auto-center-lines")
-        , QLatin1String("icon-bar-color")
-        , QLatin1String("scrollbar-minimap")
-        , QLatin1String("scrollbar-preview")
-        // renderer
-        , QLatin1String("background-color")
-        , QLatin1String("selection-color")
-        , QLatin1String("current-line-color")
-        , QLatin1String("bracket-highlight-color")
-        , QLatin1String("word-wrap-marker-color")
-        , QLatin1String("font")
-        , QLatin1String("font-size")
-        , QLatin1String("scheme")
-    };
-    int spaceIndent = -1;  // for backward compatibility; see below
+    static const auto vvl = {QLatin1String("dynamic-word-wrap"),
+                             QLatin1String("dynamic-word-wrap-indicators"),
+                             QLatin1String("line-numbers"),
+                             QLatin1String("icon-border"),
+                             QLatin1String("folding-markers"),
+                             QLatin1String("folding-preview"),
+                             QLatin1String("bookmark-sorting"),
+                             QLatin1String("auto-center-lines"),
+                             QLatin1String("icon-bar-color"),
+                             QLatin1String("scrollbar-minimap"),
+                             QLatin1String("scrollbar-preview")
+                             // renderer
+                             ,
+                             QLatin1String("background-color"),
+                             QLatin1String("selection-color"),
+                             QLatin1String("current-line-color"),
+                             QLatin1String("bracket-highlight-color"),
+                             QLatin1String("word-wrap-marker-color"),
+                             QLatin1String("font"),
+                             QLatin1String("font-size"),
+                             QLatin1String("scheme")};
+    int spaceIndent = -1; // for backward compatibility; see below
     bool replaceTabsSet = false;
     int startPos(0);
 
-    QString  var, val;
+    QString var, val;
     while ((match = kvVar.match(s, startPos)).hasMatch()) {
         startPos = match.capturedEnd(0);
         var = match.captured(1);
         val = match.captured(2).trimmed();
         bool state; // store booleans here
-        int n; // store ints here
+        int n;      // store ints here
 
         // only apply view & renderer config stuff
         if (onlyViewAndRenderer) {
-            if (contains(vvl, var)) {   // FIXME define above
+            if (contains(vvl, var)) { // FIXME define above
                 setViewVariable(var, val);
             }
         } else {
             // BOOL  SETTINGS
             if (var == QLatin1String("word-wrap") && checkBoolValue(val, &state)) {
-                setWordWrap(state);    // ??? FIXME CHECK
+                setWordWrap(state); // ??? FIXME CHECK
             }
             // KateConfig::configFlags
             // FIXME should this be optimized to only a few calls? how?
@@ -4761,16 +4743,18 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
                 m_config->setIndentPastedText(state);
             } else if (var == QLatin1String("replace-tabs") && checkBoolValue(val, &state)) {
                 m_config->setReplaceTabsDyn(state);
-                replaceTabsSet = true;  // for backward compatibility; see below
+                replaceTabsSet = true; // for backward compatibility; see below
             } else if (var == QLatin1String("remove-trailing-space") && checkBoolValue(val, &state)) {
-                qCWarning(LOG_KTE) << i18n("Using deprecated modeline 'remove-trailing-space'. "
-                                            "Please replace with 'remove-trailing-spaces modified;', see "
-                                            "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
+                qCWarning(LOG_KTE) << i18n(
+                    "Using deprecated modeline 'remove-trailing-space'. "
+                    "Please replace with 'remove-trailing-spaces modified;', see "
+                    "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 1 : 0);
             } else if (var == QLatin1String("replace-trailing-space-save") && checkBoolValue(val, &state)) {
-                qCWarning(LOG_KTE) << i18n("Using deprecated modeline 'replace-trailing-space-save'. "
-                                            "Please replace with 'remove-trailing-spaces all;', see "
-                                            "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
+                qCWarning(LOG_KTE) << i18n(
+                    "Using deprecated modeline 'replace-trailing-space-save'. "
+                    "Please replace with 'remove-trailing-spaces all;', see "
+                    "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 2 : 0);
             } else if (var == QLatin1String("overwrite-mode") && checkBoolValue(val, &state)) {
                 m_config->setOvr(state);
@@ -4794,7 +4778,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
             // INTEGER SETTINGS
             else if (var == QLatin1String("tab-width") && checkIntValue(val, &n)) {
                 m_config->setTabWidth(n);
-            } else if (var == QLatin1String("indent-width")  && checkIntValue(val, &n)) {
+            } else if (var == QLatin1String("indent-width") && checkIntValue(val, &n)) {
                 m_config->setIndentationWidth(n);
             } else if (var == QLatin1String("indent-mode")) {
                 m_config->setIndentationMode(val);
@@ -4804,7 +4788,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
 
             // STRING SETTINGS
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
-                const auto l = { QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac") };
+                const auto l = {QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac")};
                 if ((n = indexOf(l, val.toLower())) != -1) {
                     /**
                      * set eol + avoid that it is overwritten by auto-detection again!
@@ -4872,14 +4856,13 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
         }
         if (v->config()->setValue(var, help)) {
         } else if (v->renderer()->config()->setValue(var, help)) {
-
-        // No success? Go the old way
+            // No success? Go the old way
         } else if (var == QLatin1String("dynamic-word-wrap") && checkBoolValue(val, &state)) {
             v->config()->setDynWordWrap(state);
-        } else if (var == QLatin1String("block-selection")  && checkBoolValue(val, &state)) {
+        } else if (var == QLatin1String("block-selection") && checkBoolValue(val, &state)) {
             v->setBlockSelection(state);
 
-        //else if ( var = "dynamic-word-wrap-indicators" )
+            // else if ( var = "dynamic-word-wrap-indicators" )
         } else if (var == QLatin1String("icon-bar-color") && checkColorValue(val, c)) {
             v->renderer()->config()->setIconBarColor(c);
         }
@@ -4914,13 +4897,13 @@ void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
 bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
 {
     val = val.trimmed().toLower();
-    static const auto trueValues = { QLatin1String("1"), QLatin1String("on"), QLatin1String("true") };
+    static const auto trueValues = {QLatin1String("1"), QLatin1String("on"), QLatin1String("true")};
     if (contains(trueValues, val)) {
         *result = true;
         return true;
     }
 
-    static const auto falseValues = { QLatin1String("0"), QLatin1String("off"), QLatin1String("false") };
+    static const auto falseValues = {QLatin1String("0"), QLatin1String("off"), QLatin1String("false")};
     if (contains(falseValues, val)) {
         *result = false;
         return true;
@@ -4956,7 +4939,7 @@ void KTextEditor::DocumentPrivate::setVariable(const QString &name, const QStrin
     readVariableLine(s);
 }
 
-//END
+// END
 
 void KTextEditor::DocumentPrivate::slotModOnHdDirty(const QString &path)
 {
@@ -5034,8 +5017,8 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                     git_blob *blob = nullptr;
                     if (git_blob_lookup(&blob, repository, &oid) == 0) {
                         /**
-                        * this hash exists still in git => just reload
-                        */
+                         * this hash exists still in git => just reload
+                         */
                         m_modOnHd = false;
                         m_modOnHdReason = OnDiskUnmodified;
                         m_prevModOnHdReason = OnDiskUnmodified;
@@ -5043,7 +5026,6 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
                     }
                     git_blob_free(blob);
                 }
-
             }
             git_repository_free(repository);
         }
@@ -5094,17 +5076,17 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
     const QString str = KStringHandler::csqueeze(url().toDisplayString(QUrl::PreferLocalFile));
 
     switch (m_modOnHdReason) {
-    case OnDiskModified:
-        return i18n("The file '%1' was modified by another program.", str);
-        break;
-    case OnDiskCreated:
-        return i18n("The file '%1' was created by another program.", str);
-        break;
-    case OnDiskDeleted:
-        return i18n("The file '%1' was deleted by another program.", str);
-        break;
-    default:
-        return QString();
+        case OnDiskModified:
+            return i18n("The file '%1' was modified by another program.", str);
+            break;
+        case OnDiskCreated:
+            return i18n("The file '%1' was created by another program.", str);
+            break;
+        case OnDiskDeleted:
+            return i18n("The file '%1' was deleted by another program.", str);
+            break;
+        default:
+            return QString();
     }
     Q_UNREACHABLE();
     return QString();
@@ -5144,7 +5126,7 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
 
     // enable word wrap again, if it was enabled (see bug #328900)
     if (wordWrapEnabled) {
-        setWordWrap(true);    // see begin of this function
+        setWordWrap(true); // see begin of this function
     }
 }
 
@@ -5222,10 +5204,9 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
         save();
         *abortClosing = false;
     }
-
 }
 
-//BEGIN KTextEditor::ConfigInterface
+// BEGIN KTextEditor::ConfigInterface
 
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::DocumentPrivate::configKeys() const
@@ -5252,7 +5233,7 @@ void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVar
     m_config->setValue(key, value);
 }
 
-//END KTextEditor::ConfigInterface
+// END KTextEditor::ConfigInterface
 
 KTextEditor::Cursor KTextEditor::DocumentPrivate::documentEnd() const
 {
@@ -5302,7 +5283,7 @@ void KTextEditor::DocumentPrivate::setUndoMergeAllEdits(bool merge)
     m_undoMergeAllEdits = merge;
 }
 
-//BEGIN KTextEditor::MovingInterface
+// BEGIN KTextEditor::MovingInterface
 KTextEditor::MovingCursor *KTextEditor::DocumentPrivate::newMovingCursor(const KTextEditor::Cursor &position, KTextEditor::MovingCursor::InsertBehavior insertBehavior)
 {
     return new Kate::TextCursor(buffer(), position, insertBehavior);
@@ -5351,9 +5332,9 @@ void KTextEditor::DocumentPrivate::transformRange(KTextEditor::Range &range, KTe
     m_buffer->history().transformRange(range, insertBehaviors, emptyBehavior, fromRevision, toRevision);
 }
 
-//END
+// END
 
-//BEGIN KTextEditor::AnnotationInterface
+// BEGIN KTextEditor::AnnotationInterface
 void KTextEditor::DocumentPrivate::setAnnotationModel(KTextEditor::AnnotationModel *model)
 {
     KTextEditor::AnnotationModel *oldmodel = m_annotationModel;
@@ -5365,9 +5346,9 @@ KTextEditor::AnnotationModel *KTextEditor::DocumentPrivate::annotationModel() co
 {
     return m_annotationModel;
 }
-//END KTextEditor::AnnotationInterface
+// END KTextEditor::AnnotationInterface
 
-//TAKEN FROM kparts.h
+// TAKEN FROM kparts.h
 bool KTextEditor::DocumentPrivate::queryClose()
 {
     if (!isReadWrite() || !isModified()) {
@@ -5377,35 +5358,38 @@ bool KTextEditor::DocumentPrivate::queryClose()
     QString docName = documentName();
 
     int res = KMessageBox::warningYesNoCancel(dialogParent(),
-              i18n("The document \"%1\" has been modified.\n"
-                   "Do you want to save your changes or discard them?",  docName),
-              i18n("Close Document"), KStandardGuiItem::save(), KStandardGuiItem::discard());
+                                              i18n("The document \"%1\" has been modified.\n"
+                                                   "Do you want to save your changes or discard them?",
+                                                   docName),
+                                              i18n("Close Document"),
+                                              KStandardGuiItem::save(),
+                                              KStandardGuiItem::discard());
 
     bool abortClose = false;
     bool handled = false;
 
     switch (res) {
-    case KMessageBox::Yes :
-        sigQueryClose(&handled, &abortClose);
-        if (!handled) {
-            if (url().isEmpty()) {
-                QUrl url = QFileDialog::getSaveFileUrl(dialogParent());
-                if (url.isEmpty()) {
-                    return false;
-                }
+        case KMessageBox::Yes:
+            sigQueryClose(&handled, &abortClose);
+            if (!handled) {
+                if (url().isEmpty()) {
+                    QUrl url = QFileDialog::getSaveFileUrl(dialogParent());
+                    if (url.isEmpty()) {
+                        return false;
+                    }
 
-                saveAs(url);
-            } else {
-                save();
+                    saveAs(url);
+                } else {
+                    save();
+                }
+            } else if (abortClose) {
+                return false;
             }
-        } else if (abortClose) {
+            return waitSaveComplete();
+        case KMessageBox::No:
+            return true;
+        default: // case KMessageBox::Cancel :
             return false;
-        }
-        return waitSaveComplete();
-    case KMessageBox::No :
-        return true;
-    default : // case KMessageBox::Cancel :
-        return false;
     }
 }
 
@@ -5495,7 +5479,6 @@ void KTextEditor::DocumentPrivate::slotCanceled()
      */
     m_documentState = DocumentIdle;
     m_reloading = false;
-
 }
 
 void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
@@ -5620,16 +5603,15 @@ QString KTextEditor::DocumentPrivate::defaultDictionary() const
     return m_defaultDictionary;
 }
 
-QList<QPair<KTextEditor::MovingRange *, QString> > KTextEditor::DocumentPrivate::dictionaryRanges() const
+QList<QPair<KTextEditor::MovingRange *, QString>> KTextEditor::DocumentPrivate::dictionaryRanges() const
 {
     return m_dictionaryRanges;
 }
 
 void KTextEditor::DocumentPrivate::clearDictionaryRanges()
 {
-    for (QList<QPair<KTextEditor::MovingRange *, QString> >::iterator i = m_dictionaryRanges.begin();
-            i != m_dictionaryRanges.end(); ++i) {
-        delete(*i).first;
+    for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end(); ++i) {
+        delete (*i).first;
     }
     m_dictionaryRanges.clear();
     if (m_onTheFlyChecker) {
@@ -5657,10 +5639,9 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     if (!newDictionaryRange.isValid() || newDictionaryRange.isEmpty()) {
         return;
     }
-    QList<QPair<KTextEditor::MovingRange *, QString> > newRanges;
+    QList<QPair<KTextEditor::MovingRange *, QString>> newRanges;
     // all ranges is 'm_dictionaryRanges' are assumed to be mutually disjoint
-    for (QList<QPair<KTextEditor::MovingRange *, QString> >::iterator i = m_dictionaryRanges.begin();
-            i != m_dictionaryRanges.end();) {
+    for (QList<QPair<KTextEditor::MovingRange *, QString>>::iterator i = m_dictionaryRanges.begin(); i != m_dictionaryRanges.end();) {
         qCDebug(LOG_KTE) << "new iteration" << newDictionaryRange;
         if (newDictionaryRange.isEmpty()) {
             break;
@@ -5693,8 +5674,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
             }
             QList<KTextEditor::Range> remainingRanges = KateSpellCheckManager::rangeDifference(*dictionaryRange, intersection);
             for (QList<KTextEditor::Range>::iterator j = remainingRanges.begin(); j != remainingRanges.end(); ++j) {
-                KTextEditor::MovingRange *remainingRange = newMovingRange(*j,
-                        KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+                KTextEditor::MovingRange *remainingRange = newMovingRange(*j, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
                 remainingRange->setFeedback(this);
                 newRanges.push_back(QPair<KTextEditor::MovingRange *, QString>(remainingRange, dictionarySet));
             }
@@ -5706,8 +5686,7 @@ void KTextEditor::DocumentPrivate::setDictionary(const QString &newDictionary, c
     }
     m_dictionaryRanges += newRanges;
     if (!newDictionaryRange.isEmpty() && !newDictionary.isEmpty()) { // we don't add anything for the default dictionary
-        KTextEditor::MovingRange *newDictionaryMovingRange = newMovingRange(newDictionaryRange,
-                KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+        KTextEditor::MovingRange *newDictionaryMovingRange = newMovingRange(newDictionaryRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
         newDictionaryMovingRange->setFeedback(this);
         m_dictionaryRanges.push_back(QPair<KTextEditor::MovingRange *, QString>(newDictionaryMovingRange, newDictionary));
     }
@@ -5792,9 +5771,7 @@ void KTextEditor::DocumentPrivate::deleteDictionaryRange(KTextEditor::MovingRang
 {
     qCDebug(LOG_KTE) << "deleting" << movingRange;
 
-    auto finder = [=] (const QPair<KTextEditor::MovingRange *, QString>& item) -> bool {
-        return item.first == movingRange;
-    };
+    auto finder = [=](const QPair<KTextEditor::MovingRange *, QString> &item) -> bool { return item.first == movingRange; };
 
     auto it = std::find_if(m_dictionaryRanges.begin(), m_dictionaryRanges.end(), finder);
 
@@ -5844,8 +5821,7 @@ int KTextEditor::DocumentPrivate::computePositionWrtOffsets(const OffsetList &of
     return pos + previousOffset;
 }
 
-QString KTextEditor::DocumentPrivate::decodeCharacters(const KTextEditor::Range &range, KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList,
-                                       KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList)
+QString KTextEditor::DocumentPrivate::decodeCharacters(const KTextEditor::Range &range, KTextEditor::DocumentPrivate::OffsetList &decToEncOffsetList, KTextEditor::DocumentPrivate::OffsetList &encToDecOffsetList)
 {
     QString toReturn;
     KTextEditor::Cursor previous = range.start();
@@ -6026,14 +6002,14 @@ int KTextEditor::DocumentPrivate::findTouchedLine(int startLine, bool down)
     return -1;
 }
 
-void KTextEditor::DocumentPrivate::setActiveTemplateHandler(KateTemplateHandler* handler)
+void KTextEditor::DocumentPrivate::setActiveTemplateHandler(KateTemplateHandler *handler)
 {
     // delete any active template handler
     delete m_activeTemplateHandler.data();
     m_activeTemplateHandler = handler;
 }
 
-//BEGIN KTextEditor::MessageInterface
+// BEGIN KTextEditor::MessageInterface
 bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
 {
     // no message -> cancel
@@ -6058,7 +6034,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     }
 
     // make sure the message is registered even if no actions and no views exist
-    m_messageHash[message] = QList<QSharedPointer<QAction> >();
+    m_messageHash[message] = QList<QSharedPointer<QAction>>();
 
     // reparent actions, as we want full control over when they are deleted
     const auto messageActions = message->actions();
@@ -6077,7 +6053,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     }
 
     // also catch if the user manually calls delete message
-    connect(message, SIGNAL(closed(KTextEditor::Message*)), SLOT(messageDestroyed(KTextEditor::Message*)));
+    connect(message, SIGNAL(closed(KTextEditor::Message *)), SLOT(messageDestroyed(KTextEditor::Message *)));
 
     return true;
 }
@@ -6088,7 +6064,7 @@ void KTextEditor::DocumentPrivate::messageDestroyed(KTextEditor::Message *messag
     Q_ASSERT(m_messageHash.contains(message));
     m_messageHash.remove(message);
 }
-//END KTextEditor::MessageInterface
+// END KTextEditor::MessageInterface
 
 void KTextEditor::DocumentPrivate::closeDocumentInApplication()
 {

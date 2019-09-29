@@ -89,28 +89,26 @@ void KateMessageWidget::showNextMessage()
     m_messageWidget->setIcon(m_currentMessage->icon());
 
     // connect textChanged() and iconChanged(), so it's possible to change this on the fly
-    connect(m_currentMessage, SIGNAL(textChanged(QString)),
-            m_messageWidget, SLOT(setText(QString)), Qt::UniqueConnection);
-    connect(m_currentMessage, SIGNAL(iconChanged(QIcon)),
-            m_messageWidget, SLOT(setIcon(QIcon)), Qt::UniqueConnection);
+    connect(m_currentMessage, SIGNAL(textChanged(QString)), m_messageWidget, SLOT(setText(QString)), Qt::UniqueConnection);
+    connect(m_currentMessage, SIGNAL(iconChanged(QIcon)), m_messageWidget, SLOT(setIcon(QIcon)), Qt::UniqueConnection);
 
     // the enums values do not necessarily match, hence translate with switch
     switch (m_currentMessage->messageType()) {
-    case KTextEditor::Message::Positive:
-        m_messageWidget->setMessageType(KMessageWidget::Positive);
-        break;
-    case KTextEditor::Message::Information:
-        m_messageWidget->setMessageType(KMessageWidget::Information);
-        break;
-    case KTextEditor::Message::Warning:
-        m_messageWidget->setMessageType(KMessageWidget::Warning);
-        break;
-    case KTextEditor::Message::Error:
-        m_messageWidget->setMessageType(KMessageWidget::Error);
-        break;
-    default:
-        m_messageWidget->setMessageType(KMessageWidget::Information);
-        break;
+        case KTextEditor::Message::Positive:
+            m_messageWidget->setMessageType(KMessageWidget::Positive);
+            break;
+        case KTextEditor::Message::Information:
+            m_messageWidget->setMessageType(KMessageWidget::Information);
+            break;
+        case KTextEditor::Message::Warning:
+            m_messageWidget->setMessageType(KMessageWidget::Warning);
+            break;
+        case KTextEditor::Message::Error:
+            m_messageWidget->setMessageType(KMessageWidget::Error);
+            break;
+        default:
+            m_messageWidget->setMessageType(KMessageWidget::Information);
+            break;
     }
 
     // remove all actions from the message widget
@@ -178,13 +176,12 @@ void KateMessageWidget::setWordWrap(KTextEditor::Message *message)
     // finally enable word wrap, if there is not enough free horizontal space
     const int freeSpace = (parentWidget()->width() - margin) - m_messageWidget->width();
     if (freeSpace < 0) {
-//     qCDebug(LOG_KTE) << "force word wrap to avoid breaking the layout" << freeSpace;
+        //     qCDebug(LOG_KTE) << "force word wrap to avoid breaking the layout" << freeSpace;
         m_messageWidget->setWordWrap(true);
     }
 }
 
-void KateMessageWidget::postMessage(KTextEditor::Message *message,
-                                    QList<QSharedPointer<QAction> > actions)
+void KateMessageWidget::postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions)
 {
     Q_ASSERT(!m_messageHash.contains(message));
     m_messageHash[message] = actions;
@@ -201,13 +198,12 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message,
     m_messageQueue.insert(i, message);
 
     // catch if the message gets deleted
-    connect(message, SIGNAL(closed(KTextEditor::Message*)), SLOT(messageDestroyed(KTextEditor::Message*)));
+    connect(message, SIGNAL(closed(KTextEditor::Message *)), SLOT(messageDestroyed(KTextEditor::Message *)));
 
     if (i == 0 && !m_animation->isHideAnimationRunning()) {
         // if message has higher priority than the one currently shown,
         // then hide the current one and then show the new one.
         if (m_currentMessage) {
-
             // autoHide timer may be running for currently shown message, therefore
             // simply disconnect autoHide timer to all timeout() receivers
             disconnect(m_autoHideTimer, SIGNAL(timeout()), nullptr, nullptr);
@@ -218,10 +214,8 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message,
             Q_ASSERT(m_currentMessage == m_messageQueue[1]);
 
             // a bit unnice: disconnect textChanged() and iconChanged() signals of previously visible message
-            disconnect(m_currentMessage, SIGNAL(textChanged(QString)),
-                       m_messageWidget, SLOT(setText(QString)));
-            disconnect(m_currentMessage, SIGNAL(iconChanged(QIcon)),
-                       m_messageWidget, SLOT(setIcon(QIcon)));
+            disconnect(m_currentMessage, SIGNAL(textChanged(QString)), m_messageWidget, SLOT(setText(QString)));
+            disconnect(m_currentMessage, SIGNAL(iconChanged(QIcon)), m_messageWidget, SLOT(setIcon(QIcon)));
 
             m_currentMessage = nullptr;
             m_animation->hide();
@@ -266,12 +260,12 @@ void KateMessageWidget::messageDestroyed(KTextEditor::Message *message)
 void KateMessageWidget::startAutoHideTimer()
 {
     // message does not want autohide, or timer already running
-    if (!m_currentMessage            // no message, nothing to do
-            || m_autoHideTime < 0          // message does not want auto-hide
-            || m_autoHideTimer->isActive() // auto-hide timer is already active
-            || m_animation->isHideAnimationRunning() // widget is in hide animation phase
-            || m_animation->isShowAnimationRunning() // widget is in show animation phase
-       ) {
+    if (!m_currentMessage                        // no message, nothing to do
+        || m_autoHideTime < 0                    // message does not want auto-hide
+        || m_autoHideTimer->isActive()           // auto-hide timer is already active
+        || m_animation->isHideAnimationRunning() // widget is in hide animation phase
+        || m_animation->isShowAnimationRunning() // widget is in show animation phase
+    ) {
         return;
     }
 

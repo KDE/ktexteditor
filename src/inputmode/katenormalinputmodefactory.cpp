@@ -24,12 +24,10 @@
 KateNormalInputModeFactory::KateNormalInputModeFactory()
     : KateAbstractInputModeFactory()
 {
-
 }
 
 KateNormalInputModeFactory::~KateNormalInputModeFactory()
 {
-
 }
 
 KateAbstractInputMode *KateNormalInputModeFactory::createInputMode(KateViewInternal *viewInternal)
@@ -51,4 +49,3 @@ QString KateNormalInputModeFactory::name()
 {
     return i18n("Normal Mode");
 }
-

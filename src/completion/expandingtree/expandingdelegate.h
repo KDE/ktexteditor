@@ -47,15 +47,16 @@ public:
     QSize basicSizeHint(const QModelIndex &index) const;
 
     ExpandingWidgetModel *model() const;
+
 protected:
-    //Called right before paint to allow last-minute changes to the style
+    // Called right before paint to allow last-minute changes to the style
     virtual void adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const;
     void drawDisplay(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, const QString &text) const override;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
     bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override;
     virtual void drawBackground(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     void drawDecoration(QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect, const QPixmap &pixmap) const override;
-    //option can be changed
+    // option can be changed
     virtual QVector<QTextLayout::FormatRange> createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const;
 
     void adjustRect(QRect &rect) const;
@@ -65,21 +66,21 @@ protected:
      * */
     QVector<QTextLayout::FormatRange> highlightingFromVariantList(const QList<QVariant> &customHighlights) const;
 
-    //Called when an item was expanded/unexpanded and the height changed
+    // Called when an item was expanded/unexpanded and the height changed
     virtual void heightChanged() const;
 
-    //Initializes the style options from the index
+    // Initializes the style options from the index
     void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const;
 
-    mutable int m_currentColumnStart; //Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will be used). Should be zero of the highlighting is not taken from kate.
+    mutable int m_currentColumnStart; // Text-offset for custom highlighting, will be applied to m_cachedHighlights(Only highlights starting after this will be used). Should be zero of the highlighting is not taken from kate.
     mutable QList<int> m_currentColumnStarts;
     mutable QVector<QTextLayout::FormatRange> m_cachedHighlights;
 
     mutable Qt::Alignment m_cachedAlignment;
     mutable QColor m_backgroundColor;
     mutable QModelIndex m_currentIndex;
-private:
 
+private:
     ExpandingWidgetModel *m_model;
 };
 

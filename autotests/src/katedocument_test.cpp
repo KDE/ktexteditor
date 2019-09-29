@@ -33,7 +33,7 @@
 
 #include <stdio.h>
 
-///TODO: is there a FindValgrind cmake command we could use to
+/// TODO: is there a FindValgrind cmake command we could use to
 ///      define this automatically?
 // comment this out and run the test case with:
 //   valgrind --tool=callgrind --instr-atstart=no ./katedocument_test testSetTextPerformance
@@ -155,22 +155,24 @@ void KateDocumentTest::testReplaceQStringList()
 {
     KTextEditor::DocumentPrivate doc(false, false);
     doc.setWordWrap(false);
-    doc.setText(QLatin1String("asdf\n"
-                              "foo\n"
-                              "foo\n"
-                              "bar\n"));
-    doc.replaceText(Range(1, 0, 3, 0), { "new", "text", "" }, false);
-    QCOMPARE(doc.text(), QLatin1String("asdf\n"
-                                       "new\n"
-                                       "text\n"
-                                       "bar\n"));
+    doc.setText(
+        QLatin1String("asdf\n"
+                      "foo\n"
+                      "foo\n"
+                      "bar\n"));
+    doc.replaceText(Range(1, 0, 3, 0), {"new", "text", ""}, false);
+    QCOMPARE(doc.text(),
+             QLatin1String("asdf\n"
+                           "new\n"
+                           "text\n"
+                           "bar\n"));
 }
 
 void KateDocumentTest::testMovingInterfaceSignals()
 {
     KTextEditor::DocumentPrivate *doc = new KTextEditor::DocumentPrivate;
-    QSignalSpy aboutToDeleteSpy(doc, SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document*)));
-    QSignalSpy aboutToInvalidateSpy(doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)));
+    QSignalSpy aboutToDeleteSpy(doc, SIGNAL(aboutToDeleteMovingInterfaceContent(KTextEditor::Document *)));
+    QSignalSpy aboutToInvalidateSpy(doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)));
 
     QCOMPARE(doc->revision(), qint64(0));
 
@@ -181,14 +183,14 @@ void KateDocumentTest::testMovingInterfaceSignals()
     f.open();
     doc->openUrl(QUrl::fromLocalFile(f.fileName()));
     QCOMPARE(doc->revision(), qint64(0));
-    //TODO: gets emitted once in closeFile and once in openFile - is that OK?
+    // TODO: gets emitted once in closeFile and once in openFile - is that OK?
     QCOMPARE(aboutToInvalidateSpy.count(), 2);
     QCOMPARE(aboutToDeleteSpy.count(), 0);
 
     doc->documentReload();
     QCOMPARE(doc->revision(), qint64(0));
     QCOMPARE(aboutToInvalidateSpy.count(), 4);
-    //TODO: gets emitted once in closeFile and once in openFile - is that OK?
+    // TODO: gets emitted once in closeFile and once in openFile - is that OK?
     QCOMPARE(aboutToDeleteSpy.count(), 0);
 
     delete doc;
@@ -207,8 +209,7 @@ void KateDocumentTest::testSetTextPerformance()
 
     KTextEditor::DocumentPrivate doc;
     MovingRangeInvalidator invalidator;
-    connect(&doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document*)),
-            &invalidator, SLOT(aboutToInvalidateMovingInterfaceContent()));
+    connect(&doc, SIGNAL(aboutToInvalidateMovingInterfaceContent(KTextEditor::Document *)), &invalidator, SLOT(aboutToInvalidateMovingInterfaceContent()));
 
     QString text;
     QVector<Range> ranges;
@@ -223,7 +224,8 @@ void KateDocumentTest::testSetTextPerformance()
     }
 
     // replace
-    QBENCHMARK {
+    QBENCHMARK
+    {
         // init
         doc.setText(text);
         for (const Range &range : qAsConst(ranges)) {
@@ -263,7 +265,8 @@ void KateDocumentTest::testRemoveTextPerformance()
     doc.setText(text);
 
     // replace
-    QBENCHMARK_ONCE {
+    QBENCHMARK_ONCE
+    {
 #ifdef USE_VALGRIND
         CALLGRIND_START_INSTRUMENTATION
 #endif
@@ -305,7 +308,7 @@ void KateDocumentTest::testForgivingApiUsage()
 void KateDocumentTest::testAutoBrackets()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&]() {
         doc.setText("");
@@ -318,7 +321,7 @@ void KateDocumentTest::testAutoBrackets()
         }
     };
 
-    doc.setHighlightingMode ("Normal"); // Just to be sure
+    doc.setHighlightingMode("Normal"); // Just to be sure
     view->config()->setValue(KateViewConfig::AutoBrackets, true);
 
     QString testInput;
@@ -340,7 +343,7 @@ void KateDocumentTest::testAutoBrackets()
     //
     // Switch over to some other mode
     //
-    doc.setHighlightingMode ("C++");
+    doc.setHighlightingMode("C++");
 
     reset();
     typeText(testInput);
@@ -396,14 +399,14 @@ void KateDocumentTest::testAutoBrackets()
 void KateDocumentTest::testReplaceTabs()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
     auto reset = [&]() {
         doc.setText("  Hi!");
         view->setCursorPosition(Cursor(0, 0));
     };
 
-    doc.setHighlightingMode ("C++");
+    doc.setHighlightingMode("C++");
     doc.config()->setTabWidth(4);
     doc.config()->setIndentationMode("cppstyle");
 
@@ -476,10 +479,11 @@ void KateDocumentTest::testRemoveMultipleLines()
 {
     KTextEditor::DocumentPrivate doc;
 
-    doc.setText("line1\n"
-                "line2\n"
-                "line3\n"
-                "line4\n");
+    doc.setText(
+        "line1\n"
+        "line2\n"
+        "line3\n"
+        "line4\n");
 
     SignalHandler handler;
     connect(&doc, &KTextEditor::DocumentPrivate::textRemoved, &handler, &SignalHandler::slotMultipleLinesRemoved);
@@ -490,11 +494,12 @@ void KateDocumentTest::testInsertNewline()
 {
     KTextEditor::DocumentPrivate doc;
 
-    doc.setText("this is line\n"
-                "this is line2\n");
+    doc.setText(
+        "this is line\n"
+        "this is line2\n");
 
     SignalHandler handler;
-    connect(&doc, SIGNAL(textInserted(KTextEditor::Document*,KTextEditor::Range)), &handler, SLOT(slotNewlineInserted(KTextEditor::Document*,KTextEditor::Range)));
+    connect(&doc, SIGNAL(textInserted(KTextEditor::Document *, KTextEditor::Range)), &handler, SLOT(slotNewlineInserted(KTextEditor::Document *, KTextEditor::Range)));
     doc.editWrapLine(1, 4);
 }
 
@@ -502,17 +507,20 @@ void KateDocumentTest::testInsertAfterEOF()
 {
     KTextEditor::DocumentPrivate doc;
 
-    doc.setText("line0\n"
-                "line1");
+    doc.setText(
+        "line0\n"
+        "line1");
 
-    const QString input = QLatin1String("line3\n"
-                                        "line4");
+    const QString input = QLatin1String(
+        "line3\n"
+        "line4");
 
-    const QString expected = QLatin1String("line0\n"
-                                           "line1\n"
-                                           "\n"
-                                           "line3\n"
-                                           "line4");
+    const QString expected = QLatin1String(
+        "line0\n"
+        "line1\n"
+        "\n"
+        "line3\n"
+        "line4");
 
     doc.insertText(KTextEditor::Cursor(3, 0), input);
     QCOMPARE(doc.text(), expected);
@@ -530,7 +538,7 @@ void KateDocumentTest::testDigest()
 
     // make sure, Kate::TextBuffer and KTextEditor::DocumentPrivate::createDigest() equal
     KTextEditor::DocumentPrivate doc;
-    doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"md5checksum.txt")));
+    doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "md5checksum.txt")));
     const QByteArray bufferDigest(doc.checksum());
     QVERIFY(doc.createDigest());
     const QByteArray docDigest(doc.checksum());
@@ -568,7 +576,7 @@ void KateDocumentTest::testModelines()
     // document variable indent-width, since the wildcard does not match
     {
         KTextEditor::DocumentPrivate doc;
-        doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"modelines.txt")));
+        doc.openUrl(QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "modelines.txt")));
         QVERIFY(!doc.isEmpty());
 
         // ignore wrong wildcard
@@ -613,8 +621,8 @@ void KateDocumentTest::testDefStyleNum()
 void KateDocumentTest::testTypeCharsWithSurrogateAndNewLine()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
-    const uint surrogateUcs4String[] = { 0x1f346, '\n', 0x1f346, 0 };
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+    const uint surrogateUcs4String[] = {0x1f346, '\n', 0x1f346, 0};
     const auto surrogateString = QString::fromUcs4(surrogateUcs4String);
     doc.typeChars(view, surrogateString);
 
@@ -624,7 +632,7 @@ void KateDocumentTest::testTypeCharsWithSurrogateAndNewLine()
 void KateDocumentTest::testRemoveComposedCharacters()
 {
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     view->config()->setValue(KateViewConfig::BackspaceRemoveComposedCharacters, true);
     doc.setText(QString::fromUtf8("व्यक्तियों"));
     doc.del(view, Cursor(0, 0));
@@ -645,7 +653,7 @@ void KateDocumentTest::testAutoReload()
     stream.flush();
 
     KTextEditor::DocumentPrivate doc;
-    auto view = static_cast<KTextEditor::ViewPrivate*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
     QVERIFY(doc.openUrl(QUrl::fromLocalFile(file.fileName())));
     QCOMPARE(doc.text(), "Hello");
     // The cursor should be and stay in the last line...
@@ -661,7 +669,7 @@ void KateDocumentTest::testAutoReload()
     stream << "\nTest";
     stream.flush();
 
-     // Hardcoded delay m_modOnHdTimer in DocumentPrivate
+    // Hardcoded delay m_modOnHdTimer in DocumentPrivate
     // + min val with which it looks working reliable here
     QTest::qWait(200 + 800);
     QCOMPARE(doc.text(), "Hello\nTest");
@@ -710,11 +718,10 @@ void KateDocumentTest::testSearch()
         }
 
         auto result = pattern.match(textToMatch, 0, QRegularExpression::PartialPreferFirstMatch);
-        printf ("lala %d %d %d %d\n", result.hasMatch(), result.hasPartialMatch(), result.capturedStart(), result.capturedLength());
-
+        printf("lala %d %d %d %d\n", result.hasMatch(), result.hasPartialMatch(), result.capturedStart(), result.capturedLength());
 
         if (result.hasMatch()) {
-            printf ("found stuff starting in line %d\n", matchStartLine);
+            printf("found stuff starting in line %d\n", matchStartLine);
             break;
         }
 
@@ -730,8 +737,6 @@ void KateDocumentTest::testSearch()
             partialMatchLine = -1;
         }
     }
-
-
 }
 
 #include "katedocument_test.moc"

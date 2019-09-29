@@ -47,15 +47,15 @@ static const int KATE_MAX_DYNAMIC_CONTEXTS = 512;
  * Create an empty buffer. (with one block with one empty line)
  */
 KateBuffer::KateBuffer(KTextEditor::DocumentPrivate *doc)
-    : Kate::TextBuffer(doc),
-      m_doc(doc),
-      m_brokenEncoding(false),
-      m_tooLongLinesWrapped(false),
-      m_longestLineLoaded(0),
-      m_highlight(nullptr),
-      m_tabWidth(8),
-      m_lineHighlighted(0),
-      m_maxDynamicContexts(KATE_MAX_DYNAMIC_CONTEXTS)
+    : Kate::TextBuffer(doc)
+    , m_doc(doc)
+    , m_brokenEncoding(false)
+    , m_tooLongLinesWrapped(false)
+    , m_longestLineLoaded(0)
+    , m_highlight(nullptr)
+    , m_tabWidth(8)
+    , m_lineHighlighted(0)
+    , m_maxDynamicContexts(KATE_MAX_DYNAMIC_CONTEXTS)
 {
 }
 
@@ -127,10 +127,7 @@ void KateBuffer::editEnd()
     /**
      * really update highlighting
      */
-    doHighlight(
-        editTagLineStart,
-        editTagLineEnd,
-        true);
+    doHighlight(editTagLineStart, editTagLineEnd, true);
 }
 
 void KateBuffer::clear()
@@ -155,7 +152,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     setTextCodec(m_doc->config()->codec());
 
     // setup eol
-    setEndOfLineMode((EndOfLineMode) m_doc->config()->eol());
+    setEndOfLineMode((EndOfLineMode)m_doc->config()->eol());
 
     // NOTE: we do not remove trailing spaces on load. This was discussed
     //       over the years again and again. bugs: 306926, 239077, ...
@@ -176,8 +173,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
      */
     if (m_doc->url().isLocalFile() && !QFile::exists(m_file)) {
         clear();
-        KTextEditor::Message *message = new KTextEditor::Message(i18nc("short translation, user created new file", "New file"),
-                KTextEditor::Message::Warning);
+        KTextEditor::Message *message = new KTextEditor::Message(i18nc("short translation, user created new file", "New file"), KTextEditor::Message::Warning);
         message->setPosition(KTextEditor::Message::TopInView);
         message->setAutoHide(1000);
         m_doc->postMessage(message);
@@ -200,7 +196,7 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     /**
      * try to load
      */
-    if (!load(m_file, m_brokenEncoding, m_tooLongLinesWrapped, m_longestLineLoaded,  enforceTextCodec)) {
+    if (!load(m_file, m_brokenEncoding, m_tooLongLinesWrapped, m_longestLineLoaded, enforceTextCodec)) {
         return false;
     }
 
@@ -251,7 +247,7 @@ bool KateBuffer::saveFile(const QString &m_file)
     setTextCodec(m_doc->config()->codec());
 
     // setup eol
-    setEndOfLineMode((EndOfLineMode) m_doc->config()->eol());
+    setEndOfLineMode((EndOfLineMode)m_doc->config()->eol());
 
     // generate bom?
     setGenerateByteOrderMark(m_doc->config()->bom());
@@ -407,7 +403,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 #endif
 
         // need we to continue ?
-        bool stillcontinue =  ctxChanged;
+        bool stillcontinue = ctxChanged;
         if (stillcontinue && start_spellchecking < 0) {
             start_spellchecking = current_line;
         } else if (!stillcontinue && start_spellchecking >= 0) {
@@ -430,14 +426,13 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
     // tag the changed lines !
     if (invalidate) {
 #ifdef BUFFER_DEBUGGING
-        qCDebug(LOG_KTE) << "HIGHLIGHTED TAG LINES: " << startLine <<  current_line;
+        qCDebug(LOG_KTE) << "HIGHLIGHTED TAG LINES: " << startLine << current_line;
 #endif
 
         emit tagLines(startLine, qMax(current_line, oldHighlighted));
 
         if (start_spellchecking >= 0 && lines() > 0) {
-            emit respellCheckBlock(start_spellchecking,
-                                   qMin(lines() - 1, (last_line_spellchecking == -1) ? qMax(current_line, oldHighlighted) : last_line_spellchecking));
+            emit respellCheckBlock(start_spellchecking, qMin(lines() - 1, (last_line_spellchecking == -1) ? qMax(current_line, oldHighlighted) : last_line_spellchecking));
         }
     }
 
@@ -559,7 +554,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         /**
          * mapping of type to "first" offset of it and current number of not matched openings
          */
-        QHash<short, QPair<int, int> > foldingStartToOffsetAndCount;
+        QHash<short, QPair<int, int>> foldingStartToOffsetAndCount;
 
         /**
          * walk over all attributes of the line and compute the matchings
@@ -573,7 +568,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 /**
                  * search for this type, try to decrement counter, perhaps erase element!
                  */
-                QHash<short, QPair<int, int> >::iterator end = foldingStartToOffsetAndCount.find(-startLineAttributes[i].foldingValue);
+                QHash<short, QPair<int, int>>::iterator end = foldingStartToOffsetAndCount.find(-startLineAttributes[i].foldingValue);
                 if (end != foldingStartToOffsetAndCount.end()) {
                     if (end.value().second > 1) {
                         --(end.value().second);
@@ -590,7 +585,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 /**
                  * search for this type, either insert it, with current offset or increment counter!
                  */
-                QHash<short, QPair<int, int> >::iterator start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingValue);
+                QHash<short, QPair<int, int>>::iterator start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingValue);
                 if (start != foldingStartToOffsetAndCount.end()) {
                     ++(start.value().second);
                 } else {
@@ -602,7 +597,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         /**
          * compute first type with offset
          */
-        QHashIterator<short, QPair<int, int> > hashIt(foldingStartToOffsetAndCount);
+        QHashIterator<short, QPair<int, int>> hashIt(foldingStartToOffsetAndCount);
         while (hashIt.hasNext()) {
             hashIt.next();
             if (openedRegionOffset == -1 || hashIt.value().first < openedRegionOffset) {
@@ -670,4 +665,3 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
      */
     return KTextEditor::Range(KTextEditor::Cursor(startLine, openedRegionOffset), KTextEditor::Cursor(lines() - 1, plainLine(lines() - 1)->length()));
 }
-

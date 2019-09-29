@@ -44,14 +44,13 @@ public:
         , m_lastPosition(-1)
     {
         // to invalidate positionFromCursor cache when the document is changed
-        m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged,
-                         [this](){ m_lastPosition = -1; });
+        m_conn = QObject::connect(view->view()->document(), &KTextEditor::Document::textChanged, [this]() { m_lastPosition = -1; });
     }
 
     void *interface_cast(QAccessible::InterfaceType t) override
     {
         if (t == QAccessible::TextInterface)
-            return static_cast<QAccessibleTextInterface*>(this);
+            return static_cast<QAccessibleTextInterface *>(this);
         return nullptr;
     }
 
@@ -267,6 +266,7 @@ private:
         *endOffset = *startOffset + line.length();
         return line;
     }
+
 private:
     // Cache data for positionFromCursor
     mutable KateViewInternal *m_lastView;
@@ -284,7 +284,7 @@ private:
 QAccessibleInterface *accessibleInterfaceFactory(const QString &key, QObject *object)
 {
     Q_UNUSED(key)
-    //if (key == QLatin1String("KateViewInternal"))
+    // if (key == QLatin1String("KateViewInternal"))
     if (KateViewInternal *view = qobject_cast<KateViewInternal *>(object)) {
         return new KateViewAccessible(view);
     }

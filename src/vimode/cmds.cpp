@@ -42,11 +42,10 @@
 
 using namespace KateVi;
 
-//BEGIN ViCommands
+// BEGIN ViCommands
 Commands *Commands::m_instance = nullptr;
 
-bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
-                    QString &msg, const KTextEditor::Range &range)
+bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, const KTextEditor::Range &range)
 {
     Q_UNUSED(range)
     // cast it hardcore, we know that it is really a kateview :)
@@ -57,7 +56,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
         return false;
     }
 
-    //create a list of args
+    // create a list of args
     QStringList args(_cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
     QString cmd(args.takeFirst());
 
@@ -68,7 +67,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
                 m_viGlobal->mappings()->remove(modeForMapCommand(cmd), args.at(0));
                 return true;
             } else {
-                msg = i18n("Missing argument. Usage: %1 <from>",  cmd);
+                msg = i18n("Missing argument. Usage: %1 <from>", cmd);
                 return false;
             }
         }
@@ -84,7 +83,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
             Mappings::MappingRecursion mappingRecursion = (isMapCommandRecursive(cmd)) ? Mappings::Recursive : Mappings::NonRecursive;
             m_viGlobal->mappings()->add(modeForMapCommand(cmd), args.at(0), args.at(1), mappingRecursion);
         } else {
-            msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]",  cmd);
+            msg = i18n("Missing argument(s). Usage: %1 <from> [<to>]", cmd);
             return false;
         }
 
@@ -93,17 +92,14 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
 
     NormalViMode *nm = m_viInputModeManager->getViNormalMode();
 
-    if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") ||
-            cmd == QLatin1String("c") || cmd == QLatin1String("change") ||  cmd == QLatin1String("<") || cmd == QLatin1String(">") ||
-            cmd == QLatin1String("y") || cmd == QLatin1String("yank")) {
-
+    if (cmd == QLatin1String("d") || cmd == QLatin1String("delete") || cmd == QLatin1String("j") || cmd == QLatin1String("c") || cmd == QLatin1String("change") || cmd == QLatin1String("<") || cmd == QLatin1String(">") ||
+        cmd == QLatin1String("y") || cmd == QLatin1String("yank")) {
         KTextEditor::Cursor start_cursor_position = v->cursorPosition();
 
         int count = 1;
         if (range.isValid()) {
             count = qAbs(range.end().line() - range.start().line()) + 1;
-            v->setCursorPosition(KTextEditor::Cursor(qMin(range.start().line(),
-                                 range.end().line()), 0));
+            v->setCursorPosition(KTextEditor::Cursor(qMin(range.start().line(), range.end().line()), 0));
         }
 
         static const QRegularExpression number(QStringLiteral("^(\\d+)$"));
@@ -157,7 +153,6 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd,
                 return false;
             }
         } else if (args.count() == 1) {
-
             QChar r = args.at(0).at(0);
             int line;
             if ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*')) {
@@ -186,8 +181,8 @@ bool Commands::supportsRange(const QString &range)
     static QStringList l;
 
     if (l.isEmpty())
-        l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") <<
-          QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank") << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
+        l << QStringLiteral("d") << QStringLiteral("delete") << QStringLiteral("j") << QStringLiteral("c") << QStringLiteral("change") << QStringLiteral("<") << QStringLiteral(">") << QStringLiteral("y") << QStringLiteral("yank")
+          << QStringLiteral("ma") << QStringLiteral("mark") << QStringLiteral("k");
 
     return l.contains(range.split(QLatin1Char(' ')).at(0));
 }
@@ -213,10 +208,9 @@ const QStringList &Commands::mappingCommands()
 {
     static QStringList mappingsCommands;
     if (mappingsCommands.isEmpty()) {
-        mappingsCommands << QStringLiteral("nmap")  << QStringLiteral("nm")  << QStringLiteral("noremap") << QStringLiteral("nnoremap") << QStringLiteral("nn") << QStringLiteral("no")
-                         << QStringLiteral("vmap") << QStringLiteral("vm") << QStringLiteral("vnoremap") << QStringLiteral("vn")
-                         << QStringLiteral("imap") << QStringLiteral("im") << QStringLiteral("inoremap") << QStringLiteral("ino")
-                         << QStringLiteral("cmap") << QStringLiteral("cm") << QStringLiteral("cnoremap") << QStringLiteral("cno");
+        mappingsCommands << QStringLiteral("nmap") << QStringLiteral("nm") << QStringLiteral("noremap") << QStringLiteral("nnoremap") << QStringLiteral("nn") << QStringLiteral("no") << QStringLiteral("vmap") << QStringLiteral("vm")
+                         << QStringLiteral("vnoremap") << QStringLiteral("vn") << QStringLiteral("imap") << QStringLiteral("im") << QStringLiteral("inoremap") << QStringLiteral("ino") << QStringLiteral("cmap") << QStringLiteral("cm")
+                         << QStringLiteral("cnoremap") << QStringLiteral("cno");
 
         mappingsCommands << QStringLiteral("nunmap") << QStringLiteral("vunmap") << QStringLiteral("iunmap") << QStringLiteral("cunmap");
     }
@@ -252,8 +246,7 @@ Mappings::MappingMode Commands::modeForMapCommand(const QString &mapCommand)
 bool Commands::isMapCommandRecursive(const QString &mapCommand)
 {
     static QMap<QString, bool> isMapCommandRecursive;
-    if (isMapCommandRecursive.isEmpty())
-    {
+    if (isMapCommandRecursive.isEmpty()) {
         isMapCommandRecursive.insert(QStringLiteral("nmap"), true);
         isMapCommandRecursive.insert(QStringLiteral("nm"), true);
         isMapCommandRecursive.insert(QStringLiteral("vmap"), true);
@@ -266,9 +259,9 @@ bool Commands::isMapCommandRecursive(const QString &mapCommand)
     return isMapCommandRecursive.value(mapCommand);
 }
 
-//END ViCommands
+// END ViCommands
 
-//BEGIN SedReplace
+// BEGIN SedReplace
 SedReplace *SedReplace::m_instance = nullptr;
 
 bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointer<InteractiveSedReplacer> interactiveSedReplace)
@@ -277,4 +270,4 @@ bool SedReplace::interactiveSedReplace(KTextEditor::ViewPrivate *, QSharedPointe
     emulatedCommandBar->startInteractiveSearchAndReplace(interactiveSedReplace);
     return true;
 }
-//END SedReplace
+// END SedReplace

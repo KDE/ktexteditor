@@ -18,25 +18,20 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef KATEVI_REPLACE_VI_MODE_H
 #define KATEVI_REPLACE_VI_MODE_H
-
 
 #include <vimode/modes/modebase.h>
 
 namespace KateVi
 {
-
 /**
  * Commands for the vi replace mode
  */
 class ReplaceViMode : public ModeBase
 {
 public:
-    explicit ReplaceViMode(InputModeManager *viInputModeManager,
-                           KTextEditor::ViewPrivate *view,
-                           KateViewInternal *viewInternal);
+    explicit ReplaceViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~ReplaceViMode() override;
 
     /// Update the track of overwritten characters with the \p s character.
@@ -45,7 +40,10 @@ public:
         m_overwritten += s;
     }
 
-    void setCount(int count) { m_count = count;}
+    void setCount(int count)
+    {
+        m_count = count;
+    }
 
 protected:
     /**

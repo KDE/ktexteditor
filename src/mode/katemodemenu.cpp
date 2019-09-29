@@ -18,7 +18,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "katemodemenu.h"
 
 #include "katedocument.h"
@@ -27,13 +27,13 @@
 #include "kateglobal.h"
 #include "katesyntaxmanager.h"
 #include "katepartdebug.h"
-//END Includes
+// END Includes
 
 void KateModeMenu::init()
 {
     m_doc = nullptr;
 
-    connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
+    connect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setType(QAction *)));
 
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
 
@@ -64,7 +64,7 @@ void KateModeMenu::slotAboutToShow()
             if (!subMenusName.contains(hlSection)) {
                 subMenusName << hlSection;
                 QMenu *qmenu = new QMenu(hlSection);
-                connect(qmenu, SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
+                connect(qmenu, SIGNAL(triggered(QAction *)), this, SLOT(setType(QAction *)));
                 subMenus.append(qmenu);
                 menu()->addMenu(qmenu);
             }
@@ -78,8 +78,8 @@ void KateModeMenu::slotAboutToShow()
         } else if (!names.contains(hlName)) {
             names << hlName;
 
-            disconnect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
-            connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(setType(QAction*)));
+            disconnect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setType(QAction *)));
+            connect(menu(), SIGNAL(triggered(QAction *)), this, SLOT(setType(QAction *)));
 
             QAction *action = menu()->addAction(hlName);
             m_actionGroup->addAction(action);
@@ -95,19 +95,19 @@ void KateModeMenu::slotAboutToShow()
     for (int i = 0; i < subMenus.count(); i++) {
         QList<QAction *> actions = subMenus.at(i)->actions();
         for (int j = 0; j < actions.count(); ++j) {
-            actions[ j ]->setChecked(false);
+            actions[j]->setChecked(false);
         }
     }
 
     QList<QAction *> actions = menu()->actions();
     for (int i = 0; i < actions.count(); ++i) {
-        actions[ i ]->setChecked(false);
+        actions[i]->setChecked(false);
     }
 
     if (doc->fileType().isEmpty() || doc->fileType() == QLatin1String("Normal")) {
         for (int i = 0; i < actions.count(); ++i) {
-            if (actions[ i ]->data().toString() == QLatin1String("Normal")) {
-                actions[ i ]->setChecked(true);
+            if (actions[i]->data().toString() == QLatin1String("Normal")) {
+                actions[i]->setChecked(true);
             }
         }
     } else {
@@ -117,15 +117,15 @@ void KateModeMenu::slotAboutToShow()
             if (i >= 0 && subMenus.at(i)) {
                 QList<QAction *> actions = subMenus.at(i)->actions();
                 for (int j = 0; j < actions.count(); ++j) {
-                    if (actions[ j ]->data().toString() == doc->fileType()) {
-                        actions[ j ]->setChecked(true);
+                    if (actions[j]->data().toString() == doc->fileType()) {
+                        actions[j]->setChecked(true);
                     }
                 }
             } else {
                 QList<QAction *> actions = menu()->actions();
                 for (int j = 0; j < actions.count(); ++j) {
-                    if (actions[ j ]->data().toString().isEmpty()) {
-                        actions[ j ]->setChecked(true);
+                    if (actions[j]->data().toString().isEmpty()) {
+                        actions[j]->setChecked(true);
                     }
                 }
             }
@@ -141,4 +141,3 @@ void KateModeMenu::setType(QAction *action)
         doc->updateFileType(action->data().toString(), true);
     }
 }
-

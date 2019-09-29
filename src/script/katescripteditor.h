@@ -25,7 +25,10 @@
 
 #include <ktexteditor_export.h>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class QJSEngine;
 
 /**

@@ -59,11 +59,11 @@ void BugTest::tryCrash()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug317111.txt"));
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug317111.txt"));
     doc->openUrl(url);
 
     // load buggy script
-    QFile scriptFile(QLatin1String(JS_DATA_DIR"commands/utils.js"));
+    QFile scriptFile(QLatin1String(JS_DATA_DIR "commands/utils.js"));
     QVERIFY(scriptFile.exists());
     QVERIFY(scriptFile.open(QFile::ReadOnly));
     QJSValue result = env->engine()->evaluate(QString::fromLatin1(scriptFile.readAll()), scriptFile.fileName());

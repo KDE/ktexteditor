@@ -54,7 +54,6 @@ static int backslashString(const QString &haystack, const QString &needle, int i
             evenCount = true;
         }
         ++index;
-
     }
 
     return -1;
@@ -78,8 +77,7 @@ static void exchangeAbbrevs(QString &str)
     }
 }
 
-bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString &cmd,
-                                    QString &msg, const KTextEditor::Range &r)
+bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &r)
 {
     qCDebug(LOG_KTE) << "SedReplace::execCmd( " << cmd << " )";
     if (r.isValid()) {
@@ -130,8 +128,7 @@ bool KateCommands::SedReplace::exec(class KTextEditor::View *view, const QString
 
     if (interactive) {
         const bool hasInitialMatch = interactiveSedReplacer->currentMatch().isValid();
-        if (!hasInitialMatch)
-        {
+        if (!hasInitialMatch) {
             // Can't start an interactive sed replace if there is no initial match!
             msg = interactiveSedReplacer->finalStatusReportMessage();
             return false;
@@ -164,8 +161,7 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
     const QString d = match.captured(1);
     qCDebug(LOG_KTE) << "SedReplace: delimiter is '" << d << "'";
 
-    QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\")
-                     + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
+    QRegularExpression splitter(QStringLiteral("^s\\s*") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)\\") + d + QLatin1String("((?:[^\\\\\\") + d + QLatin1String("]|\\\\.)*)(\\") + d + QLatin1String("[igc]{0,3})?$"));
     match = splitter.match(sedReplaceString);
     if (!match.hasMatch()) {
         return false;
@@ -184,15 +180,15 @@ bool KateCommands::SedReplace::parse(const QString &sedReplaceString, QString &d
 }
 
 KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEditor::DocumentPrivate *doc, const QString &findPattern, const QString &replacePattern, bool caseSensitive, bool onlyOnePerLine, int startLine, int endLine)
-    : m_findPattern(findPattern),
-      m_replacePattern(replacePattern),
-      m_onlyOnePerLine(onlyOnePerLine),
-      m_endLine(endLine),
-      m_doc(doc),
-      m_regExpSearch(doc, caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive),
-      m_numReplacementsDone(0),
-      m_numLinesTouched(0),
-      m_lastChangedLineNum(-1)
+    : m_findPattern(findPattern)
+    , m_replacePattern(replacePattern)
+    , m_onlyOnePerLine(onlyOnePerLine)
+    , m_endLine(endLine)
+    , m_doc(doc)
+    , m_regExpSearch(doc, caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive)
+    , m_numReplacementsDone(0)
+    , m_numLinesTouched(0)
+    , m_lastChangedLineNum(-1)
 {
     m_currentSearchPos = KTextEditor::Cursor(startLine, 0);
 }
@@ -239,8 +235,7 @@ void KateCommands::SedReplace::InteractiveSedReplacer::replaceCurrentMatch()
 
         m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line(), col);
     } else {
-        m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line() + replacementText.count(QLatin1Char('\n')),
-                                    replacementText.length() - replacementText.lastIndexOf(QLatin1Char('\n')) - 1);
+        m_currentSearchPos = KTextEditor::Cursor(currentMatch.start().line() + replacementText.count(QLatin1Char('\n')), replacementText.length() - replacementText.lastIndexOf(QLatin1Char('\n')) - 1);
     }
     if (m_onlyOnePerLine) {
         // Drop down to next line.
@@ -275,17 +270,13 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::currentMatchReplacemen
 
 QString KateCommands::SedReplace::InteractiveSedReplacer::finalStatusReportMessage()
 {
-    return i18ncp("%2 is the translation of the next message",
-                  "1 replacement done on %2", "%1 replacements done on %2", m_numReplacementsDone,
-                  i18ncp("substituted into the previous message",
-                         "1 line", "%1 lines", m_numLinesTouched));
-
+    return i18ncp("%2 is the translation of the next message", "1 replacement done on %2", "%1 replacements done on %2", m_numReplacementsDone, i18ncp("substituted into the previous message", "1 line", "%1 lines", m_numLinesTouched));
 }
 
 const QVector<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplacer::fullCurrentMatch()
 {
     if (m_currentSearchPos > m_doc->documentEnd()) {
-        return QVector <KTextEditor::Range>();
+        return QVector<KTextEditor::Range>();
     }
 
     return m_regExpSearch.search(m_findPattern, KTextEditor::Range(m_currentSearchPos, m_doc->documentEnd()));
@@ -300,5 +291,4 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurr
     }
     const QString replacementText = m_regExpSearch.buildReplacement(m_replacePattern, captureTexts, 0);
     return replacementText;
-
 }

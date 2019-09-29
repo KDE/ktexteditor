@@ -18,7 +18,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include <katecompletionwidget.h>
 #include <kateglobal.h>
 #include <katewordcompletion.h>
@@ -28,23 +27,20 @@
 
 using namespace KTextEditor;
 
-
 FakeCodeCompletionTestModel::FakeCodeCompletionTestModel(KTextEditor::View *parent)
-    : KTextEditor::CodeCompletionModel(parent),
-      m_kateView(qobject_cast<KTextEditor::ViewPrivate *>(parent)),
-      m_kateDoc(parent->document()),
-      m_removeTailOnCompletion(false),
-      m_failTestOnInvocation(false),
-      m_wasInvoked(false)
+    : KTextEditor::CodeCompletionModel(parent)
+    , m_kateView(qobject_cast<KTextEditor::ViewPrivate *>(parent))
+    , m_kateDoc(parent->document())
+    , m_removeTailOnCompletion(false)
+    , m_failTestOnInvocation(false)
+    , m_wasInvoked(false)
 {
     Q_ASSERT(m_kateView);
     setRowCount(3);
     cc()->setAutomaticInvocationEnabled(false);
-    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); //would add additional items, we don't want that in tests
-    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textInserted,
-            this, &FakeCodeCompletionTestModel::textInserted);
-    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textRemoved,
-            this, &FakeCodeCompletionTestModel::textRemoved);
+    cc()->unregisterCompletionModel(KTextEditor::EditorPrivate::self()->wordCompletionModel()); // would add additional items, we don't want that in tests
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textInserted, this, &FakeCodeCompletionTestModel::textInserted);
+    connect(static_cast<KTextEditor::DocumentPrivate *>(parent->document()), &KTextEditor::DocumentPrivate::textRemoved, this, &FakeCodeCompletionTestModel::textRemoved);
 }
 
 void FakeCodeCompletionTestModel::setCompletions(const QStringList &completions)
@@ -102,7 +98,7 @@ QVariant FakeCodeCompletionTestModel::data(const QModelIndex &index, int role) c
     return QVariant();
 }
 
-void FakeCodeCompletionTestModel::executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
+void FakeCodeCompletionTestModel::executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
 {
     qDebug() << "word: " << word << "(" << view->document()->text(word) << ")";
     const Cursor origCursorPos = m_kateView->cursorPosition();
@@ -114,7 +110,7 @@ void FakeCodeCompletionTestModel::executeCompletionItem (KTextEditor::View *view
     // Merge brackets?
     const QString noArgFunctionCallMarker = "()";
     const QString withArgFunctionCallMarker = "(...)";
-    const bool endedWithSemiColon  = textToInsert.endsWith(';');
+    const bool endedWithSemiColon = textToInsert.endsWith(';');
     if (textToInsert.contains(noArgFunctionCallMarker) || textToInsert.contains(withArgFunctionCallMarker)) {
         Q_ASSERT(m_removeTailOnCompletion && "Function completion items without removing tail is not yet supported!");
         const bool takesArgument = textToInsert.contains(withArgFunctionCallMarker);

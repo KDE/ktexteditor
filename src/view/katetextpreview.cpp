@@ -30,7 +30,7 @@
 
 #include <cmath>
 
-KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget * parent)
+KateTextPreview::KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent)
     : QFrame(parent, Qt::ToolTip | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint)
     , m_view(view)
     , m_line(0)
@@ -44,7 +44,7 @@ KateTextPreview::~KateTextPreview()
 {
 }
 
-KTextEditor::ViewPrivate* KateTextPreview::view() const
+KTextEditor::ViewPrivate *KateTextPreview::view() const
 {
     return m_view;
 }
@@ -110,7 +110,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);
 
-    KateRenderer * const renderer = view()->renderer();
+    KateRenderer *const renderer = view()->renderer();
     const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
 
     const QRect r = contentsRect(); // already substracted QFrame's frame width
@@ -120,7 +120,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     const int lineCount = ceil(static_cast<qreal>(r.height()) / (lineHeight * m_scale));
     int startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0));
     // at the very end of the document, make sure the preview is filled
-    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1> lastLine) {
+    if (qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0)) + lineCount - 1 > lastLine) {
         m_line = qMax(0.0, lastLine - static_cast<qreal>(r.height()) / (lineHeight * m_scale) + floor(lineCount / 2.0) - 1);
         startLine = qMax(0.0, m_line - (m_center ? (ceil(lineCount / 2.0)) : 0) + 1);
     }
@@ -130,8 +130,8 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     paint.setClipRect(r);
     paint.fillRect(r, renderer->config()->backgroundColor());
 
-//     renderer->setShowTabs(doc()->config()->showTabs());
-//     renderer->setShowTrailingSpaces(doc()->config()->showSpaces());
+    //     renderer->setShowTabs(doc()->config()->showTabs());
+    //     renderer->setShowTrailingSpaces(doc()->config()->showSpaces());
 
     paint.scale(m_scale, m_scale);
     paint.translate(r.topLeft());

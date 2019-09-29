@@ -50,7 +50,7 @@ void KateFoldingTest::cleanupTestCase()
 void KateFoldingTest::testCrash311866()
 {
     KTextEditor::DocumentPrivate doc;
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug311866.cpp"));
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug311866.cpp"));
     doc.openUrl(url);
     doc.setHighlightingMode("C++");
     doc.buffer().ensureHighlighted(6);
@@ -80,11 +80,12 @@ void KateFoldingTest::testCrash311866()
 void KateFoldingTest::testBug295632()
 {
     KTextEditor::DocumentPrivate doc;
-    QString text = "oooossssssss\n"
-                   "{\n"
-                   "\n"
-                   "}\n"
-                   "ssssss----------";
+    QString text =
+        "oooossssssss\n"
+        "{\n"
+        "\n"
+        "}\n"
+        "ssssss----------";
     doc.setText(text);
 
     // view must be visible...
@@ -120,12 +121,13 @@ void KateFoldingTest::testBug295632()
 void KateFoldingTest::testCrash367466()
 {
     KTextEditor::DocumentPrivate doc;
-    QString text = "fold begin\n"
-                   "\n"
-                   "\n"
-                   "fold end\n"
-                   "hello\n"
-                   "world\n";
+    QString text =
+        "fold begin\n"
+        "\n"
+        "\n"
+        "fold end\n"
+        "hello\n"
+        "world\n";
     doc.setText(text);
 
     // view must be visible...

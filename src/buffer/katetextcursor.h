@@ -31,7 +31,6 @@
 
 namespace Kate
 {
-
 class TextBuffer;
 class TextBlock;
 class TextRange;
@@ -196,7 +195,8 @@ public:
     {
         if (m_block) {
             return m_line;
-        } return -1;
+        }
+        return -1;
     }
 
 private:
@@ -208,7 +208,7 @@ private:
     /**
      * no assignment operator, no copying around.
      */
-    TextCursor &operator= (const TextCursor &);
+    TextCursor &operator=(const TextCursor &);
 
     /**
      * Set the current cursor position to \e position.

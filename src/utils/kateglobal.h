@@ -50,8 +50,14 @@ class KateGlobalConfig;
 class KateDocumentConfig;
 class KateViewConfig;
 class KateRendererConfig;
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateScriptManager;
 class KDirWatch;
 class KateHlManager;
@@ -64,7 +70,6 @@ class KateVariableExpansionManager;
 
 namespace KTextEditor
 {
-
 /**
  * KTextEditor::EditorPrivate
  * One instance of this class is hold alive during
@@ -159,14 +164,14 @@ public:
     }
 
     /**
-    * Configuration management
-    */
+     * Configuration management
+     */
 public:
     /**
      * Shows a config dialog for the part, changes will be applied
      * to the editor, but not saved anywhere automagically, call
      * writeConfig to save them
-    */
+     */
     void configDialog(QWidget *parent) override;
 
     /**
@@ -338,7 +343,8 @@ public:
      * Global instance of the language-aware keyword completion model
      * @return global instance of the keyword completion model
      */
-    KateKeywordCompletionModel *keywordCompletionModel () {
+    KateKeywordCompletionModel *keywordCompletionModel()
+    {
         return m_keywordCompletionModel;
     }
 
@@ -571,4 +577,3 @@ private:
 }
 
 #endif
-

@@ -28,7 +28,10 @@
 #include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KateViewInternal;
 class QTimeLine;
 class QPainter;
@@ -68,4 +71,3 @@ private:
 };
 
 #endif // KATE_TEXT_ANIMATION_H
-

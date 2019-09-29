@@ -18,13 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef FAKE_CODE_COMPLETION_TEST_MODEL_H
 #define FAKE_CODE_COMPLETION_TEST_MODEL_H
 
-
 #include <ktexteditor/codecompletionmodel.h>
-
 
 /**
  * Helper class that mimics some of the behaviour of KDevelop's code completion, in particular
@@ -78,7 +75,7 @@ public:
     void forceInvocationIfDocTextIs(const QString &desiredDocText);
     void doNotForceInvocation();
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
+    void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
     KTextEditor::CodeCompletionInterface *cc() const;
 
 private:
@@ -95,8 +92,6 @@ private Q_SLOTS:
     void textInserted(KTextEditor::Document *document, KTextEditor::Range range);
     void textRemoved(KTextEditor::Document *document, KTextEditor::Range range);
     void checkIfShouldForceInvocation();
-
 };
-
 
 #endif /* FAKE_CODE_COMPLETION_TEST_MODEL_H */

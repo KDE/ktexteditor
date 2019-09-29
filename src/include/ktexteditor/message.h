@@ -30,7 +30,6 @@
 
 namespace KTextEditor
 {
-
 class View;
 class Document;
 
@@ -378,4 +377,3 @@ private:
 }
 
 #endif
-

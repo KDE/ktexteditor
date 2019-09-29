@@ -27,7 +27,10 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/movingrange.h>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 class KateMatch
 {
@@ -58,4 +61,3 @@ private:
 };
 
 #endif // KATE_MATCH_H
-

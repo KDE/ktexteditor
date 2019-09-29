@@ -44,9 +44,18 @@
 
 #include "katemodemanager.h"
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
-namespace KateModeMenuListData { class ListView; class ListItem; class SearchLine; class Factory; }
+namespace KateModeMenuListData
+{
+class ListView;
+class ListItem;
+class SearchLine;
+class Factory;
+}
 
 /**
  * Class of menu to select the
@@ -59,7 +68,7 @@ namespace KateModeMenuListData { class ListView; class ListItem; class SearchLin
  */
 class KateModeMenuList : public QMenu
 {
-   Q_OBJECT
+    Q_OBJECT
 
 public:
     /**
@@ -70,57 +79,54 @@ public:
      * "Left" and "Right" forces the alignment.
      * @see setButton(), QWidget::layoutDirection(), Qt::LayoutDirection
      */
-    enum AlignmentButton {
-        Default,
-        Inverse,
-        Left,
-        Right
-    };
+    enum AlignmentButton { Default, Inverse, Left, Right };
     /**
      * Search bar position, above or below the list.
      */
-    enum SearchBarPosition {
-        Top,
-        Bottom
-    };
+    enum SearchBarPosition { Top, Bottom };
     /**
      * Defines where the list will scroll after clearing the search or changing the view.
      * @see setAutoScroll(), autoScroll()
      */
-    enum AutoScroll {
-        ScrollToSelectedItem,
-        ScrollToTop
-    };
+    enum AutoScroll { ScrollToSelectedItem, ScrollToTop };
 
     /**
      * @param searchBarPos Search bar position, can be top or bottom.
      * @see SearchBarPosition
      */
-    KateModeMenuList(const SearchBarPosition searchBarPos = Bottom) : QMenu()
+    KateModeMenuList(const SearchBarPosition searchBarPos = Bottom)
+        : QMenu()
     {
         init(searchBarPos);
     }
-    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos = Bottom) : QMenu(title)
+    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos = Bottom)
+        : QMenu(title)
     {
         init(searchBarPos);
     }
-    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos, QWidget *parent) : QMenu(title, parent)
+    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos, QWidget *parent)
+        : QMenu(title, parent)
     {
         init(searchBarPos);
     }
-    KateModeMenuList(const QString &title, QWidget *parent) : QMenu(title, parent)
+    KateModeMenuList(const QString &title, QWidget *parent)
+        : QMenu(title, parent)
     {
         init(Bottom);
     }
-    KateModeMenuList(const SearchBarPosition searchBarPos, QWidget *parent) : QMenu(parent)
+    KateModeMenuList(const SearchBarPosition searchBarPos, QWidget *parent)
+        : QMenu(parent)
     {
         init(searchBarPos);
     }
-    KateModeMenuList(QWidget *parent) : QMenu(parent)
+    KateModeMenuList(QWidget *parent)
+        : QMenu(parent)
     {
         init(Bottom);
     }
-    ~KateModeMenuList() { }
+    ~KateModeMenuList()
+    {
+    }
 
     /**
      * Update the selected item in the list widget, but without changing
@@ -234,7 +240,7 @@ private:
      *                      less than zero, the section is added to the end of the list/model.
      * @return A pointer to the item created with the section title.
      */
-    KateModeMenuListData::ListItem* createSectionList(const QString &sectionName, const QBrush &background, bool bSeparator = true, int modelPosition = -1);
+    KateModeMenuListData::ListItem *createSectionList(const QString &sectionName, const QBrush &background, bool bSeparator = true, int modelPosition = -1);
 
     /**
      * Load message when the list is empty in the search.
@@ -280,197 +286,202 @@ private Q_SLOTS:
     void selectHighlighting(const QModelIndex &index);
 };
 
-
 namespace KateModeMenuListData
 {
-    /**
-     * Class of List Widget.
-     */
-    class ListView : public QListView
+/**
+ * Class of List Widget.
+ */
+class ListView : public QListView
+{
+    Q_OBJECT
+
+private:
+    ListView(KateModeMenuList *menu)
+        : QListView(menu)
     {
-        Q_OBJECT
+        m_parentMenu = menu;
+    }
 
-    private:
-        ListView(KateModeMenuList *menu) : QListView(menu)
-        {
-            m_parentMenu = menu;
-        }
-
-    public:
-        ~ListView() { }
-
-        /**
-         * Define the size of the widget list.
-         * @p height and @p width are values in pixels.
-         */
-        void setSizeList(const int height, const int width = 260);
-
-        inline void setCurrentItem(const int rowItem)
-        {
-            selectionModel()->setCurrentIndex(m_parentMenu->m_model->index(rowItem, 0), QItemSelectionModel::ClearAndSelect);
-        }
-        inline QStandardItem* currentItem() const
-        {
-            return m_parentMenu->m_model->item(currentIndex().row(), 0);
-        }
-
-        inline void scrollToItem(const int rowItem, QAbstractItemView::ScrollHint hint = QAbstractItemView::PositionAtCenter)
-        {
-            scrollTo(m_parentMenu->m_model->index(rowItem, 0), hint);
-        }
-
-    protected:
-        /**
-         * Override from QListView.
-         */
-        void keyPressEvent(QKeyEvent *event) override;
-
-    private:
-        KateModeMenuList *m_parentMenu = nullptr;
-        friend Factory;
-    };
-
+public:
+    ~ListView()
+    {
+    }
 
     /**
-     * Class of an Item of the Data Model of the List.
-     * @see KateModeMenuListData::ListView, KateFileType, QStandardItemModel
+     * Define the size of the widget list.
+     * @p height and @p width are values in pixels.
      */
-    class ListItem : public QStandardItem
+    void setSizeList(const int height, const int width = 260);
+
+    inline void setCurrentItem(const int rowItem)
     {
-    private:
-        ListItem() : QStandardItem() { }
+        selectionModel()->setCurrentIndex(m_parentMenu->m_model->index(rowItem, 0), QItemSelectionModel::ClearAndSelect);
+    }
+    inline QStandardItem *currentItem() const
+    {
+        return m_parentMenu->m_model->item(currentIndex().row(), 0);
+    }
 
-        const KateFileType *m_type = nullptr;
-        QString m_searchName;
+    inline void scrollToItem(const int rowItem, QAbstractItemView::ScrollHint hint = QAbstractItemView::PositionAtCenter)
+    {
+        scrollTo(m_parentMenu->m_model->index(rowItem, 0), hint);
+    }
 
-        friend Factory;
+protected:
+    /**
+     * Override from QListView.
+     */
+    void keyPressEvent(QKeyEvent *event) override;
 
-    public:
-        ~ListItem() { }
+private:
+    KateModeMenuList *m_parentMenu = nullptr;
+    friend Factory;
+};
 
-        /**
-         * Associate this item with a KateFileType object.
-         */
-        inline void setMode(KateFileType *type)
-        {
-            m_type = type;
-        }
-        const KateFileType* getMode() const
-        {
-            return m_type;
-        }
-        bool hasMode() const
-        {
-            return m_type;
-        }
+/**
+ * Class of an Item of the Data Model of the List.
+ * @see KateModeMenuListData::ListView, KateFileType, QStandardItemModel
+ */
+class ListItem : public QStandardItem
+{
+private:
+    ListItem()
+        : QStandardItem()
+    {
+    }
 
-        /**
-         * Generate name of the item used for the search.
-         * @param itemName The item name.
-         * @return True if a new name is generated for the search.
-         */
-        bool generateSearchName(const QString &itemName);
+    const KateFileType *m_type = nullptr;
+    QString m_searchName;
 
-        /**
-         * Find matches in the extensions of the item mode, with a @p text.
-         * @param text Text to match, without dots or asterisks. For example, in
-         *             a common extension, it corresponds to the text after "*."
-         * @return True if a match is found, false if not.
-         */
-        bool matchExtension(const QString &text) const;
+    friend Factory;
 
-        const QString& getSearchName() const
-        {
-            return m_searchName;
-        }
-    };
-
+public:
+    ~ListItem()
+    {
+    }
 
     /**
-     * Class of Search Bar.
-     * Based on the KListWidgetSearchLine class.
+     * Associate this item with a KateFileType object.
      */
-    class SearchLine : public QLineEdit
+    inline void setMode(KateFileType *type)
     {
-        Q_OBJECT
-
-    public:
-        ~SearchLine()
-        {
-            m_bestResults.clear();
-        }
-
-    private:
-        SearchLine(KateModeMenuList *menu) : QLineEdit(menu)
-        {
-            m_parentMenu = menu;
-            init();
-        }
-
-        void init();
-
-        /**
-         * Select result of the items search.
-         * Used only by KateModeMenuListData::SearchLine::updateSearch().
-         */
-        void setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &firstSection, int &lastItem);
-
-        /**
-         * Delay in search results after typing, in milliseconds.
-         * Default value: 200
-         */
-        static const int m_searchDelay = 170;
-
-        bool m_bSearchStateAutoScroll = false;
-        QString m_search = QString();
-        int m_queuedSearches = 0;
-        Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;
-
-        /**
-         * List of items to display in the "Best Search Matches" section. The integer value
-         * corresponds to the original position of the item in the model. The purpose of this
-         * is to restore the position of the items when starting or cleaning a search.
-         */
-        QList<QPair<ListItem *, int>> m_bestResults;
-
-        KateModeMenuList *m_parentMenu = nullptr;
-        friend Factory;
-
-    protected:
-        /**
-         * Override from QLineEdit. This allows you to navigate through
-         * the menu and write in the search bar simultaneously with the keyboard.
-         */
-        void keyPressEvent(QKeyEvent *event) override;
-
-    public Q_SLOTS:
-        virtual void clear();
-        virtual void updateSearch(const QString &s = QString());
-
-    private Q_SLOTS:
-        void _k_queueSearch(const QString &s);
-        void _k_activateSearch();
-    };
-
-
-    class Factory
+        m_type = type;
+    }
+    const KateFileType *getMode() const
     {
-    private:
-        friend KateModeMenuList;
-        Factory() { };
-        static ListView* createListView(KateModeMenuList *parentMenu)
-        {
-            return new ListView (parentMenu);
-        }
-        static ListItem* createListItem()
-        {
-            return new ListItem();
-        }
-        static SearchLine* createSearchLine(KateModeMenuList *parentMenu)
-        {
-            return new SearchLine(parentMenu);
-        }
-    };
+        return m_type;
+    }
+    bool hasMode() const
+    {
+        return m_type;
+    }
+
+    /**
+     * Generate name of the item used for the search.
+     * @param itemName The item name.
+     * @return True if a new name is generated for the search.
+     */
+    bool generateSearchName(const QString &itemName);
+
+    /**
+     * Find matches in the extensions of the item mode, with a @p text.
+     * @param text Text to match, without dots or asterisks. For example, in
+     *             a common extension, it corresponds to the text after "*."
+     * @return True if a match is found, false if not.
+     */
+    bool matchExtension(const QString &text) const;
+
+    const QString &getSearchName() const
+    {
+        return m_searchName;
+    }
+};
+
+/**
+ * Class of Search Bar.
+ * Based on the KListWidgetSearchLine class.
+ */
+class SearchLine : public QLineEdit
+{
+    Q_OBJECT
+
+public:
+    ~SearchLine()
+    {
+        m_bestResults.clear();
+    }
+
+private:
+    SearchLine(KateModeMenuList *menu)
+        : QLineEdit(menu)
+    {
+        m_parentMenu = menu;
+        init();
+    }
+
+    void init();
+
+    /**
+     * Select result of the items search.
+     * Used only by KateModeMenuListData::SearchLine::updateSearch().
+     */
+    void setSearchResult(const int rowItem, bool &bEmptySection, int &lastSection, int &firstSection, int &lastItem);
+
+    /**
+     * Delay in search results after typing, in milliseconds.
+     * Default value: 200
+     */
+    static const int m_searchDelay = 170;
+
+    bool m_bSearchStateAutoScroll = false;
+    QString m_search = QString();
+    int m_queuedSearches = 0;
+    Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;
+
+    /**
+     * List of items to display in the "Best Search Matches" section. The integer value
+     * corresponds to the original position of the item in the model. The purpose of this
+     * is to restore the position of the items when starting or cleaning a search.
+     */
+    QList<QPair<ListItem *, int>> m_bestResults;
+
+    KateModeMenuList *m_parentMenu = nullptr;
+    friend Factory;
+
+protected:
+    /**
+     * Override from QLineEdit. This allows you to navigate through
+     * the menu and write in the search bar simultaneously with the keyboard.
+     */
+    void keyPressEvent(QKeyEvent *event) override;
+
+public Q_SLOTS:
+    virtual void clear();
+    virtual void updateSearch(const QString &s = QString());
+
+private Q_SLOTS:
+    void _k_queueSearch(const QString &s);
+    void _k_activateSearch();
+};
+
+class Factory
+{
+private:
+    friend KateModeMenuList;
+    Factory() {};
+    static ListView *createListView(KateModeMenuList *parentMenu)
+    {
+        return new ListView(parentMenu);
+    }
+    static ListItem *createListItem()
+    {
+        return new ListItem();
+    }
+    static SearchLine *createSearchLine(KateModeMenuList *parentMenu)
+    {
+        return new SearchLine(parentMenu);
+    }
+};
 }
 
 #endif // KATEMODEMENULIST_H

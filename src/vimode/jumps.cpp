@@ -22,11 +22,7 @@ using namespace KateVi;
 
 void Jumps::add(const KTextEditor::Cursor &cursor)
 {
-    for (auto iterator = m_jumps.begin();
-            iterator != m_jumps.end();
-            iterator++
-        )
-    {
+    for (auto iterator = m_jumps.begin(); iterator != m_jumps.end(); iterator++) {
         if ((*iterator).line() == cursor.line()) {
             m_jumps.erase(iterator);
             break;
@@ -86,7 +82,7 @@ void Jumps::writeSessionConfig(KConfigGroup &config) const
 {
     // Format: jump1.line, jump1.column, jump2.line, jump2.column, jump3.line, ...
     QStringList l;
-    for(const auto &jump : m_jumps) {
+    for (const auto &jump : m_jumps) {
         l << QString::number(jump.line()) << QString::number(jump.column());
     }
     config.writeEntry("JumpList", l);

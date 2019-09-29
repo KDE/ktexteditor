@@ -25,18 +25,15 @@
 #include <ktexteditor_export.h>
 #include <vimode/definitions.h>
 
-namespace KTextEditor {
-    class Cursor;
-    class Range;
+namespace KTextEditor
+{
+class Cursor;
+class Range;
 }
 
 namespace KateVi
 {
-
-enum MotionType {
-    ExclusiveMotion = 0,
-    InclusiveMotion
-};
+enum MotionType { ExclusiveMotion = 0, InclusiveMotion };
 
 class KTEXTEDITOR_EXPORT Range
 {
@@ -67,7 +64,7 @@ public:
     /**
      * Writes this KateViRange to the debug output in a nicely formatted way.
      */
-    friend QDebug operator<< (QDebug s, const Range &range);
+    friend QDebug operator<<(QDebug s, const Range &range);
 
     /**
      * @returns an invalid KateViRange allocated on stack.

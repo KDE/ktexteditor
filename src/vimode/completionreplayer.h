@@ -25,7 +25,10 @@
 
 #include <QStack>
 
-namespace KTextEditor { class Cursor; }
+namespace KTextEditor
+{
+class Cursor;
+}
 
 namespace KateVi
 {

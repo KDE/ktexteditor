@@ -24,7 +24,7 @@
 #include "katepartdebug.h"
 #include <kcompletionmatches.h>
 
-//BEGIN KateCmd
+// BEGIN KateCmd
 #define CMD_HIST_LENGTH 256
 
 KateCmd::KateCmd()
@@ -48,7 +48,7 @@ bool KateCmd::registerCommand(KTextEditor::Command *cmd)
 
     for (int z = 0; z < l.count(); z++) {
         m_dict.insert(l[z], cmd);
-        //qCDebug(LOG_KTE)<<"Inserted command:"<<l[z];
+        // qCDebug(LOG_KTE)<<"Inserted command:"<<l[z];
     }
 
     m_cmds += l;
@@ -72,7 +72,7 @@ bool KateCmd::unregisterCommand(KTextEditor::Command *cmd)
     for (QStringList::Iterator it1 = l.begin(); it1 != l.end(); ++it1) {
         m_dict.remove(*it1);
         m_cmdCompletion.removeItem(*it1);
-        //qCDebug(LOG_KTE)<<"Removed command:"<<*it1;
+        // qCDebug(LOG_KTE)<<"Removed command:"<<*it1;
     }
 
     return true;
@@ -96,7 +96,7 @@ KTextEditor::Command *KateCmd::queryCommand(const QString &cmd) const
         if (cmd[f].isLetter()) {
             b = true;
         }
-        if (b && (! cmd[f].isLetterOrNumber() && cmd[f] != QLatin1Char('-') && cmd[f] != QLatin1Char('_'))) {
+        if (b && (!cmd[f].isLetterOrNumber() && cmd[f] != QLatin1Char('-') && cmd[f] != QLatin1Char('_'))) {
             break;
         }
     }
@@ -120,7 +120,7 @@ KateCmd *KateCmd::self()
 
 void KateCmd::appendHistory(const QString &cmd)
 {
-    if (!m_history.isEmpty()) //this line should be backported to 3.x
+    if (!m_history.isEmpty()) // this line should be backported to 3.x
         if (m_history.last() == cmd) {
             return;
         }
@@ -137,16 +137,16 @@ const QString KateCmd::fromHistory(int index) const
     if (index < 0 || index > m_history.count() - 1) {
         return QString();
     }
-    return m_history[ index ];
+    return m_history[index];
 }
 
 KCompletion *KateCmd::commandCompletionObject()
 {
     return &m_cmdCompletion;
 }
-//END KateCmd
+// END KateCmd
 
-//BEGIN KateCmdShellCompletion
+// BEGIN KateCmdShellCompletion
 /*
    A lot of the code in the below class is copied from
    kdelibs/kio/kio/kshellcompletion.cpp
@@ -184,8 +184,7 @@ void KateCmdShellCompletion::postProcessMatch(QString *match) const
 
 void KateCmdShellCompletion::postProcessMatches(QStringList *matches) const
 {
-    for (QStringList::Iterator it = matches->begin();
-            it != matches->end(); it++)
+    for (QStringList::Iterator it = matches->begin(); it != matches->end(); it++)
         if (!(*it).isNull()) {
             (*it).prepend(m_text_start);
         }
@@ -193,15 +192,13 @@ void KateCmdShellCompletion::postProcessMatches(QStringList *matches) const
 
 void KateCmdShellCompletion::postProcessMatches(KCompletionMatches *matches) const
 {
-    for (KCompletionMatches::Iterator it = matches->begin();
-            it != matches->end(); it++)
+    for (KCompletionMatches::Iterator it = matches->begin(); it != matches->end(); it++)
         if (!(*it).value().isNull()) {
             (*it).value().prepend(m_text_start);
         }
 }
 
-void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
-                                       QString &text_compl) const
+void KateCmdShellCompletion::splitText(const QString &text, QString &text_start, QString &text_compl) const
 {
     bool in_quote = false;
     bool escaped = false;
@@ -210,7 +207,6 @@ void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
     int end_space_len = 0;
 
     for (int pos = 0; pos < text.length(); pos++) {
-
         end_space_len = 0;
 
         if (escaped) {
@@ -226,7 +222,6 @@ void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
         } else if (text[pos] == m_escape_char) {
             escaped = true;
         } else if (!in_quote && text[pos] == m_word_break_char) {
-
             end_space_len = 1;
 
             while (pos + 1 < text.length() && text[pos + 1] == m_word_break_char) {
@@ -248,5 +243,4 @@ void KateCmdShellCompletion::splitText(const QString &text, QString &text_start,
     text_compl = text.mid(last_unquoted_space + 1);
 }
 
-//END KateCmdShellCompletion
-
+// END KateCmdShellCompletion

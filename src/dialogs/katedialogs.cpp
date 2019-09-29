@@ -25,7 +25,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "katedialogs.h"
 
 #include <ktexteditor_version.h>
@@ -95,9 +95,9 @@
 #include <QWhatsThis>
 #include <QDomDocument>
 
-//END
+// END
 
-//BEGIN KateIndentConfigTab
+// BEGIN KateIndentConfigTab
 KateIndentConfigTab::KateIndentConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
@@ -223,9 +223,9 @@ QString KateIndentConfigTab::name() const
     return i18n("Indentation");
 }
 
-//END KateIndentConfigTab
+// END KateIndentConfigTab
 
-//BEGIN KateCompletionConfigTab
+// BEGIN KateCompletionConfigTab
 KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
@@ -296,9 +296,9 @@ QString KateCompletionConfigTab::name() const
     return i18n("Auto Completion");
 }
 
-//END KateCompletionConfigTab
+// END KateCompletionConfigTab
 
-//BEGIN KateSpellCheckConfigTab
+// BEGIN KateSpellCheckConfigTab
 KateSpellCheckConfigTab::KateSpellCheckConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
@@ -364,9 +364,9 @@ QString KateSpellCheckConfigTab::name() const
     return i18n("Spellcheck");
 }
 
-//END KateSpellCheckConfigTab
+// END KateSpellCheckConfigTab
 
-//BEGIN KateNavigationConfigTab
+// BEGIN KateNavigationConfigTab
 KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
@@ -438,9 +438,9 @@ QString KateNavigationConfigTab::name() const
     return i18n("Text Navigation");
 }
 
-//END KateNavigationConfigTab
+// END KateNavigationConfigTab
 
-//BEGIN KateEditGeneralConfigTab
+// BEGIN KateEditGeneralConfigTab
 KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
@@ -473,7 +473,7 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
             ui->cmbEncloseSelection->removeItem(index);
             slotChanged();
 
-        // Not already there? Add new item! For whatever reason it isn't done automatically
+            // Not already there? Add new item! For whatever reason it isn't done automatically
         } else if (ui->cmbEncloseSelection->findText(text) < 0) {
             ui->cmbEncloseSelection->addItem(text);
             slotChanged();
@@ -510,7 +510,8 @@ void KateEditGeneralConfigTab::apply()
 
     KateViewConfig::global()->setValue(KateViewConfig::AutoBrackets, ui->chkAutoBrackets->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::CharsToEncloseSelection, ui->cmbEncloseSelection->currentText());
-    QStringList userLetters; for (int i = UserData; i < ui->cmbEncloseSelection->count(); ++i) {
+    QStringList userLetters;
+    for (int i = UserData; i < ui->cmbEncloseSelection->count(); ++i) {
         userLetters.append(ui->cmbEncloseSelection->itemText(i));
     }
     KateViewConfig::global()->setValue(KateViewConfig::UserSetsOfCharsToEncloseSelection, userLetters);
@@ -554,7 +555,6 @@ void KateEditGeneralConfigTab::reload()
 
     const int id = static_cast<int>(KateViewConfig::global()->inputMode());
     ui->cmbInputMode->setCurrentIndex(ui->cmbInputMode->findData(id));
-
 }
 
 QString KateEditGeneralConfigTab::name() const
@@ -562,9 +562,9 @@ QString KateEditGeneralConfigTab::name() const
     return i18n("General");
 }
 
-//END KateEditGeneralConfigTab
+// END KateEditGeneralConfigTab
 
-//BEGIN KateEditConfigTab
+// BEGIN KateEditConfigTab
 KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     : KateConfigPage(parent)
     , editConfigTab(new KateEditGeneralConfigTab(this))
@@ -675,9 +675,9 @@ QIcon KateEditConfigTab::icon() const
     return QIcon::fromTheme(QStringLiteral("accessories-text-editor"));
 }
 
-//END KateEditConfigTab
+// END KateEditConfigTab
 
-//BEGIN KateViewDefaultsConfig
+// BEGIN KateViewDefaultsConfig
 KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     : KateConfigPage(parent)
     , textareaUi(new Ui::TextareaAppearanceConfigWidget())
@@ -839,9 +839,9 @@ QIcon KateViewDefaultsConfig::icon() const
     return QIcon::fromTheme(QStringLiteral("preferences-desktop-theme"));
 }
 
-//END KateViewDefaultsConfig
+// END KateViewDefaultsConfig
 
-//BEGIN KateSaveConfigTab
+// BEGIN KateSaveConfigTab
 KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     : KateConfigPage(parent)
     , modeConfigPage(new ModeConfigPage(this))
@@ -904,20 +904,16 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     setLayout(layout);
 
     // support variable expansion in backup prefix/suffix
-    KTextEditor::Editor::instance()->addVariableExpansion(
-        { uiadv->edtBackupPrefix, uiadv->edtBackupSuffix },
-        {
-            QStringLiteral("Date:Locale"),
-            QStringLiteral("Date:ISO"),
-            QStringLiteral("Date:"),
-            QStringLiteral("Time:Locale"),
-            QStringLiteral("Time:ISO"),
-            QStringLiteral("Time:"),
-            QStringLiteral("ENV:"),
-            QStringLiteral("JS:"),
-            QStringLiteral("UUID")
-        }
-    );
+    KTextEditor::Editor::instance()->addVariableExpansion({uiadv->edtBackupPrefix, uiadv->edtBackupSuffix},
+                                                          {QStringLiteral("Date:Locale"),
+                                                           QStringLiteral("Date:ISO"),
+                                                           QStringLiteral("Date:"),
+                                                           QStringLiteral("Time:Locale"),
+                                                           QStringLiteral("Time:ISO"),
+                                                           QStringLiteral("Time:"),
+                                                           QStringLiteral("ENV:"),
+                                                           QStringLiteral("JS:"),
+                                                           QStringLiteral("UUID")});
 }
 
 KateSaveConfigTab::~KateSaveConfigTab()
@@ -929,24 +925,24 @@ void KateSaveConfigTab::swapFileModeChanged(int idx)
 {
     const KateDocumentConfig::SwapFileMode mode = static_cast<KateDocumentConfig::SwapFileMode>(idx);
     switch (mode) {
-    case KateDocumentConfig::DisableSwapFile:
-        uiadv->lblSwapDirectory->setEnabled(false);
-        uiadv->kurlSwapDirectory->setEnabled(false);
-        uiadv->lblSwapFileSync->setEnabled(false);
-        uiadv->spbSwapFileSync->setEnabled(false);
-        break;
-    case KateDocumentConfig::EnableSwapFile:
-        uiadv->lblSwapDirectory->setEnabled(false);
-        uiadv->kurlSwapDirectory->setEnabled(false);
-        uiadv->lblSwapFileSync->setEnabled(true);
-        uiadv->spbSwapFileSync->setEnabled(true);
-        break;
-    case KateDocumentConfig::SwapFilePresetDirectory:
-        uiadv->lblSwapDirectory->setEnabled(true);
-        uiadv->kurlSwapDirectory->setEnabled(true);
-        uiadv->lblSwapFileSync->setEnabled(true);
-        uiadv->spbSwapFileSync->setEnabled(true);
-        break;
+        case KateDocumentConfig::DisableSwapFile:
+            uiadv->lblSwapDirectory->setEnabled(false);
+            uiadv->kurlSwapDirectory->setEnabled(false);
+            uiadv->lblSwapFileSync->setEnabled(false);
+            uiadv->spbSwapFileSync->setEnabled(false);
+            break;
+        case KateDocumentConfig::EnableSwapFile:
+            uiadv->lblSwapDirectory->setEnabled(false);
+            uiadv->kurlSwapDirectory->setEnabled(false);
+            uiadv->lblSwapFileSync->setEnabled(true);
+            uiadv->spbSwapFileSync->setEnabled(true);
+            break;
+        case KateDocumentConfig::SwapFilePresetDirectory:
+            uiadv->lblSwapDirectory->setEnabled(true);
+            uiadv->kurlSwapDirectory->setEnabled(true);
+            uiadv->lblSwapFileSync->setEnabled(true);
+            uiadv->spbSwapFileSync->setEnabled(true);
+            break;
     }
 }
 
@@ -964,11 +960,7 @@ void KateSaveConfigTab::apply()
     KateDocumentConfig::global()->configStart();
 
     if (uiadv->edtBackupSuffix->text().isEmpty() && uiadv->edtBackupPrefix->text().isEmpty()) {
-        KMessageBox::information(
-            this,
-            i18n("You did not provide a backup suffix or prefix. Using default suffix: '~'"),
-            i18n("No Backup Suffix or Prefix")
-        );
+        KMessageBox::information(this, i18n("You did not provide a backup suffix or prefix. Using default suffix: '~'"), i18n("No Backup Suffix or Prefix"));
         uiadv->edtBackupSuffix->setText(QStringLiteral("~"));
     }
 
@@ -1034,8 +1026,8 @@ void KateSaveConfigTab::reload()
     // encoding detection
     ui->cmbEncodingDetection->clear();
     bool found = false;
-    for (int i = 0; !KEncodingProber::nameForProberType((KEncodingProber::ProberType) i).isEmpty(); ++i) {
-        ui->cmbEncodingDetection->addItem(KEncodingProber::nameForProberType((KEncodingProber::ProberType) i));
+    for (int i = 0; !KEncodingProber::nameForProberType((KEncodingProber::ProberType)i).isEmpty(); ++i) {
+        ui->cmbEncodingDetection->addItem(KEncodingProber::nameForProberType((KEncodingProber::ProberType)i));
         if (i == KateGlobalConfig::global()->proberType()) {
             ui->cmbEncodingDetection->setCurrentIndex(ui->cmbEncodingDetection->count() - 1);
             found = true;
@@ -1103,14 +1095,14 @@ QIcon KateSaveConfigTab::icon() const
     return QIcon::fromTheme(QStringLiteral("document-save"));
 }
 
-//END KateSaveConfigTab
+// END KateSaveConfigTab
 
-//BEGIN KateGotoBar
+// BEGIN KateGotoBar
 KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
     , m_view(view)
 {
-    Q_ASSERT(m_view != nullptr);    // this bar widget is pointless w/o a view
+    Q_ASSERT(m_view != nullptr); // this bar widget is pointless w/o a view
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
@@ -1207,13 +1199,11 @@ void KateGotoBar::gotoClipboard()
         m_gotoRange->setValue(lineNo);
         gotoLine();
     } else {
-        QPointer<KTextEditor::Message> message = new KTextEditor::Message(
-            i18n("No valid line number found in clipboard"));
+        QPointer<KTextEditor::Message> message = new KTextEditor::Message(i18n("No valid line number found in clipboard"));
         message->setWordWrap(true);
         message->setAutoHide(2000);
         message->setPosition(KTextEditor::Message::BottomInView);
-        message->setView(m_view),
-        m_view->document()->postMessage(message);
+        message->setView(m_view), m_view->document()->postMessage(message);
     }
 }
 
@@ -1249,9 +1239,9 @@ void KateGotoBar::gotoLine()
     m_view->setFocus();
     emit hideMe();
 }
-//END KateGotoBar
+// END KateGotoBar
 
-//BEGIN KateDictionaryBar
+// BEGIN KateDictionaryBar
 KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
     , m_view(view)
@@ -1260,12 +1250,10 @@ KateDictionaryBar::KateDictionaryBar(KTextEditor::ViewPrivate *view, QWidget *pa
 
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
-    //topLayout->setSpacing(spacingHint());
+    // topLayout->setSpacing(spacingHint());
     m_dictionaryComboBox = new Sonnet::DictionaryComboBox(centralWidget());
-    connect(m_dictionaryComboBox, SIGNAL(dictionaryChanged(QString)),
-            this, SLOT(dictionaryChanged(QString)));
-    connect(view->doc(), SIGNAL(defaultDictionaryChanged(KTextEditor::DocumentPrivate*)),
-            this, SLOT(updateData()));
+    connect(m_dictionaryComboBox, SIGNAL(dictionaryChanged(QString)), this, SLOT(dictionaryChanged(QString)));
+    connect(view->doc(), SIGNAL(defaultDictionaryChanged(KTextEditor::DocumentPrivate *)), this, SLOT(updateData()));
     QLabel *label = new QLabel(i18n("Dictionary:"), centralWidget());
     label->setBuddy(m_dictionaryComboBox);
 
@@ -1300,12 +1288,10 @@ void KateDictionaryBar::dictionaryChanged(const QString &dictionary)
     }
 }
 
-//END KateGotoBar
+// END KateGotoBar
 
-//BEGIN KateModOnHdPrompt
-KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
-                                     KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
-                                     const QString &reason)
+// BEGIN KateModOnHdPrompt
+KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason)
     : QObject(doc)
     , m_doc(doc)
     , m_modtype(modtype)
@@ -1320,7 +1306,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
     // If the file isn't deleted, present a diff button
     const bool onDiskDeleted = modtype == KTextEditor::ModificationInterface::OnDiskDeleted;
     if (!onDiskDeleted) {
-        QAction * aAutoReload = new QAction(i18n("Enable Auto Reload"), this);
+        QAction *aAutoReload = new QAction(i18n("Enable Auto Reload"), this);
         aAutoReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
         aAutoReload->setToolTip(i18n("Will never again warn about on disk changes but always reload."));
         m_message->addAction(aAutoReload, false);
@@ -1333,26 +1319,26 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
             connect(m_diffAction, SIGNAL(triggered()), this, SLOT(slotDiff()));
         }
 
-        QAction * aReload = new QAction(i18n("&Reload"), this);
+        QAction *aReload = new QAction(i18n("&Reload"), this);
         aReload->setIcon(QIcon::fromTheme(QStringLiteral("view-refresh")));
         aReload->setToolTip(i18n("Reload the file from disk. Unsaved changes will be lost."));
         m_message->addAction(aReload);
         connect(aReload, SIGNAL(triggered()), this, SIGNAL(reloadTriggered()));
     } else {
-        QAction * closeFile = new QAction(i18nc("@action:button closes the opened file", "&Close File"), this);
+        QAction *closeFile = new QAction(i18nc("@action:button closes the opened file", "&Close File"), this);
         closeFile->setIcon(QIcon::fromTheme(QStringLiteral("document-close")));
         closeFile->setToolTip(i18n("Close the file, discarding its content."));
         m_message->addAction(closeFile, false);
         connect(closeFile, &QAction::triggered, this, &KateModOnHdPrompt::closeTriggered);
 
-        QAction * aSaveAs = new QAction(i18n("&Save As..."), this);
+        QAction *aSaveAs = new QAction(i18n("&Save As..."), this);
         aSaveAs->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
         aSaveAs->setToolTip(i18n("Lets you select a location and save the file again."));
         m_message->addAction(aSaveAs, false);
         connect(aSaveAs, SIGNAL(triggered()), this, SIGNAL(saveAsTriggered()));
     }
 
-    QAction * aIgnore = new QAction(i18n("&Ignore"), this);
+    QAction *aIgnore = new QAction(i18n("&Ignore"), this);
     aIgnore->setToolTip(i18n("Ignores the changes on disk without any action."));
     aIgnore->setIcon(KStandardGuiItem::overwrite().icon());
     m_message->addAction(aIgnore);
@@ -1385,10 +1371,9 @@ void KateModOnHdPrompt::slotDiff()
     // Start a KProcess that creates a diff
     m_proc = new KProcess(this);
     m_proc->setOutputChannelMode(KProcess::MergedChannels);
-    *m_proc << QStringLiteral("diff") << QStringLiteral("-u")
-            << QStringLiteral("-") <<  m_doc->url().toLocalFile();
+    *m_proc << QStringLiteral("diff") << QStringLiteral("-u") << QStringLiteral("-") << m_doc->url().toLocalFile();
     connect(m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()));
-    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotPDone()));
+    connect(m_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(slotPDone()));
 
     // disable the diff button, to hinder the user to run it twice.
     m_diffAction->setEnabled(false);
@@ -1429,9 +1414,7 @@ void KateModOnHdPrompt::slotPDone()
     }
 
     if (m_diffFile->size() == 0) {
-        KMessageBox::information(nullptr,
-                                 i18n("The files are identical."),
-                                 i18n("Diff Output"));
+        KMessageBox::information(nullptr, i18n("The files are identical."), i18n("Diff Output"));
         delete m_diffFile;
         m_diffFile = nullptr;
         return;
@@ -1446,5 +1429,4 @@ void KateModOnHdPrompt::slotPDone()
     KRun::runUrl(url, QStringLiteral("text/x-patch"), nullptr, KRun::RunFlags(KRun::DeleteTemporaryFiles));
 }
 
-//END KateModOnHdPrompt
-
+// END KateModOnHdPrompt

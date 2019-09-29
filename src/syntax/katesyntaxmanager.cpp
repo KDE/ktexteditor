@@ -22,7 +22,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-//BEGIN INCLUDES
+// BEGIN INCLUDES
 #include "katesyntaxmanager.h"
 
 #include "katetextline.h"
@@ -38,15 +38,14 @@
 
 #include <KConfigGroup>
 #include <KColorUtils>
-//END
+// END
 
 using namespace KTextEditor;
 
-//BEGIN KateHlManager
+// BEGIN KateHlManager
 KateHlManager::KateHlManager()
     : QObject()
-    , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() :QStringLiteral("katesyntaxhighlightingrc")
-    , KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
+    , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("katesyntaxhighlightingrc"), KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
 {
 }
 
@@ -273,7 +272,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     const KColorScheme &scheme(KTextEditor::EditorPrivate::self()->defaultColors().view());
     const KColorScheme &schemeSelected(KTextEditor::EditorPrivate::self()->defaultColors().selection());
 
-    ///NOTE: it's important to append in the order of the KTextEditor::DefaultStyle
+    /// NOTE: it's important to append in the order of the KTextEditor::DefaultStyle
     ///      enum, to make KTextEditor::DocumentPrivate::defaultStyle() work properly.
 
     {
@@ -506,8 +505,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
         list.append(attrib);
     }
 
-    KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(),
-                        QLatin1String("Default Item Styles - Schema ") + schema);
+    KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(), QLatin1String("Default Item Styles - Schema ") + schema);
 
     for (int z = 0; z < defaultStyleCount(); z++) {
         KTextEditor::Attribute::Ptr i = list.at(z);
@@ -520,31 +518,40 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
             QString tmp;
             QRgb col;
 
-            tmp = s[0]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); i->setForeground(QColor(col));
+            tmp = s[0];
+            if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16);
+                i->setForeground(QColor(col));
             }
 
-            tmp = s[1]; if (!tmp.isEmpty()) {
-                col = tmp.toUInt(nullptr, 16); i->setSelectedForeground(QColor(col));
+            tmp = s[1];
+            if (!tmp.isEmpty()) {
+                col = tmp.toUInt(nullptr, 16);
+                i->setSelectedForeground(QColor(col));
             }
 
-            tmp = s[2]; if (!tmp.isEmpty()) {
+            tmp = s[2];
+            if (!tmp.isEmpty()) {
                 i->setFontBold(tmp != QLatin1String("0"));
             }
 
-            tmp = s[3]; if (!tmp.isEmpty()) {
+            tmp = s[3];
+            if (!tmp.isEmpty()) {
                 i->setFontItalic(tmp != QLatin1String("0"));
             }
 
-            tmp = s[4]; if (!tmp.isEmpty()) {
+            tmp = s[4];
+            if (!tmp.isEmpty()) {
                 i->setFontStrikeOut(tmp != QLatin1String("0"));
             }
 
-            tmp = s[5]; if (!tmp.isEmpty()) {
+            tmp = s[5];
+            if (!tmp.isEmpty()) {
                 i->setFontUnderline(tmp != QLatin1String("0"));
             }
 
-            tmp = s[6]; if (!tmp.isEmpty()) {
+            tmp = s[6];
+            if (!tmp.isEmpty()) {
                 if (tmp != QLatin1String("-")) {
                     col = tmp.toUInt(nullptr, 16);
                     i->setBackground(QColor(col));
@@ -552,7 +559,8 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
                     i->clearBackground();
                 }
             }
-            tmp = s[7]; if (!tmp.isEmpty()) {
+            tmp = s[7];
+            if (!tmp.isEmpty()) {
                 if (tmp != QLatin1String("-")) {
                     col = tmp.toUInt(nullptr, 16);
                     i->setSelectedBackground(QColor(col));
@@ -560,7 +568,8 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
                     i->clearProperty(SelectedBackground);
                 }
             }
-            tmp = s[8]; if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
+            tmp = s[8];
+            if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
                 i->setFontFamily(tmp);
             }
         }
@@ -570,8 +579,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
 void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, KConfig *cfg)
 {
     cfg = cfg ? cfg : KateHlManager::self()->self()->getKConfig();
-    KConfigGroup config(cfg,
-                        QLatin1String("Default Item Styles - Schema ") + schema);
+    KConfigGroup config(cfg, QLatin1String("Default Item Styles - Schema ") + schema);
 
     const QString zero = QStringLiteral("0");
     const QString one = QStringLiteral("1");
@@ -617,7 +625,7 @@ void KateHlManager::reload()
      * will be created on demand
      * if old hl not found, use none
      */
-    for (KTextEditor::DocumentPrivate* doc : KTextEditor::EditorPrivate::self()->kateDocuments()) {
+    for (KTextEditor::DocumentPrivate *doc : KTextEditor::EditorPrivate::self()->kateDocuments()) {
         auto hlMode = doc->highlightingMode();
         if (nameFind(hlMode) < 0) {
             hlMode = QStringLiteral("None");
@@ -625,5 +633,4 @@ void KateHlManager::reload()
         doc->setHighlightingMode(hlMode);
     }
 }
-//END
-
+// END

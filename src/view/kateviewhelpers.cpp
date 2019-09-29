@@ -74,7 +74,7 @@
 
 #include <math.h>
 
-//BEGIN KateMessageLayout
+// BEGIN KateMessageLayout
 KateMessageLayout::KateMessageLayout(QWidget *parent)
     : QLayout(parent)
 {
@@ -154,31 +154,29 @@ void KateMessageLayout::add(QLayoutItem *item, KTextEditor::Message::MessagePosi
 {
     m_items.push_back(new ItemWrapper(item, pos));
 }
-//END KateMessageLayout
+// END KateMessageLayout
 
-//BEGIN KateScrollBar
+// BEGIN KateScrollBar
 static const int s_lineWidth = 100;
 static const int s_pixelMargin = 8;
 static const int s_linePixelIncLimit = 6;
 
-const unsigned char KateScrollBar::characterOpacity[256] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // <- 15
-    0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0,  // <- 31
-    0, 125, 41, 221, 138, 195, 218, 21, 142, 142, 137, 137, 97, 87, 87, 140,  // <- 47
-    223, 164, 183, 190, 191, 193, 214, 158, 227, 216, 103, 113, 146, 140, 146, 149,  // <- 63
-    248, 204, 240, 174, 217, 197, 178, 205, 209, 176, 168, 211, 160, 246, 238, 218,  // <- 79
-    195, 229, 227, 196, 167, 212, 188, 238, 197, 169, 189, 158, 21, 151, 115, 90,  // <- 95
-    15, 192, 209, 153, 208, 187, 162, 221, 183, 149, 161, 191, 146, 203, 167, 182,  // <- 111
-    208, 203, 139, 166, 158, 167, 157, 189, 164, 179, 156, 167, 145, 166, 109, 0,  // <- 127
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // <- 143
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // <- 159
-    0, 125, 184, 187, 146, 201, 127, 203, 89, 194, 156, 141, 117, 87, 202, 88,  // <- 175
-    115, 165, 118, 121, 85, 190, 236, 87, 88, 111, 151, 140, 194, 191, 203, 148,  // <- 191
-    215, 215, 222, 224, 223, 234, 230, 192, 208, 208, 216, 217, 187, 187, 194, 195,  // <- 207
-    228, 255, 228, 228, 235, 239, 237, 150, 255, 222, 222, 229, 232, 180, 197, 225,  // <- 223
-    208, 208, 216, 217, 212, 230, 218, 170, 202, 202, 211, 204, 156, 156, 165, 159,  // <- 239
-    214, 194, 197, 197, 206, 206, 201, 132, 214, 183, 183, 192, 187, 195, 227, 198
-};
+const unsigned char KateScrollBar::characterOpacity[256] = {0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   // <- 15
+                                                            0,   0,   0,   0,   0,   0,   0,   0,   255, 0,   255, 0,   0,   0,   0,   0,   // <- 31
+                                                            0,   125, 41,  221, 138, 195, 218, 21,  142, 142, 137, 137, 97,  87,  87,  140, // <- 47
+                                                            223, 164, 183, 190, 191, 193, 214, 158, 227, 216, 103, 113, 146, 140, 146, 149, // <- 63
+                                                            248, 204, 240, 174, 217, 197, 178, 205, 209, 176, 168, 211, 160, 246, 238, 218, // <- 79
+                                                            195, 229, 227, 196, 167, 212, 188, 238, 197, 169, 189, 158, 21,  151, 115, 90,  // <- 95
+                                                            15,  192, 209, 153, 208, 187, 162, 221, 183, 149, 161, 191, 146, 203, 167, 182, // <- 111
+                                                            208, 203, 139, 166, 158, 167, 157, 189, 164, 179, 156, 167, 145, 166, 109, 0,   // <- 127
+                                                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   // <- 143
+                                                            0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   // <- 159
+                                                            0,   125, 184, 187, 146, 201, 127, 203, 89,  194, 156, 141, 117, 87,  202, 88,  // <- 175
+                                                            115, 165, 118, 121, 85,  190, 236, 87,  88,  111, 151, 140, 194, 191, 203, 148, // <- 191
+                                                            215, 215, 222, 224, 223, 234, 230, 192, 208, 208, 216, 217, 187, 187, 194, 195, // <- 207
+                                                            228, 255, 228, 228, 235, 239, 237, 150, 255, 222, 222, 229, 232, 180, 197, 225, // <- 223
+                                                            208, 208, 216, 217, 212, 230, 218, 170, 202, 202, 211, 204, 156, 156, 165, 159, // <- 239
+                                                            214, 194, 197, 197, 206, 206, 201, 132, 214, 183, 183, 192, 187, 195, 227, 198};
 
 KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *parent)
     : QScrollBar(orientation, parent->m_view)
@@ -196,7 +194,7 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     , m_linesModified(0)
 {
     connect(this, SIGNAL(valueChanged(int)), this, SLOT(sliderMaybeMoved(int)));
-    connect(m_doc, SIGNAL(marksChanged(KTextEditor::Document*)), this, SLOT(marksChanged()));
+    connect(m_doc, SIGNAL(marksChanged(KTextEditor::Document *)), this, SLOT(marksChanged()));
 
     m_updateTimer.setInterval(300);
     m_updateTimer.setSingleShot(true);
@@ -219,8 +217,8 @@ KateScrollBar::~KateScrollBar()
 void KateScrollBar::setShowMiniMap(bool b)
 {
     if (b && !m_showMiniMap) {
-        connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
-        connect(m_doc, SIGNAL(textChanged(KTextEditor::Document*)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
+        connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
+        connect(m_doc, SIGNAL(textChanged(KTextEditor::Document *)), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
         connect(m_view, SIGNAL(delayedUpdateOfView()), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
         connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updatePixmap()), Qt::UniqueConnection);
         connect(&(m_view->textFolding()), SIGNAL(foldingRangesChanged()), &m_updateTimer, SLOT(start()), Qt::UniqueConnection);
@@ -284,18 +282,13 @@ void KateScrollBar::mousePressEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        if (m_leftMouseDown &&
-            e->pos().y() > m_mapGroveRect.top() &&
-            e->pos().y() < m_mapGroveRect.bottom())
-        {
+        if (m_leftMouseDown && e->pos().y() > m_mapGroveRect.top() && e->pos().y() < m_mapGroveRect.bottom()) {
             // if we show the minimap left-click jumps directly to the selected position
-            int newVal = (e->pos().y()-m_mapGroveRect.top()) / (double)m_mapGroveRect.height() * (double)(maximum()+pageStep()) - pageStep()/2;
+            int newVal = (e->pos().y() - m_mapGroveRect.top()) / (double)m_mapGroveRect.height() * (double)(maximum() + pageStep()) - pageStep() / 2;
             newVal = qBound(0, newVal, maximum());
             setSliderPosition(newVal);
         }
-        QMouseEvent eMod(QEvent::MouseButtonPress,
-                         QPoint(6, minimapYToStdY(e->pos().y())),
-                         e->button(), e->buttons(), e->modifiers());
+        QMouseEvent eMod(QEvent::MouseButtonPress, QPoint(6, minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mousePressEvent(&eMod);
     } else {
         QScrollBar::mousePressEvent(e);
@@ -324,9 +317,7 @@ void KateScrollBar::mouseReleaseEvent(QMouseEvent *e)
     }
 
     if (m_showMiniMap) {
-        QMouseEvent eMod(QEvent::MouseButtonRelease,
-                         QPoint(e->pos().x(), minimapYToStdY(e->pos().y())),
-                         e->button(), e->buttons(), e->modifiers());
+        QMouseEvent eMod(QEvent::MouseButtonRelease, QPoint(e->pos().x(), minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mouseReleaseEvent(&eMod);
     } else {
         QScrollBar::mouseReleaseEvent(e);
@@ -336,9 +327,7 @@ void KateScrollBar::mouseReleaseEvent(QMouseEvent *e)
 void KateScrollBar::mouseMoveEvent(QMouseEvent *e)
 {
     if (m_showMiniMap) {
-        QMouseEvent eMod(QEvent::MouseMove,
-                         QPoint(e->pos().x(), minimapYToStdY(e->pos().y())),
-                         e->button(), e->buttons(), e->modifiers());
+        QMouseEvent eMod(QEvent::MouseMove, QPoint(e->pos().x(), minimapYToStdY(e->pos().y())), e->button(), e->buttons(), e->modifiers());
         QScrollBar::mouseMoveEvent(&eMod);
     } else {
         QScrollBar::mouseMoveEvent(e);
@@ -432,13 +421,12 @@ void KateScrollBar::showTextPreview()
 
     if (m_view->config()->scrollPastEnd()) {
         // Adjust the grove size to accommodate the added pageStep at the bottom
-        int adjust = pageStep()*grooveRect.height() / (maximum() + pageStep() - minimum());
-        grooveRect.adjust(0,0,0, -adjust);
+        int adjust = pageStep() * grooveRect.height() / (maximum() + pageStep() - minimum());
+        grooveRect.adjust(0, 0, 0, -adjust);
     }
 
     const QPoint cursorPos = mapFromGlobal(QCursor::pos());
     if (grooveRect.contains(cursorPos)) {
-
         if (!m_textPreview) {
             m_textPreview = new KateTextPreview(m_view, this);
             m_textPreview->setAttribute(Qt::WA_ShowWithoutActivating);
@@ -453,8 +441,7 @@ void KateScrollBar::showTextPreview()
 
         m_textPreview->resize(m_view->width() / 2, m_view->height() / 5);
         const int xGlobal = mapToGlobal(QPoint(0, 0)).x();
-        const int yGlobal = qMin(mapToGlobal(QPoint(0, height())).y() - m_textPreview->height(),
-                                 qMax(mapToGlobal(QPoint(0, 0)).y(), mapToGlobal(cursorPos).y() - m_textPreview->height() / 2));
+        const int yGlobal = qMin(mapToGlobal(QPoint(0, height())).y() - m_textPreview->height(), qMax(mapToGlobal(QPoint(0, 0)).y(), mapToGlobal(cursorPos).y() - m_textPreview->height() / 2));
         m_textPreview->move(xGlobal - m_textPreview->width(), yGlobal);
         m_textPreview->setLine(startLine);
         m_textPreview->setCenterView(true);
@@ -477,9 +464,7 @@ void KateScrollBar::hideTextPreview()
 }
 
 // This function is optimized for bing called in sequence.
-const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex,
-                                      const QVector<QTextLayout::FormatRange> &decorations,
-                                      const QColor &defaultColor, int x, QChar ch)
+const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex, const QVector<QTextLayout::FormatRange> &decorations, const QColor &defaultColor, int x, QChar ch)
 {
     QColor color = defaultColor;
 
@@ -505,8 +490,7 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
     // plain Kate), query the styles, that is, the default kate syntax highlighting.
     if (!styleFound) {
         // go to the block containing x
-        while ((attributeIndex < attributes.size()) &&
-                ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < x)) {
+        while ((attributeIndex < attributes.size()) && ((attributes[attributeIndex].offset + attributes[attributeIndex].length) < x)) {
             ++attributeIndex;
         }
         if ((attributeIndex < attributes.size()) && (x < attributes[attributeIndex].offset + attributes[attributeIndex].length)) {
@@ -526,8 +510,8 @@ const QColor KateScrollBar::charColor(const QVector<Kate::TextLineData::Attribut
 
 void KateScrollBar::updatePixmap()
 {
-    //QTime time;
-    //time.start();
+    // QTime time;
+    // time.start();
 
     if (!m_showMiniMap) {
         // make sure no time is wasted if the option is disabled
@@ -563,8 +547,8 @@ void KateScrollBar::updatePixmap()
 
     int pixmapLineWidth = s_pixelMargin + s_lineWidth / charIncrement;
 
-    //qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
-    //qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
+    // qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
+    // qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor defaultTextColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
@@ -595,7 +579,6 @@ void KateScrollBar::updatePixmap()
 
         // Iterate over all visible lines, drawing them.
         for (int virtualLine = 0; virtualLine < docLineCount; virtualLine += lineIncrement) {
-
             int realLineNumber = m_view->textFolding().visibleLineToLine(virtualLine);
             QString lineText = m_doc->line(realLineNumber);
 
@@ -626,10 +609,11 @@ void KateScrollBar::updatePixmap()
                 }
                 // Query the selection and draw it behind the character
                 if (selection.contains(KTextEditor::Cursor(realLineNumber, x))) {
-                    if (selStartX == -1) selStartX = pixelX;
+                    if (selStartX == -1)
+                        selStartX = pixelX;
                     selEndX = pixelX;
                     if (lineText.size() - 1 == x) {
-                        selEndX = s_lineWidth + s_pixelMargin-1;
+                        selEndX = s_lineWidth + s_pixelMargin - 1;
                     }
                 }
 
@@ -670,15 +654,13 @@ void KateScrollBar::updatePixmap()
 
                     pixelX++;
                 }
-
             }
             drawnLines++;
             if (((drawnLines) % charIncrement) == 0) {
                 pixelY++;
             }
-
         }
-        //qCDebug(LOG_KTE) << drawnLines;
+        // qCDebug(LOG_KTE) << drawnLines;
         // Draw line modification marker map.
         // Disable this if the document is really huge,
         // since it requires querying every line.
@@ -686,7 +668,7 @@ void KateScrollBar::updatePixmap()
             for (int lineno = 0; lineno < docLineCount; lineno++) {
                 int realLineNo = m_view->textFolding().visibleLineToLine(lineno);
                 const Kate::TextLine &line = m_doc->plainKateTextLine(realLineNo);
-                const QColor & col = line->markedAsModified() ? modifiedLineColor : savedLineColor;
+                const QColor &col = line->markedAsModified() ? modifiedLineColor : savedLineColor;
                 if (line->markedAsModified() || line->markedAsSavedOnDisk()) {
                     painter.fillRect(2, lineno / lineDivisor, 3, 1, col);
                 }
@@ -700,7 +682,7 @@ void KateScrollBar::updatePixmap()
     // set right ratio
     m_pixmap.setDevicePixelRatio(m_view->devicePixelRatioF());
 
-    //qCDebug(LOG_KTE) << time.elapsed();
+    // qCDebug(LOG_KTE) << time.elapsed();
     // Redraw the scrollbar widget with the updated pixmap.
     update();
 }
@@ -737,8 +719,8 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     m_grooveHeight = grooveRect.height();
 
     const int docXMargin = 1;
-    //style()->drawControl(QStyle::CE_ScrollBarAddLine, &opt, &painter, this);
-    //style()->drawControl(QStyle::CE_ScrollBarSubLine, &opt, &painter, this);
+    // style()->drawControl(QStyle::CE_ScrollBarAddLine, &opt, &painter, this);
+    // style()->drawControl(QStyle::CE_ScrollBarSubLine, &opt, &painter, this);
 
     // calculate the document size and position
     const int docHeight = qMin(grooveRect.height(), int(m_pixmap.height() / m_pixmap.devicePixelRatio() * 2)) - 2 * docXMargin;
@@ -757,7 +739,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // calculate colors
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
     const QColor foregroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->foreground().color();
-    const QColor highlightColor  = palette().link().color();
+    const QColor highlightColor = palette().link().color();
 
     const int backgroundLightness = backgroundColor.lightness();
     const int foregroundLightness = foregroundColor.lightness();
@@ -789,7 +771,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // adjust the rectangles
     QRect sliderRect = style()->subControlRect(QStyle::CC_ScrollBar, &opt, QStyle::SC_ScrollBarSlider, this);
     sliderRect.setX(docXMargin);
-    sliderRect.setWidth(width() - docXMargin*2);
+    sliderRect.setWidth(width() - docXMargin * 2);
 
     if ((docHeight + 2 * docXMargin >= grooveRect.height()) && (sliderRect.height() > visibleRect.height() + 2)) {
         visibleRect.adjust(2, 0, -3, 0);
@@ -816,27 +798,24 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
 
     // delimit the end of the document
     const int y = docPixmapRect.height() + grooveRect.y();
-    if (y+2 < grooveRect.y() + grooveRect.height()) {
+    if (y + 2 < grooveRect.y() + grooveRect.height()) {
         QColor fg(foregroundColor);
         fg.setAlpha(30);
         painter.setBrush(Qt::NoBrush);
         painter.setPen(QPen(fg, 1));
-        painter.drawLine(grooveRect.x()+1,y+2,width()-1,y+2);
+        painter.drawLine(grooveRect.x() + 1, y + 2, width() - 1, y + 2);
     }
 
     // fade the invisible sections
-    const QRect top(
-        grooveRect.x(),
-        grooveRect.y(),
-        grooveRect.width(),
-        visibleRect.y()-grooveRect.y() //Pen width
+    const QRect top(grooveRect.x(),
+                    grooveRect.y(),
+                    grooveRect.width(),
+                    visibleRect.y() - grooveRect.y() // Pen width
     );
-    const QRect bottom(
-        grooveRect.x(),
-        grooveRect.y()+visibleRect.y()+visibleRect.height()-grooveRect.y(), //Pen width
-        grooveRect.width(),
-        grooveRect.height() - (visibleRect.y()-grooveRect.y())-visibleRect.height()
-    );
+    const QRect bottom(grooveRect.x(),
+                       grooveRect.y() + visibleRect.y() + visibleRect.height() - grooveRect.y(), // Pen width
+                       grooveRect.width(),
+                       grooveRect.height() - (visibleRect.y() - grooveRect.y()) - visibleRect.height());
 
     QColor faded(backgroundColor);
     faded.setAlpha(110);
@@ -846,7 +825,7 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
     // add a thin line to limit the scrollbar
     QColor c(foregroundColor);
     c.setAlpha(10);
-    painter.setPen(QPen(c,1));
+    painter.setPen(QPen(c, 1));
     painter.drawLine(0, 0, 0, height());
 
     if (m_showMarks) {
@@ -858,7 +837,8 @@ void KateScrollBar::miniMapPaintEvent(QPaintEvent *e)
         painter.setPen(penBg);
         while (it.hasNext()) {
             it.next();
-            int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();;
+            int y = (it.key() - grooveRect.top()) * docHeight / grooveRect.height() + docRect.top();
+            ;
             painter.drawLine(6, y, width() - 6, y);
         }
 
@@ -998,8 +978,7 @@ void KateScrollBar::recomputeMarksPositions()
         KTextEditor::Mark *mark = i.value();
         const int line = m_view->textFolding().lineToVisibleLine(mark->line);
         const double ratio = static_cast<double>(line) / visibleLines;
-        m_lines.insert(top + (int)(h * ratio),
-                       KateRendererConfig::global()->lineMarkerColor((KTextEditor::MarkInterface::MarkTypes)mark->type));
+        m_lines.insert(top + (int)(h * ratio), KateRendererConfig::global()->lineMarkerColor((KTextEditor::MarkInterface::MarkTypes)mark->type));
     }
 }
 
@@ -1013,9 +992,9 @@ void KateScrollBar::sliderMaybeMoved(int value)
         emit sliderMMBMoved(value);
     }
 }
-//END
+// END
 
-//BEGIN KateCmdLineEditFlagCompletion
+// BEGIN KateCmdLineEditFlagCompletion
 /**
  * This class provide completion of flags. It shows a short description of
  * each flag, and flags are appended.
@@ -1032,11 +1011,10 @@ public:
     {
         return QString();
     }
-
 };
-//END KateCmdLineEditFlagCompletion
+// END KateCmdLineEditFlagCompletion
 
-//BEGIN KateCmdLineEdit
+// BEGIN KateCmdLineEdit
 KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
 {
@@ -1089,8 +1067,7 @@ KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPriva
     , m_cmdend(0)
     , m_command(nullptr)
 {
-    connect(this, SIGNAL(returnPressed(QString)),
-            this, SLOT(slotReturnPressed(QString)));
+    connect(this, SIGNAL(returnPressed(QString)), this, SLOT(slotReturnPressed(QString)));
 
     setCompletionObject(KateCmd::self()->commandCompletionObject());
     setAutoDeleteCompletionObject(false);
@@ -1103,7 +1080,7 @@ KateCmdLineEdit::KateCmdLineEdit(KateCommandLineBar *bar, KTextEditor::ViewPriva
     // wrong view when KateViewBar::hideCurrentBarWidget() is called after 4 seconds. (the timer is
     // used for showing things like "Success" for four seconds after the user has used the kate
     // command line)
-    connect(m_view, SIGNAL(focusOut(KTextEditor::View*)), m_hideTimer, SLOT(stop()));
+    connect(m_view, SIGNAL(focusOut(KTextEditor::View *)), m_hideTimer, SLOT(stop()));
 }
 
 void KateCmdLineEdit::hideEvent(QHideEvent *e)
@@ -1125,17 +1102,14 @@ QString KateCmdLineEdit::helptext(const QPoint &) const
         // get help for command
         const QString name = match.captured(1);
         if (name == QLatin1String("list")) {
-            return beg + i18n("Available Commands") + mid
-                   + KateCmd::self()->commandList().join(QLatin1Char(' '))
-                   + i18n("<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></p>")
-                   + end;
-        } else if (! name.isEmpty()) {
+            return beg + i18n("Available Commands") + mid + KateCmd::self()->commandList().join(QLatin1Char(' ')) + i18n("<p>For help on individual commands, do <code>'help &lt;command&gt;'</code></p>") + end;
+        } else if (!name.isEmpty()) {
             KTextEditor::Command *cmd = KateCmd::self()->queryCommand(name);
             if (cmd) {
                 if (cmd->help(m_view, name, s)) {
                     return beg + name + mid + s + end;
                 } else {
-                    return beg + name + mid + i18n("No help for '%1'",  name) + end;
+                    return beg + name + mid + i18n("No help for '%1'", name) + end;
                 }
             } else {
                 return beg + mid + i18n("No such command <b>%1</b>", name) + end;
@@ -1143,12 +1117,12 @@ QString KateCmdLineEdit::helptext(const QPoint &) const
         }
     }
 
-    return beg + mid + i18n(
-               "<p>This is the Katepart <b>command line</b>.<br />"
-               "Syntax: <code><b>command [ arguments ]</b></code><br />"
-               "For a list of available commands, enter <code><b>help list</b></code><br />"
-               "For help for individual commands, enter <code><b>help &lt;command&gt;</b></code></p>")
-           + end;
+    return beg + mid +
+        i18n("<p>This is the Katepart <b>command line</b>.<br />"
+             "Syntax: <code><b>command [ arguments ]</b></code><br />"
+             "For a list of available commands, enter <code><b>help list</b></code><br />"
+             "For help for individual commands, enter <code><b>help &lt;command&gt;</b></code></p>") +
+        end;
 }
 
 bool KateCmdLineEdit::event(QEvent *e)
@@ -1232,14 +1206,13 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
         }
 
         if (!p) {
-            setText(i18n("No such command: \"%1\"",  cmd));
+            setText(i18n("No such command: \"%1\"", cmd));
         } else if (range.isValid() && !p->supportsRange(cmd)) {
             // Raise message, when the command does not support ranges.
-            setText(i18n("Error: No range allowed for command \"%1\".",  cmd));
+            setText(i18n("Error: No range allowed for command \"%1\".", cmd));
         } else {
             QString msg;
             if (p->exec(m_view, cmd, msg, range)) {
-
                 // append command along with range (will be empty if none given) to history
                 KateCmd::self()->appendHistory(leadingRangeExpression + cmd);
                 m_histpos = KateCmd::self()->historyLength();
@@ -1260,7 +1233,7 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
                         setText(msg);
                     }
                 } else {
-                    setText(i18n("Command \"%1\" failed.",  cmd));
+                    setText(i18n("Command \"%1\" failed.", cmd));
                 }
             }
         }
@@ -1284,9 +1257,9 @@ void KateCmdLineEdit::slotReturnPressed(const QString &text)
     }
 }
 
-void KateCmdLineEdit::hideLineEdit()  // unless i have focus ;)
+void KateCmdLineEdit::hideLineEdit() // unless i have focus ;)
 {
-    if (! hasFocus()) {
+    if (!hasFocus()) {
         emit hideRequested();
     }
 }
@@ -1304,8 +1277,7 @@ void KateCmdLineEdit::focusInEvent(QFocusEvent *ev)
 
 void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
 {
-    if (ev->key() == Qt::Key_Escape ||
-            (ev->key() == Qt::Key_BracketLeft && ev->modifiers() == Qt::ControlModifier)) {
+    if (ev->key() == Qt::Key_Escape || (ev->key() == Qt::Key_BracketLeft && ev->modifiers() == Qt::ControlModifier)) {
         m_view->setFocus();
         hideLineEdit();
         clear();
@@ -1319,30 +1291,30 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
     KLineEdit::keyPressEvent(ev);
 
     // during typing, let us see if we have a valid command
-    if (! m_cmdend || cursorpos <= m_cmdend) {
+    if (!m_cmdend || cursorpos <= m_cmdend) {
         QChar c;
-        if (! ev->text().isEmpty()) {
+        if (!ev->text().isEmpty()) {
             c = ev->text().at(0);
         }
 
-        if (! m_cmdend && ! c.isNull()) { // we have no command, so lets see if we got one
-            if (! c.isLetterOrNumber() && c != QLatin1Char('-') && c != QLatin1Char('_')) {
+        if (!m_cmdend && !c.isNull()) { // we have no command, so lets see if we got one
+            if (!c.isLetterOrNumber() && c != QLatin1Char('-') && c != QLatin1Char('_')) {
                 m_command = KateCmd::self()->queryCommand(text().trimmed());
                 if (m_command) {
-                    //qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command<<". text is '"<<text()<<"'";
+                    // qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command<<". text is '"<<text()<<"'";
                     // if the typed character is ":",
                     // we try if the command has flag completions
                     m_cmdend = cursorpos;
-                    //qCDebug(LOG_KTE)<<"keypress in commandline: Set m_cmdend to "<<m_cmdend;
+                    // qCDebug(LOG_KTE)<<"keypress in commandline: Set m_cmdend to "<<m_cmdend;
                 } else {
                     m_cmdend = 0;
                 }
             }
         } else { // since cursor is inside the command name, we reconsider it
-            //qCDebug(LOG_KTE) << "keypress in commandline: \\W -- text is " << text();
+            // qCDebug(LOG_KTE) << "keypress in commandline: \\W -- text is " << text();
             m_command = KateCmd::self()->queryCommand(text().trimmed());
             if (m_command) {
-                //qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command;
+                // qCDebug(LOG_KTE)<<"keypress in commandline: We have a command! "<<m_command;
                 QString t = text();
                 m_cmdend = 0;
                 bool b = false;
@@ -1350,14 +1322,14 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
                     if (t[m_cmdend].isLetter()) {
                         b = true;
                     }
-                    if (b && (! t[m_cmdend].isLetterOrNumber() && t[m_cmdend] != QLatin1Char('-') && t[m_cmdend] != QLatin1Char('_'))) {
+                    if (b && (!t[m_cmdend].isLetterOrNumber() && t[m_cmdend] != QLatin1Char('-') && t[m_cmdend] != QLatin1Char('_'))) {
                         break;
                     }
                 }
 
                 if (c == QLatin1Char(':') && cursorpos == m_cmdend) {
                     // check if this command wants to complete flags
-                    //qCDebug(LOG_KTE)<<"keypress in commandline: Checking if flag completion is desired!";
+                    // qCDebug(LOG_KTE)<<"keypress in commandline: Checking if flag completion is desired!";
                 }
             } else {
                 // clean up if needed
@@ -1377,7 +1349,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
             if (cmpl) {
                 // We need to prepend the current command name + flag string
                 // when completion is done
-                //qCDebug(LOG_KTE)<<"keypress in commandline: Setting completion object!";
+                // qCDebug(LOG_KTE)<<"keypress in commandline: Setting completion object!";
 
                 setCompletionObject(cmpl);
             }
@@ -1392,7 +1364,7 @@ void KateCmdLineEdit::keyPressEvent(QKeyEvent *ev)
 
 void KateCmdLineEdit::fromHistory(bool up)
 {
-    if (! KateCmd::self()->historyLength()) {
+    if (!KateCmd::self()->historyLength()) {
         return;
     }
 
@@ -1412,7 +1384,7 @@ void KateCmdLineEdit::fromHistory(bool up)
             setText(m_oldText);
         }
     }
-    if (! s.isEmpty()) {
+    if (!s.isEmpty()) {
         // Select the argument part of the command, so that it is easy to overwrite
         setText(s);
         static const QRegularExpression reCmd(QStringLiteral("^[\\w\\-]+(?:[^a-zA-Z0-9_-]|:\\w+)(.*)"));
@@ -1422,9 +1394,9 @@ void KateCmdLineEdit::fromHistory(bool up)
         }
     }
 }
-//END KateCmdLineEdit
+// END KateCmdLineEdit
 
-//BEGIN KateIconBorder
+// BEGIN KateIconBorder
 using namespace KTextEditor;
 
 KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
@@ -1456,8 +1428,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
     m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(32, 32));
 
-    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
-            this, &KateIconBorder::updateAnnotationBorderWidth);
+    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
 
     updateFont();
 
@@ -1466,7 +1437,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     connect(&m_antiFlickerTimer, &QTimer::timeout, this, &KateIconBorder::highlightFolding);
 
     // user interaction (scrolling) hides e.g. preview
-    connect(m_view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(displayRangeChanged()));
+    connect(m_view, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), this, SLOT(displayRangeChanged()));
 }
 
 KateIconBorder::~KateIconBorder()
@@ -1545,7 +1516,7 @@ void KateIconBorder::setRelLineNumbersOn(bool enable)
      */
     m_updatePositionToArea = true;
 
-    QTimer::singleShot( 0, this, SLOT(update()) );
+    QTimer::singleShot(0, this, SLOT(update()));
 }
 
 void KateIconBorder::updateForCursorLineChange()
@@ -1634,7 +1605,7 @@ int KateIconBorder::lineNumberWidth() const
     // Avoid unneeded expensive calculations ;-)
     if (m_lineNumbersOn) {
         // width = (number of digits + 1) * char width
-        const int digits = (int) ceil(log10((double)(m_view->doc()->lines() + 1)));
+        const int digits = (int)ceil(log10((double)(m_view->doc()->lines() + 1)));
         width = (int)ceil((digits + 1) * m_maxCharWidth);
     }
 
@@ -1706,10 +1677,10 @@ static void paintTriangle(QPainter &painter, QColor c, int xOffset, int yOffset,
     QPointF middle(xOffset + (qreal)width / 2, yOffset + (qreal)height / 2);
 
     if (open) {
-        QPointF points[3] = { middle + QPointF(-halfSize, -halfSizeP), middle + QPointF(halfSize, -halfSizeP), middle + QPointF(0, halfSizeP) };
+        QPointF points[3] = {middle + QPointF(-halfSize, -halfSizeP), middle + QPointF(halfSize, -halfSizeP), middle + QPointF(0, halfSizeP)};
         painter.drawConvexPolygon(points, 3);
     } else {
-        QPointF points[3] = { middle + QPointF(-halfSizeP, -halfSize), middle + QPointF(-halfSizeP, halfSize), middle + QPointF(halfSizeP, 0) };
+        QPointF points[3] = {middle + QPointF(-halfSizeP, -halfSize), middle + QPointF(-halfSizeP, halfSize), middle + QPointF(halfSizeP, 0)};
         painter.drawConvexPolygon(points, 3);
     }
 
@@ -1732,13 +1703,13 @@ public:
     KateAnnotationGroupIdentifier() = default;
     KateAnnotationGroupIdentifier(const KateAnnotationGroupIdentifier &rhs) = default;
 
-    KateAnnotationGroupIdentifier& operator=(const KateAnnotationGroupIdentifier &rhs)
+    KateAnnotationGroupIdentifier &operator=(const KateAnnotationGroupIdentifier &rhs)
     {
         m_isValid = rhs.m_isValid;
         m_id = rhs.m_id;
         return *this;
     }
-    KateAnnotationGroupIdentifier& operator=(const QVariant &identifier)
+    KateAnnotationGroupIdentifier &operator=(const QVariant &identifier)
     {
         m_isValid = (identifier.isValid() && identifier.canConvert<QString>());
         if (m_isValid) {
@@ -1763,8 +1734,14 @@ public:
         m_isValid = false;
         m_id.clear();
     }
-    bool isValid() const { return m_isValid; }
-    const QString& id() const { return m_id; }
+    bool isValid() const
+    {
+        return m_isValid;
+    }
+    const QString &id() const
+    {
+        return m_id;
+    }
 
 private:
     bool m_isValid = false;
@@ -1783,11 +1760,7 @@ public:
      * @param isUsed flag whether the KateAnnotationGroupPositionState object will
      *               be used or is just created due to being on the stack
      */
-    KateAnnotationGroupPositionState(KateViewInternal *viewInternal,
-                                     const KTextEditor::AnnotationModel *model,
-                                     const QString &hoveredAnnotationGroupIdentifier,
-                                     uint startz,
-                                     bool isUsed);
+    KateAnnotationGroupPositionState(KateViewInternal *viewInternal, const KTextEditor::AnnotationModel *model, const QString &hoveredAnnotationGroupIdentifier, uint startz, bool isUsed);
     /**
      * @param styleOption option to fill with data for the given line
      * @param z rendered displayed line
@@ -1797,7 +1770,7 @@ public:
 
 private:
     KateViewInternal *m_viewInternal;
-    const KTextEditor::AnnotationModel * const m_model;
+    const KTextEditor::AnnotationModel *const m_model;
     const QString m_hoveredAnnotationGroupIdentifier;
 
     int m_visibleWrappedLineInAnnotationGroup = -1;
@@ -1806,11 +1779,7 @@ private:
     bool m_isSameAnnotationGroupsSinceLast = false;
 };
 
-KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInternal *viewInternal,
-                                                                   const KTextEditor::AnnotationModel *model,
-                                                                   const QString &hoveredAnnotationGroupIdentifier,
-                                                                   uint startz,
-                                                                   bool isUsed)
+KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInternal *viewInternal, const KTextEditor::AnnotationModel *model, const QString &hoveredAnnotationGroupIdentifier, uint startz, bool isUsed)
     : m_viewInternal(viewInternal)
     , m_model(model)
     , m_hoveredAnnotationGroupIdentifier(hoveredAnnotationGroupIdentifier)
@@ -1824,8 +1793,7 @@ KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInter
     }
 
     const auto realLineAtStart = m_viewInternal->cache()->viewLine(startz).line();
-    m_nextAnnotationGroupIdentifier = m_model->data(realLineAtStart,
-                                                    (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
+    m_nextAnnotationGroupIdentifier = m_model->data(realLineAtStart, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
     if (m_nextAnnotationGroupIdentifier.isValid()) {
         // estimate state of annotation group before first rendered line
         if (startz == 0) {
@@ -1833,19 +1801,18 @@ KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInter
                 // TODO: here we would want to scan until the next line that would be displayed,
                 // to see if there are any group changes until then
                 // for now simply taking neighbour line into account, not a grave bug on the first displayed line
-                m_lastAnnotationGroupIdentifier = m_model->data(realLineAtStart - 1,
-                                                                (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
+                m_lastAnnotationGroupIdentifier = m_model->data(realLineAtStart - 1, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
                 m_isSameAnnotationGroupsSinceLast = (m_lastAnnotationGroupIdentifier == m_nextAnnotationGroupIdentifier);
             }
         } else {
-            const auto realLineBeforeStart = m_viewInternal->cache()->viewLine(startz-1).line();
+            const auto realLineBeforeStart = m_viewInternal->cache()->viewLine(startz - 1).line();
             m_lastAnnotationGroupIdentifier = m_model->data(realLineBeforeStart, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
             if (m_lastAnnotationGroupIdentifier.isValid()) {
                 if (m_lastAnnotationGroupIdentifier.id() == m_nextAnnotationGroupIdentifier.id()) {
                     m_isSameAnnotationGroupsSinceLast = true;
                     // estimate m_visibleWrappedLineInAnnotationGroup from lines before startz
                     for (uint z = startz; z > 0; --z) {
-                        const auto realLine = m_viewInternal->cache()->viewLine(z-1).line();
+                        const auto realLine = m_viewInternal->cache()->viewLine(z - 1).line();
                         const KateAnnotationGroupIdentifier identifier = m_model->data(realLine, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
                         if (identifier != m_lastAnnotationGroupIdentifier) {
                             break;
@@ -1858,8 +1825,7 @@ KateAnnotationGroupPositionState::KateAnnotationGroupPositionState(KateViewInter
     }
 }
 
-void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotationItem &styleOption,
-                                                uint z, int realLine)
+void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotationItem &styleOption, uint z, int realLine)
 {
     styleOption.wrappedLine = m_viewInternal->cache()->viewLine(z).viewLine();
     styleOption.wrappedLineCount = m_viewInternal->cache()->viewLineCount(realLine);
@@ -1869,24 +1835,23 @@ void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotati
     bool isSameAnnotationGroupsSinceThis = false;
     // Calculate next line's group identifier
     // shortcut: assuming wrapped lines are always displayed together, test is simple
-    if (styleOption.wrappedLine+1 < styleOption.wrappedLineCount) {
+    if (styleOption.wrappedLine + 1 < styleOption.wrappedLineCount) {
         m_nextAnnotationGroupIdentifier = annotationGroupIdentifier;
         isSameAnnotationGroupsSinceThis = true;
     } else {
-        if (static_cast<int>(z+1) < m_viewInternal->cache()->viewCacheLineCount()) {
-            const int realLineAfter = m_viewInternal->cache()->viewLine(z+1).line();
+        if (static_cast<int>(z + 1) < m_viewInternal->cache()->viewCacheLineCount()) {
+            const int realLineAfter = m_viewInternal->cache()->viewLine(z + 1).line();
             // search for any realLine with a different group id, also the non-displayed
             int rl = realLine + 1;
             for (; rl <= realLineAfter; ++rl) {
-                m_nextAnnotationGroupIdentifier = m_model->data(rl, (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
-                if (!m_nextAnnotationGroupIdentifier.isValid() ||
-                    (m_nextAnnotationGroupIdentifier.id() != annotationGroupIdentifier.id())) {
+                m_nextAnnotationGroupIdentifier = m_model->data(rl, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
+                if (!m_nextAnnotationGroupIdentifier.isValid() || (m_nextAnnotationGroupIdentifier.id() != annotationGroupIdentifier.id())) {
                     break;
                 }
             }
             isSameAnnotationGroupsSinceThis = (rl > realLineAfter);
             if (rl < realLineAfter) {
-                m_nextAnnotationGroupIdentifier = m_model->data(realLineAfter, (Qt::ItemDataRole)        KTextEditor::AnnotationModel::GroupIdentifierRole);
+                m_nextAnnotationGroupIdentifier = m_model->data(realLineAfter, (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole);
             }
         } else {
             // TODO: check next line after display end
@@ -1924,7 +1889,6 @@ void KateAnnotationGroupPositionState::nextLine(KTextEditor::StyleOptionAnnotati
     m_isSameAnnotationGroupsSinceLast = isSameAnnotationGroupsSinceThis;
 }
 
-
 void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 {
     const uint h = m_view->renderer()->lineHeight();
@@ -1949,13 +1913,10 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
     QPainter p(this);
     p.setRenderHints(QPainter::TextAntialiasing);
-    p.setFont(m_view->renderer()->currentFont());    // for line numbers
+    p.setFont(m_view->renderer()->currentFont()); // for line numbers
 
-    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                          m_view->annotationModel() : m_doc->annotationModel();
-    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model,
-                                                                  m_hoveredAnnotationGroupIdentifier,
-                                                                  startz, m_annotationBorderOn);
+    KTextEditor::AnnotationModel *model = m_view->annotationModel() ? m_view->annotationModel() : m_doc->annotationModel();
+    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model, m_hoveredAnnotationGroupIdentifier, startz, m_annotationBorderOn);
 
     // Fetch often used data only once, improve readability
     const int w = width();
@@ -1989,7 +1950,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             p.setBrush(m_view->renderer()->config()->separatorColor());
             p.drawLine(lnX + m_iconAreaWidth, y, lnX + m_iconAreaWidth, y + h);
 
-            const uint mrk(m_doc->mark(realLine));      // call only once
+            const uint mrk(m_doc->mark(realLine)); // call only once
             if (mrk && lineLayout.startCol() == 0) {
                 for (uint bit = 0; bit < 32; bit++) {
                     MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
@@ -2025,7 +1986,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             p.setBrush(lineNumberColor);
 
             const qreal borderX = lnX + m_annotationAreaWidth + 0.5;
-            p.drawLine(QPointF(borderX, y+0.5), QPointF(borderX, y + h - 0.5));
+            p.drawLine(QPointF(borderX, y + 0.5), QPointF(borderX, y + h - 0.5));
 
             if (model) {
                 KTextEditor::StyleOptionAnnotationItem styleOption;
@@ -2057,23 +2018,19 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             if (lineLayout.startCol() == 0) {
                 if (m_relLineNumbersOn) {
                     if (distanceToCurrent == 0) {
-                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
-                                    Qt::TextDontClip | Qt::AlignLeft | Qt::AlignVCenter, QString::number(realLine + 1));
+                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignLeft | Qt::AlignVCenter, QString::number(realLine + 1));
                     } else {
-                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
-                                    Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(distanceToCurrent));
+                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(distanceToCurrent));
                     }
                     if (m_updateRelLineNumbers) {
                         m_updateRelLineNumbers = false;
                         update();
                     }
                 } else if (m_lineNumbersOn) {
-                    p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
-                                Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
+                    p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
                 }
             } else if (m_dynWrapIndicatorsOn) {
-                p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h,
-                            Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
+                p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
             }
 
             lnX += m_lineNumberAreaWidth + m_separatorWidth;
@@ -2108,7 +2065,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             }
 
             if (lineLayout.startCol() == 0) {
-                QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
+                QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
                 bool anyFolded = false;
                 for (int i = 0; i < startingRanges.size(); ++i) {
                     if (startingRanges[i].second & Kate::TextFolding::Folded) {
@@ -2169,8 +2126,7 @@ void KateIconBorder::mousePressEvent(QMouseEvent *e)
                 // setup view so the following mousePressEvent will select the line
                 m_viewInternal->beginSelectLine(pos);
             }
-            QMouseEvent forward(QEvent::MouseButtonPress,
-                                pos, e->button(), e->buttons(), e->modifiers());
+            QMouseEvent forward(QEvent::MouseButtonPress, pos, e->button(), e->buttons(), e->modifiers());
             m_viewInternal->mousePressEvent(&forward);
         }
         return e->accept();
@@ -2192,7 +2148,7 @@ void KateIconBorder::highlightFoldingDelayed(int line)
         highlightFolding();
 
     } else if (!m_antiFlickerTimer.isActive()) {
-            m_antiFlickerTimer.start();
+        m_antiFlickerTimer.start();
     }
 }
 
@@ -2238,7 +2194,7 @@ void KateIconBorder::highlightFolding()
         // When next line is not visible we have a folded range, only then we want a preview!
         showPreview = !m_view->textFolding().isLineVisible(newRange.start().line() + 1);
 
-        //qCDebug(LOG_KTE) << "new folding hl-range:" << newRange;
+        // qCDebug(LOG_KTE) << "new folding hl-range:" << newRange;
         m_foldingRange = m_doc->newMovingRange(newRange, KTextEditor::MovingRange::ExpandRight);
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
 
@@ -2270,8 +2226,7 @@ void KateIconBorder::highlightFolding()
         const int lineInDisplay = pos.y() / lineHeight;
         // Allow slightly overpainting of the view bottom to proper cover all lines
         const int extra = (m_viewInternal->height() % lineHeight) > (lineHeight * 0.6) ? 1 : 0;
-        const int lineCount = qMin(m_foldingRange->numberOfLines() + 1,
-                                    m_viewInternal->linesDisplayed() - lineInDisplay + extra);
+        const int lineCount = qMin(m_foldingRange->numberOfLines() + 1, m_viewInternal->linesDisplayed() - lineInDisplay + extra);
 
         m_foldingPreview->resize(m_viewInternal->width(), lineCount * lineHeight + 2 * m_foldingPreview->frameWidth());
         const int xGlobal = mapToGlobal(QPoint(width(), 0)).x();
@@ -2322,11 +2277,9 @@ void KateIconBorder::mouseMoveEvent(QMouseEvent *e)
             hideFolding();
         }
         if (area == AnnotationBorder) {
-            KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                                  m_view->annotationModel() : m_doc->annotationModel();
+            KTextEditor::AnnotationModel *model = m_view->annotationModel() ? m_view->annotationModel() : m_doc->annotationModel();
             if (model) {
-                m_hoveredAnnotationGroupIdentifier = model->data( t.line(),
-                                                                  (Qt::ItemDataRole) KTextEditor::AnnotationModel::GroupIdentifierRole ).toString();
+                m_hoveredAnnotationGroupIdentifier = model->data(t.line(), (Qt::ItemDataRole)KTextEditor::AnnotationModel::GroupIdentifierRole).toString();
                 const QPoint viewRelativePos = m_view->mapFromGlobal(e->globalPos());
                 QHelpEvent helpEvent(QEvent::ToolTip, viewRelativePos, e->globalPos());
                 KTextEditor::StyleOptionAnnotationItem styleOption;
@@ -2366,8 +2319,7 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
                     KateViewConfig *config = m_view->config();
                     const uint editBits = m_doc->editableMarks();
                     // is the default or the only editable mark
-                    const uint singleMark = qPopulationCount(editBits) > 1 ?
-                        editBits & config->defaultMarkType() : editBits;
+                    const uint singleMark = qPopulationCount(editBits) > 1 ? editBits & config->defaultMarkType() : editBits;
                     if (singleMark) {
                         if (m_doc->mark(cursorOnLine) & singleMark) {
                             m_doc->removeMark(cursorOnLine, singleMark);
@@ -2405,8 +2357,7 @@ void KateIconBorder::mouseReleaseEvent(QMouseEvent *e)
         }
     }
 
-    QMouseEvent forward(QEvent::MouseButtonRelease,
-                        QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
+    QMouseEvent forward(QEvent::MouseButtonRelease, QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
     m_viewInternal->mouseReleaseEvent(&forward);
 }
 
@@ -2414,16 +2365,14 @@ void KateIconBorder::mouseDoubleClickEvent(QMouseEvent *e)
 {
     int cursorOnLine = m_viewInternal->yToKateTextLayout(e->y()).line();
 
-    if (cursorOnLine == m_lastClickedLine &&
-            cursorOnLine <= m_doc->lastLine()) {
+    if (cursorOnLine == m_lastClickedLine && cursorOnLine <= m_doc->lastLine()) {
         const BorderArea area = positionToArea(e->pos());
         const bool singleClick = style()->styleHint(QStyle::SH_ItemView_ActivateItemOnSingleClick, nullptr, this);
         if (area == AnnotationBorder && !singleClick) {
             emit m_view->annotationActivated(m_view, cursorOnLine);
         }
     }
-    QMouseEvent forward(QEvent::MouseButtonDblClick,
-                        QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
+    QMouseEvent forward(QEvent::MouseButtonDblClick, QPoint(0, e->y()), e->button(), e->buttons(), e->modifiers());
     m_viewInternal->mouseDoubleClickEvent(&forward);
 }
 
@@ -2462,8 +2411,8 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
             mA = markMenu.addAction(icon, m_doc->markDescription(markType));
             dMA = selectDefaultMark.addAction(icon, m_doc->markDescription(markType));
         } else {
-            mA = markMenu.addAction(icon, i18n("Mark Type %1",  bit + 1));
-            dMA = selectDefaultMark.addAction(icon, i18n("Mark Type %1",  bit + 1));
+            mA = markMenu.addAction(icon, i18n("Mark Type %1", bit + 1));
+            dMA = selectDefaultMark.addAction(icon, i18n("Mark Type %1", bit + 1));
         }
         selectDefaultMarkActionGroup->addAction(dMA);
         mA->setData(i);
@@ -2497,7 +2446,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     if (result > 100) {
         KateViewConfig::global()->setValue(KateViewConfig::DefaultMarkType, vec[result - 100]);
     } else {
-        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes) vec[result];
+        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)vec[result];
         if (m_doc->mark(line) & markType) {
             m_doc->removeMark(line, markType);
         } else {
@@ -2506,7 +2455,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
     }
 }
 
-KTextEditor::AbstractAnnotationItemDelegate* KateIconBorder::annotationItemDelegate() const
+KTextEditor::AbstractAnnotationItemDelegate *KateIconBorder::annotationItemDelegate() const
 {
     return m_annotationItemDelegate;
 }
@@ -2529,11 +2478,9 @@ void KateIconBorder::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationIt
         hideAnnotationTooltip();
     }
 
-    disconnect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
-               this, &KateIconBorder::updateAnnotationBorderWidth);
+    disconnect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
     if (!m_isDefaultAnnotationItemDelegate) {
-        disconnect(m_annotationItemDelegate, &QObject::destroyed,
-                   this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
+        disconnect(m_annotationItemDelegate, &QObject::destroyed, this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
     }
 
     if (!delegate) {
@@ -2549,12 +2496,10 @@ void KateIconBorder::setAnnotationItemDelegate(KTextEditor::AbstractAnnotationIt
 
         m_annotationItemDelegate = delegate;
         // catch delegate being destroyed
-        connect(delegate, &QObject::destroyed,
-                this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
+        connect(delegate, &QObject::destroyed, this, &KateIconBorder::handleDestroyedAnnotationItemDelegate);
     }
 
-    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged,
-            this, &KateIconBorder::updateAnnotationBorderWidth);
+    connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
 
     if (m_annotationBorderOn) {
         updateGeometry();
@@ -2568,7 +2513,7 @@ void KateIconBorder::handleDestroyedAnnotationItemDelegate()
     setAnnotationItemDelegate(nullptr);
 }
 
-void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem* styleOption) const
+void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem *styleOption) const
 {
     styleOption->initFrom(this);
     styleOption->view = m_view;
@@ -2576,22 +2521,15 @@ void KateIconBorder::initStyleOption(KTextEditor::StyleOptionAnnotationItem* sty
     styleOption->contentFontMetrics = m_view->renderer()->currentFontMetrics();
 }
 
-void KateIconBorder::setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem* styleOption,
-                                            int y,
-                                            int realLine,
-                                            const KTextEditor::AnnotationModel *model,
-                                            const QString &annotationGroupIdentifier) const
+void KateIconBorder::setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption, int y, int realLine, const KTextEditor::AnnotationModel *model, const QString &annotationGroupIdentifier) const
 {
     // calculate rendered displayed line
     const uint h = m_view->renderer()->lineHeight();
     const uint z = (y / h);
 
-    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model,
-                                                                  annotationGroupIdentifier,
-                                                                  z, true);
+    KateAnnotationGroupPositionState annotationGroupPositionState(m_viewInternal, model, annotationGroupIdentifier, z, true);
     annotationGroupPositionState.nextLine(*styleOption, z, realLine);
 }
-
 
 QRect KateIconBorder::annotationLineRectInView(int line) const
 {
@@ -2608,8 +2546,7 @@ void KateIconBorder::updateAnnotationLine(int line)
 {
     // TODO: why has the default value been 8, where is that magic number from?
     int width = 8;
-    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                          m_view->annotationModel() : m_doc->annotationModel();
+    KTextEditor::AnnotationModel *model = m_view->annotationModel() ? m_view->annotationModel() : m_doc->annotationModel();
 
     if (model) {
         KTextEditor::StyleOptionAnnotationItem styleOption;
@@ -2655,8 +2592,7 @@ void KateIconBorder::calcAnnotationBorderWidth()
 {
     // TODO: another magic number, not matching the one in updateAnnotationLine()
     m_annotationAreaWidth = 6;
-    KTextEditor::AnnotationModel *model = m_view->annotationModel() ?
-                                          m_view->annotationModel() : m_doc->annotationModel();
+    KTextEditor::AnnotationModel *model = m_view->annotationModel() ? m_view->annotationModel() : m_doc->annotationModel();
 
     if (model) {
         KTextEditor::StyleOptionAnnotationItem styleOption;
@@ -2693,9 +2629,9 @@ void KateIconBorder::displayRangeChanged()
     removeAnnotationHovering();
 }
 
-//END KateIconBorder
+// END KateIconBorder
 
-//BEGIN KateViewEncodingAction
+// BEGIN KateViewEncodingAction
 // According to http://www.iana.org/assignments/ianacharset-mib
 // the default/unknown mib value is 2.
 #define MIB_DEFAULT 2
@@ -2719,8 +2655,8 @@ void KateViewEncodingAction::Private::init()
         for (i = 1; i < encodingsForScript.size(); ++i) {
             tmp->addAction(encodingsForScript.at(i));
         }
-        q->connect(tmp, SIGNAL(triggered(QAction*)), q, SLOT(_k_subActionTriggered(QAction*)));
-        //tmp->setCheckable(true);
+        q->connect(tmp, SIGNAL(triggered(QAction *)), q, SLOT(_k_subActionTriggered(QAction *)));
+        // tmp->setCheckable(true);
         actions << tmp;
     }
     std::sort(actions.begin(), actions.end(), lessThanAction);
@@ -2744,7 +2680,10 @@ void KateViewEncodingAction::Private::_k_subActionTriggered(QAction *action)
 }
 
 KateViewEncodingAction::KateViewEncodingAction(KTextEditor::DocumentPrivate *_doc, KTextEditor::ViewPrivate *_view, const QString &text, QObject *parent, bool saveAsMode)
-    : KSelectAction(text, parent), doc(_doc), view(_view), d(new Private(this))
+    : KSelectAction(text, parent)
+    , doc(_doc)
+    , view(_view)
+    , d(new Private(this))
     , m_saveAsMode(saveAsMode)
 {
     d->init();
@@ -2807,7 +2746,7 @@ int KateViewEncodingAction::mibForName(const QString &codecName, bool *ok) const
         return mib;
     }
 
-    qCWarning(LOG_KTE) << "Invalid codec name: "  << codecName;
+    qCWarning(LOG_KTE) << "Invalid codec name: " << codecName;
     return MIB_DEFAULT;
 }
 
@@ -2874,9 +2813,9 @@ bool KateViewEncodingAction::setCurrentCodec(int mib)
 {
     return setCurrentCodec(codecForMib(mib));
 }
-//END KateViewEncodingAction
+// END KateViewEncodingAction
 
-//BEGIN KateViewBar related classes
+// BEGIN KateViewBar related classes
 
 KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     : QWidget(parent)
@@ -2906,7 +2845,10 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
 }
 
 KateViewBar::KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivate *view)
-    : QWidget(parent), m_external(external), m_view(view), m_permanentBarWidget(nullptr)
+    : QWidget(parent)
+    , m_external(external)
+    , m_view(view)
+    , m_permanentBarWidget(nullptr)
 
 {
     m_layout = new QVBoxLayout(this);
@@ -3011,7 +2953,7 @@ void KateViewBar::hideCurrentBarWidget()
 
     // if we have any permanent widget, make it visible again
     if (m_permanentBarWidget) {
-        m_stack->setCurrentWidget (m_permanentBarWidget);
+        m_stack->setCurrentWidget(m_permanentBarWidget);
     } else {
         // else: hide the bar
         m_stack->hide();
@@ -3050,17 +2992,16 @@ void KateViewBar::keyPressEvent(QKeyEvent *event)
         return;
     }
     QWidget::keyPressEvent(event);
-
 }
 
 void KateViewBar::hideEvent(QHideEvent *event)
 {
     Q_UNUSED(event);
-//   if (!event->spontaneous())
-//     m_view->setFocus();
+    //   if (!event->spontaneous())
+    //     m_view->setFocus();
 }
 
-//END KateViewBar related classes
+// END KateViewBar related classes
 
 KatePasteMenu::KatePasteMenu(const QString &text, KTextEditor::ViewPrivate *view)
     : KActionMenu(text, view)

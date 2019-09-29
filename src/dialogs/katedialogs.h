@@ -43,9 +43,18 @@
 #include <QTreeWidget>
 
 class ModeConfigPage;
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
-namespace KTextEditor { class Message; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+namespace KTextEditor
+{
+class ViewPrivate;
+}
+namespace KTextEditor
+{
+class Message;
+}
 
 namespace KIO
 {
@@ -143,8 +152,12 @@ protected:
 public Q_SLOTS:
     void apply() override;
     void reload() override;
-    void reset() override {}
-    void defaults() override {}
+    void reset() override
+    {
+    }
+    void defaults() override
+    {
+    }
 
 private Q_SLOTS:
     void slotChanged();
@@ -166,8 +179,12 @@ protected:
 public Q_SLOTS:
     void apply() override;
     void reload() override;
-    void reset() override {}
-    void defaults() override {}
+    void reset() override
+    {
+    }
+    void defaults() override
+    {
+    }
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
@@ -190,14 +207,18 @@ private:
         MarkDown,
         NonLetters,
         MirrorChar,
-        UserData    // Ensure to keep it at bottom of this list
+        UserData // Ensure to keep it at bottom of this list
     };
 
 public Q_SLOTS:
     void apply() override;
     void reload() override;
-    void reset() override {}
-    void defaults() override {}
+    void reset() override
+    {
+    }
+    void defaults() override
+    {
+    }
 };
 
 class KateNavigationConfigTab : public KateConfigPage
@@ -215,8 +236,12 @@ private:
 public Q_SLOTS:
     void apply() override;
     void reload() override;
-    void reset() override {}
-    void defaults() override {}
+    void reset() override
+    {
+    }
+    void defaults() override
+    {
+    }
 };
 
 class KateSpellCheckConfigTab : public KateConfigPage
@@ -235,8 +260,12 @@ protected:
 public Q_SLOTS:
     void apply() override;
     void reload() override;
-    void reset() override {}
-    void defaults() override {}
+    void reset() override
+    {
+    }
+    void defaults() override
+    {
+    }
 
 private Q_SLOTS:
     void showWhatsThis(const QString &text);
@@ -309,8 +338,8 @@ public Q_SLOTS:
     void swapFileModeChanged(int);
 
 protected:
-    //why?
-    //KComboBox *m_encoding, *m_encodingDetection, *m_eol;
+    // why?
+    // KComboBox *m_encoding, *m_encodingDetection, *m_eol;
     QCheckBox *cbLocalFiles, *cbRemoteFiles;
     QCheckBox *replaceTabs, *removeSpaces, *allowEolDetection;
     class QSpinBox *blockCount;
@@ -339,9 +368,7 @@ public:
         Ignore,
         Close
     };
-    KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc,
-                      KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype,
-                      const QString &reason);
+    KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEditor::ModificationInterface::ModifiedOnDiskReason modtype, const QString &reason);
     ~KateModOnHdPrompt();
 
 Q_SIGNALS:
@@ -359,7 +386,7 @@ private Q_SLOTS:
 
 private Q_SLOTS:
     void slotDataAvailable(); ///< read data from the process
-    void slotPDone(); ///< Runs the diff file when done
+    void slotPDone();         ///< Runs the diff file when done
 
 private:
     KTextEditor::DocumentPrivate *m_doc;

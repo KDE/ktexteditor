@@ -56,7 +56,7 @@ ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
     //
     connect(ui->chkViCommandsOverride, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
     connect(ui->chkViRelLineNumbers, SIGNAL(toggled(bool)), this, SLOT(slotChanged()));
-    connect(ui->tblNormalModeMappings, SIGNAL(cellChanged(int,int)), this, SLOT(slotChanged()));
+    connect(ui->tblNormalModeMappings, SIGNAL(cellChanged(int, int)), this, SLOT(slotChanged()));
     connect(ui->btnAddNewRow, SIGNAL(clicked()), this, SLOT(addMappingRow()));
     connect(ui->btnAddNewRow, SIGNAL(clicked()), this, SLOT(slotChanged()));
     connect(ui->btnRemoveSelectedRows, SIGNAL(clicked()), this, SLOT(removeSelectedMappingRows()));
@@ -83,9 +83,7 @@ void ConfigTab::applyTab(QTableWidget *mappingsTable, Mappings::MappingMode mode
         QTableWidgetItem *recursive = mappingsTable->item(i, 2);
 
         if (from && to && recursive) {
-            const Mappings::MappingRecursion recursion = recursive->checkState() == Qt::Checked ?
-                    Mappings::Recursive :
-                    Mappings::NonRecursive;
+            const Mappings::MappingRecursion recursion = recursive->checkState() == Qt::Checked ? Mappings::Recursive : Mappings::NonRecursive;
             m_mappings->add(mode, from->text(), to->text(), recursion);
         }
     }
@@ -139,7 +137,7 @@ void ConfigTab::apply()
 void ConfigTab::reload()
 {
     // General options.
-    ui->chkViRelLineNumbers->setChecked( KateViewConfig::global()->viRelativeLineNumbers () );
+    ui->chkViRelLineNumbers->setChecked(KateViewConfig::global()->viRelativeLineNumbers());
     ui->chkViCommandsOverride->setChecked(KateViewConfig::global()->viInputModeStealKeys());
 
     // Mappings.
@@ -212,19 +210,18 @@ void ConfigTab::importNormalMappingRow()
     }
 
     QFile configFile(fileName);
-    if (! configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         KMessageBox::error(this, i18n("Unable to open the config file for reading."), i18n("Unable to open file"));
         return;
     }
 
     QTextStream stream(&configFile);
     const QRegularExpression mapleader(QStringLiteral("(\\w:)?mapleader"));
-    while (! stream.atEnd()) {
+    while (!stream.atEnd()) {
         QStringList line = stream.readLine().split(QLatin1Char(' '));
 
         // TODO - allow recursive mappings to be read.
-        if (line.size() > 2 && (line[0] == QLatin1String("noremap") || line[0] == QLatin1String("no")
-                                || line[0] == QLatin1String("nnoremap") || line [0] == QLatin1String("nn"))) {
+        if (line.size() > 2 && (line[0] == QLatin1String("noremap") || line[0] == QLatin1String("no") || line[0] == QLatin1String("nnoremap") || line[0] == QLatin1String("nn"))) {
             int rows = ui->tblNormalModeMappings->rowCount();
             ui->tblNormalModeMappings->insertRow(rows);
             ui->tblNormalModeMappings->setItem(rows, 0, new QTableWidgetItem(line[1]));
@@ -233,9 +230,7 @@ void ConfigTab::importNormalMappingRow()
             recursive->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
             recursive->setCheckState(Qt::Unchecked);
             ui->tblNormalModeMappings->setItem(rows, 2, recursive);
-        } else if (line.size() == 4 && line[0] == QLatin1String("let") &&
-                    line[2] == QLatin1String("=") &&
-                    mapleader.match(line[1]).hasMatch()) {
+        } else if (line.size() == 4 && line[0] == QLatin1String("let") && line[2] == QLatin1String("=") && mapleader.match(line[1]).hasMatch()) {
             const QStringRef leader = line[3].midRef(1, line[3].length() - 2);
             if (!leader.isEmpty()) {
                 m_mappings->setLeader(leader[0]);

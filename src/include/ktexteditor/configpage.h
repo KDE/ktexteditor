@@ -27,7 +27,6 @@
 
 namespace KTextEditor
 {
-
 /**
  * \brief Config page interface for the Editor and Plugin%s.
  *
@@ -128,4 +127,3 @@ private:
 }
 
 #endif
-

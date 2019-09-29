@@ -33,7 +33,6 @@ class KCompletion;
 
 namespace KTextEditor
 {
-
 class View;
 
 /**
@@ -133,8 +132,7 @@ public:
      *
      * \return \e true on success, otherwise \e false
      */
-    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg,
-                      const KTextEditor::Range &range = KTextEditor::Range::invalid()) = 0;
+    virtual bool exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range = KTextEditor::Range::invalid()) = 0;
 
     /**
      * Shows help for the given \p view and \p cmd string.
@@ -162,8 +160,7 @@ public:
      * \return a valid completion object or \e nullptr, if a completion object is
      *         not supported
      */
-    virtual KCompletion *completionObject(KTextEditor::View *view,
-                                          const QString &cmdname);
+    virtual KCompletion *completionObject(KTextEditor::View *view, const QString &cmdname);
 
     /**
      * Check, whether the command wants to process text interactively for the
@@ -199,7 +196,7 @@ private:
     /**
      * Private d-pointer
      */
-    class CommandPrivate * const d;
+    class CommandPrivate *const d;
 };
 
 }

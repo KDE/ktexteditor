@@ -29,20 +29,21 @@
 #include "katepartdebug.h"
 
 KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
-    : QObject(view),
-      m_view(view),
-      m_spellingMenuAction(nullptr),
-      m_ignoreWordAction(nullptr),
-      m_addToDictionaryAction(nullptr),
-      m_spellingMenu(nullptr),
-      m_currentMisspelledRange(nullptr), // we have to use 'm_currentMisspelledRange'
-      // as QSignalMapper doesn't work with pairs of objects;
-      // it just points to the object pointed to by either
-      // 'm_currentMouseMisspelledRange' or 'm_currentCaretMisspelledRange'
-      // TODO: pass the range into the lambda instead
-      m_currentMouseMisspelledRange(nullptr),
-      m_currentCaretMisspelledRange(nullptr),
-      m_useMouseForMisspelledRange(false)
+    : QObject(view)
+    , m_view(view)
+    , m_spellingMenuAction(nullptr)
+    , m_ignoreWordAction(nullptr)
+    , m_addToDictionaryAction(nullptr)
+    , m_spellingMenu(nullptr)
+    , m_currentMisspelledRange(nullptr)
+    , // we have to use 'm_currentMisspelledRange'
+    // as QSignalMapper doesn't work with pairs of objects;
+    // it just points to the object pointed to by either
+    // 'm_currentMouseMisspelledRange' or 'm_currentCaretMisspelledRange'
+    // TODO: pass the range into the lambda instead
+    m_currentMouseMisspelledRange(nullptr)
+    , m_currentCaretMisspelledRange(nullptr)
+    , m_useMouseForMisspelledRange(false)
 {
 }
 
@@ -120,7 +121,7 @@ void KateSpellingMenu::caretEnteredMisspelledRange(KTextEditor::MovingRange *ran
 void KateSpellingMenu::caretExitedMisspelledRange(KTextEditor::MovingRange *range)
 {
     if (range != m_currentCaretMisspelledRange) { // order of 'exit' and 'entered' signals
-        return;                                    // was wrong
+        return;                                   // was wrong
     }
     setEnabled(false);
     m_currentCaretMisspelledRange = nullptr;
@@ -137,7 +138,7 @@ void KateSpellingMenu::mouseEnteredMisspelledRange(KTextEditor::MovingRange *ran
 void KateSpellingMenu::mouseExitedMisspelledRange(KTextEditor::MovingRange *range)
 {
     if (range != m_currentMouseMisspelledRange) { // order of 'exit' and 'entered' signals
-        return;                                    // was wrong
+        return;                                   // was wrong
     }
     m_currentMouseMisspelledRange = nullptr;
 }
@@ -169,12 +170,10 @@ void KateSpellingMenu::setUseMouseForMisspelledRange(bool b)
 void KateSpellingMenu::populateSuggestionsMenu()
 {
     m_spellingMenu->clear();
-    if ((m_useMouseForMisspelledRange && !m_currentMouseMisspelledRange)
-            || (!m_useMouseForMisspelledRange && !m_currentCaretMisspelledRange)) {
+    if ((m_useMouseForMisspelledRange && !m_currentMouseMisspelledRange) || (!m_useMouseForMisspelledRange && !m_currentCaretMisspelledRange)) {
         return;
     }
-    m_currentMisspelledRange = (m_useMouseForMisspelledRange ? m_currentMouseMisspelledRange
-                                : m_currentCaretMisspelledRange);
+    m_currentMisspelledRange = (m_useMouseForMisspelledRange ? m_currentMouseMisspelledRange : m_currentCaretMisspelledRange);
     m_spellingMenu->addAction(m_ignoreWordAction);
     m_spellingMenu->addAction(m_addToDictionaryAction);
     m_spellingMenu->addSeparator();
@@ -219,4 +218,3 @@ void KateSpellingMenu::ignoreCurrentWord()
     KTextEditor::EditorPrivate::self()->spellCheckManager()->ignoreWord(misspelledWord, dictionary);
     m_view->doc()->clearMisspellingForWord(misspelledWord); // WARNING: 'm_currentMisspelledRange' is deleted here!
 }
-

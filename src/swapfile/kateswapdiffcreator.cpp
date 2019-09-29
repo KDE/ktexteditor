@@ -29,7 +29,7 @@
 
 #include <QDir>
 
-//BEGIN SwapDiffCreator
+// BEGIN SwapDiffCreator
 SwapDiffCreator::SwapDiffCreator(Kate::SwapFile *swapFile)
     : QObject(swapFile)
     , m_swapFile(swapFile)
@@ -96,10 +96,10 @@ void SwapDiffCreator::viewDiff()
     m_proc.setProcessChannelMode(QProcess::MergedChannels);
 
     connect(&m_proc, SIGNAL(readyRead()), this, SLOT(slotDataAvailable()), Qt::UniqueConnection);
-    connect(&m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotDiffFinished()), Qt::UniqueConnection);
+    connect(&m_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(slotDiffFinished()), Qt::UniqueConnection);
 
     // try to start diff process, if we can't be started be done with error
-    m_proc.start(QStringLiteral("diff"), QStringList() << QStringLiteral("-u") <<  m_originalFile.fileName() << m_recoveredFile.fileName());
+    m_proc.start(QStringLiteral("diff"), QStringList() << QStringLiteral("-u") << m_originalFile.fileName() << m_recoveredFile.fileName());
     if (!m_proc.waitForStarted()) {
         KMessageBox::sorry(nullptr,
                            i18n("The diff command could not be started. Please make sure that "
@@ -145,9 +145,7 @@ void SwapDiffCreator::slotDiffFinished()
 
     // sanity check: is there any diff content?
     if (m_diffFile.size() == 0) {
-        KMessageBox::information(nullptr,
-                                 i18n("The files are identical."),
-                                 i18n("Diff Output"));
+        KMessageBox::information(nullptr, i18n("The files are identical."), i18n("Diff Output"));
         deleteLater();
         return;
     }
@@ -162,5 +160,4 @@ void SwapDiffCreator::slotDiffFinished()
     deleteLater();
 }
 
-//END SwapDiffCreator
-
+// END SwapDiffCreator

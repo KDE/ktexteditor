@@ -53,4 +53,3 @@ bool MovingRange::overlaps(const Range &range) const
         return contains(range);
     }
 }
-

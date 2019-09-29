@@ -21,7 +21,7 @@
 #include "variableitem.h"
 #include "variableeditor.h"
 
-//BEGIN class VariableItem
+// BEGIN class VariableItem
 VariableItem::VariableItem(const QString &variable)
     : m_variable(variable)
     , m_active(false)
@@ -56,9 +56,9 @@ void VariableItem::setActive(bool active)
 {
     m_active = active;
 }
-//END class VariableItem
+// END class VariableItem
 
-//BEGIN class VariableIntItem
+// BEGIN class VariableIntItem
 VariableIntItem::VariableIntItem(const QString &variable, int value)
     : VariableItem(variable)
     , m_value(value)
@@ -107,9 +107,9 @@ int VariableIntItem::maxValue() const
 {
     return m_maxValue;
 }
-//END class VariableIntItem
+// END class VariableIntItem
 
-//BEGIN class VariableStringListItem
+// BEGIN class VariableStringListItem
 VariableStringListItem::VariableStringListItem(const QString &variable, const QStringList &slist, const QString &value)
     : VariableItem(variable)
     , m_list(slist)
@@ -146,9 +146,9 @@ VariableEditor *VariableStringListItem::createEditor(QWidget *parent)
 {
     return new VariableStringListEditor(this, parent);
 }
-//END class VariableStringListItem
+// END class VariableStringListItem
 
-//BEGIN class VariableBoolItem
+// BEGIN class VariableBoolItem
 VariableBoolItem::VariableBoolItem(const QString &variable, bool value)
     : VariableItem(variable)
     , m_value(value)
@@ -181,9 +181,9 @@ VariableEditor *VariableBoolItem::createEditor(QWidget *parent)
 {
     return new VariableBoolEditor(this, parent);
 }
-//END class VariableBoolItem
+// END class VariableBoolItem
 
-//BEGIN class VariableColorItem
+// BEGIN class VariableColorItem
 VariableColorItem::VariableColorItem(const QString &variable, const QColor &value)
     : VariableItem(variable)
     , m_value(value)
@@ -214,9 +214,9 @@ VariableEditor *VariableColorItem::createEditor(QWidget *parent)
 {
     return new VariableColorEditor(this, parent);
 }
-//END class VariableColorItem
+// END class VariableColorItem
 
-//BEGIN class VariableFontItem
+// BEGIN class VariableFontItem
 VariableFontItem::VariableFontItem(const QString &variable, const QFont &value)
     : VariableItem(variable)
     , m_value(value)
@@ -247,9 +247,9 @@ VariableEditor *VariableFontItem::createEditor(QWidget *parent)
 {
     return new VariableFontEditor(this, parent);
 }
-//END class VariableFontItem
+// END class VariableFontItem
 
-//BEGIN class VariableStringItem
+// BEGIN class VariableStringItem
 VariableStringItem::VariableStringItem(const QString &variable, const QString &value)
     : VariableItem(variable)
     , m_value(value)
@@ -280,9 +280,9 @@ VariableEditor *VariableStringItem::createEditor(QWidget *parent)
 {
     return new VariableStringEditor(this, parent);
 }
-//END class VariableStringItem
+// END class VariableStringItem
 
-//BEGIN class VariableSpellCheckItem
+// BEGIN class VariableSpellCheckItem
 VariableSpellCheckItem::VariableSpellCheckItem(const QString &variable, const QString &value)
     : VariableItem(variable)
     , m_value(value)
@@ -313,9 +313,9 @@ VariableEditor *VariableSpellCheckItem::createEditor(QWidget *parent)
 {
     return new VariableSpellCheckEditor(this, parent);
 }
-//END class VariableSpellCheckItem
+// END class VariableSpellCheckItem
 
-//BEGIN class VariableRemoveSpacesItem
+// BEGIN class VariableRemoveSpacesItem
 VariableRemoveSpacesItem::VariableRemoveSpacesItem(const QString &variable, int value)
     : VariableItem(variable)
     , m_value(value)
@@ -360,5 +360,4 @@ VariableEditor *VariableRemoveSpacesItem::createEditor(QWidget *parent)
 {
     return new VariableRemoveSpacesEditor(this, parent);
 }
-//END class VariableRemoveSpacesItem
-
+// END class VariableRemoveSpacesItem

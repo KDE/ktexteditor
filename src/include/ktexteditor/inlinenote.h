@@ -29,10 +29,13 @@
 
 class QFont;
 class KateInlineNoteData;
-namespace KTextEditor { class InlineNoteProvider; }
+namespace KTextEditor
+{
+class InlineNoteProvider;
+}
 
-namespace KTextEditor {
-
+namespace KTextEditor
+{
 /**
  * Describes an inline note.
  *
@@ -56,7 +59,7 @@ public:
      * InlineNoteProvider::inlineNotes(), and then passed around as handles
      * grouping useful information.
      */
-    InlineNote(const KateInlineNoteData & data);
+    InlineNote(const KateInlineNoteData &data);
 
     /**
      * Returns the width of this note in pixels.
@@ -66,12 +69,12 @@ public:
     /**
      * The provider which created this note
      */
-    InlineNoteProvider* provider() const;
+    InlineNoteProvider *provider() const;
 
     /**
      * The View this note is shown in.
      */
-    const KTextEditor::View* view() const;
+    const KTextEditor::View *view() const;
 
     /**
      * The cursor position of this note.
@@ -103,7 +106,7 @@ public:
 
 private:
     // Internal implementation data structure.
-    const KateInlineNoteData & d;
+    const KateInlineNoteData &d;
 };
 
 }

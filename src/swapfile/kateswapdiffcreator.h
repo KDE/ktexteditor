@@ -43,7 +43,7 @@ public Q_SLOTS:
     void viewDiff();
 
 private:
-    Kate::SwapFile * const m_swapFile;
+    Kate::SwapFile *const m_swapFile;
 
 protected Q_SLOTS:
     void slotDataAvailable();
@@ -56,5 +56,4 @@ private:
     QTemporaryFile m_diffFile;
 };
 
-#endif //KATE_SWAP_DIFF_CREATOR_H
-
+#endif // KATE_SWAP_DIFF_CREATOR_H

@@ -31,52 +31,41 @@
 
 using namespace KateVi;
 
-#define ADDCMD(STR,FUNC, FLGS) m_commands.push_back( \
-        new Command( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
+#define ADDCMD(STR, FUNC, FLGS) m_commands.push_back(new Command(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
 
-#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back( new \
-        Motion( this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS ) );
+#define ADDMOTION(STR, FUNC, FLGS) m_motions.push_back(new Motion(this, QStringLiteral(STR), &NormalViMode::FUNC, FLGS));
 
-VisualViMode::VisualViMode(InputModeManager *viInputModeManager,
-                           KTextEditor::ViewPrivate *view,
-                           KateViewInternal *viewInternal)
+VisualViMode::VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal)
     : NormalViMode(viInputModeManager, view, viewInternal)
 {
     m_start.setPosition(-1, -1);
     m_mode = ViMode::VisualMode;
     initializeCommands();
 
-    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View*)),
-            this, SLOT(updateSelection()));
+    connect(m_view, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(updateSelection()));
 }
 
 VisualViMode::~VisualViMode()
 {
 }
 
-void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1,
-                                   const KTextEditor::Cursor &c2)
+void VisualViMode::selectInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2)
 {
     if (c1 >= c2) {
-        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
-                                                c2.line(), c2.column()));
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
-        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
-                                                c2.line(), c2.column() + 1));
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(), c2.line(), c2.column() + 1));
     }
 }
 
-void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor &c1,
-                                        const KTextEditor::Cursor &c2)
+void VisualViMode::selectBlockInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2)
 {
     m_view->setBlockSelection(true);
 
     if (c1.column() >= c2.column()) {
-        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1,
-                                                c2.line(), c2.column()));
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column() + 1, c2.line(), c2.column()));
     } else {
-        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(),
-                                                c2.line(), c2.column() + 1));
+        m_view->setSelection(KTextEditor::Range(c1.line(), c1.column(), c2.line(), c2.column() + 1));
     }
 }
 
@@ -86,8 +75,7 @@ void VisualViMode::selectLines(const KTextEditor::Range &range)
     int eline = qMax(range.start().line(), range.end().line());
     int ecol = m_view->doc()->lineLength(eline) + 1;
 
-    m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(sline, 0),
-                                            KTextEditor::Cursor(eline, ecol)));
+    m_view->setSelection(KTextEditor::Range(KTextEditor::Cursor(sline, 0), KTextEditor::Cursor(eline, ecol)));
 }
 
 void VisualViMode::goToPos(const Range &r)
@@ -126,9 +114,7 @@ void VisualViMode::goToPos(const Range &r)
         selectBlockInclusive(m_start, c);
 
         // Need to correct command range to make it inclusive.
-        if ((c.line() < m_start.line() && c.column() > m_start.column()) ||
-            (c.line() > m_start.line() && c.column() < m_start.column())) {
-
+        if ((c.line() < m_start.line() && c.column() > m_start.column()) || (c.line() > m_start.line() && c.column() < m_start.column())) {
             qSwap(m_commandRange.endColumn, m_commandRange.startColumn);
         }
         return;
@@ -216,9 +202,7 @@ void VisualViMode::init()
 
 void VisualViMode::setVisualModeType(ViMode mode)
 {
-    Q_ASSERT(mode == ViMode::VisualMode ||
-             mode == ViMode::VisualLineMode ||
-             mode == ViMode::VisualBlockMode);
+    Q_ASSERT(mode == ViMode::VisualMode || mode == ViMode::VisualLineMode || mode == ViMode::VisualBlockMode);
     m_mode = mode;
 }
 

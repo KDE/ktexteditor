@@ -83,16 +83,16 @@ private:
      */
     QString m_requiredStyle;
     /**
-    * If this script is an indenter, then the indentLanguages member specifies
-    * which languages this is an indenter for. The values must correspond with
-    * the name of a programming language given in a highlighting file (e.g "TI Basic")
-    */
+     * If this script is an indenter, then the indentLanguages member specifies
+     * which languages this is an indenter for. The values must correspond with
+     * the name of a programming language given in a highlighting file (e.g "TI Basic")
+     */
     QStringList m_indentLanguages;
     /**
-    * If this script is an indenter, this value controls the priority it will take
-    * when an indenter for one of the supported languages is requested and multiple
-    * indenters are found
-    */
+     * If this script is an indenter, this value controls the priority it will take
+     * when an indenter for one of the supported languages is requested and multiple
+     * indenters are found
+     */
     int m_priority = 0;
 
     /**
@@ -117,8 +117,7 @@ public:
      * Returns a pair where the first value is the indent amount, and the second
      * value is the alignment.
      */
-    QPair<int, int> indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position,
-                           QChar typedCharacter, int indentWidth);
+    QPair<int, int> indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedCharacter, int indentWidth);
 
 private:
     QString m_triggerCharacters;
@@ -127,4 +126,3 @@ private:
 };
 
 #endif
-

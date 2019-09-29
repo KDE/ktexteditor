@@ -41,12 +41,9 @@ KTextEditor::Range KateMatch::replace(const QString &replacement, bool blockMode
 {
     // Placeholders depending on search mode
     // skip place-holder stuff if we have no \ at all inside the replacement, the buildReplacement is expensive
-    const bool usePlaceholders = (m_options.testFlag(KTextEditor::Regex) ||
-                                 m_options.testFlag(KTextEditor::EscapeSequences))
-                                 && replacement.contains(QLatin1Char('\\'));
+    const bool usePlaceholders = (m_options.testFlag(KTextEditor::Regex) || m_options.testFlag(KTextEditor::EscapeSequences)) && replacement.contains(QLatin1Char('\\'));
 
-    const QString finalReplacement = usePlaceholders ? buildReplacement(replacement, blockMode, replacementCounter)
-                                     : replacement;
+    const QString finalReplacement = usePlaceholders ? buildReplacement(replacement, blockMode, replacementCounter) : replacement;
 
     // Track replacement operation, reuse range if already there
     if (m_afterReplaceRange) {
@@ -90,4 +87,3 @@ QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, 
 
     return KateRegExpSearch::buildReplacement(replacement, capturedTexts, replacementCounter);
 }
-

@@ -38,7 +38,6 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
-
 class DocumentPrivate;
 class EditingTransactionPrivate;
 class MainWindow;
@@ -56,20 +55,20 @@ class View;
  * \author Sebastian Pipping \<webmaster@hartwork.org\>
  */
 enum SearchOption {
-    Default             = 0,      ///< Default settings
+    Default = 0, ///< Default settings
 
     // modes
-    Regex               = 1 << 1, ///< Treats the pattern as a regular expression
+    Regex = 1 << 1, ///< Treats the pattern as a regular expression
 
     // options for all modes
-    CaseInsensitive     = 1 << 4, ///< Ignores cases, e.g. "a" matches "A"
-    Backwards           = 1 << 5, ///< Searches in backward direction
+    CaseInsensitive = 1 << 4, ///< Ignores cases, e.g. "a" matches "A"
+    Backwards = 1 << 5,       ///< Searches in backward direction
 
     // options for plaintext
-    EscapeSequences     = 1 << 10, ///< Plaintext mode: Processes escape sequences
-    WholeWords          = 1 << 11, ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
+    EscapeSequences = 1 << 10, ///< Plaintext mode: Processes escape sequences
+    WholeWords = 1 << 11,      ///< Plaintext mode: Whole words only, e.g. @em not &quot;amp&quot; in &quot;example&quot;
 
-    MaxSearchOption     = 1 << 31  ///< Placeholder for binary compatibility
+    MaxSearchOption = 1 << 31 ///< Placeholder for binary compatibility
 };
 
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
@@ -479,51 +478,52 @@ public:
      *
      * @see editingStarted(), editingFinished()
      */
-    class KTEXTEDITOR_EXPORT EditingTransaction {
-        public:
-            /**
-             * Constructs the object and starts an editing transaction by
-             * calling start().
-             *
-             * @param document document for the transaction
-             * @see start()
-             */
-            explicit EditingTransaction(Document *document);
+    class KTEXTEDITOR_EXPORT EditingTransaction
+    {
+    public:
+        /**
+         * Constructs the object and starts an editing transaction by
+         * calling start().
+         *
+         * @param document document for the transaction
+         * @see start()
+         */
+        explicit EditingTransaction(Document *document);
 
-            /**
-             * Destructs the object and, if needed, finishes a running editing
-             * transaction by calling finish().
-             *
-             * @see finish()
-             */
-            ~EditingTransaction();
+        /**
+         * Destructs the object and, if needed, finishes a running editing
+         * transaction by calling finish().
+         *
+         * @see finish()
+         */
+        ~EditingTransaction();
 
-            /**
-             * By calling start(), the editing transaction can be started again.
-             * This function only is of use in combination with finish().
-             *
-             * @see finish()
-             */
-            void start();
+        /**
+         * By calling start(), the editing transaction can be started again.
+         * This function only is of use in combination with finish().
+         *
+         * @see finish()
+         */
+        void start();
 
-            /**
-             * By calling finish(), the editing transaction can be finished
-             * already before destruction of this instance.
-             *
-             * @see start()
-             */
-            void finish();
+        /**
+         * By calling finish(), the editing transaction can be finished
+         * already before destruction of this instance.
+         *
+         * @see start()
+         */
+        void finish();
 
-        private:
-            /**
-             * no copying allowed
-             */
-            Q_DISABLE_COPY(EditingTransaction)
+    private:
+        /**
+         * no copying allowed
+         */
+        Q_DISABLE_COPY(EditingTransaction)
 
-            /**
-             * private d-pointer
-             */
-            EditingTransactionPrivate *const d;
+        /**
+         * private d-pointer
+         */
+        EditingTransactionPrivate *const d;
     };
 
     /**
@@ -611,7 +611,7 @@ public:
      *
      * \since 5.0
      */
-    virtual bool isValidTextPosition(const KTextEditor::Cursor& cursor) const = 0;
+    virtual bool isValidTextPosition(const KTextEditor::Cursor &cursor) const = 0;
 
     /**
      * Get the document content within the given \p range.
@@ -685,7 +685,8 @@ public:
      * A Range which encompasses the whole document.
      * \return A range from the start to the end of the document
      */
-    inline Range documentRange() const {
+    inline Range documentRange() const
+    {
         return Range(Cursor::start(), documentEnd());
     }
 
@@ -716,7 +717,8 @@ public:
      * \param line line
      * \see lineLength(), line()
      */
-    inline Cursor endOfLine(int line) const {
+    inline Cursor endOfLine(int line) const
+    {
         return Cursor(line, lineLength(line));
     }
 
@@ -849,9 +851,7 @@ public:
      *
      * \since 5.11
      */
-    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range,
-                                           const QString &pattern,
-                                           const SearchOptions options = Default) const;
+    QVector<KTextEditor::Range> searchText(const KTextEditor::Range &range, const QString &pattern, const SearchOptions options = Default) const;
 
     /*
      * SIGNALS
@@ -1179,4 +1179,3 @@ private:
 Q_DECLARE_METATYPE(KTextEditor::Document *)
 
 #endif
-

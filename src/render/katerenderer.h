@@ -33,8 +33,14 @@
 #include <QTextLine>
 #include <QFlags>
 
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateRendererConfig;
 class KateRenderRange;
 namespace Kate
@@ -66,12 +72,7 @@ public:
      * ## \__,_|        ##\__,_|#          \__,_|         ##\__,_|#
      * ##               #########        #########        #########
      */
-    enum caretStyles {
-        Line,
-        Block,
-        Underline,
-        Half
-    };
+    enum caretStyles { Line, Block, Underline, Half };
 
     /**
      * Constructor
@@ -87,7 +88,7 @@ public:
     ~KateRenderer();
 
     KateRenderer(const KateRenderer &) = delete;
-    KateRenderer& operator=(const KateRenderer &) = delete;
+    KateRenderer &operator=(const KateRenderer &) = delete;
 
     /**
      * Returns the document to which this renderer is bound
@@ -184,10 +185,10 @@ public:
         return m_showSpaces;
     }
 
-	/**
-	 * Update marker size shown.
-    */
-	 void updateMarkerSize();
+    /**
+     * Update marker size shown.
+     */
+    void updateMarkerSize();
 
     /**
      * @returns whether non-printable spaces should be shown

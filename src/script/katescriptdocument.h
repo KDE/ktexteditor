@@ -30,7 +30,10 @@
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 /**
  * Thinish wrapping around KTextEditor::DocumentPrivate, exposing the methods we want exposed
@@ -49,7 +52,7 @@ public:
     void setDocument(KTextEditor::DocumentPrivate *document);
     KTextEditor::DocumentPrivate *document();
 
-    //BEGIN
+    // BEGIN
     Q_INVOKABLE QString fileName();
     Q_INVOKABLE QString url();
     Q_INVOKABLE QString mimeType();
@@ -116,7 +119,7 @@ public:
     Q_INVOKABLE QJSValue documentRange();
     Q_INVOKABLE QJSValue documentEnd();
     Q_INVOKABLE bool isValidTextPosition(int line, int column);
-    Q_INVOKABLE bool isValidTextPosition(const QJSValue& cursor);
+    Q_INVOKABLE bool isValidTextPosition(const QJSValue &cursor);
 
     /**
      * Get the syntax highlighting attribute at a given position in the document.
@@ -144,7 +147,7 @@ public:
 
     Q_INVOKABLE QString variable(const QString &s);
     Q_INVOKABLE void setVariable(const QString &s, const QString &v);
-    //END
+    // END
 
     Q_INVOKABLE int firstVirtualColumn(int line);
     Q_INVOKABLE int lastVirtualColumn(int line);
@@ -194,4 +197,3 @@ private:
 };
 
 #endif
-

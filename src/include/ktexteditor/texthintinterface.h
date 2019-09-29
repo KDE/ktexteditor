@@ -28,7 +28,6 @@
 
 namespace KTextEditor
 {
-
 class TextHintProvider;
 class View;
 
@@ -99,7 +98,7 @@ public:
      * @param provider text hint provider to unregister
      * @see registerTextHintProvider(), TextHintProvider
      */
-    virtual void unregisterTextHintProvider(KTextEditor::TextHintProvider * provider) = 0;
+    virtual void unregisterTextHintProvider(KTextEditor::TextHintProvider *provider) = 0;
 
     /**
      * Set the text hint delay to \p delay milliseconds.
@@ -123,7 +122,7 @@ public:
     virtual int textHintDelay() const = 0;
 
 private:
-    class TextHintInterfacePrivate * const d = nullptr;
+    class TextHintInterfacePrivate *const d = nullptr;
 };
 
 /**
@@ -171,11 +170,10 @@ public:
      * \param position text cursor under the mouse position
      * \return text tool tip to be displayed, may be Qt richtext
      */
-    virtual QString textHint(KTextEditor::View *view,
-                             const KTextEditor::Cursor &position) = 0;
+    virtual QString textHint(KTextEditor::View *view, const KTextEditor::Cursor &position) = 0;
 
 private:
-    class TextHintProviderPrivate * const d = nullptr;
+    class TextHintProviderPrivate *const d = nullptr;
 };
 
 }

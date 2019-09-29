@@ -25,9 +25,9 @@
 
 using namespace KateVi;
 
-InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view)
-    : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view),
-      m_isActive(false)
+InteractiveSedReplaceMode::InteractiveSedReplaceMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view)
+    : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view)
+    , m_isActive(false)
 {
     m_interactiveSedReplaceLabel = new QLabel();
     m_interactiveSedReplaceLabel->setObjectName(QStringLiteral("interactivesedreplace"));
@@ -48,7 +48,7 @@ void InteractiveSedReplaceMode::activate(QSharedPointer<SedReplace::InteractiveS
     moveCursorTo(interactiveSedReplace->currentMatch().start());
 }
 
-bool InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
+bool InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent *keyEvent)
 {
     // TODO - it would be better to use e.g. keyEvent->key() == Qt::Key_Y instead of keyEvent->text() == "y",
     // but this would require some slightly dicey changes to the "feed key press" code in order to make it work
@@ -84,14 +84,14 @@ bool InteractiveSedReplaceMode::handleKeyPress(const QKeyEvent* keyEvent)
     return false;
 }
 
-void InteractiveSedReplaceMode::deactivate( bool wasAborted )
+void InteractiveSedReplaceMode::deactivate(bool wasAborted)
 {
     Q_UNUSED(wasAborted);
     m_isActive = false;
     m_interactiveSedReplaceLabel->hide();
 }
 
-QWidget* InteractiveSedReplaceMode::label()
+QWidget *InteractiveSedReplaceMode::label()
 {
     return m_interactiveSedReplaceLabel;
 }

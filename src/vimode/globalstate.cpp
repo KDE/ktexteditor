@@ -78,7 +78,5 @@ void GlobalState::readConfig(const KConfig *configFile)
 KSharedConfigPtr GlobalState::config() const
 {
     // use dummy config for unit tests!
-    return KTextEditor::EditorPrivate::unitTestMode()
-            ? KSharedConfig::openConfig(QStringLiteral("katevirc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation)
-            : KSharedConfig::openConfig(QStringLiteral("katevirc"));
+    return KTextEditor::EditorPrivate::unitTestMode() ? KSharedConfig::openConfig(QStringLiteral("katevirc-unittest"), KConfig::SimpleConfig, QStandardPaths::TempLocation) : KSharedConfig::openConfig(QStringLiteral("katevirc"));
 }

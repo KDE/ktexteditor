@@ -49,14 +49,12 @@ KateAnimation::KateAnimation(KMessageWidget *widget, EffectType effect)
 
 bool KateAnimation::isHideAnimationRunning() const
 {
-    return m_fadeEffect ? m_fadeEffect->isHideAnimationRunning()
-        : m_widget->isHideAnimationRunning();
+    return m_fadeEffect ? m_fadeEffect->isHideAnimationRunning() : m_widget->isHideAnimationRunning();
 }
 
 bool KateAnimation::isShowAnimationRunning() const
 {
-    return m_fadeEffect ? m_fadeEffect->isShowAnimationRunning()
-        : m_widget->isShowAnimationRunning();
+    return m_fadeEffect ? m_fadeEffect->isShowAnimationRunning() : m_widget->isShowAnimationRunning();
 }
 
 void KateAnimation::show()
@@ -83,9 +81,8 @@ void KateAnimation::hide()
     Q_ASSERT(m_widget != nullptr);
 
     // hide according to effects config
-    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget)
-            || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
-       ) {
+    if (m_widget->style()->styleHint(QStyle::SH_Widget_Animate, nullptr, m_widget) || KTextEditor::EditorPrivate::unitTestMode() // due to timing issues in the unit test
+    ) {
         // hide depending on effect
         if (m_fadeEffect) {
             m_fadeEffect->fadeOut();
@@ -97,4 +94,3 @@ void KateAnimation::hide()
         emit widgetHidden();
     }
 }
-

@@ -68,9 +68,9 @@ public:
 Q_SIGNALS:
     void changed();
 
-//
-// methods to get the default style count + names
-//
+    //
+    // methods to get the default style count + names
+    //
 public:
     /**
      * Return the number of default styles.

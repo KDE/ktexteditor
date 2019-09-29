@@ -25,18 +25,22 @@
 
 namespace KateVi
 {
-
 class KTEXTEDITOR_EXPORT History
 {
-
 public:
     explicit History() = default;
     ~History() = default;
 
     void append(const QString &historyItem);
-    inline const QStringList &items() const { return m_items; }
+    inline const QStringList &items() const
+    {
+        return m_items;
+    }
     void clear();
-    inline bool isEmpty() { return m_items.isEmpty(); }
+    inline bool isEmpty()
+    {
+        return m_items.isEmpty();
+    }
 
 private:
     QStringList m_items;

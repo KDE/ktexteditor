@@ -28,13 +28,13 @@
 
 #include <KLocalizedString>
 
-
-%{APPNAME}View::%{APPNAME}View(%{APPNAME}Plugin* plugin, KTextEditor::MainWindow* mainwindow)
+% {APPNAME} View:: %
+    {APPNAME} View(% {APPNAME} Plugin * plugin, KTextEditor::MainWindow *mainwindow)
     : QObject(mainwindow)
 {
     Q_UNUSED(plugin);
 }
 
-%{APPNAME}View::~%{APPNAME}View()
+% {APPNAME} View::~ % {APPNAME} View()
 {
 }

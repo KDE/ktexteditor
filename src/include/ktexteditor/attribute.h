@@ -31,7 +31,6 @@ class QAction;
 
 namespace KTextEditor
 {
-
 /**
  * The following lists all valid default styles that are used for the syntax
  * highlighting files in the itemData's defStyleNum attribute.
@@ -164,7 +163,7 @@ public:
      * The resulting Attribute has no properties set to begin with.
      */
     Attribute();
-    
+
     /**
      * Construct attribute with given name & default style properties.
      * @param name attribute name
@@ -182,7 +181,7 @@ public:
      */
     virtual ~Attribute();
 
-    //BEGIN custom properties
+    // BEGIN custom properties
 
     /**
      * \name Custom properties
@@ -191,45 +190,45 @@ public:
      * rendering by editor implementations.
      * \{
      */
-    
+
     /**
      * Attribute name
-     * 
+     *
      * \return attribute name
      */
     QString name() const;
-    
+
     /**
      * Set attribute name
-     * 
+     *
      * \param name new attribute name
      */
     void setName(const QString &name);
 
     /**
      * Default style of this attribute
-     * 
+     *
      * \return default style
      */
     DefaultStyle defaultStyle() const;
-    
+
     /**
      * Set default style of this attribute
-     * 
+     *
      * \param style new default style
      */
     void setDefaultStyle(DefaultStyle style);
 
     /**
      * Should spellchecking be skipped?
-     * 
+     *
      * \return skip spellchecking?
      */
     bool skipSpellChecking() const;
-    
+
     /**
      * Set if we should spellchecking be skipped?
-     * 
+     *
      * @param skipspellchecking should spellchecking be skipped?
      */
     void setSkipSpellChecking(bool skipspellchecking);
@@ -328,9 +327,9 @@ public:
      */
     bool hasAnyProperty() const;
 
-    //END
+    // END
 
-    //BEGIN Dynamic highlighting
+    // BEGIN Dynamic highlighting
 
     /**
      * \name Dynamic highlighting
@@ -373,7 +372,7 @@ public:
 
     //!\}
 
-    //END
+    // END
 
     /**
      * Addition assignment operator.  Use this to merge another Attribute with this Attribute.
@@ -414,7 +413,10 @@ public:
      * Constructor of AttributeBlock.
      */
     AttributeBlock(int _start, int _length, const Attribute::Ptr &_attribute)
-        : start(_start), length(_length), attribute(_attribute) {
+        : start(_start)
+        , length(_length)
+        , attribute(_attribute)
+    {
     }
 
     /**

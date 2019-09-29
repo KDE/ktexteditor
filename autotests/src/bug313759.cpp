@@ -59,7 +59,7 @@ void BugTest::tryCrash()
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc->createView(nullptr));
     bool outputWasCustomised = false;
     TestScriptEnv *env = new TestScriptEnv(doc, outputWasCustomised);
-    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR"bug313759.txt"));
+    const QUrl url = QUrl::fromLocalFile(QLatin1String(TEST_DATA_DIR "bug313759.txt"));
     doc->openUrl(url);
 
     // load moveLinesDown and moveLinesUp
@@ -81,14 +81,14 @@ void BugTest::tryCrash()
 
     // evaluate test-script
     qDebug() << "attempting crash by moving lines w/ otf spell checking enabled";
-    QFile sourceFile(QLatin1String(TEST_DATA_DIR"bug313759.js"));
+    QFile sourceFile(QLatin1String(TEST_DATA_DIR "bug313759.js"));
     QVERIFY(sourceFile.open(QFile::ReadOnly));
     QTextStream stream(&sourceFile);
     stream.setCodec("UTF8");
     QString code = stream.readAll();
     sourceFile.close();
     // execute script
-    result = env->engine()->evaluate(code, QLatin1String(TEST_DATA_DIR"bug313759.txt"), 1);
+    result = env->engine()->evaluate(code, QLatin1String(TEST_DATA_DIR "bug313759.txt"), 1);
     QVERIFY2(!result.isError(), result.toString().toUtf8().constData());
 
     doc->editEnd();

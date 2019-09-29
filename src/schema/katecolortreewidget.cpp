@@ -35,7 +35,7 @@
 #include <qdrawutil.h>
 #include <QColorDialog>
 
-//BEGIN KateColorTreeItem
+// BEGIN KateColorTreeItem
 class KateColorTreeItem : public QTreeWidgetItem
 {
 public:
@@ -92,9 +92,9 @@ public:
 private:
     KateColorItem m_colorItem;
 };
-//END KateColorTreeItem
+// END KateColorTreeItem
 
-//BEGIN KateColorTreeDelegate
+// BEGIN KateColorTreeDelegate
 class KateColorTreeDelegate : public QStyledItemDelegate
 {
 public:
@@ -154,7 +154,7 @@ public:
         Q_ASSERT(index.isValid());
         Q_ASSERT(index.column() >= 0 && index.column() <= 2);
 
-        //BEGIN: draw toplevel items
+        // BEGIN: draw toplevel items
         if (!index.parent().isValid()) {
             QStyleOptionViewItem opt(option);
             const QRegion cl = painter->clipRegion();
@@ -164,9 +164,9 @@ public:
             painter->setClipRegion(cl);
             return;
         }
-        //END: draw toplevel items
+        // END: draw toplevel items
 
-        //BEGIN: draw background of category for all other items
+        // BEGIN: draw background of category for all other items
         {
             QStyleOptionViewItem opt(option);
             opt.rect = fullCategoryRect(option, index);
@@ -184,7 +184,7 @@ public:
             painter->setClipRegion(cl);
             painter->setRenderHint(QPainter::Antialiasing, false);
         }
-        //END: draw background of category for all other items
+        // END: draw background of category for all other items
 
         // paint the text
         QStyledItemDelegate::paint(painter, option, index);
@@ -195,9 +195,8 @@ public:
         painter->setClipRect(option.rect);
         KateColorTreeItem *item = dynamic_cast<KateColorTreeItem *>(m_tree->itemFromIndex(index));
 
-        //BEGIN: draw color button
+        // BEGIN: draw color button
         if (index.column() == 1) {
-
             QColor color = item->useDefaultColor() ? item->defaultColor() : item->color();
 
             QStyleOptionButton opt;
@@ -211,9 +210,9 @@ public:
 
             qDrawShadePanel(painter, opt.rect, opt.palette, true, 1, nullptr);
         }
-        //END: draw color button
+        // END: draw color button
 
-        //BEGIN: draw reset icon
+        // BEGIN: draw reset icon
         if (index.column() == 2 && !item->useDefaultColor()) {
             // get right pixmap
             const bool enabled = (option.state & QStyle::State_MouseOver || option.state & QStyle::State_HasFocus);
@@ -223,14 +222,14 @@ public:
             const QRect rect(option.rect.left() + 10, option.rect.top() + (option.rect.height() - p.height() / p.devicePixelRatio() + 1) / 2, p.width() / p.devicePixelRatio(), p.height() / p.devicePixelRatio());
             painter->drawPixmap(rect, p);
         }
-        //END: draw reset icon
+        // END: draw reset icon
     }
 
 private:
     KateColorTreeWidget *m_tree;
     KateCategoryDrawer m_categoryDrawer;
 };
-//END KateColorTreeDelegate
+// END KateColorTreeDelegate
 
 KateColorTreeWidget::KateColorTreeWidget(QWidget *parent)
     : QTreeWidget(parent)
@@ -238,9 +237,9 @@ KateColorTreeWidget::KateColorTreeWidget(QWidget *parent)
     setItemDelegate(new KateColorTreeDelegate(this));
 
     QStringList headers;
-    headers << QString() // i18nc("@title:column the color name", "Color Role")
-            << QString() // i18nc("@title:column a color button", "Color")
-            << QString();// i18nc("@title:column use default color", "Reset")
+    headers << QString()  // i18nc("@title:column the color name", "Color Role")
+            << QString()  // i18nc("@title:column a color button", "Color")
+            << QString(); // i18nc("@title:column use default color", "Reset")
     setHeaderLabels(headers);
     setHeaderHidden(true);
     setRootIsDecorated(false);
@@ -261,12 +260,13 @@ bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
     }
 
     switch (trigger) {
-    case QAbstractItemView::DoubleClicked:
-    case QAbstractItemView::SelectedClicked:
-    case QAbstractItemView::EditKeyPressed: // = F2
-        accept = true;
-        break;
-    default: break;
+        case QAbstractItemView::DoubleClicked:
+        case QAbstractItemView::SelectedClicked:
+        case QAbstractItemView::EditKeyPressed: // = F2
+            accept = true;
+            break;
+        default:
+            break;
     }
 
     if (accept) {
@@ -383,4 +383,3 @@ QColor KateColorTreeWidget::findColor(const QString &key) const
     }
     return QColor();
 }
-

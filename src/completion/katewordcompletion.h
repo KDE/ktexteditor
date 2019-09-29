@@ -57,8 +57,7 @@ public:
     bool shouldStartCompletion(KTextEditor::View *view, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor &position) override;
     bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion) override;
 
-    void saveMatches(KTextEditor::View *view,
-                     const KTextEditor::Range &range);
+    void saveMatches(KTextEditor::View *view, const KTextEditor::Range &range);
 
     int rowCount(const QModelIndex &parent) const override;
 
@@ -73,7 +72,7 @@ public:
 
     QStringList allMatches(KTextEditor::View *view, const KTextEditor::Range &range) const;
 
-    void executeCompletionItem (KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
+    void executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const override;
 
 private:
     QStringList m_matches;
@@ -111,4 +110,3 @@ private:
 };
 
 #endif // _DocWordCompletionPlugin_h_
-

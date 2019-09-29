@@ -30,7 +30,10 @@
 #include <sonnet/backgroundchecker.h>
 #include <sonnet/speller.h>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 class KateSpellCheckManager : public QObject
 {
@@ -61,14 +64,11 @@ Q_SIGNALS:
     void wordIgnored(const QString &word);
 
 public:
-    QList<QPair<KTextEditor::Range, QString> > spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckLanguageRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range);
 
-    QList<QPair<KTextEditor::Range, QString> > spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range,
-            const QString &dictionary = QString(),
-            bool singleLine = false,
-            bool returnSingleRange = false);
-    QList<QPair<KTextEditor::Range, QString> > spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range,
-            bool singleLine = false);
+    QList<QPair<KTextEditor::Range, QString>>
+    spellCheckWrtHighlightingRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, const QString &dictionary = QString(), bool singleLine = false, bool returnSingleRange = false);
+    QList<QPair<KTextEditor::Range, QString>> spellCheckRanges(KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &range, bool singleLine = false);
 
     void replaceCharactersEncodedIfNecessary(const QString &newWord, KTextEditor::DocumentPrivate *doc, const KTextEditor::Range &replacementRange);
 
@@ -77,4 +77,3 @@ private:
 };
 
 #endif
-

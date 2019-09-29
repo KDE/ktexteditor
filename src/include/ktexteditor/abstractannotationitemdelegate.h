@@ -28,7 +28,6 @@
 class QHelpEvent;
 class QPoint;
 
-
 namespace KTextEditor
 {
 class AnnotationModel;
@@ -67,7 +66,7 @@ public:
      *
      * There is always a view set.
      */
-    KTextEditor::View* view = nullptr;
+    KTextEditor::View *view = nullptr;
     /**
      * Recommended size for icons or other symbols that will be rendered by the delegate
      *
@@ -84,10 +83,10 @@ public:
      * displayed lines which belong to the same group of annotation items
      */
     enum AnnotationItemGroupPosition {
-        InvalidGroupPosition = 0,  ///< Position not specified or not belonging to a group
-        InGroup =    0x1 << 0,     ///< Real line belongs to a group
-        GroupBegin = 0x1 << 1,     ///< Real line is first of consecutive lines from same group
-        GroupEnd =   0x1 << 2,     ///< Real line is last of consecutive lines from same group
+        InvalidGroupPosition = 0, ///< Position not specified or not belonging to a group
+        InGroup = 0x1 << 0,       ///< Real line belongs to a group
+        GroupBegin = 0x1 << 1,    ///< Real line is first of consecutive lines from same group
+        GroupEnd = 0x1 << 2,      ///< Real line is last of consecutive lines from same group
     };
     Q_DECLARE_FLAGS(AnnotationItemGroupPositions, AnnotationItemGroupPosition)
 
@@ -104,7 +103,6 @@ public:
 protected:
     explicit StyleOptionAnnotationItem(int version);
 };
-
 
 /**
  * \brief A delegate for rendering line annotation information and handling events
@@ -146,8 +144,7 @@ public:
      *
      * Reimplement this in line with sizeHint().
      */
-    virtual void paint(QPainter *painter, const KTextEditor::StyleOptionAnnotationItem &option,
-                       KTextEditor::AnnotationModel *model, int line) const = 0;
+    virtual void paint(QPainter *painter, const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) const = 0;
     /**
      * This pure abstract function must be reimplemented to provide custom rendering.
      * Use the style option to calculate the best size for the annotation information
@@ -166,8 +163,7 @@ public:
      *
      * Reimplement this in line with paint().
      */
-    virtual QSize sizeHint(const KTextEditor::StyleOptionAnnotationItem &option,
-                           KTextEditor::AnnotationModel *model, int line) const = 0;
+    virtual QSize sizeHint(const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) const = 0;
     /**
      * Whenever a help event occurs, this function is called with the event view option
      * and @p model and @p line specifying the item where the event occurs.
@@ -181,9 +177,7 @@ public:
      *
      * Reimplement this in line with hideTooltip().
      */
-    virtual bool helpEvent(QHelpEvent *event, KTextEditor::View *view,
-                           const KTextEditor::StyleOptionAnnotationItem &option,
-                           KTextEditor::AnnotationModel *model, int line) = 0;
+    virtual bool helpEvent(QHelpEvent *event, KTextEditor::View *view, const KTextEditor::StyleOptionAnnotationItem &option, KTextEditor::AnnotationModel *model, int line) = 0;
     /**
      * This pure abstract function must be reimplemented to provide custom tooltips.
      * It is called whenever a possible still shown tooltip no longer is valid,

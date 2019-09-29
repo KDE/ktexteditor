@@ -32,7 +32,6 @@
 
 namespace Kate
 {
-
 class TextBuffer;
 class TextCursor;
 class TextRange;
@@ -173,9 +172,9 @@ public:
      * @param line line to check intersection
      * @return list of sets of possible candidate ranges
      */
-    QList<QSet<TextRange *> > rangesForLine(int line) const
+    QList<QSet<TextRange *>> rangesForLine(int line) const
     {
-        return QList<QSet<TextRange *> >() << m_uncachedRanges << cachedRangesForLine(line);
+        return QList<QSet<TextRange *>>() << m_uncachedRanges << cachedRangesForLine(line);
     }
 
     /**
@@ -267,7 +266,7 @@ private:
      * Contains for each line-offset the ranges that were cached into it.
      * These ranges are fully contained by the line.
      */
-    QVector<QSet<TextRange *> > m_cachedRangesForLine;
+    QVector<QSet<TextRange *>> m_cachedRangesForLine;
 
     /**
      * Maps for each cached range the line into which the range was cached.

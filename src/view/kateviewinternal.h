@@ -77,11 +77,7 @@ class KateViewInternal : public QWidget
     friend class ::KateTextPreview;
 
 public:
-    enum Bias {
-        left  = -1,
-        none  =  0,
-        right =  1
-    };
+    enum Bias { left = -1, none = 0, right = 1 };
 
 public:
     explicit KateViewInternal(KTextEditor::ViewPrivate *view);
@@ -91,7 +87,7 @@ public:
         return m_view;
     }
 
-    //BEGIN EDIT STUFF
+    // BEGIN EDIT STUFF
 public:
     void editStart();
     void editEnd(int editTagLineStart, int editTagLineEnd, bool tagFrom);
@@ -103,9 +99,9 @@ private:
     bool editIsRunning;
     KTextEditor::Cursor editOldCursor;
     KTextEditor::Range editOldSelection;
-    //END
+    // END
 
-    //BEGIN TAG & CLEAR & UPDATE STUFF
+    // BEGIN TAG & CLEAR & UPDATE STUFF
 public:
     bool tagLine(const KTextEditor::Cursor &virtualCursor);
 
@@ -120,7 +116,7 @@ public:
     void updateDirty();
 
     void clear();
-    //END
+    // END
 
 private Q_SLOTS:
     // Updates the view and requests a redraw.
@@ -167,7 +163,7 @@ private Q_SLOTS:
     void scrollPrevPage();
     void scrollPrevLine();
     void scrollNextLine();
-    void scrollColumns(int x);  // connected to the valueChanged of the m_columnScroll
+    void scrollColumns(int x); // connected to the valueChanged of the m_columnScroll
     void viewSelectionChanged();
 
 public:
@@ -282,7 +278,7 @@ private:
 
     void placeCursor(const QPoint &p, bool keepSelection = false, bool updateSelection = true);
     bool isTargetSelected(const QPoint &p);
-    //Returns whether the given range affects the area currently visible in the view
+    // Returns whether the given range affects the area currently visible in the view
     bool rangeAffectsView(const KTextEditor::Range &range, bool realCursors) const;
 
     void doDrag();
@@ -307,7 +303,7 @@ private:
 
     bool m_possibleTripleClick;
 
-    //Whether the current completion-item was expanded while the last press of ALT
+    // Whether the current completion-item was expanded while the last press of ALT
     bool m_completionItemExpanded;
     QElapsedTimer m_altDownTime;
 
@@ -319,9 +315,9 @@ private:
     enum DragState { diNone, diPending, diDragging };
 
     struct _dragInfo {
-        DragState    state;
-        QPoint       start;
-        QDrag   *dragObject;
+        DragState state;
+        QPoint start;
+        QDrag *dragObject;
     } m_dragInfo;
 
     //
@@ -334,8 +330,8 @@ private:
     // These are now cursors to account for word-wrap.
     // Start Position is a virtual cursor
     Kate::TextCursor m_startPos;
-    //Count of lines that are visible behind m_startPos.
-    //This does not respect dynamic word wrap, so take it as an approximation.
+    // Count of lines that are visible behind m_startPos.
+    // This does not respect dynamic word wrap, so take it as an approximation.
     uint m_visibleLineCount;
 
     // This is set to false on resize or scroll (other than that called by makeVisible),
@@ -406,6 +402,7 @@ private:
     //
 public:
     void flashChar(const KTextEditor::Cursor &pos, KTextEditor::Attribute::Ptr attribute);
+
 private:
     QPointer<KateTextAnimation> m_textAnimation;
 
@@ -443,7 +440,7 @@ public:
     bool textHintsEnabled(); // not part of the interface
 
 private:
-    QVector<KTextEditor::TextHintProvider*> m_textHintProviders;
+    QVector<KTextEditor::TextHintProvider *> m_textHintProviders;
     int m_textHintDelay;
     QPoint m_textHintPos;
 
@@ -477,9 +474,8 @@ private:
     KateAbstractInputMode *m_currentInputMode;
 
     KateInlineNoteData m_activeInlineNote;
-    KateInlineNoteData inlineNoteAt(const QPoint& globalPos) const;
-    QRect inlineNoteRect(const KateInlineNoteData& note) const;
+    KateInlineNoteData inlineNoteAt(const QPoint &globalPos) const;
+    QRect inlineNoteRect(const KateInlineNoteData &note) const;
 };
 
 #endif
-

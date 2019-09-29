@@ -38,14 +38,12 @@ KateFadeEffect::KateFadeEffect(QWidget *widget)
 
 bool KateFadeEffect::isHideAnimationRunning() const
 {
-    return (m_timeLine->direction() == QTimeLine::Backward)
-        && (m_timeLine->state() == QTimeLine::Running);
+    return (m_timeLine->direction() == QTimeLine::Backward) && (m_timeLine->state() == QTimeLine::Running);
 }
 
 bool KateFadeEffect::isShowAnimationRunning() const
 {
-    return (m_timeLine->direction() == QTimeLine::Forward)
-        && (m_timeLine->state() == QTimeLine::Running);
+    return (m_timeLine->direction() == QTimeLine::Forward) && (m_timeLine->state() == QTimeLine::Running);
 }
 
 void KateFadeEffect::fadeIn()
@@ -102,4 +100,3 @@ void KateFadeEffect::animationFinished()
         emit showAnimationFinished();
     }
 }
-

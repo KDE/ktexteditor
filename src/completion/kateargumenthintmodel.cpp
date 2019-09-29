@@ -41,11 +41,11 @@ void KateArgumentHintModel::clear()
 
 QModelIndex KateArgumentHintModel::mapToSource(const QModelIndex &index) const
 {
-    if (index.row() <  0 || index.row() >= m_rows.count()) {
+    if (index.row() < 0 || index.row() >= m_rows.count()) {
         return QModelIndex();
     }
 
-    if (m_rows[index.row()] <  0 || m_rows[index.row()] >= group()->filtered.count()) {
+    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= group()->filtered.count()) {
         return QModelIndex();
     }
 
@@ -55,7 +55,7 @@ QModelIndex KateArgumentHintModel::mapToSource(const QModelIndex &index) const
         return QModelIndex();
     }
 
-    QModelIndex  sourceIndex = source.second.sibling(source.second.row(), index.column());
+    QModelIndex sourceIndex = source.second.sibling(source.second.row(), index.column());
 
     return sourceIndex;
 }
@@ -71,10 +71,10 @@ void KateArgumentHintModel::buildRows()
     beginResetModel();
 
     m_rows.clear();
-    QMap<int, QList<int> > m_depths; //Map each hint-depth to a list of functions of that depth
+    QMap<int, QList<int>> m_depths; // Map each hint-depth to a list of functions of that depth
     for (int a = 0; a < group()->filtered.count(); a++) {
         KateCompletionModel::ModelRow source = group()->filtered[a].sourceRow();
-        QModelIndex  sourceIndex = source.second.sibling(source.second.row(), 0);
+        QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
         QVariant v = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth);
         if (v.type() == QVariant::Int) {
             QList<int> &lst(m_depths[v.toInt()]);
@@ -82,9 +82,9 @@ void KateArgumentHintModel::buildRows()
         }
     }
 
-    for (QMap<int, QList<int> >::const_iterator it = m_depths.constBegin(); it != m_depths.constEnd(); ++it) {
+    for (QMap<int, QList<int>>::const_iterator it = m_depths.constBegin(); it != m_depths.constEnd(); ++it) {
         for (int row : *it) {
-            m_rows.push_front(row);    //Insert filtered in reversed order
+            m_rows.push_front(row); // Insert filtered in reversed order
         }
         m_rows.push_front(-it.key());
     }
@@ -94,7 +94,9 @@ void KateArgumentHintModel::buildRows()
     emit contentStateChanged(!m_rows.isEmpty());
 }
 
-KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent) : ExpandingWidgetModel(parent), m_parent(parent)
+KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent)
+    : ExpandingWidgetModel(parent)
+    , m_parent(parent)
 {
     connect(parent->model(), SIGNAL(modelReset()), this, SLOT(parentModelReset()));
     connect(parent->model(), SIGNAL(argumentHintsChanged()), this, SLOT(parentModelReset()));
@@ -102,15 +104,15 @@ KateArgumentHintModel::KateArgumentHintModel(KateCompletionWidget *parent) : Exp
 
 QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 {
-    if (index.row() <  0 || index.row() >= m_rows.count()) {
-        //qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << index.row() << " total filtered: " << m_rows.count();
+    if (index.row() < 0 || index.row() >= m_rows.count()) {
+        // qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << index.row() << " total filtered: " << m_rows.count();
         return QVariant();
     }
 
     if (m_rows[index.row()] < 0) {
-        //Show labels
+        // Show labels
         if (role == Qt::DisplayRole && index.column() == 0) {
-            return QString(); //QString("Depth %1").arg(-m_rows[index.row()]);
+            return QString(); // QString("Depth %1").arg(-m_rows[index.row()]);
         } else if (role == Qt::BackgroundRole) {
             return QApplication::palette().toolTipBase().color();
         } else if (role == Qt::ForegroundRole) {
@@ -120,7 +122,7 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
         }
     }
 
-    if (m_rows[index.row()] <  0 || m_rows[index.row()] >= group()->filtered.count()) {
+    if (m_rows[index.row()] < 0 || m_rows[index.row()] >= group()->filtered.count()) {
         qCDebug(LOG_KTE) << "KateArgumentHintModel::data: index out of bound: " << m_rows[index.row()] << " total filtered: " << group()->filtered.count();
         return QVariant();
     }
@@ -133,23 +135,23 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 
     if (index.column() == 0) {
         switch (role) {
-        case Qt::DecorationRole: {
-            //Show the expand-handle
-            model()->cacheIcons();
+            case Qt::DecorationRole: {
+                // Show the expand-handle
+                model()->cacheIcons();
 
-            if (!isExpanded(index)) {
-                return QVariant(model()->m_collapsedIcon);
-            } else {
-                return QVariant(model()->m_expandedIcon);
+                if (!isExpanded(index)) {
+                    return QVariant(model()->m_collapsedIcon);
+                } else {
+                    return QVariant(model()->m_expandedIcon);
+                }
             }
-        }
-        case Qt::DisplayRole:
-            //Ignore text in the first column(we create our own compound text in the second)
-            return QVariant();
+            case Qt::DisplayRole:
+                // Ignore text in the first column(we create our own compound text in the second)
+                return QVariant();
         }
     }
 
-    QModelIndex  sourceIndex = source.second.sibling(source.second.row(), index.column());
+    QModelIndex sourceIndex = source.second.sibling(source.second.row(), index.column());
 
     if (!sourceIndex.isValid()) {
         qCDebug(LOG_KTE) << "KateArgumentHintModel::data: Source-index is not valid";
@@ -157,72 +159,72 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
     }
 
     switch (role) {
-    case Qt::DisplayRole: {
-        //Construct the text
-        QString totalText;
-        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++)
-            if (a != CodeCompletionModel::Scope) { //Skip the scope
-                totalText += source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
+        case Qt::DisplayRole: {
+            // Construct the text
+            QString totalText;
+            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++)
+                if (a != CodeCompletionModel::Scope) { // Skip the scope
+                    totalText += source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
+                }
+
+            return QVariant(totalText);
+        }
+        case CodeCompletionModel::HighlightingMethod: {
+            // Return that we are doing custom-highlighting of one of the sub-strings does it
+            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+                QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
+                if (method.type() == QVariant::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
+                    return QVariant(CodeCompletionModel::CustomHighlighting);
+                }
             }
 
-        return QVariant(totalText);
-    }
-    case CodeCompletionModel::HighlightingMethod: {
-        //Return that we are doing custom-highlighting of one of the sub-strings does it
-        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
-            if (method.type() == QVariant::Int && method.toInt() ==  CodeCompletionModel::CustomHighlighting) {
-                return QVariant(CodeCompletionModel::CustomHighlighting);
+            return QVariant();
+        }
+        case CodeCompletionModel::CustomHighlight: {
+            QStringList strings;
+
+            // Collect strings
+            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+                strings << source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString();
             }
-        }
 
-        return QVariant();
-    }
-    case CodeCompletionModel::CustomHighlight: {
-        QStringList strings;
+            QList<QVariantList> highlights;
 
-        //Collect strings
-        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            strings << source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString();
-        }
+            // Collect custom-highlightings
+            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+                highlights << source.second.sibling(source.second.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
+            }
 
-        QList<QVariantList> highlights;
+            // Replace invalid QTextFormats with match-quality color or yellow.
+            for (QList<QVariantList>::iterator it = highlights.begin(); it != highlights.end(); ++it) {
+                QVariantList &list(*it);
 
-        //Collect custom-highlightings
-        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-            highlights << source.second.sibling(source.second.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
-        }
+                for (int a = 2; a < list.count(); a += 3) {
+                    if (list[a].canConvert<QTextFormat>()) {
+                        QTextFormat f = list[a].value<QTextFormat>();
 
-        //Replace invalid QTextFormats with match-quality color or yellow.
-        for (QList<QVariantList>::iterator it = highlights.begin(); it != highlights.end(); ++it) {
-            QVariantList &list(*it);
+                        if (!f.isValid()) {
+                            f = QTextFormat(QTextFormat::CharFormat);
+                            uint color = matchColor(index);
 
-            for (int a = 2; a < list.count(); a += 3) {
-                if (list[a].canConvert<QTextFormat>()) {
-                    QTextFormat f = list[a].value<QTextFormat>();
+                            if (color) {
+                                f.setBackground(QBrush(color));
+                            } else {
+                                f.setBackground(Qt::yellow);
+                            }
 
-                    if (!f.isValid()) {
-                        f = QTextFormat(QTextFormat::CharFormat);
-                        uint color = matchColor(index);
-
-                        if (color) {
-                            f.setBackground(QBrush(color));
-                        } else {
-                            f.setBackground(Qt::yellow);
+                            list[a] = QVariant(f);
                         }
-
-                        list[a] = QVariant(f);
                     }
                 }
             }
-        }
 
-        return mergeCustomHighlighting(strings, highlights, 1);
-    }
-    case Qt::DecorationRole: {
-        //Redirect the decoration to the decoration of the item-column
-        return source.second.sibling(source.second.row(), CodeCompletionModel::Icon).data(role);
-    }
+            return mergeCustomHighlighting(strings, highlights, 1);
+        }
+        case Qt::DecorationRole: {
+            // Redirect the decoration to the decoration of the item-column
+            return source.second.sibling(source.second.row(), CodeCompletionModel::Icon).data(role);
+        }
     }
 
     QVariant v = ExpandingWidgetModel::data(index, role);
@@ -244,7 +246,7 @@ int KateArgumentHintModel::rowCount(const QModelIndex &parent) const
 
 int KateArgumentHintModel::columnCount(const QModelIndex & /*parent*/) const
 {
-    return 2; //2 Columns, one for the expand-handle, one for the signature
+    return 2; // 2 Columns, one for the expand-handle, one for the signature
 }
 
 KateCompletionModel::Group *KateArgumentHintModel::group() const
@@ -252,7 +254,7 @@ KateCompletionModel::Group *KateArgumentHintModel::group() const
     return model()->m_argumentHints;
 }
 
-QModelIndex KateArgumentHintModel::index(int row, int column, const QModelIndex& parent) const
+QModelIndex KateArgumentHintModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (row < 0 || row > rowCount() || column < 0 || column > columnCount() || parent.isValid()) {
         return {};
@@ -260,7 +262,7 @@ QModelIndex KateArgumentHintModel::index(int row, int column, const QModelIndex&
     return createIndex(row, column);
 }
 
-QModelIndex KateArgumentHintModel::parent(const QModelIndex& /*parent*/) const
+QModelIndex KateArgumentHintModel::parent(const QModelIndex & /*parent*/) const
 {
     return {};
 }
@@ -288,12 +290,12 @@ bool KateArgumentHintModel::indexIsItem(const QModelIndex &index) const
 int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
 {
     int row = index.row();
-    if (row <  0 || row >= m_rows.count()) {
+    if (row < 0 || row >= m_rows.count()) {
         return -1;
     }
 
-    if (m_rows[row] <  0 || m_rows[row] >= group()->filtered.count()) {
-        return -1;    //Probably a label
+    if (m_rows[row] < 0 || m_rows[row] >= group()->filtered.count()) {
+        return -1; // Probably a label
     }
 
     KateCompletionModel::ModelRow source = group()->filtered[m_rows[row]].sourceRow();
@@ -301,7 +303,7 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
         return -1;
     }
 
-    QModelIndex  sourceIndex = source.second.sibling(source.second.row(), 0);
+    QModelIndex sourceIndex = source.second.sibling(source.second.row(), 0);
 
     if (!sourceIndex.isValid()) {
         return -1;
@@ -310,33 +312,32 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
     int depth = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth).toInt();
 
     switch (depth) {
-    case 1: {
-        //This argument-hint is on the lowest level, match it with the currently selected item in the completion-widget
-        QModelIndex row = m_parent->treeView()->currentIndex();
-        if (!row.isValid()) {
-            return -1;
-        }
+        case 1: {
+            // This argument-hint is on the lowest level, match it with the currently selected item in the completion-widget
+            QModelIndex row = m_parent->treeView()->currentIndex();
+            if (!row.isValid()) {
+                return -1;
+            }
 
-        QModelIndex selectedIndex = m_parent->model()->mapToSource(row);
-        if (!selectedIndex.isValid()) {
-            return -1;
-        }
+            QModelIndex selectedIndex = m_parent->model()->mapToSource(row);
+            if (!selectedIndex.isValid()) {
+                return -1;
+            }
 
-        if (selectedIndex.model() != sourceIndex.model()) {
-            return -1;    //We can only match items from the same source-model
-        }
+            if (selectedIndex.model() != sourceIndex.model()) {
+                return -1; // We can only match items from the same source-model
+            }
 
-        sourceIndex.data(CodeCompletionModel::SetMatchContext);
+            sourceIndex.data(CodeCompletionModel::SetMatchContext);
 
-        QVariant v = selectedIndex.data(CodeCompletionModel::MatchQuality);
-        if (v.type() == QVariant::Int) {
-            return v.toInt();
-        }
-    }
-    break;
-    default:
-        //Do some other nice matching here in future
-        break;
+            QVariant v = selectedIndex.data(CodeCompletionModel::MatchQuality);
+            if (v.type() == QVariant::Int) {
+                return v.toInt();
+            }
+        } break;
+        default:
+            // Do some other nice matching here in future
+            break;
     }
 
     return -1;

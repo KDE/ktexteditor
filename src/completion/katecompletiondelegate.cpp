@@ -34,18 +34,19 @@
 #include "katecompletionmodel.h"
 #include "katecompletiontree.h"
 
-//Currently disable because it doesn't work
+// Currently disable because it doesn't work
 #define DISABLE_INTERNAL_HIGHLIGHTING
 
-KateCompletionDelegate::KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent) :
-    ExpandingDelegate(model, parent), m_cachedRow(-1)
+KateCompletionDelegate::KateCompletionDelegate(ExpandingWidgetModel *model, KateCompletionWidget *parent)
+    : ExpandingDelegate(model, parent)
+    , m_cachedRow(-1)
 {
 }
 
 void KateCompletionDelegate::adjustStyle(const QModelIndex &index, QStyleOptionViewItem &option) const
 {
     if (index.column() == 0) {
-        //We always want to use the match-color if available, also for highlighted items.
+        // We always want to use the match-color if available, also for highlighted items.
         ///@todo Only do this for the "current" item, for others the model is asked for the match color.
         uint color = model()->matchColor(index);
         if (color != 0) {
@@ -82,7 +83,6 @@ void KateCompletionDelegate::heightChanged() const
 
 QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(const QModelIndex &index, QStyleOptionViewItem &option) const
 {
-
     QVariant highlight = model()->data(index, KTextEditor::CodeCompletionModel::HighlightingMethod);
 
     // TODO: config enable specifying no highlight as default
@@ -101,7 +101,6 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 #endif
 
     if (index.row() == m_cachedRow && highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting) {
-
         if (index.column() < m_cachedColumnStarts.size()) {
             m_currentColumnStart = m_cachedColumnStarts[index.column()];
         } else {
@@ -132,7 +131,7 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 
     Kate::TextLine thisLine = Kate::TextLine(new Kate::TextLineData(lineContent));
 
-    //qCDebug(LOG_KTE) << "About to highlight with mode " << highlightMethod << " text [" << thisLine->string() << "]";
+    // qCDebug(LOG_KTE) << "About to highlight with mode " << highlightMethod << " text [" << thisLine->string() << "]";
 
     if (highlightMethod & KTextEditor::CodeCompletionModel::InternalHighlighting) {
         Kate::TextLine previousLine;
@@ -157,11 +156,10 @@ QVector<QTextLayout::FormatRange> KateCompletionDelegate::createHighlighting(con
 
     QVector<QTextLayout::FormatRange> ret = renderer()->decorationsForLine(thisLine, 0, false, true, option.state & QStyle::State_Selected);
 
-    //Remove background-colors
+    // Remove background-colors
     for (QVector<QTextLayout::FormatRange>::iterator it = ret.begin(); it != ret.end(); ++it) {
         (*it).format.clearBackground();
     }
 
     return ret;
 }
-

@@ -22,7 +22,10 @@
 
 #include <QObject>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 class KatePlainTextSearch;
 
 class PlainTextSearchTest : public QObject

@@ -35,11 +35,11 @@ QtMessageHandler ScriptDocumentTest::s_msgHandler = nullptr;
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     switch (type) {
-    case QtDebugMsg:
-        /* do nothing */
-        break;
-    default:
-        ScriptDocumentTest::s_msgHandler(type, context, msg);
+        case QtDebugMsg:
+            /* do nothing */
+            break;
+        default:
+            ScriptDocumentTest::s_msgHandler(type, context, msg);
     }
 }
 
@@ -108,10 +108,10 @@ void ScriptDocumentTest::testRfind_data()
 
     QTest::newRow("a a a a a a a a a a a a|") << KTextEditor::Cursor(0, 23) << KTextEditor::Cursor(0, 18);
     QTest::newRow("a a a a a a a a a a a |a") << KTextEditor::Cursor(0, 22) << KTextEditor::Cursor(0, 16);
-    QTest::newRow("a a a a| a a a a a a a a") << KTextEditor::Cursor(0,  7) << KTextEditor::Cursor(0,  2);
-    QTest::newRow("a a a |a a a a a a a a a") << KTextEditor::Cursor(0,  6) << KTextEditor::Cursor(0,  0);
-    QTest::newRow("a a a| a a a a a a a a a") << KTextEditor::Cursor(0,  5) << KTextEditor::Cursor(0,  0);
-    QTest::newRow("a a |a a a a a a a a a a") << KTextEditor::Cursor(0,  4) << KTextEditor::Cursor::invalid();
+    QTest::newRow("a a a a| a a a a a a a a") << KTextEditor::Cursor(0, 7) << KTextEditor::Cursor(0, 2);
+    QTest::newRow("a a a |a a a a a a a a a") << KTextEditor::Cursor(0, 6) << KTextEditor::Cursor(0, 0);
+    QTest::newRow("a a a| a a a a a a a a a") << KTextEditor::Cursor(0, 5) << KTextEditor::Cursor(0, 0);
+    QTest::newRow("a a |a a a a a a a a a a") << KTextEditor::Cursor(0, 4) << KTextEditor::Cursor::invalid();
 }
 
 void ScriptDocumentTest::testRfind()

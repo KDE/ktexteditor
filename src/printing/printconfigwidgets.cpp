@@ -42,7 +42,7 @@
 
 using namespace KatePrinter;
 
-//BEGIN KatePrintTextSettings
+// BEGIN KatePrintTextSettings
 KatePrintTextSettings::KatePrintTextSettings(QWidget *parent)
     : QWidget(parent)
 {
@@ -61,11 +61,10 @@ KatePrintTextSettings::KatePrintTextSettings(QWidget *parent)
     // set defaults - nothing to do :-)
 
     // whatsthis
-    cbLineNumbers->setWhatsThis(i18n(
-                                    "<p>If enabled, line numbers will be printed on the left side of the page(s).</p>"));
-    cbGuide->setWhatsThis(i18n(
-                              "<p>Print a box displaying typographical conventions for the document type, as "
-                              "defined by the syntax highlighting being used.</p>"));
+    cbLineNumbers->setWhatsThis(i18n("<p>If enabled, line numbers will be printed on the left side of the page(s).</p>"));
+    cbGuide->setWhatsThis(
+        i18n("<p>Print a box displaying typographical conventions for the document type, as "
+             "defined by the syntax highlighting being used.</p>"));
 
     readSettings();
 }
@@ -110,9 +109,9 @@ void KatePrintTextSettings::writeSettings()
     config->sync();
 }
 
-//END KatePrintTextSettings
+// END KatePrintTextSettings
 
-//BEGIN KatePrintHeaderFooter
+// BEGIN KatePrintHeaderFooter
 KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     : QWidget(parent)
 {
@@ -255,19 +254,19 @@ KatePrintHeaderFooter::KatePrintHeaderFooter(QWidget *parent)
     kcbtnFooterBg->setColor(Qt::lightGray);
 
     // whatsthis
-    QString  s = i18n("<p>Format of the page header. The following tags are supported:</p>");
+    QString s = i18n("<p>Format of the page header. The following tags are supported:</p>");
     QString s1 = i18n(
-                     "<ul><li><tt>%u</tt>: current user name</li>"
-                     "<li><tt>%d</tt>: complete date/time in short format</li>"
-                     "<li><tt>%D</tt>: complete date/time in long format</li>"
-                     "<li><tt>%h</tt>: current time</li>"
-                     "<li><tt>%y</tt>: current date in short format</li>"
-                     "<li><tt>%Y</tt>: current date in long format</li>"
-                     "<li><tt>%f</tt>: file name</li>"
-                     "<li><tt>%U</tt>: full URL of the document</li>"
-                     "<li><tt>%p</tt>: page number</li>"
-                     "<li><tt>%P</tt>: total amount of pages</li>"
-                     "</ul><br />");
+        "<ul><li><tt>%u</tt>: current user name</li>"
+        "<li><tt>%d</tt>: complete date/time in short format</li>"
+        "<li><tt>%D</tt>: complete date/time in long format</li>"
+        "<li><tt>%h</tt>: current time</li>"
+        "<li><tt>%y</tt>: current date in short format</li>"
+        "<li><tt>%Y</tt>: current date in long format</li>"
+        "<li><tt>%f</tt>: file name</li>"
+        "<li><tt>%U</tt>: full URL of the document</li>"
+        "<li><tt>%p</tt>: page number</li>"
+        "<li><tt>%P</tt>: total amount of pages</li>"
+        "</ul><br />");
     leHeaderRight->setWhatsThis(s + s1);
     leHeaderCenter->setWhatsThis(s + s1);
     leHeaderLeft->setWhatsThis(s + s1);
@@ -489,9 +488,9 @@ void KatePrintHeaderFooter::writeSettings()
     config->sync();
 }
 
-//END KatePrintHeaderFooter
+// END KatePrintHeaderFooter
 
-//BEGIN KatePrintLayout
+// BEGIN KatePrintLayout
 
 KatePrintLayout::KatePrintLayout(QWidget *parent)
     : QWidget(parent)
@@ -558,21 +557,17 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     cmbSchema->setCurrentIndex(cmbSchema->findData(QVariant(QStringLiteral("Printing"))));
 
     // whatsthis
-    cmbSchema->setWhatsThis(i18n(
-                                "Select the color scheme to use for the print."));
-    cbDrawBackground->setWhatsThis(i18n(
-                                       "<p>If enabled, the background color of the editor will be used.</p>"
-                                       "<p>This may be useful if your color scheme is designed for a dark background.</p>"));
-    cbEnableBox->setWhatsThis(i18n(
-                                  "<p>If enabled, a box as defined in the properties below will be drawn "
-                                  "around the contents of each page. The Header and Footer will be separated "
-                                  "from the contents with a line as well.</p>"));
-    sbBoxWidth->setWhatsThis(i18n(
-                                 "The width of the box outline"));
-    sbBoxMargin->setWhatsThis(i18n(
-                                  "The margin inside boxes, in pixels"));
-    kcbtnBoxColor->setWhatsThis(i18n(
-                                    "The line color to use for boxes"));
+    cmbSchema->setWhatsThis(i18n("Select the color scheme to use for the print."));
+    cbDrawBackground->setWhatsThis(
+        i18n("<p>If enabled, the background color of the editor will be used.</p>"
+             "<p>This may be useful if your color scheme is designed for a dark background.</p>"));
+    cbEnableBox->setWhatsThis(
+        i18n("<p>If enabled, a box as defined in the properties below will be drawn "
+             "around the contents of each page. The Header and Footer will be separated "
+             "from the contents with a line as well.</p>"));
+    sbBoxWidth->setWhatsThis(i18n("The width of the box outline"));
+    sbBoxMargin->setWhatsThis(i18n("The margin inside boxes, in pixels"));
+    kcbtnBoxColor->setWhatsThis(i18n("The line color to use for boxes"));
 
     readSettings();
 }
@@ -658,4 +653,4 @@ void KatePrintLayout::writeSettings()
     config->sync();
 }
 
-//END KatePrintLayout
+// END KatePrintLayout

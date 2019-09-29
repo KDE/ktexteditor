@@ -19,7 +19,7 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-//BEGIN includes
+// BEGIN includes
 #include "kateplaintextsearch.h"
 
 #include "kateregexpsearch.h"
@@ -29,9 +29,9 @@
 #include "katepartdebug.h"
 
 #include <QRegularExpression>
-//END  includes
+// END  includes
 
-//BEGIN d'tor, c'tor
+// BEGIN d'tor, c'tor
 //
 // KateSearch Constructor
 //
@@ -48,7 +48,7 @@ KatePlainTextSearch::KatePlainTextSearch(const KTextEditor::Document *document, 
 KatePlainTextSearch::~KatePlainTextSearch()
 {
 }
-//END
+// END
 
 KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextEditor::Range &inputRange, bool backwards)
 {
@@ -69,10 +69,10 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
 
     if (needleLines.count() > 1) {
         // multi-line plaintext search (both forwards or backwards)
-        const int forMin  = inputRange.start().line(); // first line in range
-        const int forMax  = inputRange.end().line() + 1 - needleLines.count(); // last line in range
+        const int forMin = inputRange.start().line();                         // first line in range
+        const int forMax = inputRange.end().line() + 1 - needleLines.count(); // last line in range
         const int forInit = backwards ? forMax : forMin;
-        const int forInc  = backwards ? -1 : +1;
+        const int forInc = backwards ? -1 : +1;
 
         for (int j = forInit; (forMin <= j) && (j <= forMax); j += forInc) {
             // try to match all lines
@@ -116,11 +116,11 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
         return KTextEditor::Range::invalid();
     } else {
         // single-line plaintext search (both forward of backward mode)
-        const int startCol  = inputRange.start().column();
-        const int endCol    = inputRange.end().column(); // first not included
+        const int startCol = inputRange.start().column();
+        const int endCol = inputRange.end().column(); // first not included
         const int startLine = inputRange.start().line();
-        const int endLine   = inputRange.end().line();
-        const int forInc    = backwards ? -1 : +1;
+        const int endLine = inputRange.end().line();
+        const int forInc = backwards ? -1 : +1;
 
         for (int line = backwards ? endLine : startLine; (startLine <= line) && (line <= endLine); line += forInc) {
             if ((line < 0) || (m_document->lines() <= line)) {
@@ -130,10 +130,9 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
 
             const QString textLine = m_document->line(line);
 
-            const int offset   = (line == startLine) ? startCol : 0;
-            const int line_end = (line ==   endLine) ?   endCol : textLine.length();
-            const int foundAt = backwards ? textLine.lastIndexOf(text, line_end - text.length(), m_caseSensitivity) :
-                                textLine.indexOf(text, offset, m_caseSensitivity);
+            const int offset = (line == startLine) ? startCol : 0;
+            const int line_end = (line == endLine) ? endCol : textLine.length();
+            const int foundAt = backwards ? textLine.lastIndexOf(text, line_end - text.length(), m_caseSensitivity) : textLine.indexOf(text, offset, m_caseSensitivity);
 
             if ((offset <= foundAt) && (foundAt + text.length() <= line_end)) {
                 return KTextEditor::Range(line, foundAt, line, foundAt + text.length());
@@ -142,4 +141,3 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
     }
     return KTextEditor::Range::invalid();
 }
-

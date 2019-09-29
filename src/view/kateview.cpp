@@ -22,7 +22,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-//BEGIN includes
+// BEGIN includes
 #include "kateview.h"
 
 #include "kateviewinternal.h"
@@ -90,13 +90,13 @@
 
 //#define VIEW_RANGE_DEBUG
 
-//END includes
+// END includes
 
-namespace {
-
-bool hasCommentInFirstLine(KTextEditor::DocumentPrivate* doc)
+namespace
 {
-    const Kate::TextLine& line = doc->kateTextLine(0);
+bool hasCommentInFirstLine(KTextEditor::DocumentPrivate *doc)
+{
+    const Kate::TextLine &line = doc->kateTextLine(0);
     Q_ASSERT(line);
     return doc->isComment(0, line->firstChar());
 }
@@ -113,7 +113,7 @@ void KTextEditor::ViewPrivate::blockFix(KTextEditor::Range &range)
 }
 
 KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget *parent, KTextEditor::MainWindow *mainWindow)
-    : KTextEditor::View (this, parent)
+    : KTextEditor::View(this, parent)
     , m_completionWidget(nullptr)
     , m_annotationModel(nullptr)
     , m_hasWrap(false)
@@ -124,10 +124,10 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     , m_viewInternal(new KateViewInternal(this))
     , m_spell(new KateSpellCheckDialog(this))
     , m_bookmarks(new KateBookmarks(this))
-    , m_topSpacer(new QSpacerItem(0,0))
-    , m_leftSpacer(new QSpacerItem(0,0))
-    , m_rightSpacer(new QSpacerItem(0,0))
-    , m_bottomSpacer(new QSpacerItem(0,0))
+    , m_topSpacer(new QSpacerItem(0, 0))
+    , m_leftSpacer(new QSpacerItem(0, 0))
+    , m_rightSpacer(new QSpacerItem(0, 0))
+    , m_bottomSpacer(new QSpacerItem(0, 0))
     , m_startingUp(true)
     , m_updatingDocumentConfig(false)
     , m_selection(m_doc->buffer(), KTextEditor::Range::invalid(), Kate::TextRange::ExpandLeft, Kate::TextRange::AllowEmpty)
@@ -225,25 +225,25 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     for (auto messageWidget : m_messageWidgets) {
         if (messageWidget) {
             // user interaction (scrolling) starts notification auto-hide timer
-            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), messageWidget, SLOT(startAutoHideTimer()));
+            connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), messageWidget, SLOT(startAutoHideTimer()));
 
             // user interaction (cursor navigation) starts notification auto-hide timer
-            connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
+            connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
         }
     }
 
     // folding restoration on reload
-    connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(saveFoldingState()));
-    connect(m_doc, SIGNAL(reloaded(KTextEditor::Document*)), SLOT(applyFoldingState()));
+    connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document *)), SLOT(saveFoldingState()));
+    connect(m_doc, SIGNAL(reloaded(KTextEditor::Document *)), SLOT(applyFoldingState()));
 
     connect(m_doc, &KTextEditor::DocumentPrivate::reloaded, this, &KTextEditor::ViewPrivate::slotDocumentReloaded);
     connect(m_doc, &KTextEditor::DocumentPrivate::aboutToReload, this, &KTextEditor::ViewPrivate::slotDocumentAboutToReload);
 
     // update highlights on scrolling and co
-    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), this, SLOT(createHighlights()));
+    connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), this, SLOT(createHighlights()));
 
     // clear highlights on reload
-    connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document*)), SLOT(clearHighlights()));
+    connect(m_doc, SIGNAL(aboutToReload(KTextEditor::Document *)), SLOT(clearHighlights()));
 
     // setup layout
     setupLayout();
@@ -300,20 +300,18 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
 
 void KTextEditor::ViewPrivate::setupLayout()
 {
-
     // delete old layout if any
-    if (layout())
-    {
+    if (layout()) {
         delete layout();
 
         /**
          *  need to recreate spacers because they are deleted with
          *  their belonging layout
          */
-        m_topSpacer = new QSpacerItem(0,0);
-        m_leftSpacer = new QSpacerItem(0,0);
-        m_rightSpacer = new QSpacerItem(0,0);
-        m_bottomSpacer = new QSpacerItem(0,0);
+        m_topSpacer = new QSpacerItem(0, 0);
+        m_leftSpacer = new QSpacerItem(0, 0);
+        m_rightSpacer = new QSpacerItem(0, 0);
+        m_bottomSpacer = new QSpacerItem(0, 0);
     }
 
     // set margins
@@ -328,13 +326,12 @@ void KTextEditor::ViewPrivate::setupLayout()
     m_bottomSpacer->changeSize(0, margin, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
     // define layout
-    QGridLayout *layout=new QGridLayout(this);
+    QGridLayout *layout = new QGridLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
 
     const bool frameAroundContents = style()->styleHint(QStyle::SH_ScrollView_FrameOnlyAroundContents, &opt, this);
     if (frameAroundContents) {
-
         // top message widget
         layout->addWidget(m_messageWidgets[KTextEditor::Message::AboveView], 0, 0, 1, 5);
 
@@ -385,7 +382,6 @@ void KTextEditor::ViewPrivate::setupLayout()
         m_viewInternal->m_columnScroll->setAutoFillBackground(false);
 
     } else {
-
         // top message widget
         layout->addWidget(m_messageWidgets[KTextEditor::Message::AboveView], 0, 0, 1, 5);
 
@@ -439,23 +435,18 @@ void KTextEditor::ViewPrivate::setupLayout()
 
 void KTextEditor::ViewPrivate::setupConnections()
 {
-    connect(m_doc, SIGNAL(undoChanged()),
-            this, SLOT(slotUpdateUndo()));
-    connect(m_doc, SIGNAL(highlightingModeChanged(KTextEditor::Document*)),
-            this, SLOT(slotHlChanged()));
-    connect(m_doc, SIGNAL(canceled(QString)),
-            this, SLOT(slotSaveCanceled(QString)));
-    connect(m_viewInternal, SIGNAL(dropEventPass(QDropEvent*)),
-            this,           SIGNAL(dropEventPass(QDropEvent*)));
+    connect(m_doc, SIGNAL(undoChanged()), this, SLOT(slotUpdateUndo()));
+    connect(m_doc, SIGNAL(highlightingModeChanged(KTextEditor::Document *)), this, SLOT(slotHlChanged()));
+    connect(m_doc, SIGNAL(canceled(QString)), this, SLOT(slotSaveCanceled(QString)));
+    connect(m_viewInternal, SIGNAL(dropEventPass(QDropEvent *)), this, SIGNAL(dropEventPass(QDropEvent *)));
 
-    connect(m_doc, SIGNAL(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)),
-            m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel*,KTextEditor::AnnotationModel*)));
+    connect(m_doc, SIGNAL(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)), m_viewInternal->m_leftBorder, SLOT(annotationModelChanged(KTextEditor::AnnotationModel *, KTextEditor::AnnotationModel *)));
 }
 
 void KTextEditor::ViewPrivate::goToPreviousEditingPosition()
 {
     auto c = doc()->lastEditingPosition(KTextEditor::DocumentPrivate::Previous, cursorPosition());
-    if(c.isValid()){
+    if (c.isValid()) {
         setCursorPosition(c);
     }
 }
@@ -463,7 +454,7 @@ void KTextEditor::ViewPrivate::goToPreviousEditingPosition()
 void KTextEditor::ViewPrivate::goToNextEditingPosition()
 {
     auto c = doc()->lastEditingPosition(KTextEditor::DocumentPrivate::Next, cursorPosition());
-    if(c.isValid()){
+    if (c.isValid()) {
         setCursorPosition(c);
     }
 }
@@ -503,15 +494,17 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_apply_wordwrap"));
         a->setText(i18n("Apply &Word Wrap"));
-        a->setWhatsThis(i18n("Use this to wrap the current line, or to reformat the selected lines as paragraph, "
-                             "to fit the 'Wrap words at' setting in the configuration dialog.<br /><br />"
-                             "This is a static word wrap, meaning the document is changed."));
+        a->setWhatsThis(
+            i18n("Use this to wrap the current line, or to reformat the selected lines as paragraph, "
+                 "to fit the 'Wrap words at' setting in the configuration dialog.<br /><br />"
+                 "This is a static word wrap, meaning the document is changed."));
         connect(a, SIGNAL(triggered(bool)), SLOT(applyWordWrap()));
 
         a = ac->addAction(QStringLiteral("tools_cleanIndent"));
         a->setText(i18n("&Clean Indentation"));
-        a->setWhatsThis(i18n("Use this to clean the indentation of a selected block of text (only tabs/only spaces).<br /><br />"
-                             "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
+        a->setWhatsThis(
+            i18n("Use this to clean the indentation of a selected block of text (only tabs/only spaces).<br /><br />"
+                 "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
         connect(a, SIGNAL(triggered(bool)), SLOT(cleanIndent()));
 
         a = ac->addAction(QStringLiteral("tools_align"));
@@ -522,8 +515,9 @@ void KTextEditor::ViewPrivate::setupActions()
         a = ac->addAction(QStringLiteral("tools_comment"));
         a->setText(i18n("C&omment"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_D));
-        a->setWhatsThis(i18n("This command comments out the current line or a selected block of text.<br /><br />"
-                             "The characters for single/multiple line comments are defined within the language's highlighting."));
+        a->setWhatsThis(
+            i18n("This command comments out the current line or a selected block of text.<br /><br />"
+                 "The characters for single/multiple line comments are defined within the language's highlighting."));
         connect(a, SIGNAL(triggered(bool)), SLOT(comment()));
 
         a = ac->addAction(QStringLiteral("Previous Editing Line"));
@@ -539,8 +533,9 @@ void KTextEditor::ViewPrivate::setupActions()
         a = ac->addAction(QStringLiteral("tools_uncomment"));
         a->setText(i18n("Unco&mment"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D));
-        a->setWhatsThis(i18n("This command removes comments from the current line or a selected block of text.<br /><br />"
-                             "The characters for single/multiple line comments are defined within the language's highlighting."));
+        a->setWhatsThis(
+            i18n("This command removes comments from the current line or a selected block of text.<br /><br />"
+                 "The characters for single/multiple line comments are defined within the language's highlighting."));
         connect(a, SIGNAL(triggered(bool)), SLOT(uncomment()));
 
         a = ac->addAction(QStringLiteral("tools_toggle_comment"));
@@ -558,24 +553,27 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-uppercase")));
         a->setText(i18n("Uppercase"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_U));
-        a->setWhatsThis(i18n("Convert the selection to uppercase, or the character to the "
-                             "right of the cursor if no text is selected."));
+        a->setWhatsThis(
+            i18n("Convert the selection to uppercase, or the character to the "
+                 "right of the cursor if no text is selected."));
         connect(a, SIGNAL(triggered(bool)), SLOT(uppercase()));
 
         a = ac->addAction(QStringLiteral("tools_lowercase"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-lowercase")));
         a->setText(i18n("Lowercase"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_U));
-        a->setWhatsThis(i18n("Convert the selection to lowercase, or the character to the "
-                             "right of the cursor if no text is selected."));
+        a->setWhatsThis(
+            i18n("Convert the selection to lowercase, or the character to the "
+                 "right of the cursor if no text is selected."));
         connect(a, SIGNAL(triggered(bool)), SLOT(lowercase()));
 
         a = ac->addAction(QStringLiteral("tools_capitalize"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-capitalize")));
         a->setText(i18n("Capitalize"));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_U));
-        a->setWhatsThis(i18n("Capitalize the selection, or the word under the "
-                             "cursor if no text is selected."));
+        a->setWhatsThis(
+            i18n("Capitalize the selection, or the word under the "
+                 "cursor if no text is selected."));
         connect(a, SIGNAL(triggered(bool)), SLOT(capitalize()));
 
         a = ac->addAction(QStringLiteral("tools_join_lines"));
@@ -708,27 +706,33 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F10));
-    a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the view border on the screen.<br /><br />"
-                         "This is only a view option, meaning the document will not changed."));
+    a->setWhatsThis(
+        i18n("If this option is checked, the text lines will be wrapped at the view border on the screen.<br /><br />"
+             "This is only a view option, meaning the document will not changed."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleDynWordWrap()));
 
     a = m_setDynWrapIndicators = new KSelectAction(i18n("Dynamic Word Wrap Indicators"), this);
     ac->addAction(QStringLiteral("dynamic_word_wrap_indicators"), a);
     a->setWhatsThis(i18n("Choose when the Dynamic Word Wrap Indicators should be displayed"));
     connect(m_setDynWrapIndicators, SIGNAL(triggered(int)), this, SLOT(setDynWrapIndicators(int)));
-    const QStringList list2{ i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On") };
+    const QStringList list2 {i18n("&Off"), i18n("Follow &Line Numbers"), i18n("&Always On")};
     m_setDynWrapIndicators->setItems(list2);
     m_setDynWrapIndicators->setEnabled(m_toggleDynWrap->isChecked()); // only synced on real change, later
 
     a = toggleAction = new KToggleAction(i18n("Static Word Wrap"), this);
     ac->addAction(QStringLiteral("view_static_word_wrap"), a);
     a->setWhatsThis(i18n("If this option is checked, the text lines will be wrapped at the column defined in the editing properties."));
-    connect(a, &KToggleAction::triggered, [=] { if (m_doc) { m_doc->setWordWrap(!m_doc->wordWrap()); }});
+    connect(a, &KToggleAction::triggered, [=] {
+        if (m_doc) {
+            m_doc->setWordWrap(!m_doc->wordWrap());
+        }
+    });
 
     a = toggleAction = m_toggleWWMarker = new KToggleAction(i18n("Show Static &Word Wrap Marker"), this);
     ac->addAction(QStringLiteral("view_word_wrap_marker"), a);
-    a->setWhatsThis(i18n("Show/hide the Word Wrap Marker, a vertical line drawn at the word "
-                         "wrap column as defined in the editing properties"));
+    a->setWhatsThis(
+        i18n("Show/hide the Word Wrap Marker, a vertical line drawn at the word "
+             "wrap column as defined in the editing properties"));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleWWMarker()));
 
     a = toggleAction = m_toggleFoldingMarkers = new KToggleAction(i18n("Show Folding &Markers"), this);
@@ -761,11 +765,11 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_doc->autoReloadToggleAction();
     ac->addAction(QStringLiteral("view_auto_reload"), a);
 
-//   a = m_toggleScrollBarMiniMapAll = toggleAction = new KToggleAction(i18n("Show the whole document in the Mini-Map"), this);
-//   ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
-//   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the mini-map."));
-//   connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll()));
-//   connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)), m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
+    //   a = m_toggleScrollBarMiniMapAll = toggleAction = new KToggleAction(i18n("Show the whole document in the Mini-Map"), this);
+    //   ac->addAction(QLatin1String("view_scrollbar_minimap_all"), a);
+    //   a->setWhatsThis(i18n("Display the whole document in the mini-map.<br /><br />With this option set the whole document will be visible in the mini-map."));
+    //   connect(a, SIGNAL(triggered(bool)), SLOT(toggleScrollBarMiniMapAll()));
+    //   connect(m_toggleScrollBarMiniMap, SIGNAL(triggered(bool)), m_toggleScrollBarMiniMapAll, SLOT(setEnabled(bool)));
 
     a = m_toggleNPSpaces = new KToggleAction(i18n("Show Non-Printable Spaces"), this);
     ac->addAction(QStringLiteral("view_non_printable_spaces"), a);
@@ -799,11 +803,7 @@ void KTextEditor::ViewPrivate::setupActions()
     a = m_setEndOfLine = new KSelectAction(i18n("&End of Line"), this);
     ac->addAction(QStringLiteral("set_eol"), a);
     a->setWhatsThis(i18n("Choose which line endings should be used, when you save the document"));
-    const QStringList list {
-          i18nc("@item:inmenu End of Line", "&UNIX")
-        , i18nc("@item:inmenu End of Line", "&Windows/DOS")
-        , i18nc("@item:inmenu End of Line", "&Macintosh")
-    };
+    const QStringList list {i18nc("@item:inmenu End of Line", "&UNIX"), i18nc("@item:inmenu End of Line", "&Windows/DOS"), i18nc("@item:inmenu End of Line", "&Macintosh")};
     m_setEndOfLine->setItems(list);
     m_setEndOfLine->setCurrentItem(doc()->config()->eol());
     connect(m_setEndOfLine, SIGNAL(triggered(int)), this, SLOT(setEol(int)));
@@ -872,8 +872,9 @@ void KTextEditor::ViewPrivate::setupActions()
     a = ac->addAction(QStringLiteral("file_export_html"), this, SLOT(exportHtmlToFile()));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-export")));
     a->setText(i18n("E&xport as HTML..."));
-    a->setWhatsThis(i18n("This command allows you to export the current document"
-                        " with all highlighting information into a HTML document."));
+    a->setWhatsThis(
+        i18n("This command allows you to export the current document"
+             " with all highlighting information into a HTML document."));
 
     m_spellingMenu->createActions(ac);
 
@@ -881,20 +882,20 @@ void KTextEditor::ViewPrivate::setupActions()
 
     slotSelectionChanged();
 
-    //Now setup the editing actions before adding the associated
-    //widget and setting the shortcut context
+    // Now setup the editing actions before adding the associated
+    // widget and setting the shortcut context
     setupEditActions();
     setupCodeFolding();
     slotClipboardHistoryChanged();
 
     ac->addAssociatedWidget(m_viewInternal);
 
-    const auto actions  = ac->actions();
+    const auto actions = ac->actions();
     for (QAction *action : actions) {
         action->setShortcutContext(Qt::WidgetWithChildrenShortcut);
     }
 
-    connect(this, SIGNAL(selectionChanged(KTextEditor::View*)), this, SLOT(slotSelectionChanged()));
+    connect(this, SIGNAL(selectionChanged(KTextEditor::View *)), this, SLOT(slotSelectionChanged()));
 }
 
 void KTextEditor::ViewPrivate::slotConfigDialog()
@@ -905,15 +906,15 @@ void KTextEditor::ViewPrivate::slotConfigDialog()
 
 void KTextEditor::ViewPrivate::setupEditActions()
 {
-    //If you add an editing action to this
-    //function make sure to include the line
-    //m_editActions << a after creating the action
+    // If you add an editing action to this
+    // function make sure to include the line
+    // m_editActions << a after creating the action
     KActionCollection *ac = actionCollection();
 
     QAction *a = ac->addAction(QStringLiteral("word_left"));
     a->setText(i18n("Move Word Left"));
     ac->setDefaultShortcuts(a, KStandardShortcut::backwardWord());
-    connect(a, SIGNAL(triggered(bool)),  SLOT(wordLeft()));
+    connect(a, SIGNAL(triggered(bool)), SLOT(wordLeft()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_char_left"));
@@ -1094,13 +1095,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
     a->setText(i18n("Move to Matching Bracket"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(toMatchingBracket()));
-    //m_editActions << a;
+    // m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_matching_bracket"));
     a->setText(i18n("Select to Matching Bracket"));
     ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftToMatchingBracket()));
-    //m_editActions << a;
+    // m_editActions << a;
 
     // anders: shortcuts doing any changes should not be created in read-only mode
     if (!doc()->readOnly()) {
@@ -1137,8 +1138,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a = ac->addAction(QStringLiteral("backspace"));
         a->setText(i18n("Backspace"));
         QList<QKeySequence> scuts;
-        scuts << QKeySequence(Qt::Key_Backspace)
-              << QKeySequence(Qt::SHIFT + Qt::Key_Backspace);
+        scuts << QKeySequence(Qt::Key_Backspace) << QKeySequence(Qt::SHIFT + Qt::Key_Backspace);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(backspace()));
         m_editActions << a;
@@ -1152,8 +1152,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setText(i18n("Insert Smart Newline"));
         a->setWhatsThis(i18n("Insert newline including leading characters of the current line which are not letters or numbers."));
         scuts.clear();
-        scuts << QKeySequence(Qt::SHIFT + Qt::Key_Return)
-              << QKeySequence(Qt::SHIFT + Qt::Key_Enter);
+        scuts << QKeySequence(Qt::SHIFT + Qt::Key_Return) << QKeySequence(Qt::SHIFT + Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(smartNewline()));
         m_editActions << a;
@@ -1162,8 +1161,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setText(i18n("Insert a non-indented Newline"));
         a->setWhatsThis(i18n("Insert a new line without indentation, regardless of indentation settings."));
         scuts.clear();
-        scuts << QKeySequence(Qt::CTRL + Qt::Key_Return)
-              << QKeySequence(Qt::CTRL + Qt::Key_Enter);
+        scuts << QKeySequence(Qt::CTRL + Qt::Key_Return) << QKeySequence(Qt::CTRL + Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(noIndentNewline()));
         m_editActions << a;
@@ -1171,8 +1169,9 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a = ac->addAction(QStringLiteral("tools_indent"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-indent-more")));
         a->setText(i18n("&Indent"));
-        a->setWhatsThis(i18n("Use this to indent a selected block of text.<br /><br />"
-                             "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
+        a->setWhatsThis(
+            i18n("Use this to indent a selected block of text.<br /><br />"
+                 "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
         ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
         connect(a, SIGNAL(triggered(bool)), SLOT(indent()));
 
@@ -1203,7 +1202,7 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
 
     a = ac->addAction(QStringLiteral("folding_expandtoplevel"));
     a->setText(i18n("Unfold Toplevel Nodes"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL+Qt::SHIFT+Qt::Key_Plus));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Plus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandToplevelNodes()));
 
     /*a = ac->addAction(QLatin1String("folding_expandall"));
@@ -1453,7 +1452,7 @@ void KTextEditor::ViewPrivate::slotDocumentReloaded()
 
 void KTextEditor::ViewPrivate::slotGotFocus()
 {
-    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotGotFocus";
+    // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotGotFocus";
     currentInputMode()->gotFocus();
 
     /**
@@ -1475,7 +1474,7 @@ void KTextEditor::ViewPrivate::slotGotFocus()
 
 void KTextEditor::ViewPrivate::slotLostFocus()
 {
-    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotLostFocus";
+    // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotLostFocus";
     currentInputMode()->lostFocus();
 
     /**
@@ -1514,7 +1513,7 @@ void KTextEditor::ViewPrivate::reloadFile()
 void KTextEditor::ViewPrivate::slotReadWriteChanged()
 {
     if (m_toggleWriteLock) {
-        m_toggleWriteLock->setChecked(! doc()->isReadWrite());
+        m_toggleWriteLock->setChecked(!doc()->isReadWrite());
     }
 
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
@@ -1522,24 +1521,22 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     m_pasteMenu->setEnabled(doc()->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
     m_setEndOfLine->setEnabled(doc()->isReadWrite());
 
-    static const auto l = {
-          QStringLiteral("edit_replace")
-        , QStringLiteral("tools_spelling")
-        , QStringLiteral("tools_indent")
-        , QStringLiteral("tools_unindent")
-        , QStringLiteral("tools_cleanIndent")
-        , QStringLiteral("tools_align")
-        , QStringLiteral("tools_comment")
-        , QStringLiteral("tools_uncomment")
-        , QStringLiteral("tools_toggle_comment")
-        , QStringLiteral("tools_uppercase")
-        , QStringLiteral("tools_lowercase")
-        , QStringLiteral("tools_capitalize")
-        , QStringLiteral("tools_join_lines")
-        , QStringLiteral("tools_apply_wordwrap")
-        , QStringLiteral("tools_spelling_from_cursor")
-        , QStringLiteral("tools_spelling_selection")
-    };
+    static const auto l = {QStringLiteral("edit_replace"),
+                           QStringLiteral("tools_spelling"),
+                           QStringLiteral("tools_indent"),
+                           QStringLiteral("tools_unindent"),
+                           QStringLiteral("tools_cleanIndent"),
+                           QStringLiteral("tools_align"),
+                           QStringLiteral("tools_comment"),
+                           QStringLiteral("tools_uncomment"),
+                           QStringLiteral("tools_toggle_comment"),
+                           QStringLiteral("tools_uppercase"),
+                           QStringLiteral("tools_lowercase"),
+                           QStringLiteral("tools_capitalize"),
+                           QStringLiteral("tools_join_lines"),
+                           QStringLiteral("tools_apply_wordwrap"),
+                           QStringLiteral("tools_spelling_from_cursor"),
+                           QStringLiteral("tools_spelling_selection")};
 
     for (const auto &action : l) {
         QAction *a = actionCollection()->action(action);
@@ -1633,7 +1630,7 @@ void KTextEditor::ViewPrivate::joinLines()
 {
     int first = selectionRange().start().line();
     int last = selectionRange().end().line();
-    //int left = doc()->line( last ).length() - doc()->selEndCol();
+    // int left = doc()->line( last ).length() - doc()->selEndCol();
     if (first == last) {
         first = cursorPosition().line();
         last = first + 1;
@@ -1832,7 +1829,7 @@ bool KTextEditor::ViewPrivate::foldingMarkersOn()
 
 void KTextEditor::ViewPrivate::toggleWriteLock()
 {
-    doc()->setReadWrite(! doc()->isReadWrite());
+    doc()->setReadWrite(!doc()->isReadWrite());
 }
 
 void KTextEditor::ViewPrivate::registerTextHintProvider(KTextEditor::TextHintProvider *provider)
@@ -1889,10 +1886,10 @@ void KTextEditor::ViewPrivate::slotSelectionChanged()
 {
     m_copy->setEnabled(selection() || m_config->smartCopyCut());
     m_deSelect->setEnabled(selection());
-    m_copyHtmlAction->setEnabled (selection());
+    m_copyHtmlAction->setEnabled(selection());
 
     // update highlighting of current selected word
-    selectionChangedForHighlights ();
+    selectionChangedForHighlights();
 
     if (doc()->readOnly()) {
         return;
@@ -1950,7 +1947,7 @@ void KTextEditor::ViewPrivate::updateConfig()
 
     // scrollbar mini-map - (whole document)
     m_viewInternal->m_lineScroll->setMiniMapAll(config()->scrollBarMiniMapAll());
-    //m_toggleScrollBarMiniMapAll->setChecked( config()->scrollBarMiniMapAll() );
+    // m_toggleScrollBarMiniMapAll->setChecked( config()->scrollBarMiniMapAll() );
 
     // scrollbar mini-map.width
     m_viewInternal->m_lineScroll->setMiniMapWidth(config()->scrollBarMiniMapWidth());
@@ -1962,7 +1959,7 @@ void KTextEditor::ViewPrivate::updateConfig()
     updateFoldingConfig();
 
     // bookmark
-    m_bookmarks->setSorting((KateBookmarks::Sorting) config()->bookmarkSort());
+    m_bookmarks->setSorting((KateBookmarks::Sorting)config()->bookmarkSort());
 
     m_viewInternal->setAutoCenterLines(config()->autoCenterLines());
 
@@ -1988,7 +1985,7 @@ void KTextEditor::ViewPrivate::updateConfig()
         if (kc)
             registerCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
         else
-            unregisterCompletionModel (KTextEditor::EditorPrivate::self()->keywordCompletionModel());
+            unregisterCompletionModel(KTextEditor::EditorPrivate::self()->keywordCompletionModel());
     }
 
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
@@ -2058,8 +2055,8 @@ void KTextEditor::ViewPrivate::updateRendererConfig()
 
     currentInputMode()->updateRendererConfig();
 
-// @@ showIndentLines is not cached anymore.
-//  m_renderer->setShowIndentLines (m_renderer->config()->showIndentationLines());
+    // @@ showIndentLines is not cached anymore.
+    //  m_renderer->setShowIndentLines (m_renderer->config()->showIndentationLines());
     emit configChanged();
 }
 
@@ -2073,7 +2070,7 @@ void KTextEditor::ViewPrivate::updateFoldingConfig()
         if (config()->foldFirstLine() && !m_autoFoldedFirstLine) {
             foldLine(0);
             m_autoFoldedFirstLine = true;
-       } else if (!config()->foldFirstLine() && m_autoFoldedFirstLine) {
+        } else if (!config()->foldFirstLine() && m_autoFoldedFirstLine) {
             unfoldLine(0);
             m_autoFoldedFirstLine = false;
         }
@@ -2105,14 +2102,13 @@ void KTextEditor::ViewPrivate::ensureCursorColumnValid()
     // make sure the cursor is valid:
     // - in block selection mode or if wrap cursor is off, the column is arbitrary
     // - otherwise: it's bounded by the line length
-    if (!blockSelection() && wrapCursor()
-            && (!c.isValid() || c.column() > doc()->lineLength(c.line()))) {
+    if (!blockSelection() && wrapCursor() && (!c.isValid() || c.column() > doc()->lineLength(c.line()))) {
         c.setColumn(doc()->kateTextLine(cursorPosition().line())->length());
         setCursorPosition(c);
     }
 }
 
-//BEGIN EDIT STUFF
+// BEGIN EDIT STUFF
 void KTextEditor::ViewPrivate::editStart()
 {
     m_viewInternal->editStart();
@@ -2127,9 +2123,9 @@ void KTextEditor::ViewPrivate::editSetCursor(const KTextEditor::Cursor &cursor)
 {
     m_viewInternal->editSetCursor(cursor);
 }
-//END
+// END
 
-//BEGIN TAG & CLEAR
+// BEGIN TAG & CLEAR
 bool KTextEditor::ViewPrivate::tagLine(const KTextEditor::Cursor &virtualCursor)
 {
     return m_viewInternal->tagLine(virtualCursor);
@@ -2171,13 +2167,13 @@ void KTextEditor::ViewPrivate::repaintText(bool paintOnlyDirty)
 
 void KTextEditor::ViewPrivate::updateView(bool changed)
 {
-    //qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::updateView";
+    // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::updateView";
 
     m_viewInternal->updateView(changed);
     m_viewInternal->m_leftBorder->update();
 }
 
-//END
+// END
 
 void KTextEditor::ViewPrivate::slotHlChanged()
 {
@@ -2210,7 +2206,7 @@ void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cur
     emit mousePositionChanged(this, newPosition);
 }
 
-//BEGIN KTextEditor::SelectionInterface stuff
+// BEGIN KTextEditor::SelectionInterface stuff
 
 bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
 {
@@ -2353,8 +2349,7 @@ bool KTextEditor::ViewPrivate::cursorSelected(const KTextEditor::Cursor &cursor)
     }
 
     if (blockSelect)
-        return cursor.line() >= m_selection.start().line() && ret.line() <= m_selection.end().line()
-               && ret.column() >= m_selection.start().column() && ret.column() <= m_selection.end().column();
+        return cursor.line() >= m_selection.start().line() && ret.line() <= m_selection.end().line() && ret.column() >= m_selection.start().column() && ret.column() <= m_selection.end().column();
     else {
         return m_selection.toRange().contains(cursor) || m_selection.end() == cursor;
     }
@@ -2367,9 +2362,8 @@ bool KTextEditor::ViewPrivate::lineSelected(int line)
 
 bool KTextEditor::ViewPrivate::lineEndSelected(const KTextEditor::Cursor &lineEndPos)
 {
-    return (!blockSelect)
-           && (lineEndPos.line() > m_selection.start().line() || (lineEndPos.line() == m_selection.start().line() && (m_selection.start().column() < lineEndPos.column() || lineEndPos.column() == -1)))
-           && (lineEndPos.line() < m_selection.end().line() || (lineEndPos.line() == m_selection.end().line() && (lineEndPos.column() <= m_selection.end().column() && lineEndPos.column() != -1)));
+    return (!blockSelect) && (lineEndPos.line() > m_selection.start().line() || (lineEndPos.line() == m_selection.start().line() && (m_selection.start().column() < lineEndPos.column() || lineEndPos.column() == -1))) &&
+        (lineEndPos.line() < m_selection.end().line() || (lineEndPos.line() == m_selection.end().line() && (lineEndPos.column() <= m_selection.end().column() && lineEndPos.column() != -1)));
 }
 
 bool KTextEditor::ViewPrivate::lineHasSelected(int line)
@@ -2469,20 +2463,20 @@ void KTextEditor::ViewPrivate::copy() const
 void KTextEditor::ViewPrivate::applyWordWrap()
 {
     int first = selectionRange().start().line();
-    int last  = selectionRange().end().line();
+    int last = selectionRange().end().line();
 
     if (first == last) {
         // Either no selection or only one line selected, wrap only the current line
         first = cursorPosition().line();
-        last  = first;
+        last = first;
     }
 
     doc()->wrapParagraph(first, last);
 }
 
-//END
+// END
 
-//BEGIN KTextEditor::BlockSelectionInterface stuff
+// BEGIN KTextEditor::BlockSelectionInterface stuff
 
 bool KTextEditor::ViewPrivate::blockSelection() const
 {
@@ -2529,16 +2523,14 @@ bool KTextEditor::ViewPrivate::wrapCursor() const
     return !blockSelection();
 }
 
-//END
+// END
 
 void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const KTextEditor::Cursor &position, const QString &text)
 {
     emit textInserted(view, position, text);
 }
 
-bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor& c,
-                                                      const QString& templateString,
-                                                      const QString& script)
+bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor &c, const QString &templateString, const QString &script)
 {
     /**
      * no empty templates
@@ -2715,7 +2707,6 @@ KTextEditor::Cursor KTextEditor::ViewPrivate::maxScrollPositionInternal() const
     return m_viewInternal->maxStartPos(true);
 }
 
-
 int KTextEditor::ViewPrivate::firstDisplayedLineInternal(LineType lineType) const
 {
     if (lineType == RealLine) {
@@ -2728,7 +2719,7 @@ int KTextEditor::ViewPrivate::firstDisplayedLineInternal(LineType lineType) cons
 int KTextEditor::ViewPrivate::lastDisplayedLineInternal(LineType lineType) const
 {
     if (lineType == RealLine) {
-        return  m_textFolding.visibleLineToLine(m_viewInternal->endLine());
+        return m_textFolding.visibleLineToLine(m_viewInternal->endLine());
     } else {
         return m_viewInternal->endLine();
     }
@@ -2752,14 +2743,14 @@ QString KTextEditor::ViewPrivate::currentTextLine()
     return doc()->line(cursorPosition().line());
 }
 
-QTextLayout * KTextEditor::ViewPrivate::textLayout(int line) const
+QTextLayout *KTextEditor::ViewPrivate::textLayout(int line) const
 {
     KateLineLayoutPtr thisLine = m_viewInternal->cache()->line(line);
 
     return thisLine->isValid() ? thisLine->layout() : nullptr;
 }
 
-QTextLayout * KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor &pos) const
+QTextLayout *KTextEditor::ViewPrivate::textLayout(const KTextEditor::Cursor &pos) const
 {
     KateLineLayoutPtr thisLine = m_viewInternal->cache()->line(pos);
 
@@ -2864,9 +2855,7 @@ void KTextEditor::ViewPrivate::smartNewline()
     Kate::TextLine line = doc()->kateTextLine(ln);
     int col = qMin(cursor.column(), line->firstChar());
     if (col != -1) {
-        while (line->length() > col &&
-                !(line->at(col).isLetterOrNumber() || line->at(col) == QLatin1Char('_')) &&
-                col < cursor.column()) {
+        while (line->length() > col && !(line->at(col).isLetterOrNumber() || line->at(col) == QLatin1Char('_')) && col < cursor.column()) {
             ++col;
         }
     } else {
@@ -3200,12 +3189,12 @@ QMenu *KTextEditor::ViewPrivate::contextMenu() const
             client = client->parentClient();
         }
 
-        //qCDebug(LOG_KTE) << "looking up all menu containers";
+        // qCDebug(LOG_KTE) << "looking up all menu containers";
         if (client->factory()) {
             const QList<QWidget *> menuContainers = client->factory()->containers(QStringLiteral("menu"));
             for (QWidget *w : menuContainers) {
                 if (w->objectName() == QLatin1String("ktexteditor_popup")) {
-                    //perhaps optimize this block
+                    // perhaps optimize this block
                     QMenu *menu = (QMenu *)w;
                     // menu is a reusable instance shared among all views. Therefore,
                     // disconnect the current receiver(s) from the menu show/hide signals
@@ -3267,29 +3256,27 @@ void KTextEditor::ViewPrivate::aboutToHideContextMenu()
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::ViewPrivate::configKeys() const
 {
-    static const QStringList keys = {
-        QStringLiteral("icon-bar"),
-        QStringLiteral("line-numbers"),
-        QStringLiteral("dynamic-word-wrap"),
-        QStringLiteral("background-color"),
-        QStringLiteral("selection-color"),
-        QStringLiteral("search-highlight-color"),
-        QStringLiteral("replace-highlight-color"),
-        QStringLiteral("default-mark-type"),
-        QStringLiteral("allow-mark-menu"),
-        QStringLiteral("folding-bar"),
-        QStringLiteral("folding-preview"),
-        QStringLiteral("icon-border-color"),
-        QStringLiteral("folding-marker-color"),
-        QStringLiteral("line-number-color"),
-        QStringLiteral("current-line-number-color"),
-        QStringLiteral("modification-markers"),
-        QStringLiteral("keyword-completion"),
-        QStringLiteral("word-count"),
-        QStringLiteral("scrollbar-minimap"),
-        QStringLiteral("scrollbar-preview"),
-        QStringLiteral("font")
-    };
+    static const QStringList keys = {QStringLiteral("icon-bar"),
+                                     QStringLiteral("line-numbers"),
+                                     QStringLiteral("dynamic-word-wrap"),
+                                     QStringLiteral("background-color"),
+                                     QStringLiteral("selection-color"),
+                                     QStringLiteral("search-highlight-color"),
+                                     QStringLiteral("replace-highlight-color"),
+                                     QStringLiteral("default-mark-type"),
+                                     QStringLiteral("allow-mark-menu"),
+                                     QStringLiteral("folding-bar"),
+                                     QStringLiteral("folding-preview"),
+                                     QStringLiteral("icon-border-color"),
+                                     QStringLiteral("folding-marker-color"),
+                                     QStringLiteral("line-number-color"),
+                                     QStringLiteral("current-line-number-color"),
+                                     QStringLiteral("modification-markers"),
+                                     QStringLiteral("keyword-completion"),
+                                     QStringLiteral("word-count"),
+                                     QStringLiteral("scrollbar-minimap"),
+                                     QStringLiteral("scrollbar-preview"),
+                                     QStringLiteral("font")};
     return keys;
 }
 
@@ -3443,7 +3430,7 @@ bool KTextEditor::ViewPrivate::isAnnotationBorderVisible() const
     return m_viewInternal->m_leftBorder->annotationBorderOn();
 }
 
-KTextEditor::AbstractAnnotationItemDelegate* KTextEditor::ViewPrivate::annotationItemDelegate() const
+KTextEditor::AbstractAnnotationItemDelegate *KTextEditor::ViewPrivate::annotationItemDelegate() const
 {
     return m_viewInternal->m_leftBorder->annotationItemDelegate();
 }
@@ -3465,12 +3452,11 @@ void KTextEditor::ViewPrivate::setAnnotationUniformItemSizes(bool enable)
 
 KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()
 {
-    //ensure that the view is up-to-date, otherwise 'endPos()' might fail!
+    // ensure that the view is up-to-date, otherwise 'endPos()' might fail!
     if (!m_viewInternal->endPos().isValid()) {
         m_viewInternal->updateView();
     }
-    return KTextEditor::Range(m_viewInternal->toRealCursor(m_viewInternal->startPos()),
-                              m_viewInternal->toRealCursor(m_viewInternal->endPos()));
+    return KTextEditor::Range(m_viewInternal->toRealCursor(m_viewInternal->startPos()), m_viewInternal->toRealCursor(m_viewInternal->endPos()));
 }
 
 bool KTextEditor::ViewPrivate::event(QEvent *e)
@@ -3486,13 +3472,10 @@ bool KTextEditor::ViewPrivate::event(QEvent *e)
 
 void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
 {
-    //base class
+    // base class
     KTextEditor::View::paintEvent(e);
 
-    const QRect contentsRect = m_topSpacer->geometry()|
-        m_bottomSpacer->geometry()|
-        m_leftSpacer->geometry()|
-        m_rightSpacer->geometry();
+    const QRect contentsRect = m_topSpacer->geometry() | m_bottomSpacer->geometry() | m_leftSpacer->geometry() | m_rightSpacer->geometry();
 
     if (contentsRect.isValid()) {
         QStyleOptionFrame opt;
@@ -3502,15 +3485,17 @@ void KTextEditor::ViewPrivate::paintEvent(QPaintEvent *e)
 
         // clear mouseOver and focus state
         // update from relevant widgets
-        opt.state &= ~(QStyle::State_HasFocus|QStyle::State_MouseOver);
+        opt.state &= ~(QStyle::State_HasFocus | QStyle::State_MouseOver);
         const QList<QWidget *> widgets = QList<QWidget *>() << m_viewInternal << m_viewInternal->m_leftBorder << m_viewInternal->m_lineScroll << m_viewInternal->m_columnScroll;
         for (const QWidget *w : widgets) {
-            if (w->hasFocus()) opt.state |= QStyle::State_HasFocus;
-            if (w->underMouse()) opt.state |= QStyle::State_MouseOver;
+            if (w->hasFocus())
+                opt.state |= QStyle::State_HasFocus;
+            if (w->underMouse())
+                opt.state |= QStyle::State_MouseOver;
         }
 
         // update rect
-        opt.rect=contentsRect;
+        opt.rect = contentsRect;
 
         // render
         QPainter paint(this);
@@ -3634,13 +3619,11 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
             }
 
             // range doesn't contain cursor, not interesting
-            if ((range->start().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert)
-                    ? (currentCursor < range->start().toCursor()) : (currentCursor <= range->start().toCursor())) {
+            if ((range->start().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (currentCursor < range->start().toCursor()) : (currentCursor <= range->start().toCursor())) {
                 continue;
             }
 
-            if ((range->end().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert)
-                    ? (range->end().toCursor() <= currentCursor) : (range->end().toCursor() < currentCursor)) {
+            if ((range->end().insertBehavior() == KTextEditor::MovingCursor::StayOnInsert) ? (range->end().toCursor() <= currentCursor) : (range->end().toCursor() < currentCursor)) {
                 continue;
             }
 
@@ -3698,8 +3681,7 @@ void KTextEditor::ViewPrivate::updateRangesIn(KTextEditor::Attribute::Activation
     oldSet = newRangesIn;
 }
 
-void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
-                           QList<QSharedPointer<QAction> > actions)
+void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions)
 {
     // just forward to KateMessageWidget :-)
     auto messageWidget = m_messageWidgets[message->position()];
@@ -3708,8 +3690,8 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message,
         messageWidget = new KateMessageWidget(m_viewInternal, true);
         m_messageWidgets[message->position()] = messageWidget;
         m_notificationLayout->addWidget(messageWidget, message->position());
-        connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate*)), messageWidget, SLOT(startAutoHideTimer()));
-        connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
+        connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), messageWidget, SLOT(startAutoHideTimer()));
+        connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
     }
     messageWidget->postMessage(message, actions);
 }
@@ -3735,12 +3717,12 @@ void KTextEditor::ViewPrivate::exportHtmlToFile(const QString &file)
     KateExporter(this).exportToFile(file);
 }
 
-void KTextEditor::ViewPrivate::exportHtmlToClipboard ()
+void KTextEditor::ViewPrivate::exportHtmlToClipboard()
 {
     KateExporter(this).exportToClipboard();
 }
 
-void KTextEditor::ViewPrivate::exportHtmlToFile ()
+void KTextEditor::ViewPrivate::exportHtmlToFile()
 {
     const QString file = QFileDialog::getSaveFileName(this, i18n("Export File as HTML"), doc()->documentName());
     if (!file.isEmpty()) {
@@ -3771,7 +3753,7 @@ void KTextEditor::ViewPrivate::selectionChangedForHighlights()
     m_rangesForHighlights.clear();
 
     // do not highlight strings with leading and trailing spaces
-    if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length()-1).isSpace()))
+    if (!text.isEmpty() && (text.at(0).isSpace() || text.at(text.length() - 1).isSpace()))
         return;
 
     // trigger creation of ranges for current view range
@@ -3802,11 +3784,11 @@ void KTextEditor::ViewPrivate::createHighlights()
      * only add word boundary if we can find the text then
      * fixes $lala hl
      */
-    QString regex = QRegExp::escape (m_currentTextForHighlights);
-    if (QRegExp (QStringLiteral("\\b%1").arg(regex)).indexIn (QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-         regex = QStringLiteral("\\b%1").arg(regex);
-    if (QRegExp (QStringLiteral("%1\\b").arg(regex)).indexIn (QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-         regex = QStringLiteral("%1\\b").arg(regex);
+    QString regex = QRegExp::escape(m_currentTextForHighlights);
+    if (QRegExp(QStringLiteral("\\b%1").arg(regex)).indexIn(QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
+        regex = QStringLiteral("\\b%1").arg(regex);
+    if (QRegExp(QStringLiteral("%1\\b").arg(regex)).indexIn(QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
+        regex = QStringLiteral("%1\\b").arg(regex);
     QVector<KTextEditor::Range> matches;
     do {
         searchRange.setRange(start, visibleRange().end());
@@ -3814,7 +3796,7 @@ void KTextEditor::ViewPrivate::createHighlights()
         matches = doc()->searchText(searchRange, regex, KTextEditor::Regex);
 
         if (matches.first().isValid()) {
-            KTextEditor::MovingRange* mr = doc()->newMovingRange(matches.first());
+            KTextEditor::MovingRange *mr = doc()->newMovingRange(matches.first());
             mr->setAttribute(attr);
             mr->setView(this);
             mr->setZDepth(-90000.0); // Set the z-depth to slightly worse than the selection
@@ -3844,7 +3826,7 @@ void KTextEditor::ViewPrivate::cycleInputMode()
     setInputMode(to);
 }
 
-//BEGIN KTextEditor::PrintInterface stuff
+// BEGIN KTextEditor::PrintInterface stuff
 bool KTextEditor::ViewPrivate::print()
 {
     return KatePrinter::print(this);
@@ -3855,12 +3837,12 @@ void KTextEditor::ViewPrivate::printPreview()
     KatePrinter::printPreview(this);
 }
 
-//END
+// END
 
-//BEGIN KTextEditor::InlineNoteInterface
+// BEGIN KTextEditor::InlineNoteInterface
 void KTextEditor::ViewPrivate::registerInlineNoteProvider(KTextEditor::InlineNoteProvider *provider)
 {
-    if (! m_inlineNoteProviders.contains(provider)) {
+    if (!m_inlineNoteProviders.contains(provider)) {
         m_inlineNoteProviders.append(provider);
 
         connect(provider, &KTextEditor::InlineNoteProvider::inlineNotesReset, this, &ViewPrivate::inlineNotesReset);
@@ -3885,18 +3867,10 @@ void KTextEditor::ViewPrivate::unregisterInlineNoteProvider(KTextEditor::InlineN
 QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int line) const
 {
     QVarLengthArray<KateInlineNoteData, 8> allInlineNotes;
-    for (KTextEditor::InlineNoteProvider *provider: m_inlineNoteProviders) {
+    for (KTextEditor::InlineNoteProvider *provider : m_inlineNoteProviders) {
         int index = 0;
-        for (auto column: provider->inlineNotes(line)) {
-            KateInlineNoteData note = {
-                provider,
-                this,
-                {line, column},
-                index,
-                m_viewInternal->m_activeInlineNote.m_underMouse,
-                m_viewInternal->renderer()->currentFont(),
-                m_viewInternal->renderer()->lineHeight()
-            };
+        for (auto column : provider->inlineNotes(line)) {
+            KateInlineNoteData note = {provider, this, {line, column}, index, m_viewInternal->m_activeInlineNote.m_underMouse, m_viewInternal->renderer()->currentFont(), m_viewInternal->renderer()->lineHeight()};
             allInlineNotes.append(note);
             index++;
         }
@@ -3904,7 +3878,7 @@ QVarLengthArray<KateInlineNoteData, 8> KTextEditor::ViewPrivate::inlineNotes(int
     return allInlineNotes;
 }
 
-QRect KTextEditor::ViewPrivate::inlineNoteRect(const KateInlineNoteData& note) const
+QRect KTextEditor::ViewPrivate::inlineNoteRect(const KateInlineNoteData &note) const
 {
     return m_viewInternal->inlineNoteRect(note);
 }
@@ -3917,17 +3891,17 @@ void KTextEditor::ViewPrivate::inlineNotesReset()
 
 void KTextEditor::ViewPrivate::inlineNotesLineChanged(int line)
 {
-    if ( line == m_viewInternal->m_activeInlineNote.m_position.line() ) {
+    if (line == m_viewInternal->m_activeInlineNote.m_position.line()) {
         m_viewInternal->m_activeInlineNote = {};
     }
     tagLines(line, line, true);
 }
 
-//END KTextEditor::InlineNoteInterface
+// END KTextEditor::InlineNoteInterface
 
 KTextEditor::Attribute::Ptr KTextEditor::ViewPrivate::defaultStyleAttribute(KTextEditor::DefaultStyle defaultStyle) const
 {
-    KateRendererConfig * renderConfig = const_cast<KTextEditor::ViewPrivate*>(this)->renderer()->config();
+    KateRendererConfig *renderConfig = const_cast<KTextEditor::ViewPrivate *>(this)->renderer()->config();
 
     KTextEditor::Attribute::Ptr style = doc()->highlight()->attributes(renderConfig->schema()).at(defaultStyle);
     if (!style->hasProperty(QTextFormat::BackgroundBrush)) {
@@ -3953,11 +3927,7 @@ QList<KTextEditor::AttributeBlock> KTextEditor::ViewPrivate::lineAttributes(int 
     const QVector<Kate::TextLineData::Attribute> &intAttrs = kateLine->attributesList();
     for (int i = 0; i < intAttrs.size(); ++i) {
         if (intAttrs[i].length > 0 && intAttrs[i].attributeValue > 0) {
-            attribs << KTextEditor::AttributeBlock(
-                        intAttrs.at(i).offset,
-                        intAttrs.at(i).length,
-                        renderer()->attribute(intAttrs.at(i).attributeValue)
-                    );
+            attribs << KTextEditor::AttributeBlock(intAttrs.at(i).offset, intAttrs.at(i).length, renderer()->attribute(intAttrs.at(i).attributeValue));
         }
     }
 

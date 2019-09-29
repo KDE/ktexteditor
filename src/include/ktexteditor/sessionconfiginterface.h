@@ -30,7 +30,6 @@ class KConfigGroup;
 
 namespace KTextEditor
 {
-
 /**
  * \brief Session config interface extension for the Plugin and Plugin views.
  *

@@ -31,7 +31,6 @@ class QKeyEvent;
 
 namespace KateVi
 {
-
 /**
  * for encoding keypresses w/ modifiers into an internal QChar representation and back again to a
  * descriptive text string
@@ -48,7 +47,7 @@ public:
         m_instance = nullptr;
     }
     KeyParser(const KeyParser &) = delete;
-    KeyParser& operator=(const KeyParser &) = delete;
+    KeyParser &operator=(const KeyParser &) = delete;
 
     const QString encodeKeySequence(const QString &keys) const;
     const QString decodeKeySequence(const QString &keys) const;

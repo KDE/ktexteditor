@@ -136,4 +136,3 @@ public:
 };
 
 #endif // KATE_MODIFIED_UNDO_H
-

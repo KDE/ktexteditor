@@ -42,8 +42,14 @@
 #include <ktexteditor_export.h>
 #include "katetextline.h"
 
-namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 class KateViewInternal;
 class KateTextLayout;
 
@@ -72,7 +78,7 @@ class QVBoxLayout;
 class KateMessageLayout : public QLayout
 {
 public:
-    explicit KateMessageLayout (QWidget *parent);
+    explicit KateMessageLayout(QWidget *parent);
     ~KateMessageLayout() override;
 
     void addWidget(QWidget *widget, KTextEditor::Message::MessagePosition pos);
@@ -87,14 +93,14 @@ public:
 private:
     void addItem(QLayoutItem *item) override; // never called publically
 
-    struct ItemWrapper
-    {
+    struct ItemWrapper {
         ItemWrapper(QLayoutItem *i, KTextEditor::Message::MessagePosition pos)
             : item(i)
             , position(pos)
-        {}
+        {
+        }
 
-        QLayoutItem * item = nullptr;
+        QLayoutItem *item = nullptr;
         KTextEditor::Message::MessagePosition position;
     };
 
@@ -182,6 +188,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void showTextPreview();
+
 private:
     void showTextPreviewDelayed();
     void hideTextPreview();
@@ -194,9 +201,7 @@ private:
 
     int minimapYToStdY(int y);
 
-    const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex,
-                           const QVector<QTextLayout::FormatRange> &decorations,
-                           const QColor &defaultColor, int x, QChar ch);
+    const QColor charColor(const QVector<Kate::TextLineData::Attribute> &attributes, int &attributeIndex, const QVector<QTextLayout::FormatRange> &decorations, const QColor &defaultColor, int x, QChar ch);
 
     bool m_middleMouseDown;
     bool m_leftMouseDown;
@@ -215,10 +220,10 @@ private:
     int m_miniMapWidth;
 
     QPixmap m_pixmap;
-    int     m_grooveHeight;
-    QRect   m_stdGroveRect;
-    QRect   m_mapGroveRect;
-    QTimer  m_updateTimer;
+    int m_grooveHeight;
+    QRect m_stdGroveRect;
+    QRect m_mapGroveRect;
+    QTimer m_updateTimer;
     QPoint m_toolTipPos;
 
     // lists of lines added/removed recently to avoid scrollbar flickering
@@ -246,7 +251,7 @@ public:
     void setRelLineNumbersOn(bool enable);
     void setAnnotationBorderOn(bool enable);
     void setDynWrapIndicators(int state);
-    int dynWrapIndicators()  const
+    int dynWrapIndicators() const
     {
         return m_dynWrapIndicators;
     }
@@ -267,19 +272,19 @@ public:
     {
         setFoldingMarkersOn(!foldingMarkersOn());
     }
-    inline bool iconBorderOn()       const
+    inline bool iconBorderOn() const
     {
         return m_iconBorderOn;
     }
-    inline bool lineNumbersOn()      const
+    inline bool lineNumbersOn() const
     {
         return m_lineNumbersOn;
     }
-    inline bool viRelNumbersOn()     const
+    inline bool viRelNumbersOn() const
     {
         return m_relLineNumbersOn;
     }
-    inline bool foldingMarkersOn()   const
+    inline bool foldingMarkersOn() const
     {
         return m_foldingMarkersOn;
     }
@@ -293,7 +298,7 @@ public:
     enum BorderArea { None, LineNumbers, IconBorder, FoldingMarkers, AnnotationBorder, ModificationBorder };
     BorderArea positionToArea(const QPoint &) const;
 
-    KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const;
+    KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const;
     void setAnnotationItemDelegate(KTextEditor::AbstractAnnotationItemDelegate *delegate);
     inline bool uniformAnnotationItemSizes() const
     {
@@ -312,7 +317,7 @@ public Q_SLOTS:
 
 private:
     void dragMoveEvent(QDragMoveEvent *event) override;
-    void dropEvent(QDropEvent *event)  override;
+    void dropEvent(QDropEvent *event) override;
     void paintEvent(QPaintEvent *) override;
     void paintBorder(int x, int y, int width, int height);
 
@@ -331,11 +336,7 @@ private:
     void calcAnnotationBorderWidth();
 
     void initStyleOption(KTextEditor::StyleOptionAnnotationItem *styleOption) const;
-    void setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption,
-                                int y,
-                                int realLine,
-                                const KTextEditor::AnnotationModel *model,
-                                const QString &annotationGroupIdentifier) const;
+    void setStyleOptionLineData(KTextEditor::StyleOptionAnnotationItem *styleOption, int y, int realLine, const KTextEditor::AnnotationModel *model, const QString &annotationGroupIdentifier) const;
     QRect annotationLineRectInView(int line) const;
 
 private:
@@ -343,14 +344,14 @@ private:
     KTextEditor::DocumentPrivate *m_doc;
     KateViewInternal *m_viewInternal;
 
-    bool m_iconBorderOn: 1;
-    bool m_lineNumbersOn: 1;
-    bool m_relLineNumbersOn:1;
-    bool m_updateRelLineNumbers:1;
-    bool m_foldingMarkersOn: 1;
-    bool m_dynWrapIndicatorsOn: 1;
-    bool m_annotationBorderOn: 1;
-    bool m_updatePositionToArea: 1;
+    bool m_iconBorderOn : 1;
+    bool m_lineNumbersOn : 1;
+    bool m_relLineNumbersOn : 1;
+    bool m_updateRelLineNumbers : 1;
+    bool m_foldingMarkersOn : 1;
+    bool m_dynWrapIndicatorsOn : 1;
+    bool m_annotationBorderOn : 1;
+    bool m_updatePositionToArea : 1;
 
     typedef QPair<int, KateIconBorder::BorderArea> AreaPosition;
     QVector<AreaPosition> m_positionToArea;
@@ -387,7 +388,7 @@ private:
     void initializeFoldingColors();
 };
 
-class KateViewEncodingAction: public KSelectAction
+class KateViewEncodingAction : public KSelectAction
 {
     Q_OBJECT
 
@@ -413,8 +414,8 @@ public:
 
 Q_SIGNALS:
     /**
-    * Specific (proper) codec was selected
-    */
+     * Specific (proper) codec was selected
+     */
     void triggered(QTextCodec *codec);
 
 private:
@@ -425,8 +426,8 @@ private:
     {
     public:
         explicit Private(KateViewEncodingAction *parent)
-            : q(parent),
-              currentSubAction(nullptr)
+            : q(parent)
+            , currentSubAction(nullptr)
         {
         }
 
@@ -458,7 +459,9 @@ class KateViewBarWidget : public QWidget
 public:
     explicit KateViewBarWidget(bool addCloseButton, QWidget *parent = nullptr);
 
-    virtual void closed() {}
+    virtual void closed()
+    {
+    }
 
     /// returns the currently associated KateViewBar and 0, if it is not associated
     KateViewBar *viewBar()
@@ -495,9 +498,7 @@ class KateViewBar : public QWidget
     Q_OBJECT
 
 public:
-    KateViewBar(bool external,
-                QWidget *parent,
-                KTextEditor::ViewPrivate *view);
+    KateViewBar(bool external, QWidget *parent, KTextEditor::ViewPrivate *view);
 
     /**
      * Adds a widget to this viewbar.
@@ -639,8 +640,8 @@ private:
     KateCommandLineBar *m_bar;
     bool m_msgMode;
     QString m_oldText;
-    uint m_histpos; ///< position in the history
-    uint m_cmdend; ///< the point where a command ends in the text, if we have a valid one.
+    uint m_histpos;                  ///< position in the history
+    uint m_cmdend;                   ///< the point where a command ends in the text, if we have a valid one.
     KTextEditor::Command *m_command; ///< For completing flags/args and interactiveness
     class KateCmdLnWhatsThis *m_help;
 
@@ -663,4 +664,3 @@ private Q_SLOTS:
 };
 
 #endif
-

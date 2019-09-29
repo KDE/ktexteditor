@@ -26,7 +26,10 @@
 
 #include <KActionMenu>
 
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 class KateHighlightingMenu : public KActionMenu
 {
@@ -54,7 +57,7 @@ private:
     QList<QAction *> subActions;
     QActionGroup *m_actionGroup;
 
-public  Q_SLOTS:
+public Q_SLOTS:
     void slotAboutToShow();
 
 private Q_SLOTS:
@@ -62,4 +65,3 @@ private Q_SLOTS:
 };
 
 #endif
-

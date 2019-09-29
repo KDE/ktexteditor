@@ -19,8 +19,9 @@
 #include "katedocument.h"
 #include "kateview.h"
 
-namespace {
-    const int MaximumLinesToRecalculate = 100;
+namespace
+{
+const int MaximumLinesToRecalculate = 100;
 }
 
 WordCounter::WordCounter(KTextEditor::ViewPrivate *view)
@@ -180,5 +181,5 @@ int WordCounter::countWords(const QString &text) const
         }
     }
 
-    return (inWord) ? count + 1: count;
+    return (inWord) ? count + 1 : count;
 }

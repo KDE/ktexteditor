@@ -95,9 +95,7 @@ public:
      * \param line line for cursor
      * \param column column for cursor
      */
-    Q_DECL_CONSTEXPR Cursor(int line, int column) Q_DECL_NOEXCEPT
-        : m_line(line)
-        , m_column(column)
+    Q_DECL_CONSTEXPR Cursor(int line, int column) Q_DECL_NOEXCEPT : m_line(line), m_column(column)
     {
     }
 
@@ -109,7 +107,8 @@ public:
      *       \e text-position, use DocumentCursor::isValidTextPosition(),
      *       or Document::isValidTextPosition().
      */
-    Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool isValid() const Q_DECL_NOEXCEPT
+    {
         return m_line >= 0 && m_column >= 0;
     }
 
@@ -118,14 +117,16 @@ public:
      * The returned cursor position is set to (-1, -1).
      * \see isValid()
      */
-    Q_DECL_CONSTEXPR static Cursor invalid() Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR static Cursor invalid() Q_DECL_NOEXCEPT
+    {
         return Cursor(-1, -1);
     }
 
     /**
      * Returns a cursor representing the start of any document - i.e., line 0, column 0.
      */
-    Q_DECL_CONSTEXPR static Cursor start() Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR static Cursor start() Q_DECL_NOEXCEPT
+    {
         return Cursor();
     }
 
@@ -133,10 +134,9 @@ public:
      * Returns the cursor position as string in the format "(line, column)".
      * \see fromString()
      */
-    QString toString() const {
-        return QLatin1Char('(') + QString::number(m_line)
-             + QLatin1String(", ") + QString::number(m_column)
-             + QLatin1Char(')');
+    QString toString() const
+    {
+        return QLatin1Char('(') + QString::number(m_line) + QLatin1String(", ") + QString::number(m_column) + QLatin1Char(')');
     }
 
     /**
@@ -145,7 +145,8 @@ public:
      * is returned.
      * \see toString()
      */
-    static Cursor fromString(const QString& str) Q_DECL_NOEXCEPT {
+    static Cursor fromString(const QString &str) Q_DECL_NOEXCEPT
+    {
         return fromString(str.leftRef(-1));
     }
 
@@ -155,7 +156,7 @@ public:
      * is returned.
      * \see toString()
      */
-    static Cursor fromString(const QStringRef& str) Q_DECL_NOEXCEPT;
+    static Cursor fromString(const QStringRef &str) Q_DECL_NOEXCEPT;
 
     /**
      * \name Position
@@ -168,7 +169,8 @@ public:
      *
      * \param position new cursor position
      */
-    inline void setPosition(const Cursor &position) Q_DECL_NOEXCEPT {
+    inline void setPosition(const Cursor &position) Q_DECL_NOEXCEPT
+    {
         m_line = position.m_line;
         m_column = position.m_column;
     }
@@ -181,7 +183,8 @@ public:
      * \param line new cursor line
      * \param column new cursor column
      */
-    inline void setPosition(int line, int column) Q_DECL_NOEXCEPT {
+    inline void setPosition(int line, int column) Q_DECL_NOEXCEPT
+    {
         m_line = line;
         m_column = column;
     }
@@ -190,7 +193,8 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    Q_DECL_CONSTEXPR inline int line() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline int line() const Q_DECL_NOEXCEPT
+    {
         return m_line;
     }
 
@@ -198,7 +202,8 @@ public:
      * Set the cursor line to \e line.
      * \param line new cursor line
      */
-    inline void setLine(int line) Q_DECL_NOEXCEPT {
+    inline void setLine(int line) Q_DECL_NOEXCEPT
+    {
         m_line = line;
     }
 
@@ -206,7 +211,8 @@ public:
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    Q_DECL_CONSTEXPR inline int column() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline int column() const Q_DECL_NOEXCEPT
+    {
         return m_column;
     }
 
@@ -214,7 +220,8 @@ public:
      * Set the cursor column to \e column.
      * \param column new cursor column
      */
-    inline void setColumn(int column) Q_DECL_NOEXCEPT {
+    inline void setColumn(int column) Q_DECL_NOEXCEPT
+    {
         m_column = column;
     }
 
@@ -222,7 +229,8 @@ public:
      * Determine if this cursor is located at the start of a line (= at column 0).
      * \return \e true if the cursor is situated at the start of the line, \e false if it isn't.
      */
-    Q_DECL_CONSTEXPR inline bool atStartOfLine() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool atStartOfLine() const Q_DECL_NOEXCEPT
+    {
         return m_column == 0;
     }
 
@@ -230,7 +238,8 @@ public:
      * Determine if this cursor is located at the start of a document (= at position (0, 0)).
      * \return \e true if the cursor is situated at the start of the document, \e false if it isn't.
      */
-    Q_DECL_CONSTEXPR inline bool atStartOfDocument() const Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline bool atStartOfDocument() const Q_DECL_NOEXCEPT
+    {
         return m_line == 0 && m_column == 0;
     }
 
@@ -239,7 +248,8 @@ public:
      * \param line will be filled with current cursor line
      * \param column will be filled with current cursor column
      */
-    inline void position(int &line, int &column) const Q_DECL_NOEXCEPT {
+    inline void position(int &line, int &column) const Q_DECL_NOEXCEPT
+    {
         line = m_line;
         column = m_column;
     }
@@ -251,7 +261,8 @@ public:
      * \param c2 the second position
      * \return a the summation of the two input cursors
      */
-    Q_DECL_CONSTEXPR inline friend Cursor operator+(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend Cursor operator+(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return Cursor(c1.line() + c2.line(), c1.column() + c2.column());
     }
 
@@ -261,7 +272,8 @@ public:
      * \param c2 the position to add
      * \return a reference to the cursor which has just been added to
      */
-    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    inline friend Cursor &operator+=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         c1.setPosition(c1.line() + c2.line(), c1.column() + c2.column());
         return c1;
     }
@@ -274,7 +286,8 @@ public:
      * \param c2 the second position
      * \return a cursor representing the subtraction of \p c2 from \p c1
      */
-    Q_DECL_CONSTEXPR inline friend Cursor operator-(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend Cursor operator-(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return Cursor(c1.line() - c2.line(), c1.column() - c2.column());
     }
 
@@ -284,7 +297,8 @@ public:
      * \param c2 the position to subtract
      * \return a reference to the cursor which has just been subtracted from
      */
-    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    inline friend Cursor &operator-=(Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         c1.setPosition(c1.line() - c2.line(), c1.column() - c2.column());
         return c1;
     }
@@ -299,7 +313,8 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e equal.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator==(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator==(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return c1.line() == c2.line() && c1.column() == c2.column();
     }
 
@@ -309,7 +324,8 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's line and column are \e not equal.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator!=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator!=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return !(c1 == c2);
     }
 
@@ -320,7 +336,8 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator>(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column > c2.m_column);
     }
 
@@ -331,7 +348,8 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator>=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT{
+    Q_DECL_CONSTEXPR inline friend bool operator>=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.m_column >= c2.m_column);
     }
 
@@ -342,7 +360,8 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator<(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return !(c1 >= c2);
     }
 
@@ -353,14 +372,16 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    Q_DECL_CONSTEXPR inline friend bool operator<=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT {
+    Q_DECL_CONSTEXPR inline friend bool operator<=(const Cursor &c1, const Cursor &c2) Q_DECL_NOEXCEPT
+    {
         return !(c1 > c2);
     }
 
     /**
      * qDebug() stream operator.  Writes this cursor to the debug output in a nicely formatted way.
      */
-    inline friend QDebug operator<< (QDebug s, const Cursor &cursor) {
+    inline friend QDebug operator<<(QDebug s, const Cursor &cursor)
+    {
         s.nospace() << "(" << cursor.line() << ", " << cursor.column() << ")";
         return s.space();
     }
@@ -390,22 +411,20 @@ Q_DECLARE_METATYPE(KTextEditor::Cursor)
  * QHash function for KTextEditor::Cursor.
  * Returns the hash value for @p cursor.
  */
-inline uint qHash(const KTextEditor::Cursor& cursor, uint seed = 0) Q_DECL_NOTHROW
+inline uint qHash(const KTextEditor::Cursor &cursor, uint seed = 0) Q_DECL_NOTHROW
 {
     return qHash(qMakePair(cursor.line(), cursor.column()), seed);
 }
 
 namespace QTest
 {
-    // forward declaration of template in qtestcase.h
-    template<typename T> char* toString(const T&);
+// forward declaration of template in qtestcase.h
+template <typename T> char *toString(const T &);
 
-    /**
-     * QTestLib integration to have nice output in e.g. QCOMPARE failures.
-     */
-    template<>
-    KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Cursor &cursor);
+/**
+ * QTestLib integration to have nice output in e.g. QCOMPARE failures.
+ */
+template <> KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Cursor &cursor);
 }
 
 #endif
-

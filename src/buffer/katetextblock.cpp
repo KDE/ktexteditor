@@ -25,7 +25,6 @@
 
 namespace Kate
 {
-
 TextBlock::TextBlock(TextBuffer *buffer, int startLine)
     : m_buffer(buffer)
     , m_startLine(startLine)
@@ -307,8 +306,7 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         m_lines.at(line - 1)->textReadWrite().append(m_lines.at(line)->text());
     }
 
-    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified())
-                             || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
+    const bool lineChanged = (oldSizeOfPreviousLine > 0 && m_lines.at(line - 1)->markedAsModified()) || (sizeOfCurrentLine > 0 && (oldSizeOfPreviousLine > 0 || m_lines.at(line)->markedAsModified()));
     m_lines.at(line - 1)->markAsModified(lineChanged);
     if (oldSizeOfPreviousLine == 0 && m_lines.at(line)->markedAsSavedOnDisk()) {
         m_lines.at(line - 1)->markAsSavedOnDisk(true);
@@ -520,8 +518,7 @@ void TextBlock::debugPrint(int blockIndex) const
 {
     // print all blocks
     for (size_t i = 0; i < m_lines.size(); ++i)
-        printf("%4d - %4lld : %4d : '%s'\n", blockIndex, (unsigned long long)startLine() + i
-               , m_lines.at(i)->text().size(), qPrintable(m_lines.at(i)->text()));
+        printf("%4d - %4lld : %4d : '%s'\n", blockIndex, (unsigned long long)startLine() + i, m_lines.at(i)->text().size(), qPrintable(m_lines.at(i)->text()));
 }
 
 TextBlock *TextBlock::splitBlock(int fromLine)

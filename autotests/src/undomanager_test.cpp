@@ -42,7 +42,8 @@ class UndoManagerTest::TestDocument : public KTextEditor::DocumentPrivate
 public:
     TestDocument()
         : KTextEditor::DocumentPrivate()
-    {}
+    {
+    }
 };
 
 void UndoManagerTest::testUndoRedoCount()
@@ -149,8 +150,9 @@ void UndoManagerTest::testCursorPosition()
     TestDocument doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
-    doc.setText(QLatin1String("aaaa bbbb cccc\n"
-                              "dddd  ffff"));
+    doc.setText(
+        QLatin1String("aaaa bbbb cccc\n"
+                      "dddd  ffff"));
     view->setCursorPosition(KTextEditor::Cursor(1, 5));
 
     doc.typeChars(view, QLatin1String("eeee"));
@@ -174,11 +176,11 @@ void UndoManagerTest::testSelectionUndo()
     TestDocument doc;
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
-    doc.setText(QLatin1String("aaaa bbbb cccc\n"
-                              "dddd eeee ffff"));
+    doc.setText(
+        QLatin1String("aaaa bbbb cccc\n"
+                      "dddd eeee ffff"));
     view->setCursorPosition(KTextEditor::Cursor(1, 9));
-    KTextEditor::Range selectionRange(KTextEditor::Cursor(0, 5),
-                                      KTextEditor::Cursor(1, 9));
+    KTextEditor::Range selectionRange(KTextEditor::Cursor(0, 5), KTextEditor::Cursor(1, 9));
     view->setSelection(selectionRange);
 
     doc.typeChars(view, QLatin1String(QLatin1String("eeee")));
@@ -209,8 +211,9 @@ void UndoManagerTest::testUndoWordWrapBug301367()
     doc.setWordWrapAt(20);
     KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
 
-    QString text = QString::fromLatin1("1234 1234 1234 1234\n"
-                                       "1234 1234 1234 1234");
+    QString text = QString::fromLatin1(
+        "1234 1234 1234 1234\n"
+        "1234 1234 1234 1234");
 
     doc.setText(text);
     view->setCursorPosition(KTextEditor::Cursor(0, 0));
@@ -239,4 +242,3 @@ void UndoManagerTest::testUndoWordWrapBug301367()
 }
 
 #include "moc_undomanager_test.cpp"
-

@@ -30,7 +30,6 @@ class KConfigGroup;
 
 namespace KateVi
 {
-
 const QChar BlackHoleRegister = QLatin1Char('_');
 const QChar SmallDeleteRegister = QLatin1Char('-');
 const QChar ZeroRegister = QLatin1Char('0');

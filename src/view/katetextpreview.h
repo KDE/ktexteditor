@@ -24,8 +24,11 @@
 
 #include <QFrame>
 
-//namespace KTextEditor { class DocumentPrivate; }
-namespace KTextEditor { class ViewPrivate; }
+// namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 /**
  * TODO
@@ -39,7 +42,7 @@ class KateTextPreview : public QFrame
     Q_PROPERTY(qreal scaleFactor READ scaleFactor WRITE setScaleFactor)
 
 public:
-    KateTextPreview(KTextEditor::ViewPrivate *view, QWidget * parent);
+    KateTextPreview(KTextEditor::ViewPrivate *view, QWidget *parent);
     ~KateTextPreview() override;
 
     KTextEditor::ViewPrivate *view() const;
@@ -103,4 +106,3 @@ private:
 };
 
 #endif
-

@@ -33,7 +33,6 @@
 
 namespace Kate
 {
-
 class TextBuffer;
 
 /**
@@ -289,7 +288,7 @@ private:
     /**
      * no assignment operator, no copying around.
      */
-    TextRange &operator= (const TextRange &) = delete;
+    TextRange &operator=(const TextRange &) = delete;
 
     /**
      * Check if range is valid, used by constructor and setRange.

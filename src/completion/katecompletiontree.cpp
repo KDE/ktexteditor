@@ -47,7 +47,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     setFrameStyle(QFrame::NoFrame);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
-    //We need ScrollPerItem, because ScrollPerPixel is too slow with a very large completion-list(see KDevelop).
+    // We need ScrollPerItem, because ScrollPerPixel is too slow with a very large completion-list(see KDevelop).
     setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
 
     m_resizeTimer = new QTimer(this);
@@ -60,8 +60,7 @@ KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     // make sure we adapt to size changes when the model got reset
     // this is important for delayed creation of groups, without this
     // the first column would never get resized to the correct size
-    connect(widget()->model(), &QAbstractItemModel::modelReset,
-            this, &KateCompletionTree::scheduleUpdate, Qt::QueuedConnection);
+    connect(widget()->model(), &QAbstractItemModel::modelReset, this, &KateCompletionTree::scheduleUpdate, Qt::QueuedConnection);
 
     // Prevent user from expanding / collapsing with the mouse
     setItemsExpandable(false);
@@ -96,7 +95,7 @@ int KateCompletionTree::columnTextViewportPosition(int column) const
     QModelIndex i = model()->index(0, column, QModelIndex());
     QModelIndex base = model()->index(0, 0, QModelIndex());
 
-    //If it's just a group header, use the first child
+    // If it's just a group header, use the first child
     if (base.isValid() && model()->rowCount(base)) {
         i = model()->index(0, column, base);
     }
@@ -132,9 +131,7 @@ void KateCompletionTree::resizeColumnsSlot()
  * If the model is a tree model, and @p current points to a leaf, and the max height
  * is not exceeded, then iteration will continue from the next parent sibling.
  */
-static bool measureColumnSizes(const KateCompletionTree* tree, QModelIndex current,
-                               QVarLengthArray<int, 8>& columnSize, int& currentYPos,
-                               const int maxHeight, bool recursed = false)
+static bool measureColumnSizes(const KateCompletionTree *tree, QModelIndex current, QVarLengthArray<int, 8> &columnSize, int &currentYPos, const int maxHeight, bool recursed = false)
 {
     while (current.isValid() && currentYPos < maxHeight) {
         currentYPos += tree->sizeHintForIndex(current).height();
@@ -191,7 +188,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     int modelIndexOfName = kateModel()->translateColumn(KTextEditor::CodeCompletionModel::Name);
     int oldIndentWidth = columnViewportPosition(modelIndexOfName);
 
-    ///Step 1: Compute the needed column-sizes for the visible content
+    /// Step 1: Compute the needed column-sizes for the visible content
     const int numColumns = model()->columnCount();
     QVarLengthArray<int, 8> columnSize(numColumns);
     for (int i = 0; i < numColumns; ++i) {
@@ -207,15 +204,14 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 
     int maxWidth = (QApplication::desktop()->screenGeometry(widget()->view()).width() * 3) / 4;
 
-    ///Step 2: Update column-sizes
-    //This contains several hacks to reduce the amount of resizing that happens. Generally,
-    //resizes only happen if a) More than a specific amount of space is saved by the resize, or
-    //b) the resizing is required so the list can show all of its contents.
+    /// Step 2: Update column-sizes
+    // This contains several hacks to reduce the amount of resizing that happens. Generally,
+    // resizes only happen if a) More than a specific amount of space is saved by the resize, or
+    // b) the resizing is required so the list can show all of its contents.
     int minimumResize = 0;
     int maximumResize = 0;
 
     if (changed) {
-
         for (int n = 0; n < numColumns; n++) {
             totalColumnsWidth += columnSize[n];
 
@@ -228,7 +224,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
             }
         }
 
-        int noReduceTotalWidth = 0; //The total width of the widget of no columns are reduced
+        int noReduceTotalWidth = 0; // The total width of the widget of no columns are reduced
         for (int n = 0; n < numColumns; n++) {
             if (columnSize[n] < columnWidth(n)) {
                 noReduceTotalWidth += columnWidth(n);
@@ -237,8 +233,8 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
             }
         }
 
-        //Check whether we can afford to reduce none of the columns
-        //Only reduce size if we widget would else be too wide.
+        // Check whether we can afford to reduce none of the columns
+        // Only reduce size if we widget would else be too wide.
         bool noReduce = noReduceTotalWidth < maxWidth && !forceResize;
 
         if (noReduce) {
@@ -253,24 +249,24 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
         }
 
         if (minimumResize > -40 && maximumResize == 0 && !forceResize) {
-            //No column needs to be exanded, and no column needs to be reduced by more than 40 pixels.
-            //To prevent flashing, do not resize at all.
+            // No column needs to be exanded, and no column needs to be reduced by more than 40 pixels.
+            // To prevent flashing, do not resize at all.
             totalColumnsWidth = 0;
             for (int n = 0; n < numColumns; n++) {
                 columnSize[n] = columnWidth(n);
                 totalColumnsWidth += columnSize[n];
             }
         } else {
-//       viewport()->resize( 5000, viewport()->height() );
+            //       viewport()->resize( 5000, viewport()->height() );
             for (int n = 0; n < numColumns; n++) {
                 setColumnWidth(n, columnSize[n]);
             }
-//       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
+            //       qCDebug(LOG_KTE) << "resizing viewport to" << totalColumnsWidth;
             viewport()->resize(totalColumnsWidth, viewport()->height());
         }
     }
 
-    ///Step 3: Update widget-size and -position
+    /// Step 3: Update widget-size and -position
 
     int scrollBarWidth = verticalScrollBar()->width();
 
@@ -285,7 +281,6 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
     }
 
     if (maximumResize > 0 || forceResize || oldIndentWidth != newIndentWidth) {
-
         //   qCDebug(LOG_KTE) << geometry() << "newWidth" << newWidth << "current width" << width() << "target width" << newWidth + scrollBarWidth;
 
         if ((newWidth + scrollBarWidth) != width() && originalViewportWidth != totalColumnsWidth) {
@@ -295,7 +290,7 @@ void KateCompletionTree::resizeColumns(bool firstShow, bool forceResize)
 
         //   qCDebug(LOG_KTE) << "created geometry:" << widget()->geometry() << geometry() << "newWidth" << newWidth << "viewport" << viewport()->width();
 
-        if (viewport()->width() > totalColumnsWidth) { //Set the size of the last column to fill the whole rest of the widget
+        if (viewport()->width() > totalColumnsWidth) { // Set the size of the last column to fill the whole rest of the widget
             setColumnWidth(numColumns - 1, viewport()->width() - columnViewportPosition(numColumns - 1));
         }
 

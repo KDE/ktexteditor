@@ -36,87 +36,87 @@ using namespace KateVi;
 
 namespace
 {
-    bool isCharEscaped(const QString &string, int charPos)
-    {
-        if (charPos == 0) {
-            return false;
-        }
-        int numContiguousBackslashesToLeft = 0;
+bool isCharEscaped(const QString &string, int charPos)
+{
+    if (charPos == 0) {
+        return false;
+    }
+    int numContiguousBackslashesToLeft = 0;
+    charPos--;
+    while (charPos >= 0 && string[charPos] == QLatin1Char('\\')) {
+        numContiguousBackslashesToLeft++;
         charPos--;
-        while (charPos >= 0 && string[charPos] == QLatin1Char('\\')) {
-            numContiguousBackslashesToLeft++;
-            charPos--;
+    }
+    return ((numContiguousBackslashesToLeft % 2) == 1);
+}
+
+QString toggledEscaped(const QString &originalString, QChar escapeChar)
+{
+    int searchFrom = 0;
+    QString toggledEscapedString = originalString;
+    do {
+        const int indexOfEscapeChar = toggledEscapedString.indexOf(escapeChar, searchFrom);
+        if (indexOfEscapeChar == -1) {
+            break;
         }
-        return ((numContiguousBackslashesToLeft % 2) == 1);
-    }
-
-    QString toggledEscaped(const QString &originalString, QChar escapeChar)
-    {
-        int searchFrom = 0;
-        QString toggledEscapedString = originalString;
-        do {
-            const int indexOfEscapeChar = toggledEscapedString.indexOf(escapeChar, searchFrom);
-            if (indexOfEscapeChar == -1) {
-                break;
-            }
-            if (!isCharEscaped(toggledEscapedString, indexOfEscapeChar)) {
-                // Escape.
-                toggledEscapedString.replace(indexOfEscapeChar, 1, QLatin1String("\\") + escapeChar);
-                searchFrom = indexOfEscapeChar + 2;
-            } else {
-                // Unescape.
-                toggledEscapedString.remove(indexOfEscapeChar - 1, 1);
-                searchFrom = indexOfEscapeChar;
-            }
-        } while (true);
-
-        return toggledEscapedString;
-    }
-
-    int findPosOfSearchConfigMarker(const QString &searchText, const bool isSearchBackwards)
-    {
-        const QChar searchConfigMarkerChar = (isSearchBackwards ? QLatin1Char('?') : QLatin1Char('/'));
-        for (int pos = 0; pos < searchText.length(); pos++) {
-            if (searchText.at(pos) == searchConfigMarkerChar) {
-                if (!isCharEscaped(searchText, pos)) {
-                    return pos;
-                }
-            }
-        }
-        return -1;
-    }
-
-    bool isRepeatLastSearch(const QString &searchText, const bool isSearchBackwards)
-    {
-        const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
-        if (posOfSearchConfigMarker != -1) {
-            if (searchText.leftRef(posOfSearchConfigMarker).isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    bool shouldPlaceCursorAtEndOfMatch(const QString &searchText, const bool isSearchBackwards)
-    {
-        const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
-        if (posOfSearchConfigMarker != -1) {
-            if (searchText.length() > posOfSearchConfigMarker + 1 && searchText.at(posOfSearchConfigMarker + 1) == QLatin1Char('e')) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    QString withSearchConfigRemoved(const QString &originalSearchText, const bool isSearchBackwards)
-    {
-        const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(originalSearchText, isSearchBackwards);
-        if (posOfSearchConfigMarker == -1) {
-            return originalSearchText;
+        if (!isCharEscaped(toggledEscapedString, indexOfEscapeChar)) {
+            // Escape.
+            toggledEscapedString.replace(indexOfEscapeChar, 1, QLatin1String("\\") + escapeChar);
+            searchFrom = indexOfEscapeChar + 2;
         } else {
-            return originalSearchText.left(posOfSearchConfigMarker);
+            // Unescape.
+            toggledEscapedString.remove(indexOfEscapeChar - 1, 1);
+            searchFrom = indexOfEscapeChar;
+        }
+    } while (true);
+
+    return toggledEscapedString;
+}
+
+int findPosOfSearchConfigMarker(const QString &searchText, const bool isSearchBackwards)
+{
+    const QChar searchConfigMarkerChar = (isSearchBackwards ? QLatin1Char('?') : QLatin1Char('/'));
+    for (int pos = 0; pos < searchText.length(); pos++) {
+        if (searchText.at(pos) == searchConfigMarkerChar) {
+            if (!isCharEscaped(searchText, pos)) {
+                return pos;
+            }
         }
     }
+    return -1;
+}
+
+bool isRepeatLastSearch(const QString &searchText, const bool isSearchBackwards)
+{
+    const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
+    if (posOfSearchConfigMarker != -1) {
+        if (searchText.leftRef(posOfSearchConfigMarker).isEmpty()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool shouldPlaceCursorAtEndOfMatch(const QString &searchText, const bool isSearchBackwards)
+{
+    const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(searchText, isSearchBackwards);
+    if (posOfSearchConfigMarker != -1) {
+        if (searchText.length() > posOfSearchConfigMarker + 1 && searchText.at(posOfSearchConfigMarker + 1) == QLatin1Char('e')) {
+            return true;
+        }
+    }
+    return false;
+}
+
+QString withSearchConfigRemoved(const QString &originalSearchText, const bool isSearchBackwards)
+{
+    const int posOfSearchConfigMarker = findPosOfSearchConfigMarker(originalSearchText, isSearchBackwards);
+    if (posOfSearchConfigMarker == -1) {
+        return originalSearchText;
+    } else {
+        return originalSearchText.left(posOfSearchConfigMarker);
+    }
+}
 }
 
 QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
@@ -155,8 +155,7 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
                 QString chunkExcludingMatchingCurlyClosed = qtRegexPattern.mid(previousNonMatchingClosedCurlyPos, matchingClosedCurlyPos - previousNonMatchingClosedCurlyPos);
                 chunkExcludingMatchingCurlyClosed = toggledEscaped(chunkExcludingMatchingCurlyClosed, QLatin1Char('{'));
                 chunkExcludingMatchingCurlyClosed = toggledEscaped(chunkExcludingMatchingCurlyClosed, QLatin1Char('}'));
-                qtRegexPatternNonMatchingCurliesToggled += chunkExcludingMatchingCurlyClosed +
-                qtRegexPattern[matchingClosedCurlyPos];
+                qtRegexPatternNonMatchingCurliesToggled += chunkExcludingMatchingCurlyClosed + qtRegexPattern[matchingClosedCurlyPos];
                 previousNonMatchingClosedCurlyPos = matchingClosedCurlyPos + 1;
             }
             QString chunkAfterLastMatchingClosedCurly = qtRegexPattern.mid(matchingClosedCurlyBracketPositions.last() + 1);
@@ -166,7 +165,6 @@ QString KateVi::vimRegexToQtRegexPattern(const QString &vimRegexPattern)
 
             qtRegexPattern = qtRegexPatternNonMatchingCurliesToggled;
         }
-
     }
 
     // All square brackets, *except* for those that are a) unescaped; and b) form a matching pair, must be
@@ -251,25 +249,25 @@ QStringList KateVi::reversed(const QStringList &originalList)
     return reversedList;
 }
 
-SearchMode::SearchMode(EmulatedCommandBar* emulatedCommandBar, MatchHighlighter* matchHighlighter, InputModeManager* viInputModeManager, KTextEditor::ViewPrivate* view, QLineEdit* edit)
-    : ActiveMode ( emulatedCommandBar, matchHighlighter, viInputModeManager, view),
-      m_edit(edit)
+SearchMode::SearchMode(EmulatedCommandBar *emulatedCommandBar, MatchHighlighter *matchHighlighter, InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, QLineEdit *edit)
+    : ActiveMode(emulatedCommandBar, matchHighlighter, viInputModeManager, view)
+    , m_edit(edit)
 {
 }
 
-void SearchMode::init ( SearchMode::SearchDirection searchDirection)
+void SearchMode::init(SearchMode::SearchDirection searchDirection)
 {
     m_searchDirection = searchDirection;
     m_startingCursorPos = view()->cursorPosition();
 }
 
-bool SearchMode::handleKeyPress ( const QKeyEvent* keyEvent )
+bool SearchMode::handleKeyPress(const QKeyEvent *keyEvent)
 {
     Q_UNUSED(keyEvent);
     return false;
 }
 
-void SearchMode::editTextChanged ( const QString& newText )
+void SearchMode::editTextChanged(const QString &newText)
 {
     QString qtRegexPattern = newText;
     const bool searchBackwards = (m_searchDirection == SearchDirection::Backward);
@@ -306,7 +304,7 @@ void SearchMode::editTextChanged ( const QString& newText )
         if (realMatchEnd.column() == -1) {
             realMatchEnd = KTextEditor::Cursor(realMatchEnd.line() - 1, view()->doc()->lineLength(realMatchEnd.line() - 1));
         }
-        moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd :  match.start());
+        moveCursorTo(placeCursorAtEndOfMatch ? realMatchEnd : match.start());
         setBarBackground(SearchMode::MatchFound);
     } else {
         moveCursorTo(m_startingCursorPos);
@@ -348,7 +346,7 @@ void SearchMode::deactivate(bool wasAborted)
     viInputModeManager()->globalState()->searchHistory()->append(m_edit->text());
 }
 
-CompletionStartParams SearchMode::completionInvoked ( Completer::CompletionInvocation invocationType )
+CompletionStartParams SearchMode::completionInvoked(Completer::CompletionInvocation invocationType)
 {
     Q_UNUSED(invocationType);
     return activateSearchHistoryCompletion();
@@ -365,22 +363,22 @@ CompletionStartParams SearchMode::activateSearchHistoryCompletion()
     return CompletionStartParams::createModeSpecific(reversed(viInputModeManager()->globalState()->searchHistory()->items()), 0);
 }
 
-void SearchMode::setBarBackground ( SearchMode::BarBackgroundStatus status )
+void SearchMode::setBarBackground(SearchMode::BarBackgroundStatus status)
 {
     QPalette barBackground(m_edit->palette());
     switch (status) {
-    case MatchFound: {
-        KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
-        break;
-    }
-    case NoMatchFound: {
-        KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
-        break;
-    }
-    case Normal: {
-        barBackground = QPalette();
-        break;
-    }
+        case MatchFound: {
+            KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
+            break;
+        }
+        case NoMatchFound: {
+            KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
+            break;
+        }
+        case Normal: {
+            barBackground = QPalette();
+            break;
+        }
     }
     m_edit->setPalette(barBackground);
 }

@@ -33,6 +33,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void testPostMessage();
     void testAutoHide();
+
 private:
     void testAutoHideAfterUserInteraction();
     void testMessageQueue();

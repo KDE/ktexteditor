@@ -24,14 +24,16 @@
 #include <QTreeView>
 #include <QTextDocument>
 
-//A tree that allows drawing additional information
+// A tree that allows drawing additional information
 class ExpandingTree : public QTreeView
 {
 public:
     explicit ExpandingTree(QWidget *parent);
+
 protected:
     void drawRow(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
     int sizeHintForColumn(int column) const override;
+
 private:
     mutable QTextDocument m_drawText;
 };

@@ -18,13 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef MODES_TEST_H
 #define MODES_TEST_H
 
-
 #include "base.h"
-
 
 class ModesTest : public BaseTest
 {
@@ -57,6 +54,5 @@ private Q_SLOTS:
     void ReplaceUndoTests();
     void ReplaceInsertFromLineTests();
 };
-
 
 #endif /* MODES_TEST_H */

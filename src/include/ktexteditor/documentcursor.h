@@ -30,7 +30,6 @@
 
 namespace KTextEditor
 {
-
 /**
  * \short A Cursor which is bound to a specific Document.
  *
@@ -110,12 +109,12 @@ public:
     // stuff that needs to be implemented by editor part cursors
     //
 public:
-
     /**
      * Gets the document to which this cursor is bound.
      * \return a pointer to the document
      */
-    inline Document *document() const {
+    inline Document *document() const
+    {
         return m_document;
     }
 
@@ -132,7 +131,8 @@ public:
      * Retrieve the line on which this cursor is situated.
      * \return line number, where 0 is the first line.
      */
-    inline int line() const {
+    inline int line() const
+    {
         return m_cursor.line();
     }
 
@@ -140,7 +140,8 @@ public:
      * Retrieve the column on which this cursor is situated.
      * \return column number, where 0 is the first column.
      */
-    inline int column() const {
+    inline int column() const
+    {
         return m_cursor.column();
     }
 
@@ -164,14 +165,14 @@ private:
     // convenience API
     //
 public:
-
     /**
      * Check if the current position of this cursor is a valid position,
      * i.e. whether line() >= 0 and column() >= 0.
      * \return \e true, if the cursor position is valid, otherwise \e false
      * \see KTextEditor::Cursor::isValid(), isValidTextPosition()
      */
-    inline bool isValid() const {
+    inline bool isValid() const
+    {
         return m_cursor.isValid();
     }
 
@@ -186,7 +187,8 @@ public:
      *
      * \see KTextEditor::Document::isValidTextPosition(), isValid()
      */
-    inline bool isValidTextPosition() const {
+    inline bool isValidTextPosition() const
+    {
         return document()->isValidTextPosition(m_cursor);
     }
 
@@ -294,7 +296,8 @@ public:
      * Convert this clever cursor into a dumb one.
      * @return normal cursor
      */
-    inline Cursor toCursor() const {
+    inline Cursor toCursor() const
+    {
         return m_cursor;
     }
 
@@ -302,7 +305,8 @@ public:
      * Convert this clever cursor into a dumb one. Equal to toCursor, allowing to use implicit conversion.
      * @return normal cursor
      */
-    inline operator Cursor () const {
+    inline operator Cursor() const
+    {
         return m_cursor;
     }
 
@@ -313,7 +317,8 @@ public:
      * Assignment operator. Same as the copy constructor. Make sure that
      * the assigned Document is a valid document pointer.
      */
-    DocumentCursor &operator= (const DocumentCursor &other) {
+    DocumentCursor &operator=(const DocumentCursor &other)
+    {
         m_document = other.m_document;
         m_cursor = other.m_cursor;
         return *this;
@@ -329,7 +334,8 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e equal.
      */
-    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator==(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return c1.document() == c2.document() && c1.line() == c2.line() && c1.column() == c2.column();
     }
 
@@ -339,7 +345,8 @@ public:
      * \param c2 second cursor to compare
      * \return \e true, if c1's and c2's assigned document, line and column are \e not equal.
      */
-    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator!=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return !(c1 == c2);
     }
 
@@ -350,7 +357,8 @@ public:
      * \return \e true, if c1's position is greater than c2's position,
      *         otherwise \e false.
      */
-    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator>(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() > c2.column());
     }
 
@@ -361,7 +369,8 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator>=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return c1.line() > c2.line() || (c1.line() == c2.line() && c1.column() >= c2.column());
     }
 
@@ -372,7 +381,8 @@ public:
      * \return \e true, if c1's position is greater than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator<(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return !(c1 >= c2);
     }
 
@@ -383,7 +393,8 @@ public:
      * \return \e true, if c1's position is lesser than or equal to c2's
      *         position, otherwise \e false.
      */
-    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2) {
+    inline friend bool operator<=(const DocumentCursor &c1, const DocumentCursor &c2)
+    {
         return !(c1 > c2);
     }
 
@@ -393,7 +404,8 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor *cursor) {
+    inline friend QDebug operator<<(QDebug s, const DocumentCursor *cursor)
+    {
         if (cursor) {
             s.nospace() << "(" << cursor->document() << ": " << cursor->line() << ", " << cursor->column() << ")";
         } else {
@@ -408,7 +420,8 @@ public:
      * @param cursor cursor to print
      * @return debug stream
      */
-    inline friend QDebug operator<< (QDebug s, const DocumentCursor &cursor) {
+    inline friend QDebug operator<<(QDebug s, const DocumentCursor &cursor)
+    {
         return s << &cursor;
     }
 
@@ -422,4 +435,3 @@ private:
 Q_DECLARE_TYPEINFO(KTextEditor::DocumentCursor, Q_MOVABLE_TYPE);
 
 #endif
-

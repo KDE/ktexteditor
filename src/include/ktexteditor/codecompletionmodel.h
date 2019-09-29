@@ -27,7 +27,6 @@
 
 namespace KTextEditor
 {
-
 class Document;
 class View;
 
@@ -98,52 +97,48 @@ public:
     static const int ColumnCount = Postfix + 1;
 
     enum CompletionProperty {
-        NoProperty  = 0x0,
+        NoProperty = 0x0,
         FirstProperty = 0x1,
 
         // Access specifiers - no more than 1 per item
-        Public      = 0x1,
-        Protected   = 0x2,
-        Private     = 0x4,
+        Public = 0x1,
+        Protected = 0x2,
+        Private = 0x4,
 
         // Extra access specifiers - any number per item
-        Static      = 0x8,
-        Const       = 0x10,
+        Static = 0x8,
+        Const = 0x10,
 
         // Type - no more than 1 per item (except for Template)
-        Namespace   = 0x20,
-        Class       = 0x40,
-        Struct      = 0x80,
-        Union       = 0x100,
-        Function    = 0x200,
-        Variable    = 0x400,
-        Enum        = 0x800,
-        Template    = 0x1000,
-        TypeAlias   = 0x2000,
+        Namespace = 0x20,
+        Class = 0x40,
+        Struct = 0x80,
+        Union = 0x100,
+        Function = 0x200,
+        Variable = 0x400,
+        Enum = 0x800,
+        Template = 0x1000,
+        TypeAlias = 0x2000,
 
         // Special attributes - any number per item
-        Virtual     = 0x4000,
-        Override    = 0x8000,
-        Inline      = 0x10000,
-        Friend      = 0x20000,
-        Signal      = 0x40000,
-        Slot        = 0x80000,
+        Virtual = 0x4000,
+        Override = 0x8000,
+        Inline = 0x10000,
+        Friend = 0x20000,
+        Signal = 0x40000,
+        Slot = 0x80000,
 
         // Scope - no more than 1 per item
-        LocalScope      = 0x100000,
-        NamespaceScope  = 0x200000,
-        GlobalScope     = 0x400000,
+        LocalScope = 0x100000,
+        NamespaceScope = 0x200000,
+        GlobalScope = 0x400000,
 
         // Keep this in sync so the code knows when to stop
-        LastProperty    = GlobalScope
+        LastProperty = GlobalScope
     };
     Q_DECLARE_FLAGS(CompletionProperties, CompletionProperty)
 
-    enum HighlightMethod {
-        NoHighlighting        = 0x0,
-        InternalHighlighting  = 0x1,
-        CustomHighlighting    = 0x2
-    };
+    enum HighlightMethod { NoHighlighting = 0x0, InternalHighlighting = 0x1, CustomHighlighting = 0x2 };
     Q_DECLARE_FLAGS(HighlightMethods, HighlightMethod)
 
     /// Meta information is passed through extra {Qt::ItemDataRole}s.
@@ -282,7 +277,7 @@ public:
          * Suffix: ", int param2)"
          *
          * If you don't use the highlighting, matching, etc. you can also return the columns in the usual way.
-        * */
+         * */
         ArgumentHintDepth,
 
         /**
@@ -364,11 +359,7 @@ public:
 
     void setRowCount(int rowCount);
 
-    enum InvocationType {
-        AutomaticInvocation,
-        UserInvocation,
-        ManualInvocation
-    };
+    enum InvocationType { AutomaticInvocation, UserInvocation, ManualInvocation };
 
     /**
      * This function is responsible to generating / updating the list of current
@@ -384,15 +375,15 @@ public:
     virtual void completionInvoked(KTextEditor::View *view, const KTextEditor::Range &range, InvocationType invocationType);
 
     /**
-      * This function is responsible for inserting a selected completion into the
-      * view. The default implementation replaces the text that the completions
-      * were based on with the Qt::DisplayRole of the Name column of the given match.
-      *
-      * @param view the view to insert the completion into
-      * @param word the Range that the completions are based on (what the user entered
-      * so far)
-      * @param index identifies the completion match to insert
-      * */
+     * This function is responsible for inserting a selected completion into the
+     * view. The default implementation replaces the text that the completions
+     * were based on with the Qt::DisplayRole of the Name column of the given match.
+     *
+     * @param view the view to insert the completion into
+     * @param word the Range that the completions are based on (what the user entered
+     * so far)
+     * @param index identifies the completion match to insert
+     * */
     virtual void executeCompletionItem(KTextEditor::View *view, const Range &word, const QModelIndex &index) const;
 
     // Reimplementations

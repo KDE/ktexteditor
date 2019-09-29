@@ -21,8 +21,9 @@
 
 using namespace KateVi;
 
-namespace {
-    const int HISTORY_SIZE_LIMIT = 100;
+namespace
+{
+const int HISTORY_SIZE_LIMIT = 100;
 }
 
 void History::append(const QString &historyItem)

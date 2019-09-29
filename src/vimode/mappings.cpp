@@ -182,17 +182,17 @@ Mappings::MappingMode Mappings::mappingModeForCurrentViMode(KateViInputMode *viI
     }
     const ViMode mode = viInputMode->viInputModeManager()->getCurrentViMode();
     switch (mode) {
-    case ViMode::NormalMode:
-        return NormalModeMapping;
-    case ViMode::VisualMode:
-    case ViMode::VisualLineMode:
-    case ViMode::VisualBlockMode:
-        return VisualModeMapping;
-    case ViMode::InsertMode:
-    case ViMode::ReplaceMode:
-        return InsertModeMapping;
-    default:
-        Q_ASSERT(false && "unrecognised ViMode!");
-        return NormalModeMapping; // Return arbitrary mode to satisfy compiler.
+        case ViMode::NormalMode:
+            return NormalModeMapping;
+        case ViMode::VisualMode:
+        case ViMode::VisualLineMode:
+        case ViMode::VisualBlockMode:
+            return VisualModeMapping;
+        case ViMode::InsertMode:
+        case ViMode::ReplaceMode:
+            return InsertModeMapping;
+        default:
+            Q_ASSERT(false && "unrecognised ViMode!");
+            return NormalModeMapping; // Return arbitrary mode to satisfy compiler.
     }
 }

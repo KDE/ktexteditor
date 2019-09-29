@@ -65,15 +65,14 @@ bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList a
     QJSValue result = command.call(arguments);
     // error during the calling?
     if (result.isError()) {
-       errorMessage = backtrace(result, i18n("Error calling %1", cmd));
-       return false;
-   }
+        errorMessage = backtrace(result, i18n("Error calling %1", cmd));
+        return false;
+    }
 
     return true;
 }
 
-bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg,
-                                 const KTextEditor::Range &range)
+bool KateCommandLineScript::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &range)
 {
     if (range.isValid())
         view->setSelection(range);
@@ -144,4 +143,3 @@ bool KateCommandLineScript::help(KTextEditor::View *view, const QString &cmd, QS
 
     return !msg.isEmpty();
 }
-

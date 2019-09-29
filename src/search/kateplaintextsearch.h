@@ -57,8 +57,7 @@ public:
      *        (see Range::isValid()).
      * \see KTextEditor::Range
      */
-    KTextEditor::Range search(const QString &text,
-                              const KTextEditor::Range &inputRange, bool backwards = false);
+    KTextEditor::Range search(const QString &text, const KTextEditor::Range &inputRange, bool backwards = false);
 
 private:
     const KTextEditor::Document *m_document;
@@ -67,4 +66,3 @@ private:
 };
 
 #endif
-

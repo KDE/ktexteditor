@@ -36,9 +36,7 @@ class VisualViMode : public NormalViMode
     Q_OBJECT
 
 public:
-    explicit VisualViMode(InputModeManager *viInputModeManager,
-                          KTextEditor::ViewPrivate *view,
-                          KateViewInternal *viewInternal);
+    explicit VisualViMode(InputModeManager *viInputModeManager, KTextEditor::ViewPrivate *view, KateViewInternal *viewInternal);
     ~VisualViMode() override;
 
     void init();
@@ -84,12 +82,10 @@ public:
     void selectLines(const KTextEditor::Range &range);
 
     // Selects range between c1 and c2, but includes the end cursor position.
-    void selectInclusive(const KTextEditor::Cursor &c1,
-                         const KTextEditor::Cursor &c2);
+    void selectInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2);
 
     // Select block between c1 and c2.
-    void selectBlockInclusive(const KTextEditor::Cursor &c1,
-                              const KTextEditor::Cursor &c2);
+    void selectBlockInclusive(const KTextEditor::Cursor &c1, const KTextEditor::Cursor &c2);
 
 protected:
     /**

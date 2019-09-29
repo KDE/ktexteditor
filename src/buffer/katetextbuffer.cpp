@@ -48,12 +48,13 @@
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)
 #else
-#define BUFFER_DEBUG if (0) qCDebug(LOG_KTE)
+#define BUFFER_DEBUG                                                                                                                                                                                                                           \
+    if (0)                                                                                                                                                                                                                                     \
+    qCDebug(LOG_KTE)
 #endif
 
 namespace Kate
 {
-
 TextBuffer::TextBuffer(KTextEditor::DocumentPrivate *parent, int blockSize, bool alwaysUseKAuth)
     : QObject(parent)
     , m_document(parent)
@@ -584,7 +585,7 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
      * 2) use fallback encoding, be done, if no encoding errors happen
      * 3) use again given encoding, be done in any case
      */
-    for (int i = 0; i < (enforceTextCodec ? 1 : 4);  ++i) {
+    for (int i = 0; i < (enforceTextCodec ? 1 : 4); ++i) {
         /**
          * kill all blocks beside first one
          */
@@ -638,8 +639,8 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             // get Unicode data for this line
             const QChar *unicodeData = file.unicode() + offset;
 
-
-            if (longestLineLoaded < length) longestLineLoaded=length;
+            if (longestLineLoaded < length)
+                longestLineLoaded = length;
 
             /**
              * split lines, if too large
@@ -777,8 +778,7 @@ bool TextBuffer::save(const QString &filename)
 
     if (saveRes == SaveResult::Failed) {
         return false;
-    }
-    else if (saveRes == SaveResult::MissingPermissions) {
+    } else if (saveRes == SaveResult::MissingPermissions) {
         /**
          * either unit-test mode or we're missing permissions to write to the
          * file => use temporary file and try to use authhelper
@@ -867,7 +867,6 @@ bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFil
     return true;
 }
 
-
 TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filename)
 {
     if (m_alwaysUseKAuthForSave) {
@@ -934,7 +933,7 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
         return false;
     }
 
-    if( !saveBuffer(filename, *saveFile) ) {
+    if (!saveBuffer(filename, *saveFile)) {
         return false;
     }
 
@@ -1031,32 +1030,32 @@ QList<TextRange *> TextBuffer::rangesForLine(int line, KTextEditor::View *view, 
     // get the ranges of the right block
     QList<TextRange *> rightRanges;
     const auto blockRanges = m_blocks.at(blockIndex)->rangesForLine(line);
-    for (const QSet<TextRange*> &ranges : blockRanges) {
+    for (const QSet<TextRange *> &ranges : blockRanges) {
         for (TextRange *const range : ranges) {
             /**
-            * we want only ranges with attributes, but this one has none
-            */
+             * we want only ranges with attributes, but this one has none
+             */
             if (rangesWithAttributeOnly && !range->hasAttribute()) {
                 continue;
             }
 
             /**
-            * we want ranges for no view, but this one's attribute is only valid for views
-            */
+             * we want ranges for no view, but this one's attribute is only valid for views
+             */
             if (!view && range->attributeOnlyForViews()) {
                 continue;
             }
 
             /**
-            * the range's attribute is not valid for this view
-            */
+             * the range's attribute is not valid for this view
+             */
             if (range->view() && range->view() != view) {
                 continue;
             }
 
             /**
-            * if line is in the range, ok
-            */
+             * if line is in the range, ok
+             */
             if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
                 rightRanges.append(range);
             }

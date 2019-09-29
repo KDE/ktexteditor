@@ -40,8 +40,8 @@ inline QModelIndex firstColumn(const QModelIndex &index)
     return index.sibling(index.row(), 0);
 }
 
-ExpandingWidgetModel::ExpandingWidgetModel(QWidget *parent) :
-    QAbstractItemModel(parent)
+ExpandingWidgetModel::ExpandingWidgetModel(QWidget *parent)
+    : QAbstractItemModel(parent)
 {
 }
 
@@ -58,14 +58,13 @@ static QColor doAlternate(QColor color)
 
 uint ExpandingWidgetModel::matchColor(const QModelIndex &index) const
 {
-
     int matchQuality = contextMatchQuality(index.sibling(index.row(), 0));
 
     if (matchQuality > 0) {
         bool alternate = index.row() & 1;
 
-        QColor badMatchColor(0xff00aa44); //Blue-ish green
-        QColor goodMatchColor(0xff00ff00); //Green
+        QColor badMatchColor(0xff00aa44);  // Blue-ish green
+        QColor goodMatchColor(0xff00ff00); // Green
 
         QColor background = treeView()->palette().light().color();
 
@@ -79,7 +78,7 @@ uint ExpandingWidgetModel::matchColor(const QModelIndex &index) const
         const qreal minimumTint = 0.2;
         qreal tintStrength = (dynamicTint * matchQuality) / 10;
         if (tintStrength != 0.0) {
-            tintStrength += minimumTint;    //Some minimum tinting strength, else it's not visible any more
+            tintStrength += minimumTint; // Some minimum tinting strength, else it's not visible any more
         }
 
         return KColorUtils::tint(background, totalColor, tintStrength).rgb();
@@ -91,23 +90,23 @@ uint ExpandingWidgetModel::matchColor(const QModelIndex &index) const
 QVariant ExpandingWidgetModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
-    case Qt::BackgroundRole: {
-        if (index.column() == 0) {
-            //Highlight by match-quality
-            uint color = matchColor(index);
-            if (color) {
-                return QBrush(color);
+        case Qt::BackgroundRole: {
+            if (index.column() == 0) {
+                // Highlight by match-quality
+                uint color = matchColor(index);
+                if (color) {
+                    return QBrush(color);
+                }
+            }
+            // Use a special background-color for expanded items
+            if (isExpanded(index)) {
+                if (index.row() & 1) {
+                    return doAlternate(treeView()->palette().toolTipBase().color());
+                } else {
+                    return treeView()->palette().toolTipBase();
+                }
             }
         }
-        //Use a special background-color for expanded items
-        if (isExpanded(index)) {
-            if (index.row() & 1) {
-                return doAlternate(treeView()->palette().toolTipBase().color());
-            } else {
-                return treeView()->palette().toolTipBase();
-            }
-        }
-    }
     }
     return QVariant();
 }
@@ -128,12 +127,11 @@ QModelIndex ExpandingWidgetModel::partiallyExpandedRow() const
 
 void ExpandingWidgetModel::clearExpanding()
 {
-
     clearMatchQualities();
     QMap<QModelIndex, ExpandingWidgetModel::ExpandingType> oldExpandState = m_expandState;
     for (auto &widget : qAsConst(m_expandingWidgets)) {
         if (widget) {
-            widget->deleteLater();    // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
+            widget->deleteLater(); // By using deleteLater, we prevent crashes when an action within a widget makes the completion cancel
         }
     }
     m_expandingWidgets.clear();
@@ -173,17 +171,17 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
     QModelIndex idx(firstColumn(idx_));
     if (!m_partiallyExpanded.contains(idx)) {
         QModelIndex oldIndex = partiallyExpandedRow();
-        //Unexpand the previous partially expanded row
+        // Unexpand the previous partially expanded row
         if (!m_partiallyExpanded.isEmpty()) {
             ///@todo allow multiple partially expanded rows
             while (!m_partiallyExpanded.isEmpty()) {
                 m_partiallyExpanded.erase(m_partiallyExpanded.begin());
             }
-            //partiallyUnExpand( m_partiallyExpanded.begin().key() );
+            // partiallyUnExpand( m_partiallyExpanded.begin().key() );
         }
-        //Notify the underlying models that the item was selected, and eventually get back the text for the expanding widget.
+        // Notify the underlying models that the item was selected, and eventually get back the text for the expanding widget.
         if (!idx.isValid()) {
-            //All items have been unselected
+            // All items have been unselected
             if (oldIndex.isValid()) {
                 emit dataChanged(oldIndex, oldIndex);
             }
@@ -191,28 +189,27 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
             QVariant variant = data(idx, CodeCompletionModel::ItemSelected);
 
             if (!isExpanded(idx) && variant.type() == QVariant::String) {
-
-                //Either expand upwards or downwards, choose in a way that
-                //the visible fields of the new selected entry are not moved.
+                // Either expand upwards or downwards, choose in a way that
+                // the visible fields of the new selected entry are not moved.
                 if (oldIndex.isValid() && (oldIndex < idx || (!(oldIndex < idx) && oldIndex.parent() < idx.parent()))) {
                     m_partiallyExpanded.insert(idx, ExpandUpwards);
                 } else {
                     m_partiallyExpanded.insert(idx, ExpandDownwards);
                 }
 
-                //Say that one row above until one row below has changed, so no items will need to be moved(the space that is taken from one item is given to the other)
+                // Say that one row above until one row below has changed, so no items will need to be moved(the space that is taken from one item is given to the other)
                 if (oldIndex.isValid() && oldIndex < idx) {
                     emit dataChanged(oldIndex, idx);
 
                     if (treeView()->verticalScrollMode() == QAbstractItemView::ScrollPerItem) {
-                        //Qt fails to correctly scroll in ScrollPerItem mode, so the selected index is completely visible,
-                        //so we do the scrolling by hand.
+                        // Qt fails to correctly scroll in ScrollPerItem mode, so the selected index is completely visible,
+                        // so we do the scrolling by hand.
                         QRect selectedRect = treeView()->visualRect(idx);
                         QRect frameRect = treeView()->frameRect();
 
                         if (selectedRect.bottom() > frameRect.bottom()) {
                             int diff = selectedRect.bottom() - frameRect.bottom();
-                            //We need to scroll down
+                            // We need to scroll down
                             QModelIndex newTopIndex = idx;
 
                             QModelIndex nextTopIndex = idx;
@@ -228,19 +225,19 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                         }
                     }
 
-                    //This is needed to keep the item we are expanding completely visible. Qt does not scroll the view to keep the item visible.
-                    //But we must make sure that it isn't too expensive.
-                    //We need to make sure that scrolling is efficient, and the whole content is not repainted.
-                    //Since we are scrolling anyway, we can keep the next line visible, which might be a cool feature.
+                    // This is needed to keep the item we are expanding completely visible. Qt does not scroll the view to keep the item visible.
+                    // But we must make sure that it isn't too expensive.
+                    // We need to make sure that scrolling is efficient, and the whole content is not repainted.
+                    // Since we are scrolling anyway, we can keep the next line visible, which might be a cool feature.
 
-                    //Since this also doesn't work smoothly, leave it for now
-                    //treeView()->scrollTo( nextLine, QAbstractItemView::EnsureVisible );
-                } else if (oldIndex.isValid() &&  idx < oldIndex) {
+                    // Since this also doesn't work smoothly, leave it for now
+                    // treeView()->scrollTo( nextLine, QAbstractItemView::EnsureVisible );
+                } else if (oldIndex.isValid() && idx < oldIndex) {
                     emit dataChanged(idx, oldIndex);
 
-                    //For consistency with the down-scrolling, we keep one additional line visible above the current visible.
+                    // For consistency with the down-scrolling, we keep one additional line visible above the current visible.
 
-                    //Since this also doesn't work smoothly, leave it for now
+                    // Since this also doesn't work smoothly, leave it for now
                     /*            QModelIndex prevLine = idx.sibling(idx.row()-1, idx.column());
                                 if( prevLine.isValid() )
                                     treeView()->scrollTo( prevLine );*/
@@ -248,7 +245,7 @@ void ExpandingWidgetModel::rowSelected(const QModelIndex &idx_)
                     emit dataChanged(idx, idx);
                 }
             } else if (oldIndex.isValid()) {
-                //We are not partially expanding a new row, but we previously had a partially expanded row. So signalize that it has been unexpanded.
+                // We are not partially expanding a new row, but we previously had a partially expanded row. So signalize that it has been unexpanded.
 
                 emit dataChanged(oldIndex, oldIndex);
             }
@@ -281,7 +278,7 @@ QRect ExpandingWidgetModel::partialExpandRect(const QModelIndex &idx_) const
         expansion = m_partiallyExpanded[idx];
     }
 
-    //Get the whole rectangle of the row:
+    // Get the whole rectangle of the row:
     QModelIndex rightMostIndex = idx;
     QModelIndex tempIndex = idx;
     while ((tempIndex = rightMostIndex.sibling(rightMostIndex.row(), rightMostIndex.column() + 1)).isValid()) {
@@ -294,7 +291,7 @@ QRect ExpandingWidgetModel::partialExpandRect(const QModelIndex &idx_) const
     rect.setLeft(rect.left() + 20);
     rect.setRight(rightMostRect.right() - 5);
 
-    //These offsets must match exactly those used in ExpandingDelegate::sizeHint()
+    // These offsets must match exactly those used in ExpandingDelegate::sizeHint()
     int top = rect.top() + 5;
     int bottom = rightMostRect.bottom() - 5;
 
@@ -335,7 +332,7 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
 {
     QModelIndex idx(firstColumn(idx_));
 
-    //qCDebug(LOG_KTE) << "Setting expand-state of row " << idx.row() << " to " << expanded;
+    // qCDebug(LOG_KTE) << "Setting expand-state of row " << idx.row() << " to " << expanded;
     if (!idx.isValid()) {
         return;
     }
@@ -357,19 +354,19 @@ void ExpandingWidgetModel::setExpanded(QModelIndex idx_, bool expanded)
             if (v.canConvert<QWidget *>()) {
                 m_expandingWidgets[idx] = v.value<QWidget *>();
             } else if (v.canConvert<QString>()) {
-                //Create a html widget that shows the given string
+                // Create a html widget that shows the given string
                 KTextEdit *edit = new KTextEdit(v.toString());
                 edit->setReadOnly(true);
-                edit->resize(200, 50); //Make the widget small so it embeds nicely.
+                edit->resize(200, 50); // Make the widget small so it embeds nicely.
                 m_expandingWidgets[idx] = edit;
             } else {
                 m_expandingWidgets[idx] = nullptr;
             }
         }
 
-        //Eventually partially expand the row
+        // Eventually partially expand the row
         if (!expanded && firstColumn(treeView()->currentIndex()) == idx && !isPartiallyExpanded(idx)) {
-            rowSelected(idx);    //Partially expand the row.
+            rowSelected(idx); // Partially expand the row.
         }
 
         emit dataChanged(idx, idx);
@@ -407,12 +404,12 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
     QRect rect = treeView()->visualRect(idx);
 
     if (!rect.isValid() || rect.bottom() < 0 || rect.top() >= treeView()->height()) {
-        //The item is currently not visible
+        // The item is currently not visible
         w->hide();
         return;
     }
 
-    //Find out the basic width of the row
+    // Find out the basic width of the row
     rect.setLeft(rect.left() + 20);
     for (int i = 0, numColumns = idx.model()->columnCount(idx.parent()); i < numColumns; ++i) {
         QModelIndex rightMostIndex = idx.sibling(idx.row(), i);
@@ -423,7 +420,7 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
     }
     rect.setRight(rect.right() - 5);
 
-    //These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
+    // These offsets must match exactly those used in KateCompletionDeleage::sizeHint()
     rect.setTop(rect.top() + basicRowHeight(idx) + 5);
     rect.setHeight(w->height());
 
@@ -437,7 +434,7 @@ void ExpandingWidgetModel::placeExpandingWidget(const QModelIndex &idx_)
 
 void ExpandingWidgetModel::placeExpandingWidgets()
 {
-    for (QMap<QModelIndex, QPointer<QWidget> >::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
+    for (QMap<QModelIndex, QPointer<QWidget>>::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
         placeExpandingWidget(it.key());
     }
 }
@@ -445,7 +442,7 @@ void ExpandingWidgetModel::placeExpandingWidgets()
 int ExpandingWidgetModel::expandingWidgetsHeight() const
 {
     int sum = 0;
-    for (QMap<QModelIndex, QPointer<QWidget> >::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
+    for (QMap<QModelIndex, QPointer<QWidget>>::const_iterator it = m_expandingWidgets.constBegin(); it != m_expandingWidgets.constEnd(); ++it) {
         if (isExpanded(it.key()) && (*it)) {
             sum += (*it)->height();
         }
@@ -516,15 +513,15 @@ QList<QVariant> mergeCustomHighlighting(int leftSize, const QList<QVariant> &lef
     return ret;
 }
 
-//It is assumed that between each two strings, one space is inserted
+// It is assumed that between each two strings, one space is inserted
 QList<QVariant> mergeCustomHighlighting(QStringList strings, QList<QVariantList> highlights, int grapBetweenStrings)
 {
-    if (strings.isEmpty())   {
+    if (strings.isEmpty()) {
         qCWarning(LOG_KTE) << "List of strings is empty";
         return QList<QVariant>();
     }
 
-    if (highlights.isEmpty())   {
+    if (highlights.isEmpty()) {
         qCWarning(LOG_KTE) << "List of highlightings is empty";
         return QList<QVariant>();
     }
@@ -534,7 +531,7 @@ QList<QVariant> mergeCustomHighlighting(QStringList strings, QList<QVariantList>
         return QList<QVariant>();
     }
 
-    //Merge them together
+    // Merge them together
     QString totalString = strings[0];
     QVariantList totalHighlighting = highlights[0];
 
@@ -551,8 +548,7 @@ QList<QVariant> mergeCustomHighlighting(QStringList strings, QList<QVariantList>
 
         strings.pop_front();
         highlights.pop_front();
-
     }
-    //Combine the custom-highlightings
+    // Combine the custom-highlightings
     return totalHighlighting;
 }

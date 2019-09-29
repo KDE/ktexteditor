@@ -30,7 +30,6 @@ class QMenu;
 
 namespace KTextEditor
 {
-
 class View;
 class AbstractAnnotationItemDelegate;
 
@@ -56,12 +55,11 @@ class KTEXTEDITOR_EXPORT AnnotationModel : public QObject
 {
     Q_OBJECT
 public:
+    virtual ~AnnotationModel()
+    {
+    }
 
-    virtual ~AnnotationModel() {}
-
-    enum {
-      GroupIdentifierRole = Qt::UserRole
-    };
+    enum { GroupIdentifierRole = Qt::UserRole };
     // KF6: add AnnotationModelUserRole = Qt::UserRole + 0x100
 
     /**
@@ -84,7 +82,7 @@ public:
      *
      * \returns a QVariant that contains the data for the given role.
      */
-    virtual QVariant data(int line, Qt::ItemDataRole role) const = 0; //KF6: use int for role
+    virtual QVariant data(int line, Qt::ItemDataRole role) const = 0; // KF6: use int for role
 
 Q_SIGNALS:
     /**
@@ -161,7 +159,9 @@ Q_SIGNALS:
 class KTEXTEDITOR_EXPORT AnnotationInterface
 {
 public:
-    virtual ~AnnotationInterface() {}
+    virtual ~AnnotationInterface()
+    {
+    }
 
     /**
      * Sets a new \ref AnnotationModel for this document to provide
@@ -177,7 +177,6 @@ public:
      * @returns the current \ref AnnotationModel
      */
     virtual AnnotationModel *annotationModel() const = 0;
-
 };
 
 /**
@@ -221,7 +220,9 @@ public:
 class KTEXTEDITOR_EXPORT AnnotationViewInterface : public AnnotationInterface
 {
 public:
-    virtual ~AnnotationViewInterface() {}
+    virtual ~AnnotationViewInterface()
+    {
+    }
 
     /**
      * This function can be used to show or hide the annotation border
@@ -270,7 +271,6 @@ public:
      * \param visible the current visibility state
      */
     virtual void annotationBorderVisibilityChanged(KTextEditor::View *view, bool visible) = 0;
-
 };
 
 /**
@@ -314,7 +314,9 @@ class KTEXTEDITOR_EXPORT AnnotationViewInterfaceV2 : public AnnotationViewInterf
 {
     // KF6: Merge KTextEditor::AnnotationViewInterfaceV2 into KTextEditor::AnnotationViewInterface (kossebau)
 public:
-    virtual ~AnnotationViewInterfaceV2() {}
+    virtual ~AnnotationViewInterfaceV2()
+    {
+    }
 
     /**
      * Sets the AbstractAnnotationItemDelegate for this view and the model
@@ -330,7 +332,7 @@ public:
      *
      * @returns the current AbstractAnnotationItemDelegate
      */
-    virtual KTextEditor::AbstractAnnotationItemDelegate* annotationItemDelegate() const = 0;
+    virtual KTextEditor::AbstractAnnotationItemDelegate *annotationItemDelegate() const = 0;
 
     /**
      * This function can be used to declare whether it is known that the annotation items
@@ -356,4 +358,3 @@ Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterface, "org.kde.KTextEditor.A
 Q_DECLARE_INTERFACE(KTextEditor::AnnotationViewInterfaceV2, "org.kde.KTextEditor.AnnotationViewInterfaceV2")
 
 #endif
-

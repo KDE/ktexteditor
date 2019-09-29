@@ -211,7 +211,7 @@ void SearchBarTest::testSetSearchPattern_data()
     QTest::addColumn<int>("numMatches2");
 
     testNewRow() << false << 0;
-    testNewRow() << true  << 3;
+    testNewRow() << true << 3;
 }
 
 void SearchBarTest::testSetSearchPattern()
@@ -270,7 +270,7 @@ void SearchBarTest::testFindAll_data()
     QTest::addColumn<int>("numMatches4");
 
     testNewRow() << false << 0 << 0;
-    testNewRow() << true  << 3 << 2;
+    testNewRow() << true << 3 << 2;
 }
 
 void SearchBarTest::testFindAll()
@@ -348,19 +348,19 @@ void SearchBarTest::testFindSelectionForward_data()
     QTest::addColumn<Range>("match");
 
     testNewRow() << "a a a" << false << Range(0, 0, 0, 1) << Range(0, 0, 0, 2);
-    testNewRow() << "a a a" << true  << Range(0, 0, 0, 1) << Range(0, 0, 0, 1);
+    testNewRow() << "a a a" << true << Range(0, 0, 0, 1) << Range(0, 0, 0, 1);
 
     testNewRow() << "a a a" << false << Range(0, 0, 0, 2) << Range(0, 2, 0, 4);
-    testNewRow() << "a a a" << true  << Range(0, 0, 0, 2) << Range(0, 0, 0, 2);
+    testNewRow() << "a a a" << true << Range(0, 0, 0, 2) << Range(0, 0, 0, 2);
 
     testNewRow() << "a a a" << false << Range(0, 0, 0, 3) << Range(0, 0, 0, 2);
-    testNewRow() << "a a a" << true  << Range(0, 0, 0, 3) << Range(0, 0, 0, 2);
+    testNewRow() << "a a a" << true << Range(0, 0, 0, 3) << Range(0, 0, 0, 2);
 
     testNewRow() << "a a a" << false << Range(0, 2, 0, 4) << Range(0, 0, 0, 2);
-    testNewRow() << "a a a" << true  << Range(0, 2, 0, 4) << Range(0, 2, 0, 4);
+    testNewRow() << "a a a" << true << Range(0, 2, 0, 4) << Range(0, 2, 0, 4);
 
     testNewRow() << "a a a" << false << Range(0, 3, 0, 4) << Range(0, 0, 0, 2);
-    testNewRow() << "a a a" << true  << Range(0, 3, 0, 4) << Range(0, 3, 0, 4);
+    testNewRow() << "a a a" << true << Range(0, 3, 0, 4) << Range(0, 3, 0, 4);
 }
 
 void SearchBarTest::testFindSelectionForward()
@@ -466,15 +466,15 @@ void SearchBarTest::testReplaceWithDoubleSelecion_data()
     QTest::addColumn<QString>("result");
     QTest::addColumn<Range>("match");
 
-//  testNewRow() << "a"  << Range(0, 0, 0, 1) << "aa" << Range(?, ?, ?, ?);
+    //  testNewRow() << "a"  << Range(0, 0, 0, 1) << "aa" << Range(?, ?, ?, ?);
     testNewRow() << "aa" << Range(0, 1, 0, 2) << "aaa" << Range(0, 0, 0, 1);
     testNewRow() << "aa" << Range(0, 0, 0, 1) << "aaa" << Range(0, 2, 0, 3);
 
-//  testNewRow() << "ab"  << Range(0, 0, 0, 1) << "aab"  << Range(?, ?, ?, ?);
+    //  testNewRow() << "ab"  << Range(0, 0, 0, 1) << "aab"  << Range(?, ?, ?, ?);
     testNewRow() << "aab" << Range(0, 0, 0, 1) << "aaab" << Range(0, 2, 0, 3);
     testNewRow() << "aba" << Range(0, 0, 0, 1) << "aaba" << Range(0, 3, 0, 4);
 
-//  testNewRow() << "ab"   << Range(0, 0, 0, 2) << "abab"   << Range(?, ?, ?, ?);
+    //  testNewRow() << "ab"   << Range(0, 0, 0, 2) << "abab"   << Range(?, ?, ?, ?);
     testNewRow() << "abab" << Range(0, 0, 0, 2) << "ababab" << Range(0, 4, 0, 6);
     testNewRow() << "abab" << Range(0, 2, 0, 4) << "ababab" << Range(0, 0, 0, 2);
 }
@@ -552,7 +552,7 @@ void SearchBarTest::testSearchHistoryIncremental()
     QCOMPARE(bar2.m_incUi->pattern->findText("bar"), 0);
     QCOMPARE(bar2.m_incUi->pattern->findText("foo"), 1);
 
-    //testcase for https://bugs.kde.org/show_bug.cgi?id=248305
+    // testcase for https://bugs.kde.org/show_bug.cgi?id=248305
     bar2.m_incUi->pattern->setCurrentIndex(1);
     QCOMPARE(bar2.searchPattern(), QLatin1String("foo"));
     bar2.findNext();
@@ -618,7 +618,6 @@ void SearchBarTest::testReplaceInBlockMode()
 
     QCOMPARE(doc.text(), QString("121\n121"));
 }
-
 
 void SearchBarTest::testReplaceManyCapturesBug365124()
 {

@@ -39,13 +39,16 @@
 #include <QTimer>
 #include <QMessageBox>
 
-//to initially disable sorting in the suggestions listview
+// to initially disable sorting in the suggestions listview
 #define NONSORTINGCOLUMN 2
 
-class ReadOnlyStringListModel: public QStringListModel
+class ReadOnlyStringListModel : public QStringListModel
 {
 public:
-    ReadOnlyStringListModel(QObject *parent): QStringListModel(parent) {}
+    ReadOnlyStringListModel(QObject *parent)
+        : QStringListModel(parent)
+    {
+    }
     Qt::ItemFlags flags(const QModelIndex &index) const override
     {
         Q_UNUSED(index);
@@ -61,20 +64,26 @@ public:
  * @short struct represents word
  */
 struct Word {
-  Word()
-  {}
+    Word()
+    {
+    }
 
-  Word(const QString &w, int st, bool e = false)
-  : word(w), start(st), end(e)
-  {}
-  Word(const Word &other)
-  : word(other.word), start(other.start),
-  end(other.end)
-  {}
+    Word(const QString &w, int st, bool e = false)
+        : word(w)
+        , start(st)
+        , end(e)
+    {
+    }
+    Word(const Word &other)
+        : word(other.word)
+        , start(other.start)
+        , end(other.end)
+    {
+    }
 
-  QString word;
-  int start = 0;
-  bool end = true;
+    QString word;
+    int start = 0;
+    bool end = true;
 };
 
 class SpellCheckBar::Private
@@ -85,12 +94,12 @@ public:
     QWidget *wdg;
     QDialogButtonBox *buttonBox;
     QProgressDialog *progressDialog;
-    QString   originalBuffer;
+    QString originalBuffer;
     Sonnet::BackgroundChecker *checker;
 
-    Word   currentWord;
+    Word currentWord;
     QMap<QString, QString> replaceAllMap;
-    bool restart;//used when text is distributed across several qtextedits, eg in KAider
+    bool restart; // used when text is distributed across several qtextedits, eg in KAider
 
     QMap<QString, QString> dictsMap;
 
@@ -114,8 +123,8 @@ public:
 };
 
 SpellCheckBar::SpellCheckBar(Sonnet::BackgroundChecker *checker, QWidget *parent)
-    : KateViewBarWidget(true, parent),
-      d(new Private)
+    : KateViewBarWidget(true, parent)
+    , d(new Private)
 {
     d->checker = checker;
 
@@ -151,32 +160,22 @@ void SpellCheckBar::closed()
 
 void SpellCheckBar::initConnections()
 {
-    connect(d->ui.m_addBtn, SIGNAL(clicked()),
-            SLOT(slotAddWord()));
-    connect(d->ui.m_replaceBtn, SIGNAL(clicked()),
-            SLOT(slotReplaceWord()));
-    connect(d->ui.m_replaceAllBtn, SIGNAL(clicked()),
-            SLOT(slotReplaceAll()));
-    connect(d->ui.m_skipBtn, SIGNAL(clicked()),
-            SLOT(slotSkip()));
-    connect(d->ui.m_skipAllBtn, SIGNAL(clicked()),
-            SLOT(slotSkipAll()));
-    connect(d->ui.m_suggestBtn, SIGNAL(clicked()),
-            SLOT(slotSuggest()));
-    connect(d->ui.m_language, SIGNAL(activated(QString)),
-            SLOT(slotChangeLanguage(QString)));
-    connect(d->checker, SIGNAL(misspelling(QString,int)),
-            SLOT(slotMisspelling(QString,int)));
-    connect(d->checker, SIGNAL(done()),
-            SLOT(slotDone()));
+    connect(d->ui.m_addBtn, SIGNAL(clicked()), SLOT(slotAddWord()));
+    connect(d->ui.m_replaceBtn, SIGNAL(clicked()), SLOT(slotReplaceWord()));
+    connect(d->ui.m_replaceAllBtn, SIGNAL(clicked()), SLOT(slotReplaceAll()));
+    connect(d->ui.m_skipBtn, SIGNAL(clicked()), SLOT(slotSkip()));
+    connect(d->ui.m_skipAllBtn, SIGNAL(clicked()), SLOT(slotSkipAll()));
+    connect(d->ui.m_suggestBtn, SIGNAL(clicked()), SLOT(slotSuggest()));
+    connect(d->ui.m_language, SIGNAL(activated(QString)), SLOT(slotChangeLanguage(QString)));
+    connect(d->checker, SIGNAL(misspelling(QString, int)), SLOT(slotMisspelling(QString, int)));
+    connect(d->checker, SIGNAL(done()), SLOT(slotDone()));
     /*
     connect(d->ui.m_suggestions, SIGNAL(doubleClicked(QModelIndex)),
             SLOT(slotReplaceWord()));
             */
 
     connect(d->ui.cmbReplacement, SIGNAL(returnPressed()), this, SLOT(slotReplaceWord()));
-    connect(d->ui.m_autoCorrect, SIGNAL(clicked()),
-            SLOT(slotAutocorrect()));
+    connect(d->ui.m_autoCorrect, SIGNAL(clicked()), SLOT(slotAutocorrect()));
     // button use by kword/kpresenter
     // hide by default
     d->ui.m_autoCorrect->hide();
@@ -200,7 +199,7 @@ void SpellCheckBar::initGui()
     layout->addWidget(d->buttonBox);
     */
 
-    //d->ui.m_suggestions->setSorting( NONSORTINGCOLUMN );
+    // d->ui.m_suggestions->setSorting( NONSORTINGCOLUMN );
     fillDictionaryComboBox();
     d->restart = false;
 
@@ -287,15 +286,15 @@ QString SpellCheckBar::buffer() const
 void SpellCheckBar::setBuffer(const QString &buf)
 {
     d->originalBuffer = buf;
-    //it is possible to change buffer inside slot connected to done() signal
+    // it is possible to change buffer inside slot connected to done() signal
     d->restart = true;
 }
 
 void SpellCheckBar::fillDictionaryComboBox()
 {
-   // Since m_language is changed to DictionaryComboBox most code here is gone,
-   // So fillDictionaryComboBox() could be removed and code moved to initGui()
-   // because the call in show() looks obsolete
+    // Since m_language is changed to DictionaryComboBox most code here is gone,
+    // So fillDictionaryComboBox() could be removed and code moved to initGui()
+    // because the call in show() looks obsolete
     Sonnet::Speller speller = d->checker->speller();
     d->dictsMap = speller.availableDictionaries();
 
@@ -311,7 +310,7 @@ void SpellCheckBar::updateDictionaryComboBox()
 void SpellCheckBar::updateDialog(const QString &word)
 {
     d->ui.m_unknownWord->setText(word);
-    //d->ui.m_contextLabel->setText(d->checker->currentContext());
+    // d->ui.m_contextLabel->setText(d->checker->currentContext());
     const QStringList suggs = d->checker->suggest(word);
 
     if (suggs.isEmpty()) {
@@ -348,13 +347,10 @@ void SpellCheckBar::slotReplaceWord()
     setGuiEnabled(false);
     setProgressDialogVisible(true);
     const QString replacementText = d->ui.cmbReplacement->lineEdit()->text();
-    emit replace(d->currentWord.word, d->currentWord.start,
-                 replacementText);
+    emit replace(d->currentWord.word, d->currentWord.start, replacementText);
 
     if (d->spellCheckContinuedAfterReplacement) {
-        d->checker->replace(d->currentWord.start,
-                            d->currentWord.word,
-                            replacementText);
+        d->checker->replace(d->currentWord.start, d->currentWord.word, replacementText);
         d->checker->continueChecking();
     } else {
         setProgressDialogVisible(false);
@@ -366,8 +362,7 @@ void SpellCheckBar::slotReplaceAll()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    d->replaceAllMap.insert(d->currentWord.word,
-                            d->ui.cmbReplacement->lineEdit()->text());
+    d->replaceAllMap.insert(d->currentWord.word, d->ui.cmbReplacement->lineEdit()->text());
     slotReplaceWord();
 }
 
@@ -419,16 +414,16 @@ void SpellCheckBar::slotMisspelling(const QString &word, int start)
     setGuiEnabled(true);
     setProgressDialogVisible(false);
     emit misspelling(word, start);
-    //NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
-    //this dramatically reduces spellchecking time in Lokalize
-    //as this doesn't fetch suggestions for words that are present in msgid
+    // NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
+    // this dramatically reduces spellchecking time in Lokalize
+    // as this doesn't fetch suggestions for words that are present in msgid
     if (!updatesEnabled()) {
         return;
     }
 
     d->currentWord = Word(word, start);
     if (d->replaceAllMap.contains(word)) {
-        d->ui.cmbReplacement->lineEdit()->setText(d->replaceAllMap[ word ]);
+        d->ui.cmbReplacement->lineEdit()->setText(d->replaceAllMap[word]);
         slotReplaceWord();
     } else {
         updateDialog(word);

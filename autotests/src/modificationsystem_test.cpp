@@ -170,8 +170,9 @@ void ModificationSystemTest::testInsertLine()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("0\n"
-                          "2");
+    const QString content(
+        "0\n"
+        "2");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -238,9 +239,10 @@ void ModificationSystemTest::testRemoveLine()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("0\n"
-                          "1\n"
-                          "2");
+    const QString content(
+        "0\n"
+        "1\n"
+        "2");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -305,9 +307,10 @@ void ModificationSystemTest::testWrapLineMid()
         bool insertNewLine = (i == 1);
         KTextEditor::DocumentPrivate doc;
 
-        const QString content("aaaa\n"
-                              "bbbb\n"
-                              "cccc");
+        const QString content(
+            "aaaa\n"
+            "bbbb\n"
+            "cccc");
         doc.setText(content);
 
         // clear all modification flags, forces no flags
@@ -375,8 +378,9 @@ void ModificationSystemTest::testWrapLineAtEnd()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("aaaa\n"
-                          "bbbb");
+    const QString content(
+        "aaaa\n"
+        "bbbb");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -443,8 +447,9 @@ void ModificationSystemTest::testWrapLineAtStart()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("aaaa\n"
-                          "bbbb");
+    const QString content(
+        "aaaa\n"
+        "bbbb");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -511,9 +516,10 @@ void ModificationSystemTest::testUnWrapLine()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("aaaa\n"
-                          "bbbb\n"
-                          "cccc");
+    const QString content(
+        "aaaa\n"
+        "bbbb\n"
+        "cccc");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -576,9 +582,10 @@ void ModificationSystemTest::testUnWrapLine1Empty()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("aaaa\n"
-                          "\n"
-                          "bbbb");
+    const QString content(
+        "aaaa\n"
+        "\n"
+        "bbbb");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -641,9 +648,10 @@ void ModificationSystemTest::testUnWrapLine2Empty()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("aaaa\n"
-                          "\n"
-                          "bbbb");
+    const QString content(
+        "aaaa\n"
+        "\n"
+        "bbbb");
     doc.setText(content);
 
     // clear all modification flags, forces no flags
@@ -706,9 +714,10 @@ void ModificationSystemTest::testNavigation()
 {
     KTextEditor::DocumentPrivate doc;
 
-    const QString content("0\n"
-                          "1\n"
-                          "2");
+    const QString content(
+        "0\n"
+        "1\n"
+        "2");
     doc.setText(content);
 
     // clear all modification flags, forces no flags

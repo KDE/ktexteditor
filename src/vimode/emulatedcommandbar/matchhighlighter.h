@@ -27,9 +27,9 @@
 
 namespace KTextEditor
 {
-    class ViewPrivate;
-    class Range;
-    class MovingRange;
+class ViewPrivate;
+class Range;
+class MovingRange;
 }
 
 namespace KateVi
@@ -38,11 +38,12 @@ class MatchHighlighter : public QObject
 {
     Q_OBJECT
 public:
-    explicit MatchHighlighter(KTextEditor::ViewPrivate* view);
+    explicit MatchHighlighter(KTextEditor::ViewPrivate *view);
     ~MatchHighlighter();
     void updateMatchHighlight(const KTextEditor::Range &matchRange);
 private Q_SLOTS:
     void updateMatchHighlightAttrib();
+
 private:
     KTextEditor::ViewPrivate *m_view = nullptr;
     KTextEditor::Attribute::Ptr m_highlightMatchAttribute;

@@ -45,7 +45,7 @@ KateConfigInterfaceTest::~KateConfigInterfaceTest()
 void KateConfigInterfaceTest::testDocument()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    auto iface = qobject_cast<KTextEditor::ConfigInterface*>(&doc);
+    auto iface = qobject_cast<KTextEditor::ConfigInterface *>(&doc);
     QVERIFY(iface);
     QVERIFY(!iface->configKeys().isEmpty());
 
@@ -94,9 +94,9 @@ void KateConfigInterfaceTest::testDocument()
 void KateConfigInterfaceTest::testView()
 {
     KTextEditor::DocumentPrivate doc(false, false);
-    auto view = static_cast<KTextEditor::View*>(doc.createView(nullptr));
+    auto view = static_cast<KTextEditor::View *>(doc.createView(nullptr));
     QVERIFY(view);
-    auto iface = qobject_cast<KTextEditor::ConfigInterface*>(view);
+    auto iface = qobject_cast<KTextEditor::ConfigInterface *>(view);
     QVERIFY(iface);
     QVERIFY(!iface->configKeys().isEmpty());
 

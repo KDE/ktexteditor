@@ -46,7 +46,7 @@ void KateTextBufferTest::basicBufferTest()
     QVERIFY(buffer.lines() == 1);
     QVERIFY(buffer.text() == QString());
 
-    //FIXME: use QTestLib macros for checking the correct state
+    // FIXME: use QTestLib macros for checking the correct state
     // start editing
     buffer.startEditing();
 
@@ -99,8 +99,8 @@ void KateTextBufferTest::insertRemoveTextTest()
     QVERIFY(buffer.text() == QString());
 
     // second text line should be still there
-    //const QString &secondText = second->text ();
-    //QVERIFY (secondText == "")
+    // const QString &secondText = second->text ();
+    // QVERIFY (secondText == "")
 
     // insert text
     buffer.startEditing();
@@ -153,16 +153,16 @@ void KateTextBufferTest::cursorTest()
         // construct cursor
         Kate::TextCursor *cursor1 = new Kate::TextCursor(buffer, KTextEditor::Cursor(0, 0), Kate::TextCursor::MoveOnInsert);
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 0));
-        //printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
 
-        //Kate::TextCursor *cursor2 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1, 8), Kate::TextCursor::MoveOnInsert);
-        //printf ("cursor %d, %d\n", cursor2->line(), cursor2->column());
+        // Kate::TextCursor *cursor2 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1, 8), Kate::TextCursor::MoveOnInsert);
+        // printf ("cursor %d, %d\n", cursor2->line(), cursor2->column());
 
-        //Kate::TextCursor *cursor3 = new Kate::TextCursor (buffer, KTextEditor::Cursor (0, 123), Kate::TextCursor::MoveOnInsert);
-        //printf ("cursor %d, %d\n", cursor3->line(), cursor3->column());
+        // Kate::TextCursor *cursor3 = new Kate::TextCursor (buffer, KTextEditor::Cursor (0, 123), Kate::TextCursor::MoveOnInsert);
+        // printf ("cursor %d, %d\n", cursor3->line(), cursor3->column());
 
-        //Kate::TextCursor *cursor4 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1323, 1), Kate::TextCursor::MoveOnInsert);
-        //printf ("cursor %d, %d\n", cursor4->line(), cursor4->column());
+        // Kate::TextCursor *cursor4 = new Kate::TextCursor (buffer, KTextEditor::Cursor (1323, 1), Kate::TextCursor::MoveOnInsert);
+        // printf ("cursor %d, %d\n", cursor4->line(), cursor4->column());
 
         // insert text
         buffer.startEditing();
@@ -170,7 +170,7 @@ void KateTextBufferTest::cursorTest()
         buffer.finishEditing();
         buffer.debugPrint(QLatin1String("Cursor buffer"));
 
-        //printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 5));
 
         // remove text
@@ -179,7 +179,7 @@ void KateTextBufferTest::cursorTest()
         buffer.finishEditing();
         buffer.debugPrint(QLatin1String("Cursor buffer"));
 
-        //printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
 
         // wrap line
@@ -188,7 +188,7 @@ void KateTextBufferTest::cursorTest()
         buffer.finishEditing();
         buffer.debugPrint(QLatin1String("Cursor buffer"));
 
-        //printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(1, 1));
 
         // unwrap line
@@ -197,7 +197,7 @@ void KateTextBufferTest::cursorTest()
         buffer.finishEditing();
         buffer.debugPrint(QLatin1String("Cursor buffer"));
 
-        //printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
+        // printf ("cursor %d, %d\n", cursor1->line(), cursor1->column());
         QVERIFY(cursor1->toCursor() == KTextEditor::Cursor(0, 4));
 
         // verify content
@@ -268,7 +268,7 @@ void KateTextBufferTest::foldingTest()
     }
 
     // there shall be one range starting at 5
-    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags> > forLine = folding.foldingRangesStartingOnLine(5);
+    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> forLine = folding.foldingRangesStartingOnLine(5);
     QVERIFY(forLine.size() == 1);
     QVERIFY(forLine[0].first == 0);
     QVERIFY(forLine[0].second & Kate::TextFolding::Folded);
@@ -400,7 +400,6 @@ void KateTextBufferTest::foldingTest()
     // restore state
     folding.importFoldingRanges(folds);
     QVERIFY(folding.debugDump() == textDump);
-
 }
 
 void KateTextBufferTest::nestedFoldingTest()

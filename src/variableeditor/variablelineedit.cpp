@@ -186,7 +186,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     listview->addItem(item);
 
     // Add 'end-of-line' (eol) to list
-    item = new VariableStringListItem(QStringLiteral("end-of-line"), { QStringLiteral("unix"), QStringLiteral("mac"), QStringLiteral("dos") }, docConfig->eolString());
+    item = new VariableStringListItem(QStringLiteral("end-of-line"), {QStringLiteral("unix"), QStringLiteral("mac"), QStringLiteral("dos")}, docConfig->eolString());
     item->setHelpText(i18nc("short translation please", "Sets the end of line mode."));
     listview->addItem(item);
 
@@ -375,4 +375,3 @@ QString VariableLineEdit::text()
 {
     return m_lineedit->text();
 }
-

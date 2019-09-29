@@ -29,10 +29,10 @@
 #include <QApplication>
 #include <QMetaObject>
 
-//BEGIN: WindowKeepActive
+// BEGIN: WindowKeepActive
 
 WindowKeepActive::WindowKeepActive(QMainWindow *mainWindow)
-: m_mainWindow(mainWindow)
+    : m_mainWindow(mainWindow)
 {
     /* There's nothing to do here. */
 }
@@ -52,14 +52,15 @@ bool WindowKeepActive::eventFilter(QObject *object, QEvent *event)
     return false;
 }
 
-//END: WindowKeepActive
+// END: WindowKeepActive
 
-//BEGIN: EmulatedCommandBarSetUpAndTearDown
+// BEGIN: EmulatedCommandBarSetUpAndTearDown
 
-EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInputMode *inputMode,
-        KTextEditor::ViewPrivate *view,
-        QMainWindow *window)
-: m_view(view), m_window(window), m_windowKeepActive(window), m_viInputMode(inputMode)
+EmulatedCommandBarSetUpAndTearDown::EmulatedCommandBarSetUpAndTearDown(KateViInputMode *inputMode, KTextEditor::ViewPrivate *view, QMainWindow *window)
+    : m_view(view)
+    , m_window(window)
+    , m_windowKeepActive(window)
+    , m_viInputMode(inputMode)
 {
     m_window->show();
     m_view->show();
@@ -80,5 +81,4 @@ EmulatedCommandBarSetUpAndTearDown::~EmulatedCommandBarSetUpAndTearDown()
     QApplication::processEvents();
 }
 
-//END: EmulatedCommandBarSetUpAndTearDown
-
+// END: EmulatedCommandBarSetUpAndTearDown

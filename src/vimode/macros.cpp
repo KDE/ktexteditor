@@ -114,7 +114,6 @@ int Macros::readMacroCompletions(const QChar &reg, const QStringList &encodedMac
             const QString encodedMacroCompletion = encodedMacroCompletions[macroCompletionsIndex++];
             count++;
             m_completions[reg].append(decodeMacroCompletionFromConfig(encodedMacroCompletion));
-
         }
     }
     return macroCompletionsIndex;

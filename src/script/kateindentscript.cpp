@@ -46,17 +46,16 @@ const QString &KateIndentScript::triggerCharacters()
     m_triggerCharactersSet = true;
 
     auto triggerCharacters = global(QStringLiteral("triggerCharacters"));
-    if ( !triggerCharacters.isUndefined() ) {
+    if (!triggerCharacters.isUndefined()) {
         m_triggerCharacters = triggerCharacters.toString();
     }
 
-    //qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
+    // qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
 
     return m_triggerCharacters;
 }
 
-QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position,
-        QChar typedCharacter, int indentWidth)
+QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const KTextEditor::Cursor &position, QChar typedCharacter, int indentWidth)
 {
     // if it hasn't loaded or we can't load, return
     if (!setView(view)) {
@@ -91,4 +90,3 @@ QPair<int, int> KateIndentScript::indent(KTextEditor::ViewPrivate *view, const K
 
     return qMakePair(indentAmount, alignAmount);
 }
-

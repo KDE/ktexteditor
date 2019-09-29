@@ -39,7 +39,7 @@ bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
 }
 }
 
-Completer::Completer ( EmulatedCommandBar* emulatedCommandBar, KTextEditor::ViewPrivate* view, QLineEdit* edit )
+Completer::Completer(EmulatedCommandBar *emulatedCommandBar, KTextEditor::ViewPrivate *view, QLineEdit *edit)
     : m_edit(edit)
     , m_view(view)
 {
@@ -54,10 +54,9 @@ Completer::Completer ( EmulatedCommandBar* emulatedCommandBar, KTextEditor::View
     m_completer->popup()->installEventFilter(emulatedCommandBar);
 }
 
-void Completer::startCompletion ( const CompletionStartParams& completionStartParams )
+void Completer::startCompletion(const CompletionStartParams &completionStartParams)
 {
-    if (completionStartParams.completionType != CompletionStartParams::None)
-    {
+    if (completionStartParams.completionType != CompletionStartParams::None) {
         m_completionModel->setStringList(completionStartParams.completions);
         const QString completionPrefix = m_edit->text().mid(completionStartParams.wordStartPos, m_edit->cursorPosition() - completionStartParams.wordStartPos);
         m_completer->setCompletionPrefix(completionPrefix);
@@ -83,15 +82,13 @@ bool Completer::isNextTextChangeDueToCompletionChange() const
     return m_isNextTextChangeDueToCompletionChange;
 }
 
-bool Completer::completerHandledKeypress ( const QKeyEvent* keyEvent )
+bool Completer::completerHandledKeypress(const QKeyEvent *keyEvent)
 {
     if (!m_edit->isVisible())
         return false;
 
-    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft))
-    {
-        if (m_currentCompletionType != CompletionStartParams::None && m_completer->popup()->isVisible())
-        {
+    if (keyEvent->modifiers() == Qt::ControlModifier && (keyEvent->key() == Qt::Key_C || keyEvent->key() == Qt::Key_BracketLeft)) {
+        if (m_currentCompletionType != CompletionStartParams::None && m_completer->popup()->isVisible()) {
             abortCompletionAndResetToPreCompletion();
             return true;
         }
@@ -141,10 +138,9 @@ bool Completer::completerHandledKeypress ( const QKeyEvent* keyEvent )
         return true;
     }
     return false;
-
 }
 
-void Completer::editTextChanged ( const QString& newText )
+void Completer::editTextChanged(const QString &newText)
 {
     if (!m_isNextTextChangeDueToCompletionChange) {
         m_textToRevertToIfCompletionAborted = newText;
@@ -161,12 +157,12 @@ void Completer::editTextChanged ( const QString& newText )
     }
 }
 
-void Completer::setCurrentMode ( ActiveMode* currentMode )
+void Completer::setCurrentMode(ActiveMode *currentMode)
 {
     m_currentMode = currentMode;
 }
 
-void Completer::setCompletionIndex ( int index )
+void Completer::setCompletionIndex(int index)
 {
     const QModelIndex modelIndex = m_completer->popup()->model()->index(index, 0);
     // Need to set both of these, for some reason.
@@ -185,8 +181,7 @@ void Completer::currentCompletionChanged()
         return;
     }
     QString transformedCompletion = newCompletion;
-    if (m_currentCompletionStartParams.completionTransform)
-    {
+    if (m_currentCompletionStartParams.completionTransform) {
         transformedCompletion = m_currentCompletionStartParams.completionTransform(newCompletion);
     }
 
@@ -194,9 +189,7 @@ void Completer::currentCompletionChanged()
     m_edit->setSelection(m_currentCompletionStartParams.wordStartPos, m_edit->cursorPosition() - m_currentCompletionStartParams.wordStartPos);
     m_edit->insert(transformedCompletion);
     m_isNextTextChangeDueToCompletionChange = false;
-
 }
-
 
 void Completer::updateCompletionPrefix()
 {
@@ -257,4 +250,3 @@ void Completer::abortCompletionAndResetToPreCompletion()
     m_edit->setCursorPosition(m_cursorPosToRevertToIfCompletionAborted);
     m_isNextTextChangeDueToCompletionChange = false;
 }
-

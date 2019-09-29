@@ -61,49 +61,53 @@ void DocumentCursorTest::cleanupTestCase()
 void DocumentCursorTest::testConvenienceApi()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("\n"
-                "1\n"
-                "22\n"
-                "333\n"
-                "4444\n"
-                "55555");
+    doc.setText(
+        "\n"
+        "1\n"
+        "22\n"
+        "333\n"
+        "4444\n"
+        "55555");
 
     // check start and end of document
-    DocumentCursor startOfDoc(&doc); startOfDoc.setPosition(Cursor(0, 0));
-    DocumentCursor endOfDoc(&doc); endOfDoc.setPosition(Cursor(5, 5));
+    DocumentCursor startOfDoc(&doc);
+    startOfDoc.setPosition(Cursor(0, 0));
+    DocumentCursor endOfDoc(&doc);
+    endOfDoc.setPosition(Cursor(5, 5));
     QVERIFY(startOfDoc.atStartOfDocument());
     QVERIFY(startOfDoc.atStartOfLine());
     QVERIFY(endOfDoc.atEndOfDocument());
     QVERIFY(endOfDoc.atEndOfLine());
 
     // set cursor to (2, 2) and then move to the left two times
-    DocumentCursor moving(&doc); moving.setPosition(Cursor(2, 2));
+    DocumentCursor moving(&doc);
+    moving.setPosition(Cursor(2, 2));
     QVERIFY(moving.atEndOfLine()); // at 2, 2
-    QVERIFY(moving.move(-1));   // at 2, 1
+    QVERIFY(moving.move(-1));      // at 2, 1
     QCOMPARE(moving.toCursor(), Cursor(2, 1));
     QVERIFY(!moving.atEndOfLine());
-    QVERIFY(moving.move(-1));   // at 2, 0
+    QVERIFY(moving.move(-1)); // at 2, 0
     QCOMPARE(moving.toCursor(), Cursor(2, 0));
     QVERIFY(moving.atStartOfLine());
 
     // now move again to the left, should wrap to (1, 1)
-    QVERIFY(moving.move(-1));   // at 1, 1
+    QVERIFY(moving.move(-1)); // at 1, 1
     QCOMPARE(moving.toCursor(), Cursor(1, 1));
     QVERIFY(moving.atEndOfLine());
 
     // advance 7 characters to position (3, 3)
-    QVERIFY(moving.move(7));   // at 3, 3
+    QVERIFY(moving.move(7)); // at 3, 3
     QCOMPARE(moving.toCursor(), Cursor(3, 3));
 
     // advance 20 characters in NoWrap mode, then go back 10 characters
-    QVERIFY(moving.move(20, DocumentCursor::NoWrap));   // at 3, 23
+    QVERIFY(moving.move(20, DocumentCursor::NoWrap)); // at 3, 23
     QCOMPARE(moving.toCursor(), Cursor(3, 23));
-    QVERIFY(moving.move(-10));   // at 3, 13
+    QVERIFY(moving.move(-10)); // at 3, 13
     QCOMPARE(moving.toCursor(), Cursor(3, 13));
 
     // still at invalid text position. move one char to wrap around
-    QVERIFY(!moving.isValidTextPosition());   // at 3, 13
-    QVERIFY(moving.move(1));   // at 4, 0
+    QVERIFY(!moving.isValidTextPosition()); // at 3, 13
+    QVERIFY(moving.move(1));                // at 4, 0
     QCOMPARE(moving.toCursor(), Cursor(4, 0));
 
     // moving 11 characters in wrap mode moves to (5, 6), which is not a valid
@@ -121,9 +125,10 @@ void DocumentCursorTest::testConvenienceApi()
 void DocumentCursorTest::testOperators()
 {
     KTextEditor::DocumentPrivate doc;
-    doc.setText("--oo--\n"
-                "--oo--\n"
-                "--oo--");
+    doc.setText(
+        "--oo--\n"
+        "--oo--\n"
+        "--oo--");
 
     // create lots of cursors for comparison
     Cursor invalid = Cursor::invalid();
@@ -144,7 +149,7 @@ void DocumentCursorTest::testOperators()
     m14.setPosition(Cursor(1, 4));
 
     // invalid comparison
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(invalid == invalid);
     QVERIFY(invalid <= c02);
     QVERIFY(invalid < c02);
@@ -164,17 +169,17 @@ void DocumentCursorTest::testOperators()
     QVERIFY(m02 >= invalid);
 
     // DocumentCursor <-> DocumentCursor
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(m02 == m02);
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(m02 <= m02);
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(m02 >= m02);
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(!(m02 < m02));
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(!(m02 > m02));
-    //cppcheck-suppress duplicateExpression
+    // cppcheck-suppress duplicateExpression
     QVERIFY(!(m02 != m02));
 
     QVERIFY(!(m02 == m04));
@@ -303,33 +308,54 @@ void DocumentCursorTest::testValidTextPosition()
     }
 
     // line 0: invalid in utf-32 char
-    c.setPosition(0, 0); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(0, 1); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(0, 2); QVERIFY(! c.isValidTextPosition());
-    c.setPosition(0, 3); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(0, 4); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(0, 5); QVERIFY(! c.isValidTextPosition());
+    c.setPosition(0, 0);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(0, 1);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(0, 2);
+    QVERIFY(!c.isValidTextPosition());
+    c.setPosition(0, 3);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(0, 4);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(0, 5);
+    QVERIFY(!c.isValidTextPosition());
 
     // line 1, valid in broken utf-32 char (2nd part missing)
-    c.setPosition(1, 0); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(1, 1); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(1, 2); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(1, 3); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(1, 4); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(1, 5); QVERIFY(! c.isValidTextPosition());
+    c.setPosition(1, 0);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(1, 1);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(1, 2);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(1, 3);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(1, 4);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(1, 5);
+    QVERIFY(!c.isValidTextPosition());
 
     // line 2, valid in broken utf-32 char (1st part missing)
-    c.setPosition(2, 0); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(2, 1); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(2, 2); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(2, 3); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(2, 4); QVERIFY(  c.isValidTextPosition());
-    c.setPosition(2, 5); QVERIFY(! c.isValidTextPosition());
+    c.setPosition(2, 0);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(2, 1);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(2, 2);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(2, 3);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(2, 4);
+    QVERIFY(c.isValidTextPosition());
+    c.setPosition(2, 5);
+    QVERIFY(!c.isValidTextPosition());
 
     // test out-of-range
-    c.setPosition(-1, 0); QVERIFY(!c.isValidTextPosition());
-    c.setPosition(3, 0); QVERIFY(!c.isValidTextPosition());
-    c.setPosition(0, -1); QVERIFY(!c.isValidTextPosition());
+    c.setPosition(-1, 0);
+    QVERIFY(!c.isValidTextPosition());
+    c.setPosition(3, 0);
+    QVERIFY(!c.isValidTextPosition());
+    c.setPosition(0, -1);
+    QVERIFY(!c.isValidTextPosition());
 }
 
 #include "moc_kte_documentcursor.cpp"

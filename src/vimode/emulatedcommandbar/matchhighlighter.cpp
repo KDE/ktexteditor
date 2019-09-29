@@ -26,17 +26,17 @@
 
 using namespace KateVi;
 
-MatchHighlighter::MatchHighlighter ( KTextEditor::ViewPrivate* view )
+MatchHighlighter::MatchHighlighter(KTextEditor::ViewPrivate *view)
     : m_view(view)
-{ updateMatchHighlightAttrib();
+{
+    updateMatchHighlightAttrib();
     m_highlightedMatch = m_view->doc()->newMovingRange(KTextEditor::Range::invalid(), Kate::TextRange::DoNotExpand);
     m_highlightedMatch->setView(m_view); // Show only in this view.
     m_highlightedMatch->setAttributeOnlyForViews(true);
     // Use z depth defined in moving ranges interface.
     m_highlightedMatch->setZDepth(-10000.0);
     m_highlightedMatch->setAttribute(m_highlightMatchAttribute);
-    connect(m_view, SIGNAL(configChanged()),
-            this, SLOT(updateMatchHighlightAttrib()));
+    connect(m_view, SIGNAL(configChanged()), this, SLOT(updateMatchHighlightAttrib()));
 }
 
 MatchHighlighter::~MatchHighlighter()
@@ -44,7 +44,7 @@ MatchHighlighter::~MatchHighlighter()
     delete m_highlightedMatch;
 }
 
-void MatchHighlighter::updateMatchHighlight ( const KTextEditor::Range& matchRange )
+void MatchHighlighter::updateMatchHighlight(const KTextEditor::Range &matchRange)
 {
     // Note that if matchRange is invalid, the highlight will not be shown, so we
     // don't need to check for that explicitly.

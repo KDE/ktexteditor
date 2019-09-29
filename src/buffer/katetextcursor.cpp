@@ -26,7 +26,6 @@
 
 namespace Kate
 {
-
 TextCursor::TextCursor(TextBuffer &buffer, const KTextEditor::Cursor &position, InsertBehavior insertBehavior)
     : m_buffer(buffer)
     , m_range(nullptr)

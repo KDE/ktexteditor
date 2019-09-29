@@ -27,7 +27,6 @@
 
 namespace Kate
 {
-
 TextFolding::FoldingRange::FoldingRange(TextBuffer &buffer, const KTextEditor::Range &range, FoldingRangeFlags _flags)
     : start(new TextCursor(buffer, range.start(), KTextEditor::MovingCursor::MoveOnInsert))
     , end(new TextCursor(buffer, range.end(), KTextEditor::MovingCursor::MoveOnInsert))
@@ -121,9 +120,7 @@ qint64 TextFolding::newFoldingRange(const KTextEditor::Range &range, FoldingRang
      * check and bail out if that happens
      * bail out, too, if it can't be inserted!
      */
-    if (!newRange->start->isValid()
-            || !newRange->end->isValid()
-            || !insertNewFoldingRange(nullptr /* no parent here */, m_foldingRanges, newRange)) {
+    if (!newRange->start->isValid() || !newRange->end->isValid() || !insertNewFoldingRange(nullptr /* no parent here */, m_foldingRanges, newRange)) {
         /**
          * cleanup and be done
          */
@@ -349,7 +346,7 @@ void TextFolding::ensureLineIsVisible(int line)
          * unfold shall work!
          */
         const bool unfolded = unfoldRange(foldedRangeId);
-        (void) unfolded;
+        (void)unfolded;
         Q_ASSERT(unfolded);
     }
 }
@@ -498,12 +495,12 @@ int TextFolding::visibleLineToLine(int visibleLine) const
     return line;
 }
 
-QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > TextFolding::foldingRangesStartingOnLine(int line) const
+QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesStartingOnLine(int line) const
 {
     /**
      * results vector
      */
-    QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > results;
+    QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> results;
 
     /**
      * recursively do binary search
@@ -516,7 +513,7 @@ QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > TextFolding::foldingRang
     return results;
 }
 
-void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags> > &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
+void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRangeFlags>> &results, const TextFolding::FoldingRange::Vector &ranges, int line) const
 {
     /**
      * early out for no folds
@@ -560,7 +557,7 @@ void TextFolding::foldingRangesStartingOnLine(QVector<QPair<qint64, FoldingRange
     }
 }
 
-QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
+QVector<QPair<qint64, TextFolding::FoldingRangeFlags>> TextFolding::foldingRangesForParentRange(qint64 parentRangeId) const
 {
     /**
      * toplevel ranges requested or real parent?
@@ -575,7 +572,7 @@ QVector<QPair<qint64, TextFolding::FoldingRangeFlags> > TextFolding::foldingRang
     /**
      * no ranges => nothing to do
      */
-    QVector<QPair<qint64, FoldingRangeFlags> > results;
+    QVector<QPair<qint64, FoldingRangeFlags>> results;
     if (!ranges)
         return results;
 
@@ -886,10 +883,10 @@ bool TextFolding::updateFoldedRangesForRemovedRange(TextFolding::FoldingRange *o
     }
 
     /**
-    * ok, if we arrive here, we are a unfolded range and we have no folded parent
-    * we now want to remove this range from the m_foldedFoldingRanges vector and include our nested folded ranges!
-    * TODO: OPTIMIZE
-    */
+     * ok, if we arrive here, we are a unfolded range and we have no folded parent
+     * we now want to remove this range from the m_foldedFoldingRanges vector and include our nested folded ranges!
+     * TODO: OPTIMIZE
+     */
     FoldingRange::Vector newFoldedFoldingRanges;
     for (FoldingRange *range : qAsConst(m_foldedFoldingRanges)) {
         /**
@@ -1003,10 +1000,7 @@ void TextFolding::importFoldingRanges(const QJsonDocument &folds)
          */
         if (start >= end ||
             (m_buffer.document() && // <-- unit test katetextbuffertest does not have a KTE::Document assigned
-               (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() ||
-                !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))
-           )
-        {
+             (!KTextEditor::DocumentCursor(m_buffer.document(), start).isValidTextPosition() || !KTextEditor::DocumentCursor(m_buffer.document(), end).isValidTextPosition()))) {
             continue;
         }
 

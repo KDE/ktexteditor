@@ -20,7 +20,7 @@
  *
  */
 
-//BEGIN Includes
+// BEGIN Includes
 #include "commands_test.h"
 
 #include <QtTestWidgets>
@@ -30,7 +30,7 @@
 
 QTEST_MAIN(CommandsTest)
 
-#define FAILURE( test, comment ) qMakePair<const char*, const char*>( (test), (comment) )
+#define FAILURE(test, comment) qMakePair<const char *, const char *>((test), (comment))
 
 void CommandsTest::initTestCase()
 {
@@ -48,4 +48,3 @@ void CommandsTest::utils()
 {
     runTest(ExpectedFailures());
 }
-

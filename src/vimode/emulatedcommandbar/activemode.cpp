@@ -36,38 +36,37 @@ CompletionStartParams ActiveMode::completionInvoked(Completer::CompletionInvocat
     return CompletionStartParams();
 }
 
-void ActiveMode::setViInputModeManager(InputModeManager* viInputModeManager)
+void ActiveMode::setViInputModeManager(InputModeManager *viInputModeManager)
 {
     m_viInputModeManager = viInputModeManager;
 }
 
 ActiveMode::~ActiveMode()
 {
-
 }
 
-void ActiveMode::hideAllWidgetsExcept(QWidget* widgetToKeepVisible)
+void ActiveMode::hideAllWidgetsExcept(QWidget *widgetToKeepVisible)
 {
     m_emulatedCommandBar->hideAllWidgetsExcept(widgetToKeepVisible);
 }
 
-void ActiveMode::updateMatchHighlight(const KTextEditor::Range& matchRange)
+void ActiveMode::updateMatchHighlight(const KTextEditor::Range &matchRange)
 {
     m_matchHighligher->updateMatchHighlight(matchRange);
 }
 
-void ActiveMode::close( bool wasAborted )
+void ActiveMode::close(bool wasAborted)
 {
     m_emulatedCommandBar->m_wasAborted = wasAborted;
     m_emulatedCommandBar->hideMe();
 }
 
-void ActiveMode::closeWithStatusMessage(const QString& exitStatusMessage)
+void ActiveMode::closeWithStatusMessage(const QString &exitStatusMessage)
 {
     m_emulatedCommandBar->closeWithStatusMessage(exitStatusMessage);
 }
 
-void ActiveMode::startCompletion ( const CompletionStartParams& completionStartParams )
+void ActiveMode::startCompletion(const CompletionStartParams &completionStartParams)
 {
     m_emulatedCommandBar->m_completer->startCompletion(completionStartParams);
 }
@@ -75,9 +74,7 @@ void ActiveMode::startCompletion ( const CompletionStartParams& completionStartP
 void ActiveMode::moveCursorTo(const KTextEditor::Cursor &cursorPos)
 {
     m_view->setCursorPosition(cursorPos);
-    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode ||
-        m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
-
+    if (m_viInputModeManager->getCurrentViMode() == ViMode::VisualMode || m_viInputModeManager->getCurrentViMode() == ViMode::VisualLineMode) {
         m_viInputModeManager->getViVisualMode()->goToPos(cursorPos);
     }
 }
@@ -87,12 +84,12 @@ EmulatedCommandBar *ActiveMode::emulatedCommandBar()
     return m_emulatedCommandBar;
 }
 
-KTextEditor::ViewPrivate* ActiveMode::view()
+KTextEditor::ViewPrivate *ActiveMode::view()
 {
     return m_view;
 }
 
-InputModeManager* ActiveMode::viInputModeManager()
+InputModeManager *ActiveMode::viInputModeManager()
 {
     return m_viInputModeManager;
 }

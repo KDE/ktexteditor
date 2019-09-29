@@ -26,7 +26,6 @@
 
 namespace KateVi
 {
-
 class Completion
 {
 public:

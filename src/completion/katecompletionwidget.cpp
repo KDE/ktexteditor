@@ -51,23 +51,22 @@
 
 const bool hideAutomaticCompletionOnExactMatch = true;
 
-//If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
+// If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
 const bool shellLikeTabCompletion = false;
 
-#define CALLCI(WHAT,WHATELSE,WHAT2,model,FUNC) \
-    {\
-        static KTextEditor::CodeCompletionModelControllerInterface defaultIf;\
-        KTextEditor::CodeCompletionModelControllerInterface* ret =\
-                dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface*>(model);\
-        if (!ret) {\
-            WHAT2 defaultIf.FUNC;\
-        }else \
-            WHAT2 ret->FUNC;\
+#define CALLCI(WHAT, WHATELSE, WHAT2, model, FUNC)                                                                                                                                                                                             \
+    {                                                                                                                                                                                                                                          \
+        static KTextEditor::CodeCompletionModelControllerInterface defaultIf;                                                                                                                                                                  \
+        KTextEditor::CodeCompletionModelControllerInterface *ret = dynamic_cast<KTextEditor::CodeCompletionModelControllerInterface *>(model);                                                                                                 \
+        if (!ret) {                                                                                                                                                                                                                            \
+            WHAT2 defaultIf.FUNC;                                                                                                                                                                                                              \
+        } else                                                                                                                                                                                                                                 \
+            WHAT2 ret->FUNC;                                                                                                                                                                                                                   \
     }
 
 static KTextEditor::Range _completionRange(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Cursor &cursor)
 {
-    CALLCI(return,, return, model, completionRange(view, cursor));
+    CALLCI(return, , return, model, completionRange(view, cursor));
 }
 
 static KTextEditor::Range _updateRange(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, KTextEditor::Range &range)
@@ -77,22 +76,22 @@ static KTextEditor::Range _updateRange(KTextEditor::CodeCompletionModel *model, 
 
 static QString _filterString(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const KTextEditor::Cursor &cursor)
 {
-    CALLCI(return,, return, model, filterString(view, range, cursor));
+    CALLCI(return, , return, model, filterString(view, range, cursor));
 }
 
 static bool _shouldAbortCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion)
 {
-    CALLCI(return,, return, model, shouldAbortCompletion(view, range, currentCompletion));
+    CALLCI(return, , return, model, shouldAbortCompletion(view, range, currentCompletion));
 }
 
 static void _aborted(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view)
 {
-    CALLCI(return,, return, model, aborted(view));
+    CALLCI(return, , return, model, aborted(view));
 }
 
 static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, QString m_automaticInvocationLine, bool m_lastInsertionByUser, const KTextEditor::Cursor &cursor)
 {
-    CALLCI(return,, return, model, shouldStartCompletion(view, m_automaticInvocationLine, m_lastInsertionByUser, cursor));
+    CALLCI(return, , return, model, shouldStartCompletion(view, m_automaticInvocationLine, m_lastInsertionByUser, cursor));
 }
 
 KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
@@ -124,10 +123,10 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setLineWidth(1);
-    //setWindowOpacity(0.8);
+    // setWindowOpacity(0.8);
 
     m_entryList->setModel(m_presentationModel);
-    m_entryList->setColumnWidth(0, 0); //These will be determined automatically in KateCompletionTree::resizeColumns
+    m_entryList->setColumnWidth(0, 0); // These will be determined automatically in KateCompletionTree::resizeColumns
     m_entryList->setColumnWidth(1, 0);
     m_entryList->setColumnWidth(2, 0);
 
@@ -141,7 +140,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     connect(m_entryList->verticalScrollBar(), SIGNAL(valueChanged(int)), m_presentationModel, SLOT(placeExpandingWidgets()));
     connect(m_argumentHintTree->verticalScrollBar(), SIGNAL(valueChanged(int)), m_argumentHintModel, SLOT(placeExpandingWidgets()));
-    connect(view(), SIGNAL(focusOut(KTextEditor::View*)), this, SLOT(viewFocusOut()));
+    connect(view(), SIGNAL(focusOut(KTextEditor::View *)), this, SLOT(viewFocusOut()));
 
     m_automaticInvocationTimer = new QTimer(this);
     m_automaticInvocationTimer->setSingleShot(true);
@@ -149,24 +148,24 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
 
     // Keep branches expanded
     connect(m_presentationModel, SIGNAL(modelReset()), this, SLOT(modelReset()));
-    connect(m_presentationModel, SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(rowsInserted(QModelIndex,int,int)));
+    connect(m_presentationModel, SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(rowsInserted(QModelIndex, int, int)));
     connect(m_argumentHintModel, SIGNAL(contentStateChanged(bool)), this, SLOT(argumentHintsChanged(bool)));
 
     // No smart lock, no queued connects
-    connect(view(), SIGNAL(cursorPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
-    connect(view(), SIGNAL(verticalScrollPositionChanged(KTextEditor::View*,KTextEditor::Cursor)), this, SLOT(updatePositionSlot()));
+    connect(view(), SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
+    connect(view(), SIGNAL(verticalScrollPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(updatePositionSlot()));
 
     /**
      * connect to all possible editing primitives
      */
     connect(&view()->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
     connect(&view()->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
-    connect(&view()->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor,QString)), this, SLOT(insertText(KTextEditor::Cursor,QString)));
-    connect(&view()->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range,QString)), this, SLOT(removeText(KTextEditor::Range)));
+    connect(&view()->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));
+    connect(&view()->doc()->buffer(), SIGNAL(textRemoved(KTextEditor::Range, QString)), this, SLOT(removeText(KTextEditor::Range)));
 
     // This is a non-focus widget, it is passed keyboard input from the view
 
-    //We need to do this, because else the focus goes to nirvana without any control when the completion-widget is clicked.
+    // We need to do this, because else the focus goes to nirvana without any control when the completion-widget is clicked.
     setFocusPolicy(Qt::ClickFocus);
     m_argumentHintTree->setFocusPolicy(Qt::ClickFocus);
 
@@ -175,7 +174,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
         childWidget->setFocusPolicy(Qt::NoFocus);
     }
 
-    //Position the entry-list so a frame can be drawn around it
+    // Position the entry-list so a frame can be drawn around it
     m_entryList->move(frameWidth(), frameWidth());
 }
 
@@ -199,18 +198,18 @@ void KateCompletionWidget::modelContentChanged()
 {
     ////qCDebug(LOG_KTE)<<">>>>>>>>>>>>>>>>";
     if (m_completionRanges.isEmpty()) {
-        //qCDebug(LOG_KTE) << "content changed, but no completion active";
+        // qCDebug(LOG_KTE) << "content changed, but no completion active";
         abortCompletion();
         return;
     }
 
     if (!view()->hasFocus()) {
-        //qCDebug(LOG_KTE) << "view does not have focus";
+        // qCDebug(LOG_KTE) << "view does not have focus";
         return;
     }
 
     if (!m_waitingForReset.isEmpty()) {
-        //qCDebug(LOG_KTE) << "waiting for" << m_waitingForReset.size() << "completion-models to reset";
+        // qCDebug(LOG_KTE) << "waiting for" << m_waitingForReset.size() << "completion-models to reset";
         return;
     }
 
@@ -232,27 +231,24 @@ void KateCompletionWidget::modelContentChanged()
         hide();
     }
 
-    //With each filtering items can be added or removed, so we have to reset the current index here so we always have a selected item
+    // With each filtering items can be added or removed, so we have to reset the current index here so we always have a selected item
     m_entryList->setCurrentIndex(model()->index(0, 0));
     if (!model()->indexIsItem(m_entryList->currentIndex())) {
         QModelIndex firstIndex = model()->index(0, 0, m_entryList->currentIndex());
         m_entryList->setCurrentIndex(firstIndex);
-        //m_entryList->scrollTo(firstIndex, QAbstractItemView::PositionAtTop);
+        // m_entryList->scrollTo(firstIndex, QAbstractItemView::PositionAtTop);
     }
 
     updateHeight();
 
-    //New items for the argument-hint tree may have arrived, so check whether it needs to be shown
+    // New items for the argument-hint tree may have arrived, so check whether it needs to be shown
     if (m_argumentHintTree->isHidden() && !m_dontShowArgumentHints && m_argumentHintModel->rowCount(QModelIndex()) != 0) {
         m_argumentHintTree->show();
     }
 
-    if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() &&
-            m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation &&
-            m_presentationModel->shouldMatchHideCompletionList()) {
+    if (!m_noAutoHide && hideAutomaticCompletionOnExactMatch && !isHidden() && m_lastInvocationType == KTextEditor::CodeCompletionModel::AutomaticInvocation && m_presentationModel->shouldMatchHideCompletionList()) {
         hide();
-    } else if (isHidden() && !m_presentationModel->shouldMatchHideCompletionList() &&
-               m_presentationModel->rowCount(QModelIndex())) {
+    } else if (isHidden() && !m_presentationModel->shouldMatchHideCompletionList() && m_presentationModel->rowCount(QModelIndex())) {
         show();
     }
 }
@@ -335,15 +331,14 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, KText
 
 void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const QList<KTextEditor::CodeCompletionModel *> &modelsToStart, KTextEditor::CodeCompletionModel::InvocationType invocationType)
 {
-
     ////qCDebug(LOG_KTE)<<"============";
 
     m_isSuspended = false;
-    m_inCompletionList = true; //Always start at the top of the completion-list
+    m_inCompletionList = true; // Always start at the top of the completion-list
     m_needShow = true;
 
     if (m_completionRanges.isEmpty()) {
-        m_noAutoHide = false;    //Re-enable auto-hide on every clean restart of the completion
+        m_noAutoHide = false; // Re-enable auto-hide on every clean restart of the completion
     }
 
     m_lastInvocationType = invocationType;
@@ -382,16 +377,16 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
         KTextEditor::Range range;
         if (word.isValid()) {
             range = word;
-            //qCDebug(LOG_KTE)<<"word is used";
+            // qCDebug(LOG_KTE)<<"word is used";
         } else {
             range = _completionRange(model, view(), view()->cursorPosition());
-            //qCDebug(LOG_KTE)<<"completionRange has been called, cursor pos is"<<view()->cursorPosition();
+            // qCDebug(LOG_KTE)<<"completionRange has been called, cursor pos is"<<view()->cursorPosition();
         }
-        //qCDebug(LOG_KTE)<<"range is"<<range;
+        // qCDebug(LOG_KTE)<<"range is"<<range;
         if (!range.isValid()) {
             if (m_completionRanges.contains(model)) {
                 KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
-                //qCDebug(LOG_KTE)<<"removing completion range 1";
+                // qCDebug(LOG_KTE)<<"removing completion range 1";
                 m_completionRanges.remove(model);
                 delete oldRange;
             }
@@ -400,10 +395,10 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
         }
         if (m_completionRanges.contains(model)) {
             if (*m_completionRanges[model].range == range) {
-                continue; //Leave it running as it is
-            } else { // delete the range that was used previously
+                continue; // Leave it running as it is
+            } else {      // delete the range that was used previously
                 KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
-                //qCDebug(LOG_KTE)<<"removing completion range 2";
+                // qCDebug(LOG_KTE)<<"removing completion range 2";
                 m_completionRanges.remove(model);
                 delete oldRange;
             }
@@ -411,17 +406,17 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
 
         connect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
 
-        //qCDebug(LOG_KTE)<<"Before completion invoke: range:"<<range;
+        // qCDebug(LOG_KTE)<<"Before completion invoke: range:"<<range;
         model->completionInvoked(view(), range, invocationType);
 
         disconnect(model, SIGNAL(waitForReset()), this, SLOT(waitForModelReset()));
 
         m_completionRanges[model] = CompletionRange(view()->doc()->newMovingRange(range, KTextEditor::MovingRange::ExpandRight | KTextEditor::MovingRange::ExpandLeft));
 
-        //In automatic invocation mode, hide the completion widget as soon as the position where the completion was started is passed to the left
+        // In automatic invocation mode, hide the completion widget as soon as the position where the completion was started is passed to the left
         m_completionRanges[model].leftBoundary = view()->cursorPosition();
 
-        //In manual invocation mode, bound the activity either the point from where completion was invoked, or to the start of the range
+        // In manual invocation mode, bound the activity either the point from where completion was invoked, or to the start of the range
         if (invocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)
             if (range.start() < m_completionRanges[model].leftBoundary) {
                 m_completionRanges[model].leftBoundary = range.start();
@@ -441,7 +436,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word, const
     if (!m_completionRanges.isEmpty()) {
         connect(this->model(), SIGNAL(layoutChanged()), this, SLOT(modelContentChanged()));
         connect(this->model(), SIGNAL(modelReset()), this, SLOT(modelContentChanged()));
-        //Now that all models have been notified, check whether the widget should be displayed instantly
+        // Now that all models have been notified, check whether the widget should be displayed instantly
         modelContentChanged();
     } else {
         abortCompletion();
@@ -460,7 +455,7 @@ void KateCompletionWidget::waitForModelReset()
 
 void KateCompletionWidget::updateAndShow()
 {
-    //qCDebug(LOG_KTE)<<"*******************************************";
+    // qCDebug(LOG_KTE)<<"*******************************************";
     if (!view()->hasFocus()) {
         qCDebug(LOG_KTE) << "view does not have focus";
         return;
@@ -474,11 +469,11 @@ void KateCompletionWidget::updateAndShow()
     if (m_argumentHintModel->rowCount(QModelIndex()) != 0) {
         argumentHintsChanged(true);
     }
-//   }
+    //   }
 
-    //We do both actions twice here so they are stable, because they influence each other:
-    //updatePosition updates the height, resizeColumns needs the correct height to decide over
-    //how many rows it computes the column-width
+    // We do both actions twice here so they are stable, because they influence each other:
+    // updatePosition updates the height, resizeColumns needs the correct height to decide over
+    // how many rows it computes the column-width
     updatePosition(true);
     m_entryList->resizeColumns(true, true);
     updatePosition(true);
@@ -493,9 +488,7 @@ void KateCompletionWidget::updateAndShow()
         m_argumentHintTree->hide();
     }
 
-    if (m_presentationModel->rowCount() && (!m_presentationModel->shouldMatchHideCompletionList() ||
-                                            !hideAutomaticCompletionOnExactMatch  ||
-                                            m_lastInvocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)) {
+    if (m_presentationModel->rowCount() && (!m_presentationModel->shouldMatchHideCompletionList() || !hideAutomaticCompletionOnExactMatch || m_lastInvocationType != KTextEditor::CodeCompletionModel::AutomaticInvocation)) {
         show();
     } else {
         hide();
@@ -545,7 +538,7 @@ bool KateCompletionWidget::updatePosition(bool force)
 
     updateHeight();
 
-//   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry() << borderHit;
+    //   //qCDebug(LOG_KTE) << "updated to" << geometry() << m_entryList->geometry() << borderHit;
 
     return borderHit;
 }
@@ -553,7 +546,7 @@ bool KateCompletionWidget::updatePosition(bool force)
 void KateCompletionWidget::updateArgumentHintGeometry()
 {
     if (!m_dontShowArgumentHints) {
-        //Now place the argument-hint widget
+        // Now place the argument-hint widget
         QRect geom = m_argumentHintTree->geometry();
         geom.moveTo(pos());
         geom.setWidth(width());
@@ -562,7 +555,7 @@ void KateCompletionWidget::updateArgumentHintGeometry()
     }
 }
 
-//Checks whether the given model has at least "rows" rows, also searching the second level of the tree.
+// Checks whether the given model has at least "rows" rows, also searching the second level of the tree.
 bool hasAtLeastNRows(int rows, QAbstractItemModel *model)
 {
     int count = 0;
@@ -592,10 +585,10 @@ void KateCompletionWidget::updateHeight()
     int calculatedCustomHeight = 0;
 
     if (hasAtLeastNRows(15, m_presentationModel)) {
-        //If we know there is enough rows, always use max-height, we don't need to calculate size-hints
+        // If we know there is enough rows, always use max-height, we don't need to calculate size-hints
         baseHeight = maxBaseHeight;
     } else {
-        //Calculate size-hints to determine the best height
+        // Calculate size-hints to determine the best height
         for (int row = 0; row < m_presentationModel->rowCount(); ++row) {
             baseHeight += treeView()->sizeHintForRow(row);
 
@@ -638,15 +631,15 @@ void KateCompletionWidget::updateHeight()
         baseHeight = maxBaseHeight;
         m_entryList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     } else {
-        //Somewhere there seems to be a bug that makes QTreeView add a scroll-bar
-        //even if the content exactly fits in. So forcefully disable the scroll-bar in that case
+        // Somewhere there seems to be a bug that makes QTreeView add a scroll-bar
+        // even if the content exactly fits in. So forcefully disable the scroll-bar in that case
         m_entryList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     }
 
     int newExpandingAddedHeight = 0;
 
     if (baseHeight == maxBaseHeight && model()->expandingWidgetsHeight()) {
-        //Eventually add some more height
+        // Eventually add some more height
         if (calculatedCustomHeight && calculatedCustomHeight > baseHeight && calculatedCustomHeight < (maxBaseHeight + model()->expandingWidgetsHeight())) {
             newExpandingAddedHeight = calculatedCustomHeight - baseHeight;
         } else {
@@ -655,15 +648,15 @@ void KateCompletionWidget::updateHeight()
     }
 
     if (m_expandedAddedHeightBase != baseHeight && m_expandedAddedHeightBase - baseHeight > -2 && m_expandedAddedHeightBase - baseHeight < 2) {
-        //Re-use the stored base-height if it only slightly differs from the current one.
-        //Reason: Qt seems to apply slightly wrong sizes when the completion-widget is moved out of the screen at the bottom,
+        // Re-use the stored base-height if it only slightly differs from the current one.
+        // Reason: Qt seems to apply slightly wrong sizes when the completion-widget is moved out of the screen at the bottom,
         //        which completely breaks this algorithm. Solution: re-use the old base-size if it only slightly differs from the computed one.
         baseHeight = m_expandedAddedHeightBase;
     }
 
     int screenBottom = QApplication::desktop()->screenGeometry(view()).bottom();
 
-    //Limit the height to the bottom of the screen
+    // Limit the height to the bottom of the screen
     int bottomPosition = baseHeight + newExpandingAddedHeight + geometry().top();
 
     if (bottomPosition > screenBottom) {
@@ -681,7 +674,7 @@ void KateCompletionWidget::updateHeight()
 
     geom.setHeight(finalHeight);
 
-    //Work around a crash deep within the Qt 4.5 raster engine
+    // Work around a crash deep within the Qt 4.5 raster engine
     m_entryList->setScrollingEnabled(false);
 
     if (geometry() != geom) {
@@ -708,7 +701,7 @@ void KateCompletionWidget::cursorPositionChanged()
         oldCurrentSourceIndex = m_presentationModel->mapToSource(m_entryList->currentIndex());
     }
 
-    //Check the models and eventually abort some
+    // Check the models and eventually abort some
     const QList<KTextEditor::CodeCompletionModel *> checkCompletionRanges = m_completionRanges.keys();
     for (QList<KTextEditor::CodeCompletionModel *>::const_iterator it = checkCompletionRanges.begin(); it != checkCompletionRanges.end(); ++it) {
         KTextEditor::CodeCompletionModel *model = *it;
@@ -716,7 +709,7 @@ void KateCompletionWidget::cursorPositionChanged()
             continue;
         }
 
-        //qCDebug(LOG_KTE)<<"range before _updateRange:"<< *range;
+        // qCDebug(LOG_KTE)<<"range before _updateRange:"<< *range;
 
         // this might invalidate the range, therefore re-check afterwards
         KTextEditor::Range rangeTE = m_completionRanges[model].range->toRange();
@@ -728,21 +721,21 @@ void KateCompletionWidget::cursorPositionChanged()
         // update value
         m_completionRanges[model].range->setRange(newRange);
 
-        //qCDebug(LOG_KTE)<<"range after _updateRange:"<< *range;
+        // qCDebug(LOG_KTE)<<"range after _updateRange:"<< *range;
         QString currentCompletion = _filterString(model, view(), *m_completionRanges[model].range, view()->cursorPosition());
         if (!m_completionRanges.contains(model)) {
             continue;
         }
 
-        //qCDebug(LOG_KTE)<<"after _filterString, currentCompletion="<< currentCompletion;
+        // qCDebug(LOG_KTE)<<"after _filterString, currentCompletion="<< currentCompletion;
         bool abort = _shouldAbortCompletion(model, view(), *m_completionRanges[model].range, currentCompletion);
         if (!m_completionRanges.contains(model)) {
             continue;
         }
 
-        //qCDebug(LOG_KTE)<<"after _shouldAbortCompletion:abort="<<abort;
+        // qCDebug(LOG_KTE)<<"after _shouldAbortCompletion:abort="<<abort;
         if (view()->cursorPosition() < m_completionRanges[model].leftBoundary) {
-            //qCDebug(LOG_KTE) << "aborting because of boundary: cursor:"<<view()->cursorPosition()<<"completion_Range_left_boundary:"<<m_completionRanges[*it].leftBoundary;
+            // qCDebug(LOG_KTE) << "aborting because of boundary: cursor:"<<view()->cursorPosition()<<"completion_Range_left_boundary:"<<m_completionRanges[*it].leftBoundary;
             abort = true;
         }
 
@@ -752,13 +745,13 @@ void KateCompletionWidget::cursorPositionChanged()
 
         if (abort) {
             if (m_completionRanges.count() == 1) {
-                //last model - abort whole completion
+                // last model - abort whole completion
                 abortCompletion();
                 return;
             } else {
                 {
                     delete m_completionRanges[model].range;
-                    //qCDebug(LOG_KTE)<<"removing completion range 3";
+                    // qCDebug(LOG_KTE)<<"removing completion range 3";
                     m_completionRanges.remove(model);
                 }
 
@@ -773,12 +766,12 @@ void KateCompletionWidget::cursorPositionChanged()
     if (oldCurrentSourceIndex.isValid()) {
         QModelIndex idx = m_presentationModel->mapFromSource(oldCurrentSourceIndex);
         if (idx.isValid()) {
-            //qCDebug(LOG_KTE) << "setting" << idx;
+            // qCDebug(LOG_KTE) << "setting" << idx;
             m_entryList->setCurrentIndex(idx.sibling(idx.row(), 0));
-//       m_entryList->nextCompletion();
-//       m_entryList->previousCompletion();
+            //       m_entryList->nextCompletion();
+            //       m_entryList->previousCompletion();
         } else {
-            //qCDebug(LOG_KTE) << "failed to map from source";
+            // qCDebug(LOG_KTE) << "failed to map from source";
         }
     }
 
@@ -792,7 +785,7 @@ bool KateCompletionWidget::isCompletionActive() const
 
 void KateCompletionWidget::abortCompletion()
 {
-    //qCDebug(LOG_KTE) ;
+    // qCDebug(LOG_KTE) ;
 
     m_isSuspended = false;
 
@@ -850,7 +843,7 @@ bool KateCompletionWidget::navigateAccept()
 
 void KateCompletionWidget::execute()
 {
-    //qCDebug(LOG_KTE) ;
+    // qCDebug(LOG_KTE) ;
 
     if (!isCompletionActive()) {
         return;
@@ -902,7 +895,7 @@ void KateCompletionWidget::execute()
     if (newPos > *oldPos) {
         m_automaticInvocationAt = newPos;
         m_automaticInvocationLine = view()->doc()->text(KTextEditor::Range(*oldPos, newPos));
-        //qCDebug(LOG_KTE) << "executed, starting automatic invocation with line" << m_automaticInvocationLine;
+        // qCDebug(LOG_KTE) << "executed, starting automatic invocation with line" << m_automaticInvocationLine;
         m_lastInsertionByUser = false;
         m_automaticInvocationTimer->start();
     }
@@ -972,8 +965,8 @@ void KateCompletionWidget::modelReset()
     setUpdatesEnabled(false);
     m_entryList->setAnimated(false);
     m_argumentHintTree->setAnimated(false);
-    ///We need to do this by hand, because QTreeView::expandAll is very inefficient.
-    ///It creates a QPersistentModelIndex for every single item in the whole tree..
+    /// We need to do this by hand, because QTreeView::expandAll is very inefficient.
+    /// It creates a QPersistentModelIndex for every single item in the whole tree..
     for (int row = 0; row < m_argumentHintModel->rowCount(QModelIndex()); ++row) {
         QModelIndex index(m_argumentHintModel->index(row, 0, QModelIndex()));
         if (!m_argumentHintTree->isExpanded(index)) {
@@ -1276,7 +1269,7 @@ void KateCompletionWidget::switchList()
         if (m_presentationModel->rowCount(QModelIndex()) != 0) {
             m_argumentHintTree->setCurrentIndex(QModelIndex());
             m_entryList->setCurrentIndex(m_presentationModel->index(0, 0));
-            if (model()->hasGroups()) { //If we have groups we have to move on, because the first item is a label
+            if (model()->hasGroups()) { // If we have groups we have to move on, because the first item is a label
                 m_entryList->nextCompletion();
             }
             m_inCompletionList = true;
@@ -1307,9 +1300,9 @@ void KateCompletionWidget::completionModelReset()
 
     if (m_waitingForReset.isEmpty()) {
         if (!isCompletionActive()) {
-            //qCDebug(LOG_KTE) << "all completion-models we waited for are ready. Last one: " << model->objectName();
-            //Eventually show the completion-list if this was the last model we were waiting for
-            //Use a queued connection once again to make sure that KateCompletionModel is notified before we are
+            // qCDebug(LOG_KTE) << "all completion-models we waited for are ready. Last one: " << model->objectName();
+            // Eventually show the completion-list if this was the last model we were waiting for
+            // Use a queued connection once again to make sure that KateCompletionModel is notified before we are
             QMetaObject::invokeMethod(this, "modelContentChanged", Qt::QueuedConnection);
         }
     }
@@ -1327,8 +1320,8 @@ void KateCompletionWidget::registerCompletionModel(KTextEditor::CodeCompletionMo
         return;
     }
 
-    connect(model, SIGNAL(destroyed(QObject*)), SLOT(modelDestroyed(QObject*)));
-    //This connection must not be queued
+    connect(model, SIGNAL(destroyed(QObject *)), SLOT(modelDestroyed(QObject *)));
+    // This connection must not be queued
     connect(model, SIGNAL(modelReset()), SLOT(completionModelReset()));
 
     m_sourceModels.append(model);
@@ -1340,7 +1333,7 @@ void KateCompletionWidget::registerCompletionModel(KTextEditor::CodeCompletionMo
 
 void KateCompletionWidget::unregisterCompletionModel(KTextEditor::CodeCompletionModel *model)
 {
-    disconnect(model, SIGNAL(destroyed(QObject*)), this, SLOT(modelDestroyed(QObject*)));
+    disconnect(model, SIGNAL(destroyed(QObject *)), this, SLOT(modelDestroyed(QObject *)));
     disconnect(model, SIGNAL(modelReset()), this, SLOT(completionModelReset()));
 
     m_sourceModels.removeAll(model);
@@ -1419,8 +1412,8 @@ void KateCompletionWidget::removeText(const KTextEditor::Range &)
 
 void KateCompletionWidget::automaticInvocation()
 {
-    //qCDebug(LOG_KTE)<<"m_automaticInvocationAt:"<<m_automaticInvocationAt;
-    //qCDebug(LOG_KTE)<<view()->cursorPosition();
+    // qCDebug(LOG_KTE)<<"m_automaticInvocationAt:"<<m_automaticInvocationAt;
+    // qCDebug(LOG_KTE)<<view()->cursorPosition();
     if (m_automaticInvocationAt != view()->cursorPosition()) {
         return;
     }
@@ -1428,20 +1421,20 @@ void KateCompletionWidget::automaticInvocation()
     bool start = false;
     QList<KTextEditor::CodeCompletionModel *> models;
 
-    //qCDebug(LOG_KTE)<<"checking models";
+    // qCDebug(LOG_KTE)<<"checking models";
     for (KTextEditor::CodeCompletionModel *model : qAsConst(m_sourceModels)) {
-        //qCDebug(LOG_KTE)<<"m_completionRanges contains model?:"<<m_completionRanges.contains(model);
+        // qCDebug(LOG_KTE)<<"m_completionRanges contains model?:"<<m_completionRanges.contains(model);
         if (m_completionRanges.contains(model)) {
             continue;
         }
 
         start = _shouldStartCompletion(model, view(), m_automaticInvocationLine, m_lastInsertionByUser, view()->cursorPosition());
-        //qCDebug(LOG_KTE)<<"start="<<start;
+        // qCDebug(LOG_KTE)<<"start="<<start;
         if (start) {
             models << model;
         }
     }
-    //qCDebug(LOG_KTE)<<"models found:"<<!models.isEmpty();
+    // qCDebug(LOG_KTE)<<"models found:"<<!models.isEmpty();
     if (!models.isEmpty()) {
         // Start automatic code completion
         startCompletion(KTextEditor::CodeCompletionModel::AutomaticInvocation, models);
@@ -1470,13 +1463,13 @@ void KateCompletionWidget::tab(bool shift)
             return;
         }
 
-        //Reset left boundaries, so completion isn't stopped
+        // Reset left boundaries, so completion isn't stopped
         typedef QMap<KTextEditor::CodeCompletionModel *, CompletionRange> CompletionRangeMap;
         for (CompletionRangeMap::iterator it = m_completionRanges.begin(); it != m_completionRanges.end(); ++it) {
             (*it).leftBoundary = (*it).range->start();
         }
 
-        //Remove suffix until the completion-list filter is widened again
+        // Remove suffix until the completion-list filter is widened again
         uint itemCount = m_presentationModel->filteredItemCount();
 
         while (view()->cursorPosition().column() > 0 && m_presentationModel->filteredItemCount() == itemCount) {

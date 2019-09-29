@@ -168,16 +168,14 @@ void InputModeManager::feedKeyPresses(const QString &keyPresses) const
         mods = Qt::NoModifier;
         text.clear();
 
-        if (decoded.length() > 1) {  // special key
+        if (decoded.length() > 1) { // special key
 
             // remove the angle brackets
             decoded.remove(0, 1);
             decoded.remove(decoded.indexOf(QLatin1Char('>')), 1);
 
             // check if one or more modifier keys where used
-            if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1
-                    || decoded.indexOf(QLatin1String("m-")) != -1 || decoded.indexOf(QLatin1String("a-")) != -1) {
-
+            if (decoded.indexOf(QLatin1String("s-")) != -1 || decoded.indexOf(QLatin1String("c-")) != -1 || decoded.indexOf(QLatin1String("m-")) != -1 || decoded.indexOf(QLatin1String("a-")) != -1) {
                 int s = decoded.indexOf(QLatin1String("s-"));
                 if (s != -1) {
                     mods |= Qt::ShiftModifier;
@@ -304,36 +302,31 @@ ViMode InputModeManager::getPreviousViMode() const
 
 bool InputModeManager::isAnyVisualMode() const
 {
-    return ((m_currentViMode == ViMode::VisualMode) ||
-            (m_currentViMode == ViMode::VisualLineMode) ||
-            (m_currentViMode == ViMode::VisualBlockMode));
+    return ((m_currentViMode == ViMode::VisualMode) || (m_currentViMode == ViMode::VisualLineMode) || (m_currentViMode == ViMode::VisualBlockMode));
 }
 
 ::ModeBase *InputModeManager::getCurrentViModeHandler() const
 {
     switch (m_currentViMode) {
-    case ViMode::NormalMode:
-        return m_viNormalMode;
-    case ViMode::InsertMode:
-        return m_viInsertMode;
-    case ViMode::VisualMode:
-    case ViMode::VisualLineMode:
-    case ViMode::VisualBlockMode:
-        return m_viVisualMode;
-    case ViMode::ReplaceMode:
-        return m_viReplaceMode;
+        case ViMode::NormalMode:
+            return m_viNormalMode;
+        case ViMode::InsertMode:
+            return m_viInsertMode;
+        case ViMode::VisualMode:
+        case ViMode::VisualLineMode:
+        case ViMode::VisualBlockMode:
+            return m_viVisualMode;
+        case ViMode::ReplaceMode:
+            return m_viReplaceMode;
     }
     return nullptr;
 }
 
 void InputModeManager::viEnterNormalMode()
 {
-    bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)
-                          && m_viewInternal->cursorPosition().column() > 0;
+    bool moveCursorLeft = (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode) && m_viewInternal->cursorPosition().column() > 0;
 
-    if (!m_lastChangeRecorder->isReplaying() &&
-            (m_currentViMode == ViMode::InsertMode ||
-             m_currentViMode == ViMode::ReplaceMode)) {
+    if (!m_lastChangeRecorder->isReplaying() && (m_currentViMode == ViMode::InsertMode || m_currentViMode == ViMode::ReplaceMode)) {
         // '^ is the insert mark and "^ is the insert register,
         // which holds the last inserted text
         KTextEditor::Range r(m_view->cursorPosition(), m_marks->getInsertStopped());
@@ -414,18 +407,18 @@ const QString InputModeManager::getVerbatimKeys() const
     QString cmd;
 
     switch (getCurrentViMode()) {
-    case ViMode::NormalMode:
-        cmd = m_viNormalMode->getVerbatimKeys();
-        break;
-    case ViMode::InsertMode:
-    case ViMode::ReplaceMode:
-        // ...
-        break;
-    case ViMode::VisualMode:
-    case ViMode::VisualLineMode:
-    case ViMode::VisualBlockMode:
-        cmd = m_viVisualMode->getVerbatimKeys();
-        break;
+        case ViMode::NormalMode:
+            cmd = m_viNormalMode->getVerbatimKeys();
+            break;
+        case ViMode::InsertMode:
+        case ViMode::ReplaceMode:
+            // ...
+            break;
+        case ViMode::VisualMode:
+        case ViMode::VisualLineMode:
+        case ViMode::VisualBlockMode:
+            cmd = m_viVisualMode->getVerbatimKeys();
+            break;
     }
 
     return cmd;
@@ -469,7 +462,6 @@ KTextEditor::ViewPrivate *InputModeManager::view() const
 {
     return m_view;
 }
-
 
 void InputModeManager::pushKeyMapper(QSharedPointer<KeyMapper> mapper)
 {

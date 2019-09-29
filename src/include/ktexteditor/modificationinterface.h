@@ -27,7 +27,6 @@
 
 namespace KTextEditor
 {
-
 class Document;
 class View;
 
@@ -123,9 +122,7 @@ public:
      * \param reason the reason why the signal was emitted
      * \see setModifiedOnDisk()
      */
-    virtual void modifiedOnDisk(KTextEditor::Document *document,
-                                bool isModified,
-                                KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) = 0;
+    virtual void modifiedOnDisk(KTextEditor::Document *document, bool isModified, KTextEditor::ModificationInterface::ModifiedOnDiskReason reason) = 0;
 
 private:
     class ModificationInterfacePrivate *const d = nullptr;
@@ -136,4 +133,3 @@ private:
 Q_DECLARE_INTERFACE(KTextEditor::ModificationInterface, "org.kde.KTextEditor.ModificationInterface")
 
 #endif
-

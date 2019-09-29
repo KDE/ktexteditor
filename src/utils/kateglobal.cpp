@@ -64,7 +64,7 @@
 #include <git2.h>
 #endif
 
-//BEGIN unit test mode
+// BEGIN unit test mode
 static bool kateUnitTestMode = false;
 
 void KTextEditor::EditorPrivate::enableUnitTestMode()
@@ -76,13 +76,18 @@ bool KTextEditor::EditorPrivate::unitTestMode()
 {
     return kateUnitTestMode;
 }
-//END unit test mode
+// END unit test mode
 
 KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &staticInstance)
-    : KTextEditor::Editor (this)
-    , m_aboutData(QStringLiteral("katepart"), i18n("Kate Part"), QStringLiteral(KTEXTEDITOR_VERSION_STRING),
-                  i18n("Embeddable editor component"), KAboutLicense::LGPL_V2,
-                  i18n("(c) 2000-2019 The Kate Authors"), QString(), QStringLiteral("https://kate-editor.org"))
+    : KTextEditor::Editor(this)
+    , m_aboutData(QStringLiteral("katepart"),
+                  i18n("Kate Part"),
+                  QStringLiteral(KTEXTEDITOR_VERSION_STRING),
+                  i18n("Embeddable editor component"),
+                  KAboutLicense::LGPL_V2,
+                  i18n("(c) 2000-2019 The Kate Authors"),
+                  QString(),
+                  QStringLiteral("https://kate-editor.org"))
     , m_dummyApplication(nullptr)
     , m_application(&m_dummyApplication)
     , m_dummyMainWindow(nullptr)
@@ -157,7 +162,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     /**
      * set the new Kate mascot
      */
-    m_aboutData.setProgramLogo (QImage(QStringLiteral(":/ktexteditor/mascot.png")));
+    m_aboutData.setProgramLogo(QImage(QStringLiteral(":/ktexteditor/mascot.png")));
 
     //
     // dir watch
@@ -228,7 +233,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_wordCompletionModel = new KateWordCompletionModel(this);
 
     // global keyword completion model
-    m_keywordCompletionModel = new KateKeywordCompletionModel (this);
+    m_keywordCompletionModel = new KateKeywordCompletionModel(this);
 
     // tap to QApplication object for color palette changes
     qApp->installEventFilter(this);
@@ -280,7 +285,7 @@ KTextEditor::Document *KTextEditor::EditorPrivate::createDocument(QObject *paren
     return doc;
 }
 
-//END KTextEditor::Editor config stuff
+// END KTextEditor::Editor config stuff
 
 void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
 {
@@ -335,20 +340,20 @@ int KTextEditor::EditorPrivate::configPages() const
 KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWidget *parent)
 {
     switch (number) {
-    case 0:
-        return new KateViewDefaultsConfig(parent);
+        case 0:
+            return new KateViewDefaultsConfig(parent);
 
-    case 1:
-        return new KateSchemaConfigPage(parent);
+        case 1:
+            return new KateSchemaConfigPage(parent);
 
-    case 2:
-        return new KateEditConfigTab(parent);
+        case 2:
+            return new KateEditConfigTab(parent);
 
-    case 3:
-        return new KateSaveConfigTab(parent);
+        case 3:
+            return new KateSaveConfigTab(parent);
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return nullptr;
@@ -404,25 +409,25 @@ KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
 
 void KTextEditor::EditorPrivate::registerDocument(KTextEditor::DocumentPrivate *doc)
 {
-    Q_ASSERT (!m_documents.contains(doc));
+    Q_ASSERT(!m_documents.contains(doc));
     m_documents.insert(doc, doc);
 }
 
 void KTextEditor::EditorPrivate::deregisterDocument(KTextEditor::DocumentPrivate *doc)
 {
-    Q_ASSERT (m_documents.contains(doc));
+    Q_ASSERT(m_documents.contains(doc));
     m_documents.remove(doc);
 }
 
 void KTextEditor::EditorPrivate::registerView(KTextEditor::ViewPrivate *view)
 {
-    Q_ASSERT (!m_views.contains(view));
+    Q_ASSERT(!m_views.contains(view));
     m_views.insert(view);
 }
 
 void KTextEditor::EditorPrivate::deregisterView(KTextEditor::ViewPrivate *view)
 {
-    Q_ASSERT (m_views.contains(view));
+    Q_ASSERT(m_views.contains(view));
     m_views.remove(view);
 }
 
@@ -498,7 +503,7 @@ bool KTextEditor::EditorPrivate::eventFilter(QObject *obj, QEvent *event)
     return false; // always continue processing
 }
 
-QList< KateAbstractInputModeFactory *> KTextEditor::EditorPrivate::inputModeFactories()
+QList<KateAbstractInputModeFactory *> KTextEditor::EditorPrivate::inputModeFactories()
 {
     return m_inputModeFactories.values();
 }

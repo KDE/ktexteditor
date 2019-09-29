@@ -31,7 +31,10 @@ class KateViewInternal;
 #include <QKeyEvent>
 
 class KateViewInternal;
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class KTEXTEDITOR_EXPORT KateAbstractInputMode
 {
@@ -53,7 +56,7 @@ public:
     virtual bool overwrite() const = 0;
     virtual void overwrittenChar(const QChar &) = 0;
     virtual void clearSelection() = 0;
-    virtual bool stealKey(QKeyEvent* k) = 0;
+    virtual bool stealKey(QKeyEvent *k) = 0;
 
     virtual void gotFocus() = 0;
     virtual void lostFocus() = 0;
@@ -90,8 +93,14 @@ public:
     void scrollViewLines(int offset);
 
 protected:
-    KateViewInternal *viewInternal() const { return m_viewInternal; }
-    KTextEditor::ViewPrivate *view() const { return m_view; }
+    KateViewInternal *viewInternal() const
+    {
+        return m_viewInternal;
+    }
+    KTextEditor::ViewPrivate *view() const
+    {
+        return m_view;
+    }
 
 private:
     KateViewInternal *m_viewInternal;

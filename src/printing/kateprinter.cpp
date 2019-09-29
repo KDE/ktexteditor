@@ -40,7 +40,7 @@
 
 using namespace KatePrinter;
 
-//BEGIN KatePrinterPrivate
+// BEGIN KatePrinterPrivate
 class KatePrinterPrivate : public QObject
 {
     Q_OBJECT
@@ -55,7 +55,7 @@ public Q_SLOTS:
     void paint(QPrinter *printer);
 
 private:
-    KTextEditor::ViewPrivate     *m_view;
+    KTextEditor::ViewPrivate *m_view;
     KTextEditor::DocumentPrivate *m_doc;
     PrintPainter *m_painter;
     static void readSettings(QPrinter *printer);
@@ -166,10 +166,10 @@ void KatePrinterPrivate::writeSettings(QPrinter *printer)
     qreal left, right, top, bottom;
     printer->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
 
-    margins.writeEntry( "left", left);
-    margins.writeEntry( "top", top);
-    margins.writeEntry( "right", right);
-    margins.writeEntry( "bottom", bottom);
+    margins.writeEntry("left", left);
+    margins.writeEntry("top", top);
+    margins.writeEntry("right", right);
+    margins.writeEntry("bottom", bottom);
 }
 
 void KatePrinterPrivate::readSettings(QPrinter *printer)
@@ -189,9 +189,9 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
     printer->setPageMargins(left, top, right, bottom, QPrinter::Millimeter);
 }
 
-//END KatePrinterPrivate
+// END KatePrinterPrivate
 
-//BEGIN KatePrinter
+// BEGIN KatePrinter
 
 bool KatePrinter::print(KTextEditor::ViewPrivate *view)
 {
@@ -206,7 +206,7 @@ bool KatePrinter::printPreview(KTextEditor::ViewPrivate *view)
     KatePrinterPrivate p(view->doc(), view);
     p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
-    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
+    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter *)), &p, SLOT(paint(QPrinter *)));
     return preview.exec();
 }
 
@@ -223,10 +223,10 @@ bool KatePrinter::printPreview(KTextEditor::DocumentPrivate *doc)
     KatePrinterPrivate p(doc);
     p.setColorScheme(QStringLiteral("Printing"));
     QPrintPreviewDialog preview(&printer);
-    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter*)), &p, SLOT(paint(QPrinter*)));
+    QObject::connect(&preview, SIGNAL(paintRequested(QPrinter *)), &p, SLOT(paint(QPrinter *)));
     return preview.exec();
 }
 
-//END KatePrinter
+// END KatePrinter
 
 #include "kateprinter.moc"

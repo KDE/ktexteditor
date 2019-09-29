@@ -27,7 +27,10 @@
 
 class QJSEngine;
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class KateScriptEditor;
 class KateScriptDocument;
@@ -45,7 +48,7 @@ enum class ScriptType {
 };
 }
 
-//BEGIN KateScriptHeader
+// BEGIN KateScriptHeader
 
 class KateScriptHeader
 {
@@ -99,15 +102,15 @@ public:
     }
 
 private:
-    QString m_license;        ///< the script's license, e.g. LGPL
-    QString m_author;         ///< the script author, e.g. "John Smith <john@example.com>"
-    int m_revision = 0;       ///< script revision, a simple number, e.g. 1, 2, 3, ...
-    QString m_kateVersion;    ///< required katepart version
-    Kate::ScriptType m_scriptType = Kate::ScriptType::Unknown;  ///< the script type
+    QString m_license;                                         ///< the script's license, e.g. LGPL
+    QString m_author;                                          ///< the script author, e.g. "John Smith <john@example.com>"
+    int m_revision = 0;                                        ///< script revision, a simple number, e.g. 1, 2, 3, ...
+    QString m_kateVersion;                                     ///< required katepart version
+    Kate::ScriptType m_scriptType = Kate::ScriptType::Unknown; ///< the script type
 };
-//END
+// END
 
-//BEGIN KateScript
+// BEGIN KateScript
 
 /**
  * KateScript objects represent a script that can be executed and inspected.
@@ -115,11 +118,7 @@ private:
 class KateScript
 {
 public:
-
-    enum InputType {
-        InputURL,
-        InputSCRIPT
-    };
+    enum InputType { InputURL, InputSCRIPT };
 
     typedef QMap<QString, QJSValue> FieldMap;
 
@@ -174,7 +173,7 @@ public:
     QString backtrace(const QJSValue &error, const QString &header = QString());
 
     /** Execute a piece of code **/
-    QJSValue evaluate(const QString& program, const FieldMap& env = FieldMap());
+    QJSValue evaluate(const QString &program, const FieldMap &env = FieldMap());
 
     /** Displays the backtrace when a script has errored out */
     void displayBacktrace(const QJSValue &error, const QString &header = QString());
@@ -223,7 +222,6 @@ private:
     QString m_script;
 };
 
-//END
+// END
 
 #endif
-

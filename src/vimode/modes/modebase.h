@@ -34,20 +34,16 @@
 class QKeyEvent;
 class QString;
 class QRegExp;
-namespace KTextEditor { class DocumentPrivate; }
+namespace KTextEditor
+{
+class DocumentPrivate;
+}
 
 namespace KateVi
 {
 class InputModeManager;
 
-enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
-    Next,
-    Prev
-};
+enum Direction { Up, Down, Left, Right, Next, Prev };
 
 class KTEXTEDITOR_EXPORT ModeBase : public QObject
 {
@@ -58,7 +54,9 @@ public:
         : QObject()
     {
     }
-    virtual ~ModeBase() {}
+    virtual ~ModeBase()
+    {
+    }
 
     /**
      * @return normal mode command accumulated so far
@@ -72,7 +70,7 @@ public:
     }
     void setRegister(QChar reg)
     {
-        m_register =  reg;
+        m_register = reg;
     }
 
     void error(const QString &errorMsg);
@@ -102,8 +100,7 @@ protected:
     KTextEditor::Cursor findWordEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
     KTextEditor::Cursor findWORDEnd(int fromLine, int fromColumn, bool onlyCurrentLine = false) const;
 
-    Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner,
-                                  const QChar &nested1, const QChar &nested2) const;
+    Range findSurroundingBrackets(const QChar &c1, const QChar &c2, bool inner, const QChar &nested1, const QChar &nested2) const;
 
     Range findSurrounding(const QRegExp &c1, const QRegExp &c2, bool inner = false) const;
     Range findSurroundingQuotes(const QChar &c, bool inner = false) const;

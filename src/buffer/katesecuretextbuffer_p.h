@@ -43,10 +43,13 @@ class SecureTextBuffer : public QObject
     Q_OBJECT
 
 public:
+    SecureTextBuffer()
+    {
+    }
 
-    SecureTextBuffer() {}
-
-    ~SecureTextBuffer() {}
+    ~SecureTextBuffer()
+    {
+    }
 
     /**
      * Common helper method
@@ -59,8 +62,7 @@ private:
     /**
      * Saves file contents using sets permissions.
      */
-    static bool saveFileInternal(const QString &sourceFile, const QString &targetFile,
-                                        const QByteArray &checksum, const uint ownerId, const uint groupId);
+    static bool saveFileInternal(const QString &sourceFile, const QString &targetFile, const QByteArray &checksum, const uint ownerId, const uint groupId);
 
     static bool moveFile(const QString &sourceFile, const QString &targetFile);
 
@@ -70,7 +72,6 @@ public Q_SLOTS:
      * We keep this code in one method to prevent multiple KAuth user queries during one save action.
      */
     static ActionReply savefile(const QVariantMap &args);
-
 };
 
 #endif

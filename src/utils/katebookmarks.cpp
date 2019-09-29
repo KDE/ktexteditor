@@ -48,7 +48,7 @@ KateBookmarks::KateBookmarks(KTextEditor::ViewPrivate *view, Sorting sort)
     , m_sorting(sort)
 {
     setObjectName(QStringLiteral("kate bookmarks"));
-    connect(view->doc(), SIGNAL(marksChanged(KTextEditor::Document*)), this, SLOT(marksChanged()));
+    connect(view->doc(), SIGNAL(marksChanged(KTextEditor::Document *)), this, SLOT(marksChanged()));
     _tries = 0;
     m_bookmarksMenu = nullptr;
 }
@@ -106,11 +106,9 @@ void KateBookmarks::toggleBookmark()
 {
     uint mark = m_view->doc()->mark(m_view->cursorPosition().line());
     if (mark & KTextEditor::MarkInterface::markType01)
-        m_view->doc()->removeMark(m_view->cursorPosition().line(),
-                                  KTextEditor::MarkInterface::markType01);
+        m_view->doc()->removeMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
     else
-        m_view->doc()->addMark(m_view->cursorPosition().line(),
-                               KTextEditor::MarkInterface::markType01);
+        m_view->doc()->addMark(m_view->cursorPosition().line(), KTextEditor::MarkInterface::markType01);
 }
 
 void KateBookmarks::clearBookmarks()
@@ -154,11 +152,8 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
     // Consider each line with a bookmark one at a time
     for (int i = 0; i < bookmarkLineArray.size(); ++i) {
         // Get text in this particular line in a QString
-        QString bText = menu.fontMetrics().elidedText
-                        (m_view->doc()->line(bookmarkLineArray.at(i)),
-                         Qt::ElideRight,
-                         menu.fontMetrics().maxWidth() * 32);
-        bText.replace(re, QStringLiteral("&&")); // kill undesired accellerators!
+        QString bText = menu.fontMetrics().elidedText(m_view->doc()->line(bookmarkLineArray.at(i)), Qt::ElideRight, menu.fontMetrics().maxWidth() * 32);
+        bText.replace(re, QStringLiteral("&&"));            // kill undesired accellerators!
         bText.replace(QLatin1Char('\t'), QLatin1Char(' ')); // kill tabs, as they are interpreted as shortcuts
 
         QAction *before = nullptr;
@@ -173,9 +168,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
 
         // Adding action for this bookmark in menu
         if (before) {
-            QAction *a = new QAction(QStringLiteral("%1  %3  - \"%2\"")
-                                     .arg(bookmarkLineArray.at(i) + 1).arg(bText)
-                                     .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), &menu);
+            QAction *a = new QAction(QStringLiteral("%1  %3  - \"%2\"").arg(bookmarkLineArray.at(i) + 1).arg(bText).arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), &menu);
             menu.insertAction(before, a);
             connect(a, SIGNAL(activated()), this, SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
@@ -184,10 +177,7 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
             }
 
         } else {
-            QAction *a = menu.addAction(QStringLiteral("%1  %3  - \"%2\"")
-                                        .arg(bookmarkLineArray.at(i) + 1).arg(bText)
-                                        .arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))),
-                                        this, SLOT(gotoLine()));
+            QAction *a = menu.addAction(QStringLiteral("%1  %3  - \"%2\"").arg(bookmarkLineArray.at(i) + 1).arg(bText).arg(m_view->currentInputMode()->bookmarkLabel(bookmarkLineArray.at(i))), this, SLOT(gotoLine()));
             a->setData(bookmarkLineArray.at(i));
         }
 
@@ -205,15 +195,13 @@ void KateBookmarks::insertBookmarks(QMenu &menu)
 
     if (next != -1) {
         // Insert action for next bookmark
-        m_goNext->setText(i18n("&Next: %1 - \"%2\"",  next + 1,
-                               KStringHandler::rsqueeze(m_view->doc()->line(next), 24)));
+        m_goNext->setText(i18n("&Next: %1 - \"%2\"", next + 1, KStringHandler::rsqueeze(m_view->doc()->line(next), 24)));
         menu.insertAction(firstNewAction, m_goNext);
         firstNewAction = m_goNext;
     }
     if (prev != -1) {
         // Insert action for previous bookmark
-        m_goPrevious->setText(i18n("&Previous: %1 - \"%2\"", prev + 1,
-                                   KStringHandler::rsqueeze(m_view->doc()->line(prev), 24)));
+        m_goPrevious->setText(i18n("&Previous: %1 - \"%2\"", prev + 1, KStringHandler::rsqueeze(m_view->doc()->line(prev), 24)));
         menu.insertAction(firstNewAction, m_goPrevious);
         firstNewAction = m_goPrevious;
     }
@@ -239,8 +227,7 @@ void KateBookmarks::gotoLine(int line)
 void KateBookmarks::bookmarkMenuAboutToShow()
 {
     m_bookmarksMenu->clear();
-    m_bookmarkToggle->setChecked(m_view->doc()->mark(m_view->cursorPosition().line())
-                                 & KTextEditor::MarkInterface::markType01);
+    m_bookmarkToggle->setChecked(m_view->doc()->mark(m_view->cursorPosition().line()) & KTextEditor::MarkInterface::markType01);
     m_bookmarksMenu->addAction(m_bookmarkToggle);
     m_bookmarksMenu->addAction(m_bookmarkClear);
 
@@ -298,4 +285,3 @@ void KateBookmarks::marksChanged()
         m_bookmarkClear->setEnabled(!m_view->doc()->marks().isEmpty());
     }
 }
-

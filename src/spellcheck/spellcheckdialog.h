@@ -29,14 +29,18 @@
 
 #include <QObject>
 
-namespace KTextEditor { class ViewPrivate; }
+namespace KTextEditor
+{
+class ViewPrivate;
+}
 
 class QAction;
 class KActionCollection;
 
-namespace Sonnet {
-    class BackgroundChecker;
-    class Speller;
+namespace Sonnet
+{
+class BackgroundChecker;
+class Speller;
 }
 
 #include "ktexteditor/range.h"
@@ -68,11 +72,11 @@ private Q_SLOTS:
     void spellcheck();
 
     /**
-    * Spellcheck a defined portion of the text.
-    *
-    * @param from Where to start the check
-    * @param to Where to end. If this is (0,0), it will be set to the end of the document.
-    */
+     * Spellcheck a defined portion of the text.
+     *
+     * @param from Where to start the check
+     * @param to Where to end. If this is (0,0), it will be set to the end of the document.
+     */
     void spellcheck(const KTextEditor::Cursor &from, const KTextEditor::Cursor &to = KTextEditor::Cursor());
 
     void misspelling(const QString &, int);
@@ -101,10 +105,10 @@ private:
     KTextEditor::Range m_currentSpellCheckRange;
     KTextEditor::MovingRange *m_globalSpellCheckRange;
 
-    QList<QPair<int, int> > m_currentDecToEncOffsetList;
+    QList<QPair<int, int>> m_currentDecToEncOffsetList;
 
-    QList<QPair<KTextEditor::Range, QString> > m_languagesInSpellCheckRange;
-    QList<QPair<KTextEditor::Range, QString> >::iterator m_currentLanguageRangeIterator;
+    QList<QPair<KTextEditor::Range, QString>> m_languagesInSpellCheckRange;
+    QList<QPair<KTextEditor::Range, QString>>::iterator m_currentLanguageRangeIterator;
 
     // keep track of where we are.
     KTextEditor::Cursor m_spellPosCursor;
@@ -118,4 +122,3 @@ private:
 };
 
 #endif
-

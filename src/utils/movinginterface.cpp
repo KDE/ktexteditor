@@ -32,4 +32,3 @@ MovingInterface::MovingInterface()
 MovingInterface::~MovingInterface()
 {
 }
-

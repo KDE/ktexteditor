@@ -37,13 +37,13 @@ class CustomRangeModel : public CodeCompletionTestModel, public CodeCompletionMo
 public:
     explicit CustomRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
     Range completionRange(View *view, const Cursor &position) override
     {
         Range range = CodeCompletionModelControllerInterface::completionRange(view, position);
         if (range.start().column() > 0) {
-            KTextEditor::Range preRange(Cursor(range.start().line(), range.start().column() - 1),
-                                        Cursor(range.start().line(), range.start().column()));
+            KTextEditor::Range preRange(Cursor(range.start().line(), range.start().column() - 1), Cursor(range.start().line(), range.start().column()));
             qDebug() << preRange << view->document()->text(preRange);
             if (view->document()->text(preRange) == "$") {
                 range.expandToRange(preRange);
@@ -69,7 +69,8 @@ class CustomAbortModel : public CodeCompletionTestModel, public CodeCompletionMo
 public:
     explicit CustomAbortModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
 
     bool shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion) override
     {
@@ -87,7 +88,8 @@ class EmptyFilterStringModel : public CodeCompletionTestModel, public CodeComple
 public:
     explicit EmptyFilterStringModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
 
     QString filterString(View *, const Range &, const Cursor &) override
     {
@@ -102,7 +104,8 @@ class UpdateCompletionRangeModel : public CodeCompletionTestModel, public CodeCo
 public:
     explicit UpdateCompletionRangeModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
 
     Range updateCompletionRange(View *view, const Range &range) override
     {
@@ -128,7 +131,8 @@ class StartCompletionModel : public CodeCompletionTestModel, public CodeCompleti
 public:
     explicit StartCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
 
     bool shouldStartCompletion(View *view, const QString &insertedText, bool userInsertion, const Cursor &position) override
     {
@@ -154,7 +158,8 @@ class ImmideatelyAbortCompletionModel : public CodeCompletionTestModel, public C
 public:
     explicit ImmideatelyAbortCompletionModel(KTextEditor::View *parent = nullptr, const QString &startText = QString())
         : CodeCompletionTestModel(parent, startText)
-    {}
+    {
+    }
 
     bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion) override
     {

@@ -28,7 +28,6 @@
 
 namespace KateVi
 {
-
 /**
  * combined class for motions and text objects. execute() returns a KateViRange.
  * For motions the returned range is only a position (start pos is (-1, -1) to
@@ -38,12 +37,11 @@ namespace KateVi
 class KTEXTEDITOR_EXPORT Motion : public Command
 {
 public:
-    Motion(NormalViMode *parent, const QString &pattern,
-           Range(NormalViMode::*commandMethod)(), unsigned int flags = 0);
+    Motion(NormalViMode *parent, const QString &pattern, Range (NormalViMode::*commandMethod)(), unsigned int flags = 0);
     Range execute() const;
 
 protected:
-    Range(NormalViMode::*m_ptr2commandMethod)();
+    Range (NormalViMode::*m_ptr2commandMethod)();
 };
 
 }

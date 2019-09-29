@@ -190,24 +190,20 @@ bool KateScript::load()
     return true;
 }
 
-QJSValue KateScript::evaluate(const QString& program, const FieldMap& env)
+QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 {
-    if ( !load() ) {
+    if (!load()) {
         qWarning() << "load of script failed:" << program;
         return QJSValue();
     }
 
     // Wrap the arguments in a function to avoid polluting the global object
-    QString programWithContext = QLatin1String("(function(") +
-                                     QStringList(env.keys()).join(QLatin1Char(',')) +
-                                 QLatin1String(") { return ") +
-                                     program +
-                                 QLatin1String("})");
+    QString programWithContext = QLatin1String("(function(") + QStringList(env.keys()).join(QLatin1Char(',')) + QLatin1String(") { return ") + program + QLatin1String("})");
     QJSValue programFunction = m_engine->evaluate(programWithContext);
     Q_ASSERT(programFunction.isCallable());
 
     QJSValueList args;
-    for ( auto it = env.begin(); it != env.end(); it++ ) {
+    for (auto it = env.begin(); it != env.end(); it++) {
         args << it.value();
     }
 

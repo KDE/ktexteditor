@@ -31,7 +31,6 @@
 
 namespace KTextEditor
 {
-
 /**
  * \brief Document interface for MovingCursor%s and MovingRange%s.
  *
@@ -70,8 +69,7 @@ public:
      * @param insertBehavior insertion behavior
      * @return new moving cursor for the document
      */
-    virtual MovingCursor *newMovingCursor(const Cursor &position,
-                                          MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
+    virtual MovingCursor *newMovingCursor(const Cursor &position, MovingCursor::InsertBehavior insertBehavior = MovingCursor::MoveOnInsert) = 0;
 
     /**
      * Create a new moving range for this document.
@@ -80,9 +78,7 @@ public:
      * @param emptyBehavior behavior on becoming empty
      * @return new moving range for the document
      */
-    virtual MovingRange *newMovingRange(const Range &range,
-                                        MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand,
-                                        MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
+    virtual MovingRange *newMovingRange(const Range &range, MovingRange::InsertBehaviors insertBehaviors = MovingRange::DoNotExpand, MovingRange::EmptyBehavior emptyBehavior = MovingRange::AllowEmpty) = 0;
 
     /**
      * Current revision
@@ -116,10 +112,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor(KTextEditor::Cursor &cursor,
-                                 KTextEditor::MovingCursor::InsertBehavior insertBehavior,
-                                 qint64 fromRevision,
-                                 qint64 toRevision = -1) = 0;
+    virtual void transformCursor(KTextEditor::Cursor &cursor, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
 
     /**
      * Transform a cursor from one revision to an other.
@@ -129,11 +122,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformCursor(int &line,
-                                 int &column,
-                                 KTextEditor::MovingCursor::InsertBehavior insertBehavior,
-                                 qint64 fromRevision,
-                                 qint64 toRevision = -1) = 0;
+    virtual void transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
 
     /**
      * Transform a range from one revision to an other.
@@ -143,11 +132,7 @@ public:
      * @param fromRevision from this revision we want to transform
      * @param toRevision to this revision we want to transform, default of -1 is current revision
      */
-    virtual void transformRange(KTextEditor::Range &range,
-                                KTextEditor::MovingRange::InsertBehaviors insertBehaviors,
-                                MovingRange::EmptyBehavior emptyBehavior,
-                                qint64 fromRevision,
-                                qint64 toRevision = -1) = 0;
+    virtual void transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision = -1) = 0;
 
     //
     // Signals
@@ -181,4 +166,3 @@ private:
 Q_DECLARE_INTERFACE(KTextEditor::MovingInterface, "org.kde.KTextEditor.MovingInterface")
 
 #endif
-

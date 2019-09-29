@@ -33,7 +33,7 @@
 
 class WordCounter;
 
-class KateStatusBarOpenUpMenu: public QMenu
+class KateStatusBarOpenUpMenu : public QMenu
 {
     Q_OBJECT
 public:
@@ -47,7 +47,7 @@ public:
  * Should someone dislike the QPushButton at all could he change it
  * to a e.g. QLabel subclass
  */
-class StatusBarButton: public QPushButton
+class StatusBarButton : public QPushButton
 {
     Q_OBJECT
 public:

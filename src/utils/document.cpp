@@ -25,7 +25,7 @@ using namespace KTextEditor;
 
 Document::Document(DocumentPrivate *impl, QObject *parent)
     : KParts::ReadWritePart(parent)
-    , d (impl)
+    , d(impl)
 {
 }
 
@@ -33,34 +33,35 @@ Document::~Document()
 {
 }
 
-namespace KTextEditor {
-
+namespace KTextEditor
+{
 /**
  * Private d-pointer type for EditingTransaction
  */
-class EditingTransactionPrivate {
-    public:
-        /**
-         * real document implementation
-         */
-        DocumentPrivate *document;
+class EditingTransactionPrivate
+{
+public:
+    /**
+     * real document implementation
+     */
+    DocumentPrivate *document;
 
-        /**
-         * Indicator for running editing transaction
-         */
-        bool transactionRunning;
+    /**
+     * Indicator for running editing transaction
+     */
+    bool transactionRunning;
 };
 
 }
 
 Document::EditingTransaction::EditingTransaction(Document *document)
-    : d (new EditingTransactionPrivate())
+    : d(new EditingTransactionPrivate())
 {
     // Although it works in release-mode, we usually want a valid document
     Q_ASSERT(document != nullptr);
 
     // initialize d-pointer
-    d->document = qobject_cast<KTextEditor::DocumentPrivate *> (document);
+    d->document = qobject_cast<KTextEditor::DocumentPrivate *>(document);
     d->transactionRunning = false;
 
     // start the editing transaction
@@ -70,7 +71,7 @@ Document::EditingTransaction::EditingTransaction(Document *document)
 void Document::EditingTransaction::start()
 {
     if (d->document && !d->transactionRunning) {
-        d->document->startEditing ();
+        d->document->startEditing();
         d->transactionRunning = true;
     }
 }
@@ -78,7 +79,7 @@ void Document::EditingTransaction::start()
 void Document::EditingTransaction::finish()
 {
     if (d->document && d->transactionRunning) {
-        d->document->finishEditing ();
+        d->document->finishEditing();
         d->transactionRunning = false;
     }
 }

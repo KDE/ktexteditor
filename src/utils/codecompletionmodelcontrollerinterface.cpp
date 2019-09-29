@@ -27,7 +27,6 @@
 
 namespace KTextEditor
 {
-
 CodeCompletionModelControllerInterface::CodeCompletionModelControllerInterface()
 {
 }
@@ -45,8 +44,7 @@ bool CodeCompletionModelControllerInterface::shouldStartCompletion(View *view, c
     }
 
     QChar lastChar = insertedText.at(insertedText.count() - 1);
-    if ((userInsertion && (lastChar.isLetter() || lastChar.isNumber() || lastChar == QLatin1Char('_'))) ||
-            lastChar == QLatin1Char('.') || insertedText.endsWith(QLatin1String("->"))) {
+    if ((userInsertion && (lastChar.isLetter() || lastChar.isNumber() || lastChar == QLatin1Char('_'))) || lastChar == QLatin1Char('.') || insertedText.endsWith(QLatin1String("->"))) {
         return true;
     }
     return false;
@@ -81,7 +79,7 @@ Range CodeCompletionModelControllerInterface::updateCompletionRange(View *view, 
 {
     QStringList text = view->document()->textLines(range, false);
     if (!text.isEmpty() && text.count() == 1 && text.first().trimmed().isEmpty())
-        //When inserting a newline behind an empty completion-range,, move the range forward to its end
+    // When inserting a newline behind an empty completion-range,, move the range forward to its end
     {
         return Range(range.end(), range.end());
     }
@@ -97,9 +95,9 @@ QString CodeCompletionModelControllerInterface::filterString(View *view, const R
 bool CodeCompletionModelControllerInterface::shouldAbortCompletion(View *view, const Range &range, const QString &currentCompletion)
 {
     if (view->cursorPosition() < range.start() || view->cursorPosition() > range.end()) {
-        return true;    //Always abort when the completion-range has been left
+        return true; // Always abort when the completion-range has been left
     }
-    //Do not abort completions when the text has been empty already before and a newline has been entered
+    // Do not abort completions when the text has been empty already before and a newline has been entered
 
     static const QRegularExpression allowedText(QStringLiteral("^\\w*$"));
     return !allowedText.match(currentCompletion).hasMatch();
