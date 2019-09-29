@@ -99,7 +99,7 @@ void ViewTest::visualLineUpDownTests()
 {
     // Need to ensure we have dynamic wrap, a fixed width font, and a decent size kate_view.
     ensureKateViewVisible();
-    const QFont oldFont = kate_view->renderer()->config()->font();
+    const QFont oldFont = kate_view->renderer()->config()->baseFont();
     QFont fixedWidthFont("Courier");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     Q_ASSERT_X(QFontInfo(fixedWidthFont).fixedPitch(), "setting up visual line up down tests", "Need a fixed pitch font!");
@@ -315,7 +315,7 @@ void ViewTest::ScrollViewTests()
 
     // First of all, we have to initialize some sizes and fonts.
     ensureKateViewVisible();
-    const QFont oldFont = kate_view->renderer()->config()->font();
+    const QFont oldFont = kate_view->renderer()->config()->baseFont();
     QFont fixedWidthFont("Monospace");
     fixedWidthFont.setStyleHint(QFont::TypeWriter);
     fixedWidthFont.setPixelSize(14);
