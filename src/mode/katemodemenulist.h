@@ -46,7 +46,7 @@
 
 namespace KTextEditor { class DocumentPrivate; }
 
-namespace KateModeMenuListData { class ListView; class ListItem; class SearchLine; }
+namespace KateModeMenuListData { class ListView; class ListItem; class SearchLine; class Factory; }
 
 /**
  * Class of menu to select the
@@ -104,13 +104,21 @@ public:
     {
         init(searchBarPos);
     }
-    KateModeMenuList(QWidget *parent, const SearchBarPosition searchBarPos = Bottom) : QMenu(parent)
+    KateModeMenuList(const QString &title, const SearchBarPosition searchBarPos, QWidget *parent) : QMenu(title, parent)
     {
         init(searchBarPos);
     }
-    KateModeMenuList(const QString &title, QWidget *parent, const SearchBarPosition searchBarPos = Bottom) : QMenu(title, parent)
+    KateModeMenuList(const QString &title, QWidget *parent) : QMenu(title, parent)
+    {
+        init(Bottom);
+    }
+    KateModeMenuList(const SearchBarPosition searchBarPos, QWidget *parent) : QMenu(parent)
     {
         init(searchBarPos);
+    }
+    KateModeMenuList(QWidget *parent) : QMenu(parent)
+    {
+        init(Bottom);
     }
     ~KateModeMenuList() { }
 
@@ -135,6 +143,7 @@ public:
     /**
      * Set the button that shows this menu. It allows to update the label
      * of the button and define the alignment of the menu with respect to it.
+     * This function must be called after QPushButton::setMenu().
      * @param button Trigger button.
      * @param bAutoUpdateTextButton Determines whether the text of the button should be
      *        changed when selecting an item from the menu.
@@ -219,12 +228,13 @@ private:
      * Create a new section in the list of items and add it to the model.
      * It corresponds to a separator line and a title.
      * @param sectionName Section title.
+     * @param background Background color is generally transparent.
      * @param bSeparator True if a separation line will also be created before the section title.
      * @param modelPosition Position in the model where to insert the new section. If the value is
      *                      less than zero, the section is added to the end of the list/model.
      * @return A pointer to the item created with the section title.
      */
-    KateModeMenuListData::ListItem* createSectionList(const QString &sectionName, bool bSeparator = true, int modelPosition = -1);
+    KateModeMenuListData::ListItem* createSectionList(const QString &sectionName, const QBrush &background, bool bSeparator = true, int modelPosition = -1);
 
     /**
      * Load message when the list is empty in the search.
@@ -255,6 +265,7 @@ private:
      * however, this isn't a problem, since the list widget is never inactive.
      */
     const QIcon m_checkIcon = QIcon::fromTheme(QStringLiteral("checkbox"));
+    QIcon m_emptyIcon;
     static const int m_iconSize = 16;
 
     QPointer<KTextEditor::DocumentPrivate> m_doc;
@@ -286,6 +297,8 @@ namespace KateModeMenuListData
         }
 
     public:
+        ~ListView() { }
+
         /**
          * Define the size of the widget list.
          * @p height and @p width are values in pixels.
@@ -314,7 +327,7 @@ namespace KateModeMenuListData
 
     private:
         KateModeMenuList *m_parentMenu = nullptr;
-        friend KateModeMenuList;
+        friend Factory;
     };
 
 
@@ -328,11 +341,13 @@ namespace KateModeMenuListData
         ListItem() : QStandardItem() { }
 
         const KateFileType *m_type = nullptr;
-        const QString *m_searchName = nullptr;
+        QString m_searchName;
 
-        friend KateModeMenuList;
+        friend Factory;
 
     public:
+        ~ListItem() { }
+
         /**
          * Associate this item with a KateFileType object.
          */
@@ -351,10 +366,10 @@ namespace KateModeMenuListData
 
         /**
          * Generate name of the item used for the search.
-         * @param itemName Pointer to the item name, can be an attribute of a KateFileType object.
+         * @param itemName The item name.
          * @return True if a new name is generated for the search.
          */
-        bool generateSearchName(const QString *itemName);
+        bool generateSearchName(const QString &itemName);
 
         /**
          * Find matches in the extensions of the item mode, with a @p text.
@@ -364,7 +379,7 @@ namespace KateModeMenuListData
          */
         bool matchExtension(const QString &text) const;
 
-        const QString* getSearchName() const
+        const QString& getSearchName() const
         {
             return m_searchName;
         }
@@ -379,13 +394,18 @@ namespace KateModeMenuListData
     {
         Q_OBJECT
 
+    public:
+        ~SearchLine()
+        {
+            m_bestResults.clear();
+        }
+
     private:
         SearchLine(KateModeMenuList *menu) : QLineEdit(menu)
         {
             m_parentMenu = menu;
             init();
         }
-        ~SearchLine() { };
 
         void init();
 
@@ -414,7 +434,7 @@ namespace KateModeMenuListData
         QList<QPair<ListItem *, int>> m_bestResults;
 
         KateModeMenuList *m_parentMenu = nullptr;
-        friend KateModeMenuList;
+        friend Factory;
 
     protected:
         /**
@@ -430,6 +450,26 @@ namespace KateModeMenuListData
     private Q_SLOTS:
         void _k_queueSearch(const QString &s);
         void _k_activateSearch();
+    };
+
+
+    class Factory
+    {
+    private:
+        friend KateModeMenuList;
+        Factory() { };
+        static ListView* createListView(KateModeMenuList *parentMenu)
+        {
+            return new ListView (parentMenu);
+        }
+        static ListItem* createListItem()
+        {
+            return new ListItem();
+        }
+        static SearchLine* createSearchLine(KateModeMenuList *parentMenu)
+        {
+            return new SearchLine(parentMenu);
+        }
     };
 }
 
