@@ -615,8 +615,9 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
     headerLayout->addStretch();
 
     for (const auto &hl : KateHlManager::self()->modeList()) {
-        if (hl.section().length() > 0) {
-            hlCombo->addItem(hl.section() + QLatin1Char('/') + hl.translatedName());
+        const auto section = hl.translatedSection();
+        if (!section.isEmpty()) {
+            hlCombo->addItem(section + QLatin1Char('/') + hl.translatedName());
         } else {
             hlCombo->addItem(hl.translatedName());
         }
