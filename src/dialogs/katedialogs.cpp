@@ -538,7 +538,7 @@ void KateEditGeneralConfigTab::reload()
 
     ui->cmbEncloseSelection->clear();
     ui->cmbEncloseSelection->lineEdit()->setClearButtonEnabled(true);
-    ui->cmbEncloseSelection->lineEdit()->setPlaceholderText(QStringLiteral("Feature is not active"));
+    ui->cmbEncloseSelection->lineEdit()->setPlaceholderText(i18n("Feature is not active"));
     ui->cmbEncloseSelection->addItem(QString(), None);
     ui->cmbEncloseSelection->setItemData(0, i18n("Disable Feature"), Qt::ToolTipRole);
     ui->cmbEncloseSelection->addItem(QStringLiteral("`*_~"), MarkDown);
