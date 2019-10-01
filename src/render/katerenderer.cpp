@@ -251,7 +251,6 @@ void KateRenderer::paintTabstop(QPainter &paint, qreal x, qreal y)
     QPen pen(config()->tabMarkerColor());
     pen.setWidthF(qMax(1.0, spaceWidth() / 10.0));
     paint.setPen(pen);
-    paint.setRenderHint(QPainter::Antialiasing, false);
 
     int dist = spaceWidth() * 0.3;
     QPoint points[8];
@@ -277,9 +276,9 @@ void KateRenderer::paintSpace(QPainter &paint, qreal x, qreal y)
     pen.setCapStyle(Qt::RoundCap);
     paint.setPen(pen);
     paint.setRenderHint(QPainter::Antialiasing, true);
-
     paint.drawPoint(QPointF(x, y));
     paint.setPen(penBackup);
+    paint.setRenderHint(QPainter::Antialiasing, false);
 }
 
 void KateRenderer::paintNonBreakSpace(QPainter &paint, qreal x, qreal y)
@@ -288,7 +287,6 @@ void KateRenderer::paintNonBreakSpace(QPainter &paint, qreal x, qreal y)
     QPen pen(config()->tabMarkerColor());
     pen.setWidthF(qMax(1.0, spaceWidth() / 10.0));
     paint.setPen(pen);
-    paint.setRenderHint(QPainter::Antialiasing, false);
 
     const int height = fontHeight();
     const int width = spaceWidth();
@@ -310,7 +308,6 @@ void KateRenderer::paintNonPrintableSpaces(QPainter &paint, qreal x, qreal y, co
     QPen pen(config()->spellingMistakeLineColor());
     pen.setWidthF(qMax(1.0, spaceWidth() * 0.1));
     paint.setPen(pen);
-    paint.setRenderHint(QPainter::Antialiasing, false);
 
     const int height = fontHeight();
     const int width = m_fontMetrics.boundingRect(chr).width();
@@ -557,8 +554,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
     // Draws the dashed underline at the start of a folded block of text.
     if (!(flags & SkipDrawFirstInvisibleLineUnderlined) && range->startsInvisibleBlock()) {
-        const QPainter::RenderHints backupRenderHints = paint.renderHints();
-        paint.setRenderHint(QPainter::Antialiasing, false);
         QPen pen(config()->foldingColor());
         pen.setCosmetic(true);
         pen.setStyle(Qt::DashLine);
@@ -566,7 +561,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         pen.setWidth(2);
         paint.setPen(pen);
         paint.drawLine(0, (lineHeight() * range->viewLineCount()) - 2, xEnd - xStart, (lineHeight() * range->viewLineCount()) - 2);
-        paint.setRenderHints(backupRenderHints);
     }
 
     if (range->layout()) {
@@ -855,7 +849,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
 
             paint.save();
-            paint.setRenderHint(QPainter::Antialiasing, false);
             switch (style) {
                 case Line:
                     paint.setPen(QPen(color, caretWidth));
@@ -891,7 +884,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
     // show word wrap marker if desirable
     if ((!isPrinterFriendly()) && config()->wordWrapMarker()) {
         const QPainter::RenderHints backupRenderHints = paint.renderHints();
-        paint.setRenderHint(QPainter::Antialiasing, false);
         paint.setPen(config()->wordWrapMarkerColor());
         int _x = qreal(m_doc->config()->wordWrapAt()) * fm.horizontalAdvance(QLatin1Char('x')) - xStart;
         paint.drawLine(_x, 0, _x, lineHeight());
@@ -965,9 +957,14 @@ void KateRenderer::updateConfig()
     }
 }
 
-// compute font height for given metrics
-static int fontHeightComputation(const QFontMetricsF &metrics)
+void KateRenderer::updateFontHeight()
 {
+    /**
+     * cache font + metrics
+     */
+    m_font = config()->baseFont();
+    m_fontMetrics = QFontMetricsF(m_font);
+
     /**
      * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
      *
@@ -982,65 +979,7 @@ static int fontHeightComputation(const QFontMetricsF &metrics)
      *
      * qreal fontHeight = font.ascent() + font.descent();
      */
-    return qMax(1, qCeil(metrics.ascent() + metrics.descent()));
-}
-
-void KateRenderer::updateFontHeight()
-{
-    /**
-     * cache font + metrics
-     */
-    m_font = config()->baseFont();
-    m_fontMetrics = QFontMetricsF(m_font);
-    m_fontHeight = fontHeightComputation(m_fontMetrics);
-
-    /**
-     * try to avoid strange fractional line heights on HiDPI screens
-     * these lead to evil drawing artifacts
-     */
-    if (m_view && !qFuzzyCompare(m_fontHeight * m_view->devicePixelRatioF(), qRound(m_fontHeight * m_view->devicePixelRatioF()))) {
-        /**
-         * search a font that has no artifacts
-         */
-        QFont newFont(m_font);
-        bool foundGoodFont = false;
-        for (int i = 2; i <= 8 + int(m_font.pointSizeF() / 4); ++i) {
-            /**
-             * we scan up and down, to prefer the minimal size change!
-             */
-            int step = i / 2;
-            if ((i % 2) == 0) {
-                step = -(i / 2);
-            }
-
-            /**
-             * skip too small stuff
-             */
-            const qreal newSize = m_font.pointSizeF() + (step * 0.25);
-            if (newSize <= 1)
-                continue;
-
-            /**
-             * update size and check if we now have no strange pixel heights
-             */
-            newFont.setPointSizeF(newSize);
-            const QFontMetricsF newFontMetrics(newFont);
-            const int fontHeight = fontHeightComputation(newFontMetrics);
-            if (qFuzzyCompare(fontHeight * m_view->devicePixelRatioF(), qRound(fontHeight * m_view->devicePixelRatioF()))) {
-                foundGoodFont = true;
-                break;
-            }
-        }
-
-        /**
-         * if we have a good font, use that one instead of the shitty one
-         */
-        if (foundGoodFont) {
-            m_font = newFont;
-            m_fontMetrics = QFontMetricsF(newFont);
-            m_fontHeight = fontHeightComputation(m_fontMetrics);
-        }
-    }
+    m_fontHeight = qMax(1, qCeil(m_fontMetrics.ascent() + m_fontMetrics.descent()));
 }
 
 void KateRenderer::updateMarkerSize()

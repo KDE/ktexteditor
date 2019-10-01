@@ -3006,7 +3006,10 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
     const KTextEditor::Cursor pos = m_cursor;
 
     QPainter paint(this);
-    paint.setRenderHints(QPainter::Antialiasing);
+
+    // THIS IS ULTRA EVIL AND ADDS STRANGE RENDERING ARTIFACTS WITH SCALING!!!!
+    // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036
+    //paint.setRenderHints(QPainter::TextAntialiasing);
 
     paint.save();
 
