@@ -202,11 +202,10 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     modeMenuList->updateMenu(m_view->doc());
     /**
      * add mode button which allows user to switch mode of document
-     * this will reuse the mode action menu of the view
      */
     m_mode = new StatusBarButton(this);
     topLayout->addWidget(m_mode);
-    modeMenuList->setButton(m_mode, false, KateModeMenuList::Inverse);
+    modeMenuList->setButton(m_mode, KateModeMenuList::AlignHInverse, KateModeMenuList::AlignTop, KateModeMenuList::AutoUpdateTextButton(false));
     m_mode->setMenu(modeMenuList);
     m_mode->setWhatsThis(i18n("Syntax highlighting"));
 

@@ -285,22 +285,23 @@ KateModeMenuListData::ListItem *KateModeMenuList::createSectionList(const QStrin
     return section;
 }
 
-void KateModeMenuList::setButton(QPushButton *button, const bool bAutoUpdateTextButton, AlignmentButton position)
+void KateModeMenuList::setButton(QPushButton *button, AlignmentHButton positionX, AlignmentVButton positionY, AutoUpdateTextButton autoUpdateTextButton)
 {
-    if (position == Inverse) {
+    if (positionX == AlignHInverse) {
         if (layoutDirection() == Qt::RightToLeft) {
-            m_position = KateModeMenuList::Left;
+            m_positionX = KateModeMenuList::AlignLeft;
         } else {
-            m_position = KateModeMenuList::Right;
+            m_positionX = KateModeMenuList::AlignRight;
         }
-    } else if (position == Left && layoutDirection() != Qt::RightToLeft) {
-        m_position = KateModeMenuList::Default;
+    } else if (positionX == AlignLeft && layoutDirection() != Qt::RightToLeft) {
+        m_positionX = KateModeMenuList::AlignHDefault;
     } else {
-        m_position = position;
+        m_positionX = positionX;
     }
 
+    m_positionY = positionY;
     m_pushButton = button;
-    m_bAutoUpdateTextButton = bAutoUpdateTextButton;
+    m_autoUpdateTextButton = autoUpdateTextButton;
 }
 
 void KateModeMenuList::setSizeList(const int height, const int width)
@@ -331,8 +332,25 @@ void KateModeMenuList::showEvent(QShowEvent *event)
 
     // Set the menu position
     if (m_pushButton && m_pushButton->isVisible()) {
-        if (m_position == Right) {
-            // New menu position
+        /*
+         * Get vertical position.
+         * NOTE: In KDE Plasma with Wayland, the reference point of the position
+         * is the main window, not the desktop. Therefore, if the window is vertically
+         * smaller than the menu, it will be positioned on the upper edge of the window.
+         */
+        int newMenu_y; // New vertical menu position
+        if (m_positionY == AlignTop) {
+            newMenu_y = m_pushButton->mapToGlobal(QPoint(0, 0)).y() - geometry().height();
+            if (newMenu_y < 0) {
+                newMenu_y = 0;
+            }
+        } else {
+            newMenu_y = pos().y();
+        }
+
+        // Set horizontal position.
+        if (m_positionX == AlignRight) {
+            // New horizontal menu position
             int newMenu_x = pos().x() - geometry().width() + m_pushButton->geometry().width();
             // Get position of the right edge of the toggle button
             const int buttonPositionRight = m_pushButton->mapToGlobal(QPoint(0, 0)).x() + m_pushButton->geometry().width();
@@ -341,9 +359,12 @@ void KateModeMenuList::showEvent(QShowEvent *event)
             } else if (newMenu_x + geometry().width() < buttonPositionRight) {
                 newMenu_x = buttonPositionRight - geometry().width();
             }
-            move(newMenu_x, pos().y());
-        } else if (m_position == Left) {
-            move(m_pushButton->mapToGlobal(QPoint(0, 0)).x(), pos().y());
+            move(newMenu_x, newMenu_y);
+        } else if (m_positionX == AlignLeft) {
+            move(m_pushButton->mapToGlobal(QPoint(0, 0)).x(), newMenu_y);
+        } else if (m_positionY == AlignTop) {
+            // Set vertical position, use the default horizontal position
+            move(pos().x(), newMenu_y);
         }
     }
 
@@ -383,7 +404,7 @@ void KateModeMenuList::updateSelectedItem(KateModeMenuListData::ListItem *item)
     m_list->setCurrentItem(item->row());
 
     // Change text of the trigger button
-    if (m_bAutoUpdateTextButton && m_pushButton && item->hasMode()) {
+    if (bool(m_autoUpdateTextButton) && m_pushButton && item->hasMode()) {
         m_pushButton->setText(item->getMode()->nameTranslated());
     }
 }

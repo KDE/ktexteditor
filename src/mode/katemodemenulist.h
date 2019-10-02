@@ -72,14 +72,26 @@ class KateModeMenuList : public QMenu
 
 public:
     /**
-     * Alignment with respect to the trigger button.
-     * "Default" is the normal alignment (left alignment in Left-to-right layouts).
-     * "Inverse" uses right alignment in Left-to-right layouts and left
-     * alignment in Right-to-left layouts (used in some languages).
-     * "Left" and "Right" forces the alignment.
+     * Horizontal Alignment with respect to the trigger button.
+     * "AlignHDefault" is the normal alignment.
+     * "AlignHInverse" uses right alignment in Left-to-right layouts and
+     * left alignmentnin Right-to-left layouts (used in some languages).
+     * "AlignLeft" and "AlignRight" forces the alignment, regardless of the layout direction.
      * @see setButton(), QWidget::layoutDirection(), Qt::LayoutDirection
      */
-    enum AlignmentButton { Default, Inverse, Left, Right };
+    enum AlignmentHButton { AlignHDefault, AlignHInverse, AlignLeft, AlignRight };
+    /**
+     * Vertical Alignment with respect to the trigger button.
+     * "AlignVDefault" uses normal alignment (below the button) and "AlignTop"
+     * forces the alignment above the trigger button.
+     * @see setButton(), KateStatusBarOpenUpMenu::setVisible()
+     */
+    enum AlignmentVButton { AlignVDefault, AlignTop };
+    /**
+     * Define if the trigger button label must be updated when selecting an item.
+     * @see setButton()
+     */
+    enum class AutoUpdateTextButton : bool;
     /**
      * Search bar position, above or below the list.
      */
@@ -149,16 +161,16 @@ public:
     /**
      * Set the button that shows this menu. It allows to update the label
      * of the button and define the alignment of the menu with respect to it.
-     * This function must be called after QPushButton::setMenu().
+     * This function doesn't call QPushButton::setMenu().
      * @param button Trigger button.
-     * @param bAutoUpdateTextButton Determines whether the text of the button should be
+     * @param positionX Horizontal position of the menu with respect to the trigger button.
+     * @param positionY Vertical position of the menu with respect to the trigger button.
+     * @param autoUpdateTextButton Determines whether the text of the button should be
      *        changed when selecting an item from the menu.
-     * @param position Position of the menu with respect to the trigger button.
-     *        See KateModeMenuList::AlignmentButton.
      *
-     * @see AlignmentButton
+     * @see AlignmentHButton, AlignmentVButton, AutoUpdateTextButton
      */
-    void setButton(QPushButton *button, const bool bAutoUpdateTextButton = false, AlignmentButton position = Inverse);
+    void setButton(QPushButton *button, AlignmentHButton positionX = AlignHDefault, AlignmentVButton positionY = AlignTop, AutoUpdateTextButton autoUpdateTextButton = AutoUpdateTextButton(false));
 
     /**
      * Define the size of the list widget, in pixels.
@@ -248,8 +260,9 @@ private:
     inline void loadEmptyMsg();
 
     AutoScroll m_autoScroll = ScrollToSelectedItem;
-    AlignmentButton m_position;
-    bool m_bAutoUpdateTextButton;
+    AlignmentHButton m_positionX;
+    AlignmentVButton m_positionY;
+    AutoUpdateTextButton m_autoUpdateTextButton;
 
     QPushButton *m_pushButton = nullptr;
     QLabel *m_emptyListMsg = nullptr;
