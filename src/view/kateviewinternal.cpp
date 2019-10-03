@@ -3009,7 +3009,7 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
 
     // THIS IS ULTRA EVIL AND ADDS STRANGE RENDERING ARTIFACTS WITH SCALING!!!!
     // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036
-    //paint.setRenderHints(QPainter::TextAntialiasing);
+    // paint.setRenderHints(QPainter::TextAntialiasing);
 
     paint.save();
 
