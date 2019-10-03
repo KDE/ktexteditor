@@ -3059,14 +3059,13 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 paint.translate(QPoint(0, h * -thisLine.viewLine()));
 
                 // compute rect for line, fill the stuff
-                const QRect lineRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount());
+                const QRectF lineRect(0, 0, unionRect.width(), h * thisLine.kateLineLayout()->viewLineCount());
                 paint.fillRect(lineRect, renderer()->config()->backgroundColor());
 
                 // THIS IS ULTRA EVIL AND ADDS STRANGE RENDERING ARTIFACTS WITH SCALING!!!!
                 // SEE BUG https://bugreports.qt.io/browse/QTBUG-66036
-                // add some safety margin of 1 pixel to avoid rounding issues :/
-                paint.setClipRect(lineRect.adjusted(0, 0, 1, 1));
-
+                // => using a QRectF solves the cut of 1 pixel, the same call with QRect does create artifacts!
+                paint.setClipRect(lineRect);
                 renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, &pos);
                 paint.restore();
 
