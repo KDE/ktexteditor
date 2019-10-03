@@ -445,7 +445,7 @@ void KateScrollBar::showTextPreview()
         m_textPreview->move(xGlobal - m_textPreview->width(), yGlobal);
         m_textPreview->setLine(startLine);
         m_textPreview->setCenterView(true);
-        m_textPreview->setScaleFactor(0.8);
+        m_textPreview->setScaleFactor(0.75);
         m_textPreview->raise();
         m_textPreview->show();
     } else {

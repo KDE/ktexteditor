@@ -72,8 +72,9 @@ public:
 
     /**
      * Sets the scale factor.
-     * The default scale factor is 1.0. For text previews, you may want a scale
-     * factor of e.g. 0.8 or 0.9. Negative scale factors are not allowed.
+     * The default scale factor is 1.0.
+     * For text previews, you may want a scale factor of e.g. 0.75.
+     * Negative scale factors are not allowed.
      */
     void setScaleFactor(qreal factor);
 

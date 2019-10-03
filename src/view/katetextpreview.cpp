@@ -113,7 +113,7 @@ void KateTextPreview::paintEvent(QPaintEvent *event)
     KateRenderer *const renderer = view()->renderer();
     const int lastLine = showFoldedLines() ? view()->document()->lines() : view()->textFolding().visibleLines();
 
-    const QRect r = contentsRect(); // already substracted QFrame's frame width
+    const QRectF r = contentsRect(); // already subtracted QFrame's frame width
     const int xStart = 0;
     const int xEnd = r.width() / m_scale;
     const int lineHeight = qMax(1, renderer->lineHeight());
