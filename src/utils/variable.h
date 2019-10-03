@@ -22,6 +22,7 @@
 
 #include <QStringList>
 #include <QVariant>
+#include <functional>
 
 namespace KTextEditor
 {
@@ -51,7 +52,7 @@ public:
      * Function that is called to expand a variable in @p text.
      * @param text
      */
-    using ExpandFunction = QString (*)(const QStringView &text, KTextEditor::View *view);
+    using ExpandFunction = std::function<QString(const QStringView &text, KTextEditor::View *view)>;
 
     /**
      * Constructs an invalid Variable, see isValid().

@@ -250,6 +250,8 @@ public:
     /**
      * Function that is called to expand a variable in @p text.
      */
+    // TODO KF6: Use std::function to allow captures (context via closure)
+    // using ExpandFunction = std::function<QString(const QStringView &text, KTextEditor::View *view)>;
     using ExpandFunction = QString (*)(const QStringView &text, KTextEditor::View *view);
 
     /**
