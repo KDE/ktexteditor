@@ -57,7 +57,7 @@ using namespace KateVi;
 // HELPER METHODS
 ////////////////////////////////////////////////////////////////////////////////
 
-void ModeBase::yankToClipBoard(QChar chosen_register, QString text)
+void ModeBase::yankToClipBoard(QChar chosen_register, const QString &text)
 {
     // only yank to the clipboard if no register was specified,
     // textlength > 1 and there is something else then whitespace
@@ -328,9 +328,7 @@ KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool
 {
     QString line = getLine(fromLine);
 
-    QRegExp endOfWORDPattern(QLatin1String("\\S\\s|\\S$|^$"));
-
-    QRegExp endOfWORD(endOfWORDPattern);
+    const QRegExp endOfWORDPattern(QLatin1String("\\S\\s|\\S$|^$"));
 
     int l = fromLine;
     int c = fromColumn;
@@ -338,7 +336,7 @@ KTextEditor::Cursor ModeBase::findPrevWORDEnd(int fromLine, int fromColumn, bool
     bool found = false;
 
     while (!found) {
-        int c1 = endOfWORD.lastIndexIn(line, c - 1);
+        int c1 = endOfWORDPattern.lastIndexIn(line, c - 1);
 
         if (c1 != -1 && c - 1 != -1) {
             found = true;

@@ -43,7 +43,7 @@ enum CommandFlags {
 class Command
 {
 public:
-    Command(NormalViMode *parent, QString pattern, bool (NormalViMode::*pt2Func)(), unsigned int flags = 0);
+    Command(NormalViMode *parent, const QString &pattern, bool (NormalViMode::*pt2Func)(), unsigned int flags = 0);
     ~Command();
 
     bool matches(const QString &pattern) const;

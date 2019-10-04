@@ -45,7 +45,7 @@ static bool checkBoolValue(QString val, bool *result)
  * @return whether a string value could be converted to a integer value. The
  * value is put in *result.
  */
-static bool checkIntValue(QString val, int *result)
+static bool checkIntValue(const QString &val, int *result)
 {
     bool ret(false);
     *result = val.toInt(&ret);

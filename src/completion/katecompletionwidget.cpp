@@ -89,9 +89,9 @@ static void _aborted(KTextEditor::CodeCompletionModel *model, KTextEditor::View 
     CALLCI(return, , return, model, aborted(view));
 }
 
-static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, QString m_automaticInvocationLine, bool m_lastInsertionByUser, const KTextEditor::Cursor &cursor)
+static bool _shouldStartCompletion(KTextEditor::CodeCompletionModel *model, KTextEditor::View *view, const QString &automaticInvocationLine, bool m_lastInsertionByUser, const KTextEditor::Cursor &cursor)
 {
-    CALLCI(return, , return, model, shouldStartCompletion(view, m_automaticInvocationLine, m_lastInsertionByUser, cursor));
+    CALLCI(return, , return, model, shouldStartCompletion(view, automaticInvocationLine, m_lastInsertionByUser, cursor));
 }
 
 KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)

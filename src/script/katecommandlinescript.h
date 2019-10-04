@@ -69,7 +69,7 @@ public:
 
     const KateCommandLineScriptHeader &commandHeader();
 
-    bool callFunction(const QString &cmd, const QStringList args, QString &errorMessage);
+    bool callFunction(const QString &cmd, const QStringList &args, QString &errorMessage);
 
     //
     // KTextEditor::Command interface

@@ -38,7 +38,7 @@ KateCmd::~KateCmd()
 
 bool KateCmd::registerCommand(KTextEditor::Command *cmd)
 {
-    const QStringList l = cmd->cmds();
+    const QStringList &l = cmd->cmds();
 
     for (int z = 0; z < l.count(); z++)
         if (m_dict.contains(l[z])) {

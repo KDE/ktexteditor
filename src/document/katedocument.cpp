@@ -4628,7 +4628,7 @@ void KTextEditor::DocumentPrivate::readVariables(bool onlyViewAndRenderer)
     }
 }
 
-void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndRenderer)
+void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyViewAndRenderer)
 {
     static const QRegularExpression kvLine(QStringLiteral("kate:(.*)"));
     static const QRegularExpression kvLineWildcard(QStringLiteral("kate-wildcard\\((.*)\\):(.*)"));
@@ -4843,7 +4843,7 @@ void KTextEditor::DocumentPrivate::readVariableLine(QString t, bool onlyViewAndR
     }
 }
 
-void KTextEditor::DocumentPrivate::setViewVariable(QString var, QString val)
+void KTextEditor::DocumentPrivate::setViewVariable(const QString &var, const QString &val)
 {
     bool state;
     int n;
@@ -4911,14 +4911,14 @@ bool KTextEditor::DocumentPrivate::checkBoolValue(QString val, bool *result)
     return false;
 }
 
-bool KTextEditor::DocumentPrivate::checkIntValue(QString val, int *result)
+bool KTextEditor::DocumentPrivate::checkIntValue(const QString &val, int *result)
 {
     bool ret(false);
     *result = val.toInt(&ret);
     return ret;
 }
 
-bool KTextEditor::DocumentPrivate::checkColorValue(QString val, QColor &c)
+bool KTextEditor::DocumentPrivate::checkColorValue(const QString &val, QColor &c)
 {
     c.setNamedColor(val);
     return c.isValid();

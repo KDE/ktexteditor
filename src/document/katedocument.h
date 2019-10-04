@@ -1179,11 +1179,11 @@ private:
       Reads and applies the variables in a single line
       TODO registered variables gets saved in a [map]
     */
-    void readVariableLine(QString t, bool onlyViewAndRenderer = false);
+    void readVariableLine(const QString &t, bool onlyViewAndRenderer = false);
     /**
       Sets a view variable in all the views.
     */
-    void setViewVariable(QString var, QString val);
+    void setViewVariable(const QString &var, const QString &val);
     /**
       @return weather a string value could be converted
       to a bool value as supported.
@@ -1195,12 +1195,12 @@ private:
       to a integer value.
       The value is put in *result.
     */
-    static bool checkIntValue(QString value, int *result);
+    static bool checkIntValue(const QString &value, int *result);
     /**
       Feeds value into @p col using QColor::setNamedColor() and returns
       whether the color is valid
     */
-    static bool checkColorValue(QString value, QColor &col);
+    static bool checkColorValue(const QString &value, QColor &col);
 
     bool m_fileChangedDialogsActivated = false;
 

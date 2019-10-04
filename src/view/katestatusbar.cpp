@@ -325,7 +325,7 @@ void KateStatusBar::updateDictionary()
     // Check if at the current cursor position is a special dictionary in use
     KTextEditor::Cursor position(m_view->cursorPositionVirtual());
     const QList<QPair<KTextEditor::MovingRange *, QString>> dictRanges = m_view->doc()->dictionaryRanges();
-    for (auto rangeDictPair : dictRanges) {
+    for (const auto &rangeDictPair : dictRanges) {
         const KTextEditor::MovingRange *range = rangeDictPair.first;
         if (range->contains(position) || range->end() == position) {
             newDict = rangeDictPair.second;

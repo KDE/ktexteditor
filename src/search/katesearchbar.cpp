@@ -98,7 +98,7 @@ public:
         m_menu->setEnabled(enabled);
     }
 
-    void addEntry(const QString &before, const QString after, const QString description, const QString &realBefore = QString(), const QString &realAfter = QString())
+    void addEntry(const QString &before, const QString &after, const QString &description, const QString &realBefore = QString(), const QString &realAfter = QString())
     {
         if (m_menu == nullptr) {
             return;

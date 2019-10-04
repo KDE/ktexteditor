@@ -33,7 +33,7 @@
 KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)
     , m_range(range)
-    , m_attribute(attribute)
+    , m_attribute(std::move(attribute))
     , m_doc(view->view()->doc())
     , m_view(view)
     , m_timeLine(new QTimeLine(250, this))

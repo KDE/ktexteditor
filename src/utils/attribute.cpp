@@ -90,7 +90,7 @@ void Attribute::setDynamicAttribute(ActivationType type, Attribute::Ptr attribut
         return;
     }
 
-    d->dynamicAttributes[type] = attribute;
+    d->dynamicAttributes[type] = std::move(attribute);
 }
 
 QString Attribute::name() const

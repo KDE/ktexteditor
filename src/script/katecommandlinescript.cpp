@@ -47,7 +47,7 @@ const KateCommandLineScriptHeader &KateCommandLineScript::commandHeader()
     return m_commandHeader;
 }
 
-bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList args, QString &errorMessage)
+bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList &args, QString &errorMessage)
 {
     clearExceptions();
     QJSValue command = function(cmd);

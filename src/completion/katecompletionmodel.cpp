@@ -1603,7 +1603,7 @@ bool KateCompletionModel::Item::operator<(const Item &rhs) const
     return ret < 0;
 }
 
-void KateCompletionModel::Group::addItem(Item i, bool notifyModel)
+void KateCompletionModel::Group::addItem(const Item &i, bool notifyModel)
 {
     if (isEmpty) {
         notifyModel = false;

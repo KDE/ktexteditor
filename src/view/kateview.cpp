@@ -3693,7 +3693,7 @@ void KTextEditor::ViewPrivate::postMessage(KTextEditor::Message *message, QList<
         connect(this, SIGNAL(displayRangeChanged(KTextEditor::ViewPrivate *)), messageWidget, SLOT(startAutoHideTimer()));
         connect(this, SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), messageWidget, SLOT(startAutoHideTimer()));
     }
-    messageWidget->postMessage(message, actions);
+    messageWidget->postMessage(message, std::move(actions));
 }
 
 KateMessageWidget *KTextEditor::ViewPrivate::messageWidget()

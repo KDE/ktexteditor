@@ -82,7 +82,7 @@ NormalRenderRange::NormalRenderRange()
 
 void NormalRenderRange::addRange(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute)
 {
-    m_ranges.push_back(std::make_pair(range, attribute));
+    m_ranges.emplace_back(range, std::move(attribute));
 }
 
 KTextEditor::Cursor NormalRenderRange::nextBoundary() const

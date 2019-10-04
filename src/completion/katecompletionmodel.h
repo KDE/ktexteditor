@@ -274,7 +274,7 @@ public:
     public:
         explicit Group(const QString &title, int attribute, KateCompletionModel *model);
 
-        void addItem(Item i, bool notifyModel = false);
+        void addItem(const Item &i, bool notifyModel = false);
         /// Removes the item specified by \a row.  Returns true if a change was made to rows.
         bool removeItem(const ModelRow &row);
         void resort();

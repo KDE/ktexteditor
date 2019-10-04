@@ -184,7 +184,7 @@ void KateMessageWidget::setWordWrap(KTextEditor::Message *message)
 void KateMessageWidget::postMessage(KTextEditor::Message *message, QList<QSharedPointer<QAction>> actions)
 {
     Q_ASSERT(!m_messageHash.contains(message));
-    m_messageHash[message] = actions;
+    m_messageHash[message] = std::move(actions);
 
     // insert message sorted after priority
     int i = 0;

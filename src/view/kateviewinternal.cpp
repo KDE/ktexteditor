@@ -3773,7 +3773,7 @@ void KateViewInternal::inputMethodEvent(QInputMethodEvent *e)
         m_imPreeditRangeChildren.clear();
 
         int decorationColumn = 0;
-        const auto attributes = e->attributes();
+        const auto &attributes = e->attributes();
         for (auto &a : attributes) {
             if (a.type == QInputMethodEvent::Cursor) {
                 newCursor = m_imPreeditRange->start() + KTextEditor::Cursor(0, a.start);
@@ -3824,7 +3824,7 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor &pos, KTextEditor::At
     if (m_textAnimation) {
         m_textAnimation->deleteLater();
     }
-    m_textAnimation = new KateTextAnimation(range, attribute, this);
+    m_textAnimation = new KateTextAnimation(range, std::move(attribute), this);
 }
 
 void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)

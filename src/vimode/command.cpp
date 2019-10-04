@@ -25,7 +25,7 @@
 
 using namespace KateVi;
 
-Command::Command(NormalViMode *parent, QString pattern, bool (NormalViMode::*commandMethod)(), unsigned int flags)
+Command::Command(NormalViMode *parent, const QString &pattern, bool (NormalViMode::*commandMethod)(), unsigned int flags)
 {
     m_parent = parent;
     m_pattern = KeyParser::self()->encodeKeySequence(pattern);

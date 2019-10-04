@@ -23,7 +23,7 @@ namespace KTextEditor
 Variable::Variable(const QString &name, const QString &description, Variable::ExpandFunction func, bool isPrefixMatch)
     : m_name(name)
     , m_description(description)
-    , m_function(func)
+    , m_function(std::move(func))
     , m_isPrefixMatch(isPrefixMatch)
 {
 }

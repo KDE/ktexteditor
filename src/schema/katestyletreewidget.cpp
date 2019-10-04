@@ -325,12 +325,12 @@ void KateStyleTreeWidget::emitChanged()
 
 void KateStyleTreeWidget::addItem(const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data)
 {
-    new KateStyleTreeWidgetItem(this, styleName, defaultstyle, data);
+    new KateStyleTreeWidgetItem(this, styleName, std::move(defaultstyle), std::move(data));
 }
 
 void KateStyleTreeWidget::addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data)
 {
-    new KateStyleTreeWidgetItem(parent, styleName, defaultstyle, data);
+    new KateStyleTreeWidgetItem(parent, styleName, std::move(defaultstyle), std::move(data));
     updateGroupHeadings();
 }
 // END
@@ -405,8 +405,8 @@ void KateStyleTreeDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const QString &stylename, KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent)
     , currentStyle(nullptr)
-    , defaultStyle(defaultAttribute)
-    , actualStyle(actualAttribute)
+    , defaultStyle(std::move(defaultAttribute))
+    , actualStyle(std::move(actualAttribute))
 {
     initStyle();
     setText(0, stylename);
@@ -415,8 +415,8 @@ KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidgetItem *parent, const 
 KateStyleTreeWidgetItem::KateStyleTreeWidgetItem(QTreeWidget *parent, const QString &stylename, KTextEditor::Attribute::Ptr defaultAttribute, KTextEditor::Attribute::Ptr actualAttribute)
     : QTreeWidgetItem(parent)
     , currentStyle(nullptr)
-    , defaultStyle(defaultAttribute)
-    , actualStyle(actualAttribute)
+    , defaultStyle(std::move(defaultAttribute))
+    , actualStyle(std::move(actualAttribute))
 {
     initStyle();
     setText(0, stylename);

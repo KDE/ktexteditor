@@ -550,7 +550,7 @@ KSharedConfigPtr KTextEditor::EditorPrivate::config()
     auto applicationConfig = KSharedConfig::openConfig();
     if (!KConfigGroup(applicationConfig, QStringLiteral("KTextEditor Editor")).exists()) {
         auto globalConfig = KSharedConfig::openConfig(QStringLiteral("katepartrc"));
-        for (auto group : {QStringLiteral("Editor"), QStringLiteral("Document"), QStringLiteral("View"), QStringLiteral("Renderer")}) {
+        for (const auto &group : {QStringLiteral("Editor"), QStringLiteral("Document"), QStringLiteral("View"), QStringLiteral("Renderer")}) {
             KConfigGroup origin(globalConfig, group);
             KConfigGroup destination(applicationConfig, QStringLiteral("KTextEditor ") + group);
             origin.copyTo(&destination);

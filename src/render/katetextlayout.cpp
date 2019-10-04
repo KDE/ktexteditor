@@ -23,7 +23,7 @@
 #include "katepartdebug.h"
 
 KateTextLayout::KateTextLayout(KateLineLayoutPtr line, int viewLine)
-    : m_lineLayout(line)
+    : m_lineLayout(std::move(line))
     , m_viewLine(viewLine)
     , m_startX(m_viewLine ? -1 : 0)
 {
