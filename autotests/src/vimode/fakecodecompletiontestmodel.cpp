@@ -18,12 +18,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "fakecodecompletiontestmodel.h"
+#include "base.h"
+#include <QRegularExpression>
 #include <katecompletionwidget.h>
 #include <kateglobal.h>
 #include <katewordcompletion.h>
-#include "base.h"
-#include "fakecodecompletiontestmodel.h"
-#include <QRegularExpression>
 
 using namespace KTextEditor;
 

@@ -22,15 +22,15 @@
 #ifndef KATE_SWAPFILE_H
 #define KATE_SWAPFILE_H
 
-#include <QObject>
 #include <QDataStream>
 #include <QFile>
+#include <QObject>
 #include <QTimer>
 
-#include <ktexteditor_export.h>
-#include "katetextbuffer.h"
 #include "katebuffer.h"
 #include "katedocument.h"
+#include "katetextbuffer.h"
+#include <ktexteditor_export.h>
 
 #include <KTextEditor/Message>
 

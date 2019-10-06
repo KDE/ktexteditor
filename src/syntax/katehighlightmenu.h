@@ -20,9 +20,9 @@
 #ifndef KATE_HIGHLIGHTMENU_H
 #define KATE_HIGHLIGHTMENU_H
 
-#include <QStringList>
-#include <QPointer>
 #include <QHash>
+#include <QPointer>
+#include <QStringList>
 
 #include <KActionMenu>
 

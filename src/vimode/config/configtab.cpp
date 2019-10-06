@@ -20,14 +20,14 @@
 #include <QTableWidgetItem>
 #include <QWhatsThis>
 
-#include <KMessageBox>
 #include <KLocalizedString>
+#include <KMessageBox>
 
+#include "ui_configwidget.h"
 #include <utils/kateconfig.h>
 #include <utils/kateglobal.h>
-#include <vimode/keyparser.h>
 #include <vimode/config/configtab.h>
-#include "ui_configwidget.h"
+#include <vimode/keyparser.h>
 
 using namespace KateVi;
 

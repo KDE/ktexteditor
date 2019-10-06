@@ -21,14 +21,14 @@
 #include "kateautoindent.h"
 
 #include "kateconfig.h"
-#include "katehighlight.h"
+#include "katedocument.h"
+#include "kateextendedattribute.h"
 #include "kateglobal.h"
+#include "katehighlight.h"
 #include "kateindentscript.h"
+#include "katepartdebug.h"
 #include "katescriptmanager.h"
 #include "kateview.h"
-#include "kateextendedattribute.h"
-#include "katedocument.h"
-#include "katepartdebug.h"
 
 #include <KLocalizedString>
 

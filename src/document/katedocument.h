@@ -28,18 +28,18 @@
 
 #include <KJob>
 
-#include <ktexteditor/document.h>
-#include <ktexteditor/markinterface.h>
-#include <ktexteditor/modificationinterface.h>
-#include <ktexteditor/configinterface.h>
 #include <ktexteditor/annotationinterface.h>
-#include <ktexteditor/movinginterface.h>
-#include <ktexteditor/message.h>
-#include <ktexteditor/mainwindow.h>
+#include <ktexteditor/configinterface.h>
+#include <ktexteditor/document.h>
 #include <ktexteditor/inlinenoteinterface.h>
+#include <ktexteditor/mainwindow.h>
+#include <ktexteditor/markinterface.h>
+#include <ktexteditor/message.h>
+#include <ktexteditor/modificationinterface.h>
+#include <ktexteditor/movinginterface.h>
 
-#include <ktexteditor_export.h>
 #include "katetextline.h"
+#include <ktexteditor_export.h>
 
 class KateTemplateHandler;
 namespace KTextEditor

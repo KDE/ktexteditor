@@ -18,21 +18,21 @@
  */
 
 #include "katescriptaction.h"
+#include "kateabstractinputmode.h"
+#include "katecmd.h"
 #include "katecommandlinescript.h"
-#include "katescriptmanager.h"
-#include "kateview.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "kateviewhelpers.h"
 #include "katepartdebug.h"
-#include "katecmd.h"
-#include "kateabstractinputmode.h"
+#include "katescriptmanager.h"
+#include "kateview.h"
+#include "kateviewhelpers.h"
 
 #include <QJsonObject>
 
-#include <KXMLGUIFactory>
 #include <KActionCollection>
 #include <KLocalizedString>
+#include <KXMLGUIFactory>
 
 // BEGIN KateScriptAction
 KateScriptAction::KateScriptAction(const QString &cmd, const QJsonObject &action, KTextEditor::ViewPrivate *view)

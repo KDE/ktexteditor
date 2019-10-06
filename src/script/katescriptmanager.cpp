@@ -26,21 +26,21 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QStringList>
-#include <QMap>
-#include <QUuid>
-#include <QJsonDocument>
-#include <QJsonValue>
-#include <QJsonObject>
 #include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QMap>
 #include <QRegularExpression>
+#include <QStringList>
+#include <QUuid>
 
-#include <KLocalizedString>
 #include <KConfig>
 #include <KConfigGroup>
+#include <KLocalizedString>
 
-#include "kateglobal.h"
 #include "katecmd.h"
+#include "kateglobal.h"
 #include "katepartdebug.h"
 
 KateScriptManager *KateScriptManager::m_instance = nullptr;

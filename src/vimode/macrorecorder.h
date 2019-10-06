@@ -22,8 +22,8 @@
 #define KATEVI_MACRORECORDER_H
 
 #include <QChar>
-#include <QList>
 #include <QKeyEvent>
+#include <QList>
 
 namespace KateVi
 {

@@ -23,11 +23,11 @@
 
 #include <QtAlgorithms>
 
+#include "katebuffer.h"
+#include "katedocument.h"
+#include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateview.h"
-#include "katedocument.h"
-#include "katebuffer.h"
-#include "katepartdebug.h"
 
 namespace
 {

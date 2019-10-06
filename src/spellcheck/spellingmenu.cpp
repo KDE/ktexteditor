@@ -25,8 +25,8 @@
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
 
-#include <KLocalizedString>
 #include "katepartdebug.h"
+#include <KLocalizedString>
 
 KateSpellingMenu::KateSpellingMenu(KTextEditor::ViewPrivate *view)
     : QObject(view)

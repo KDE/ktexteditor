@@ -26,8 +26,8 @@
 
 #include <QList>
 
-#include <ktexteditor/range.h>
 #include <QBitArray>
+#include <ktexteditor/range.h>
 
 class KateUndoManager;
 namespace KTextEditor

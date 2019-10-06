@@ -20,8 +20,8 @@
 #include "katevariableexpansionmanager.h"
 #include "katevariableexpansionhelpers.h"
 
-#include <KTextEditor/Editor>
 #include "kateglobal.h"
+#include <KTextEditor/Editor>
 
 #include <KLocalizedString>
 

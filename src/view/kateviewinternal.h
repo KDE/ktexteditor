@@ -28,21 +28,21 @@
 
 #include <ktexteditor/attribute.h>
 
+#include "inlinenotedata.h"
+#include "katedocument.h"
+#include "katerenderer.h"
 #include "katetextcursor.h"
 #include "katetextline.h"
-#include "katedocument.h"
 #include "kateview.h"
-#include "katerenderer.h"
-#include "inlinenotedata.h"
 
-#include <QPoint>
-#include <QTimer>
-#include <QElapsedTimer>
-#include <QTime>
 #include <QDrag>
-#include <QWidget>
-#include <QSet>
+#include <QElapsedTimer>
+#include <QPoint>
 #include <QPointer>
+#include <QSet>
+#include <QTime>
+#include <QTimer>
+#include <QWidget>
 
 namespace KTextEditor
 {

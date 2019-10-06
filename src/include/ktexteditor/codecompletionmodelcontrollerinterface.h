@@ -20,9 +20,9 @@
 #ifndef KTEXTEDITOR_CODECOMPLETIONMODELCONTROLLERINTERFACE_H
 #define KTEXTEDITOR_CODECOMPLETIONMODELCONTROLLERINTERFACE_H
 
-#include <ktexteditor_export.h>
-#include <ktexteditor/cursor.h>
 #include "codecompletionmodel.h"
+#include <ktexteditor/cursor.h>
+#include <ktexteditor_export.h>
 
 class QModelIndex;
 

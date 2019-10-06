@@ -21,9 +21,9 @@
 #ifndef KATE_MESSAGE_WIDGET_H
 #define KATE_MESSAGE_WIDGET_H
 
-#include <QWidget>
 #include <QHash>
 #include <QPointer>
+#include <QWidget>
 
 #include <ktexteditor_export.h>
 

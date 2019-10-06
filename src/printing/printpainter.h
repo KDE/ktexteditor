@@ -23,9 +23,9 @@
 #ifndef KATE_PRINT_PAINTER_H
 #define KATE_PRINT_PAINTER_H
 
-#include <QString>
 #include <QColor>
 #include <QFont>
+#include <QString>
 
 #include "kateconfig.h"
 #include "katerenderer.h"

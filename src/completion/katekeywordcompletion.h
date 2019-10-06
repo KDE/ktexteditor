@@ -20,8 +20,8 @@
 #ifndef KATEKEYWORDCOMPLETIONMODEL_H
 #define KATEKEYWORDCOMPLETIONMODEL_H
 
-#include "ktexteditor/codecompletionmodel.h"
 #include "codecompletionmodelcontrollerinterface.h"
+#include "ktexteditor/codecompletionmodel.h"
 
 /**
  * @brief Highlighting-file based keyword completion for the editor.

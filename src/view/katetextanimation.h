@@ -21,12 +21,12 @@
 #define KATE_TEXT_ANIMATION_H
 
 #include <QObject>
-#include <QString>
 #include <QRectF>
+#include <QString>
 
+#include <ktexteditor/attribute.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
-#include <ktexteditor/attribute.h>
 
 namespace KTextEditor
 {

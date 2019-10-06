@@ -21,21 +21,21 @@
 
 #include "katecompletiontree.h"
 
-#include <QHeaderView>
-#include <QScrollBar>
-#include <QVector>
-#include <QTimer>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QHeaderView>
+#include <QScrollBar>
+#include <QTimer>
+#include <QVector>
 
-#include "kateview.h"
-#include "katerenderer.h"
 #include "kateconfig.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateview.h"
 
-#include "katecompletionwidget.h"
 #include "katecompletiondelegate.h"
 #include "katecompletionmodel.h"
+#include "katecompletionwidget.h"
 
 KateCompletionTree::KateCompletionTree(KateCompletionWidget *parent)
     : ExpandingTree(parent)

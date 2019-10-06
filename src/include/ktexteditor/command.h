@@ -22,9 +22,9 @@
 #ifndef KTEXTEDITOR_COMMAND_H
 #define KTEXTEDITOR_COMMAND_H
 
-#include <ktexteditor_export.h>
-#include <ktexteditor/range.h>
 #include <KCompletion>
+#include <ktexteditor/range.h>
+#include <ktexteditor_export.h>
 
 #include <QObject>
 

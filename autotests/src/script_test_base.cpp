@@ -27,15 +27,15 @@
 
 // BEGIN Includes
 
-#include "kateview.h"
 #include "katedocument.h"
 #include "kateglobal.h"
+#include "kateview.h"
 
-#include <QProcess>
-#include <QDirIterator>
-#include <QMainWindow>
-#include <QJSEngine>
 #include <QCryptographicHash>
+#include <QDirIterator>
+#include <QJSEngine>
+#include <QMainWindow>
+#include <QProcess>
 #include <QTest>
 
 #include "testutils.h"

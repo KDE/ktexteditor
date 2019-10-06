@@ -25,8 +25,8 @@ class KateViewInternal;
 class KConfig;
 class KateConfigPage;
 
-#include <QString>
 #include "ktexteditor/view.h"
+#include <QString>
 class QWidget;
 
 class KateAbstractInputModeFactory

@@ -22,16 +22,16 @@
 #include "inlinenote_test.h"
 #include "moc_inlinenote_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateview.h>
+#include <ktexteditor/inlinenote.h>
 #include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/inlinenoteprovider.h>
-#include <ktexteditor/inlinenote.h>
 
-#include <QtTestWidgets>
-#include <QTemporaryFile>
 #include <QPainter>
+#include <QTemporaryFile>
+#include <QtTestWidgets>
 
 using namespace KTextEditor;
 

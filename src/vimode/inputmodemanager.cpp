@@ -23,35 +23,35 @@
 
 #include <vimode/inputmodemanager.h>
 
+#include <QApplication>
 #include <QKeyEvent>
 #include <QString>
-#include <QApplication>
 
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
 
-#include "kateconfig.h"
-#include "kateglobal.h"
-#include "globalstate.h"
-#include "kateviewinternal.h"
-#include <vimode/modes/normalvimode.h>
-#include <vimode/modes/insertvimode.h>
-#include <vimode/modes/visualvimode.h>
-#include <vimode/modes/replacevimode.h>
-#include <vimode/keyparser.h>
-#include <vimode/keymapper.h>
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include "kateviinputmode.h"
-#include "marks.h"
-#include "jumps.h"
-#include "macros.h"
-#include "registers.h"
-#include "searcher.h"
 #include "completionrecorder.h"
 #include "completionreplayer.h"
-#include "macrorecorder.h"
+#include "globalstate.h"
+#include "jumps.h"
+#include "kateconfig.h"
+#include "kateglobal.h"
+#include "kateviewinternal.h"
+#include "kateviinputmode.h"
 #include "lastchangerecorder.h"
+#include "macrorecorder.h"
+#include "macros.h"
+#include "marks.h"
+#include "registers.h"
+#include "searcher.h"
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/keymapper.h>
+#include <vimode/keyparser.h>
+#include <vimode/modes/insertvimode.h>
+#include <vimode/modes/normalvimode.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/modes/visualvimode.h>
 
 using namespace KateVi;
 

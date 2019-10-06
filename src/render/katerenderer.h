@@ -23,15 +23,15 @@
 #ifndef KATE_RENDERER_H
 #define KATE_RENDERER_H
 
-#include <ktexteditor/attribute.h>
-#include "katetextline.h"
-#include "katelinelayout.h"
 #include "kateconfig.h"
+#include "katelinelayout.h"
+#include "katetextline.h"
+#include <ktexteditor/attribute.h>
 
+#include <QFlags>
 #include <QFont>
 #include <QFontMetricsF>
 #include <QTextLine>
-#include <QFlags>
 
 namespace KTextEditor
 {

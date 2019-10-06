@@ -19,9 +19,9 @@
  */
 
 #include "modes.h"
+#include <inputmode/kateviinputmode.h>
 #include <katebuffer.h>
 #include <kateconfig.h>
-#include <inputmode/kateviinputmode.h>
 
 using namespace KTextEditor;
 

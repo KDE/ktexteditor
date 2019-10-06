@@ -20,8 +20,8 @@
 #ifndef CODECOMPLETIONTEST_MODEL_H
 #define CODECOMPLETIONTEST_MODEL_H
 
-#include <ktexteditor/codecompletionmodel.h>
 #include <QStringList>
+#include <ktexteditor/codecompletionmodel.h>
 
 namespace KTextEditor
 {

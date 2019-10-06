@@ -21,10 +21,10 @@
 #ifndef KATEVI_MOTION_H
 #define KATEVI_MOTION_H
 
-#include <vimode/command.h>
-#include <vimode/range.h>
-#include <vimode/modes/normalvimode.h>
 #include <ktexteditor_export.h>
+#include <vimode/command.h>
+#include <vimode/modes/normalvimode.h>
+#include <vimode/range.h>
 
 namespace KateVi
 {

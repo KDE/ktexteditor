@@ -23,11 +23,11 @@
 #include <document/katedocument.h>
 #include <inputmode/kateviinputmode.h>
 
-#include <vimode/modes/visualvimode.h>
 #include <vimode/inputmodemanager.h>
-#include <vimode/range.h>
-#include <vimode/motion.h>
 #include <vimode/marks.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/motion.h>
+#include <vimode/range.h>
 
 using namespace KateVi;
 

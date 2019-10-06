@@ -21,29 +21,29 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <vimode/modes/modebase.h>
-#include <vimode/range.h>
-#include "kateglobal.h"
-#include "kateviinputmode.h"
-#include <vimode/globalstate.h>
-#include <vimode/modes/visualvimode.h>
-#include <vimode/modes/normalvimode.h>
-#include <vimode/modes/replacevimode.h>
-#include <vimode/inputmodemanager.h>
-#include "katelayoutcache.h"
 #include "kateconfig.h"
 #include "katedocument.h"
-#include "kateviewinternal.h"
+#include "kateglobal.h"
+#include "katelayoutcache.h"
 #include "katerenderer.h"
-#include <vimode/marks.h>
+#include "kateviewinternal.h"
+#include "kateviinputmode.h"
+#include <vimode/globalstate.h>
+#include <vimode/inputmodemanager.h>
 #include <vimode/jumps.h>
+#include <vimode/lastchangerecorder.h>
+#include <vimode/marks.h>
+#include <vimode/modes/modebase.h>
+#include <vimode/modes/normalvimode.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/range.h>
 #include <vimode/registers.h>
 #include <vimode/searcher.h>
-#include <vimode/lastchangerecorder.h>
 
-#include <QString>
 #include <KLocalizedString>
 #include <QRegExp>
+#include <QString>
 
 using namespace KateVi;
 

@@ -24,10 +24,10 @@
 #ifndef KTEXTEDITOR_MOVINGINTERFACE_H
 #define KTEXTEDITOR_MOVINGINTERFACE_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/movingrangefeedback.h>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

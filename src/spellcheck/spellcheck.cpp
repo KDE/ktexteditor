@@ -25,8 +25,8 @@
 #include "spellcheck.h"
 
 #include <QHash>
-#include <QtAlgorithms>
 #include <QTimer>
+#include <QtAlgorithms>
 
 #include <KActionCollection>
 #include <ktexteditor/view.h>

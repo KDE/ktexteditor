@@ -23,21 +23,19 @@
 
 #include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 
-#include "kateview.h"
-#include "katerenderer.h"
+#include "katebuffer.h"
 #include "kateconfig.h"
 #include "katedocument.h"
-#include "katebuffer.h"
+#include "katerenderer.h"
+#include "kateview.h"
 
+#include "kateargumenthintmodel.h"
+#include "kateargumenthinttree.h"
+#include "katecompletionconfig.h"
 #include "katecompletionmodel.h"
 #include "katecompletiontree.h"
-#include "katecompletionconfig.h"
-#include "kateargumenthinttree.h"
-#include "kateargumenthintmodel.h"
 #include "katepartdebug.h"
 
-#include <QScopedPointer>
-#include <QTimer>
 #include <QAbstractScrollArea>
 #include <QApplication>
 #include <QBoxLayout>
@@ -45,8 +43,10 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
+#include <QScopedPointer>
 #include <QScrollBar>
 #include <QSizeGrip>
+#include <QTimer>
 #include <QToolButton>
 
 const bool hideAutomaticCompletionOnExactMatch = true;

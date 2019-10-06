@@ -20,12 +20,12 @@
 
 #include "katefoldingtest.h"
 
-#include <kateglobal.h>
 #include <katebuffer.h>
-#include <katedocument.h>
-#include <kateview.h>
 #include <kateconfig.h>
+#include <katedocument.h>
+#include <kateglobal.h>
 #include <katetextfolding.h>
+#include <kateview.h>
 
 #include <QtTestWidgets>
 

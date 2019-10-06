@@ -22,17 +22,17 @@
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include "katerenderer.h"
-#include "katetextline.h"
 #include "katedocument.h"
-#include "kateview.h"
 #include "katehighlight.h"
-#include "katerenderrange.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "katerenderrange.h"
+#include "katetextline.h"
+#include "kateview.h"
 
-#include "katecompletionwidget.h"
 #include "katecompletionmodel.h"
 #include "katecompletiontree.h"
+#include "katecompletionwidget.h"
 
 // Currently disable because it doesn't work
 #define DISABLE_INTERNAL_HIGHLIGHTING

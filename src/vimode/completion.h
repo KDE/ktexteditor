@@ -21,8 +21,8 @@
 #ifndef KATEVI_COMPLETION_H
 #define KATEVI_COMPLETION_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 namespace KateVi
 {

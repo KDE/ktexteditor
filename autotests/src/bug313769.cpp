@@ -20,11 +20,11 @@
 #include "bug313769.h"
 #include "moc_bug313769.cpp"
 
-#include <katedocument.h>
 #include <katebuffer.h>
+#include <kateconfig.h>
+#include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
-#include <kateconfig.h>
 #include <ktexteditor/range.h>
 
 #include <QtTestWidgets>

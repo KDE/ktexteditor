@@ -25,19 +25,19 @@
 // BEGIN INCLUDES
 #include "katesyntaxmanager.h"
 
-#include "katetextline.h"
-#include "katedocument.h"
-#include "katerenderer.h"
-#include "kateglobal.h"
-#include "kateschema.h"
 #include "kateconfig.h"
+#include "katedefaultcolors.h"
+#include "katedocument.h"
 #include "kateextendedattribute.h"
+#include "kateglobal.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
-#include "katedefaultcolors.h"
+#include "katerenderer.h"
+#include "kateschema.h"
+#include "katetextline.h"
 
-#include <KConfigGroup>
 #include <KColorUtils>
+#include <KConfigGroup>
 // END
 
 using namespace KTextEditor;

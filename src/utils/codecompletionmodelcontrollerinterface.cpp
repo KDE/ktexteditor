@@ -22,8 +22,8 @@
 #include <QModelIndex>
 #include <QRegularExpression>
 
-#include <ktexteditor/view.h>
 #include <ktexteditor/document.h>
+#include <ktexteditor/view.h>
 
 namespace KTextEditor
 {

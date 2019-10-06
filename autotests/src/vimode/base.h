@@ -22,11 +22,11 @@
 #define BASE_TEST_H
 
 #include <QMainWindow>
-#include <QtTestWidgets>
 #include <QVBoxLayout>
+#include <QtTestWidgets>
+#include <inputmodemanager.h>
 #include <katedocument.h>
 #include <kateview.h>
-#include <inputmodemanager.h>
 
 class QLineEdit;
 namespace KateVi

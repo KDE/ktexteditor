@@ -21,29 +21,29 @@
 #include "config.h"
 #include "kateglobal.h"
 
-#include "katetextbuffer.h"
 #include "katesecuretextbuffer_p.h"
+#include "katetextbuffer.h"
 #include "katetextloader.h"
 
 // this is unfortunate, but needed for performance
 #include "katedocument.h"
-#include "kateview.h"
 #include "katepartdebug.h"
+#include "kateview.h"
 
 #ifndef Q_OS_WIN
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 // sadly there seems to be no possibility in Qt to determine detailed error
 // codes about e.g. file open errors, so we need to resort to evaluating
 // errno directly on platforms that support this
 #define CAN_USE_ERRNO
 #endif
 
-#include <QFile>
-#include <QTemporaryFile>
-#include <QFileInfo>
-#include <QCryptographicHash>
 #include <QBuffer>
+#include <QCryptographicHash>
+#include <QFile>
+#include <QFileInfo>
+#include <QTemporaryFile>
 
 #if 0
 #define BUFFER_DEBUG qCDebug(LOG_KTE)

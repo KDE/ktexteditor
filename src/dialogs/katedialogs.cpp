@@ -28,72 +28,72 @@
 // BEGIN Includes
 #include "katedialogs.h"
 
-#include <ktexteditor_version.h>
 #include <ktexteditor/message.h>
+#include <ktexteditor_version.h>
 
 #include "kateautoindent.h"
 #include "katebuffer.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "kateschema.h"
 #include "katemodeconfigpage.h"
+#include "kateschema.h"
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
 
 // auto generated ui files
-#include "ui_textareaappearanceconfigwidget.h"
 #include "ui_bordersappearanceconfigwidget.h"
-#include "ui_navigationconfigwidget.h"
+#include "ui_completionconfigtab.h"
 #include "ui_editconfigwidget.h"
 #include "ui_indentationconfigwidget.h"
-#include "ui_completionconfigtab.h"
-#include "ui_opensaveconfigwidget.h"
+#include "ui_navigationconfigwidget.h"
 #include "ui_opensaveconfigadvwidget.h"
+#include "ui_opensaveconfigwidget.h"
 #include "ui_spellcheckconfigwidget.h"
+#include "ui_textareaappearanceconfigwidget.h"
 
 #include <KIO/Job>
 #include <kjobwidgets.h>
 
+#include "kateabstractinputmodefactory.h"
+#include "katepartdebug.h"
+#include <KActionCollection>
 #include <KCharsets>
 #include <KColorCombo>
 #include <KComboBox>
 #include <KIconLoader>
-#include "katepartdebug.h"
-#include "kateabstractinputmodefactory.h"
-#include <KShortcutsDialog>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KProcess>
 #include <KRun>
 #include <KSeparator>
-#include <KActionCollection>
+#include <KShortcutsDialog>
 
-#include <QFile>
-#include <QClipboard>
-#include <QMap>
-#include <QStringList>
-#include <QTextCodec>
-#include <QTextStream>
-#include <QTemporaryFile>
-#include <QKeyEvent>
-#include <QPainter>
 #include <QCheckBox>
+#include <QClipboard>
 #include <QComboBox>
 #include <QDialog>
+#include <QDomDocument>
+#include <QFile>
 #include <QFileDialog>
 #include <QGroupBox>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QLayout>
+#include <QMap>
+#include <QPainter>
 #include <QRadioButton>
 #include <QSettings>
 #include <QSlider>
 #include <QSpinBox>
+#include <QStringList>
 #include <QTabBar>
 #include <QTabWidget>
+#include <QTemporaryFile>
+#include <QTextCodec>
+#include <QTextStream>
 #include <QToolButton>
 #include <QWhatsThis>
-#include <QDomDocument>
 
 // END
 

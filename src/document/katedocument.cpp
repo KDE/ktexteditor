@@ -24,68 +24,68 @@
 */
 
 // BEGIN includes
-#include "config.h"
 #include "katedocument.h"
-#include "kateglobal.h"
-#include "katedialogs.h"
-#include "katehighlight.h"
-#include "kateview.h"
+#include "config.h"
+#include "kateabstractinputmode.h"
 #include "kateautoindent.h"
-#include "katetextline.h"
-#include "katerenderer.h"
-#include "kateregexp.h"
-#include "kateplaintextsearch.h"
-#include "kateregexpsearch.h"
-#include "kateconfig.h"
-#include "katemodemanager.h"
-#include "kateschema.h"
 #include "katebuffer.h"
-#include "kateundomanager.h"
-#include "spellcheck/prefixstore.h"
-#include "spellcheck/ontheflycheck.h"
-#include "spellcheck/spellcheck.h"
+#include "kateconfig.h"
+#include "katedialogs.h"
+#include "kateglobal.h"
+#include "katehighlight.h"
+#include "katemodemanager.h"
+#include "katepartdebug.h"
+#include "kateplaintextsearch.h"
+#include "kateregexp.h"
+#include "kateregexpsearch.h"
+#include "katerenderer.h"
+#include "kateschema.h"
 #include "katescriptmanager.h"
 #include "kateswapfile.h"
-#include "katepartdebug.h"
-#include "printing/kateprinter.h"
-#include "kateabstractinputmode.h"
 #include "katetemplatehandler.h"
+#include "katetextline.h"
+#include "kateundomanager.h"
 #include "katevariableexpansionmanager.h"
+#include "kateview.h"
+#include "printing/kateprinter.h"
+#include "spellcheck/ontheflycheck.h"
+#include "spellcheck/prefixstore.h"
+#include "spellcheck/spellcheck.h"
 
 #if EDITORCONFIG_FOUND
 #include "editorconfig.h"
 #endif
 
-#include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Attribute>
+#include <KTextEditor/DocumentCursor>
 
-#include <KParts/OpenUrlArguments>
+#include <KCodecs>
+#include <KConfigGroup>
+#include <KFileItem>
 #include <KIO/Job>
 #include <KIO/JobUiDelegate>
-#include <KFileItem>
 #include <KJobWidgets>
 #include <KMessageBox>
+#include <KMountPoint>
+#include <KParts/OpenUrlArguments>
 #include <KStandardAction>
-#include <KXMLGUIFactory>
-#include <kdirwatch.h>
-#include <KCodecs>
 #include <KStringHandler>
 #include <KToggleAction>
-#include <KConfigGroup>
-#include <KMountPoint>
+#include <KXMLGUIFactory>
+#include <kdirwatch.h>
 
+#include <QApplication>
+#include <QClipboard>
 #include <QCryptographicHash>
 #include <QFile>
+#include <QFileDialog>
 #include <QMap>
+#include <QMimeDatabase>
+#include <QRegularExpression>
+#include <QTemporaryFile>
 #include <QTextCodec>
 #include <QTextStream>
 #include <QTimer>
-#include <QClipboard>
-#include <QApplication>
-#include <QFileDialog>
-#include <QMimeDatabase>
-#include <QTemporaryFile>
-#include <QRegularExpression>
 
 #include <cmath>
 

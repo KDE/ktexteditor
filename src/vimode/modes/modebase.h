@@ -28,8 +28,8 @@
 #include <ktexteditor_export.h>
 
 #include "kateview.h"
-#include <vimode/range.h>
 #include <vimode/definitions.h>
+#include <vimode/range.h>
 
 class QKeyEvent;
 class QString;

@@ -19,16 +19,16 @@
  */
 #include "katetextanimation.h"
 
-#include "kateviewinternal.h"
 #include "katerenderer.h"
+#include "kateviewinternal.h"
 
 #include <ktexteditor/document.h>
 
-#include <QTimeLine>
 #include <QPainter>
+#include <QPointF>
 #include <QRect>
 #include <QSizeF>
-#include <QPointF>
+#include <QTimeLine>
 
 KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEditor::Attribute::Ptr attribute, KateViewInternal *view)
     : QObject(view)

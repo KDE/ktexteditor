@@ -24,18 +24,18 @@
 #undef TRANSLATION_DOMAIN
 
 #include "katescripthelpers.h"
+#include "katedocument.h"
+#include "katepartdebug.h"
 #include "katescript.h"
 #include "katescriptdocument.h"
 #include "katescriptview.h"
 #include "kateview.h"
-#include "katedocument.h"
-#include "katepartdebug.h"
 
 #include <iostream>
 
+#include <QFile>
 #include <QJSEngine>
 #include <QJSValue>
-#include <QFile>
 #include <QStandardPaths>
 
 #include <QDebug>

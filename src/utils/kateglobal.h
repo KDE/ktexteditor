@@ -22,23 +22,23 @@
 #ifndef KATE_GLOBAL_H
 #define KATE_GLOBAL_H
 
-#include <ktexteditor_export.h>
 #include "katescript.h"
 #include "variable.h"
+#include <ktexteditor_export.h>
 
-#include <ktexteditor/editor.h>
 #include "ktexteditor/view.h"
+#include <ktexteditor/editor.h>
 
 #include <KAboutData>
 #include <KSharedConfig>
 
 #include <KTextEditor/Application>
-#include <KTextEditor/MainWindow>
 #include <KTextEditor/Command>
+#include <KTextEditor/MainWindow>
 
 #include <QList>
-#include <QPointer>
 #include <QMap>
+#include <QPointer>
 #include <QScopedPointer>
 
 class QStringListModel;

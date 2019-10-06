@@ -18,8 +18,8 @@
  */
 
 #include "mode/katewildcardmatcher.h"
-#include <QtGlobal>
 #include <QtDebug>
+#include <QtGlobal>
 
 bool testCase(const char *candidate, const char *wildcard)
 {

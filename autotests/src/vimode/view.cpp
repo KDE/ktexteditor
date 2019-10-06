@@ -18,11 +18,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "view.h"
 #include <QClipboard>
+#include <inputmode/kateviinputmode.h>
 #include <katebuffer.h>
 #include <kateconfig.h>
-#include <inputmode/kateviinputmode.h>
-#include "view.h"
 
 using namespace KTextEditor;
 

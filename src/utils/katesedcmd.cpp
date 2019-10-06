@@ -22,11 +22,11 @@
 
 #include "katesedcmd.h"
 
-#include "katedocument.h"
-#include "kateview.h"
-#include "kateglobal.h"
 #include "katecmd.h"
+#include "katedocument.h"
+#include "kateglobal.h"
 #include "katepartdebug.h"
+#include "kateview.h"
 
 #include <KLocalizedString>
 

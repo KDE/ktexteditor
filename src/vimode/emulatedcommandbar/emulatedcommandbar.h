@@ -24,10 +24,10 @@
 #include "kateviewhelpers.h"
 #include <vimode/cmds.h>
 
-#include <ktexteditor/range.h>
-#include <ktexteditor/movingrange.h>
 #include "../searcher.h"
 #include "activemode.h"
+#include <ktexteditor/movingrange.h>
+#include <ktexteditor/range.h>
 
 namespace KTextEditor
 {

@@ -24,8 +24,8 @@
 #ifndef KTEXTEDITOR_INLINENOTE_H
 #define KTEXTEDITOR_INLINENOTE_H
 
-#include <ktexteditor/view.h>
 #include <ktexteditor/cursor.h>
+#include <ktexteditor/view.h>
 
 class QFont;
 class KateInlineNoteData;

@@ -21,23 +21,23 @@
 
 #pragma once
 
-#include "katetextline.h"
 #include "kateextendedattribute.h"
+#include "katetextline.h"
 
+#include <KActionMenu>
+#include <KConfig>
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/Repository>
-#include <KConfig>
-#include <KActionMenu>
 
-#include <QVector>
-#include <QList>
 #include <QHash>
+#include <QList>
 #include <QMap>
+#include <QVector>
 
-#include <QObject>
-#include <QStringList>
-#include <QPointer>
 #include <QDate>
+#include <QObject>
+#include <QPointer>
+#include <QStringList>
 
 #include <memory>
 

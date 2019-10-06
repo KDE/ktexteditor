@@ -17,10 +17,10 @@
  */
 
 #include "katenormalinputmode.h"
-#include "kateviewinternal.h"
+#include "katecompletionwidget.h"
 #include "kateconfig.h"
 #include "katesearchbar.h"
-#include "katecompletionwidget.h"
+#include "kateviewinternal.h"
 
 #include <KLocalizedString>
 

@@ -25,8 +25,8 @@
 #ifndef KATE_INLINENOTE_DATA_H
 #define KATE_INLINENOTE_DATA_H
 
-#include <ktexteditor/cursor.h>
 #include <QFont>
+#include <ktexteditor/cursor.h>
 
 namespace KTextEditor
 {

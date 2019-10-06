@@ -24,13 +24,13 @@
 #ifndef KATEVI_NORMAL_VI_MODE_H
 #define KATEVI_NORMAL_VI_MODE_H
 
-#include <vimode/range.h>
 #include <vimode/modes/modebase.h>
+#include <vimode/range.h>
 
-#include <QVector>
-#include <QStack>
 #include <QHash>
 #include <QRegExp>
+#include <QStack>
+#include <QVector>
 
 #include <ktexteditor/range.h>
 #include <ktexteditor_export.h>

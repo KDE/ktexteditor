@@ -26,9 +26,9 @@
 
 #include <QVector>
 
-#include "katescript.h"
-#include "kateindentscript.h"
 #include "katecommandlinescript.h"
+#include "kateindentscript.h"
+#include "katescript.h"
 
 class QString;
 

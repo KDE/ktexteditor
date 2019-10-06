@@ -24,12 +24,12 @@
 #ifndef KATE_TEXTRANGE_H
 #define KATE_TEXTRANGE_H
 
-#include <ktexteditor/view.h>
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/movingrangefeedback.h>
+#include <ktexteditor/view.h>
 
-#include <ktexteditor_export.h>
 #include "katetextcursor.h"
+#include <ktexteditor_export.h>
 
 namespace Kate
 {

@@ -20,19 +20,19 @@
 
 #include "commandmode.h"
 
+#include "../commandrangeexpressionparser.h"
 #include "emulatedcommandbar.h"
 #include "interactivesedreplacemode.h"
 #include "searchmode.h"
-#include "../commandrangeexpressionparser.h"
 
+#include "../globalstate.h"
+#include "../history.h"
 #include <vimode/appcommands.h>
 #include <vimode/cmds.h>
 #include <vimode/inputmodemanager.h>
-#include "../globalstate.h"
-#include "../history.h"
 
-#include "katescriptmanager.h"
 #include "katecmds.h"
+#include "katescriptmanager.h"
 
 #include <KLocalizedString>
 

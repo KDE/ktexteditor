@@ -23,11 +23,11 @@
 
 #ifndef QT_NO_ACCESSIBILITY
 
-#include "kateviewinternal.h"
 #include "katedocument.h"
+#include "kateviewinternal.h"
 
-#include <QAccessible>
 #include <KLocalizedString>
+#include <QAccessible>
 #include <QAccessibleWidget>
 
 /**

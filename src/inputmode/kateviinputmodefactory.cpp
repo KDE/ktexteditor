@@ -21,8 +21,8 @@
 #include "vimode/globalstate.h"
 #include <vimode/config/configtab.h>
 
-#include <KLocalizedString>
 #include <KConfig>
+#include <KLocalizedString>
 
 KateViInputModeFactory::KateViInputModeFactory()
     : KateAbstractInputModeFactory()

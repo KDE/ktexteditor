@@ -22,19 +22,19 @@
 
 #include "katestyletreewidget.h"
 #include "kateconfig.h"
-#include "kateextendedattribute.h"
 #include "katedefaultcolors.h"
+#include "kateextendedattribute.h"
 #include "kateglobal.h"
 
 #include <KLocalizedString>
 #include <KMessageBox>
 
-#include <QPainter>
-#include <QKeyEvent>
 #include <QAction>
 #include <QColorDialog>
 #include <QHeaderView>
+#include <QKeyEvent>
 #include <QMenu>
+#include <QPainter>
 #include <QStyledItemDelegate>
 
 // BEGIN KateStyleTreeDelegate

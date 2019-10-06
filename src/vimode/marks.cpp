@@ -17,8 +17,8 @@
  */
 
 #include "marks.h"
-#include "kateview.h"
 #include "katedocument.h"
+#include "kateview.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/modes/normalvimode.h>
 

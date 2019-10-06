@@ -20,9 +20,9 @@
 #include "revision_test.h"
 #include "moc_revision_test.cpp"
 
-#include <kateglobal.h>
-#include <katedocument.h>
 #include <katebuffer.h>
+#include <katedocument.h>
+#include <kateglobal.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/range.h>
 

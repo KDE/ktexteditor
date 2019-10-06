@@ -20,22 +20,22 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <vimode/modes/insertvimode.h>
-#include <vimode/inputmodemanager.h>
+#include "katecompletiontree.h"
+#include "katecompletionwidget.h"
+#include "kateconfig.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
-#include "kateconfig.h"
-#include "katecompletionwidget.h"
-#include "katecompletiontree.h"
-#include "kateglobal.h"
-#include <vimode/keyparser.h>
-#include "katepartdebug.h"
 #include "kateviinputmode.h"
 #include <vimode/completionrecorder.h>
 #include <vimode/completionreplayer.h>
-#include <vimode/marks.h>
-#include <vimode/macrorecorder.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/keyparser.h>
 #include <vimode/lastchangerecorder.h>
+#include <vimode/macrorecorder.h>
+#include <vimode/marks.h>
+#include <vimode/modes/insertvimode.h>
 
 #include <KLocalizedString>
 

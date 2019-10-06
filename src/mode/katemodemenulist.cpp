@@ -21,19 +21,19 @@
 // BEGIN Includes
 #include "katemodemenulist.h"
 
-#include "katedocument.h"
 #include "kateconfig.h"
-#include "kateview.h"
+#include "katedocument.h"
 #include "kateglobal.h"
-#include "katesyntaxmanager.h"
 #include "katepartdebug.h"
+#include "katesyntaxmanager.h"
+#include "kateview.h"
 
-#include <QWidgetAction>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QFrame>
 #include <QAbstractItemView>
 #include <QApplication>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QWidgetAction>
 // END Includes
 
 namespace

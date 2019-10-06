@@ -22,8 +22,8 @@
 
 #include <QTextFormat>
 
-#include <QSharedData>
 #include <QExplicitlySharedDataPointer>
+#include <QSharedData>
 
 #include <ktexteditor_export.h>
 

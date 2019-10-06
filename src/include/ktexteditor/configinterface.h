@@ -20,9 +20,9 @@
 #ifndef KTEXTEDITOR_CONFIGINTERFACE_H
 #define KTEXTEDITOR_CONFIGINTERFACE_H
 
-#include <ktexteditor_export.h>
 #include <QStringList>
 #include <QVariant>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

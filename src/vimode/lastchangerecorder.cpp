@@ -19,9 +19,9 @@
  */
 
 #include "lastchangerecorder.h"
+#include "completionreplayer.h"
 #include <vimode/inputmodemanager.h>
 #include <vimode/keyparser.h>
-#include "completionreplayer.h"
 
 using namespace KateVi;
 

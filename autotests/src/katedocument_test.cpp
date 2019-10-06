@@ -20,16 +20,16 @@
 #include "katedocument_test.h"
 #include "moc_katedocument_test.cpp"
 
-#include <katedocument.h>
-#include <ktexteditor/movingcursor.h>
 #include <kateconfig.h>
-#include <kateview.h>
+#include <katedocument.h>
 #include <kateglobal.h>
+#include <kateview.h>
+#include <ktexteditor/movingcursor.h>
 
-#include <QtTestWidgets>
 #include <QRegularExpression>
-#include <QTemporaryFile>
 #include <QSignalSpy>
+#include <QTemporaryFile>
+#include <QtTestWidgets>
 
 #include <stdio.h>
 

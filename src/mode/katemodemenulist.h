@@ -30,17 +30,17 @@
 #ifndef KATEMODEMENULIST_H
 #define KATEMODEMENULIST_H
 
-#include <QMenu>
-#include <QListView>
-#include <QStandardItemModel>
-#include <QLineEdit>
-#include <QScrollBar>
-#include <QPushButton>
 #include <QGridLayout>
-#include <QString>
-#include <QLabel>
 #include <QIcon>
 #include <QKeyEvent>
+#include <QLabel>
+#include <QLineEdit>
+#include <QListView>
+#include <QMenu>
+#include <QPushButton>
+#include <QScrollBar>
+#include <QStandardItemModel>
+#include <QString>
 
 #include "katemodemanager.h"
 

@@ -19,8 +19,8 @@
 
 #include "kateindentscript.h"
 
-#include <QJSValue>
 #include <QJSEngine>
+#include <QJSValue>
 
 #include "katedocument.h"
 #include "kateview.h"

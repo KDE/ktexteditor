@@ -26,10 +26,10 @@
 // BEGIN Includes
 #include "testutils.h"
 
-#include "kateview.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "katescripthelpers.h"
+#include "kateview.h"
 #include "ktexteditor/cursor.h"
 #include "ktexteditor/range.h"
 

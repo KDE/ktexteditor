@@ -19,10 +19,10 @@
 
 #include "bug286887.h"
 
+#include <kateconfig.h>
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
-#include <kateconfig.h>
 
 #include <QtTestWidgets>
 

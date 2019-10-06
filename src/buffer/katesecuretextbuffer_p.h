@@ -21,9 +21,9 @@
 #ifndef KATE_SECURE_TEXTBUFFER_P_H
 #define KATE_SECURE_TEXTBUFFER_P_H
 
+#include <QCryptographicHash>
 #include <QObject>
 #include <QString>
-#include <QCryptographicHash>
 
 #include <kauth.h>
 

@@ -19,16 +19,16 @@
 
 #include "katescriptview.h"
 
-#include "kateglobal.h"
 #include "katedocument.h"
-#include "kateview.h"
+#include "kateglobal.h"
 #include "katerenderer.h"
 #include "katescript.h"
+#include "kateview.h"
 #include "scriptcursor.h"
 #include "scriptrange.h"
 
-#include <KTextEditor/Command>
 #include <KLocalizedString>
+#include <KTextEditor/Command>
 
 #include <QJSEngine>
 

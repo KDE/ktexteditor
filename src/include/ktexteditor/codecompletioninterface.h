@@ -20,9 +20,9 @@
 #ifndef KTEXTEDITOR_CODECOMPLETIONINTERFACE_H
 #define KTEXTEDITOR_CODECOMPLETIONINTERFACE_H
 
-#include <ktexteditor_export.h>
 #include <QObject>
 #include <ktexteditor/range.h>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

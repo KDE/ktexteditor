@@ -19,8 +19,8 @@
  */
 
 #include "katelinelayout.h"
-#include "katetextlayout.h"
 #include "katetextfolding.h"
+#include "katetextlayout.h"
 
 #include <QTextLine>
 

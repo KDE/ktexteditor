@@ -18,11 +18,11 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <view/kateviewinternal.h>
-#include <vimode/modes/replacevimode.h>
-#include <vimode/inputmodemanager.h>
 #include <utils/kateconfig.h>
+#include <view/kateviewinternal.h>
+#include <vimode/inputmodemanager.h>
 #include <vimode/marks.h>
+#include <vimode/modes/replacevimode.h>
 
 using namespace KateVi;
 

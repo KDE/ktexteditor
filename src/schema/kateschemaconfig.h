@@ -22,12 +22,12 @@
 #ifndef KATE_SCHEMA_CONFIG_H
 #define KATE_SCHEMA_CONFIG_H
 
-#include "katedialogs.h"
 #include "katecolortreewidget.h"
+#include "katedialogs.h"
 #include "kateextendedattribute.h"
 
-#include <QMap>
 #include <QFont>
+#include <QMap>
 
 class KateStyleTreeWidget;
 class KComboBox;

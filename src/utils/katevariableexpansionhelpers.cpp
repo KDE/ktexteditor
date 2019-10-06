@@ -19,23 +19,23 @@
  */
 #include "katevariableexpansionhelpers.h"
 
-#include <KTextEditor/Editor>
-#include <KTextEditor/Application>
-#include <KTextEditor/MainWindow>
 #include "kateglobal.h"
 #include <KLocalizedString>
+#include <KTextEditor/Application>
+#include <KTextEditor/Editor>
+#include <KTextEditor/MainWindow>
 
-#include <QCoreApplication>
 #include <QAbstractItemModel>
 #include <QAction>
+#include <QCoreApplication>
 #include <QEvent>
 #include <QHelpEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
+#include <QSortFilterProxyModel>
 #include <QStyleOptionToolButton>
 #include <QStylePainter>
-#include <QSortFilterProxyModel>
 #include <QTextEdit>
 #include <QToolButton>
 #include <QToolTip>

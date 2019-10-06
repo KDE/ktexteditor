@@ -19,11 +19,11 @@
 
 #include "codecompletiontestmodel.h"
 
-#include <ktexteditor/view.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/codecompletioninterface.h>
 #include <kateglobal.h>
 #include <katewordcompletion.h>
+#include <ktexteditor/codecompletioninterface.h>
+#include <ktexteditor/document.h>
+#include <ktexteditor/view.h>
 
 CodeCompletionTestModel::CodeCompletionTestModel(KTextEditor::View *parent, const QString &startText)
     : KTextEditor::CodeCompletionModel(parent)

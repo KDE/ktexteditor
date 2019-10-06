@@ -31,11 +31,11 @@
 
 #include <KLocalizedString>
 
-#include <QMimeData>
 #include <QApplication>
 #include <QClipboard>
-#include <QTextCodec>
 #include <QFileDialog>
+#include <QMimeData>
+#include <QTextCodec>
 
 void KateExporter::exportToClipboard()
 {

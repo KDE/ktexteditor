@@ -23,12 +23,12 @@
 
 #include <unordered_set>
 
-#include <QVector>
 #include <QSet>
+#include <QVector>
 
-#include <ktexteditor_export.h>
-#include <ktexteditor/cursor.h>
 #include "katetextline.h"
+#include <ktexteditor/cursor.h>
+#include <ktexteditor_export.h>
 
 namespace Kate
 {

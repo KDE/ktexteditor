@@ -20,8 +20,8 @@
 #ifndef KATE_SCRIPT_VIEW_H
 #define KATE_SCRIPT_VIEW_H
 
-#include <QObject>
 #include <QJSValue>
+#include <QObject>
 
 #include <ktexteditor_export.h>
 

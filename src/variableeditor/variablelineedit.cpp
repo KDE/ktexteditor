@@ -21,15 +21,15 @@
 
 #include "variablelineedit.h"
 
-#include "variableitem.h"
-#include "variablelistview.h"
 #include "kateautoindent.h"
-#include "katesyntaxmanager.h"
-#include "kateschema.h"
-#include "kateview.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katerenderer.h"
+#include "kateschema.h"
+#include "katesyntaxmanager.h"
+#include "kateview.h"
+#include "variableitem.h"
+#include "variablelistview.h"
 
 #include <QApplication>
 #include <QComboBox>

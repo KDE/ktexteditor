@@ -21,10 +21,10 @@
 #ifndef KTEXTEDITOR_VIEW_H
 #define KTEXTEDITOR_VIEW_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/attribute.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/range.h>
+#include <ktexteditor_export.h>
 
 // gui merging
 #include <KXMLGUIClient>

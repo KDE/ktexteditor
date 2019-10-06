@@ -19,21 +19,21 @@
 
 #include "katebookmarks.h"
 
+#include "kateabstractinputmode.h"
 #include "katedocument.h"
 #include "kateview.h"
-#include "kateabstractinputmode.h"
 
 #include <KActionCollection>
+#include <KActionMenu>
 #include <KGuiItem>
+#include <KLocalizedString>
 #include <KStringHandler>
+#include <KToggleAction>
 #include <KXMLGUIClient>
 #include <KXMLGUIFactory>
-#include <KToggleAction>
-#include <KActionMenu>
-#include <KLocalizedString>
 
-#include <QRegularExpression>
 #include <QEvent>
+#include <QRegularExpression>
 #include <QVector>
 
 namespace KTextEditor

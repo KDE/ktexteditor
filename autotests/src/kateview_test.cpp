@@ -20,16 +20,16 @@
 #include "kateview_test.h"
 #include "moc_kateview_test.cpp"
 
-#include <kateglobal.h>
-#include <katedocument.h>
-#include <kateview.h>
-#include <ktexteditor/movingcursor.h>
-#include <kateconfig.h>
 #include <katebuffer.h>
+#include <kateconfig.h>
+#include <katedocument.h>
+#include <kateglobal.h>
+#include <kateview.h>
 #include <ktexteditor/message.h>
+#include <ktexteditor/movingcursor.h>
 
-#include <QtTestWidgets>
 #include <QTemporaryFile>
+#include <QtTestWidgets>
 
 #define testNewRow() (QTest::newRow(QString("line %1").arg(__LINE__).toLatin1().data()))
 

@@ -23,13 +23,13 @@
 #define KATECOMPLETIONMODEL_H
 
 #include <QAbstractProxyModel>
-#include <QPair>
 #include <QList>
+#include <QPair>
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include <ktexteditor_export.h>
 #include "expandingtree/expandingwidgetmodel.h"
+#include <ktexteditor_export.h>
 
 class KateCompletionWidget;
 class KateArgumentHintModel;

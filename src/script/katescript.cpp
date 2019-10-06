@@ -19,16 +19,16 @@
 // Boston, MA 02110-1301, USA.
 
 #include "katescript.h"
-#include "katescripteditor.h"
-#include "katescriptdocument.h"
-#include "katescriptview.h"
-#include "katescripthelpers.h"
-#include "kateview.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
+#include "katescriptdocument.h"
+#include "katescripteditor.h"
+#include "katescripthelpers.h"
+#include "katescriptview.h"
+#include "kateview.h"
 
-#include <iostream>
 #include <KLocalizedString>
+#include <iostream>
 
 #include <QFile>
 #include <QFileInfo>

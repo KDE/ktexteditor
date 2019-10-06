@@ -26,13 +26,13 @@
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 
-#include <kateglobal.h>
-#include <kateview.h>
-#include <katecompletionwidget.h>
 #include <katecompletionmodel.h>
 #include <katecompletiontree.h>
-#include <katerenderer.h>
+#include <katecompletionwidget.h>
 #include <kateconfig.h>
+#include <kateglobal.h>
+#include <katerenderer.h>
+#include <kateview.h>
 
 #include <QtTestWidgets>
 

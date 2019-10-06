@@ -20,8 +20,8 @@
 
 #include "interactivesedreplacemode.h"
 
-#include <QLabel>
 #include <QKeyEvent>
+#include <QLabel>
 
 using namespace KateVi;
 

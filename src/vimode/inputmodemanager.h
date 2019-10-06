@@ -25,12 +25,12 @@
 
 #include <QKeyEvent>
 #include <QStack>
-#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>
+#include <ktexteditor_export.h>
 
-#include <vimode/definitions.h>
 #include <vimode/completion.h>
+#include <vimode/definitions.h>
 
 class KConfigGroup;
 class KateViewInternal;

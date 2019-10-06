@@ -19,11 +19,11 @@
 
 #include "scriptdocument_test.h"
 
-#include <kateglobal.h>
 #include "ktexteditor/cursor.h"
-#include <ktexteditor/view.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <katescriptdocument.h>
+#include <ktexteditor/view.h>
 
 #include <QJSEngine>
 #include <QtTestWidgets>

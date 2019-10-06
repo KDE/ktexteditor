@@ -25,10 +25,10 @@
 
 #include "ktexteditor/range.h"
 
-#include <QObject>
 #include <QFlags>
-#include <QJsonDocument>
 #include <QJsonArray>
+#include <QJsonDocument>
+#include <QObject>
 
 namespace Kate
 {

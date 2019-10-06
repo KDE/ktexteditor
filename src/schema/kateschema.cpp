@@ -24,9 +24,9 @@
 
 #include "kateconfig.h"
 #include "kateglobal.h"
-#include "kateview.h"
-#include "katerenderer.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateview.h"
 
 #include <KConfigGroup>
 // END

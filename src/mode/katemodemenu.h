@@ -21,9 +21,9 @@
 #ifndef KATE_MODEMENU_H
 #define KATE_MODEMENU_H
 
-#include <QStringList>
-#include <QPointer>
 #include <QHash>
+#include <QPointer>
+#include <QStringList>
 
 #include "katedialogs.h"
 #include "katemodemanager.h"

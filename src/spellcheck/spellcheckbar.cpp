@@ -30,14 +30,14 @@
 
 #include <qprogressdialog.h>
 
-#include <QDialogButtonBox>
-#include <QListView>
-#include <QStringListModel>
-#include <QPushButton>
 #include <QComboBox>
+#include <QDialogButtonBox>
 #include <QLabel>
-#include <QTimer>
+#include <QListView>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QStringListModel>
+#include <QTimer>
 
 // to initially disable sorting in the suggestions listview
 #define NONSORTINGCOLUMN 2

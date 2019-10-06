@@ -20,13 +20,13 @@
 
 #include "expandingtree.h"
 
-#include <QTextLayout>
-#include <QTextDocument>
-#include <QHeaderView>
-#include <QAbstractTextDocumentLayout>
-#include <QPainter>
-#include "katepartdebug.h"
 #include "expandingwidgetmodel.h"
+#include "katepartdebug.h"
+#include <QAbstractTextDocumentLayout>
+#include <QHeaderView>
+#include <QPainter>
+#include <QTextDocument>
+#include <QTextLayout>
 
 ExpandingTree::ExpandingTree(QWidget *parent)
     : QTreeView(parent)

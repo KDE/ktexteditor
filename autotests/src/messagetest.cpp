@@ -20,11 +20,11 @@
 
 #include "messagetest.h"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
+#include <katemessagewidget.h>
 #include <kateview.h>
 #include <ktexteditor/message.h>
-#include <katemessagewidget.h>
 
 #include <QtTestWidgets>
 

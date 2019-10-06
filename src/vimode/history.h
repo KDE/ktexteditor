@@ -20,8 +20,8 @@
 #ifndef KATEVI_HISTORY_H
 #define KATEVI_HISTORY_H
 
-#include <ktexteditor_export.h>
 #include <QStringList>
+#include <ktexteditor_export.h>
 
 namespace KateVi
 {

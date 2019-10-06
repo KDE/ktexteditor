@@ -21,9 +21,9 @@
 #ifndef KATE_MODEMANAGER_H
 #define KATE_MODEMANAGER_H
 
-#include <QStringList>
-#include <QPointer>
 #include <QHash>
+#include <QPointer>
+#include <QStringList>
 
 #include <KLocalizedString>
 

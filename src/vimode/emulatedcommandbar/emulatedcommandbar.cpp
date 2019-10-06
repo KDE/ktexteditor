@@ -20,29 +20,29 @@
 
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
+#include "../commandrangeexpressionparser.h"
+#include "../globalstate.h"
+#include "commandmode.h"
+#include "interactivesedreplacemode.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "../commandrangeexpressionparser.h"
 #include "kateview.h"
-#include "../globalstate.h"
-#include <vimode/keyparser.h>
-#include <vimode/inputmodemanager.h>
-#include <inputmode/kateviinputmode.h>
-#include <vimode/modes/normalvimode.h>
 #include "matchhighlighter.h"
-#include "interactivesedreplacemode.h"
 #include "searchmode.h"
-#include "commandmode.h"
+#include <inputmode/kateviinputmode.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/keyparser.h>
+#include <vimode/modes/normalvimode.h>
 
 #include "../history.h"
 
 #include "../registers.h"
 #include "../searcher.h"
 
+#include <QApplication>
+#include <QLabel>
 #include <QLineEdit>
 #include <QVBoxLayout>
-#include <QLabel>
-#include <QApplication>
 
 #include <algorithm>
 

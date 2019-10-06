@@ -25,8 +25,8 @@
 #include <KConfig>
 #include <KLocalizedString>
 
-#include <QStringList>
 #include <QPointer>
+#include <QStringList>
 
 namespace KTextEditor
 {

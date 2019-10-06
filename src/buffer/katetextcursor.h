@@ -26,8 +26,8 @@
 
 #include <ktexteditor/movingcursor.h>
 
-#include <ktexteditor_export.h>
 #include "katetextblock.h"
+#include <ktexteditor_export.h>
 
 namespace Kate
 {

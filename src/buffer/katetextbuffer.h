@@ -22,19 +22,19 @@
 #define KATE_TEXTBUFFER_H
 
 #include <QObject>
-#include <QString>
-#include <QVector>
 #include <QSet>
+#include <QString>
 #include <QTextCodec>
+#include <QVector>
 
 #include <ktexteditor/document.h>
 
 #include "katedocument.h"
-#include <ktexteditor_export.h>
 #include "katetextblock.h"
 #include "katetextcursor.h"
-#include "katetextrange.h"
 #include "katetexthistory.h"
+#include "katetextrange.h"
+#include <ktexteditor_export.h>
 
 // encoding prober
 #include <KEncodingProber>

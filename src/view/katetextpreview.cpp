@@ -20,10 +20,10 @@
 */
 
 #include "katetextpreview.h"
+#include "kateconfig.h"
+#include "katelayoutcache.h"
 #include "katerenderer.h"
 #include "kateviewinternal.h"
-#include "katelayoutcache.h"
-#include "kateconfig.h"
 
 #include <QDebug>
 #include <QPainter>

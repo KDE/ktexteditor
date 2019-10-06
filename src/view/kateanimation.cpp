@@ -25,8 +25,8 @@
 
 #include <KMessageWidget>
 
-#include <QTimer>
 #include <QStyle>
+#include <QTimer>
 
 KateAnimation::KateAnimation(KMessageWidget *widget, EffectType effect)
     : QObject(widget)

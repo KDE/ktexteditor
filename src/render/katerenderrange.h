@@ -22,8 +22,8 @@
 #ifndef KATERENDERRANGE_H
 #define KATERENDERRANGE_H
 
-#include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
+#include <ktexteditor/range.h>
 
 #include <utility>
 #include <vector>

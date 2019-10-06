@@ -22,12 +22,12 @@
 #include "katemodemanager.h"
 #include "katewildcardmatcher.h"
 
-#include "katedocument.h"
 #include "kateconfig.h"
-#include "kateview.h"
+#include "katedocument.h"
 #include "kateglobal.h"
-#include "katesyntaxmanager.h"
 #include "katepartdebug.h"
+#include "katesyntaxmanager.h"
+#include "kateview.h"
 
 #include <KConfigGroup>
 

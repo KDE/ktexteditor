@@ -20,11 +20,11 @@
 
 #include "katehighlightingcmds.h"
 
-#include "katesyntaxmanager.h"
 #include "katedocument.h"
-#include "kateview.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
+#include "katesyntaxmanager.h"
+#include "kateview.h"
 
 #include <QUrl>
 

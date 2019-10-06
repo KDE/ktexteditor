@@ -19,9 +19,9 @@
  */
 
 #include "katetextfolding.h"
+#include "documentcursor.h"
 #include "katetextbuffer.h"
 #include "katetextrange.h"
-#include "documentcursor.h"
 
 #include <QJsonObject>
 

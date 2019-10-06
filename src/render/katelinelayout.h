@@ -21,8 +21,8 @@
 #ifndef _KATE_LINELAYOUT_H_
 #define _KATE_LINELAYOUT_H_
 
-#include <QSharedData>
 #include <QExplicitlySharedDataPointer>
+#include <QSharedData>
 
 #include "katetextline.h"
 

@@ -19,9 +19,9 @@
 #define WORDCOUNTER_H
 
 #include <QObject>
-#include <QVector>
 #include <QString>
 #include <QTimer>
+#include <QVector>
 
 namespace KTextEditor
 {

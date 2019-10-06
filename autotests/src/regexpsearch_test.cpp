@@ -20,8 +20,8 @@
 #include "regexpsearch_test.h"
 #include "moc_regexpsearch_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateregexpsearch.h>
 
 #include <QtTestWidgets>

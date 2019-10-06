@@ -19,14 +19,14 @@
  */
 
 #include "macrorecorder.h"
-#include <vimode/inputmodemanager.h>
 #include "completionrecorder.h"
-#include "kateview.h"
-#include <vimode/keymapper.h>
-#include "globalstate.h"
-#include "macros.h"
 #include "completionreplayer.h"
+#include "globalstate.h"
+#include "kateview.h"
 #include "lastchangerecorder.h"
+#include "macros.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/keymapper.h>
 
 namespace
 {

@@ -19,8 +19,8 @@
 
 #include "katekeywordcompletion.h"
 
-#include "katehighlight.h"
 #include "katedocument.h"
+#include "katehighlight.h"
 #include "katetextline.h"
 
 #include <ktexteditor/view.h>

@@ -21,12 +21,12 @@
 #include "moc_variable_test.cpp"
 
 #include <kateglobal.h>
-#include <ktexteditor/editor.h>
 #include <ktexteditor/document.h>
+#include <ktexteditor/editor.h>
 #include <ktexteditor/view.h>
 
-#include <QtTest>
 #include <QUuid>
+#include <QtTest>
 
 using namespace KTextEditor;
 

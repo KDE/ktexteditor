@@ -26,8 +26,8 @@
 #include <QMap>
 #include <QObject>
 #include <QPair>
-#include <QString>
 #include <QSet>
+#include <QString>
 
 #include <sonnet/speller.h>
 

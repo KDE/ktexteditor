@@ -20,8 +20,8 @@
 
 #include "katematch.h"
 
-#include "kateregexpsearch.h"
 #include "katedocument.h"
+#include "kateregexpsearch.h"
 
 KateMatch::KateMatch(KTextEditor::DocumentPrivate *document, KTextEditor::SearchOptions options)
     : m_document(document)

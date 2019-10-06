@@ -20,16 +20,16 @@
 */
 
 #include "katebuffer.h"
-#include "katedocument.h"
-#include "katehighlight.h"
-#include "kateconfig.h"
-#include "kateglobal.h"
 #include "kateautoindent.h"
+#include "kateconfig.h"
+#include "katedocument.h"
+#include "kateglobal.h"
+#include "katehighlight.h"
 #include "katepartdebug.h"
 
-#include <KLocalizedString>
 #include <KCharsets>
 #include <KFilterDev>
+#include <KLocalizedString>
 
 #include <QDate>
 #include <QFile>

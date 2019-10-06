@@ -21,10 +21,10 @@
 #ifndef KTEXTEDITOR_MESSAGE_H
 #define KTEXTEDITOR_MESSAGE_H
 
-#include <QObject>
-#include <QList>
 #include <QAction>
 #include <QIcon>
+#include <QList>
+#include <QObject>
 
 #include <ktexteditor_export.h>
 

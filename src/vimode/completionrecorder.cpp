@@ -19,10 +19,10 @@
  */
 
 #include "completionrecorder.h"
-#include <vimode/inputmodemanager.h>
 #include "katepartdebug.h"
-#include "macrorecorder.h"
 #include "lastchangerecorder.h"
+#include "macrorecorder.h"
+#include <vimode/inputmodemanager.h>
 
 #include <QKeyEvent>
 

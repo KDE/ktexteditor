@@ -22,25 +22,25 @@
 #ifndef KATE_VIEW_HELPERS_H
 #define KATE_VIEW_HELPERS_H
 
-#include <KSelectAction>
-#include <KLineEdit>
 #include <KActionMenu>
+#include <KLineEdit>
+#include <KSelectAction>
 
+#include <QColor>
+#include <QHash>
+#include <QLayout>
+#include <QMap>
 #include <QPixmap>
 #include <QPointer>
-#include <QColor>
 #include <QScrollBar>
-#include <QHash>
 #include <QStackedWidget>
-#include <QMap>
-#include <QTimer>
 #include <QTextLayout>
-#include <QLayout>
+#include <QTimer>
 
-#include <ktexteditor/message.h>
-#include <ktexteditor/cursor.h>
-#include <ktexteditor_export.h>
 #include "katetextline.h"
+#include <ktexteditor/cursor.h>
+#include <ktexteditor/message.h>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

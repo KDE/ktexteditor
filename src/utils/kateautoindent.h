@@ -25,8 +25,8 @@
 
 #include <QObject>
 
-#include <ktexteditor/cursor.h>
 #include <KActionMenu>
+#include <ktexteditor/cursor.h>
 
 namespace KTextEditor
 {

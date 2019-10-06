@@ -24,10 +24,10 @@
 #ifndef KTEXTEDITOR_MOVINGRANGE_H
 #define KTEXTEDITOR_MOVINGRANGE_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/range.h>
 #include <ktexteditor/movingcursor.h>
+#include <ktexteditor/range.h>
+#include <ktexteditor_export.h>
 
 #include <QDebug>
 

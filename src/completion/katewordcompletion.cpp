@@ -21,35 +21,35 @@
 
 // BEGIN includes
 #include "katewordcompletion.h"
-#include "kateview.h"
 #include "kateconfig.h"
+#include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katepartdebug.h"
-#include "katedefaultcolors.h"
 #include "katehighlight.h"
+#include "katepartdebug.h"
+#include "kateview.h"
 
 #include <ktexteditor/movingrange.h>
 #include <ktexteditor/range.h>
 
-#include <KLocalizedString>
-#include <KPluginFactory>
+#include <KAboutData>
 #include <KActionCollection>
-#include <KParts/Part>
+#include <KConfigGroup>
+#include <KLocalizedString>
 #include <KPageDialog>
 #include <KPageWidgetModel>
+#include <KParts/Part>
+#include <KPluginFactory>
 #include <KToggleAction>
-#include <KConfigGroup>
-#include <KAboutData>
 
-#include <QRegularExpression>
-#include <QSet>
-#include <QString>
 #include <QAction>
 #include <QCheckBox>
 #include <QLabel>
 #include <QLayout>
+#include <QRegularExpression>
+#include <QSet>
 #include <QSpinBox>
+#include <QString>
 
 // END
 

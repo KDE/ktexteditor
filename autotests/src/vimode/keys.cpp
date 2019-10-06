@@ -18,17 +18,17 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <KLocalizedString>
-#include <kateconfig.h>
-#include <vimode/keymapper.h>
-#include <vimode/keyparser.h>
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include <inputmode/kateviinputmode.h>
 #include "keys.h"
 #include "emulatedcommandbarsetupandteardown.h"
 #include "fakecodecompletiontestmodel.h"
-#include "vimode/mappings.h"
 #include "vimode/globalstate.h"
+#include "vimode/mappings.h"
+#include <KLocalizedString>
+#include <inputmode/kateviinputmode.h>
+#include <kateconfig.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/keymapper.h>
+#include <vimode/keyparser.h>
 
 using namespace KTextEditor;
 using KateVi::KeyParser;

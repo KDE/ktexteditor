@@ -18,15 +18,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "base.h"
+#include "vimode/globalstate.h"
+#include "vimode/macros.h"
+#include "vimode/mappings.h"
+#include <inputmode/kateviinputmode.h>
 #include <kateconfig.h>
 #include <kateglobal.h>
 #include <kateundomanager.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include <inputmode/kateviinputmode.h>
-#include "base.h"
-#include "vimode/macros.h"
-#include "vimode/mappings.h"
-#include "vimode/globalstate.h"
 
 using namespace KateVi;
 using namespace KTextEditor;

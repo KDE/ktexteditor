@@ -20,9 +20,9 @@
 
 #include "katefadeeffect.h"
 
-#include <QWidget>
-#include <QTimeLine>
 #include <QGraphicsOpacityEffect>
+#include <QTimeLine>
+#include <QWidget>
 
 KateFadeEffect::KateFadeEffect(QWidget *widget)
     : QObject(widget)

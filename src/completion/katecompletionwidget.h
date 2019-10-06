@@ -27,9 +27,9 @@
 
 #include <ktexteditor_export.h>
 
-#include <ktexteditor/movingrange.h>
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/codecompletionmodel.h>
+#include <ktexteditor/movingrange.h>
 
 class QToolButton;
 class QPushButton;

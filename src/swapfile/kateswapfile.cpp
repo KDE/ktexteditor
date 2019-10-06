@@ -21,21 +21,21 @@
 
 #include "config.h"
 
-#include "kateswapfile.h"
 #include "kateconfig.h"
-#include "kateswapdiffcreator.h"
-#include "kateundomanager.h"
 #include "katepartdebug.h"
+#include "kateswapdiffcreator.h"
+#include "kateswapfile.h"
+#include "kateundomanager.h"
 
 #include <ktexteditor/view.h>
 
 #include <KLocalizedString>
 #include <KStandardGuiItem>
 
-#include <QFileInfo>
-#include <QDir>
 #include <QApplication>
 #include <QCryptographicHash>
+#include <QDir>
+#include <QFileInfo>
 
 #ifndef Q_OS_WIN
 #include <unistd.h>

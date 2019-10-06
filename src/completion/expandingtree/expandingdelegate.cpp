@@ -20,12 +20,12 @@
 
 #include "expandingdelegate.h"
 
-#include <QTextLine>
-#include <QPainter>
+#include <QApplication>
 #include <QBrush>
 #include <QKeyEvent>
+#include <QPainter>
+#include <QTextLine>
 #include <QTreeView>
-#include <QApplication>
 
 #include "katepartdebug.h"
 

@@ -20,15 +20,15 @@
 
 #include "kateargumenthinttree.h"
 
-#include <QHeaderView>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QHeaderView>
 #include <QScrollBar>
 
-#include "kateargumenthintmodel.h"
-#include "katecompletionwidget.h"
 #include "expandingtree/expandingwidgetmodel.h"
+#include "kateargumenthintmodel.h"
 #include "katecompletiondelegate.h"
+#include "katecompletionwidget.h"
 #include "kateview.h"
 #include <QModelIndex>
 

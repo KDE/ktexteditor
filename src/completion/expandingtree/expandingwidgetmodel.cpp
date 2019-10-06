@@ -20,15 +20,15 @@
 
 #include "expandingwidgetmodel.h"
 
-#include <QTreeView>
-#include <QModelIndex>
-#include <QBrush>
 #include <QApplication>
+#include <QBrush>
 #include <QIcon>
+#include <QModelIndex>
+#include <QTreeView>
 
-#include <ktexteditor/codecompletionmodel.h>
-#include <KTextEdit>
 #include "kcolorutils.h"
+#include <KTextEdit>
+#include <ktexteditor/codecompletionmodel.h>
 
 #include "expandingdelegate.h"
 #include "katepartdebug.h"

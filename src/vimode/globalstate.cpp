@@ -22,10 +22,10 @@
 
 #include "globalstate.h"
 #include "history.h"
+#include "kateglobal.h"
 #include "macros.h"
 #include "mappings.h"
 #include "registers.h"
-#include "kateglobal.h"
 
 #include <kconfiggroup.h>
 

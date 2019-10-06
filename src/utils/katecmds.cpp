@@ -22,14 +22,14 @@
 
 #include "katecmds.h"
 
-#include "katedocument.h"
-#include "kateview.h"
 #include "kateautoindent.h"
-#include "katetextline.h"
-#include "katesyntaxmanager.h"
-#include "katerenderer.h"
 #include "katecmd.h"
+#include "katedocument.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "katesyntaxmanager.h"
+#include "katetextline.h"
+#include "kateview.h"
 
 #include <KLocalizedString>
 

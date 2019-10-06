@@ -23,11 +23,11 @@
 #ifndef KATE_SED_CMD_H
 #define KATE_SED_CMD_H
 
-#include <KTextEditor/Command>
 #include "kateregexpsearch.h"
+#include <KTextEditor/Command>
 
-#include <QStringList>
 #include <QSharedPointer>
+#include <QStringList>
 
 namespace KTextEditor
 {

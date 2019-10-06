@@ -31,9 +31,9 @@
 #include <KSharedConfig>
 
 #include <QApplication>
-#include <QPrinter>
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
+#include <QPrinter>
 
 #include "printconfigwidgets.h"
 #include "printpainter.h"

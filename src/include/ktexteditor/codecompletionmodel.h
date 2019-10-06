@@ -21,9 +21,9 @@
 #ifndef KTEXTEDITOR_CODECOMPLETIONMODEL_H
 #define KTEXTEDITOR_CODECOMPLETIONMODEL_H
 
-#include <ktexteditor_export.h>
 #include <QModelIndex>
 #include <ktexteditor/range.h>
+#include <ktexteditor_export.h>
 
 namespace KTextEditor
 {

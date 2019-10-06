@@ -22,17 +22,17 @@
 
 #include <vimode/cmds.h>
 
-#include "katedocument.h"
-#include "kateview.h"
-#include "kateglobal.h"
-#include <vimode/modes/normalvimode.h>
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include "katecmd.h"
-#include "katepartdebug.h"
-#include "kateviinputmode.h"
-#include <vimode/inputmodemanager.h>
 #include "globalstate.h"
+#include "katecmd.h"
+#include "katedocument.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
+#include "kateview.h"
+#include "kateviinputmode.h"
 #include "marks.h"
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/normalvimode.h>
 
 #include <KLocalizedString>
 

@@ -23,26 +23,26 @@
 
 #include "katerenderer.h"
 
-#include "katedocument.h"
+#include "inlinenotedata.h"
+#include "katebuffer.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "katehighlight.h"
-#include "kateview.h"
 #include "katerenderrange.h"
 #include "katetextlayout.h"
-#include "katebuffer.h"
-#include "inlinenotedata.h"
+#include "kateview.h"
 
 #include "ktexteditor/inlinenote.h"
 #include "ktexteditor/inlinenoteprovider.h"
 
 #include "katepartdebug.h"
 
+#include <QBrush>
 #include <QFont>
 #include <QPainter>
-#include <QTextLine>
-#include <QStack>
-#include <QBrush>
 #include <QRegularExpression>
+#include <QStack>
+#include <QTextLine>
 #include <QtMath> // qCeil
 
 static const QChar tabChar(QLatin1Char('\t'));

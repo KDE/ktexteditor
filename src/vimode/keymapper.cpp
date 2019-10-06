@@ -19,14 +19,14 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include "kateglobal.h"
 #include "globalstate.h"
-#include "mappings.h"
 #include "katedocument.h"
+#include "kateglobal.h"
+#include "macrorecorder.h"
+#include "mappings.h"
+#include <vimode/inputmodemanager.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
-#include <vimode/inputmodemanager.h>
-#include "macrorecorder.h"
 
 #include <QTimer>
 

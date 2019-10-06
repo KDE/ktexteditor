@@ -23,8 +23,8 @@
 
 #include "kateundo.h"
 
-#include "kateundomanager.h"
 #include "katedocument.h"
+#include "kateundomanager.h"
 
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/view.h>

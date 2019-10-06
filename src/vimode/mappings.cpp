@@ -18,10 +18,10 @@
 
 #include "katepartdebug.h"
 #include "kateviinputmode.h"
-#include <vimode/mappings.h>
-#include <vimode/keyparser.h>
-#include <vimode/inputmodemanager.h>
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/keyparser.h>
+#include <vimode/mappings.h>
 
 using namespace KateVi;
 

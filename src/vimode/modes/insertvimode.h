@@ -23,8 +23,8 @@
 #ifndef KATEVI_INSERT_VI_MODE_H
 #define KATEVI_INSERT_VI_MODE_H
 
-#include <vimode/modes/modebase.h>
 #include <ktexteditor_export.h>
+#include <vimode/modes/modebase.h>
 
 namespace KTextEditor
 {

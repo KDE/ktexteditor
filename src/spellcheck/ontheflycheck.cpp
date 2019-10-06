@@ -27,14 +27,14 @@
 
 #include <QTimer>
 
+#include "katebuffer.h"
 #include "kateconfig.h"
 #include "kateglobal.h"
+#include "katepartdebug.h"
 #include "katerenderer.h"
-#include "katebuffer.h"
 #include "kateview.h"
 #include "spellcheck.h"
 #include "spellingmenu.h"
-#include "katepartdebug.h"
 
 #define ON_THE_FLY_DEBUG qCDebug(LOG_KTE)
 

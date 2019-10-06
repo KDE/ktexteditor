@@ -19,22 +19,22 @@
 
 #include "kateconfig.h"
 
-#include "kateglobal.h"
 #include "katedefaultcolors.h"
-#include "katerenderer.h"
-#include "kateview.h"
 #include "katedocument.h"
-#include "kateschema.h"
+#include "kateglobal.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateschema.h"
+#include "kateview.h"
 
 #include <math.h>
 
-#include <KConfigGroup>
 #include <KCharsets>
+#include <KConfigGroup>
 
 #include <QSettings>
-#include <QTextCodec>
 #include <QStringListModel>
+#include <QTextCodec>
 
 // BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)

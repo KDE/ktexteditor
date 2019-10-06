@@ -24,8 +24,8 @@
 #include "kateview.h"
 #include "kateviewhelpers.h"
 
-#include <KSqueezedTextLabel>
 #include <KLocalizedString>
+#include <KSqueezedTextLabel>
 
 #include <QLabel>
 #include <QPushButton>

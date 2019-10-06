@@ -20,16 +20,16 @@
 
 #include "katecommandlinescript.h"
 
-#include <QJSValue>
 #include <QJSEngine>
+#include <QJSValue>
 
 #include <KLocalizedString>
 #include <KShell>
 
-#include "katedocument.h"
-#include "kateview.h"
 #include "katecmd.h"
+#include "katedocument.h"
 #include "katepartdebug.h"
+#include "kateview.h"
 
 KateCommandLineScript::KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header)
     : KateScript(url)

@@ -23,11 +23,11 @@
 
 #include <QTextStream>
 
-#include <ktexteditor/range.h>
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/view.h>
 #include <ktexteditor/configinterface.h>
+#include <ktexteditor/document.h>
+#include <ktexteditor/range.h>
+#include <ktexteditor/view.h>
 
 class AbstractExporter
 {

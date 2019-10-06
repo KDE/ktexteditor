@@ -24,38 +24,38 @@
 
 #include <ktexteditor_version.h>
 
-#include "katedocument.h"
-#include "kateview.h"
-#include "katerenderer.h"
+#include "katebuffer.h"
 #include "katecmd.h"
 #include "katecmds.h"
-#include "katesedcmd.h"
+#include "kateconfig.h"
+#include "katedefaultcolors.h"
+#include "katedocument.h"
 #include "katehighlightingcmds.h"
+#include "katekeywordcompletion.h"
 #include "katemodemanager.h"
+#include "katepartdebug.h"
+#include "katerenderer.h"
 #include "kateschema.h"
 #include "kateschemaconfig.h"
-#include "kateconfig.h"
 #include "katescriptmanager.h"
-#include "katebuffer.h"
-#include "katewordcompletion.h"
-#include "katekeywordcompletion.h"
-#include "spellcheck/spellcheck.h"
-#include "katepartdebug.h"
-#include "katedefaultcolors.h"
+#include "katesedcmd.h"
 #include "katevariableexpansionmanager.h"
+#include "kateview.h"
+#include "katewordcompletion.h"
+#include "spellcheck/spellcheck.h"
 
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
 
-#include <kdirwatch.h>
-#include <KLocalizedString>
 #include <KAboutData>
+#include <KConfigGroup>
+#include <KLocalizedString>
 #include <KPageDialog>
 #include <KPageWidgetModel>
-#include <KConfigGroup>
+#include <kdirwatch.h>
 
-#include <QBoxLayout>
 #include <QApplication>
+#include <QBoxLayout>
 #include <QClipboard>
 #include <QPushButton>
 #include <QStringListModel>

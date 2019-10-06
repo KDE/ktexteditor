@@ -21,35 +21,35 @@
 
 #include "katesearchbar.h"
 
-#include "kateregexp.h"
-#include "katematch.h"
-#include "kateview.h"
-#include "katedocument.h"
-#include "kateundomanager.h"
 #include "kateconfig.h"
-#include "katerenderer.h"
+#include "katedocument.h"
 #include "kateglobal.h"
+#include "katematch.h"
+#include "kateregexp.h"
+#include "katerenderer.h"
+#include "kateundomanager.h"
+#include "kateview.h"
 
+#include <KTextEditor/DocumentCursor>
 #include <KTextEditor/Message>
 #include <KTextEditor/MovingRange>
-#include <KTextEditor/DocumentCursor>
 
 #include "ui_searchbarincremental.h"
 #include "ui_searchbarpower.h"
 
 #include <KColorScheme>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KStandardAction>
-#include <KLocalizedString>
 
-#include <QVBoxLayout>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QCompleter>
+#include <QElapsedTimer>
 #include <QRegularExpression>
 #include <QShortcut>
 #include <QStringListModel>
-#include <QElapsedTimer>
+#include <QVBoxLayout>
 
 #include <vector>
 

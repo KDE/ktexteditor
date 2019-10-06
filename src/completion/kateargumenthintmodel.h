@@ -21,9 +21,9 @@
 #ifndef KATEARGUMENTHINTMODEL_H
 #define KATEARGUMENTHINTMODEL_H
 
-#include <QAbstractListModel>
-#include "katecompletionmodel.h"
 #include "expandingtree/expandingwidgetmodel.h"
+#include "katecompletionmodel.h"
+#include <QAbstractListModel>
 
 class KateCompletionWidget;
 

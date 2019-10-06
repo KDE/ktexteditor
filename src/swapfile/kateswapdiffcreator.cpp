@@ -19,13 +19,13 @@
  */
 
 #include "kateswapdiffcreator.h"
-#include "kateswapfile.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
+#include "kateswapfile.h"
 
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KRun>
-#include <KLocalizedString>
 
 #include <QDir>
 

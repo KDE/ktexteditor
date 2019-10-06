@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <kateglobal.h>
 #include "katetextbuffer.h"
+#include <kateglobal.h>
 
 #include <QCoreApplication>
 

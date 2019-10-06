@@ -21,10 +21,10 @@
 
 #include "definitions.h"
 
-#include <QString>
 #include <QChar>
-#include <QMap>
 #include <QList>
+#include <QMap>
+#include <QString>
 
 class KConfigGroup;
 

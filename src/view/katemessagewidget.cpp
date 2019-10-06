@@ -28,10 +28,10 @@
 #include <kateanimation.h>
 
 #include <QEvent>
-#include <QTimer>
-#include <QVBoxLayout>
-#include <QToolTip>
 #include <QShowEvent>
+#include <QTimer>
+#include <QToolTip>
+#include <QVBoxLayout>
 
 static const int s_defaultAutoHideTime = 6 * 1000;
 

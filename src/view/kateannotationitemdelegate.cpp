@@ -23,9 +23,9 @@
 
 #include <KLocalizedString>
 
+#include <QFontMetricsF>
 #include <QPainter>
 #include <QToolTip>
-#include <QFontMetricsF>
 
 #include <math.h>
 

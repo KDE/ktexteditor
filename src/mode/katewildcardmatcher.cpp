@@ -18,8 +18,8 @@
  */
 
 #include "katewildcardmatcher.h"
-#include <QString>
 #include <QChar>
+#include <QString>
 
 namespace KateWildcardMatcher
 {

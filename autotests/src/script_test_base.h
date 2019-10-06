@@ -19,8 +19,8 @@
 #define SCRIPT_TEST_H
 
 #include <QObject>
-#include <QStringList>
 #include <QPair>
+#include <QStringList>
 
 class TestScriptEnv;
 namespace KTextEditor

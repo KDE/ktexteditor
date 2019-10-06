@@ -19,11 +19,11 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <kateglobal.h>
 #include "katetextbuffertest.h"
 #include "katetextbuffer.h"
 #include "katetextcursor.h"
 #include "katetextfolding.h"
+#include <kateglobal.h>
 
 QTEST_MAIN(KateTextBufferTest)
 

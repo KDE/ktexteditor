@@ -20,8 +20,8 @@
 #include "plaintextsearch_test.h"
 #include "moc_plaintextsearch_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateplaintextsearch.h>
 
 #include <QtTestWidgets>

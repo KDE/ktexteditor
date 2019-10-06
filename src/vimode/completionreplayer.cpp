@@ -19,13 +19,13 @@
  */
 
 #include "completionreplayer.h"
-#include <vimode/inputmodemanager.h>
+#include "completionrecorder.h"
+#include "katedocument.h"
 #include "katepartdebug.h"
 #include "kateview.h"
-#include "katedocument.h"
-#include "completionrecorder.h"
-#include "macrorecorder.h"
 #include "lastchangerecorder.h"
+#include "macrorecorder.h"
+#include <vimode/inputmodemanager.h>
 
 #include <QKeyEvent>
 #include <QRegularExpression>

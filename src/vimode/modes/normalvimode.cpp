@@ -23,37 +23,37 @@
  */
 
 #include "katebuffer.h"
+#include "katecmd.h"
 #include "katecompletionwidget.h"
 #include "kateconfig.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "kateundomanager.h"
-#include <vimode/command.h>
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include "kateviewhelpers.h"
 #include "kateviewinternal.h"
+#include "kateviinputmode.h"
+#include <ktexteditor/attribute.h>
+#include <vimode/command.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <vimode/globalstate.h>
+#include <vimode/history.h>
 #include <vimode/inputmodemanager.h>
-#include <vimode/modes/insertvimode.h>
-#include <vimode/modes/replacevimode.h>
 #include <vimode/keymapper.h>
 #include <vimode/keyparser.h>
-#include <vimode/motion.h>
-#include <vimode/modes/normalvimode.h>
-#include <vimode/modes/visualvimode.h>
-#include <vimode/history.h>
-#include "katecmd.h"
-#include <ktexteditor/attribute.h>
-#include "kateviinputmode.h"
-#include <vimode/registers.h>
-#include <vimode/marks.h>
-#include <vimode/searcher.h>
-#include <vimode/macrorecorder.h>
 #include <vimode/lastchangerecorder.h>
+#include <vimode/macrorecorder.h>
+#include <vimode/marks.h>
+#include <vimode/modes/insertvimode.h>
+#include <vimode/modes/normalvimode.h>
+#include <vimode/modes/replacevimode.h>
+#include <vimode/modes/visualvimode.h>
+#include <vimode/motion.h>
+#include <vimode/registers.h>
+#include <vimode/searcher.h>
 
+#include <KLocalizedString>
 #include <QApplication>
 #include <QList>
-#include <KLocalizedString>
 
 using namespace KateVi;
 

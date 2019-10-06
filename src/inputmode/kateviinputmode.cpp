@@ -17,15 +17,15 @@
  */
 
 #include "kateviinputmode.h"
-#include "kateviewinternal.h"
 #include "kateconfig.h"
-#include <vimode/inputmodemanager.h>
+#include "kateviewinternal.h"
 #include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/inputmodemanager.h>
+#include <vimode/macrorecorder.h>
+#include <vimode/marks.h>
 #include <vimode/modes/replacevimode.h>
 #include <vimode/modes/visualvimode.h>
-#include <vimode/marks.h>
 #include <vimode/searcher.h>
-#include <vimode/macrorecorder.h>
 
 #include <KLocalizedString>
 

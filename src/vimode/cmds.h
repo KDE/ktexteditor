@@ -23,11 +23,11 @@
 #ifndef KATEVI_CMDS_H
 #define KATEVI_CMDS_H
 
-#include <KTextEditor/Command>
 #include "kateregexpsearch.h"
+#include "mappings.h"
+#include <KTextEditor/Command>
 #include <katesedcmd.h>
 #include <vimode/commandinterface.h>
-#include "mappings.h"
 
 #include <QStringList>
 

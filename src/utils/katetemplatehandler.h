@@ -23,11 +23,11 @@
 #ifndef _KATE_TEMPLATE_HANDLER_H_
 #define _KATE_TEMPLATE_HANDLER_H_
 
-#include <QPointer>
-#include <QObject>
-#include <QVector>
 #include <QMap>
+#include <QObject>
+#include <QPointer>
 #include <QString>
+#include <QVector>
 
 #include <katescript.h>
 

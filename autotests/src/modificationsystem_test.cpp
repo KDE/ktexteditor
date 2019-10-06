@@ -20,8 +20,8 @@
 #include "modificationsystem_test.h"
 #include "moc_modificationsystem_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateundomanager.h>
 
 #include <QtTestWidgets>

@@ -22,13 +22,13 @@
 
 #include "printpainter.h"
 
-#include "katetextfolding.h"
-#include "katedocument.h"
 #include "katebuffer.h"
-#include "kateview.h"
+#include "katedocument.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
+#include "katetextfolding.h"
 #include "katetextlayout.h"
+#include "kateview.h"
 
 #include <KLocalizedString>
 #include <KUser>

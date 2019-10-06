@@ -20,13 +20,13 @@
 #include "configinterface_test.h"
 #include "moc_configinterface_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <kateview.h>
 #include <ktexteditor/configinterface.h>
 
-#include <QTest>
 #include <QFont>
+#include <QTest>
 
 using namespace KTextEditor;
 

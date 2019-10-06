@@ -28,38 +28,38 @@
 
 #include "kateviewinternal.h"
 
-#include "kateview.h"
-#include "kateviewhelpers.h"
-#include "katehighlight.h"
-#include "katebuffer.h"
-#include "katerenderer.h"
-#include "kateconfig.h"
-#include "katelayoutcache.h"
-#include "katecompletionwidget.h"
-#include "spellcheck/spellingmenu.h"
-#include "kateviewaccessible.h"
-#include "katetextanimation.h"
-#include "katemessagewidget.h"
-#include "kateglobal.h"
-#include "kateabstractinputmodefactory.h"
-#include "kateabstractinputmode.h"
-#include "katepartdebug.h"
 #include "inlinenotedata.h"
+#include "kateabstractinputmode.h"
+#include "kateabstractinputmodefactory.h"
+#include "katebuffer.h"
+#include "katecompletionwidget.h"
+#include "kateconfig.h"
+#include "kateglobal.h"
+#include "katehighlight.h"
+#include "katelayoutcache.h"
+#include "katemessagewidget.h"
+#include "katepartdebug.h"
+#include "katerenderer.h"
+#include "katetextanimation.h"
+#include "kateview.h"
+#include "kateviewaccessible.h"
+#include "kateviewhelpers.h"
+#include "spellcheck/spellingmenu.h"
 
-#include <ktexteditor/movingrange.h>
+#include <KCursor>
 #include <ktexteditor/documentcursor.h>
 #include <ktexteditor/inlinenoteprovider.h>
+#include <ktexteditor/movingrange.h>
 #include <ktexteditor/texthintinterface.h>
-#include <KCursor>
 
-#include <QMimeData>
 #include <QAccessible>
+#include <QApplication>
 #include <QClipboard>
 #include <QKeyEvent>
+#include <QLayout>
+#include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
-#include <QApplication>
-#include <QLayout>
 #include <QStyle>
 #include <QToolTip>
 

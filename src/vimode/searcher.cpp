@@ -19,13 +19,13 @@
  */
 
 #include "searcher.h"
-#include <vimode/inputmodemanager.h>
-#include <vimode/modes/modebase.h>
-#include "kateview.h"
-#include "katedocument.h"
-#include "ktexteditor/range.h"
 #include "globalstate.h"
 #include "history.h"
+#include "katedocument.h"
+#include "kateview.h"
+#include "ktexteditor/range.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/modebase.h>
 
 using namespace KateVi;
 

@@ -21,8 +21,8 @@
 #ifndef KATEVI_EMULATED_COMMAND_BAR_SEARCHMODE_H
 #define KATEVI_EMULATED_COMMAND_BAR_SEARCHMODE_H
 
-#include "activemode.h"
 #include "../searcher.h"
+#include "activemode.h"
 
 namespace KTextEditor
 {

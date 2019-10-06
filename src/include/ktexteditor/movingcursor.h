@@ -24,9 +24,9 @@
 #ifndef KTEXTEDITOR_MOVINGCURSOR_H
 #define KTEXTEDITOR_MOVINGCURSOR_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
 #include <ktexteditor/document.h>
+#include <ktexteditor_export.h>
 
 #include <QDebug>
 

@@ -20,16 +20,16 @@
 
 #include "kateargumenthintmodel.h"
 
-#include "katecompletionwidget.h"
 #include "kateargumenthinttree.h"
 #include "katecompletiontree.h"
+#include "katecompletionwidget.h"
 #include "katepartdebug.h"
 
 #include <ktexteditor/codecompletionmodel.h>
 
-#include <QTextFormat>
 #include <QApplication>
 #include <QGridLayout>
+#include <QTextFormat>
 
 using namespace KTextEditor;
 

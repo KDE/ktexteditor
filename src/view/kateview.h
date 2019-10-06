@@ -22,26 +22,26 @@
 #ifndef kate_view_h
 #define kate_view_h
 
-#include <ktexteditor/view.h>
-#include <ktexteditor/texthintinterface.h>
-#include <ktexteditor/inlinenoteinterface.h>
-#include <ktexteditor/markinterface.h>
+#include <ktexteditor/annotationinterface.h>
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/configinterface.h>
-#include <ktexteditor/annotationinterface.h>
+#include <ktexteditor/inlinenoteinterface.h>
 #include <ktexteditor/mainwindow.h>
+#include <ktexteditor/markinterface.h>
+#include <ktexteditor/texthintinterface.h>
+#include <ktexteditor/view.h>
 
+#include <QMenu>
+#include <QModelIndex>
 #include <QPointer>
 #include <QScopedPointer>
-#include <QModelIndex>
-#include <QMenu>
 #include <QSpacerItem>
 
 #include <array>
 
-#include "katetextrange.h"
-#include "katetextfolding.h"
 #include "katerenderer.h"
+#include "katetextfolding.h"
+#include "katetextrange.h"
 
 namespace KTextEditor
 {

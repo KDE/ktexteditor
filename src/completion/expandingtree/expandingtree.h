@@ -21,8 +21,8 @@
 #ifndef ExpandingTree_H
 #define ExpandingTree_H
 
-#include <QTreeView>
 #include <QTextDocument>
+#include <QTreeView>
 
 // A tree that allows drawing additional information
 class ExpandingTree : public QTreeView

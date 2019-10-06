@@ -19,8 +19,8 @@
 #ifndef KATEVI_MAPPINGS_H
 #define KATEVI_MAPPINGS_H
 
-#include <ktexteditor_export.h>
 #include <QHash>
+#include <ktexteditor_export.h>
 
 class KConfigGroup;
 class KateViInputMode;

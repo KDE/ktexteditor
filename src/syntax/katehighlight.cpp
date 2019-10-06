@@ -25,26 +25,26 @@
 // BEGIN INCLUDES
 #include "katehighlight.h"
 
-#include "katetextline.h"
-#include "katedocument.h"
-#include "katerenderer.h"
-#include "kateglobal.h"
-#include "kateschema.h"
 #include "kateconfig.h"
-#include "kateextendedattribute.h"
-#include "katepartdebug.h"
 #include "katedefaultcolors.h"
+#include "katedocument.h"
+#include "kateextendedattribute.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateschema.h"
+#include "katetextline.h"
 
 #include <KConfig>
 #include <KConfigGroup>
 #include <KMessageBox>
 
+#include <QAction>
+#include <QApplication>
 #include <QSet>
 #include <QStringList>
 #include <QTextStream>
 #include <QVarLengthArray>
-#include <QAction>
-#include <QApplication>
 // END
 
 // BEGIN STATICS

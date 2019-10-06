@@ -26,13 +26,13 @@
 #ifndef KATE_DIALOGS_H
 #define KATE_DIALOGS_H
 
+#include "kateconfigpage.h"
 #include "katehighlight.h"
 #include "kateviewhelpers.h"
-#include "kateconfigpage.h"
 
 #include <ktexteditor/attribute.h>
-#include <ktexteditor/modificationinterface.h>
 #include <ktexteditor/document.h>
+#include <ktexteditor/modificationinterface.h>
 
 #include <sonnet/configwidget.h>
 #include <sonnet/dictionarycombobox.h>

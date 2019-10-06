@@ -21,27 +21,27 @@
 // BEGIN Includes
 #include "katemodeconfigpage.h"
 
-#include "katedocument.h"
-#include "kateconfig.h"
-#include "kateview.h"
-#include "kateglobal.h"
 #include "kateautoindent.h"
+#include "kateconfig.h"
+#include "katedocument.h"
+#include "kateglobal.h"
 #include "katesyntaxmanager.h"
+#include "kateview.h"
 
 #include "ui_filetypeconfigwidget.h"
 
-#include <KMimeTypeChooser>
 #include "katepartdebug.h"
+#include <KMimeTypeChooser>
 
-#include <QRegularExpression>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QGroupBox>
 #include <QLabel>
 #include <QLayout>
 #include <QPushButton>
-#include <QToolButton>
+#include <QRegularExpression>
 #include <QSpinBox>
+#include <QToolButton>
 // END Includes
 
 ModeConfigPage::ModeConfigPage(QWidget *parent)

@@ -19,8 +19,8 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#include <QStringList>
 #include <QKeyEvent>
+#include <QStringList>
 #include <vimode/keyparser.h>
 
 using namespace KateVi;

@@ -24,8 +24,8 @@
 // KF headers
 #include <KTextEditor/MainWindow>
 
-#include <KPluginFactory>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
 K_PLUGIN_CLASS_WITH_JSON(% {APPNAME} Plugin, "%{APPNAMELC}.json")
 

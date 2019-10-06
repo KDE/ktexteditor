@@ -27,22 +27,22 @@
 #include <KSyntaxHighlighting/FoldingRegion>
 #include <KSyntaxHighlighting/Format>
 
-#include "katetextline.h"
 #include "kateextendedattribute.h"
 #include "katesyntaxmanager.h"
-#include "spellcheck/prefixstore.h"
+#include "katetextline.h"
 #include "range.h"
+#include "spellcheck/prefixstore.h"
 
-#include <QVector>
-#include <QList>
 #include <QHash>
+#include <QList>
 #include <QMap>
+#include <QVector>
 
-#include <QRegularExpression>
-#include <QObject>
-#include <QStringList>
-#include <QPointer>
 #include <QDate>
+#include <QObject>
+#include <QPointer>
+#include <QRegularExpression>
+#include <QStringList>
 
 #include <unordered_map>
 

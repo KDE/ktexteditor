@@ -20,18 +20,18 @@
 
 #include "katestatusbar.h"
 
-#include "katemodemenulist.h"
+#include "kateabstractinputmode.h"
+#include "kateconfig.h"
+#include "katedocument.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
-#include "katedocument.h"
-#include "kateconfig.h"
-#include "kateabstractinputmode.h"
+#include "katemodemenulist.h"
 #include "wordcounter.h"
 
-#include <KActionCollection>
-#include <KLocalizedString>
-#include <KIconUtils>
 #include <KAcceleratorManager>
+#include <KActionCollection>
+#include <KIconUtils>
+#include <KLocalizedString>
 #include <Sonnet/Speller>
 
 #include <QHBoxLayout>

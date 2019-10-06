@@ -19,26 +19,26 @@
    Boston, MA 02110-1301, USA.
    */
 
-#include <kateconfig.h>
-#include <katebuffer.h>
 #include "emulatedcommandbar.h"
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
-#include <vimode/history.h>
-#include <inputmode/kateviinputmode.h>
+#include "emulatedcommandbarsetupandteardown.h"
 #include "keys.h"
 #include "view.h"
-#include "emulatedcommandbarsetupandteardown.h"
-#include "vimode/mappings.h"
 #include "vimode/globalstate.h"
+#include "vimode/mappings.h"
+#include <inputmode/kateviinputmode.h>
+#include <katebuffer.h>
+#include <kateconfig.h>
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
+#include <vimode/history.h>
 
-#include <QLabel>
+#include <QAbstractItemView>
 #include <QClipboard>
 #include <QCompleter>
-#include <QAbstractItemView>
+#include <QLabel>
 #include <QStringListModel>
 
-#include <KColorScheme>
 #include <KActionCollection>
+#include <KColorScheme>
 
 QTEST_MAIN(EmulatedCommandBarTest)
 

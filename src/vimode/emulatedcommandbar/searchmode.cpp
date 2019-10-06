@@ -20,17 +20,17 @@
 
 #include "searchmode.h"
 
-#include <vimode/inputmodemanager.h>
-#include <vimode/modes/modebase.h>
 #include "../globalstate.h"
 #include "../history.h"
-#include "kateview.h"
 #include "katedocument.h"
+#include "kateview.h"
+#include <vimode/inputmodemanager.h>
+#include <vimode/modes/modebase.h>
 
 #include <KColorScheme>
 
-#include <QLineEdit>
 #include <QApplication>
+#include <QLineEdit>
 
 using namespace KateVi;
 

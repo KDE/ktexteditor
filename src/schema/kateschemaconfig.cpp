@@ -23,28 +23,28 @@
 // BEGIN Includes
 #include "kateschemaconfig.h"
 
-#include "katedocument.h"
-#include "kateschema.h"
-#include "kateconfig.h"
-#include "kateglobal.h"
-#include "kateview.h"
-#include "katerenderer.h"
-#include "katestyletreewidget.h"
 #include "katecolortreewidget.h"
-#include "katepartdebug.h"
+#include "kateconfig.h"
 #include "katedefaultcolors.h"
+#include "katedocument.h"
+#include "kateglobal.h"
+#include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateschema.h"
+#include "katestyletreewidget.h"
+#include "kateview.h"
 
 #include "ui_howtoimportschema.h"
 
-#include <KFontChooser>
-#include <KMessageBox>
 #include <KComboBox>
 #include <KConfigGroup>
+#include <KFontChooser>
+#include <KMessageBox>
 
 #include <QFileDialog>
 #include <QInputDialog>
-#include <QPushButton>
 #include <QProgressDialog>
+#include <QPushButton>
 #include <QTabWidget>
 
 // END

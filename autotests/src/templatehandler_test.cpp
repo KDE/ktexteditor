@@ -19,15 +19,15 @@
 
 #include "templatehandler_test.h"
 
-#include <kateglobal.h>
-#include <katedocument.h>
-#include <kateview.h>
-#include <kateconfig.h>
-#include <katetemplatehandler.h>
 #include <KTextEditor/Cursor>
+#include <kateconfig.h>
+#include <katedocument.h>
+#include <kateglobal.h>
+#include <katetemplatehandler.h>
+#include <kateview.h>
 
-#include <QtTestWidgets>
 #include <QString>
+#include <QtTestWidgets>
 
 QTEST_MAIN(TemplateHandlerTest)
 

@@ -21,8 +21,8 @@
 #ifndef KATETEXTBUFFERTEST_H
 #define KATETEXTBUFFERTEST_H
 
-#include <QtTest>
 #include <QObject>
+#include <QtTest>
 
 class KateTextBufferTest : public QObject
 {

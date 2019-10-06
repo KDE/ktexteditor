@@ -18,15 +18,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "completion.h"
+#include "fakecodecompletiontestmodel.h"
+#include "vimode/globalstate.h"
+#include "vimode/mappings.h"
 #include <katecompletionwidget.h>
 #include <kateconfig.h>
 #include <kateglobal.h>
-#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 #include <katewordcompletion.h>
-#include "completion.h"
-#include "fakecodecompletiontestmodel.h"
-#include "vimode/mappings.h"
-#include "vimode/globalstate.h"
+#include <vimode/emulatedcommandbar/emulatedcommandbar.h>
 
 using namespace KTextEditor;
 using KateVi::Mappings;

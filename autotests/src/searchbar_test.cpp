@@ -22,16 +22,16 @@
 #include "ui_searchbarincremental.h"
 #include "ui_searchbarpower.h"
 
-#include <katedocument.h>
-#include <kateview.h>
+#include <KMessageBox>
 #include <kateconfig.h>
+#include <katedocument.h>
 #include <kateglobal.h>
 #include <katesearchbar.h>
+#include <kateview.h>
 #include <ktexteditor/movingrange.h>
-#include <KMessageBox>
 
-#include <QtTestWidgets>
 #include <QStringListModel>
+#include <QtTestWidgets>
 
 QTEST_MAIN(SearchBarTest)
 

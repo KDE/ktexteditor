@@ -24,8 +24,8 @@
 #ifndef KTEXTEDITOR_RANGE_H
 #define KTEXTEDITOR_RANGE_H
 
-#include <ktexteditor_export.h>
 #include <ktexteditor/cursor.h>
+#include <ktexteditor_export.h>
 
 #include <QDebug>
 #include <QtGlobal>

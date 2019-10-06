@@ -18,8 +18,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "variableeditor.h"
 #include "variablelistview.h"
+#include "variableeditor.h"
 #include "variableitem.h"
 
 #include <QRegularExpression>

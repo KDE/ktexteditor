@@ -23,14 +23,14 @@
 #include "config.h"
 
 #ifndef Q_OS_WIN
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 #endif
 
-#include <QString>
-#include <QFile>
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
+#include <QString>
 #include <QTemporaryFile>
 
 KAUTH_HELPER_MAIN("org.kde.ktexteditor.katetextbuffer", SecureTextBuffer)

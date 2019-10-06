@@ -21,8 +21,8 @@
 #ifndef KATE_SWAP_DIFF_CREATOR_H
 #define KATE_SWAP_DIFF_CREATOR_H
 
-#include <QByteArray>
 #include <QAction>
+#include <QByteArray>
 #include <QProcess>
 #include <QTemporaryFile>
 

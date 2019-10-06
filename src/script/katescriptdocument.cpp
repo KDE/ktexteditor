@@ -19,18 +19,18 @@
 
 #include "katescriptdocument.h"
 
-#include "katedocument.h"
-#include "kateview.h"
-#include "katerenderer.h"
 #include "kateconfig.h"
+#include "katedocument.h"
 #include "katehighlight.h"
-#include "katescript.h"
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "katescript.h"
+#include "kateview.h"
 #include "scriptcursor.h"
 #include "scriptrange.h"
 
-#include <ktexteditor/documentcursor.h>
 #include <QJSEngine>
+#include <ktexteditor/documentcursor.h>
 
 KateScriptDocument::KateScriptDocument(QJSEngine *engine, QObject *parent)
     : QObject(parent)

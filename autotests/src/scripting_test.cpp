@@ -23,27 +23,27 @@
 // BEGIN Includes
 #include "scripting_test.h"
 
-#include "kateview.h"
-#include "katedocument.h"
-#include "kateconfig.h"
 #include "katecmd.h"
+#include "kateconfig.h"
+#include "katedocument.h"
 #include "kateglobal.h"
+#include "kateview.h"
 #include <KTextEditor/Command>
 
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kio/job.h>
 
-#include <QObject>
-#include <QFile>
 #include <QDir>
+#include <QEvent>
+#include <QFile>
+#include <QFileInfo>
+#include <QList>
+#include <QObject>
 #include <QString>
 #include <QTextStream>
-#include <QList>
 #include <QTimer>
-#include <QFileInfo>
 #include <Q_PID>
-#include <QEvent>
 
 #include <QtTestWidgets>
 

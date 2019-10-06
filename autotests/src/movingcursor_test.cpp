@@ -20,8 +20,8 @@
 #include "movingcursor_test.h"
 #include "moc_movingcursor_test.cpp"
 
-#include <kateglobal.h>
 #include <katedocument.h>
+#include <kateglobal.h>
 #include <ktexteditor/movingcursor.h>
 
 #include <QtTestWidgets>

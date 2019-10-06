@@ -22,13 +22,13 @@
  */
 #include "commandrangeexpressionparser.h"
 
-#include "kateview.h"
 #include "katedocument.h"
-#include <vimode/inputmodemanager.h>
+#include "kateview.h"
 #include "marks.h"
+#include <vimode/inputmodemanager.h>
 
-#include <QStringList>
 #include <QRegularExpression>
+#include <QStringList>
 
 using namespace KateVi;
 

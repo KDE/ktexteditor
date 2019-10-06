@@ -20,8 +20,8 @@
 
 #include "katecategorydrawer.h"
 
-#include <QPainter>
 #include <QApplication>
+#include <QPainter>
 #include <QStyleOption>
 
 KateCategoryDrawer::KateCategoryDrawer()

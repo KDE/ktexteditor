@@ -22,14 +22,14 @@
 #ifndef _KateWordCompletion_h_
 #define _KateWordCompletion_h_
 
-#include <ktexteditor/view.h>
 #include <ktexteditor/codecompletioninterface.h>
 #include <ktexteditor/codecompletionmodel.h>
 #include <ktexteditor/codecompletionmodelcontrollerinterface.h>
+#include <ktexteditor/view.h>
 
 #include <QEvent>
-#include <QObject>
 #include <QList>
+#include <QObject>
 
 #include "katepartdebug.h"
 #include <ktexteditor_export.h>

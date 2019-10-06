@@ -22,8 +22,8 @@
 #define ExpandingDelegate_H
 
 #include <QItemDelegate>
-#include <QTextLayout>
 #include <QModelIndex>
+#include <QTextLayout>
 
 class ExpandingWidgetModel;
 class QVariant;

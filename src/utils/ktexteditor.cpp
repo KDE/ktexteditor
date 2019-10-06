@@ -32,23 +32,23 @@
 #include "plugin.h"
 
 #include "command.h"
-#include "inlinenoteinterface.h"
 #include "inlinenote.h"
 #include "inlinenotedata.h"
+#include "inlinenoteinterface.h"
 #include "inlinenoteprovider.h"
+#include "katevariableexpansionmanager.h"
 #include "markinterface.h"
 #include "modificationinterface.h"
 #include "sessionconfiginterface.h"
 #include "texthintinterface.h"
 #include "variable.h"
-#include "katevariableexpansionmanager.h"
 
-#include "annotationinterface.h"
 #include "abstractannotationitemdelegate.h"
+#include "annotationinterface.h"
 
-#include "kateglobal.h"
-#include "kateconfig.h"
 #include "katecmd.h"
+#include "kateconfig.h"
+#include "kateglobal.h"
 
 using namespace KTextEditor;
 

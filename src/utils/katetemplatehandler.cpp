@@ -27,16 +27,16 @@
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 
-#include "katetemplatehandler.h"
-#include "katedocument.h"
-#include "kateview.h"
 #include "kateconfig.h"
-#include "katerenderer.h"
-#include "kateundomanager.h"
-#include "kateregexpsearch.h"
+#include "katedocument.h"
 #include "kateglobal.h"
-#include "script/katescriptmanager.h"
 #include "katepartdebug.h"
+#include "kateregexpsearch.h"
+#include "katerenderer.h"
+#include "katetemplatehandler.h"
+#include "kateundomanager.h"
+#include "kateview.h"
+#include "script/katescriptmanager.h"
 
 using namespace KTextEditor;
 

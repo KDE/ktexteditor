@@ -21,10 +21,10 @@
 #ifndef KATE_TEXTLOADER_H
 #define KATE_TEXTLOADER_H
 
-#include <QString>
-#include <QFile>
 #include <QCryptographicHash>
+#include <QFile>
 #include <QMimeDatabase>
+#include <QString>
 
 // on the fly compression
 #include <KFilterDev>

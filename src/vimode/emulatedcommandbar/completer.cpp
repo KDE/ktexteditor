@@ -25,11 +25,11 @@ using namespace KateVi;
 
 #include "kateview.h"
 
+#include <QAbstractItemView>
 #include <QCompleter>
 #include <QLineEdit>
-#include <QStringListModel>
-#include <QAbstractItemView>
 #include <QRegularExpression>
+#include <QStringListModel>
 
 namespace
 {

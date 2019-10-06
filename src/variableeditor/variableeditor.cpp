@@ -19,21 +19,21 @@
 */
 
 #include "variableeditor.h"
-#include "variableitem.h"
 #include "katehelpbutton.h"
+#include "variableitem.h"
 
-#include <QVariant>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QFontComboBox>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPainter>
 #include <QSpinBox>
-#include <QFontComboBox>
+#include <QVariant>
 
-#include <KLocalizedString>
 #include <KColorCombo>
+#include <KLocalizedString>
 #include <sonnet/dictionarycombobox.h>
 
 // BEGIN VariableEditor

@@ -21,12 +21,12 @@
 // BEGIN Includes
 #include "katemodemenu.h"
 
-#include "katedocument.h"
 #include "kateconfig.h"
-#include "kateview.h"
+#include "katedocument.h"
 #include "kateglobal.h"
-#include "katesyntaxmanager.h"
 #include "katepartdebug.h"
+#include "katesyntaxmanager.h"
+#include "kateview.h"
 // END Includes
 
 void KateModeMenu::init()

@@ -25,52 +25,52 @@
 
 #include "kateviewhelpers.h"
 
+#include "kateabstractinputmode.h"
+#include "kateannotationitemdelegate.h"
 #include "katecmd.h"
-#include <ktexteditor/attribute.h>
-#include <ktexteditor/annotationinterface.h>
-#include <ktexteditor/movingrange.h>
+#include "katecommandrangeexpressionparser.h"
 #include "kateconfig.h"
 #include "katedocument.h"
-#include <katebuffer.h>
+#include "kateglobal.h"
+#include "katelayoutcache.h"
+#include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateannotationitemdelegate.h"
+#include "katetextlayout.h"
+#include "katetextpreview.h"
 #include "kateview.h"
 #include "kateviewinternal.h"
-#include "katelayoutcache.h"
-#include "katetextlayout.h"
-#include "kateglobal.h"
-#include "katepartdebug.h"
-#include "katecommandrangeexpressionparser.h"
-#include "kateabstractinputmode.h"
-#include "katetextpreview.h"
+#include <katebuffer.h>
+#include <ktexteditor/annotationinterface.h>
+#include <ktexteditor/attribute.h>
+#include <ktexteditor/movingrange.h>
 
 #include <KCharsets>
 #include <KColorUtils>
-#include <KLocalizedString>
 #include <KConfigGroup>
+#include <KLocalizedString>
 #include <khelpclient.h>
 
-#include <QRegularExpression>
-#include <QTextCodec>
-#include <QTimer>
-#include <QVariant>
-#include <QtAlgorithms>
+#include <QAction>
+#include <QActionGroup>
+#include <QBoxLayout>
 #include <QCursor>
 #include <QKeyEvent>
 #include <QLinearGradient>
+#include <QMenu>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPalette>
 #include <QPen>
-#include <QAction>
-#include <QActionGroup>
-#include <QBoxLayout>
-#include <QMenu>
+#include <QRegularExpression>
 #include <QStyle>
 #include <QStyleOption>
+#include <QTextCodec>
+#include <QTimer>
 #include <QToolButton>
 #include <QToolTip>
+#include <QVariant>
 #include <QWhatsThis>
+#include <QtAlgorithms>
 
 #include <math.h>
 

@@ -21,9 +21,9 @@
 #ifndef KATE_SCRIPT_H
 #define KATE_SCRIPT_H
 
-#include <QString>
-#include <QMap>
 #include <QJSValue>
+#include <QMap>
+#include <QString>
 
 class QJSEngine;
 

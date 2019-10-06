@@ -23,8 +23,8 @@
 #define KATEVI_KEY_PARSER_H
 
 #include <QChar>
-#include <QString>
 #include <QHash>
+#include <QString>
 #include <ktexteditor_export.h>
 
 class QKeyEvent;

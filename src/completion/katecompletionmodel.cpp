@@ -21,23 +21,23 @@
 
 #include "katecompletionmodel.h"
 
-#include "katecompletionwidget.h"
-#include "katecompletiontree.h"
-#include "katecompletiondelegate.h"
 #include "kateargumenthintmodel.h"
-#include "kateview.h"
-#include "katerenderer.h"
+#include "katecompletiondelegate.h"
+#include "katecompletiontree.h"
+#include "katecompletionwidget.h"
 #include "kateconfig.h"
-#include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 #include "katepartdebug.h"
+#include "katerenderer.h"
+#include "kateview.h"
+#include <ktexteditor/codecompletionmodelcontrollerinterface.h>
 
 #include <KLocalizedString>
 
+#include <QApplication>
 #include <QMultiMap>
+#include <QTextEdit>
 #include <QTimer>
 #include <QVarLengthArray>
-#include <QApplication>
-#include <QTextEdit>
 
 using namespace KTextEditor;
 

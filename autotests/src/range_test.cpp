@@ -22,10 +22,10 @@
 #include "range_test.h"
 #include "moc_range_test.cpp"
 
-#include <kateglobal.h>
-#include <katedocument.h>
-#include <kateview.h>
 #include <kateconfig.h>
+#include <katedocument.h>
+#include <kateglobal.h>
+#include <kateview.h>
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>
 

@@ -20,10 +20,10 @@
 
 #include "undomanager_test.h"
 
-#include <kateglobal.h>
 #include <katedocument.h>
-#include <kateview.h>
+#include <kateglobal.h>
 #include <kateundomanager.h>
+#include <kateview.h>
 
 #include <QtTestWidgets>
 

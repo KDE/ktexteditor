@@ -23,8 +23,8 @@
 
 // KF headers
 #include <KTextEditor/Document>
-#include <KTextEditor/View>
 #include <KTextEditor/MainWindow>
+#include <KTextEditor/View>
 
 #include <KLocalizedString>
 

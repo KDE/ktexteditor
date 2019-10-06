@@ -23,10 +23,10 @@
 #include "kateglobal.h"
 #include "ui_completionconfigwidget.h"
 
-#include <KSharedConfig>
 #include <KConfigGroup>
-#include <KStandardGuiItem>
 #include <KLocalizedString>
+#include <KSharedConfig>
+#include <KStandardGuiItem>
 
 #include <QDialogButtonBox>
 #include <QPushButton>

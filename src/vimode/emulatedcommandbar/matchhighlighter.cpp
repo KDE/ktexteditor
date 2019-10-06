@@ -20,9 +20,9 @@
 
 #include "matchhighlighter.h"
 
-#include "kateview.h"
-#include "katedocument.h"
 #include "kateconfig.h"
+#include "katedocument.h"
+#include "kateview.h"
 
 using namespace KateVi;
 
