@@ -19,8 +19,8 @@
  */
 
 // base.h needs to be included first!
-#include "base.h"
 #include "fakecodecompletiontestmodel.h"
+#include "base.h"
 
 #include <QRegularExpression>
 #include <katecompletionwidget.h>
