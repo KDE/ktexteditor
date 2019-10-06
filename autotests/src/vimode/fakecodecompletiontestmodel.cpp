@@ -18,8 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "fakecodecompletiontestmodel.h"
+// base.h needs to be included first!
 #include "base.h"
+#include "fakecodecompletiontestmodel.h"
+
 #include <QRegularExpression>
 #include <katecompletionwidget.h>
 #include <kateglobal.h>
