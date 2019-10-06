@@ -21,6 +21,8 @@
 #ifndef FAKE_CODE_COMPLETION_TEST_MODEL_H
 #define FAKE_CODE_COMPLETION_TEST_MODEL_H
 
+#include "base.h"
+
 #include <ktexteditor/codecompletionmodel.h>
 
 /**
