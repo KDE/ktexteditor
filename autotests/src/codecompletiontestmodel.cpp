@@ -43,117 +43,117 @@ CodeCompletionTestModel::CodeCompletionTestModel(KTextEditor::View *parent, cons
 QVariant CodeCompletionTestModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
-        case Qt::DisplayRole:
-            if (index.row() < rowCount() / 2)
-                switch (index.column()) {
-                    case Prefix:
-                        switch (index.row() % 3) {
-                            default:
-                                return "void ";
-                            case 1:
-                                return "const QString& ";
-                            case 2:
-                                if (index.row() % 6) {
-                                    return "inline virtual bool ";
-                                }
-                                return "virtual bool ";
-                        }
-
-                    case Scope:
-                        switch (index.row() % 4) {
-                            default:
-                                return QString();
-                            case 1:
-                                return "KTextEditor::";
-                            case 2:
-                                return "::";
-                            case 3:
-                                return "std::";
-                        }
-
-                    case Name:
-                        return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
-
-                    case Arguments:
-                        switch (index.row() % 5) {
-                            default:
-                                return "()";
-                            case 1:
-                                return "(bool trigger)";
-                            case 4:
-                                return "(const QString& name, Qt::CaseSensitivity cs)";
-                            case 5:
-                                return "(int count)";
-                        }
-
-                    case Postfix:
-                        switch (index.row() % 3) {
-                            default:
-                                return " const";
-                            case 1:
-                                return " KDE_DEPRECATED";
-                            case 2:
-                                return "";
-                        }
-                }
-            else
-                switch (index.column()) {
-                    case Prefix:
-                        switch (index.row() % 3) {
-                            default:
-                                return "void ";
-                            case 1:
-                                return "const QString ";
-                            case 2:
-                                return "bool ";
-                        }
-
-                    case Scope:
-                        switch (index.row() % 4) {
-                            default:
-                                return QString();
-                            case 1:
-                                return "KTextEditor::";
-                            case 2:
-                                return "::";
-                            case 3:
-                                return "std::";
-                        }
-
-                    case Name:
-                        return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
-
-                    default:
-                        return "";
-                }
-            break;
-
-        case Qt::DecorationRole:
-            break;
-
-        case CompletionRole: {
-            CompletionProperties p;
-            if (index.row() < rowCount() / 2) {
-                p |= Function;
-            } else {
-                p |= Variable;
-            }
-            switch (index.row() % 3) {
-                case 0:
-                    p |= Const | Public;
-                    break;
+    case Qt::DisplayRole:
+        if (index.row() < rowCount() / 2)
+            switch (index.column()) {
+            case Prefix:
+                switch (index.row() % 3) {
+                default:
+                    return "void ";
                 case 1:
-                    p |= Protected;
-                    break;
+                    return "const QString& ";
                 case 2:
-                    p |= Private;
-                    break;
-            }
-            return (int)p;
-        }
+                    if (index.row() % 6) {
+                        return "inline virtual bool ";
+                    }
+                    return "virtual bool ";
+                }
 
-        case ScopeIndex:
-            return (index.row() % 4) - 1;
+            case Scope:
+                switch (index.row() % 4) {
+                default:
+                    return QString();
+                case 1:
+                    return "KTextEditor::";
+                case 2:
+                    return "::";
+                case 3:
+                    return "std::";
+                }
+
+            case Name:
+                return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
+
+            case Arguments:
+                switch (index.row() % 5) {
+                default:
+                    return "()";
+                case 1:
+                    return "(bool trigger)";
+                case 4:
+                    return "(const QString& name, Qt::CaseSensitivity cs)";
+                case 5:
+                    return "(int count)";
+                }
+
+            case Postfix:
+                switch (index.row() % 3) {
+                default:
+                    return " const";
+                case 1:
+                    return " KDE_DEPRECATED";
+                case 2:
+                    return "";
+                }
+            }
+        else
+            switch (index.column()) {
+            case Prefix:
+                switch (index.row() % 3) {
+                default:
+                    return "void ";
+                case 1:
+                    return "const QString ";
+                case 2:
+                    return "bool ";
+                }
+
+            case Scope:
+                switch (index.row() % 4) {
+                default:
+                    return QString();
+                case 1:
+                    return "KTextEditor::";
+                case 2:
+                    return "::";
+                case 3:
+                    return "std::";
+                }
+
+            case Name:
+                return QString(m_startText + QString("%1%2%3").arg(QChar('a' + (index.row() % 3))).arg(QChar('a' + index.row())).arg(index.row()));
+
+            default:
+                return "";
+            }
+        break;
+
+    case Qt::DecorationRole:
+        break;
+
+    case CompletionRole: {
+        CompletionProperties p;
+        if (index.row() < rowCount() / 2) {
+            p |= Function;
+        } else {
+            p |= Variable;
+        }
+        switch (index.row() % 3) {
+        case 0:
+            p |= Const | Public;
+            break;
+        case 1:
+            p |= Protected;
+            break;
+        case 2:
+            p |= Private;
+            break;
+        }
+        return (int)p;
+    }
+
+    case ScopeIndex:
+        return (index.row() % 4) - 1;
     }
 
     return QVariant();

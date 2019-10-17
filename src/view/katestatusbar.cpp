@@ -380,33 +380,33 @@ void KateStatusBar::modifiedChanged()
 
     m_modifiedStatus = newStatus;
     switch (m_modifiedStatus) {
-        case 0x0:
-            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
-            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
-            break;
+    case 0x0:
+        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")));
+        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was not modified since it was loaded"));
+        break;
 
-        case 0x1:
-        case 0x5:
-            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
-            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
-            break;
+    case 0x1:
+    case 0x5:
+        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("document-save")));
+        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified since it was loaded"));
+        break;
 
-        case 0x2:
-        case 0x6:
-            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
-            m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
-            break;
+    case 0x2:
+    case 0x6:
+        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("dialog-warning")));
+        m_modified->setWhatsThis(i18n("Meaning of current icon: Document was modified or deleted by another program"));
+        break;
 
-        case 0x3:
-        case 0x7:
-            m_modified->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
-            m_modified->setWhatsThis(QString());
-            break;
+    case 0x3:
+    case 0x7:
+        m_modified->setIcon(QIcon(KIconUtils::addOverlay(QIcon::fromTheme(QStringLiteral("document-save")), QIcon(QStringLiteral("emblem-important")), Qt::TopLeftCorner)));
+        m_modified->setWhatsThis(QString());
+        break;
 
-        default:
-            m_modified->setIcon(QIcon::fromTheme(QStringLiteral("lock")));
-            m_modified->setWhatsThis(i18n("Meaning of current icon: Document is in read-only mode"));
-            break;
+    default:
+        m_modified->setIcon(QIcon::fromTheme(QStringLiteral("lock")));
+        m_modified->setWhatsThis(i18n("Meaning of current icon: Document is in read-only mode"));
+        break;
     }
 }
 

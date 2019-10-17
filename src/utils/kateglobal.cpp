@@ -340,20 +340,20 @@ int KTextEditor::EditorPrivate::configPages() const
 KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWidget *parent)
 {
     switch (number) {
-        case 0:
-            return new KateViewDefaultsConfig(parent);
+    case 0:
+        return new KateViewDefaultsConfig(parent);
 
-        case 1:
-            return new KateSchemaConfigPage(parent);
+    case 1:
+        return new KateSchemaConfigPage(parent);
 
-        case 2:
-            return new KateEditConfigTab(parent);
+    case 2:
+        return new KateEditConfigTab(parent);
 
-        case 3:
-            return new KateSaveConfigTab(parent);
+    case 3:
+        return new KateSaveConfigTab(parent);
 
-        default:
-            break;
+    default:
+        break;
     }
 
     return nullptr;

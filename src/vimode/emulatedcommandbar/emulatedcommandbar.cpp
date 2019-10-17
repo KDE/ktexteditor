@@ -327,17 +327,17 @@ void EmulatedCommandBar::showBarTypeIndicator(EmulatedCommandBar::Mode mode)
 {
     QChar barTypeIndicator = QChar::Null;
     switch (mode) {
-        case SearchForward:
-            barTypeIndicator = QLatin1Char('/');
-            break;
-        case SearchBackward:
-            barTypeIndicator = QLatin1Char('?');
-            break;
-        case Command:
-            barTypeIndicator = QLatin1Char(':');
-            break;
-        default:
-            Q_ASSERT(false && "Unknown mode!");
+    case SearchForward:
+        barTypeIndicator = QLatin1Char('/');
+        break;
+    case SearchBackward:
+        barTypeIndicator = QLatin1Char('?');
+        break;
+    case Command:
+        barTypeIndicator = QLatin1Char(':');
+        break;
+    default:
+        Q_ASSERT(false && "Unknown mode!");
     }
     m_barTypeIndicator->setText(barTypeIndicator);
     m_barTypeIndicator->show();

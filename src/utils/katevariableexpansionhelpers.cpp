@@ -137,12 +137,12 @@ public:
 
         const auto &var = m_variables[index.row()];
         switch (role) {
-            case Qt::DisplayRole: {
-                const QString suffix = var.isPrefixMatch() ? i18n("<value>") : QString();
-                return QString(var.name() + suffix);
-            }
-            case Qt::ToolTipRole:
-                return var.description();
+        case Qt::DisplayRole: {
+            const QString suffix = var.isPrefixMatch() ? i18n("<value>") : QString();
+            return QString(var.name() + suffix);
+        }
+        case Qt::ToolTipRole:
+            return var.description();
         }
 
         return {};
@@ -191,12 +191,12 @@ public:
     {
         if (watched == m_watched) {
             switch (event->type()) {
-                case QEvent::Resize: {
-                    auto resizeEvent = static_cast<QResizeEvent *>(event);
-                    adjustPosition(resizeEvent->size());
-                }
-                default:
-                    break;
+            case QEvent::Resize: {
+                auto resizeEvent = static_cast<QResizeEvent *>(event);
+                adjustPosition(resizeEvent->size());
+            }
+            default:
+                break;
             }
         }
         return QToolButton::eventFilter(watched, event);
@@ -356,50 +356,50 @@ bool KateVariableExpansionDialog::eventFilter(QObject *watched, QEvent *event)
 
     // tracked widgets (tooltips, adding/removing the showAction)
     switch (event->type()) {
-        case QEvent::FocusIn: {
-            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
-                lineEdit->addAction(m_showAction, QLineEdit::TrailingPosition);
-            } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
-                if (!m_textEditButtons.contains(textEdit)) {
-                    m_textEditButtons[textEdit] = new TextEditButton(m_showAction, textEdit);
-                }
-                m_textEditButtons[textEdit]->raise();
-                m_textEditButtons[textEdit]->show();
+    case QEvent::FocusIn: {
+        if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
+            lineEdit->addAction(m_showAction, QLineEdit::TrailingPosition);
+        } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
+            if (!m_textEditButtons.contains(textEdit)) {
+                m_textEditButtons[textEdit] = new TextEditButton(m_showAction, textEdit);
             }
-            break;
+            m_textEditButtons[textEdit]->raise();
+            m_textEditButtons[textEdit]->show();
         }
-        case QEvent::FocusOut: {
-            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
-                lineEdit->removeAction(m_showAction);
-            } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
-                if (m_textEditButtons.contains(textEdit)) {
-                    delete m_textEditButtons[textEdit];
-                    m_textEditButtons.remove(textEdit);
-                }
+        break;
+    }
+    case QEvent::FocusOut: {
+        if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
+            lineEdit->removeAction(m_showAction);
+        } else if (auto textEdit = qobject_cast<QTextEdit *>(watched)) {
+            if (m_textEditButtons.contains(textEdit)) {
+                delete m_textEditButtons[textEdit];
+                m_textEditButtons.remove(textEdit);
             }
-            break;
         }
-        case QEvent::ToolTip: {
-            QString inputText;
-            if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
-                inputText = lineEdit->text();
-            }
-            QString toolTip;
-            if (!inputText.isEmpty()) {
-                auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
-                KTextEditor::Editor::instance()->expandText(inputText, activeView, toolTip);
-            }
+        break;
+    }
+    case QEvent::ToolTip: {
+        QString inputText;
+        if (auto lineEdit = qobject_cast<QLineEdit *>(watched)) {
+            inputText = lineEdit->text();
+        }
+        QString toolTip;
+        if (!inputText.isEmpty()) {
+            auto activeView = KTextEditor::Editor::instance()->application()->activeMainWindow()->activeView();
+            KTextEditor::Editor::instance()->expandText(inputText, activeView, toolTip);
+        }
 
-            if (!toolTip.isEmpty()) {
-                auto helpEvent = static_cast<QHelpEvent *>(event);
-                QToolTip::showText(helpEvent->globalPos(), toolTip, qobject_cast<QWidget *>(watched));
-                event->accept();
-                return true;
-            }
-            break;
+        if (!toolTip.isEmpty()) {
+            auto helpEvent = static_cast<QHelpEvent *>(event);
+            QToolTip::showText(helpEvent->globalPos(), toolTip, qobject_cast<QWidget *>(watched));
+            event->accept();
+            return true;
         }
-        default:
-            break;
+        break;
+    }
+    default:
+        break;
     }
 
     // auto-hide on focus change

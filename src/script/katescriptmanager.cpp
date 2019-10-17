@@ -222,58 +222,58 @@ void KateScriptManager::collect()
 
             // now, cast accordingly based on type
             switch (generalHeader.scriptType()) {
-                case Kate::ScriptType::Indentation: {
-                    KateIndentScriptHeader indentHeader;
-                    indentHeader.setName(metaInfoObject.value(QStringLiteral("name")).toString());
-                    indentHeader.setBaseName(baseName);
-                    if (indentHeader.name().isNull()) {
-                        qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping indenter" << '\n';
-                        continue;
-                    }
+            case Kate::ScriptType::Indentation: {
+                KateIndentScriptHeader indentHeader;
+                indentHeader.setName(metaInfoObject.value(QStringLiteral("name")).toString());
+                indentHeader.setBaseName(baseName);
+                if (indentHeader.name().isNull()) {
+                    qCDebug(LOG_KTE) << "Script value error: No name specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping indenter" << '\n';
+                    continue;
+                }
 
-                    // required style?
-                    indentHeader.setRequiredStyle(metaInfoObject.value(QStringLiteral("required-syntax-style")).toString());
-                    // which languages does this support?
-                    QStringList indentLanguages = jsonToStringList(metaInfoObject.value(QStringLiteral("indent-languages")));
-                    if (!indentLanguages.isEmpty()) {
-                        indentHeader.setIndentLanguages(indentLanguages);
-                    } else {
-                        indentHeader.setIndentLanguages(QStringList() << indentHeader.name());
+                // required style?
+                indentHeader.setRequiredStyle(metaInfoObject.value(QStringLiteral("required-syntax-style")).toString());
+                // which languages does this support?
+                QStringList indentLanguages = jsonToStringList(metaInfoObject.value(QStringLiteral("indent-languages")));
+                if (!indentLanguages.isEmpty()) {
+                    indentHeader.setIndentLanguages(indentLanguages);
+                } else {
+                    indentHeader.setIndentLanguages(QStringList() << indentHeader.name());
 
 #ifdef DEBUG_SCRIPTMANAGER
-                        qCDebug(LOG_KTE) << "Script value warning: No indent-languages specified for indent "
-                                         << "script " << qPrintable(fileName) << ". Using the name (" << qPrintable(indentHeader.name()) << ")\n";
+                    qCDebug(LOG_KTE) << "Script value warning: No indent-languages specified for indent "
+                                     << "script " << qPrintable(fileName) << ". Using the name (" << qPrintable(indentHeader.name()) << ")\n";
 #endif
-                    }
-                    // priority
-                    indentHeader.setPriority(metaInfoObject.value(QStringLiteral("priority")).toInt());
-
-                    KateIndentScript *script = new KateIndentScript(fileName, indentHeader);
-                    script->setGeneralHeader(generalHeader);
-                    for (const QString &language : indentHeader.indentLanguages()) {
-                        m_languageToIndenters[language.toLower()].push_back(script);
-                    }
-
-                    m_indentationScriptMap.insert(indentHeader.baseName(), script);
-                    m_indentationScripts.append(script);
-                    break;
                 }
-                case Kate::ScriptType::CommandLine: {
-                    KateCommandLineScriptHeader commandHeader;
-                    commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QStringLiteral("functions"))));
-                    commandHeader.setActions(metaInfoObject.value(QStringLiteral("actions")).toArray());
-                    if (commandHeader.functions().isEmpty()) {
-                        qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
-                        continue;
-                    }
-                    KateCommandLineScript *script = new KateCommandLineScript(fileName, commandHeader);
-                    script->setGeneralHeader(generalHeader);
-                    m_commandLineScripts.push_back(script);
-                    break;
+                // priority
+                indentHeader.setPriority(metaInfoObject.value(QStringLiteral("priority")).toInt());
+
+                KateIndentScript *script = new KateIndentScript(fileName, indentHeader);
+                script->setGeneralHeader(generalHeader);
+                for (const QString &language : indentHeader.indentLanguages()) {
+                    m_languageToIndenters[language.toLower()].push_back(script);
                 }
-                case Kate::ScriptType::Unknown:
-                default:
-                    qCDebug(LOG_KTE) << "Script value warning: Unknown type ('" << qPrintable(type) << "'): " << qPrintable(fileName) << '\n';
+
+                m_indentationScriptMap.insert(indentHeader.baseName(), script);
+                m_indentationScripts.append(script);
+                break;
+            }
+            case Kate::ScriptType::CommandLine: {
+                KateCommandLineScriptHeader commandHeader;
+                commandHeader.setFunctions(jsonToStringList(metaInfoObject.value(QStringLiteral("functions"))));
+                commandHeader.setActions(metaInfoObject.value(QStringLiteral("actions")).toArray());
+                if (commandHeader.functions().isEmpty()) {
+                    qCDebug(LOG_KTE) << "Script value error: No functions specified in script meta data: " << qPrintable(fileName) << '\n' << "-> skipping script" << '\n';
+                    continue;
+                }
+                KateCommandLineScript *script = new KateCommandLineScript(fileName, commandHeader);
+                script->setGeneralHeader(generalHeader);
+                m_commandLineScripts.push_back(script);
+                break;
+            }
+            case Kate::ScriptType::Unknown:
+            default:
+                qCDebug(LOG_KTE) << "Script value warning: Unknown type ('" << qPrintable(type) << "'): " << qPrintable(fileName) << '\n';
             }
         }
     }

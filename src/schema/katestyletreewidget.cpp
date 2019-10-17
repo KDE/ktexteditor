@@ -175,15 +175,15 @@ bool KateStyleTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
     }
 
     switch (trigger) {
-        case QAbstractItemView::DoubleClicked:
-        case QAbstractItemView::SelectedClicked:
-        case QAbstractItemView::EditKeyPressed:
-            i->changeProperty(index.column());
-            update(index);
-            update(index.sibling(index.row(), KateStyleTreeWidgetItem::Context));
-            return false;
-        default:
-            return QTreeWidget::edit(index, trigger, event);
+    case QAbstractItemView::DoubleClicked:
+    case QAbstractItemView::SelectedClicked:
+    case QAbstractItemView::EditKeyPressed:
+        i->changeProperty(index.column());
+        update(index);
+        update(index.sibling(index.row(), KateStyleTreeWidgetItem::Context));
+        return false;
+    default:
+        return QTreeWidget::edit(index, trigger, event);
     }
 }
 
@@ -446,53 +446,53 @@ QVariant KateStyleTreeWidgetItem::data(int column, int role) const
 {
     if (column == Context) {
         switch (role) {
-            case Qt::ForegroundRole:
-                if (style()->hasProperty(QTextFormat::ForegroundBrush)) {
-                    return style()->foreground().color();
-                }
-                break;
+        case Qt::ForegroundRole:
+            if (style()->hasProperty(QTextFormat::ForegroundBrush)) {
+                return style()->foreground().color();
+            }
+            break;
 
-            case Qt::BackgroundRole:
-                if (style()->hasProperty(QTextFormat::BackgroundBrush)) {
-                    return style()->background().color();
-                }
-                break;
+        case Qt::BackgroundRole:
+            if (style()->hasProperty(QTextFormat::BackgroundBrush)) {
+                return style()->background().color();
+            }
+            break;
 
-            case Qt::FontRole:
-                return style()->font();
-                break;
+        case Qt::FontRole:
+            return style()->font();
+            break;
         }
     }
 
     if (role == Qt::CheckStateRole) {
         switch (column) {
-            case Bold:
-                return toCheckState(style()->fontBold());
-            case Italic:
-                return toCheckState(style()->fontItalic());
-            case Underline:
-                return toCheckState(style()->fontUnderline());
-            case StrikeOut:
-                return toCheckState(style()->fontStrikeOut());
-            case UseDefaultStyle:
-                /* can't compare all attributes, currentStyle has always more than defaultStyle (e.g. the item's name),
-                 * so we just compare the important ones:*/
-                return toCheckState(currentStyle->foreground() == defaultStyle->foreground() && currentStyle->background() == defaultStyle->background() && currentStyle->selectedForeground() == defaultStyle->selectedForeground() &&
-                                    currentStyle->selectedBackground() == defaultStyle->selectedBackground() && currentStyle->fontBold() == defaultStyle->fontBold() && currentStyle->fontItalic() == defaultStyle->fontItalic() &&
-                                    currentStyle->fontUnderline() == defaultStyle->fontUnderline() && currentStyle->fontStrikeOut() == defaultStyle->fontStrikeOut());
+        case Bold:
+            return toCheckState(style()->fontBold());
+        case Italic:
+            return toCheckState(style()->fontItalic());
+        case Underline:
+            return toCheckState(style()->fontUnderline());
+        case StrikeOut:
+            return toCheckState(style()->fontStrikeOut());
+        case UseDefaultStyle:
+            /* can't compare all attributes, currentStyle has always more than defaultStyle (e.g. the item's name),
+             * so we just compare the important ones:*/
+            return toCheckState(currentStyle->foreground() == defaultStyle->foreground() && currentStyle->background() == defaultStyle->background() && currentStyle->selectedForeground() == defaultStyle->selectedForeground() &&
+                                currentStyle->selectedBackground() == defaultStyle->selectedBackground() && currentStyle->fontBold() == defaultStyle->fontBold() && currentStyle->fontItalic() == defaultStyle->fontItalic() &&
+                                currentStyle->fontUnderline() == defaultStyle->fontUnderline() && currentStyle->fontStrikeOut() == defaultStyle->fontStrikeOut());
         }
     }
 
     if (role == Qt::DisplayRole) {
         switch (column) {
-            case Foreground:
-                return style()->foreground();
-            case SelectedForeground:
-                return style()->selectedForeground();
-            case Background:
-                return style()->background();
-            case SelectedBackground:
-                return style()->selectedBackground();
+        case Foreground:
+            return style()->foreground();
+        case SelectedForeground:
+            return style()->selectedForeground();
+        case Background:
+            return style()->background();
+        case SelectedBackground:
+            return style()->selectedBackground();
         }
     }
 
@@ -660,18 +660,18 @@ void KateStyleTreeWidgetItem::setColor(int column)
     // else if set default, unset it
     // else set the selected color
     switch (column) {
-        case Foreground:
-            currentStyle->setForeground(selectedColor);
-            break;
-        case SelectedForeground:
-            currentStyle->setSelectedForeground(selectedColor);
-            break;
-        case Background:
-            currentStyle->setBackground(selectedColor);
-            break;
-        case SelectedBackground:
-            currentStyle->setSelectedBackground(selectedColor);
-            break;
+    case Foreground:
+        currentStyle->setForeground(selectedColor);
+        break;
+    case SelectedForeground:
+        currentStyle->setSelectedForeground(selectedColor);
+        break;
+    case Background:
+        currentStyle->setBackground(selectedColor);
+        break;
+    case SelectedBackground:
+        currentStyle->setSelectedBackground(selectedColor);
+        break;
     }
 
     // FIXME
@@ -681,30 +681,30 @@ void KateStyleTreeWidgetItem::setColor(int column)
 void KateStyleTreeWidgetItem::unsetColor(int colorId)
 {
     switch (colorId) {
-        case 1:
-            if (defaultStyle->hasProperty(QTextFormat::ForegroundBrush)) {
-                currentStyle->setForeground(defaultStyle->foreground());
-            } else {
-                currentStyle->clearProperty(QTextFormat::ForegroundBrush);
-            }
-            break;
-        case 2:
-            if (defaultStyle->hasProperty(CustomProperties::SelectedForeground)) {
-                currentStyle->setSelectedForeground(defaultStyle->selectedForeground());
-            } else {
-                currentStyle->clearProperty(CustomProperties::SelectedForeground);
-            }
-            break;
-        case 3:
-            if (currentStyle->hasProperty(QTextFormat::BackgroundBrush)) {
-                currentStyle->clearProperty(QTextFormat::BackgroundBrush);
-            }
-            break;
-        case 4:
-            if (currentStyle->hasProperty(CustomProperties::SelectedBackground)) {
-                currentStyle->clearProperty(CustomProperties::SelectedBackground);
-            }
-            break;
+    case 1:
+        if (defaultStyle->hasProperty(QTextFormat::ForegroundBrush)) {
+            currentStyle->setForeground(defaultStyle->foreground());
+        } else {
+            currentStyle->clearProperty(QTextFormat::ForegroundBrush);
+        }
+        break;
+    case 2:
+        if (defaultStyle->hasProperty(CustomProperties::SelectedForeground)) {
+            currentStyle->setSelectedForeground(defaultStyle->selectedForeground());
+        } else {
+            currentStyle->clearProperty(CustomProperties::SelectedForeground);
+        }
+        break;
+    case 3:
+        if (currentStyle->hasProperty(QTextFormat::BackgroundBrush)) {
+            currentStyle->clearProperty(QTextFormat::BackgroundBrush);
+        }
+        break;
+    case 4:
+        if (currentStyle->hasProperty(CustomProperties::SelectedBackground)) {
+            currentStyle->clearProperty(CustomProperties::SelectedBackground);
+        }
+        break;
     }
 
     updateStyle();

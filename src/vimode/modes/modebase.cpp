@@ -1257,36 +1257,36 @@ void ModeBase::switchView(Direction direction)
             int center_x = (x1 + x2) / 2;
 
             switch (direction) {
-                case Left:
-                    if (view != m_view && x2 <= curr_x1 && (x2 > best_x2 || (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
-                        bestview = view;
-                        best_x2 = x2;
-                        best_center_y = center_y;
-                    }
-                    break;
-                case Right:
-                    if (view != m_view && x1 >= curr_x2 && (x1 < best_x1 || (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
-                        bestview = view;
-                        best_x1 = x1;
-                        best_center_y = center_y;
-                    }
-                    break;
-                case Down:
-                    if (view != m_view && y1 >= curr_y2 && (y1 < best_y1 || (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
-                        bestview = view;
-                        best_y1 = y1;
-                        best_center_x = center_x;
-                    }
-                    break;
-                case Up:
-                    if (view != m_view && y2 <= curr_y1 && (y2 > best_y2 || (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
-                        bestview = view;
-                        best_y2 = y2;
-                        best_center_x = center_x;
-                    }
-                    break;
-                default:
-                    return;
+            case Left:
+                if (view != m_view && x2 <= curr_x1 && (x2 > best_x2 || (x2 == best_x2 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                    bestview = view;
+                    best_x2 = x2;
+                    best_center_y = center_y;
+                }
+                break;
+            case Right:
+                if (view != m_view && x1 >= curr_x2 && (x1 < best_x1 || (x1 == best_x1 && qAbs(curr_cursor_y - center_y) < qAbs(curr_cursor_y - best_center_y)) || bestview == nullptr)) {
+                    bestview = view;
+                    best_x1 = x1;
+                    best_center_y = center_y;
+                }
+                break;
+            case Down:
+                if (view != m_view && y1 >= curr_y2 && (y1 < best_y1 || (y1 == best_y1 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                    bestview = view;
+                    best_y1 = y1;
+                    best_center_x = center_x;
+                }
+                break;
+            case Up:
+                if (view != m_view && y2 <= curr_y1 && (y2 > best_y2 || (y2 == best_y2 && qAbs(curr_cursor_x - center_x) < qAbs(curr_cursor_x - best_center_x)) || bestview == nullptr)) {
+                    bestview = view;
+                    best_y2 = y2;
+                    best_center_x = center_x;
+                }
+                break;
+            default:
+                return;
             }
         }
     }

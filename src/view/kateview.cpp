@@ -3462,11 +3462,11 @@ KTextEditor::Range KTextEditor::ViewPrivate::visibleRange()
 bool KTextEditor::ViewPrivate::event(QEvent *e)
 {
     switch (e->type()) {
-        case QEvent::StyleChange:
-            setupLayout();
-            return true;
-        default:
-            return KTextEditor::View::event(e);
+    case QEvent::StyleChange:
+        setupLayout();
+        return true;
+    default:
+        return KTextEditor::View::event(e);
     }
 }
 

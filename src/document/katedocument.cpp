@@ -105,13 +105,13 @@
     qCDebug(LOG_KTE)
 #endif
 
-template <class C, class E> static int indexOf(const std::initializer_list<C> &list, const E &entry)
+template<class C, class E> static int indexOf(const std::initializer_list<C> &list, const E &entry)
 {
     auto it = std::find(list.begin(), list.end(), entry);
     return it == list.end() ? -1 : std::distance(list.begin(), it);
 }
 
-template <class C, class E> static bool contains(const std::initializer_list<C> &list, const E &entry)
+template<class C, class E> static bool contains(const std::initializer_list<C> &list, const E &entry)
 {
     return indexOf(list, entry) >= 0;
 }
@@ -119,12 +119,12 @@ template <class C, class E> static bool contains(const std::initializer_list<C> 
 static inline QChar matchingStartBracket(const QChar c)
 {
     switch (c.toLatin1()) {
-        case '}':
-            return QLatin1Char('{');
-        case ']':
-            return QLatin1Char('[');
-        case ')':
-            return QLatin1Char('(');
+    case '}':
+        return QLatin1Char('{');
+    case ']':
+        return QLatin1Char('[');
+    case ')':
+        return QLatin1Char('(');
     }
     return QChar();
 }
@@ -132,16 +132,16 @@ static inline QChar matchingStartBracket(const QChar c)
 static inline QChar matchingEndBracket(const QChar c, bool withQuotes = true)
 {
     switch (c.toLatin1()) {
-        case '{':
-            return QLatin1Char('}');
-        case '[':
-            return QLatin1Char(']');
-        case '(':
-            return QLatin1Char(')');
-        case '\'':
-            return withQuotes ? QLatin1Char('\'') : QChar();
-        case '"':
-            return withQuotes ? QLatin1Char('"') : QChar();
+    case '{':
+        return QLatin1Char('}');
+    case '[':
+        return QLatin1Char(']');
+    case '(':
+        return QLatin1Char(')');
+    case '\'':
+        return withQuotes ? QLatin1Char('\'') : QChar();
+    case '"':
+        return withQuotes ? QLatin1Char('"') : QChar();
     }
     return QChar();
 }
@@ -4051,22 +4051,22 @@ void KTextEditor::DocumentPrivate::transform(KTextEditor::ViewPrivate *v, const 
         QString old = text(KTextEditor::Range(cursor, 1));
         QString s;
         switch (t) {
-            case Uppercase:
-                s = old.toUpper();
-                break;
-            case Lowercase:
-                s = old.toLower();
-                break;
-            case Capitalize: {
-                Kate::TextLine l = m_buffer->plainLine(cursor.line());
-                while (cursor.column() > 0 && highlight()->isInWord(l->at(cursor.column() - 1), l->attribute(cursor.column() - 1))) {
-                    cursor.setColumn(cursor.column() - 1);
-                }
-                old = text(KTextEditor::Range(cursor, 1));
-                s = old.toUpper();
-            } break;
-            default:
-                break;
+        case Uppercase:
+            s = old.toUpper();
+            break;
+        case Lowercase:
+            s = old.toLower();
+            break;
+        case Capitalize: {
+            Kate::TextLine l = m_buffer->plainLine(cursor.line());
+            while (cursor.column() > 0 && highlight()->isInWord(l->at(cursor.column() - 1), l->attribute(cursor.column() - 1))) {
+                cursor.setColumn(cursor.column() - 1);
+            }
+            old = text(KTextEditor::Range(cursor, 1));
+            s = old.toUpper();
+        } break;
+        default:
+            break;
         }
 
         removeText(KTextEditor::Range(cursor, 1));
@@ -5076,17 +5076,17 @@ QString KTextEditor::DocumentPrivate::reasonedMOHString() const
     const QString str = KStringHandler::csqueeze(url().toDisplayString(QUrl::PreferLocalFile));
 
     switch (m_modOnHdReason) {
-        case OnDiskModified:
-            return i18n("The file '%1' was modified by another program.", str);
-            break;
-        case OnDiskCreated:
-            return i18n("The file '%1' was created by another program.", str);
-            break;
-        case OnDiskDeleted:
-            return i18n("The file '%1' was deleted by another program.", str);
-            break;
-        default:
-            return QString();
+    case OnDiskModified:
+        return i18n("The file '%1' was modified by another program.", str);
+        break;
+    case OnDiskCreated:
+        return i18n("The file '%1' was created by another program.", str);
+        break;
+    case OnDiskDeleted:
+        return i18n("The file '%1' was deleted by another program.", str);
+        break;
+    default:
+        return QString();
     }
     Q_UNREACHABLE();
     return QString();
@@ -5369,27 +5369,27 @@ bool KTextEditor::DocumentPrivate::queryClose()
     bool handled = false;
 
     switch (res) {
-        case KMessageBox::Yes:
-            sigQueryClose(&handled, &abortClose);
-            if (!handled) {
-                if (url().isEmpty()) {
-                    QUrl url = QFileDialog::getSaveFileUrl(dialogParent());
-                    if (url.isEmpty()) {
-                        return false;
-                    }
-
-                    saveAs(url);
-                } else {
-                    save();
+    case KMessageBox::Yes:
+        sigQueryClose(&handled, &abortClose);
+        if (!handled) {
+            if (url().isEmpty()) {
+                QUrl url = QFileDialog::getSaveFileUrl(dialogParent());
+                if (url.isEmpty()) {
+                    return false;
                 }
-            } else if (abortClose) {
-                return false;
+
+                saveAs(url);
+            } else {
+                save();
             }
-            return waitSaveComplete();
-        case KMessageBox::No:
-            return true;
-        default: // case KMessageBox::Cancel :
+        } else if (abortClose) {
             return false;
+        }
+        return waitSaveComplete();
+    case KMessageBox::No:
+        return true;
+    default: // case KMessageBox::Cancel :
+        return false;
     }
 }
 

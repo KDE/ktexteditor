@@ -276,116 +276,116 @@ bool SwapFile::recover(QDataStream &stream, bool checkDigest)
         qint8 type;
         stream >> type;
         switch (type) {
-            case EA_StartEditing: {
-                m_document->editStart();
-                editRunning = true;
-                firstEditInGroup = true;
-                undoCursor = KTextEditor::Cursor::invalid();
-                redoCursor = KTextEditor::Cursor::invalid();
+        case EA_StartEditing: {
+            m_document->editStart();
+            editRunning = true;
+            firstEditInGroup = true;
+            undoCursor = KTextEditor::Cursor::invalid();
+            redoCursor = KTextEditor::Cursor::invalid();
+            break;
+        }
+        case EA_FinishEditing: {
+            m_document->editEnd();
+
+            // empty editStart() / editEnd() groups exist: only set cursor if required
+            if (!firstEditInGroup) {
+                // set undo/redo cursor of last KateUndoGroup of the undo manager
+                m_document->undoManager()->setUndoRedoCursorsOfLastGroup(undoCursor, redoCursor);
+                m_document->undoManager()->undoSafePoint();
+            }
+            firstEditInGroup = false;
+            editRunning = false;
+            break;
+        }
+        case EA_WrapLine: {
+            if (!editRunning) {
+                brokenSwapFile = true;
                 break;
             }
-            case EA_FinishEditing: {
-                m_document->editEnd();
 
-                // empty editStart() / editEnd() groups exist: only set cursor if required
-                if (!firstEditInGroup) {
-                    // set undo/redo cursor of last KateUndoGroup of the undo manager
-                    m_document->undoManager()->setUndoRedoCursorsOfLastGroup(undoCursor, redoCursor);
-                    m_document->undoManager()->undoSafePoint();
-                }
+            int line = 0, column = 0;
+            stream >> line >> column;
+
+            // emulate buffer unwrapLine with document
+            m_document->editWrapLine(line, column, true);
+
+            // track undo/redo cursor
+            if (firstEditInGroup) {
                 firstEditInGroup = false;
-                editRunning = false;
+                undoCursor = KTextEditor::Cursor(line, column);
+            }
+            redoCursor = KTextEditor::Cursor(line + 1, 0);
+
+            break;
+        }
+        case EA_UnwrapLine: {
+            if (!editRunning) {
+                brokenSwapFile = true;
                 break;
             }
-            case EA_WrapLine: {
-                if (!editRunning) {
-                    brokenSwapFile = true;
-                    break;
-                }
 
-                int line = 0, column = 0;
-                stream >> line >> column;
+            int line = 0;
+            stream >> line;
 
-                // emulate buffer unwrapLine with document
-                m_document->editWrapLine(line, column, true);
+            // assert valid line
+            Q_ASSERT(line > 0);
 
-                // track undo/redo cursor
-                if (firstEditInGroup) {
-                    firstEditInGroup = false;
-                    undoCursor = KTextEditor::Cursor(line, column);
-                }
-                redoCursor = KTextEditor::Cursor(line + 1, 0);
+            const int undoColumn = m_document->lineLength(line - 1);
 
+            // emulate buffer unwrapLine with document
+            m_document->editUnWrapLine(line - 1, true, 0);
+
+            // track undo/redo cursor
+            if (firstEditInGroup) {
+                firstEditInGroup = false;
+                undoCursor = KTextEditor::Cursor(line, 0);
+            }
+            redoCursor = KTextEditor::Cursor(line - 1, undoColumn);
+
+            break;
+        }
+        case EA_InsertText: {
+            if (!editRunning) {
+                brokenSwapFile = true;
                 break;
             }
-            case EA_UnwrapLine: {
-                if (!editRunning) {
-                    brokenSwapFile = true;
-                    break;
-                }
 
-                int line = 0;
-                stream >> line;
+            int line, column;
+            QByteArray text;
+            stream >> line >> column >> text;
+            m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
 
-                // assert valid line
-                Q_ASSERT(line > 0);
+            // track undo/redo cursor
+            if (firstEditInGroup) {
+                firstEditInGroup = false;
+                undoCursor = KTextEditor::Cursor(line, column);
+            }
+            redoCursor = KTextEditor::Cursor(line, column + text.size());
 
-                const int undoColumn = m_document->lineLength(line - 1);
-
-                // emulate buffer unwrapLine with document
-                m_document->editUnWrapLine(line - 1, true, 0);
-
-                // track undo/redo cursor
-                if (firstEditInGroup) {
-                    firstEditInGroup = false;
-                    undoCursor = KTextEditor::Cursor(line, 0);
-                }
-                redoCursor = KTextEditor::Cursor(line - 1, undoColumn);
-
+            break;
+        }
+        case EA_RemoveText: {
+            if (!editRunning) {
+                brokenSwapFile = true;
                 break;
             }
-            case EA_InsertText: {
-                if (!editRunning) {
-                    brokenSwapFile = true;
-                    break;
-                }
 
-                int line, column;
-                QByteArray text;
-                stream >> line >> column >> text;
-                m_document->insertText(KTextEditor::Cursor(line, column), QString::fromUtf8(text.data(), text.size()));
+            int line, startColumn, endColumn;
+            stream >> line >> startColumn >> endColumn;
+            m_document->removeText(KTextEditor::Range(KTextEditor::Cursor(line, startColumn), KTextEditor::Cursor(line, endColumn)));
 
-                // track undo/redo cursor
-                if (firstEditInGroup) {
-                    firstEditInGroup = false;
-                    undoCursor = KTextEditor::Cursor(line, column);
-                }
-                redoCursor = KTextEditor::Cursor(line, column + text.size());
-
-                break;
+            // track undo/redo cursor
+            if (firstEditInGroup) {
+                firstEditInGroup = false;
+                undoCursor = KTextEditor::Cursor(line, endColumn);
             }
-            case EA_RemoveText: {
-                if (!editRunning) {
-                    brokenSwapFile = true;
-                    break;
-                }
+            redoCursor = KTextEditor::Cursor(line, startColumn);
 
-                int line, startColumn, endColumn;
-                stream >> line >> startColumn >> endColumn;
-                m_document->removeText(KTextEditor::Range(KTextEditor::Cursor(line, startColumn), KTextEditor::Cursor(line, endColumn)));
-
-                // track undo/redo cursor
-                if (firstEditInGroup) {
-                    firstEditInGroup = false;
-                    undoCursor = KTextEditor::Cursor(line, endColumn);
-                }
-                redoCursor = KTextEditor::Cursor(line, startColumn);
-
-                break;
-            }
-            default: {
-                qCWarning(LOG_KTE) << "Unknown type:" << type;
-            }
+            break;
+        }
+        default: {
+            qCWarning(LOG_KTE) << "Unknown type:" << type;
+        }
         }
     }
 

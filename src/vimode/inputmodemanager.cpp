@@ -279,19 +279,19 @@ ViMode InputModeManager::getCurrentViMode() const
 KTextEditor::View::ViewMode InputModeManager::getCurrentViewMode() const
 {
     switch (m_currentViMode) {
-        case ViMode::InsertMode:
-            return KTextEditor::View::ViModeInsert;
-        case ViMode::VisualMode:
-            return KTextEditor::View::ViModeVisual;
-        case ViMode::VisualLineMode:
-            return KTextEditor::View::ViModeVisualLine;
-        case ViMode::VisualBlockMode:
-            return KTextEditor::View::ViModeVisualBlock;
-        case ViMode::ReplaceMode:
-            return KTextEditor::View::ViModeReplace;
-        case ViMode::NormalMode:
-        default:
-            return KTextEditor::View::ViModeNormal;
+    case ViMode::InsertMode:
+        return KTextEditor::View::ViModeInsert;
+    case ViMode::VisualMode:
+        return KTextEditor::View::ViModeVisual;
+    case ViMode::VisualLineMode:
+        return KTextEditor::View::ViModeVisualLine;
+    case ViMode::VisualBlockMode:
+        return KTextEditor::View::ViModeVisualBlock;
+    case ViMode::ReplaceMode:
+        return KTextEditor::View::ViModeReplace;
+    case ViMode::NormalMode:
+    default:
+        return KTextEditor::View::ViModeNormal;
     }
 }
 
@@ -308,16 +308,16 @@ bool InputModeManager::isAnyVisualMode() const
 ::ModeBase *InputModeManager::getCurrentViModeHandler() const
 {
     switch (m_currentViMode) {
-        case ViMode::NormalMode:
-            return m_viNormalMode;
-        case ViMode::InsertMode:
-            return m_viInsertMode;
-        case ViMode::VisualMode:
-        case ViMode::VisualLineMode:
-        case ViMode::VisualBlockMode:
-            return m_viVisualMode;
-        case ViMode::ReplaceMode:
-            return m_viReplaceMode;
+    case ViMode::NormalMode:
+        return m_viNormalMode;
+    case ViMode::InsertMode:
+        return m_viInsertMode;
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+    case ViMode::VisualBlockMode:
+        return m_viVisualMode;
+    case ViMode::ReplaceMode:
+        return m_viReplaceMode;
     }
     return nullptr;
 }
@@ -407,18 +407,18 @@ const QString InputModeManager::getVerbatimKeys() const
     QString cmd;
 
     switch (getCurrentViMode()) {
-        case ViMode::NormalMode:
-            cmd = m_viNormalMode->getVerbatimKeys();
-            break;
-        case ViMode::InsertMode:
-        case ViMode::ReplaceMode:
-            // ...
-            break;
-        case ViMode::VisualMode:
-        case ViMode::VisualLineMode:
-        case ViMode::VisualBlockMode:
-            cmd = m_viVisualMode->getVerbatimKeys();
-            break;
+    case ViMode::NormalMode:
+        cmd = m_viNormalMode->getVerbatimKeys();
+        break;
+    case ViMode::InsertMode:
+    case ViMode::ReplaceMode:
+        // ...
+        break;
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+    case ViMode::VisualBlockMode:
+        cmd = m_viVisualMode->getVerbatimKeys();
+        break;
     }
 
     return cmd;

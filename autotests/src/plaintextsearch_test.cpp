@@ -33,11 +33,11 @@ QtMessageHandler PlainTextSearchTest::s_msgHandler = nullptr;
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     switch (type) {
-        case QtDebugMsg:
-            /* do nothing */
-            break;
-        default:
-            PlainTextSearchTest::s_msgHandler(type, context, msg);
+    case QtDebugMsg:
+        /* do nothing */
+        break;
+    default:
+        PlainTextSearchTest::s_msgHandler(type, context, msg);
     }
 }
 

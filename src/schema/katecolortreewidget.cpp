@@ -260,13 +260,13 @@ bool KateColorTreeWidget::edit(const QModelIndex &index, EditTrigger trigger, QE
     }
 
     switch (trigger) {
-        case QAbstractItemView::DoubleClicked:
-        case QAbstractItemView::SelectedClicked:
-        case QAbstractItemView::EditKeyPressed: // = F2
-            accept = true;
-            break;
-        default:
-            break;
+    case QAbstractItemView::DoubleClicked:
+    case QAbstractItemView::SelectedClicked:
+    case QAbstractItemView::EditKeyPressed: // = F2
+        accept = true;
+        break;
+    default:
+        break;
     }
 
     if (accept) {

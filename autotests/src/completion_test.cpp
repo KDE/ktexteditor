@@ -410,8 +410,7 @@ void CompletionTest::testAbbreviationEngine()
 
 void CompletionTest::benchAbbreviationEngineGoodCase()
 {
-    QBENCHMARK
-    {
+    QBENCHMARK {
         for (int i = 0; i < 10000; i++) {
             QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("XZYBFA"), Qt::CaseInsensitive));
         }
@@ -420,8 +419,7 @@ void CompletionTest::benchAbbreviationEngineGoodCase()
 
 void CompletionTest::benchAbbreviationEngineNormalCase()
 {
-    QBENCHMARK
-    {
+    QBENCHMARK {
         for (int i = 0; i < 10000; i++) {
             QVERIFY(!KateCompletionModel::matchesAbbreviation(QStringLiteral("AaaaaaBbbbbCcccDddEeFzZ"), QStringLiteral("ABCDEFX"), Qt::CaseInsensitive));
         }
@@ -430,8 +428,7 @@ void CompletionTest::benchAbbreviationEngineNormalCase()
 
 void CompletionTest::benchAbbreviationEngineWorstCase()
 {
-    QBENCHMARK
-    {
+    QBENCHMARK {
         for (int i = 0; i < 10000; i++) {
             // This case is quite horrible, because it requires a branch at every letter.
             // The current code will at some point drop out and just return false.
@@ -488,8 +485,7 @@ void CompletionTest::benchCompletionModel()
     testModel3->setRowCount(500);
     CodeCompletionTestModel *testModel4 = new CodeCompletionTestModel(m_view, QStringLiteral("abcd"));
     testModel4->setRowCount(5000);
-    QBENCHMARK_ONCE
-    {
+    QBENCHMARK_ONCE {
         for (int i = 0; i < text.size(); ++i) {
             m_view->setCursorPosition(Cursor(0, i));
             invokeCompletionBox(m_view);

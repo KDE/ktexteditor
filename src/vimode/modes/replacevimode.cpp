@@ -106,79 +106,79 @@ bool ReplaceViMode::handleKeypress(const QKeyEvent *e)
 
     if (e->modifiers() == Qt::NoModifier) {
         switch (e->key()) {
-            case Qt::Key_Escape:
-                m_overwritten.clear();
-                leaveReplaceMode();
-                return true;
-            case Qt::Key_Left:
-                m_overwritten.clear();
-                m_view->cursorLeft();
-                return true;
-            case Qt::Key_Right:
-                m_overwritten.clear();
-                m_view->cursorRight();
-                return true;
-            case Qt::Key_Up:
-                m_overwritten.clear();
-                m_view->up();
-                return true;
-            case Qt::Key_Down:
-                m_overwritten.clear();
-                m_view->down();
-                return true;
-            case Qt::Key_Home:
-                m_overwritten.clear();
-                m_view->home();
-                return true;
-            case Qt::Key_End:
-                m_overwritten.clear();
-                m_view->end();
-                return true;
-            case Qt::Key_PageUp:
-                m_overwritten.clear();
-                m_view->pageUp();
-                return true;
-            case Qt::Key_PageDown:
-                m_overwritten.clear();
-                m_view->pageDown();
-                return true;
-            case Qt::Key_Delete:
-                m_view->keyDelete();
-                return true;
-            case Qt::Key_Insert:
-                startInsertMode();
-                return true;
-            default:
-                return false;
+        case Qt::Key_Escape:
+            m_overwritten.clear();
+            leaveReplaceMode();
+            return true;
+        case Qt::Key_Left:
+            m_overwritten.clear();
+            m_view->cursorLeft();
+            return true;
+        case Qt::Key_Right:
+            m_overwritten.clear();
+            m_view->cursorRight();
+            return true;
+        case Qt::Key_Up:
+            m_overwritten.clear();
+            m_view->up();
+            return true;
+        case Qt::Key_Down:
+            m_overwritten.clear();
+            m_view->down();
+            return true;
+        case Qt::Key_Home:
+            m_overwritten.clear();
+            m_view->home();
+            return true;
+        case Qt::Key_End:
+            m_overwritten.clear();
+            m_view->end();
+            return true;
+        case Qt::Key_PageUp:
+            m_overwritten.clear();
+            m_view->pageUp();
+            return true;
+        case Qt::Key_PageDown:
+            m_overwritten.clear();
+            m_view->pageDown();
+            return true;
+        case Qt::Key_Delete:
+            m_view->keyDelete();
+            return true;
+        case Qt::Key_Insert:
+            startInsertMode();
+            return true;
+        default:
+            return false;
         }
     } else if (e->modifiers() == Qt::ControlModifier) {
         switch (e->key()) {
-            case Qt::Key_BracketLeft:
-            case Qt::Key_C:
-                startNormalMode();
-                return true;
-            case Qt::Key_E:
-                commandInsertFromLine(1);
-                return true;
-            case Qt::Key_Y:
-                commandInsertFromLine(-1);
-                return true;
-            case Qt::Key_W:
-                commandBackWord();
-                return true;
-            case Qt::Key_U:
-                commandBackLine();
-                return true;
-            case Qt::Key_Left:
-                m_overwritten.clear();
-                commandMoveOneWordLeft();
-                return true;
-            case Qt::Key_Right:
-                m_overwritten.clear();
-                commandMoveOneWordRight();
-                return true;
-            default:
-                return false;
+        case Qt::Key_BracketLeft:
+        case Qt::Key_C:
+            startNormalMode();
+            return true;
+        case Qt::Key_E:
+            commandInsertFromLine(1);
+            return true;
+        case Qt::Key_Y:
+            commandInsertFromLine(-1);
+            return true;
+        case Qt::Key_W:
+            commandBackWord();
+            return true;
+        case Qt::Key_U:
+            commandBackLine();
+            return true;
+        case Qt::Key_Left:
+            m_overwritten.clear();
+            commandMoveOneWordLeft();
+            return true;
+        case Qt::Key_Right:
+            m_overwritten.clear();
+            commandMoveOneWordRight();
+            return true;
+        default:
+            return false;
         }
     }
 

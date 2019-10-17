@@ -135,19 +135,19 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
 
     if (index.column() == 0) {
         switch (role) {
-            case Qt::DecorationRole: {
-                // Show the expand-handle
-                model()->cacheIcons();
+        case Qt::DecorationRole: {
+            // Show the expand-handle
+            model()->cacheIcons();
 
-                if (!isExpanded(index)) {
-                    return QVariant(model()->m_collapsedIcon);
-                } else {
-                    return QVariant(model()->m_expandedIcon);
-                }
+            if (!isExpanded(index)) {
+                return QVariant(model()->m_collapsedIcon);
+            } else {
+                return QVariant(model()->m_expandedIcon);
             }
-            case Qt::DisplayRole:
-                // Ignore text in the first column(we create our own compound text in the second)
-                return QVariant();
+        }
+        case Qt::DisplayRole:
+            // Ignore text in the first column(we create our own compound text in the second)
+            return QVariant();
         }
     }
 
@@ -159,72 +159,72 @@ QVariant KateArgumentHintModel::data(const QModelIndex &index, int role) const
     }
 
     switch (role) {
-        case Qt::DisplayRole: {
-            // Construct the text
-            QString totalText;
-            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++)
-                if (a != CodeCompletionModel::Scope) { // Skip the scope
-                    totalText += source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
-                }
+    case Qt::DisplayRole: {
+        // Construct the text
+        QString totalText;
+        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++)
+            if (a != CodeCompletionModel::Scope) { // Skip the scope
+                totalText += source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString() + QLatin1Char(' ');
+            }
 
-            return QVariant(totalText);
+        return QVariant(totalText);
+    }
+    case CodeCompletionModel::HighlightingMethod: {
+        // Return that we are doing custom-highlighting of one of the sub-strings does it
+        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+            QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
+            if (method.type() == QVariant::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
+                return QVariant(CodeCompletionModel::CustomHighlighting);
+            }
         }
-        case CodeCompletionModel::HighlightingMethod: {
-            // Return that we are doing custom-highlighting of one of the sub-strings does it
-            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-                QVariant method = source.second.sibling(source.second.row(), a).data(CodeCompletionModel::HighlightingMethod);
-                if (method.type() == QVariant::Int && method.toInt() == CodeCompletionModel::CustomHighlighting) {
-                    return QVariant(CodeCompletionModel::CustomHighlighting);
-                }
-            }
 
-            return QVariant();
+        return QVariant();
+    }
+    case CodeCompletionModel::CustomHighlight: {
+        QStringList strings;
+
+        // Collect strings
+        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+            strings << source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString();
         }
-        case CodeCompletionModel::CustomHighlight: {
-            QStringList strings;
 
-            // Collect strings
-            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-                strings << source.second.sibling(source.second.row(), a).data(Qt::DisplayRole).toString();
-            }
+        QList<QVariantList> highlights;
 
-            QList<QVariantList> highlights;
+        // Collect custom-highlightings
+        for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
+            highlights << source.second.sibling(source.second.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
+        }
 
-            // Collect custom-highlightings
-            for (int a = CodeCompletionModel::Prefix; a <= CodeCompletionModel::Postfix; a++) {
-                highlights << source.second.sibling(source.second.row(), a).data(CodeCompletionModel::CustomHighlight).toList();
-            }
+        // Replace invalid QTextFormats with match-quality color or yellow.
+        for (QList<QVariantList>::iterator it = highlights.begin(); it != highlights.end(); ++it) {
+            QVariantList &list(*it);
 
-            // Replace invalid QTextFormats with match-quality color or yellow.
-            for (QList<QVariantList>::iterator it = highlights.begin(); it != highlights.end(); ++it) {
-                QVariantList &list(*it);
+            for (int a = 2; a < list.count(); a += 3) {
+                if (list[a].canConvert<QTextFormat>()) {
+                    QTextFormat f = list[a].value<QTextFormat>();
 
-                for (int a = 2; a < list.count(); a += 3) {
-                    if (list[a].canConvert<QTextFormat>()) {
-                        QTextFormat f = list[a].value<QTextFormat>();
+                    if (!f.isValid()) {
+                        f = QTextFormat(QTextFormat::CharFormat);
+                        uint color = matchColor(index);
 
-                        if (!f.isValid()) {
-                            f = QTextFormat(QTextFormat::CharFormat);
-                            uint color = matchColor(index);
-
-                            if (color) {
-                                f.setBackground(QBrush(color));
-                            } else {
-                                f.setBackground(Qt::yellow);
-                            }
-
-                            list[a] = QVariant(f);
+                        if (color) {
+                            f.setBackground(QBrush(color));
+                        } else {
+                            f.setBackground(Qt::yellow);
                         }
+
+                        list[a] = QVariant(f);
                     }
                 }
             }
+        }
 
-            return mergeCustomHighlighting(strings, highlights, 1);
-        }
-        case Qt::DecorationRole: {
-            // Redirect the decoration to the decoration of the item-column
-            return source.second.sibling(source.second.row(), CodeCompletionModel::Icon).data(role);
-        }
+        return mergeCustomHighlighting(strings, highlights, 1);
+    }
+    case Qt::DecorationRole: {
+        // Redirect the decoration to the decoration of the item-column
+        return source.second.sibling(source.second.row(), CodeCompletionModel::Icon).data(role);
+    }
     }
 
     QVariant v = ExpandingWidgetModel::data(index, role);
@@ -312,32 +312,32 @@ int KateArgumentHintModel::contextMatchQuality(const QModelIndex &index) const
     int depth = sourceIndex.data(CodeCompletionModel::ArgumentHintDepth).toInt();
 
     switch (depth) {
-        case 1: {
-            // This argument-hint is on the lowest level, match it with the currently selected item in the completion-widget
-            QModelIndex row = m_parent->treeView()->currentIndex();
-            if (!row.isValid()) {
-                return -1;
-            }
+    case 1: {
+        // This argument-hint is on the lowest level, match it with the currently selected item in the completion-widget
+        QModelIndex row = m_parent->treeView()->currentIndex();
+        if (!row.isValid()) {
+            return -1;
+        }
 
-            QModelIndex selectedIndex = m_parent->model()->mapToSource(row);
-            if (!selectedIndex.isValid()) {
-                return -1;
-            }
+        QModelIndex selectedIndex = m_parent->model()->mapToSource(row);
+        if (!selectedIndex.isValid()) {
+            return -1;
+        }
 
-            if (selectedIndex.model() != sourceIndex.model()) {
-                return -1; // We can only match items from the same source-model
-            }
+        if (selectedIndex.model() != sourceIndex.model()) {
+            return -1; // We can only match items from the same source-model
+        }
 
-            sourceIndex.data(CodeCompletionModel::SetMatchContext);
+        sourceIndex.data(CodeCompletionModel::SetMatchContext);
 
-            QVariant v = selectedIndex.data(CodeCompletionModel::MatchQuality);
-            if (v.type() == QVariant::Int) {
-                return v.toInt();
-            }
-        } break;
-        default:
-            // Do some other nice matching here in future
-            break;
+        QVariant v = selectedIndex.data(CodeCompletionModel::MatchQuality);
+        if (v.type() == QVariant::Int) {
+            return v.toInt();
+        }
+    } break;
+    default:
+        // Do some other nice matching here in future
+        break;
     }
 
     return -1;

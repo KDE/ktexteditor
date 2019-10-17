@@ -94,21 +94,21 @@ void KateMessageWidget::showNextMessage()
 
     // the enums values do not necessarily match, hence translate with switch
     switch (m_currentMessage->messageType()) {
-        case KTextEditor::Message::Positive:
-            m_messageWidget->setMessageType(KMessageWidget::Positive);
-            break;
-        case KTextEditor::Message::Information:
-            m_messageWidget->setMessageType(KMessageWidget::Information);
-            break;
-        case KTextEditor::Message::Warning:
-            m_messageWidget->setMessageType(KMessageWidget::Warning);
-            break;
-        case KTextEditor::Message::Error:
-            m_messageWidget->setMessageType(KMessageWidget::Error);
-            break;
-        default:
-            m_messageWidget->setMessageType(KMessageWidget::Information);
-            break;
+    case KTextEditor::Message::Positive:
+        m_messageWidget->setMessageType(KMessageWidget::Positive);
+        break;
+    case KTextEditor::Message::Information:
+        m_messageWidget->setMessageType(KMessageWidget::Information);
+        break;
+    case KTextEditor::Message::Warning:
+        m_messageWidget->setMessageType(KMessageWidget::Warning);
+        break;
+    case KTextEditor::Message::Error:
+        m_messageWidget->setMessageType(KMessageWidget::Error);
+        break;
+    default:
+        m_messageWidget->setMessageType(KMessageWidget::Information);
+        break;
     }
 
     // remove all actions from the message widget

@@ -625,12 +625,12 @@ inline uint qHash(const KTextEditor::Range &range, uint seed = 0) Q_DECL_NOTHROW
 namespace QTest
 {
 // forward declaration of template in qtestcase.h
-template <typename T> char *toString(const T &);
+template<typename T> char *toString(const T &);
 
 /**
  * QTestLib integration to have nice output in e.g. QCOMPARE failures.
  */
-template <> KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
+template<> KTEXTEDITOR_EXPORT char *toString(const KTextEditor::Range &range);
 }
 
 #endif

@@ -626,17 +626,17 @@ bool NormalViMode::commandReselectVisual()
         bool returnValue = false;
 
         switch (m_viInputModeManager->getViVisualMode()->getLastVisualMode()) {
-            case ViMode::VisualMode:
-                returnValue = commandEnterVisualMode();
-                break;
-            case ViMode::VisualLineMode:
-                returnValue = commandEnterVisualLineMode();
-                break;
-            case ViMode::VisualBlockMode:
-                returnValue = commandEnterVisualBlockMode();
-                break;
-            default:
-                Q_ASSERT("invalid visual mode");
+        case ViMode::VisualMode:
+            returnValue = commandEnterVisualMode();
+            break;
+        case ViMode::VisualLineMode:
+            returnValue = commandEnterVisualLineMode();
+            break;
+        case ViMode::VisualBlockMode:
+            returnValue = commandEnterVisualBlockMode();
+            break;
+        default:
+            Q_ASSERT("invalid visual mode");
         }
         m_viInputModeManager->getViVisualMode()->goToPos(c2);
         return returnValue;
@@ -720,38 +720,38 @@ bool NormalViMode::commandDeleteToEOL()
 
     m_commandRange.endColumn = KateVi::EOL;
     switch (m_viInputModeManager->getCurrentViMode()) {
-        case ViMode::NormalMode:
-            m_commandRange.startLine = c.line();
-            m_commandRange.startColumn = c.column();
-            m_commandRange.endLine = c.line() + getCount() - 1;
-            break;
-        case ViMode::VisualMode:
-        case ViMode::VisualLineMode:
-            m = LineWise;
-            break;
-        case ViMode::VisualBlockMode:
-            m_commandRange.normalize();
-            m = Block;
-            break;
-        default:
-            /* InsertMode and ReplaceMode will never call this method. */
-            Q_ASSERT(false);
+    case ViMode::NormalMode:
+        m_commandRange.startLine = c.line();
+        m_commandRange.startColumn = c.column();
+        m_commandRange.endLine = c.line() + getCount() - 1;
+        break;
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+        m = LineWise;
+        break;
+    case ViMode::VisualBlockMode:
+        m_commandRange.normalize();
+        m = Block;
+        break;
+    default:
+        /* InsertMode and ReplaceMode will never call this method. */
+        Q_ASSERT(false);
     }
 
     bool r = deleteRange(m_commandRange, m);
 
     switch (m) {
-        case CharWise:
-            c.setColumn(doc()->lineLength(c.line()) - 1);
-            break;
-        case LineWise:
-            c.setLine(m_commandRange.startLine);
-            c.setColumn(getFirstNonBlank(qMin(doc()->lastLine(), m_commandRange.startLine)));
-            break;
-        case Block:
-            c.setLine(m_commandRange.startLine);
-            c.setColumn(m_commandRange.startColumn - 1);
-            break;
+    case CharWise:
+        c.setColumn(doc()->lineLength(c.line()) - 1);
+        break;
+    case LineWise:
+        c.setLine(m_commandRange.startLine);
+        c.setColumn(getFirstNonBlank(qMin(doc()->lastLine(), m_commandRange.startLine)));
+        break;
+    case Block:
+        c.setLine(m_commandRange.startLine);
+        c.setColumn(m_commandRange.startColumn - 1);
+        break;
     }
 
     // make sure cursor position is valid after deletion
@@ -1226,24 +1226,24 @@ bool NormalViMode::commandYankToEOL()
     m_commandRange.motionType = InclusiveMotion;
 
     switch (m_viInputModeManager->getCurrentViMode()) {
-        case ViMode::NormalMode:
-            m_commandRange.startLine = c.line();
-            m_commandRange.startColumn = c.column();
-            break;
-        case ViMode::VisualMode:
-        case ViMode::VisualLineMode:
-            m = LineWise;
-            {
-                VisualViMode *visual = static_cast<VisualViMode *>(this);
-                visual->setStart(KTextEditor::Cursor(visual->getStart().line(), 0));
-            }
-            break;
-        case ViMode::VisualBlockMode:
-            m = Block;
-            break;
-        default:
-            /* InsertMode and ReplaceMode will never call this method. */
-            Q_ASSERT(false);
+    case ViMode::NormalMode:
+        m_commandRange.startLine = c.line();
+        m_commandRange.startColumn = c.column();
+        break;
+    case ViMode::VisualMode:
+    case ViMode::VisualLineMode:
+        m = LineWise;
+        {
+            VisualViMode *visual = static_cast<VisualViMode *>(this);
+            visual->setStart(KTextEditor::Cursor(visual->getStart().line(), 0));
+        }
+        break;
+    case ViMode::VisualBlockMode:
+        m = Block;
+        break;
+    default:
+        /* InsertMode and ReplaceMode will never call this method. */
+        Q_ASSERT(false);
     }
 
     const QString &yankedText = getRange(m_commandRange, m);
@@ -1359,22 +1359,22 @@ bool NormalViMode::commandReplaceCharacter()
     // Filter out some special keys.
     const int keyCode = KeyParser::self()->encoded2qt(m_keys.right(1));
     switch (keyCode) {
-        case Qt::Key_Left:
-        case Qt::Key_Right:
-        case Qt::Key_Up:
-        case Qt::Key_Down:
-        case Qt::Key_Home:
-        case Qt::Key_End:
-        case Qt::Key_PageUp:
-        case Qt::Key_PageDown:
-        case Qt::Key_Delete:
-        case Qt::Key_Insert:
-        case Qt::Key_Backspace:
-        case Qt::Key_CapsLock:
-            return true;
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            key = QStringLiteral("\n");
+    case Qt::Key_Left:
+    case Qt::Key_Right:
+    case Qt::Key_Up:
+    case Qt::Key_Down:
+    case Qt::Key_Home:
+    case Qt::Key_End:
+    case Qt::Key_PageUp:
+    case Qt::Key_PageDown:
+    case Qt::Key_Delete:
+    case Qt::Key_Insert:
+    case Qt::Key_Backspace:
+    case Qt::Key_CapsLock:
+        return true;
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+        key = QStringLiteral("\n");
     }
 
     bool r;

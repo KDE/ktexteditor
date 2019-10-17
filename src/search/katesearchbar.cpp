@@ -341,50 +341,50 @@ void KateSearchBar::indicateMatch(MatchResult matchResult)
     QPalette background(lineEdit->palette());
 
     switch (matchResult) {
-        case MatchFound: // FALLTHROUGH
-        case MatchWrappedForward:
-        case MatchWrappedBackward:
-            // Green background for line edit
-            KColorScheme::adjustBackground(background, KColorScheme::PositiveBackground);
-            break;
-        case MatchMismatch:
-            // Red background for line edit
-            KColorScheme::adjustBackground(background, KColorScheme::NegativeBackground);
-            break;
-        case MatchNothing:
-            // Reset background of line edit
-            background = QPalette();
-            break;
-        case MatchNeutral:
-            KColorScheme::adjustBackground(background, KColorScheme::NeutralBackground);
-            break;
+    case MatchFound: // FALLTHROUGH
+    case MatchWrappedForward:
+    case MatchWrappedBackward:
+        // Green background for line edit
+        KColorScheme::adjustBackground(background, KColorScheme::PositiveBackground);
+        break;
+    case MatchMismatch:
+        // Red background for line edit
+        KColorScheme::adjustBackground(background, KColorScheme::NegativeBackground);
+        break;
+    case MatchNothing:
+        // Reset background of line edit
+        background = QPalette();
+        break;
+    case MatchNeutral:
+        KColorScheme::adjustBackground(background, KColorScheme::NeutralBackground);
+        break;
     }
 
     // Update status label
     if (m_incUi != nullptr) {
         QPalette foreground(m_incUi->status->palette());
         switch (matchResult) {
-            case MatchFound: // FALLTHROUGH
-            case MatchNothing:
-                KColorScheme::adjustForeground(foreground, KColorScheme::NormalText, QPalette::WindowText, KColorScheme::Window);
-                m_incUi->status->clear();
-                break;
-            case MatchWrappedForward:
-            case MatchWrappedBackward:
-                KColorScheme::adjustForeground(foreground, KColorScheme::NormalText, QPalette::WindowText, KColorScheme::Window);
-                if (matchResult == MatchWrappedBackward) {
-                    m_incUi->status->setText(i18n("Reached top, continued from bottom"));
-                } else {
-                    m_incUi->status->setText(i18n("Reached bottom, continued from top"));
-                }
-                break;
-            case MatchMismatch:
-                KColorScheme::adjustForeground(foreground, KColorScheme::NegativeText, QPalette::WindowText, KColorScheme::Window);
-                m_incUi->status->setText(i18n("Not found"));
-                break;
-            case MatchNeutral:
-                /* do nothing */
-                break;
+        case MatchFound: // FALLTHROUGH
+        case MatchNothing:
+            KColorScheme::adjustForeground(foreground, KColorScheme::NormalText, QPalette::WindowText, KColorScheme::Window);
+            m_incUi->status->clear();
+            break;
+        case MatchWrappedForward:
+        case MatchWrappedBackward:
+            KColorScheme::adjustForeground(foreground, KColorScheme::NormalText, QPalette::WindowText, KColorScheme::Window);
+            if (matchResult == MatchWrappedBackward) {
+                m_incUi->status->setText(i18n("Reached top, continued from bottom"));
+            } else {
+                m_incUi->status->setText(i18n("Reached bottom, continued from top"));
+            }
+            break;
+        case MatchMismatch:
+            KColorScheme::adjustForeground(foreground, KColorScheme::NegativeText, QPalette::WindowText, KColorScheme::Window);
+            m_incUi->status->setText(i18n("Not found"));
+            break;
+        case MatchNeutral:
+            /* do nothing */
+            break;
         }
         m_incUi->status->setPalette(foreground);
     }
@@ -1012,21 +1012,21 @@ KTextEditor::SearchOptions KateSearchBar::searchOptions(SearchDirection searchDi
 
     if (m_powerUi != nullptr) {
         switch (m_powerUi->searchMode->currentIndex()) {
-            case MODE_WHOLE_WORDS:
-                enabledOptions |= WholeWords;
-                break;
+        case MODE_WHOLE_WORDS:
+            enabledOptions |= WholeWords;
+            break;
 
-            case MODE_ESCAPE_SEQUENCES:
-                enabledOptions |= EscapeSequences;
-                break;
+        case MODE_ESCAPE_SEQUENCES:
+            enabledOptions |= EscapeSequences;
+            break;
 
-            case MODE_REGEX:
-                enabledOptions |= Regex;
-                break;
+        case MODE_REGEX:
+            enabledOptions |= Regex;
+            break;
 
-            case MODE_PLAIN_TEXT: // FALLTHROUGH
-            default:
-                break;
+        case MODE_PLAIN_TEXT: // FALLTHROUGH
+        default:
+            break;
         }
     }
 
@@ -1059,49 +1059,49 @@ QVector<QString> KateSearchBar::getCapturePatterns(const QString &pattern) const
             input++;
         } else {
             switch (pattern[input].unicode()) {
-                case L'\\':
-                    // Skip this and any next character
-                    input += 2;
-                    break;
+            case L'\\':
+                // Skip this and any next character
+                input += 2;
+                break;
 
-                case L'(':
-                    ParInfo curInfo;
-                    curInfo.openIndex = input;
-                    curInfo.capturing = (input + 1 >= inputLen) || (pattern[input + 1].unicode() != '?');
-                    if (curInfo.capturing) {
-                        captureCount++;
-                    }
-                    curInfo.captureNumber = captureCount;
-                    parInfos.push(curInfo);
+            case L'(':
+                ParInfo curInfo;
+                curInfo.openIndex = input;
+                curInfo.capturing = (input + 1 >= inputLen) || (pattern[input + 1].unicode() != '?');
+                if (curInfo.capturing) {
+                    captureCount++;
+                }
+                curInfo.captureNumber = captureCount;
+                parInfos.push(curInfo);
 
-                    input++;
-                    break;
+                input++;
+                break;
 
-                case L')':
-                    if (!parInfos.empty()) {
-                        ParInfo &top = parInfos.top();
-                        if (top.capturing && (top.captureNumber <= 9)) {
-                            const int start = top.openIndex + 1;
-                            const int len = input - start;
-                            if (capturePatterns.size() < top.captureNumber) {
-                                capturePatterns.resize(top.captureNumber);
-                            }
-                            capturePatterns[top.captureNumber - 1] = pattern.mid(start, len);
+            case L')':
+                if (!parInfos.empty()) {
+                    ParInfo &top = parInfos.top();
+                    if (top.capturing && (top.captureNumber <= 9)) {
+                        const int start = top.openIndex + 1;
+                        const int len = input - start;
+                        if (capturePatterns.size() < top.captureNumber) {
+                            capturePatterns.resize(top.captureNumber);
                         }
-                        parInfos.pop();
+                        capturePatterns[top.captureNumber - 1] = pattern.mid(start, len);
                     }
+                    parInfos.pop();
+                }
 
-                    input++;
-                    break;
+                input++;
+                break;
 
-                case L'[':
-                    input++;
-                    insideClass = true;
-                    break;
+            case L'[':
+                input++;
+                insideClass = true;
+                break;
 
-                default:
-                    input++;
-                    break;
+            default:
+                input++;
+                break;
             }
         }
     }
@@ -1122,16 +1122,16 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
     bool extendMenu = false;
     bool regexMode = false;
     switch (m_powerUi->searchMode->currentIndex()) {
-        case MODE_REGEX:
-            regexMode = true;
-            // FALLTHROUGH
+    case MODE_REGEX:
+        regexMode = true;
+        // FALLTHROUGH
 
-        case MODE_ESCAPE_SEQUENCES:
-            extendMenu = true;
-            break;
+    case MODE_ESCAPE_SEQUENCES:
+        extendMenu = true;
+        break;
 
-        default:
-            break;
+    default:
+        break;
     }
 
     AddMenuManager addMenuManager(contextMenu, 37);

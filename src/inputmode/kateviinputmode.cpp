@@ -37,24 +37,24 @@ QString viModeToString(KateVi::ViMode mode)
 {
     QString modeStr;
     switch (mode) {
-        case KateVi::InsertMode:
-            modeStr = i18n("VI: INSERT MODE");
-            break;
-        case KateVi::NormalMode:
-            modeStr = i18n("VI: NORMAL MODE");
-            break;
-        case KateVi::VisualMode:
-            modeStr = i18n("VI: VISUAL");
-            break;
-        case KateVi::VisualBlockMode:
-            modeStr = i18n("VI: VISUAL BLOCK");
-            break;
-        case KateVi::VisualLineMode:
-            modeStr = i18n("VI: VISUAL LINE");
-            break;
-        case KateVi::ReplaceMode:
-            modeStr = i18n("VI: REPLACE");
-            break;
+    case KateVi::InsertMode:
+        modeStr = i18n("VI: INSERT MODE");
+        break;
+    case KateVi::NormalMode:
+        modeStr = i18n("VI: NORMAL MODE");
+        break;
+    case KateVi::VisualMode:
+        modeStr = i18n("VI: VISUAL");
+        break;
+    case KateVi::VisualBlockMode:
+        modeStr = i18n("VI: VISUAL BLOCK");
+        break;
+    case KateVi::VisualLineMode:
+        modeStr = i18n("VI: VISUAL LINE");
+        break;
+    case KateVi::ReplaceMode:
+        modeStr = i18n("VI: REPLACE");
+        break;
     }
 
     return modeStr;

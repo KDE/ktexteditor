@@ -367,18 +367,18 @@ void SearchMode::setBarBackground(SearchMode::BarBackgroundStatus status)
 {
     QPalette barBackground(m_edit->palette());
     switch (status) {
-        case MatchFound: {
-            KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
-            break;
-        }
-        case NoMatchFound: {
-            KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
-            break;
-        }
-        case Normal: {
-            barBackground = QPalette();
-            break;
-        }
+    case MatchFound: {
+        KColorScheme::adjustBackground(barBackground, KColorScheme::PositiveBackground);
+        break;
+    }
+    case NoMatchFound: {
+        KColorScheme::adjustBackground(barBackground, KColorScheme::NegativeBackground);
+        break;
+    }
+    case Normal: {
+        barBackground = QPalette();
+        break;
+    }
     }
     m_edit->setPalette(barBackground);
 }

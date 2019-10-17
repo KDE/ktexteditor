@@ -271,24 +271,24 @@ QVariant KateCompletionModel::data(const QModelIndex &index, int role) const
 
     if (g && (!g->isEmpty)) {
         switch (role) {
-            case Qt::DisplayRole:
-                if (!index.column()) {
-                    return g->title;
-                }
-                break;
+        case Qt::DisplayRole:
+            if (!index.column()) {
+                return g->title;
+            }
+            break;
 
-            case Qt::FontRole:
-                if (!index.column()) {
-                    QFont f = view()->renderer()->currentFont();
-                    f.setBold(true);
-                    return f;
-                }
-                break;
+        case Qt::FontRole:
+            if (!index.column()) {
+                QFont f = view()->renderer()->currentFont();
+                f.setBold(true);
+                return f;
+            }
+            break;
 
-            case Qt::ForegroundRole:
-                return QApplication::palette().toolTipText().color();
-            case Qt::BackgroundRole:
-                return QApplication::palette().toolTipBase().color();
+        case Qt::ForegroundRole:
+            return QApplication::palette().toolTipText().color();
+        case Qt::BackgroundRole:
+            return QApplication::palette().toolTipBase().color();
         }
     }
 
@@ -1313,18 +1313,18 @@ bool KateCompletionModel::isSortingEnabled() const
 QString KateCompletionModel::columnName(int column)
 {
     switch (column) {
-        case KTextEditor::CodeCompletionModel::Prefix:
-            return i18n("Prefix");
-        case KTextEditor::CodeCompletionModel::Icon:
-            return i18n("Icon");
-        case KTextEditor::CodeCompletionModel::Scope:
-            return i18n("Scope");
-        case KTextEditor::CodeCompletionModel::Name:
-            return i18n("Name");
-        case KTextEditor::CodeCompletionModel::Arguments:
-            return i18n("Arguments");
-        case KTextEditor::CodeCompletionModel::Postfix:
-            return i18n("Postfix");
+    case KTextEditor::CodeCompletionModel::Prefix:
+        return i18n("Prefix");
+    case KTextEditor::CodeCompletionModel::Icon:
+        return i18n("Icon");
+    case KTextEditor::CodeCompletionModel::Scope:
+        return i18n("Scope");
+    case KTextEditor::CodeCompletionModel::Name:
+        return i18n("Name");
+    case KTextEditor::CodeCompletionModel::Arguments:
+        return i18n("Arguments");
+    case KTextEditor::CodeCompletionModel::Postfix:
+        return i18n("Postfix");
     }
 
     return QString();
@@ -2045,74 +2045,74 @@ KateCompletionModel::Item::MatchType KateCompletionModel::Item::match()
 QString KateCompletionModel::propertyName(KTextEditor::CodeCompletionModel::CompletionProperty property)
 {
     switch (property) {
-        case CodeCompletionModel::Public:
-            return i18n("Public");
+    case CodeCompletionModel::Public:
+        return i18n("Public");
 
-        case CodeCompletionModel::Protected:
-            return i18n("Protected");
+    case CodeCompletionModel::Protected:
+        return i18n("Protected");
 
-        case CodeCompletionModel::Private:
-            return i18n("Private");
+    case CodeCompletionModel::Private:
+        return i18n("Private");
 
-        case CodeCompletionModel::Static:
-            return i18n("Static");
+    case CodeCompletionModel::Static:
+        return i18n("Static");
 
-        case CodeCompletionModel::Const:
-            return i18n("Constant");
+    case CodeCompletionModel::Const:
+        return i18n("Constant");
 
-        case CodeCompletionModel::Namespace:
-            return i18n("Namespace");
+    case CodeCompletionModel::Namespace:
+        return i18n("Namespace");
 
-        case CodeCompletionModel::Class:
-            return i18n("Class");
+    case CodeCompletionModel::Class:
+        return i18n("Class");
 
-        case CodeCompletionModel::Struct:
-            return i18n("Struct");
+    case CodeCompletionModel::Struct:
+        return i18n("Struct");
 
-        case CodeCompletionModel::Union:
-            return i18n("Union");
+    case CodeCompletionModel::Union:
+        return i18n("Union");
 
-        case CodeCompletionModel::Function:
-            return i18n("Function");
+    case CodeCompletionModel::Function:
+        return i18n("Function");
 
-        case CodeCompletionModel::Variable:
-            return i18n("Variable");
+    case CodeCompletionModel::Variable:
+        return i18n("Variable");
 
-        case CodeCompletionModel::Enum:
-            return i18n("Enumeration");
+    case CodeCompletionModel::Enum:
+        return i18n("Enumeration");
 
-        case CodeCompletionModel::Template:
-            return i18n("Template");
+    case CodeCompletionModel::Template:
+        return i18n("Template");
 
-        case CodeCompletionModel::Virtual:
-            return i18n("Virtual");
+    case CodeCompletionModel::Virtual:
+        return i18n("Virtual");
 
-        case CodeCompletionModel::Override:
-            return i18n("Override");
+    case CodeCompletionModel::Override:
+        return i18n("Override");
 
-        case CodeCompletionModel::Inline:
-            return i18n("Inline");
+    case CodeCompletionModel::Inline:
+        return i18n("Inline");
 
-        case CodeCompletionModel::Friend:
-            return i18n("Friend");
+    case CodeCompletionModel::Friend:
+        return i18n("Friend");
 
-        case CodeCompletionModel::Signal:
-            return i18n("Signal");
+    case CodeCompletionModel::Signal:
+        return i18n("Signal");
 
-        case CodeCompletionModel::Slot:
-            return i18n("Slot");
+    case CodeCompletionModel::Slot:
+        return i18n("Slot");
 
-        case CodeCompletionModel::LocalScope:
-            return i18n("Local Scope");
+    case CodeCompletionModel::LocalScope:
+        return i18n("Local Scope");
 
-        case CodeCompletionModel::NamespaceScope:
-            return i18n("Namespace Scope");
+    case CodeCompletionModel::NamespaceScope:
+        return i18n("Namespace Scope");
 
-        case CodeCompletionModel::GlobalScope:
-            return i18n("Global Scope");
+    case CodeCompletionModel::GlobalScope:
+        return i18n("Global Scope");
 
-        default:
-            return i18n("Unknown Property");
+    default:
+        return i18n("Unknown Property");
     }
 }
 

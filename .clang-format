@@ -39,7 +39,7 @@ TabWidth: 4
 # 3 * 80 wide lines
 ColumnLimit: 240
 
-# sematics shall be grouped via empty lines
+# sort includes inside line separated groups
 SortIncludes: true
 
 # break before braces on function, namespace and class definitions.
@@ -72,17 +72,20 @@ BinPackParameters: false
 # don't break binary ops
 BreakBeforeBinaryOperators: None
 
-# don't break tenary ops
+# don't break ternary ops
 BreakBeforeTernaryOperators: false
 
 # format C++11 braced lists like function calls
 Cpp11BracedListStyle: true
-
-# indent case labels one level
-IndentCaseLabels: true
 
 # remove empty lines
 KeepEmptyLinesAtTheStartOfBlocks: false
 
 # no namespace indentation to keep indent level low
 NamespaceIndentation: None
+
+# we use template< without space.
+SpaceAfterTemplateKeyword: false
+
+# macros for which the opening brace stays attached.
+ForEachMacros: [ foreach, Q_FOREACH, BOOST_FOREACH, forever, Q_FOREVER, QBENCHMARK, QBENCHMARK_ONCE ]

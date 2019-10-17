@@ -497,14 +497,14 @@ QTextCodec *KateDocumentConfig::codec() const
 QString KateDocumentConfig::eolString()
 {
     switch (eol()) {
-        case KateDocumentConfig::eolDos:
-            return QStringLiteral("\r\n");
+    case KateDocumentConfig::eolDos:
+        return QStringLiteral("\r\n");
 
-        case KateDocumentConfig::eolMac:
-            return QStringLiteral("\r");
+    case KateDocumentConfig::eolMac:
+        return QStringLiteral("\r");
 
-        default:
-            return QStringLiteral("\n");
+    default:
+        return QStringLiteral("\n");
     }
 }
 // END

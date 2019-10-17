@@ -224,8 +224,7 @@ void KateDocumentTest::testSetTextPerformance()
     }
 
     // replace
-    QBENCHMARK
-    {
+    QBENCHMARK {
         // init
         doc.setText(text);
         for (const Range &range : qAsConst(ranges)) {
@@ -265,8 +264,7 @@ void KateDocumentTest::testRemoveTextPerformance()
     doc.setText(text);
 
     // replace
-    QBENCHMARK_ONCE
-    {
+    QBENCHMARK_ONCE {
 #ifdef USE_VALGRIND
         CALLGRIND_START_INSTRUMENTATION
 #endif

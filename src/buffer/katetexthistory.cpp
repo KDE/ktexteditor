@@ -219,111 +219,111 @@ void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, boo
      * handle all history types
      */
     switch (type) {
+    /**
+     * Wrap a line
+     */
+    case WrapLine:
         /**
-         * Wrap a line
+         * we wrap this line
          */
-        case WrapLine:
+        if (cursorLine == line) {
             /**
-             * we wrap this line
+             * skip cursors with too small column
              */
-            if (cursorLine == line) {
-                /**
-                 * skip cursors with too small column
-                 */
-                if (cursorColumn <= column) {
-                    if (cursorColumn < column || !moveOnInsert) {
-                        return;
-                    }
-                }
-
-                /**
-                 * adjust column
-                 */
-                cursorColumn = cursorColumn - column;
-            }
-
-            /**
-             * always increment cursor line
-             */
-            cursorLine += 1;
-            return;
-
-        /**
-         * Unwrap a line
-         */
-        case UnwrapLine:
-            /**
-             * we unwrap this line, adjust column
-             */
-            if (cursorLine == line) {
-                cursorColumn += oldLineLength;
-            }
-
-            /**
-             * decrease cursor line
-             */
-            cursorLine -= 1;
-            return;
-
-        /**
-         * Insert text
-         */
-        case InsertText:
-            /**
-             * only interesting, if same line
-             */
-            if (cursorLine != line) {
-                return;
-            }
-
-            // skip cursors with too small column
-            if (cursorColumn <= column)
+            if (cursorColumn <= column) {
                 if (cursorColumn < column || !moveOnInsert) {
                     return;
                 }
-
-            // patch column of cursor
-            if (cursorColumn <= oldLineLength) {
-                cursorColumn += length;
             }
 
-            // special handling if cursor behind the real line, e.g. non-wrapping cursor in block selection mode
-            else if (cursorColumn < oldLineLength + length) {
-                cursorColumn = oldLineLength + length;
-            }
-
-            return;
-
-        /**
-         * Remove text
-         */
-        case RemoveText:
             /**
-             * only interesting, if same line
+             * adjust column
              */
-            if (cursorLine != line) {
-                return;
-            }
-
-            // skip cursors with too small column
-            if (cursorColumn <= column) {
-                return;
-            }
-
-            // patch column of cursor
-            if (cursorColumn <= column + length) {
-                cursorColumn = column;
-            } else {
-                cursorColumn -= length;
-            }
-
-            return;
+            cursorColumn = cursorColumn - column;
+        }
 
         /**
-         * nothing
+         * always increment cursor line
          */
-        default:
+        cursorLine += 1;
+        return;
+
+    /**
+     * Unwrap a line
+     */
+    case UnwrapLine:
+        /**
+         * we unwrap this line, adjust column
+         */
+        if (cursorLine == line) {
+            cursorColumn += oldLineLength;
+        }
+
+        /**
+         * decrease cursor line
+         */
+        cursorLine -= 1;
+        return;
+
+    /**
+     * Insert text
+     */
+    case InsertText:
+        /**
+         * only interesting, if same line
+         */
+        if (cursorLine != line) {
             return;
+        }
+
+        // skip cursors with too small column
+        if (cursorColumn <= column)
+            if (cursorColumn < column || !moveOnInsert) {
+                return;
+            }
+
+        // patch column of cursor
+        if (cursorColumn <= oldLineLength) {
+            cursorColumn += length;
+        }
+
+        // special handling if cursor behind the real line, e.g. non-wrapping cursor in block selection mode
+        else if (cursorColumn < oldLineLength + length) {
+            cursorColumn = oldLineLength + length;
+        }
+
+        return;
+
+    /**
+     * Remove text
+     */
+    case RemoveText:
+        /**
+         * only interesting, if same line
+         */
+        if (cursorLine != line) {
+            return;
+        }
+
+        // skip cursors with too small column
+        if (cursorColumn <= column) {
+            return;
+        }
+
+        // patch column of cursor
+        if (cursorColumn <= column + length) {
+            cursorColumn = column;
+        } else {
+            cursorColumn -= length;
+        }
+
+        return;
+
+    /**
+     * nothing
+     */
+    default:
+        return;
     }
 }
 
@@ -333,124 +333,124 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
      * handle all history types
      */
     switch (type) {
+    /**
+     * Wrap a line
+     */
+    case WrapLine:
         /**
-         * Wrap a line
+         * ignore this line
          */
-        case WrapLine:
-            /**
-             * ignore this line
-             */
-            if (cursorLine <= line) {
-                return;
-            }
-
-            /**
-             * next line is unwrapped
-             */
-            if (cursorLine == line + 1) {
-                /**
-                 * adjust column
-                 */
-                cursorColumn = cursorColumn + column;
-            }
-
-            /**
-             * always decrement cursor line
-             */
-            cursorLine -= 1;
+        if (cursorLine <= line) {
             return;
+        }
 
         /**
-         * Unwrap a line
+         * next line is unwrapped
          */
-        case UnwrapLine:
+        if (cursorLine == line + 1) {
             /**
-             * ignore lines before unwrapped one
+             * adjust column
              */
-            if (cursorLine < line - 1) {
-                return;
-            }
+            cursorColumn = cursorColumn + column;
+        }
 
-            /**
-             * we unwrap this line, try to adjust cursor column if needed
-             */
-            if (cursorLine == line - 1) {
-                /**
-                 * skip cursors with to small columns
-                 */
-                if (cursorColumn <= oldLineLength) {
-                    if (cursorColumn < oldLineLength || !moveOnInsert) {
-                        return;
-                    }
-                }
+        /**
+         * always decrement cursor line
+         */
+        cursorLine -= 1;
+        return;
 
-                cursorColumn -= oldLineLength;
-            }
-
-            /**
-             * increase cursor line
-             */
-            cursorLine += 1;
+    /**
+     * Unwrap a line
+     */
+    case UnwrapLine:
+        /**
+         * ignore lines before unwrapped one
+         */
+        if (cursorLine < line - 1) {
             return;
+        }
 
         /**
-         * Insert text
+         * we unwrap this line, try to adjust cursor column if needed
          */
-        case InsertText:
+        if (cursorLine == line - 1) {
             /**
-             * only interesting, if same line
+             * skip cursors with to small columns
              */
-            if (cursorLine != line) {
-                return;
-            }
-
-            // skip cursors with too small column
-            if (cursorColumn <= column) {
-                return;
-            }
-
-            // patch column of cursor
-            if (cursorColumn - length < column) {
-                cursorColumn = column;
-            } else {
-                cursorColumn -= length;
-            }
-
-            return;
-
-        /**
-         * Remove text
-         */
-        case RemoveText:
-            /**
-             * only interesting, if same line
-             */
-            if (cursorLine != line) {
-                return;
-            }
-
-            // skip cursors with too small column
-            if (cursorColumn <= column)
-                if (cursorColumn < column || !moveOnInsert) {
+            if (cursorColumn <= oldLineLength) {
+                if (cursorColumn < oldLineLength || !moveOnInsert) {
                     return;
                 }
-
-            // patch column of cursor
-            if (cursorColumn <= oldLineLength) {
-                cursorColumn += length;
             }
 
-            // special handling if cursor behind the real line, e.g. non-wrapping cursor in block selection mode
-            else if (cursorColumn < oldLineLength + length) {
-                cursorColumn = oldLineLength + length;
-            }
-            return;
+            cursorColumn -= oldLineLength;
+        }
 
         /**
-         * nothing
+         * increase cursor line
          */
-        default:
+        cursorLine += 1;
+        return;
+
+    /**
+     * Insert text
+     */
+    case InsertText:
+        /**
+         * only interesting, if same line
+         */
+        if (cursorLine != line) {
             return;
+        }
+
+        // skip cursors with too small column
+        if (cursorColumn <= column) {
+            return;
+        }
+
+        // patch column of cursor
+        if (cursorColumn - length < column) {
+            cursorColumn = column;
+        } else {
+            cursorColumn -= length;
+        }
+
+        return;
+
+    /**
+     * Remove text
+     */
+    case RemoveText:
+        /**
+         * only interesting, if same line
+         */
+        if (cursorLine != line) {
+            return;
+        }
+
+        // skip cursors with too small column
+        if (cursorColumn <= column)
+            if (cursorColumn < column || !moveOnInsert) {
+                return;
+            }
+
+        // patch column of cursor
+        if (cursorColumn <= oldLineLength) {
+            cursorColumn += length;
+        }
+
+        // special handling if cursor behind the real line, e.g. non-wrapping cursor in block selection mode
+        else if (cursorColumn < oldLineLength + length) {
+            cursorColumn = oldLineLength + length;
+        }
+        return;
+
+    /**
+     * nothing
+     */
+    default:
+        return;
     }
 }
 

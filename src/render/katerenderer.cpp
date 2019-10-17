@@ -850,20 +850,20 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
 
             paint.save();
             switch (style) {
-                case Line:
-                    paint.setPen(QPen(color, caretWidth));
-                    break;
-                case Block:
-                    // use a gray caret so it's possible to see the character
-                    color.setAlpha(128);
-                    paint.setPen(QPen(color, caretWidth));
-                    break;
-                case Underline:
-                    break;
-                case Half:
-                    color.setAlpha(128);
-                    paint.setPen(QPen(color, caretWidth));
-                    break;
+            case Line:
+                paint.setPen(QPen(color, caretWidth));
+                break;
+            case Block:
+                // use a gray caret so it's possible to see the character
+                color.setAlpha(128);
+                paint.setPen(QPen(color, caretWidth));
+                break;
+            case Underline:
+                break;
+            case Half:
+                color.setAlpha(128);
+                paint.setPen(QPen(color, caretWidth));
+                break;
             }
 
             if (cursor->column() <= range->length()) {
@@ -1072,8 +1072,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
     bool needShiftX = (maxwidth != -1) && m_view && (m_view->config()->dynWordWrapAlignIndent() > 0);
 
-    forever
-    {
+    forever {
         QTextLine line = l->createLine();
         if (!line.isValid()) {
             break;
@@ -1131,19 +1130,19 @@ bool KateRenderer::isLineRightToLeft(KateLineLayoutPtr lineLayout) const
         QChar c = s.at(i);
 
         switch (c.direction()) {
-            case QChar::DirL:
-            case QChar::DirLRO:
-            case QChar::DirLRE:
-                return false;
+        case QChar::DirL:
+        case QChar::DirLRO:
+        case QChar::DirLRE:
+            return false;
 
-            case QChar::DirR:
-            case QChar::DirAL:
-            case QChar::DirRLO:
-            case QChar::DirRLE:
-                return true;
+        case QChar::DirR:
+        case QChar::DirAL:
+        case QChar::DirRLO:
+        case QChar::DirRLE:
+            return true;
 
-            default:
-                break;
+        default:
+            break;
         }
         i++;
     }

@@ -90,23 +90,23 @@ uint ExpandingWidgetModel::matchColor(const QModelIndex &index) const
 QVariant ExpandingWidgetModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
-        case Qt::BackgroundRole: {
-            if (index.column() == 0) {
-                // Highlight by match-quality
-                uint color = matchColor(index);
-                if (color) {
-                    return QBrush(color);
-                }
-            }
-            // Use a special background-color for expanded items
-            if (isExpanded(index)) {
-                if (index.row() & 1) {
-                    return doAlternate(treeView()->palette().toolTipBase().color());
-                } else {
-                    return treeView()->palette().toolTipBase();
-                }
+    case Qt::BackgroundRole: {
+        if (index.column() == 0) {
+            // Highlight by match-quality
+            uint color = matchColor(index);
+            if (color) {
+                return QBrush(color);
             }
         }
+        // Use a special background-color for expanded items
+        if (isExpanded(index)) {
+            if (index.row() & 1) {
+                return doAlternate(treeView()->palette().toolTipBase().color());
+            } else {
+                return treeView()->palette().toolTipBase();
+            }
+        }
+    }
     }
     return QVariant();
 }

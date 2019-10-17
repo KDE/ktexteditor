@@ -71,8 +71,7 @@ void WordCompletionTest::benchWordRetrievalMixed()
 
     // creating the view only after inserting the text makes test execution much faster
     QSharedPointer<KTextEditor::View> v(m_doc->createView(nullptr));
-    QBENCHMARK
-    {
+    QBENCHMARK {
         KateWordCompletionModel m(nullptr);
         QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count / distinctWordRatio);
     }
@@ -91,8 +90,7 @@ void WordCompletionTest::benchWordRetrievalSame()
     m_doc->setText(s);
 
     QSharedPointer<KTextEditor::View> v(m_doc->createView(nullptr));
-    QBENCHMARK
-    {
+    QBENCHMARK {
         KateWordCompletionModel m(nullptr);
         QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), 1);
     }
@@ -109,8 +107,7 @@ void WordCompletionTest::benchWordRetrievalDistinct()
     m_doc->setText(s);
 
     QSharedPointer<KTextEditor::View> v(m_doc->createView(nullptr));
-    QBENCHMARK
-    {
+    QBENCHMARK {
         KateWordCompletionModel m(nullptr);
         QCOMPARE(m.allMatches(v.data(), KTextEditor::Range()).size(), count);
     }

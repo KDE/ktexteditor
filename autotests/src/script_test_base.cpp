@@ -48,10 +48,10 @@ QtMessageHandler ScriptTestBase::m_msgHandler = nullptr;
 void noDebugMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     switch (type) {
-        case QtDebugMsg:
-            break;
-        default:
-            ScriptTestBase::m_msgHandler(type, context, msg);
+    case QtDebugMsg:
+        break;
+    default:
+        ScriptTestBase::m_msgHandler(type, context, msg);
     }
 }
 

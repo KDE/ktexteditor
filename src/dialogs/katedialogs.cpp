@@ -925,24 +925,24 @@ void KateSaveConfigTab::swapFileModeChanged(int idx)
 {
     const KateDocumentConfig::SwapFileMode mode = static_cast<KateDocumentConfig::SwapFileMode>(idx);
     switch (mode) {
-        case KateDocumentConfig::DisableSwapFile:
-            uiadv->lblSwapDirectory->setEnabled(false);
-            uiadv->kurlSwapDirectory->setEnabled(false);
-            uiadv->lblSwapFileSync->setEnabled(false);
-            uiadv->spbSwapFileSync->setEnabled(false);
-            break;
-        case KateDocumentConfig::EnableSwapFile:
-            uiadv->lblSwapDirectory->setEnabled(false);
-            uiadv->kurlSwapDirectory->setEnabled(false);
-            uiadv->lblSwapFileSync->setEnabled(true);
-            uiadv->spbSwapFileSync->setEnabled(true);
-            break;
-        case KateDocumentConfig::SwapFilePresetDirectory:
-            uiadv->lblSwapDirectory->setEnabled(true);
-            uiadv->kurlSwapDirectory->setEnabled(true);
-            uiadv->lblSwapFileSync->setEnabled(true);
-            uiadv->spbSwapFileSync->setEnabled(true);
-            break;
+    case KateDocumentConfig::DisableSwapFile:
+        uiadv->lblSwapDirectory->setEnabled(false);
+        uiadv->kurlSwapDirectory->setEnabled(false);
+        uiadv->lblSwapFileSync->setEnabled(false);
+        uiadv->spbSwapFileSync->setEnabled(false);
+        break;
+    case KateDocumentConfig::EnableSwapFile:
+        uiadv->lblSwapDirectory->setEnabled(false);
+        uiadv->kurlSwapDirectory->setEnabled(false);
+        uiadv->lblSwapFileSync->setEnabled(true);
+        uiadv->spbSwapFileSync->setEnabled(true);
+        break;
+    case KateDocumentConfig::SwapFilePresetDirectory:
+        uiadv->lblSwapDirectory->setEnabled(true);
+        uiadv->kurlSwapDirectory->setEnabled(true);
+        uiadv->lblSwapFileSync->setEnabled(true);
+        uiadv->spbSwapFileSync->setEnabled(true);
+        break;
     }
 }
 

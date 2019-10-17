@@ -141,10 +141,10 @@ QVariant KateKeywordCompletionModel::data(const QModelIndex &index, int role) co
     if (!index.parent().isValid()) {
         // group header
         switch (role) {
-            case Qt::DisplayRole:
-                return i18n("Language keywords");
-            case GroupRole:
-                return Qt::DisplayRole;
+        case Qt::DisplayRole:
+            return i18n("Language keywords");
+        case GroupRole:
+            return Qt::DisplayRole;
         }
     }
 
