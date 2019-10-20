@@ -186,9 +186,9 @@ KateSearchBar::KateSearchBar(bool initAsPower, KTextEditor::ViewPrivate *view, K
     m_powerMatchCase = (searchFlags & KateViewConfig::PowerMatchCase) != 0;
     m_powerFromCursor = (searchFlags & KateViewConfig::PowerFromCursor) != 0;
     m_powerHighlightAll = (searchFlags & KateViewConfig::PowerHighlightAll) != 0;
-    m_powerMode = ((searchFlags & KateViewConfig::PowerModeRegularExpression) != 0) ?
-        MODE_REGEX :
-        (((searchFlags & KateViewConfig::PowerModeEscapeSequences) != 0) ? MODE_ESCAPE_SEQUENCES : (((searchFlags & KateViewConfig::PowerModeWholeWords) != 0) ? MODE_WHOLE_WORDS : MODE_PLAIN_TEXT));
+    m_powerMode = ((searchFlags & KateViewConfig::PowerModeRegularExpression) != 0)
+        ? MODE_REGEX
+        : (((searchFlags & KateViewConfig::PowerModeEscapeSequences) != 0) ? MODE_ESCAPE_SEQUENCES : (((searchFlags & KateViewConfig::PowerModeWholeWords) != 0) ? MODE_WHOLE_WORDS : MODE_PLAIN_TEXT));
 
     // Load one of either dialogs
     if (initAsPower) {
@@ -725,9 +725,9 @@ void KateSearchBar::sendConfig()
         const auto incFlagsOnly = pastFlags & (KateViewConfig::IncHighlightAll | KateViewConfig::IncFromCursor | KateViewConfig::IncMatchCase);
 
         futureFlags = incFlagsOnly | (m_powerMatchCase ? KateViewConfig::PowerMatchCase : 0) | (m_powerFromCursor ? KateViewConfig::PowerFromCursor : 0) | (m_powerHighlightAll ? KateViewConfig::PowerHighlightAll : 0) |
-            ((m_powerMode == MODE_REGEX) ?
-                 KateViewConfig::PowerModeRegularExpression :
-                 ((m_powerMode == MODE_ESCAPE_SEQUENCES) ? KateViewConfig::PowerModeEscapeSequences : ((m_powerMode == MODE_WHOLE_WORDS) ? KateViewConfig::PowerModeWholeWords : KateViewConfig::PowerModePlainText)));
+            ((m_powerMode == MODE_REGEX)
+                 ? KateViewConfig::PowerModeRegularExpression
+                 : ((m_powerMode == MODE_ESCAPE_SEQUENCES) ? KateViewConfig::PowerModeEscapeSequences : ((m_powerMode == MODE_WHOLE_WORDS) ? KateViewConfig::PowerModeWholeWords : KateViewConfig::PowerModePlainText)));
 
     } else if (m_incUi != nullptr) {
         const bool OF_INCREMENTAL = false;

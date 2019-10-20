@@ -16,6 +16,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDEClangFormat)
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
@@ -130,3 +131,7 @@ include_directories (BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 install(FILES ktexteditor.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+# add clang-format target for all our real source files
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES autotests/src/*.cpp autotests/src/*.h src/*.cpp src/*.h templates/*.cpp templates/*.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
