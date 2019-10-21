@@ -1,6 +1,6 @@
 /* This file is part of the KDE libraries
    Copyright (C) 2003 Jesse Yurkovich <yurkjes@iit.edu>
-   Copyright (C) 2004 >Anders Lund <anders@alweb.dk> (KateVarIndent class)
+   Copyright (C) 2004 Anders Lund <anders@alweb.dk> (KateVarIndent class)
    Copyright (C) 2005 Dominik Haumann <dhdev@gmx.de> (basic support for config page)
 
    This library is free software; you can redistribute it and/or
