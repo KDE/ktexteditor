@@ -69,6 +69,7 @@ option (BUILD_VIMODE "Build vimode in" ON)
 # forbid some old things
 add_definitions(-DQT_NO_FOREACH)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
+add_definitions(-DQT_DEPRECATED_WARNINGS_SINCE=0x060000)
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"ktexteditor5\")
