@@ -198,16 +198,6 @@ tsdgeos@terra.es (   1 LOC): c34816e,8320a60
 rpedersen (   8 LOC): 8888404,04059fd
 vegardoye (   3 LOC): c79537a
 
-ktexteditor/search/katesearchbar.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: harshj zwabel coles mssola sars dhdev@gmx.de mmrozowski cfeck vegardoye neundorf
-   harshj (   5 LOC): cfd3968,88e82da
-     sars (   4 LOC): cf99bce
-dhdev@gmx.de (  17 LOC): 995237a,b4ef2bb,1a3c26c,e005a68
-    cfeck (   4 LOC): 2b53fad
-vegardoye (   1 LOC): 57361e2
- neundorf (  18 LOC): 59be085,ed14ef5
-
 ktexteditor/syntax/katehighlight.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: jowenn@kde.org michalhumpula vegardoye jtamate schwarzerf@gmail.com tsdgeos@terra.es rpedersen mwoehlke yurchor
