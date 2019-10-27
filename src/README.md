@@ -112,13 +112,6 @@ ceruleanblaze@gmail.com (   2 LOC): c82c409
    zwabel (   2 LOC): 7194e81,0db92ef
    jpetso (  14 LOC): ef932d8
 
-ktexteditor/utils/katebookmarks.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: harshkumar kuzmich jpetso
-harshkumar (  48 LOC): bad52c1,26d4699
-  kuzmich (   3 LOC): 1bb178d
-   jpetso (   2 LOC): c19b784
-
 ktexteditor/view/kateviewhelpers.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: brauch rdieter@math.unl.edu buis@kde.org mssola sengels lungu sstjames divide dakon tsdgeos@terra.es segato staniek kuzmich zealot.hoi@gmail.com jowenn@kde.org jpetso vegardoye iastrubni john@layt.net mwoehlke edulix@wadobo.com cfeck haumann@kate-editor.org sars zwabel edulix dhdev@gmx.de
