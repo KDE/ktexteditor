@@ -19,20 +19,6 @@ vegardoye (  17 LOC): c51d01e
 dhdev@gmx.de (   4 LOC): d32f5c3,dad9836
   djarvie (   1 LOC): 210f6d5
 
-ktexteditor/view/kateview.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: jowenn@kde.org djarvie zwabel sstjames vegardoye andreym dhdev@gmx.de kuzmich lungu mssola finex sars
-  djarvie (   1 LOC): 992bc3f
-   zwabel (  34 LOC): da811dd,b11763d,5bcfe7b,37136e6
- sstjames (   6 LOC): e2cf410
-vegardoye (  37 LOC): 0928cee,57361e2,6d575a3,71106c9
-  andreym (   3 LOC): 6742733
-dhdev@gmx.de (   2 LOC): f0aefdd
-  kuzmich (   7 LOC): 1bb178d,8d4695c
-    lungu (   2 LOC): d8db37b,fc61a9e,84ed88c
-   mssola (   5 LOC): b8465cb
-     sars (  10 LOC): 045bab2,65e8078,b558c67
-
 ktexteditor/view/kateviewhelpers.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: zealot.hoi@gmail.com jowenn@kde.org vegardoye mssola haumann@kate-editor.org kuzmich sars buis@kde.org brauch mwoehlke lungu divide sstjames dhdev@gmx.de azatkhuzhin
