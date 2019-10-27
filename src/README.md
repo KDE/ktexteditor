@@ -115,13 +115,6 @@ haumann@kate-editor.org (   1 LOC): 9040212
 vegardoye (  39 LOC): bfe33fe,9ec2e9e,c51d01e
 schwarzerf@gmail.com (   1 LOC): 59920ce
 
-ktexteditor/script/katescriptmanager.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: tsdgeos@terra.es jowenn@kde.org rpedersen vegardoye
-tsdgeos@terra.es (   1 LOC): c34816e,8320a60
-rpedersen (   8 LOC): 8888404,04059fd
-vegardoye (   3 LOC): c79537a
-
 ktexteditor/syntax/katehighlight.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: jowenn@kde.org michalhumpula vegardoye jtamate schwarzerf@gmail.com tsdgeos@terra.es rpedersen mwoehlke yurchor
