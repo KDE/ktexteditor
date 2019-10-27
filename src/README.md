@@ -115,17 +115,6 @@ haumann@kate-editor.org (   1 LOC): 9040212
 vegardoye (  39 LOC): bfe33fe,9ec2e9e,c51d01e
 schwarzerf@gmail.com (   1 LOC): 59920ce
 
-ktexteditor/script/katescriptview.cpp;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: ceruleanblaze@gmail.com
-ceruleanblaze@gmail.com (   2 LOC): 75e0eb5
-
-ktexteditor/script/kateindentscript.cpp;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: zwabel rpedersen ceruleanblaze@gmail.com
-rpedersen (  15 LOC): 8888404,d786604
-ceruleanblaze@gmail.com (   3 LOC): 75e0eb5,9112a0d,c82c409
-
 ktexteditor/script/katescript.cpp;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
 
 - lgplv2+: ceruleanblaze@gmail.com segato rpedersen
