@@ -101,19 +101,6 @@ haumann@kate-editor.org (   1 LOC): 9040212
 vegardoye (  39 LOC): bfe33fe,9ec2e9e,c51d01e
 schwarzerf@gmail.com (   1 LOC): 59920ce
 
-ktexteditor/syntax/katehighlight.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: jowenn@kde.org michalhumpula vegardoye jtamate schwarzerf@gmail.com tsdgeos@terra.es rpedersen mwoehlke yurchor
-jowenn@kde.org (  19 LOC): 1c0c1b7,fdc5245
-michalhumpula (  14 LOC): 44beb7d
-vegardoye (   2 LOC): bfe33fe
-  jtamate (   3 LOC): abc7651
-schwarzerf@gmail.com (   1 LOC): f6aaeb7
-tsdgeos@terra.es (   1 LOC): d8eb013
-rpedersen (   1 LOC): 8888404
- mwoehlke (  46 LOC): b00bda6,096e56e
-  yurchor (   1 LOC): ac01197
-
 ktexteditor/utils/kateautoindent.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: cfeck dhdev@gmx.de parker.coates@kdemail.net rpedersen ceruleanblaze@gmail.com zwabel jpetso
