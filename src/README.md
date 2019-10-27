@@ -19,17 +19,6 @@ vegardoye (  17 LOC): c51d01e
 dhdev@gmx.de (   4 LOC): d32f5c3,dad9836
   djarvie (   1 LOC): 210f6d5
 
-ktexteditor/script/katescriptview.h;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: ceruleanblaze@gmail.com
-ceruleanblaze@gmail.com (   2 LOC): 75e0eb5
-
-ktexteditor/utils/kateautoindent.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: rpedersen cfeck
-rpedersen (  30 LOC): 8888404
-    cfeck (   1 LOC): ccb55c8
-
 ktexteditor/view/kateview.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: jowenn@kde.org djarvie zwabel sstjames vegardoye andreym dhdev@gmx.de kuzmich lungu mssola finex sars
