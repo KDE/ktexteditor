@@ -10,21 +10,6 @@ find src -name "*.[ch]*" -exec grep -L SPDX-License-Identifier {} \;
 
 ### *.h
 
-ktexteditor/document/katedocument.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: cloose cfeck sstjames sars dhdev@gmx.de djarvie lungu azatkhuzhin gregor@freenet.de vegardoye andreym zwabel haumann@kate-editor.org jowenn@kde.org zealot.hoi@gmail.com gamaral
-   cloose (   1 LOC): c72e8ed
- sstjames (   1 LOC): 78d1568
-     sars (   1 LOC): b558c67
-dhdev@gmx.de (   5 LOC): 7499f1e,995237a,eb29fdf
-    lungu (   1 LOC): 4a55a68,84ed88c
-gregor@freenet.de (   3 LOC): 8dcd416
-vegardoye (   3 LOC): bfe33fe
-  andreym (   6 LOC): 7dc070e,18e47aa
-   zwabel (  30 LOC): fa251e5,e3ffcc3,6fcbd4c
-haumann@kate-editor.org (   2 LOC): 96f57c1,2e80ba4,1612fde
-jowenn@kde.org (  18 LOC): 8c42657,8a49c2f,15065f8,e5a6f98,fd8d310
-
 ktexteditor/render/katerenderer.h;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: andreym iastrubni vegardoye dhdev@gmx.de djarvie
