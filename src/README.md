@@ -19,18 +19,6 @@ vegardoye (  17 LOC): c51d01e
 dhdev@gmx.de (   4 LOC): d32f5c3,dad9836
   djarvie (   1 LOC): 210f6d5
 
-ktexteditor/script/katescriptdocument.h;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: rpedersen haumann@kate-editor.org ceruleanblaze@gmail.com
-rpedersen (  28 LOC): c02c8e1,b998ee4
-haumann@kate-editor.org (   1 LOC): 2e80ba4
-ceruleanblaze@gmail.com (  51 LOC): 75e0eb5,9112a0d
-
-ktexteditor/script/katescriptmanager.h;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: vegardoye ceruleanblaze@gmail.com
-vegardoye (  10 LOC): c79537a
-
 ktexteditor/script/katescriptview.h;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
 
 - lgplv2+: ceruleanblaze@gmail.com
