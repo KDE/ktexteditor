@@ -115,21 +115,6 @@ haumann@kate-editor.org (   1 LOC): 9040212
 vegardoye (  39 LOC): bfe33fe,9ec2e9e,c51d01e
 schwarzerf@gmail.com (   1 LOC): 59920ce
 
-ktexteditor/script/katescript.cpp;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: ceruleanblaze@gmail.com segato rpedersen
-ceruleanblaze@gmail.com (  11 LOC): 75e0eb5,9112a0d,c82c409
-rpedersen (   5 LOC): d786604
-
-ktexteditor/script/katescriptdocument.cpp;UNKNOWN;0;0;0;5;1;Copyright,UNKNOWN,FSFwarranty,LibraryGPLseeDetailsVer0,LibraryGPLcopyVer0,GPLwrite
-
-- lgplv2+: jowenn@kde.org rpedersen ceruleanblaze@gmail.com vprus haumann@kate-editor.org jtamate
-jowenn@kde.org (   1 LOC): fd8d310
-rpedersen (  46 LOC): c02c8e1,b998ee4
-ceruleanblaze@gmail.com ( 261 LOC): 75e0eb5,9112a0d
-haumann@kate-editor.org (   5 LOC): 2e80ba4
-  jtamate (   3 LOC): 2af427f
-
 ktexteditor/script/katescriptmanager.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: tsdgeos@terra.es jowenn@kde.org rpedersen vegardoye
