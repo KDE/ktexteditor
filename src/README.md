@@ -119,16 +119,6 @@ harshkumar (  48 LOC): bad52c1,26d4699
   kuzmich (   3 LOC): 1bb178d
    jpetso (   2 LOC): c19b784
 
-ktexteditor/utils/kateconfig.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
-
-- lgplv2+: mwoehlke harshkumar zealot.hoi@gmail.com sstjames michalhumpula kevin@kfunk.org sars
- mwoehlke (  14 LOC): b00bda6,f4fb8f4,6e1f20b
-harshkumar ( 207 LOC): fa10797,162b016
- sstjames (  20 LOC): e2cf410
-michalhumpula (  24 LOC): 5c4bccf
-kevin@kfunk.org (   2 LOC): 1164c3c
-     sars (  63 LOC): 045bab2,65e8078
-
 ktexteditor/view/kateviewhelpers.cpp;LibraryGPLv2;1;1;4;2;0;Copyright,,1,-1,-1,-1,-1
 
 - lgplv2+: brauch rdieter@math.unl.edu buis@kde.org mssola sengels lungu sstjames divide dakon tsdgeos@terra.es segato staniek kuzmich zealot.hoi@gmail.com jowenn@kde.org jpetso vegardoye iastrubni john@layt.net mwoehlke edulix@wadobo.com cfeck haumann@kate-editor.org sars zwabel edulix dhdev@gmx.de
