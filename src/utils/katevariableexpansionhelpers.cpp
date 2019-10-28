@@ -278,7 +278,9 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
         if (index.isValid()) {
             const auto &var = m_variables[m_filterModel->mapToSource(index).row()];
-            const auto name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
+
+            // not auto, don't fall for string builder, see bug 413474
+            const QString name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
 
             if (parentWidget() && parentWidget()->window()) {
                 auto currentWidget = parentWidget()->window()->focusWidget();
