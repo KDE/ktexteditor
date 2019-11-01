@@ -174,11 +174,6 @@ public:
     void setButton(QPushButton *button, AlignmentHButton positionX = AlignHDefault, AlignmentVButton positionY = AlignTop, AutoUpdateTextButton autoUpdateTextButton = AutoUpdateTextButton(false));
 
     /**
-     * Define the size of the list widget, in pixels.
-     */
-    inline void setSizeList(const int height, const int width = 260);
-
-    /**
      * Define the scroll when cleaning the search or changing the view.
      * The default value is AutoScroll::ScrollToSelectedItem.
      * @see AutoScroll
@@ -207,6 +202,12 @@ protected:
 
 private:
     void init(const SearchBarPosition searchBarPos);
+
+    /**
+     * Define the size of the list widget, in pixels. The @p width is also
+     * applied to the search bar. This does not recalculate the word wrap in items.
+     */
+    inline void setSizeList(const int height, const int width = 260);
 
     /**
      * Load the data model with the syntax highlighting definitions to show in the list.
@@ -286,7 +287,10 @@ private:
      */
     const QIcon m_checkIcon = QIcon::fromTheme(QStringLiteral("checkbox"));
     QIcon m_emptyIcon;
-    static const int m_iconSize = 16;
+    int m_iconSize = 16;
+
+    int m_defaultHeightItemSection;
+    static const int m_scrollbarMargin = 2;
 
     QPointer<KTextEditor::DocumentPrivate> m_doc;
 
@@ -326,6 +330,29 @@ public:
      * @p height and @p width are values in pixels.
      */
     void setSizeList(const int height, const int width = 260);
+
+    /**
+     * Get the width of the list, in pixels.
+     * @see QAbstractScrollArea::sizeHint()
+     */
+    inline int getWidth() const;
+
+    /**
+     * Get the width of the contents of the list (in pixels), that is,
+     * the list minus the scroll bar and margins.
+     */
+    int getContentWidth() const;
+
+    /**
+     * Get the width of the contents of the list (in pixels), that is, the list minus
+     * the scroll bar and margins. The parameter allows you to specify additional margins
+     * according to the scroll bar, which can be superimposed or fixed depending to the
+     * desktop environment or operating system.
+     * @param overlayScrollbarMargin Additional margin for the scroll bar, if it is
+     *                               superimposed on the list.
+     * @param classicScrollbarMargin Additional margin for the scroll bar, if fixed in the list.
+     */
+    inline int getContentWidth(const int overlayScrollbarMargin, const int classicScrollbarMargin) const;
 
     inline void setCurrentItem(const int rowItem)
     {
@@ -424,6 +451,11 @@ public:
     {
         m_bestResults.clear();
     }
+
+    /**
+     * Define the width of the search bar, in pixels.
+     */
+    void setWidth(const int width);
 
 private:
     SearchLine(KateModeMenuList *menu)

@@ -65,6 +65,53 @@ static bool overlapScrollBar()
 
 void KateModeMenuList::init(const SearchBarPosition searchBarPos)
 {
+    /*
+     * Fix font size & font style: display the font correctly when changing it from the
+     * KDE Plasma preferences. For example, the font type "Menu" is displayed, but "font()"
+     * and "fontMetrics()" return the font type "General". Therefore, this overwrites the
+     * "General" font. This makes it possible to correctly apply word wrapping on items,
+     * when changing the font or its size.
+     */
+    QFont font = this->font();
+    font.setFamily(font.family());
+    font.setStyle(font.style());
+    font.setStyleName(font.styleName());
+    font.setBold(font.bold());
+    font.setItalic(font.italic());
+    font.setUnderline(font.underline());
+    font.setStrikeOut(font.strikeOut());
+    font.setPointSize(font.pointSize());
+    setFont(font);
+
+    /*
+     * Calculate the size of the list and the checkbox icon (in pixels) according
+     * to the font size. From font 12pt to 26pt increase the list size.
+     */
+    int menuWidth = 260;
+    int menuHeight = 428;
+    const int fontSize = font.pointSize();
+    if (fontSize >= 12) {
+        const int increaseSize = (fontSize - 11) * 10;
+        if (increaseSize >= 150) { // Font size: 26pt
+            menuWidth += 150;
+            menuHeight += 150;
+        } else {
+            menuWidth += increaseSize;
+            menuHeight += increaseSize;
+        }
+
+        if (fontSize >= 22) {
+            m_iconSize = 32;
+        } else if (fontSize >= 18) {
+            m_iconSize = 24;
+        } else if (fontSize >= 14) {
+            m_iconSize = 22;
+        } else if (fontSize >= 12) {
+            m_iconSize = 18;
+        }
+    }
+
+    // Create list and search bar
     m_list = KateModeMenuListData::Factory::createListView(this);
     m_searchBar = KateModeMenuListData::Factory::createSearchLine(this);
 
@@ -88,10 +135,11 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     }
     m_list->setIconSize(QSize(m_iconSize, m_iconSize));
     m_list->setResizeMode(QListView::Adjust);
-    // Initial size of the list widget, this can be modified later
-    m_list->setSizeList(428);
+    // Size of the list widget and search bar.
+    setSizeList(menuHeight, menuWidth);
 
-    loadHighlightingModel(); // Data model (items)
+    // Data model (items).
+    loadHighlightingModel();
 
     /*
      * Search bar widget.
@@ -124,7 +172,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     if (overlapScrollBar()) {
         QHBoxLayout *layoutScrollBar = new QHBoxLayout();
         layoutScrollBar->addWidget(m_scroll);
-        layoutScrollBar->setContentsMargins(2, 2, 2, 2);
+        layoutScrollBar->setContentsMargins(1, m_scrollbarMargin, m_scrollbarMargin, m_scrollbarMargin);
         m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
     }
 
@@ -139,9 +187,13 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
 
     // In the Windows OS, decrease menu margins.
 #ifdef Q_OS_WIN
-    layoutContainer->setContentsMargins(3, 3, 3, 3);
+    layoutContainer->setContentsMargins(3, 3, 2, 3);
     layoutContainer->setSpacing(0);
-    layoutSearchBar->setContentsMargins(2, 2, 2, 2);
+    if (searchBarPos == Bottom) {
+        layoutSearchBar->setContentsMargins(2, 5, 2, 2);
+    } else if (searchBarPos == Top) {
+        layoutSearchBar->setContentsMargins(2, 2, 2, 5);
+    }
     layoutSearchBar->setSpacing(0);
     m_layoutList->setContentsMargins(2, 2, 2, 2);
     m_layoutList->setSpacing(0);
@@ -170,14 +222,9 @@ void KateModeMenuList::loadHighlightingModel()
     /*
      * The width of the text container in the item, in pixels. This is used to make
      * a custom word wrap and prevent the item's text from passing under the scroll bar.
-     * NOTE: 12 = the edges
+     * NOTE: 8 = Icon margin
      */
-    int maxWidthText;
-    if (overlapScrollBar()) {
-        maxWidthText = m_list->sizeHint().width() - m_scroll->sizeHint().width() - m_iconSize - 12;
-    } else {
-        maxWidthText = m_list->sizeHint().width() - m_list->verticalScrollBar()->sizeHint().width() - m_iconSize - 19;
-    }
+    const int maxWidthText = m_list->getContentWidth(1, 4) - m_iconSize - 8;
 
     // Transparent color used as background in the sections.
     QPixmap transparentPixmap = QPixmap(m_iconSize / 2, m_iconSize / 2);
@@ -189,6 +236,7 @@ void KateModeMenuList::loadHighlightingModel()
      * which will remain hidden and will only be shown when necessary.
      */
     createSectionList(QString(), transparentBrush, false);
+    m_defaultHeightItemSection = m_list->visualRect(m_model->index(0, 0)).height();
     m_list->setRowHidden(0, true);
 
     /*
@@ -261,7 +309,7 @@ KateModeMenuListData::ListItem *KateModeMenuList::createSectionList(const QStrin
     if (m_list->layoutDirection() == Qt::RightToLeft) {
         label->setAlignment(Qt::AlignRight);
     }
-    label->setTextFormat(Qt::RichText);
+    label->setTextFormat(Qt::PlainText);
     label->setIndent(6);
 
     /*
@@ -281,6 +329,20 @@ KateModeMenuListData::ListItem *KateModeMenuList::createSectionList(const QStrin
     }
     m_list->setIndexWidget(m_model->index(section->row(), 0), label);
     m_list->selectionModel()->select(section->index(), QItemSelectionModel::Deselect);
+
+    // Apply word wrap in sections, for long labels.
+    const int containerTextWidth = m_list->getContentWidth(1, 2);
+    int heightSectionMargin = m_list->visualRect(m_model->index(section->row(), 0)).height() - label->sizeHint().height();
+
+    if (label->sizeHint().width() > containerTextWidth) {
+        label->setText(setWordWrap(label->text(), containerTextWidth - label->indent(), label->fontMetrics()));
+        if (heightSectionMargin < 2) {
+            heightSectionMargin = 2;
+        }
+        section->setSizeHint(QSize(section->sizeHint().width(), label->sizeHint().height() + heightSectionMargin));
+    } else if (heightSectionMargin < 2) {
+        section->setSizeHint(QSize(section->sizeHint().width(), label->sizeHint().height() + 2));
+    }
 
     return section;
 }
@@ -307,6 +369,7 @@ void KateModeMenuList::setButton(QPushButton *button, AlignmentHButton positionX
 void KateModeMenuList::setSizeList(const int height, const int width)
 {
     m_list->setSizeList(height, width);
+    m_searchBar->setWidth(width);
 }
 
 void KateModeMenuList::autoScroll()
@@ -482,9 +545,10 @@ void KateModeMenuList::loadEmptyMsg()
     m_emptyListMsg->setMargin(15);
     m_emptyListMsg->setWordWrap(true);
 
+    const int fontSize = font().pointSize() > 10 ? font().pointSize() + 4 : 14;
+
     QColor color = m_emptyListMsg->palette().color(QPalette::Text);
-    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: 14pt; color: rgba(") + QString::number(color.red()) + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') + QString::number(color.blue()) +
-                                  QLatin1String(", 0.3);"));
+    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: ") + QString::number(fontSize) + QLatin1String("pt; color: rgba(") + QString::number(color.red()) + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') + QString::number(color.blue()) + QLatin1String(", 0.3);"));
 
     m_emptyListMsg->setAlignment(Qt::AlignCenter);
     m_layoutList->addWidget(m_emptyListMsg, 0, 0, Qt::AlignCenter);
@@ -493,7 +557,7 @@ void KateModeMenuList::loadEmptyMsg()
 QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, const QFontMetrics &fontMetrics) const
 {
     // Get the length of the text, in pixels, and compare it with the container
-    if (fontMetrics.boundingRect(text).width() <= maxWidth) {
+    if (fontMetrics.horizontalAdvance(text) <= maxWidth) {
         return text;
     }
 
@@ -506,15 +570,25 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
     QString tmpLineText = QString();
 
     for (int i = 0; i < words.count() - 1; ++i) {
-        tmpLineText += words[i];
+        // Elide mode in long words
+        if (fontMetrics.horizontalAdvance(words[i]) > maxWidth) {
+            if (!tmpLineText.isEmpty()) {
+                newText += tmpLineText + QLatin1Char('\n');
+                tmpLineText.clear();
+            }
+            newText += fontMetrics.elidedText(words[i], m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth) + QLatin1Char('\n');
+            continue;
+        } else {
+            tmpLineText += words[i];
+        }
 
         // This prevents the last line of text from having only one word with 1 or 2 chars
-        if (i == words.count() - 3 && words[i + 2].length() <= 2 && fontMetrics.boundingRect(tmpLineText + QLatin1Char(' ') + words[i + 1] + QLatin1Char(' ') + words[i + 2]).width() > maxWidth) {
+        if (i == words.count() - 3 && words[i + 2].length() <= 2 && fontMetrics.horizontalAdvance(tmpLineText + QLatin1Char(' ') + words[i + 1] + QLatin1Char(' ') + words[i + 2]) > maxWidth) {
             newText += tmpLineText + QLatin1Char('\n');
             tmpLineText.clear();
         }
         // Add line break if the maxWidth is exceeded with the next word
-        else if (fontMetrics.boundingRect(tmpLineText + QLatin1Char(' ') + words[i + 1]).width() > maxWidth) {
+        else if (fontMetrics.horizontalAdvance(tmpLineText + QLatin1Char(' ') + words[i + 1]) > maxWidth) {
             newText += tmpLineText + QLatin1Char('\n');
             tmpLineText.clear();
         } else {
@@ -523,11 +597,18 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
     }
 
     // Add line breaks in delimiters, if the last word is greater than the container
-    if (fontMetrics.boundingRect(words[words.count() - 1]).width() > maxWidth) {
+    bool bElidedLastWord = false;
+    if (fontMetrics.horizontalAdvance(words[words.count() - 1]) > maxWidth) {
+        bElidedLastWord = true;
         const int lastw = words.count() - 1;
         for (int c = words[lastw].length() - 1; c >= 0; --c) {
-            if (isDelimiter(words[lastw][c].unicode()) && fontMetrics.boundingRect(words[lastw].mid(0, c + 1)).width() <= maxWidth) {
-                words[lastw].insert(c + 1, QLatin1Char('\n'));
+            if (isDelimiter(words[lastw][c].unicode()) && fontMetrics.horizontalAdvance(words[lastw].mid(0, c + 1)) <= maxWidth) {
+                bElidedLastWord = false;
+                if (fontMetrics.horizontalAdvance(words[lastw].mid(c + 1)) > maxWidth) {
+                    words[lastw] = words[lastw].mid(0, c + 1) + QLatin1Char('\n') + fontMetrics.elidedText(words[lastw].mid(c + 1), m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth);
+                } else {
+                    words[lastw].insert(c + 1, QLatin1Char('\n'));
+                }
                 break;
             }
         }
@@ -536,8 +617,18 @@ QString KateModeMenuList::setWordWrap(const QString &text, const int maxWidth, c
     if (!tmpLineText.isEmpty()) {
         newText += tmpLineText;
     }
-    newText += words[words.count() - 1];
+    if (bElidedLastWord) {
+        newText += fontMetrics.elidedText(words[words.count() - 1], m_list->layoutDirection() == Qt::RightToLeft ? Qt::ElideLeft : Qt::ElideRight, maxWidth);
+    } else {
+        newText += words[words.count() - 1];
+    }
     return newText;
+}
+
+void KateModeMenuListData::SearchLine::setWidth(const int width)
+{
+    setMinimumWidth(width);
+    setMaximumWidth(width);
 }
 
 void KateModeMenuListData::ListView::setSizeList(const int height, const int width)
@@ -546,6 +637,26 @@ void KateModeMenuListData::ListView::setSizeList(const int height, const int wid
     setMaximumWidth(width);
     setMinimumHeight(height);
     setMaximumHeight(height);
+}
+
+int KateModeMenuListData::ListView::getWidth() const
+{
+    // Equivalent to: sizeHint().width()
+    // But "sizeHint().width()" returns an incorrect value when the menu is large.
+    return size().width() - 4;
+}
+
+int KateModeMenuListData::ListView::getContentWidth(const int overlayScrollbarMargin, const int classicScrollbarMargin) const
+{
+    if (overlapScrollBar()) {
+        return getWidth() - m_parentMenu->m_scroll->sizeHint().width() - m_parentMenu->m_scrollbarMargin - overlayScrollbarMargin;
+    }
+    return getWidth() - verticalScrollBar()->sizeHint().width() - classicScrollbarMargin;
+}
+
+int KateModeMenuListData::ListView::getContentWidth() const
+{
+    return getContentWidth(0, 0);
 }
 
 bool KateModeMenuListData::ListItem::generateSearchName(const QString &itemName)
@@ -930,22 +1041,37 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
     if (m_bestResults.isEmpty()) {
         listView->setRowHidden(0, true);
         if (firstSection > 0) {
-            m_parentMenu->m_list->setRowHidden(firstSection - 1, true);
+            listView->setRowHidden(firstSection - 1, true);
         }
-    }
-    // Show "Best Search Matches" section, if there are items.
-    else {
-        // Show title in singular or plural, depending on the number of items
-        QLabel *labelSection = static_cast<QLabel *>(listView->indexWidget(m_parentMenu->m_model->index(0, 0)));
-        if (m_bestResults.size() == 1) {
-            labelSection->setText(
-                i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Match"));
-        } else {
-            labelSection->setText(
-                i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Matches"));
-        }
-        listView->setRowHidden(0, false);
+    } else {
+        /*
+         * Show "Best Search Matches" section, if there are items.
+         */
 
+        // Show title in singular or plural, depending on the number of items.
+        QLabel *labelSection = static_cast<QLabel *>(listView->indexWidget(listModel->index(0, 0)));
+        if (m_bestResults.size() == 1) {
+            labelSection->setText(i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Match"));
+        } else {
+            labelSection->setText(i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Matches"));
+        }
+
+        int heightSectionMargin = m_parentMenu->m_defaultHeightItemSection - labelSection->sizeHint().height();
+        if (heightSectionMargin < 2) {
+            heightSectionMargin = 2;
+        }
+        int maxWidthText = listView->getContentWidth(0, 1);
+        // NOTE: labelSection->sizeHint().width() == labelSection->indent() + labelSection->fontMetrics().horizontalAdvance(labelSection->text())
+        const bool bSectionMultiline = labelSection->sizeHint().width() > maxWidthText;
+        maxWidthText -= labelSection->indent();
+        if (!bSectionMultiline) {
+            listModel->item(0, 0)->setSizeHint(QSize(listModel->item(0, 0)->sizeHint().width(), labelSection->sizeHint().height() + heightSectionMargin));
+            listView->setRowHidden(0, false);
+        }
+
+        /*
+         * Show items in "Best Search Matches" section.
+         */
         int rowModelBestResults = 0; // New position in the model
 
         // Special Case: always show the "R Script" mode first by typing "r" in the search box
@@ -971,6 +1097,15 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
         }
         if (lastItem == -1) {
             lastItem = rowModelBestResults;
+        }
+
+        // Add word wrap in long section titles.
+        if (bSectionMultiline) {
+            if (listView->visualRect(listModel->index(lastItem, 0)).bottom() + labelSection->sizeHint().height() + heightSectionMargin > listView->geometry().height() || labelSection->sizeHint().width() > listView->getWidth() - 1) {
+                labelSection->setText(m_parentMenu->setWordWrap(labelSection->text(), maxWidthText, labelSection->fontMetrics()));
+            }
+            listModel->item(0, 0)->setSizeHint(QSize(listModel->item(0, 0)->sizeHint().width(), labelSection->sizeHint().height() + heightSectionMargin));
+            listView->setRowHidden(0, false);
         }
 
         m_parentMenu->m_list->setCurrentItem(1);
