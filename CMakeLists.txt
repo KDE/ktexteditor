@@ -133,5 +133,5 @@ install(FILES ktexteditor.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORI
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # add clang-format target for all our real source files
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES autotests/src/*.cpp autotests/src/*.h src/*.cpp src/*.h templates/*.cpp templates/*.h)
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES autotests/src/*.cpp autotests/src/*.h src/*.cpp src/*.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
