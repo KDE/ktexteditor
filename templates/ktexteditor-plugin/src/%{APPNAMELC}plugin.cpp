@@ -24,23 +24,26 @@
 // KF headers
 #include <KTextEditor/MainWindow>
 
-#include <KLocalizedString>
 #include <KPluginFactory>
+#include <KLocalizedString>
 
-K_PLUGIN_CLASS_WITH_JSON(% {APPNAME} Plugin, "%{APPNAMELC}.json")
+K_PLUGIN_CLASS_WITH_JSON(%{APPNAME}Plugin, "%{APPNAMELC}.json")
 
-    % {APPNAME} Plugin:: %
-    {APPNAME} Plugin(QObject *parent, const QVariantList & /*args*/)
-    : KTextEditor::Plugin(parent) {}
 
-    % {APPNAME} Plugin::~ % {APPNAME} Plugin()
+%{APPNAME}Plugin::%{APPNAME}Plugin(QObject* parent, const QVariantList& /*args*/)
+    : KTextEditor::Plugin(parent)
 {
 }
 
-QObject * % {APPNAME} Plugin::createView(KTextEditor::MainWindow *mainwindow)
+%{APPNAME}Plugin::~%{APPNAME}Plugin()
 {
-    return new % {APPNAME} View(this, mainwindow);
 }
+
+QObject* %{APPNAME}Plugin::createView(KTextEditor::MainWindow* mainwindow)
+{
+    return new %{APPNAME}View(this, mainwindow);
+}
+
 
 // needed for K_PLUGIN_CLASS_WITH_JSON
 #include <%{APPNAMELC}plugin.moc>

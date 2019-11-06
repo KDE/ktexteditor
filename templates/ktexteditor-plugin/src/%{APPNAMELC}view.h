@@ -17,26 +17,25 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .
  */
 
-#ifndef % {APPNAMEUC } VIEW_H
-#define % {APPNAMEUC } VIEW_H
+#ifndef %{APPNAMEUC}VIEW_H
+#define %{APPNAMEUC}VIEW_H
 
 // Qt headers
 #include <QObject>
 
-namespace KTextEditor
-{
+namespace KTextEditor {
 class MainWindow;
 }
 
-class % {APPNAME} Plugin;
+class %{APPNAME}Plugin;
 
-class % {APPNAME} View : public QObject
+class %{APPNAME}View: public QObject
 {
     Q_OBJECT
 
 public:
-    % {APPNAME} View(% {APPNAME} Plugin * plugin, KTextEditor::MainWindow * view);
-    ~ % {APPNAME} View() override;
+    %{APPNAME}View(%{APPNAME}Plugin* plugin, KTextEditor::MainWindow *view);
+    ~%{APPNAME}View() override;
 };
 
 #endif // %{APPNAMEUC}VIEW_H
