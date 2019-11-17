@@ -548,7 +548,8 @@ void KateModeMenuList::loadEmptyMsg()
     const int fontSize = font().pointSize() > 10 ? font().pointSize() + 4 : 14;
 
     QColor color = m_emptyListMsg->palette().color(QPalette::Text);
-    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: ") + QString::number(fontSize) + QLatin1String("pt; color: rgba(") + QString::number(color.red()) + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') + QString::number(color.blue()) + QLatin1String(", 0.3);"));
+    m_emptyListMsg->setStyleSheet(QLatin1String("font-size: ") + QString::number(fontSize) + QLatin1String("pt; color: rgba(") + QString::number(color.red()) + QLatin1Char(',') + QString::number(color.green()) + QLatin1Char(',') +
+                                  QString::number(color.blue()) + QLatin1String(", 0.3);"));
 
     m_emptyListMsg->setAlignment(Qt::AlignCenter);
     m_layoutList->addWidget(m_emptyListMsg, 0, 0, Qt::AlignCenter);
@@ -1051,9 +1052,11 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
         // Show title in singular or plural, depending on the number of items.
         QLabel *labelSection = static_cast<QLabel *>(listView->indexWidget(listModel->index(0, 0)));
         if (m_bestResults.size() == 1) {
-            labelSection->setText(i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Match"));
+            labelSection->setText(
+                i18nc("Title (in singular) of the best result in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Match"));
         } else {
-            labelSection->setText(i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Matches"));
+            labelSection->setText(
+                i18nc("Title (in plural) of the best results in an item search. Please, that the translation doesn't have more than 34 characters, since the menu where it's displayed is small and fixed.", "Best Search Matches"));
         }
 
         int heightSectionMargin = m_parentMenu->m_defaultHeightItemSection - labelSection->sizeHint().height();
