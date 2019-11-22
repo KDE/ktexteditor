@@ -1068,7 +1068,10 @@ public:
      */
     QByteArray checksum() const override;
 
-    void updateFileType(const QString &newType, bool user = false);
+    /**
+     * @return false if @p newType is an invalid mode.
+     */
+    bool updateFileType(const QString &newType, bool user = false);
 
     QString fileType() const
     {

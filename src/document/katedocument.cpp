@@ -1814,8 +1814,7 @@ QWidget *KTextEditor::DocumentPrivate::dialogParent()
 // BEGIN KTextEditor::HighlightingInterface stuff
 bool KTextEditor::DocumentPrivate::setMode(const QString &name)
 {
-    updateFileType(name);
-    return true;
+    return updateFileType(name);
 }
 
 KTextEditor::DefaultStyle KTextEditor::DocumentPrivate::defaultStyleAt(const KTextEditor::Cursor &position) const
@@ -1934,9 +1933,9 @@ void KTextEditor::DocumentPrivate::readSessionConfig(const KConfigGroup &kconfig
 
     if (!flags.contains(QStringLiteral("SkipMode"))) {
         // restore the filetype
-        if (kconfig.hasKey("Mode")) {
-            updateFileType(kconfig.readEntry("Mode", fileType()));
-
+        // NOTE: if the session config file contains an invalid Mode
+        // (for example, one that was deleted or renamed), do not apply it
+        if (kconfig.hasKey("Mode") && updateFileType(kconfig.readEntry("Mode"))) {
             // restore if set by user, too!
             m_fileTypeSetByUser = kconfig.readEntry("Mode Set By User", false);
         }
@@ -5130,61 +5129,69 @@ void KTextEditor::DocumentPrivate::removeTrailingSpaces()
     }
 }
 
-void KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool user)
+bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool user)
 {
     if (user || !m_fileTypeSetByUser) {
-        if (!newType.isEmpty()) {
-            // remember that we got set by user
-            m_fileTypeSetByUser = user;
+        if (newType.isEmpty()) {
+            return false;
+        }
+        KateFileType fileType = KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType);
+        // if the mode "newType" does not exist
+        if (fileType.name.isEmpty()) {
+            return false;
+        }
 
-            m_fileType = newType;
+        // remember that we got set by user
+        m_fileTypeSetByUser = user;
 
-            m_config->configStart();
+        m_fileType = newType;
 
-            // NOTE: if the user changes the Mode, the Highlighting also changes.
-            // m_hlSetByUser avoids resetting the highlight when saving the document, if
-            // the current hl isn't stored (eg, in sftp:// or fish:// files) (see bug #407763)
-            if ((user || !m_hlSetByUser) && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl.isEmpty()) {
-                int hl(KateHlManager::self()->nameFind(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).hl));
+        m_config->configStart();
 
-                if (hl >= 0) {
-                    m_buffer->setHighlight(hl);
-                }
+        // NOTE: if the user changes the Mode, the Highlighting also changes.
+        // m_hlSetByUser avoids resetting the highlight when saving the document, if
+        // the current hl isn't stored (eg, in sftp:// or fish:// files) (see bug #407763)
+        if ((user || !m_hlSetByUser) && !fileType.hl.isEmpty()) {
+            int hl(KateHlManager::self()->nameFind(fileType.hl));
+
+            if (hl >= 0) {
+                m_buffer->setHighlight(hl);
             }
+        }
 
-            /**
-             * set the indentation mode, if any in the mode...
-             * and user did not set it before!
-             * NOTE: KateBuffer::setHighlight() also sets the indentation.
-             */
-            if (!m_indenterSetByUser && !KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter.isEmpty()) {
-                config()->setIndentationMode(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).indenter);
-            }
+        /**
+            * set the indentation mode, if any in the mode...
+            * and user did not set it before!
+            * NOTE: KateBuffer::setHighlight() also sets the indentation.
+            */
+        if (!m_indenterSetByUser && !fileType.indenter.isEmpty()) {
+            config()->setIndentationMode(fileType.indenter);
+        }
 
-            // views!
-            for (auto v : qAsConst(m_views)) {
-                v->config()->configStart();
-                v->renderer()->config()->configStart();
-            }
+        // views!
+        for (auto v : qAsConst(m_views)) {
+            v->config()->configStart();
+            v->renderer()->config()->configStart();
+        }
 
-            bool bom_settings = false;
-            if (m_bomSetByUser) {
-                bom_settings = m_config->bom();
-            }
-            readVariableLine(KTextEditor::EditorPrivate::self()->modeManager()->fileType(newType).varLine);
-            if (m_bomSetByUser) {
-                m_config->setBom(bom_settings);
-            }
-            m_config->configEnd();
-            for (auto v : qAsConst(m_views)) {
-                v->config()->configEnd();
-                v->renderer()->config()->configEnd();
-            }
+        bool bom_settings = false;
+        if (m_bomSetByUser) {
+            bom_settings = m_config->bom();
+        }
+        readVariableLine(fileType.varLine);
+        if (m_bomSetByUser) {
+            m_config->setBom(bom_settings);
+        }
+        m_config->configEnd();
+        for (auto v : qAsConst(m_views)) {
+            v->config()->configEnd();
+            v->renderer()->config()->configEnd();
         }
     }
 
     // fixme, make this better...
     emit modeChanged(this);
+    return true;
 }
 
 void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abortClosing)
