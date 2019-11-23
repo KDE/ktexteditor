@@ -61,7 +61,6 @@
 #include <KCharsets>
 #include <KColorCombo>
 #include <KComboBox>
-#include <KIconLoader>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KProcess>

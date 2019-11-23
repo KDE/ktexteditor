@@ -315,7 +315,6 @@ PRIVATE
   KF5::I18n
   KF5::Archive
   KF5::GuiAddons
-  KF5::IconThemes
   KF5::ItemViews
   KF5::SonnetCore
   KF5::SyntaxHighlighting
