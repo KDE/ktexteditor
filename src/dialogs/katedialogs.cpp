@@ -53,7 +53,6 @@
 #include "ui_textareaappearanceconfigwidget.h"
 
 #include <KIO/Job>
-#include <kjobwidgets.h>
 
 #include "kateabstractinputmodefactory.h"
 #include "katepartdebug.h"
