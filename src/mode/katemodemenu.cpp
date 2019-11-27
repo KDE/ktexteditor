@@ -60,6 +60,9 @@ void KateModeMenu::slotAboutToShow()
         QString hlName = KTextEditor::EditorPrivate::self()->modeManager()->list().at(z)->nameTranslated();
         QString hlSection = KTextEditor::EditorPrivate::self()->modeManager()->list().at(z)->sectionTranslated();
 
+        if (hlName.isEmpty()) {
+            continue;
+        }
         if (!hlSection.isEmpty() && !names.contains(hlName)) {
             if (!subMenusName.contains(hlSection)) {
                 subMenusName << hlSection;

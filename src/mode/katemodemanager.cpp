@@ -21,6 +21,7 @@
 // BEGIN Includes
 #include "katemodemanager.h"
 #include "katewildcardmatcher.h"
+#include "katestatusbar.h"
 
 #include "kateconfig.h"
 #include "katedocument.h"
@@ -70,6 +71,7 @@ void KateModeManager::update()
 
     QStringList g(config.groupList());
 
+    KateFileType *normalType = nullptr;
     qDeleteAll(m_types);
     m_types.clear();
     m_name2Type.clear();
@@ -79,7 +81,6 @@ void KateModeManager::update()
         KateFileType *type = new KateFileType();
         type->number = z;
         type->name = g[z];
-        type->section = cg.readEntry(QStringLiteral("Section"));
         type->wildcards = cg.readXdgListEntry(QStringLiteral("Wildcards"));
         type->mimetypes = cg.readXdgListEntry(QStringLiteral("Mimetypes"));
         type->priority = cg.readEntry(QStringLiteral("Priority"), 0);
@@ -90,19 +91,34 @@ void KateModeManager::update()
 
         // only for generated types...
         type->hlGenerated = cg.readEntry(QStringLiteral("Highlighting Generated"), false);
-        type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
 
-        // insert into the list + hash...
-        m_types.append(type);
+        // the "Normal" mode will be added later
+        if (type->name == QLatin1String("Normal")) {
+            if (!normalType) {
+                normalType = type;
+            }
+        } else {
+            type->section = cg.readEntry(QStringLiteral("Section"));
+            type->version = cg.readEntry(QStringLiteral("Highlighting Version"));
+        }
+
+        // insert into the hash...
+        // NOTE: "katemoderc" could have modes that do not exist or are invalid (for example, custom
+        // XML files that were deleted or renamed), so they will be added to the list "m_types" later
         m_name2Type.insert(type->name, type);
     }
 
     // try if the hl stuff is up to date...
     const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
-        // filter out hidden languages; and
-        // filter out "None" hl, we add that later as "normal" mode
-        if (modes[i].isHidden() || modes[i].name() == QLatin1String("None")) {
+        /**
+         * filter out hidden languages; and
+         * filter out "None" hl, we add that later as "Normal" mode.
+         * Hl with empty names will also be filtered. The
+         * KTextEditor::DocumentPrivate::updateFileType() function considers
+         * hl with empty names as invalid.
+         */
+        if (modes[i].isHidden() || modes[i].name().isEmpty() || modes[i].name() == QLatin1String("None")) {
             continue;
         }
 
@@ -115,9 +131,10 @@ void KateModeManager::update()
             type = new KateFileType();
             type->name = modes[i].name();
             type->priority = 0;
-            m_types.append(type);
             m_name2Type.insert(type->name, type);
         }
+        // only the types that exist or are valid are added
+        m_types.append(type);
 
         if (newType || type->version != QString::number(modes[i].version())) {
             type->name = modes[i].name();
@@ -139,15 +156,25 @@ void KateModeManager::update()
     std::sort(m_types.begin(), m_types.end(), compareKateFileType);
 
     // add the none type...
-    KateFileType *t = new KateFileType();
+    if (!normalType) {
+        normalType = new KateFileType();
+    }
 
     // marked by hlGenerated
-    t->name = QStringLiteral("Normal");
-    t->translatedName = i18n("Normal");
-    t->hl = QStringLiteral("None");
-    t->hlGenerated = true;
+    normalType->name = QStringLiteral("Normal");
+    normalType->translatedName = i18n("Normal");
+    normalType->hl = QStringLiteral("None");
+    normalType->hlGenerated = true;
 
-    m_types.prepend(t);
+    m_types.prepend(normalType);
+
+    // update the mode menu of the status bar, for all views.
+    // this menu uses the KateFileType objects
+    for (auto *view : KTextEditor::EditorPrivate::self()->views()) {
+        if (view->statusBar() && view->statusBar()->modeMenu()) {
+            view->statusBar()->modeMenu()->reloadItems();
+        }
+    }
 }
 
 //

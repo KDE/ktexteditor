@@ -56,7 +56,7 @@ void KateHighlightingMenu::slotAboutToShow()
         if (hlName == QLatin1String("None"))
             hlName = i18n("None");
 
-        if (!hl.isHidden()) {
+        if (!hl.isHidden() && !hlName.isEmpty()) {
             if (!hlSection.isEmpty() && !names.contains(hlName)) {
                 if (!subMenusName.contains(hlSection)) {
                     subMenusName << hlSection;

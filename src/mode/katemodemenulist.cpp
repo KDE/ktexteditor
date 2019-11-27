@@ -139,6 +139,8 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     setSizeList(menuHeight, menuWidth);
 
     // Data model (items).
+    // couple model to view to let it be deleted with the view
+    m_model = new QStandardItemModel(0, 0, m_list);
     loadHighlightingModel();
 
     /*
@@ -212,10 +214,36 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     connect(m_list, &KateModeMenuListData::ListView::clicked, this, &KateModeMenuList::selectHighlighting);
 }
 
+void KateModeMenuList::reloadItems()
+{
+    const QString searchText = m_searchBar->text().trimmed();
+    m_searchBar->m_bestResults.clear();
+    if (!isHidden()) {
+        hide();
+    }
+    /*
+     * Clear model.
+     * NOTE: This deletes the item objects and widgets indexed to items.
+     * That is, the QLabel & QFrame objects of the section titles are also deleted.
+     * See: QAbstractItemView::setIndexWidget(), QObject::deleteLater()
+     */
+    m_model->clear();
+    m_list->selectionModel()->clear();
+    m_selectedItem = nullptr;
+
+    loadHighlightingModel();
+
+    // Restore search text, if there is.
+    m_searchBar->m_bSearchStateAutoScroll = false;
+    if (!searchText.isEmpty()) {
+        selectHighlightingFromExternal();
+        m_searchBar->updateSearch(searchText);
+        m_searchBar->setText(searchText);
+    }
+}
+
 void KateModeMenuList::loadHighlightingModel()
 {
-    // couple model to view to let it be deleted with the view
-    m_model = new QStandardItemModel(0, 0, m_list);
     m_list->setModel(m_model);
 
     QString *prevHlSection = nullptr;
@@ -245,6 +273,10 @@ void KateModeMenuList::loadHighlightingModel()
      * and the attribute "translatedSection" isn't empty if "section" has a value.
      */
     for (auto *hl : KTextEditor::EditorPrivate::self()->modeManager()->list()) {
+        if (hl->name.isEmpty()) {
+            continue;
+        }
+
         // Detects a new section.
         if (!hl->translatedSection.isEmpty() && (prevHlSection == nullptr || hl->translatedSection != *prevHlSection)) {
             createSectionList(hl->sectionTranslated(), transparentBrush);
@@ -374,12 +406,11 @@ void KateModeMenuList::setSizeList(const int height, const int width)
 
 void KateModeMenuList::autoScroll()
 {
-    if (m_autoScroll == ScrollToSelectedItem) {
+    if (m_selectedItem && m_autoScroll == ScrollToSelectedItem) {
         m_list->setCurrentItem(m_selectedItem->row());
         m_list->scrollToItem(m_selectedItem->row(), QAbstractItemView::PositionAtCenter);
     } else {
-        m_list->setCurrentItem(0);
-        m_list->scrollToTop();
+        m_list->scrollToFirstItem();
     }
 }
 
@@ -433,7 +464,7 @@ void KateModeMenuList::showEvent(QShowEvent *event)
 
     // Select text from the search bar
     if (!m_searchBar->text().isEmpty()) {
-        if (m_searchBar->text().simplified().isEmpty()) {
+        if (m_searchBar->text().trimmed().isEmpty()) {
             m_searchBar->clear();
         } else {
             m_searchBar->selectAll();
@@ -450,7 +481,16 @@ void KateModeMenuList::showEvent(QShowEvent *event)
 
     // First show or if an external changed the current syntax highlighting.
     if (!m_selectedItem || (m_selectedItem->hasMode() && m_selectedItem->getMode()->name != doc->fileType())) {
-        selectHighlightingFromExternal(doc->fileType());
+        if (!selectHighlightingFromExternal(doc->fileType())) {
+            // Strange case: if the current syntax highlighting does not exist in the list.
+            if (m_selectedItem) {
+                m_selectedItem->setIcon(m_emptyIcon);
+            }
+            if ((m_selectedItem || !m_list->currentItem()) && m_searchBar->text().isEmpty()) {
+                m_list->scrollToFirstItem();
+            }
+            m_selectedItem = nullptr;
+        }
     }
 }
 
@@ -474,7 +514,7 @@ void KateModeMenuList::updateSelectedItem(KateModeMenuListData::ListItem *item)
 
 void KateModeMenuList::selectHighlightingSetVisibility(QStandardItem *pItem, const bool bHideMenu)
 {
-    if (!pItem->isSelectable() || !pItem->isEnabled()) {
+    if (!pItem || !pItem->isSelectable() || !pItem->isEnabled()) {
         return;
     }
 
@@ -499,7 +539,7 @@ void KateModeMenuList::selectHighlighting(const QModelIndex &index)
     selectHighlightingSetVisibility(m_model->item(index.row(), 0), true);
 }
 
-void KateModeMenuList::selectHighlightingFromExternal(const QString &nameMode)
+bool KateModeMenuList::selectHighlightingFromExternal(const QString &nameMode)
 {
     for (int i = 0; i < m_model->rowCount(); ++i) {
         KateModeMenuListData::ListItem *item = static_cast<KateModeMenuListData::ListItem *>(m_model->item(i, 0));
@@ -523,20 +563,21 @@ void KateModeMenuList::selectHighlightingFromExternal(const QString &nameMode)
                 m_list->scrollToItem(i);
             } else {
                 // autoScroll()
-                m_list->setCurrentItem(0);
-                m_list->scrollToTop();
+                m_list->scrollToFirstItem();
             }
-            return;
+            return true;
         }
     }
+    return false;
 }
 
-void KateModeMenuList::selectHighlightingFromExternal()
+bool KateModeMenuList::selectHighlightingFromExternal()
 {
     KTextEditor::DocumentPrivate *doc = m_doc;
     if (doc) {
-        selectHighlightingFromExternal(doc->fileType());
+        return selectHighlightingFromExternal(doc->fileType());
     }
+    return false;
 }
 
 void KateModeMenuList::loadEmptyMsg()

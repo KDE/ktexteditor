@@ -23,6 +23,7 @@
 
 #include "kateview.h"
 #include "kateviewhelpers.h"
+#include "katemodemenulist.h"
 
 #include <KLocalizedString>
 #include <KSqueezedTextLabel>
@@ -62,6 +63,8 @@ class KateStatusBar : public KateViewBarWidget
 
 public:
     explicit KateStatusBar(KTextEditor::ViewPrivate *view);
+
+    KateModeMenuList *modeMenu() const;
 
 public Q_SLOTS:
     void updateStatus();
@@ -105,6 +108,7 @@ private:
     QActionGroup *m_dictionaryGroup = nullptr;
     KateStatusBarOpenUpMenu *m_dictionaryMenu = nullptr;
     QMenu *m_indentSettingsMenu;
+    KateModeMenuList *m_modeMenuList = nullptr;
     unsigned int m_modifiedStatus;
     unsigned int m_selectionMode;
     QActionGroup *m_tabGroup;

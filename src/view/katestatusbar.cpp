@@ -25,7 +25,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katemodemanager.h"
-#include "katemodemenulist.h"
 #include "wordcounter.h"
 
 #include <KAcceleratorManager>
@@ -197,16 +196,16 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
      * load the mode menu, which contains a scrollable list + search bar.
      * This is an alternative menu to the mode action menu of the view.
      */
-    KateModeMenuList *modeMenuList = new KateModeMenuList(i18n("Mode"), this);
-    modeMenuList->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
-    modeMenuList->updateMenu(m_view->doc());
+    m_modeMenuList = new KateModeMenuList(i18n("Mode"), this);
+    m_modeMenuList->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
+    m_modeMenuList->updateMenu(m_view->doc());
     /**
      * add mode button which allows user to switch mode of document
      */
     m_mode = new StatusBarButton(this);
     topLayout->addWidget(m_mode);
-    modeMenuList->setButton(m_mode, KateModeMenuList::AlignHInverse, KateModeMenuList::AlignTop, KateModeMenuList::AutoUpdateTextButton(false));
-    m_mode->setMenu(modeMenuList);
+    m_modeMenuList->setButton(m_mode, KateModeMenuList::AlignHInverse, KateModeMenuList::AlignTop, KateModeMenuList::AutoUpdateTextButton(false));
+    m_mode->setMenu(m_modeMenuList);
     m_mode->setWhatsThis(i18n("Syntax highlighting"));
 
     // signals for the statusbar
@@ -585,4 +584,9 @@ void KateStatusBar::changeDictionary(QAction *action)
     } else {
         m_view->doc()->setDefaultDictionary(dictionary);
     }
+}
+
+KateModeMenuList *KateStatusBar::modeMenu() const
+{
+    return m_modeMenuList;
 }

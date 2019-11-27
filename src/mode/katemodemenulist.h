@@ -142,22 +142,30 @@ public:
     }
 
     /**
+     * Reload all items.
+     * @see KateModeManager::update()
+     */
+    void reloadItems();
+
+    /**
      * Update the selected item in the list widget, but without changing
      * the syntax highlighting in the document.
      * This is useful for updating this menu, when changing the syntax highlighting
      * from another menu, or from an external one. This doesn't hide or show the menu.
      * @param nameMode Raw name of the syntax highlight definition. If it's empty,
      *                 the "Normal" mode will be used.
+     * @return True if @p nameMode exists and is selected.
      */
-    void selectHighlightingFromExternal(const QString &nameMode);
+    bool selectHighlightingFromExternal(const QString &nameMode);
     /**
      * Update the selected item in the list widget, but without changing
      * the syntax highlighting in the document. This doesn't hide or show the menu.
      * The menu is kept updated according to the active syntax highlighting,
      * obtained from the KTextEditor::DocumentPrivate class.
+     * @return True if the item is selected correctly.
      * @see KTextEditor::DocumentPrivate::fileType()
      */
-    void selectHighlightingFromExternal();
+    bool selectHighlightingFromExternal();
 
     /**
      * Set the button that shows this menu. It allows to update the label
@@ -259,14 +267,14 @@ private:
     /**
      * Load message when the list is empty in the search.
      */
-    inline void loadEmptyMsg();
+    void loadEmptyMsg();
 
     AutoScroll m_autoScroll = ScrollToSelectedItem;
     AlignmentHButton m_positionX;
     AlignmentVButton m_positionY;
     AutoUpdateTextButton m_autoUpdateTextButton;
 
-    QPushButton *m_pushButton = nullptr;
+    QPointer<QPushButton> m_pushButton = nullptr;
     QLabel *m_emptyListMsg = nullptr;
     QGridLayout *m_layoutList = nullptr;
     QScrollBar *m_scroll = nullptr;
@@ -358,6 +366,7 @@ public:
     {
         selectionModel()->setCurrentIndex(m_parentMenu->m_model->index(rowItem, 0), QItemSelectionModel::ClearAndSelect);
     }
+
     inline QStandardItem *currentItem() const
     {
         return m_parentMenu->m_model->item(currentIndex().row(), 0);
@@ -366,6 +375,12 @@ public:
     inline void scrollToItem(const int rowItem, QAbstractItemView::ScrollHint hint = QAbstractItemView::PositionAtCenter)
     {
         scrollTo(m_parentMenu->m_model->index(rowItem, 0), hint);
+    }
+
+    inline void scrollToFirstItem()
+    {
+        setCurrentItem(1);
+        scrollToTop();
     }
 
 protected:
@@ -479,7 +494,11 @@ private:
      */
     static const int m_searchDelay = 170;
 
+    /**
+     * This prevents auto-scrolling when the search is kept clean.
+     */
     bool m_bSearchStateAutoScroll = false;
+
     QString m_search = QString();
     int m_queuedSearches = 0;
     Qt::CaseSensitivity m_caseSensitivity = Qt::CaseInsensitive;
@@ -493,6 +512,7 @@ private:
 
     KateModeMenuList *m_parentMenu = nullptr;
     friend Factory;
+    friend void KateModeMenuList::reloadItems();
 
 protected:
     /**
