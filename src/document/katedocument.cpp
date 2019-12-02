@@ -25,7 +25,6 @@
 #include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "kateplaintextsearch.h"
-#include "kateregexp.h"
 #include "kateregexpsearch.h"
 #include "katerenderer.h"
 #include "kateschema.h"
@@ -1768,8 +1767,12 @@ QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(const KText
     if (regexMode) {
         // regexp search
         // escape sequences are supported by definition
-        KateRegExpSearch searcher(this, caseSensitivity);
-        return searcher.search(pattern, range, backwards);
+        QRegularExpression::PatternOptions patternOptions;
+        if (caseSensitivity == Qt::CaseInsensitive) {
+            patternOptions |=  QRegularExpression::CaseInsensitiveOption;
+        }
+        KateRegExpSearch searcher(this);
+        return searcher.search(pattern, range, backwards, patternOptions);
     }
 
     if (escapeSequences) {

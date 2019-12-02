@@ -12,6 +12,8 @@
 #include <kateglobal.h>
 #include <kateregexpsearch.h>
 
+#include <QRegularExpression>
+
 #include <QtTestWidgets>
 
 QTEST_MAIN(RegExpSearchTest)
@@ -216,11 +218,11 @@ void RegExpSearchTest::testAnchoredRegexp_data()
     testNewRow() << "fe$" << Range(0, 0, 0, 8) << false << Range(0, 6, 0, 8);
     testNewRow() << "fe$" << Range(0, 7, 0, 8) << false << Range::invalid();
     testNewRow() << "fe$" << Range(0, 6, 0, 8) << false << Range(0, 6, 0, 8);
-    //  testNewRow() << "fe$" << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
+    testNewRow() << "fe$" << Range(0, 0, 0, 5) << false << Range::invalid(); // only match at line end, fails
     testNewRow() << "fe$" << Range(0, 0, 0, 8) << true << Range(0, 6, 0, 8);
     testNewRow() << "fe$" << Range(0, 7, 0, 8) << true << Range::invalid();
     testNewRow() << "fe$" << Range(0, 6, 0, 8) << true << Range(0, 6, 0, 8);
-    //  testNewRow() << "fe$" << Range(0, 0, 0, 5) << true << Range::invalid();  // fails due to $-shortcoming in QRegExp
+    testNewRow() << "fe$" << Range(0, 0, 0, 5) << true << Range::invalid();
 
     testNewRow() << "^fe fe fe$" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
     testNewRow() << "^fe fe fe$" << Range(0, 3, 0, 8) << false << Range::invalid();
@@ -237,19 +239,22 @@ void RegExpSearchTest::testAnchoredRegexp_data()
     testNewRow() << "fe( fe)*" << Range(0, 0, 0, 8) << false << Range(0, 0, 0, 8);
     testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << false << Range::invalid();
     testNewRow() << "fe( fe)*$" << Range(0, 3, 0, 8) << false << Range(0, 3, 0, 8);
-    //  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << false << Range::invalid();  // fails due to $-shortcoming in QRegExp
-    testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 5);
+    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << false << Range::invalid();
+    // fails because the whole line is fed to QRegularExpression, then matches
+    // that end beyond the search range are rejected, see KateRegExpSearch::searchText()
+    // testNewRow() << "^fe( fe)*"  << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 5);
+
     testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
     testNewRow() << "^fe( fe)*" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
-    //  testNewRow() <<  "fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
-    //  testNewRow() <<  "fe( fe)*"  << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);  // fails, shouldn't matching be greedy?
+    testNewRow() << "fe( fe)*$" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
+    testNewRow() << "fe( fe)*" << Range(0, 0, 0, 8) << true << Range(0, 0, 0, 8);
     testNewRow() << "^fe( fe)*$" << Range(0, 3, 0, 8) << true << Range::invalid();
-    //  testNewRow() <<  "fe( fe)*$" << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);  // fails, shouldn't matching be greedy?
-    //  testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << true << Range::invalid();   // fails due to $-shortcoming in QRegExp
+    testNewRow() << "fe( fe)*$" << Range(0, 3, 0, 8) << true << Range(0, 3, 0, 8);
+    testNewRow() << "^fe( fe)*$" << Range(0, 0, 0, 5) << true << Range::invalid();
 
     testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << false << Range(0, 0, 0, 2);
     testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << false << Range(0, 6, 0, 8);
-    //  testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);  // fails due to $-shortcoming in QRegExp
+    testNewRow() << "^fe|fe$" << Range(0, 0, 0, 5) << true << Range(0, 0, 0, 2);
     testNewRow() << "^fe|fe$" << Range(0, 3, 0, 8) << true << Range(0, 6, 0, 8);
 }
 
@@ -263,7 +268,7 @@ void RegExpSearchTest::testAnchoredRegexp()
     KTextEditor::DocumentPrivate doc;
     doc.setText("fe fe fe");
 
-    KateRegExpSearch searcher(&doc, Qt::CaseInsensitive);
+    KateRegExpSearch searcher(&doc);
 
     static int i = 0;
     if (i == 34 || i == 36) {
@@ -271,7 +276,7 @@ void RegExpSearchTest::testAnchoredRegexp()
     }
     i++;
 
-    const Range result = searcher.search(pattern, inputRange, backwards)[0];
+    const Range result = searcher.search(pattern, inputRange, backwards, QRegularExpression::CaseInsensitiveOption)[0];
 
     QCOMPARE(result, expected);
 }
@@ -281,8 +286,8 @@ void RegExpSearchTest::testSearchForward()
     KTextEditor::DocumentPrivate doc;
     doc.setText("  \\piinfercong");
 
-    KateRegExpSearch search(&doc, Qt::CaseSensitive);
-    const Range result = search.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15))[0];
+    KateRegExpSearch searcher(&doc);
+    const Range result = searcher.search("\\\\piinfer(\\w)", Range(0, 2, 0, 15), false)[0];
 
     QCOMPARE(result, Range(0, 2, 0, 11));
 }
@@ -292,8 +297,8 @@ void RegExpSearchTest::testSearchBackwardInSelection()
     KTextEditor::DocumentPrivate doc;
     doc.setText("foobar foo bar foo bar foo");
 
-    KateRegExpSearch search(&doc, Qt::CaseSensitive);
-    const Range result = search.search("foo", Range(0, 0, 0, 15), true)[0];
+    KateRegExpSearch searcher(&doc);
+    const Range result = searcher.search("foo", Range(0, 0, 0, 15), true)[0];
 
     QCOMPARE(result, Range(0, 7, 0, 10));
 }
@@ -303,8 +308,8 @@ void RegExpSearchTest::test()
     KTextEditor::DocumentPrivate doc;
     doc.setText("\\newcommand{\\piReductionOut}");
 
-    KateRegExpSearch search(&doc, Qt::CaseSensitive);
-    const QVector<Range> result = search.search("\\\\piReduction(\\S)", Range(0, 10, 0, 28), true);
+    KateRegExpSearch searcher(&doc);
+    const QVector<Range> result = searcher.search("\\\\piReduction(\\S)", Range(0, 10, 0, 28), true);
 
     QCOMPARE(result.size(), 2);
     QCOMPARE(result[0], Range(0, 12, 0, 25));

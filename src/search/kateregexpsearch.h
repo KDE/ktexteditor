@@ -9,6 +9,7 @@
 #define _KATE_REGEXPSEARCH_H_
 
 #include <QObject>
+#include <QRegularExpression>
 
 #include <ktexteditor/range.h>
 
@@ -27,7 +28,7 @@ class Document;
 class KTEXTEDITOR_EXPORT KateRegExpSearch
 {
 public:
-    explicit KateRegExpSearch(const KTextEditor::Document *document, Qt::CaseSensitivity caseSensitivity);
+    explicit KateRegExpSearch(const KTextEditor::Document *document);
     ~KateRegExpSearch();
 
     //
@@ -37,17 +38,24 @@ public:
     /**
      * Search for the regular expression \p pattern inside the range
      * \p inputRange. If \p backwards is \e true, the search direction will
-     * be reversed.
+     * be reversed. \p options is a set of QRegularExpression::PatternOptions
+     * OR flags that control certain aspects of the search, e.g. case
+     * sensitivity and if the dot "." metacharacter matches any character
+     * including a newline.
      *
      * \param pattern text to search for
      * \param inputRange Range to search in
      * \param backwards if \e true, the search will be backwards
-     * \return Vector of ranges, one for each capture. The first range (index zero)
-     *        spans the full match. If the pattern does not match the vector
-     *        has length 1 and holds the invalid range (see Range::isValid()).
+     * \param options QRegularExpression pattern options
+     * \return Vector of ranges, one for each capture group. The first range (index
+     *         zero) spans the whole match. If no matches are found, the vector will
+     *         contain one element, an invalid range (see Range::isValid()).
      * \see KTextEditor::Range, QRegularExpression
      */
-    QVector<KTextEditor::Range> search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards = false);
+    QVector<KTextEditor::Range> search(const QString &pattern,
+                                       const KTextEditor::Range &inputRange,
+                                       bool backwards = false,
+                                       QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption);
 
     /**
      * Returns a modified version of text where escape sequences are resolved, e.g. "\\n" to "\n".
@@ -82,9 +90,24 @@ private:
      */
     static QString buildReplacement(const QString &text, const QStringList &capturedTexts, int replacementCounter, bool replacementGoodies);
 
+    /**
+     * Checks the pattern for special characters and escape sequences that can
+     * make a match span multiple lines; if any are found, \p stillMultiLine is
+     * set to true.
+     *
+     * "\s" is treated specially so that it doesn't match new line characters; this
+     * is achieved by replacing any occurences of "\s" with "[ \t]" in the search
+     * \p pattern.
+     *
+     * \param pattern the regular expression search pattern
+     * \param stillMultiLine is set to \c true if the search pattern may still match
+     * multiple lines even after replacing "\s" with "[ \t]"; otherwise it's set to false
+     * \return the modified pattern
+     */
+    QString repairPattern(const QString &pattern, bool &stillMultiLine);
+
 private:
     const KTextEditor::Document *const m_document;
-    Qt::CaseSensitivity m_caseSensitivity;
     class ReplacementStream;
 };
 

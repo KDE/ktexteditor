@@ -43,7 +43,10 @@ KTextEditor::Range KatePlainTextSearch::search(const QString &text, const KTextE
         // escape dot and friends
         const QString workPattern = QStringLiteral("\\b%1\\b").arg(QRegularExpression::escape(text));
 
-        return KateRegExpSearch(m_document, m_caseSensitivity).search(workPattern, inputRange, backwards).at(0);
+        QRegularExpression::PatternOptions options;
+        options |= m_caseSensitivity == Qt::CaseInsensitive ? QRegularExpression::CaseInsensitiveOption : QRegularExpression::NoPatternOption;
+
+        return KateRegExpSearch(m_document).search(workPattern, inputRange, backwards, options).at(0);
     }
 
     if (text.isEmpty() || !inputRange.isValid() || (inputRange.start() == inputRange.end())) {

@@ -13,7 +13,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katematch.h"
-#include "kateregexp.h"
 #include "katerenderer.h"
 #include "kateundomanager.h"
 #include "kateview.h"
@@ -464,42 +463,6 @@ bool KateSearchBar::matchCase() const
     return isPower() ? m_powerUi->matchCase->isChecked() : m_incUi->matchCase->isChecked();
 }
 
-void KateSearchBar::fixForSingleLine(Range &range, SearchDirection searchDirection)
-{
-    FAST_DEBUG("Single-line workaround checking BEFORE" << range);
-    if (searchDirection == SearchForward) {
-        const int line = range.start().line();
-        const int col = range.start().column();
-        const int maxColWithNewline = m_view->document()->lineLength(line) + 1;
-        if (col == maxColWithNewline) {
-            FAST_DEBUG("Starting on a newline" << range);
-            const int maxLine = m_view->document()->lines() - 1;
-            if (line < maxLine) {
-                range.setRange(Cursor(line + 1, 0), range.end());
-                FAST_DEBUG("Search range fixed to " << range);
-            } else {
-                FAST_DEBUG("Already at last line");
-                range = Range::invalid();
-            }
-        }
-    } else {
-        const int col = range.end().column();
-        if (col == 0) {
-            FAST_DEBUG("Ending after a newline" << range);
-            const int line = range.end().line();
-            if (line > 0) {
-                const int maxColWithNewline = m_view->document()->lineLength(line - 1);
-                range.setRange(range.start(), Cursor(line - 1, maxColWithNewline));
-                FAST_DEBUG("Search range fixed to " << range);
-            } else {
-                FAST_DEBUG("Already at first line");
-                range = Range::invalid();
-            }
-        }
-    }
-    FAST_DEBUG("Single-line workaround checking  AFTER" << range);
-}
-
 void KateSearchBar::onReturnPressed()
 {
     const Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
@@ -560,46 +523,51 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
     }
     FAST_DEBUG("Search range is" << inputRange);
 
-    {
-        const bool regexMode = enabledOptions.testFlag(Regex);
-        const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
-
-        // Single-line pattern workaround
-        if (regexMode && !multiLinePattern) {
-            fixForSingleLine(inputRange, searchDirection);
-        }
-    }
-
     KateMatch match(m_view->doc(), enabledOptions);
     Range afterReplace = Range::invalid();
 
     // Find, first try
     match.searchText(inputRange, searchPattern());
-    if (match.isValid() && match.range() == selection) {
-        // Same match again
-        if (replacement != nullptr) {
-            // Selection is match -> replace
-            KTextEditor::MovingRange *smartInputRange = m_view->doc()->newMovingRange(inputRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
-            afterReplace = match.replace(*replacement, m_view->blockSelection());
-            inputRange = *smartInputRange;
-            delete smartInputRange;
-        }
-
-        if (!selectionOnly()) {
-            // Find, second try after old selection
-            if (searchDirection == SearchForward) {
-                const Cursor start = (replacement != nullptr) ? afterReplace.end() : selection.end();
-                inputRange.setRange(start, inputRange.end());
-            } else {
-                const Cursor end = (replacement != nullptr) ? afterReplace.start() : selection.start();
-                inputRange.setRange(inputRange.start(), end);
+    if (match.isValid()) {
+        if (match.range() == selection) {
+            // Same match again
+            if (replacement != nullptr) {
+                // Selection is match -> replace
+                KTextEditor::MovingRange *smartInputRange = m_view->doc()->newMovingRange(inputRange, KTextEditor::MovingRange::ExpandLeft | KTextEditor::MovingRange::ExpandRight);
+                afterReplace = match.replace(*replacement, m_view->blockSelection());
+                inputRange = *smartInputRange;
+                delete smartInputRange;
             }
+
+            if (!selectionOnly()) {
+                // Find, second try after old selection
+                if (searchDirection == SearchForward) {
+                    const Cursor start = (replacement != nullptr) ? afterReplace.end() : selection.end();
+                    inputRange.setRange(start, inputRange.end());
+                } else {
+                    const Cursor end = (replacement != nullptr) ? afterReplace.start() : selection.start();
+                    inputRange.setRange(inputRange.start(), end);
+                }
+            }
+
+            match.searchText(inputRange, searchPattern());
+
+        } else if (match.isEmpty()
+                   && match.range().end() == m_view->cursorPosition()) {
+            // valid zero-length match, e.g.: '^', '$', '\b'
+            // advance the range to avoid looping
+            KTextEditor::DocumentCursor zeroLenMatch(m_view->doc(), match.range().end());
+
+            if (searchDirection == SearchForward) {
+                zeroLenMatch.move(1);
+                inputRange.setRange(zeroLenMatch.toCursor(), inputRange.end());
+            } else { // SearchBackward
+                zeroLenMatch.move(-1);
+                inputRange.setRange(inputRange.start(), zeroLenMatch.toCursor());
+            }
+
+            match.searchText(inputRange, searchPattern());
         }
-
-        // Single-line pattern workaround
-        fixForSingleLine(inputRange, searchDirection);
-
-        match.searchText(inputRange, searchPattern());
     }
 
     bool askWrap = !match.isValid() && (!selection.isValid() || !selectionOnly());
@@ -781,9 +749,6 @@ void KateSearchBar::findOrReplaceAll()
 {
     const SearchOptions enabledOptions = searchOptions(SearchForward);
 
-    const bool regexMode = enabledOptions.testFlag(Regex);
-    const bool multiLinePattern = regexMode ? KateRegExp(searchPattern()).isMultiLine() : false;
-
     // we highlight all ranges of a replace, up to some hard limit
     // e.g. if you replace 100000 things, rendering will break down otherwise ;=)
     const int maxHighlightings = 65536;
@@ -844,12 +809,8 @@ void KateSearchBar::findOrReplaceAll()
             KTextEditor::DocumentCursor workingStart(m_view->doc(), lastRange.end());
 
             if (originalMatchEmpty) {
-                // Can happen for regex patterns like "^".
+                // Can happen for regex patterns with zero-length matches, e.g. ^, $, \b
                 // If we don't advance here we will loop forever...
-                workingStart.move(1);
-            } else if (regexMode && !multiLinePattern && workingStart.atEndOfLine()) {
-                // single-line regexps might match the naked line end
-                // therefore we better advance to the next line
                 workingStart.move(1);
             }
             m_workingRange->setRange(workingStart.toCursor(), m_workingRange->end());
@@ -1132,12 +1093,13 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
                 addMenuManager.addEntry(QStringLiteral("^"), QString(), i18n("Beginning of line"));
                 addMenuManager.addEntry(QStringLiteral("$"), QString(), i18n("End of line"));
                 addMenuManager.addSeparator();
-                addMenuManager.addEntry(QStringLiteral("."), QString(), i18n("Any single character (excluding line breaks)"));
-                addMenuManager.addSeparator();
+                addMenuManager.addEntry(QStringLiteral("."), QString(), i18n("Match any character execluding new line (by default)"));
                 addMenuManager.addEntry(QStringLiteral("+"), QString(), i18n("One or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("*"), QString(), i18n("Zero or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("?"), QString(), i18n("Zero or one occurrences"));
                 addMenuManager.addEntry(QStringLiteral("{a"), QStringLiteral(",b}"), i18n("<a> through <b> occurrences"), QStringLiteral("{"), QStringLiteral(",}"));
+
+                addMenuManager.addSeparator();
                 addMenuManager.addSeparator();
                 addMenuManager.addEntry(QStringLiteral("("), QStringLiteral(")"), i18n("Group, capturing"));
                 addMenuManager.addEntry(QStringLiteral("|"), QString(), i18n("Or"));
@@ -1172,20 +1134,25 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
             addMenuManager.addEntry(QStringLiteral("\\d"), QString(), i18n("Digit"));
             addMenuManager.addEntry(QStringLiteral("\\D"), QString(), i18n("Non-digit"));
             addMenuManager.addEntry(QStringLiteral("\\s"), QString(), i18n("Whitespace (excluding line breaks)"));
-            addMenuManager.addEntry(QStringLiteral("\\S"), QString(), i18n("Non-whitespace (excluding line breaks)"));
+            addMenuManager.addEntry(QStringLiteral("\\S"), QString(), i18n("Non-whitespace"));
             addMenuManager.addEntry(QStringLiteral("\\w"), QString(), i18n("Word character (alphanumerics plus '_')"));
             addMenuManager.addEntry(QStringLiteral("\\W"), QString(), i18n("Non-word character"));
         }
 
         addMenuManager.addEntry(QStringLiteral("\\0???"), QString(), i18n("Octal character 000 to 377 (2^8-1)"), QStringLiteral("\\0"));
-        addMenuManager.addEntry(QStringLiteral("\\x????"), QString(), i18n("Hex character 0000 to FFFF (2^16-1)"), QStringLiteral("\\x"));
+        addMenuManager.addEntry(QStringLiteral("\\x{????}"), QString(), i18n("Hex character 0000 to FFFF (2^16-1)"), QStringLiteral("\\x{....}"));
         addMenuManager.addEntry(QStringLiteral("\\\\"), QString(), i18n("Backslash"));
 
         if (forPattern && regexMode) {
             addMenuManager.addSeparator();
             addMenuManager.addEntry(QStringLiteral("(?:E"), QStringLiteral(")"), i18n("Group, non-capturing"), QStringLiteral("(?:"));
-            addMenuManager.addEntry(QStringLiteral("(?=E"), QStringLiteral(")"), i18n("Lookahead"), QStringLiteral("(?="));
+            addMenuManager.addEntry(QStringLiteral("(?=E"), QStringLiteral(")"), i18n("Positive Lookahead"), QStringLiteral("(?="));
             addMenuManager.addEntry(QStringLiteral("(?!E"), QStringLiteral(")"), i18n("Negative lookahead"), QStringLiteral("(?!"));
+            // variable length positive/negative lookbehind is an experimental feature in Perl 5.30
+            // see: https://perldoc.perl.org/perlre.html
+            // currently QRegularExpression only supports fixed-length positive/negative lookbehind (2020-03-01)
+            addMenuManager.addEntry(QStringLiteral("(?<=E"), QStringLiteral(")"), i18n("Fixed-length positive lookbehind"), QStringLiteral("(?<="));
+            addMenuManager.addEntry(QStringLiteral("(?<!E"), QStringLiteral(")"), i18n("Fixed-length negative lookbehind"), QStringLiteral("(?<!"));
         }
 
         if (!forPattern) {

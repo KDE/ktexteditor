@@ -180,7 +180,6 @@ private:
     void addCurrentTextToHistory(QComboBox *combo);
     void backupConfig(bool ofPower);
     void sendConfig();
-    void fixForSingleLine(KTextEditor::Range &range, SearchDirection searchDirection);
 
     void showResultMessage();
     void showSearchWrappedHint(SearchDirection searchDirection);

@@ -81,6 +81,37 @@ void SearchBarTest::testFindNextIncremental()
     QCOMPARE(view.selectionRange(), Range(0, 0, 0, 1));
 }
 
+
+void SearchBarTest::testFindNextZeroLengthMatch()
+{
+    // Some regularexpression matches are zero length assertions
+    // e.g. '$', '^', '\b', test that the cursor won't be stuck
+    // on one match when using FindNext
+    KTextEditor::DocumentPrivate doc;
+    doc.setText("a\nb \nc\n\n");
+
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+    KateSearchBar bar(true, &view, &config);
+    bar.setSearchMode(KateSearchBar::MODE_REGEX);
+
+    bar.setSearchPattern("$");
+
+    QVERIFY(bar.isPower());
+
+    bar.findNext();
+    QCOMPARE(view.cursorPosition(), Cursor(0,1));
+
+    bar.findNext();
+    QCOMPARE(view.cursorPosition(), Cursor(1,2));
+
+    bar.findNext();
+    QCOMPARE(view.cursorPosition(), Cursor(2,1));
+
+    bar.findNext();
+    QCOMPARE(view.cursorPosition(), Cursor(3,0));
+}
+
 void SearchBarTest::testSetMatchCaseIncremental()
 {
     KTextEditor::DocumentPrivate doc;
@@ -501,12 +532,10 @@ void SearchBarTest::testReplaceDollar()
 
     KateSearchBar bar(true, &view, &config);
 
-    bar.setSearchPattern("$");
+    bar.setSearchPattern(QStringLiteral("$"));
     bar.setSearchMode(KateSearchBar::MODE_REGEX);
     bar.setReplacementPattern("D");
-
     bar.replaceAll();
-
     QCOMPARE(doc.text(), QString("aaaD\nbbbD\ncccD\nD\nD\naaaD\nbbbD\ncccD\ndddD\n"));
 }
 

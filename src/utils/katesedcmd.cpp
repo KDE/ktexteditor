@@ -171,7 +171,8 @@ KateCommands::SedReplace::InteractiveSedReplacer::InteractiveSedReplacer(KTextEd
     , m_onlyOnePerLine(onlyOnePerLine)
     , m_endLine(endLine)
     , m_doc(doc)
-    , m_regExpSearch(doc, caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive)
+    , m_regExpSearch(doc)
+    , m_caseSensitive(caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive)
     , m_numReplacementsDone(0)
     , m_numLinesTouched(0)
     , m_lastChangedLineNum(-1)
@@ -265,7 +266,11 @@ const QVector<KTextEditor::Range> KateCommands::SedReplace::InteractiveSedReplac
         return QVector<KTextEditor::Range>();
     }
 
-    return m_regExpSearch.search(m_findPattern, KTextEditor::Range(m_currentSearchPos, m_doc->documentEnd()));
+    QRegularExpression::PatternOptions options;
+    if (m_caseSensitive == Qt::CaseInsensitive) {
+        options |= (QRegularExpression::CaseInsensitiveOption);
+    }
+    return m_regExpSearch.search(m_findPattern, KTextEditor::Range(m_currentSearchPos, m_doc->documentEnd()), false /* search backwards */, options);
 }
 
 QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurrentMatch()

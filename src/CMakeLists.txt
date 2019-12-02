@@ -131,7 +131,6 @@ render/katetextlayout.cpp
 render/katelinelayout.cpp
 
 # search stuff
-search/kateregexp.cpp
 search/kateplaintextsearch.cpp
 search/kateregexpsearch.cpp
 search/katematch.cpp

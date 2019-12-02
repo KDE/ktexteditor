@@ -113,6 +113,7 @@ public:
         int m_endLine;
         KTextEditor::DocumentPrivate *m_doc;
         KateRegExpSearch m_regExpSearch;
+        Qt::CaseSensitivity m_caseSensitive;
 
         int m_numReplacementsDone;
         int m_numLinesTouched;
