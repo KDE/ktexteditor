@@ -3396,6 +3396,12 @@ void KateViewInternal::wheelEvent(QWheelEvent *e)
             return;
         }
 
+        // if we scroll up/down we do not want to trigger unintended sideways scrolls
+        if (qAbs(e->angleDelta().y()) > qAbs(e->angleDelta().x())) {
+            e->accept();
+            return;
+        }
+
         QWheelEvent copy = *e;
         QApplication::sendEvent(m_columnScroll, &copy);
         if (copy.isAccepted()) {
