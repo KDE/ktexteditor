@@ -231,7 +231,7 @@ public:
      */
     QList<KTextEditor::ViewPrivate *> views()
     {
-        return m_views.toList();
+        return m_views.values();
     }
 
     /**
