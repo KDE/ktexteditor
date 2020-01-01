@@ -1222,6 +1222,11 @@ public:
         return value(ShowLineCount).toBool();
     }
 
+    void setShowLineCount(bool on)
+    {
+        setValue(ShowLineCount, on);
+    }
+
     bool autoBrackets() const
     {
         return value(AutoBrackets).toBool();

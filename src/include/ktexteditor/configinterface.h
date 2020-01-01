@@ -86,6 +86,7 @@ namespace KTextEditor
  *  - current-line-number-color [QColor] read/set current line number color (in the icon border)
  *  - modification-markers [bool] read/set whether the modification markers are shown
  *  - word-count [bool] enable/disable the counting of words and characters in the statusbar
+ *  - line-count [bool] show/hide the total number of lines in the status bar (@since 5.66)
  *  - scrollbar-minimap [bool] enable/disable scrollbar minimap
  *  - scrollbar-preview [bool] enable/disable scrollbar text preview on hover
  *  - font [QFont] change the font

@@ -167,6 +167,11 @@ void KateConfigInterfaceTest::testView()
     iface->setConfigValue(QLatin1String("word-count"), false);
     QCOMPARE(iface->configValue(QLatin1String("word-count")).toBool(), false);
 
+    iface->setConfigValue(QLatin1String("line-count"), true);
+    QCOMPARE(iface->configValue(QLatin1String("line-count")).toBool(), true);
+    iface->setConfigValue(QLatin1String("line-count"), false);
+    QCOMPARE(iface->configValue(QLatin1String("line-count")).toBool(), false);
+
     iface->setConfigValue(QLatin1String("scrollbar-minimap"), true);
     QCOMPARE(iface->configValue(QLatin1String("scrollbar-minimap")).toBool(), true);
     iface->setConfigValue(QLatin1String("scrollbar-minimap"), false);
