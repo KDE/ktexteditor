@@ -114,7 +114,11 @@ void KateViewTest::testReloadMultipleViews()
     for (int i = 0; i < 200; ++i) {
         stream << line;
     }
+#if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
     stream << flush;
+#else
+    stream << Qt::flush;
+#endif
     file.close();
 
     KTextEditor::DocumentPrivate doc;
@@ -194,7 +198,11 @@ void KateViewTest::testSelection()
     stream << "A\n"
            << "B\n"
            << "C";
+#if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
     stream << flush;
+#else
+    stream << Qt::flush;
+#endif
     file.close();
 
     KTextEditor::DocumentPrivate doc;

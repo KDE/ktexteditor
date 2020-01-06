@@ -38,8 +38,9 @@
 #include <QProcess>
 #include <QTest>
 
-#include "testutils.h"
+#include <iostream>
 
+#include "testutils.h"
 #include "script_test_base.h"
 
 const QString testDataPath(QLatin1String(TEST_DATA_DIR));
@@ -157,7 +158,7 @@ void ScriptTestBase::runTest(const ExpectedFailures &failures)
         }
 
         if (diff.exitCode() != EXIT_SUCCESS) {
-            QTextStream(stdout) << out << endl;
+            std::cout << qPrintable(out) << std::endl;
         }
 
         for (const Failure &failure : failures) {

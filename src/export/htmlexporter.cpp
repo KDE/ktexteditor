@@ -33,42 +33,44 @@ HTMLExporter::HTMLExporter(KTextEditor::View *view, QTextStream &output, const b
 {
     if (m_encapsulate) {
         // let's write the HTML header :
-        m_output << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl;
-        m_output << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"DTD/xhtml1-strict.dtd\">" << endl;
-        m_output << "<html xmlns=\"http://www.w3.org/1999/xhtml\">" << endl;
-        m_output << "<head>" << endl;
-        m_output << "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />" << endl;
-        m_output << "<meta name=\"Generator\" content=\"Kate, the KDE Advanced Text Editor\" />" << endl;
+        m_output << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        m_output << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"DTD/xhtml1-strict.dtd\">\n";
+        m_output << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n";
+        m_output << "<head>\n";
+        m_output << "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n";
+        m_output << "<meta name=\"Generator\" content=\"Kate, the KDE Advanced Text Editor\" />\n";
         // for the title, we write the name of the file (/usr/local/emmanuel/myfile.cpp -> myfile.cpp)
-        m_output << "<title>" << view->document()->documentName() << "</title>" << endl;
-        m_output << "</head>" << endl;
+        m_output << "<title>" << view->document()->documentName() << "</title>\n";
+        m_output << "</head>\n";
 
         // tell in comment which highlighting was used!
-        m_output << "<!-- Highlighting: \"" << view->document()->highlightingMode() << "\" -->" << endl;
+        m_output << "<!-- Highlighting: \"" << view->document()->highlightingMode() << "\" -->\n";
 
-        m_output << "<body>" << endl;
+        m_output << "<body>\n";
     }
 
     if (!m_defaultAttribute) {
-        m_output << "<pre>" << endl;
+        m_output << "<pre>\n";
     } else {
         m_output << QStringLiteral("<pre style='%1%2%3%4'>")
                         .arg(m_defaultAttribute->fontBold() ? QStringLiteral("font-weight:bold;") : QString())
                         .arg(m_defaultAttribute->fontItalic() ? QStringLiteral("font-style:italic;") : QString())
                         .arg(QLatin1String("color:") + m_defaultAttribute->foreground().color().name() + QLatin1Char(';'))
                         .arg(QLatin1String("background-color:") + m_defaultAttribute->background().color().name() + QLatin1Char(';'))
-                 << endl;
+                 << '\n';
     }
+    m_output.flush();
 }
 
 HTMLExporter::~HTMLExporter()
 {
-    m_output << "</pre>" << endl;
+    m_output << "</pre>\n";
 
     if (m_encapsulate) {
-        m_output << "</body>" << endl;
-        m_output << "</html>" << endl;
+        m_output << "</body>\n";
+        m_output << "</html>\n";
     }
+    m_output.flush();
 }
 
 void HTMLExporter::openLine()
@@ -80,6 +82,7 @@ void HTMLExporter::closeLine(const bool lastLine)
     if (!lastLine) {
         // we are inside a <pre>, so a \n is a new line
         m_output << "\n";
+        m_output.flush();
     }
 }
 
@@ -117,4 +120,5 @@ void HTMLExporter::exportText(const QString &text, const KTextEditor::Attribute:
     if (attrib->fontBold()) {
         m_output << "</b>";
     }
+    m_output.flush();
 }

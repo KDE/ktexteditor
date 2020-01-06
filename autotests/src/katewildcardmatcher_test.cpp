@@ -55,6 +55,6 @@ int main()
 
     Q_ASSERT(testCase("aXXbXXbYYaYc", "a*b*c"));
 
-    qDebug() << endl << "DONE";
+    qDebug() << "\nDONE";
     return 0;
 }
