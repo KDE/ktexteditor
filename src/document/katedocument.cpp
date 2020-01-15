@@ -6040,22 +6040,22 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
         message->addAction(closeAction);
     }
 
-    // make sure the message is registered even if no actions and no views exist
-    m_messageHash[message] = QList<QSharedPointer<QAction>>();
-
     // reparent actions, as we want full control over when they are deleted
+    QList<QSharedPointer<QAction>> managedMessageActions;
     const auto messageActions = message->actions();
+    managedMessageActions.reserve(messageActions.size());
     for (QAction *action : messageActions) {
         action->setParent(nullptr);
-        m_messageHash[message].append(QSharedPointer<QAction>(action));
+        managedMessageActions.append(QSharedPointer<QAction>(action));
     }
+    m_messageHash.insert(message, managedMessageActions);
 
     // post message to requested view, or to all views
     if (KTextEditor::ViewPrivate *view = qobject_cast<KTextEditor::ViewPrivate *>(message->view())) {
-        view->postMessage(message, m_messageHash[message]);
+        view->postMessage(message, managedMessageActions);
     } else {
         for (auto view : qAsConst(m_views)) {
-            view->postMessage(message, m_messageHash[message]);
+            view->postMessage(message, managedMessageActions);
         }
     }
 
