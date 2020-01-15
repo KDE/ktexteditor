@@ -6060,7 +6060,8 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     }
 
     // also catch if the user manually calls delete message
-    connect(message, SIGNAL(closed(KTextEditor::Message *)), SLOT(messageDestroyed(KTextEditor::Message *)));
+    connect(message, &Message::closed,
+            this, &DocumentPrivate::messageDestroyed);
 
     return true;
 }
