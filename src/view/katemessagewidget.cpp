@@ -53,9 +53,6 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
     // tell the widget to always use the minimum size.
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
 
-    // install event filter so we catch the end of the hide animation
-    m_messageWidget->installEventFilter(this);
-
     // by default, hide widgets
     m_messageWidget->hide();
     hide();
