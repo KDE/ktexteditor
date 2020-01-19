@@ -341,11 +341,11 @@ void MessageTest::testHideView()
     // hide view
     view->hide();
 
-    // wait 1s, message should be null (after total of 2100 ms)
-    QTest::qWait(1000);
+    // wait 1s, message should be null (after total of 2200 ms)
+    QTest::qWait(1100);
     QVERIFY(message.data() == nullptr);
 
-    // show view again, message contents should be fading for the lasting 400 ms
+    // show view again, message contents should be fading for the lasting 300 ms
     view->show();
     QVERIFY(view->messageWidget()->isVisible());
     QCOMPARE(view->messageWidget()->text(), QString("Message text"));
