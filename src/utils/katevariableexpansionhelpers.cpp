@@ -51,7 +51,6 @@ static int findClosing(QStringView str, int pos = 0)
     int nesting = 0;
 
     while (pos < len) {
-        ++pos;
         const QChar c = str[pos];
         if (c == QLatin1Char('}')) {
             if (nesting == 0) {
@@ -61,6 +60,7 @@ static int findClosing(QStringView str, int pos = 0)
         } else if (c == QLatin1Char('{')) {
             nesting++;
         }
+        ++pos;
     }
     return -1;
 }

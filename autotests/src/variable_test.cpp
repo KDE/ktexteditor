@@ -174,6 +174,16 @@ void VariableTest::testBuiltins()
 
     QString out;
 
+    // Test invalid ones:
+    editor->expandText(QStringLiteral("%{}"), view, out);
+    QCOMPARE(out, QStringLiteral("%{}"));
+    editor->expandText(QStringLiteral("%{"), view, out);
+    QCOMPARE(out, QStringLiteral("%{"));
+    editor->expandText(QStringLiteral("%{{}"), view, out);
+    QCOMPARE(out, QStringLiteral("%{{}"));
+    editor->expandText(QStringLiteral("%{{}}"), view, out);
+    QCOMPARE(out, QStringLiteral("%{{}}"));
+
     // Document:FileBaseName
     editor->expandText(QStringLiteral("%{Document:FileBaseName}"), view, out);
     QCOMPARE(out, QStringLiteral("kate-v5"));
