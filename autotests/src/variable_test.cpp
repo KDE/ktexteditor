@@ -294,6 +294,10 @@ void VariableTest::testBuiltins()
     editor->expandText(QStringLiteral("%{JS:3 + %{JS:2 + 1}}"), view, out);
     QCOMPARE(out, QStringLiteral("6"));
 
+    // PercentEncoded: since 5.67
+    editor->expandText(QStringLiteral("%{PercentEncoded:{a&b+c=d} \"}"), view, out);
+    QCOMPARE(out, QStringLiteral("%7Ba%26b%2Bc%3Dd%7D%20%22"));
+
     // UUID
     editor->expandText(QStringLiteral("%{UUID}"), view, out);
     QCOMPARE(out.count(QLatin1Char('-')), 4);
