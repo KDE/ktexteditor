@@ -159,11 +159,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     m_aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
-    /**
-     * set the new Kate mascot
-     */
-    m_aboutData.setProgramLogo(QImage(QStringLiteral(":/ktexteditor/mascot.png")));
-
     //
     // dir watch
     //

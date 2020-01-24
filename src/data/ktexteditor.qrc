@@ -8,7 +8,4 @@
     <qresource prefix="/kxmlgui5/katepart">
         <file>katepart5ui.rc</file>
     </qresource>
-    <qresource prefix="/ktexteditor">
-        <file>mascot.png</file>
-    </qresource>
 </RCC>

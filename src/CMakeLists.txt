@@ -249,7 +249,6 @@ spellcheck/spellcheckbar.ui
 dialogs/spellcheckconfigwidget.ui
 schema/howtoimportschema.ui )
 
-# add the resource files, the one with mascot + ui file and the generated ones
 qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
 
 if (BUILD_VIMODE)
