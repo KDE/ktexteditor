@@ -159,6 +159,11 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     m_aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
+    /**
+     * set proper Kate icon for our about dialog
+     */
+    m_aboutData.setProgramLogo(QIcon(QStringLiteral(":/ktexteditor/kate.svg")));
+
     //
     // dir watch
     //
