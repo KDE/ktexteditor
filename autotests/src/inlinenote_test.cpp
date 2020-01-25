@@ -81,37 +81,44 @@ public:
             painter.drawEllipse(1, 1, note.width() - 2, note.lineHeight() - 2);
         } else if (note.position().column() == 10) {
             painter.setPen(Qt::darkRed);
-            painter.setBrush(Qt::red);
+            if (note.underMouse()) {
+                painter.setBrush(Qt::red);
+            }
+            else {
+                painter.setBrush(Qt::yellow);
+            }
             painter.drawRoundedRect(1, 1, note.width() - 2, note.lineHeight() - 2, 2, 2);
         }
     }
 
     void inlineNoteActivated(const InlineNote &note, Qt::MouseButtons buttons, const QPoint &globalPos) override
     {
-        Q_UNUSED(note)
         Q_UNUSED(buttons)
         Q_UNUSED(globalPos)
         ++noteActivatedCount;
+        lastUnderMouse = note.underMouse();
     }
 
     void inlineNoteFocusInEvent(const InlineNote &note, const QPoint &globalPos) override
     {
-        Q_UNUSED(note)
         Q_UNUSED(globalPos)
         ++focusInCount;
+        lastUnderMouse = note.underMouse();
+
     }
 
     void inlineNoteFocusOutEvent(const InlineNote &note) override
     {
-        Q_UNUSED(note)
         ++focusOutCount;
+        // Here it should not be under the mosu
+        lastUnderMouse = note.underMouse();
     }
 
     void inlineNoteMouseMoveEvent(const InlineNote &note, const QPoint &globalPos) override
     {
-        Q_UNUSED(note)
         Q_UNUSED(globalPos)
         ++mouseMoveCount;
+        lastUnderMouse = note.underMouse();
     }
 
 public:
@@ -119,6 +126,7 @@ public:
     int focusInCount = 0;
     int focusOutCount = 0;
     int mouseMoveCount = 0;
+    bool lastUnderMouse = false;
 };
 }
 
@@ -180,6 +188,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.focusInCount, 0);
     QCOMPARE(noteProvider.focusOutCount, 0);
     QCOMPARE(noteProvider.mouseMoveCount, 0);
+    QVERIFY(noteProvider.lastUnderMouse == false);
 
     // move mouse onto first note
     auto internalView = findViewInternal(&view);
@@ -192,6 +201,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.focusOutCount, 0);
     QCOMPARE(noteProvider.mouseMoveCount, 0);
     QCOMPARE(noteProvider.noteActivatedCount, 0);
+    QVERIFY(noteProvider.lastUnderMouse);
 
     // move one pixel
     QTest::mouseMove(&view, coordCol05 + QPoint(xWidth / 2 + 1, 1));
@@ -200,6 +210,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.focusOutCount, 0);
     QCOMPARE(noteProvider.mouseMoveCount, 1);
     QCOMPARE(noteProvider.noteActivatedCount, 0);
+    QVERIFY(noteProvider.lastUnderMouse);
 
     // activate
     QTest::mousePress(internalView, Qt::LeftButton, Qt::NoModifier, internalView->mapFromGlobal(view.mapToGlobal(coordCol05 + QPoint(xWidth / 2 + 1, 1))));
@@ -209,6 +220,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.focusOutCount, 0);
     QCOMPARE(noteProvider.mouseMoveCount, 1);
     QCOMPARE(noteProvider.noteActivatedCount, 1);
+    QVERIFY(noteProvider.lastUnderMouse);
 
     // focus out
     QTest::mouseMove(&view, coordCol04 + QPoint(0, 1));
@@ -218,6 +230,7 @@ void InlineNoteTest::testInlineNote()
     QCOMPARE(noteProvider.focusOutCount, 1);
     QCOMPARE(noteProvider.mouseMoveCount, 1);
     QCOMPARE(noteProvider.noteActivatedCount, 1);
+    QVERIFY(noteProvider.lastUnderMouse == false);
 
     iface->unregisterInlineNoteProvider(&noteProvider);
 }

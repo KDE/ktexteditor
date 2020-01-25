@@ -2847,23 +2847,29 @@ void KateViewInternal::mouseMoveEvent(QMouseEvent *e)
     }
 
     if (e->buttons() == Qt::NoButton) {
-        const auto noteData = inlineNoteAt(e->globalPos());
-        const KTextEditor::InlineNote note(noteData);
-        const KTextEditor::InlineNote activeNote(m_activeInlineNote);
-        if (note.position().isValid()) {
-            if (!activeNote.position().isValid()) {
+        auto noteData = inlineNoteAt(e->globalPos());
+        auto focusChanged = false;
+        if (noteData.m_position.isValid()) {
+            if (!m_activeInlineNote.m_position.isValid()) {
                 // no active note -- focus in
-                note.provider()->inlineNoteFocusInEvent(note, e->globalPos());
+                tagLine(noteData.m_position);
+                focusChanged = true;
+                noteData.m_underMouse = true;
+                noteData.m_provider->inlineNoteFocusInEvent(KTextEditor::InlineNote(noteData), e->globalPos());
                 m_activeInlineNote = noteData;
             } else {
-                note.provider()->inlineNoteMouseMoveEvent(note, e->globalPos());
+                noteData.m_provider->inlineNoteMouseMoveEvent(KTextEditor::InlineNote(noteData), e->globalPos());
             }
-            // the note might change its appearance in result to the event
-            tagLines(note.position(), note.position(), true);
-        } else if (activeNote.position().isValid()) {
-            activeNote.provider()->inlineNoteFocusOutEvent(activeNote);
-            tagLines(activeNote.position(), activeNote.position(), true);
+        } else if (m_activeInlineNote.m_position.isValid()) {
+            tagLine(m_activeInlineNote.m_position);
+            focusChanged = true;
+            m_activeInlineNote.m_underMouse = false;
+            m_activeInlineNote.m_provider->inlineNoteFocusOutEvent(KTextEditor::InlineNote(m_activeInlineNote));
             m_activeInlineNote = {};
+        }
+        if (focusChanged) {
+            // the note might change its appearance in reaction to the focus event
+            updateDirty();
         }
     }
 
