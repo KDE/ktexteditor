@@ -3238,7 +3238,7 @@ void KateViewInternal::doDrag()
     QMimeData *mimeData = new QMimeData();
     mimeData->setText(view()->selectionText());
     m_dragInfo.dragObject->setMimeData(mimeData);
-    m_dragInfo.dragObject->exec(Qt::MoveAction);
+    m_dragInfo.dragObject->exec(Qt::MoveAction | Qt::CopyAction);
 }
 
 void KateViewInternal::dragEnterEvent(QDragEnterEvent *event)
