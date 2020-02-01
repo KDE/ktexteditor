@@ -25,8 +25,8 @@
 #include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katehighlight.h"
 #include "katepartdebug.h"
+#include "katedefaultcolors.h"
 #include "kateview.h"
 
 #include <ktexteditor/movingrange.h>
@@ -211,7 +211,6 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
     QSet<QString> result;
     const int minWordSize = qMax(2, qobject_cast<KTextEditor::ViewPrivate *>(view)->config()->wordCompletionMinimalWordLength());
     const int lines = view->document()->lines();
-    KateHighlighting *h = qobject_cast<KTextEditor::ViewPrivate *>(view)->doc()->highlight();
     for (int line = 0; line < lines; line++) {
         const QString &text = view->document()->line(line);
         int wordBegin = 0;
@@ -221,7 +220,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
         while (offset < end) {
             const QChar c = text.at(offset);
             // increment offset when at line end, so we take the last character too
-            if (!h->isInWord(c) || (offset == end - 1 && offset++)) {
+            if ((! c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
                 if (offset - wordBegin > minWordSize && (line != range.end().line() || offset != range.end().column())) {
                     /**
                      * don't add the word we are inside with cursor!
@@ -244,13 +243,14 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
 void KateWordCompletionModel::executeCompletionItem(KTextEditor::View *view, const KTextEditor::Range &word, const QModelIndex &index) const
 {
     KTextEditor::ViewPrivate *v = qobject_cast<KTextEditor::ViewPrivate *>(view);
-    KateHighlighting *h = v->doc()->highlight();
     if (v->config()->wordCompletionRemoveTail()) {
         int tailStart = word.end().column();
         const QString &line = view->document()->line(word.end().line());
         int tailEnd = line.length();
         for (int i = word.end().column(); i < tailEnd; ++i) {
-            if (!h->isInWord(line[i])) {
+            // Letters, numbers and underscore are part of a word!
+            /// \todo Introduce configurable \e word-separators??
+            if (!line[i].isLetterOrNumber() && line[i] != QLatin1Char('_')) {
                 tailEnd = i;
             }
         }
@@ -290,10 +290,9 @@ KTextEditor::Range KateWordCompletionModel::completionRange(KTextEditor::View *v
     int col = position.column();
 
     KTextEditor::Document *doc = view->document();
-    KateHighlighting *h = qobject_cast<KTextEditor::ViewPrivate *>(view)->doc()->highlight();
     while (col > 0) {
         const QChar c = (doc->characterAt(KTextEditor::Cursor(line, col - 1)));
-        if (h->isInWord(c)) {
+        if (c.isLetterOrNumber() || c.isMark() || c == QLatin1Char('_')) {
             col--;
             continue;
         }
