@@ -1,6 +1,6 @@
 /*  SPDX-License-Identifier: LGPL-2.0-or-later
 
-    Copyright (C) 2019 Nibaldo González S. <nibgonz@gmail.com>
+    Copyright (C) 2019-2020 Nibaldo González S. <nibgonz@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -215,7 +215,7 @@ private:
      * Define the size of the list widget, in pixels. The @p width is also
      * applied to the search bar. This does not recalculate the word wrap in items.
      */
-    inline void setSizeList(const int height, const int width = 260);
+    inline void setSizeList(const int height, const int width = 266);
 
     /**
      * Load the data model with the syntax highlighting definitions to show in the list.
@@ -298,7 +298,6 @@ private:
     int m_iconSize = 16;
 
     int m_defaultHeightItemSection;
-    static const int m_scrollbarMargin = 2;
 
     QPointer<KTextEditor::DocumentPrivate> m_doc;
 
@@ -337,7 +336,7 @@ public:
      * Define the size of the widget list.
      * @p height and @p width are values in pixels.
      */
-    void setSizeList(const int height, const int width = 260);
+    void setSizeList(const int height, const int width = 266);
 
     /**
      * Get the width of the list, in pixels.

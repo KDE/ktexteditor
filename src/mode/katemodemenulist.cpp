@@ -1,6 +1,6 @@
 /*  SPDX-License-Identifier: LGPL-2.0-or-later
 
-    Copyright (C) 2019 Nibaldo González S. <nibgonz@gmail.com>
+    Copyright (C) 2019-2020 Nibaldo González S. <nibgonz@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -50,16 +50,14 @@ static bool isDelimiter(const ushort c)
 
 /**
  * Overlay scroll bar on the list according to the operating system
- * and/or the desktop environment. In old desktop themes the scroll bar
+ * and/or the desktop environment. In some desktop themes the scroll bar
  * isn't transparent, so it's better not to overlap it on the list.
+ * NOTE: Currently, in the Breeze theme, the scroll bar does not overlap
+ * the content. See: https://phabricator.kde.org/T9126
  */
-static bool overlapScrollBar()
+inline static bool overlapScrollBar()
 {
-#if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
     return false;
-#else
-    return true;
-#endif
 }
 }
 
@@ -87,7 +85,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
      * Calculate the size of the list and the checkbox icon (in pixels) according
      * to the font size. From font 12pt to 26pt increase the list size.
      */
-    int menuWidth = 260;
+    int menuWidth = 266;
     int menuHeight = 428;
     const int fontSize = font.pointSize();
     if (fontSize >= 12) {
@@ -174,7 +172,7 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
     if (overlapScrollBar()) {
         QHBoxLayout *layoutScrollBar = new QHBoxLayout();
         layoutScrollBar->addWidget(m_scroll);
-        layoutScrollBar->setContentsMargins(1, m_scrollbarMargin, m_scrollbarMargin, m_scrollbarMargin);
+        layoutScrollBar->setContentsMargins(1, 2, 2, 2); // ScrollBar Margin = 2, Also see: KateModeMenuListData::ListView::getContentWidth()
         m_layoutList->addLayout(layoutScrollBar, 0, 0, Qt::AlignRight);
     }
 
@@ -252,7 +250,7 @@ void KateModeMenuList::loadHighlightingModel()
      * a custom word wrap and prevent the item's text from passing under the scroll bar.
      * NOTE: 8 = Icon margin
      */
-    const int maxWidthText = m_list->getContentWidth(1, 4) - m_iconSize - 8;
+    const int maxWidthText = m_list->getContentWidth(1, 8) - m_iconSize - 8;
 
     // Transparent color used as background in the sections.
     QPixmap transparentPixmap = QPixmap(m_iconSize / 2, m_iconSize / 2);
@@ -285,9 +283,16 @@ void KateModeMenuList::loadHighlightingModel()
 
         // Create item in the list with the language name.
         KateModeMenuListData::ListItem *item = KateModeMenuListData::Factory::createListItem();
+        /*
+         * NOTE:
+         *  - (If the scroll bar is not overlapped) In QListView::setWordWrap(),
+         *    when the scroll bar is hidden, the word wrap changes, but the size
+         *    of the items is keeped, causing display problems in some items.
+         *    KateModeMenuList::setWordWrap() applies a fixed word wrap.
+         *  - Search names generated in: KateModeMenuListData::SearchLine::updateSearch()
+         */
         item->setText(setWordWrap(hl->nameTranslated(), maxWidthText, m_list->fontMetrics()));
         item->setMode(hl);
-        // NOTE: Search names generated in: KateModeMenuListData::SearchLine::updateSearch()
 
         item->setIcon(m_emptyIcon);
         item->setEditable(false);
@@ -363,7 +368,7 @@ KateModeMenuListData::ListItem *KateModeMenuList::createSectionList(const QStrin
     m_list->selectionModel()->select(section->index(), QItemSelectionModel::Deselect);
 
     // Apply word wrap in sections, for long labels.
-    const int containerTextWidth = m_list->getContentWidth(1, 2);
+    const int containerTextWidth = m_list->getContentWidth(2, 4);
     int heightSectionMargin = m_list->visualRect(m_model->index(section->row(), 0)).height() - label->sizeHint().height();
 
     if (label->sizeHint().width() > containerTextWidth) {
@@ -691,7 +696,7 @@ int KateModeMenuListData::ListView::getWidth() const
 int KateModeMenuListData::ListView::getContentWidth(const int overlayScrollbarMargin, const int classicScrollbarMargin) const
 {
     if (overlapScrollBar()) {
-        return getWidth() - m_parentMenu->m_scroll->sizeHint().width() - m_parentMenu->m_scrollbarMargin - overlayScrollbarMargin;
+        return getWidth() - m_parentMenu->m_scroll->sizeHint().width() - 2 - overlayScrollbarMargin; // ScrollBar Margin = 2
     }
     return getWidth() - verticalScrollBar()->sizeHint().width() - classicScrollbarMargin;
 }
@@ -1104,7 +1109,7 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
         if (heightSectionMargin < 2) {
             heightSectionMargin = 2;
         }
-        int maxWidthText = listView->getContentWidth(0, 1);
+        int maxWidthText = listView->getContentWidth(1, 3);
         // NOTE: labelSection->sizeHint().width() == labelSection->indent() + labelSection->fontMetrics().horizontalAdvance(labelSection->text())
         const bool bSectionMultiline = labelSection->sizeHint().width() > maxWidthText;
         maxWidthText -= labelSection->indent();
