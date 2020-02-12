@@ -21,3 +21,4 @@ random_seed
 CMakeLists.txt.user*
 *.unc-backup*
 .clang-format
+.cmake/
