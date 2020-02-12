@@ -956,6 +956,7 @@ public:
         DefaultMarkType,
         DynWordWrapAlignIndent,
         DynWordWrapIndicators,
+        DynWrapAnywhere,
         DynWrapAtStaticMarker,
         DynamicWordWrap,
         FoldFirstLine,
@@ -1011,6 +1012,10 @@ public:
     void setDynWordWrap(bool on)
     {
         setValue(DynamicWordWrap, on);
+    }
+    bool dynWrapAnywhere() const
+    {
+        return value(DynWrapAnywhere).toBool();
     }
 
     bool dynWrapAtStaticMarker() const

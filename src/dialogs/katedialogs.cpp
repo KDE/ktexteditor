@@ -703,6 +703,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     reload();
 
     observeChanges(textareaUi->chkAnimateBracketMatching);
+    observeChanges(textareaUi->chkDynWrapAnywhere);
     observeChanges(textareaUi->chkDynWrapAtStaticMarker);
     observeChanges(textareaUi->chkFoldFirstLine);
     observeChanges(textareaUi->chkShowIndentationLines);
@@ -762,6 +763,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setValue(KateViewConfig::BookmarkSorting, bordersUi->rbSortBookmarksByPosition->isChecked() ? 0 : 1);
     KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapAlignIndent, textareaUi->sbDynamicWordWrapDepth->value());
     KateViewConfig::global()->setValue(KateViewConfig::DynWordWrapIndicators, textareaUi->cmbDynamicWordWrapIndicator->currentIndex());
+    KateViewConfig::global()->setValue(KateViewConfig::DynWrapAnywhere, textareaUi->chkDynWrapAnywhere->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ScrollBarMiniMapWidth, bordersUi->spBoxMiniMapWidth->value());
@@ -798,6 +800,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
 
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
+    textareaUi->chkDynWrapAnywhere->setChecked(KateViewConfig::global()->dynWrapAnywhere());
     textareaUi->chkDynWrapAtStaticMarker->setChecked(KateViewConfig::global()->dynWrapAtStaticMarker());
     textareaUi->chkFoldFirstLine->setChecked(KateViewConfig::global()->foldFirstLine());
     textareaUi->chkShowIndentationLines->setChecked(KateRendererConfig::global()->showIndentationLines());

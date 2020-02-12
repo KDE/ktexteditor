@@ -529,6 +529,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(DefaultMarkType, "Default Mark Type", QStringLiteral("default-mark-type"), KTextEditor::MarkInterface::markType01, [](const QVariant &value) { return isPositive(value); }));
     addConfigEntry(ConfigEntry(DynWordWrapAlignIndent, "Dynamic Word Wrap Align Indent", QString(), 80, [](const QVariant &value) { return inBounds(1, value, 100); }));
     addConfigEntry(ConfigEntry(DynWordWrapIndicators, "Dynamic Word Wrap Indicators", QString(), 1, [](const QVariant &value) { return inBounds(1, value, 3); }));
+    addConfigEntry(ConfigEntry(DynWrapAnywhere, "Dynamic Wrap not at word boundaries", QStringLiteral("dynamic-word-wrap-anywhere"), false));
     addConfigEntry(ConfigEntry(DynWrapAtStaticMarker, "Dynamic Word Wrap At Static Marker", QString(), false));
     addConfigEntry(ConfigEntry(DynamicWordWrap, "Dynamic Word Wrap", QStringLiteral("dynamic-word-wrap"), true));
     addConfigEntry(ConfigEntry(FoldFirstLine, "Fold First Line", QString(), false));

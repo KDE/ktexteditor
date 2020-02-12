@@ -31,6 +31,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="chkDynWrapAnywhere">
+        <property name="text">
+         <string>Disregard word boundaries for dynamic wrapping</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
         <property name="spacing">
          <number>0</number>
@@ -55,7 +62,7 @@
             <item>
              <widget class="QLabel" name="lblDynamicWordWrapIndicators">
               <property name="text">
-               <string>Dynamic word wrap &amp;indicators (if applicable):</string>
+               <string>D&amp;ynamic word wrap indicators (if applicable):</string>
               </property>
               <property name="buddy">
                <cstring>cmbDynamicWordWrapIndicator</cstring>
