@@ -227,7 +227,14 @@ if(EditorConfig_FOUND)
     set(ktexteditor_LIB_SRCS ${ktexteditor_LIB_SRCS} document/editorconfig.cpp)
 endif()
 
-ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS HEADER katepartdebug.h IDENTIFIER LOG_KTE CATEGORY_NAME org.kde.ktexteditor DEFAULT_SEVERITY Warning)
+ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS
+    HEADER katepartdebug.h
+    IDENTIFIER LOG_KTE
+    CATEGORY_NAME org.kde.ktexteditor
+    DEFAULT_SEVERITY Warning
+    DESCRIPTION "ktexteditor lib"
+    EXPORT KTEXTEDITOR
+)
 
 
 ki18n_wrap_ui(ktexteditor_LIB_SRCS
@@ -377,3 +384,9 @@ kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktextedi
 
 # add part
 add_subdirectory(part)
+
+ecm_qt_install_logging_categories(
+    EXPORT KTEXTEDITOR
+    FILE ktexteditor.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
