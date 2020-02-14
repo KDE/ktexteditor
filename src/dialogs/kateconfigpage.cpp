@@ -66,7 +66,11 @@ void KateConfigPage::observeChanges(QAbstractSpinBox *spinBox)
 
 void KateConfigPage::observeChanges(QComboBox *comboBox)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateConfigPage::slotChanged);
+#else
+    connect(comboBox, QOverload<int, const QString &>::of(&QComboBox::currentIndexChanged), this, &KateConfigPage::slotChanged);
+#endif
 }
 
 void KateConfigPage::observeChanges(QGroupBox *groupBox)
