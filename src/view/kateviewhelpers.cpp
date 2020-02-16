@@ -2632,7 +2632,7 @@ void KateIconBorder::displayRangeChanged()
 // END KateIconBorder
 
 // BEGIN KateViewEncodingAction
-// According to http://www.iana.org/assignments/ianacharset-mib
+// According to https://www.iana.org/assignments/ianacharset-mib/ianacharset-mib
 // the default/unknown mib value is 2.
 #define MIB_DEFAULT 2
 

@@ -115,7 +115,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     //
     m_aboutData.addAuthor(i18n("Christoph Cullmann"), i18n("Maintainer"), QStringLiteral("cullmann@kde.org"), QStringLiteral("https://cullmann.io"));
     m_aboutData.addAuthor(i18n("Dominik Haumann"), i18n("Core Developer"), QStringLiteral("dhaumann@kde.org"));
-    m_aboutData.addAuthor(i18n("Milian Wolff"), i18n("Core Developer"), QStringLiteral("mail@milianw.de"), QStringLiteral("http://milianw.de"));
+    m_aboutData.addAuthor(i18n("Milian Wolff"), i18n("Core Developer"), QStringLiteral("mail@milianw.de"), QStringLiteral("https://milianw.de/"));
     m_aboutData.addAuthor(i18n("Joseph Wenninger"), i18n("Core Developer"), QStringLiteral("jowenn@kde.org"), QStringLiteral("http://stud3.tuwien.ac.at/~e9925371"));
     m_aboutData.addAuthor(i18n("Erlend Hamberg"), i18n("Vi Input Mode"), QStringLiteral("ehamberg@gmail.com"), QStringLiteral("https://hamberg.no/erlend"));
     m_aboutData.addAuthor(i18n("Bernhard Beschow"), i18n("Developer"), QStringLiteral("bbeschow@cs.tu-berlin.de"), QStringLiteral("https://user.cs.tu-berlin.de/~bbeschow"));

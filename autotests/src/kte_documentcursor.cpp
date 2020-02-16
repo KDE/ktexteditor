@@ -292,7 +292,7 @@ void DocumentCursorTest::testValidTextPosition()
 
     // 0xfffe: byte-order-mark (BOM)
     // 0x002d: '-'
-    // 0x3dd8, 0x38de: an utf32-surrogate, see http://www.fileformat.info/info/unicode/char/1f638/browsertest.htm
+    // 0x3dd8, 0x38de: an utf32-surrogate, see https://www.fileformat.info/info/unicode/char/1f638/browsertest.htm
     const unsigned short line0[] = {0xfffe, 0x2d00, 0x3dd8, 0x38de, 0x2d00}; // -xx- where xx is one utf32 char
     const unsigned short line1[] = {0xfffe, 0x2d00, 0x3dd8, 0x2d00, 0x2d00}; // -x-- where x is a high surrogate (broken utf32)
     const unsigned short line2[] = {0xfffe, 0x2d00, 0x2d00, 0x38de, 0x2d00}; // --x- where x is a low surrogate (broken utf32)

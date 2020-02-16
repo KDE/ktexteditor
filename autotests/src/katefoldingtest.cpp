@@ -42,7 +42,7 @@ void KateFoldingTest::cleanupTestCase()
 {
 }
 
-// This is a unit test for bug 311866 (http://bugs.kde.org/show_bug.cgi?id=311866)
+// This is a unit test for bug 311866 (https://bugs.kde.org/show_bug.cgi?id=311866)
 // It loads 5 lines of C++ code, places the cursor in line 4, and then folds
 // the code.
 // Expected behavior: the cursor should be moved so it stays visible

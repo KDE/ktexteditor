@@ -53,7 +53,7 @@ if(EditorConfig_INCLUDE_DIRS)
     mark_as_advanced(EditorConfig_LIBRARIES EditorConfig_INCLUDE_DIRS)
     include(FeatureSummary)
     set_package_properties(EditorConfig PROPERTIES
-        URL "http://editorconfig.org/"
+        URL "https://editorconfig.org/"
         DESCRIPTION "EditorConfig editor configuration file support."
     )
 else()

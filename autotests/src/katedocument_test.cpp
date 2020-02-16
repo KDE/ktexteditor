@@ -96,7 +96,7 @@ void KateDocumentTest::initTestCase()
 // KTextEditor::DocumentPrivate::insertText with word wrap enabled. It is checked whether the
 // text is correctly wrapped and whether the moving cursors maintain the correct
 // position.
-// see also: http://bugs.kde.org/show_bug.cgi?id=168534
+// see also: https://bugs.kde.org/show_bug.cgi?id=168534
 void KateDocumentTest::testWordWrap()
 {
     KTextEditor::DocumentPrivate doc(false, false);

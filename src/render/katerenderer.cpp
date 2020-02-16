@@ -1027,7 +1027,7 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
     // Find the first strong character in the string.
     // If it is an RTL character, set the base layout direction of the string to RTL.
     //
-    // See http://www.unicode.org/reports/tr9/#The_Paragraph_Level (Sections P2 & P3).
+    // See https://www.unicode.org/reports/tr9/#The_Paragraph_Level (Sections P2 & P3).
     // Qt's text renderer ("scribe") version 4.2 assumes a "higher-level protocol"
     // (such as KatePart) will specify the paragraph level, so it does not apply P2 & P3
     // by itself. If this ever change in Qt, the next code block could be removed.
