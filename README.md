@@ -20,10 +20,12 @@ IDE.
 As with other KParts, you should use KParts::MainWindow as your main window.
 You can directly request "katepart", as in
 
-    KService::Ptr service = KService::serviceByDesktopPath("katepart");
-    if (service) {
-        m_part = service->createInstance<KParts::ReadWritePart>(0);
-    }
+```cpp
+KService::Ptr service = KService::serviceByDesktopName("katepart");
+if (service) {
+    m_part = service->createInstance<KParts::ReadWritePart>();
+}
+```
 
 See the KParts documentation for more information on using KParts.
 
@@ -31,7 +33,9 @@ See the KParts documentation for more information on using KParts.
 
 If you are using CMake, you need to have
 
-    find_package(KF5TextEditor NO_MODULE)
+```cmake
+find_package(KF5TextEditor)
+```
 
 (or similar) in your CMakeLists.txt file, and you need to link to
 KF5::TextEditor.
@@ -39,15 +43,17 @@ KF5::TextEditor.
 After that, you can use KTextEditor::Editor to create an editor instance, and
 use that to manage KTextEditor::Document instances.
 
-    #include <KTextEditor/Document>
-    #include <KTextEditor/Editor>
-    #include <KTextEditor/View>
+```cpp
+#include <KTextEditor/Document>
+#include <KTextEditor/Editor>
+#include <KTextEditor/View>
 
-    KTextEditor::Editor *editor = KTextEditor::Editor::instance();
-    // create a new document
-    KTextEditor::Document *doc = editor->createDocument(this);
-    // create a widget to display the document
-    KTextEditor::View *view = doc->createView(containerWidget);
+KTextEditor::Editor *editor = KTextEditor::Editor::instance();
+// create a new document
+KTextEditor::Document *doc = editor->createDocument(this);
+// create a widget to display the document
+KTextEditor::View *view = doc->createView(containerWidget);
+```
 
 See the documentation for these classes for more information.
 
@@ -57,6 +63,7 @@ Contributions to KTextEditor shall be licensed under LGPLv2+.
 
 All files shall contain a proper "SPDX-License-Identifier: LGPL-2.0-or-later" identifier inside a header like:
 
+```cpp
 /*  SPDX-License-Identifier: LGPL-2.0-or-later
 
     Copyright (C) 2019 Christoph Cullmann <cullmann@kde.org>
@@ -76,6 +83,7 @@ All files shall contain a proper "SPDX-License-Identifier: LGPL-2.0-or-later" id
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
+```
 
 ## Further Documentation
 
