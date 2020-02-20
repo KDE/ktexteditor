@@ -1426,7 +1426,7 @@ KateIconBorder::KateIconBorder(KateViewInternal *internalView, QWidget *parent)
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     setMouseTracking(true);
     m_doc->setMarkDescription(MarkInterface::markType01, i18n("Bookmark"));
-    m_doc->setMarkPixmap(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")).pixmap(32, 32));
+    m_doc->setMarkIcon(MarkInterface::markType01, QIcon::fromTheme(QStringLiteral("bookmarks")));
 
     connect(m_annotationItemDelegate, &AbstractAnnotationItemDelegate::sizeHintChanged, this, &KateIconBorder::updateAnnotationBorderWidth);
 
@@ -1955,19 +1955,16 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 for (uint bit = 0; bit < 32; bit++) {
                     MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
                     if (mrk & markType) {
-                        QPixmap px_mark(m_doc->markPixmap(markType));
-                        px_mark.setDevicePixelRatio(devicePixelRatioF());
+                        const QIcon markIcon = m_doc->markIcon(markType);
 
-                        if (!px_mark.isNull() && h > 0 && m_iconAreaWidth > 0) {
-                            // scale up to a usable size
-                            const int s = qMin(m_iconAreaWidth * devicePixelRatioF(), h * devicePixelRatioF()) - 2;
-                            px_mark = px_mark.scaled(s, s, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                        if (!markIcon.isNull() && h > 0 && m_iconAreaWidth > 0) {
+                            const int s = qMin(m_iconAreaWidth, static_cast<int>(h)) - 2;
 
                             // center the mark pixmap
-                            int x_px = 0.5 * qMax(m_iconAreaWidth - (s / devicePixelRatioF()), 0.0);
-                            int y_px = 0.5 * qMax(h - (s / devicePixelRatioF()), 0.0);
+                            const int x_px = qMax(m_iconAreaWidth - s, 0) / 2;
+                            const int y_px = qMax(static_cast<int>(h) - s, 0) / 2;
 
-                            p.drawPixmap(lnX + x_px, y + y_px, px_mark);
+                            markIcon.paint(&p, lnX + x_px, y + y_px, s, s);
                         }
                     }
                 }
@@ -2406,7 +2403,7 @@ void KateIconBorder::showMarkMenu(uint line, const QPoint &pos)
 
         QAction *mA;
         QAction *dMA;
-        const QPixmap icon = m_doc->markPixmap(markType);
+        const QIcon icon = m_doc->markIcon(markType);
         if (!m_doc->markDescription(markType).isEmpty()) {
             mA = markMenu.addAction(icon, m_doc->markDescription(markType));
             dMA = selectDefaultMark.addAction(icon, m_doc->markDescription(markType));

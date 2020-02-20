@@ -903,10 +903,10 @@ void KateSearchBar::endFindOrReplaceAll()
 
     // Add ScrollBarMarks
     if (!m_highlightRanges.empty()) {
-        KTextEditor::MarkInterface *iface = qobject_cast<KTextEditor::MarkInterface *>(m_view->document());
+        KTextEditor::MarkInterfaceV2 *iface = qobject_cast<KTextEditor::MarkInterfaceV2 *>(m_view->document());
         if (iface) {
             iface->setMarkDescription(KTextEditor::MarkInterface::SearchMatch, i18n("SearchHighLight"));
-            iface->setMarkPixmap(KTextEditor::MarkInterface::SearchMatch, QIcon().pixmap(0, 0));
+            iface->setMarkIcon(KTextEditor::MarkInterface::SearchMatch, QIcon());
             for (const Range &r : m_highlightRanges) {
                 iface->addMark(r.start().line(), KTextEditor::MarkInterface::SearchMatch);
             }

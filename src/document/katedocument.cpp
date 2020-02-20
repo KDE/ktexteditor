@@ -2187,7 +2187,7 @@ void KTextEditor::DocumentPrivate::clearMarks()
 
 void KTextEditor::DocumentPrivate::setMarkPixmap(MarkInterface::MarkTypes type, const QPixmap &pixmap)
 {
-    m_markPixmaps.insert(type, pixmap);
+    m_markIcons.insert(type, QVariant::fromValue(pixmap));
 }
 
 void KTextEditor::DocumentPrivate::setMarkDescription(MarkInterface::MarkTypes type, const QString &description)
@@ -2197,7 +2197,8 @@ void KTextEditor::DocumentPrivate::setMarkDescription(MarkInterface::MarkTypes t
 
 QPixmap KTextEditor::DocumentPrivate::markPixmap(MarkInterface::MarkTypes type) const
 {
-    return m_markPixmaps.value(type, QPixmap());
+    auto icon = m_markIcons.value(type, QVariant::fromValue(QPixmap()));
+    return (static_cast<QMetaType::Type>(icon.type()) == QMetaType::QIcon) ? icon.value<QIcon>().pixmap(32) : icon.value<QPixmap>();
 }
 
 QColor KTextEditor::DocumentPrivate::markColor(MarkInterface::MarkTypes type) const
@@ -2225,6 +2226,17 @@ uint KTextEditor::DocumentPrivate::editableMarks() const
     return m_editableMarks;
 }
 // END
+
+void KTextEditor::DocumentPrivate::setMarkIcon(MarkInterface::MarkTypes markType, const QIcon &icon)
+{
+    m_markIcons.insert(markType, QVariant::fromValue(icon));
+}
+
+QIcon KTextEditor::DocumentPrivate::markIcon(MarkInterface::MarkTypes markType) const
+{
+    auto icon = m_markIcons.value(markType, QVariant::fromValue(QIcon()));
+    return (static_cast<QMetaType::Type>(icon.type()) == QMetaType::QIcon) ? icon.value<QIcon>() : QIcon(icon.value<QPixmap>());
+}
 
 // BEGIN KTextEditor::PrintInterface stuff
 bool KTextEditor::DocumentPrivate::print()

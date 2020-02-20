@@ -27,6 +27,7 @@
 #include <QHash>
 #include <QObject>
 
+class QIcon;
 class QPixmap;
 class QPoint;
 class QMenu;
@@ -396,8 +397,65 @@ private:
     class MarkInterfacePrivate *const d = nullptr;
 };
 
+/**
+ * \brief Mark extension interface for the Document, version 2
+ *
+ * \ingroup kte_group_doc_extensions
+ *
+ * \section markextv2_intro Introduction
+ *
+ * The MarkInterfaceV2 allows to do the same as MarkInterface
+ * and additionally
+ * - (1) set an icon for a mark type instead of just a pixmap
+ *
+ * \section markextv2_access Accessing the Interface
+ *
+ * The MarkInterfaceV2 is supposed to be an extension interface for a Document,
+ * i.e. the Document inherits the interface \e provided that the
+ * KTextEditor library in use implements the interface. Use qobject_cast to access
+ * the interface:
+ * \code
+ * // doc is of type KTextEditor::Document*
+ * auto iface = qobject_cast<KTextEditor::MarkInterfaceV2*>(doc);
+ *
+ * if (iface) {
+ *     // the implementation supports the interface
+ *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
+ * }
+ * \endcode
+ *
+ * \since 5.69
+ */
+class KTEXTEDITOR_EXPORT MarkInterfaceV2 : public MarkInterface
+{
+    // KF6: Merge KTextEditor::MarkInterfaceV2 into KTextEditor::MarkInterface, drop QPixmap API (kossebau)
+public:
+    virtual ~MarkInterfaceV2()
+    {
+    }
+
+    /**
+     * Set the \p mark's icon to \p icon.
+     * \param markType mark type to which the icon will be attached
+     * \param icon new icon
+     * \see setMarkDescription()
+     */
+    virtual void setMarkIcon(MarkTypes markType, const QIcon &icon) = 0;
+
+    /**
+     * Get the \p mark's icon.
+     * \param markType mark type. If the icon does not exist the resulting is null
+     *        (check with QIcon::isNull()).
+     * \see setMarkDescription()
+     */
+    virtual QIcon markIcon(MarkTypes markType) const = 0;
+};
+
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::MarkInterface, "org.kde.KTextEditor.MarkInterface")
+Q_DECLARE_INTERFACE(KTextEditor::MarkInterfaceV2, "org.kde.KTextEditor.MarkInterfaceV2")
 
 #endif

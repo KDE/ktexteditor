@@ -83,7 +83,7 @@ class KToggleAction;
  *          KTextEditor interfaces.
  */
 class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Document,
-                                                        public KTextEditor::MarkInterface,
+                                                        public KTextEditor::MarkInterfaceV2,
                                                         public KTextEditor::ModificationInterface,
                                                         public KTextEditor::ConfigInterface,
                                                         public KTextEditor::AnnotationInterface,
@@ -92,6 +92,7 @@ class KTEXTEDITOR_EXPORT KTextEditor::DocumentPrivate : public KTextEditor::Docu
 {
     Q_OBJECT
     Q_INTERFACES(KTextEditor::MarkInterface)
+    Q_INTERFACES(KTextEditor::MarkInterfaceV2)
     Q_INTERFACES(KTextEditor::ModificationInterface)
     Q_INTERFACES(KTextEditor::AnnotationInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
@@ -582,9 +583,18 @@ Q_SIGNALS:
 
 private:
     QHash<int, KTextEditor::Mark *> m_marks;
-    QHash<int, QPixmap> m_markPixmaps;
+    QHash<int, QVariant> m_markIcons; // QPixmap or QIcon, KF6: remove QPixmap support
     QHash<int, QString> m_markDescriptions;
     uint m_editableMarks = markType01;
+
+    //
+    // KTextEditor::MarkInterfaceV2
+    //
+public Q_SLOTS:
+    void setMarkIcon(MarkInterface::MarkTypes markType, const QIcon &icon) override;
+
+public:
+    QIcon markIcon(MarkInterface::MarkTypes markType) const override;
 
     // KTextEditor::PrintInterface
     //
