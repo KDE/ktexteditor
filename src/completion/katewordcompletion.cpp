@@ -26,7 +26,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"
-#include "katedefaultcolors.h"
 #include "kateview.h"
 
 #include <ktexteditor/movingrange.h>
