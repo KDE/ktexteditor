@@ -56,6 +56,7 @@ Comment[fi]=Luo C++-kielisen KTextEditor-liitännäisen, jolla voi käsitellä t
 Comment[fr]=Génère un module C++ pour KTextEditor pour appliquer des opérations spéciales sur du texte dans KWrite, Kate, KDevelop etc.
 Comment[gl]=Xera un complemento de KTextEditor en C++ para realizar operacións especiais en texto en KWrite, Kate, KDevelop, etc.
 Comment[hu]=KTextEditor C++ bővítményt generál speciális szövegműveletek elvégzéséhez KWrite-ban, Kate-ben, KDevelopban, stb.
+Comment[ia]=Genera un plugin de KTextEditor C++ per exequer operationes special operations sur texto in KWrite, Kate, KDevelop etc.
 Comment[id]=Menghasilkan sebuah plugin KTextEditor C++ untuk melakukan operasi khusus pada teks dalam KWrite, Kate, KDevelop dll.
 Comment[it]=Genera un'estensione KTextEditor C++ per eseguire particolari operazioni sul testo in KWrite, Kate, KDevelop ecc.
 Comment[ko]=KWrite, Kate, KDevelop 등에서 텍스트에 작업을 수행하는 KTextEditor C++ 플러그인을 만듭니다.
