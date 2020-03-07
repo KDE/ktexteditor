@@ -763,39 +763,6 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
             }
         }
 
-        // Draw inline notes
-        if (!isPrinterFriendly()) {
-            const auto inlineNotes = m_view->inlineNotes(range->line());
-            for (const auto &inlineNoteData : inlineNotes) {
-                KTextEditor::InlineNote inlineNote(inlineNoteData);
-                const int column = inlineNote.position().column();
-                int viewLine = range->viewLineForColumn(column);
-
-                // Determine the position where to paint the note.
-                // We start by getting the x coordinate of cursor placed to the column.
-                qreal x = range->viewLine(viewLine).lineLayout().cursorToX(column) - xStart;
-                int textLength = range->length();
-                if (column == 0 || column < textLength) {
-                    // If the note is inside text or at the beginning, then there is a hole in the text where the
-                    // note should be painted and the cursor gets placed at the right side of it. So we have to
-                    // subtract the width of the note to get to left side of the hole.
-                    x -= inlineNote.width();
-                } else {
-                    // If the note is outside the text, then the X coordinate is located at the end of the line.
-                    // Add appropriate amount of spaces to reach the required column.
-                    x += spaceWidth() * (column - textLength);
-                }
-
-                qreal y = lineHeight() * viewLine;
-
-                // Paint the note
-                paint.save();
-                paint.translate(x, y);
-                inlineNote.provider()->paintInlineNote(inlineNote, paint);
-                paint.restore();
-            }
-        }
-
         // draw word-wrap-honor-indent filling
         if ((range->viewLineCount() > 1) && range->shiftX() && (range->shiftX() > xStart)) {
             if (backgroundBrushSet)
@@ -888,6 +855,39 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
         int _x = qreal(m_doc->config()->wordWrapAt()) * fm.horizontalAdvance(QLatin1Char('x')) - xStart;
         paint.drawLine(_x, 0, _x, lineHeight());
         paint.setRenderHints(backupRenderHints);
+    }
+
+    // Draw inline notes
+    if (!isPrinterFriendly()) {
+        const auto inlineNotes = m_view->inlineNotes(range->line());
+        for (const auto &inlineNoteData : inlineNotes) {
+            KTextEditor::InlineNote inlineNote(inlineNoteData);
+            const int column = inlineNote.position().column();
+            int viewLine = range->viewLineForColumn(column);
+
+            // Determine the position where to paint the note.
+            // We start by getting the x coordinate of cursor placed to the column.
+            qreal x = range->viewLine(viewLine).lineLayout().cursorToX(column) - xStart;
+            int textLength = range->length();
+            if (column == 0 || column < textLength) {
+                // If the note is inside text or at the beginning, then there is a hole in the text where the
+                // note should be painted and the cursor gets placed at the right side of it. So we have to
+                // subtract the width of the note to get to left side of the hole.
+                x -= inlineNote.width();
+            } else {
+                // If the note is outside the text, then the X coordinate is located at the end of the line.
+                // Add appropriate amount of spaces to reach the required column.
+                x += spaceWidth() * (column - textLength);
+            }
+
+            qreal y = lineHeight() * viewLine;
+
+            // Paint the note
+            paint.save();
+            paint.translate(x, y);
+            inlineNote.provider()->paintInlineNote(inlineNote, paint);
+            paint.restore();
+        }
     }
 }
 
