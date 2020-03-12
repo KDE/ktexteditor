@@ -599,18 +599,26 @@ void KeysTest::MappingTests()
         BeginTest(multiVirtualLineText);
         TestPressKey("gjrX");
         const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
-        Q_ASSERT_X(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'), "Testing g<down>", "gj doesn't seem to have worked correctly!");
+        QVERIFY(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'));
         FinishTest(expectedAfterVirtualLineDownAndChange);
 
-        DoTest(multiVirtualLineText, "g<down>rX", expectedAfterVirtualLineDownAndChange);
+        BeginTest(multiVirtualLineText);
+        TestPressKey("g\\downrX");
+        const QString expectedAfterVirtualLineDownAndChangeCursor = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineDownAndChangeCursor == expectedAfterVirtualLineDownAndChange);
+        FinishTest(expectedAfterVirtualLineDownAndChangeCursor);
 
         BeginTest(multiVirtualLineText);
-        TestPressKey("$gkrX");
+        TestPressKey("gkrX");
         const QString expectedAfterVirtualLineUpAndChange = kate_document->text();
-        Q_ASSERT_X(expectedAfterVirtualLineUpAndChange.contains("X") && !expectedAfterVirtualLineUpAndChange.endsWith('X'), "Testing g<up>", "gk doesn't seem to have worked correctly!");
+        QVERIFY(expectedAfterVirtualLineUpAndChange.contains("X") && !expectedAfterVirtualLineUpAndChange.endsWith('X'));
         FinishTest(expectedAfterVirtualLineUpAndChange);
 
-        DoTest(multiVirtualLineText, "$g<up>rX", expectedAfterVirtualLineUpAndChange);
+        BeginTest(multiVirtualLineText);
+        TestPressKey("g\\uprX");
+        const QString expectedAfterVirtualLineUpAndChangeCursor = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineUpAndChangeCursor == expectedAfterVirtualLineUpAndChange);
+        FinishTest(expectedAfterVirtualLineUpAndChangeCursor);
 
         KateViewConfig::global()->setDynWordWrap(false);
     }
