@@ -360,7 +360,9 @@ void VisualViMode::initializeCommands()
     ADDMOTION("<c-b>", motionPageUp, 0);
     ADDMOTION("<pageup>", motionPageUp, 0);
     ADDMOTION("gj", motionToNextVisualLine, 0);
+    ADDMOTION("g<down>", motionToNextVisualLine, 0);
     ADDMOTION("gk", motionToPrevVisualLine, 0);
+    ADDMOTION("g<up>", motionToPrevVisualLine, 0);
     ADDMOTION("(", motionToPreviousSentence, 0);
     ADDMOTION(")", motionToNextSentence, 0);
     ADDMOTION("{", motionToBeforeParagraph, 0);

@@ -590,6 +590,31 @@ void KeysTest::MappingTests()
 
     // Clear mappings for subsequent tests.
     clearAllMappings();
+
+    {
+        // Test that g<up> and g<down> work as gk and gj (BUG: 418486)
+        ensureKateViewVisible(); // Needs to be visible in order for virtual lines to make sense.
+        KateViewConfig::global()->setDynWordWrap(true);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("gjrX");
+        const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
+        Q_ASSERT_X(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'), "Testing g<down>", "gj doesn't seem to have worked correctly!");
+        FinishTest(expectedAfterVirtualLineDownAndChange);
+
+        DoTest(multiVirtualLineText, "g<down>rX", expectedAfterVirtualLineDownAndChange);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("$gkrX");
+        const QString expectedAfterVirtualLineUpAndChange = kate_document->text();
+        Q_ASSERT_X(expectedAfterVirtualLineUpAndChange.contains("X") && !expectedAfterVirtualLineUpAndChange.endsWith('X'), "Testing g<up>", "gk doesn't seem to have worked correctly!");
+        FinishTest(expectedAfterVirtualLineUpAndChange);
+
+        DoTest(multiVirtualLineText, "$g<up>rX", expectedAfterVirtualLineUpAndChange);
+
+        KateViewConfig::global()->setDynWordWrap(false);
+    }
+
 }
 
 void KeysTest::LeaderTests()
