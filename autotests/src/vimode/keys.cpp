@@ -590,6 +590,39 @@ void KeysTest::MappingTests()
 
     // Clear mappings for subsequent tests.
     clearAllMappings();
+
+    {
+        // Test that g<up> and g<down> work as gk and gj (BUG: 418486)
+        ensureKateViewVisible(); // Needs to be visible in order for virtual lines to make sense.
+        KateViewConfig::global()->setDynWordWrap(true);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("gjrX");
+        const QString expectedAfterVirtualLineDownAndChange = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineDownAndChange.contains("X") && !expectedAfterVirtualLineDownAndChange.startsWith('X'));
+        FinishTest(expectedAfterVirtualLineDownAndChange);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("g\\downrX");
+        const QString expectedAfterVirtualLineDownAndChangeCursor = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineDownAndChangeCursor == expectedAfterVirtualLineDownAndChange);
+        FinishTest(expectedAfterVirtualLineDownAndChangeCursor);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("gkrX");
+        const QString expectedAfterVirtualLineUpAndChange = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineUpAndChange.contains("X") && !expectedAfterVirtualLineUpAndChange.endsWith('X'));
+        FinishTest(expectedAfterVirtualLineUpAndChange);
+
+        BeginTest(multiVirtualLineText);
+        TestPressKey("g\\uprX");
+        const QString expectedAfterVirtualLineUpAndChangeCursor = kate_document->text();
+        QVERIFY(expectedAfterVirtualLineUpAndChangeCursor == expectedAfterVirtualLineUpAndChange);
+        FinishTest(expectedAfterVirtualLineUpAndChangeCursor);
+
+        KateViewConfig::global()->setDynWordWrap(false);
+    }
+
 }
 
 void KeysTest::LeaderTests()
