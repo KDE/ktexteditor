@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QPainter>
 #include <QStyleOption>
+#include <QPainterPath>
 
 KateCategoryDrawer::KateCategoryDrawer()
     : KCategoryDrawer(nullptr)
