@@ -311,7 +311,11 @@ bool KateScriptManager::exec(KTextEditor::View *view, const QString &_cmd, QStri
     Q_UNUSED(view)
     Q_UNUSED(errorMsg)
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QVector<QStringRef> args = _cmd.splitRef(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts);
+#else
+    QVector<QStringRef> args = _cmd.splitRef(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+#endif
     const QStringRef cmd = args.first();
 
     if (cmd == QLatin1String("reload-scripts")) {

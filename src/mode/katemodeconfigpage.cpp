@@ -214,8 +214,16 @@ void ModeConfigPage::save()
             m_types[m_lastType]->section = ui->edtSection->text();
         }
         m_types[m_lastType]->varLine = ui->edtVariables->text();
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
         m_types[m_lastType]->wildcards = ui->edtFileExtensions->text().split(QLatin1Char(';'), QString::SkipEmptyParts);
+#else
+        m_types[m_lastType]->wildcards = ui->edtFileExtensions->text().split(QLatin1Char(';'), Qt::SkipEmptyParts);
+#endif
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
         m_types[m_lastType]->mimetypes = ui->edtMimeTypes->text().split(QLatin1Char(';'), QString::SkipEmptyParts);
+#else
+        m_types[m_lastType]->mimetypes = ui->edtMimeTypes->text().split(QLatin1Char(';'), Qt::SkipEmptyParts);
+#endif
         m_types[m_lastType]->priority = ui->sbPriority->value();
         m_types[m_lastType]->hl = ui->cmbHl->itemData(ui->cmbHl->currentIndex()).toString();
 
@@ -290,7 +298,11 @@ void ModeConfigPage::typeChanged(int type)
 void ModeConfigPage::showMTDlg()
 {
     QString text = i18n("Select the MimeTypes you want for this file type.\nPlease note that this will automatically edit the associated file extensions as well.");
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QStringList list = ui->edtMimeTypes->text().split(QRegularExpression(QStringLiteral("\\s*;\\s*")), QString::SkipEmptyParts);
+#else
+    QStringList list = ui->edtMimeTypes->text().split(QRegularExpression(QStringLiteral("\\s*;\\s*")), Qt::SkipEmptyParts);
+#endif
     KMimeTypeChooserDialog d(i18n("Select Mime Types"), text, list, QStringLiteral("text"), this);
     if (d.exec() == QDialog::Accepted) {
         // do some checking, warn user if mime types or patterns are removed.

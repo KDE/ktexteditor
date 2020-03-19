@@ -63,7 +63,11 @@ AppCommands::~AppCommands()
 
 bool AppCommands::exec(KTextEditor::View *view, const QString &cmd, QString &msg, const KTextEditor::Range &)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QStringList args(cmd.split(QRegularExpression(QStringLiteral("\\s+")), QString::SkipEmptyParts));
+#else
+    QStringList args(cmd.split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts));
+#endif
     QString command(args.takeFirst());
 
     KTextEditor::MainWindow *mainWin = view->mainWindow();
@@ -374,7 +378,11 @@ BufferCommands::~BufferCommands()
 bool BufferCommands::exec(KTextEditor::View *view, const QString &cmd, QString &, const KTextEditor::Range &)
 {
     // create list of args
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     QStringList args(cmd.split(QLatin1Char(' '), QString::KeepEmptyParts));
+#else
+    QStringList args(cmd.split(QLatin1Char(' '), Qt::KeepEmptyParts));
+#endif
     QString command = args.takeFirst(); // same as cmd if split failed
     QString argument = args.join(QLatin1Char(' '));
 
