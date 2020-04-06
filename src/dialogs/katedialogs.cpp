@@ -883,11 +883,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->chkBackupLocalFiles);
     observeChanges(uiadv->chkBackupRemoteFiles);
     observeChanges(uiadv->cmbSwapFileMode);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     connect(uiadv->cmbSwapFileMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSaveConfigTab::swapFileModeChanged);
-#else
-    connect(uiadv->cmbSwapFileMode, QOverload<int, const QString &>::of(&QComboBox::currentIndexChanged), this, &KateSaveConfigTab::swapFileModeChanged);
-#endif
 
 
     observeChanges(uiadv->edtBackupPrefix);
