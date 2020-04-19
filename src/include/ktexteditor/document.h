@@ -53,6 +53,7 @@ class View;
  * without processing of escape sequences, with "whole words" off,
  * in forward direction, within a non-block-mode text range.
  *
+ * \see SearchOptions
  * \author Sebastian Pipping \<webmaster@hartwork.org\>
  */
 enum SearchOption {
@@ -72,6 +73,7 @@ enum SearchOption {
     MaxSearchOption = 1 << 31 ///< Placeholder for binary compatibility
 };
 
+/// Stores a combination of #SearchOption values.
 Q_DECLARE_FLAGS(SearchOptions, SearchOption)
 Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
 

@@ -97,6 +97,7 @@ public:
     };
     static const int ColumnCount = Postfix + 1;
 
+    /// @see CompletionProperties
     enum CompletionProperty {
         NoProperty = 0x0,
         FirstProperty = 0x1,
@@ -137,9 +138,12 @@ public:
         // Keep this in sync so the code knows when to stop
         LastProperty = GlobalScope
     };
+    /// Stores a combination of #CompletionProperty values.
     Q_DECLARE_FLAGS(CompletionProperties, CompletionProperty)
 
+    /// @see HighlightMethods
     enum HighlightMethod { NoHighlighting = 0x0, InternalHighlighting = 0x1, CustomHighlighting = 0x2 };
+    /// Stores a combination of #HighlightMethod values.
     Q_DECLARE_FLAGS(HighlightMethods, HighlightMethod)
 
     /// Meta information is passed through extra {Qt::ItemDataRole}s.

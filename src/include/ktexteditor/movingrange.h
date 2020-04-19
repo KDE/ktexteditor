@@ -159,6 +159,7 @@ class KTEXTEDITOR_EXPORT MovingRange
     //
 public:
     /// Determine how the range reacts to characters inserted immediately outside the range.
+    /// @see InsertBehaviors
     enum InsertBehavior {
         /// Don't expand to encapsulate new characters in either direction. This is the default.
         DoNotExpand = 0x0,
@@ -167,6 +168,7 @@ public:
         /// Expand to encapsulate new characters to the right of the range.
         ExpandRight = 0x2
     };
+    /// Stores a combination of #InsertBehavior values.
     Q_DECLARE_FLAGS(InsertBehaviors, InsertBehavior)
 
     /**

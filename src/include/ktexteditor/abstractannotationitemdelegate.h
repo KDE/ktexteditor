@@ -82,6 +82,7 @@ public:
     /**
      * Enum for describing the relative position of a real line in the row of consecutive
      * displayed lines which belong to the same group of annotation items
+     * @see AnnotationItemGroupPositions
      */
     enum AnnotationItemGroupPosition {
         InvalidGroupPosition = 0, ///< Position not specified or not belonging to a group
@@ -89,6 +90,7 @@ public:
         GroupBegin = 0x1 << 1,    ///< Real line is first of consecutive lines from same group
         GroupEnd = 0x1 << 2,      ///< Real line is last of consecutive lines from same group
     };
+    /// Stores a combination of #AnnotationItemGroupPosition values.
     Q_DECLARE_FLAGS(AnnotationItemGroupPositions, AnnotationItemGroupPosition)
 
     /**
