@@ -1618,6 +1618,11 @@ int KateIconBorder::lineNumberWidth() const
     return width;
 }
 
+void KateIconBorder::dragEnterEvent(QDragEnterEvent *event)
+{
+    m_view->m_viewInternal->dragEnterEvent(event);
+}
+
 void KateIconBorder::dragMoveEvent(QDragMoveEvent *event)
 {
     // FIXME Just calling m_view->m_viewInternal->dragMoveEvent(e) don't work
