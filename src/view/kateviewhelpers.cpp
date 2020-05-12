@@ -529,10 +529,6 @@ void KateScrollBar::updatePixmap()
     if (m_grooveHeight < 5) {
         m_grooveHeight = 5;
     }
-    int lineDivisor = pixmapLinesUnscaled / m_grooveHeight;
-    if (lineDivisor < 1) {
-        lineDivisor = 1;
-    }
     int charIncrement = 1;
     int lineIncrement = 1;
     if ((m_grooveHeight > 10) && (pixmapLineCount >= m_grooveHeight * 2)) {
@@ -547,7 +543,7 @@ void KateScrollBar::updatePixmap()
 
     int pixmapLineWidth = s_pixelMargin + s_lineWidth / charIncrement;
 
-    // qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d" << lineDivisor;
+    // qCDebug(LOG_KTE) << "l" << lineIncrement << "c" << charIncrement << "d";
     // qCDebug(LOG_KTE) << "pixmap" << pixmapLineCount << pixmapLineWidth << "docLines" << m_view->textFolding().visibleLines() << "height" << m_grooveHeight;
 
     const QColor backgroundColor = m_view->defaultStyleAttribute(KTextEditor::dsNormal)->background().color();
@@ -670,7 +666,8 @@ void KateScrollBar::updatePixmap()
                 const Kate::TextLine &line = m_doc->plainKateTextLine(realLineNo);
                 const QColor &col = line->markedAsModified() ? modifiedLineColor : savedLineColor;
                 if (line->markedAsModified() || line->markedAsSavedOnDisk()) {
-                    painter.fillRect(2, lineno / lineDivisor, 3, 1, col);
+                    int pos = (lineno * pixmapLineCount) / pixmapLinesUnscaled;
+                    painter.fillRect(2, pos, 3, 1, col);
                 }
             }
         }
