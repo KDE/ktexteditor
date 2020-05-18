@@ -53,6 +53,8 @@
 #include "ui_textareaappearanceconfigwidget.h"
 
 #include <KIO/Job>
+#include <KIO/OpenUrlJob>
+#include <KIO/JobUiDelegate>
 
 #include "kateabstractinputmodefactory.h"
 #include "katepartdebug.h"
@@ -1428,8 +1430,10 @@ void KateModOnHdPrompt::slotPDone()
     delete m_diffFile;
     m_diffFile = nullptr;
 
-    // KRun::runUrl should delete the file, once the client exits
-    KRun::runUrl(url, QStringLiteral("text/x-patch"), nullptr, KRun::RunFlags(KRun::DeleteTemporaryFiles));
+    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url, QStringLiteral("text/x-patch"));
+    job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, nullptr /*TODO window*/));
+    job->setDeleteTemporaryFile(true); // delete the file, once the client exits
+    job->start();
 }
 
 // END KateModOnHdPrompt

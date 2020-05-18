@@ -25,7 +25,8 @@
 
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KRun>
+#include <KIO/OpenUrlJob>
+#include <KIO/JobUiDelegate>
 
 #include <QDir>
 
@@ -150,12 +151,14 @@ void SwapDiffCreator::slotDiffFinished()
         return;
     }
 
-    // close diffFile and avoid removal, KRun will do that later!
+    // close diffFile and avoid removal, KIO::OpenUrlJob will do that later!
     m_diffFile.close();
     m_diffFile.setAutoRemove(false);
 
-    // KRun::runUrl should delete the file, once the client exits
-    KRun::runUrl(QUrl::fromLocalFile(m_diffFile.fileName()), QStringLiteral("text/x-patch"), m_swapFile->document()->activeView(), KRun::RunFlags(KRun::DeleteTemporaryFiles));
+    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(m_diffFile.fileName()), QStringLiteral("text/x-patch"));
+    job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, m_swapFile->document()->activeView()));
+    job->setDeleteTemporaryFile(true); // delete the file, once the client exits
+    job->start();
 
     deleteLater();
 }
