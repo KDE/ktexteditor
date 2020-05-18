@@ -422,6 +422,7 @@ private:
     int m_tabWidth;
     int m_indentWidth;
     int m_fontHeight;
+    float m_fontAscent;
 
     // some internal flags
     KateRenderer::caretStyles m_caretStyle;

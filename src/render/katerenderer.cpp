@@ -980,6 +980,7 @@ void KateRenderer::updateFontHeight()
      * qreal fontHeight = font.ascent() + font.descent();
      */
     m_fontHeight = qMax(1, qCeil(m_fontMetrics.ascent() + m_fontMetrics.descent()));
+    m_fontAscent = m_fontMetrics.ascent();
 }
 
 void KateRenderer::updateMarkerSize()
@@ -1084,12 +1085,14 @@ void KateRenderer::layoutLine(KateLineLayoutPtr lineLayout, int maxwidth, bool c
 
         if (maxwidth > 0) {
             line.setLineWidth(maxwidth);
+        } else {
+            line.setLineWidth(INT_MAX);
         }
 
         // we include the leading, this must match the ::updateFontHeight code!
         line.setLeadingIncluded(true);
 
-        line.setPosition(QPoint(line.lineNumber() ? shiftX : firstLineOffset, height));
+        line.setPosition(QPoint(line.lineNumber() ? shiftX : firstLineOffset, height - line.ascent() + m_fontAscent));
 
         if (needShiftX && line.width() > 0) {
             needShiftX = false;
