@@ -65,7 +65,6 @@
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KProcess>
-#include <KRun>
 #include <KSeparator>
 #include <KShortcutsDialog>
 
