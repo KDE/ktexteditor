@@ -189,6 +189,7 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     , m_showMarks(false)
     , m_showMiniMap(false)
     , m_miniMapAll(true)
+    , m_needsUpdateOnShow(false)
     , m_miniMapWidth(40)
     , m_grooveHeight(height())
     , m_linesModified(0)
@@ -207,6 +208,16 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     m_delayTextPreviewTimer.setSingleShot(true);
     m_delayTextPreviewTimer.setInterval(250);
     connect(&m_delayTextPreviewTimer, SIGNAL(timeout()), this, SLOT(showTextPreview()));
+}
+
+void KateScrollBar::showEvent(QShowEvent* event)
+{
+    QScrollBar::showEvent(event);
+
+    if (m_needsUpdateOnShow) {
+        m_needsUpdateOnShow = false;
+        updatePixmap();
+    }
 }
 
 KateScrollBar::~KateScrollBar()
@@ -515,6 +526,13 @@ void KateScrollBar::updatePixmap()
 
     if (!m_showMiniMap) {
         // make sure no time is wasted if the option is disabled
+        return;
+    }
+
+    if (!isVisible()) {
+        // don't update now if the document is not visible; do it when
+        // the document is shown again instead
+        m_needsUpdateOnShow = true;
         return;
     }
 

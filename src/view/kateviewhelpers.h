@@ -123,6 +123,8 @@ public:
     ~KateScrollBar() override;
     QSize sizeHint() const override;
 
+    void showEvent(QShowEvent* event) override;
+
     inline bool showMarks() const
     {
         return m_showMarks;
@@ -217,6 +219,7 @@ private:
     bool m_showMarks;
     bool m_showMiniMap;
     bool m_miniMapAll;
+    bool m_needsUpdateOnShow;
     int m_miniMapWidth;
 
     QPixmap m_pixmap;
