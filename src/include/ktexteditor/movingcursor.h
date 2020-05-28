@@ -35,6 +35,8 @@ namespace KTextEditor
 class MovingRange;
 
 /**
+ * \class MovingCursor movingcursor.h <KTextEditor/MovingCursor>
+ *
  * \short A Cursor which is bound to a specific Document, and maintains its position.
  *
  * \ingroup kte_group_moving_classes

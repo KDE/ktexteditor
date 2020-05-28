@@ -127,6 +127,8 @@ enum DefaultStyle {
 };
 
 /**
+ * \class Attribute attribute.h <KTextEditor/Attribute>
+ *
  * \brief A class which provides customized text decorations.
  *
  * The Attribute class extends QTextCharFormat, the class which Qt

@@ -35,6 +35,8 @@ class InlineNoteProvider;
 namespace KTextEditor
 {
 /**
+ * @class InlineNote inlinenote.h <KTextEditor/InlineNote>
+ *
  * Describes an inline note.
  *
  * This class contains all the information required to deal with a particular

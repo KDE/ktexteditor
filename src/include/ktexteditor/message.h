@@ -34,6 +34,8 @@ class View;
 class Document;
 
 /**
+ * @class Message message.h <KTextEditor/Message>
+ *
  * @brief This class holds a Message to display in View%s.
  *
  * @section message_intro Introduction

@@ -38,6 +38,8 @@ class View;
 class MovingRangeFeedback;
 
 /**
+ * \class MovingRange movingrange.h <KTextEditor/MovingRange>
+ *
  * \short A range that is bound to a specific Document, and maintains its
  *  position.
  *

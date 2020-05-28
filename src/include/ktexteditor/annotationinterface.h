@@ -109,6 +109,8 @@ Q_SIGNALS:
 };
 
 /**
+ * \class AnnotationInterface annotationinterface.h <KTextEditor/AnnotationInterface>
+ *
  * \brief A Document extension interface for handling Annotation%s
  *
  * \ingroup kte_group_doc_extensions

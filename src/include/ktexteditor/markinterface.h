@@ -37,6 +37,8 @@ namespace KTextEditor
 class Document;
 
 /**
+ * \class Message message.h <KTextEditor/Message>
+ *
  * \brief Mark class containing line and mark types.
  *
  * \section mark_intro Introduction
@@ -60,6 +62,8 @@ public:
 };
 
 /**
+ * \class MarkInterface markinterface.h <KTextEditor/MarkInterface>
+ *
  * \brief Mark extension interface for the Document.
  *
  * \ingroup kte_group_doc_extensions

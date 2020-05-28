@@ -31,6 +31,8 @@
 namespace KTextEditor
 {
 /**
+ * \class DocumentCursor documentcursor.h <KTextEditor/DocumentCursor>
+ *
  * \short A Cursor which is bound to a specific Document.
  *
  * \section documentcursor_intro Introduction

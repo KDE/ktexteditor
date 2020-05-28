@@ -78,6 +78,8 @@ Q_DECLARE_FLAGS(SearchOptions, SearchOption)
 Q_DECLARE_OPERATORS_FOR_FLAGS(SearchOptions)
 
 /**
+ * \class Document document.h <KTextEditor/Document>
+ *
  * \brief A KParts derived class representing a text document.
  *
  * Topics:

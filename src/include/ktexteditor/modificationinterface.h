@@ -32,6 +32,8 @@ class Document;
 class View;
 
 /**
+ * \class ModificationInterface modificationinterface.h <KTextEditor/ModificationInterface>
+ *
  * \brief External modification extension interface for the Document.
  *
  * \ingroup kte_group_doc_extensions

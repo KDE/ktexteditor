@@ -48,6 +48,8 @@ class EditorPrivate;
 class ConfigPage;
 
 /**
+ * \class Editor editor.h <KTextEditor/Editor>
+ *
  * \brief Accessor interface for the KTextEditor framework.
  *
  * Topics:

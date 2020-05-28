@@ -37,6 +37,8 @@ namespace KTextEditor
 class View;
 
 /**
+ * \class Command command.h <KTextEditor/Command>
+ *
  * \brief An Editor command line command.
  *
  * \section cmd_intro Introduction

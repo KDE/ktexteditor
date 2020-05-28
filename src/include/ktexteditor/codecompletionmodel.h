@@ -32,6 +32,8 @@ class Document;
 class View;
 
 /**
+ * \class CodeCompletionModel codecompletionmodel.h <KTextEditor/CodeCompletionModel>
+ *
  * \short An item model for providing code completion, and meta information for
  *        enhanced presentation.
  *

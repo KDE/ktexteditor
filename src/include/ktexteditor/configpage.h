@@ -29,6 +29,8 @@
 namespace KTextEditor
 {
 /**
+ * \class ConfigPage configpage.h <KTextEditor/ConfigPage>
+ *
  * \brief Config page interface for the Editor and Plugin%s.
  *
  * \section configpage_intro Introduction

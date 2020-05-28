@@ -36,6 +36,8 @@ namespace KTextEditor
 class InlineNoteProvider;
 
 /**
+ * @class InlineNoteInterface inlinenoteinterface.h <KTextEditor/InlineNoteInterface>
+ *
  * @brief Inline notes interface for rendering notes in the text.
  *
  * @ingroup kte_group_view_extensions

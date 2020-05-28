@@ -37,6 +37,8 @@ class Document;
 class Range;
 
 /**
+ * \class Cursor cursor.h <KTextEditor/Cursor>
+ *
  * \short The Cursor represents a position in a Document.
  *
  * \section kte_cursor_intro Introduction

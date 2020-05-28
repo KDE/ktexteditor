@@ -39,6 +39,8 @@ class Document;
 class View;
 
 /**
+ * \class MainWindow mainwindow.h <KTextEditor/MainWindow>
+ *
  * This class allows the application that embeds the KTextEditor component to
  * allow it to access parts of its main window.
  *

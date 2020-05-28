@@ -28,6 +28,8 @@
 namespace KTextEditor
 {
 /**
+ * \class ConfigInterface configinterface.h <KTextEditor/ConfigInterface>
+ *
  * \brief Config interface extension for the Document and View.
  *
  * \ingroup kte_group_view_extensions

@@ -32,6 +32,8 @@ class KConfigGroup;
 namespace KTextEditor
 {
 /**
+ * \class SessionConfigInterface sessionconfiginterface.h <KTextEditor/SessionConfigInterface>
+ *
  * \brief Session config interface extension for the Plugin and Plugin views.
  *
  * \ingroup kte_group_plugin_extensions

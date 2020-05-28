@@ -32,6 +32,8 @@
 namespace KTextEditor
 {
 /**
+ * \class MovingInterface movinginterface.h <KTextEditor/MovingInterface>
+ *
  * \brief Document interface for MovingCursor%s and MovingRange%s.
  *
  * \ingroup kte_group_doc_extensions

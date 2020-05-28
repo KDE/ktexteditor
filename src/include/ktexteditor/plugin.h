@@ -32,6 +32,8 @@ class ConfigPage;
 class MainWindow;
 
 /**
+ * \class Plugin plugin.h <KTextEditor/Plugin>
+ *
  * \brief KTextEditor Plugin interface.
  *
  * Topics:

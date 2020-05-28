@@ -34,6 +34,8 @@
 namespace KTextEditor
 {
 /**
+ * \class Range range.h <KTextEditor/Range>
+ *
  * \short An object representing a section of text, from one Cursor to another.
  *
  * A Range is a basic class which represents a range of text with two Cursors,

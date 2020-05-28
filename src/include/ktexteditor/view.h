@@ -44,6 +44,8 @@ class MainWindow;
 class ViewPrivate;
 
 /**
+ * \class View view.h <KTextEditor/View>
+ *
  * \brief A text widget with KXMLGUIClient that represents a Document.
  *
  * Topics:

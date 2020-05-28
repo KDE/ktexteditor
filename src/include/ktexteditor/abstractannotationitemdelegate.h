@@ -108,6 +108,8 @@ protected:
 };
 
 /**
+ * \class AbstractAnnotationItemDelegate abstractannotationitemdelegate.h <KTextEditor/AbstractAnnotationItemDelegate>
+ *
  * \brief A delegate for rendering line annotation information and handling events
  *
  * \section annodelegate_intro Introduction

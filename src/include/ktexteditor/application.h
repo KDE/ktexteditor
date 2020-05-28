@@ -32,6 +32,8 @@ class Document;
 class MainWindow;
 
 /**
+ * \class Application application.h <KTextEditor/Application>
+ *
  * This class allows the application that embeds the KTextEditor component to
  * allow it access to application wide information and interactions.
  *

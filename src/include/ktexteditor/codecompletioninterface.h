@@ -30,6 +30,8 @@ namespace KTextEditor
 class CodeCompletionModel;
 
 /**
+ * \class CodeCompletionInterface codecompletioninterface.h <KTextEditor/CodeCompletionInterface>
+ *
  * \brief Code completion extension interface for the View.
  *
  * \ingroup kte_group_view_extensions

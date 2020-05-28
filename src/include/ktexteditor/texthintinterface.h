@@ -34,6 +34,8 @@ class TextHintProvider;
 class View;
 
 /**
+ * \class TextHintInterface texthininterface.h <KTextEditor/TextHintInterface>
+ *
  * \brief Text hint interface showing tool tips under the mouse for the View.
  *
  * \ingroup kte_group_view_extensions

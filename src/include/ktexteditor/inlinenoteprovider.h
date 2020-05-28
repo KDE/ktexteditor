@@ -29,6 +29,8 @@
 namespace KTextEditor
 {
 /**
+ * @class InlineNoteProvider inlinenoteprovider.h <KTextEditor/InlineNoteProvider>
+ *
  * @brief A source of inline notes for a document.
  *
  * InlineNoteProvider is a object that can be queried for inline notes in the

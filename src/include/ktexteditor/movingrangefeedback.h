@@ -32,6 +32,8 @@ class View;
 class MovingRange;
 
 /**
+ * \class MovingRangeFeedback movingrangefeedback.h <KTextEditor/MovingRangeFeedback>
+ *
  * \short A class which provides notifications of state changes to a MovingRange.
  *
  * \ingroup kte_group_moving_classes
