@@ -83,6 +83,8 @@ struct Word {
     {
     }
 
+    Word& operator=(const Word&) = default;
+
     QString word;
     int start = 0;
     bool end = true;

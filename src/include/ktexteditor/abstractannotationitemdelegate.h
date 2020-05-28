@@ -102,6 +102,7 @@ public:
 public:
     StyleOptionAnnotationItem();
     StyleOptionAnnotationItem(const StyleOptionAnnotationItem &other);
+    StyleOptionAnnotationItem& operator=(const StyleOptionAnnotationItem&) = default;
 
 protected:
     explicit StyleOptionAnnotationItem(int version);
