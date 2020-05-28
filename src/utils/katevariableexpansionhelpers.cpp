@@ -275,7 +275,7 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
     });
 
     // insert text on activation
-    connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
+    connect(m_listView, &QAbstractItemView::activated, [this](const QModelIndex &index) {
         if (index.isValid()) {
             const auto &var = m_variables[m_filterModel->mapToSource(index).row()];
 
