@@ -1369,7 +1369,7 @@ void KateModOnHdPrompt::slotDiff()
         return;
     }
 
-    m_diffFile = new QTemporaryFile();
+    m_diffFile = new QTemporaryFile(QLatin1String("XXXXXX.diff"));
     m_diffFile->open();
 
     // Start a KProcess that creates a diff
