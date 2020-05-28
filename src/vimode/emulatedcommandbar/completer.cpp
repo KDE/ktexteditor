@@ -217,7 +217,7 @@ CompletionStartParams Completer::activateWordFromDocumentCompletion()
             wordSearchBeginPos = match.capturedEnd();
         }
     }
-    foundWords = QSet<QString>::fromList(foundWords).values();
+    foundWords.removeDuplicates();
     std::sort(foundWords.begin(), foundWords.end(), caseInsensitiveLessThan);
     CompletionStartParams completionStartParams;
     completionStartParams.completionType = CompletionStartParams::WordFromDocument;
