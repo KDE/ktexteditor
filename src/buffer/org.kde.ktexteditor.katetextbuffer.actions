@@ -1,6 +1,7 @@
 [Domain]
 Name=Document Actions
 Name[ar]=إجراءات المستندات
+Name[az]=Sənəd üzərində işlər
 Name[ca]=Accions de document
 Name[ca@valencia]=Accions de document
 Name[cs]=Činnosti dokumentu
@@ -44,6 +45,7 @@ Policy=auth_admin
 [org.kde.ktexteditor.katetextbuffer.savefile]
 Name=Save Document
 Name[ar]=احفظ المستند
+Name[az]=Sənədi saxla
 Name[ca]=Desa el document
 Name[ca@valencia]=Guarda el document
 Name[cs]=Uložit dokument
@@ -84,6 +86,7 @@ Name[zh_CN]=保存文档
 Name[zh_TW]=儲存文件
 Description=Root privileges are needed to save this document
 Description[ar]=مزايا الجذر مطلوبة لحفظ هذا المستند
+Description[az]=Bu sənədi saxlamaq üçün root imtiyaz tələb olunur
 Description[ca]=Es requereixen privilegis d'administrador per desar aquest document
 Description[ca@valencia]=Es requereixen privilegis d'administrador per guardar aquest document
 Description[cs]=K uložení dokumentu je potřeba práva uživatele root
