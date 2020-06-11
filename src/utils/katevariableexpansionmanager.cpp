@@ -36,6 +36,7 @@
 #include <QJSEngine>
 #include <QTime>
 #include <QUuid>
+#include <QLocale>
 
 static void registerVariables(KateVariableExpansionManager &mng)
 {
@@ -145,14 +146,14 @@ static void registerVariables(KateVariableExpansionManager &mng)
         QStringLiteral("Document:RowCount"), i18n("Number of rows of the current document."), [](const QStringView &, KTextEditor::View *view) { return view ? QString::number(view->document()->lines()) : QString(); }, false));
 
     mng.addVariable(Variable(
-        QStringLiteral("Date:Locale"), i18n("The current date in current locale format."), [](const QStringView &, KTextEditor::View *) { return QDate::currentDate().toString(Qt::DefaultLocaleShortDate); }, false));
+        QStringLiteral("Date:Locale"), i18n("The current date in current locale format."), [](const QStringView &, KTextEditor::View *) { return QLocale().toString(QDate::currentDate(), QLocale::ShortFormat); }, false));
     mng.addVariable(Variable(
         QStringLiteral("Date:ISO"), i18n("The current date (ISO)."), [](const QStringView &, KTextEditor::View *) { return QDate::currentDate().toString(Qt::ISODate); }, false));
     mng.addVariable(Variable(
         QStringLiteral("Date:"), i18n("The current date (QDate formatstring)."), [](const QStringView &str, KTextEditor::View *) { return QDate::currentDate().toString(str.mid(5)); }, true));
 
     mng.addVariable(Variable(
-        QStringLiteral("Time:Locale"), i18n("The current time in current locale format."), [](const QStringView &, KTextEditor::View *) { return QTime::currentTime().toString(Qt::DefaultLocaleShortDate); }, false));
+        QStringLiteral("Time:Locale"), i18n("The current time in current locale format."), [](const QStringView &, KTextEditor::View *) { return QLocale().toString(QTime::currentTime(), QLocale::ShortFormat); }, false));
     mng.addVariable(Variable(
         QStringLiteral("Time:ISO"), i18n("The current time (ISO)."), [](const QStringView &, KTextEditor::View *) { return QTime::currentTime().toString(Qt::ISODate); }, false));
     mng.addVariable(Variable(
