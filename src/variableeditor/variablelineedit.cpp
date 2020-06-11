@@ -50,7 +50,6 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
 
     QHBoxLayout *hl = new QHBoxLayout();
     hl->setContentsMargins(0, 0, 0, 0);
-    hl->setSpacing(QApplication::style()->pixelMetric(QStyle::PM_DefaultLayoutSpacing));
     setLayout(hl);
 
     m_lineedit = new QLineEdit(this);
