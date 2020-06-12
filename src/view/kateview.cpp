@@ -254,6 +254,16 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     // invalidate update signal
     m_delayedUpdateTriggered = false;
 
+    /**
+     * de-register views early from global collections
+     * otherwise we might "use" them again during destruction in a half-valid state
+     * see e.g. bug 422546
+     * Kate::TextBuffer::notifyAboutRangeChange will access views() in a chain during
+     * deletion of m_viewInternal
+     */
+    doc()->removeView(this);
+    KTextEditor::EditorPrivate::self()->deregisterView(this);
+
     // remove from xmlgui factory, to be safe
     if (factory()) {
         factory()->removeClient(this);
@@ -268,13 +278,9 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     m_mainWindow->deleteViewBar(this);
     m_bottomViewBar = nullptr;
 
-    doc()->removeView(this);
-
     delete m_renderer;
 
     delete m_config;
-
-    KTextEditor::EditorPrivate::self()->deregisterView(this);
 }
 
 void KTextEditor::ViewPrivate::toggleStatusBar()

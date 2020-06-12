@@ -358,8 +358,15 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     }
     m_marks.clear();
 
-    delete m_config;
+    /**
+     * de-register document early from global collections
+     * otherwise we might "use" them again during destruction in a half-valid state
+     * see e.g. bug 422546 for similar issues with view
+     * this is still early enough, as as long as m_config is valid, this document is still "OK"
+     */
     KTextEditor::EditorPrivate::self()->deregisterDocument(this);
+
+    delete m_config;
 }
 // END
 
