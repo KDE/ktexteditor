@@ -1120,7 +1120,6 @@ KateGotoBar::KateGotoBar(KTextEditor::View *view, QWidget *parent)
     topLayout->addWidget(btn);
 
     m_gotoRange = new QSpinBox(this);
-    m_gotoRange->setMinimum(1);
     topLayout->addWidget(m_gotoRange, 1);
     topLayout->setStretchFactor(m_gotoRange, 0);
 
@@ -1197,9 +1196,9 @@ bool KateGotoBar::eventFilter(QObject *object, QEvent *event)
 
 void KateGotoBar::gotoClipboard()
 {
-    QRegularExpression rx(QStringLiteral("\\d+"));
+    QRegularExpression rx(QStringLiteral("-?\\d+"));
     int lineNo = rx.match(QApplication::clipboard()->text(QClipboard::Selection)).captured().toInt();
-    if (lineNo <= m_gotoRange->maximum() && lineNo >= 1) {
+    if (lineNo >= m_gotoRange->minimum() && lineNo <= m_gotoRange->maximum()) {
         m_gotoRange->setValue(lineNo);
         gotoLine();
     } else {
@@ -1213,7 +1212,9 @@ void KateGotoBar::gotoClipboard()
 
 void KateGotoBar::updateData()
 {
-    m_gotoRange->setMaximum(m_view->document()->lines());
+    int lines = m_view->document()->lines();
+    m_gotoRange->setMinimum(-lines);
+    m_gotoRange->setMaximum(lines);
     if (!isVisible()) {
         m_gotoRange->setValue(m_view->cursorPosition().line() + 1);
         m_gotoRange->adjustSize(); // ### does not respect the range :-(
@@ -1239,7 +1240,14 @@ void KateGotoBar::gotoLine()
         kv->clearSelection();
     }
 
-    m_view->setCursorPosition(KTextEditor::Cursor(m_gotoRange->value() - 1, 0));
+    int gotoValue = m_gotoRange->value();
+    if (gotoValue < 0) {
+        gotoValue += m_view->document()->lines();
+    } else if (gotoValue > 0) {
+        gotoValue -= 1;
+    }
+
+    m_view->setCursorPosition(KTextEditor::Cursor(gotoValue, 0));
     m_view->setFocus();
     emit hideMe();
 }
