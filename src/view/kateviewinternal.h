@@ -233,6 +233,7 @@ protected:
     void keyPressEvent(QKeyEvent *) override;
     void keyReleaseEvent(QKeyEvent *) override;
     void resizeEvent(QResizeEvent *) override;
+    void moveEvent(QMoveEvent *) override;
     void mousePressEvent(QMouseEvent *) override;
     void mouseDoubleClickEvent(QMouseEvent *) override;
     void mouseReleaseEvent(QMouseEvent *) override;
@@ -312,6 +313,7 @@ private:
     // Bracket mark and corresponding decorative ranges
     KTextEditor::MovingRange *m_bm, *m_bmStart, *m_bmEnd;
     KTextEditor::MovingCursor *m_bmLastFlashPos;
+    KateTextPreview *m_bmPreview;
     void updateBracketMarkAttributes();
 
     enum DragState { diNone, diPending, diDragging };
@@ -404,6 +406,8 @@ private:
     //
 public:
     void flashChar(const KTextEditor::Cursor &pos, KTextEditor::Attribute::Ptr attribute);
+    void showBracketMatchPreview();
+    void hideBracketMatchPreview();
 
 private:
     QPointer<KateTextAnimation> m_textAnimation;

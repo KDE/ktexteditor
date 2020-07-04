@@ -41,6 +41,7 @@
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "katetextanimation.h"
+#include "katetextpreview.h"
 #include "kateview.h"
 #include "kateviewaccessible.h"
 #include "kateviewhelpers.h"
@@ -128,6 +129,7 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_bmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmLastFlashPos(doc()->newMovingCursor(KTextEditor::Cursor::invalid()))
+    , m_bmPreview(nullptr)
     , m_dummy(nullptr)
 
     // stay on cursor will avoid that the view scroll around on press return at beginning
@@ -293,6 +295,7 @@ KateViewInternal::~KateViewInternal()
     delete m_bm;
     delete m_bmStart;
     delete m_bmEnd;
+    delete m_bmPreview;
 
     delete m_zoomEventFilter;
 }
@@ -2058,6 +2061,8 @@ void KateViewInternal::updateBracketMarks()
     // new range valid, then set ranges to it
     if (newRange.isValid()) {
         if (m_bm->toRange() == newRange) {
+            // hide preview as it now (probably) blocks the top of the view
+            hideBracketMatchPreview();
             return;
         }
 
@@ -2081,6 +2086,8 @@ void KateViewInternal::updateBracketMarks()
             attribute->setFontBold(m_bmStart->attribute()->fontBold());
 
             flashChar(flashPos, attribute);
+            // show preview of the matching bracket's line
+            showBracketMatchPreview();
         }
         return;
     }
@@ -2090,6 +2097,7 @@ void KateViewInternal::updateBracketMarks()
     m_bmStart->setRange(KTextEditor::Range::invalid());
     m_bmEnd->setRange(KTextEditor::Range::invalid());
     m_bmLastFlashPos->setPosition(KTextEditor::Cursor::invalid());
+    hideBracketMatchPreview();
 }
 
 bool KateViewInternal::tagLine(const KTextEditor::Cursor &virtualCursor)
@@ -2333,6 +2341,9 @@ bool KateViewInternal::eventFilter(QObject *obj, QEvent *e)
         // happens only when pressing ESC while dragging
         stopDragScroll();
         break;
+
+    case QEvent::WindowDeactivate:
+        hideBracketMatchPreview();
 
     default:
         break;
@@ -2811,6 +2822,8 @@ void KateViewInternal::leaveEvent(QEvent *)
     if (m_dragInfo.state == diNone) {
         m_scrollTimer.stop();
     }
+
+    hideBracketMatchPreview();
 }
 
 KTextEditor::Cursor KateViewInternal::coordinatesToCursor(const QPoint &_coord, bool includeBorder) const
@@ -3104,6 +3117,11 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
     m_dummy->setFixedSize(m_lineScroll->width(), m_columnScroll->sizeHint().height());
     m_madeVisible = false;
 
+    // resize the bracket match preview
+    if (m_bmPreview) {
+        showBracketMatchPreview();
+    }
+
     if (heightChanged) {
         setAutoCenterLines(m_autoCenterLines, false);
         m_cachedMaxStartPos.setPosition(-1, -1);
@@ -3156,6 +3174,18 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
         }
     }
     emit view()->displayRangeChanged(m_view);
+}
+
+void KateViewInternal::moveEvent(QMoveEvent *e)
+{
+    if (e->pos() == e->oldPos()){
+        return;
+    }
+
+    // move the bracket match preview to the new location
+    if (m_bmPreview) {
+        showBracketMatchPreview();
+    }
 }
 
 void KateViewInternal::scrollTimeout()
@@ -3837,6 +3867,46 @@ void KateViewInternal::flashChar(const KTextEditor::Cursor &pos, KTextEditor::At
         m_textAnimation->deleteLater();
     }
     m_textAnimation = new KateTextAnimation(range, std::move(attribute), this);
+}
+
+void KateViewInternal::showBracketMatchPreview()
+{
+    // only show when main window is active
+    if (window() && !window()->isActiveWindow()) {
+        return;
+    }
+
+    // only show when the matching bracket is an opening bracket that is not visible on the current view
+    if (m_bmLastFlashPos->toCursor() == m_bmEnd->start() || cursorToCoordinate(m_bmLastFlashPos->toCursor(), true, false).y() != -1) {
+        hideBracketMatchPreview();
+        return;
+    }
+
+    if (!m_bmPreview) {
+        m_bmPreview = new KateTextPreview(m_view, this);
+        m_bmPreview->setAttribute(Qt::WA_ShowWithoutActivating);
+        m_bmPreview->setFrameStyle(QFrame::Box);
+    }
+
+    KateRenderer *const renderer_ = renderer();
+    KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer_));
+    lineLayout->setLine(m_bmLastFlashPos->line(), -1);
+    renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
+
+    int lineWidth = qMax(m_view->width() / 5, qMin(int(lineLayout->width() + renderer_->spaceWidth()), m_view->width()));
+    m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 3);
+    QPoint topLeft = mapToGlobal(QPoint(0, 0));
+    m_bmPreview->move(topLeft.x(), topLeft.y());
+    m_bmPreview->setLine(toVirtualCursor(m_bmLastFlashPos->toCursor()).line() + 1);
+    m_bmPreview->setCenterView(true);
+    m_bmPreview->raise();
+    m_bmPreview->show();
+}
+
+void KateViewInternal::hideBracketMatchPreview()
+{
+    delete m_bmPreview;
+    m_bmPreview = nullptr;
 }
 
 void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)
