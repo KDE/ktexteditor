@@ -4774,13 +4774,13 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
                 qCWarning(LOG_KTE) << i18n(
                     "Using deprecated modeline 'remove-trailing-space'. "
                     "Please replace with 'remove-trailing-spaces modified;', see "
-                    "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
+                    "https://docs.kde.org/?application=katepart&branch=stable5&path=config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 1 : 0);
             } else if (var == QLatin1String("replace-trailing-space-save") && checkBoolValue(val, &state)) {
                 qCWarning(LOG_KTE) << i18n(
                     "Using deprecated modeline 'replace-trailing-space-save'. "
                     "Please replace with 'remove-trailing-spaces all;', see "
-                    "https://docs.kde.org/stable5/en/applications/katepart/config-variables.html#variable-remove-trailing-spaces");
+                    "https://docs.kde.org/?application=katepart&branch=stable5&path=config-variables.html#variable-remove-trailing-spaces");
                 m_config->setRemoveSpaces(state ? 2 : 0);
             } else if (var == QLatin1String("overwrite-mode") && checkBoolValue(val, &state)) {
                 m_config->setOvr(state);
