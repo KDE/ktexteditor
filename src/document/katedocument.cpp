@@ -72,7 +72,7 @@
 #include <KStringHandler>
 #include <KToggleAction>
 #include <KXMLGUIFactory>
-#include <kdirwatch.h>
+#include <KDirWatch>
 
 #include <QApplication>
 #include <QClipboard>

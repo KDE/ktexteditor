@@ -21,7 +21,7 @@
 #include "codecompletiontestmodels.h"
 //#include "codecompletiontestmodels.moc"
 
-#include <ksycoca.h>
+#include <KSycoca>
 
 #include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>

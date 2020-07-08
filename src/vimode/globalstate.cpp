@@ -27,7 +27,7 @@
 #include "mappings.h"
 #include "registers.h"
 
-#include <kconfiggroup.h>
+#include <KConfigGroup>
 
 using namespace KateVi;
 

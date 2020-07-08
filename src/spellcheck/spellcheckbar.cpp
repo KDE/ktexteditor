@@ -30,7 +30,7 @@
 #include "sonnet/settings_p.h"
 */
 
-#include <qprogressdialog.h>
+#include <QProgressDialog>
 
 #include <QComboBox>
 #include <QDialogButtonBox>

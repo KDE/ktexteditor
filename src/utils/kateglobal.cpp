@@ -52,7 +52,7 @@
 #include <KLocalizedString>
 #include <KPageDialog>
 #include <KPageWidgetModel>
-#include <kdirwatch.h>
+#include <KDirWatch>
 
 #include <QApplication>
 #include <QBoxLayout>

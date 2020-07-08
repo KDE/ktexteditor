@@ -48,7 +48,7 @@
 #include <KColorUtils>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <khelpclient.h>
+#include <KHelpClient>
 
 #include <QAction>
 #include <QActionGroup>

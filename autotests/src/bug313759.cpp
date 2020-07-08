@@ -22,7 +22,7 @@
 #include <katedocument.h>
 #include <kateglobal.h>
 #include <kateview.h>
-#include <kmainwindow.h>
+#include <KMainWindow>
 
 #include <QJSEngine>
 #include <QtTestWidgets>

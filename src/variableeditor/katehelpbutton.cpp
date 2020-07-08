@@ -23,7 +23,7 @@
 #include <QIcon>
 
 #include <KLocalizedString>
-#include <khelpclient.h>
+#include <KHelpClient>
 
 KateHelpButton::KateHelpButton(QWidget *parent)
     : QToolButton(parent)

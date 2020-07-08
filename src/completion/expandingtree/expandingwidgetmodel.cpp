@@ -26,7 +26,7 @@
 #include <QModelIndex>
 #include <QTreeView>
 
-#include "kcolorutils.h"
+#include <KColorUtils>
 #include <KTextEdit>
 #include <ktexteditor/codecompletionmodel.h>
 

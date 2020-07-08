@@ -25,7 +25,7 @@
 #include <QObject>
 #include <QString>
 
-#include <kauth.h>
+#include <KAuth>
 
 using namespace KAuth;
 
