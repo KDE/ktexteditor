@@ -1326,6 +1326,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
 
         if (!QStandardPaths::findExecutable(QStringLiteral("diff")).isEmpty()) {
             m_diffAction = new QAction(i18n("View &Difference"), this);
+            m_diffAction->setIcon(QIcon::fromTheme(QStringLiteral("document-multiple")));
             m_diffAction->setToolTip(i18n("Shows a diff of the changes"));
             m_message->addAction(m_diffAction, false);
             connect(m_diffAction, SIGNAL(triggered()), this, SLOT(slotDiff()));
@@ -1352,7 +1353,7 @@ KateModOnHdPrompt::KateModOnHdPrompt(KTextEditor::DocumentPrivate *doc, KTextEdi
 
     QAction *aIgnore = new QAction(i18n("&Ignore"), this);
     aIgnore->setToolTip(i18n("Ignores the changes on disk without any action."));
-    aIgnore->setIcon(KStandardGuiItem::overwrite().icon());
+    aIgnore->setIcon(QIcon::fromTheme(QStringLiteral("dialog-cancel")));
     m_message->addAction(aIgnore);
     connect(aIgnore, SIGNAL(triggered()), this, SIGNAL(ignoreTriggered()));
 
