@@ -61,7 +61,7 @@
 #include <KMessageBox>
 #include <KStandardAction>
 #include <KXMLGUIFactory>
-#include <KDirWatch>
+#include <kdirwatch.h>
 #include <KCodecs>
 #include <KStringHandler>
 #include <KConfigGroup>

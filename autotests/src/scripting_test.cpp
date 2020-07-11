@@ -30,8 +30,8 @@
 #include "kateview.h"
 #include <KTextEditor/Command>
 
-#include <KConfig>
-#include <KConfigGroup>
+#include <kconfig.h>
+#include <kconfiggroup.h>
 #include <kio/job.h>
 
 #include <QDir>
