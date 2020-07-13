@@ -230,7 +230,8 @@ endif()
 ecm_qt_declare_logging_category(ktexteditor_LIB_SRCS
     HEADER katepartdebug.h
     IDENTIFIER LOG_KTE
-    CATEGORY_NAME org.kde.ktexteditor
+    CATEGORY_NAME kf.texteditor
+    OLD_CATEGORY_NAMES org.kde.ktexteditor
     DEFAULT_SEVERITY Warning
     DESCRIPTION "ktexteditor lib"
     EXPORT KTEXTEDITOR
