@@ -1345,6 +1345,11 @@ bool KateCompletionWidget::isCompletionModelRegistered(KTextEditor::CodeCompleti
     return m_sourceModels.contains(model);
 }
 
+QList<KTextEditor::CodeCompletionModel*> KateCompletionWidget::codeCompletionModels() const
+{
+    return m_sourceModels;
+}
+
 int KateCompletionWidget::automaticInvocationDelay() const
 {
     return m_automaticInvocationDelay;

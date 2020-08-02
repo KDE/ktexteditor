@@ -2612,6 +2612,11 @@ void KTextEditor::ViewPrivate::startCompletion(const KTextEditor::Range &word, K
     completionWidget()->startCompletion(word, model);
 }
 
+void KTextEditor::ViewPrivate::startCompletion(const Range &word, const QList<KTextEditor::CodeCompletionModel *> &models, KTextEditor::CodeCompletionModel::InvocationType invocationType)
+{
+    completionWidget()->startCompletion(word, models, invocationType);
+}
+
 void KTextEditor::ViewPrivate::abortCompletion()
 {
     completionWidget()->abortCompletion();
@@ -2635,6 +2640,11 @@ void KTextEditor::ViewPrivate::unregisterCompletionModel(KTextEditor::CodeComple
 bool KTextEditor::ViewPrivate::isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const
 {
     return completionWidget()->isCompletionModelRegistered(model);
+}
+
+QList<KTextEditor::CodeCompletionModel*> KTextEditor::ViewPrivate::codeCompletionModels() const
+{
+    return completionWidget()->registeredCodeCompletionModels();
 }
 
 bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const

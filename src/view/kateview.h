@@ -89,7 +89,7 @@ namespace KTextEditor
 //
 class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
                                        public KTextEditor::TextHintInterface,
-                                       public KTextEditor::CodeCompletionInterface,
+                                       public KTextEditor::CodeCompletionInterfaceV2,
                                        public KTextEditor::ConfigInterface,
                                        public KTextEditor::InlineNoteInterface,
                                        public KTextEditor::AnnotationViewInterfaceV2
@@ -98,6 +98,7 @@ class KTEXTEDITOR_EXPORT ViewPrivate : public KTextEditor::View,
     Q_INTERFACES(KTextEditor::TextHintInterface)
     Q_INTERFACES(KTextEditor::ConfigInterface)
     Q_INTERFACES(KTextEditor::CodeCompletionInterface)
+    Q_INTERFACES(KTextEditor::CodeCompletionInterfaceV2)
     Q_INTERFACES(KTextEditor::AnnotationViewInterface)
     Q_INTERFACES(KTextEditor::AnnotationViewInterfaceV2)
     Q_INTERFACES(KTextEditor::InlineNoteInterface)
@@ -235,16 +236,18 @@ public:
     bool toggleFoldingsInRange(int line);
 
     //
-    // KTextEditor::CodeCompletionInterface2
+    // KTextEditor::CodeCompletionInterfaceV2
     //
 public:
     bool isCompletionActive() const override;
     void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) override;
+    void startCompletion(const Range &word, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(), KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation) override;
     void abortCompletion() override;
     void forceCompletion() override;
     void registerCompletionModel(KTextEditor::CodeCompletionModel *model) override;
     void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) override;
     bool isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const;
+    QList<KTextEditor::CodeCompletionModel*> codeCompletionModels() const override;
     bool isAutomaticInvocationEnabled() const override;
     void setAutomaticInvocationEnabled(bool enabled = true) override;
 

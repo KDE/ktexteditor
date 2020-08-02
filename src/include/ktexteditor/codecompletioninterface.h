@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <ktexteditor/range.h>
+#include <ktexteditor/codecompletionmodel.h>
 #include <ktexteditor_export.h>
 
 namespace KTextEditor
@@ -152,8 +153,65 @@ public:
     // void completionAborted(KTextEditor::View* view);
 };
 
+/**
+ * \class CodeCompletionInterfaceV2 codecompletioninterface.h <KTextEditor/CodeCompletionInterface>
+ *
+ * \brief Code completion extension interface for the View, version 2.
+ *
+ * \ingroup kte_group_view_extensions
+ *
+ * \section compifacev2_intro Introduction
+ *
+ * The CodeCompletionInterfaceV2 is an extended version of the CodeCompletionInferface.
+ * Refer to the base CodeCompletionInterface for a more detailed description.
+ *
+ * \section compifacev2_access Accessing the CodeCompletionInterfaceV2
+ *
+ * The CodeCompletionInterfaceV2 is an extension interface for a
+ * View, i.e. the View inherits the interface \e provided that the
+ * used KTextEditor library implements the interface. Use qobject_cast to
+ * access the interface:
+ * \code
+ * // view is of type KTextEditor::View*
+ * auto iface = qobject_cast<KTextEditor::CodeCompletionInterfaceV2*>(view);
+ *
+ * if (iface) {
+ *     // the implementation supports the interface
+ *     // do stuff
+ * } else {
+ *     // the implementation does not support the interface
+ * }
+ * \endcode
+ *
+ * \since 5.72
+ */
+class KTEXTEDITOR_EXPORT CodeCompletionInterfaceV2 : public CodeCompletionInterface
+{
+    // KF6: Merge KTextEditor::CodeCompletionInterfaceV2 into KTextEditor::CodeCompletionInterface
+public:
+    virtual ~CodeCompletionInterfaceV2();
+    /**
+     * Invoke code completion over a given range, with sepcific models and invocation type.
+     * \param models List of models to start. If this is an empty list, all registered models are started.
+     *
+     * \since 5.72
+     */
+    virtual void startCompletion(const Range &word, const QList<CodeCompletionModel *> &models = QList<CodeCompletionModel *>(), CodeCompletionModel::InvocationType invocationType = CodeCompletionModel::ManualInvocation) = 0;
+    using CodeCompletionInterface::startCompletion;
+
+    /**
+     * Obtain list of registered code completion models
+     * \returns a list of a models that are currently registered
+     * \see registerCompletionModel()
+     *
+     * \since 5.72
+     */
+    virtual QList<CodeCompletionModel*> codeCompletionModels() const = 0;
+};
+
 }
 
 Q_DECLARE_INTERFACE(KTextEditor::CodeCompletionInterface, "org.kde.KTextEditor.CodeCompletionInterface")
+Q_DECLARE_INTERFACE(KTextEditor::CodeCompletionInterfaceV2, "org.kde.KTextEditor.CodeCompletionInterfaceV2")
 
 #endif // KTEXTEDITOR_CODECOMPLETIONINTERFACE_H
