@@ -2644,7 +2644,7 @@ bool KTextEditor::ViewPrivate::isCompletionModelRegistered(KTextEditor::CodeComp
 
 QList<KTextEditor::CodeCompletionModel*> KTextEditor::ViewPrivate::codeCompletionModels() const
 {
-    return completionWidget()->registeredCodeCompletionModels();
+    return completionWidget()->codeCompletionModels();
 }
 
 bool KTextEditor::ViewPrivate::isAutomaticInvocationEnabled() const
