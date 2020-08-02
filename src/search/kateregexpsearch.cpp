@@ -199,6 +199,8 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
     // returned if no matches are found
     QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
 
+    // Note that some methods in vimode (e.g. Searcher::findPatternWorker) rely on the
+    // fact that this checks for pattern.isEmpty()
     if (pattern.isEmpty() || !regexp.isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
         return noResult;
     }
