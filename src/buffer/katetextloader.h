@@ -316,7 +316,8 @@ public:
                 }
             }
 
-            if (m_text.at(m_position) == lf) {
+            QChar current_char = m_text.at(m_position);
+            if (current_char == lf) {
                 m_lastWasEndOfLine = true;
 
                 if (m_lastWasR) {
@@ -338,7 +339,7 @@ public:
 
                     return !encodingError;
                 }
-            } else if (m_text.at(m_position) == cr) {
+            } else if (current_char == cr) {
                 m_lastWasEndOfLine = true;
                 m_lastWasR = true;
 
@@ -355,7 +356,7 @@ public:
                 }
 
                 return !encodingError;
-            } else if (m_text.at(m_position) == QChar::LineSeparator) {
+            } else if (current_char == QChar::LineSeparator) {
                 m_lastWasEndOfLine = true;
 
                 // line data
