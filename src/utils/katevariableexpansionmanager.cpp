@@ -272,7 +272,7 @@ void KateVariableExpansionManager::showDialog(const QVector<QWidget *> &widgets,
                 vars.push_back(var);
             }
             // else: Not found, silently ignore for now
-            //       Maybe raise a qWarning()?
+            //       Maybe raise a qCWarning(LOG_KTE)?
         }
     } else {
         vars = variables();

@@ -195,7 +195,7 @@ bool KateScript::load()
 QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 {
     if (!load()) {
-        qWarning() << "load of script failed:" << program;
+        qCWarning(LOG_KTE) << "load of script failed:" << program;
         return QJSValue();
     }
 
@@ -211,7 +211,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
 
     QJSValue result = programFunction.call(args);
     if (result.isError())
-        qWarning() << "Error evaluating script: " << result.toString();
+        qCWarning(LOG_KTE) << "Error evaluating script: " << result.toString();
 
     return result;
 }

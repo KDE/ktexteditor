@@ -23,8 +23,8 @@
 #include "katelayoutcache.h"
 #include "katerenderer.h"
 #include "kateviewinternal.h"
+#include "katepartdebug.h"
 
-#include <QDebug>
 #include <QPainter>
 
 #include <cmath>
@@ -77,7 +77,7 @@ bool KateTextPreview::centerView() const
 void KateTextPreview::setScaleFactor(qreal factor)
 {
     if (m_scale <= 0.0) {
-        qWarning() << "Negative scale factors are not supported, ignoring.";
+        qCWarning(LOG_KTE) << "Negative scale factors are not supported, ignoring.";
         return;
     }
 
