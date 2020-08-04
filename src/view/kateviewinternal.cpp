@@ -3188,6 +3188,8 @@ void KateViewInternal::moveEvent(QMoveEvent *e)
     if (m_bmPreview) {
         showBracketMatchPreview();
     }
+
+    QWidget::moveEvent(e);
 }
 
 void KateViewInternal::scrollTimeout()
