@@ -541,6 +541,7 @@ KateViewConfig::KateViewConfig()
     addConfigEntry(ConfigEntry(ScrollBarMiniMapWidth, "Scroll Bar Mini Map Width", QString(), 60, [](const QVariant &value) { return inBounds(0, value, 999); }));
     addConfigEntry(ConfigEntry(ScrollPastEnd, "Scroll Past End", QString(), false));
     addConfigEntry(ConfigEntry(SearchFlags, "Search/Replace Flags", QString(), IncFromCursor | PowerMatchCase | PowerModePlainText));
+    addConfigEntry(ConfigEntry(ShowBracketMatchPreview, "Bracket Match Preview", QStringLiteral("bracket-match-preview"), false));
     addConfigEntry(ConfigEntry(ShowFoldingBar, "Folding Bar", QStringLiteral("folding-bar"), true));
     addConfigEntry(ConfigEntry(ShowFoldingPreview, "Folding Preview", QStringLiteral("folding-preview"), true));
     addConfigEntry(ConfigEntry(ShowIconBar, "Icon Bar", QStringLiteral("icon-bar"), false));

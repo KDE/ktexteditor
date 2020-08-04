@@ -707,6 +707,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     observeChanges(textareaUi->chkDynWrapAnywhere);
     observeChanges(textareaUi->chkDynWrapAtStaticMarker);
     observeChanges(textareaUi->chkFoldFirstLine);
+    observeChanges(textareaUi->chkShowBracketMatchPreview);
     observeChanges(textareaUi->chkShowIndentationLines);
     observeChanges(textareaUi->chkShowLineCount);
     observeChanges(textareaUi->chkShowTabs);
@@ -768,6 +769,7 @@ void KateViewDefaultsConfig::apply()
     KateViewConfig::global()->setValue(KateViewConfig::DynWrapAtStaticMarker, textareaUi->chkDynWrapAtStaticMarker->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::FoldFirstLine, textareaUi->chkFoldFirstLine->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ScrollBarMiniMapWidth, bordersUi->spBoxMiniMapWidth->value());
+    KateViewConfig::global()->setValue(KateViewConfig::ShowBracketMatchPreview, textareaUi->chkShowBracketMatchPreview->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingBar, bordersUi->chkShowFoldingMarkers->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowFoldingPreview, bordersUi->chkShowFoldingPreview->isChecked());
     KateViewConfig::global()->setValue(KateViewConfig::ShowIconBar, bordersUi->chkIconBorder->isChecked());
@@ -804,6 +806,7 @@ void KateViewDefaultsConfig::reload()
     textareaUi->chkDynWrapAnywhere->setChecked(KateViewConfig::global()->dynWrapAnywhere());
     textareaUi->chkDynWrapAtStaticMarker->setChecked(KateViewConfig::global()->dynWrapAtStaticMarker());
     textareaUi->chkFoldFirstLine->setChecked(KateViewConfig::global()->foldFirstLine());
+    textareaUi->chkShowBracketMatchPreview->setChecked(KateViewConfig::global()->value(KateViewConfig::ShowBracketMatchPreview).toBool());
     textareaUi->chkShowIndentationLines->setChecked(KateRendererConfig::global()->showIndentationLines());
     textareaUi->chkShowLineCount->setChecked(KateViewConfig::global()->showLineCount());
     textareaUi->chkShowTabs->setChecked(KateDocumentConfig::global()->showTabs());

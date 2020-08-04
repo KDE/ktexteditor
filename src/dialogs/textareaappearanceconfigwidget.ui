@@ -264,6 +264,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="chkShowBracketMatchPreview">
+        <property name="toolTip">
+         <string>Show the matching open bracket and lines adjacent to it for context</string>
+        </property>
+        <property name="whatsThis">
+         <string>If this is enabled, a preview of the lines near a matching open bracket is shown. This can help in quickly determining the context of a closing bracket, especially in long function/class declarations and deeply nested if blocks</string>
+        </property>
+        <property name="text">
+         <string>Show preview of matching open bracket</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="chkAnimateBracketMatching">
         <property name="toolTip">
          <string>Flash matching brackets</string>

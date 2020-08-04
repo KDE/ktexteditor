@@ -2073,10 +2073,16 @@ void KateViewInternal::updateBracketMarks()
         m_bmStart->setRange(KTextEditor::Range(m_bm->start(), KTextEditor::Cursor(m_bm->start().line(), m_bm->start().column() + 1)));
         m_bmEnd->setRange(KTextEditor::Range(m_bm->end(), KTextEditor::Cursor(m_bm->end().line(), m_bm->end().column() + 1)));
 
+        // show preview of the matching bracket's line
+        if (m_view->config()->value(KateViewConfig::ShowBracketMatchPreview).toBool()) {
+            showBracketMatchPreview();
+        }
+
         // flash matching bracket
         if (!renderer()->config()->animateBracketMatching()) {
             return;
         }
+
         const KTextEditor::Cursor flashPos = (m_cursor == m_bmStart->start() || m_cursor == m_bmStart->end()) ? m_bmEnd->start() : m_bm->start();
         if (flashPos != m_bmLastFlashPos->toCursor()) {
             m_bmLastFlashPos->setPosition(flashPos);
@@ -2086,8 +2092,6 @@ void KateViewInternal::updateBracketMarks()
             attribute->setFontBold(m_bmStart->attribute()->fontBold());
 
             flashChar(flashPos, attribute);
-            // show preview of the matching bracket's line
-            showBracketMatchPreview();
         }
         return;
     }
@@ -3876,8 +3880,9 @@ void KateViewInternal::showBracketMatchPreview()
         return;
     }
 
+    const KTextEditor::Cursor openBracketCursor = m_bmStart->start();
     // only show when the matching bracket is an opening bracket that is not visible on the current view
-    if (m_bmLastFlashPos->toCursor() == m_bmEnd->start() || cursorToCoordinate(m_bmLastFlashPos->toCursor(), true, false).y() != -1) {
+    if (m_cursor == openBracketCursor || cursorToCoordinate(openBracketCursor, true, false).y() != -1) {
         hideBracketMatchPreview();
         return;
     }
@@ -3890,14 +3895,14 @@ void KateViewInternal::showBracketMatchPreview()
 
     KateRenderer *const renderer_ = renderer();
     KateLineLayoutPtr lineLayout(new KateLineLayout(*renderer_));
-    lineLayout->setLine(m_bmLastFlashPos->line(), -1);
+    lineLayout->setLine(openBracketCursor.line(), -1);
     renderer_->layoutLine(lineLayout, -1 /* no wrap */, false /* no layout cache */);
 
     int lineWidth = qMax(m_view->width() / 5, qMin(int(lineLayout->width() + renderer_->spaceWidth()), m_view->width()));
     m_bmPreview->resize(lineWidth, renderer_->lineHeight() * 3);
     QPoint topLeft = mapToGlobal(QPoint(0, 0));
     m_bmPreview->move(topLeft.x(), topLeft.y());
-    m_bmPreview->setLine(toVirtualCursor(m_bmLastFlashPos->toCursor()).line() + 1);
+    m_bmPreview->setLine(toVirtualCursor(openBracketCursor).line() + 1);
     m_bmPreview->setCenterView(true);
     m_bmPreview->raise();
     m_bmPreview->show();

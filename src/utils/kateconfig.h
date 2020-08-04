@@ -968,6 +968,7 @@ public:
         ScrollBarMiniMapWidth,
         ScrollPastEnd,
         SearchFlags,
+        ShowBracketMatchPreview,
         ShowFoldingBar,
         ShowFoldingPreview,
         ShowIconBar,
