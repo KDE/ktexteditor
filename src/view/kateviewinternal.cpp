@@ -129,7 +129,6 @@ KateViewInternal::KateViewInternal(KTextEditor::ViewPrivate *view)
     , m_bmStart(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmEnd(doc()->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand))
     , m_bmLastFlashPos(doc()->newMovingCursor(KTextEditor::Cursor::invalid()))
-    , m_bmPreview(nullptr)
     , m_dummy(nullptr)
 
     // stay on cursor will avoid that the view scroll around on press return at beginning
@@ -295,7 +294,6 @@ KateViewInternal::~KateViewInternal()
     delete m_bm;
     delete m_bmStart;
     delete m_bmEnd;
-    delete m_bmPreview;
 
     delete m_zoomEventFilter;
 }
@@ -3888,7 +3886,7 @@ void KateViewInternal::showBracketMatchPreview()
     }
 
     if (!m_bmPreview) {
-        m_bmPreview = new KateTextPreview(m_view, this);
+        m_bmPreview.reset(new KateTextPreview(m_view, this));
         m_bmPreview->setAttribute(Qt::WA_ShowWithoutActivating);
         m_bmPreview->setFrameStyle(QFrame::Box);
     }
@@ -3910,8 +3908,7 @@ void KateViewInternal::showBracketMatchPreview()
 
 void KateViewInternal::hideBracketMatchPreview()
 {
-    delete m_bmPreview;
-    m_bmPreview = nullptr;
+    m_bmPreview.reset();
 }
 
 void KateViewInternal::documentTextInserted(KTextEditor::Document *document, const KTextEditor::Range &range)

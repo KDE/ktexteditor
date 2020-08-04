@@ -46,6 +46,8 @@
 #include <QTimer>
 #include <QWidget>
 
+#include <memory>
+
 namespace KTextEditor
 {
 class MovingRange;
@@ -313,7 +315,7 @@ private:
     // Bracket mark and corresponding decorative ranges
     KTextEditor::MovingRange *m_bm, *m_bmStart, *m_bmEnd;
     KTextEditor::MovingCursor *m_bmLastFlashPos;
-    KateTextPreview *m_bmPreview;
+    std::unique_ptr<KateTextPreview> m_bmPreview;
     void updateBracketMarkAttributes();
 
     enum DragState { diNone, diPending, diDragging };
