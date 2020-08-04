@@ -3180,12 +3180,8 @@ void KateViewInternal::resizeEvent(QResizeEvent *e)
 
 void KateViewInternal::moveEvent(QMoveEvent *e)
 {
-    if (e->pos() == e->oldPos()){
-        return;
-    }
-
     // move the bracket match preview to the new location
-    if (m_bmPreview) {
+    if (e->pos() != e->oldPos() && m_bmPreview) {
         showBracketMatchPreview();
     }
 
