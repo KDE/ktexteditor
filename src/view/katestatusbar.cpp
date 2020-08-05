@@ -578,7 +578,7 @@ void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, 
 void KateStatusBar::configChanged()
 {
     toggleWordCount(m_view->config()->showWordCount());
-    int zoom = m_view->renderer()->config()->baseFont().pointSizeF() / KateRendererConfig::global()->baseFont().pointSizeF() * 100;
+    const int zoom = m_view->renderer()->config()->baseFont().pointSizeF() / KateRendererConfig::global()->baseFont().pointSizeF() * 100;
     if (zoom != 100) {
         m_zoomLevel->setVisible(true);
         m_zoomLevel->setText(i18n("Zoom: %1%", zoom));
