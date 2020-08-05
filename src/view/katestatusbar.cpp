@@ -579,7 +579,12 @@ void KateStatusBar::configChanged()
 {
     toggleWordCount(m_view->config()->showWordCount());
     int zoom = m_view->renderer()->config()->baseFont().pointSizeF() / KateRendererConfig::global()->baseFont().pointSizeF() * 100;
-    m_zoomLevel->setText(QStringLiteral("%1%").arg(zoom));
+    if (zoom != 100) {
+        m_zoomLevel->setVisible(true);
+        m_zoomLevel->setText(i18n("Zoom: %1%", zoom));
+    } else {
+        m_zoomLevel->hide();
+    }
 }
 
 void KateStatusBar::changeDictionary(QAction *action)
