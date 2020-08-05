@@ -112,6 +112,13 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     topLayout->addStretch(1);
 
     /**
+     * show the zoom level of the text
+     */
+    m_zoomLevel = new StatusBarButton(this);
+    topLayout->addWidget(m_zoomLevel);
+    connect(m_zoomLevel, &StatusBarButton::clicked, [=] { m_view->renderer()->resetFontSizes(); });
+
+    /**
      * show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
      */
     m_inputMode = new StatusBarButton(this);
@@ -571,6 +578,8 @@ void KateStatusBar::wordCountChanged(int wordsInDocument, int wordsInSelection, 
 void KateStatusBar::configChanged()
 {
     toggleWordCount(m_view->config()->showWordCount());
+    int zoom = m_view->renderer()->config()->baseFont().pointSizeF() / KateRendererConfig::global()->baseFont().pointSizeF() * 100;
+    m_zoomLevel->setText(QStringLiteral("%1%").arg(zoom));
 }
 
 void KateStatusBar::changeDictionary(QAction *action)

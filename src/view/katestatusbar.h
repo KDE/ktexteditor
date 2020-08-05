@@ -100,6 +100,7 @@ private:
     StatusBarButton *m_cursorPosition = nullptr;
     QString m_wordCount;
     StatusBarButton *m_modified = nullptr;
+    StatusBarButton *m_zoomLevel = nullptr;
     StatusBarButton *m_inputMode = nullptr;
     StatusBarButton *m_mode = nullptr;
     StatusBarButton *m_encoding = nullptr;
