@@ -162,7 +162,7 @@ public:
  *
  * \section compifacev2_intro Introduction
  *
- * The CodeCompletionInterfaceV2 is an extended version of the CodeCompletionInferface.
+ * The CodeCompletionInterfaceV2 is an extended version of the CodeCompletionInterface.
  * Refer to the base CodeCompletionInterface for a more detailed description.
  *
  * \section compifacev2_access Accessing the CodeCompletionInterfaceV2
@@ -183,7 +183,7 @@ public:
  * }
  * \endcode
  *
- * \since 5.72
+ * \since 5.74
  */
 class KTEXTEDITOR_EXPORT CodeCompletionInterfaceV2 : public CodeCompletionInterface
 {
@@ -191,20 +191,16 @@ class KTEXTEDITOR_EXPORT CodeCompletionInterfaceV2 : public CodeCompletionInterf
 public:
     virtual ~CodeCompletionInterfaceV2();
     /**
-     * Invoke code completion over a given range, with sepcific models and invocation type.
-     * \param models List of models to start. If this is an empty list, all registered models are started.
-     *
-     * \since 5.72
+     * Invoke code completion over a given range, with specific models and invocation type.
+     * \param models list of models to start. If this is an empty list, all registered models are started.
      */
     virtual void startCompletion(const Range &word, const QList<CodeCompletionModel *> &models = QList<CodeCompletionModel *>(), CodeCompletionModel::InvocationType invocationType = CodeCompletionModel::ManualInvocation) = 0;
     using CodeCompletionInterface::startCompletion;
 
     /**
-     * Obtain list of registered code completion models
+     * Obtain the list of registered code completion models.
      * \returns a list of a models that are currently registered
-     * \see registerCompletionModel()
-     *
-     * \since 5.72
+     * \see registerCompletionModel(CodeCompletionModel*)
      */
     virtual QList<CodeCompletionModel*> codeCompletionModels() const = 0;
 };
