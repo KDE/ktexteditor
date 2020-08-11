@@ -1,28 +1,17 @@
-/* This file is part of the KDE libraries
-   Copyright (C) 2002, 2003 Anders Lund <anders.lund@lund.tdcadsl.dk>
-   Copyright (C) 2003 Christoph Cullmann <cullmann@kde.org>
-   Copyright (C) 2001 Joseph Wenninger <jowenn@kde.org>
-   Copyright (C) 2006 Dominik Haumann <dhdev@gmx.de>
-   Copyright (C) 2007 Mirko Stocker <me@misto.ch>
-   Copyright (C) 2009 Michel Ludwig <michel.ludwig@kdemail.net>
-   Copyright (C) 2009 Erlend Hamberg <ehamberg@gmail.com>
+/*
+    This file is part of the KDE libraries
+    SPDX-FileCopyrightText: 2002, 2003 Anders Lund <anders.lund@lund.tdcadsl.dk>
+    SPDX-FileCopyrightText: 2003 Christoph Cullmann <cullmann@kde.org>
+    SPDX-FileCopyrightText: 2001 Joseph Wenninger <jowenn@kde.org>
+    SPDX-FileCopyrightText: 2006 Dominik Haumann <dhdev@gmx.de>
+    SPDX-FileCopyrightText: 2007 Mirko Stocker <me@misto.ch>
+    SPDX-FileCopyrightText: 2009 Michel Ludwig <michel.ludwig@kdemail.net>
+    SPDX-FileCopyrightText: 2009 Erlend Hamberg <ehamberg@gmail.com>
 
-   Based on work of:
-     Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
+    Based on work of:
+    SPDX-FileCopyrightText: 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
 
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License version 2 as published by the Free Software Foundation.
-
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public License
-   along with this library; see the file COPYING.LIB.  If not, write to
-   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.
+    SPDX-License-Identifier: LGPL-2.0-only
 */
 
 // BEGIN Includes

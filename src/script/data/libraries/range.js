@@ -1,6 +1,9 @@
-// This file is part of the Kate project within KDE.
-// Copyright (C) 2009-2018 Dominik Haumann <dhaumann@kde.org>
-// License: MIT
+/*
+    This file is part of the Kate project within KDE.
+    SPDX-FileCopyrightText: 2009-2018 Dominik Haumann <dhaumann@kde.org>
+
+    SPDX-License-Identifier: MIT
+*/
 
 // required katepart js libraries
 require ("cursor.js");

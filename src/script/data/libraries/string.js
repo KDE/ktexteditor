@@ -1,23 +1,11 @@
 /*
- * name: Helper String Functions (copied from cstyle.js to be reused by other indenters)
- * license: LGPL v3
- * author: Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>,
- *         Gerald Senarclens de Grancy <oss@senarclens.eu>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public
- * License version 2 as published by the Free Software Foundation.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
- *
- * You should have received a copy of the GNU Library General Public License
- * along with this library; see the file COPYING.LIB.  If not, write to
- * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- */
+    Helper String Functions (copied from cstyle.js to be reused by other indenters)
+    SPDX-FileCopyrightText: Dominik Haumann <dhdev@gmx.de>
+    SPDX-FileCopyrightText: Milian Wolff <mail@milianw.de>
+    SPDX-FileCopyrightText: Gerald Senarclens de Grancy <oss@senarclens.eu>
+
+    SPDX-License-Identifier: LGPL-2.0-only
+*/
 
 //BEGIN String functions
 /**

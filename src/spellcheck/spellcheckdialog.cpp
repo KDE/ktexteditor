@@ -1,27 +1,13 @@
-/*  SPDX-License-Identifier: LGPL-2.0-or-later
+/*
+    SPDX-FileCopyrightText: 2009-2010 Michel Ludwig <michel.ludwig@kdemail.net>
+    SPDX-FileCopyrightText: 2008 Mirko Stocker <me@misto.ch>
+    SPDX-FileCopyrightText: 2004-2005 Anders Lund <anders@alweb.dk>
+    SPDX-FileCopyrightText: 2002 John Firebaugh <jfirebaugh@kde.org>
+    SPDX-FileCopyrightText: 2001-2004 Christoph Cullmann <cullmann@kde.org>
+    SPDX-FileCopyrightText: 2001 Joseph Wenninger <jowenn@kde.org>
+    SPDX-FileCopyrightText: 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
 
-    Copyright (C) 2009-2010 by Michel Ludwig <michel.ludwig@kdemail.net>
-    Copyright (C) 2008 Mirko Stocker <me@misto.ch>
-    Copyright (C) 2004-2005 Anders Lund <anders@alweb.dk>
-    Copyright (C) 2002 John Firebaugh <jfirebaugh@kde.org>
-    Copyright (C) 2001-2004 Christoph Cullmann <cullmann@kde.org>
-    Copyright (C) 2001 Joseph Wenninger <jowenn@kde.org>
-    Copyright (C) 1999 Jochen Wilhelmy <digisnap@cs.tu-berlin.de>
-
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
-
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
+    SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #include "spellcheckdialog.h"

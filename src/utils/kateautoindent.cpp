@@ -1,21 +1,14 @@
-/* This file is part of the KDE libraries
-   Copyright (C) 2003 Jesse Yurkovich <yurkjes@iit.edu>
-   Copyright (C) 2004 Anders Lund <anders@alweb.dk> (KateVarIndent class)
-   Copyright (C) 2005 Dominik Haumann <dhdev@gmx.de> (basic support for config page)
+/*
+    This file is part of the KDE libraries
+    SPDX-FileCopyrightText: 2003 Jesse Yurkovich <yurkjes@iit.edu>
 
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License version 2 as published by the Free Software Foundation.
+    KateVarIndent class:
+    SPDX-FileCopyrightText: 2004 Anders Lund <anders@alweb.dk>
 
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+    Basic support for config page:
+    SPDX-FileCopyrightText: 2005 Dominik Haumann <dhdev@gmx.de>
 
-   You should have received a copy of the GNU Library General Public License
-   along with this library; see the file COPYING.LIB.  If not, write to
-   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.
+    SPDX-License-Identifier: LGPL-2.0-only
 */
 
 #include "kateautoindent.h"

@@ -1,8 +1,8 @@
 /*
- *   SPDX-FileCopyrightText: %{CURRENT_YEAR} %{AUTHOR} <%{EMAIL}>
- *
- *   SPDX-License-Identifier: GPL-2.0-or-later
- */
+    SPDX-FileCopyrightText: %{CURRENT_YEAR} %{AUTHOR} <%{EMAIL}>
+
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
 
 #ifndef %{APPNAMEUC}VIEW_H
 #define %{APPNAMEUC}VIEW_H
