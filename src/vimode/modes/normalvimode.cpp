@@ -213,6 +213,7 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
             if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') ||
                 r == QLatin1Char('^')) {
                 m_register = r;
+                m_appendText = r != m_keys[1];
                 m_keys.clear();
                 return true;
             } else {
@@ -431,6 +432,7 @@ void NormalViMode::resetParser()
     m_iscounted = false;
     m_countTemp = 0;
     m_register = QChar::Null;
+    m_appendText = false;
     m_findWaitingForChar = false;
     m_matchingCommands.clear();
     m_matchingMotions.clear();

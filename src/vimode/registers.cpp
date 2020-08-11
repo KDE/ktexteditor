@@ -82,7 +82,7 @@ void Registers::setInsertStopped(const QString &text)
     set(InsertStoppedRegister, text);
 }
 
-void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
+void Registers::set(const QChar &reg, const QString &text, OperationMode flag, bool append)
 {
     if (reg == BlackHoleRegister) {
         return;
@@ -95,7 +95,11 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
     } else if (reg == SystemSelectionRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Selection);
     } else {
-        m_registers.insert(reg, Register(text, flag));
+        if (append) {
+            m_registers[reg].first.append(text);
+        } else {
+            m_registers.insert(reg, Register(text, flag));
+        }
     }
 
     if (reg == ZeroRegister || reg == FirstNumberedRegister || reg == SmallDeleteRegister) {
