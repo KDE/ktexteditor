@@ -177,6 +177,24 @@ struct IndexPair {
 
 QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, const KTextEditor::Range &inputRange, bool backwards, QRegularExpression::PatternOptions options)
 {
+    // Returned if no matches are found
+    QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
+
+    // Note that some methods in vimode (e.g. Searcher::findPatternWorker) rely on the
+    // this method returning here when pattern.isEmpty()
+    // Also if repairPattern() is called on an invalid regex pattern it may cause asserts
+    // in QString (e.g. if the pattern is just '\\', pattern.size() is 1, and repaierPattern
+    // expects at least one character after a \)
+    if (pattern.isEmpty() || !QRegularExpression(pattern).isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
+        return noResult;
+    }
+
+    QRegularExpression regexp;
+
+    // detect pattern type (single- or mutli-line)
+    bool stillMultiLine;
+    const QString repairedPattern = repairPattern(pattern, stillMultiLine);
+
     // Enable multiline mode, so that the ^ and $ metacharacters in the pattern
     // are allowed to match, respectively, immediately after and immediately
     // before any newline in the subject string, as well as at the very beginning
@@ -185,23 +203,13 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
     // Whole lines are passed to QRegularExpression, so that e.g. if the inputRange
     // ends in the middle of a line, then a '$' won't match at that position. And
     // matches that are out of the inputRange are rejected.
-    options |= QRegularExpression::MultilineOption;
-
-    QRegularExpression regexp;
-
-    // detect pattern type (single- or mutli-line)
-    bool stillMultiLine;
-    const QString repairedPattern = repairPattern(pattern, stillMultiLine);
+    if (stillMultiLine) {
+        options |= QRegularExpression::MultilineOption;
+    }
 
     regexp.setPattern(repairedPattern);
     regexp.setPatternOptions(options);
-
-    // returned if no matches are found
-    QVector<KTextEditor::Range> noResult(1, KTextEditor::Range::invalid());
-
-    // Note that some methods in vimode (e.g. Searcher::findPatternWorker) rely on the
-    // fact that this checks for pattern.isEmpty()
-    if (pattern.isEmpty() || !regexp.isValid() || !inputRange.isValid() || inputRange.isEmpty()) {
+    if (!regexp.isValid()) {
         return noResult;
     }
 
@@ -235,6 +243,8 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
             const QString textLine = m_document->line(docLineIndex);
             lineLens[i] = textLine.length();
             wholeRange.append(textLine);
+
+            // This check is needed as some parts in vimode rely on this behaviour
             if (i != rangeEndLine) {
                 wholeRange.append(QLatin1Char('\n'));
             }
