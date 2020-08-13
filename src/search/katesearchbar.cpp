@@ -1093,7 +1093,7 @@ void KateSearchBar::showExtendedContextMenu(bool forPattern, const QPoint &pos)
                 addMenuManager.addEntry(QStringLiteral("^"), QString(), i18n("Beginning of line"));
                 addMenuManager.addEntry(QStringLiteral("$"), QString(), i18n("End of line"));
                 addMenuManager.addSeparator();
-                addMenuManager.addEntry(QStringLiteral("."), QString(), i18n("Match any character execluding new line (by default)"));
+                addMenuManager.addEntry(QStringLiteral("."), QString(), i18n("Match any character excluding new line (by default)"));
                 addMenuManager.addEntry(QStringLiteral("+"), QString(), i18n("One or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("*"), QString(), i18n("Zero or more occurrences"));
                 addMenuManager.addEntry(QStringLiteral("?"), QString(), i18n("Zero or one occurrences"));
