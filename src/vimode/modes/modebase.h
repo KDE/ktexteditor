@@ -135,7 +135,6 @@ protected:
 
 protected:
     QChar m_register;
-    bool m_appendText;
 
     Range m_commandRange;
     unsigned int m_count = 0;

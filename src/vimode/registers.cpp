@@ -68,7 +68,7 @@ void Registers::setInsertStopped(const QString &text)
     set(InsertStoppedRegister, text);
 }
 
-void Registers::set(const QChar &reg, const QString &text, OperationMode flag, bool append)
+void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
 {
     if (reg == BlackHoleRegister) {
         return;
@@ -81,10 +81,11 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag, b
     } else if (reg == SystemSelectionRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Selection);
     } else {
-        if (append) {
-            m_registers[reg].first.append(text);
+        const QChar lowercase_reg = reg.toLower();
+        if (reg != lowercase_reg) {
+            m_registers[lowercase_reg].first.append(text);
         } else {
-            m_registers.insert(reg, Register(text, flag));
+            m_registers.insert(lowercase_reg, Register(text, flag));
         }
     }
 
@@ -120,8 +121,9 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         QString regContent = QApplication::clipboard()->text(QClipboard::Selection);
         regPair = Register(regContent, CharWise);
     } else {
-        if (m_registers.contains(_reg)) {
-            regPair = m_registers.value(_reg);
+        const QChar lowercase_reg = _reg.toLower();
+        if (m_registers.contains(lowercase_reg)) {
+            regPair = m_registers.value(lowercase_reg);
         }
     }
 

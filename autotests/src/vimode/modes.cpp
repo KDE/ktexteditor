@@ -740,6 +740,16 @@ void ModesTest::NormalCommandsTests()
 
     // Testing "Y"
     DoTest("qwerty", "ld Yep", "qertyerty");
+    // Testing ""<x>y" where x is in a-z (overwrite/insert to register)
+    DoTest("x", "\"ayh\"Ayl\"ap", "xx");
+    DoTest("xy", "\"byll\"byll\"bp", "xyy");
+    DoTest("xyz", "\"cy3l$\"cp", "xyzxyz");
+    DoTest("abz", "\"xyll\"yyll\"zyll\"zp\"xp\"yp", "abzzab");
+    DoTest("abcdwxyz", "\"byh\"ayll\"Byll\"cyll\"dyll\"dyl\"zye$\"zp\"ap\"Cp\"bp\"dp", "abcdwxyzwxyzacbw");
+    //Testing "<X>y" where X is in A-Z (append-copy)
+    DoTest("foo bar ", "\"ayew\"Aye$\"ap", "foo bar foobar");
+    DoTest("foo bar 2", "\"ayew\"Ayew\"aye\"ap", "foo bar 22");
+    DoTest("123 foo ", "\"ayew\"zye\"Aye0\"Zy4l$\"Zp\"ap", "123 foo foo123 123foo");
 
     // Testing "X"
     DoTest("ABCD", "$XX", "AD");

@@ -39,7 +39,7 @@ public:
 
     void setInsertStopped(const QString &text);
 
-    void set(const QChar &reg, const QString &text, OperationMode flag = CharWise, bool append = true);
+    void set(const QChar &reg, const QString &text, OperationMode flag = CharWise);
     QString getContent(const QChar &reg) const;
     OperationMode getFlag(const QChar &reg) const;
 

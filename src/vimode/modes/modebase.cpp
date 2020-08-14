@@ -790,7 +790,7 @@ OperationMode ModeBase::getRegisterFlag(const QChar &reg) const
 
 void ModeBase::fillRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    m_viInputModeManager->globalState()->registers()->set(reg, text, flag, m_appendText);
+    m_viInputModeManager->globalState()->registers()->set(reg, text, flag);
 }
 
 KTextEditor::Cursor ModeBase::getNextJump(KTextEditor::Cursor cursor) const
