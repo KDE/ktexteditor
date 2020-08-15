@@ -1187,8 +1187,15 @@ void KateSearchBar::onPowerModeChanged(int /*index*/)
 
 void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, SearchDirection searchDirection)
 {
-    const bool selected = view->selection();
-    if (selected) {
+    if (!view->selection()) {
+        // Select current word so we can search for that
+        const Cursor cursorPos = view->cursorPosition();
+        KTextEditor::Range wordRange = view->document()->wordRangeAt(cursorPos);
+        if (wordRange.isValid()) {
+            selectRange(view, wordRange);
+        }
+    }
+    if (view->selection()) {
         const QString pattern = view->selectionText();
 
         // How to find?
@@ -1225,13 +1232,6 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
             if (match2.isValid()) {
                 selectRange(view, match2.range());
             }
-        }
-    } else {
-        // Select current word so we can search for that the next time
-        const Cursor cursorPos = view->cursorPosition();
-        KTextEditor::Range wordRange = view->document()->wordRangeAt(cursorPos);
-        if (wordRange.isValid()) {
-            selectRange(view, wordRange);
         }
     }
 }
