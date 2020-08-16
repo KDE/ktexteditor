@@ -725,6 +725,11 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo\nbar", "dd", "bar");
     DoTest("foo\nbar", "2dd", "");
     DoTest("foo\nbar\n", "Gdd", "foo\nbar");
+    //Testing numbered registers
+    DoTest("hello\nworld", "dddd\"2p\"1p", "\nhello\nworld");
+    DoTest("foo\nbar", "ddD\"1p", "\nfoo");
+    DoTest("abc\nlmn\nxyz", "dddd\"2dd\"1p\"2p", "\nxyz\nlmn");
+    DoTest("9\n8\n7\n6\n5\n4\n3\n2\n1\n0", "\"1dddddddddddddddd2dd\"1p\"2p\"3p\"4p\"5p\"6p\"7p\"8p\"9p", "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0");
 
     // Testing "D"
     DoTest("foo bar", "lllD", "foo");

@@ -21,6 +21,7 @@ namespace KateVi
 const QChar BlackHoleRegister = QLatin1Char('_');
 const QChar SmallDeleteRegister = QLatin1Char('-');
 const QChar ZeroRegister = QLatin1Char('0');
+const QChar PrependNumberedRegister = QLatin1Char('!');
 const QChar FirstNumberedRegister = QLatin1Char('1');
 const QChar LastNumberedRegister = QLatin1Char('9');
 const QChar SystemSelectionRegister = QLatin1Char('*');
@@ -47,7 +48,7 @@ private:
     typedef QPair<QString, OperationMode> Register;
 
 private:
-    void setNumberedRegister(const QString &text, OperationMode flag = CharWise);
+    void setNumberedRegister(const QChar &reg, const QString &text, OperationMode flag = CharWise);
     Register getRegister(const QChar &reg) const;
 
 private:

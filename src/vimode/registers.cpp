@@ -74,8 +74,8 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         return;
     }
 
-    if (reg >= FirstNumberedRegister && reg <= LastNumberedRegister) { // "kill ring" registers
-        setNumberedRegister(text);
+    if (reg == PrependNumberedRegister || (reg >= FirstNumberedRegister && reg <= LastNumberedRegister)) { // "kill ring" registers
+        setNumberedRegister(reg, text, flag);
     } else if (reg == SystemClipboardRegister) {
         QApplication::clipboard()->setText(text, QClipboard::Clipboard);
     } else if (reg == SystemSelectionRegister) {
@@ -89,7 +89,7 @@ void Registers::set(const QChar &reg, const QString &text, OperationMode flag)
         }
     }
 
-    if (reg == ZeroRegister || reg == FirstNumberedRegister || reg == SmallDeleteRegister) {
+    if (reg == ZeroRegister || reg == PrependNumberedRegister || reg == SmallDeleteRegister) {
         m_default = reg;
     }
 }
@@ -114,6 +114,10 @@ Registers::Register Registers::getRegister(const QChar &reg) const
         if (m_numbered.size() > index) {
             regPair = m_numbered.at(index);
         }
+    } else if (_reg == PrependNumberedRegister) {
+        if (!m_numbered.isEmpty()) {
+            regPair = m_numbered.front();
+        }
     } else if (_reg == SystemClipboardRegister) {
         QString regContent = QApplication::clipboard()->text(QClipboard::Clipboard);
         regPair = Register(regContent, CharWise);
@@ -130,12 +134,22 @@ Registers::Register Registers::getRegister(const QChar &reg) const
     return regPair;
 }
 
-void Registers::setNumberedRegister(const QString &text, OperationMode flag)
+void Registers::setNumberedRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    if (m_numbered.size() == 9) {
-        m_numbered.removeLast();
-    }
+    if (reg == PrependNumberedRegister) {
+        if (m_numbered.size() == 9) {
+            m_numbered.removeLast();
+        }
 
-    // register 0 is used for the last yank command, so insert at position 1
-    m_numbered.prepend(Register(text, flag));
+        // register 0 is used for the last yank command, so insert at position 1
+        m_numbered.prepend(Register(text, flag));
+    } else {
+        const int index = QString(reg).toInt() - 1;
+        // prepopulate the "missing" numbered registers if they are filled sparsely
+        for (int i = m_numbered.size(); i <= index; ++i) {
+            m_numbered.append(Register());
+        }
+
+        m_numbered[index].first = text;
+    }
 }

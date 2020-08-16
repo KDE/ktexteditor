@@ -47,7 +47,7 @@ void ModeBase::yankToClipBoard(QChar chosen_register, const QString &text)
 {
     // only yank to the clipboard if no register was specified,
     // textlength > 1 and there is something else then whitespace
-    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-')) && text.length() > 1 && !text.trimmed().isEmpty()) {
+    if ((chosen_register == QLatin1Char('0') || chosen_register == QLatin1Char('-') || chosen_register == PrependNumberedRegister) && text.length() > 1 && !text.trimmed().isEmpty()) {
         KTextEditor::EditorPrivate::self()->copyToClipboard(text);
     }
 }
@@ -56,7 +56,7 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
 {
     r.normalize();
     bool res = false;
-    QString removedText = getRange(r, mode);
+    const QString removedText = getRange(r, mode);
 
     if (mode == LineWise) {
         doc()->editStart();
@@ -68,14 +68,21 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
         res = doc()->removeText(r.toEditorRange(), mode == Block);
     }
 
-    QChar chosenRegister = getChosenRegister(ZeroRegister);
-    if (addToRegister) {
-        if (r.startLine == r.endLine) {
-            chosenRegister = getChosenRegister(SmallDeleteRegister);
-            fillRegister(chosenRegister, removedText, mode);
-        } else {
-            fillRegister(chosenRegister, removedText, mode);
-        }
+    const QChar lastChar = removedText.count() > 0 ? removedText.back() : QLatin1Char('\0');
+    QChar chosenRegister;
+    if (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r')) {
+        chosenRegister = getChosenRegister(PrependNumberedRegister);
+    } else {
+        chosenRegister = getChosenRegister(SmallDeleteRegister);
+    }
+
+    if (chosenRegister >= QLatin1Char('0') && chosenRegister <= QLatin1Char('9')) {
+        // store text on the numbered register, then also prepend it
+        fillRegister(chosenRegister, removedText, mode);
+        chosenRegister = PrependNumberedRegister;
+    }
+    if (addToRegister || chosenRegister == PrependNumberedRegister || chosenRegister == SmallDeleteRegister) {
+        fillRegister(chosenRegister, removedText, mode);
     }
     yankToClipBoard(chosenRegister, removedText);
 
