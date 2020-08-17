@@ -100,7 +100,7 @@ bool Commands::exec(KTextEditor::View *view, const QString &_cmd, QString &msg, 
             }
 
             QChar r = args.at(i).at(0);
-            if (args.at(i).size() == 1 && ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('+') || r == QLatin1Char('*'))) {
+            if (args.at(i).size() == 1 && ((r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*'))) {
                 nm->setRegister(r);
             }
         }

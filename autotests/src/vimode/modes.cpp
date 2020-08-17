@@ -735,6 +735,10 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo bar", "lllD", "foo");
     DoTest("foo\nfoo2\nfoo3", "l2D", "f\nfoo3");
     DoTest("qwerty", "d frDai", "wei");
+    //Testing small delete (-) register
+    DoTest("12345\n67890", "ddD\"-p", "67890");
+    DoTest("foo\nbar\nhello world", "ld$dj$\"-p", "hello worldoo");
+    DoTest("abc\nlmn\nxyz", "yyjlYjxk\"-p", "abc\nlmyn\nxz");
 
     // Testing "d"
     DoTest("foobar", "ld2l", "fbar");
