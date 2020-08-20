@@ -70,25 +70,19 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     KAcceleratorManager::setNoAccel(this);
     setFocusProxy(m_view);
 
-    /**
-     * just add our status bar to central widget, full sized
-     */
+    // just add our status bar to central widget, full sized
     QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
     topLayout->setSpacing(4);
 
-    /**
-     * show modification state of the document
-     * TODO Using a (StatusBar)Button is currently pointless but handy due to no "setIcon()" function in QLabel.
-     *      Add some useful action when button is clicked, e.g. save document or show tool-tip
-     *      or find a way to not show a "focus frame" when hovered by mouse
-     */
+    // show modification state of the document
+    // TODO Using a (StatusBar)Button is currently pointless but handy due to no "setIcon()" function in QLabel.
+    //      Add some useful action when button is clicked, e.g. save document or show tool-tip
+    //      or find a way to not show a "focus frame" when hovered by mouse
     m_modified = new StatusBarButton(this);
     topLayout->addWidget(m_modified);
 
-    /**
-     * show Line XXX, Column XXX
-     */
+    // show Line XXX, Column XXX
     m_cursorPosition = new StatusBarButton(this);
     topLayout->addWidget(m_cursorPosition);
     m_cursorPosition->setWhatsThis(i18n("Current cursor position. Click to go to a specific line."));
@@ -97,24 +91,18 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     // Separate the status line in a left and right part
     topLayout->addStretch(1);
 
-    /**
-     * show the zoom level of the text
-     */
+    // show the zoom level of the text
     m_zoomLevel = new StatusBarButton(this);
     topLayout->addWidget(m_zoomLevel);
     connect(m_zoomLevel, &StatusBarButton::clicked, [=] { m_view->renderer()->resetFontSizes(); });
 
-    /**
-     * show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
-     */
+    // show the current mode, like INSERT, OVERWRITE, VI + modifiers like [BLOCK]
     m_inputMode = new StatusBarButton(this);
     topLayout->addWidget(m_inputMode);
     m_inputMode->setWhatsThis(i18n("Insert mode and VI input mode indicator. Click to change the mode."));
     connect(m_inputMode, &StatusBarButton::clicked, [=] { m_view->currentInputMode()->toggleInsert(); });
 
-    /**
-     * Add dictionary button which allows user to switch dictionary of the document
-     */
+    // Add dictionary button which allows user to switch dictionary of the document
     m_dictionary = new StatusBarButton(this);
     topLayout->addWidget(m_dictionary, 0);
     m_dictionary->setWhatsThis(i18n("Change dictionary"));
@@ -138,9 +126,7 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
     m_dictionary->setMenu(m_dictionaryMenu);
     connect(m_dictionaryGroup, &QActionGroup::triggered, this, &KateStatusBar::changeDictionary);
 
-    /**
-     * allow to change indentation configuration
-     */
+    // allow to change indentation configuration
     m_tabsIndent = new StatusBarButton(this);
     topLayout->addWidget(m_tabsIndent);
 
@@ -176,25 +162,19 @@ KateStatusBar::KateStatusBar(KTextEditor::ViewPrivate *view)
 
     m_tabsIndent->setMenu(m_indentSettingsMenu);
 
-    /**
-     * add encoding button which allows user to switch encoding of document
-     * this will reuse the encoding action menu of the view
-     */
+    // add encoding button which allows user to switch encoding of document
+    // this will reuse the encoding action menu of the view
     m_encoding = new StatusBarButton(this);
     topLayout->addWidget(m_encoding);
     m_encoding->setMenu(m_view->encodingAction()->menu());
     m_encoding->setWhatsThis(i18n("Encoding"));
 
-    /**
-     * load the mode menu, which contains a scrollable list + search bar.
-     * This is an alternative menu to the mode action menu of the view.
-     */
+    // load the mode menu, which contains a scrollable list + search bar.
+    // This is an alternative menu to the mode action menu of the view.
     m_modeMenuList = new KateModeMenuList(i18n("Mode"), this);
     m_modeMenuList->setWhatsThis(i18n("Here you can choose which mode should be used for the current document. This will influence the highlighting and folding being used, for example."));
     m_modeMenuList->updateMenu(m_view->doc());
-    /**
-     * add mode button which allows user to switch mode of document
-     */
+    // add mode button which allows user to switch mode of document
     m_mode = new StatusBarButton(this);
     topLayout->addWidget(m_mode);
     m_modeMenuList->setButton(m_mode, KateModeMenuList::AlignHInverse, KateModeMenuList::AlignTop, KateModeMenuList::AutoUpdateTextButton(false));
@@ -363,9 +343,7 @@ void KateStatusBar::modifiedChanged()
     const bool modOnHD = m_view->doc()->isModifiedOnDisc();
     const bool readOnly = !m_view->doc()->isReadWrite();
 
-    /**
-     * combine to modified status, update only if changed
-     */
+    // combine to modified status, update only if changed
     unsigned int newStatus = (unsigned int)mod | ((unsigned int)modOnHD << 1) | ((unsigned int)readOnly << 2);
     if (m_modifiedStatus == newStatus)
         return;

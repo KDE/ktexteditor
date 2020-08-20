@@ -237,12 +237,10 @@ void TextBuffer::wrapLine(const KTextEditor::Cursor &position)
     // get block, this will assert on invalid line
     int blockIndex = blockForLine(position.line());
 
-    /**
-     * let the block handle the wrapLine
-     * this can only lead to one more line in this block
-     * no other blocks will change
-     * this call will trigger fixStartLines
-     */
+    // let the block handle the wrapLine
+    // this can only lead to one more line in this block
+    // no other blocks will change
+    // this call will trigger fixStartLines
     ++m_lines; // first alter the line counter, as functions called will need the valid one
     m_blocks.at(blockIndex)->wrapLine(position, blockIndex);
 
@@ -286,12 +284,10 @@ void TextBuffer::unwrapLine(int line)
     // is this the first line in the block?
     bool firstLineInBlock = (line == m_blocks.at(blockIndex)->startLine());
 
-    /**
-     * let the block handle the unwrapLine
-     * this can either lead to one line less in this block or the previous one
-     * the previous one could even end up with zero lines
-     * this call will trigger fixStartLines
-     */
+    // let the block handle the unwrapLine
+    // this can either lead to one line less in this block or the previous one
+    // the previous one could even end up with zero lines
+    // this call will trigger fixStartLines
     m_blocks.at(blockIndex)->unwrapLine(line, (blockIndex > 0) ? m_blocks.at(blockIndex - 1) : nullptr, firstLineInBlock ? (blockIndex - 1) : blockIndex);
     --m_lines;
 
@@ -416,14 +412,10 @@ int TextBuffer::blockForLine(int line) const
     Q_ASSERT(!m_blocks.isEmpty());
     Q_ASSERT(m_lastUsedBlock >= 0);
 
-    /**
-     * shortcut: try last block first
-     */
+    // shortcut: try last block first
     if (m_lastUsedBlock < m_blocks.size()) {
-        /**
-         * check if block matches
-         * if yes, just return again this block
-         */
+        // check if block matches
+        // if yes, just return again this block
         TextBlock *block = m_blocks[m_lastUsedBlock];
         const int start = block->startLine();
         const int lines = block->lines();
@@ -432,11 +424,9 @@ int TextBuffer::blockForLine(int line) const
         }
     }
 
-    /**
-     * search for right block
-     * use binary search
-     * if we leave this loop not by returning the found element we have an error
-     */
+    // search for right block
+    // use binary search
+    // if we leave this loop not by returning the found element we have an error
     int blockStart = 0;
     int blockEnd = m_blocks.size() - 1;
     while (blockEnd >= blockStart) {
@@ -492,9 +482,7 @@ void TextBuffer::fixStartLines(int startBlock)
 
 void TextBuffer::balanceBlock(int index)
 {
-    /**
-     * two cases, too big or too small block
-     */
+    // two cases, too big or too small block
     TextBlock *blockToBalance = m_blocks.at(index);
 
     // first case, too big one, split it
@@ -554,27 +542,19 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
     // codec must be set!
     Q_ASSERT(m_textCodec);
 
-    /**
-     * first: clear buffer in any case!
-     */
+    // first: clear buffer in any case!
     clear();
 
-    /**
-     * construct the file loader for the given file, with correct prober type
-     */
+    // construct the file loader for the given file, with correct prober type
     Kate::TextLoader file(filename, m_encodingProberType);
 
-    /**
-     * triple play, maximal three loading rounds
-     * 0) use the given encoding, be done, if no encoding errors happen
-     * 1) use BOM to decided if Unicode or if that fails, use encoding prober, if no encoding errors happen, be done
-     * 2) use fallback encoding, be done, if no encoding errors happen
-     * 3) use again given encoding, be done in any case
-     */
+    // triple play, maximal three loading rounds
+    // 0) use the given encoding, be done, if no encoding errors happen
+    // 1) use BOM to decided if Unicode or if that fails, use encoding prober, if no encoding errors happen, be done
+    // 2) use fallback encoding, be done, if no encoding errors happen
+    // 3) use again given encoding, be done in any case
     for (int i = 0; i < (enforceTextCodec ? 1 : 4); ++i) {
-        /**
-         * kill all blocks beside first one
-         */
+        // kill all blocks beside first one
         for (int b = 1; b < m_blocks.size(); ++b) {
             TextBlock *block = m_blocks.at(b);
             block->clearLines();
@@ -582,18 +562,14 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
         }
         m_blocks.resize(1);
 
-        /**
-         * remove lines in first block
-         */
+        // remove lines in first block
         m_blocks.last()->clearLines();
         m_lines = 0;
 
-        /**
-         * try to open file, with given encoding
-         * in round 0 + 3 use the given encoding from user
-         * in round 1 use 0, to trigger detection
-         * in round 2 use fallback
-         */
+        // try to open file, with given encoding
+        // in round 0 + 3 use the given encoding from user
+        // in round 1 use 0, to trigger detection
+        // in round 2 use fallback
         QTextCodec *codec = m_textCodec;
         if (i == 1) {
             codec = nullptr;
@@ -628,59 +604,41 @@ bool TextBuffer::load(const QString &filename, bool &encodingErrors, bool &tooLo
             if (longestLineLoaded < length)
                 longestLineLoaded = length;
 
-            /**
-             * split lines, if too large
-             */
+            // split lines, if too large
             do {
-                /**
-                 * calculate line length
-                 */
+                // calculate line length
                 int lineLength = length;
                 if ((m_lineLengthLimit > 0) && (lineLength > m_lineLengthLimit)) {
-                    /**
-                     * search for place to wrap
-                     */
+                    // search for place to wrap
                     int spacePosition = m_lineLengthLimit - 1;
                     for (int testPosition = m_lineLengthLimit - 1; (testPosition >= 0) && (testPosition >= (m_lineLengthLimit - (m_lineLengthLimit / 10))); --testPosition) {
-                        /**
-                         * wrap place found?
-                         */
+                        // wrap place found?
                         if (unicodeData[testPosition].isSpace() || unicodeData[testPosition].isPunct()) {
                             spacePosition = testPosition;
                             break;
                         }
                     }
 
-                    /**
-                     * wrap the line
-                     */
+                    // wrap the line
                     lineLength = spacePosition + 1;
                     length -= lineLength;
                     tooLongLinesWrapped = true;
                 } else {
-                    /**
-                     * be done after this round
-                     */
+                    // be done after this round
                     length = 0;
                 }
 
-                /**
-                 * construct new text line with content from file
-                 * move data pointer
-                 */
+                // construct new text line with content from file
+                // move data pointer
                 QString textLine(unicodeData, lineLength);
                 unicodeData += lineLength;
 
-                /**
-                 * ensure blocks aren't too large
-                 */
+                // ensure blocks aren't too large
                 if (m_blocks.last()->lines() >= m_blockSize) {
                     m_blocks.append(new TextBlock(this, m_blocks.last()->startLine() + m_blocks.last()->lines()));
                 }
 
-                /**
-                 * append line to last block
-                 */
+                // append line to last block
                 m_blocks.last()->appendLine(textLine);
                 ++m_lines;
             } while (length > 0);
@@ -755,9 +713,7 @@ void TextBuffer::setTextCodec(QTextCodec *codec)
 
 bool TextBuffer::save(const QString &filename)
 {
-    /**
-     * codec must be set, else below we fail!
-     */
+    // codec must be set, else below we fail!
     Q_ASSERT(m_textCodec);
 
     SaveResult saveRes = saveBufferUnprivileged(filename);
@@ -765,10 +721,8 @@ bool TextBuffer::save(const QString &filename)
     if (saveRes == SaveResult::Failed) {
         return false;
     } else if (saveRes == SaveResult::MissingPermissions) {
-        /**
-         * either unit-test mode or we're missing permissions to write to the
-         * file => use temporary file and try to use authhelper
-         */
+        // either unit-test mode or we're missing permissions to write to the
+        // file => use temporary file and try to use authhelper
         if (!saveBufferEscalated(filename)) {
             return false;
         }
@@ -787,9 +741,7 @@ bool TextBuffer::save(const QString &filename)
 
 bool TextBuffer::saveBuffer(const QString &filename, KCompressionDevice &saveFile)
 {
-    /**
-     * construct stream + disable Unicode headers
-     */
+    // construct stream + disable Unicode headers
     QTextStream stream(&saveFile);
     stream.setCodec(QTextCodec::codecForName("UTF-16"));
 
@@ -860,10 +812,8 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
         return SaveResult::MissingPermissions;
     }
 
-    /**
-     * construct correct filter device
-     * we try to use the same compression as for opening
-     */
+    // construct correct filter device
+    // we try to use the same compression as for opening
     const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
 
@@ -885,19 +835,15 @@ TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filenam
 
 bool TextBuffer::saveBufferEscalated(const QString &filename)
 {
-    /**
-     * construct correct filter device
-     * we try to use the same compression as for opening
-     */
+    // construct correct filter device
+    // we try to use the same compression as for opening
     const KCompressionDevice::CompressionType type = KFilterDev::compressionTypeForMimeType(m_mimeTypeForFilterDev);
     QScopedPointer<KCompressionDevice> saveFile(new KCompressionDevice(filename, type));
     uint ownerId = -2;
     uint groupId = -2;
     QScopedPointer<QIODevice> temporaryBuffer;
 
-    /**
-     * Memorize owner and group.
-     */
+    // Memorize owner and group.
     const QFileInfo fileInfo(filename);
     if (fileInfo.exists()) {
         ownerId = fileInfo.ownerId();
@@ -978,17 +924,13 @@ bool TextBuffer::saveBufferEscalated(const QString &filename)
 
 void TextBuffer::notifyAboutRangeChange(KTextEditor::View *view, int startLine, int endLine, bool rangeWithAttribute)
 {
-    /**
-     * ignore calls if no document is around
-     */
+    // ignore calls if no document is around
     if (!m_document) {
         return;
     }
 
-    /**
-     * update all views, this IS ugly and could be a signal, but I profiled and a signal is TOO slow, really
-     * just create 20k ranges in a go and you wait seconds on a decent machine
-     */
+    // update all views, this IS ugly and could be a signal, but I profiled and a signal is TOO slow, really
+    // just create 20k ranges in a go and you wait seconds on a decent machine
     const QList<KTextEditor::View *> views = m_document->views();
     for (KTextEditor::View *curView : views) {
         // filter wrong views
@@ -1018,30 +960,22 @@ QList<TextRange *> TextBuffer::rangesForLine(int line, KTextEditor::View *view, 
     const auto blockRanges = m_blocks.at(blockIndex)->rangesForLine(line);
     for (const QSet<TextRange *> &ranges : blockRanges) {
         for (TextRange *const range : ranges) {
-            /**
-             * we want only ranges with attributes, but this one has none
-             */
+            // we want only ranges with attributes, but this one has none
             if (rangesWithAttributeOnly && !range->hasAttribute()) {
                 continue;
             }
 
-            /**
-             * we want ranges for no view, but this one's attribute is only valid for views
-             */
+            // we want ranges for no view, but this one's attribute is only valid for views
             if (!view && range->attributeOnlyForViews()) {
                 continue;
             }
 
-            /**
-             * the range's attribute is not valid for this view
-             */
+            // the range's attribute is not valid for this view
             if (range->view() && range->view() != view) {
                 continue;
             }
 
-            /**
-             * if line is in the range, ok
-             */
+            // if line is in the range, ok
             if (range->startInternal().lineInternal() <= line && line <= range->endInternal().lineInternal()) {
                 rightRanges.append(range);
             }

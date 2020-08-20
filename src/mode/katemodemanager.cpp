@@ -97,13 +97,11 @@ void KateModeManager::update()
     // try if the hl stuff is up to date...
     const auto modes = KateHlManager::self()->modeList();
     for (int i = 0; i < modes.size(); ++i) {
-        /**
-         * filter out hidden languages; and
-         * filter out "None" hl, we add that later as "Normal" mode.
-         * Hl with empty names will also be filtered. The
-         * KTextEditor::DocumentPrivate::updateFileType() function considers
-         * hl with empty names as invalid.
-         */
+        // filter out hidden languages; and
+        // filter out "None" hl, we add that later as "Normal" mode.
+        // Hl with empty names will also be filtered. The
+        // KTextEditor::DocumentPrivate::updateFileType() function considers
+        // hl with empty names as invalid.
         if (modes[i].isHidden() || modes[i].name().isEmpty() || modes[i].name() == QLatin1String("None")) {
             continue;
         }

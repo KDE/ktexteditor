@@ -165,23 +165,17 @@ static inline bool isBracket(const QChar c)
  */
 static QUrl normalizeUrl(const QUrl &url)
 {
-    /**
-     * only normalize local urls
-     */
+    // only normalize local urls
     if (url.isEmpty() || !url.isLocalFile())
         return url;
 
-    /**
-     * don't normalize if not existing!
-     * canonicalFilePath won't work!
-     */
+    // don't normalize if not existing!
+    // canonicalFilePath won't work!
     const QString normalizedUrl(QFileInfo(url.toLocalFile()).canonicalFilePath());
     if (normalizedUrl.isEmpty())
         return url;
 
-    /**
-     * else: use canonicalFilePath to normalize
-     */
+    // else: use canonicalFilePath to normalize
     return QUrl::fromLocalFile(normalizedUrl);
 }
 
@@ -211,20 +205,14 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     m_config(new KateDocumentConfig(this))
 
 {
-    /**
-     * no plugins from kparts here
-     */
+    // no plugins from kparts here
     setPluginLoadingMode(DoNotLoadPlugins);
 
-    /**
-     * pass on our component data, do this after plugin loading is off
-     */
+    // pass on our component data, do this after plugin loading is off
     setComponentData(KTextEditor::EditorPrivate::self()->aboutData());
 
-    /**
-     * avoid spamming plasma and other window managers with progress dialogs
-     * we show such stuff inline in the views!
-     */
+    // avoid spamming plasma and other window managers with progress dialogs
+    // we show such stuff inline in the views!
     setProgressInfoEnabled(false);
 
     // register doc at factory
@@ -249,9 +237,7 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
 
     connect(KTextEditor::EditorPrivate::self()->dirWatch(), SIGNAL(deleted(QString)), this, SLOT(slotModOnHdDeleted(QString)));
 
-    /**
-     * singleshot timer to handle updates of mod on hd state delayed
-     */
+    // singleshot timer to handle updates of mod on hd state delayed
     m_modOnHdTimer.setSingleShot(true);
     m_modOnHdTimer.setInterval(200);
     connect(&m_modOnHdTimer, SIGNAL(timeout()), this, SLOT(slotDelayedHandleModOnHd()));
@@ -266,11 +252,9 @@ KTextEditor::DocumentPrivate::DocumentPrivate(bool bSingleViewMode, bool bReadOn
     m_autoReloadThrottle.setInterval(KTextEditor::EditorPrivate::self()->unitTestMode() ? 50 : 3000);
     connect(&m_autoReloadThrottle, &QTimer::timeout, this, &DocumentPrivate::onModOnHdAutoReload);
 
-    /**
-     * load handling
-     * this is needed to ensure we signal the user if a file ist still loading
-     * and to disallow him to edit in that time
-     */
+    // load handling
+    // this is needed to ensure we signal the user if a file ist still loading
+    // and to disallow him to edit in that time
     connect(this, SIGNAL(started(KIO::Job *)), this, SLOT(slotStarted(KIO::Job *)));
     connect(this, SIGNAL(completed()), this, SLOT(slotCompleted()));
     connect(this, SIGNAL(canceled(QString)), this, SLOT(slotCanceled()));
@@ -313,9 +297,7 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     // delete pending mod-on-hd message, if applicable
     delete m_modOnHdHandler;
 
-    /**
-     * we are about to delete cursors/ranges/...
-     */
+    // we are about to delete cursors/ranges/...
     emit aboutToDeleteMovingInterfaceContent(this);
 
     // kill it early, it has ranges!
@@ -346,12 +328,10 @@ KTextEditor::DocumentPrivate::~DocumentPrivate()
     }
     m_marks.clear();
 
-    /**
-     * de-register document early from global collections
-     * otherwise we might "use" them again during destruction in a half-valid state
-     * see e.g. bug 422546 for similar issues with view
-     * this is still early enough, as as long as m_config is valid, this document is still "OK"
-     */
+    // de-register document early from global collections
+    // otherwise we might "use" them again during destruction in a half-valid state
+    // see e.g. bug 422546 for similar issues with view
+    // this is still early enough, as as long as m_config is valid, this document is still "OK"
     KTextEditor::EditorPrivate::self()->deregisterDocument(this);
 
     delete m_config;
@@ -1661,9 +1641,7 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
     editStart();
     QStringList oldText;
 
-    /**
-     * first remove text
-     */
+    // first remove text
     for (int line = to; line >= from; --line) {
         Kate::TextLine tl = m_buffer->line(line);
         oldText.prepend(this->line(line));
@@ -1672,13 +1650,9 @@ bool KTextEditor::DocumentPrivate::editRemoveLines(int from, int to)
         m_buffer->removeText(KTextEditor::Range(KTextEditor::Cursor(line, 0), KTextEditor::Cursor(line, tl->text().size())));
     }
 
-    /**
-     * then collapse lines
-     */
+    // then collapse lines
     for (int line = to; line >= from; --line) {
-        /**
-         * unwrap all lines, prefer to unwrap line behind, skip to wrap line 0
-         */
+        // unwrap all lines, prefer to unwrap line behind, skip to wrap line 0
         if (line + 1 < m_buffer->lines()) {
             m_buffer->unwrapLine(line + 1);
         } else if (line) {
@@ -2252,10 +2226,8 @@ void KTextEditor::DocumentPrivate::printPreview()
 // BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
 QString KTextEditor::DocumentPrivate::mimeType()
 {
-    /**
-     * collect first 4k of text
-     * only heuristic
-     */
+    // collect first 4k of text
+    // only heuristic
     QByteArray buf;
     for (int i = 0; (i < lines()) && (buf.size() <= 4096); ++i) {
         buf.append(line(i).toUtf8());
@@ -2326,9 +2298,7 @@ int KTextEditor::DocumentPrivate::lineLengthLimit() const
 // BEGIN KParts::ReadWrite stuff
 bool KTextEditor::DocumentPrivate::openFile()
 {
-    /**
-     * we are about to invalidate all cursors/ranges/.. => m_buffer->openFile will do so
-     */
+    // we are about to invalidate all cursors/ranges/.. => m_buffer->openFile will do so
     emit aboutToInvalidateMovingInterfaceContent(this);
 
     // no open errors until now...
@@ -2500,10 +2470,8 @@ bool KTextEditor::DocumentPrivate::saveFile()
         return false;
     }
 
-    /**
-     * create a backup file or abort if that fails!
-     * if no backup file wanted, this routine will just return true
-     */
+    // create a backup file or abort if that fails!
+    // if no backup file wanted, this routine will just return true
     if (!createBackupFile())
         return false;
 
@@ -2573,24 +2541,18 @@ bool KTextEditor::DocumentPrivate::saveFile()
 
 bool KTextEditor::DocumentPrivate::createBackupFile()
 {
-    /**
-     * backup for local or remote files wanted?
-     */
+    // backup for local or remote files wanted?
     const bool backupLocalFiles = config()->backupOnSaveLocal();
     const bool backupRemoteFiles = config()->backupOnSaveRemote();
 
-    /**
-     * early out, before mount check: backup wanted at all?
-     * => if not, all fine, just return
-     */
+    // early out, before mount check: backup wanted at all?
+    // => if not, all fine, just return
     if (!backupLocalFiles && !backupRemoteFiles) {
         return true;
     }
 
-    /**
-     * decide if we need backup based on locality
-     * skip that, if we always want backups, as currentMountPoints is not that fast
-     */
+    // decide if we need backup based on locality
+    // skip that, if we always want backups, as currentMountPoints is not that fast
     QUrl u(url());
     bool needBackup = backupLocalFiles && backupRemoteFiles;
     if (!needBackup) {
@@ -2604,16 +2566,12 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
         needBackup = (!slowOrRemoteFile && backupLocalFiles) || (slowOrRemoteFile && backupRemoteFiles);
     }
 
-    /**
-     * no backup needed? be done
-     */
+    // no backup needed? be done
     if (!needBackup) {
         return true;
     }
 
-    /**
-     * else: try to backup
-     */
+    // else: try to backup
     const auto backupPrefix = KTextEditor::EditorPrivate::self()->variableExpansionManager()->expandText(config()->backupPrefix(), nullptr);
     const auto backupSuffix = KTextEditor::EditorPrivate::self()->variableExpansionManager()->expandText(config()->backupSuffix(), nullptr);
     if (backupPrefix.isEmpty() && backupSuffix.isEmpty()) {
@@ -2622,14 +2580,10 @@ bool KTextEditor::DocumentPrivate::createBackupFile()
     }
 
     if (backupPrefix.contains(QDir::separator())) {
-        /**
-         * replace complete path, as prefix is a path!
-         */
+        // replace complete path, as prefix is a path!
         u.setPath(backupPrefix + u.fileName() + backupSuffix);
     } else {
-        /**
-         * replace filename in url
-         */
+        // replace filename in url
         const QString fileName = u.fileName();
         u = u.adjusted(QUrl::RemoveFilename);
         u.setPath(u.path() + backupPrefix + fileName + backupSuffix);
@@ -2692,16 +2646,12 @@ void KTextEditor::DocumentPrivate::readDirConfig()
         return;
     }
 
-    /**
-     * first search .kateconfig upwards
-     * with recursion guard
-     */
+    // first search .kateconfig upwards
+    // with recursion guard
     QSet<QString> seenDirectories;
     QDir dir(QFileInfo(localFilePath()).absolutePath());
     while (!seenDirectories.contains(dir.absolutePath())) {
-        /**
-         * fill recursion guard
-         */
+        // fill recursion guard
         seenDirectories.insert(dir.absolutePath());
 
         // try to open config file in this dir
@@ -2722,9 +2672,7 @@ void KTextEditor::DocumentPrivate::readDirConfig()
             return;
         }
 
-        /**
-         * else: cd up, if possible or abort
-         */
+        // else: cd up, if possible or abort
         if (!dir.cdUp()) {
             break;
         }
@@ -2804,9 +2752,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
                                                      KGuiItem(i18n("Close Nevertheless")),
                                                      KStandardGuiItem::cancel(),
                                                      QStringLiteral("kate_close_modonhd_%1").arg(m_modOnHdReason)) == KMessageBox::Continue)) {
-                /**
-                 * reset reloading
-                 */
+                // reset reloading
                 m_reloading = false;
                 return false;
             }
@@ -2817,9 +2763,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
     // first call the normal kparts implementation
     //
     if (!KParts::ReadWritePart::closeUrl()) {
-        /**
-         * reset reloading
-         */
+        // reset reloading
         m_reloading = false;
         return false;
     }
@@ -2829,9 +2773,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         emit aboutToClose(this);
     }
 
-    /**
-     * delete all KTE::Messages
-     */
+    // delete all KTE::Messages
     if (!m_messageHash.isEmpty()) {
         const auto keys = m_messageHash.keys();
         for (KTextEditor::Message *message : keys) {
@@ -2839,9 +2781,7 @@ bool KTextEditor::DocumentPrivate::closeUrl()
         }
     }
 
-    /**
-     * we are about to invalidate all cursors/ranges/.. => m_buffer->clear will do so
-     */
+    // we are about to invalidate all cursors/ranges/.. => m_buffer->clear will do so
     emit aboutToInvalidateMovingInterfaceContent(this);
 
     // remove file from dirwatch
@@ -3090,9 +3030,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
 
     editStart();
 
-    /**
-     * special handling if we want to add auto brackets to a selection
-     */
+    // special handling if we want to add auto brackets to a selection
     if (view->selection() && !closingBracket.isNull()) {
         std::unique_ptr<KTextEditor::MovingRange> selectionRange(newMovingRange(view->selectionRange()));
         const int startLine = qMax(0, selectionRange->start().line());
@@ -3132,9 +3070,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         return;
     }
 
-    /**
-     * normal handling
-     */
+    // normal handling
     if (!view->config()->persistentSelection() && view->selection()) {
         view->removeSelectedText();
     }
@@ -3183,12 +3119,10 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
         insertText(view->cursorPosition(), chars);
     }
 
-    /**
-     * auto bracket handling for newly inserted text
-     * we inserted a bracket?
-     * => add the matching closing one to the view + input chars
-     * try to preserve the cursor position
-     */
+    // auto bracket handling for newly inserted text
+    // we inserted a bracket?
+    // => add the matching closing one to the view + input chars
+    // try to preserve the cursor position
     bool skipAutobrace = closingBracket == QLatin1Char('\'');
     if (highlight() && skipAutobrace) {
         // skip adding ' in spellchecked areas, because those are text
@@ -3233,9 +3167,7 @@ void KTextEditor::DocumentPrivate::typeChars(KTextEditor::ViewPrivate *view, QSt
     KTextEditor::Cursor b(view->cursorPosition());
     m_indenter->userTypedChar(view, b, chars.isEmpty() ? QChar() : chars.at(chars.length() - 1));
 
-    /**
-     * inform the view about the original inserted chars
-     */
+    // inform the view about the original inserted chars
     view->slotTextInserted(view, oldCur, chars);
 }
 
@@ -4258,9 +4190,7 @@ void KTextEditor::DocumentPrivate::updateDocName()
         m_docName = QString(m_docName + QLatin1String(" (%1)")).arg(m_docNameNumber + 1);
     }
 
-    /**
-     * avoid to emit this, if name doesn't change!
-     */
+    // avoid to emit this, if name doesn't change!
     if (oldName != m_docName) {
         emit documentNameChanged(this);
     }
@@ -4808,10 +4738,8 @@ void KTextEditor::DocumentPrivate::readVariableLine(const QString &t, bool onlyV
             else if (var == QLatin1String("eol") || var == QLatin1String("end-of-line")) {
                 const auto l = {QLatin1String("unix"), QLatin1String("dos"), QLatin1String("mac")};
                 if ((n = indexOf(l, val.toLower())) != -1) {
-                    /**
-                     * set eol + avoid that it is overwritten by auto-detection again!
-                     * this fixes e.g. .kateconfig files with // kate: eol dos; to work, bug 365705
-                     */
+                    // set eol + avoid that it is overwritten by auto-detection again!
+                    // this fixes e.g. .kateconfig files with // kate: eol dos; to work, bug 365705
                     m_config->setEol(n);
                     m_config->setAllowEolDetection(false);
                 }
@@ -5000,9 +4928,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
     // compare git hash with the one we have (if we have one)
     const QByteArray oldDigest = checksum();
     if (!oldDigest.isEmpty() && !url().isEmpty() && url().isLocalFile()) {
-        /**
-         * if current checksum == checksum of new file => unmodified
-         */
+        // if current checksum == checksum of new file => unmodified
         if (m_modOnHdReason != OnDiskDeleted && createDigest() && oldDigest == checksum()) {
             m_modOnHd = false;
             m_modOnHdReason = OnDiskUnmodified;
@@ -5010,33 +4936,23 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
         }
 
 #if LIBGIT2_FOUND
-        /**
-         * if still modified, try to take a look at git
-         * skip that, if document is modified!
-         * only do that, if the file is still there, else reload makes no sense!
-         */
+        // if still modified, try to take a look at git
+        // skip that, if document is modified!
+        // only do that, if the file is still there, else reload makes no sense!
         if (m_modOnHd && !isModified() && QFile::exists(url().toLocalFile())) {
-            /**
-             * try to discover the git repo of this file
-             * libgit2 docs state that UTF-8 is the right encoding, even on windows
-             * I hope that is correct!
-             */
+            // try to discover the git repo of this file
+            // libgit2 docs state that UTF-8 is the right encoding, even on windows
+            // I hope that is correct!
             git_repository *repository = nullptr;
             const QByteArray utf8Path = url().toLocalFile().toUtf8();
             if (git_repository_open_ext(&repository, utf8Path.constData(), 0, nullptr) == 0) {
-                /**
-                 * if we have repo, convert the git hash to an OID
-                 */
+                // if we have repo, convert the git hash to an OID
                 git_oid oid;
                 if (git_oid_fromstr(&oid, oldDigest.toHex().data()) == 0) {
-                    /**
-                     * finally: is there a blob for this git hash?
-                     */
+                    // finally: is there a blob for this git hash?
                     git_blob *blob = nullptr;
                     if (git_blob_lookup(&blob, repository, &oid) == 0) {
-                        /**
-                         * this hash exists still in git => just reload
-                         */
+                        // this hash exists still in git => just reload
                         m_modOnHd = false;
                         m_modOnHdReason = OnDiskUnmodified;
                         m_prevModOnHdReason = OnDiskUnmodified;
@@ -5050,9 +4966,7 @@ void KTextEditor::DocumentPrivate::slotDelayedHandleModOnHd()
 #endif
     }
 
-    /**
-     * emit our signal to the outside!
-     */
+    // emit our signal to the outside!
     emit modifiedOnDisk(this, m_modOnHd, m_modOnHdReason);
 }
 
@@ -5081,9 +4995,7 @@ bool KTextEditor::DocumentPrivate::createDigest()
         }
     }
 
-    /**
-     * set new digest
-     */
+    // set new digest
     m_buffer->setDigest(digest);
     return !digest.isEmpty();
 }
@@ -5178,11 +5090,9 @@ bool KTextEditor::DocumentPrivate::updateFileType(const QString &newType, bool u
             }
         }
 
-        /**
-            * set the indentation mode, if any in the mode...
-            * and user did not set it before!
-            * NOTE: KateBuffer::setHighlight() also sets the indentation.
-            */
+        // set the indentation mode, if any in the mode...
+        // and user did not set it before!
+        // NOTE: KateBuffer::setHighlight() also sets the indentation.
         if (!m_indenterSetByUser && !fileType.indenter.isEmpty()) {
             config()->setIndentationMode(fileType.indenter);
         }
@@ -5237,25 +5147,19 @@ void KTextEditor::DocumentPrivate::slotQueryClose_save(bool *handled, bool *abor
 // BEGIN ConfigInterface stff
 QStringList KTextEditor::DocumentPrivate::configKeys() const
 {
-    /**
-     * expose all internally registered keys of the KateDocumentConfig
-     */
+    // expose all internally registered keys of the KateDocumentConfig
     return m_config->configKeys();
 }
 
 QVariant KTextEditor::DocumentPrivate::configValue(const QString &key)
 {
-    /**
-     * just dispatch to internal key => value lookup
-     */
+    // just dispatch to internal key => value lookup
     return m_config->value(key);
 }
 
 void KTextEditor::DocumentPrivate::setConfigValue(const QString &key, const QVariant &value)
 {
-    /**
-     * just dispatch to internal key + value set
-     */
+    // just dispatch to internal key + value set
     m_config->setValue(key, value);
 }
 
@@ -5421,39 +5325,27 @@ bool KTextEditor::DocumentPrivate::queryClose()
 
 void KTextEditor::DocumentPrivate::slotStarted(KIO::Job *job)
 {
-    /**
-     * if we are idle before, we are now loading!
-     */
+    // if we are idle before, we are now loading!
     if (m_documentState == DocumentIdle) {
         m_documentState = DocumentLoading;
     }
 
-    /**
-     * if loading:
-     * - remember pre loading read-write mode
-     * if remote load:
-     * - set to read-only
-     * - trigger possible message
-     */
+    // if loading:
+    // - remember pre loading read-write mode
+    // if remote load:
+    // - set to read-only
+    // - trigger possible message
     if (m_documentState == DocumentLoading) {
-        /**
-         * remember state
-         */
+        // remember state
         m_readWriteStateBeforeLoading = isReadWrite();
 
-        /**
-         * perhaps show loading message, but wait one second
-         */
+        // perhaps show loading message, but wait one second
         if (job) {
-            /**
-             * only read only if really remote file!
-             */
+            // only read only if really remote file!
             setReadWrite(false);
 
-            /**
-             * perhaps some message about loading in one second!
-             * remember job pointer, we want to be able to kill it!
-             */
+            // perhaps some message about loading in one second!
+            // remember job pointer, we want to be able to kill it!
             m_loadingJob = job;
             QTimer::singleShot(1000, this, SLOT(slotTriggerLoadingMessage()));
         }
@@ -5462,35 +5354,27 @@ void KTextEditor::DocumentPrivate::slotStarted(KIO::Job *job)
 
 void KTextEditor::DocumentPrivate::slotCompleted()
 {
-    /**
-     * if were loading, reset back to old read-write mode before loading
-     * and kill the possible loading message
-     */
+    // if were loading, reset back to old read-write mode before loading
+    // and kill the possible loading message
     if (m_documentState == DocumentLoading) {
         setReadWrite(m_readWriteStateBeforeLoading);
         delete m_loadingMessage;
     }
 
-    /**
-     * Emit signal that we saved  the document, if needed
-     */
+    // Emit signal that we saved  the document, if needed
     if (m_documentState == DocumentSaving || m_documentState == DocumentSavingAs) {
         emit documentSavedOrUploaded(this, m_documentState == DocumentSavingAs);
     }
 
-    /**
-     * back to idle mode
-     */
+    // back to idle mode
     m_documentState = DocumentIdle;
     m_reloading = false;
 }
 
 void KTextEditor::DocumentPrivate::slotCanceled()
 {
-    /**
-     * if were loading, reset back to old read-write mode before loading
-     * and kill the possible loading message
-     */
+    // if were loading, reset back to old read-write mode before loading
+    // and kill the possible loading message
     if (m_documentState == DocumentLoading) {
         setReadWrite(m_readWriteStateBeforeLoading);
         delete m_loadingMessage;
@@ -5500,58 +5384,44 @@ void KTextEditor::DocumentPrivate::slotCanceled()
         updateDocName();
     }
 
-    /**
-     * back to idle mode
-     */
+    // back to idle mode
     m_documentState = DocumentIdle;
     m_reloading = false;
 }
 
 void KTextEditor::DocumentPrivate::slotTriggerLoadingMessage()
 {
-    /**
-     * no longer loading?
-     * no message needed!
-     */
+    // no longer loading?
+    // no message needed!
     if (m_documentState != DocumentLoading) {
         return;
     }
 
-    /**
-     * create message about file loading in progress
-     */
+    // create message about file loading in progress
     delete m_loadingMessage;
     m_loadingMessage = new KTextEditor::Message(i18n("The file <a href=\"%1\">%2</a> is still loading.", url().toDisplayString(QUrl::PreferLocalFile), url().fileName()));
     m_loadingMessage->setPosition(KTextEditor::Message::TopInView);
 
-    /**
-     * if around job: add cancel action
-     */
+    // if around job: add cancel action
     if (m_loadingJob) {
         QAction *cancel = new QAction(i18n("&Abort Loading"), nullptr);
         connect(cancel, SIGNAL(triggered()), this, SLOT(slotAbortLoading()));
         m_loadingMessage->addAction(cancel);
     }
 
-    /**
-     * really post message
-     */
+    // really post message
     postMessage(m_loadingMessage);
 }
 
 void KTextEditor::DocumentPrivate::slotAbortLoading()
 {
-    /**
-     * no job, no work
-     */
+    // no job, no work
     if (!m_loadingJob) {
         return;
     }
 
-    /**
-     * abort loading if any job
-     * signal results!
-     */
+    // abort loading if any job
+    // signal results!
     m_loadingJob->kill(KJob::EmitResult);
     m_loadingJob = nullptr;
 }
@@ -5571,56 +5441,42 @@ void KTextEditor::DocumentPrivate::slotUrlChanged(const QUrl &url)
 
 bool KTextEditor::DocumentPrivate::save()
 {
-    /**
-     * no double save/load
-     * we need to allow DocumentPreSavingAs here as state, as save is called in saveAs!
-     */
+    // no double save/load
+    // we need to allow DocumentPreSavingAs here as state, as save is called in saveAs!
     if ((m_documentState != DocumentIdle) && (m_documentState != DocumentPreSavingAs)) {
         return false;
     }
 
-    /**
-     * if we are idle, we are now saving
-     */
+    // if we are idle, we are now saving
     if (m_documentState == DocumentIdle) {
         m_documentState = DocumentSaving;
     } else {
         m_documentState = DocumentSavingAs;
     }
 
-    /**
-     * call back implementation for real work
-     */
+    // call back implementation for real work
     return KTextEditor::Document::save();
 }
 
 bool KTextEditor::DocumentPrivate::saveAs(const QUrl &url)
 {
-    /**
-     * abort on bad URL
-     * that is done in saveAs below, too
-     * but we must check it here already to avoid messing up
-     * as no signals will be send, then
-     */
+    // abort on bad URL
+    // that is done in saveAs below, too
+    // but we must check it here already to avoid messing up
+    // as no signals will be send, then
     if (!url.isValid()) {
         return false;
     }
 
-    /**
-     * no double save/load
-     */
+    // no double save/load
     if (m_documentState != DocumentIdle) {
         return false;
     }
 
-    /**
-     * we enter the pre save as phase
-     */
+    // we enter the pre save as phase
     m_documentState = DocumentPreSavingAs;
 
-    /**
-     * call base implementation for real work
-     */
+    // call base implementation for real work
     return KTextEditor::Document::saveAs(normalizeUrl(url));
 }
 
@@ -5988,9 +5844,7 @@ int KTextEditor::DocumentPrivate::defStyleNum(int line, int column)
         return -1;
     }
 
-    /**
-     * either get char attribute or attribute of context still active at end of line
-     */
+    // either get char attribute or attribute of context still active at end of line
     int attribute = 0;
     if (column < tl->length()) {
         attribute = tl->attribute(column);

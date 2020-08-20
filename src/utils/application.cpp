@@ -24,9 +24,7 @@ Application::~Application()
 
 bool Application::quit()
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     bool success = false;
     QMetaObject::invokeMethod(parent(), "quit", Qt::DirectConnection, Q_RETURN_ARG(bool, success));
 
@@ -35,9 +33,7 @@ bool Application::quit()
 
 QList<KTextEditor::MainWindow *> Application::mainWindows()
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     QList<KTextEditor::MainWindow *> mainWindow;
     QMetaObject::invokeMethod(parent(), "mainWindows", Qt::DirectConnection, Q_RETURN_ARG(QList<KTextEditor::MainWindow *>, mainWindow));
     return mainWindow;
@@ -45,23 +41,17 @@ QList<KTextEditor::MainWindow *> Application::mainWindows()
 
 KTextEditor::MainWindow *Application::activeMainWindow()
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     KTextEditor::MainWindow *window = nullptr;
     QMetaObject::invokeMethod(parent(), "activeMainWindow", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::MainWindow *, window));
 
-    /**
-     * always return some kind of window to not need to check for valid pointer
-     */
+    //always return some kind of window to not need to check for valid pointer
     return window ? window : KTextEditor::EditorPrivate::self()->dummyMainWindow();
 }
 
 QList<KTextEditor::Document *> Application::documents()
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     QList<KTextEditor::Document *> documents;
     QMetaObject::invokeMethod(parent(), "documents", Qt::DirectConnection, Q_RETURN_ARG(QList<KTextEditor::Document *>, documents));
     return documents;
@@ -69,9 +59,7 @@ QList<KTextEditor::Document *> Application::documents()
 
 KTextEditor::Document *Application::findUrl(const QUrl &url)
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     KTextEditor::Document *document = nullptr;
     QMetaObject::invokeMethod(parent(), "findUrl", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::Document *, document), Q_ARG(QUrl, url));
     return document;
@@ -79,9 +67,7 @@ KTextEditor::Document *Application::findUrl(const QUrl &url)
 
 KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &encoding)
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     KTextEditor::Document *document = nullptr;
     QMetaObject::invokeMethod(parent(), "openUrl", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::Document *, document), Q_ARG(QUrl, url), Q_ARG(QString, encoding));
     return document;
@@ -89,9 +75,7 @@ KTextEditor::Document *Application::openUrl(const QUrl &url, const QString &enco
 
 bool Application::closeDocument(KTextEditor::Document *document)
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     bool success = false;
     QMetaObject::invokeMethod(parent(), "closeDocument", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(KTextEditor::Document *, document));
     return success;
@@ -99,9 +83,7 @@ bool Application::closeDocument(KTextEditor::Document *document)
 
 bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents)
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     bool success = false;
     QMetaObject::invokeMethod(parent(), "closeDocuments", Qt::DirectConnection, Q_RETURN_ARG(bool, success), Q_ARG(QList<KTextEditor::Document *>, documents));
     return success;
@@ -109,9 +91,7 @@ bool Application::closeDocuments(const QList<KTextEditor::Document *> &documents
 
 KTextEditor::Plugin *Application::plugin(const QString &name)
 {
-    /**
-     * dispatch to parent
-     */
+    // dispatch to parent
     Plugin *plugin = nullptr;
     QMetaObject::invokeMethod(parent(), "plugin", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::Plugin *, plugin), Q_ARG(QString, name));
     return plugin;

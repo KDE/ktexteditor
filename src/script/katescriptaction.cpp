@@ -97,19 +97,13 @@ void KateScriptActionMenu::repopulate()
     QHash<QString, QMenu *> menus;
     const auto scripts = KTextEditor::EditorPrivate::self()->scriptManager()->commandLineScripts();
     for (KateCommandLineScript *script : scripts) {
-        /**
-         * traverse actions
-         */
+        // traverse actions
         const auto &actions = script->commandHeader().actions();
         for (const auto &value : actions) {
-            /**
-             * action is a value
-             */
+            // action is a value
             const auto action = value.toObject();
 
-            /**
-             * get command
-             */
+            // get command
             const QString cmd = action.value(QStringLiteral("function")).toString();
 
             // show in a category submenu?

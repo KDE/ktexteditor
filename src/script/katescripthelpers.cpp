@@ -53,73 +53,55 @@ bool readFile(const QString &sourceUrl, QString &sourceCode)
 
 QString ScriptHelper::read(const QString &name)
 {
-    /**
-     * get full name of file
-     * skip on errors
-     */
+    // get full name of file
+    // skip on errors
     QString content;
     QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/script/files/") + name);
     if (fullName.isEmpty()) {
-        /**
-         * retry with resource
-         */
+        // retry with resource
         fullName = QLatin1String(":/ktexteditor/script/files/") + name;
         if (!QFile::exists(fullName))
             return content;
     }
 
-    /**
-     * try to read complete file
-     * skip non-existing files
-     */
+    // try to read complete file
+    // skip non-existing files
     Script::readFile(fullName, content);
     return content;
 }
 
 void ScriptHelper::require(const QString &name)
 {
-    /**
-     * get full name of file
-     * skip on errors
-     */
+    // get full name of file
+    // skip on errors
     QString fullName = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("katepart5/script/libraries/") + name);
     if (fullName.isEmpty()) {
-        /**
-         * retry with resource
-         */
+        // retry with resource
         fullName = QLatin1String(":/ktexteditor/script/libraries/") + name;
         if (!QFile::exists(fullName))
             return;
     }
 
-    /**
-     * check include guard
-     */
+    // check include guard
     QJSValue require_guard = m_engine->globalObject().property(QStringLiteral("require_guard"));
     if (require_guard.property(fullName).toBool()) {
         return;
     }
 
-    /**
-     * try to read complete file
-     * skip non-existing files
-     */
+    // try to read complete file
+    // skip non-existing files
     QString code;
     if (!Script::readFile(fullName, code)) {
         return;
     }
 
-    /**
-     * eval in current script engine
-     */
+    // eval in current script engine
     const QJSValue val = m_engine->evaluate(code, fullName);
     if (val.isError()) {
         qCWarning(LOG_KTE) << "error evaluating" << fullName << val.toString() << ", at line" << val.property(QStringLiteral("lineNumber")).toInt();
     }
 
-    /**
-     * set include guard
-     */
+    // set include guard
     require_guard.setProperty(fullName, QJSValue(true));
 }
 

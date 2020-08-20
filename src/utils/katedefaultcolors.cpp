@@ -12,9 +12,7 @@
 using namespace Kate;
 
 KateDefaultColors::KateDefaultColors()
-    /**
-     * for unit testing: avoid global configs!
-     */
+    // for unit testing: avoid global configs!
     : m_view(QPalette::Active,
              KColorScheme::View,
              KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString(), KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
@@ -28,9 +26,7 @@ KateDefaultColors::KateDefaultColors()
                           KColorScheme::Selection,
                           KSharedConfig::openConfig(KTextEditor::EditorPrivate::unitTestMode() ? QStringLiteral("unittestmoderc") : QString(), KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::FullConfig))
 
-    /**
-     * init our colors
-     */
+    // init our colors
     , m_background(m_view.background().color())
     , m_foreground(m_view.foreground().color())
     , m_backgroundLuma(KColorUtils::luma(m_background))

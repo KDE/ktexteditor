@@ -94,77 +94,53 @@ void TextHistory::removeText(const KTextEditor::Range &range, int oldLineLength)
 
 void TextHistory::addEntry(const Entry &entry)
 {
-    /**
-     * history should never be empty
-     */
+    // history should never be empty
     Q_ASSERT(!m_historyEntries.empty());
 
-    /**
-     * simple efficient check: if we only have one entry, and the entry is not referenced
-     * just replace it with the new one and adjust the revision
-     */
+    // simple efficient check: if we only have one entry, and the entry is not referenced
+    // just replace it with the new one and adjust the revision
     if ((m_historyEntries.size() == 1) && !m_historyEntries.front().referenceCounter) {
-        /**
-         * remember new revision for first element, it is the revision we get after this change
-         */
+        // remember new revision for first element, it is the revision we get after this change
         m_firstHistoryEntryRevision = revision() + 1;
 
-        /**
-         * remember edit
-         */
+        // remember edit
         m_historyEntries.front() = entry;
 
-        /**
-         * be done...
-         */
+        // be done...
         return;
     }
 
-    /**
-     * ok, we have more than one entry or the entry is referenced, just add up new entries
-     */
+    // ok, we have more than one entry or the entry is referenced, just add up new entries
     m_historyEntries.push_back(entry);
 }
 
 void TextHistory::lockRevision(qint64 revision)
 {
-    /**
-     * some invariants must hold
-     */
+    // some invariants must hold
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(revision >= m_firstHistoryEntryRevision);
     Q_ASSERT(revision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
-    /**
-     * increment revision reference counter
-     */
+    // increment revision reference counter
     Entry &entry = m_historyEntries[revision - m_firstHistoryEntryRevision];
     ++entry.referenceCounter;
 }
 
 void TextHistory::unlockRevision(qint64 revision)
 {
-    /**
-     * some invariants must hold
-     */
+    // some invariants must hold
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(revision >= m_firstHistoryEntryRevision);
     Q_ASSERT(revision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
-    /**
-     * decrement revision reference counter
-     */
+    // decrement revision reference counter
     Entry &entry = m_historyEntries[revision - m_firstHistoryEntryRevision];
     Q_ASSERT(entry.referenceCounter);
     --entry.referenceCounter;
 
-    /**
-     * clean up no longer used revisions...
-     */
+    // clean up no longer used revisions...
     if (!entry.referenceCounter) {
-        /**
-         * search for now unused stuff
-         */
+        // search for now unused stuff
         qint64 unreferencedEdits = 0;
         for (qint64 i = 0; i + 1 < qint64(m_historyEntries.size()); ++i) {
             if (m_historyEntries[i].referenceCounter) {
@@ -175,9 +151,7 @@ void TextHistory::unlockRevision(qint64 revision)
             ++unreferencedEdits;
         }
 
-        /**
-         * remove unreferred from the list now
-         */
+        // remove unreferred from the list now
         if (unreferencedEdits > 0) {
             // remove stuff from history
             m_historyEntries.erase(m_historyEntries.begin(), m_historyEntries.begin() + unreferencedEdits);
@@ -190,74 +164,48 @@ void TextHistory::unlockRevision(qint64 revision)
 
 void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, bool moveOnInsert) const
 {
-    /**
-     * simple stuff, sort out generic things
-     */
+    // simple stuff, sort out generic things
 
-    /**
-     * no change, if this change is in line behind cursor
-     */
+    // no change, if this change is in line behind cursor
     if (line > cursorLine) {
         return;
     }
 
-    /**
-     * handle all history types
-     */
+    // handle all history types
     switch (type) {
-    /**
-     * Wrap a line
-     */
+    // Wrap a line
     case WrapLine:
-        /**
-         * we wrap this line
-         */
+        // we wrap this line
         if (cursorLine == line) {
-            /**
-             * skip cursors with too small column
-             */
+            // skip cursors with too small column
             if (cursorColumn <= column) {
                 if (cursorColumn < column || !moveOnInsert) {
                     return;
                 }
             }
 
-            /**
-             * adjust column
-             */
+            // adjust column
             cursorColumn = cursorColumn - column;
         }
 
-        /**
-         * always increment cursor line
-         */
+        // always increment cursor line
         cursorLine += 1;
         return;
 
-    /**
-     * Unwrap a line
-     */
+    // Unwrap a line
     case UnwrapLine:
-        /**
-         * we unwrap this line, adjust column
-         */
+        // we unwrap this line, adjust column
         if (cursorLine == line) {
             cursorColumn += oldLineLength;
         }
 
-        /**
-         * decrease cursor line
-         */
+        // decrease cursor line
         cursorLine -= 1;
         return;
 
-    /**
-     * Insert text
-     */
+    // Insert text
     case InsertText:
-        /**
-         * only interesting, if same line
-         */
+        // only interesting, if same line
         if (cursorLine != line) {
             return;
         }
@@ -280,13 +228,9 @@ void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, boo
 
         return;
 
-    /**
-     * Remove text
-     */
+    // Remove text
     case RemoveText:
-        /**
-         * only interesting, if same line
-         */
+        // only interesting, if same line
         if (cursorLine != line) {
             return;
         }
@@ -305,9 +249,7 @@ void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, boo
 
         return;
 
-    /**
-     * nothing
-     */
+    // nothing
     default:
         return;
     }
@@ -315,55 +257,35 @@ void TextHistory::Entry::transformCursor(int &cursorLine, int &cursorColumn, boo
 
 void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColumn, bool moveOnInsert) const
 {
-    /**
-     * handle all history types
-     */
+    // handle all history types
     switch (type) {
-    /**
-     * Wrap a line
-     */
+    // Wrap a line
     case WrapLine:
-        /**
-         * ignore this line
-         */
+        // ignore this line
         if (cursorLine <= line) {
             return;
         }
 
-        /**
-         * next line is unwrapped
-         */
+        // next line is unwrapped
         if (cursorLine == line + 1) {
-            /**
-             * adjust column
-             */
+            // adjust column
             cursorColumn = cursorColumn + column;
         }
 
-        /**
-         * always decrement cursor line
-         */
+        // always decrement cursor line
         cursorLine -= 1;
         return;
 
-    /**
-     * Unwrap a line
-     */
+    // Unwrap a line
     case UnwrapLine:
-        /**
-         * ignore lines before unwrapped one
-         */
+        // ignore lines before unwrapped one
         if (cursorLine < line - 1) {
             return;
         }
 
-        /**
-         * we unwrap this line, try to adjust cursor column if needed
-         */
+        // we unwrap this line, try to adjust cursor column if needed
         if (cursorLine == line - 1) {
-            /**
-             * skip cursors with to small columns
-             */
+            // skip cursors with to small columns
             if (cursorColumn <= oldLineLength) {
                 if (cursorColumn < oldLineLength || !moveOnInsert) {
                     return;
@@ -373,19 +295,13 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
             cursorColumn -= oldLineLength;
         }
 
-        /**
-         * increase cursor line
-         */
+        // increase cursor line
         cursorLine += 1;
         return;
 
-    /**
-     * Insert text
-     */
+    // Insert text
     case InsertText:
-        /**
-         * only interesting, if same line
-         */
+        // only interesting, if same line
         if (cursorLine != line) {
             return;
         }
@@ -404,13 +320,9 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
 
         return;
 
-    /**
-     * Remove text
-     */
+    // Remove text
     case RemoveText:
-        /**
-         * only interesting, if same line
-         */
+        // only interesting, if same line
         if (cursorLine != line) {
             return;
         }
@@ -432,9 +344,7 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
         }
         return;
 
-    /**
-     * nothing
-     */
+    // nothing
     default:
         return;
     }
@@ -442,9 +352,7 @@ void TextHistory::Entry::reverseTransformCursor(int &cursorLine, int &cursorColu
 
 void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCursor::InsertBehavior insertBehavior, qint64 fromRevision, qint64 toRevision)
 {
-    /**
-     * -1 special meaning for from/toRevision
-     */
+    // -1 special meaning for from/toRevision
     if (fromRevision == -1) {
         fromRevision = revision();
     }
@@ -453,16 +361,12 @@ void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCur
         toRevision = revision();
     }
 
-    /**
-     * shortcut, same revision
-     */
+    // shortcut, same revision
     if (fromRevision == toRevision) {
         return;
     }
 
-    /**
-     * some invariants must hold
-     */
+    // some invariants must hold
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(fromRevision != toRevision);
     Q_ASSERT(fromRevision >= m_firstHistoryEntryRevision);
@@ -470,14 +374,10 @@ void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCur
     Q_ASSERT(toRevision >= m_firstHistoryEntryRevision);
     Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
-    /**
-     * transform cursor
-     */
+    // transform cursor
     bool moveOnInsert = insertBehavior == KTextEditor::MovingCursor::MoveOnInsert;
 
-    /**
-     * forward or reverse transform?
-     */
+    // forward or reverse transform?
     if (toRevision > fromRevision) {
         for (int rev = fromRevision - m_firstHistoryEntryRevision + 1; rev <= (toRevision - m_firstHistoryEntryRevision); ++rev) {
             const Entry &entry = m_historyEntries.at(rev);
@@ -493,18 +393,14 @@ void TextHistory::transformCursor(int &line, int &column, KTextEditor::MovingCur
 
 void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingRange::InsertBehaviors insertBehaviors, KTextEditor::MovingRange::EmptyBehavior emptyBehavior, qint64 fromRevision, qint64 toRevision)
 {
-    /**
-     * invalidate on empty?
-     */
+    // invalidate on empty?
     bool invalidateIfEmpty = emptyBehavior == KTextEditor::MovingRange::InvalidateIfEmpty;
     if (invalidateIfEmpty && range.end() <= range.start()) {
         range = KTextEditor::Range::invalid();
         return;
     }
 
-    /**
-     * -1 special meaning for from/toRevision
-     */
+    // -1 special meaning for from/toRevision
     if (fromRevision == -1) {
         fromRevision = revision();
     }
@@ -513,16 +409,12 @@ void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingR
         toRevision = revision();
     }
 
-    /**
-     * shortcut, same revision
-     */
+    // shortcut, same revision
     if (fromRevision == toRevision) {
         return;
     }
 
-    /**
-     * some invariants must hold
-     */
+    // some invariants must hold
     Q_ASSERT(!m_historyEntries.empty());
     Q_ASSERT(fromRevision != toRevision);
     Q_ASSERT(fromRevision >= m_firstHistoryEntryRevision);
@@ -530,9 +422,7 @@ void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingR
     Q_ASSERT(toRevision >= m_firstHistoryEntryRevision);
     Q_ASSERT(toRevision < (m_firstHistoryEntryRevision + qint64(m_historyEntries.size())));
 
-    /**
-     * transform cursors
-     */
+    // transform cursors
 
     // first: copy cursors, without range association
     int startLine = range.start().line(), startColumn = range.start().column(), endLine = range.end().line(), endColumn = range.end().column();
@@ -540,9 +430,7 @@ void TextHistory::transformRange(KTextEditor::Range &range, KTextEditor::MovingR
     bool moveOnInsertStart = !(insertBehaviors & KTextEditor::MovingRange::ExpandLeft);
     bool moveOnInsertEnd = (insertBehaviors & KTextEditor::MovingRange::ExpandRight);
 
-    /**
-     * forward or reverse transform?
-     */
+    // forward or reverse transform?
     if (toRevision > fromRevision) {
         for (int rev = fromRevision - m_firstHistoryEntryRevision + 1; rev <= (toRevision - m_firstHistoryEntryRevision); ++rev) {
             const Entry &entry = m_historyEntries.at(rev);

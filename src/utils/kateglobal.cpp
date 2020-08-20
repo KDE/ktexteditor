@@ -89,9 +89,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     git_libgit2_init();
 #endif
 
-    /**
-     * register some datatypes
-     */
+    // register some datatypes
     qRegisterMetaType<KTextEditor::Cursor>("KTextEditor::Cursor");
     qRegisterMetaType<KTextEditor::Document *>("KTextEditor::Document*");
     qRegisterMetaType<KTextEditor::View *>("KTextEditor::View*");
@@ -145,9 +143,7 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
 
     m_aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
-    /**
-     * set proper Kate icon for our about dialog
-     */
+    // set proper Kate icon for our about dialog
     m_aboutData.setProgramLogo(QIcon(QStringLiteral(":/ktexteditor/kate.svg")));
 
     //
@@ -350,46 +346,32 @@ KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWid
  */
 static void cleanupGlobal()
 {
-    /**
-     * delete if there
-     */
+    // delete if there
     delete KTextEditor::EditorPrivate::self();
 }
 
 KTextEditor::EditorPrivate *KTextEditor::EditorPrivate::self()
 {
-    /**
-     * remember the static instance in a QPointer
-     */
+    // remember the static instance in a QPointer
     static bool inited = false;
     static QPointer<KTextEditor::EditorPrivate> staticInstance;
 
-    /**
-     * just return it, if already inited
-     */
+    // just return it, if already inited
     if (inited) {
         return staticInstance.data();
     }
 
-    /**
-     * start init process
-     */
+    // start init process
     inited = true;
 
-    /**
-     * now create the object and store it
-     */
+    // now create the object and store it
     new KTextEditor::EditorPrivate(staticInstance);
 
-    /**
-     * register cleanup
-     * let use be deleted during QCoreApplication shutdown
-     */
+    // register cleanup
+    // let use be deleted during QCoreApplication shutdown
     qAddPostRoutine(cleanupGlobal);
 
-    /**
-     * return instance
-     */
+    // return instance
     return staticInstance.data();
 }
 
@@ -451,31 +433,23 @@ void KTextEditor::EditorPrivate::updateColorPalette()
 
 void KTextEditor::EditorPrivate::copyToClipboard(const QString &text)
 {
-    /**
-     * empty => nop
-     */
+    // empty => nop
     if (text.isEmpty()) {
         return;
     }
 
-    /**
-     * move to clipboard
-     */
+    // move to clipboard
     QApplication::clipboard()->setText(text, QClipboard::Clipboard);
 
-    /**
-     * LRU, kill potential duplicated, move new entry to top
-     * cut after 10 entries
-     */
+    // LRU, kill potential duplicated, move new entry to top
+    // cut after 10 entries
     m_clipboardHistory.removeOne(text);
     m_clipboardHistory.prepend(text);
     if (m_clipboardHistory.size() > 10) {
         m_clipboardHistory.removeLast();
     }
 
-    /**
-     * notify about change
-     */
+    // notify about change
     emit clipboardHistoryChanged();
 }
 

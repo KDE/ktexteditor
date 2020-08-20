@@ -75,17 +75,13 @@ Editor::~Editor()
 
 Editor *KTextEditor::Editor::instance()
 {
-    /**
-     * Just use internal KTextEditor::EditorPrivate::self()
-     */
+    // Just use internal KTextEditor::EditorPrivate::self()
     return KTextEditor::EditorPrivate::self();
 }
 
 QString Editor::defaultEncoding() const
 {
-    /**
-     * return default encoding in global config object
-     */
+    // return default encoding in global config object
     return d->documentConfig()->encoding();
 }
 
@@ -137,23 +133,17 @@ bool View::insertText(const QString &text)
 
 bool View::isStatusBarEnabled() const
 {
-    /**
-     * is the status bar around?
-     */
+    // is the status bar around?
     return !!d->statusBar();
 }
 
 void View::setStatusBarEnabled(bool enable)
 {
-    /**
-     * no state change, do nothing
-     */
+    // no state change, do nothing
     if (enable == !!d->statusBar())
         return;
 
-    /**
-     * else toggle it
-     */
+    // else toggle it
     d->toggleStatusBar();
 }
 

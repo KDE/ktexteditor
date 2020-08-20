@@ -2160,23 +2160,17 @@ void KateIconBorder::highlightFoldingDelayed(int line)
 
 void KateIconBorder::highlightFolding()
 {
-    /**
-     * compute to which folding range we belong
-     * FIXME: optimize + perhaps have some better threshold or use timers!
-     */
+    // compute to which folding range we belong
+    // FIXME: optimize + perhaps have some better threshold or use timers!
     KTextEditor::Range newRange = KTextEditor::Range::invalid();
     for (int line = m_currentLine; line >= qMax(0, m_currentLine - 1024); --line) {
-        /**
-         * try if we have folding range from that line, should be fast per call
-         */
+        // try if we have folding range from that line, should be fast per call
         KTextEditor::Range foldingRange = m_doc->buffer().computeFoldingRangeForStartLine(line);
         if (!foldingRange.isValid()) {
             continue;
         }
 
-        /**
-         * does the range reach us?
-         */
+        // does the range reach us?
         if (foldingRange.overlapsLine(m_currentLine)) {
             newRange = foldingRange;
             break;
@@ -2204,10 +2198,8 @@ void KateIconBorder::highlightFolding()
         m_foldingRange = m_doc->newMovingRange(newRange, KTextEditor::MovingRange::ExpandRight);
         KTextEditor::Attribute::Ptr attr(new KTextEditor::Attribute());
 
-        /**
-         * create highlighting color
-         * we avoid alpha as overpainting leads to ugly lines (https://bugreports.qt.io/browse/QTBUG-66036)
-         */
+        // create highlighting color
+        // we avoid alpha as overpainting leads to ugly lines (https://bugreports.qt.io/browse/QTBUG-66036)
         attr->setBackground(QBrush(m_view->renderer()->config()->foldingColor()));
 
         m_foldingRange->setView(m_view);
@@ -2710,17 +2702,13 @@ void KateViewEncodingAction::slotAboutToShow()
 
 void KateViewEncodingAction::setEncoding(const QString &e)
 {
-    /**
-     * in save as mode => trigger saveAs
-     */
+    // in save as mode => trigger saveAs
     if (m_saveAsMode) {
         doc->documentSaveAsWithEncoding(e);
         return;
     }
 
-    /**
-     * else switch encoding
-     */
+    // else switch encoding
     doc->userSetEncodingForNextReload();
     doc->setEncoding(e);
     view->reloadFile();
@@ -3020,14 +3008,10 @@ void KatePasteMenu::slotAboutToShow()
 {
     menu()->clear();
 
-    /**
-     * insert complete paste history
-     */
+    // insert complete paste history
     int i = 0;
     for (const QString &text : KTextEditor::EditorPrivate::self()->clipboardHistory()) {
-        /**
-         * get text for the menu ;)
-         */
+        // get text for the menu ;)
         QString leftPart = (text.size() > 48) ? (text.left(48) + QLatin1String("...")) : text;
         QAction *a = menu()->addAction(leftPart.replace(QLatin1Char('\n'), QLatin1Char(' ')), this, SLOT(paste()));
         a->setData(i++);

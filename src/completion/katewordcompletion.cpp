@@ -207,9 +207,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
             // increment offset when at line end, so we take the last character too
             if ((! c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
                 if (offset - wordBegin > minWordSize && (line != range.end().line() || offset != range.end().column())) {
-                    /**
-                     * don't add the word we are inside with cursor!
-                     */
+                    // don't add the word we are inside with cursor!
                     if (!cursorLine || (view->cursorPosition().column() < wordBegin || view->cursorPosition().column() > offset)) {
                         result.insert(text.mid(wordBegin, offset - wordBegin));
                     }

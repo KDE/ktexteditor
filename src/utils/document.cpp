@@ -72,14 +72,10 @@ void Document::EditingTransaction::finish()
 
 Document::EditingTransaction::~EditingTransaction()
 {
-    /**
-     * finish the editing transaction
-     */
+    // finish the editing transaction
     finish();
 
-    /**
-     * delete our d-pointer
-     */
+    // delete our d-pointer
     delete d;
 }
 

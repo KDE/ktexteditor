@@ -129,9 +129,7 @@ KateLayoutCache::KateLayoutCache(KateRenderer *renderer, QObject *parent)
 {
     Q_ASSERT(m_renderer);
 
-    /**
-     * connect to all possible editing primitives
-     */
+    // connect to all possible editing primitives
     connect(&m_renderer->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
     connect(&m_renderer->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
     connect(&m_renderer->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));

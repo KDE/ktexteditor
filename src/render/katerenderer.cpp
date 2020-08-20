@@ -948,26 +948,22 @@ void KateRenderer::updateConfig()
 
 void KateRenderer::updateFontHeight()
 {
-    /**
-     * cache font + metrics
-     */
+    // cache font + metrics
     m_font = config()->baseFont();
     m_fontMetrics = QFontMetricsF(m_font);
 
-    /**
-     * ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
-     *
-     * use a line spacing that matches the code in qt to layout/paint text
-     *
-     * see bug 403868
-     * https://github.com/qt/qtbase/blob/5.12/src/gui/text/qtextlayout.cpp (line 2270 at the moment) where the text height is set as:
-     *
-     * qreal height = maxY + fontHeight - minY;
-     *
-     * with fontHeight:
-     *
-     * qreal fontHeight = font.ascent() + font.descent();
-     */
+    // ensure minimal height of one pixel to not fall in the div by 0 trap somewhere
+    //
+    // use a line spacing that matches the code in qt to layout/paint text
+    //
+    // see bug 403868
+    // https://github.com/qt/qtbase/blob/5.12/src/gui/text/qtextlayout.cpp (line 2270 at the moment) where the text height is set as:
+    //
+    // qreal height = maxY + fontHeight - minY;
+    //
+    // with fontHeight:
+    //
+    // qreal fontHeight = font.ascent() + font.descent();
     m_fontHeight = qMax(1, qCeil(m_fontMetrics.ascent() + m_fontMetrics.descent()));
     m_fontAscent = m_fontMetrics.ascent();
 }

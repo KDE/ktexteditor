@@ -141,9 +141,7 @@ KateCompletionWidget::KateCompletionWidget(KTextEditor::ViewPrivate *parent)
     connect(view(), SIGNAL(cursorPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(cursorPositionChanged()));
     connect(view(), SIGNAL(verticalScrollPositionChanged(KTextEditor::View *, KTextEditor::Cursor)), this, SLOT(updatePositionSlot()));
 
-    /**
-     * connect to all possible editing primitives
-     */
+    // connect to all possible editing primitives
     connect(&view()->doc()->buffer(), SIGNAL(lineWrapped(KTextEditor::Cursor)), this, SLOT(wrapLine(KTextEditor::Cursor)));
     connect(&view()->doc()->buffer(), SIGNAL(lineUnwrapped(int)), this, SLOT(unwrapLine(int)));
     connect(&view()->doc()->buffer(), SIGNAL(textInserted(KTextEditor::Cursor, QString)), this, SLOT(insertText(KTextEditor::Cursor, QString)));

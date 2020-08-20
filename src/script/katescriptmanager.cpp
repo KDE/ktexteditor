@@ -102,9 +102,7 @@ void KateScriptManager::collect()
     m_languageToIndenters.clear();
     m_indentationScriptMap.clear();
 
-    /**
-     * now, we search all kinds of known scripts
-     */
+    // now, we search all kinds of known scripts
     for (const auto &type : {QLatin1String("indentation"), QLatin1String("commands")}) {
         // basedir for filesystem lookup
         const QString basedir = QLatin1String("/katepart5/script/") + type;
@@ -135,34 +133,24 @@ void KateScriptManager::collect()
         // iterate through the files and read info out of cache or file, no double loading of same scripts
         QSet<QString> unique;
         for (const QString &fileName : qAsConst(list)) {
-            /**
-             * get file basename
-             */
+            // get file basename
             const QString baseName = QFileInfo(fileName).baseName();
 
-            /**
-             * only load scripts once, even if multiple installed variants found!
-             */
+            // only load scripts once, even if multiple installed variants found!
             if (unique.contains(baseName))
                 continue;
 
-            /**
-             * remember the script
-             */
+            // remember the script
             unique.insert(baseName);
 
-            /**
-             * open file or skip it
-             */
+            // open file or skip it
             QFile file(fileName);
             if (!file.open(QIODevice::ReadOnly)) {
                 qCDebug(LOG_KTE) << "Script parse error: Cannot open file " << qPrintable(fileName) << '\n';
                 continue;
             }
 
-            /**
-             * search json header or skip this file
-             */
+            // search json header or skip this file
             QByteArray fileContent = file.readAll();
             int startOfJson = fileContent.indexOf('{');
             if (startOfJson < 0) {
@@ -180,9 +168,7 @@ void KateScriptManager::collect()
             }
             endOfJson += 2; // we want the end including the } but not the ;
 
-            /**
-             * parse json header or skip this file
-             */
+            // parse json header or skip this file
             QJsonParseError error;
             const QJsonDocument metaInfo(QJsonDocument::fromJson(fileContent.mid(startOfJson, endOfJson - startOfJson), &error));
             if (error.error || !metaInfo.isObject()) {
@@ -190,9 +176,7 @@ void KateScriptManager::collect()
                 continue;
             }
 
-            /**
-             * remember type
-             */
+            // remember type
             KateScriptHeader generalHeader;
             if (type == QLatin1String("indentation")) {
                 generalHeader.setScriptType(Kate::ScriptType::Indentation);

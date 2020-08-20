@@ -740,11 +740,9 @@ void KateViewInternal::slotRegionVisibilityChanged()
 {
     qCDebug(LOG_KTE);
 
-    /**
-     * ensure the layout cache is ok for the updateCursor calls below
-     * without the updateView() the view will jump to the bottom on hiding blocks after
-     * change cfb0af25bdfac0d8f86b42db0b34a6bc9f9a361e
-     */
+    // ensure the layout cache is ok for the updateCursor calls below
+    // without the updateView() the view will jump to the bottom on hiding blocks after
+    // change cfb0af25bdfac0d8f86b42db0b34a6bc9f9a361e
     cache()->clear();
     updateView();
 
@@ -1527,9 +1525,7 @@ void KateViewInternal::cursorUp(bool sel)
     // assert that the display cursor is in visible lines
     Q_ASSERT(m_displayCursor.line() < view()->textFolding().visibleLines());
 
-    /**
-     * move cursor to start of line, if we are at first line!
-     */
+    // move cursor to start of line, if we are at first line!
     if (m_displayCursor.line() == 0 && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == 0)) {
         home(sel);
         return;
@@ -1559,9 +1555,7 @@ void KateViewInternal::cursorDown(bool sel)
         return;
     }
 
-    /**
-     * move cursor to end of line, if we are at last line!
-     */
+    // move cursor to end of line, if we are at last line!
     if ((m_displayCursor.line() >= view()->textFolding().visibleLines() - 1) && (!view()->dynWordWrap() || cache()->viewLine(m_cursor) == cache()->lastViewLine(m_cursor.line()))) {
         end(sel);
         return;
@@ -3028,16 +3022,12 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
     renderer()->setShowSpaces(doc()->config()->showSpaces());
     renderer()->updateMarkerSize();
 
-    /**
-     * paint line by line
-     * this includes parts that span areas without real lines
-     * translate to first line to paint
-     */
+    // paint line by line
+    // this includes parts that span areas without real lines
+    // translate to first line to paint
     paint.translate(unionRect.x(), startz * h);
     for (uint z = startz; z <= endz; z++) {
-        /**
-         * paint regions without lines mapped to
-         */
+        // paint regions without lines mapped to
         if ((z >= lineRangesSize) || (cache()->viewLine(z).line() == -1)) {
             if (!(z >= lineRangesSize)) {
                 cache()->viewLine(z).setDirty(false);
@@ -3045,26 +3035,20 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
             paint.fillRect(0, 0, unionRect.width(), h, renderer()->config()->backgroundColor());
         }
 
-        /**
-         * paint text lines
-         */
+        // paint text lines
         else {
-            /**
-             * If viewLine() returns non-zero, then a document line was split
-             * in several visual lines, and we're trying to paint visual line
-             * that is not the first.  In that case, this line was already
-             * painted previously, since KateRenderer::paintTextLine paints
-             * all visual lines.
-             *
-             * Except if we're at the start of the region that needs to
-             * be painted -- when no previous calls to paintTextLine were made.
-             */
+            // If viewLine() returns non-zero, then a document line was split
+            // in several visual lines, and we're trying to paint visual line
+            // that is not the first.  In that case, this line was already
+            // painted previously, since KateRenderer::paintTextLine paints
+            // all visual lines.
+            //
+            // Except if we're at the start of the region that needs to
+            // be painted -- when no previous calls to paintTextLine were made.
             KateTextLayout &thisLine = cache()->viewLine(z);
             if (!thisLine.viewLine() || z == startz) {
-                /**
-                 * paint our line
-                 * set clipping region to only paint the relevant parts
-                 */
+                // paint our line
+                // set clipping region to only paint the relevant parts
                 paint.save();
                 paint.translate(QPoint(0, h * -thisLine.viewLine()));
 
@@ -3079,16 +3063,12 @@ void KateViewInternal::paintEvent(QPaintEvent *e)
                 renderer()->paintTextLine(paint, thisLine.kateLineLayout(), xStart, xEnd, &pos);
                 paint.restore();
 
-                /**
-                 * line painted, reset and state + mark line as non-dirty
-                 */
+                // line painted, reset and state + mark line as non-dirty
                 thisLine.setDirty(false);
             }
         }
 
-        /**
-         * translate to next line
-         */
+        // translate to next line
         paint.translate(0, h);
     }
 
@@ -3299,9 +3279,7 @@ void KateViewInternal::dragMoveEvent(QDragMoveEvent *event)
 
 void KateViewInternal::dropEvent(QDropEvent *event)
 {
-    /**
-     * if we have urls, pass this event off to the hosting application
-     */
+    // if we have urls, pass this event off to the hosting application
     if (event->mimeData()->hasUrls()) {
         emit dropEventPass(event);
         return;
@@ -3582,10 +3560,8 @@ void KateViewInternal::editEnd(int editTagLineStart, int editTagLineEnd, bool ta
         }
     }
 
-    /**
-     * selection changed?
-     * fixes bug 316226
-     */
+    // selection changed?
+    // fixes bug 316226
     if (editOldSelection != view()->selectionRange() || (editOldSelection.isValid() && !editOldSelection.isEmpty() && !(editTagLineStart > editOldSelection.end().line() && editTagLineEnd < editOldSelection.start().line()))) {
         emit view()->selectionChanged(m_view);
     }
@@ -3628,10 +3604,8 @@ KTextEditor::Cursor KateViewInternal::toRealCursor(const KTextEditor::Cursor &vi
 
 KTextEditor::Cursor KateViewInternal::toVirtualCursor(const KTextEditor::Cursor &realCursor) const
 {
-    /**
-     * only convert valid lines, folding doesn't like invalid input!
-     * don't validate whole cursor, column might be -1
-     */
+    // only convert valid lines, folding doesn't like invalid input!
+    // don't validate whole cursor, column might be -1
     if (realCursor.line() < 0) {
         return KTextEditor::Cursor::invalid();
     }

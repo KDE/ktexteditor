@@ -164,21 +164,15 @@ void KateNormalInputMode::activateCommandLine()
 
 KateSearchBar *KateNormalInputMode::searchBar(const SearchBarMode mode)
 {
-    /**
-     * power mode wanted?
-     */
+    // power mode wanted?
     const bool wantPowerMode = (mode == PowerSearchBar);
 
-    /**
-     * create search bar is not there? use right mode
-     */
+    // create search bar is not there? use right mode
     if (!m_searchBar) {
         m_searchBar = new KateSearchBar(wantPowerMode, view(), KateViewConfig::global());
     }
 
-    /**
-     * else: switch mode if needed!
-     */
+    // else: switch mode if needed!
     else if (mode != IncrementalSearchBarOrKeepMode) {
         if (wantPowerMode) {
             m_searchBar->enterPowerMode();

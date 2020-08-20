@@ -595,23 +595,17 @@ void KateHlManager::setDefaults(const QString &schema, KateAttributeList &list, 
 
 void KateHlManager::reload()
 {
-    /**
-     * copy current loaded hls from hash to trigger recreation
-     */
+    // copy current loaded hls from hash to trigger recreation
     auto oldHls = m_hlDict;
     m_hlDict.clear();
 
-    /**
-     * recreate repository
-     * this might even remove highlighting modes known before
-     */
+    // recreate repository
+    // this might even remove highlighting modes known before
     m_repository.reload();
 
-    /**
-     * let all documents use the new highlighters
-     * will be created on demand
-     * if old hl not found, use none
-     */
+    // let all documents use the new highlighters
+    // will be created on demand
+    // if old hl not found, use none
     for (KTextEditor::DocumentPrivate *doc : KTextEditor::EditorPrivate::self()->kateDocuments()) {
         auto hlMode = doc->highlightingMode();
         if (nameFind(hlMode) < 0) {

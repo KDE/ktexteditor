@@ -78,21 +78,15 @@ inline QString convertThemeName(const QString &schema)
 // BEGIN KateHighlighting
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 {
-    /**
-     * get name and section, always works
-     */
+    // get name and section, always works
     iName = def.name();
     iSection = def.translatedSection();
 
-    /**
-     * get all included definitions, e.g. PHP for HTML highlighting
-     */
+    // get all included definitions, e.g. PHP for HTML highlighting
     auto definitions = def.includedDefinitions();
 
-    /**
-     * handle the "no highlighting" case
-     * it's possible to not have any definitions with malformed file
-     */
+    // handle the "no highlighting" case
+    // it's possible to not have any definitions with malformed file
     if (!def.isValid() || (definitions.isEmpty() && def.formats().isEmpty())) {
         // dummy properties + formats
         m_properties.resize(1);
@@ -104,9 +98,7 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
         return;
     }
 
-    /**
-     * handle the real highlighting case
-     */
+    // handle the real highlighting case
     noHl = false;
     iHidden = def.isHidden();
     identifier = def.filePath();
@@ -115,28 +107,22 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     folding = def.foldingEnabled();
     m_foldingIndentationSensitive = def.indentationBasedFoldingEnabled();
 
-    /**
-     * tell the AbstractHighlighter the definition it shall use
-     */
+    // tell the AbstractHighlighter the definition it shall use
     setDefinition(def);
 
-    /**
-     * first: handle only really included definitions
-     */
+    // first: handle only really included definitions
     for (const auto &includedDefinition : definitions)
         embeddedHighlightingModes.push_back(includedDefinition.name());
 
-    /**
-     * now: handle all, including this definition itself
-     * create the format => attributes mapping
-     * collect embedded highlightings, too
-     *
-     * we start with our definition as we want to have the default format
-     * of the initial definition as attribute with index == 0
-     *
-     * we collect additional properties in the m_properties and
-     * map the formats to the right properties in m_propertiesForFormat
-     */
+    // now: handle all, including this definition itself
+    // create the format => attributes mapping
+    // collect embedded highlightings, too
+    //
+    // we start with our definition as we want to have the default format
+    // of the initial definition as attribute with index == 0
+    //
+    // we collect additional properties in the m_properties and
+    // map the formats to the right properties in m_propertiesForFormat
     definitions.push_front(definition());
     m_properties.resize(definitions.size());
     size_t propertiesIndex = 0;
@@ -193,53 +179,37 @@ void KateHighlighting::doHighlight(const Kate::TextLineData *prevLine, Kate::Tex
         return;
     }
 
-    /**
-     * ensure we arrive in clean state
-     */
+    // ensure we arrive in clean state
     Q_ASSERT(!m_textLineToHighlight);
     Q_ASSERT(m_foldingStartToCount.isEmpty());
 
-    /**
-     * highlight the given line via the abstract highlighter
-     * a bit ugly: we set the line to highlight as member to be able to update its stats in the applyFormat and applyFolding member functions
-     */
+    // highlight the given line via the abstract highlighter
+    // a bit ugly: we set the line to highlight as member to be able to update its stats in the applyFormat and applyFolding member functions
     m_textLineToHighlight = textLine;
     const KSyntaxHighlighting::State initialState(!prevLine ? KSyntaxHighlighting::State() : prevLine->highlightingState());
     const KSyntaxHighlighting::State endOfLineState = highlightLine(textLine->string(), initialState);
     m_textLineToHighlight = nullptr;
 
-    /**
-     * update highlighting state if needed
-     */
+    // update highlighting state if needed
     if (textLine->highlightingState() != endOfLineState) {
         textLine->setHighlightingState(endOfLineState);
         ctxChanged = true;
     }
 
-    /**
-     * handle folding info computed and cleanup hash again, if there
-     * check if folding is not balanced and we have more starts then ends
-     * then this line is a possible folding start!
-     */
+    // handle folding info computed and cleanup hash again, if there
+    // check if folding is not balanced and we have more starts then ends
+    // then this line is a possible folding start!
     if (!m_foldingStartToCount.isEmpty()) {
-        /**
-         * possible folding start, if imbalanced, aka hash not empty!
-         */
+        // possible folding start, if imbalanced, aka hash not empty!
         textLine->markAsFoldingStartAttribute();
 
-        /**
-         * clear hash for next doHighlight
-         */
+        // clear hash for next doHighlight
         m_foldingStartToCount.clear();
     }
 
-    /**
-     * check for indentation based folding
-     */
+    // check for indentation based folding
     if (m_foldingIndentationSensitive && (tabWidth > 0) && !textLine->markedAsFoldingStartAttribute()) {
-        /**
-         * compute if we increase indentation in next line
-         */
+        // compute if we increase indentation in next line
         if (endOfLineState.indentationBasedFoldingEnabled() && !isEmptyLine(textLine) && !isEmptyLine(nextLine) && (textLine->indentDepth(tabWidth) < nextLine->indentDepth(tabWidth))) {
             textLine->markAsFoldingStartIndentation();
         }
@@ -270,9 +240,7 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
     const int foldingValue = (region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? int(region.id()) : -int(region.id());
     m_textLineToHighlight->addFolding(offset + ((region.type() == KSyntaxHighlighting::FoldingRegion::Begin) ? 0 : length), foldingValue);
 
-    /**
-     * for each end region, decrement counter for that type, erase if count reaches 0!
-     */
+    // for each end region, decrement counter for that type, erase if count reaches 0!
     if (foldingValue < 0) {
         QHash<int, int>::iterator end = m_foldingStartToCount.find(-foldingValue);
         if (end != m_foldingStartToCount.end()) {
@@ -284,9 +252,7 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
         }
     }
 
-    /**
-     * increment counter for each begin region!
-     */
+    // increment counter for each begin region!
     if (foldingValue > 0) {
         ++m_foldingStartToCount[foldingValue];
     }
@@ -504,32 +470,22 @@ void KateHighlighting::clearAttributeArrays()
 
 QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema)
 {
-    /**
-     * get the KSyntaxHighlighting theme from the chosen schema.
-     * NOTE: if the theme isn't valid for KSyntaxHighlighting, an empty/invalid theme will be used.
-     * For example, the "KDE" and "Vim (dark)" themes don't exist in KSyntaxHighlighting.
-     */
+    // get the KSyntaxHighlighting theme from the chosen schema.
+    // NOTE: if the theme isn't valid for KSyntaxHighlighting, an empty/invalid theme will be used.
+    // For example, the "KDE" and "Vim (dark)" themes don't exist in KSyntaxHighlighting.
     KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(convertThemeName(schema));
 
-    /**
-     * create list of all known things
-     */
+    // create list of all known things
     QVector<KTextEditor::Attribute::Ptr> array;
     for (const auto &format : m_formats) {
-        /**
-         * atm we just set the current chosen theme here for later color generation
-         */
+        // atm we just set the current chosen theme here for later color generation
         setTheme(currentTheme);
 
-        /**
-         * create a KTextEditor attribute matching the given format
-         */
+        // create a KTextEditor attribute matching the given format
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
-        /**
-         * NOTE: if "theme()" returns an empty/invalid theme, only the
-         * attribute styles set in the XML files will be applied here.
-         */
+        // NOTE: if "theme()" returns an empty/invalid theme, only the
+        // attribute styles set in the XML files will be applied here.
         if (format.hasTextColor(theme())) {
             newAttribute->setForeground(format.textColor(theme()));
             newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
@@ -540,13 +496,11 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
             newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
         }
 
-        /**
-         * Apply attributes set in the syntax definition XML files.
-         * This overwrites the default theme and the theme customized by the user.
-         *
-         * It's allowed to turn off the bold, italic, underline and strikeout
-         * attributes in the XML files (see bug #143399).
-         */
+        // Apply attributes set in the syntax definition XML files.
+        // This overwrites the default theme and the theme customized by the user.
+        //
+        // It's allowed to turn off the bold, italic, underline and strikeout
+        // attributes in the XML files (see bug #143399).
         if (format.hasBoldOverride()) {
             if (format.isBold(theme())) {
                 newAttribute->setFontBold(true);
@@ -661,9 +615,7 @@ int KateHighlighting::attributeForLocation(KTextEditor::DocumentPrivate *doc, co
         return 0;
     }
 
-    /**
-     * either get char attribute or attribute of context still active at end of line
-     */
+    // either get char attribute or attribute of context still active at end of line
     if (cursor.column() < tl->length()) {
         return sanitizeFormatIndex(tl->attribute(cursor.column()));
     } else if (cursor.column() >= tl->length()) {

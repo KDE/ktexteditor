@@ -31,9 +31,7 @@ TextRange::TextRange(TextBuffer &buffer, const KTextEditor::Range &range, Insert
 
 TextRange::~TextRange()
 {
-    /**
-     * reset feedback, don't want feedback during destruction
-     */
+    // reset feedback, don't want feedback during destruction
     m_feedback = nullptr;
 
     // remove range from m_ranges
@@ -42,11 +40,9 @@ TextRange::~TextRange()
     // remove this range from the buffer
     m_buffer.m_ranges.remove(this);
 
-    /**
-     * trigger update, if we have attribute
-     * notify right view
-     * here we can ignore feedback, even with feedback, we want none if the range is deleted!
-     */
+    // trigger update, if we have attribute
+    // notify right view
+    // here we can ignore feedback, even with feedback, we want none if the range is deleted!
     if (m_attribute) {
         m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), true /* we have a attribute */);
     }
@@ -54,22 +50,16 @@ TextRange::~TextRange()
 
 void TextRange::setInsertBehaviors(InsertBehaviors _insertBehaviors)
 {
-    /**
-     * nothing to do?
-     */
+    // nothing to do?
     if (_insertBehaviors == insertBehaviors()) {
         return;
     }
 
-    /**
-     * modify cursors
-     */
+    // modify cursors
     m_start.setInsertBehavior((_insertBehaviors & ExpandLeft) ? KTextEditor::MovingCursor::StayOnInsert : KTextEditor::MovingCursor::MoveOnInsert);
     m_end.setInsertBehavior((_insertBehaviors & ExpandRight) ? KTextEditor::MovingCursor::MoveOnInsert : KTextEditor::MovingCursor::StayOnInsert);
 
-    /**
-     * notify world
-     */
+    // notify world
     if (m_attribute || m_feedback) {
         m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), true /* we have a attribute */);
     }
@@ -92,21 +82,15 @@ KTextEditor::MovingRange::InsertBehaviors TextRange::insertBehaviors() const
 
 void TextRange::setEmptyBehavior(EmptyBehavior emptyBehavior)
 {
-    /**
-     * nothing to do?
-     */
+    // nothing to do?
     if (m_invalidateIfEmpty == (emptyBehavior == InvalidateIfEmpty)) {
         return;
     }
 
-    /**
-     * remember value
-     */
+    // remember value
     m_invalidateIfEmpty = (emptyBehavior == InvalidateIfEmpty);
 
-    /**
-     * invalidate range?
-     */
+    // invalidate range?
     if (end() <= start()) {
         setRange(KTextEditor::Range::invalid());
     }
@@ -147,10 +131,8 @@ void TextRange::setRange(const KTextEditor::Range &range)
         endLineMax = m_end.line();
     }
 
-    /**
-     * notify buffer about attribute change, it will propagate the changes
-     * notify right view
-     */
+    // notify buffer about attribute change, it will propagate the changes
+    // notify right view
     m_buffer.notifyAboutRangeChange(m_view, startLineMin, endLineMax, m_attribute);
 
     // perhaps need to notify stuff!
@@ -166,22 +148,16 @@ void TextRange::setRange(const KTextEditor::Range &range)
 
 void TextRange::checkValidity(int oldStartLine, int oldEndLine, bool notifyAboutChange)
 {
-    /**
-     * in any case: reset the flag, to avoid multiple runs
-     */
+    // in any case: reset the flag, to avoid multiple runs
     m_isCheckValidityRequired = false;
 
-    /**
-     * check if any cursor is invalid or the range is zero size and it should be invalidated then
-     */
+    // check if any cursor is invalid or the range is zero size and it should be invalidated then
     if (!m_start.isValid() || !m_end.isValid() || (m_invalidateIfEmpty && m_end <= m_start)) {
         m_start.setPosition(-1, -1);
         m_end.setPosition(-1, -1);
     }
 
-    /**
-     * for ranges which are allowed to become empty, normalize them, if the end has moved to the front of the start
-     */
+    // for ranges which are allowed to become empty, normalize them, if the end has moved to the front of the start
     if (!m_invalidateIfEmpty && m_end < m_start) {
         m_end.setPosition(m_start);
     }
@@ -252,22 +228,16 @@ void TextRange::fixLookup(int oldStartLine, int oldEndLine, int startLine, int e
 
 void TextRange::setView(KTextEditor::View *view)
 {
-    /**
-     * nothing changes, nop
-     */
+    // nothing changes, nop
     if (view == m_view) {
         return;
     }
 
-    /**
-     * remember the new attribute
-     */
+    // remember the new attribute
     m_view = view;
 
-    /**
-     * notify buffer about attribute change, it will propagate the changes
-     * notify all views (can be optimized later)
-     */
+    // notify buffer about attribute change, it will propagate the changes
+    // notify all views (can be optimized later)
     if (m_attribute || m_feedback) {
         m_buffer.notifyAboutRangeChange(nullptr, m_start.line(), m_end.line(), m_attribute);
     }
@@ -275,64 +245,46 @@ void TextRange::setView(KTextEditor::View *view)
 
 void TextRange::setAttribute(KTextEditor::Attribute::Ptr attribute)
 {
-    /**
-     * remember the new attribute
-     */
+    // remember the new attribute
     m_attribute = attribute;
 
-    /**
-     * notify buffer about attribute change, it will propagate the changes
-     * notify right view
-     */
+    // notify buffer about attribute change, it will propagate the changes
+    // notify right view
     m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
 }
 
 void TextRange::setFeedback(KTextEditor::MovingRangeFeedback *feedback)
 {
-    /**
-     * nothing changes, nop
-     */
+    // nothing changes, nop
     if (feedback == m_feedback) {
         return;
     }
 
-    /**
-     * remember the new feedback object
-     */
+    // remember the new feedback object
     m_feedback = feedback;
 
-    /**
-     * notify buffer about feedback change, it will propagate the changes
-     * notify right view
-     */
+    // notify buffer about feedback change, it will propagate the changes
+    // notify right view
     m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
 }
 
 void TextRange::setAttributeOnlyForViews(bool onlyForViews)
 {
-    /**
-     * just set the value, no need to trigger updates, printing is not interruptable
-     */
+    // just set the value, no need to trigger updates, printing is not interruptable
     m_attributeOnlyForViews = onlyForViews;
 }
 
 void TextRange::setZDepth(qreal zDepth)
 {
-    /**
-     * nothing changes, nop
-     */
+    // nothing changes, nop
     if (zDepth == m_zDepth) {
         return;
     }
 
-    /**
-     * remember the new attribute
-     */
+    // remember the new attribute
     m_zDepth = zDepth;
 
-    /**
-     * notify buffer about attribute change, it will propagate the changes
-     */
+    // notify buffer about attribute change, it will propagate the changes
     if (m_attribute) {
         m_buffer.notifyAboutRangeChange(m_view, m_start.line(), m_end.line(), m_attribute);
     }

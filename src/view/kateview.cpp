@@ -147,9 +147,7 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
 
     KTextEditor::EditorPrivate::self()->registerView(this);
 
-    /**
-     * try to let the main window, if any, create a view bar for this view
-     */
+    // try to let the main window, if any, create a view bar for this view
     QWidget *bottomBarParent = m_mainWindow->createViewBar(this);
 
     m_bottomViewBar = new KateViewBar(bottomBarParent != nullptr, bottomBarParent ? bottomBarParent : this, this);
@@ -199,10 +197,8 @@ KTextEditor::ViewPrivate::ViewPrivate(KTextEditor::DocumentPrivate *doc, QWidget
     // update the enabled state of the undo/redo actions...
     slotUpdateUndo();
 
-    /**
-     * create the status bar of this view
-     * do this after action creation, we use some of them!
-     */
+    // create the status bar of this view
+    // do this after action creation, we use some of them!
     toggleStatusBar();
 
     m_startingUp = false;
@@ -243,13 +239,11 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     // invalidate update signal
     m_delayedUpdateTriggered = false;
 
-    /**
-     * de-register views early from global collections
-     * otherwise we might "use" them again during destruction in a half-valid state
-     * see e.g. bug 422546
-     * Kate::TextBuffer::notifyAboutRangeChange will access views() in a chain during
-     * deletion of m_viewInternal
-     */
+    // de-register views early from global collections
+    // otherwise we might "use" them again during destruction in a half-valid state
+    // see e.g. bug 422546
+    // Kate::TextBuffer::notifyAboutRangeChange will access views() in a chain during
+    // deletion of m_viewInternal
     doc()->removeView(this);
     KTextEditor::EditorPrivate::self()->deregisterView(this);
 
@@ -261,9 +255,7 @@ KTextEditor::ViewPrivate::~ViewPrivate()
     // delete internal view before view bar!
     delete m_viewInternal;
 
-    /**
-     * remove view bar again, if needed
-     */
+    // remove view bar again, if needed
     m_mainWindow->deleteViewBar(this);
     m_bottomViewBar = nullptr;
 
@@ -274,9 +266,7 @@ KTextEditor::ViewPrivate::~ViewPrivate()
 
 void KTextEditor::ViewPrivate::toggleStatusBar()
 {
-    /**
-     * if there, delete it
-     */
+    // if there, delete it
     if (m_statusBar) {
         bottomViewBar()->removePermanentBarWidget(m_statusBar);
         delete m_statusBar;
@@ -285,9 +275,7 @@ void KTextEditor::ViewPrivate::toggleStatusBar()
         return;
     }
 
-    /**
-     * else: create it
-     */
+    // else: create it
     m_statusBar = new KateStatusBar(this);
     bottomViewBar()->addPermanentBarWidget(m_statusBar);
     emit statusBarEnabledChanged(this, true);
@@ -299,10 +287,8 @@ void KTextEditor::ViewPrivate::setupLayout()
     if (layout()) {
         delete layout();
 
-        /**
-         *  need to recreate spacers because they are deleted with
-         *  their belonging layout
-         */
+        //  need to recreate spacers because they are deleted with
+        //  their belonging layout
         m_topSpacer = new QSpacerItem(0, 0);
         m_leftSpacer = new QSpacerItem(0, 0);
         m_rightSpacer = new QSpacerItem(0, 0);
@@ -1369,16 +1355,12 @@ QString KTextEditor::ViewPrivate::viewModeHuman() const
 {
     QString currentMode = currentInputMode()->viewModeHuman();
 
-    /**
-     * append read-only if needed
-     */
+    // append read-only if needed
     if (!doc()->isReadWrite()) {
         currentMode = i18n("(R/O) %1", currentMode);
     }
 
-    /**
-     * return full mode
-     */
+    // return full mode
     return currentMode;
 }
 
@@ -1451,11 +1433,9 @@ void KTextEditor::ViewPrivate::slotGotFocus()
     // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotGotFocus";
     currentInputMode()->gotFocus();
 
-    /**
-     *  update current view and scrollbars
-     *  it is needed for styles that implement different frame and scrollbar
-     * rendering when focused
-     */
+    //  update current view and scrollbars
+    //  it is needed for styles that implement different frame and scrollbar
+    // rendering when focused
     update();
     if (m_viewInternal->m_lineScroll->isVisible()) {
         m_viewInternal->m_lineScroll->update();
@@ -1473,11 +1453,9 @@ void KTextEditor::ViewPrivate::slotLostFocus()
     // qCDebug(LOG_KTE) << "KTextEditor::ViewPrivate::slotLostFocus";
     currentInputMode()->lostFocus();
 
-    /**
-     *  update current view and scrollbars
-     *  it is needed for styles that implement different frame and scrollbar
-     * rendering when focused
-     */
+    //  update current view and scrollbars
+    //  it is needed for styles that implement different frame and scrollbar
+    // rendering when focused
     update();
     if (m_viewInternal->m_lineScroll->isVisible()) {
         m_viewInternal->m_lineScroll->update();
@@ -2206,37 +2184,25 @@ void KTextEditor::ViewPrivate::notifyMousePositionChanged(const KTextEditor::Cur
 
 bool KTextEditor::ViewPrivate::setSelection(const KTextEditor::Range &selection)
 {
-    /**
-     * anything to do?
-     */
+    // anything to do?
     if (selection == m_selection) {
         return true;
     }
 
-    /**
-     * backup old range
-     */
+    // backup old range
     KTextEditor::Range oldSelection = m_selection;
 
-    /**
-     * set new range
-     */
+    // set new range
     m_selection.setRange(selection.isEmpty() ? KTextEditor::Range::invalid() : selection);
 
-    /**
-     * trigger update of correct area
-     */
+    // trigger update of correct area
     tagSelection(oldSelection);
     repaintText(true);
 
-    /**
-     * emit holy signal
-     */
+    // emit holy signal
     emit selectionChanged(this);
 
-    /**
-     * be done
-     */
+    // be done
     return true;
 }
 
@@ -2247,41 +2213,29 @@ bool KTextEditor::ViewPrivate::clearSelection()
 
 bool KTextEditor::ViewPrivate::clearSelection(bool redraw, bool finishedChangingSelection)
 {
-    /**
-     * no selection, nothing to do...
-     */
+    // no selection, nothing to do...
     if (!selection()) {
         return false;
     }
 
-    /**
-     * backup old range
-     */
+    // backup old range
     KTextEditor::Range oldSelection = m_selection;
 
-    /**
-     * invalidate current selection
-     */
+    // invalidate current selection
     m_selection.setRange(KTextEditor::Range::invalid());
 
-    /**
-     * trigger update of correct area
-     */
+    // trigger update of correct area
     tagSelection(oldSelection);
     if (redraw) {
         repaintText(true);
     }
 
-    /**
-     * emit holy signal
-     */
+    // emit holy signal
     if (finishedChangingSelection) {
         emit selectionChanged(this);
     }
 
-    /**
-     * be done
-     */
+    // be done
     return true;
 }
 
@@ -2528,24 +2482,18 @@ void KTextEditor::ViewPrivate::slotTextInserted(KTextEditor::View *view, const K
 
 bool KTextEditor::ViewPrivate::insertTemplateInternal(const KTextEditor::Cursor &c, const QString &templateString, const QString &script)
 {
-    /**
-     * no empty templates
-     */
+    // no empty templates
     if (templateString.isEmpty()) {
         return false;
     }
 
-    /**
-     * not for read-only docs
-     */
+    // not for read-only docs
     if (!doc()->isReadWrite()) {
         return false;
     }
 
-    /**
-     * only one handler maybe active at a time; store it in the document.
-     * Clear it first to make sure at no time two handlers are active at once
-     */
+    // only one handler maybe active at a time; store it in the document.
+    // Clear it first to make sure at no time two handlers are active at once
     doc()->setActiveTemplateHandler(nullptr);
     doc()->setActiveTemplateHandler(new KateTemplateHandler(this, c, templateString, script, doc()->undoManager()));
     return true;
@@ -3791,10 +3739,8 @@ void KTextEditor::ViewPrivate::createHighlights()
     KTextEditor::Cursor start(visibleRange().start());
     KTextEditor::Range searchRange;
 
-    /**
-     * only add word boundary if we can find the text then
-     * fixes $lala hl
-     */
+    // only add word boundary if we can find the text then
+    // fixes $lala hl
     QString regex = QRegExp::escape(m_currentTextForHighlights);
     if (QRegExp(QStringLiteral("\\b%1").arg(regex)).indexIn(QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
         regex = QStringLiteral("\\b%1").arg(regex);

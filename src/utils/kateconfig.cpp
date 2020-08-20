@@ -38,36 +38,25 @@ KateConfig::~KateConfig()
 
 void KateConfig::addConfigEntry(ConfigEntry &&entry)
 {
-    /**
-     * shall only be called for toplevel config
-     */
+    // shall only be called for toplevel config
     Q_ASSERT(isGlobal());
 
-    /**
-     * there shall be no gaps in the entries
-     * we might later want to use a vector
-     */
+    // there shall be no gaps in the entries
+    // we might later want to use a vector
     Q_ASSERT(m_configEntries.size() == static_cast<size_t>(entry.enumKey));
 
-    /**
-     * add new element
-     */
+    // add new element
     m_configEntries.emplace(entry.enumKey, entry);
 }
 
 void KateConfig::finalizeConfigEntries()
 {
-    /**
-     * shall only be called for toplevel config
-     */
+    // shall only be called for toplevel config
     Q_ASSERT(isGlobal());
 
-    /**
-     * compute list of all config keys + register map from key => config entry
-     *
-     * we skip entries without a command name, these config entries are not exposed ATM
-     *
-     */
+    // compute list of all config keys + register map from key => config entry
+    //
+    // we skip entries without a command name, these config entries are not exposed ATM
     for (const auto &entry : m_configEntries) {
         if (!entry.second.commandName.isEmpty()) {
             Q_ASSERT_X(!m_configKeys->contains(entry.second.commandName), "finalizeConfigEntries", (QLatin1String("KEY NOT UNIQUE: ") + entry.second.commandName).toLocal8Bit().constData());
@@ -186,35 +175,27 @@ bool KateConfig::setValue(const int key, const QVariant &value)
 
 QVariant KateConfig::value(const QString &key) const
 {
-    /**
-     * check if we know this key, if not, return invalid variant
-     */
+    // check if we know this key, if not, return invalid variant
     const auto &knownEntries = fullConfigKeyToEntry();
     const auto it = knownEntries.find(key);
     if (it == knownEntries.end()) {
         return QVariant();
     }
 
-    /**
-     * key known, dispatch to normal value() function with enum
-     */
+    // key known, dispatch to normal value() function with enum
     return value(it.value()->enumKey);
 }
 
 bool KateConfig::setValue(const QString &key, const QVariant &value)
 {
-    /**
-     * check if we know this key, if not, ignore the set
-     */
+    // check if we know this key, if not, ignore the set
     const auto &knownEntries = fullConfigKeyToEntry();
     const auto it = knownEntries.find(key);
     if (it == knownEntries.end()) {
         return false;
     }
 
-    /**
-     * key known, dispatch to normal setValue() function with enum
-     */
+    // key known, dispatch to normal setValue() function with enum
     return setValue(it.value()->enumKey, value);
 }
 
@@ -255,53 +236,37 @@ static bool isPositive(const QVariant &value)
 // BEGIN KateGlobalConfig
 KateGlobalConfig::KateGlobalConfig()
 {
-    /**
-     * register this as our global instance
-     */
+    // register this as our global instance
     Q_ASSERT(isGlobal());
     s_global = this;
 
-    /**
-     * init all known config entries
-     */
+    // init all known config entries
     addConfigEntry(ConfigEntry(EncodingProberType, "Encoding Prober Type", QString(), KEncodingProber::Universal));
     addConfigEntry(ConfigEntry(FallbackEncoding, "Fallback Encoding", QString(), QStringLiteral("ISO 8859-15"), [](const QVariant &value) { return isEncodingOk(value.toString()); }));
 
-    /**
-     * finalize the entries, e.g. hashs them
-     */
+    // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
 
-    /**
-     * init with defaults from config or really hardcoded ones
-     */
+    // init with defaults from config or really hardcoded ones
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Editor");
     readConfig(cg);
 }
 
 void KateGlobalConfig::readConfig(const KConfigGroup &config)
 {
-    /**
-     * start config update group
-     */
+    // start config update group
     configStart();
 
-    /**
-     * read generic entries
-     */
+    // read generic entries
     readConfigEntries(config);
 
-    /**
-     * end config update group, might trigger updateConfig()
-     */
+    // end config update group, might trigger updateConfig()
     configEnd();
 }
 
 void KateGlobalConfig::writeConfig(KConfigGroup &config)
 {
-    /**
-     * write generic entries
-     */
+    // write generic entries
     writeConfigEntries(config);
 }
 
@@ -315,17 +280,13 @@ void KateGlobalConfig::updateConfig()
 
 QTextCodec *KateGlobalConfig::fallbackCodec() const
 {
-    /**
-     * query stored encoding, always fallback to ISO 8859-15 if nothing valid set
-     */
+    // query stored encoding, always fallback to ISO 8859-15 if nothing valid set
     const auto encoding = value(FallbackEncoding).toString();
     if (encoding.isEmpty()) {
         return QTextCodec::codecForName("ISO 8859-15");
     }
 
-    /**
-     * use configured encoding
-     */
+    // use configured encoding
     return KCharsets::charsets()->codecForName(encoding);
 }
 // END
@@ -333,15 +294,11 @@ QTextCodec *KateGlobalConfig::fallbackCodec() const
 // BEGIN KateDocumentConfig
 KateDocumentConfig::KateDocumentConfig()
 {
-    /**
-     * register this as our global instance
-     */
+    // register this as our global instance
     Q_ASSERT(isGlobal());
     s_global = this;
 
-    /**
-     * init all known config entries
-     */
+    // init all known config entries
     addConfigEntry(ConfigEntry(TabWidth, "Tab Width", QStringLiteral("tab-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
     addConfigEntry(ConfigEntry(IndentationWidth, "Indentation Width", QStringLiteral("indent-width"), 4, [](const QVariant &value) { return value.toInt() >= 1; }));
     addConfigEntry(ConfigEntry(OnTheFlySpellCheck, "On-The-Fly Spellcheck", QStringLiteral("on-the-fly-spellcheck"), false));
@@ -375,14 +332,10 @@ KateDocumentConfig::KateDocumentConfig()
     addConfigEntry(ConfigEntry(SwapFileSyncInterval, "Swap Sync Interval", QString(), 15));
     addConfigEntry(ConfigEntry(LineLengthLimit, "Line Length Limit", QString(), 10000));
 
-    /**
-     * finalize the entries, e.g. hashs them
-     */
+    // finalize the entries, e.g. hashs them
     finalizeConfigEntries();
 
-    /**
-     * init with defaults from config or really hardcoded ones
-     */
+    // init with defaults from config or really hardcoded ones
     KConfigGroup cg(KTextEditor::EditorPrivate::config(), "KTextEditor Document");
     readConfig(cg);
 }
@@ -391,59 +344,43 @@ KateDocumentConfig::KateDocumentConfig(KTextEditor::DocumentPrivate *doc)
     : KateConfig(s_global)
     , m_doc(doc)
 {
-    /**
-     * per document config doesn't read stuff per default
-     */
+    // per document config doesn't read stuff per default
 }
 
 void KateDocumentConfig::readConfig(const KConfigGroup &config)
 {
-    /**
-     * start config update group
-     */
+    // start config update group
     configStart();
 
-    /**
-     * read generic entries
-     */
+    // read generic entries
     readConfigEntries(config);
 
-    /**
-     * fixup sonnet config, see KateSpellCheckConfigTab::apply(), too
-     * WARNING: this is slightly hackish, but it's currently the only way to
-     *          do it, see also the KTextEdit class
-     */
+    // fixup sonnet config, see KateSpellCheckConfigTab::apply(), too
+    // WARNING: this is slightly hackish, but it's currently the only way to
+    //          do it, see also the KTextEdit class
     if (isGlobal()) {
         const QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
         setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
     }
 
-    /**
-     * backwards compatibility mappings
-     * convert stuff, old entries deleted in writeConfig
-     */
+    // backwards compatibility mappings
+    // convert stuff, old entries deleted in writeConfig
     if (const int backupFlags = config.readEntry("Backup Flags", 0)) {
         setBackupOnSaveLocal(backupFlags & 0x1);
         setBackupOnSaveRemote(backupFlags & 0x2);
     }
 
-    /**
-     * end config update group, might trigger updateConfig()
-     */
+    // end config update group, might trigger updateConfig()
     configEnd();
 }
 
 void KateDocumentConfig::writeConfig(KConfigGroup &config)
 {
-    /**
-     * write generic entries
-     */
+    // write generic entries
     writeConfigEntries(config);
 
-    /**
-     * backwards compatibility mappings
-     * here we remove old entries we converted on readConfig
-     */
+    // backwards compatibility mappings
+    // here we remove old entries we converted on readConfig
     config.deleteEntry("Backup Flags");
 }
 
@@ -468,17 +405,13 @@ void KateDocumentConfig::updateConfig()
 
 QTextCodec *KateDocumentConfig::codec() const
 {
-    /**
-     * query stored encoding, always fallback to UTF-8 if nothing valid set
-     */
+    // query stored encoding, always fallback to UTF-8 if nothing valid set
     const auto encoding = value(Encoding).toString();
     if (encoding.isEmpty()) {
         return QTextCodec::codecForName("UTF-8");
     }
 
-    /**
-     * use configured encoding
-     */
+    // use configured encoding
     return KCharsets::charsets()->codecForName(encoding);
 }
 
@@ -877,9 +810,7 @@ void KateRendererConfig::setFont(const QFont &font)
 
 void KateRendererConfig::setFontWithDroppedStyleName(const QFont &font)
 {
-    /**
-     * Drop styleName, otherwise stuff like bold/italic/... won't work as style!
-     */
+    // Drop styleName, otherwise stuff like bold/italic/... won't work as style!
     m_font = font;
     m_font.setStyleName(QString());
     m_fontSet = true;

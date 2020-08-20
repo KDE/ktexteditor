@@ -38,35 +38,27 @@ ActionReply SecureTextBuffer::savefile(const QVariantMap &args)
 
 bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString &targetFile, const QByteArray &checksum, const uint ownerId, const uint groupId)
 {
-    /**
-     * open source file for reading
-     * if not possible, signal error
-     */
+    // open source file for reading
+    // if not possible, signal error
     QFile readFile(sourceFile);
     if (!readFile.open(QIODevice::ReadOnly)) {
         return false;
     }
 
-    /**
-     * construct file info for target file
-     * we need to know things like path/exists/permissions
-     */
+    // construct file info for target file
+    // we need to know things like path/exists/permissions
     const QFileInfo targetFileInfo(targetFile);
 
-    /**
-     * create temporary file in current directory to be able to later do an atomic rename
-     * we need to pass full path, else QTemporaryFile uses the temporary directory
-     * if not possible, signal error, this catches e.g. a non-existing target directory, too
-     */
+    // create temporary file in current directory to be able to later do an atomic rename
+    // we need to pass full path, else QTemporaryFile uses the temporary directory
+    // if not possible, signal error, this catches e.g. a non-existing target directory, too
     QTemporaryFile tempFile(targetFileInfo.absolutePath() + QLatin1String("/secureXXXXXX"));
     if (!tempFile.open()) {
         return false;
     }
 
-    /**
-     * copy contents + do checksumming
-     * if not possible, signal error
-     */
+    // copy contents + do checksumming
+    // if not possible, signal error
     QCryptographicHash cryptographicHash(checksumAlgorithm);
     const qint64 bufferLength = 4096;
     char buffer[bufferLength];
@@ -78,19 +70,15 @@ bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString
         }
     }
 
-    /**
-     * check that copying was successful and checksum matched
-     * we need to flush the file, as QTemporaryFile keeps the handle open
-     * and we later do things like renaming of the file!
-     * if not possible, signal error
-     */
+    // check that copying was successful and checksum matched
+    // we need to flush the file, as QTemporaryFile keeps the handle open
+    // and we later do things like renaming of the file!
+    // if not possible, signal error
     if ((read == -1) || (cryptographicHash.result() != checksum) || !tempFile.flush()) {
         return false;
     }
 
-    /**
-     * try to preserve the permissions
-     */
+    // try to preserve the permissions
     if (!targetFileInfo.exists()) {
         // ensure new file is readable by anyone
         tempFile.setPermissions(tempFile.permissions() | QFile::Permission::ReadGroup | QFile::Permission::ReadOther);
@@ -102,19 +90,15 @@ bool SecureTextBuffer::saveFileInternal(const QString &sourceFile, const QString
         setOwner(tempFile.handle(), ownerId, groupId);
     }
 
-    /**
-     * try to (atomic) rename temporary file to the target file
-     */
+    // try to (atomic) rename temporary file to the target file
     if (moveFile(tempFile.fileName(), targetFileInfo.filePath())) {
         // temporary file was renamed, there is nothing to remove anymore
         tempFile.setAutoRemove(false);
         return true;
     }
 
-    /**
-     * we failed
-     * QTemporaryFile will handle cleanup
-     */
+    // we failed
+    // QTemporaryFile will handle cleanup
     return false;
 }
 

@@ -106,21 +106,15 @@ void TextBlock::wrapLine(const KTextEditor::Cursor &position, int fixStartLinesS
         m_lines.at(line)->markAsModified(true);
     }
 
-    /**
-     * fix all start lines
-     * we need to do this NOW, else the range update will FAIL!
-     * bug 313759
-     */
+    // fix all start lines
+    // we need to do this NOW, else the range update will FAIL!
+    // bug 313759
     m_buffer->fixStartLines(fixStartLinesStartIndex);
 
-    /**
-     * notify the text history
-     */
+    // notify the text history
     m_buffer->history().wrapLine(position);
 
-    /**
-     * cursor and range handling below
-     */
+    // cursor and range handling below
 
     // no cursors will leave or join this block
 
@@ -207,21 +201,15 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
         // patch startLine of this block
         --m_startLine;
 
-        /**
-         * fix all start lines
-         * we need to do this NOW, else the range update will FAIL!
-         * bug 313759
-         */
+        // fix all start lines
+        // we need to do this NOW, else the range update will FAIL!
+        // bug 313759
         m_buffer->fixStartLines(fixStartLinesStartIndex);
 
-        /**
-         * notify the text history in advance
-         */
+        // notify the text history in advance
         m_buffer->history().unwrapLine(startLine() + line, oldSizeOfPreviousLine);
 
-        /**
-         * cursor and range handling below
-         */
+        // cursor and range handling below
 
         // no cursors in this block and the previous one, no work to do..
         if (m_cursors.empty() && previousBlock->m_cursors.empty()) {
@@ -300,21 +288,15 @@ void TextBlock::unwrapLine(int line, TextBlock *previousBlock, int fixStartLines
 
     m_lines.erase(m_lines.begin() + line);
 
-    /**
-     * fix all start lines
-     * we need to do this NOW, else the range update will FAIL!
-     * bug 313759
-     */
+    // fix all start lines
+    // we need to do this NOW, else the range update will FAIL!
+    // bug 313759
     m_buffer->fixStartLines(fixStartLinesStartIndex);
 
-    /**
-     * notify the text history in advance
-     */
+    // notify the text history in advance
     m_buffer->history().unwrapLine(startLine() + line, oldSizeOfPreviousLine);
 
-    /**
-     * cursor and range handling below
-     */
+    // cursor and range handling below
 
     // no cursors in this block, no work to do..
     if (m_cursors.empty()) {
@@ -371,14 +353,10 @@ void TextBlock::insertText(const KTextEditor::Cursor &position, const QString &t
     // insert text
     textOfLine.insert(position.column(), text);
 
-    /**
-     * notify the text history
-     */
+    // notify the text history
     m_buffer->history().insertText(position, text.size(), oldLength);
 
-    /**
-     * cursor and range handling below
-     */
+    // cursor and range handling below
 
     // no cursors in this block, no work to do..
     if (m_cursors.empty()) {
@@ -449,14 +427,10 @@ void TextBlock::removeText(const KTextEditor::Range &range, QString &removedText
     textOfLine.remove(range.start().column(), range.end().column() - range.start().column());
     m_lines.at(line)->markAsModified(true);
 
-    /**
-     * notify the text history
-     */
+    // notify the text history
     m_buffer->history().removeText(range, oldLength);
 
-    /**
-     * cursor and range handling below
-     */
+    // cursor and range handling below
 
     // no cursors in this block, no work to do..
     if (m_cursors.empty()) {
@@ -636,109 +610,75 @@ void TextBlock::markModifiedLinesAsSaved()
 
 void TextBlock::updateRange(TextRange *range)
 {
-    /**
-     * get some simple facts about our nice range
-     */
+    // get some simple facts about our nice range
     const int startLine = range->startInternal().lineInternal();
     const int endLine = range->endInternal().lineInternal();
     const bool isSingleLine = startLine == endLine;
 
-    /**
-     * perhaps remove range and be done
-     */
+    // perhaps remove range and be done
     if ((endLine < m_startLine) || (startLine >= (m_startLine + lines()))) {
         removeRange(range);
         return;
     }
 
-    /**
-     * The range is still a single-line range, and is still cached to the correct line.
-     */
+    // The range is still a single-line range, and is still cached to the correct line.
     if (isSingleLine && m_cachedLineForRanges.contains(range) && (m_cachedLineForRanges.value(range) == startLine - m_startLine)) {
         return;
     }
 
-    /**
-     * The range is still a multi-line range, and is already in the correct set.
-     */
+    // The range is still a multi-line range, and is already in the correct set.
     if (!isSingleLine && m_uncachedRanges.contains(range)) {
         return;
     }
 
-    /**
-     * remove, if already there!
-     */
+    // remove, if already there!
     removeRange(range);
 
-    /**
-     * simple case: multi-line range
-     */
+    // simple case: multi-line range
     if (!isSingleLine) {
-        /**
-         * The range cannot be cached per line, as it spans multiple lines
-         */
+        // The range cannot be cached per line, as it spans multiple lines
         m_uncachedRanges.insert(range);
         return;
     }
 
-    /**
-     * The range is contained by a single line, put it into the line-cache
-     */
+    // The range is contained by a single line, put it into the line-cache
     const int lineOffset = startLine - m_startLine;
 
-    /**
-     * enlarge cache if needed
-     */
+    // enlarge cache if needed
     if (m_cachedRangesForLine.size() <= lineOffset) {
         m_cachedRangesForLine.resize(lineOffset + 1);
     }
 
-    /**
-     * insert into mapping
-     */
+    // insert into mapping
     m_cachedRangesForLine[lineOffset].insert(range);
     m_cachedLineForRanges[range] = lineOffset;
 }
 
 void TextBlock::removeRange(TextRange *range)
 {
-    /**
-     * uncached range? remove it and be done
-     */
+    // uncached range? remove it and be done
     if (m_uncachedRanges.remove(range)) {
-        /**
-         * must be only uncached!
-         */
+        // must be only uncached!
         Q_ASSERT(!m_cachedLineForRanges.contains(range));
         return;
     }
 
-    /**
-     * cached range?
-     */
+    // cached range?
     QHash<TextRange *, int>::iterator it = m_cachedLineForRanges.find(range);
     if (it != m_cachedLineForRanges.end()) {
-        /**
-         * must be only cached!
-         */
+        // must be only cached!
         Q_ASSERT(!m_uncachedRanges.contains(range));
 
-        /**
-         * query the range from cache, must be there
-         */
+        // query the range from cache, must be there
         Q_ASSERT(m_cachedRangesForLine.at(*it).contains(range));
 
-        /**
-         * remove it and be done
-         */
+        // remove it and be done
         m_cachedRangesForLine[*it].remove(range);
         m_cachedLineForRanges.erase(it);
         return;
     }
 
-    /**
-     * else: range was not for this block, just do nothing, removeRange should be "safe" to use
-     */
+    // else: range was not for this block, just do nothing, removeRange should be "safe" to use
 }
 
 }

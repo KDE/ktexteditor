@@ -62,58 +62,42 @@ void KateBuffer::editStart()
 
 void KateBuffer::editEnd()
 {
-    /**
-     * not finished, do nothing
-     */
+    // not finished, do nothing
     if (!finishEditing()) {
         return;
     }
 
-    /**
-     * nothing change, OK
-     */
+    // nothing change, OK
     if (!editingChangedBuffer()) {
         return;
     }
 
-    /**
-     * if we arrive here, line changed should be OK
-     */
+    // if we arrive here, line changed should be OK
     Q_ASSERT(editingMinimalLineChanged() != -1);
     Q_ASSERT(editingMaximalLineChanged() != -1);
     Q_ASSERT(editingMinimalLineChanged() <= editingMaximalLineChanged());
 
-    /**
-     * no highlighting, nothing to do
-     */
+    // no highlighting, nothing to do
     if (!m_highlight) {
         return;
     }
 
-    /**
-     * if we don't touch the highlighted area => fine
-     */
+    // if we don't touch the highlighted area => fine
     if (editingMinimalLineChanged() > m_lineHighlighted) {
         return;
     }
 
-    /**
-     * look one line too far, needed for linecontinue stuff
-     */
+    // look one line too far, needed for linecontinue stuff
     const int editTagLineEnd = editingMaximalLineChanged() + 1;
 
-    /**
-     * for indentation sensitive folding, we need to redo things
-     * one line up, to e.g. get notified about new folding starts
-     * see bug 351496
-     */
+    // for indentation sensitive folding, we need to redo things
+    // one line up, to e.g. get notified about new folding starts
+    // see bug 351496
     int editTagLineStart = editingMinimalLineChanged();
     if ((editTagLineStart > 0) && m_highlight->foldingIndentationSensitive())
         --editTagLineStart;
 
-    /**
-     * really update highlighting
-     */
+    // really update highlighting
     doHighlight(editTagLineStart, editTagLineEnd, true);
 }
 
@@ -152,12 +136,10 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
     m_tooLongLinesWrapped = false;
     m_longestLineLoaded = 0;
 
-    /**
-     * allow non-existent files without error, if local file!
-     * will allow to do "kate newfile.txt" without error messages but still fail if e.g. you mistype a url
-     * and it can't be fetched via fish:// or other strange things in kio happen...
-     * just clear() + exit with success!
-     */
+    // allow non-existent files without error, if local file!
+    // will allow to do "kate newfile.txt" without error messages but still fail if e.g. you mistype a url
+    // and it can't be fetched via fish:// or other strange things in kio happen...
+    // just clear() + exit with success!
     if (m_doc->url().isLocalFile() && !QFile::exists(m_file)) {
         clear();
         KTextEditor::Message *message = new KTextEditor::Message(i18nc("short translation, user created new file", "New file"), KTextEditor::Message::Warning);
@@ -171,18 +153,14 @@ bool KateBuffer::openFile(const QString &m_file, bool enforceTextCodec)
         return true;
     }
 
-    /**
-     * check if this is a normal file or not, avoids to open char devices or directories!
-     * else clear buffer and break out with error
-     */
+    // check if this is a normal file or not, avoids to open char devices or directories!
+    // else clear buffer and break out with error
     if (!QFileInfo(m_file).isFile()) {
         clear();
         return false;
     }
 
-    /**
-     * try to load
-     */
+    // try to load
     if (!load(m_file, m_brokenEncoding, m_tooLongLinesWrapped, m_longestLineLoaded, enforceTextCodec)) {
         return false;
     }
@@ -402,9 +380,7 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
         textLine = nextLine;
     }
 
-    /**
-     * perhaps we need to adjust the maximal highlighted line
-     */
+    // perhaps we need to adjust the maximal highlighted line
     int oldHighlighted = m_lineHighlighted;
     if (ctxChanged || current_line > m_lineHighlighted) {
         m_lineHighlighted = current_line;
@@ -433,80 +409,54 @@ void KateBuffer::doHighlight(int startLine, int endLine, bool invalidate)
 
 KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
 {
-    /**
-     * ensure valid input
-     */
+    // ensure valid input
     if (startLine < 0 || startLine >= lines()) {
         return KTextEditor::Range::invalid();
     }
 
-    /**
-     * no highlighting, no folding, ATM
-     */
+    // no highlighting, no folding, ATM
     if (!m_highlight || m_highlight->noHighlighting()) {
         return KTextEditor::Range::invalid();
     }
 
-    /**
-     * first: get the wanted start line highlighted
-     */
+    // first: get the wanted start line highlighted
     ensureHighlighted(startLine);
     Kate::TextLine startTextLine = plainLine(startLine);
 
-    /**
-     * return if no folding start!
-     */
+    // return if no folding start!
     if (!startTextLine->markedAsFoldingStart()) {
         return KTextEditor::Range::invalid();
     }
 
-    /**
-     * now: decided if indentation based folding or not!
-     */
+    // now: decided if indentation based folding or not!
     if (startTextLine->markedAsFoldingStartIndentation()) {
-        /**
-         * get our start indentation level
-         */
+        // get our start indentation level
         const int startIndentation = startTextLine->indentDepth(tabWidth());
 
-        /**
-         * search next line with indentation level <= our one
-         */
+        // search next line with indentation level <= our one
         int lastLine = startLine + 1;
         for (; lastLine < lines(); ++lastLine) {
-            /**
-             * get line
-             */
+            // get line
             Kate::TextLine textLine = plainLine(lastLine);
 
-            /**
-             * indentation higher than our start line? continue
-             */
+            // indentation higher than our start line? continue
             if (startIndentation < textLine->indentDepth(tabWidth())) {
                 continue;
             }
 
-            /**
-             * empty line? continue
-             */
+            // empty line? continue
             if (m_highlight->isEmptyLine(textLine.data())) {
                 continue;
             }
 
-            /**
-             * else, break
-             */
+            // else, break
             break;
         }
 
-        /**
-         * lastLine is always one too much
-         */
+        // lastLine is always one too much
         --lastLine;
 
-        /**
-         * backtrack all empty lines, we don't want to add them to the fold!
-         */
+        // backtrack all empty lines, we don't want to add them to the fold!
         while (lastLine > startLine) {
             if (m_highlight->isEmptyLine(plainLine(lastLine).data())) {
                 --lastLine;
@@ -515,46 +465,30 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             }
         }
 
-        /**
-         * we shall not fold one-liners
-         */
+        // we shall not fold one-liners
         if (lastLine == startLine) {
             return KTextEditor::Range::invalid();
         }
 
-        /**
-         * be done now
-         */
+        // be done now
         return KTextEditor::Range(KTextEditor::Cursor(startLine, 0), KTextEditor::Cursor(lastLine, plainLine(lastLine)->length()));
     }
 
-    /**
-     * 'normal' attribute based folding, aka token based like '{' BLUB '}'
-     */
+    // 'normal' attribute based folding, aka token based like '{' BLUB '}'
 
-    /**
-     * first step: search the first region type, that stays open for the start line
-     */
+    // first step: search the first region type, that stays open for the start line
     short openedRegionType = 0;
     int openedRegionOffset = -1;
     {
-        /**
-         * mapping of type to "first" offset of it and current number of not matched openings
-         */
+        // mapping of type to "first" offset of it and current number of not matched openings
         QHash<short, QPair<int, int>> foldingStartToOffsetAndCount;
 
-        /**
-         * walk over all attributes of the line and compute the matchings
-         */
+        // walk over all attributes of the line and compute the matchings
         const auto &startLineAttributes = startTextLine->foldings();
         for (size_t i = 0; i < startLineAttributes.size(); ++i) {
-            /**
-             * folding close?
-             */
+            // folding close?
             if (startLineAttributes[i].foldingValue < 0) {
-                /**
-                 * search for this type, try to decrement counter, perhaps erase element!
-                 */
+                // search for this type, try to decrement counter, perhaps erase element!
                 QHash<short, QPair<int, int>>::iterator end = foldingStartToOffsetAndCount.find(-startLineAttributes[i].foldingValue);
                 if (end != foldingStartToOffsetAndCount.end()) {
                     if (end.value().second > 1) {
@@ -565,13 +499,9 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 }
             }
 
-            /**
-             * folding open?
-             */
+            // folding open?
             if (startLineAttributes[i].foldingValue > 0) {
-                /**
-                 * search for this type, either insert it, with current offset or increment counter!
-                 */
+                // search for this type, either insert it, with current offset or increment counter!
                 QHash<short, QPair<int, int>>::iterator start = foldingStartToOffsetAndCount.find(startLineAttributes[i].foldingValue);
                 if (start != foldingStartToOffsetAndCount.end()) {
                     ++(start.value().second);
@@ -581,9 +511,7 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
             }
         }
 
-        /**
-         * compute first type with offset
-         */
+        // compute first type with offset
         QHashIterator<short, QPair<int, int>> hashIt(foldingStartToOffsetAndCount);
         while (hashIt.hasNext()) {
             hashIt.next();
@@ -594,39 +522,27 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
         }
     }
 
-    /**
-     * no opening region found, bad, nothing to do
-     */
+    // no opening region found, bad, nothing to do
     if (openedRegionType == 0) {
         return KTextEditor::Range::invalid();
     }
 
-    /**
-     * second step: search for matching end region marker!
-     */
+    // second step: search for matching end region marker!
     int countOfOpenRegions = 1;
     for (int line = startLine + 1; line < lines(); ++line) {
-        /**
-         * ensure line is highlighted
-         */
+        // ensure line is highlighted
         ensureHighlighted(line);
         Kate::TextLine textLine = plainLine(line);
 
-        /**
-         * search for matching end marker
-         */
+        // search for matching end marker
         const auto &lineAttributes = textLine->foldings();
         for (size_t i = 0; i < lineAttributes.size(); ++i) {
-            /**
-             * matching folding close?
-             */
+            // matching folding close?
             if (lineAttributes[i].foldingValue == -openedRegionType) {
                 --countOfOpenRegions;
 
-                /**
-                 * end reached?
-                 * compute resulting range!
-                 */
+                // end reached?
+                // compute resulting range!
                 if (countOfOpenRegions == 0) {
                     // Don't return a valid range without content!
                     if (line - startLine == 1) {
@@ -638,17 +554,13 @@ KTextEditor::Range KateBuffer::computeFoldingRangeForStartLine(int startLine)
                 }
             }
 
-            /**
-             * matching folding open?
-             */
+            // matching folding open?
             if (lineAttributes[i].foldingValue == openedRegionType) {
                 ++countOfOpenRegions;
             }
         }
     }
 
-    /**
-     * if we arrive here, the opened range spans to the end of the document!
-     */
+    // if we arrive here, the opened range spans to the end of the document!
     return KTextEditor::Range(KTextEditor::Cursor(startLine, openedRegionOffset), KTextEditor::Cursor(lines() - 1, plainLine(lines() - 1)->length()));
 }
