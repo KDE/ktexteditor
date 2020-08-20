@@ -147,7 +147,7 @@ Q_SIGNALS:
     /**
      * This signal is emitted when the \p document has been deleted.
      *
-     * Warning !!! DO NOT ACCESS THE DATA REFERENCED BY THE POINTER, IT IS ALREADY INVALID
+     * @warning Do not access the data referenced by the pointer, it is already invalid.
      * Use the pointer only to remove mappings in hash or maps
      *
      * @param document document that is deleted
@@ -213,7 +213,7 @@ Q_SIGNALS:
      * @param name name of plugin
      * @param plugin the deleted plugin
      *
-     * Warning !!! DO NOT ACCESS THE DATA REFERENCED BY THE POINTER, IT IS ALREADY INVALID
+     * @warning Do not access the data referenced by the pointer, it is already invalid.
      * Use the pointer only to remove mappings in hash or maps
      */
     void pluginDeleted(const QString &name, KTextEditor::Plugin *plugin);

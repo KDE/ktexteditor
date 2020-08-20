@@ -222,14 +222,18 @@ public:
          *  If the mode returns a QVariant of type QString, it will create a small html-widget showing the given html-code,
          *  and embed it into the completion-list under the completion-item.
          *
-         * Warning:
+         * @warning
+         * @code
          *   QWidget* widget;
          *   return QVariant(widget);
+         * @endcode
          * Will not work correctly!
          * Use the following instead.:
+         * @code
          *   QVariant v;
          *   v.setValue<QWidget*>(widget);
          *   return v;
+         * @endcode
          *
          * */
         ExpandingWidget,

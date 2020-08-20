@@ -290,11 +290,11 @@ Q_SIGNALS:
     /**
      * This signal is emitted when the view of some Plugin got deleted.
      *
+     * @warning Do not access the data referenced by the pointer, it is already invalid.
+     * Use the pointer only to remove mappings in hash or maps
+     *
      * @param name name of plugin
      * @param pluginView the deleted plugin view
-     *
-     * Warning !!! DO NOT ACCESS THE DATA REFERENCED BY THE POINTER, IT IS ALREADY INVALID
-     * Use the pointer only to remove mappings in hash or maps
      */
     void pluginViewDeleted(const QString &name, QObject *pluginView);
 
