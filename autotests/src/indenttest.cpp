@@ -54,6 +54,9 @@ void IndentTest::testCppstyle_data()
 
 void IndentTest::testCppstyle()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0) && QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures()
             /// \todo Fix (smth) to make failed test cases really work!
             << FAILURE("parens1", "dunno why it failed in test! in manual mode everything works fine..."));
@@ -106,6 +109,9 @@ void IndentTest::testPascal_data()
 
 void IndentTest::testPascal()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0) && QT_VERSION <= QT_VERSION_CHECK(5, 15, 0)
+    QSKIP("This test crashes in Qt (QV4::MemoryManager::mark()), already fixed upstream");
+#endif
     runTest(ExpectedFailures());
 }
 
