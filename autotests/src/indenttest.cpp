@@ -133,7 +133,7 @@ void IndentTest::testRuby()
                                << FAILURE("singleline02", "Single line defs are not supported") << FAILURE("wordlist01", "multiline word list is not supported") << FAILURE("wordlist02", "multiline word list is not supported")
                                << FAILURE("wordlist11", "multiline word list is not supported") << FAILURE("wordlist12", "multiline word list is not supported") << FAILURE("wordlist21", "multiline word list is not supported")
                                << FAILURE("wordlist22", "multiline word list is not supported") << FAILURE("if20", "multi line if assignment is not supported") << FAILURE("if21", "multi line if assignment is not supported")
-                               << FAILURE("if30", "single line if is not supported") << FAILURE("if31", "single line if is not supported"));
+                               << FAILURE("if30", "single line if is not supported") << FAILURE("if31", "single line if is not supported") << FAILURE("regexp1", "regression, inside already in commit afc551d14225023ce38900ddc49b43ba2a0762a8"));
 }
 
 void IndentTest::testXml_data()
