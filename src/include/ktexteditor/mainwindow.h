@@ -128,7 +128,7 @@ public:
     bool closeView(KTextEditor::View *view);
 
     /**
-     * Split current view space according to @orientation
+     * Split current view space according to \p orientation
      * \param orientation in which line split the view
      */
     void splitView(Qt::Orientation orientation);
@@ -141,7 +141,7 @@ public:
     bool closeSplitView(KTextEditor::View *view);
 
     /**
-     * \returns true if the given views \param view1 and \param view2 share
+     * \returns \c true if the given views \p view1 and \p view2 share
      * the same split view, false otherwise.
      */
     bool viewsInSameSplitView(KTextEditor::View *view1, KTextEditor::View *view2);
