@@ -182,8 +182,8 @@ Q_SIGNALS:
     void foldingRangesChanged();
 };
 
-}
+Q_DECLARE_OPERATORS_FOR_FLAGS(FoldingInterface::FoldingRangeFlags)
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(KTextEditor::FoldingInterface::FoldingRangeFlags)
+}
 
 #endif

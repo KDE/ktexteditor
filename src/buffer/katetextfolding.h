@@ -371,8 +371,8 @@ private:
     QHash<qint64, FoldingRange *> m_idToFoldingRange;
 };
 
-}
+Q_DECLARE_OPERATORS_FOR_FLAGS(TextFolding::FoldingRangeFlags)
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Kate::TextFolding::FoldingRangeFlags)
+}
 
 #endif
