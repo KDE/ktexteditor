@@ -2,7 +2,6 @@
 <RCC version="1.0">
     <qresource prefix="/kconfig">
         <file>katemoderc</file>
-        <file>kateschemarc</file>
         <file>katesyntaxhighlightingrc</file>
     </qresource>
     <qresource prefix="/kxmlgui5/katepart">

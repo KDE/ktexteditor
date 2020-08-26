@@ -11,6 +11,7 @@
 
 #include "kateconfig.h"
 #include "kateglobal.h"
+#include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateview.h"
@@ -31,10 +32,31 @@ KConfigGroup KateSchemaManager::schema(const QString &name)
 
 KateSchema KateSchemaManager::schemaData(const QString &name)
 {
-    KConfigGroup cg(schema(name));
+    // normal => schema just a name to some config group
     KateSchema schema;
     schema.rawName = name;
-    schema.shippedDefaultSchema = cg.readEntry("ShippedDefaultSchema", 0);
+
+    // we might be a theme derived from KSyntaxHighlighting data
+    auto &repo = KTextEditor::EditorPrivate::self()->hlManager()->repository();
+    schema.theme = repo.theme(name);
+
+    // for valid KSyntaxHighlighting themes: some are special, like default/...
+    if (schema.theme.isValid()) {
+        // default light theme?
+        if (schema.rawName == repo.defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name()) {
+            schema.shippedDefaultSchema = 9999;
+        } else if (schema.rawName == repo.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme).name()) {
+            schema.shippedDefaultSchema = 9998;
+        } else if (schema.rawName == QLatin1String("Printing")) {
+            schema.shippedDefaultSchema = 9997;
+        }
+    } else {
+        // KDE default color scheme thema?
+        if (schema.rawName == QLatin1String("KDE")) {
+            schema.shippedDefaultSchema = 9996;
+        }
+    }
+
     return schema;
 }
 
@@ -49,15 +71,28 @@ static bool schemasCompare(const KateSchema &s1, const KateSchema &s2)
 
 QList<KateSchema> KateSchemaManager::list()
 {
+    // get KSyntaxHighlighting themes
     QList<KateSchema> schemas;
+    QSet<QString> defaultThemes;
+    for (const auto &theme : KTextEditor::EditorPrivate::self()->hlManager()->repository().themes()) {
+        schemas.append(schemaData(theme.name()));
+        defaultThemes.insert(theme.name());
+    }
+
+    // add default KDE color schema
+    schemas.append(schemaData(QStringLiteral("KDE")));
+    defaultThemes.insert(QStringLiteral("KDE"));
+
+    // get extra themes that got configured in KConfig data
     const auto names = m_config.groupList();
     for (const QString &s : names) {
-        schemas.append(schemaData(s));
+        if (!defaultThemes.contains(s)) {
+            schemas.append(schemaData(s));
+        }
     }
 
     // sort: prio given by default schema and name
     std::sort(schemas.begin(), schemas.end(), schemasCompare);
-
     return schemas;
 }
 // END

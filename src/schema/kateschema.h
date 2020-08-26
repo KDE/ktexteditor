@@ -8,6 +8,8 @@
 #ifndef KATE_SCHEMA_H
 #define KATE_SCHEMA_H
 
+#include <KSyntaxHighlighting/Theme>
+
 #include <KActionMenu>
 #include <KConfig>
 #include <KLocalizedString>
@@ -25,14 +27,16 @@ class KateSchema
 {
 public:
     QString rawName;
-    int shippedDefaultSchema;
+    KSyntaxHighlighting::Theme theme;
+    int shippedDefaultSchema = 0;
 
     /**
      * construct translated name for shipped schemas
      */
     QString translatedName() const
     {
-        return shippedDefaultSchema ? i18nc("Color Schema", rawName.toUtf8().data()) : rawName;
+        // for KSyntaxHighlighting themes, we can have some proper translated names
+        return theme.isValid() ? theme.translatedName() : rawName;
     }
 };
 
