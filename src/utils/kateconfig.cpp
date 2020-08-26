@@ -631,8 +631,8 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // "Normal" Schema MUST BE THERE, see global kateschemarc
-    setSchema(config.readEntry(KEY_SCHEMA, "Normal"));
+    // "Default" Schema MUST BE THERE, is shipped with KSyntaxHighlighting
+    setSchema(config.readEntry(KEY_SCHEMA, "Default"));
 
     setWordWrapMarker(config.readEntry(KEY_WORD_WRAP_MARKER, false));
 
@@ -697,8 +697,13 @@ void KateRendererConfig::setSchema(const QString &schema)
 
     configStart();
     m_schemaSet = true;
-    m_schema = schema;
-    setSchemaInternal(schema);
+    // we map Normal to Default, transition from own stuff to KSyntaxHighlighting themes
+    if (schema == QLatin1String("Normal")) {
+        m_schema = QStringLiteral("Default");
+    } else {
+        m_schema = schema;
+    }
+    setSchemaInternal(m_schema);
     configEnd();
 }
 
