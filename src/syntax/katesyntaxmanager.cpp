@@ -32,7 +32,7 @@ using namespace KTextEditor;
 // BEGIN KateHlManager
 KateHlManager::KateHlManager()
     : QObject()
-    , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("katesyntaxhighlightingrc"), KTextEditor::EditorPrivate::unitTestMode() ? KConfig::SimpleConfig : KConfig::NoGlobals) // skip config for unit tests!
+    , m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("katesyntaxhighlightingrc"), KConfig::SimpleConfig) // skip config for unit tests!
 {
 }
 
