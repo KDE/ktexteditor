@@ -37,74 +37,74 @@ KateDefaultColors::KateDefaultColors()
 QColor KateDefaultColors::color(ColorRole role) const
 {
     switch (role) {
-    case Background:
+    case KSyntaxHighlighting::Theme::BackgroundColor:
         return m_background;
-    case SelectionBackground:
+    case KSyntaxHighlighting::Theme::TextSelection:
         return m_selection.background().color();
-    case HighlightedLineBackground:
+    case KSyntaxHighlighting::Theme::CurrentLine:
         return m_view.background(KColorScheme::AlternateBackground).color();
-    case HighlightedBracket:
+    case KSyntaxHighlighting::Theme::BracketMatching:
         return KColorUtils::tint(m_background, m_view.decoration(KColorScheme::HoverColor).color());
-    case WordWrapMarker:
+    case KSyntaxHighlighting::Theme::WordWrapMarker:
         return KColorUtils::shade(m_background, m_backgroundLuma > 0.3 ? -0.15 : 0.03);
-    case TabMarker:
+    case KSyntaxHighlighting::Theme::TabMarker:
         return KColorUtils::shade(m_background, m_backgroundLuma > 0.7 ? -0.35 : 0.3);
-    case IndentationLine:
+    case KSyntaxHighlighting::Theme::IndentationLine:
         return KColorUtils::shade(m_background, m_backgroundLuma > 0.7 ? -0.35 : 0.3);
-    case IconBar:
+    case KSyntaxHighlighting::Theme::IconBorder:
         return m_window.background().color();
-    case CodeFolding:
+    case KSyntaxHighlighting::Theme::CodeFolding:
         return m_inactiveSelection.background().color();
-    case LineNumber:
-    case CurrentLineNumber:
+    case KSyntaxHighlighting::Theme::LineNumbers:
+    case KSyntaxHighlighting::Theme::CurrentLineNumber:
         return m_window.foreground().color();
-    case Separator:
+    case KSyntaxHighlighting::Theme::Separator:
         return m_view.foreground(KColorScheme::InactiveText).color();
-    case SpellingMistakeLine:
+    case KSyntaxHighlighting::Theme::SpellChecking:
         return m_view.foreground(KColorScheme::NegativeText).color();
-    case ModifiedLine:
+    case KSyntaxHighlighting::Theme::ModifiedLines:
         return m_view.background(KColorScheme::NegativeBackground).color();
-    case SavedLine:
+    case KSyntaxHighlighting::Theme::SavedLines:
         return m_view.background(KColorScheme::PositiveBackground).color();
-    case SearchHighlight:
+    case KSyntaxHighlighting::Theme::SearchHighlight:
         return adaptToScheme(Qt::yellow, BackgroundColor);
-    case ReplaceHighlight:
+    case KSyntaxHighlighting::Theme::ReplaceHighlight:
         return adaptToScheme(Qt::green, BackgroundColor);
-    case TemplateBackground:
+    case KSyntaxHighlighting::Theme::TemplateBackground:
         return m_window.background().color();
-    case TemplateFocusedEditablePlaceholder:
+    case KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder:
         return m_view.background(KColorScheme::PositiveBackground).color();
-    case TemplateEditablePlaceholder:
+    case KSyntaxHighlighting::Theme::TemplatePlaceholder:
         return m_view.background(KColorScheme::PositiveBackground).color();
-    case TemplateNotEditablePlaceholder:
+    case KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder:
         return m_view.background(KColorScheme::NegativeBackground).color();
+    case KSyntaxHighlighting::Theme::MarkBookmark:
+        return adaptToScheme(Qt::blue, BackgroundColor);
+    case KSyntaxHighlighting::Theme::MarkBreakpointActive:
+        return adaptToScheme(Qt::red, BackgroundColor);
+    case KSyntaxHighlighting::Theme::MarkBreakpointReached:
+        return adaptToScheme(Qt::yellow, BackgroundColor);
+    case KSyntaxHighlighting::Theme::MarkBreakpointDisabled:
+        return adaptToScheme(Qt::magenta, BackgroundColor);
+    case KSyntaxHighlighting::Theme::MarkExecution:
+        return adaptToScheme(Qt::gray, BackgroundColor);
+    case KSyntaxHighlighting::Theme::MarkWarning:
+        return m_view.foreground(KColorScheme::NeutralText).color();
+    case KSyntaxHighlighting::Theme::MarkError:
+        return m_view.foreground(KColorScheme::NegativeText).color();
+    default:
+        // we can arrive here if KSyntaxHighlighting gets new color roles!
+        break;
     }
-    qFatal("Unhandled color requested: %d\n", role);
+
+    // we can arrive here if KSyntaxHighlighting gets new color roles!
     return QColor();
 }
 
 QColor KateDefaultColors::mark(Mark mark) const
 {
-    // note: the mark color is used as background color at very low opacity (around 0.1)
-    // hence, make sure the color returned here has a high saturation
-    switch (mark) {
-    case Bookmark:
-        return adaptToScheme(Qt::blue, BackgroundColor);
-    case ActiveBreakpoint:
-        return adaptToScheme(Qt::red, BackgroundColor);
-    case ReachedBreakpoint:
-        return adaptToScheme(Qt::yellow, BackgroundColor);
-    case DisabledBreakpoint:
-        return adaptToScheme(Qt::magenta, BackgroundColor);
-    case Execution:
-        return adaptToScheme(Qt::gray, BackgroundColor);
-    case Warning:
-        return m_view.foreground(KColorScheme::NeutralText).color();
-    case Error:
-        return m_view.foreground(KColorScheme::NegativeText).color();
-    }
-    qFatal("Unhandled color for mark requested: %d\n", mark);
-    return QColor();
+    // redirect to color roles enum, KSyntaxHighlighting has that all combined!
+    return color(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(mark + KSyntaxHighlighting::Theme::MarkBookmark));
 }
 
 QColor KateDefaultColors::mark(int i) const

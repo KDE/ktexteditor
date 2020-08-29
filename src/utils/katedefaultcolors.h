@@ -9,35 +9,12 @@
 
 #include <KColorScheme>
 
+#include <KSyntaxHighlighting/Theme>
+
 namespace Kate
 {
-enum ColorRole {
-    // editor backgrounds
-    Background,
-    SelectionBackground,
-    HighlightedLineBackground,
-    SearchHighlight,
-    ReplaceHighlight,
-    // text decorations
-    HighlightedBracket,
-    TabMarker,
-    IndentationLine,
-    SpellingMistakeLine,
-    // icon border
-    WordWrapMarker,
-    IconBar,
-    CodeFolding,
-    LineNumber,
-    CurrentLineNumber,
-    Separator,
-    ModifiedLine,
-    SavedLine,
-    // templates
-    TemplateBackground,
-    TemplateFocusedEditablePlaceholder,
-    TemplateEditablePlaceholder,
-    TemplateNotEditablePlaceholder
-};
+
+typedef KSyntaxHighlighting::Theme::EditorColorRole ColorRole;
 
 enum Mark {
     Bookmark = 0,

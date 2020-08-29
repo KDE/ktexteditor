@@ -16,7 +16,6 @@
 #include "katerenderer.h"
 #include "kateview.h"
 
-#include <KConfigGroup>
 // END
 
 // BEGIN KateSchemaManager
@@ -35,6 +34,7 @@ KateSchema KateSchemaManager::schemaData(const QString &name)
     // normal => schema just a name to some config group
     KateSchema schema;
     schema.rawName = name;
+    schema.config = m_config.group(name);
 
     // we might be a theme derived from KSyntaxHighlighting data
     auto &repo = KTextEditor::EditorPrivate::self()->hlManager()->repository();

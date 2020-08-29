@@ -732,46 +732,48 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_schemaSet = true;
     m_schema = schema;
 
-    KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(schema);
+    const auto schemaData = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema);
+    const auto &config = schemaData.config;
+    const auto &theme = schemaData.theme;
 
     // use global color instance, creation is expensive!
     const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
 
-    m_backgroundColor = config.readEntry("Color Background", colors.color(Kate::Background));
+    m_backgroundColor = config.readEntry("Color Background", colors.color(KSyntaxHighlighting::Theme::BackgroundColor));
 
     m_backgroundColorSet = true;
-    m_selectionColor = config.readEntry("Color Selection", colors.color(Kate::SelectionBackground));
+    m_selectionColor = config.readEntry("Color Selection", colors.color(KSyntaxHighlighting::Theme::TextSelection));
     m_selectionColorSet = true;
-    m_highlightedLineColor = config.readEntry("Color Highlighted Line", colors.color(Kate::HighlightedLineBackground));
+    m_highlightedLineColor = config.readEntry("Color Highlighted Line", colors.color(KSyntaxHighlighting::Theme::CurrentLine));
     m_highlightedLineColorSet = true;
-    m_highlightedBracketColor = config.readEntry("Color Highlighted Bracket", colors.color(Kate::HighlightedBracket));
+    m_highlightedBracketColor = config.readEntry("Color Highlighted Bracket", colors.color(KSyntaxHighlighting::Theme::BracketMatching));
     m_highlightedBracketColorSet = true;
-    m_wordWrapMarkerColor = config.readEntry("Color Word Wrap Marker", colors.color(Kate::WordWrapMarker));
+    m_wordWrapMarkerColor = config.readEntry("Color Word Wrap Marker", colors.color(KSyntaxHighlighting::Theme::WordWrapMarker));
     m_wordWrapMarkerColorSet = true;
-    m_tabMarkerColor = config.readEntry("Color Tab Marker", colors.color(Kate::TabMarker));
+    m_tabMarkerColor = config.readEntry("Color Tab Marker", colors.color(KSyntaxHighlighting::Theme::TabMarker));
     m_tabMarkerColorSet = true;
-    m_indentationLineColor = config.readEntry("Color Indentation Line", colors.color(Kate::IndentationLine));
+    m_indentationLineColor = config.readEntry("Color Indentation Line", colors.color(KSyntaxHighlighting::Theme::IndentationLine));
     m_indentationLineColorSet = true;
-    m_iconBarColor = config.readEntry("Color Icon Bar", colors.color(Kate::IconBar));
+    m_iconBarColor = config.readEntry("Color Icon Bar", colors.color(KSyntaxHighlighting::Theme::IconBorder));
     m_iconBarColorSet = true;
-    m_foldingColor = config.readEntry("Color Code Folding", colors.color(Kate::CodeFolding));
+    m_foldingColor = config.readEntry("Color Code Folding", colors.color(KSyntaxHighlighting::Theme::CodeFolding));
     m_foldingColorSet = true;
-    m_lineNumberColor = config.readEntry("Color Line Number", colors.color(Kate::LineNumber));
+    m_lineNumberColor = config.readEntry("Color Line Number", colors.color(KSyntaxHighlighting::Theme::LineNumbers));
     m_lineNumberColorSet = true;
-    m_currentLineNumberColor = config.readEntry("Color Current Line Number", colors.color(Kate::CurrentLineNumber));
+    m_currentLineNumberColor = config.readEntry("Color Current Line Number", colors.color(KSyntaxHighlighting::Theme::CurrentLineNumber));
     m_currentLineNumberColorSet = true;
-    m_separatorColor = config.readEntry("Color Separator", colors.color(Kate::Separator));
+    m_separatorColor = config.readEntry("Color Separator", colors.color(KSyntaxHighlighting::Theme::Separator));
     m_separatorColorSet = true;
-    m_spellingMistakeLineColor = config.readEntry("Color Spelling Mistake Line", colors.color(Kate::SpellingMistakeLine));
+    m_spellingMistakeLineColor = config.readEntry("Color Spelling Mistake Line", colors.color(KSyntaxHighlighting::Theme::SpellChecking));
     m_spellingMistakeLineColorSet = true;
 
-    m_modifiedLineColor = config.readEntry("Color Modified Lines", colors.color(Kate::ModifiedLine));
+    m_modifiedLineColor = config.readEntry("Color Modified Lines", colors.color(KSyntaxHighlighting::Theme::ModifiedLines));
     m_modifiedLineColorSet = true;
-    m_savedLineColor = config.readEntry("Color Saved Lines", colors.color(Kate::SavedLine));
+    m_savedLineColor = config.readEntry("Color Saved Lines", colors.color(KSyntaxHighlighting::Theme::SavedLines));
     m_savedLineColorSet = true;
-    m_searchHighlightColor = config.readEntry("Color Search Highlight", colors.color(Kate::SearchHighlight));
+    m_searchHighlightColor = config.readEntry("Color Search Highlight", colors.color(KSyntaxHighlighting::Theme::SearchHighlight));
     m_searchHighlightColorSet = true;
-    m_replaceHighlightColor = config.readEntry("Color Replace Highlight", colors.color(Kate::ReplaceHighlight));
+    m_replaceHighlightColor = config.readEntry("Color Replace Highlight", colors.color(KSyntaxHighlighting::Theme::ReplaceHighlight));
     m_replaceHighlightColorSet = true;
 
     for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; i++) {
@@ -782,13 +784,13 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
 
     setFontWithDroppedStyleName(config.readEntry("Font", QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
-    m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(Kate::TemplateBackground));
+    m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(KSyntaxHighlighting::Theme::TemplateBackground));
 
-    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"), colors.color(Kate::TemplateFocusedEditablePlaceholder));
+    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder));
 
-    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"), colors.color(Kate::TemplateEditablePlaceholder));
+    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplatePlaceholder));
 
-    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"), colors.color(Kate::TemplateNotEditablePlaceholder));
+    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder));
 
     m_templateColorsSet = true;
 }

@@ -12,6 +12,7 @@
 
 #include <KActionMenu>
 #include <KConfig>
+#include <KConfigGroup>
 #include <KLocalizedString>
 
 #include <QPointer>
@@ -29,6 +30,7 @@ public:
     QString rawName;
     KSyntaxHighlighting::Theme theme;
     int shippedDefaultSchema = 0;
+    KConfigGroup config;
 
     /**
      * construct translated name for shipped schemas
