@@ -13,6 +13,7 @@
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/FoldingRegion>
 #include <KSyntaxHighlighting/Format>
+#include <KSyntaxHighlighting/Theme>
 
 #include "kateextendedattribute.h"
 #include "katesyntaxmanager.h"
@@ -38,6 +39,42 @@ class KConfig;
 namespace KTextEditor
 {
 class DocumentPrivate;
+}
+
+/**
+ * convert from KSyntaxHighlighting => KTextEditor type
+ * special handle non-1:1 things
+ */
+static inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighting::Theme::TextStyle textStyle)
+{
+    // handle deviations
+    if (textStyle == KSyntaxHighlighting::Theme::Error) {
+        return KTextEditor::dsError;
+    }
+    if (textStyle == KSyntaxHighlighting::Theme::Others) {
+        return KTextEditor::dsOthers;
+    }
+
+    // else: simple cast
+    return static_cast<KTextEditor::DefaultStyle>(textStyle);
+}
+
+/**
+ * convert from KTextEditor => KSyntaxHighlighting type
+ * special handle non-1:1 things
+ */
+static inline KSyntaxHighlighting::Theme::TextStyle defaultStyleToTextStyle(const KTextEditor::DefaultStyle textStyle)
+{
+    // handle deviations
+    if (textStyle == KTextEditor::dsError) {
+        return KSyntaxHighlighting::Theme::Error;
+    }
+    if (textStyle == KTextEditor::dsOthers) {
+        return KSyntaxHighlighting::Theme::Others;
+    }
+
+    // else: simple cast
+    return static_cast<KSyntaxHighlighting::Theme::TextStyle>(textStyle);
 }
 
 class KateHighlighting : private KSyntaxHighlighting::AbstractHighlighter

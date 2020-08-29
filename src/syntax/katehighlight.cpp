@@ -35,30 +35,6 @@
 #include <QVarLengthArray>
 // END
 
-// BEGIN STATICS
-namespace
-{
-/**
- * convert from KSyntaxHighlighting => KTextEditor type
- * special handle non-1:1 things
- */
-inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighting::Theme::TextStyle textStyle)
-{
-    // handle deviations
-    if (textStyle == KSyntaxHighlighting::Theme::Error) {
-        return KTextEditor::dsError;
-    }
-    if (textStyle == KSyntaxHighlighting::Theme::Others) {
-        return KTextEditor::dsOthers;
-    }
-
-    // else: simple cast
-    return static_cast<KTextEditor::DefaultStyle>(textStyle);
-}
-
-}
-// END
-
 // BEGIN KateHighlighting
 KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
 {
@@ -455,7 +431,7 @@ void KateHighlighting::clearAttributeArrays()
 QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema)
 {
     // get the KSyntaxHighlighting::Theme from the chosen schema.
-    KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
+    const KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
 
     // create list of all known things
     QVector<KTextEditor::Attribute::Ptr> array;

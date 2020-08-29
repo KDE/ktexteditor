@@ -494,6 +494,9 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
 
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(), QLatin1String("Default Item Styles - Schema ") + schema);
 
+    // get the KSyntaxHighlighting::Theme from the chosen schema.
+    const KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
+
     for (int z = 0; z < defaultStyleCount(); z++) {
         KTextEditor::Attribute::Ptr i = list.at(z);
         QStringList s = config.readEntry(defaultStyleName(z), QStringList());
@@ -559,6 +562,39 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
             if (!tmp.isEmpty() && tmp != QLatin1String("---")) {
                 i->setFontFamily(tmp);
             }
+
+            // be done, we have colors set
+            continue;
+        }
+
+        // fallback to theme colors, if valid
+        if (currentTheme.isValid()) {
+            const auto style = defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z));
+
+            if (const auto col = currentTheme.textColor(style)) {
+                i->setForeground(QColor(col));
+            }
+
+            if (const auto col = currentTheme.selectedTextColor(style)) {
+                i->setSelectedForeground(QColor(col));
+            }
+
+            if (const auto col = currentTheme.backgroundColor(style)) {
+                i->setBackground(QColor(col));
+            } else {
+                i->clearBackground();
+            }
+
+            if (const auto col = currentTheme.selectedBackgroundColor(style)) {
+                i->setSelectedBackground(QColor(col));
+            } else {
+                i->clearProperty(SelectedBackground);
+            }
+
+            i->setFontBold(currentTheme.isBold(style));
+            i->setFontItalic(currentTheme.isItalic(style));
+            i->setFontUnderline(currentTheme.isUnderline(style));
+            i->setFontStrikeOut(currentTheme.isStrikeThrough(style));
         }
     }
 }
