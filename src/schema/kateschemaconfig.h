@@ -12,6 +12,7 @@
 #include "katecolortreewidget.h"
 #include "katedialogs.h"
 #include "kateextendedattribute.h"
+#include "kateschema.h"
 
 #include <QFont>
 #include <QMap>
@@ -42,8 +43,8 @@ Q_SIGNALS:
     void changed();
 
 private:
-    QVector<KateColorItem> colorItemList() const;
-    QVector<KateColorItem> readConfig(KConfigGroup &config);
+    QVector<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme) const;
+    QVector<KateColorItem> readConfig(KConfigGroup &config, const KSyntaxHighlighting::Theme &theme);
 
 private:
     // multiple shemas may be edited. Hence, we need one ColorList for each schema

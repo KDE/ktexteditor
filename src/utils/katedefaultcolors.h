@@ -16,6 +16,7 @@ namespace Kate
 
 typedef KSyntaxHighlighting::Theme::EditorColorRole ColorRole;
 
+// we need to ensure this is the same set of stuff as in KSyntaxHighlighting::Theme::EditorColorRole
 enum Mark {
     Bookmark = 0,
     ActiveBreakpoint,
@@ -56,9 +57,9 @@ public:
         return m_inactiveSelection;
     }
 
-    QColor color(Kate::ColorRole color) const;
-    QColor mark(Kate::Mark mark) const;
-    QColor mark(int mark) const;
+    QColor color(Kate::ColorRole color, const KSyntaxHighlighting::Theme &theme) const;
+    QColor mark(Kate::Mark mark, const KSyntaxHighlighting::Theme &theme) const;
+    QColor mark(int mark, const KSyntaxHighlighting::Theme &theme) const;
 
     enum ColorType { ForegroundColor, BackgroundColor };
     QColor adaptToScheme(const QColor &color, ColorType type) const;

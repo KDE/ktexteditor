@@ -34,8 +34,13 @@ KateDefaultColors::KateDefaultColors()
 {
 }
 
-QColor KateDefaultColors::color(ColorRole role) const
+QColor KateDefaultColors::color(ColorRole role, const KSyntaxHighlighting::Theme &theme) const
 {
+    // prefer theme color, if valid
+    if (theme.isValid()) {
+        return theme.editorColor(role);
+    }
+
     switch (role) {
     case KSyntaxHighlighting::Theme::BackgroundColor:
         return m_background;
@@ -101,16 +106,16 @@ QColor KateDefaultColors::color(ColorRole role) const
     return QColor();
 }
 
-QColor KateDefaultColors::mark(Mark mark) const
+QColor KateDefaultColors::mark(Mark mark, const KSyntaxHighlighting::Theme &theme) const
 {
     // redirect to color roles enum, KSyntaxHighlighting has that all combined!
-    return color(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(mark + KSyntaxHighlighting::Theme::MarkBookmark));
+    return color(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(mark + KSyntaxHighlighting::Theme::MarkBookmark), theme);
 }
 
-QColor KateDefaultColors::mark(int i) const
+QColor KateDefaultColors::mark(int i, const KSyntaxHighlighting::Theme &theme) const
 {
     Q_ASSERT(i >= FIRST_MARK && i <= LAST_MARK);
-    return mark(static_cast<Mark>(i));
+    return mark(static_cast<Mark>(i), theme);
 }
 
 QColor KateDefaultColors::adaptToScheme(const QColor &color, ColorType type) const
