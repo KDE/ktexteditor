@@ -56,22 +56,6 @@ inline KTextEditor::DefaultStyle textStyleToDefaultStyle(const KSyntaxHighlighti
     return static_cast<KTextEditor::DefaultStyle>(textStyle);
 }
 
-/**
- * convert the theme/schema name from KTextEditor => KSyntaxHighlighting.
- * NOTE: some themes of KTextEditor don't exist in KSyntaxHighlighting
- */
-inline QString convertThemeName(const QString &schema)
-{
-    if (schema == QLatin1String("Normal")) {
-        return QStringLiteral("Default");
-    } else if (schema == QLatin1String("Solarized (light)")) {
-        return QStringLiteral("Solarized Light");
-    } else if (schema == QLatin1String("Solarized (dark)")) {
-        return QStringLiteral("Solarized Dark");
-    }
-    return schema;
-}
-
 }
 // END
 
@@ -470,10 +454,8 @@ void KateHighlighting::clearAttributeArrays()
 
 QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema)
 {
-    // get the KSyntaxHighlighting theme from the chosen schema.
-    // NOTE: if the theme isn't valid for KSyntaxHighlighting, an empty/invalid theme will be used.
-    // For example, the "KDE" and "Vim (dark)" themes don't exist in KSyntaxHighlighting.
-    KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(convertThemeName(schema));
+    // get the KSyntaxHighlighting::Theme from the chosen schema.
+    KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
 
     // create list of all known things
     QVector<KTextEditor::Attribute::Ptr> array;
