@@ -54,37 +54,6 @@ private:
     KateColorTreeWidget *ui;
 };
 
-class KateSchemaConfigFontTab : public QWidget
-{
-    Q_OBJECT
-
-public:
-    KateSchemaConfigFontTab();
-    ~KateSchemaConfigFontTab();
-
-public:
-    void readConfig(KConfig *config);
-
-    void importSchema(KConfigGroup &config);
-    void exportSchema(KConfigGroup &config);
-
-public Q_SLOTS:
-    void apply();
-    void reload();
-    void schemaChanged(const QString &newSchema);
-
-Q_SIGNALS:
-    void changed();
-
-private:
-    class KFontChooser *m_fontchooser;
-    QMap<QString, QFont> m_fonts;
-    QString m_currentSchema;
-
-private Q_SLOTS:
-    void slotFontSelected(const QFont &font);
-};
-
 class KateSchemaConfigDefaultStylesTab : public QWidget
 {
     Q_OBJECT
@@ -195,7 +164,6 @@ private:
     class KComboBox *defaultSchemaCombo;
     class KComboBox *schemaCombo;
     KateSchemaConfigColorTab *m_colorTab;
-    KateSchemaConfigFontTab *m_fontTab;
     KateSchemaConfigDefaultStylesTab *m_defaultStylesTab;
     KateSchemaConfigHighlightTab *m_highlightTab;
 };

@@ -92,7 +92,7 @@ QList<KateSchema> KateSchemaManager::list()
 }
 // END
 
-// BEGIN SCHEMA ACTION -- the 'View->Schema' menu action
+// BEGIN SCHEMA ACTION -- the 'View->Color theme' menu action
 void KateViewSchemaAction::init()
 {
     m_group = nullptr;

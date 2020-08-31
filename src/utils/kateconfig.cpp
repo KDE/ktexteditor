@@ -619,6 +619,7 @@ KateRendererConfig::~KateRendererConfig()
 namespace
 {
 const char KEY_SCHEMA[] = "Schema";
+const char KEY_FONT[] = "Font";
 const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
 const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
 const char KEY_SHOW_WHOLE_BRACKET_EXPRESSION[] = "Show Whole Bracket Expression";
@@ -634,6 +635,10 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 
     // setSchema will default to right theme
     setSchema(config.readEntry(KEY_SCHEMA, QString()));
+    
+    // get fallback font from schema, for old configs, this could be removed in some releases
+    const auto fallbackFont = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema()).config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    setFontWithDroppedStyleName(config.readEntry(KEY_FONT, fallbackFont));
 
     setWordWrapMarker(config.readEntry(KEY_WORD_WRAP_MARKER, false));
 
@@ -652,6 +657,8 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     writeConfigEntries(config);
 
     config.writeEntry(KEY_SCHEMA, schema());
+
+    config.writeEntry(KEY_FONT, baseFont());
 
     config.writeEntry(KEY_WORD_WRAP_MARKER, wordWrapMarker());
 
@@ -782,8 +789,6 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;
     }
-
-    setFontWithDroppedStyleName(config.readEntry("Font", QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
     m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(KSyntaxHighlighting::Theme::TemplateBackground, theme));
 

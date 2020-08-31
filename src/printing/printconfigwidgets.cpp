@@ -488,7 +488,7 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
 
     QHBoxLayout *hb = new QHBoxLayout();
     lo->addLayout(hb);
-    QLabel *lSchema = new QLabel(i18n("&Schema:"), this);
+    QLabel *lSchema = new QLabel(i18n("&Color theme:"), this);
     hb->addWidget(lSchema);
     cmbSchema = new KComboBox(this);
     hb->addWidget(cmbSchema);

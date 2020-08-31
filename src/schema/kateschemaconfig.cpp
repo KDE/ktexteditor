@@ -25,7 +25,6 @@
 
 #include <KComboBox>
 #include <KConfigGroup>
-#include <KFontChooser>
 #include <KMessageBox>
 
 #include <QFileDialog>
@@ -43,7 +42,7 @@ KateSchemaConfigColorTab::KateSchemaConfigColorTab()
     setLayout(l);
 
     ui = new KateColorTreeWidget(this);
-    QPushButton *btnUseColorScheme = new QPushButton(i18n("Use KDE Color Scheme"), this);
+    QPushButton *btnUseColorScheme = new QPushButton(i18n("Use KDE Color Theme"), this);
 
     l->addWidget(ui, 0, 0, 1, 2);
     l->addWidget(btnUseColorScheme, 1, 1);
@@ -362,77 +361,6 @@ QColor KateSchemaConfigColorTab::selectionColor() const
 }
 // END KateSchemaConfigColorTab
 
-// BEGIN FontConfig -- 'Fonts' tab
-KateSchemaConfigFontTab::KateSchemaConfigFontTab()
-{
-    QGridLayout *grid = new QGridLayout(this);
-
-    m_fontchooser = new KFontChooser(this, KFontChooser::NoDisplayFlags);
-    grid->addWidget(m_fontchooser, 0, 0);
-}
-
-KateSchemaConfigFontTab::~KateSchemaConfigFontTab()
-{
-}
-
-void KateSchemaConfigFontTab::slotFontSelected(const QFont &font)
-{
-    if (!m_currentSchema.isEmpty()) {
-        m_fonts[m_currentSchema] = font;
-        emit changed();
-    }
-}
-
-void KateSchemaConfigFontTab::apply()
-{
-    QMap<QString, QFont>::Iterator it;
-    for (it = m_fonts.begin(); it != m_fonts.end(); ++it) {
-        KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key()).writeEntry("Font", it.value());
-    }
-
-    // all fonts are written, so throw away all cached schemas
-    m_fonts.clear();
-}
-
-void KateSchemaConfigFontTab::reload()
-{
-    // drop all cached data
-    m_fonts.clear();
-
-    // now set current schema font in the font chooser
-    schemaChanged(m_currentSchema);
-}
-
-void KateSchemaConfigFontTab::schemaChanged(const QString &newSchema)
-{
-    m_currentSchema = newSchema;
-
-    // reuse font, if cached
-    QFont newFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    if (m_fonts.contains(m_currentSchema)) {
-        newFont = m_fonts[m_currentSchema];
-    } else {
-        newFont = KTextEditor::EditorPrivate::self()->schemaManager()->schema(m_currentSchema).readEntry("Font", newFont);
-    }
-
-    m_fontchooser->disconnect(this);
-    m_fontchooser->setFont(newFont);
-    connect(m_fontchooser, SIGNAL(fontSelected(QFont)), this, SLOT(slotFontSelected(QFont)));
-}
-
-void KateSchemaConfigFontTab::importSchema(KConfigGroup &config)
-{
-    QFont f(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    m_fontchooser->setFont(config.readEntry("Font", f));
-    m_fonts[m_currentSchema] = m_fontchooser->font();
-}
-
-void KateSchemaConfigFontTab::exportSchema(KConfigGroup &config)
-{
-    config.writeEntry("Font", m_fontchooser->font());
-}
-// END FontConfig
-
 // BEGIN FontColorConfig -- 'Normal Text Styles' tab
 KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab)
 {
@@ -446,7 +374,7 @@ KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaCon
     grid->addWidget(m_defaultStyles, 0, 0);
 
     m_defaultStyles->setWhatsThis(
-        i18n("<p>This list displays the default styles for the current schema and "
+        i18n("<p>This list displays the default styles for the current color theme and "
              "offers the means to edit them. The style name reflects the current "
              "style settings.</p>"
              "<p>To edit the colors, click the colored squares, or select the color "
@@ -863,7 +791,7 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     QHBoxLayout *headerLayout = new QHBoxLayout;
     layout->addLayout(headerLayout);
 
-    QLabel *lHl = new QLabel(i18n("&Schema:"), this);
+    QLabel *lHl = new QLabel(i18n("&Theme:"), this);
     headerLayout->addWidget(lHl);
 
     schemaCombo = new KComboBox(this);
@@ -898,10 +826,6 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     tabWidget->addTab(m_colorTab, i18n("Colors"));
     connect(m_colorTab, SIGNAL(changed()), SLOT(slotChanged()));
 
-    m_fontTab = new KateSchemaConfigFontTab();
-    tabWidget->addTab(m_fontTab, i18n("Font"));
-    connect(m_fontTab, SIGNAL(changed()), SLOT(slotChanged()));
-
     m_defaultStylesTab = new KateSchemaConfigDefaultStylesTab(m_colorTab);
     tabWidget->addTab(m_defaultStylesTab, i18n("Default Text Styles"));
     connect(m_defaultStylesTab, SIGNAL(changed()), SLOT(slotChanged()));
@@ -913,7 +837,7 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     QHBoxLayout *footLayout = new QHBoxLayout;
     layout->addLayout(footLayout);
 
-    lHl = new QLabel(i18n("&Default schema for %1:", QCoreApplication::applicationName()), this);
+    lHl = new QLabel(i18n("&Default theme for %1:", QCoreApplication::applicationName()), this);
     footLayout->addWidget(lHl);
 
     defaultSchemaCombo = new KComboBox(this);
@@ -980,7 +904,6 @@ void KateSchemaConfigPage::exportFullSchema()
     grp.writeEntry("full schema", "true");
     grp.writeEntry("highlightings", hlList);
     grp.writeEntry("schema", currentSchemaName);
-    m_fontTab->exportSchema(grp);
     cfg.sync();
 }
 
@@ -1018,7 +941,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
         // if schema exists, prepare option to replace
         if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
             howToImport.radioReplaceExisting->show();
-            howToImport.radioReplaceExisting->setText(i18n("Replace existing schema %1", schemaName));
+            howToImport.radioReplaceExisting->setText(i18n("Replace existing theme %1", schemaName));
             howToImport.radioReplaceExisting->setChecked(true);
         } else {
             howToImport.radioReplaceExisting->hide();
@@ -1106,11 +1029,6 @@ void KateSchemaConfigPage::importFullSchema()
     m_colorTab->importSchema(colorConfigGroup);
 
     //
-    // import font
-    //
-    m_fontTab->importSchema(schemaGroup);
-
-    //
     // import Default Styles
     //
     m_defaultStylesTab->importSchema(fromSchemaName, schemaName, &cfg);
@@ -1146,7 +1064,6 @@ void KateSchemaConfigPage::apply()
 
     // first apply all tabs
     m_colorTab->apply();
-    m_fontTab->apply();
     m_defaultStylesTab->apply();
     m_highlightTab->apply();
 
@@ -1186,7 +1103,6 @@ void KateSchemaConfigPage::reload()
     // all tabs need to reload to discard all the cached data, as the index
     // mapping may have changed
     m_colorTab->reload();
-    m_fontTab->reload();
     m_defaultStylesTab->reload();
     m_highlightTab->reload();
 }
@@ -1297,7 +1213,6 @@ void KateSchemaConfigPage::schemaChanged(const QString &schema)
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);
-    m_fontTab->schemaChanged(schema);
     m_defaultStylesTab->schemaChanged(schema);
     m_highlightTab->schemaChanged(schema);
 
@@ -1312,12 +1227,12 @@ void KateSchemaConfigPage::comboBoxIndexChanged(int currentIndex)
 
 QString KateSchemaConfigPage::name() const
 {
-    return i18n("Fonts & Colors");
+    return i18n("Color Themes");
 }
 
 QString KateSchemaConfigPage::fullName() const
 {
-    return i18n("Font & Color Schemas");
+    return i18n("Color Themes");
 }
 
 QIcon KateSchemaConfigPage::icon() const

@@ -51,6 +51,7 @@
 #include <KCharsets>
 #include <KColorCombo>
 #include <KComboBox>
+#include <KFontChooser>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KProcess>
@@ -675,6 +676,12 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     QTabWidget *tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
     layout->setContentsMargins(0, 0, 0, 0);
+    
+    QWidget *fontTab = new QWidget(tabWidget);
+    QGridLayout *grid = new QGridLayout(fontTab);
+    m_fontchooser =  new KFontChooser(fontTab, KFontChooser::NoDisplayFlags);
+    grid->addWidget(m_fontchooser, 0, 0);
+    tabWidget->addTab(fontTab, i18n("Font"));
 
     QWidget *textareaTab = new QWidget(tabWidget);
     textareaUi->setupUi(textareaTab);
@@ -691,6 +698,8 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     // "What's This?" help is in the ui-file
 
     reload();
+    
+    observeChanges(m_fontchooser);
 
     observeChanges(textareaUi->chkAnimateBracketMatching);
     observeChanges(textareaUi->chkDynWrapAnywhere);
@@ -745,6 +754,7 @@ void KateViewDefaultsConfig::apply()
     KateDocumentConfig::global()->setShowSpaces(KateDocumentConfig::WhitespaceRendering(textareaUi->spacesComboBox->currentIndex()));
     KateDocumentConfig::global()->setShowTabs(textareaUi->chkShowTabs->isChecked());
 
+    KateRendererConfig::global()->setFont(m_fontchooser->font());
     KateRendererConfig::global()->setAnimateBracketMatching(textareaUi->chkAnimateBracketMatching->isChecked());
     KateRendererConfig::global()->setShowIndentationLines(textareaUi->chkShowIndentationLines->isChecked());
     KateRendererConfig::global()->setShowWholeBracketExpression(textareaUi->chkShowWholeBracketExpression->isChecked());
@@ -790,6 +800,8 @@ void KateViewDefaultsConfig::reload()
     bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);
     bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
+    
+    m_fontchooser->setFont(KateRendererConfig::global()->baseFont());
 
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());
     textareaUi->chkDynWrapAnywhere->setChecked(KateViewConfig::global()->dynWrapAnywhere());
@@ -810,12 +822,10 @@ void KateViewDefaultsConfig::reload()
 
 void KateViewDefaultsConfig::reset()
 {
-    ;
 }
 
 void KateViewDefaultsConfig::defaults()
 {
-    ;
 }
 
 QString KateViewDefaultsConfig::name() const

@@ -630,7 +630,7 @@ void KTextEditor::ViewPrivate::setupActions()
     menu->setWhatsThis(i18n("Here you can choose how the current document should be highlighted."));
     menu->updateMenu(m_doc);
 
-    KateViewSchemaAction *schemaMenu = new KateViewSchemaAction(i18n("&Schema"), this);
+    KateViewSchemaAction *schemaMenu = new KateViewSchemaAction(i18n("&Color Theme"), this);
     ac->addAction(QStringLiteral("view_schemas"), schemaMenu);
     schemaMenu->updateMenu(this);
 

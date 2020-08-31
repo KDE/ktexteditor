@@ -9,6 +9,7 @@
 
 #include <ktexteditor/configpage.h>
 
+class KFontChooser;
 class KUrlRequester;
 class QAbstractButton;
 class QAbstractSlider;
@@ -40,6 +41,7 @@ public:
     void observeChanges(QComboBox *comboBox);
     void observeChanges(QGroupBox *groupBox);
     void observeChanges(QLineEdit *lineEdit);
+    void observeChanges(KFontChooser *chooser);
 
 protected Q_SLOTS:
     void slotChanged();
