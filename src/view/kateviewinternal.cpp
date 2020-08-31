@@ -2779,7 +2779,7 @@ void KateViewInternal::mouseReleaseEvent(QMouseEvent *e)
         e->accept();
         break;
 
-    case Qt::MidButton:
+    case Qt::MiddleButton:
         if (!view()->config()->mousePasteAtCursorPosition()) {
             placeCursor(e->pos());
         }
