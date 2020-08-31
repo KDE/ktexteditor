@@ -1286,7 +1286,7 @@ protected:
 
 public:
     const QString &schema() const;
-    void setSchema(const QString &schema);
+    void setSchema(QString schema);
 
     /**
      * Reload the schema from the schema manager.

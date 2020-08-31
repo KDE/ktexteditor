@@ -10,6 +10,7 @@
 #include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
+#include "katesyntaxmanager.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateschema.h"
@@ -631,8 +632,8 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // "Default" Schema MUST BE THERE, is shipped with KSyntaxHighlighting
-    setSchema(config.readEntry(KEY_SCHEMA, "Default"));
+    // setSchema will default to right theme
+    setSchema(config.readEntry(KEY_SCHEMA, QString()));
 
     setWordWrapMarker(config.readEntry(KEY_WORD_WRAP_MARKER, false));
 
@@ -689,20 +690,20 @@ const QString &KateRendererConfig::schema() const
     return s_global->schema();
 }
 
-void KateRendererConfig::setSchema(const QString &schema)
+void KateRendererConfig::setSchema(QString schema)
 {
+    // normalize name, fallback to default light theme for unknown stuff
+    if (!KTextEditor::EditorPrivate::self()->schemaManager()->exists(schema)) {
+        schema = KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name();
+    }
+
     if (m_schemaSet && m_schema == schema) {
         return;
     }
 
     configStart();
     m_schemaSet = true;
-    // we map Normal to Default, transition from own stuff to KSyntaxHighlighting themes
-    if (schema == QLatin1String("Normal")) {
-        m_schema = QStringLiteral("Default");
-    } else {
-        m_schema = schema;
-    }
+    m_schema = schema;
     setSchemaInternal(m_schema);
     configEnd();
 }

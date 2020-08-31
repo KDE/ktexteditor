@@ -40,33 +40,28 @@ KateSchema KateSchemaManager::schemaData(const QString &name)
     auto &repo = KTextEditor::EditorPrivate::self()->hlManager()->repository();
     schema.theme = repo.theme(name);
 
-    // for valid KSyntaxHighlighting themes: some are special, like default/...
+    // mark some stuff as undeleteable
     if (schema.theme.isValid()) {
-        // default light theme?
-        if (schema.rawName == repo.defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name()) {
-            schema.shippedDefaultSchema = 9999;
-        } else if (schema.rawName == repo.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme).name()) {
-            schema.shippedDefaultSchema = 9998;
-        } else if (schema.rawName == QLatin1String("Printing")) {
-            schema.shippedDefaultSchema = 9997;
-        }
+        schema.notDeletable = true;
     } else {
         // KDE default color scheme thema?
         if (schema.rawName == QLatin1String("KDE")) {
-            schema.shippedDefaultSchema = 9996;
+            schema.notDeletable = true;
         }
     }
 
     return schema;
 }
 
+bool KateSchemaManager::exists(const QString &name)
+{
+    // either some config data around of this is a KSyntaxHighlighting theme
+    return m_config.hasGroup(name) || KTextEditor::EditorPrivate::self()->hlManager()->repository().theme(name).isValid();
+}
+
 static bool schemasCompare(const KateSchema &s1, const KateSchema &s2)
 {
-    if (s1.shippedDefaultSchema > s2.shippedDefaultSchema) {
-        return true;
-    }
-
-    return s1.translatedName().localeAwareCompare(s1.translatedName()) < 0;
+    return s1.translatedName().localeAwareCompare(s2.translatedName()) < 0;
 }
 
 QList<KateSchema> KateSchemaManager::list()

@@ -29,7 +29,7 @@ class KateSchema
 public:
     QString rawName;
     KSyntaxHighlighting::Theme theme;
-    int shippedDefaultSchema = 0;
+    bool notDeletable = false;
     KConfigGroup config;
 
     /**
@@ -64,6 +64,11 @@ public:
      * return schema data for on schema
      */
     KateSchema schemaData(const QString &name);
+
+    /**
+     * does the given schema exist?
+     */
+    bool exists(const QString &name);
 
     /**
      * Constructs list of schemas atm known in config object
