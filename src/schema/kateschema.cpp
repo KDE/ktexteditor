@@ -16,12 +16,43 @@
 #include "katerenderer.h"
 #include "kateview.h"
 
+#include <map>
+
 // END
 
 // BEGIN KateSchemaManager
 KateSchemaManager::KateSchemaManager()
-    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("kateschemarc"), KConfig::SimpleConfig) // skip config for unit tests!
+    : m_config(KTextEditor::EditorPrivate::unitTestMode() ? QString() : QStringLiteral("katethemerc"), KConfig::SimpleConfig) // skip config for unit tests!
 {
+    // convert old to new theme names once
+    // this is needed for the conversion to use KSyntaxHighlighting themes
+    // we do this conversion once, use printing theme to remember this
+    // we copy once all old config over from kateschemarc to new katethemerc with renaming
+    if (!m_config.hasGroup("Printing")) {
+        // mapping for renaming
+        std::map<QString, QString> renamed;
+        renamed.emplace(QStringLiteral("Normal"), KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name());
+        renamed.emplace(QStringLiteral("Solarized (light)"), QStringLiteral("Solarized Light"));
+        renamed.emplace(QStringLiteral("Solarized (dark)"), QStringLiteral("Solarized Dark"));
+        renamed.emplace(QStringLiteral("Vim (dark)"), QStringLiteral("Vim Dark"));
+
+        // open old config, copy over all groups we have, rename some
+        KConfig oldConfig(QStringLiteral("kateschemarc"), KConfig::SimpleConfig);
+        for (const auto &oldGroupName : oldConfig.groupList()) {
+            // get old group
+            KConfigGroup oldGroup = oldConfig.group(oldGroupName);
+
+            // create new group with either 1:1 or renamed name
+            KConfigGroup newGroup = m_config.group((renamed.find(oldGroupName) == renamed.end()) ? oldGroupName : renamed[oldGroupName]);
+
+            // copy all data to new group
+            oldGroup.copyTo(&newGroup);
+        }
+
+        // add dummy element to Printing group to have it, like we do in kateschemaconfig.cpp
+        KConfigGroup printing = m_config.group("Printing");
+        printing.writeEntry("dummy", "prevent-empty-group");
+    }
 }
 
 KConfigGroup KateSchemaManager::schema(const QString &name)
