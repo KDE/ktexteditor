@@ -1270,6 +1270,16 @@ public:
         return s_global;
     }
 
+    /**
+     * All known config keys
+     * Keep them sorted alphabetic for our convenience
+     */
+    enum ConfigEntryTypes {
+        /**
+         * auto-select the color theme based on application palette
+         */
+        AutoColorThemeSelection
+    };
 public:
     /**
      * Read config from object

@@ -21,6 +21,7 @@
 #include <KCharsets>
 #include <KConfigGroup>
 
+#include <QGuiApplication>
 #include <QSettings>
 #include <QStringListModel>
 #include <QTextCodec>
@@ -541,9 +542,7 @@ void KateViewConfig::updateConfig()
 // BEGIN KateRendererConfig
 KateRendererConfig::KateRendererConfig()
     : m_lineMarkerColor(KTextEditor::MarkInterface::reservedMarkersCount())
-    ,
-
-    m_schemaSet(false)
+    , m_schemaSet(false)
     , m_fontSet(false)
     , m_wordWrapMarkerSet(false)
     , m_showIndentationLinesSet(false)
@@ -573,6 +572,12 @@ KateRendererConfig::KateRendererConfig()
     m_lineMarkerColorSet.fill(true);
 
     s_global = this;
+
+    // Init all known config entries
+    addConfigEntry(ConfigEntry(AutoColorThemeSelection, "Auto Color Theme Selection", QString(), true));
+
+    // Never forget to finalize or the <CommandName> becomes not available
+    finalizeConfigEntries();
 
     // init with defaults from config or really hardcoded ones
     KConfigGroup config(KTextEditor::EditorPrivate::config(), "KTextEditor Renderer");
@@ -635,7 +640,7 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
 
     // setSchema will default to right theme
     setSchema(config.readEntry(KEY_SCHEMA, QString()));
-    
+
     // get fallback font from schema, for old configs, this could be removed in some releases
     const auto fallbackFont = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema()).config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont));
     setFontWithDroppedStyleName(config.readEntry(KEY_FONT, fallbackFont));
@@ -737,10 +742,21 @@ void KateRendererConfig::reloadSchema()
 
 void KateRendererConfig::setSchemaInternal(const QString &schema)
 {
+    // we always set the theme if we arrive here!
     m_schemaSet = true;
-    m_schema = schema;
 
-    const auto schemaData = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema);
+    // for the global config, we honor the auto selection based on the palette
+    if (isGlobal() && value(AutoColorThemeSelection).toBool()) {
+        // always choose some theme matching the current application palette
+        // we will arrive here after palette changed signals, too!
+        // TODO: improve this, at the moment we just switch between default light and dark theme, we might want to search a "best" match
+        m_schema = KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((qGuiApp->palette().color(QPalette::Base).lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme).name();
+    } else {
+        // take user given theme 1:1
+        m_schema = schema;
+    }
+
+    const auto schemaData = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(m_schema);
     const auto &config = schemaData.config;
     const auto &theme = schemaData.theme;
 

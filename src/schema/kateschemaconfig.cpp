@@ -1076,8 +1076,14 @@ void KateSchemaConfigPage::apply()
         KateHlManager::self()->getHl(i)->clearAttributeArrays();
     }
 
-    // than reload the whole stuff
-    KateRendererConfig::global()->setSchema(defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
+    // than reload the whole stuff, special handle auto selection == empty theme name
+    const auto defaultTheme = defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString();
+    if (defaultTheme.isEmpty()) {
+        KateRendererConfig::global()->setValue(KateRendererConfig::AutoColorThemeSelection, true);
+    } else {
+        KateRendererConfig::global()->setValue(KateRendererConfig::AutoColorThemeSelection, false);
+        KateRendererConfig::global()->setSchema(defaultTheme);
+    }
     KateRendererConfig::global()->reloadSchema();
 
     // sync the hl config for real
@@ -1115,21 +1121,26 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
     // reinitialize combo boxes
     schemaCombo->clear();
     defaultSchemaCombo->clear();
+    defaultSchemaCombo->addItem(i18n("Automatic Selection"), QString());
     const QList<KateSchema> schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
     for (const KateSchema &s : schemaList) {
         schemaCombo->addItem(s.translatedName(), s.rawName);
         defaultSchemaCombo->addItem(s.translatedName(), s.rawName);
     }
 
-    // set the correct indexes again, fallback to always existing "Normal"
+    // set the correct indexes again, fallback to always existing default theme
     int schemaIndex = schemaCombo->findData(schemaName);
     if (schemaIndex == -1) {
-        schemaIndex = schemaCombo->findData(QLatin1String("Normal"));
+        schemaIndex = schemaCombo->findData(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name());
     }
 
-    int defaultSchemaIndex = defaultSchemaCombo->findData(defaultSchemaName);
-    if (defaultSchemaIndex == -1) {
-        defaultSchemaIndex = defaultSchemaCombo->findData(QLatin1String("Normal"));
+    // set the correct indexes again, fallback to auto-selection
+    int defaultSchemaIndex = 0;
+    if (!KateRendererConfig::global()->value(KateRendererConfig::AutoColorThemeSelection).toBool()) {
+        defaultSchemaIndex = defaultSchemaCombo->findData(defaultSchemaName);
+        if (defaultSchemaIndex == -1) {
+            defaultSchemaIndex = 0;
+        }
     }
 
     Q_ASSERT(schemaIndex != -1);
@@ -1165,10 +1176,10 @@ void KateSchemaConfigPage::deleteSchema()
     // kill group
     KTextEditor::EditorPrivate::self()->schemaManager()->config().deleteGroup(schemaNameToDelete);
 
-    // fallback to Default schema
-    schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(QStringLiteral("Normal"))));
+    // fallback to Default schema + auto
+    schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name())));
     if (defaultSchemaCombo->currentIndex() == defaultSchemaCombo->findData(schemaNameToDelete)) {
-        defaultSchemaCombo->setCurrentIndex(defaultSchemaCombo->findData(QVariant(QStringLiteral("Normal"))));
+        defaultSchemaCombo->setCurrentIndex(0);
     }
 
     // remove schema from combo box
