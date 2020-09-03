@@ -71,16 +71,6 @@ KateSchema KateSchemaManager::schemaData(const QString &name)
     auto &repo = KTextEditor::EditorPrivate::self()->hlManager()->repository();
     schema.theme = repo.theme(name);
 
-    // mark some stuff as undeleteable
-    if (schema.theme.isValid()) {
-        schema.notDeletable = true;
-    } else {
-        // KDE default color scheme thema?
-        if (schema.rawName == QLatin1String("KDE")) {
-            schema.notDeletable = true;
-        }
-    }
-
     return schema;
 }
 
@@ -104,10 +94,6 @@ QList<KateSchema> KateSchemaManager::list()
         schemas.append(schemaData(theme.name()));
         defaultThemes.insert(theme.name());
     }
-
-    // add default KDE color schema
-    schemas.append(schemaData(QStringLiteral("KDE")));
-    defaultThemes.insert(QStringLiteral("KDE"));
 
     // get extra themes that got configured in KConfig data
     const auto names = m_config.groupList();

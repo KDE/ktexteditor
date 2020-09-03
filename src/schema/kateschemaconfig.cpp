@@ -1168,8 +1168,8 @@ void KateSchemaConfigPage::deleteSchema()
     const int comboIndex = schemaCombo->currentIndex();
     const QString schemaNameToDelete = schemaCombo->itemData(comboIndex).toString();
 
-    if (KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schemaNameToDelete).notDeletable) {
-        // Default and Printing schema cannot be deleted.
+    // KSyntaxHighlighting themes can not be deleted
+    if (KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schemaNameToDelete).theme.isValid()) {
         return;
     }
 
@@ -1220,7 +1220,8 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
 
 void KateSchemaConfigPage::schemaChanged(const QString &schema)
 {
-    btndel->setEnabled(!KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).notDeletable);
+    // KSyntaxHighlighting themes can not be deleted
+    btndel->setEnabled(!KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme.isValid());
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);

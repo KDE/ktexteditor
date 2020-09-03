@@ -29,7 +29,6 @@ class KateSchema
 public:
     QString rawName;
     KSyntaxHighlighting::Theme theme;
-    bool notDeletable = false;
     KConfigGroup config;
 
     /**
