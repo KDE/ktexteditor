@@ -15,6 +15,7 @@
 #include "kateschema.h"
 
 #include <QFont>
+#include <QJsonObject>
 #include <QMap>
 
 class KateStyleTreeWidget;
@@ -30,6 +31,8 @@ public:
 
     QColor backgroundColor() const;
     QColor selectionColor() const;
+
+    QJsonObject exportJson() const;
 
 public Q_SLOTS:
     void apply();

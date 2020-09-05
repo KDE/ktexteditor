@@ -29,6 +29,7 @@
 
 #include <QFileDialog>
 #include <QInputDialog>
+#include <QMetaEnum>
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QTabWidget>
@@ -68,37 +69,41 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     //
     // editor background colors
     //
-    KateColorItem ci;
+    KateColorItem ci(KSyntaxHighlighting::Theme::BackgroundColor);
     ci.category = i18n("Editor Background Colors");
 
     ci.name = i18n("Text Area");
     ci.key = QStringLiteral("Color Background");
     ci.whatsThis = i18n("<p>Sets the background color of the editing area.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::BackgroundColor, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::TextSelection;
     ci.name = i18n("Selected Text");
     ci.key = QStringLiteral("Color Selection");
     ci.whatsThis = i18n("<p>Sets the background color of the selection.</p><p>To set the text color for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TextSelection, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::CurrentLine;
     ci.name = i18n("Current Line");
     ci.key = QStringLiteral("Color Highlighted Line");
     ci.whatsThis = i18n("<p>Sets the background color of the currently active line, which means the line where your cursor is positioned.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::CurrentLine, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::SearchHighlight;
     ci.name = i18n("Search Highlight");
     ci.key = QStringLiteral("Color Search Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of search results.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::SearchHighlight, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::ReplaceHighlight;
     ci.name = i18n("Replace Highlight");
     ci.key = QStringLiteral("Color Replace Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of replaced text.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::ReplaceHighlight, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
     //
@@ -106,54 +111,62 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     //
     ci.category = i18n("Icon Border");
 
+    ci.role = KSyntaxHighlighting::Theme::IconBorder;
     ci.name = i18n("Background Area");
     ci.key = QStringLiteral("Color Icon Bar");
     ci.whatsThis = i18n("<p>Sets the background color of the icon border.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::IconBorder, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::LineNumbers;
     ci.name = i18n("Line Numbers");
     ci.key = QStringLiteral("Color Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the line numbers (if enabled).</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::LineNumbers, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::CurrentLineNumber;
     ci.name = i18n("Current Line Number");
     ci.key = QStringLiteral("Color Current Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the number of the current line (if enabled).</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::CurrentLineNumber, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::Separator;
     ci.name = i18n("Separator");
     ci.key = QStringLiteral("Color Separator");
     ci.whatsThis = i18n("<p>This color will be used to draw the line between line numbers and the icon borders, if both are enabled.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::Separator, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::WordWrapMarker;
     ci.name = i18n("Word Wrap Marker");
     ci.key = QStringLiteral("Color Word Wrap Marker");
     ci.whatsThis = i18n(
         "<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
         "visually-wrapped lines</dd></dl>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::WordWrapMarker, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::CodeFolding;
     ci.name = i18n("Code Folding");
     ci.key = QStringLiteral("Color Code Folding");
     ci.whatsThis = i18n("<p>Sets the color of the code folding bar.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::CodeFolding, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::ModifiedLines;
     ci.name = i18n("Modified Lines");
     ci.key = QStringLiteral("Color Modified Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for modified lines.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::ModifiedLines, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::SavedLines;
     ci.name = i18n("Saved Lines");
     ci.key = QStringLiteral("Color Saved Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for saved lines.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::SavedLines, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
     //
@@ -161,28 +174,32 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     //
     ci.category = i18n("Text Decorations");
 
+    ci.role = KSyntaxHighlighting::Theme::SpellChecking;
     ci.name = i18n("Spelling Mistake Line");
     ci.key = QStringLiteral("Color Spelling Mistake Line");
     ci.whatsThis = i18n("<p>Sets the color of the line that is used to indicate spelling mistakes.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::SpellChecking, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::TabMarker;
     ci.name = i18n("Tab and Space Markers");
     ci.key = QStringLiteral("Color Tab Marker");
     ci.whatsThis = i18n("<p>Sets the color of the tabulator marks.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TabMarker, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::IndentationLine;
     ci.name = i18n("Indentation Line");
     ci.key = QStringLiteral("Color Indentation Line");
     ci.whatsThis = i18n("<p>Sets the color of the vertical indentation lines.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::IndentationLine, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::BracketMatching;
     ci.name = i18n("Bracket Highlight");
     ci.key = QStringLiteral("Color Highlighted Bracket");
     ci.whatsThis = i18n("<p>Sets the bracket matching color. This means, if you place the cursor e.g. at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::BracketMatching, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
     //
@@ -194,7 +211,8 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
 
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
     for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; ++i) {
-        ci.defaultColor = colors.mark(i, theme);
+        ci.role = static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark);
+        ci.defaultColor = colors.color(ci.role, theme);
         ci.name = markerNames[i];
         ci.key = QLatin1String("Color MarkType ") + QString::number(i + 1);
         items.append(ci);
@@ -207,24 +225,28 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
 
     ci.whatsThis = QString(); // TODO: add whatsThis for text templates
 
+    ci.role = KSyntaxHighlighting::Theme::TemplateBackground;
     ci.name = i18n("Background");
     ci.key = QStringLiteral("Color Template Background");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TemplateBackground, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::TemplatePlaceholder;
     ci.name = i18n("Editable Placeholder");
     ci.key = QStringLiteral("Color Template Editable Placeholder");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder;
     ci.name = i18n("Focused Editable Placeholder");
     ci.key = QStringLiteral("Color Template Focused Editable Placeholder");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
+    ci.role = KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder;
     ci.name = i18n("Not Editable Placeholder");
     ci.key = QStringLiteral("Color Template Not Editable Placeholder");
-    ci.defaultColor = colors.color(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder, theme);
+    ci.defaultColor = colors.color(ci.role, theme);
     items.append(ci);
 
     //
@@ -299,6 +321,20 @@ void KateSchemaConfigColorTab::importSchema(KConfigGroup &config)
     ui->addColorItems(m_schemas[m_currentSchema]);
 
     blockSignals(blocked);
+}
+
+QJsonObject KateSchemaConfigColorTab::exportJson() const
+{
+    static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("EditorColorRole");
+    Q_ASSERT(idx >= 0);
+    const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
+    QJsonObject colors;
+    const QVector<KateColorItem> items = ui->colorItems();
+    for (const KateColorItem &item : items) {
+        QColor c = item.useDefault ? item.defaultColor : item.color;
+        colors[QLatin1String(metaEnum.key(item.role))] = c.name();
+    }
+    return colors;
 }
 
 void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
@@ -858,9 +894,27 @@ void KateSchemaConfigPage::exportFullSchema()
 {
     // get save destination
     const QString currentSchemaName = m_currentSchema;
-    QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color schema: %1", currentSchemaName), currentSchemaName + QLatin1String(".kateschema"), QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
-
+    const QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color schema: %1", currentSchemaName), currentSchemaName + QLatin1String(".kateschema"), QStringLiteral("%1 (*.kateschema *.theme)").arg(i18n("Color theme")));
     if (destName.isEmpty()) {
+        return;
+    }
+
+    // if we have the .theme ending, export some JSON for KSyntaxHighlighting
+    if (destName.endsWith(QLatin1String(".theme"), Qt::CaseInsensitive)) {
+        // export to json format
+        QJsonObject theme;
+        QJsonObject metaData;
+        metaData[QLatin1String("revision")] = 1;
+        metaData[QLatin1String("name")] = currentSchemaName;
+        theme[QLatin1String("metadata")] = metaData;
+        theme[QLatin1String("editor-colors")] = m_colorTab->exportJson();
+
+        // write to file
+        QFile saveFile(destName);
+        if (!saveFile.open(QIODevice::WriteOnly)) {
+            return;
+        }
+        saveFile.write(QJsonDocument(theme).toJson());
         return;
     }
 

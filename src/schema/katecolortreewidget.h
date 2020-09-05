@@ -9,13 +9,17 @@
 
 #include <QTreeWidget>
 
+#include <KSyntaxHighlighting/Theme>
+
 class KateColorItem
 {
 public:
-    KateColorItem()
+    KateColorItem(KSyntaxHighlighting::Theme::EditorColorRole _role)
+        : role(_role)
     {
     }
 
+    KSyntaxHighlighting::Theme::EditorColorRole role;
     QString name;           // translated name
     QString category;       // translated category for tree view hierarchy
     QString whatsThis;      // what's this info
