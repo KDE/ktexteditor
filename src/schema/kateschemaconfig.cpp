@@ -42,7 +42,7 @@ KateSchemaConfigColorTab::KateSchemaConfigColorTab()
     setLayout(l);
 
     ui = new KateColorTreeWidget(this);
-    QPushButton *btnUseColorScheme = new QPushButton(i18n("Use KDE Color Theme"), this);
+    QPushButton *btnUseColorScheme = new QPushButton(i18n("Use Default Colors"), this);
 
     l->addWidget(ui, 0, 0, 1, 2);
     l->addWidget(btnUseColorScheme, 1, 1);
