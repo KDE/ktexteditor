@@ -15,6 +15,7 @@
 #include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
+#include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateschema.h"
@@ -519,6 +520,44 @@ void KateSchemaConfigDefaultStylesTab::importSchema(const QString &schemaName, c
     KateHlManager::self()->getDefaults(schemaName, *(m_defaultStyleLists[schema]), cfg);
 }
 
+QJsonObject KateSchemaConfigDefaultStylesTab::exportJson(const QString &schema) const
+{
+    static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("TextStyle");
+    Q_ASSERT(idx >= 0);
+    const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
+    QJsonObject styles;
+    for (int z = 0; z < KateHlManager::defaultStyleCount(); z++) {
+        QJsonObject style;
+        KTextEditor::Attribute::Ptr p = m_defaultStyleLists[schema]->at(z);
+        if (p->hasProperty(QTextFormat::ForegroundBrush)) {
+            style[QLatin1String("text-color")] = p->foreground().color().name();
+        }
+        if (p->hasProperty(QTextFormat::BackgroundBrush)) {
+            style[QLatin1String("background-color")] = p->background().color().name();
+        }
+        if (p->hasProperty(SelectedForeground)) {
+            style[QLatin1String("selected-text-color")] = p->selectedForeground().color().name();
+        }
+        if (p->hasProperty(SelectedBackground)) {
+            style[QLatin1String("selected-background-color")] = p->selectedBackground().color().name();
+        }
+        if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold()) {
+            style[QLatin1String("bold")] = true;
+        }
+        if (p->hasProperty(QTextFormat::FontItalic) && p->fontItalic()) {
+            style[QLatin1String("italic")] = true;
+        }
+        if (p->hasProperty(QTextFormat::TextUnderlineStyle) && p->fontUnderline()) {
+            style[QLatin1String("underline")] = true;
+        }
+        if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut()) {
+            style[QLatin1String("strike-through")] = true;
+        }
+        styles[QLatin1String(metaEnum.key(defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z))))] = style;
+    }
+    return styles;
+}
+
 void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
 {
     if (!event->spontaneous() && !m_currentSchema.isEmpty()) {
@@ -908,6 +947,7 @@ void KateSchemaConfigPage::exportFullSchema()
         metaData[QLatin1String("name")] = currentSchemaName;
         theme[QLatin1String("metadata")] = metaData;
         theme[QLatin1String("editor-colors")] = m_colorTab->exportJson();
+        theme[QLatin1String("text-styles")] = m_defaultStylesTab->exportJson(m_currentSchema);
 
         // write to file
         QFile saveFile(destName);

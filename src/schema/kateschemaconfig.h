@@ -77,6 +77,8 @@ public:
     void exportSchema(const QString &schema, KConfig *cfg);
     void importSchema(const QString &schemaName, const QString &schema, KConfig *cfg);
 
+    QJsonObject exportJson(const QString &schema) const;
+
 protected:
     void showEvent(QShowEvent *event) override;
     void updateColorPalette(const QColor &textColor);
