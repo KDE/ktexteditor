@@ -28,7 +28,7 @@ KateSchemaManager::KateSchemaManager()
     // this is needed for the conversion to use KSyntaxHighlighting themes
     // we do this conversion once, use printing theme to remember this
     // we copy once all old config over from kateschemarc to new katethemerc with renaming
-    if (!m_config.hasGroup("Printing")) {
+    if (!KTextEditor::EditorPrivate::unitTestMode() && !m_config.hasGroup("Printing")) {
         // mapping for renaming
         std::map<QString, QString> renamed;
         renamed.emplace(QStringLiteral("Normal"), KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name());
