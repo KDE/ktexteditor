@@ -14,7 +14,7 @@
 class KateColorItem
 {
 public:
-    KateColorItem(KSyntaxHighlighting::Theme::EditorColorRole _role)
+    KateColorItem(KSyntaxHighlighting::Theme::EditorColorRole _role = KSyntaxHighlighting::Theme::BackgroundColor)
         : role(_role)
     {
     }
