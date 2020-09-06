@@ -35,7 +35,7 @@ public:
             setData(1, Qt::WhatsThisRole, colorItem.whatsThis);
         }
         if (!colorItem.useDefault) {
-            setData(2, Qt::ToolTipRole, i18n("Use default color from the KDE color scheme"));
+            setData(2, Qt::ToolTipRole, i18n("Use default color from the color theme"));
         }
     }
 
@@ -62,7 +62,7 @@ public:
     void setUseDefaultColor(bool useDefault)
     {
         m_colorItem.useDefault = useDefault;
-        QString tooltip = useDefault ? QString() : i18n("Use default color from the KDE color scheme");
+        QString tooltip = useDefault ? QString() : i18n("Use default color from the color theme");
         setData(2, Qt::ToolTipRole, tooltip);
     }
 
