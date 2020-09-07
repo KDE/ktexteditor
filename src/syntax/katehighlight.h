@@ -266,9 +266,6 @@ public:
         return m_indentation;
     }
 
-    void getKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
-    void getKateExtendedAttributeListCopy(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &, KConfig *cfg = nullptr);
-
     const QHash<QString, QChar> &getCharacterEncodings(int attrib) const;
     const KatePrefixStore &getCharacterEncodingsPrefixStore(int attrib) const;
     const QHash<QChar, QString> &getReverseCharacterEncodings(int attrib) const;

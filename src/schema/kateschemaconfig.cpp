@@ -661,9 +661,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        QVector<KTextEditor::Attribute::Ptr> list;
-        KateHlManager::self()->getHl(m_hl)->getKateExtendedAttributeListCopy(m_schema, list);
-        m_hlDict[m_schema].insert(m_hl, list);
+        m_hlDict[m_schema].insert(m_hl, KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema));
     }
 
     KateAttributeList *l = m_defaults->attributeList(schema);
@@ -745,6 +743,9 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
         schema = m_schema;
     }
 
+
+#if 0 // FIXME-THEME
+
     if (doManage) {
         QString srcName =
             QFileDialog::getOpenFileName(this, i18n("Importing colors for single highlighting"), KateHlManager::self()->getHl(hl)->name() + QLatin1String(".katehlcolor"), QStringLiteral("%1 (*.katehlcolor)").arg(i18n("Kate color schema")));
@@ -789,6 +790,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
             KMessageBox::information(this, i18n("Colors have been imported for highlighting: %1", hlName), i18n("Import has finished"));
         }
     }
+#endif
 }
 
 void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg)
