@@ -36,53 +36,12 @@
 // END
 
 /**
- * Return the name of default style @p n. If @p translateNames is @e true,
- * the default style name is translated.
+ * Return the translated name of default style @p n.
  */
-static inline QString defaultStyleName(int n, bool translateNames)
+static inline QString defaultStyleName(int n)
 {
-    static QStringList names;
     static QStringList translatedNames;
-
-    if (names.isEmpty()) {
-        names << QStringLiteral("Normal");
-        names << QStringLiteral("Keyword");
-        names << QStringLiteral("Function");
-        names << QStringLiteral("Variable");
-        names << QStringLiteral("Control Flow");
-        names << QStringLiteral("Operator");
-        names << QStringLiteral("Built-in");
-        names << QStringLiteral("Extension");
-        names << QStringLiteral("Preprocessor");
-        names << QStringLiteral("Attribute");
-
-        names << QStringLiteral("Character");
-        names << QStringLiteral("Special Character");
-        names << QStringLiteral("String");
-        names << QStringLiteral("Verbatim String");
-        names << QStringLiteral("Special String");
-        names << QStringLiteral("Import");
-
-        names << QStringLiteral("Data Type");
-        names << QStringLiteral("Decimal/Value");
-        names << QStringLiteral("Base-N Integer");
-        names << QStringLiteral("Floating Point");
-        names << QStringLiteral("Constant");
-
-        names << QStringLiteral("Comment");
-        names << QStringLiteral("Documentation");
-        names << QStringLiteral("Annotation");
-        names << QStringLiteral("Comment Variable");
-        // this next one is for denoting the beginning/end of a user defined folding region
-        names << QStringLiteral("Region Marker");
-        names << QStringLiteral("Information");
-        names << QStringLiteral("Warning");
-        names << QStringLiteral("Alert");
-
-        names << QStringLiteral("Others");
-        // this one is for marking invalid input
-        names << QStringLiteral("Error");
-
+    if (translatedNames.isEmpty()) {
         translatedNames << i18nc("@item:intable Text context", "Normal");
         translatedNames << i18nc("@item:intable Text context", "Keyword");
         translatedNames << i18nc("@item:intable Text context", "Function");
@@ -124,9 +83,8 @@ static inline QString defaultStyleName(int n, bool translateNames)
 
     // sanity checks
     Q_ASSERT(n >= 0);
-    Q_ASSERT(n < names.size());
-
-    return translateNames ? translatedNames[n] : names[n];
+    Q_ASSERT(n < translatedNames.size());
+    return translatedNames[n];
 }
 
 /**
@@ -568,35 +526,35 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     QTreeWidgetItem *parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Normal Text & Source Code"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsNormal; i <= (int)KTextEditor::dsAttribute; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i, true), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
     }
 
     // Number, Types & Constants
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Numbers, Types & Constants"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsDataType; i <= (int)KTextEditor::dsConstant; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i, true), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
     }
 
     // strings & characters
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Strings & Characters"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsChar; i <= (int)KTextEditor::dsImport; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i, true), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
     }
 
     // comments & documentation
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Comments & Documentation"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsComment; i <= (int)KTextEditor::dsAlert; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i, true), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
     }
 
     // Misc
     parent = new QTreeWidgetItem(m_defaultStyles, QStringList() << i18nc("@item:intable", "Miscellaneous"));
     parent->setFirstColumnSpanned(true);
     for (int i = (int)KTextEditor::dsOthers; i <= (int)KTextEditor::dsError; ++i) {
-        m_defaultStyles->addItem(parent, defaultStyleName(i, true), l->at(i));
+        m_defaultStyles->addItem(parent, defaultStyleName(i), l->at(i));
     }
 
     m_defaultStyles->expandAll();
