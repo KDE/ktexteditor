@@ -39,7 +39,6 @@ public Q_SLOTS:
     void schemaChanged(const QString &newSchema);
 
     void importSchema(KConfigGroup &config);
-    void exportSchema(KConfigGroup &config);
 
 Q_SIGNALS:
     void changed();
@@ -73,7 +72,6 @@ public:
     void apply();
 
     KateAttributeList *attributeList(const QString &schema);
-    void exportSchema(const QString &schema, KConfig *cfg);
     void importSchema(const QString &schemaName, const QString &schema, KConfig *cfg);
 
     QJsonObject exportJson(const QString &schema) const;

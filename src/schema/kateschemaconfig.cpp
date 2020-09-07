@@ -383,15 +383,6 @@ QJsonObject KateSchemaConfigColorTab::exportJson() const
     return colors;
 }
 
-void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
-{
-    const QVector<KateColorItem> items = ui->colorItems();
-    for (const KateColorItem &item : items) {
-        QColor c = item.useDefault ? item.defaultColor : item.color;
-        config.writeEntry(item.key, c);
-    }
-}
-
 void KateSchemaConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
@@ -586,13 +577,6 @@ void KateSchemaConfigDefaultStylesTab::apply()
         it.next();
         KateHlManager::self()->setDefaults(it.key(), *it.value());
     }
-#endif
-}
-
-void KateSchemaConfigDefaultStylesTab::exportSchema(const QString &schema, KConfig *cfg)
-{
-#if 0 // FIXME-THEME
-    KateHlManager::self()->setDefaults(schema, *(m_defaultStyleLists[schema]), cfg);
 #endif
 }
 
