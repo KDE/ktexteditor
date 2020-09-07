@@ -650,22 +650,6 @@ void KateSchemaConfigHighlightTab::hlChanged(int z)
     schemaChanged(m_schema);
 }
 
-bool KateSchemaConfigHighlightTab::loadAllHlsForSchema(const QString &schema)
-{
-    QProgressDialog progress(i18n("Loading all highlightings for schema"), QString(), 0, KateHlManager::self()->modeList().size(), this);
-    progress.setWindowModality(Qt::WindowModal);
-    for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
-        if (!m_hlDict[schema].contains(i)) {
-            QVector<KTextEditor::Attribute::Ptr> list;
-            KateHlManager::self()->getHl(i)->getKateExtendedAttributeListCopy(schema, list);
-            m_hlDict[schema].insert(i, list);
-        }
-        progress.setValue(progress.value() + 1);
-    }
-    progress.setValue(KateHlManager::self()->modeList().size());
-    return true;
-}
-
 void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
 {
     m_schema = schema;
@@ -961,6 +945,7 @@ void KateSchemaConfigPage::exportFullSchema()
     // open config file
     KConfig cfg(destName, KConfig::SimpleConfig);
 
+#if 0 // FIXME-THEME OLD EXPORT
     //
     // export editor Colors (background, ...)
     //
@@ -999,6 +984,8 @@ void KateSchemaConfigPage::exportFullSchema()
     grp.writeEntry("highlightings", hlList);
     grp.writeEntry("schema", currentSchemaName);
     cfg.sync();
+
+#endif
 }
 
 QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)

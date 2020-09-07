@@ -130,7 +130,6 @@ private:
 
 public:
     QList<int> hlsForSchema(const QString &schema);
-    bool loadAllHlsForSchema(const QString &schema);
 };
 
 class KateSchemaConfigPage : public KateConfigPage
