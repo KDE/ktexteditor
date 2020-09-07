@@ -14,7 +14,6 @@
 #include "katecmd.h"
 #include "katecmds.h"
 #include "kateconfig.h"
-#include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "katehighlightingcmds.h"
 #include "katekeywordcompletion.h"
@@ -76,7 +75,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     , m_dummyApplication(nullptr)
     , m_application(&m_dummyApplication)
     , m_dummyMainWindow(nullptr)
-    , m_defaultColors(new KateDefaultColors())
     , m_searchHistoryModel(nullptr)
     , m_replaceHistoryModel(nullptr)
 {
@@ -414,10 +412,8 @@ KateVariableExpansionManager *KTextEditor::EditorPrivate::variableExpansionManag
 
 void KTextEditor::EditorPrivate::updateColorPalette()
 {
-    // update default color cache
-    m_defaultColors.reset(new KateDefaultColors());
-
     // reload the global schema (triggers reload for every view as well)
+    // might trigger selection of better matching theme for new palette
     m_rendererConfig->reloadSchema();
 
     // force full update of all view caches and colors

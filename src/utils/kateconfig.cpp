@@ -7,7 +7,6 @@
 
 #include "kateconfig.h"
 
-#include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katesyntaxmanager.h"
@@ -812,7 +811,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_replaceHighlightColor = theme.editorColor(KSyntaxHighlighting::Theme::ReplaceHighlight);
     m_replaceHighlightColorSet = true;
 
-    for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; i++) {
+    for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; i++) {
         QColor col = theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark));
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;

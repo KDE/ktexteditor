@@ -192,7 +192,6 @@ utils/movingrangefeedback.cpp
 utils/messageinterface.cpp
 utils/application.cpp
 utils/mainwindow.cpp
-utils/katedefaultcolors.cpp
 utils/katecommandrangeexpressionparser.cpp
 utils/katesedcmd.cpp
 utils/variable.cpp

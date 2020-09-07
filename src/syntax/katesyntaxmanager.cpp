@@ -13,7 +13,6 @@
 #include "katesyntaxmanager.h"
 
 #include "kateconfig.h"
-#include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateextendedattribute.h"
 #include "kateglobal.h"

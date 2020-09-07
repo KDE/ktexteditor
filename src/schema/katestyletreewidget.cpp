@@ -9,7 +9,6 @@
 
 #include "katestyletreewidget.h"
 #include "kateconfig.h"
-#include "katedefaultcolors.h"
 #include "kateextendedattribute.h"
 #include "kateglobal.h"
 

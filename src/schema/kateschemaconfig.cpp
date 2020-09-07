@@ -12,7 +12,6 @@
 
 #include "katecolortreewidget.h"
 #include "kateconfig.h"
-#include "katedefaultcolors.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
@@ -63,9 +62,6 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
 {
     QVector<KateColorItem> items;
 
-    // use global color instance, creation is expensive!
-    const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
-
     //
     // editor background colors
     //
@@ -75,35 +71,35 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     ci.name = i18n("Text Area");
     ci.key = QStringLiteral("Color Background");
     ci.whatsThis = i18n("<p>Sets the background color of the editing area.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::TextSelection;
     ci.name = i18n("Selected Text");
     ci.key = QStringLiteral("Color Selection");
     ci.whatsThis = i18n("<p>Sets the background color of the selection.</p><p>To set the text color for selected text, use the &quot;<b>Configure Highlighting</b>&quot; dialog.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::CurrentLine;
     ci.name = i18n("Current Line");
     ci.key = QStringLiteral("Color Highlighted Line");
     ci.whatsThis = i18n("<p>Sets the background color of the currently active line, which means the line where your cursor is positioned.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::SearchHighlight;
     ci.name = i18n("Search Highlight");
     ci.key = QStringLiteral("Color Search Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of search results.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::ReplaceHighlight;
     ci.name = i18n("Replace Highlight");
     ci.key = QStringLiteral("Color Replace Highlight");
     ci.whatsThis = i18n("<p>Sets the background color of replaced text.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     //
@@ -115,28 +111,28 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     ci.name = i18n("Background Area");
     ci.key = QStringLiteral("Color Icon Bar");
     ci.whatsThis = i18n("<p>Sets the background color of the icon border.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::LineNumbers;
     ci.name = i18n("Line Numbers");
     ci.key = QStringLiteral("Color Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the line numbers (if enabled).</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::CurrentLineNumber;
     ci.name = i18n("Current Line Number");
     ci.key = QStringLiteral("Color Current Line Number");
     ci.whatsThis = i18n("<p>This color will be used to draw the number of the current line (if enabled).</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::Separator;
     ci.name = i18n("Separator");
     ci.key = QStringLiteral("Color Separator");
     ci.whatsThis = i18n("<p>This color will be used to draw the line between line numbers and the icon borders, if both are enabled.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::WordWrapMarker;
@@ -145,28 +141,28 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     ci.whatsThis = i18n(
         "<p>Sets the color of Word Wrap-related markers:</p><dl><dt>Static Word Wrap</dt><dd>A vertical line which shows the column where text is going to be wrapped</dd><dt>Dynamic Word Wrap</dt><dd>An arrow shown to the left of "
         "visually-wrapped lines</dd></dl>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::CodeFolding;
     ci.name = i18n("Code Folding");
     ci.key = QStringLiteral("Color Code Folding");
     ci.whatsThis = i18n("<p>Sets the color of the code folding bar.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::ModifiedLines;
     ci.name = i18n("Modified Lines");
     ci.key = QStringLiteral("Color Modified Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for modified lines.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::SavedLines;
     ci.name = i18n("Saved Lines");
     ci.key = QStringLiteral("Color Saved Lines");
     ci.whatsThis = i18n("<p>Sets the color of the line modification marker for saved lines.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     //
@@ -178,28 +174,28 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     ci.name = i18n("Spelling Mistake Line");
     ci.key = QStringLiteral("Color Spelling Mistake Line");
     ci.whatsThis = i18n("<p>Sets the color of the line that is used to indicate spelling mistakes.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::TabMarker;
     ci.name = i18n("Tab and Space Markers");
     ci.key = QStringLiteral("Color Tab Marker");
     ci.whatsThis = i18n("<p>Sets the color of the tabulator marks.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::IndentationLine;
     ci.name = i18n("Indentation Line");
     ci.key = QStringLiteral("Color Indentation Line");
     ci.whatsThis = i18n("<p>Sets the color of the vertical indentation lines.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::BracketMatching;
     ci.name = i18n("Bracket Highlight");
     ci.key = QStringLiteral("Color Highlighted Bracket");
     ci.whatsThis = i18n("<p>Sets the bracket matching color. This means, if you place the cursor e.g. at a <b>(</b>, the matching <b>)</b> will be highlighted with this color.</p>");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     //
@@ -207,12 +203,12 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     //
     ci.category = i18n("Marker Colors");
 
-    const QString markerNames[Kate::LAST_MARK + 1] = {i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
+    const QString markerNames[KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark + 1] = {i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
 
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
-    for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; ++i) {
+    for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; ++i) {
         ci.role = static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark);
-        ci.defaultColor = colors.color(ci.role, theme);
+        ci.defaultColor = theme.editorColor(ci.role);
         ci.name = markerNames[i];
         ci.key = QLatin1String("Color MarkType ") + QString::number(i + 1);
         items.append(ci);
@@ -228,25 +224,25 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     ci.role = KSyntaxHighlighting::Theme::TemplateBackground;
     ci.name = i18n("Background");
     ci.key = QStringLiteral("Color Template Background");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::TemplatePlaceholder;
     ci.name = i18n("Editable Placeholder");
     ci.key = QStringLiteral("Color Template Editable Placeholder");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder;
     ci.name = i18n("Focused Editable Placeholder");
     ci.key = QStringLiteral("Color Template Focused Editable Placeholder");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     ci.role = KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder;
     ci.name = i18n("Not Editable Placeholder");
     ci.key = QStringLiteral("Color Template Not Editable Placeholder");
-    ci.defaultColor = colors.color(ci.role, theme);
+    ci.defaultColor = theme.editorColor(ci.role);
     items.append(ci);
 
     //

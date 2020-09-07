@@ -50,7 +50,6 @@ class KateSpellCheckManager;
 class KateWordCompletionModel;
 class KateAbstractInputModeFactory;
 class KateKeywordCompletionModel;
-class KateDefaultColors;
 class KateVariableExpansionManager;
 
 namespace KTextEditor
@@ -382,15 +381,6 @@ public:
     QList<KateAbstractInputModeFactory *> inputModeFactories();
 
     /**
-     * Default colors, once constructed, as expensive
-     * @return default colors
-     */
-    const KateDefaultColors &defaultColors() const
-    {
-        return *m_defaultColors;
-    }
-
-    /**
      * Search pattern history shared among simple/power search instances.
      */
     QStringListModel *searchHistoryModel();
@@ -532,11 +522,6 @@ private:
      * input modes map
      */
     QMap<KTextEditor::View::InputMode, KateAbstractInputModeFactory *> m_inputModeFactories;
-
-    /**
-     * default colors
-     */
-    QScopedPointer<KateDefaultColors> m_defaultColors;
 
     /**
      * Shared history models for search & replace.
