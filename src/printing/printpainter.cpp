@@ -485,13 +485,9 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
     int _ystart = y;
     QString _hlName = m_doc->highlight()->name();
 
-    QVector<KTextEditor::Attribute::Ptr> _attributes; // list of highlight attributes for the legend
-    m_doc->highlight()->getKateExtendedAttributeList(m_renderer->config()->schema(), _attributes);
-
-    KateAttributeList _defaultAttributes;
-    KateHlManager::self()->getDefaults(m_renderer->config()->schema(), _defaultAttributes);
-
-    QColor _defaultPen = _defaultAttributes.at(0)->foreground().color();
+    // list of highlight attributes for the legend
+    const auto _attributes = m_doc->highlight()->attributesForDefinition(m_renderer->config()->schema());
+    const QColor _defaultPen = _attributes.at(0)->foreground().color();
 
     painter.save();
     painter.setPen(_defaultPen);
@@ -549,15 +545,13 @@ void PrintPainter::paintGuide(QPainter &painter, uint &y, const PageLayout &pl) 
             _i = 0;
         }
 
-        KTextEditor::Attribute _attr = *_defaultAttributes[attribute->defaultStyle()];
-        _attr += *attribute;
-        painter.setPen(_attr.foreground().color());
-        painter.setFont(_attr.font());
+        painter.setPen(attribute->foreground().color());
+        painter.setFont(attribute->font());
 
-        if (_attr.hasProperty(QTextFormat::BackgroundBrush)) {
-            QRect _rect = QFontMetrics(_attr.font()).boundingRect(_name);
+        if (attribute->hasProperty(QTextFormat::BackgroundBrush)) {
+            QRect _rect = QFontMetrics(attribute->font()).boundingRect(_name);
             _rect.moveTo(_x + ((_i % _guideCols) * _cw), y);
-            painter.fillRect(_rect, _attr.background());
+            painter.fillRect(_rect, attribute->background());
         }
 
         painter.drawText((_x + ((_i % _guideCols) * _cw)), y, _cw, m_fontHeight, Qt::AlignTop, _name);
