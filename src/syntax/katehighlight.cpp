@@ -217,33 +217,6 @@ void KateHighlighting::applyFolding(int offset, int length, KSyntaxHighlighting:
     }
 }
 
-void KateHighlighting::setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg, bool writeDefaultsToo)
-{
-    KConfigGroup config(cfg ? cfg : KateHlManager::self()->getKConfig(), QLatin1String("Highlighting ") + iName + QLatin1String(" - Schema ") + schema);
-
-    KateAttributeList defList;
-    KateHlManager::self()->getDefaults(schema, defList);
-    for (auto &p : qAsConst(list)) {
-        QStringList settings;
-        KTextEditor::DefaultStyle defStyle = p->defaultStyle();
-        KTextEditor::Attribute::Ptr a(defList[defStyle]);
-        settings << QString::number(p->defaultStyle(), 10);
-        settings << (p->hasProperty(QTextFormat::ForegroundBrush) ? QString::number(p->foreground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->foreground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(SelectedForeground) ? QString::number(p->selectedForeground().color().rgb(), 16) : (writeDefaultsToo ? QString::number(a->selectedForeground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontWeight) ? (p->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontBold() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontItalic) ? (p->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontItalic() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontStrikeOut) ? (p->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontStrikeOut() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::TextUnderlineStyle) ? (p->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : (writeDefaultsToo ? (a->fontUnderline() ? QStringLiteral("1") : QStringLiteral("0")) : QString()));
-        settings << (p->hasProperty(QTextFormat::BackgroundBrush) ? QString::number(p->background().color().rgb(), 16)
-                                                                  : ((writeDefaultsToo && a->hasProperty(QTextFormat::BackgroundBrush)) ? QString::number(a->background().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(SelectedBackground) ? QString::number(p->selectedBackground().color().rgb(), 16)
-                                                        : ((writeDefaultsToo && a->hasProperty(SelectedBackground)) ? QString::number(a->selectedBackground().color().rgb(), 16) : QString()));
-        settings << (p->hasProperty(QTextFormat::FontFamily) ? (p->fontFamily()) : (writeDefaultsToo ? a->fontFamily() : QString()));
-        settings << QStringLiteral("---");
-        config.writeEntry(p->name(), settings);
-    }
-}
-
 int KateHighlighting::sanitizeFormatIndex(int attrib) const
 {
     // sanitize, e.g. one could have old hl info with now invalid attribs

@@ -127,13 +127,6 @@ public:
      * @param tabWidth tab width for indentation based folding, if wanted, else 0
      */
     void doHighlight(const Kate::TextLineData *prevLine, Kate::TextLineData *textLine, const Kate::TextLineData *nextLine, bool &ctxChanged, int tabWidth = 0);
-    /**
-     * Saves the attribute definitions to the config file.
-     *
-     * @param schema The id of the schema group to save
-     * @param list QList<KateExtendedAttribute::Ptr> containing the data to be used
-     */
-    void setKateExtendedAttributeList(const QString &schema, QVector<KTextEditor::Attribute::Ptr> &list, KConfig *cfg = nullptr /*if 0  standard kate config*/, bool writeDefaultsToo = false);
 
     const QString &name() const
     {

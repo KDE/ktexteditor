@@ -32,20 +32,12 @@ class KateHlManager : public QObject
     Q_OBJECT
 
 public:
-    KateHlManager();
+    KateHlManager() = default;
 
     static KateHlManager *self();
 
-    inline KConfig *getKConfig()
-    {
-        return &m_config;
-    }
-
     KateHighlighting *getHl(int n);
     int nameFind(const QString &name);
-
-    void getDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
-    void setDefaults(const QString &schema, KateAttributeList &, KConfig *cfg = nullptr);
 
     void reload();
 
@@ -66,13 +58,6 @@ public:
      * the default style name is translated.
      */
     static QString defaultStyleName(int n, bool translateNames = false);
-
-    /**
-     * Return the index for the default style @p name.
-     * @param name @e untranslated default style
-     * @see KTextEditor::DefaultStyles)
-     */
-    static int defaultStyleNameToIndex(const QString &name);
 
     /**
      * Get the mode list
@@ -117,9 +102,4 @@ private:
      * All loaded highlightings.
      */
     QHash<QString, std::shared_ptr<KateHighlighting>> m_hlDict;
-
-    /**
-     * katesyntaxhighlightingrc config file
-     */
-    KConfig m_config;
 };

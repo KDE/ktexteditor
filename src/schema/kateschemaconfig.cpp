@@ -418,9 +418,39 @@ KateSchemaConfigDefaultStylesTab::~KateSchemaConfigDefaultStylesTab()
 KateAttributeList *KateSchemaConfigDefaultStylesTab::attributeList(const QString &schema)
 {
     if (!m_defaultStyleLists.contains(schema)) {
+        // get list of all default styles
         KateAttributeList *list = new KateAttributeList();
-        KateHlManager::self()->getDefaults(schema, *list);
+        const KSyntaxHighlighting::Theme currentTheme = KateHlManager::self()->repository().theme(schema);
+        for (int z = 0; z < KateHlManager::defaultStyleCount(); z++) {
+            KTextEditor::Attribute::Ptr i(new KTextEditor::Attribute());
+            const auto style = defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z));
 
+            if (const auto col = currentTheme.textColor(style)) {
+                i->setForeground(QColor(col));
+            }
+
+            if (const auto col = currentTheme.selectedTextColor(style)) {
+                i->setSelectedForeground(QColor(col));
+            }
+
+            if (const auto col = currentTheme.backgroundColor(style)) {
+                i->setBackground(QColor(col));
+            } else {
+                i->clearBackground();
+            }
+
+            if (const auto col = currentTheme.selectedBackgroundColor(style)) {
+                i->setSelectedBackground(QColor(col));
+            } else {
+                i->clearProperty(SelectedBackground);
+            }
+
+            i->setFontBold(currentTheme.isBold(style));
+            i->setFontItalic(currentTheme.isItalic(style));
+            i->setFontUnderline(currentTheme.isUnderline(style));
+            i->setFontStrikeOut(currentTheme.isStrikeThrough(style));
+            list->append(i);
+        }
         m_defaultStyleLists.insert(schema, list);
     }
 
@@ -494,21 +524,27 @@ void KateSchemaConfigDefaultStylesTab::reload()
 
 void KateSchemaConfigDefaultStylesTab::apply()
 {
+#if 0 // FIXME-THEME
     QHashIterator<QString, KateAttributeList *> it = m_defaultStyleLists;
     while (it.hasNext()) {
         it.next();
         KateHlManager::self()->setDefaults(it.key(), *it.value());
     }
+#endif
 }
 
 void KateSchemaConfigDefaultStylesTab::exportSchema(const QString &schema, KConfig *cfg)
 {
+#if 0 // FIXME-THEME
     KateHlManager::self()->setDefaults(schema, *(m_defaultStyleLists[schema]), cfg);
+#endif
 }
 
 void KateSchemaConfigDefaultStylesTab::importSchema(const QString &schemaName, const QString &schema, KConfig *cfg)
 {
+#if 0 // FIXME-THEME
     KateHlManager::self()->getDefaults(schemaName, *(m_defaultStyleLists[schema]), cfg);
+#endif
 }
 
 QJsonObject KateSchemaConfigDefaultStylesTab::exportJson(const QString &schema) const
@@ -709,6 +745,7 @@ void KateSchemaConfigHighlightTab::reload()
 
 void KateSchemaConfigHighlightTab::apply()
 {
+#if 0 // FIXME-THEME
     QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> it = m_hlDict;
     while (it.hasNext()) {
         it.next();
@@ -718,6 +755,7 @@ void KateSchemaConfigHighlightTab::apply()
             KateHlManager::self()->getHl(it2.key())->setKateExtendedAttributeList(it.key(), it2.value());
         }
     }
+#endif
 }
 
 QList<int> KateSchemaConfigHighlightTab::hlsForSchema(const QString &schema)
@@ -786,6 +824,7 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
 
 void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg)
 {
+#if 0 // FIXME-THEME
     bool doManage = (cfg == nullptr);
     if (schema.isEmpty()) {
         schema = m_schema;
@@ -817,6 +856,7 @@ void KateSchemaConfigHighlightTab::exportHl(QString schema, int hl, KConfig *cfg
         cfg->sync();
         delete cfg;
     }
+#endif
 }
 
 void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
