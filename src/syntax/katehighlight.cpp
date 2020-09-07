@@ -439,57 +439,37 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         // create a KTextEditor attribute matching the given format
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
-        // NOTE: if "currentTheme" is an empty/invalid theme, only the
-        // attribute styles set in the XML files will be applied here.
+        // use format specific colors of fallback to default theme color
         if (format.hasTextColor(currentTheme)) {
             newAttribute->setForeground(format.textColor(currentTheme));
             newAttribute->setSelectedForeground(format.selectedTextColor(currentTheme));
+        } else {
+            if (const auto color = currentTheme.textColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setForeground(QColor(color));
+            }
+            if (const auto color = currentTheme.selectedTextColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setSelectedForeground(QColor(color));
+            }
         }
 
+        // use format specific colors of fallback to default theme color
         if (format.hasBackgroundColor(currentTheme)) {
             newAttribute->setBackground(format.backgroundColor(currentTheme));
             newAttribute->setSelectedBackground(format.selectedBackgroundColor(currentTheme));
-        }
-
-        // Apply attributes set in the syntax definition XML files.
-        // This overwrites the default theme and the theme customized by the user.
-        //
-        // It's allowed to turn off the bold, italic, underline and strikeout
-        // attributes in the XML files (see bug #143399).
-        if (format.hasBoldOverride()) {
-            if (format.isBold(currentTheme)) {
-                newAttribute->setFontBold(true);
-            } else {
-                newAttribute->setFontBold(false);
+        } else {
+            if (const auto color = currentTheme.backgroundColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setBackground(QColor(color));
+            }
+            if (const auto color = currentTheme.selectedBackgroundColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setSelectedBackground(QColor(color));
             }
         }
 
-        if (format.hasItalicOverride()) {
-            if (format.isItalic(currentTheme)) {
-                newAttribute->setFontItalic(true);
-            } else {
-                newAttribute->setFontItalic(false);
-            }
-        }
-
-        if (format.hasUnderlineOverride()) {
-            if (format.isUnderline(currentTheme)) {
-                newAttribute->setFontUnderline(true);
-            } else {
-                newAttribute->setFontUnderline(false);
-            }
-        }
-
-        if (format.hasStrikeThroughOverride()) {
-            if (format.isStrikeThrough(currentTheme)) {
-                newAttribute->setFontStrikeOut(true);
-            } else {
-                newAttribute->setFontStrikeOut(false);
-            }
-        }
-
+        newAttribute->setFontBold(format.isBold(currentTheme));
+        newAttribute->setFontItalic(format.isItalic(currentTheme));
+        newAttribute->setFontUnderline(format.isUnderline(currentTheme));
+        newAttribute->setFontStrikeOut(format.isStrikeThrough(currentTheme));
         newAttribute->setSkipSpellChecking(format.spellCheck());
-
         array.append(newAttribute);
     }
     return array;
@@ -497,34 +477,14 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
 
 QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributes(const QString &schema)
 {
-    // found it, already floating around
+    // query cache first
     if (m_attributeArrays.contains(schema)) {
         return m_attributeArrays[schema];
     }
 
-    // k, schema correct, let create the data
-    QVector<KTextEditor::Attribute::Ptr> array;
-    KateAttributeList defaultStyleList;
-
-    KateHlManager::self()->getDefaults(schema, defaultStyleList);
-
-    QVector<KTextEditor::Attribute::Ptr> itemDataList;
-    getKateExtendedAttributeList(schema, itemDataList);
-
-    uint nAttribs = itemDataList.count();
-    for (uint z = 0; z < nAttribs; z++) {
-        KTextEditor::Attribute::Ptr itemData = itemDataList.at(z);
-        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleList.at(itemData->defaultStyle())));
-
-        if (itemData && itemData->hasAnyProperty()) {
-            *newAttribute += *itemData;
-        }
-
-        array.append(newAttribute);
-    }
-
+    // create new attributes array for wanted theme and cache it
+    const auto array = attributesForDefinition(schema);
     m_attributeArrays.insert(schema, array);
-
     return array;
 }
 
