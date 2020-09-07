@@ -656,4 +656,33 @@ private Q_SLOTS:
     void paste();
 };
 
+class KateViewSchemaAction : public KActionMenu
+{
+    Q_OBJECT
+
+public:
+    KateViewSchemaAction(const QString &text, QObject *parent)
+        : KActionMenu(text, parent)
+    {
+        init();
+        setDelayed(false);
+    }
+
+    void updateMenu(KTextEditor::ViewPrivate *view);
+
+private:
+    void init();
+
+    QPointer<KTextEditor::ViewPrivate> m_view;
+    QStringList names;
+    QActionGroup *m_group;
+    int last;
+
+public Q_SLOTS:
+    void slotAboutToShow();
+
+private Q_SLOTS:
+    void setSchema();
+};
+
 #endif

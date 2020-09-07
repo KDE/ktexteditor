@@ -20,11 +20,13 @@
 #include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katetextline.h"
 
 #include <KColorUtils>
 #include <KConfigGroup>
+#include <KLocalizedString>
+
+#include <algorithm>
 // END
 
 using namespace KTextEditor;
@@ -39,6 +41,18 @@ KateHlManager::KateHlManager()
 KateHlManager *KateHlManager::self()
 {
     return KTextEditor::EditorPrivate::self()->hlManager();
+}
+
+QVector<KSyntaxHighlighting::Theme> KateHlManager::sortedThemes() const
+{
+    // get KSyntaxHighlighting themes
+    auto themes = repository().themes();
+
+    // sort by translated name
+    std::sort(themes.begin(), themes.end(), [](const KSyntaxHighlighting::Theme &left, const KSyntaxHighlighting::Theme &right) {
+        return left.translatedName().compare(right.translatedName(), Qt::CaseInsensitive) < 0;
+    });
+    return themes;
 }
 
 KateHighlighting *KateHlManager::getHl(int n)
@@ -495,8 +509,7 @@ void KateHlManager::getDefaults(const QString &schema, KateAttributeList &list, 
     KConfigGroup config(cfg ? cfg : KateHlManager::self()->self()->getKConfig(), QLatin1String("Default Item Styles - Schema ") + schema);
 
     // get the KSyntaxHighlighting::Theme from the chosen schema.
-    const KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
-
+    const KSyntaxHighlighting::Theme currentTheme = repository().theme(schema);
     for (int z = 0; z < defaultStyleCount(); z++) {
         KTextEditor::Attribute::Ptr i = list.at(z);
         QStringList s = config.readEntry(defaultStyleName(z), QStringList());

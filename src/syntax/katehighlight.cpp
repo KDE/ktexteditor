@@ -20,7 +20,6 @@
 #include "kateglobal.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katetextline.h"
 
 #include <KConfig>
@@ -340,11 +339,9 @@ void KateHighlighting::clearAttributeArrays()
 
 QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema) const
 {
-    // get the KSyntaxHighlighting::Theme from the chosen schema.
-    const KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
-
-    // create list of all known things
+    // create list of known attributes based on highlighting format & wanted theme
     QVector<KTextEditor::Attribute::Ptr> array;
+    const auto currentTheme = KateHlManager::self()->repository().theme(schema);
     for (const auto &format : m_formats) {
         // create a KTextEditor attribute matching the given format
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));

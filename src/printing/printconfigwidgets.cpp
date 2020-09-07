@@ -10,7 +10,7 @@
 #include "printconfigwidgets.h"
 
 #include "kateglobal.h"
-#include "kateschema.h"
+#include "katesyntaxmanager.h"
 
 #include <KColorButton>
 #include <KComboBox>
@@ -535,19 +535,19 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     sbBoxMargin->setValue(6);
     gbBoxProps->setEnabled(false);
 
-    const auto schemas = KTextEditor::EditorPrivate::self()->schemaManager()->list();
-    for (const KateSchema &schema : schemas) {
-        cmbSchema->addItem(schema.translatedName(), QVariant(schema.rawName));
+    const auto themes = KateHlManager::self()->sortedThemes();
+    for (const auto &theme : themes) {
+        cmbSchema->addItem(theme.translatedName(), QVariant(theme.name()));
     }
 
     // default is printing, MUST BE THERE
     cmbSchema->setCurrentIndex(cmbSchema->findData(QVariant(QStringLiteral("Printing"))));
 
     // whatsthis
-    cmbSchema->setWhatsThis(i18n("Select the color scheme to use for the print."));
+    cmbSchema->setWhatsThis(i18n("Select the color theme to use for the print."));
     cbDrawBackground->setWhatsThis(
         i18n("<p>If enabled, the background color of the editor will be used.</p>"
-             "<p>This may be useful if your color scheme is designed for a dark background.</p>"));
+             "<p>This may be useful if your color theme is designed for a dark background.</p>"));
     cbEnableBox->setWhatsThis(
         i18n("<p>If enabled, a box as defined in the properties below will be drawn "
              "around the contents of each page. The Header and Footer will be separated "

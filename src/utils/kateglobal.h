@@ -31,7 +31,6 @@ class QStringListModel;
 
 class KateCmd;
 class KateModeManager;
-class KateSchemaManager;
 class KateGlobalConfig;
 class KateDocumentConfig;
 class KateViewConfig;
@@ -246,15 +245,6 @@ public:
     }
 
     /**
-     * manager for the katepart schemas
-     * @return schema manager
-     */
-    KateSchemaManager *schemaManager()
-    {
-        return m_schemaManager;
-    }
-
-    /**
      * fallback document config
      * @return default config for all documents
      */
@@ -457,11 +447,6 @@ private:
      * mode manager
      */
     KateModeManager *m_modeManager;
-
-    /**
-     * schema manager
-     */
-    KateSchemaManager *m_schemaManager;
 
     /**
      * global config

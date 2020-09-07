@@ -21,7 +21,6 @@
 #include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "kateschemaconfig.h"
 #include "katescriptmanager.h"
 #include "katesedcmd.h"
@@ -172,11 +171,6 @@ KTextEditor::EditorPrivate::EditorPrivate(QPointer<KTextEditor::EditorPrivate> &
     m_modeManager = new KateModeManager();
 
     //
-    // schema man
-    //
-    m_schemaManager = new KateSchemaManager();
-
-    //
     // input mode factories
     //
     KateAbstractInputModeFactory *fact;
@@ -229,7 +223,6 @@ KTextEditor::EditorPrivate::~EditorPrivate()
     delete m_rendererConfig;
 
     delete m_modeManager;
-    delete m_schemaManager;
 
     delete m_dirWatch;
 

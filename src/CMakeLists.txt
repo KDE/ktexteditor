@@ -200,7 +200,6 @@ utils/katevariableexpansionmanager.cpp
 utils/katevariableexpansionhelpers.cpp
 
 # schema
-schema/kateschema.cpp
 schema/kateschemaconfig.cpp
 schema/katestyletreewidget.cpp
 schema/katecolortreewidget.cpp

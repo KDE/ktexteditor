@@ -27,7 +27,6 @@
 #include "kateplaintextsearch.h"
 #include "kateregexpsearch.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katescriptmanager.h"
 #include "kateswapfile.h"
 #include "katetemplatehandler.h"

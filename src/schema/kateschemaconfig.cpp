@@ -18,7 +18,6 @@
 #include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katestyletreewidget.h"
 #include "kateview.h"
 
@@ -277,8 +276,8 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 
     // If we havent this schema, read in from config file
     if (!m_schemas.contains(newSchema)) {
-        KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(newSchema);
-        QVector<KateColorItem> items = readConfig(config, KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(newSchema).theme);
+        KConfigGroup config;
+        QVector<KateColorItem> items = readConfig(config, KateHlManager::self()->repository().theme(newSchema));
         m_schemas[newSchema] = items;
     }
 
@@ -291,22 +290,12 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
     blockSignals(blocked);
 }
 
-QVector<KateColorItem> KateSchemaConfigColorTab::readConfig(KConfigGroup &config, const KSyntaxHighlighting::Theme &theme)
+QVector<KateColorItem> KateSchemaConfigColorTab::readConfig(KConfigGroup &, const KSyntaxHighlighting::Theme &theme)
 {
     QVector<KateColorItem> items = colorItemList(theme);
     for (int i = 0; i < items.count(); ++i) {
         KateColorItem &item(items[i]);
-        item.useDefault = !config.hasKey(item.key);
-        if (item.useDefault) {
-            item.color = item.defaultColor;
-        } else {
-            item.color = config.readEntry(item.key, item.defaultColor);
-            if (!item.color.isValid()) {
-                config.deleteEntry(item.key);
-                item.useDefault = true;
-                item.color = item.defaultColor;
-            }
-        }
+        item.color = theme.editorColor(item.role);
     }
     return items;
 }
@@ -350,6 +339,8 @@ void KateSchemaConfigColorTab::exportSchema(KConfigGroup &config)
 void KateSchemaConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
+
+#if 0 // FIXME-THEME
     for (auto it = m_schemas.constBegin(); it != m_schemas.constEnd(); ++it) {
         KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
         for (const KateColorItem &item : it.value()) {
@@ -364,7 +355,7 @@ void KateSchemaConfigColorTab::apply()
         // As if the group is empty, KateSchemaManager will not find it anymore.
         config.writeEntry("dummy", "prevent-empty-group");
     }
-
+#endif
     // all colors are written, so throw away all cached schemas
     m_schemas.clear();
 }
@@ -375,8 +366,8 @@ void KateSchemaConfigColorTab::reload()
     m_schemas.clear();
 
     // load from config
-    KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(m_currentSchema);
-    QVector<KateColorItem> items = readConfig(config, KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(m_currentSchema).theme);
+    KConfigGroup config;
+    QVector<KateColorItem> items = readConfig(config, KateHlManager::self()->repository().theme(m_currentSchema));
 
     // first block signals otherwise setColor emits changed
     const bool blocked = blockSignals(true);
@@ -736,6 +727,7 @@ QList<int> KateSchemaConfigHighlightTab::hlsForSchema(const QString &schema)
 
 void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QString schema, int hl, KConfig *cfg)
 {
+#if 0 // FIXME-THEME
     QString schemaNameForLoading(fromSchemaName);
     QString hlName;
     bool doManage = (cfg == nullptr);
@@ -744,7 +736,6 @@ void KateSchemaConfigHighlightTab::importHl(const QString &fromSchemaName, QStri
     }
 
 
-#if 0 // FIXME-THEME
 
     if (doManage) {
         QString srcName =
@@ -1022,7 +1013,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
         //
 
         // if schema exists, prepare option to replace
-        if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
+        if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
             howToImport.radioReplaceExisting->show();
             howToImport.radioReplaceExisting->setText(i18n("Replace existing theme %1", schemaName));
             howToImport.radioReplaceExisting->setChecked(true);
@@ -1050,7 +1041,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
             // new one, check again, whether the schema already exists
             else if (howToImport.radioAsNew->isChecked()) {
                 schemaName = howToImport.newName->text();
-                if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
+                if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
                     reask = true;
                 } else {
                     reask = false;
@@ -1150,11 +1141,8 @@ void KateSchemaConfigPage::apply()
     m_defaultStylesTab->apply();
     m_highlightTab->apply();
 
-    // just sync the config and reload
-    KTextEditor::EditorPrivate::self()->schemaManager()->config().sync();
-    KTextEditor::EditorPrivate::self()->schemaManager()->config().reparseConfiguration();
-
-    // clear all attributes
+    // reload themes DB & clear all attributes
+    KateHlManager::self()->reload();
     for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
         KateHlManager::self()->getHl(i)->clearAttributeArrays();
     }
@@ -1169,9 +1157,6 @@ void KateSchemaConfigPage::apply()
     }
     KateRendererConfig::global()->reloadSchema();
 
-    // sync the hl config for real
-    KateHlManager::self()->getKConfig()->sync();
-
     // KateSchemaManager::update() sorts the schema alphabetically, hence the
     // schema indexes change. Thus, repopulate the schema list...
     refillCombos(schemaCombo->itemData(schemaCombo->currentIndex()).toString(), defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
@@ -1180,9 +1165,6 @@ void KateSchemaConfigPage::apply()
 
 void KateSchemaConfigPage::reload()
 {
-    // now reload the config from disc
-    KTextEditor::EditorPrivate::self()->schemaManager()->config().reparseConfiguration();
-
     // reinitialize combo boxes
     refillCombos(KateRendererConfig::global()->schema(), KateRendererConfig::global()->schema());
 
@@ -1205,10 +1187,10 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
     schemaCombo->clear();
     defaultSchemaCombo->clear();
     defaultSchemaCombo->addItem(i18n("Automatic Selection"), QString());
-    const QList<KateSchema> schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
-    for (const KateSchema &s : schemaList) {
-        schemaCombo->addItem(s.translatedName(), s.rawName);
-        defaultSchemaCombo->addItem(s.translatedName(), s.rawName);
+    const auto themes = KateHlManager::self()->sortedThemes();
+    for (const auto &theme : themes) {
+        schemaCombo->addItem(theme.translatedName(), theme.name());
+        defaultSchemaCombo->addItem(theme.translatedName(), theme.name());
     }
 
     // set the correct indexes again, fallback to always existing default theme
@@ -1252,12 +1234,13 @@ void KateSchemaConfigPage::deleteSchema()
     const QString schemaNameToDelete = schemaCombo->itemData(comboIndex).toString();
 
     // KSyntaxHighlighting themes can not be deleted
-    if (KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schemaNameToDelete).theme.isValid()) {
+    if (KateHlManager::self()->repository().theme(schemaNameToDelete).isValid()) {
         return;
     }
+#if 0 // THEME-FIXME
 
-    // kill group
-    KTextEditor::EditorPrivate::self()->schemaManager()->config().deleteGroup(schemaNameToDelete);
+    // kill the Theme.........
+
 
     // fallback to Default schema + auto
     schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name())));
@@ -1268,6 +1251,8 @@ void KateSchemaConfigPage::deleteSchema()
     // remove schema from combo box
     schemaCombo->removeItem(comboIndex);
     defaultSchemaCombo->removeItem(comboIndex);
+
+#endif
 
     // Reload the color tab, since it uses cached schemas
     m_colorTab->reload();
@@ -1286,7 +1271,7 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
     }
 
     // try if schema already around
-    if (KTextEditor::EditorPrivate::self()->schemaManager()->schema(schemaName).exists()) {
+    if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
         KMessageBox::information(this, i18n("<p>The schema %1 already exists.</p><p>Please choose a different schema name.</p>", schemaName), i18n("New Schema"));
         return false;
     }
@@ -1304,7 +1289,7 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
 void KateSchemaConfigPage::schemaChanged(const QString &schema)
 {
     // KSyntaxHighlighting themes can not be deleted
-    btndel->setEnabled(!KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme.isValid());
+    btndel->setEnabled(!KateHlManager::self()->repository().theme(schema).isValid());
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);

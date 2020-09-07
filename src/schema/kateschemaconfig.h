@@ -12,7 +12,6 @@
 #include "katecolortreewidget.h"
 #include "katedialogs.h"
 #include "kateextendedattribute.h"
-#include "kateschema.h"
 
 #include <QFont>
 #include <QJsonObject>

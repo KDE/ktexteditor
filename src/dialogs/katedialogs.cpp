@@ -26,7 +26,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katemodeconfigpage.h"
-#include "kateschema.h"
 #include "kateview.h"
 #include "spellcheck/spellcheck.h"
 
@@ -676,7 +675,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     QTabWidget *tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
     layout->setContentsMargins(0, 0, 0, 0);
-    
+
     QWidget *fontTab = new QWidget(tabWidget);
     QGridLayout *grid = new QGridLayout(fontTab);
     m_fontchooser =  new KFontChooser(fontTab, KFontChooser::NoDisplayFlags);
@@ -698,7 +697,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
     // "What's This?" help is in the ui-file
 
     reload();
-    
+
     observeChanges(m_fontchooser);
 
     observeChanges(textareaUi->chkAnimateBracketMatching);
@@ -800,7 +799,7 @@ void KateViewDefaultsConfig::reload()
     bordersUi->rbSortBookmarksByCreation->setChecked(KateViewConfig::global()->bookmarkSort() == 1);
     bordersUi->rbSortBookmarksByPosition->setChecked(KateViewConfig::global()->bookmarkSort() == 0);
     bordersUi->spBoxMiniMapWidth->setValue(KateViewConfig::global()->scrollBarMiniMapWidth());
-    
+
     m_fontchooser->setFont(KateRendererConfig::global()->baseFont());
 
     textareaUi->chkAnimateBracketMatching->setChecked(KateRendererConfig::global()->animateBracketMatching());

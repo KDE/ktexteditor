@@ -33,7 +33,6 @@
 #include "katemodemenu.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katestatusbar.h"
 #include "katetemplatehandler.h"
 #include "katetextline.h"

@@ -15,13 +15,10 @@
 #include <KConfig>
 #include <KSyntaxHighlighting/Definition>
 #include <KSyntaxHighlighting/Repository>
-
-#include <QHash>
-#include <QList>
-#include <QMap>
-#include <QVector>
+#include <KSyntaxHighlighting/Theme>
 
 #include <QDate>
+#include <QHash>
 #include <QObject>
 #include <QPointer>
 #include <QStringList>
@@ -94,6 +91,21 @@ public:
     {
         return m_repository;
     }
+
+    /**
+     * Get repository (const).
+     * @return repository
+     */
+    const KSyntaxHighlighting::Repository &repository() const
+    {
+        return m_repository;
+    }
+
+    /**
+     * Sorted list of KSyntaxHighlighting themes.
+     * @return list sorted by translated names for e.g. menus/...
+     */
+    QVector<KSyntaxHighlighting::Theme> sortedThemes() const;
 
 private:
     /**

@@ -11,7 +11,6 @@
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "katesyntaxmanager.h"
 #include "kateview.h"
 #include "variableitem.h"
@@ -26,6 +25,8 @@
 #include <QStyle>
 #include <QToolButton>
 #include <QVBoxLayout>
+
+#include <KLocalizedString>
 
 #include <sonnet/speller.h>
 
@@ -287,13 +288,13 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     listview->addItem(item);
 
     // Add 'scheme' to list
-    QStringList schemas;
-    const auto schemaList = KTextEditor::EditorPrivate::self()->schemaManager()->list();
-    schemas.reserve(schemaList.size());
-    for (const KateSchema &schema : schemaList) {
-        schemas.append(schema.rawName);
+    QStringList themeNames;
+    const auto sortedThemes = KateHlManager::self()->sortedThemes();
+    themeNames.reserve(sortedThemes.size());
+    for (const auto &theme : sortedThemes) {
+        themeNames.append(theme.name());
     }
-    item = new VariableStringListItem(QStringLiteral("scheme"), schemas, rendererConfig->schema());
+    item = new VariableStringListItem(QStringLiteral("scheme"), themeNames, rendererConfig->schema());
     item->setHelpText(i18nc("short translation please", "Set the color scheme."));
     listview->addItem(item);
 

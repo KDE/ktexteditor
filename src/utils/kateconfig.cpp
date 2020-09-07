@@ -13,7 +13,6 @@
 #include "katesyntaxmanager.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschema.h"
 #include "kateview.h"
 
 #include <math.h>
@@ -25,6 +24,12 @@
 #include <QSettings>
 #include <QStringListModel>
 #include <QTextCodec>
+
+static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
+{
+    // TODO: improve this, at the moment we just switch between default light and dark theme, we might want to search a "best" match
+    return KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((qGuiApp->palette().color(QPalette::Base).lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme);
+}
 
 // BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)
@@ -641,9 +646,7 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // setSchema will default to right theme
     setSchema(config.readEntry(KEY_SCHEMA, QString()));
 
-    // get fallback font from schema, for old configs, this could be removed in some releases
-    const auto fallbackFont = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema()).config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    setFontWithDroppedStyleName(config.readEntry(KEY_FONT, fallbackFont));
+    setFontWithDroppedStyleName(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
     setWordWrapMarker(config.readEntry(KEY_WORD_WRAP_MARKER, false));
 
@@ -704,9 +707,10 @@ const QString &KateRendererConfig::schema() const
 
 void KateRendererConfig::setSchema(QString schema)
 {
-    // normalize name, fallback to default light theme for unknown stuff
-    if (!KTextEditor::EditorPrivate::self()->schemaManager()->exists(schema)) {
-        schema = KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name();
+    // check if we have some matching theme, else fallback to best theme for current palette
+    // same behavior as for the "Automatic Color Theme Selection"
+    if (!KateHlManager::self()->repository().theme(schema).isValid()) {
+        schema = bestThemeForApplicationPalette().name();
     }
 
     if (m_schemaSet && m_schema == schema) {
@@ -749,70 +753,78 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     if (isGlobal() && value(AutoColorThemeSelection).toBool()) {
         // always choose some theme matching the current application palette
         // we will arrive here after palette changed signals, too!
-        // TODO: improve this, at the moment we just switch between default light and dark theme, we might want to search a "best" match
-        m_schema = KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((qGuiApp->palette().color(QPalette::Base).lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme).name();
+        m_schema = bestThemeForApplicationPalette().name();
     } else {
         // take user given theme 1:1
         m_schema = schema;
     }
 
-    const auto schemaData = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(m_schema);
-    const auto &config = schemaData.config;
-    const auto &theme = schemaData.theme;
+    const auto theme = KateHlManager::self()->repository().theme(m_schema);
 
-    // use global color instance, creation is expensive!
-    const KateDefaultColors &colors(KTextEditor::EditorPrivate::self()->defaultColors());
-
-    m_backgroundColor = config.readEntry("Color Background", colors.color(KSyntaxHighlighting::Theme::BackgroundColor, theme));
-
+    m_backgroundColor = theme.editorColor(KSyntaxHighlighting::Theme::BackgroundColor);
     m_backgroundColorSet = true;
-    m_selectionColor = config.readEntry("Color Selection", colors.color(KSyntaxHighlighting::Theme::TextSelection, theme));
+
+    m_selectionColor = theme.editorColor(KSyntaxHighlighting::Theme::TextSelection);
     m_selectionColorSet = true;
-    m_highlightedLineColor = config.readEntry("Color Highlighted Line", colors.color(KSyntaxHighlighting::Theme::CurrentLine, theme));
+
+    m_highlightedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::CurrentLine);
     m_highlightedLineColorSet = true;
-    m_highlightedBracketColor = config.readEntry("Color Highlighted Bracket", colors.color(KSyntaxHighlighting::Theme::BracketMatching, theme));
+
+    m_highlightedBracketColor = theme.editorColor(KSyntaxHighlighting::Theme::BracketMatching);
     m_highlightedBracketColorSet = true;
-    m_wordWrapMarkerColor = config.readEntry("Color Word Wrap Marker", colors.color(KSyntaxHighlighting::Theme::WordWrapMarker, theme));
+
+    m_wordWrapMarkerColor = theme.editorColor(KSyntaxHighlighting::Theme::WordWrapMarker);
     m_wordWrapMarkerColorSet = true;
-    m_tabMarkerColor = config.readEntry("Color Tab Marker", colors.color(KSyntaxHighlighting::Theme::TabMarker, theme));
+
+    m_tabMarkerColor = theme.editorColor(KSyntaxHighlighting::Theme::TabMarker);
     m_tabMarkerColorSet = true;
-    m_indentationLineColor = config.readEntry("Color Indentation Line", colors.color(KSyntaxHighlighting::Theme::IndentationLine, theme));
+
+    m_indentationLineColor = theme.editorColor(KSyntaxHighlighting::Theme::IndentationLine);
     m_indentationLineColorSet = true;
-    m_iconBarColor = config.readEntry("Color Icon Bar", colors.color(KSyntaxHighlighting::Theme::IconBorder, theme));
+
+    m_iconBarColor = theme.editorColor(KSyntaxHighlighting::Theme::IconBorder);
     m_iconBarColorSet = true;
-    m_foldingColor = config.readEntry("Color Code Folding", colors.color(KSyntaxHighlighting::Theme::CodeFolding, theme));
+
+    m_foldingColor = theme.editorColor(KSyntaxHighlighting::Theme::CodeFolding);
     m_foldingColorSet = true;
-    m_lineNumberColor = config.readEntry("Color Line Number", colors.color(KSyntaxHighlighting::Theme::LineNumbers, theme));
+
+    m_lineNumberColor = theme.editorColor(KSyntaxHighlighting::Theme::LineNumbers);
     m_lineNumberColorSet = true;
-    m_currentLineNumberColor = config.readEntry("Color Current Line Number", colors.color(KSyntaxHighlighting::Theme::CurrentLineNumber, theme));
+
+    m_currentLineNumberColor = theme.editorColor(KSyntaxHighlighting::Theme::CurrentLineNumber);
     m_currentLineNumberColorSet = true;
-    m_separatorColor = config.readEntry("Color Separator", colors.color(KSyntaxHighlighting::Theme::Separator, theme));
+
+    m_separatorColor = theme.editorColor(KSyntaxHighlighting::Theme::Separator);
     m_separatorColorSet = true;
-    m_spellingMistakeLineColor = config.readEntry("Color Spelling Mistake Line", colors.color(KSyntaxHighlighting::Theme::SpellChecking, theme));
+
+    m_spellingMistakeLineColor = theme.editorColor(KSyntaxHighlighting::Theme::SpellChecking);
     m_spellingMistakeLineColorSet = true;
 
-    m_modifiedLineColor = config.readEntry("Color Modified Lines", colors.color(KSyntaxHighlighting::Theme::ModifiedLines, theme));
+    m_modifiedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::ModifiedLines);
     m_modifiedLineColorSet = true;
-    m_savedLineColor = config.readEntry("Color Saved Lines", colors.color(KSyntaxHighlighting::Theme::SavedLines, theme));
+
+    m_savedLineColor = theme.editorColor(KSyntaxHighlighting::Theme::SavedLines);
     m_savedLineColorSet = true;
-    m_searchHighlightColor = config.readEntry("Color Search Highlight", colors.color(KSyntaxHighlighting::Theme::SearchHighlight, theme));
+
+    m_searchHighlightColor = theme.editorColor(KSyntaxHighlighting::Theme::SearchHighlight);
     m_searchHighlightColorSet = true;
-    m_replaceHighlightColor = config.readEntry("Color Replace Highlight", colors.color(KSyntaxHighlighting::Theme::ReplaceHighlight, theme));
+
+    m_replaceHighlightColor = theme.editorColor(KSyntaxHighlighting::Theme::ReplaceHighlight);
     m_replaceHighlightColorSet = true;
 
     for (int i = Kate::FIRST_MARK; i <= Kate::LAST_MARK; i++) {
-        QColor col = config.readEntry(QStringLiteral("Color MarkType %1").arg(i + 1), colors.mark(i, theme));
+        QColor col = theme.editorColor(static_cast<KSyntaxHighlighting::Theme::EditorColorRole>(i + KSyntaxHighlighting::Theme::MarkBookmark));
         m_lineMarkerColorSet[i] = true;
         m_lineMarkerColor[i] = col;
     }
 
-    m_templateBackgroundColor = config.readEntry(QStringLiteral("Color Template Background"), colors.color(KSyntaxHighlighting::Theme::TemplateBackground, theme));
+    m_templateBackgroundColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateBackground);
 
-    m_templateFocusedEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Focused Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder, theme));
+    m_templateFocusedEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateFocusedPlaceholder);
 
-    m_templateEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplatePlaceholder, theme));
+    m_templateEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplatePlaceholder);
 
-    m_templateNotEditablePlaceholderColor = config.readEntry(QStringLiteral("Color Template Not Editable Placeholder"), colors.color(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder, theme));
+    m_templateNotEditablePlaceholderColor = theme.editorColor(KSyntaxHighlighting::Theme::TemplateReadOnlyPlaceholder);
 
     m_templateColorsSet = true;
 }

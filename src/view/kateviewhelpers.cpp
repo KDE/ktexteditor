@@ -24,6 +24,7 @@
 #include "katelayoutcache.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
+#include "katesyntaxmanager.h"
 #include "katetextlayout.h"
 #include "katetextpreview.h"
 #include "kateview.h"
@@ -3038,3 +3039,69 @@ void KatePasteMenu::paste()
     // paste
     m_view->paste(&KTextEditor::EditorPrivate::self()->clipboardHistory()[i]);
 }
+
+// BEGIN SCHEMA ACTION -- the 'View->Color theme' menu action
+void KateViewSchemaAction::init()
+{
+    m_group = nullptr;
+    m_view = nullptr;
+    last = 0;
+
+    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
+}
+
+void KateViewSchemaAction::updateMenu(KTextEditor::ViewPrivate *view)
+{
+    m_view = view;
+}
+
+void KateViewSchemaAction::slotAboutToShow()
+{
+    KTextEditor::ViewPrivate *view = m_view;
+
+    const auto themes = KateHlManager::self()->sortedThemes();
+
+    if (!m_group) {
+        m_group = new QActionGroup(menu());
+        m_group->setExclusive(true);
+    }
+
+    for (int z = 0; z < themes.count(); z++) {
+        QString hlName = themes[z].translatedName();
+
+        if (!names.contains(hlName)) {
+            names << hlName;
+            QAction *a = menu()->addAction(hlName, this, SLOT(setSchema()));
+            a->setData(themes[z].name());
+            a->setCheckable(true);
+            a->setActionGroup(m_group);
+        }
+    }
+
+    if (!view) {
+        return;
+    }
+
+    QString id = view->renderer()->config()->schema();
+    const auto menuActions = menu()->actions();
+    for (QAction *a : menuActions) {
+        a->setChecked(a->data().toString() == id);
+    }
+}
+
+void KateViewSchemaAction::setSchema()
+{
+    QAction *action = qobject_cast<QAction *>(sender());
+
+    if (!action) {
+        return;
+    }
+    QString mode = action->data().toString();
+
+    KTextEditor::ViewPrivate *view = m_view;
+
+    if (view) {
+        view->renderer()->config()->setSchema(mode);
+    }
+}
+// END SCHEMA ACTION
