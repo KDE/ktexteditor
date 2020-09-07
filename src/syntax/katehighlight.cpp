@@ -428,7 +428,7 @@ void KateHighlighting::clearAttributeArrays()
     m_attributeArrays.clear();
 }
 
-QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema)
+QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(const QString &schema) const
 {
     // get the KSyntaxHighlighting::Theme from the chosen schema.
     const KSyntaxHighlighting::Theme currentTheme = KTextEditor::EditorPrivate::self()->schemaManager()->schemaData(schema).theme;
@@ -436,22 +436,19 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
     // create list of all known things
     QVector<KTextEditor::Attribute::Ptr> array;
     for (const auto &format : m_formats) {
-        // atm we just set the current chosen theme here for later color generation
-        setTheme(currentTheme);
-
         // create a KTextEditor attribute matching the given format
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
-        // NOTE: if "theme()" returns an empty/invalid theme, only the
+        // NOTE: if "currentTheme" is an empty/invalid theme, only the
         // attribute styles set in the XML files will be applied here.
-        if (format.hasTextColor(theme())) {
-            newAttribute->setForeground(format.textColor(theme()));
-            newAttribute->setSelectedForeground(format.selectedTextColor(theme()));
+        if (format.hasTextColor(currentTheme)) {
+            newAttribute->setForeground(format.textColor(currentTheme));
+            newAttribute->setSelectedForeground(format.selectedTextColor(currentTheme));
         }
 
-        if (format.hasBackgroundColor(theme())) {
-            newAttribute->setBackground(format.backgroundColor(theme()));
-            newAttribute->setSelectedBackground(format.selectedBackgroundColor(theme()));
+        if (format.hasBackgroundColor(currentTheme)) {
+            newAttribute->setBackground(format.backgroundColor(currentTheme));
+            newAttribute->setSelectedBackground(format.selectedBackgroundColor(currentTheme));
         }
 
         // Apply attributes set in the syntax definition XML files.
@@ -460,7 +457,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         // It's allowed to turn off the bold, italic, underline and strikeout
         // attributes in the XML files (see bug #143399).
         if (format.hasBoldOverride()) {
-            if (format.isBold(theme())) {
+            if (format.isBold(currentTheme)) {
                 newAttribute->setFontBold(true);
             } else {
                 newAttribute->setFontBold(false);
@@ -468,7 +465,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         }
 
         if (format.hasItalicOverride()) {
-            if (format.isItalic(theme())) {
+            if (format.isItalic(currentTheme)) {
                 newAttribute->setFontItalic(true);
             } else {
                 newAttribute->setFontItalic(false);
@@ -476,7 +473,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         }
 
         if (format.hasUnderlineOverride()) {
-            if (format.isUnderline(theme())) {
+            if (format.isUnderline(currentTheme)) {
                 newAttribute->setFontUnderline(true);
             } else {
                 newAttribute->setFontUnderline(false);
@@ -484,7 +481,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         }
 
         if (format.hasStrikeThroughOverride()) {
-            if (format.isStrikeThrough(theme())) {
+            if (format.isStrikeThrough(currentTheme)) {
                 newAttribute->setFontStrikeOut(true);
             } else {
                 newAttribute->setFontStrikeOut(false);

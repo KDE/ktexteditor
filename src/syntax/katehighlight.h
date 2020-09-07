@@ -284,7 +284,7 @@ private:
      * @param schema The id of the chosen schema
      * @return attributes list with attributes as defined in syntax file
      */
-    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema);
+    QVector<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema) const;
 
     int sanitizeFormatIndex(int attrib) const;
 
