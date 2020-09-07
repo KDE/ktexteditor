@@ -38,10 +38,6 @@ public:
     {
         selcol = c;
     }
-    void setNormalCol(const QColor &c)
-    {
-        normalcol = c;
-    }
 
     void addItem(QTreeWidgetItem *parent, const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
     void addItem(const QString &styleName, KTextEditor::Attribute::Ptr defaultstyle, KTextEditor::Attribute::Ptr data = KTextEditor::Attribute::Ptr());
@@ -62,7 +58,7 @@ private Q_SLOTS:
     void updateGroupHeadings();
 
 private:
-    QColor bgcol, selcol, normalcol;
+    QColor bgcol, selcol;
     QFont docfont;
 };
 

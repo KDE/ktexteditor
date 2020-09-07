@@ -126,8 +126,6 @@ KateStyleTreeWidget::KateStyleTreeWidget(QWidget *parent, bool showUseDefaults)
     headerItem()->setIcon(4, QIcon::fromTheme(QStringLiteral("format-text-strikethrough")));
 
     // grap the bg color, selected color and default font
-    const KColorScheme &colors(KTextEditor::EditorPrivate::self()->defaultColors().view());
-    normalcol = colors.foreground().color();
     bgcol = KateRendererConfig::global()->backgroundColor();
     selcol = KateRendererConfig::global()->selectionColor();
     docfont = KateRendererConfig::global()->baseFont();
