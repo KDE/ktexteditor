@@ -17,11 +17,8 @@
 #include <KSyntaxHighlighting/Repository>
 #include <KSyntaxHighlighting/Theme>
 
-#include <QDate>
 #include <QHash>
 #include <QObject>
-#include <QPointer>
-#include <QStringList>
 
 #include <memory>
 
@@ -48,17 +45,6 @@ Q_SIGNALS:
     // methods to get the default style count + names
     //
 public:
-    /**
-     * Return the number of default styles.
-     */
-    static int defaultStyleCount();
-
-    /**
-     * Return the name of default style @p n. If @p translateNames is @e true,
-     * the default style name is translated.
-     */
-    static QString defaultStyleName(int n, bool translateNames = false);
-
     /**
      * Get the mode list
      * @return mode list

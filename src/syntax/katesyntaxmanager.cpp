@@ -9,7 +9,6 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// BEGIN INCLUDES
 #include "katesyntaxmanager.h"
 
 #include "kateconfig.h"
@@ -21,16 +20,8 @@
 #include "katerenderer.h"
 #include "katetextline.h"
 
-#include <KColorUtils>
-#include <KConfigGroup>
-#include <KLocalizedString>
-
 #include <algorithm>
-// END
 
-using namespace KTextEditor;
-
-// BEGIN KateHlManager
 KateHlManager *KateHlManager::self()
 {
     return KTextEditor::EditorPrivate::self()->hlManager();
@@ -74,101 +65,6 @@ int KateHlManager::nameFind(const QString &name)
     return -1;
 }
 
-int KateHlManager::defaultStyleCount()
-{
-    return KTextEditor::dsError + 1;
-}
-
-QString KateHlManager::defaultStyleName(int n, bool translateNames)
-{
-    static QStringList names;
-    static QStringList translatedNames;
-
-    if (names.isEmpty()) {
-        names << QStringLiteral("Normal");
-        names << QStringLiteral("Keyword");
-        names << QStringLiteral("Function");
-        names << QStringLiteral("Variable");
-        names << QStringLiteral("Control Flow");
-        names << QStringLiteral("Operator");
-        names << QStringLiteral("Built-in");
-        names << QStringLiteral("Extension");
-        names << QStringLiteral("Preprocessor");
-        names << QStringLiteral("Attribute");
-
-        names << QStringLiteral("Character");
-        names << QStringLiteral("Special Character");
-        names << QStringLiteral("String");
-        names << QStringLiteral("Verbatim String");
-        names << QStringLiteral("Special String");
-        names << QStringLiteral("Import");
-
-        names << QStringLiteral("Data Type");
-        names << QStringLiteral("Decimal/Value");
-        names << QStringLiteral("Base-N Integer");
-        names << QStringLiteral("Floating Point");
-        names << QStringLiteral("Constant");
-
-        names << QStringLiteral("Comment");
-        names << QStringLiteral("Documentation");
-        names << QStringLiteral("Annotation");
-        names << QStringLiteral("Comment Variable");
-        // this next one is for denoting the beginning/end of a user defined folding region
-        names << QStringLiteral("Region Marker");
-        names << QStringLiteral("Information");
-        names << QStringLiteral("Warning");
-        names << QStringLiteral("Alert");
-
-        names << QStringLiteral("Others");
-        // this one is for marking invalid input
-        names << QStringLiteral("Error");
-
-        translatedNames << i18nc("@item:intable Text context", "Normal");
-        translatedNames << i18nc("@item:intable Text context", "Keyword");
-        translatedNames << i18nc("@item:intable Text context", "Function");
-        translatedNames << i18nc("@item:intable Text context", "Variable");
-        translatedNames << i18nc("@item:intable Text context", "Control Flow");
-        translatedNames << i18nc("@item:intable Text context", "Operator");
-        translatedNames << i18nc("@item:intable Text context", "Built-in");
-        translatedNames << i18nc("@item:intable Text context", "Extension");
-        translatedNames << i18nc("@item:intable Text context", "Preprocessor");
-        translatedNames << i18nc("@item:intable Text context", "Attribute");
-
-        translatedNames << i18nc("@item:intable Text context", "Character");
-        translatedNames << i18nc("@item:intable Text context", "Special Character");
-        translatedNames << i18nc("@item:intable Text context", "String");
-        translatedNames << i18nc("@item:intable Text context", "Verbatim String");
-        translatedNames << i18nc("@item:intable Text context", "Special String");
-        translatedNames << i18nc("@item:intable Text context", "Imports, Modules, Includes");
-
-        translatedNames << i18nc("@item:intable Text context", "Data Type");
-        translatedNames << i18nc("@item:intable Text context", "Decimal/Value");
-        translatedNames << i18nc("@item:intable Text context", "Base-N Integer");
-        translatedNames << i18nc("@item:intable Text context", "Floating Point");
-        translatedNames << i18nc("@item:intable Text context", "Constant");
-
-        translatedNames << i18nc("@item:intable Text context", "Comment");
-        translatedNames << i18nc("@item:intable Text context", "Documentation");
-        translatedNames << i18nc("@item:intable Text context", "Annotation");
-        translatedNames << i18nc("@item:intable Text context", "Comment Variable");
-        // this next one is for denoting the beginning/end of a user defined folding region
-        translatedNames << i18nc("@item:intable Text context", "Region Marker");
-        translatedNames << i18nc("@item:intable Text context", "Information");
-        translatedNames << i18nc("@item:intable Text context", "Warning");
-        translatedNames << i18nc("@item:intable Text context", "Alert");
-
-        translatedNames << i18nc("@item:intable Text context", "Others");
-        // this one is for marking invalid input
-        translatedNames << i18nc("@item:intable Text context", "Error");
-    }
-
-    // sanity checks
-    Q_ASSERT(n >= 0);
-    Q_ASSERT(n < names.size());
-
-    return translateNames ? translatedNames[n] : names[n];
-}
-
 void KateHlManager::reload()
 {
     // copy current loaded hls from hash to trigger recreation
@@ -190,4 +86,3 @@ void KateHlManager::reload()
         doc->setHighlightingMode(hlMode);
     }
 }
-// END
