@@ -728,7 +728,29 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        m_hlDict[m_schema].insert(m_hl, KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema));
+        // filter out attribute that got included
+        // TODO: improve this, but at the moment this will otherwise kill the saving!
+        const QString hlName = KateHlManager::self()->getHl(m_hl)->name();
+        const auto items = KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema);
+        QVector<KTextEditor::Attribute::Ptr> filteredItems;
+        for (const auto &item : items) {
+            int c = item->name().indexOf(QLatin1Char(':'));
+            if (c < 0)
+                continue;
+
+            // get prefix == hl name and real name
+            QString prefix = item->name().left(c);
+            QString name = item->name().mid(c + 1);
+
+            // skip if not for the highlighting itself
+            if (prefix != hlName)
+                continue;
+
+            // fix name (used for saving)
+            item->setName(name);
+            filteredItems.append(item);
+        }
+        m_hlDict[m_schema].insert(m_hl, filteredItems);
     }
 
     KateAttributeList *l = m_defaults->attributeList(schema);
@@ -741,24 +763,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     while (it != m_hlDict[m_schema][m_hl].constEnd()) {
         const KTextEditor::Attribute::Ptr itemData = *it;
         Q_ASSERT(itemData);
-
-        // All stylenames have their language mode prefixed, e.g. HTML:Comment
-        // split them and put them into nice substructures.
-        int c = itemData->name().indexOf(QLatin1Char(':'));
-        if (c > 0) {
-            QString prefix = itemData->name().left(c);
-            QString name = itemData->name().mid(c + 1);
-
-            QTreeWidgetItem *parent = prefixes[prefix];
-            if (!parent) {
-                parent = new QTreeWidgetItem(m_styles, QStringList() << prefix);
-                m_styles->expandItem(parent);
-                prefixes.insert(prefix, parent);
-            }
-            m_styles->addItem(parent, name, l->at(itemData->defaultStyle()), itemData);
-        } else {
-            m_styles->addItem(itemData->name(), l->at(itemData->defaultStyle()), itemData);
-        }
+        m_styles->addItem(itemData->name(), l->at(itemData->defaultStyle()), itemData);
         ++it;
     }
 
@@ -785,17 +790,57 @@ void KateSchemaConfigHighlightTab::reload()
 
 void KateSchemaConfigHighlightTab::apply()
 {
-#if 0 // FIXME-THEME
-    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> it = m_hlDict;
+    // handle all cached themes data
+    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> it(m_hlDict);
     while (it.hasNext()) {
         it.next();
+
+        // get theme for key, skip invalid or read-only themes for writing
+        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        if (!theme.isValid() || theme.isReadOnly()) {
+            continue;
+        }
+
+        // look at all highlightings we have info stored
         QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr>> it2 = it.value();
         while (it2.hasNext()) {
             it2.next();
-            KateHlManager::self()->getHl(it2.key())->setKateExtendedAttributeList(it.key(), it2.value());
+            const QString definitionName = KateHlManager::self()->getHl(it2.key())->name();
+
+            QJsonObject styles;
+            const auto stylesList = it2.value();
+            for (int z = 0; z < stylesList.count(); z++) {
+                QJsonObject style;
+                KTextEditor::Attribute::Ptr p = stylesList.at(z);
+                qDebug() << p->name();
+                if (p->hasProperty(QTextFormat::ForegroundBrush)) {
+                    style[QLatin1String("text-color")] = p->foreground().color().name();
+                }
+                if (p->hasProperty(QTextFormat::BackgroundBrush)) {
+                    style[QLatin1String("background-color")] = p->background().color().name();
+                }
+                if (p->hasProperty(SelectedForeground)) {
+                    style[QLatin1String("selected-text-color")] = p->selectedForeground().color().name();
+                }
+                if (p->hasProperty(SelectedBackground)) {
+                    style[QLatin1String("selected-background-color")] = p->selectedBackground().color().name();
+                }
+                if (p->hasProperty(QTextFormat::FontWeight)) {
+                    style[QLatin1String("bold")] = p->fontBold();
+                }
+                if (p->hasProperty(QTextFormat::FontItalic)) {
+                    style[QLatin1String("italic")] = p->fontItalic();
+                }
+                if (p->hasProperty(QTextFormat::TextUnderlineStyle)) {
+                    style[QLatin1String("underline")] = p->fontUnderline();
+                }
+                if (p->hasProperty(QTextFormat::FontStrikeOut)) {
+                    style[QLatin1String("strike-through")] = p->fontStrikeOut();
+                }
+                styles[QLatin1String("blub")] = style;
+            }
         }
     }
-#endif
 }
 
 QList<int> KateSchemaConfigHighlightTab::hlsForSchema(const QString &schema)
