@@ -1389,8 +1389,6 @@ bool KateSchemaConfigPage::newSchema()
         return false;
     }
 
-    qDebug() << "lala";
-
     // patch new name into theme object
     QJsonObject newThemeObject = jsonDoc.object();
     QJsonObject metaData;
@@ -1408,9 +1406,6 @@ bool KateSchemaConfigPage::newSchema()
         }
         saveFile.write(QJsonDocument(newThemeObject).toJson());
     }
-
-
-    qDebug() << "lala" << themeFileName;
 
     // reset syntax manager repo to find new theme
     KateHlManager::self()->reload();
