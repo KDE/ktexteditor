@@ -753,6 +753,10 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
         m_hlDict[m_schema].insert(m_hl, filteredItems);
     }
 
+    // None can't be changed with the current way
+    // TODO: removed it from the list?
+    m_styles->setDisabled(m_hl == 0);
+
     KateAttributeList *l = m_defaults->attributeList(schema);
 
     // Set listview colors
@@ -801,18 +805,25 @@ void KateSchemaConfigHighlightTab::apply()
             continue;
         }
 
+        // get current theme data from disk
+        QJsonObject newThemeObject = jsonForTheme(theme);
+
         // look at all highlightings we have info stored
+        QJsonObject overrides;
         QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr>> it2 = it.value();
         while (it2.hasNext()) {
             it2.next();
-            const QString definitionName = KateHlManager::self()->getHl(it2.key())->name();
 
+            // skip hl none
+            if (it2.key() == 0)
+                continue;
+
+            const QString definitionName = KateHlManager::self()->getHl(it2.key())->name();
             QJsonObject styles;
             const auto stylesList = it2.value();
             for (int z = 0; z < stylesList.count(); z++) {
                 QJsonObject style;
                 KTextEditor::Attribute::Ptr p = stylesList.at(z);
-                qDebug() << p->name();
                 if (p->hasProperty(QTextFormat::ForegroundBrush)) {
                     style[QLatin1String("text-color")] = p->foreground().color().name();
                 }
@@ -837,9 +848,14 @@ void KateSchemaConfigHighlightTab::apply()
                 if (p->hasProperty(QTextFormat::FontStrikeOut)) {
                     style[QLatin1String("strike-through")] = p->fontStrikeOut();
                 }
-                styles[QLatin1String("blub")] = style;
+                styles[p->name()] = style;
             }
+            overrides[definitionName] = styles;
         }
+        newThemeObject[QLatin1String("custom-styles")] = overrides;
+
+        // write json back to file
+        writeJson(newThemeObject, theme.filePath());
     }
 }
 
