@@ -40,7 +40,6 @@ Q_SIGNALS:
 
 private:
     QVector<KateColorItem> colorItemList(const KSyntaxHighlighting::Theme &theme) const;
-    QVector<KateColorItem> readConfig(KConfigGroup &config, const KSyntaxHighlighting::Theme &theme);
 
 private:
     // multiple shemas may be edited. Hence, we need one ColorList for each schema

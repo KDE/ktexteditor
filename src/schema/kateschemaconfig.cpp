@@ -365,8 +365,12 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 
     // If we havent this schema, read in from config file
     if (!m_schemas.contains(newSchema)) {
-        KConfigGroup config;
-        QVector<KateColorItem> items = readConfig(config, KateHlManager::self()->repository().theme(newSchema));
+        const auto theme = KateHlManager::self()->repository().theme(newSchema);
+        QVector<KateColorItem> items = colorItemList(theme);
+        for (int i = 0; i < items.count(); ++i) {
+            KateColorItem &item(items[i]);
+            item.color = theme.editorColor(item.role);
+        }
         m_schemas[newSchema] = items;
     }
 
@@ -377,16 +381,6 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
     ui->addColorItems(m_schemas[m_currentSchema]);
 
     blockSignals(blocked);
-}
-
-QVector<KateColorItem> KateSchemaConfigColorTab::readConfig(KConfigGroup &, const KSyntaxHighlighting::Theme &theme)
-{
-    QVector<KateColorItem> items = colorItemList(theme);
-    for (int i = 0; i < items.count(); ++i) {
-        KateColorItem &item(items[i]);
-        item.color = theme.editorColor(item.role);
-    }
-    return items;
 }
 
 void KateSchemaConfigColorTab::apply()
@@ -430,17 +424,10 @@ void KateSchemaConfigColorTab::reload()
     // drop all cached data
     m_schemas.clear();
 
-    // load from config
-    KConfigGroup config;
-    QVector<KateColorItem> items = readConfig(config, KateHlManager::self()->repository().theme(m_currentSchema));
-
-    // first block signals otherwise setColor emits changed
-    const bool blocked = blockSignals(true);
-
-    ui->clear();
-    ui->addColorItems(items);
-
-    blockSignals(blocked);
+    // trigger re-creation of ui from theme
+    QString backupName = m_currentSchema;
+    m_currentSchema.clear();
+    schemaChanged(backupName);
 }
 
 QColor KateSchemaConfigColorTab::backgroundColor() const
