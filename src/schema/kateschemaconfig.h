@@ -26,7 +26,6 @@ class KateSchemaConfigColorTab : public QWidget
 
 public:
     KateSchemaConfigColorTab();
-    ~KateSchemaConfigColorTab();
 
     QColor backgroundColor() const;
     QColor selectionColor() const;
@@ -37,8 +36,6 @@ public Q_SLOTS:
     void apply();
     void reload();
     void schemaChanged(const QString &newSchema);
-
-    void importSchema(KConfigGroup &config);
 
 Q_SIGNALS:
     void changed();
@@ -72,7 +69,6 @@ public:
     void apply();
 
     KateAttributeList *attributeList(const QString &schema);
-    void importSchema(const QString &schemaName, const QString &schema, KConfig *cfg);
 
     QJsonObject exportJson(const QString &schema) const;
 
@@ -151,7 +147,6 @@ private Q_SLOTS:
 
 private:
     void refillCombos(const QString &schemaName, const QString &defaultSchemaName);
-    QString requestSchemaName(const QString &suggestedName);
 
 private:
     QString m_currentSchema;

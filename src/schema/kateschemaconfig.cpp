@@ -29,7 +29,6 @@
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMetaEnum>
-#include <QProgressDialog>
 #include <QPushButton>
 #include <QTabWidget>
 
@@ -112,10 +111,6 @@ KateSchemaConfigColorTab::KateSchemaConfigColorTab()
 
     connect(btnUseColorScheme, SIGNAL(clicked()), ui, SLOT(selectDefaults()));
     connect(ui, SIGNAL(changed()), SIGNAL(changed()));
-}
-
-KateSchemaConfigColorTab::~KateSchemaConfigColorTab()
-{
 }
 
 QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHighlighting::Theme &theme) const
@@ -356,19 +351,6 @@ QVector<KateColorItem> KateSchemaConfigColorTab::readConfig(KConfigGroup &, cons
     return items;
 }
 
-void KateSchemaConfigColorTab::importSchema(KConfigGroup &config)
-{
-    m_schemas[m_currentSchema] = readConfig(config, KSyntaxHighlighting::Theme());
-
-    // first block signals otherwise setColor emits changed
-    const bool blocked = blockSignals(true);
-
-    ui->clear();
-    ui->addColorItems(m_schemas[m_currentSchema]);
-
-    blockSignals(blocked);
-}
-
 QJsonObject KateSchemaConfigColorTab::exportJson() const
 {
     static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("EditorColorRole");
@@ -577,13 +559,6 @@ void KateSchemaConfigDefaultStylesTab::apply()
         it.next();
         KateHlManager::self()->setDefaults(it.key(), *it.value());
     }
-#endif
-}
-
-void KateSchemaConfigDefaultStylesTab::importSchema(const QString &schemaName, const QString &schema, KConfig *cfg)
-{
-#if 0 // FIXME-THEME
-    KateHlManager::self()->getDefaults(schemaName, *(m_defaultStyleLists[schema]), cfg);
 #endif
 }
 
@@ -919,82 +894,6 @@ void KateSchemaConfigPage::exportFullSchema()
 
     // export is easy, just copy the file 1:1
     QFile::copy(currentTheme.filePath(), destName);
-}
-
-QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
-{
-    QString schemaName = suggestedName;
-
-    bool reask = true;
-    do {
-        QDialog howToImportDialog(this);
-        Ui_KateHowToImportSchema howToImport;
-
-        QVBoxLayout *mainLayout = new QVBoxLayout;
-        howToImportDialog.setLayout(mainLayout);
-
-        QWidget *w = new QWidget(&howToImportDialog);
-        mainLayout->addWidget(w);
-        howToImport.setupUi(w);
-
-        QDialogButtonBox *buttons = new QDialogButtonBox(&howToImportDialog);
-        mainLayout->addWidget(buttons);
-
-        QPushButton *okButton = new QPushButton;
-        okButton->setDefault(true);
-        KGuiItem::assign(okButton, KStandardGuiItem::ok());
-        buttons->addButton(okButton, QDialogButtonBox::AcceptRole);
-        connect(okButton, SIGNAL(clicked()), &howToImportDialog, SLOT(accept()));
-
-        QPushButton *cancelButton = new QPushButton;
-        KGuiItem::assign(cancelButton, KStandardGuiItem::cancel());
-        buttons->addButton(cancelButton, QDialogButtonBox::RejectRole);
-        connect(cancelButton, SIGNAL(clicked()), &howToImportDialog, SLOT(reject()));
-        //
-
-        // if schema exists, prepare option to replace
-        if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
-            howToImport.radioReplaceExisting->show();
-            howToImport.radioReplaceExisting->setText(i18n("Replace existing theme %1", schemaName));
-            howToImport.radioReplaceExisting->setChecked(true);
-        } else {
-            howToImport.radioReplaceExisting->hide();
-            howToImport.newName->setText(schemaName);
-        }
-
-        // cancel pressed?
-        if (howToImportDialog.exec() == QDialog::Rejected) {
-            schemaName.clear();
-            reask = false;
-        }
-        // check what the user wants
-        else {
-            // replace existing
-            if (howToImport.radioReplaceExisting->isChecked()) {
-                reask = false;
-            }
-            // replace current
-            else if (howToImport.radioReplaceCurrent->isChecked()) {
-                schemaName = m_currentSchema;
-                reask = false;
-            }
-            // new one, check again, whether the schema already exists
-            else if (howToImport.radioAsNew->isChecked()) {
-                schemaName = howToImport.newName->text();
-                if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
-                    reask = true;
-                } else {
-                    reask = false;
-                }
-            }
-            // should never happen
-            else {
-                reask = true;
-            }
-        }
-    } while (reask);
-
-    return schemaName;
 }
 
 void KateSchemaConfigPage::importFullSchema()
