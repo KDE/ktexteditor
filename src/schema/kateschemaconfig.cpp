@@ -425,7 +425,7 @@ void KateSchemaConfigColorTab::reload()
     m_schemas.clear();
 
     // trigger re-creation of ui from theme
-    QString backupName = m_currentSchema;
+    const auto backupName = m_currentSchema;
     m_currentSchema.clear();
     schemaChanged(backupName);
 }
@@ -576,51 +576,61 @@ void KateSchemaConfigDefaultStylesTab::reload()
 
 void KateSchemaConfigDefaultStylesTab::apply()
 {
-#if 0 // FIXME-THEME
-    QHashIterator<QString, KateAttributeList *> it = m_defaultStyleLists;
-    while (it.hasNext()) {
-        it.next();
-        KateHlManager::self()->setDefaults(it.key(), *it.value());
-    }
-#endif
-}
-
-QJsonObject KateSchemaConfigDefaultStylesTab::exportJson(const QString &schema) const
-{
+    // get enum meta data for json keys
     static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("TextStyle");
     Q_ASSERT(idx >= 0);
     const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
-    QJsonObject styles;
-    for (int z = 0; z < defaultStyleCount(); z++) {
-        QJsonObject style;
-        KTextEditor::Attribute::Ptr p = m_defaultStyleLists[schema]->at(z);
-        if (p->hasProperty(QTextFormat::ForegroundBrush)) {
-            style[QLatin1String("text-color")] = p->foreground().color().name();
+
+    // export all configured styles of the cached themes
+    QHashIterator<QString, KateAttributeList *> it(m_defaultStyleLists);
+    while (it.hasNext()) {
+        it.next();
+
+        // get theme for key, skip invalid or read-only themes for writing
+        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        if (!theme.isValid() || theme.isReadOnly()) {
+            continue;
         }
-        if (p->hasProperty(QTextFormat::BackgroundBrush)) {
-            style[QLatin1String("background-color")] = p->background().color().name();
+
+        // get current theme data from disk
+        QJsonObject newThemeObject = jsonForTheme(theme);
+
+        // patch the text-styles part
+        QJsonObject styles;
+        for (int z = 0; z < defaultStyleCount(); z++) {
+            QJsonObject style;
+            KTextEditor::Attribute::Ptr p = it.value()->at(z);
+            if (p->hasProperty(QTextFormat::ForegroundBrush)) {
+                style[QLatin1String("text-color")] = p->foreground().color().name();
+            }
+            if (p->hasProperty(QTextFormat::BackgroundBrush)) {
+                style[QLatin1String("background-color")] = p->background().color().name();
+            }
+            if (p->hasProperty(SelectedForeground)) {
+                style[QLatin1String("selected-text-color")] = p->selectedForeground().color().name();
+            }
+            if (p->hasProperty(SelectedBackground)) {
+                style[QLatin1String("selected-background-color")] = p->selectedBackground().color().name();
+            }
+            if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold()) {
+                style[QLatin1String("bold")] = true;
+            }
+            if (p->hasProperty(QTextFormat::FontItalic) && p->fontItalic()) {
+                style[QLatin1String("italic")] = true;
+            }
+            if (p->hasProperty(QTextFormat::TextUnderlineStyle) && p->fontUnderline()) {
+                style[QLatin1String("underline")] = true;
+            }
+            if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut()) {
+                style[QLatin1String("strike-through")] = true;
+            }
+            styles[QLatin1String(metaEnum.key(defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z))))] = style;
         }
-        if (p->hasProperty(SelectedForeground)) {
-            style[QLatin1String("selected-text-color")] = p->selectedForeground().color().name();
-        }
-        if (p->hasProperty(SelectedBackground)) {
-            style[QLatin1String("selected-background-color")] = p->selectedBackground().color().name();
-        }
-        if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold()) {
-            style[QLatin1String("bold")] = true;
-        }
-        if (p->hasProperty(QTextFormat::FontItalic) && p->fontItalic()) {
-            style[QLatin1String("italic")] = true;
-        }
-        if (p->hasProperty(QTextFormat::TextUnderlineStyle) && p->fontUnderline()) {
-            style[QLatin1String("underline")] = true;
-        }
-        if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut()) {
-            style[QLatin1String("strike-through")] = true;
-        }
-        styles[QLatin1String(metaEnum.key(defaultStyleToTextStyle(static_cast<KTextEditor::DefaultStyle>(z))))] = style;
+        newThemeObject[QLatin1String("text-styles")] = styles;
+
+        // write json back to file
+        writeJson(newThemeObject, theme.filePath());
     }
-    return styles;
 }
 
 void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
@@ -875,32 +885,6 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
 
     connect(defaultSchemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 }
-
-#if 0
-
-
-    // if we have the .theme ending, export some JSON for KSyntaxHighlighting
-    if (destName.endsWith(QLatin1String(".theme"), Qt::CaseInsensitive)) {
-        // export to json format
-        QJsonObject theme;
-        QJsonObject metaData;
-        metaData[QLatin1String("revision")] = 1;
-        metaData[QLatin1String("name")] = currentSchemaName;
-        theme[QLatin1String("metadata")] = metaData;
-        theme[QLatin1String("editor-colors")] = m_colorTab->exportJson();
-        theme[QLatin1String("text-styles")] = m_defaultStylesTab->exportJson(m_currentSchema);
-
-        // write to file
-        QFile saveFile(destName);
-        if (!saveFile.open(QIODevice::WriteOnly)) {
-            return;
-        }
-        saveFile.write(QJsonDocument(theme).toJson());
-        return;
-    }
-
-
-#endif
 
 void KateSchemaConfigPage::exportFullSchema()
 {

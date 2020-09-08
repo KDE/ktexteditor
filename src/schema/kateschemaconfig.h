@@ -67,8 +67,6 @@ public:
 
     KateAttributeList *attributeList(const QString &schema);
 
-    QJsonObject exportJson(const QString &schema) const;
-
 protected:
     void showEvent(QShowEvent *event) override;
     void updateColorPalette(const QColor &textColor);
