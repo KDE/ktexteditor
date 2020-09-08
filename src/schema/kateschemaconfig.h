@@ -131,7 +131,6 @@ class KateSchemaConfigPage : public KateConfigPage
 
 public:
     explicit KateSchemaConfigPage(QWidget *parent);
-    ~KateSchemaConfigPage() override;
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;

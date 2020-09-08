@@ -878,18 +878,8 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     connect(defaultSchemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 }
 
-KateSchemaConfigPage::~KateSchemaConfigPage()
-{
-}
+#if 0
 
-void KateSchemaConfigPage::exportFullSchema()
-{
-    // get save destination
-    const QString currentSchemaName = m_currentSchema;
-    const QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color schema: %1", currentSchemaName), currentSchemaName + QLatin1String(".kateschema"), QStringLiteral("%1 (*.kateschema *.theme)").arg(i18n("Color theme")));
-    if (destName.isEmpty()) {
-        return;
-    }
 
     // if we have the .theme ending, export some JSON for KSyntaxHighlighting
     if (destName.endsWith(QLatin1String(".theme"), Qt::CaseInsensitive)) {
@@ -911,50 +901,24 @@ void KateSchemaConfigPage::exportFullSchema()
         return;
     }
 
-    // open config file
-    KConfig cfg(destName, KConfig::SimpleConfig);
-
-#if 0 // FIXME-THEME OLD EXPORT
-    //
-    // export editor Colors (background, ...)
-    //
-    KConfigGroup colorConfigGroup(&cfg, "Editor Colors");
-    m_colorTab->exportSchema(colorConfigGroup);
-
-    //
-    // export Default Styles
-    //
-    m_defaultStylesTab->exportSchema(m_currentSchema, &cfg);
-
-    //
-    // export Highlighting Text Styles
-    //
-    // force a load of all Highlighting Text Styles
-    QStringList hlList;
-    m_highlightTab->loadAllHlsForSchema(m_currentSchema);
-
-    const QList<int> hls = m_highlightTab->hlsForSchema(m_currentSchema);
-
-    int cnt = 0;
-    QProgressDialog progress(i18n("Exporting schema"), QString(), 0, hls.count(), this);
-    progress.setWindowModality(Qt::WindowModal);
-    for (int hl : hls) {
-        hlList << KateHlManager::self()->getHl(hl)->name();
-        m_highlightTab->exportHl(m_currentSchema, hl, &cfg);
-        progress.setValue(++cnt);
-        if (progress.wasCanceled()) {
-            break;
-        }
-    }
-    progress.setValue(hls.count());
-
-    KConfigGroup grp(&cfg, "KateSchema");
-    grp.writeEntry("full schema", "true");
-    grp.writeEntry("highlightings", hlList);
-    grp.writeEntry("schema", currentSchemaName);
-    cfg.sync();
 
 #endif
+
+void KateSchemaConfigPage::exportFullSchema()
+{
+    // get save destination
+    const QString currentSchemaName = m_currentSchema;
+    const QString destName = QFileDialog::getSaveFileName(this, i18n("Exporting color theme: %1", currentSchemaName), currentSchemaName + QLatin1String(".theme"), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
+    if (destName.isEmpty()) {
+        return;
+    }
+
+    // get current theme
+    const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
+    const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
+
+    // export is easy, just copy the file 1:1
+    QFile::copy(currentTheme.filePath(), destName);
 }
 
 QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
