@@ -1139,78 +1139,40 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
 
 void KateSchemaConfigPage::importFullSchema()
 {
-#if 0 // FIXME-THEME
-    const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Schema"), QString(), QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
-
+    const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Theme"), QString(), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
     if (srcName.isEmpty()) {
         return;
     }
 
-    // carete config + sanity check for full color schema
-    KConfig cfg(srcName, KConfig::SimpleConfig);
-    KConfigGroup schemaGroup(&cfg, "KateSchema");
-    if (schemaGroup.readEntry("full schema", "false").toUpper() != QLatin1String("TRUE")) {
-        KMessageBox::sorry(this, i18n("The file does not contain a full color schema."), i18n("Fileformat error"));
-        return;
-    }
+    // location to write theme files to
+    const QString themesPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/org.kde.syntax-highlighting/themes");
 
-    // read color schema name
-    const QStringList highlightings = schemaGroup.readEntry("highlightings", QStringList());
-    const QString fromSchemaName = schemaGroup.readEntry("schema", i18n("Name unspecified"));
+    // construct file name for imported theme
+    const QString themesFullFileName = themesPath + QStringLiteral("/") + QFileInfo(srcName).fileName();
 
-    // request valid schema name
-    const QString schemaName = requestSchemaName(fromSchemaName);
-    if (schemaName.isEmpty()) {
-        return;
-    }
-
-    // if the schema already exists, select it in the combo box
-    if (schemaCombo->findData(schemaName) != -1) {
-        schemaCombo->setCurrentIndex(schemaCombo->findData(schemaName));
-    } else { // it is really a new schema, easy meat :-)
-        newSchema(schemaName);
-    }
-
-    // make sure the correct schema is activated
-    schemaChanged(schemaName);
-
-    // Finally, the correct schema is activated.
-    // Next,  start importing.
-
-    //
-    // import editor Colors (background, ...)
-    //
-    KConfigGroup colorConfigGroup(&cfg, "Editor Colors");
-    m_colorTab->importSchema(colorConfigGroup);
-
-    //
-    // import Default Styles
-    //
-    m_defaultStylesTab->importSchema(fromSchemaName, schemaName, &cfg);
-
-    //
-    // import all Highlighting Text Styles
-    //
-    // create mapping from highlighting name to internal id
-    const int hlCount = KateHlManager::self()->modeList().size();
-    QHash<QString, int> nameToId;
-    for (int i = 0; i < hlCount; ++i) {
-        nameToId.insert(KateHlManager::self()->modeList().at(i).name(), i);
-    }
-
-    // may take some time, as we have > 200 highlightings
-    int cnt = 0;
-    QProgressDialog progress(i18n("Importing schema"), QString(), 0, highlightings.count(), this);
-    progress.setWindowModality(Qt::WindowModal);
-    for (const QString &hl : highlightings) {
-        if (nameToId.contains(hl)) {
-            const int i = nameToId[hl];
-            m_highlightTab->importHl(fromSchemaName, schemaName, i, &cfg);
+    // if something might be overwritten, as the user
+    if (QFile::exists(themesFullFileName)) {
+        if (KMessageBox::warningContinueCancel(this, i18n("Importing will overwrite the existing theme file \"%1\"? This can not be undone.").arg(themesFullFileName),
+                                                     i18n("Possible Data Loss"),
+                                                     KGuiItem(i18n("Import Nevertheless")),
+                                                     KStandardGuiItem::cancel()) != KMessageBox::Continue) {
+            return;
         }
-        progress.setValue(++cnt);
     }
-    progress.setValue(highlightings.count());
-#endif
+
+    // copy theme file, we might need to create the local dir first
+    QDir().mkpath(themesPath);
+    QFile::copy(srcName, themesFullFileName);
+
+    // reload themes DB & clear all attributes
+    KateHlManager::self()->reload();
+    for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
+        KateHlManager::self()->getHl(i)->clearAttributeArrays();
+    }
+
+    // KateSchemaManager::update() sorts the schema alphabetically, hence the
+    // schema indexes change. Thus, repopulate the schema list...
+    refillCombos(schemaCombo->itemData(schemaCombo->currentIndex()).toString(), defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
 }
 
 void KateSchemaConfigPage::apply()
@@ -1351,7 +1313,7 @@ void KateSchemaConfigPage::deleteSchema()
 
 bool KateSchemaConfigPage::newSchema()
 {
-    // location to write theme files to:
+    // location to write theme files to
     const QString themesPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/org.kde.syntax-highlighting/themes");
 
     // get sane name
