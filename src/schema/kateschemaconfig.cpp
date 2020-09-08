@@ -1091,12 +1091,19 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
 
 void KateSchemaConfigPage::reset()
 {
+    // reload themes DB & clear all attributes
+    KateHlManager::self()->reload();
+    for (int i = 0; i < KateHlManager::self()->modeList().size(); ++i) {
+        KateHlManager::self()->getHl(i)->clearAttributeArrays();
+    }
+
+    // reload the view
     reload();
 }
 
 void KateSchemaConfigPage::defaults()
 {
-    reload();
+    reset();
 }
 
 void KateSchemaConfigPage::deleteSchema()
