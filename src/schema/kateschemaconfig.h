@@ -30,8 +30,6 @@ public:
     QColor backgroundColor() const;
     QColor selectionColor() const;
 
-    QJsonObject exportJson() const;
-
 public Q_SLOTS:
     void apply();
     void reload();

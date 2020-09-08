@@ -94,6 +94,44 @@ static int defaultStyleCount()
     return KTextEditor::dsError + 1;
 }
 
+/**
+ * Helper to get json object for given valid theme.
+ * @param theme theme to get json object for
+ * @return json object of theme
+ */
+static QJsonObject jsonForTheme(const KSyntaxHighlighting::Theme &theme)
+{
+    // load json content, shall work, as the theme as valid, but still abort on errors
+    QFile loadFile(theme.filePath());
+    if (!loadFile.open(QIODevice::ReadOnly)) {
+        return QJsonObject();
+    }
+    const QByteArray jsonData = loadFile.readAll();
+    QJsonParseError parseError;
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData, &parseError);
+    if (parseError.error != QJsonParseError::NoError) {
+        return QJsonObject();
+    }
+    return jsonDoc.object();
+}
+
+/**
+ * Helper to write json data to given file path.
+ * After the function returns, stuff is flushed to disk for sure.
+ * @param json json object with theme data
+ * @param themeFileName file name to write to
+ * @return did writing succeed?
+ */
+static bool writeJson(const QJsonObject &json, const QString &themeFileName)
+{
+    QFile saveFile(themeFileName);
+    if (!saveFile.open(QIODevice::WriteOnly)) {
+        return false;
+    }
+    saveFile.write(QJsonDocument(json).toJson());
+    return true;
+}
+
 // BEGIN KateSchemaConfigColorTab -- 'Colors' tab
 KateSchemaConfigColorTab::KateSchemaConfigColorTab()
 {
@@ -351,40 +389,38 @@ QVector<KateColorItem> KateSchemaConfigColorTab::readConfig(KConfigGroup &, cons
     return items;
 }
 
-QJsonObject KateSchemaConfigColorTab::exportJson() const
-{
-    static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("EditorColorRole");
-    Q_ASSERT(idx >= 0);
-    const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
-    QJsonObject colors;
-    const QVector<KateColorItem> items = ui->colorItems();
-    for (const KateColorItem &item : items) {
-        QColor c = item.useDefault ? item.defaultColor : item.color;
-        colors[QLatin1String(metaEnum.key(item.role))] = c.name();
-    }
-    return colors;
-}
-
 void KateSchemaConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
 
-#if 0 // FIXME-THEME
+    // we use meta-data of enum for computing the json keys
+    static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("EditorColorRole");
+    Q_ASSERT(idx >= 0);
+    const auto metaEnum = KSyntaxHighlighting::Theme::staticMetaObject.enumerator(idx);
+
+    // export all themes we cached data for
     for (auto it = m_schemas.constBegin(); it != m_schemas.constEnd(); ++it) {
-        KConfigGroup config = KTextEditor::EditorPrivate::self()->schemaManager()->schema(it.key());
-        for (const KateColorItem &item : it.value()) {
-            if (item.useDefault) {
-                config.deleteEntry(item.key);
-            } else {
-                config.writeEntry(item.key, item.color);
-            }
+        // get theme for key, skip invalid or read-only themes for writing
+        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        if (!theme.isValid() || theme.isReadOnly()) {
+            continue;
         }
 
-        // add dummy entry to prevent the config group from being empty.
-        // As if the group is empty, KateSchemaManager will not find it anymore.
-        config.writeEntry("dummy", "prevent-empty-group");
+        // get current theme data from disk
+        QJsonObject newThemeObject = jsonForTheme(theme);
+
+        // patch the editor-colors part
+        QJsonObject colors;
+        for (const KateColorItem &item : it.value()) {
+            QColor c = item.useDefault ? item.defaultColor : item.color;
+            colors[QLatin1String(metaEnum.key(item.role))] = c.name();
+        }
+        newThemeObject[QLatin1String("editor-colors")] = colors;
+
+        // write json back to file
+        writeJson(newThemeObject, theme.filePath());
     }
-#endif
+
     // all colors are written, so throw away all cached schemas
     m_schemas.clear();
 }
@@ -1098,34 +1134,17 @@ bool KateSchemaConfigPage::newSchema()
     const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
     const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
 
-    // load json content, shall work, as the theme as valid, but still abort on errors
-    QFile loadFile(currentTheme.filePath());
-    if (!loadFile.open(QIODevice::ReadOnly)) {
-        return false;
-    }
-    const QByteArray jsonData = loadFile.readAll();
-    QJsonParseError parseError;
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData, &parseError);
-    if (parseError.error != QJsonParseError::NoError) {
-        return false;
-    }
-
-    // patch new name into theme object
-    QJsonObject newThemeObject = jsonDoc.object();
+    // get json for current theme
+    QJsonObject newThemeObject = jsonForTheme(currentTheme);
     QJsonObject metaData;
     metaData[QLatin1String("revision")] = 1;
     metaData[QLatin1String("name")] = schemaName;
     newThemeObject[QLatin1String("metadata")] = metaData;
 
     // write to new theme file, we might need to create the local dir first
-    // keep saveFile in own scope, we need to ensure it is flushed to disk before the reload below happens
-    {
-        QDir().mkpath(themesPath);
-        QFile saveFile(themeFileName);
-        if (!saveFile.open(QIODevice::WriteOnly)) {
-            return false;
-        }
-        saveFile.write(QJsonDocument(newThemeObject).toJson());
+    QDir().mkpath(themesPath);
+    if (!writeJson(newThemeObject, themeFileName)) {
+        return false;
     }
 
     // reset syntax manager repo to find new theme
