@@ -1139,6 +1139,7 @@ QString KateSchemaConfigPage::requestSchemaName(const QString &suggestedName)
 
 void KateSchemaConfigPage::importFullSchema()
 {
+#if 0 // FIXME-THEME
     const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Schema"), QString(), QStringLiteral("%1 (*.kateschema)").arg(i18n("Kate color schema")));
 
     if (srcName.isEmpty()) {
@@ -1209,6 +1210,7 @@ void KateSchemaConfigPage::importFullSchema()
         progress.setValue(++cnt);
     }
     progress.setValue(highlightings.count());
+#endif
 }
 
 void KateSchemaConfigPage::apply()
@@ -1313,14 +1315,25 @@ void KateSchemaConfigPage::deleteSchema()
     const int comboIndex = schemaCombo->currentIndex();
     const QString schemaNameToDelete = schemaCombo->itemData(comboIndex).toString();
 
-    // KSyntaxHighlighting themes can not be deleted
-    if (KateHlManager::self()->repository().theme(schemaNameToDelete).isValid()) {
+    // KSyntaxHighlighting themes can not be deleted, skip invalid themes, too
+    const auto theme = KateHlManager::self()->repository().theme(schemaNameToDelete);
+    if (!theme.isValid() || theme.isReadOnly()) {
         return;
     }
-#if 0 // THEME-FIXME
 
-    // kill the Theme.........
+    // ask the user again, this can't be undone
+    if (KMessageBox::warningContinueCancel(this, i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete),
+                                                     i18n("Possible Data Loss"),
+                                                     KGuiItem(i18n("Delete Nevertheless")),
+                                                     KStandardGuiItem::cancel()) != KMessageBox::Continue) {
+        return;
+    }
 
+    // purge the theme file
+    QFile::remove(theme.filePath());
+
+    // reset syntax manager repo to flush deleted theme
+    KateHlManager::self()->reload();
 
     // fallback to Default schema + auto
     schemaCombo->setCurrentIndex(schemaCombo->findData(QVariant(KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme(KSyntaxHighlighting::Repository::LightTheme).name())));
@@ -1332,29 +1345,75 @@ void KateSchemaConfigPage::deleteSchema()
     schemaCombo->removeItem(comboIndex);
     defaultSchemaCombo->removeItem(comboIndex);
 
-#endif
-
     // Reload the color tab, since it uses cached schemas
     m_colorTab->reload();
 }
 
-bool KateSchemaConfigPage::newSchema(const QString &newName)
+bool KateSchemaConfigPage::newSchema()
 {
+    // location to write theme files to:
+    const QString themesPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/org.kde.syntax-highlighting/themes");
+
     // get sane name
-    QString schemaName(newName);
-    if (newName.isEmpty()) {
+    QString schemaName;
+    QString themeFileName;
+    while (schemaName.isEmpty()) {
         bool ok = false;
-        schemaName = QInputDialog::getText(this, i18n("Name for New Schema"), i18n("Name:"), QLineEdit::Normal, i18n("New Schema"), &ok);
+        schemaName = QInputDialog::getText(this, i18n("Name for New Theme"), i18n("Name:"), QLineEdit::Normal, i18n("New Theme"), &ok);
         if (!ok) {
             return false;
         }
+
+        // try if schema already around => if yes, retry name input
+        // we try for duplicated file names, too
+        themeFileName = themesPath + QStringLiteral("/") + schemaName + QStringLiteral(".theme");
+        if (KateHlManager::self()->repository().theme(schemaName).isValid() || QFile::exists(themeFileName)) {
+            KMessageBox::information(this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("New Theme"));
+            schemaName.clear();
+        }
     }
 
-    // try if schema already around
-    if (KateHlManager::self()->repository().theme(schemaName).isValid()) {
-        KMessageBox::information(this, i18n("<p>The schema %1 already exists.</p><p>Please choose a different schema name.</p>", schemaName), i18n("New Schema"));
+    // get current theme data as template
+    const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
+    const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
+
+    // load json content, shall work, as the theme as valid, but still abort on errors
+    QFile loadFile(currentTheme.filePath());
+    if (!loadFile.open(QIODevice::ReadOnly)) {
         return false;
     }
+    const QByteArray jsonData = loadFile.readAll();
+    QJsonParseError parseError;
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData, &parseError);
+    if (parseError.error != QJsonParseError::NoError) {
+        return false;
+    }
+
+    qDebug() << "lala";
+
+    // patch new name into theme object
+    QJsonObject newThemeObject = jsonDoc.object();
+    QJsonObject metaData;
+    metaData[QLatin1String("revision")] = 1;
+    metaData[QLatin1String("name")] = schemaName;
+    newThemeObject[QLatin1String("metadata")] = metaData;
+
+    // write to new theme file, we might need to create the local dir first
+    // keep saveFile in own scope, we need to ensure it is flushed to disk before the reload below happens
+    {
+        QDir().mkpath(themesPath);
+        QFile saveFile(themeFileName);
+        if (!saveFile.open(QIODevice::WriteOnly)) {
+            return false;
+        }
+        saveFile.write(QJsonDocument(newThemeObject).toJson());
+    }
+
+
+    qDebug() << "lala" << themeFileName;
+
+    // reset syntax manager repo to find new theme
+    KateHlManager::self()->reload();
 
     // append items to combo boxes
     schemaCombo->addItem(schemaName, QVariant(schemaName));
@@ -1362,14 +1421,13 @@ bool KateSchemaConfigPage::newSchema(const QString &newName)
 
     // finally, activate new schema (last item in the list)
     schemaCombo->setCurrentIndex(schemaCombo->count() - 1);
-
     return true;
 }
 
 void KateSchemaConfigPage::schemaChanged(const QString &schema)
 {
-    // KSyntaxHighlighting themes can not be deleted
-    btndel->setEnabled(!KateHlManager::self()->repository().theme(schema).isValid());
+    // we can't delete read-only themes, e.g. the stuff shipped inside Qt resources or system wide installed
+    btndel->setEnabled(!KateHlManager::self()->repository().theme(schema).isReadOnly());
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);

@@ -150,7 +150,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void deleteSchema();
-    bool newSchema(const QString &newName = QString());
+    bool newSchema();
     void schemaChanged(const QString &schema);
     void comboBoxIndexChanged(int currentIndex);
 
