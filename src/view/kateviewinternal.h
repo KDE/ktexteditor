@@ -256,6 +256,7 @@ private:
     void scrollPos(KTextEditor::Cursor &c, bool force = false, bool calledExternally = false, bool emitSignals = true);
     void scrollLines(int lines, bool sel);
 
+    KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor &position) const;
     int linesDisplayed() const;
 
     int lineToY(int viewLine) const;

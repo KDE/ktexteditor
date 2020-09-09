@@ -789,6 +789,20 @@ void KateViewInternal::showEvent(QShowEvent *e)
     QWidget::showEvent(e);
 }
 
+KTextEditor::Attribute::Ptr KateViewInternal::attributeAt(const KTextEditor::Cursor &position) const
+{
+    KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
+
+    Kate::TextLine kateLine = doc()->kateTextLine(position.line());
+    if (!kateLine) {
+        return attrib;
+    }
+
+    *attrib = *m_view->renderer()->attribute(kateLine->attribute(position.column()));
+
+    return attrib;
+}
+
 int KateViewInternal::linesDisplayed() const
 {
     int h = height();
@@ -2068,7 +2082,7 @@ void KateViewInternal::updateBracketMarks()
         if (flashPos != m_bmLastFlashPos->toCursor()) {
             m_bmLastFlashPos->setPosition(flashPos);
 
-            KTextEditor::Attribute::Ptr attribute = doc()->attributeAt(flashPos);
+            KTextEditor::Attribute::Ptr attribute = attributeAt(flashPos);
             attribute->setBackground(view()->m_renderer->config()->highlightedBracketColor());
             attribute->setFontBold(m_bmStart->attribute()->fontBold());
 

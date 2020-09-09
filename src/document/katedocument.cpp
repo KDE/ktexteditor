@@ -5790,26 +5790,6 @@ void KTextEditor::DocumentPrivate::replaceCharactersByEncoding(const KTextEditor
 // Highlighting information
 //
 
-KTextEditor::Attribute::Ptr KTextEditor::DocumentPrivate::attributeAt(const KTextEditor::Cursor &position)
-{
-    KTextEditor::Attribute::Ptr attrib(new KTextEditor::Attribute());
-
-    KTextEditor::ViewPrivate *view = m_views.empty() ? nullptr : m_views.begin().value();
-    if (!view) {
-        qCWarning(LOG_KTE) << "ATTENTION: cannot access lineAttributes() without any View (will be fixed eventually)";
-        return attrib;
-    }
-
-    Kate::TextLine kateLine = kateTextLine(position.line());
-    if (!kateLine) {
-        return attrib;
-    }
-
-    *attrib = *view->renderer()->attribute(kateLine->attribute(position.column()));
-
-    return attrib;
-}
-
 QStringList KTextEditor::DocumentPrivate::embeddedHighlightingModes() const
 {
     return highlight()->getEmbeddedHighlightingModes();

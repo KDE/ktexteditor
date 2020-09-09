@@ -1227,8 +1227,6 @@ public:
 public:
     QStringList embeddedHighlightingModes() const override;
     QString highlightingModeAt(const KTextEditor::Cursor &position) override;
-    // TODO KDE5: move to View
-    virtual KTextEditor::Attribute::Ptr attributeAt(const KTextEditor::Cursor &position);
 
     //
     // BEGIN: KTextEditor::MessageInterface
