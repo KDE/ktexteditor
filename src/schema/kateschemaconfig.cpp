@@ -723,45 +723,42 @@ void KateSchemaConfigHighlightTab::hlChanged(int z)
  */
 static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighlighting::Format> &formats, const KateAttributeList &defaultStyleAttributes)
 {
+    const KSyntaxHighlighting::Theme invalidTheme;
     KateAttributeList defaults;
     for (const auto &format : formats) {
         // create a KTextEditor attribute matching the default style for this format
+        // use the default style attribute we got passed to have the one we currently have configured in the settings here
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleAttributes.at(textStyleToDefaultStyle(format.textStyle()))));
 
-#if 0
-        // use format specific colors of fallback to default theme color
-        if (format.hasTextColor(currentTheme)) {
-            newAttribute->setForeground(format.textColor(currentTheme));
-            newAttribute->setSelectedForeground(format.selectedTextColor(currentTheme));
-        } else {
-            if (const auto color = currentTheme.textColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setForeground(QColor(color));
-            }
-            if (const auto color = currentTheme.selectedTextColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setSelectedForeground(QColor(color));
-            }
+        // check for override => if yes, set attribute as overridden, use invalid theme to avoid the usage of theme override!
+
+        if (format.hasTextColorOverride()) {
+            newAttribute->setForeground(format.textColor(invalidTheme));
+        }
+        if (format.hasBackgroundColorOverride()) {
+            newAttribute->setBackground(format.backgroundColor(invalidTheme));
+        }
+        if (format.hasSelectedTextColorOverride()) {
+            newAttribute->setSelectedForeground(format.selectedTextColor(invalidTheme));
+        }
+        if (format.hasSelectedBackgroundColorOverride()) {
+            newAttribute->setSelectedBackground(format.selectedBackgroundColor(invalidTheme));
+        }
+        if (format.hasBoldOverride()) {
+            newAttribute->setFontBold(format.isBold(invalidTheme));
+        }
+        if (format.hasItalicOverride()) {
+            newAttribute->setFontItalic(format.isItalic(invalidTheme));
+        }
+        if (format.hasUnderlineOverride()) {
+            newAttribute->setFontUnderline(format.isUnderline(invalidTheme));
+        }
+        if (format.hasStrikeThroughOverride()) {
+            newAttribute->setFontStrikeOut(format.isStrikeThrough(invalidTheme));
         }
 
-        // use format specific colors of fallback to default theme color
-        if (format.hasBackgroundColor(currentTheme)) {
-            newAttribute->setBackground(format.backgroundColor(currentTheme));
-            newAttribute->setSelectedBackground(format.selectedBackgroundColor(currentTheme));
-        } else {
-            if (const auto color = currentTheme.backgroundColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setBackground(QColor(color));
-            }
-            if (const auto color = currentTheme.selectedBackgroundColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setSelectedBackground(QColor(color));
-            }
-        }
-
-        newAttribute->setFontBold(format.isBold(currentTheme));
-        newAttribute->setFontItalic(format.isItalic(currentTheme));
-        newAttribute->setFontUnderline(format.isUnderline(currentTheme));
-        newAttribute->setFontStrikeOut(format.isStrikeThrough(currentTheme));
+        // not really relevant, set it as configured
         newAttribute->setSkipSpellChecking(format.spellCheck());
-
-#endif
         defaults.append(newAttribute);
     }
     return defaults;
@@ -791,8 +788,9 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     // Set listview colors
     updateColorPalette(l->at(0)->foreground().color());
 
-    // compute defaults styles
+    // compute defaults styles, store them for later use in apply()
     const auto defaults = defaultsForHighlighting(KateHlManager::self()->getHl(m_hl)->formats(), *l);
+    m_hlDictDefaults[schema][m_hl] = defaults;
 
     QHash<QString, QTreeWidgetItem *> prefixes;
     QVector<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
@@ -839,6 +837,7 @@ void KateSchemaConfigHighlightTab::reload()
     m_styles->clear();
 
     m_hlDict.clear();
+    m_hlDictDefaults.clear();
 
     hlChanged(hlCombo->currentIndex());
 }
@@ -869,40 +868,54 @@ void KateSchemaConfigHighlightTab::apply()
             if (it2.key() == 0)
                 continue;
 
+            // get default attributes, only write out diffs between them and the set stuff
+            const auto defaults = m_hlDictDefaults[it.key()][it2.key()];
+
             const QString definitionName = KateHlManager::self()->getHl(it2.key())->name();
             QJsonObject styles;
             const auto stylesList = it2.value();
             for (int z = 0; z < stylesList.count(); z++) {
                 QJsonObject style;
                 KTextEditor::Attribute::Ptr p = stylesList.at(z);
-                if (p->hasProperty(QTextFormat::ForegroundBrush)) {
+                KTextEditor::Attribute::Ptr pDefault = defaults.at(z);
+                if (p->hasProperty(QTextFormat::ForegroundBrush) && p->foreground().color() != pDefault->foreground().color()) {
                     style[QLatin1String("text-color")] = p->foreground().color().name();
                 }
-                if (p->hasProperty(QTextFormat::BackgroundBrush)) {
+                if (p->hasProperty(QTextFormat::BackgroundBrush) && p->background().color() != pDefault->background().color()) {
                     style[QLatin1String("background-color")] = p->background().color().name();
                 }
-                if (p->hasProperty(SelectedForeground)) {
+                if (p->hasProperty(SelectedForeground) && p->selectedForeground().color() != pDefault->selectedForeground().color()) {
                     style[QLatin1String("selected-text-color")] = p->selectedForeground().color().name();
                 }
-                if (p->hasProperty(SelectedBackground)) {
+                if (p->hasProperty(SelectedBackground) && p->selectedBackground().color() != pDefault->selectedBackground().color()) {
                     style[QLatin1String("selected-background-color")] = p->selectedBackground().color().name();
                 }
-                if (p->hasProperty(QTextFormat::FontWeight)) {
+                if (p->hasProperty(QTextFormat::FontWeight) && p->fontBold() != pDefault->fontBold()) {
                     style[QLatin1String("bold")] = p->fontBold();
                 }
-                if (p->hasProperty(QTextFormat::FontItalic)) {
+                if (p->hasProperty(QTextFormat::FontItalic) && p->fontItalic() != pDefault->fontItalic()) {
                     style[QLatin1String("italic")] = p->fontItalic();
                 }
-                if (p->hasProperty(QTextFormat::TextUnderlineStyle)) {
+                if (p->hasProperty(QTextFormat::TextUnderlineStyle) && p->fontUnderline() != pDefault->fontUnderline()) {
                     style[QLatin1String("underline")] = p->fontUnderline();
                 }
-                if (p->hasProperty(QTextFormat::FontStrikeOut)) {
+                if (p->hasProperty(QTextFormat::FontStrikeOut) && p->fontStrikeOut() != pDefault->fontStrikeOut()) {
                     style[QLatin1String("strike-through")] = p->fontStrikeOut();
                 }
-                styles[p->name()] = style;
+
+                // ensure we skip empty overrides
+                if (!style.isEmpty()) {
+                    styles[p->name()] = style;
+                }
             }
-            overrides[definitionName] = styles;
+
+            // ensure we skip empty overrides
+            if (!styles.isEmpty()) {
+                overrides[definitionName] = styles;
+            }
         }
+
+        // we set even empty overrides, to ensure we overwrite stuff!
         newThemeObject[QLatin1String("custom-styles")] = overrides;
 
         // write json back to file
