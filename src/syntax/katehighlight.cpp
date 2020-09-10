@@ -318,30 +318,24 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
         // create a KTextEditor attribute matching the given format
         KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(nameForAttrib(array.size()), textStyleToDefaultStyle(format.textStyle())));
 
-        // use format specific colors of fallback to default theme color
-        if (format.hasTextColor(currentTheme)) {
-            newAttribute->setForeground(format.textColor(currentTheme));
-            newAttribute->setSelectedForeground(format.selectedTextColor(currentTheme));
-        } else {
-            if (const auto color = currentTheme.textColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setForeground(QColor(color));
-            }
-            if (const auto color = currentTheme.selectedTextColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setSelectedForeground(QColor(color));
-            }
+        if (const auto color = format.textColor(currentTheme).rgba()) {
+            newAttribute->setForeground(QColor(color));
         }
 
-        // use format specific colors of fallback to default theme color
-        if (format.hasBackgroundColor(currentTheme)) {
-            newAttribute->setBackground(format.backgroundColor(currentTheme));
-            newAttribute->setSelectedBackground(format.selectedBackgroundColor(currentTheme));
+        if (const auto color = format.selectedTextColor(currentTheme).rgba()) {
+            newAttribute->setSelectedForeground(QColor(color));
+        }
+
+        if (const auto color = format.backgroundColor(currentTheme).rgba()) {
+            newAttribute->setBackground(QColor(color));
         } else {
-            if (const auto color = currentTheme.backgroundColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setBackground(QColor(color));
-            }
-            if (const auto color = currentTheme.selectedBackgroundColor(KSyntaxHighlighting::Theme::Normal)) {
-                newAttribute->setSelectedBackground(QColor(color));
-            }
+            newAttribute->clearBackground();
+        }
+
+        if (const auto color = format.selectedBackgroundColor(currentTheme).rgba()) {
+            newAttribute->setSelectedBackground(QColor(color));
+        } else {
+            newAttribute->clearProperty(SelectedBackground);
         }
 
         newAttribute->setFontBold(format.isBold(currentTheme));
