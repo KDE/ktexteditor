@@ -346,6 +346,10 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
 
 void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 {
+    // ensure invalid or read-only stuff can't be changed
+    const auto theme = KateHlManager::self()->repository().theme(newSchema);
+    setDisabled(!theme.isValid() || theme.isReadOnly());
+
     // save current schema
     if (!m_currentSchema.isEmpty()) {
         if (m_schemas.contains(m_currentSchema)) {
@@ -365,7 +369,6 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
 
     // If we havent this schema, read in from config file
     if (!m_schemas.contains(newSchema)) {
-        const auto theme = KateHlManager::self()->repository().theme(newSchema);
         QVector<KateColorItem> items = colorItemList(theme);
         for (int i = 0; i < items.count(); ++i) {
             KateColorItem &item(items[i]);
@@ -511,6 +514,10 @@ KateAttributeList *KateSchemaConfigDefaultStylesTab::attributeList(const QString
 
 void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
 {
+    // ensure invalid or read-only stuff can't be changed
+    const auto theme = KateHlManager::self()->repository().theme(schema);
+    setDisabled(!theme.isValid() || theme.isReadOnly());
+
     m_currentSchema = schema;
 
     m_defaultStyles->clear();
@@ -767,6 +774,10 @@ static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighli
 
 void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
 {
+    // ensure invalid or read-only stuff can't be changed
+    const auto theme = KateHlManager::self()->repository().theme(schema);
+    setDisabled(!theme.isValid() || theme.isReadOnly());
+
     m_schema = schema;
 
     m_styles->clear();
