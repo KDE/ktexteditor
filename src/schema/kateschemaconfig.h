@@ -17,6 +17,8 @@
 #include <QJsonObject>
 #include <QMap>
 
+#include <map>
+
 class KateStyleTreeWidget;
 class KComboBox;
 
@@ -111,7 +113,14 @@ private:
     int m_hl;
 
     QHash<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> m_hlDict;
-    QHash<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> m_hlDictDefaults;
+
+    /**
+     * store attribute we modify
+     * this unifies them to be unique (aka in all highlighting's the embedded stuff is shared!)
+     *
+     * theme => highlighting => attribute => pair of value + default
+     */
+    std::map<QString, std::map<QString, std::map<QString, std::pair<KTextEditor::Attribute::Ptr, KTextEditor::Attribute::Ptr>>>> m_uniqueAttributes;
 
 public:
     QList<int> hlsForSchema(const QString &schema);

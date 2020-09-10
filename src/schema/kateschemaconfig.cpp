@@ -775,22 +775,46 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
         m_hlDict.insert(schema, QHash<int, QVector<KTextEditor::Attribute::Ptr>>());
     }
 
+    // Set listview colors
+    KateAttributeList *l = m_defaults->attributeList(schema);
+    updateColorPalette(l->at(0)->foreground().color());
+
+    // create unified stuff
+    auto attributes = KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema);
+    auto formats = KateHlManager::self()->getHl(m_hl)->formats();
+    auto defaults = defaultsForHighlighting(formats, *l);
+
+    for (int i = 0; i < attributes.size(); ++i) {
+        // All stylenames have their language mode prefixed, e.g. HTML:Comment
+        // split them and put them into nice substructures.
+        int c = attributes[i]->name().indexOf(QLatin1Char(':'));
+        if (c <= 0)
+            continue;
+
+        QString highlighting = attributes[i]->name().left(c);
+        QString name = attributes[i]->name().mid(c + 1);
+        auto &uniqueAttribute = m_uniqueAttributes[m_schema][highlighting][name].first;
+        auto &uniqueAttributeDefault = m_uniqueAttributes[m_schema][highlighting][name].second;
+
+        if (uniqueAttribute.data())
+            attributes[i] = uniqueAttribute;
+        else
+            uniqueAttribute = attributes[i];
+
+        if (uniqueAttributeDefault.data())
+            defaults[i] = uniqueAttributeDefault;
+        else
+            uniqueAttributeDefault = defaults[i];
+    }
+
+
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        m_hlDict[m_schema].insert(m_hl, KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema));
+        m_hlDict[m_schema].insert(m_hl, attributes);
     }
 
     // None can't be changed with the current way
     // TODO: removed it from the list?
     m_styles->setDisabled(m_hl == 0);
-
-    KateAttributeList *l = m_defaults->attributeList(schema);
-
-    // Set listview colors
-    updateColorPalette(l->at(0)->foreground().color());
-
-    // compute defaults styles, store them for later use in apply()
-    const auto defaults = defaultsForHighlighting(KateHlManager::self()->getHl(m_hl)->formats(), *l);
-    m_hlDictDefaults[schema][m_hl] = defaults;
 
     QHash<QString, QTreeWidgetItem *> prefixes;
     QVector<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
@@ -837,7 +861,7 @@ void KateSchemaConfigHighlightTab::reload()
     m_styles->clear();
 
     m_hlDict.clear();
-    m_hlDictDefaults.clear();
+    m_uniqueAttributes.clear();
 
     hlChanged(hlCombo->currentIndex());
 }
@@ -845,12 +869,9 @@ void KateSchemaConfigHighlightTab::reload()
 void KateSchemaConfigHighlightTab::apply()
 {
     // handle all cached themes data
-    QMutableHashIterator<QString, QHash<int, QVector<KTextEditor::Attribute::Ptr>>> it(m_hlDict);
-    while (it.hasNext()) {
-        it.next();
-
+    for (const auto &themeIt : m_uniqueAttributes) {
         // get theme for key, skip invalid or read-only themes for writing
-        const auto theme = KateHlManager::self()->repository().theme(it.key());
+        const auto theme = KateHlManager::self()->repository().theme(themeIt.first);
         if (!theme.isValid() || theme.isReadOnly()) {
             continue;
         }
@@ -860,24 +881,13 @@ void KateSchemaConfigHighlightTab::apply()
 
         // look at all highlightings we have info stored
         QJsonObject overrides;
-        QMutableHashIterator<int, QVector<KTextEditor::Attribute::Ptr>> it2 = it.value();
-        while (it2.hasNext()) {
-            it2.next();
-
-            // skip hl none
-            if (it2.key() == 0)
-                continue;
-
-            // get default attributes, only write out diffs between them and the set stuff
-            const auto defaults = m_hlDictDefaults[it.key()][it2.key()];
-
-            const QString definitionName = KateHlManager::self()->getHl(it2.key())->name();
+        for (const auto &highlightingIt : themeIt.second) {
+            const QString definitionName = highlightingIt.first;
             QJsonObject styles;
-            const auto stylesList = it2.value();
-            for (int z = 0; z < stylesList.count(); z++) {
+            for (const auto &attributeIt : highlightingIt.second) {
                 QJsonObject style;
-                KTextEditor::Attribute::Ptr p = stylesList.at(z);
-                KTextEditor::Attribute::Ptr pDefault = defaults.at(z);
+                KTextEditor::Attribute::Ptr p = attributeIt.second.first;
+                KTextEditor::Attribute::Ptr pDefault = attributeIt.second.second;
                 if (p->hasProperty(QTextFormat::ForegroundBrush) && p->foreground().color() != pDefault->foreground().color()) {
                     style[QLatin1String("text-color")] = p->foreground().color().name();
                 }
@@ -905,7 +915,7 @@ void KateSchemaConfigHighlightTab::apply()
 
                 // ensure we skip empty overrides
                 if (!style.isEmpty()) {
-                    styles[p->name()] = style;
+                    styles[attributeIt.first] = style;
                 }
             }
 
