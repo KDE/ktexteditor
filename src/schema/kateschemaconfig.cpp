@@ -717,6 +717,57 @@ void KateSchemaConfigHighlightTab::hlChanged(int z)
     schemaChanged(m_schema);
 }
 
+/**
+ * Helper to get the "default attributes" for the given schema + highlighting.
+ * This means all stuff set without taking theme overrides for the highlighting into account.
+ */
+static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighlighting::Format> &formats, const KateAttributeList &defaultStyleAttributes)
+{
+    KateAttributeList defaults;
+    for (const auto &format : formats) {
+        // create a KTextEditor attribute matching the default style for this format
+        KTextEditor::Attribute::Ptr newAttribute(new KTextEditor::Attribute(*defaultStyleAttributes.at(textStyleToDefaultStyle(format.textStyle()))));
+
+#if 0
+        // use format specific colors of fallback to default theme color
+        if (format.hasTextColor(currentTheme)) {
+            newAttribute->setForeground(format.textColor(currentTheme));
+            newAttribute->setSelectedForeground(format.selectedTextColor(currentTheme));
+        } else {
+            if (const auto color = currentTheme.textColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setForeground(QColor(color));
+            }
+            if (const auto color = currentTheme.selectedTextColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setSelectedForeground(QColor(color));
+            }
+        }
+
+        // use format specific colors of fallback to default theme color
+        if (format.hasBackgroundColor(currentTheme)) {
+            newAttribute->setBackground(format.backgroundColor(currentTheme));
+            newAttribute->setSelectedBackground(format.selectedBackgroundColor(currentTheme));
+        } else {
+            if (const auto color = currentTheme.backgroundColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setBackground(QColor(color));
+            }
+            if (const auto color = currentTheme.selectedBackgroundColor(KSyntaxHighlighting::Theme::Normal)) {
+                newAttribute->setSelectedBackground(QColor(color));
+            }
+        }
+
+        newAttribute->setFontBold(format.isBold(currentTheme));
+        newAttribute->setFontItalic(format.isItalic(currentTheme));
+        newAttribute->setFontUnderline(format.isUnderline(currentTheme));
+        newAttribute->setFontStrikeOut(format.isStrikeThrough(currentTheme));
+        newAttribute->setSkipSpellChecking(format.spellCheck());
+
+#endif
+        defaults.append(newAttribute);
+    }
+    return defaults;
+}
+
+
 void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
 {
     m_schema = schema;
@@ -728,29 +779,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     }
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
-        // filter out attribute that got included
-        // TODO: improve this, but at the moment this will otherwise kill the saving!
-        const QString hlName = KateHlManager::self()->getHl(m_hl)->name();
-        const auto items = KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema);
-        QVector<KTextEditor::Attribute::Ptr> filteredItems;
-        for (const auto &item : items) {
-            int c = item->name().indexOf(QLatin1Char(':'));
-            if (c < 0)
-                continue;
-
-            // get prefix == hl name and real name
-            QString prefix = item->name().left(c);
-            QString name = item->name().mid(c + 1);
-
-            // skip if not for the highlighting itself
-            if (prefix != hlName)
-                continue;
-
-            // fix name (used for saving)
-            item->setName(name);
-            filteredItems.append(item);
-        }
-        m_hlDict[m_schema].insert(m_hl, filteredItems);
+        m_hlDict[m_schema].insert(m_hl, KateHlManager::self()->getHl(m_hl)->attributesForDefinition(m_schema));
     }
 
     // None can't be changed with the current way
@@ -762,13 +791,35 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     // Set listview colors
     updateColorPalette(l->at(0)->foreground().color());
 
+    // compute defaults styles
+    const auto defaults = defaultsForHighlighting(KateHlManager::self()->getHl(m_hl)->formats(), *l);
+
     QHash<QString, QTreeWidgetItem *> prefixes;
     QVector<KTextEditor::Attribute::Ptr>::ConstIterator it = m_hlDict[m_schema][m_hl].constBegin();
+    int i = 0;
     while (it != m_hlDict[m_schema][m_hl].constEnd()) {
         const KTextEditor::Attribute::Ptr itemData = *it;
         Q_ASSERT(itemData);
-        m_styles->addItem(itemData->name(), l->at(itemData->defaultStyle()), itemData);
+
+        // All stylenames have their language mode prefixed, e.g. HTML:Comment
+        // split them and put them into nice substructures.
+        int c = itemData->name().indexOf(QLatin1Char(':'));
+        if (c > 0) {
+            QString prefix = itemData->name().left(c);
+            QString name = itemData->name().mid(c + 1);
+
+            QTreeWidgetItem *parent = prefixes[prefix];
+            if (!parent) {
+                parent = new QTreeWidgetItem(m_styles, QStringList() << prefix);
+                m_styles->expandItem(parent);
+                prefixes.insert(prefix, parent);
+            }
+            m_styles->addItem(parent, name, defaults.at(i), itemData);
+        } else {
+            m_styles->addItem(itemData->name(), defaults.at(i), itemData);
+        }
         ++it;
+        ++i;
     }
 
     m_styles->resizeColumns();

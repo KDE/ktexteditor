@@ -275,6 +275,15 @@ public:
      */
     QVector<KTextEditor::Attribute::Ptr> attributesForDefinition(const QString &schema) const;
 
+    /**
+     * Retrieve all formats for this highlighting.
+     * @return all formats for the highlighting definition of this highlighting includes included formats
+     */
+    const std::vector<KSyntaxHighlighting::Format> &formats() const
+    {
+        return m_formats;
+    }
+
 private:
 
     int sanitizeFormatIndex(int attrib) const;
