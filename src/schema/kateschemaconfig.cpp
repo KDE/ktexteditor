@@ -983,9 +983,9 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     headerLayout->addWidget(schemaCombo);
     connect(schemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(comboBoxIndexChanged(int)));
 
-    QPushButton *btnnew = new QPushButton(i18n("&Copy..."), this);
-    headerLayout->addWidget(btnnew);
-    connect(btnnew, SIGNAL(clicked()), this, SLOT(newSchema()));
+    QPushButton *copyButton = new QPushButton(i18n("&Copy..."), this);
+    headerLayout->addWidget(copyButton);
+    connect(copyButton, SIGNAL(clicked()), this, SLOT(copyTheme()));
 
     btndel = new QPushButton(i18n("&Delete"), this);
     headerLayout->addWidget(btndel);
@@ -1238,7 +1238,7 @@ void KateSchemaConfigPage::deleteSchema()
     m_colorTab->reload();
 }
 
-bool KateSchemaConfigPage::newSchema()
+bool KateSchemaConfigPage::copyTheme()
 {
     // location to write theme files to
     const QString themesPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/org.kde.syntax-highlighting/themes");
@@ -1248,7 +1248,7 @@ bool KateSchemaConfigPage::newSchema()
     QString themeFileName;
     while (schemaName.isEmpty()) {
         bool ok = false;
-        schemaName = QInputDialog::getText(this, i18n("Name for New Theme"), i18n("Name:"), QLineEdit::Normal, i18n("New Theme"), &ok);
+        schemaName = QInputDialog::getText(this, i18n("Name for Theme Copy"), i18n("Name:"), QLineEdit::Normal, i18n("New Name"), &ok);
         if (!ok) {
             return false;
         }
@@ -1257,7 +1257,7 @@ bool KateSchemaConfigPage::newSchema()
         // we try for duplicated file names, too
         themeFileName = themesPath + QStringLiteral("/") + schemaName + QStringLiteral(".theme");
         if (KateHlManager::self()->repository().theme(schemaName).isValid() || QFile::exists(themeFileName)) {
-            KMessageBox::information(this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("New Theme"));
+            KMessageBox::information(this, i18n("<p>The theme \"%1\" already exists.</p><p>Please choose a different theme name.</p>", schemaName), i18n("Copy Theme"));
             schemaName.clear();
         }
     }
