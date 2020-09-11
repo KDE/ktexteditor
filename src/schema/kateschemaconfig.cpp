@@ -20,8 +20,6 @@
 #include "katestyletreewidget.h"
 #include "kateview.h"
 
-#include "ui_howtoimportschema.h"
-
 #include <KComboBox>
 #include <KConfigGroup>
 #include <KMessageBox>
