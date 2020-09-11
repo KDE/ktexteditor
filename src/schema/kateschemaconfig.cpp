@@ -25,6 +25,7 @@
 #include <KComboBox>
 #include <KConfigGroup>
 #include <KMessageBox>
+#include <KMessageWidget>
 
 #include <QFileDialog>
 #include <QInputDialog>
@@ -982,7 +983,7 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     headerLayout->addWidget(schemaCombo);
     connect(schemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(comboBoxIndexChanged(int)));
 
-    QPushButton *btnnew = new QPushButton(i18n("&New..."), this);
+    QPushButton *btnnew = new QPushButton(i18n("&Copy..."), this);
     headerLayout->addWidget(btnnew);
     connect(btnnew, SIGNAL(clicked()), this, SLOT(newSchema()));
 
@@ -999,6 +1000,13 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     connect(btnimport, SIGNAL(clicked()), this, SLOT(importFullSchema()));
 
     headerLayout->addStretch();
+
+    // label to inform about read-only state
+    m_readOnlyThemeLabel = new KMessageWidget(i18n("Bundled read-only theme. To modify the theme, please copy it."), this);
+    m_readOnlyThemeLabel->setCloseButtonVisible(false);
+    m_readOnlyThemeLabel->setMessageType(KMessageWidget::Information);
+    m_readOnlyThemeLabel->hide();
+    layout->addWidget(m_readOnlyThemeLabel);
 
     // tabs
     QTabWidget *tabWidget = new QTabWidget(this);
@@ -1286,7 +1294,9 @@ bool KateSchemaConfigPage::newSchema()
 void KateSchemaConfigPage::schemaChanged(const QString &schema)
 {
     // we can't delete read-only themes, e.g. the stuff shipped inside Qt resources or system wide installed
-    btndel->setEnabled(!KateHlManager::self()->repository().theme(schema).isReadOnly());
+    const auto theme = KateHlManager::self()->repository().theme(schema);
+    btndel->setEnabled(!theme.isReadOnly());
+    m_readOnlyThemeLabel->setVisible(theme.isReadOnly());
 
     // propagate changed schema to all tabs
     m_colorTab->schemaChanged(schema);

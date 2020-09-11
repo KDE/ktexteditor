@@ -21,6 +21,7 @@
 
 class KateStyleTreeWidget;
 class KComboBox;
+class KMessageWidget;
 
 class KateSchemaConfigColorTab : public QWidget
 {
@@ -156,6 +157,7 @@ private:
 private:
     QString m_currentSchema;
 
+    KMessageWidget *m_readOnlyThemeLabel = nullptr;
     class QPushButton *btndel;
     class KComboBox *defaultSchemaCombo;
     class KComboBox *schemaCombo;

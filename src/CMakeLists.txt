@@ -251,8 +251,7 @@ dialogs/completionconfigwidget.ui
 search/searchbarincremental.ui
 search/searchbarpower.ui
 spellcheck/spellcheckbar.ui
-dialogs/spellcheckconfigwidget.ui
-schema/howtoimportschema.ui )
+dialogs/spellcheckconfigwidget.ui)
 
 qt5_add_resources( ktexteditor_LIB_SRCS data/ktexteditor.qrc "${CMAKE_CURRENT_BINARY_DIR}/script/data/script.qrc")
 
