@@ -22,6 +22,7 @@
 
 #include <KComboBox>
 #include <KConfigGroup>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KMessageWidget>
 
