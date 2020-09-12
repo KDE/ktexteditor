@@ -749,7 +749,8 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     m_schemaSet = true;
 
     // for the global config, we honor the auto selection based on the palette
-    if (isGlobal() && value(AutoColorThemeSelection).toBool()) {
+    // do the same if the set theme really doesn't exist, we need a valid theme or the rendering will be broken in bad ways!
+    if ((isGlobal() && value(AutoColorThemeSelection).toBool()) || !KateHlManager::self()->repository().theme(schema).isValid()) {
         // always choose some theme matching the current application palette
         // we will arrive here after palette changed signals, too!
         m_schema = bestThemeForApplicationPalette().name();
