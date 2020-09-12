@@ -126,6 +126,12 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     /**
+     * Paste the global mouse selection. Support for Selection is provided only
+     * on systems with a global mouse selection (e.g. X11).
+     */
+    void pasteSelection();
+
+    /**
      * Wrap lines touched by the selection with respect of existing paragraphs.
      * Work is done by KTextEditor::DocumentPrivate::wrapParagraph
      */
@@ -747,6 +753,7 @@ private:
     QAction *m_copy;
     QAction *m_copyHtmlAction;
     QAction *m_paste;
+    QAction *m_pasteSelection;
     QAction *m_selectAll;
     QAction *m_deSelect;
 

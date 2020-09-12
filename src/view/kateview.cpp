@@ -458,6 +458,13 @@ void KTextEditor::ViewPrivate::setupActions()
     m_pasteMenu = ac->addAction(QStringLiteral("edit_paste_menu"), new KatePasteMenu(i18n("Clipboard &History"), this));
     connect(KTextEditor::EditorPrivate::self(), SIGNAL(clipboardHistoryChanged()), this, SLOT(slotClipboardHistoryChanged()));
 
+    if (QApplication::clipboard()->supportsSelection()) {
+        m_pasteSelection = a = ac->addAction(QStringLiteral("edit_paste_selection"), this, SLOT(pasteSelection()));
+        a->setText(i18n("Paste Selection"));
+        ac->setDefaultShortcuts(a, KStandardShortcut::pasteSelection());
+        a->setWhatsThis(i18n("Paste previously mouse selection contents"));
+    }
+
     if (!doc()->readOnly()) {
         a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
         a->setWhatsThis(i18n("Save the current document"));
@@ -571,6 +578,9 @@ void KTextEditor::ViewPrivate::setupActions()
         m_cut->setEnabled(false);
         m_paste->setEnabled(false);
         m_pasteMenu->setEnabled(false);
+        if (m_pasteSelection) {
+            m_pasteSelection->setEnabled(false);
+        }
         m_editUndo = nullptr;
         m_editRedo = nullptr;
     }
@@ -1493,6 +1503,9 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     m_cut->setEnabled(doc()->isReadWrite() && (selection() || m_config->smartCopyCut()));
     m_paste->setEnabled(doc()->isReadWrite());
     m_pasteMenu->setEnabled(doc()->isReadWrite() && !KTextEditor::EditorPrivate::self()->clipboardHistory().isEmpty());
+    if (m_pasteSelection) {
+        m_pasteSelection->setEnabled(doc()->isReadWrite());
+    }
     m_setEndOfLine->setEnabled(doc()->isReadWrite());
 
     static const auto l = {QStringLiteral("edit_replace"),
@@ -2410,6 +2423,13 @@ void KTextEditor::ViewPrivate::copy() const
     KTextEditor::EditorPrivate::self()->copyToClipboard(text);
 }
 
+void KTextEditor::ViewPrivate::pasteSelection()
+{
+    m_temporaryAutomaticInvocationDisabled = true;
+    doc()->paste(this, QApplication::clipboard()->text(QClipboard::Selection));
+    m_temporaryAutomaticInvocationDisabled = false;
+}
+
 void KTextEditor::ViewPrivate::applyWordWrap()
 {
     int first = selectionRange().start().line();
@@ -3179,6 +3199,9 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
     menu->addAction(m_cut);
     menu->addAction(m_copy);
     menu->addAction(m_paste);
+    if (m_pasteSelection) {
+        menu->addAction(m_paste);
+    }
     menu->addSeparator();
     menu->addAction(m_selectAll);
     menu->addAction(m_deSelect);
