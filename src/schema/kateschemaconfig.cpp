@@ -1240,6 +1240,10 @@ void KateSchemaConfigPage::deleteSchema()
 
 bool KateSchemaConfigPage::copyTheme()
 {
+    // get current theme data as template
+    const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
+    const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
+
     // location to write theme files to
     const QString themesPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/org.kde.syntax-highlighting/themes");
 
@@ -1247,11 +1251,14 @@ bool KateSchemaConfigPage::copyTheme()
     QString schemaName;
     QString themeFileName;
     while (schemaName.isEmpty()) {
-        bool ok = false;
-        schemaName = QInputDialog::getText(this, i18n("Name for Theme Copy"), i18n("Name:"), QLineEdit::Normal, i18n("New Name"), &ok);
-        if (!ok) {
+        QInputDialog newNameDialog(this);
+        newNameDialog.setInputMode(QInputDialog::TextInput);
+        newNameDialog.setWindowTitle(i18n("Copy theme"));
+        newNameDialog.setLabelText(i18n("Name for copy of color theme \"%1\":").arg(currentThemeName));
+        if (newNameDialog.exec() == QDialog::Rejected) {
             return false;
         }
+        schemaName = newNameDialog.textValue();
 
         // try if schema already around => if yes, retry name input
         // we try for duplicated file names, too
@@ -1261,10 +1268,6 @@ bool KateSchemaConfigPage::copyTheme()
             schemaName.clear();
         }
     }
-
-    // get current theme data as template
-    const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
-    const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
 
     // get json for current theme
     QJsonObject newThemeObject = jsonForTheme(currentTheme);
