@@ -753,7 +753,8 @@ private:
     QAction *m_copy;
     QAction *m_copyHtmlAction;
     QAction *m_paste;
-    QAction *m_pasteSelection;
+    // always nullptr if paste selection isn't supported
+    QAction *m_pasteSelection = nullptr;
     QAction *m_selectAll;
     QAction *m_deSelect;
 

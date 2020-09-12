@@ -1,5 +1,5 @@
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="KatePartView" version="87" translationDomain="ktexteditor5">
+<gui name="KatePartView" version="88" translationDomain="ktexteditor5">
 <MenuBar>
   <Menu name="file" noMerge="1"><text>&amp;File</text>
     <Action name="file_save" group="save_merge" />
