@@ -28,6 +28,7 @@
 
 #include <QFileDialog>
 #include <QInputDialog>
+#include <QLabel>
 #include <QMetaEnum>
 #include <QPushButton>
 #include <QTabWidget>
