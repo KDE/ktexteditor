@@ -14,8 +14,6 @@
 #include "katesyntaxmanager.h"
 #include "kateview.h"
 
-#include <math.h>
-
 #include <KCharsets>
 #include <KConfigGroup>
 
