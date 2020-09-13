@@ -627,8 +627,8 @@ KateRendererConfig::~KateRendererConfig()
 
 namespace
 {
-const char KEY_SCHEMA[] = "Schema";
 const char KEY_FONT[] = "Font";
+const char KEY_COLOR_THEME[] = "Color Theme";
 const char KEY_WORD_WRAP_MARKER[] = "Word Wrap Marker";
 const char KEY_SHOW_INDENTATION_LINES[] = "Show Indentation Lines";
 const char KEY_SHOW_WHOLE_BRACKET_EXPRESSION[] = "Show Whole Bracket Expression";
@@ -642,10 +642,10 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
-    // setSchema will default to right theme
-    setSchema(config.readEntry(KEY_SCHEMA, QString()));
-
     setFontWithDroppedStyleName(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
+
+    // setSchema will default to right theme
+    setSchema(config.readEntry(KEY_COLOR_THEME, QString()));
 
     setWordWrapMarker(config.readEntry(KEY_WORD_WRAP_MARKER, false));
 
@@ -663,7 +663,7 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     // write generic entries
     writeConfigEntries(config);
 
-    config.writeEntry(KEY_SCHEMA, schema());
+    config.writeEntry(KEY_COLOR_THEME, schema());
 
     config.writeEntry(KEY_FONT, baseFont());
 
