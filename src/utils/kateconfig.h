@@ -1328,7 +1328,6 @@ public:
     void setHighlightedLineColor(const QColor &col);
 
     const QColor &lineMarkerColor(KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01) const; // markType01 == Bookmark
-    void setLineMarkerColor(const QColor &col, KTextEditor::MarkInterface::MarkTypes type = KTextEditor::MarkInterface::markType01);
 
     const QColor &highlightedBracketColor() const;
     void setHighlightedBracketColor(const QColor &col);

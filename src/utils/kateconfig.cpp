@@ -664,9 +664,9 @@ void KateRendererConfig::writeConfig(KConfigGroup &config)
     // write generic entries
     writeConfigEntries(config);
 
-    config.writeEntry(KEY_COLOR_THEME, schema());
-
     config.writeEntry(KEY_FONT, baseFont());
+
+    config.writeEntry(KEY_COLOR_THEME, schema());
 
     config.writeEntry(KEY_WORD_WRAP_MARKER, wordWrapMarker());
 
@@ -968,23 +968,6 @@ const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::MarkInterface::Ma
     }
 
     return s_global->lineMarkerColor(type);
-}
-
-void KateRendererConfig::setLineMarkerColor(const QColor &col, KTextEditor::MarkInterface::MarkTypes type)
-{
-    int index = static_cast<int>(log(static_cast<double>(type)) / log(2.0));
-    Q_ASSERT(index >= 0 && index < KTextEditor::MarkInterface::reservedMarkersCount());
-
-    if (m_lineMarkerColorSet[index] && m_lineMarkerColor[index] == col) {
-        return;
-    }
-
-    configStart();
-
-    m_lineMarkerColorSet[index] = true;
-    m_lineMarkerColor[index] = col;
-
-    configEnd();
 }
 
 const QColor &KateRendererConfig::highlightedBracketColor() const
