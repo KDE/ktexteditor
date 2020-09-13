@@ -23,12 +23,12 @@ class KateStyleTreeWidget;
 class KComboBox;
 class KMessageWidget;
 
-class KateSchemaConfigColorTab : public QWidget
+class KateThemeConfigColorTab : public QWidget
 {
     Q_OBJECT
 
 public:
-    KateSchemaConfigColorTab();
+    KateThemeConfigColorTab();
 
     QColor backgroundColor() const;
     QColor selectionColor() const;
@@ -52,13 +52,13 @@ private:
     KateColorTreeWidget *ui;
 };
 
-class KateSchemaConfigDefaultStylesTab : public QWidget
+class KateThemeConfigDefaultStylesTab : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab);
-    ~KateSchemaConfigDefaultStylesTab() override;
+    explicit KateThemeConfigDefaultStylesTab(KateThemeConfigColorTab *colorTab);
+    ~KateThemeConfigDefaultStylesTab() override;
 
 Q_SIGNALS:
     void changed();
@@ -77,17 +77,17 @@ protected:
 private:
     KateStyleTreeWidget *m_defaultStyles;
     QHash<QString, KateAttributeList *> m_defaultStyleLists;
-    KateSchemaConfigColorTab *m_colorTab;
+    KateThemeConfigColorTab *m_colorTab;
     QString m_currentSchema;
 };
 
-class KateSchemaConfigHighlightTab : public QWidget
+class KateThemeConfigHighlightTab : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit KateSchemaConfigHighlightTab(KateSchemaConfigDefaultStylesTab *page, KateSchemaConfigColorTab *colorTab);
-    ~KateSchemaConfigHighlightTab() override;
+    explicit KateThemeConfigHighlightTab(KateThemeConfigDefaultStylesTab *page, KateThemeConfigColorTab *colorTab);
+    ~KateThemeConfigHighlightTab() override;
 
     void schemaChanged(const QString &schema);
     void reload();
@@ -104,8 +104,8 @@ protected:
     void updateColorPalette(const QColor &textColor);
 
 private:
-    KateSchemaConfigDefaultStylesTab *m_defaults;
-    KateSchemaConfigColorTab *m_colorTab;
+    KateThemeConfigDefaultStylesTab *m_defaults;
+    KateThemeConfigColorTab *m_colorTab;
 
     KComboBox *hlCombo;
     KateStyleTreeWidget *m_styles;
@@ -127,12 +127,12 @@ public:
     QList<int> hlsForSchema(const QString &schema);
 };
 
-class KateSchemaConfigPage : public KateConfigPage
+class KateThemeConfigPage : public KateConfigPage
 {
     Q_OBJECT
 
 public:
-    explicit KateSchemaConfigPage(QWidget *parent);
+    explicit KateThemeConfigPage(QWidget *parent);
     QString name() const override;
     QString fullName() const override;
     QIcon icon() const override;
@@ -161,9 +161,9 @@ private:
     class QPushButton *btndel;
     class KComboBox *defaultSchemaCombo;
     class KComboBox *schemaCombo;
-    KateSchemaConfigColorTab *m_colorTab;
-    KateSchemaConfigDefaultStylesTab *m_defaultStylesTab;
-    KateSchemaConfigHighlightTab *m_highlightTab;
+    KateThemeConfigColorTab *m_colorTab;
+    KateThemeConfigDefaultStylesTab *m_defaultStylesTab;
+    KateThemeConfigHighlightTab *m_highlightTab;
 };
 
 #endif

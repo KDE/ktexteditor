@@ -20,7 +20,7 @@
 #include "katemodemanager.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "kateschemaconfig.h"
+#include "katethemeconfig.h"
 #include "katescriptmanager.h"
 #include "katesedcmd.h"
 #include "katevariableexpansionmanager.h"
@@ -317,7 +317,7 @@ KTextEditor::ConfigPage *KTextEditor::EditorPrivate::configPage(int number, QWid
         return new KateViewDefaultsConfig(parent);
 
     case 1:
-        return new KateSchemaConfigPage(parent);
+        return new KateThemeConfigPage(parent);
 
     case 2:
         return new KateEditConfigTab(parent);

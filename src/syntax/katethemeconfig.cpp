@@ -8,7 +8,7 @@
 */
 
 // BEGIN Includes
-#include "kateschemaconfig.h"
+#include "katethemeconfig.h"
 
 #include "katecolortreewidget.h"
 #include "kateconfig.h"
@@ -133,8 +133,8 @@ static bool writeJson(const QJsonObject &json, const QString &themeFileName)
     return true;
 }
 
-// BEGIN KateSchemaConfigColorTab -- 'Colors' tab
-KateSchemaConfigColorTab::KateSchemaConfigColorTab()
+// BEGIN KateThemeConfigColorTab -- 'Colors' tab
+KateThemeConfigColorTab::KateThemeConfigColorTab()
 {
     QGridLayout *l = new QGridLayout(this);
     setLayout(l);
@@ -152,7 +152,7 @@ KateSchemaConfigColorTab::KateSchemaConfigColorTab()
     connect(ui, SIGNAL(changed()), SIGNAL(changed()));
 }
 
-QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHighlighting::Theme &theme) const
+QVector<KateColorItem> KateThemeConfigColorTab::colorItemList(const KSyntaxHighlighting::Theme &theme) const
 {
     QVector<KateColorItem> items;
 
@@ -346,7 +346,7 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     return items;
 }
 
-void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
+void KateThemeConfigColorTab::schemaChanged(const QString &newSchema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(newSchema);
@@ -388,7 +388,7 @@ void KateSchemaConfigColorTab::schemaChanged(const QString &newSchema)
     blockSignals(blocked);
 }
 
-void KateSchemaConfigColorTab::apply()
+void KateThemeConfigColorTab::apply()
 {
     schemaChanged(m_currentSchema);
 
@@ -424,7 +424,7 @@ void KateSchemaConfigColorTab::apply()
     m_schemas.clear();
 }
 
-void KateSchemaConfigColorTab::reload()
+void KateThemeConfigColorTab::reload()
 {
     // drop all cached data
     m_schemas.clear();
@@ -435,19 +435,19 @@ void KateSchemaConfigColorTab::reload()
     schemaChanged(backupName);
 }
 
-QColor KateSchemaConfigColorTab::backgroundColor() const
+QColor KateThemeConfigColorTab::backgroundColor() const
 {
     return ui->findColor(QStringLiteral("Color Background"));
 }
 
-QColor KateSchemaConfigColorTab::selectionColor() const
+QColor KateThemeConfigColorTab::selectionColor() const
 {
     return ui->findColor(QStringLiteral("Color Selection"));
 }
-// END KateSchemaConfigColorTab
+// END KateThemeConfigColorTab
 
 // BEGIN FontColorConfig -- 'Normal Text Styles' tab
-KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaConfigColorTab *colorTab)
+KateThemeConfigDefaultStylesTab::KateThemeConfigDefaultStylesTab(KateThemeConfigColorTab *colorTab)
 {
     m_colorTab = colorTab;
 
@@ -467,12 +467,12 @@ KateSchemaConfigDefaultStylesTab::KateSchemaConfigDefaultStylesTab(KateSchemaCon
              "Background colors from the popup menu when appropriate.</p>"));
 }
 
-KateSchemaConfigDefaultStylesTab::~KateSchemaConfigDefaultStylesTab()
+KateThemeConfigDefaultStylesTab::~KateThemeConfigDefaultStylesTab()
 {
     qDeleteAll(m_defaultStyleLists);
 }
 
-KateAttributeList *KateSchemaConfigDefaultStylesTab::attributeList(const QString &schema)
+KateAttributeList *KateThemeConfigDefaultStylesTab::attributeList(const QString &schema)
 {
     if (!m_defaultStyleLists.contains(schema)) {
         // get list of all default styles
@@ -514,7 +514,7 @@ KateAttributeList *KateSchemaConfigDefaultStylesTab::attributeList(const QString
     return m_defaultStyleLists[schema];
 }
 
-void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
+void KateThemeConfigDefaultStylesTab::schemaChanged(const QString &schema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(schema);
@@ -565,7 +565,7 @@ void KateSchemaConfigDefaultStylesTab::schemaChanged(const QString &schema)
     m_defaultStyles->expandAll();
 }
 
-void KateSchemaConfigDefaultStylesTab::updateColorPalette(const QColor &textColor)
+void KateThemeConfigDefaultStylesTab::updateColorPalette(const QColor &textColor)
 {
     QPalette p(m_defaultStyles->palette());
     p.setColor(QPalette::Base, m_colorTab->backgroundColor());
@@ -574,7 +574,7 @@ void KateSchemaConfigDefaultStylesTab::updateColorPalette(const QColor &textColo
     m_defaultStyles->setPalette(p);
 }
 
-void KateSchemaConfigDefaultStylesTab::reload()
+void KateThemeConfigDefaultStylesTab::reload()
 {
     m_defaultStyles->clear();
     qDeleteAll(m_defaultStyleLists);
@@ -583,7 +583,7 @@ void KateSchemaConfigDefaultStylesTab::reload()
     schemaChanged(m_currentSchema);
 }
 
-void KateSchemaConfigDefaultStylesTab::apply()
+void KateThemeConfigDefaultStylesTab::apply()
 {
     // get enum meta data for json keys
     static const auto idx = KSyntaxHighlighting::Theme::staticMetaObject.indexOfEnumerator("TextStyle");
@@ -642,7 +642,7 @@ void KateSchemaConfigDefaultStylesTab::apply()
     }
 }
 
-void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
+void KateThemeConfigDefaultStylesTab::showEvent(QShowEvent *event)
 {
     if (!event->spontaneous() && !m_currentSchema.isEmpty()) {
         KateAttributeList *l = attributeList(m_currentSchema);
@@ -654,8 +654,8 @@ void KateSchemaConfigDefaultStylesTab::showEvent(QShowEvent *event)
 }
 // END FontColorConfig
 
-// BEGIN KateSchemaConfigHighlightTab -- 'Highlighting Text Styles' tab
-KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefaultStylesTab *page, KateSchemaConfigColorTab *colorTab)
+// BEGIN KateThemeConfigHighlightTab -- 'Highlighting Text Styles' tab
+KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultStylesTab *page, KateThemeConfigColorTab *colorTab)
 {
     m_defaults = page;
     m_colorTab = colorTab;
@@ -716,11 +716,11 @@ KateSchemaConfigHighlightTab::KateSchemaConfigHighlightTab(KateSchemaConfigDefau
              "Background colors from the context menu when appropriate.</p>"));
 }
 
-KateSchemaConfigHighlightTab::~KateSchemaConfigHighlightTab()
+KateThemeConfigHighlightTab::~KateThemeConfigHighlightTab()
 {
 }
 
-void KateSchemaConfigHighlightTab::hlChanged(int z)
+void KateThemeConfigHighlightTab::hlChanged(int z)
 {
     m_hl = z;
     schemaChanged(m_schema);
@@ -773,7 +773,7 @@ static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighli
     return defaults;
 }
 
-void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
+void KateThemeConfigHighlightTab::schemaChanged(const QString &schema)
 {
     // ensure invalid or read-only stuff can't be changed
     const auto theme = KateHlManager::self()->repository().theme(schema);
@@ -858,7 +858,7 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
     m_styles->resizeColumns();
 }
 
-void KateSchemaConfigHighlightTab::updateColorPalette(const QColor &textColor)
+void KateThemeConfigHighlightTab::updateColorPalette(const QColor &textColor)
 {
     QPalette p(m_styles->palette());
     p.setColor(QPalette::Base, m_colorTab->backgroundColor());
@@ -867,7 +867,7 @@ void KateSchemaConfigHighlightTab::updateColorPalette(const QColor &textColor)
     m_styles->setPalette(p);
 }
 
-void KateSchemaConfigHighlightTab::reload()
+void KateThemeConfigHighlightTab::reload()
 {
     m_styles->clear();
 
@@ -877,7 +877,7 @@ void KateSchemaConfigHighlightTab::reload()
     hlChanged(hlCombo->currentIndex());
 }
 
-void KateSchemaConfigHighlightTab::apply()
+void KateThemeConfigHighlightTab::apply()
 {
     // handle all cached themes data
     for (const auto &themeIt : m_uniqueAttributes) {
@@ -944,12 +944,12 @@ void KateSchemaConfigHighlightTab::apply()
     }
 }
 
-QList<int> KateSchemaConfigHighlightTab::hlsForSchema(const QString &schema)
+QList<int> KateThemeConfigHighlightTab::hlsForSchema(const QString &schema)
 {
     return m_hlDict[schema].keys();
 }
 
-void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
+void KateThemeConfigHighlightTab::showEvent(QShowEvent *event)
 {
     if (!event->spontaneous()) {
         KateAttributeList *l = m_defaults->attributeList(m_schema);
@@ -959,10 +959,10 @@ void KateSchemaConfigHighlightTab::showEvent(QShowEvent *event)
 
     QWidget::showEvent(event);
 }
-// END KateSchemaConfigHighlightTab
+// END KateThemeConfigHighlightTab
 
-// BEGIN KateSchemaConfigPage -- Main dialog page
-KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
+// BEGIN KateThemeConfigPage -- Main dialog page
+KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     : KateConfigPage(parent)
     , m_currentSchema(-1)
 {
@@ -1011,15 +1011,15 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     QTabWidget *tabWidget = new QTabWidget(this);
     layout->addWidget(tabWidget);
 
-    m_colorTab = new KateSchemaConfigColorTab();
+    m_colorTab = new KateThemeConfigColorTab();
     tabWidget->addTab(m_colorTab, i18n("Colors"));
     connect(m_colorTab, SIGNAL(changed()), SLOT(slotChanged()));
 
-    m_defaultStylesTab = new KateSchemaConfigDefaultStylesTab(m_colorTab);
+    m_defaultStylesTab = new KateThemeConfigDefaultStylesTab(m_colorTab);
     tabWidget->addTab(m_defaultStylesTab, i18n("Default Text Styles"));
     connect(m_defaultStylesTab, SIGNAL(changed()), SLOT(slotChanged()));
 
-    m_highlightTab = new KateSchemaConfigHighlightTab(m_defaultStylesTab, m_colorTab);
+    m_highlightTab = new KateThemeConfigHighlightTab(m_defaultStylesTab, m_colorTab);
     tabWidget->addTab(m_highlightTab, i18n("Highlighting Text Styles"));
     connect(m_highlightTab, SIGNAL(changed()), SLOT(slotChanged()));
 
@@ -1039,7 +1039,7 @@ KateSchemaConfigPage::KateSchemaConfigPage(QWidget *parent)
     connect(defaultSchemaCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChanged()));
 }
 
-void KateSchemaConfigPage::exportFullSchema()
+void KateThemeConfigPage::exportFullSchema()
 {
     // get save destination
     const QString currentSchemaName = m_currentSchema;
@@ -1056,7 +1056,7 @@ void KateSchemaConfigPage::exportFullSchema()
     QFile::copy(currentTheme.filePath(), destName);
 }
 
-void KateSchemaConfigPage::importFullSchema()
+void KateThemeConfigPage::importFullSchema()
 {
     const QString srcName = QFileDialog::getOpenFileName(this, i18n("Importing Color Theme"), QString(), QStringLiteral("%1 (*.theme)").arg(i18n("Color theme")));
     if (srcName.isEmpty()) {
@@ -1088,12 +1088,12 @@ void KateSchemaConfigPage::importFullSchema()
         KateHlManager::self()->getHl(i)->clearAttributeArrays();
     }
 
-    // KateSchemaManager::update() sorts the schema alphabetically, hence the
+    // KateThemeManager::update() sorts the schema alphabetically, hence the
     // schema indexes change. Thus, repopulate the schema list...
     refillCombos(schemaCombo->itemData(schemaCombo->currentIndex()).toString(), defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
 }
 
-void KateSchemaConfigPage::apply()
+void KateThemeConfigPage::apply()
 {
     // remember name + index
     const QString schemaName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
@@ -1119,13 +1119,13 @@ void KateSchemaConfigPage::apply()
     }
     KateRendererConfig::global()->reloadSchema();
 
-    // KateSchemaManager::update() sorts the schema alphabetically, hence the
+    // KateThemeManager::update() sorts the schema alphabetically, hence the
     // schema indexes change. Thus, repopulate the schema list...
     refillCombos(schemaCombo->itemData(schemaCombo->currentIndex()).toString(), defaultSchemaCombo->itemData(defaultSchemaCombo->currentIndex()).toString());
     schemaChanged(schemaName);
 }
 
-void KateSchemaConfigPage::reload()
+void KateThemeConfigPage::reload()
 {
     // reinitialize combo boxes
     refillCombos(KateRendererConfig::global()->schema(), KateRendererConfig::global()->schema());
@@ -1140,7 +1140,7 @@ void KateSchemaConfigPage::reload()
     m_highlightTab->reload();
 }
 
-void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString &defaultSchemaName)
+void KateThemeConfigPage::refillCombos(const QString &schemaName, const QString &defaultSchemaName)
 {
     schemaCombo->blockSignals(true);
     defaultSchemaCombo->blockSignals(true);
@@ -1180,7 +1180,7 @@ void KateSchemaConfigPage::refillCombos(const QString &schemaName, const QString
     defaultSchemaCombo->blockSignals(false);
 }
 
-void KateSchemaConfigPage::reset()
+void KateThemeConfigPage::reset()
 {
     // reload themes DB & clear all attributes
     KateHlManager::self()->reload();
@@ -1192,12 +1192,12 @@ void KateSchemaConfigPage::reset()
     reload();
 }
 
-void KateSchemaConfigPage::defaults()
+void KateThemeConfigPage::defaults()
 {
     reset();
 }
 
-void KateSchemaConfigPage::deleteSchema()
+void KateThemeConfigPage::deleteSchema()
 {
     const int comboIndex = schemaCombo->currentIndex();
     const QString schemaNameToDelete = schemaCombo->itemData(comboIndex).toString();
@@ -1235,7 +1235,7 @@ void KateSchemaConfigPage::deleteSchema()
     m_colorTab->reload();
 }
 
-bool KateSchemaConfigPage::copyTheme()
+bool KateThemeConfigPage::copyTheme()
 {
     // get current theme data as template
     const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
@@ -1291,7 +1291,7 @@ bool KateSchemaConfigPage::copyTheme()
     return true;
 }
 
-void KateSchemaConfigPage::schemaChanged(const QString &schema)
+void KateThemeConfigPage::schemaChanged(const QString &schema)
 {
     // we can't delete read-only themes, e.g. the stuff shipped inside Qt resources or system wide installed
     const auto theme = KateHlManager::self()->repository().theme(schema);
@@ -1307,24 +1307,24 @@ void KateSchemaConfigPage::schemaChanged(const QString &schema)
     m_currentSchema = schema;
 }
 
-void KateSchemaConfigPage::comboBoxIndexChanged(int currentIndex)
+void KateThemeConfigPage::comboBoxIndexChanged(int currentIndex)
 {
     schemaChanged(schemaCombo->itemData(currentIndex).toString());
 }
 
-QString KateSchemaConfigPage::name() const
+QString KateThemeConfigPage::name() const
 {
     return i18n("Color Themes");
 }
 
-QString KateSchemaConfigPage::fullName() const
+QString KateThemeConfigPage::fullName() const
 {
     return i18n("Color Themes");
 }
 
-QIcon KateSchemaConfigPage::icon() const
+QIcon KateThemeConfigPage::icon() const
 {
     return QIcon::fromTheme(QStringLiteral("preferences-desktop-color"));
 }
 
-// END KateSchemaConfigPage
+// END KateThemeConfigPage

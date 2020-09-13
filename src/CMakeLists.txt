@@ -39,7 +39,6 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/render
   ${CMAKE_CURRENT_SOURCE_DIR}/search
   ${CMAKE_CURRENT_SOURCE_DIR}/syntax
-  ${CMAKE_CURRENT_SOURCE_DIR}/schema
   ${CMAKE_CURRENT_SOURCE_DIR}/undo
   ${CMAKE_CURRENT_SOURCE_DIR}/utils
   ${CMAKE_CURRENT_SOURCE_DIR}/inputmode
@@ -136,11 +135,15 @@ search/kateregexpsearch.cpp
 search/katematch.cpp
 search/katesearchbar.cpp
 
-# syntax related stuff (highlighting, xml file parsing, ...)
-syntax/katesyntaxmanager.cpp
+# KSyntaxHighlighting integration
+syntax/katecategorydrawer.cpp
+syntax/katecolortreewidget.cpp
 syntax/katehighlight.cpp
-syntax/katehighlightmenu.cpp
 syntax/katehighlightingcmds.cpp
+syntax/katehighlightmenu.cpp
+syntax/katestyletreewidget.cpp
+syntax/katesyntaxmanager.cpp
+syntax/katethemeconfig.cpp
 
 # view stuff (THE view and its helpers)
 view/kateview.cpp
@@ -197,12 +200,6 @@ utils/katesedcmd.cpp
 utils/variable.cpp
 utils/katevariableexpansionmanager.cpp
 utils/katevariableexpansionhelpers.cpp
-
-# schema
-schema/kateschemaconfig.cpp
-schema/katestyletreewidget.cpp
-schema/katecolortreewidget.cpp
-schema/katecategorydrawer.cpp
 
 # swapfile
 swapfile/kateswapdiffcreator.cpp
