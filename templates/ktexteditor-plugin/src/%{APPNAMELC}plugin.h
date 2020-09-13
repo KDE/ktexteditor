@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: %{CURRENT_YEAR} %{AUTHOR} <%{EMAIL}>
 
-    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #ifndef %{APPNAMEUC}PLUGIN_H
