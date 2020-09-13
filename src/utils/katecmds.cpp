@@ -19,6 +19,7 @@
 
 #include <KLocalizedString>
 
+#include <QDateTime>
 #include <QRegularExpression>
 
 // BEGIN CoreCommands
