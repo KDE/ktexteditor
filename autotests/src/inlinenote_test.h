@@ -2,7 +2,7 @@
     This file is part of the KDE libraries
     SPDX-FileCopyrightText: 2018 Dominik Haumann <dhaumann@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+    SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #ifndef KATE_INLINENOTE_TEST_H
