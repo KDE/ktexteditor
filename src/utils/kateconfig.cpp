@@ -642,6 +642,7 @@ void KateRendererConfig::readConfig(const KConfigGroup &config)
     // read generic entries
     readConfigEntries(config);
 
+    // read font, but drop all styles, else we have no bold/italic/... variants
     setFontWithDroppedStyleName(config.readEntry(KEY_FONT, QFontDatabase::systemFont(QFontDatabase::FixedFont)));
 
     // setSchema will default to right theme
