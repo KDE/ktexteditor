@@ -308,10 +308,7 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     d->liRange = static_cast<KTextEditor::DocumentPrivate *>(m_view->document())->newMovingRange(KTextEditor::Range::invalid(), KTextEditor::MovingRange::DoNotExpand);
 
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
-    // FIXME-THEME
     a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->renderer()->config()->selectionColor());
-    // a->setBackground(colors.background(KColorScheme::ActiveBackground));
-    // a->setForeground(colors.foreground(KColorScheme::ActiveText)); // ### this does 0
     d->liRange->setAttribute(a);
 
     QAction *action;
