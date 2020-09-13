@@ -233,13 +233,15 @@ public:
 public:
     bool isCompletionActive() const override;
     void startCompletion(const KTextEditor::Range &word, KTextEditor::CodeCompletionModel *model) override;
-    void startCompletion(const Range &word, const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(), KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation) override;
+    void startCompletion(const Range &word,
+                         const QList<KTextEditor::CodeCompletionModel *> &models = QList<KTextEditor::CodeCompletionModel *>(),
+                         KTextEditor::CodeCompletionModel::InvocationType invocationType = KTextEditor::CodeCompletionModel::ManualInvocation) override;
     void abortCompletion() override;
     void forceCompletion() override;
     void registerCompletionModel(KTextEditor::CodeCompletionModel *model) override;
     void unregisterCompletionModel(KTextEditor::CodeCompletionModel *model) override;
     bool isCompletionModelRegistered(KTextEditor::CodeCompletionModel *model) const;
-    QList<KTextEditor::CodeCompletionModel*> codeCompletionModels() const override;
+    QList<KTextEditor::CodeCompletionModel *> codeCompletionModels() const override;
     bool isAutomaticInvocationEnabled() const override;
     void setAutomaticInvocationEnabled(bool enabled = true) override;
 

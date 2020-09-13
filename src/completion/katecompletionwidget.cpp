@@ -1329,7 +1329,7 @@ bool KateCompletionWidget::isCompletionModelRegistered(KTextEditor::CodeCompleti
     return m_sourceModels.contains(model);
 }
 
-QList<KTextEditor::CodeCompletionModel*> KateCompletionWidget::codeCompletionModels() const
+QList<KTextEditor::CodeCompletionModel *> KateCompletionWidget::codeCompletionModels() const
 {
     return m_sourceModels;
 }

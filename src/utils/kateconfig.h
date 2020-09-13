@@ -1280,6 +1280,7 @@ public:
          */
         AutoColorThemeSelection
     };
+
 public:
     /**
      * Read config from object

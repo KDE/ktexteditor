@@ -204,7 +204,7 @@ QStringList KateWordCompletionModel::allMatches(KTextEditor::View *view, const K
         while (offset < end) {
             const QChar c = text.at(offset);
             // increment offset when at line end, so we take the last character too
-            if ((! c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
+            if ((!c.isLetterOrNumber() && c != QLatin1Char('_')) || (offset == end - 1 && offset++)) {
                 if (offset - wordBegin > minWordSize && (line != range.end().line() || offset != range.end().column())) {
                     // don't add the word we are inside with cursor!
                     if (!cursorLine || (view->cursorPosition().column() < wordBegin || view->cursorPosition().column() > offset)) {
@@ -310,8 +310,8 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
     KTextEditor::Attribute::Ptr a = KTextEditor::Attribute::Ptr(new KTextEditor::Attribute());
     // FIXME-THEME
     a->setBackground(static_cast<KTextEditor::ViewPrivate *>(view)->renderer()->config()->selectionColor());
-    //a->setBackground(colors.background(KColorScheme::ActiveBackground));
-    //a->setForeground(colors.foreground(KColorScheme::ActiveText)); // ### this does 0
+    // a->setBackground(colors.background(KColorScheme::ActiveBackground));
+    // a->setForeground(colors.foreground(KColorScheme::ActiveText)); // ### this does 0
     d->liRange->setAttribute(a);
 
     QAction *action;

@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2008-2009 Erlend Hamberg <ehamberg@gmail.com>
     SPDX-FileCopyrightText: 2011 Svyatoslav Kuzmich <svatoslav1@gmail.com>
-    SPDX-FileCopyrightText: 2012 Vegard Øye 
+    SPDX-FileCopyrightText: 2012 Vegard Øye
     SPDX-FileCopyrightText: 2013 Simon St James <kdedevel@etotheipiplusone.com>
 
     SPDX-License-Identifier: LGPL-2.0-or-later

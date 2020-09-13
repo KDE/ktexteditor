@@ -8,8 +8,8 @@
 #define KTEXTEDITOR_CODECOMPLETIONINTERFACE_H
 
 #include <QObject>
-#include <ktexteditor/range.h>
 #include <ktexteditor/codecompletionmodel.h>
+#include <ktexteditor/range.h>
 #include <ktexteditor_export.h>
 
 namespace KTextEditor
@@ -188,7 +188,7 @@ public:
      * \returns a list of a models that are currently registered
      * \see registerCompletionModel(CodeCompletionModel*)
      */
-    virtual QList<CodeCompletionModel*> codeCompletionModels() const = 0;
+    virtual QList<CodeCompletionModel *> codeCompletionModels() const = 0;
 };
 
 }

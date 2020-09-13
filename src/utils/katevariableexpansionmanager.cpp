@@ -20,9 +20,9 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QJSEngine>
+#include <QLocale>
 #include <QTime>
 #include <QUuid>
-#include <QLocale>
 
 static void registerVariables(KateVariableExpansionManager &mng)
 {
@@ -159,9 +159,7 @@ static void registerVariables(KateVariableExpansionManager &mng)
         true));
 
     mng.addVariable(Variable(
-        QStringLiteral("PercentEncoded:"), i18n("Encode text to make it URL compatible."), [](const QStringView &str, KTextEditor::View *) {
-            return QString::fromUtf8(QUrl::toPercentEncoding(str.mid(15).toString()));
-        }, true));
+        QStringLiteral("PercentEncoded:"), i18n("Encode text to make it URL compatible."), [](const QStringView &str, KTextEditor::View *) { return QString::fromUtf8(QUrl::toPercentEncoding(str.mid(15).toString())); }, true));
 
     mng.addVariable(Variable(
         QStringLiteral("UUID"), i18n("Generate a new UUID."), [](const QStringView &, KTextEditor::View *) { return QUuid::createUuid().toString(QUuid::WithoutBraces); }, false));

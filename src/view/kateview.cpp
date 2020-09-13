@@ -2598,7 +2598,7 @@ bool KTextEditor::ViewPrivate::isCompletionModelRegistered(KTextEditor::CodeComp
     return completionWidget()->isCompletionModelRegistered(model);
 }
 
-QList<KTextEditor::CodeCompletionModel*> KTextEditor::ViewPrivate::codeCompletionModels() const
+QList<KTextEditor::CodeCompletionModel *> KTextEditor::ViewPrivate::codeCompletionModels() const
 {
     return completionWidget()->codeCompletionModels();
 }

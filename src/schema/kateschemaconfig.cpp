@@ -297,7 +297,8 @@ QVector<KateColorItem> KateSchemaConfigColorTab::colorItemList(const KSyntaxHigh
     //
     ci.category = i18n("Marker Colors");
 
-    const QString markerNames[KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark + 1] = {i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
+    const QString markerNames[KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark + 1] = {
+        i18n("Bookmark"), i18n("Active Breakpoint"), i18n("Reached Breakpoint"), i18n("Disabled Breakpoint"), i18n("Execution"), i18n("Warning"), i18n("Error")};
 
     ci.whatsThis = i18n("<p>Sets the background color of mark type.</p><p><b>Note</b>: The marker color is displayed lightly because of transparency.</p>");
     for (int i = 0; i <= KSyntaxHighlighting::Theme::MarkError - KSyntaxHighlighting::Theme::MarkBookmark; ++i) {
@@ -772,7 +773,6 @@ static KateAttributeList defaultsForHighlighting(const std::vector<KSyntaxHighli
     return defaults;
 }
 
-
 void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
 {
     // ensure invalid or read-only stuff can't be changed
@@ -818,7 +818,6 @@ void KateSchemaConfigHighlightTab::schemaChanged(const QString &schema)
         else
             uniqueAttributeDefault = defaults[i];
     }
-
 
     if (!m_hlDict[m_schema].contains(m_hl)) {
         m_hlDict[m_schema].insert(m_hl, attributes);
@@ -1072,10 +1071,9 @@ void KateSchemaConfigPage::importFullSchema()
 
     // if something might be overwritten, as the user
     if (QFile::exists(themesFullFileName)) {
-        if (KMessageBox::warningContinueCancel(this, i18n("Importing will overwrite the existing theme file \"%1\"? This can not be undone.").arg(themesFullFileName),
-                                                     i18n("Possible Data Loss"),
-                                                     KGuiItem(i18n("Import Nevertheless")),
-                                                     KStandardGuiItem::cancel()) != KMessageBox::Continue) {
+        if (KMessageBox::warningContinueCancel(
+                this, i18n("Importing will overwrite the existing theme file \"%1\"? This can not be undone.").arg(themesFullFileName), i18n("Possible Data Loss"), KGuiItem(i18n("Import Nevertheless")), KStandardGuiItem::cancel()) !=
+            KMessageBox::Continue) {
             return;
         }
     }
@@ -1211,10 +1209,9 @@ void KateSchemaConfigPage::deleteSchema()
     }
 
     // ask the user again, this can't be undone
-    if (KMessageBox::warningContinueCancel(this, i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete),
-                                                     i18n("Possible Data Loss"),
-                                                     KGuiItem(i18n("Delete Nevertheless")),
-                                                     KStandardGuiItem::cancel()) != KMessageBox::Continue) {
+    if (KMessageBox::warningContinueCancel(
+            this, i18n("Do you really want to delete the theme \"%1\"? This can not be undone.").arg(schemaNameToDelete), i18n("Possible Data Loss"), KGuiItem(i18n("Delete Nevertheless")), KStandardGuiItem::cancel()) !=
+        KMessageBox::Continue) {
         return;
     }
 

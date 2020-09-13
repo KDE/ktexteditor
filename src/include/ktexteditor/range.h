@@ -499,7 +499,7 @@ public:
      *
      * \return the intersected range, invalid() if there is no overlap
      */
-    Q_DECL_CONSTEXPR inline friend Range operator&(const Range &r1, const Range &r2)Q_DECL_NOEXCEPT
+    Q_DECL_CONSTEXPR inline friend Range operator&(const Range &r1, const Range &r2) Q_DECL_NOEXCEPT
     {
         return r1.intersect(r2);
     }

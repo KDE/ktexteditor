@@ -48,6 +48,7 @@
 
 #include <KCodecs>
 #include <KConfigGroup>
+#include <KDirWatch>
 #include <KFileItem>
 #include <KIO/Job>
 #include <KIO/JobUiDelegate>
@@ -59,7 +60,6 @@
 #include <KStringHandler>
 #include <KToggleAction>
 #include <KXMLGUIFactory>
-#include <KDirWatch>
 
 #include <QApplication>
 #include <QClipboard>
@@ -1742,7 +1742,7 @@ QVector<KTextEditor::Range> KTextEditor::DocumentPrivate::searchText(const KText
         // escape sequences are supported by definition
         QRegularExpression::PatternOptions patternOptions;
         if (caseSensitivity == Qt::CaseInsensitive) {
-            patternOptions |=  QRegularExpression::CaseInsensitiveOption;
+            patternOptions |= QRegularExpression::CaseInsensitiveOption;
         }
         KateRegExpSearch searcher(this);
         return searcher.search(pattern, range, backwards, patternOptions);
@@ -5912,8 +5912,7 @@ bool KTextEditor::DocumentPrivate::postMessage(KTextEditor::Message *message)
     }
 
     // also catch if the user manually calls delete message
-    connect(message, &Message::closed,
-            this, &DocumentPrivate::messageDestroyed);
+    connect(message, &Message::closed, this, &DocumentPrivate::messageDestroyed);
 
     return true;
 }

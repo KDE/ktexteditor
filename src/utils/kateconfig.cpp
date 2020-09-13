@@ -9,9 +9,9 @@
 
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katesyntaxmanager.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
+#include "katesyntaxmanager.h"
 #include "kateview.h"
 
 #include <math.h>
@@ -953,8 +953,7 @@ const QColor &KateRendererConfig::lineMarkerColor(KTextEditor::MarkInterface::Ma
 {
     int index = 0;
     if (type > 0) {
-        while ((type >> index++) ^ 1) {
-        }
+        while ((type >> index++) ^ 1) { }
     }
     index -= 1;
 

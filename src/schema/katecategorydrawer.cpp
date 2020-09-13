@@ -9,8 +9,8 @@
 
 #include <QApplication>
 #include <QPainter>
-#include <QStyleOption>
 #include <QPainterPath>
+#include <QStyleOption>
 
 KateCategoryDrawer::KateCategoryDrawer()
     : KCategoryDrawer(nullptr)

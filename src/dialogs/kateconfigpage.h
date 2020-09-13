@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2019 KDE Developers 
+    SPDX-FileCopyrightText: 2019 KDE Developers
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */

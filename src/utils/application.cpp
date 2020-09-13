@@ -45,7 +45,7 @@ KTextEditor::MainWindow *Application::activeMainWindow()
     KTextEditor::MainWindow *window = nullptr;
     QMetaObject::invokeMethod(parent(), "activeMainWindow", Qt::DirectConnection, Q_RETURN_ARG(KTextEditor::MainWindow *, window));
 
-    //always return some kind of window to not need to check for valid pointer
+    // always return some kind of window to not need to check for valid pointer
     return window ? window : KTextEditor::EditorPrivate::self()->dummyMainWindow();
 }
 

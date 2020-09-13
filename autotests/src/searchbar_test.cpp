@@ -81,7 +81,6 @@ void SearchBarTest::testFindNextIncremental()
     QCOMPARE(view.selectionRange(), Range(0, 0, 0, 1));
 }
 
-
 void SearchBarTest::testFindNextZeroLengthMatch()
 {
     // Some regularexpression matches are zero length assertions
@@ -100,16 +99,16 @@ void SearchBarTest::testFindNextZeroLengthMatch()
     QVERIFY(bar.isPower());
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(0,1));
+    QCOMPARE(view.cursorPosition(), Cursor(0, 1));
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(1,2));
+    QCOMPARE(view.cursorPosition(), Cursor(1, 2));
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(2,1));
+    QCOMPARE(view.cursorPosition(), Cursor(2, 1));
 
     bar.findNext();
-    QCOMPARE(view.cursorPosition(), Cursor(3,0));
+    QCOMPARE(view.cursorPosition(), Cursor(3, 0));
 }
 
 void SearchBarTest::testSetMatchCaseIncremental()

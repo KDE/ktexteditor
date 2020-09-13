@@ -25,8 +25,8 @@
 
 #include <iostream>
 
-#include "testutils.h"
 #include "script_test_base.h"
+#include "testutils.h"
 
 const QString testDataPath(QLatin1String(TEST_DATA_DIR));
 

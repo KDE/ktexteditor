@@ -9,10 +9,10 @@
 #include "katepartdebug.h"
 #include "kateswapfile.h"
 
+#include <KIO/JobUiDelegate>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KIO/OpenUrlJob>
-#include <KIO/JobUiDelegate>
 
 #include <QDir>
 

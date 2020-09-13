@@ -7,9 +7,9 @@
 #ifndef KATE_STATUS_BAR_H
 #define KATE_STATUS_BAR_H
 
+#include "katemodemenulist.h"
 #include "kateview.h"
 #include "kateviewhelpers.h"
-#include "katemodemenulist.h"
 
 #include <KLocalizedString>
 #include <KSqueezedTextLabel>

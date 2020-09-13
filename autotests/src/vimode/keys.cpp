@@ -609,7 +609,6 @@ void KeysTest::MappingTests()
 
         KateViewConfig::global()->setDynWordWrap(false);
     }
-
 }
 
 void KeysTest::LeaderTests()

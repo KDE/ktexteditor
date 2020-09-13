@@ -33,9 +33,7 @@ QVector<KSyntaxHighlighting::Theme> KateHlManager::sortedThemes() const
     auto themes = repository().themes();
 
     // sort by translated name
-    std::sort(themes.begin(), themes.end(), [](const KSyntaxHighlighting::Theme &left, const KSyntaxHighlighting::Theme &right) {
-        return left.translatedName().compare(right.translatedName(), Qt::CaseInsensitive) < 0;
-    });
+    std::sort(themes.begin(), themes.end(), [](const KSyntaxHighlighting::Theme &left, const KSyntaxHighlighting::Theme &right) { return left.translatedName().compare(right.translatedName(), Qt::CaseInsensitive) < 0; });
     return themes;
 }
 

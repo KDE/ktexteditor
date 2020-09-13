@@ -285,7 +285,6 @@ public:
     }
 
 private:
-
     int sanitizeFormatIndex(int attrib) const;
 
 private:

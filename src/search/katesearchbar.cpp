@@ -552,8 +552,7 @@ bool KateSearchBar::findOrReplace(SearchDirection searchDirection, const QString
 
             match.searchText(inputRange, searchPattern());
 
-        } else if (match.isEmpty()
-                   && match.range().end() == m_view->cursorPosition()) {
+        } else if (match.isEmpty() && match.range().end() == m_view->cursorPosition()) {
             // valid zero-length match, e.g.: '^', '$', '\b'
             // advance the range to avoid looping
             KTextEditor::DocumentCursor zeroLenMatch(m_view->doc(), match.range().end());

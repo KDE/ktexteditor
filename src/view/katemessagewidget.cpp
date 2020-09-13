@@ -45,14 +45,12 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
 
     // create animation controller, and connect widgetHidden() to showNextMessage()
     m_animation = new KateAnimation(m_messageWidget, applyFadeEffect ? KateAnimation::FadeEffect : KateAnimation::GrowEffect);
-    connect(m_animation, &KateAnimation::widgetHidden,
-            this, &KateMessageWidget::showNextMessage);
+    connect(m_animation, &KateAnimation::widgetHidden, this, &KateMessageWidget::showNextMessage);
 
     // setup autoHide timer details
     m_autoHideTimer->setSingleShot(true);
 
-    connect(m_messageWidget, &KMessageWidget::linkHovered,
-            this, &KateMessageWidget::linkHovered);
+    connect(m_messageWidget, &KMessageWidget::linkHovered, this, &KateMessageWidget::linkHovered);
 }
 
 void KateMessageWidget::showNextMessage()
@@ -74,10 +72,8 @@ void KateMessageWidget::showNextMessage()
     m_messageWidget->setIcon(m_currentMessage->icon());
 
     // connect textChanged() and iconChanged(), so it's possible to change this on the fly
-    connect(m_currentMessage, &KTextEditor::Message::textChanged,
-            m_messageWidget, &KMessageWidget::setText, Qt::UniqueConnection);
-    connect(m_currentMessage, &KTextEditor::Message::iconChanged,
-            m_messageWidget, &KMessageWidget::setIcon, Qt::UniqueConnection);
+    connect(m_currentMessage, &KTextEditor::Message::textChanged, m_messageWidget, &KMessageWidget::setText, Qt::UniqueConnection);
+    connect(m_currentMessage, &KTextEditor::Message::iconChanged, m_messageWidget, &KMessageWidget::setIcon, Qt::UniqueConnection);
 
     // the enums values do not necessarily match, hence translate with switch
     switch (m_currentMessage->messageType()) {
@@ -117,8 +113,7 @@ void KateMessageWidget::showNextMessage()
     m_autoHideTime = m_currentMessage->autoHide();
     m_autoHideTimer->stop();
     if (m_autoHideTime >= 0) {
-        connect(m_autoHideTimer, &QTimer::timeout,
-                m_currentMessage, &QObject::deleteLater, Qt::UniqueConnection);
+        connect(m_autoHideTimer, &QTimer::timeout, m_currentMessage, &QObject::deleteLater, Qt::UniqueConnection);
         if (m_currentMessage->autoHideMode() == KTextEditor::Message::Immediate) {
             m_autoHideTimer->start(m_autoHideTime == 0 ? s_defaultAutoHideTime : m_autoHideTime);
         }
@@ -186,8 +181,7 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message, QList<QShared
     m_messageQueue.insert(i, message);
 
     // catch if the message gets deleted
-    connect(message, &KTextEditor::Message::closed,
-            this, &KateMessageWidget::messageDestroyed);
+    connect(message, &KTextEditor::Message::closed, this, &KateMessageWidget::messageDestroyed);
 
     if (i == 0 && !m_animation->isHideAnimationRunning()) {
         // if message has higher priority than the one currently shown,
@@ -203,10 +197,8 @@ void KateMessageWidget::postMessage(KTextEditor::Message *message, QList<QShared
             Q_ASSERT(m_currentMessage == m_messageQueue[1]);
 
             // a bit unnice: disconnect textChanged() and iconChanged() signals of previously visible message
-            disconnect(m_currentMessage, &KTextEditor::Message::textChanged,
-                       m_messageWidget, &KMessageWidget::setText);
-            disconnect(m_currentMessage, &KTextEditor::Message::iconChanged,
-                       m_messageWidget, &KMessageWidget::setIcon);
+            disconnect(m_currentMessage, &KTextEditor::Message::textChanged, m_messageWidget, &KMessageWidget::setText);
+            disconnect(m_currentMessage, &KTextEditor::Message::iconChanged, m_messageWidget, &KMessageWidget::setIcon);
 
             m_currentMessage = nullptr;
             m_animation->hide();

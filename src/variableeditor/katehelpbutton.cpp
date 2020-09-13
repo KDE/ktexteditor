@@ -8,8 +8,8 @@
 
 #include <QIcon>
 
-#include <KLocalizedString>
 #include <KHelpClient>
+#include <KLocalizedString>
 
 KateHelpButton::KateHelpButton(QWidget *parent)
     : QToolButton(parent)

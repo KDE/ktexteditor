@@ -41,8 +41,8 @@
 #include "ui_textareaappearanceconfigwidget.h"
 
 #include <KIO/Job>
-#include <KIO/OpenUrlJob>
 #include <KIO/JobUiDelegate>
+#include <KIO/OpenUrlJob>
 
 #include "kateabstractinputmodefactory.h"
 #include "katepartdebug.h"
@@ -678,7 +678,7 @@ KateViewDefaultsConfig::KateViewDefaultsConfig(QWidget *parent)
 
     QWidget *fontTab = new QWidget(tabWidget);
     QGridLayout *grid = new QGridLayout(fontTab);
-    m_fontchooser =  new KFontChooser(fontTab, KFontChooser::NoDisplayFlags);
+    m_fontchooser = new KFontChooser(fontTab, KFontChooser::NoDisplayFlags);
     grid->addWidget(m_fontchooser, 0, 0);
     tabWidget->addTab(fontTab, i18n("Font"));
 
@@ -886,7 +886,6 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->chkBackupRemoteFiles);
     observeChanges(uiadv->cmbSwapFileMode);
     connect(uiadv->cmbSwapFileMode, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &KateSaveConfigTab::swapFileModeChanged);
-
 
     observeChanges(uiadv->edtBackupPrefix);
     observeChanges(uiadv->edtBackupSuffix);

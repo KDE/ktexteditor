@@ -37,8 +37,8 @@
 #include <KCharsets>
 #include <KColorUtils>
 #include <KConfigGroup>
-#include <KLocalizedString>
 #include <KHelpClient>
+#include <KLocalizedString>
 
 #include <QAction>
 #include <QActionGroup>
@@ -200,7 +200,7 @@ KateScrollBar::KateScrollBar(Qt::Orientation orientation, KateViewInternal *pare
     connect(&m_delayTextPreviewTimer, SIGNAL(timeout()), this, SLOT(showTextPreview()));
 }
 
-void KateScrollBar::showEvent(QShowEvent* event)
+void KateScrollBar::showEvent(QShowEvent *event)
 {
     QScrollBar::showEvent(event);
 

@@ -33,10 +33,10 @@
 
 #include <KAboutData>
 #include <KConfigGroup>
+#include <KDirWatch>
 #include <KLocalizedString>
 #include <KPageDialog>
 #include <KPageWidgetModel>
-#include <KDirWatch>
 
 #include <QApplication>
 #include <QBoxLayout>

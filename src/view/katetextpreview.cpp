@@ -7,9 +7,9 @@
 #include "katetextpreview.h"
 #include "kateconfig.h"
 #include "katelayoutcache.h"
+#include "katepartdebug.h"
 #include "katerenderer.h"
 #include "kateviewinternal.h"
-#include "katepartdebug.h"
 
 #include <QPainter>
 

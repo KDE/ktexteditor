@@ -112,7 +112,7 @@ public:
     ~KateScrollBar() override;
     QSize sizeHint() const override;
 
-    void showEvent(QShowEvent* event) override;
+    void showEvent(QShowEvent *event) override;
 
     inline bool showMarks() const
     {

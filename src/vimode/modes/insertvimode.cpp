@@ -450,7 +450,8 @@ bool InsertViMode::handleKeypress(const QKeyEvent *e)
 
         // is it register ?
         // TODO: add registers such as '/'. See :h <c-r>
-        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) || key == QLatin1Char('_') || key == QLatin1Char('-') || key == QLatin1Char('+') || key == QLatin1Char('*') || key == QLatin1Char('"')) {
+        if ((key >= QLatin1Char('0') && key <= QLatin1Char('9')) || (key >= QLatin1Char('a') && key <= QLatin1Char('z')) || key == QLatin1Char('_') || key == QLatin1Char('-') || key == QLatin1Char('+') || key == QLatin1Char('*') ||
+            key == QLatin1Char('"')) {
             m_register = key;
         } else {
             return false;

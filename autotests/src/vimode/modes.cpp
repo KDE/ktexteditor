@@ -725,7 +725,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo\nbar", "dd", "bar");
     DoTest("foo\nbar", "2dd", "");
     DoTest("foo\nbar\n", "Gdd", "foo\nbar");
-    //Testing numbered registers
+    // Testing numbered registers
     DoTest("hello\nworld", "dddd\"2p\"1p", "\nhello\nworld");
     DoTest("foo\nbar", "ddD\"1p", "\nfoo");
     DoTest("abc\nlmn\nxyz", "dddd\"2dd\"1p\"2p", "\nxyz\nlmn");
@@ -735,7 +735,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("foo bar", "lllD", "foo");
     DoTest("foo\nfoo2\nfoo3", "l2D", "f\nfoo3");
     DoTest("qwerty", "d frDai", "wei");
-    //Testing small delete (-) register
+    // Testing small delete (-) register
     DoTest("12345\n67890", "ddD\"-p", "67890");
     DoTest("foo\nbar\nhello world", "ld$dj$\"-p", "hello worldoo");
     DoTest("abc\nlmn\nxyz", "yyjlYjxk\"-p", "abc\nlmyn\nxz");
@@ -755,7 +755,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("xyz", "\"cy3l$\"cp", "xyzxyz");
     DoTest("abz", "\"xyll\"yyll\"zyll\"zp\"xp\"yp", "abzzab");
     DoTest("abcdwxyz", "\"byh\"ayll\"Byll\"cyll\"dyll\"dyl\"zye$\"zp\"ap\"Cp\"bp\"dp", "abcdwxyzwxyzacbw");
-    //Testing "<X>y" where X is in A-Z (append-copy)
+    // Testing "<X>y" where X is in A-Z (append-copy)
     DoTest("foo bar ", "\"ayew\"Aye$\"ap", "foo bar foobar");
     DoTest("foo bar 2", "\"ayew\"Ayew\"aye\"ap", "foo bar 22");
     DoTest("123 foo ", "\"ayew\"zye\"Aye0\"Zy4l$\"Zp\"ap", "123 foo foo123 123foo");

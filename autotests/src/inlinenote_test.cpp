@@ -69,8 +69,7 @@ public:
             painter.setPen(Qt::darkRed);
             if (note.underMouse()) {
                 painter.setBrush(Qt::red);
-            }
-            else {
+            } else {
                 painter.setBrush(Qt::yellow);
             }
             painter.drawRoundedRect(1, 1, note.width() - 2, note.lineHeight() - 2, 2, 2);
@@ -90,7 +89,6 @@ public:
         Q_UNUSED(globalPos)
         ++focusInCount;
         lastUnderMouse = note.underMouse();
-
     }
 
     void inlineNoteFocusOutEvent(const InlineNote &note) override

@@ -196,8 +196,8 @@ bool NormalViMode::handleKeypress(const QKeyEvent *e)
         } else {
             QChar r = m_keys[1].toLower();
 
-            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*') || r == QLatin1Char('#') ||
-                r == QLatin1Char('^')) {
+            if ((r >= QLatin1Char('0') && r <= QLatin1Char('9')) || (r >= QLatin1Char('a') && r <= QLatin1Char('z')) || r == QLatin1Char('_') || r == QLatin1Char('-') || r == QLatin1Char('+') || r == QLatin1Char('*') ||
+                r == QLatin1Char('#') || r == QLatin1Char('^')) {
                 m_register = m_keys[1];
                 m_keys.clear();
                 return true;
