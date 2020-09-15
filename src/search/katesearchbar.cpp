@@ -1192,6 +1192,7 @@ void KateSearchBar::nextMatchForSelection(KTextEditor::ViewPrivate *view, Search
         KTextEditor::Range wordRange = view->document()->wordRangeAt(cursorPos);
         if (wordRange.isValid()) {
             selectRange(view, wordRange);
+            return;
         }
     }
     if (view->selection()) {

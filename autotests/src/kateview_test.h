@@ -32,6 +32,7 @@ private Q_SLOTS:
     void testFoldFirstLine();
     void testDragAndDrop();
     void testGotoMatchingBracket();
+    void testFindSelected();
 };
 
 #endif // KATE_VIEW_TEST_H

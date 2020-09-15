@@ -496,4 +496,46 @@ void KateViewTest::testGotoMatchingBracket()
     QCOMPARE(view->cursorPosition(), cursor1);
 }
 
+void KateViewTest::testFindSelected()
+{
+    KTextEditor::DocumentPrivate doc(false, false);
+    doc.setText("foo\n"
+                "bar\n"
+                "foo\n"
+                "bar\n");
+    //           0123456789
+
+    KTextEditor::ViewPrivate *view = new KTextEditor::ViewPrivate(&doc, nullptr);
+    const KTextEditor::Cursor cursor1(0, 0); // before 1. foo
+    const KTextEditor::Cursor cursor2(0, 3); // after 1. foo
+    const KTextEditor::Range range1({0, 0}, {0, 3}); // 1. foo range
+    const KTextEditor::Cursor cursor3(2, 3); // after 2. foo
+    const KTextEditor::Range range2({2, 0}, {2, 3}); // 2. foo range
+
+    QVERIFY(!view->selection());
+    QCOMPARE(view->cursorPosition(), cursor1);
+
+    // first time we call this without a selection, just select the word under the cursor
+    view->findSelectedForwards();
+    QVERIFY(view->selection());
+    QCOMPARE(view->selectionRange(), range1);
+    // cursor jumps to the end of the word
+    QCOMPARE(view->cursorPosition(), cursor2);
+
+    // second time we call this it actually jumps to the next occurance
+    view->findSelectedForwards();
+    QCOMPARE(view->selectionRange(), range2);
+    QCOMPARE(view->cursorPosition(), cursor3);
+
+    // wrap around
+    view->findSelectedForwards();
+    QCOMPARE(view->selectionRange(), range1);
+    QCOMPARE(view->cursorPosition(), cursor2);
+
+    // search backwards, wrap again
+    view->findSelectedBackwards();
+    QCOMPARE(view->selectionRange(), range2);
+    QCOMPARE(view->cursorPosition(), cursor3);
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on;
