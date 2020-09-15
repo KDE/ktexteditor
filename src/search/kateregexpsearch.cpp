@@ -161,13 +161,8 @@ KateRegExpSearch::~KateRegExpSearch()
 // helper structs for captures re-construction
 struct TwoViewCursor {
     int index;
-    int openLine;
-    int openCol;
-    int closeLine;
-    int closeCol;
-    // note: open/close distinction does not seem needed
-    // anymore. i keep it to make a potential way back
-    // easier. overhead is minimal.
+    int line;
+    int col;
 };
 
 struct IndexPair {
@@ -342,8 +337,8 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
                         // on this line _at_ line feed
                         FAST_DEBUG("  on line feed");
                         const int absLine = curRelLine + rangeStartLine;
-                        twoViewCursor->openLine = twoViewCursor->closeLine = absLine;
-                        twoViewCursor->openCol = twoViewCursor->closeCol = curRelLineLen;
+                        twoViewCursor->line = absLine;
+                        twoViewCursor->col = curRelLineLen;
 
                         // advance to next line
                         const int advance = (index - curRelIndex) + 1;
@@ -356,15 +351,15 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
                         const int diff = (index - curRelIndex);
                         const int absLine = curRelLine + rangeStartLine;
                         const int absCol = curRelCol + diff;
-                        twoViewCursor->openLine = twoViewCursor->closeLine = absLine;
-                        twoViewCursor->openCol = twoViewCursor->closeCol = absCol;
+                        twoViewCursor->line = absLine;
+                        twoViewCursor->col = absCol;
 
                         // advance on same line
                         const int advance = diff + 1;
                         curRelCol += advance;
                         curRelIndex += advance;
                     }
-                    FAST_DEBUG("open(" << twoViewCursor->openLine << "," << twoViewCursor->openCol << ")  close(" << twoViewCursor->closeLine << "," << twoViewCursor->closeCol << ")");
+                    FAST_DEBUG("position(" << twoViewCursor->line << "," << twoViewCursor->col << ")");
                 } else { // if (index > lineFeedIndex)
                     // not on this line
                     // advance to next line
@@ -384,10 +379,10 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
             if (!(pair.openIndex == -1 || pair.closeIndex == -1)) {
                 const TwoViewCursor *const openCursors = indicesToCursors.value(pair.openIndex);
                 const TwoViewCursor *const closeCursors = indicesToCursors.value(pair.closeIndex);
-                const int startLine = openCursors->openLine;
-                const int startCol = openCursors->openCol;
-                const int endLine = closeCursors->closeLine;
-                const int endCol = closeCursors->closeCol;
+                const int startLine = openCursors->line;
+                const int startCol = openCursors->col;
+                const int endLine = closeCursors->line;
+                const int endCol = closeCursors->col;
                 FAST_DEBUG("range " << y << ": (" << startLine << ", " << startCol << ")..(" << endLine << ", " << endCol << ")");
                 result[y] = KTextEditor::Range(startLine, startCol, endLine, endCol);
             }
