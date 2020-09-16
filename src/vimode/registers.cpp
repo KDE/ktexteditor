@@ -110,7 +110,7 @@ Registers::Register Registers::getRegister(const QChar &reg) const
     QChar _reg = (reg != UnnamedRegister ? reg : m_default);
 
     if (_reg >= FirstNumberedRegister && _reg <= LastNumberedRegister) {
-        int index = QString(_reg).toInt() - 1;
+        int index = _reg.digitValue() - 1;
         if (m_numbered.size() > index) {
             regPair = m_numbered.at(index);
         }
@@ -136,7 +136,8 @@ Registers::Register Registers::getRegister(const QChar &reg) const
 
 void Registers::setNumberedRegister(const QChar &reg, const QString &text, OperationMode flag)
 {
-    if (reg == PrependNumberedRegister) {
+    int index = reg.digitValue() - 1;
+    if (reg == PrependNumberedRegister || index > m_numbered.size()) {
         if (m_numbered.size() == 9) {
             m_numbered.removeLast();
         }
@@ -144,12 +145,7 @@ void Registers::setNumberedRegister(const QChar &reg, const QString &text, Opera
         // register 0 is used for the last yank command, so insert at position 1
         m_numbered.prepend(Register(text, flag));
     } else {
-        const int index = QString(reg).toInt() - 1;
-        // prepopulate the "missing" numbered registers if they are filled sparsely
-        for (int i = m_numbered.size(); i <= index; ++i) {
-            m_numbered.append(Register());
-        }
-
         m_numbered[index].first = text;
+        m_numbered[index].second = flag;
     }
 }
