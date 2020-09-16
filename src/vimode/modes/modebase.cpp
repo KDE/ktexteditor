@@ -68,21 +68,22 @@ bool ModeBase::deleteRange(Range &r, OperationMode mode, bool addToRegister)
         res = doc()->removeText(r.toEditorRange(), mode == Block);
     }
 
-    const QChar lastChar = removedText.count() > 0 ? removedText.back() : QLatin1Char('\0');
-    QChar chosenRegister;
-    if (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r')) {
-        chosenRegister = getChosenRegister(PrependNumberedRegister);
-    } else {
-        chosenRegister = getChosenRegister(SmallDeleteRegister);
+    // the BlackHoleRegister here is only a placeholder to signify that no register was selected
+    // this is needed because the fallback register depends on whether the deleted text spans a line/lines
+    QChar chosenRegister = getChosenRegister(BlackHoleRegister);
+    if (addToRegister) {
+        fillRegister(chosenRegister, removedText, mode);
     }
 
-    if (chosenRegister >= QLatin1Char('0') && chosenRegister <= QLatin1Char('9')) {
-        // store text on the numbered register, then also prepend it
-        fillRegister(chosenRegister, removedText, mode);
+    const QChar lastChar = removedText.count() > 0 ? removedText.back() : QLatin1Char('\0');
+    if (r.startLine != r.endLine || lastChar == QLatin1Char('\n') || lastChar == QLatin1Char('\r')) {
+        // for deletes spanning a line/lines, always prepend to the numbered registers
+        fillRegister(PrependNumberedRegister, removedText, mode);
         chosenRegister = PrependNumberedRegister;
-    }
-    if (addToRegister || chosenRegister == PrependNumberedRegister || chosenRegister == SmallDeleteRegister) {
-        fillRegister(chosenRegister, removedText, mode);
+    } else if (chosenRegister == BlackHoleRegister) {
+        // only set the SmallDeleteRegister when no register was selected
+        fillRegister(SmallDeleteRegister, removedText, mode);
+        chosenRegister = SmallDeleteRegister;
     }
     yankToClipBoard(chosenRegister, removedText);
 

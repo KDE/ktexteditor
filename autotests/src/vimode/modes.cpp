@@ -729,6 +729,7 @@ void ModesTest::NormalCommandsTests()
     DoTest("hello\nworld", "dddd\"2p\"1p", "\nhello\nworld");
     DoTest("foo\nbar", "ddD\"1p", "\nfoo");
     DoTest("abc\nlmn\nxyz", "dddd\"2dd\"1p\"2p", "\nxyz\nlmn");
+    DoTest("123\n456", "dd\"add\"1p\"2p", "\n456\n123");
     DoTest("9\n8\n7\n6\n5\n4\n3\n2\n1\n0", "\"1dddddddddddddddd2dd\"1p\"2p\"3p\"4p\"5p\"6p\"7p\"8p\"9p", "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0");
 
     // Testing "D"
@@ -738,6 +739,7 @@ void ModesTest::NormalCommandsTests()
     // Testing small delete (-) register
     DoTest("12345\n67890", "ddD\"-p", "67890");
     DoTest("foo\nbar\nhello world", "ld$dj$\"-p", "hello worldoo");
+    DoTest("123\n456", "Dj\"aD\"-p", "\n123");
     DoTest("abc\nlmn\nxyz", "yyjlYjxk\"-p", "abc\nlmyn\nxz");
 
     // Testing "d"
