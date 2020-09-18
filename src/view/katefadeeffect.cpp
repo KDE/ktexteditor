@@ -36,7 +36,12 @@ void KateFadeEffect::fadeIn()
 {
     // stop time line if still running
     if (m_timeLine->state() == QTimeLine::Running) {
+        QTimeLine::Direction direction = m_timeLine->direction();
         m_timeLine->stop();
+        if (direction == QTimeLine::Backward) {
+            // fadeOut animation interrupted
+            emit hideAnimationFinished();
+        }
     }
 
     // assign new graphics effect, old one is deleted in setGraphicsEffect()
@@ -54,7 +59,12 @@ void KateFadeEffect::fadeOut()
 {
     // stop time line if still running
     if (m_timeLine->state() == QTimeLine::Running) {
+        QTimeLine::Direction direction = m_timeLine->direction();
         m_timeLine->stop();
+        if (direction == QTimeLine::Forward) {
+            // fadeIn animation interrupted
+            emit showAnimationFinished();
+        }
     }
 
     // assign new graphics effect, old one is deleted in setGraphicsEffect()
