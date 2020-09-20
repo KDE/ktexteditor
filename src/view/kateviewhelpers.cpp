@@ -1938,175 +1938,177 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
     for (uint z = startz; z < endz; z++) {
         // Painting coordinates, lineHeight * lineNumber
         const uint y = h * z;
+
         // Paint the border in chunks left->right, remember used width
         uint lnX = 0;
 
         // Paint background over full width...
         p.fillRect(lnX, y, w, h, iconBarColor);
 
-        // ...and overpaint again the end to simulate some margin to the edit area,
+        // get line for this coordinates if possible
+        const KateTextLayout lineLayout = m_viewInternal->cache()->viewLine(z);
+        const int realLine = lineLayout.line();
+        if (realLine >= 0) {
+            // icon pane
+            if (m_iconBorderOn) {
+                const uint mrk(m_doc->mark(realLine)); // call only once
+                if (mrk && lineLayout.startCol() == 0) {
+                    for (uint bit = 0; bit < 32; bit++) {
+                        MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
+                        if (mrk & markType) {
+                            const QIcon markIcon = m_doc->markIcon(markType);
+
+                            if (!markIcon.isNull() && h > 0 && m_iconAreaWidth > 0) {
+                                const int s = qMin(m_iconAreaWidth, static_cast<int>(h)) - 2;
+
+                                // center the mark pixmap
+                                const int x_px = qMax(m_iconAreaWidth - s, 0) / 2;
+                                const int y_px = qMax(static_cast<int>(h) - s, 0) / 2;
+
+                                markIcon.paint(&p, lnX + x_px, y + y_px, s, s);
+                            }
+                        }
+                    }
+                }
+
+                lnX += m_iconAreaWidth;
+                if (m_updatePositionToArea) {
+                    m_positionToArea.append(AreaPosition(lnX, IconBorder));
+                }
+            }
+
+            // annotation information
+            if (m_annotationBorderOn) {
+                // Draw a border line between annotations and the line numbers
+                p.setPen(lineNumberColor);
+                p.setBrush(lineNumberColor);
+
+                const qreal borderX = lnX + m_annotationAreaWidth + 0.5;
+                p.drawLine(QPointF(borderX, y + 0.5), QPointF(borderX, y + h - 0.5));
+
+                if (model) {
+                    KTextEditor::StyleOptionAnnotationItem styleOption;
+                    initStyleOption(&styleOption);
+                    styleOption.rect.setRect(lnX, y, m_annotationAreaWidth, h);
+                    annotationGroupPositionState.nextLine(styleOption, z, realLine);
+
+                    m_annotationItemDelegate->paint(&p, styleOption, model, realLine);
+                }
+
+                lnX += m_annotationAreaWidth + m_separatorWidth;
+                if (m_updatePositionToArea) {
+                    m_positionToArea.append(AreaPosition(lnX, AnnotationBorder));
+                }
+            }
+
+            // line number
+            if (m_lineNumbersOn || m_dynWrapIndicatorsOn) {
+                QColor usedLineNumberColor;
+                const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
+                if (distanceToCurrent == 0) {
+                    usedLineNumberColor = m_view->renderer()->config()->currentLineNumberColor();
+                } else {
+                    usedLineNumberColor = lineNumberColor;
+                }
+                p.setPen(usedLineNumberColor);
+                p.setBrush(usedLineNumberColor);
+
+                if (lineLayout.startCol() == 0) {
+                    if (m_relLineNumbersOn) {
+                        if (distanceToCurrent == 0) {
+                            p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignLeft | Qt::AlignVCenter, QString::number(realLine + 1));
+                        } else {
+                            p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(distanceToCurrent));
+                        }
+                        if (m_updateRelLineNumbers) {
+                            m_updateRelLineNumbers = false;
+                            update();
+                        }
+                    } else if (m_lineNumbersOn) {
+                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
+                    }
+                } else if (m_dynWrapIndicatorsOn) {
+                    p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
+                }
+
+                lnX += m_lineNumberAreaWidth + m_separatorWidth;
+                if (m_updatePositionToArea) {
+                    m_positionToArea.append(AreaPosition(lnX, LineNumbers));
+                }
+            }
+
+            // modified line system
+            if (m_view->config()->lineModification() && !m_doc->url().isEmpty()) {
+                const Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
+                if (tl->markedAsModified()) {
+                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->modifiedLineColor());
+                } else if (tl->markedAsSavedOnDisk()) {
+                    p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->savedLineColor());
+                } else {
+                    p.fillRect(lnX, y, m_modAreaWidth, h, iconBarColor);
+                }
+
+                lnX += m_modAreaWidth; // No m_separatorWidth
+                if (m_updatePositionToArea) {
+                    m_positionToArea.append(AreaPosition(lnX, None));
+                }
+            }
+
+            // folding markers
+            if (m_foldingMarkersOn) {
+                const QColor foldingColor(m_view->renderer()->config()->foldingColor());
+                // possible additional folding highlighting
+                if (m_foldingRange && m_foldingRange->overlapsLine(realLine)) {
+                    p.fillRect(lnX, y, m_foldingAreaWidth, h, foldingColor);
+                }
+
+                if (lineLayout.startCol() == 0) {
+                    QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
+                    bool anyFolded = false;
+                    for (int i = 0; i < startingRanges.size(); ++i) {
+                        if (startingRanges[i].second & Kate::TextFolding::Folded) {
+                            anyFolded = true;
+                        }
+                    }
+                    const Kate::TextLine tl = m_doc->kateTextLine(realLine);
+                    if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
+                        if (anyFolded) {
+                            paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
+                        } else {
+                            // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
+                            paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
+                        }
+                    }
+                }
+
+                lnX += m_foldingAreaWidth;
+                if (m_updatePositionToArea) {
+                    m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
+                }
+            }
+
+            // if any content there, add separator line between bar and text
+            // this is very helpful for themes with equal border & text background
+            if (lnX > 0) {
+                lnX += m_separatorWidth;
+            }
+        }
+
+        // Overpaint again the end to simulate some margin to the edit area,
         // so that the text not looks like stuck to the border
+        // we do this AFTER all other painting to ensure this leaves no artifacts
         p.fillRect(w - m_separatorWidth, y, w, h, backgroundColor);
 
         // add separator line if needed
+        // we do this AFTER all other painting to ensure this leaves no artifacts
         if (w > 2 * m_separatorWidth) {
             p.setPen(m_view->renderer()->config()->separatorColor());
             p.setBrush(m_view->renderer()->config()->separatorColor());
             p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, y + h);
         }
 
-        const KateTextLayout lineLayout = m_viewInternal->cache()->viewLine(z);
-        int realLine = lineLayout.line();
-        if (realLine < 0) {
-            // We have reached the end of the document, just paint background
-            continue;
-        }
-
-        // icon pane
-        if (m_iconBorderOn) {
-            const uint mrk(m_doc->mark(realLine)); // call only once
-            if (mrk && lineLayout.startCol() == 0) {
-                for (uint bit = 0; bit < 32; bit++) {
-                    MarkInterface::MarkTypes markType = (MarkInterface::MarkTypes)(1 << bit);
-                    if (mrk & markType) {
-                        const QIcon markIcon = m_doc->markIcon(markType);
-
-                        if (!markIcon.isNull() && h > 0 && m_iconAreaWidth > 0) {
-                            const int s = qMin(m_iconAreaWidth, static_cast<int>(h)) - 2;
-
-                            // center the mark pixmap
-                            const int x_px = qMax(m_iconAreaWidth - s, 0) / 2;
-                            const int y_px = qMax(static_cast<int>(h) - s, 0) / 2;
-
-                            markIcon.paint(&p, lnX + x_px, y + y_px, s, s);
-                        }
-                    }
-                }
-            }
-
-            lnX += m_iconAreaWidth;
-            if (m_updatePositionToArea) {
-                m_positionToArea.append(AreaPosition(lnX, IconBorder));
-            }
-        }
-
-        // annotation information
-        if (m_annotationBorderOn) {
-            // Draw a border line between annotations and the line numbers
-            p.setPen(lineNumberColor);
-            p.setBrush(lineNumberColor);
-
-            const qreal borderX = lnX + m_annotationAreaWidth + 0.5;
-            p.drawLine(QPointF(borderX, y + 0.5), QPointF(borderX, y + h - 0.5));
-
-            if (model) {
-                KTextEditor::StyleOptionAnnotationItem styleOption;
-                initStyleOption(&styleOption);
-                styleOption.rect.setRect(lnX, y, m_annotationAreaWidth, h);
-                annotationGroupPositionState.nextLine(styleOption, z, realLine);
-
-                m_annotationItemDelegate->paint(&p, styleOption, model, realLine);
-            }
-
-            lnX += m_annotationAreaWidth + m_separatorWidth;
-            if (m_updatePositionToArea) {
-                m_positionToArea.append(AreaPosition(lnX, AnnotationBorder));
-            }
-        }
-
-        // line number
-        if (m_lineNumbersOn || m_dynWrapIndicatorsOn) {
-            QColor usedLineNumberColor;
-            const int distanceToCurrent = abs(realLine - static_cast<int>(currentLine));
-            if (distanceToCurrent == 0) {
-                usedLineNumberColor = m_view->renderer()->config()->currentLineNumberColor();
-            } else {
-                usedLineNumberColor = lineNumberColor;
-            }
-            p.setPen(usedLineNumberColor);
-            p.setBrush(usedLineNumberColor);
-
-            if (lineLayout.startCol() == 0) {
-                if (m_relLineNumbersOn) {
-                    if (distanceToCurrent == 0) {
-                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignLeft | Qt::AlignVCenter, QString::number(realLine + 1));
-                    } else {
-                        p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(distanceToCurrent));
-                    }
-                    if (m_updateRelLineNumbers) {
-                        m_updateRelLineNumbers = false;
-                        update();
-                    }
-                } else if (m_lineNumbersOn) {
-                    p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, QString::number(realLine + 1));
-                }
-            } else if (m_dynWrapIndicatorsOn) {
-                p.drawText(lnX + m_maxCharWidth / 2, y, m_lineNumberAreaWidth - m_maxCharWidth, h, Qt::TextDontClip | Qt::AlignRight | Qt::AlignVCenter, m_dynWrapIndicatorChar);
-            }
-
-            lnX += m_lineNumberAreaWidth + m_separatorWidth;
-            if (m_updatePositionToArea) {
-                m_positionToArea.append(AreaPosition(lnX, LineNumbers));
-            }
-        }
-
-        // modified line system
-        if (m_view->config()->lineModification() && !m_doc->url().isEmpty()) {
-            const Kate::TextLine tl = m_doc->plainKateTextLine(realLine);
-            if (tl->markedAsModified()) {
-                p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->modifiedLineColor());
-            } else if (tl->markedAsSavedOnDisk()) {
-                p.fillRect(lnX, y, m_modAreaWidth, h, m_view->renderer()->config()->savedLineColor());
-            } else {
-                p.fillRect(lnX, y, m_modAreaWidth, h, iconBarColor);
-            }
-
-            lnX += m_modAreaWidth; // No m_separatorWidth
-            if (m_updatePositionToArea) {
-                m_positionToArea.append(AreaPosition(lnX, None));
-            }
-        }
-
-        // folding markers
-        if (m_foldingMarkersOn) {
-            const QColor foldingColor(m_view->renderer()->config()->foldingColor());
-            // possible additional folding highlighting
-            if (m_foldingRange && m_foldingRange->overlapsLine(realLine)) {
-                p.fillRect(lnX, y, m_foldingAreaWidth, h, foldingColor);
-            }
-
-            if (lineLayout.startCol() == 0) {
-                QVector<QPair<qint64, Kate::TextFolding::FoldingRangeFlags>> startingRanges = m_view->textFolding().foldingRangesStartingOnLine(realLine);
-                bool anyFolded = false;
-                for (int i = 0; i < startingRanges.size(); ++i) {
-                    if (startingRanges[i].second & Kate::TextFolding::Folded) {
-                        anyFolded = true;
-                    }
-                }
-                const Kate::TextLine tl = m_doc->kateTextLine(realLine);
-                if (!startingRanges.isEmpty() || tl->markedAsFoldingStart()) {
-                    if (anyFolded) {
-                        paintTriangle(p, foldingColor, lnX, y, m_foldingAreaWidth, h, false);
-                    } else {
-                        // Don't try to use currentLineNumberColor, the folded icon gets also not highligted
-                        paintTriangle(p, lineNumberColor, lnX, y, m_foldingAreaWidth, h, true);
-                    }
-                }
-            }
-
-            lnX += m_foldingAreaWidth;
-            if (m_updatePositionToArea) {
-                m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
-            }
-        }
-
-        // if any content there, add separator line between bar and text
-        // this is very helpful for themes with equal border & text background
-        if (lnX > 0) {
-            lnX += m_separatorWidth;
-        }
-
-        if (m_updatePositionToArea) {
+        // we might need to trigger geometry updates
+        if ((realLine >= 0) && m_updatePositionToArea) {
             m_updatePositionToArea = false;
             // Don't forget our "text-stuck-to-border" protector
             lnX += m_separatorWidth;
