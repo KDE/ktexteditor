@@ -785,7 +785,7 @@ QString ModeBase::getRegisterContent(const QChar &reg)
     QString r = m_viInputModeManager->globalState()->registers()->getContent(reg);
 
     if (r.isNull()) {
-        error(i18n("Nothing in register %1", reg));
+        error(i18n("Nothing in register %1", reg.toLower()));
     }
 
     return r;

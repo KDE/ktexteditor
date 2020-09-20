@@ -3727,7 +3727,7 @@ bool NormalViMode::paste(PasteLocation pasteLocation, bool isgPaste, bool isInde
     isgPaste |= m_viInputModeManager->getTemporaryNormalMode();
 
     if (textToInsert.isEmpty()) {
-        error(i18n("Nothing in register %1", reg));
+        error(i18n("Nothing in register %1", reg.toLower()));
         return false;
     }
 
