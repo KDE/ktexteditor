@@ -1943,9 +1943,17 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
         // Paint background over full width...
         p.fillRect(lnX, y, w, h, iconBarColor);
+
         // ...and overpaint again the end to simulate some margin to the edit area,
         // so that the text not looks like stuck to the border
         p.fillRect(w - m_separatorWidth, y, w, h, backgroundColor);
+
+        // add separator line if needed
+        if (w > 2 * m_separatorWidth) {
+            p.setPen(m_view->renderer()->config()->separatorColor());
+            p.setBrush(m_view->renderer()->config()->separatorColor());
+            p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, y + h);
+        }
 
         const KateTextLayout lineLayout = m_viewInternal->cache()->viewLine(z);
         int realLine = lineLayout.line();
@@ -1956,10 +1964,6 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
 
         // icon pane
         if (m_iconBorderOn) {
-            p.setPen(m_view->renderer()->config()->separatorColor());
-            p.setBrush(m_view->renderer()->config()->separatorColor());
-            p.drawLine(lnX + m_iconAreaWidth, y, lnX + m_iconAreaWidth, y + h);
-
             const uint mrk(m_doc->mark(realLine)); // call only once
             if (mrk && lineLayout.startCol() == 0) {
                 for (uint bit = 0; bit < 32; bit++) {
@@ -1980,7 +1984,7 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                 }
             }
 
-            lnX += m_iconAreaWidth + m_separatorWidth;
+            lnX += m_iconAreaWidth;
             if (m_updatePositionToArea) {
                 m_positionToArea.append(AreaPosition(lnX, IconBorder));
             }
@@ -2094,6 +2098,12 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
             if (m_updatePositionToArea) {
                 m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
             }
+        }
+
+        // if any content there, add separator line between bar and text
+        // this is very helpful for themes with equal border & text background
+        if (lnX > 0) {
+            lnX += m_separatorWidth;
         }
 
         if (m_updatePositionToArea) {
