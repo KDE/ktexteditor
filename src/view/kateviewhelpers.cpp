@@ -2086,32 +2086,26 @@ void KateIconBorder::paintBorder(int /*x*/, int y, int /*width*/, int height)
                     m_positionToArea.append(AreaPosition(lnX, FoldingMarkers));
                 }
             }
-
-            // if any content there, add separator line between bar and text
-            // this is very helpful for themes with equal border & text background
-            if (lnX > 0) {
-                lnX += m_separatorWidth;
-            }
         }
 
         // Overpaint again the end to simulate some margin to the edit area,
         // so that the text not looks like stuck to the border
         // we do this AFTER all other painting to ensure this leaves no artifacts
-        p.fillRect(w - m_separatorWidth, y, w, h, backgroundColor);
+        // we kill 2 separator widths as we will below paint a line over this
+        // otherwise this has some minimal overlap and looks ugly e.g. for scaled rendering
+        p.fillRect(w - 2 * m_separatorWidth, y, w, h, backgroundColor);
 
         // add separator line if needed
         // we do this AFTER all other painting to ensure this leaves no artifacts
-        if (w > 2 * m_separatorWidth) {
-            p.setPen(m_view->renderer()->config()->separatorColor());
-            p.setBrush(m_view->renderer()->config()->separatorColor());
-            p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, y + h);
-        }
+        p.setPen(m_view->renderer()->config()->separatorColor());
+        p.setBrush(m_view->renderer()->config()->separatorColor());
+        p.drawLine(w - 2 * m_separatorWidth, y, w - 2 * m_separatorWidth, y + h);
 
         // we might need to trigger geometry updates
         if ((realLine >= 0) && m_updatePositionToArea) {
             m_updatePositionToArea = false;
-            // Don't forget our "text-stuck-to-border" protector
-            lnX += m_separatorWidth;
+            // Don't forget our "text-stuck-to-border" protector + border line
+            lnX += 2 * m_separatorWidth;
             m_positionToArea.append(AreaPosition(lnX, None));
             // Now that we know our needed space, ensure we are painted properly
             updateGeometry();
