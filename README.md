@@ -59,7 +59,7 @@ See the documentation for these classes for more information.
 
 ## Licensing
 
-Contributions to KTextEditor shall be licensed under LGPLv2+.
+Contributions to KTextEditor shall be licensed under [LGPLv2+](LICENSES/LGPL-2.0-or-later.txt).
 
 All files shall contain a proper "SPDX-License-Identifier: LGPL-2.0-or-later" identifier inside a header like:
 
