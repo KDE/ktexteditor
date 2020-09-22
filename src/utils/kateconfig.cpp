@@ -22,6 +22,9 @@
 #include <QStringListModel>
 #include <QTextCodec>
 
+#include <Sonnet/GuessLanguage>
+#include <Sonnet/Speller>
+
 static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
 {
     // TODO: improve this, at the moment we just switch between default light and dark theme, we might want to search a "best" match
@@ -364,7 +367,18 @@ void KateDocumentConfig::readConfig(const KConfigGroup &config)
     //          do it, see also the KTextEdit class
     if (isGlobal()) {
         const QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
-        setOnTheFlySpellCheck(settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool());
+        const bool onTheFlyChecking = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
+        setOnTheFlySpellCheck(onTheFlyChecking);
+
+        // ensure we load the default dictionary speller + trigrams early
+        // this avoids hangs for auto-spellchecking on first edits
+        // do this if we have on the fly spellchecking on only
+        if (onTheFlyChecking) {
+            Sonnet::Speller speller;
+            speller.setLanguage(Sonnet::Speller().defaultLanguage());
+            Sonnet::GuessLanguage languageGuesser;
+            languageGuesser.identify(QStringLiteral("dummy to trigger identify"));
+        }
     }
 
     // backwards compatibility mappings
