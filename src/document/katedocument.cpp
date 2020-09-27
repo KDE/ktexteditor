@@ -2225,6 +2225,11 @@ void KTextEditor::DocumentPrivate::printPreview()
 // BEGIN KTextEditor::DocumentInfoInterface (### unfinished)
 QString KTextEditor::DocumentPrivate::mimeType()
 {
+    if (!m_modOnHd && url().isLocalFile()) {
+        // for unmodified files that reside directly on disk, we don't need to
+        // create a temporary buffer - we can just look at the file directly
+        return QMimeDatabase().mimeTypeForFile(url().toLocalFile()).name();
+    }
     // collect first 4k of text
     // only heuristic
     QByteArray buf;
