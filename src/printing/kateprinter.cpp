@@ -21,6 +21,8 @@
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
 #include <QPrinter>
+#include <QPageLayout>
+#include <QMarginsF>
 
 #include "printconfigwidgets.h"
 #include "printpainter.h"
@@ -150,13 +152,11 @@ void KatePrinterPrivate::writeSettings(QPrinter *printer)
     KConfigGroup group(config, QStringLiteral("Kate Print Settings"));
     KConfigGroup margins(&group, QStringLiteral("Margins"));
 
-    qreal left, right, top, bottom;
-    printer->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
-
-    margins.writeEntry("left", left);
-    margins.writeEntry("top", top);
-    margins.writeEntry("right", right);
-    margins.writeEntry("bottom", bottom);
+    QMarginsF m = printer->pageLayout().margins(QPageLayout::Millimeter);
+    margins.writeEntry("left", m.left());
+    margins.writeEntry("top", m.top());
+    margins.writeEntry("right", m.right());
+    margins.writeEntry("bottom", m.bottom());
 }
 
 void KatePrinterPrivate::readSettings(QPrinter *printer)
@@ -166,14 +166,12 @@ void KatePrinterPrivate::readSettings(QPrinter *printer)
     KConfigGroup margins(&group, QStringLiteral("Margins"));
 
     qreal left, right, top, bottom;
-    printer->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
-
     left = margins.readEntry("left", left);
     top = margins.readEntry("top", top);
     right = margins.readEntry("right", right);
     bottom = margins.readEntry("bottom", bottom);
-
-    printer->setPageMargins(left, top, right, bottom, QPrinter::Millimeter);
+    QMarginsF m = QMarginsF(left, top, right, bottom);
+    printer->setPageMargins(m, QPageLayout::Millimeter);
 }
 
 // END KatePrinterPrivate
