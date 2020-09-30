@@ -31,7 +31,7 @@ KateTextAnimation::KateTextAnimation(const KTextEditor::Range &range, KTextEdito
     connect(m_timeLine, SIGNAL(valueChanged(qreal)), this, SLOT(nextFrame(qreal)));
     connect(m_timeLine, SIGNAL(finished()), this, SLOT(deleteLater()));
 
-    m_timeLine->setCurveShape(QTimeLine::SineCurve);
+    m_timeLine->setEasingCurve(QEasingCurve::SineCurve);
     m_timeLine->start();
 
     QObject::connect(view, &KTextEditor::View::destroyed, m_timeLine, &QTimeLine::stop);
