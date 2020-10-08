@@ -3763,16 +3763,20 @@ void KTextEditor::ViewPrivate::createHighlights()
 
     // only add word boundary if we can find the text then
     // fixes $lala hl
-    QString regex = QRegExp::escape(m_currentTextForHighlights);
-    if (QRegExp(QStringLiteral("\\b%1").arg(regex)).indexIn(QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-        regex = QStringLiteral("\\b%1").arg(regex);
-    if (QRegExp(QStringLiteral("%1\\b").arg(regex)).indexIn(QStringLiteral(" %1 ").arg(m_currentTextForHighlights)) != -1)
-        regex = QStringLiteral("%1\\b").arg(regex);
+    QString pattern = QRegularExpression::escape(m_currentTextForHighlights);
+    if (m_currentTextForHighlights.contains(QRegularExpression(QLatin1String("\\b") + pattern))) {
+        pattern.prepend(QLatin1String("\\b"));
+    }
+
+    if (m_currentTextForHighlights.contains(QRegularExpression(pattern + QLatin1String("\\b")))) {
+        pattern += QLatin1String("\\b");
+    }
+
     QVector<KTextEditor::Range> matches;
     do {
         searchRange.setRange(start, visibleRange().end());
 
-        matches = doc()->searchText(searchRange, regex, KTextEditor::Regex);
+        matches = doc()->searchText(searchRange, pattern, KTextEditor::Regex);
 
         if (matches.first().isValid()) {
             KTextEditor::MovingRange *mr = doc()->newMovingRange(matches.first());
