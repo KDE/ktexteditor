@@ -890,11 +890,12 @@ void KateThemeConfigHighlightTab::apply()
         // get current theme data from disk
         QJsonObject newThemeObject = jsonForTheme(theme);
 
-        // look at all highlightings we have info stored
-        QJsonObject overrides;
+        // look at all highlightings we have info stored, important: keep info we did load from file and not overwrite here!
+        QJsonObject overrides = newThemeObject[QLatin1String("custom-styles")].toObject();
         for (const auto &highlightingIt : themeIt.second) {
+            // start with stuff we know from the loaded json
             const QString definitionName = highlightingIt.first;
-            QJsonObject styles;
+            QJsonObject styles = overrides[definitionName].toObject();
             for (const auto &attributeIt : highlightingIt.second) {
                 QJsonObject style;
                 KTextEditor::Attribute::Ptr p = attributeIt.second.first;
@@ -924,15 +925,19 @@ void KateThemeConfigHighlightTab::apply()
                     style[QLatin1String("strike-through")] = p->fontStrikeOut();
                 }
 
-                // ensure we skip empty overrides
+                // either set the new stuff or erase the old entry we might have set from the loaded json
                 if (!style.isEmpty()) {
                     styles[attributeIt.first] = style;
+                } else {
+                    styles.remove(attributeIt.first);
                 }
             }
 
-            // ensure we skip empty overrides
+            // either set the new stuff or erase the old entry we might have set from the loaded json
             if (!styles.isEmpty()) {
                 overrides[definitionName] = styles;
+            } else {
+                overrides.remove(definitionName);
             }
         }
 
