@@ -1057,6 +1057,11 @@ void KateThemeConfigPage::exportFullSchema()
     const QString currentThemeName = schemaCombo->itemData(schemaCombo->currentIndex()).toString();
     const auto currentTheme = KateHlManager::self()->repository().theme(currentThemeName);
 
+    // ensure we overwrite
+    if (QFile::exists(destName)) {
+        QFile::remove(destName);
+    }
+
     // export is easy, just copy the file 1:1
     QFile::copy(currentTheme.filePath(), destName);
 }
@@ -1085,6 +1090,11 @@ void KateThemeConfigPage::importFullSchema()
 
     // copy theme file, we might need to create the local dir first
     QDir().mkpath(themesPath);
+
+    // ensure we overwrite
+    if (QFile::exists(themesFullFileName)) {
+        QFile::remove(themesFullFileName);
+    }
     QFile::copy(srcName, themesFullFileName);
 
     // reload themes DB & clear all attributes
