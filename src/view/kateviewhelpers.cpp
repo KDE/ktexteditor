@@ -94,10 +94,7 @@ int KateMessageLayout::count() const
 
 QLayoutItem *KateMessageLayout::itemAt(int index) const
 {
-    if (index < 0 || index >= m_items.size())
-        return nullptr;
-
-    return m_items[index]->item;
+    return m_items.value(index).item;
 }
 
 void KateMessageLayout::setGeometry(const QRect &rect)
@@ -106,9 +103,9 @@ void KateMessageLayout::setGeometry(const QRect &rect)
     const int s = spacing();
     const QRect adjustedRect = rect.adjusted(s, s, -s, -s);
 
-    for (auto wrapper : m_items) {
-        QLayoutItem *item = wrapper->item;
-        auto position = wrapper->position;
+    for (const auto &wrapper : qAsConst(m_items)) {
+        QLayoutItem *item = wrapper.item;
+        auto position = wrapper.position;
 
         if (position == KTextEditor::Message::TopInView) {
             const QRect r(adjustedRect.width() - item->sizeHint().width(), s, item->sizeHint().width(), item->sizeHint().height());
@@ -134,15 +131,14 @@ QSize KateMessageLayout::sizeHint() const
 QLayoutItem *KateMessageLayout::takeAt(int index)
 {
     if (index >= 0 && index < m_items.size()) {
-        ItemWrapper *layoutStruct = m_items.takeAt(index);
-        return layoutStruct->item;
+        return m_items.takeAt(index).item;
     }
     return nullptr;
 }
 
 void KateMessageLayout::add(QLayoutItem *item, KTextEditor::Message::MessagePosition pos)
 {
-    m_items.push_back(new ItemWrapper(item, pos));
+    m_items.push_back({item, pos});
 }
 // END KateMessageLayout
 

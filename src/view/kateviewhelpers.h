@@ -83,6 +83,7 @@ private:
     void addItem(QLayoutItem *item) override; // never called publically
 
     struct ItemWrapper {
+        ItemWrapper() = default;
         ItemWrapper(QLayoutItem *i, KTextEditor::Message::MessagePosition pos)
             : item(i)
             , position(pos)
@@ -90,10 +91,10 @@ private:
         }
 
         QLayoutItem *item = nullptr;
-        KTextEditor::Message::MessagePosition position;
+        KTextEditor::Message::MessagePosition position = KTextEditor::Message::AboveView;
     };
 
-    QVector<ItemWrapper *> m_items;
+    QVector<ItemWrapper> m_items;
 };
 
 /**
