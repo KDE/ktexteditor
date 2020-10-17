@@ -2832,7 +2832,8 @@ Range NormalViMode::motionToPrevVisualLine()
 Range NormalViMode::motionToPreviousSentence()
 {
     KTextEditor::Cursor c = findSentenceStart();
-    int linenum = c.line(), column;
+    int linenum = c.line();
+    int column = c.column();
     const bool skipSpaces = doc()->line(linenum).isEmpty();
 
     if (skipSpaces) {
@@ -2840,8 +2841,6 @@ Range NormalViMode::motionToPreviousSentence()
         if (linenum >= 0) {
             column = doc()->line(linenum).size() - 1;
         }
-    } else {
-        column = c.column();
     }
 
     for (int i = linenum; i >= 0; i--) {
