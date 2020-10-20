@@ -378,8 +378,6 @@ private Q_SLOTS:
 
 private:
     QString m_hoveredAnnotationGroupIdentifier;
-
-    void initializeFoldingColors();
 };
 
 class KateViewEncodingAction : public KSelectAction
@@ -626,7 +624,6 @@ private:
      * @param string the expression to parse
      * @return the position, an integer
      */
-    int calculatePosition(QString string);
     void fromHistory(bool up);
     QString helptext(const QPoint &) const;
 

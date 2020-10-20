@@ -28,8 +28,6 @@ public:
     /// The following three are convenience-functions for the current item that could be replaced by the later ones
     ///@return whether the current item can be expanded
     bool canExpandCurrentItem() const;
-    ///@return whether the current item can be collapsed
-    bool canCollapseCurrentItem() const;
     /// Expand/collapse the current item
     void setCurrentItemExpanded(bool);
 

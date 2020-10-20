@@ -60,7 +60,6 @@ private:
 private:
     void executeMapping();
     void playBackRejectedKeys();
-    void appendMappingKey(const QChar &key);
 };
 
 }

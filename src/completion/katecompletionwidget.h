@@ -179,7 +179,6 @@ private:
     void clear();
     // Switch cursor between argument-hint list / completion-list
     void switchList();
-    KTextEditor::Range determineRange() const;
     void completionRangeChanged(KTextEditor::CodeCompletionModel *, const KTextEditor::Range &word);
 
     void deleteCompletionRanges();

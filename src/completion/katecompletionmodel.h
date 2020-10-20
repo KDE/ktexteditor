@@ -249,8 +249,6 @@ private:
         bool matchFilters;
         bool m_haveExactMatch;
         bool m_unimportant;
-
-        QString completionSortingName() const;
     };
 
 public:

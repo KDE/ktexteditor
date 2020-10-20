@@ -150,11 +150,6 @@ public:
     ReplaceViMode *getViReplaceMode();
 
     /**
-     * append a QKeyEvent to the key event log
-     */
-    void appendKeyEventToLog(const QKeyEvent &e);
-
-    /**
      * clear the key event log
      */
     void clearCurrentChangeLog();

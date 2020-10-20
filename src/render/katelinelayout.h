@@ -94,8 +94,6 @@ private:
     // Disable copy
     KateLineLayout(const KateLineLayout &copy);
 
-    QTextLayout *takeLayout() const;
-
     KateRenderer &m_renderer;
     mutable Kate::TextLine m_textLine;
     int m_line;

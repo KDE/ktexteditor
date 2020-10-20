@@ -32,9 +32,6 @@ public:
     void readSessionConfig(const KConfigGroup &config);
 
 private:
-    void printJumpList() const;
-
-private:
     QVector<KTextEditor::Cursor> m_jumps;
     QVector<KTextEditor::Cursor>::iterator m_current = m_jumps.begin();
 };
