@@ -23,7 +23,6 @@
 #include "../history.h"
 
 #include "../registers.h"
-#include "../searcher.h"
 
 #include <QApplication>
 #include <QLabel>

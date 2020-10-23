@@ -24,7 +24,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QList>
-#include <QObject>
 #include <QString>
 #include <QTextStream>
 #include <QTimer>
@@ -32,7 +31,6 @@
 
 #include <QtTestWidgets>
 
-#include "script_test_base.h"
 #include "testutils.h"
 
 QTEST_MAIN(ScriptingTest)

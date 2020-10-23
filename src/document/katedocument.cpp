@@ -30,7 +30,6 @@
 #include "katescriptmanager.h"
 #include "kateswapfile.h"
 #include "katetemplatehandler.h"
-#include "katetextline.h"
 #include "kateundomanager.h"
 #include "katevariableexpansionmanager.h"
 #include "kateview.h"
@@ -72,7 +71,6 @@
 #include <QTemporaryFile>
 #include <QTextCodec>
 #include <QTextStream>
-#include <QTimer>
 
 #include <cmath>
 

@@ -21,8 +21,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QJSEngine>
-#include <QJSValue>
-#include <QMap>
 #include <QQmlEngine>
 
 KateScript::KateScript(const QString &urlOrScript, enum InputType inputType)

@@ -31,7 +31,6 @@
 #include "katenormalinputmodefactory.h"
 #include "kateviinputmodefactory.h"
 
-#include <KAboutData>
 #include <KConfigGroup>
 #include <KDirWatch>
 #include <KLocalizedString>

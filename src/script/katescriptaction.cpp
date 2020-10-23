@@ -7,7 +7,6 @@
 #include "katescriptaction.h"
 #include "kateabstractinputmode.h"
 #include "katecmd.h"
-#include "katecommandlinescript.h"
 #include "katedocument.h"
 #include "kateglobal.h"
 #include "katepartdebug.h"

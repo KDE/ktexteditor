@@ -8,7 +8,6 @@
 
 #include <kateglobal.h>
 #include <katewordcompletion.h>
-#include <ktexteditor/document.h>
 #include <ktexteditor/editor.h>
 #include <ktexteditor/view.h>
 

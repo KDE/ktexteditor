@@ -11,7 +11,6 @@
 #include <QJSValue>
 
 #include "katedocument.h"
-#include "kateview.h"
 
 KateIndentScript::KateIndentScript(const QString &url, const KateIndentScriptHeader &header)
     : KateScript(url)

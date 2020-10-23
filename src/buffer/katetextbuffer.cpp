@@ -12,7 +12,6 @@
 #include "katetextloader.h"
 
 // this is unfortunate, but needed for performance
-#include "katedocument.h"
 #include "katepartdebug.h"
 #include "kateview.h"
 

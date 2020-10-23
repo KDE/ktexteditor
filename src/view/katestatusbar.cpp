@@ -16,7 +16,6 @@
 #include <KAcceleratorManager>
 #include <KActionCollection>
 #include <KIconUtils>
-#include <KLocalizedString>
 #include <Sonnet/Speller>
 
 #include <QHBoxLayout>

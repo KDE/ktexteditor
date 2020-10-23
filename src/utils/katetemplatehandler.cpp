@@ -8,7 +8,6 @@
 
 #include <QQueue>
 #include <QRegularExpression>
-#include <QVector>
 
 #include <ktexteditor/movingcursor.h>
 #include <ktexteditor/movingrange.h>

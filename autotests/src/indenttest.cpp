@@ -15,7 +15,6 @@
 
 #include <QtTestWidgets>
 
-#include "script_test_base.h"
 #include "testutils.h"
 
 QTEST_MAIN(IndentTest)

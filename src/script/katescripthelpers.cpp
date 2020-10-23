@@ -21,7 +21,6 @@
 
 #include <QFile>
 #include <QJSEngine>
-#include <QJSValue>
 #include <QStandardPaths>
 
 #include <QDebug>

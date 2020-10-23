@@ -60,7 +60,6 @@
 #include <QCheckBox>
 #include <QClipboard>
 #include <QComboBox>
-#include <QDialog>
 #include <QDomDocument>
 #include <QFile>
 #include <QFileDialog>
@@ -76,7 +75,6 @@
 #include <QSpinBox>
 #include <QStringList>
 #include <QTabBar>
-#include <QTabWidget>
 #include <QTemporaryFile>
 #include <QTextCodec>
 #include <QTextStream>

@@ -6,7 +6,6 @@
 */
 
 #include <QDir>
-#include <QRegularExpression>
 #include <QTimer>
 
 #include <KLocalizedString>

@@ -10,7 +10,6 @@
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"
-#include "katepartdebug.h"
 #include "kateview.h"
 
 #include <ktexteditor/movingrange.h>

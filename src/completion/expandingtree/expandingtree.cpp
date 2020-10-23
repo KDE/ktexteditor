@@ -11,7 +11,6 @@
 #include <QAbstractTextDocumentLayout>
 #include <QHeaderView>
 #include <QPainter>
-#include <QTextDocument>
 #include <QTextLayout>
 
 ExpandingTree::ExpandingTree(QWidget *parent)

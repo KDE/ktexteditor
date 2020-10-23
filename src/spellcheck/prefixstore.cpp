@@ -8,7 +8,6 @@
 
 #include "katepartdebug.h"
 
-#include "katetextline.h"
 
 KatePrefixStore::KatePrefixStore()
 {

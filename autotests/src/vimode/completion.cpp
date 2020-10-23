@@ -6,7 +6,6 @@
 */
 
 #include "completion.h"
-#include "fakecodecompletiontestmodel.h"
 #include "vimode/globalstate.h"
 #include "vimode/mappings.h"
 #include <katecompletionwidget.h>

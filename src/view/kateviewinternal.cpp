@@ -17,7 +17,6 @@
 
 #include "kateviewinternal.h"
 
-#include "inlinenotedata.h"
 #include "kateabstractinputmode.h"
 #include "kateabstractinputmodefactory.h"
 #include "katebuffer.h"
@@ -28,10 +27,8 @@
 #include "katelayoutcache.h"
 #include "katemessagewidget.h"
 #include "katepartdebug.h"
-#include "katerenderer.h"
 #include "katetextanimation.h"
 #include "katetextpreview.h"
-#include "kateview.h"
 #include "kateviewaccessible.h"
 #include "kateviewhelpers.h"
 #include "spellcheck/spellingmenu.h"

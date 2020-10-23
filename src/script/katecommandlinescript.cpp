@@ -15,7 +15,6 @@
 #include "katecmd.h"
 #include "katedocument.h"
 #include "katepartdebug.h"
-#include "kateview.h"
 
 KateCommandLineScript::KateCommandLineScript(const QString &url, const KateCommandLineScriptHeader &header)
     : KateScript(url)

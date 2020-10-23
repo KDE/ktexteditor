@@ -5,7 +5,6 @@
 */
 
 #include "activemode.h"
-#include "completer.h"
 #include "emulatedcommandbar.h"
 #include "matchhighlighter.h"
 

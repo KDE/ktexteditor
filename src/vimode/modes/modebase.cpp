@@ -23,7 +23,6 @@
 #include <vimode/modes/normalvimode.h>
 #include <vimode/modes/replacevimode.h>
 #include <vimode/modes/visualvimode.h>
-#include <vimode/range.h>
 #include <vimode/registers.h>
 #include <vimode/searcher.h>
 

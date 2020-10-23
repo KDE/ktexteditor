@@ -18,7 +18,6 @@
 #include "ktexteditor/cursor.h"
 #include "ktexteditor/range.h"
 
-#include <QJSEngine>
 #include <QObject>
 #include <QQmlEngine>
 #include <QTest>

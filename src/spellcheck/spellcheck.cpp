@@ -12,7 +12,6 @@
 
 #include <KActionCollection>
 #include <ktexteditor/view.h>
-#include <sonnet/speller.h>
 
 #include "katedocument.h"
 #include "katehighlight.h"

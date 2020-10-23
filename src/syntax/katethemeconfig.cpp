@@ -10,7 +10,6 @@
 // BEGIN Includes
 #include "katethemeconfig.h"
 
-#include "katecolortreewidget.h"
 #include "kateconfig.h"
 #include "katedocument.h"
 #include "kateglobal.h"

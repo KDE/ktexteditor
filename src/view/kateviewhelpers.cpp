@@ -55,7 +55,6 @@
 #include <QStyle>
 #include <QStyleOption>
 #include <QTextCodec>
-#include <QTimer>
 #include <QToolButton>
 #include <QToolTip>
 #include <QVariant>

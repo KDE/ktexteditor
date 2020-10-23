@@ -8,7 +8,6 @@
 
 #include <QApplication>
 #include <QBrush>
-#include <QIcon>
 #include <QModelIndex>
 #include <QTreeView>
 

@@ -13,12 +13,10 @@
 
 #include "kateconfig.h"
 #include "katedocument.h"
-#include "kateextendedattribute.h"
 #include "kateglobal.h"
 #include "katehighlight.h"
 #include "katepartdebug.h"
 #include "katerenderer.h"
-#include "katetextline.h"
 
 #include <algorithm>
 
