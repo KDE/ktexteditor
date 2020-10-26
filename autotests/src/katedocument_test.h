@@ -41,6 +41,8 @@ private Q_SLOTS:
     void testRemoveComposedCharacters();
     void testAutoReload();
     void testSearch();
+    void testMatchingBracket_data();
+    void testMatchingBracket();
 };
 
 #endif // KATE_DOCUMENT_TEST_H
