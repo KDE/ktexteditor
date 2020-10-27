@@ -110,8 +110,6 @@ static inline QChar matchingStartBracket(const QChar c)
         return QLatin1Char('[');
     case ')':
         return QLatin1Char('(');
-    case '>':
-        return QLatin1Char('<');
     }
     return QChar();
 }
@@ -125,8 +123,6 @@ static inline QChar matchingEndBracket(const QChar c, bool withQuotes = true)
         return QLatin1Char(']');
     case '(':
         return QLatin1Char(')');
-    case '<':
-        return QLatin1Char('>');
     case '\'':
         return withQuotes ? QLatin1Char('\'') : QChar();
     case '"':

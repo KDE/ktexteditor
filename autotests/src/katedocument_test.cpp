@@ -745,10 +745,6 @@ void KateDocumentTest::testMatchingBracket_data()
     QTest::addRow(")-after") << "(\n)" << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
     QTest::addRow("(-before") << "(\n)" << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
     QTest::addRow("(-after") << "(\n)" << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow(">-before") << "<\n>" << KTextEditor::Cursor(1, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow(">-after") << "<\n>" << KTextEditor::Cursor(1, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("<-before") << "<\n>" << KTextEditor::Cursor(0, 0) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
-    QTest::addRow("<-after") << "<\n>" << KTextEditor::Cursor(0, 1) << KTextEditor::Range({0, 0}, {1, 0}) << 10;
     QTest::addRow("]-maxlines") << "[\n\n]" << KTextEditor::Cursor(1, 0) << KTextEditor::Range::invalid() << 1;
 }
 
