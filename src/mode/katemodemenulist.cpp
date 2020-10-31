@@ -171,20 +171,6 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
         layoutContainer->addLayout(layoutSearchBar);
     }
 
-    // In the Windows OS, decrease menu margins.
-#ifdef Q_OS_WIN
-    layoutContainer->setContentsMargins(3, 3, 2, 3);
-    layoutContainer->setSpacing(0);
-    if (searchBarPos == Bottom) {
-        layoutSearchBar->setContentsMargins(2, 5, 2, 2);
-    } else if (searchBarPos == Top) {
-        layoutSearchBar->setContentsMargins(2, 2, 2, 5);
-    }
-    layoutSearchBar->setSpacing(0);
-    m_layoutList->setContentsMargins(2, 2, 2, 2);
-    m_layoutList->setSpacing(0);
-#endif
-
     container->setLayout(layoutContainer);
 
     QWidgetAction *widAct = new QWidgetAction(this);
@@ -304,11 +290,6 @@ KateModeMenuListData::ListItem *KateModeMenuList::createSectionList(const QStrin
 
         QFrame *line = new QFrame(m_list);
         line->setFrameStyle(QFrame::HLine);
-
-        // In the Windows OS, decrease opacity of the section separator line.
-#ifdef Q_OS_WIN
-        line->setStyleSheet(QStringLiteral("color: rgb(188, 190, 191);"));
-#endif
 
         if (modelPosition < 0) {
             m_model->appendRow(separator);
