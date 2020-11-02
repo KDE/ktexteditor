@@ -141,8 +141,12 @@ void EmulatedCommandBar::closed()
 
 void EmulatedCommandBar::switchToMode(ActiveMode *newMode)
 {
-    if (m_currentMode)
+    if (newMode == m_currentMode) {
+        return;
+    }
+    if (m_currentMode) {
         m_currentMode->deactivate(false);
+    }
     m_currentMode = newMode;
     m_completer->setCurrentMode(newMode);
 }
