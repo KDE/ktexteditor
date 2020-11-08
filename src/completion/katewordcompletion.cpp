@@ -22,7 +22,6 @@
 #include <KPageDialog>
 #include <KPageWidgetModel>
 #include <KParts/Part>
-#include <KPluginFactory>
 #include <KToggleAction>
 
 #include <QAction>
