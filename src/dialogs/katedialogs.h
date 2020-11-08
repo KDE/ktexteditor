@@ -52,8 +52,6 @@ class TransferJob;
 class KComboBox;
 class KShortcutsEditor;
 class QSpinBox;
-class KPluginSelector;
-class KPluginInfo;
 class KProcess;
 
 class QCheckBox;
