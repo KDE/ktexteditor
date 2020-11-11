@@ -27,7 +27,29 @@
 
 static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
 {
-    // TODO: improve this, at the moment we just switch between default light and dark theme, we might want to search a "best" match
+    auto base = qGuiApp->palette().color(QPalette::Base);
+    auto themes = KTextEditor::EditorPrivate::self()->hlManager()->repository().themes();
+    
+    QVector<KSyntaxHighlighting::Theme> matchingThemes;
+    // find themes with matching background colors
+    for (auto theme : themes) {
+        auto background = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::BackgroundColor);
+        if (background == base.rgb()) {
+            matchingThemes.append(theme);
+        }
+    }
+    if (matchingThemes.count() > 0) {
+        // if there's multiple, search for one with a matching highlight color
+        auto highlight = qGuiApp->palette().color(QPalette::Highlight);
+        for (auto theme : themes) {
+            auto selection = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::TextSelection);
+            if (selection == highlight.rgb()) {
+                return theme;
+            }
+        }
+        return matchingThemes.first();
+    }
+    // fallback to just use the default light or dark theme
     return KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((qGuiApp->palette().color(QPalette::Base).lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme);
 }
 
