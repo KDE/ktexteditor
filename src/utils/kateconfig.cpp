@@ -27,21 +27,21 @@
 
 static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
 {
-    auto base = qGuiApp->palette().color(QPalette::Base);
-    auto themes = KTextEditor::EditorPrivate::self()->hlManager()->repository().themes();
-    
-    QVector<KSyntaxHighlighting::Theme> matchingThemes;
+    const auto base = qGuiApp->palette().color(QPalette::Base);
+    const auto themes = KTextEditor::EditorPrivate::self()->hlManager()->repository().themes();
+
     // find themes with matching background colors
-    for (auto theme : themes) {
-        auto background = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::BackgroundColor);
+    QVector<KSyntaxHighlighting::Theme> matchingThemes;
+    for (const auto &theme : themes) {
+        const auto background = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::BackgroundColor);
         if (background == base.rgb()) {
             matchingThemes.append(theme);
         }
     }
-    if (matchingThemes.count() > 0) {
+    if (!matchingThemes.empty()) {
         // if there's multiple, search for one with a matching highlight color
-        auto highlight = qGuiApp->palette().color(QPalette::Highlight);
-        for (auto theme : themes) {
+        const auto highlight = qGuiApp->palette().color(QPalette::Highlight);
+        for (const auto &theme : qAsConst(matchingThemes)) {
             auto selection = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::TextSelection);
             if (selection == highlight.rgb()) {
                 return theme;
@@ -49,8 +49,9 @@ static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
         }
         return matchingThemes.first();
     }
+
     // fallback to just use the default light or dark theme
-    return KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((qGuiApp->palette().color(QPalette::Base).lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme);
+    return KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((base.lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme);
 }
 
 // BEGIN KateConfig
