@@ -75,8 +75,8 @@ void KateBookmarks::createActions(KActionCollection *ac)
     connect(m_goPrevious, SIGNAL(triggered()), this, SLOT(goPrevious()));
 
     KActionMenu *actionMenu = new KActionMenu(i18n("&Bookmarks"), this);
+    actionMenu->setPopupMode(QToolButton::InstantPopup);
     ac->addAction(QStringLiteral("bookmarks"), actionMenu);
-    actionMenu->setDelayed(false);
     m_bookmarksMenu = actionMenu->menu();
 
     connect(m_bookmarksMenu, SIGNAL(aboutToShow()), this, SLOT(bookmarkMenuAboutToShow()));

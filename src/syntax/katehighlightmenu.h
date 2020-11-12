@@ -27,7 +27,7 @@ public:
         : KActionMenu(text, parent)
     {
         init();
-        setDelayed(false);
+        setPopupMode(QToolButton::InstantPopup);
     }
 
     ~KateHighlightingMenu();

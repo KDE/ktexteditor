@@ -445,7 +445,7 @@ KateViewIndentationAction::KateViewIndentationAction(KTextEditor::DocumentPrivat
     : KActionMenu(text, parent)
     , doc(_doc)
 {
-    setDelayed(false);
+    setPopupMode(QToolButton::InstantPopup);
     connect(menu(), SIGNAL(aboutToShow()), this, SLOT(slotAboutToShow()));
     actionGroup = new QActionGroup(menu());
 }
