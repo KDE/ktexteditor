@@ -25,35 +25,6 @@
 #include <Sonnet/GuessLanguage>
 #include <Sonnet/Speller>
 
-static KSyntaxHighlighting::Theme bestThemeForApplicationPalette()
-{
-    const auto base = qGuiApp->palette().color(QPalette::Base);
-    const auto themes = KTextEditor::EditorPrivate::self()->hlManager()->repository().themes();
-
-    // find themes with matching background colors
-    QVector<KSyntaxHighlighting::Theme> matchingThemes;
-    for (const auto &theme : themes) {
-        const auto background = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::BackgroundColor);
-        if (background == base.rgb()) {
-            matchingThemes.append(theme);
-        }
-    }
-    if (!matchingThemes.empty()) {
-        // if there's multiple, search for one with a matching highlight color
-        const auto highlight = qGuiApp->palette().color(QPalette::Highlight);
-        for (const auto &theme : qAsConst(matchingThemes)) {
-            auto selection = theme.editorColor(KSyntaxHighlighting::Theme::EditorColorRole::TextSelection);
-            if (selection == highlight.rgb()) {
-                return theme;
-            }
-        }
-        return matchingThemes.first();
-    }
-
-    // fallback to just use the default light or dark theme
-    return KTextEditor::EditorPrivate::self()->hlManager()->repository().defaultTheme((base.lightness() < 128) ? KSyntaxHighlighting::Repository::DarkTheme : KSyntaxHighlighting::Repository::LightTheme);
-}
-
 // BEGIN KateConfig
 KateConfig::KateConfig(const KateConfig *parent)
     : m_parent(parent)
@@ -745,7 +716,7 @@ void KateRendererConfig::setSchema(QString schema)
     // check if we have some matching theme, else fallback to best theme for current palette
     // same behavior as for the "Automatic Color Theme Selection"
     if (!KateHlManager::self()->repository().theme(schema).isValid()) {
-        schema = bestThemeForApplicationPalette().name();
+        schema = KateHlManager::self()->repository().themeForPalette(qGuiApp->palette()).name();
     }
 
     if (m_schemaSet && m_schema == schema) {
@@ -789,7 +760,7 @@ void KateRendererConfig::setSchemaInternal(const QString &schema)
     if ((isGlobal() && value(AutoColorThemeSelection).toBool()) || !KateHlManager::self()->repository().theme(schema).isValid()) {
         // always choose some theme matching the current application palette
         // we will arrive here after palette changed signals, too!
-        m_schema = bestThemeForApplicationPalette().name();
+        m_schema = KateHlManager::self()->repository().themeForPalette(qGuiApp->palette()).name();
     } else {
         // take user given theme 1:1
         m_schema = schema;
