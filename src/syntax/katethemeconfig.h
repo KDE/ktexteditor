@@ -20,8 +20,9 @@
 #include <map>
 
 class KateStyleTreeWidget;
-class KComboBox;
 class KMessageWidget;
+
+class QComboBox;
 
 class KateThemeConfigColorTab : public QWidget
 {
@@ -107,7 +108,7 @@ private:
     KateThemeConfigDefaultStylesTab *m_defaults;
     KateThemeConfigColorTab *m_colorTab;
 
-    KComboBox *hlCombo;
+    QComboBox *hlCombo;
     KateStyleTreeWidget *m_styles;
 
     QString m_schema;
@@ -159,8 +160,8 @@ private:
 
     KMessageWidget *m_readOnlyThemeLabel = nullptr;
     class QPushButton *btndel;
-    class KComboBox *defaultSchemaCombo;
-    class KComboBox *schemaCombo;
+    class QComboBox *defaultSchemaCombo;
+    class QComboBox *schemaCombo;
     KateThemeConfigColorTab *m_colorTab;
     KateThemeConfigDefaultStylesTab *m_defaultStylesTab;
     KateThemeConfigHighlightTab *m_highlightTab;

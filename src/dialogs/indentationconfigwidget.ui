@@ -22,7 +22,7 @@
       </widget>
      </item>
      <item>
-      <widget class="KComboBox" name="cmbMode">
+      <widget class="QComboBox" name="cmbMode">
        <property name="whatsThis">
         <string>This is a list of available indentation modes. The specified indentation mode will be used for all new documents. Be aware that it is also possible to set the indentation mode with document variables, modes or a .kateconfig file.</string>
        </property>
@@ -272,11 +272,6 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
   <customwidget>
    <class>KPluralHandlingSpinBox</class>
    <extends>QSpinBox</extends>

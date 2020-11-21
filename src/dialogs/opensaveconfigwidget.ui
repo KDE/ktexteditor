@@ -28,7 +28,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="KComboBox" name="cmbEncoding">
+         <widget class="QComboBox" name="cmbEncoding">
           <property name="whatsThis">
            <string>This defines the standard encoding to use to open/save files, if not changed in the open/save dialog or by using a command line option.</string>
           </property>
@@ -45,7 +45,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="KComboBox" name="cmbEncodingDetection">
+         <widget class="QComboBox" name="cmbEncodingDetection">
           <property name="whatsThis">
            <string>if neither the encoding chosen as standard above, nor the encoding specified in the open/save dialog, nor the encoding specified on command line match the content of the file, this detection will be run.</string>
           </property>
@@ -62,7 +62,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="KComboBox" name="cmbEncodingFallback">
+         <widget class="QComboBox" name="cmbEncodingFallback">
           <property name="whatsThis">
            <string>This defines the fallback encoding to try for opening files if neither the encoding chosen as standard above, nor the encoding specified in the open/save dialog, nor the encoding specified on command line match the content of the file.  Before this is used, an attempt will be made to determine the encoding to use by looking for a byte order mark at start of file: if one is found, the right Unicode encoding will be chosen; otherwise encoding detection will run, if both fail the fallback encoding will be tried.</string>
           </property>
@@ -79,7 +79,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="KComboBox" name="cmbEOL">
+         <widget class="QComboBox" name="cmbEOL">
           <item>
            <property name="text">
             <string>UNIX</string>
@@ -231,13 +231,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

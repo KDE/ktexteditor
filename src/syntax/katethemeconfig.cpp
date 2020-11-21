@@ -19,12 +19,12 @@
 #include "katestyletreewidget.h"
 #include "kateview.h"
 
-#include <KComboBox>
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KMessageWidget>
 
+#include <QComboBox>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QLabel>
@@ -669,7 +669,7 @@ KateThemeConfigHighlightTab::KateThemeConfigHighlightTab(KateThemeConfigDefaultS
     QLabel *lHl = new QLabel(i18n("H&ighlight:"), this);
     headerLayout->addWidget(lHl);
 
-    hlCombo = new KComboBox(this);
+    hlCombo = new QComboBox(this);
     hlCombo->setEditable(false);
     headerLayout->addWidget(hlCombo);
 
@@ -980,7 +980,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     QLabel *lHl = new QLabel(i18n("&Theme:"), this);
     headerLayout->addWidget(lHl);
 
-    schemaCombo = new KComboBox(this);
+    schemaCombo = new QComboBox(this);
     schemaCombo->setEditable(false);
     lHl->setBuddy(schemaCombo);
     headerLayout->addWidget(schemaCombo);
@@ -1033,7 +1033,7 @@ KateThemeConfigPage::KateThemeConfigPage(QWidget *parent)
     lHl = new QLabel(i18n("&Default theme for %1:", QCoreApplication::applicationName()), this);
     footLayout->addWidget(lHl);
 
-    defaultSchemaCombo = new KComboBox(this);
+    defaultSchemaCombo = new QComboBox(this);
     footLayout->addWidget(defaultSchemaCombo);
     defaultSchemaCombo->setEditable(false);
     lHl->setBuddy(defaultSchemaCombo);

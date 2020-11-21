@@ -70,7 +70,7 @@
              </widget>
             </item>
             <item>
-             <widget class="KComboBox" name="cmbDynamicWordWrapIndicator">
+             <widget class="QComboBox" name="cmbDynamicWordWrapIndicator">
               <property name="whatsThis">
                <string>Choose when the Dynamic Word Wrap Indicators should be displayed.</string>
               </property>
@@ -340,13 +340,6 @@ beginning of a file.</string>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KComboBox</class>
-   <extends>QComboBox</extends>
-   <header>kcombobox.h</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>gbWordWrap</tabstop>
   <tabstop>chkDynWrapAtStaticMarker</tabstop>

@@ -16,7 +16,7 @@ class QCheckBox;
 class QLabel;
 class KLineEdit;
 class KColorButton;
-class KComboBox;
+class QComboBox;
 class QSpinBox;
 class QGroupBox;
 
@@ -126,7 +126,7 @@ private:
     void readSettings();
     void writeSettings();
 
-    KComboBox *cmbSchema;
+    QComboBox *cmbSchema;
     QCheckBox *cbEnableBox;
     QCheckBox *cbDrawBackground;
     QGroupBox *gbBoxProps;

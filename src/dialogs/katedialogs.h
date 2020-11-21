@@ -49,7 +49,6 @@ class Job;
 class TransferJob;
 }
 
-class KComboBox;
 class KShortcutsEditor;
 class QSpinBox;
 class KProcess;

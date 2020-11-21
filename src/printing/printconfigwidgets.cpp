@@ -13,7 +13,7 @@
 #include "katesyntaxmanager.h"
 
 #include <KColorButton>
-#include <KComboBox>
+#include <QComboBox>
 #include <KConfigGroup>
 #include <KLineEdit>
 #include <KLocalizedString>
@@ -490,7 +490,7 @@ KatePrintLayout::KatePrintLayout(QWidget *parent)
     lo->addLayout(hb);
     QLabel *lSchema = new QLabel(i18n("&Color theme:"), this);
     hb->addWidget(lSchema);
-    cmbSchema = new KComboBox(this);
+    cmbSchema = new QComboBox(this);
     hb->addWidget(cmbSchema);
     cmbSchema->setEditable(false);
     lSchema->setBuddy(cmbSchema);

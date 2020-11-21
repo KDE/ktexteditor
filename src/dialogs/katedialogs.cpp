@@ -49,7 +49,6 @@
 #include <KActionCollection>
 #include <KCharsets>
 #include <KColorCombo>
-#include <KComboBox>
 #include <KFontChooser>
 #include <KLineEdit>
 #include <KMessageBox>
