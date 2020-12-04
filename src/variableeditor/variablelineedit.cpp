@@ -35,9 +35,8 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
 {
     m_listview = nullptr;
 
-    QHBoxLayout *hl = new QHBoxLayout();
+    QHBoxLayout *hl = new QHBoxLayout(this);
     hl->setContentsMargins(0, 0, 0, 0);
-    setLayout(hl);
 
     m_lineedit = new QLineEdit(this);
     m_button = new QToolButton(this);
@@ -52,7 +51,6 @@ VariableLineEdit::VariableLineEdit(QWidget *parent)
     QVBoxLayout *l = new QVBoxLayout(m_popup);
     l->setSpacing(0);
     l->setContentsMargins(0, 0, 0, 0);
-    m_popup->setLayout(l);
 
     // forward text changed signal
     connect(m_lineedit, SIGNAL(textChanged(QString)), this, SIGNAL(textChanged(QString)));

@@ -27,8 +27,7 @@ KateCompletionConfig::KateCompletionConfig(KateCompletionModel *model, QWidget *
 {
     setWindowTitle(i18n("Code Completion Configuration"));
 
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    setLayout(mainLayout);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     QWidget *mw = new QWidget(this);
     mainLayout->addWidget(mw);

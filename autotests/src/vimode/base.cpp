@@ -28,7 +28,6 @@ BaseTest::BaseTest()
     mainWindow = new QMainWindow;
     auto centralWidget = new QWidget();
     mainWindowLayout = new QVBoxLayout(centralWidget);
-    centralWidget->setLayout(mainWindowLayout);
     mainWindow->setCentralWidget(centralWidget);
     mainWindow->resize(640, 480);
 

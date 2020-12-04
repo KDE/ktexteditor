@@ -61,9 +61,8 @@ EmulatedCommandBar::EmulatedCommandBar(KateViInputMode *viInputMode, InputModeMa
     , m_viInputModeManager(viInputModeManager)
     , m_view(viInputModeManager->view())
 {
-    QHBoxLayout *layout = new QHBoxLayout();
+    QHBoxLayout *layout = new QHBoxLayout(centralWidget());
     layout->setContentsMargins(0, 0, 0, 0);
-    centralWidget()->setLayout(layout);
 
     createAndAddBarTypeIndicator(layout);
     createAndAddEditWidget(layout);

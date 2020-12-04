@@ -1018,8 +1018,7 @@ public:
 KateCommandLineBar::KateCommandLineBar(KTextEditor::ViewPrivate *view, QWidget *parent)
     : KateViewBarWidget(true, parent)
 {
-    QHBoxLayout *topLayout = new QHBoxLayout();
-    centralWidget()->setLayout(topLayout);
+    QHBoxLayout *topLayout = new QHBoxLayout(centralWidget());
     topLayout->setContentsMargins(0, 0, 0, 0);
     m_lineEdit = new KateCmdLineEdit(this, view);
     connect(m_lineEdit, SIGNAL(hideRequested()), SIGNAL(hideMe()));
@@ -2836,7 +2835,6 @@ KateViewBarWidget::KateViewBarWidget(bool addCloseButton, QWidget *parent)
     m_centralWidget = new QWidget(this);
     layout->addWidget(m_centralWidget);
 
-    setLayout(layout);
     setFocusProxy(m_centralWidget);
 }
 

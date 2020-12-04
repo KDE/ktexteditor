@@ -55,8 +55,6 @@ VariableEditor::VariableEditor(VariableItem *item, QWidget *parent)
     l->setColumnStretch(2, 1);
     l->setColumnStretch(3, 0);
 
-    setLayout(l);
-
     connect(m_checkBox, SIGNAL(toggled(bool)), this, SLOT(itemEnabled(bool)));
     m_checkBox->setChecked(item->isActive());
 

@@ -25,7 +25,7 @@ ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
 {
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::ConfigWidget();
@@ -53,7 +53,6 @@ ConfigTab::ConfigTab(QWidget *parent, Mappings *mappings)
     connect(ui->btnImportNormal, SIGNAL(clicked()), this, SLOT(slotChanged()));
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 ConfigTab::~ConfigTab()

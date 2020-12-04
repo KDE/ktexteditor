@@ -171,8 +171,6 @@ void KateModeMenuList::init(const SearchBarPosition searchBarPos)
         layoutContainer->addLayout(layoutSearchBar);
     }
 
-    container->setLayout(layoutContainer);
-
     QWidgetAction *widAct = new QWidgetAction(this);
     widAct->setDefaultWidget(container);
     addAction(widAct);

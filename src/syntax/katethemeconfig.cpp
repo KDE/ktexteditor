@@ -136,7 +136,6 @@ static bool writeJson(const QJsonObject &json, const QString &themeFileName)
 KateThemeConfigColorTab::KateThemeConfigColorTab()
 {
     QGridLayout *l = new QGridLayout(this);
-    setLayout(l);
 
     ui = new KateColorTreeWidget(this);
     QPushButton *btnUseColorScheme = new QPushButton(i18n("Use Default Colors"), this);

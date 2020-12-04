@@ -27,14 +27,13 @@ KateMessageWidget::KateMessageWidget(QWidget *parent, bool applyFadeEffect)
     , m_autoHideTimer(new QTimer(this))
     , m_autoHideTime(-1)
 {
-    QVBoxLayout *l = new QVBoxLayout();
+    QVBoxLayout *l = new QVBoxLayout(this);
     l->setContentsMargins(0, 0, 0, 0);
 
     m_messageWidget = new KMessageWidget(this);
     m_messageWidget->setCloseButtonVisible(false);
 
     l->addWidget(m_messageWidget);
-    setLayout(l);
 
     // tell the widget to always use the minimum size.
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);

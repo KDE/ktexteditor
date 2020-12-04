@@ -88,7 +88,7 @@ KateIndentConfigTab::KateIndentConfigTab(QWidget *parent)
 {
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::IndentationConfigWidget();
@@ -120,7 +120,6 @@ KateIndentConfigTab::KateIndentConfigTab(QWidget *parent)
     observeChanges(ui->sbTabWidth);
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 KateIndentConfigTab::~KateIndentConfigTab()
@@ -216,7 +215,7 @@ KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
 {
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::CompletionConfigTab();
@@ -233,7 +232,6 @@ KateCompletionConfigTab::KateCompletionConfigTab(QWidget *parent)
     observeChanges(ui->removeTail);
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 KateCompletionConfigTab::~KateCompletionConfigTab()
@@ -289,7 +287,7 @@ KateSpellCheckConfigTab::KateSpellCheckConfigTab(QWidget *parent)
 {
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::SpellCheckConfigWidget();
@@ -304,7 +302,6 @@ KateSpellCheckConfigTab::KateSpellCheckConfigTab(QWidget *parent)
     layout->addWidget(m_sonnetConfigWidget);
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 KateSpellCheckConfigTab::~KateSpellCheckConfigTab()
@@ -357,7 +354,7 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
 {
     // This will let us having more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::NavigationConfigWidget();
@@ -375,7 +372,6 @@ KateNavigationConfigTab::KateNavigationConfigTab(QWidget *parent)
     observeChanges(ui->sbAutoCenterCursor);
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 KateNavigationConfigTab::~KateNavigationConfigTab()
@@ -429,7 +425,7 @@ QString KateNavigationConfigTab::name() const
 KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     : KateConfigPage(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
     ui = new Ui::EditConfigWidget();
     ui->setupUi(newWidget);
@@ -469,7 +465,6 @@ KateEditGeneralConfigTab::KateEditGeneralConfigTab(QWidget *parent)
     observeChanges(ui->sbWordWrap);
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 KateEditGeneralConfigTab::~KateEditGeneralConfigTab()
@@ -558,7 +553,7 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     , completionConfigTab(new KateCompletionConfigTab(this))
     , spellCheckConfigTab(new KateSpellCheckConfigTab(this))
 {
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
 
@@ -588,7 +583,6 @@ KateEditConfigTab::KateEditConfigTab(QWidget *parent)
     }
 
     layout->addWidget(tabWidget);
-    setLayout(layout);
 }
 
 KateEditConfigTab::~KateEditConfigTab()
@@ -849,18 +843,18 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     // FIXME: Is really needed to move all this code below to another class,
     // since it is another tab itself on the config dialog. This means we should
     // initialize, add and work with as we do with modeConfigPage (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     QTabWidget *tabWidget = new QTabWidget(this);
 
     QWidget *tmpWidget = new QWidget(tabWidget);
-    QVBoxLayout *internalLayout = new QVBoxLayout;
+    QVBoxLayout *internalLayout = new QVBoxLayout(tmpWidget);
     QWidget *newWidget = new QWidget(tabWidget);
     ui = new Ui::OpenSaveConfigWidget();
     ui->setupUi(newWidget);
 
     QWidget *tmpWidget2 = new QWidget(tabWidget);
-    QVBoxLayout *internalLayout2 = new QVBoxLayout;
+    QVBoxLayout *internalLayout2 = new QVBoxLayout(tmpWidget2);
     QWidget *newWidget2 = new QWidget(tabWidget);
     uiadv = new Ui::OpenSaveConfigAdvWidget();
     uiadv->setupUi(newWidget2);
@@ -890,9 +884,7 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(uiadv->spbSwapFileSync);
 
     internalLayout->addWidget(newWidget);
-    tmpWidget->setLayout(internalLayout);
     internalLayout2->addWidget(newWidget2);
-    tmpWidget2->setLayout(internalLayout2);
 
     // add all tabs
     tabWidget->insertTab(0, tmpWidget, i18n("General"));
@@ -902,7 +894,6 @@ KateSaveConfigTab::KateSaveConfigTab(QWidget *parent)
     observeChanges(modeConfigPage);
 
     layout->addWidget(tabWidget);
-    setLayout(layout);
 
     // support variable expansion in backup prefix/suffix
     KTextEditor::Editor::instance()->addVariableExpansion({uiadv->edtBackupPrefix, uiadv->edtBackupSuffix},

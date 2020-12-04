@@ -37,7 +37,7 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
 
     // This will let us have more separation between this page and
     // the QTabWidget edge (ereslibre)
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(this);
     QWidget *newWidget = new QWidget(this);
 
     ui = new Ui::FileTypeConfigWidget();
@@ -79,7 +79,6 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     ui->sbPriority->setToolTip(ui->sbPriority->whatsThis());
 
     layout->addWidget(newWidget);
-    setLayout(layout);
 }
 
 ModeConfigPage::~ModeConfigPage()
