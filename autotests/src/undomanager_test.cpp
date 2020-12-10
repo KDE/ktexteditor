@@ -229,4 +229,33 @@ void UndoManagerTest::testUndoWordWrapBug301367()
     delete view;
 }
 
+void UndoManagerTest::testUndoIndentBug373009()
+{
+    TestDocument doc;
+    KTextEditor::ViewPrivate *view = static_cast<KTextEditor::ViewPrivate *>(doc.createView(nullptr));
+
+    doc.setMode("C");
+
+    QString text = QString::fromLatin1("    while (whatever) printf (\"please fix indentation.\\n\");\n"
+                                       "    return 0;");
+    doc.setText(text);
+
+    // position cursor right before return
+    view->setCursorPosition(KTextEditor::Cursor(1, 4));
+
+    QCOMPARE(view->cursorPosition(), KTextEditor::Cursor(1, 4));
+    QCOMPARE(doc.characterAt(view->cursorPosition()), 'r');
+
+    view->keyReturn();
+
+    QCOMPARE(doc.undoCount(), 2);
+
+    // After indent we should be able to revert with
+    // one undo operation
+    doc.undo();
+    QCOMPARE(doc.text(), text);
+
+    delete view;
+}
+
 #include "moc_undomanager_test.cpp"

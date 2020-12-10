@@ -77,6 +77,11 @@ void KateBuffer::editEnd()
     Q_ASSERT(editingMaximalLineChanged() != -1);
     Q_ASSERT(editingMinimalLineChanged() <= editingMaximalLineChanged());
 
+    updateHighlighting();
+}
+
+void KateBuffer::updateHighlighting()
+{
     // no highlighting, nothing to do
     if (!m_highlight) {
         return;

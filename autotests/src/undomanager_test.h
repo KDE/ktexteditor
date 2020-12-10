@@ -24,6 +24,7 @@ private Q_SLOTS:
     void testCursorPosition();
     void testSelectionUndo();
     void testUndoWordWrapBug301367();
+    void testUndoIndentBug373009();
 
 private:
     class TestDocument;

@@ -3211,13 +3211,15 @@ void KTextEditor::DocumentPrivate::newLine(KTextEditor::ViewPrivate *v, KTextEdi
     // first: wrap line
     editWrapLine(c.line(), c.column());
 
-    // end edit session here, to have updated HL in userTypedChar!
-    editEnd();
+    //update highlighting to have updated HL in userTypedChar!
+    m_buffer->updateHighlighting();
 
     // second: if "indent" is true, indent the new line, if needed...
     if (indent == KTextEditor::DocumentPrivate::Indent) {
         m_indenter->userTypedChar(v, v->cursorPosition(), QLatin1Char('\n'));
     }
+
+    editEnd();
 }
 
 void KTextEditor::DocumentPrivate::transpose(const KTextEditor::Cursor &cursor)

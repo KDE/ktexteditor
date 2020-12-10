@@ -55,6 +55,12 @@ public:
     void editEnd();
 
     /**
+     * Update highlighting of the lines in
+     * last edit transaction
+     */
+    void updateHighlighting();
+
+    /**
      * were there changes in the current running
      * editing session?
      * @return changes done?
