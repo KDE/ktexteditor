@@ -450,11 +450,14 @@ void KateStatusBar::updateGroup(QActionGroup *group, int w)
             action->setChecked(true);
         }
     }
-    if (found) {
-        m1->setText(i18n("Other..."));
-    } else {
-        m1->setText(i18np("Other (%1)", "Other (%1)", w));
-        m1->setChecked(true);
+
+    if (m1) {
+        if (found) {
+            m1->setText(i18n("Other..."));
+        } else {
+            m1->setText(i18np("Other (%1)", "Other (%1)", w));
+            m1->setChecked(true);
+        }
     }
 }
 

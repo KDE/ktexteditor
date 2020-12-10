@@ -198,6 +198,7 @@ void VariableLineEdit::addKateItems(VariableListView *listview)
     // Add 'syntax' (hl) to list
     /* Prepare list of highlighting modes */
     QStringList hls;
+    hls.reserve(KateHlManager::self()->modeList().size());
     for (const auto &hl : KateHlManager::self()->modeList()) {
         hls << hl.name();
     }

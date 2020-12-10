@@ -189,6 +189,7 @@ QJSValue KateScript::evaluate(const QString &program, const FieldMap &env)
     Q_ASSERT(programFunction.isCallable());
 
     QJSValueList args;
+    args.reserve(env.size());
     for (auto it = env.begin(); it != env.end(); it++) {
         args << it.value();
     }

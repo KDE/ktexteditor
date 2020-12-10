@@ -645,7 +645,7 @@ void KateRenderer::paintTextLine(QPainter &paint, KateLineLayoutPtr range, int x
                 if (m_view && m_view->selection() && !m_view->blockSelection() && m_view->lineEndSelected(line.end(true))) {
                     draw = true;
                     drawBrush = config()->selectionColor();
-                } else if (backgroundBrushSet && !m_view->blockSelection()) {
+                } else if (backgroundBrushSet && m_view && !m_view->blockSelection()) {
                     draw = true;
                     drawBrush = backgroundBrush;
                 }

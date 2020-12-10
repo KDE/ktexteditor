@@ -43,7 +43,7 @@ inline const QString MODE_NORMAL()
 QStringList KateAutoIndent::listModes()
 {
     QStringList l;
-
+    l.reserve(modeCount());
     for (int i = 0; i < modeCount(); ++i) {
         l << modeDescription(i);
     }
@@ -54,7 +54,7 @@ QStringList KateAutoIndent::listModes()
 QStringList KateAutoIndent::listIdentifiers()
 {
     QStringList l;
-
+    l.reserve(modeCount());
     for (int i = 0; i < modeCount(); ++i) {
         l << modeName(i);
     }

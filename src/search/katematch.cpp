@@ -67,7 +67,7 @@ QString KateMatch::buildReplacement(const QString &replacement, bool blockMode, 
 {
     QStringList capturedTexts;
     capturedTexts.reserve(m_resultRanges.size());
-    for (const KTextEditor::Range &captureRange : m_resultRanges) {
+    for (const KTextEditor::Range &captureRange : qAsConst(m_resultRanges)) {
         // Copy capture content
         capturedTexts << m_document->text(captureRange, blockMode);
     }

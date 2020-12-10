@@ -168,7 +168,7 @@ void KateSpellingMenu::populateSuggestionsMenu()
     m_currentSuggestions = KTextEditor::EditorPrivate::self()->spellCheckManager()->suggestions(misspelledWord, dictionary);
 
     int counter = 0;
-    for (QStringList::iterator i = m_currentSuggestions.begin(); i != m_currentSuggestions.end() && counter < 10; ++i) {
+    for (QStringList::const_iterator i = m_currentSuggestions.cbegin(); i != m_currentSuggestions.cend() && counter < 10; ++i) {
         const QString &suggestion = *i;
         QAction *action = new QAction(suggestion, m_spellingMenu);
         connect(action, &QAction::triggered, this, [suggestion, this]() { replaceWordBySuggestion(suggestion); });

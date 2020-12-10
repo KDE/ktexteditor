@@ -43,6 +43,7 @@ bool KateCommandLineScript::callFunction(const QString &cmd, const QStringList &
 
     // add the arguments that we are going to pass to the function
     QJSValueList arguments;
+    arguments.reserve(args.size());
     for (const QString &arg : args) {
         arguments << QJSValue(arg);
     }

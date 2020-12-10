@@ -1837,8 +1837,10 @@ QString KTextEditor::DocumentPrivate::highlightingMode() const
 
 QStringList KTextEditor::DocumentPrivate::highlightingModes() const
 {
+    const auto modeList = KateHlManager::self()->modeList();
     QStringList hls;
-    for (const auto &hl : KateHlManager::self()->modeList()) {
+    hls.reserve(modeList.size());
+    for (const auto &hl : modeList) {
         hls << hl.name();
     }
     return hls;

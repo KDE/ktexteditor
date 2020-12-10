@@ -277,6 +277,7 @@ QString KateCommands::SedReplace::InteractiveSedReplacer::replacementTextForCurr
 {
     const QVector<KTextEditor::Range> captureRanges = fullCurrentMatch();
     QStringList captureTexts;
+    captureTexts.reserve(captureRanges.size());
     for (KTextEditor::Range captureRange : captureRanges) {
         captureTexts << m_doc->text(captureRange);
     }

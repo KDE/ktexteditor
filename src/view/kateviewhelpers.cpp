@@ -2648,6 +2648,7 @@ void KateViewEncodingAction::Private::init()
 
     int i;
     const auto encodingsByScript = KCharsets::charsets()->encodingsByScript();
+    actions.reserve(encodingsByScript.size());
     for (const QStringList &encodingsForScript : encodingsByScript) {
         KSelectAction *tmp = new KSelectAction(encodingsForScript.at(0), q);
 

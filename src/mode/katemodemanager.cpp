@@ -154,7 +154,8 @@ void KateModeManager::update()
 
     // update the mode menu of the status bar, for all views.
     // this menu uses the KateFileType objects
-    for (auto *view : KTextEditor::EditorPrivate::self()->views()) {
+    const auto views = KTextEditor::EditorPrivate::self()->views();
+    for (auto *view : views) {
         if (view->statusBar() && view->statusBar()->modeMenu()) {
             view->statusBar()->modeMenu()->reloadItems();
         }

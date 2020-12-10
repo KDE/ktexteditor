@@ -1090,7 +1090,7 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
 
         // Special Case: always show the "R Script" mode first by typing "r" in the search box
         if (searchText.length() == 1 && searchText.compare(QLatin1String("r"), m_caseSensitivity) == 0) {
-            for (QPair<ListItem *, int> itemBestResults : m_bestResults) {
+            for (const QPair<ListItem *, int>& itemBestResults : qAsConst(m_bestResults)) {
                 listModel->takeRow(itemBestResults.second);
                 ++rowModelBestResults;
                 if (itemBestResults.first->getMode()->name == QLatin1String("R Script")) {
@@ -1103,7 +1103,7 @@ void KateModeMenuListData::SearchLine::updateSearch(const QString &s)
             }
         } else {
             // Move items to the "Best Search Matches" section
-            for (QPair<ListItem *, int> itemBestResults : m_bestResults) {
+            for (const QPair<ListItem *, int>& itemBestResults : qAsConst(m_bestResults)) {
                 listModel->takeRow(itemBestResults.second);
                 listModel->insertRow(++rowModelBestResults, itemBestResults.first);
                 listView->setRowHidden(rowModelBestResults, false);

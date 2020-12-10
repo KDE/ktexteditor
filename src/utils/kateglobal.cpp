@@ -268,7 +268,7 @@ void KTextEditor::EditorPrivate::configDialog(QWidget *parent)
     kd->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Apply | QDialogButtonBox::Help);
 
     QList<KTextEditor::ConfigPage *> editorPages;
-
+    editorPages.reserve(configPages());
     for (int i = 0; i < configPages(); ++i) {
         QFrame *page = new QFrame();
         KTextEditor::ConfigPage *cp = configPage(i, page);

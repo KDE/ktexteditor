@@ -65,8 +65,9 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     // tell the AbstractHighlighter the definition it shall use
     setDefinition(def);
 
+    embeddedHighlightingModes.reserve(definitions.size());
     // first: handle only really included definitions
-    for (const auto &includedDefinition : definitions)
+    for (const auto &includedDefinition : qAsConst(definitions))
         embeddedHighlightingModes.push_back(includedDefinition.name());
 
     // now: handle all, including this definition itself
@@ -81,9 +82,10 @@ KateHighlighting::KateHighlighting(const KSyntaxHighlighting::Definition &def)
     definitions.push_front(definition());
     m_properties.resize(definitions.size());
     size_t propertiesIndex = 0;
-    for (const auto &includedDefinition : definitions) {
+    for (const auto &includedDefinition : qAsConst(definitions)) {
         auto &properties = m_properties[propertiesIndex];
         properties.definition = includedDefinition;
+        properties.emptyLines.reserve(includedDefinition.foldingIgnoreList().size());
         for (const auto &emptyLine : includedDefinition.foldingIgnoreList())
             properties.emptyLines.push_back(QRegularExpression(emptyLine));
         properties.singleLineCommentMarker = includedDefinition.singleLineCommentMarker();
@@ -310,6 +312,7 @@ QVector<KTextEditor::Attribute::Ptr> KateHighlighting::attributesForDefinition(c
 {
     // create list of known attributes based on highlighting format & wanted theme
     QVector<KTextEditor::Attribute::Ptr> array;
+    array.reserve(m_formats.size());
     const auto currentTheme = KateHlManager::self()->repository().theme(schema);
     for (const auto &format : m_formats) {
         // create a KTextEditor attribute matching the given format
@@ -416,6 +419,7 @@ QStringList KateHighlighting::keywordsForLocation(KTextEditor::DocumentPrivate *
     // FIXME-SYNTAX: was before more precise, aka context level
     const auto &def = m_propertiesForFormat.at(attributeForLocation(doc, cursor))->definition;
     QStringList keywords;
+    keywords.reserve(def.keywordLists().size());
     for (const auto &keylist : def.keywordLists()) {
         keywords += def.keywordList(keylist);
     }

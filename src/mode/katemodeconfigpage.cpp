@@ -44,7 +44,8 @@ ModeConfigPage::ModeConfigPage(QWidget *parent)
     ui->setupUi(newWidget);
 
     ui->cmbHl->addItem(i18n("<Unchanged>"), QVariant(QString()));
-    for (const auto &hl : KateHlManager::self()->modeList()) {
+    const auto modeList = KateHlManager::self()->modeList();
+    for (const auto &hl : modeList) {
         const auto section = hl.translatedSection();
         if (!section.isEmpty())
             ui->cmbHl->addItem(section + QLatin1Char('/') + hl.translatedName(), QVariant(hl.name()));
