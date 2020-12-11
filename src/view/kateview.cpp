@@ -500,7 +500,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_comment"));
         a->setText(i18n("C&omment"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_D));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_D));
         a->setWhatsThis(
             i18n("This command comments out the current line or a selected block of text.<br /><br />"
                  "The characters for single/multiple line comments are defined within the language's highlighting."));
@@ -508,17 +508,17 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("Previous Editing Line"));
         a->setText(i18n("Go to previous editing line"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_E));
         connect(a, SIGNAL(triggered(bool)), SLOT(goToPreviousEditingPosition()));
 
         a = ac->addAction(QStringLiteral("Next Editing Line"));
         a->setText(i18n("Go to next editing line"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_E));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_E));
         connect(a, SIGNAL(triggered(bool)), SLOT(goToNextEditingPosition()));
 
         a = ac->addAction(QStringLiteral("tools_uncomment"));
         a->setText(i18n("Unco&mment"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_D));
         a->setWhatsThis(
             i18n("This command removes comments from the current line or a selected block of text.<br /><br />"
                  "The characters for single/multiple line comments are defined within the language's highlighting."));
@@ -526,7 +526,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_toggle_comment"));
         a->setText(i18n("Toggle Comment"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Slash));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Slash));
         connect(a, SIGNAL(triggered(bool)), SLOT(toggleComment()));
 
         a = m_toggleWriteLock = new KToggleAction(i18n("&Read Only Mode"), this);
@@ -538,7 +538,7 @@ void KTextEditor::ViewPrivate::setupActions()
         a = ac->addAction(QStringLiteral("tools_uppercase"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-uppercase")));
         a->setText(i18n("Uppercase"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_U));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_U));
         a->setWhatsThis(
             i18n("Convert the selection to uppercase, or the character to the "
                  "right of the cursor if no text is selected."));
@@ -547,7 +547,7 @@ void KTextEditor::ViewPrivate::setupActions()
         a = ac->addAction(QStringLiteral("tools_lowercase"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-lowercase")));
         a->setText(i18n("Lowercase"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_U));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_U));
         a->setWhatsThis(
             i18n("Convert the selection to lowercase, or the character to the "
                  "right of the cursor if no text is selected."));
@@ -556,7 +556,7 @@ void KTextEditor::ViewPrivate::setupActions()
         a = ac->addAction(QStringLiteral("tools_capitalize"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-text-capitalize")));
         a->setText(i18n("Capitalize"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_U));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_U));
         a->setWhatsThis(
             i18n("Capitalize the selection, or the word under the "
                  "cursor if no text is selected."));
@@ -564,13 +564,13 @@ void KTextEditor::ViewPrivate::setupActions()
 
         a = ac->addAction(QStringLiteral("tools_join_lines"));
         a->setText(i18n("Join Lines"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_J));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_J));
         connect(a, SIGNAL(triggered(bool)), SLOT(joinLines()));
 
         a = ac->addAction(QStringLiteral("tools_invoke_code_completion"));
         a->setText(i18n("Invoke Code Completion"));
         a->setWhatsThis(i18n("Manually invoke command completion, usually by using a shortcut bound to this action."));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Space));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Space));
         connect(a, SIGNAL(triggered(bool)), SLOT(userInvokedCompletion()));
     } else {
         m_cut->setEnabled(false);
@@ -675,13 +675,13 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = m_toggleBlockSelection = new KToggleAction(i18n("Bl&ock Selection Mode"), this);
     ac->addAction(QStringLiteral("set_verticalSelect"), a);
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_B));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_B));
     a->setWhatsThis(i18n("This command allows switching between the normal (line based) selection mode and the block selection mode."));
     connect(a, SIGNAL(triggered(bool)), SLOT(toggleBlockSelection()));
 
     a = ac->addAction(QStringLiteral("switch_next_input_mode"));
     a->setText(i18n("Switch to next Input Mode"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_V));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_V));
     a->setWhatsThis(i18n("Switch to the next input mode."));
     connect(a, SIGNAL(triggered(bool)), SLOT(cycleInputMode()));
 
@@ -813,13 +813,13 @@ void KTextEditor::ViewPrivate::setupActions()
 
     a = ac->addAction(QStringLiteral("edit_find_selected"));
     a->setText(i18n("Find Selected"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_H));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_H));
     a->setWhatsThis(i18n("Finds next occurrence of selected text."));
     connect(a, SIGNAL(triggered(bool)), SLOT(findSelectedForwards()));
 
     a = ac->addAction(QStringLiteral("edit_find_selected_backwards"));
     a->setText(i18n("Find Selected Backwards"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_H));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_H));
     a->setWhatsThis(i18n("Finds previous occurrence of selected text."));
     connect(a, SIGNAL(triggered(bool)), SLOT(findSelectedBackwards()));
 
@@ -839,7 +839,7 @@ void KTextEditor::ViewPrivate::setupActions()
     m_toggleOnTheFlySpellCheck->setWhatsThis(i18n("Enable/disable automatic spell checking"));
     connect(m_toggleOnTheFlySpellCheck, SIGNAL(triggered(bool)), SLOT(toggleOnTheFlySpellCheck(bool)));
     ac->addAction(QStringLiteral("tools_toggle_automatic_spell_checking"), m_toggleOnTheFlySpellCheck);
-    ac->setDefaultShortcut(m_toggleOnTheFlySpellCheck, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O));
+    ac->setDefaultShortcut(m_toggleOnTheFlySpellCheck, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_O));
 
     a = ac->addAction(QStringLiteral("tools_change_dictionary"));
     a->setText(i18n("Change Dictionary..."));
@@ -908,13 +908,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_char_left"));
     a->setText(i18n("Select Character Left"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Left));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Left));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftCursorLeft()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_word_left"));
     a->setText(i18n("Select Word Left"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Left));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Left));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftWordLeft()));
     m_editActions << a;
 
@@ -926,13 +926,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_char_right"));
     a->setText(i18n("Select Character Right"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Right));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Right));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftCursorRight()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_word_right"));
     a->setText(i18n("Select Word Right"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Right));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Right));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftWordRight()));
     m_editActions << a;
 
@@ -950,13 +950,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_beginning_of_line"));
     a->setText(i18n("Select to Beginning of Line"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Home));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftHome()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_beginning_of_document"));
     a->setText(i18n("Select to Beginning of Document"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_Home));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftTop()));
     m_editActions << a;
 
@@ -974,25 +974,25 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_end_of_line"));
     a->setText(i18n("Select to End of Line"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_End));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftEnd()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_end_of_document"));
     a->setText(i18n("Select to End of Document"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_End));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftBottom()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_line_up"));
     a->setText(i18n("Select to Previous Line"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Up));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Up));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftUp()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("scroll_line_up"));
     a->setText(i18n("Scroll Line Up"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Up));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Up));
     connect(a, SIGNAL(triggered(bool)), SLOT(scrollUp()));
     m_editActions << a;
 
@@ -1022,13 +1022,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_line_down"));
     a->setText(i18n("Select to Next Line"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_Down));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_Down));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftDown()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("scroll_line_down"));
     a->setText(i18n("Scroll Line Down"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_Down));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_Down));
     connect(a, SIGNAL(triggered(bool)), SLOT(scrollDown()));
     m_editActions << a;
 
@@ -1040,19 +1040,19 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_page_up"));
     a->setText(i18n("Select Page Up"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_PageUp));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_PageUp));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftPageUp()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("move_top_of_view"));
     a->setText(i18n("Move to Top of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_Home));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(topOfView()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_top_of_view"));
     a->setText(i18n("Select to Top of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_Home));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::Key_Home));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftTopOfView()));
     m_editActions << a;
 
@@ -1064,31 +1064,31 @@ void KTextEditor::ViewPrivate::setupEditActions()
 
     a = ac->addAction(QStringLiteral("select_page_down"));
     a->setText(i18n("Select Page Down"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::Key_PageDown));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::Key_PageDown));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftPageDown()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("move_bottom_of_view"));
     a->setText(i18n("Move to Bottom of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_End));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(bottomOfView()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_bottom_of_view"));
     a->setText(i18n("Select to Bottom of View"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_End));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT | Qt::SHIFT | Qt::Key_End));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftBottomOfView()));
     m_editActions << a;
 
     a = ac->addAction(QStringLiteral("to_matching_bracket"));
     a->setText(i18n("Move to Matching Bracket"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_6));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(toMatchingBracket()));
     // m_editActions << a;
 
     a = ac->addAction(QStringLiteral("select_matching_bracket"));
     a->setText(i18n("Select to Matching Bracket"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT + Qt::CTRL + Qt::Key_6));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::SHIFT | Qt::CTRL | Qt::Key_6));
     connect(a, SIGNAL(triggered(bool)), SLOT(shiftToMatchingBracket()));
     // m_editActions << a;
 
@@ -1096,13 +1096,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
     if (!doc()->readOnly()) {
         a = ac->addAction(QStringLiteral("transpose_char"));
         a->setText(i18n("Transpose Characters"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_T));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_T));
         connect(a, SIGNAL(triggered(bool)), SLOT(transpose()));
         m_editActions << a;
 
         a = ac->addAction(QStringLiteral("delete_line"));
         a->setText(i18n("Delete Line"));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_K));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_K));
         connect(a, SIGNAL(triggered(bool)), SLOT(killLine()));
         m_editActions << a;
 
@@ -1127,7 +1127,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a = ac->addAction(QStringLiteral("backspace"));
         a->setText(i18n("Backspace"));
         QList<QKeySequence> scuts;
-        scuts << QKeySequence(Qt::Key_Backspace) << QKeySequence(Qt::SHIFT + Qt::Key_Backspace);
+        scuts << QKeySequence(Qt::Key_Backspace) << QKeySequence(Qt::SHIFT | Qt::Key_Backspace);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(backspace()));
         m_editActions << a;
@@ -1141,7 +1141,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setText(i18n("Insert Smart Newline"));
         a->setWhatsThis(i18n("Insert newline including leading characters of the current line which are not letters or numbers."));
         scuts.clear();
-        scuts << QKeySequence(Qt::SHIFT + Qt::Key_Return) << QKeySequence(Qt::SHIFT + Qt::Key_Enter);
+        scuts << QKeySequence(Qt::SHIFT | Qt::Key_Return) << QKeySequence(Qt::SHIFT | Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(smartNewline()));
         m_editActions << a;
@@ -1150,7 +1150,7 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setText(i18n("Insert a non-indented Newline"));
         a->setWhatsThis(i18n("Insert a new line without indentation, regardless of indentation settings."));
         scuts.clear();
-        scuts << QKeySequence(Qt::CTRL + Qt::Key_Return) << QKeySequence(Qt::CTRL + Qt::Key_Enter);
+        scuts << QKeySequence(Qt::CTRL | Qt::Key_Return) << QKeySequence(Qt::CTRL | Qt::Key_Enter);
         ac->setDefaultShortcuts(a, scuts);
         connect(a, SIGNAL(triggered(bool)), SLOT(noIndentNewline()));
         m_editActions << a;
@@ -1161,14 +1161,14 @@ void KTextEditor::ViewPrivate::setupEditActions()
         a->setWhatsThis(
             i18n("Use this to indent a selected block of text.<br /><br />"
                  "You can configure whether tabs should be honored and used or replaced with spaces, in the configuration dialog."));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_I));
         connect(a, SIGNAL(triggered(bool)), SLOT(indent()));
 
         a = ac->addAction(QStringLiteral("tools_unindent"));
         a->setIcon(QIcon::fromTheme(QStringLiteral("format-indent-less")));
         a->setText(i18n("&Unindent"));
         a->setWhatsThis(i18n("Use this to unindent a selected block of text."));
-        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_I));
+        ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_I));
         connect(a, SIGNAL(triggered(bool)), SLOT(unIndent()));
     }
 
@@ -1186,12 +1186,12 @@ void KTextEditor::ViewPrivate::setupCodeFolding()
 
     a = ac->addAction(QStringLiteral("folding_toplevel"));
     a->setText(i18n("Fold Toplevel Nodes"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Minus));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Minus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotFoldToplevelNodes()));
 
     a = ac->addAction(QStringLiteral("folding_expandtoplevel"));
     a->setText(i18n("Unfold Toplevel Nodes"));
-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Plus));
+    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_Plus));
     connect(a, SIGNAL(triggered(bool)), SLOT(slotExpandToplevelNodes()));
 
     /*a = ac->addAction(QLatin1String("folding_expandall"));
