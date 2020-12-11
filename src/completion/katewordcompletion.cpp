@@ -319,12 +319,12 @@ KateWordCompletionView::KateWordCompletionView(KTextEditor::View *view, KActionC
 
     action = new QAction(i18n("Reuse Word Above"), this);
     ac->addAction(QStringLiteral("doccomplete_bw"), action);
-    ac->setDefaultShortcut(action, Qt::CTRL | Qt::Key_8);
+    ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_8);
     connect(action, SIGNAL(triggered()), this, SLOT(completeBackwards()));
 
     action = new QAction(i18n("Reuse Word Below"), this);
     ac->addAction(QStringLiteral("doccomplete_fw"), action);
-    ac->setDefaultShortcut(action, Qt::CTRL | Qt::Key_9);
+    ac->setDefaultShortcut(action, Qt::CTRL + Qt::Key_9);
     connect(action, SIGNAL(triggered()), this, SLOT(completeForwards()));
 }
 

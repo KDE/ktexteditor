@@ -169,9 +169,9 @@ void BaseTest::TestPressKey(const QString &str)
             // so we need to translate e.g. 'c' to Key_C.
             if (key[0].isLetter()) {
                 if (key[0].toLower() == key[0]) {
-                    keyCode = keyCode - 'a' | Qt::Key_A;
+                    keyCode = keyCode - 'a' + Qt::Key_A;
                 } else {
-                    keyCode = keyCode - 'A' | Qt::Key_A;
+                    keyCode = keyCode - 'A' + Qt::Key_A;
                     keyboard_modifier |= Qt::ShiftModifier;
                 }
             }
