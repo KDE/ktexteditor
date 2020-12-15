@@ -693,6 +693,7 @@ void KTextEditor::ViewPrivate::setupActions()
 
     KToggleAction *toggleAction;
     a = m_toggleDynWrap = toggleAction = new KToggleAction(i18n("&Dynamic Word Wrap"), this);
+    a->setIcon(QIcon::fromTheme(QStringLiteral("text-wrap")));
     ac->addAction(QStringLiteral("view_dynamic_word_wrap"), a);
     ac->setDefaultShortcut(a, QKeySequence(Qt::Key_F10));
     a->setWhatsThis(
