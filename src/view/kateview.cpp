@@ -463,6 +463,10 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Paste previously mouse selection contents"));
     }
 
+    m_copyAndPaste = a = ac->addAction(QStringLiteral("edit_copy_and_paste"), this, SLOT(copyAndPaste()));
+    a->setText(i18n("Copy and Paste"));
+    a->setWhatsThis(i18n("Copy current selection & paste previously copied or cut clipboard contents"));
+
     if (!doc()->readOnly()) {
         a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
         a->setWhatsThis(i18n("Save the current document"));
@@ -579,6 +583,7 @@ void KTextEditor::ViewPrivate::setupActions()
         if (m_pasteSelection) {
             m_pasteSelection->setEnabled(false);
         }
+        m_copyAndPaste->setEnabled(false);
         m_editUndo = nullptr;
         m_editRedo = nullptr;
     }
@@ -1504,6 +1509,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     if (m_pasteSelection) {
         m_pasteSelection->setEnabled(doc()->isReadWrite());
     }
+    m_copyAndPaste->setEnabled(doc()->isReadWrite());
     m_setEndOfLine->setEnabled(doc()->isReadWrite());
 
     static const auto l = {QStringLiteral("edit_replace"),
@@ -2428,6 +2434,22 @@ void KTextEditor::ViewPrivate::pasteSelection()
     m_temporaryAutomaticInvocationDisabled = false;
 }
 
+void KTextEditor::ViewPrivate::copyAndPaste()
+{
+    m_temporaryAutomaticInvocationDisabled = true;
+
+    // get text to paste
+    const auto text = QApplication::clipboard()->text(QClipboard::Clipboard);
+
+    // do copy
+    copy();
+
+    // do paste of "previous" clipboard content we saved
+    doc()->paste(this, text);
+
+    m_temporaryAutomaticInvocationDisabled = false;
+}
+
 void KTextEditor::ViewPrivate::applyWordWrap()
 {
     int first = selectionRange().start().line();
@@ -3198,8 +3220,9 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
     menu->addAction(m_copy);
     menu->addAction(m_paste);
     if (m_pasteSelection) {
-        menu->addAction(m_paste);
+        menu->addAction(m_pasteSelection);
     }
+    menu->addAction(m_copyAndPaste);
     menu->addSeparator();
     menu->addAction(m_selectAll);
     menu->addAction(m_deSelect);
