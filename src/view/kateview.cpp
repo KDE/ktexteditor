@@ -464,8 +464,8 @@ void KTextEditor::ViewPrivate::setupActions()
     }
 
     m_copyAndPaste = a = ac->addAction(QStringLiteral("edit_copy_and_paste"), this, SLOT(copyAndPaste()));
-    a->setText(i18n("Copy and Paste"));
-    a->setWhatsThis(i18n("Copy current selection & paste previously copied or cut clipboard contents"));
+    a->setText(i18n("Swap with clipboard contents"));
+    a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
 
     if (!doc()->readOnly()) {
         a = ac->addAction(KStandardAction::Save, m_doc, SLOT(documentSave()));
