@@ -463,7 +463,7 @@ void KTextEditor::ViewPrivate::setupActions()
         a->setWhatsThis(i18n("Paste previously mouse selection contents"));
     }
 
-    m_copyAndPaste = a = ac->addAction(QStringLiteral("edit_copy_and_paste"), this, SLOT(copyAndPaste()));
+    m_swapWithClipboard = a = ac->addAction(QStringLiteral("edit_swap_with_clipboard"), this, SLOT(swapWithClipboard()));
     a->setText(i18n("Swap with clipboard contents"));
     a->setWhatsThis(i18n("Swap the selected text with the clipboard contents"));
 
@@ -583,7 +583,7 @@ void KTextEditor::ViewPrivate::setupActions()
         if (m_pasteSelection) {
             m_pasteSelection->setEnabled(false);
         }
-        m_copyAndPaste->setEnabled(false);
+        m_swapWithClipboard->setEnabled(false);
         m_editUndo = nullptr;
         m_editRedo = nullptr;
     }
@@ -1509,7 +1509,7 @@ void KTextEditor::ViewPrivate::slotReadWriteChanged()
     if (m_pasteSelection) {
         m_pasteSelection->setEnabled(doc()->isReadWrite());
     }
-    m_copyAndPaste->setEnabled(doc()->isReadWrite());
+    m_swapWithClipboard->setEnabled(doc()->isReadWrite());
     m_setEndOfLine->setEnabled(doc()->isReadWrite());
 
     static const auto l = {QStringLiteral("edit_replace"),
@@ -2434,7 +2434,7 @@ void KTextEditor::ViewPrivate::pasteSelection()
     m_temporaryAutomaticInvocationDisabled = false;
 }
 
-void KTextEditor::ViewPrivate::copyAndPaste()
+void KTextEditor::ViewPrivate::swapWithClipboard()
 {
     m_temporaryAutomaticInvocationDisabled = true;
 
@@ -3222,7 +3222,7 @@ QMenu *KTextEditor::ViewPrivate::defaultContextMenu(QMenu *menu) const
     if (m_pasteSelection) {
         menu->addAction(m_pasteSelection);
     }
-    menu->addAction(m_copyAndPaste);
+    menu->addAction(m_swapWithClipboard);
     menu->addSeparator();
     menu->addAction(m_selectAll);
     menu->addAction(m_deSelect);

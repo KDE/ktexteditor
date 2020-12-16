@@ -134,7 +134,7 @@ private Q_SLOTS:
     /**
      * Copy current selected stuff and paste previous content of clipboard as one operation.
      */
-    void copyAndPaste();
+    void swapWithClipboard();
 
     /**
      * Wrap lines touched by the selection with respect of existing paragraphs.
@@ -762,7 +762,7 @@ private:
     QAction *m_paste;
     // always nullptr if paste selection isn't supported
     QAction *m_pasteSelection = nullptr;
-    QAction *m_copyAndPaste;
+    QAction *m_swapWithClipboard;
     QAction *m_selectAll;
     QAction *m_deSelect;
 
