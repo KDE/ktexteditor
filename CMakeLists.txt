@@ -40,7 +40,7 @@ ecm_setup_version(
 )
 
 # Dependencies
-set(REQUIRED_QT_VERSION 5.13.0)
+set(REQUIRED_QT_VERSION 5.14.0)
 
 # Required Qt5 components to build this framework
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets Qml
@@ -67,7 +67,7 @@ option (BUILD_VIMODE "Build vimode in" ON)
 
 # forbid some old things
 add_definitions(-DQT_NO_FOREACH)
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054B00)
 
 # Subdirectories
