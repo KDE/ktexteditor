@@ -239,8 +239,12 @@ QVector<KTextEditor::Range> KateRegExpSearch::search(const QString &pattern, con
             lineLens[i] = textLine.length();
             wholeRange.append(textLine);
 
-            // This check is needed as some parts in vimode rely on this behaviour
-            if (i != rangeEndLine) {
+            // This check is needed as some parts in vimode rely on this behaviour.
+            // We add an '\n' as a delimiter between lines in the range; but never after the
+            // last line as that would add an '\n' that isn't there in the original text,
+            // and can skew search results or hit an assert when accessing lineLens later
+            // in the code.
+            if (i != (rangeLineCount - 1)) {
                 wholeRange.append(QLatin1Char('\n'));
             }
 

@@ -111,6 +111,30 @@ void SearchBarTest::testFindNextZeroLengthMatch()
     QCOMPARE(view.cursorPosition(), Cursor(3, 0));
 }
 
+void SearchBarTest::testFindNextNoNewLineAtEnd()
+{
+    // Testing with a document that doesn't end with a new line
+    KTextEditor::DocumentPrivate doc;
+    doc.setText(" \n \n ");
+
+    KTextEditor::ViewPrivate view(&doc, nullptr);
+    KateViewConfig config(&view);
+    KateSearchBar bar(true, &view, &config);
+    QVERIFY(bar.isPower());
+    bar.setSearchMode(KateSearchBar::MODE_REGEX);
+    bar.setSearchPattern("^ *\\n");
+
+    bar.findNext();
+    QCOMPARE(view.selectionRange(), Range(0, 0, 1, 0));
+
+    bar.findNext();
+    QCOMPARE(view.selectionRange(), Range(1, 0, 2, 0));
+
+    bar.findNext();
+    // Search wraps
+    QCOMPARE(view.selectionRange(), Range(0, 0, 1, 0));
+}
+
 void SearchBarTest::testSetMatchCaseIncremental()
 {
     KTextEditor::DocumentPrivate doc;

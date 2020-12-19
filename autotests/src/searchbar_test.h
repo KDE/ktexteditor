@@ -27,6 +27,8 @@ private Q_SLOTS:
 
     void testFindNextZeroLengthMatch();
 
+    void testFindNextNoNewLineAtEnd();
+
     void testSetMatchCaseIncremental();
 
     void testSetMatchCasePower();
